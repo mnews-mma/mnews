@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { FIGHTERS, getFighter } from "@/lib/fighters";
+import { getFighter } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
+import { fetchWikiFighterRecord } from "@/lib/feeds/wikipedia";
 
-export function generateStaticParams() {
-  return FIGHTERS.map((f) => ({ slug: f.slug }));
-}
+// Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -27,6 +27,27 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const fighter = getFighter(slug);
   if (!fighter) notFound();
 
+  let history = fighter.history;
+  let wins = fighter.wins;
+  let losses = fighter.losses;
+  let draws = fighter.draws;
+  let live = false;
+
+  if (fighter.wikiTitleEn) {
+    try {
+      const wiki = await fetchWikiFighterRecord(fighter.wikiTitleEn);
+      if (wiki && wiki.history.length > 0) {
+        history = wiki.history;
+        wins = wiki.wins;
+        losses = wiki.losses;
+        draws = wiki.draws;
+        live = true;
+      }
+    } catch {
+      // fall back to seed data below
+    }
+  }
+
   return (
     <>
       <Nav />
@@ -41,13 +62,17 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
           </span>
         </div>
         <div className="page-sub">
-          通算 {fighter.wins}-{fighter.losses}-{fighter.draws} ／ KO {fighter.ko} ・ 一本 {fighter.sub} ・ 判定{" "}
-          {fighter.decision}
+          通算 {wins}-{losses}-{draws}
+          {live && (
+            <span style={{ marginLeft: 12, color: "var(--dim)" }}>
+              （Wikipediaより取得）
+            </span>
+          )}
         </div>
       </div>
 
       <div style={{ padding: "0 24px 40px" }}>
-        {fighter.history.length === 0 ? (
+        {history.length === 0 ? (
           <p style={{ color: "var(--muted)", fontSize: 13, padding: "24px 0" }}>
             試合履歴データは準備中です。
           </p>
@@ -64,7 +89,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
               </tr>
             </thead>
             <tbody>
-              {fighter.history.map((h, i) => (
+              {history.map((h, i) => (
                 <tr key={i}>
                   <td>{h.date}</td>
                   <td>{h.opponent}</td>
