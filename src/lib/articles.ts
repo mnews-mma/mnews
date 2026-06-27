@@ -163,6 +163,10 @@ function hoursAgo(h: number): string {
   return new Date(Date.now() - h * 3_600_000).toISOString();
 }
 
+export function isRecent(iso: string, hours = 3): boolean {
+  return Date.now() - new Date(iso).getTime() < hours * 3_600_000;
+}
+
 export function relativeTimeJa(iso: string): string {
   const diffMs = Date.now() - new Date(iso).getTime();
   const min = Math.floor(diffMs / 60_000);

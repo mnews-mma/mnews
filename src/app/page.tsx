@@ -1,45 +1,60 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { ARTICLES, relativeTimeJa } from "@/lib/articles";
-import { SOURCES } from "@/lib/sources";
+import { ARTICLES, Article, relativeTimeJa, isRecent } from "@/lib/articles";
+import { SOURCES, SourceKey } from "@/lib/sources";
 import { FIGHTERS } from "@/lib/fighters";
+import { fetchAllArticles } from "@/lib/feeds/aggregate";
 
-const TICKER_ITEMS = [
-  "🔴 UFC 327 平良達郎 3RチョークでTAP — 詳細記事掲載中",
-  "RIZIN LANDMARK 13 全試合結果更新済み",
-  "伊澤星花 ONE FC防衛成功 — 19連勝",
-  "UFC 328 日本人選手3名出場決定",
-  "修斗 次期挑戦者決定戦カード発表",
+export const revalidate = 1800; // 30分おき自動更新（mnews-spec.md）
+
+const TICKER_FALLBACK = [
+  "RIZIN・UFC・修斗・DEEP・ONE FC・パンクラスの最新ニュースを自動収集中…",
 ];
 
-const TRENDING = [
-  "平良達郎のファイトマネーは過去最高額か",
-  "RIZIN vs UFC — 選手の移籍が加速する理由",
-  "伊澤星花 19連勝の技術的な理由",
-  "修斗とDEEP どっちがUFCへの近道か",
-  "堀口恭司復帰 — 35歳のピークはまだあるか",
-];
+function buildMixMeter(articles: Article[]) {
+  const counts = new Map<SourceKey, number>();
+  for (const a of articles) counts.set(a.source, (counts.get(a.source) ?? 0) + 1);
+  const total = articles.length || 1;
+  return Array.from(counts.entries())
+    .map(([key, count]) => ({ key, pct: Math.round((count / total) * 100) }))
+    .sort((a, b) => b.pct - a.pct)
+    .slice(0, 5);
+}
 
-const SOURCE_TALLY: { key: keyof typeof SOURCES; name: string; count: number }[] = [
-  { key: "rizin", name: "RIZIN公式", count: 23 },
-  { key: "ufc", name: "UFC.com / ESPN", count: 18 },
-  { key: "gonkaku", name: "ゴング格闘技", count: 31 },
-  { key: "mmaplanet", name: "MMAPLANET", count: 27 },
-  { key: "shooto", name: "修斗公式", count: 12 },
-  { key: "deep", name: "DEEP公式", count: 9 },
-  { key: "one", name: "ONE Championship", count: 14 },
-];
+function buildSourceTally(articles: Article[]) {
+  const counts = new Map<string, number>();
+  for (const a of articles) counts.set(a.origin, (counts.get(a.origin) ?? 0) + 1);
+  return Array.from(counts.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 8);
+}
 
-const MIX_METER: { key: keyof typeof SOURCES; pct: number }[] = [
-  { key: "rizin", pct: 34 },
-  { key: "ufc", pct: 28 },
-  { key: "shooto", pct: 16 },
-  { key: "deep", pct: 12 },
-  { key: "one", pct: 10 },
-];
+export default async function HomePage() {
+  const seedFallback = ARTICLES;
+  let articles: Article[] = seedFallback;
+  let live = false;
+  try {
+    const result = await fetchAllArticles();
+    if (result.articles.length >= 6) {
+      articles = result.articles;
+      live = true;
+    }
+  } catch {
+    // fall back to seed data below
+  }
 
-export default function HomePage() {
-  const [hero, ...rest] = ARTICLES;
+  const TICKER_ITEMS = live
+    ? articles.slice(0, 6).map((a) => {
+        const bare = a.title.replace(/^【[^】]+】\s*/, "");
+        return `【${SOURCES[a.source].label}】${bare}`;
+      })
+    : TICKER_FALLBACK;
+  const TRENDING = articles.slice(5, 10).map((a) => a.title);
+  const MIX_METER = buildMixMeter(articles);
+  const SOURCE_TALLY = buildSourceTally(articles);
+
+  const [hero, ...rest] = articles;
   const heroSubs = rest.slice(0, 3);
   const feedItems = rest.slice(3, 11);
   const bottomItems = rest.slice(11, 15);
@@ -75,7 +90,7 @@ export default function HomePage() {
       <div className="hero">
         <a href={hero.url} target="_blank" rel="noopener noreferrer" className="hero-main">
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {hero.breaking && <span className="hero-tag">BREAKING</span>}
+            {isRecent(hero.publishedAt, 1) && <span className="hero-tag">BREAKING</span>}
             <span className={`source-badge sb-${hero.source}`}>
               {SOURCES[hero.source].label}
             </span>
@@ -114,7 +129,7 @@ export default function HomePage() {
         <div className="feed">
           <div className="feed-label">
             <span className="fl-title">最新ニュース</span>
-            <span className="fl-count">{ARTICLES.length}件</span>
+            <span className="fl-count">{articles.length}件</span>
             <div className="fl-live">
               <div className="live-dot" />
               自動更新中
@@ -132,7 +147,7 @@ export default function HomePage() {
               >
                 <div className="card-head">
                   <span className={`source-badge sb-${a.source}`}>{SOURCES[a.source].label}</span>
-                  {a.isNew && <span className="new-badge">NEW</span>}
+                  {isRecent(a.publishedAt) && <span className="new-badge">NEW</span>}
                 </div>
                 <div className="card-title">{a.title}</div>
                 {a.summary && <div className="card-body">{a.summary}</div>}
@@ -168,8 +183,8 @@ export default function HomePage() {
           <div className="sb-block">
             <div className="sb-title">配信元メディア</div>
             {SOURCE_TALLY.map((s) => (
-              <div className="source-item" key={s.key}>
-                <div className="si-color" style={{ background: SOURCES[s.key].color }} />
+              <div className="source-item" key={s.name}>
+                <div className="si-color" style={{ background: "var(--dim)" }} />
                 <span className="si-name">{s.name}</span>
                 <span className="si-count">{s.count}記事</span>
                 <span className="si-arrow">›</span>
@@ -178,7 +193,7 @@ export default function HomePage() {
           </div>
 
           <div className="sb-block">
-            <div className="sb-title">今週よく読まれた</div>
+            <div className="sb-title">その他の最新トピック</div>
             {TRENDING.map((t, i) => (
               <div className="trend-item" key={i}>
                 <div className="trend-n">{i + 1}</div>
