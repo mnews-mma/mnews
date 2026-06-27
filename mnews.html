@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mニュース — 日本MMAニュースを全部ここで</title>
+<meta name="description" content="RIZIN・UFC・修斗・DEEP・ONE FCのニュースを一か所にまとめて届けるMMA特化キュレーションメディア。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F3EF;
+  --s1: #FFFFFF;
+  --s2: #F0EDE8;
+  --s3: #E8E4DE;
+  --border: #DEDAD4;
+  --text: #0A0A0A;
+  --muted: #777;
+  --dim: #BBBBBB;
+
+  /* source colors */
+  --rizin:  #E8002D;
+  --ufc:    #B8860B;
+  --shooto: #0077CC;
+  --deep:   #6B21A8;
+  --one:    #059669;
+  --pancrase: #C2410C;
+
+  --accent: #E8002D;
+  --mix: #E8002D;
+
+  --os: 'Oswald', sans-serif;
+  --body: 'Inter', 'Noto Sans JP', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(232,0,45,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.nav-top {
+  display: flex; align-items: center;
+  padding: 0 24px; height: 52px; gap: 24px;
+}
+.logo {
+  font-family: var(--os);
+  font-size: 24px; font-weight: 700;
+  letter-spacing: 1px;
+  display: flex; align-items: baseline; gap: 0;
+}
+.logo-mix { color: #fff; }
+.logo-news { color: #fff; }
+.logo-dot { color: #fff; font-size: 28px; line-height: 0; }
+
+.nav-search {
+  flex: 1; max-width: 320px;
+  display: flex; align-items: center;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  padding: 0 14px; height: 34px; gap: 8px;
+}
+.nav-search input {
+  background: none; border: none; outline: none;
+  color: #fff; font-size: 12px; font-family: var(--body);
+  flex: 1;
+}
+.nav-search input::placeholder { color: rgba(255,255,255,0.6); }
+.search-icon { color: rgba(255,255,255,0.6); font-size: 13px; }
+
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.no-ads {
+  font-family: var(--mono); font-size: 9px;
+  color: #fff; border: 1px solid rgba(255,255,255,0.5);
+  padding: 4px 10px; letter-spacing: 2px;
+  opacity: 0.7;
+}
+.nav-cta {
+  font-family: var(--mono); font-size: 10px;
+  background: #fff; color: var(--accent);
+  padding: 8px 16px; letter-spacing: 1px;
+  border: none; cursor: pointer; font-weight: 700;
+}
+
+/* SOURCE TABS */
+.source-tabs {
+  display: flex; align-items: center;
+  padding: 0 24px; gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  overflow-x: auto;
+}
+.source-tabs::-webkit-scrollbar { display: none; }
+.stab {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.6);
+  border-bottom: 2px solid transparent;
+  cursor: pointer; white-space: nowrap;
+  transition: color .15s;
+  background: none; border: none;
+  border-bottom: 2px solid transparent;
+}
+.stab:hover { color: #fff; }
+.stab.active { color: #fff; }
+.stab-dot { width: 6px; height: 6px; border-radius: 50%; }
+.stab.active-all { border-bottom-color: #fff; color: #fff; }
+.stab.active-rizin { border-bottom-color: #fff; color: #fff; }
+.stab.active-ufc { border-bottom-color: #fff; color: #fff; }
+.stab.active-shooto { border-bottom-color: #fff; color: #fff; }
+.stab.active-deep { border-bottom-color: #fff; color: #fff; }
+.stab.active-one { border-bottom-color: #fff; color: #fff; }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--accent);
+  height: 30px; display: flex; align-items: center;
+  overflow: hidden;
+}
+.ticker-label {
+  background: #fff; color: var(--accent);
+  font-family: var(--mono); font-size: 9px;
+  padding: 0 14px; height: 100%;
+  display: flex; align-items: center;
+  letter-spacing: 2px; white-space: nowrap;
+  flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.2);
+}
+.ticker-scroll {
+  overflow: hidden; flex: 1;
+}
+.ticker-inner {
+  display: inline-flex; gap: 48px;
+  animation: tick 35s linear infinite;
+  font-family: var(--mono); font-size: 10px;
+  color: #fff; letter-spacing: 1px; white-space: nowrap;
+}
+@keyframes tick {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.tick-sep { opacity: 0.4; }
+
+/* ── LAYOUT ── */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+/* ── MIX SIGNAL HERO ── */
+.signal-bar {
+  display: flex; height: 4px;
+}
+.sig { flex: 1; }
+.sig-rizin { background: var(--rizin); }
+.sig-ufc { background: var(--ufc); }
+.sig-shooto { background: var(--shooto); }
+.sig-deep { background: var(--deep); }
+.sig-one { background: var(--one); }
+.sig-pancrase { background: var(--pancrase); }
+
+/* ── HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1px;
+  background: var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.hero-main {
+  background: var(--s1);
+  padding: 36px;
+  display: flex; flex-direction: column;
+  gap: 16px;
+  cursor: pointer; transition: background .15s;
+}
+.hero-main:hover { background: var(--s2); }
+
+.source-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 2px; padding: 4px 10px;
+  border-radius: 2px;
+}
+.sb-rizin { background: rgba(232,0,45,0.15); color: var(--rizin); border: 1px solid rgba(232,0,45,0.3); }
+.sb-ufc   { background: rgba(212,172,13,0.15); color: var(--ufc);   border: 1px solid rgba(212,172,13,0.3); }
+.sb-shooto{ background: rgba(14,165,233,0.15); color: var(--shooto);border: 1px solid rgba(14,165,233,0.3); }
+.sb-deep  { background: rgba(139,92,246,0.15); color: var(--deep);  border: 1px solid rgba(139,92,246,0.3); }
+.sb-one   { background: rgba(16,185,129,0.15); color: var(--one);   border: 1px solid rgba(16,185,129,0.3); }
+.sb-pancrase { background: rgba(249,115,22,0.15); color: var(--pancrase); border: 1px solid rgba(249,115,22,0.3); }
+
+.hero-title {
+  font-family: var(--os);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 600; line-height: 1.15;
+  letter-spacing: 0.3px;
+}
+.hero-body {
+  font-size: 14px; color: var(--muted);
+  line-height: 1.8; max-width: 600px;
+  font-weight: 300;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 8px;
+}
+.hero-source-name {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--muted); letter-spacing: 1px;
+}
+.hero-time {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--dim);
+}
+.hero-tag {
+  font-family: var(--mono); font-size: 9px;
+  background: var(--accent); color: #fff;
+  padding: 2px 8px; letter-spacing: 1px;
+}
+
+.hero-stack {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--border);
+}
+.hero-sub {
+  background: var(--s1);
+  padding: 24px 28px;
+  display: flex; flex-direction: column; gap: 10px;
+  cursor: pointer; transition: background .15s;
+  flex: 1;
+  border-left: 3px solid transparent;
+}
+.hero-sub:hover { background: var(--s2); }
+.hero-sub.rizin { border-left-color: var(--rizin); }
+.hero-sub.ufc   { border-left-color: var(--ufc); }
+.hero-sub.shooto{ border-left-color: var(--shooto); }
+.hero-sub.deep  { border-left-color: var(--deep); }
+.sub-title {
+  font-family: var(--os);
+  font-size: 16px; font-weight: 500;
+  line-height: 1.25;
+}
+.sub-meta {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--dim); letter-spacing: 1px;
+}
+
+/* ── MAIN GRID ── */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.feed { border-right: 1px solid var(--border); }
+
+/* SECTION LABEL */
+.feed-label {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--s1);
+  position: sticky; top: 104px; z-index: 10;
+}
+.fl-title {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--muted); letter-spacing: 3px;
+}
+.fl-count {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--dim);
+}
+.fl-live {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 9px; color: var(--accent);
+  letter-spacing: 2px;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* NEWS CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+.card {
+  background: var(--s1);
+  padding: 22px 24px;
+  cursor: pointer;
+  transition: background .15s;
+  display: flex; flex-direction: column; gap: 10px;
+  border-left: 3px solid transparent;
+}
+.card:hover { background: var(--s2); }
+.card.wide { grid-column: span 2; }
+.card.rizin-card  { border-left-color: var(--rizin); }
+.card.ufc-card    { border-left-color: var(--ufc); }
+.card.shooto-card { border-left-color: var(--shooto); }
+.card.deep-card   { border-left-color: var(--deep); }
+.card.one-card    { border-left-color: var(--one); }
+.card.pancrase-card { border-left-color: var(--pancrase); }
+
+.card-head {
+  display: flex; align-items: center; gap: 8px;
+  flex-wrap: wrap;
+}
+.card-title {
+  font-family: var(--os);
+  font-size: 17px; font-weight: 500;
+  line-height: 1.3; letter-spacing: 0.2px;
+}
+.card.wide .card-title { font-size: 22px; }
+.card-body {
+  font-size: 12px; color: var(--muted);
+  line-height: 1.7; font-weight: 300;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-foot {
+  display: flex; align-items: center; gap: 12px; margin-top: auto;
+}
+.card-origin {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--dim); letter-spacing: 1px;
+}
+.card-time {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--dim); margin-left: auto;
+}
+
+/* ── SIDEBAR ── */
+.sidebar { padding: 0; }
+
+.sb-block {
+  border-bottom: 1px solid var(--border);
+  padding: 20px;
+}
+.sb-title {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--muted); letter-spacing: 3px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* SOURCES LIST */
+.source-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.source-item:last-child { border-bottom: none; }
+.si-color {
+  width: 3px; height: 32px; border-radius: 2px; flex-shrink: 0;
+}
+.si-name { font-size: 13px; font-weight: 500; flex: 1; }
+.si-count {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--muted);
+}
+.si-arrow { color: var(--dim); font-size: 11px; }
+
+/* TRENDING */
+.trend-item {
+  display: flex; gap: 12px; align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.trend-item:last-child { border-bottom: none; }
+.trend-item:hover .trend-title { color: var(--accent); }
+.trend-n {
+  font-family: var(--os); font-size: 22px;
+  font-weight: 700; color: var(--border);
+  width: 24px; flex-shrink: 0;
+}
+.trend-title {
+  font-size: 12px; line-height: 1.5;
+  transition: color .15s;
+}
+
+/* MIX METER */
+.mix-meter {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.mm-row { display: flex; align-items: center; gap: 10px; }
+.mm-label {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--muted); width: 56px; flex-shrink: 0;
+  letter-spacing: 1px;
+}
+.mm-track {
+  flex: 1; height: 4px; background: var(--border);
+  border-radius: 2px; overflow: hidden;
+}
+.mm-fill { height: 100%; border-radius: 2px; }
+.mm-val {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--muted); width: 28px; text-align: right;
+}
+
+/* ── BOTTOM GRID ── */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--border);
+  border-top: 1px solid var(--border);
+}
+.bg-card {
+  background: var(--s1); padding: 20px;
+  cursor: pointer; transition: background .15s;
+  border-top: 2px solid transparent;
+}
+.bg-card:hover { background: var(--s2); }
+.bg-card.rizin  { border-top-color: var(--rizin); }
+.bg-card.ufc    { border-top-color: var(--ufc); }
+.bg-card.shooto { border-top-color: var(--shooto); }
+.bg-card.deep   { border-top-color: var(--deep); }
+.bg-title {
+  font-family: var(--os); font-size: 15px;
+  font-weight: 500; margin-top: 10px;
+  line-height: 1.3; margin-bottom: 8px;
+}
+.bg-meta {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--dim); letter-spacing: 1px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--s1);
+  border-top: 1px solid var(--border);
+  padding: 40px 24px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-brand .logo { font-size: 28px; margin-bottom: 10px; }
+.footer-desc {
+  font-size: 12px; color: var(--muted);
+  line-height: 1.8; max-width: 280px;
+  margin-bottom: 16px;
+}
+.footer-col-title {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--muted); letter-spacing: 3px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 12px; color: var(--muted);
+  transition: color .15s;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-bottom {
+  grid-column: span 3;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  display: flex; justify-content: space-between;
+  font-family: var(--mono); font-size: 9px;
+  color: var(--dim); letter-spacing: 1px;
+}
+
+/* ── NEW BADGE ── */
+.new-badge {
+  font-family: var(--mono); font-size: 8px;
+  background: var(--accent); color: #fff;
+  padding: 2px 6px; letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-top">
+    <div class="logo">
+      <span class="logo-mix">M</span><span class="logo-news">ニュース</span><span class="logo-dot">·</span>
+    </div>
+    <div class="nav-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="選手名・大会名で検索...">
+    </div>
+    <div class="nav-right">
+      <button class="nav-cta">通知をON</button>
+    </div>
+  </div>
+
+  <div class="source-tabs">
+    <button class="stab active-all">
+      <span class="stab-dot" style="background:var(--accent)"></span>ALL
+    </button>
+    <button class="stab">
+      <span class="stab-dot" style="background:var(--rizin)"></span>RIZIN
+    </button>
+    <button class="stab">
+      <span class="stab-dot" style="background:var(--ufc)"></span>UFC
+    </button>
+    <button class="stab">
+      <span class="stab-dot" style="background:var(--shooto)"></span>修斗
+    </button>
+    <button class="stab">
+      <span class="stab-dot" style="background:var(--deep)"></span>DEEP
+    </button>
+    <button class="stab">
+      <span class="stab-dot" style="background:var(--one)"></span>ONE FC
+    </button>
+    <button class="stab">
+      <span class="stab-dot" style="background:var(--pancrase)"></span>PANCRASE
+    </button>
+    <button class="stab" style="margin-left:auto;color:rgba(255,255,255,0.9);font-weight:600">
+      👤 選手戦績
+    </button>
+    <button class="stab">
+      <span class="stab-dot" style="background:var(--pancrase)"></span>PANCRASE
+    </button>
+  </div>
+</nav>
+
+<!-- SIGNAL BAR -->
+<div class="signal-bar">
+  <div class="sig sig-rizin"></div>
+  <div class="sig sig-ufc"></div>
+  <div class="sig sig-shooto"></div>
+  <div class="sig sig-deep"></div>
+  <div class="sig sig-one"></div>
+  <div class="sig sig-pancrase"></div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-label">● BREAKING</div>
+  <div class="ticker-scroll">
+    <div class="ticker-inner">
+      <span>🔴 UFC 327 平良達郎 3RチョークでTAP — 詳細記事掲載中</span>
+      <span class="tick-sep">/</span>
+      <span>RIZIN LANDMARK 13 全試合結果更新済み</span>
+      <span class="tick-sep">/</span>
+      <span>伊澤星花 ONE FC防衛成功 — 19連勝</span>
+      <span class="tick-sep">/</span>
+      <span>UFC 328 日本人選手3名出場決定</span>
+      <span class="tick-sep">/</span>
+      <span>修斗 次期挑戦者決定戦カード発表</span>
+      <span class="tick-sep">/</span>
+      <span>🔴 UFC 327 平良達郎 3RチョークでTAP — 詳細記事掲載中</span>
+      <span class="tick-sep">/</span>
+      <span>RIZIN LANDMARK 13 全試合結果更新済み</span>
+      <span class="tick-sep">/</span>
+      <span>伊澤星花 ONE FC防衛成功 — 19連勝</span>
+      <span class="tick-sep">/</span>
+      <span>UFC 328 日本人選手3名出場決定</span>
+      <span class="tick-sep">/</span>
+      <span>修斗 次期挑戦者決定戦カード発表</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-main">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="hero-tag">BREAKING</span>
+      <span class="source-badge sb-ufc">UFC</span>
+    </div>
+    <h1 class="hero-title">平良達郎、UFC 327でジョシュア・ヴァンに3Rリアネイキッドチョークで勝利。UFC王座挑戦が現実味を帯びる</h1>
+    <p class="hero-body">26歳の沖縄出身ファイターがまたしても世界を圧倒した。第2ラウンドにテイクダウンを奪い、バックポジションを制圧。3Rに入ると完璧なチョークで相手をタップさせた。試合後、平良は「次はチャンピオンだ」と宣言。</p>
+    <div class="hero-meta">
+      <span class="hero-source-name">via UFC.com / ゴング格闘技</span>
+      <span class="hero-time">32分前</span>
+    </div>
+  </div>
+
+  <div class="hero-stack">
+    <div class="hero-sub rizin">
+      <div class="source-badge sb-rizin" style="width:fit-content">RIZIN</div>
+      <div class="sub-title">RIZIN LANDMARK 13 全試合結果 — 日本人選手5名勝利</div>
+      <div class="sub-meta">RIZIN公式 · 2時間前</div>
+    </div>
+    <div class="hero-sub one">
+      <div class="source-badge sb-one" style="width:fit-content">ONE FC</div>
+      <div class="sub-title">伊澤星花 ONE FC女子アトム級19連続防衛成功「まだまだ強くなれる」</div>
+      <div class="sub-meta">MMAPLANET · 3時間前</div>
+    </div>
+    <div class="hero-sub shooto">
+      <div class="source-badge sb-shooto" style="width:fit-content">修斗</div>
+      <div class="sub-title">修斗世界フライ級タイトルマッチ — 次期挑戦者が確定</div>
+      <div class="sub-meta">修斗公式 · 5時間前</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-layout">
+  <div class="feed">
+    <div class="feed-label">
+      <span class="fl-title">最新ニュース</span>
+      <span class="fl-count">147件</span>
+      <div class="fl-live"><div class="live-dot"></div>自動更新中</div>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card wide ufc-card">
+        <div class="card-head">
+          <span class="source-badge sb-ufc">UFC</span>
+          <span class="new-badge">NEW</span>
+        </div>
+        <div class="card-title">UFC 328 日本開催の可能性？榊原CEO「さいたまスーパーアリーナでUFC、夢じゃない」</div>
+        <div class="card-body">RIZIN代表の榊原信行CEOが独占インタビューでUFCとの関係性について言及。日本でのUFC本格開催に向けた水面下の交渉が進んでいることを示唆した。実現すれば日本MMA史上最大のイベントとなる可能性がある。</div>
+        <div class="card-foot">
+          <span class="card-origin">via ゴング格闘技</span>
+          <span class="card-time">1時間前</span>
+        </div>
+      </div>
+
+      <div class="card rizin-card">
+        <div class="card-head">
+          <span class="source-badge sb-rizin">RIZIN</span>
+        </div>
+        <div class="card-title">RIZIN.53 対戦カード第1弾発表 — 堀口恭司が復帰戦</div>
+        <div class="card-body">さいたまスーパーアリーナで5月10日開催のRIZIN.53のメインカードが発表。</div>
+        <div class="card-foot">
+          <span class="card-origin">via RIZIN公式</span>
+          <span class="card-time">2時間前</span>
+        </div>
+      </div>
+
+      <div class="card deep-card">
+        <div class="card-head">
+          <span class="source-badge sb-deep">DEEP</span>
+        </div>
+        <div class="card-title">DEEP 131 全試合カード決定 — 注目の無敗同士の対決</div>
+        <div class="card-body">DEEP東京大会の全カードが出揃った。フェザー級でともに無敗の若手有望株が激突する。</div>
+        <div class="card-foot">
+          <span class="card-origin">via DEEP公式</span>
+          <span class="card-time">4時間前</span>
+        </div>
+      </div>
+
+      <div class="card ufc-card">
+        <div class="card-head">
+          <span class="source-badge sb-ufc">UFC</span>
+        </div>
+        <div class="card-title">中村倫也、UFC次戦でバンタム級ランカーと対戦決定</div>
+        <div class="card-body">レスリングU-23世界王者の中村倫也が6月のUFC大会でトップ15選手と対戦。キャリア最大の試練に挑む。</div>
+        <div class="card-foot">
+          <span class="card-origin">via MMAFighting / MMAPLANET</span>
+          <span class="card-time">5時間前</span>
+        </div>
+      </div>
+
+      <div class="card shooto-card">
+        <div class="card-head">
+          <span class="source-badge sb-shooto">修斗</span>
+        </div>
+        <div class="card-title">「Lemino × 修斗」vol.6 開催決定 — 4大会連続のストリーミング配信</div>
+        <div class="card-foot">
+          <span class="card-origin">via 修斗公式</span>
+          <span class="card-time">6時間前</span>
+        </div>
+      </div>
+
+      <div class="card one-card">
+        <div class="card-head">
+          <span class="source-badge sb-one">ONE FC</span>
+        </div>
+        <div class="card-title">ONE SAMURAI 1 追加カード — 日本人選手6名参戦に</div>
+        <div class="card-foot">
+          <span class="card-origin">via ONE Championship公式</span>
+          <span class="card-time">8時間前</span>
+        </div>
+      </div>
+
+      <div class="card rizin-card">
+        <div class="card-head">
+          <span class="source-badge sb-rizin">RIZIN</span>
+        </div>
+        <div class="card-title">SASUKE、PFLからRIZIN電撃移籍か — 関係者が明かす</div>
+        <div class="card-foot">
+          <span class="card-origin">via ファイトスポーツ</span>
+          <span class="card-time">10時間前</span>
+        </div>
+      </div>
+
+      <div class="card deep-card">
+        <div class="card-head">
+          <span class="source-badge sb-deep">DEEP</span>
+        </div>
+        <div class="card-title">若手注目株・松岡嵩志 DEEPフライ級タイトル挑戦権獲得</div>
+        <div class="card-foot">
+          <span class="card-origin">via DEEP公式</span>
+          <span class="card-time">11時間前</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="sb-block">
+      <div class="sb-title">MIX METER — 今日の配信比率</div>
+      <div class="mix-meter">
+        <div class="mm-row">
+          <span class="mm-label">RIZIN</span>
+          <div class="mm-track"><div class="mm-fill" style="width:34%;background:var(--rizin)"></div></div>
+          <span class="mm-val">34%</span>
+        </div>
+        <div class="mm-row">
+          <span class="mm-label">UFC</span>
+          <div class="mm-track"><div class="mm-fill" style="width:28%;background:var(--ufc)"></div></div>
+          <span class="mm-val">28%</span>
+        </div>
+        <div class="mm-row">
+          <span class="mm-label">修斗</span>
+          <div class="mm-track"><div class="mm-fill" style="width:16%;background:var(--shooto)"></div></div>
+          <span class="mm-val">16%</span>
+        </div>
+        <div class="mm-row">
+          <span class="mm-label">DEEP</span>
+          <div class="mm-track"><div class="mm-fill" style="width:12%;background:var(--deep)"></div></div>
+          <span class="mm-val">12%</span>
+        </div>
+        <div class="mm-row">
+          <span class="mm-label">ONE FC</span>
+          <div class="mm-track"><div class="mm-fill" style="width:10%;background:var(--one)"></div></div>
+          <span class="mm-val">10%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-block">
+      <div class="sb-title">配信元メディア</div>
+      <div class="source-item"><div class="si-color" style="background:var(--rizin)"></div><span class="si-name">RIZIN公式</span><span class="si-count">23記事</span><span class="si-arrow">›</span></div>
+      <div class="source-item"><div class="si-color" style="background:var(--ufc)"></div><span class="si-name">UFC.com / ESPN</span><span class="si-count">18記事</span><span class="si-arrow">›</span></div>
+      <div class="source-item"><div class="si-color" style="background:#e0e0e0"></div><span class="si-name">ゴング格闘技</span><span class="si-count">31記事</span><span class="si-arrow">›</span></div>
+      <div class="source-item"><div class="si-color" style="background:#999"></div><span class="si-name">MMAPLANET</span><span class="si-count">27記事</span><span class="si-arrow">›</span></div>
+      <div class="source-item"><div class="si-color" style="background:var(--shooto)"></div><span class="si-name">修斗公式</span><span class="si-count">12記事</span><span class="si-arrow">›</span></div>
+      <div class="source-item"><div class="si-color" style="background:var(--deep)"></div><span class="si-name">DEEP公式</span><span class="si-count">9記事</span><span class="si-arrow">›</span></div>
+      <div class="source-item"><div class="si-color" style="background:var(--one)"></div><span class="si-name">ONE Championship</span><span class="si-count">14記事</span><span class="si-arrow">›</span></div>
+    </div>
+
+    <div class="sb-block">
+      <div class="sb-title">今週よく読まれた</div>
+      <div class="trend-item"><div class="trend-n">1</div><div class="trend-title">平良達郎のファイトマネーは過去最高額か</div></div>
+      <div class="trend-item"><div class="trend-n">2</div><div class="trend-title">RIZIN vs UFC — 選手の移籍が加速する理由</div></div>
+      <div class="trend-item"><div class="trend-n">3</div><div class="trend-title">伊澤星花 19連勝の技術的な理由</div></div>
+      <div class="trend-item"><div class="trend-n">4</div><div class="trend-title">修斗とDEEP どっちがUFCへの近道か</div></div>
+      <div class="trend-item"><div class="trend-n">5</div><div class="trend-title">堀口恭司復帰 — 35歳のピークはまだあるか</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BOTTOM GRID -->
+<div class="bottom-grid">
+  <div class="bg-card rizin">
+    <span class="source-badge sb-rizin">RIZIN</span>
+    <div class="bg-title">RIZIN.53 堀口恭司 vs 朝倉海 再戦濃厚 — 関係者が証言</div>
+    <div class="bg-meta">RIZIN公式 · 12時間前</div>
+  </div>
+  <div class="bg-card ufc">
+    <span class="source-badge sb-ufc">UFC</span>
+    <div class="bg-title">UFCフライ級ランキング更新 — 平良達郎が3位に浮上</div>
+    <div class="bg-meta">UFC.com · 14時間前</div>
+  </div>
+  <div class="bg-card shooto">
+    <span class="source-badge sb-shooto">修斗</span>
+    <div class="bg-title">修斗2026年下半期スケジュール全公開</div>
+    <div class="bg-meta">修斗公式 · 15時間前</div>
+  </div>
+  <div class="bg-card deep">
+    <span class="source-badge sb-deep">DEEP</span>
+    <div class="bg-title">DEEP女子部門が拡大 — 新設4階級の詳細発表</div>
+    <div class="bg-meta">DEEP公式 · 18時間前</div>
+  </div>
+</div>
+
+<!-- 選手戦績セクション -->
+<div style="border-top:2px solid var(--border);border-bottom:2px solid var(--border)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--accent)">
+    <div style="font-family:var(--mono);font-size:11px;color:#fff;letter-spacing:3px">👤 主要選手 戦績まとめ</div>
+    <a href="#" style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:2px">全選手を見る →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)">
+
+    <a href="#" style="background:var(--s1);padding:20px 24px;text-decoration:none;color:var(--text);display:block;transition:background .15s;border-left:3px solid var(--rizin)" onmouseover="this.style.background='var(--s2)'" onmouseout="this.style.background='var(--s1)'">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--rizin);letter-spacing:2px;margin-bottom:8px">UFC / フライ級</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px">平良 達郎</div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px">18-1-0</div>
+      <div style="font-size:11px;color:var(--muted)">KO 3 / 一本 14 / 判定 1</div>
+    </a>
+
+    <a href="#" style="background:var(--s1);padding:20px 24px;text-decoration:none;color:var(--text);display:block;transition:background .15s;border-left:3px solid var(--one)" onmouseover="this.style.background='var(--s2)'" onmouseout="this.style.background='var(--s1)'">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--one);letter-spacing:2px;margin-bottom:8px">ONE FC / 女子アトム級</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px">伊澤 星花</div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px">19-0-0</div>
+      <div style="font-size:11px;color:var(--muted)">KO 4 / 一本 10 / 判定 5</div>
+    </a>
+
+    <a href="#" style="background:var(--s1);padding:20px 24px;text-decoration:none;color:var(--text);display:block;transition:background .15s;border-left:3px solid var(--ufc)" onmouseover="this.style.background='var(--s2)'" onmouseout="this.style.background='var(--s1)'">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--ufc);letter-spacing:2px;margin-bottom:8px">UFC / バンタム級</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px">中村 倫也</div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px">10-1-0</div>
+      <div style="font-size:11px;color:var(--muted)">KO 2 / 一本 6 / 判定 2</div>
+    </a>
+
+    <a href="#" style="background:var(--s1);padding:20px 24px;text-decoration:none;color:var(--text);display:block;transition:background .15s;border-left:3px solid var(--rizin)" onmouseover="this.style.background='var(--s2)'" onmouseout="this.style.background='var(--s1)'">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--rizin);letter-spacing:2px;margin-bottom:8px">RIZIN / バンタム級</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px">堀口 恭司</div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px">30-5-0</div>
+      <div style="font-size:11px;color:var(--muted)">KO 18 / 一本 6 / 判定 6</div>
+    </a>
+
+    <a href="#" style="background:var(--s1);padding:20px 24px;text-decoration:none;color:var(--text);display:block;transition:background .15s;border-left:3px solid var(--rizin)" onmouseover="this.style.background='var(--s2)'" onmouseout="this.style.background='var(--s1)'">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--rizin);letter-spacing:2px;margin-bottom:8px">RIZIN / フェザー級</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px">萩原 京平</div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px">18-4-0</div>
+      <div style="font-size:11px;color:var(--muted)">KO 10 / 一本 4 / 判定 4</div>
+    </a>
+
+    <a href="#" style="background:var(--s1);padding:20px 24px;text-decoration:none;color:var(--text);display:block;transition:background .15s;border-left:3px solid var(--rizin)" onmouseover="this.style.background='var(--s2)'" onmouseout="this.style.background='var(--s1)'">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--rizin);letter-spacing:2px;margin-bottom:8px">RIZIN / フェザー級</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px">平本 蓮</div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px">14-4-0</div>
+      <div style="font-size:11px;color:var(--muted)">KO 7 / 一本 3 / 判定 4</div>
+    </a>
+
+    <a href="#" style="background:var(--s1);padding:20px 24px;text-decoration:none;color:var(--text);display:block;transition:background .15s;border-left:3px solid var(--ufc)" onmouseover="this.style.background='var(--s2)'" onmouseout="this.style.background='var(--s1)'">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--ufc);letter-spacing:2px;margin-bottom:8px">UFC / フライ級</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px">若松 佑弥</div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px">20-6-0</div>
+      <div style="font-size:11px;color:var(--muted)">KO 7 / 一本 8 / 判定 5</div>
+    </a>
+
+    <a href="#" style="background:var(--s1);padding:20px 24px;text-decoration:none;color:var(--text);display:block;transition:background .15s;border-left:3px solid var(--shooto)" onmouseover="this.style.background='var(--s2)'" onmouseout="this.style.background='var(--s1)'">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--shooto);letter-spacing:2px;margin-bottom:8px">修斗 / ライト級</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px">武田 光司</div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);margin-bottom:8px">22-5-0</div>
+      <div style="font-size:11px;color:var(--muted)">KO 8 / 一本 9 / 判定 5</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo"><span class="logo-mix">M</span><span class="logo-news">ニュース</span><span class="logo-dot">·</span></div>
+    <p class="footer-desc">RIZIN・UFC・修斗・DEEP・ONE FCのニュースを一か所に。日本MMA特化のニュースキュレーション。</p>
+  </div>
+  <div>
+    <div class="footer-col-title">カテゴリ</div>
+    <div class="footer-links">
+      <a href="#">RIZIN ニュース</a>
+      <a href="#">UFC 日本人選手</a>
+      <a href="#">修斗 最新情報</a>
+      <a href="#">DEEP 試合結果</a>
+      <a href="#">ONE FC</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Mニュースについて</div>
+    <div class="footer-links">
+      <a href="#">このサービスの理念</a>
+      <a href="#">配信元メディア一覧</a>
+      <a href="#">記事の掲載申請</a>
+      <a href="#">お問い合わせ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Mニュース</span>
+    <span>日本MMAニュースを全部ここで</span>
+  </div>
+</footer>
+
+<script>
+// Tab switching
+document.querySelectorAll('.stab').forEach((tab, i) => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.stab').forEach(t => {
+      t.className = 'stab';
+    });
+    const classes = ['active-all','active-rizin','active-ufc','active-shooto','active-deep','active-one',''];
+    this.classList.add(classes[i] || 'active');
+  });
+});
+</script>
+</body>
+</html>
