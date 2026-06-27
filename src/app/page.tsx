@@ -5,7 +5,9 @@ import { SOURCES, SourceKey } from "@/lib/sources";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 
-export const revalidate = 1800; // 30分おき自動更新（mnews-spec.md）
+// 外部フィード取得をビルド時ではなくリクエスト時に行う。
+// データ自体は fetch() の revalidate 設定により30分キャッシュされる。
+export const dynamic = "force-dynamic";
 
 const TICKER_FALLBACK = [
   "RIZIN・UFC・修斗・DEEP・ONE FC・パンクラスの最新ニュースを自動収集中…",

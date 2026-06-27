@@ -6,16 +6,23 @@ import { classifyOrg } from "./classify";
 const REVALIDATE_SECONDS = 1800; // 30 min, per mnews-spec.md auto-update interval
 const SUMMARY_MAX = 100; // 著作権対応: 100文字以内サマリーのみ
 
+const FETCH_TIMEOUT_MS = 8000;
+
 async function fetchText(url: string): Promise<string | null> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
     const res = await fetch(url, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; MNewsBot/1.0)" },
       next: { revalidate: REVALIDATE_SECONDS },
+      signal: controller.signal,
     });
     if (!res.ok) return null;
     return await res.text();
   } catch {
     return null;
+  } finally {
+    clearTimeout(timer);
   }
 }
 
