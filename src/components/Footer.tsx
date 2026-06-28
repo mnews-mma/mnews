@@ -19,15 +19,6 @@ export default function Footer() {
           <a href="#">ONE</a>
         </div>
       </div>
-      <div>
-        <div className="footer-col-title">Mニュースについて</div>
-        <div className="footer-links">
-          <a href="#">このサービスの理念</a>
-          <a href="#">配信元メディア一覧</a>
-          <a href="#">記事の掲載申請</a>
-          <a href="#">お問い合わせ</a>
-        </div>
-      </div>
       <div className="footer-bottom">
         <span>© 2026 Mニュース</span>
         <span>日本MMAニュースを全部ここで</span>

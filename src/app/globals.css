@@ -528,7 +528,7 @@ footer {
   border-top: 1px solid var(--border);
   padding: 40px 24px 24px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
 }
 .footer-brand .logo {
@@ -565,7 +565,7 @@ footer {
   color: var(--text);
 }
 .footer-bottom {
-  grid-column: span 3;
+  grid-column: span 2;
   border-top: 1px solid var(--border);
   padding-top: 20px;
   display: flex;
