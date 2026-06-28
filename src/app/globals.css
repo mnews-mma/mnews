@@ -186,21 +186,33 @@ nav {
   align-items: center;
   gap: 16px;
   padding: 16px 24px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 3px solid var(--border);
   background: var(--s1);
   position: sticky;
   top: 52px;
   z-index: 10;
 }
+.split-col-head--official {
+  border-bottom-color: var(--accent);
+}
+.split-col-head--official .fl-title {
+  color: var(--accent);
+}
+.split-col-head--news {
+  border-bottom-color: var(--shooto);
+}
+.split-col-head--news .fl-title {
+  color: var(--shooto);
+}
 .fl-title {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 3px;
+  font-family: var(--os);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 .fl-count {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--dim);
 }
 .fl-live {
@@ -276,6 +288,7 @@ nav {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  min-height: 20px;
 }
 .card-title {
   font-family: var(--os);
@@ -293,6 +306,7 @@ nav {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: calc(1.7em * 2);
 }
 .card-foot {
   display: flex;

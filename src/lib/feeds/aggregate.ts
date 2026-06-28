@@ -1,10 +1,12 @@
 import { Article } from "../articles";
 import { SourceKey } from "../sources";
 import { parseRss, parseAtom, RawItem } from "./xml";
-import { classifyOrg } from "./classify";
+import { isMmaRelevant } from "./classify";
 
 const REVALIDATE_SECONDS = 1800; // 30 min, per mnews-spec.md auto-update interval
 const SUMMARY_MAX = 100; // 著作権対応: 100文字以内サマリーのみ
+const MAX_AGE_DAYS = 7; // 直近1週間のみ掲載
+const MAX_PER_BUCKET = 24; // 画面が長くなり過ぎないための上限
 
 const FETCH_TIMEOUT_MS = 8000;
 
@@ -54,6 +56,7 @@ function toArticle(
   };
 }
 
+// 公式サイト/公式フィードから直接取得した記事専用。「公式発表」欄に表示される。
 async function fetchOfficialFeed(
   url: string,
   format: "rss" | "atom",
@@ -69,6 +72,8 @@ async function fetchOfficialFeed(
     .filter((a): a is Article => a !== null);
 }
 
+// 二次メディアの記事専用。公式発信ではないため常に "other"（ニュース・
+// バッジ無し）として扱い、MMAに無関係な記事はここで除外する。
 async function fetchMediaFeed(
   url: string,
   format: "rss" | "atom",
@@ -80,8 +85,8 @@ async function fetchMediaFeed(
   const items = format === "rss" ? parseRss(xml) : parseAtom(xml);
   const out: Article[] = [];
   items.forEach((it, i) => {
-    const org = classifyOrg(it.title) ?? "other";
-    const a = toArticle(it, org, origin, idPrefix, i);
+    if (!isMmaRelevant(it.title)) return;
+    const a = toArticle(it, "other", origin, idPrefix, i);
     if (a) out.push(a);
   });
   return out;
@@ -96,13 +101,13 @@ async function fetchEfightMma(): Promise<Article[]> {
   const out: Article[] = [];
   matches.forEach(([, url, dateStr, rawTitle], i) => {
     const title = rawTitle.replace(/\s+/g, " ").trim();
-    const org = classifyOrg(title) ?? "other";
+    if (!isMmaRelevant(title)) return;
     const y = dateStr.slice(0, 4);
     const m = dateStr.slice(4, 6);
     const d = dateStr.slice(6, 8);
     out.push({
       id: `efight-${i}`,
-      source: org,
+      source: "other",
       title,
       origin: "イーファイト",
       url,
@@ -122,13 +127,6 @@ export async function fetchAllArticles(): Promise<FeedResult> {
   const tasks: Promise<Article[]>[] = [
     fetchOfficialFeed("https://fc.rizinff.com/blogs/news.atom", "atom", "rizin", "RIZIN公式", "rizin"),
     fetchOfficialFeed("https://www.deep2001.com/feed", "rss", "deep", "DEEP公式", "deep"),
-    fetchOfficialFeed(
-      "http://blog.livedoor.jp/pancrasenews/atom.xml",
-      "atom",
-      "pancrase",
-      "パンクラス公式",
-      "pancrase"
-    ),
     fetchMediaFeed("https://gonkaku.jp/feed", "rss", "ゴング格闘技", "gonkaku"),
     fetchMediaFeed("https://mmaplanet.jp/feed", "rss", "MMAPLANET", "mmaplanet"),
     fetchEfightMma(),
@@ -146,13 +144,25 @@ export async function fetchAllArticles(): Promise<FeedResult> {
 
   // De-duplicate by URL (per spec: 重複記事の排除）
   const seen = new Set<string>();
-  const deduped = articles.filter((a) => {
+  let deduped = articles.filter((a) => {
     if (seen.has(a.url)) return false;
     seen.add(a.url);
     return true;
   });
 
+  // 直近1週間のみ掲載（画面が長くなり過ぎないようにする）
+  const cutoff = Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000;
+  deduped = deduped.filter((a) => new Date(a.publishedAt).getTime() >= cutoff);
+
   deduped.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
-  return { articles: deduped, fetchedSources, totalSources: tasks.length };
+  // バケツ（公式発表 / ニュース）ごとに上限を適用
+  const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep"]);
+  const official = deduped.filter((a) => OFFICIAL_ORGS.has(a.source)).slice(0, MAX_PER_BUCKET);
+  const news = deduped.filter((a) => !OFFICIAL_ORGS.has(a.source)).slice(0, MAX_PER_BUCKET);
+  const limited = [...official, ...news].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
+
+  return { articles: limited, fetchedSources, totalSources: tasks.length };
 }

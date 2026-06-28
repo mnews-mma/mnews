@@ -19,7 +19,7 @@ function NewsCard({ article, showBadge }: { article: Article; showBadge: boolean
         {isRecent(article.publishedAt) && <span className="new-badge">NEW</span>}
       </div>
       <div className="card-title">{article.title}</div>
-      {article.summary && <div className="card-body">{article.summary}</div>}
+      <div className="card-body">{article.summary ?? ""}</div>
       <div className="card-foot">
         <span className="card-origin">via {article.origin}</span>
         <span className="card-time">{relativeTimeJa(article.publishedAt)}</span>
@@ -55,7 +55,7 @@ export default function SplitFeed({
       </div>
 
       <div className={`split-col${tab === "official" ? " split-col-active" : ""}`}>
-        <div className="split-col-head">
+        <div className="split-col-head split-col-head--official">
           <span className="fl-title">公式発表</span>
           <span className="fl-count">{official.length}件</span>
         </div>
@@ -67,7 +67,7 @@ export default function SplitFeed({
       </div>
 
       <div className={`split-col${tab === "news" ? " split-col-active" : ""}`}>
-        <div className="split-col-head">
+        <div className="split-col-head split-col-head--news">
           <span className="fl-title">ニュース</span>
           <span className="fl-count">{news.length}件</span>
         </div>
