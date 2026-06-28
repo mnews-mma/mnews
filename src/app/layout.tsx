@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Mニュース — 日本MMAニュースを全部ここで",
   description:
-    "RIZIN・UFC・修斗・DEEP・ONE FCのニュースを一か所にまとめて届けるMMA特化キュレーションメディア。",
+    "RIZIN・DEEP・パンクラスの公式発表とMMAニュースを一か所にまとめて届けるMMA特化キュレーションメディア。",
   icons: { icon: "/logo.png" },
 };
 
