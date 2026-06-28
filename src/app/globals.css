@@ -148,32 +148,6 @@ nav {
   padding: 0 24px;
 }
 
-.signal-bar {
-  display: flex;
-  height: 4px;
-}
-.sig {
-  flex: 1;
-}
-.sig-rizin {
-  background: var(--rizin);
-}
-.sig-ufc {
-  background: var(--ufc);
-}
-.sig-shooto {
-  background: var(--shooto);
-}
-.sig-deep {
-  background: var(--deep);
-}
-.sig-one {
-  background: var(--one);
-}
-.sig-pancrase {
-  background: var(--pancrase);
-}
-
 .hero {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -346,7 +320,7 @@ nav {
   border-bottom: 1px solid var(--border);
   background: var(--s1);
   position: sticky;
-  top: 86px;
+  top: 82px;
   z-index: 10;
 }
 .fl-title {
@@ -528,7 +502,7 @@ footer {
   border-top: 1px solid var(--border);
   padding: 40px 24px 24px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 40px;
 }
 .footer-brand .logo {
@@ -565,7 +539,7 @@ footer {
   color: var(--text);
 }
 .footer-bottom {
-  grid-column: span 2;
+  grid-column: span 1;
   border-top: 1px solid var(--border);
   padding-top: 20px;
   display: flex;

@@ -11,23 +11,15 @@ import { resolveFighters } from "@/lib/feeds/resolveFighter";
 export const dynamic = "force-dynamic";
 
 const TICKER_FALLBACK = [
-  "RIZIN・UFC・修斗・DEEP・ONE・パンクラスの最新ニュースを自動収集中…",
+  "RIZIN・修斗・DEEP・パンクラスの最新ニュースを自動収集中…",
 ];
-
-// トップページの「主要選手 戦績まとめ」には載せない選手スラッグ。
-const HOMEPAGE_HIDDEN_FIGHTERS = new Set([
-  "izawa-seika",
-  "hagiwara-kyohei",
-  "wakamatsu-yuma",
-  "takeda-koji",
-]);
 
 export default async function HomePage() {
   const seedFallback = ARTICLES;
   let articles: Article[] = seedFallback;
   let live = false;
 
-  const [articlesResult, allFighters] = await Promise.all([
+  const [articlesResult, fighters] = await Promise.all([
     fetchAllArticles().catch(() => null),
     resolveFighters(FIGHTERS),
   ]);
@@ -35,7 +27,6 @@ export default async function HomePage() {
     articles = articlesResult.articles;
     live = true;
   }
-  const fighters = allFighters.filter((f) => !HOMEPAGE_HIDDEN_FIGHTERS.has(f.slug));
 
   const TICKER_ITEMS = live
     ? articles.slice(0, 6).map((a) => {
@@ -52,15 +43,6 @@ export default async function HomePage() {
   return (
     <>
       <Nav />
-
-      <div className="signal-bar">
-        <div className="sig sig-rizin" />
-        <div className="sig sig-ufc" />
-        <div className="sig sig-shooto" />
-        <div className="sig sig-deep" />
-        <div className="sig sig-one" />
-        <div className="sig sig-pancrase" />
-      </div>
 
       <div className="ticker">
         <div className="ticker-label">● BREAKING</div>

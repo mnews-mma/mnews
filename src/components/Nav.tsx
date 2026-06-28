@@ -5,7 +5,7 @@ export default function Nav() {
     <nav>
       <div className="nav-top">
         <Link href="/" className="logo">
-          <span className="logo-news">ニュース</span>
+          <span className="logo-news">Mニュース</span>
         </Link>
         <div className="nav-right">
           <Link href="/fighters" className="nav-fighters-link">
