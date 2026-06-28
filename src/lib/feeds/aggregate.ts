@@ -123,7 +123,9 @@ export interface FeedResult {
   totalSources: number;
 }
 
-export async function fetchAllArticles(): Promise<FeedResult> {
+// 取得したそのままの記事一覧（重複除去のみ）。ホームページ表示用の期間/件数
+// 制限はかけない。アーカイブ用スクリプトなどでも再利用するため公開する。
+export async function fetchRawArticles(): Promise<FeedResult> {
   const tasks: Promise<Article[]>[] = [
     fetchOfficialFeed("https://fc.rizinff.com/blogs/news.atom", "atom", "rizin", "RIZIN公式", "rizin"),
     fetchOfficialFeed("https://www.deep2001.com/feed", "rss", "deep", "DEEP公式", "deep"),
@@ -144,25 +146,30 @@ export async function fetchAllArticles(): Promise<FeedResult> {
 
   // De-duplicate by URL (per spec: 重複記事の排除）
   const seen = new Set<string>();
-  let deduped = articles.filter((a) => {
+  const deduped = articles.filter((a) => {
     if (seen.has(a.url)) return false;
     seen.add(a.url);
     return true;
   });
+  deduped.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+  return { articles: deduped, fetchedSources, totalSources: tasks.length };
+}
+
+export async function fetchAllArticles(): Promise<FeedResult> {
+  const { articles, fetchedSources, totalSources } = await fetchRawArticles();
 
   // 直近1週間のみ掲載（画面が長くなり過ぎないようにする）
   const cutoff = Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000;
-  deduped = deduped.filter((a) => new Date(a.publishedAt).getTime() >= cutoff);
-
-  deduped.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  const recent = articles.filter((a) => new Date(a.publishedAt).getTime() >= cutoff);
 
   // バケツ（公式発表 / ニュース）ごとに上限を適用
   const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep"]);
-  const official = deduped.filter((a) => OFFICIAL_ORGS.has(a.source)).slice(0, MAX_PER_BUCKET);
-  const news = deduped.filter((a) => !OFFICIAL_ORGS.has(a.source)).slice(0, MAX_PER_BUCKET);
+  const official = recent.filter((a) => OFFICIAL_ORGS.has(a.source)).slice(0, MAX_PER_BUCKET);
+  const news = recent.filter((a) => !OFFICIAL_ORGS.has(a.source)).slice(0, MAX_PER_BUCKET);
   const limited = [...official, ...news].sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
 
-  return { articles: limited, fetchedSources, totalSources: tasks.length };
+  return { articles: limited, fetchedSources, totalSources };
 }

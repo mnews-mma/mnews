@@ -216,6 +216,13 @@ nav {
   font-size: 10px;
   color: var(--dim);
 }
+.fl-archive-link {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
 .fl-live {
   margin-left: auto;
   display: flex;
@@ -591,6 +598,26 @@ footer {
 
 .table-scroll {
   overflow-x: auto;
+}
+
+.archive-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+}
+.archive-pager-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 600;
+}
+.archive-pager-status {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
 }
 
 @media (max-width: 860px) {
