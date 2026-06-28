@@ -28,7 +28,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   if (!seed) notFound();
 
   const fighter = await resolveFighter(seed);
-  const { history, wins, losses, draws, live } = fighter;
+  const { history, wins, losses, draws } = fighter;
 
   return (
     <>
@@ -45,11 +45,6 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         </div>
         <div className="page-sub">
           通算 {wins}-{losses}-{draws}
-          {live && (
-            <span style={{ marginLeft: 12, color: "var(--dim)" }}>
-              （Wikipediaより取得）
-            </span>
-          )}
         </div>
       </div>
 
