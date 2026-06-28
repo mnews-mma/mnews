@@ -142,6 +142,21 @@ export const FIGHTERS: Fighter[] = [
     history: [],
     wikiTitleEn: "Kleber Koike Erbst",
   },
+  {
+    slug: "akimoto-kyoma",
+    nameJa: "秋元 強真",
+    nameEn: "Kyoma Akimoto",
+    org: "rizin",
+    weightClass: "フェザー級",
+    wins: 12,
+    losses: 1,
+    draws: 0,
+    ko: 7,
+    sub: 2,
+    decision: 3,
+    history: [],
+    // 英語版Wikipediaに記事がまだ無いため戦績はシードデータのまま。
+  },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {
