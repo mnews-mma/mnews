@@ -1,11 +1,13 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SplitFeed from "@/components/SplitFeed";
+import SocialSection from "@/components/SocialSection";
 import { ARTICLES, Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
+import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 
 // 外部フィード取得をビルド時ではなくリクエスト時に行う。
 // データ自体は fetch() の revalidate 設定により30分キャッシュされる。
@@ -16,9 +18,10 @@ const OFFICIAL_ORGS = new Set(["rizin", "deep"]);
 export default async function HomePage() {
   let articles: Article[] = ARTICLES;
 
-  const [articlesResult, fighters] = await Promise.all([
+  const [articlesResult, fighters, videos] = await Promise.all([
     fetchAllArticles().catch(() => null),
     resolveFighters(FIGHTERS),
+    fetchLatestOfficialVideos().catch(() => []),
   ]);
   if (articlesResult && articlesResult.articles.length >= 6) {
     articles = articlesResult.articles;
@@ -32,6 +35,8 @@ export default async function HomePage() {
       <Nav />
 
       <SplitFeed official={official} news={news} />
+
+      <SocialSection videos={videos} />
 
       {/* FIGHTER SECTION */}
       <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>

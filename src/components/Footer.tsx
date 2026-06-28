@@ -6,7 +6,7 @@ export default function Footer() {
           <span className="logo-news">Mニュース</span>
         </div>
         <p className="footer-desc">
-          RIZIN・DEEP・パンクラスのニュースを一か所に。日本MMA特化のニュースキュレーション。
+          RIZIN・DEEP・パンクラス・修斗のニュースを一か所に。日本MMA特化のニュースキュレーション。
         </p>
       </div>
       <div className="footer-bottom">
