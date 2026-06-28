@@ -131,13 +131,33 @@ export interface WikiFighterData {
   wins: number;
   losses: number;
   draws: number;
+  ko: number;
+  sub: number;
+  decision: number;
 }
 
-function tally(history: FightRecord[]): { wins: number; losses: number; draws: number } {
+function tally(history: FightRecord[]): Omit<WikiFighterData, "history"> {
+  const wins = history.filter((h) => h.result === "win");
+  const classify = (method: string) => {
+    const m = method.toLowerCase();
+    if (m.includes("submission")) return "sub";
+    if (m.includes("ko") || m.includes("tko")) return "ko";
+    if (m.includes("decision")) return "decision";
+    return "other";
+  };
+  const breakdown = wins.reduce(
+    (acc, h) => {
+      const c = classify(h.method);
+      if (c !== "other") acc[c]++;
+      return acc;
+    },
+    { ko: 0, sub: 0, decision: 0 }
+  );
   return {
-    wins: history.filter((h) => h.result === "win").length,
+    wins: wins.length,
     losses: history.filter((h) => h.result === "loss").length,
     draws: history.filter((h) => h.result === "draw").length,
+    ...breakdown,
   };
 }
 

@@ -4,6 +4,7 @@ import { ARTICLES, Article, relativeTimeJa, isRecent } from "@/lib/articles";
 import { SOURCES, SourceKey } from "@/lib/sources";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
+import { resolveFighters } from "@/lib/feeds/resolveFighter";
 
 // 外部フィード取得をビルド時ではなくリクエスト時に行う。
 // データ自体は fetch() の revalidate 設定により30分キャッシュされる。
@@ -36,14 +37,14 @@ export default async function HomePage() {
   const seedFallback = ARTICLES;
   let articles: Article[] = seedFallback;
   let live = false;
-  try {
-    const result = await fetchAllArticles();
-    if (result.articles.length >= 6) {
-      articles = result.articles;
-      live = true;
-    }
-  } catch {
-    // fall back to seed data below
+
+  const [articlesResult, fighters] = await Promise.all([
+    fetchAllArticles().catch(() => null),
+    resolveFighters(FIGHTERS),
+  ]);
+  if (articlesResult && articlesResult.articles.length >= 6) {
+    articles = articlesResult.articles;
+    live = true;
   }
 
   const TICKER_ITEMS = live
@@ -233,7 +234,7 @@ export default async function HomePage() {
           </a>
         </div>
         <div className="fighter-grid">
-          {FIGHTERS.map((f) => (
+          {fighters.map((f) => (
             <a key={f.slug} href={`/fighters/${f.slug}`} className="fighter-card" style={{ borderLeftColor: SOURCES[f.org].color }}>
               <div className="fighter-org" style={{ color: SOURCES[f.org].color }}>
                 {SOURCES[f.org].label} / {f.weightClass}

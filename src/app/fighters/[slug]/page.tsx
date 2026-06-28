@@ -3,7 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { getFighter } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
-import { fetchWikiFighterRecord } from "@/lib/feeds/wikipedia";
+import { resolveFighter } from "@/lib/feeds/resolveFighter";
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
@@ -24,29 +24,11 @@ const RESULT_CLASS: Record<string, string> = {
 
 export default async function FighterPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const fighter = getFighter(slug);
-  if (!fighter) notFound();
+  const seed = getFighter(slug);
+  if (!seed) notFound();
 
-  let history = fighter.history;
-  let wins = fighter.wins;
-  let losses = fighter.losses;
-  let draws = fighter.draws;
-  let live = false;
-
-  if (fighter.wikiTitleEn) {
-    try {
-      const wiki = await fetchWikiFighterRecord(fighter.wikiTitleEn);
-      if (wiki && wiki.history.length > 0) {
-        history = wiki.history;
-        wins = wiki.wins;
-        losses = wiki.losses;
-        draws = wiki.draws;
-        live = true;
-      }
-    } catch {
-      // fall back to seed data below
-    }
-  }
+  const fighter = await resolveFighter(seed);
+  const { history, wins, losses, draws, live } = fighter;
 
   return (
     <>

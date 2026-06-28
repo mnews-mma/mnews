@@ -2,12 +2,17 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { FIGHTERS } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
+import { resolveFighters } from "@/lib/feeds/resolveFighter";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "選手戦績一覧 — Mニュース",
 };
 
-export default function FightersPage() {
+export default async function FightersPage() {
+  const fighters = await resolveFighters(FIGHTERS);
+
   return (
     <>
       <Nav />
@@ -16,7 +21,7 @@ export default function FightersPage() {
         <div className="page-sub">日本人MMA選手の戦績データ（Wikipediaより取得・更新）</div>
       </div>
       <div className="fighter-grid">
-        {FIGHTERS.map((f) => (
+        {fighters.map((f) => (
           <a
             key={f.slug}
             href={`/fighters/${f.slug}`}
