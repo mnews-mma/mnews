@@ -11,7 +11,7 @@ import { resolveFighters } from "@/lib/feeds/resolveFighter";
 // データ自体は fetch() の revalidate 設定により30分キャッシュされる。
 export const dynamic = "force-dynamic";
 
-const OFFICIAL_ORGS = new Set(["rizin", "shooto", "deep", "pancrase"]);
+const OFFICIAL_ORGS = new Set(["rizin", "deep", "pancrase"]);
 
 export default async function HomePage() {
   let articles: Article[] = ARTICLES;
