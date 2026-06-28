@@ -25,6 +25,9 @@ export interface Fighter {
   // English Wikipedia article title with a "{{MMA record start}}" table.
   // Only set when one is known to exist; omitted fighters keep seed data.
   wikiTitleEn?: string;
+  // jp.ufc.com/athlete/<slug> — UFC所属選手のみ。ニックネームをWikipediaより
+  // 優先してUFC公式プロフィールから取得するために使う。
+  ufcSlug?: string;
 }
 
 // Seed data. Per mnews-spec.md this is normally synced from the Wikipedia API.
@@ -47,6 +50,7 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-04-12", opponent: "Brandon Royval", result: "win", method: "decision", event: "UFC 314", round: "R5" },
     ],
     wikiTitleEn: "Tatsuro Taira",
+    ufcSlug: "tatsuro-taira",
   },
   {
     slug: "nakamura-rinya",
@@ -64,6 +68,7 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-12-07", opponent: "Cody Gibson", result: "win", method: "submission", event: "UFC Fight Night", round: "R2" },
     ],
     wikiTitleEn: "Rinya Nakamura",
+    ufcSlug: "rinya-nakamura",
   },
   {
     slug: "horiguchi-kyoji",
@@ -81,6 +86,7 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-12-31", opponent: "Yuki Motoya", result: "win", method: "KO", event: "RIZIN LANDMARK 12", round: "R1" },
     ],
     wikiTitleEn: "Kyoji Horiguchi",
+    ufcSlug: "kyoji-horiguchi",
   },
   {
     slug: "asakura-kai",
@@ -96,6 +102,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     wikiTitleEn: "Kai Asakura",
+    ufcSlug: "kai-asakura",
   },
   {
     slug: "hiramoto-ren",
