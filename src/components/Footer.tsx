@@ -8,6 +8,14 @@ export default function Footer() {
         <p className="footer-desc">
           RIZIN・DEEP・パンクラス・修斗のニュースを一か所に。日本MMA特化のニュースキュレーション。
         </p>
+        <a
+          href="https://x.com/mnews_mma"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-x-link"
+        >
+          𝕏 @mnews_mma をフォロー
+        </a>
       </div>
       <div className="footer-bottom">
         <span>© 2026 Mニュース</span>

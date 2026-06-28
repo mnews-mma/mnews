@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const isProduction = process.env.NODE_ENV === "production";
 
 export const metadata: Metadata = {
   title: "Mニュース — 日本MMAニュースを全部ここで",
@@ -23,6 +27,7 @@ export default function RootLayout({
         />
       </head>
       <body>{children}</body>
+      {isProduction && GA_ID && <GoogleAnalytics gaId={GA_ID} />}
     </html>
   );
 }
