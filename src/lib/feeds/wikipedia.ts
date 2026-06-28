@@ -126,6 +126,80 @@ export function parseMmaRecordTable(wikitext: string): FightRecord[] {
   return records;
 }
 
+export interface WikiInfobox {
+  nickname?: string;
+  birthPlace?: string;
+  weightClass?: string;
+  age?: number;
+}
+
+function extractField(wikitext: string, field: string): string | null {
+  // [ \t]* (not \s*) between "=" and the capture group: \s also matches
+  // newlines, so a blank field (e.g. "| other_names     = \n| image ...")
+  // would otherwise skip straight past the empty value onto the next line.
+  const m = wikitext.match(new RegExp(`\\|[ \\t]*${field}[ \\t]*=[ \\t]*([^\\n]*)`, "i"));
+  if (!m) return null;
+  const value = cleanWikiMarkup(m[1]);
+  return value || null;
+}
+
+function parseBirthDate(raw: string): { iso: string; age: number } | null {
+  const templateMatch = raw.match(/\{\{birth date and age\|([^}]*)\}\}/i);
+  if (!templateMatch) return null;
+  // パラメータには "df=yes" のような名前付き引数が混じることがあるので、
+  // "=" を含まない純粋な数値トークンの最初の3つを年・月・日とみなす。
+  const numericParts = templateMatch[1]
+    .split("|")
+    .map((p) => p.trim())
+    .filter((p) => /^\d{1,4}$/.test(p));
+  if (numericParts.length < 3) return null;
+  const [y, mo, d] = numericParts;
+  const year = Number(y);
+  const month = Number(mo);
+  const day = Number(d);
+  const birth = new Date(Date.UTC(year, month - 1, day));
+  const now = new Date();
+  let age = now.getUTCFullYear() - birth.getUTCFullYear();
+  const hasHadBirthdayThisYear =
+    now.getUTCMonth() > birth.getUTCMonth() ||
+    (now.getUTCMonth() === birth.getUTCMonth() && now.getUTCDate() >= birth.getUTCDate());
+  if (!hasHadBirthdayThisYear) age--;
+  return { iso: `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`, age };
+}
+
+export function parseInfobox(wikitext: string): WikiInfobox {
+  const result: WikiInfobox = {};
+
+  const nicknameRaw = extractField(wikitext, "other_names");
+  if (nicknameRaw) {
+    // 通称が複数ある場合は1番目だけ使う（"The Supernova (former), The Typhoon" 等）
+    const first = nicknameRaw.split(",")[0].replace(/\s*\(former\)\s*$/i, "").trim();
+    if (first) result.nickname = first;
+  }
+
+  const birthPlaceRaw = extractField(wikitext, "birth_place");
+  if (birthPlaceRaw) result.birthPlace = birthPlaceRaw;
+
+  const weightClassRaw = extractField(wikitext, "weight_class");
+  if (weightClassRaw) {
+    // 複数階級が <br/> 区切りで並ぶ場合は1番目（現在の主階級）だけ使い、
+    // 末尾の在籍期間表記（例 "(2015–2017, 2024–2026)"）は取り除く。
+    const first = weightClassRaw
+      .split(/<br\s*\/?>/i)[0]
+      .replace(/\s*\([^)]*\)\s*$/, "")
+      .trim();
+    if (first) result.weightClass = first;
+  }
+
+  const birthDateRaw = wikitext.match(/\|[ \t]*birth_date[ \t]*=[ \t]*([^\n]*)/i)?.[1];
+  if (birthDateRaw) {
+    const parsed = parseBirthDate(birthDateRaw);
+    if (parsed) result.age = parsed.age;
+  }
+
+  return result;
+}
+
 export interface WikiFighterData {
   history: FightRecord[];
   wins: number;
@@ -134,9 +208,10 @@ export interface WikiFighterData {
   ko: number;
   sub: number;
   decision: number;
+  infobox: WikiInfobox;
 }
 
-function tally(history: FightRecord[]): Omit<WikiFighterData, "history"> {
+function tally(history: FightRecord[]): Omit<WikiFighterData, "history" | "infobox"> {
   const wins = history.filter((h) => h.result === "win");
   const classify = (method: string) => {
     const m = method.toLowerCase();
@@ -167,5 +242,5 @@ export async function fetchWikiFighterRecord(enTitle: string): Promise<WikiFight
   const history = parseMmaRecordTable(wikitext);
   if (history.length === 0) return null;
   // Wikipedia tables list most recent fight first; keep that order for display.
-  return { history, ...tally(history) };
+  return { history, ...tally(history), infobox: parseInfobox(wikitext) };
 }

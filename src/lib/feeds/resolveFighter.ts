@@ -4,6 +4,10 @@ import { fetchWikiFighterRecord } from "./wikipedia";
 export interface ResolvedFighter extends Fighter {
   history: FightRecord[];
   live: boolean;
+  nickname?: string;
+  birthPlace?: string;
+  wikiWeightClass?: string;
+  age?: number;
 }
 
 export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter> {
@@ -22,6 +26,10 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
         decision: wiki.decision,
         history: wiki.history,
         live: true,
+        nickname: wiki.infobox.nickname,
+        birthPlace: wiki.infobox.birthPlace,
+        wikiWeightClass: wiki.infobox.weightClass,
+        age: wiki.infobox.age,
       };
     }
   } catch {

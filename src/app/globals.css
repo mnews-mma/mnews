@@ -551,6 +551,11 @@ footer {
   font-weight: 600;
   margin-bottom: 4px;
 }
+.fighter-card-nickname {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
 .fighter-record {
   font-family: var(--mono);
   font-size: 22px;
@@ -574,6 +579,20 @@ footer {
   font-weight: 600;
 }
 .page-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+.fighter-nickname {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.fighter-meta-row {
+  display: flex;
+  gap: 16px;
   font-family: var(--mono);
   font-size: 11px;
   color: var(--muted);

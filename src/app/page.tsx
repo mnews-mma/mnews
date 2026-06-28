@@ -63,6 +63,7 @@ export default async function HomePage() {
                 {SOURCES[f.org].label} / {f.weightClass}
               </div>
               <div className="fighter-name">{f.nameJa}</div>
+              {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
               <div className="fighter-record">
                 {f.wins}-{f.losses}-{f.draws}
               </div>
