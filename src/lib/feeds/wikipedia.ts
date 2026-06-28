@@ -129,7 +129,6 @@ export function parseMmaRecordTable(wikitext: string): FightRecord[] {
 export interface WikiInfobox {
   nickname?: string;
   birthPlace?: string;
-  weightClass?: string;
   age?: number;
 }
 
@@ -172,24 +171,20 @@ export function parseInfobox(wikitext: string): WikiInfobox {
 
   const nicknameRaw = extractField(wikitext, "other_names");
   if (nicknameRaw) {
-    // 通称が複数ある場合は1番目だけ使う（"The Supernova (former), The Typhoon" 等）
-    const first = nicknameRaw.split(",")[0].replace(/\s*\(former\)\s*$/i, "").trim();
-    if (first) result.nickname = first;
+    // 通称が複数ある場合、"(former)" が付いた旧称は除外して最初の現役通称を使う
+    // （例 "The Supernova (former), The Typhoon" → "The Typhoon"）。
+    const firstCurrent = nicknameRaw
+      .split(",")
+      .map((s) => s.trim())
+      .find((s) => s && !/\(former\)/i.test(s));
+    if (firstCurrent) result.nickname = firstCurrent;
   }
 
   const birthPlaceRaw = extractField(wikitext, "birth_place");
   if (birthPlaceRaw) result.birthPlace = birthPlaceRaw;
 
-  const weightClassRaw = extractField(wikitext, "weight_class");
-  if (weightClassRaw) {
-    // 複数階級が <br/> 区切りで並ぶ場合は1番目（現在の主階級）だけ使い、
-    // 末尾の在籍期間表記（例 "(2015–2017, 2024–2026)"）は取り除く。
-    const first = weightClassRaw
-      .split(/<br\s*\/?>/i)[0]
-      .replace(/\s*\([^)]*\)\s*$/, "")
-      .trim();
-    if (first) result.weightClass = first;
-  }
+  // weight_class は記事によって現在の階級が先頭とは限らず順序が信頼できない
+  // ため取得しない（階級は手動管理データの方を表示に使う）。
 
   const birthDateRaw = wikitext.match(/\|[ \t]*birth_date[ \t]*=[ \t]*([^\n]*)/i)?.[1];
   if (birthDateRaw) {

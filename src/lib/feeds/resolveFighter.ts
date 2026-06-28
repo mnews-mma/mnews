@@ -6,7 +6,6 @@ export interface ResolvedFighter extends Fighter {
   live: boolean;
   nickname?: string;
   birthPlace?: string;
-  wikiWeightClass?: string;
   age?: number;
 }
 
@@ -28,7 +27,6 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
         live: true,
         nickname: wiki.infobox.nickname,
         birthPlace: wiki.infobox.birthPlace,
-        wikiWeightClass: wiki.infobox.weightClass,
         age: wiki.infobox.age,
       };
     }

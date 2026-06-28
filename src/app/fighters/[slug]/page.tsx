@@ -28,7 +28,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   if (!seed) notFound();
 
   const fighter = await resolveFighter(seed);
-  const { history, wins, losses, draws, nickname, birthPlace, wikiWeightClass, age } = fighter;
+  const { history, wins, losses, draws, nickname, birthPlace, age } = fighter;
 
   return (
     <>
@@ -47,10 +47,9 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         <div className="page-sub">
           通算 {wins}-{losses}-{draws}
         </div>
-        {(birthPlace || wikiWeightClass || age) && (
+        {(birthPlace || age) && (
           <div className="fighter-meta-row">
             {age && <span>{age}歳</span>}
-            {wikiWeightClass && <span>{wikiWeightClass}</span>}
             {birthPlace && <span>{birthPlace}出身</span>}
           </div>
         )}
