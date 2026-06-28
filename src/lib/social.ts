@@ -5,5 +5,6 @@ import { SourceKey } from "./sources";
 export const X_PROFILES: { org: SourceKey; orgLabel: string; url: string }[] = [
   { org: "rizin", orgLabel: "RIZIN", url: "https://x.com/rizin_PR" },
   { org: "deep", orgLabel: "DEEP", url: "https://x.com/jewels_deep" },
+  { org: "pancrase", orgLabel: "パンクラス", url: "https://x.com/_PANCRASE_" },
   { org: "shooto", orgLabel: "修斗", url: "https://x.com/xshooto" },
 ];

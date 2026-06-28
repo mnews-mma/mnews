@@ -27,8 +27,13 @@ export default async function HomePage() {
     articles = articlesResult.articles;
   }
 
-  const official = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
-  const news = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
+  const officialAll = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
+  const newsAll = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
+  // 2カラムの見た目の長さを揃えるため、件数の少ない方に合わせる
+  // （どちらも公開日時の降順なので、それぞれの最新N件が残る）。
+  const evenCount = Math.min(officialAll.length, newsAll.length);
+  const official = officialAll.slice(0, evenCount);
+  const news = newsAll.slice(0, evenCount);
 
   return (
     <>

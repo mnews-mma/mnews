@@ -73,6 +73,8 @@ async function fetchLatestVideo(
 }
 
 export async function fetchLatestOfficialVideos(): Promise<SocialPost[]> {
+  // CHANNELS の並び（RIZIN→DEEP→パンクラス→修斗）を保つため、更新日時では
+  // 並び替えない。Promise.allSettled の結果は入力順に対応するのでそのまま使う。
   const results = await Promise.allSettled(
     CHANNELS.map((c) => fetchLatestVideo(c.org, c.orgLabel, c.channelId))
   );
@@ -80,6 +82,5 @@ export async function fetchLatestOfficialVideos(): Promise<SocialPost[]> {
   for (const r of results) {
     if (r.status === "fulfilled" && r.value) posts.push(r.value);
   }
-  posts.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
   return posts;
 }
