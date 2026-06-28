@@ -58,7 +58,7 @@ export default function SplitFeed({
         <div className="split-col-head split-col-head--news">
           <span className="fl-title">ニュース</span>
           <span className="fl-count">{news.length}件</span>
-          <a href="/archive" className="fl-archive-link">過去の記事 →</a>
+          <a href="/archive?tab=news" className="fl-archive-link">過去の記事 →</a>
         </div>
         <div className="card-grid">
           {news.map((a) => (
@@ -71,7 +71,7 @@ export default function SplitFeed({
         <div className="split-col-head split-col-head--official">
           <span className="fl-title">公式発表</span>
           <span className="fl-count">{official.length}件</span>
-          <a href="/archive" className="fl-archive-link">過去の記事 →</a>
+          <a href="/archive?tab=official" className="fl-archive-link">過去の記事 →</a>
         </div>
         <div className="card-grid">
           {official.map((a) => (

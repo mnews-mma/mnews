@@ -616,23 +616,6 @@ footer {
   overflow-x: auto;
 }
 
-.archive-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
-  gap: 1px;
-  background: var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.archive-col {
-  background: var(--s1);
-  display: flex;
-  flex-direction: column;
-}
-.archive-col .split-col-head {
-  position: static;
-  top: auto;
-}
 
 .archive-pager {
   display: flex;
@@ -656,9 +639,6 @@ footer {
 
 @media (max-width: 860px) {
   .split-layout {
-    grid-template-columns: 1fr;
-  }
-  .archive-columns {
     grid-template-columns: 1fr;
   }
   .split-tabs {

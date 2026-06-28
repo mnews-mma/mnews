@@ -23,37 +23,44 @@ async function fetchArchive(): Promise<Article[]> {
   }
 }
 
-function paginate(articles: Article[], page: number) {
-  const totalPages = Math.max(1, Math.ceil(articles.length / PAGE_SIZE));
+export default async function ArchivePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string; page?: string }>;
+}) {
+  const { tab: tabParam, page: pageParam } = await searchParams;
+  const tab: "news" | "official" = tabParam === "official" ? "official" : "news";
+  const page = parseInt(pageParam ?? "1", 10) || 1;
+
+  const articles = await fetchArchive();
+  const filtered =
+    tab === "official"
+      ? articles.filter((a) => OFFICIAL_ORGS.has(a.source))
+      : articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const current = Math.min(Math.max(1, page), totalPages);
   const start = (current - 1) * PAGE_SIZE;
-  return { items: articles.slice(start, start + PAGE_SIZE), current, totalPages };
-}
-
-function ArchiveColumn({
-  title,
-  headClass,
-  articles,
-  page,
-  pageParamName,
-  showBadge,
-}: {
-  title: string;
-  headClass: string;
-  articles: Article[];
-  page: number;
-  pageParamName: string;
-  showBadge: boolean;
-}) {
-  const { items, current, totalPages } = paginate(articles, page);
-  const otherParam = pageParamName === "newsPage" ? "officialPage" : "newsPage";
+  const items = filtered.slice(start, start + PAGE_SIZE);
+  const showBadge = tab === "official";
 
   return (
-    <div className="archive-col">
-      <div className={`split-col-head ${headClass}`}>
-        <span className="fl-title">{title}</span>
-        <span className="fl-count">{articles.length}件</span>
+    <>
+      <Nav />
+      <div className="page-head">
+        <div className="page-title">過去のニュース</div>
+        <div className="page-sub">{tab === "official" ? "公式発表" : "ニュース"}の蓄積アーカイブ</div>
       </div>
+
+      <div className="split-tabs" style={{ display: "flex" }}>
+        <a href="/archive?tab=news" className={`split-tab${tab === "news" ? " active" : ""}`}>
+          ニュース
+        </a>
+        <a href="/archive?tab=official" className={`split-tab${tab === "official" ? " active" : ""}`}>
+          公式発表
+        </a>
+      </div>
+
       <div className="card-grid">
         {items.map((a) => (
           <a key={a.url} href={a.url} target="_blank" rel="noopener noreferrer" className={`card ${a.source}-card`}>
@@ -74,12 +81,10 @@ function ArchiveColumn({
           </p>
         )}
       </div>
+
       <div className="archive-pager">
         {current > 1 ? (
-          <a
-            href={`/archive?${pageParamName}=${current - 1}&${otherParam}=1`}
-            className="archive-pager-link"
-          >
+          <a href={`/archive?tab=${tab}&page=${current - 1}`} className="archive-pager-link">
             ← 新しい記事へ
           </a>
         ) : (
@@ -89,58 +94,12 @@ function ArchiveColumn({
           {current} / {totalPages}
         </span>
         {current < totalPages ? (
-          <a
-            href={`/archive?${pageParamName}=${current + 1}&${otherParam}=1`}
-            className="archive-pager-link"
-          >
+          <a href={`/archive?tab=${tab}&page=${current + 1}`} className="archive-pager-link">
             古い記事へ →
           </a>
         ) : (
           <span />
         )}
-      </div>
-    </div>
-  );
-}
-
-export default async function ArchivePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ newsPage?: string; officialPage?: string }>;
-}) {
-  const { newsPage: newsPageParam, officialPage: officialPageParam } = await searchParams;
-  const newsPage = parseInt(newsPageParam ?? "1", 10) || 1;
-  const officialPage = parseInt(officialPageParam ?? "1", 10) || 1;
-
-  const articles = await fetchArchive();
-  const official = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
-  const news = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
-
-  return (
-    <>
-      <Nav />
-      <div className="page-head">
-        <div className="page-title">過去のニュース</div>
-        <div className="page-sub">公式発表・ニュースの蓄積アーカイブ</div>
-      </div>
-
-      <div className="archive-columns">
-        <ArchiveColumn
-          title="ニュース"
-          headClass="split-col-head--news"
-          articles={news}
-          page={newsPage}
-          pageParamName="newsPage"
-          showBadge={false}
-        />
-        <ArchiveColumn
-          title="公式発表"
-          headClass="split-col-head--official"
-          articles={official}
-          page={officialPage}
-          pageParamName="officialPage"
-          showBadge
-        />
       </div>
 
       <Footer />
