@@ -5,6 +5,7 @@ export type SourceKey =
   | "deep"
   | "pancrase"
   | "one"
+  | "other"
   | "gonkaku"
   | "mmaplanet"
   | "efight";
@@ -24,7 +25,8 @@ export const SOURCES: Record<SourceKey, SourceDef> = {
   deep: { key: "deep", label: "DEEP", color: "#6B21A8", type: "official", url: "https://deep2001.com" },
   pancrase: { key: "pancrase", label: "パンクラス", color: "#C2410C", type: "official", url: "https://pancrase.co.jp" },
   // Display-only source kept for visual parity with mnews.html; not in the spec's scrape list.
-  one: { key: "one", label: "ONE FC", color: "#059669", type: "official", url: "https://www.onefc.com" },
+  one: { key: "one", label: "ONE", color: "#059669", type: "official", url: "https://www.onefc.com" },
+  other: { key: "other", label: "その他", color: "#999999", type: "media", url: "#" },
   gonkaku: { key: "gonkaku", label: "ゴング格闘技", color: "#555555", type: "media", url: "https://gonkaku.jp" },
   mmaplanet: { key: "mmaplanet", label: "MMAPLANET", color: "#888888", type: "media", url: "https://mmaplanet.jp" },
   efight: { key: "efight", label: "イーファイト", color: "#059669", type: "media", url: "https://efight.jp" },

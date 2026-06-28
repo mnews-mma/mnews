@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "mnews-dev",
-      "runtimeExecutable": "/Users/kainakishiyoshi/Desktop/mnews/.claude/run-dev.sh",
-      "runtimeArgs": [],
-      "port": 3000
+      "runtimeExecutable": "/opt/homebrew/bin/npm",
+      "runtimeArgs": ["run", "start"],
+      "autoPort": true
     }
   ]
 }

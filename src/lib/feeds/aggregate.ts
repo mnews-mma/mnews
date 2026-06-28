@@ -80,8 +80,7 @@ async function fetchMediaFeed(
   const items = format === "rss" ? parseRss(xml) : parseAtom(xml);
   const out: Article[] = [];
   items.forEach((it, i) => {
-    const org = classifyOrg(it.title);
-    if (!org) return; // not MMA-org-related: skip (keeps feed MMA-focused)
+    const org = classifyOrg(it.title) ?? "other";
     const a = toArticle(it, org, origin, idPrefix, i);
     if (a) out.push(a);
   });
@@ -97,8 +96,7 @@ async function fetchEfightMma(): Promise<Article[]> {
   const out: Article[] = [];
   matches.forEach(([, url, dateStr, rawTitle], i) => {
     const title = rawTitle.replace(/\s+/g, " ").trim();
-    const org = classifyOrg(title);
-    if (!org) return;
+    const org = classifyOrg(title) ?? "other";
     const y = dateStr.slice(0, 4);
     const m = dateStr.slice(4, 6);
     const d = dateStr.slice(6, 8);

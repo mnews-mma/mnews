@@ -59,30 +59,32 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
             試合履歴データは準備中です。
           </p>
         ) : (
-          <table className="history-table">
-            <thead>
-              <tr>
-                <th>日付</th>
-                <th>対戦相手</th>
-                <th>結果</th>
-                <th>方法</th>
-                <th>大会名</th>
-                <th>ラウンド</th>
-              </tr>
-            </thead>
-            <tbody>
-              {history.map((h, i) => (
-                <tr key={i}>
-                  <td>{h.date}</td>
-                  <td>{h.opponent}</td>
-                  <td className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</td>
-                  <td>{h.method}</td>
-                  <td>{h.event}</td>
-                  <td>{h.round}</td>
+          <div className="table-scroll">
+            <table className="history-table">
+              <thead>
+                <tr>
+                  <th>日付</th>
+                  <th>対戦相手</th>
+                  <th>結果</th>
+                  <th>方法</th>
+                  <th>大会名</th>
+                  <th>ラウンド</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {history.map((h, i) => (
+                  <tr key={i}>
+                    <td>{h.date}</td>
+                    <td>{h.opponent}</td>
+                    <td className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</td>
+                    <td>{h.method}</td>
+                    <td>{h.event}</td>
+                    <td>{h.round}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
       <Footer />

@@ -1,7 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { ARTICLES, Article, relativeTimeJa, isRecent } from "@/lib/articles";
-import { SOURCES, SourceKey } from "@/lib/sources";
+import { SOURCES } from "@/lib/sources";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
@@ -11,34 +11,23 @@ import { resolveFighters } from "@/lib/feeds/resolveFighter";
 export const dynamic = "force-dynamic";
 
 const TICKER_FALLBACK = [
-  "RIZIN・UFC・修斗・DEEP・ONE FC・パンクラスの最新ニュースを自動収集中…",
+  "RIZIN・UFC・修斗・DEEP・ONE・パンクラスの最新ニュースを自動収集中…",
 ];
 
-function buildMixMeter(articles: Article[]) {
-  const counts = new Map<SourceKey, number>();
-  for (const a of articles) counts.set(a.source, (counts.get(a.source) ?? 0) + 1);
-  const total = articles.length || 1;
-  return Array.from(counts.entries())
-    .map(([key, count]) => ({ key, pct: Math.round((count / total) * 100) }))
-    .sort((a, b) => b.pct - a.pct)
-    .slice(0, 5);
-}
-
-function buildSourceTally(articles: Article[]) {
-  const counts = new Map<string, number>();
-  for (const a of articles) counts.set(a.origin, (counts.get(a.origin) ?? 0) + 1);
-  return Array.from(counts.entries())
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 8);
-}
+// トップページの「主要選手 戦績まとめ」には載せない選手スラッグ。
+const HOMEPAGE_HIDDEN_FIGHTERS = new Set([
+  "izawa-seika",
+  "hagiwara-kyohei",
+  "wakamatsu-yuma",
+  "takeda-koji",
+]);
 
 export default async function HomePage() {
   const seedFallback = ARTICLES;
   let articles: Article[] = seedFallback;
   let live = false;
 
-  const [articlesResult, fighters] = await Promise.all([
+  const [articlesResult, allFighters] = await Promise.all([
     fetchAllArticles().catch(() => null),
     resolveFighters(FIGHTERS),
   ]);
@@ -46,6 +35,7 @@ export default async function HomePage() {
     articles = articlesResult.articles;
     live = true;
   }
+  const fighters = allFighters.filter((f) => !HOMEPAGE_HIDDEN_FIGHTERS.has(f.slug));
 
   const TICKER_ITEMS = live
     ? articles.slice(0, 6).map((a) => {
@@ -53,9 +43,6 @@ export default async function HomePage() {
         return `【${SOURCES[a.source].label}】${bare}`;
       })
     : TICKER_FALLBACK;
-  const TRENDING = articles.slice(5, 10).map((a) => a.title);
-  const MIX_METER = buildMixMeter(articles);
-  const SOURCE_TALLY = buildSourceTally(articles);
 
   const [hero, ...rest] = articles;
   const heroSubs = rest.slice(0, 3);
@@ -140,13 +127,13 @@ export default async function HomePage() {
           </div>
 
           <div className="card-grid">
-            {feedItems.map((a, i) => (
+            {feedItems.map((a) => (
               <a
                 key={a.id}
                 href={a.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`card ${a.source}-card${i === 0 ? " wide" : ""}`}
+                className={`card ${a.source}-card`}
               >
                 <div className="card-head">
                   <span className={`source-badge sb-${a.source}`}>{SOURCES[a.source].label}</span>
@@ -159,49 +146,6 @@ export default async function HomePage() {
                   <span className="card-time">{relativeTimeJa(a.publishedAt)}</span>
                 </div>
               </a>
-            ))}
-          </div>
-        </div>
-
-        {/* SIDEBAR */}
-        <div className="sidebar">
-          <div className="sb-block">
-            <div className="sb-title">MIX METER — 今日の配信比率</div>
-            <div className="mix-meter">
-              {MIX_METER.map((m) => (
-                <div className="mm-row" key={m.key}>
-                  <span className="mm-label">{SOURCES[m.key].label}</span>
-                  <div className="mm-track">
-                    <div
-                      className="mm-fill"
-                      style={{ width: `${m.pct}%`, background: SOURCES[m.key].color }}
-                    />
-                  </div>
-                  <span className="mm-val">{m.pct}%</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="sb-block">
-            <div className="sb-title">配信元メディア</div>
-            {SOURCE_TALLY.map((s) => (
-              <div className="source-item" key={s.name}>
-                <div className="si-color" style={{ background: "var(--dim)" }} />
-                <span className="si-name">{s.name}</span>
-                <span className="si-count">{s.count}記事</span>
-                <span className="si-arrow">›</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="sb-block">
-            <div className="sb-title">その他の最新トピック</div>
-            {TRENDING.map((t, i) => (
-              <div className="trend-item" key={i}>
-                <div className="trend-n">{i + 1}</div>
-                <div className="trend-title">{t}</div>
-              </div>
             ))}
           </div>
         </div>
