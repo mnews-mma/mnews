@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { getFighter } from "@/lib/fighters";
+import { getFighter, calcFighterRates } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
 
@@ -29,6 +29,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
 
   const fighter = await resolveFighter(seed);
   const { history, wins, losses, draws, nickname, birthPlace, age } = fighter;
+  const { winRate, finishRate } = calcFighterRates(fighter);
 
   return (
     <>
@@ -46,6 +47,8 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         {nickname && <div className="fighter-nickname">「{nickname}」</div>}
         <div className="page-sub">
           通算 {wins}-{losses}-{draws}
+          {winRate !== null && <span> ／ 勝率 {winRate}%</span>}
+          {finishRate !== null && <span> ／ フィニッシュ率 {finishRate}%</span>}
         </div>
         {(birthPlace || age) && (
           <div className="fighter-meta-row">

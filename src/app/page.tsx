@@ -4,7 +4,7 @@ import SplitFeed from "@/components/SplitFeed";
 import SocialSection from "@/components/SocialSection";
 import { ARTICLES, Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
-import { FIGHTERS } from "@/lib/fighters";
+import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
@@ -13,7 +13,7 @@ import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 // データ自体は fetch() の revalidate 設定により30分キャッシュされる。
 export const dynamic = "force-dynamic";
 
-const OFFICIAL_ORGS = new Set(["rizin", "deep"]);
+const OFFICIAL_ORGS = new Set(["rizin", "deep", "shooto", "pancrase"]);
 
 export default async function HomePage() {
   let articles: Article[] = ARTICLES;
@@ -57,21 +57,28 @@ export default async function HomePage() {
           </a>
         </div>
         <div className="fighter-grid">
-          {fighters.map((f) => (
-            <a key={f.slug} href={`/fighters/${f.slug}`} className="fighter-card" style={{ borderLeftColor: SOURCES[f.org].color }}>
-              <div className="fighter-org" style={{ color: SOURCES[f.org].color }}>
-                {SOURCES[f.org].label} / {f.weightClass}
-              </div>
-              <div className="fighter-name">{f.nameJa}</div>
-              {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
-              <div className="fighter-record">
-                {f.wins}-{f.losses}-{f.draws}
-              </div>
-              <div className="fighter-breakdown">
-                KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
-              </div>
-            </a>
-          ))}
+          {fighters.map((f) => {
+            const { winRate, finishRate } = calcFighterRates(f);
+            return (
+              <a key={f.slug} href={`/fighters/${f.slug}`} className="fighter-card" style={{ borderLeftColor: SOURCES[f.org].color }}>
+                <div className="fighter-org" style={{ color: SOURCES[f.org].color }}>
+                  {SOURCES[f.org].label} / {f.weightClass}
+                </div>
+                <div className="fighter-name">{f.nameJa}</div>
+                {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
+                <div className="fighter-record">
+                  {f.wins}-{f.losses}-{f.draws}
+                </div>
+                <div className="fighter-breakdown">
+                  KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
+                </div>
+                <div className="fighter-rates">
+                  {winRate !== null && <span>勝率 {winRate}%</span>}
+                  {finishRate !== null && <span>フィニッシュ率 {finishRate}%</span>}
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
 

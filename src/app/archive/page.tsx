@@ -11,7 +11,7 @@ export const metadata = {
 
 const ARCHIVE_URL = "https://raw.githubusercontent.com/mnews-mma/mnews/main/data/archive.json";
 const PAGE_SIZE = 20;
-const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep"]);
+const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep", "shooto", "pancrase"]);
 
 async function fetchArchive(): Promise<Article[]> {
   try {

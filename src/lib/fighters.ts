@@ -169,3 +169,15 @@ export const FIGHTERS: Fighter[] = [
 export function getFighter(slug: string): Fighter | undefined {
   return FIGHTERS.find((f) => f.slug === slug);
 }
+
+export interface FighterRates {
+  winRate: number | null; // 勝率（%） wins / (wins+losses+draws)
+  finishRate: number | null; // フィニッシュ率（%） (KO+一本) / wins
+}
+
+export function calcFighterRates(f: Pick<Fighter, "wins" | "losses" | "draws" | "ko" | "sub">): FighterRates {
+  const total = f.wins + f.losses + f.draws;
+  const winRate = total > 0 ? Math.round((f.wins / total) * 100) : null;
+  const finishRate = f.wins > 0 ? Math.round(((f.ko + f.sub) / f.wins) * 100) : null;
+  return { winRate, finishRate };
+}

@@ -92,6 +92,48 @@ async function fetchMediaFeed(
   return out;
 }
 
+// パンクラス公式サイトのリリース一覧（公式ブログは2023年で更新停止していた
+// ため、こちらの月別お知らせページを使う）。"<h3>6月</h3><ul><li>06.28：
+// <a href="...">タイトル</a></li>...</ul>" という構造で、新しい月から降順
+// に並ぶ（年表記は無いので、月が前のループより大きくなったタイミングで
+// 年をひとつ遡る）。
+async function fetchPancraseReleases(): Promise<Article[]> {
+  const html = await fetchText("https://www.pancrase.co.jp/rls/index.html");
+  if (!html) return [];
+
+  const out: Article[] = [];
+  let year = new Date().getFullYear();
+  let prevMonth = 13; // 1月始まりループの初回に年を遡らせないための番兵
+
+  const monthBlocks = Array.from(html.matchAll(/<h3>(\d{1,2})月<\/h3>\s*<ul>([\s\S]*?)<\/ul>/g));
+  let i = 0;
+  for (const [, monthStr, listHtml] of monthBlocks) {
+    const month = Number(monthStr);
+    if (month > prevMonth) year -= 1;
+    prevMonth = month;
+
+    const items = Array.from(listHtml.matchAll(/<li>(\d{2})\.(\d{2})[：:]<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g));
+    for (const [, , dd, href, rawTitle] of items) {
+      let url: string;
+      try {
+        url = new URL(href, "https://www.pancrase.co.jp/rls/index.html").toString();
+      } catch {
+        continue;
+      }
+      out.push({
+        id: `pancrase-${i++}`,
+        source: "pancrase",
+        title: rawTitle.trim(),
+        origin: "パンクラス公式",
+        url,
+        publishedAt: toIso(`${year}-${String(month).padStart(2, "0")}-${dd}`),
+      });
+    }
+  }
+
+  return out;
+}
+
 async function fetchEfightMma(): Promise<Article[]> {
   const html = await fetchText("https://efight.jp/genre?tag=mma");
   if (!html) return [];
@@ -129,6 +171,8 @@ export async function fetchRawArticles(): Promise<FeedResult> {
   const tasks: Promise<Article[]>[] = [
     fetchOfficialFeed("https://fc.rizinff.com/blogs/news.atom", "atom", "rizin", "RIZIN公式", "rizin"),
     fetchOfficialFeed("https://www.deep2001.com/feed", "rss", "deep", "DEEP公式", "deep"),
+    fetchOfficialFeed("https://j-shooto.com/category/professional/feed/", "rss", "shooto", "日本修斗協会公式", "shooto"),
+    fetchPancraseReleases(),
     fetchMediaFeed("https://gonkaku.jp/feed", "rss", "ゴング格闘技", "gonkaku"),
     fetchMediaFeed("https://mmaplanet.jp/feed", "rss", "MMAPLANET", "mmaplanet"),
     fetchEfightMma(),
@@ -164,7 +208,7 @@ export async function fetchAllArticles(): Promise<FeedResult> {
   const recent = articles.filter((a) => new Date(a.publishedAt).getTime() >= cutoff);
 
   // バケツ（公式発表 / ニュース）ごとに上限を適用
-  const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep"]);
+  const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep", "shooto", "pancrase"]);
   const official = recent.filter((a) => OFFICIAL_ORGS.has(a.source)).slice(0, MAX_PER_BUCKET);
   const news = recent.filter((a) => !OFFICIAL_ORGS.has(a.source)).slice(0, MAX_PER_BUCKET);
   const limited = [...official, ...news].sort(
