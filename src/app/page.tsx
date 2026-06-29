@@ -15,12 +15,27 @@ export const dynamic = "force-dynamic";
 
 const OFFICIAL_ORGS = new Set(["rizin", "deep", "shooto", "pancrase"]);
 
+// トップページの「主要選手 戦績まとめ」には元からの8名のみ表示する。
+// それ以外（SEO目的で追加した選手）は /fighters 一覧と詳細ページのみ。
+const HOMEPAGE_FIGHTER_SLUGS = new Set([
+  "taira-tatsuro",
+  "nakamura-rinya",
+  "horiguchi-kyoji",
+  "asakura-kai",
+  "hiramoto-ren",
+  "asakura-mikuru",
+  "koike-kleber",
+  "akimoto-kyoma",
+]);
+
 export default async function HomePage() {
   let articles: Article[] = ARTICLES;
 
+  const homepageFighters = FIGHTERS.filter((f) => HOMEPAGE_FIGHTER_SLUGS.has(f.slug));
+
   const [articlesResult, fighters, videos] = await Promise.all([
     fetchAllArticles().catch(() => null),
-    resolveFighters(FIGHTERS),
+    resolveFighters(homepageFighters),
     fetchLatestOfficialVideos().catch(() => []),
   ]);
   if (articlesResult && articlesResult.articles.length >= 6) {
