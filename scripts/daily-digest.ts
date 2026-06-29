@@ -40,8 +40,6 @@ function buildCopyText(articles: Article[]): string {
   return [
     "【昨日のMMAニュースピックアップ🥊】",
     "",
-    "ニュース",
-    "",
     list,
     "",
     "Mニュースで全件見る",
