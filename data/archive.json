@@ -1,5 +1,32 @@
 [
   {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】緊急参戦“怪物くん”鈴木博昭の対戦相手が決定、萩原京平の後輩でRIZIN2連勝の宮川日向",
+    "summary": "2025年6月25日（木）13時からライブ配信された、RIZIN公式YouTubeチャンネルの『榊原社長に呼び出されました』に&ldquo;怪物くん&rdquo;鈴木博昭（BELLWOOD FIGH…",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24181",
+    "publishedAt": "2026-06-29T03:38:00.000Z"
+  },
+  {
+    "id": "shooto-0",
+    "source": "shooto",
+    "title": "プロ修斗 梅木勇徳、打威致がクラスA昇格",
+    "summary": "プロ修斗 小生 隆弘、ヒカル、デソウザ・マルセルがクラスA昇格 下記の選手を2026年6月29日付けでクラスA昇格とします。 ■クラスA昇格 ［リングネーム］梅木勇徳 ［階 級］ストロー級 ［所 属…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/28/post-50829/",
+    "publishedAt": "2026-06-28T09:56:12.000Z"
+  },
+  {
+    "id": "shooto-1",
+    "source": "shooto",
+    "title": "プロ修斗6月28日福岡大会『Lemino修斗TORAO』試合結果",
+    "summary": "プロ修斗6月28日福岡大会『Lemino修斗TORAO』試合結果 ［大会名］NTT DOCOMO PRESENTSプロフェッショナル修斗公式戦福岡大会「Lemino修斗TORAO」 ［開催日］202…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/28/post-50832/",
+    "publishedAt": "2026-06-28T09:51:30.000Z"
+  },
+  {
     "id": "mmaplanet-1",
     "source": "other",
     "title": "【Gladiator035】15分間真っ向勝負のMMA。ヅッキーニョスが小森との大熱戦に判定勝利して悲願の王座奪取",
@@ -54,6 +81,14 @@
     "publishedAt": "2026-06-28T03:05:51.000Z"
   },
   {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE 363：大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2026/0628.html",
+    "publishedAt": "2026-06-28T00:00:00.000Z"
+  },
+  {
     "id": "gonkaku-7",
     "source": "other",
     "title": "【PFL】AJ・マッキーが10戦無敗サラマット・イスブラエフに初黒星つける完勝！ カモーシェがアラウジョに一本勝ち、シャブリーがデイヴィス下す。ザビッド実弟ハサン・マゴメドシャリポフが肩固め！ ビショップがリプスキを腕十字に極める",
@@ -99,6 +134,15 @@
     "publishedAt": "2026-06-27T10:51:31.000Z"
   },
   {
+    "id": "shooto-2",
+    "source": "shooto",
+    "title": "プロ修斗6月28日福岡大会『Lemino修斗TORAO』計量結果",
+    "summary": "プロ修斗6月28日福岡大会『Lemino修斗TORAO』計量結果 ［大会名］NTT DOCOMO PRESENTSプロフェッショナル修斗公式戦福岡大会「Lemino修斗TORAO」 ［認 定］インタ…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/27/post-50818/",
+    "publishedAt": "2026-06-27T08:40:06.000Z"
+  },
+  {
     "id": "gonkaku-17",
     "source": "other",
     "title": "【PANCRASE】フェザー級暫定王座戦ラジャボフ「ベスト尽くす」×木下尚祐「このキャリア終わってもいいと思って準備してきた」、粕谷優介「おじさんの強さを」×神谷大智「若い力で」、谷村vs.眞藤、氏原vs.寺岡、亀井vs.畠山、武者vs.元プロボクサー萱沼も＝前日計量",
@@ -108,6 +152,14 @@
     "publishedAt": "2026-06-27T06:54:04.000Z"
   },
   {
+    "id": "pancrase-1",
+    "source": "pancrase",
+    "title": "PANCRASE 363：試合中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/index.html#onomaekawa",
+    "publishedAt": "2026-06-27T00:00:00.000Z"
+  },
+  {
     "id": "deep-1",
     "source": "deep",
     "title": "明日開催のDAYSのイベントは台風のため中止に!",
@@ -115,6 +167,22 @@
     "origin": "DEEP公式",
     "url": "https://www.deep2001.com/%e6%98%8e%e6%97%a5%e9%96%8b%e5%82%ac%e3%81%aedays%e3%81%ae%e3%82%a4%e3%83%99%e3%83%b3%e3%83%88%e3%81%af%e5%8f%b0%e9%a2%a8%e3%81%ae%e3%81%9f%e3%82%81%e4%b8%ad%e6%ad%a2%e3%81%ab/",
     "publishedAt": "2026-06-26T06:24:38.000Z"
+  },
+  {
+    "id": "pancrase-2",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.12：8.9品川 決定カード",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood12/index.html",
+    "publishedAt": "2026-06-26T00:00:00.000Z"
+  },
+  {
+    "id": "efight-1",
+    "source": "other",
+    "title": "【UFC】前王者パントージャ、バキバキに仕上げすぐ試合できそう！｢チャンピオンが帰ってきた｣",
+    "origin": "イーファイト",
+    "url": "https://efight.jp/news-20260626_1721292",
+    "publishedAt": "2026-06-26T00:00:00.000Z"
   },
   {
     "id": "rizin-0",
@@ -149,6 +217,14 @@
     "origin": "RIZIN公式",
     "url": "https://fc.rizinff.com/blogs/news/rizinlotkekka_vol82",
     "publishedAt": "2026-06-24T02:30:05.000Z"
+  },
+  {
+    "id": "pancrase-3",
+    "source": "pancrase",
+    "title": "PANCRASE 364/PANCRASE BLOOD.11：追加対戦カード＆変更カード",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase364/index.html",
+    "publishedAt": "2026-06-24T00:00:00.000Z"
   },
   {
     "id": "rizin-2",
@@ -192,6 +268,31 @@
     "publishedAt": "2026-06-23T00:00:00.000Z"
   },
   {
+    "id": "pancrase-4",
+    "source": "pancrase",
+    "title": "PANCRASE 363：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/index.html",
+    "publishedAt": "2026-06-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-5",
+    "source": "pancrase",
+    "title": "PANCRASE 363：木下尚祐選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/interview_kinoshita.html",
+    "publishedAt": "2026-06-23T00:00:00.000Z"
+  },
+  {
+    "id": "shooto-3",
+    "source": "shooto",
+    "title": "プロ修斗 8月30『越後風神祭り17』対戦カード②",
+    "summary": "プロ修斗 8月30『越後風神祭り17』対戦カード② ［大会名］プロフェッショナル修斗公式戦「越後風神祭り17」 ［開催日］2026年８月30日（日） ◆第1部 10:30開場 11:00開始（越後夏…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/23/post-50761/",
+    "publishedAt": "2026-06-22T15:33:04.000Z"
+  },
+  {
     "id": "deep-2",
     "source": "deep",
     "title": "DEEP 132 IMPACTの大会全体トレーラーが完成!",
@@ -210,6 +311,14 @@
     "publishedAt": "2026-06-22T10:46:49.000Z"
   },
   {
+    "id": "pancrase-7",
+    "source": "pancrase",
+    "title": "PANCRASE 363：オタベク・ラジャボフ選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/interview_otabek.html",
+    "publishedAt": "2026-06-22T00:00:00.000Z"
+  },
+  {
     "id": "deep-4",
     "source": "deep",
     "title": "DEEP西日本バンタム級GP１回戦、栗山葵が国際戦に挑むDEEP OSAKA IMPACT 2026 3rd ROUNDの試合結果。",
@@ -217,6 +326,42 @@
     "origin": "DEEP公式",
     "url": "https://www.deep2001.com/deep%e8%a5%bf%e6%97%a5%e6%9c%ac%e3%83%90%e3%83%b3%e3%82%bf%e3%83%a0%e7%b4%9agp%ef%bc%91%e5%9b%9e%e6%88%a6%e3%80%81%e6%a0%97%e5%b1%b1%e8%91%b5%e3%81%8c%e5%9b%bd%e9%9a%9b%e6%88%a6%e3%81%ab%e6%8c%91/",
     "publishedAt": "2026-06-21T12:05:50.000Z"
+  },
+  {
+    "id": "shooto-4",
+    "source": "shooto",
+    "title": "プロ修斗9月13日岐阜大会『TORAO40』対戦カード①",
+    "summary": "プロ修斗9月13日岐阜大会『TORAO40』対戦カード① ［大会名］プロフェッショナル修斗公式戦岐阜大会「TORAO40」 ［認 定］インターナショナル修斗コミッション ［主 催］SECONDOUT…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/21/post-48600/",
+    "publishedAt": "2026-06-21T00:35:47.000Z"
+  },
+  {
+    "id": "shooto-5",
+    "source": "shooto",
+    "title": "プロ修斗7月12日広島大会『TORAO39』対戦カード③",
+    "summary": "プロ修斗7月12日広島大会『TORAO39』対戦カード③ ［大会名］プロフェッショナル修斗公式戦広島大会「TORAO39」 ［開催日］2026年7月12日（日） ［開 場/開 始］14:30/15:…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/21/post-48597/",
+    "publishedAt": "2026-06-21T00:30:44.000Z"
+  },
+  {
+    "id": "shooto-6",
+    "source": "shooto",
+    "title": "プロ修斗6月28日福岡大会『Lemino修斗TORAO』計量通知",
+    "summary": "プロ修斗6月28日 セコンドアウト主催福岡大会『Lemino修斗TORAO』計量通知 出場選手ならびに関係各位 6月28日（日）福岡県福岡市/アクロス福岡イベントホールにて行われるプロフェッショナル…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/21/post-48575/",
+    "publishedAt": "2026-06-21T00:05:23.000Z"
+  },
+  {
+    "id": "shooto-7",
+    "source": "shooto",
+    "title": "プロ修斗6月28日福岡大会『Lemino修斗TORAO』試合順決定",
+    "summary": "プロ修斗6月28日福岡大会『Lemino修斗TORAO』試合順決定 ［大会名］NTT DOCOMO PRESENTSプロフェッショナル修斗公式戦福岡大会「Lemino修斗TORAO」 ［認 定］イン…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/21/post-48603/",
+    "publishedAt": "2026-06-21T00:00:23.000Z"
   },
   {
     "id": "efight-22",
@@ -232,6 +377,14 @@
     "title": "【MMA】「何が起きた！？」わずか4秒でKO、オーバーハンド一撃にファン騒然",
     "origin": "イーファイト",
     "url": "https://efight.jp/news-20260621_1720148",
+    "publishedAt": "2026-06-21T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-8",
+    "source": "pancrase",
+    "title": "PANCRASE 363：宮本 樹選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/interview_miyamoto.html",
     "publishedAt": "2026-06-21T00:00:00.000Z"
   },
   {
@@ -293,6 +446,14 @@
     "publishedAt": "2026-06-20T00:00:00.000Z"
   },
   {
+    "id": "pancrase-9",
+    "source": "pancrase",
+    "title": "PANCRASE 363：下山楓人選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/interview_shimoyama.html",
+    "publishedAt": "2026-06-20T00:00:00.000Z"
+  },
+  {
     "id": "efight-44",
     "source": "other",
     "title": "18歳・現役JKファイターNOEL、RIZIN会見で見せた身体に驚きの声！本人もマッスルポーズ",
@@ -317,6 +478,22 @@
     "publishedAt": "2026-06-19T00:00:00.000Z"
   },
   {
+    "id": "pancrase-10",
+    "source": "pancrase",
+    "title": "PANCRASE362 チャンピオンシップ アンチ・ドーピング検査結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/20260531test.html",
+    "publishedAt": "2026-06-19T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-11",
+    "source": "pancrase",
+    "title": "PANCRASE 363：寺岡拓永選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/interview_teraoka.html",
+    "publishedAt": "2026-06-19T00:00:00.000Z"
+  },
+  {
     "id": "efight-51",
     "source": "other",
     "title": "【テレビ・配信】6.21『UFC』堀口恭司vsケイプほか生中継・放送・配信情報",
@@ -338,6 +515,14 @@
     "title": "【UFC】トプリアが敗北し顔面崩壊の入院！相手のグローブには異物！？話題の写真も",
     "origin": "イーファイト",
     "url": "https://efight.jp/news-20260618_1719407",
+    "publishedAt": "2026-06-18T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-12",
+    "source": "pancrase",
+    "title": "PANCRASE 363：亀井晨佑選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/interview_kamei.html",
     "publishedAt": "2026-06-18T00:00:00.000Z"
   },
   {
@@ -366,6 +551,14 @@
     "publishedAt": "2026-06-17T00:00:00.000Z"
   },
   {
+    "id": "pancrase-13",
+    "source": "pancrase",
+    "title": "PANCRASE 363：谷村泰嘉選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/interview_tanimura.html",
+    "publishedAt": "2026-06-17T00:00:00.000Z"
+  },
+  {
     "id": "deep-8",
     "source": "deep",
     "title": "DEEP西日本バンタム級GP開催戦に栗山葵が国際戦に挑むDEEP OSAKA IMPACT 2026 3rd ROUNDはDEEPメンバーシップで配信。前日計量の模様はユーチューブで生配信!!",
@@ -384,6 +577,15 @@
     "publishedAt": "2026-06-16T09:00:03.000Z"
   },
   {
+    "id": "shooto-8",
+    "source": "shooto",
+    "title": "プロ修斗7月13日後楽園大会『Lemino修斗.7』対戦カード②",
+    "summary": "プロ修斗7月13日後楽園大会『Lemino修斗.7』対戦カード② ［大会名］【NTT DOCOMO presents】 プロフェッショナル修斗公式戦後楽園大会 『Lemino修斗.7』 ［日時］20…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/16/post-48568/",
+    "publishedAt": "2026-06-16T07:27:26.000Z"
+  },
+  {
     "id": "efight-65",
     "source": "other",
     "title": "UFC人気ラウンドガール、グラマーにホワイトハウス大会に登場「この夜の最優秀KO賞はあなたたちだ」",
@@ -398,6 +600,23 @@
     "origin": "イーファイト",
     "url": "https://efight.jp/news-20260616_1719081",
     "publishedAt": "2026-06-16T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-14",
+    "source": "pancrase",
+    "title": "PANCRASE 363：粕谷優介選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/interview_kasuya.html",
+    "publishedAt": "2026-06-16T00:00:00.000Z"
+  },
+  {
+    "id": "shooto-9",
+    "source": "shooto",
+    "title": "プロ修斗7月20日後楽園ホール大会『PROFESSIONAL SHOOTO 2026 Vol.5』対戦カード②",
+    "summary": "プロ修斗7月20日後楽園ホール大会『PROFESSIONAL SHOOTO 2026 Vol.5』対戦カード② サステイン主催プロフェッショナル修斗公式戦は“聖地”後楽園ホールでは約2年ぶりに復活す…",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/06/15/post-48607/",
+    "publishedAt": "2026-06-14T17:25:04.000Z"
   },
   {
     "id": "deep-9",
@@ -436,6 +655,14 @@
     "publishedAt": "2026-06-11T10:00:05.000Z"
   },
   {
+    "id": "pancrase-16",
+    "source": "pancrase",
+    "title": "最新ランキング発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/ranking.html",
+    "publishedAt": "2026-06-04T00:00:00.000Z"
+  },
+  {
     "id": "rizin-6",
     "source": "rizin",
     "title": "【当選者発表】『RIZIN LANDMARK 14 in SENDAI』ファンクラブイベント！",
@@ -443,6 +670,30 @@
     "origin": "RIZIN公式",
     "url": "https://fc.rizinff.com/blogs/news/2026060506_tousenrist",
     "publishedAt": "2026-06-03T10:40:57.000Z"
+  },
+  {
+    "id": "pancrase-17",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 5.31 PANCRASE 362結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0531win.html",
+    "publishedAt": "2026-06-03T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-18",
+    "source": "pancrase",
+    "title": "PANCRASE 362結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2026/0531.html",
+    "publishedAt": "2026-05-31T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-19",
+    "source": "pancrase",
+    "title": "PANCRASE 362：キャッチウェイト戦へ変更",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase362/index.html#pre",
+    "publishedAt": "2026-05-30T00:00:00.000Z"
   },
   {
     "id": "rizin-7",
@@ -461,6 +712,38 @@
     "origin": "RIZIN公式",
     "url": "https://fc.rizinff.com/blogs/news/goods_202605",
     "publishedAt": "2026-05-26T05:00:06.000Z"
+  },
+  {
+    "id": "pancrase-20",
+    "source": "pancrase",
+    "title": "PANCRASE 362：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase362/index.html",
+    "publishedAt": "2026-05-26T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-21",
+    "source": "pancrase",
+    "title": "PANCRASE 362：時田隆成選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase362/interview_tokida.html",
+    "publishedAt": "2026-05-26T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-23",
+    "source": "pancrase",
+    "title": "PANCRASE 362：岸田宙大選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase362/interview_kishida.html",
+    "publishedAt": "2026-05-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-24",
+    "source": "pancrase",
+    "title": "PANCRASE 362：濱田 巧選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase362/interview_hamada.html",
+    "publishedAt": "2026-05-22T00:00:00.000Z"
   },
   {
     "id": "rizin-9",
@@ -490,6 +773,22 @@
     "publishedAt": "2026-05-15T09:00:05.000Z"
   },
   {
+    "id": "pancrase-27",
+    "source": "pancrase",
+    "title": "PANCRASE 362：矢澤 諒選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase362/interview_yazawa.html",
+    "publishedAt": "2026-05-14T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-28",
+    "source": "pancrase",
+    "title": "PANCRASE 362：三宅輝砂選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase362/interview_miyake.html",
+    "publishedAt": "2026-05-13T00:00:00.000Z"
+  },
+  {
     "id": "rizin-12",
     "source": "rizin",
     "title": "【当選者発表】『RIZIN.53』ファンクラブイベント",
@@ -497,6 +796,22 @@
     "origin": "RIZIN公式",
     "url": "https://fc.rizinff.com/blogs/news/2026050910_tousenrist",
     "publishedAt": "2026-05-07T09:14:01.000Z"
+  },
+  {
+    "id": "pancrase-32",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 5.04 PANCRASE BLOOD.10結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0504win.html",
+    "publishedAt": "2026-05-07T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-33",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.10：試合中止、キャッチウェイト戦へ変更",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood10/index.html",
+    "publishedAt": "2026-05-03T00:00:00.000Z"
   },
   {
     "id": "rizin-13",
@@ -544,6 +859,14 @@
     "publishedAt": "2026-04-16T09:45:02.000Z"
   },
   {
+    "id": "pancrase-37",
+    "source": "pancrase",
+    "title": "アマチュアパンクラスMMA2026年開催日程のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/schedule_amateur.html",
+    "publishedAt": "2026-04-16T00:00:00.000Z"
+  },
+  {
     "id": "rizin-18",
     "source": "rizin",
     "title": "5/9(土)開催「RIZIN.53 前夜祭」ファンクラブ参加者大募集！【FC特別価格】",
@@ -560,6 +883,14 @@
     "origin": "RIZIN公式",
     "url": "https://fc.rizinff.com/blogs/news/pamphletcredit_rizin53",
     "publishedAt": "2026-04-14T11:00:06.000Z"
+  },
+  {
+    "id": "pancrase-38",
+    "source": "pancrase",
+    "title": "PANCRASE 2026年スケジュール",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/schedule.html",
+    "publishedAt": "2026-04-14T00:00:00.000Z"
   },
   {
     "id": "rizin-20",
@@ -580,6 +911,14 @@
     "publishedAt": "2026-04-06T09:00:03.000Z"
   },
   {
+    "id": "pancrase-40",
+    "source": "pancrase",
+    "title": "PANCRASE361 チャンピオンシップ アンチ・ドーピング検査結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/20260314test.html",
+    "publishedAt": "2026-04-04T00:00:00.000Z"
+  },
+  {
     "id": "rizin-22",
     "source": "rizin",
     "title": "4/5(日)開催「福岡大会までもう待てない!! RIZIN緊急ファンミーティング supported by ジェリービーンズスタイル」ファンクラブ参加者大募集！",
@@ -596,6 +935,14 @@
     "origin": "RIZIN公式",
     "url": "https://fc.rizinff.com/blogs/news/20260402_tousenrist",
     "publishedAt": "2026-03-26T09:39:44.000Z"
+  },
+  {
+    "id": "pancrase-41",
+    "source": "pancrase",
+    "title": "PANCRASE361横浜武道館大会 第10試合 内藤由良 vs Gabriel Levan 第2R 採点見解について",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0314_10.html",
+    "publishedAt": "2026-03-21T00:00:00.000Z"
   },
   {
     "id": "rizin-24",
@@ -616,6 +963,30 @@
     "publishedAt": "2026-03-17T03:00:05.000Z"
   },
   {
+    "id": "pancrase-44",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 3.14 PANCRASE 361結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0314win.html",
+    "publishedAt": "2026-03-17T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-45",
+    "source": "pancrase",
+    "title": "PANCRASE 361大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2026/0314.html",
+    "publishedAt": "2026-03-14T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-46",
+    "source": "pancrase",
+    "title": "所属選手に関する処分およびSNS等での誹謗中傷への対応について",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0314.html",
+    "publishedAt": "2026-03-14T00:00:00.000Z"
+  },
+  {
     "id": "rizin-26",
     "source": "rizin",
     "title": "【超強者限定】3月定期便のご案内「超強者 PCバッグ」「RIZIN.52 選手カード」「RIZIN CARD COLLECTION × 強者ノ巣 EXCLUSIVE SERIES 限定ライコレカード」をお届け！",
@@ -625,6 +996,14 @@
     "publishedAt": "2026-03-13T10:00:04.000Z"
   },
   {
+    "id": "pancrase-47",
+    "source": "pancrase",
+    "title": "PANCRASE 361：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase361/index.html",
+    "publishedAt": "2026-03-13T00:00:00.000Z"
+  },
+  {
     "id": "rizin-27",
     "source": "rizin",
     "title": "「Rukka presents RIZIN LANDMARK 13 in FUKUOKA前夜祭」ファンクラブ参加者大募集！【FC特別価格】",
@@ -632,6 +1011,30 @@
     "origin": "RIZIN公式",
     "url": "https://fc.rizinff.com/blogs/news/260411",
     "publishedAt": "2026-03-12T09:00:00.000Z"
+  },
+  {
+    "id": "pancrase-49",
+    "source": "pancrase",
+    "title": "外国人選手およびマネージャーの皆様へ在留資格および滞在管理に関する重要なお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0311.html",
+    "publishedAt": "2026-03-11T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-50",
+    "source": "pancrase",
+    "title": "PANCRASE Issues Notice Regarding Visa Status and Stay Compliance for Foreign Athletes and Managers",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0311.pdf",
+    "publishedAt": "2026-03-11T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-51",
+    "source": "pancrase",
+    "title": "濱田巧選手に関する処分について",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0310.html",
+    "publishedAt": "2026-03-10T00:00:00.000Z"
   },
   {
     "id": "rizin-28",
@@ -650,5 +1053,1181 @@
     "origin": "RIZIN公式",
     "url": "https://fc.rizinff.com/blogs/news/event_26030607",
     "publishedAt": "2026-02-27T07:00:13.000Z"
+  },
+  {
+    "id": "pancrase-54",
+    "source": "pancrase",
+    "title": "【追記・補足のご案内】PANCRASE、大会配信がUFC Fight Passで復活！2026年2月11日大会より全世界へライブ配信決定",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0210ufcfightpass.html",
+    "publishedAt": "2026-02-16T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-56",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 2.11 PANCRASE BLOOD.9結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0211win.html",
+    "publishedAt": "2026-02-14T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-58",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.9：試合中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood9/index.html#card",
+    "publishedAt": "2026-02-11T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-60",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.9：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood9/index.html",
+    "publishedAt": "2026-02-10T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-66",
+    "source": "pancrase",
+    "title": "PANCRASE360 チャンピオンシップ アンチ・ドーピング検査結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/20251221test.html",
+    "publishedAt": "2026-01-26T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-72",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 12.21 PANCRASE360結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/1221win.html",
+    "publishedAt": "2025-12-24T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-73",
+    "source": "pancrase",
+    "title": "パンクラス体制変更のお知らせ／PANCRASE Management Structure Update",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/1223pancrase.html",
+    "publishedAt": "2025-12-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-74",
+    "source": "pancrase",
+    "title": "PANCRASE 360：試合結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/1221.html",
+    "publishedAt": "2025-12-21T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-75",
+    "source": "pancrase",
+    "title": "PANCRASE 360：松井斗輝 vs 荒田大輝 中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase360/index.html#card5",
+    "publishedAt": "2025-12-20T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-76",
+    "source": "pancrase",
+    "title": "PANCRASE 360試合順決定/当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase360/index.html",
+    "publishedAt": "2025-12-15T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-77",
+    "source": "pancrase",
+    "title": "PANCRASE 360：PANCRASE x DEVILOCK コラボレーション商品 発売決定‼",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase360/index.html#devilock",
+    "publishedAt": "2025-12-14T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-79",
+    "source": "pancrase",
+    "title": "PANCRASE358 チャンピオンシップ アンチ・ドーピング検査結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/1109test.html",
+    "publishedAt": "2025-12-08T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-85",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 11.09 PANCRASE358&359結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/1109win.html",
+    "publishedAt": "2025-11-13T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-86",
+    "source": "pancrase",
+    "title": "PANCRASE 358結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/1109d.html",
+    "publishedAt": "2025-11-09T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-87",
+    "source": "pancrase",
+    "title": "PANCRASE 359結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/1109n.html",
+    "publishedAt": "2025-11-09T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-88",
+    "source": "pancrase",
+    "title": "PANCRASE 358：試合順決定、当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase358/index.html",
+    "publishedAt": "2025-11-04T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-89",
+    "source": "pancrase",
+    "title": "PANCRASE 359：試合順決定、当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase359/index.html",
+    "publishedAt": "2025-11-04T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-90",
+    "source": "pancrase",
+    "title": "第32回(2026年)ネオブラッド・トーナメント募集要項　パンクラス・プロライセンスを保持していない方",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/neoblood_form2.html",
+    "publishedAt": "2025-11-01T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-92",
+    "source": "pancrase",
+    "title": "第32回(2026年)ネオブラッド・トーナメント開催",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/neoblood_form.html",
+    "publishedAt": "2025-10-28T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-98",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 9.23 PANCRASE356&357結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0923win.html",
+    "publishedAt": "2025-09-26T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-99",
+    "source": "pancrase",
+    "title": "PANCRASE 357結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0923n.html",
+    "publishedAt": "2025-09-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-100",
+    "source": "pancrase",
+    "title": "PANCRASE 356結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0923d.html",
+    "publishedAt": "2025-09-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-101",
+    "source": "pancrase",
+    "title": "PANCRASE 356：谷村 vs 水戸邉 中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase356/index.html#card",
+    "publishedAt": "2025-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-103",
+    "source": "pancrase",
+    "title": "PANCRASE 357：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase357/index.html",
+    "publishedAt": "2025-09-17T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-104",
+    "source": "pancrase",
+    "title": "PANCRASE 356：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase356/index.html",
+    "publishedAt": "2025-09-17T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-107",
+    "source": "pancrase",
+    "title": "PANCRASE 358/359：フライ級チャンピオンシップ開催！",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase358-359/index.html",
+    "publishedAt": "2025-09-09T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-108",
+    "source": "pancrase",
+    "title": "ストロー級王者・黒澤亮平 ONEと複数試合契約に伴い王座返上",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0906.html",
+    "publishedAt": "2025-09-06T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-114",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 8.10 PANCRASE BLOOD.8結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0810win.html",
+    "publishedAt": "2025-08-13T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-115",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.8結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0810.html",
+    "publishedAt": "2025-08-10T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-116",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.8：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancraseblood8/index.html",
+    "publishedAt": "2025-08-06T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-117",
+    "source": "pancrase",
+    "title": "PANCRASE 356/357：女子ストロー級チャンピオンシップ開催決定！",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase356-357/index.html",
+    "publishedAt": "2025-08-05T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-120",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 7.27 PANCRASE 355結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0727win.html",
+    "publishedAt": "2025-07-30T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-121",
+    "source": "pancrase",
+    "title": "PANCRASE355大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0727.html",
+    "publishedAt": "2025-07-27T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-122",
+    "source": "pancrase",
+    "title": "PANCRASE355：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase355/index.html",
+    "publishedAt": "2025-07-22T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-126",
+    "source": "pancrase",
+    "title": "PANCRASE354 チャンピオンシップ アンチ・ドーピング検査結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0624test.html",
+    "publishedAt": "2025-06-24T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-132",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 6.01 PANCRASE 354結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0601win.html",
+    "publishedAt": "2025-06-05T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-133",
+    "source": "pancrase",
+    "title": "PANCRASE354大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0601.html",
+    "publishedAt": "2025-06-01T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-134",
+    "source": "pancrase",
+    "title": "PANCRASE354：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase354/index.html",
+    "publishedAt": "2025-05-27T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-138",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 5.18 PANCRASE BLOOD.7結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0518win.html",
+    "publishedAt": "2025-05-21T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-139",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.7大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0518.html",
+    "publishedAt": "2025-05-18T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-140",
+    "source": "pancrase",
+    "title": "PANCRASE353 チャンピオンシップ アンチ・ドーピング検査結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0516test.html",
+    "publishedAt": "2025-05-16T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-141",
+    "source": "pancrase",
+    "title": "2025下半期スケジュール",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/schedule.html",
+    "publishedAt": "2025-05-12T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-142",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.7：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/osaka0518/index.html",
+    "publishedAt": "2025-05-11T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-143",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 5.06 PANCRASE BLOOD.6結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0506win.html",
+    "publishedAt": "2025-05-09T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-147",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.6大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0506.html",
+    "publishedAt": "2025-05-06T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-148",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.6：試合中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancraseblood6/index.html",
+    "publishedAt": "2025-05-05T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-150",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画 4.27 PANCRASE353結果発表",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0427win.html",
+    "publishedAt": "2025-05-01T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-152",
+    "source": "pancrase",
+    "title": "PANCRASE353大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0427.html",
+    "publishedAt": "2025-04-28T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-153",
+    "source": "pancrase",
+    "title": "PANCRASE353：透暉鷹vsウルル、試合中止、荒田vsギレルメ、キャッチウェイトのお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase353/index.html",
+    "publishedAt": "2025-04-26T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-156",
+    "source": "pancrase",
+    "title": "PANCRASE354/355：フェザー級チャンピオンシップ開催決定",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase354-355/index.html",
+    "publishedAt": "2025-04-19T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-157",
+    "source": "pancrase",
+    "title": "パンクラス_ルール改定・無差別級廃止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0415.html",
+    "publishedAt": "2025-04-15T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-160",
+    "source": "pancrase",
+    "title": "PANCRASE352 チャンピオンシップ アンチ・ドーピング検査結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0402test.html",
+    "publishedAt": "2025-04-03T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-161",
+    "source": "pancrase",
+    "title": "PANCRASE353：ファンクラブ会員急募！チケット優先発売情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase353/index.html#fcticket",
+    "publishedAt": "2025-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-165",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0309win.html",
+    "publishedAt": "2025-03-12T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-166",
+    "source": "pancrase",
+    "title": "PANCRASE352大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0309.html",
+    "publishedAt": "2025-03-09T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-167",
+    "source": "pancrase",
+    "title": "PANCRASE352：伊藤が欠場、今井の参戦が決定！",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancrase352/index.html",
+    "publishedAt": "2025-03-04T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-172",
+    "source": "pancrase",
+    "title": "史上最多エントリー 第31回ネオブラッドトーナメント次戦決定カード‼",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/neoblood/index.html",
+    "publishedAt": "2025-02-19T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-173",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0211win.html",
+    "publishedAt": "2025-02-18T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-174",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.5結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2025/0211.html",
+    "publishedAt": "2025-02-11T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-175",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.5：ネオブラッドトーナメント一回戦：ワンマッチへ変更＆試合中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2025/pancraseblood5/index.html",
+    "publishedAt": "2025-02-10T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-186",
+    "source": "pancrase",
+    "title": "PANCRASE351 チャンピオンシップ アンチ・ドーピング検査結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/0106test.html",
+    "publishedAt": "2025-01-06T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-190",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/1215win.html",
+    "publishedAt": "2024-12-19T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-191",
+    "source": "pancrase",
+    "title": "PANCRASE351結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/1215n.html",
+    "publishedAt": "2024-12-15T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-192",
+    "source": "pancrase",
+    "title": "PANCRASE350結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/1215d.html",
+    "publishedAt": "2024-12-15T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-193",
+    "source": "pancrase",
+    "title": "PANCRASE350：田嶋vsオタベク中止",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase350/index.html",
+    "publishedAt": "2024-12-14T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-195",
+    "source": "pancrase",
+    "title": "PANCRASE351：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase351/index.html",
+    "publishedAt": "2024-12-10T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-198",
+    "source": "pancrase",
+    "title": "参戦選手を公募！第31回ネオブラッドトーナメント",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2025/neoblood_form.html",
+    "publishedAt": "2024-12-02T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-201",
+    "source": "pancrase",
+    "title": "PANCRASE347 チャンピオンシップ ドラッグテスト結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0929test.html",
+    "publishedAt": "2024-11-17T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-203",
+    "source": "pancrase",
+    "title": "PANCRASEスペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/1110win.html",
+    "publishedAt": "2024-11-14T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-206",
+    "source": "pancrase",
+    "title": "PANCRASE348結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/1110d.html",
+    "publishedAt": "2024-11-10T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-207",
+    "source": "pancrase",
+    "title": "PANCRASE349結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/1110n.html",
+    "publishedAt": "2024-11-10T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-208",
+    "source": "pancrase",
+    "title": "PANCRASE348：当日情報、第7試合中止",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase348/index.html",
+    "publishedAt": "2024-11-09T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-209",
+    "source": "pancrase",
+    "title": "PANCRASE350/351：鈴木悠斗の試合を350に追加！",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase350-351/index.html",
+    "publishedAt": "2024-11-08T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-211",
+    "source": "pancrase",
+    "title": "PANCRASE349：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase349/index.html",
+    "publishedAt": "2024-11-06T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-218",
+    "source": "pancrase",
+    "title": "押忍マン＠佐藤生虎 裁定変更のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0929.html",
+    "publishedAt": "2024-10-26T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-220",
+    "source": "pancrase",
+    "title": "2025年より施行PANCRASEオフィシャルルール改定のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/1021rules.html",
+    "publishedAt": "2024-10-21T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-228",
+    "source": "pancrase",
+    "title": "PANCRASE347結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0929.html",
+    "publishedAt": "2024-09-29T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-229",
+    "source": "pancrase",
+    "title": "PANCRASE347：全試合順決定/当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase347/index.html",
+    "publishedAt": "2024-09-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-230",
+    "source": "pancrase",
+    "title": "PANCRASE348/349：ストロー級2試合！",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase348-349/index.html",
+    "publishedAt": "2024-09-20T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-237",
+    "source": "pancrase",
+    "title": "ドラッグテスト結果 :7.21 PANCRASE346",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0721test.html",
+    "publishedAt": "2024-09-01T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-239",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0825win.html",
+    "publishedAt": "2024-08-27T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-240",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.4結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0825.html",
+    "publishedAt": "2024-08-25T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-241",
+    "source": "pancrase",
+    "title": "BLOOD4：第五試合中止",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancraseblood4/index.html#card5",
+    "publishedAt": "2024-08-24T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-242",
+    "source": "pancrase",
+    "title": "BLOOD4：第一試合中止",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancraseblood4/index.html#card1",
+    "publishedAt": "2024-08-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-243",
+    "source": "pancrase",
+    "title": "BLOOD4：全カード決定、当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancraseblood4/index.html",
+    "publishedAt": "2024-08-16T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-246",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0728win.html",
+    "publishedAt": "2024-07-31T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-247",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.3結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0728.html",
+    "publishedAt": "2024-07-28T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-248",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0721win.html",
+    "publishedAt": "2024-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-249",
+    "source": "pancrase",
+    "title": "BLOOD3：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancraseblood3/index.html",
+    "publishedAt": "2024-07-24T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-251",
+    "source": "pancrase",
+    "title": "PANCRASE346大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0721.html",
+    "publishedAt": "2024-07-21T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-252",
+    "source": "pancrase",
+    "title": "PANCRASE346：第6試合はキャッチウエイトに。",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase346/index.html#catchweight",
+    "publishedAt": "2024-07-20T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-253",
+    "source": "pancrase",
+    "title": "PANCRASE346当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase346/index.html",
+    "publishedAt": "2024-07-17T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-261",
+    "source": "pancrase",
+    "title": "2024年下半期スケジュール",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/schedule.html",
+    "publishedAt": "2024-07-07T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-263",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0630win.html",
+    "publishedAt": "2024-07-03T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-264",
+    "source": "pancrase",
+    "title": "PANCRASE345大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0630n.html",
+    "publishedAt": "2024-06-30T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-265",
+    "source": "pancrase",
+    "title": "PANCRASE344大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0630d.html",
+    "publishedAt": "2024-06-30T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-266",
+    "source": "pancrase",
+    "title": "PANCRASE344：1試合中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase344/index.html#card5",
+    "publishedAt": "2024-06-29T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-267",
+    "source": "pancrase",
+    "title": "PANCRASE345：内藤由良＠アリ・カラダギィ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase345/index.html",
+    "publishedAt": "2024-06-28T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-269",
+    "source": "pancrase",
+    "title": "PANCRASE344：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase344/index.html",
+    "publishedAt": "2024-06-25T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-277",
+    "source": "pancrase",
+    "title": "ドラッグテスト結果 :4.29 PANCRASE342",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0429test.html",
+    "publishedAt": "2024-06-05T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-282",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0525win.html",
+    "publishedAt": "2024-05-27T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-283",
+    "source": "pancrase",
+    "title": "PANCRASE343：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase343/index.html",
+    "publishedAt": "2024-05-23T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-284",
+    "source": "pancrase",
+    "title": "PANCRASE344 345対戦カード第二弾",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase344-345/index.html",
+    "publishedAt": "2024-05-22T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-286",
+    "source": "pancrase",
+    "title": "ドラッグテスト結果 :3.31 PANCRASE341",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0331test.html",
+    "publishedAt": "2024-05-14T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-291",
+    "source": "pancrase",
+    "title": "オフィシャルルール改定のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/rules/index.html",
+    "publishedAt": "2024-05-03T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-292",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0429win.html",
+    "publishedAt": "2024-05-01T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-293",
+    "source": "pancrase",
+    "title": "PANCRASE342：大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0429.html",
+    "publishedAt": "2024-04-29T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-294",
+    "source": "pancrase",
+    "title": "PANCRASE342：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase342/index.html",
+    "publishedAt": "2024-04-25T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-301",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0331win.html",
+    "publishedAt": "2024-04-02T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-302",
+    "source": "pancrase",
+    "title": "PANCRASE341試合結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0331.html",
+    "publishedAt": "2024-03-31T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-303",
+    "source": "pancrase",
+    "title": "PANCRASE341：試合中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase341/index.html#catchweight",
+    "publishedAt": "2024-03-30T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-304",
+    "source": "pancrase",
+    "title": "PANCRASE341：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancrase341/index.html",
+    "publishedAt": "2024-03-25T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-306",
+    "source": "pancrase",
+    "title": "新商品のお知らせ:刃牙×パンクラス×HOMEGAME×THREE TIDES TATTOO",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0308.html",
+    "publishedAt": "2024-03-08T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-310",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0225win.html",
+    "publishedAt": "2024-02-28T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-311",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.2：結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0225.html",
+    "publishedAt": "2024-02-25T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-312",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/0218win.html",
+    "publishedAt": "2024-02-21T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-313",
+    "source": "pancrase",
+    "title": "BLOOD.2：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancraseblood2/index.html",
+    "publishedAt": "2024-02-19T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-314",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.1：結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2024/0218.html",
+    "publishedAt": "2024-02-18T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-315",
+    "source": "pancrase",
+    "title": "BLOOD.1：秋葉＠松井、中止のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2024/pancraseblood1/index.html",
+    "publishedAt": "2024-02-17T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-319",
+    "source": "pancrase",
+    "title": "2024年パンクラスガール募集",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/pancrasegirl.html",
+    "publishedAt": "2024-02-12T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-323",
+    "source": "pancrase",
+    "title": "ドラッグテスト結果 :12/24 PANCRASE340",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2023/1224test.html",
+    "publishedAt": "2024-01-31T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-324",
+    "source": "pancrase",
+    "title": "ネオブラ組み合わせ決定",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/neobloodtournament.html",
+    "publishedAt": "2024-01-29T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-329",
+    "source": "pancrase",
+    "title": "PANCRASE340：高橋vs.キム戦の提訴について",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/1224.html#pancrase34007",
+    "publishedAt": "2024-01-14T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-332",
+    "source": "pancrase",
+    "title": "PANCRASE 30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2023/1224win.html",
+    "publishedAt": "2023-12-27T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-334",
+    "source": "pancrase",
+    "title": "PANCRASE 340結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/1224.html",
+    "publishedAt": "2023-12-24T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-335",
+    "source": "pancrase",
+    "title": "PANCRASE340：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/pancrase340/index.html",
+    "publishedAt": "2023-12-19T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-338",
+    "source": "pancrase",
+    "title": "ネオブラ参戦選手を公募！",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2024/neobloodtournament_form.html",
+    "publishedAt": "2023-11-30T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-344",
+    "source": "pancrase",
+    "title": "PANCRASE 339大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/1112night.html",
+    "publishedAt": "2023-11-12T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-345",
+    "source": "pancrase",
+    "title": "PANCRASE 338大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/1112day.html",
+    "publishedAt": "2023-11-12T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-346",
+    "source": "pancrase",
+    "title": "PANCRASE338：キャッチウエイトのお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/pancrase338/index.html",
+    "publishedAt": "2023-11-11T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-348",
+    "source": "pancrase",
+    "title": "PANCRASE339：試合順決定＆当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/pancrase339/index.html",
+    "publishedAt": "2023-11-08T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-350",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2023/winbonus.html",
+    "publishedAt": "2023-11-05T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-351",
+    "source": "pancrase",
+    "title": "NEO BLOOD! 6大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/1103.html",
+    "publishedAt": "2023-11-03T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-353",
+    "source": "pancrase",
+    "title": "NEO BLOOD! 6：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/neoblood6/index.html",
+    "publishedAt": "2023-10-30T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-355",
+    "source": "pancrase",
+    "title": "ドラッグテスト結果 :9/24 PANCRASE337",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2023/0924test.html",
+    "publishedAt": "2023-10-26T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-360",
+    "source": "pancrase",
+    "title": "PANCRASE338/339：佐藤＠荒井、鈴木＠上田",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/1112/index.html",
+    "publishedAt": "2023-10-05T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-370",
+    "source": "pancrase",
+    "title": "PANCRASE 337大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/0924.html",
+    "publishedAt": "2023-09-25T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-371",
+    "source": "pancrase",
+    "title": "PANCRASE30周年記念スペシャルボーナス企画",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2023/0922.html",
+    "publishedAt": "2023-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-372",
+    "source": "pancrase",
+    "title": "PANCRASE337：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/pancrase337/index.html",
+    "publishedAt": "2023-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-373",
+    "source": "pancrase",
+    "title": "PANCRASEとU-NEXTが国内独占配信パートナー契約を新締結",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2023/unext.html",
+    "publishedAt": "2023-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-374",
+    "source": "pancrase",
+    "title": "パンクラス組織変更のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2023/0921pancrase.html",
+    "publishedAt": "2023-09-21T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-385",
+    "source": "pancrase",
+    "title": "NEOBLOOD!5大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/0827.html",
+    "publishedAt": "2023-08-27T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-386",
+    "source": "pancrase",
+    "title": "NEO BLOOD! 5：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/neoblood5/index.html",
+    "publishedAt": "2023-08-17T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-406",
+    "source": "pancrase",
+    "title": "PANCRASE336試合結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/0709night.html",
+    "publishedAt": "2023-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-407",
+    "source": "pancrase",
+    "title": "PANCRASE335試合結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2023/0709day.html",
+    "publishedAt": "2023-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-408",
+    "source": "pancrase",
+    "title": "PANCRASE335：キャッチウエイトのお知らせ/当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/pancrase335/index.html",
+    "publishedAt": "2023-07-08T00:00:00.000Z"
+  },
+  {
+    "id": "pancrase-409",
+    "source": "pancrase",
+    "title": "PANCRASE336：当日情報",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2023/pancrase336/index.html",
+    "publishedAt": "2023-07-08T00:00:00.000Z"
   }
 ]
