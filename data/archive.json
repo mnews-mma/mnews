@@ -1,5 +1,50 @@
 [
   {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "7/3(金)開催【観覧募集】『abc presents RIZIN LANDMARK 15 in HIROSHIMA』合同公開練習",
+    "summary": "7月3日(金)東京都内某所にて『abc presents RIZIN LANDMARK 15 in HIROSHIMA』合同公開練習の開催が決定いたしました！ ファンクラブ会員様の中から抽選で本イベ…",
+    "origin": "RIZIN公式",
+    "url": "https://fc.rizinff.com/blogs/news/event_20260703",
+    "publishedAt": "2026-06-29T10:00:04.000Z"
+  },
+  {
+    "id": "deep-0",
+    "source": "deep",
+    "title": "DEEP 132 IMPACTのメインは注目の相本宗輝VS山田聖真、越智晴雄の引退エキシビションなどの試合順が決定。U-NEXT、DEEPメンバーシップで配信でゲスト解説は泉武志、チケットは全て完売で当日券の販売は無し!",
+    "summary": "2026年7月5日（日）にニューピアホールで開催する『宗明建設Presents DEEP 132 IMPACT』の試合順と配信情報をお知らせいたします。 【配信】 DEEP 132 IMPACT 2…",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/deep-132-impact%e3%81%ae%e3%83%a1%e3%82%a4%e3%83%b3%e3%81%af%e6%b3%a8%e7%9b%ae%e3%81%ae%e7%9b%b8%e6%9c%ac%e5%ae%97%e8%bc%9dvs%e5%b1%b1%e7%94%b0%e8%81%96%e7%9c%9f%e3%80%81%e8%b6%8a%e6%99%ba%e6%99%b4/",
+    "publishedAt": "2026-06-29T08:54:59.000Z"
+  },
+  {
+    "id": "deep-1",
+    "source": "deep",
+    "title": "Grasp the future cage2",
+    "summary": "2026年8月30日（日）に沖縄・くくる糸満 大ホールで開催する『Grasp the future cage25』でDEEP公式戦が行われる事が決定いたしました。 【対戦カード】 DEEPフェザー級…",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/grasp-the-future-cage2/",
+    "publishedAt": "2026-06-29T08:40:35.000Z"
+  },
+  {
+    "id": "deep-2",
+    "source": "deep",
+    "title": "DEEPストロー級王者となった知名昴海がグラップリングマッチで地元沖縄で凱旋試合、元GFC王者のケンヤスキーがBREAKING DOWNでも活躍したカンジと対戦などGFCでDEEP公式戦が開催!!",
+    "summary": "2026年8月30日（日）に沖縄・くくる糸満 大ホールで開催する『Grasp the future cage25』でDEEP公式戦が行われる事が決定いたしました。 Grasp the future …",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/deep%e3%82%b9%e3%83%88%e3%83%ad%e3%83%bc%e7%b4%9a%e7%8e%8b%e8%80%85%e3%81%a8%e3%81%aa%e3%81%a3%e3%81%9f%e7%9f%a5%e5%90%8d%e6%98%b4%e6%b5%b7%e3%81%8c%e3%82%b0%e3%83%a9%e3%83%83%e3%83%97%e3%83%aa/",
+    "publishedAt": "2026-06-29T08:34:58.000Z"
+  },
+  {
+    "id": "gonkaku-2",
+    "source": "other",
+    "title": "【ONE】7月に3週連続でタイトルマッチ、パシオvs.マラチエフ、ディベラvs.ペイメン、サムエーvs.アリーフ＝ONE Friday Fights",
+    "summary": "毎週金曜日にタイ・ルンピニースタジアムで開催されている『ONE Friday Fights』と同時開催の『The Inner Circle』で、続々とタイトルマッチが決定している。 7月10日の『O…",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24184",
+    "publishedAt": "2026-06-29T07:56:25.000Z"
+  },
+  {
     "id": "gonkaku-0",
     "source": "other",
     "title": "【RIZIN】緊急参戦“怪物くん”鈴木博昭の対戦相手が決定、萩原京平の後輩でRIZIN2連勝の宮川日向",
@@ -182,6 +227,14 @@
     "title": "【UFC】前王者パントージャ、バキバキに仕上げすぐ試合できそう！｢チャンピオンが帰ってきた｣",
     "origin": "イーファイト",
     "url": "https://efight.jp/news-20260626_1721292",
+    "publishedAt": "2026-06-26T00:00:00.000Z"
+  },
+  {
+    "id": "efight-0",
+    "source": "other",
+    "title": "【RIZIN】BD惜敗の“怪物くん”鈴木博昭、7.18広島大会に緊急参戦が決定！",
+    "origin": "イーファイト",
+    "url": "https://efight.jp/news-20260626_1721452",
     "publishedAt": "2026-06-26T00:00:00.000Z"
   },
   {
