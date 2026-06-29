@@ -1098,7 +1098,7 @@ export const EVENT_RESULTS: EventResult[] = [
     eventName: "RIZIN.52",
     date: "2026-03-07",
     venue: "有明アリーナ",
-    sourceUrl: "https://ja.wikipedia.org/wiki/RIZIN.52",
+    sourceUrl: "https://jp.rizinff.com/_ct/17825885",
     fights: [
       {
         weightClass: "49.0kg契約",
@@ -1145,7 +1145,7 @@ export const EVENT_RESULTS: EventResult[] = [
         fighterA: "所英男",
         fighterB: "鹿志村仁之介",
         winner: "鹿志村仁之介",
-        method: "スピニングチョーク",
+        method: "アナコンダチョーク",
         round: "1R 1:06",
       },
       {
@@ -1185,8 +1185,8 @@ export const EVENT_RESULTS: EventResult[] = [
         fighterA: "ルイス・グスタボ",
         fighterB: "桜庭大世",
         winner: "ルイス・グスタボ",
-        method: "KO（右フック）",
-        round: "2R 1:32",
+        method: "TKO（グラウンドパンチ）",
+        round: "2R 2:32",
       },
       {
         weightClass: "66.0kg契約",
@@ -1204,7 +1204,7 @@ export const EVENT_RESULTS: EventResult[] = [
     eventName: "RIZIN.53",
     date: "2026-05-10",
     venue: "GLION ARENA KOBE",
-    sourceUrl: "https://ja.wikipedia.org/wiki/RIZIN.53",
+    sourceUrl: "https://jp.rizinff.com/_ct/17838643",
     fights: [
       {
         weightClass: "57.0kg契約 キックボクシング",
@@ -1280,10 +1280,10 @@ export const EVENT_RESULTS: EventResult[] = [
       },
       {
         weightClass: "71.0kg契約",
-        fighterA: "雑賀達也",
-        fighterB: "宇佐美正パトリック",
+        fighterA: "宇佐美正パトリック",
+        fighterB: "雑賀達也",
         winner: "宇佐美正パトリック",
-        method: "TKO（左フック→サッカーボールキック）",
+        method: "KO",
         round: "1R 1:38",
       },
       {
@@ -1320,10 +1320,10 @@ export const EVENT_RESULTS: EventResult[] = [
       },
       {
         weightClass: "RIZINライト級タイトルマッチ",
-        fighterA: "イルホム・ノジモフ",
-        fighterB: "ルイス・グスタボ",
+        fighterA: "ルイス・グスタボ",
+        fighterB: "イルホム・ノジモフ",
         winner: "ルイス・グスタボ",
-        method: "TKO（右フック→パウンド）",
+        method: "TKO（レフェリーストップ）",
         round: "1R 2:08",
       },
     ],
@@ -1334,7 +1334,7 @@ export const EVENT_RESULTS: EventResult[] = [
     eventName: "RIZIN LANDMARK 13",
     date: "2026-04-12",
     venue: "マリンメッセ福岡A館",
-    sourceUrl: "https://ja.wikipedia.org/wiki/RIZIN_LANDMARK_13",
+    sourceUrl: "https://jp.rizinff.com/_ct/17813447",
     fights: [
       {
         weightClass: "57.0kg契約 キックボクシング",
@@ -1464,7 +1464,7 @@ export const EVENT_RESULTS: EventResult[] = [
     eventName: "RIZIN LANDMARK 14",
     date: "2026-06-06",
     venue: "ゼビオアリーナ仙台",
-    sourceUrl: "https://ja.wikipedia.org/wiki/RIZIN_LANDMARK_14",
+    sourceUrl: "https://jp.rizinff.com/_ct/17843850",
     fights: [
       {
         weightClass: "62.0kg契約 キックボクシング",
@@ -1500,10 +1500,10 @@ export const EVENT_RESULTS: EventResult[] = [
       },
       {
         weightClass: "61.0kg契約",
-        fighterA: "赤田功輝",
-        fighterB: "井上聖矢",
+        fighterA: "井上聖矢",
+        fighterB: "赤田功輝",
         winner: "井上聖矢",
-        method: "TKO（左フック→パウンド）",
+        method: "KO",
         round: "3R 0:28",
       },
       {
