@@ -3,7 +3,9 @@ import { SourceKey } from "../sources";
 import { parseRss, parseAtom, RawItem } from "./xml";
 import { isMmaRelevant } from "./classify";
 
-const REVALIDATE_SECONDS = 1800; // 30 min, per mnews-spec.md auto-update interval
+// 外部Cron（/api/refresh を1分おきに叩く想定）でキャッシュを温め続けるため、
+// 2分に短縮。実際の更新頻度は外部Cronの呼び出し間隔に依存する。
+const REVALIDATE_SECONDS = 120;
 const SUMMARY_MAX = 100; // 著作権対応: 100文字以内サマリーのみ
 const MAX_AGE_DAYS = 7; // 直近1週間のみ掲載
 const MAX_PER_BUCKET = 24; // 画面が長くなり過ぎないための上限

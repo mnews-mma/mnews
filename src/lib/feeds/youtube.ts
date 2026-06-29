@@ -1,7 +1,7 @@
 import { SourceKey } from "../sources";
 
 const FETCH_TIMEOUT_MS = 8000;
-const REVALIDATE_SECONDS = 1800; // 30 min
+const REVALIDATE_SECONDS = 120; // /api/refresh を1分おきに叩く想定で短縮
 
 export interface SocialPost {
   org: SourceKey;
