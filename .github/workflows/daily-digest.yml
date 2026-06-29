@@ -5,6 +5,9 @@ on:
     - cron: "0 23 * * *" # 23:00 UTC = 08:00 JST
   workflow_dispatch: {}
 
+permissions:
+  contents: write
+
 jobs:
   digest:
     runs-on: ubuntu-latest
@@ -23,3 +26,15 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           DIGEST_TO_EMAIL: ${{ secrets.DIGEST_TO_EMAIL }}
         run: npx tsx scripts/daily-digest.ts
+
+      - name: Commit generated tweet text if changed
+        run: |
+          git config user.name "mnews-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if ! git diff --quiet -- data/tweet-digest.txt; then
+            git add data/tweet-digest.txt
+            git commit -m "chore: update X post draft [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi

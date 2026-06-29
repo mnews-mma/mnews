@@ -1,11 +1,14 @@
 // 毎朝8:00（JST）に GitHub Actions から実行。過去24時間に取得した記事
-// （公式発表・ニュース問わず全件）のタイトルとURLをメールでまとめて送る。
-// そこから手動で3〜5本選んで投稿する運用を想定している。
+// （公式発表・ニュース問わず全件）の一覧と、そこから自動生成したX投稿用
+// テキスト（インパクト上位3件＋フック文＋ハッシュタグ）をメールでまとめて送る。
 //
 // 実行: npx tsx scripts/daily-digest.ts
+import { writeFileSync, mkdirSync } from "fs";
+import { join } from "path";
 import { fetchRawArticles } from "../src/lib/feeds/aggregate";
 import { SOURCES } from "../src/lib/sources";
 import type { Article } from "../src/lib/articles";
+import { buildTweetDigest } from "../src/lib/tweetDigest";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const DIGEST_TO = process.env.DIGEST_TO_EMAIL;
@@ -47,7 +50,7 @@ function buildCopyText(articles: Article[]): string {
   ].join("\n");
 }
 
-function buildHtml(articles: Article[], copyText: string): string {
+function buildHtml(articles: Article[], copyText: string, tweetText: string): string {
   if (articles.length === 0) {
     return "<p>過去24時間の新着記事はありませんでした。</p>";
   }
@@ -73,9 +76,15 @@ function buildHtml(articles: Article[], copyText: string): string {
   return `
     <div style="font-family:-apple-system,sans-serif;max-width:640px;">
       <h2 style="font-size:16px;">Mニュース 朝刊ダイジェスト（過去24時間・${articles.length}件）</h2>
-      <table style="width:100%;border-collapse:collapse;font-size:13px;">${rows}</table>
 
-      <h3 style="font-size:13px;margin-top:24px;">コピペ用（タイトル＋リンク）</h3>
+      <h3 style="font-size:13px;">X投稿用テキスト（自動生成）</h3>
+      <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#fff7e6;padding:12px;border-radius:4px;user-select:all;border:1px solid #f0d9a0;">${escapeHtml(
+        tweetText
+      )}</pre>
+
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:24px;">${rows}</table>
+
+      <h3 style="font-size:13px;margin-top:24px;">コピペ用（タイトル＋リンク・全件）</h3>
       <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#f5f3ef;padding:12px;border-radius:4px;user-select:all;">${escapeHtml(
         copyText
       )}</pre>
@@ -120,8 +129,16 @@ async function main() {
   recent.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
   console.log(`過去24時間の記事: ${recent.length}件`);
+  const { text: tweetText } = buildTweetDigest(recent);
+  console.log("\n--- X投稿用テキスト ---\n" + tweetText + "\n---\n");
+
+  const outDir = join(process.cwd(), "data");
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, "tweet-digest.txt"), tweetText, "utf-8");
+  console.log(`X投稿用テキストを data/tweet-digest.txt に書き出しました。`);
+
   const copyText = buildCopyText(recent);
-  const html = buildHtml(recent, copyText);
+  const html = buildHtml(recent, copyText, tweetText);
   await sendEmail(html, copyText, recent.length);
 }
 
