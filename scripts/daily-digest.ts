@@ -19,20 +19,34 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-// X投稿用にそのままコピペできる「タイトル＋リンク」のプレーンテキスト。
+// X投稿用にそのままコピペできるテキスト。ヘッダー／フッターで挟んだ
+// 「【昨日のMMAニュースピックアップ🥊】」形式の投稿1本分を組み立てる。
 function buildCopyText(articles: Article[]): string {
-  if (articles.length === 0) return "過去24時間の新着記事はありませんでした。";
-  return articles
-    .map((a) => {
-      // "other"（二次メディア）の記事はタイトル自体に【RIZIN】等が
-      // 既に付いていることが多いので、二重にラベルを付けない。
-      if (a.source === "other" || /^【[^】]+】/.test(a.title)) {
-        return `${a.title}\n${a.url}`;
-      }
-      const label = SOURCES[a.source]?.label ?? a.source;
-      return `【${label}】${a.title}\n${a.url}`;
-    })
-    .join("\n\n");
+  const list =
+    articles.length === 0
+      ? "過去24時間の新着記事はありませんでした。"
+      : articles
+          .map((a) => {
+            // "other"（二次メディア）の記事はタイトル自体に【RIZIN】等が
+            // 既に付いていることが多いので、二重にラベルを付けない。
+            if (a.source === "other" || /^【[^】]+】/.test(a.title)) {
+              return `${a.title}\n${a.url}`;
+            }
+            const label = SOURCES[a.source]?.label ?? a.source;
+            return `【${label}】${a.title}\n${a.url}`;
+          })
+          .join("\n\n");
+
+  return [
+    "【昨日のMMAニュースピックアップ🥊】",
+    "",
+    "ニュース",
+    "",
+    list,
+    "",
+    "Mニュースで全件見る",
+    "https://www.mnews.jp/",
+  ].join("\n");
 }
 
 function buildHtml(articles: Article[], copyText: string): string {
