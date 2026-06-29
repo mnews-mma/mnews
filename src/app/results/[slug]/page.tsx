@@ -49,12 +49,12 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
                   <th>階級</th>
                   <th>対戦カード</th>
                   <th>勝者</th>
-                  <th>方法</th>
+                  <th>決着</th>
                   <th>ラウンド</th>
                 </tr>
               </thead>
               <tbody>
-                {event.fights.map((f, i) => (
+                {[...event.fights].reverse().map((f, i) => (
                   <tr key={i}>
                     <td>{f.weightClass}</td>
                     <td>
