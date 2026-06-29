@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { getFighter, calcFighterRates } from "@/lib/fighters";
+import { FIGHTERS, getFighter, calcFighterRates } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
 
@@ -21,6 +21,17 @@ const RESULT_CLASS: Record<string, string> = {
   loss: "result-loss",
   draw: "result-draw",
 };
+
+// 対戦相手がMニュース掲載選手の場合、その選手ページへのリンクを表示する
+// （Wikipediaの戦績テーブルと同じ構造）。
+function findOpponentSlug(opponent: string, currentSlug: string): string | null {
+  const match = FIGHTERS.find(
+    (f) =>
+      f.slug !== currentSlug &&
+      (f.nameJa === opponent || f.nameEn === opponent || opponent.includes(f.nameJa.replace(/\s/g, "")))
+  );
+  return match ? match.slug : null;
+}
 
 export default async function FighterPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -77,16 +88,27 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                 </tr>
               </thead>
               <tbody>
-                {history.map((h, i) => (
-                  <tr key={i}>
-                    <td>{h.date}</td>
-                    <td>{h.opponent}</td>
-                    <td className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</td>
-                    <td>{h.method}</td>
-                    <td>{h.event}</td>
-                    <td>{h.round}</td>
-                  </tr>
-                ))}
+                {history.map((h, i) => {
+                  const opponentSlug = findOpponentSlug(h.opponent, slug);
+                  return (
+                    <tr key={i}>
+                      <td>{h.date}</td>
+                      <td>
+                        {opponentSlug ? (
+                          <a href={`/fighters/${opponentSlug}`} className="opponent-link">
+                            {h.opponent}
+                          </a>
+                        ) : (
+                          h.opponent
+                        )}
+                      </td>
+                      <td className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</td>
+                      <td>{h.method}</td>
+                      <td>{h.event}</td>
+                      <td>{h.round}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

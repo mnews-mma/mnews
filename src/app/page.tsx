@@ -47,8 +47,8 @@ export default async function HomePage() {
   // ニュース欄の一番新しい記事を BREAKING として最上部に表示する。
   const breaking = newsAll[0];
   // 2カラムの見た目の長さを揃えるため、件数の少ない方に合わせる
-  // （どちらも公開日時の降順なので、それぞれの最新N件が残る）。
-  const evenCount = Math.min(officialAll.length, newsAll.length);
+  // （どちらも公開日時の降順なので、それぞれの最新N件が残る）。最大10件。
+  const evenCount = Math.min(officialAll.length, newsAll.length, 10);
   const official = officialAll.slice(0, evenCount);
   const news = newsAll.slice(0, evenCount);
 

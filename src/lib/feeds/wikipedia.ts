@@ -239,3 +239,158 @@ export async function fetchWikiFighterRecord(enTitle: string): Promise<WikiFight
   // Wikipedia tables list most recent fight first; keep that order for display.
   return { history, ...tally(history), infobox: parseInfobox(wikitext) };
 }
+
+// ── 日本語版Wikipedia対応 ──────────────────────────────────────────
+// 日本語版の格闘家記事の一部は {{Fight-cont|結果|対戦相手|方法|大会名|日付}}
+// という1試合ごとのテンプレートで試合履歴を記載している（英語版の
+// {{MMA record start}} テーブルに相当）。これを解析できれば、英語版に
+// 記事が無い・戦績テーブルが無い選手でも日本語版から取得できる。
+function splitTemplateParams(content: string): string[] {
+  // [[リンク|表示名]] の "|" で誤って分割しないよう、[[ ]] の深さを見ながら
+  // トップレベルの "|" だけで分割する。
+  const parts: string[] = [];
+  let depth = 0;
+  let current = "";
+  for (let i = 0; i < content.length; i++) {
+    const ch2 = content.slice(i, i + 2);
+    if (ch2 === "[[") {
+      depth++;
+      current += ch2;
+      i++;
+      continue;
+    }
+    if (ch2 === "]]") {
+      depth--;
+      current += ch2;
+      i++;
+      continue;
+    }
+    if (content[i] === "|" && depth === 0) {
+      parts.push(current);
+      current = "";
+      continue;
+    }
+    current += content[i];
+  }
+  parts.push(current);
+  return parts;
+}
+
+function jaResult(marker: string): "win" | "loss" | "draw" | null {
+  const m = marker.trim();
+  if (m === "○" || m === "〇") return "win";
+  if (m === "×" || m === "✕" || m === "✗") return "loss";
+  if (m === "△") return "draw";
+  return null; // 空欄（今後の試合）・「－」（無効試合）などはスキップ
+}
+
+function parseJaDate(raw: string): string {
+  // "2026年7月18日" 形式
+  const m = cleanWikiMarkup(raw).match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+  if (!m) return "";
+  const [, y, mo, d] = m;
+  return `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
+}
+
+export function parseJaFightHistory(wikitext: string): FightRecord[] {
+  const blocks = Array.from(wikitext.matchAll(/\{\{Fight-cont\|([\s\S]*?)\}\}/g));
+  const records: FightRecord[] = [];
+
+  for (const [, content] of blocks) {
+    const parts = splitTemplateParams(content).map((p) => p.trim());
+    if (parts.length < 5) continue;
+
+    const result = jaResult(parts[0]);
+    if (!result) continue;
+
+    const opponent = cleanWikiMarkup(parts[1]);
+    const method = cleanWikiMarkup(parts[2]);
+    const event = cleanWikiMarkup(parts[3]);
+    const date = parseJaDate(parts[4]);
+    const round = method.match(/(\d+)R/)?.[1];
+
+    if (!opponent || !date) continue;
+
+    records.push({
+      date,
+      opponent,
+      result,
+      method: method || "—",
+      event: event || "—",
+      round: round ? `R${round}` : "—",
+    });
+  }
+
+  // 日本語版は古い試合が先に書かれていることが多いため、新しい順に揃える。
+  records.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return records;
+}
+
+export function parseInfoboxJa(wikitext: string): WikiInfobox {
+  const result: WikiInfobox = {};
+
+  const nicknameRaw = extractField(wikitext, "nickname");
+  if (nicknameRaw) {
+    const first = nicknameRaw.split(/<br\s*\/?>/i)[0].trim();
+    if (first) result.nickname = first;
+  }
+
+  const placeRaw = extractField(wikitext, "place");
+  if (placeRaw) result.birthPlace = placeRaw;
+
+  const birthRaw = wikitext.match(/\|[ \t]*birth[ \t]*=[ \t]*([^\n]*)/i)?.[1];
+  if (birthRaw) {
+    const m = birthRaw.match(/\{\{生年月日と年齢\|(\d{4})\|(\d{1,2})\|(\d{1,2})/);
+    if (m) {
+      const [, y, mo, d] = m;
+      const birth = new Date(Date.UTC(Number(y), Number(mo) - 1, Number(d)));
+      const now = new Date();
+      let age = now.getUTCFullYear() - birth.getUTCFullYear();
+      const hadBirthday =
+        now.getUTCMonth() > birth.getUTCMonth() ||
+        (now.getUTCMonth() === birth.getUTCMonth() && now.getUTCDate() >= birth.getUTCDate());
+      if (!hadBirthday) age--;
+      result.age = age;
+    }
+  }
+
+  return result;
+}
+
+function jaField(wikitext: string, ...names: string[]): number | null {
+  for (const name of names) {
+    const raw = extractField(wikitext, name);
+    if (raw && /^\d+$/.test(raw)) return Number(raw);
+  }
+  return null;
+}
+
+// {{MMA statsbox3}} / {{MMA recordbox}} の集計欄から総合戦績を取る。
+// {{Fight-cont}} の試合履歴にはアマチュア戦・異種格闘技イベント
+// （BreakingDown等）も混在することがあり、それを数え上げると公式の
+// プロMMA戦績と食い違うため、合計値は必ずinfoboxの数字を優先する。
+function parseJaRecordTotals(
+  wikitext: string
+): Omit<WikiFighterData, "history" | "infobox"> | null {
+  const wins = jaField(wikitext, "wins", "win");
+  const losses = jaField(wikitext, "losses", "loss");
+  if (wins === null || losses === null) return null;
+  const draws = jaField(wikitext, "draws", "draw") ?? 0;
+  const ko = jaField(wikitext, "KOwins", "KO", "wins_ko") ?? 0;
+  const sub = jaField(wikitext, "subwins", "wins_submission") ?? 0;
+  const decision = jaField(wikitext, "decwins", "wins_decision") ?? 0;
+  return { wins, losses, draws, ko, sub, decision };
+}
+
+export async function fetchJaWikiFighterRecord(jaTitle: string): Promise<WikiFighterData | null> {
+  const wikitext = await fetchWikitext("ja", jaTitle);
+  if (!wikitext) return null;
+  const history = parseJaFightHistory(wikitext);
+  const totals = parseJaRecordTotals(wikitext);
+  if (!totals && history.length === 0) return null;
+  return {
+    history,
+    ...(totals ?? tally(history)),
+    infobox: parseInfoboxJa(wikitext),
+  };
+}

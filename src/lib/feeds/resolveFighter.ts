@@ -1,5 +1,5 @@
 import { Fighter, FightRecord } from "../fighters";
-import { fetchWikiFighterRecord } from "./wikipedia";
+import { fetchWikiFighterRecord, fetchJaWikiFighterRecord, WikiFighterData } from "./wikipedia";
 import { fetchUfcNickname } from "./ufc";
 
 export interface ResolvedFighter extends Fighter {
@@ -11,16 +11,22 @@ export interface ResolvedFighter extends Fighter {
 }
 
 export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter> {
-  const [wiki, ufcNickname] = await Promise.all([
+  const [enWiki, jaWiki, ufcNickname] = await Promise.all([
     fighter.wikiTitleEn ? fetchWikiFighterRecord(fighter.wikiTitleEn).catch(() => null) : null,
+    fighter.wikiTitleJa ? fetchJaWikiFighterRecord(fighter.wikiTitleJa).catch(() => null) : null,
     fighter.ufcSlug ? fetchUfcNickname(fighter.ufcSlug).catch(() => null) : null,
   ]);
 
+  // 英語版に戦績テーブルがあればそれを優先し、無ければ日本語版
+  // （{{Fight-cont}}）にフォールバックする。
+  const wiki: WikiFighterData | null = enWiki && enWiki.history.length > 0 ? enWiki : jaWiki;
+
   // UFC公式プロフィールのニックネームを優先する（Wikipediaの other_names は
   // 古い/誤った通称が残っていることがあるため）。
-  const nickname = ufcNickname ?? wiki?.infobox.nickname;
+  // fighter.noNickname を立てた選手は常に通称を非表示にする。
+  const nickname = fighter.noNickname ? undefined : ufcNickname ?? wiki?.infobox.nickname;
 
-  if (wiki && wiki.history.length > 0) {
+  if (wiki) {
     return {
       ...fighter,
       wins: wiki.wins,
