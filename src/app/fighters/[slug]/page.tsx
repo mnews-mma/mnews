@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const fighter = getFighter(slug);
   if (!fighter) return { title: "選手が見つかりません — Mニュース" };
-  return { title: `${fighter.nameJa} 戦績 — Mニュース` };
+  return { title: `${fighter.nameJa} 戦績・試合結果 | Mニュース` };
 }
 
 const RESULT_LABEL: Record<string, string> = { win: "勝", loss: "敗", draw: "分" };

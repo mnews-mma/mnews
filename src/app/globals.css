@@ -562,6 +562,34 @@ footer {
   padding: 16px 24px;
   background: var(--accent);
 }
+/* RESULTS SECTION */
+.results-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.results-list-item {
+  background: var(--s1);
+  padding: 16px 24px;
+  display: block;
+  transition: background 0.15s;
+  border-left: 3px solid transparent;
+}
+.results-list-item:hover {
+  background: var(--s2);
+}
+.results-list-title {
+  font-family: var(--os);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 4px 0;
+}
+.results-list-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
 .fighter-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

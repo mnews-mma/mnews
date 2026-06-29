@@ -8,10 +8,16 @@ import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
+import { EVENT_RESULTS } from "@/lib/eventResults";
 
 // 外部フィード取得をビルド時ではなくリクエスト時に行う。
 // データ自体は fetch() の revalidate 設定により30分キャッシュされる。
 export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "日本MMAニュース速報 | Mニュース",
+  description: "RIZIN・DEEP・パンクラス・修斗の最新ニュースを随時更新。選手戦績・試合結果も掲載。",
+};
 
 const OFFICIAL_ORGS = new Set(["rizin", "deep", "shooto", "pancrase"]);
 
@@ -65,6 +71,29 @@ export default async function HomePage() {
       )}
 
       <SplitFeed official={official} news={news} />
+
+      {/* RESULTS SECTION */}
+      <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
+        <div className="fighter-section-head">
+          <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#fff", letterSpacing: 3 }}>
+            🥊 大会結果まとめ
+          </div>
+        </div>
+        <div className="results-list">
+          {EVENT_RESULTS.map((e) => (
+            <a key={e.slug} href={`/results/${e.slug}`} className="results-list-item" style={{ borderLeftColor: SOURCES[e.org].color }}>
+              <div className="fighter-org" style={{ color: SOURCES[e.org].color }}>
+                {SOURCES[e.org].label}
+              </div>
+              <div className="results-list-title">{e.eventName}</div>
+              <div className="results-list-meta">
+                {e.date}
+                {e.venue && <span> ／ {e.venue}</span>}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
 
       <SocialSection videos={videos} />
 
