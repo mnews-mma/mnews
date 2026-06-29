@@ -78,20 +78,34 @@ export default async function HomePage() {
           <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#fff", letterSpacing: 3 }}>
             🥊 大会結果まとめ
           </div>
+          <a
+            href="/results"
+            style={{ fontFamily: "var(--mono)", fontSize: 10, color: "rgba(255,255,255,0.7)", letterSpacing: 2 }}
+          >
+            全大会結果を見る →
+          </a>
         </div>
         <div className="results-list">
-          {EVENT_RESULTS.map((e) => (
-            <a key={e.slug} href={`/results/${e.slug}`} className="results-list-item" style={{ borderLeftColor: SOURCES[e.org].color }}>
-              <div className="fighter-org" style={{ color: SOURCES[e.org].color }}>
-                {SOURCES[e.org].label}
-              </div>
-              <div className="results-list-title">{e.eventName}</div>
-              <div className="results-list-meta">
-                {e.date}
-                {e.venue && <span> ／ {e.venue}</span>}
-              </div>
-            </a>
-          ))}
+          {[...EVENT_RESULTS]
+            .sort((a, b) => (a.date < b.date ? 1 : -1))
+            .slice(0, 4)
+            .map((e) => (
+              <a
+                key={e.slug}
+                href={`/results/${e.slug}`}
+                className="results-list-item"
+                style={{ borderLeftColor: SOURCES[e.org].color }}
+              >
+                <div className="fighter-org" style={{ color: SOURCES[e.org].color }}>
+                  {SOURCES[e.org].label}
+                </div>
+                <div className="results-list-title">{e.eventName}</div>
+                <div className="results-list-meta">
+                  {e.date}
+                  {e.venue && <span> ／ {e.venue}</span>}
+                </div>
+              </a>
+            ))}
         </div>
       </div>
 
