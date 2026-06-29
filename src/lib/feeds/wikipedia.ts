@@ -31,11 +31,13 @@ function cleanWikiMarkup(s: string): string {
     .replace(/\{\{small\|?\}\}/gi, "")
     .replace(/<ref[^>]*\/>/gi, "")
     .replace(/<ref[^>]*>[\s\S]*?<\/ref>/gi, "")
+    .replace(/<br\s*\/?>/gi, " ")
     .replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, "$2")
     .replace(/\[\[([^\]]+)\]\]/g, "$1")
     .replace(/'''?/g, "")
     .replace(/\{\{[^}]*\}\}/g, "")
     .replace(/^align=center\|/i, "")
+    .replace(/\s+/g, " ")
     .trim();
 }
 
