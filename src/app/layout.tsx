@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description:
     "RIZIN・DEEP・パンクラスの公式発表とMMAニュースを一か所にまとめて届けるMMA特化キュレーションメディア。",
   icons: { icon: "/logo.png" },
+  verification: {
+    google: "27FkFBIjjBO1gprFMpi5nX-aMEOwVWuv_vOtWC_Udoo",
+  },
 };
 
 export default function RootLayout({
