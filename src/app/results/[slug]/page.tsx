@@ -60,8 +60,8 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
                     <td>
                       {f.fighterA} vs {f.fighterB}
                     </td>
-                    <td className={f.winner ? "result-win" : "result-draw"}>
-                      {f.winner ?? "引き分け／中止"}
+                    <td className={f.winner && !["引き分け", "中止", "NC"].includes(f.winner) ? "result-win" : "result-draw"}>
+                      {f.winner ?? "—"}
                     </td>
                     <td>{f.method}</td>
                     <td>{f.round ?? "—"}</td>
