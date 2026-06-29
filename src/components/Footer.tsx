@@ -19,6 +19,14 @@ export default function Footer() {
           𝕏 @mnews_mma をフォロー
         </a>
       </div>
+      <div>
+        <div className="footer-col-title">Mニュースについて</div>
+        <div className="footer-links">
+          <a href="/about">運営者情報</a>
+          <a href="/privacy">プライバシーポリシー</a>
+          <a href="/contact">お問い合わせ</a>
+        </div>
+      </div>
       <div className="footer-bottom">
         <span>© 2026 Mニュース</span>
         <span>日本MMAニュースを全部ここで</span>
