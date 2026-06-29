@@ -146,6 +146,45 @@ nav {
   border: 1px solid rgba(153, 153, 153, 0.3);
 }
 
+/* BREAKING */
+.breaking-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.breaking-bar:hover {
+  background: #1a1a1a;
+}
+.breaking-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: var(--accent);
+  color: #fff;
+  padding: 3px 10px;
+  flex-shrink: 0;
+}
+.breaking-title {
+  flex: 1;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.breaking-time {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--dim);
+  flex-shrink: 0;
+}
+
 /* SPLIT LAYOUT: 公式発表 / ニュース */
 .split-layout {
   display: grid;
@@ -700,6 +739,14 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .breaking-bar {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+  }
+  .breaking-title {
+    white-space: normal;
+    font-size: 13px;
+  }
   .nav-top {
     padding: 0 16px;
     gap: 12px;

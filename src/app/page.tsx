@@ -2,7 +2,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SplitFeed from "@/components/SplitFeed";
 import SocialSection from "@/components/SocialSection";
-import { ARTICLES, Article } from "@/lib/articles";
+import { ARTICLES, Article, relativeTimeJa } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
 import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
@@ -27,6 +27,10 @@ export default async function HomePage() {
     articles = articlesResult.articles;
   }
 
+  // 全体で一番新しい記事を BREAKING として最上部に表示する
+  // （公式発表/ニュースどちらに属していても良い）。
+  const breaking = articles[0];
+
   const officialAll = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
   const newsAll = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
   // 2カラムの見た目の長さを揃えるため、件数の少ない方に合わせる
@@ -38,6 +42,17 @@ export default async function HomePage() {
   return (
     <>
       <Nav />
+
+      {breaking && (
+        <a href={breaking.url} target="_blank" rel="noopener noreferrer" className="breaking-bar">
+          <span className="breaking-tag">BREAKING</span>
+          {OFFICIAL_ORGS.has(breaking.source) && (
+            <span className={`source-badge sb-${breaking.source}`}>{SOURCES[breaking.source].label}</span>
+          )}
+          <span className="breaking-title">{breaking.title}</span>
+          <span className="breaking-time">{relativeTimeJa(breaking.publishedAt)}</span>
+        </a>
+      )}
 
       <SplitFeed official={official} news={news} />
 

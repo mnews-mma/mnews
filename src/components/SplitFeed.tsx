@@ -35,36 +35,23 @@ export default function SplitFeed({
   official: Article[];
   news: Article[];
 }) {
-  const [tab, setTab] = useState<"official" | "news">("news");
+  const [tab, setTab] = useState<"official" | "news">("official");
 
   return (
     <div className="split-layout">
       <div className="split-tabs">
-        <button
-          className={`split-tab${tab === "news" ? " active" : ""}`}
-          onClick={() => setTab("news")}
-        >
-          ニュース
-        </button>
         <button
           className={`split-tab${tab === "official" ? " active" : ""}`}
           onClick={() => setTab("official")}
         >
           公式発表
         </button>
-      </div>
-
-      <div className={`split-col${tab === "news" ? " split-col-active" : ""}`}>
-        <div className="split-col-head split-col-head--news">
-          <span className="fl-title">ニュース</span>
-          <span className="fl-count">{news.length}件</span>
-          <a href="/archive?tab=news" className="fl-archive-link">過去の記事 →</a>
-        </div>
-        <div className="card-grid">
-          {news.map((a) => (
-            <NewsCard key={a.id} article={a} showBadge={false} />
-          ))}
-        </div>
+        <button
+          className={`split-tab${tab === "news" ? " active" : ""}`}
+          onClick={() => setTab("news")}
+        >
+          ニュース
+        </button>
       </div>
 
       <div className={`split-col${tab === "official" ? " split-col-active" : ""}`}>
@@ -76,6 +63,19 @@ export default function SplitFeed({
         <div className="card-grid">
           {official.map((a) => (
             <NewsCard key={a.id} article={a} showBadge />
+          ))}
+        </div>
+      </div>
+
+      <div className={`split-col${tab === "news" ? " split-col-active" : ""}`}>
+        <div className="split-col-head split-col-head--news">
+          <span className="fl-title">ニュース</span>
+          <span className="fl-count">{news.length}件</span>
+          <a href="/archive?tab=news" className="fl-archive-link">過去の記事 →</a>
+        </div>
+        <div className="card-grid">
+          {news.map((a) => (
+            <NewsCard key={a.id} article={a} showBadge={false} />
           ))}
         </div>
       </div>

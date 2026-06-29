@@ -29,7 +29,7 @@ export default async function ArchivePage({
   searchParams: Promise<{ tab?: string; page?: string }>;
 }) {
   const { tab: tabParam, page: pageParam } = await searchParams;
-  const tab: "news" | "official" = tabParam === "official" ? "official" : "news";
+  const tab: "news" | "official" = tabParam === "news" ? "news" : "official";
   const page = parseInt(pageParam ?? "1", 10) || 1;
 
   const articles = await fetchArchive();
@@ -53,11 +53,11 @@ export default async function ArchivePage({
       </div>
 
       <div className="split-tabs" style={{ display: "flex" }}>
-        <a href="/archive?tab=news" className={`split-tab${tab === "news" ? " active" : ""}`}>
-          ニュース
-        </a>
         <a href="/archive?tab=official" className={`split-tab${tab === "official" ? " active" : ""}`}>
           公式発表
+        </a>
+        <a href="/archive?tab=news" className={`split-tab${tab === "news" ? " active" : ""}`}>
+          ニュース
         </a>
       </div>
 
