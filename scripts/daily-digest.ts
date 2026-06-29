@@ -19,7 +19,23 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-function buildHtml(articles: Article[]): string {
+// X投稿用にそのままコピペできる「タイトル＋リンク」のプレーンテキスト。
+function buildCopyText(articles: Article[]): string {
+  if (articles.length === 0) return "過去24時間の新着記事はありませんでした。";
+  return articles
+    .map((a) => {
+      // "other"（二次メディア）の記事はタイトル自体に【RIZIN】等が
+      // 既に付いていることが多いので、二重にラベルを付けない。
+      if (a.source === "other" || /^【[^】]+】/.test(a.title)) {
+        return `${a.title}\n${a.url}`;
+      }
+      const label = SOURCES[a.source]?.label ?? a.source;
+      return `【${label}】${a.title}\n${a.url}`;
+    })
+    .join("\n\n");
+}
+
+function buildHtml(articles: Article[], copyText: string): string {
   if (articles.length === 0) {
     return "<p>過去24時間の新着記事はありませんでした。</p>";
   }
@@ -46,14 +62,20 @@ function buildHtml(articles: Article[]): string {
     <div style="font-family:-apple-system,sans-serif;max-width:640px;">
       <h2 style="font-size:16px;">Mニュース 朝刊ダイジェスト（過去24時間・${articles.length}件）</h2>
       <table style="width:100%;border-collapse:collapse;font-size:13px;">${rows}</table>
+
+      <h3 style="font-size:13px;margin-top:24px;">コピペ用（タイトル＋リンク）</h3>
+      <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#f5f3ef;padding:12px;border-radius:4px;user-select:all;">${escapeHtml(
+        copyText
+      )}</pre>
+
       <p style="margin-top:16px;"><a href="https://www.mnews.jp">Mニュースで全件見る →</a></p>
     </div>`;
 }
 
-async function sendEmail(html: string, count: number) {
+async function sendEmail(html: string, text: string, count: number) {
   if (!RESEND_API_KEY || !DIGEST_TO) {
     console.log("RESEND_API_KEY または DIGEST_TO_EMAIL が未設定のため送信をスキップしました。");
-    console.log(html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
+    console.log(text);
     return;
   }
 
@@ -68,12 +90,13 @@ async function sendEmail(html: string, count: number) {
       to: [DIGEST_TO],
       subject: `Mニュース 朝刊ダイジェスト（${count}件）`,
       html,
+      text,
     }),
   });
 
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Resend API error: ${res.status} ${text}`);
+    const errText = await res.text();
+    throw new Error(`Resend API error: ${res.status} ${errText}`);
   }
   console.log("送信完了。");
 }
@@ -85,8 +108,9 @@ async function main() {
   recent.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
   console.log(`過去24時間の記事: ${recent.length}件`);
-  const html = buildHtml(recent);
-  await sendEmail(html, recent.length);
+  const copyText = buildCopyText(recent);
+  const html = buildHtml(recent, copyText);
+  await sendEmail(html, copyText, recent.length);
 }
 
 main().catch((err) => {
