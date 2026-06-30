@@ -13,10 +13,16 @@ const ORG_OPTIONS: { key: "rizin" | "deep" | "pancrase" | "shooto"; label: strin
 
 export default function ResultsFilterList({ events }: { events: EventResult[] }) {
   const [org, setOrg] = useState<string | null>(null);
+  const [year, setYear] = useState<string | null>(null);
+
+  const years = useMemo(() => {
+    const set = new Set(events.map((e) => e.date.slice(0, 4)));
+    return Array.from(set).sort((a, b) => Number(b) - Number(a));
+  }, [events]);
 
   const filtered = useMemo(() => {
-    return events.filter((e) => (org ? e.org === org : true));
-  }, [events, org]);
+    return events.filter((e) => (org ? e.org === org : true) && (year ? e.date.startsWith(year) : true));
+  }, [events, org, year]);
 
   return (
     <>
@@ -33,6 +39,21 @@ export default function ResultsFilterList({ events }: { events: EventResult[] })
               onClick={() => setOrg(o.key)}
             >
               {o.label}
+            </button>
+          ))}
+        </div>
+        <div className="fighter-filter-group">
+          <span className="fighter-filter-label">開催年</span>
+          <button className={`fighter-filter-chip ${year === null ? "active" : ""}`} onClick={() => setYear(null)}>
+            すべて
+          </button>
+          {years.map((y) => (
+            <button
+              key={y}
+              className={`fighter-filter-chip ${year === y ? "active" : ""}`}
+              onClick={() => setYear(y)}
+            >
+              {y}年
             </button>
           ))}
         </div>
