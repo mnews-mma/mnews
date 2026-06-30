@@ -71,7 +71,7 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
                 </tr>
               </thead>
               <tbody>
-                {[...event.fights].reverse().map((f, i) => (
+                {event.fights.map((f, i) => (
                   <tr key={i}>
                     <td className="col-wrap">{f.weightClass}</td>
                     <td>
