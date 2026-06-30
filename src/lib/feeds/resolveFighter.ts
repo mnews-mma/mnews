@@ -17,16 +17,19 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   const [enWiki, jaWiki, ufcNickname] = await Promise.all([
     fighter.wikiTitleEn ? fetchWikiFighterRecord(fighter.wikiTitleEn).catch(() => null) : null,
     fetchJaWikiFighterRecord(jaTitle).catch(() => null),
-    fighter.ufcSlug ? fetchUfcNickname(fighter.ufcSlug).catch(() => null) : null,
+    !fighter.nickname && fighter.ufcSlug ? fetchUfcNickname(fighter.ufcSlug).catch(() => null) : null,
   ]);
 
   // 戦績テーブルは日本語版Wikipediaを優先し、無ければ英語版にフォールバックする。
   const wiki: WikiFighterData | null = jaWiki && jaWiki.history.length > 0 ? jaWiki : enWiki;
 
-  // ニックネームはこれまで通り「UFC公式 → 英語版Wikipedia → 日本語版Wikipedia」
-  // の優先順を維持する（戦績の参照元を変えても通称表示は変えない）。
+  // ニックネームの優先順位:
+  // 1. fighter.nickname（固定値・直接指定）
+  // 2. noNickname フラグが立っていれば非表示
+  // 3. UFC公式 → 英語版Wikipedia → 日本語版Wikipedia の自動取得
   const nicknameWiki = enWiki ?? jaWiki;
-  const nickname = fighter.noNickname ? undefined : ufcNickname ?? nicknameWiki?.infobox.nickname;
+  const nickname =
+    fighter.nickname ?? (fighter.noNickname ? undefined : ufcNickname ?? nicknameWiki?.infobox.nickname);
 
   if (wiki) {
     return {

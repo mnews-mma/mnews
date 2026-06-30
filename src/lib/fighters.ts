@@ -32,6 +32,9 @@ export interface Fighter {
   wikiTitleJa?: string;
   // 通称（ニックネーム）を表示しない選手向けフラグ。
   noNickname?: boolean;
+  // 通称を固定値で指定する場合に使う。設定時はUFC公式/Wikipediaからの
+  // 自動取得より優先される（noNicknameより後で判定）。
+  nickname?: string;
 }
 
 // Seed data. Per mnews-spec.md this is normally synced from the Wikipedia API.
