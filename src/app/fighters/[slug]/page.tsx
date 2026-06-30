@@ -87,6 +87,9 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
           {winRate !== null && <span> ／ 勝率 {winRate}%</span>}
           {finishRate !== null && <span> ／ フィニッシュ率 {finishRate}%</span>}
         </div>
+        <div className="page-sub" style={{ fontSize: 13, color: "var(--muted)" }}>
+          KO {fighter.ko} ／ 一本 {fighter.sub} ／ 判定 {fighter.decision}
+        </div>
         {(birthPlace || age) && (
           <div className="fighter-meta-row">
             {age && <span>{age}歳</span>}

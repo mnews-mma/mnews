@@ -88,27 +88,10 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
       </div>
 
       <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: 16 }}>
-        <div>
-          <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 6 }}>
-            画像URL（X投稿に直接貼ると画像がそのままカード表示されます）
-          </div>
-          <div style={{ display: "flex", gap: 8 }}>
-            <input
-              readOnly
-              value={imageUrl}
-              style={{ flex: 1, padding: "8px 12px", fontFamily: "var(--mono)", fontSize: 13 }}
-              onFocus={(e) => e.target.select()}
-            />
-            <button onClick={() => copy(imageUrl, "image")} style={{ padding: "8px 16px" }}>
-              {copied === "image" ? "コピーしました" : "コピー"}
-            </button>
-          </div>
-        </div>
-
-        {pageUrl && (
+        {mode === "single" && pageUrl && (
           <div>
             <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 6 }}>
-              選手ページURL（こちらを貼ると上の画像が自動でカード表示されます。通常はこちらを共有してください）
+              シェアURL（Xに貼るとカードが自動で表示されます）
             </div>
             <div style={{ display: "flex", gap: 8 }}>
               <input
@@ -125,10 +108,22 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
         )}
 
         {mode === "vs" && (
-          <p style={{ fontSize: 12, color: "var(--muted)" }}>
-            ※ 対戦カードはまだ専用ページがないため、画像URLを直接貼り付けてください
-            （Xはリンク末尾が画像ファイルだと自動でカード表示します）。
-          </p>
+          <div>
+            <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 6 }}>
+              シェアURL（Xに貼るとカードが自動で表示されます）
+            </div>
+            <div style={{ display: "flex", gap: 8 }}>
+              <input
+                readOnly
+                value={imageUrl}
+                style={{ flex: 1, padding: "8px 12px", fontFamily: "var(--mono)", fontSize: 13 }}
+                onFocus={(e) => e.target.select()}
+              />
+              <button onClick={() => copy(imageUrl, "image")} style={{ padding: "8px 16px" }}>
+                {copied === "image" ? "コピーしました" : "コピー"}
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>

@@ -4,7 +4,7 @@ import OgCardTool from "@/components/OgCardTool";
 import { FIGHTERS } from "@/lib/fighters";
 
 export const metadata = {
-  title: "OGカード生成ツール — Mニュース",
+  title: "X投稿用カード作成 — Mニュース",
   robots: { index: false, follow: false },
 };
 
@@ -15,7 +15,7 @@ export default function OgCardToolPage() {
     <>
       <Nav />
       <div className="page-head">
-        <div className="page-title">OGカード生成ツール</div>
+        <div className="page-title">X投稿用カード作成</div>
         <div className="page-sub">選手を選ぶとX投稿用の戦績カードURLが生成されます</div>
       </div>
       <OgCardTool fighters={fighters} />

@@ -21,7 +21,12 @@ export default async function FightersPage() {
       <Nav />
       <div className="page-head">
         <h1 className="page-title">選手戦績一覧</h1>
-        <div className="page-sub">日本人MMA選手の戦績データ</div>
+        <div className="page-sub">
+          日本人MMA選手の戦績データ
+          <a href="/tools/fighter-card" style={{ fontSize: 13, color: "var(--accent)", marginLeft: 8 }}>
+            → X投稿用カード作成
+          </a>
+        </div>
       </div>
       <FighterFilterGrid fighters={fighters} />
       <Footer />
