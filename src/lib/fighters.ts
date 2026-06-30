@@ -165,7 +165,7 @@ export const FIGHTERS: Fighter[] = [
   },
   {
     slug: "koike-kleber",
-    nameJa: "クレベル コイケ",
+    nameJa: "クレベル・コイケ",
     nameEn: "Kleber Koike Erbst",
     org: "rizin",
     weightClass: "フェザー級",
@@ -867,7 +867,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     wikiTitleJa: "皇治",
-    nickname: "鋼のエンペラ",
+    nickname: "鋼のエンペラー",
   },
 ];
 

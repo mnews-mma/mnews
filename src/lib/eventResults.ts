@@ -1757,7 +1757,7 @@ export const EVENT_RESULTS: EventResult[] = [
   {
     slug: "rizin-shiwasu-2025",
     org: "rizin",
-    eventName: "Yogibo presents RIZIN師走の超強者祭り",
+    eventName: "RIZIN師走の超強者祭り",
     date: "2025-12-31",
     venue: "さいたまスーパーアリーナ",
     sourceUrl: "https://jp.rizinff.com/_ct/17813426",

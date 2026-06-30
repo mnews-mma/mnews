@@ -31,9 +31,15 @@ const RESULT_CLASS: Record<string, string> = {
 // 大会名（RIZIN.52など）からMニュース掲載の結果ページを探す。
 // 表記揺れ（全角/半角・サブタイトル付き等）があるため、双方向の部分一致で見る。
 function findEventSlug(eventName: string): string | null {
-  const match = EVENT_RESULTS.find(
-    (e) => e.eventName === eventName || eventName.includes(e.eventName) || e.eventName.includes(eventName)
-  );
+  // Wikipedia側の表記は "RIZIN 師走の超強者祭り" のようにスペースが
+  // 入ることがあり、こちらのデータ（スペース無し）と食い違うため、
+  // 比較時はスペースを除去して揃える。
+  const norm = (s: string) => s.replace(/\s/g, "");
+  const target = norm(eventName);
+  const match = EVENT_RESULTS.find((e) => {
+    const en = norm(e.eventName);
+    return en === target || target.includes(en) || en.includes(target);
+  });
   return match ? match.slug : null;
 }
 
