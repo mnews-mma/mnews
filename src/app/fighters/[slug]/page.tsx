@@ -47,10 +47,15 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const { history, wins, losses, draws, nickname, birthPlace, age } = fighter;
   const { winRate, finishRate } = calcFighterRates(fighter);
 
-  // サイト回遊を狙い、同階級の他選手を4人下部に表示する（4列グリッドの隙間を防ぐため）。
+  // サイト回遊を狙い、同階級の他選手をランダムに4人下部に表示する
+  // （4列グリッドの隙間を防ぐため4人固定、毎回表示順を変える）。
   const sameWeightClass = FIGHTERS.filter(
     (f) => f.slug !== slug && f.weightClass === fighter.weightClass
-  ).slice(0, 4);
+  )
+    .map((f) => ({ f, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .slice(0, 4)
+    .map(({ f }) => f);
 
   return (
     <>
