@@ -18,6 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${fighter.nameJa} 戦績・試合結果 | Mニュース`,
     description: `${fighter.nameJa}（${fighter.org.toUpperCase()}・${fighter.weightClass}）の戦績・試合結果一覧。`,
     path: `/fighters/${fighter.slug}`,
+    image: {
+      url: `/api/og/fighter/${fighter.slug}`,
+      width: 1200,
+      height: 630,
+      alt: `${fighter.nameJa} 戦績カード`,
+    },
   });
 }
 
