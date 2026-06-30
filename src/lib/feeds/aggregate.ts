@@ -139,13 +139,13 @@ async function fetchPancraseReleases(): Promise<Article[]> {
 async function fetchEfightMma(): Promise<Article[]> {
   const html = await fetchText("https://efight.jp/genre?tag=mma");
   if (!html) return [];
-  const matches = Array.from(
-    html.matchAll(/<a href="(https:\/\/efight\.jp\/news-(\d{8})_\d+)"[^>]*><h5[^>]*>([^<]+)<\/h5>/g)
-  );
+  // 2026年6月時点のHTML構造: <a href="/news-20260609_1717007">タイトル</a>
+  // （相対URL・<h5>なしのプレーンテキスト）
+  const matches = Array.from(html.matchAll(/<a href="(\/news-(\d{8})_\d+)">\s*([^<]+?)\s*<\/a>/g));
   const out: Article[] = [];
-  matches.forEach(([, url, dateStr, rawTitle], i) => {
+  matches.forEach(([, path, dateStr, rawTitle], i) => {
     const title = rawTitle.replace(/\s+/g, " ").trim();
-    if (!isMmaRelevant(title)) return;
+    if (!title || !isMmaRelevant(title)) return;
     const y = dateStr.slice(0, 4);
     const m = dateStr.slice(4, 6);
     const d = dateStr.slice(6, 8);
@@ -154,7 +154,7 @@ async function fetchEfightMma(): Promise<Article[]> {
       source: "other",
       title,
       origin: "イーファイト",
-      url,
+      url: `https://efight.jp${path}`,
       publishedAt: toIso(`${y}-${m}-${d}`),
     });
   });

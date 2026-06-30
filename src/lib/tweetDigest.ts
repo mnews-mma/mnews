@@ -3,11 +3,13 @@ import { SourceKey } from "./sources";
 
 const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep", "shooto", "pancrase"]);
 
-// ニュースバリューが高いキーワード（+1点ずつ）
+// ニュースバリューが高いキーワード（+1点ずつ）。試合速報・カード決定を最優先。
 const IMPACT_KEYWORDS = [
   "電撃",
   "緊急",
   "速報",
+  "カード決定",
+  "対戦相手",
   "王座",
   "王者",
   "防衛",
@@ -21,10 +23,10 @@ const IMPACT_KEYWORDS = [
   "新王者",
   "タイトル",
   "参戦",
-  "対戦相手",
 ];
 
-// ニュースバリューが低いキーワード（-2点ずつ）
+// ニュースバリューが低いキーワード（-2点ずつ）。合同練習・キャンペーン・
+// 結果まとめ記事はわざわざ目立たせる必要がないため減点する。
 const LOW_VALUE_KEYWORDS = [
   "合同練習",
   "公開練習",
@@ -35,6 +37,8 @@ const LOW_VALUE_KEYWORDS = [
   "計量",
   "囲み取材",
   "記者会見",
+  "結果まとめ",
+  "キャンペーン",
 ];
 
 function impactScore(a: Article): number {
@@ -57,6 +61,27 @@ export function selectTopNews(articles: Article[], count = 3): Article[] {
     .sort((x, y) => (y.score !== x.score ? y.score - x.score : x.index - y.index))
     .slice(0, count)
     .map((x) => x.a);
+}
+
+// BREAKING表示用。インパクトスコアに加え鮮度を強く重視する：
+// 6時間以内はボーナス、12時間超は減点、24時間超は対象外にする。
+function breakingScore(a: Article): number {
+  const ageHours = (Date.now() - new Date(a.publishedAt).getTime()) / (60 * 60 * 1000);
+  if (ageHours > 24) return -Infinity;
+  let score = impactScore(a);
+  if (ageHours <= 6) score += 3;
+  else if (ageHours > 12) score -= 4;
+  return score;
+}
+
+// 公式・ニュース問わず全記事から、鮮度を重視したインパクト最上位の1件を選ぶ。
+// 24時間以上前の記事は対象外（古いニュースをBREAKING扱いしない）。
+export function selectBreaking(articles: Article[]): Article | null {
+  const ranked = articles
+    .map((a, index) => ({ a, index, score: breakingScore(a) }))
+    .filter((x) => x.score > -Infinity)
+    .sort((x, y) => (y.score !== x.score ? y.score - x.score : x.index - y.index));
+  return ranked.length > 0 ? ranked[0].a : null;
 }
 
 function truncate(s: string, max: number): string {
@@ -91,9 +116,9 @@ export interface TweetDigest {
 }
 
 // X投稿フォーマット:
-// {フック文}
+// 🥊 {フック文}
 //
-// 昨日のMMAニュースまとめ
+// 📰 昨日のMMAニュースまとめ
 //
 // ・{ニュース1}
 // ・{ニュース2}
@@ -102,8 +127,8 @@ export interface TweetDigest {
 // 全件はこちら→ https://www.mnews.jp/
 //
 // #MMA #RIZIN #DEEP
-export function buildTweetDigest(articles: Article[]): TweetDigest {
-  const topNews = selectTopNews(articles, 3);
+export function buildTweetDigest(articles: Article[], count = 3): TweetDigest {
+  const topNews = selectTopNews(articles, count);
   const hashtags = buildHashtags(topNews);
 
   if (topNews.length === 0) {
@@ -121,13 +146,13 @@ export function buildTweetDigest(articles: Article[]): TweetDigest {
     };
   }
 
-  const hook = truncate(topNews[0].title, 45);
-  const lines = topNews.map((a) => `・${truncate(a.title, 40)}`);
+  const hook = truncate(topNews[0].title, 30);
+  const lines = topNews.map((a) => `・${truncate(a.title, 30)}`);
 
   const text = [
-    hook,
+    `🥊 ${hook}`,
     "",
-    "昨日のMMAニュースまとめ",
+    "📰 昨日のMMAニュースまとめ",
     "",
     ...lines,
     "",

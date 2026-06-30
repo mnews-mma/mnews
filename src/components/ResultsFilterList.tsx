@@ -46,7 +46,7 @@ export default function ResultsFilterList({ events }: { events: EventResult[] })
             className="results-list-item"
             style={{ borderLeftColor: SOURCES[e.org].color }}
           >
-            <div className="fighter-org" style={{ color: SOURCES[e.org].color }}>
+            <div className="org-tag" style={{ color: SOURCES[e.org].color }}>
               {SOURCES[e.org].label}
             </div>
             <div className="results-list-title">{e.eventName}</div>

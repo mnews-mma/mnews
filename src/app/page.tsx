@@ -9,7 +9,7 @@ import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
-import { selectTopNews } from "@/lib/tweetDigest";
+import { selectBreaking } from "@/lib/tweetDigest";
 
 // 外部フィード取得をビルド時ではなくリクエスト時に行う。
 // データ自体は fetch() の revalidate 設定により30分キャッシュされる。
@@ -51,8 +51,8 @@ export default async function HomePage() {
 
   const officialAll = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
   const newsAll = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
-  // 公式・ニュース問わず全記事からインパクトスコア最上位を BREAKING として表示する。
-  const breaking = selectTopNews(articles, 1)[0] ?? null;
+  // 公式・ニュース問わず全記事から、鮮度を重視したインパクト最上位を BREAKING として表示する。
+  const breaking = selectBreaking(articles);
   // 2カラムの見た目の長さを揃えるため、件数の少ない方に合わせる
   // （どちらも公開日時の降順なので、それぞれの最新N件が残る）。最大10件。
   const evenCount = Math.min(officialAll.length, newsAll.length, 10);
@@ -97,7 +97,7 @@ export default async function HomePage() {
                 className="results-list-item"
                 style={{ borderLeftColor: SOURCES[e.org].color }}
               >
-                <div className="fighter-org" style={{ color: SOURCES[e.org].color }}>
+                <div className="org-tag" style={{ color: SOURCES[e.org].color }}>
                   {SOURCES[e.org].label}
                 </div>
                 <div className="results-list-title">{e.eventName}</div>

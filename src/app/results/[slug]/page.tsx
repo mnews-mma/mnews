@@ -24,7 +24,7 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
     <>
       <Nav />
       <div className="page-head">
-        <div className="fighter-org" style={{ color: SOURCES[event.org].color }}>
+        <div className="org-tag" style={{ color: SOURCES[event.org].color }}>
           {SOURCES[event.org].label}
         </div>
         <div className="page-title" style={{ marginTop: 8 }}>
