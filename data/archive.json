@@ -1,5 +1,41 @@
 [
   {
+    "id": "deep-0",
+    "source": "deep",
+    "title": "DEEP 132 IMPACTの前日計量の模様を生配信いたします。",
+    "summary": "2026年7月5日（日）にニューピアホールで開催する『宗明建設Presents DEEP 132 IMPACT』の前日計量の模様を生配信いたします。 前日計量2026年７月４日（土）13時開始 【配…",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/deep-132-impact%e3%81%ae%e5%89%8d%e6%97%a5%e8%a8%88%e9%87%8f%e3%81%ae%e6%a8%a1%e6%a7%98%e3%82%92%ef%bc%97%e6%9c%88%ef%bc%94%e6%97%a5%e3%81%ae13%e6%99%82%e3%82%88%e3%82%8a%e7%94%9f%e9%85%8d%e4%bf%a1/",
+    "publishedAt": "2026-06-30T05:33:24.000Z"
+  },
+  {
+    "id": "gonkaku-3",
+    "source": "other",
+    "title": "【RIZIN】コレスニック撃破の武田光司が8月11日『RIZIN.54』東京大会に出場！ 7月1日（水）12時、RIZIN公式SNSにて対戦相手を発表",
+    "summary": "2026年8月11日（火・祝）東京・TOYOTA ARENA TOKYOで開催の『RIZIN.54』に、武田光司（TRIBE TOKYO MMA）の参戦が発表された。対戦相手は、7月1日（水）昼12…",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24189",
+    "publishedAt": "2026-06-30T05:11:27.000Z"
+  },
+  {
+    "id": "gonkaku-4",
+    "source": "other",
+    "title": "【Lemino修斗】“聖地”でファン層拡大へ「高校生以下」「女性」限定で「1,000円」の割引チケットを導入＝7月13日（月）後楽園ホール",
+    "summary": "2026年6月28日の『Lemino修斗TORAO』（Lemino配信）に続き、7月13日（月）に東京・後楽園ホールで開催される『Lemino修斗.7』の対戦カードが続々と発表されている。 1996…",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24188",
+    "publishedAt": "2026-06-30T03:03:29.000Z"
+  },
+  {
+    "id": "gonkaku-5",
+    "source": "other",
+    "title": "【ONE】女王対決を歴史に残る大激闘で制したロドリゲスがMMA転向を表明「すでにMMAのトレーニングを始めて、本格的に転向する予定。次の試合はMMAになるでしょう」",
+    "summary": "2026年6月19日(金)タイ・ルンピニースタジアムで開催された『ONE Friday Fights 159 ＆ The Inner Circle 19』（U-NEXT配信）にて、ONE女子アトム級…",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24187",
+    "publishedAt": "2026-06-30T02:54:10.000Z"
+  },
+  {
     "id": "rizin-0",
     "source": "rizin",
     "title": "7/3(金)開催【観覧募集】『abc presents RIZIN LANDMARK 15 in HIROSHIMA』合同公開練習",
@@ -52,6 +88,14 @@
     "origin": "ゴング格闘技",
     "url": "https://gonkaku.jp/articles/24181",
     "publishedAt": "2026-06-29T03:38:00.000Z"
+  },
+  {
+    "id": "pancrase-1",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.11：対戦カード",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood11/index.html",
+    "publishedAt": "2026-06-29T00:00:00.000Z"
   },
   {
     "id": "shooto-0",
@@ -202,6 +246,14 @@
     "title": "PANCRASE 363：試合中止のお知らせ",
     "origin": "パンクラス公式",
     "url": "https://www.pancrase.co.jp/tour/2026/pancrase363/index.html#onomaekawa",
+    "publishedAt": "2026-06-27T00:00:00.000Z"
+  },
+  {
+    "id": "efight-0",
+    "source": "other",
+    "title": "【RIZIN】秋元強真、快音響く“超速パンチ”披露！鋭すぎるミット打ちに「速くて強っ…！」",
+    "origin": "イーファイト",
+    "url": "https://efight.jp/news-20260627_1721606",
     "publishedAt": "2026-06-27T00:00:00.000Z"
   },
   {
