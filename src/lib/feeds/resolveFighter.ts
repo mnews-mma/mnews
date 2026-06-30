@@ -11,9 +11,11 @@ export interface ResolvedFighter extends Fighter {
 }
 
 export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter> {
-  // wikiTitleJa が未指定の選手も、日本語版Wikipediaは大半が日本語表記名と
-  // 同じページ名で存在するため nameJa をデフォルトのタイトルとして試す。
-  const jaTitle = fighter.wikiTitleJa ?? fighter.nameJa;
+  // wikiTitleJa が未指定の選手も、日本語版Wikipediaの記事名は「姓名」の間に
+  // スペースを含まないのが通例（MediaWiki APIはスペース付きタイトルを別物として
+  // 扱い missingtitle エラーになる）ため、nameJa からスペースを除いたものを
+  // デフォルトのタイトルとして試す。
+  const jaTitle = fighter.wikiTitleJa ?? fighter.nameJa.replace(/\s/g, "");
   const [enWiki, jaWiki, ufcNickname] = await Promise.all([
     fighter.wikiTitleEn ? fetchWikiFighterRecord(fighter.wikiTitleEn).catch(() => null) : null,
     fetchJaWikiFighterRecord(jaTitle).catch(() => null),

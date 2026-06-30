@@ -230,6 +230,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 5,
     history: [],
     wikiTitleEn: "Rena Kubota",
+    wikiTitleJa: "RENA (格闘家)",
     noNickname: true,
   },
   {

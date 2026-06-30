@@ -294,8 +294,31 @@ function parseJaDate(raw: string): string {
   return `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
 }
 
+// キックボクシング等MMA以外の競技も兼ねる選手は、「総合格闘技」節の中だけに
+// MMAの試合履歴・recordboxがあり、それ以外の節（キックボクシング等）にも
+// 同形式のテンプレートが並んでいることがある。「総合格闘技」を含む見出しが
+// 見つかれば、次の見出し（同階層以上）までの範囲に絞り込む。見つからなければ
+// （単一競技の選手ページ）全文をそのまま返す。
+function extractMmaSection(wikitext: string): string {
+  // 「獲得タイトル」節などにも同名の見出し（例: "=== 総合格闘技 ==="）が
+  // 出ることがあるため、見出し名だけでなく実際に試合履歴
+  // （{{Fight-cont}}）を含む節を選ぶ。
+  const headingRe = /={2,4}[^=\n]*総合格闘技[^=\n]*={2,4}/g;
+  const allHeadingsRe = /={2,4}[^=\n]+={2,4}/g;
+  let m: RegExpExecArray | null;
+  while ((m = headingRe.exec(wikitext))) {
+    const afterStart = m.index + m[0].length;
+    allHeadingsRe.lastIndex = afterStart;
+    const next = allHeadingsRe.exec(wikitext);
+    const section = wikitext.slice(afterStart, next ? next.index : undefined);
+    if (section.includes("{{Fight-cont")) return section;
+  }
+  return wikitext;
+}
+
 export function parseJaFightHistory(wikitext: string): FightRecord[] {
-  const blocks = Array.from(wikitext.matchAll(/\{\{Fight-cont\|([\s\S]*?)\}\}/g));
+  const scope = extractMmaSection(wikitext);
+  const blocks = Array.from(scope.matchAll(/\{\{Fight-cont\|([\s\S]*?)\}\}/g));
   const records: FightRecord[] = [];
 
   for (const [, content] of blocks) {
@@ -371,16 +394,22 @@ function jaField(wikitext: string, ...names: string[]): number | null {
 // {{Fight-cont}} の試合履歴にはアマチュア戦・異種格闘技イベント
 // （BreakingDown等）も混在することがあり、それを数え上げると公式の
 // プロMMA戦績と食い違うため、合計値は必ずinfoboxの数字を優先する。
+//
+// キックボクシング等MMA以外の競技を兼ねる選手（例: RENA）は、記事冒頭の
+// infoboxにキャリア全体（MMA以外を含む）の戦績が、さらに「総合格闘技」節に
+// MMA限定のrecordboxが別途置かれていることがある。extractMmaSection で
+// 「総合格闘技」節に絞ってから検索することで、冒頭の誤った値を避ける。
 function parseJaRecordTotals(
   wikitext: string
 ): Omit<WikiFighterData, "history" | "infobox"> | null {
-  const wins = jaField(wikitext, "wins", "win");
-  const losses = jaField(wikitext, "losses", "loss");
+  const scope = extractMmaSection(wikitext);
+  const wins = jaField(scope, "wins", "win");
+  const losses = jaField(scope, "losses", "loss");
   if (wins === null || losses === null) return null;
-  const draws = jaField(wikitext, "draws", "draw") ?? 0;
-  const ko = jaField(wikitext, "KOwins", "KO", "wins_ko") ?? 0;
-  const sub = jaField(wikitext, "subwins", "wins_submission") ?? 0;
-  const decision = jaField(wikitext, "decwins", "wins_decision") ?? 0;
+  const draws = jaField(scope, "draws", "draw") ?? 0;
+  const ko = jaField(scope, "KOwins", "KO", "wins_ko") ?? 0;
+  const sub = jaField(scope, "subwins", "wins_submission") ?? 0;
+  const decision = jaField(scope, "decwins", "wins_decision") ?? 0;
   return { wins, losses, draws, ko, sub, decision };
 }
 
