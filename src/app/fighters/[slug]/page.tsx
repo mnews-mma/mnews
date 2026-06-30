@@ -92,7 +92,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                   <th>日付</th>
                   <th>対戦相手</th>
                   <th>結果</th>
-                  <th>方法</th>
+                  <th>決着</th>
                   <th>大会名</th>
                   <th>ラウンド</th>
                 </tr>

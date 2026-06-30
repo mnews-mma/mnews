@@ -151,6 +151,14 @@ export default async function HomePage() {
             );
           })}
         </div>
+        <div style={{ padding: "16px 24px", textAlign: "center", borderTop: "1px solid var(--border)" }}>
+          <a
+            href="/fighters"
+            style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--accent)", letterSpacing: 2 }}
+          >
+            全選手を見る →
+          </a>
+        </div>
       </div>
 
       <Footer />
