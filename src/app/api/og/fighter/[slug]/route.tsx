@@ -3,50 +3,9 @@ import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates } from "@/lib/fighters";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
 import { SOURCES } from "@/lib/sources";
+import { OG_COLORS as COLORS, SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
 
 export const runtime = "edge";
-
-const SITE_URL = "https://www.mnews.jp";
-
-// デザイントークン
-const COLORS = {
-  sumi: "#131210",
-  washi: "#EDE6D6",
-  shu: "#C8262C",
-  gold: "#C29A4B",
-  indigo: "#2B3A55",
-  ash: "#8A8478",
-  foot: "#0C0B0A",
-};
-
-let fontCache: { bebas: ArrayBuffer; notoBlack: ArrayBuffer } | null = null;
-
-async function loadFonts() {
-  if (fontCache) return fontCache;
-  const oldUA =
-    "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.7 Safari/534.34";
-
-  const [bebasCss, notoCss] = await Promise.all([
-    fetch("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap", {
-      headers: { "User-Agent": oldUA },
-    }).then((r) => r.text()),
-    fetch("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap", {
-      headers: { "User-Agent": oldUA },
-    }).then((r) => r.text()),
-  ]);
-
-  const bebasUrl = bebasCss.match(/url\((https:\/\/fonts\.gstatic\.com[^)]+)\)/)?.[1];
-  const notoUrl = notoCss.match(/url\((https:\/\/fonts\.gstatic\.com[^)]+)\)/)?.[1];
-  if (!bebasUrl || !notoUrl) throw new Error("font URL extraction failed");
-
-  const [bebas, notoBlack] = await Promise.all([
-    fetch(bebasUrl).then((r) => r.arrayBuffer()),
-    fetch(notoUrl).then((r) => r.arrayBuffer()),
-  ]);
-
-  fontCache = { bebas, notoBlack };
-  return fontCache;
-}
 
 function fallbackRedirect() {
   return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
@@ -68,7 +27,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
     const decPct = (decision / total) * 100;
 
     const orgLabel = SOURCES[fighter.org]?.label ?? fighter.org.toUpperCase();
-    const { bebas, notoBlack } = await loadFonts();
+    const fonts = await loadOgFonts();
 
     return new ImageResponse(
       (
@@ -306,10 +265,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
       {
         width: 1200,
         height: 630,
-        fonts: [
-          { name: "Bebas Neue", data: bebas, weight: 400, style: "normal" },
-          { name: "Noto Sans JP", data: notoBlack, weight: 900, style: "normal" },
-        ],
+        fonts: OG_FONT_FAMILIES(fonts),
       }
     );
   } catch (err) {
