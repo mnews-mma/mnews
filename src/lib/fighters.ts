@@ -58,6 +58,7 @@ export const FIGHTERS: Fighter[] = [
     ],
     wikiTitleEn: "Tatsuro Taira",
     ufcSlug: "tatsuro-taira",
+    nickname: "The Best",
   },
   {
     slug: "nakamura-rinya",
@@ -76,6 +77,7 @@ export const FIGHTERS: Fighter[] = [
     ],
     wikiTitleEn: "Rinya Nakamura",
     ufcSlug: "rinya-nakamura",
+    nickname: "Hybrid",
   },
   {
     slug: "horiguchi-kyoji",
@@ -94,6 +96,7 @@ export const FIGHTERS: Fighter[] = [
     ],
     wikiTitleEn: "Kyoji Horiguchi",
     ufcSlug: "kyoji-horiguchi",
+    nickname: "KARATE KID",
   },
   {
     slug: "asakura-kai",
@@ -110,6 +113,7 @@ export const FIGHTERS: Fighter[] = [
     history: [],
     wikiTitleEn: "Kai Asakura",
     ufcSlug: "kai-asakura",
+    nickname: "革命のアウトサイダー",
   },
   {
     slug: "tsuruya-rei",
@@ -124,6 +128,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 5,
     decision: 2,
     history: [],
+    noNickname: true,
   },
   {
     slug: "hiramoto-ren",
@@ -139,6 +144,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 4,
     history: [],
     wikiTitleEn: "Ren Hiramoto",
+    nickname: "令和の黒きカリスマ",
   },
   {
     slug: "asakura-mikuru",
@@ -154,6 +160,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     wikiTitleEn: "Mikuru Asakura",
+    nickname: "路上の伝説",
   },
   {
     slug: "koike-kleber",
@@ -169,6 +176,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     wikiTitleEn: "Kleber Koike Erbst",
+    nickname: "柔術界の鬼神",
   },
   {
     slug: "akimoto-kyoma",
@@ -184,6 +192,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 3,
     history: [],
     // 英語版Wikipediaに記事がまだ無いため戦績はシードデータのまま。
+    nickname: "超強真星",
   },
   {
     slug: "inoue-naoki",
@@ -199,6 +208,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 8,
     history: [],
     wikiTitleEn: "Naoki Inoue",
+    nickname: "地獄のエンジェル",
   },
   {
     slug: "izawa-seika",
@@ -214,7 +224,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 5,
     history: [],
     wikiTitleEn: "Seika Izawa",
-    noNickname: true,
+    nickname: "天然技巧派 IQファイター",
   },
   {
     slug: "rena",
@@ -231,7 +241,7 @@ export const FIGHTERS: Fighter[] = [
     history: [],
     wikiTitleEn: "Rena Kubota",
     wikiTitleJa: "RENA (格闘家)",
-    noNickname: true,
+    nickname: "NIPPONのツヨカワ女王",
   },
   {
     slug: "saito-yutaka",
@@ -247,6 +257,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 14,
     history: [],
     // 英語版Wikipediaに記事がまだ無いため戦績はシードデータのまま。
+    nickname: "令和の修斗伝承者",
   },
   {
     slug: "ya-man",
@@ -262,6 +273,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 5,
     history: [],
     wikiTitleEn: "YA-MAN",
+    nickname: "King of Street Fight",
   },
   {
     slug: "hagiwara-kyohei",
@@ -277,6 +289,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 2,
     history: [],
     // 英語版Wikipediaに記事がまだ無いため戦績はシードデータ（日本語版より）。
+    nickname: "反逆のSMOKER",
   },
   {
     slug: "majima-kazumasa",
@@ -291,6 +304,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 16,
     decision: 2,
     history: [],
+    nickname: "町工場のグラップラー",
   },
   {
     slug: "hiroya",
@@ -306,6 +320,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 3,
     history: [],
     // 英語版Wikipediaに記事はあるが戦績テーブルが無いためシードデータ。
+    nickname: "不屈のヤングガン",
   },
   {
     slug: "shinryu-makoto",
@@ -321,7 +336,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 16,
     history: [],
     wikiTitleEn: "Makoto Takahashi (fighter)",
-    noNickname: true,
+    nickname: "日本のラフ・ダイヤモンド",
   },
   {
     slug: "ougikubo-hiromasa",
@@ -337,6 +352,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 23,
     history: [],
     wikiTitleJa: "扇久保博正",
+    nickname: "打・投・極・根性",
   },
   {
     slug: "motoya-yuki",
@@ -351,6 +367,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 14,
     decision: 17,
     history: [],
+    nickname: "DEEPのファンタジスタ",
   },
   {
     slug: "yachi-yusuke",
@@ -366,6 +383,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 18,
     history: [],
     // 英語版Wikipediaに記事はあるが戦績テーブルが無いためシードデータ。
+    nickname: "お祭り漢",
   },
   {
     slug: "shinotsuka-tatsuki",
@@ -381,7 +399,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     wikiTitleEn: "Tatsuki Shinotsuka",
-    noNickname: true,
+    nickname: "THE PROBLEM BOY",
   },
   {
     slug: "tomizawa-daichi",
@@ -396,6 +414,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 0,
     decision: 1,
     history: [],
+    nickname: "BDの闘神",
   },
   {
     slug: "ashizawa-ryusei",
@@ -411,6 +430,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     wikiTitleEn: "Ryusei Ashizawa",
+    nickname: "BAD NAMAZU",
   },
   {
     slug: "jolly",
@@ -425,6 +445,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 2,
     decision: 0,
     history: [],
+    nickname: "危険な金獅子",
   },
   {
     slug: "fukuda-ryuya",
@@ -439,6 +460,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 1,
     decision: 12,
     history: [],
+    nickname: "壬生の大蛇",
   },
   {
     slug: "takagi-ryo",
@@ -453,6 +475,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 1,
     decision: 2,
     history: [],
+    nickname: "ゴールデン・ライト",
   },
   {
     slug: "ota-shinobu",
@@ -468,6 +491,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     wikiTitleEn: "Shinobu Ota",
+    nickname: "銀の忍者レスラー",
   },
   {
     slug: "kate-lotus",
@@ -482,6 +506,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 2,
     decision: 6,
     history: [],
+    nickname: "不屈の睡蓮",
   },
   {
     slug: "hiramoto-jo",
@@ -496,6 +521,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 1,
     decision: 2,
     history: [],
+    nickname: "美しき金狼",
   },
   {
     slug: "oshima-saori",
@@ -511,6 +537,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 5,
     history: [],
     wikiTitleEn: "Saori Oshima",
+    nickname: "極めのミクロクイーン",
   },
   {
     slug: "kashimura-ninnosuke",
@@ -525,6 +552,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 10,
     decision: 1,
     history: [],
+    nickname: "黒帯のリベリオン",
   },
   {
     slug: "sato-masamitsu",
@@ -539,6 +567,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 4,
     decision: 14,
     history: [],
+    nickname: "ミスターいぶし銀",
   },
   {
     slug: "goto-joji",
@@ -553,6 +582,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 4,
     decision: 6,
     history: [],
+    nickname: "北海の宮本武蔵",
   },
   {
     slug: "ito-yuki",
@@ -567,6 +597,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 2,
     decision: 9,
     history: [],
+    nickname: "ザ・ギャンブラー",
   },
   {
     slug: "suzuki-chihiro",
@@ -582,6 +613,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 5,
     history: [],
     wikiTitleEn: "Chihiro Suzuki (fighter)",
+    nickname: "天下無双の稲妻ボーイ",
   },
   {
     slug: "seiya-takashi",
@@ -596,6 +628,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 0,
     decision: 4,
     history: [],
+    nickname: "松戸の鴉松戸の不死鳥",
   },
   {
     slug: "noel",
@@ -610,6 +643,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 4,
     decision: 0,
     history: [],
+    noNickname: true,
   },
   {
     slug: "nomura-shunta",
@@ -624,6 +658,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 0,
     decision: 6,
     history: [],
+    nickname: "駿速のKARATEヘラクレス",
   },
   {
     slug: "yamamoto-arsen",
@@ -638,6 +673,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 1,
     decision: 3,
     history: [],
+    nickname: "格闘一家の最強DNA",
   },
   {
     slug: "horie-keiko",
@@ -652,6 +688,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 0,
     decision: 8,
     history: [],
+    nickname: "裸の銃をもつ漢",
   },
   {
     slug: "souza-roberto-satoshi",
@@ -667,6 +704,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 1,
     history: [],
     wikiTitleEn: "Roberto de Souza",
+    nickname: "カナリア色の大和魂",
   },
   {
     slug: "ando-tatsuya",
@@ -681,6 +719,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 6,
     decision: 3,
     history: [],
+    nickname: "遅れてきた\"怪物\"",
   },
   {
     slug: "sakuraba-taisei",
@@ -695,6 +734,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 1,
     decision: 0,
     history: [],
+    nickname: "Saku Jr.",
   },
   {
     slug: "usami-sho-patrick",
@@ -709,6 +749,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 0,
     decision: 2,
     history: [],
+    nickname: "聖なる破壊者",
   },
   {
     slug: "umeno-genji",
@@ -724,6 +765,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 2,
     history: [],
     wikiTitleEn: "Genji Umeno",
+    nickname: "ヤバいだろ",
   },
   {
     slug: "kintaro",
@@ -738,6 +780,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 3,
     decision: 4,
     history: [],
+    nickname: "マサカリ殺法",
   },
   {
     slug: "suda-moeri",
@@ -753,6 +796,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 5,
     history: [],
     wikiTitleEn: "Moeri Suda",
+    nickname: "寝技の萌ちゃん",
   },
   {
     slug: "kubo-yuta",
@@ -768,7 +812,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 2,
     history: [],
     wikiTitleEn: "Yuta Kubo",
-    noNickname: true,
+    nickname: "微笑みスナイパー",
   },
   {
     slug: "takeda-koji",
@@ -783,6 +827,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 6,
     decision: 11,
     history: [],
+    nickname: "漆黒のヘラクレス",
   },
 ];
 
