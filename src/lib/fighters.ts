@@ -772,7 +772,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 2,
     history: [],
     wikiTitleEn: "Genji Umeno",
-    nickname: "ヤバいだろ",
+    nickname: "日本ムエタイ界の至宝",
   },
   {
     slug: "kintaro",
