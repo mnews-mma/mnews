@@ -76,6 +76,7 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-12-07", opponent: "Cody Gibson", result: "win", method: "submission", event: "UFC Fight Night", round: "R2" },
     ],
     wikiTitleEn: "Rinya Nakamura",
+    wikiTitleJa: "中村倫也 (格闘家)",
     ufcSlug: "rinya-nakamura",
     nickname: "Hybrid",
   },
@@ -164,7 +165,7 @@ export const FIGHTERS: Fighter[] = [
   },
   {
     slug: "koike-kleber",
-    nameJa: "クレベル コイケ エルベスト",
+    nameJa: "クレベル コイケ",
     nameEn: "Kleber Koike Erbst",
     org: "rizin",
     weightClass: "フェザー級",
@@ -176,6 +177,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     wikiTitleEn: "Kleber Koike Erbst",
+    wikiTitleJa: "クレベル・コイケ",
     nickname: "柔術界の鬼神",
   },
   {
@@ -208,6 +210,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 8,
     history: [],
     wikiTitleEn: "Naoki Inoue",
+    wikiTitleJa: "井上直樹 (格闘家)",
     nickname: "地獄のエンジェル",
   },
   {
@@ -258,6 +261,7 @@ export const FIGHTERS: Fighter[] = [
     history: [],
     // 英語版Wikipediaに記事がまだ無いため戦績はシードデータのまま。
     nickname: "令和の修斗伝承者",
+    wikiTitleJa: "斎藤裕 (格闘家)",
   },
   {
     slug: "ya-man",
@@ -446,6 +450,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     nickname: "危険な金獅子",
+    wikiTitleJa: "ジョリー (格闘家)",
   },
   {
     slug: "fukuda-ryuya",
@@ -598,6 +603,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 9,
     history: [],
     nickname: "ザ・ギャンブラー",
+    wikiTitleJa: "伊藤裕樹 (格闘家)",
   },
   {
     slug: "suzuki-chihiro",
@@ -628,7 +634,7 @@ export const FIGHTERS: Fighter[] = [
     sub: 0,
     decision: 4,
     history: [],
-    nickname: "松戸の鴉松戸の不死鳥",
+    nickname: "松戸の不死鳥",
   },
   {
     slug: "noel",
@@ -644,6 +650,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     noNickname: true,
+    wikiTitleJa: "NOEL (格闘家)",
   },
   {
     slug: "nomura-shunta",
@@ -781,6 +788,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 4,
     history: [],
     nickname: "マサカリ殺法",
+    wikiTitleJa: "金太郎 (格闘家)",
   },
   {
     slug: "suda-moeri",
@@ -828,6 +836,38 @@ export const FIGHTERS: Fighter[] = [
     decision: 11,
     history: [],
     nickname: "漆黒のヘラクレス",
+  },
+  {
+    slug: "tokoro-hideo",
+    nameJa: "所 英男",
+    nameEn: "Hideo Tokoro",
+    org: "rizin",
+    weightClass: "フライ級",
+    wins: 36,
+    losses: 34,
+    draws: 1,
+    ko: 6,
+    sub: 21,
+    decision: 9,
+    history: [],
+    wikiTitleJa: "所英男",
+    nickname: "闘うフリーター",
+  },
+  {
+    slug: "kouzi",
+    nameJa: "皇治",
+    nameEn: "Kouzi",
+    org: "rizin",
+    weightClass: "バンタム級",
+    wins: 1,
+    losses: 1,
+    draws: 0,
+    ko: 0,
+    sub: 0,
+    decision: 0,
+    history: [],
+    wikiTitleJa: "皇治",
+    nickname: "鋼のエンペラ",
   },
 ];
 
