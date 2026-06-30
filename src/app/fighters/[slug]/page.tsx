@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { FIGHTERS, getFighter, calcFighterRates } from "@/lib/fighters";
+import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
 import { pageMetadata } from "@/lib/seo";
+import { EVENT_RESULTS } from "@/lib/eventResults";
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
@@ -27,13 +28,11 @@ const RESULT_CLASS: Record<string, string> = {
   draw: "result-draw",
 };
 
-// 対戦相手がMニュース掲載選手の場合、その選手ページへのリンクを表示する
-// （Wikipediaの戦績テーブルと同じ構造）。
-function findOpponentSlug(opponent: string, currentSlug: string): string | null {
-  const match = FIGHTERS.find(
-    (f) =>
-      f.slug !== currentSlug &&
-      (f.nameJa === opponent || f.nameEn === opponent || opponent.includes(f.nameJa.replace(/\s/g, "")))
+// 大会名（RIZIN.52など）からMニュース掲載の結果ページを探す。
+// 表記揺れ（全角/半角・サブタイトル付き等）があるため、双方向の部分一致で見る。
+function findEventSlug(eventName: string): string | null {
+  const match = EVENT_RESULTS.find(
+    (e) => e.eventName === eventName || eventName.includes(e.eventName) || e.eventName.includes(eventName)
   );
   return match ? match.slug : null;
 }
@@ -64,12 +63,12 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         <div className="fighter-org" style={{ color: SOURCES[fighter.org].color }}>
           {SOURCES[fighter.org].label} / {fighter.weightClass}
         </div>
-        <div className="page-title" style={{ marginTop: 8 }}>
+        <h1 className="page-title" style={{ marginTop: 8 }}>
           {fighter.nameJa}
           <span style={{ fontFamily: "var(--mono)", fontSize: 14, color: "var(--muted)", marginLeft: 12 }}>
             {fighter.nameEn}
           </span>
-        </div>
+        </h1>
         {nickname && <div className="fighter-nickname">「{nickname}」</div>}
         <div className="page-sub">
           通算 {wins}-{losses}-{draws}
@@ -104,7 +103,8 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
               </thead>
               <tbody>
                 {history.map((h, i) => {
-                  const opponentSlug = findOpponentSlug(h.opponent, slug);
+                  const opponentSlug = findFighterSlugByName(h.opponent, slug);
+                  const eventSlug = findEventSlug(h.event);
                   return (
                     <tr key={i}>
                       <td>{h.date}</td>
@@ -119,7 +119,15 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                       </td>
                       <td className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</td>
                       <td className="col-wrap">{h.method}</td>
-                      <td className="col-wrap">{h.event}</td>
+                      <td className="col-wrap">
+                        {eventSlug ? (
+                          <a href={`/results/${eventSlug}`} className="opponent-link">
+                            {h.event}
+                          </a>
+                        ) : (
+                          h.event
+                        )}
+                      </td>
                       <td>{h.round}</td>
                     </tr>
                   );

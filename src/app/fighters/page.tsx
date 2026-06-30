@@ -20,7 +20,7 @@ export default async function FightersPage() {
     <>
       <Nav />
       <div className="page-head">
-        <div className="page-title">選手戦績一覧</div>
+        <h1 className="page-title">選手戦績一覧</h1>
         <div className="page-sub">日本人MMA選手の戦績データ</div>
       </div>
       <FighterFilterGrid fighters={fighters} />

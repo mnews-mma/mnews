@@ -886,3 +886,14 @@ export function calcFighterRates(f: Pick<Fighter, "wins" | "losses" | "draws" | 
   const finishRate = f.wins > 0 ? Math.round(((f.ko + f.sub) / f.wins) * 100) : null;
   return { winRate, finishRate };
 }
+
+// 任意の文字列（対戦カード上の選手名など）からMニュース掲載選手を探す。
+// 大会結果ページ・選手の試合履歴テーブル双方の内部リンク生成で使う共通ロジック。
+export function findFighterSlugByName(name: string, excludeSlug?: string): string | null {
+  const match = FIGHTERS.find(
+    (f) =>
+      f.slug !== excludeSlug &&
+      (f.nameJa === name || f.nameEn === name || name.includes(f.nameJa.replace(/\s/g, "")))
+  );
+  return match ? match.slug : null;
+}

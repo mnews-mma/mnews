@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <>
       <Nav />
       <div className="page-head">
-        <div className="page-title">プライバシーポリシー</div>
+        <h1 className="page-title">プライバシーポリシー</h1>
       </div>
       <div className="prose">
         <h2>アクセス解析について</h2>

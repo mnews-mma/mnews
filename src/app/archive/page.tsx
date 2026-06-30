@@ -48,7 +48,7 @@ export default async function ArchivePage({
     <>
       <Nav />
       <div className="page-head">
-        <div className="page-title">過去のニュース</div>
+        <h1 className="page-title">過去のニュース</h1>
         <div className="page-sub">{tab === "official" ? "公式発表" : "ニュース"}の蓄積アーカイブ</div>
       </div>
 

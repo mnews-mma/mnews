@@ -17,7 +17,7 @@ export default function ResultsIndexPage() {
     <>
       <Nav />
       <div className="page-head">
-        <div className="page-title">大会結果一覧</div>
+        <h1 className="page-title">大会結果一覧</h1>
         <div className="page-sub">RIZIN・DEEP・パンクラス・修斗の大会結果まとめ</div>
       </div>
       <ResultsFilterList events={events} />

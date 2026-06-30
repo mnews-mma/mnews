@@ -64,6 +64,7 @@ export default async function HomePage() {
   return (
     <>
       <Nav />
+      <h1 className="visually-hidden">日本MMAニュース速報 | Mニュース</h1>
 
       {breaking && (
         <a href={breaking.url} target="_blank" rel="noopener noreferrer" className="breaking-bar">

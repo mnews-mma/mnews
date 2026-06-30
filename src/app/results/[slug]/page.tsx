@@ -4,6 +4,18 @@ import Footer from "@/components/Footer";
 import { EVENT_RESULTS, getEventResult } from "@/lib/eventResults";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
+import { findFighterSlugByName } from "@/lib/fighters";
+
+function FighterCardName({ name }: { name: string }) {
+  const slug = findFighterSlugByName(name);
+  return slug ? (
+    <a href={`/fighters/${slug}`} className="opponent-link">
+      {name}
+    </a>
+  ) : (
+    <>{name}</>
+  );
+}
 
 export function generateStaticParams() {
   return EVENT_RESULTS.map((e) => ({ slug: e.slug }));
@@ -32,9 +44,9 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
         <div className="org-tag" style={{ color: SOURCES[event.org].color }}>
           {SOURCES[event.org].label}
         </div>
-        <div className="page-title" style={{ marginTop: 8 }}>
+        <h1 className="page-title" style={{ marginTop: 8 }}>
           {event.eventName}
-        </div>
+        </h1>
         <div className="page-sub">
           {event.date}
           {event.venue && <span> ／ {event.venue}</span>}
@@ -63,7 +75,7 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
                   <tr key={i}>
                     <td className="col-wrap">{f.weightClass}</td>
                     <td>
-                      {f.fighterA} vs {f.fighterB}
+                      <FighterCardName name={f.fighterA} /> vs <FighterCardName name={f.fighterB} />
                     </td>
                     <td className={f.winner && !["引き分け", "中止", "NC"].includes(f.winner) ? "result-win" : "result-draw"}>
                       {f.winner ?? "—"}

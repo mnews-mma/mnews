@@ -11,7 +11,7 @@ export default function ContactPage() {
     <>
       <Nav />
       <div className="page-head">
-        <div className="page-title">お問い合わせ</div>
+        <h1 className="page-title">お問い合わせ</h1>
       </div>
       <div className="prose">
         <p>

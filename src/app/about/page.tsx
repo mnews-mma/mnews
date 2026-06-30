@@ -11,7 +11,7 @@ export default function AboutPage() {
     <>
       <Nav />
       <div className="page-head">
-        <div className="page-title">運営者情報</div>
+        <h1 className="page-title">運営者情報</h1>
       </div>
       <div className="prose">
         <h2>Mニュースについて</h2>
