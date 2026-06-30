@@ -10,15 +10,17 @@ import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { selectBreaking } from "@/lib/tweetDigest";
+import { pageMetadata } from "@/lib/seo";
 
 // 外部フィード取得をビルド時ではなくリクエスト時に行う。
 // データ自体は fetch() の revalidate 設定により30分キャッシュされる。
 export const dynamic = "force-dynamic";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "日本MMAニュース速報 | Mニュース",
   description: "RIZIN・DEEP・パンクラス・修斗の最新ニュースを随時更新。選手戦績・試合結果も掲載。",
-};
+  path: "/",
+});
 
 const OFFICIAL_ORGS = new Set(["rizin", "deep", "shooto", "pancrase"]);
 

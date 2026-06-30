@@ -5,13 +5,33 @@ import "./globals.css";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const isProduction = process.env.NODE_ENV === "production";
 
+const SITE_URL = "https://www.mnews.jp";
+const DEFAULT_TITLE = "Mニュース — 日本MMAニュースを全部ここで";
+const DEFAULT_DESCRIPTION =
+  "RIZIN・DEEP・パンクラスの公式発表とMMAニュースを一か所にまとめて届けるMMA特化キュレーションメディア。";
+
 export const metadata: Metadata = {
-  title: "Mニュース — 日本MMAニュースを全部ここで",
-  description:
-    "RIZIN・DEEP・パンクラスの公式発表とMMAニュースを一か所にまとめて届けるMMA特化キュレーションメディア。",
+  metadataBase: new URL(SITE_URL),
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
   icons: { icon: "/logo.png" },
   verification: {
     google: "27FkFBIjjBO1gprFMpi5nX-aMEOwVWuv_vOtWC_Udoo",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: SITE_URL,
+    siteName: "Mニュース",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Mニュース" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: ["/og-image.png"],
   },
 };
 

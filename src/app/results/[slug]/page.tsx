@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { EVENT_RESULTS, getEventResult } from "@/lib/eventResults";
 import { SOURCES } from "@/lib/sources";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return EVENT_RESULTS.map((e) => ({ slug: e.slug }));
@@ -12,7 +13,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const event = getEventResult(slug);
   if (!event) return { title: "大会が見つかりません — Mニュース" };
-  return { title: `${event.eventName} 全試合結果 | Mニュース` };
+  return pageMetadata({
+    title: `${event.eventName} 全試合結果 | Mニュース`,
+    description: `${event.eventName}（${event.date}${event.venue ? " ／ " + event.venue : ""}）の全試合結果・決着方法を掲載。`,
+    path: `/results/${event.slug}`,
+  });
 }
 
 export default async function EventResultPage({ params }: { params: Promise<{ slug: string }> }) {

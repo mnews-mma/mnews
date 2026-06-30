@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { FIGHTERS, getFighter, calcFighterRates } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
+import { pageMetadata } from "@/lib/seo";
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
@@ -12,7 +13,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const fighter = getFighter(slug);
   if (!fighter) return { title: "選手が見つかりません — Mニュース" };
-  return { title: `${fighter.nameJa} 戦績・試合結果 | Mニュース` };
+  return pageMetadata({
+    title: `${fighter.nameJa} 戦績・試合結果 | Mニュース`,
+    description: `${fighter.nameJa}（${fighter.org.toUpperCase()}・${fighter.weightClass}）の戦績・試合結果一覧。`,
+    path: `/fighters/${fighter.slug}`,
+  });
 }
 
 const RESULT_LABEL: Record<string, string> = { win: "勝", loss: "敗", draw: "分" };
