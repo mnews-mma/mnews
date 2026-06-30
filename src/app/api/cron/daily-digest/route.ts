@@ -15,31 +15,7 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-function buildCopyText(articles: Article[]): string {
-  const list =
-    articles.length === 0
-      ? "過去24時間の新着記事はありませんでした。"
-      : articles
-          .map((a) => {
-            if (a.source === "other" || /^【[^】]+】/.test(a.title)) {
-              return `${a.title}\n${a.url}`;
-            }
-            const label = SOURCES[a.source]?.label ?? a.source;
-            return `【${label}】${a.title}\n${a.url}`;
-          })
-          .join("\n\n");
-
-  return [
-    "【昨日のMMAニュースピックアップ🥊】",
-    "",
-    list,
-    "",
-    "Mニュースで全件見る",
-    "https://www.mnews.jp/",
-  ].join("\n");
-}
-
-function buildHtml(articles: Article[], copyText: string, tweetText: string): string {
+function buildHtml(articles: Article[], tweetText: string): string {
   if (articles.length === 0) {
     return "<p>過去24時間の新着記事はありませんでした。</p>";
   }
@@ -69,9 +45,6 @@ function buildHtml(articles: Article[], copyText: string, tweetText: string): st
 
       <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:24px;">${rows}</table>
 
-      <h3 style="font-size:13px;margin-top:24px;">コピペ用（タイトル＋リンク・全件）</h3>
-      <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#f5f3ef;padding:12px;border-radius:4px;">${escapeHtml(copyText)}</pre>
-
       <p style="margin-top:16px;"><a href="https://www.mnews.jp">Mニュースで全件見る →</a></p>
     </div>`;
 }
@@ -89,8 +62,7 @@ export async function GET(request: Request) {
     recent.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
     const { text: tweetText } = buildTweetDigest(recent);
-    const copyText = buildCopyText(recent);
-    const html = buildHtml(recent, copyText, tweetText);
+    const html = buildHtml(recent, tweetText);
 
     const toEmail = process.env.DIGEST_TO_EMAIL;
     const fromEmail = process.env.DIGEST_FROM_EMAIL ?? "Mニュース <onboarding@resend.dev>";
@@ -111,7 +83,7 @@ export async function GET(request: Request) {
         to: [toEmail],
         subject: `Mニュース 朝刊ダイジェスト（${recent.length}件）`,
         html,
-        text: copyText,
+        text: tweetText,
       }),
     });
 

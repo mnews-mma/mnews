@@ -3,14 +3,11 @@ import { SourceKey } from "./sources";
 
 const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep", "shooto", "pancrase"]);
 
-// 見出しに含まれていると「インパクトが大きい」と判断する語。
-// 王座戦・電撃発表・引退など、読者の関心を強く引きやすいニュースを優先する。
+// ニュースバリューが高いキーワード（+1点ずつ）
 const IMPACT_KEYWORDS = [
   "電撃",
   "緊急",
   "速報",
-  "決定",
-  "発表",
   "王座",
   "王者",
   "防衛",
@@ -18,13 +15,26 @@ const IMPACT_KEYWORDS = [
   "契約",
   "復帰",
   "初優勝",
-  "勝利",
-  "敗れ",
   "KO",
   "TKO",
   "一本",
   "新王者",
   "タイトル",
+  "参戦",
+  "対戦相手",
+];
+
+// ニュースバリューが低いキーワード（-2点ずつ）
+const LOW_VALUE_KEYWORDS = [
+  "合同練習",
+  "公開練習",
+  "観覧募集",
+  "試合順",
+  "配信",
+  "チケット",
+  "計量",
+  "囲み取材",
+  "記者会見",
 ];
 
 function impactScore(a: Article): number {
@@ -32,6 +42,9 @@ function impactScore(a: Article): number {
   if (OFFICIAL_ORGS.has(a.source)) score += 3;
   for (const kw of IMPACT_KEYWORDS) {
     if (a.title.includes(kw)) score += 1;
+  }
+  for (const kw of LOW_VALUE_KEYWORDS) {
+    if (a.title.includes(kw)) score -= 2;
   }
   return score;
 }
@@ -108,8 +121,8 @@ export function buildTweetDigest(articles: Article[]): TweetDigest {
     };
   }
 
-  const hook = truncate(topNews[0].title, 80);
-  const lines = topNews.map((a) => `・${truncate(a.title, 60)}`);
+  const hook = truncate(topNews[0].title, 45);
+  const lines = topNews.map((a) => `・${truncate(a.title, 40)}`);
 
   const text = [
     hook,

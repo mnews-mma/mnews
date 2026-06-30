@@ -50,7 +50,7 @@ function buildCopyText(articles: Article[]): string {
   ].join("\n");
 }
 
-function buildHtml(articles: Article[], copyText: string, tweetText: string): string {
+function buildHtml(articles: Article[], tweetText: string): string {
   if (articles.length === 0) {
     return "<p>過去24時間の新着記事はありませんでした。</p>";
   }
@@ -83,11 +83,6 @@ function buildHtml(articles: Article[], copyText: string, tweetText: string): st
       )}</pre>
 
       <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:24px;">${rows}</table>
-
-      <h3 style="font-size:13px;margin-top:24px;">コピペ用（タイトル＋リンク・全件）</h3>
-      <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#f5f3ef;padding:12px;border-radius:4px;user-select:all;">${escapeHtml(
-        copyText
-      )}</pre>
 
       <p style="margin-top:16px;"><a href="https://www.mnews.jp">Mニュースで全件見る →</a></p>
     </div>`;
@@ -137,9 +132,8 @@ async function main() {
   writeFileSync(join(outDir, "tweet-digest.txt"), tweetText, "utf-8");
   console.log(`X投稿用テキストを data/tweet-digest.txt に書き出しました。`);
 
-  const copyText = buildCopyText(recent);
-  const html = buildHtml(recent, copyText, tweetText);
-  await sendEmail(html, copyText, recent.length);
+  const html = buildHtml(recent, tweetText);
+  await sendEmail(html, tweetText, recent.length);
 }
 
 main().catch((err) => {
