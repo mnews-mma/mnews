@@ -11,20 +11,22 @@ export interface ResolvedFighter extends Fighter {
 }
 
 export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter> {
+  // wikiTitleJa が未指定の選手も、日本語版Wikipediaは大半が日本語表記名と
+  // 同じページ名で存在するため nameJa をデフォルトのタイトルとして試す。
+  const jaTitle = fighter.wikiTitleJa ?? fighter.nameJa;
   const [enWiki, jaWiki, ufcNickname] = await Promise.all([
     fighter.wikiTitleEn ? fetchWikiFighterRecord(fighter.wikiTitleEn).catch(() => null) : null,
-    fighter.wikiTitleJa ? fetchJaWikiFighterRecord(fighter.wikiTitleJa).catch(() => null) : null,
+    fetchJaWikiFighterRecord(jaTitle).catch(() => null),
     fighter.ufcSlug ? fetchUfcNickname(fighter.ufcSlug).catch(() => null) : null,
   ]);
 
-  // 英語版に戦績テーブルがあればそれを優先し、無ければ日本語版
-  // （{{Fight-cont}}）にフォールバックする。
-  const wiki: WikiFighterData | null = enWiki && enWiki.history.length > 0 ? enWiki : jaWiki;
+  // 戦績テーブルは日本語版Wikipediaを優先し、無ければ英語版にフォールバックする。
+  const wiki: WikiFighterData | null = jaWiki && jaWiki.history.length > 0 ? jaWiki : enWiki;
 
-  // UFC公式プロフィールのニックネームを優先する（Wikipediaの other_names は
-  // 古い/誤った通称が残っていることがあるため）。
-  // fighter.noNickname を立てた選手は常に通称を非表示にする。
-  const nickname = fighter.noNickname ? undefined : ufcNickname ?? wiki?.infobox.nickname;
+  // ニックネームはこれまで通り「UFC公式 → 英語版Wikipedia → 日本語版Wikipedia」
+  // の優先順を維持する（戦績の参照元を変えても通称表示は変えない）。
+  const nicknameWiki = enWiki ?? jaWiki;
+  const nickname = fighter.noNickname ? undefined : ufcNickname ?? nicknameWiki?.infobox.nickname;
 
   if (wiki) {
     return {

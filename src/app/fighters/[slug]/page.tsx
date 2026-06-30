@@ -47,6 +47,11 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const { history, wins, losses, draws, nickname, birthPlace, age } = fighter;
   const { winRate, finishRate } = calcFighterRates(fighter);
 
+  // サイト回遊を狙い、同階級の他選手を3人ほど下部に表示する。
+  const sameWeightClass = FIGHTERS.filter(
+    (f) => f.slug !== slug && f.weightClass === fighter.weightClass
+  ).slice(0, 3);
+
   return (
     <>
       <Nav />
@@ -116,6 +121,32 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                 })}
               </tbody>
             </table>
+          </div>
+        )}
+
+        {sameWeightClass.length > 0 && (
+          <div style={{ marginTop: 40 }}>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 11, letterSpacing: 2, color: "var(--muted)", marginBottom: 12 }}>
+              同階級の選手
+            </div>
+            <div className="fighter-grid">
+              {sameWeightClass.map((f) => (
+                <a
+                  key={f.slug}
+                  href={`/fighters/${f.slug}`}
+                  className="fighter-card"
+                  style={{ borderLeftColor: SOURCES[f.org].color }}
+                >
+                  <div className="fighter-org" style={{ color: SOURCES[f.org].color }}>
+                    {SOURCES[f.org].label} / {f.weightClass}
+                  </div>
+                  <div className="fighter-name">{f.nameJa}</div>
+                  <div className="fighter-record">
+                    {f.wins}-{f.losses}-{f.draws}
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         )}
       </div>
