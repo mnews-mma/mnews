@@ -51,24 +51,24 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
             <table className="history-table">
               <thead>
                 <tr>
-                  <th>階級</th>
+                  <th className="col-wrap">階級</th>
                   <th>対戦カード</th>
                   <th>勝者</th>
-                  <th>決着</th>
+                  <th className="col-wrap">決着</th>
                   <th>ラウンド</th>
                 </tr>
               </thead>
               <tbody>
                 {[...event.fights].reverse().map((f, i) => (
                   <tr key={i}>
-                    <td>{f.weightClass}</td>
+                    <td className="col-wrap">{f.weightClass}</td>
                     <td>
                       {f.fighterA} vs {f.fighterB}
                     </td>
                     <td className={f.winner && !["引き分け", "中止", "NC"].includes(f.winner) ? "result-win" : "result-draw"}>
                       {f.winner ?? "—"}
                     </td>
-                    <td>{f.method}</td>
+                    <td className="col-wrap">{f.method}</td>
                     <td>{f.round ?? "—"}</td>
                   </tr>
                 ))}
