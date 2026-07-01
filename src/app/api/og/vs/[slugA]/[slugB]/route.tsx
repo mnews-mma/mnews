@@ -128,20 +128,19 @@ export async function GET(
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: COLORS.washi,
-              padding: "18px 0",
+              padding: "12px 0",
             }}
           >
             <div
               style={{
                 display: "flex",
-                fontFamily: "Noto Sans JP",
-                fontWeight: 900,
+                fontFamily: "Bebas Neue",
                 fontSize: "20px",
                 color: COLORS.sumi,
-                letterSpacing: "4px",
+                letterSpacing: "6px",
               }}
             >
-              対戦カード予想 / MATCH UP
+              MATCH UP
             </div>
           </div>
 
