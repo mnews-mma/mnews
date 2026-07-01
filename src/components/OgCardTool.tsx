@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 interface FighterOption {
   slug: string;
@@ -10,9 +11,16 @@ interface FighterOption {
 const SITE_URL = "https://www.mnews.jp";
 
 export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) {
+  const searchParams = useSearchParams();
+  const initialFighter = searchParams.get("fighter") ?? fighters[0]?.slug ?? "";
   const [mode, setMode] = useState<"single" | "vs">("single");
-  const [slugA, setSlugA] = useState(fighters[0]?.slug ?? "");
+  const [slugA, setSlugA] = useState(initialFighter);
   const [slugB, setSlugB] = useState(fighters[1]?.slug ?? "");
+
+  useEffect(() => {
+    const f = searchParams.get("fighter");
+    if (f && fighters.some((x) => x.slug === f)) setSlugA(f);
+  }, [searchParams, fighters]);
   const [copied, setCopied] = useState<"image" | "page" | null>(null);
 
   const imagePath = mode === "single" ? `/api/og/fighter/${slugA}` : `/api/og/vs/${slugA}/${slugB}`;

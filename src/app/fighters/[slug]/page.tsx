@@ -89,6 +89,9 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         </div>
         <div className="page-sub" style={{ fontSize: 13, color: "var(--muted)" }}>
           KO {fighter.ko} ／ 一本 {fighter.sub} ／ 判定 {fighter.decision}
+          <a href={`/tools/fighter-card?fighter=${fighter.slug}`} style={{ marginLeft: 12, color: "var(--accent)", fontSize: 13 }}>
+            → X投稿用カード作成
+          </a>
         </div>
         {(birthPlace || age) && (
           <div className="fighter-meta-row">
