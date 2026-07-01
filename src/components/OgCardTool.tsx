@@ -34,6 +34,10 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
     setTimeout(() => setCopied(null), 1500);
   };
 
+  const postToX = (url: string) => {
+    window.open(`https://x.com/intent/post?url=${encodeURIComponent(url)}`, "_blank");
+  };
+
   return (
     <div style={{ padding: "0 24px 40px" }}>
       <div className="fighter-filter-bar">
@@ -122,6 +126,12 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
               <button onClick={() => copy(pageUrl, "page")} style={{ padding: "8px 16px" }}>
                 {copied === "page" ? "コピーしました" : "コピー"}
               </button>
+              <button
+                onClick={() => postToX(pageUrl)}
+                style={{ padding: "8px 16px", background: "#000", color: "#fff", border: "none", cursor: "pointer", borderRadius: 4, fontWeight: 700 }}
+              >
+                𝕏 に投稿
+              </button>
             </div>
           </div>
         )}
@@ -140,6 +150,12 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
               />
               <button onClick={() => copy(imageUrl, "image")} style={{ padding: "8px 16px" }}>
                 {copied === "image" ? "コピーしました" : "コピー"}
+              </button>
+              <button
+                onClick={() => postToX(imageUrl)}
+                style={{ padding: "8px 16px", background: "#000", color: "#fff", border: "none", cursor: "pointer", borderRadius: 4, fontWeight: 700 }}
+              >
+                𝕏 に投稿
               </button>
             </div>
           </div>
