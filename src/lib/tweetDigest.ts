@@ -146,37 +146,35 @@ export interface TweetDigest {
 //
 // #MMA #RIZIN #DEEP
 export function buildTweetDigest(articles: Article[], count = 3): TweetDigest {
-  // hook用に1件多く取得し、hook（1件目）とニュースリスト（2件目以降）を分ける
-  const all = selectTopNews(articles, count + 1);
-  const topNews = all.slice(1); // ニュースリストはhookを除いた残り
-  const hashtags = buildHashtags(all);
+  const topNews = selectTopNews(articles, count);
+  const hashtags = buildHashtags(topNews);
+  const hook = "昨日のMMAニュースまとめ";
 
-  if (all.length === 0) {
+  if (topNews.length === 0) {
     return {
-      hook: "昨日は新着ニュースがありませんでした",
+      hook,
       topNews: [],
       hashtags: ["#MMA"],
       text: [
+        `🥊 ${hook}`,
+        "",
         "昨日は新着ニュースがありませんでした",
         "",
-        "全件はこちら→ https://www.mnews.jp/",
+        "全件はこちら→ https://mnews.jp",
         "",
         "#MMA",
       ].join("\n"),
     };
   }
 
-  const hook = all[0].title;
   const lines = topNews.map((a) => `・${a.title}`);
 
   const text = [
     `🥊 ${hook}`,
     "",
-    "📰 昨日のMMAニュースまとめ",
-    "",
     ...lines,
     "",
-    "全件はこちら→ https://www.mnews.jp/",
+    "全件はこちら→ https://mnews.jp",
     "",
     hashtags.join(" "),
   ].join("\n");
