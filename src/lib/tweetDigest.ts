@@ -113,11 +113,12 @@ const HASHTAG_RULES: { tag: string; org: SourceKey; keywords: string[] }[] = [
   { tag: "#修斗", org: "shooto", keywords: ["修斗", "SHOOTO"] },
 ];
 
-// ニュース内容（source・タイトル）から関連する団体ハッシュタグを自動判定する。
-// #MMA は常に先頭に付ける。
+// ニュース内容から関連する団体ハッシュタグを自動判定する。
+// #MMA は常に先頭、団体タグは最大2つまで（合計3つ以内）。
 export function buildHashtags(articles: Article[]): string[] {
   const tags: string[] = ["#MMA"];
   for (const rule of HASHTAG_RULES) {
+    if (tags.length >= 3) break;
     const matched = articles.some(
       (a) => a.source === rule.org || rule.keywords.some((kw) => a.title.includes(kw))
     );
