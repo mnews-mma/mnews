@@ -981,7 +981,7 @@ footer {
   .history-table td:nth-child(1) { width: 84px; word-break: keep-all; }
   /* 対戦相手 */
   .history-table th:nth-child(2),
-  .history-table td:nth-child(2) { width: 86px; word-break: keep-all; }
+  .history-table td:nth-child(2) { width: 86px; overflow-wrap: anywhere; }
   /* 結果 */
   .history-table th:nth-child(3),
   .history-table td:nth-child(3) { width: 28px; }
