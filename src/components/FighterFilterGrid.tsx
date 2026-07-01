@@ -12,16 +12,31 @@ const ORG_OPTIONS: { key: "ufc" | "rizin"; label: string }[] = [
 
 const WEIGHT_OPTIONS = ["女子アトム級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ヘビー級"];
 
+const WEIGHT_ORDER: Record<string, number> = {
+  "ヘビー級": 0,
+  "ライト級": 1,
+  "フェザー級": 2,
+  "バンタム級": 3,
+  "フライ級": 4,
+  "女子アトム級": 5,
+};
+
 export default function FighterFilterGrid({ fighters }: { fighters: ResolvedFighter[] }) {
   const [org, setOrg] = useState<string | null>(null);
   const [weightClass, setWeightClass] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
-    return fighters.filter((f) => {
-      if (org && f.org !== org) return false;
-      if (weightClass && f.weightClass !== weightClass) return false;
-      return true;
-    });
+    return fighters
+      .filter((f) => {
+        if (org && f.org !== org) return false;
+        if (weightClass && f.weightClass !== weightClass) return false;
+        return true;
+      })
+      .sort((a, b) => {
+        const wa = WEIGHT_ORDER[a.weightClass] ?? 9;
+        const wb = WEIGHT_ORDER[b.weightClass] ?? 9;
+        return wa - wb;
+      });
   }, [fighters, org, weightClass]);
 
   return (
