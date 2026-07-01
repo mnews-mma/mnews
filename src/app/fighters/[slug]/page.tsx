@@ -124,7 +124,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                   <th>日付</th>
                   <th>対戦相手</th>
                   <th>結果</th>
-                  <th className="col-wrap">決着</th>
+                  <th className="col-method">決着</th>
                   <th className="col-wrap">大会名</th>
                 </tr>
               </thead>
@@ -135,7 +135,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                   return (
                     <tr key={i}>
                       <td>{h.date}</td>
-                      <td>
+                      <td className="col-opponent">
                         {opponentSlug ? (
                           <a href={`/fighters/${opponentSlug}`} className="opponent-link">
                             {breakAtDot(h.opponent)}
@@ -145,7 +145,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                         )}
                       </td>
                       <td className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</td>
-                      <td className="col-wrap">{h.method}</td>
+                      <td className="col-method">{h.method}</td>
                       <td className="col-wrap">
                         {eventSlug ? (
                           <a href={`/results/${eventSlug}`} className="opponent-link">

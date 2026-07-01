@@ -799,12 +799,23 @@ footer {
   border-bottom: 1px solid var(--border);
   white-space: nowrap;
 }
-/* 決着・大会名・階級など長文になりやすい列は、nowrapで際限なく
-   横幅が伸びるのを防ぐため折り返しを許可し、幅の上限を設ける。 */
+/* 決着・大会名・階級など長文になりやすい列は折り返しを許可し幅の上限を設ける */
 .history-table th.col-wrap,
 .history-table td.col-wrap {
   white-space: normal;
   max-width: 220px;
+}
+/* 決着列: 折り返しを許可しつつ最低幅を確保 */
+.history-table th.col-method,
+.history-table td.col-method {
+  white-space: normal;
+  max-width: 220px;
+}
+/* 対戦相手列: ・で折り返せるよう white-space: normal に */
+.history-table th.col-opponent,
+.history-table td.col-opponent {
+  white-space: normal;
+  word-break: keep-all;
 }
 .opponent-link {
   color: var(--accent);
@@ -964,6 +975,16 @@ footer {
   .history-table th.col-wrap,
   .history-table td.col-wrap {
     max-width: 140px;
+  }
+  .history-table th.col-method,
+  .history-table td.col-method {
+    min-width: 90px;
+    max-width: 120px;
+  }
+  .history-table th.col-opponent,
+  .history-table td.col-opponent {
+    min-width: 72px;
+    max-width: 100px;
   }
   footer {
     padding: 32px 16px 20px;
