@@ -236,18 +236,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
             >
               {nickname ? `「${nickname}」` : ""}
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "Noto Sans JP",
-                  fontSize: "16px",
-                  color: COLORS.ash,
-                  letterSpacing: "1px",
-                }}
-              >
-                {orgLabel} / {fighter.weightClass}
-              </div>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <div
                 style={{
                   display: "flex",
