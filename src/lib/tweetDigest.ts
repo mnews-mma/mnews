@@ -146,13 +146,15 @@ export interface TweetDigest {
 //
 // #MMA #RIZIN #DEEP
 export function buildTweetDigest(articles: Article[], count = 3): TweetDigest {
-  const topNews = selectTopNews(articles, count);
-  const hashtags = buildHashtags(topNews);
+  // hook用に1件多く取得し、hook（1件目）とニュースリスト（2件目以降）を分ける
+  const all = selectTopNews(articles, count + 1);
+  const topNews = all.slice(1); // ニュースリストはhookを除いた残り
+  const hashtags = buildHashtags(all);
 
-  if (topNews.length === 0) {
+  if (all.length === 0) {
     return {
       hook: "昨日は新着ニュースがありませんでした",
-      topNews,
+      topNews: [],
       hashtags: ["#MMA"],
       text: [
         "昨日は新着ニュースがありませんでした",
@@ -164,7 +166,7 @@ export function buildTweetDigest(articles: Article[], count = 3): TweetDigest {
     };
   }
 
-  const hook = topNews[0].title;
+  const hook = all[0].title;
   const lines = topNews.map((a) => `・${a.title}`);
 
   const text = [
