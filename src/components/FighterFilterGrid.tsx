@@ -10,7 +10,7 @@ const ORG_OPTIONS: { key: "ufc" | "rizin"; label: string }[] = [
   { key: "rizin", label: "RIZIN" },
 ];
 
-const WEIGHT_OPTIONS = ["女子アトム級", "フライ級", "バンタム級", "フェザー級", "ライト級"];
+const WEIGHT_OPTIONS = ["女子アトム級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ヘビー級"];
 
 export default function FighterFilterGrid({ fighters }: { fighters: ResolvedFighter[] }) {
   const [org, setOrg] = useState<string | null>(null);
