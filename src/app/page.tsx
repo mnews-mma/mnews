@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
   title: "日本MMAニュース速報 | Mニュース",
-  description: "RIZIN・DEEP・パンクラス・修斗の最新ニュースを随時更新。選手戦績・試合結果も掲載。",
+  description: "RIZIN・DEEP・パンクラス・修斗の格闘技ニュースを随時更新。日本人MMA選手の戦績・試合結果も掲載。",
   path: "/",
 });
 

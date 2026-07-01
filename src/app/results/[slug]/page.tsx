@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!event) return { title: "大会が見つかりません — Mニュース" };
   return pageMetadata({
     title: `${event.eventName} 全試合結果 | Mニュース`,
-    description: `${event.eventName}（${event.date}${event.venue ? " ／ " + event.venue : ""}）の全試合結果・決着方法を掲載。`,
+    description: `${event.eventName}（${event.date}${event.venue ? " ／ " + event.venue : ""}）全${event.fights.length}試合の勝敗・決着方法を掲載。格闘技ファン必見の試合結果まとめ。`,
     path: `/results/${event.slug}`,
   });
 }

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!fighter) return { title: "選手が見つかりません — Mニュース" };
   return pageMetadata({
     title: `${fighter.nameJa} 戦績・試合結果 | Mニュース`,
-    description: `${fighter.nameJa}（${fighter.org.toUpperCase()}・${fighter.weightClass}）の戦績・試合結果一覧。`,
+    description: `${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${fighter.org.toUpperCase()}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
     path: `/fighters/${fighter.slug}`,
     image: {
       url: `/api/og/fighter/${fighter.slug}`,
@@ -102,6 +102,9 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
       </div>
 
       <div style={{ padding: "0 24px 40px" }}>
+        <h2 style={{ fontSize: 14, fontWeight: 700, marginBottom: 16, color: "var(--fg)" }}>
+          {fighter.nameJa}の最新試合結果・戦績
+        </h2>
         {history.length === 0 ? (
           <p style={{ color: "var(--muted)", fontSize: 13, padding: "24px 0" }}>
             試合履歴データは準備中です。
