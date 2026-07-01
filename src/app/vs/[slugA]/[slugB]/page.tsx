@@ -57,8 +57,19 @@ export default async function VsPage({
         <img
           src={`/api/og/vs/${slugA}/${slugB}`}
           alt={`${fighterA.nameJa} vs ${fighterB.nameJa}`}
-          style={{ width: "100%", border: "1px solid var(--border)", display: "block", marginBottom: 32 }}
+          style={{ width: "100%", border: "1px solid var(--border)", display: "block", marginBottom: 16 }}
         />
+
+        <div style={{ display: "flex", gap: 8, marginBottom: 32 }}>
+          <a
+            href={`https://x.com/intent/post?url=${encodeURIComponent(`${SITE_URL}/vs/${slugA}/${slugB}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ padding: "10px 20px", background: "#000", color: "#fff", fontWeight: 700, borderRadius: 4, fontSize: 14, textDecoration: "none" }}
+          >
+            𝕏 に投稿
+          </a>
+        </div>
 
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
           <a href={`/fighters/${slugA}`} className="fighter-card" style={{ borderLeftColor: SOURCES[fighterA.org]?.color, flex: 1, minWidth: 140 }}>
