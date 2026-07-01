@@ -29,7 +29,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
     const orgLabel = SOURCES[fighter.org]?.label ?? fighter.org.toUpperCase();
     const fonts = await loadOgFonts();
 
-    return new ImageResponse(
+    const img = new ImageResponse(
       (
         <div
           style={{
@@ -257,6 +257,12 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
         fonts: OG_FONT_FAMILIES(fonts),
       }
     );
+    return new Response(img.body, {
+      headers: {
+        "Content-Type": "image/png",
+        "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (err) {
     console.error("OG fighter card generation failed:", err);
     return fallbackRedirect();

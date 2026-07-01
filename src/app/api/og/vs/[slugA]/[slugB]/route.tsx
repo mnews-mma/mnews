@@ -110,7 +110,7 @@ export async function GET(
 
     const fonts = await loadOgFonts();
 
-    return new ImageResponse(
+    const img = new ImageResponse(
       (
         <div
           style={{
@@ -202,6 +202,12 @@ export async function GET(
         fonts: OG_FONT_FAMILIES(fonts),
       }
     );
+    return new Response(img.body, {
+      headers: {
+        "Content-Type": "image/png",
+        "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+      },
+    });
   } catch (err) {
     console.error("OG vs card generation failed:", err);
     return fallbackRedirect();
