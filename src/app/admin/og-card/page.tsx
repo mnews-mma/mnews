@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import OgCardTool from "@/components/OgCardTool";
@@ -18,7 +19,9 @@ export default function OgCardToolPage() {
         <div className="page-title">X投稿用カード作成</div>
         <div className="page-sub">選手を選ぶとX投稿用の戦績カードURLが生成されます</div>
       </div>
-      <OgCardTool fighters={fighters} />
+      <Suspense fallback={null}>
+        <OgCardTool fighters={fighters} />
+      </Suspense>
       <Footer />
     </>
   );
