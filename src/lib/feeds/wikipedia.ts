@@ -321,7 +321,11 @@ export function parseJaFightHistory(wikitext: string): FightRecord[] {
   const blocks = Array.from(scope.matchAll(/\{\{Fight-cont\|([\s\S]*?)\}\}/g));
   const records: FightRecord[] = [];
 
-  for (const [, content] of blocks) {
+  for (const [, rawContent] of blocks) {
+    // <ref> ブロックを分割前に除去（ref内に"|"があると誤分割するため）
+    const content = rawContent
+      .replace(/<ref[^>]*\/>/gi, "")
+      .replace(/<ref[^>]*>[\s\S]*?<\/ref>/gi, "");
     const parts = splitTemplateParams(content).map((p) => p.trim());
     if (parts.length < 5) continue;
 
