@@ -961,31 +961,36 @@ footer {
     padding: 20px 16px;
   }
   .history-table {
+    table-layout: fixed;
+    width: 480px;
     min-width: unset;
-    width: 100%;
   }
   .col-mobile-hide {
     display: none;
   }
   .history-table th,
   .history-table td {
-    padding: 10px 8px;
+    padding: 10px 6px;
     font-size: 12px;
+    white-space: normal;
+    overflow: hidden;
+    word-break: break-word;
   }
-  .history-table th.col-wrap,
-  .history-table td.col-wrap {
-    max-width: 140px;
-  }
-  .history-table th.col-method,
-  .history-table td.col-method {
-    min-width: 90px;
-    max-width: 120px;
-  }
-  .history-table th.col-opponent,
-  .history-table td.col-opponent {
-    min-width: 72px;
-    max-width: 100px;
-  }
+  /* 日付 */
+  .history-table th:nth-child(1),
+  .history-table td:nth-child(1) { width: 84px; word-break: keep-all; }
+  /* 対戦相手 */
+  .history-table th:nth-child(2),
+  .history-table td:nth-child(2) { width: 86px; word-break: keep-all; }
+  /* 結果 */
+  .history-table th:nth-child(3),
+  .history-table td:nth-child(3) { width: 28px; }
+  /* 決着 */
+  .history-table th:nth-child(4),
+  .history-table td:nth-child(4) { width: 102px; }
+  /* 大会名 */
+  .history-table th:nth-child(5),
+  .history-table td:nth-child(5) { width: 140px; }
   footer {
     padding: 32px 16px 20px;
   }
