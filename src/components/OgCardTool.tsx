@@ -24,9 +24,9 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   const [copied, setCopied] = useState<"image" | "page" | null>(null);
 
   const imagePath = mode === "single" ? `/api/og/fighter/${slugA}` : `/api/og/vs/${slugA}/${slugB}`;
-  const pagePath = mode === "single" ? `/fighters/${slugA}` : null;
+  const pagePath = mode === "single" ? `/fighters/${slugA}` : `/vs/${slugA}/${slugB}`;
   const imageUrl = `${SITE_URL}${imagePath}`;
-  const pageUrl = pagePath ? `${SITE_URL}${pagePath}` : null;
+  const pageUrl = `${SITE_URL}${pagePath}`;
 
   const copy = (text: string, which: "image" | "page") => {
     navigator.clipboard.writeText(text);
@@ -144,15 +144,15 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
             <div style={{ display: "flex", gap: 8 }}>
               <input
                 readOnly
-                value={imageUrl}
+                value={pageUrl}
                 style={{ flex: 1, padding: "8px 12px", fontFamily: "var(--mono)", fontSize: 13 }}
                 onFocus={(e) => e.target.select()}
               />
-              <button onClick={() => copy(imageUrl, "image")} style={{ padding: "8px 16px" }}>
-                {copied === "image" ? "コピーしました" : "コピー"}
+              <button onClick={() => copy(pageUrl, "page")} style={{ padding: "8px 16px" }}>
+                {copied === "page" ? "コピーしました" : "コピー"}
               </button>
               <button
-                onClick={() => postToX(imageUrl)}
+                onClick={() => postToX(pageUrl)}
                 style={{ padding: "8px 16px", background: "#000", color: "#fff", border: "none", cursor: "pointer", borderRadius: 4, fontWeight: 700 }}
               >
                 𝕏 に投稿
