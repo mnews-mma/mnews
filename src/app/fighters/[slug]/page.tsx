@@ -27,6 +27,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
+function breakAtDot(name: string) {
+  const parts = name.split("・");
+  return parts.map((part, i) => (
+    <span key={i}>{part}{i < parts.length - 1 && <>・<wbr /></>}</span>
+  ));
+}
+
 const RESULT_LABEL: Record<string, string> = { win: "勝", loss: "敗", draw: "分" };
 const RESULT_CLASS: Record<string, string> = {
   win: "result-win",
@@ -131,10 +138,10 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                       <td>
                         {opponentSlug ? (
                           <a href={`/fighters/${opponentSlug}`} className="opponent-link">
-                            {h.opponent}
+                            {breakAtDot(h.opponent)}
                           </a>
                         ) : (
-                          h.opponent
+                          breakAtDot(h.opponent)
                         )}
                       </td>
                       <td className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</td>
