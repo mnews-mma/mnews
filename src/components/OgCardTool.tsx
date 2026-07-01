@@ -70,20 +70,31 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
         </div>
 
         {mode === "vs" && (
-          <div>
-            <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>選手B</label>
-            <select
-              value={slugB}
-              onChange={(e) => setSlugB(e.target.value)}
-              style={{ padding: "8px 12px", fontSize: 14, minWidth: 220 }}
-            >
-              {fighters.map((f) => (
-                <option key={f.slug} value={f.slug}>
-                  {f.nameJa}
-                </option>
-              ))}
-            </select>
-          </div>
+          <>
+            <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: 2 }}>
+              <button
+                onClick={() => { setSlugA(slugB); setSlugB(slugA); }}
+                title="AとBを入れ替え"
+                style={{ padding: "8px 10px", fontSize: 16, lineHeight: 1 }}
+              >
+                ⇄
+              </button>
+            </div>
+            <div>
+              <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>選手B</label>
+              <select
+                value={slugB}
+                onChange={(e) => setSlugB(e.target.value)}
+                style={{ padding: "8px 12px", fontSize: 14, minWidth: 220 }}
+              >
+                {fighters.map((f) => (
+                  <option key={f.slug} value={f.slug}>
+                    {f.nameJa}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </>
         )}
       </div>
 
