@@ -105,9 +105,6 @@ export function selectBreaking(articles: Article[]): Article | null {
   return ranked.length > 0 ? ranked[0].a : null;
 }
 
-function truncate(s: string, max: number): string {
-  return s.length > max ? s.slice(0, max) : s;
-}
 
 const HASHTAG_RULES: { tag: string; org: SourceKey; keywords: string[] }[] = [
   { tag: "#RIZIN", org: "rizin", keywords: ["RIZIN", "ライジン"] },
@@ -167,8 +164,8 @@ export function buildTweetDigest(articles: Article[], count = 3): TweetDigest {
     };
   }
 
-  const hook = truncate(topNews[0].title, 50);
-  const lines = topNews.map((a) => `・${truncate(a.title, 50)}`);
+  const hook = topNews[0].title;
+  const lines = topNews.map((a) => `・${a.title}`);
 
   const text = [
     `🥊 ${hook}`,
