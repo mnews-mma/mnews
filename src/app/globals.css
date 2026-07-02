@@ -813,9 +813,13 @@ footer {
   text-align: center;
   font-family: var(--mono);
 }
-/* 結果列: 中央揃え */
+/* 結果・決着・大会名: 中央揃え */
 .history-table th:nth-child(3),
-.history-table td:nth-child(3) {
+.history-table td:nth-child(3),
+.history-table th:nth-child(4),
+.history-table td:nth-child(4),
+.history-table th:nth-child(5),
+.history-table td:nth-child(5) {
   text-align: center;
 }
 .history-table td {
