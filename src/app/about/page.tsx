@@ -2,7 +2,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "運営者情報 — Mニュース",
+  title: "運営者情報 | Mニュース",
   description: "Mニュースの運営者情報・サイトの理念について。",
 };
 

@@ -1092,10 +1092,16 @@ export function calcFighterRates(f: Pick<Fighter, "wins" | "losses" | "draws" | 
 // 任意の文字列（対戦カード上の選手名など）からMニュース掲載選手を探す。
 // 大会結果ページ・選手の試合履歴テーブル双方の内部リンク生成で使う共通ロジック。
 export function findFighterSlugByName(name: string, excludeSlug?: string): string | null {
-  const match = FIGHTERS.find(
-    (f) =>
-      f.slug !== excludeSlug &&
-      (f.nameJa === name || f.nameEn === name || name.includes(f.nameJa.replace(/\s/g, "")))
-  );
+  // スペース・全角スペースを除いて正規化して照合する
+  const norm = (s: string) => s.replace(/[\s　]/g, "");
+  const normName = norm(name);
+  const match = FIGHTERS.find((f) => {
+    if (f.slug === excludeSlug) return false;
+    if (norm(f.nameJa) === normName) return true;
+    if (f.nameEn === name) return true;
+    // 英名を正規化して一致確認（大文字小文字を無視）
+    if (f.nameEn.toLowerCase() === name.toLowerCase()) return true;
+    return false;
+  });
   return match ? match.slug : null;
 }

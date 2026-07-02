@@ -38,6 +38,26 @@ const HOMEPAGE_FIGHTER_SLUGS = new Set([
   "akimoto-kyoma",
 ]);
 
+const WEBSITE_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Mニュース",
+  url: "https://www.mnews.jp",
+  description: "RIZIN・DEEP・パンクラス・修斗の格闘技ニュースを随時更新。日本人MMA選手の戦績・試合結果も掲載。",
+  publisher: {
+    "@type": "NewsMediaOrganization",
+    name: "Mニュース",
+    url: "https://www.mnews.jp",
+    logo: { "@type": "ImageObject", url: "https://www.mnews.jp/logo.png" },
+    sameAs: ["https://x.com/mnews_mma"],
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: { "@type": "EntryPoint", urlTemplate: "https://www.mnews.jp/archive?q={search_term_string}" },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default async function HomePage() {
   let articles: Article[] = ARTICLES;
 
@@ -66,6 +86,10 @@ export default async function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_LD) }}
+      />
       <Nav />
       <h1 className="visually-hidden">日本MMAニュース速報 | Mニュース</h1>
 

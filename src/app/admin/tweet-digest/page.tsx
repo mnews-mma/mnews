@@ -6,7 +6,7 @@ import { buildTweetDigest } from "@/lib/tweetDigest";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "X投稿用テキスト確認 — Mニュース",
+  title: "X投稿用テキスト確認 | Mニュース",
   robots: { index: false, follow: false },
 };
 

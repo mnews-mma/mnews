@@ -1000,6 +1000,44 @@ footer {
   }
 }
 
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+  margin-bottom: 8px;
+}
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.breadcrumb-sep {
+  margin: 0 2px;
+  color: var(--dim);
+}
+.breadcrumb-link {
+  color: var(--muted);
+  text-decoration: none;
+}
+.breadcrumb-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* ===== EVENT SUMMARY ===== */
+.event-summary {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--s1);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  border-radius: 0 4px 4px 0;
+}
+
 /* ===== UPCOMING EVENTS ===== */
 .upcoming-countdown {
   color: var(--accent);

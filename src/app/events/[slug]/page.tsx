@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const event = getEvent(slug);
-  if (!event) return { title: "大会が見つかりません — Mニュース" };
+  if (!event) return { title: "大会が見つかりません | Mニュース" };
 
   const isCompleted = event.status === "completed";
   const title = isCompleted

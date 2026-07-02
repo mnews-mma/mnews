@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
-  title: "選手戦績一覧 — Mニュース",
+  title: "選手戦績一覧 | Mニュース",
   description: "UFC・RIZIN所属選手の戦績・試合結果をまとめて掲載。",
   path: "/fighters",
 });

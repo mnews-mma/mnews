@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { findNextFight } from "@/lib/events";
 
@@ -13,11 +14,13 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const fighter = getFighter(slug);
-  if (!fighter) return { title: "選手が見つかりません — Mニュース" };
+  const seed = getFighter(slug);
+  if (!seed) return { title: "選手が見つかりません | Mニュース" };
+  // Wikipedia から取得した実際の戦績を meta にも反映（seed と乖離させない）
+  const fighter = await resolveFighter(seed);
   return pageMetadata({
     title: `${fighter.nameJa} 戦績・試合結果 | Mニュース`,
-    description: `${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${fighter.org.toUpperCase()}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
+    description: `${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${SOURCES[fighter.org].label}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
     path: `/fighters/${fighter.slug}`,
     image: {
       url: `/api/og/fighter/${fighter.slug}`,
@@ -67,8 +70,6 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const nextFight = findNextFight(fighter.nameJa);
   const { winRate, finishRate } = calcFighterRates(fighter);
 
-  // サイト回遊を狙い、同階級の他選手をランダムに4人下部に表示する
-  // （4列グリッドの隙間を防ぐため4人固定、毎回表示順を変える）。
   const sameWeightClass = FIGHTERS.filter(
     (f) => f.slug !== slug && f.weightClass === fighter.weightClass
   )
@@ -77,10 +78,34 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
     .slice(0, 4)
     .map(({ f }) => f);
 
+  const breadcrumbs = [
+    { label: "トップ", href: "/" },
+    { label: "選手戦績一覧", href: "/fighters" },
+    { label: fighter.nameJa },
+  ];
+
+  const personLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: fighter.nameJa,
+    alternateName: [fighter.nameEn, ...(nickname ? [nickname] : [])],
+    url: `${SITE_URL}/fighters/${fighter.slug}`,
+    ...(birthPlace ? { birthPlace: { "@type": "Place", name: birthPlace } } : {}),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+      />
       <Nav />
       <div className="page-head">
+        <Breadcrumb items={breadcrumbs} />
         <div className="fighter-org" style={{ color: SOURCES[fighter.org].color }}>
           {SOURCES[fighter.org].label} / {fighter.weightClass}
         </div>

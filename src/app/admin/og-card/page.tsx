@@ -5,7 +5,7 @@ import OgCardTool from "@/components/OgCardTool";
 import { FIGHTERS } from "@/lib/fighters";
 
 export const metadata = {
-  title: "X投稿用カード作成 — Mニュース",
+  title: "X投稿用カード作成 | Mニュース",
   robots: { index: false, follow: false },
 };
 

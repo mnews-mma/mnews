@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const SITE_URL = "https://www.mnews.jp";
+export const SITE_URL = "https://www.mnews.jp";
 const OG_IMAGE = { url: "/og-image.png", width: 1200, height: 630, alt: "Mニュース" };
 
 // ページ単位の openGraph/twitter は Next.js が親(layout)の値とディープマージしない
@@ -19,6 +19,7 @@ export function pageMetadata(params: {
   return {
     title,
     description,
+    alternates: { canonical: url },
     openGraph: {
       type: "website",
       locale: "ja_JP",
@@ -35,4 +36,25 @@ export function pageMetadata(params: {
       images: [ogImage.url],
     },
   };
+}
+
+/** BreadcrumbList JSON-LD を生成する */
+export function breadcrumbJsonLd(
+  items: { name: string; url: string }[]
+): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+/** datePublished / dateModified を <time> 要素用に整形 */
+export function isoDate(dateStr: string): string {
+  return `${dateStr}T00:00:00+09:00`;
 }

@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { EVENT_RESULTS, getEventResult } from "@/lib/eventResults";
+import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
+import { EVENT_RESULTS, getEventResult, buildEventSummary } from "@/lib/eventResults";
 import { SOURCES } from "@/lib/sources";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, SITE_URL, isoDate } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
 
 function FighterCardName({ name }: { name: string }) {
@@ -24,10 +25,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const event = getEventResult(slug);
-  if (!event) return { title: "大会が見つかりません — Mニュース" };
+  if (!event) return { title: "大会が見つかりません | Mニュース" };
+  const summary = buildEventSummary(event);
   return pageMetadata({
     title: `${event.eventName} 全試合結果 | Mニュース`,
-    description: `${event.eventName}（${event.date}${event.venue ? " ／ " + event.venue : ""}）全${event.fights.length}試合の勝敗・決着方法を掲載。格闘技ファン必見の試合結果まとめ。`,
+    description: summary || `${event.eventName}（${event.date}${event.venue ? " ／ " + event.venue : ""}）全${event.fights.length}試合の勝敗・決着方法を掲載。`,
     path: `/results/${event.slug}`,
   });
 }
@@ -37,10 +39,46 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
   const event = getEventResult(slug);
   if (!event) notFound();
 
+  const summary = buildEventSummary(event);
+  const eventDate = isoDate(event.date);
+
+  const breadcrumbs = [
+    { label: "トップ", href: "/" },
+    { label: "大会結果一覧", href: "/results" },
+    { label: event.eventName },
+  ];
+
+  const sportsEventLd = {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: event.eventName,
+    startDate: eventDate,
+    endDate: eventDate,
+    location: event.venue
+      ? { "@type": "Place", name: event.venue }
+      : undefined,
+    eventStatus: "https://schema.org/EventScheduled",
+    organizer: { "@type": "Organization", name: SOURCES[event.org].label },
+    url: `${SITE_URL}/results/${event.slug}`,
+    competitor: event.fights.flatMap((f) => [
+      { "@type": "Person", name: f.fighterA },
+      { "@type": "Person", name: f.fighterB },
+    ]),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsEventLd) }}
+      />
       <Nav />
       <div className="page-head">
+        <Breadcrumb items={breadcrumbs} />
         <div className="org-tag" style={{ color: SOURCES[event.org].color }}>
           {SOURCES[event.org].label}
         </div>
@@ -48,12 +86,16 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
           {event.eventName}
         </h1>
         <div className="page-sub">
-          {event.date}
+          <time dateTime={eventDate}>{event.date}</time>
           {event.venue && <span> ／ {event.venue}</span>}
         </div>
       </div>
 
       <div style={{ padding: "0 24px 40px" }}>
+        {summary && (
+          <p className="event-summary">{summary}</p>
+        )}
+
         {event.fights.length === 0 ? (
           <p style={{ color: "var(--muted)", fontSize: 13, padding: "24px 0" }}>
             試合結果データは準備中です。

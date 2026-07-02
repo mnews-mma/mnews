@@ -16,6 +16,8 @@ export interface EventResult {
   date: string; // YYYY-MM-DD
   venue?: string;
   sourceUrl?: string;
+  // 大会の概要文（省略時は自動生成: メインイベントの勝者・決着方法から）
+  summary?: string;
   // 重要: fights は「メインイベントを先頭、オープニングファイトを末尾」の
   // 順で入力すること（RIZIN公式・DEEP公式・PANCRASE公式・修斗公式の結果
   // ページは例外なくこの順で試合を掲載しているため、各サイトの記載順を
@@ -25,6 +27,20 @@ export interface EventResult {
   // はず」と誤判断して反転処理をスキップし、メインが末尾に表示される
   // バグを複数回出したため、このルールに統一した。
   fights: FightResult[];
+}
+
+/** メインイベントから自動生成したサマリー文。手動の summary フィールドで上書き可能 */
+export function buildEventSummary(event: EventResult): string {
+  if (event.summary) return event.summary;
+  const main = event.fights[0];
+  if (!main) return "";
+  const d = new Date(event.date);
+  const dateJa = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+  if (!main.winner || ["引き分け", "中止", "NC"].includes(main.winner)) {
+    return `${event.eventName}（${dateJa}${event.venue ? "・" + event.venue : ""}）全${event.fights.length}試合の結果を掲載。メインイベントは${main.fighterA} vs ${main.fighterB}。`;
+  }
+  const loser = main.winner === main.fighterA ? main.fighterB : main.fighterA;
+  return `${event.eventName}（${dateJa}${event.venue ? "・" + event.venue : ""}）メインイベントは${main.winner}が${main.method}で${loser}に勝利。全${event.fights.length}試合の結果を掲載。`;
 }
 
 export const EVENT_RESULTS: EventResult[] = [

@@ -5,9 +5,13 @@ import { SOURCES, SourceKey } from "@/lib/sources";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
-  title: "過去のニュース — Mニュース",
-};
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "過去のニュース | Mニュース",
+  description: "RIZIN・DEEP・パンクラス・修斗の公式発表とMMAニュースのアーカイブ。",
+  path: "/archive",
+});
 
 const ARCHIVE_URL = "https://raw.githubusercontent.com/mnews-mma/mnews/main/data/archive.json";
 const PAGE_SIZE = 20;

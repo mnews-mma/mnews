@@ -2,7 +2,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "プライバシーポリシー — Mニュース",
+  title: "プライバシーポリシー | Mニュース",
   description: "Mニュースにおける個人情報・アクセス情報の取り扱いについて。",
 };
 

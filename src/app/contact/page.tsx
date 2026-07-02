@@ -2,7 +2,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "お問い合わせ — Mニュース",
+  title: "お問い合わせ | Mニュース",
   description: "Mニュースへのお問い合わせ方法。",
 };
 
