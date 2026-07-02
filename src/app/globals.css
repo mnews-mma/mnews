@@ -1266,24 +1266,6 @@ footer {
 .event-affiliate-btn:hover {
   background: #222;
 }
-.event-affiliate-pr {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  background: #666;
-  color: #fff;
-  padding: 1px 5px;
-  border-radius: 2px;
-  margin-left: 6px;
-  vertical-align: middle;
-  letter-spacing: 0.03em;
-}
-.event-affiliate-disc {
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 6px;
-}
-
 /* Fighter next fight banner */
 .fighter-next-fight {
   display: flex;
