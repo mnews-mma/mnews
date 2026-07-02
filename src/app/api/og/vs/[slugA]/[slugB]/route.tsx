@@ -3,7 +3,16 @@ import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates, type Fighter } from "@/lib/fighters";
 import { resolveFighter, type ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { SOURCES } from "@/lib/sources";
-import { OG_COLORS as COLORS, SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
+import { findMatchupEvent } from "@/lib/events";
+import {
+  OG_COLORS as COLORS,
+  SITE_URL,
+  loadOgFonts,
+  OG_FONT_FAMILIES,
+  stripeTexture,
+  cornerVignette,
+  fitFontSize,
+} from "@/lib/ogShared";
 
 export const runtime = "edge";
 
@@ -11,22 +20,34 @@ function fallbackRedirect() {
   return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
 }
 
-function FighterSide({ f, align }: { f: ResolvedFighter; align: "left" | "right" }) {
+// 片側の表示幅が狭いため、個人カードより控えめな刻みでサイズを縮める。
+const NAME_STEPS = [
+  { maxLen: 4, size: 72 },
+  { maxLen: 6, size: 58 },
+  { maxLen: 9, size: 44 },
+  { maxLen: 20, size: 34 },
+];
+
+function FighterSide({ f, corner }: { f: ResolvedFighter; corner: "left" | "right" }) {
   const orgLabel = SOURCES[f.org]?.label ?? f.org.toUpperCase();
   const { winRate, finishRate } = calcFighterRates(f);
-  const items = align === "left" ? "flex-start" : "flex-end";
-  const textAlign = align === "left" ? "left" : "right";
+  const align = corner === "left" ? "flex-start" : "flex-end";
+  const textAlign = corner === "left" ? "left" : "right";
+  const accent = corner === "left" ? COLORS.shu : COLORS.indigo;
+  const nameSize = fitFontSize(f.nameJa, NAME_STEPS);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: items, padding: "0 48px" }}>
+    <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: align, padding: "0 34px" }}>
       <div
         style={{
           display: "flex",
           fontFamily: "Noto Sans JP",
           fontWeight: 900,
-          fontSize: "18px",
-          color: COLORS.shu,
-          letterSpacing: "2px",
+          fontSize: "16px",
+          color: "#FFFFFF",
+          background: accent,
+          padding: "4px 10px",
+          letterSpacing: "1px",
         }}
       >
         {orgLabel} / {f.weightClass}
@@ -36,9 +57,10 @@ function FighterSide({ f, align }: { f: ResolvedFighter; align: "left" | "right"
           display: "flex",
           fontFamily: "Noto Sans JP",
           fontWeight: 900,
-          fontSize: "52px",
+          fontSize: `${nameSize}px`,
+          lineHeight: 1.05,
           color: "#FFFFFF",
-          marginTop: "10px",
+          marginTop: "14px",
           textAlign,
         }}
       >
@@ -48,9 +70,9 @@ function FighterSide({ f, align }: { f: ResolvedFighter; align: "left" | "right"
         style={{
           display: "flex",
           fontFamily: "Bebas Neue",
-          fontSize: "24px",
+          fontSize: "20px",
           color: COLORS.ash,
-          marginTop: "4px",
+          marginTop: "6px",
           letterSpacing: "1px",
         }}
       >
@@ -60,19 +82,20 @@ function FighterSide({ f, align }: { f: ResolvedFighter; align: "left" | "right"
         style={{
           display: "flex",
           fontFamily: "Bebas Neue",
-          fontSize: "44px",
+          fontSize: "52px",
           color: COLORS.gold,
-          marginTop: "20px",
+          marginTop: "18px",
         }}
       >
-        {f.wins}勝{f.losses}敗{f.draws > 0 ? `${f.draws}分` : ""}
+        {f.wins}-{f.losses}
+        {f.draws > 0 ? `-${f.draws}` : ""}
       </div>
-      <div style={{ display: "flex", gap: "20px", marginTop: "10px" }}>
-        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontSize: "16px", color: COLORS.ash }}>
-          勝率 {winRate !== null ? `${winRate}%` : "—"}
+      <div style={{ display: "flex", gap: "16px", marginTop: "6px" }}>
+        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontSize: "14px", color: COLORS.ash }}>
+          勝率{winRate !== null ? `${winRate}%` : "—"}
         </div>
-        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontSize: "16px", color: COLORS.ash }}>
-          フィニッシュ率 {finishRate !== null ? `${finishRate}%` : "—"}
+        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontSize: "14px", color: COLORS.ash }}>
+          フィニッシュ{finishRate !== null ? `${finishRate}%` : "—"}
         </div>
       </div>
       {f.nickname && (
@@ -81,12 +104,12 @@ function FighterSide({ f, align }: { f: ResolvedFighter; align: "left" | "right"
             display: "flex",
             fontFamily: "Noto Sans JP",
             fontWeight: 900,
-            fontSize: "22px",
+            fontSize: "18px",
             color: COLORS.gold,
-            marginTop: "18px",
+            marginTop: "14px",
           }}
         >
-          「{f.nickname}」
+          {f.nickname}
         </div>
       )}
     </div>
@@ -108,6 +131,13 @@ export async function GET(
       resolveFighter(seedB as Fighter),
     ]);
 
+    const matchup = findMatchupEvent(fighterA.nameJa, fighterB.nameJa);
+    const eventLabel = matchup
+      ? `${matchup.event.eventName}　|　${matchup.event.date.replaceAll("-", ".")}${
+          matchup.event.venue ? `　${matchup.event.venue}` : ""
+        }`
+      : null;
+
     const fonts = await loadOgFonts();
 
     const img = new ImageResponse(
@@ -119,34 +149,69 @@ export async function GET(
             display: "flex",
             flexDirection: "column",
             backgroundColor: COLORS.sumi,
+            backgroundImage: `${cornerVignette()}, ${stripeTexture()}`,
+            position: "relative",
           }}
         >
-          {/* 行1: ヘッダーストリップ */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: COLORS.washi,
-              padding: "12px 0",
-            }}
-          >
+          {/* 大会情報帯（紐付けデータがある場合のみ。ない場合は帯ごと非表示でレイアウトは自然に詰まる） */}
+          {eventLabel && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: COLORS.washi,
+                padding: "14px 0",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Noto Sans JP",
+                  fontWeight: 900,
+                  fontSize: "18px",
+                  color: COLORS.sumi,
+                  letterSpacing: "1px",
+                }}
+              >
+                {eventLabel}
+              </div>
+            </div>
+          )}
+
+          {/* MATCH UP ラベル */}
+          <div style={{ display: "flex", justifyContent: "center", padding: "20px 0 0" }}>
             <div
               style={{
                 display: "flex",
                 fontFamily: "Bebas Neue",
-                fontSize: "20px",
-                color: COLORS.sumi,
-                letterSpacing: "6px",
+                fontSize: "18px",
+                color: COLORS.ash,
+                letterSpacing: "8px",
               }}
             >
               MATCH UP
             </div>
           </div>
 
-          {/* 行2: 両選手 + 中央VS */}
+          {/* 両選手 + 中央VS + 斜め分割線 */}
           <div style={{ display: "flex", flex: 1, alignItems: "center", position: "relative" }}>
-            <FighterSide f={fighterA} align="left" />
+            {/* 斜め分割線（中央やや太め、金色） */}
+            <div
+              style={{
+                display: "flex",
+                position: "absolute",
+                left: "50%",
+                top: "-80px",
+                width: "6px",
+                height: "760px",
+                backgroundColor: COLORS.gold,
+                opacity: 0.55,
+                transform: "rotate(14deg)",
+              }}
+            />
+
+            <FighterSide f={fighterA} corner="left" />
 
             <div
               style={{
@@ -154,44 +219,46 @@ export async function GET(
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "160px",
+                width: "220px",
               }}
             >
               <div
                 style={{
                   display: "flex",
                   fontFamily: "Bebas Neue",
-                  fontSize: "76px",
-                  color: COLORS.shu,
-                  letterSpacing: "2px",
+                  fontSize: "152px",
+                  color: "#FFFFFF",
+                  letterSpacing: "0px",
+                  textShadow: "0 0 34px rgba(0,0,0,0.7)",
                 }}
               >
                 VS
               </div>
             </div>
 
-            <FighterSide f={fighterB} align="right" />
+            <FighterSide f={fighterB} corner="right" />
           </div>
 
-          {/* 行3: フッターストリップ */}
+          {/* フッター */}
           <div
             style={{
               display: "flex",
               justifyContent: "flex-end",
               alignItems: "center",
               backgroundColor: COLORS.foot,
-              padding: "20px 56px",
+              padding: "18px 56px",
             }}
           >
             <div
               style={{
                 display: "flex",
                 fontFamily: "Bebas Neue",
-                fontSize: "22px",
-                color: "#FFFFFF",
+                fontSize: "20px",
+                color: COLORS.ash,
+                letterSpacing: "1px",
               }}
             >
-              mnews.jp
+              MNEWS.JP
             </div>
           </div>
         </div>

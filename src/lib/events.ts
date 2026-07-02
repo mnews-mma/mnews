@@ -700,12 +700,36 @@ export function getUpcomingEvents(): MEvent[] {
 export function findNextFight(
   fighterName: string
 ): { event: MEvent; bout: Bout } | null {
+  // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがあるため正規化して比較する
+  const norm = (s: string) => s.replace(/[\s　]/g, "");
+  const normName = norm(fighterName);
   for (const event of getUpcomingEvents()) {
     const bout = event.bouts.find(
       (b) =>
         !b.cancelled &&
-        (b.fighterA === fighterName || b.fighterB === fighterName)
+        (norm(b.fighterA) === normName || norm(b.fighterB) === normName)
     );
+    if (bout) return { event, bout };
+  }
+  return null;
+}
+
+/** 指定した2選手の組み合わせが未来のイベントで対戦カードとして組まれていれば返す（順不同） */
+export function findMatchupEvent(
+  nameA: string,
+  nameB: string
+): { event: MEvent; bout: Bout } | null {
+  // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがあるため正規化して比較する
+  const norm = (s: string) => s.replace(/[\s　]/g, "");
+  const normA = norm(nameA);
+  const normB = norm(nameB);
+  for (const event of getUpcomingEvents()) {
+    const bout = event.bouts.find((b) => {
+      if (b.cancelled) return false;
+      const bA = norm(b.fighterA);
+      const bB = norm(b.fighterB);
+      return (bA === normA && bB === normB) || (bA === normB && bB === normA);
+    });
     if (bout) return { event, bout };
   }
   return null;
