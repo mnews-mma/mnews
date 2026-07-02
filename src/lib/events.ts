@@ -557,6 +557,133 @@ export const EVENTS: MEvent[] = [
       },
     ],
   },
+  {
+    slug: "shooto-2026-vol5",
+    org: "shooto",
+    status: "upcoming",
+    eventName: "PROFESSIONAL SHOOTO 2026 Vol.5",
+    date: "2026-07-20",
+    openTime: "17:00",
+    startTime: "17:30",
+    venue: "後楽園ホール",
+    sourceUrl: "https://www.shooto-mma.com/schedule/?id=254",
+    bouts: [
+      {
+        weightClass: "女子スーパーアトム級（48.0kg）",
+        fighterA: "渡辺彩華",
+        fighterB: "高本千代",
+        isTitleMatch: true,
+        note: "修斗世界女子スーパーアトム級タイトルマッチ 5分5R",
+      },
+      {
+        weightClass: "ミドル級（83.9kg）",
+        fighterA: "岩﨑大河",
+        fighterB: "荒井勇二",
+        note: "5分5R",
+      },
+      {
+        weightClass: "フライ級（56.7kg）",
+        fighterA: "関口祐冬",
+        fighterB: "中池武寛",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "チョウ・スソン",
+        fighterB: "ジェイク・ムラタ",
+      },
+      {
+        weightClass: "女子アトム級（46.0kg）",
+        fighterA: "中村未来",
+        fighterB: "嶋屋澪",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "武田勇輝",
+        fighterB: "上杉隼哉",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "松下祐介",
+        fighterB: "伊集龍皇",
+      },
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "澤江優侍",
+        fighterB: "塩沼諒太",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "人見礼王",
+        fighterB: "ライダーHIRO",
+      },
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "田中永遠",
+        fighterB: "加藤岡善",
+      },
+    ],
+  },
+  {
+    slug: "deep-fight-challenge-2026-2nd",
+    org: "deep",
+    status: "upcoming",
+    eventName: "DEEP FIGHT CHALLENGE 2026 2nd ROUND",
+    date: "2026-07-24",
+    openTime: "19:00",
+    startTime: "19:30",
+    venue: "恵比寿ガーデンルーム",
+    sourceUrl: "https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/",
+    bouts: [
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "坂野周平",
+        fighterB: "井上セナ",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "マイティ・saw",
+        fighterB: "中尾響",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "朝比奈龍希",
+        fighterB: "川口海翔",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "今野蓮弥",
+        fighterB: "今井風快",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        rule: "アマチュアSルール",
+        fighterA: "琥",
+        fighterB: "田中悠翔",
+        note: "オープニングファイト",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        rule: "アマチュアSルール",
+        fighterA: "大越充悟",
+        fighterB: "佐々木琢磨",
+        note: "オープニングファイト",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        rule: "アマチュアSルール",
+        fighterA: "福嶋司",
+        fighterB: "国分獅斗",
+        note: "オープニングファイト",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        rule: "アマチュアSルール",
+        fighterA: "森谷風真",
+        fighterB: "齋藤未来",
+        note: "オープニングファイト",
+      },
+    ],
+  },
 ];
 
 export function getEvent(slug: string): MEvent | undefined {

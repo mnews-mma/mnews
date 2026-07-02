@@ -984,10 +984,10 @@ footer {
   .history-table td:nth-child(2) { width: 86px; overflow-wrap: anywhere; }
   /* 結果 */
   .history-table th:nth-child(3),
-  .history-table td:nth-child(3) { width: 28px; }
+  .history-table td:nth-child(3) { width: 34px; white-space: nowrap; }
   /* 決着 */
   .history-table th:nth-child(4),
-  .history-table td:nth-child(4) { width: 102px; }
+  .history-table td:nth-child(4) { width: 96px; }
   /* 大会名 */
   .history-table th:nth-child(5),
   .history-table td:nth-child(5) { width: 140px; }
