@@ -44,19 +44,18 @@ export interface MEvent {
 //   対応クラスがない（キャッチウェイト等） → "X.Xkg契約"
 // ─────────────────────────────────────────────
 
-/** RIZIN MMA 体重区分 */
+/** RIZIN MMA 体重区分（RIZIN公式値） */
 export const RIZIN_WEIGHT_KG: Record<string, number> = {
-  "アトム級": 48.0,
-  "女子アトム級": 48.0,
-  "ストロー級": 52.2,
-  "フライ級": 56.7,
-  "バンタム級": 61.2,
-  "フェザー級": 65.8,
-  "ライト級": 70.3,
+  "女子アトム級": 47.6,
+  "女子フライ級": 49.0,
+  "フライ級": 57.0,
+  "バンタム級": 61.0,
+  "フェザー級": 66.0,
+  "ライト級": 71.0,
   "ウェルター級": 77.1,
-  "ミドル級": 83.9,
+  "ミドル級": 85.0,
   "ライトヘビー級": 93.0,
-  "ヘビー級": 120.2,
+  "ヘビー級": 120.0,
 };
 
 /** DEEP MMA 体重区分 */
@@ -98,7 +97,7 @@ export const EVENTS: MEvent[] = [
     slug: "rizin-landmark-15",
     org: "rizin",
     status: "upcoming",
-    eventName: "abc presents RIZIN LANDMARK 15 in HIROSHIMA",
+    eventName: "RIZIN LANDMARK 15 in HIROSHIMA",
     date: "2026-07-18",
     openTime: "12:00",
     startTime: "14:00",
@@ -107,44 +106,44 @@ export const EVENTS: MEvent[] = [
     sourceUrl: "https://jp.rizinff.com/_ct/17841138",
     bouts: [
       {
-        weightClass: "バンタム級（61.2kg）",
+        weightClass: "バンタム級（61.0kg）",
         fighterA: "ダニー・サバテロ",
         fighterB: "鹿志村仁之介",
         isTitleMatch: true,
         note: "RIZINバンタム級タイトルマッチ",
       },
       {
-        weightClass: "フェザー級（65.8kg）",
+        weightClass: "フェザー級（66.0kg）",
         fighterA: "カルシャガ・ダウトベック",
         fighterB: "萩原京平",
       },
       {
-        weightClass: "バンタム級（61.2kg）",
+        weightClass: "バンタム級（61.0kg）",
         fighterA: "太田忍",
         fighterB: "イリスベク・ティレノフ",
       },
       {
-        weightClass: "ライト級（70.3kg）",
+        weightClass: "ライト級（71.0kg）",
         fighterA: "ジョニー・ケース",
         fighterB: "天弥",
       },
       {
-        weightClass: "フライ級（56.7kg）",
+        weightClass: "フライ級（57.0kg）",
         fighterA: "ヒロヤ",
         fighterB: "山本アーセン",
       },
       {
-        weightClass: "フライ級（56.7kg）",
+        weightClass: "フライ級（57.0kg）",
         fighterA: "篠塚辰樹",
         fighterB: "イ・ジェフン",
       },
       {
-        weightClass: "女子アトム級（48.0kg）",
+        weightClass: "女子アトム級（47.6kg）",
         fighterA: "パク・シウ",
         fighterB: "須田萌里",
       },
       {
-        weightClass: "女子アトム級（48.0kg）",
+        weightClass: "女子アトム級（47.6kg）",
         fighterA: "大島沙緒里",
         fighterB: "イ・イェジ",
       },
@@ -154,7 +153,7 @@ export const EVENTS: MEvent[] = [
         fighterB: "梅野源治",
       },
       {
-        weightClass: "フェザー級（65.8kg）",
+        weightClass: "フェザー級（66.0kg）",
         fighterA: "鈴木博昭",
         fighterB: "宮川日向",
       },
@@ -176,13 +175,13 @@ export const EVENTS: MEvent[] = [
         note: "オープニングファイト",
       },
       {
-        weightClass: "女子アトム級（48.0kg）",
+        weightClass: "女子アトム級（47.6kg）",
         fighterA: "HIME",
         fighterB: "平田彩音",
         note: "オープニングファイト",
       },
       {
-        weightClass: "バンタム級（61.2kg）",
+        weightClass: "バンタム級（61.0kg）",
         fighterA: "神田T800周一",
         fighterB: "長野将大",
         note: "オープニングファイト",
@@ -209,42 +208,42 @@ export const EVENTS: MEvent[] = [
     sourceUrl: "https://jp.rizinff.com/_ct/17846026",
     bouts: [
       {
-        weightClass: "フェザー級（65.8kg）",
+        weightClass: "フェザー級（66.0kg）",
         fighterA: "クレベル・コイケ",
         fighterB: "秋元強真",
       },
       {
-        weightClass: "バンタム級（61.2kg）",
+        weightClass: "バンタム級（61.0kg）",
         fighterA: "佐藤将光",
         fighterB: "パッチー・ミックス",
       },
       {
-        weightClass: "フェザー級（65.8kg）",
+        weightClass: "フェザー級（66.0kg）",
         fighterA: "摩嶋一整",
         fighterB: "武田光司",
       },
       {
-        weightClass: "バンタム級（61.2kg）",
+        weightClass: "バンタム級（61.0kg）",
         fighterA: "後藤丈治",
         fighterB: "アジズベク・テミロフ",
       },
       {
-        weightClass: "フライ級（56.7kg）",
+        weightClass: "フライ級（57.0kg）",
         fighterA: "伊藤裕樹",
         fighterB: "アリベク・ガジャマトフ",
       },
       {
-        weightClass: "フライ級（56.7kg）",
+        weightClass: "フライ級（57.0kg）",
         fighterA: "平本丈",
         fighterB: "ジョリー",
       },
       {
-        weightClass: "女子アトム級（48.0kg）",
+        weightClass: "女子アトム級（47.6kg）",
         fighterA: "ケイト・ロータス",
         fighterB: "NOEL",
       },
       {
-        weightClass: "フェザー級（65.8kg）",
+        weightClass: "フェザー級（66.0kg）",
         fighterA: "水野新太",
         fighterB: "リー・カイウェン",
       },

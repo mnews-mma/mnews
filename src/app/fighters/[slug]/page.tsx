@@ -53,9 +53,13 @@ function findEventSlug(eventName: string): string | null {
   // 比較時はスペースを除去して揃える。
   const norm = (s: string) => s.replace(/\s/g, "");
   const target = norm(eventName);
+  // en.includes(target) は target が短い場合に誤マッチ（"修斗"→Lemino修斗TORAOなど）
+  // が起きるため、8文字未満の target は完全一致・こちらを含む場合のみ許可する。
   const match = EVENT_RESULTS.find((e) => {
     const en = norm(e.eventName);
-    return en === target || target.includes(en) || en.includes(target);
+    if (en === target || target.includes(en)) return true;
+    if (target.length >= 8 && en.includes(target)) return true;
+    return false;
   });
   return match ? match.slug : null;
 }

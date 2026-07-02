@@ -1,7 +1,11 @@
 import type { Article } from "./articles";
 import { SourceKey } from "./sources";
+import { FIGHTERS } from "./fighters";
 
 const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep", "shooto", "pancrase"]);
+
+// DB登録済み選手名（日本語・英語）セット — タイトルへの言及でスコア加算
+const FIGHTER_NAMES = new Set<string>(FIGHTERS.flatMap((f) => [f.nameJa, f.nameEn].filter(Boolean)));
 
 // ニュースバリューが高いキーワード（+1点ずつ）。試合速報・カード決定を最優先。
 const IMPACT_KEYWORDS = [
@@ -40,10 +44,11 @@ const IMPACT_KEYWORDS = [
   "引き分け",
   "次期挑戦者",
   "挑戦",
+  "移籍",
+  "契約解除",
 ];
 
-// ニュースバリューが低いキーワード（-2点ずつ）。合同練習・キャンペーン・
-// TV番組・結果まとめ記事はわざわざ目立たせる必要がないため減点する。
+// ニュースバリューが低いキーワード（-2点ずつ）。
 const LOW_VALUE_KEYWORDS = [
   "合同練習",
   "公開練習",
@@ -67,6 +72,13 @@ const LOW_VALUE_KEYWORDS = [
   "セミナー",
   "グッズ",
   "物販",
+  "ベストバウト",
+  "ファンイベント",
+  "握手会",
+  "サイン会",
+  "殿堂",
+  "表彰",
+  "アワード",
 ];
 
 function impactScore(a: Article): number {
@@ -77,6 +89,13 @@ function impactScore(a: Article): number {
   }
   for (const kw of LOW_VALUE_KEYWORDS) {
     if (a.title.includes(kw)) score -= 2;
+  }
+  // DB登録済み選手名がタイトルに含まれる場合 +2
+  for (const name of FIGHTER_NAMES) {
+    if (name.length >= 2 && a.title.includes(name)) {
+      score += 2;
+      break; // 1記事につき1回のみ
+    }
   }
   return score;
 }
@@ -91,23 +110,69 @@ export function selectTopNews(articles: Article[], count = 3): Article[] {
     .map((x) => x.a);
 }
 
-// BREAKING表示用。インパクトスコアに加え鮮度を強く重視する：
-// 6時間以内はボーナス、12時間超は減点、24時間超は対象外にする。
+// BREAKING表示判定。厳格な基準:
+// ・タイトルマッチ結果
+// ・主要カードの欠場・カード変更
+// ・著名選手の引退・移籍
+// 除外: チケット・グッズ・ファンイベント・試合順・表彰・アワード
+// 3時間以内かつスコアが閾値(6)以上の場合のみ BREAKING 表示。
+const BREAKING_THRESHOLD = 6;
+
+// BREAKING に必須のキーワード（いずれかを含むこと）
+const BREAKING_REQUIRED = [
+  "タイトルマッチ",
+  "王者",
+  "王座",
+  "新王者",
+  "防衛",
+  "引退",
+  "移籍",
+  "電撃",
+  "緊急",
+  "欠場",
+  "契約解除",
+  "速報",
+  "KO",
+  "TKO",
+  "一本",
+  "参戦",
+];
+
+// BREAKING から除外するキーワード（いずれかを含む場合は対象外）
+const BREAKING_EXCLUDED = [
+  "チケット",
+  "グッズ",
+  "物販",
+  "LOT",
+  "抽選",
+  "ファンイベント",
+  "握手会",
+  "サイン会",
+  "アワード",
+  "表彰",
+  "ベストバウト",
+  "試合順",
+  "計量",
+  "公開練習",
+  "合同練習",
+  "セミナー",
+];
+
 function breakingScore(a: Article): number {
   const ageHours = (Date.now() - new Date(a.publishedAt).getTime()) / (60 * 60 * 1000);
-  if (ageHours > 24) return -Infinity;
-  let score = impactScore(a);
-  if (ageHours <= 6) score += 3;
-  else if (ageHours > 12) score -= 4;
-  return score;
+  if (ageHours > 3) return -Infinity; // 3時間超は対象外
+  // 除外キーワードチェック
+  if (BREAKING_EXCLUDED.some((kw) => a.title.includes(kw))) return -Infinity;
+  // 必須キーワードがない場合は対象外
+  if (!BREAKING_REQUIRED.some((kw) => a.title.includes(kw))) return -Infinity;
+  return impactScore(a);
 }
 
-// 公式・ニュース問わず全記事から、鮮度を重視したインパクト最上位の1件を選ぶ。
-// 24時間以上前の記事は対象外（古いニュースをBREAKING扱いしない）。
+// 公式・ニュース問わず全記事から BREAKING 条件を満たす最上位1件を返す。
 export function selectBreaking(articles: Article[]): Article | null {
   const ranked = articles
     .map((a, index) => ({ a, index, score: breakingScore(a) }))
-    .filter((x) => x.score > -Infinity)
+    .filter((x) => x.score > -Infinity && x.score >= BREAKING_THRESHOLD)
     .sort((x, y) => (y.score !== x.score ? y.score - x.score : x.index - y.index));
   return ranked.length > 0 ? ranked[0].a : null;
 }
