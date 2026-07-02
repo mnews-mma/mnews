@@ -18,9 +18,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!seed) return { title: "選手が見つかりません | Mニュース" };
   // Wikipedia から取得した実際の戦績を meta にも反映（seed と乖離させない）
   const fighter = await resolveFighter(seed);
+  const nextFight = findNextFight(fighter.nameJa);
+  const nextFightDesc = nextFight
+    ? `次戦は${nextFight.event.date}『${nextFight.event.eventName}』でvs${
+        nextFight.bout.fighterA === fighter.nameJa ? nextFight.bout.fighterB : nextFight.bout.fighterA
+      }。`
+    : "";
   return pageMetadata({
     title: `${fighter.nameJa} 戦績・試合結果 | Mニュース`,
-    description: `${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${SOURCES[fighter.org].label}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
+    description: `${nextFightDesc}${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${SOURCES[fighter.org].label}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
     path: `/fighters/${fighter.slug}`,
     image: {
       url: `/api/og/fighter/${fighter.slug}`,
@@ -136,15 +142,31 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         {nickname && <div className="fighter-page-nickname">{nickname}</div>}
 
         {/* 次戦バナー */}
-        {nextFight && (
-          <a href={`/events/${nextFight.event.slug}`} className="fighter-next-fight">
-            <span className="fighter-next-fight-label">次戦</span>
-            {nextFight.event.date} ／ {nextFight.event.eventName} ／ vs{" "}
-            {nextFight.bout.fighterA === fighter.nameJa
+        {nextFight && (() => {
+          const opponentName =
+            nextFight.bout.fighterA === fighter.nameJa
               ? nextFight.bout.fighterB
-              : nextFight.bout.fighterA}
-          </a>
-        )}
+              : nextFight.bout.fighterA;
+          const opponentSlug = findFighterSlugByName(opponentName, slug);
+          return (
+            <div className="fighter-next-fight">
+              <span className="fighter-next-fight-label">次戦</span>
+              <a href={`/events/${nextFight.event.slug}`} className="fighter-next-fight-link">
+                {nextFight.event.date} ／ {nextFight.event.eventName}
+              </a>
+              {" ／ vs "}
+              {opponentSlug ? (
+                <a href={`/fighters/${opponentSlug}`} className="fighter-next-fight-link">
+                  {opponentName}
+                </a>
+              ) : (
+                opponentName
+              )}
+              {" ／ "}
+              {nextFight.bout.weightClass}
+            </div>
+          );
+        })()}
 
         {/* 戦績スタットカード */}
         <div className="fighter-stats-grid">

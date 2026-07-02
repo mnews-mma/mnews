@@ -1612,6 +1612,11 @@ footer {
   background: rgba(232, 0, 45, 0.1);
 }
 
+.fighter-next-fight-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .fighter-next-fight-label {
   font-family: var(--mono);
   font-size: 10px;
