@@ -111,10 +111,10 @@ export function selectTopNews(articles: Article[], count = 3): Article[] {
 }
 
 // BREAKING表示判定。以下を全て満たす場合のみ表示:
-// ・24時間以内の記事
+// ・48時間以内の記事（date-only取得ソースの UTC解釈ズレを吸収）
 // ・除外KWなし（チケット/グッズ/受賞/ボーナス等）
-// ・スコアが閾値(5)以上（必須KWは不要 — スコアで判断）
-const BREAKING_THRESHOLD = 5;
+// ・スコアが閾値(4)以上（公式org+3 + IMPACT_KW1つ+1 = 4 が最低ライン）
+const BREAKING_THRESHOLD = 4;
 
 // BREAKING から除外するキーワード（いずれかを含む場合は対象外）
 const BREAKING_EXCLUDED = [
@@ -145,7 +145,7 @@ const BREAKING_EXCLUDED = [
 
 function breakingScore(a: Article): number {
   const ageHours = (Date.now() - new Date(a.publishedAt).getTime()) / (60 * 60 * 1000);
-  if (ageHours > 24) return -Infinity; // 24時間超は対象外
+  if (ageHours > 48) return -Infinity; // 48時間超は対象外
   // 除外キーワードチェック
   if (BREAKING_EXCLUDED.some((kw) => a.title.includes(kw))) return -Infinity;
   return impactScore(a);
