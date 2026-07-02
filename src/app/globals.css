@@ -1221,6 +1221,52 @@ footer {
   padding-top: 6px;
 }
 
+/* Related events */
+.event-related {
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+.event-related-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+.event-related-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+}
+.event-related-link:hover {
+  background: var(--s2);
+}
+
+/* U-NEXT affiliate */
+.event-affiliate {
+  margin-top: 10px;
+}
+.event-affiliate-btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.event-affiliate-btn:hover {
+  background: #222;
+}
+
 /* Fighter next fight banner */
 .fighter-next-fight {
   display: flex;

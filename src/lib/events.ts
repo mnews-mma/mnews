@@ -10,7 +10,7 @@ export interface BoutResult {
 
 export interface Bout {
   weightClass: string;
-  rule?: string; // 省略時 "RIZINルール MMA 5分3R"
+  rule?: string; // 省略時はMMAルール。"キックボクシング"等で上書き
   fighterA: string;
   fighterB: string;
   isTitleMatch?: boolean;
@@ -29,10 +29,69 @@ export interface MEvent {
   startTime?: string; // "14:00"
   venue?: string;
   broadcast?: string[];
+  affiliateUrl?: string; // U-NEXTアフィリエイト等（将来用）
   sourceUrl?: string;
+  // 同日同会場など関連大会のslug
+  relatedEventSlugs?: string[];
   // メインイベント先頭・オープニング末尾の順で格納
   bouts: Bout[];
 }
+
+// ─────────────────────────────────────────────
+// 体重区分マッピング（団体別に保持）
+// weightClass フィールドへの表記ルール:
+//   該当する名称クラスがある場合 → "クラス名（X.Xkg）"
+//   対応クラスがない（キャッチウェイト等） → "X.Xkg契約"
+// ─────────────────────────────────────────────
+
+/** RIZIN MMA 体重区分 */
+export const RIZIN_WEIGHT_KG: Record<string, number> = {
+  "アトム級": 48.0,
+  "女子アトム級": 48.0,
+  "ストロー級": 52.2,
+  "フライ級": 56.7,
+  "バンタム級": 61.2,
+  "フェザー級": 65.8,
+  "ライト級": 70.3,
+  "ウェルター級": 77.1,
+  "ミドル級": 83.9,
+  "ライトヘビー級": 93.0,
+  "ヘビー級": 120.2,
+};
+
+/** DEEP MMA 体重区分 */
+export const DEEP_WEIGHT_KG: Record<string, number> = {
+  "DEEPストロー級": 52.2,
+  "DEEPフライ級": 56.7,
+  "DEEPバンタム級": 61.2,
+  "DEEPフェザー級": 65.8,
+  "DEEPライト級": 70.3,
+  "DEEPウェルター級": 77.1,
+  "DEEPミドル級": 83.9,
+  "DEEPスーパーヘビー級": 120.2,
+};
+
+/** DEEP JEWELS 体重区分 */
+export const DEEP_JEWELS_WEIGHT_KG: Record<string, number> = {
+  "DEEPJEWELSミクロ級": 46.0,
+  "DEEPJEWELSストロー級": 48.0,
+  "DEEPJEWELSバンタム級": 54.0,
+  "DEEPJEWELSフライ級": 57.0,
+  "DEEPJEWELSフェザー級": 62.0,
+};
+
+/** PANCRASE / 修斗 体重区分 */
+export const PANCRASE_SHOOTO_WEIGHT_KG: Record<string, number> = {
+  "ストロー級": 52.2,
+  "フライ級": 56.7,
+  "バンタム級": 61.2,
+  "フェザー級": 65.8,
+  "ライト級": 70.3,
+  "ウェルター級": 77.1,
+  "ミドル級": 83.9,
+};
+
+// ─────────────────────────────────────────────
 
 export const EVENTS: MEvent[] = [
   {
@@ -48,89 +107,88 @@ export const EVENTS: MEvent[] = [
     sourceUrl: "https://jp.rizinff.com/_ct/17841138",
     bouts: [
       {
-        weightClass: "バンタム級",
+        weightClass: "バンタム級（61.2kg）",
         fighterA: "ダニー・サバテロ",
         fighterB: "鹿志村仁之介",
         isTitleMatch: true,
         note: "RIZINバンタム級タイトルマッチ",
       },
       {
-        weightClass: "フェザー級",
+        weightClass: "フェザー級（65.8kg）",
         fighterA: "カルシャガ・ダウトベック",
         fighterB: "萩原京平",
       },
       {
-        weightClass: "バンタム級",
+        weightClass: "バンタム級（61.2kg）",
         fighterA: "太田忍",
         fighterB: "イリスベク・ティレノフ",
       },
       {
-        weightClass: "ライト級",
+        weightClass: "ライト級（70.3kg）",
         fighterA: "ジョニー・ケース",
         fighterB: "天弥",
       },
       {
-        weightClass: "フライ級",
+        weightClass: "フライ級（56.7kg）",
         fighterA: "ヒロヤ",
         fighterB: "山本アーセン",
       },
       {
-        weightClass: "フライ級",
+        weightClass: "フライ級（56.7kg）",
         fighterA: "篠塚辰樹",
         fighterB: "イ・ジェフン",
       },
       {
-        weightClass: "女子アトム級",
+        weightClass: "女子アトム級（48.0kg）",
         fighterA: "パク・シウ",
         fighterB: "須田萌里",
       },
       {
-        weightClass: "女子アトム級",
+        weightClass: "女子アトム級（48.0kg）",
         fighterA: "大島沙緒里",
         fighterB: "イ・イェジ",
       },
       {
-        weightClass: "スーパーライト級（64.0kg契約）",
+        weightClass: "64.0kg契約",
         fighterA: "昇侍",
         fighterB: "梅野源治",
       },
       {
-        weightClass: "フェザー級",
+        weightClass: "フェザー級（65.8kg）",
         fighterA: "鈴木博昭",
         fighterB: "宮川日向",
       },
       {
-        weightClass: "ウェルター級（77.0kg契約）",
+        weightClass: "77.0kg契約",
         fighterA: "佐々木信治",
         fighterB: "林RICE陽太",
       },
       {
-        weightClass: "スーパーバンタム級（54.5kg契約）",
+        weightClass: "54.5kg契約",
         rule: "キックボクシング",
         fighterA: "芝宏二郎",
         fighterB: "遥心",
       },
-      // OPENING FIGHTS
       {
-        weightClass: "ライト級（71.0kg契約）",
+        weightClass: "71.0kg契約",
         fighterA: "シヴァエフ",
         fighterB: "ベンジャミン",
         note: "オープニングファイト",
       },
       {
-        weightClass: "女子アトム級",
+        weightClass: "女子アトム級（48.0kg）",
         fighterA: "HIME",
         fighterB: "平田彩音",
         note: "オープニングファイト",
       },
       {
-        weightClass: "バンタム級",
+        weightClass: "バンタム級（61.2kg）",
         fighterA: "神田T800周一",
         fighterB: "長野将大",
         note: "オープニングファイト",
       },
       {
-        weightClass: "フライ級（57.0kg契約）",
+        weightClass: "57.0kg契約",
         fighterA: "田中仁",
         fighterB: "健太朗",
         rule: "アマチュアMMAルール",
@@ -151,49 +209,352 @@ export const EVENTS: MEvent[] = [
     sourceUrl: "https://jp.rizinff.com/_ct/17846026",
     bouts: [
       {
-        weightClass: "フェザー級",
+        weightClass: "フェザー級（65.8kg）",
         fighterA: "クレベル・コイケ",
         fighterB: "秋元強真",
       },
       {
-        weightClass: "バンタム級",
+        weightClass: "バンタム級（61.2kg）",
         fighterA: "佐藤将光",
         fighterB: "パッチー・ミックス",
       },
       {
-        weightClass: "フェザー級",
+        weightClass: "フェザー級（65.8kg）",
         fighterA: "摩嶋一整",
         fighterB: "武田光司",
       },
       {
-        weightClass: "バンタム級",
+        weightClass: "バンタム級（61.2kg）",
         fighterA: "後藤丈治",
         fighterB: "アジズベク・テミロフ",
       },
       {
-        weightClass: "フライ級",
+        weightClass: "フライ級（56.7kg）",
         fighterA: "伊藤裕樹",
         fighterB: "アリベク・ガジャマトフ",
       },
       {
-        weightClass: "フライ級",
+        weightClass: "フライ級（56.7kg）",
         fighterA: "平本丈",
         fighterB: "ジョリー",
       },
       {
-        weightClass: "女子アトム級",
+        weightClass: "女子アトム級（48.0kg）",
         fighterA: "ケイト・ロータス",
         fighterB: "NOEL",
       },
       {
-        weightClass: "フェザー級",
+        weightClass: "フェザー級（65.8kg）",
         fighterA: "水野新太",
         fighterB: "リー・カイウェン",
       },
       {
-        weightClass: "ウェルター級（69.0kg契約）",
+        weightClass: "69.0kg契約",
         fighterA: "直樹",
         fighterB: "細川一颯",
+      },
+    ],
+  },
+  {
+    slug: "lemino-shooto-7",
+    org: "shooto",
+    status: "upcoming",
+    eventName: "Lemino修斗.7",
+    date: "2026-07-13",
+    openTime: "17:30",
+    startTime: "18:00",
+    venue: "後楽園ホール",
+    broadcast: ["Lemino"],
+    sourceUrl: "https://j-shooto.com/2026/06/11/post-48459/",
+    bouts: [
+      // カード変更: 藤田大和 負傷欠場 → 高岡宏気が緊急代役（フライ級→バンタム級 61.2kgに変更）
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "宇野薫",
+        fighterB: "児山佳宏",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "高岡宏気",
+        fighterB: "マーウィン・キランテ",
+        note: "藤田大和負傷欠場→高岡宏気が緊急代役（フライ級→バンタム級61.2kgに変更）",
+      },
+      {
+        weightClass: "フライ級（56.7kg）",
+        rule: "+1ポンドOK",
+        fighterA: "シモンスズキ",
+        fighterB: "シンバートル・バットエルデネ",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        rule: "+1ポンドOK",
+        fighterA: "藤田ムネノリ",
+        fighterB: "ジョン・オルニド",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "下間英史",
+        fighterB: "山本敦章",
+      },
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "松村海青",
+        fighterB: "井上理久",
+      },
+      {
+        weightClass: "フライ級（56.7kg）",
+        fighterA: "饒平名知靖",
+        fighterB: "村泉空",
+      },
+      {
+        weightClass: "フライ級（56.7kg）",
+        fighterA: "玉城悠",
+        fighterB: "三浦颯太",
+      },
+      {
+        weightClass: "ライト級（70.3kg）",
+        fighterA: "モリシマン",
+        fighterB: "手島響",
+      },
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "松田拳哉",
+        fighterB: "佐藤大知",
+        rule: "トライアウト",
+        note: "オープニングファイト",
+      },
+    ],
+  },
+  {
+    slug: "pancrase-364",
+    org: "pancrase",
+    status: "upcoming",
+    eventName: "PANCRASE 364",
+    date: "2026-07-26",
+    openTime: "12:15",
+    startTime: "12:30",
+    venue: "ニューピアホール",
+    broadcast: ["U-NEXT（国内独占）", "UFC FIGHT PASS（海外）"],
+    affiliateUrl: "", // U-NEXTアフィリエイトURL（実装予定）
+    sourceUrl: "https://www.pancrase.co.jp/tour/2026/pancrase364/index.html",
+    bouts: [
+      {
+        weightClass: "ストロー級（52.2kg）",
+        fighterA: "佐々木瞬真",
+        fighterB: "船田電池",
+        isTitleMatch: false,
+        note: "ストロー級次期挑戦者決定戦",
+      },
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "カリベク・アルジクル ウール",
+        fighterB: "三宅輝砂",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "髙城光弘",
+        fighterB: "佐藤ゆうじ",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "前田浩平",
+        fighterB: "小原統哉",
+      },
+      {
+        weightClass: "ライト級（70.3kg）",
+        fighterA: "藤村健悟",
+        fighterB: "佐藤力斗",
+      },
+      // プレリミナリー
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "小野瑛大",
+        fighterB: "山田浩平",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "フライ級（56.7kg）",
+        fighterA: "米泉乾太",
+        fighterB: "細川勇哉",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "ストロー級（52.2kg）",
+        fighterA: "山口秀斗",
+        fighterB: "猿魔",
+        note: "プレリミナリー",
+      },
+    ],
+  },
+  {
+    slug: "deep-tokyo-impact-2026-4th",
+    org: "deep",
+    status: "upcoming",
+    eventName: "DEEP TOKYO IMPACT 2026 4th ROUND",
+    date: "2026-09-06",
+    venue: "ニューピアホール",
+    sourceUrl: "https://www.deep2001.com/deep-tokyo-impact-2026-4th-round/",
+    relatedEventSlugs: ["deep-jewels-54"],
+    bouts: [
+      {
+        weightClass: "59.0kg契約",
+        fighterA: "窪田泰斗",
+        fighterB: "飴山聖也",
+        note: "メイン",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "木下カラテ",
+        fighterB: "杉野亜蓮",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "関鉄矢",
+        fighterB: "狩野優",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "橋本優大",
+        fighterB: "須田雄律",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "唐沢タツヤ",
+        fighterB: "杉野光星",
+      },
+      {
+        weightClass: "DEEPストロー級（52.2kg）",
+        fighterA: "豪瑠",
+        fighterB: "高橋俊哉",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "黒岡裕真",
+        fighterB: "坂本岳",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "安永吏成",
+        fighterB: "平井聡一朗",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "ダイヤ",
+        fighterB: "ヴィニシウス",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "藤井連",
+        fighterB: "権藤悠太郎",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "山口コウタ",
+        fighterB: "佐藤修斗",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "小笠原孝成",
+        fighterB: "尚太郎",
+      },
+      // オープニングファイト（アマチュアSルール）
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        rule: "アマチュアSルール",
+        fighterA: "岸翔大",
+        fighterB: "サカテロ",
+        note: "オープニングファイト",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        rule: "アマチュアSルール",
+        fighterA: "サンシャイン",
+        fighterB: "上田遥斗",
+        note: "オープニングファイト",
+      },
+    ],
+  },
+  {
+    slug: "deep-jewels-54",
+    org: "deep",
+    status: "upcoming",
+    eventName: "DEEP JEWELS 54",
+    date: "2026-09-06",
+    venue: "ニューピアホール",
+    sourceUrl: "https://www.deep2001.com/deep-jewels-54/",
+    relatedEventSlugs: ["deep-tokyo-impact-2026-4th"],
+    bouts: [
+      {
+        weightClass: "49.0kg契約",
+        fighterA: "彩綺",
+        fighterB: "竹林愛留",
+      },
+      {
+        weightClass: "54.0kg契約",
+        fighterA: "ののか",
+        fighterB: "重田ほのか",
+      },
+      {
+        weightClass: "DEEPJEWELSバンタム級（54.0kg）",
+        fighterA: "百湖",
+        fighterB: "キューティ",
+      },
+      {
+        weightClass: "49.0kg契約",
+        fighterA: "海咲イルカ",
+        fighterB: "月井隼南",
+      },
+      {
+        weightClass: "DEEPJEWELSストロー級（48.0kg）",
+        fighterA: "桐生祐子",
+        fighterB: "横瀬友愛",
+      },
+      {
+        weightClass: "DEEPJEWELSミクロ級（46.0kg）",
+        fighterA: "大井すず",
+        fighterB: "知名眞陽菜",
+      },
+      {
+        weightClass: "DEEPJEWELSストロー級（48.0kg）",
+        fighterA: "アラミ",
+        fighterB: "堀内美沙紀",
+      },
+      {
+        weightClass: "49.0kg契約",
+        fighterA: "サラ",
+        fighterB: "渡邊花美",
+      },
+      {
+        weightClass: "50.0kg契約",
+        fighterA: "横瀬美久",
+        fighterB: "Marin",
+      },
+      {
+        weightClass: "DEEPJEWELSストロー級（48.0kg）",
+        fighterA: "堀井かりん",
+        fighterB: "JUICY",
+      },
+      // アマチュアSルール
+      {
+        weightClass: "50.0kg契約",
+        rule: "アマチュアSルール",
+        fighterA: "あきぴ",
+        fighterB: "セアリ",
+        note: "オープニングファイト",
+      },
+      {
+        weightClass: "50.0kg契約",
+        rule: "アマチュアSルール",
+        fighterA: "横江明日香",
+        fighterB: "谷山心優",
+        note: "オープニングファイト",
+      },
+      {
+        weightClass: "50.0kg契約",
+        rule: "アマチュアSルール",
+        fighterA: "和智美音",
+        fighterB: "山内梨緒",
+        note: "オープニングファイト",
       },
     ],
   },

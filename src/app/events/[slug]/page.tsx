@@ -5,6 +5,7 @@ import { EVENTS, getEvent } from "@/lib/events";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
+import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
@@ -60,6 +61,17 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const srcColor = SOURCES[event.org].color;
   const srcLabel = SOURCES[event.org].label;
 
+  // 関連大会を解決
+  const relatedEvents = (event.relatedEventSlugs ?? [])
+    .map((s) => getEvent(s))
+    .filter(Boolean) as NonNullable<ReturnType<typeof getEvent>>[];
+
+  const breadcrumbs = [
+    { label: "トップ", href: "/" },
+    { label: "大会情報", href: "/" },
+    { label: event.eventName },
+  ];
+
   // JSON-LD structured data
   const jsonLd = {
     "@context": "https://schema.org",
@@ -84,6 +96,10 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }}
+      />
       <Nav />
 
       {/* ステータスバー */}
@@ -95,6 +111,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       )}
 
       <div className="page-head">
+        <Breadcrumb items={breadcrumbs} />
         <div className="org-tag" style={{ color: srcColor }}>
           {srcLabel}
         </div>
@@ -122,6 +139,25 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       </div>
 
       <div style={{ padding: "0 24px 40px" }}>
+        {/* 同日開催の関連大会 */}
+        {relatedEvents.length > 0 && (
+          <div className="event-related">
+            <div className="event-section-label">同日開催</div>
+            <div className="event-related-links">
+              {relatedEvents.map((r) => (
+                <a key={r.slug} href={`/events/${r.slug}`} className="event-related-link"
+                  style={{ borderLeftColor: SOURCES[r.org].color }}>
+                  <span className="org-tag" style={{ color: SOURCES[r.org].color, fontSize: 11 }}>
+                    {SOURCES[r.org].label}
+                  </span>
+                  <span>{r.eventName}</span>
+                  <span style={{ fontSize: 12, color: "var(--muted)" }}>{r.venue}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* 放送・配信情報 */}
         {event.broadcast && event.broadcast.length > 0 && (
           <div className="event-broadcast">
@@ -131,6 +167,15 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                 <li key={i}>{b}</li>
               ))}
             </ul>
+            {/* U-NEXTアフィリエイト枠（affiliateUrlが設定された時点で有効化） */}
+            {event.affiliateUrl && (
+              <div className="event-affiliate">
+                <a href={event.affiliateUrl} target="_blank" rel="noopener noreferrer sponsored"
+                  className="event-affiliate-btn">
+                  U-NEXTで視聴する（PR）
+                </a>
+              </div>
+            )}
           </div>
         )}
 
