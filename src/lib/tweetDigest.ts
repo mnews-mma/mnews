@@ -110,13 +110,12 @@ export function selectTopNews(articles: Article[], count = 3): Article[] {
     .map((x) => x.a);
 }
 
-// BREAKING表示判定。厳格な基準:
-// ・タイトルマッチ結果
-// ・主要カードの欠場・カード変更
-// ・著名選手の引退・移籍
-// 除外: チケット・グッズ・ファンイベント・試合順・表彰・アワード
-// 3時間以内かつスコアが閾値(6)以上の場合のみ BREAKING 表示。
-const BREAKING_THRESHOLD = 6;
+// BREAKING表示判定。以下を全て満たす場合のみ表示:
+// ・12時間以内の記事
+// ・除外KWなし（チケット/グッズ/受賞/ボーナス等）
+// ・必須KWあり（タイトル/引退/移籍/KO等）
+// ・スコアが閾値(4)以上
+const BREAKING_THRESHOLD = 4;
 
 // BREAKING に必須のキーワード（いずれかを含むこと）
 const BREAKING_REQUIRED = [
@@ -163,7 +162,7 @@ const BREAKING_EXCLUDED = [
 
 function breakingScore(a: Article): number {
   const ageHours = (Date.now() - new Date(a.publishedAt).getTime()) / (60 * 60 * 1000);
-  if (ageHours > 3) return -Infinity; // 3時間超は対象外
+  if (ageHours > 12) return -Infinity; // 12時間超は対象外
   // 除外キーワードチェック
   if (BREAKING_EXCLUDED.some((kw) => a.title.includes(kw))) return -Infinity;
   // 必須キーワードがない場合は対象外
