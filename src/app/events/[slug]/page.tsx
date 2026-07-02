@@ -6,6 +6,7 @@ import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
+import UNextAffiliate from "@/components/UNextAffiliate";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
@@ -167,15 +168,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                 <li key={i}>{b}</li>
               ))}
             </ul>
-            {/* U-NEXTアフィリエイト枠（affiliateUrlが設定された時点で有効化） */}
-            {event.affiliateUrl && (
-              <div className="event-affiliate">
-                <a href={event.affiliateUrl} target="_blank" rel="noopener noreferrer sponsored"
-                  className="event-affiliate-btn">
-                  U-NEXTで視聴する（PR）
-                </a>
-              </div>
-            )}
+            <UNextAffiliate />
           </div>
         )}
 
