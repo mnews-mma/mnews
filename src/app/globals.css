@@ -772,11 +772,9 @@ footer {
 .fighter-meta-row {
   display: flex;
   gap: 16px;
-  font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 8px;
-  letter-spacing: 1px;
 }
 
 /* 外枠コンテナ: 角丸 + border。overflow:hidden で角をクリップ */
@@ -1060,6 +1058,10 @@ footer {
     padding: 2px 6px;
     min-width: 24px;
   }
+  .fighter-page-name { font-size: 24px; }
+  .fighter-stat-num { font-size: 15px; }
+  .fighter-stat-card { padding: 10px 6px; }
+  .fighter-stats-grid { margin: 12px 0 10px; }
   footer {
     padding: 32px 16px 20px;
   }
@@ -1071,7 +1073,9 @@ footer {
 
 /* ===== BREADCRUMB ===== */
 .breadcrumb {
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
 .breadcrumb-list {
   display: flex;
@@ -1080,19 +1084,138 @@ footer {
   list-style: none;
   gap: 4px;
   font-size: 12px;
-  color: var(--muted);
+  color: #374151;
 }
 .breadcrumb-sep {
   margin: 0 2px;
-  color: var(--dim);
+  color: #d1d5db;
 }
 .breadcrumb-link {
-  color: var(--muted);
+  color: #b91c1c;
   text-decoration: none;
 }
 .breadcrumb-link:hover {
-  color: var(--accent);
   text-decoration: underline;
+}
+
+/* ===== FIGHTER PAGE HEADER ===== */
+.fighter-org-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.fighter-org-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  background: transparent;
+  text-transform: uppercase;
+}
+.fighter-org-class {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.fighter-page-name {
+  font-family: var(--os);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+.fighter-name-en {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.fighter-page-nickname {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+  margin: 8px 0 14px;
+  line-height: 1.4;
+}
+.fighter-stats-grid {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px 0 12px;
+}
+.fighter-stat-card {
+  flex: 1;
+  padding: 12px 8px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.fighter-stat-card:last-child {
+  border-right: none;
+}
+.fighter-stat-num {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.fighter-stat-label {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+}
+.fighter-finish-block {
+  margin-bottom: 14px;
+}
+.fighter-finish-bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--border);
+  margin-bottom: 6px;
+}
+.fbar-ko { background: #dc2626; }
+.fbar-sub { background: #ea580c; }
+.fbar-dec { background: #9ca3af; }
+.fighter-finish-labels {
+  display: flex;
+  gap: 14px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.flabel-ko b { color: #dc2626; }
+.flabel-sub b { color: #ea580c; }
+.flabel-dec b { color: #374151; }
+.fighter-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  border: 1.5px solid var(--text);
+  border-radius: 6px;
+  padding: 6px 14px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: background 0.15s, color 0.15s;
+}
+.fighter-card-btn:hover {
+  background: var(--text);
+  color: #fff;
 }
 
 /* ===== EVENT SUMMARY ===== */

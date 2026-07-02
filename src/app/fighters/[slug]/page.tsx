@@ -74,6 +74,12 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const nextFight = findNextFight(fighter.nameJa);
   const { winRate, finishRate } = calcFighterRates(fighter);
 
+  // フィニッシュ内訳バー用
+  const finishBase = Math.max(wins, fighter.ko + fighter.sub + fighter.decision) || 1;
+  const koW = Math.round((fighter.ko / finishBase) * 100);
+  const subW = Math.round((fighter.sub / finishBase) * 100);
+  const decW = Math.round((fighter.decision / finishBase) * 100);
+
   const sameWeightClass = FIGHTERS.filter(
     (f) => f.slug !== slug && f.weightClass === fighter.weightClass
   )
@@ -110,27 +116,26 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
       <Nav />
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
-        <div className="fighter-org" style={{ color: SOURCES[fighter.org].color }}>
-          {SOURCES[fighter.org].label} / {fighter.weightClass}
-        </div>
-        <h1 className="page-title" style={{ marginTop: 8 }}>
-          {fighter.nameJa}
-          <span style={{ fontFamily: "var(--mono)", fontSize: 14, color: "var(--muted)", marginLeft: 12 }}>
-            {fighter.nameEn}
+
+        {/* 団体バッジ + 階級 */}
+        <div className="fighter-org-row">
+          <span
+            className="fighter-org-badge"
+            style={{ color: SOURCES[fighter.org].color, borderColor: SOURCES[fighter.org].color }}
+          >
+            {SOURCES[fighter.org].label}
           </span>
-        </h1>
-        {nickname && <div className="fighter-nickname">「{nickname}」</div>}
-        <div className="page-sub">
-          通算 {wins}-{losses}-{draws}
-          {winRate !== null && <span> ／ 勝率 {winRate}%</span>}
-          {finishRate !== null && <span> ／ フィニッシュ率 {finishRate}%</span>}
+          <span className="fighter-org-class">{fighter.weightClass}</span>
         </div>
-        <div className="page-sub" style={{ fontSize: 13, color: "var(--muted)" }}>
-          KO {fighter.ko} ／ 一本 {fighter.sub} ／ 判定 {fighter.decision}
-          <a href={`/tools/fighter-card?fighter=${fighter.slug}`} style={{ marginLeft: 12, color: "var(--accent)", fontSize: 13 }}>
-            → X投稿用カード作成
-          </a>
-        </div>
+
+        {/* 選手名 */}
+        <h1 className="fighter-page-name">{fighter.nameJa}</h1>
+        {fighter.nameEn && <div className="fighter-name-en">{fighter.nameEn}</div>}
+
+        {/* ニックネーム */}
+        {nickname && <div className="fighter-page-nickname">{nickname}</div>}
+
+        {/* 次戦バナー */}
         {nextFight && (
           <a href={`/events/${nextFight.event.slug}`} className="fighter-next-fight">
             <span className="fighter-next-fight-label">次戦</span>
@@ -140,10 +145,53 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
               : nextFight.bout.fighterA}
           </a>
         )}
+
+        {/* 戦績スタットカード */}
+        <div className="fighter-stats-grid">
+          <div className="fighter-stat-card">
+            <div className="fighter-stat-num">{wins}-{losses}-{draws}</div>
+            <div className="fighter-stat-label">通算戦績</div>
+          </div>
+          {winRate !== null && (
+            <div className="fighter-stat-card">
+              <div className="fighter-stat-num">{winRate}%</div>
+              <div className="fighter-stat-label">勝率</div>
+            </div>
+          )}
+          {finishRate !== null && (
+            <div className="fighter-stat-card">
+              <div className="fighter-stat-num">{finishRate}%</div>
+              <div className="fighter-stat-label">フィニッシュ率</div>
+            </div>
+          )}
+        </div>
+
+        {/* KO/一本/判定 内訳バー */}
+        {wins > 0 && (
+          <div className="fighter-finish-block">
+            <div className="fighter-finish-bar">
+              {koW > 0 && <div className="fbar-ko" style={{ width: `${koW}%` }} />}
+              {subW > 0 && <div className="fbar-sub" style={{ width: `${subW}%` }} />}
+              {decW > 0 && <div className="fbar-dec" style={{ width: `${decW}%` }} />}
+            </div>
+            <div className="fighter-finish-labels">
+              <span className="flabel-ko">KO <b>{fighter.ko}</b></span>
+              <span className="flabel-sub">一本 <b>{fighter.sub}</b></span>
+              <span className="flabel-dec">判定 <b>{fighter.decision}</b></span>
+            </div>
+          </div>
+        )}
+
+        {/* X投稿カードボタン */}
+        <a href={`/tools/fighter-card?fighter=${fighter.slug}`} className="fighter-card-btn">
+          𝕏 投稿用カード作成
+        </a>
+
+        {/* 出身・年齢 */}
         {(birthPlace || age) && (
           <div className="fighter-meta-row">
-            {age && <span>{age}歳</span>}
-            {birthPlace && <span>{birthPlace}出身</span>}
+            {age && <span>🎂 {age}歳</span>}
+            {birthPlace && <span>📍 {birthPlace}出身</span>}
           </div>
         )}
       </div>
