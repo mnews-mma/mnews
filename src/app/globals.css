@@ -900,6 +900,139 @@ footer {
 }
 
 
+/* ===== RESULT TABLE (大会結果ページ専用) ===== */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.result-table thead tr {
+  background: #1a1a1a;
+}
+.result-table th {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.75);
+  text-align: left;
+  padding: 10px 12px;
+  white-space: nowrap;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+}
+.result-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.result-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.result-table tbody tr:nth-child(even) {
+  background: #f7f5f2;
+}
+/* 階級列: 2行表示 */
+.col-weight {
+  white-space: normal;
+  font-size: 12px;
+  min-width: 80px;
+}
+.col-weight-kg {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+/* 対戦カード列 */
+.col-matchup {
+  white-space: normal;
+  min-width: 120px;
+}
+.matchup-name {
+  display: inline;
+  white-space: nowrap;
+}
+.matchup-vs {
+  display: inline;
+  margin: 0 4px;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 600;
+}
+/* 勝者列: ピル型バッジ */
+.col-winner {
+  white-space: nowrap;
+}
+.winner-pill {
+  display: inline-block;
+  background: #16a34a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.draw-pill {
+  display: inline-block;
+  background: #6b7280;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+/* 決着列 */
+.col-method-r {
+  white-space: normal;
+  min-width: 60px;
+  font-size: 12px;
+}
+/* ラウンド列 */
+.col-round {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  min-width: 28px;
+}
+.col-round-head {
+  text-align: center;
+}
+/* モバイル: result-table は可変幅 auto レイアウト */
+@media (max-width: 480px) {
+  .result-table {
+    table-layout: auto;
+    width: 100%;
+    font-size: 12px;
+  }
+  .result-table th,
+  .result-table td {
+    padding: 8px 8px;
+  }
+  .col-weight {
+    font-size: 11px;
+    min-width: 68px;
+  }
+  .col-weight-kg {
+    font-size: 9px;
+  }
+  .col-matchup {
+    min-width: 100px;
+  }
+  .winner-pill,
+  .draw-pill {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  .col-method-r {
+    font-size: 11px;
+    min-width: 48px;
+  }
+}
+
 .archive-pager {
   display: flex;
   align-items: center;
@@ -1073,6 +1206,7 @@ footer {
 
 /* ===== BREADCRUMB ===== */
 .breadcrumb {
+  background: transparent;
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border);

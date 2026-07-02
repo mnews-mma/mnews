@@ -101,33 +101,49 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
             試合結果データは準備中です。
           </p>
         ) : (
+          <div className="table-outer">
           <div className="table-scroll">
-            <table className="history-table">
+            <table className="result-table">
               <thead>
                 <tr>
-                  <th className="col-wrap">階級</th>
+                  <th>階級</th>
                   <th>対戦カード</th>
                   <th>勝者</th>
-                  <th className="col-wrap">決着</th>
-                  <th>ラウンド</th>
+                  <th>決着</th>
+                  <th className="col-round-head">R</th>
                 </tr>
               </thead>
               <tbody>
-                {event.fights.map((f, i) => (
-                  <tr key={i}>
-                    <td className="col-wrap">{f.weightClass}</td>
-                    <td>
-                      <FighterCardName name={f.fighterA} /> vs <FighterCardName name={f.fighterB} />
-                    </td>
-                    <td className={f.winner && !["引き分け", "中止", "NC"].includes(f.winner) ? "result-win" : "result-draw"}>
-                      {f.winner ?? "—"}
-                    </td>
-                    <td className="col-wrap">{f.method}</td>
-                    <td>{f.round ?? "—"}</td>
-                  </tr>
-                ))}
+                {event.fights.map((f, i) => {
+                  const [weightName, weightKg] = f.weightClass.split("（");
+                  const kg = weightKg ? weightKg.replace("）", "") : null;
+                  const isWin = f.winner && !["引き分け", "中止", "NC"].includes(f.winner);
+                  return (
+                    <tr key={i}>
+                      <td className="col-weight">
+                        {weightName}
+                        {kg && <span className="col-weight-kg">{kg}</span>}
+                      </td>
+                      <td className="col-matchup">
+                        <span className="matchup-name"><FighterCardName name={f.fighterA} /></span>
+                        <span className="matchup-vs">vs</span>
+                        <span className="matchup-name"><FighterCardName name={f.fighterB} /></span>
+                      </td>
+                      <td className="col-winner">
+                        {f.winner ? (
+                          <span className={isWin ? "winner-pill" : "draw-pill"}>
+                            {f.winner}
+                          </span>
+                        ) : "—"}
+                      </td>
+                      <td className="col-method-r">{f.method}</td>
+                      <td className="col-round">{f.round ?? "—"}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
+          </div>
           </div>
         )}
         {event.sourceUrl && (
