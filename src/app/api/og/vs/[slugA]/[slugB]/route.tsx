@@ -20,12 +20,14 @@ function fallbackRedirect() {
   return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
 }
 
-// 片側の表示幅が狭いため、個人カードより控えめな刻みでサイズを縮める。
+// 選手名を最優先で大きく。4文字なら「カード高の1/4」目安になるサイズまで拡大。
+// 長い名前は自動縮小 + maxWidth指定による2行折り返しで対応する。
 const NAME_STEPS = [
-  { maxLen: 4, size: 72 },
-  { maxLen: 6, size: 58 },
-  { maxLen: 9, size: 44 },
-  { maxLen: 20, size: 34 },
+  { maxLen: 4, size: 120 },
+  { maxLen: 6, size: 92 },
+  { maxLen: 9, size: 68 },
+  { maxLen: 12, size: 54 },
+  { maxLen: 24, size: 42 },
 ];
 
 function FighterSide({ f, corner }: { f: ResolvedFighter; corner: "left" | "right" }) {
@@ -37,7 +39,7 @@ function FighterSide({ f, corner }: { f: ResolvedFighter; corner: "left" | "righ
   const nameSize = fitFontSize(f.nameJa, NAME_STEPS);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: align, padding: "0 34px" }}>
+    <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: align, padding: "0 28px" }}>
       <div
         style={{
           display: "flex",
@@ -58,10 +60,13 @@ function FighterSide({ f, corner }: { f: ResolvedFighter; corner: "left" | "righ
           fontFamily: "Noto Sans JP",
           fontWeight: 900,
           fontSize: `${nameSize}px`,
-          lineHeight: 1.05,
+          lineHeight: 1.08,
           color: "#FFFFFF",
-          marginTop: "14px",
+          marginTop: "16px",
           textAlign,
+          maxWidth: "460px",
+          flexWrap: "wrap",
+          justifyContent: align,
         }}
       >
         {f.nameJa}
@@ -72,7 +77,7 @@ function FighterSide({ f, corner }: { f: ResolvedFighter; corner: "left" | "righ
           fontFamily: "Bebas Neue",
           fontSize: "20px",
           color: COLORS.ash,
-          marginTop: "6px",
+          marginTop: "8px",
           letterSpacing: "1px",
         }}
       >
@@ -82,15 +87,16 @@ function FighterSide({ f, corner }: { f: ResolvedFighter; corner: "left" | "righ
         style={{
           display: "flex",
           fontFamily: "Bebas Neue",
-          fontSize: "52px",
+          fontSize: "80px",
           color: COLORS.gold,
-          marginTop: "18px",
+          lineHeight: 1,
+          marginTop: "22px",
         }}
       >
         {f.wins}-{f.losses}
         {f.draws > 0 ? `-${f.draws}` : ""}
       </div>
-      <div style={{ display: "flex", gap: "16px", marginTop: "6px" }}>
+      <div style={{ display: "flex", gap: "16px", marginTop: "10px" }}>
         <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontSize: "14px", color: COLORS.ash }}>
           勝率{winRate !== null ? `${winRate}%` : "—"}
         </div>
@@ -104,9 +110,9 @@ function FighterSide({ f, corner }: { f: ResolvedFighter; corner: "left" | "righ
             display: "flex",
             fontFamily: "Noto Sans JP",
             fontWeight: 900,
-            fontSize: "18px",
+            fontSize: "26px",
             color: COLORS.gold,
-            marginTop: "14px",
+            marginTop: "18px",
           }}
         >
           {f.nickname}
@@ -219,14 +225,15 @@ export async function GET(
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "220px",
+                width: "140px",
+                flexShrink: 0,
               }}
             >
               <div
                 style={{
                   display: "flex",
                   fontFamily: "Bebas Neue",
-                  fontSize: "152px",
+                  fontSize: "112px",
                   color: "#FFFFFF",
                   letterSpacing: "0px",
                   textShadow: "0 0 34px rgba(0,0,0,0.7)",
