@@ -81,11 +81,40 @@ const LOW_VALUE_KEYWORDS = [
   "アワード",
 ];
 
+// 特に速報性が高いキーワード（追加で +2）。試合カード決定・王座・引退移籍など、
+// 「大会名だけの告知」より明確にニュース価値が高いものを押し上げる。
+// 公式ソース（org+3）だけの単なる大会名告知に埋もれないようにするための重み。
+const HIGH_IMPACT_KEYWORDS = [
+  "電撃",
+  "緊急",
+  "速報",
+  "カード決定",
+  "対戦決定",
+  "激突",
+  "王座",
+  "王者",
+  "新王者",
+  "タイトルマッチ",
+  "防衛",
+  "引退",
+  "移籍",
+  "参戦",
+  "欠場",
+  "KO",
+  "TKO",
+  "一本",
+  "撃破",
+  "契約解除",
+];
+
 function impactScore(a: Article): number {
   let score = 0;
   if (OFFICIAL_ORGS.has(a.source)) score += 3;
   for (const kw of IMPACT_KEYWORDS) {
     if (a.title.includes(kw)) score += 1;
+  }
+  for (const kw of HIGH_IMPACT_KEYWORDS) {
+    if (a.title.includes(kw)) score += 2;
   }
   for (const kw of LOW_VALUE_KEYWORDS) {
     if (a.title.includes(kw)) score -= 2;
@@ -151,13 +180,25 @@ function breakingScore(a: Article): number {
   return impactScore(a);
 }
 
-// 公式・ニュース問わず全記事から BREAKING 条件を満たす最上位1件を返す。
+// フォールバックの下限スコア。閾値(4)に届く記事が無くても、
+// これ以上のスコアがあれば最上位を BREAKING として表示する。
+// （公式org+3 だけ、または選手名+2 だけでも拾える水準）
+const BREAKING_FLOOR = 2;
+
+// 公式・ニュース問わず全記事から、除外KWなし・48h以内の中で
+// スコア最上位の1件を BREAKING として返す。
+// 閾値(4)以上を最優先。無ければ下限(2)以上の最上位をフォールバック表示する。
 export function selectBreaking(articles: Article[]): Article | null {
   const ranked = articles
     .map((a, index) => ({ a, index, score: breakingScore(a) }))
-    .filter((x) => x.score > -Infinity && x.score >= BREAKING_THRESHOLD)
+    .filter((x) => x.score > -Infinity)
     .sort((x, y) => (y.score !== x.score ? y.score - x.score : x.index - y.index));
-  return ranked.length > 0 ? ranked[0].a : null;
+  if (ranked.length === 0) return null;
+  // 閾値以上があればそれを、無ければ下限以上をフォールバック
+  const primary = ranked.find((x) => x.score >= BREAKING_THRESHOLD);
+  if (primary) return primary.a;
+  const fallback = ranked.find((x) => x.score >= BREAKING_FLOOR);
+  return fallback ? fallback.a : null;
 }
 
 // デバッグ用: 各記事の BREAKING 判定内訳を返す。
