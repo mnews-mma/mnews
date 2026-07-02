@@ -157,6 +157,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
             試合履歴データは準備中です。
           </p>
         ) : (
+          <div className="table-outer">
           <div className="table-scroll">
             <table className="history-table">
               <thead>
@@ -184,7 +185,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                           breakAtDot(h.opponent)
                         )}
                       </td>
-                      <td className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</td>
+                      <td><span className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</span></td>
                       <td className="col-method">{h.method}</td>
                       <td className="col-wrap">
                         {eventSlug ? (
@@ -200,6 +201,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
                 })}
               </tbody>
             </table>
+          </div>
           </div>
         )}
 

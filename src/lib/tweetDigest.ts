@@ -156,6 +156,9 @@ const BREAKING_EXCLUDED = [
   "公開練習",
   "合同練習",
   "セミナー",
+  "受賞",      // ボーナス受賞・ダブル受賞等は速報対象外
+  "ボーナス",   // スペシャルボーナス企画等
+  "スペシャルボーナス",
 ];
 
 function breakingScore(a: Article): number {
