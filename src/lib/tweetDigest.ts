@@ -111,31 +111,10 @@ export function selectTopNews(articles: Article[], count = 3): Article[] {
 }
 
 // BREAKING表示判定。以下を全て満たす場合のみ表示:
-// ・12時間以内の記事
+// ・24時間以内の記事
 // ・除外KWなし（チケット/グッズ/受賞/ボーナス等）
-// ・必須KWあり（タイトル/引退/移籍/KO等）
-// ・スコアが閾値(4)以上
-const BREAKING_THRESHOLD = 4;
-
-// BREAKING に必須のキーワード（いずれかを含むこと）
-const BREAKING_REQUIRED = [
-  "タイトルマッチ",
-  "王者",
-  "王座",
-  "新王者",
-  "防衛",
-  "引退",
-  "移籍",
-  "電撃",
-  "緊急",
-  "欠場",
-  "契約解除",
-  "速報",
-  "KO",
-  "TKO",
-  "一本",
-  "参戦",
-];
+// ・スコアが閾値(5)以上（必須KWは不要 — スコアで判断）
+const BREAKING_THRESHOLD = 5;
 
 // BREAKING から除外するキーワード（いずれかを含む場合は対象外）
 const BREAKING_EXCLUDED = [
@@ -155,18 +134,20 @@ const BREAKING_EXCLUDED = [
   "公開練習",
   "合同練習",
   "セミナー",
-  "受賞",      // ボーナス受賞・ダブル受賞等は速報対象外
-  "ボーナス",   // スペシャルボーナス企画等
+  "受賞",
+  "ボーナス",
   "スペシャルボーナス",
+  "配信",
+  "テレビ",
+  "放送",
+  "スケジュール",
 ];
 
 function breakingScore(a: Article): number {
   const ageHours = (Date.now() - new Date(a.publishedAt).getTime()) / (60 * 60 * 1000);
-  if (ageHours > 12) return -Infinity; // 12時間超は対象外
+  if (ageHours > 24) return -Infinity; // 24時間超は対象外
   // 除外キーワードチェック
   if (BREAKING_EXCLUDED.some((kw) => a.title.includes(kw))) return -Infinity;
-  // 必須キーワードがない場合は対象外
-  if (!BREAKING_REQUIRED.some((kw) => a.title.includes(kw))) return -Infinity;
   return impactScore(a);
 }
 
