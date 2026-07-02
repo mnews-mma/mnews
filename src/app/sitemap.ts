@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { FIGHTERS } from "@/lib/fighters";
 import { EVENT_RESULTS } from "@/lib/eventResults";
+import { EVENTS } from "@/lib/events";
 
 const BASE_URL = "https://www.mnews.jp";
 
@@ -55,5 +56,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...fighterRoutes, ...resultRoutes];
+  const eventRoutes: MetadataRoute.Sitemap = EVENTS.map((e) => ({
+    url: `${BASE_URL}/events/${e.slug}`,
+    changeFrequency: e.status === "upcoming" ? "daily" : "weekly",
+    priority: e.status === "upcoming" ? 0.8 : 0.6,
+  }));
+
+  return [...staticRoutes, ...fighterRoutes, ...resultRoutes, ...eventRoutes];
 }

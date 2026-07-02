@@ -6,6 +6,7 @@ import { SOURCES } from "@/lib/sources";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
 import { pageMetadata } from "@/lib/seo";
 import { EVENT_RESULTS } from "@/lib/eventResults";
+import { findNextFight } from "@/lib/events";
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
@@ -63,6 +64,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
 
   const fighter = await resolveFighter(seed);
   const { history, wins, losses, draws, nickname, birthPlace, age } = fighter;
+  const nextFight = findNextFight(fighter.nameJa);
   const { winRate, finishRate } = calcFighterRates(fighter);
 
   // サイト回遊を狙い、同階級の他選手をランダムに4人下部に表示する
@@ -100,6 +102,15 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
             → X投稿用カード作成
           </a>
         </div>
+        {nextFight && (
+          <a href={`/events/${nextFight.event.slug}`} className="fighter-next-fight">
+            <span className="fighter-next-fight-label">次戦</span>
+            {nextFight.event.date} ／ {nextFight.event.eventName} ／ vs{" "}
+            {nextFight.bout.fighterA === fighter.nameJa
+              ? nextFight.bout.fighterB
+              : nextFight.bout.fighterA}
+          </a>
+        )}
         {(birthPlace || age) && (
           <div className="fighter-meta-row">
             {age && <span>{age}歳</span>}

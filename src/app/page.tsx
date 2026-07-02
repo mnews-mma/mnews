@@ -9,6 +9,7 @@ import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
+import { getUpcomingEvents } from "@/lib/events";
 import { selectBreaking } from "@/lib/tweetDigest";
 import { pageMetadata } from "@/lib/seo";
 
@@ -51,6 +52,8 @@ export default async function HomePage() {
     articles = articlesResult.articles;
   }
 
+  const upcomingEvents = getUpcomingEvents().slice(0, 3);
+
   const officialAll = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
   const newsAll = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
   // 公式・ニュース問わず全記事から、鮮度を重視したインパクト最上位を BREAKING として表示する。
@@ -75,6 +78,45 @@ export default async function HomePage() {
       )}
 
       <SplitFeed official={official} news={news} />
+
+      {/* UPCOMING EVENTS SECTION */}
+      {upcomingEvents.length > 0 && (
+        <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
+          <div className="fighter-section-head">
+            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#fff", letterSpacing: 3 }}>
+              📅 開催予定の大会
+            </div>
+          </div>
+          <div className="results-list">
+            {upcomingEvents.map((e) => {
+              const today = new Date(); today.setHours(0, 0, 0, 0);
+              const target = new Date(e.date); target.setHours(0, 0, 0, 0);
+              const days = Math.round((target.getTime() - today.getTime()) / 86400000);
+              const d = new Date(e.date);
+              const dayNames = ["日","月","火","水","木","金","土"];
+              const dateJa = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${dayNames[d.getDay()]}）`;
+              return (
+                <a
+                  key={e.slug}
+                  href={`/events/${e.slug}`}
+                  className="results-list-item"
+                  style={{ borderLeftColor: SOURCES[e.org].color }}
+                >
+                  <div className="org-tag" style={{ color: SOURCES[e.org].color }}>
+                    {SOURCES[e.org].label}
+                  </div>
+                  <div className="results-list-title">{e.eventName}</div>
+                  <div className="results-list-meta">
+                    {dateJa}
+                    {e.venue && <span> ／ {e.venue}</span>}
+                    <span className="upcoming-countdown"> — あと{days}日</span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* RESULTS SECTION */}
       <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
