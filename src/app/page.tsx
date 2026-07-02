@@ -72,7 +72,7 @@ export default async function HomePage() {
     articles = articlesResult.articles;
   }
 
-  const upcomingEvents = getUpcomingEvents().slice(0, 3);
+  const upcomingEvents = getUpcomingEvents();
 
   const officialAll = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
   const newsAll = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));

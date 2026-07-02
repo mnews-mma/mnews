@@ -263,7 +263,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
               rel="noopener noreferrer"
               style={{ color: "var(--muted)" }}
             >
-              出典: RIZIN FIGHTING FEDERATION 公式サイト
+              出典: {srcLabel} 公式サイト
             </a>
           </p>
         )}
