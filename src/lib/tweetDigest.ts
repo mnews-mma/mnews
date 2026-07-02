@@ -160,6 +160,43 @@ export function selectBreaking(articles: Article[]): Article | null {
   return ranked.length > 0 ? ranked[0].a : null;
 }
 
+// デバッグ用: 各記事の BREAKING 判定内訳を返す。
+export interface BreakingDiag {
+  title: string;
+  source: string;
+  publishedAt: string;
+  ageHours: number;
+  impact: number;
+  excluded: string[];
+  breakingScore: number; // -Infinity は数値化不可のため -999 で表現
+  passesThreshold: boolean;
+}
+export function diagnoseBreaking(articles: Article[]): {
+  threshold: number;
+  selected: string | null;
+  articles: BreakingDiag[];
+} {
+  const diags = articles.map((a) => {
+    const ageHours = (Date.now() - new Date(a.publishedAt).getTime()) / (60 * 60 * 1000);
+    const excluded = BREAKING_EXCLUDED.filter((kw) => a.title.includes(kw));
+    const impact = impactScore(a);
+    const bs = breakingScore(a);
+    return {
+      title: a.title,
+      source: a.source,
+      publishedAt: a.publishedAt,
+      ageHours: Math.round(ageHours * 10) / 10,
+      impact,
+      excluded,
+      breakingScore: bs === -Infinity ? -999 : bs,
+      passesThreshold: bs > -Infinity && bs >= BREAKING_THRESHOLD,
+    };
+  });
+  diags.sort((x, y) => y.breakingScore - x.breakingScore);
+  const sel = selectBreaking(articles);
+  return { threshold: BREAKING_THRESHOLD, selected: sel ? sel.title : null, articles: diags };
+}
+
 
 const HASHTAG_RULES: { tag: string; org: SourceKey; keywords: string[] }[] = [
   { tag: "#RIZIN", org: "rizin", keywords: ["RIZIN", "ライジン"] },
