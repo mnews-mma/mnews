@@ -7,7 +7,6 @@ export const metadata = {
 
 const LINKS = [
   { href: "/admin/tweet-digest", label: "X投稿用テキスト確認" },
-  { href: "/admin/og-card", label: "OGカード確認" },
 ];
 
 export default function AdminHomePage() {

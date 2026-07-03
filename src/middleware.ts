@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, isValidSession } from "@/lib/adminAuth";
 
-// /admin/* 配下（ページ・APIエンドポイントとも）を丸ごと保護する。
-// ログイン画面/ログインAPI自体は除外しないと入口を塞いでしまうため許可リストにする。
+// 認証境界の方針:
+//   [保護] /admin/*（管理画面）と /api/admin/*（管理系API）のみ。
+//   [公開] それ以外すべて。特に一般ユーザーが使う機能は /admin 配下に置かない:
+//          - X投稿用カード作成ツール → /tools/fighter-card
+//          - OG/シェア画像生成API    → /api/og/*
+//        （公開ツールを /admin 配下に置くと本 middleware に巻き込まれて
+//          一般ユーザーがログイン画面に飛ばされるデグレになるため厳禁）
+// ログイン画面/ログインAPI自体は保護対象から除外しないと入口を塞ぐため許可リストにする。
 const PUBLIC_PATHS = new Set(["/admin/login"]);
 const PUBLIC_API_PATHS = new Set(["/api/admin/login"]);
 
