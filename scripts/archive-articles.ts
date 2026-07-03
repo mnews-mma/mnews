@@ -19,7 +19,12 @@ async function main() {
     : [];
 
   const seen = new Set(existing.map((a) => a.url));
-  const newOnes = articles.filter((a) => !seen.has(a.url));
+  // 初回検知時刻を「今このスクリプトが新規として拾った時刻」で刻む。
+  // BREAKINGの失効判定（検知から4時間）はこの firstSeenAt を起点にする。
+  const now = new Date().toISOString();
+  const newOnes = articles
+    .filter((a) => !seen.has(a.url))
+    .map((a) => ({ ...a, firstSeenAt: a.firstSeenAt ?? now }));
 
   if (newOnes.length === 0) {
     console.log("新着記事なし。");

@@ -7,7 +7,10 @@ export interface Article {
   summary?: string;
   origin: string;
   url: string;
-  publishedAt: string; // ISO timestamp
+  publishedAt: string; // ISO timestamp（媒体側の公開日時）
+  // Mニュースのアーカイブ処理が初めてこの記事を検知した時刻（ISO）。
+  // data/archive.json に初回追記されたときに刻まれる。BREAKINGの失効判定に使う。
+  firstSeenAt?: string;
   breaking?: boolean;
   isNew?: boolean;
 }

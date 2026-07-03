@@ -140,10 +140,16 @@ export function selectTopNews(articles: Article[], count = 3): Article[] {
 }
 
 // BREAKING表示判定。以下を全て満たす場合のみ表示:
-// ・48時間以内の記事（date-only取得ソースの UTC解釈ズレを吸収）
+// ・検知（取り込み）から4時間以内（失効起点は公開時刻ではなく検知時刻。
+//   深夜に出たニュースが朝の閲覧ピーク前に失効する問題への対策）
+// ・公開時刻から24時間以内（古いニュースを深夜バッチで拾った場合の誤BREAKING防止）
 // ・除外KWなし（チケット/グッズ/受賞/ボーナス等）
 // ・スコアが閾値(4)以上（公式org+3 + IMPACT_KW1つ+1 = 4 が最低ライン）
 const BREAKING_THRESHOLD = 4;
+// 検知からの失効時間（重要度にかかわらずこの時間で表示を外す）
+const BREAKING_DETECTION_EXPIRY_HOURS = 4;
+// 公開時刻からの上限（これを超えた古いニュースは検知時刻にかかわらずBREAKING対象外）
+const BREAKING_MAX_PUBLISH_AGE_HOURS = 24;
 
 // BREAKING から除外するキーワード（いずれかを含む場合は対象外）
 const BREAKING_EXCLUDED = [
@@ -172,9 +178,19 @@ const BREAKING_EXCLUDED = [
   "スケジュール",
 ];
 
+// 検知時刻（firstSeenAt）を起点に失効を判定する。firstSeenAt が無い記事
+// （アーカイブ未登録＝ごく最近初検知）は publishedAt を代替に使う。
 function breakingScore(a: Article): number {
-  const ageHours = (Date.now() - new Date(a.publishedAt).getTime()) / (60 * 60 * 1000);
-  if (ageHours > 48) return -Infinity; // 48時間超は対象外
+  const now = Date.now();
+  const detectionMs = new Date(a.firstSeenAt ?? a.publishedAt).getTime();
+  const publishMs = new Date(a.publishedAt).getTime();
+  const detectionAgeHours = (now - detectionMs) / (60 * 60 * 1000);
+  const publishAgeHours = (now - publishMs) / (60 * 60 * 1000);
+
+  // 検知から4時間で失効
+  if (detectionAgeHours > BREAKING_DETECTION_EXPIRY_HOURS) return -Infinity;
+  // 公開から24時間超は対象外（深夜バッチで古い記事を拾った場合の誤BREAKING防止）
+  if (publishAgeHours > BREAKING_MAX_PUBLISH_AGE_HOURS) return -Infinity;
   // 除外キーワードチェック
   if (BREAKING_EXCLUDED.some((kw) => a.title.includes(kw))) return -Infinity;
   return impactScore(a);
@@ -196,9 +212,20 @@ export function selectBreaking(articles: Article[]): Article | null {
   if (ranked.length === 0) return null;
   // 閾値以上があればそれを、無ければ下限以上をフォールバック
   const primary = ranked.find((x) => x.score >= BREAKING_THRESHOLD);
-  if (primary) return primary.a;
-  const fallback = ranked.find((x) => x.score >= BREAKING_FLOOR);
-  return fallback ? fallback.a : null;
+  const selected = primary ?? ranked.find((x) => x.score >= BREAKING_FLOOR);
+  if (!selected) return null;
+
+  // 判定ログ: 検知時刻と失効予定時刻を出す
+  const a = selected.a;
+  const detection = new Date(a.firstSeenAt ?? a.publishedAt);
+  const expiry = new Date(detection.getTime() + BREAKING_DETECTION_EXPIRY_HOURS * 60 * 60 * 1000);
+  const usedFallback = !primary;
+  console.log(
+    `[BREAKING] "${a.title.slice(0, 40)}" score=${selected.score}` +
+      `${usedFallback ? "(fallback)" : ""} published=${a.publishedAt}` +
+      ` detected=${detection.toISOString()} expiresAt=${expiry.toISOString()}`
+  );
+  return a;
 }
 
 const HASHTAG_RULES: { tag: string; org: SourceKey; keywords: string[] }[] = [

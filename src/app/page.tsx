@@ -11,6 +11,7 @@ import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
 import { selectBreaking } from "@/lib/tweetDigest";
+import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
 
 // 外部フィード取得をビルド時ではなくリクエスト時に行う。
@@ -63,10 +64,11 @@ export default async function HomePage() {
 
   const homepageFighters = FIGHTERS.filter((f) => HOMEPAGE_FIGHTER_SLUGS.has(f.slug));
 
-  const [articlesResult, fighters, videos] = await Promise.all([
+  const [articlesResult, fighters, videos, firstSeenMap] = await Promise.all([
     fetchAllArticles().catch(() => null),
     resolveFighters(homepageFighters),
     fetchLatestOfficialVideos().catch(() => []),
+    fetchFirstSeenMap().catch(() => new Map<string, string>()),
   ]);
   if (articlesResult && articlesResult.articles.length >= 6) {
     articles = articlesResult.articles;
@@ -77,7 +79,8 @@ export default async function HomePage() {
   const officialAll = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
   const newsAll = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
   // 公式・ニュース問わず全記事から、鮮度を重視したインパクト最上位を BREAKING として表示する。
-  const breaking = selectBreaking(articles);
+  // 失効判定は「検知時刻」を起点にするため firstSeenAt を付与してから判定する。
+  const breaking = selectBreaking(enrichFirstSeen(articles, firstSeenMap));
   // 2カラムの見た目の長さを揃えるため、件数の少ない方に合わせる
   // （どちらも公開日時の降順なので、それぞれの最新N件が残る）。最大10件。
   const evenCount = Math.min(officialAll.length, newsAll.length, 10);
