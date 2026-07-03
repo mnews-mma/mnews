@@ -31,6 +31,7 @@ export interface MEvent {
   broadcast?: string[];
   affiliateUrl?: string; // U-NEXTアフィリエイト等（将来用）
   ticketNote?: string; // チケット情報（完売・当日券なし等）
+  ticketUrl?: string; // チケット販売URL（構造化データのoffersに出力、任意）
   scheduleNote?: string; // 開場・開始時刻が「予定」の場合などの注記
   // 参戦予定（対戦相手未定）の選手。RIZINの定番パターンで、対戦カード確定後は
   // bouts に移して本リストから外す運用（汎用構造。特定大会専用ではない）

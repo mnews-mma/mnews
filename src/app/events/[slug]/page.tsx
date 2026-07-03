@@ -6,6 +6,7 @@ import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
+import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
@@ -72,23 +73,27 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
     { label: event.eventName },
   ];
 
-  // JSON-LD structured data
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
+  // JSON-LD structured data(共通ビルダー経由。推奨項目を全て埋める)
+  const isCompleted = event.status === "completed";
+  const jsonLd = buildSportsEventLd({
     name: event.eventName,
-    startDate: `${event.date}T${event.startTime ?? "14:00"}:00+09:00`,
-    location: {
-      "@type": "Place",
-      name: event.venue ?? "",
-    },
-    organizer: { "@type": "Organization", name: srcLabel },
-    competitor: event.bouts.flatMap((b) => [
-      { "@type": "Person", name: b.fighterA },
-      { "@type": "Person", name: b.fighterB },
-    ]),
-    url: `https://www.mnews.jp/events/${event.slug}`,
-  };
+    date: event.date,
+    startTime: event.startTime,
+    venue: event.venue,
+    org: event.org,
+    path: `/events/${event.slug}`,
+    status: event.status,
+    fighters: [
+      ...event.bouts.flatMap((b) => [b.fighterA, b.fighterB]),
+      ...(event.expectedFighters ?? []),
+    ],
+    description: isCompleted
+      ? `${event.eventName}（${event.date}${event.venue ? "・" + event.venue : ""}）全${event.bouts.length}試合の結果。`
+      : `${event.eventName}（${event.date}${event.venue ? "・" + event.venue : ""}）の対戦カード・開催情報`,
+    imageUrl: eventOgImageUrl(event.slug, event.bouts.length > 0),
+    ticketUrl: event.ticketUrl,
+    soldOut: !!event.ticketNote && event.ticketNote.includes("完売"),
+  });
 
   return (
     <>

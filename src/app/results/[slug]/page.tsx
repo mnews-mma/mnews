@@ -6,6 +6,7 @@ import { EVENT_RESULTS, getEventResult, buildEventSummary } from "@/lib/eventRes
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata, SITE_URL, isoDate } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
+import { buildSportsEventLd } from "@/lib/eventJsonLd";
 
 function FighterCardName({ name }: { name: string }) {
   const slug = findFighterSlugByName(name);
@@ -48,23 +49,20 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
     { label: event.eventName },
   ];
 
-  const sportsEventLd = {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
+  const sportsEventLd = buildSportsEventLd({
     name: event.eventName,
-    startDate: eventDate,
-    endDate: eventDate,
-    location: event.venue
-      ? { "@type": "Place", name: event.venue }
-      : undefined,
-    eventStatus: "https://schema.org/EventScheduled",
-    organizer: { "@type": "Organization", name: SOURCES[event.org].label },
-    url: `${SITE_URL}/results/${event.slug}`,
-    competitor: event.fights.flatMap((f) => [
-      { "@type": "Person", name: f.fighterA },
-      { "@type": "Person", name: f.fighterB },
-    ]),
-  };
+    date: event.date,
+    venue: event.venue,
+    org: event.org,
+    path: `/results/${event.slug}`,
+    status: "completed",
+    fighters: event.fights.flatMap((f) => [f.fighterA, f.fighterB]),
+    // 結果ページは要約(summary)を description に流用
+    description:
+      summary ||
+      `${event.eventName}（${event.date}${event.venue ? "・" + event.venue : ""}）全${event.fights.length}試合の勝敗・決着方法を掲載。`,
+    imageUrl: `${SITE_URL}/og-image.png`,
+  });
 
   return (
     <>

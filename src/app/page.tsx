@@ -13,6 +13,7 @@ import { getUpcomingEvents } from "@/lib/events";
 import { selectBreaking } from "@/lib/tweetDigest";
 import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
+import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 
 // 外部フィード取得をビルド時ではなくリクエスト時に行う。
 // データ自体は fetch() の revalidate 設定により30分キャッシュされる。
@@ -87,12 +88,39 @@ export default async function HomePage() {
   const official = officialAll.slice(0, evenCount);
   const news = newsAll.slice(0, evenCount);
 
+  // トップに掲載する開催予定イベントの構造化データ(共通ビルダー経由)
+  const upcomingEventsLd = upcomingEvents.map((e) =>
+    buildSportsEventLd({
+      name: e.eventName,
+      date: e.date,
+      startTime: e.startTime,
+      venue: e.venue,
+      org: e.org,
+      path: `/events/${e.slug}`,
+      status: e.status,
+      fighters: [
+        ...e.bouts.flatMap((b) => [b.fighterA, b.fighterB]),
+        ...(e.expectedFighters ?? []),
+      ],
+      description: `${e.eventName}（${e.date}${e.venue ? "・" + e.venue : ""}）の対戦カード・開催情報`,
+      imageUrl: eventOgImageUrl(e.slug, e.bouts.length > 0),
+      ticketUrl: e.ticketUrl,
+      soldOut: !!e.ticketNote && e.ticketNote.includes("完売"),
+    })
+  );
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_LD) }}
       />
+      {upcomingEventsLd.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(upcomingEventsLd) }}
+        />
+      )}
       <Nav />
       <h1 className="visually-hidden">日本MMAニュース速報 | Mニュース</h1>
 
