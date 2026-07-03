@@ -140,14 +140,15 @@ export function selectTopNews(articles: Article[], count = 3): Article[] {
 }
 
 // BREAKING表示判定。以下を全て満たす場合のみ表示:
-// ・検知（取り込み）から4時間以内（失効起点は公開時刻ではなく検知時刻。
-//   深夜に出たニュースが朝の閲覧ピーク前に失効する問題への対策）
+// ・検知（取り込み）から8時間以内（失効起点は公開時刻ではなく検知時刻。
+//   深夜に出たニュースが朝の閲覧ピーク前に失効する問題への対策。空になりにくく、
+//   かつ半日以上前の古いものは残さない中間値として8hを採用）
 // ・公開時刻から24時間以内（古いニュースを深夜バッチで拾った場合の誤BREAKING防止）
 // ・除外KWなし（チケット/グッズ/受賞/ボーナス等）
 // ・スコアが閾値(4)以上（公式org+3 + IMPACT_KW1つ+1 = 4 が最低ライン）
 const BREAKING_THRESHOLD = 4;
 // 検知からの失効時間（重要度にかかわらずこの時間で表示を外す）
-const BREAKING_DETECTION_EXPIRY_HOURS = 4;
+const BREAKING_DETECTION_EXPIRY_HOURS = 8;
 // 公開時刻からの上限（これを超えた古いニュースは検知時刻にかかわらずBREAKING対象外）
 const BREAKING_MAX_PUBLISH_AGE_HOURS = 24;
 
@@ -176,6 +177,10 @@ const BREAKING_EXCLUDED = [
   "テレビ",
   "放送",
   "スケジュール",
+  "お知らせ",     // 「追加・変更・中止カードのお知らせ」等の事務連絡
+  "変更カード",
+  "中止カード",
+  "追加カードのお知らせ",
 ];
 
 // 検知時刻（firstSeenAt）を起点に失効を判定する。firstSeenAt が無い記事
