@@ -249,6 +249,99 @@ export function buildHashtags(articles: Article[]): string[] {
   return tags;
 }
 
+// ───────────────────────────────────────────────
+// 単一ニュース向けの短いX投稿文（【ラベル】+ 要約1文 + リンク + ハッシュタグ）。
+// 全体を全角100文字以内目安にし、タイトルをそのまま貼らず要約する。
+// ───────────────────────────────────────────────
+
+// 全角換算の文字数（半角=0.5, 全角=1）。X投稿の見た目の長さの目安に使う。
+export function fullWidthLength(s: string): number {
+  let len = 0;
+  for (const ch of s) {
+    len += ch.charCodeAt(0) <= 0xff ? 0.5 : 1;
+  }
+  return len;
+}
+
+// 結果系（試合が決着した）キーワード。含まれれば【結果】ラベル。
+const RESULT_LABEL_KEYWORDS = [
+  "KO勝", "TKO勝", "一本勝", "判定勝", "撃破", "下し", "破り", "破って",
+  "制し", "優勝", "王座奪取", "新王者", "防衛成功", "一本で", "秒殺",
+];
+// 速報系（今後の予定・動向）キーワード。含まれれば【速報】ラベル。
+const BREAKING_LABEL_KEYWORDS = [
+  "速報", "電撃", "緊急", "決定", "参戦", "欠場", "移籍", "引退",
+  "対戦", "決戦", "タイトルマッチ", "挑戦", "調印", "契約",
+];
+
+// 投稿の先頭に付けるラベルを判定（該当時のみ。結果を速報より優先）。
+export function pickPostLabel(title: string): string | null {
+  if (RESULT_LABEL_KEYWORDS.some((k) => title.includes(k))) return "結果";
+  if (BREAKING_LABEL_KEYWORDS.some((k) => title.includes(k))) return "速報";
+  return null;
+}
+
+// ニュースタイトルを1文に要約する。固有名詞（選手名・大会名）は残し、
+// 先頭の媒体/大会ラベル【…】と末尾の日付・会場（＝以降）などの冗長部を削る。
+export function summarizeTitle(title: string, maxLen = 55): string {
+  let s = title.trim();
+  // 先頭の【媒体/大会】ラベルを除去（ラベル/ハッシュタグで別途表現するため）
+  s = s.replace(/^【[^】]*】\s*/, "");
+  // 末尾の「＝日付・会場」等の付帯情報を除去。
+  // 全角＝の後ろに日付(〜月〜日)が続く場合のみ削る（本文中の半角=「A=B」等は残す）。
+  s = s.replace(/\s*＝[^＝]*\d+月\d+日.*$/, "");
+  // 空白正規化
+  s = s.replace(/\s+/g, " ").trim();
+
+  if (fullWidthLength(s) <= maxLen) return s;
+
+  // まだ長い → 文境界で切る。強い区切り(。！？)を優先、無ければ読点(、)。
+  const strong = ["。", "！", "!", "？", "?"];
+  let cut = -1;
+  for (let i = 0; i < s.length; i++) {
+    if (strong.includes(s[i]) && fullWidthLength(s.slice(0, i + 1)) <= maxLen) cut = i + 1;
+  }
+  if (cut === -1) {
+    for (let i = 0; i < s.length; i++) {
+      if (s[i] === "、" && fullWidthLength(s.slice(0, i)) <= maxLen) cut = i;
+    }
+  }
+  if (cut > 0) {
+    return s.slice(0, cut).replace(/[、。]$/, "").trim();
+  }
+  // 区切りが無い → 文字数で切って末尾に…
+  let acc = "";
+  for (const ch of s) {
+    if (fullWidthLength(acc + ch) > maxLen - 1) break;
+    acc += ch;
+  }
+  return acc.trim() + "…";
+}
+
+// 単一ニュース向けのハッシュタグ（#MMA + 団体タグ最大1個 = 合計2個まで）。
+export function buildHashtagsForOne(a: Article): string[] {
+  const tags: string[] = ["#MMA"];
+  for (const rule of HASHTAG_RULES) {
+    if (tags.length >= 2) break;
+    if (a.source === rule.org || rule.keywords.some((kw) => a.title.includes(kw))) {
+      tags.push(rule.tag);
+    }
+  }
+  return tags;
+}
+
+const POST_LINK = "https://mnews.jp";
+
+// 単一ニュースのX投稿文を生成する。
+// フォーマット: 【ラベル】要約1文 / リンク / ハッシュタグ（全角100字以内目安）
+export function buildNewsPost(a: Article): string {
+  const label = pickPostLabel(a.title);
+  const summary = summarizeTitle(a.title);
+  const head = label ? `【${label}】${summary}` : summary;
+  const hashtags = buildHashtagsForOne(a).join(" ");
+  return [head, POST_LINK, hashtags].join("\n");
+}
+
 export interface TweetDigest {
   hook: string;
   topNews: Article[];

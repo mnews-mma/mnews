@@ -1,7 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { fetchRawArticles } from "@/lib/feeds/aggregate";
-import { buildTweetDigest } from "@/lib/tweetDigest";
+import { buildTweetDigest, buildNewsPost, fullWidthLength } from "@/lib/tweetDigest";
 
 export const dynamic = "force-dynamic";
 
@@ -53,6 +53,36 @@ export default async function TweetDigestPreviewPage() {
             </li>
           ))}
         </ul>
+
+        <h3 style={{ fontSize: 13, marginTop: 32, fontFamily: "var(--mono)", letterSpacing: 1 }}>
+          個別投稿用（短縮版・直近{Math.min(recent.length, 5)}件）
+        </h3>
+        <div className="page-sub" style={{ marginBottom: 12 }}>
+          1ニュース＝1投稿。全角100字以内目安・【ラベル】+要約1文+リンク+ハッシュタグ（最大2個）
+        </div>
+        {recent.slice(0, 5).map((a) => {
+          const post = buildNewsPost(a);
+          return (
+            <div key={a.id} style={{ marginBottom: 16 }}>
+              <div className="page-sub" style={{ fontSize: 11, marginBottom: 4 }}>
+                全角{Math.round(fullWidthLength(post))}字
+              </div>
+              <pre
+                style={{
+                  whiteSpace: "pre-wrap",
+                  fontFamily: "var(--mono)",
+                  fontSize: 13,
+                  background: "var(--s2)",
+                  padding: 14,
+                  border: "1px solid var(--border)",
+                  userSelect: "all",
+                }}
+              >
+                {post}
+              </pre>
+            </div>
+          );
+        })}
       </div>
       <Footer />
     </>
