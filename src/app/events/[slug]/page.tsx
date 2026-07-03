@@ -124,6 +124,11 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
             <span> ／ 開場 {event.openTime} ／ 開始 {event.startTime}</span>
           )}
         </div>
+        {event.scheduleNote && (
+          <div className="page-sub" style={{ fontSize: 12, color: "var(--muted)" }}>
+            ※ {event.scheduleNote}
+          </div>
+        )}
         {event.venue && (
           <div className="page-sub" style={{ fontSize: 13 }}>
             {event.venue}
@@ -262,6 +267,43 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
             </table>
           </div>
         )}
+
+        {/* 参戦予定（対戦相手未定）— RIZIN定番の先行発表パターン用の汎用表示 */}
+        {event.status !== "completed" &&
+          event.expectedFighters &&
+          event.expectedFighters.length > 0 && (
+            <div style={{ marginTop: 32 }}>
+              <h2 className="event-section-label" style={{ marginBottom: 4 }}>
+                参戦予定
+              </h2>
+              <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 12 }}>
+                以下の選手は参戦が発表済みで、対戦カードは未定です（決定次第更新）
+              </p>
+              <div className="bout-list">
+                {event.expectedFighters.map((name) => (
+                  <div key={name} className="bout-card">
+                    <div className="bout-card-meta">
+                      <span className="bout-note">対戦相手未定</span>
+                    </div>
+                    <div className="bout-fighters">
+                      <span className="bout-fighter-a">
+                        <FighterName name={name} />
+                      </span>
+                      <span className="bout-vs" style={{ color: "var(--dim)" }}>
+                        VS
+                      </span>
+                      <span
+                        className="bout-fighter-b"
+                        style={{ color: "var(--muted)", fontStyle: "italic" }}
+                      >
+                        未定
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
         {event.sourceUrl && (
           <p style={{ marginTop: 24, fontSize: 12 }}>

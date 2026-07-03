@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { ogImagePath } from "@/lib/ogShared";
 
 interface FighterOption {
   slug: string;
@@ -23,7 +24,7 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   }, [searchParams, fighters]);
   const [copied, setCopied] = useState<"image" | "page" | null>(null);
 
-  const imagePath = mode === "single" ? `/api/og/fighter/${slugA}` : `/api/og/vs/${slugA}/${slugB}`;
+  const imagePath = ogImagePath(mode === "single" ? `/api/og/fighter/${slugA}` : `/api/og/vs/${slugA}/${slugB}`);
   const pagePath = mode === "single" ? `/fighters/${slugA}` : `/vs/${slugA}/${slugB}`;
   const imageUrl = `${SITE_URL}${imagePath}`;
   const pageUrl = `${SITE_URL}${pagePath}`;

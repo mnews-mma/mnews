@@ -6,8 +6,9 @@ import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@
 import { SOURCES } from "@/lib/sources";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
+import { ogImagePath } from "@/lib/ogShared";
 import { EVENT_RESULTS } from "@/lib/eventResults";
-import { findNextFight } from "@/lib/events";
+import { findNextAppearance } from "@/lib/events";
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
@@ -18,18 +19,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!seed) return { title: "選手が見つかりません | Mニュース" };
   // Wikipedia から取得した実際の戦績を meta にも反映（seed と乖離させない）
   const fighter = await resolveFighter(seed);
-  const nextFight = findNextFight(fighter.nameJa);
-  const nextFightDesc = nextFight
-    ? `次戦は${nextFight.event.date}『${nextFight.event.eventName}』でvs${
-        nextFight.bout.fighterA === fighter.nameJa ? nextFight.bout.fighterB : nextFight.bout.fighterA
-      }。`
-    : "";
+  const appearance = findNextAppearance(fighter.nameJa);
+  const nextFightDesc =
+    appearance?.kind === "bout"
+      ? `次戦は${appearance.event.date}『${appearance.event.eventName}』でvs${
+          appearance.bout.fighterA === fighter.nameJa ? appearance.bout.fighterB : appearance.bout.fighterA
+        }。`
+      : appearance?.kind === "expected"
+        ? `${appearance.event.date}『${appearance.event.eventName}』に参戦予定（対戦相手未定）。`
+        : "";
   return pageMetadata({
     title: `${fighter.nameJa} 戦績・試合結果 | Mニュース`,
     description: `${nextFightDesc}${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${SOURCES[fighter.org].label}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
     path: `/fighters/${fighter.slug}`,
     image: {
-      url: `/api/og/fighter/${fighter.slug}`,
+      url: ogImagePath(`/api/og/fighter/${fighter.slug}`),
       width: 1200,
       height: 630,
       alt: `${fighter.nameJa} 戦績カード`,
@@ -77,7 +81,8 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
 
   const fighter = await resolveFighter(seed);
   const { history, wins, losses, draws, nickname, birthPlace, age } = fighter;
-  const nextFight = findNextFight(fighter.nameJa);
+  const appearance = findNextAppearance(fighter.nameJa);
+  const nextFight = appearance?.kind === "bout" ? { event: appearance.event, bout: appearance.bout } : null;
   const { winRate, finishRate } = calcFighterRates(fighter);
 
   // フィニッシュ内訳バー用
@@ -167,6 +172,18 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
             </div>
           );
         })()}
+
+        {/* 参戦予定バナー（対戦カード未定。カード確定後は上の次戦表示に自動で切替） */}
+        {appearance?.kind === "expected" && (
+          <div className="fighter-next-fight">
+            <span className="fighter-next-fight-label">参戦予定</span>
+            <a href={`/events/${appearance.event.slug}`} className="fighter-next-fight-link">
+              {appearance.event.date} ／ {appearance.event.eventName}
+            </a>
+            {appearance.event.venue && <> ／ {appearance.event.venue}</>}
+            {" ／ 対戦相手未定"}
+          </div>
+        )}
 
         {/* 戦績スタットカード */}
         <div className="fighter-stats-grid">

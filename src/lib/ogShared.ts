@@ -13,6 +13,18 @@ export const OG_COLORS = {
 
 export const SITE_URL = "https://www.mnews.jp";
 
+// カードデザインのバージョン。デザインを変えたら +1 する。
+// 全カード種別(個人/MATCH UP/結果/ダイジェスト)共通のキャッシュバスターで、
+// ?v= が変わることでCDN・ブラウザ・X側の古い画像キャッシュを無効化する。
+// 「カード種別ごとの個別キャッシュ対策」はしない — 必ずこの共通機構を使うこと。
+export const OG_DESIGN_VERSION = 3;
+
+// /api/og/* のパスにデザインバージョンを付与する。og画像URLを組む側は
+// 直接パスを書かず必ずこれを通す。
+export function ogImagePath(path: string): string {
+  return `${path}${path.includes("?") ? "&" : "?"}v=${OG_DESIGN_VERSION}`;
+}
+
 // 斜めストライプのごく薄いテクスチャ（単色黒の安っぽさを消すため）。
 // Satori は repeating-linear-gradient 非対応のため、ストップを手動生成して疑似的に再現する。
 export function stripeTexture(

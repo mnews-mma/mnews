@@ -1,0 +1,148 @@
+import type { Article } from "./articles";
+import {
+  buildNewsPost,
+  buildHashtagsForOne,
+  pickPostLabel,
+  summarizeTitle,
+  selectTopNews,
+  fullWidthLength,
+} from "./tweetDigest";
+
+// ─────────────────────────────────────────────
+// X投稿の組み立て設定（リンク戦略・上限）。
+// 外部リンクによるリーチ低下対策として、デフォルトは
+// 「本文=テキスト+画像のみ / リンクはセルフリプライ」の2段階方式。
+// ─────────────────────────────────────────────
+
+export type LinkPlacement = "reply" | "inline" | "none";
+
+export interface XPostConfig {
+  // 投稿タイプごとのリンク位置
+  linkPlacement: {
+    breaking: LinkPlacement; // 速報系: 画像のみ(リンクなし)
+    curation: LinkPlacement; // キュレーション系: リプライにリンク
+    digest: LinkPlacement; // 朝のまとめ: リプライにリンク
+    countdown: LinkPlacement; // 大会前日: リプライにリンク
+    result: LinkPlacement; // 試合結果速報: 画像のみ
+  };
+  // 1日の自動ポスト上限(本文のみカウント、リプライは含まない)。
+  // 枠が厳しい場合はここで絞り、優先度(速報>カウントダウン>キュレーション)で間引く
+  dailyPostLimit: number;
+}
+
+export const X_POST_CONFIG: XPostConfig = {
+  linkPlacement: {
+    breaking: "none",
+    curation: "reply",
+    digest: "reply",
+    countdown: "reply",
+    result: "none",
+  },
+  dailyPostLimit: 8,
+};
+
+export interface BuiltPost {
+  text: string; // 1ポスト目(本文)
+  replyText?: string; // 2ポスト目(セルフリプライ)。undefinedならリプライなし
+  method: LinkPlacement; // 効果測定用に方式を記録する
+}
+
+const SITE_LINK = "https://mnews.jp";
+
+// リンク位置設定に従って本文/リプライへ振り分ける共通処理
+function applyLinkPlacement(
+  body: string,
+  hashtags: string,
+  link: string,
+  placement: LinkPlacement
+): BuiltPost {
+  if (placement === "inline") {
+    return { text: [body, link, hashtags].join("\n"), method: "inline" };
+  }
+  if (placement === "reply") {
+    return {
+      text: [body, hashtags].join("\n"),
+      replyText: `詳細はこちら👇\n${link}`,
+      method: "reply",
+    };
+  }
+  return { text: [body, hashtags].join("\n"), method: "none" };
+}
+
+// 単一ニュースの投稿(キュレーション/速報)。速報系はラベル判定で自動分岐。
+export function buildSingleNewsPost(a: Article): BuiltPost {
+  const label = pickPostLabel(a.title);
+  const summary = summarizeTitle(a.title);
+  const body = label ? `【${label}】${summary}` : summary;
+  const hashtags = buildHashtagsForOne(a).join(" ");
+  const type = label === "速報" || label === "結果" ? "breaking" : "curation";
+  return applyLinkPlacement(body, hashtags, a.url, X_POST_CONFIG.linkPlacement[type]);
+}
+
+// ─────────────────────────────────────────────
+// 朝の「昨日のまとめ」ポスト(壁文字解消版)。
+// 本文は最重要1件+件数のみ、詳細はまとめカード画像(1200×675)に載せる。
+// ─────────────────────────────────────────────
+
+export interface DigestPost extends BuiltPost {
+  imageUrl: string; // まとめカード画像(/api/og/digest?date=...)
+  itemCount: number;
+  isSingle: boolean; // まとめ対象が1件の日は通常ポスト形式
+}
+
+function formatMD(dateStr: string): string {
+  const d = new Date(dateStr);
+  return `${d.getMonth() + 1}/${d.getDate()}`;
+}
+
+export function buildDigestPost(articles: Article[], dateStr: string): DigestPost | null {
+  if (articles.length === 0) return null;
+  const top = selectTopNews(articles, 4);
+  const hashtags = buildHashtagsForOne(top[0]).join(" ");
+  const imageUrl = `/api/og/digest?date=${dateStr}`;
+
+  // 1件だけの日はダイジェスト形式にせず通常ポスト
+  if (articles.length === 1) {
+    const single = buildSingleNewsPost(articles[0]);
+    return { ...single, imageUrl, itemCount: 1, isSingle: true };
+  }
+
+  // 最重要トピック: 全角40文字以内に要約
+  let lead = summarizeTitle(top[0].title, 40);
+  if (fullWidthLength(lead) > 40) lead = lead.slice(0, 40) + "…";
+  const others = articles.length - 1;
+  const body = `📋 昨日のMMAニュースまとめ(${formatMD(dateStr)})\n${lead}\nほか${others}件は画像で👇`;
+  const built = applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.digest);
+  return { ...built, imageUrl, itemCount: articles.length, isSingle: false };
+}
+
+// ─────────────────────────────────────────────
+// 大会前日カウントダウンポスト(前日20:00想定)。
+// 対戦カード一覧は画像(/api/og/event-card/[slug])に載せる。
+// ─────────────────────────────────────────────
+
+export interface CountdownPost extends BuiltPost {
+  imageUrl: string;
+}
+
+export function buildCountdownPost(event: {
+  slug: string;
+  eventName: string;
+  date: string;
+  startTime?: string;
+  venue?: string;
+  broadcast?: string[];
+}): CountdownPost {
+  const lines = [
+    `🔥 いよいよ明日開催`,
+    event.eventName,
+    `${formatMD(event.date)} ${event.startTime ? `${event.startTime}〜` : ""}${event.venue ? ` @${event.venue}` : ""}`,
+  ];
+  if (event.broadcast?.[0]) lines.push(`視聴: ${event.broadcast[0]}`);
+  lines.push("対戦カードは画像で👇");
+  const body = lines.join("\n");
+  const hashtags = "#MMA";
+  const link = `${SITE_LINK}/events/${event.slug}`;
+  const built = applyLinkPlacement(body, hashtags, link, X_POST_CONFIG.linkPlacement.countdown);
+  return { ...built, imageUrl: `/api/og/event-card/${event.slug}` };
+}

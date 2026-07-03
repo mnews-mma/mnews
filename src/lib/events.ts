@@ -31,6 +31,10 @@ export interface MEvent {
   broadcast?: string[];
   affiliateUrl?: string; // U-NEXTアフィリエイト等（将来用）
   ticketNote?: string; // チケット情報（完売・当日券なし等）
+  scheduleNote?: string; // 開場・開始時刻が「予定」の場合などの注記
+  // 参戦予定（対戦相手未定）の選手。RIZINの定番パターンで、対戦カード確定後は
+  // bouts に移して本リストから外す運用（汎用構造。特定大会専用ではない）
+  expectedFighters?: string[];
   sourceUrl?: string;
   // 同日同会場など関連大会のslug
   relatedEventSlugs?: string[];
@@ -383,6 +387,29 @@ export const EVENTS: MEvent[] = [
         fighterA: "山口秀斗",
         fighterB: "猿魔",
         note: "プレリミナリー",
+      },
+    ],
+  },
+  {
+    slug: "cho-rizin-5",
+    org: "rizin",
+    status: "upcoming",
+    eventName: "超RIZIN.5 浪速の超復活祭り",
+    date: "2026-09-10",
+    openTime: "15:00",
+    startTime: "17:00",
+    scheduleNote: "開場・開演時間は予定です（変更の可能性あり）",
+    venue: "京セラドーム大阪",
+    broadcast: ["未定（決定次第更新）"],
+    sourceUrl: "https://jp.rizinff.com/_ct/17834937",
+    // カード追加発表が続く大会。参戦予定→対戦カード確定時は bouts へ移動する
+    expectedFighters: ["朝倉未来", "平本蓮", "斎藤裕", "鈴木千裕", "YA-MAN"],
+    bouts: [
+      {
+        weightClass: "49.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "RENA",
+        fighterB: "ナターシャ・クジュティナ",
       },
     ],
   },
@@ -794,6 +821,28 @@ export function findNextFight(
         (norm(b.fighterA) === normName || norm(b.fighterB) === normName)
     );
     if (bout) return { event, bout };
+  }
+  return null;
+}
+
+/**
+ * 対戦カード確定（bout）を最優先、無ければ「参戦予定（相手未定）」を返す。
+ * 対戦相手が決まり bouts に追加されると自動的に bout 側へ切り替わる。
+ */
+export function findNextAppearance(
+  fighterName: string
+):
+  | { kind: "bout"; event: MEvent; bout: Bout }
+  | { kind: "expected"; event: MEvent }
+  | null {
+  const withBout = findNextFight(fighterName);
+  if (withBout) return { kind: "bout", ...withBout };
+  const norm = (s: string) => s.replace(/[\s　]/g, "");
+  const normName = norm(fighterName);
+  for (const event of getUpcomingEvents()) {
+    if (event.expectedFighters?.some((n) => norm(n) === normName)) {
+      return { kind: "expected", event };
+    }
   }
   return null;
 }

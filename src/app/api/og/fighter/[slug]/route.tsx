@@ -147,7 +147,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
                     display: "flex",
                     fontFamily: "Noto Sans JP",
                     fontWeight: 900,
-                    fontSize: "30px",
+                    fontSize: "36px",
                     color: COLORS.gold,
                   }}
                 >
@@ -172,7 +172,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
                   style={{
                     display: "flex",
                     fontFamily: "Bebas Neue",
-                    fontSize: "72px",
+                    fontSize: "84px",
                     color: "#FFFFFF",
                     lineHeight: 1,
                   }}
@@ -198,7 +198,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
                   style={{
                     display: "flex",
                     fontFamily: "Bebas Neue",
-                    fontSize: "44px",
+                    fontSize: "50px",
                     color: COLORS.gold,
                     lineHeight: 1,
                   }}
@@ -223,7 +223,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
                   style={{
                     display: "flex",
                     fontFamily: "Bebas Neue",
-                    fontSize: "44px",
+                    fontSize: "50px",
                     color: COLORS.gold,
                     lineHeight: 1,
                   }}

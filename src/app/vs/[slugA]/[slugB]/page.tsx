@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { getFighter } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
+import { ogImagePath } from "@/lib/ogShared";
 import { pageMetadata } from "@/lib/seo";
 
 const SITE_URL = "https://www.mnews.jp";
@@ -25,7 +26,7 @@ export async function generateMetadata({
     description,
     path: `/vs/${slugA}/${slugB}`,
     image: {
-      url: `/api/og/vs/${slugA}/${slugB}`,
+      url: ogImagePath(`/api/og/vs/${slugA}/${slugB}`),
       width: 1200,
       height: 630,
       alt: `${fighterA.nameJa} vs ${fighterB.nameJa}`,
@@ -55,7 +56,7 @@ export default async function VsPage({
 
       <div style={{ padding: "0 24px 40px", maxWidth: 800 }}>
         <img
-          src={`/api/og/vs/${slugA}/${slugB}`}
+          src={ogImagePath(`/api/og/vs/${slugA}/${slugB}`)}
           alt={`${fighterA.nameJa} vs ${fighterB.nameJa}`}
           style={{ width: "100%", border: "1px solid var(--border)", display: "block", marginBottom: 16 }}
         />
