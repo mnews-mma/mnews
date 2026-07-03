@@ -30,13 +30,20 @@ const NAME_STEPS = [
   { maxLen: 24, size: 42 },
 ];
 
-function FighterSide({ f, corner }: { f: ResolvedFighter; corner: "left" | "right" }) {
+function FighterSide({
+  f,
+  corner,
+  nameSize,
+}: {
+  f: ResolvedFighter;
+  corner: "left" | "right";
+  nameSize: number;
+}) {
   const orgLabel = SOURCES[f.org]?.label ?? f.org.toUpperCase();
   const { winRate, finishRate } = calcFighterRates(f);
   const align = corner === "left" ? "flex-start" : "flex-end";
   const textAlign = corner === "left" ? "left" : "right";
   const accent = corner === "left" ? COLORS.shu : COLORS.indigo;
-  const nameSize = fitFontSize(f.nameJa, NAME_STEPS);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: align, padding: "0 28px" }}>
@@ -137,6 +144,13 @@ export async function GET(
       resolveFighter(seedB as Fighter),
     ]);
 
+    // 左右の選手名は必ず同一フォントサイズにする。長い方が収まるサイズ
+    // （＝両者を個別計算したうちの小さい方）を両者に適用する。片側だけの縮小はしない。
+    const sharedNameSize = Math.min(
+      fitFontSize(fighterA.nameJa, NAME_STEPS),
+      fitFontSize(fighterB.nameJa, NAME_STEPS)
+    );
+
     const matchup = findMatchupEvent(fighterA.nameJa, fighterB.nameJa);
     const eventLabel = matchup
       ? `${matchup.event.eventName}　|　${matchup.event.date.replaceAll("-", ".")}${
@@ -217,7 +231,7 @@ export async function GET(
               }}
             />
 
-            <FighterSide f={fighterA} corner="left" />
+            <FighterSide f={fighterA} corner="left" nameSize={sharedNameSize} />
 
             <div
               style={{
@@ -243,7 +257,7 @@ export async function GET(
               </div>
             </div>
 
-            <FighterSide f={fighterB} corner="right" />
+            <FighterSide f={fighterB} corner="right" nameSize={sharedNameSize} />
           </div>
 
           {/* フッター */}
