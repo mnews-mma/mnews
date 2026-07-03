@@ -170,6 +170,16 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </div>
         )}
 
+        {/* チケット情報（完売等の注意） */}
+        {event.ticketNote && (
+          <div className="event-broadcast">
+            <div className="event-section-label">チケット</div>
+            <div style={{ fontSize: 13, color: "var(--accent)", fontWeight: 700 }}>
+              {event.ticketNote}
+            </div>
+          </div>
+        )}
+
         {/* 対戦カード / 試合結果 */}
         <h2 className="event-section-label" style={{ marginTop: 24, marginBottom: 16 }}>
           {event.status === "completed" ? "試合結果" : "対戦カード"}

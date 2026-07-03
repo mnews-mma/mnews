@@ -30,6 +30,7 @@ export interface MEvent {
   venue?: string;
   broadcast?: string[];
   affiliateUrl?: string; // U-NEXTアフィリエイト等（将来用）
+  ticketNote?: string; // チケット情報（完売・当日券なし等）
   sourceUrl?: string;
   // 同日同会場など関連大会のslug
   relatedEventSlugs?: string[];
@@ -382,6 +383,89 @@ export const EVENTS: MEvent[] = [
         fighterA: "山口秀斗",
         fighterB: "猿魔",
         note: "プレリミナリー",
+      },
+    ],
+  },
+  {
+    slug: "deep-132-impact",
+    org: "deep",
+    status: "upcoming",
+    eventName: "DEEP 132 IMPACT",
+    date: "2026-07-05",
+    openTime: "13:30",
+    startTime: "14:00",
+    venue: "ニューピアホール",
+    broadcast: ["U-NEXT（13:55配信開始）", "DEEP/DEEP JEWELSメンバーシップ"],
+    ticketNote: "全席完売・当日券の販売はありません",
+    sourceUrl: "https://www.deep2001.com/deep-132-impact/",
+    bouts: [
+      {
+        weightClass: "DEEPライト級（70.3kg）",
+        fighterA: "相本宗輝",
+        fighterB: "山田聖真",
+        note: "メインイベント",
+      },
+      {
+        // 猿寿健太のコンディション不良によりフライ級から58kg以下の契約体重に変更
+        weightClass: "58.0kg契約",
+        fighterA: "猿寿健太",
+        fighterB: "火の鳥",
+        note: "セミファイナル",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "五明宏人",
+        fighterB: "太田将吾",
+      },
+      {
+        weightClass: "DEEPライト級（70.3kg）",
+        fighterA: "神田コウヤ",
+        fighterB: "ケンシロウ",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "河村泰博",
+        fighterB: "山本有人",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "鈴木大晟",
+        fighterB: "高橋正親",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "マサト・ナカムラ",
+        fighterB: "斎藤璃貴",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "松井優磨",
+        fighterB: "石原射",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "石坂空志",
+        fighterB: "矢野武蔵",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "武利侑都",
+        fighterB: "横内三旺",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        rule: "アマチュアSルール",
+        fighterA: "秋元優志",
+        fighterB: "荒井夕翔",
+        note: "オープニングファイト",
+      },
+      {
+        // 特別枠: 引退エキシビション（相手は斎藤裕/石渡伸太郎/上田将勝の複数対戦）
+        weightClass: "エキシビション",
+        rule: "グラップリングルール 2分3R",
+        fighterA: "越智晴雄",
+        fighterB: "斎藤裕・石渡伸太郎・上田将勝",
+        note: "引退エキシビションマッチ",
       },
     ],
   },
