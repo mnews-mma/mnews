@@ -105,7 +105,6 @@ export default async function HomePage() {
       description: `${e.eventName}（${e.date}${e.venue ? "・" + e.venue : ""}）の対戦カード・開催情報`,
       imageUrl: eventOgImageUrl(e.slug, e.bouts.length > 0),
       ticketUrl: e.ticketUrl,
-      soldOut: !!e.ticketNote && e.ticketNote.includes("完売"),
     })
   );
 

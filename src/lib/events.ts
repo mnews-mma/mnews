@@ -30,7 +30,6 @@ export interface MEvent {
   venue?: string;
   broadcast?: string[];
   affiliateUrl?: string; // U-NEXTアフィリエイト等（将来用）
-  ticketNote?: string; // チケット情報（完売・当日券なし等）
   ticketUrl?: string; // チケット販売URL（構造化データのoffersに出力、任意）
   scheduleNote?: string; // 開場・開始時刻が「予定」の場合などの注記
   // 参戦予定（対戦相手未定）の選手。RIZINの定番パターンで、対戦カード確定後は
@@ -424,7 +423,6 @@ export const EVENTS: MEvent[] = [
     startTime: "14:00",
     venue: "ニューピアホール",
     broadcast: ["U-NEXT（13:55配信開始）", "DEEP/DEEP JEWELSメンバーシップ"],
-    ticketNote: "全席完売・当日券の販売はありません",
     sourceUrl: "https://www.deep2001.com/deep-132-impact/",
     bouts: [
       {

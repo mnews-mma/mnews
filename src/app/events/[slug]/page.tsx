@@ -92,7 +92,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       : `${event.eventName}（${event.date}${event.venue ? "・" + event.venue : ""}）の対戦カード・開催情報`,
     imageUrl: eventOgImageUrl(event.slug, event.bouts.length > 0),
     ticketUrl: event.ticketUrl,
-    soldOut: !!event.ticketNote && event.ticketNote.includes("完売"),
   });
 
   return (
@@ -177,16 +176,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                 <li key={i}>{b}</li>
               ))}
             </ul>
-          </div>
-        )}
-
-        {/* チケット情報（完売等の注意） */}
-        {event.ticketNote && (
-          <div className="event-broadcast">
-            <div className="event-section-label">チケット</div>
-            <div style={{ fontSize: 13, color: "var(--accent)", fontWeight: 700 }}>
-              {event.ticketNote}
-            </div>
           </div>
         )}
 
