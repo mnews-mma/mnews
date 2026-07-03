@@ -125,6 +125,33 @@ export interface CountdownPost extends BuiltPost {
   imageUrl: string;
 }
 
+// ─────────────────────────────────────────────
+// 試合結果速報ポスト(結果カード画像を添付する前提。リンクなし)。
+// 文面テンプレートはイベントごとに調整可能: org→ハッシュタグの対応で自動生成。
+// ─────────────────────────────────────────────
+
+const ORG_HASHTAG: Record<string, string> = {
+  rizin: "#RIZIN",
+  deep: "#DEEP",
+  pancrase: "#パンクラス",
+  shooto: "#修斗",
+};
+
+export function buildResultPost(opts: {
+  org: string;
+  winner: string;
+  loser: string;
+  method: string;
+  isDraw?: boolean;
+}): BuiltPost {
+  const orgTag = ORG_HASHTAG[opts.org] ?? "";
+  const hashtags = [orgTag, "#MMA"].filter(Boolean).join(" ");
+  const body = opts.isDraw
+    ? `【速報】${opts.winner} vs ${opts.loser}は${opts.method || "引き分け"}`
+    : `【速報】${opts.winner}が${opts.loser}に${opts.method}勝ち`;
+  return applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.result);
+}
+
 export function buildCountdownPost(event: {
   slug: string;
   eventName: string;
