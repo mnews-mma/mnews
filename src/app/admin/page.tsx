@@ -7,6 +7,8 @@ export const metadata = {
 
 const LINKS = [
   { href: "/admin/tweet-digest", label: "X投稿用テキスト確認" },
+  { href: "/admin/email-test", label: "メール送信テスト" },
+  { href: "/admin/breaking", label: "BREAKING診断" },
 ];
 
 export default function AdminHomePage() {

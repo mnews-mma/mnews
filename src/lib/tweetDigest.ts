@@ -233,6 +233,61 @@ export function selectBreaking(articles: Article[]): Article | null {
   return a;
 }
 
+// 管理画面の診断用: なぜBREAKINGが空/その記事なのかを可視化する。
+export interface BreakingCandidate {
+  title: string;
+  source: string;
+  publishedAgeH: number;
+  detectionAgeH: number;
+  hasFirstSeen: boolean;
+  score: number; // -Infinity は失格。理由は reason に入れる
+  reason: string; // 失格理由 or "候補"
+  selected: boolean;
+}
+
+export function diagnoseBreaking(articles: Article[]): {
+  windowH: number;
+  maxPublishH: number;
+  threshold: number;
+  floor: number;
+  selectedTitle: string | null;
+  candidates: BreakingCandidate[];
+} {
+  const now = Date.now();
+  const selected = selectBreaking(articles);
+  const rows: BreakingCandidate[] = articles.map((a) => {
+    const detMs = new Date(a.firstSeenAt ?? a.publishedAt).getTime();
+    const pubMs = new Date(a.publishedAt).getTime();
+    const detectionAgeH = Math.round(((now - detMs) / 3600000) * 10) / 10;
+    const publishedAgeH = Math.round(((now - pubMs) / 3600000) * 10) / 10;
+    const s = breakingScore(a);
+    let reason = "候補";
+    if (detectionAgeH > BREAKING_DETECTION_EXPIRY_HOURS) reason = `検知${detectionAgeH}h>窓${BREAKING_DETECTION_EXPIRY_HOURS}h`;
+    else if (publishedAgeH > BREAKING_MAX_PUBLISH_AGE_HOURS) reason = `公開${publishedAgeH}h>上限${BREAKING_MAX_PUBLISH_AGE_HOURS}h`;
+    else if (BREAKING_EXCLUDED.some((kw) => a.title.includes(kw))) reason = "除外KW";
+    else if (s < BREAKING_FLOOR) reason = `スコア${s}<下限${BREAKING_FLOOR}`;
+    return {
+      title: a.title,
+      source: a.source,
+      publishedAgeH,
+      detectionAgeH,
+      hasFirstSeen: !!a.firstSeenAt,
+      score: s === -Infinity ? -999 : s,
+      reason,
+      selected: selected?.url === a.url,
+    };
+  });
+  rows.sort((x, y) => y.score - x.score);
+  return {
+    windowH: BREAKING_DETECTION_EXPIRY_HOURS,
+    maxPublishH: BREAKING_MAX_PUBLISH_AGE_HOURS,
+    threshold: BREAKING_THRESHOLD,
+    floor: BREAKING_FLOOR,
+    selectedTitle: selected?.title ?? null,
+    candidates: rows,
+  };
+}
+
 const HASHTAG_RULES: { tag: string; org: SourceKey; keywords: string[] }[] = [
   { tag: "#RIZIN", org: "rizin", keywords: ["RIZIN", "ライジン"] },
   { tag: "#DEEP", org: "deep", keywords: ["DEEP"] },
