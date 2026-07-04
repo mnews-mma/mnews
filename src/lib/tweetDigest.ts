@@ -139,155 +139,6 @@ export function selectTopNews(articles: Article[], count = 3): Article[] {
     .map((x) => x.a);
 }
 
-// BREAKING表示判定。以下を全て満たす場合のみ表示:
-// ・検知（取り込み）から8時間以内（失効起点は公開時刻ではなく検知時刻。
-//   深夜に出たニュースが朝の閲覧ピーク前に失効する問題への対策。空になりにくく、
-//   かつ半日以上前の古いものは残さない中間値として8hを採用）
-// ・公開時刻から24時間以内（古いニュースを深夜バッチで拾った場合の誤BREAKING防止）
-// ・除外KWなし（チケット/グッズ/受賞/ボーナス等）
-// ・スコアが閾値(4)以上（公式org+3 + IMPACT_KW1つ+1 = 4 が最低ライン）
-const BREAKING_THRESHOLD = 4;
-// 検知からの失効時間（重要度にかかわらずこの時間で表示を外す）
-const BREAKING_DETECTION_EXPIRY_HOURS = 8;
-// 公開時刻からの上限（これを超えた古いニュースは検知時刻にかかわらずBREAKING対象外）
-const BREAKING_MAX_PUBLISH_AGE_HOURS = 24;
-
-// BREAKING から除外するキーワード（いずれかを含む場合は対象外）
-const BREAKING_EXCLUDED = [
-  "チケット",
-  "グッズ",
-  "物販",
-  "LOT",
-  "抽選",
-  "ファンイベント",
-  "握手会",
-  "サイン会",
-  "アワード",
-  "表彰",
-  "ベストバウト",
-  "試合順",
-  "計量",
-  "公開練習",
-  "合同練習",
-  "セミナー",
-  "受賞",
-  "ボーナス",
-  "スペシャルボーナス",
-  "配信",
-  "テレビ",
-  "放送",
-  "スケジュール",
-  "お知らせ",     // 「追加・変更・中止カードのお知らせ」等の事務連絡
-  "変更カード",
-  "中止カード",
-  "追加カードのお知らせ",
-];
-
-// 検知時刻（firstSeenAt）を起点に失効を判定する。firstSeenAt が無い記事
-// （アーカイブ未登録＝ごく最近初検知）は publishedAt を代替に使う。
-function breakingScore(a: Article): number {
-  const now = Date.now();
-  const detectionMs = new Date(a.firstSeenAt ?? a.publishedAt).getTime();
-  const publishMs = new Date(a.publishedAt).getTime();
-  const detectionAgeHours = (now - detectionMs) / (60 * 60 * 1000);
-  const publishAgeHours = (now - publishMs) / (60 * 60 * 1000);
-
-  // 検知から4時間で失効
-  if (detectionAgeHours > BREAKING_DETECTION_EXPIRY_HOURS) return -Infinity;
-  // 公開から24時間超は対象外（深夜バッチで古い記事を拾った場合の誤BREAKING防止）
-  if (publishAgeHours > BREAKING_MAX_PUBLISH_AGE_HOURS) return -Infinity;
-  // 除外キーワードチェック
-  if (BREAKING_EXCLUDED.some((kw) => a.title.includes(kw))) return -Infinity;
-  return impactScore(a);
-}
-
-// フォールバックの下限スコア。閾値(4)に届く記事が無くても、
-// これ以上のスコアがあれば最上位を BREAKING として表示する。
-// （公式org+3 だけ、または選手名+2 だけでも拾える水準）
-const BREAKING_FLOOR = 2;
-
-// 公式・ニュース問わず全記事から、除外KWなし・48h以内の中で
-// スコア最上位の1件を BREAKING として返す。
-// 閾値(4)以上を最優先。無ければ下限(2)以上の最上位をフォールバック表示する。
-export function selectBreaking(articles: Article[]): Article | null {
-  const ranked = articles
-    .map((a, index) => ({ a, index, score: breakingScore(a) }))
-    .filter((x) => x.score > -Infinity)
-    .sort((x, y) => (y.score !== x.score ? y.score - x.score : x.index - y.index));
-  if (ranked.length === 0) return null;
-  // 閾値以上があればそれを、無ければ下限以上をフォールバック
-  const primary = ranked.find((x) => x.score >= BREAKING_THRESHOLD);
-  const selected = primary ?? ranked.find((x) => x.score >= BREAKING_FLOOR);
-  if (!selected) return null;
-
-  // 判定ログ: 検知時刻と失効予定時刻を出す
-  const a = selected.a;
-  const detection = new Date(a.firstSeenAt ?? a.publishedAt);
-  const expiry = new Date(detection.getTime() + BREAKING_DETECTION_EXPIRY_HOURS * 60 * 60 * 1000);
-  const usedFallback = !primary;
-  console.log(
-    `[BREAKING] "${a.title.slice(0, 40)}" score=${selected.score}` +
-      `${usedFallback ? "(fallback)" : ""} published=${a.publishedAt}` +
-      ` detected=${detection.toISOString()} expiresAt=${expiry.toISOString()}`
-  );
-  return a;
-}
-
-// 管理画面の診断用: なぜBREAKINGが空/その記事なのかを可視化する。
-export interface BreakingCandidate {
-  title: string;
-  source: string;
-  publishedAgeH: number;
-  detectionAgeH: number;
-  hasFirstSeen: boolean;
-  score: number; // -Infinity は失格。理由は reason に入れる
-  reason: string; // 失格理由 or "候補"
-  selected: boolean;
-}
-
-export function diagnoseBreaking(articles: Article[]): {
-  windowH: number;
-  maxPublishH: number;
-  threshold: number;
-  floor: number;
-  selectedTitle: string | null;
-  candidates: BreakingCandidate[];
-} {
-  const now = Date.now();
-  const selected = selectBreaking(articles);
-  const rows: BreakingCandidate[] = articles.map((a) => {
-    const detMs = new Date(a.firstSeenAt ?? a.publishedAt).getTime();
-    const pubMs = new Date(a.publishedAt).getTime();
-    const detectionAgeH = Math.round(((now - detMs) / 3600000) * 10) / 10;
-    const publishedAgeH = Math.round(((now - pubMs) / 3600000) * 10) / 10;
-    const s = breakingScore(a);
-    let reason = "候補";
-    if (detectionAgeH > BREAKING_DETECTION_EXPIRY_HOURS) reason = `検知${detectionAgeH}h>窓${BREAKING_DETECTION_EXPIRY_HOURS}h`;
-    else if (publishedAgeH > BREAKING_MAX_PUBLISH_AGE_HOURS) reason = `公開${publishedAgeH}h>上限${BREAKING_MAX_PUBLISH_AGE_HOURS}h`;
-    else if (BREAKING_EXCLUDED.some((kw) => a.title.includes(kw))) reason = "除外KW";
-    else if (s < BREAKING_FLOOR) reason = `スコア${s}<下限${BREAKING_FLOOR}`;
-    return {
-      title: a.title,
-      source: a.source,
-      publishedAgeH,
-      detectionAgeH,
-      hasFirstSeen: !!a.firstSeenAt,
-      score: s === -Infinity ? -999 : s,
-      reason,
-      selected: selected?.url === a.url,
-    };
-  });
-  rows.sort((x, y) => y.score - x.score);
-  return {
-    windowH: BREAKING_DETECTION_EXPIRY_HOURS,
-    maxPublishH: BREAKING_MAX_PUBLISH_AGE_HOURS,
-    threshold: BREAKING_THRESHOLD,
-    floor: BREAKING_FLOOR,
-    selectedTitle: selected?.title ?? null,
-    candidates: rows,
-  };
-}
-
 const HASHTAG_RULES: { tag: string; org: SourceKey; keywords: string[] }[] = [
   { tag: "#RIZIN", org: "rizin", keywords: ["RIZIN", "ライジン"] },
   { tag: "#DEEP", org: "deep", keywords: ["DEEP"] },
@@ -408,9 +259,35 @@ export function buildNewsPost(a: Article): string {
 // 同一大会の複数結果は「代表1件+ほか全試合結果」に圧縮。
 // ───────────────────────────────────────────────
 
-// まとめから除外する低価値トピック(BREAKING除外に加えて画像/販促系を追加)
+// まとめから除外する低価値トピック(事務連絡・販促・画像系)
 const DIGEST_EXCLUDED = [
-  ...BREAKING_EXCLUDED,
+  "チケット",
+  "グッズ",
+  "物販",
+  "LOT",
+  "抽選",
+  "ファンイベント",
+  "握手会",
+  "サイン会",
+  "アワード",
+  "表彰",
+  "ベストバウト",
+  "試合順",
+  "計量",
+  "公開練習",
+  "合同練習",
+  "セミナー",
+  "受賞",
+  "ボーナス",
+  "スペシャルボーナス",
+  "配信",
+  "テレビ",
+  "放送",
+  "スケジュール",
+  "お知らせ",
+  "変更カード",
+  "中止カード",
+  "追加カードのお知らせ",
   "ポスター",
   "ビジュアル",
   "壁紙",

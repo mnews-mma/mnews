@@ -10,7 +10,6 @@ const LINKS = [
   { href: "/admin/live", label: "🔴 ライブ結果入力(結果カード生成)" },
   { href: "/admin/weigh-in", label: "⚖️ 計量結果まとめ投稿" },
   { href: "/admin/email-test", label: "メール送信テスト" },
-  { href: "/admin/breaking", label: "BREAKING診断" },
   { href: "/admin/x-test", label: "🧪 X API 疎通確認(技術テスト)" },
 ];
 

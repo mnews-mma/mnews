@@ -1,8 +1,9 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import SplitFeed from "@/components/SplitFeed";
+import UnifiedFeed from "@/components/UnifiedFeed";
+import EventRail from "@/components/EventRail";
 import SocialSection from "@/components/SocialSection";
-import { ARTICLES, Article, relativeTimeJa } from "@/lib/articles";
+import { ARTICLES, Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
 import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
@@ -10,7 +11,7 @@ import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
-import { selectBreaking } from "@/lib/tweetDigest";
+import { toFeedArticles } from "@/lib/newsClassify";
 import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
@@ -24,8 +25,6 @@ export const metadata = pageMetadata({
   description: "RIZIN・DEEP・パンクラス・修斗の格闘技ニュースを随時更新。日本人MMA選手の戦績・試合結果も掲載。",
   path: "/",
 });
-
-const OFFICIAL_ORGS = new Set(["rizin", "deep", "shooto", "pancrase"]);
 
 // トップページの「主要選手 戦績まとめ」には元からの8名のみ表示する。
 // それ以外（SEO目的で追加した選手）は /fighters 一覧と詳細ページのみ。
@@ -77,16 +76,20 @@ export default async function HomePage() {
 
   const upcomingEvents = getUpcomingEvents();
 
-  const officialAll = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
-  const newsAll = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
-  // 公式・ニュース問わず全記事から、鮮度を重視したインパクト最上位を BREAKING として表示する。
-  // 失効判定は「検知時刻」を起点にするため firstSeenAt を付与してから判定する。
-  const breaking = selectBreaking(enrichFirstSeen(articles, firstSeenMap));
-  // 2カラムの見た目の長さを揃えるため、件数の少ない方に合わせる
-  // （どちらも公開日時の降順なので、それぞれの最新N件が残る）。最大10件。
-  const evenCount = Math.min(officialAll.length, newsAll.length, 10);
-  const official = officialAll.slice(0, evenCount);
-  const news = newsAll.slice(0, evenCount);
+  // 統一フィード: 公式・メディアを混在させ、検知時刻(firstSeenAt)を detected_at
+  // として分類・速報判定し、detected_at降順で並べる。表示は最大40件。
+  const feedArticles = toFeedArticles(enrichFirstSeen(articles, firstSeenMap)).slice(0, 40);
+
+  // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて
+  // EventRail側でさらに自動調整)。所属団体のラベル/色だけ先に確定させて渡す。
+  const railEvents = upcomingEvents.slice(0, 5).map((e) => ({
+    slug: e.slug,
+    label: SOURCES[e.org].label,
+    color: SOURCES[e.org].color,
+    eventName: e.eventName,
+    venue: e.venue,
+    date: e.date,
+  }));
 
   // トップに掲載する開催予定イベントの構造化データ(共通ビルダー経由)
   const upcomingEventsLd = upcomingEvents.map((e) =>
@@ -123,54 +126,18 @@ export default async function HomePage() {
       <Nav />
       <h1 className="visually-hidden">日本MMAニュース速報 | Mニュース</h1>
 
-      {breaking && (
-        <a href={breaking.url} target="_blank" rel="noopener noreferrer" className="breaking-bar">
-          <span className="breaking-tag">BREAKING</span>
-          <span className="breaking-title">{breaking.title}</span>
-          <span className="breaking-time">{relativeTimeJa(breaking.publishedAt)}</span>
-        </a>
-      )}
-
-      <SplitFeed official={official} news={news} />
-
-      {/* UPCOMING EVENTS SECTION */}
-      {upcomingEvents.length > 0 && (
-        <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
-          <div className="fighter-section-head">
-            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#fff", letterSpacing: 3 }}>
-              📅 開催予定の大会
-            </div>
-          </div>
-          <div className="results-list">
-            {upcomingEvents.map((e) => {
-              const today = new Date(); today.setHours(0, 0, 0, 0);
-              const target = new Date(e.date); target.setHours(0, 0, 0, 0);
-              const days = Math.round((target.getTime() - today.getTime()) / 86400000);
-              const d = new Date(e.date);
-              const dayNames = ["日","月","火","水","木","金","土"];
-              const dateJa = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${dayNames[d.getDay()]}）`;
-              return (
-                <a
-                  key={e.slug}
-                  href={`/events/${e.slug}`}
-                  className="results-list-item"
-                  style={{ borderLeftColor: SOURCES[e.org].color }}
-                >
-                  <div className="org-tag" style={{ color: SOURCES[e.org].color }}>
-                    {SOURCES[e.org].label}
-                  </div>
-                  <div className="results-list-title">{e.eventName}</div>
-                  <div className="results-list-meta">
-                    {dateJa}
-                    {e.venue && <span> ／ {e.venue}</span>}
-                    <span className="upcoming-countdown"> — あと{days}日</span>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
+      <div className="home-main">
+        <div className="home-feed">
+          <UnifiedFeed articles={feedArticles} />
         </div>
-      )}
+
+        {/* UPCOMING EVENTS: PC(≥1200px)は右レール(sticky・高さ収め) / スマホは従来どおり下部表示 */}
+        {railEvents.length > 0 && (
+          <aside className="home-rail">
+            <EventRail events={railEvents} />
+          </aside>
+        )}
+      </div>
 
       {/* RESULTS SECTION */}
       <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>

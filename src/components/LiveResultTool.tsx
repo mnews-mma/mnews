@@ -113,6 +113,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
       loser: winner === "B" ? bout.fighterA : bout.fighterB,
       method: m,
       isDraw,
+      newsType: "result", // ライブ結果は news_type=result 固定
     });
     setGenerated({ img, text: post.text });
     setDoneSet(new Set(doneSet).add(`${event.slug}:${bout.index}`));

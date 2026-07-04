@@ -1,4 +1,5 @@
 import { SourceKey } from "./sources";
+import type { Kind, NewsType, FlashOverride } from "./newsClassify";
 
 export interface Article {
   id: string;
@@ -9,10 +10,16 @@ export interface Article {
   url: string;
   publishedAt: string; // ISO timestamp（媒体側の公開日時）
   // Mニュースのアーカイブ処理が初めてこの記事を検知した時刻（ISO）。
-  // data/archive.json に初回追記されたときに刻まれる。BREAKINGの失効判定に使う。
+  // data/archive.json に初回追記されたときに刻まれる。統一フィードの
+  // 速報(flash)24h降格判定の detected_at として使う。
   firstSeenAt?: string;
-  breaking?: boolean;
   isNew?: boolean;
+  // 統一フィード用フィールド(通常は導出値。明示値があれば優先)。
+  // kind/newsType はRSSライブ記事のため保存されず、表示時に導出される。
+  kind?: Kind;
+  newsType?: NewsType;
+  // 速報オーバーライド。管理画面(P4)で設定するまでは常に未設定(=none扱い)。
+  flashOverride?: FlashOverride;
 }
 
 // Seed data reproducing mnews.html. In production this is populated by the
@@ -28,7 +35,6 @@ export const ARTICLES: Article[] = [
     origin: "UFC.com / ゴング格闘技",
     url: "https://jp.ufc.com",
     publishedAt: minutesAgo(32),
-    breaking: true,
   },
   {
     id: "a2",
