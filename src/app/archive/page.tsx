@@ -100,7 +100,7 @@ export default async function ArchivePage({
           <div className="archive-pager">
             {current > 1 ? (
               <a href={`/archive?tab=${tab}&page=${current - 1}`} className="archive-pager-link">
-                ← 新しい記事へ
+                ← 前へ
               </a>
             ) : (
               <span />
@@ -110,7 +110,7 @@ export default async function ArchivePage({
             </span>
             {current < totalPages ? (
               <a href={`/archive?tab=${tab}&page=${current + 1}`} className="archive-pager-link">
-                古い記事へ →
+                次へ →
               </a>
             ) : (
               <span />
