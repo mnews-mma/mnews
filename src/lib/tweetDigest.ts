@@ -445,24 +445,30 @@ export function buildDigestTopics(articles: Article[], max = 4): DigestTopic[] {
     clusters.get(key)!.push(a);
   });
 
-  // 3) クラスタごとに代表1件へ圧縮してトピック化(代表・順位ともdigestスコア)
+  // 3) クラスタごとに代表1件へ圧縮してトピック化(代表・順位ともdigestスコア)。
+  //    同点時は地の文(引用除去後)が長い記事を代表にする(発言引用だらけの
+  //    タイトルが代表になると要約後に情報が残らないため)。
   const topics: DigestTopic[] = [];
   for (const [key, group] of clusters) {
     const scored = group
       .map((a) => ({ a, score: digestScore(a) }))
-      .sort((x, y) => y.score - x.score);
+      .sort(
+        (x, y) =>
+          y.score - x.score ||
+          fullWidthLength(stripQuotes(y.a.title)) - fullWidthLength(stripQuotes(x.a.title))
+      );
     const rep = scored[0];
     const tag = key.startsWith("__solo_")
       ? detectEventTag(rep.a.title, rep.a.source)
       : key;
+    // 同一大会クラスタは代表1件のみ表示する。曖昧な「ほか◯件」は付けない
+    // (読者に未消化感を残すため全廃)。明示的な結果まとめ記事がクラスタに
+    // ある場合のみ、具体的情報として「ほか全試合結果」を付ける。
     let text: string;
-    if (group.length >= 2) {
-      // 同一大会の複数ニュース: 代表を短めに要約し「ほか◯◯」を付ける。
-      // 「ほか全試合結果」は明示的な結果まとめ記事がある場合のみ
-      // (開催前イベントの計量・意気込み記事に付くのを防ぐ)
-      const suffix = group.some((a) => /全試合結果|試合結果/.test(a.title))
-        ? "、ほか全試合結果"
-        : `、ほか${group.length - 1}件`;
+    const hasResults =
+      group.length >= 2 && group.some((a) => /全試合結果|試合結果/.test(a.title));
+    if (hasResults) {
+      const suffix = "、ほか全試合結果";
       text = condenseTopic(rep.a.title, 35 - fullWidthLength(suffix)) + suffix;
     } else {
       text = condenseTopic(rep.a.title, 35);
