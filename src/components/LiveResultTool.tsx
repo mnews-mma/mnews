@@ -25,11 +25,13 @@ type Method = (typeof METHODS)[number];
 
 // 一本の定番技(タップ選択用)。その他は自由入力
 const SUB_TECHS = [
-  "リアネイキドチョーク",
+  "リアネイキッドチョーク",
   "ギロチンチョーク",
   "腕ひしぎ十字固め",
   "三角絞め",
+  "キムラ",
   "肩固め",
+  "ダースチョーク",
   "ヒールフック",
   "フロントチョーク",
 ];
@@ -60,6 +62,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
   const [winner, setWinner] = useState<"A" | "B" | "draw" | null>(null);
   const [method, setMethod] = useState<Method | null>(null);
   const [subTech, setSubTech] = useState("");
+  const [strikeDetail, setStrikeDetail] = useState("");
   const [judgeScore, setJudgeScore] = useState("");
   const [round, setRound] = useState("");
   const [time, setTime] = useState("");
@@ -75,6 +78,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
     setWinner(null);
     setMethod(null);
     setSubTech("");
+    setStrikeDetail("");
     setJudgeScore("");
     setRound("");
     setTime("");
@@ -86,6 +90,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
     if (!method) return "";
     if (method === "一本") return subTech ? `一本（${subTech}）` : "一本";
     if (method === "判定") return judgeScore ? `判定（${judgeScore}）` : "判定";
+    if (method === "KO" || method === "TKO") return strikeDetail ? `${method}（${strikeDetail}）` : method;
     return method;
   }
 
@@ -242,6 +247,20 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
                 value={subTech}
                 onChange={(e) => setSubTech(e.target.value)}
                 placeholder="技名(自由入力可)"
+                style={{ width: "100%", fontSize: 15, padding: "10px", borderRadius: 8, border: "1px solid var(--border)", boxSizing: "border-box" }}
+              />
+            </div>
+          )}
+          {(method === "KO" || method === "TKO") && (
+            <div style={{ marginBottom: 10 }}>
+              <input
+                value={strikeDetail}
+                onChange={(e) => setStrikeDetail(e.target.value)}
+                placeholder={
+                  method === "TKO"
+                    ? "詳細(任意・例: パウンド / ドクターストップ / 負傷)"
+                    : "詳細(任意・例: 右ストレート / 左ハイキック)"
+                }
                 style={{ width: "100%", fontSize: 15, padding: "10px", borderRadius: 8, border: "1px solid var(--border)", boxSizing: "border-box" }}
               />
             </div>
