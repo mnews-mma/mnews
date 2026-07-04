@@ -1785,7 +1785,8 @@ a.uf-card:hover { border-color: var(--muted); }
 }
 .rail-item {
   display: block;
-  padding: 12px 16px;
+  /* 左padding=13 + 色バー(border-left 3px)= テキスト左端16px。rail-head(padding-left 16)と一致 */
+  padding: 12px 16px 12px 13px;
   border-left: 3px solid transparent;
   border-top: 1px solid var(--border);
   color: inherit;
