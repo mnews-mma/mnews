@@ -1079,13 +1079,14 @@ export function getFighter(slug: string): Fighter | undefined {
 }
 
 export interface FighterRates {
-  winRate: number | null; // 勝率（%） wins / (wins+losses+draws)
+  winRate: number | null; // 勝率（%） wins / (wins+losses)。引き分けは母数に含めない
   finishRate: number | null; // フィニッシュ率（%） (KO+一本) / wins
 }
 
 export function calcFighterRates(f: Pick<Fighter, "wins" | "losses" | "draws" | "ko" | "sub">): FighterRates {
-  const total = f.wins + f.losses + f.draws;
-  const winRate = total > 0 ? Math.round((f.wins / total) * 100) : null;
+  // 勝率は勝敗のみで算出（引き分けは母数から除外）
+  const decided = f.wins + f.losses;
+  const winRate = decided > 0 ? Math.round((f.wins / decided) * 100) : null;
   const finishRate = f.wins > 0 ? Math.round(((f.ko + f.sub) / f.wins) * 100) : null;
   return { winRate, finishRate };
 }
