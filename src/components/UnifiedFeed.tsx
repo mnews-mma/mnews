@@ -14,13 +14,13 @@ const CHIPS: { key: Filter; label: string }[] = [
   { key: "media", label: "メディア" },
 ];
 
-// 団体カラーバッジを出すのは公式団体ソースのみ（メディア=viaのみ）。
-function orgBadge(source: FeedArticle["source"]) {
+// 公式カードの団体バッジ。「○○公式」表記(団体カラー)で1つに集約する。
+function officialBadge(source: FeedArticle["source"]) {
   const s = SOURCES[source];
-  if (!s || s.type !== "official") return null;
+  if (!s) return null;
   return (
     <span className="uf-org" style={{ background: s.color, color: source === "pancrase" ? "#12100a" : "#fff" }}>
-      {s.label}
+      {s.label}公式
     </span>
   );
 }
@@ -49,12 +49,15 @@ function FeedCard({ a }: { a: FeedArticle }) {
     >
       <div className="uf-meta">
         {a.flash && <span className="uf-b-flash">速報</span>}
-        {a.kind === "official" && !a.flash && <span className="uf-b-official">公式</span>}
-        {orgBadge(a.source)}
+        {a.kind === "official" ? (
+          officialBadge(a.source)
+        ) : (
+          <span className="uf-b-media">メディア</span>
+        )}
         <span className="uf-time">{relativeTimeJa(a.publishedAt)}</span>
       </div>
       <h3 className="uf-title">{a.title}</h3>
-      <div className="uf-src">{a.kind === "official" ? "公式発表" : <>via {a.origin}</>}</div>
+      {a.kind === "media" && <div className="uf-src">via {a.origin}</div>}
     </a>
   );
 }

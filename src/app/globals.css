@@ -1663,14 +1663,15 @@ a.uf-card:hover { border-color: var(--muted); }
   border-radius: 4px;
   color: #fff;
 }
-.uf-b-official {
+.uf-b-media {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.5px;
   padding: 2px 8px;
   border-radius: 4px;
-  border: 1px solid var(--text);
-  color: var(--text);
+  border: 1px solid var(--border);
+  background: var(--s2);
+  color: var(--muted);
 }
 .uf-b-flash {
   font-size: 10px;
