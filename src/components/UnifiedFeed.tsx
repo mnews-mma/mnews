@@ -38,10 +38,6 @@ function dayLabel(key: string, todayKey: string): string {
   return key === todayKey ? `今日 · ${base}` : base;
 }
 
-function detectedOf(a: FeedArticle): string {
-  return a.firstSeenAt ?? a.publishedAt;
-}
-
 // 通常カード / 速報カード
 function FeedCard({ a }: { a: FeedArticle }) {
   return (
@@ -55,21 +51,10 @@ function FeedCard({ a }: { a: FeedArticle }) {
         {a.flash && <span className="uf-b-flash">速報</span>}
         {a.kind === "official" && !a.flash && <span className="uf-b-official">公式</span>}
         {orgBadge(a.source)}
-        <span className="uf-time">{relativeTimeJa(detectedOf(a))}</span>
+        <span className="uf-time">{relativeTimeJa(a.publishedAt)}</span>
       </div>
       <h3 className="uf-title">{a.title}</h3>
       <div className="uf-src">{a.kind === "official" ? "公式発表" : <>via {a.origin}</>}</div>
-    </a>
-  );
-}
-
-// スリムカード（announcement_minor: 1行タイトル+団体バッジ+時刻のみ、通常より小さく）
-function SlimCard({ a }: { a: FeedArticle }) {
-  return (
-    <a href={a.url} target="_blank" rel="noopener noreferrer" className="uf-card uf-slim">
-      {orgBadge(a.source)}
-      <span className="uf-slim-title">{a.title}</span>
-      <span className="uf-time">{relativeTimeJa(detectedOf(a))}</span>
     </a>
   );
 }
@@ -94,7 +79,7 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
   // 日付でグルーピング（detected_at降順は入力側で確定済み）
   const days: { key: string; items: FeedArticle[] }[] = [];
   for (const a of filtered) {
-    const key = jstDayKey(detectedOf(a));
+    const key = jstDayKey(a.publishedAt);
     const last = days[days.length - 1];
     if (last && last.key === key) last.items.push(a);
     else days.push({ key, items: [a] });
@@ -123,13 +108,9 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
             <div className="uf-day">
               <span>{dayLabel(key, todayKey)}</span>
             </div>
-            {items.map((a) =>
-              a.newsType === "announcement_minor" ? (
-                <SlimCard key={a.id} a={a} />
-              ) : (
-                <FeedCard key={a.id} a={a} />
-              )
-            )}
+            {items.map((a) => (
+              <FeedCard key={a.id} a={a} />
+            ))}
           </div>
         ))}
       </div>

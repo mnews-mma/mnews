@@ -122,8 +122,8 @@ export interface FeedArticle extends Article {
   flash: boolean;
 }
 
-// サーバ側(force-dynamic)で記事を分類・速報判定し、detected_at降順で並べる。
-// detected_at は firstSeenAt(検知時刻)。無い記事は publishedAt を代替に使う。
+// サーバ側(force-dynamic)で記事を分類・速報判定し、公開時刻(publishedAt)降順で並べる。
+// 速報の24h判定のみ検知時刻(firstSeenAt。無ければpublishedAt)を使う。
 export function toFeedArticles(articles: Article[], now = Date.now()): FeedArticle[] {
   return articles
     .map((a) => {
@@ -137,9 +137,8 @@ export function toFeedArticles(articles: Article[], now = Date.now()): FeedArtic
         flash: isFlash({ kind, newsType, detectedAt, flashOverride: a.flashOverride, now }),
       };
     })
-    .sort((x, y) => {
-      const dx = new Date(x.firstSeenAt ?? x.publishedAt).getTime();
-      const dy = new Date(y.firstSeenAt ?? y.publishedAt).getTime();
-      return dy - dx;
-    });
+    // 表示・並び順は公開時刻(publishedAt)基準。検知時刻(firstSeenAt)は
+    // 速報の24h降格判定にのみ使う(昨日公開の記事が検知2h前で「2時間前」と
+    // 表示される不具合を避けるため)。
+    .sort((x, y) => new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime());
 }
