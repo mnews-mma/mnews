@@ -11,7 +11,7 @@ import {
   OG_FONT_FAMILIES,
   stripeTexture,
   cornerVignette,
-  fitFontSize,
+  fitFontSizeByWidth,
 } from "@/lib/ogShared";
 
 export const runtime = "edge";
@@ -21,14 +21,10 @@ function fallbackRedirect() {
 }
 
 // 選手名を最優先で大きく。4文字なら「カード高の1/4」目安になるサイズまで拡大。
-// 長い名前は自動縮小 + maxWidth指定による2行折り返しで対応する。
-const NAME_STEPS = [
-  { maxLen: 4, size: 120 },
-  { maxLen: 6, size: 92 },
-  { maxLen: 9, size: 68 },
-  { maxLen: 12, size: 54 },
-  { maxLen: 24, size: 42 },
-];
+// 長い名前は実測幅ベースのauto-fit(fitFontSizeByWidth)で自動縮小 +
+// maxWidth指定による2行折り返しで対応する（枠からのはみ出しを防ぐ）。
+const NAME_SIDE_MAX_WIDTH_PX = 460; // FighterSide側の名前div maxWidthと一致させる
+const NAME_SIZE_CANDIDATES = [120, 100, 84, 68, 54, 46, 38, 32, 28, 24, 20, 18];
 
 function FighterSide({
   f,
@@ -147,8 +143,8 @@ export async function GET(
     // 左右の選手名は必ず同一フォントサイズにする。長い方が収まるサイズ
     // （＝両者を個別計算したうちの小さい方）を両者に適用する。片側だけの縮小はしない。
     const sharedNameSize = Math.min(
-      fitFontSize(fighterA.nameJa, NAME_STEPS),
-      fitFontSize(fighterB.nameJa, NAME_STEPS)
+      fitFontSizeByWidth(fighterA.nameJa, { maxWidthPx: NAME_SIDE_MAX_WIDTH_PX, sizes: NAME_SIZE_CANDIDATES }),
+      fitFontSizeByWidth(fighterB.nameJa, { maxWidthPx: NAME_SIDE_MAX_WIDTH_PX, sizes: NAME_SIZE_CANDIDATES })
     );
 
     const matchup = findMatchupEvent(fighterA.nameJa, fighterB.nameJa);

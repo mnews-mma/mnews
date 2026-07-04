@@ -6,7 +6,6 @@ import { isMmaRelevant } from "./classify";
 // 外部Cron（/api/refresh を1分おきに叩く想定）でキャッシュを温め続けるため、
 // 2分に短縮。実際の更新頻度は外部Cronの呼び出し間隔に依存する。
 const REVALIDATE_SECONDS = 120;
-const SUMMARY_MAX = 100; // 著作権対応: 100文字以内サマリーのみ
 const MAX_AGE_DAYS = 7; // 直近1週間のみ掲載
 const MAX_PER_BUCKET = 24; // 画面が長くなり過ぎないための上限
 
@@ -30,13 +29,30 @@ async function fetchText(url: string): Promise<string | null> {
   }
 }
 
+// Shift_JIS（ORICON等）で配信されるページ用。fetch().text()はUTF-8前提で
+// 文字化けするため、バイト列を明示的にデコードする。
+async function fetchTextSjis(url: string): Promise<string | null> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; MNewsBot/1.0)" },
+      next: { revalidate: REVALIDATE_SECONDS },
+      signal: controller.signal,
+    });
+    if (!res.ok) return null;
+    const buf = await res.arrayBuffer();
+    return new TextDecoder("shift_jis").decode(buf);
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 function toIso(dateStr: string): string {
   const d = new Date(dateStr);
   return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
-}
-
-function truncate(s: string, max: number): string {
-  return s.length > max ? s.slice(0, max - 1) + "…" : s;
 }
 
 function toArticle(
@@ -51,7 +67,8 @@ function toArticle(
     id: `${idPrefix}-${index}`,
     source,
     title: item.title,
-    summary: item.description ? truncate(item.description, SUMMARY_MAX) : undefined,
+    // 著作権対応: 本文・要約は一切保存しない。見出し＋元記事URLのみ格納する
+    // （読売見出し事件を踏まえ、表示側でも軽微なリライトを行う運用）。
     origin,
     url: item.link,
     publishedAt: toIso(item.date),
@@ -136,26 +153,64 @@ async function fetchPancraseReleases(): Promise<Article[]> {
   return out;
 }
 
-async function fetchEfightMma(): Promise<Article[]> {
-  const html = await fetchText("https://efight.jp/genre?tag=mma");
+// ORICON「格闘技」タグ一覧からRIZIN関連記事のみを抽出する。
+// 規約上「リンクは自由／本文・画像の複製は禁止」のため、見出し＋元記事URLの
+// みを保存する（本文lead文は一切読み取らない）。見出しはデッドコピーを
+// 避けるため軽微にリライトする（読売見出し事件を踏まえた運用）。
+const RIZIN_KEYWORDS = [
+  "RIZIN",
+  "ライジン",
+  "朝倉未来",
+  "朝倉海",
+  "平本蓮",
+  "鈴木千裕",
+  "堀口恭司",
+  "YA-MAN",
+  "萩原京平",
+  "ヒロヤ",
+  "斎藤裕",
+  "クレベル",
+  "秋元強真",
+];
+
+// 見出しの軽微なリライト。デッドコピー回避のため、記号や助詞レベルで
+// 元記事と完全一致しないよう最低限の言い換えを行う。
+function rewriteOriconTitle(raw: string): string {
+  let t = raw.replace(/\s+/g, " ").trim();
+  t = t.replace(/^【RIZIN】\s*/, "");
+  // 元記事の常套句をmnews側の言い回しに置換
+  t = t.replace(/という。?$/, "とのこと");
+  t = t.replace(/明かした/, "語った");
+  t = t.replace(/コメントした/, "話した");
+  return `【RIZIN】${t}`;
+}
+
+async function fetchOriconRizin(): Promise<Article[]> {
+  const html = await fetchTextSjis("https://www.oricon.co.jp/news/tag/id/kakutougi/");
   if (!html) return [];
-  // 2026年6月時点のHTML構造: <a href="/news-20260609_1717007">タイトル</a>
-  // （相対URL・<h5>なしのプレーンテキスト）
-  const matches = Array.from(html.matchAll(/<a href="(\/news-(\d{8})_\d+)">\s*([^<]+?)\s*<\/a>/g));
+
+  // <article ...><a href="/news/2465194/">...<h2 class="title">見出し</h2>
+  //   ...<time class="date" datetime="2026-07-03 20:20">
+  const cards = Array.from(
+    html.matchAll(
+      /<a href="(\/news\/\d+\/)"><div class="inner">[\s\S]*?<h2 class="title">([\s\S]*?)<\/h2>[\s\S]*?<time class="date" datetime="([^"]+)"/g
+    )
+  );
+
   const out: Article[] = [];
-  matches.forEach(([, path, dateStr, rawTitle], i) => {
-    const title = rawTitle.replace(/\s+/g, " ").trim();
-    if (!title || !isMmaRelevant(title)) return;
-    const y = dateStr.slice(0, 4);
-    const m = dateStr.slice(4, 6);
-    const d = dateStr.slice(6, 8);
+  cards.forEach(([, path, rawTitleHtml, datetime], i) => {
+    const rawTitle = rawTitleHtml.replace(/<[^>]+>/g, "").trim();
+    if (!rawTitle) return;
+    // ボクシング等の非RIZIN格闘技は除外
+    if (!RIZIN_KEYWORDS.some((kw) => rawTitle.includes(kw))) return;
+
     out.push({
-      id: `efight-${i}`,
+      id: `oricon-${i}`,
       source: "other",
-      title,
-      origin: "イーファイト",
-      url: `https://efight.jp${path}`,
-      publishedAt: toIso(`${y}-${m}-${d}`),
+      title: rewriteOriconTitle(rawTitle),
+      origin: "ORICON",
+      url: `https://www.oricon.co.jp${path}`,
+      publishedAt: toIso(datetime.replace(" ", "T")),
     });
   });
   return out;
@@ -177,7 +232,7 @@ export async function fetchRawArticles(): Promise<FeedResult> {
     fetchPancraseReleases(),
     fetchMediaFeed("https://gonkaku.jp/feed", "rss", "ゴング格闘技", "gonkaku"),
     fetchMediaFeed("https://mmaplanet.jp/feed", "rss", "MMAPLANET", "mmaplanet"),
-    fetchEfightMma(),
+    fetchOriconRizin(),
   ];
 
   const results = await Promise.allSettled(tasks);
