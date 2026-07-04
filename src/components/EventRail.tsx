@@ -91,7 +91,7 @@ export default function EventRail({ events }: { events: RailEvent[] }) {
               <div className="rail-item-meta">
                 {dateJa}
                 {e.venue && <span> ／ {e.venue}</span>}
-                <span className={nearest ? "rail-countdown-near" : "rail-countdown"}> — あと{days}日</span>
+                <span className={nearest ? "rail-countdown-near" : "rail-countdown"}> — {days <= 0 ? "本日開催" : `あと${days}日`}</span>
               </div>
             </a>
           );
