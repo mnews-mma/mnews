@@ -1,6 +1,7 @@
 import { fetchRawArticles } from "@/lib/feeds/aggregate";
-import { buildTweetDigest } from "@/lib/tweetDigest";
+import { buildDigestPost } from "@/lib/xPost";
 import { SOURCES } from "@/lib/sources";
+import { SITE_URL, ogImagePath } from "@/lib/ogShared";
 import type { Article } from "@/lib/articles";
 
 function escapeHtml(s: string): string {
@@ -11,7 +12,7 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-function buildHtml(articles: Article[], tweetText: string): string {
+function buildHtml(articles: Article[], postText: string, replyText: string | undefined, imageUrl: string | null): string {
   if (articles.length === 0) {
     return "<p>過去24時間の新着記事はありませんでした。</p>";
   }
@@ -32,12 +33,21 @@ function buildHtml(articles: Article[], tweetText: string): string {
     })
     .join("");
 
+  const imageBlock = imageUrl
+    ? `<img src="${imageUrl}" alt="Daily Digest" style="width:100%;max-width:600px;display:block;border-radius:4px;margin-bottom:16px;" />`
+    : "";
+  const replyBlock = replyText
+    ? `<div style="font-size:11px;color:#999;margin-top:6px;">↳ セルフリプライ: ${escapeHtml(replyText).replace(/\n/g, "<br>")}</div>`
+    : "";
+
   return `
     <div style="font-family:-apple-system,sans-serif;max-width:640px;">
       <h2 style="font-size:16px;">Mニュース 朝刊ダイジェスト（過去24時間・${articles.length}件）</h2>
 
-      <h3 style="font-size:13px;">X投稿用テキスト（自動生成）</h3>
-      <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#fff7e6;padding:12px;border-radius:4px;border:1px solid #f0d9a0;">${escapeHtml(tweetText)}</pre>
+      <h3 style="font-size:13px;">X投稿用（本文+ダイジェスト画像。コピーして手動ポスト）</h3>
+      ${imageBlock}
+      <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#fff7e6;padding:12px;border-radius:4px;border:1px solid #f0d9a0;">${escapeHtml(postText)}</pre>
+      ${replyBlock}
 
       <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:24px;">${rows}</table>
 
@@ -63,6 +73,12 @@ function maskEmail(email: string): string {
   return `${head}***@${domain}`;
 }
 
+// 「昨日(JST暦日)」の日付文字列(YYYY-MM-DD)。ダイジェスト画像
+// (/api/og/digest?date=)と本文の対象日をここで揃える。
+function yesterdayJst(): string {
+  return new Date(Date.now() + 9 * 3600_000 - 86400_000).toISOString().slice(0, 10);
+}
+
 // 朝刊ダイジェストのメールを送信し、Resendの応答を含む結果を返す。
 // cron と 管理画面のテスト送信の両方から使う。subjectPrefix でテスト送信を区別できる。
 export async function sendDigestEmail(opts?: { subjectPrefix?: string }): Promise<DigestSendResult> {
@@ -72,8 +88,13 @@ export async function sendDigestEmail(opts?: { subjectPrefix?: string }): Promis
     .filter((a) => new Date(a.publishedAt).getTime() >= cutoff)
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
-  const { text: tweetText } = buildTweetDigest(recent);
-  const html = buildHtml(recent, tweetText);
+  const dateStr = yesterdayJst();
+  const digestPost = buildDigestPost(recent, dateStr);
+  const postText = digestPost?.text ?? "（対象記事なし）";
+  const replyText = digestPost?.replyText;
+  const imageUrl =
+    digestPost && !digestPost.isSingle ? `${SITE_URL}${ogImagePath(digestPost.imageUrl)}` : null;
+  const html = buildHtml(recent, postText, replyText, imageUrl);
 
   const toEmail = process.env.DIGEST_TO_EMAIL;
   const fromEmail = process.env.DIGEST_FROM_EMAIL ?? "Mニュース <onboarding@resend.dev>";
@@ -97,7 +118,7 @@ export async function sendDigestEmail(opts?: { subjectPrefix?: string }): Promis
       Authorization: `Bearer ${resendKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ from: fromEmail, to: [toEmail], subject, html, text: tweetText }),
+    body: JSON.stringify({ from: fromEmail, to: [toEmail], subject, html, text: postText }),
   });
 
   const bodyText = await res.text();
