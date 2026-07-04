@@ -63,25 +63,16 @@ function FeedCard({ a }: { a: FeedArticle }) {
   );
 }
 
-// 圧縮カード（同一日の official × announcement_minor をまとめる）
-function CompactCard({ items }: { items: FeedArticle[] }) {
+// スリムカード（announcement_minor: 1行タイトル+団体バッジ+時刻のみ、通常より小さく）
+function SlimCard({ a }: { a: FeedArticle }) {
   return (
-    <div className="uf-card uf-compact">
-      <div className="uf-compact-label">公式のお知らせ</div>
-      {items.map((a) => (
-        <a key={a.id} href={a.url} target="_blank" rel="noopener noreferrer" className="uf-row">
-          {orgBadge(a.source)}
-          <span className="uf-row-title">{a.title}</span>
-          <span className="uf-time">{relativeTimeJa(detectedOf(a))}</span>
-        </a>
-      ))}
-    </div>
+    <a href={a.url} target="_blank" rel="noopener noreferrer" className="uf-card uf-slim">
+      {orgBadge(a.source)}
+      <span className="uf-slim-title">{a.title}</span>
+      <span className="uf-time">{relativeTimeJa(detectedOf(a))}</span>
+    </a>
   );
 }
-
-type Unit =
-  | { kind: "card"; time: number; a: FeedArticle }
-  | { kind: "compact"; time: number; items: FeedArticle[] };
 
 export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
   const sp = useSearchParams();
@@ -127,43 +118,20 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
 
       <div className="uf-feed">
         {days.length === 0 && <div className="uf-empty">該当する記事がありません</div>}
-        {days.map(({ key, items }) => {
-          // 同一日: official × announcement_minor は1枚の圧縮カードへ集約
-          const minors = items.filter(
-            (a) => a.kind === "official" && a.newsType === "announcement_minor"
-          );
-          const rest = items.filter(
-            (a) => !(a.kind === "official" && a.newsType === "announcement_minor")
-          );
-          const units: Unit[] = rest.map((a) => ({
-            kind: "card" as const,
-            time: new Date(detectedOf(a)).getTime(),
-            a,
-          }));
-          if (minors.length > 0) {
-            units.push({
-              kind: "compact",
-              time: Math.max(...minors.map((m) => new Date(detectedOf(m)).getTime())),
-              items: minors,
-            });
-          }
-          units.sort((x, y) => y.time - x.time);
-
-          return (
-            <div key={key}>
-              <div className="uf-day">
-                <span>{dayLabel(key, todayKey)}</span>
-              </div>
-              {units.map((u, i) =>
-                u.kind === "compact" ? (
-                  <CompactCard key={`c-${key}-${i}`} items={u.items} />
-                ) : (
-                  <FeedCard key={u.a.id} a={u.a} />
-                )
-              )}
+        {days.map(({ key, items }) => (
+          <div key={key}>
+            <div className="uf-day">
+              <span>{dayLabel(key, todayKey)}</span>
             </div>
-          );
-        })}
+            {items.map((a) =>
+              a.newsType === "announcement_minor" ? (
+                <SlimCard key={a.id} a={a} />
+              ) : (
+                <FeedCard key={a.id} a={a} />
+              )
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

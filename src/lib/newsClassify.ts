@@ -90,20 +90,24 @@ export function classifyNewsType(title: string): NewsType {
 const FLASH_WINDOW_MS = 24 * 60 * 60 * 1000;
 
 // 速報判定(導出値):
-//   is_flash = newsType ∈ FLASH_TYPES AND (now - detectedAt) < 24h
-//              AND flashOverride != 'suppress'
+//   is_flash = kind == 'official' AND newsType ∈ FLASH_TYPES
+//              AND (now - detectedAt) < 24h AND flashOverride != 'suppress'
 //   ・suppress → 常に非速報
-//   ・force    → 常に速報(24h降格の対象外)
-//   ・none     → 上記式どおり(24hで自動的に通常カードへ降格)
+//   ・force    → 常に速報(種別・出典・24h降格の対象外。メディア発速報の手動対応用)
+//   ・none     → 上記式どおり(公式のみ / 24hで自動的に通常カードへ降格)
+// 速報を公式に限定する理由: 提携メディア記事は出典がviaで一次発表ではないため。
+// メディア発でも速報にしたいケースは flash_override=force(P4の管理UI)で対応する。
 export function isFlash(opts: {
+  kind: Kind;
   newsType: NewsType;
   detectedAt?: string; // firstSeenAt(検知時刻)。無ければ publishedAt を代替。
   flashOverride?: FlashOverride;
   now?: number;
 }): boolean {
-  const { newsType, detectedAt, flashOverride = "none", now = Date.now() } = opts;
+  const { kind, newsType, detectedAt, flashOverride = "none", now = Date.now() } = opts;
   if (flashOverride === "suppress") return false;
   if (flashOverride === "force") return true;
+  if (kind !== "official") return false;
   if (!isFlashType(newsType)) return false;
   if (!detectedAt) return false;
   const detected = new Date(detectedAt).getTime();
@@ -125,11 +129,12 @@ export function toFeedArticles(articles: Article[], now = Date.now()): FeedArtic
     .map((a) => {
       const newsType = a.newsType ?? classifyNewsType(a.title);
       const detectedAt = a.firstSeenAt ?? a.publishedAt;
+      const kind = a.kind ?? articleKind(a.source);
       return {
         ...a,
-        kind: a.kind ?? articleKind(a.source),
+        kind,
         newsType,
-        flash: isFlash({ newsType, detectedAt, flashOverride: a.flashOverride, now }),
+        flash: isFlash({ kind, newsType, detectedAt, flashOverride: a.flashOverride, now }),
       };
     })
     .sort((x, y) => {
