@@ -10,7 +10,8 @@ export interface PostalAddress {
   addressLocality: string;
   addressRegion: string;
   postalCode?: string;
-  addressCountry: "JP";
+  // 国コード(ISO 3166-1 alpha-2)。国内大会は"JP"、海外大会は該当国コード。
+  addressCountry: string;
 }
 
 export interface Venue {
@@ -356,6 +357,19 @@ export const VENUES: Venue[] = [
       addressRegion: "香川県",
       postalCode: "760-0019",
       addressCountry: "JP",
+    },
+  },
+  {
+    // RIZIN初の韓国大会(RIZIN WORLD SERIES in KOREA / 2025-05-31)会場。
+    // 海外大会のため addressCountry は "KR"。公式で番地が取れないため
+    // 区レベル(仁川広域市中区)まで登録し、推測住所は入れない。
+    id: "paradise-city-incheon",
+    name: "PARADISE CITY",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "中区",
+      addressRegion: "仁川広域市",
+      addressCountry: "KR",
     },
   },
 ];

@@ -1046,6 +1046,7 @@ export const EVENT_RESULTS: EventResult[] = [
     org: "deep",
     eventName: "DEEP JEWELS 53",
     date: "2026-05-24",
+    venue: "ニューピアホール",
     sourceUrl: "https://www.deep2001.com/deep-jewels-52-2/",
     fights: [
       {
@@ -1649,6 +1650,7 @@ export const EVENT_RESULTS: EventResult[] = [
     org: "rizin",
     eventName: "RIZIN WORLD SERIES in KOREA",
     date: "2025-05-31",
+    venue: "PARADISE CITY",
     sourceUrl: "https://jp.rizinff.com/_ct/17769437",
     fights: [
       { weightClass: "71.0kg契約", fighterA: "キ・ウォンビン", fighterB: "ホベルト・サトシ・ソウザ", winner: "ホベルト・サトシ・ソウザ", method: "リアネイキッドチョーク", round: "1R 0:50" },
