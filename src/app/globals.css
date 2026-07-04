@@ -1728,17 +1728,30 @@ a.uf-card:hover { border-color: var(--muted); }
   border-radius: 0 3px 3px 0;
 }
 
-/* ===== HOME LAYOUT: PC(≥1200px)のみ フィード + 右レール(sticky) ===== */
+/* ===== HOME LAYOUT =====
+   全セクション共通の外側コンテナ。max-width・左右パディングを1箇所で定義し、
+   上段2カラム(feed+右レール)と下段パネルの左右端を縦一直線に揃える。 */
+.home-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+/* コンテナがパディングを持つので、フィード自身の左右パディングは消して端を揃える */
+.home-feed .uf {
+  padding-left: 0;
+  padding-right: 0;
+}
 /* <1200px は通常フロー(feed → 右レール内容=開催予定の大会 を下部にそのまま表示) */
 @media (min-width: 1200px) {
+  .home-wrap {
+    max-width: 1080px;
+    padding: 0 24px;
+  }
   .home-main {
     display: grid;
-    grid-template-columns: 680px minmax(280px, 340px);
-    gap: 28px;
-    justify-content: center;
+    grid-template-columns: 680px 1fr; /* feed=680固定 / 右レール=残り。コンテナ全幅を使う */
+    gap: 24px;
     align-items: start;
-    max-width: 1180px;
-    margin: 0 auto;
   }
   .home-feed {
     min-width: 0;
@@ -1873,22 +1886,15 @@ a.uf-card:hover { border-color: var(--muted); }
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 16px 16px 0;
+  padding-top: 16px; /* 左右パディングは .home-wrap 側に一本化 */
 }
-@media (min-width: 700px) {
-  .home-sections {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px 24px 0;
-  }
-}
-/* パネル内カードグリッド(主要選手・SNS) */
+/* パネル内カードグリッド(主要選手・SNS)。パネル幅に応じて列数が伸縮する */
 .home-sections .fighter-grid,
 .home-sections .social-grid {
   background: transparent;
   gap: 12px;
   padding: 14px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 .home-sections .fighter-card,
 .home-sections .social-card {

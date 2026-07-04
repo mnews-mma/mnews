@@ -132,6 +132,7 @@ export default async function HomePage() {
       <Nav />
       <h1 className="visually-hidden">日本MMAニュース速報 | Mニュース</h1>
 
+      <div className="home-wrap">
       <div className="home-main">
         <div className="home-feed">
           <UnifiedFeed articles={feedArticles} />
@@ -205,6 +206,7 @@ export default async function HomePage() {
           </div>
           <a href="/fighters" className="rail-more">全選手を見る →</a>
         </section>
+      </div>
       </div>
 
       <Footer />
