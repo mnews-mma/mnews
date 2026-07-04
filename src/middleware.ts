@@ -20,6 +20,15 @@ import {
 //     クエリを消したURLへリダイレクトする（以後30日はCookieで認証）
 //   - 管理系APIも未認証は素の404（内部情報を含めない）
 
+// /admin, /api/admin はCookieによって内容が変わる認証ページのため、
+// VercelのCDN/ブラウザに一切キャッシュさせない。これを怠ると「未認証者が
+// 見た404が全員にキャッシュ配信される」「Aさんの200がBさんにも配信される」
+// といった重大な事故につながる（実際に発生した不具合）。
+function noStore(res: NextResponse): NextResponse {
+  res.headers.set("Cache-Control", "private, no-store, no-cache, must-revalidate");
+  return res;
+}
+
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
@@ -42,7 +51,7 @@ export async function middleware(req: NextRequest) {
         path: "/",
         maxAge: ADMIN_SESSION_MAX_AGE,
       });
-      return res;
+      return noStore(res);
     }
     // 不正トークンも404（正誤のフィードバックを与えない）
     return rewriteTo404(req);
@@ -50,19 +59,19 @@ export async function middleware(req: NextRequest) {
 
   const cookie = req.cookies.get(ADMIN_SESSION_COOKIE)?.value;
   if (await isValidSession(cookie)) {
-    return NextResponse.next();
+    return noStore(NextResponse.next());
   }
 
   // 未認証: APIは素の404 JSON、ページは404ページに偽装
   if (pathname.startsWith("/api/admin")) {
-    return NextResponse.json({ error: "not found" }, { status: 404 });
+    return noStore(NextResponse.json({ error: "not found" }, { status: 404 }));
   }
   return rewriteTo404(req);
 }
 
 function rewriteTo404(req: NextRequest) {
   // 存在しないパスへ rewrite することで Next.js 標準の404ページ(HTTP 404)を返す
-  return NextResponse.rewrite(new URL("/__mn404", req.url));
+  return noStore(NextResponse.rewrite(new URL("/__mn404", req.url)));
 }
 
 export const config = {
