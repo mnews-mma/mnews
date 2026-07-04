@@ -107,7 +107,7 @@ export function buildDigestPost(articles: Article[], dateStr: string): DigestPos
     return { ...single, imageUrl, itemCount: 1, isSingle: true };
   }
 
-  // 要約済みトピック(1項目=1トピック・35字以内・低価値除外・同一大会圧縮)。
+  // 要約済みトピック(1項目=1トピック・低価値除外・同一大会圧縮)。
   const topics = buildDigestTopics(articles, 4);
   if (topics.length === 0) return null;
   const top = topics[0];
@@ -118,20 +118,23 @@ export function buildDigestPost(articles: Article[], dateStr: string): DigestPos
   ];
   const hashtags = orgTag ? `#MMA ${orgTag}` : "#MMA";
 
-  // 最重要トピック1件(タグ込みで全角40字以内)
-  let lead = top.tag ? `【${top.tag}】${top.text}` : top.text;
-  if (fullWidthLength(lead) > 40) {
-    lead = top.tag
-      ? `【${top.tag}】${condenseTopic(top.text, 40 - fullWidthLength(`【${top.tag}】`))}`
-      : condenseTopic(top.text, 40);
+  // 本文に全トピックを【団体タグ】付きの箇条書きで列挙し、本文だけで完結させる
+  // (旧「ほか◯件は画像で👇」は、リード内の「ほか◯件」と二重になり
+  //  日本語が壊れる+添付画像への誘導文が不自然だったため廃止。
+  //  画像は引き続き全トピック掲載の補強として添付する)。
+  // 1行の長さ(タグ込み)はトピック数に応じて配分し、全体を全角138字以内に収める。
+  const perLine = topics.length >= 4 ? 27 : topics.length === 3 ? 31 : 36;
+  const toLine = (t: (typeof topics)[number]) => {
+    const prefix = t.tag ? `【${t.tag}】` : "";
+    return `・${prefix}${condenseTopic(t.text, perLine - fullWidthLength(prefix))}`;
+  };
+  let lines = topics.map(toLine);
+  let body = [`🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})`, ...lines].join("\n");
+  // 万一収まらない場合は末尾トピックから削る(最低2行は残す)
+  while (fullWidthLength(body) + fullWidthLength(hashtags) > 138 && lines.length > 2) {
+    lines = lines.slice(0, -1);
+    body = [`🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})`, ...lines].join("\n");
   }
-
-  // 「ほかN件」は生記事数ではなく、画像に載る残りトピック数と一致させる
-  // (以前、記事数とのズレで誤解を招いた反省を踏まえた仕様)
-  const otherTopics = topics.length - 1;
-  const lines = [`🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})`, lead];
-  if (otherTopics > 0) lines.push(`ほか${otherTopics}件は画像で👇`);
-  const body = lines.join("\n");
 
   // 全件への誘導はセルフリプライで行う
   const built = applyLinkPlacement(
