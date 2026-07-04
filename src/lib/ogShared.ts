@@ -63,39 +63,10 @@ export function fitFontSize(
   return steps[steps.length - 1].size;
 }
 
-// 文字種ごとの概算幅（em単位、フォントサイズ1pxあたりの実効幅）。
-// CJK/全角記号は正方形に近いため1em、半角英数・中点「・」・長音「ー」は
-// 実際の字幅に合わせて狭く見積もる。文字数だけで判定すると「TOMA」等の
-// 英字名を過剰に大きくしすぎたり、逆に中点混じりの長い日本語名で
-// 必要以上に縮小したりするため、幅ベースで判定して安全マージンを持たせる。
-function estimateTextWidthEm(text: string): number {
-  let w = 0;
-  for (const ch of text) {
-    const code = ch.charCodeAt(0);
-    if (ch === "・" || ch === "ー" || ch === "-") w += 0.55;
-    else if (code <= 0xff) w += 0.6; // 半角英数・記号
-    else w += 1.0; // 全角(漢字・かな・カタカナ)
-  }
-  return w;
-}
-
-// 指定した最大幅(px)・最大行数に収まる最大のフォントサイズを、候補サイズの
-// 中から選ぶ(auto-fit)。文字数ベースのfitFontSizeよりも実際の見た目幅に
-// 忠実で、長いカタカナ名でも枠からはみ出さないことを優先する。
-export function fitFontSizeByWidth(
-  text: string,
-  opts: { maxWidthPx: number; maxLines?: number; sizes: number[] }
-): number {
-  const maxLines = opts.maxLines ?? 2;
-  const widthEm = estimateTextWidthEm(text);
-  const sorted = [...opts.sizes].sort((a, b) => b - a);
-  for (const size of sorted) {
-    const totalWidthPx = widthEm * size;
-    // maxLines行に折り返せば収まるか(安全のため90%までしか使わない)
-    if (totalWidthPx <= opts.maxWidthPx * maxLines * 0.92) return size;
-  }
-  return sorted[sorted.length - 1];
-}
+// 注: VSカードの選手名フィットは src/lib/og/fitName.ts (行分割を事前確定する
+// 方式)に置き換え済み。文字幅の概算だけでフォントサイズを決める旧方式
+// (fitFontSizeByWidth)は、satoriの自動折り返しに依存し崩れの原因になって
+// いたため廃止した。
 
 let fontCache: { bebas: ArrayBuffer; notoBlack: ArrayBuffer } | null = null;
 

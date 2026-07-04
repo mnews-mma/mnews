@@ -4,6 +4,7 @@ import { getFighter, calcFighterRates, type Fighter } from "@/lib/fighters";
 import { resolveFighter, type ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { SOURCES } from "@/lib/sources";
 import { findMatchupEvent } from "@/lib/events";
+import { fitName, type FitOpts } from "@/lib/og/fitName";
 import {
   OG_COLORS as COLORS,
   SITE_URL,
@@ -11,7 +12,6 @@ import {
   OG_FONT_FAMILIES,
   stripeTexture,
   cornerVignette,
-  fitFontSizeByWidth,
 } from "@/lib/ogShared";
 
 export const runtime = "edge";
@@ -20,25 +20,23 @@ function fallbackRedirect() {
   return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
 }
 
-// 選手名を最優先で大きく。4文字なら「カード高の1/4」目安になるサイズまで拡大。
-// 長い名前は実測幅ベースのauto-fit(fitFontSizeByWidth)で自動縮小 +
-// maxWidth指定による2行折り返しで対応する（枠からのはみ出しを防ぐ）。
-const NAME_SIDE_MAX_WIDTH_PX = 460; // FighterSide側の名前div maxWidthと一致させる
-const NAME_SIZE_CANDIDATES = [120, 100, 84, 68, 54, 46, 38, 32, 28, 24, 20, 18];
+// 名前ゾーンの寸法。本番カードの名前領域の実寸に合わせる
+// (VS列140px・フッター等を除いた片側の実効幅474pxに対し、安全マージンを
+// 見て460。高さは下の戦績/勝率/二つ名が収まる範囲で2行までを許容)。
+const NAME_ZONE: FitOpts = { maxWidth: 460, maxHeight: 180, maxFont: 120, minFont: 32, maxLines: 2 };
 
 function FighterSide({
   f,
   corner,
-  nameSize,
+  fit,
 }: {
   f: ResolvedFighter;
   corner: "left" | "right";
-  nameSize: number;
+  fit: { fontSize: number; lines: string[] };
 }) {
   const orgLabel = SOURCES[f.org]?.label ?? f.org.toUpperCase();
   const { winRate, finishRate } = calcFighterRates(f);
   const align = corner === "left" ? "flex-start" : "flex-end";
-  const textAlign = corner === "left" ? "left" : "right";
   const accent = corner === "left" ? COLORS.shu : COLORS.indigo;
 
   return (
@@ -57,23 +55,38 @@ function FighterSide({
       >
         {orgLabel} / {f.weightClass}
       </div>
+
+      {/* 名前ゾーン: fitName()で事前確定した行を1行ずつ描画(satoriの自動折り返しに頼らない) */}
       <div
         style={{
           display: "flex",
-          fontFamily: "Noto Sans JP",
-          fontWeight: 900,
-          fontSize: `${nameSize}px`,
-          lineHeight: 1.08,
-          color: "#FFFFFF",
+          flexDirection: "column",
+          width: `${NAME_ZONE.maxWidth}px`,
+          maxHeight: `${NAME_ZONE.maxHeight}px`,
+          justifyContent: "center",
+          alignItems: align,
           marginTop: "16px",
-          textAlign,
-          maxWidth: "460px",
-          flexWrap: "wrap",
-          justifyContent: align,
         }}
       >
-        {f.nameJa}
+        {fit.lines.map((line, i) => (
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              fontFamily: "Noto Sans JP",
+              fontWeight: 900,
+              fontSize: `${fit.fontSize}px`,
+              lineHeight: 1.05,
+              letterSpacing: "-1px",
+              color: "#FFFFFF",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {line}
+          </div>
+        ))}
       </div>
+
       <div
         style={{
           display: "flex",
@@ -140,12 +153,15 @@ export async function GET(
       resolveFighter(seedB as Fighter),
     ]);
 
-    // 左右の選手名は必ず同一フォントサイズにする。長い方が収まるサイズ
-    // （＝両者を個別計算したうちの小さい方）を両者に適用する。片側だけの縮小はしない。
-    const sharedNameSize = Math.min(
-      fitFontSizeByWidth(fighterA.nameJa, { maxWidthPx: NAME_SIDE_MAX_WIDTH_PX, sizes: NAME_SIZE_CANDIDATES }),
-      fitFontSizeByWidth(fighterB.nameJa, { maxWidthPx: NAME_SIDE_MAX_WIDTH_PX, sizes: NAME_SIZE_CANDIDATES })
-    );
+    // 左右の選手名は必ず同一フォントサイズにする。各名を個別にfitNameし、
+    // 小さい方のfontSizeを共有サイズとして採用、その上で両名の行分割を
+    // 共有サイズ基準で再計算する(片側だけの縮小はしない)。
+    const fitAOwn = fitName(fighterA.nameJa, NAME_ZONE);
+    const fitBOwn = fitName(fighterB.nameJa, NAME_ZONE);
+    const sharedFontSize = Math.min(fitAOwn.fontSize, fitBOwn.fontSize);
+    const sharedZone: FitOpts = { ...NAME_ZONE, maxFont: sharedFontSize, minFont: sharedFontSize };
+    const fitA = fitName(fighterA.nameJa, sharedZone);
+    const fitB = fitName(fighterB.nameJa, sharedZone);
 
     const matchup = findMatchupEvent(fighterA.nameJa, fighterB.nameJa);
     const eventLabel = matchup
@@ -227,7 +243,7 @@ export async function GET(
               }}
             />
 
-            <FighterSide f={fighterA} corner="left" nameSize={sharedNameSize} />
+            <FighterSide f={fighterA} corner="left" fit={fitA} />
 
             <div
               style={{
@@ -253,7 +269,7 @@ export async function GET(
               </div>
             </div>
 
-            <FighterSide f={fighterB} corner="right" nameSize={sharedNameSize} />
+            <FighterSide f={fighterB} corner="right" fit={fitB} />
           </div>
 
           {/* フッター */}
