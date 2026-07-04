@@ -1,8 +1,8 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import SplitFeed from "@/components/SplitFeed";
+import UnifiedFeed from "@/components/UnifiedFeed";
 import SocialSection from "@/components/SocialSection";
-import { ARTICLES, Article, relativeTimeJa } from "@/lib/articles";
+import { ARTICLES, Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
 import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
@@ -10,7 +10,7 @@ import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
-import { selectBreaking } from "@/lib/tweetDigest";
+import { toFeedArticles } from "@/lib/newsClassify";
 import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
@@ -24,8 +24,6 @@ export const metadata = pageMetadata({
   description: "RIZIN・DEEP・パンクラス・修斗の格闘技ニュースを随時更新。日本人MMA選手の戦績・試合結果も掲載。",
   path: "/",
 });
-
-const OFFICIAL_ORGS = new Set(["rizin", "deep", "shooto", "pancrase"]);
 
 // トップページの「主要選手 戦績まとめ」には元からの8名のみ表示する。
 // それ以外（SEO目的で追加した選手）は /fighters 一覧と詳細ページのみ。
@@ -77,16 +75,9 @@ export default async function HomePage() {
 
   const upcomingEvents = getUpcomingEvents();
 
-  const officialAll = articles.filter((a) => OFFICIAL_ORGS.has(a.source));
-  const newsAll = articles.filter((a) => !OFFICIAL_ORGS.has(a.source));
-  // 公式・ニュース問わず全記事から、鮮度を重視したインパクト最上位を BREAKING として表示する。
-  // 失効判定は「検知時刻」を起点にするため firstSeenAt を付与してから判定する。
-  const breaking = selectBreaking(enrichFirstSeen(articles, firstSeenMap));
-  // 2カラムの見た目の長さを揃えるため、件数の少ない方に合わせる
-  // （どちらも公開日時の降順なので、それぞれの最新N件が残る）。最大10件。
-  const evenCount = Math.min(officialAll.length, newsAll.length, 10);
-  const official = officialAll.slice(0, evenCount);
-  const news = newsAll.slice(0, evenCount);
+  // 統一フィード: 公式・メディアを混在させ、検知時刻(firstSeenAt)を detected_at
+  // として分類・速報判定し、detected_at降順で並べる。表示は最大40件。
+  const feedArticles = toFeedArticles(enrichFirstSeen(articles, firstSeenMap)).slice(0, 40);
 
   // トップに掲載する開催予定イベントの構造化データ(共通ビルダー経由)
   const upcomingEventsLd = upcomingEvents.map((e) =>
@@ -123,15 +114,7 @@ export default async function HomePage() {
       <Nav />
       <h1 className="visually-hidden">日本MMAニュース速報 | Mニュース</h1>
 
-      {breaking && (
-        <a href={breaking.url} target="_blank" rel="noopener noreferrer" className="breaking-bar">
-          <span className="breaking-tag">BREAKING</span>
-          <span className="breaking-title">{breaking.title}</span>
-          <span className="breaking-time">{relativeTimeJa(breaking.publishedAt)}</span>
-        </a>
-      )}
-
-      <SplitFeed official={official} news={news} />
+      <UnifiedFeed articles={feedArticles} />
 
       {/* UPCOMING EVENTS SECTION */}
       {upcomingEvents.length > 0 && (

@@ -1,4 +1,5 @@
 import type { Article } from "./articles";
+import { flashPrefixForType, type NewsType } from "./newsClassify";
 import {
   buildHashtagsForOne,
   pickPostLabel,
@@ -170,12 +171,16 @@ export function buildResultPost(opts: {
   loser: string;
   method: string;
   isDraw?: boolean;
+  // ライブ結果入力から登録される試合結果は news_type=result 固定。
+  // 【速報】プレフィックスはサイト表示と共有の判定関数から導出する。
+  newsType?: NewsType;
 }): BuiltPost {
   const orgTag = ORG_HASHTAG[opts.org] ?? "";
   const hashtags = [orgTag, "#MMA"].filter(Boolean).join(" ");
+  const prefix = flashPrefixForType(opts.newsType ?? "result");
   const body = opts.isDraw
-    ? `【速報】${opts.winner} vs ${opts.loser}は${opts.method || "引き分け"}`
-    : `【速報】${opts.winner}が${opts.loser}に${opts.method}勝ち`;
+    ? `${prefix}${opts.winner} vs ${opts.loser}は${opts.method || "引き分け"}`
+    : `${prefix}${opts.winner}が${opts.loser}に${opts.method}勝ち`;
   return applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.result);
 }
 
