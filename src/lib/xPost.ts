@@ -3,9 +3,7 @@ import {
   buildHashtagsForOne,
   pickPostLabel,
   summarizeTitle,
-  fullWidthLength,
   buildDigestTopics,
-  condenseTopic,
 } from "./tweetDigest";
 
 // ─────────────────────────────────────────────
@@ -54,7 +52,8 @@ function applyLinkPlacement(
   body: string,
   hashtags: string,
   link: string,
-  placement: LinkPlacement
+  placement: LinkPlacement,
+  replyLabel = "詳細はこちら👇"
 ): BuiltPost {
   if (placement === "inline") {
     return { text: [body, link, hashtags].join("\n"), method: "inline" };
@@ -62,7 +61,7 @@ function applyLinkPlacement(
   if (placement === "reply") {
     return {
       text: [body, hashtags].join("\n"),
-      replyText: `詳細はこちら👇\n${link}`,
+      replyText: `${replyLabel}\n${link}`,
       method: "reply",
     };
   }
@@ -105,14 +104,11 @@ export function buildDigestPost(articles: Article[], dateStr: string): DigestPos
     return { ...single, imageUrl, itemCount: 1, isSingle: true };
   }
 
-  // 要約済みトピック(1項目=1トピック・35字以内・低価値除外・同一大会圧縮)
+  // 要約済みトピック(1項目=1トピック・35字以内・低価値除外・同一大会圧縮)。
+  // トピック本文は画像に載せるため、本文はまとめの一言のみに絞る
   const topics = buildDigestTopics(articles, 4);
   if (topics.length === 0) return null;
   const top = topics[0];
-
-  // 最重要トピック1件(タグ込みで全角40字以内)
-  let lead = top.tag ? `【${top.tag}】${top.text}` : top.text;
-  if (fullWidthLength(lead) > 40) lead = top.tag ? `【${top.tag}】${condenseTopic(top.text, 40 - fullWidthLength(`【${top.tag}】`))}` : condenseTopic(top.text, 40);
 
   // ハッシュタグ: #MMA + 関連団体1個まで
   const orgTag = { rizin: "#RIZIN", deep: "#DEEP", pancrase: "#パンクラス", shooto: "#修斗" }[
@@ -120,9 +116,15 @@ export function buildDigestPost(articles: Article[], dateStr: string): DigestPos
   ];
   const hashtags = orgTag ? `#MMA ${orgTag}` : "#MMA";
 
-  const others = articles.length - 1;
-  const body = `🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})\n${lead}\nほか${others}件は画像で👇`;
-  const built = applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.digest);
+  const body = `🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})`;
+  // 全件への誘導はセルフリプライで行う
+  const built = applyLinkPlacement(
+    body,
+    hashtags,
+    SITE_LINK,
+    X_POST_CONFIG.linkPlacement.digest,
+    "全件はこちら👇"
+  );
   return { ...built, imageUrl, itemCount: articles.length, isSingle: false };
 }
 
