@@ -9,7 +9,7 @@ export default function Nav() {
         </Link>
         <div className="nav-right">
           <Link href="/fighters" className="nav-fighters-link">
-            👤 選手戦績
+            選手戦績
           </Link>
         </div>
       </div>
