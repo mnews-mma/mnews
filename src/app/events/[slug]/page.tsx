@@ -94,6 +94,13 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
     ticketUrl: event.ticketUrl,
   });
 
+  // エキシビ/特別マッチは試合番号を持たないため、末尾送りせず主催掲載に合わせ
+  // メインイベントの直上(先頭)に表示する。本戦の並び順(配列順)は維持。
+  const orderedBouts = [
+    ...event.bouts.filter((b) => b.isExhibition),
+    ...event.bouts.filter((b) => !b.isExhibition),
+  ];
+
   return (
     <>
       <script
@@ -191,7 +198,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         ) : event.status === "upcoming" || event.status === "live" ? (
           /* upcoming / live: カード表示 */
           <div className="bout-list">
-            {event.bouts.map((b, i) => (
+            {orderedBouts.map((b, i) => (
               <div
                 key={i}
                 className={`bout-card${b.isTitleMatch ? " bout-card--title" : ""}${b.cancelled ? " bout-card--cancelled" : ""}`}
@@ -237,7 +244,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                 </tr>
               </thead>
               <tbody>
-                {event.bouts.map((b, i) => (
+                {orderedBouts.map((b, i) => (
                   <tr key={i}>
                     <td className="col-wrap">{b.weightClass}</td>
                     <td>

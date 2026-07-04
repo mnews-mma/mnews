@@ -17,6 +17,9 @@ export interface Bout {
   result?: BoutResult; // upcoming/liveでは undefined
   cancelled?: boolean;
   note?: string;
+  // 引退エキシビ等の特別マッチ。試合番号を持たないため、詳細ページでは
+  // 主催掲載に合わせメインイベントの直上に表示する(末尾送りにしない)。
+  isExhibition?: boolean;
 }
 
 export interface MEvent {
@@ -492,6 +495,7 @@ export const EVENTS: MEvent[] = [
         fighterA: "越智晴雄",
         fighterB: "斎藤裕・石渡伸太郎・上田将勝",
         note: "引退エキシビションマッチ",
+        isExhibition: true,
       },
     ],
   },
