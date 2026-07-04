@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/admin/email-test", label: "メール送信テスト" },
   { href: "/admin/breaking", label: "BREAKING診断" },
   { href: "/admin/x-preview", label: "Xポストプレビュー" },
+  { href: "/admin/x-test", label: "🧪 X投稿 疎通確認(dry-run)" },
 ];
 
 export default function AdminHomePage() {
