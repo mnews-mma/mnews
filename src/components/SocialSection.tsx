@@ -7,12 +7,8 @@ export default function SocialSection({ videos }: { videos: SocialPost[] }) {
   if (videos.length === 0 && X_PROFILES.length === 0) return null;
 
   return (
-    <div className="home-section">
-      <div className="fighter-section-head">
-        <div style={{ fontFamily: "var(--os)", fontSize: 16, fontWeight: 600, color: "var(--text)", letterSpacing: 1 }}>
-          公式SNS最新発信
-        </div>
-      </div>
+    <div className="rail-panel">
+      <div className="rail-head">公式SNS最新発信</div>
 
       {videos.length > 0 && (
         <div className="social-grid">

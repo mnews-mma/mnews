@@ -146,44 +146,39 @@ export default async function HomePage() {
       </div>
 
       <div className="home-sections">
-        {/* RESULTS SECTION */}
-        <div className="home-section">
-          <div className="fighter-section-head">
-            <div style={{ fontFamily: "var(--os)", fontSize: 16, fontWeight: 600, color: "var(--text)", letterSpacing: 1 }}>
-              大会結果まとめ
-            </div>
-          </div>
-          <div className="results-list">
+        {/* 大会結果まとめ（開催予定の大会と同じパネル構造） */}
+        <section className="rail-panel">
+          <div className="rail-head">大会結果まとめ</div>
+          <div className="rail-list">
             {[...EVENT_RESULTS]
               .sort((a, b) => (a.date < b.date ? 1 : -1))
               .slice(0, 4)
               .map((e) => (
-                <a key={e.slug} href={`/results/${e.slug}`} className="results-list-item">
-                  <div className="org-tag" style={{ color: SOURCES[e.org].color }}>
+                <a
+                  key={e.slug}
+                  href={`/results/${e.slug}`}
+                  className="rail-item"
+                  style={{ borderLeftColor: SOURCES[e.org].color }}
+                >
+                  <div className="rail-item-org" style={{ color: SOURCES[e.org].color }}>
                     {SOURCES[e.org].label}
                   </div>
-                  <div className="results-list-title">{e.eventName}</div>
-                  <div className="results-list-meta">
+                  <div className="rail-item-title">{e.eventName}</div>
+                  <div className="rail-item-meta">
                     {e.date}
                     {e.venue && <span> ／ {e.venue}</span>}
                   </div>
                 </a>
               ))}
           </div>
-          <div className="home-section-more">
-            <a href="/results" className="uf-more">全大会結果を見る →</a>
-          </div>
-        </div>
+          <a href="/results" className="rail-more">全大会結果を見る →</a>
+        </section>
 
         <SocialSection videos={videos} />
 
-        {/* FIGHTER SECTION */}
-        <div className="home-section">
-          <div className="fighter-section-head">
-            <div style={{ fontFamily: "var(--os)", fontSize: 16, fontWeight: 600, color: "var(--text)", letterSpacing: 1 }}>
-              主要選手 戦績まとめ
-            </div>
-          </div>
+        {/* 主要選手 戦績まとめ（同じパネル構造・中身は戦績カード） */}
+        <section className="rail-panel">
+          <div className="rail-head">主要選手 戦績まとめ</div>
           <div className="fighter-grid">
             {fighters.map((f) => {
               const { winRate, finishRate } = calcFighterRates(f);
@@ -208,10 +203,8 @@ export default async function HomePage() {
               );
             })}
           </div>
-          <div className="home-section-more">
-            <a href="/fighters" className="uf-more">全選手を見る →</a>
-          </div>
-        </div>
+          <a href="/fighters" className="rail-more">全選手を見る →</a>
+        </section>
       </div>
 
       <Footer />

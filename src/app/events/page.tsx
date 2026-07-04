@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
   title: "開催予定の大会一覧 | Mニュース",
-  description: "RIZIN・DEEP・パンクラス・修斗の開催予定大会を開催日順に掲載。",
+  description: "RIZIN・DEEP・パンクラス・修斗の主な開催予定大会を開催日順に掲載。",
   path: "/events",
 });
 
@@ -25,7 +25,7 @@ export default function EventsIndexPage() {
       <Nav />
       <div className="page-head">
         <h1 className="page-title">開催予定の大会</h1>
-        <div className="page-sub">RIZIN・DEEP・パンクラス・修斗の開催予定大会（開催日順）</div>
+        <div className="page-sub">RIZIN・DEEP・パンクラス・修斗の主な開催予定大会（開催日順）</div>
       </div>
       <div className="results-list">
         {events.map((e, idx) => {

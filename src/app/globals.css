@@ -1759,7 +1759,7 @@ a.uf-card:hover { border-color: var(--muted); }
 }
 .rail-head {
   font-family: var(--os);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 1px;
   color: var(--text);
@@ -1832,7 +1832,8 @@ a.uf-card:hover { border-color: var(--muted); }
    表示件数は EventRail(JS実測)がこの高さに収まるよう自動調整するため、
    overflow:hidden は端数ぶんの保険。フィード高さには非連動。 */
 @media (min-width: 1200px) {
-  .rail-panel {
+  /* 高さ収めは右サイドバーのレールのみ。下部セクションのパネルには効かせない */
+  .home-rail .rail-panel {
     max-height: calc(100vh - 96px);
     overflow: hidden;
   }
@@ -1864,41 +1865,45 @@ a.uf-card:hover { border-color: var(--muted); }
   border-color: var(--muted);
 }
 
-/* ===== ホーム下部セクションをフィードカードのトーンに統一 =====
-   角丸/罫線/余白/背景をフィードカードのトークンに揃える。/results /events
-   /fighters に波及させないため .home-sections でスコープする(見た目のみ)。 */
-.home-sections .results-list,
+/* ===== ホーム下部セクション =====
+   「開催予定の大会」と同じ rail-panel 構造に統一(角丸パネル+見出し+下部ピル)。
+   中身: 大会結果=rail-item行 / 主要選手・SNS=戦績/動画カードのグリッド。
+   PCは中央寄せの1カラム、スマホは全幅。パネルを縦に積む。 */
+.home-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 16px 0;
+}
+@media (min-width: 700px) {
+  .home-sections {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 24px 0;
+  }
+}
+/* パネル内カードグリッド(主要選手・SNS) */
 .home-sections .fighter-grid,
 .home-sections .social-grid {
   background: transparent;
   gap: 12px;
-  padding: 16px 24px;
+  padding: 14px;
+  grid-template-columns: 1fr 1fr;
 }
-.home-sections .results-list-item,
 .home-sections .fighter-card,
 .home-sections .social-card {
   background: var(--s1);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
 }
-.home-sections .results-list-item {
+.home-sections .fighter-card {
   padding: 14px 16px;
 }
-.home-sections .fighter-card {
-  padding: 16px 18px;
-}
 @media (max-width: 600px) {
-  .home-sections .results-list,
   .home-sections .fighter-grid,
   .home-sections .social-grid {
-    padding: 12px 16px;
+    grid-template-columns: 1fr;
+    padding: 12px;
   }
-}
-
-/* ホーム下部セクションの「全◯◯を見る」= フィード末尾「過去の記事」と同じピル。中央寄せ */
-.home-section-more {
-  max-width: 480px;
-  margin: 4px auto 20px;
-  padding: 0 16px;
 }
