@@ -259,47 +259,47 @@ export function buildNewsPost(a: Article): string {
 // 同一大会の複数結果は「代表1件+ほか全試合結果」に圧縮。
 // ───────────────────────────────────────────────
 
-// まとめから除外する低価値トピック(事務連絡・販促・画像系)
-const DIGEST_EXCLUDED = [
-  "チケット",
-  "グッズ",
-  "物販",
-  "LOT",
-  "抽選",
-  "ファンイベント",
-  "握手会",
-  "サイン会",
-  "アワード",
-  "表彰",
-  "ベストバウト",
-  "試合順",
-  "計量",
-  "公開練習",
-  "合同練習",
-  "セミナー",
-  "受賞",
-  "ボーナス",
-  "スペシャルボーナス",
-  "配信",
-  "テレビ",
-  "放送",
-  "スケジュール",
-  "お知らせ",
-  "変更カード",
-  "中止カード",
-  "追加カードのお知らせ",
-  "ポスター",
-  "ビジュアル",
-  "壁紙",
-  "見所",
-  "見どころ",
-  "前売",
-  "完売",
-  "発売",
-  "ライセンス", // ライセンス保持者一覧等の事務情報
-  "Fight＆Life", // 雑誌記事の抜粋インタビュー
-  "Fight&Life",
+// ── digest専用スコアリング ──
+// 旧方式(除外キーワード部分一致で即除外)は「前日計量オールクリア」のような
+// 当日最大のニュースまで落とす事故を起こした(タイトルに計量/配信/チケットを
+// 含むため)。ニュース語は加点・販促語は減点し、合計で採否を決める方式に変更。
+const DIGEST_NEWS_KEYWORDS = [
+  // 試合・結果・カード(まとめの主役)
+  "計量", "全試合結果", "試合結果", "結果", "KO", "TKO", "一本", "判定",
+  "勝利", "敗北", "王者", "王座", "タイトルマッチ", "防衛", "挑戦",
+  "カード決定", "対戦決定", "カード発表", "追加カード", "対戦カード",
+  "欠場", "中止", "変更", "引退", "移籍", "契約", "参戦", "復帰", "デビュー", "優勝",
 ];
+const DIGEST_PROMO_KEYWORDS = [
+  // 販促・事務連絡(単体では載せない)
+  "チケット", "前売", "グッズ", "物販", "LOT", "抽選", "ファンイベント",
+  "握手会", "サイン会", "セミナー", "キャンペーン", "アワード", "表彰",
+  "殿堂", "ベストバウト", "試合順", "ポスター", "ビジュアル", "壁紙",
+  "パンフレット", "見所", "見どころ", "公開練習", "合同練習",
+  "ランキング", "スケジュール", "ライセンス", "Fight＆Life", "Fight&Life",
+];
+
+// 発言引用(「…」『…』)を除いたタイトル。引用内の「必ずKOする」等の
+// 意気込みコメントが結果報と誤判定されるのを防ぐ(判定は地の文のみで行う)。
+function stripQuotes(title: string): string {
+  return title.replace(/「[^」]*」|『[^』]*』/g, "");
+}
+
+// digest採用スコア: ニュース語+2 / 販促語-2 / 公式+2 / DB選手名+2 /
+// 結果報(地の文に決着表現)+3。判定は引用を除いた地の文で行う。
+// 「チケット完売」に触れた計量記事でも、計量+2が販促減点を相殺して残る。
+function digestScore(a: Article): number {
+  const t = stripQuotes(a.title);
+  let s = 0;
+  if (OFFICIAL_ORGS.has(a.source)) s += 2;
+  for (const kw of DIGEST_NEWS_KEYWORDS) if (t.includes(kw)) s += 2;
+  for (const kw of DIGEST_PROMO_KEYWORDS) if (t.includes(kw)) s -= 2;
+  for (const name of FIGHTER_NAMES) {
+    if (name.length >= 2 && t.includes(name)) { s += 2; break; }
+  }
+  if (isResultTopic(t)) s += 3; // 実際に決着した結果報を最優先
+  return s;
+}
 
 export interface DigestTopic {
   tag: string; // 表示用の団体/大会タグ(例: NEXUS, RIZIN)。画像の行頭チップに使う
@@ -425,10 +425,16 @@ function isResultTopic(title: string): boolean {
 }
 
 export function buildDigestTopics(articles: Article[], max = 4): DigestTopic[] {
-  // 1) 低価値トピックを除外
-  const filtered = articles.filter(
-    (a) => !DIGEST_EXCLUDED.some((kw) => a.title.includes(kw))
-  );
+  // 1) digestスコアで採否判定。まず score>=1(明確にニュース)を採用し、
+  //    トピックが3件に満たない日は score>=-1 まで許容して件数を確保する
+  //    (記事が少ない日にまとめがスカスカになるのを防ぐフォールバック)。
+  const withScore = articles.map((a) => ({ a, ds: digestScore(a) }));
+  let pool = withScore.filter((x) => x.ds >= 1);
+  if (pool.length < 4) {
+    const fill = withScore.filter((x) => x.ds >= -1 && !pool.includes(x));
+    pool = [...pool, ...fill];
+  }
+  const filtered = pool.map((x) => x.a);
 
   // 2) 大会/団体タグでクラスタリング(タグなしは単独クラスタ)
   const clusters = new Map<string, Article[]>();
@@ -439,11 +445,11 @@ export function buildDigestTopics(articles: Article[], max = 4): DigestTopic[] {
     clusters.get(key)!.push(a);
   });
 
-  // 3) クラスタごとに代表1件へ圧縮してトピック化
+  // 3) クラスタごとに代表1件へ圧縮してトピック化(代表・順位ともdigestスコア)
   const topics: DigestTopic[] = [];
   for (const [key, group] of clusters) {
     const scored = group
-      .map((a) => ({ a, score: impactScore(a) }))
+      .map((a) => ({ a, score: digestScore(a) }))
       .sort((x, y) => y.score - x.score);
     const rep = scored[0];
     const tag = key.startsWith("__solo_")
@@ -451,8 +457,10 @@ export function buildDigestTopics(articles: Article[], max = 4): DigestTopic[] {
       : key;
     let text: string;
     if (group.length >= 2) {
-      // 同一大会の複数ニュース: 代表を短めに要約し「ほか◯◯」を付ける
-      const suffix = group.some((a) => isResultTopic(a.title))
+      // 同一大会の複数ニュース: 代表を短めに要約し「ほか◯◯」を付ける。
+      // 「ほか全試合結果」は明示的な結果まとめ記事がある場合のみ
+      // (開催前イベントの計量・意気込み記事に付くのを防ぐ)
+      const suffix = group.some((a) => /全試合結果|試合結果/.test(a.title))
         ? "、ほか全試合結果"
         : `、ほか${group.length - 1}件`;
       text = condenseTopic(rep.a.title, 35 - fullWidthLength(suffix)) + suffix;
