@@ -1827,3 +1827,14 @@ a.uf-card:hover { border-color: var(--muted); }
 .rail-more:hover {
   color: var(--accent);
 }
+
+/* 右レールの高さ収め: ビューポート内に自己完結(≥1200pxのみ)。
+   sticky top:64 + margin-top:12 + 下部余白 ≒ 96px を差し引く。
+   表示件数は EventRail(JS実測)がこの高さに収まるよう自動調整するため、
+   overflow:hidden は端数ぶんの保険。フィード高さには非連動。 */
+@media (min-width: 1200px) {
+  .rail-panel {
+    max-height: calc(100vh - 96px);
+    overflow: hidden;
+  }
+}

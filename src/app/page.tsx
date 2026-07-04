@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import UnifiedFeed from "@/components/UnifiedFeed";
+import EventRail from "@/components/EventRail";
 import SocialSection from "@/components/SocialSection";
 import { ARTICLES, Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
@@ -79,6 +80,17 @@ export default async function HomePage() {
   // として分類・速報判定し、detected_at降順で並べる。表示は最大40件。
   const feedArticles = toFeedArticles(enrichFirstSeen(articles, firstSeenMap)).slice(0, 40);
 
+  // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて
+  // EventRail側でさらに自動調整)。所属団体のラベル/色だけ先に確定させて渡す。
+  const railEvents = upcomingEvents.slice(0, 5).map((e) => ({
+    slug: e.slug,
+    label: SOURCES[e.org].label,
+    color: SOURCES[e.org].color,
+    eventName: e.eventName,
+    venue: e.venue,
+    date: e.date,
+  }));
+
   // トップに掲載する開催予定イベントの構造化データ(共通ビルダー経由)
   const upcomingEventsLd = upcomingEvents.map((e) =>
     buildSportsEventLd({
@@ -119,42 +131,10 @@ export default async function HomePage() {
           <UnifiedFeed articles={feedArticles} />
         </div>
 
-        {/* UPCOMING EVENTS: PC(≥1200px)は右レール(sticky) / スマホは従来どおり下部表示 */}
-        {upcomingEvents.length > 0 && (
+        {/* UPCOMING EVENTS: PC(≥1200px)は右レール(sticky・高さ収め) / スマホは従来どおり下部表示 */}
+        {railEvents.length > 0 && (
           <aside className="home-rail">
-            <div className="rail-panel">
-              <div className="rail-head">開催予定の大会</div>
-              <div className="rail-list">
-                {upcomingEvents.slice(0, 5).map((e, idx) => {
-                  const today = new Date(); today.setHours(0, 0, 0, 0);
-                  const target = new Date(e.date); target.setHours(0, 0, 0, 0);
-                  const days = Math.round((target.getTime() - today.getTime()) / 86400000);
-                  const d = new Date(e.date);
-                  const dayNames = ["日","月","火","水","木","金","土"];
-                  const dateJa = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${dayNames[d.getDay()]}）`;
-                  const nearest = idx === 0; // 開催日昇順。最も近い1件のみ赤で強調
-                  return (
-                    <a
-                      key={e.slug}
-                      href={`/events/${e.slug}`}
-                      className="rail-item"
-                      style={{ borderLeftColor: SOURCES[e.org].color }}
-                    >
-                      <div className="rail-item-org" style={{ color: SOURCES[e.org].color }}>
-                        {SOURCES[e.org].label}
-                      </div>
-                      <div className="rail-item-title">{e.eventName}</div>
-                      <div className="rail-item-meta">
-                        {dateJa}
-                        {e.venue && <span> ／ {e.venue}</span>}
-                        <span className={nearest ? "rail-countdown-near" : "rail-countdown"}> — あと{days}日</span>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-              <a href="/events" className="rail-more">すべての大会を見る →</a>
-            </div>
+            <EventRail events={railEvents} />
           </aside>
         )}
       </div>
