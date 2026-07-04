@@ -149,7 +149,7 @@ export default async function HomePage() {
         {/* RESULTS SECTION */}
         <div className="home-section">
           <div className="fighter-section-head">
-            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
+            <div style={{ fontFamily: "var(--os)", fontSize: 16, fontWeight: 600, color: "var(--text)", letterSpacing: 1 }}>
               大会結果まとめ
             </div>
             <a
@@ -183,7 +183,7 @@ export default async function HomePage() {
         {/* FIGHTER SECTION */}
         <div className="home-section">
           <div className="fighter-section-head">
-            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
+            <div style={{ fontFamily: "var(--os)", fontSize: 16, fontWeight: 600, color: "var(--text)", letterSpacing: 1 }}>
               主要選手 戦績まとめ
             </div>
             <a

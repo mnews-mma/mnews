@@ -9,7 +9,7 @@ export default function SocialSection({ videos }: { videos: SocialPost[] }) {
   return (
     <div className="home-section">
       <div className="fighter-section-head">
-        <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
+        <div style={{ fontFamily: "var(--os)", fontSize: 16, fontWeight: 600, color: "var(--text)", letterSpacing: 1 }}>
           公式SNS最新発信
         </div>
       </div>

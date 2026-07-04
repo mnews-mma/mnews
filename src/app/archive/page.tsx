@@ -2,10 +2,9 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Article, relativeTimeJa } from "@/lib/articles";
 import { SOURCES, SourceKey } from "@/lib/sources";
+import { pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
-
-import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "過去のニュース | Mニュース",
@@ -46,64 +45,68 @@ export default async function ArchivePage({
   const current = Math.min(Math.max(1, page), totalPages);
   const start = (current - 1) * PAGE_SIZE;
   const items = filtered.slice(start, start + PAGE_SIZE);
-  const showBadge = tab === "official";
+  const isOfficial = tab === "official";
 
   return (
     <>
       <Nav />
       <div className="page-head">
         <h1 className="page-title">過去のニュース</h1>
-        <div className="page-sub">{tab === "official" ? "公式発表" : "ニュース"}の蓄積アーカイブ</div>
       </div>
 
-      <div className="split-tabs" style={{ display: "flex" }}>
-        <a href="/archive?tab=official" className={`split-tab${tab === "official" ? " active" : ""}`}>
-          公式発表
-        </a>
-        <a href="/archive?tab=news" className={`split-tab${tab === "news" ? " active" : ""}`}>
-          ニュース
-        </a>
-      </div>
+      <div className="uf">
+        <div className="uf-chips" role="tablist" aria-label="アーカイブ絞り込み">
+          <a href="/archive?tab=official" role="tab" aria-selected={isOfficial} className={`uf-chip${isOfficial ? " on" : ""}`}>
+            公式
+          </a>
+          <a href="/archive?tab=news" role="tab" aria-selected={!isOfficial} className={`uf-chip${!isOfficial ? " on" : ""}`}>
+            メディア
+          </a>
+        </div>
 
-      <div className="card-grid">
-        {items.map((a) => (
-          <a key={a.url} href={a.url} target="_blank" rel="noopener noreferrer" className={`card ${a.source}-card`}>
-            <div className="card-head">
-              {showBadge && <span className={`source-badge sb-${a.source}`}>{SOURCES[a.source].label}</span>}
-            </div>
-            <div className="card-title">{a.title}</div>
-            <div className="card-body">{a.summary ?? ""}</div>
-            <div className="card-foot">
-              <span className="card-origin">via {a.origin}</span>
-              <span className="card-time">{relativeTimeJa(a.publishedAt)}</span>
-            </div>
-          </a>
-        ))}
-        {items.length === 0 && (
-          <p style={{ padding: 24, color: "var(--muted)", fontSize: 13 }}>
-            まだアーカイブされた記事がありません。
-          </p>
-        )}
-      </div>
+        <div className="uf-feed">
+          {items.map((a) => (
+            <a key={a.url} href={a.url} target="_blank" rel="noopener noreferrer" className="uf-card">
+              <div className="uf-meta">
+                {isOfficial ? (
+                  <span className="uf-org" style={{ background: SOURCES[a.source].color, color: "#fff" }}>
+                    {SOURCES[a.source].label}公式
+                  </span>
+                ) : (
+                  <span className="uf-b-media">メディア</span>
+                )}
+                <span className="uf-time">{relativeTimeJa(a.publishedAt)}</span>
+              </div>
+              <h3 className="uf-title">{a.title}</h3>
+              {!isOfficial && <div className="uf-src">via {a.origin}</div>}
+            </a>
+          ))}
+          {items.length === 0 && (
+            <p style={{ padding: 24, color: "var(--muted)", fontSize: 13 }}>
+              まだアーカイブされた記事がありません。
+            </p>
+          )}
 
-      <div className="archive-pager">
-        {current > 1 ? (
-          <a href={`/archive?tab=${tab}&page=${current - 1}`} className="archive-pager-link">
-            ← 新しい記事へ
-          </a>
-        ) : (
-          <span />
-        )}
-        <span className="archive-pager-status">
-          {current} / {totalPages}
-        </span>
-        {current < totalPages ? (
-          <a href={`/archive?tab=${tab}&page=${current + 1}`} className="archive-pager-link">
-            古い記事へ →
-          </a>
-        ) : (
-          <span />
-        )}
+          <div className="archive-pager">
+            {current > 1 ? (
+              <a href={`/archive?tab=${tab}&page=${current - 1}`} className="archive-pager-link">
+                ← 新しい記事へ
+              </a>
+            ) : (
+              <span />
+            )}
+            <span className="archive-pager-status">
+              {current} / {totalPages}
+            </span>
+            {current < totalPages ? (
+              <a href={`/archive?tab=${tab}&page=${current + 1}`} className="archive-pager-link">
+                古い記事へ →
+              </a>
+            ) : (
+              <span />
+            )}
+          </div>
+        </div>
       </div>
 
       <Footer />
