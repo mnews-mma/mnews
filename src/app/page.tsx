@@ -76,9 +76,15 @@ export default async function HomePage() {
 
   const upcomingEvents = getUpcomingEvents();
 
-  // 統一フィード: 公式・メディアを混在させ、検知時刻(firstSeenAt)を detected_at
-  // として分類・速報判定し、detected_at降順で並べる。表示は最大40件。
-  const feedArticles = toFeedArticles(enrichFirstSeen(articles, firstSeenMap)).slice(0, 40);
+  // 統一フィード: 当日含む直近3日分(JST暦日)を表示。ただし3日分が8件未満なら
+  // 直近8件まで遡って表示する(下限保証)。並び順・時刻は publishedAt 基準。
+  const feedAll = toFeedArticles(enrichFirstSeen(articles, firstSeenMap));
+  const jstNow = new Date(Date.now() + 9 * 3600_000);
+  const startOfTodayJstMs =
+    Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()) - 9 * 3600_000;
+  const cutoffMs = startOfTodayJstMs - 2 * 86400_000; // 当日含む直近3日
+  const within3d = feedAll.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
+  const feedArticles = within3d.length >= 8 ? within3d : feedAll.slice(0, 8);
 
   // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて
   // EventRail側でさらに自動調整)。所属団体のラベル/色だけ先に確定させて渡す。
@@ -139,89 +145,86 @@ export default async function HomePage() {
         )}
       </div>
 
-      {/* RESULTS SECTION */}
-      <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
-        <div className="fighter-section-head">
-          <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
-            🥊 大会結果まとめ
+      <div className="home-sections">
+        {/* RESULTS SECTION */}
+        <div className="home-section">
+          <div className="fighter-section-head">
+            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
+              大会結果まとめ
+            </div>
+            <a
+              href="/results"
+              style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: 2 }}
+            >
+              全大会結果を見る →
+            </a>
           </div>
-          <a
-            href="/results"
-            style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: 2 }}
-          >
-            全大会結果を見る →
-          </a>
-        </div>
-        <div className="results-list">
-          {[...EVENT_RESULTS]
-            .sort((a, b) => (a.date < b.date ? 1 : -1))
-            .slice(0, 4)
-            .map((e) => (
-              <a
-                key={e.slug}
-                href={`/results/${e.slug}`}
-                className="results-list-item"
-                style={{ borderLeftColor: SOURCES[e.org].color }}
-              >
-                <div className="org-tag" style={{ color: SOURCES[e.org].color }}>
-                  {SOURCES[e.org].label}
-                </div>
-                <div className="results-list-title">{e.eventName}</div>
-                <div className="results-list-meta">
-                  {e.date}
-                  {e.venue && <span> ／ {e.venue}</span>}
-                </div>
-              </a>
-            ))}
-        </div>
-      </div>
-
-      <SocialSection videos={videos} />
-
-      {/* FIGHTER SECTION */}
-      <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
-        <div className="fighter-section-head">
-          <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
-            👤 主要選手 戦績まとめ
+          <div className="results-list">
+            {[...EVENT_RESULTS]
+              .sort((a, b) => (a.date < b.date ? 1 : -1))
+              .slice(0, 4)
+              .map((e) => (
+                <a key={e.slug} href={`/results/${e.slug}`} className="results-list-item">
+                  <div className="org-tag" style={{ color: SOURCES[e.org].color }}>
+                    {SOURCES[e.org].label}
+                  </div>
+                  <div className="results-list-title">{e.eventName}</div>
+                  <div className="results-list-meta">
+                    {e.date}
+                    {e.venue && <span> ／ {e.venue}</span>}
+                  </div>
+                </a>
+              ))}
           </div>
-          <a
-            href="/fighters"
-            style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: 2 }}
-          >
-            全選手を見る →
-          </a>
         </div>
-        <div className="fighter-grid">
-          {fighters.map((f) => {
-            const { winRate, finishRate } = calcFighterRates(f);
-            return (
-              <a key={f.slug} href={`/fighters/${f.slug}`} className="fighter-card" style={{ borderLeftColor: SOURCES[f.org].color }}>
-                <div className="fighter-org" style={{ color: SOURCES[f.org].color }}>
-                  {SOURCES[f.org].label} / {f.weightClass}
-                </div>
-                <div className="fighter-name">{f.nameJa}</div>
-                {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
-                <div className="fighter-record">
-                  {f.wins}-{f.losses}-{f.draws}
-                </div>
-                <div className="fighter-breakdown">
-                  KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
-                </div>
-                <div className="fighter-rates">
-                  {winRate !== null && <span>勝率 {winRate}%</span>}
-                  {finishRate !== null && <span>フィニッシュ率 {finishRate}%</span>}
-                </div>
-              </a>
-            );
-          })}
-        </div>
-        <div style={{ padding: "16px 24px", textAlign: "center", borderTop: "1px solid var(--border)" }}>
-          <a
-            href="/fighters"
-            style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--accent)", letterSpacing: 2 }}
-          >
-            全選手を見る →
-          </a>
+
+        <SocialSection videos={videos} />
+
+        {/* FIGHTER SECTION */}
+        <div className="home-section">
+          <div className="fighter-section-head">
+            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
+              主要選手 戦績まとめ
+            </div>
+            <a
+              href="/fighters"
+              style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: 2 }}
+            >
+              全選手を見る →
+            </a>
+          </div>
+          <div className="fighter-grid">
+            {fighters.map((f) => {
+              const { winRate, finishRate } = calcFighterRates(f);
+              return (
+                <a key={f.slug} href={`/fighters/${f.slug}`} className="fighter-card">
+                  <div className="fighter-org" style={{ color: SOURCES[f.org].color }}>
+                    {SOURCES[f.org].label} / {f.weightClass}
+                  </div>
+                  <div className="fighter-name">{f.nameJa}</div>
+                  {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
+                  <div className="fighter-record">
+                    {f.wins}-{f.losses}-{f.draws}
+                  </div>
+                  <div className="fighter-breakdown">
+                    KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
+                  </div>
+                  <div className="fighter-rates">
+                    {winRate !== null && <span>勝率 {winRate}%</span>}
+                    {finishRate !== null && <span>フィニッシュ率 {finishRate}%</span>}
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+          <div style={{ padding: "4px 24px 20px", textAlign: "center" }}>
+            <a
+              href="/fighters"
+              style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--accent)", letterSpacing: 2 }}
+            >
+              全選手を見る →
+            </a>
+          </div>
         </div>
       </div>
 
