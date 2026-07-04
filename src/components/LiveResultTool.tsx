@@ -34,6 +34,9 @@ const SUB_TECHS = [
   "フロントチョーク",
 ];
 
+// 判定スコアの定番パターン(タップ選択式)
+const JUDGE_SCORES = ["3-0", "2-1", "5-0", "4-1", "3-2"];
+
 const btn: React.CSSProperties = {
   fontSize: 15,
   fontWeight: 700,
@@ -244,22 +247,35 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
             </div>
           )}
           {method === "判定" && (
-            <input
-              value={judgeScore}
-              onChange={(e) => setJudgeScore(e.target.value)}
-              placeholder="スコア(例: 3-0、29-28×3)"
-              style={{ width: "100%", fontSize: 15, padding: "10px", borderRadius: 8, border: "1px solid var(--border)", boxSizing: "border-box", marginBottom: 10 }}
-            />
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {JUDGE_SCORES.map((s) => (
+                  <button
+                    key={s}
+                    style={{ ...(judgeScore === s ? btnActive : btn), fontSize: 14, padding: "8px 14px" }}
+                    onClick={() => setJudgeScore(s)}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
 
-          {/* R・タイム(任意) */}
+          {/* ラウンド(セレクト)・タイム(任意) */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 16 }}>
-            <input
+            <select
               value={round}
               onChange={(e) => setRound(e.target.value)}
-              placeholder="R(例: 2R)"
-              style={{ fontSize: 15, padding: "10px", borderRadius: 8, border: "1px solid var(--border)" }}
-            />
+              style={{ fontSize: 15, padding: "10px", borderRadius: 8, border: "1px solid var(--border)", background: "var(--s1)" }}
+            >
+              <option value="">R(未選択)</option>
+              {["1R", "2R", "3R", "4R", "5R"].map((r) => (
+                <option key={r} value={r}>
+                  {r}
+                </option>
+              ))}
+            </select>
             <input
               value={time}
               onChange={(e) => setTime(e.target.value)}

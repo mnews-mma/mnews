@@ -89,12 +89,9 @@ function PostBlock({ title, text, replyText, imageUrl, method }: {
 export default async function XPreviewPage() {
   const all = await fetchArchive();
 
-  // 直近3日分のまとめポストサンプル(実ポストはしない)
-  const digests = [1, 2, 3].map((offset) => {
-    const dateStr = jstDateStr(offset);
-    const dayArticles = articlesForDay(all, dateStr);
-    return { dateStr, post: buildDigestPost(dayArticles, dateStr) };
-  });
+  // 今朝分の「昨日のまとめ」下書きのみを出力(複数件は出さない)
+  const dateStr = jstDateStr(1);
+  const digest = { dateStr, post: buildDigestPost(articlesForDay(all, dateStr), dateStr) };
 
   // 直近のupcomingイベントのカウントダウンポスト下書き
   const nextEvent = getUpcomingEvents()[0] ?? null;
@@ -112,23 +109,20 @@ export default async function XPreviewPage() {
       </p>
 
       <h2 style={{ fontSize: 15, fontWeight: 700, margin: "16px 0" }}>
-        朝の「昨日のまとめ」(1件目=今朝の分)
+        朝の「昨日のまとめ」(今朝分)
       </h2>
-      {digests.map(({ dateStr, post }) =>
-        post ? (
-          <PostBlock
-            key={dateStr}
-            title={`${dateStr}分 (${post.itemCount}件${post.isSingle ? "・通常ポスト形式" : ""})`}
-            text={post.text}
-            replyText={post.replyText}
-            imageUrl={post.isSingle ? undefined : ogImagePath(post.imageUrl)}
-            method={post.method}
-          />
-        ) : (
-          <div key={dateStr} style={{ fontSize: 13, color: "var(--muted)", marginBottom: 16 }}>
-            {dateStr}: 該当ニュースなし(この日はポストを生成しない)
-          </div>
-        )
+      {digest.post ? (
+        <PostBlock
+          title={`${digest.dateStr}分 (${digest.post.itemCount}件${digest.post.isSingle ? "・通常ポスト形式" : ""})`}
+          text={digest.post.text}
+          replyText={digest.post.replyText}
+          imageUrl={digest.post.isSingle ? undefined : ogImagePath(digest.post.imageUrl)}
+          method={digest.post.method}
+        />
+      ) : (
+        <div style={{ fontSize: 13, color: "var(--muted)", marginBottom: 16 }}>
+          {digest.dateStr}: 該当ニュースなし(この日はポストを生成しない)
+        </div>
       )}
 
       <h2 style={{ fontSize: 15, fontWeight: 700, margin: "24px 0 16px" }}>
@@ -136,7 +130,8 @@ export default async function XPreviewPage() {
       </h2>
       <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 12 }}>
         本番は前日20:00頃を目安に、このページを開いてコピー→手動投稿してください
-        (自動投稿は行いません)。
+        (自動投稿は行いません)。投稿後は<strong>Xの「固定ポストに設定」を手動で行い</strong>、
+        大会終了後に固定を解除してください(固定操作はAPIでは行えません)。
       </p>
       {countdown && nextEvent ? (
         <PostBlock

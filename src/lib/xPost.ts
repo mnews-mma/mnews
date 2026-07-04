@@ -179,6 +179,15 @@ export function buildResultPost(opts: {
   return applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.result);
 }
 
+// フォーマット(指定どおり):
+//   🔥 いよいよ明日開催
+//   {大会名}
+//   {M/D} {開始}〜 @{会場}
+//   視聴: {配信}
+//
+//   ※大会終了まで本ポストを固定します。
+// 「大会終了まで固定」は運用上、投稿後に手動でXの固定ポストに設定すること
+// （固定ポスト自体はX APIの投稿とは別操作のため自動化しない）。
 export function buildCountdownPost(event: {
   slug: string;
   eventName: string;
@@ -193,10 +202,77 @@ export function buildCountdownPost(event: {
     `${formatMD(event.date)} ${event.startTime ? `${event.startTime}〜` : ""}${event.venue ? ` @${event.venue}` : ""}`,
   ];
   if (event.broadcast?.[0]) lines.push(`視聴: ${event.broadcast[0]}`);
-  lines.push("対戦カードは画像で👇");
+  lines.push("");
+  lines.push("※大会終了まで本ポストを固定します。");
   const body = lines.join("\n");
   const hashtags = "#MMA";
   const link = `${SITE_LINK}/events/${event.slug}`;
-  const built = applyLinkPlacement(body, hashtags, link, X_POST_CONFIG.linkPlacement.countdown);
+  const built = applyLinkPlacement(body, hashtags, link, X_POST_CONFIG.linkPlacement.countdown, "対戦カード・詳細はこちら👇");
   return { ...built, imageUrl: `/api/og/event-card/${event.slug}` };
+}
+
+// ─────────────────────────────────────────────
+// 大会前日 計量結果まとめ投稿(手動入力データから整形)。
+// フォーマット:
+//   ⚖️ 計量結果まとめ
+//   {大会名}（{計量日}計量）
+//
+//   ✅ 全選手パス          ※全員パス時のみ
+//   {A} vs {B}
+//   ...
+//
+//   ❌ 計量失敗            ※失敗者がいる場合のみ
+//   {選手}（+{超過}kg）
+// ─────────────────────────────────────────────
+
+export interface WeighInBoutInput {
+  fighterA: string;
+  fighterB: string;
+  resultA: "pass" | "fail";
+  resultB: "pass" | "fail";
+  weightA?: string; // 任意表示(超過幅など)
+  weightB?: string;
+}
+
+export function buildWeighInPost(opts: {
+  eventName: string;
+  weighInDate: string; // YYYY-MM-DD
+  bouts: WeighInBoutInput[];
+}): BuiltPost {
+  const d = new Date(opts.weighInDate);
+  const dateLabel = `${d.getMonth() + 1}/${d.getDate()}`;
+
+  const failedEntries: string[] = [];
+  const passLines: string[] = [];
+  for (const b of opts.bouts) {
+    const allPass = b.resultA === "pass" && b.resultB === "pass";
+    if (allPass) {
+      passLines.push(`${b.fighterA} vs ${b.fighterB}`);
+    } else {
+      if (b.resultA === "fail") {
+        failedEntries.push(`${b.fighterA}${b.weightA ? `（${b.weightA}）` : ""}`);
+      }
+      if (b.resultB === "fail") {
+        failedEntries.push(`${b.fighterB}${b.weightB ? `（${b.weightB}）` : ""}`);
+      }
+    }
+  }
+
+  const lines = ["⚖️ 計量結果まとめ", `${opts.eventName}（${dateLabel}計量）`, ""];
+
+  if (failedEntries.length === 0) {
+    lines.push("✅ 全選手パス");
+    lines.push(...opts.bouts.map((b) => `${b.fighterA} vs ${b.fighterB}`));
+  } else {
+    if (passLines.length > 0) {
+      lines.push("✅ パス");
+      lines.push(...passLines);
+      lines.push("");
+    }
+    lines.push("❌ 計量失敗");
+    lines.push(...failedEntries);
+  }
+
+  const body = lines.join("\n");
+  return { text: body, method: "none" };
 }
