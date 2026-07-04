@@ -1,8 +1,13 @@
 import type { Article } from "@/lib/articles";
 import { getUpcomingEvents } from "@/lib/events";
-import { buildDigestPost, buildCountdownPost, X_POST_CONFIG } from "@/lib/xPost";
+import { buildDigestPost, buildCountdownPost } from "@/lib/xPost";
 import { ogImagePath } from "@/lib/ogShared";
+import CopyButton from "@/components/CopyButton";
 
+// このページが唯一の「X投稿下書き」ワークフロー。ここに表示される内容は
+// すべて純粋な下書き生成(buildDigestPost/buildCountdownPost)のみで、
+// X APIへの投稿試行は一切行わない。実投稿(X_POST_ENABLED=true)を
+// 有効化するまでは、常にこのページで内容を確認→コピー→手動ポストする運用。
 export const dynamic = "force-dynamic";
 
 const ARCHIVE_URL =
@@ -47,17 +52,35 @@ function PostBlock({ title, text, replyText, imageUrl, method }: {
           リンク方式: {method}
         </span>
       </div>
-      <pre style={{ whiteSpace: "pre-wrap", fontFamily: "var(--mono)", fontSize: 13, background: "var(--s2)", padding: 12, border: "1px solid var(--border)", userSelect: "all" }}>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+        <span style={{ fontSize: 11, color: "var(--muted)" }}>① 1通目(本文)</span>
+        <CopyButton text={text} label="①をコピー" />
+      </div>
+      <pre style={{ whiteSpace: "pre-wrap", fontFamily: "var(--mono)", fontSize: 13, background: "var(--s2)", padding: 12, border: "1px solid var(--border)", margin: 0 }}>
         {text}
       </pre>
+
       {replyText && (
-        <pre style={{ whiteSpace: "pre-wrap", fontFamily: "var(--mono)", fontSize: 12, background: "var(--s2)", padding: 10, border: "1px dashed var(--border)", marginTop: 8, userSelect: "all" }}>
-          ↳ セルフリプライ: {replyText}
-        </pre>
+        <>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "10px 0 4px" }}>
+            <span style={{ fontSize: 11, color: "var(--muted)" }}>② 2通目(①へのセルフリプライ)</span>
+            <CopyButton text={replyText} label="②をコピー" />
+          </div>
+          <pre style={{ whiteSpace: "pre-wrap", fontFamily: "var(--mono)", fontSize: 12, background: "var(--s2)", padding: 10, border: "1px dashed var(--border)", margin: 0 }}>
+            {replyText}
+          </pre>
+        </>
       )}
+
       {imageUrl && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={imageUrl} alt="card" style={{ width: "100%", maxWidth: 600, marginTop: 12, border: "1px solid var(--border)", display: "block" }} />
+        <>
+          <div style={{ fontSize: 11, color: "var(--muted)", margin: "12px 0 4px" }}>
+            ①に添付する画像(長押し/右クリックで保存)
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={imageUrl} alt="card" style={{ width: "100%", maxWidth: 600, border: "1px solid var(--border)", display: "block" }} />
+        </>
       )}
     </div>
   );
@@ -80,15 +103,16 @@ export default async function XPreviewPage() {
   return (
     <div style={{ padding: "32px 24px", maxWidth: 720 }}>
       <h1 style={{ fontFamily: "var(--os)", fontSize: 22, fontWeight: 700, marginBottom: 8 }}>
-        Xポスト プレビュー
+        X投稿 下書き
       </h1>
-      <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 24 }}>
-        実ポストはしません(X APIキー未設定)。デフォルトのリンク方式: 本文にリンクを入れず
-        セルフリプライにぶら下げる2段階投稿。1日上限 {X_POST_CONFIG.dailyPostLimit} 本文ポスト。
+      <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 24, lineHeight: 1.7 }}>
+        当面はX API課金の判断待ちのため、全ての投稿を「ここで内容を確認→①②の順にコピー→
+        画像を保存→手動でXに投稿」する運用にしています。このページはX
+        APIへの投稿を一切試みません(純粋な下書き生成のみ)。
       </p>
 
       <h2 style={{ fontSize: 15, fontWeight: 700, margin: "16px 0" }}>
-        朝の「昨日のまとめ」下書き(1件目=今朝の分。本文をコピー+画像を保存して手動ポスト)
+        朝の「昨日のまとめ」(1件目=今朝の分)
       </h2>
       {digests.map(({ dateStr, post }) =>
         post ? (
@@ -108,11 +132,15 @@ export default async function XPreviewPage() {
       )}
 
       <h2 style={{ fontSize: 15, fontWeight: 700, margin: "24px 0 16px" }}>
-        大会前日カウントダウン(下書き例: 直近イベント)
+        大会前日カウントダウン(直近イベント)
       </h2>
+      <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 12 }}>
+        本番は前日20:00頃を目安に、このページを開いてコピー→手動投稿してください
+        (自動投稿は行いません)。
+      </p>
       {countdown && nextEvent ? (
         <PostBlock
-          title={`${nextEvent.eventName}(前日20:00投稿想定)`}
+          title={`${nextEvent.eventName}（開催: ${nextEvent.date}）`}
           text={countdown.text}
           replyText={countdown.replyText}
           imageUrl={ogImagePath(countdown.imageUrl)}
@@ -121,6 +149,14 @@ export default async function XPreviewPage() {
       ) : (
         <div style={{ fontSize: 13, color: "var(--muted)" }}>upcomingイベントなし</div>
       )}
+
+      <h2 style={{ fontSize: 15, fontWeight: 700, margin: "24px 0 16px" }}>
+        試合結果速報
+      </h2>
+      <p style={{ fontSize: 13, color: "var(--muted)" }}>
+        大会当日は <a href="/admin/live" style={{ color: "var(--accent)" }}>ライブ結果入力</a> から
+        試合ごとに結果カード+投稿文を生成できます(同じく手動コピー運用)。
+      </p>
     </div>
   );
 }

@@ -6,12 +6,11 @@ export const metadata = {
 };
 
 const LINKS = [
+  { href: "/admin/x-preview", label: "📝 X投稿 下書き(まとめ・カウントダウン)" },
   { href: "/admin/live", label: "🔴 ライブ結果入力(結果カード生成)" },
-  { href: "/admin/tweet-digest", label: "X投稿用テキスト確認" },
   { href: "/admin/email-test", label: "メール送信テスト" },
   { href: "/admin/breaking", label: "BREAKING診断" },
-  { href: "/admin/x-preview", label: "Xポストプレビュー" },
-  { href: "/admin/x-test", label: "🧪 X投稿 疎通確認(dry-run)" },
+  { href: "/admin/x-test", label: "🧪 X API 疎通確認(技術テスト)" },
 ];
 
 export default function AdminHomePage() {
