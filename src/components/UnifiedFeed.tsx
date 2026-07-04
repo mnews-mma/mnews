@@ -19,7 +19,7 @@ function officialBadge(source: FeedArticle["source"]) {
   const s = SOURCES[source];
   if (!s) return null;
   return (
-    <span className="uf-org" style={{ background: s.color, color: source === "pancrase" ? "#12100a" : "#fff" }}>
+    <span className="uf-org" style={{ background: s.color, color: "#fff" }}>
       {s.label}公式
     </span>
   );

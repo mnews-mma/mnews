@@ -21,9 +21,9 @@ export interface SourceDef {
 export const SOURCES: Record<SourceKey, SourceDef> = {
   rizin: { key: "rizin", label: "RIZIN", color: "#E8002D", type: "official", url: "https://rizin-ff.com" },
   ufc: { key: "ufc", label: "UFC", color: "#B8860B", type: "official", url: "https://jp.ufc.com" },
-  shooto: { key: "shooto", label: "修斗", color: "#0077CC", type: "official", url: "https://shooto.co.jp" },
-  deep: { key: "deep", label: "DEEP", color: "#6B21A8", type: "official", url: "https://deep2001.com" },
-  pancrase: { key: "pancrase", label: "パンクラス", color: "#C2410C", type: "official", url: "https://pancrase.co.jp" },
+  shooto: { key: "shooto", label: "修斗", color: "#1266B3", type: "official", url: "https://shooto.co.jp" },
+  deep: { key: "deep", label: "DEEP", color: "#E8710C", type: "official", url: "https://deep2001.com" },
+  pancrase: { key: "pancrase", label: "パンクラス", color: "#1A1A1A", type: "official", url: "https://pancrase.co.jp" },
   // Display-only source kept for visual parity with mnews.html; not in the spec's scrape list.
   one: { key: "one", label: "ONE", color: "#059669", type: "official", url: "https://www.onefc.com" },
   other: { key: "other", label: "その他", color: "#999999", type: "media", url: "#" },

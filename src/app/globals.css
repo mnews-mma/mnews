@@ -22,10 +22,10 @@
 
   --rizin: #e8002d;
   --ufc: #b8860b;
-  --shooto: #0077cc;
-  --deep: #6b21a8;
+  --shooto: #1266b3;
+  --deep: #e8710c;
   --one: #059669;
-  --pancrase: #c2410c;
+  --pancrase: #1a1a1a;
 
   --accent: #e8002d;
   --mix: #e8002d;
@@ -133,14 +133,14 @@ nav {
   border: 1px solid rgba(212, 172, 13, 0.3);
 }
 .sb-shooto {
-  background: rgba(14, 165, 233, 0.15);
+  background: rgba(18, 102, 179, 0.15);
   color: var(--shooto);
-  border: 1px solid rgba(14, 165, 233, 0.3);
+  border: 1px solid rgba(18, 102, 179, 0.3);
 }
 .sb-deep {
-  background: rgba(139, 92, 246, 0.15);
+  background: rgba(232, 113, 12, 0.15);
   color: var(--deep);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  border: 1px solid rgba(232, 113, 12, 0.3);
 }
 .sb-one {
   background: rgba(16, 185, 129, 0.15);
@@ -148,9 +148,9 @@ nav {
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 .sb-pancrase {
-  background: rgba(249, 115, 22, 0.15);
+  background: rgba(26, 26, 26, 0.1);
   color: var(--pancrase);
-  border: 1px solid rgba(249, 115, 22, 0.3);
+  border: 1px solid rgba(26, 26, 26, 0.3);
 }
 .sb-other {
   background: rgba(153, 153, 153, 0.15);
@@ -1689,7 +1689,17 @@ a.uf-card:hover { border-color: var(--muted); }
   margin-left: auto;
   white-space: nowrap;
 }
-.uf-title { font-size: 15px; font-weight: 700; line-height: 1.55; color: var(--text); }
+.uf-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--text);
+  /* B案: 長い見出しは3行で省略(縦長カードを抑えて高さを揃える) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .uf-src { font-size: 11px; color: var(--muted); margin-top: 8px; }
 
 /* 速報カード */
