@@ -29,7 +29,6 @@
 
   --accent: #e8002d;
   --mix: #e8002d;
-  --flash: #ff2e2e; /* 速報専用の赤（--accent=団体RIZIN色と区別するため唯一の新規色） */
 
   --os: "Oswald", sans-serif;
   --body: "Inter", "Noto Sans JP", sans-serif;
@@ -1683,15 +1682,6 @@ a.uf-card:hover { border-color: var(--muted); }
   background: var(--s2);
   color: var(--muted);
 }
-.uf-b-flash {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  padding: 2.5px 8px;
-  border-radius: 4px;
-  background: var(--flash);
-  color: #fff;
-}
 .uf-time {
   font-family: var(--mono);
   font-size: 10.5px;
@@ -1711,22 +1701,6 @@ a.uf-card:hover { border-color: var(--muted); }
   overflow: hidden;
 }
 .uf-src { font-size: 11px; color: var(--muted); margin-top: 8px; }
-
-/* 速報カード */
-.uf-card.uf-flash {
-  border-color: rgba(255, 46, 46, 0.45);
-  background: linear-gradient(180deg, rgba(255, 46, 46, 0.07), var(--s1) 55%);
-}
-.uf-card.uf-flash::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 12px;
-  bottom: 12px;
-  width: 3px;
-  background: var(--flash);
-  border-radius: 0 3px 3px 0;
-}
 
 /* ===== HOME LAYOUT =====
    全セクション共通の外側コンテナ。max-width・左右パディングを1箇所で定義し、

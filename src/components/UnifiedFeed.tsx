@@ -41,14 +41,8 @@ function dayLabel(key: string, todayKey: string): string {
 // 通常カード / 速報カード
 function FeedCard({ a }: { a: FeedArticle }) {
   return (
-    <a
-      href={a.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`uf-card${a.flash ? " uf-flash" : ""}`}
-    >
+    <a href={a.url} target="_blank" rel="noopener noreferrer" className="uf-card">
       <div className="uf-meta">
-        {a.flash && <span className="uf-b-flash">速報</span>}
         {a.kind === "official" ? (
           officialBadge(a.source)
         ) : (
