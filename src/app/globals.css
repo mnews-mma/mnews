@@ -99,11 +99,21 @@ nav {
   gap: 12px;
 }
 .nav-fighters-link {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: #fff;
-  letter-spacing: 1px;
+  font-family: var(--os);
+  font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  border-radius: 100px;
+  padding: 6px 16px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.nav-fighters-link:hover {
+  background: #fff;
+  color: var(--accent);
+  border-color: #fff;
 }
 
 .container {
@@ -1884,4 +1894,11 @@ a.uf-card:hover { border-color: var(--muted); }
   .home-sections .social-grid {
     padding: 12px 16px;
   }
+}
+
+/* ホーム下部セクションの「全◯◯を見る」= フィード末尾「過去の記事」と同じピル。中央寄せ */
+.home-section-more {
+  max-width: 480px;
+  margin: 4px auto 20px;
+  padding: 0 16px;
 }

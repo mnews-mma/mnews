@@ -152,12 +152,6 @@ export default async function HomePage() {
             <div style={{ fontFamily: "var(--os)", fontSize: 16, fontWeight: 600, color: "var(--text)", letterSpacing: 1 }}>
               大会結果まとめ
             </div>
-            <a
-              href="/results"
-              style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: 2 }}
-            >
-              全大会結果を見る →
-            </a>
           </div>
           <div className="results-list">
             {[...EVENT_RESULTS]
@@ -176,6 +170,9 @@ export default async function HomePage() {
                 </a>
               ))}
           </div>
+          <div className="home-section-more">
+            <a href="/results" className="uf-more">全大会結果を見る →</a>
+          </div>
         </div>
 
         <SocialSection videos={videos} />
@@ -186,12 +183,6 @@ export default async function HomePage() {
             <div style={{ fontFamily: "var(--os)", fontSize: 16, fontWeight: 600, color: "var(--text)", letterSpacing: 1 }}>
               主要選手 戦績まとめ
             </div>
-            <a
-              href="/fighters"
-              style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: 2 }}
-            >
-              全選手を見る →
-            </a>
           </div>
           <div className="fighter-grid">
             {fighters.map((f) => {
@@ -217,13 +208,8 @@ export default async function HomePage() {
               );
             })}
           </div>
-          <div style={{ padding: "4px 24px 20px", textAlign: "center" }}>
-            <a
-              href="/fighters"
-              style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--accent)", letterSpacing: 2 }}
-            >
-              全選手を見る →
-            </a>
+          <div className="home-section-more">
+            <a href="/fighters" className="uf-more">全選手を見る →</a>
           </div>
         </div>
       </div>
