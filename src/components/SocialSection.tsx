@@ -9,7 +9,7 @@ export default function SocialSection({ videos }: { videos: SocialPost[] }) {
   return (
     <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
       <div className="fighter-section-head">
-        <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#fff", letterSpacing: 3 }}>
+        <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
           📺 公式SNS最新発信
         </div>
       </div>

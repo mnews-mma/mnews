@@ -142,12 +142,12 @@ export default async function HomePage() {
       {/* RESULTS SECTION */}
       <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
         <div className="fighter-section-head">
-          <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#fff", letterSpacing: 3 }}>
+          <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
             🥊 大会結果まとめ
           </div>
           <a
             href="/results"
-            style={{ fontFamily: "var(--mono)", fontSize: 10, color: "rgba(255,255,255,0.7)", letterSpacing: 2 }}
+            style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: 2 }}
           >
             全大会結果を見る →
           </a>
@@ -181,12 +181,12 @@ export default async function HomePage() {
       {/* FIGHTER SECTION */}
       <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
         <div className="fighter-section-head">
-          <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#fff", letterSpacing: 3 }}>
+          <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--text)", letterSpacing: 3 }}>
             👤 主要選手 戦績まとめ
           </div>
           <a
             href="/fighters"
-            style={{ fontFamily: "var(--mono)", fontSize: 10, color: "rgba(255,255,255,0.7)", letterSpacing: 2 }}
+            style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: 2 }}
           >
             全選手を見る →
           </a>

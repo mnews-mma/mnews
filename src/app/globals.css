@@ -532,8 +532,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
-  background: var(--accent);
+  padding: 15px 24px 11px;
+  background: transparent;
+  border-bottom: 2px solid var(--accent); /* 赤背景バー廃止→見出し+細い赤下線(右レールと統一) */
 }
 /* RESULTS SECTION */
 .results-list {
@@ -1813,5 +1814,12 @@ a.uf-card:hover { border-color: var(--muted); }
   .rail-panel {
     max-height: calc(100vh - 96px);
     overflow: hidden;
+  }
+}
+
+/* スマホ(≤600px)は大会結果/大会一覧も1列に(右レール=開催予定の1列表示と統一) */
+@media (max-width: 600px) {
+  .results-list {
+    grid-template-columns: 1fr;
   }
 }
