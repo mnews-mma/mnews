@@ -167,7 +167,7 @@ export const FIGHTERS: Fighter[] = [
   {
     slug: "koike-kleber",
     nameJa: "クレベル・コイケ",
-    nameEn: "Kleber Koike Erbst",
+    nameEn: "Kleber Koike",
     org: "rizin",
     weightClass: "フェザー級",
     wins: 30,
