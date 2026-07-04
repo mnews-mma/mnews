@@ -63,6 +63,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
   const [generated, setGenerated] = useState<{ img: string; text: string } | null>(null);
   const [doneSet, setDoneSet] = useState<Set<string>>(new Set());
   const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState(false);
 
   const event = events.find((e) => e.slug === eventSlug);
   const bout = event && boutIndex !== null ? event.bouts[boutIndex] : null;
@@ -111,9 +112,17 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
 
   async function copyText() {
     if (!generated) return;
-    await navigator.clipboard.writeText(generated.text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
+    try {
+      await navigator.clipboard.writeText(generated.text);
+      setCopied(true);
+      setCopyError(false);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // クリップボード権限が無い環境向けフォールバック:
+      // 下のテキストは常に選択可能(userSelect:all)なので、手動選択を促す
+      setCopyError(true);
+      setTimeout(() => setCopyError(false), 3000);
+    }
   }
 
   return (
@@ -290,6 +299,11 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
               <button onClick={copyText} style={{ ...btn, width: "100%", marginTop: 8 }}>
                 {copied ? "✓ コピーしました" : "投稿文をコピー"}
               </button>
+              {copyError && (
+                <p style={{ fontSize: 12, color: "var(--accent)", marginTop: 8, fontWeight: 700 }}>
+                  自動コピーに失敗しました。上のテキストを長押し(または選択)して手動でコピーしてください
+                </p>
+              )}
               <p style={{ fontSize: 11, color: "var(--muted)", marginTop: 8 }}>
                 修正する場合は入力を変えて再度「結果カードを生成」(上書き)
               </p>
