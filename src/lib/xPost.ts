@@ -4,6 +4,8 @@ import {
   pickPostLabel,
   summarizeTitle,
   buildDigestTopics,
+  condenseTopic,
+  fullWidthLength,
 } from "./tweetDigest";
 
 // ─────────────────────────────────────────────
@@ -105,7 +107,6 @@ export function buildDigestPost(articles: Article[], dateStr: string): DigestPos
   }
 
   // 要約済みトピック(1項目=1トピック・35字以内・低価値除外・同一大会圧縮)。
-  // トピック本文は画像に載せるため、本文はまとめの一言のみに絞る
   const topics = buildDigestTopics(articles, 4);
   if (topics.length === 0) return null;
   const top = topics[0];
@@ -116,7 +117,21 @@ export function buildDigestPost(articles: Article[], dateStr: string): DigestPos
   ];
   const hashtags = orgTag ? `#MMA ${orgTag}` : "#MMA";
 
-  const body = `🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})`;
+  // 最重要トピック1件(タグ込みで全角40字以内)
+  let lead = top.tag ? `【${top.tag}】${top.text}` : top.text;
+  if (fullWidthLength(lead) > 40) {
+    lead = top.tag
+      ? `【${top.tag}】${condenseTopic(top.text, 40 - fullWidthLength(`【${top.tag}】`))}`
+      : condenseTopic(top.text, 40);
+  }
+
+  // 「ほかN件」は生記事数ではなく、画像に載る残りトピック数と一致させる
+  // (以前、記事数とのズレで誤解を招いた反省を踏まえた仕様)
+  const otherTopics = topics.length - 1;
+  const lines = [`🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})`, lead];
+  if (otherTopics > 0) lines.push(`ほか${otherTopics}件は画像で👇`);
+  const body = lines.join("\n");
+
   // 全件への誘導はセルフリプライで行う
   const built = applyLinkPlacement(
     body,
