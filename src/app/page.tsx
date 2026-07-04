@@ -122,40 +122,38 @@ export default async function HomePage() {
         {/* UPCOMING EVENTS: PC(≥1200px)は右レール(sticky) / スマホは従来どおり下部表示 */}
         {upcomingEvents.length > 0 && (
           <aside className="home-rail">
-            <div style={{ borderTop: "2px solid var(--border)", borderBottom: "2px solid var(--border)" }}>
-              <div className="fighter-section-head">
-                <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#fff", letterSpacing: 3 }}>
-                  📅 開催予定の大会
-                </div>
-              </div>
-              <div className="results-list">
-                {upcomingEvents.map((e) => {
+            <div className="rail-panel">
+              <div className="rail-head">開催予定の大会</div>
+              <div className="rail-list">
+                {upcomingEvents.slice(0, 5).map((e, idx) => {
                   const today = new Date(); today.setHours(0, 0, 0, 0);
                   const target = new Date(e.date); target.setHours(0, 0, 0, 0);
                   const days = Math.round((target.getTime() - today.getTime()) / 86400000);
                   const d = new Date(e.date);
                   const dayNames = ["日","月","火","水","木","金","土"];
                   const dateJa = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${dayNames[d.getDay()]}）`;
+                  const nearest = idx === 0; // 開催日昇順。最も近い1件のみ赤で強調
                   return (
                     <a
                       key={e.slug}
                       href={`/events/${e.slug}`}
-                      className="results-list-item"
+                      className="rail-item"
                       style={{ borderLeftColor: SOURCES[e.org].color }}
                     >
-                      <div className="org-tag" style={{ color: SOURCES[e.org].color }}>
+                      <div className="rail-item-org" style={{ color: SOURCES[e.org].color }}>
                         {SOURCES[e.org].label}
                       </div>
-                      <div className="results-list-title">{e.eventName}</div>
-                      <div className="results-list-meta">
+                      <div className="rail-item-title">{e.eventName}</div>
+                      <div className="rail-item-meta">
                         {dateJa}
                         {e.venue && <span> ／ {e.venue}</span>}
-                        <span className="upcoming-countdown"> — あと{days}日</span>
+                        <span className={nearest ? "rail-countdown-near" : "rail-countdown"}> — あと{days}日</span>
                       </div>
                     </a>
                   );
                 })}
               </div>
+              <a href="/events" className="rail-more">すべての大会を見る →</a>
             </div>
           </aside>
         )}
