@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import type { Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
-import { selectTopNews, summarizeTitle } from "@/lib/tweetDigest";
+import { buildDigestTopics } from "@/lib/tweetDigest";
 import {
   OG_COLORS as COLORS,
   SITE_URL,
@@ -43,8 +43,20 @@ export async function GET(req: Request) {
 
     const articles = await fetchArticlesForDay(dateStr);
     if (articles.length === 0) return fallbackRedirect();
+    // 要約済みトピック(1項目=1トピック・35字以内・低価値除外・同一大会圧縮)。
     // 5件以上ある日は重要度スコア上位4件のみ
-    const top = selectTopNews(articles, 4);
+    const topics = buildDigestTopics(articles, 4);
+    if (topics.length === 0) return fallbackRedirect();
+    // 最長トピックが使用可能幅(約930px)に収まるサイズを計算し、全行同じ
+    // サイズで1件1行を維持する。Noto Sans JPの欧文グリフは半角0.5emより
+    // 広いため0.62em換算で見積もる
+    const estWidth = (s: string) => {
+      let w = 0;
+      for (const ch of s) w += ch.charCodeAt(0) <= 0xff ? 0.62 : 1;
+      return w;
+    };
+    const maxW = Math.max(...topics.map((t) => estWidth(t.text)), 1);
+    const rowSize = Math.min(36, Math.floor(930 / maxW));
 
     const d = new Date(dateStr);
     const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
@@ -107,36 +119,39 @@ export async function GET(req: Request) {
               padding: "0 56px",
             }}
           >
-            {top.map((a, i) => {
-              const label = SOURCES[a.source]?.label ?? a.source.toUpperCase();
-              const color = SOURCES[a.source]?.color ?? COLORS.gold;
+            {topics.map((t, i) => {
+              // 団体タグの配色: 公式団体はブランド色、なければ金
+              const color =
+                t.org !== "other" && SOURCES[t.org]
+                  ? SOURCES[t.org].color
+                  : COLORS.gold;
               return (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: "18px" }}>
                   <div
                     style={{
                       display: "flex",
                       fontFamily: "Noto Sans JP",
                       fontWeight: 900,
-                      fontSize: "18px",
+                      fontSize: "17px",
                       color: "#FFFFFF",
                       backgroundColor: color,
-                      padding: "5px 14px",
-                      minWidth: "120px",
+                      padding: "5px 12px",
+                      minWidth: "110px",
                       justifyContent: "center",
                     }}
                   >
-                    {label}
+                    {t.tag || "MMA"}
                   </div>
                   <div
                     style={{
                       display: "flex",
                       fontFamily: "Noto Sans JP",
                       fontWeight: 900,
-                      fontSize: "40px",
+                      fontSize: `${rowSize}px`,
                       color: "#FFFFFF",
                     }}
                   >
-                    {summarizeTitle(a.title, 20)}
+                    {t.text}
                   </div>
                 </div>
               );

@@ -1,11 +1,11 @@
 import type { Article } from "./articles";
 import {
-  buildNewsPost,
   buildHashtagsForOne,
   pickPostLabel,
   summarizeTitle,
-  selectTopNews,
   fullWidthLength,
+  buildDigestTopics,
+  condenseTopic,
 } from "./tweetDigest";
 
 // ─────────────────────────────────────────────
@@ -97,8 +97,6 @@ function formatMD(dateStr: string): string {
 
 export function buildDigestPost(articles: Article[], dateStr: string): DigestPost | null {
   if (articles.length === 0) return null;
-  const top = selectTopNews(articles, 4);
-  const hashtags = buildHashtagsForOne(top[0]).join(" ");
   const imageUrl = `/api/og/digest?date=${dateStr}`;
 
   // 1件だけの日はダイジェスト形式にせず通常ポスト
@@ -107,11 +105,23 @@ export function buildDigestPost(articles: Article[], dateStr: string): DigestPos
     return { ...single, imageUrl, itemCount: 1, isSingle: true };
   }
 
-  // 最重要トピック: 全角40文字以内に要約
-  let lead = summarizeTitle(top[0].title, 40);
-  if (fullWidthLength(lead) > 40) lead = lead.slice(0, 40) + "…";
+  // 要約済みトピック(1項目=1トピック・35字以内・低価値除外・同一大会圧縮)
+  const topics = buildDigestTopics(articles, 4);
+  if (topics.length === 0) return null;
+  const top = topics[0];
+
+  // 最重要トピック1件(タグ込みで全角40字以内)
+  let lead = top.tag ? `【${top.tag}】${top.text}` : top.text;
+  if (fullWidthLength(lead) > 40) lead = top.tag ? `【${top.tag}】${condenseTopic(top.text, 40 - fullWidthLength(`【${top.tag}】`))}` : condenseTopic(top.text, 40);
+
+  // ハッシュタグ: #MMA + 関連団体1個まで
+  const orgTag = { rizin: "#RIZIN", deep: "#DEEP", pancrase: "#パンクラス", shooto: "#修斗" }[
+    top.org as string
+  ];
+  const hashtags = orgTag ? `#MMA ${orgTag}` : "#MMA";
+
   const others = articles.length - 1;
-  const body = `📋 昨日のMMAニュースまとめ(${formatMD(dateStr)})\n${lead}\nほか${others}件は画像で👇`;
+  const body = `🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})\n${lead}\nほか${others}件は画像で👇`;
   const built = applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.digest);
   return { ...built, imageUrl, itemCount: articles.length, isSingle: false };
 }

@@ -88,7 +88,7 @@ export default async function XPreviewPage() {
       </p>
 
       <h2 style={{ fontSize: 15, fontWeight: 700, margin: "16px 0" }}>
-        朝の「昨日のまとめ」(直近3日分サンプル)
+        朝の「昨日のまとめ」下書き(1件目=今朝の分。本文をコピー+画像を保存して手動ポスト)
       </h2>
       {digests.map(({ dateStr, post }) =>
         post ? (
