@@ -1,6 +1,7 @@
 import { Fighter, FightRecord } from "../fighters";
 import { fetchWikiFighterRecord, fetchJaWikiFighterRecord, WikiFighterData } from "./wikipedia";
 import { fetchUfcNickname } from "./ufc";
+import { deriveHistoryFromEventResults, deriveRecordCounts } from "../fighterRecordFromResults";
 
 export interface ResolvedFighter extends Fighter {
   history: FightRecord[];
@@ -32,6 +33,21 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   const nicknameWiki = enWiki ?? jaWiki;
   const nickname =
     fighter.nickname ?? (fighter.noNickname ? undefined : ufcNickname ?? nicknameWiki?.infobox.nickname);
+
+  // recordFromResults 選手(Wikipedia記事の無いDEEP等のスタブ)は、自社
+  // EVENT_RESULTS を選手軸に組み替えた戦績を注入する。Wikipediaの戦績テーブルが
+  // 取れた場合はそちら(生涯戦績)を優先する。
+  if (fighter.recordFromResults && !(wiki && wiki.history.length > 0)) {
+    const history = deriveHistoryFromEventResults(fighter.nameJa);
+    const counts = deriveRecordCounts(history);
+    return {
+      ...fighter,
+      ...counts,
+      history,
+      live: false,
+      nickname,
+    };
+  }
 
   if (wiki) {
     return {

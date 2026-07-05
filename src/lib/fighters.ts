@@ -3,10 +3,15 @@ import { SourceKey } from "./sources";
 export interface FightRecord {
   date: string;
   opponent: string;
-  result: "win" | "loss" | "draw";
+  result: "win" | "loss" | "draw" | "nc";
   method: string;
   event: string;
   round: string;
+  // --- 加算的拡張(2026-07 DEEP選手取得)。既存データは未設定=省略のままで動く ---
+  // 決着時間(分:秒。例 "3:22")。roundフィールドから分離して保持する場合に使う。
+  time?: string;
+  // その試合ごとの階級/契約体重(例 "DEEPフェザー級", "68kg契約")。
+  weightClass?: string;
 }
 
 export interface Fighter {
@@ -35,6 +40,15 @@ export interface Fighter {
   // 通称を固定値で指定する場合に使う。設定時はUFC公式/Wikipediaからの
   // 自動取得より優先される（noNicknameより後で判定）。
   nickname?: string;
+  // 新規投入選手(DEEP等)を「表に出さない」ためのフラグ。true の場合:
+  // サイトマップ非掲載 / 選手ページを noindex / 内部リンク非生成 にする。
+  // Mレーティング(序列)や自動文脈が乗るまで、戦績テーブルだけの薄いページを
+  // 一斉公開しない(SEO保護)ための制御。データ自体は格納・保持する。
+  hidden?: boolean;
+  // 戦績(history)と現戦績(wins/losses…)を自社 EVENT_RESULTS から動的に
+  // 組み立てる選手。Wikipedia記事が無いDEEP選手のスタブに付ける。
+  // resolveFighter が EVENT_RESULTS を選手軸に組み替えて注入する。
+  recordFromResults?: boolean;
 }
 
 // Seed data. Per mnews-spec.md this is normally synced from the Wikipedia API.
@@ -1099,6 +1113,8 @@ export function findFighterSlugByName(name: string, excludeSlug?: string): strin
   const normName = norm(name);
   const match = FIGHTERS.find((f) => {
     if (f.slug === excludeSlug) return false;
+    // hidden 選手には内部リンクを張らない(Mレーティングが乗るまで動線に出さない)
+    if (f.hidden) return false;
     if (norm(f.nameJa) === normName) return true;
     if (f.nameEn === name) return true;
     // 英名を正規化して一致確認（大文字小文字を無視）

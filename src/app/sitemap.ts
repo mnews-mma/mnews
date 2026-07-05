@@ -17,7 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/contact`, changeFrequency: "monthly", priority: 0.2 },
   ];
 
-  const fighterRoutes: MetadataRoute.Sitemap = FIGHTERS.map((f) => ({
+  // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)はサイトマップに載せない。
+  const fighterRoutes: MetadataRoute.Sitemap = FIGHTERS.filter((f) => !f.hidden).map((f) => ({
     url: `${BASE_URL}/fighters/${f.slug}`,
     changeFrequency: "daily",
     priority: 0.6,

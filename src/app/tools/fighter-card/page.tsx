@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default function FighterCardToolPage() {
-  const fighters = FIGHTERS.map((f) => ({ slug: f.slug, nameJa: f.nameJa }));
+  const fighters = FIGHTERS.filter((f) => !f.hidden).map((f) => ({ slug: f.slug, nameJa: f.nameJa }));
 
   return (
     <>

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       : appearance?.kind === "expected"
         ? `${appearance.event.date}『${appearance.event.eventName}』に参戦予定（対戦相手未定）。`
         : "";
-  return pageMetadata({
+  const meta = pageMetadata({
     title: `${fighter.nameJa} 戦績・試合結果 | Mニュース`,
     description: `${nextFightDesc}${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${SOURCES[fighter.org].label}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
     path: `/fighters/${fighter.slug}`,
@@ -39,6 +39,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       alt: `${fighter.nameJa} 戦績カード`,
     },
   });
+  // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)は noindex にする。
+  if (seed.hidden) meta.robots = { index: false, follow: false };
+  return meta;
 }
 
 function breakAtDot(name: string) {
@@ -48,11 +51,12 @@ function breakAtDot(name: string) {
   ));
 }
 
-const RESULT_LABEL: Record<string, string> = { win: "勝", loss: "敗", draw: "分" };
+const RESULT_LABEL: Record<string, string> = { win: "勝", loss: "敗", draw: "分", nc: "無効" };
 const RESULT_CLASS: Record<string, string> = {
   win: "result-win",
   loss: "result-loss",
   draw: "result-draw",
+  nc: "result-draw",
 };
 
 // 大会名（RIZIN.52など）からMニュース掲載の結果ページを探す。
@@ -92,7 +96,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const decW = Math.round((fighter.decision / finishBase) * 100);
 
   const sameWeightClass = FIGHTERS.filter(
-    (f) => f.slug !== slug && f.weightClass === fighter.weightClass
+    (f) => f.slug !== slug && f.weightClass === fighter.weightClass && !f.hidden
   )
     .map((f) => ({ f, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
