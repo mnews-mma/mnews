@@ -14,7 +14,8 @@ export const metadata = pageMetadata({
 });
 
 export default async function FightersPage() {
-  const fighters = await resolveFighters(FIGHTERS);
+  // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)は一覧に出さない。
+  const fighters = await resolveFighters(FIGHTERS.filter((f) => !f.hidden));
 
   return (
     <>

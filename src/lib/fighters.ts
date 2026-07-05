@@ -3,10 +3,15 @@ import { SourceKey } from "./sources";
 export interface FightRecord {
   date: string;
   opponent: string;
-  result: "win" | "loss" | "draw";
+  result: "win" | "loss" | "draw" | "nc";
   method: string;
   event: string;
   round: string;
+  // --- 加算的拡張(2026-07 DEEP選手取得)。既存データは未設定=省略のままで動く ---
+  // 決着時間(分:秒。例 "3:22")。roundフィールドから分離して保持する場合に使う。
+  time?: string;
+  // その試合ごとの階級/契約体重(例 "DEEPフェザー級", "68kg契約")。
+  weightClass?: string;
 }
 
 export interface Fighter {
@@ -35,6 +40,18 @@ export interface Fighter {
   // 通称を固定値で指定する場合に使う。設定時はUFC公式/Wikipediaからの
   // 自動取得より優先される（noNicknameより後で判定）。
   nickname?: string;
+  // 新規投入選手(DEEP等)を「表に出さない」ためのフラグ。true の場合:
+  // サイトマップ非掲載 / 選手ページを noindex / 内部リンク非生成 にする。
+  // Mレーティング(序列)や自動文脈が乗るまで、戦績テーブルだけの薄いページを
+  // 一斉公開しない(SEO保護)ための制御。データ自体は格納・保持する。
+  hidden?: boolean;
+  // 戦績(history)と現戦績(wins/losses…)を自社 EVENT_RESULTS から動的に
+  // 組み立てる選手。Wikipedia記事が無いDEEP選手のスタブに付ける。
+  // resolveFighter が EVENT_RESULTS を選手軸に組み替えて注入する。
+  recordFromResults?: boolean;
+  // ローマ字表記が単一ソース由来などで最終確認が必要な選手。人間の裏取り待ち。
+  // 表示・戦績には影響しない(hidden 前提のメタ情報)。
+  needsReview?: boolean;
 }
 
 // Seed data. Per mnews-spec.md this is normally synced from the Wikipedia API.
@@ -1072,6 +1089,62 @@ export const FIGHTERS: Fighter[] = [
     ],
     noNickname: true,
   },
+  // ===========================================================================
+  // DEEP 2026 ナンバーシリーズ(DEEP 130/131 IMPACT)出場選手スタブ(2026-07投入)
+  // hidden=true(Mレーティングが乗るまで非公開) / recordFromResults=true
+  // (戦績・現戦績は自社 EVENT_RESULTS から動的に組み立てる)。
+  // wins/losses等の 0 はプレースホルダで、resolveFighter が実データで上書きする。
+  // ローマ字読みが確定した40名を投入。読み裏取り不能の保留分は
+  // fighterRecordFromResults.ts 隣の DEEP_HELD_FIGHTERS を参照。
+  // needsReview=true は単一ソース由来などで最終確認待ちの選手。
+  // ===========================================================================
+  { slug: "ohara-juri", nameJa: "大原樹理", nameEn: "Juri Ohara", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "kuramoto-daigo", nameJa: "倉本大悟", nameEn: "Daigo Kuramoto", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "shimada-ibuki", nameJa: "嶋田伊吹", nameEn: "Ibuki Shimada", org: "deep", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "sakai-ryo", nameJa: "酒井リョウ", nameEn: "Ryo Sakai", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "sekihara-sho", nameJa: "関原翔", nameEn: "Sho Sekihara", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "rikiya", nameJa: "力也", nameEn: "Rikiya", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "gomyo-hiroto", nameJa: "五明宏人", nameEn: "Hiroto Gomyo", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "tsubaki-asuka", nameJa: "椿飛鳥", nameEn: "Asuka Tsubaki", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "hibino-junya", nameJa: "日比野純也", nameEn: "Junya Hibino", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "kenshiro", nameJa: "ケンシロウ", nameEn: "Kenshiro", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "nakatani-yuga", nameJa: "中谷優我", nameEn: "Yuga Nakatani", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "suzuki-taisei", nameJa: "鈴木大晟", nameEn: "Taisei Suzuki", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "ushiku-kentaro", nameJa: "牛久絢太郎", nameEn: "Kentaro Ushiku", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "muramoto-yutaro", nameJa: "村元友太郎", nameEn: "Yutaro Muramoto", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "hiramatsu-sho", nameJa: "平松翔", nameEn: "Sho Hiramatsu", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "sugiyama-sora", nameJa: "杉山空", nameEn: "Sora Sugiyama", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "abe-daiji", nameJa: "阿部大治", nameEn: "Daiji Abe", org: "deep", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "takizawa-kenta", nameJa: "瀧澤謙太", nameEn: "Kenta Takizawa", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "nakamura-daisuke", nameJa: "中村大介", nameEn: "Daisuke Nakamura", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "izumi-takeshi", nameJa: "泉武志", nameEn: "Takeshi Izumi", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "kindaichi-kosuke", nameJa: "金田一孝介", nameEn: "Kosuke Kindaichi", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "kubota-taito", nameJa: "窪田泰斗", nameEn: "Taito Kubota", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "kozaki-ren", nameJa: "小崎連", nameEn: "Ren Kozaki", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "seigo", nameJa: "誠悟", nameEn: "Seigo", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "suwabe-teppei", nameJa: "諏訪部哲平", nameEn: "Teppei Suwabe", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "sugino-aren", nameJa: "杉野亜蓮", nameEn: "Aren Sugino", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "daiya", nameJa: "ダイヤ", nameEn: "Daiya", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  // --- 第2弾: 表記ゆれ確定4名(読みは確定・EN表記の作法のみ確定待ちだった) ---
+  { slug: "strasser-kiichi", nameJa: "ストラッサー起一", nameEn: "Kiichi Strasser", org: "deep", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "kinoshita-karate", nameJa: "木下カラテ", nameEn: "Karate Kinoshita", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "naito-tank", nameJa: "タンク内藤", nameEn: "Tank Naito", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  // 魚井は Uoi/Uonoi で揺れ(確度低め)→ needsReview
+  { slug: "uoi-fullswing", nameJa: "魚井フルスイング", nameEn: "Fullswing Uoi", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  // --- 第2弾: 読み確定・高信頼7名(複数ソース一致) ---
+  { slug: "arato-hidetaka", nameJa: "荒東英貴", nameEn: "Hidetaka Arato", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "terasaki-ryu", nameJa: "寺崎昇龍", nameEn: "Ryu Terasaki", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "miyabi-shunsuke", nameJa: "雅駿介", nameEn: "Shunsuke Miyabi", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  // 狩野優は本人IG/X表記が Karino(漢字だけなら Kano だが誤り)
+  { slug: "karino-yu", nameJa: "狩野優", nameEn: "Yu Karino", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "yamamoto-soushi", nameJa: "山本颯志", nameEn: "Soushi Yamamoto", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  { slug: "kadono-kohei", nameJa: "角野晃平", nameEn: "Kohei Kadono", org: "deep", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
+  // 山本有人は過去スラッグに yujin 履歴あり→ needsReview
+  { slug: "yamamoto-arihito", nameJa: "山本有人", nameEn: "Arihito Yamamoto", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  // --- 第2弾: 読み確定・中信頼2名(単一ソース由来→needsReview) ---
+  { slug: "akazawa-yukinori", nameJa: "赤沢幸典", nameEn: "Yukinori Akazawa", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  // 空志→Kushi は非自明。DEEP名簿に「石阪空志」(阪違い)併存=同一/別人未確認
+  { slug: "ishizaka-kushi", nameJa: "石坂空志", nameEn: "Kushi Ishizaka", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {
@@ -1099,6 +1172,8 @@ export function findFighterSlugByName(name: string, excludeSlug?: string): strin
   const normName = norm(name);
   const match = FIGHTERS.find((f) => {
     if (f.slug === excludeSlug) return false;
+    // hidden 選手には内部リンクを張らない(Mレーティングが乗るまで動線に出さない)
+    if (f.hidden) return false;
     if (norm(f.nameJa) === normName) return true;
     if (f.nameEn === name) return true;
     // 英名を正規化して一致確認（大文字小文字を無視）
