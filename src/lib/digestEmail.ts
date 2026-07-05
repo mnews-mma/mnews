@@ -1,7 +1,5 @@
 import { fetchRawArticles } from "@/lib/feeds/aggregate";
-import { buildDigestPost } from "@/lib/xPost";
 import { SOURCES } from "@/lib/sources";
-import { SITE_URL, ogImagePath } from "@/lib/ogShared";
 import type { Article } from "@/lib/articles";
 
 function escapeHtml(s: string): string {
@@ -12,7 +10,13 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-function buildHtml(articles: Article[], postText: string, replyText: string | undefined, imageUrl: string | null): string {
+// 朝刊メール: 過去24時間の全ニュースをテキスト一覧で届ける。
+// X投稿の下書きは自動生成しない(どこまでロジックを詰めても選定は絞れない
+// ため、管理画面 /admin/x-preview で人間が選んで変換する運用)。
+// 画像も添付しない。
+const PICKER_URL = "https://www.mnews.jp/admin/x-preview";
+
+function buildHtml(articles: Article[]): string {
   if (articles.length === 0) {
     return "<p>過去24時間の新着記事はありませんでした。</p>";
   }
@@ -22,7 +26,7 @@ function buildHtml(articles: Article[], postText: string, replyText: string | un
       const color = SOURCES[a.source]?.color ?? "#777";
       return `
         <tr>
-          <td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap;">
+          <td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap;vertical-align:top;">
             <span style="font-family:monospace;font-size:11px;color:${color};border:1px solid ${color};padding:2px 6px;">${escapeHtml(label)}</span>
           </td>
           <td style="padding:8px 12px;border-bottom:1px solid #eee;">
@@ -33,35 +37,31 @@ function buildHtml(articles: Article[], postText: string, replyText: string | un
     })
     .join("");
 
-  const imageBlock = imageUrl
-    ? `<img src="${imageUrl}" alt="Daily Digest" style="width:100%;max-width:600px;display:block;border-radius:4px;margin-bottom:16px;" />`
-    : "";
-
-  // 投稿は「1通目(本文+画像)」「2通目(セルフリプライ)」の順で必ず2段階。
-  // 一目で別ポストと分かるよう、それぞれ独立した枠+番号ラベルで表示する。
-  const postBox = `
-      <div style="font-size:11px;font-weight:bold;color:#b45309;margin-bottom:4px;">① 1通目（本文）</div>
-      ${imageBlock}
-      <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#fff7e6;padding:12px;border-radius:4px;border:1px solid #f0d9a0;margin:0;">${escapeHtml(postText)}</pre>`;
-
-  const replyBox = replyText
-    ? `
-      <div style="font-size:11px;font-weight:bold;color:#6b7280;margin:16px 0 4px;">② 2通目（① へのセルフリプライ）</div>
-      <pre style="white-space:pre-wrap;font-family:monospace;font-size:12px;background:#f3f4f6;padding:12px;border-radius:4px;border:1px solid #d1d5db;margin:0;">${escapeHtml(replyText)}</pre>`
-    : "";
-
   return `
     <div style="font-family:-apple-system,sans-serif;max-width:640px;">
-      <h2 style="font-size:16px;">Mニュース 朝刊ダイジェスト（過去24時間・${articles.length}件）</h2>
+      <h2 style="font-size:16px;">Mニュース 朝刊（過去24時間・${articles.length}件）</h2>
 
-      <h3 style="font-size:13px;">X投稿用（2段階投稿。①→②の順にコピーして手動ポスト）</h3>
-      ${postBox}
-      ${replyBox}
+      <a href="${PICKER_URL}" style="display:inline-block;background:#e8002d;color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:6px;text-decoration:none;margin:8px 0 16px;">
+        X投稿を作成する（記事を選んで変換）→
+      </a>
+      <div style="font-size:11px;color:#999;margin-bottom:16px;">
+        ※管理画面のため認証済みの端末で開いてください
+      </div>
 
-      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:24px;">${rows}</table>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">${rows}</table>
 
       <p style="margin-top:16px;"><a href="https://www.mnews.jp">Mニュースで全件見る →</a></p>
     </div>`;
+}
+
+// プレーンテキスト版(メールクライアントのフォールバック)
+function buildText(articles: Article[]): string {
+  if (articles.length === 0) return "過去24時間の新着記事はありませんでした。";
+  const lines = articles.map((a) => {
+    const label = SOURCES[a.source]?.label ?? a.source;
+    return `[${label}] ${a.title}\n${a.url}`;
+  });
+  return [`Mニュース 朝刊（過去24時間・${articles.length}件）`, "", ...lines, "", `X投稿の作成: ${PICKER_URL}`].join("\n");
 }
 
 export interface DigestSendResult {
@@ -82,13 +82,7 @@ function maskEmail(email: string): string {
   return `${head}***@${domain}`;
 }
 
-// 「昨日(JST暦日)」の日付文字列(YYYY-MM-DD)。ダイジェスト画像
-// (/api/og/digest?date=)と本文の対象日をここで揃える。
-function yesterdayJst(): string {
-  return new Date(Date.now() + 9 * 3600_000 - 86400_000).toISOString().slice(0, 10);
-}
-
-// 朝刊ダイジェストのメールを送信し、Resendの応答を含む結果を返す。
+// 朝刊メールを送信し、Resendの応答を含む結果を返す。
 // cron と 管理画面のテスト送信の両方から使う。subjectPrefix でテスト送信を区別できる。
 export async function sendDigestEmail(opts?: { subjectPrefix?: string }): Promise<DigestSendResult> {
   const { articles } = await fetchRawArticles();
@@ -97,13 +91,8 @@ export async function sendDigestEmail(opts?: { subjectPrefix?: string }): Promis
     .filter((a) => new Date(a.publishedAt).getTime() >= cutoff)
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
-  const dateStr = yesterdayJst();
-  const digestPost = buildDigestPost(recent, dateStr);
-  const postText = digestPost?.text ?? "（対象記事なし）";
-  const replyText = digestPost?.replyText;
-  const imageUrl =
-    digestPost && !digestPost.isSingle ? `${SITE_URL}${ogImagePath(digestPost.imageUrl)}` : null;
-  const html = buildHtml(recent, postText, replyText, imageUrl);
+  const html = buildHtml(recent);
+  const text = buildText(recent);
 
   const toEmail = process.env.DIGEST_TO_EMAIL;
   const fromEmail = process.env.DIGEST_FROM_EMAIL ?? "Mニュース <onboarding@resend.dev>";
@@ -119,7 +108,7 @@ export async function sendDigestEmail(opts?: { subjectPrefix?: string }): Promis
     };
   }
 
-  const subject = `${opts?.subjectPrefix ?? ""}Mニュース 朝刊ダイジェスト（${recent.length}件）`;
+  const subject = `${opts?.subjectPrefix ?? ""}Mニュース 朝刊（${recent.length}件）`;
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -127,7 +116,7 @@ export async function sendDigestEmail(opts?: { subjectPrefix?: string }): Promis
       Authorization: `Bearer ${resendKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ from: fromEmail, to: [toEmail], subject, html, text: postText }),
+    body: JSON.stringify({ from: fromEmail, to: [toEmail], subject, html, text }),
   });
 
   const bodyText = await res.text();

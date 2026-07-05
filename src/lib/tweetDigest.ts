@@ -288,7 +288,8 @@ function stripQuotes(title: string): string {
 // digest採用スコア: ニュース語+2 / 販促語-2 / 公式+2 / DB選手名+2 /
 // 結果報(地の文に決着表現)+3。判定は引用を除いた地の文で行う。
 // 「チケット完売」に触れた計量記事でも、計量+2が販促減点を相殺して残る。
-function digestScore(a: Article): number {
+// 管理画面の朝まとめピッカーが「候補」のプリセレクトにも使う。
+export function digestScore(a: Article): number {
   const t = stripQuotes(a.title);
   let s = 0;
   if (OFFICIAL_ORGS.has(a.source)) s += 2;
