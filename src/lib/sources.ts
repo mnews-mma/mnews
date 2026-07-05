@@ -4,6 +4,7 @@ export type SourceKey =
   | "shooto"
   | "deep"
   | "pancrase"
+  | "nexus"
   | "one"
   | "other"
   | "gonkaku"
@@ -24,6 +25,7 @@ export const SOURCES: Record<SourceKey, SourceDef> = {
   shooto: { key: "shooto", label: "修斗", color: "#1266B3", type: "official", url: "https://shooto.co.jp" },
   deep: { key: "deep", label: "DEEP", color: "#E8710C", type: "official", url: "https://deep2001.com" },
   pancrase: { key: "pancrase", label: "パンクラス", color: "#1A1A1A", type: "official", url: "https://pancrase.co.jp" },
+  nexus: { key: "nexus", label: "Fighting NEXUS", color: "#6D28D9", type: "official", url: "https://fighting-nexus.net" },
   // Display-only source kept for visual parity with mnews.html; not in the spec's scrape list.
   one: { key: "one", label: "ONE", color: "#059669", type: "official", url: "https://www.onefc.com" },
   other: { key: "other", label: "その他", color: "#999999", type: "media", url: "#" },
