@@ -63,6 +63,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
   const [method, setMethod] = useState<Method | null>(null);
   const [subTech, setSubTech] = useState("");
   const [strikeDetail, setStrikeDetail] = useState("");
+  const [ncReason, setNcReason] = useState("");
   const [judgeScore, setJudgeScore] = useState("");
   const [round, setRound] = useState("");
   const [time, setTime] = useState("");
@@ -79,6 +80,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
     setMethod(null);
     setSubTech("");
     setStrikeDetail("");
+    setNcReason("");
     setJudgeScore("");
     setRound("");
     setTime("");
@@ -91,22 +93,28 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
     if (method === "一本") return subTech ? `一本（${subTech}）` : "一本";
     if (method === "判定") return judgeScore ? `判定（${judgeScore}）` : "判定";
     if (method === "KO" || method === "TKO") return strikeDetail ? `${method}（${strikeDetail}）` : method;
+    if (method === "ノーコンテスト") return ncReason ? `ノーコンテスト（${ncReason}）` : "ノーコンテスト";
     return method;
   }
 
+  // ドロー/ノーコンテストは勝者が存在しない決着(勝者未選択でも生成可)
+  const noWinnerMethod = method === "ドロー" || method === "ノーコンテスト";
+
   function generate() {
-    if (!event || !bout || !winner || !method) return;
+    if (!event || !bout || !method) return;
+    if (!winner && !noWinnerMethod) return;
     const m = methodLabel();
+    // ドロー/NCは勝者選択にかかわらず「勝者なし」として扱う
+    const isDraw = winner === "draw" || noWinnerMethod;
     const params = new URLSearchParams({
       e: event.slug,
       b: String(bout.index),
-      w: winner === "draw" ? "draw" : winner,
+      w: isDraw ? "draw" : winner === "B" ? "B" : "A",
       m,
     });
     if (round) params.set("r", round);
     if (time) params.set("t", time);
     const img = ogImagePath(`/api/og/result?${params.toString()}`);
-    const isDraw = winner === "draw";
     const post = buildResultPost({
       org: event.org,
       winner: winner === "B" ? bout.fighterB : bout.fighterA,
@@ -267,6 +275,19 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
               />
             </div>
           )}
+          {method === "ノーコンテスト" && (
+            <div style={{ marginBottom: 10 }}>
+              <input
+                value={ncReason}
+                onChange={(e) => setNcReason(e.target.value)}
+                placeholder="理由(任意・例: バッティング / アクシデント)"
+                style={{ width: "100%", fontSize: 15, padding: "10px", borderRadius: 8, border: "1px solid var(--border)", boxSizing: "border-box" }}
+              />
+              <p style={{ fontSize: 11, color: "var(--muted)", margin: "6px 0 0" }}>
+                ノーコンテストは勝者選択不要(「◯◯ vs ◯◯はノーコンテスト」形式で生成)
+              </p>
+            </div>
+          )}
           {method === "判定" && (
             <div style={{ marginBottom: 10 }}>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -307,7 +328,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
 
           <button
             onClick={generate}
-            disabled={!winner || !method}
+            disabled={!method || (!winner && !noWinnerMethod)}
             style={{
               width: "100%",
               fontSize: 16,
@@ -315,9 +336,9 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
               padding: "14px",
               borderRadius: 8,
               border: "none",
-              background: !winner || !method ? "#999" : "var(--accent)",
+              background: !method || (!winner && !noWinnerMethod) ? "#999" : "var(--accent)",
               color: "#fff",
-              cursor: !winner || !method ? "default" : "pointer",
+              cursor: !method || (!winner && !noWinnerMethod) ? "default" : "pointer",
             }}
           >
             結果カードを生成
