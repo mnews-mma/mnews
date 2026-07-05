@@ -16,10 +16,15 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // スペースを含まないのが通例（MediaWiki APIはスペース付きタイトルを別物として
   // 扱い missingtitle エラーになる）ため、nameJa からスペースを除いたものを
   // デフォルトのタイトルとして試す。
-  const jaTitle = fighter.wikiTitleJa ?? fighter.nameJa.replace(/\s/g, "");
+  // recordFromResults 選手(DEEP等のスタブ)は wikiTitle を明示していない限り
+  // 日本語版の既定タイトル推測をしない。同名(例「中村大介」)の別人記事を
+  // 誤って戦績に注入するのを防ぐため。戦績は自社 EVENT_RESULTS から組み立てる。
+  const jaTitle =
+    fighter.wikiTitleJa ??
+    (fighter.recordFromResults ? null : fighter.nameJa.replace(/\s/g, ""));
   const [enWiki, jaWiki, ufcNickname] = await Promise.all([
     fighter.wikiTitleEn ? fetchWikiFighterRecord(fighter.wikiTitleEn).catch(() => null) : null,
-    fetchJaWikiFighterRecord(jaTitle).catch(() => null),
+    jaTitle ? fetchJaWikiFighterRecord(jaTitle).catch(() => null) : null,
     !fighter.nickname && fighter.ufcSlug ? fetchUfcNickname(fighter.ufcSlug).catch(() => null) : null,
   ]);
 
