@@ -1,6 +1,35 @@
 import { FightRecord } from "./fighters";
 import { EVENT_RESULTS } from "./eventResults";
 
+// DEEP 130/131 出場選手のうち、ローマ字読みが確定できず投入を保留した16名。
+// 表記ゆれ(リングネームのカナ+漢字混在) / 読み(漢字の読み不確定) /
+// 取得不可(読み自体が推定不能)で分類。人間の判断でローマ字を確定してから
+// FIGHTERS にスタブ投入する。戦績は EVENT_RESULTS に事実として既に格納済み
+// (deriveHistoryFromEventResults で名前照合すれば取り出せる)。
+export interface HeldFighter {
+  nameJa: string;
+  reason: "表記ゆれ" | "読み" | "取得不可";
+  note: string;
+}
+export const DEEP_HELD_FIGHTERS: HeldFighter[] = [
+  { nameJa: "ストラッサー起一", reason: "表記ゆれ", note: "リングネーム(カナ+漢字「起一」混在)" },
+  { nameJa: "木下カラテ", reason: "表記ゆれ", note: "リングネーム「カラテ」" },
+  { nameJa: "魚井フルスイング", reason: "表記ゆれ", note: "リングネーム「フルスイング」" },
+  { nameJa: "タンク内藤", reason: "表記ゆれ", note: "リングネーム「タンク」" },
+  { nameJa: "荒東英貴", reason: "読み", note: "姓「荒東」の読み不確定(Arato/Kōtō 等)" },
+  { nameJa: "寺崎昇龍", reason: "読み", note: "「昇龍」の読み不確定(Shoryu/Noboru 等)" },
+  { nameJa: "山本有人", reason: "読み", note: "「有人」の読み不確定(Aruto/Yuto/Arihito 等)" },
+  { nameJa: "奥村歩生", reason: "読み", note: "「歩生」の読み不確定(Ayumu/Ao 等)" },
+  { nameJa: "角野晃平", reason: "読み", note: "姓「角野」の読み不確定(Kadono/Sumino/Tsunono 等)" },
+  { nameJa: "雅駿介", reason: "読み", note: "「雅」の名としての扱い・読み不確定" },
+  { nameJa: "狩野優", reason: "読み", note: "「優」の読み不確定(Yu/Yutaka/Suguru 等)" },
+  { nameJa: "山本颯志", reason: "読み", note: "「颯志」の読み不確定(Soshi/Satoshi 等)" },
+  { nameJa: "赤沢幸典", reason: "読み", note: "「幸典」の読み不確定(Yukinori/Kosuke 等)" },
+  { nameJa: "石坂空志", reason: "読み", note: "「空志」の読み不確定(Soshi/Takashi 等)" },
+  { nameJa: "知名昴海", reason: "取得不可", note: "姓「知名」+名「昴海」とも読み推定不能" },
+  { nameJa: "猿寿健太", reason: "取得不可", note: "「猿寿」の読み推定不能" },
+];
+
 // 大会結果(EVENT_RESULTS)を「選手軸」に組み替えるための決定論的ロジック。
 // Mレーティングの燃料となる戦績データの背骨。自社が記録した事実のみを使い、
 // 推測・生成は一切しない(ソースに無い試合は作らない)。EVENT_RESULTS が
