@@ -8,6 +8,7 @@ import CopyButton from "@/components/CopyButton";
 // 過去24時間の全ニュースをテキスト一覧で表示 → 手動でチェック →
 // 選んだ記事だけをX投稿文(テキストのみ・画像なし)に変換する。
 // 自動選定(digestScore)は「候補」のプリセレクトにだけ使い、最終判断は人間。
+// Xプレミアム前提のため文字数上限は設けない(カウンタは参考表示のみ)。
 export interface PickerArticle {
   id: string;
   title: string;
@@ -21,7 +22,9 @@ export interface PickerArticle {
   suggested: boolean; // digestScore上位=候補(初期チェック)
 }
 
-const X_LIMIT = 138; // 全角換算の安全上限(280半角=140全角からマージン)
+// 1行の要約枠(全角)。全文そのまま掲載は長すぎるため、ここまでは原文を
+// 活かして収める(文字数制限由来の強い圧縮はしない)。
+const LINE_MAX = 50;
 
 export default function DigestPicker({
   articles,
@@ -30,46 +33,60 @@ export default function DigestPicker({
   articles: PickerArticle[];
   dateLabel: string; // "7/4"
 }) {
-  const [selected, setSelected] = useState<Set<string>>(
-    () => new Set(articles.filter((a) => a.suggested).map((a) => a.id))
+  // 選択は「順序付き」で保持する(投稿の行順=この順序)。チェックした順に
+  // 末尾へ追加され、↑↓で自由に入れ替えられる。
+  const [order, setOrder] = useState<string[]>(() =>
+    articles.filter((a) => a.suggested).map((a) => a.id)
   );
 
   function toggle(id: string) {
-    setSelected((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+    setOrder((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+  }
+
+  function move(id: string, dir: -1 | 1) {
+    setOrder((prev) => {
+      const i = prev.indexOf(id);
+      const j = i + dir;
+      if (i < 0 || j < 0 || j >= prev.length) return prev;
+      const next = [...prev];
+      [next[i], next[j]] = [next[j], next[i]];
       return next;
     });
   }
 
+  const chosen = useMemo(
+    () =>
+      order
+        .map((id) => articles.find((a) => a.id === id))
+        .filter((a): a is PickerArticle => !!a),
+    [order, articles]
+  );
+
   const { text, count } = useMemo(() => {
-    const chosen = articles.filter((a) => selected.has(a.id));
     if (chosen.length === 0) return { text: "", count: 0 };
-    const n = chosen.length;
-    const perLine = n >= 4 ? 27 : n === 3 ? 31 : 36;
     const lines = chosen.map((a) => {
       const prefix = a.tag ? `【${a.tag}】` : "";
-      return `・${prefix}${condenseTopic(a.title, perLine - fullWidthLength(prefix))}`;
+      return `・${prefix}${condenseTopic(a.title, LINE_MAX - fullWidthLength(prefix))}`;
     });
-    const orgTag = chosen.find((a) => a.orgHashtag)?.orgHashtag;
-    const hashtags = orgTag ? `#MMA ${orgTag}` : "#MMA";
-    const body = [`🥊 昨日のMMAニュースまとめ(${dateLabel})`, ...lines, hashtags].join("\n");
-    return { text: body, count: fullWidthLength(body) };
-  }, [articles, selected, dateLabel]);
+    // ハッシュタグ: 選択記事の団体タグを重複排除で最大3つ(#MMAは付けない)
+    const tags = [...new Set(chosen.map((a) => a.orgHashtag).filter(Boolean))].slice(0, 3);
+    const parts = [`🥊 昨日のMMAニュースまとめ(${dateLabel})`, ...lines];
+    if (tags.length > 0) parts.push(tags.join(" "));
+    const body = parts.join("\n");
+    return { text: body, count: Math.ceil(fullWidthLength(body)) };
+  }, [chosen, dateLabel]);
 
   const replyText = "全件はこちら👇\nhttps://mnews.jp";
-  const over = count > X_LIMIT;
 
   return (
     <div>
       {/* 記事一覧(全件・チェックで選択) */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 20 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 16 }}>
         {articles.length === 0 && (
           <p style={{ fontSize: 13, color: "var(--muted)" }}>過去24時間の記事がありません。</p>
         )}
         {articles.map((a) => {
-          const on = selected.has(a.id);
+          const on = order.includes(a.id);
           return (
             <label
               key={a.id}
@@ -120,22 +137,51 @@ export default function DigestPicker({
         })}
       </div>
 
+      {/* 投稿順の並び替え(選択済みのみ) */}
+      {chosen.length > 0 && (
+        <div style={{ border: "1px solid var(--border)", borderRadius: 8, padding: "10px 12px", marginBottom: 16 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 8 }}>
+            投稿順(↑↓で入れ替え)
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {chosen.map((a, i) => (
+              <div key={a.id} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--muted)", width: 16 }}>
+                  {i + 1}.
+                </span>
+                <span style={{ flex: 1, fontSize: 12, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {a.tag ? `【${a.tag}】` : ""}
+                  {a.title}
+                </span>
+                <button
+                  onClick={() => move(a.id, -1)}
+                  disabled={i === 0}
+                  style={{ border: "1px solid var(--border)", background: "var(--s1)", borderRadius: 6, padding: "2px 9px", cursor: i === 0 ? "default" : "pointer", opacity: i === 0 ? 0.35 : 1, fontSize: 13 }}
+                  aria-label="上へ"
+                >
+                  ↑
+                </button>
+                <button
+                  onClick={() => move(a.id, 1)}
+                  disabled={i === chosen.length - 1}
+                  style={{ border: "1px solid var(--border)", background: "var(--s1)", borderRadius: 6, padding: "2px 9px", cursor: i === chosen.length - 1 ? "default" : "pointer", opacity: i === chosen.length - 1 ? 0.35 : 1, fontSize: 13 }}
+                  aria-label="下へ"
+                >
+                  ↓
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* 生成されたX投稿(テキストのみ・画像なし) */}
       <div style={{ border: "1px solid var(--border)", borderRadius: 8, padding: 16 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
           <span style={{ fontSize: 13, fontWeight: 700 }}>
-            X投稿文({selected.size}件選択)
-            <span
-              style={{
-                fontFamily: "var(--mono)",
-                fontSize: 11,
-                marginLeft: 8,
-                color: over ? "var(--accent)" : "var(--muted)",
-                fontWeight: over ? 700 : 400,
-              }}
-            >
-              全角換算 {count}/{X_LIMIT}
-              {over ? " 超過! 選択を減らしてください" : ""}
+            X投稿文({chosen.length}件選択)
+            <span style={{ fontFamily: "var(--mono)", fontSize: 11, marginLeft: 8, color: "var(--muted)" }}>
+              全角換算 {count}(プレミアム前提・上限なし)
             </span>
           </span>
           <CopyButton text={text} label="①本文をコピー" />
