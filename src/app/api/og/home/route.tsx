@@ -17,9 +17,21 @@ const ASH = "#8A8478";
 const ORGS = ["RIZIN", "DEEP", "パンクラス", "修斗"];
 const TAGLINE = "日本のMMA、ぜんぶここに。";
 
-// 団体名を「・」で区切って並べる行。区切りの既定色は赤だが、赤帯の上に置く時は
-// 赤同士で消えるため sepColor で上書きする。
-function OrgRow({ size, gap, color, sepColor = RED }: { size: number; gap: number; color: string; sepColor?: string }) {
+// 団体名を区切り文字(既定「・」)で並べる行。区切りの既定色は赤だが、赤地の上に
+// 置く時は赤同士で消えるため sepColor で上書きする。sep で「/」等に変更可。
+function OrgRow({
+  size,
+  gap,
+  color,
+  sep = "・",
+  sepColor = RED,
+}: {
+  size: number;
+  gap: number;
+  color: string;
+  sep?: string;
+  sepColor?: string;
+}) {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
       {ORGS.map((o, i) => (
@@ -36,7 +48,7 @@ function OrgRow({ size, gap, color, sepColor = RED }: { size: number; gap: numbe
                 fontSize: `${size}px`,
               }}
             >
-              ・
+              {sep}
             </div>
           )}
           <div
@@ -120,30 +132,31 @@ function VariantB() {
   );
 }
 
-// 案C: エディトリアル。黒地に赤M+太い赤ルール、左下に団体名。抑制的。
+// 案C(確定): トップページ同様の赤地(#e8002d)に白。エディトリアル構図。
+// 白の太いルール、団体名は「/」区切り。
 function VariantC() {
   return (
-    <div style={{ width: "1200px", height: "630px", display: "flex", flexDirection: "column", justifyContent: "center", backgroundColor: SUMI, padding: "0 90px" }}>
-      <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "26px", color: ASH, letterSpacing: "8px", marginBottom: "22px" }}>
+    <div style={{ width: "1200px", height: "630px", display: "flex", flexDirection: "column", justifyContent: "center", backgroundColor: RED, padding: "0 90px" }}>
+      <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "26px", color: "rgba(255,255,255,0.82)", letterSpacing: "8px", marginBottom: "22px" }}>
         {TAGLINE}
       </div>
       <div style={{ display: "flex", alignItems: "baseline" }}>
-        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "200px", color: RED, lineHeight: 0.9 }}>
+        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "200px", color: "#fff", lineHeight: 0.9 }}>
           M
         </div>
-        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "168px", color: WASHI, lineHeight: 0.9, letterSpacing: "4px" }}>
+        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "168px", color: "#fff", lineHeight: 0.9, letterSpacing: "4px" }}>
           ニュース
         </div>
       </div>
-      <div style={{ display: "flex", width: "560px", height: "12px", backgroundColor: RED, margin: "30px 0 34px" }} />
-      <OrgRow size={50} gap={34} color={WASHI} />
+      <div style={{ display: "flex", width: "560px", height: "12px", backgroundColor: "#fff", margin: "30px 0 34px" }} />
+      <OrgRow size={50} gap={40} color="#fff" sep="/" sepColor="rgba(255,255,255,0.72)" />
     </div>
   );
 }
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const variant = (searchParams.get("variant") || "a").toLowerCase();
+  const variant = (searchParams.get("variant") || "c").toLowerCase();
   const fonts = await loadOgFonts();
   const node = variant === "b" ? <VariantB /> : variant === "c" ? <VariantC /> : <VariantA />;
   return new ImageResponse(node, { width: 1200, height: 630, fonts: OG_FONT_FAMILIES(fonts) });

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://www.mnews.jp";
-const OG_IMAGE = { url: "/og-image.png", width: 1200, height: 630, alt: "Mニュース" };
+const OG_IMAGE = { url: `${SITE_URL}/og-default.png?v=2`, width: 1200, height: 630, type: "image/png", alt: "Mニュース" };
 
 // ページ単位の openGraph/twitter は Next.js が親(layout)の値とディープマージしない
 // （指定したフィールドのオブジェクトごと丸ごと置き換わる）ため、image/siteName等を
