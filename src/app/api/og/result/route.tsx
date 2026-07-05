@@ -18,10 +18,19 @@ function fallbackRedirect() {
 
 // 勝者名は最大サイズ。文字数に応じ段階縮小(中途半端なサイズを残さない)
 const WINNER_STEPS = [
-  { maxLen: 5, size: 132 },
-  { maxLen: 8, size: 100 },
-  { maxLen: 11, size: 76 },
-  { maxLen: 24, size: 56 },
+  { maxLen: 5, size: 160 },
+  { maxLen: 8, size: 118 },
+  { maxLen: 11, size: 90 },
+  { maxLen: 16, size: 66 },
+  { maxLen: 24, size: 54 },
+];
+
+// 決着方法も長さに応じて段階縮小(「一本（リアネイキッドチョーク）」等の長文対策)
+const METHOD_STEPS = [
+  { maxLen: 6, size: 76 },
+  { maxLen: 10, size: 58 },
+  { maxLen: 16, size: 46 },
+  { maxLen: 30, size: 36 },
 ];
 
 // 試合結果カード(1200×675)。URLパラメータ完結でストレージ不要:
@@ -45,7 +54,11 @@ export async function GET(req: Request) {
     const winner = winnerSide === "B" ? bout.fighterB : bout.fighterA;
     const loser = winnerSide === "B" ? bout.fighterA : bout.fighterB;
     const winnerSize = fitFontSize(winner, WINNER_STEPS);
+    const methodText = method || (isDraw ? "引き分け" : "");
+    const methodSize = fitFontSize(methodText, METHOD_STEPS);
     const rt = [round, time].filter(Boolean).join(" ");
+    // 右側余白に敷くゴーストテキスト(結果種別)
+    const ghost = isDraw ? (method.includes("ノーコンテスト") ? "NC" : "DRAW") : "WIN";
 
     const d = new Date(event.date);
     const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
@@ -59,6 +72,7 @@ export async function GET(req: Request) {
             height: "675px",
             display: "flex",
             flexDirection: "column",
+            position: "relative",
             backgroundColor: COLORS.sumi,
             backgroundImage: stripeTexture(),
           }}
@@ -73,39 +87,56 @@ export async function GET(req: Request) {
               padding: "16px 56px",
             }}
           >
-            <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "30px", color: COLORS.sumi }}>
+            <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "32px", color: COLORS.sumi }}>
               {event.eventName}
             </div>
-            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "26px", color: COLORS.shu, letterSpacing: "1px" }}>
+            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "28px", color: COLORS.shu, letterSpacing: "1px" }}>
               {dateLabel}
             </div>
           </div>
 
-          {/* 本体 */}
+          {/* 右側余白のゴースト(結果種別を薄く敷く) */}
+          <div
+            style={{
+              position: "absolute",
+              display: "flex",
+              right: "20px",
+              top: "120px",
+              fontFamily: "Bebas Neue",
+              fontSize: "340px",
+              lineHeight: 1,
+              color: "rgba(197, 164, 90, 0.09)",
+              letterSpacing: "6px",
+            }}
+          >
+            {ghost}
+          </div>
+
+          {/* 本体: 縦をspace-betweenで使い切る(中央寄せの上下帯を作らない) */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               flex: 1,
-              justifyContent: "center",
-              padding: "0 56px",
+              justifyContent: "space-between",
+              padding: "30px 56px 34px",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
               <div
                 style={{
                   display: "flex",
                   fontFamily: "Bebas Neue",
-                  fontSize: "40px",
+                  fontSize: "46px",
                   color: COLORS.sumi,
                   backgroundColor: isDraw ? COLORS.ash : COLORS.gold,
-                  padding: "4px 20px",
+                  padding: "6px 24px",
                   letterSpacing: "3px",
                 }}
               >
                 {isDraw ? "DRAW" : "WIN"}
               </div>
-              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "20px", color: COLORS.ash }}>
+              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "27px", color: COLORS.ash }}>
                 {bout.weightClass}
                 {bout.isTitleMatch ? "　タイトルマッチ" : ""}
               </div>
@@ -120,19 +151,18 @@ export async function GET(req: Request) {
                 fontSize: `${winnerSize}px`,
                 lineHeight: 1.05,
                 color: "#FFFFFF",
-                marginTop: "18px",
               }}
             >
               {winner}
             </div>
 
             {/* 決着方法 + R/タイム(大きく) */}
-            <div style={{ display: "flex", alignItems: "baseline", gap: "24px", marginTop: "22px" }}>
-              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "54px", color: COLORS.shu }}>
-                {method || (isDraw ? "引き分け" : "")}
+            <div style={{ display: "flex", alignItems: "baseline", gap: "28px" }}>
+              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${methodSize}px`, color: COLORS.shu }}>
+                {methodText}
               </div>
               {rt && (
-                <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "48px", color: COLORS.gold }}>
+                <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "60px", color: COLORS.gold }}>
                   {rt}
                 </div>
               )}
@@ -140,17 +170,17 @@ export async function GET(req: Request) {
 
             {/* 敗者(グレーダウン) */}
             {!isDraw && (
-              <div style={{ display: "flex", alignItems: "center", gap: "14px", marginTop: "26px" }}>
-                <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "24px", color: COLORS.ash, letterSpacing: "2px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "30px", color: COLORS.ash, letterSpacing: "2px" }}>
                   DEF.
                 </div>
-                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "34px", color: COLORS.ash }}>
+                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "44px", color: COLORS.ash }}>
                   {loser}
                 </div>
               </div>
             )}
             {isDraw && (
-              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "34px", color: COLORS.ash, marginTop: "26px" }}>
+              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "44px", color: COLORS.ash }}>
                 {bout.fighterA} × {bout.fighterB}
               </div>
             )}
