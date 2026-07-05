@@ -168,18 +168,36 @@ const ORG_HASHTAG: Record<string, string> = {
   shooto: "#修斗",
 };
 
+// 大会名からXハッシュタグを生成する。
+// 「DEEP 132 IMPACT」のような「団体名+号数」型は #DEEP132 に短縮し、
+// それ以外は開催地サフィックス(" in HIROSHIMA"等)を落として記号を除いた
+// 連結形にする(例: RIZIN LANDMARK 15 in HIROSHIMA → #RIZINLANDMARK15)。
+export function eventHashtag(eventName: string): string {
+  let n = eventName.trim().replace(/\s+in\s+.+$/i, "");
+  // 号数の後に日本語の副題が続く場合は号数まで(例: 超RIZIN.5 浪速の超復活祭り → 超RIZIN.5)
+  n = n.replace(/([0-9])[\s　]+[぀-ヿ一-鿿].*$/, "$1");
+  const m = n.match(/^([A-Za-z]+)[\s.]+(\d+)/);
+  if (m) return `#${m[1].toUpperCase()}${m[2]}`;
+  const compact = n.replace(/[^A-Za-z0-9぀-ヿ一-鿿]/g, "");
+  return compact ? `#${compact}` : "";
+}
+
 export function buildResultPost(opts: {
   org: string;
   winner: string;
   loser: string;
   method: string;
   isDraw?: boolean;
+  // 大会名(あれば #DEEP132 のような大会ハッシュタグを付ける)
+  eventName?: string;
   // ライブ結果入力から登録される試合結果は news_type=result 固定。
   // 【速報】プレフィックスはサイト表示と共有の判定関数から導出する。
   newsType?: NewsType;
 }): BuiltPost {
   const orgTag = ORG_HASHTAG[opts.org] ?? "";
-  const hashtags = [orgTag, "#MMA"].filter(Boolean).join(" ");
+  const evTag = opts.eventName ? eventHashtag(opts.eventName) : "";
+  // ハッシュタグは「団体+大会名」。#MMA(ビッグワード)は付けない
+  const hashtags = [orgTag, evTag !== orgTag ? evTag : ""].filter(Boolean).join(" ");
   const prefix = flashPrefixForType(opts.newsType ?? "result");
   const body = opts.isDraw
     ? `${prefix}${opts.winner} vs ${opts.loser}は${opts.method || "引き分け"}`

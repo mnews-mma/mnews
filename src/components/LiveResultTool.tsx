@@ -113,6 +113,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
       loser: winner === "B" ? bout.fighterA : bout.fighterB,
       method: m,
       isDraw,
+      eventName: event.eventName, // #DEEP132 のような大会ハッシュタグ用
       newsType: "result", // ライブ結果は news_type=result 固定
     });
     setGenerated({ img, text: post.text });
