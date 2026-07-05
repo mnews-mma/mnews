@@ -364,9 +364,18 @@ export function condenseTopic(title: string, maxLen = 35): string {
   s = s.replace(/\s+/g, " ").trim();
   if (fullWidthLength(s) <= maxLen) return s;
 
-  // 1) 末尾方向の「…と語った/宣言」等のコメント引用を落とす(先頭12字は保護)
-  const quoteCut = s.replace(/(.{12,}?)[「『].*$/, "$1").replace(/[と、。\s]+$/, "");
-  if (quoteCut.length < s.length) s = quoteCut;
+  // 1) 発言引用を「中身ごと」インライン除去し、引用の後ろの地の文は残す。
+  //    旧実装は最初の引用以降を丸ごと切り落としており、引用の後ろにある本題
+  //    (「…ともに計量クリア」等)まで消えていた。
+  //    ・中身が短い引用(全角4未満: 大会名「31」等の固有名詞)は残す
+  //    ・除去すると殆ど残らないタイトル(引用が本題)は元のまま次工程へ
+  const inline = s
+    .replace(/[「『]([^」』]*)[」』]/g, (m, inner) => (fullWidthLength(inner) >= 4 ? "" : m))
+    .replace(/\s+/g, " ")
+    .replace(/^[と、。・\s]+/, "")
+    .replace(/[、\s]+$/, "")
+    .trim();
+  if (fullWidthLength(inline) >= 15 && inline.length < s.length) s = inline;
   if (fullWidthLength(s) <= maxLen) return s;
 
   // 2) 修飾語を1つずつ削る
@@ -376,18 +385,25 @@ export function condenseTopic(title: string, maxLen = 35): string {
   }
   if (fullWidthLength(s) <= maxLen) return s;
 
-  // 3) 文(。)単位で先頭から収まるところまで(文の途中で名前が切れるのを防ぐ)
-  const sentences = s.split("。").filter(Boolean);
-  if (sentences.length > 1 && fullWidthLength(sentences[0]) <= maxLen) {
-    let accS = sentences[0];
-    for (let i = 1; i < sentences.length; i++) {
-      const next = accS + "。" + sentences[i];
-      if (fullWidthLength(next) > maxLen) break;
-      accS = next;
+  // 3) 文単位(。！？)で先頭から収まるところまで。1文も収まらない場合でも、
+  //    先頭文が枠を少し(+10)超えるだけなら文末まで残す(「前日計量は全選手」の
+  //    ように結論が切れるより、多少長くても文を完結させる方が読める)。
+  const sentences = s
+    .split(/(?<=[。！？!?])/)
+    .map((t) => t.trim())
+    .filter(Boolean);
+  if (sentences.length > 0) {
+    let accS = "";
+    for (const sent of sentences) {
+      if (fullWidthLength(accS + sent) > maxLen) break;
+      accS += sent;
     }
-    return accS.replace(/[、。]$/, "");
+    if (accS) return accS.replace(/[、。]$/, "");
+    if (fullWidthLength(sentences[0]) <= maxLen + 10) {
+      return sentences[0].replace(/[、。]$/, "");
+    }
+    s = sentences[0];
   }
-  s = sentences[0] ?? s;
   if (fullWidthLength(s) <= maxLen) return s;
 
   // 4) 読点単位で先頭から収まるところまで(最低1節は残す)
