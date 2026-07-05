@@ -1226,6 +1226,31 @@ export const FIGHTERS: Fighter[] = [
   { slug: "kenmin", nameJa: "賢民", nameEn: "Kenmin", org: "nexus", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "mori-subaru", nameJa: "森昴星", nameEn: "Subaru Mori", org: "nexus", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
 
+  // ===========================================================================
+  // 第3チャンク: RIZIN外国人ファイター(2025-2026出場)。国内勢と違い公開する。
+  // ① 著名勢=綴り確定+戦績あり → hidden=false(公開)。② 中央アジア勢=綴り裏取り
+  //   待ちで hidden=true/needsReview=true。全員 recordFromResults(自社結果で背骨)。
+  // ===========================================================================
+  { slug: "patchy-mix", nameJa: "パッチー・ミックス", nameEn: "Patchy Mix", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "Patchy Mix" },
+  { slug: "sabatello-danny", nameJa: "ダニー・サバテロ", nameEn: "Danny Sabatello", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "Danny Sabatello" },
+  { slug: "patricky-pitbull", nameJa: "パトリッキー・ピットブル", nameEn: "Patricky Pitbull", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "Patricky Pitbull" },
+  { slug: "dodson-john", nameJa: "ジョン・ドッドソン", nameEn: "John Dodson", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "John Dodson (fighter)" },
+  { slug: "gallagher-james", nameJa: "ジェームズ・ギャラガー", nameEn: "James Gallagher", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "James Gallagher (fighter)" },
+  { slug: "case-johnny", nameJa: "ジョニー・ケース", nameEn: "Johnny Case", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "Johnny Case" },
+  { slug: "torres-jose", nameJa: "ホセ・トーレス", nameEn: "Jose Torres", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "Jose Torres (fighter)" },
+  { slug: "carlyle-spike", nameJa: "スパイク・カーライル", nameEn: "Spike Carlyle", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "Spike Carlyle" },
+  { slug: "karimian-sina", nameJa: "シナ・カリミアン", nameEn: "Sina Karimian", org: "rizin", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "gustavo-luis", nameJa: "ルイス・グスタボ", nameEn: "Luis Gustavo", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "soldatkin-alexander", nameJa: "アレクサンダー・ソルダトキン", nameEn: "Alexander Soldatkin", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "samociuk-marek", nameJa: "マレク・サモチュク", nameEn: "Marek Samociuk", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "Marek Samociuk" },
+  { slug: "dautbek-karshyga", nameJa: "カルシャガ・ダウトベック", nameEn: "Karshyga Dautbek", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "sheydullaev-rajabali", nameJa: "ラジャブアリ・シェイドゥラエフ", nameEn: "Rajabali Sheydullaev", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "karamov-vugar", nameJa: "ヴガール・ケラモフ", nameEn: "Vugar Karamov", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "nozimov-ilkhom", nameJa: "イルホム・ノジモフ", nameEn: "Ilkhom Nozimov", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "zhumagazy-nurkhan", nameJa: "ヌルハン・ズマガジー", nameEn: "Nurkhan Zhumagazy", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "temirov-azizbek", nameJa: "アジズベク・テミロフ", nameEn: "Azizbek Temirov", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "gadzhamatov-alibeg", nameJa: "アリベク・ガジャマトフ", nameEn: "Alibeg Gadzhamatov", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+
 ];
 
 export function getFighter(slug: string): Fighter | undefined {

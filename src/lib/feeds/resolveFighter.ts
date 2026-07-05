@@ -31,6 +31,13 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // 戦績テーブルは日本語版Wikipediaを優先し、無ければ英語版にフォールバックする。
   const wiki: WikiFighterData | null = jaWiki && jaWiki.history.length > 0 ? jaWiki : enWiki;
 
+  // Wikipediaの戦績を「有効」とみなす条件を厳しめに: 履歴が1件以上あり、かつ
+  // 勝敗引き分けの合計が1以上。記事が同名別人・曖昧回避ページ・戦績表の無い
+  // 記事に解決してしまうと wins/losses が 0 のゴミレコードが注入されるため、
+  // その場合は wiki を無効扱いにして recordFromResults(自社結果)へフォールバックする。
+  const wikiHasRecord =
+    !!wiki && wiki.history.length > 0 && wiki.wins + wiki.losses + wiki.draws > 0;
+
   // ニックネームの優先順位:
   // 1. fighter.nickname（固定値・直接指定）
   // 2. noNickname フラグが立っていれば非表示
@@ -42,7 +49,7 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // recordFromResults 選手(Wikipedia記事の無いDEEP等のスタブ)は、自社
   // EVENT_RESULTS を選手軸に組み替えた戦績を注入する。Wikipediaの戦績テーブルが
   // 取れた場合はそちら(生涯戦績)を優先する。
-  if (fighter.recordFromResults && !(wiki && wiki.history.length > 0)) {
+  if (fighter.recordFromResults && !wikiHasRecord) {
     const history = deriveHistoryFromEventResults(fighter.nameJa);
     const counts = deriveRecordCounts(history);
     return {
@@ -54,7 +61,7 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
     };
   }
 
-  if (wiki) {
+  if (wikiHasRecord && wiki) {
     return {
       ...fighter,
       wins: wiki.wins,
