@@ -56,7 +56,7 @@ export const DEEP_CHAMPIONS: ChampionEntry[] = [
   { org: "deep", weightClass: "ウェルター級", name: "嶋田伊吹", generation: "第14代", slug: "shimada-ibuki" },
   { org: "deep", weightClass: "ライト級", name: "野村駿太", generation: "第13代", slug: "nomura-shunta" },
   { org: "deep", weightClass: "フェザー級", name: "青井人", generation: "第12代", slug: "aoi-jin" },
-  { org: "deep", weightClass: "バンタム級", name: "福田龍彌", generation: "第11代", slug: null }, // DB未登録
+  { org: "deep", weightClass: "バンタム級", name: "福田龍彌", generation: "第11代", slug: "fukuda-ryuya" }, // DB内nameJaは"福田 龍彌"(スペースあり)。EVENT_RESULTS(DEEPバンタム級タイトルマッチ勝利)で同一人物を確認済み
   { org: "deep", weightClass: "フライ級", name: "村元友太郎", generation: "第7代", slug: "muramoto-yutaro" },
   { org: "deep", weightClass: "ストロー級", name: "知名昴海", generation: "第6代", slug: null }, // 読み確定できず未登録(HELD)
   // 女子階級: 女子無差別級/女子アトム級/女子ミクロ級/DEEP JEWELS各級が併存し、
