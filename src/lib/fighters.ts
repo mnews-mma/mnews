@@ -52,6 +52,10 @@ export interface Fighter {
   // ローマ字表記が単一ソース由来などで最終確認が必要な選手。人間の裏取り待ち。
   // 表示・戦績には影響しない(hidden 前提のメタ情報)。
   needsReview?: boolean;
+  // 対戦カード・戦績テーブル上で別表記されることがある選手向けの別名リスト。
+  // findFighterSlugByName の突合にのみ使う(表示名はnameJaのまま変えない)。
+  // 例: 雑賀ヤン坊達也は装飾ニックネーム除去後「雑賀達也」相当で言及される。
+  aliases?: string[];
 }
 
 // Seed data. Per mnews-spec.md this is normally synced from the Wikipedia API.
@@ -1200,8 +1204,11 @@ export const FIGHTERS: Fighter[] = [
   { slug: "kasuya-yusuke", nameJa: "粕谷優介", nameEn: "Yusuke Kasuya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // nameJaはパンクラス公式ランキングのofficialName表記(引用符なし)に合わせ、
   // wikiTitleJaで記事名の曲がり引用符“ ”を明示指定(戦績取得はこちらを使う)。
-  { slug: "saiga-yanbo-tatsuya", nameJa: "雑賀ヤン坊達也", nameEn: "Yanbo Tatsuya Saiga", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "雑賀“ヤン坊”達也" },
-  { slug: "beinoa", nameJa: "ベイノア", nameEn: "Noah Bey", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "“ブラックパンサー”ベイノア" },
+  { slug: "saiga-yanbo-tatsuya", nameJa: "雑賀ヤン坊達也", nameEn: "Yanbo Tatsuya Saiga", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "雑賀“ヤン坊”達也", aliases: ["雑賀達也"] },
+  // 正式表記(一次情報=本人のja-wiki記事タイトル)は装飾ニックネーム込み。雑賀の表記
+  // 方針(引用符のみ除去・ニックネーム本文は残す)に合わせnameJaを補完。EVENT_RESULTS
+  // 等で使われる素の「ベイノア」表記はaliasesで引き続き解決できるようにする。
+  { slug: "beinoa", nameJa: "ブラックパンサーベイノア", nameEn: "Noah Bey", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "“ブラックパンサー”ベイノア", aliases: ["ベイノア"] },
   { slug: "suzuki-tomoya", nameJa: "鈴木慈也", nameEn: "Tomoya Suzuki", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "yanagawa-yuito", nameJa: "栁川唯人", nameEn: "Yuito Yanagawa", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "rajabov-otabek", nameJa: "オタベク・ラジャボフ", nameEn: "Otabek Rajabov", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1308,15 +1315,51 @@ export function calcFighterRates(f: Pick<Fighter, "wins" | "losses" | "draws" | 
 
 // 任意の文字列（対戦カード上の選手名など）からMニュース掲載選手を探す。
 // 大会結果ページ・選手の試合履歴テーブル双方の内部リンク生成で使う共通ロジック。
-export function findFighterSlugByName(name: string, excludeSlug?: string): string | null {
+// 表記中の装飾ニックネーム部分("…"/“…”/「…」/(…)/（…）)を中身ごと除去する。
+// 例: 雑賀"ヤン坊"達也 → 雑賀達也 / "ブラックパンサー"ベイノア → ベイノア
+function stripDecorativeNickname(s: string): string {
+  return s
+    .replace(/["“”][^"“”]*["“”]/g, "")
+    .replace(/「[^」]*」/g, "")
+    .replace(/[（(][^）)]*[）)]/g, "")
+    .trim();
+}
+
+// ひらがな⇔カタカナの単純変換(Unicode範囲シフト)。対戦相手名の表記ゆれを吸収する。
+function toKatakana(s: string): string {
+  return s.replace(/[ぁ-ゖ]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0x60));
+}
+function toHiragana(s: string): string {
+  return s.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
+}
+
+// 任意の文字列（対戦カード上の選手名など）からMニュース掲載選手を探す。
+// 大会結果ページ・選手の試合履歴テーブル双方の内部リンク生成で使う共通ロジック。
+// visibleSlugs を渡すと、そこに含まれる slug のみを候補にする
+// (getVisibleFighters() 由来＝非hidden かつ 戦績ありの選手のみリンク許可)。
+export function findFighterSlugByName(
+  name: string,
+  excludeSlug?: string,
+  visibleSlugs?: Set<string>
+): string | null {
   // スペース・全角スペースを除いて正規化して照合する
   const norm = (s: string) => s.replace(/[\s　]/g, "");
-  const normName = norm(name);
+  const cleaned = stripDecorativeNickname(name);
+  const candidates = new Set<string>();
+  for (const raw of [name, cleaned]) {
+    const n = norm(raw);
+    if (!n) continue;
+    candidates.add(n);
+    candidates.add(toKatakana(n));
+    candidates.add(toHiragana(n));
+  }
   const match = FIGHTERS.find((f) => {
     if (f.slug === excludeSlug) return false;
     // hidden 選手には内部リンクを張らない(Mレーティングが乗るまで動線に出さない)
     if (f.hidden) return false;
-    if (norm(f.nameJa) === normName) return true;
+    if (visibleSlugs && !visibleSlugs.has(f.slug)) return false;
+    if (candidates.has(norm(f.nameJa))) return true;
+    if (f.aliases?.some((a) => candidates.has(norm(a)))) return true;
     if (f.nameEn === name) return true;
     // 英名を正規化して一致確認（大文字小文字を無視）
     if (f.nameEn.toLowerCase() === name.toLowerCase()) return true;

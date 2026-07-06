@@ -6,16 +6,19 @@ import { EVENT_RESULTS, getEventResult, buildEventSummary } from "@/lib/eventRes
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata, SITE_URL, isoDate } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
+import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { buildSportsEventLd } from "@/lib/eventJsonLd";
 
-function FighterCardName({ name }: { name: string }) {
-  const slug = findFighterSlugByName(name);
+// 戦績データが無い(no-data)/hiddenの選手はリンクにせずテキスト表示にする
+// (getVisibleFighters()由来のvisibleSlugsで判定・判定ロジックの二重定義はしない)。
+function FighterCardName({ name, visibleSlugs }: { name: string; visibleSlugs: Set<string> }) {
+  const slug = findFighterSlugByName(name, undefined, visibleSlugs);
   return slug ? (
     <a href={`/fighters/${slug}`} className="opponent-link">
       {name}
     </a>
   ) : (
-    <>{name}</>
+    <span>{name}</span>
   );
 }
 
@@ -39,6 +42,7 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const event = getEventResult(slug);
   if (!event) notFound();
+  const visibleSlugs = await getVisibleFighterSlugs();
 
   const summary = buildEventSummary(event);
   const eventDate = isoDate(event.date);
@@ -123,9 +127,9 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
                         {kg && <span className="col-weight-kg">{kg}</span>}
                       </td>
                       <td className="col-matchup">
-                        <span className="matchup-name"><FighterCardName name={f.fighterA} /></span>
+                        <span className="matchup-name"><FighterCardName name={f.fighterA} visibleSlugs={visibleSlugs} /></span>
                         <span className="matchup-vs">vs</span>
-                        <span className="matchup-name"><FighterCardName name={f.fighterB} /></span>
+                        <span className="matchup-name"><FighterCardName name={f.fighterB} visibleSlugs={visibleSlugs} /></span>
                       </td>
                       <td className="col-winner">
                         {f.winner ? (

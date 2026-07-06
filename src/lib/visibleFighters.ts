@@ -9,3 +9,11 @@ export async function getVisibleFighters(): Promise<ResolvedFighter[]> {
   const resolved = await resolveFighters(FIGHTERS.filter((f) => !f.hidden));
   return resolved.filter((f) => !f.noRecordData);
 }
+
+// 上記と同じ可視性判定でslugのSetだけを返す。イベント/戦績ページの対戦相手リンク
+// (findFighterSlugByNameのvisibleSlugs引数)で使う軽量ヘルパー。判定ロジックの
+// 二重定義を避けるため、必ずこの関数(=getVisibleFighters)経由で導出する。
+export async function getVisibleFighterSlugs(): Promise<Set<string>> {
+  const visible = await getVisibleFighters();
+  return new Set(visible.map((f) => f.slug));
+}

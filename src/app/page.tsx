@@ -186,10 +186,12 @@ export default async function HomePage() {
 
         <SocialSection videos={videos} />
 
-        {/* 公式ランキング(選手一覧より上に配置)。中身はリンク4本に統一
-            (RIZIN/DEEP現王者・パンクラス/修斗ランキングの各専用ページへ)。 */}
+        {/* 公式ランキング・王者(選手一覧より上に配置)。中身はリンク4本に統一
+            (RIZIN/DEEP現王者・パンクラス/修斗ランキングの各専用ページへ)。
+            mnews独自のMレーティングではなく団体公式の中立集約データである点を
+            見出しで明示し、独自ランキング(/rankings)と混同させない。 */}
         <section className="rail-panel">
-          <div className="rail-head">公式ランキング</div>
+          <div className="rail-head">公式ランキング・王者</div>
           <a href="/ranking/rizin" className="rail-more">現RIZIN王者を見る →</a>
           <a href="/ranking/deep" className="rail-more">現DEEP王者を見る →</a>
           <a href="/ranking/pancrase" className="rail-more">パンクラス 公式ランキングを見る →</a>
