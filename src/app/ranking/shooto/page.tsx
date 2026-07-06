@@ -37,7 +37,6 @@ export default async function ShootoRankingPage() {
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
         <h1 className="page-title">修斗 公式ランキング</h1>
-        <div className="page-sub">階級別の王者・ランカー（団体公式・世界ランキングの転載・自動更新）</div>
       </div>
       {shooto && shooto.classes.length > 0 ? (
         <OrgRankingView data={shooto} linkableSlugs={linkable} />

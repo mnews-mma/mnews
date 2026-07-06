@@ -1,22 +1,24 @@
 import { FightRecord } from "./fighters";
 import { EVENT_RESULTS } from "./eventResults";
 
-// DEEP 130/131 出場選手のうち、ローマ字読みが裏取り不能で投入を保留した3名。
-// (表記ゆれ4+読み9=13名は外部ソースで読みを確定し FIGHTERS に投入済み。)
-// 残る3名は公式英語表記がどのソースにも無く、読みが割れる/検証ソースに出ない。
+// DEEP出場選手のうち、ローマ字読みが裏取り不能で投入を保留した選手。
 // 訓練データからの推測でハルシネーションを入れないため保留を続行する。
 // 次の試合ポスター等で公式英語表記が出るか、DEEP追跡知識で読みが確定した時点で投入。
 // 戦績は EVENT_RESULTS に事実として既に格納済み(deriveHistoryFromEventResults で
 // 名前照合すれば取り出せる)。
+// 奥村歩生は2026-07 DEEP133 IMPACT公式カード表記「奥村アイル」+ Sherdog slug
+// Airu-Okumura で読み確定・FIGHTERS投入済みにつき保留解除(このリストから削除)。
 export interface HeldFighter {
   nameJa: string;
   reason: "表記ゆれ" | "読み" | "取得不可";
   note: string;
 }
 export const DEEP_HELD_FIGHTERS: HeldFighter[] = [
-  { nameJa: "奥村歩生", reason: "読み", note: "公式ローマ字表記がソースに無く読みが割れる(アユム/アオイ/ホオ 等)" },
   { nameJa: "知名昴海", reason: "取得不可", note: "検証ソースに出現せず読み推定不能" },
   { nameJa: "猿寿健太", reason: "取得不可", note: "検証ソースに出現せず読み推定不能" },
+  { nameJa: "鬼山班猫", reason: "取得不可", note: "DEEP133 IMPACT出場。Sherdog/DATA MMA/ja-wiki等どこにも英語表記・読みが出現せず推定不能" },
+  { nameJa: "松岡疾人", reason: "取得不可", note: "DEEP133 IMPACT出場。Sherdog/DATA MMA/ja-wiki等どこにも英語表記・読みが出現せず推定不能" },
+  { nameJa: "仁井田右楽", reason: "取得不可", note: "DEEP133 IMPACT出場。Sherdog/DATA MMA/ja-wiki等どこにも英語表記・読みが出現せず推定不能" },
 ];
 
 // 大会結果(EVENT_RESULTS)を「選手軸」に組み替えるための決定論的ロジック。

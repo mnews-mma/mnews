@@ -15,8 +15,6 @@ export default function OrgRankingView({
   return (
     <div style={{ padding: "0 24px 48px" }}>
       <p style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.8, marginBottom: 24 }}>
-        {data.source}をそのまま転載しています（順位は団体公式の値・Mニュースは順位を作成・変更しません）。
-        <br />
         出典：
         <a href={data.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
           {data.source}

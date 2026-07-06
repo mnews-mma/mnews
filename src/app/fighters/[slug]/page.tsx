@@ -146,14 +146,8 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
 
-        {/* 団体バッジ + 階級 */}
+        {/* 階級表示 */}
         <div className="fighter-org-row">
-          <span
-            className="fighter-org-badge"
-            style={{ color: SOURCES[fighter.org].color, borderColor: SOURCES[fighter.org].color }}
-          >
-            {SOURCES[fighter.org].label}
-          </span>
           <span className="fighter-org-class">{fighter.weightClass}</span>
         </div>
 
@@ -164,10 +158,10 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         {/* ニックネーム */}
         {nickname && <div className="fighter-page-nickname">{nickname}</div>}
 
-        {/* 団体タグ(現ランカー/2026出場の実態。パンクラス/修斗は順位つき→公式ランキングへ) */}
-        {orgTags.length > 0 && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "10px 0 2px" }}>
-            {orgTags.map((t) => {
+        {/* 団体表示(1箇所に統一): タグがあれば現状(順位/リンク付き)、無ければ所属団体のみ */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "10px 0 2px" }}>
+          {orgTags.length > 0 ? (
+            orgTags.map((t) => {
               const chip = (
                 <span
                   style={{
@@ -192,9 +186,16 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
               ) : (
                 <span key={t.key}>{chip}</span>
               );
-            })}
-          </div>
-        )}
+            })
+          ) : (
+            <span
+              className="fighter-org-badge"
+              style={{ color: SOURCES[fighter.org].color, borderColor: SOURCES[fighter.org].color }}
+            >
+              {SOURCES[fighter.org].label}
+            </span>
+          )}
+        </div>
 
         {/* 次戦バナー */}
         {nextFight && (() => {

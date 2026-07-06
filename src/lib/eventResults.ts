@@ -1012,7 +1012,7 @@ export const EVENT_RESULTS: EventResult[] = [
       {
         weightClass: "DEEPライト級",
         fighterA: "鈴木大晟",
-        fighterB: "奥村歩生",
+        fighterB: "奥村アイル",
         winner: "鈴木大晟",
         method: "TKO",
         round: "1R 3:25",
