@@ -15,11 +15,13 @@ export interface RankEntry {
   slug: string | null; // DB内選手にマッチすれば slug(選手ページリンク用)
 }
 export interface RankedClass {
-  weightClass: OrgRankClass;
+  // パンクラス/修斗はMニュース5階級のみ。RIZIN/DEEP現王者ページ(champions.ts)は
+  // メガトン級・ストロー級等それ以外の階級も扱うため string で受ける。
+  weightClass: OrgRankClass | string;
   entries: RankEntry[];
 }
 export interface OrgRankingData {
-  org: "pancrase" | "shooto";
+  org: "pancrase" | "shooto" | "rizin" | "deep";
   source: string; // 出典表示名
   sourceUrl: string;
   fetchedDate: string; // 取得日 YYYY-MM-DD
