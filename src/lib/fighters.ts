@@ -1286,6 +1286,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "kuzyutina-natasha", nameJa: "ナターシャ・クジュティナ", nameEn: "Natasha Kuzyutina", org: "rizin", weightClass: "女子アトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ナタリア・クジュティナ" },
   { slug: "cafaro-ryan", nameJa: "ライアン・カファロ", nameEn: "Ryan Cafaro", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ライアン・カファロ" },
   { slug: "haga-bilalkai", nameJa: "芳賀ビラル海", nameEn: "Bilal Kai Haga", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "芳賀ビラル海" },
+  { slug: "aimoto-kazuki", nameJa: "相本宗輝", nameEn: "Kazuki Aimoto", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {
