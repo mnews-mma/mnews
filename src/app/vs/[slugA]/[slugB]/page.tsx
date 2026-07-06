@@ -8,16 +8,28 @@ import { pageMetadata } from "@/lib/seo";
 
 const SITE_URL = "https://www.mnews.jp";
 
+// Xカードツールの手指定階級ラベル(?wc=)を OG画像に反映するための共通ヘルパ。
+function wcOf(searchParams: Record<string, string | string[] | undefined>): string {
+  const raw = searchParams.wc;
+  return (Array.isArray(raw) ? raw[0] : raw ?? "").trim();
+}
+function vsOgPath(slugA: string, slugB: string, wc: string): string {
+  return `/api/og/vs/${slugA}/${slugB}${wc ? `?wc=${encodeURIComponent(wc)}` : ""}`;
+}
+
 export async function generateMetadata({
   params,
+  searchParams,
 }: {
   params: Promise<{ slugA: string; slugB: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slugA, slugB } = await params;
   const fighterA = getFighter(slugA);
   const fighterB = getFighter(slugB);
   if (!fighterA || !fighterB) return { title: "対戦カード | Mニュース" };
 
+  const wc = wcOf(await searchParams);
   const title = `${fighterA.nameJa} vs ${fighterB.nameJa} | Mニュース`;
   const description = `${fighterA.nameJa}（${fighterA.wins}勝${fighterA.losses}敗）vs ${fighterB.nameJa}（${fighterB.wins}勝${fighterB.losses}敗）の対戦カード。`;
 
@@ -26,7 +38,7 @@ export async function generateMetadata({
     description,
     path: `/vs/${slugA}/${slugB}`,
     image: {
-      url: ogImagePath(`/api/og/vs/${slugA}/${slugB}`),
+      url: ogImagePath(vsOgPath(slugA, slugB, wc)),
       width: 1200,
       height: 630,
       alt: `${fighterA.nameJa} vs ${fighterB.nameJa}`,
@@ -36,13 +48,16 @@ export async function generateMetadata({
 
 export default async function VsPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slugA: string; slugB: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slugA, slugB } = await params;
   const fighterA = getFighter(slugA);
   const fighterB = getFighter(slugB);
   if (!fighterA || !fighterB) notFound();
+  const wc = wcOf(await searchParams);
 
   const orgA = SOURCES[fighterA.org]?.label ?? fighterA.org;
   const orgB = SOURCES[fighterB.org]?.label ?? fighterB.org;
@@ -56,14 +71,14 @@ export default async function VsPage({
 
       <div style={{ padding: "0 24px 40px", maxWidth: 800 }}>
         <img
-          src={ogImagePath(`/api/og/vs/${slugA}/${slugB}`)}
+          src={ogImagePath(vsOgPath(slugA, slugB, wc))}
           alt={`${fighterA.nameJa} vs ${fighterB.nameJa}`}
           style={{ width: "100%", border: "1px solid var(--border)", display: "block", marginBottom: 16 }}
         />
 
         <div style={{ display: "flex", gap: 8, marginBottom: 32 }}>
           <a
-            href={`https://x.com/intent/post?url=${encodeURIComponent(`${SITE_URL}/vs/${slugA}/${slugB}`)}`}
+            href={`https://x.com/intent/post?url=${encodeURIComponent(`${SITE_URL}/vs/${slugA}/${slugB}${wc ? `?wc=${encodeURIComponent(wc)}` : ""}`)}`}
             target="_blank"
             rel="noopener noreferrer"
             style={{ padding: "10px 20px", background: "#000", color: "#fff", fontWeight: 700, borderRadius: 4, fontSize: 14, textDecoration: "none" }}

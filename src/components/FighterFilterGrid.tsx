@@ -132,7 +132,20 @@ export default function FighterFilterGrid({
                     {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
                   </span>
                 ))}
-                <span className="fighter-org" style={{ color: "var(--muted)" }}>
+                {/* 階級も団体タグと同じチップ体裁に統一(区切り"/"や細字添字は廃止)。
+                    色はorgと区別する中立チップ(枠線＋muted)。 */}
+                <span
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    padding: "1px 6px",
+                    borderRadius: 4,
+                    color: "var(--muted)",
+                    background: "transparent",
+                    border: "1px solid var(--border)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   {f.weightClass}
                 </span>
               </div>

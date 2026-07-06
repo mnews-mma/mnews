@@ -2,9 +2,6 @@ import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates } from "@/lib/fighters";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
-import { SOURCES } from "@/lib/sources";
-import { computeFighterTags } from "@/lib/orgTags";
-import { fetchOrgRankingsRemote } from "@/lib/orgRankingsRemote";
 import {
   OG_COLORS as COLORS,
   SITE_URL,
@@ -29,7 +26,7 @@ const NAME_STEPS = [
   { maxLen: 20, size: 68 },
 ];
 
-export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
+export async function GET(req: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
     const seed = getFighter(slug);
@@ -44,9 +41,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
     const subPct = (sub / total) * 100;
     const decPct = (decision / total) * 100;
 
-    // 団体表示はタグ1系統に統一(/fighters と一致)。org由来の単独バッジは出さない。
-    const orgRankings = await fetchOrgRankingsRemote();
-    const orgTags = computeFighterTags(fighter, orgRankings);
+    // カードに乗せる階級は選手DB属性ではなく手指定ラベル(?wc=)で決める。
+    // 団体表示・選手DB階級の自動表示はしない(夢のカード/団体またぎで邪魔になるため)。
+    // 空欄なら階級行を出さない。
+    const wcLabel = (new URL(req.url).searchParams.get("wc") ?? "").trim();
     const fonts = await loadOgFonts();
     const nameSize = fitFontSize(fighter.nameJa, NAME_STEPS);
 
@@ -63,7 +61,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
             position: "relative",
           }}
         >
-          {/* 上部帯: 団体バッジ + 階級 + EN名 */}
+          {/* 上部帯: 手指定の階級ラベル(空欄なら非表示) + EN名 */}
           <div
             style={{
               display: "flex",
@@ -73,36 +71,20 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              {orgTags.map((t) => (
+              {wcLabel !== "" && (
                 <div
-                  key={t.key}
                   style={{
                     display: "flex",
                     fontFamily: "Noto Sans JP",
                     fontWeight: 900,
                     fontSize: "20px",
-                    color: "#FFFFFF",
-                    background: SOURCES[t.key].color,
-                    padding: "5px 14px",
+                    color: COLORS.ash,
                     letterSpacing: "1px",
                   }}
                 >
-                  {t.label}
-                  {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
+                  {wcLabel}
                 </div>
-              ))}
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "Noto Sans JP",
-                  fontWeight: 900,
-                  fontSize: "20px",
-                  color: COLORS.ash,
-                  letterSpacing: "1px",
-                }}
-              >
-                {fighter.weightClass}
-              </div>
+              )}
             </div>
             <div
               style={{

@@ -24,10 +24,20 @@ const TAG_LINK: Record<OrgTagKey, string | null> = {
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { slug } = await params;
   const seed = getFighter(slug);
   if (!seed) return { title: "選手が見つかりません | Mニュース" };
+  // Xカードツールの手指定階級ラベル(?wc=)を og:image に反映(空欄なら付けない)。
+  const wcRaw = (await searchParams).wc;
+  const wc = (Array.isArray(wcRaw) ? wcRaw[0] : wcRaw ?? "").trim();
+  const ogPath = `/api/og/fighter/${slug}${wc ? `?wc=${encodeURIComponent(wc)}` : ""}`;
   // Wikipedia から取得した実際の戦績を meta にも反映（seed と乖離させない）
   const fighter = await resolveFighter(seed);
   const appearance = findNextAppearance(fighter.nameJa);
@@ -44,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: `${nextFightDesc}${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${SOURCES[fighter.org].label}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
     path: `/fighters/${fighter.slug}`,
     image: {
-      url: ogImagePath(`/api/og/fighter/${fighter.slug}`),
+      url: ogImagePath(ogPath),
       width: 1200,
       height: 630,
       alt: `${fighter.nameJa} 戦績カード`,
@@ -146,11 +156,6 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
 
-        {/* 階級表示 */}
-        <div className="fighter-org-row">
-          <span className="fighter-org-class">{fighter.weightClass}</span>
-        </div>
-
         {/* 選手名 */}
         <h1 className="fighter-page-name">{fighter.nameJa}</h1>
         {fighter.nameEn && <div className="fighter-name-en">{fighter.nameEn}</div>}
@@ -158,38 +163,50 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         {/* ニックネーム */}
         {nickname && <div className="fighter-page-nickname">{nickname}</div>}
 
-        {/* 団体表示(タグ1系統に統一)。org由来のフォールバックバッジは出さない
-            (現在の立場で付くタグが無ければ団体表示なし = /fighters カードと一致)。 */}
-        {orgTags.length > 0 && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "10px 0 2px" }}>
-            {orgTags.map((t) => {
-              const chip = (
-                <span
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 700,
-                    padding: "3px 10px",
-                    borderRadius: 5,
-                    color: "#fff",
-                    background: SOURCES[t.key].color,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {t.label}
-                  {t.weightClass ? ` ${t.weightClass}` : ""}
-                  {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
-                </span>
-              );
-              return TAG_LINK[t.key] ? (
-                <a key={t.key} href={TAG_LINK[t.key]!} style={{ textDecoration: "none" }}>
-                  {chip}
-                </a>
-              ) : (
-                <span key={t.key}>{chip}</span>
-              );
-            })}
-          </div>
-        )}
+        {/* 団体タグ＋階級をチップ体裁で統一(区切り"/"や細字添字は廃止・/fighters カードと同体裁)。
+            タグ無しでも階級チップは常に表示。org由来のフォールバックバッジは出さない。 */}
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, margin: "10px 0 2px" }}>
+          {orgTags.map((t) => {
+            const chip = (
+              <span
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  padding: "3px 10px",
+                  borderRadius: 5,
+                  color: "#fff",
+                  background: SOURCES[t.key].color,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {t.label}
+                {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
+              </span>
+            );
+            return TAG_LINK[t.key] ? (
+              <a key={t.key} href={TAG_LINK[t.key]!} style={{ textDecoration: "none" }}>
+                {chip}
+              </a>
+            ) : (
+              <span key={t.key}>{chip}</span>
+            );
+          })}
+          {/* 階級チップ(中立色・org と区別) */}
+          <span
+            style={{
+              fontSize: 12,
+              fontWeight: 700,
+              padding: "3px 10px",
+              borderRadius: 5,
+              color: "var(--muted)",
+              background: "transparent",
+              border: "1px solid var(--border)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {fighter.weightClass}
+          </span>
+        </div>
 
         {/* 次戦バナー */}
         {nextFight && (() => {
