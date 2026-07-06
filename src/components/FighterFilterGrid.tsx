@@ -113,32 +113,31 @@ export default function FighterFilterGrid({
               className="fighter-card"
               style={{ borderLeftColor: SOURCES[f.org].color }}
             >
-              <div className="fighter-org" style={{ color: SOURCES[f.org].color }}>
-                {SOURCES[f.org].label} / {f.weightClass}
+              {/* 団体はタグ1系統に統一(org由来の重複バッジは出さない)。タグ＋階級を上部に。 */}
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 4, marginBottom: 2 }}>
+                {(tagsBySlug[f.slug] || []).map((t) => (
+                  <span
+                    key={t.key}
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                      padding: "1px 6px",
+                      borderRadius: 4,
+                      color: "#fff",
+                      background: TAG_COLOR[t.key],
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {t.label}
+                    {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
+                  </span>
+                ))}
+                <span className="fighter-org" style={{ color: "var(--muted)" }}>
+                  {f.weightClass}
+                </span>
               </div>
               <div className="fighter-name">{f.nameJa}</div>
               {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
-              {(tagsBySlug[f.slug] || []).length > 0 && (
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 4, margin: "4px 0 2px" }}>
-                  {tagsBySlug[f.slug].map((t) => (
-                    <span
-                      key={t.key}
-                      style={{
-                        fontSize: 10,
-                        fontWeight: 700,
-                        padding: "1px 6px",
-                        borderRadius: 4,
-                        color: "#fff",
-                        background: TAG_COLOR[t.key],
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {t.label}
-                      {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
-                    </span>
-                  ))}
-                </div>
-              )}
               {f.noRecordData ? (
                 <div className="fighter-record" style={{ fontSize: 14, color: "var(--muted)" }}>
                   データなし

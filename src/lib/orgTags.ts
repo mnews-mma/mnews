@@ -7,6 +7,7 @@
 // 順位・タグは静的に選手へ書かず、ランキングデータ+EVENT_RESULTSから毎回導出する
 // (＝既存公開選手のデータを一切書き換えない)。
 import { EVENT_RESULTS } from "./eventResults";
+import type { FightRecord } from "./fighters";
 import type { OrgRankingsFile } from "./orgRankingsData";
 
 export type OrgTagKey = "ufc" | "rizin" | "deep" | "pancrase" | "shooto";
@@ -28,9 +29,9 @@ export interface OrgTag {
 
 const norm = (s: string) => s.replace(/[\s　・☆]/g, "");
 
-// タグを付与してよい選手 = 二次PRで hidden→公開昇格した「新規表示分」だけ。
-// 既存公開選手(シード原選手・chunk3外国人など、二次以前から hidden=false)は
-// タグ付与しない(不可侵)。既存公開でタグ該当する選手はレポートで人間判断へ回す。
+// 二次PR以降に hidden→公開昇格した「新規表示分」の選手集合。
+// 注: 団体タグ付与のゲートとしては使わない(computeFighterTagsは全選手に一律適用)。
+// 現在は /deep-2026 の一覧を「新規昇格分のDEEP2026出場者」に絞る用途のみで参照する。
 export const NEW_TAGGED_SLUGS = new Set<string>([
   "ohara-juri", "kuramoto-daigo", "shimada-ibuki", "sakai-ryo", "sekihara-sho", "rikiya",
   "gomyo-hiroto", "tsubaki-asuka", "hibino-junya", "kenshiro", "nakatani-yuga", "suzuki-taisei",
@@ -62,16 +63,27 @@ for (const e of EVENT_RESULTS) {
   }
 }
 
-// 2026年1月以降にRIZIN主催MMA興行に出場した選手(名前集合)。
+// 2025年1月以降にRIZIN主催MMA興行へ出場した選手(名前集合・EVENT_RESULTS由来)。
 // EVENT_RESULTS の org==="rizin" はMMA興行のみ(キック=RIZIN FIGHTは含まれない)。
-const rizin2026Names = new Set<string>();
+// しきい値を2026→2025に緩めたのは、片方の年がmnews未収録でもデータ欠損に強く
+// するため("2026に出ていない"のではなく"mnewsが未記録"による誤タグ落ちを防ぐ)。
+const RIZIN_SINCE = "2025-01-01";
+const rizinRecentNames = new Set<string>();
 for (const e of EVENT_RESULTS) {
-  if (e.org !== "rizin" || e.date < "2026-01-01") continue;
+  if (e.org !== "rizin" || e.date < RIZIN_SINCE) continue;
   for (const f of e.fights) {
-    if (f.fighterA) rizin2026Names.add(norm(f.fighterA));
-    if (f.fighterB) rizin2026Names.add(norm(f.fighterB));
+    if (f.fighterA) rizinRecentNames.add(norm(f.fighterA));
+    if (f.fighterB) rizinRecentNames.add(norm(f.fighterB));
   }
 }
+
+// RIZINタグの明示例外(slug指定)。負傷欠場等で2025以降の自動判定から漏れるが、
+// RIZIN主力として扱うべき選手のみ。例外は最小限に留める(原則は基準側で拾う)。
+//   平本蓮 … 大怪我で出場が途切れ直近RIZIN戦が2024。RIZIN主力・負傷欠場中。
+const RIZIN_TAG_EXCEPTIONS = new Set<string>(["hiramoto-ren"]);
+
+// RIZIN戦とみなすイベント名(ja-wiki戦績のevent文字列)。
+const RIZIN_EVENT_RE = /RIZIN|ライジン/i;
 
 // 選手の weightClass ラベルを Mニュース5階級へ。5階級外(ストロー/ウェルター/ミドル/
 // 女子)は null。DEEPメガトン等はヘビー級に寄せる。DEEP一覧のグルーピングに使う。
@@ -92,56 +104,66 @@ export function toFiveClass(weightClass: string): FiveClass | null {
 export function isDeep2026(nameJa: string): boolean {
   return deep2026Names.has(norm(nameJa));
 }
-export function isRizin2026(nameJa: string): boolean {
-  return rizin2026Names.has(norm(nameJa));
-}
 
 export interface TaggableFighter {
   slug: string;
   nameJa: string;
   weightClass: string;
   org: string;
+  // 解決済みwiki戦績(あれば)。RIZINタグ判定にEVENT_RESULTSだけでなく
+  // wiki戦績のRIZIN戦(2025以降)も併用してデータ欠損に強くするために使う。
+  history?: FightRecord[];
 }
 
-// 選手のタグを導出。orgRankings は fetchOrgRankings() の結果。
-// 付与ルール:
-//   - 新規公開昇格分(NEW_TAGGED_SLUGS) … DEEP / パンクラス / 修斗(現ランカーは順位つき)。
-//     DEEPは「2026以降ナンバー本戦にEVENT_RESULTS上で出場済み」または「fighter.orgがdeep
-//     (=調査済みの現所属)」のどちらかで付与。後者は今後開催予定のDEEP興行(EVENT_RESULTS
-//     未反映)に出る新規追加選手でも団体フィルタに出るようにするため。
-//   - それ以外(=追加前の既存公開選手) … UFC のみ(今回の明示例外)。新規分・スタブには
-//     UFCを付けない。DEEP/パンクラス/修斗を既存公開に付けない(不可侵)。
-//   - RIZIN は上記と独立して全選手に付与判定(2026年以降のRIZIN MMA出場実績があれば、
-//     NEW_TAGGED_SLUGS/既存公開いずれでも付く。DEEP等との併記もありうる=クロスオーバー出場)。
+// 2025年以降にRIZINへ出場したか。判定ソースをEVENT_RESULTS単独に限定せず、
+// (a)EVENT_RESULTS 2025+ / (b)解決済みwiki戦績のRIZIN戦2025+ / (c)明示例外 を併用。
+// 捏造はしない(EVENT_RESULTSに無い試合を足さず、既にDBが持つwiki戦績から導く)。
+export function isRizinRecent(f: TaggableFighter): boolean {
+  if (RIZIN_TAG_EXCEPTIONS.has(f.slug)) return true;
+  if (rizinRecentNames.has(norm(f.nameJa))) return true;
+  if (f.history) {
+    for (const h of f.history) {
+      if (h.date >= RIZIN_SINCE && RIZIN_EVENT_RE.test(h.event)) return true;
+    }
+  }
+  return false;
+}
+
+// 選手の団体タグを導出。orgRankings は fetchOrgRankings() の結果。
+// 全選手に同じ基準で一律適用する(旧NEW_TAGGED_SLUGSゲートは撤去)。団体表示は
+// このタグ1系統に統一され、/fighters・選手ページ・Xカードで同じ結果になる。
+// 付与ルール("所属歴"ではなく"現在の立場/直近の実態"で付ける):
+//   UFC       … fighter.org === "ufc"(UFC所属/出場)。
+//   RIZIN     … 2025年以降にRIZIN出場(isRizinRecent: EVENT_RESULTS 2025+ / wiki戦績の
+//               RIZIN戦2025+ / 明示例外 の併用)。2024以前が最後の選手は付けない
+//               (過去の単発出場は拾わない芯は維持・fighter.org単独では判定しない)。
+//   DEEP      … 2026以降ナンバー本戦出場(EVENT_RESULTS由来) または fighter.org === "deep"。
+//   パンクラス … 現ランカー(公式ランキングに slug 一致で掲載・順位つき)。
+//   修斗       … 現ランカー(同上)。
+// 並び順は表示フィルタと揃える: UFC / RIZIN / DEEP / パンクラス / 修斗。
 export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsFile): OrgTag[] {
   const tags: OrgTag[] = [];
 
-  if (NEW_TAGGED_SLUGS.has(f.slug)) {
-    // パンクラス/修斗 = 現ランカー(公式ランキングに slug 一致で載っている)
-    for (const key of ["pancrase", "shooto"] as const) {
-      const data = orgRankings[key];
-      if (!data) continue;
-      for (const c of data.classes) {
-        const hit = c.entries.find((e) => e.slug === f.slug);
-        if (hit) {
-          tags.push({ key, label: ORG_TAG_LABEL[key], weightClass: c.weightClass, rank: hit.rank });
-          break;
-        }
+  if (f.org === "ufc") {
+    tags.push({ key: "ufc", label: ORG_TAG_LABEL.ufc, weightClass: f.weightClass });
+  }
+  if (isRizinRecent(f)) {
+    tags.push({ key: "rizin", label: ORG_TAG_LABEL.rizin, weightClass: f.weightClass });
+  }
+  if (isDeep2026(f.nameJa) || f.org === "deep") {
+    tags.push({ key: "deep", label: ORG_TAG_LABEL.deep, weightClass: f.weightClass });
+  }
+  // パンクラス/修斗 = 現ランカー(公式ランキングに slug 一致で載っている)
+  for (const key of ["pancrase", "shooto"] as const) {
+    const data = orgRankings[key];
+    if (!data) continue;
+    for (const c of data.classes) {
+      const hit = c.entries.find((e) => e.slug === f.slug);
+      if (hit) {
+        tags.push({ key, label: ORG_TAG_LABEL[key], weightClass: c.weightClass, rank: hit.rank });
+        break;
       }
     }
-    if (isDeep2026(f.nameJa) || f.org === "deep") {
-      tags.push({ key: "deep", label: ORG_TAG_LABEL.deep, weightClass: f.weightClass });
-    }
-  } else {
-    // 既存公開選手(不可侵の明示例外): UFC のみ付与。
-    if (f.org === "ufc") {
-      tags.push({ key: "ufc", label: ORG_TAG_LABEL.ufc, weightClass: f.weightClass });
-    }
-  }
-
-  // RIZIN: 上のいずれの分岐とも独立に判定(クロスオーバー出場を見落とさない)。
-  if (isRizin2026(f.nameJa) && !tags.some((t) => t.key === "rizin")) {
-    tags.push({ key: "rizin", label: ORG_TAG_LABEL.rizin, weightClass: f.weightClass });
   }
 
   return tags;
