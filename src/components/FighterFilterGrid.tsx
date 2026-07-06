@@ -6,17 +6,13 @@ import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import type { OrgTag, OrgTagKey } from "@/lib/orgTags";
 
-const ORG_OPTIONS: { key: "ufc" | "rizin"; label: string }[] = [
-  { key: "ufc", label: "UFC" },
-  { key: "rizin", label: "RIZIN" },
-];
-
-// 団体タグの絞り込み(現ランカー/2026出場の実態ベース。既存公開選手には付かない)
+// 団体フィルタ = 今回の4タグ(現ランカー/2026出場の実態ベース。既存公開選手には付かない)。
+// UFCはタグ付与条件が未定のため今回スコープ外(フィルタに出さない)。並び順固定。
 const TAG_OPTIONS: { key: OrgTagKey; label: string }[] = [
-  { key: "pancrase", label: "パンクラス" },
-  { key: "shooto", label: "しゅうと" },
-  { key: "deep", label: "DEEP" },
   { key: "rizin", label: "RIZIN" },
+  { key: "deep", label: "DEEP" },
+  { key: "pancrase", label: "パンクラス" },
+  { key: "shooto", label: "修斗" },
 ];
 
 const TAG_COLOR: Record<OrgTagKey, string> = {
@@ -44,14 +40,12 @@ export default function FighterFilterGrid({
   fighters: ResolvedFighter[];
   tagsBySlug?: Record<string, OrgTag[]>;
 }) {
-  const [org, setOrg] = useState<string | null>(null);
   const [weightClass, setWeightClass] = useState<string | null>(null);
   const [tag, setTag] = useState<OrgTagKey | null>(null);
 
   const filtered = useMemo(() => {
     return fighters
       .filter((f) => {
-        if (org && f.org !== org) return false;
         if (weightClass && f.weightClass !== weightClass) return false;
         if (tag && !(tagsBySlug[f.slug] || []).some((t) => t.key === tag)) return false;
         return true;
@@ -64,29 +58,11 @@ export default function FighterFilterGrid({
         const wb = WEIGHT_ORDER[b.weightClass] ?? 9;
         return wa - wb;
       });
-  }, [fighters, org, weightClass, tag, tagsBySlug]);
+  }, [fighters, weightClass, tag, tagsBySlug]);
 
   return (
     <>
       <div className="fighter-filter-bar">
-        <div className="fighter-filter-group">
-          <span className="fighter-filter-label">団体</span>
-          <button
-            className={`fighter-filter-chip ${org === null ? "active" : ""}`}
-            onClick={() => setOrg(null)}
-          >
-            すべて
-          </button>
-          {ORG_OPTIONS.map((o) => (
-            <button
-              key={o.key}
-              className={`fighter-filter-chip ${org === o.key ? "active" : ""}`}
-              onClick={() => setOrg(o.key)}
-            >
-              {o.label}
-            </button>
-          ))}
-        </div>
         <div className="fighter-filter-group">
           <span className="fighter-filter-label">階級</span>
           <button
@@ -106,7 +82,7 @@ export default function FighterFilterGrid({
           ))}
         </div>
         <div className="fighter-filter-group">
-          <span className="fighter-filter-label">団体タグ</span>
+          <span className="fighter-filter-label">団体</span>
           <button
             className={`fighter-filter-chip ${tag === null ? "active" : ""}`}
             onClick={() => setTag(null)}

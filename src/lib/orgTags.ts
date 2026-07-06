@@ -1,6 +1,6 @@
 // 団体タグの付与ロジック(基盤)。"所属歴"ではなく"現在の立場/直近の実態"で付ける。
 //   パンクラス … 現ランカーのみ(公式ランキング掲載選手)
-//   しゅうと   … 現ランカーのみ(同上)
+//   修斗       … 現ランカーのみ(同上)
 //   DEEP       … 2026以降のナンバーシリーズ(DEEP.### 本戦)出場者のみ
 //   RIZIN      … 2026年1月以降にRIZIN主催のMMA興行に出場した選手のみ
 // 順位はパンクラス/修斗タグにのみ紐づく付加情報。DEEP/RIZINは階級のみ(順位なし)。
@@ -13,7 +13,7 @@ export type OrgTagKey = "pancrase" | "shooto" | "deep" | "rizin";
 
 export const ORG_TAG_LABEL: Record<OrgTagKey, string> = {
   pancrase: "パンクラス",
-  shooto: "しゅうと",
+  shooto: "修斗",
   deep: "DEEP",
   rizin: "RIZIN",
 };
