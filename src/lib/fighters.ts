@@ -1277,6 +1277,15 @@ export const FIGHTERS: Fighter[] = [
   { slug: "miyake-kisa", nameJa: "三宅輝砂", nameEn: "Kisa Miyake", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "aoi-jin", nameJa: "青井人", nameEn: "Jin Aoi", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "hamada-takumi", nameJa: "濱田巧", nameEn: "Takumi Hamada", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  // 手動追加8名(2026-07・通称なし指定)
+  { slug: "laramie-tony", nameJa: "トニー・ララミー", nameEn: "Tony Laramie", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "トニー・ララミー" },
+  { slug: "kolesnik-viktor", nameJa: "ビクター・コレスニック", nameEn: "Viktor Kolesnik", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ビクター・コレスニック" },
+  { slug: "kim-kyungpyo", nameJa: "キム・ギョンピョ", nameEn: "Kyung Pyo Kim", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "キム・ギョンピョ" },
+  { slug: "kimura-shuya", nameJa: "木村柊也", nameEn: "Shuya Kimura", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "木村柊也" },
+  { slug: "lee-kaiwen", nameJa: "リー・カイウェン", nameEn: "Kaiwen Lee", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "リー・カイウェン" },
+  { slug: "kuzyutina-natasha", nameJa: "ナターシャ・クジュティナ", nameEn: "Natasha Kuzyutina", org: "rizin", weightClass: "女子アトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ナタリア・クジュティナ" },
+  { slug: "cafaro-ryan", nameJa: "ライアン・カファロ", nameEn: "Ryan Cafaro", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ライアン・カファロ" },
+  { slug: "haga-bilalkai", nameJa: "芳賀ビラル海", nameEn: "Bilal Kai Haga", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "芳賀ビラル海" },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {

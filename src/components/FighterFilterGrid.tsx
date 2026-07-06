@@ -45,6 +45,31 @@ function matchesWeightFilter(fighterWeightClass: string, selected: string | null
   return fighterWeightClass === selected;
 }
 
+// ひらがな⇔カタカナの単純変換(Unicode範囲シフト)。入力の表記ゆれ(「ぐすたぼ」/
+// 「グスタボ」)を吸収するために使う。読み仮名データを持たない漢字名は対象外
+// (例:「平良達郎」はひらがな入力では引っかからない=データが無い以上の裏取りはしない)。
+function toKatakana(s: string): string {
+  return s.replace(/[ぁ-ゖ]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0x60));
+}
+function toHiragana(s: string): string {
+  return s.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
+}
+
+// 名前検索(日本語名・カナ・ローマ字を横断照合)。団体・階級は対象外(既存フィルタの役割)。
+function matchesNameSearch(f: ResolvedFighter, query: string): boolean {
+  const q = query.trim();
+  if (!q) return true;
+  const qLower = q.toLowerCase();
+  const qKata = toKatakana(q);
+  const qHira = toHiragana(q);
+  return (
+    f.nameJa.includes(q) ||
+    f.nameJa.includes(qKata) ||
+    f.nameJa.includes(qHira) ||
+    f.nameEn.toLowerCase().includes(qLower)
+  );
+}
+
 export default function FighterFilterGrid({
   fighters,
   tagsBySlug = {},
@@ -54,12 +79,14 @@ export default function FighterFilterGrid({
 }) {
   const [weightClass, setWeightClass] = useState<string | null>(null);
   const [tag, setTag] = useState<OrgTagKey | null>(null);
+  const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
     return fighters
       .filter((f) => {
         if (!matchesWeightFilter(f.weightClass, weightClass)) return false;
         if (tag && !(tagsBySlug[f.slug] || []).some((t) => t.key === tag)) return false;
+        if (!matchesNameSearch(f, query)) return false;
         return true;
       })
       .sort((a, b) => {
@@ -70,11 +97,21 @@ export default function FighterFilterGrid({
         const wb = WEIGHT_ORDER[b.weightClass] ?? 9;
         return wa - wb;
       });
-  }, [fighters, weightClass, tag, tagsBySlug]);
+  }, [fighters, weightClass, tag, tagsBySlug, query]);
 
   return (
     <>
       <div className="fighter-filter-bar">
+        <div className="fighter-filter-group">
+          <span className="fighter-filter-label">検索</span>
+          <input
+            type="text"
+            className="fighter-search-input"
+            placeholder="選手名で検索（日本語・カナ・ローマ字）"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
         <div className="fighter-filter-group">
           <span className="fighter-filter-label">階級</span>
           <button
@@ -113,6 +150,11 @@ export default function FighterFilterGrid({
         </div>
       </div>
 
+      {filtered.length === 0 ? (
+        <div style={{ padding: "48px 24px", textAlign: "center", color: "var(--muted)", fontSize: 13 }}>
+          該当なし
+        </div>
+      ) : (
       <div className="fighter-grid">
         {filtered.map((f) => {
           const { winRate, finishRate } = calcFighterRates(f);
@@ -182,6 +224,7 @@ export default function FighterFilterGrid({
           );
         })}
       </div>
+      )}
     </>
   );
 }
