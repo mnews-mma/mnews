@@ -1,6 +1,9 @@
-// RIZIN/DEEP の現王者(正規王者)一覧。トップページの「公式ランキング」セクションに
-// 表示する。取得元の生HTMLを直接パースして抽出した確定情報のみを載せる(AI要約は
-// 使わない・捏造ゼロ)。暫定王者・空位・抽出が曖昧な階級は掲載しない。
+import type { OrgRankingData } from "./orgRankings";
+
+// RIZIN/DEEP の現王者(正規王者)一覧。/ranking/rizin・/ranking/deep(および
+// トップページの導線)に表示する。取得元の生HTMLを直接パースして抽出した
+// 確定情報のみを載せる(AI要約は使わない・捏造ゼロ)。暫定王者・空位・抽出が
+// 曖昧な階級は掲載しない。
 //
 // 取得日: 2026-07-06
 //   DEEP:  https://www.deep2001.com/champ/
@@ -14,6 +17,29 @@ export interface ChampionEntry {
   name: string;
   generation: string; // 例 "第7代"
   slug: string | null;
+}
+
+const FETCHED_DATE = "2026-07-06";
+export const CHAMPION_SOURCES = {
+  rizin: { label: "RIZIN公式サイト", url: "https://jp.rizinff.com/fighters" },
+  deep: { label: "DEEP & DEEP JEWELS公式サイト", url: "https://www.deep2001.com/champ/" },
+} as const;
+
+// ChampionEntry[] を OrgRankingView が読める OrgRankingData 形式に変換する。
+// 各階級ちょうど1件(現王者)なので rank は一律「王者」(パンクラス/修斗の
+// 王者表示と同じ強調色になる)。
+export function championsToRankingData(org: "rizin" | "deep", list: ChampionEntry[]): OrgRankingData {
+  return {
+    org,
+    source: CHAMPION_SOURCES[org].label,
+    sourceUrl: CHAMPION_SOURCES[org].url,
+    fetchedDate: FETCHED_DATE,
+    rankingLabel: "現王者",
+    classes: list.map((c) => ({
+      weightClass: c.weightClass,
+      entries: [{ rank: "王者", officialName: c.name, slug: c.slug }],
+    })),
+  };
 }
 
 export const RIZIN_CHAMPIONS: ChampionEntry[] = [

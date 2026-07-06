@@ -1,8 +1,8 @@
 import type { OrgRankingData } from "@/lib/orgRankings";
 import { SOURCES } from "@/lib/sources";
 
-// パンクラス/修斗の公式ランキング表示(共通)。序列は団体公式の転載。
-// 順位:選手名(DB内ならリンク)。出典・取得日を明示。
+// パンクラス/修斗/RIZIN/DEEPの公式ランキング・現王者表示(共通)。序列・王者は
+// 団体公式の転載。順位(または「王者」):選手名(DB内ならリンク)。出典・取得日を明示。
 export default function OrgRankingView({
   data,
   linkableSlugs,
@@ -11,7 +11,7 @@ export default function OrgRankingView({
   linkableSlugs: string[]; // 公開かつ戦績データありの選手だけリンク。no-data/hidden/未照合は名前のみ
 }) {
   const linkable = new Set(linkableSlugs);
-  const color = data.org === "pancrase" ? SOURCES.pancrase.color : SOURCES.shooto.color;
+  const color = SOURCES[data.org].color;
   return (
     <div style={{ padding: "0 24px 48px" }}>
       <p style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.8, marginBottom: 24 }}>
