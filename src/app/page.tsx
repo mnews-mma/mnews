@@ -206,6 +206,12 @@ export default async function HomePage() {
           </div>
           <a href="/fighters" className="rail-more">全選手を見る →</a>
         </section>
+
+        {/* 団体公式ランキング(補助セクション。主目的は選手DBへの誘導のためトップ本体では目立たせない) */}
+        <section className="rail-panel">
+          <a href="/ranking/pancrase" className="rail-more">パンクラス公式ランキングを見る →</a>
+          <a href="/ranking/shooto" className="rail-more">修斗公式ランキングを見る →</a>
+        </section>
       </div>
       </div>
 

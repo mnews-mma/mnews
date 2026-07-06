@@ -1251,8 +1251,28 @@ export const FIGHTERS: Fighter[] = [
   // --- 団体ランキング top-5 未照合ぶんのDB追加(2026-07) ---
   { slug: "shimizu-hiroto", nameJa: "清水博人", nameEn: "Hiroto Shimizu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "otsuka-tomoki", nameJa: "大塚智貴", nameEn: "Tomoki Otsuka", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "tenya", nameJa: "天弥", nameEn: "Tenya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "tenya", nameJa: "天弥", nameEn: "Tenya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "kanbe-atsubo", nameJa: "神部篤坊", nameEn: "Atsubo Kanbe", org: "pancrase", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+
+  // --- DEEP 133 IMPACT(2026-09-13)出場選手のDB突合・追加分(2026-07) ---
+  { slug: "nishitani-taisei", nameJa: "大成", nameEn: "Taisei", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "西谷大成" },
+  { slug: "shibisai-shoma", nameJa: "シビサイ頌真", nameEn: "Shoma Shibisai", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "kitakata-daichi", nameJa: "北方大地", nameEn: "Daichi Kitakata", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "kaito", nameJa: "海飛", nameEn: "Kaito", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "mitsui-shunki", nameJa: "三井俊希", nameEn: "Shunki Mitsui", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "shirakawa-rikuto", nameJa: "白川ダーク陸斗", nameEn: "Rikuto Shirakawa", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "白川陸斗" },
+  { slug: "kitaoka-satoru", nameJa: "北岡悟", nameEn: "Satoru Kitaoka", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "yamasaki-yajuro", nameJa: "山崎弥十朗", nameEn: "Yajuro Yamasaki", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "nakatsukasa-taiyo", nameJa: "中務太陽", nameEn: "Taiyo Nakatsukasa", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "max-yoshida", nameJa: "MAX吉田", nameEn: "Max Yoshida", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "okumura-airu", nameJa: "奥村アイル", nameEn: "Airu Okumura", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+
+  // --- 手動追加6名(2026-07・通称なし指定) ---
+  { slug: "park-siwoo", nameJa: "パク・シウ", nameEn: "Si Woo Park", org: "deep", weightClass: "女子アトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  { slug: "lee-yeji", nameJa: "イ・イェジ", nameEn: "Ye Ji Lee", org: "deep", weightClass: "女子アトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  { slug: "miyake-kisa", nameJa: "三宅輝砂", nameEn: "Kisa Miyake", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  { slug: "aoi-jin", nameJa: "青井人", nameEn: "Jin Aoi", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  { slug: "hamada-takumi", nameJa: "濱田巧", nameEn: "Takumi Hamada", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {

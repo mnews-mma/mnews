@@ -74,9 +74,12 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // 1. fighter.nickname（固定値・直接指定）
   // 2. noNickname フラグが立っていれば非表示
   // 3. UFC公式 → 英語版Wikipedia → 日本語版Wikipedia の自動取得
+  // DEEP勢は裏取りコストの都合上、自動取得の通称を出さない方針(明示指定の
+  // fighter.nickname があればそれのみ尊重)。
   const nicknameWiki = enWiki ?? jaWiki;
   const nickname =
-    fighter.nickname ?? (fighter.noNickname ? undefined : ufcNickname ?? nicknameWiki?.infobox.nickname);
+    fighter.nickname ??
+    (fighter.noNickname || fighter.org === "deep" ? undefined : ufcNickname ?? nicknameWiki?.infobox.nickname);
 
   // recordFromResults 選手で ja-wiki のフル戦績が取れなかった場合は「データなし」。
   // 薄い自社数戦を生涯戦績のように見せない(捏造ゼロ・薄いものを出さない)。
