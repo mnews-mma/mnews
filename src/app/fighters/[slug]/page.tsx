@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
-import { resolveFighter } from "@/lib/feeds/resolveFighter";
+import { resolveFighter, resolveFighters } from "@/lib/feeds/resolveFighter";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
 import { EVENT_RESULTS } from "@/lib/eventResults";
@@ -119,9 +119,13 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const subW = Math.round((fighter.sub / finishBase) * 100);
   const decW = Math.round((fighter.decision / finishBase) * 100);
 
-  const sameWeightClass = FIGHTERS.filter(
+  // 同階級の選手: seed値(常に0-0-0)ではなく解決後の実戦績を使い、no-data(戦績実体なし)
+  // は /fighters 一覧と同基準で除外する(0-0-0で出さない)。同階級候補だけ解決する(軽量)。
+  const sameClassSeeds = FIGHTERS.filter(
     (f) => f.slug !== slug && f.weightClass === fighter.weightClass && !f.hidden
-  )
+  );
+  const sameWeightClass = (await resolveFighters(sameClassSeeds))
+    .filter((f) => !f.noRecordData)
     .map((f) => ({ f, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .slice(0, 4)

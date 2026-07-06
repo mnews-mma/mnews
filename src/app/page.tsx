@@ -8,6 +8,8 @@ import { SOURCES } from "@/lib/sources";
 import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
+import { fetchOrgRankings } from "@/lib/orgRankingsData";
+import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
@@ -64,12 +66,19 @@ export default async function HomePage() {
 
   const homepageFighters = FIGHTERS.filter((f) => HOMEPAGE_FIGHTER_SLUGS.has(f.slug));
 
-  const [articlesResult, fighters, videos, firstSeenMap] = await Promise.all([
+  const [articlesResult, fighters, videos, firstSeenMap, orgRankings] = await Promise.all([
     fetchAllArticles().catch(() => null),
     resolveFighters(homepageFighters),
     fetchLatestOfficialVideos().catch(() => []),
     fetchFirstSeenMap().catch(() => new Map<string, string>()),
+    fetchOrgRankings().catch(() => ({})),
   ]);
+  // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
+  const tagsBySlug: Record<string, OrgTag[]> = {};
+  for (const f of fighters) {
+    const tags = computeFighterTags(f, orgRankings);
+    if (tags.length) tagsBySlug[f.slug] = tags;
+  }
   if (articlesResult && articlesResult.articles.length >= 6) {
     articles = articlesResult.articles;
   }
@@ -177,7 +186,14 @@ export default async function HomePage() {
 
         <SocialSection videos={videos} />
 
-        {/* 主要選手 戦績まとめ（同じパネル構造・中身は戦績カード） */}
+        {/* 公式ランキング(選手一覧より上に配置) */}
+        <section className="rail-panel">
+          <div className="rail-head">公式ランキング</div>
+          <a href="/ranking/pancrase" className="rail-more">パンクラス 公式ランキングを見る →</a>
+          <a href="/ranking/shooto" className="rail-more">修斗 公式ランキングを見る →</a>
+        </section>
+
+        {/* 主要選手 戦績まとめ（/fighters と同じチップ体裁のカード） */}
         <section className="rail-panel">
           <div className="rail-head">主要選手 戦績まとめ</div>
           <div className="fighter-grid">
@@ -185,8 +201,39 @@ export default async function HomePage() {
               const { winRate, finishRate } = calcFighterRates(f);
               return (
                 <a key={f.slug} href={`/fighters/${f.slug}`} className="fighter-card">
-                  <div className="fighter-org" style={{ color: SOURCES[f.org].color }}>
-                    {SOURCES[f.org].label} / {f.weightClass}
+                  {/* 団体タグチップ＋階級チップ(区切り"/"や旧添字は廃止・/fighters と統一) */}
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 4, marginBottom: 2 }}>
+                    {(tagsBySlug[f.slug] || []).map((t) => (
+                      <span
+                        key={t.key}
+                        style={{
+                          fontSize: 10,
+                          fontWeight: 700,
+                          padding: "1px 6px",
+                          borderRadius: 4,
+                          color: "#fff",
+                          background: SOURCES[t.key as OrgTagKey].color,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {t.label}
+                        {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
+                      </span>
+                    ))}
+                    <span
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 700,
+                        padding: "1px 6px",
+                        borderRadius: 4,
+                        color: "var(--muted)",
+                        background: "transparent",
+                        border: "1px solid var(--border)",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {f.weightClass}
+                    </span>
                   </div>
                   <div className="fighter-name">{f.nameJa}</div>
                   {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
@@ -205,13 +252,6 @@ export default async function HomePage() {
             })}
           </div>
           <a href="/fighters" className="rail-more">全選手を見る →</a>
-        </section>
-
-        {/* 公式ランキング(補助セクション。主目的は選手DBへの誘導のためトップ本体では目立たせない) */}
-        <section className="rail-panel">
-          <div className="rail-head">公式ランキング</div>
-          <a href="/ranking/pancrase" className="rail-more">パンクラス 公式ランキングを見る →</a>
-          <a href="/ranking/shooto" className="rail-more">修斗 公式ランキングを見る →</a>
         </section>
       </div>
       </div>
