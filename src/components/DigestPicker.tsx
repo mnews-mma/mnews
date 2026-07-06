@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { condenseTopic, fullWidthLength } from "@/lib/tweetDigest";
 import CopyButton from "@/components/CopyButton";
 
@@ -31,8 +31,23 @@ export default function DigestPicker({
   dateLabel,
 }: {
   articles: PickerArticle[];
-  dateLabel: string; // "7/4"
+  dateLabel: string; // サーバ算出の「昨日(JST)」M/D。SSR初期表示用フォールバック
 }) {
+  // 「昨日(JST)」はブラウザ側でも算出し直す。サーバレンダのキャッシュや
+  // 開きっぱなしタブ/bfcache復帰で日付が前日のまま固定されるのを防ぎ、
+  // 閲覧時点の昨日を常に自動反映する。初期値はSSR値(ハイドレーション一致)。
+  const [dayLabel, setDayLabel] = useState(dateLabel);
+  useEffect(() => {
+    const recompute = () => {
+      // jstDateStr と同じ方式: UTCに+9hしてJSTの暦日にし、-1日。TZ非依存。
+      const y = new Date(Date.now() + 9 * 3600_000 - 86400_000);
+      setDayLabel(`${y.getUTCMonth() + 1}/${y.getUTCDate()}`);
+    };
+    recompute();
+    window.addEventListener("pageshow", recompute); // bfcache復帰時も再計算
+    return () => window.removeEventListener("pageshow", recompute);
+  }, []);
+
   // 選択は「順序付き」で保持する(投稿の行順=この順序)。チェックした順に
   // 末尾へ追加され、↑↓で自由に入れ替えられる。
   const [order, setOrder] = useState<string[]>(() =>
@@ -70,11 +85,11 @@ export default function DigestPicker({
     });
     // ハッシュタグ: 選択記事の団体タグを重複排除で最大3つ(#MMAは付けない)
     const tags = [...new Set(chosen.map((a) => a.orgHashtag).filter(Boolean))].slice(0, 3);
-    const parts = [`🥊 昨日のMMAニュースまとめ(${dateLabel})`, ...lines];
+    const parts = [`🥊 昨日のMMAニュースまとめ(${dayLabel})`, ...lines];
     if (tags.length > 0) parts.push(tags.join(" "));
     const body = parts.join("\n");
     return { text: body, count: Math.ceil(fullWidthLength(body)) };
-  }, [chosen, dateLabel]);
+  }, [chosen, dayLabel]);
 
   const replyText = "全件はこちら👇\nhttps://mnews.jp";
 
