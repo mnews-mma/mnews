@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates } from "@/lib/fighters";
 import { resolveFighter } from "@/lib/feeds/resolveFighter";
 import { SOURCES } from "@/lib/sources";
+import { computeFighterTags } from "@/lib/orgTags";
+import { fetchOrgRankingsRemote } from "@/lib/orgRankingsRemote";
 import {
   OG_COLORS as COLORS,
   SITE_URL,
@@ -42,8 +44,9 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
     const subPct = (sub / total) * 100;
     const decPct = (decision / total) * 100;
 
-    const orgLabel = SOURCES[fighter.org]?.label ?? fighter.org.toUpperCase();
-    const orgColor = SOURCES[fighter.org]?.color ?? COLORS.shu;
+    // 団体表示はタグ1系統に統一(/fighters と一致)。org由来の単独バッジは出さない。
+    const orgRankings = await fetchOrgRankingsRemote();
+    const orgTags = computeFighterTags(fighter, orgRankings);
     const fonts = await loadOgFonts();
     const nameSize = fitFontSize(fighter.nameJa, NAME_STEPS);
 
@@ -70,20 +73,24 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "Noto Sans JP",
-                  fontWeight: 900,
-                  fontSize: "20px",
-                  color: "#FFFFFF",
-                  background: orgColor,
-                  padding: "5px 14px",
-                  letterSpacing: "1px",
-                }}
-              >
-                {orgLabel}
-              </div>
+              {orgTags.map((t) => (
+                <div
+                  key={t.key}
+                  style={{
+                    display: "flex",
+                    fontFamily: "Noto Sans JP",
+                    fontWeight: 900,
+                    fontSize: "20px",
+                    color: "#FFFFFF",
+                    background: SOURCES[t.key].color,
+                    padding: "5px 14px",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  {t.label}
+                  {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
+                </div>
+              ))}
               <div
                 style={{
                   display: "flex",

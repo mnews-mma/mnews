@@ -2,7 +2,8 @@ import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates, type Fighter } from "@/lib/fighters";
 import { resolveFighter, type ResolvedFighter } from "@/lib/feeds/resolveFighter";
-import { SOURCES } from "@/lib/sources";
+import { computeFighterTags } from "@/lib/orgTags";
+import { fetchOrgRankingsRemote } from "@/lib/orgRankingsRemote";
 import { findMatchupEvent } from "@/lib/events";
 import { fitName, type FitOpts } from "@/lib/og/fitName";
 import {
@@ -29,12 +30,13 @@ function FighterSide({
   f,
   corner,
   fit,
+  orgText,
 }: {
   f: ResolvedFighter;
   corner: "left" | "right";
   fit: { fontSize: number; lines: string[] };
+  orgText: string; // 団体タグ由来のラベル(タグ無しなら階級のみ)
 }) {
-  const orgLabel = SOURCES[f.org]?.label ?? f.org.toUpperCase();
   const { winRate, finishRate } = calcFighterRates(f);
   const align = corner === "left" ? "flex-start" : "flex-end";
   const accent = corner === "left" ? COLORS.shu : COLORS.indigo;
@@ -53,7 +55,7 @@ function FighterSide({
           letterSpacing: "1px",
         }}
       >
-        {orgLabel} / {f.weightClass}
+        {orgText}
       </div>
 
       {/* 名前ゾーン: fitName()で事前確定した行を1行ずつ描画(satoriの自動折り返しに頼らない) */}
@@ -153,6 +155,15 @@ export async function GET(
       resolveFighter(seedB as Fighter),
     ]);
 
+    // 団体表示はタグ1系統に統一(/fighters と一致)。タグ無しなら階級のみ表示。
+    const orgRankings = await fetchOrgRankingsRemote();
+    const orgTextFor = (f: ResolvedFighter): string => {
+      const labels = computeFighterTags(f, orgRankings).map((t) => t.label);
+      return labels.length > 0 ? `${labels.join("・")} / ${f.weightClass}` : f.weightClass;
+    };
+    const orgTextA = orgTextFor(fighterA);
+    const orgTextB = orgTextFor(fighterB);
+
     // 左右の選手名は必ず同一フォントサイズにする。各名を個別にfitNameし、
     // 小さい方のfontSizeを共有サイズとして採用、その上で両名の行分割を
     // 共有サイズ基準で再計算する(片側だけの縮小はしない)。
@@ -243,7 +254,7 @@ export async function GET(
               }}
             />
 
-            <FighterSide f={fighterA} corner="left" fit={fitA} />
+            <FighterSide f={fighterA} corner="left" fit={fitA} orgText={orgTextA} />
 
             <div
               style={{
@@ -269,7 +280,7 @@ export async function GET(
               </div>
             </div>
 
-            <FighterSide f={fighterB} corner="right" fit={fitB} />
+            <FighterSide f={fighterB} corner="right" fit={fitB} orgText={orgTextB} />
           </div>
 
           {/* フッター */}
