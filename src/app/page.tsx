@@ -10,6 +10,7 @@ import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
+import { RIZIN_CHAMPIONS, DEEP_CHAMPIONS, ChampionEntry } from "@/lib/champions";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
@@ -186,9 +187,48 @@ export default async function HomePage() {
 
         <SocialSection videos={videos} />
 
-        {/* 公式ランキング(選手一覧より上に配置) */}
+        {/* 公式ランキング(選手一覧より上に配置)。RIZIN/DEEPは現王者(正規王者)のみ掲載。
+            暫定王者・空位・抽出が曖昧な階級は出さない(詳細は src/lib/champions.ts)。 */}
         <section className="rail-panel">
           <div className="rail-head">公式ランキング</div>
+          <div style={{ padding: "16px 20px 4px", display: "flex", flexDirection: "column", gap: 20 }}>
+            {([
+              { org: "rizin" as const, label: "RIZIN 現王者", list: RIZIN_CHAMPIONS },
+              { org: "deep" as const, label: "DEEP 現王者", list: DEEP_CHAMPIONS },
+            ]).map(({ org, label, list }) => (
+              <div key={org}>
+                <div
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: 11,
+                    letterSpacing: 1,
+                    color: SOURCES[org].color,
+                    fontWeight: 700,
+                    marginBottom: 8,
+                  }}
+                >
+                  {label}
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  {list.map((c: ChampionEntry) => (
+                    <div
+                      key={c.weightClass}
+                      style={{ display: "flex", alignItems: "baseline", gap: 10, fontSize: 13 }}
+                    >
+                      <span style={{ color: "var(--muted)", minWidth: 72, fontSize: 12 }}>{c.weightClass}</span>
+                      {c.slug ? (
+                        <a href={`/fighters/${c.slug}`} style={{ fontWeight: 700, color: "var(--fg)" }}>
+                          {c.name}
+                        </a>
+                      ) : (
+                        <span style={{ fontWeight: 700, color: "var(--fg)" }}>{c.name}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
           <a href="/ranking/pancrase" className="rail-more">パンクラス 公式ランキングを見る →</a>
           <a href="/ranking/shooto" className="rail-more">修斗 公式ランキングを見る →</a>
         </section>
@@ -217,7 +257,6 @@ export default async function HomePage() {
                         }}
                       >
                         {t.label}
-                        {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
                       </span>
                     ))}
                     <span

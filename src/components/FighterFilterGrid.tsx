@@ -129,7 +129,6 @@ export default function FighterFilterGrid({
                     }}
                   >
                     {t.label}
-                    {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
                   </span>
                 ))}
                 {/* 階級も団体タグと同じチップ体裁に統一(区切り"/"や細字添字は廃止)。
