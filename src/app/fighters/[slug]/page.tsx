@@ -5,6 +5,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighter, resolveFighters } from "@/lib/feeds/resolveFighter";
+import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
 import { EVENT_RESULTS } from "@/lib/eventResults";
@@ -106,6 +107,8 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
 
   const fighter = await resolveFighter(seed);
   const { history, wins, losses, draws, nickname, birthPlace, age, noRecordData } = fighter;
+  // 戦績テーブルの対戦相手名リンク用(no-data/hiddenの選手はテキスト表示にする)。
+  const visibleSlugs = await getVisibleFighterSlugs();
   // 団体タグ(導出・新規公開昇格分のみ)。既存公開選手は空。
   const orgRankings = await fetchOrgRankings();
   const orgTags = computeFighterTags(fighter, orgRankings);
@@ -218,7 +221,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
             nextFight.bout.fighterA === fighter.nameJa
               ? nextFight.bout.fighterB
               : nextFight.bout.fighterA;
-          const opponentSlug = findFighterSlugByName(opponentName, slug);
+          const opponentSlug = findFighterSlugByName(opponentName, slug, visibleSlugs);
           return (
             <div className="fighter-next-fight">
               <span className="fighter-next-fight-label">次戦</span>
@@ -328,7 +331,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
               </thead>
               <tbody>
                 {history.map((h, i) => {
-                  const opponentSlug = findFighterSlugByName(h.opponent, slug);
+                  const opponentSlug = findFighterSlugByName(h.opponent, slug, visibleSlugs);
                   const eventSlug = findEventSlug(h.event);
                   return (
                     <tr key={i}>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useTransition } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { calcFighterRates } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
@@ -70,6 +71,15 @@ function matchesNameSearch(f: ResolvedFighter, query: string): boolean {
   );
 }
 
+// フィルタ状態(階級/団体/検索語)はURLのクエリパラメータを唯一の情報源(source of
+// truth)にする。チップの選択表示・実フィルタの両方をここから導出することで、
+// ブラウザの戻る/進むで必ず再ハイドレートされ、UIと実処理のstateがズレない
+// ようにする(選手詳細へ遷移→戻る、で階級/団体タグが選択表示のまま効かなくなる
+// バグの恒久対策)。
+const PARAM_WEIGHT = "weight";
+const PARAM_ORG = "org";
+const PARAM_Q = "q";
+
 export default function FighterFilterGrid({
   fighters,
   tagsBySlug = {},
@@ -77,9 +87,27 @@ export default function FighterFilterGrid({
   fighters: ResolvedFighter[];
   tagsBySlug?: Record<string, OrgTag[]>;
 }) {
-  const [weightClass, setWeightClass] = useState<string | null>(null);
-  const [tag, setTag] = useState<OrgTagKey | null>(null);
-  const [query, setQuery] = useState("");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
+
+  const weightClass = searchParams.get(PARAM_WEIGHT);
+  const tag = searchParams.get(PARAM_ORG) as OrgTagKey | null;
+  const query = searchParams.get(PARAM_Q) ?? "";
+
+  // 指定キーだけ更新(nullなら削除)したURLへ置き換え遷移する。フィルタの
+  // 微調整ごとに履歴を積むと「戻る」が使いづらくなるため replace を使う
+  // (push すると1クリック毎に履歴が増える)。
+  function updateParam(key: string, value: string | null) {
+    const next = new URLSearchParams(searchParams.toString());
+    if (value) next.set(key, value);
+    else next.delete(key);
+    const qs = next.toString();
+    startTransition(() => {
+      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+    });
+  }
 
   const filtered = useMemo(() => {
     return fighters
@@ -109,14 +137,14 @@ export default function FighterFilterGrid({
             className="fighter-search-input"
             placeholder="選手名で検索（日本語・カナ・ローマ字）"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => updateParam(PARAM_Q, e.target.value || null)}
           />
         </div>
         <div className="fighter-filter-group">
           <span className="fighter-filter-label">階級</span>
           <button
             className={`fighter-filter-chip ${weightClass === null ? "active" : ""}`}
-            onClick={() => setWeightClass(null)}
+            onClick={() => updateParam(PARAM_WEIGHT, null)}
           >
             すべて
           </button>
@@ -124,7 +152,7 @@ export default function FighterFilterGrid({
             <button
               key={w}
               className={`fighter-filter-chip ${weightClass === w ? "active" : ""}`}
-              onClick={() => setWeightClass(w)}
+              onClick={() => updateParam(PARAM_WEIGHT, w)}
             >
               {w.replace("級", "")}
             </button>
@@ -134,7 +162,7 @@ export default function FighterFilterGrid({
           <span className="fighter-filter-label">団体</span>
           <button
             className={`fighter-filter-chip ${tag === null ? "active" : ""}`}
-            onClick={() => setTag(null)}
+            onClick={() => updateParam(PARAM_ORG, null)}
           >
             すべて
           </button>
@@ -142,7 +170,7 @@ export default function FighterFilterGrid({
             <button
               key={t.key}
               className={`fighter-filter-chip ${tag === t.key ? "active" : ""}`}
-              onClick={() => setTag(t.key)}
+              onClick={() => updateParam(PARAM_ORG, t.key)}
             >
               {t.label}
             </button>

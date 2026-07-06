@@ -102,6 +102,30 @@ function FighterSide({
           フィニッシュ{finishRate !== null ? `${finishRate}%` : "—"}
         </div>
       </div>
+      {/* フィニッシュ内訳(KO/一本/判定)。個人OGカードと同じ resolveFighter 由来の
+          ko/sub/decision をそのまま表示するだけで、算出ロジックは再実装しない。
+          メソッド不明の試合は既存の classifyMethod によりどのカテゴリにも入らず
+          合計が戦績と一致しないことがあるが、数値は捏造せずそのまま出す。 */}
+      <div style={{ display: "flex", gap: "14px", marginTop: "14px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <div style={{ display: "flex", width: "9px", height: "9px", borderRadius: "2px", backgroundColor: COLORS.shu }} />
+          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "13px", color: "#FFFFFF" }}>
+            KO {f.ko}
+          </div>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <div style={{ display: "flex", width: "9px", height: "9px", borderRadius: "2px", backgroundColor: COLORS.gold }} />
+          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "13px", color: "#FFFFFF" }}>
+            一本 {f.sub}
+          </div>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <div style={{ display: "flex", width: "9px", height: "9px", borderRadius: "2px", backgroundColor: COLORS.indigo }} />
+          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "13px", color: "#FFFFFF" }}>
+            判定 {f.decision}
+          </div>
+        </div>
+      </div>
       {/* 通称はVSカードでは非表示(片側だけにあると要素数がズレて名前・戦績の縦位置が
           左右非対称になるため)。個人OGカードでは引き続き表示する。 */}
     </div>

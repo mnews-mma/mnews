@@ -5,6 +5,7 @@ import { EVENTS, getEvent } from "@/lib/events";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
+import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 
@@ -42,14 +43,16 @@ function formatDateJa(dateStr: string): string {
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;
 }
 
-function FighterName({ name }: { name: string }) {
-  const slug = findFighterSlugByName(name);
+// 戦績データが無い(no-data)/hiddenの選手はリンクにせずテキスト表示にする
+// (getVisibleFighters()由来のvisibleSlugsで判定・判定ロジックの二重定義はしない)。
+function FighterName({ name, visibleSlugs }: { name: string; visibleSlugs: Set<string> }) {
+  const slug = findFighterSlugByName(name, undefined, visibleSlugs);
   return slug ? (
     <a href={`/fighters/${slug}`} className="opponent-link">
       {name}
     </a>
   ) : (
-    <>{name}</>
+    <span>{name}</span>
   );
 }
 
@@ -57,6 +60,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params;
   const event = getEvent(slug);
   if (!event) notFound();
+  const visibleSlugs = await getVisibleFighterSlugs();
 
   const days = daysUntil(event.date);
   const srcColor = SOURCES[event.org].color;
@@ -214,11 +218,11 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                 </div>
                 <div className="bout-fighters">
                   <span className="bout-fighter-a">
-                    <FighterName name={b.fighterA} />
+                    <FighterName name={b.fighterA} visibleSlugs={visibleSlugs} />
                   </span>
                   <span className="bout-vs">VS</span>
                   <span className="bout-fighter-b">
-                    <FighterName name={b.fighterB} />
+                    <FighterName name={b.fighterB} visibleSlugs={visibleSlugs} />
                   </span>
                 </div>
                 {b.result && event.status === "live" && (
@@ -248,8 +252,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                   <tr key={i}>
                     <td className="col-wrap">{b.weightClass}</td>
                     <td>
-                      <FighterName name={b.fighterA} /> vs{" "}
-                      <FighterName name={b.fighterB} />
+                      <FighterName name={b.fighterA} visibleSlugs={visibleSlugs} /> vs{" "}
+                      <FighterName name={b.fighterB} visibleSlugs={visibleSlugs} />
                     </td>
                     <td
                       className={
@@ -288,7 +292,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                     </div>
                     <div className="bout-fighters">
                       <span className="bout-fighter-a">
-                        <FighterName name={name} />
+                        <FighterName name={name} visibleSlugs={visibleSlugs} />
                       </span>
                       <span className="bout-vs" style={{ color: "var(--dim)" }}>
                         VS
