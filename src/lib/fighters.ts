@@ -1198,7 +1198,10 @@ export const FIGHTERS: Fighter[] = [
   { slug: "barboza-rafael", nameJa: "ラファエル・バルボーザ", nameEn: "Rafael Barboza", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kamiya-daichi", nameJa: "神谷大智", nameEn: "Daichi Kamiya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kasuya-yusuke", nameJa: "粕谷優介", nameEn: "Yusuke Kasuya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "saiga-yanbo-tatsuya", nameJa: "雑賀ヤン坊達也", nameEn: "Yanbo Tatsuya Saiga", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  // nameJaはパンクラス公式ランキングのofficialName表記(引用符なし)に合わせ、
+  // wikiTitleJaで記事名の曲がり引用符“ ”を明示指定(戦績取得はこちらを使う)。
+  { slug: "saiga-yanbo-tatsuya", nameJa: "雑賀ヤン坊達也", nameEn: "Yanbo Tatsuya Saiga", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "雑賀“ヤン坊”達也" },
+  { slug: "beinoa", nameJa: "ベイノア", nameEn: "Noah Bey", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "“ブラックパンサー”ベイノア" },
   { slug: "suzuki-tomoya", nameJa: "鈴木慈也", nameEn: "Tomoya Suzuki", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "yanagawa-yuito", nameJa: "栁川唯人", nameEn: "Yuito Yanagawa", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "rajabov-otabek", nameJa: "オタベク・ラジャボフ", nameEn: "Otabek Rajabov", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
