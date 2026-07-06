@@ -61,14 +61,18 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   }
 
   // 戦績テーブルは日本語版Wikipediaを優先し、無ければ英語版にフォールバックする。
-  const wiki: WikiFighterData | null = jaWiki && jaWiki.history.length > 0 ? jaWiki : enWiki;
+  // 「{{MMA recordbox}}」等で通算成績(wins/losses)だけが記事にあり、個別試合の
+  // Fight-cont表が無い選手も一定数いる(例: 住村竜市朗)。history が空でも集計が
+  // 有効なら ja-wiki を採用する(この場合、試合ごとの履歴表は空のまま=捏造しない)。
+  const jaHasTotals = !!jaWiki && jaWiki.wins + jaWiki.losses + jaWiki.draws > 0;
+  const wiki: WikiFighterData | null =
+    jaWiki && (jaWiki.history.length > 0 || jaHasTotals) ? jaWiki : enWiki;
 
-  // Wikipediaの戦績を「有効」とみなす条件を厳しめに: 履歴が1件以上あり、かつ
-  // 勝敗引き分けの合計が1以上。記事が同名別人・曖昧回避ページ・戦績表の無い
-  // 記事に解決してしまうと wins/losses が 0 のゴミレコードが注入されるため、
-  // その場合は wiki を無効扱いにして recordFromResults(自社結果)へフォールバックする。
-  const wikiHasRecord =
-    !!wiki && wiki.history.length > 0 && wiki.wins + wiki.losses + wiki.draws > 0;
+  // Wikipediaの戦績を「有効」とみなす条件を厳しめに: 勝敗引き分けの合計が1以上。
+  // 記事が同名別人・曖昧回避ページ・戦績表の無い記事に解決してしまうと wins/losses
+  // が 0 のゴミレコードが注入されるため、その場合は wiki を無効扱いにして
+  // recordFromResults(自社結果)へフォールバックする。
+  const wikiHasRecord = !!wiki && wiki.wins + wiki.losses + wiki.draws > 0;
 
   // ニックネームの優先順位:
   // 1. fighter.nickname（固定値・直接指定）
