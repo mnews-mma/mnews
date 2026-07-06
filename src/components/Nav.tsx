@@ -8,12 +8,6 @@ export default function Nav() {
           <span className="logo-news">Mニュース</span>
         </Link>
         <div className="nav-right">
-          <Link href="/ranking/pancrase" className="nav-fighters-link">
-            パンクラスランキング
-          </Link>
-          <Link href="/ranking/shooto" className="nav-fighters-link">
-            修斗ランキング
-          </Link>
           <Link href="/fighters" className="nav-fighters-link">
             選手データベース
           </Link>

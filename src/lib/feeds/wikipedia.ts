@@ -7,9 +7,11 @@ async function fetchWikitext(lang: "en" | "ja", title: string): Promise<string |
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
+    // redirects=true: リングネーム等が本名記事へのリダイレクトになっている
+    // ケース(例「木下カラテ」→「木下タケアキ」)でも記事本文を取得できるようにする。
     const url = `https://${lang}.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(
       title
-    )}&prop=wikitext&format=json&formatversion=2`;
+    )}&redirects=true&prop=wikitext&format=json&formatversion=2`;
     const res = await fetch(url, {
       headers: { "User-Agent": "MNewsBot/1.0 (https://www.mnews.jp; contact: mnews-mma)" },
       next: { revalidate: REVALIDATE_SECONDS },
@@ -299,11 +301,32 @@ function parseJaDate(raw: string): string {
 // 同形式のテンプレートが並んでいることがある。「総合格闘技」を含む見出しが
 // 見つかれば、次の見出し（同階層以上）までの範囲に絞り込む。見つからなければ
 // （単一競技の選手ページ）全文をそのまま返す。
+// 「=== アマチュア○○ ===」見出しから次の見出しまでの範囲を丸ごと除去する。
+// アマチュア戦績がプロの戦績表(Fight-cont/recordbox集計)に混入するのを防ぐ。
+function stripAmateurSections(text: string): string {
+  const amateurHeadingRe = /={2,4}[^=\n]*アマチュア[^=\n]*={2,4}/g;
+  const allHeadingsRe = /={2,4}[^=\n]+={2,4}/g;
+  let result = "";
+  let cursor = 0;
+  let m: RegExpExecArray | null;
+  while ((m = amateurHeadingRe.exec(text))) {
+    result += text.slice(cursor, m.index);
+    allHeadingsRe.lastIndex = m.index + m[0].length;
+    const next = allHeadingsRe.exec(text);
+    cursor = next ? next.index : text.length;
+    amateurHeadingRe.lastIndex = cursor;
+  }
+  result += text.slice(cursor);
+  return result;
+}
+
 function extractMmaSection(wikitext: string): string {
   // 「獲得タイトル」節などにも同名の見出し（例: "=== 総合格闘技 ==="）が
   // 出ることがあるため、見出し名だけでなく実際に試合履歴
-  // （{{Fight-cont}}）を含む節を選ぶ。
-  const headingRe = /={2,4}[^=\n]*総合格闘技[^=\n]*={2,4}/g;
+  // （{{Fight-cont}}）を含む節を選ぶ。「アマチュア総合格闘技」節は文字列として
+  // "総合格闘技" を含んでしまい誤マッチするため除外する（プロ戦績とアマ戦績の
+  // 取り違え対策）。
+  const headingRe = /={2,4}(?![^=\n]*アマチュア)[^=\n]*総合格闘技[^=\n]*={2,4}/g;
   const allHeadingsRe = /={2,4}[^=\n]+={2,4}/g;
   let m: RegExpExecArray | null;
   while ((m = headingRe.exec(wikitext))) {
@@ -311,9 +334,9 @@ function extractMmaSection(wikitext: string): string {
     allHeadingsRe.lastIndex = afterStart;
     const next = allHeadingsRe.exec(wikitext);
     const section = wikitext.slice(afterStart, next ? next.index : undefined);
-    if (section.includes("{{Fight-cont")) return section;
+    if (section.includes("{{Fight-cont")) return stripAmateurSections(section);
   }
-  return wikitext;
+  return stripAmateurSections(wikitext);
 }
 
 export function parseJaFightHistory(wikitext: string): FightRecord[] {
