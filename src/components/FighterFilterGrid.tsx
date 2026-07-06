@@ -6,21 +6,22 @@ import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import type { OrgTag, OrgTagKey } from "@/lib/orgTags";
 
-// 団体フィルタ(現ランカー/2026出場の実態ベース。既存公開選手には付かない)。並び順固定。
-// UFC はタグ付与条件が未定のためスコープ外。RIZINタグはロジック・データは残すが、
-// 2026出場者がほぼ既存公開側で不可侵ゲート後ほぼ空になるため、今回はフィルタUIに出さない
-// (既存公開43名への付与方針が決まり次第、正しい母集団でフィルタ復活)。
+// 団体フィルタ(並び順固定)。UFC/RIZINは既存公開選手のみ、DEEP/パンクラス/修斗は
+// 新規公開昇格分に付与(computeFighterTags側で制御)。
 const TAG_OPTIONS: { key: OrgTagKey; label: string }[] = [
+  { key: "ufc", label: "UFC" },
+  { key: "rizin", label: "RIZIN" },
   { key: "deep", label: "DEEP" },
   { key: "pancrase", label: "パンクラス" },
   { key: "shooto", label: "修斗" },
 ];
 
 const TAG_COLOR: Record<OrgTagKey, string> = {
+  ufc: SOURCES.ufc.color,
+  rizin: SOURCES.rizin.color,
+  deep: SOURCES.deep.color,
   pancrase: SOURCES.pancrase.color,
   shooto: SOURCES.shooto.color,
-  deep: SOURCES.deep.color,
-  rizin: SOURCES.rizin.color,
 };
 
 const WEIGHT_OPTIONS = ["女子アトム級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ヘビー級"];
@@ -138,16 +139,24 @@ export default function FighterFilterGrid({
                   ))}
                 </div>
               )}
-              <div className="fighter-record">
-                {f.wins}-{f.losses}-{f.draws}
-              </div>
-              <div className="fighter-breakdown">
-                KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
-              </div>
-              <div className="fighter-rates">
-                {winRate !== null && <span>勝率 {winRate}%</span>}
-                {finishRate !== null && <span>フィニッシュ率 {finishRate}%</span>}
-              </div>
+              {f.noRecordData ? (
+                <div className="fighter-record" style={{ fontSize: 14, color: "var(--muted)" }}>
+                  データなし
+                </div>
+              ) : (
+                <>
+                  <div className="fighter-record">
+                    {f.wins}-{f.losses}-{f.draws}
+                  </div>
+                  <div className="fighter-breakdown">
+                    KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
+                  </div>
+                  <div className="fighter-rates">
+                    {winRate !== null && <span>勝率 {winRate}%</span>}
+                    {finishRate !== null && <span>フィニッシュ率 {finishRate}%</span>}
+                  </div>
+                </>
+              )}
             </a>
           );
         })}

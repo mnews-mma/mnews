@@ -1,7 +1,7 @@
 import { Fighter, FightRecord } from "../fighters";
 import { fetchWikiFighterRecord, fetchJaWikiFighterRecord, WikiFighterData } from "./wikipedia";
 import { fetchUfcNickname } from "./ufc";
-import { deriveHistoryFromEventResults, deriveRecordCounts } from "../fighterRecordFromResults";
+import { deriveHistoryFromEventResults } from "../fighterRecordFromResults";
 
 export interface ResolvedFighter extends Fighter {
   history: FightRecord[];
@@ -9,6 +9,19 @@ export interface ResolvedFighter extends Fighter {
   nickname?: string;
   birthPlace?: string;
   age?: number;
+  // ja-wikiのフル戦績が取れず、生涯戦績を出せない選手。薄い自社数戦を生涯戦績の
+  // ように見せず「データなし」を明示するためのフラグ(捏造ゼロ・集約思想)。
+  noRecordData?: boolean;
+}
+
+// ja-wiki記事が「同一人物」かの検証: ja-wikiの戦績に、自社EVENT_RESULTS由来の
+// 履歴と同じ相手(正規化名一致)が1件でも含まれるか。含まれれば同一人物と判断して
+// フル戦績を採用、含まれなければ同名別人リスクとして棄却する(決定論的な同名別人ガード)。
+function historiesOverlap(wikiHistory: FightRecord[], derived: FightRecord[]): boolean {
+  if (derived.length === 0) return false;
+  const norm = (s: string) => s.replace(/[\s　・☆]/g, "");
+  const wikiOpp = new Set(wikiHistory.map((h) => norm(h.opponent)));
+  return derived.some((h) => wikiOpp.has(norm(h.opponent)));
 }
 
 export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter> {
@@ -19,14 +32,33 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // recordFromResults 選手(DEEP等のスタブ)は wikiTitle を明示していない限り
   // 日本語版の既定タイトル推測をしない。同名(例「中村大介」)の別人記事を
   // 誤って戦績に注入するのを防ぐため。戦績は自社 EVENT_RESULTS から組み立てる。
-  const jaTitle =
-    fighter.wikiTitleJa ??
-    (fighter.recordFromResults ? null : fighter.nameJa.replace(/\s/g, ""));
-  const [enWiki, jaWiki, ufcNickname] = await Promise.all([
-    fighter.wikiTitleEn ? fetchWikiFighterRecord(fighter.wikiTitleEn).catch(() => null) : null,
-    jaTitle ? fetchJaWikiFighterRecord(jaTitle).catch(() => null) : null,
+  // 国内勢(recordFromResults)も ja-wiki を試す。既定タイトル(nameJaのスペース除去)で
+  // 引き、同名別人は下の overlap ガードで弾く。これで DEEP/修斗/パンクラス勢にも生涯戦績を
+  // 補完する(取れなければ no data)。
+  // ja/en とも国内勢(recordFromResults)は既定タイトル(ja=nameJaスペース除去 / en=nameEn)で引き、
+  // 同名別人は下の overlap ガードで弾く。ja→enの順で生涯戦績を補完(取れなければ no data)。
+  const jaTitle = fighter.wikiTitleJa ?? fighter.nameJa.replace(/\s/g, "");
+  const enTitle = fighter.wikiTitleEn ?? (fighter.recordFromResults ? fighter.nameEn : null);
+  const [enWikiRaw, jaWikiRaw, ufcNickname] = await Promise.all([
+    enTitle ? fetchWikiFighterRecord(enTitle).catch(() => null) : null,
+    fetchJaWikiFighterRecord(jaTitle).catch(() => null),
     !fighter.nickname && fighter.ufcSlug ? fetchUfcNickname(fighter.ufcSlug).catch(() => null) : null,
   ]);
+
+  // 同名別人ガード(Dodson型のタイトル違い・同名別人対策): 既定タイトルを推測した
+  // recordFromResults 選手は、wiki戦績が自社EVENT_RESULTS履歴と相手名で重なる時だけ採用。
+  // 重ならない曖昧記事は安全側で棄却(→no data)。ja/en 両方に同じ検証を適用。
+  const derivedForGuard = fighter.recordFromResults
+    ? deriveHistoryFromEventResults(fighter.nameJa)
+    : [];
+  let jaWiki = jaWikiRaw;
+  if (fighter.recordFromResults && !fighter.wikiTitleJa && jaWikiRaw && !historiesOverlap(jaWikiRaw.history, derivedForGuard)) {
+    jaWiki = null;
+  }
+  let enWiki = enWikiRaw;
+  if (fighter.recordFromResults && !fighter.wikiTitleEn && enWikiRaw && !historiesOverlap(enWikiRaw.history, derivedForGuard)) {
+    enWiki = null;
+  }
 
   // 戦績テーブルは日本語版Wikipediaを優先し、無ければ英語版にフォールバックする。
   const wiki: WikiFighterData | null = jaWiki && jaWiki.history.length > 0 ? jaWiki : enWiki;
@@ -46,16 +78,19 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   const nickname =
     fighter.nickname ?? (fighter.noNickname ? undefined : ufcNickname ?? nicknameWiki?.infobox.nickname);
 
-  // recordFromResults 選手(Wikipedia記事の無いDEEP等のスタブ)は、自社
-  // EVENT_RESULTS を選手軸に組み替えた戦績を注入する。Wikipediaの戦績テーブルが
-  // 取れた場合はそちら(生涯戦績)を優先する。
+  // recordFromResults 選手で ja-wiki のフル戦績が取れなかった場合は「データなし」。
+  // 薄い自社数戦を生涯戦績のように見せない(捏造ゼロ・薄いものを出さない)。
   if (fighter.recordFromResults && !wikiHasRecord) {
-    const history = deriveHistoryFromEventResults(fighter.nameJa);
-    const counts = deriveRecordCounts(history);
     return {
       ...fighter,
-      ...counts,
-      history,
+      wins: 0,
+      losses: 0,
+      draws: 0,
+      ko: 0,
+      sub: 0,
+      decision: 0,
+      history: [],
+      noRecordData: true,
       live: false,
       nickname,
     };

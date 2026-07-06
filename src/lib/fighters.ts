@@ -1248,6 +1248,11 @@ export const FIGHTERS: Fighter[] = [
   { slug: "temirov-azizbek", nameJa: "アジズベク・テミロフ", nameEn: "Azizbek Temirov", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "アジズベク・テミロフ", nickname: "蒼き剛腕ブラザー弟" },
   { slug: "gadzhamatov-alibeg", nameJa: "アリベク・ガジャマトフ", nameEn: "Alibek Gadzhammatov", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "アリベク・ガジャマトフ", nickname: "ダゲスタンのバトルサイボーグ" },
 
+  // --- 団体ランキング top-5 未照合ぶんのDB追加(2026-07) ---
+  { slug: "shimizu-hiroto", nameJa: "清水博人", nameEn: "Hiroto Shimizu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "otsuka-tomoki", nameJa: "大塚智貴", nameEn: "Tomoki Otsuka", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "tenya", nameJa: "天弥", nameEn: "Tenya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
+  { slug: "kanbe-atsubo", nameJa: "神部篤坊", nameEn: "Atsubo Kanbe", org: "pancrase", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {

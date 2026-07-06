@@ -2,9 +2,13 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS } from "@/lib/fighters";
+import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { SOURCES } from "@/lib/sources";
 import { isDeep2026, toFiveClass, FIVE_CLASSES, NEW_TAGGED_SLUGS } from "@/lib/orgTags";
 import { pageMetadata } from "@/lib/seo";
+
+// no-data(戦績なし)選手はDEEPの面に出さないため、戦績解決が要る=動的レンダ。
+export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
   title: "DEEP 2026 出場選手一覧（階級別）| Mニュース",
@@ -13,12 +17,15 @@ export const metadata = pageMetadata({
   path: "/deep-2026",
 });
 
-export default function Deep2026Page() {
+export default async function Deep2026Page() {
   // 公開昇格済み(NEW_TAGGED_SLUGS)かつ DEEP2026ナンバー出場者を、5階級で中立に一覧化。
   // 順位はつけない(DEEPは公式ランキングを軸にしない)。5階級外はスキップ。
-  const members = FIGHTERS.filter(
+  // DEEPは戦績が唯一の載せる理由なので、no-data(ja/en記事なし)選手は面に出さない。
+  const candidates = FIGHTERS.filter(
     (f) => !f.hidden && NEW_TAGGED_SLUGS.has(f.slug) && isDeep2026(f.nameJa)
   );
+  const resolved = await resolveFighters(candidates);
+  const members = resolved.filter((f) => !f.noRecordData);
   const byClass = new Map<string, typeof FIGHTERS>();
   for (const f of members) {
     const c = toFiveClass(f.weightClass);

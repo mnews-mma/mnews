@@ -3,7 +3,16 @@ import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import OrgRankingView from "@/components/OrgRankingView";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
+import { FIGHTERS } from "@/lib/fighters";
+import { resolveFighters } from "@/lib/feeds/resolveFighter";
 import { pageMetadata } from "@/lib/seo";
+
+// ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
+async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
+  const fs = FIGHTERS.filter((f) => slugs.has(f.slug) && !f.hidden);
+  const resolved = await resolveFighters(fs);
+  return resolved.filter((r) => !r.noRecordData).map((r) => r.slug);
+}
 
 // cron(update-org-rankings)が data/orgRankings.json を更新→raw参照で自動反映。
 export const revalidate = 3600;
@@ -17,6 +26,9 @@ export const metadata = pageMetadata({
 
 export default async function ShootoRankingPage() {
   const { shooto } = await fetchOrgRankings();
+  const matched = new Set<string>();
+  for (const c of shooto?.classes ?? []) for (const e of c.entries) if (e.slug) matched.add(e.slug);
+  const linkable = await linkableSlugsFor(matched);
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "修斗 公式ランキング" }];
   return (
     <>
@@ -28,7 +40,7 @@ export default async function ShootoRankingPage() {
         <div className="page-sub">階級別の王者・ランカー（団体公式・世界ランキングの転載・自動更新）</div>
       </div>
       {shooto && shooto.classes.length > 0 ? (
-        <OrgRankingView data={shooto} />
+        <OrgRankingView data={shooto} linkableSlugs={linkable} />
       ) : (
         <div style={{ padding: "0 24px 48px", color: "var(--muted)", fontSize: 13 }}>
           ランキングを取得中です。しばらくしてから再度ご確認ください。
