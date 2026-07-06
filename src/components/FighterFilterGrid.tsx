@@ -24,16 +24,25 @@ const TAG_COLOR: Record<OrgTagKey, string> = {
   shooto: SOURCES.shooto.color,
 };
 
-const WEIGHT_OPTIONS = ["女子アトム級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ヘビー級"];
+const WEIGHT_OPTIONS = ["女子アトム級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ウェルター級", "ヘビー級"];
 
 const WEIGHT_ORDER: Record<string, number> = {
   "フェザー級": 0,
   "フライ級": 1,
   "バンタム級": 2,
   "ライト級": 3,
-  "女子アトム級": 4,
-  "ヘビー級": 5,
+  "ウェルター級": 4,
+  "女子アトム級": 5,
+  "ヘビー級": 6,
 };
+
+// 「ヘビー級」を選ぶとDEEPの無差別級(メガトン級)も一緒に絞れるようにする
+// (DEEPにはヘビー級表記が無くメガトン級が実質最上級のため)。
+function matchesWeightFilter(fighterWeightClass: string, selected: string | null): boolean {
+  if (!selected) return true;
+  if (selected === "ヘビー級") return fighterWeightClass === "ヘビー級" || fighterWeightClass === "メガトン級";
+  return fighterWeightClass === selected;
+}
 
 export default function FighterFilterGrid({
   fighters,
@@ -48,7 +57,7 @@ export default function FighterFilterGrid({
   const filtered = useMemo(() => {
     return fighters
       .filter((f) => {
-        if (weightClass && f.weightClass !== weightClass) return false;
+        if (!matchesWeightFilter(f.weightClass, weightClass)) return false;
         if (tag && !(tagsBySlug[f.slug] || []).some((t) => t.key === tag)) return false;
         return true;
       })
