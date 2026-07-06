@@ -1,6 +1,5 @@
 import { Fighter, FightRecord } from "../fighters";
 import { fetchWikiFighterRecord, fetchJaWikiFighterRecord, WikiFighterData } from "./wikipedia";
-import { fetchUfcNickname } from "./ufc";
 import { deriveHistoryFromEventResults } from "../fighterRecordFromResults";
 
 export interface ResolvedFighter extends Fighter {
@@ -39,10 +38,9 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // 同名別人は下の overlap ガードで弾く。ja→enの順で生涯戦績を補完(取れなければ no data)。
   const jaTitle = fighter.wikiTitleJa ?? fighter.nameJa.replace(/\s/g, "");
   const enTitle = fighter.wikiTitleEn ?? (fighter.recordFromResults ? fighter.nameEn : null);
-  const [enWikiRaw, jaWikiRaw, ufcNickname] = await Promise.all([
+  const [enWikiRaw, jaWikiRaw] = await Promise.all([
     enTitle ? fetchWikiFighterRecord(enTitle).catch(() => null) : null,
     fetchJaWikiFighterRecord(jaTitle).catch(() => null),
-    !fighter.nickname && fighter.ufcSlug ? fetchUfcNickname(fighter.ufcSlug).catch(() => null) : null,
   ]);
 
   // 同名別人ガード(Dodson型のタイトル違い・同名別人対策): 既定タイトルを推測した
@@ -74,16 +72,9 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // recordFromResults(自社結果)へフォールバックする。
   const wikiHasRecord = !!wiki && wiki.wins + wiki.losses + wiki.draws > 0;
 
-  // ニックネームの優先順位:
-  // 1. fighter.nickname（固定値・直接指定）
-  // 2. noNickname フラグが立っていれば非表示
-  // 3. UFC公式 → 英語版Wikipedia → 日本語版Wikipedia の自動取得
-  // DEEP勢は裏取りコストの都合上、自動取得の通称を出さない方針(明示指定の
-  // fighter.nickname があればそれのみ尊重)。
-  const nicknameWiki = enWiki ?? jaWiki;
-  const nickname =
-    fighter.nickname ??
-    (fighter.noNickname || fighter.org === "deep" ? undefined : ufcNickname ?? nicknameWiki?.infobox.nickname);
+  // 通称は fighter.nickname による明示指定のみを表示する(自動取得は全面禁止)。
+  // UFC公式/Wikipediaからの裏取りコストを避け、指示のあった選手だけ通称を出す方針。
+  const nickname = fighter.nickname;
 
   // recordFromResults 選手で ja-wiki のフル戦績が取れなかった場合は「データなし」。
   // 薄い自社数戦を生涯戦績のように見せない(捏造ゼロ・薄いものを出さない)。
