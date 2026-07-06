@@ -1,0 +1,575 @@
+{
+  "pancrase": {
+    "org": "pancrase",
+    "source": "パンクラス公式ランキング",
+    "sourceUrl": "https://www.pancrase.co.jp/rls/ranking.html",
+    "fetchedDate": "2026-07-06",
+    "rankingLabel": "7月2日発表",
+    "classes": [
+      {
+        "weightClass": "ライト級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "ラファエル・バルボーザ",
+            "slug": "barboza-rafael"
+          },
+          {
+            "rank": "1",
+            "officialName": "神谷大智",
+            "slug": "kamiya-daichi"
+          },
+          {
+            "rank": "2",
+            "officialName": "粕谷優介",
+            "slug": "kasuya-yusuke"
+          },
+          {
+            "rank": "3",
+            "officialName": "雑賀ヤン坊達也",
+            "slug": "saiga-yanbo-tatsuya"
+          },
+          {
+            "rank": "4",
+            "officialName": "鈴木慈也",
+            "slug": "suzuki-tomoya"
+          },
+          {
+            "rank": "5",
+            "officialName": "天弥",
+            "slug": null
+          },
+          {
+            "rank": "6",
+            "officialName": "平信一",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "張豊",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "鈴木悠斗",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "フェザー級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "栁川唯人",
+            "slug": "yanagawa-yuito"
+          },
+          {
+            "rank": "暫定王者",
+            "officialName": "オタベク・ラジャボフ",
+            "slug": "rajabov-otabek"
+          },
+          {
+            "rank": "1",
+            "officialName": "カリベク・アルジクル ウール",
+            "slug": "arzykul-kalybek"
+          },
+          {
+            "rank": "2",
+            "officialName": "敢流",
+            "slug": "kanru"
+          },
+          {
+            "rank": "3",
+            "officialName": "木下尚祐",
+            "slug": "kinoshita-naosuke"
+          },
+          {
+            "rank": "4",
+            "officialName": "平田直樹",
+            "slug": "hirata-naoki"
+          },
+          {
+            "rank": "5",
+            "officialName": "清水博人",
+            "slug": null
+          },
+          {
+            "rank": "6",
+            "officialName": "透暉鷹",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "三宅輝砂",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "岡田拓真",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "Ryo",
+            "slug": null
+          },
+          {
+            "rank": "10",
+            "officialName": "遠藤来生",
+            "slug": null
+          },
+          {
+            "rank": "11",
+            "officialName": "名田英平",
+            "slug": null
+          },
+          {
+            "rank": "12",
+            "officialName": "関 翔渚",
+            "slug": null
+          },
+          {
+            "rank": "13",
+            "officialName": "糸川義人",
+            "slug": null
+          },
+          {
+            "rank": "14",
+            "officialName": "石田陸也",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "バンタム級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "田嶋椋",
+            "slug": "tajima-ryo"
+          },
+          {
+            "rank": "暫定王者",
+            "officialName": "宮城成歩滝",
+            "slug": "miyagi-naraho"
+          },
+          {
+            "rank": "1",
+            "officialName": "高城光弘",
+            "slug": "takashiro-mitsuhiro"
+          },
+          {
+            "rank": "2",
+            "officialName": "山口怜臣",
+            "slug": "yamaguchi-satoshi"
+          },
+          {
+            "rank": "3",
+            "officialName": "松井 涼",
+            "slug": "matsui-ryo"
+          },
+          {
+            "rank": "4",
+            "officialName": "井村塁",
+            "slug": "imura-rui"
+          },
+          {
+            "rank": "5",
+            "officialName": "神部篤坊",
+            "slug": null
+          },
+          {
+            "rank": "6",
+            "officialName": "荒田大輝",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "佐藤ゆうじ",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "バラカトゥロ・アサドゥラエフ",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "山木麻弥",
+            "slug": null
+          },
+          {
+            "rank": "10",
+            "officialName": "前田浩平",
+            "slug": null
+          },
+          {
+            "rank": "11",
+            "officialName": "合島大樹",
+            "slug": null
+          },
+          {
+            "rank": "12",
+            "officialName": "白井誠司",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "フライ級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "時田隆成",
+            "slug": "tokida-takashige"
+          },
+          {
+            "rank": "1",
+            "officialName": "猿飛流",
+            "slug": null
+          },
+          {
+            "rank": "2",
+            "officialName": "岸田宙大",
+            "slug": "kishida-hiroto"
+          },
+          {
+            "rank": "3",
+            "officialName": "眞藤源太",
+            "slug": "shindo-genta"
+          },
+          {
+            "rank": "4",
+            "officialName": "谷村泰嘉",
+            "slug": "tanimura-taika"
+          },
+          {
+            "rank": "5",
+            "officialName": "大塚智貴",
+            "slug": null
+          },
+          {
+            "rank": "6",
+            "officialName": "ラファエル・リベイロ",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "増田大河",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "浜本キャット雄大",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "植松洋貴",
+            "slug": null
+          },
+          {
+            "rank": "10",
+            "officialName": "濱田 巧",
+            "slug": null
+          },
+          {
+            "rank": "11",
+            "officialName": "小林了平",
+            "slug": null
+          },
+          {
+            "rank": "12",
+            "officialName": "菅歩夢",
+            "slug": null
+          },
+          {
+            "rank": "13",
+            "officialName": "山崎蒼空",
+            "slug": null
+          },
+          {
+            "rank": "14",
+            "officialName": "本川ハルアキ",
+            "slug": null
+          }
+        ]
+      }
+    ]
+  },
+  "shooto": {
+    "org": "shooto",
+    "source": "修斗公式ランキング",
+    "sourceUrl": "https://www.shooto-mma.com/ranking/",
+    "fetchedDate": "2026-07-06",
+    "rankingLabel": "6月5日付け",
+    "classes": [
+      {
+        "weightClass": "フライ級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "亮我",
+            "slug": "ryoga"
+          },
+          {
+            "rank": "1",
+            "officialName": "高岡 宏気",
+            "slug": "takaoka-hiroki"
+          },
+          {
+            "rank": "2",
+            "officialName": "新井 丈",
+            "slug": "arai-jo"
+          },
+          {
+            "rank": "3",
+            "officialName": "シモン スズキ",
+            "slug": "suzuki-simon"
+          },
+          {
+            "rank": "4",
+            "officialName": "関口 祐冬",
+            "slug": "sekiguchi-yuto"
+          },
+          {
+            "rank": "5",
+            "officialName": "中村 優作",
+            "slug": "nakamura-yusaku"
+          },
+          {
+            "rank": "6",
+            "officialName": "杉本 静弥",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "砂辺 光久",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "梅筋 毒一郎",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "山内 渉",
+            "slug": null
+          },
+          {
+            "rank": "10",
+            "officialName": "岡田 嵐士",
+            "slug": null
+          },
+          {
+            "rank": "11",
+            "officialName": "中池 武寛",
+            "slug": null
+          },
+          {
+            "rank": "12",
+            "officialName": "鈴木 尊",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "バンタム級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "永井 奏多",
+            "slug": "nagai-kanata"
+          },
+          {
+            "rank": "1",
+            "officialName": "齋藤 奨司",
+            "slug": "saito-shoji"
+          },
+          {
+            "rank": "2",
+            "officialName": "中野 剛貴",
+            "slug": "nakano-takaki"
+          },
+          {
+            "rank": "3",
+            "officialName": "杉野 光星",
+            "slug": "sugino-kosei"
+          },
+          {
+            "rank": "4",
+            "officialName": "シンバートル バットエルデネ",
+            "slug": "baterdene-simbaatar"
+          },
+          {
+            "rank": "5",
+            "officialName": "野瀬 翔平",
+            "slug": "nose-shohei"
+          },
+          {
+            "rank": "6",
+            "officialName": "川北 晏生",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "チョウ スソン",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "藤井 伸樹",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "ダイキ ライトイヤー",
+            "slug": null
+          },
+          {
+            "rank": "10",
+            "officialName": "宮口 龍鳳",
+            "slug": null
+          },
+          {
+            "rank": "11",
+            "officialName": "中島 陸",
+            "slug": null
+          },
+          {
+            "rank": "12",
+            "officialName": "野尻 定由",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "フェザー級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "SASUKE",
+            "slug": "sasuke"
+          },
+          {
+            "rank": "1",
+            "officialName": "ヒカル",
+            "slug": "hikaru"
+          },
+          {
+            "rank": "2",
+            "officialName": "青井 太一",
+            "slug": "aoi-taichi"
+          },
+          {
+            "rank": "3",
+            "officialName": "たてお",
+            "slug": "tateo"
+          },
+          {
+            "rank": "4",
+            "officialName": "堀江 耐志",
+            "slug": "horie-taishi"
+          },
+          {
+            "rank": "5",
+            "officialName": "TOMA",
+            "slug": "toma"
+          },
+          {
+            "rank": "6",
+            "officialName": "パク ジョンジュン",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "齋藤 翼",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "上原 平",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "磯城嶋 一真",
+            "slug": null
+          },
+          {
+            "rank": "10",
+            "officialName": "カイル マヨッキ",
+            "slug": null
+          },
+          {
+            "rank": "11",
+            "officialName": "宇藤 彰貴",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "ライト級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "エフェヴィガ 雄志",
+            "slug": "efeviga-yushi"
+          },
+          {
+            "rank": "1",
+            "officialName": "イム クァンウ",
+            "slug": "im-kwangwoo"
+          },
+          {
+            "rank": "2",
+            "officialName": "後藤 亮",
+            "slug": "goto-ryo"
+          },
+          {
+            "rank": "3",
+            "officialName": "キャプテン ☆ アフリカ",
+            "slug": "captain-africa"
+          },
+          {
+            "rank": "4",
+            "officialName": "シヴァエフ",
+            "slug": "shivaev"
+          },
+          {
+            "rank": "5",
+            "officialName": "西尾 真輔",
+            "slug": "nishio-shinsuke"
+          },
+          {
+            "rank": "6",
+            "officialName": "結城 大樹",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "安海 健人",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "マックス・ザ・ボディ",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "大尊 伸光",
+            "slug": null
+          },
+          {
+            "rank": "10",
+            "officialName": "田中 有",
+            "slug": null
+          }
+        ]
+      }
+    ]
+  }
+}

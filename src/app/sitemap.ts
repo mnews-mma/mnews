@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE_URL, changeFrequency: "always", priority: 1, lastModified: TODAY },
     { url: `${BASE_URL}/archive`, changeFrequency: "hourly", priority: 0.7, lastModified: TODAY },
     { url: `${BASE_URL}/fighters`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
+    { url: `${BASE_URL}/ranking/pancrase`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
+    { url: `${BASE_URL}/ranking/shooto`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
     { url: `${BASE_URL}/results`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE_URL}/privacy`, changeFrequency: "monthly", priority: 0.2 },
