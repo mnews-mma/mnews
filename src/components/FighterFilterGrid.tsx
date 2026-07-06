@@ -138,16 +138,24 @@ export default function FighterFilterGrid({
                   ))}
                 </div>
               )}
-              <div className="fighter-record">
-                {f.wins}-{f.losses}-{f.draws}
-              </div>
-              <div className="fighter-breakdown">
-                KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
-              </div>
-              <div className="fighter-rates">
-                {winRate !== null && <span>勝率 {winRate}%</span>}
-                {finishRate !== null && <span>フィニッシュ率 {finishRate}%</span>}
-              </div>
+              {f.noRecordData ? (
+                <div className="fighter-record" style={{ fontSize: 14, color: "var(--muted)" }}>
+                  データなし
+                </div>
+              ) : (
+                <>
+                  <div className="fighter-record">
+                    {f.wins}-{f.losses}-{f.draws}
+                  </div>
+                  <div className="fighter-breakdown">
+                    KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
+                  </div>
+                  <div className="fighter-rates">
+                    {winRate !== null && <span>勝率 {winRate}%</span>}
+                    {finishRate !== null && <span>フィニッシュ率 {finishRate}%</span>}
+                  </div>
+                </>
+              )}
             </a>
           );
         })}

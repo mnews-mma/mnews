@@ -94,7 +94,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   if (!seed) notFound();
 
   const fighter = await resolveFighter(seed);
-  const { history, wins, losses, draws, nickname, birthPlace, age } = fighter;
+  const { history, wins, losses, draws, nickname, birthPlace, age, noRecordData } = fighter;
   // 団体タグ(導出・新規公開昇格分のみ)。既存公開選手は空。
   const orgRankings = await fetchOrgRankings();
   const orgTags = computeFighterTags(fighter, orgRankings);
@@ -234,13 +234,15 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
           </div>
         )}
 
-        {/* 戦績スタットカード */}
+        {/* 戦績スタットカード(生涯戦績が取れない選手は「データなし」を明示) */}
         <div className="fighter-stats-grid">
           <div className="fighter-stat-card">
-            <div className="fighter-stat-num">{wins}-{losses}-{draws}</div>
+            <div className="fighter-stat-num" style={noRecordData ? { fontSize: 20, color: "var(--muted)" } : undefined}>
+              {noRecordData ? "データなし" : `${wins}-${losses}-${draws}`}
+            </div>
             <div className="fighter-stat-label">通算戦績</div>
           </div>
-          {winRate !== null && (
+          {!noRecordData && winRate !== null && (
             <div className="fighter-stat-card">
               <div className="fighter-stat-num">{winRate}%</div>
               <div className="fighter-stat-label">勝率</div>
@@ -290,7 +292,9 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         </h2>
         {history.length === 0 ? (
           <p style={{ color: "var(--muted)", fontSize: 13, padding: "24px 0" }}>
-            試合履歴データは準備中です。
+            {noRecordData
+              ? "戦績データがありません（公式・Wikipediaの生涯戦績が確認でき次第、掲載します）。"
+              : "試合履歴データは準備中です。"}
           </p>
         ) : (
           <div className="table-outer">
