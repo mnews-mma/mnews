@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import FighterFilterGrid from "@/components/FighterFilterGrid";
 import { FIGHTERS } from "@/lib/fighters";
 import { resolveFighters } from "@/lib/feeds/resolveFighter";
+import { fetchOrgRankings } from "@/lib/orgRankingsData";
+import { computeFighterTags, OrgTag } from "@/lib/orgTags";
 import { pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -17,6 +19,15 @@ export default async function FightersPage() {
   // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)は一覧に出さない。
   const fighters = await resolveFighters(FIGHTERS.filter((f) => !f.hidden));
 
+  // 団体タグは導出(選手データは書き換えない)。付与は二次PRの新規公開昇格分のみ
+  // (computeFighterTags 側で NEW_TAGGED_SLUGS にゲート済み。既存公開選手は空)。
+  const orgRankings = await fetchOrgRankings();
+  const tagsBySlug: Record<string, OrgTag[]> = {};
+  for (const f of fighters) {
+    const tags = computeFighterTags(f, orgRankings);
+    if (tags.length) tagsBySlug[f.slug] = tags;
+  }
+
   return (
     <>
       <Nav />
@@ -29,7 +40,7 @@ export default async function FightersPage() {
           </a>
         </div>
       </div>
-      <FighterFilterGrid fighters={fighters} />
+      <FighterFilterGrid fighters={fighters} tagsBySlug={tagsBySlug} />
       <Footer />
     </>
   );
