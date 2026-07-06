@@ -11,12 +11,19 @@ interface FighterOption {
 
 const SITE_URL = "https://www.mnews.jp";
 
+// カードに手指定できる階級プルダウンの5階級。加えて「自由入力」で任意テキスト可。
+const WEIGHT_PRESETS = ["フライ級", "バンタム級", "フェザー級", "ライト級", "ヘビー級"];
+const CUSTOM = "__custom__";
+
 export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) {
   const searchParams = useSearchParams();
   const initialFighter = searchParams.get("fighter") ?? fighters[0]?.slug ?? "";
   const [mode, setMode] = useState<"single" | "vs">("single");
   const [slugA, setSlugA] = useState(initialFighter);
   const [slugB, setSlugB] = useState(fighters[1]?.slug ?? "");
+  // 階級ラベル(手指定)。プルダウン(5階級 or 自由入力)＋自由記述テキスト。
+  const [wcPreset, setWcPreset] = useState<string>("");
+  const [wcCustom, setWcCustom] = useState<string>("");
 
   useEffect(() => {
     const f = searchParams.get("fighter");
@@ -24,8 +31,14 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   }, [searchParams, fighters]);
   const [copied, setCopied] = useState<"image" | "page" | null>(null);
 
-  const imagePath = ogImagePath(mode === "single" ? `/api/og/fighter/${slugA}` : `/api/og/vs/${slugA}/${slugB}`);
-  const pagePath = mode === "single" ? `/fighters/${slugA}` : `/vs/${slugA}/${slugB}`;
+  // 空欄なら wc パラメータを付けない → OG画像側は階級行を出さない。
+  const wcLabel = (wcPreset === CUSTOM ? wcCustom : wcPreset).trim();
+  const wcQuery = wcLabel ? `?wc=${encodeURIComponent(wcLabel)}` : "";
+
+  const imagePath = ogImagePath(
+    (mode === "single" ? `/api/og/fighter/${slugA}` : `/api/og/vs/${slugA}/${slugB}`) + wcQuery
+  );
+  const pagePath = (mode === "single" ? `/fighters/${slugA}` : `/vs/${slugA}/${slugB}`) + wcQuery;
   const imageUrl = `${SITE_URL}${imagePath}`;
   const pageUrl = `${SITE_URL}${pagePath}`;
 
@@ -101,6 +114,37 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
             </div>
           </>
         )}
+
+        {/* 階級ラベル(手指定)。5階級をワンタップ or 自由入力で任意テキスト。空欄=カードに階級を出さない。 */}
+        <div>
+          <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
+            階級ラベル（任意）
+          </label>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+            <select
+              value={wcPreset}
+              onChange={(e) => setWcPreset(e.target.value)}
+              style={{ padding: "8px 12px", fontSize: 14, minWidth: 160 }}
+            >
+              <option value="">（なし）</option>
+              {WEIGHT_PRESETS.map((w) => (
+                <option key={w} value={w}>
+                  {w}
+                </option>
+              ))}
+              <option value={CUSTOM}>自由入力…</option>
+            </select>
+            {wcPreset === CUSTOM && (
+              <input
+                type="text"
+                value={wcCustom}
+                onChange={(e) => setWcCustom(e.target.value)}
+                placeholder="例: フライ級マッチ / キャッチウェイト"
+                style={{ padding: "8px 12px", fontSize: 14, minWidth: 220 }}
+              />
+            )}
+          </div>
+        </div>
       </div>
 
       <div style={{ padding: "0 24px" }}>

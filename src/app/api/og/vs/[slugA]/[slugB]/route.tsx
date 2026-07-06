@@ -2,8 +2,6 @@ import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates, type Fighter } from "@/lib/fighters";
 import { resolveFighter, type ResolvedFighter } from "@/lib/feeds/resolveFighter";
-import { computeFighterTags } from "@/lib/orgTags";
-import { fetchOrgRankingsRemote } from "@/lib/orgRankingsRemote";
 import { findMatchupEvent } from "@/lib/events";
 import { fitName, type FitOpts } from "@/lib/og/fitName";
 import {
@@ -30,34 +28,17 @@ function FighterSide({
   f,
   corner,
   fit,
-  orgText,
 }: {
   f: ResolvedFighter;
   corner: "left" | "right";
   fit: { fontSize: number; lines: string[] };
-  orgText: string; // 団体タグ由来のラベル(タグ無しなら階級のみ)
 }) {
   const { winRate, finishRate } = calcFighterRates(f);
   const align = corner === "left" ? "flex-start" : "flex-end";
-  const accent = corner === "left" ? COLORS.shu : COLORS.indigo;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: align, padding: "0 28px" }}>
-      <div
-        style={{
-          display: "flex",
-          fontFamily: "Noto Sans JP",
-          fontWeight: 900,
-          fontSize: "16px",
-          color: "#FFFFFF",
-          background: accent,
-          padding: "4px 10px",
-          letterSpacing: "1px",
-        }}
-      >
-        {orgText}
-      </div>
-
+      {/* 団体表示・選手DB階級は出さない(夢のカード対応)。階級ラベルは中央に1つだけ。 */}
       {/* 名前ゾーン: fitName()で事前確定した行を1行ずつ描画(satoriの自動折り返しに頼らない) */}
       <div
         style={{
@@ -67,7 +48,6 @@ function FighterSide({
           maxHeight: `${NAME_ZONE.maxHeight}px`,
           justifyContent: "center",
           alignItems: align,
-          marginTop: "16px",
         }}
       >
         {fit.lines.map((line, i) => (
@@ -141,7 +121,7 @@ function FighterSide({
 }
 
 export async function GET(
-  _req: Request,
+  req: Request,
   { params }: { params: Promise<{ slugA: string; slugB: string }> }
 ) {
   try {
@@ -155,14 +135,10 @@ export async function GET(
       resolveFighter(seedB as Fighter),
     ]);
 
-    // 団体表示はタグ1系統に統一(/fighters と一致)。タグ無しなら階級のみ表示。
-    const orgRankings = await fetchOrgRankingsRemote();
-    const orgTextFor = (f: ResolvedFighter): string => {
-      const labels = computeFighterTags(f, orgRankings).map((t) => t.label);
-      return labels.length > 0 ? `${labels.join("・")} / ${f.weightClass}` : f.weightClass;
-    };
-    const orgTextA = orgTextFor(fighterA);
-    const orgTextB = orgTextFor(fighterB);
+    // カードに乗せる階級は対戦全体の手指定ラベル(?wc=)を1つだけ中央に表示する。
+    // 選手固有の団体表示・選手DB階級は出さない(夢のカード/団体またぎで邪魔なため)。
+    // 空欄なら階級ラベル行を出さない。
+    const wcLabel = (new URL(req.url).searchParams.get("wc") ?? "").trim();
 
     // 左右の選手名は必ず同一フォントサイズにする。各名を個別にfitNameし、
     // 小さい方のfontSizeを共有サイズとして採用、その上で両名の行分割を
@@ -222,8 +198,16 @@ export async function GET(
             </div>
           )}
 
-          {/* MATCH UP ラベル */}
-          <div style={{ display: "flex", justifyContent: "center", padding: "20px 0 0" }}>
+          {/* MATCH UP ラベル + 手指定の階級ラベル(対戦全体で1つ・空欄なら非表示) */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "8px",
+              padding: "20px 0 0",
+            }}
+          >
             <div
               style={{
                 display: "flex",
@@ -235,6 +219,20 @@ export async function GET(
             >
               MATCH UP
             </div>
+            {wcLabel !== "" && (
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Noto Sans JP",
+                  fontWeight: 900,
+                  fontSize: "22px",
+                  color: COLORS.gold,
+                  letterSpacing: "1px",
+                }}
+              >
+                {wcLabel}
+              </div>
+            )}
           </div>
 
           {/* 両選手 + 中央VS + 斜め分割線 */}
@@ -254,7 +252,7 @@ export async function GET(
               }}
             />
 
-            <FighterSide f={fighterA} corner="left" fit={fitA} orgText={orgTextA} />
+            <FighterSide f={fighterA} corner="left" fit={fitA} />
 
             <div
               style={{
@@ -280,7 +278,7 @@ export async function GET(
               </div>
             </div>
 
-            <FighterSide f={fighterB} corner="right" fit={fitB} orgText={orgTextB} />
+            <FighterSide f={fighterB} corner="right" fit={fitB} />
           </div>
 
           {/* フッター */}
