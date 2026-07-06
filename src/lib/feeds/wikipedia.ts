@@ -7,9 +7,11 @@ async function fetchWikitext(lang: "en" | "ja", title: string): Promise<string |
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
+    // redirects=true: リングネーム等が本名記事へのリダイレクトになっている
+    // ケース(例「木下カラテ」→「木下タケアキ」)でも記事本文を取得できるようにする。
     const url = `https://${lang}.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(
       title
-    )}&prop=wikitext&format=json&formatversion=2`;
+    )}&redirects=true&prop=wikitext&format=json&formatversion=2`;
     const res = await fetch(url, {
       headers: { "User-Agent": "MNewsBot/1.0 (https://www.mnews.jp; contact: mnews-mma)" },
       next: { revalidate: REVALIDATE_SECONDS },
