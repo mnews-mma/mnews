@@ -102,20 +102,8 @@ function FighterSide({
           フィニッシュ{finishRate !== null ? `${finishRate}%` : "—"}
         </div>
       </div>
-      {f.nickname && (
-        <div
-          style={{
-            display: "flex",
-            fontFamily: "Noto Sans JP",
-            fontWeight: 900,
-            fontSize: "26px",
-            color: COLORS.gold,
-            marginTop: "18px",
-          }}
-        >
-          {f.nickname}
-        </div>
-      )}
+      {/* 通称はVSカードでは非表示(片側だけにあると要素数がズレて名前・戦績の縦位置が
+          左右非対称になるため)。個人OGカードでは引き続き表示する。 */}
     </div>
   );
 }
