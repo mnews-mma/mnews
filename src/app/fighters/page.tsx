@@ -17,7 +17,11 @@ export const metadata = pageMetadata({
 
 export default async function FightersPage() {
   // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)は一覧に出さない。
-  const fighters = await resolveFighters(FIGHTERS.filter((f) => !f.hidden));
+  const resolved = await resolveFighters(FIGHTERS.filter((f) => !f.hidden));
+  // 戦績データが無い(no data)選手はカード一覧に出さない(薄いものを出さない)。
+  // 公式順位という別の存在意義がある修斗/パンクラスのno-data選手はランキング表に
+  // 名前で残る(そちらは維持)が、選手一覧のカードには載せない。
+  const fighters = resolved.filter((f) => !f.noRecordData);
 
   // 団体タグは導出(選手データは書き換えない)。付与は二次PRの新規公開昇格分のみ
   // (computeFighterTags 側で NEW_TAGGED_SLUGS にゲート済み。既存公開選手は空)。

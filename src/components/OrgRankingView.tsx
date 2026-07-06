@@ -3,7 +3,14 @@ import { SOURCES } from "@/lib/sources";
 
 // パンクラス/修斗の公式ランキング表示(共通)。序列は団体公式の転載。
 // 順位:選手名(DB内ならリンク)。出典・取得日を明示。
-export default function OrgRankingView({ data }: { data: OrgRankingData }) {
+export default function OrgRankingView({
+  data,
+  linkableSlugs,
+}: {
+  data: OrgRankingData;
+  linkableSlugs: string[]; // 公開かつ戦績データありの選手だけリンク。no-data/hidden/未照合は名前のみ
+}) {
+  const linkable = new Set(linkableSlugs);
   const color = data.org === "pancrase" ? SOURCES.pancrase.color : SOURCES.shooto.color;
   return (
     <div style={{ padding: "0 24px 48px" }}>
@@ -47,7 +54,7 @@ export default function OrgRankingView({ data }: { data: OrgRankingData }) {
                         {/^\d+$/.test(e.rank) ? `${e.rank}位` : e.rank}
                       </td>
                       <td className="col-opponent">
-                        {e.slug ? (
+                        {e.slug && linkable.has(e.slug) ? (
                           <a href={`/fighters/${e.slug}`} className="opponent-link">
                             {e.officialName}
                           </a>

@@ -14,10 +14,11 @@ import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 
 // 団体タグから回遊先(ランキング/一覧)へのリンク。RIZINは順位ページを持たない。
 const TAG_LINK: Record<OrgTagKey, string | null> = {
+  ufc: null,
+  rizin: null,
+  deep: "/deep-2026",
   pancrase: "/ranking/pancrase",
   shooto: "/ranking/shooto",
-  deep: "/deep-2026",
-  rizin: null,
 };
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。

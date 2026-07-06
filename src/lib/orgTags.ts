@@ -9,20 +9,21 @@
 import { EVENT_RESULTS } from "./eventResults";
 import type { OrgRankingsFile } from "./orgRankingsData";
 
-export type OrgTagKey = "pancrase" | "shooto" | "deep" | "rizin";
+export type OrgTagKey = "ufc" | "rizin" | "deep" | "pancrase" | "shooto";
 
 export const ORG_TAG_LABEL: Record<OrgTagKey, string> = {
+  ufc: "UFC",
+  rizin: "RIZIN",
+  deep: "DEEP",
   pancrase: "パンクラス",
   shooto: "修斗",
-  deep: "DEEP",
-  rizin: "RIZIN",
 };
 
 export interface OrgTag {
   key: OrgTagKey;
   label: string;
-  weightClass?: string; // タグに紐づく階級(パンクラス/修斗=順位の階級、DEEP/RIZIN=選手の主戦階級)
-  rank?: string; // パンクラス/修斗のみ(王者/暫定王者/番号)。DEEP/RIZINは無し
+  weightClass?: string; // タグに紐づく階級(パンクラス/修斗=順位の階級、他=選手の主戦階級)
+  rank?: string; // パンクラス/修斗のみ(王者/暫定王者/番号)。UFC/RIZIN/DEEPは無し
 }
 
 const norm = (s: string) => s.replace(/[\s　・☆]/g, "");
@@ -41,6 +42,7 @@ export const NEW_TAGGED_SLUGS = new Set<string>([
   "sasuke", "hikaru", "aoi-taichi", "tateo", "toma", "goto-ryo", "captain-africa", "nishio-shinsuke",
   "barboza-rafael", "kamiya-daichi", "kasuya-yusuke", "yanagawa-yuito", "rajabov-otabek", "hirata-naoki",
   "tajima-ryo", "matsui-ryo", "imura-rui",
+  "shimizu-hiroto", "otsuka-tomoki",
 ]);
 
 // DEEP 2026以降のナンバー本戦出場者(名前集合)
@@ -92,34 +94,42 @@ export interface TaggableFighter {
   slug: string;
   nameJa: string;
   weightClass: string;
+  org: string;
 }
 
 // 選手のタグを導出。orgRankings は fetchOrgRankings() の結果。
+// 付与ルール:
+//   - 新規公開昇格分(NEW_TAGGED_SLUGS) … DEEP / パンクラス / 修斗(現ランカーは順位つき)。
+//   - それ以外(=追加前の既存公開選手) … UFC / RIZIN のみ(今回の明示例外)。新規分・スタブには
+//     UFC/RIZINを付けない。DEEP/パンクラス/修斗を既存公開に付けない(不可侵)。
 export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsFile): OrgTag[] {
-  // 既存公開選手(不可侵)にはタグを付けない。付与対象は二次PRの新規公開昇格分のみ。
-  if (!NEW_TAGGED_SLUGS.has(f.slug)) return [];
   const tags: OrgTag[] = [];
 
-  // パンクラス/修斗 = 現ランカー(公式ランキングに slug 一致で載っている)
-  for (const key of ["pancrase", "shooto"] as const) {
-    const data = orgRankings[key];
-    if (!data) continue;
-    for (const c of data.classes) {
-      const hit = c.entries.find((e) => e.slug === f.slug);
-      if (hit) {
-        tags.push({ key, label: ORG_TAG_LABEL[key], weightClass: c.weightClass, rank: hit.rank });
-        break;
+  if (NEW_TAGGED_SLUGS.has(f.slug)) {
+    // パンクラス/修斗 = 現ランカー(公式ランキングに slug 一致で載っている)
+    for (const key of ["pancrase", "shooto"] as const) {
+      const data = orgRankings[key];
+      if (!data) continue;
+      for (const c of data.classes) {
+        const hit = c.entries.find((e) => e.slug === f.slug);
+        if (hit) {
+          tags.push({ key, label: ORG_TAG_LABEL[key], weightClass: c.weightClass, rank: hit.rank });
+          break;
+        }
       }
     }
-  }
-
-  // DEEP = 2026以降ナンバー本戦出場(階級のみ・順位なし)
-  if (isDeep2026(f.nameJa)) {
-    tags.push({ key: "deep", label: ORG_TAG_LABEL.deep, weightClass: f.weightClass });
-  }
-  // RIZIN = 2026以降RIZIN MMA出場(階級のみ・順位なし)
-  if (isRizin2026(f.nameJa)) {
-    tags.push({ key: "rizin", label: ORG_TAG_LABEL.rizin, weightClass: f.weightClass });
+    // DEEP = 2026以降ナンバー本戦出場(階級のみ・順位なし)
+    if (isDeep2026(f.nameJa)) {
+      tags.push({ key: "deep", label: ORG_TAG_LABEL.deep, weightClass: f.weightClass });
+    }
+  } else {
+    // 既存公開選手(不可侵の明示例外): UFC / RIZIN のみ付与。
+    if (f.org === "ufc") {
+      tags.push({ key: "ufc", label: ORG_TAG_LABEL.ufc, weightClass: f.weightClass });
+    }
+    if (isRizin2026(f.nameJa)) {
+      tags.push({ key: "rizin", label: ORG_TAG_LABEL.rizin, weightClass: f.weightClass });
+    }
   }
 
   return tags;

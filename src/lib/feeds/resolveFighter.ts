@@ -35,19 +35,29 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // 国内勢(recordFromResults)も ja-wiki を試す。既定タイトル(nameJaのスペース除去)で
   // 引き、同名別人は下の overlap ガードで弾く。これで DEEP/修斗/パンクラス勢にも生涯戦績を
   // 補完する(取れなければ no data)。
+  // ja/en とも国内勢(recordFromResults)は既定タイトル(ja=nameJaスペース除去 / en=nameEn)で引き、
+  // 同名別人は下の overlap ガードで弾く。ja→enの順で生涯戦績を補完(取れなければ no data)。
   const jaTitle = fighter.wikiTitleJa ?? fighter.nameJa.replace(/\s/g, "");
-  const [enWiki, jaWikiRaw, ufcNickname] = await Promise.all([
-    fighter.wikiTitleEn ? fetchWikiFighterRecord(fighter.wikiTitleEn).catch(() => null) : null,
+  const enTitle = fighter.wikiTitleEn ?? (fighter.recordFromResults ? fighter.nameEn : null);
+  const [enWikiRaw, jaWikiRaw, ufcNickname] = await Promise.all([
+    enTitle ? fetchWikiFighterRecord(enTitle).catch(() => null) : null,
     fetchJaWikiFighterRecord(jaTitle).catch(() => null),
     !fighter.nickname && fighter.ufcSlug ? fetchUfcNickname(fighter.ufcSlug).catch(() => null) : null,
   ]);
 
-  // 同名別人ガード: wikiTitleJa を明示していない recordFromResults 選手は、既定タイトル推測で
-  // 別人記事に当たる恐れがある。ja-wiki戦績が自社EVENT_RESULTS履歴と相手名で重なる時だけ採用。
+  // 同名別人ガード(Dodson型のタイトル違い・同名別人対策): 既定タイトルを推測した
+  // recordFromResults 選手は、wiki戦績が自社EVENT_RESULTS履歴と相手名で重なる時だけ採用。
+  // 重ならない曖昧記事は安全側で棄却(→no data)。ja/en 両方に同じ検証を適用。
+  const derivedForGuard = fighter.recordFromResults
+    ? deriveHistoryFromEventResults(fighter.nameJa)
+    : [];
   let jaWiki = jaWikiRaw;
-  if (fighter.recordFromResults && !fighter.wikiTitleJa && jaWikiRaw) {
-    const derived = deriveHistoryFromEventResults(fighter.nameJa);
-    if (!historiesOverlap(jaWikiRaw.history, derived)) jaWiki = null; // 別人リスク→棄却
+  if (fighter.recordFromResults && !fighter.wikiTitleJa && jaWikiRaw && !historiesOverlap(jaWikiRaw.history, derivedForGuard)) {
+    jaWiki = null;
+  }
+  let enWiki = enWikiRaw;
+  if (fighter.recordFromResults && !fighter.wikiTitleEn && enWikiRaw && !historiesOverlap(enWikiRaw.history, derivedForGuard)) {
+    enWiki = null;
   }
 
   // 戦績テーブルは日本語版Wikipediaを優先し、無ければ英語版にフォールバックする。
