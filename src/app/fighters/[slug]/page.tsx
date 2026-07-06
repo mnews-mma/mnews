@@ -9,6 +9,16 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { findNextAppearance } from "@/lib/events";
+import { fetchOrgRankings } from "@/lib/orgRankingsData";
+import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
+
+// 団体タグから回遊先(ランキング/一覧)へのリンク。RIZINは順位ページを持たない。
+const TAG_LINK: Record<OrgTagKey, string | null> = {
+  pancrase: "/ranking/pancrase",
+  shooto: "/ranking/shooto",
+  deep: "/deep-2026",
+  rizin: null,
+};
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
@@ -85,6 +95,9 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
 
   const fighter = await resolveFighter(seed);
   const { history, wins, losses, draws, nickname, birthPlace, age } = fighter;
+  // 団体タグ(導出・新規公開昇格分のみ)。既存公開選手は空。
+  const orgRankings = await fetchOrgRankings();
+  const orgTags = computeFighterTags(fighter, orgRankings);
   const appearance = findNextAppearance(fighter.nameJa);
   const nextFight = appearance?.kind === "bout" ? { event: appearance.event, bout: appearance.bout } : null;
   const { winRate, finishRate } = calcFighterRates(fighter);
@@ -149,6 +162,38 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
 
         {/* ニックネーム */}
         {nickname && <div className="fighter-page-nickname">{nickname}</div>}
+
+        {/* 団体タグ(現ランカー/2026出場の実態。パンクラス/修斗は順位つき→公式ランキングへ) */}
+        {orgTags.length > 0 && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "10px 0 2px" }}>
+            {orgTags.map((t) => {
+              const chip = (
+                <span
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 700,
+                    padding: "3px 10px",
+                    borderRadius: 5,
+                    color: "#fff",
+                    background: SOURCES[t.key].color,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {t.label}
+                  {t.weightClass ? ` ${t.weightClass}` : ""}
+                  {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
+                </span>
+              );
+              return TAG_LINK[t.key] ? (
+                <a key={t.key} href={TAG_LINK[t.key]!} style={{ textDecoration: "none" }}>
+                  {chip}
+                </a>
+              ) : (
+                <span key={t.key}>{chip}</span>
+              );
+            })}
+          </div>
+        )}
 
         {/* 次戦バナー */}
         {nextFight && (() => {

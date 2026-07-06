@@ -4,11 +4,27 @@ import { useMemo, useState } from "react";
 import { calcFighterRates } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
+import type { OrgTag, OrgTagKey } from "@/lib/orgTags";
 
 const ORG_OPTIONS: { key: "ufc" | "rizin"; label: string }[] = [
   { key: "ufc", label: "UFC" },
   { key: "rizin", label: "RIZIN" },
 ];
+
+// 団体タグの絞り込み(現ランカー/2026出場の実態ベース。既存公開選手には付かない)
+const TAG_OPTIONS: { key: OrgTagKey; label: string }[] = [
+  { key: "pancrase", label: "パンクラス" },
+  { key: "shooto", label: "しゅうと" },
+  { key: "deep", label: "DEEP" },
+  { key: "rizin", label: "RIZIN" },
+];
+
+const TAG_COLOR: Record<OrgTagKey, string> = {
+  pancrase: SOURCES.pancrase.color,
+  shooto: SOURCES.shooto.color,
+  deep: SOURCES.deep.color,
+  rizin: SOURCES.rizin.color,
+};
 
 const WEIGHT_OPTIONS = ["女子アトム級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ヘビー級"];
 
@@ -21,15 +37,23 @@ const WEIGHT_ORDER: Record<string, number> = {
   "ヘビー級": 5,
 };
 
-export default function FighterFilterGrid({ fighters }: { fighters: ResolvedFighter[] }) {
+export default function FighterFilterGrid({
+  fighters,
+  tagsBySlug = {},
+}: {
+  fighters: ResolvedFighter[];
+  tagsBySlug?: Record<string, OrgTag[]>;
+}) {
   const [org, setOrg] = useState<string | null>(null);
   const [weightClass, setWeightClass] = useState<string | null>(null);
+  const [tag, setTag] = useState<OrgTagKey | null>(null);
 
   const filtered = useMemo(() => {
     return fighters
       .filter((f) => {
         if (org && f.org !== org) return false;
         if (weightClass && f.weightClass !== weightClass) return false;
+        if (tag && !(tagsBySlug[f.slug] || []).some((t) => t.key === tag)) return false;
         return true;
       })
       .sort((a, b) => {
@@ -40,7 +64,7 @@ export default function FighterFilterGrid({ fighters }: { fighters: ResolvedFigh
         const wb = WEIGHT_ORDER[b.weightClass] ?? 9;
         return wa - wb;
       });
-  }, [fighters, org, weightClass]);
+  }, [fighters, org, weightClass, tag, tagsBySlug]);
 
   return (
     <>
@@ -81,6 +105,24 @@ export default function FighterFilterGrid({ fighters }: { fighters: ResolvedFigh
             </button>
           ))}
         </div>
+        <div className="fighter-filter-group">
+          <span className="fighter-filter-label">団体タグ</span>
+          <button
+            className={`fighter-filter-chip ${tag === null ? "active" : ""}`}
+            onClick={() => setTag(null)}
+          >
+            すべて
+          </button>
+          {TAG_OPTIONS.map((t) => (
+            <button
+              key={t.key}
+              className={`fighter-filter-chip ${tag === t.key ? "active" : ""}`}
+              onClick={() => setTag(t.key)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="fighter-grid">
@@ -98,6 +140,27 @@ export default function FighterFilterGrid({ fighters }: { fighters: ResolvedFigh
               </div>
               <div className="fighter-name">{f.nameJa}</div>
               {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
+              {(tagsBySlug[f.slug] || []).length > 0 && (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 4, margin: "4px 0 2px" }}>
+                  {tagsBySlug[f.slug].map((t) => (
+                    <span
+                      key={t.key}
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 700,
+                        padding: "1px 6px",
+                        borderRadius: 4,
+                        color: "#fff",
+                        background: TAG_COLOR[t.key],
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {t.label}
+                      {t.rank ? ` ${/^\d+$/.test(t.rank) ? t.rank + "位" : t.rank}` : ""}
+                    </span>
+                  ))}
+                </div>
+              )}
               <div className="fighter-record">
                 {f.wins}-{f.losses}-{f.draws}
               </div>
