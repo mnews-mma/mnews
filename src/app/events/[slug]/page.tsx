@@ -26,7 +26,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ? `${event.eventName}（${event.date}${event.venue ? " ／ " + event.venue : ""}）全${event.bouts.length}試合の勝敗・決着方法を掲載。`
     : `${event.eventName}（${event.date}${event.venue ? " ／ " + event.venue : ""}）の対戦カード・開催情報。${event.bouts[0] ? event.bouts[0].fighterA + " vs " + event.bouts[0].fighterB + "など" : ""}全カード掲載。`;
 
-  return pageMetadata({ title, description, path: `/events/${event.slug}` });
+  return pageMetadata({
+    title,
+    description,
+    path: `/events/${event.slug}`,
+    image: {
+      url: eventOgImageUrl(event.slug, event.bouts.length > 0),
+      width: 1200,
+      height: 630,
+      alt: `${event.eventName} 対戦カード`,
+    },
+  });
 }
 
 function daysUntil(dateStr: string): number {
