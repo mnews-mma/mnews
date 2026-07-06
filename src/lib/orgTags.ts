@@ -82,6 +82,13 @@ for (const e of EVENT_RESULTS) {
 //   平本蓮 … 大怪我で出場が途切れ直近RIZIN戦が2024。RIZIN主力・負傷欠場中。
 const RIZIN_TAG_EXCEPTIONS = new Set<string>(["hiramoto-ren"]);
 
+// 修斗タグの明示例外(slug指定)。公式ランキング対象4階級(フライ/バンタム/
+// フェザー/ライト)以外の階級王者で、ランキングデータには載らないが現状の
+// 立場としてタグを付けるべき選手のみ。例外は最小限に留める。
+//   住村竜市朗 … 現修斗世界ウェルター級王者(ウェルター級は対象4階級外のため
+//                orgRankings.jsonに掲載されずランカー判定に乗らない)。
+const SHOOTO_TAG_EXCEPTIONS = new Set<string>(["sumimura-ryuichiro"]);
+
 // RIZIN戦とみなすイベント名(ja-wiki戦績のevent文字列)。
 const RIZIN_EVENT_RE = /RIZIN|ライジン/i;
 
@@ -154,6 +161,7 @@ export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsF
     tags.push({ key: "deep", label: ORG_TAG_LABEL.deep, weightClass: f.weightClass });
   }
   // パンクラス/修斗 = 現ランカー(公式ランキングに slug 一致で載っている)
+  let shootoTagged = false;
   for (const key of ["pancrase", "shooto"] as const) {
     const data = orgRankings[key];
     if (!data) continue;
@@ -161,9 +169,14 @@ export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsF
       const hit = c.entries.find((e) => e.slug === f.slug);
       if (hit) {
         tags.push({ key, label: ORG_TAG_LABEL[key], weightClass: c.weightClass, rank: hit.rank });
+        if (key === "shooto") shootoTagged = true;
         break;
       }
     }
+  }
+  // 修斗の明示例外(対象4階級外の王者)。ランキング一致で既に付いていれば二重に付けない。
+  if (!shootoTagged && SHOOTO_TAG_EXCEPTIONS.has(f.slug)) {
+    tags.push({ key: "shooto", label: ORG_TAG_LABEL.shooto, weightClass: f.weightClass, rank: "王者" });
   }
 
   return tags;
