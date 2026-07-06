@@ -6,10 +6,11 @@ import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import type { OrgTag, OrgTagKey } from "@/lib/orgTags";
 
-// 団体フィルタ = 今回の4タグ(現ランカー/2026出場の実態ベース。既存公開選手には付かない)。
-// UFCはタグ付与条件が未定のため今回スコープ外(フィルタに出さない)。並び順固定。
+// 団体フィルタ(現ランカー/2026出場の実態ベース。既存公開選手には付かない)。並び順固定。
+// UFC はタグ付与条件が未定のためスコープ外。RIZINタグはロジック・データは残すが、
+// 2026出場者がほぼ既存公開側で不可侵ゲート後ほぼ空になるため、今回はフィルタUIに出さない
+// (既存公開43名への付与方針が決まり次第、正しい母集団でフィルタ復活)。
 const TAG_OPTIONS: { key: OrgTagKey; label: string }[] = [
-  { key: "rizin", label: "RIZIN" },
   { key: "deep", label: "DEEP" },
   { key: "pancrase", label: "パンクラス" },
   { key: "shooto", label: "修斗" },
