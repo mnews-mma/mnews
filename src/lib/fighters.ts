@@ -1273,7 +1273,9 @@ export const FIGHTERS: Fighter[] = [
   { slug: "kitakata-daichi", nameJa: "北方大地", nameEn: "Daichi Kitakata", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kaito", nameJa: "海飛", nameEn: "Kaito", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "mitsui-shunki", nameJa: "三井俊希", nameEn: "Shunki Mitsui", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "shirakawa-rikuto", nameJa: "白川ダーク陸斗", nameEn: "Rikuto Shirakawa", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "白川陸斗" },
+  // 他選手の戦績表(青井人 2021-06-27 RIZIN.29)では「白川陸斗」(「ダーク」抜き)
+  // 表記のため、findFighterSlugByName突合用にaliasを追加(同一人物。表示名は変えない)。
+  { slug: "shirakawa-rikuto", nameJa: "白川ダーク陸斗", nameEn: "Rikuto Shirakawa", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "白川陸斗", aliases: ["白川陸斗"] },
   { slug: "kitaoka-satoru", nameJa: "北岡悟", nameEn: "Satoru Kitaoka", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "yamasaki-yajuro", nameJa: "山崎弥十朗", nameEn: "Yajuro Yamasaki", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nakatsukasa-taiyo", nameJa: "中務太陽", nameEn: "Taiyo Nakatsukasa", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
