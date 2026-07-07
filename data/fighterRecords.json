@@ -11326,6 +11326,7 @@
       }
     ],
     "live": true,
+    "nickname": "メガトンの砦",
     "birthPlace": "栃木県",
     "age": 39
   },
@@ -16085,6 +16086,7 @@
       }
     ],
     "live": true,
+    "nickname": "NEVER GIVE UP",
     "birthPlace": "東京都",
     "age": 28
   },
@@ -18146,6 +18148,7 @@
       }
     ],
     "live": true,
+    "nickname": "横須賀アッパー",
     "birthPlace": "神奈川県",
     "age": 35
   },
@@ -18238,7 +18241,8 @@
         "round": "R3"
       }
     ],
-    "live": true
+    "live": true,
+    "nickname": "極真の黒豹"
   },
   "suzuki-tomoya": {
     "wins": 0,
@@ -22063,7 +22067,8 @@
         "round": "R1"
       }
     ],
-    "live": true
+    "live": true,
+    "nickname": "爆走ステゴロ番長"
   },
   "kanbe-atsubo": {
     "wins": 0,
@@ -24633,6 +24638,7 @@
       }
     ],
     "live": true,
+    "nickname": "オンタリオのライオン丸",
     "birthPlace": "オンタリオ州",
     "age": 27
   },
@@ -24918,6 +24924,7 @@
       }
     ],
     "live": true,
+    "nickname": "クラスノダールの死神",
     "birthPlace": "クラスノダール",
     "age": 30
   },
@@ -25091,6 +25098,7 @@
       }
     ],
     "live": true,
+    "nickname": "赤兎馬",
     "age": 34
   },
   "kimura-shuya": {
@@ -25167,6 +25175,7 @@
       }
     ],
     "live": true,
+    "nickname": "阿波の拳王",
     "birthPlace": "徳島県",
     "age": 26
   },
@@ -25363,7 +25372,8 @@
         "round": "R2"
       }
     ],
-    "live": true
+    "live": true,
+    "nickname": "紅の青龍刀"
   },
   "kuzyutina-natasha": {
     "wins": 10,
@@ -25643,7 +25653,8 @@
         "round": "R2"
       }
     ],
-    "live": true
+    "live": true,
+    "nickname": "コリアン・サンダー"
   },
   "haga-bilalkai": {
     "wins": 7,
@@ -28281,5 +28292,526 @@
     "live": true,
     "birthPlace": "新潟県新発田市",
     "age": 36
+  },
+  "kim-soochul": {
+    "wins": 24,
+    "losses": 9,
+    "draws": 1,
+    "ko": 8,
+    "sub": 6,
+    "decision": 10,
+    "history": [
+      {
+        "date": "2026-03-15",
+        "opponent": "ヤン・ジヨン",
+        "result": "win",
+        "method": "5分3R+延長1R終了 判定3-0",
+        "event": "ROAD FC 076 【ROAD FC 63kgトーナメント 決勝】",
+        "round": "R3"
+      },
+      {
+        "date": "2025-05-31",
+        "opponent": "佐藤将光",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN WORLD SERIES in KOREA",
+        "round": "R3"
+      },
+      {
+        "date": "2024-10-27",
+        "opponent": "キム・ヒョンウ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 070 【ROAD FC 63kgトーナメント 準決勝】",
+        "round": "R3"
+      },
+      {
+        "date": "2024-09-29",
+        "opponent": "井上直樹",
+        "result": "loss",
+        "method": "1R 3:55 TKO（スタンドパンチ連打）",
+        "event": "RIZIN.48 【RIZINバンタム級王座決定戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2024-04-29",
+        "opponent": "中島太一",
+        "result": "win",
+        "method": "2R 0:06 KO（左フック）",
+        "event": "RIZIN.46 【日韓対抗戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2023-10-29",
+        "opponent": "原口央",
+        "result": "win",
+        "method": "2R 4:25 TKO（右ストレート→パウンド）",
+        "event": "ROAD FC 066 【ROAD FC 63kgトーナメント 決勝】",
+        "round": "R2"
+      },
+      {
+        "date": "2023-08-26",
+        "opponent": "ブルーノ・アゼベド",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 065 【ROAD FC 63kgトーナメント 準決勝】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-06-24",
+        "opponent": "アレクセイ・インデンコ",
+        "result": "win",
+        "method": "1R 0:55 ギロチンチョーク",
+        "event": "ROAD FC 064 【ROAD FC 63kgトーナメント 1回戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2022-12-31",
+        "opponent": "フアン・アーチュレッタ",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "RIZIN.40 【RIZIN × BELLATOR全面対抗戦 次鋒戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2022-09-25",
+        "opponent": "扇久保博正",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN.38",
+        "round": "R3"
+      },
+      {
+        "date": "2022-05-13",
+        "opponent": "パク・ヘジン",
+        "result": "win",
+        "method": "2R 0:09 KO（ハイキック→パンチ連打）",
+        "event": "ROAD FC 060 【ROAD FCフェザー級タイトルマッチ】",
+        "round": "R2"
+      },
+      {
+        "date": "2021-09-14",
+        "opponent": "パク・ヘジン",
+        "result": "loss",
+        "method": "1R 4:50 ギロチンチョーク",
+        "event": "ROAD FC 059 【ROAD FCフェザー級王座決定戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2017-04-15",
+        "opponent": "キム・ミンウ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 038 【ROAD FCバンタム級王座決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2016-12-10",
+        "opponent": "清水俊一",
+        "result": "win",
+        "method": "2R 3:49 腕ひしぎ十字固め",
+        "event": "ROAD FC 035",
+        "round": "R2"
+      },
+      {
+        "date": "2016-07-02",
+        "opponent": "ジュマビエク・トルスン",
+        "result": "win",
+        "method": "1R 2:51 TKO（左ボディ→パウンド）",
+        "event": "ROAD FC 032",
+        "round": "R1"
+      },
+      {
+        "date": "2016-03-12",
+        "opponent": "マーカス・ブリメージ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 029",
+        "round": "R3"
+      },
+      {
+        "date": "2015-12-31",
+        "opponent": "マイケ・リニャーレス",
+        "result": "win",
+        "method": "3R（10分/5分/5分）終了 判定3-0",
+        "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 IZAの舞",
+        "round": "R3"
+      },
+      {
+        "date": "2015-08-22",
+        "opponent": "マルロン・サンドロ",
+        "result": "draw",
+        "method": "5分3R終了 判定0-0",
+        "event": "ROAD FC 025",
+        "round": "R3"
+      },
+      {
+        "date": "2015-07-25",
+        "opponent": "中原太陽",
+        "result": "win",
+        "method": "1R 4:48 ギロチンチョーク",
+        "event": "ROAD FC 024 in Japan",
+        "round": "R1"
+      },
+      {
+        "date": "2015-02-01",
+        "opponent": "ワグナー・カンポス",
+        "result": "win",
+        "method": "1R 2:18 TKO（右跳び膝蹴り→パウンド）",
+        "event": "ROAD FC 021",
+        "round": "R1"
+      },
+      {
+        "date": "2014-05-31",
+        "opponent": "田村一聖",
+        "result": "win",
+        "method": "1R 2:41 リアネイキッドチョーク",
+        "event": "ROAD FC 015",
+        "round": "R1"
+      },
+      {
+        "date": "2014-02-09",
+        "opponent": "手塚基伸",
+        "result": "win",
+        "method": "1R 1:58 TKO（パウンド）",
+        "event": "ROAD FC 014",
+        "round": "R1"
+      },
+      {
+        "date": "2013-10-18",
+        "opponent": "ビビアーノ・フェルナンデス",
+        "result": "loss",
+        "method": "5分5R終了 判定0-3",
+        "event": "ONE FC 11：Total Domination 【ONE世界バンタム級王座統一戦】",
+        "round": "R5"
+      },
+      {
+        "date": "2012-10-06",
+        "opponent": "レアンドロ・イッサ",
+        "result": "win",
+        "method": "2R 0:15 TKO（右フック→パウンド）",
+        "event": "ONE FC 6：Rise of Kings 【ONE世界バンタム級王座決定戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2012-08-31",
+        "opponent": "ケビン・ベリンゴン",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ONE FC 5：Pride of a Nation",
+        "round": "R3"
+      },
+      {
+        "date": "2012-06-16",
+        "opponent": "佐藤将光",
+        "result": "win",
+        "method": "4R 1:27 TKO（ドクターストップ：カットでの出血）",
+        "event": "ROAD FC 008",
+        "round": "R4"
+      },
+      {
+        "date": "2012-06-16",
+        "opponent": "ムン・ジェフン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "ROAD FC 007",
+        "round": "R3"
+      },
+      {
+        "date": "2012-02-11",
+        "opponent": "グスタボ・ファルシローリ",
+        "result": "loss",
+        "method": "1R 1:12 リアネイキッドチョーク",
+        "event": "ONE FC 2：Battle of Heroes",
+        "round": "R1"
+      },
+      {
+        "date": "2011-09-03",
+        "opponent": "レアンドロ・イッサ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "ONE FC：Champion vs. Champion",
+        "round": "R3"
+      },
+      {
+        "date": "2011-07-24",
+        "opponent": "中村健太",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 003",
+        "round": "R3"
+      },
+      {
+        "date": "2011-07-24",
+        "opponent": "キム・ヒョリン",
+        "result": "win",
+        "method": "1R 1:50 ギロチンチョーク",
+        "event": "ROAD FC 001",
+        "round": "R1"
+      },
+      {
+        "date": "2011-07-17",
+        "opponent": "アンドリュー・レオーネ",
+        "result": "loss",
+        "method": "1R 0:28 ギロチンチョーク",
+        "event": "PRO Fighting 5",
+        "round": "R1"
+      },
+      {
+        "date": "2011-04-15",
+        "opponent": "ソ・ジェヒョン",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 002",
+        "round": "R3"
+      },
+      {
+        "date": "2010-08-08",
+        "opponent": "金山康宏",
+        "result": "win",
+        "method": "1R 4:43 腕ひしぎ十字固め",
+        "event": "RISING ON 3 【RISING ONフェザー級タイトルマッチ】",
+        "round": "R1"
+      }
+    ],
+    "live": true,
+    "nickname": "韓流お茶目ゾンビ",
+    "birthPlace": "江原道原州市",
+    "age": 34
+  },
+  "yang-jiyong": {
+    "wins": 10,
+    "losses": 5,
+    "draws": 0,
+    "ko": 5,
+    "sub": 2,
+    "decision": 3,
+    "history": [
+      {
+        "date": "2026-03-15",
+        "opponent": "キム・スーチョル",
+        "result": "loss",
+        "method": "5分3R+延長1R終了 判定0-3",
+        "event": "ROAD FC 076 【63kgトーナメント決勝】",
+        "round": "R3"
+      },
+      {
+        "date": "2025-07-27",
+        "opponent": "安藤達也",
+        "result": "loss",
+        "method": "2R 3:52 リアネイキッドチョーク",
+        "event": "超RIZIN.4 真夏の喧嘩祭り",
+        "round": "R2"
+      },
+      {
+        "date": "2025-05-31",
+        "opponent": "金太郎",
+        "result": "win",
+        "method": "3R 0:19 TKO（パウンド）",
+        "event": "RIZIN WORLD SERIES in KOREA",
+        "round": "R3"
+      },
+      {
+        "date": "2025-03-16",
+        "opponent": "ムングンツォージ・ナンディンエルデン",
+        "result": "loss",
+        "method": "1R 1:26 TKO（パウンド）",
+        "event": "ROAD FC 072",
+        "round": "R1"
+      },
+      {
+        "date": "2024-08-31",
+        "opponent": "アレクセイ・インデンコ",
+        "result": "win",
+        "method": "1R 0:35 KO（左ストレート）",
+        "event": "ROAD FC 069 【63kgトーナメント1回戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2024-04-29",
+        "opponent": "倉本一真",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "RIZIN.46 【日韓対抗戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-12-16",
+        "opponent": "パク・ジェソン",
+        "result": "win",
+        "method": "1R 0:08 KO（右フック）",
+        "event": "ROAD FC 067",
+        "round": "R1"
+      },
+      {
+        "date": "2023-10-29",
+        "opponent": "高橋謙斗",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 066",
+        "round": "R3"
+      },
+      {
+        "date": "2023-08-26",
+        "opponent": "ムン・ジェフン",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
+        "event": "ROAD FC 065",
+        "round": "R3"
+      },
+      {
+        "date": "2023-06-24",
+        "opponent": "ラジャブアリ・シェイドゥラエフ",
+        "result": "loss",
+        "method": "1R 4:00 リアネイキッドチョーク",
+        "event": "ROAD FC 064 【63kgトーナメント1回戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2023-02-25",
+        "opponent": "平澤宏樹",
+        "result": "win",
+        "method": "1R 1:47 TKO（左ストレート）",
+        "event": "ROAD FC 063",
+        "round": "R1"
+      },
+      {
+        "date": "2022-11-06",
+        "opponent": "魚井フルスイング",
+        "result": "win",
+        "method": "2R 4:13 TKO（左ストレート→パウンド）",
+        "event": "RIZIN LANDMARK 4",
+        "round": "R2"
+      },
+      {
+        "date": "2022-07-02",
+        "opponent": "昇侍",
+        "result": "win",
+        "method": "3R 1:46 リアネイキッドチョーク",
+        "event": "RIZIN.36",
+        "round": "R3"
+      },
+      {
+        "date": "2022-05-13",
+        "opponent": "キム・ヒョヌ",
+        "result": "win",
+        "method": "3R 2:03 ギロチンチョーク",
+        "event": "ROAD FC 060",
+        "round": "R3"
+      },
+      {
+        "date": "2021-07-03",
+        "opponent": "イ・ジョンヒョン",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "ROAD FC 058",
+        "round": "R2"
+      }
+    ],
+    "live": true,
+    "nickname": "済州島のスラッガー",
+    "age": 30
+  },
+  "lee-junghyun": {
+    "wins": 8,
+    "losses": 3,
+    "draws": 0,
+    "ko": 4,
+    "sub": 0,
+    "decision": 4,
+    "history": [
+      {
+        "date": "2026-03-07",
+        "opponent": "新井丈",
+        "result": "win",
+        "method": "3R 3:44 TKO（左フック）",
+        "event": "RIZIN.52",
+        "round": "R3"
+      },
+      {
+        "date": "2025-09-27",
+        "opponent": "ピョン・イェジュン",
+        "result": "win",
+        "method": "5分5R終了 判定2-0",
+        "event": "ROAD FC 074 【ROAD FCフライ級タイトルマッチ】",
+        "round": "R5"
+      },
+      {
+        "date": "2025-03-16",
+        "opponent": "コ・ドンヒョク",
+        "result": "win",
+        "method": "5分5R終了 判定3-0",
+        "event": "ROAD FC 072 【ROAD FCフライ級王座決定戦】",
+        "round": "R5"
+      },
+      {
+        "date": "2024-12-29",
+        "opponent": "ピョン・イェジュン",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 071",
+        "round": "R3"
+      },
+      {
+        "date": "2024-11-17",
+        "opponent": "伊藤裕樹",
+        "result": "loss",
+        "method": "3R 2:29 TKO（グラウンドエルボー）",
+        "event": "RIZIN LANDMARK 10",
+        "round": "R3"
+      },
+      {
+        "date": "2024-04-29",
+        "opponent": "神龍誠",
+        "result": "loss",
+        "method": "1R 4:29 肩固め",
+        "event": "RIZIN.46 【日韓対抗戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2023-12-16",
+        "opponent": "イ・ギルス",
+        "result": "win",
+        "method": "1R 4:40 KO (左ハイキック)",
+        "event": "ROAD FC 067",
+        "round": "R1"
+      },
+      {
+        "date": "2023-05-27",
+        "opponent": "マーク・クリマコ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "Road to UFC Season 2: Shanghai 【フライ級トーナメント1回戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2022-07-23",
+        "opponent": "秋葉太樹",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 061",
+        "round": "R3"
+      },
+      {
+        "date": "2022-05-14",
+        "opponent": "山本聖悟",
+        "result": "win",
+        "method": "1R 3:12 KO (右ストレート)",
+        "event": "ROAD FC 060",
+        "round": "R1"
+      },
+      {
+        "date": "2021-09-04",
+        "opponent": "キム・ヨンハン",
+        "result": "win",
+        "method": "1R 2:53 TKO (左フック→パウンド)",
+        "event": "ROAD FC 059",
+        "round": "R1"
+      }
+    ],
+    "live": true,
+    "nickname": "ザ・フェノム",
+    "birthPlace": "ソウル",
+    "age": 23
   }
 }
