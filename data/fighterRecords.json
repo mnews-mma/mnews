@@ -28813,5 +28813,81 @@
     "nickname": "ザ・フェノム",
     "birthPlace": "ソウル",
     "age": 23
+  },
+  "yrysbek-tilenov": {
+    "wins": 7,
+    "losses": 1,
+    "draws": 0,
+    "ko": 4,
+    "sub": 1,
+    "decision": 2,
+    "history": [
+      {
+        "date": "2026-04-25",
+        "opponent": "ファリド・アリババザデ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Mangu Professional League 2",
+        "round": "R3"
+      },
+      {
+        "date": "2025-09-21",
+        "opponent": "アジズベク・テミロフ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Octagon 79: Alikhuzhaev vs. Abduali",
+        "round": "R3"
+      },
+      {
+        "date": "2025-04-19",
+        "opponent": "サイムミン・マディエフ",
+        "result": "win",
+        "method": "3R 3:02 TKO (パウンド)",
+        "event": "Octagon 71: Tursyn vs. Abdueva",
+        "round": "R3"
+      },
+      {
+        "date": "2024-11-22",
+        "opponent": "アクター・バティルベク",
+        "result": "win",
+        "method": "2R 3:04 KO (パンチ)",
+        "event": "Octagon 66: Kichigin vs. Chapanov",
+        "round": "R2"
+      },
+      {
+        "date": "2023-11-19",
+        "opponent": "マディヤル・ヌルムカ",
+        "result": "win",
+        "method": "1R 3:50 TKO（肘打ち）",
+        "event": "Alash Pride 91",
+        "round": "R1"
+      },
+      {
+        "date": "2023-05-07",
+        "opponent": "タラント・エスドーレット",
+        "result": "win",
+        "method": "2R 3:40 腕ひしぎ十字固め",
+        "event": "Alash Pride 84",
+        "round": "R2"
+      },
+      {
+        "date": "2022-12-12",
+        "opponent": "エルザト・シャシュバエフ",
+        "result": "loss",
+        "method": "1R 0:59 リアネイキッドチョーク",
+        "event": "Alash Pride 78",
+        "round": "R1"
+      },
+      {
+        "date": "2022-10-23",
+        "opponent": "ジャホンギル・アブドゥヴォヒドフ",
+        "result": "win",
+        "method": "2R 2:02 TKO（パウンド）",
+        "event": "ATF 15: Ergashev vs. Yadegari",
+        "round": "R2"
+      }
+    ],
+    "live": true,
+    "nickname": "キルギスの雪豹"
   }
 }

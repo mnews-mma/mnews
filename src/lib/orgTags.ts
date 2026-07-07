@@ -102,7 +102,10 @@ for (const e of EVENTS) {
 // RIZINタグの明示例外(slug指定)。負傷欠場等で2試合基準を満たせないが、
 // RIZIN主力として扱うべき選手のみ。例外は最小限に留める(原則は基準側で拾う)。
 //   平本蓮 … 大怪我で出場が途切れ直近RIZIN戦が2024。RIZIN主力・負傷欠場中。
-const RIZIN_TAG_EXCEPTIONS = new Set<string>(["hiramoto-ren"]);
+//   イリスベク・ティレノフ … RIZIN LANDMARK 15(2026-07-18)出場が現時点で1戦のみ
+//     (2試合基準未達)。イベント露出優先の暫定付与。7/18の太田忍戦後に2戦目
+//     条件を正式に満たす見込みのため、満たし次第この例外は削除する。
+const RIZIN_TAG_EXCEPTIONS = new Set<string>(["hiramoto-ren", "yrysbek-tilenov"]);
 
 // 修斗タグの明示例外(slug指定)。公式ランキング対象4階級(フライ/バンタム/
 // フェザー/ライト)以外の階級王者で、ランキングデータには載らないが現状の
