@@ -13,6 +13,11 @@ import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 
+// 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
+// (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
+// (events.tsのfindNextFight内部の判定と同じ基準に揃える)。
+const normSpace = (s: string) => s.replace(/[\s　]/g, "");
+
 // 団体タグから回遊先(ランキング/一覧)へのリンク。RIZINは順位ページを持たない。
 const TAG_LINK: Record<OrgTagKey, string | null> = {
   ufc: null,
@@ -46,7 +51,7 @@ export async function generateMetadata({
   const nextFightDesc =
     appearance?.kind === "bout"
       ? `次戦は${appearance.event.date}『${appearance.event.eventName}』でvs${
-          appearance.bout.fighterA === fighter.nameJa ? appearance.bout.fighterB : appearance.bout.fighterA
+          normSpace(appearance.bout.fighterA) === normSpace(fighter.nameJa) ? appearance.bout.fighterB : appearance.bout.fighterA
         }。`
       : appearance?.kind === "expected"
         ? `${appearance.event.date}『${appearance.event.eventName}』に参戦予定（対戦相手未定）。`
@@ -219,7 +224,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         {/* 次戦バナー */}
         {nextFight && (() => {
           const opponentName =
-            nextFight.bout.fighterA === fighter.nameJa
+            normSpace(nextFight.bout.fighterA) === normSpace(fighter.nameJa)
               ? nextFight.bout.fighterB
               : nextFight.bout.fighterA;
           const opponentSlug = findFighterSlugByName(opponentName, slug, visibleSlugs);
