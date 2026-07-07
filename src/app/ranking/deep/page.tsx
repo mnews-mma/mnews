@@ -4,7 +4,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import OrgRankingView from "@/components/OrgRankingView";
 import { FIGHTERS } from "@/lib/fighters";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
-import { DEEP_CHAMPIONS, championsToRankingData } from "@/lib/champions";
+import { deepRankingData } from "@/lib/champions";
 import { pageMetadata } from "@/lib/seo";
 
 // ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
@@ -18,12 +18,12 @@ async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
 export const metadata = pageMetadata({
   title: "DEEP 現王者一覧（階級別）| Mニュース",
   description:
-    "DEEP各階級の現王者(正規王者)を掲載。公式サイトの発表に基づき、暫定王者・空位の階級は除いています。",
+    "DEEP各階級の現王者・暫定王者を掲載。公式サイトの発表に基づく(空位の階級は「空位」と明記)。",
   path: "/ranking/deep",
 });
 
 export default async function DeepChampionsPage() {
-  const deep = championsToRankingData("deep", DEEP_CHAMPIONS);
+  const deep = deepRankingData();
   const matched = new Set<string>();
   for (const c of deep.classes) for (const e of c.entries) if (e.slug) matched.add(e.slug);
   const linkable = await linkableSlugsFor(matched);

@@ -31,19 +31,35 @@ async function main() {
     fetchHtml("https://www.shooto-mma.com/ranking/"),
   ]);
 
-  // 取得成功かつ中身が空でない時だけ差し替え。失敗/空は前回値を保持。
-  const ok = (d: OrgRankingData | null) => d && d.classes.length > 0;
   const pan = panHtml ? parsePancrase(panHtml) : null;
   const sho = shoHtml ? parseShooto(shoHtml) : null;
 
+  // 取得成功かつ「前回比で階級数が大きく減っていない」時だけ差し替える。
+  // 空/取得失敗はもちろん、サイト構造変化でパーサーが一部階級しか拾えなくなった
+  // (部分崩壊)ケースも同じ扱いにする。閾値は前回の半分未満を「疑わしい」とする。
+  const ok = (d: OrgRankingData | null, prevData?: OrgRankingData) => {
+    if (!d || d.classes.length === 0) return false;
+    const prevCount = prevData?.classes.length ?? 0;
+    if (prevCount > 0 && d.classes.length < prevCount / 2) return false;
+    return true;
+  };
+  const panOk = ok(pan, prev.pancrase);
+  const shoOk = ok(sho, prev.shooto);
+
   const out = {
-    pancrase: ok(pan) ? pan! : prev.pancrase,
-    shooto: ok(sho) ? sho! : prev.shooto,
+    pancrase: panOk ? pan! : prev.pancrase,
+    shooto: shoOk ? sho! : prev.shooto,
   };
 
   const fails: string[] = [];
-  if (!ok(pan)) fails.push("pancrase(前回値保持)");
-  if (!ok(sho)) fails.push("shooto(前回値保持)");
+  if (!panOk) {
+    fails.push("pancrase(前回値保持)");
+    if (pan) console.warn(`[WARN] pancrase構造変化の疑い: 取得${pan.classes.length}区分 / 前回${prev.pancrase?.classes.length ?? 0}区分`);
+  }
+  if (!shoOk) {
+    fails.push("shooto(前回値保持)");
+    if (sho) console.warn(`[WARN] shooto構造変化の疑い: 取得${sho.classes.length}区分 / 前回${prev.shooto?.classes.length ?? 0}区分`);
+  }
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n");

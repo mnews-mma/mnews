@@ -1,13 +1,8 @@
-// パンクラス/修斗の公式ランキングHTMLをパースして、Mニュース5階級に絞った
-// 順位データにする(純粋ロジック)。序列はmnewsが作らず団体公式の値をそのまま転載。
-// 対象は フライ/バンタム/フェザー/ライト の4区分のみ(パンクラス/修斗にヘビーは無い)。
-// ストロー・ウェルター・ミドル等の5階級外は「その階級ごと」スキップする。
+// パンクラス/修斗の公式ランキングHTMLをパースして順位データにする(純粋ロジック)。
+// 序列はmnewsが作らず団体公式の値をそのまま転載。対象は男子(ストロー〜ミドル)+
+// 女子の該当階級のみ(修斗の環太平洋ランキングのような重複/対象外区分はスキップ)。
 import { FIGHTERS } from "./fighters";
-
-// 掲載対象クラス(RIZIN準拠ラベル)。パンクラス/修斗の上限はミドルだが対象は4区分。
-export const ORG_RANK_CLASSES = ["フライ級", "バンタム級", "フェザー級", "ライト級"] as const;
-export type OrgRankClass = (typeof ORG_RANK_CLASSES)[number];
-const IN_SCOPE = new Set<string>(ORG_RANK_CLASSES);
+import { rankSortKey } from "./weightClasses";
 
 export interface RankEntry {
   rank: string; // "王者" / "暫定王者" / "1" 等、団体公式の値そのまま
@@ -15,9 +10,9 @@ export interface RankEntry {
   slug: string | null; // DB内選手にマッチすれば slug(選手ページリンク用)
 }
 export interface RankedClass {
-  // パンクラス/修斗はMニュース5階級のみ。RIZIN/DEEP現王者ページ(champions.ts)は
-  // メガトン級・ストロー級等それ以外の階級も扱うため string で受ける。
-  weightClass: OrgRankClass | string;
+  // パンクラス/修斗/RIZIN/DEEPとも階級ラベルは多岐にわたるため string で受ける
+  // (weightSortKeyで並び順を統一するため、型を特定の列挙に絞らない)。
+  weightClass: string;
   entries: RankEntry[];
 }
 export interface OrgRankingData {
@@ -45,54 +40,48 @@ function matchSlug(name: string): string | null {
   return nameIndex.get(norm(name)) ?? null;
 }
 
-// 5階級外を落とし、対象クラスだけ返す共通仕上げ。
-function finalize(
-  org: "pancrase" | "shooto",
-  source: string,
-  sourceUrl: string,
-  rankingLabel: string,
+// 階級ブロックをRankedClassに仕上げ、階級内の順位(王者→暫定→番号)で整列する。
+function finalizeClasses(
   raw: { weightClass: string; entries: { rank: string; officialName: string }[] }[]
-): OrgRankingData {
+): RankedClass[] {
   const classes: RankedClass[] = [];
-  const seenClass = new Set<string>();
   for (const c of raw) {
-    if (!IN_SCOPE.has(c.weightClass)) continue; // 5階級外はスキップ
-    if (seenClass.has(c.weightClass)) continue; // 初出のみ採用(男子KOP/世界が先。女子QUEEN・環太平洋の重複を落とす)
-    seenClass.add(c.weightClass);
     const entries = c.entries
       .filter((e) => e.officialName)
-      .map((e) => ({ rank: e.rank, officialName: e.officialName, slug: matchSlug(e.officialName) }));
-    if (entries.length > 0) classes.push({ weightClass: c.weightClass as OrgRankClass, entries });
+      .map((e) => ({ rank: e.rank, officialName: e.officialName, slug: matchSlug(e.officialName) }))
+      .sort((a, b) => rankSortKey(a.rank) - rankSortKey(b.rank));
+    if (entries.length > 0) classes.push({ weightClass: c.weightClass, entries });
   }
-  return {
-    org,
-    source,
-    sourceUrl,
-    fetchedDate: new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10),
-    rankingLabel,
-    classes,
-  };
+  return classes;
 }
 
-// クラス見出し文字列を RIZIN5階級ラベルへ(例「世界フェザー級ランキング」「フェザー級(65.8kg…)」)。
-function toClassLabel(heading: string): string {
-  // 女子は今回対象外。修斗の環太平洋(Pacific Rim)ランキングも使わない(世界ランキングのみ)。
-  if (/女子|QUEEN|クイーン|JEWELS|WOMEN|環太平洋/i.test(heading)) return "";
-  const m = heading.match(/(ストロー|フライ|バンタム|フェザー|ライト|ウェルター|ミドル|ヘビー)級/);
-  return m ? m[0] : "";
+// 見出し文字列から階級名(ストロー級・フライ級…)だけを抜き出す(女子接頭辞や
+// 「世界」「環太平洋」等の前置き・(kg…)の注記は呼び出し側で処理済み/別途判定する)。
+function extractClassBase(heading: string): string | null {
+  const m = heading.match(/(ストロー|フライ|バンタム|フェザー|ライト|ウェルター|ミドル|ライトヘビー|ヘビー|アトム|スーパーアトム)級/);
+  return m ? m[0] : null;
 }
 
 // ── パンクラス公式ランキング(https://www.pancrase.co.jp/rls/ranking.html) ──
 // <h4>フェザー級(…)</h4> ... <td class="rankingno|rankingnokop">1|王者|暫定王者</td> … <a>名前</a>
+// 女子は見出しに「女子」の表記が無く、男子と同じ階級名(フライ級・ストロー級)が
+// ページ後半で再度現れる形+女子専用の「アトム級」で構成される。そのため階級名の
+// 出現回数で男子(初出)/女子(再出・またはアトム級)を判定する。
 export function parsePancrase(html: string): OrgRankingData {
   const labelM = html.match(/(\d{1,2}月\d{1,2}日発表)/);
   const rankingLabel = labelM ? labelM[1] : "";
   const blocks = html.split(/<h4>/).slice(1);
   const raw: { weightClass: string; entries: { rank: string; officialName: string }[] }[] = [];
+  const seenBase = new Set<string>();
   for (const b of blocks) {
     const head = b.slice(0, b.indexOf("</h4>"));
-    const cls = toClassLabel(head);
-    if (!cls) continue;
+    const base = extractClassBase(head);
+    if (!base) continue;
+    // 「アトム級」は男子に存在しないため常に女子。それ以外は初出=男子・再出=女子。
+    const isFemale = base === "アトム級" || seenBase.has(base);
+    seenBase.add(base);
+    const cls = isFemale ? `女子${base}` : base;
+
     const entries: { rank: string; officialName: string }[] = [];
     const rowRe = /<td class="(rankingno|rankingnokop)">([\s\S]*?)<\/td>[\s\S]*?<a[^>]*>([^<]+)<\/a>/g;
     let m: RegExpExecArray | null;
@@ -103,18 +92,21 @@ export function parsePancrase(html: string): OrgRankingData {
     }
     raw.push({ weightClass: cls, entries });
   }
-  return finalize(
-    "pancrase",
-    "パンクラス公式ランキング",
-    "https://www.pancrase.co.jp/rls/ranking.html",
+  return {
+    org: "pancrase",
+    source: "パンクラス公式ランキング",
+    sourceUrl: "https://www.pancrase.co.jp/rls/ranking.html",
+    fetchedDate: new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10),
     rankingLabel,
-    raw
-  );
+    classes: finalizeClasses(raw),
+  };
 }
 
 // ── 修斗公式ランキング(https://www.shooto-mma.com/ranking/) ──
 // <h4 id="世界フェザー級">…</h4> … <table class="champion">…chmp-name…</table>
 // … <table class="ranking table"…> <tr><td>1</td>…<a class="fighter-mdl">名前 / ROMA</a> …
+// 見出しIDには「世界」「環太平洋」「女子」等の接頭辞がそのまま付く。世界ランキングの
+// みを対象にし(環太平洋は不使用)、女子は接頭辞をそのままMニュース表記(女子○○級)に使う。
 export function parseShooto(html: string): OrgRankingData {
   const labelM = html.match(/委員会（([^）]+)）/);
   const rankingLabel = labelM ? labelM[1].split("／")[0] : "";
@@ -122,19 +114,20 @@ export function parseShooto(html: string): OrgRankingData {
   const raw: { weightClass: string; entries: { rank: string; officialName: string }[] }[] = [];
   for (const b of blocks) {
     const head = b.slice(0, b.indexOf(">"));
-    const cls = toClassLabel(head);
-    if (!cls) continue;
-    // 環太平洋など2つ目以降のブロックに引きずられないよう、次のh4想定範囲までに限定
-    const seg = b;
+    if (/環太平洋/.test(head)) continue; // 環太平洋ランキングは対象外(世界ランキングのみ採用)
+    const base = extractClassBase(head);
+    if (!base) continue;
+    const cls = /女子/.test(head) ? `女子${base}` : base;
+
     const entries: { rank: string; officialName: string }[] = [];
     // 王者
-    const champ = seg.match(/<table class="champion">[\s\S]*?<span class="chmp-name">\s*<a[^>]*>([^<]+)<\/a>/);
+    const champ = b.match(/<table class="champion">[\s\S]*?<span class="chmp-name">\s*<a[^>]*>([^<]+)<\/a>/);
     if (champ) {
       const nm = champ[1].split("/")[0].replace(/\s+/g, " ").trim();
       if (nm) entries.push({ rank: "王者", officialName: nm });
     }
     // ランカー(ranking table 内の各行: 先頭td=順位, fighter-mdl の a テキスト先頭=日本語名)
-    const tbl = seg.match(/<table class="ranking table"[\s\S]*?<\/table>/);
+    const tbl = b.match(/<table class="ranking table"[\s\S]*?<\/table>/);
     if (tbl) {
       const rowRe = /<tr>\s*<td>(\d+)<\/td>[\s\S]*?<a[^>]*class="fighter-mdl"[^>]*>([^<]+?)<\/a>/g;
       let m: RegExpExecArray | null;
@@ -145,11 +138,12 @@ export function parseShooto(html: string): OrgRankingData {
     }
     raw.push({ weightClass: cls, entries });
   }
-  return finalize(
-    "shooto",
-    "修斗公式ランキング",
-    "https://www.shooto-mma.com/ranking/",
+  return {
+    org: "shooto",
+    source: "修斗公式ランキング",
+    sourceUrl: "https://www.shooto-mma.com/ranking/",
+    fetchedDate: new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10),
     rankingLabel,
-    raw
-  );
+    classes: finalizeClasses(raw),
+  };
 }
