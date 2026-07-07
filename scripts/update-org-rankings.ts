@@ -3,12 +3,19 @@
 // 失敗時は前回値を保持(取得失敗で一覧が空になる事故を防ぐ)。既存の選手データは
 // 一切書き換えない(このJSONだけを更新する = 既存公開選手 不可侵)。
 //
+// 管理画面(投稿ドラフト タブ②)の差分検知用に、上書き直前のmain値を
+// data/orgRankings-prev.json へ退避する。取得失敗/構造崩壊で前回値保持に
+// なったorgはprevも触らない(退避も上書きもしない=誤った差分を作らない)。
+// DEEPは静的スナップショット(champions.ts)なので、値が変わった時だけ退避する。
+//
 // 実行: npx tsx scripts/update-org-rankings.ts
 import fs from "fs";
 import path from "path";
 import { parsePancrase, parseShooto, OrgRankingData } from "../src/lib/orgRankings";
+import { deepRankingData } from "../src/lib/champions";
 
 const OUT = path.join(process.cwd(), "data", "orgRankings.json");
+const OUT_PREV = path.join(process.cwd(), "data", "orgRankings-prev.json");
 const UA = "Mozilla/5.0 (compatible; MNewsBot/1.0)";
 
 async function fetchHtml(url: string): Promise<string | null> {
@@ -21,10 +28,15 @@ async function fetchHtml(url: string): Promise<string | null> {
   }
 }
 
+interface OrgRankingsFile {
+  pancrase?: OrgRankingData;
+  shooto?: OrgRankingData;
+  deep?: OrgRankingData;
+}
+
 async function main() {
-  const prev: { pancrase?: OrgRankingData; shooto?: OrgRankingData } = fs.existsSync(OUT)
-    ? JSON.parse(fs.readFileSync(OUT, "utf8"))
-    : {};
+  const prev: OrgRankingsFile = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, "utf8")) : {};
+  const prevSnapshot: OrgRankingsFile = fs.existsSync(OUT_PREV) ? JSON.parse(fs.readFileSync(OUT_PREV, "utf8")) : {};
 
   const [panHtml, shoHtml] = await Promise.all([
     fetchHtml("https://www.pancrase.co.jp/rls/ranking.html"),
@@ -33,6 +45,7 @@ async function main() {
 
   const pan = panHtml ? parsePancrase(panHtml) : null;
   const sho = shoHtml ? parseShooto(shoHtml) : null;
+  const deep = deepRankingData(); // 静的スナップショット(手動レビュー・毎回同じ値のことが多い)
 
   // 取得成功かつ「前回比で階級数が大きく減っていない」時だけ差し替える。
   // 空/取得失敗はもちろん、サイト構造変化でパーサーが一部階級しか拾えなくなった
@@ -46,9 +59,10 @@ async function main() {
   const panOk = ok(pan, prev.pancrase);
   const shoOk = ok(sho, prev.shooto);
 
-  const out = {
+  const out: OrgRankingsFile = {
     pancrase: panOk ? pan! : prev.pancrase,
     shooto: shoOk ? sho! : prev.shooto,
+    deep,
   };
 
   const fails: string[] = [];
@@ -61,12 +75,22 @@ async function main() {
     if (sho) console.warn(`[WARN] shooto構造変化の疑い: 取得${sho.classes.length}区分 / 前回${prev.shooto?.classes.length ?? 0}区分`);
   }
 
+  // 差分検知(管理画面タブ②)用のprevスナップショット。今回「実際に新しい値へ
+  // 差し替えた」org分だけ、直前のmain値をprevへ退避する。前回値保持のままの
+  // orgはprevも変更しない(退避も上書きもしない=誤った差分を作らない)。
+  // DEEPは値が変わった時だけ退避する(毎回同じ静的値なら無意味な退避をしない)。
+  const nextPrevSnapshot: OrgRankingsFile = { ...prevSnapshot };
+  if (panOk) nextPrevSnapshot.pancrase = prev.pancrase;
+  if (shoOk) nextPrevSnapshot.shooto = prev.shooto;
+  if (JSON.stringify(prev.deep) !== JSON.stringify(deep)) nextPrevSnapshot.deep = prev.deep;
+
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n");
+  fs.writeFileSync(OUT_PREV, JSON.stringify(nextPrevSnapshot, null, 2) + "\n");
 
   const sum = (d?: OrgRankingData) =>
     d ? `${d.classes.length}区分/${d.classes.reduce((s, c) => s + c.entries.length, 0)}人(${d.rankingLabel})` : "なし";
-  console.log(`pancrase: ${sum(out.pancrase)}  shooto: ${sum(out.shooto)}`);
+  console.log(`pancrase: ${sum(out.pancrase)}  shooto: ${sum(out.shooto)}  deep: ${sum(out.deep)}`);
   if (fails.length) console.log("取得失敗:", fails.join(", "));
 }
 
