@@ -7,6 +7,7 @@
 // 順位・タグは静的に選手へ書かず、ランキングデータ+EVENT_RESULTSから毎回導出する
 // (＝既存公開選手のデータを一切書き換えない)。
 import { EVENT_RESULTS } from "./eventResults";
+import { EVENTS } from "./events";
 import type { FightRecord } from "./fighters";
 import type { OrgRankingsFile } from "./orgRankingsData";
 
@@ -64,21 +65,41 @@ for (const e of EVENT_RESULTS) {
   }
 }
 
-// 2025年1月以降にRIZIN主催MMA興行へ出場した選手(名前集合・EVENT_RESULTS由来)。
-// EVENT_RESULTS の org==="rizin" はMMA興行のみ(キック=RIZIN FIGHTは含まれない)。
-// しきい値を2026→2025に緩めたのは、片方の年がmnews未収録でもデータ欠損に強く
-// するため("2026に出ていない"のではなく"mnewsが未記録"による誤タグ落ちを防ぐ)。
+// 2025-2026年にRIZIN主催MMA興行へ2試合以上出場した選手のみRIZINタグを付ける
+// (他団体タグと同じ"現行性"判定に統一。旧ルールは1試合でも付与しており、
+// DEEP/パンクラス/修斗の選手に過去のRIZIN出場歴だけでタグが誤って残る事故が
+// あったため2試合以上に強化)。カウント対象:
+//   (a) EVENT_RESULTS(org==="rizin"・MMA興行のみ、キック=RIZIN FIGHTは含まれない)
+//   (b) EVENTS(未消化=予定/開催前の対戦カード。確定済みだが結果未反映の
+//       「次戦」も現行性の証拠として数える)
+// (a)+(b)の合計で2試合に満たない場合のみ、wiki戦績側のRIZIN戦カウントを
+// フォールバックとして併用する(mnews未収録の試合をwiki戦績から補う。
+// 同一試合の二重計上を避けるため合算ではなく大きい方を採用)。
 const RIZIN_SINCE = "2025-01-01";
-const rizinRecentNames = new Set<string>();
+const RIZIN_UNTIL = "2026-12-31";
+const RIZIN_MIN_BOUTS = 2;
+
+const rizinMnewsCounts = new Map<string, number>();
+function addRizinCount(name: string) {
+  const key = norm(name);
+  rizinMnewsCounts.set(key, (rizinMnewsCounts.get(key) ?? 0) + 1);
+}
 for (const e of EVENT_RESULTS) {
-  if (e.org !== "rizin" || e.date < RIZIN_SINCE) continue;
+  if (e.org !== "rizin" || e.date < RIZIN_SINCE || e.date > RIZIN_UNTIL) continue;
   for (const f of e.fights) {
-    if (f.fighterA) rizinRecentNames.add(norm(f.fighterA));
-    if (f.fighterB) rizinRecentNames.add(norm(f.fighterB));
+    if (f.fighterA) addRizinCount(f.fighterA);
+    if (f.fighterB) addRizinCount(f.fighterB);
+  }
+}
+for (const e of EVENTS) {
+  if (e.org !== "rizin" || e.date < RIZIN_SINCE || e.date > RIZIN_UNTIL) continue;
+  for (const b of e.bouts) {
+    if (b.fighterA) addRizinCount(b.fighterA);
+    if (b.fighterB) addRizinCount(b.fighterB);
   }
 }
 
-// RIZINタグの明示例外(slug指定)。負傷欠場等で2025以降の自動判定から漏れるが、
+// RIZINタグの明示例外(slug指定)。負傷欠場等で2試合基準を満たせないが、
 // RIZIN主力として扱うべき選手のみ。例外は最小限に留める(原則は基準側で拾う)。
 //   平本蓮 … 大怪我で出場が途切れ直近RIZIN戦が2024。RIZIN主力・負傷欠場中。
 const RIZIN_TAG_EXCEPTIONS = new Set<string>(["hiramoto-ren"]);
@@ -123,18 +144,20 @@ export interface TaggableFighter {
   history?: FightRecord[];
 }
 
-// 2025年以降にRIZINへ出場したか。判定ソースをEVENT_RESULTS単独に限定せず、
-// (a)EVENT_RESULTS 2025+ / (b)解決済みwiki戦績のRIZIN戦2025+ / (c)明示例外 を併用。
+// 2025-2026年にRIZINへ2試合以上出場(予定含む)したか。
+// (a)mnews記録(EVENT_RESULTS+EVENTS) / (b)解決済みwiki戦績のRIZIN戦 の
+// 大きい方を採用(同一試合の二重計上を避けるため合算しない)。
 // 捏造はしない(EVENT_RESULTSに無い試合を足さず、既にDBが持つwiki戦績から導く)。
 export function isRizinRecent(f: TaggableFighter): boolean {
   if (RIZIN_TAG_EXCEPTIONS.has(f.slug)) return true;
-  if (rizinRecentNames.has(norm(f.nameJa))) return true;
+  const mnewsCount = rizinMnewsCounts.get(norm(f.nameJa)) ?? 0;
+  let wikiCount = 0;
   if (f.history) {
     for (const h of f.history) {
-      if (h.date >= RIZIN_SINCE && RIZIN_EVENT_RE.test(h.event)) return true;
+      if (h.date >= RIZIN_SINCE && h.date <= RIZIN_UNTIL && RIZIN_EVENT_RE.test(h.event)) wikiCount++;
     }
   }
-  return false;
+  return Math.max(mnewsCount, wikiCount) >= RIZIN_MIN_BOUTS;
 }
 
 // 選手の団体タグを導出。orgRankings は fetchOrgRankings() の結果。

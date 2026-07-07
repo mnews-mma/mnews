@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ogImagePath } from "@/lib/ogShared";
 import { buildResultPost } from "@/lib/xPost";
+import AdminBackLink from "@/components/AdminBackLink";
 
 interface BoutLite {
   index: number;
@@ -145,6 +146,7 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
 
   return (
     <div style={{ padding: "20px 16px 60px", maxWidth: 560, margin: "0 auto" }}>
+      <AdminBackLink />
       <h1 style={{ fontFamily: "var(--os)", fontSize: 20, fontWeight: 700, marginBottom: 4 }}>
         ライブ結果入力
       </h1>

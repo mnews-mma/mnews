@@ -8,6 +8,7 @@ import { ogImagePath } from "@/lib/ogShared";
 import CopyButton from "@/components/CopyButton";
 import DigestPicker from "@/components/DigestPicker";
 import type { PickerArticle } from "@/components/DigestPicker";
+import AdminBackLink from "@/components/AdminBackLink";
 
 // このページが唯一の「X投稿下書き」ワークフロー。
 // 朝まとめ: 過去24時間の全ニュースを一覧表示→手動で選択→X投稿文に変換
@@ -125,6 +126,7 @@ export default async function XPreviewPage() {
 
   return (
     <div style={{ padding: "32px 24px", maxWidth: 720 }}>
+      <AdminBackLink />
       <h1 style={{ fontFamily: "var(--os)", fontSize: 22, fontWeight: 700, marginBottom: 8 }}>
         X投稿 下書き
       </h1>
