@@ -7,6 +7,66 @@
     "rankingLabel": "7月2日発表",
     "classes": [
       {
+        "weightClass": "ミドル級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "コシム・サルドロフ",
+            "slug": "sardorov-koshim"
+          },
+          {
+            "rank": "1",
+            "officialName": "林 源平",
+            "slug": "hayashi-genpei"
+          },
+          {
+            "rank": "2",
+            "officialName": "平田 旭",
+            "slug": "hirata-akira"
+          },
+          {
+            "rank": "3",
+            "officialName": "佐藤龍汰朗",
+            "slug": "sato-ryutaro"
+          },
+          {
+            "rank": "4",
+            "officialName": "岡村寿紀",
+            "slug": "okamura-toshiki"
+          }
+        ]
+      },
+      {
+        "weightClass": "ウェルター級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "ゴイチ・ヤマウチ",
+            "slug": "yamauchi-goichi"
+          },
+          {
+            "rank": "1",
+            "officialName": "内藤由良",
+            "slug": "naito-yura"
+          },
+          {
+            "rank": "2",
+            "officialName": "武者孝大郎",
+            "slug": "musha-kotaro"
+          },
+          {
+            "rank": "3",
+            "officialName": "佐藤生虎",
+            "slug": null
+          },
+          {
+            "rank": "4",
+            "officialName": "村山暁洋",
+            "slug": "murayama-akihiro"
+          }
+        ]
+      },
+      {
         "weightClass": "ライト級",
         "entries": [
           {
@@ -295,6 +355,86 @@
             "slug": null
           }
         ]
+      },
+      {
+        "weightClass": "ストロー級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "宮澤雄大",
+            "slug": "miyazawa-yuta"
+          },
+          {
+            "rank": "1",
+            "officialName": "佐々木瞬真",
+            "slug": "sasaki-shunma"
+          },
+          {
+            "rank": "2",
+            "officialName": "船田電池",
+            "slug": "funada-denchi"
+          },
+          {
+            "rank": "3",
+            "officialName": "リトル",
+            "slug": "little"
+          },
+          {
+            "rank": "4",
+            "officialName": "氏原魁星",
+            "slug": "ujihara-kaisei"
+          },
+          {
+            "rank": "5",
+            "officialName": "寺岡拓永",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "女子フライ級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "杉山しずか",
+            "slug": null
+          },
+          {
+            "rank": "1",
+            "officialName": "和田綾音",
+            "slug": null
+          },
+          {
+            "rank": "2",
+            "officialName": "ライカ",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "女子ストロー級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "本野美樹",
+            "slug": null
+          },
+          {
+            "rank": "1",
+            "officialName": "KAREN",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "女子アトム級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "SARAMI",
+            "slug": null
+          }
+        ]
       }
     ]
   },
@@ -305,6 +445,66 @@
     "fetchedDate": "2026-07-07",
     "rankingLabel": "6月5日付け",
     "classes": [
+      {
+        "weightClass": "ストロー級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "田上 こゆる",
+            "slug": "tanoue-koyuru"
+          },
+          {
+            "rank": "1",
+            "officialName": "内藤 頌貴",
+            "slug": "naito-shoki"
+          },
+          {
+            "rank": "2",
+            "officialName": "当真 佳直",
+            "slug": "toma-yoshinao"
+          },
+          {
+            "rank": "3",
+            "officialName": "畠山 隆称",
+            "slug": "hatakeyama-takanori"
+          },
+          {
+            "rank": "4",
+            "officialName": "黒部 和沙",
+            "slug": "kurobe-kazusa"
+          },
+          {
+            "rank": "5",
+            "officialName": "山上 幹臣",
+            "slug": "yamagami-mikio"
+          },
+          {
+            "rank": "6",
+            "officialName": "旭那 拳",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "田口 恵大",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "友利 琉偉",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "友利 幸汰",
+            "slug": null
+          },
+          {
+            "rank": "10",
+            "officialName": "泰斗",
+            "slug": null
+          }
+        ]
+      },
       {
         "weightClass": "フライ級",
         "entries": [
@@ -566,6 +766,221 @@
           {
             "rank": "10",
             "officialName": "田中 有",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "ウェルター級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "住村 竜市朗",
+            "slug": "sumimura-ryuichiro"
+          },
+          {
+            "rank": "1",
+            "officialName": "デソウザ マルセル",
+            "slug": "desouza-marcel"
+          },
+          {
+            "rank": "2",
+            "officialName": "墨吉 涼太",
+            "slug": "sumiyoshi-ryota"
+          },
+          {
+            "rank": "3",
+            "officialName": "マコア クーパー",
+            "slug": "cooper-makoa"
+          },
+          {
+            "rank": "4",
+            "officialName": "西條 英成",
+            "slug": "saijo-hidenari"
+          },
+          {
+            "rank": "5",
+            "officialName": "ソーキ",
+            "slug": "soki"
+          },
+          {
+            "rank": "6",
+            "officialName": "ヴィクター バレンズエラ",
+            "slug": null
+          },
+          {
+            "rank": "7",
+            "officialName": "エルナニ ペルペトゥオ",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "田村 ヒビキ",
+            "slug": null
+          },
+          {
+            "rank": "9",
+            "officialName": "グラップラー脇",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "ミドル級",
+        "entries": [
+          {
+            "rank": "1",
+            "officialName": "岩﨑 大河",
+            "slug": null
+          },
+          {
+            "rank": "2",
+            "officialName": "荒井 勇ニ",
+            "slug": null
+          },
+          {
+            "rank": "3",
+            "officialName": "沙門",
+            "slug": null
+          },
+          {
+            "rank": "4",
+            "officialName": "HENRY",
+            "slug": null
+          },
+          {
+            "rank": "5",
+            "officialName": "キム ジェヨン",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "女子アトム級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "青野 ひかる",
+            "slug": null
+          },
+          {
+            "rank": "1",
+            "officialName": "徳本 望愛",
+            "slug": null
+          },
+          {
+            "rank": "2",
+            "officialName": "中村 未来",
+            "slug": null
+          },
+          {
+            "rank": "3",
+            "officialName": "杉本 恵",
+            "slug": null
+          },
+          {
+            "rank": "4",
+            "officialName": "平田 彩音",
+            "slug": null
+          },
+          {
+            "rank": "5",
+            "officialName": "パク ソヨン",
+            "slug": null
+          },
+          {
+            "rank": "6",
+            "officialName": "NOEL",
+            "slug": "noel"
+          },
+          {
+            "rank": "7",
+            "officialName": "ジェニー ファン",
+            "slug": null
+          },
+          {
+            "rank": "8",
+            "officialName": "嶋屋 澪",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "女子スーパーアトム級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "渡辺 彩華",
+            "slug": null
+          },
+          {
+            "rank": "1",
+            "officialName": "高本 千代",
+            "slug": null
+          },
+          {
+            "rank": "2",
+            "officialName": "erika",
+            "slug": null
+          },
+          {
+            "rank": "3",
+            "officialName": "村上 彩",
+            "slug": null
+          },
+          {
+            "rank": "4",
+            "officialName": "片山 智絵",
+            "slug": null
+          },
+          {
+            "rank": "5",
+            "officialName": "黒部 三奈",
+            "slug": null
+          },
+          {
+            "rank": "6",
+            "officialName": "SARAMI",
+            "slug": null
+          }
+        ]
+      },
+      {
+        "weightClass": "女子ストロー級",
+        "entries": [
+          {
+            "rank": "王者",
+            "officialName": "藤野 恵実",
+            "slug": null
+          },
+          {
+            "rank": "1",
+            "officialName": "宝珠山 桃花",
+            "slug": null
+          },
+          {
+            "rank": "2",
+            "officialName": "パク ボヒョン",
+            "slug": null
+          },
+          {
+            "rank": "3",
+            "officialName": "ハイライ ウーシャアモー",
+            "slug": null
+          },
+          {
+            "rank": "4",
+            "officialName": "ソルト",
+            "slug": null
+          },
+          {
+            "rank": "5",
+            "officialName": "KAREN",
+            "slug": null
+          },
+          {
+            "rank": "6",
+            "officialName": "高田 暖妃",
             "slug": null
           }
         ]
