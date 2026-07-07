@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates } from "@/lib/fighters";
-import { resolveFighter } from "@/lib/feeds/resolveFighter";
+import { resolveFighterCached } from "@/lib/fighterRecordsCache";
 import {
   OG_COLORS as COLORS,
   SITE_URL,
@@ -32,7 +32,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
     const seed = getFighter(slug);
     if (!seed) return fallbackRedirect();
 
-    const fighter = await resolveFighter(seed);
+    const fighter = await resolveFighterCached(seed);
     const { wins, losses, draws, ko, sub, decision, nickname } = fighter;
     const { winRate, finishRate } = calcFighterRates(fighter);
 

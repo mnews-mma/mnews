@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
-import { resolveFighter, resolveFighters } from "@/lib/feeds/resolveFighter";
+import { resolveFighterCached, resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
@@ -40,7 +40,7 @@ export async function generateMetadata({
   const wc = (Array.isArray(wcRaw) ? wcRaw[0] : wcRaw ?? "").trim();
   const ogPath = `/api/og/fighter/${slug}${wc ? `?wc=${encodeURIComponent(wc)}` : ""}`;
   // Wikipedia から取得した実際の戦績を meta にも反映（seed と乖離させない）
-  const fighter = await resolveFighter(seed);
+  const fighter = await resolveFighterCached(seed);
   const appearance = findNextAppearance(fighter.nameJa);
   const nextFightDesc =
     appearance?.kind === "bout"
@@ -105,7 +105,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const seed = getFighter(slug);
   if (!seed) notFound();
 
-  const fighter = await resolveFighter(seed);
+  const fighter = await resolveFighterCached(seed);
   const { history, wins, losses, draws, nickname, birthPlace, age, noRecordData } = fighter;
   // 戦績テーブルの対戦相手名リンク用(no-data/hiddenの選手はテキスト表示にする)。
   const visibleSlugs = await getVisibleFighterSlugs();
@@ -127,7 +127,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const sameClassSeeds = FIGHTERS.filter(
     (f) => f.slug !== slug && f.weightClass === fighter.weightClass && !f.hidden
   );
-  const sameWeightClass = (await resolveFighters(sameClassSeeds))
+  const sameWeightClass = (await resolveFightersCached(sameClassSeeds))
     .filter((f) => !f.noRecordData)
     .map((f) => ({ f, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)

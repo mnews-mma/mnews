@@ -7,7 +7,7 @@ import { ARTICLES, Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
 import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
-import { resolveFighters } from "@/lib/feeds/resolveFighter";
+import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
@@ -68,7 +68,7 @@ export default async function HomePage() {
 
   const [articlesResult, fighters, videos, firstSeenMap, orgRankings] = await Promise.all([
     fetchAllArticles().catch(() => null),
-    resolveFighters(homepageFighters),
+    resolveFightersCached(homepageFighters),
     fetchLatestOfficialVideos().catch(() => []),
     fetchFirstSeenMap().catch(() => new Map<string, string>()),
     fetchOrgRankings().catch(() => ({})),
