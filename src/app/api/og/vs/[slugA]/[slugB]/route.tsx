@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates, type Fighter } from "@/lib/fighters";
-import { resolveFighter, type ResolvedFighter } from "@/lib/feeds/resolveFighter";
+import { type ResolvedFighter } from "@/lib/feeds/resolveFighter";
+import { resolveFighterCached } from "@/lib/fighterRecordsCache";
 import { findMatchupEvent } from "@/lib/events";
 import { fitName, type FitOpts } from "@/lib/og/fitName";
 import {
@@ -143,8 +144,8 @@ export async function GET(
     if (!seedA || !seedB) return fallbackRedirect();
 
     const [fighterA, fighterB] = await Promise.all([
-      resolveFighter(seedA as Fighter),
-      resolveFighter(seedB as Fighter),
+      resolveFighterCached(seedA as Fighter),
+      resolveFighterCached(seedB as Fighter),
     ]);
 
     // カードに乗せる階級は対戦全体の手指定ラベル(?wc=)を1つだけ中央に表示する。

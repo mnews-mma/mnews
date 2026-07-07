@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useTransition } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import { calcFighterRates } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
@@ -56,29 +56,45 @@ function toHiragana(s: string): string {
   return s.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
 }
 
+// 検索用の事前正規化済みインデックス。選手ごとの文字列変換(カナ変換等)は
+// fighters(props)が変わった時に1回だけ計算し、入力のたびには行わない
+// (検索が重くなる主因になり得るため)。
+interface SearchEntry {
+  f: ResolvedFighter;
+  nameJa: string;
+  nameEn: string;
+}
+function buildSearchIndex(fighters: ResolvedFighter[]): SearchEntry[] {
+  return fighters.map((f) => ({ f, nameJa: f.nameJa, nameEn: f.nameEn.toLowerCase() }));
+}
+
 // 名前検索(日本語名・カナ・ローマ字を横断照合)。団体・階級は対象外(既存フィルタの役割)。
-function matchesNameSearch(f: ResolvedFighter, query: string): boolean {
-  const q = query.trim();
-  if (!q) return true;
-  const qLower = q.toLowerCase();
-  const qKata = toKatakana(q);
-  const qHira = toHiragana(q);
+function matchesNameSearch(entry: SearchEntry, qRaw: string, qKata: string, qHira: string, qLower: string): boolean {
+  if (!qRaw) return true;
   return (
-    f.nameJa.includes(q) ||
-    f.nameJa.includes(qKata) ||
-    f.nameJa.includes(qHira) ||
-    f.nameEn.toLowerCase().includes(qLower)
+    entry.nameJa.includes(qRaw) ||
+    entry.nameJa.includes(qKata) ||
+    entry.nameJa.includes(qHira) ||
+    entry.nameEn.includes(qLower)
   );
 }
 
 // フィルタ状態(階級/団体/検索語)はURLのクエリパラメータを唯一の情報源(source of
-// truth)にする。チップの選択表示・実フィルタの両方をここから導出することで、
-// ブラウザの戻る/進むで必ず再ハイドレートされ、UIと実処理のstateがズレない
-// ようにする(選手詳細へ遷移→戻る、で階級/団体タグが選択表示のまま効かなくなる
-// バグの恒久対策)。
+// truth)にする。チップの選択表示・実フィルタの両方をローカルstateから導出し、
+// 戻る/進むではsearchParamsの変化を検知してローカルstateを再同期する。
+//
+// URL反映は Next の router.replace() ではなく history.replaceState() を直接使う。
+// /fighters は dynamic="force-dynamic" のため、router.replace() で同一ルートへ
+// 遷移すると毎回サーバでページ全体(getVisibleFighters等)が再実行され、
+// 検索1文字ごとにサーバ往復が発生してスマホで顕著に遅くなっていた
+// (フィルタ結果自体はクライアント側の fighters props だけで完結し、サーバ再取得は
+// 本来不要)。history.replaceState はNextのナビゲーションを経由しないため、
+// この不要な再取得を発生させない。戻る/進むは実ブラウザナビゲーションなので
+// 従来どおりNext側のsearchParams変化として検知できる。
 const PARAM_WEIGHT = "weight";
 const PARAM_ORG = "org";
 const PARAM_Q = "q";
+const QUERY_SYNC_DEBOUNCE_MS = 200;
 
 export default function FighterFilterGrid({
   fighters,
@@ -87,36 +103,78 @@ export default function FighterFilterGrid({
   fighters: ResolvedFighter[];
   tagsBySlug?: Record<string, OrgTag[]>;
 }) {
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [, startTransition] = useTransition();
 
-  const weightClass = searchParams.get(PARAM_WEIGHT);
-  const tag = searchParams.get(PARAM_ORG) as OrgTagKey | null;
-  const query = searchParams.get(PARAM_Q) ?? "";
+  const [weightClass, setWeightClass] = useState<string | null>(searchParams.get(PARAM_WEIGHT));
+  const [tag, setTag] = useState<OrgTagKey | null>(searchParams.get(PARAM_ORG) as OrgTagKey | null);
+  const [query, setQuery] = useState<string>(searchParams.get(PARAM_Q) ?? "");
 
-  // 指定キーだけ更新(nullなら削除)したURLへ置き換え遷移する。フィルタの
-  // 微調整ごとに履歴を積むと「戻る」が使いづらくなるため replace を使う
-  // (push すると1クリック毎に履歴が増える)。
-  function updateParam(key: string, value: string | null) {
-    const next = new URLSearchParams(searchParams.toString());
-    if (value) next.set(key, value);
-    else next.delete(key);
-    const qs = next.toString();
-    startTransition(() => {
-      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
-    });
+  // 戻る/進む(実ナビゲーション)でURLが変わった時だけローカルstateを再同期する。
+  useEffect(() => {
+    setWeightClass(searchParams.get(PARAM_WEIGHT));
+    setTag(searchParams.get(PARAM_ORG) as OrgTagKey | null);
+    setQuery(searchParams.get(PARAM_Q) ?? "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
+  function syncUrl(next: { weight?: string | null; org?: string | null; q?: string | null }) {
+    const params = new URLSearchParams(searchParams.toString());
+    const apply = (key: string, v: string | null | undefined) => {
+      if (v === undefined) return;
+      if (v) params.set(key, v);
+      else params.delete(key);
+    };
+    apply(PARAM_WEIGHT, next.weight);
+    apply(PARAM_ORG, next.org);
+    apply(PARAM_Q, next.q);
+    const qs = params.toString();
+    const url = qs ? `${pathname}?${qs}` : pathname;
+    window.history.replaceState(window.history.state, "", url);
   }
 
+  // 検索語は入力のたびにURL同期すると history.replaceState 呼び出しが増えるだけ
+  // でなく、searchParams参照が変わるたびに依存する他処理も揺れるため、確定入力
+  // まで少し待ってから反映する(体感速度そのものは下のfilteredがローカルstate
+  // 直結で即時反映するため、ここは表示ではなくURL永続化専用の遅延)。
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  function handleQueryChange(v: string) {
+    setQuery(v);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => syncUrl({ q: v || null }), QUERY_SYNC_DEBOUNCE_MS);
+  }
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, []);
+
+  function handleWeightChange(v: string | null) {
+    setWeightClass(v);
+    syncUrl({ weight: v });
+  }
+  function handleOrgChange(v: OrgTagKey | null) {
+    setTag(v);
+    syncUrl({ org: v });
+  }
+
+  const searchIndex = useMemo(() => buildSearchIndex(fighters), [fighters]);
+
   const filtered = useMemo(() => {
-    return fighters
-      .filter((f) => {
+    const qRaw = query.trim();
+    const qKata = qRaw ? toKatakana(qRaw) : "";
+    const qHira = qRaw ? toHiragana(qRaw) : "";
+    const qLower = qRaw ? qRaw.toLowerCase() : "";
+
+    return searchIndex
+      .filter((entry) => {
+        const f = entry.f;
         if (!matchesWeightFilter(f.weightClass, weightClass)) return false;
         if (tag && !(tagsBySlug[f.slug] || []).some((t) => t.key === tag)) return false;
-        if (!matchesNameSearch(f, query)) return false;
+        if (!matchesNameSearch(entry, qRaw, qKata, qHira, qLower)) return false;
         return true;
       })
+      .map((entry) => entry.f)
       .sort((a, b) => {
         const orgA = a.org === "ufc" ? 0 : 1;
         const orgB = b.org === "ufc" ? 0 : 1;
@@ -125,7 +183,7 @@ export default function FighterFilterGrid({
         const wb = WEIGHT_ORDER[b.weightClass] ?? 9;
         return wa - wb;
       });
-  }, [fighters, weightClass, tag, tagsBySlug, query]);
+  }, [searchIndex, weightClass, tag, tagsBySlug, query]);
 
   return (
     <>
@@ -137,14 +195,14 @@ export default function FighterFilterGrid({
             className="fighter-search-input"
             placeholder="選手名で検索（日本語・カナ・ローマ字）"
             value={query}
-            onChange={(e) => updateParam(PARAM_Q, e.target.value || null)}
+            onChange={(e) => handleQueryChange(e.target.value)}
           />
         </div>
         <div className="fighter-filter-group">
           <span className="fighter-filter-label">階級</span>
           <button
             className={`fighter-filter-chip ${weightClass === null ? "active" : ""}`}
-            onClick={() => updateParam(PARAM_WEIGHT, null)}
+            onClick={() => handleWeightChange(null)}
           >
             すべて
           </button>
@@ -152,7 +210,7 @@ export default function FighterFilterGrid({
             <button
               key={w}
               className={`fighter-filter-chip ${weightClass === w ? "active" : ""}`}
-              onClick={() => updateParam(PARAM_WEIGHT, w)}
+              onClick={() => handleWeightChange(w)}
             >
               {w.replace("級", "")}
             </button>
@@ -162,7 +220,7 @@ export default function FighterFilterGrid({
           <span className="fighter-filter-label">団体</span>
           <button
             className={`fighter-filter-chip ${tag === null ? "active" : ""}`}
-            onClick={() => updateParam(PARAM_ORG, null)}
+            onClick={() => handleOrgChange(null)}
           >
             すべて
           </button>
@@ -170,7 +228,7 @@ export default function FighterFilterGrid({
             <button
               key={t.key}
               className={`fighter-filter-chip ${tag === t.key ? "active" : ""}`}
-              onClick={() => updateParam(PARAM_ORG, t.key)}
+              onClick={() => handleOrgChange(t.key)}
             >
               {t.label}
             </button>

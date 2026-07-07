@@ -4,13 +4,13 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import OrgRankingView from "@/components/OrgRankingView";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { FIGHTERS } from "@/lib/fighters";
-import { resolveFighters } from "@/lib/feeds/resolveFighter";
+import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { pageMetadata } from "@/lib/seo";
 
 // ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
 async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
   const fs = FIGHTERS.filter((f) => slugs.has(f.slug) && !f.hidden);
-  const resolved = await resolveFighters(fs);
+  const resolved = await resolveFightersCached(fs);
   return resolved.filter((r) => !r.noRecordData).map((r) => r.slug);
 }
 

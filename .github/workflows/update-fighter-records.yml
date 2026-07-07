@@ -1,0 +1,37 @@
+name: Update fighter records
+
+on:
+  schedule:
+    - cron: "30 17 * * *" # 毎日 JST 2:30 (UTC 17:30)。0:17(org-rankings)・8:00(daily-digest)と非衝突
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update fighter records
+        run: npx tsx scripts/update-fighter-records.ts
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "mnews-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if ! git diff --quiet -- data/fighterRecords.json; then
+            git add data/fighterRecords.json
+            git commit -m "chore: update fighter records [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi

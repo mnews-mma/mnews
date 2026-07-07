@@ -2,7 +2,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS } from "@/lib/fighters";
-import { resolveFighters } from "@/lib/feeds/resolveFighter";
+import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { SOURCES } from "@/lib/sources";
 import { isDeep2026, toFiveClass, FIVE_CLASSES, NEW_TAGGED_SLUGS } from "@/lib/orgTags";
 import { pageMetadata } from "@/lib/seo";
@@ -24,7 +24,7 @@ export default async function Deep2026Page() {
   const candidates = FIGHTERS.filter(
     (f) => !f.hidden && NEW_TAGGED_SLUGS.has(f.slug) && isDeep2026(f.nameJa)
   );
-  const resolved = await resolveFighters(candidates);
+  const resolved = await resolveFightersCached(candidates);
   const members = resolved.filter((f) => !f.noRecordData);
   const byClass = new Map<string, typeof FIGHTERS>();
   for (const f of members) {
