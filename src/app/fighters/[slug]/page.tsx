@@ -20,6 +20,7 @@ const TAG_LINK: Record<OrgTagKey, string | null> = {
   deep: "/deep-2026",
   pancrase: "/ranking/pancrase",
   shooto: "/ranking/shooto",
+  one: null,
 };
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。

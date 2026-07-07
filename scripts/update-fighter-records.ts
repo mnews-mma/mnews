@@ -48,7 +48,10 @@ async function main() {
     ? JSON.parse(fs.readFileSync(OUT, "utf8"))
     : {};
 
-  const targets = FIGHTERS.filter((f) => !f.hidden);
+  // hidden選手も対象に含める(公開判定はgetVisibleFighters側のfilterが担うため、
+  // ここで戦績を先取りしておいても表には出ない。hidden選手も追加時にWikipedia URLを
+  // 設定する運用のため、公開昇格した瞬間に「データなし」にならないよう事前に温めておく)。
+  const targets = FIGHTERS;
   const out: FighterRecordsFile = {};
   const failedNoFallback: string[] = [];
   const failedKeptPrev: string[] = [];
