@@ -105,7 +105,10 @@ for (const e of EVENTS) {
 //   イリスベク・ティレノフ … RIZIN LANDMARK 15(2026-07-18)出場が現時点で1戦のみ
 //     (2試合基準未達)。イベント露出優先の暫定付与。7/18の太田忍戦後に2戦目
 //     条件を正式に満たす見込みのため、満たし次第この例外は削除する。
-const RIZIN_TAG_EXCEPTIONS = new Set<string>(["hiramoto-ren", "yrysbek-tilenov"]);
+//   キム・スーチョル / イ・ジョンヒョン … RIZIN 2025-2026出場が各1戦のみ(2試合
+//     基準未達)。RIZIN韓国人ロスターとして公開に合わせ暫定付与。次のRIZIN出場で
+//     2戦目条件を満たし次第この例外は削除する(ヤン・ジヨンは2戦で自動付与のため対象外)。
+const RIZIN_TAG_EXCEPTIONS = new Set<string>(["hiramoto-ren", "yrysbek-tilenov", "kim-soochul", "lee-junghyun"]);
 
 // 修斗タグの明示例外(slug指定)。公式ランキング対象4階級(フライ/バンタム/
 // フェザー/ライト)以外の階級王者で、ランキングデータには載らないが現状の
