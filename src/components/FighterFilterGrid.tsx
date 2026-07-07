@@ -6,6 +6,7 @@ import { calcFighterRates } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import type { OrgTag, OrgTagKey } from "@/lib/orgTags";
+import { weightSortKey } from "@/lib/weightClasses";
 
 // 団体フィルタ(並び順固定)。UFC/RIZINは既存公開選手のみ、DEEP/パンクラス/修斗/ONEは
 // 新規公開昇格分に付与(computeFighterTags側で制御)。
@@ -35,19 +36,6 @@ const ORG_SORT_ORDER: Record<string, number> = {
   pancrase: 3,
   shooto: 4,
   one: 5,
-};
-
-const WEIGHT_OPTIONS = ["ストロー級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ウェルター級", "ヘビー級", "女子アトム級"];
-
-const WEIGHT_ORDER: Record<string, number> = {
-  "ストロー級": 0,
-  "フライ級": 1,
-  "バンタム級": 2,
-  "フェザー級": 3,
-  "ライト級": 4,
-  "ウェルター級": 5,
-  "ヘビー級": 6,
-  "女子アトム級": 7,
 };
 
 // 「ヘビー級」を選ぶとDEEPの無差別級(メガトン級)も一緒に絞れるようにする
@@ -172,6 +160,13 @@ export default function FighterFilterGrid({
 
   const searchIndex = useMemo(() => buildSearchIndex(fighters), [fighters]);
 
+  // 階級フィルタの選択肢は実際にDBへ存在する階級だけを、共有の体重ソートキーで
+  // 並べて出す(配列順・追加順に依存しない。後から階級を足しても正しい位置に入る)。
+  const weightOptions = useMemo(() => {
+    const set = new Set(fighters.map((f) => f.weightClass === "メガトン級" ? "ヘビー級" : f.weightClass));
+    return Array.from(set).sort((a, b) => weightSortKey(a) - weightSortKey(b));
+  }, [fighters]);
+
   const filtered = useMemo(() => {
     const qRaw = query.trim();
     const qKata = qRaw ? toKatakana(qRaw) : "";
@@ -188,9 +183,9 @@ export default function FighterFilterGrid({
       })
       .map((entry) => entry.f)
       .sort((a, b) => {
-        // 第1キー: 階級(2-1の順) / 第2キー: 団体(UFC→RIZIN→DEEP→パンクラス→修斗→ONE)
-        const wa = WEIGHT_ORDER[a.weightClass] ?? 9;
-        const wb = WEIGHT_ORDER[b.weightClass] ?? 9;
+        // 第1キー: 階級(共有の体重ソートキー) / 第2キー: 団体(UFC→RIZIN→DEEP→パンクラス→修斗→ONE)
+        const wa = weightSortKey(a.weightClass);
+        const wb = weightSortKey(b.weightClass);
         if (wa !== wb) return wa - wb;
         const orgA = ORG_SORT_ORDER[a.org] ?? 9;
         const orgB = ORG_SORT_ORDER[b.org] ?? 9;
@@ -219,7 +214,7 @@ export default function FighterFilterGrid({
           >
             すべて
           </button>
-          {WEIGHT_OPTIONS.map((w) => (
+          {weightOptions.map((w) => (
             <button
               key={w}
               className={`fighter-filter-chip ${weightClass === w ? "active" : ""}`}

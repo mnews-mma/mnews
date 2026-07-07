@@ -1,5 +1,6 @@
 import type { OrgRankingData } from "@/lib/orgRankings";
 import { SOURCES } from "@/lib/sources";
+import { sortByWeightClass } from "@/lib/weightClasses";
 
 // パンクラス/修斗/RIZIN/DEEPの公式ランキング・現王者表示(共通)。序列・王者は
 // 団体公式の転載。順位(または「王者」):選手名(DB内ならリンク)。出典・取得日を明示。
@@ -12,6 +13,9 @@ export default function OrgRankingView({
 }) {
   const linkable = new Set(linkableSlugs);
   const color = SOURCES[data.org].color;
+  // 階級の表示順は配列順・追加順に依存させず、共有の体重ソートキー(軽い→重い・
+  // 男子→女子)で毎回並べ直す。後から階級を足しても常に正しい位置に入る。
+  const classes = sortByWeightClass(data.classes, (c) => c.weightClass);
   return (
     <div style={{ padding: "0 24px 48px" }}>
       <p style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.8, marginBottom: 24 }}>
@@ -22,7 +26,7 @@ export default function OrgRankingView({
         {data.rankingLabel ? `（${data.rankingLabel}）` : ""} ／ 取得日：{data.fetchedDate}
       </p>
 
-      {data.classes.map((c) => (
+      {classes.map((c) => (
         <section key={c.weightClass} style={{ marginBottom: 36 }}>
           <h2
             style={{

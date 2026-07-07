@@ -63,3 +63,58 @@ export const DEEP_CHAMPIONS: ChampionEntry[] = [
   // 「女子スーパーアトム」に一意対応しないため今回は掲載しない(曖昧なら出さない)。
   // ライトヘビー級・ミドル級: 現在「空位」のため掲載しない。
 ];
+
+// DEEP現状スナップショット(2026-07)。パンクラス/修斗のように毎日自動スクレイプは
+// せず、DEEPの歴代champ一覧ページは構造が壊れやすい(パーサーが不安定になりやすい)
+// ため、手動確認したスナップショット+低頻度レビューに留める(取得元での事後確認は
+// 人力で行う運用)。暫定王者・空位を表現できるよう RankedClass[] を直接記述する
+// (championsToRankingData の1階級1王者前提では表現できないため)。
+export const DEEP_RANKING_CLASSES: { weightClass: string; entries: { rank: string; name: string; slug: string | null }[] }[] = [
+  { weightClass: "ストロー級", entries: [{ rank: "王者", name: "知名昴海", slug: null }] },
+  { weightClass: "フライ級", entries: [{ rank: "王者", name: "村元友太郎", slug: "muramoto-yutaro" }] },
+  {
+    weightClass: "バンタム級",
+    entries: [
+      { rank: "王者", name: "福田龍彌", slug: "fukuda-ryuya" },
+      { rank: "暫定王者", name: "鹿志村仁之介", slug: "kashimura-ninnosuke" },
+    ],
+  },
+  {
+    weightClass: "フェザー級",
+    entries: [
+      { rank: "王者", name: "青井人", slug: "aoi-jin" },
+      { rank: "暫定王者", name: "水野新太", slug: "mizuno-shinta" },
+    ],
+  },
+  {
+    weightClass: "ライト級",
+    entries: [
+      { rank: "王者", name: "野村駿太", slug: "nomura-shunta" },
+      { rank: "暫定王者", name: "大原樹理", slug: "ohara-juri" },
+    ],
+  },
+  { weightClass: "ウェルター級", entries: [{ rank: "王者", name: "嶋田伊吹", slug: "shimada-ibuki" }] },
+  { weightClass: "ミドル級", entries: [{ rank: "空位", name: "空位", slug: null }] },
+  { weightClass: "ライトヘビー級", entries: [{ rank: "空位", name: "空位", slug: null }] },
+  { weightClass: "ヘビー級", entries: [{ rank: "王者", name: "大成", slug: null }] }, // メガトン級から統合表示
+  // DEEP JEWELS(女子)
+  { weightClass: "女子アトム級", entries: [{ rank: "王者", name: "伊澤星花", slug: "izawa-seika" }] },
+  { weightClass: "女子ストロー級", entries: [{ rank: "王者", name: "万智", slug: null }] },
+  { weightClass: "女子フライ級", entries: [{ rank: "王者", name: "中井りん", slug: null }] },
+  { weightClass: "女子バンタム級", entries: [{ rank: "王者", name: "百湖", slug: null }] },
+  { weightClass: "女子フェザー級", entries: [{ rank: "王者", name: "東ようこ", slug: null }] },
+];
+
+export function deepRankingData(): OrgRankingData {
+  return {
+    org: "deep",
+    source: CHAMPION_SOURCES.deep.label,
+    sourceUrl: CHAMPION_SOURCES.deep.url,
+    fetchedDate: FETCHED_DATE,
+    rankingLabel: "現王者・暫定王者",
+    classes: DEEP_RANKING_CLASSES.map((c) => ({
+      weightClass: c.weightClass,
+      entries: c.entries.map((e) => ({ rank: e.rank, officialName: e.name, slug: e.slug })),
+    })),
+  };
+}
