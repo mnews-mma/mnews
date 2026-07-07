@@ -1195,7 +1195,9 @@ export const FIGHTERS: Fighter[] = [
   { slug: "hirata-akira", nameJa: "平田旭", nameEn: "Akira Hirata", org: "pancrase", weightClass: "ミドル級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "sato-ryutaro", nameJa: "佐藤龍汰朗", nameEn: "Ryutaro Sato", org: "pancrase", weightClass: "ミドル級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
   { slug: "okamura-toshiki", nameJa: "岡村寿紀", nameEn: "Toshiki Okamura", org: "pancrase", weightClass: "ミドル級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
-  { slug: "yamauchi-goichi", nameJa: "ゴイチ・ヤマウチ", nameEn: "Goichi Yamauchi", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, wikiTitleJa: "ゴイチ・ヤマウチ" },
+  // 現パンクラスウェルター級王者。公式綴りは"Goiti"(旧登録の"Goichi"表記を修正)。
+  // 王座保持中=現ランカーのため公開(hidden解除)。
+  { slug: "yamauchi-goiti", nameJa: "ゴイチ・ヤマウチ", nameEn: "Goiti Yamauchi", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ゴイチ・ヤマウチ" },
   { slug: "naito-yura", nameJa: "内藤由良", nameEn: "Yura Naito", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
   { slug: "musha-kotaro", nameJa: "武者孝大郎", nameEn: "Kotaro Musha", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "murayama-akihiro", nameJa: "村山暁洋", nameEn: "Akihiro Murayama", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true, wikiTitleJa: "村山暁洋" },
