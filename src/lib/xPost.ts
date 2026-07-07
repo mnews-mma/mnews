@@ -302,3 +302,56 @@ export function buildWeighInPost(opts: {
   const body = lines.join("\n");
   return { text: body, method: "none" };
 }
+
+// ─────────────────────────────────────────────
+// 管理画面(投稿ドラフト タブ①): 対戦カード文脈ポスト。
+// 大手メディアが「対戦決定」と速報した直後に差し込む"参照"用。速報ではないため
+// 戦績データの多少のラグは許容(fighterRecords.jsonのバッチ結果をそのまま使う)。
+// ─────────────────────────────────────────────
+export interface MatchupFighterInput {
+  nameJa: string;
+  slug: string | null; // 未登録選手はnull(プレーンテキストのみ・URLもメンションも付けない)
+  wins?: number;
+  losses?: number;
+  draws?: number;
+}
+
+export function buildMatchupContextPost(opts: {
+  fighterA: MatchupFighterInput;
+  fighterB: MatchupFighterInput;
+  eventName?: string;
+}): BuiltPost {
+  const recordLine = (f: MatchupFighterInput) => {
+    if (f.wins === undefined || f.losses === undefined) return `${f.nameJa}`;
+    const draws = f.draws ? `${f.draws}分` : "";
+    return `${f.nameJa}：戦績${f.wins}勝${f.losses}敗${draws}`;
+  };
+  const title = opts.eventName ? `【対戦決定】${opts.fighterA.nameJa} vs ${opts.fighterB.nameJa}（${opts.eventName}）` : `【対戦決定】${opts.fighterA.nameJa} vs ${opts.fighterB.nameJa}`;
+  const lines = [title, recordLine(opts.fighterA), recordLine(opts.fighterB)];
+  const urls = [opts.fighterA.slug, opts.fighterB.slug]
+    .filter((s): s is string => !!s)
+    .map((s) => `${SITE_LINK}/fighters/${s}`);
+  if (urls.length > 0) lines.push(`詳細 ${urls.join(" ")}`);
+  return { text: lines.join("\n"), method: "none" };
+}
+
+// ─────────────────────────────────────────────
+// 管理画面(投稿ドラフト タブ③): 試合結果ポスト(手入力・自動戦績なし)。
+// 戦績の出典(Wikipedia日次バッチ)は試合直後に未更新のことが多いため、
+// W-L等の数値は絶対に自動挿入しない。載せたい場合のみ呼び出し側が手入力した
+// 文字列(manualRecord)をそのまま末尾に付ける(空なら何も付けない)。
+// ─────────────────────────────────────────────
+export function buildManualResultPost(opts: {
+  winnerName: string;
+  winnerSlug: string | null;
+  loserName: string;
+  method: string; // 例: "KO(2R 1:09)" のように呼び出し側で整形済みの文字列
+  manualRecord?: string; // 例: "12勝3敗"。空/未入力なら本文に出さない
+}): BuiltPost {
+  const body = `【結果】${opts.winnerName}が${opts.loserName}に${opts.method}で勝利。`;
+  const recordSuffix = opts.manualRecord?.trim() ? `（${opts.winnerName}${opts.manualRecord.trim()}）` : "";
+  const url = opts.winnerSlug ? `${SITE_LINK}/fighters/${opts.winnerSlug}` : "";
+  const lines = [body + recordSuffix];
+  if (url) lines.push(url);
+  return { text: lines.join("\n"), method: "none" };
+}

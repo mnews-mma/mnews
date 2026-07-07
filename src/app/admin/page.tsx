@@ -6,6 +6,7 @@ export const metadata = {
 };
 
 const LINKS = [
+  { href: "/admin/drafts", label: "🗂️ 投稿ドラフト工場(ランキング変動・対戦カード・試合結果)" },
   { href: "/admin/x-preview", label: "📝 X投稿 下書き(まとめ・カウントダウン)" },
   { href: "/admin/live", label: "🔴 ライブ結果入力(結果カード生成)" },
   { href: "/admin/weigh-in", label: "⚖️ 計量結果まとめ投稿" },

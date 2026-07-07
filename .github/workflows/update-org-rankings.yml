@@ -28,8 +28,8 @@ jobs:
         run: |
           git config user.name "mnews-bot"
           git config user.email "actions@users.noreply.github.com"
-          if ! git diff --quiet -- data/orgRankings.json; then
-            git add data/orgRankings.json
+          if ! git diff --quiet -- data/orgRankings.json data/orgRankings-prev.json; then
+            git add data/orgRankings.json data/orgRankings-prev.json
             git commit -m "chore: update org rankings [skip ci]"
             git push
           else
