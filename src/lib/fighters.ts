@@ -1105,7 +1105,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "ohara-juri", nameJa: "大原樹理", nameEn: "Juri Ohara", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kuramoto-daigo", nameJa: "倉本大悟", nameEn: "Daigo Kuramoto", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "shimada-ibuki", nameJa: "嶋田伊吹", nameEn: "Ibuki Shimada", org: "deep", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "sakai-ryo", nameJa: "酒井リョウ", nameEn: "Ryo Sakai", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "sakai-ryo", nameJa: "酒井リョウ", nameEn: "Ryo Sakai", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "メガトンの砦" },
   { slug: "sekihara-sho", nameJa: "関原翔", nameEn: "Sho Sekihara", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "rikiya", nameJa: "力也", nameEn: "Rikiya", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "力也 (格闘家)" },
   { slug: "gomyo-hiroto", nameJa: "五明宏人", nameEn: "Hiroto Gomyo", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1162,7 +1162,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "yamagami-mikio", nameJa: "山上幹臣", nameEn: "Mikio Yamagami", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "ryoga", nameJa: "亮我", nameEn: "Ryoga", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "takaoka-hiroki", nameJa: "高岡宏気", nameEn: "Hiroki Takaoka", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "arai-jo", nameJa: "新井丈", nameEn: "Jo Arai", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "arai-jo", nameJa: "新井丈", nameEn: "Jo Arai", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "NEVER GIVE UP" },
   { slug: "suzuki-simon", nameJa: "シモンスズキ", nameEn: "Simon Suzuki", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true },
   { slug: "sekiguchi-yuto", nameJa: "関口祐冬", nameEn: "Yuto Sekiguchi", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "nakamura-yusaku", nameJa: "中村優作", nameEn: "Yusaku Nakamura", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1206,11 +1206,11 @@ export const FIGHTERS: Fighter[] = [
   { slug: "kasuya-yusuke", nameJa: "粕谷優介", nameEn: "Yusuke Kasuya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // nameJaはパンクラス公式ランキングのofficialName表記(引用符なし)に合わせ、
   // wikiTitleJaで記事名の曲がり引用符“ ”を明示指定(戦績取得はこちらを使う)。
-  { slug: "saiga-yanbo-tatsuya", nameJa: "雑賀ヤン坊達也", nameEn: "Yanbo Tatsuya Saiga", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "雑賀“ヤン坊”達也", aliases: ["雑賀達也"] },
+  { slug: "saiga-yanbo-tatsuya", nameJa: "雑賀ヤン坊達也", nameEn: "Yanbo Tatsuya Saiga", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "雑賀“ヤン坊”達也", aliases: ["雑賀達也"], nickname: "横須賀アッパー" },
   // 正式表記(一次情報=本人のja-wiki記事タイトル)は装飾ニックネーム込み。雑賀の表記
   // 方針(引用符のみ除去・ニックネーム本文は残す)に合わせnameJaを補完。EVENT_RESULTS
   // 等で使われる素の「ベイノア」表記はaliasesで引き続き解決できるようにする。
-  { slug: "beinoa", nameJa: "ブラックパンサーベイノア", nameEn: "Noah Bey", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "“ブラックパンサー”ベイノア", aliases: ["ベイノア"] },
+  { slug: "beinoa", nameJa: "ブラックパンサーベイノア", nameEn: "Noah Bey", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "“ブラックパンサー”ベイノア", aliases: ["ベイノア"], nickname: "極真の黒豹" },
   { slug: "suzuki-tomoya", nameJa: "鈴木慈也", nameEn: "Tomoya Suzuki", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "yanagawa-yuito", nameJa: "栁川唯人", nameEn: "Yuito Yanagawa", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "rajabov-otabek", nameJa: "オタベク・ラジャボフ", nameEn: "Otabek Rajabov", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1263,7 +1263,7 @@ export const FIGHTERS: Fighter[] = [
   // --- 団体ランキング top-5 未照合ぶんのDB追加(2026-07) ---
   { slug: "shimizu-hiroto", nameJa: "清水博人", nameEn: "Hiroto Shimizu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "otsuka-tomoki", nameJa: "大塚智貴", nameEn: "Tomoki Otsuka", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "tenya", nameJa: "天弥", nameEn: "Tenya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  { slug: "tenya", nameJa: "天弥", nameEn: "Tenya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "爆走ステゴロ番長" },
   { slug: "kanbe-atsubo", nameJa: "神部篤坊", nameEn: "Atsubo Kanbe", org: "pancrase", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true, needsReview: true },
 
   // --- DEEP 133 IMPACT(2026-09-13)出場選手のDB突合・追加分(2026-07) ---
@@ -1287,13 +1287,13 @@ export const FIGHTERS: Fighter[] = [
   { slug: "aoi-jin", nameJa: "青井人", nameEn: "Jin Aoi", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "hamada-takumi", nameJa: "濱田巧", nameEn: "Takumi Hamada", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   // 手動追加8名(2026-07・通称なし指定)
-  { slug: "laramie-tony", nameJa: "トニー・ララミー", nameEn: "Tony Laramie", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "トニー・ララミー" },
-  { slug: "kolesnik-viktor", nameJa: "ビクター・コレスニック", nameEn: "Viktor Kolesnik", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ビクター・コレスニック" },
-  { slug: "kim-kyungpyo", nameJa: "キム・ギョンピョ", nameEn: "Kyung Pyo Kim", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "キム・ギョンピョ" },
-  { slug: "kimura-shuya", nameJa: "木村柊也", nameEn: "Shuya Kimura", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "木村柊也" },
-  { slug: "lee-kaiwen", nameJa: "リー・カイウェン", nameEn: "Kaiwen Lee", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "リー・カイウェン" },
+  { slug: "laramie-tony", nameJa: "トニー・ララミー", nameEn: "Tony Laramie", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "トニー・ララミー", nickname: "オンタリオのライオン丸" },
+  { slug: "kolesnik-viktor", nameJa: "ビクター・コレスニック", nameEn: "Viktor Kolesnik", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ビクター・コレスニック", nickname: "クラスノダールの死神" },
+  { slug: "kim-kyungpyo", nameJa: "キム・ギョンピョ", nameEn: "Kyung Pyo Kim", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "キム・ギョンピョ", nickname: "赤兎馬" },
+  { slug: "kimura-shuya", nameJa: "木村柊也", nameEn: "Shuya Kimura", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "木村柊也", nickname: "阿波の拳王" },
+  { slug: "lee-kaiwen", nameJa: "リー・カイウェン", nameEn: "Kaiwen Lee", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "リー・カイウェン", nickname: "紅の青龍刀" },
   { slug: "kuzyutina-natasha", nameJa: "ナターシャ・クジュティナ", nameEn: "Natasha Kuzyutina", org: "rizin", weightClass: "女子アトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ナタリア・クジュティナ" },
-  { slug: "cafaro-ryan", nameJa: "ライアン・カファロ", nameEn: "Ryan Cafaro", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ライアン・カファロ" },
+  { slug: "cafaro-ryan", nameJa: "ライアン・カファロ", nameEn: "Ryan Cafaro", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ライアン・カファロ", nickname: "コリアン・サンダー" },
   { slug: "haga-bilalkai", nameJa: "芳賀ビラル海", nameEn: "Bilal Kai Haga", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "芳賀ビラル海" },
   { slug: "aimoto-kazuki", nameJa: "相本宗輝", nameEn: "Kazuki Aimoto", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // ONE選手9名(2026-07・公開)
