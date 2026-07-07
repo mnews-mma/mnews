@@ -1315,6 +1315,10 @@ export const FIGHTERS: Fighter[] = [
   // slugをローマ字表記に合わせenju-kentaへ変更(公開前のため既存リンクへの影響なし)。
   // Wikipedia記事は旧名義「KENTA」のまま(同一人物)。
   { slug: "enju-kenta", nameJa: "猿寿健太", nameEn: "Kenta Enju", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true, wikiTitleJa: "KENTA (格闘家)" },
+  // RIZIN韓国人選手3名(2026-07・新規追加)
+  { slug: "kim-soochul", nameJa: "キム・スーチョル", nameEn: "Soo Chul Kim", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, wikiTitleJa: "キム・スーチョル", nickname: "韓流お茶目ゾンビ" },
+  { slug: "yang-jiyong", nameJa: "ヤン・ジヨン", nameEn: "Ji Yong Yang", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, wikiTitleJa: "ヤン・ジヨン", nickname: "済州島のスラッガー" },
+  { slug: "lee-junghyun", nameJa: "イ・ジョンヒョン", nameEn: "Jung Hyun Lee", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, wikiTitleJa: "イ・ジョンヒョン (格闘家)", nickname: "ザ・フェノム" },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {
