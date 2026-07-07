@@ -220,6 +220,14 @@
         "round": "R1"
       },
       {
+        "date": "2022-10-23",
+        "opponent": "野瀬翔平",
+        "result": "win",
+        "method": "1R 2:21 KO（左フック→パウンド）",
+        "event": "Road to UFC Season 1 【バンタム級トーナメント準決勝】",
+        "round": "R1"
+      },
+      {
         "date": "2022-06-10",
         "opponent": "ググン・グスマン",
         "result": "win",
@@ -879,6 +887,22 @@
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "UFC 303: Pereira vs. Procházka 2",
+        "round": "R3"
+      },
+      {
+        "date": "2024-02-04",
+        "opponent": "ジー・ニウシュイエ",
+        "result": "win",
+        "method": "1R 4:59 TKO（パウンド）",
+        "event": "Road to UFC Season 2: Las Vegas 【フライ級トーナメント 決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2023-08-27",
+        "opponent": "マーク・クリマコ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Road to UFC Season 2: Singapore 【フライ級トーナメント 準決勝】",
         "round": "R3"
       },
       {
@@ -1713,6 +1737,14 @@
     "decision": 10,
     "history": [
       {
+        "date": "2026-05-23",
+        "opponent": "マルシルリー・アウベス",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
+        "event": "PFL Brussels：Habirora vs. Henderson",
+        "round": "R3"
+      },
+      {
         "date": "2025-12-31",
         "opponent": "ダニー・サバテロ",
         "result": "loss",
@@ -2045,6 +2077,14 @@
         "method": "5分3R終了 判定3-0",
         "event": "DEEP 104 IMPACT",
         "round": "R3"
+      },
+      {
+        "date": "2021-06-20",
+        "opponent": "本野美樹",
+        "result": "win",
+        "method": "1R 3:32 腕ひしぎ十字固め",
+        "event": "DEEP JEWELS 33 【DEEP JEWELSストロー級暫定タイトルマッチ】",
+        "round": "R1"
       },
       {
         "date": "2020-12-19",
@@ -5655,6 +5695,14 @@
         "round": "R1"
       },
       {
+        "date": "2022-03-12",
+        "opponent": "HIME",
+        "result": "loss",
+        "method": "5分2R終了 判定0-3",
+        "event": "DEEP JEWELS 36",
+        "round": "R2"
+      },
+      {
         "date": "2021-10-24",
         "opponent": "浅倉カンナ",
         "result": "win",
@@ -5977,6 +6025,14 @@
         "method": "1R 4:05 リアネイキッドチョーク",
         "event": "ONE Championship: FIRE & FURY",
         "round": "R1"
+      },
+      {
+        "date": "2019-10-13",
+        "opponent": "ハファエル・シウバ",
+        "result": "win",
+        "method": "2R 4:30 TKO（スタンドパンチ連打)",
+        "event": "ONE Championship: CENTURY PART II",
+        "round": "R2"
       },
       {
         "date": "2019-07-15",
@@ -6845,6 +6901,14 @@
         "round": "R1"
       },
       {
+        "date": "2023-11-04",
+        "opponent": "ヴガール・ケラモフ",
+        "result": "win",
+        "method": "1R 1:28 KO（ペダラーダ→パンチ連打）",
+        "event": "RIZIN LANDMARK 7 【RIZINフェザー級タイトルマッチ】",
+        "round": "R1"
+      },
+      {
         "date": "2023-07-30",
         "opponent": "パトリシオ・ピットブル",
         "result": "win",
@@ -7149,8 +7213,7 @@
     ],
     "live": true,
     "nickname": "松戸の不死鳥",
-    "birthPlace": "千葉県松戸市",
-    "age": 31
+    "birthPlace": "千葉県松戸市"
   },
   "noel": {
     "wins": 4,
@@ -8334,6 +8397,14 @@
         "round": "R1"
       },
       {
+        "date": "2019-07-21",
+        "opponent": "ハファエル・シウバ",
+        "result": "loss",
+        "method": "2R 1:54 肩固め",
+        "event": "PANCRASE 307 【バンタム級キング・オブ・パンクラス タイトルマッチ】",
+        "round": "R2"
+      },
+      {
         "date": "2019-04-14",
         "opponent": "TSUNE",
         "result": "win",
@@ -8602,6 +8673,14 @@
         "method": "2R 0:53 リア・ネイキッド・チョーク",
         "event": "DEEP TOKYO IMPACT 2023",
         "round": "R2"
+      },
+      {
+        "date": "2022-11-23",
+        "opponent": "本野美樹",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "DEEP JEWELS 39",
+        "round": "R3"
       },
       {
         "date": "2022-09-11",
@@ -9138,6 +9217,14 @@
         "round": "R3"
       },
       {
+        "date": "2011-07-16",
+        "opponent": "今成正和",
+        "result": "win",
+        "method": "2R（10分/5分）終了 判定3-0",
+        "event": "DREAM JAPAN GP FINAL -2011バンタム級日本トーナメント決勝戦- 【バンタム級日本トーナメント 決勝】",
+        "round": "R2"
+      },
+      {
         "date": "2011-05-29",
         "opponent": "山本篤",
         "result": "win",
@@ -9288,6 +9375,22 @@
         "method": "5分3R終了 判定3-0",
         "event": "K-1 PREMIUM 2006 Dynamite!!",
         "round": "R3"
+      },
+      {
+        "date": "2006-10-09",
+        "opponent": "金子賢",
+        "result": "win",
+        "method": "1R 1:50 腕ひしぎ十字固め",
+        "event": "HERO'S 2006 ミドル&ライトヘビー級世界最強王者決定トーナメント決勝戦",
+        "round": "R1"
+      },
+      {
+        "date": "2006-08-05",
+        "opponent": "アイヴァン・メンジバー",
+        "result": "loss",
+        "method": "5分2R終了 判定0-2",
+        "event": "HERO'S 2006 ミドル&ライトヘビー級世界最強王者決定トーナメント準々決勝 【ミドル級トーナメント 準々決勝】",
+        "round": "R2"
       },
       {
         "date": "2006-05-03",
@@ -9639,6 +9742,14 @@
         "result": "win",
         "method": "3R 2:10 TKO（右アッパー→パウンド）",
         "event": "RIZIN LANDMARK 6",
+        "round": "R3"
+      },
+      {
+        "date": "2023-04-29",
+        "opponent": "ロッキー・マルティネス",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN LANDMARK 5",
         "round": "R3"
       },
       {
@@ -12820,6 +12931,14 @@
         "method": "3R 1:59 TKO（右跳び膝蹴り→パウンド）",
         "event": "PANCRASE 310",
         "round": "R3"
+      },
+      {
+        "date": "2019-03-17",
+        "opponent": "ハファエル・シウバ",
+        "result": "loss",
+        "method": "1R 3:22 チョークスリーパー",
+        "event": "PANCRASE 303 【バンタム級暫定キング・オブ・パンクラスタイトルマッチ】",
+        "round": "R1"
       },
       {
         "date": "2018-07-01",
@@ -16404,6 +16523,14 @@
         "round": "R1"
       },
       {
+        "date": "2022-10-23",
+        "opponent": "中村倫也",
+        "result": "loss",
+        "method": "1R 2:21 KO（左フック→パウンド）",
+        "event": "Road to UFC: Abudabi 【トーナメント 準決勝】",
+        "round": "R1"
+      },
+      {
         "date": "2022-06-10",
         "opponent": "ウリジ・ブレン",
         "result": "win",
@@ -17058,7 +17185,7 @@
     "live": false,
     "noRecordData": true
   },
-  "yamauchi-goichi": {
+  "yamauchi-goiti": {
     "wins": 31,
     "losses": 7,
     "draws": 0,
@@ -18047,6 +18174,14 @@
         "round": "R2"
       },
       {
+        "date": "2025-07-26",
+        "opponent": "セドリック・マヌーフ",
+        "result": "win",
+        "method": "3R 1:50 KO（右ストレート→パウンド）",
+        "event": "LFA 213",
+        "round": "R3"
+      },
+      {
         "date": "2025-05-09",
         "opponent": "コール・ラーレン",
         "result": "win",
@@ -18720,6 +18855,14 @@
         "method": "1R 1:24 リアネイキドチョーク",
         "event": "FIGHTING NEXUS VOL.38",
         "round": "R1"
+      },
+      {
+        "date": "2024-07-21",
+        "opponent": "佐藤力斗",
+        "result": "win",
+        "method": "2R KO",
+        "event": "益荒男二十八陣",
+        "round": "R2"
       }
     ],
     "live": true
@@ -19208,6 +19351,22 @@
         "round": "R5"
       },
       {
+        "date": "2021-11-05",
+        "opponent": "ピーター・クウィリー",
+        "result": "win",
+        "method": "2R 1:05 TKO（スタンドパンチ連打）",
+        "event": "Bellator 270: Queally vs. Pitbull 2 【Bellator世界ライト級王座決定戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2021-05-07",
+        "opponent": "ピーター・クウィリー",
+        "result": "loss",
+        "method": "2R 5:00 TKO（ドクターストップ）",
+        "event": "Bellator 258: Archuleta vs. Pettis",
+        "round": "R2"
+      },
+      {
         "date": "2019-12-31",
         "opponent": "トフィック・ムサエフ",
         "result": "loss",
@@ -19248,6 +19407,14 @@
         "round": "R2"
       },
       {
+        "date": "2018-02-16",
+        "opponent": "デレック・カンポス",
+        "result": "win",
+        "method": "1R 2:23 TKO（スタンドパンチ連打）",
+        "event": "Bellator 194: Nelson vs. Mitrione",
+        "round": "R1"
+      },
+      {
         "date": "2017-09-23",
         "opponent": "ベンソン・ヘンダーソン",
         "result": "win",
@@ -19264,12 +19431,44 @@
         "round": "R2"
       },
       {
+        "date": "2016-08-16",
+        "opponent": "ケヴィン・ソウザ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 152: Italy",
+        "round": "R3"
+      },
+      {
         "date": "2016-06-24",
         "opponent": "マイケル・チャンドラー",
         "result": "loss",
         "method": "1R 2:14 KO（右ストレート）",
         "event": "Bellator 157: Dynamite 2 【Bellator世界ライト級王座決定戦】",
         "round": "R1"
+      },
+      {
+        "date": "2016-01-29",
+        "opponent": "ライアン・クートゥア",
+        "result": "win",
+        "method": "1R 3:00 KO（左フック）",
+        "event": "Bellator 148: Daley vs. Uhrich",
+        "round": "R1"
+      },
+      {
+        "date": "2015-12-04",
+        "opponent": "デレック・アンダーソン (格闘家)",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "Bellator 147: Thomson vs. Villaseca",
+        "round": "R3"
+      },
+      {
+        "date": "2015-08-28",
+        "opponent": "サード・アワッド",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 141: Guillard vs. Girtz",
+        "round": "R3"
       },
       {
         "date": "2014-09-26",
@@ -19280,11 +19479,35 @@
         "round": "R3"
       },
       {
+        "date": "2014-04-18",
+        "opponent": "デレック・カンポス",
+        "result": "win",
+        "method": "2R 0:52 TKO（パウンド）",
+        "event": "Bellator 117 【ライト級トーナメント 準決勝】",
+        "round": "R2"
+      },
+      {
+        "date": "2014-03-21",
+        "opponent": "デイヴィッド・リッケルズ",
+        "result": "win",
+        "method": "2R 0:54 KO（左フック）",
+        "event": "Bellator 113 【ライト級トーナメント 準々決勝】",
+        "round": "R2"
+      },
+      {
         "date": "2013-11-08",
         "opponent": "エジソン・ベルト",
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "Bellator 107",
+        "round": "R3"
+      },
+      {
+        "date": "2013-09-07",
+        "opponent": "デレック・アンダーソン (格闘家)",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "Bellator 98",
         "round": "R3"
       },
       {
@@ -19294,6 +19517,14 @@
         "method": "1R 4:54 KO（右ハイキック）",
         "event": "Bellator 76",
         "round": "R1"
+      },
+      {
+        "date": "2012-03-23",
+        "opponent": "ロイド・ウッダード",
+        "result": "loss",
+        "method": "2R 1:46 キムラロック",
+        "event": "Bellator 62 【ライト級トーナメント 準々決勝】",
+        "round": "R2"
       },
       {
         "date": "2011-11-26",
@@ -19318,6 +19549,14 @@
         "method": "1R 2:53 KO（右飛び膝蹴り→左フック）",
         "event": "Bellator 39 【ライト級トーナメント 準決勝】",
         "round": "R1"
+      },
+      {
+        "date": "2011-03-12",
+        "opponent": "ロブ・マックロー",
+        "result": "win",
+        "method": "3R 3:11 TKO（右フック→パウンド）",
+        "event": "Bellator 36 【ライト級トーナメント 準々決勝】",
+        "round": "R3"
       },
       {
         "date": "2010-07-17",
@@ -19960,11 +20199,43 @@
         "round": "R1"
       },
       {
+        "date": "2017-06-25",
+        "opponent": "トニー・マーティン (格闘家)",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "UFC Fight Night: Chiesa vs. Lee",
+        "round": "R3"
+      },
+      {
         "date": "2016-03-20",
         "opponent": "ジェイク・マシューズ",
         "result": "loss",
         "method": "3R 4:45 リアネイキドチョーク",
         "event": "UFC Fight Night: Hunt vs. Mir",
+        "round": "R3"
+      },
+      {
+        "date": "2015-11-07",
+        "opponent": "ヤン・カブラル",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "UFC Fight Night: Belfort vs. Henderson 3",
+        "round": "R3"
+      },
+      {
+        "date": "2015-06-13",
+        "opponent": "フランシスコ・トレヴィーノ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "UFC 188: Velasquez vs. Werdum",
+        "round": "R3"
+      },
+      {
+        "date": "2015-01-18",
+        "opponent": "フランキー・ペレス",
+        "result": "win",
+        "method": "3R 1:54 TKO（パウンド）",
+        "event": "UFC Fight Night: McGregor vs. Siver",
         "round": "R3"
       },
       {
@@ -20038,6 +20309,14 @@
         "method": "2R 0:29 TKO（パンチ連打）",
         "event": "MCC 31",
         "round": "R2"
+      },
+      {
+        "date": "2010-10-22",
+        "opponent": "リック・グレン",
+        "result": "loss",
+        "method": "1R 4:07 TKO（パンチ連打）",
+        "event": "MCC 29",
+        "round": "R1"
       },
       {
         "date": "2010-08-27",
@@ -20125,6 +20404,14 @@
         "result": "win",
         "method": "1R 0:48 KO（パンチ）",
         "event": "Brutaal Fight Night",
+        "round": "R1"
+      },
+      {
+        "date": "2008-05-17",
+        "opponent": "マーカス・レヴェッサー",
+        "result": "loss",
+        "method": "1R 0:23 KO（パンチ）",
+        "event": "Seconds Out",
         "round": "R1"
       },
       {
@@ -20916,6 +21203,14 @@
         "round": "R1"
       },
       {
+        "date": "2023-10-17",
+        "opponent": "マゴメド・アル・アブドゥラ",
+        "result": "win",
+        "method": "2R 3:40 リアネイキドチョーク",
+        "event": "45",
+        "round": "R2"
+      },
+      {
         "date": "2023-06-24",
         "opponent": "ヤン・ジヨン",
         "result": "win",
@@ -21069,6 +21364,14 @@
         "result": "win",
         "method": "1R 0:28 TKO（右フック→グラウンドエルボー）",
         "event": "RIZIN LANDMARK 10",
+        "round": "R1"
+      },
+      {
+        "date": "2023-11-04",
+        "opponent": "鈴木千裕",
+        "result": "loss",
+        "method": "1R 1:28 KO（ペダラーダ→グラウンドパンチ）",
+        "event": "RIZIN LANDMARK 7 【RIZINフェザー級タイトルマッチ】",
         "round": "R1"
       },
       {
@@ -23508,6 +23811,14 @@
         "round": "R1"
       },
       {
+        "date": "2023-09-10",
+        "opponent": "HIME",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "DEEP JEWELS 42",
+        "round": "R3"
+      },
+      {
         "date": "2022-12-31",
         "opponent": "伊澤星花",
         "result": "loss",
@@ -24916,6 +25227,14 @@
         "round": "R1"
       },
       {
+        "date": "2023-08-27",
+        "opponent": "神田コウヤ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Road to UFC Season2:Singapore 【フェザー級トーナメント準決勝】",
+        "round": "R3"
+      },
+      {
         "date": "2023-05-27",
         "opponent": "カイ・ルー",
         "result": "win",
@@ -25155,6 +25474,14 @@
     "sub": 8,
     "decision": 3,
     "history": [
+      {
+        "date": "2026-05-10",
+        "opponent": "松嶋こよみ",
+        "result": "win",
+        "method": "3R 2:23 ドラゴンスリーパー",
+        "event": "RIZIN.53",
+        "round": "R3"
+      },
       {
         "date": "2025-12-20",
         "opponent": "ジャスティン・パットン",
@@ -25773,6 +26100,14 @@
         "round": "R2"
       },
       {
+        "date": "2025-03-23",
+        "opponent": "エドゥアルド・フォラヤン",
+        "result": "win",
+        "method": "1R 0:53 腕ひしぎ十字固め",
+        "event": "ONE 172: Takeru vs. Rodtang",
+        "round": "R1"
+      },
+      {
         "date": "2024-01-28",
         "opponent": "ジョン・リネカー",
         "result": "win",
@@ -25795,6 +26130,14 @@
         "method": "2R 1:50 TKO（パウンド）",
         "event": "ONE Championship: ONE X",
         "round": "R2"
+      },
+      {
+        "date": "2021-04-28",
+        "opponent": "エドゥアルド・フォラヤン",
+        "result": "win",
+        "method": "1R 4:20 腕ひしぎ十字固め",
+        "event": "ONE Championship: ONE on TNT 4",
+        "round": "R1"
       },
       {
         "date": "2021-01-22",
@@ -25821,11 +26164,35 @@
         "round": "R1"
       },
       {
+        "date": "2019-05-17",
+        "opponent": "クリスチャン・リー",
+        "result": "loss",
+        "method": "2R 0:51 TKO（パンチ連打）",
+        "event": "ONE Championship 96: Enter the Dragon 【ONE世界ライト級タイトルマッチ】",
+        "round": "R2"
+      },
+      {
+        "date": "2019-03-31",
+        "opponent": "エドゥアルド・フォラヤン",
+        "result": "win",
+        "method": "1R 2:13 肩固め",
+        "event": "ONE Championship :A NEW ERA 【ONE世界ライト級タイトルマッチ】",
+        "round": "R1"
+      },
+      {
         "date": "2018-10-06",
         "opponent": "イブ・タン",
         "result": "win",
         "method": "1R 0:57 肩固め",
         "event": "ONE Championship 80: Kingdom of Heroes",
+        "round": "R1"
+      },
+      {
+        "date": "2018-07-27",
+        "opponent": "シャノン・ウィラチャイ",
+        "result": "win",
+        "method": "1R 2:16 TKO（ドクターストップ）",
+        "event": "ONE Championship : REIGN OF KINGS",
         "round": "R1"
       },
       {
@@ -25843,6 +26210,14 @@
         "method": "1R 0:57 TKO（パウンド）",
         "event": "ONE Championship 65: Immoral Pursuit 【ONE世界ウェルター級タイトルマッチ】",
         "round": "R1"
+      },
+      {
+        "date": "2016-11-11",
+        "opponent": "エドゥアルド・フォラヤン",
+        "result": "loss",
+        "method": "3R 0:41 TKO（右跳び膝蹴り→パウンド）",
+        "event": "ONE Championship 49: Defending Honor 【ONE世界ライト級タイトルマッチ】",
+        "round": "R3"
       },
       {
         "date": "2015-12-29",
@@ -26786,12 +27161,36 @@
         "round": "R1"
       },
       {
+        "date": "2025-02-20",
+        "opponent": "リト・フォガット",
+        "result": "win",
+        "method": "1R 2:24 ニーバー",
+        "event": "ONE 171:Qatar",
+        "round": "R1"
+      },
+      {
+        "date": "2024-11-09",
+        "opponent": "マカレナ・アラゴン",
+        "result": "win",
+        "method": "1R 2:20 スカーフ・ホールド・アメリカーナ",
+        "event": "ONE 169",
+        "round": "R1"
+      },
+      {
         "date": "2024-01-28",
         "opponent": "平田樹",
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "ONE 165: Superlek vs. Takeru",
         "round": "R3"
+      },
+      {
+        "date": "2023-11-04",
+        "opponent": "メン・ボー",
+        "result": "win",
+        "method": "1R 2:09 スカーフ・ホールド・アメリカーナ",
+        "event": "ONE Fight Night 16",
+        "round": "R1"
       },
       {
         "date": "2022-04-22",
@@ -26810,6 +27209,14 @@
         "round": "R5"
       },
       {
+        "date": "2021-05-15",
+        "opponent": "ハヤネ・バストス",
+        "result": "win",
+        "method": "1R 2:58 スカーフ・ホールド・アメリカーナ",
+        "event": "ONE Championship: Dangal",
+        "round": "R1"
+      },
+      {
         "date": "2020-02-28",
         "opponent": "ティファニー・テオ",
         "result": "loss",
@@ -26824,6 +27231,22 @@
         "method": "2R 3:01 スカーフ・ホールド・アメリカーナ",
         "event": "ONE Championship: A NEW TOMORROW",
         "round": "R2"
+      },
+      {
+        "date": "2019-08-02",
+        "opponent": "サマラ・サントス",
+        "result": "win",
+        "method": "2R 0:39 スカーフ・ホールド・アメリカーナ（発表はアメリカーナ）",
+        "event": "ONE Championship: DAWN OF HEROES",
+        "round": "R2"
+      },
+      {
+        "date": "2019-02-22",
+        "opponent": "ラウラ・バリン",
+        "result": "win",
+        "method": "1R 1:13 スカーフ・ホールド・アメリカーナ（発表はアメリカーナ）",
+        "event": "ONE Championship: CALL TO GREATNESS",
+        "round": "R1"
       },
       {
         "date": "2018-11-25",
@@ -27095,6 +27518,14 @@
         "result": "loss",
         "method": "5分3R終了 判定1-2",
         "event": "ONE Championship: ONE X",
+        "round": "R3"
+      },
+      {
+        "date": "2021-09-03",
+        "opponent": "アリース・アンダーソン",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ONE Championship: Empower 【ONE女子アトム級ワールドグランプリ1回戦】",
         "round": "R3"
       },
       {
@@ -27516,6 +27947,22 @@
         "result": "loss",
         "method": "5分3R終了 判定2-3",
         "event": "DEEP 118 IMPACT 【DEEPフェザー級タイトルマッチ】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-08-27",
+        "opponent": "リー・カイウェン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "Road to UFC Season2:Singapore 【トーナメント 準決勝】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-05-27",
+        "opponent": "イーブーゲラ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Road to UFC Season2:Shanghai 【トーナメント 1回戦】",
         "round": "R3"
       },
       {
