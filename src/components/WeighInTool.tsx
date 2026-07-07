@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { buildWeighInPost, type WeighInBoutInput } from "@/lib/xPost";
 import CopyButton from "@/components/CopyButton";
+import AdminBackLink from "@/components/AdminBackLink";
 
 interface BoutOption {
   fighterA: string;
@@ -81,6 +82,7 @@ export default function WeighInTool({ events }: { events: EventOption[] }) {
 
   return (
     <div style={{ padding: "20px 16px 60px", maxWidth: 640, margin: "0 auto" }}>
+      <AdminBackLink />
       <h1 style={{ fontFamily: "var(--os)", fontSize: 20, fontWeight: 700, marginBottom: 4 }}>
         計量結果まとめ
       </h1>

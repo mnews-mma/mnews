@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import AdminBackLink from "@/components/AdminBackLink";
 
 function ResultBox({ result }: { result: unknown }) {
   if (result === null) return null;
@@ -44,6 +45,7 @@ export default function XTestPage() {
 
   return (
     <div style={{ padding: "40px 24px", maxWidth: 560 }}>
+      <AdminBackLink />
       <h1 style={{ fontFamily: "var(--os)", fontSize: 22, fontWeight: 700, marginBottom: 8 }}>
         X API 疎通確認(技術テスト)
       </h1>

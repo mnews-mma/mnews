@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import AdminBackLink from "@/components/AdminBackLink";
 
 interface SendResult {
   ok: boolean;
@@ -31,6 +32,7 @@ export default function EmailTestPage() {
 
   return (
     <div style={{ padding: "40px 24px", maxWidth: 560 }}>
+      <AdminBackLink />
       <h1 style={{ fontFamily: "var(--os)", fontSize: 22, fontWeight: 700, marginBottom: 8 }}>
         メール送信テスト
       </h1>
