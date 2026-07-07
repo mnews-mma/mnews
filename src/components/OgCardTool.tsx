@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { ogImagePath } from "@/lib/ogShared";
+import { weightSortKey } from "@/lib/weightClasses";
 
 interface FighterOption {
   slug: string;
@@ -11,8 +12,11 @@ interface FighterOption {
 
 const SITE_URL = "https://www.mnews.jp";
 
-// カードに手指定できる階級プルダウンの5階級。加えて「自由入力」で任意テキスト可。
-const WEIGHT_PRESETS = ["フライ級", "バンタム級", "フェザー級", "ライト級", "ヘビー級"];
+// カードに手指定できる階級プルダウン。/fighters と同じ並び順(共有のweightSortKey)。
+// 加えて「自由入力」で任意テキストも可。
+const WEIGHT_PRESETS = ["ストロー級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ウェルター級", "ヘビー級", "女子アトム級"].sort(
+  (a, b) => weightSortKey(a) - weightSortKey(b)
+);
 const CUSTOM = "__custom__";
 
 export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) {
