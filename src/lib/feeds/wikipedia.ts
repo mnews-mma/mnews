@@ -36,6 +36,11 @@ function cleanWikiMarkup(s: string): string {
     .replace(/<br\s*\/?>/gi, " ")
     .replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, "$2")
     .replace(/\[\[([^\]]+)\]\]/g, "$1")
+    // {{仮リンク|表示名|言語コード|リンク先タイトル}}: 日本語版に記事が無い相手
+    // (≒赤リンク相当)を指す標準テンプレート。第1引数が表示名なのでそれだけ残す。
+    // これを先に処理しないと、直後の汎用テンプレート除去で表示名ごと消えて
+    // 対戦相手名が空文字になり、行ごと(!opponentで)取りこぼされてしまう。
+    .replace(/\{\{仮リンク\|([^|{}]+)\|[^{}]*\}\}/g, "$1")
     .replace(/'''?/g, "")
     .replace(/\{\{[^}]*\}\}/g, "")
     .replace(/^align=center\|/i, "")
@@ -250,26 +255,41 @@ export async function fetchWikiFighterRecord(enTitle: string): Promise<WikiFight
 // {{MMA record start}} テーブルに相当）。これを解析できれば、英語版に
 // 記事が無い・戦績テーブルが無い選手でも日本語版から取得できる。
 function splitTemplateParams(content: string): string[] {
-  // [[リンク|表示名]] の "|" で誤って分割しないよう、[[ ]] の深さを見ながら
-  // トップレベルの "|" だけで分割する。
+  // [[リンク|表示名]] や {{仮リンク|表示名|en|EnTitle}} の "|" で誤って分割
+  // しないよう、[[ ]] と {{ }} 両方の深さを見ながらトップレベルの "|" だけで
+  // 分割する({{ }}を見ていないと、対戦相手が{{仮リンク}}(日本語版に記事が無い
+  // 相手向けの標準テンプレート)の選手で行がまるごと壊れる)。
   const parts: string[] = [];
-  let depth = 0;
+  let bracketDepth = 0;
+  let braceDepth = 0;
   let current = "";
   for (let i = 0; i < content.length; i++) {
     const ch2 = content.slice(i, i + 2);
     if (ch2 === "[[") {
-      depth++;
+      bracketDepth++;
       current += ch2;
       i++;
       continue;
     }
     if (ch2 === "]]") {
-      depth--;
+      bracketDepth--;
       current += ch2;
       i++;
       continue;
     }
-    if (content[i] === "|" && depth === 0) {
+    if (ch2 === "{{") {
+      braceDepth++;
+      current += ch2;
+      i++;
+      continue;
+    }
+    if (ch2 === "}}") {
+      braceDepth--;
+      current += ch2;
+      i++;
+      continue;
+    }
+    if (content[i] === "|" && bracketDepth === 0 && braceDepth === 0) {
       parts.push(current);
       current = "";
       continue;
@@ -339,12 +359,42 @@ function extractMmaSection(wikitext: string): string {
   return stripAmateurSections(wikitext);
 }
 
+// {{Fight-cont|...}} の中身を、ネストした {{仮リンク|...}} 等の "}}" に
+// 惑わされず正しいブロック終端まで取り出す(非貪欲な正規表現は最初の"}}"、
+// つまりネストしたテンプレートの閉じ括弧で止まってしまい、対戦相手名以降が
+// 丸ごと欠落する)。中括弧の深さを数えながら手前で走査する。
+function extractFightContBlocks(scope: string): string[] {
+  const marker = "{{Fight-cont|";
+  const blocks: string[] = [];
+  let searchFrom = 0;
+  while (true) {
+    const start = scope.indexOf(marker, searchFrom);
+    if (start === -1) break;
+    let depth = 1; // marker自体の "{{" ぶん
+    let i = start + 2; // "{{" の直後から走査(marker内の"Fight-cont|"はdepthに無関係)
+    while (i < scope.length && depth > 0) {
+      if (scope.startsWith("{{", i)) {
+        depth++;
+        i += 2;
+      } else if (scope.startsWith("}}", i)) {
+        depth--;
+        i += 2;
+      } else {
+        i++;
+      }
+    }
+    blocks.push(scope.slice(start + marker.length, i - 2));
+    searchFrom = i;
+  }
+  return blocks;
+}
+
 export function parseJaFightHistory(wikitext: string): FightRecord[] {
   const scope = extractMmaSection(wikitext);
-  const blocks = Array.from(scope.matchAll(/\{\{Fight-cont\|([\s\S]*?)\}\}/g));
+  const blocks = extractFightContBlocks(scope);
   const records: FightRecord[] = [];
 
-  for (const [, rawContent] of blocks) {
+  for (const rawContent of blocks) {
     // <ref> ブロックを分割前に除去（ref内に"|"があると誤分割するため）
     const content = rawContent
       .replace(/<ref[^>]*\/>/gi, "")
