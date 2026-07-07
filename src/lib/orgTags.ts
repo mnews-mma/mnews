@@ -108,7 +108,25 @@ for (const e of EVENTS) {
 //   キム・スーチョル / イ・ジョンヒョン … RIZIN 2025-2026出場が各1戦のみ(2試合
 //     基準未達)。RIZIN韓国人ロスターとして公開に合わせ暫定付与。次のRIZIN出場で
 //     2戦目条件を満たし次第この例外は削除する(ヤン・ジヨンは2戦で自動付与のため対象外)。
-const RIZIN_TAG_EXCEPTIONS = new Set<string>(["hiramoto-ren", "yrysbek-tilenov", "kim-soochul", "lee-junghyun"]);
+//   エドポロキング/スダリオ剛/斎藤裕/ジェームズ・ギャラガー/ライアン・カファロ/
+//     所英男/ジョン・ドッドソン/キム・ギョンピョ … 2026-07時点でRIZIN2025-2026
+//     出場が各1戦のみ(2試合基準未達。適用前チェックで確認済み・データ欠損では
+//     なく実際に1戦のみ)。RIZIN露出優先で暫定付与。次のRIZIN出場で2戦目条件を
+//     満たし次第この例外は削除する。
+const RIZIN_TAG_EXCEPTIONS = new Set<string>([
+  "hiramoto-ren",
+  "yrysbek-tilenov",
+  "kim-soochul",
+  "lee-junghyun",
+  "edpolo-king",
+  "sudario-tsuyoshi",
+  "saito-yutaka",
+  "gallagher-james",
+  "cafaro-ryan",
+  "tokoro-hideo",
+  "dodson-john",
+  "kim-kyungpyo",
+]);
 
 // 修斗タグの明示例外(slug指定)。公式ランキング対象4階級(フライ/バンタム/
 // フェザー/ライト)以外の階級王者で、ランキングデータには載らないが現状の

@@ -919,9 +919,11 @@ export const FIGHTERS: Fighter[] = [
     nickname: "極真空手世界王者",
   },
   {
-    slug: "sudario-go",
+    // slug/nameEn修正(2026-07): 「剛」の読みは「つよし」(旧sudario-go/"Go Sudario"は
+    // 誤読)。旧slugはnext.config.jsで301リダイレクト設定済み。
+    slug: "sudario-tsuyoshi",
     nameJa: "スダリオ 剛",
-    nameEn: "Go Sudario",
+    nameEn: "Tsuyoshi Sudario",
     org: "rizin",
     weightClass: "ヘビー級",
     wins: 9,
