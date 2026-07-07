@@ -7,7 +7,7 @@ import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import type { OrgTag, OrgTagKey } from "@/lib/orgTags";
 
-// 団体フィルタ(並び順固定)。UFC/RIZINは既存公開選手のみ、DEEP/パンクラス/修斗は
+// 団体フィルタ(並び順固定)。UFC/RIZINは既存公開選手のみ、DEEP/パンクラス/修斗/ONEは
 // 新規公開昇格分に付与(computeFighterTags側で制御)。
 const TAG_OPTIONS: { key: OrgTagKey; label: string }[] = [
   { key: "ufc", label: "UFC" },
@@ -15,6 +15,7 @@ const TAG_OPTIONS: { key: OrgTagKey; label: string }[] = [
   { key: "deep", label: "DEEP" },
   { key: "pancrase", label: "パンクラス" },
   { key: "shooto", label: "修斗" },
+  { key: "one", label: "ONE" },
 ];
 
 const TAG_COLOR: Record<OrgTagKey, string> = {
@@ -23,19 +24,30 @@ const TAG_COLOR: Record<OrgTagKey, string> = {
   deep: SOURCES.deep.color,
   pancrase: SOURCES.pancrase.color,
   shooto: SOURCES.shooto.color,
+  one: SOURCES.one.color,
 };
 
-const WEIGHT_OPTIONS = ["女子アトム級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ウェルター級", "ヘビー級", "ストロー級"];
+// 団体の並び順(選手ソートの第2キーにも使う): UFC → RIZIN → DEEP → パンクラス → 修斗 → ONE
+const ORG_SORT_ORDER: Record<string, number> = {
+  ufc: 0,
+  rizin: 1,
+  deep: 2,
+  pancrase: 3,
+  shooto: 4,
+  one: 5,
+};
+
+const WEIGHT_OPTIONS = ["ストロー級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ウェルター級", "ヘビー級", "女子アトム級"];
 
 const WEIGHT_ORDER: Record<string, number> = {
-  "フェザー級": 0,
+  "ストロー級": 0,
   "フライ級": 1,
   "バンタム級": 2,
-  "ライト級": 3,
-  "ウェルター級": 4,
-  "女子アトム級": 5,
+  "フェザー級": 3,
+  "ライト級": 4,
+  "ウェルター級": 5,
   "ヘビー級": 6,
-  "ストロー級": 7,
+  "女子アトム級": 7,
 };
 
 // 「ヘビー級」を選ぶとDEEPの無差別級(メガトン級)も一緒に絞れるようにする
@@ -176,12 +188,13 @@ export default function FighterFilterGrid({
       })
       .map((entry) => entry.f)
       .sort((a, b) => {
-        const orgA = a.org === "ufc" ? 0 : 1;
-        const orgB = b.org === "ufc" ? 0 : 1;
-        if (orgA !== orgB) return orgA - orgB;
+        // 第1キー: 階級(2-1の順) / 第2キー: 団体(UFC→RIZIN→DEEP→パンクラス→修斗→ONE)
         const wa = WEIGHT_ORDER[a.weightClass] ?? 9;
         const wb = WEIGHT_ORDER[b.weightClass] ?? 9;
-        return wa - wb;
+        if (wa !== wb) return wa - wb;
+        const orgA = ORG_SORT_ORDER[a.org] ?? 9;
+        const orgB = ORG_SORT_ORDER[b.org] ?? 9;
+        return orgA - orgB;
       });
   }, [searchIndex, weightClass, tag, tagsBySlug, query]);
 

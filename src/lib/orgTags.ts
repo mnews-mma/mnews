@@ -10,7 +10,7 @@ import { EVENT_RESULTS } from "./eventResults";
 import type { FightRecord } from "./fighters";
 import type { OrgRankingsFile } from "./orgRankingsData";
 
-export type OrgTagKey = "ufc" | "rizin" | "deep" | "pancrase" | "shooto";
+export type OrgTagKey = "ufc" | "rizin" | "deep" | "pancrase" | "shooto" | "one";
 
 export const ORG_TAG_LABEL: Record<OrgTagKey, string> = {
   ufc: "UFC",
@@ -18,6 +18,7 @@ export const ORG_TAG_LABEL: Record<OrgTagKey, string> = {
   deep: "DEEP",
   pancrase: "パンクラス",
   shooto: "修斗",
+  one: "ONE",
 };
 
 export interface OrgTag {
@@ -147,7 +148,9 @@ export function isRizinRecent(f: TaggableFighter): boolean {
 //   DEEP      … 2026以降ナンバー本戦出場(EVENT_RESULTS由来) または fighter.org === "deep"。
 //   パンクラス … 現ランカー(公式ランキングに slug 一致で掲載・順位つき)。
 //   修斗       … 現ランカー(同上)。
-// 並び順は表示フィルタと揃える: UFC / RIZIN / DEEP / パンクラス / 修斗。
+//   ONE       … fighter.org === "one"(UFCと同じく所属/出場の直接判定。ONEはEVENT_RESULTS/
+//               orgRankingsを持たないため、他団体のような興行実績ベース判定はできない)。
+// 並び順は表示フィルタと揃える: UFC / RIZIN / DEEP / パンクラス / 修斗 / ONE。
 export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsFile): OrgTag[] {
   const tags: OrgTag[] = [];
 
@@ -159,6 +162,9 @@ export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsF
   }
   if (isDeep2026(f.nameJa) || f.org === "deep") {
     tags.push({ key: "deep", label: ORG_TAG_LABEL.deep, weightClass: f.weightClass });
+  }
+  if (f.org === "one") {
+    tags.push({ key: "one", label: ORG_TAG_LABEL.one, weightClass: f.weightClass });
   }
   // パンクラス/修斗 = 現ランカー(公式ランキングに slug 一致で載っている)
   let shootoTagged = false;

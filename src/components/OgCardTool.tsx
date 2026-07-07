@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { ogImagePath } from "@/lib/ogShared";
 
@@ -24,6 +24,18 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   // 階級ラベル(手指定)。プルダウン(5階級 or 自由入力)＋自由記述テキスト。
   const [wcPreset, setWcPreset] = useState<string>("");
   const [wcCustom, setWcCustom] = useState<string>("");
+  // 選手増加でプルダウンが長くなったため、フリーワード検索(部分一致)で絞り込む。
+  // 選択肢自体は既存のプルダウンのまま(絞り込みは表示するoptionを減らすだけ)。
+  const [filterA, setFilterA] = useState("");
+  const [filterB, setFilterB] = useState("");
+  const fightersA = useMemo(
+    () => (filterA.trim() ? fighters.filter((f) => f.nameJa.includes(filterA.trim())) : fighters),
+    [fighters, filterA]
+  );
+  const fightersB = useMemo(
+    () => (filterB.trim() ? fighters.filter((f) => f.nameJa.includes(filterB.trim())) : fighters),
+    [fighters, filterB]
+  );
 
   useEffect(() => {
     const f = searchParams.get("fighter");
@@ -74,12 +86,19 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
           <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
             選手{mode === "vs" ? "A" : ""}
           </label>
+          <input
+            type="text"
+            value={filterA}
+            onChange={(e) => setFilterA(e.target.value)}
+            placeholder="選手名で検索"
+            style={{ display: "block", padding: "6px 10px", fontSize: 13, minWidth: 220, marginBottom: 4 }}
+          />
           <select
             value={slugA}
             onChange={(e) => setSlugA(e.target.value)}
             style={{ padding: "8px 12px", fontSize: 14, minWidth: 220 }}
           >
-            {fighters.map((f) => (
+            {fightersA.map((f) => (
               <option key={f.slug} value={f.slug}>
                 {f.nameJa}
               </option>
@@ -100,12 +119,19 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
             </div>
             <div>
               <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>選手B</label>
+              <input
+                type="text"
+                value={filterB}
+                onChange={(e) => setFilterB(e.target.value)}
+                placeholder="選手名で検索"
+                style={{ display: "block", padding: "6px 10px", fontSize: 13, minWidth: 220, marginBottom: 4 }}
+              />
               <select
                 value={slugB}
                 onChange={(e) => setSlugB(e.target.value)}
                 style={{ padding: "8px 12px", fontSize: 14, minWidth: 220 }}
               >
-                {fighters.map((f) => (
+                {fightersB.map((f) => (
                   <option key={f.slug} value={f.slug}>
                     {f.nameJa}
                   </option>
