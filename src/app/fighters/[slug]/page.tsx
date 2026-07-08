@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
+import { resolveOpponentSlug } from "@/lib/fighterLinkOverrides";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighterCached, resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
@@ -351,7 +352,10 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
               </thead>
               <tbody>
                 {history.map((h, i) => {
-                  const opponentSlug = findFighterSlugByName(h.opponent, slug, visibleSlugs);
+                  const opponentSlug = resolveOpponentSlug(h.opponent, slug, visibleSlugs, {
+                    fighterSlug: slug,
+                    date: h.date,
+                  });
                   const eventSlug = findEventSlug(h.event);
                   return (
                     <tr key={i}>
