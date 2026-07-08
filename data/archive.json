@@ -1,5 +1,59 @@
 [
   {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "『abc presents RIZIN LANDMARK 15 in HIROSHIMA』ファンクラブイベント開催決定！",
+    "origin": "RIZIN公式",
+    "url": "https://fc.rizinff.com/blogs/news/event_26071718",
+    "publishedAt": "2026-07-08T06:00:00.000Z",
+    "firstSeenAt": "2026-07-08T07:56:57.174Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】ダウトベックと再起戦、萩原京平「自分的には相性は悪くないと思っている」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/232541?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590rizin-landmark15%25e3%2580%2591%25e3%2583%2580%25e3%2582%25a6%25e3%2583%2588%25e3%2583%2599%25e3%2583%2583%25e3%2582%25af%25e3%2581%25a8%25e5%2586%258d%25e8%25b5%25b7%25e6%2588%25a6%25e3%2580%2581%25e8%2590%25a9%25e5%258e%259f%25e4%25ba%25ac%25e5%25b9%25b3%25e3%2580%258c%25e8%2587%25aa%25e5%2588%2586",
+    "publishedAt": "2026-07-08T04:26:18.000Z",
+    "firstSeenAt": "2026-07-08T07:56:57.174Z"
+  },
+  {
+    "id": "gonkaku-3",
+    "source": "other",
+    "title": "【Lemino修斗】宇野薫、なぜMMAを戦うのか「30年目の宇野薫の修斗、“打投極”を見せる」＝7月13日（月）後楽園",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24256",
+    "publishedAt": "2026-07-08T03:09:29.000Z",
+    "firstSeenAt": "2026-07-08T07:56:57.174Z"
+  },
+  {
+    "id": "gonkaku-4",
+    "source": "other",
+    "title": "【RIZIN】皇治「今までで1番ヤバい奴と試合のオファーきた」「さて、誰でしょうか？」9・10『超RIZIN』でビッグネームと対戦か",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24254",
+    "publishedAt": "2026-07-08T02:51:01.000Z",
+    "firstSeenAt": "2026-07-08T07:56:57.174Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】朝倉未来、9月の対戦相手は「ほぼ決まっている」溝口勇児vs.三崎優太などSNSバトルも分析",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2466342/",
+    "publishedAt": "2026-07-08T02:43:00.000Z",
+    "firstSeenAt": "2026-07-08T07:56:57.174Z"
+  },
+  {
+    "id": "deep-0",
+    "source": "deep",
+    "title": "DEEP FIGHT CHALLENGE 2026 2nd ROUND に出場する田中悠翔が怪我で欠場となり対戦相手の琥はパラエストラ八王子の渡部恵多に変更に!",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/deep-fight-challenge-2026-2nd-round-%e3%81%ab%e5%87%ba%e5%a0%b4%e3%81%99%e3%82%8b%e7%94%b0%e4%b8%ad%e6%82%a0%e7%bf%94%e3%81%8c%e6%80%aa%e6%88%91%e3%81%a7%e6%ac%a0%e5%a0%b4%e3%81%a8%e3%81%aa%e3%82%8a/",
+    "publishedAt": "2026-07-08T02:42:48.000Z",
+    "firstSeenAt": "2026-07-08T07:56:57.174Z"
+  },
+  {
     "id": "deep-0",
     "source": "deep",
     "title": "DEEP 132 IMPACT 試合後インタビュー！",
