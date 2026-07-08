@@ -16,8 +16,15 @@ import {
 
 export const runtime = "edge";
 
+// fetch失敗・データ不備時のフォールバック。成功時(Cache-Control: public,
+// max-age=3600)と違い、no-storeを明示しないとCDN/Xのクローラーが307自体を
+// 長期キャッシュしてしまい、原因解消後もフォールバック画像に固定され続ける
+// 事故になる(一時的な障害のはずが恒久的な表示崩れになる)。
 function fallbackRedirect() {
-  return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
+  return NextResponse.redirect(`${SITE_URL}/og-image.png`, {
+    status: 307,
+    headers: { "Cache-Control": "no-store" },
+  });
 }
 
 // 名前ゾーンの寸法。本番カードの名前領域の実寸に合わせる
