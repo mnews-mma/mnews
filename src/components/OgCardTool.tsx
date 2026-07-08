@@ -45,6 +45,22 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
     const f = searchParams.get("fighter");
     if (f && fighters.some((x) => x.slug === f)) setSlugA(f);
   }, [searchParams, fighters]);
+
+  // 検索フィルタで選択肢を絞り込んだ結果、現在選択中のslugがフィルタ後のリストから
+  // 消えると、ネイティブ<select>は残った先頭optionを勝手に表示してしまう(ブラウザの
+  // 挙動でReactのonChangeを経由しない)。表示とstateが乖離し、見た目は選択済みでも
+  // 実際のstate(=カード/URL生成に使う値)は古いままになるバグがあったため、
+  // フィルタ変更のたびに「表示される先頭候補」へstateを明示的に同期する。
+  useEffect(() => {
+    if (fightersA.length > 0 && !fightersA.some((f) => f.slug === slugA)) {
+      setSlugA(fightersA[0].slug);
+    }
+  }, [fightersA, slugA]);
+  useEffect(() => {
+    if (fightersB.length > 0 && !fightersB.some((f) => f.slug === slugB)) {
+      setSlugB(fightersB[0].slug);
+    }
+  }, [fightersB, slugB]);
   const [copied, setCopied] = useState<"image" | "page" | null>(null);
 
   // 空欄なら wc パラメータを付けない → OG画像側は階級行を出さない。
@@ -114,7 +130,15 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
           <>
             <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: 2 }}>
               <button
-                onClick={() => { setSlugA(slugB); setSlugB(slugA); }}
+                onClick={() => {
+                  setSlugA(slugB);
+                  setSlugB(slugA);
+                  // フィルタ文字列も一緒に入れ替える。入れ替えないと、片方の検索窓の
+                  // 絞り込みテキストが新しい選手と一致せず、直後の自動補正effectが
+                  // スワップ結果を即座に上書きしてしまう。
+                  setFilterA(filterB);
+                  setFilterB(filterA);
+                }}
                 title="AとBを入れ替え"
                 style={{ padding: "8px 10px", fontSize: 16, lineHeight: 1 }}
               >
