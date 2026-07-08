@@ -52,7 +52,7 @@ export const RIZIN_CHAMPIONS: ChampionEntry[] = [
 ];
 
 export const DEEP_CHAMPIONS: ChampionEntry[] = [
-  { org: "deep", weightClass: "メガトン級", name: "大成", generation: "第7代", slug: null }, // slug nishitani-taisei は hidden のためリンクなし
+  { org: "deep", weightClass: "ヘビー級", name: "大成", generation: "第7代", slug: null }, // DEEP公式はメガトン級だがサイト内はヘビー級に統一。slug nishitani-taisei は hidden のためリンクなし
   { org: "deep", weightClass: "ウェルター級", name: "嶋田伊吹", generation: "第14代", slug: "shimada-ibuki" },
   { org: "deep", weightClass: "ライト級", name: "野村駿太", generation: "第13代", slug: "nomura-shunta" },
   { org: "deep", weightClass: "フェザー級", name: "青井人", generation: "第12代", slug: "aoi-jin" },

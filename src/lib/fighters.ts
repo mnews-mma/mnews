@@ -1107,7 +1107,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "ohara-juri", nameJa: "大原樹理", nameEn: "Juri Ohara", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kuramoto-daigo", nameJa: "倉本大悟", nameEn: "Daigo Kuramoto", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "shimada-ibuki", nameJa: "嶋田伊吹", nameEn: "Ibuki Shimada", org: "deep", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "sakai-ryo", nameJa: "酒井リョウ", nameEn: "Ryo Sakai", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "メガトンの砦" },
+  { slug: "sakai-ryo", nameJa: "酒井リョウ", nameEn: "Ryo Sakai", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "メガトンの砦" },
   { slug: "sekihara-sho", nameJa: "関原翔", nameEn: "Sho Sekihara", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "rikiya", nameJa: "力也", nameEn: "Rikiya", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "力也 (格闘家)" },
   { slug: "gomyo-hiroto", nameJa: "五明宏人", nameEn: "Hiroto Gomyo", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1124,21 +1124,21 @@ export const FIGHTERS: Fighter[] = [
   { slug: "takizawa-kenta", nameJa: "瀧澤謙太", nameEn: "Kenta Takizawa", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nakamura-daisuke", nameJa: "中村大介", nameEn: "Daisuke Nakamura", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "中村大介 (プロレスラー)" },
   { slug: "izumi-takeshi", nameJa: "泉武志", nameEn: "Takeshi Izumi", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "kindaichi-kosuke", nameJa: "金田一孝介", nameEn: "Kosuke Kindaichi", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "kindaichi-kosuke", nameJa: "金田一孝介", nameEn: "Kosuke Kindaichi", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kubota-taito", nameJa: "窪田泰斗", nameEn: "Taito Kubota", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kozaki-ren", nameJa: "小崎連", nameEn: "Ren Kozaki", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "seigo", nameJa: "誠悟", nameEn: "Seigo", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "seigo", nameJa: "誠悟", nameEn: "Seigo", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "suwabe-teppei", nameJa: "諏訪部哲平", nameEn: "Teppei Suwabe", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "sugino-aren", nameJa: "杉野亜蓮", nameEn: "Aren Sugino", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "daiya", nameJa: "ダイヤ", nameEn: "Daiya", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // --- 第2弾: 表記ゆれ確定4名(読みは確定・EN表記の作法のみ確定待ちだった) ---
   { slug: "strasser-kiichi", nameJa: "ストラッサー起一", nameEn: "Kiichi Strasser", org: "deep", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kinoshita-karate", nameJa: "木下カラテ", nameEn: "Karate Kinoshita", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "naito-tank", nameJa: "タンク内藤", nameEn: "Tank Naito", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "naito-tank", nameJa: "タンク内藤", nameEn: "Tank Naito", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // 魚井は Uoi/Uonoi で揺れ(確度低め)→ needsReview
   { slug: "uoi-fullswing", nameJa: "魚井フルスイング", nameEn: "Fullswing Uoi", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   // --- 第2弾: 読み確定・高信頼7名(複数ソース一致) ---
-  { slug: "arato-hidetaka", nameJa: "荒東英貴", nameEn: "Hidetaka Arato", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "arato-hidetaka", nameJa: "荒東英貴", nameEn: "Hidetaka Arato", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "terasaki-ryu", nameJa: "寺崎昇龍", nameEn: "Ryu Terasaki", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "miyabi-shunsuke", nameJa: "雅駿介", nameEn: "Shunsuke Miyabi", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // 狩野優は本人IG/X表記が Karino(漢字だけなら Kano だが誤り)
@@ -1270,8 +1270,8 @@ export const FIGHTERS: Fighter[] = [
 
   // --- DEEP 133 IMPACT(2026-09-13)出場選手のDB突合・追加分(2026-07) ---
   // 名前解決が曖昧(表示名「大成」の実体は関野大成のDEEP戦績だが西谷大成と混同)＆wiki無しのため非表示。
-  { slug: "nishitani-taisei", nameJa: "大成", nameEn: "Taisei", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "西谷大成", hidden: true },
-  { slug: "shibisai-shoma", nameJa: "シビサイ頌真", nameEn: "Shoma Shibisai", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "nishitani-taisei", nameJa: "大成", nameEn: "Taisei", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "西谷大成", hidden: true },
+  { slug: "shibisai-shoma", nameJa: "シビサイ頌真", nameEn: "Shoma Shibisai", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kitakata-daichi", nameJa: "北方大地", nameEn: "Daichi Kitakata", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kaito", nameJa: "海飛", nameEn: "Kaito", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "mitsui-shunki", nameJa: "三井俊希", nameEn: "Shunki Mitsui", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1281,7 +1281,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "kitaoka-satoru", nameJa: "北岡悟", nameEn: "Satoru Kitaoka", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "yamasaki-yajuro", nameJa: "山崎弥十朗", nameEn: "Yajuro Yamasaki", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nakatsukasa-taiyo", nameJa: "中務太陽", nameEn: "Taiyo Nakatsukasa", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "max-yoshida", nameJa: "MAX吉田", nameEn: "Max Yoshida", org: "deep", weightClass: "メガトン級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "max-yoshida", nameJa: "MAX吉田", nameEn: "Max Yoshida", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "okumura-airu", nameJa: "奥村アイル", nameEn: "Airu Okumura", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
 
   // --- 手動追加6名(2026-07・通称なし指定) ---
