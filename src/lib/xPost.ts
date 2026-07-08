@@ -136,11 +136,17 @@ export function buildDigestPost(articles: Article[], dateStr: string): DigestPos
     body = [`🥊 昨日のMMAニュースまとめ(${formatMD(dateStr)})`, ...lines].join("\n");
   }
 
-  // 全件への誘導はセルフリプライで行う
+  // 全件への誘導はセルフリプライで行う。リンクには日付ベースのキャッシュバスタ
+  // (?d=YYYY-MM-DD)を付ける。Xは投稿リンクのURL単位でOGPをキャッシュするため、
+  // 毎回同じ https://mnews.jp を貼るとホームOGPを更新してもXが古いカードを
+  // 出し続ける。日付でURLを日替わりにすることで、Xに毎回新規URLとして再取得させ、
+  // 現行のホームOGP(新デザイン)を確実に表示させる。?d はNext側では未使用の
+  // クエリなので表示・挙動には影響しない。
+  const digestLink = `${SITE_LINK}/?d=${dateStr}`;
   const built = applyLinkPlacement(
     body,
     hashtags,
-    SITE_LINK,
+    digestLink,
     X_POST_CONFIG.linkPlacement.digest,
     "全件はこちら👇"
   );
