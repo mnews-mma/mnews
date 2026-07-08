@@ -281,23 +281,8 @@ export async function GET(
             )}
           </div>
 
-          {/* 両選手 + 中央VS + 斜め分割線 */}
-          <div style={{ display: "flex", flex: 1, alignItems: "center", position: "relative" }}>
-            {/* 斜め分割線（中央やや太め、金色） */}
-            <div
-              style={{
-                display: "flex",
-                position: "absolute",
-                left: "50%",
-                top: "-80px",
-                width: "6px",
-                height: "760px",
-                backgroundColor: COLORS.gold,
-                opacity: 0.55,
-                transform: "rotate(14deg)",
-              }}
-            />
-
+          {/* 両選手 + 中央VS(中央の区切りはVSテキストと背景グラデの見切りで成立) */}
+          <div style={{ display: "flex", flex: 1, alignItems: "center" }}>
             <FighterSide f={fighterA} corner="left" fit={fitA} />
 
             <div
