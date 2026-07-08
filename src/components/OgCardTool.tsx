@@ -81,6 +81,14 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   const imageUrl = `${SITE_URL}${imagePath}`;
   const pageUrl = `${SITE_URL}${pagePath}`;
 
+  // VSモード専用のX投稿文。「もし{大会名}で「A vs B」が実現したら——」
+  // (大会名未入力なら「もし「A vs B」が実現したら——」に短縮)。
+  const nameA = fighters.find((f) => f.slug === slugA)?.nameJa ?? slugA;
+  const nameB = fighters.find((f) => f.slug === slugB)?.nameJa ?? slugB;
+  const vsPostText = eventName.trim()
+    ? `もし${eventName.trim()}で「${nameA} vs ${nameB}」が実現したら——`
+    : `もし「${nameA} vs ${nameB}」が実現したら——`;
+
   const copy = (text: string, which: "image" | "page") => {
     navigator.clipboard.writeText(text);
     setCopied(which);
@@ -89,6 +97,15 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
 
   const postToX = (url: string) => {
     window.open(`https://x.com/intent/post?url=${encodeURIComponent(url)}`, "_blank");
+  };
+
+  // VSモード専用。本文(text)とシェアURL(url)を分離してintentに渡す
+  // (urlはXがOGカードを描画するために必須なので必ず末尾に付ける)。
+  const postToXWithText = (text: string, url: string) => {
+    window.open(
+      `https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+      "_blank"
+    );
   };
 
   return (
@@ -275,7 +292,7 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
                 {copied === "page" ? "コピーしました" : "コピー"}
               </button>
               <button
-                onClick={() => postToX(pageUrl)}
+                onClick={() => postToXWithText(vsPostText, pageUrl)}
                 style={{ padding: "8px 16px", background: "#000", color: "#fff", border: "none", cursor: "pointer", borderRadius: 4, fontWeight: 700 }}
               >
                 𝕏 に投稿
