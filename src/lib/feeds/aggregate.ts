@@ -55,6 +55,19 @@ function toIso(dateStr: string): string {
   return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
 }
 
+// タイムゾーンオフセットを含まない日時文字列(例: "2026-07-08T11:43")を
+// 明示的にJSTとしてパースする。new Date(dateStr)は実行環境のローカル
+// タイムゾーンに依存するため、ローカル開発機(JST)では偶然正しく動くが、
+// UTC稼働の本番(Vercel)では同じ文字列をUTCと誤解釈し、実際より9時間先
+// (未来)の時刻になってしまう。未来時刻はrelativeTimeJa()で「今」と表示され、
+// ソートで常に最新扱いされて先頭に来る(ORICON記事が「今」で先頭固定される
+// バグの原因)。年月日のみ("YYYY-MM-DD")の文字列はECMAScript仕様上もとも
+// とUTCとして解釈されるため対象外(pancraseのリリース日はこちらで問題ない)。
+function toIsoJst(dateStr: string): string {
+  const d = new Date(`${dateStr}+09:00`);
+  return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
+}
+
 function toArticle(
   item: RawItem,
   source: SourceKey,
@@ -210,7 +223,7 @@ async function fetchOriconRizin(): Promise<Article[]> {
       title: rewriteOriconTitle(rawTitle),
       origin: "ORICON",
       url: `https://www.oricon.co.jp${path}`,
-      publishedAt: toIso(datetime.replace(" ", "T")),
+      publishedAt: toIsoJst(datetime.replace(" ", "T")),
     });
   });
   return out;
