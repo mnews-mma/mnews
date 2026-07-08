@@ -34,7 +34,7 @@ export default async function DeepChampionsPage() {
       <Nav />
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
-        <h1 className="page-title">DEEP 現王者</h1>
+        <h1 className="page-title">DEEP 現王者一覧（階級別）</h1>
       </div>
       <OrgRankingView data={deep} linkableSlugs={linkable} />
       <Footer />

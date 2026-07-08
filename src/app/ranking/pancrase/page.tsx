@@ -37,7 +37,7 @@ export default async function PancraseRankingPage() {
       <Nav />
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
-        <h1 className="page-title">パンクラス 公式ランキング</h1>
+        <h1 className="page-title">パンクラス 公式ランキング（階級別）</h1>
       </div>
       {pancrase && pancrase.classes.length > 0 ? (
         <OrgRankingView data={pancrase} linkableSlugs={linkable} />

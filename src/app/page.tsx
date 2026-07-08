@@ -23,8 +23,8 @@ import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
-  title: "日本MMAニュース速報 | Mニュース",
-  description: "RIZIN・DEEP・パンクラス・修斗の格闘技ニュースを随時更新。日本人MMA選手の戦績・試合結果も掲載。",
+  title: "日本MMAニュース・選手データベース | Mニュース",
+  description: "RIZIN・DEEP・修斗・パンクラスのニュースと選手戦績データベースを一か所に。日本MMAの大会情報・試合結果もまとめて掲載。",
   path: "/",
 });
 
@@ -46,7 +46,7 @@ const WEBSITE_LD = {
   "@type": "WebSite",
   name: "Mニュース",
   url: "https://www.mnews.jp",
-  description: "RIZIN・DEEP・パンクラス・修斗の格闘技ニュースを随時更新。日本人MMA選手の戦績・試合結果も掲載。",
+  description: "RIZIN・DEEP・修斗・パンクラスのニュースと選手戦績データベースを一か所に。日本MMAの大会情報・試合結果もまとめて掲載。",
   publisher: {
     "@type": "NewsMediaOrganization",
     name: "Mニュース",
@@ -139,7 +139,7 @@ export default async function HomePage() {
         />
       )}
       <Nav />
-      <h1 className="visually-hidden">日本MMAニュース速報 | Mニュース</h1>
+      <h1 className="visually-hidden">日本MMAニュース・選手データベース</h1>
 
       <div className="home-wrap">
       <div className="home-main">

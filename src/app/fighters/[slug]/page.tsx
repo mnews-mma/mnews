@@ -40,7 +40,7 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const seed = getFighter(slug);
-  if (!seed) return { title: "選手が見つかりません | Mニュース" };
+  if (!seed) return { title: "選手が見つかりません | Mニュース", robots: { index: false, follow: false } };
   // Xカードツールの手指定階級ラベル(?wc=)を og:image に反映(空欄なら付けない)。
   const wcRaw = (await searchParams).wc;
   const wc = (Array.isArray(wcRaw) ? wcRaw[0] : wcRaw ?? "").trim();
@@ -56,9 +56,10 @@ export async function generateMetadata({
       : appearance?.kind === "expected"
         ? `${appearance.event.date}『${appearance.event.eventName}』に参戦予定（対戦相手未定）。`
         : "";
+  const orgLabel = SOURCES[fighter.org].label;
   const meta = pageMetadata({
-    title: `${fighter.nameJa} 戦績・試合結果 | Mニュース`,
-    description: `${nextFightDesc}${fighter.nameJa}の最新試合結果・戦績データ。${fighter.wins}勝${fighter.losses}敗（${SOURCES[fighter.org].label}・${fighter.weightClass}）。KO・一本・判定の内訳や過去の対戦相手も掲載。`,
+    title: `${fighter.nameJa}（${orgLabel}）の戦績・試合結果 | Mニュース`,
+    description: `${fighter.nameJa}の戦績、試合結果、プロフィールをまとめて掲載。${orgLabel}・${fighter.weightClass}所属、通算${fighter.wins}勝${fighter.losses}敗（KO${fighter.ko}・一本${fighter.sub}・判定${fighter.decision}）。RIZIN・DEEP・修斗・パンクラスなど日本MMAの選手情報。${nextFightDesc}`,
     path: `/fighters/${fighter.slug}`,
     image: {
       url: ogImagePath(ogPath),

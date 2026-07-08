@@ -27,7 +27,7 @@ export async function generateMetadata({
   const { slugA, slugB } = await params;
   const fighterA = getFighter(slugA);
   const fighterB = getFighter(slugB);
-  if (!fighterA || !fighterB) return { title: "対戦カード | Mニュース" };
+  if (!fighterA || !fighterB) return { title: "対戦カード | Mニュース", robots: { index: false, follow: false } };
 
   const wc = wcOf(await searchParams);
   const title = `${fighterA.nameJa} vs ${fighterB.nameJa} | Mニュース`;

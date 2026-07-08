@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { EVENT_RESULTS, getEventResult, buildEventSummary } from "@/lib/eventResults";
 import { SOURCES } from "@/lib/sources";
-import { pageMetadata, SITE_URL, isoDate } from "@/lib/seo";
+import { pageMetadata, isoDate } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { buildSportsEventLd, eventResultOgImageUrl } from "@/lib/eventJsonLd";
@@ -29,7 +29,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const event = getEventResult(slug);
-  if (!event) return { title: "大会が見つかりません | Mニュース" };
+  if (!event) return { title: "大会が見つかりません | Mニュース", robots: { index: false, follow: false } };
   const summary = buildEventSummary(event);
   const ogImage = eventResultOgImageUrl(event.slug, event.fights.length > 0);
   return pageMetadata({
@@ -67,7 +67,7 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
     description:
       summary ||
       `${event.eventName}（${event.date}${event.venue ? "・" + event.venue : ""}）全${event.fights.length}試合の勝敗・決着方法を掲載。`,
-    imageUrl: `${SITE_URL}/og-image.png`,
+    imageUrl: eventResultOgImageUrl(event.slug, event.fights.length > 0),
   });
 
   return (

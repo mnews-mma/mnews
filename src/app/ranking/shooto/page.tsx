@@ -36,7 +36,7 @@ export default async function ShootoRankingPage() {
       <Nav />
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
-        <h1 className="page-title">修斗 公式ランキング</h1>
+        <h1 className="page-title">修斗 公式ランキング（階級別）</h1>
       </div>
       {shooto && shooto.classes.length > 0 ? (
         <OrgRankingView data={shooto} linkableSlugs={linkable} />

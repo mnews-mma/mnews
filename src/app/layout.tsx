@@ -6,9 +6,9 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const isProduction = process.env.NODE_ENV === "production";
 
 const SITE_URL = "https://www.mnews.jp";
-const DEFAULT_TITLE = "Mニュース | 日本MMAニュース速報";
+const DEFAULT_TITLE = "日本MMAニュース・選手データベース | Mニュース";
 const DEFAULT_DESCRIPTION =
-  "RIZIN・DEEP・パンクラスの公式発表とMMAニュースを一か所にまとめて届けるMMA特化キュレーションメディア。";
+  "RIZIN・DEEP・修斗・パンクラスのニュースと選手戦績データベースを一か所に。日本MMAの大会情報・試合結果もまとめて掲載。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
