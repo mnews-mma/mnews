@@ -16,8 +16,16 @@ export const runtime = "edge";
 const ARCHIVE_URL =
   "https://raw.githubusercontent.com/mnews-mma/mnews/main/data/archive.json";
 
+// fetch(archive.json)失敗・データ不備時のフォールバック。成功時の長期
+// キャッシュと違い、no-storeを明示しないとCDN/Xのクローラーが307自体を
+// 長期キャッシュし、原因解消後もフォールバック画像に固定され続ける事故に
+// なる(このルート自体は自動投稿経路を持たないが、他OGルートと挙動を
+// 統一する)。
 function fallbackRedirect() {
-  return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
+  return NextResponse.redirect(`${SITE_URL}/og-image.png`, {
+    status: 307,
+    headers: { "Cache-Control": "no-store" },
+  });
 }
 
 // 指定日(JST)に公開された記事を archive.json から取得

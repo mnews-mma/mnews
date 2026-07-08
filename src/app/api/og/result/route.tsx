@@ -12,8 +12,15 @@ import {
 
 export const runtime = "edge";
 
+// URLパラメータ不正・フォント取得失敗等のフォールバック。no-storeを明示せず
+// 307自体がCDN/Xに長期キャッシュされると、原因解消後もフォールバック画像に
+// 固定され続ける(このルートは管理画面のLiveResultTool手動UI専用で自動投稿
+// 経路は無いが、他OGルートと挙動を統一する)。
 function fallbackRedirect() {
-  return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
+  return NextResponse.redirect(`${SITE_URL}/og-image.png`, {
+    status: 307,
+    headers: { "Cache-Control": "no-store" },
+  });
 }
 
 // 勝者名は最大サイズ。文字数に応じ段階縮小(中途半端なサイズを残さない)

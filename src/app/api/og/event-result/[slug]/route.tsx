@@ -11,8 +11,15 @@ import {
 
 export const runtime = "edge";
 
+// フォント取得失敗・データ不備時のフォールバック。no-storeを明示せず307自体
+// がCDN/Xに長期キャッシュされると、原因解消後もフォールバック画像に固定
+// され続ける(このルートは結果ページの通常OGP専用で自動投稿経路は無いが、
+// 他OGルートと挙動を統一する)。
 function fallbackRedirect() {
-  return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
+  return NextResponse.redirect(`${SITE_URL}/og-image.png`, {
+    status: 307,
+    headers: { "Cache-Control": "no-store" },
+  });
 }
 
 // 引き分け/中止/NC等、勝敗が付かない結果ラベル

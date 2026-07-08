@@ -11,8 +11,16 @@ import {
 
 export const runtime = "edge";
 
+// フォント取得失敗・データ不備時のフォールバック。このルートは
+// countdown-post cron(自動投稿)が画像URLとして直接参照する唯一のOGルート
+// のため、no-store未指定だと一時障害の307がCDN/Xに焼き付き、原因解消後も
+// 自動投稿された告知ポストの画像が汎用フォールバックに固定され続ける
+// リスクが特に高い。
 function fallbackRedirect() {
-  return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
+  return NextResponse.redirect(`${SITE_URL}/og-image.png`, {
+    status: 307,
+    headers: { "Cache-Control": "no-store" },
+  });
 }
 
 // 大会前日カウントダウンポスト用: 全対戦カード一覧画像(1200×675)。

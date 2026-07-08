@@ -13,8 +13,15 @@ import {
 
 export const runtime = "edge";
 
+// fetch(fighterRecords.json)失敗・フォント取得失敗等のフォールバック。
+// no-storeを明示せず307自体がCDN/Xに長期キャッシュされると、原因解消後も
+// フォールバック画像に固定され続ける(選手ページの通常OGP+管理画面手動
+// ツール用で自動投稿経路は無いが、他OGルートと挙動を統一する)。
 function fallbackRedirect() {
-  return NextResponse.redirect(`${SITE_URL}/og-image.png`, 307);
+  return NextResponse.redirect(`${SITE_URL}/og-image.png`, {
+    status: 307,
+    headers: { "Cache-Control": "no-store" },
+  });
 }
 
 // 選手名の文字数に応じて段階的にサイズを縮める。中途半端なサイズを残さないため
