@@ -1,5 +1,41 @@
 [
   {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【UFC329】Lヘビー級でクリロフ戦、ロバート・ウィティカー「スピードと柔軟性こそが最大の武器」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/232581?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590ufc329%25e3%2580%2591l%25e3%2583%2598%25e3%2583%2593%25e3%2583%25bc%25e7%25b4%259a%25e3%2581%25a7%25e3%2582%25af%25e3%2583%25aa%25e3%2583%25ad%25e3%2583%2595%25e6%2588%25a6%25e3%2580%2581%25e3%2583%25ad%25e3%2583%2590%25e3%2583%25bc%25e3%2583%2588%25e3%2583%25bb%25e3%2582%25a6%25e3%2582%25a3%25e3%2583%2586",
+    "publishedAt": "2026-07-08T14:41:14.000Z",
+    "firstSeenAt": "2026-07-08T15:55:19.457Z"
+  },
+  {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【PFC41】RIZINを経験したファイターたちによる3大王座戦が実現。成田×能登、森永×西、ウィルキンス×吹田",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/232559?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590pfc41%25e3%2580%2591rizin%25e3%2582%2592%25e7%25b5%258c%25e9%25a8%2593%25e3%2581%2597%25e3%2581%259f%25e3%2583%2595%25e3%2582%25a1%25e3%2582%25a4%25e3%2582%25bf%25e3%2583%25bc%25e3%2581%259f%25e3%2581%25a1%25e3%2581%25ab%25e3%2582%2588%25e3%2582%258b3%25e5%25a4%25a7%25e7%258e%258b%25e5%25ba%25a7%25e6%2588%25a6",
+    "publishedAt": "2026-07-08T13:38:20.000Z",
+    "firstSeenAt": "2026-07-08T15:55:19.457Z"
+  },
+  {
+    "id": "deep-0",
+    "source": "deep",
+    "title": "DEEP FIGHT CHALLENGE 2026 3nd ROUNDの大会全体トレーラーが完成!",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/deep-fight-challenge-2026-3nd-round%e3%81%ae%e5%a4%a7%e4%bc%9a%e5%85%a8%e4%bd%93%e3%83%88%e3%83%ac%e3%83%bc%e3%83%a9%e3%83%bc%e3%81%8c%e5%ae%8c%e6%88%90/",
+    "publishedAt": "2026-07-08T11:44:29.000Z",
+    "firstSeenAt": "2026-07-08T15:55:19.457Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "【超強者限定】RIZIN.54 パンフレットクレジット募集！",
+    "origin": "RIZIN公式",
+    "url": "https://fc.rizinff.com/blogs/news/pamphletcredit_rizin54",
+    "publishedAt": "2026-07-08T10:01:03.000Z",
+    "firstSeenAt": "2026-07-08T15:55:19.457Z"
+  },
+  {
     "id": "rizin-0",
     "source": "rizin",
     "title": "『abc presents RIZIN LANDMARK 15 in HIROSHIMA』ファンクラブイベント開催決定！",
