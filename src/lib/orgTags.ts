@@ -114,6 +114,9 @@ for (const e of EVENTS) {
 //     出場が各1戦のみ(2試合基準未達。適用前チェックで確認済み・データ欠損では
 //     なく実際に1戦のみ)。RIZIN露出優先で暫定付与。次のRIZIN出場で2戦目条件を
 //     満たし次第この例外は削除する。
+//   水野新太 … RIZIN.54(2026-08-11 vsリー・カイウェン)出場が現時点で1戦のみ
+//     (2試合基準未達・適用前チェックで確認済み)。RIZIN露出優先で暫定付与。次の
+//     RIZIN出場で2戦目条件を満たし次第この例外は削除する。
 const RIZIN_TAG_EXCEPTIONS = new Set<string>([
   "hiramoto-ren",
   "yrysbek-tilenov",
@@ -127,6 +130,7 @@ const RIZIN_TAG_EXCEPTIONS = new Set<string>([
   "tokoro-hideo",
   "dodson-john",
   "kim-kyungpyo",
+  "mizuno-shinta",
 ]);
 
 // 修斗タグの明示例外(slug指定)。公式ランキング対象4階級(フライ/バンタム/

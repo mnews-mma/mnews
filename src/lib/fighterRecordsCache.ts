@@ -5,8 +5,13 @@ import { ResolvedFighter } from "./feeds/resolveFighter";
 // バッチ(scripts/update-fighter-records.ts)が焼き込んだ結果をGitHub raw経由で読むだけにし、
 // リクエスト時にはWikipediaへ一切fetchしない(可視選手数がリクエストごとに変動する問題の
 // 恒久対策)。/api/og/* はedge runtimeのため fs は使えない → fetch() のみに統一する。
-const RAW_URL =
-  "https://raw.githubusercontent.com/mnews-mma/mnews/main/data/fighterRecords.json";
+// デプロイ毎に変わるコミットSHAをクエリに付け、Vercel Data Cache(revalidate:3600)を
+// デプロイ単位でバスターする。これが無いと、選手追加やバッチ更新をコミット→デプロイ
+// しても、旧JSONをキャッシュしたfetch()の結果が最大1時間残り、新規選手が0-0-0の
+// まま表示される(GitHub rawは未知クエリを無視するので実体取得には影響しない)。
+// SHAはデプロイ内では一定=1時間キャッシュは効き、新デプロイでのみ確実に更新される。
+const CACHE_BUSTER = process.env.VERCEL_GIT_COMMIT_SHA ?? "dev";
+const RAW_URL = `https://raw.githubusercontent.com/mnews-mma/mnews/main/data/fighterRecords.json?v=${CACHE_BUSTER}`;
 
 export interface FighterRecordEntry {
   wins: number;
