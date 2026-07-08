@@ -28,6 +28,8 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   // 階級ラベル(手指定)。プルダウン(5階級 or 自由入力)＋自由記述テキスト。
   const [wcPreset, setWcPreset] = useState<string>("");
   const [wcCustom, setWcCustom] = useState<string>("");
+  // 大会名(手指定・任意)。例: 超RIZIN.5。空欄ならカードに大会名行を出さない。
+  const [eventName, setEventName] = useState<string>("");
   // 選手増加でプルダウンが長くなったため、フリーワード検索(部分一致)で絞り込む。
   // 選択肢自体は既存のプルダウンのまま(絞り込みは表示するoptionを減らすだけ)。
   const [filterA, setFilterA] = useState("");
@@ -63,14 +65,19 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   }, [fightersB, slugB]);
   const [copied, setCopied] = useState<"image" | "page" | null>(null);
 
-  // 空欄なら wc パラメータを付けない → OG画像側は階級行を出さない。
+  // 空欄なら wc/ev パラメータを付けない → OG画像側はその行を出さない。
+  // 大会名(ev)は対戦カード(VS)専用(個人カードのOGルートは非対応のため送らない)。
   const wcLabel = (wcPreset === CUSTOM ? wcCustom : wcPreset).trim();
-  const wcQuery = wcLabel ? `?wc=${encodeURIComponent(wcLabel)}` : "";
+  const query = new URLSearchParams();
+  if (wcLabel) query.set("wc", wcLabel);
+  if (mode === "vs" && eventName.trim()) query.set("ev", eventName.trim());
+  const qs = query.toString();
+  const queryStr = qs ? `?${qs}` : "";
 
   const imagePath = ogImagePath(
-    (mode === "single" ? `/api/og/fighter/${slugA}` : `/api/og/vs/${slugA}/${slugB}`) + wcQuery
+    (mode === "single" ? `/api/og/fighter/${slugA}` : `/api/og/vs/${slugA}/${slugB}`) + queryStr
   );
-  const pagePath = (mode === "single" ? `/fighters/${slugA}` : `/vs/${slugA}/${slugB}`) + wcQuery;
+  const pagePath = (mode === "single" ? `/fighters/${slugA}` : `/vs/${slugA}/${slugB}`) + queryStr;
   const imageUrl = `${SITE_URL}${imagePath}`;
   const pageUrl = `${SITE_URL}${pagePath}`;
 
@@ -199,6 +206,23 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
             )}
           </div>
         </div>
+
+        {/* 大会名(手指定・任意)。対戦カード(VS)専用。MATCH UPラベルの上に
+            軽量なサブラインとして表示される。空欄ならカードに出さない。 */}
+        {mode === "vs" && (
+          <div>
+            <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
+              大会名（任意）
+            </label>
+            <input
+              type="text"
+              value={eventName}
+              onChange={(e) => setEventName(e.target.value)}
+              placeholder="例: 超RIZIN.5"
+              style={{ padding: "8px 12px", fontSize: 14, minWidth: 220 }}
+            />
+          </div>
+        )}
       </div>
 
       <div style={{ padding: "0 24px" }}>

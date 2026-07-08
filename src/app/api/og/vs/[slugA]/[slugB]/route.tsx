@@ -95,11 +95,11 @@ function FighterSide({
         {f.wins}-{f.losses}
         {f.draws > 0 ? `-${f.draws}` : ""}
       </div>
-      <div style={{ display: "flex", gap: "16px", marginTop: "10px" }}>
-        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontSize: "14px", color: COLORS.ash }}>
+      <div style={{ display: "flex", gap: "18px", marginTop: "12px" }}>
+        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "19px", color: COLORS.ash }}>
           勝率{winRate !== null ? `${winRate}%` : "—"}
         </div>
-        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontSize: "14px", color: COLORS.ash }}>
+        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "19px", color: COLORS.ash }}>
           フィニッシュ{finishRate !== null ? `${finishRate}%` : "—"}
         </div>
       </div>
@@ -107,22 +107,22 @@ function FighterSide({
           ko/sub/decision をそのまま表示するだけで、算出ロジックは再実装しない。
           メソッド不明の試合は既存の classifyMethod によりどのカテゴリにも入らず
           合計が戦績と一致しないことがあるが、数値は捏造せずそのまま出す。 */}
-      <div style={{ display: "flex", gap: "14px", marginTop: "14px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <div style={{ display: "flex", width: "9px", height: "9px", borderRadius: "2px", backgroundColor: COLORS.shu }} />
-          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "13px", color: "#FFFFFF" }}>
+      <div style={{ display: "flex", gap: "18px", marginTop: "16px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div style={{ display: "flex", width: "11px", height: "11px", borderRadius: "2px", backgroundColor: COLORS.shu }} />
+          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "16px", color: "#FFFFFF" }}>
             KO {f.ko}
           </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <div style={{ display: "flex", width: "9px", height: "9px", borderRadius: "2px", backgroundColor: COLORS.gold }} />
-          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "13px", color: "#FFFFFF" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div style={{ display: "flex", width: "11px", height: "11px", borderRadius: "2px", backgroundColor: COLORS.gold }} />
+          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "16px", color: "#FFFFFF" }}>
             一本 {f.sub}
           </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <div style={{ display: "flex", width: "9px", height: "9px", borderRadius: "2px", backgroundColor: COLORS.indigo }} />
-          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "13px", color: "#FFFFFF" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div style={{ display: "flex", width: "11px", height: "11px", borderRadius: "2px", backgroundColor: COLORS.indigo }} />
+          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "16px", color: "#FFFFFF" }}>
             判定 {f.decision}
           </div>
         </div>
@@ -156,7 +156,13 @@ export async function GET(
     // カードに乗せる階級は対戦全体の手指定ラベル(?wc=)を1つだけ中央に表示する。
     // 選手固有の団体表示・選手DB階級は出さない(夢のカード/団体またぎで邪魔なため)。
     // 空欄なら階級ラベル行を出さない。
-    const wcLabel = (new URL(req.url).searchParams.get("wc") ?? "").trim();
+    const searchParams = new URL(req.url).searchParams;
+    const wcLabel = (searchParams.get("wc") ?? "").trim();
+    // 大会名(手指定・任意)。findMatchupEventによる自動紐付け(eventLabel、
+    // 最上部の白帯)とは別物で、自動紐付けが無い対戦(夢のカード等)でも
+    // MATCH UPラベルのすぐ上に軽量なサブラインとして表示できるようにする。
+    // 空欄なら行ごと出さず従来レイアウトを維持する。
+    const evLabel = (searchParams.get("ev") ?? "").trim();
 
     // 左右の選手名は必ず同一フォントサイズにする。各名を個別にfitNameし、
     // 小さい方のfontSizeを共有サイズとして採用、その上で両名の行分割を
@@ -216,23 +222,38 @@ export async function GET(
             </div>
           )}
 
-          {/* MATCH UP ラベル + 手指定の階級ラベル(対戦全体で1つ・空欄なら非表示) */}
+          {/* 手指定の大会名(任意) + MATCH UP ラベル + 手指定の階級ラベル
+              (対戦全体で1つずつ・空欄ならそれぞれ非表示) */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "8px",
+              gap: "10px",
               padding: "20px 0 0",
             }}
           >
+            {evLabel !== "" && (
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Noto Sans JP",
+                  fontWeight: 900,
+                  fontSize: "24px",
+                  color: "#FFFFFF",
+                  letterSpacing: "1px",
+                }}
+              >
+                {evLabel}
+              </div>
+            )}
             <div
               style={{
                 display: "flex",
                 fontFamily: "Bebas Neue",
-                fontSize: "18px",
+                fontSize: "26px",
                 color: COLORS.ash,
-                letterSpacing: "8px",
+                letterSpacing: "10px",
               }}
             >
               MATCH UP
@@ -243,7 +264,7 @@ export async function GET(
                   display: "flex",
                   fontFamily: "Noto Sans JP",
                   fontWeight: 900,
-                  fontSize: "22px",
+                  fontSize: "30px",
                   color: COLORS.gold,
                   letterSpacing: "1px",
                 }}

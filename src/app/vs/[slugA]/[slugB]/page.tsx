@@ -8,13 +8,24 @@ import { pageMetadata } from "@/lib/seo";
 
 const SITE_URL = "https://www.mnews.jp";
 
-// Xカードツールの手指定階級ラベル(?wc=)を OG画像に反映するための共通ヘルパ。
+// Xカードツールの手指定階級ラベル(?wc=)・大会名(?ev=)を OG画像に反映するための共通ヘルパ。
 function wcOf(searchParams: Record<string, string | string[] | undefined>): string {
   const raw = searchParams.wc;
   return (Array.isArray(raw) ? raw[0] : raw ?? "").trim();
 }
-function vsOgPath(slugA: string, slugB: string, wc: string): string {
-  return `/api/og/vs/${slugA}/${slugB}${wc ? `?wc=${encodeURIComponent(wc)}` : ""}`;
+function evOf(searchParams: Record<string, string | string[] | undefined>): string {
+  const raw = searchParams.ev;
+  return (Array.isArray(raw) ? raw[0] : raw ?? "").trim();
+}
+function vsQuery(wc: string, ev: string): string {
+  const params = new URLSearchParams();
+  if (wc) params.set("wc", wc);
+  if (ev) params.set("ev", ev);
+  const qs = params.toString();
+  return qs ? `?${qs}` : "";
+}
+function vsOgPath(slugA: string, slugB: string, wc: string, ev: string): string {
+  return `/api/og/vs/${slugA}/${slugB}${vsQuery(wc, ev)}`;
 }
 
 export async function generateMetadata({
@@ -29,7 +40,9 @@ export async function generateMetadata({
   const fighterB = getFighter(slugB);
   if (!fighterA || !fighterB) return { title: "対戦カード | Mニュース", robots: { index: false, follow: false } };
 
-  const wc = wcOf(await searchParams);
+  const sp = await searchParams;
+  const wc = wcOf(sp);
+  const ev = evOf(sp);
   const title = `${fighterA.nameJa} vs ${fighterB.nameJa} | Mニュース`;
   const description = `${fighterA.nameJa}（${fighterA.wins}勝${fighterA.losses}敗）vs ${fighterB.nameJa}（${fighterB.wins}勝${fighterB.losses}敗）の対戦カード。`;
 
@@ -38,7 +51,7 @@ export async function generateMetadata({
     description,
     path: `/vs/${slugA}/${slugB}`,
     image: {
-      url: ogImagePath(vsOgPath(slugA, slugB, wc)),
+      url: ogImagePath(vsOgPath(slugA, slugB, wc, ev)),
       width: 1200,
       height: 630,
       alt: `${fighterA.nameJa} vs ${fighterB.nameJa}`,
@@ -57,7 +70,9 @@ export default async function VsPage({
   const fighterA = getFighter(slugA);
   const fighterB = getFighter(slugB);
   if (!fighterA || !fighterB) notFound();
-  const wc = wcOf(await searchParams);
+  const sp = await searchParams;
+  const wc = wcOf(sp);
+  const ev = evOf(sp);
 
   const orgA = SOURCES[fighterA.org]?.label ?? fighterA.org;
   const orgB = SOURCES[fighterB.org]?.label ?? fighterB.org;
@@ -71,14 +86,14 @@ export default async function VsPage({
 
       <div style={{ padding: "0 24px 40px", maxWidth: 800 }}>
         <img
-          src={ogImagePath(vsOgPath(slugA, slugB, wc))}
+          src={ogImagePath(vsOgPath(slugA, slugB, wc, ev))}
           alt={`${fighterA.nameJa} vs ${fighterB.nameJa}`}
           style={{ width: "100%", border: "1px solid var(--border)", display: "block", marginBottom: 16 }}
         />
 
         <div style={{ display: "flex", gap: 8, marginBottom: 32 }}>
           <a
-            href={`https://x.com/intent/post?url=${encodeURIComponent(`${SITE_URL}/vs/${slugA}/${slugB}${wc ? `?wc=${encodeURIComponent(wc)}` : ""}`)}`}
+            href={`https://x.com/intent/post?url=${encodeURIComponent(`${SITE_URL}/vs/${slugA}/${slugB}${vsQuery(wc, ev)}`)}`}
             target="_blank"
             rel="noopener noreferrer"
             style={{ padding: "10px 20px", background: "#000", color: "#fff", fontWeight: 700, borderRadius: 4, fontSize: 14, textDecoration: "none" }}
