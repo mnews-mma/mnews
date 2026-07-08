@@ -1316,7 +1316,7 @@ export const FIGHTERS: Fighter[] = [
   // 猿寿健太: カナ読み「エンジュケンタ」確定(旧仮値「サルジュケンタ」から修正)。
   // slugをローマ字表記に合わせenju-kentaへ変更(公開前のため既存リンクへの影響なし)。
   // Wikipedia記事は旧名義「KENTA」のまま(同一人物)。
-  { slug: "enju-kenta", nameJa: "猿寿健太", nameEn: "Kenta Enju", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true, wikiTitleJa: "KENTA (格闘家)" },
+  { slug: "enju-kenta", nameJa: "猿寿健太", nameEn: "Kenta Enju", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true, wikiTitleJa: "KENTA (格闘家)", aliases: ["KENTA"] },
   // RIZIN韓国人選手3名(2026-07・公開)。RIZINタグはヤン・ジヨンが2戦で自動付与、
   // キム/イは1戦のみのため orgTags の RIZIN_TAG_EXCEPTIONS で暫定付与。
   { slug: "kim-soochul", nameJa: "キム・スーチョル", nameEn: "Soo Chul Kim", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "キム・スーチョル", nickname: "韓流お茶目ゾンビ" },
@@ -1324,6 +1324,14 @@ export const FIGHTERS: Fighter[] = [
   { slug: "lee-junghyun", nameJa: "イ・ジョンヒョン", nameEn: "Jung Hyun Lee", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "イ・ジョンヒョン (格闘家)", nickname: "ザ・フェノム" },
   // イリスベク・ティレノフ(2026-07・即公開)。RIZIN LANDMARK 15(2026-07-18)出場。
   { slug: "yrysbek-tilenov", nameJa: "イリスベク・ティレノフ", nameEn: "Yrysbek Tilenov", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "イリスベク・ティレノフ", nickname: "キルギスの雪豹" },
+  // RIZIN選手3名手動追加(2026-07)。戦績はWikipedia(Fight-cont)から日次バッチで自動取得、
+  // ハードコードしない。3名ともWikipediaページ実在・表示名一致を確認済み。
+  // 新居すぐる: 元パンクラス王者だが2024/8王座返上・現ランカー外のためパンクラスタグは付けない
+  // (団体タグはRIZINのみ)。aliasesは旧名(コンバ王子)・略称(スグル)の対戦相手名リンク解決用。
+  { slug: "nii-suguru", nameJa: "新居すぐる", nameEn: "Suguru Nii", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "新居すぐる", nickname: "グラップリング・バウンサー", aliases: ["コンバ王子", "スグル"] },
+  { slug: "inoue-seiya", nameJa: "井上聖矢", nameEn: "Seiya Inoue", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "井上聖矢", nickname: "火の国のKOボーイ" },
+  // 松嶋こよみ: RIZIN出場は2025-11 RIZIN LANDMARK 12が初(手動でRIZINタグ扱い)。
+  { slug: "matsushima-koyomi", nameJa: "松嶋こよみ", nameEn: "Koyomi Matsushima", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "松嶋こよみ", nickname: "非RIZIN流 決意の出陣" },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {
@@ -1363,6 +1371,42 @@ function toHiragana(s: string): string {
   return s.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
 }
 
+// スペース・全角スペースを除いて正規化して照合する
+// (findFighterSlugByName・衝突検出の双方で使う共通の正規化基準)。
+function normNameForMatch(s: string): string {
+  return s.replace(/[\s　]/g, "");
+}
+
+// 別名(aliases)衝突ガード: あるnameJa/aliasが複数選手にまたがって
+// 重複していないかを一度だけ検証する(モジュール読み込み時)。重複した
+// 名前は誤リンクの原因になるため、リンク解決の候補から一律で除外し、
+// 検知時はビルドログに警告を出す(サイレントに握りつぶさない)。
+const AMBIGUOUS_NAMES: Set<string> = (() => {
+  const owners = new Map<string, Set<string>>();
+  const claim = (raw: string, slug: string) => {
+    const n = normNameForMatch(raw);
+    if (!n) return;
+    if (!owners.has(n)) owners.set(n, new Set());
+    owners.get(n)!.add(slug);
+  };
+  for (const f of FIGHTERS) {
+    claim(f.nameJa, f.slug);
+    f.aliases?.forEach((a) => claim(a, f.slug));
+  }
+  const ambiguous = new Set<string>();
+  for (const [name, slugs] of owners) {
+    if (slugs.size > 1) {
+      ambiguous.add(name);
+      console.warn(
+        `[findFighterSlugByName] 別名衝突検知: "${name}" が複数選手(${[...slugs].join(
+          ", "
+        )})の nameJa/aliases に重複しています。この名前ではリンク解決をスキップします。`
+      );
+    }
+  }
+  return ambiguous;
+})();
+
 // 任意の文字列（対戦カード上の選手名など）からMニュース掲載選手を探す。
 // 大会結果ページ・選手の試合履歴テーブル双方の内部リンク生成で使う共通ロジック。
 // visibleSlugs を渡すと、そこに含まれる slug のみを候補にする
@@ -1372,8 +1416,7 @@ export function findFighterSlugByName(
   excludeSlug?: string,
   visibleSlugs?: Set<string>
 ): string | null {
-  // スペース・全角スペースを除いて正規化して照合する
-  const norm = (s: string) => s.replace(/[\s　]/g, "");
+  const norm = normNameForMatch;
   const cleaned = stripDecorativeNickname(name);
   const candidates = new Set<string>();
   for (const raw of [name, cleaned]) {
@@ -1383,17 +1426,32 @@ export function findFighterSlugByName(
     candidates.add(toKatakana(n));
     candidates.add(toHiragana(n));
   }
-  const match = FIGHTERS.find((f) => {
+  const eligible = (f: Fighter) => {
     if (f.slug === excludeSlug) return false;
     // hidden 選手には内部リンクを張らない(Mレーティングが乗るまで動線に出さない)
     if (f.hidden) return false;
     if (visibleSlugs && !visibleSlugs.has(f.slug)) return false;
-    if (candidates.has(norm(f.nameJa))) return true;
-    if (f.aliases?.some((a) => candidates.has(norm(a)))) return true;
-    if (f.nameEn === name) return true;
-    // 英名を正規化して一致確認（大文字小文字を無視）
-    if (f.nameEn.toLowerCase() === name.toLowerCase()) return true;
-    return false;
-  });
-  return match ? match.slug : null;
+    return true;
+  };
+  // nameJa一致を最優先、次にaliases一致の順で解決する(2パス)。
+  // 衝突している名前(AMBIGUOUS_NAMES)はどちらのパスでもスキップする。
+  const byNameJa = FIGHTERS.find(
+    (f) =>
+      eligible(f) &&
+      [...candidates].some((c) => !AMBIGUOUS_NAMES.has(c) && c === norm(f.nameJa))
+  );
+  if (byNameJa) return byNameJa.slug;
+
+  const byAlias = FIGHTERS.find(
+    (f) =>
+      eligible(f) &&
+      f.aliases?.some((a) => !AMBIGUOUS_NAMES.has(norm(a)) && candidates.has(norm(a)))
+  );
+  if (byAlias) return byAlias.slug;
+
+  // 英名一致(大文字小文字を無視)。衝突ガードの対象外(元々の挙動を維持)。
+  const byNameEn = FIGHTERS.find(
+    (f) => eligible(f) && f.nameEn.toLowerCase() === name.toLowerCase()
+  );
+  return byNameEn ? byNameEn.slug : null;
 }
