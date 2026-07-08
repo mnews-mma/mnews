@@ -38,11 +38,8 @@ const ORG_SORT_ORDER: Record<string, number> = {
   one: 5,
 };
 
-// 「ヘビー級」を選ぶとDEEPの無差別級(メガトン級)も一緒に絞れるようにする
-// (DEEPにはヘビー級表記が無くメガトン級が実質最上級のため)。
 function matchesWeightFilter(fighterWeightClass: string, selected: string | null): boolean {
   if (!selected) return true;
-  if (selected === "ヘビー級") return fighterWeightClass === "ヘビー級" || fighterWeightClass === "メガトン級";
   return fighterWeightClass === selected;
 }
 
@@ -178,7 +175,7 @@ export default function FighterFilterGrid({
   // 階級フィルタの選択肢は実際にDBへ存在する階級だけを、共有の体重ソートキーで
   // 並べて出す(配列順・追加順に依存しない。後から階級を足しても正しい位置に入る)。
   const weightOptions = useMemo(() => {
-    const set = new Set(fighters.map((f) => f.weightClass === "メガトン級" ? "ヘビー級" : f.weightClass));
+    const set = new Set(fighters.map((f) => f.weightClass));
     return Array.from(set).sort((a, b) => weightSortKey(a) - weightSortKey(b));
   }, [fighters]);
 
