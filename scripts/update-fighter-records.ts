@@ -43,10 +43,21 @@ async function resolveWithRetry(f: Fighter, retries = 3): Promise<ReturnType<typ
   return r;
 }
 
+// 既存JSONの読み込み。破損している場合でも{}にフォールバックして続行する
+// (JSON.parse失敗をそのまま投げるとmain()がクラッシュし、次回実行時も同じ
+// 破損ファイルを読んで再クラッシュし続ける自己修復不能ループになるため)。
+function loadPrev(out: string): FighterRecordsFile {
+  if (!fs.existsSync(out)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(out, "utf8"));
+  } catch (e) {
+    console.warn(`[WARN] ${out} の読み込みに失敗(JSON破損の疑い)。前回値なしとして続行: ${e}`);
+    return {};
+  }
+}
+
 async function main() {
-  const prev: FighterRecordsFile = fs.existsSync(OUT)
-    ? JSON.parse(fs.readFileSync(OUT, "utf8"))
-    : {};
+  const prev: FighterRecordsFile = loadPrev(OUT);
 
   // hidden選手も対象に含める(公開判定はgetVisibleFighters側のfilterが担うため、
   // ここで戦績を先取りしておいても表には出ない。hidden選手も追加時にWikipedia URLを

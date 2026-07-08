@@ -34,9 +34,22 @@ interface OrgRankingsFile {
   deep?: OrgRankingData;
 }
 
+// 既存JSONの読み込み。破損している場合でも{}にフォールバックして続行する
+// (JSON.parse失敗をそのまま投げるとmain()がクラッシュし、次回実行時も同じ
+// 破損ファイルを読んで再クラッシュし続ける自己修復不能ループになるため)。
+function loadJsonFile<T>(file: string): T | Record<string, never> {
+  if (!fs.existsSync(file)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(file, "utf8"));
+  } catch (e) {
+    console.warn(`[WARN] ${file} の読み込みに失敗(JSON破損の疑い)。前回値なしとして続行: ${e}`);
+    return {};
+  }
+}
+
 async function main() {
-  const prev: OrgRankingsFile = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, "utf8")) : {};
-  const prevSnapshot: OrgRankingsFile = fs.existsSync(OUT_PREV) ? JSON.parse(fs.readFileSync(OUT_PREV, "utf8")) : {};
+  const prev: OrgRankingsFile = loadJsonFile(OUT);
+  const prevSnapshot: OrgRankingsFile = loadJsonFile(OUT_PREV);
 
   const [panHtml, shoHtml] = await Promise.all([
     fetchHtml("https://www.pancrase.co.jp/rls/ranking.html"),
