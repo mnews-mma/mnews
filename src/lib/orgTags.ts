@@ -54,16 +54,36 @@ export const NEW_TAGGED_SLUGS = new Set<string>([
   "park-siwoo", "lee-yeji", "miyake-kisa", "aoi-jin", "hamada-takumi", "tenya",
 ]);
 
-// DEEP 2026以降のナンバー本戦出場者(名前集合)
-const DEEP_2026_SLUGS = new Set(["deep-130-impact", "deep-131-impact", "deep-132-impact"]);
+// DEEPタグ: 2026年以降に開催されたDEEP主催イベント(orgフィールドが"deep")の
+// 出場者を対象にする。ナンバーシリーズ(DEEP.###)に限定せず、地方大会
+// (DEEP OSAKA IMPACT等)・DEEP JEWELS(女子)もorgが"deep"であれば同様に含む。
+// スラッグの命名パターン(-impact等)でのヒューリスティック判定はしない
+// (新規イベントが追加されるたびに個別slugリストを手動更新する構造は、
+// 追加漏れによる取りこぼしの温床になるため廃止した)。
+const DEEP_2026_SINCE = "2026-01-01";
 const deep2026Names = new Set<string>();
-for (const e of EVENT_RESULTS) {
-  if (!DEEP_2026_SLUGS.has(e.slug)) continue;
-  for (const f of e.fights) {
-    if (f.fighterA) deep2026Names.add(norm(f.fighterA));
-    if (f.fighterB) deep2026Names.add(norm(f.fighterB));
+function collectDeepNamesSince(
+  events: { slug: string; org: string; date: string }[],
+  fightersOf: (e: { slug: string; org: string; date: string }) => (string | undefined)[]
+) {
+  for (const e of events) {
+    if (e.org !== "deep") continue;
+    if (!e.date || !/^\d{4}-\d{2}-\d{2}$/.test(e.date)) {
+      console.warn(`[orgTags] DEEPイベントの開催日が欠損/不正のためDEEPタグ集計から除外: slug=${e.slug} date=${e.date}`);
+      continue;
+    }
+    if (e.date < DEEP_2026_SINCE) continue;
+    for (const name of fightersOf(e)) {
+      if (name) deep2026Names.add(norm(name));
+    }
   }
 }
+collectDeepNamesSince(EVENT_RESULTS, (e) =>
+  (e as typeof EVENT_RESULTS[number]).fights.flatMap((f) => [f.fighterA, f.fighterB])
+);
+collectDeepNamesSince(EVENTS, (e) =>
+  (e as typeof EVENTS[number]).bouts.flatMap((b) => [b.fighterA, b.fighterB])
+);
 
 // 2025-2026年にRIZIN主催MMA興行へ2試合以上出場した選手のみRIZINタグを付ける
 // (他団体タグと同じ"現行性"判定に統一。旧ルールは1試合でも付与しており、
