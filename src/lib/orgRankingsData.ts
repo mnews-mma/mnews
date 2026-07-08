@@ -5,10 +5,16 @@ import type { OrgRankingData } from "./orgRankings";
 // data/orgRankings.json の読み出し。本番は GitHub raw を取得日つきで参照し、
 // cron が更新すれば再デプロイ無しで反映される(revalidate)。取得失敗時や
 // プレビュー(未マージ)時はリポジトリ同梱のローカルファイルにフォールバック。
+//
+// デプロイ毎に変わるコミットSHAをクエリに付け、Vercel Data Cache(revalidate:3600)を
+// デプロイ単位でバスターする(fighterRecordsCache.tsと完全に同型)。これが無いと、
+// cronでdata/orgRankings.jsonを更新しても、旧JSONをキャッシュしたfetch()の結果が
+// 最大1時間残り、パンクラス/修斗の現ランカー判定・団体タグが古いまま表示される。
+const CACHE_BUSTER = process.env.VERCEL_GIT_COMMIT_SHA ?? "dev";
 const RAW_URL =
-  "https://raw.githubusercontent.com/mnews-mma/mnews/main/data/orgRankings.json";
+  `https://raw.githubusercontent.com/mnews-mma/mnews/main/data/orgRankings.json?v=${CACHE_BUSTER}`;
 const RAW_URL_PREV =
-  "https://raw.githubusercontent.com/mnews-mma/mnews/main/data/orgRankings-prev.json";
+  `https://raw.githubusercontent.com/mnews-mma/mnews/main/data/orgRankings-prev.json?v=${CACHE_BUSTER}`;
 
 export interface OrgRankingsFile {
   pancrase?: OrgRankingData;
