@@ -762,7 +762,7 @@ export const EVENTS: MEvent[] = [
         weightClass: "DEEPバンタム級（61.2kg）",
         rule: "アマチュアSルール",
         fighterA: "琥",
-        fighterB: "田中悠翔",
+        fighterB: "渡部恵多",
         note: "オープニングファイト",
       },
       {
