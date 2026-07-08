@@ -42,6 +42,24 @@ export async function fetchFighterRecords(): Promise<FighterRecordsFile> {
   return {};
 }
 
+// fetchFighterRecords()の厳格版。取得失敗を握り潰さず、成功/失敗を呼び出し側に
+// 明示的に伝える。VSカード(/api/og/vs/*)のように「実在する選手の戦績が
+// 一時的なfetch失敗で0-0のシード値にすり替わり、そのまま確定画像として
+// 生成・拡散されてしまう」事故を防ぎたい場面でのみ使う。通常のページ表示
+// (選手詳細・ランキング等)は従来通りfetchFighterRecords()の安全側
+// フォールバック(空扱いでも画面は壊れない)を使い続ける。
+export async function fetchFighterRecordsStrict(): Promise<
+  { ok: true; records: FighterRecordsFile } | { ok: false }
+> {
+  try {
+    const res = await fetch(RAW_URL, { next: { revalidate: 3600 } });
+    if (res.ok) return { ok: true, records: (await res.json()) as FighterRecordsFile };
+  } catch {
+    /* fall through */
+  }
+  return { ok: false };
+}
+
 // Fighter(静的シード)にキャッシュ済み戦績をマージしてResolvedFighter相当にする。
 // キャッシュに無い(バッチ未対象=hiddenのみのはず)選手はシードのままlive:falseで返す。
 export function mergeFighterRecord(fighter: Fighter, records: FighterRecordsFile): ResolvedFighter {

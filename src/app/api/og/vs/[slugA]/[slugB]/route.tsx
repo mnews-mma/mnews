@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates, type Fighter } from "@/lib/fighters";
 import { type ResolvedFighter } from "@/lib/feeds/resolveFighter";
-import { resolveFighterCached } from "@/lib/fighterRecordsCache";
+import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterRecordsCache";
 import { findMatchupEvent } from "@/lib/events";
 import { fitName, type FitOpts } from "@/lib/og/fitName";
 import {
@@ -143,10 +143,15 @@ export async function GET(
     const seedB = getFighter(slugB);
     if (!seedA || !seedB) return fallbackRedirect();
 
-    const [fighterA, fighterB] = await Promise.all([
-      resolveFighterCached(seedA as Fighter),
-      resolveFighterCached(seedB as Fighter),
-    ]);
+    // fetchは1回だけ行い、両選手のマージに使い回す(片方だけ一時失敗して
+    // 非対称な結果になる事故を防ぐ)。fetch自体が失敗した場合は0-0の
+    // シード値で確定カードを生成せず、フォールバック画像にリダイレクトする
+    // (実在選手の戦績を誤った0-0のまま画像化・拡散させないため)。
+    const recordsResult = await fetchFighterRecordsStrict();
+    if (!recordsResult.ok) return fallbackRedirect();
+
+    const fighterA = mergeFighterRecord(seedA as Fighter, recordsResult.records);
+    const fighterB = mergeFighterRecord(seedB as Fighter, recordsResult.records);
 
     // カードに乗せる階級は対戦全体の手指定ラベル(?wc=)を1つだけ中央に表示する。
     // 選手固有の団体表示・選手DB階級は出さない(夢のカード/団体またぎで邪魔なため)。
