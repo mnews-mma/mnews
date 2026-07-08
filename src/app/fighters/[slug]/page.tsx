@@ -146,13 +146,26 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
     { label: fighter.nameJa },
   ];
 
+  // sameAs: Wikipedia記事へのエンティティ紐づけ(Knowledge Graph連携)。
+  // データがある選手のみ。捏造せず wikiTitle があるものだけ URL 化する。
+  const sameAs = [
+    fighter.wikiTitleJa
+      ? `https://ja.wikipedia.org/wiki/${encodeURIComponent(fighter.wikiTitleJa.replace(/ /g, "_"))}`
+      : null,
+    fighter.wikiTitleEn
+      ? `https://en.wikipedia.org/wiki/${encodeURIComponent(fighter.wikiTitleEn.replace(/ /g, "_"))}`
+      : null,
+  ].filter((u): u is string => !!u);
+
   const personLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: fighter.nameJa,
     alternateName: [fighter.nameEn, ...(nickname ? [nickname] : [])],
+    jobTitle: "総合格闘家",
     url: `${SITE_URL}/fighters/${fighter.slug}`,
     ...(birthPlace ? { birthPlace: { "@type": "Place", name: birthPlace } } : {}),
+    ...(sameAs.length ? { sameAs } : {}),
   };
 
   return (

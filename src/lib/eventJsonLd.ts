@@ -89,3 +89,10 @@ export function eventOgImageUrl(slug: string, hasBouts: boolean): string {
     ? `${SITE_URL}${ogImagePath(`/api/og/event-card/${slug}`)}`
     : `${SITE_URL}/og-image.png`;
 }
+
+// EventResult(大会結果)用: OGP画像は結果まとめ画像を使う
+export function eventResultOgImageUrl(slug: string, hasFights: boolean): string {
+  return hasFights
+    ? `${SITE_URL}${ogImagePath(`/api/og/event-result/${slug}`)}`
+    : `${SITE_URL}/og-image.png`;
+}
