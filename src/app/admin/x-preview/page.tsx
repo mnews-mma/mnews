@@ -143,7 +143,7 @@ export default async function XPreviewPage() {
         (選手名をテキストで載せて検索・エゴサに引っかける方針)。
         「候補」は自動スコアの参考表示で、最終判断は手動。
       </p>
-      <DigestPicker articles={pickerArticles} dateLabel={dateLabel} />
+      <DigestPicker articles={pickerArticles} dateLabel={dateLabel} dateIso={jstDateStr(1)} />
 
       <h2 style={{ fontSize: 15, fontWeight: 700, margin: "32px 0 16px" }}>
         大会前日カウントダウン(直近イベント)

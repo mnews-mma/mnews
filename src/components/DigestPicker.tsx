@@ -29,19 +29,23 @@ const LINE_MAX = 50;
 export default function DigestPicker({
   articles,
   dateLabel,
+  dateIso,
 }: {
   articles: PickerArticle[];
   dateLabel: string; // サーバ算出の「昨日(JST)」M/D。SSR初期表示用フォールバック
+  dateIso: string; // サーバ算出の「昨日(JST)」YYYY-MM-DD。リンクのキャッシュバスタ用
 }) {
   // 「昨日(JST)」はブラウザ側でも算出し直す。サーバレンダのキャッシュや
   // 開きっぱなしタブ/bfcache復帰で日付が前日のまま固定されるのを防ぎ、
   // 閲覧時点の昨日を常に自動反映する。初期値はSSR値(ハイドレーション一致)。
   const [dayLabel, setDayLabel] = useState(dateLabel);
+  const [dayIso, setDayIso] = useState(dateIso);
   useEffect(() => {
     const recompute = () => {
       // jstDateStr と同じ方式: UTCに+9hしてJSTの暦日にし、-1日。TZ非依存。
       const y = new Date(Date.now() + 9 * 3600_000 - 86400_000);
       setDayLabel(`${y.getUTCMonth() + 1}/${y.getUTCDate()}`);
+      setDayIso(y.toISOString().slice(0, 10));
     };
     recompute();
     window.addEventListener("pageshow", recompute); // bfcache復帰時も再計算
@@ -91,7 +95,12 @@ export default function DigestPicker({
     return { text: body, count: Math.ceil(fullWidthLength(body)) };
   }, [chosen, dayLabel]);
 
-  const replyText = "全件はこちら👇\nhttps://mnews.jp";
+  // リンクに日付キャッシュバスタ(?d=YYYY-MM-DD)を付ける。Xは投稿リンクのURL単位で
+  // OGPをキャッシュするため、毎回同じ https://mnews.jp を貼るとホームOGPを更新しても
+  // Xが古いカードを出し続ける(Xは現在パブリックなCard Validatorを廃止済み)。
+  // 日付でURLを日替わりにし、Xに毎回新規URLとして再取得させて現行の赤OGPを確実に
+  // 表示させる。?d はNext側で未使用のクエリのため表示・挙動には影響しない。
+  const replyText = `全件はこちら👇\nhttps://mnews.jp/?d=${dayIso}`;
 
   return (
     <div>
