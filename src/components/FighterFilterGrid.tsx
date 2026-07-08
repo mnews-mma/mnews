@@ -56,25 +56,40 @@ function toHiragana(s: string): string {
   return s.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
 }
 
+// 半角/全角スペースを除いて正規化する(fighters.tsのnormNameForMatchと同じ思想)。
+// DB内の一部選手(nameJaに「平良 達郎」のような半角スペースを含む)を、
+// スペース無しで検索した時に取りこぼす不整合を防ぐため、クエリ・比較対象の
+// 双方をこの関数に通してから比較する。
+function normNameForSearch(s: string): string {
+  return s.replace(/[\s　]/g, "");
+}
+
 // 検索用の事前正規化済みインデックス。選手ごとの文字列変換(カナ変換等)は
 // fighters(props)が変わった時に1回だけ計算し、入力のたびには行わない
 // (検索が重くなる主因になり得るため)。
 interface SearchEntry {
   f: ResolvedFighter;
   nameJa: string;
+  nameJaNorm: string;
   nameEn: string;
 }
 function buildSearchIndex(fighters: ResolvedFighter[]): SearchEntry[] {
-  return fighters.map((f) => ({ f, nameJa: f.nameJa, nameEn: f.nameEn.toLowerCase() }));
+  return fighters.map((f) => ({
+    f,
+    nameJa: f.nameJa,
+    nameJaNorm: normNameForSearch(f.nameJa),
+    nameEn: f.nameEn.toLowerCase(),
+  }));
 }
 
 // 名前検索(日本語名・カナ・ローマ字を横断照合)。団体・階級は対象外(既存フィルタの役割)。
+// qKata/qHira/qLower は呼び出し側で既にnormNameForSearch済みの値を渡すこと。
 function matchesNameSearch(entry: SearchEntry, qRaw: string, qKata: string, qHira: string, qLower: string): boolean {
   if (!qRaw) return true;
   return (
-    entry.nameJa.includes(qRaw) ||
-    entry.nameJa.includes(qKata) ||
-    entry.nameJa.includes(qHira) ||
+    entry.nameJaNorm.includes(qRaw) ||
+    entry.nameJaNorm.includes(qKata) ||
+    entry.nameJaNorm.includes(qHira) ||
     entry.nameEn.includes(qLower)
   );
 }
@@ -168,7 +183,9 @@ export default function FighterFilterGrid({
   }, [fighters]);
 
   const filtered = useMemo(() => {
-    const qRaw = query.trim();
+    // 検索クエリも比較対象(entry.nameJaNorm)と同じ基準でスペース除去してから
+    // 照合する(M4: 「平良達郎」で「平良 達郎」がヒットしない取りこぼしの修正)。
+    const qRaw = normNameForSearch(query.trim());
     const qKata = qRaw ? toKatakana(qRaw) : "";
     const qHira = qRaw ? toHiragana(qRaw) : "";
     const qLower = qRaw ? qRaw.toLowerCase() : "";
