@@ -119,7 +119,17 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
       eventName: eventName.trim() || undefined,
       weightClass: weightClass || undefined,
     });
-    setDraft({ text: post.text, imageUrl: ogImagePath(`/api/og/vs/${a.slug}/${b.slug}`) });
+    // 大会名/階級ラベルを画像URLにも反映する(OgCardTool.tsxと同じ方式)。
+    // 以前はテキスト本文にだけ反映され、画像プレビューには渡っておらず
+    // MATCH UPのみの版になっていた(パラメータ渡し漏れ)。
+    const imgQuery = new URLSearchParams();
+    if (eventName.trim()) imgQuery.set("ev", eventName.trim());
+    if (weightClass) imgQuery.set("wc", weightClass);
+    const imgQs = imgQuery.toString();
+    setDraft({
+      text: post.text,
+      imageUrl: ogImagePath(`/api/og/vs/${a.slug}/${b.slug}${imgQs ? `?${imgQs}` : ""}`),
+    });
   }
 
   return (
