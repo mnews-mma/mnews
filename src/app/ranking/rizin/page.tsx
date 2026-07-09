@@ -6,6 +6,7 @@ import { FIGHTERS } from "@/lib/fighters";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { RIZIN_CHAMPIONS, championsToRankingData } from "@/lib/champions";
 import { pageMetadata } from "@/lib/seo";
+import { buildChampionTitle } from "@/lib/orgRankings";
 
 // ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
 // no-data / hidden(needsReview) / 未照合は名前のみ表示にする(パンクラス/修斗と同じ挙動)。
@@ -15,12 +16,18 @@ async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
   return resolved.filter((r) => !r.noRecordData).map((r) => r.slug);
 }
 
-export const metadata = pageMetadata({
-  title: "RIZIN 現王者一覧（階級別）| Mニュース",
-  description:
-    "RIZIN各階級の現王者(正規王者)を掲載。公式サイトの発表に基づき、暫定王者・空位の階級は除いています。",
-  path: "/ranking/rizin",
-});
+// titleのみ王座数で動的化(SEO)。championsToRankingDataのfetchedDateは
+// champions.ts内のハードコード固定値のため、嘘シグナルになるtitleへは出さない。
+// description/OGP画像/canonicalはpageMetadataの固定値のまま変更しない。
+export function generateMetadata() {
+  const rizin = championsToRankingData("rizin", RIZIN_CHAMPIONS);
+  return pageMetadata({
+    title: buildChampionTitle("RIZIN", rizin),
+    description:
+      "RIZIN各階級の現王者(正規王者)を掲載。公式サイトの発表に基づき、暫定王者・空位の階級は除いています。",
+    path: "/ranking/rizin",
+  });
+}
 
 export default async function RizinChampionsPage() {
   const rizin = championsToRankingData("rizin", RIZIN_CHAMPIONS);

@@ -6,6 +6,7 @@ import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { FIGHTERS } from "@/lib/fighters";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { pageMetadata } from "@/lib/seo";
+import { buildOfficialRankingTitle } from "@/lib/orgRankings";
 
 // ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
 async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
@@ -17,12 +18,17 @@ async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
 // cron(update-org-rankings)が data/orgRankings.json を更新→raw参照で自動反映。
 export const revalidate = 3600;
 
-export const metadata = pageMetadata({
-  title: "修斗 公式ランキング（階級別・最新）| Mニュース",
-  description:
-    "修斗（SHOOTO）世界ランキングを階級別に掲載。フライ級・バンタム級・フェザー級・ライト級の王者・ランカーを最新の公式発表から転載。",
-  path: "/ranking/shooto",
-});
+// titleのみ階級数・発表ラベルで動的化(SEO: 戦績ページと同じ思想)。
+// description/OGP画像/canonicalはpageMetadataの固定値のまま変更しない。
+export async function generateMetadata() {
+  const { shooto } = await fetchOrgRankings();
+  return pageMetadata({
+    title: buildOfficialRankingTitle("修斗", shooto),
+    description:
+      "修斗（SHOOTO）世界ランキングを階級別に掲載。フライ級・バンタム級・フェザー級・ライト級の王者・ランカーを最新の公式発表から転載。",
+    path: "/ranking/shooto",
+  });
+}
 
 export default async function ShootoRankingPage() {
   const { shooto } = await fetchOrgRankings();

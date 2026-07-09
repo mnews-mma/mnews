@@ -3,6 +3,7 @@
 // 女子の該当階級のみ(修斗の環太平洋ランキングのような重複/対象外区分はスキップ)。
 import { FIGHTERS } from "./fighters";
 import { rankSortKey } from "./weightClasses";
+import { fullWidthLength } from "./tweetDigest";
 
 export interface RankEntry {
   rank: string; // "王者" / "暫定王者" / "1" 等、団体公式の値そのまま
@@ -146,4 +147,56 @@ export function parseShooto(html: string): OrgRankingData {
     rankingLabel,
     classes: finalizeClasses(raw),
   };
+}
+
+// ランキングページtitleの動的差し込み用ヘルパー(SEO: 戦績クエリと同じ思想で
+// 「1位選手名」は団体間で並び順・空位基準が不統一のため出さず、階級数・
+// 発表ラベルで具体性を出す)。
+
+// パンクラス/修斗用: entriesが空の階級を除外してカウント(現状は該当0件だが
+// 将来ランキング未整備の階級が出た場合の安全策)。
+function countRankedClasses(data: OrgRankingData): number {
+  return data.classes.filter((c) => c.entries.length > 0).length;
+}
+
+// RIZIN/DEEP用: "空位"マーカー(rank/officialNameいずれか)を持つ階級を除外。
+// RIZINは空位階級がそもそも配列に含まれない設計、DEEPは{rank:"空位",
+// officialName:"空位"}という明示エントリで空位を表現するため、両方に対応する。
+function countActiveChampionClasses(data: OrgRankingData): number {
+  return data.classes.filter(
+    (c) => !c.entries.some((e) => e.rank === "空位" || e.officialName === "空位")
+  ).length;
+}
+
+// パンクラス/修斗用title: `${団体}公式ランキング｜全${階級数}階級・${発表ラベル}最新順位 | Mニュース`
+// data無し/階級0件はフォールバック(現行titleと同じ文言)を返す(捏造ゼロ)。
+export function buildOfficialRankingTitle(
+  orgName: string,
+  data: OrgRankingData | null | undefined
+): string {
+  const fallback = `${orgName} 公式ランキング（階級別・最新）| Mニュース`;
+  if (!data) return fallback;
+  const classCount = countRankedClasses(data);
+  if (classCount === 0) return fallback;
+
+  const labelPart = data.rankingLabel ? `・${data.rankingLabel}` : "";
+  const full = `${orgName}公式ランキング｜全${classCount}階級${labelPart}最新順位 | Mニュース`;
+  if (fullWidthLength(full) <= 60) return full;
+
+  // 60字超過時は「・${発表ラベル}」部分から先に削る(団体名・「公式ランキング」・階級数は必ず残す)。
+  return `${orgName}公式ランキング｜全${classCount}階級最新順位 | Mニュース`;
+}
+
+// RIZIN/DEEP用title: `${団体}現王者一覧｜全${王座数}階級のチャンピオンを掲載 | Mニュース`
+// ハードコードされたfetchedDateは嘘シグナルになるため絶対にtitleへ出さない。
+export function buildChampionTitle(orgName: string, data: OrgRankingData): string {
+  const titleCount = countActiveChampionClasses(data);
+  const fallback = `${orgName} 現王者一覧（階級別）| Mニュース`;
+  if (titleCount === 0) return fallback;
+
+  const full = `${orgName}現王者一覧｜全${titleCount}階級のチャンピオンを掲載 | Mニュース`;
+  if (fullWidthLength(full) <= 60) return full;
+
+  // 万一の超過に備え、定型句を短縮する保険(現行では発生しない想定)。
+  return `${orgName}現王者一覧｜全${titleCount}階級掲載 | Mニュース`;
 }

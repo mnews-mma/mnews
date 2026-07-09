@@ -6,6 +6,7 @@ import { FIGHTERS } from "@/lib/fighters";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { deepRankingData } from "@/lib/champions";
 import { pageMetadata } from "@/lib/seo";
+import { buildChampionTitle } from "@/lib/orgRankings";
 
 // ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
 // no-data / hidden(needsReview) / 未照合は名前のみ表示にする(パンクラス/修斗と同じ挙動)。
@@ -15,12 +16,18 @@ async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
   return resolved.filter((r) => !r.noRecordData).map((r) => r.slug);
 }
 
-export const metadata = pageMetadata({
-  title: "DEEP 現王者一覧（階級別）| Mニュース",
-  description:
-    "DEEP各階級の現王者・暫定王者を掲載。公式サイトの発表に基づく(空位の階級は「空位」と明記)。",
-  path: "/ranking/deep",
-});
+// titleのみ王座数(空位除外)で動的化(SEO)。deepRankingData()のfetchedDateは
+// champions.ts内のハードコード固定値のため、嘘シグナルになるtitleへは出さない。
+// description/OGP画像/canonicalはpageMetadataの固定値のまま変更しない。
+export function generateMetadata() {
+  const deep = deepRankingData();
+  return pageMetadata({
+    title: buildChampionTitle("DEEP", deep),
+    description:
+      "DEEP各階級の現王者・暫定王者を掲載。公式サイトの発表に基づく(空位の階級は「空位」と明記)。",
+    path: "/ranking/deep",
+  });
+}
 
 export default async function DeepChampionsPage() {
   const deep = deepRankingData();
