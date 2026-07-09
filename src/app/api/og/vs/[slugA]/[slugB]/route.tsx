@@ -261,6 +261,13 @@ export async function GET(
                 fontSize: "26px",
                 color: COLORS.ash,
                 letterSpacing: "10px",
+                // letterSpacingは文字の後ろに余白を作るため、末尾の1文字分
+                // (10px)だけ右側に余分な幅が残り、alignItems:centerでの
+                // 中央寄せがglyph基準でletterSpacingの半分(≒5px)左に
+                // ズレる(実測−4.5px)。paddingLeftをletterSpacingと同値
+                // 付与し、trailingの余白を相殺する(glyph幅に依存せず
+                // letterSpacing値だけで補正量が確定するため逆算不要)。
+                paddingLeft: "10px",
               }}
             >
               MATCH UP
