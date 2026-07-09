@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { Article, relativeTimeJa } from "@/lib/articles";
 import { SOURCES, SourceKey } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
@@ -15,6 +16,7 @@ export const metadata = pageMetadata({
 const ARCHIVE_URL = "https://raw.githubusercontent.com/mnews-mma/mnews/main/data/archive.json";
 const PAGE_SIZE = 20;
 const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep", "shooto", "pancrase"]);
+const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "過去のニュース" }];
 
 async function fetchArchive(): Promise<Article[]> {
   try {
@@ -53,6 +55,7 @@ export default async function ArchivePage({
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
       <Nav />
       <div className="page-head">
         <h1 className="page-title">過去のニュース</h1>

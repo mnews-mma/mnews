@@ -6,7 +6,7 @@ import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { FIGHTERS } from "@/lib/fighters";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { pageMetadata } from "@/lib/seo";
-import { buildOfficialRankingTitle } from "@/lib/orgRankings";
+import { buildOfficialRankingTitle, buildRankingItemLists } from "@/lib/orgRankings";
 
 // ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
 // no-data / hidden(needsReview) / 未照合 は名前のみ表示にする。
@@ -37,9 +37,13 @@ export default async function PancraseRankingPage() {
   for (const c of pancrase?.classes ?? []) for (const e of c.entries) if (e.slug) matched.add(e.slug);
   const linkable = await linkableSlugsFor(matched);
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "パンクラス 公式ランキング" }];
+  const itemLists = pancrase ? buildRankingItemLists("パンクラス", pancrase) : [];
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
+      {itemLists.map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
       <Nav />
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />

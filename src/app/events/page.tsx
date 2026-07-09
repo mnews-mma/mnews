@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { getUpcomingEvents } from "@/lib/events";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
@@ -14,6 +15,7 @@ export const metadata = pageMetadata({
 });
 
 const DAY_NAMES = ["日", "月", "火", "水", "木", "金", "土"];
+const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "大会一覧" }];
 
 export default function EventsIndexPage() {
   const events = getUpcomingEvents(); // 開催日昇順
@@ -22,6 +24,7 @@ export default function EventsIndexPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
       <Nav />
       <div className="page-head">
         <h1 className="page-title">開催予定の大会</h1>

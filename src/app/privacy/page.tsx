@@ -1,14 +1,18 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { breadcrumbJsonLd } from "@/components/Breadcrumb";
 
 export const metadata = {
   title: "プライバシーポリシー | Mニュース",
   description: "Mニュースにおける個人情報・アクセス情報の取り扱いについて。",
 };
 
+const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "プライバシーポリシー" }];
+
 export default function PrivacyPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
       <Nav />
       <div className="page-head">
         <h1 className="page-title">プライバシーポリシー</h1>

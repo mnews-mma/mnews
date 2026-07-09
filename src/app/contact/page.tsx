@@ -1,14 +1,18 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { breadcrumbJsonLd } from "@/components/Breadcrumb";
 
 export const metadata = {
   title: "お問い合わせ | Mニュース",
   description: "Mニュースへのお問い合わせ方法。",
 };
 
+const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "お問い合わせ" }];
+
 export default function ContactPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
       <Nav />
       <div className="page-head">
         <h1 className="page-title">お問い合わせ</h1>

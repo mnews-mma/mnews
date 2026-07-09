@@ -1,10 +1,13 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FighterFilterGrid from "@/components/FighterFilterGrid";
+import { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTag } from "@/lib/orgTags";
 import { pageMetadata } from "@/lib/seo";
+
+const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "選手戦績一覧" }];
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +32,7 @@ export default async function FightersPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
       <Nav />
       <div className="page-head">
         <h1 className="page-title">選手戦績一覧</h1>

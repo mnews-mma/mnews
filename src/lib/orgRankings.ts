@@ -4,6 +4,7 @@
 import { FIGHTERS } from "./fighters";
 import { rankSortKey } from "./weightClasses";
 import { fullWidthLength } from "./tweetDigest";
+import { SITE_URL } from "./seo";
 
 export interface RankEntry {
   rank: string; // "王者" / "暫定王者" / "1" 等、団体公式の値そのまま
@@ -200,6 +201,34 @@ function normalizeRankingLabelForTitle(label: string): string {
   if (label.endsWith("付け")) return `${label.slice(0, -2)}発表`;
   if (label.endsWith("付")) return `${label.slice(0, -1)}発表`;
   return label;
+}
+
+// ランキングページItemList(schema.org)用: 1階級=1ItemList。パンクラス/修斗のみ対象
+// (RIZIN/DEEPは称号の在籍状況のみで順位概念が無いため対象外)。空位ダミーエントリ
+// (現状パンクラス/修斗には無いが将来混入した場合の安全策)は除外してから採番することで
+// position の歯抜け・捏造を防ぐ。slug未一致の選手はurlを省略(存在しないリンクを作らない)。
+export function buildRankingItemLists(orgName: string, data: OrgRankingData): object[] {
+  return data.classes
+    .map((c) => {
+      const entries = c.entries.filter((e) => e.rank !== "空位" && e.officialName !== "空位");
+      return { weightClass: c.weightClass, entries };
+    })
+    .filter((c) => c.entries.length > 0)
+    .map((c) => ({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `${orgName} ${c.weightClass}ランキング`,
+      numberOfItems: c.entries.length,
+      itemListElement: c.entries.map((e, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Person",
+          name: e.officialName,
+          ...(e.slug ? { url: `${SITE_URL}/fighters/${e.slug}` } : {}),
+        },
+      })),
+    }));
 }
 
 // RIZIN/DEEP用title: `${団体}現王者一覧｜全${王座数}階級のチャンピオンを掲載 | Mニュース`

@@ -1,14 +1,18 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { breadcrumbJsonLd } from "@/components/Breadcrumb";
 
 export const metadata = {
   title: "運営者情報 | Mニュース",
   description: "Mニュースの運営者情報・サイトの理念について。",
 };
 
+const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "運営者情報" }];
+
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
       <Nav />
       <div className="page-head">
         <h1 className="page-title">運営者情報</h1>

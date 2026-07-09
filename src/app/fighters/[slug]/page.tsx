@@ -191,6 +191,10 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
       : null,
   ].filter((u): u is string => !!u);
 
+  // affiliation: 所属団体。fighter.org は必須フィールド(未設定選手は存在しない)ため
+  // 常に値を持つ。既存の SOURCES 定義(ランキングページ等と共通)から団体名・URLを取得。
+  const orgDef = SOURCES[fighter.org];
+
   const personLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -200,6 +204,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
     url: `${SITE_URL}/fighters/${fighter.slug}`,
     ...(birthPlace ? { birthPlace: { "@type": "Place", name: birthPlace } } : {}),
     ...(sameAs.length ? { sameAs } : {}),
+    affiliation: { "@type": "SportsOrganization", name: orgDef.label, url: orgDef.url },
   };
 
   return (
