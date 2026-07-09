@@ -1,10 +1,12 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { breadcrumbJsonLd } from "@/components/Breadcrumb";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata = {
   title: "運営者情報 | Mニュース",
   description: "Mニュースの運営者情報・サイトの理念について。",
+  alternates: { canonical: `${SITE_URL}/about` },
 };
 
 const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "運営者情報" }];

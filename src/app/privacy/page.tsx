@@ -1,10 +1,12 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { breadcrumbJsonLd } from "@/components/Breadcrumb";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata = {
   title: "プライバシーポリシー | Mニュース",
   description: "Mニュースにおける個人情報・アクセス情報の取り扱いについて。",
+  alternates: { canonical: `${SITE_URL}/privacy` },
 };
 
 const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "プライバシーポリシー" }];

@@ -21,10 +21,10 @@ import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 // (events.tsのfindNextFight内部の判定と同じ基準に揃える)。
 const normSpace = (s: string) => s.replace(/[\s　]/g, "");
 
-// 団体タグから回遊先(ランキング/一覧)へのリンク。RIZINは順位ページを持たない。
+// 団体タグから回遊先(ランキング/一覧)へのリンク。UFC/ONEは対応ページが無いためnull。
 const TAG_LINK: Record<OrgTagKey, string | null> = {
   ufc: null,
-  rizin: null,
+  rizin: "/ranking/rizin",
   deep: "/deep-2026",
   pancrase: "/ranking/pancrase",
   shooto: "/ranking/shooto",

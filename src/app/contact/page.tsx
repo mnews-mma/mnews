@@ -1,10 +1,12 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { breadcrumbJsonLd } from "@/components/Breadcrumb";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata = {
   title: "お問い合わせ | Mニュース",
   description: "Mニュースへのお問い合わせ方法。",
+  alternates: { canonical: `${SITE_URL}/contact` },
 };
 
 const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "お問い合わせ" }];
