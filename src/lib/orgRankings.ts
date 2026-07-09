@@ -179,12 +179,27 @@ export function buildOfficialRankingTitle(
   const classCount = countRankedClasses(data);
   if (classCount === 0) return fallback;
 
-  const labelPart = data.rankingLabel ? `・${data.rankingLabel}` : "";
+  const label = normalizeRankingLabelForTitle(data.rankingLabel);
+  const labelPart = label ? `・${label}` : "";
   const full = `${orgName}公式ランキング｜全${classCount}階級${labelPart}最新順位 | Mニュース`;
   if (fullWidthLength(full) <= 60) return full;
 
   // 60字超過時は「・${発表ラベル}」部分から先に削る(団体名・「公式ランキング」・階級数は必ず残す)。
   return `${orgName}公式ランキング｜全${classCount}階級最新順位 | Mニュース`;
+}
+
+// rankingLabelは各団体公式サイトのHTML由来の文言をそのまま転載しており、
+// 「〜発表」「〜付け」等の語尾が団体ごとに異なる(元データ・本文表示は不変、
+// この正規化はtitle生成時のみのインメモリ処理)。
+// 1. 既に「発表」で終わる場合は無変換(二重化防止のため必ず先に判定)。
+// 2. 末尾が「付け」/「付」の場合のみ「発表」に置換。
+// 3. どちらにも当てはまらない未知パターンはそのまま通す(安全側)。
+function normalizeRankingLabelForTitle(label: string): string {
+  if (!label) return label;
+  if (label.endsWith("発表")) return label;
+  if (label.endsWith("付け")) return `${label.slice(0, -2)}発表`;
+  if (label.endsWith("付")) return `${label.slice(0, -1)}発表`;
+  return label;
 }
 
 // RIZIN/DEEP用title: `${団体}現王者一覧｜全${王座数}階級のチャンピオンを掲載 | Mニュース`
