@@ -1686,6 +1686,10 @@ footer {
    同系統の見た目にしつつ、アウトライン(RIZIN等)ではなく塗りつぶしで差別化する。
    white-space:nowrap + flex-shrink:0 で、隣接するタイトル文字列が長い場合でも
    バッジ自体が圧縮されて文字が縦積みにならないようにする(スマホ375px確認済み)。 */
+/* オリジナルタグは団体タグ(RIZIN赤/DEEP橙/修斗青/パンクラス黒 等)のどれとも
+   衝突しないゴールド地+黒文字にする。特にパンクラスは黒地タグ(#1a1a1a)で、
+   以前オリジナルも黒地だったため区別不能だった。団体タグ側(.org-tag/.uf-org)は
+   一切変更せず、この編集部バッジ側の配色のみで差別化する。 */
 .article-original-badge {
   display: inline-block;
   flex-shrink: 0;
@@ -1694,8 +1698,8 @@ footer {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #fff;
-  background: var(--badge-original-bg);
+  color: #1a1a1a;
+  background: var(--gold);
   border-radius: 3px;
   padding: 2px 8px;
 }
