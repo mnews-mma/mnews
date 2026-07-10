@@ -6,7 +6,9 @@ import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
+import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
+import FighterStrip from "@/components/FighterStrip";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 
 export function generateStaticParams() {
@@ -71,6 +73,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const event = getEvent(slug);
   if (!event) notFound();
   const visibleSlugs = await getVisibleFighterSlugs();
+  const records = await fetchFighterRecords();
 
   const days = daysUntil(event.date);
   const srcColor = SOURCES[event.org].color;
@@ -235,6 +238,18 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                     <FighterName name={b.fighterB} visibleSlugs={visibleSlugs} />
                   </span>
                 </div>
+                {[b.fighterA, b.fighterB].map((name) => {
+                  const fSlug = findFighterSlugByName(name, undefined, visibleSlugs);
+                  return (
+                    <FighterStrip
+                      key={name}
+                      name={name}
+                      slug={fSlug}
+                      entry={fSlug ? (records[fSlug] ?? null) : null}
+                      variant="full"
+                    />
+                  );
+                })}
                 {b.result && event.status === "live" && (
                   <div className="bout-result">
                     {b.result.winner ?? "引き分け"} ／ {b.result.method}

@@ -984,6 +984,14 @@ footer {
   color: var(--muted);
   font-weight: 600;
 }
+/* 戦績ストリップ(compact): 結果テーブルの選手名の下に戦績のみ小さく添える */
+.fighter-strip-compact-record {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+}
 /* 勝者列: ピル型バッジ */
 .col-winner {
   white-space: nowrap;
@@ -1607,6 +1615,50 @@ footer {
   color: var(--muted);
   border-top: 1px solid var(--border);
   padding-top: 6px;
+}
+
+/* 戦績ストリップ(full): 開催予定カードの選手ごとに1行(モバイルは折り返し許容) */
+.fighter-strip {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: 12px;
+  color: var(--muted);
+  padding-top: 6px;
+  margin-top: 6px;
+  border-top: 1px dashed var(--border);
+}
+.fighter-strip-name {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+}
+.fighter-strip-name:hover {
+  text-decoration-color: var(--accent);
+}
+.fighter-strip-record {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--fg);
+}
+.fighter-strip-finish {
+  font-family: var(--mono);
+}
+.fighter-strip-last5 {
+  font-family: var(--mono);
+  letter-spacing: 1px;
+}
+.fighter-strip-last5-win {
+  color: #16a34a;
+}
+.fighter-strip-last5-loss {
+  color: #dc2626;
+}
+.fighter-strip-last5-draw,
+.fighter-strip-last5-nc {
+  color: #6b7280;
 }
 
 /* Related events */
