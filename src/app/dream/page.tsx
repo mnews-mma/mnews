@@ -1,0 +1,126 @@
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import BoutCard from "@/components/BoutCard";
+import DreamPicker from "@/components/DreamPicker";
+import { getFighter } from "@/lib/fighters";
+import { getVisibleFighters } from "@/lib/visibleFighters";
+import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
+import { pageMetadata } from "@/lib/seo";
+
+const SITE_URL = "https://www.mnews.jp";
+
+export const dynamic = "force-dynamic";
+
+export const metadata = pageMetadata({
+  title: "夢のカード | 任意の2選手でVS対戦カードを作る - Mニュース",
+  description:
+    "任意の2選手を選んで仮想の対戦カードを作成。戦績・フィニッシュ率・直近5戦・共通対戦相手を並べて比較し、Xでシェアできます。",
+  path: "/dream",
+});
+
+function param(sp: Record<string, string | string[] | undefined>, key: string): string {
+  const raw = sp[key];
+  return (Array.isArray(raw) ? raw[0] : raw) ?? "";
+}
+
+export default async function DreamPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const sp = await searchParams;
+
+  // 選択候補は公開母集団(hidden除外・戦績データあり)のみ。/fighters・Xカードツールと
+  // 同じgetVisibleFighters()経由なので、未登録選手は最初から候補に出ない。
+  const visible = await getVisibleFighters();
+  const fighters = visible.map((f) => ({ slug: f.slug, nameJa: f.nameJa }));
+  const visibleSlugs = new Set(fighters.map((f) => f.slug));
+
+  // URLのa/bが未指定・不正な場合は候補の先頭2人にフォールバックする
+  // (Xカードツールの初期選択と同じ挙動)。
+  const reqA = param(sp, "a");
+  const reqB = param(sp, "b");
+  const slugA = visibleSlugs.has(reqA) ? reqA : (fighters[0]?.slug ?? "");
+  const slugB = visibleSlugs.has(reqB) ? reqB : (fighters[1]?.slug ?? "");
+
+  const fighterA = slugA ? getFighter(slugA) : undefined;
+  const fighterB = slugB ? getFighter(slugB) : undefined;
+  const records = await fetchFighterRecords();
+  const entryA = fighterA ? (records[fighterA.slug] ?? null) : null;
+  const entryB = fighterB ? (records[fighterB.slug] ?? null) : null;
+
+  const canGenerate = !!fighterA && !!fighterB && !!entryA && !!entryB && fighterA.slug !== fighterB.slug;
+
+  // 階級ラベルは"夢の"カードとして中央に1つだけ表示する(①のwc仕様と同じ扱い)。
+  // 階級跨ぎの場合は両階級を併記し、実在の対戦であるかのように誤読させない。
+  const weightLabel =
+    fighterA && fighterB
+      ? fighterA.weightClass === fighterB.weightClass
+        ? `夢の${fighterA.weightClass}マッチ`
+        : `夢のマッチ（${fighterA.weightClass} vs ${fighterB.weightClass}）`
+      : undefined;
+
+  const shareUrl =
+    canGenerate && fighterA && fighterB
+      ? `${SITE_URL}/vs/${fighterA.slug}/${fighterB.slug}?wc=${encodeURIComponent(weightLabel ?? "")}`
+      : null;
+  const shareText =
+    canGenerate && fighterA && fighterB
+      ? `もし「${fighterA.nameJa} vs ${fighterB.nameJa}」が実現したら—— #夢のカード`
+      : "";
+
+  return (
+    <>
+      <Nav />
+      <div className="page-head">
+        <div className="page-title">夢のカード</div>
+        <div className="page-sub">
+          任意の2選手を選んで、実現したら見てみたい対戦カードを作れます。階級をまたいだ組み合わせもOKです。
+        </div>
+      </div>
+
+      <DreamPicker fighters={fighters} initialA={slugA} initialB={slugB} />
+
+      <div style={{ padding: "0 24px 40px" }}>
+        {canGenerate && fighterA && fighterB ? (
+          <>
+            <BoutCard
+              nameA={fighterA.nameJa}
+              nameB={fighterB.nameJa}
+              slugA={fighterA.slug}
+              slugB={fighterB.slug}
+              entryA={entryA}
+              entryB={entryB}
+              visibleSlugs={visibleSlugs}
+              weightClass={weightLabel}
+            />
+            <div style={{ marginTop: 16 }}>
+              <a
+                href={`https://x.com/intent/post?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl!)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-block",
+                  padding: "10px 20px",
+                  background: "#000",
+                  color: "#fff",
+                  fontWeight: 700,
+                  borderRadius: 4,
+                  fontSize: 14,
+                  textDecoration: "none",
+                }}
+              >
+                𝕏 でシェア
+              </a>
+            </div>
+          </>
+        ) : (
+          <p style={{ color: "var(--muted)", fontSize: 13, padding: "24px 0" }}>
+            選手を2人選ぶとカードが表示されます。
+          </p>
+        )}
+      </div>
+      <Footer />
+    </>
+  );
+}

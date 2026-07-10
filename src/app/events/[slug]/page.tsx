@@ -8,8 +8,7 @@ import { findFighterSlugByName } from "@/lib/fighters";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
-import FighterStrip from "@/components/FighterStrip";
-import { EventCommonOpponents } from "@/components/FighterVisuals";
+import BoutCard, { FighterName } from "@/components/BoutCard";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
 
@@ -55,31 +54,6 @@ function formatDateJa(dateStr: string): string {
   const d = new Date(dateStr);
   const days = ["日", "月", "火", "水", "木", "金", "土"];
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;
-}
-
-// 選手名の文字数に応じた段階的なfont-size(長い名前ほど1行に収まりやすくする)。
-// カード半分の実測カラム幅(375px幅で約134px)を基準に、12文字前後まで
-// 1行に収まる縮小幅を実測で調整済み。
-function fighterNameFontSize(name: string): string {
-  const len = name.length;
-  if (len <= 6) return "15px";
-  if (len <= 8) return "13.5px";
-  if (len <= 10) return "12px";
-  if (len <= 12) return "10.5px";
-  return "9.5px";
-}
-
-// 戦績データが無い(no-data)/hiddenの選手はリンクにせずテキスト表示にする
-// (getVisibleFighters()由来のvisibleSlugsで判定・判定ロジックの二重定義はしない)。
-function FighterName({ name, visibleSlugs }: { name: string; visibleSlugs: Set<string> }) {
-  const slug = findFighterSlugByName(name, undefined, visibleSlugs);
-  return slug ? (
-    <a href={`/fighters/${slug}`} className="opponent-link">
-      {name}
-    </a>
-  ) : (
-    <span>{name}</span>
-  );
 }
 
 export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -252,53 +226,30 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
               const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
               const entryA = slugA ? (records[slugA] ?? null) : null;
               const entryB = slugB ? (records[slugB] ?? null) : null;
-              // 戦績ブロック(戦績/フィニッシュ率/直近5戦/共通対戦相手)は両者とも
-              // 選手DB登録済み(戦績データあり)の場合のみ表示。片方でも未登録なら
-              // 階級・選手名・VSのみのミニマル表示にする(片側だけの戦績を出さない)。
-              const bothRegistered = !!entryA && !!entryB && !entryA.noRecordData && !entryB.noRecordData;
               return (
-                <div
+                <BoutCard
                   key={i}
-                  className={`bout-card${b.isTitleMatch ? " bout-card--title" : ""}${b.cancelled ? " bout-card--cancelled" : ""}`}
-                >
-                  <div className="bout-card-meta">
-                    <span className="bout-weight">{b.weightClass}</span>
-                    {b.rule && <span className="bout-rule">{b.rule}</span>}
-                    {b.isTitleMatch && <span className="bout-title-badge">TITLE</span>}
-                    {b.cancelled && <span className="bout-cancelled-badge">中止・変更</span>}
-                    {b.note && !b.isTitleMatch && !b.cancelled && (
-                      <span className="bout-note">{b.note}</span>
-                    )}
-                  </div>
-                  <div className="bout-fighters">
-                    <span className="bout-fighter-a" style={{ fontSize: fighterNameFontSize(b.fighterA) }}>
-                      <FighterName name={b.fighterA} visibleSlugs={visibleSlugs} />
-                    </span>
-                    <span className="bout-vs">VS</span>
-                    <span className="bout-fighter-b" style={{ fontSize: fighterNameFontSize(b.fighterB) }}>
-                      <FighterName name={b.fighterB} visibleSlugs={visibleSlugs} />
-                    </span>
-                  </div>
-                  {bothRegistered && (
-                    <>
-                      <FighterStrip name={b.fighterA} slug={slugA} entry={entryA} variant="full" />
-                      <FighterStrip name={b.fighterB} slug={slugB} entry={entryB} variant="full" />
-                      <EventCommonOpponents
-                        nameA={b.fighterA}
-                        entryA={entryA!}
-                        nameB={b.fighterB}
-                        entryB={entryB!}
-                        visibleSlugs={visibleSlugs}
-                      />
-                    </>
-                  )}
-                  {b.result && event.status === "live" && (
-                    <div className="bout-result">
-                      {b.result.winner ?? "引き分け"} ／ {b.result.method}
-                      {b.result.round && <span> ／ {b.result.round}</span>}
-                    </div>
-                  )}
-                </div>
+                  nameA={b.fighterA}
+                  nameB={b.fighterB}
+                  slugA={slugA}
+                  slugB={slugB}
+                  entryA={entryA}
+                  entryB={entryB}
+                  visibleSlugs={visibleSlugs}
+                  weightClass={b.weightClass}
+                  rule={b.rule}
+                  isTitleMatch={b.isTitleMatch}
+                  cancelled={b.cancelled}
+                  note={b.note}
+                  resultLine={
+                    b.result && event.status === "live" ? (
+                      <>
+                        {b.result.winner ?? "引き分け"} ／ {b.result.method}
+                        {b.result.round && <span> ／ {b.result.round}</span>}
+                      </>
+                    ) : undefined
+                  }
+                />
               );
             })}
           </div>
