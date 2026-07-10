@@ -3,10 +3,10 @@ import { computeMethodSplit, computeFighterStripStats } from "@/lib/fighterStrip
 import { computeCommonOpponents } from "@/lib/articleGenerator";
 import { findFighterSlugByName } from "@/lib/fighters";
 
-// 勝敗記号は ○ / ✗(U+2717) / △ のみ。方向・凡例の概念が無く説明不要で読める。
+// 勝敗記号は ○ / X(ラテン大文字) / △ のみ。方向・凡例の概念が無く説明不要で読める。
 const MARK: Record<FighterRecordEntry["history"][number]["result"], string> = {
   win: "○",
-  loss: "✗",
+  loss: "X",
   draw: "△",
   nc: "△",
 };
