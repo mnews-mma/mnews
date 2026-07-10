@@ -14,6 +14,8 @@ import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
 import { toFeedArticles } from "@/lib/newsClassify";
+import { matchRelatedFighters } from "@/lib/relatedFighterChips";
+import { ORIGINAL_ARTICLES, originalArticleToFeedArticle } from "@/lib/originalArticles";
 import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
@@ -87,13 +89,23 @@ export default async function HomePage() {
 
   // 統一フィード: 当日含む直近3日分(JST暦日)を表示。ただし3日分が8件未満なら
   // 直近8件まで遡って表示する(下限保証)。並び順・時刻は publishedAt 基準。
-  const feedAll = toFeedArticles(enrichFirstSeen(articles, firstSeenMap));
+  // オリジナル記事(数字で見る対戦カード等)もRSS由来記事と同じ並びに混在させる。
+  const originalFeedArticles = ORIGINAL_ARTICLES.map(originalArticleToFeedArticle);
+  const feedAll = [...toFeedArticles(enrichFirstSeen(articles, firstSeenMap)), ...originalFeedArticles].sort(
+    (x, y) => new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime()
+  );
   const jstNow = new Date(Date.now() + 9 * 3600_000);
   const startOfTodayJstMs =
     Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()) - 9 * 3600_000;
   const cutoffMs = startOfTodayJstMs - 2 * 86400_000; // 当日含む直近3日
   const within3d = feedAll.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
-  const feedArticles = within3d.length >= 8 ? within3d : feedAll.slice(0, 8);
+  // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを
+  // 突合。クライアントにはマッチング結果(name/slug)のみを渡す(ロジック自体は
+  // 送らない)。
+  const feedArticles = (within3d.length >= 8 ? within3d : feedAll.slice(0, 8)).map((a) => ({
+    ...a,
+    relatedFighters: matchRelatedFighters(a.title),
+  }));
 
   // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて
   // EventRail側でさらに自動調整)。所属団体のラベル/色だけ先に確定させて渡す。

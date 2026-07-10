@@ -6,8 +6,11 @@ import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
+import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
+import FighterStrip from "@/components/FighterStrip";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
+import { findArticlesForEvent } from "@/lib/originalArticles";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
@@ -71,6 +74,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const event = getEvent(slug);
   if (!event) notFound();
   const visibleSlugs = await getVisibleFighterSlugs();
+  const records = await fetchFighterRecords();
 
   const days = daysUntil(event.date);
   const srcColor = SOURCES[event.org].color;
@@ -80,6 +84,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const relatedEvents = (event.relatedEventSlugs ?? [])
     .map((s) => getEvent(s))
     .filter(Boolean) as NonNullable<ReturnType<typeof getEvent>>[];
+
+  // この大会についての「数字で見る対戦カード」記事(存在する場合のみリンクを出す)
+  const relatedArticles = findArticlesForEvent(event.slug);
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },
@@ -188,6 +195,21 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </div>
         )}
 
+        {/* この大会の「数字で見る対戦カード」記事(存在する場合のみ) */}
+        {relatedArticles.length > 0 && (
+          <div className="event-related">
+            <div className="event-section-label">関連記事</div>
+            <div className="event-related-links">
+              {relatedArticles.map((a) => (
+                <a key={a.slug} href={`/articles/${a.slug}`} className="event-related-link" style={{ borderLeftColor: "var(--accent)" }}>
+                  <span className="article-original-badge" style={{ fontSize: 10 }}>オリジナル</span>
+                  <span>{a.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* 放送・配信情報 */}
         {event.broadcast && event.broadcast.length > 0 && (
           <div className="event-broadcast">
@@ -235,6 +257,18 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                     <FighterName name={b.fighterB} visibleSlugs={visibleSlugs} />
                   </span>
                 </div>
+                {[b.fighterA, b.fighterB].map((name) => {
+                  const fSlug = findFighterSlugByName(name, undefined, visibleSlugs);
+                  return (
+                    <FighterStrip
+                      key={name}
+                      name={name}
+                      slug={fSlug}
+                      entry={fSlug ? (records[fSlug] ?? null) : null}
+                      variant="full"
+                    />
+                  );
+                })}
                 {b.result && event.status === "live" && (
                   <div className="bout-result">
                     {b.result.winner ?? "引き分け"} ／ {b.result.method}
