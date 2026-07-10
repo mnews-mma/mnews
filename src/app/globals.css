@@ -1434,7 +1434,8 @@ footer {
   grid-template-areas:
     "nl vs nr"
     "rl vs rr"
-    "ll vs lr";
+    "ll vs lr"
+    "ml vs mr";
   align-items: end; /* 名前は下端揃え。2行折り返しでも戦績以下の高さが揃う */
   column-gap: 8px;
   row-gap: 2px;
@@ -1445,6 +1446,8 @@ footer {
 .nf-cell--rr { grid-area: rr; text-align: right; }
 .nf-cell--ll { grid-area: ll; }
 .nf-cell--lr { grid-area: lr; text-align: right; }
+.nf-cell--ml { grid-area: ml; font-size: 12px; }
+.nf-cell--mr { grid-area: mr; text-align: right; font-size: 12px; }
 .nf-name {
   font-size: 14px;
   font-weight: 700;

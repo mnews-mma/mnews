@@ -1,5 +1,5 @@
 import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
-import { computeMethodSplit, computeFighterStripStats } from "@/lib/fighterStrip";
+import { computeMethodSplit, computeFighterStripStats, LAST5_SYMBOL } from "@/lib/fighterStrip";
 import { computeCommonOpponents } from "@/lib/articleGenerator";
 import { findFighterSlugByName } from "@/lib/fighters";
 
@@ -56,6 +56,22 @@ function last5Text(entry: FighterRecordEntry): string | null {
   return `直近${last5.length}戦 ${w}勝${l}敗${d > 0 ? `${d}分` : ""}`;
 }
 
+// 直近5戦の○●記号列。対戦カード(FighterStrip)と全く同じ算出(computeFighterStripStats
+// のlast5・LAST5_SYMBOL)・同じCSSクラス(fighter-strip-last5*)を再利用し、見た目を一致させる。
+function Last5Marks({ entry }: { entry: FighterRecordEntry }) {
+  const { last5 } = computeFighterStripStats(entry);
+  if (last5.length === 0) return null;
+  return (
+    <span className="fighter-strip-last5">
+      {last5.map((r, i) => (
+        <span key={i} className={`fighter-strip-last5-${r}`}>
+          {LAST5_SYMBOL[r]}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 // 次戦プレビュー: 次の対戦相手との比較 + 共通対戦相手の明暗。
 // 大会データ(次戦)と選手間の突合はmnewsだけが持つ文脈で、選手単体の
 // 静的ビジュアライザには構造的に作れないセクション。
@@ -96,6 +112,8 @@ export function NextFightCompare({
         <div className="nf-record nf-cell--rr">{oppStats.record}</div>
         {selfLast5 && <div className="nf-last5 nf-cell--ll">{selfLast5}</div>}
         {oppLast5 && <div className="nf-last5 nf-cell--lr">{oppLast5}</div>}
+        {selfLast5 && <div className="nf-cell--ml"><Last5Marks entry={self} /></div>}
+        {oppLast5 && <div className="nf-cell--mr"><Last5Marks entry={opponent} /></div>}
       </div>
 
       {commons.length > 0 && (
