@@ -1687,48 +1687,102 @@ footer {
 .article-fight-section:last-child {
   border-bottom: none;
 }
-.article-fighter-compare {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.article-fighter-col {
-  flex: 1;
-  min-width: 200px;
-  background: var(--s1);
+/* 対比カード: 選手ごとのカードを廃止し、試合単位の左右対比グリッドに統合。
+   枠・影は試合ブロック単位(.cmp-card)のみに絞る。 */
+.cmp-card {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 14px 16px;
+  margin-bottom: 20px;
 }
-.article-fighter-name {
-  display: block;
+.cmp-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cmp-row:last-of-type {
+  border-bottom: none;
+}
+.cmp-row--header {
+  padding-top: 0;
+}
+.cmp-left {
+  text-align: right;
+}
+.cmp-right {
+  text-align: left;
+}
+.cmp-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+.cmp-name {
   font-size: 16px;
   font-weight: 700;
   color: var(--accent);
   text-decoration: underline;
   text-decoration-color: var(--border);
-  margin-bottom: 6px;
 }
-a.article-fighter-name:hover {
+a.cmp-name:hover {
   text-decoration-color: var(--accent);
 }
-.article-fighter-record {
+.cmp-vs {
   font-family: var(--mono);
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--fg);
-  margin-bottom: 6px;
-}
-.article-fighter-stat {
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 700;
   color: var(--muted);
-  margin-bottom: 4px;
+}
+.cmp-val {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+.cmp-val.cmp-win {
+  font-weight: 800;
+  color: var(--text);
+}
+.cmp-val.cmp-lose {
+  font-weight: 500;
+  color: var(--muted);
+}
+.cmp-last5 {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.cmp-legend {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
 }
 .article-fighter-nodata {
   font-size: 12px;
   color: var(--muted);
   font-style: italic;
+  text-align: center;
+  padding: 12px 0 0;
+}
+@media (max-width: 380px) {
+  .cmp-name {
+    font-size: 14px;
+  }
+  .cmp-val {
+    font-size: 13px;
+  }
+  .cmp-last5 {
+    font-size: 17px;
+    letter-spacing: 1px;
+  }
+  .cmp-label {
+    font-size: 10px;
+  }
 }
 .article-subsection {
   margin-top: 16px;

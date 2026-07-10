@@ -35,6 +35,13 @@ const RESULT_SYMBOL: Record<"win" | "loss" | "draw" | "nc", string> = {
   nc: "△",
 };
 
+// 対比行の強調判定: 差が5pt未満は両者とも通常表示(勝敗を付けない)。
+// 5pt以上の差がある場合のみ優位側を強調(cmp-win)・劣位側をグレー(cmp-lose)にする。
+function cmpClass(a: number, b: number): string {
+  if (Math.abs(a - b) < 5) return "";
+  return a > b ? "cmp-win" : "cmp-lose";
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = getOriginalArticle(slug);
@@ -98,46 +105,101 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 {fight.isTitleMatch && <span className="bout-title-badge" style={{ marginLeft: 10 }}>TITLE</span>}
               </h2>
 
-              <div className="article-fighter-compare">
-                {[fight.fighterA, fight.fighterB].map((f) => {
-                  const entry = records[f.slug];
-                  if (!entry) {
-                    return (
-                      <div key={f.slug} className="article-fighter-col">
-                        <span className="article-fighter-name">{f.nameJa}</span>
-                        <div className="article-fighter-nodata">戦績データ準備中</div>
-                      </div>
-                    );
-                  }
-                  const stats = computeFighterStripStats(entry);
-                  const breakdown = computeWinMethodBreakdown(entry);
+              {(() => {
+                if (!entryA || !entryB) {
                   return (
-                    <div key={f.slug} className="article-fighter-col">
-                      <a href={`/fighters/${f.slug}`} className="article-fighter-name">
-                        {f.nameJa}
+                    <div className="cmp-card">
+                      <div className="cmp-row cmp-row--header">
+                        <span className="cmp-name cmp-left">{fight.fighterA.nameJa}</span>
+                        <span className="cmp-vs">VS</span>
+                        <span className="cmp-name cmp-right">{fight.fighterB.nameJa}</span>
+                      </div>
+                      <div className="article-fighter-nodata">戦績データ準備中</div>
+                    </div>
+                  );
+                }
+                const statsA = computeFighterStripStats(entryA);
+                const statsB = computeFighterStripStats(entryB);
+                const bdA = computeWinMethodBreakdown(entryA);
+                const bdB = computeWinMethodBreakdown(entryB);
+                return (
+                  <div className="cmp-card">
+                    <div className="cmp-row cmp-row--header">
+                      <a href={`/fighters/${fight.fighterA.slug}`} className="cmp-name cmp-left">
+                        {fight.fighterA.nameJa}
                       </a>
-                      <div className="article-fighter-record">{stats.record}</div>
-                      {stats.finishRate !== null && (
-                        <div className="article-fighter-stat">フィニッシュ率 {stats.finishRate}%</div>
-                      )}
-                      {breakdown && (
-                        <div className="article-fighter-stat">
-                          KO {breakdown.koPct}% ／ 一本 {breakdown.subPct}% ／ 判定 {breakdown.decisionPct}%
+                      <span className="cmp-vs">VS</span>
+                      <a href={`/fighters/${fight.fighterB.slug}`} className="cmp-name cmp-right">
+                        {fight.fighterB.nameJa}
+                      </a>
+                    </div>
+
+                    <div className="cmp-row">
+                      <span className="cmp-val cmp-left">{statsA.record}</span>
+                      <span className="cmp-label">戦績</span>
+                      <span className="cmp-val cmp-right">{statsB.record}</span>
+                    </div>
+
+                    {statsA.finishRate !== null && statsB.finishRate !== null && (
+                      <div className="cmp-row">
+                        <span className={`cmp-val cmp-left ${cmpClass(statsA.finishRate, statsB.finishRate)}`}>
+                          {statsA.finishRate}%
+                        </span>
+                        <span className="cmp-label">フィニッシュ率</span>
+                        <span className={`cmp-val cmp-right ${cmpClass(statsB.finishRate, statsA.finishRate)}`}>
+                          {statsB.finishRate}%
+                        </span>
+                      </div>
+                    )}
+
+                    {bdA && bdB && (
+                      <>
+                        <div className="cmp-row">
+                          <span className={`cmp-val cmp-left ${cmpClass(bdA.koPct, bdB.koPct)}`}>{bdA.koPct}%</span>
+                          <span className="cmp-label">KO率</span>
+                          <span className={`cmp-val cmp-right ${cmpClass(bdB.koPct, bdA.koPct)}`}>{bdB.koPct}%</span>
                         </div>
-                      )}
-                      {stats.last5.length > 0 && (
-                        <div className="fighter-strip-last5">
-                          {stats.last5.map((r, j) => (
+                        <div className="cmp-row">
+                          <span className={`cmp-val cmp-left ${cmpClass(bdA.subPct, bdB.subPct)}`}>{bdA.subPct}%</span>
+                          <span className="cmp-label">一本率</span>
+                          <span className={`cmp-val cmp-right ${cmpClass(bdB.subPct, bdA.subPct)}`}>{bdB.subPct}%</span>
+                        </div>
+                        <div className="cmp-row">
+                          <span className={`cmp-val cmp-left ${cmpClass(bdA.decisionPct, bdB.decisionPct)}`}>
+                            {bdA.decisionPct}%
+                          </span>
+                          <span className="cmp-label">判定率</span>
+                          <span className={`cmp-val cmp-right ${cmpClass(bdB.decisionPct, bdA.decisionPct)}`}>
+                            {bdB.decisionPct}%
+                          </span>
+                        </div>
+                      </>
+                    )}
+
+                    {statsA.last5.length > 0 && statsB.last5.length > 0 && (
+                      <div className="cmp-row cmp-row--last5">
+                        <span className="cmp-last5 cmp-left">
+                          {statsA.last5.map((r, j) => (
                             <span key={j} className={`fighter-strip-last5-${r}`}>
                               {LAST5_SYMBOL[r]}
                             </span>
                           ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+                        </span>
+                        <span className="cmp-label">直近5戦</span>
+                        <span className="cmp-last5 cmp-right">
+                          {statsB.last5.map((r, j) => (
+                            <span key={j} className={`fighter-strip-last5-${r}`}>
+                              {LAST5_SYMBOL[r]}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="cmp-legend">○勝ち　●負け　△分け</div>
+                  </div>
+                );
+              })()}
 
               {fight.commonOpponents && fight.commonOpponents.length > 0 && (
                 <div className="article-subsection">
@@ -150,6 +212,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                       </li>
                     ))}
                   </ul>
+                  <div className="cmp-legend">○勝ち　●負け　△分け</div>
                 </div>
               )}
 
