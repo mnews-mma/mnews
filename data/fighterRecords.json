@@ -1255,6 +1255,14 @@
     "decision": 4,
     "history": [
       {
+        "date": "2025-12-31",
+        "opponent": "ヴガール・ケラモフ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN 師走の超強者祭り",
+        "round": "R3"
+      },
+      {
         "date": "2025-07-27",
         "opponent": "朝倉未来",
         "result": "loss",
