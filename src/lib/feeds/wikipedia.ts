@@ -3,6 +3,19 @@ import { FightRecord } from "../fighters";
 const FETCH_TIMEOUT_MS = 8000;
 const REVALIDATE_SECONDS = 86400; // Wikipedia data changes slowly; refresh daily
 
+// 不可視Unicode制御文字(ゼロ幅スペース類・Bidi embedding/override/isolate・BOM)を
+// 除去する共通ヘルパー。Wikipediaは人手編集のため、コピペ由来でこれらの文字が
+// 勝敗マーカーや対戦相手名の直前に紛れ込むことがある(実例: クレベル・コイケ
+// 戦績表の"○"直前にU+202Aが混入し、marker.trim()==="○"の厳密一致をすり抜けて
+// 1試合が無音で読み飛ばされた)。マーカー比較・テキスト抽出の両方で通す。
+// 除去対象は不可視制御文字のみ(可視記号・かっこ・ナカグロ等は変更しない)。
+// U+200B-200F(ゼロ幅スペース類・LRM/RLM等)・U+202A-202E(Bidi embedding/override)・
+// U+2066-2069(Bidi isolate)・U+FEFF(BOM/ゼロ幅ノーブレークスペース)。
+const INVISIBLE_CONTROL_CHARS = /[​-‏‪-‮⁦-⁩﻿]/g;
+function stripInvisible(s: string): string {
+  return s.replace(INVISIBLE_CONTROL_CHARS, "");
+}
+
 async function fetchWikitext(lang: "en" | "ja", title: string): Promise<string | null> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
@@ -28,7 +41,7 @@ async function fetchWikitext(lang: "en" | "ja", title: string): Promise<string |
 }
 
 function cleanWikiMarkup(s: string): string {
-  return s
+  return stripInvisible(s)
     .replace(/\{\{small\|([^}]*)\}\}/gi, "$1")
     .replace(/\{\{small\|?\}\}/gi, "")
     .replace(/<ref[^>]*\/>/gi, "")
@@ -63,7 +76,8 @@ const MONTHS: Record<string, string> = {
   december: "12",
 };
 
-function parseDtsDate(raw: string): string {
+function parseDtsDate(rawInput: string): string {
+  const raw = stripInvisible(rawInput);
   // {{dts|2026|May|9}} or {{dts|2026|5|9}}
   const piped = raw.match(/\{\{dts\|(\d{4})\|([A-Za-z0-9]+)\|(\d{1,2})/i);
   if (piped) {
@@ -81,7 +95,7 @@ function parseDtsDate(raw: string): string {
 }
 
 function rowResult(field: string): "win" | "loss" | "draw" | null {
-  const f = field.toLowerCase();
+  const f = stripInvisible(field).toLowerCase();
   if (f.includes("win")) return "win";
   if (f.includes("loss")) return "loss";
   if (f.includes("draw")) return "draw";
@@ -151,7 +165,8 @@ function extractField(wikitext: string, field: string): string | null {
   return value || null;
 }
 
-function parseBirthDate(raw: string): { iso: string; age: number } | null {
+function parseBirthDate(rawInput: string): { iso: string; age: number } | null {
+  const raw = stripInvisible(rawInput);
   const templateMatch = raw.match(/\{\{birth date and age\|([^}]*)\}\}/i);
   if (!templateMatch) return null;
   // パラメータには "df=yes" のような名前付き引数が混じることがあるので、
@@ -301,7 +316,7 @@ function splitTemplateParams(content: string): string[] {
 }
 
 function jaResult(marker: string): "win" | "loss" | "draw" | null {
-  const m = marker.trim();
+  const m = stripInvisible(marker).trim();
   if (m === "○" || m === "〇") return "win";
   if (m === "×" || m === "✕" || m === "✗") return "loss";
   if (m === "△") return "draw";
@@ -395,10 +410,12 @@ export function parseJaFightHistory(wikitext: string): FightRecord[] {
   const records: FightRecord[] = [];
 
   for (const rawContent of blocks) {
-    // <ref> ブロックを分割前に除去（ref内に"|"があると誤分割するため）
-    const content = rawContent
-      .replace(/<ref[^>]*\/>/gi, "")
-      .replace(/<ref[^>]*>[\s\S]*?<\/ref>/gi, "");
+    // <ref> ブロックを分割前に除去（ref内に"|"があると誤分割するため）。
+    // 不可視制御文字もここで一括除去し、parts[0](勝敗マーカー)以降すべての
+    // フィールドを汚染前の状態で分割する。
+    const content = stripInvisible(
+      rawContent.replace(/<ref[^>]*\/>/gi, "").replace(/<ref[^>]*>[\s\S]*?<\/ref>/gi, "")
+    );
     const parts = splitTemplateParams(content).map((p) => p.trim());
     if (parts.length < 5) continue;
 
@@ -442,7 +459,7 @@ export function parseInfoboxJa(wikitext: string): WikiInfobox {
 
   const birthRaw = wikitext.match(/\|[ \t]*birth[ \t]*=[ \t]*([^\n]*)/i)?.[1];
   if (birthRaw) {
-    const m = birthRaw.match(/\{\{生年月日と年齢\|(\d{4})\|(\d{1,2})\|(\d{1,2})/);
+    const m = stripInvisible(birthRaw).match(/\{\{生年月日と年齢\|(\d{4})\|(\d{1,2})\|(\d{1,2})/);
     if (m) {
       const [, y, mo, d] = m;
       const birth = new Date(Date.UTC(Number(y), Number(mo) - 1, Number(d)));

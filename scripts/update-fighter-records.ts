@@ -35,6 +35,19 @@ function toCacheEntry(r: Awaited<ReturnType<typeof resolveFighter>>): FighterRec
   };
 }
 
+// 集計(wins/losses/draws、infobox優先で決まる)とhistory配列を再集計した内訳が
+// 食い違う選手を検知する。ケラモフ戦のように「集計値は正しいがhistoryの1行だけが
+// パーサーの不可視文字混入等で無音欠落する」パターンは、noRecordDataにもならず
+// 通常の失敗ログにも出ないため、この専用チェックでのみ検知できる。
+// 自動修正はしない(検知・ログのみ、修正は人手判断)。
+function findRecordMismatch(r: { wins: number; losses: number; draws: number; history: { result: string }[] }): string | null {
+  const hw = r.history.filter((h) => h.result === "win").length;
+  const hl = r.history.filter((h) => h.result === "loss").length;
+  const hd = r.history.filter((h) => h.result === "draw").length;
+  if (hw === r.wins && hl === r.losses && hd === r.draws) return null;
+  return `集計(${r.wins}-${r.losses}-${r.draws}) vs history内訳(${hw}-${hl}-${hd})`;
+}
+
 // Wikipedia側のレート制限に当たると同時実行数が多いほど失敗しやすい(実測: 5並列で
 // 168人中76人が失敗したが、個別に単発実行すると同じ選手が普通に成功する)。
 // そのため取得は直列(1件ずつ)・失敗時は間隔を空けて数回リトライする。
@@ -70,6 +83,7 @@ async function main() {
   const out: FighterRecordsFile = {};
   const failedNoFallback: string[] = [];
   const failedKeptPrev: string[] = [];
+  const recordMismatches: string[] = [];
 
   for (const f of targets) {
     const r = await resolveWithRetry(f);
@@ -81,8 +95,15 @@ async function main() {
       out[f.slug] = prevEntry;
       failedKeptPrev.push(f.slug);
     } else {
-      out[f.slug] = toCacheEntry(r);
+      const entry = toCacheEntry(r);
+      out[f.slug] = entry;
       if (isBad) failedNoFallback.push(f.slug);
+      // 集計値とhistory内訳の突合(検知のみ・自動修正はしない)。historyが空の
+      // 選手(集計のみ持つ記事、例: 住村竜市朗)は既知の正常状態なので対象外にする。
+      if (!isBad && entry.history.length > 0) {
+        const mismatch = findRecordMismatch(entry);
+        if (mismatch) recordMismatches.push(`${f.slug}(${f.nameJa}): ${mismatch}`);
+      }
     }
     // 選手間にも軽くウェイトを入れて連続fetchの負荷を下げる。
     await new Promise((res) => setTimeout(res, 200));
@@ -99,6 +120,11 @@ async function main() {
   }
   if (failedNoFallback.length) {
     console.log(`今回取得失敗・前回値なしのためデータなし(${failedNoFallback.length}人): ${failedNoFallback.join(", ")}`);
+  }
+  if (recordMismatches.length) {
+    console.warn(
+      `[WARN] 集計値とhistory内訳が不一致(${recordMismatches.length}人・パーサーの取りこぼし疑い、要人手確認):\n  ${recordMismatches.join("\n  ")}`
+    );
   }
 }
 
