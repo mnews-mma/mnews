@@ -683,7 +683,7 @@ export const EVENTS: MEvent[] = [
     sourceUrl: "https://www.shooto-mma.com/schedule/?id=254",
     bouts: [
       {
-        weightClass: "女子スーパーアトム級（48.0kg）",
+        weightClass: "女子スーパーアトム級（50.0kg）",
         fighterA: "渡辺彩華",
         fighterB: "高本千代",
         isTitleMatch: true,
@@ -706,7 +706,7 @@ export const EVENTS: MEvent[] = [
         fighterB: "ジェイク・ムラタ",
       },
       {
-        weightClass: "女子アトム級（46.0kg）",
+        weightClass: "女子アトム級（47.6kg）",
         fighterA: "中村未来",
         fighterB: "嶋屋澪",
       },
