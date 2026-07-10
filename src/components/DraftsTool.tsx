@@ -310,6 +310,27 @@ function ArticleGenTab({
 
   return (
     <div>
+      <div
+        style={{
+          border: "1px solid var(--border)",
+          borderRadius: 8,
+          padding: "12px 16px",
+          marginBottom: 20,
+          background: "var(--s2)",
+          fontSize: 13,
+          lineHeight: 1.8,
+        }}
+      >
+        <div style={{ fontWeight: 700, marginBottom: 4 }}>記事公開の手順(この画面からワンクリック公開はできません)</div>
+        <ol style={{ margin: 0, paddingLeft: 18 }}>
+          <li>下で大会・対象試合を選び、プレビューを確認する</li>
+          <li>「コードをコピー」でコードをコピーする</li>
+          <li>コピーしたコードをClaude Codeに貼り付けて「これで記事作って」と送る(originalArticles.tsへの反映・tsc/build確認・コミット・デプロイ・本番確認まで代行してもらえる)</li>
+          <li>デプロイ後 /articles/[slug] の表示を確認する</li>
+          <li>「告知テキストをコピー」でX告知文をコピーし、記事URL有効化後に手動投稿する</li>
+        </ol>
+      </div>
+
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
         <div>
           <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>大会</label>
