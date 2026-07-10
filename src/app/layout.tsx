@@ -25,13 +25,13 @@ export const metadata: Metadata = {
     siteName: "Mニュース",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: `${SITE_URL}/og-default.png?v=2`, width: 1200, height: 630, type: "image/png", alt: "Mニュース" }],
+    images: [{ url: `${SITE_URL}/og-default.png?v=3`, width: 1200, height: 630, type: "image/png", alt: "Mニュース" }],
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [`${SITE_URL}/og-default.png?v=2`],
+    images: [`${SITE_URL}/og-default.png?v=3`],
   },
 };
 
