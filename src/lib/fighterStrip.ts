@@ -71,23 +71,20 @@ export function computeLossBreakdown(entry: FighterRecordEntry): MethodCounts | 
   return tallyMethods(losses);
 }
 
-export interface RecordTrendPoint {
+export interface FormStripFight {
   date: string;
-  wins: number;
-  losses: number;
+  opponent: string;
+  event: string;
+  method: string;
+  result: FighterRecordEntry["history"][number]["result"];
 }
 
-// 通算勝敗の時系列推移(日付昇順の累積)。試合が無い選手はnull。
-export function computeRecordTrend(entry: FighterRecordEntry): RecordTrendPoint[] | null {
-  if (entry.history.length === 0) return null;
-  const sorted = [...entry.history].sort((a, b) => (a.date < b.date ? -1 : 1));
-  let wins = 0;
-  let losses = 0;
-  return sorted.map((h) => {
-    if (h.result === "win") wins++;
-    if (h.result === "loss") losses++;
-    return { date: h.date, wins, losses };
-  });
+// フォームストリップ(キャリアの流れ)用: history を古い順→新しい順に並べて返す。
+// 1試合=1チップで表示する。試合が無い選手は空配列(呼び出し側で非表示にする)。
+export function buildFormStrip(entry: FighterRecordEntry): FormStripFight[] {
+  return [...entry.history]
+    .sort((a, b) => (a.date < b.date ? -1 : 1))
+    .map((h) => ({ date: h.date, opponent: h.opponent, event: h.event, method: h.method, result: h.result }));
 }
 
 // 勝ち方の内訳(KO/一本/判定の比率)。fighters/[slug]/page.tsx のフィニッシュ内訳バーと

@@ -1422,6 +1422,67 @@ footer {
 .flabel-ko b { color: #dc2626; }
 .flabel-sub b { color: #ea580c; }
 .flabel-dec b { color: #374151; }
+
+/* 負けの決着内訳(勝ちバーの下に細め・ミュートで1本添える) */
+.fighter-lossbar {
+  display: flex;
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--border);
+  margin: 8px 0 5px;
+  opacity: 0.6;
+}
+.lbar-ko { background: #dc2626; }
+.lbar-sub { background: #ea580c; }
+.lbar-dec { background: #9ca3af; }
+.fighter-lossbar-labels {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* フォームストリップ(キャリアの流れ): 1試合=1マス・色のみ・折り返し前提。
+   モバイル(hoverなし)でも成立するよう色チップ+凡例で構成する。 */
+.form-strip-block {
+  margin: 16px 0 4px;
+}
+.form-strip-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.form-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.form-chip {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.form-chip--win { background: #16a34a; }
+.form-chip--loss { background: #dc2626; }
+.form-chip--draw { background: #9ca3af; }
+.form-strip-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.form-strip-legend .fsl {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  margin-left: 6px;
+}
+.form-strip-legend .fsl:first-child { margin-left: 0; }
+.fsl-win { background: #16a34a; }
+.fsl-loss { background: #dc2626; }
+.fsl-draw { background: #9ca3af; }
 .fighter-card-btn {
   display: inline-flex;
   align-items: center;

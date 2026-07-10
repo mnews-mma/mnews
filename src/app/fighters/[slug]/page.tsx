@@ -14,8 +14,8 @@ import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { fullWidthLength } from "@/lib/tweetDigest";
-import { computeWinMethodBreakdown, computeLossBreakdown, computeRecordTrend } from "@/lib/fighterStrip";
-import { FinishBreakdownChart, RateBars, RecordTrendChart } from "@/components/FighterCharts";
+import { computeLossBreakdown } from "@/lib/fighterStrip";
+import FighterFormStrip from "@/components/FighterFormStrip";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
@@ -164,11 +164,10 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const subW = Math.round((fighter.sub / finishBase) * 100);
   const decW = Math.round((fighter.decision / finishBase) * 100);
 
-  // 戦績ビジュアル(Recharts)用データ。noRecordData(戦績実体なし)の選手は
-  // 一切算出せず、呼び出し側のnull/空判定でグラフごと非表示にする(捏造ゼロ)。
-  const winMethodBreakdown = noRecordData ? null : computeWinMethodBreakdown(fighter);
+  // 戦績ビジュアル(CSSのみ・Recharts不使用)用データ。noRecordData(戦績実体なし)の
+  // 選手は一切算出せず、呼び出し側のnull/空判定で非表示にする(捏造ゼロ)。
+  // 負けの決着内訳は history の raw method を既存の分類ロジックで再集計する。
   const lossBreakdown = noRecordData ? null : computeLossBreakdown(fighter);
-  const recordTrend = noRecordData ? null : computeRecordTrend(fighter);
 
   // 同階級の選手: seed値(常に0-0-0)ではなく解決後の実戦績を使い、no-data(戦績実体なし)
   // は /fighters 一覧と同基準で除外する(0-0-0で出さない)。同階級候補だけ解決する(軽量)。
@@ -342,47 +341,41 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
           )}
         </div>
 
-        {/* KO/一本/判定 内訳バー */}
-        {wins > 0 && (
+        {/* 決着内訳: 横100%積み上げバー(勝ち)+ 細めミュートの負けバー(CSSのみ)。
+            バー内テキストは入れず、実数ラベルはバー下に置く(モバイルはみ出し防止)。 */}
+        {!noRecordData && (wins > 0 || (lossBreakdown && losses > 0)) && (
           <div className="fighter-finish-block">
-            <div className="fighter-finish-bar">
-              {koW > 0 && <div className="fbar-ko" style={{ width: `${koW}%` }} />}
-              {subW > 0 && <div className="fbar-sub" style={{ width: `${subW}%` }} />}
-              {decW > 0 && <div className="fbar-dec" style={{ width: `${decW}%` }} />}
-            </div>
-            <div className="fighter-finish-labels">
-              <span className="flabel-ko">KO <b>{fighter.ko}</b></span>
-              <span className="flabel-sub">一本 <b>{fighter.sub}</b></span>
-              <span className="flabel-dec">判定 <b>{fighter.decision}</b></span>
-            </div>
+            {wins > 0 && (
+              <>
+                <div className="fighter-finish-bar">
+                  {koW > 0 && <div className="fbar-ko" style={{ width: `${koW}%` }} />}
+                  {subW > 0 && <div className="fbar-sub" style={{ width: `${subW}%` }} />}
+                  {decW > 0 && <div className="fbar-dec" style={{ width: `${decW}%` }} />}
+                </div>
+                <div className="fighter-finish-labels">
+                  <span className="flabel-ko">KO <b>{fighter.ko}</b></span>
+                  <span className="flabel-sub">一本 <b>{fighter.sub}</b></span>
+                  <span className="flabel-dec">判定 <b>{fighter.decision}</b></span>
+                </div>
+              </>
+            )}
+            {lossBreakdown && losses > 0 && (
+              <>
+                <div className="fighter-lossbar">
+                  {lossBreakdown.ko > 0 && <div className="lbar-ko" style={{ width: `${Math.round((lossBreakdown.ko / losses) * 100)}%` }} />}
+                  {lossBreakdown.sub > 0 && <div className="lbar-sub" style={{ width: `${Math.round((lossBreakdown.sub / losses) * 100)}%` }} />}
+                  {lossBreakdown.decision > 0 && <div className="lbar-dec" style={{ width: `${Math.round((lossBreakdown.decision / losses) * 100)}%` }} />}
+                </div>
+                <div className="fighter-lossbar-labels">
+                  負けの決着 — 被KO {lossBreakdown.ko} ／ 被一本 {lossBreakdown.sub} ／ 被判定 {lossBreakdown.decision}
+                </div>
+              </>
+            )}
           </div>
         )}
 
-        {/* 戦績ビジュアル(Recharts)。noRecordData選手・データ欠損項目は各グラフが
-            自動的に非表示になる(コンポーネント側でnull/空配列ガード)。 */}
-        {!noRecordData && wins > 0 && (
-          <FinishBreakdownChart
-            winCounts={{ ko: fighter.ko, sub: fighter.sub, decision: fighter.decision, other: 0 }}
-            lossCounts={lossBreakdown}
-          />
-        )}
-        {!noRecordData && (
-          <RateBars
-            rates={[
-              { label: "勝率", value: winRate },
-              { label: "フィニッシュ率", value: finishRate },
-              { label: "KO率", value: winMethodBreakdown?.koPct ?? null },
-              { label: "一本率", value: winMethodBreakdown?.subPct ?? null },
-              { label: "判定率", value: winMethodBreakdown?.decisionPct ?? null },
-            ]}
-          />
-        )}
-        {!noRecordData && recordTrend && recordTrend.length > 0 && (
-          <div style={{ marginTop: 20 }}>
-            <div style={{ fontSize: 11, color: "var(--muted)", marginBottom: 4 }}>戦績推移</div>
-            <RecordTrendChart trend={recordTrend} />
-          </div>
-        )}
+        {/* キャリアの流れ(フォームストリップ・CSSのみ)。history空/noRecordDataは非表示。 */}
+        {!noRecordData && <FighterFormStrip history={history} />}
 
         {/* X投稿カードボタン */}
         <a href={`/tools/fighter-card?fighter=${fighter.slug}`} className="fighter-card-btn">
