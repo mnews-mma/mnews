@@ -55,20 +55,18 @@ export function NextFightCompare({
 
   return (
     <div className="nf-compare">
+      {/* 名前・戦績・直近5戦を行グリッドで整列。名前が2行に折り返しても
+          名前は下端揃え(align-items:end)なので戦績以下の高さがズレない。 */}
       <div className="nf-vs">
-        <div className="nf-side">
-          <div className="nf-name">{selfName}</div>
-          <div className="nf-record">{selfStats.record}</div>
-          {selfLast5 && <div className="nf-last5">{selfLast5}</div>}
-        </div>
+        <div className="nf-name nf-cell--nl">{selfName}</div>
         <div className="nf-vs-mark">VS</div>
-        <div className="nf-side nf-side--right">
-          <a href={`/fighters/${opponentSlug}`} className="nf-name nf-name--link">
-            {opponentName}
-          </a>
-          <div className="nf-record">{oppStats.record}</div>
-          {oppLast5 && <div className="nf-last5">{oppLast5}</div>}
-        </div>
+        <a href={`/fighters/${opponentSlug}`} className="nf-name nf-name--link nf-cell--nr">
+          {opponentName}
+        </a>
+        <div className="nf-record nf-cell--rl">{selfStats.record}</div>
+        <div className="nf-record nf-cell--rr">{oppStats.record}</div>
+        {selfLast5 && <div className="nf-last5 nf-cell--ll">{selfLast5}</div>}
+        {oppLast5 && <div className="nf-last5 nf-cell--lr">{oppLast5}</div>}
       </div>
 
       {commons.length > 0 && (

@@ -1431,19 +1431,26 @@ footer {
 .nf-vs {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: start;
-  gap: 8px;
+  grid-template-areas:
+    "nl vs nr"
+    "rl vs rr"
+    "ll vs lr";
+  align-items: end; /* 名前は下端揃え。2行折り返しでも戦績以下の高さが揃う */
+  column-gap: 8px;
+  row-gap: 2px;
 }
-.nf-side {
-  min-width: 0;
-}
-.nf-side--right {
-  text-align: right;
-}
+.nf-cell--nl { grid-area: nl; }
+.nf-cell--nr { grid-area: nr; text-align: right; }
+.nf-cell--rl { grid-area: rl; }
+.nf-cell--rr { grid-area: rr; text-align: right; }
+.nf-cell--ll { grid-area: ll; }
+.nf-cell--lr { grid-area: lr; text-align: right; }
 .nf-name {
   font-size: 14px;
   font-weight: 700;
+  line-height: 1.35;
   color: var(--text);
+  min-width: 0;
 }
 .nf-name--link {
   color: var(--accent);
@@ -1457,19 +1464,19 @@ footer {
   font-family: var(--mono);
   font-size: 15px;
   font-weight: 700;
-  margin-top: 2px;
 }
 .nf-last5 {
   font-size: 11px;
   color: var(--muted);
-  margin-top: 2px;
 }
 .nf-vs-mark {
+  grid-area: vs;
+  align-self: center;
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 700;
   color: var(--muted);
-  padding-top: 4px;
+  text-align: center;
 }
 .nf-commons {
   margin-top: 12px;
