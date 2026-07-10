@@ -9,6 +9,7 @@ import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import FighterStrip from "@/components/FighterStrip";
+import { EventCommonOpponents } from "@/components/FighterVisuals";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
 
@@ -234,49 +235,54 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         ) : event.status === "upcoming" || event.status === "live" ? (
           /* upcoming / live: カード表示 */
           <div className="bout-list">
-            {orderedBouts.map((b, i) => (
-              <div
-                key={i}
-                className={`bout-card${b.isTitleMatch ? " bout-card--title" : ""}${b.cancelled ? " bout-card--cancelled" : ""}`}
-              >
-                <div className="bout-card-meta">
-                  <span className="bout-weight">{b.weightClass}</span>
-                  {b.rule && <span className="bout-rule">{b.rule}</span>}
-                  {b.isTitleMatch && <span className="bout-title-badge">TITLE</span>}
-                  {b.cancelled && <span className="bout-cancelled-badge">中止・変更</span>}
-                  {b.note && !b.isTitleMatch && !b.cancelled && (
-                    <span className="bout-note">{b.note}</span>
+            {orderedBouts.map((b, i) => {
+              const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
+              const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
+              const entryA = slugA ? (records[slugA] ?? null) : null;
+              const entryB = slugB ? (records[slugB] ?? null) : null;
+              return (
+                <div
+                  key={i}
+                  className={`bout-card${b.isTitleMatch ? " bout-card--title" : ""}${b.cancelled ? " bout-card--cancelled" : ""}`}
+                >
+                  <div className="bout-card-meta">
+                    <span className="bout-weight">{b.weightClass}</span>
+                    {b.rule && <span className="bout-rule">{b.rule}</span>}
+                    {b.isTitleMatch && <span className="bout-title-badge">TITLE</span>}
+                    {b.cancelled && <span className="bout-cancelled-badge">中止・変更</span>}
+                    {b.note && !b.isTitleMatch && !b.cancelled && (
+                      <span className="bout-note">{b.note}</span>
+                    )}
+                  </div>
+                  <div className="bout-fighters">
+                    <span className="bout-fighter-a">
+                      <FighterName name={b.fighterA} visibleSlugs={visibleSlugs} />
+                    </span>
+                    <span className="bout-vs">VS</span>
+                    <span className="bout-fighter-b">
+                      <FighterName name={b.fighterB} visibleSlugs={visibleSlugs} />
+                    </span>
+                  </div>
+                  <FighterStrip name={b.fighterA} slug={slugA} entry={entryA} variant="full" />
+                  <FighterStrip name={b.fighterB} slug={slugB} entry={entryB} variant="full" />
+                  {entryA && entryB && (
+                    <EventCommonOpponents
+                      nameA={b.fighterA}
+                      entryA={entryA}
+                      nameB={b.fighterB}
+                      entryB={entryB}
+                      visibleSlugs={visibleSlugs}
+                    />
+                  )}
+                  {b.result && event.status === "live" && (
+                    <div className="bout-result">
+                      {b.result.winner ?? "引き分け"} ／ {b.result.method}
+                      {b.result.round && <span> ／ {b.result.round}</span>}
+                    </div>
                   )}
                 </div>
-                <div className="bout-fighters">
-                  <span className="bout-fighter-a">
-                    <FighterName name={b.fighterA} visibleSlugs={visibleSlugs} />
-                  </span>
-                  <span className="bout-vs">VS</span>
-                  <span className="bout-fighter-b">
-                    <FighterName name={b.fighterB} visibleSlugs={visibleSlugs} />
-                  </span>
-                </div>
-                {[b.fighterA, b.fighterB].map((name) => {
-                  const fSlug = findFighterSlugByName(name, undefined, visibleSlugs);
-                  return (
-                    <FighterStrip
-                      key={name}
-                      name={name}
-                      slug={fSlug}
-                      entry={fSlug ? (records[fSlug] ?? null) : null}
-                      variant="full"
-                    />
-                  );
-                })}
-                {b.result && event.status === "live" && (
-                  <div className="bout-result">
-                    {b.result.winner ?? "引き分け"} ／ {b.result.method}
-                    {b.result.round && <span> ／ {b.result.round}</span>}
-                  </div>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           /* completed: テーブル表示 */

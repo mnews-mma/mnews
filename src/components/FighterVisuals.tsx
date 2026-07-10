@@ -17,6 +17,35 @@ const MARK_CLASS: Record<FighterRecordEntry["history"][number]["result"], string
   nc: "mk-draw",
 };
 
+// 共通対戦相手の行(選手ページ次戦カード・大会ページ両対応の共有部分)。
+// マーク仕様(○/X/△)の変更は1箇所への反映で両方に伝播する。
+function CommonOpponentRows({
+  commons,
+  visibleSlugs,
+}: {
+  commons: ReturnType<typeof computeCommonOpponents>;
+  visibleSlugs: Set<string>;
+}) {
+  return (
+    <>
+      {commons.map((c) => {
+        const cSlug = findFighterSlugByName(c.name, undefined, visibleSlugs);
+        return (
+          <div key={c.name} className="nf-common-row">
+            {cSlug ? (
+              <a href={`/fighters/${cSlug}`} className="nf-common-name">{c.name}</a>
+            ) : (
+              <span>{c.name}</span>
+            )}
+            <span className={`nf-mk ${MARK_CLASS[c.resultA]}`}>{MARK[c.resultA]}</span>
+            <span className={`nf-mk ${MARK_CLASS[c.resultB]}`}>{MARK[c.resultB]}</span>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
 // 直近5戦を順序なしの集計テキストで返す(並び順の説明が要らない)。
 function last5Text(entry: FighterRecordEntry): string | null {
   const last5 = computeFighterStripStats(entry).last5;
@@ -76,23 +105,43 @@ export function NextFightCompare({
             <span className="nf-col">{selfName}</span>
             <span className="nf-col">{opponentName}</span>
           </div>
-          {commons.map((c) => {
-            const cSlug = findFighterSlugByName(c.name, undefined, visibleSlugs);
-            return (
-              <div key={c.name} className="nf-common-row">
-                {cSlug ? (
-                  <a href={`/fighters/${cSlug}`} className="nf-common-name">{c.name}</a>
-                ) : (
-                  <span>{c.name}</span>
-                )}
-                <span className={`nf-mk ${MARK_CLASS[c.resultA]}`}>{MARK[c.resultA]}</span>
-                <span className={`nf-mk ${MARK_CLASS[c.resultB]}`}>{MARK[c.resultB]}</span>
-              </div>
-            );
-          })}
+          <CommonOpponentRows commons={commons} visibleSlugs={visibleSlugs} />
         </div>
       )}
     </div>
+  );
+}
+
+// 大会ページの対戦カード用・共通対戦相手(折りたたみ)。
+// ロジックは選手ページの次戦カードと同一(computeCommonOpponents / CommonOpponentRows流用)。
+// 共通対戦相手0人、または片方が戦績データなし(noRecordData)の場合はnull(何も出さない)。
+export function EventCommonOpponents({
+  nameA,
+  entryA,
+  nameB,
+  entryB,
+  visibleSlugs,
+}: {
+  nameA: string;
+  entryA: FighterRecordEntry;
+  nameB: string;
+  entryB: FighterRecordEntry;
+  visibleSlugs: Set<string>;
+}) {
+  if (entryA.noRecordData || entryB.noRecordData) return null;
+  const commons = computeCommonOpponents(entryA, entryB).slice(0, 8);
+  if (commons.length === 0) return null;
+
+  return (
+    <details className="bout-commons">
+      <summary className="bout-commons-summary">共通対戦相手 {commons.length}人</summary>
+      <div className="nf-commons-head">
+        <span>共通対戦相手</span>
+        <span className="nf-col">{nameA}</span>
+        <span className="nf-col">{nameB}</span>
+      </div>
+      <CommonOpponentRows commons={commons} visibleSlugs={visibleSlugs} />
+    </details>
   );
 }
 

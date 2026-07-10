@@ -1522,6 +1522,36 @@ footer {
   font-weight: 700;
 }
 
+/* 大会ページ・対戦カード内の共通対戦相手(折りたたみ・ネイティブdetails) */
+.bout-commons {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+.bout-commons-summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  list-style: none;
+}
+.bout-commons-summary::-webkit-details-marker {
+  display: none;
+}
+.bout-commons-summary::after {
+  content: "▼";
+  font-size: 8px;
+  transition: transform 0.15s;
+}
+.bout-commons[open] .bout-commons-summary::after {
+  transform: rotate(180deg);
+}
+.bout-commons .nf-commons-head {
+  margin-top: 10px;
+}
+
 /* 勝ち方と負け方(バタフライ): 決着方法を行に、左=勝ち・右=負けを同じ物差しで対比 */
 .bf-head,
 .bf-row {
