@@ -597,75 +597,89 @@ export const EVENTS: MEvent[] = [
     venue: "ニューピアホール",
     sourceUrl: "https://www.deep2001.com/deep-jewels-54/",
     relatedEventSlugs: ["deep-tokyo-impact-2026-4th"],
+    // 階級/体重/ラウンド表記はDEEP公式(sourceUrl)に一致させる。JEWELSは
+    // 「階級名」表記と「◯kg以下」の契約体重表記が混在するため、公式が階級名で
+    // 出しているカードはkgを併記せず(架空の数値を足さない)、公式が体重のみの
+    // カードはDEEPの階級マスタへ機械的に丸め込まない(◯kg以下のまま尊重する)。
     bouts: [
       {
-        weightClass: "49.0kg契約",
+        weightClass: "DEEP JEWELS 49kg以下",
         fighterA: "彩綺",
         fighterB: "竹林愛留",
+        note: "5分3R",
       },
       {
-        weightClass: "54.0kg契約",
+        weightClass: "DEEP JEWELS 54kg以下",
         fighterA: "ののか",
         fighterB: "重田ほのか",
+        note: "5分3R",
       },
       {
-        weightClass: "DEEPJEWELSバンタム級（54.0kg）",
+        weightClass: "DEEP JEWELSバンタム級",
         fighterA: "百湖",
         fighterB: "キューティ",
+        note: "5分3R",
       },
       {
-        weightClass: "49.0kg契約",
+        weightClass: "DEEP JEWELS 49kg以下",
         fighterA: "海咲イルカ",
         fighterB: "月井隼南",
+        note: "5分2R",
       },
       {
-        weightClass: "DEEPJEWELSストロー級（48.0kg）",
+        weightClass: "DEEP JEWELSストロー級",
         fighterA: "桐生祐子",
         fighterB: "横瀬友愛",
+        note: "5分2R",
       },
       {
-        weightClass: "DEEPJEWELSミクロ級（46.0kg）",
+        weightClass: "DEEP JEWELSミクロ級",
         fighterA: "大井すず",
         fighterB: "知名眞陽菜",
+        note: "5分2R",
       },
       {
-        weightClass: "DEEPJEWELSストロー級（48.0kg）",
+        weightClass: "DEEP JEWELSストロー級",
         fighterA: "アラミ",
         fighterB: "堀内美沙紀",
+        note: "5分2R",
       },
       {
-        weightClass: "49.0kg契約",
+        weightClass: "DEEP JEWELS 49kg以下",
         fighterA: "サラ",
         fighterB: "渡邊花美",
+        note: "5分2R",
       },
       {
-        weightClass: "50.0kg契約",
+        weightClass: "DEEP JEWELS 50kg以下",
         fighterA: "横瀬美久",
         fighterB: "Marin",
+        note: "5分2R",
       },
       {
-        weightClass: "DEEPJEWELSストロー級（48.0kg）",
+        weightClass: "DEEP JEWELSストロー級",
         fighterA: "堀井かりん",
         fighterB: "JUICY",
+        note: "5分2R",
       },
-      // アマチュアSルール
+      // アマチュアSルール(公式リスト末尾3試合。オープニングファイト表記は既存の掲載順に準拠)
       {
-        weightClass: "50.0kg契約",
-        rule: "アマチュアSルール",
+        weightClass: "DEEP JEWELS 50kg以下",
+        rule: "アマチュアSルール 3分2R",
         fighterA: "あきぴ",
         fighterB: "セアリ",
         note: "オープニングファイト",
       },
       {
-        weightClass: "50.0kg契約",
-        rule: "アマチュアSルール",
+        weightClass: "DEEP JEWELS 50kg以下",
+        rule: "アマチュアSルール 3分2R",
         fighterA: "横江明日香",
         fighterB: "谷山心優",
         note: "オープニングファイト",
       },
       {
-        weightClass: "50.0kg契約",
-        rule: "アマチュアSルール",
+        weightClass: "DEEP JEWELS 50kg以下",
+        rule: "アマチュアSルール 3分2R",
         fighterA: "和智美音",
         fighterB: "山内梨緒",
         note: "オープニングファイト",

@@ -57,19 +57,43 @@ export interface MethodCounts {
 // infoboxの明示集計値)は勝ち側専用で、負け側の内訳フィールドは存在しない。
 // このためhistoryのraw methodをキーワードで分類して再集計する(推定はしない、
 // 実データのテキスト分類のみ)。分類できない場合はotherに計上する。
+// 決着方法データが実質存在しない(round/time以外の記述が「N/A」のみ等)試合を
+// 検出する。「2R N/A 洗濯ばさみ」のようにtimeだけがN/Aで決まり技名は実在する
+// ケースを誤って弾かないよう、round+time相当のプレフィックスを取り除いた
+// 残りが本当に空/N/Aの場合のみ「不明」とする(捏造ゼロ: 存在しない決着方法を
+// 「その他」という決着があったかのように集計しない)。
+function isUnknownMethod(method: string): boolean {
+  const trimmed = method.trim();
+  if (trimmed === "" || trimmed === "—") return true;
+  const stripped = trimmed.replace(/^\S*\s+[\d:]+\s+/, "").trim();
+  return /^N\/A$/i.test(stripped);
+}
+
 function classifyMethodJa(method: string): keyof MethodCounts {
   if (method.includes("判定")) return "decision";
   if (/TKO|KO/i.test(method)) return "ko";
   // 一本(サブミッション)は決まり技名で表現されることが多いため、代表的な
-  // 関節技・絞め技のキーワードで判定する(history実データで確認された表記:
-  // 「絞め」「クランク」「固め」「三角」「チョーク」「腕ひしぎ」「ロック」等)。
-  if (/絞め|クランク|固め|三角|チョーク|腕ひしぎ|ロック|一本/.test(method)) return "sub";
+  // 関節技・絞め技のキーワードで判定する。history実データを全選手分棚卸しして
+  // 判明した表記ゆれを網羅する:
+  // 絞め系(絞め/チョーク/スリーパー[ホールド]/ドラゴンスリーパー/ネックシザース/
+  // 洗濯ばさみ)、関節技系(固め/腕ひしぎ/三角/クランク/ロック/ヒール[フック・
+  // ホールド]/アームバー/オモプラッタ/アメリカーナ/ツイスター/アンクルホールド/
+  // ニーバー/スロエフストレッチ)、その他「サブミッション」表記そのもの・「一本」。
+  if (
+    /絞め|クランク|固め|三角|チョーク|腕ひしぎ|ロック|一本|スリーパー|ホールド|ヒール|アームバー|オモプラッタ|アメリカーナ|ツイスター|ネックシザース|洗濯ばさみ|サブミッション|スロエフ|ニーバー/.test(
+      method
+    )
+  )
+    return "sub";
   return "other";
 }
 
 function tallyMethods(fights: FighterRecordEntry["history"]): MethodCounts {
   const counts: MethodCounts = { ko: 0, sub: 0, decision: 0, other: 0 };
-  for (const f of fights) counts[classifyMethodJa(f.method)]++;
+  for (const f of fights) {
+    if (isUnknownMethod(f.method)) continue; // 集計から除外(捏造ゼロ)
+    counts[classifyMethodJa(f.method)]++;
+  }
   return counts;
 }
 

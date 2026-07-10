@@ -1285,8 +1285,8 @@ export const FIGHTERS: Fighter[] = [
   { slug: "okumura-airu", nameJa: "奥村アイル", nameEn: "Airu Okumura", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
 
   // --- 手動追加6名(2026-07・通称なし指定) ---
-  { slug: "park-siwoo", nameJa: "パク・シウ", nameEn: "Si Woo Park", org: "deep", weightClass: "女子アトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
-  { slug: "lee-yeji", nameJa: "イ・イェジ", nameEn: "Ye Ji Lee", org: "deep", weightClass: "女子アトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  { slug: "park-siwoo", nameJa: "パク・シウ", nameEn: "Si Woo Park", org: "deep", weightClass: "女子スーパーアトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  { slug: "lee-yeji", nameJa: "イ・イェジ", nameEn: "Ye Ji Lee", org: "deep", weightClass: "女子スーパーアトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "miyake-kisa", nameJa: "三宅輝砂", nameEn: "Kisa Miyake", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "aoi-jin", nameJa: "青井人", nameEn: "Jin Aoi", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "hamada-takumi", nameJa: "濱田巧", nameEn: "Takumi Hamada", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
