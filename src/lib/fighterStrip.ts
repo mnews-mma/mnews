@@ -28,3 +28,22 @@ export function computeFighterStripStats(entry: FighterRecordEntry): FighterStri
     .map((h) => h.result);
   return { record, finishRate, last5 };
 }
+
+export interface WinMethodBreakdown {
+  koPct: number;
+  subPct: number;
+  decisionPct: number;
+}
+
+// 勝ち方の内訳(KO/一本/判定の比率)。fighters/[slug]/page.tsx のフィニッシュ内訳バーと
+// 同じ計算式(finishBase = max(wins, ko+sub+decision) || 1)に揃える。
+// wins=0かつko+sub+decision=0の選手はnull(算出不能)。
+export function computeWinMethodBreakdown(entry: FighterRecordEntry): WinMethodBreakdown | null {
+  const finishBase = Math.max(entry.wins, entry.ko + entry.sub + entry.decision);
+  if (finishBase === 0) return null;
+  return {
+    koPct: Math.round((entry.ko / finishBase) * 100),
+    subPct: Math.round((entry.sub / finishBase) * 100),
+    decisionPct: Math.round((entry.decision / finishBase) * 100),
+  };
+}

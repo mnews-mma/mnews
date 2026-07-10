@@ -6,12 +6,13 @@ import type { FeedArticle } from "@/lib/newsClassify";
 import { relativeTimeJa } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
 
-type Filter = "all" | "official" | "media";
+type Filter = "all" | "official" | "media" | "original";
 
 const CHIPS: { key: Filter; label: string }[] = [
   { key: "all", label: "すべて" },
   { key: "official", label: "公式" },
   { key: "media", label: "メディア" },
+  { key: "original", label: "オリジナル" },
 ];
 
 // 公式カードの団体バッジ。「○○公式」表記(団体カラー)で1つに集約する。
@@ -38,15 +39,20 @@ function dayLabel(key: string, todayKey: string): string {
   return key === todayKey ? `今日 · ${base}` : base;
 }
 
-// 通常カード / 速報カード。関連選手チップは外部リンク<a>の外・兄弟要素として
-// 配置する(ネストアンカー禁止のため、<a>自体を<div>でラップする)。
+// 通常カード / 速報カード / オリジナル記事カード。関連選手チップは外部リンク<a>の
+// 外・兄弟要素として配置する(ネストアンカー禁止のため、<a>自体を<div>でラップする)。
+// オリジナル記事(isOriginal)は/articles/[slug]への内部リンクのため、
+// target="_blank"を付けない(サイト内遷移として扱う)。
 function FeedCard({ a }: { a: FeedArticle }) {
   const chips = a.relatedFighters ?? [];
+  const linkProps = a.isOriginal ? {} : { target: "_blank", rel: "noopener noreferrer" };
   return (
     <div className="uf-card-wrap">
-      <a href={a.url} target="_blank" rel="noopener noreferrer" className="uf-card">
+      <a href={a.url} {...linkProps} className="uf-card">
         <div className="uf-meta">
-          {a.kind === "official" ? (
+          {a.isOriginal ? (
+            <span className="article-original-badge">オリジナル</span>
+          ) : a.kind === "official" ? (
             officialBadge(a.source)
           ) : (
             <span className="uf-b-media">メディア</span>
@@ -54,7 +60,7 @@ function FeedCard({ a }: { a: FeedArticle }) {
           <span className="uf-time">{relativeTimeJa(a.publishedAt)}</span>
         </div>
         <h3 className="uf-title">{a.title}</h3>
-        {a.kind === "media" && <div className="uf-src">via {a.origin}</div>}
+        {!a.isOriginal && a.kind === "media" && <div className="uf-src">via {a.origin}</div>}
       </a>
       {chips.length > 0 && (
         <div className="uf-related-chips">
@@ -84,7 +90,12 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
     window.history.replaceState(null, "", url);
   }
 
-  const filtered = articles.filter((a) => filter === "all" || a.kind === filter);
+  const filtered = articles.filter((a) => {
+    if (filter === "all") return true;
+    if (filter === "original") return !!a.isOriginal;
+    // official/mediaタブにはオリジナル記事を混ぜない(専用のオリジナルタブでのみ表示)
+    return !a.isOriginal && a.kind === filter;
+  });
   const todayKey = jstDayKey(new Date().toISOString());
 
   // 日付でグルーピング（detected_at降順は入力側で確定済み）

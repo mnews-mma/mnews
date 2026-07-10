@@ -10,6 +10,7 @@ import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import FighterStrip from "@/components/FighterStrip";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
+import { findArticlesForEvent } from "@/lib/originalArticles";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
@@ -83,6 +84,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const relatedEvents = (event.relatedEventSlugs ?? [])
     .map((s) => getEvent(s))
     .filter(Boolean) as NonNullable<ReturnType<typeof getEvent>>[];
+
+  // この大会についての「数字で見る対戦カード」記事(存在する場合のみリンクを出す)
+  const relatedArticles = findArticlesForEvent(event.slug);
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },
@@ -185,6 +189,21 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                   </span>
                   <span>{r.eventName}</span>
                   <span style={{ fontSize: 12, color: "var(--muted)" }}>{r.venue}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* この大会の「数字で見る対戦カード」記事(存在する場合のみ) */}
+        {relatedArticles.length > 0 && (
+          <div className="event-related">
+            <div className="event-section-label">関連記事</div>
+            <div className="event-related-links">
+              {relatedArticles.map((a) => (
+                <a key={a.slug} href={`/articles/${a.slug}`} className="event-related-link" style={{ borderLeftColor: "var(--accent)" }}>
+                  <span className="article-original-badge" style={{ fontSize: 10 }}>オリジナル</span>
+                  <span>{a.title}</span>
                 </a>
               ))}
             </div>

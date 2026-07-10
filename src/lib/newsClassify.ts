@@ -123,6 +123,10 @@ export interface FeedArticle extends Article {
   // タイトル内の関連選手チップ(サーバー側で算出。matchRelatedFighters経由)。
   // toFeedArticles()自体はここでは算出しない(呼び出し側=page.tsxで付与する)。
   relatedFighters?: import("./relatedFighterChips").RelatedFighterChip[];
+  // mnews編集部のオリジナル記事(数字で見る対戦カード等)。trueの場合、
+  // urlは外部リンクではなく/articles/[slug]への内部リンクとして扱う
+  // (kind/newsTypeのofficial/media分類とは独立した軸)。
+  isOriginal?: boolean;
 }
 
 // サーバ側(force-dynamic)で記事を分類・速報判定し、公開時刻(publishedAt)降順で並べる。

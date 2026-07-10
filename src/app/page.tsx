@@ -15,6 +15,7 @@ import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
 import { toFeedArticles } from "@/lib/newsClassify";
 import { matchRelatedFighters } from "@/lib/relatedFighterChips";
+import { ORIGINAL_ARTICLES, originalArticleToFeedArticle } from "@/lib/originalArticles";
 import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
@@ -88,7 +89,11 @@ export default async function HomePage() {
 
   // 統一フィード: 当日含む直近3日分(JST暦日)を表示。ただし3日分が8件未満なら
   // 直近8件まで遡って表示する(下限保証)。並び順・時刻は publishedAt 基準。
-  const feedAll = toFeedArticles(enrichFirstSeen(articles, firstSeenMap));
+  // オリジナル記事(数字で見る対戦カード等)もRSS由来記事と同じ並びに混在させる。
+  const originalFeedArticles = ORIGINAL_ARTICLES.map(originalArticleToFeedArticle);
+  const feedAll = [...toFeedArticles(enrichFirstSeen(articles, firstSeenMap)), ...originalFeedArticles].sort(
+    (x, y) => new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime()
+  );
   const jstNow = new Date(Date.now() + 9 * 3600_000);
   const startOfTodayJstMs =
     Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()) - 9 * 3600_000;

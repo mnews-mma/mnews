@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { FIGHTERS } from "@/lib/fighters";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { EVENTS } from "@/lib/events";
+import { ORIGINAL_ARTICLES } from "@/lib/originalArticles";
 
 const BASE_URL = "https://www.mnews.jp";
 const TODAY = new Date().toISOString().split("T")[0];
@@ -46,5 +47,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: e.status === "upcoming" ? TODAY : e.date,
   } as MetadataRoute.Sitemap[number]));
 
-  return [...staticRoutes, ...fighterRoutes, ...resultRoutes, ...eventRoutes];
+  const articleRoutes: MetadataRoute.Sitemap = ORIGINAL_ARTICLES.map((a) => ({
+    url: `${BASE_URL}/articles/${a.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.6,
+    lastModified: a.publishedAt,
+  }));
+
+  return [...staticRoutes, ...fighterRoutes, ...resultRoutes, ...eventRoutes, ...articleRoutes];
 }
