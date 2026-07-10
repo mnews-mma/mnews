@@ -1779,10 +1779,15 @@ footer {
   color: var(--muted);
 }
 
+/* グリッド化: 左右を独立ブロックにし、VSは中央固定(align-self)。
+   align-items:start で両ブロックの1行目を上端で揃えるため、片方だけ名前が
+   2行に折り返しても左右のベースラインがズレない(flexのcenter揃えだと
+   折り返し側だけ縦位置が変わってしまうため)。 */
 .bout-fighters {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
   font-size: 15px;
   font-weight: 700;
 }
@@ -1790,15 +1795,16 @@ footer {
 .bout-vs {
   font-family: var(--mono);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--muted);
   letter-spacing: 1px;
-  flex-shrink: 0;
+  align-self: center;
+  padding-top: 1px;
 }
 
 .bout-fighter-a,
 .bout-fighter-b {
-  flex: 1;
+  min-width: 0;
 }
 
 .bout-fighter-b {
