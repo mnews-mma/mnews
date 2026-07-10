@@ -120,6 +120,9 @@ export interface FeedArticle extends Article {
   kind: Kind;
   newsType: NewsType;
   flash: boolean;
+  // タイトル内の関連選手チップ(サーバー側で算出。matchRelatedFighters経由)。
+  // toFeedArticles()自体はここでは算出しない(呼び出し側=page.tsxで付与する)。
+  relatedFighters?: import("./relatedFighterChips").RelatedFighterChip[];
 }
 
 // サーバ側(force-dynamic)で記事を分類・速報判定し、公開時刻(publishedAt)降順で並べる。

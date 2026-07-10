@@ -1853,6 +1853,35 @@ a.uf-card:hover { border-color: var(--muted); }
 }
 .uf-src { font-size: 11px; color: var(--muted); margin-top: 8px; }
 
+/* 関連選手チップ: .uf-card(外部リンク)の兄弟要素として.uf-card-wrap内に配置 */
+.uf-related-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 0 2px;
+}
+.uf-related-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-right: 2px;
+}
+.uf-related-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 2px 10px;
+  text-decoration: none;
+}
+.uf-related-chip:hover {
+  border-color: var(--accent);
+}
+
 /* ===== HOME LAYOUT =====
    全セクション共通の外側コンテナ。max-width・左右パディングを1箇所で定義し、
    上段2カラム(feed+右レール)と下段パネルの左右端を縦一直線に揃える。 */

@@ -14,6 +14,7 @@ import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
 import { toFeedArticles } from "@/lib/newsClassify";
+import { matchRelatedFighters } from "@/lib/relatedFighterChips";
 import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
@@ -93,7 +94,13 @@ export default async function HomePage() {
     Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()) - 9 * 3600_000;
   const cutoffMs = startOfTodayJstMs - 2 * 86400_000; // 当日含む直近3日
   const within3d = feedAll.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
-  const feedArticles = within3d.length >= 8 ? within3d : feedAll.slice(0, 8);
+  // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを
+  // 突合。クライアントにはマッチング結果(name/slug)のみを渡す(ロジック自体は
+  // 送らない)。
+  const feedArticles = (within3d.length >= 8 ? within3d : feedAll.slice(0, 8)).map((a) => ({
+    ...a,
+    relatedFighters: matchRelatedFighters(a.title),
+  }));
 
   // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて
   // EventRail側でさらに自動調整)。所属団体のラベル/色だけ先に確定させて渡す。

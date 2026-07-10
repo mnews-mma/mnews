@@ -38,21 +38,35 @@ function dayLabel(key: string, todayKey: string): string {
   return key === todayKey ? `今日 · ${base}` : base;
 }
 
-// 通常カード / 速報カード
+// 通常カード / 速報カード。関連選手チップは外部リンク<a>の外・兄弟要素として
+// 配置する(ネストアンカー禁止のため、<a>自体を<div>でラップする)。
 function FeedCard({ a }: { a: FeedArticle }) {
+  const chips = a.relatedFighters ?? [];
   return (
-    <a href={a.url} target="_blank" rel="noopener noreferrer" className="uf-card">
-      <div className="uf-meta">
-        {a.kind === "official" ? (
-          officialBadge(a.source)
-        ) : (
-          <span className="uf-b-media">メディア</span>
-        )}
-        <span className="uf-time">{relativeTimeJa(a.publishedAt)}</span>
-      </div>
-      <h3 className="uf-title">{a.title}</h3>
-      {a.kind === "media" && <div className="uf-src">via {a.origin}</div>}
-    </a>
+    <div className="uf-card-wrap">
+      <a href={a.url} target="_blank" rel="noopener noreferrer" className="uf-card">
+        <div className="uf-meta">
+          {a.kind === "official" ? (
+            officialBadge(a.source)
+          ) : (
+            <span className="uf-b-media">メディア</span>
+          )}
+          <span className="uf-time">{relativeTimeJa(a.publishedAt)}</span>
+        </div>
+        <h3 className="uf-title">{a.title}</h3>
+        {a.kind === "media" && <div className="uf-src">via {a.origin}</div>}
+      </a>
+      {chips.length > 0 && (
+        <div className="uf-related-chips">
+          <span className="uf-related-label">関連:</span>
+          {chips.map((c) => (
+            <a key={c.slug} href={`/fighters/${c.slug}`} className="uf-related-chip">
+              {c.name}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
