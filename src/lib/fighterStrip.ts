@@ -64,13 +64,6 @@ function tallyMethods(fights: FighterRecordEntry["history"]): MethodCounts {
   return counts;
 }
 
-// 負け側の決着内訳(history再集計)。敗北0件はnull(算出不能)。
-export function computeLossBreakdown(entry: FighterRecordEntry): MethodCounts | null {
-  const losses = entry.history.filter((h) => h.result === "loss");
-  if (losses.length === 0) return null;
-  return tallyMethods(losses);
-}
-
 
 // 勝ち方の内訳(KO/一本/判定の比率)。fighters/[slug]/page.tsx のフィニッシュ内訳バーと
 // 同じ計算式(finishBase = max(wins, ko+sub+decision) || 1)に揃える。
@@ -84,3 +77,19 @@ export function computeWinMethodBreakdown(entry: FighterRecordEntry): WinMethodB
     decisionPct: Math.round((entry.decision / finishBase) * 100),
   };
 }
+
+// ── 選手ページ再設計(⑥)用の集計。すべて history の生データからの再解析で、
+//    勝ち側/負け側とも同一ロジックで内部整合を取る(保存済みko/sub/decisionは
+//    勝ち側のみ・出自が一様でないため、ここでは使わず history を正とする)。 ──
+
+// 勝ち方 vs 負け方の並置対比用。勝ち・負けそれぞれのKO/一本/判定内訳を返す。
+// 該当試合0件の側はnull(呼び出し側で非表示)。
+export function computeMethodSplit(entry: FighterRecordEntry): { win: MethodCounts | null; loss: MethodCounts | null } {
+  const wins = entry.history.filter((h) => h.result === "win");
+  const losses = entry.history.filter((h) => h.result === "loss");
+  return {
+    win: wins.length > 0 ? tallyMethods(wins) : null,
+    loss: losses.length > 0 ? tallyMethods(losses) : null,
+  };
+}
+

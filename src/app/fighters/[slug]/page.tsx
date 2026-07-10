@@ -5,7 +5,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
 import { resolveOpponentSlug } from "@/lib/fighterLinkOverrides";
 import { SOURCES } from "@/lib/sources";
-import { resolveFighterCached, resolveFightersCached } from "@/lib/fighterRecordsCache";
+import { resolveFighterCached, resolveFightersCached, fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
@@ -14,7 +14,7 @@ import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { fullWidthLength } from "@/lib/tweetDigest";
-import { computeLossBreakdown, computeFighterStripStats } from "@/lib/fighterStrip";
+import { MethodButterfly, NextFightCompare } from "@/components/FighterVisuals";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
@@ -44,14 +44,6 @@ const LATEST_RESULT_LABEL: Record<string, string> = {
   loss: "直近●黒星",
   draw: "直近△引分",
   nc: "最新試合結果",
-};
-
-// 直近5試合の勝敗記号(○=勝ち / ✗=負け / △=分・無効)。
-const RECENT_FORM_SYMBOL: Record<string, string> = {
-  win: "○",
-  loss: "✗",
-  draw: "△",
-  nc: "△",
 };
 
 function buildFighterTitle(fighter: ResolvedFighter, orgLabel: string): string {
@@ -165,18 +157,20 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const nextFight = appearance?.kind === "bout" ? { event: appearance.event, bout: appearance.bout } : null;
   const { winRate, finishRate } = calcFighterRates(fighter);
 
-  // フィニッシュ内訳バー用
-  const finishBase = Math.max(wins, fighter.ko + fighter.sub + fighter.decision) || 1;
-  const koW = Math.round((fighter.ko / finishBase) * 100);
-  const subW = Math.round((fighter.sub / finishBase) * 100);
-  const decW = Math.round((fighter.decision / finishBase) * 100);
-
-  // 戦績ビジュアル(CSSのみ・Recharts不使用)用データ。noRecordData(戦績実体なし)の
-  // 選手は一切算出せず、呼び出し側のnull/空判定で非表示にする(捏造ゼロ)。
-  // 負けの決着内訳は history の raw method を既存の分類ロジックで再集計する。
-  const lossBreakdown = noRecordData ? null : computeLossBreakdown(fighter);
-  // 直近5試合(新しい順)。last5は既存の共通集計(events/results等と同ロジック)を流用。
-  const recentForm = noRecordData ? [] : computeFighterStripStats(fighter).last5;
+  // 次戦の対戦相手情報(次戦プレビュー用)。相手がDB外/戦績データなしの場合は
+  // entry=null になり、バナーのみ表示(比較・共通対戦相手は出さない=捏造ゼロ)。
+  const records = await fetchFighterRecords();
+  const nextOpp = nextFight
+    ? (() => {
+        const name =
+          normSpace(nextFight.bout.fighterA) === normSpace(fighter.nameJa)
+            ? nextFight.bout.fighterB
+            : nextFight.bout.fighterA;
+        const oppSlug = findFighterSlugByName(name, slug, visibleSlugs);
+        const entry = oppSlug ? records[oppSlug] : undefined;
+        return { name, slug: oppSlug, entry: entry && !entry.noRecordData ? entry : null };
+      })()
+    : null;
 
   // 同階級の選手: seed値(常に0-0-0)ではなく解決後の実戦績を使い、no-data(戦績実体なし)
   // は /fighters 一覧と同基準で除外する(0-0-0で出さない)。同階級候補だけ解決する(軽量)。
@@ -289,32 +283,37 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
           </span>
         </div>
 
-        {/* 次戦バナー */}
-        {nextFight && (() => {
-          const opponentName =
-            normSpace(nextFight.bout.fighterA) === normSpace(fighter.nameJa)
-              ? nextFight.bout.fighterB
-              : nextFight.bout.fighterA;
-          const opponentSlug = findFighterSlugByName(opponentName, slug, visibleSlugs);
-          return (
-            <div className="fighter-next-fight">
+        {/* 次戦プレビュー: バナー行 + (相手がDB内なら)戦績比較・共通対戦相手 */}
+        {nextFight && nextOpp && (
+          <div className="fighter-next-fight" style={{ display: "block" }}>
+            <div className="fighter-next-fight-row">
               <span className="fighter-next-fight-label">次戦</span>
               <a href={`/events/${nextFight.event.slug}`} className="fighter-next-fight-link">
                 {nextFight.event.date} ／ {nextFight.event.eventName}
               </a>
               {" ／ vs "}
-              {opponentSlug ? (
-                <a href={`/fighters/${opponentSlug}`} className="fighter-next-fight-link">
-                  {opponentName}
+              {nextOpp.slug ? (
+                <a href={`/fighters/${nextOpp.slug}`} className="fighter-next-fight-link">
+                  {nextOpp.name}
                 </a>
               ) : (
-                opponentName
+                nextOpp.name
               )}
               {" ／ "}
               {nextFight.bout.weightClass}
             </div>
-          );
-        })()}
+            {!noRecordData && nextOpp.slug && nextOpp.entry && (
+              <NextFightCompare
+                selfName={fighter.nameJa}
+                self={fighter}
+                opponentName={nextOpp.name}
+                opponentSlug={nextOpp.slug}
+                opponent={nextOpp.entry}
+                visibleSlugs={visibleSlugs}
+              />
+            )}
+          </div>
+        )}
 
         {/* 参戦予定バナー（対戦カード未定。カード確定後は上の次戦表示に自動で切替） */}
         {appearance?.kind === "expected" && (
@@ -350,50 +349,9 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
           )}
         </div>
 
-        {/* 決着内訳: 横100%積み上げバー(勝ち)+ 細めミュートの負けバー(CSSのみ)。
-            バー内テキストは入れず、実数ラベルはバー下に置く(モバイルはみ出し防止)。 */}
-        {!noRecordData && (wins > 0 || (lossBreakdown && losses > 0)) && (
-          <div className="fighter-finish-block">
-            {wins > 0 && (
-              <>
-                <div className="fighter-finish-bar">
-                  {koW > 0 && <div className="fbar-ko" style={{ width: `${koW}%` }} />}
-                  {subW > 0 && <div className="fbar-sub" style={{ width: `${subW}%` }} />}
-                  {decW > 0 && <div className="fbar-dec" style={{ width: `${decW}%` }} />}
-                </div>
-                <div className="fighter-finish-labels">
-                  <span className="flabel-ko">KO <b>{fighter.ko}</b></span>
-                  <span className="flabel-sub">一本 <b>{fighter.sub}</b></span>
-                  <span className="flabel-dec">判定 <b>{fighter.decision}</b></span>
-                </div>
-              </>
-            )}
-            {lossBreakdown && losses > 0 && (
-              <>
-                <div className="fighter-lossbar">
-                  {lossBreakdown.ko > 0 && <div className="lbar-ko" style={{ width: `${Math.round((lossBreakdown.ko / losses) * 100)}%` }} />}
-                  {lossBreakdown.sub > 0 && <div className="lbar-sub" style={{ width: `${Math.round((lossBreakdown.sub / losses) * 100)}%` }} />}
-                  {lossBreakdown.decision > 0 && <div className="lbar-dec" style={{ width: `${Math.round((lossBreakdown.decision / losses) * 100)}%` }} />}
-                </div>
-                <div className="fighter-lossbar-labels">
-                  負けの決着 — 被KO {lossBreakdown.ko} ／ 被一本 {lossBreakdown.sub} ／ 被判定 {lossBreakdown.decision}
-                </div>
-              </>
-            )}
-          </div>
-        )}
-
-        {/* 直近5試合(○=勝 / ✗=負 / △=分・無効。左が最新)。noRecordData/履歴なしは非表示。 */}
-        {!noRecordData && recentForm.length > 0 && (
-          <div className="recent-form-block">
-            <div className="recent-form-label">直近5試合（左が最新）</div>
-            <div className="recent-form">
-              {recentForm.map((r, i) => (
-                <span key={i} className={`rf-mark rf-${r}`}>{RECENT_FORM_SYMBOL[r]}</span>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* 勝ち方と負け方(バタフライ・CSSのみ)。historyのraw method再解析、
+            noRecordData/履歴なしは非表示。 */}
+        {!noRecordData && <MethodButterfly history={history} />}
 
         {/* X投稿カードボタン */}
         <a href={`/tools/fighter-card?fighter=${fighter.slug}`} className="fighter-card-btn">
