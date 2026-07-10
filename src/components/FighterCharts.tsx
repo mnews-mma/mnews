@@ -60,7 +60,7 @@ export function FinishBreakdownChart({
           <div style={{ fontSize: 11, color: "var(--muted)", marginBottom: 4 }}>勝ちの内訳</div>
           <ResponsiveContainer width="100%" height={140}>
             <PieChart>
-              <Pie data={winData} dataKey="value" nameKey="name" innerRadius={30} outerRadius={55}>
+              <Pie data={winData} dataKey="value" nameKey="name" innerRadius={30} outerRadius={55} isAnimationActive={false}>
                 {winData.map((d) => (
                   <Cell key={d.key} fill={METHOD_COLOR[d.key]} />
                 ))}
@@ -75,7 +75,7 @@ export function FinishBreakdownChart({
           <div style={{ fontSize: 11, color: "var(--muted)", marginBottom: 4 }}>負けの内訳</div>
           <ResponsiveContainer width="100%" height={140}>
             <PieChart>
-              <Pie data={lossData} dataKey="value" nameKey="name" innerRadius={30} outerRadius={55}>
+              <Pie data={lossData} dataKey="value" nameKey="name" innerRadius={30} outerRadius={55} isAnimationActive={false}>
                 {lossData.map((d) => (
                   <Cell key={d.key} fill={METHOD_COLOR[d.key]} />
                 ))}
@@ -101,10 +101,17 @@ export function RateBars({
   return (
     <div style={{ marginTop: 12 }}>
       <ResponsiveContainer width="100%" height={data.length * 32 + 10}>
-        <BarChart data={data} layout="vertical" margin={{ left: 8, right: 24, top: 4, bottom: 4 }}>
+        <BarChart data={data} layout="vertical" margin={{ left: 8, right: 36, top: 4, bottom: 4 }}>
           <XAxis type="number" domain={[0, 100]} hide />
           <YAxis type="category" dataKey="label" width={80} tick={{ fontSize: 11, fill: "var(--muted)" }} axisLine={false} tickLine={false} />
-          <Bar dataKey="value" fill="var(--accent)" radius={[0, 3, 3, 0]} barSize={14} label={{ position: "right", formatter: (v: unknown) => (v == null ? "" : `${v}%`), fontSize: 11 }} />
+          <Bar
+            dataKey="value"
+            fill="var(--accent)"
+            radius={[0, 3, 3, 0]}
+            barSize={14}
+            isAnimationActive={false}
+            label={{ position: "right", formatter: (v: unknown) => (v == null ? "" : `${v}%`), fontSize: 11 }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -121,8 +128,8 @@ export function RecordTrendChart({ trend }: { trend: RecordTrendPoint[] }) {
         <XAxis dataKey="date" tick={{ fontSize: 10, fill: "var(--muted)" }} minTickGap={24} />
         <YAxis tick={{ fontSize: 10, fill: "var(--muted)" }} allowDecimals={false} width={28} />
         <Tooltip />
-        <Line type="stepAfter" dataKey="wins" name="通算勝ち" stroke={COLOR_WIN} strokeWidth={2} dot={false} />
-        <Line type="stepAfter" dataKey="losses" name="通算負け" stroke={COLOR_LOSS} strokeWidth={2} dot={false} />
+        <Line type="stepAfter" dataKey="wins" name="通算勝ち" stroke={COLOR_WIN} strokeWidth={2} dot={false} isAnimationActive={false} />
+        <Line type="stepAfter" dataKey="losses" name="通算負け" stroke={COLOR_LOSS} strokeWidth={2} dot={false} isAnimationActive={false} />
       </LineChart>
     </ResponsiveContainer>
   );
