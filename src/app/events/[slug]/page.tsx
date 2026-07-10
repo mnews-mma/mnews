@@ -202,8 +202,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
             <div className="event-related-links">
               {relatedArticles.map((a) => (
                 <a key={a.slug} href={`/articles/${a.slug}`} className="event-related-link" style={{ borderLeftColor: "var(--accent)" }}>
-                  <span className="article-original-badge" style={{ fontSize: 10 }}>オリジナル</span>
-                  <span>{a.title}</span>
+                  <span className="article-original-badge">オリジナル</span>
+                  <span style={{ minWidth: 0 }}>{a.title}</span>
                 </a>
               ))}
             </div>

@@ -1681,18 +1681,23 @@ footer {
   color: #6b7280;
 }
 
-/* 「数字で見る」オリジナル記事(/articles/[slug]) */
-/* 団体タグ(.org-tag/.uf-org、角丸3〜4px・団体カラー)とは別系統の見た目にする:
-   黒地+ゴールド文字 + 完全角丸(pill)で形状でも差別化する。 */
+/* 「数字で見る」オリジナル記事(/articles/[slug])のバッジ。
+   円形pill+3行縦積み崩れの再発防止: 既存の.org-tag系(角丸3px・小型矩形)と
+   同系統の見た目にしつつ、アウトライン(RIZIN等)ではなく塗りつぶしで差別化する。
+   white-space:nowrap + flex-shrink:0 で、隣接するタイトル文字列が長い場合でも
+   バッジ自体が圧縮されて文字が縦積みにならないようにする(スマホ375px確認済み)。 */
 .article-original-badge {
   display: inline-block;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-family: var(--mono);
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
   background: var(--badge-original-bg);
-  border-radius: 999px;
-  padding: 3px 10px;
+  border-radius: 3px;
+  padding: 2px 8px;
 }
 .article-fight-section {
   margin-bottom: 36px;
