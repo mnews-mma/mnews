@@ -40,6 +40,13 @@ export default function Footer() {
         <p className="footer-x-caption">試合結果・最新ニュースをお届け</p>
       </div>
       <div>
+        <div className="footer-col-title">コンテンツ</div>
+        <div className="footer-links">
+          <a href="/fighters">選手戦績一覧</a>
+          <a href="/ranking/undefeated">無敗の日本人選手一覧</a>
+        </div>
+      </div>
+      <div>
         <div className="footer-col-title">ABOUT</div>
         <div className="footer-links">
           <a href="/about">運営者情報</a>

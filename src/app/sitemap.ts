@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/ranking/deep`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
     { url: `${BASE_URL}/ranking/pancrase`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
     { url: `${BASE_URL}/ranking/shooto`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
+    { url: `${BASE_URL}/ranking/undefeated`, changeFrequency: "daily", priority: 0.7, lastModified: TODAY },
     { url: `${BASE_URL}/deep-2026`, changeFrequency: "weekly", priority: 0.7, lastModified: TODAY },
     { url: `${BASE_URL}/results`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.3 },
