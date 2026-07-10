@@ -894,7 +894,7 @@
         "opponent": "ジー・ニウシュイエ",
         "result": "win",
         "method": "1R 4:59 TKO（パウンド）",
-        "event": "Road to UFC Season 2: Las Vegas 【フライ級トーナメント 決勝】",
+        "event": "Road to UFC Season 2: Las Vegas 【フライ級トーナメント決勝】",
         "round": "R1"
       },
       {
@@ -902,7 +902,7 @@
         "opponent": "マーク・クリマコ",
         "result": "win",
         "method": "5分3R終了 判定3-0",
-        "event": "Road to UFC Season 2: Singapore 【フライ級トーナメント 準決勝】",
+        "event": "Road to UFC Season 2: Singapore 【フライ級トーナメント準決勝】",
         "round": "R3"
       },
       {
@@ -910,7 +910,7 @@
         "opponent": "ロナル・シアハーン",
         "result": "win",
         "method": "2R 1:19 スカーフホールドアームロック",
-        "event": "Road to UFC Season 2: Shanghai 【フライ級トーナメント 1回戦】",
+        "event": "Road to UFC Season 2: Shanghai 【フライ級トーナメント1回戦】",
         "round": "R2"
       },
       {
@@ -926,7 +926,7 @@
         "opponent": "上田将竜",
         "result": "win",
         "method": "1R 2:33 TKO（パウンド）",
-        "event": "PANCRASE 329 【フライ級キング・オブ・パンクラス次期挑戦者決定戦】",
+        "event": "PANCRASE 329",
         "round": "R1"
       },
       {
@@ -2567,32 +2567,32 @@
     "age": 38
   },
   "ya-man": {
-    "wins": 5,
-    "losses": 0,
+    "wins": 2,
+    "losses": 2,
     "draws": 0,
-    "ko": 3,
+    "ko": 2,
     "sub": 0,
     "decision": 0,
     "history": [
       {
         "date": "2025-07-27",
-        "opponent": "クレベル・コイケ",
+        "opponent": "金原正徳",
         "result": "win",
-        "method": "3R 2:21 TKO（右アッパー→パウンド）",
+        "method": "3R 2:51 TKO（右アッパー→パウンド）",
         "event": "超RIZIN.4 真夏の喧嘩祭り",
         "round": "R3"
       },
       {
         "date": "2024-12-31",
         "opponent": "カルシャガ・ダウトベック",
-        "result": "win",
+        "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN.49",
         "round": "R3"
       },
       {
         "date": "2024-07-28",
-        "opponent": "斎藤裕",
+        "opponent": "鈴木博昭",
         "result": "win",
         "method": "1R 3:28 KO（左フック）",
         "event": "超RIZIN.3",
@@ -2601,18 +2601,10 @@
       {
         "date": "2023-12-31",
         "opponent": "平本蓮",
-        "result": "win",
+        "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN.45",
         "round": "R3"
-      },
-      {
-        "date": "2023-05-06",
-        "opponent": "久保優太",
-        "result": "win",
-        "method": "1R 3:13 TKO（グラウンドパンチ）",
-        "event": "RIZIN.42",
-        "round": "R1"
       }
     ],
     "live": true,
@@ -10909,7 +10901,7 @@
     ],
     "live": true,
     "birthPlace": "奈良県",
-    "age": 31
+    "age": 32
   },
   "shimada-ibuki": {
     "wins": 14,
@@ -11238,7 +11230,7 @@
       },
       {
         "date": "2017-07-22",
-        "opponent": "ダ・ウン・ジョン",
+        "opponent": "チョン・ダウン",
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "TOP FC 15 TOP FIGHTING CHAMPIONSHIP 15",
