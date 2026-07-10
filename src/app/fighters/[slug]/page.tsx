@@ -14,6 +14,8 @@ import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { fullWidthLength } from "@/lib/tweetDigest";
+import { computeWinMethodBreakdown, computeLossBreakdown, computeRecordTrend } from "@/lib/fighterStrip";
+import { FinishBreakdownChart, RateBars, RecordTrendChart } from "@/components/FighterCharts";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
@@ -161,6 +163,12 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   const koW = Math.round((fighter.ko / finishBase) * 100);
   const subW = Math.round((fighter.sub / finishBase) * 100);
   const decW = Math.round((fighter.decision / finishBase) * 100);
+
+  // 戦績ビジュアル(Recharts)用データ。noRecordData(戦績実体なし)の選手は
+  // 一切算出せず、呼び出し側のnull/空判定でグラフごと非表示にする(捏造ゼロ)。
+  const winMethodBreakdown = noRecordData ? null : computeWinMethodBreakdown(fighter);
+  const lossBreakdown = noRecordData ? null : computeLossBreakdown(fighter);
+  const recordTrend = noRecordData ? null : computeRecordTrend(fighter);
 
   // 同階級の選手: seed値(常に0-0-0)ではなく解決後の実戦績を使い、no-data(戦績実体なし)
   // は /fighters 一覧と同基準で除外する(0-0-0で出さない)。同階級候補だけ解決する(軽量)。
@@ -347,6 +355,32 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
               <span className="flabel-sub">一本 <b>{fighter.sub}</b></span>
               <span className="flabel-dec">判定 <b>{fighter.decision}</b></span>
             </div>
+          </div>
+        )}
+
+        {/* 戦績ビジュアル(Recharts)。noRecordData選手・データ欠損項目は各グラフが
+            自動的に非表示になる(コンポーネント側でnull/空配列ガード)。 */}
+        {!noRecordData && wins > 0 && (
+          <FinishBreakdownChart
+            winCounts={{ ko: fighter.ko, sub: fighter.sub, decision: fighter.decision, other: 0 }}
+            lossCounts={lossBreakdown}
+          />
+        )}
+        {!noRecordData && (
+          <RateBars
+            rates={[
+              { label: "勝率", value: winRate },
+              { label: "フィニッシュ率", value: finishRate },
+              { label: "KO率", value: winMethodBreakdown?.koPct ?? null },
+              { label: "一本率", value: winMethodBreakdown?.subPct ?? null },
+              { label: "判定率", value: winMethodBreakdown?.decisionPct ?? null },
+            ]}
+          />
+        )}
+        {!noRecordData && recordTrend && recordTrend.length > 0 && (
+          <div style={{ marginTop: 20 }}>
+            <div style={{ fontSize: 11, color: "var(--muted)", marginBottom: 4 }}>戦績推移</div>
+            <RecordTrendChart trend={recordTrend} />
           </div>
         )}
 

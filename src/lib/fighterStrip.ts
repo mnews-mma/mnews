@@ -35,6 +35,61 @@ export interface WinMethodBreakdown {
   decisionPct: number;
 }
 
+export interface MethodCounts {
+  ko: number;
+  sub: number;
+  decision: number;
+  other: number;
+}
+
+// history[].method(日本語の生テキスト、例:"2R 2:24 TKO（パウンド）"
+// "1R 4:31 三角絞め" "5分3R終了 判定1-2")をKO/一本/判定に分類する。
+// 既存のko/sub/decisionフィールド(Wikipedia側の英語表記からの分類 or
+// infoboxの明示集計値)は勝ち側専用で、負け側の内訳フィールドは存在しない。
+// このためhistoryのraw methodをキーワードで分類して再集計する(推定はしない、
+// 実データのテキスト分類のみ)。分類できない場合はotherに計上する。
+function classifyMethodJa(method: string): keyof MethodCounts {
+  if (method.includes("判定")) return "decision";
+  if (/TKO|KO/i.test(method)) return "ko";
+  // 一本(サブミッション)は決まり技名で表現されることが多いため、代表的な
+  // 関節技・絞め技のキーワードで判定する(history実データで確認された表記:
+  // 「絞め」「クランク」「固め」「三角」「チョーク」「腕ひしぎ」「ロック」等)。
+  if (/絞め|クランク|固め|三角|チョーク|腕ひしぎ|ロック|一本/.test(method)) return "sub";
+  return "other";
+}
+
+function tallyMethods(fights: FighterRecordEntry["history"]): MethodCounts {
+  const counts: MethodCounts = { ko: 0, sub: 0, decision: 0, other: 0 };
+  for (const f of fights) counts[classifyMethodJa(f.method)]++;
+  return counts;
+}
+
+// 負け側の決着内訳(history再集計)。敗北0件はnull(算出不能)。
+export function computeLossBreakdown(entry: FighterRecordEntry): MethodCounts | null {
+  const losses = entry.history.filter((h) => h.result === "loss");
+  if (losses.length === 0) return null;
+  return tallyMethods(losses);
+}
+
+export interface RecordTrendPoint {
+  date: string;
+  wins: number;
+  losses: number;
+}
+
+// 通算勝敗の時系列推移(日付昇順の累積)。試合が無い選手はnull。
+export function computeRecordTrend(entry: FighterRecordEntry): RecordTrendPoint[] | null {
+  if (entry.history.length === 0) return null;
+  const sorted = [...entry.history].sort((a, b) => (a.date < b.date ? -1 : 1));
+  let wins = 0;
+  let losses = 0;
+  return sorted.map((h) => {
+    if (h.result === "win") wins++;
+    if (h.result === "loss") losses++;
+    return { date: h.date, wins, losses };
+  });
+}
+
 // 勝ち方の内訳(KO/一本/判定の比率)。fighters/[slug]/page.tsx のフィニッシュ内訳バーと
 // 同じ計算式(finishBase = max(wins, ko+sub+decision) || 1)に揃える。
 // wins=0かつko+sub+decision=0の選手はnull(算出不能)。
