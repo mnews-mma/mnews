@@ -62,8 +62,15 @@ a {
   color: inherit;
 }
 
-/* NAV */
-nav {
+/* NAV
+   ヘッダー重なり再発バグの修正: 以前はここが生タグセレクタ `nav {}` だったため、
+   Breadcrumb.tsx が意味論的に使っている <nav className="breadcrumb"> にも
+   sticky/z-index/背景色が無差別に適用され、スクロール時にパンくずがヘッダーと
+   同じ位置(top:0)に張り付いて重なるバグを起こしていた(358d4c3の修正はbackgroundの
+   み上書きしていて、position/z-indexはnav{}側が生きたままだった)。
+   ヘッダー専用クラス.site-navにスコープすることで、今後<nav>を使うコンポーネントが
+   増えても巻き込まれない構造にした。z-index/topを変更する場合はモバイル実機確認必須。 */
+.site-nav {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -1279,9 +1286,17 @@ footer {
   }
 }
 
-/* ===== BREADCRUMB ===== */
+/* ===== BREADCRUMB =====
+   ヘッダー重なり再発バグの修正。Breadcrumbは意味論的に<nav>タグを使っている
+   (Breadcrumb.tsx)ため、ヘッダー側のCSSは.site-navにスコープ済みだが、それとは
+   別にこちら側でも position/z-index/background を明示指定し、二重に固定する
+   (どちらか一方が将来また生nav{}セレクタ等で壊れても、ここが上書きされないようにする
+   ための保険)。透過・backdrop-filter頼みにはしない(不透明な背景を必ず持つ)。
+   z-index/topを変更する場合はモバイル実機確認必須。 */
 .breadcrumb {
-  background: transparent;
+  position: static;
+  z-index: 1; /* .site-nav(z-index:100)より必ず低く保つ */
+  background: var(--bg);
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border);

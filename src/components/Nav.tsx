@@ -23,7 +23,7 @@ function DatabaseIcon() {
 
 export default function Nav() {
   return (
-    <nav>
+    <nav className="site-nav">
       <div className="nav-top">
         <Link href="/" className="logo">
           <span className="logo-news">Mニュース</span>
