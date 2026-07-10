@@ -115,7 +115,7 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
             key={c.key}
             role="tab"
             aria-selected={filter === c.key}
-            className={`uf-chip${filter === c.key ? " on" : ""}`}
+            className={`uf-chip${c.key === "original" ? " uf-chip--original" : ""}${filter === c.key ? " on" : ""}`}
             onClick={() => selectFilter(c.key)}
           >
             {c.label}

@@ -30,6 +30,11 @@
   --accent: #e8002d;
   --mix: #e8002d;
 
+  /* オリジナル記事バッジ専用(団体タグの配色パレットとは別系統)。
+     ゴールドはOG画像(Satoriカード)のOG_COLORS.goldと同値をCSS変数化して流用。 */
+  --gold: #c29a4b;
+  --badge-original-bg: #1a1a1a;
+
   --os: "Oswald", sans-serif;
   --body: "Inter", "Noto Sans JP", sans-serif;
   --mono: "JetBrains Mono", monospace;
@@ -1662,15 +1667,17 @@ footer {
 }
 
 /* 「数字で見る」オリジナル記事(/articles/[slug]) */
+/* 団体タグ(.org-tag/.uf-org、角丸3〜4px・団体カラー)とは別系統の見た目にする:
+   黒地+ゴールド文字 + 完全角丸(pill)で形状でも差別化する。 */
 .article-original-badge {
   display: inline-block;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.5px;
-  color: #fff;
-  background: var(--accent);
-  border-radius: 4px;
-  padding: 2.5px 8px;
+  color: var(--gold);
+  background: var(--badge-original-bg);
+  border-radius: 999px;
+  padding: 3px 10px;
 }
 .article-fight-section {
   margin-bottom: 36px;
@@ -1861,6 +1868,11 @@ a.article-fighter-name:hover {
 .uf-chip:hover:not(.on) { border-color: var(--muted); color: var(--text); }
 .uf-chip.on { background: var(--text); color: var(--s1); border-color: var(--text); }
 .uf-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* 「オリジナル」フィルタチップ: article-original-badgeと同じ黒+ゴールド系統に統一 */
+.uf-chip--original { border-color: var(--badge-original-bg); color: var(--badge-original-bg); }
+.uf-chip--original:hover:not(.on) { border-color: var(--badge-original-bg); color: var(--badge-original-bg); }
+.uf-chip--original.on { background: var(--badge-original-bg); color: var(--gold); border-color: var(--badge-original-bg); }
 
 .uf-feed { padding: 8px 0 28px; }
 .uf-empty { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; }
