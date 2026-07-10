@@ -633,11 +633,6 @@ footer {
   font-size: 11px;
   color: var(--muted);
 }
-/* 団体タグ(RIZIN/DEEP/修斗/パンクラス等)は「オリジナル」タグ(塗りつぶし黒)と
-   明確に区別するため、団体を問わずアウトライン型(透明背景+アクセント赤)に統一する。
-   各呼び出し側が渡す団体固有色(style={{color:...}})は!importantで無効化する
-   (パンクラスのブランド色#1a1a1aがオリジナルタグの黒塗りと酷似し、375px幅で
-   判別できなくなる問題があったため。差別化は塗り/アウトラインのみで行う)。 */
 .org-tag {
   display: inline-block;
   font-family: var(--mono);
@@ -645,9 +640,7 @@ footer {
   letter-spacing: 1px;
   padding: 2px 8px;
   border-radius: 3px;
-  border: 1px solid var(--accent) !important;
-  background: transparent !important;
-  color: var(--accent) !important;
+  border: 1px solid currentColor;
   margin-bottom: 8px;
 }
 .fighter-grid {
@@ -1982,19 +1975,13 @@ a.cmp-name:hover {
 a.uf-card:hover { border-color: var(--muted); }
 
 .uf-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-/* 団体タグと同じ理由でアウトライン統一(.org-tagと同趣旨のコメント参照)。
-   従来は団体色で塗りつぶしており、パンクラス(#1a1a1a)がオリジナルタグの
-   黒塗りと見分けづらかった。呼び出し側のbackground/color(style属性)は
-   !importantで無効化する。 */
 .uf-org {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.5px;
   padding: 2.5px 8px;
   border-radius: 4px;
-  border: 1px solid var(--accent) !important;
-  background: transparent !important;
-  color: var(--accent) !important;
+  color: #fff;
 }
 .uf-b-media {
   font-size: 10px;
