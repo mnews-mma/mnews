@@ -1782,15 +1782,26 @@ footer {
   color: var(--muted);
 }
 
-/* グリッド化: 左右を独立ブロックにし、VSは中央固定(align-self)。
-   align-items:start で両ブロックの1行目を上端で揃えるため、片方だけ名前が
-   2行に折り返しても左右のベースラインがズレない(flexのcenter揃えだと
-   折り返し側だけ縦位置が変わってしまうため)。 */
-.bout-fighters {
+/* 対戦カード: 選手名は各ブロックに1回だけ・数字はその直下に縦集約する構成。
+   左右ブロック+中央VS区切りをグリッドで組み、align-items:startで両ブロックの
+   1行目を上端で揃える(片方だけ名前が2行に折り返しても縦位置がズレない)。 */
+.bout-pair {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: start;
   gap: 8px;
+}
+
+.bout-side {
+  min-width: 0;
+}
+
+.bout-side--right {
+  text-align: right;
+}
+
+.bout-side-name {
+  display: block;
   font-size: 15px;
   font-weight: 700;
 }
@@ -1805,15 +1816,6 @@ footer {
   padding-top: 1px;
 }
 
-.bout-fighter-a,
-.bout-fighter-b {
-  min-width: 0;
-}
-
-.bout-fighter-b {
-  text-align: right;
-}
-
 .bout-result {
   margin-top: 6px;
   font-size: 12px;
@@ -1822,26 +1824,29 @@ footer {
   padding-top: 6px;
 }
 
-/* 戦績ストリップ(full): 開催予定カードの選手ごとに1行(モバイルは折り返し許容) */
+/* 戦績ストリップ(full): 選手名の直下に来る数字ブロック。折り返しの有無を幅任せに
+   せず、常に2段固定で描画する(上段=戦績+フィニッシュ率／下段=勝率+直近5戦)。
+   選手名側(.bout-side--right)が右寄せの場合はここも右寄せに追従する。 */
 .fighter-strip {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+  min-width: 0;
+}
+.fighter-strip-row1,
+.fighter-strip-row2 {
   display: flex;
   align-items: baseline;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  font-size: 12px;
-  color: var(--muted);
-  padding-top: 6px;
-  margin-top: 6px;
-  border-top: 1px dashed var(--border);
+  gap: 4px;
+  white-space: nowrap;
+  min-width: 0;
 }
-.fighter-strip-name {
-  color: var(--accent);
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: var(--border);
+.bout-side--right .fighter-strip-row1,
+.bout-side--right .fighter-strip-row2 {
+  justify-content: flex-end;
 }
-.fighter-strip-name:hover {
-  text-decoration-color: var(--accent);
+.fighter-strip-row2 {
+  margin-top: 2px;
 }
 .fighter-strip-record {
   font-family: var(--mono);
@@ -1849,6 +1854,9 @@ footer {
   color: var(--fg);
 }
 .fighter-strip-finish {
+  font-family: var(--mono);
+}
+.fighter-strip-winrate {
   font-family: var(--mono);
 }
 .fighter-strip-last5 {
@@ -2088,8 +2096,7 @@ a.cmp-name:hover {
 }
 
 @media (max-width: 600px) {
-  .bout-fighters {
-    font-size: 13px;
+  .bout-pair {
     gap: 6px;
   }
   .fighter-next-fight {

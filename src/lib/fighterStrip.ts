@@ -29,6 +29,15 @@ export function computeFighterStripStats(entry: FighterRecordEntry): FighterStri
   return { record, finishRate, last5 };
 }
 
+// 勝率 = 勝/(勝+敗)。分母から引き分け・NCを除外する(entry.wins/lossesは元々
+// 引き分け・NCを含まない集計のため、この式だけで自然に満たされる)。
+// 分母0(未勝負・データなし)はnull(呼び出し側は「—」等に倒す)。
+export function computeWinRate(entry: FighterRecordEntry): number | null {
+  const denom = entry.wins + entry.losses;
+  if (denom === 0) return null;
+  return Math.round((entry.wins / denom) * 100);
+}
+
 export interface WinMethodBreakdown {
   koPct: number;
   subPct: number;
