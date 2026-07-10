@@ -1,5 +1,77 @@
 [
   {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】7月20日（月･祝）17時から「過去最大のスケールで会見」。9.10『超RIZIN.5 浪速の超復活祭り』京セラドーム大阪大会の対戦カード発表",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24284",
+    "publishedAt": "2026-07-10T09:28:45.000Z",
+    "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【ROMAN05】道着MMA初陣=ケガからの再起戦、トミー矢野「今回の試合で打撃の自信もつけたい」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/232672?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590roman05%25e3%2580%2591%25e9%2581%2593%25e7%259d%2580mma%25e5%2588%259d%25e9%2599%25a3%25e3%2582%25b1%25e3%2582%25ac%25e3%2581%258b%25e3%2582%2589%25e3%2581%25ae%25e5%2586%258d%25e8%25b5%25b7%25e6%2588%25a6%25e3%2580%2581%25e3%2583%2588%25e3%2583%259f%25e3%2583%25bc%25e7%259f%25a2%25e9%2587%258e%25e3%2580%258c",
+    "publishedAt": "2026-07-10T09:16:59.000Z",
+    "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
+    "id": "deep-0",
+    "source": "deep",
+    "title": "北方大地と新井丈の対戦や大成とシビサイ頌真のメガトン級タイトル戦に海飛VS三井俊希、白川ダーク陸斗VS瀧澤謙太、雅駿介VS中務太陽、中村大介VS椿飛鳥、北岡悟VS山崎弥十朗など注目のDEEP 133 IMPACTのチケットは明日から発売開始に!!",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/%e5%8c%97%e6%96%b9%e5%a4%a7%e5%9c%b0%e3%81%a8%e6%96%b0%e4%ba%95%e4%b8%88%e3%81%ae%e5%af%be%e6%88%a6%e3%82%84%e5%a4%a7%e6%88%90%e3%81%a8%e3%82%b7%e3%83%93%e3%82%b5%e3%82%a4%e9%a0%8c%e7%9c%9f%e3%81%ae/",
+    "publishedAt": "2026-07-10T08:11:33.000Z",
+    "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "【観覧募集】7/20（月・祝）『RIZIN史上最大の超絶スケール 超緊急＆超ド級カード発表記者会見』開催決定！",
+    "origin": "RIZIN公式",
+    "url": "https://fc.rizinff.com/blogs/news/event_260720",
+    "publishedAt": "2026-07-10T08:00:06.000Z",
+    "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【Top FC22】自前の会場で計量終了 元UFC×元PFLのメイン。BRAWL王者×ウズベキスタン・キック王者も",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/232652?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590top-fc22%25e3%2580%2591%25e8%2587%25aa%25e5%2589%258d%25e3%2581%25ae%25e4%25bc%259a%25e5%25a0%25b4%25e3%2581%25a7%25e8%25a8%2588%25e9%2587%258f%25e7%25b5%2582%25e4%25ba%2586%25e3%2580%2580%25e5%2585%2583ufcx%25e5%2585%2583pfl%25e3%2581%25ae%25e3%2583%25a1%25e3%2582%25a4%25e3%2583%25b3%25e3%2580%2582",
+    "publishedAt": "2026-07-10T07:57:52.000Z",
+    "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
+    "id": "deep-1",
+    "source": "deep",
+    "title": "金曜日の夜に恵比寿ガーデンプレイスで行われる若手育成イベントのDEEP FIGHT CHALLENGE 2026 2nd ROUNDの試合順が決定。メインは元REBEL FCバンタム級王者の坂野周平 にK-Clann期待の新人・井上セナが挑む。チケットは完売で当日券の販売は無し!",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/%e9%87%91%e6%9b%9c%e6%97%a5%e3%81%ae%e5%a4%9c%e3%81%ab%e6%81%b5%e6%af%94%e5%af%bf%e3%82%ac%e3%83%bc%e3%83%87%e3%83%b3%e3%83%97%e3%83%ac%e3%82%a4%e3%82%b9%e3%81%a7%e8%a1%8c%e3%82%8f%e3%82%8c%e3%82%8b-2/",
+    "publishedAt": "2026-07-10T07:44:10.000Z",
+    "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
+    "id": "gonkaku-4",
+    "source": "other",
+    "title": "【ONE】チャトリCEOが自ら護身術を指導した、タイのEVOLVE MMAジムでグランドオープンイベント開催、スーパーボンやナビル・アナンも出席",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24280",
+    "publishedAt": "2026-07-10T02:56:29.000Z",
+    "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
+    "id": "gonkaku-6",
+    "source": "other",
+    "title": "【UFC】ブランドン・ロイバル、モレノ下したカヴァナと対戦「いまがフライ級のピークだ。いつ誰が勝っても負けてもおかしくない」「ドッグファイトになれば自分が上に立つ」ケイプvs.堀口も語る＝7月12日（日）",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24278",
+    "publishedAt": "2026-07-10T01:16:15.000Z",
+    "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
     "id": "gonkaku-2",
     "source": "other",
     "title": "【PANCRASE】9月6日（日）『PANCRASE 365』でミドル級王座戦・コシム・サルドロフvs.林源平。9月23日（水・祝）『PANCRASE 366』で女子ストロー級王座戦・本野美vs.SARAMI＝立川",
