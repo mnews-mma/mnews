@@ -1441,48 +1441,31 @@ footer {
   color: var(--muted);
 }
 
-/* フォームストリップ(キャリアの流れ): 1試合=1マス・色のみ・折り返し前提。
-   モバイル(hoverなし)でも成立するよう色チップ+凡例で構成する。 */
-.form-strip-block {
+/* 直近5試合(○=勝 / ✗=負 / △=分・無効。左が最新)。記号を大きく見やすく。 */
+.recent-form-block {
   margin: 16px 0 4px;
 }
-.form-strip-label {
+.recent-form-label {
   font-size: 11px;
   color: var(--muted);
   margin-bottom: 6px;
 }
-.form-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-.form-chip {
-  width: 26px;
-  height: 26px;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-.form-chip--win { background: #16a34a; }
-.form-chip--loss { background: #dc2626; }
-.form-chip--draw { background: #9ca3af; }
-.form-strip-legend {
+.recent-form {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 8px;
-  font-size: 11px;
-  color: var(--muted);
+  gap: 10px;
 }
-.form-strip-legend .fsl {
-  width: 11px;
-  height: 11px;
-  border-radius: 2px;
-  margin-left: 6px;
+.rf-mark {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  width: 26px;
+  text-align: center;
 }
-.form-strip-legend .fsl:first-child { margin-left: 0; }
-.fsl-win { background: #16a34a; }
-.fsl-loss { background: #dc2626; }
-.fsl-draw { background: #9ca3af; }
+.rf-win { color: #16a34a; }
+.rf-loss { color: #dc2626; }
+.rf-draw,
+.rf-nc { color: #9ca3af; }
 .fighter-card-btn {
   display: inline-flex;
   align-items: center;

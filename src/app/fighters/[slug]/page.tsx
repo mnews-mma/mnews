@@ -14,8 +14,7 @@ import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { fullWidthLength } from "@/lib/tweetDigest";
-import { computeLossBreakdown } from "@/lib/fighterStrip";
-import FighterFormStrip from "@/components/FighterFormStrip";
+import { computeLossBreakdown, computeFighterStripStats } from "@/lib/fighterStrip";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
@@ -45,6 +44,14 @@ const LATEST_RESULT_LABEL: Record<string, string> = {
   loss: "直近●黒星",
   draw: "直近△引分",
   nc: "最新試合結果",
+};
+
+// 直近5試合の勝敗記号(○=勝ち / ✗=負け / △=分・無効)。
+const RECENT_FORM_SYMBOL: Record<string, string> = {
+  win: "○",
+  loss: "✗",
+  draw: "△",
+  nc: "△",
 };
 
 function buildFighterTitle(fighter: ResolvedFighter, orgLabel: string): string {
@@ -168,6 +175,8 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   // 選手は一切算出せず、呼び出し側のnull/空判定で非表示にする(捏造ゼロ)。
   // 負けの決着内訳は history の raw method を既存の分類ロジックで再集計する。
   const lossBreakdown = noRecordData ? null : computeLossBreakdown(fighter);
+  // 直近5試合(新しい順)。last5は既存の共通集計(events/results等と同ロジック)を流用。
+  const recentForm = noRecordData ? [] : computeFighterStripStats(fighter).last5;
 
   // 同階級の選手: seed値(常に0-0-0)ではなく解決後の実戦績を使い、no-data(戦績実体なし)
   // は /fighters 一覧と同基準で除外する(0-0-0で出さない)。同階級候補だけ解決する(軽量)。
@@ -374,8 +383,17 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
           </div>
         )}
 
-        {/* キャリアの流れ(フォームストリップ・CSSのみ)。history空/noRecordDataは非表示。 */}
-        {!noRecordData && <FighterFormStrip history={history} />}
+        {/* 直近5試合(○=勝 / ✗=負 / △=分・無効。左が最新)。noRecordData/履歴なしは非表示。 */}
+        {!noRecordData && recentForm.length > 0 && (
+          <div className="recent-form-block">
+            <div className="recent-form-label">直近5試合（左が最新）</div>
+            <div className="recent-form">
+              {recentForm.map((r, i) => (
+                <span key={i} className={`rf-mark rf-${r}`}>{RECENT_FORM_SYMBOL[r]}</span>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* X投稿カードボタン */}
         <a href={`/tools/fighter-card?fighter=${fighter.slug}`} className="fighter-card-btn">

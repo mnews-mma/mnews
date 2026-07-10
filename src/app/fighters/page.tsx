@@ -64,9 +64,6 @@ export default async function FightersPage() {
           <a href="/tools/fighter-card" style={{ fontSize: 13, color: "var(--accent)", marginLeft: 8 }}>
             → X投稿用カード作成
           </a>
-          <a href="/ranking/undefeated" style={{ fontSize: 13, color: "var(--accent)", marginLeft: 8 }}>
-            → 無敗の日本人選手一覧
-          </a>
         </div>
         <DataFreshness generatedAt={generatedAt} />
       </div>

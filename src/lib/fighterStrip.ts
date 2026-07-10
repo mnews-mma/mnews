@@ -71,21 +71,6 @@ export function computeLossBreakdown(entry: FighterRecordEntry): MethodCounts | 
   return tallyMethods(losses);
 }
 
-export interface FormStripFight {
-  date: string;
-  opponent: string;
-  event: string;
-  method: string;
-  result: FighterRecordEntry["history"][number]["result"];
-}
-
-// フォームストリップ(キャリアの流れ)用: history を古い順→新しい順に並べて返す。
-// 1試合=1チップで表示する。試合が無い選手は空配列(呼び出し側で非表示にする)。
-export function buildFormStrip(entry: FighterRecordEntry): FormStripFight[] {
-  return [...entry.history]
-    .sort((a, b) => (a.date < b.date ? -1 : 1))
-    .map((h) => ({ date: h.date, opponent: h.opponent, event: h.event, method: h.method, result: h.result }));
-}
 
 // 勝ち方の内訳(KO/一本/判定の比率)。fighters/[slug]/page.tsx のフィニッシュ内訳バーと
 // 同じ計算式(finishBase = max(wins, ko+sub+decision) || 1)に揃える。
