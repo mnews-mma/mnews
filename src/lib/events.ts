@@ -52,10 +52,11 @@ export interface MEvent {
 //   対応クラスがない（キャッチウェイト等） → "X.Xkg契約"
 // ─────────────────────────────────────────────
 
-/** RIZIN MMA 体重区分（RIZIN公式値） */
+/** RIZIN MMA 体重区分（RIZIN公式値）
+ * 女子MMAはスーパーアトム級(49.0kg)のみ。47.6kgはRIZINでは使わない
+ * (DEEP JEWELS等、他団体の女子アトム級と混同しないこと)。 */
 export const RIZIN_WEIGHT_KG: Record<string, number> = {
-  "女子アトム級": 47.6,
-  "女子フライ級": 49.0,
+  "女子スーパーアトム級": 49.0,
   "フライ級": 57.0,
   "バンタム級": 61.0,
   "フェザー級": 66.0,
@@ -146,12 +147,12 @@ export const EVENTS: MEvent[] = [
         fighterB: "イ・ジェフン",
       },
       {
-        weightClass: "女子アトム級（47.6kg）",
+        weightClass: "女子スーパーアトム級（49.0kg）",
         fighterA: "パク・シウ",
         fighterB: "須田萌里",
       },
       {
-        weightClass: "女子アトム級（47.6kg）",
+        weightClass: "女子スーパーアトム級（49.0kg）",
         fighterA: "大島沙緒里",
         fighterB: "イ・イェジ",
       },
@@ -183,7 +184,7 @@ export const EVENTS: MEvent[] = [
         note: "オープニングファイト",
       },
       {
-        weightClass: "女子アトム級（47.6kg）",
+        weightClass: "女子スーパーアトム級（49.0kg）",
         fighterA: "HIME",
         fighterB: "平田彩音",
         note: "オープニングファイト",
@@ -246,7 +247,7 @@ export const EVENTS: MEvent[] = [
         fighterB: "ジョリー",
       },
       {
-        weightClass: "女子アトム級（47.6kg）",
+        weightClass: "女子スーパーアトム級（49.0kg）",
         fighterA: "ケイト・ロータス",
         fighterB: "NOEL",
       },
