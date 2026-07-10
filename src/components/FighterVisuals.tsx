@@ -116,14 +116,15 @@ export function MethodButterfly({ history }: { history: FighterRecordEntry["hist
   const winTotal = w.ko + w.sub + w.decision + w.other;
   const lossTotal = l.ko + l.sub + l.decision + l.other;
 
+  // 見出しは付けない。直上の通算戦績(例 11-15-1)と同じ数字を「11勝/15敗」として
+  // 左右の柱に置くことで、バーが「その数字の内訳」であることが言葉なしで伝わる。
   return (
     <div className="fighter-viz-block">
-      <div className="fighter-viz-title">勝ち方 と 負け方</div>
       <div className="bf-head">
         <span />
-        <span className="bf-head-win">勝ち {winTotal}</span>
+        <span className="bf-head-win">{winTotal}勝</span>
         <span />
-        <span className="bf-head-loss">負け {lossTotal}</span>
+        <span className="bf-head-loss">{lossTotal}敗</span>
         <span />
       </div>
       {rows.map((r) => (
