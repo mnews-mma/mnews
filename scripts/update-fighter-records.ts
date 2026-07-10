@@ -13,6 +13,10 @@ import { resolveFighter } from "../src/lib/feeds/resolveFighter";
 import type { FighterRecordEntry, FighterRecordsFile } from "../src/lib/fighterRecordsCache";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
+// fighterRecords.json自体には生成時刻を焼き込まない(選手データと運用メタ情報を
+// 分離するため)。表示側の「データ最終更新」用に、このバッチの実行時刻だけを
+// 別ファイルに記録する(サイト側はこのファイルの有無をハードコードせず参照する)。
+const META_OUT = path.join(process.cwd(), "data", "fighterRecordsMeta.json");
 
 function toCacheEntry(r: Awaited<ReturnType<typeof resolveFighter>>): FighterRecordEntry {
   return {
@@ -86,6 +90,7 @@ async function main() {
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n");
+  fs.writeFileSync(META_OUT, JSON.stringify({ generatedAt: new Date().toISOString() }, null, 2) + "\n");
 
   const visibleCount = Object.values(out).filter((r) => !r.noRecordData).length;
   console.log(`対象: ${targets.length}人 / 可視(noRecordData以外): ${visibleCount}人`);

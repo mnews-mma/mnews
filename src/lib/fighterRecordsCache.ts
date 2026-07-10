@@ -12,6 +12,9 @@ import { ResolvedFighter } from "./feeds/resolveFighter";
 // SHAはデプロイ内では一定=1時間キャッシュは効き、新デプロイでのみ確実に更新される。
 const CACHE_BUSTER = process.env.VERCEL_GIT_COMMIT_SHA ?? "dev";
 const RAW_URL = `https://raw.githubusercontent.com/mnews-mma/mnews/main/data/fighterRecords.json?v=${CACHE_BUSTER}`;
+// バッチ(update-fighter-records.ts)が実行時刻だけを書き込む付随ファイル。
+// fighterRecords.json自体には生成時刻を持たせない設計のため別ファイルで読む。
+const META_RAW_URL = `https://raw.githubusercontent.com/mnews-mma/mnews/main/data/fighterRecordsMeta.json?v=${CACHE_BUSTER}`;
 
 export interface FighterRecordEntry {
   wins: number;
@@ -40,6 +43,22 @@ export async function fetchFighterRecords(): Promise<FighterRecordsFile> {
        扱う。捏造ゼロ・障害時に画面を壊さない安全側デフォルト。 */
   }
   return {};
+}
+
+// data/fighterRecordsMeta.json(バッチ実行時刻)を読む。ファイルが未生成(初回デプロイ直後
+// でバッチがまだ一度も回っていない等)・取得失敗時はnullを返し、呼び出し側は「データ最終更新」
+// 表示自体を出さない(日付をハードコード・捏造しない)。
+export async function fetchFighterRecordsGeneratedAt(): Promise<string | null> {
+  try {
+    const res = await fetch(META_RAW_URL, { next: { revalidate: 3600 } });
+    if (res.ok) {
+      const meta = (await res.json()) as { generatedAt?: string };
+      return meta.generatedAt ?? null;
+    }
+  } catch {
+    /* フォールバックなし。取得できなければ表示側で日付欄ごと非表示にする。 */
+  }
+  return null;
 }
 
 // fetchFighterRecords()の厳格版。取得失敗を握り潰さず、成功/失敗を呼び出し側に
