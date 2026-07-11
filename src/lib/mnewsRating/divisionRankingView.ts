@@ -7,6 +7,7 @@
 // セットで返す型にすることで、片方だけを取り出して王者を出し忘れるドリフトを
 // 構造的に防ぐ。
 import type { DivisionRankings, ChampionOverlay, RankingEntry } from "./rankingsFile";
+import { MnewsDivision, PUBLISHED_DIVISIONS } from "./divisions";
 
 export interface DivisionRankingView {
   champion: ChampionOverlay | null;
@@ -18,4 +19,25 @@ export function getDivisionRankingView(data: DivisionRankings | null | undefined
   if (!data) return { champion: null, contenders: [] };
   const contenders = topN !== undefined ? data.entries.slice(0, topN) : data.entries;
   return { champion: data.champion, contenders };
+}
+
+// 「公開可否」の判定はPUBLISHED_DIVISIONS(divisions.ts)を唯一の真実源とする。
+// /rankings/[division]・/rankings(ハブ)は既にこのホワイトリストを直接参照して
+// 非公開階級を「準備中」として扱っている。トップページのウィジェットも同じ
+// ホワイトリストをここ経由で参照することで、階級ごとの公開判定が2箇所に
+// コピペされる状態を防ぐ(ライト級等を追加する際はPUBLISHED_DIVISIONS1箇所の
+// 変更で両方に反映される)。
+//
+// 非公開階級は挑戦者ランキング(1〜5位)を出さない(Elo算出は済んでいても、
+// 掲載品質の確認が済むまで一般公開しないという/rankingsの原則をトップでも守る)。
+// 王者は「事実」としてElo公開可否とは独立に扱う既存方針(overlay設計)を踏襲し、
+// 非公開階級でも表示を維持する(王者情報自体はデータ整合しているため)。
+export function getPublishedDivisionRankingView(
+  division: MnewsDivision,
+  data: DivisionRankings | null | undefined,
+  topN?: number
+): DivisionRankingView {
+  const view = getDivisionRankingView(data, topN);
+  if (PUBLISHED_DIVISIONS.includes(division)) return view;
+  return { champion: view.champion, contenders: [] };
 }
