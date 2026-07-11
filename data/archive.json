@@ -1,5 +1,59 @@
 [
   {
+    "id": "gonkaku-2",
+    "source": "other",
+    "title": "【DEEP☆KICK】メイン消滅の中、鉢田歩揮がTKO勝ちで締めくくり-53kg王座決定トーナメント決勝は友情対決に。-70kg挑戦者決定トーナメントは狂介が初回KO勝ち",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24292",
+    "publishedAt": "2026-07-11T03:06:20.000Z",
+    "firstSeenAt": "2026-07-11T06:27:28.181Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】ケイト・ロータスが語るRIZIN3年目の覚悟 大みそかに見据えるRENAへのリベンジ「勝ち逃げされたくない」【独占インタビュー】",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2466217/",
+    "publishedAt": "2026-07-11T03:00:00.000Z",
+    "firstSeenAt": "2026-07-11T06:27:28.181Z"
+  },
+  {
+    "id": "gonkaku-3",
+    "source": "other",
+    "title": "【Lemino修斗】バンタム級T準決勝・齋藤奨司vs.中島陸、山内渉が再起戦、修斗復帰の石橋佳太vs.内藤太尊、修斗初参戦の徳弘拓馬vs.新井拓巳も＝8月2日（日）千葉",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24291",
+    "publishedAt": "2026-07-11T02:18:45.000Z",
+    "firstSeenAt": "2026-07-11T06:27:28.181Z"
+  },
+  {
+    "id": "gonkaku-4",
+    "source": "other",
+    "title": "【DEEP☆KICK】-65kg王座決定トーナメントは加古稟虎が初回TKO勝ち、近藤大晟が判定勝ちで決勝へ。フレッシュマン1DAYトーナメントは17歳の我妻怜晟が制す",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24290",
+    "publishedAt": "2026-07-11T02:04:11.000Z",
+    "firstSeenAt": "2026-07-11T06:27:28.181Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【UFC329】展望 地に堕ちた天才マクレガーが、不撓不屈の心で戦いを重ねたホロウェイに奇跡を起こすか",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/232723?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590ufc329%25e3%2580%2591%25e5%25b1%2595%25e6%259c%259b%25e3%2580%2580%25e5%259c%25b0%25e3%2581%25ab%25e5%25a0%2595%25e3%2581%25a1%25e3%2581%259f%25e5%25a4%25a9%25e6%2589%258d%25e3%2583%259e%25e3%2582%25af%25e3%2583%25ac%25e3%2582%25ac%25e3%2583%25bc%25e3%2581%258c%25e3%2580%2581%25e4%25b8%258d%25e6%2592%2593",
+    "publishedAt": "2026-07-11T00:49:18.000Z",
+    "firstSeenAt": "2026-07-11T06:27:28.181Z"
+  },
+  {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【ROMAN05】ボンサイ柔術を背負って――マルコス・ソウザ「道着MMAだと、柔術が十分に生かされる」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/232715?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590roman05%25e3%2580%2591%25e3%2583%259c%25e3%2583%25b3%25e3%2582%25b5%25e3%2582%25a4%25e6%259f%2594%25e8%25a1%2593%25e3%2582%2592%25e8%2583%258c%25e8%25b2%25a0%25e3%2581%25a3%25e3%2581%25a6%25e2%2580%2595%25e2%2580%2595%25e3%2583%259e%25e3%2583%25ab%25e3%2582%25b3%25e3%2582%25b9%25e3%2583%25bb%25e3%2582%25bd",
+    "publishedAt": "2026-07-10T23:28:52.000Z",
+    "firstSeenAt": "2026-07-11T06:27:28.181Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【UFC329】ロイヴァルと戦うロナー・カヴァナ「トップ5を僕がジャックする。彼らの場所を乗っとる」",
