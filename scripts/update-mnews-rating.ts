@@ -100,4 +100,15 @@ function main() {
   console.log(`除外warning: ${warnings.length}件 / アーカイブ保存: ${changed ? "あり(" + asOf.toISOString().slice(0, 10) + ")" : "なし(変動なし)"}`);
 }
 
-main();
+// main()は同期関数だが、他のバッチスクリプト(update-fighter-records.ts等)と
+// 同じ規約で明示的にcatch→process.exit(1)する。data/rankings.jsonへの書き込みは
+// mainの最後(全計算完了後)にしかないため、途中で例外が飛べば何も書き込まれず
+// 前回のrankings.jsonがそのまま残る(中途半端なファイルを書かない)。
+// CI(update-fighter-records.yml)は前段のupdate-fighter-records.tsが失敗すれば
+// GitHub Actionsのデフォルト挙動でこのステップ自体が実行されない。
+try {
+  main();
+} catch (e) {
+  console.error(e);
+  process.exit(1);
+}
