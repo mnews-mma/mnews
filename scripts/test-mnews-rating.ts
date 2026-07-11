@@ -13,6 +13,7 @@ import {
   RatingState,
 } from "../src/lib/mnewsRating/engine";
 import { DECAY_FLOOR } from "../src/lib/mnewsRating/constants";
+import { buildDivisionRankings, hasRankingChange, DivisionRankings } from "../src/lib/mnewsRating/rankingsFile";
 
 let failures = 0;
 let passes = 0;
@@ -286,6 +287,48 @@ function makeResolver(map: Record<string, string>) {
     d1.get("fighter-a")!.rawRating === d2.get("fighter-a")!.rawRating,
     "冪等性: rawRatingはバッチ実行日(asOf)に依存しない"
   );
+}
+
+// ── 10. rankings.json組み立て(delta算出・アーカイブ要否判定) ────────────
+{
+  const asOf1 = new Date("2026-01-01");
+  const eligible1 = [
+    {
+      meta: { slug: "fighter-r1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-r1", rawRating: 1600, displayRating: 1600, fights: 5, wins: 4, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+    {
+      meta: { slug: "fighter-r2", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-r2", rawRating: 1550, displayRating: 1550, fights: 4, wins: 3, losses: 1, draws: 0, lastFightDate: "2025-11-01", eligible: true },
+    },
+  ];
+  const first = buildDivisionRankings("フェザー級", eligible1, asOf1, undefined);
+  check(first.entries[0].fighterId === "fighter-r1" && first.entries[0].rank === 1, "rankings組み立て: レート降順で1位が決まる");
+  check(first.entries.every((e) => e.delta === null), "rankings組み立て: 前回データが無い初回はdeltaがnull");
+  check(hasRankingChange(first, undefined), "rankings組み立て: 初回公開もアーカイブ対象(変動ありとみなす)");
+
+  // 2回目: r1が上昇・r2が変わらず・新顔r3が追加
+  const asOf2 = new Date("2026-01-02");
+  const eligible2 = [
+    { ...eligible1[0], display: { ...eligible1[0].display, rawRating: 1620, displayRating: 1620 } },
+    eligible1[1],
+    {
+      meta: { slug: "fighter-r3", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-r3", rawRating: 1500, displayRating: 1500, fights: 3, wins: 1, losses: 2, draws: 0, lastFightDate: "2025-10-01", eligible: true },
+    },
+  ];
+  const second = buildDivisionRankings("フェザー級", eligible2, asOf2, first);
+  const r1 = second.entries.find((e) => e.fighterId === "fighter-r1")!;
+  const r2 = second.entries.find((e) => e.fighterId === "fighter-r2")!;
+  const r3 = second.entries.find((e) => e.fighterId === "fighter-r3")!;
+  check(r1.delta === 20, `rankings組み立て: 前回比deltaが正しく算出される (got ${r1.delta})`);
+  check(r2.delta === 0, "rankings組み立て: レート据え置きはdelta=0");
+  check(r3.delta === null, "rankings組み立て: 新規掲載選手はdelta=null");
+  check(hasRankingChange(second, first), "rankings組み立て: 顔ぶれ・レートが変われば変動ありと判定される");
+
+  // 3回目: 完全に同じ顔ぶれ・同じレート → 変動なし
+  const third = buildDivisionRankings("フェザー級", eligible2, new Date("2026-01-03"), second);
+  check(!hasRankingChange(third, second), "rankings組み立て: 顔ぶれ・レートが完全に同一なら変動なしと判定される");
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

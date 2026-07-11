@@ -49,6 +49,16 @@ export function isRizinMmaEvent(eventName: string): boolean {
   return true;
 }
 
+// 計量オーバーの検知キーワード。現状のfighterRecords.json(method/event文字列)には
+// 計量関連の記載が一切無い(データ実地調査で確認済み)ため、この関数は今のところ
+// 常にfalseを返す。捏造せず、将来データソースに計量情報が加われば自動で拾える
+// よう構造だけ用意しておく。
+const WEIGH_IN_MISS_KEYWORDS = /計量.*(オーバー|失敗|未達)|オーバーウェイト/;
+
+export function detectWeighInMiss(h: Pick<HistoryEntryLike, "method" | "event">): boolean {
+  return WEIGH_IN_MISS_KEYWORDS.test(`${h.method ?? ""} ${h.event ?? ""}`);
+}
+
 // method文字列(例: "1R 1:08 KO（右ストレート）" "5分3R終了 判定3-0"
 // "2R 3:44 リアネイキッドチョーク")からフィニッシュ/判定を分類する。
 // 空文字・欠損は unknown とし、勝手に決着種別を推測しない。

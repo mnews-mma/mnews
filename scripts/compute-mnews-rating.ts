@@ -12,7 +12,7 @@ import {
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
 import { buildOpponentResolver } from "../src/lib/mnewsRating/nameIndex";
-import { isFeatherweightProfile } from "../src/lib/mnewsRating/division";
+import { mapToDivision } from "../src/lib/mnewsRating/divisions";
 import { ALGORITHM_VERSION, RATING_NAME } from "../src/lib/mnewsRating/constants";
 
 const DATA_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
@@ -29,7 +29,7 @@ function main() {
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
   const classBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
 
-  const featherweightAll = [...display.values()].filter((e) => isFeatherweightProfile(classBySlug.get(e.slug)));
+  const featherweightAll = [...display.values()].filter((e) => mapToDivision(classBySlug.get(e.slug)) === "フェザー級");
   const eligible = featherweightAll.filter((e) => e.eligible).sort((a, b) => b.displayRating - a.displayRating);
   const ineligible = featherweightAll.filter((e) => !e.eligible).sort((a, b) => b.displayRating - a.displayRating);
 
