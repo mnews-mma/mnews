@@ -33,16 +33,25 @@ export interface RelatedFighterChip {
 // マッチング候補プール: 非hidden かつ 除外リスト対象外。nameJaのみ照合
 // (aliases・nicknameは対象外。aliasesには"KENTA"等の著名別人と衝突する値が
 // 含まれるため、意図的に見ない)。
+// 戦績データの有無(noRecordData)はfighters.ts単体の情報だけでは分からない
+// (fetchFighterRecords()が必要)ため、ここでは判定せず呼び出し側からvisibleSlugsを
+// 受け取って最終フィルタする。
 const CANDIDATES = FIGHTERS.filter((f) => !f.hidden && !EXCLUDED_CHIP_NAMES.has(f.nameJa));
 
 const norm = (s: string) => s.replace(/[\s　]/g, "");
 
 // タイトル文字列に含まれる登録選手名(完全一致)を、タイトル内の出現順で
 // 最大3件返す。本文・URLは対象外。マッチ0件は空配列(呼び出し側でチップ非表示)。
-export function matchRelatedFighters(title: string): RelatedFighterChip[] {
+//
+// visibleSlugs: getVisibleFighterSlugs()(選手ページ・対戦カードの「表示可能」
+// 判定と同一基準=非hidden かつ 戦績データあり)で絞り込んだslugの集合。
+// この集合に無いslug(戦績データが空=noRecordData)はマッチしてもチップ化しない
+// (中身の無い選手ページへのタグ化を防ぐ)。
+export function matchRelatedFighters(title: string, visibleSlugs: Set<string>): RelatedFighterChip[] {
   const normTitle = norm(title);
   const matches: { name: string; slug: string; index: number }[] = [];
   for (const f of CANDIDATES) {
+    if (!visibleSlugs.has(f.slug)) continue;
     const normName = norm(f.nameJa);
     if (!normName) continue;
     const index = normTitle.indexOf(normName);

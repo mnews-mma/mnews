@@ -15,6 +15,7 @@ import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
 import { toFeedArticles } from "@/lib/newsClassify";
 import { matchRelatedFighters } from "@/lib/relatedFighterChips";
+import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { ORIGINAL_ARTICLES, originalArticleToFeedArticle } from "@/lib/originalArticles";
 import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
@@ -68,12 +69,13 @@ export default async function HomePage() {
 
   const homepageFighters = FIGHTERS.filter((f) => HOMEPAGE_FIGHTER_SLUGS.has(f.slug));
 
-  const [articlesResult, fighters, videos, firstSeenMap, orgRankings] = await Promise.all([
+  const [articlesResult, fighters, videos, firstSeenMap, orgRankings, visibleFighterSlugs] = await Promise.all([
     fetchAllArticles().catch(() => null),
     resolveFightersCached(homepageFighters),
     fetchLatestOfficialVideos().catch(() => []),
     fetchFirstSeenMap().catch(() => new Map<string, string>()),
     fetchOrgRankings().catch(() => ({})),
+    getVisibleFighterSlugs(),
   ]);
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};
@@ -101,10 +103,12 @@ export default async function HomePage() {
   const within3d = feedAll.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
   // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを
   // 突合。クライアントにはマッチング結果(name/slug)のみを渡す(ロジック自体は
-  // 送らない)。
+  // 送らない)。visibleFighterSlugsで戦績データが空(noRecordData)の選手を除外し、
+  // 中身の無い選手ページへのタグ化を防ぐ(選手ページ・対戦カードと同じ「表示可能」
+  // 判定基準=getVisibleFighterSlugsに揃える)。
   const feedArticles = (within3d.length >= 8 ? within3d : feedAll.slice(0, 8)).map((a) => ({
     ...a,
-    relatedFighters: matchRelatedFighters(a.title),
+    relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs),
   }));
 
   // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて

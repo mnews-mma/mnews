@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "check:fighter-records": "tsx scripts/check-fighter-records-integrity.ts",
+    "build": "npm run check:fighter-records && next build",
     "start": "next start",
     "lint": "next lint"
   },
