@@ -9,6 +9,7 @@ import { openXShare } from "@/lib/xShare";
 interface FighterOption {
   slug: string;
   nameJa: string;
+  weightClass: string;
 }
 
 const SITE_URL = "https://www.mnews.jp";
@@ -43,13 +44,35 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   // 選択肢自体は既存のプルダウンのまま(絞り込みは表示するoptionを減らすだけ)。
   const [filterA, setFilterA] = useState("");
   const [filterB, setFilterB] = useState("");
+  // 選手リストを絞る「階級で絞る」フィルタ(任意)。空文字="すべて"。
+  // カードに焼き込む「階級ラベル(手指定・wcPreset/wcCustom)」とは別物
+  // (あちらは出力用ラベル、こちらは選手リストの探しやすさ用の一覧フィルタ)。
+  // 選択の制約にはしないため、階級をまたぐ組み合わせは引き続き可能。
+  const [classFilterA, setClassFilterA] = useState("");
+  const [classFilterB, setClassFilterB] = useState("");
+
+  const weightClasses = useMemo(
+    () => Array.from(new Set(fighters.map((f) => f.weightClass))).sort((a, b) => weightSortKey(a) - weightSortKey(b)),
+    [fighters]
+  );
+
   const fightersA = useMemo(
-    () => (filterA.trim() ? fighters.filter((f) => f.nameJa.includes(filterA.trim())) : fighters),
-    [fighters, filterA]
+    () =>
+      fighters.filter(
+        (f) =>
+          (!filterA.trim() || f.nameJa.includes(filterA.trim())) &&
+          (!classFilterA || f.weightClass === classFilterA)
+      ),
+    [fighters, filterA, classFilterA]
   );
   const fightersB = useMemo(
-    () => (filterB.trim() ? fighters.filter((f) => f.nameJa.includes(filterB.trim())) : fighters),
-    [fighters, filterB]
+    () =>
+      fighters.filter(
+        (f) =>
+          (!filterB.trim() || f.nameJa.includes(filterB.trim())) &&
+          (!classFilterB || f.weightClass === classFilterB)
+      ),
+    [fighters, filterB, classFilterB]
   );
 
   useEffect(() => {
@@ -136,6 +159,18 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
           <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
             選手{mode === "vs" ? "A" : ""}
           </label>
+          <select
+            value={classFilterA}
+            onChange={(e) => setClassFilterA(e.target.value)}
+            style={{ display: "block", padding: "6px 10px", fontSize: 13, minWidth: 220, marginBottom: 4 }}
+          >
+            <option value="">階級で絞る: すべて</option>
+            {weightClasses.map((w) => (
+              <option key={w} value={w}>
+                {w}
+              </option>
+            ))}
+          </select>
           <input
             type="text"
             value={filterA}
@@ -168,6 +203,8 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
                   // スワップ結果を即座に上書きしてしまう。
                   setFilterA(filterB);
                   setFilterB(filterA);
+                  setClassFilterA(classFilterB);
+                  setClassFilterB(classFilterA);
                 }}
                 title="AとBを入れ替え"
                 style={{ padding: "8px 10px", fontSize: 16, lineHeight: 1 }}
@@ -177,6 +214,18 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
             </div>
             <div>
               <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>選手B</label>
+              <select
+                value={classFilterB}
+                onChange={(e) => setClassFilterB(e.target.value)}
+                style={{ display: "block", padding: "6px 10px", fontSize: 13, minWidth: 220, marginBottom: 4 }}
+              >
+                <option value="">階級で絞る: すべて</option>
+                {weightClasses.map((w) => (
+                  <option key={w} value={w}>
+                    {w}
+                  </option>
+                ))}
+              </select>
               <input
                 type="text"
                 value={filterB}

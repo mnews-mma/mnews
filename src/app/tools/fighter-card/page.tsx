@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
 
 export default async function FighterCardToolPage() {
   const visible = await getVisibleFighters();
-  const fighters = visible.map((f) => ({ slug: f.slug, nameJa: f.nameJa }));
+  const fighters = visible.map((f) => ({ slug: f.slug, nameJa: f.nameJa, weightClass: f.weightClass }));
 
   return (
     <>

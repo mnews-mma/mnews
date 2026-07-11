@@ -34,7 +34,7 @@ export default async function DreamPage({
   // 選択候補は公開母集団(hidden除外・戦績データあり)のみ。/fighters・Xカードツールと
   // 同じgetVisibleFighters()経由なので、未登録選手は最初から候補に出ない。
   const visible = await getVisibleFighters();
-  const fighters = visible.map((f) => ({ slug: f.slug, nameJa: f.nameJa }));
+  const fighters = visible.map((f) => ({ slug: f.slug, nameJa: f.nameJa, weightClass: f.weightClass }));
   const visibleSlugs = new Set(fighters.map((f) => f.slug));
 
   // URLのa/bが未指定・不正な場合は候補の先頭2人にフォールバックする

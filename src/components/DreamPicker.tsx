@@ -2,10 +2,12 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { weightSortKey } from "@/lib/weightClasses";
 
 interface FighterOption {
   slug: string;
   nameJa: string;
+  weightClass: string;
 }
 
 // 夢のカードの選手A/B選択UI。既存のXカードツール(OgCardTool.tsx)の対戦カード
@@ -27,14 +29,34 @@ export default function DreamPicker({
   const [slugB, setSlugB] = useState(initialB);
   const [filterA, setFilterA] = useState("");
   const [filterB, setFilterB] = useState("");
+  // 階級で絞る(任意)。空文字="すべて"。あくまで選手を探しやすくするための
+  // 一覧フィルタで、選択そのものを制約しない(階級をまたぐ組み合わせは
+  // 引き続き可能=A/Bで別々の階級を選んでもよい)。
+  const [classFilterA, setClassFilterA] = useState("");
+  const [classFilterB, setClassFilterB] = useState("");
+
+  const weightClasses = useMemo(
+    () => Array.from(new Set(fighters.map((f) => f.weightClass))).sort((a, b) => weightSortKey(a) - weightSortKey(b)),
+    [fighters]
+  );
 
   const fightersA = useMemo(
-    () => (filterA.trim() ? fighters.filter((f) => f.nameJa.includes(filterA.trim())) : fighters),
-    [fighters, filterA]
+    () =>
+      fighters.filter(
+        (f) =>
+          (!filterA.trim() || f.nameJa.includes(filterA.trim())) &&
+          (!classFilterA || f.weightClass === classFilterA)
+      ),
+    [fighters, filterA, classFilterA]
   );
   const fightersB = useMemo(
-    () => (filterB.trim() ? fighters.filter((f) => f.nameJa.includes(filterB.trim())) : fighters),
-    [fighters, filterB]
+    () =>
+      fighters.filter(
+        (f) =>
+          (!filterB.trim() || f.nameJa.includes(filterB.trim())) &&
+          (!classFilterB || f.weightClass === classFilterB)
+      ),
+    [fighters, filterB, classFilterB]
   );
 
   // 検索フィルタで選択肢を絞り込んだ結果、現在選択中のslugがフィルタ後のリストから
@@ -77,12 +99,27 @@ export default function DreamPicker({
     // 即座に上書きしてしまう(OgCardToolと同じ対策)。
     setFilterA(filterB);
     setFilterB(filterA);
+    setClassFilterA(classFilterB);
+    setClassFilterB(classFilterA);
   };
 
   return (
     <div style={{ display: "flex", gap: 16, flexWrap: "wrap", padding: "16px 24px" }}>
       <div>
         <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>選手A</label>
+        <select
+          id="dream-class-filter-a"
+          value={classFilterA}
+          onChange={(e) => setClassFilterA(e.target.value)}
+          style={{ display: "block", padding: "6px 10px", fontSize: 13, minWidth: 220, marginBottom: 4 }}
+        >
+          <option value="">階級で絞る: すべて</option>
+          {weightClasses.map((w) => (
+            <option key={w} value={w}>
+              {w}
+            </option>
+          ))}
+        </select>
         <input
           id="dream-filter-a"
           type="text"
@@ -113,6 +150,19 @@ export default function DreamPicker({
 
       <div>
         <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>選手B</label>
+        <select
+          id="dream-class-filter-b"
+          value={classFilterB}
+          onChange={(e) => setClassFilterB(e.target.value)}
+          style={{ display: "block", padding: "6px 10px", fontSize: 13, minWidth: 220, marginBottom: 4 }}
+        >
+          <option value="">階級で絞る: すべて</option>
+          {weightClasses.map((w) => (
+            <option key={w} value={w}>
+              {w}
+            </option>
+          ))}
+        </select>
         <input
           id="dream-filter-b"
           type="text"
