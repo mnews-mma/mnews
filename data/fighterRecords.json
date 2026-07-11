@@ -2585,10 +2585,10 @@
     "age": 38
   },
   "ya-man": {
-    "wins": 2,
+    "wins": 3,
     "losses": 2,
     "draws": 0,
-    "ko": 2,
+    "ko": 3,
     "sub": 0,
     "decision": 0,
     "history": [
@@ -2624,6 +2624,14 @@
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN.45",
         "round": "R3"
+      },
+      {
+        "date": "2023-05-06",
+        "opponent": "三浦孝太",
+        "result": "win",
+        "method": "1R 3:13 KO（膝とパンチ）",
+        "event": "RIZIN.42",
+        "round": "R1"
       }
     ],
     "live": true,

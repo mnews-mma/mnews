@@ -13,6 +13,7 @@ import { resolveFighter } from "../src/lib/feeds/resolveFighter";
 import type { FighterRecordEntry, FighterRecordsFile } from "../src/lib/fighterRecordsCache";
 import { checkFighterRecordIntegrity } from "../src/lib/fighterRecordIntegrity";
 import { enrichHistoryWithWeightClass } from "../src/lib/mnewsRating/enrichHistoryWeightClass";
+import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 // fighterRecords.json自体には生成時刻を焼き込まない(選手データと運用メタ情報を
@@ -27,14 +28,20 @@ const META_OUT = path.join(process.cwd(), "data", "fighterRecordsMeta.json");
 function toCacheEntry(
   r: Awaited<ReturnType<typeof resolveFighter>>
 ): { entry: FighterRecordEntry; nullBouts: Array<{ date: string; opponent: string }> } {
-  const { history, nullBouts } = enrichHistoryWithWeightClass(r.nameJa, r.history);
-  const entry: FighterRecordEntry = {
+  // 上流データ(Wikipedia)のパース誤り・欠落を出典付きで訂正(recordOverrides.ts)。
+  // その後にRIZIN MMA boutへのweightClass付与を行う(訂正で追加されたboutも対象)。
+  const correctedHistory = applyRecordOverrides(r.slug, r.history);
+  const { history, nullBouts } = enrichHistoryWithWeightClass(r.nameJa, correctedHistory);
+  const totals = applyRecordOverridesToTotals(r.slug, {
     wins: r.wins,
     losses: r.losses,
     draws: r.draws,
     ko: r.ko,
     sub: r.sub,
     decision: r.decision,
+  });
+  const entry: FighterRecordEntry = {
+    ...totals,
     history,
     live: r.live,
     ...(r.nickname ? { nickname: r.nickname } : {}),
