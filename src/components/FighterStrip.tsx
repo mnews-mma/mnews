@@ -8,8 +8,9 @@ import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
 //
 // full は選手名を含まない(呼び出し側のBoutCardが選手名を1回だけ別途表示する
 // ため、ここでは名前の直下に来る戦績スタッツのみを返す)。2段固定:
-// 上段=戦績+フィニッシュ率／下段=勝率+直近5戦○●。折り返しの有無を幅任せに
-// せず常にこの2段で描画する。
+// 上段=戦績+直近5戦○●／下段=勝率+フィニッシュ率。折り返しの有無を幅任せに
+// せず常にこの2段で描画する(TKOはKO側に含める前提の既存finishRate算出ロジック
+// はそのまま流用、ラベル表記のみ「フィニッシュ率」)。
 export default function FighterStrip({
   name,
   slug,
@@ -42,12 +43,6 @@ export default function FighterStrip({
     <div className="fighter-strip">
       <div className="fighter-strip-row1">
         <span className="fighter-strip-record">{record}</span>
-        {finishRate !== null && (
-          <span className="fighter-strip-finish">フィニッシュ率{finishRate}%</span>
-        )}
-      </div>
-      <div className="fighter-strip-row2">
-        <span className="fighter-strip-winrate">勝率{winRate !== null ? `${winRate}%` : "—"}</span>
         {last5.length > 0 && (
           <span className="fighter-strip-last5">
             {last5.map((r, i) => (
@@ -56,6 +51,12 @@ export default function FighterStrip({
               </span>
             ))}
           </span>
+        )}
+      </div>
+      <div className="fighter-strip-row2">
+        <span className="fighter-strip-winrate">勝率{winRate !== null ? `${winRate}%` : "—"}</span>
+        {finishRate !== null && (
+          <span className="fighter-strip-finish">フィニッシュ率{finishRate}%</span>
         )}
       </div>
     </div>

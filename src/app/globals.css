@@ -193,7 +193,8 @@ a {
   top: 0;
   right: 0;
   z-index: 102;
-  width: min(280px, 80vw);
+  width: 80vw;
+  max-width: 300px;
   height: 100%;
   background: var(--accent);
   padding: 88px 8px 24px;
@@ -1965,7 +1966,7 @@ footer {
 }
 
 /* 戦績ストリップ(full): 選手名の直下に来る数字ブロック。折り返しの有無を幅任せに
-   せず、常に2段固定で描画する(上段=戦績+フィニッシュ率／下段=勝率+直近5戦)。
+   せず、常に2段固定で描画する(上段=戦績+直近5戦／下段=勝率+フィニッシュ率)。
    選手名側(.bout-side--right)が右寄せの場合はここも右寄せに追従する。 */
 .fighter-strip {
   font-size: 10px;
