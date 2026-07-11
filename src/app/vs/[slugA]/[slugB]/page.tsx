@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import XShareLink from "@/components/XShareLink";
 import { getFighter, type Fighter } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { ogImagePath } from "@/lib/ogShared";
@@ -123,14 +124,12 @@ export default async function VsPage({
         />
 
         <div style={{ display: "flex", gap: 8, marginBottom: 32 }}>
-          <a
-            href={`https://x.com/intent/post?url=${encodeURIComponent(`${SITE_URL}/vs/${slugA}/${slugB}${vsQuery(wc, ev)}`)}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <XShareLink
+            url={`${SITE_URL}/vs/${slugA}/${slugB}${vsQuery(wc, ev)}`}
             style={{ padding: "10px 20px", background: "#000", color: "#fff", fontWeight: 700, borderRadius: 4, fontSize: 14, textDecoration: "none" }}
           >
             𝕏 に投稿
-          </a>
+          </XShareLink>
         </div>
 
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>

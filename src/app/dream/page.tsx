@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import BoutCard from "@/components/BoutCard";
 import DreamPicker from "@/components/DreamPicker";
+import XShareLink from "@/components/XShareLink";
 import { getFighter } from "@/lib/fighters";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
@@ -95,10 +96,9 @@ export default async function DreamPage({
               weightClass={weightLabel}
             />
             <div style={{ marginTop: 16 }}>
-              <a
-                href={`https://x.com/intent/post?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl!)}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <XShareLink
+                text={shareText}
+                url={shareUrl!}
                 style={{
                   display: "inline-block",
                   padding: "10px 20px",
@@ -111,7 +111,7 @@ export default async function DreamPage({
                 }}
               >
                 𝕏 でシェア
-              </a>
+              </XShareLink>
             </div>
           </>
         ) : (

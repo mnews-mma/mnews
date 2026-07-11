@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { ogImagePath } from "@/lib/ogShared";
 import { weightSortKey } from "@/lib/weightClasses";
+import { openXShare } from "@/lib/xShare";
 
 interface FighterOption {
   slug: string;
@@ -96,16 +97,13 @@ export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) 
   };
 
   const postToX = (url: string) => {
-    window.open(`https://x.com/intent/post?url=${encodeURIComponent(url)}`, "_blank");
+    openXShare({ url });
   };
 
   // VSモード専用。本文(text)とシェアURL(url)を分離してintentに渡す
   // (urlはXがOGカードを描画するために必須なので必ず末尾に付ける)。
   const postToXWithText = (text: string, url: string) => {
-    window.open(
-      `https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
-      "_blank"
-    );
+    openXShare({ text, url });
   };
 
   return (
