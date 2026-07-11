@@ -3,7 +3,7 @@
     "org": "pancrase",
     "source": "パンクラス公式ランキング",
     "sourceUrl": "https://www.pancrase.co.jp/rls/ranking.html",
-    "fetchedDate": "2026-07-10",
+    "fetchedDate": "2026-07-11",
     "rankingLabel": "7月2日発表",
     "classes": [
       {
@@ -442,8 +442,8 @@
     "org": "shooto",
     "source": "修斗公式ランキング",
     "sourceUrl": "https://www.shooto-mma.com/ranking/",
-    "fetchedDate": "2026-07-10",
-    "rankingLabel": "6月5日付け",
+    "fetchedDate": "2026-07-11",
+    "rankingLabel": "7月1日付け",
     "classes": [
       {
         "weightClass": "ストロー級",
@@ -500,7 +500,7 @@
           },
           {
             "rank": "10",
-            "officialName": "泰斗",
+            "officialName": "梅木 勇徳",
             "slug": null
           }
         ]
@@ -535,13 +535,13 @@
           },
           {
             "rank": "5",
-            "officialName": "中村 優作",
-            "slug": "nakamura-yusaku"
+            "officialName": "杉本 静弥",
+            "slug": null
           },
           {
             "rank": "6",
-            "officialName": "杉本 静弥",
-            "slug": null
+            "officialName": "中村 優作",
+            "slug": "nakamura-yusaku"
           },
           {
             "rank": "7",
@@ -561,16 +561,6 @@
           {
             "rank": "10",
             "officialName": "岡田 嵐士",
-            "slug": null
-          },
-          {
-            "rank": "11",
-            "officialName": "中池 武寛",
-            "slug": null
-          },
-          {
-            "rank": "12",
-            "officialName": "鈴木 尊",
             "slug": null
           }
         ]
@@ -600,13 +590,13 @@
           },
           {
             "rank": "4",
-            "officialName": "シンバートル バットエルデネ",
-            "slug": "baterdene-simbaatar"
+            "officialName": "野瀬 翔平",
+            "slug": "nose-shohei"
           },
           {
             "rank": "5",
-            "officialName": "野瀬 翔平",
-            "slug": "nose-shohei"
+            "officialName": "シンバートル バットエルデネ",
+            "slug": "baterdene-simbaatar"
           },
           {
             "rank": "6",
@@ -631,16 +621,6 @@
           {
             "rank": "10",
             "officialName": "宮口 龍鳳",
-            "slug": null
-          },
-          {
-            "rank": "11",
-            "officialName": "中島 陸",
-            "slug": null
-          },
-          {
-            "rank": "12",
-            "officialName": "野尻 定由",
             "slug": null
           }
         ]
@@ -670,13 +650,13 @@
           },
           {
             "rank": "4",
-            "officialName": "堀江 耐志",
-            "slug": "horie-taishi"
+            "officialName": "TOMA",
+            "slug": "toma"
           },
           {
             "rank": "5",
-            "officialName": "TOMA",
-            "slug": "toma"
+            "officialName": "堀江 耐志",
+            "slug": "horie-taishi"
           },
           {
             "rank": "6",
@@ -700,12 +680,7 @@
           },
           {
             "rank": "10",
-            "officialName": "カイル マヨッキ",
-            "slug": null
-          },
-          {
-            "rank": "11",
-            "officialName": "宇藤 彰貴",
+            "officialName": "飯野 雄斗",
             "slug": null
           }
         ]
