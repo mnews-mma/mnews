@@ -10,7 +10,7 @@ import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
-import RankingDelta from "@/components/RankingDelta";
+import MnewsRatingSection from "@/components/MnewsRatingSection";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
@@ -71,18 +71,39 @@ export default async function HomePage() {
 
   const homepageFighters = FIGHTERS.filter((f) => HOMEPAGE_FIGHTER_SLUGS.has(f.slug));
 
-  const [articlesResult, fighters, videos, firstSeenMap, orgRankings, visibleFighterSlugs, featherweightRankings] =
-    await Promise.all([
-      fetchAllArticles().catch(() => null),
-      resolveFightersCached(homepageFighters),
-      fetchLatestOfficialVideos().catch(() => []),
-      fetchFirstSeenMap().catch(() => new Map<string, string>()),
-      fetchOrgRankings().catch(() => ({})),
-      getVisibleFighterSlugs(),
-      fetchDivisionRankings("featherweight").catch(() => null),
-    ]);
+  // トップページのMnewsRIZINレーティングは階級切替式(デフォルト:フェザー級)。
+  // 切替候補4階級ぶんを最初からまとめて取得し、クライアント側では追加fetch無しで
+  // 即座に切り替えられるようにする(全階級公開はせず、この4階級のみが対象)。
+  const [
+    articlesResult,
+    fighters,
+    videos,
+    firstSeenMap,
+    orgRankings,
+    visibleFighterSlugs,
+    flyweightRankings,
+    bantamweightRankings,
+    featherweightRankings,
+    lightweightRankings,
+  ] = await Promise.all([
+    fetchAllArticles().catch(() => null),
+    resolveFightersCached(homepageFighters),
+    fetchLatestOfficialVideos().catch(() => []),
+    fetchFirstSeenMap().catch(() => new Map<string, string>()),
+    fetchOrgRankings().catch(() => ({})),
+    getVisibleFighterSlugs(),
+    fetchDivisionRankings("flyweight").catch(() => null),
+    fetchDivisionRankings("bantamweight").catch(() => null),
+    fetchDivisionRankings("featherweight").catch(() => null),
+    fetchDivisionRankings("lightweight").catch(() => null),
+  ]);
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
-  const featherweightTop5 = featherweightRankings?.entries.slice(0, 5) ?? [];
+  const mnewsRatingDivisions = {
+    フライ級: flyweightRankings?.entries.slice(0, 5) ?? [],
+    バンタム級: bantamweightRankings?.entries.slice(0, 5) ?? [],
+    フェザー級: featherweightRankings?.entries.slice(0, 5) ?? [],
+    ライト級: lightweightRankings?.entries.slice(0, 5) ?? [],
+  };
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};
   for (const f of fighters) {
@@ -208,29 +229,6 @@ export default async function HomePage() {
 
         <SocialSection videos={videos} />
 
-        {/* mnewsレーティング(独自算出) フェザー級トップ5。RIZIN非公式の明記は
-            /rankings側で行うため、ここでは要約表示+導線に留める。 */}
-        {featherweightTop5.length > 0 && (
-          <section className="rail-panel">
-            <div className="rail-head">mnewsレーティング(フェザー級)</div>
-            <div className="rail-list">
-              {featherweightTop5.map((e) => (
-                <a key={e.fighterId} href={`/fighters/${e.fighterId}`} className="rail-item">
-                  <div className="rail-item-title" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.rank <= 3 ? "var(--accent)" : "var(--muted)" }}>
-                      {e.rank}
-                    </span>
-                    <span style={{ flex: 1 }}>{nameBySlug.get(e.fighterId) ?? e.fighterId}</span>
-                    <span style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{e.rating}</span>
-                    <RankingDelta delta={e.delta} />
-                  </div>
-                </a>
-              ))}
-            </div>
-            <a href="/rankings" className="rail-more">全ランキングを見る →</a>
-          </section>
-        )}
-
         {/* 公式ランキング・王者(選手一覧より上に配置)。中身はリンク4本に統一
             (RIZIN/DEEP現王者・パンクラス/修斗ランキングの各専用ページへ)。
             mnews独自のMレーティングではなく団体公式の中立集約データである点を
@@ -242,6 +240,12 @@ export default async function HomePage() {
           <a href="/ranking/pancrase" className="rail-more">パンクラス 公式ランキングを見る →</a>
           <a href="/ranking/shooto" className="rail-more">修斗 公式ランキングを見る →</a>
         </section>
+
+        {/* MnewsRIZINレーティング(独自算出)。公式ランキング・王者セクションの下に
+            独立配置し、RIZIN非公式の集計であることが伝わる名称にする。
+            階級切替(デフォルト:フェザー級)はクライアント側で行う(4階級分を
+            サーバーで取得済みのため追加fetch無しで切り替え可能)。 */}
+        <MnewsRatingSection divisions={mnewsRatingDivisions} nameBySlug={Object.fromEntries(nameBySlug)} />
 
         {/* 主要選手 戦績まとめ（/fighters と同じチップ体裁のカード） */}
         <section className="rail-panel">
