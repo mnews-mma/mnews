@@ -10,6 +10,7 @@ import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
+import { getDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import MnewsRatingSection from "@/components/MnewsRatingSection";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
@@ -98,11 +99,13 @@ export default async function HomePage() {
     fetchDivisionRankings("lightweight").catch(() => null),
   ]);
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
+  // ランキングページ本体と同じ共有セレクタ(getDivisionRankingView)経由で
+  // {champion, contenders}を取り出す(ここで独自に組み立てない=王者出し忘れ防止)。
   const mnewsRatingDivisions = {
-    フライ級: flyweightRankings?.entries.slice(0, 5) ?? [],
-    バンタム級: bantamweightRankings?.entries.slice(0, 5) ?? [],
-    フェザー級: featherweightRankings?.entries.slice(0, 5) ?? [],
-    ライト級: lightweightRankings?.entries.slice(0, 5) ?? [],
+    フライ級: getDivisionRankingView(flyweightRankings, 5),
+    バンタム級: getDivisionRankingView(bantamweightRankings, 5),
+    フェザー級: getDivisionRankingView(featherweightRankings, 5),
+    ライト級: getDivisionRankingView(lightweightRankings, 5),
   };
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};

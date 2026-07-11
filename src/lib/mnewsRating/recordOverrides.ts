@@ -44,7 +44,61 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "YA-MANのMMAデビュー戦がWikipedia戦績表に未掲載で欠落していた(通算2-2表示だが正しくは3-2)。" +
       "DATA MMA準拠で追加。RIZIN公式(https://jp.rizinff.com/_ct/17626739)でも同一結果(RIZIN.42、1RTKO/KO勝ち)を確認済み。",
   },
+  {
+    type: "add",
+    fighterId: "hagiwara-kyohei",
+    date: "2026-04-12",
+    opponent: "アバイジャ・カレオ・メヘウラ",
+    // 保存するのはケージ内で実際に起きた結果(TKO負け)。公式記録としてのNC
+    // 裁定への変換はWEIGH_IN_MISS_RULINGS+ルール(engine.ts)側で行う
+    // (このオーバーライドで直接nceにはしない=ハードコードではなくルール適用)。
+    result: "loss",
+    method: "1R パウンド",
+    event: "RIZIN LANDMARK 13",
+    round: "R1",
+    source: "https://jp.rizinff.com/_ct/17833706",
+    fetchedDate: "2026-07-12",
+    note:
+      "萩原京平のRIZIN LANDMARK 13(2026-04-12)第9試合がWikipedia戦績表・EVENT_RESULTS両方に未掲載で" +
+      "欠落していた。RIZIN公式試合結果ページで追加。この一戦は計量オーバー裁定によりノーコンテスト" +
+      "(WEIGH_IN_MISS_RULINGS参照)。",
+  },
 ];
+
+export interface WeighInMissRuling {
+  fighterId: string; // 視点の選手(このエントリのhistory側)のslug
+  date: string;
+  opponent: string; // history.opponentの表記
+  missedBy: "self" | "opponent"; // 計量オーバーしたのがfighterId本人か対戦相手か
+  source: string;
+  fetchedDate: string;
+  note: string;
+}
+
+// RIZIN裁定: 計量オーバーした側が勝った試合はノーコンテスト(負けた/引き分けなら
+// 通常どおり)。実際にどちらが計量オーバーしたかは一次ソースでしか判明しないため、
+// 判明した試合をここに列挙し、engine.tsのルール(applyWeighInMissRuling)が
+// 機械的にNC変換する(特定boutの手動書き換えではなく、一般ルール+事実データの
+// 分離)。
+export const WEIGH_IN_MISS_RULINGS: WeighInMissRuling[] = [
+  {
+    fighterId: "hagiwara-kyohei",
+    date: "2026-04-12",
+    opponent: "アバイジャ・カレオ・メヘウラ",
+    missedBy: "opponent",
+    source: "https://jp.rizinff.com/_ct/17833706",
+    fetchedDate: "2026-07-12",
+    note:
+      "メヘウラが66.00kg契約を1.5kgオーバー。RIZIN裁定によりメヘウラ勝利時はノーコンテストの取り決め。" +
+      "実際にメヘウラが1RでTKO相当の勝利をおさめたため公式記録はノーコンテスト" +
+      "(参考: https://www.oricon.co.jp/news/2448371/full/ 、https://mmaplanet.jp/225348 )。",
+  },
+];
+
+export function lookupWeighInMiss(fighterId: string, date: string, opponent: string): "self" | "opponent" | null {
+  const r = WEIGH_IN_MISS_RULINGS.find((w) => w.fighterId === fighterId && w.date === date && w.opponent === opponent);
+  return r ? r.missedBy : null;
+}
 
 // history配列にオーバーライドを適用する。add/removeとも冪等(同じ入力に何度
 // 適用しても結果は同じ)。
@@ -82,6 +136,14 @@ export function applyRecordOverridesToTotals(fighterId: string, totals: RecordTo
   const t = { ...totals };
   for (const o of RECORD_OVERRIDES) {
     if (o.fighterId !== fighterId || o.type !== "add") continue;
+
+    // 計量オーバー裁定でノーコンテストになる場合、集計(勝敗数)には一切加算しない
+    // (公式記録に合わせる。ケージ内の実際の結果=resultはhistoryにそのまま残す)。
+    const missedBy = lookupWeighInMiss(o.fighterId, o.date, o.opponent);
+    const isNc =
+      (missedBy === "opponent" && o.result === "loss") || (missedBy === "self" && o.result === "win");
+    if (isNc) continue;
+
     if (o.result === "win") {
       t.wins++;
       if (/判定/.test(o.method)) t.decision++;

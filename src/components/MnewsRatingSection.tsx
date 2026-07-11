@@ -10,23 +10,35 @@ interface RatingEntry {
   delta: number | null;
 }
 
+interface ChampionEntry {
+  fighterId: string;
+  rating: number | null;
+}
+
+interface DivisionView {
+  champion: ChampionEntry | null;
+  contenders: RatingEntry[];
+}
+
 const DIVISIONS = ["フライ級", "バンタム級", "フェザー級", "ライト級"] as const;
 type Division = (typeof DIVISIONS)[number];
 
 // トップページのMnewsRIZINレーティング(独自算出)セクション。4階級ぶんの
-// トップ5をサーバー側で取得済みで受け取り、階級切替はクライアント側の
-// state切り替えのみ(追加fetch無し)で行う。デフォルトはフェザー級。
+// {champion, contenders}をサーバー側(getDivisionRankingView経由)で取得済みで
+// 受け取り、階級切替はクライアント側のstate切り替えのみ(追加fetch無し)で行う。
+// デフォルトはフェザー級。ランキングページ本体と同じ共有セレクタ由来のデータ
+// なので、王者行の有無・並びが常に一致する(ここで独自に組み立てない)。
 export default function MnewsRatingSection({
   divisions,
   nameBySlug,
 }: {
-  divisions: Record<Division, RatingEntry[]>;
+  divisions: Record<Division, DivisionView>;
   nameBySlug: Record<string, string>;
 }) {
   const [division, setDivision] = useState<Division>("フェザー級");
-  const entries = divisions[division] ?? [];
+  const view = divisions[division] ?? { champion: null, contenders: [] };
 
-  if (!DIVISIONS.some((d) => (divisions[d] ?? []).length > 0)) return null;
+  if (!DIVISIONS.some((d) => (divisions[d]?.contenders.length ?? 0) > 0 || divisions[d]?.champion)) return null;
 
   return (
     <section className="rail-panel">
@@ -47,9 +59,19 @@ export default function MnewsRatingSection({
           ))}
         </select>
       </div>
-      {entries.length > 0 ? (
+      {view.contenders.length > 0 || view.champion ? (
         <div className="rail-list">
-          {entries.map((e) => (
+          {view.champion && (
+            <a href={`/fighters/${view.champion.fighterId}`} className="rail-item">
+              <div className="rail-item-title" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 800, color: "var(--gold, #c29a4b)" }}>王者</span>
+                <span style={{ flex: 1 }}>{nameBySlug[view.champion.fighterId] ?? view.champion.fighterId}</span>
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{view.champion.rating ?? "—"}</span>
+                <RankingDelta delta={null} />
+              </div>
+            </a>
+          )}
+          {view.contenders.map((e) => (
             <a key={e.fighterId} href={`/fighters/${e.fighterId}`} className="rail-item">
               <div className="rail-item-title" style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.rank <= 3 ? "var(--accent)" : "var(--muted)" }}>

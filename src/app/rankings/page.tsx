@@ -4,6 +4,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchRankings } from "@/lib/mnewsRatingData";
+import { getDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { MNEWS_DIVISIONS, DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata } from "@/lib/seo";
@@ -103,20 +104,20 @@ export default async function RankingsHubPage() {
           const slug = DIVISION_SLUG[division];
           const published = PUBLISHED_DIVISIONS.includes(division);
           const data = rankings[slug];
-          const top = data?.entries.slice(0, TOP_N_ON_HUB) ?? [];
+          const view = getDivisionRankingView(data, TOP_N_ON_HUB);
 
           return (
             <section key={division} style={{ marginBottom: 32 }}>
               <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 10 }}>
                 <h2 style={{ fontSize: 15, fontWeight: 800, margin: 0, color: "var(--fg)" }}>{division}</h2>
-                {published && data && data.entries.length > 0 && (
+                {published && view.contenders.length > 0 && (
                   <a href={`/rankings/${slug}`} style={{ fontSize: 12, color: "var(--accent)" }}>
                     全順位を見る →
                   </a>
                 )}
               </div>
 
-              {!published || !data || (data.entries.length === 0 && !data.champion) ? (
+              {!published || (view.contenders.length === 0 && !view.champion) ? (
                 <p style={{ fontSize: 13, color: "var(--muted)", padding: "8px 0" }}>準備中(算出は進行中、掲載は準備が整い次第)</p>
               ) : (
                 <div className="table-outer">
@@ -131,19 +132,19 @@ export default async function RankingsHubPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {data.champion && (
+                        {view.champion && (
                           <tr style={{ background: "rgba(194,154,75,0.1)" }}>
                             <td style={{ fontFamily: "var(--mono)", fontWeight: 800, color: "var(--gold, #c29a4b)" }}>王者</td>
                             <td className="col-opponent">
-                              <a href={`/fighters/${data.champion.fighterId}`} className="opponent-link">
-                                {nameBySlug.get(data.champion.fighterId) ?? data.champion.fighterId}
+                              <a href={`/fighters/${view.champion.fighterId}`} className="opponent-link">
+                                {nameBySlug.get(view.champion.fighterId) ?? view.champion.fighterId}
                               </a>
                             </td>
-                            <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{data.champion.rating ?? "—"}</td>
+                            <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{view.champion.rating ?? "—"}</td>
                             <td>—</td>
                           </tr>
                         )}
-                        {top.map((e) => (
+                        {view.contenders.map((e) => (
                           <tr key={e.fighterId}>
                             <td style={{ fontFamily: "var(--mono)", fontWeight: 700 }}>{e.rank}</td>
                             <td className="col-opponent">
