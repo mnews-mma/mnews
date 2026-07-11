@@ -6,6 +6,8 @@
     "dev": "next dev",
     "check:fighter-records": "tsx scripts/check-fighter-records-integrity.ts",
     "build": "npm run check:fighter-records && next build",
+    "test:mnews-rating": "tsx scripts/test-mnews-rating.ts",
+    "mrating:compute": "tsx scripts/compute-mnews-rating.ts",
     "start": "next start",
     "lint": "next lint"
   },

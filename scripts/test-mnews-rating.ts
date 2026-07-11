@@ -1,0 +1,222 @@
+// mnewsレーティング エンジンのユニットテスト。
+// リポジトリに既存のテストフレームワークが無いため(check-fighter-records-integrity.ts
+// と同じ流儀で)tsxで直接実行するassertベースのスクリプトにしている。
+// 実行: npx tsx scripts/test-mnews-rating.ts
+import {
+  buildBouts,
+  buildDisplayEntries,
+  computeRawRatings,
+  isEligible,
+  applyInactivityDecay,
+  FighterRecordsInput,
+  RatingState,
+} from "../src/lib/mnewsRating/engine";
+import { DECAY_FLOOR } from "../src/lib/mnewsRating/constants";
+
+let failures = 0;
+let passes = 0;
+
+function check(cond: boolean, label: string) {
+  if (cond) {
+    passes++;
+  } else {
+    failures++;
+    console.error(`FAIL: ${label}`);
+  }
+}
+
+function near(actual: number, expected: number, tolerance = 0.05) {
+  return Math.abs(actual - expected) <= tolerance;
+}
+
+// 簡易resolver: テストfixture内でしか使わない名前→slugマップ。
+function makeResolver(map: Record<string, string>) {
+  return (opponentName: string) => map[opponentName] ?? null;
+}
+
+// ── 1. 基本の勝敗レート移動(判定, K=32) ─────────────────────────────
+{
+  const records: FighterRecordsInput = {
+    "fighter-a": {
+      history: [{ date: "2026-01-01", opponent: "選手B", result: "win", method: "5分3R終了 判定3-0", event: "RIZIN.99" }],
+    },
+    "fighter-b": {
+      history: [{ date: "2026-01-01", opponent: "選手A", result: "loss", method: "5分3R終了 判定0-3", event: "RIZIN.99" }],
+    },
+  };
+  const resolve = makeResolver({ 選手A: "fighter-a", 選手B: "fighter-b" });
+  const { bouts, warnings } = buildBouts(records, resolve);
+  check(bouts.length === 1, "基本レート移動: DB内対決が重複排除され1件になる");
+  check(warnings.length === 0, "基本レート移動: warningが出ない");
+
+  const states = computeRawRatings(bouts);
+  const a = states.get("fighter-a")!;
+  const b = states.get("fighter-b")!;
+  // 同レート同士(1500 vs 1500)の判定勝ち: expected=0.5, K=32 → ±16
+  check(near(a.rawRating, 1516), `基本レート移動: 勝者rawRating≈1516 (got ${a.rawRating})`);
+  check(near(b.rawRating, 1484), `基本レート移動: 敗者rawRating≈1484 (got ${b.rawRating})`);
+  check(a.wins === 1 && a.losses === 0, "基本レート移動: 勝者の戦績が1-0-0");
+  check(b.losses === 1 && b.wins === 0, "基本レート移動: 敗者の戦績が0-1-0");
+}
+
+// ── 2. フィニッシュボーナス K=40 ──────────────────────────────────
+{
+  const records: FighterRecordsInput = {
+    "fighter-c": {
+      history: [{ date: "2026-02-01", opponent: "選手D", result: "win", method: "1R 1:08 KO（右ストレート）", event: "RIZIN.100" }],
+    },
+    "fighter-d": {
+      history: [{ date: "2026-02-01", opponent: "選手C", result: "loss", method: "1R 1:08 KO負け（右ストレート）", event: "RIZIN.100" }],
+    },
+  };
+  const resolve = makeResolver({ 選手C: "fighter-c", 選手D: "fighter-d" });
+  const { bouts } = buildBouts(records, resolve);
+  check(bouts[0].finish === true, "フィニッシュボーナス: KOがfinish=trueと判定される");
+
+  const states = computeRawRatings(bouts);
+  const c = states.get("fighter-c")!;
+  const d = states.get("fighter-d")!;
+  // K=40, expected=0.5 → ±20
+  check(near(c.rawRating, 1520), `フィニッシュボーナス: 勝者rawRating≈1520 (got ${c.rawRating})`);
+  check(near(d.rawRating, 1480), `フィニッシュボーナス: 敗者rawRating≈1480 (got ${d.rawRating})`);
+
+  // 一本勝ち(技名のみ・KOでも判定でもない)も finish 扱いになること
+  const subRecords: FighterRecordsInput = {
+    "fighter-e": {
+      history: [{ date: "2026-02-02", opponent: "選手F", result: "win", method: "2R 3:44 リアネイキッドチョーク", event: "RIZIN.101" }],
+    },
+    "fighter-f": {
+      history: [{ date: "2026-02-02", opponent: "選手E", result: "loss", method: "2R 3:44 一本負け", event: "RIZIN.101" }],
+    },
+  };
+  const subResolve = makeResolver({ 選手E: "fighter-e", 選手F: "fighter-f" });
+  const subBouts = buildBouts(subRecords, subResolve).bouts;
+  check(subBouts[0].finish === true, "フィニッシュボーナス: 技名のみの一本勝ちもfinish=trueと判定される");
+}
+
+// ── 3. ドロー ───────────────────────────────────────────────────
+{
+  const records: FighterRecordsInput = {
+    "fighter-g": {
+      history: [{ date: "2026-03-01", opponent: "選手H", result: "draw", method: "5分3R終了 判定1-1-1", event: "RIZIN.102" }],
+    },
+    "fighter-h": {
+      history: [{ date: "2026-03-01", opponent: "選手G", result: "draw", method: "5分3R終了 判定1-1-1", event: "RIZIN.102" }],
+    },
+  };
+  const resolve = makeResolver({ 選手G: "fighter-g", 選手H: "fighter-h" });
+  const { bouts } = buildBouts(records, resolve);
+  const states = computeRawRatings(bouts);
+  const g = states.get("fighter-g")!;
+  const h = states.get("fighter-h")!;
+  // 同レート同士のドロー: expected=0.5, score=0.5 → 変動なし
+  check(near(g.rawRating, 1500), `ドロー: 互角の相手とのドローはレート変動なし (got ${g.rawRating})`);
+  check(near(h.rawRating, 1500), `ドロー: 互角の相手とのドローはレート変動なし (got ${h.rawRating})`);
+  check(g.draws === 1 && h.draws === 1, "ドロー: 両者の戦績にdrawが1つ記録される");
+}
+
+// ── 4. ノーコンテスト ────────────────────────────────────────────
+{
+  const records: FighterRecordsInput = {
+    "fighter-i": {
+      history: [{ date: "2026-04-01", opponent: "選手J", result: "nc", method: "1R 反則（頭突き）ノーコンテスト", event: "RIZIN.103" }],
+    },
+  };
+  const resolve = makeResolver({});
+  const { bouts, warnings } = buildBouts(records, resolve);
+  check(bouts.length === 0, "ノーコンテスト: 対戦として計上されない");
+  check(warnings.length === 0, "ノーコンテスト: warningとしても計上されない(正常な除外)");
+  const states = computeRawRatings(bouts);
+  check(!states.has("fighter-i"), "ノーコンテスト: レート状態が一切生成されない(変動なし)");
+}
+
+// ── 5. 不活性ディケイ(表示のみ・rawRatingは不変) ───────────────────
+{
+  const asOf = new Date("2026-07-11T00:00:00Z");
+  const lastFight400daysAgo = new Date(asOf.getTime() - 400 * 86400000).toISOString().slice(0, 10);
+  const raw = 1600;
+  const decayed = applyInactivityDecay(raw, lastFight400daysAgo, asOf);
+  // 400日 / 180日 = 2期 → -50
+  check(near(decayed, 1550), `不活性ディケイ: 400日不活性で-50 (got ${decayed})`);
+
+  const veryOld = new Date(asOf.getTime() - 5 * 365 * 86400000).toISOString().slice(0, 10);
+  const decayedFloor = applyInactivityDecay(1450, veryOld, asOf);
+  check(decayedFloor === DECAY_FLOOR, `不活性ディケイ: 下限${DECAY_FLOOR}を下回らない (got ${decayedFloor})`);
+
+  const states = new Map<string, RatingState>([
+    ["fighter-k", { rawRating: raw, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: lastFight400daysAgo }],
+  ]);
+  const displayNow = buildDisplayEntries(states, asOf);
+  // +200日: 400日→600日で不活性期間が2期(360日)から3期(540日)に進み、確実にdisplayRatingが動く
+  const displayLater = buildDisplayEntries(states, new Date(asOf.getTime() + 200 * 86400000));
+  check(displayNow.get("fighter-k")!.rawRating === raw, "不活性ディケイ: displayRating計算後もrawRatingは元の値のまま");
+  check(
+    displayNow.get("fighter-k")!.rawRating === displayLater.get("fighter-k")!.rawRating,
+    "不活性ディケイ: asOfを変えてもrawRatingは変化しない(displayRatingのみ変化)"
+  );
+  check(
+    displayNow.get("fighter-k")!.displayRating !== displayLater.get("fighter-k")!.displayRating,
+    "不活性ディケイ: asOfが進むとdisplayRatingは変化する"
+  );
+}
+
+// ── 6. 掲載資格フィルタ ───────────────────────────────────────────
+{
+  const asOf = new Date("2026-07-11T00:00:00Z");
+  const recent = "2026-06-01";
+  const twentyMonthsAgo = new Date(asOf.getTime() - 20 * 30.44 * 86400000).toISOString().slice(0, 10);
+
+  const tooFewFights: RatingState = { rawRating: 1500, fights: 2, wins: 2, losses: 0, draws: 0, lastFightDate: recent };
+  check(!isEligible(tooFewFights, asOf), "掲載資格: 3戦未満は資格なし");
+
+  const inactive: RatingState = { rawRating: 1500, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: twentyMonthsAgo };
+  check(!isEligible(inactive, asOf), "掲載資格: 直近18ヶ月以内に試合が無いと資格なし");
+
+  const noWins: RatingState = { rawRating: 1450, fights: 3, wins: 0, losses: 2, draws: 1, lastFightDate: recent };
+  check(!isEligible(noWins, asOf), "掲載資格: 1勝もしていないと資格なし");
+
+  const ok: RatingState = { rawRating: 1520, fights: 3, wins: 1, losses: 2, draws: 0, lastFightDate: recent };
+  check(isEligible(ok, asOf), "掲載資格: 3戦以上・直近18ヶ月以内・1勝以上を満たせば資格あり");
+}
+
+// ── 7. 冪等性(同じ入力→同じ出力。rawRatingはバッチ実行日に依存しない) ──
+{
+  const records: FighterRecordsInput = {
+    "fighter-a": {
+      history: [
+        { date: "2026-01-01", opponent: "選手B", result: "win", method: "5分3R終了 判定3-0", event: "RIZIN.99" },
+        { date: "2026-05-01", opponent: "選手C", result: "win", method: "1R 1:08 KO（右ストレート）", event: "RIZIN.104" },
+      ],
+    },
+    "fighter-b": {
+      history: [{ date: "2026-01-01", opponent: "選手A", result: "loss", method: "5分3R終了 判定0-3", event: "RIZIN.99" }],
+    },
+    "fighter-c": {
+      history: [{ date: "2026-05-01", opponent: "選手A", result: "loss", method: "1R 1:08 KO負け（右ストレート）", event: "RIZIN.104" }],
+    },
+  };
+  const resolve = makeResolver({ 選手A: "fighter-a", 選手B: "fighter-b", 選手C: "fighter-c" });
+
+  const run = () => {
+    const parsed: FighterRecordsInput = JSON.parse(JSON.stringify(records));
+    const { bouts } = buildBouts(parsed, resolve);
+    const states = computeRawRatings(bouts);
+    return [...states.entries()].sort(([s1], [s2]) => (s1 < s2 ? -1 : 1));
+  };
+
+  const run1 = run();
+  const run2 = run();
+  check(JSON.stringify(run1) === JSON.stringify(run2), "冪等性: 同じ入力を2回計算しても結果が一致する");
+
+  // asOfを変えてもrawRatingそのもの(=計算結果)は不変であることの確認
+  const states1 = new Map(run1);
+  const d1 = buildDisplayEntries(states1, new Date("2026-07-11"));
+  const d2 = buildDisplayEntries(states1, new Date("2027-01-01"));
+  check(
+    d1.get("fighter-a")!.rawRating === d2.get("fighter-a")!.rawRating,
+    "冪等性: rawRatingはバッチ実行日(asOf)に依存しない"
+  );
+}
+
+console.log(`\n${passes}件成功 / ${failures}件失敗`);
+if (failures > 0) process.exit(1);
