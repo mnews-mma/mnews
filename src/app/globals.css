@@ -1934,15 +1934,16 @@ footer {
 
 .bout-side-name {
   display: block;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.3;
-  /* 名前が1行/2行のどちらでも高さを揃える(常に2行分=15px*1.3*2を確保)。
-     em単位のcalcだと、長い名前ほどfont-sizeが縮小される(inline style)ため、
-     「2行分」の絶対px高さも選手ごとに変わってしまい、短い名前(15px,1行)と
-     長い名前(10.5px,2行)で結局揃わなかった(実測: 39px vs 27.3px)。
-     固定px値にすることで、font-sizeに関わらず高さの基準を統一する。 */
-  min-height: 39px;
+  /* 全選手で同じfont-size(縮小なし)。名前が1行/2行のどちらでも高さを揃える
+     (常に2行分=12px*1.3*2=31.2pxを確保。font-sizeが固定になったため
+     min-heightもfont-sizeと連動するem単位で問題ない)。 */
+  min-height: calc(1.3em * 2);
+  /* 中黒「・」やスペースの直後で自然に折り返す(単語途中でのbreak-allはしない)。
+     overflow-wrapはそれでも収まらない極端なケースの保険。 */
+  overflow-wrap: break-word;
 }
 
 .bout-vs {

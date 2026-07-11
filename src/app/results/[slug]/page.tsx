@@ -2,29 +2,28 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
-import FighterStrip from "@/components/FighterStrip";
 import { EVENT_RESULTS, getEventResult, buildEventSummary } from "@/lib/eventResults";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata, isoDate } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
-import { fetchFighterRecords, FighterRecordsFile } from "@/lib/fighterRecordsCache";
 import { buildSportsEventLd, eventResultOgImageUrl } from "@/lib/eventJsonLd";
 
+// 結果ページは「答え合わせ」(勝敗・決着の記録)に徹し、予習用スタッツ
+// (通算戦績・勝率・フィニッシュ率・直近5戦○●・共通対戦相手)は出さない
+// (予習カード=events/dream/選手ページ次戦は別コンポーネントBoutCard/FighterStrip
+// のfullバリアントを使っており、ここには影響しない)。
 // 戦績データが無い(no-data)/hiddenの選手はリンクにせずテキスト表示にする
 // (getVisibleFighters()由来のvisibleSlugsで判定・判定ロジックの二重定義はしない)。
-// リンク化できる選手は戦績(compactストリップ)も併せて表示する。
-function FighterCardName({
-  name,
-  visibleSlugs,
-  records,
-}: {
-  name: string;
-  visibleSlugs: Set<string>;
-  records: FighterRecordsFile;
-}) {
+function FighterCardName({ name, visibleSlugs }: { name: string; visibleSlugs: Set<string> }) {
   const slug = findFighterSlugByName(name, undefined, visibleSlugs);
-  return <FighterStrip name={name} slug={slug} entry={slug ? (records[slug] ?? null) : null} variant="compact" />;
+  return slug ? (
+    <a href={`/fighters/${slug}`} className="opponent-link">
+      {name}
+    </a>
+  ) : (
+    <span>{name}</span>
+  );
 }
 
 export function generateStaticParams() {
@@ -50,7 +49,6 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
   const event = getEventResult(slug);
   if (!event) notFound();
   const visibleSlugs = await getVisibleFighterSlugs();
-  const records = await fetchFighterRecords();
 
   const summary = buildEventSummary(event);
   const eventDate = isoDate(event.date);
@@ -135,9 +133,9 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
                         {kg && <span className="col-weight-kg">{kg}</span>}
                       </td>
                       <td className="col-matchup">
-                        <span className="matchup-name"><FighterCardName name={f.fighterA} visibleSlugs={visibleSlugs} records={records} /></span>
+                        <span className="matchup-name"><FighterCardName name={f.fighterA} visibleSlugs={visibleSlugs} /></span>
                         <span className="matchup-vs">vs</span>
-                        <span className="matchup-name"><FighterCardName name={f.fighterB} visibleSlugs={visibleSlugs} records={records} /></span>
+                        <span className="matchup-name"><FighterCardName name={f.fighterB} visibleSlugs={visibleSlugs} /></span>
                       </td>
                       <td className="col-winner">
                         {f.winner ? (
