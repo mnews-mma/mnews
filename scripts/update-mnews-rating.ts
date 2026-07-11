@@ -8,7 +8,6 @@
 // 実行: npx tsx scripts/update-mnews-rating.ts
 import fs from "fs";
 import path from "path";
-import { FIGHTERS } from "../src/lib/fighters";
 import {
   buildBouts,
   buildDisplayEntries,
@@ -19,7 +18,7 @@ import {
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
 import { buildOpponentResolver } from "../src/lib/mnewsRating/nameIndex";
-import { MNEWS_DIVISIONS, mapToDivision } from "../src/lib/mnewsRating/divisions";
+import { MNEWS_DIVISIONS, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import {
   buildDivisionRankings,
   divisionRankingsKey,
@@ -66,7 +65,11 @@ function main() {
   const asOf = new Date();
   const display = buildDisplayEntries(publishable, asOf);
 
-  const divisionBySlug = new Map(FIGHTERS.map((f) => [f.slug, mapToDivision(f.weightClass)]));
+  // 掲載階級は「階級が判明している直近のRIZIN MMA試合の階級」で決める
+  // (fighters.tsの名目weightClassへはフォールバックしない)。
+  const divisionBySlug = new Map(
+    Object.entries(records).map(([slug, entry]) => [slug, latestRizinDivision(entry.history ?? [])])
+  );
 
   const out: RankingsFile = {};
   for (const division of MNEWS_DIVISIONS) {
@@ -98,6 +101,19 @@ function main() {
     console.log(`  ${division}: ${out[key].entries.length}名掲載`);
   }
   console.log(`除外warning: ${warnings.length}件 / アーカイブ保存: ${changed ? "あり(" + asOf.toISOString().slice(0, 10) + ")" : "なし(変動なし)"}`);
+
+  // 掲載資格(3戦以上・直近18ヶ月以内・1勝以上)は満たすのに、階級が判明している
+  // RIZIN MMA boutが1つも無いため、どの階級ランキングにも掲載されなかった選手。
+  // 手動配置の対象ではなく、EVENT_RESULTS側のデータ拡充で解消すべき対象として
+  // 可視化する(A-3)。
+  const eligibleUnknownDivision = [...display.entries()]
+    .filter(([slug, e]) => e.eligible && divisionBySlug.get(slug) == null)
+    .map(([slug]) => slug);
+  if (eligibleUnknownDivision.length) {
+    console.warn(
+      `[WARN] 掲載資格ありだが階級不明のため全ランキング非掲載(${eligibleUnknownDivision.length}名・EVENT_RESULTS側のデータ拡充対象):\n  ${eligibleUnknownDivision.join(", ")}`
+    );
+  }
 }
 
 // main()は同期関数だが、他のバッチスクリプト(update-fighter-records.ts等)と

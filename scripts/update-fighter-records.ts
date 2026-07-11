@@ -12,6 +12,7 @@ import { FIGHTERS, Fighter } from "../src/lib/fighters";
 import { resolveFighter } from "../src/lib/feeds/resolveFighter";
 import type { FighterRecordEntry, FighterRecordsFile } from "../src/lib/fighterRecordsCache";
 import { checkFighterRecordIntegrity } from "../src/lib/fighterRecordIntegrity";
+import { enrichHistoryWithWeightClass } from "../src/lib/mnewsRating/enrichHistoryWeightClass";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 // fighterRecords.json自体には生成時刻を焼き込まない(選手データと運用メタ情報を
@@ -19,21 +20,29 @@ const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 // 別ファイルに記録する(サイト側はこのファイルの有無をハードコードせず参照する)。
 const META_OUT = path.join(process.cwd(), "data", "fighterRecordsMeta.json");
 
-function toCacheEntry(r: Awaited<ReturnType<typeof resolveFighter>>): FighterRecordEntry {
-  return {
+// RIZIN MMA boutにEVENT_RESULTS(自社結果データ)突合のbout単位weightClassを
+// 付与する(mnewsレーティングの掲載階級判定に使う。「直近のRIZIN試合の階級」の
+// 実データが手に入る唯一の場所)。突合できなかったboutはnullBoutsに集計して返す
+// (呼び出し側でwarningログに出す。推測補完はしない)。
+function toCacheEntry(
+  r: Awaited<ReturnType<typeof resolveFighter>>
+): { entry: FighterRecordEntry; nullBouts: Array<{ date: string; opponent: string }> } {
+  const { history, nullBouts } = enrichHistoryWithWeightClass(r.nameJa, r.history);
+  const entry: FighterRecordEntry = {
     wins: r.wins,
     losses: r.losses,
     draws: r.draws,
     ko: r.ko,
     sub: r.sub,
     decision: r.decision,
-    history: r.history,
+    history,
     live: r.live,
     ...(r.nickname ? { nickname: r.nickname } : {}),
     ...(r.birthPlace ? { birthPlace: r.birthPlace } : {}),
     ...(r.age !== undefined ? { age: r.age } : {}),
     ...(r.noRecordData ? { noRecordData: true } : {}),
   };
+  return { entry, nullBouts };
 }
 
 // Wikipedia側のレート制限に当たると同時実行数が多いほど失敗しやすい(実測: 5並列で
@@ -73,6 +82,7 @@ async function main() {
   const failedKeptPrev: string[] = [];
   const fatalIssues: string[] = [];
   const warningIssues: string[] = [];
+  const weightClassNullBouts: string[] = [];
 
   for (const f of targets) {
     const r = await resolveWithRetry(f);
@@ -84,9 +94,12 @@ async function main() {
       out[f.slug] = prevEntry;
       failedKeptPrev.push(f.slug);
     } else {
-      const entry = toCacheEntry(r);
+      const { entry, nullBouts } = toCacheEntry(r);
       out[f.slug] = entry;
       if (isBad) failedNoFallback.push(f.slug);
+      for (const b of nullBouts) {
+        weightClassNullBouts.push(`${f.slug}(${f.nameJa}) ${b.date} vs ${b.opponent}`);
+      }
       // 集計値とhistory内訳の突合(検知のみ・自動修正はしない)。判定ロジックは
       // デプロイ前ゲート(scripts/check-fighter-records-integrity.ts)と共通化
       // している(checkFighterRecordIntegrity)。
@@ -118,6 +131,13 @@ async function main() {
   if (warningIssues.length) {
     console.warn(
       `[WARN] 集計値とhistory内訳が不一致(${warningIssues.length}人・一次ソース確認が必要、要人手判断):\n  ${warningIssues.join("\n  ")}`
+    );
+  }
+  if (weightClassNullBouts.length) {
+    // EVENT_RESULTSに未収録(主に古い試合)で試合単位の階級が突合できなかったbout。
+    // 掲載階級判定からは除外されるだけで、Elo計算自体には引き続き使われる。
+    console.warn(
+      `[WARN] RIZIN MMA boutの階級(weightClass)がEVENT_RESULTSと突合できず不明(${weightClassNullBouts.length}件):\n  ${weightClassNullBouts.join("\n  ")}`
     );
   }
   if (fatalIssues.length) {
