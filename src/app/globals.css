@@ -1966,18 +1966,24 @@ footer {
 }
 
 /* 戦績ストリップ(full): 選手名の直下に来る数字ブロック。折り返しの有無を幅任せに
-   せず、常に2段固定で描画する(上段=戦績(勝率%インライン)+直近5戦／下段=
-   フィニッシュ率のみ)。選手名側(.bout-side--right)が右寄せの場合はここも
-   右寄せに追従し、要素の並び順自体もFighterStrip側のmirror propで反転させて
-   鏡合わせにする。 */
+   せず、常に3段固定で描画する(上段=戦績(勝率%)／中段=直近5戦○●／下段=
+   フィニッシュ率のみ)。左右の差はDOM順の反転(旧mirror)ではなくCSSの
+   text-align/justify-content:flex-endだけで作る(ドット順は左右とも同じ=
+   常に「左→右(古い→新しい)」)。数字・ラベルは全行font-family(var(--mono))を
+   統一し、font-variant-numeric:tabular-numsで桁を揃える。項目間の差は
+   フォントではなくサイズ・太さ・色だけで付ける
+   (戦績=太字濃色／勝率=細め／フィニッシュ率=小さめグレー)。 */
 .fighter-strip {
   font-size: 10px;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
   color: var(--muted);
   margin-top: 3px;
   min-width: 0;
 }
 .fighter-strip-row1,
-.fighter-strip-row2 {
+.fighter-strip-row2,
+.fighter-strip-row3 {
   display: flex;
   align-items: baseline;
   gap: 3px;
@@ -1985,26 +1991,28 @@ footer {
   min-width: 0;
 }
 .bout-side--right .fighter-strip-row1,
-.bout-side--right .fighter-strip-row2 {
+.bout-side--right .fighter-strip-row2,
+.bout-side--right .fighter-strip-row3 {
   justify-content: flex-end;
 }
-.fighter-strip-row2 {
+.fighter-strip-row2,
+.fighter-strip-row3 {
   margin-top: 2px;
 }
 .fighter-strip-record {
-  font-family: var(--mono);
   font-weight: 700;
-  color: var(--fg);
-  /* 「戦績（勝率%）」インライン化で上段の文字量が増えたため、3桁戦績
-     (例: 28-10-1)+勝率100%の最悪ケースでもカラム幅からはみ出さないよう
-     row1のみ他要素よりわずかに縮小する。 */
-  font-size: 9px;
+  /* var(--fg)は未定義(存在するのは--text)で、指定しても継承色(--muted)に
+     フォールバックし「太字濃色」にならないバグがあったため修正。 */
+  color: var(--text);
+}
+.fighter-strip-winrate {
+  font-weight: 400;
 }
 .fighter-strip-finish {
-  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
 }
 .fighter-strip-last5 {
-  font-family: var(--mono);
   letter-spacing: 0.5px;
 }
 .fighter-strip-last5-win {

@@ -123,7 +123,7 @@ export default function BoutCard({
             className="bout-side-name"
             style={{ fontSize: FIGHTER_NAME_FONT_SIZE }}
           />
-          {bothRegistered && <FighterStrip name={nameB} slug={slugB} entry={entryB} variant="full" mirror />}
+          {bothRegistered && <FighterStrip name={nameB} slug={slugB} entry={entryB} variant="full" />}
         </div>
       </div>
       {bothRegistered && (
