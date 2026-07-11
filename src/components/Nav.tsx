@@ -46,13 +46,14 @@ function MenuIcon({ open }: { open: boolean }) {
 }
 
 // メニュー項目は既存ルートのみ(未実装ページへのリンクを作らない)。
-// 「ランキング」は単一の統合ページ(/ranking)が存在しない(rizin/deep/shooto/
-// pancrase/undefeatedの個別ページのみ)ため、恣意的にどれか1つを選ばず掲載を見送る。
 // 「選手データベース」はヘッダーの赤いボタン(nav-fighters-link)と導線が
-// 重複するが、ハンバーガーメニュー内からも辿れるよう先頭に追加する
+// 重複するが、ハンバーガーメニュー内からも辿れるよう先頭に追加している
 // (ヘッダー側のボタンは削除しない=導線二重化を維持)。
+// 「ランキング」は/rankings(全階級ハブ)の新設に伴い追加(mnewsレーティング)。
+// ニュース・選手データベースと同列の主要導線として先頭寄りに配置する。
 const MENU_ITEMS = [
   { href: "/fighters", label: "選手データベース" },
+  { href: "/rankings", label: "ランキング" },
   { href: "/dream", label: "夢のカード" },
   { href: "/archive", label: "過去のニュース" },
   { href: "/events", label: "開催予定の大会" },

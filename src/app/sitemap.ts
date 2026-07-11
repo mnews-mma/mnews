@@ -3,11 +3,21 @@ import { FIGHTERS } from "@/lib/fighters";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { EVENTS } from "@/lib/events";
 import { ORIGINAL_ARTICLES } from "@/lib/originalArticles";
+import { fetchRankings } from "@/lib/mnewsRatingData";
+import { DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 
 const BASE_URL = "https://www.mnews.jp";
 const TODAY = new Date().toISOString().split("T")[0];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// data/rankings.jsonはビルド無しの日次バッチでも更新される(GitHub raw経由)ため、
+// 他のstaticRoutesと違いここだけfetchして最新のupdatedAtをlastmodに反映する
+// (指示書: 「日次バッチ後にlastmodが更新されること」)。
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const rankings = await fetchRankings();
+  const rankingsUpdatedAt = Object.values(rankings)[0]?.updatedAt.slice(0, 10) ?? TODAY;
+
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, changeFrequency: "always", priority: 1, lastModified: TODAY },
     { url: `${BASE_URL}/archive`, changeFrequency: "hourly", priority: 0.7, lastModified: TODAY },
@@ -18,12 +28,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/ranking/pancrase`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
     { url: `${BASE_URL}/ranking/shooto`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
     { url: `${BASE_URL}/ranking/undefeated`, changeFrequency: "daily", priority: 0.7, lastModified: TODAY },
+    { url: `${BASE_URL}/rankings`, changeFrequency: "daily", priority: 0.8, lastModified: rankingsUpdatedAt },
+    { url: `${BASE_URL}/rankings/methodology`, changeFrequency: "monthly", priority: 0.4, lastModified: TODAY },
     { url: `${BASE_URL}/deep-2026`, changeFrequency: "weekly", priority: 0.7, lastModified: TODAY },
     { url: `${BASE_URL}/results`, changeFrequency: "daily", priority: 0.8, lastModified: TODAY },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE_URL}/privacy`, changeFrequency: "monthly", priority: 0.2 },
     { url: `${BASE_URL}/contact`, changeFrequency: "monthly", priority: 0.2 },
   ];
+
+  const rankingDivisionRoutes: MetadataRoute.Sitemap = PUBLISHED_DIVISIONS.map((division) => ({
+    url: `${BASE_URL}/rankings/${DIVISION_SLUG[division]}`,
+    changeFrequency: "daily",
+    priority: 0.8,
+    lastModified: rankings[DIVISION_SLUG[division]]?.updatedAt.slice(0, 10) ?? rankingsUpdatedAt,
+  }));
 
   // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)はサイトマップに載せない。
   const fighterRoutes: MetadataRoute.Sitemap = FIGHTERS.filter((f) => !f.hidden).map((f) => ({
@@ -55,5 +74,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: a.publishedAt,
   }));
 
-  return [...staticRoutes, ...fighterRoutes, ...resultRoutes, ...eventRoutes, ...articleRoutes];
+  return [...staticRoutes, ...rankingDivisionRoutes, ...fighterRoutes, ...resultRoutes, ...eventRoutes, ...articleRoutes];
 }
