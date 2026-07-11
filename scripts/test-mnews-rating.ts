@@ -302,7 +302,7 @@ function makeResolver(map: Record<string, string>) {
       display: { slug: "fighter-r2", rawRating: 1550, displayRating: 1550, fights: 4, wins: 3, losses: 1, draws: 0, lastFightDate: "2025-11-01", eligible: true },
     },
   ];
-  const first = buildDivisionRankings("フェザー級", eligible1, asOf1, undefined);
+  const first = buildDivisionRankings("フェザー級", eligible1, asOf1, undefined, null);
   check(first.entries[0].fighterId === "fighter-r1" && first.entries[0].rank === 1, "rankings組み立て: レート降順で1位が決まる");
   check(first.entries.every((e) => e.delta === null), "rankings組み立て: 前回データが無い初回はdeltaがnull");
   check(hasRankingChange(first, undefined), "rankings組み立て: 初回公開もアーカイブ対象(変動ありとみなす)");
@@ -317,7 +317,7 @@ function makeResolver(map: Record<string, string>) {
       display: { slug: "fighter-r3", rawRating: 1500, displayRating: 1500, fights: 3, wins: 1, losses: 2, draws: 0, lastFightDate: "2025-10-01", eligible: true },
     },
   ];
-  const second = buildDivisionRankings("フェザー級", eligible2, asOf2, first);
+  const second = buildDivisionRankings("フェザー級", eligible2, asOf2, first, null);
   const r1 = second.entries.find((e) => e.fighterId === "fighter-r1")!;
   const r2 = second.entries.find((e) => e.fighterId === "fighter-r2")!;
   const r3 = second.entries.find((e) => e.fighterId === "fighter-r3")!;
@@ -327,7 +327,7 @@ function makeResolver(map: Record<string, string>) {
   check(hasRankingChange(second, first), "rankings組み立て: 顔ぶれ・レートが変われば変動ありと判定される");
 
   // 3回目: 完全に同じ顔ぶれ・同じレート → 変動なし
-  const third = buildDivisionRankings("フェザー級", eligible2, new Date("2026-01-03"), second);
+  const third = buildDivisionRankings("フェザー級", eligible2, new Date("2026-01-03"), second, null);
   check(!hasRankingChange(third, second), "rankings組み立て: 顔ぶれ・レートが完全に同一なら変動なしと判定される");
 }
 

@@ -19,3 +19,11 @@ export const DECAY_FLOOR = 1400;
 export const ELIGIBILITY_MIN_FIGHTS = 3;
 export const ELIGIBILITY_MIN_WINS = 1;
 export const ELIGIBILITY_MAX_INACTIVE_MONTHS = 18;
+
+// 王者の表示方式(UFC方式がデフォルト)。
+// "overlay": 番号付きランキングから王者を除外し、最上段に別掲載する(1位=王者を
+//   除いたトップレート選手になる)。
+// "badge": 王者もリストに残したまま、該当行にバッジのみ付ける(除外しない)。
+// この定数1つで切替可能(ページ側のロジックはrankingsFile.tsのbuildDivisionRankings
+// に一本化してあるため、切替時にページコンポーネントを直接いじる必要はない)。
+export const CHAMPION_DISPLAY_MODE: "overlay" | "badge" = "overlay";

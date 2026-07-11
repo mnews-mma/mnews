@@ -15,16 +15,19 @@ import {
   detectWeighInMiss,
   filterPublishableStates,
   isRizinMmaEvent,
+  DisplayEntry,
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
 import { buildOpponentResolver } from "../src/lib/mnewsRating/nameIndex";
-import { MNEWS_DIVISIONS, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
+import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import {
   buildDivisionRankings,
   divisionRankingsKey,
   hasRankingChange,
+  ChampionOverlay,
   RankingsFile,
 } from "../src/lib/mnewsRating/rankingsFile";
+import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
 const OUT = path.join(process.cwd(), "data", "rankings.json");
@@ -47,6 +50,22 @@ function lastRizinMmaWeighInMiss(records: FighterRecordsInput, slug: string): bo
   const history = (records[slug]?.history ?? []).filter((h) => isRizinMmaEvent(h.event));
   const latest = [...history].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))[0];
   return latest ? detectWeighInMiss(latest) : false;
+}
+
+// 王者は「事実」として、Elo掲載資格とは独立に表示する。displayは
+// filterPublishableStates由来(掲載資格でフィルタする前の全既知選手)なので、
+// 王者がEloの掲載資格を満たさなくても(あるいはレートが一切算出できていなくても)
+// ここで参照できる。RIZINに現王座が存在しない階級・DBに未登録の王者はnull。
+function championOverlayFor(division: MnewsDivision, display: Map<string, DisplayEntry>): ChampionOverlay | null {
+  const champ = RIZIN_CHAMPIONS.find((c) => c.org === "rizin" && c.weightClass === division);
+  if (!champ || !champ.slug) return null;
+  const d = display.get(champ.slug);
+  return {
+    fighterId: champ.slug,
+    rating: d ? Math.round(d.displayRating) : null,
+    record: d ? { wins: d.wins, losses: d.losses, draws: d.draws } : null,
+    lastFight: d ? d.lastFightDate : null,
+  };
 }
 
 function main() {
@@ -73,6 +92,7 @@ function main() {
 
   const out: RankingsFile = {};
   for (const division of MNEWS_DIVISIONS) {
+    const champion = championOverlayFor(division, display);
     const eligibleEntries = [...display.entries()]
       .filter(([slug, e]) => e.eligible && divisionBySlug.get(slug) === division)
       .map(([slug, e]) => ({
@@ -80,7 +100,7 @@ function main() {
         display: e,
       }));
     const key = divisionRankingsKey(division);
-    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key]);
+    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion);
   }
 
   // 1階級でも順位変動があれば、その日の全階級スナップショットをアーカイブする。
