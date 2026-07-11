@@ -10,7 +10,7 @@ import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
-import { getDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
+import { getPublishedDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import MnewsRatingSection from "@/components/MnewsRatingSection";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
@@ -99,13 +99,16 @@ export default async function HomePage() {
     fetchDivisionRankings("lightweight").catch(() => null),
   ]);
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
-  // ランキングページ本体と同じ共有セレクタ(getDivisionRankingView)経由で
-  // {champion, contenders}を取り出す(ここで独自に組み立てない=王者出し忘れ防止)。
+  // ランキングページ本体と同じ共有セレクタ経由で{champion, contenders}を取り出す
+  // (ここで独自に組み立てない=王者出し忘れ防止)。公開可否もPUBLISHED_DIVISIONS
+  // (/rankingsと共通の唯一の真実源)をここで参照し、準備中の階級は挑戦者
+  // ランキングを出さない(王者のみ表示。Elo算出済みでも/rankings非公開の階級を
+  // トップだけフル表示してしまうドリフトを防ぐ)。
   const mnewsRatingDivisions = {
-    フライ級: getDivisionRankingView(flyweightRankings, 5),
-    バンタム級: getDivisionRankingView(bantamweightRankings, 5),
-    フェザー級: getDivisionRankingView(featherweightRankings, 5),
-    ライト級: getDivisionRankingView(lightweightRankings, 5),
+    フライ級: getPublishedDivisionRankingView("フライ級", flyweightRankings, 5),
+    バンタム級: getPublishedDivisionRankingView("バンタム級", bantamweightRankings, 5),
+    フェザー級: getPublishedDivisionRankingView("フェザー級", featherweightRankings, 5),
+    ライト級: getPublishedDivisionRankingView("ライト級", lightweightRankings, 5),
   };
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};
