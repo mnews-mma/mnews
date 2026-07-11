@@ -9,6 +9,8 @@ import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
+import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
+import RankingDelta from "@/components/RankingDelta";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
@@ -69,14 +71,18 @@ export default async function HomePage() {
 
   const homepageFighters = FIGHTERS.filter((f) => HOMEPAGE_FIGHTER_SLUGS.has(f.slug));
 
-  const [articlesResult, fighters, videos, firstSeenMap, orgRankings, visibleFighterSlugs] = await Promise.all([
-    fetchAllArticles().catch(() => null),
-    resolveFightersCached(homepageFighters),
-    fetchLatestOfficialVideos().catch(() => []),
-    fetchFirstSeenMap().catch(() => new Map<string, string>()),
-    fetchOrgRankings().catch(() => ({})),
-    getVisibleFighterSlugs(),
-  ]);
+  const [articlesResult, fighters, videos, firstSeenMap, orgRankings, visibleFighterSlugs, featherweightRankings] =
+    await Promise.all([
+      fetchAllArticles().catch(() => null),
+      resolveFightersCached(homepageFighters),
+      fetchLatestOfficialVideos().catch(() => []),
+      fetchFirstSeenMap().catch(() => new Map<string, string>()),
+      fetchOrgRankings().catch(() => ({})),
+      getVisibleFighterSlugs(),
+      fetchDivisionRankings("featherweight").catch(() => null),
+    ]);
+  const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
+  const featherweightTop5 = featherweightRankings?.entries.slice(0, 5) ?? [];
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};
   for (const f of fighters) {
@@ -201,6 +207,29 @@ export default async function HomePage() {
         </section>
 
         <SocialSection videos={videos} />
+
+        {/* mnewsレーティング(独自算出) フェザー級トップ5。RIZIN非公式の明記は
+            /rankings側で行うため、ここでは要約表示+導線に留める。 */}
+        {featherweightTop5.length > 0 && (
+          <section className="rail-panel">
+            <div className="rail-head">mnewsレーティング(フェザー級)</div>
+            <div className="rail-list">
+              {featherweightTop5.map((e) => (
+                <a key={e.fighterId} href={`/fighters/${e.fighterId}`} className="rail-item">
+                  <div className="rail-item-title" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.rank <= 3 ? "var(--accent)" : "var(--muted)" }}>
+                      {e.rank}
+                    </span>
+                    <span style={{ flex: 1 }}>{nameBySlug.get(e.fighterId) ?? e.fighterId}</span>
+                    <span style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{e.rating}</span>
+                    <RankingDelta delta={e.delta} />
+                  </div>
+                </a>
+              ))}
+            </div>
+            <a href="/rankings" className="rail-more">全ランキングを見る →</a>
+          </section>
+        )}
 
         {/* 公式ランキング・王者(選手一覧より上に配置)。中身はリンク4本に統一
             (RIZIN/DEEP現王者・パンクラス/修斗ランキングの各専用ページへ)。

@@ -24,13 +24,16 @@ jobs:
       - name: Update fighter records
         run: npx tsx scripts/update-fighter-records.ts
 
+      - name: Update mnews rating rankings
+        run: npx tsx scripts/update-mnews-rating.ts
+
       - name: Commit and push if changed
         run: |
           git config user.name "mnews-bot"
           git config user.email "actions@users.noreply.github.com"
-          if ! git diff --quiet -- data/fighterRecords.json; then
-            git add data/fighterRecords.json
-            git commit -m "chore: update fighter records [skip ci]"
+          if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive; then
+            git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive
+            git commit -m "chore: update fighter records + mnews rating [skip ci]"
             git push
           else
             echo "No changes to commit."
