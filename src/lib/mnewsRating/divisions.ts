@@ -1,11 +1,15 @@
 // mnewsレーティングの掲載階級(RIZIN準拠5階級)。
 // レート自体は階級横断で1本(engine.ts)。掲載階級はこのファイルで決める。
 //
-// 本来は「直近のRIZIN試合の階級」で決めるべきだが、fighterRecords.jsonの
-// historyには試合ごとの階級フィールドが無い(未取得)ため、現時点では選手
-// プロフィール(fighters.ts の weightClass、既存の単一ソース)で代用する。
-// フェザー級単独公開の第一弾はこれで実害が出にくいが、他階級を展開する前に
-// fighterRecords.json 側へper-fight階級を持たせる拡張が要る(TODO)。
+// 掲載階級は「階級が判明している直近のRIZIN MMA試合の階級」で決める
+// (latestRizinDivision)。fighters.tsの名目weightClass(プロフィール表記)は
+// 一切参照しない — 2026-07-12、名目階級への代用フォールバックを廃止した
+// (中村大介が名目フェザー級のまま直近の実際の試合はライト級だったため
+// フェザー級ランキングに誤配置されるバグの恒久修正)。
+// bout単位のweightClassはEVENT_RESULTS(自社結果データ)から突合したものを
+// fighterRecords.jsonのhistoryに格納している(enrichHistoryWeightClass.ts)。
+// EVENT_RESULTSは直近(概ね18ヶ月分)のみ収録のため、古い試合のみの選手は
+// 階級不明=nullとなり、どの階級ランキングにも掲載しない(推測補完はしない)。
 export type MnewsDivision = "フライ級" | "バンタム級" | "フェザー級" | "ライト級" | "ヘビー級";
 
 export const MNEWS_DIVISIONS: MnewsDivision[] = ["フライ級", "バンタム級", "フェザー級", "ライト級", "ヘビー級"];
@@ -35,8 +39,9 @@ function mapByKg(kg: number): MnewsDivision | null {
   return null; // ウェルター〜ライトヘビー相当は現時点で対象外
 }
 
-// 選手プロフィールのweightClass文字列 → 掲載階級。判定不能・対象外はnull
-// (推測で押し込まない)。
+// weightClass文字列(例: "フェザー級", "71.0kg契約", "RIZINフェザー級タイトル
+// マッチ", "第8代RIZINバンタム級王座決定戦") → 掲載階級。判定不能・対象外は
+// null(推測で押し込まない)。
 export function mapToDivision(weightClass: string | undefined): MnewsDivision | null {
   const w = weightClass ?? "";
   if (/女子|アトム|JEWELS/i.test(w)) return null;
@@ -50,4 +55,24 @@ export function mapToDivision(weightClass: string | undefined): MnewsDivision | 
   const m = w.match(/(\d+(?:\.\d+)?)\s*kg/);
   if (m) return mapByKg(Number(m[1]));
   return null;
+}
+
+export interface HistoryBoutForDivision {
+  date: string;
+  weightClass?: string;
+}
+
+// 掲載階級の決定本体: 階級が判明している直近のRIZIN MMA boutの階級を使う。
+// weightClassはenrichHistoryWeightClass.tsがRIZIN MMA boutにしか付与しない
+// ため、ここで改めてisRizinMmaEventを見る必要はない(weightClass有り＝
+// RIZIN MMA boutという不変条件)。該当boutが1つも無い(＝RIZIN MMA戦歴自体が
+// 無い、または全て階級不明の古い試合のみ)選手はnull(＝ランキング非掲載。
+// 名目階級へは絶対にフォールバックしない)。
+export function latestRizinDivision(history: HistoryBoutForDivision[]): MnewsDivision | null {
+  const known = [...history]
+    .filter((h) => h.weightClass)
+    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  const latest = known[0];
+  if (!latest || !latest.weightClass) return null;
+  return mapToDivision(latest.weightClass);
 }

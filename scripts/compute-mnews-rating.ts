@@ -12,7 +12,7 @@ import {
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
 import { buildOpponentResolver } from "../src/lib/mnewsRating/nameIndex";
-import { mapToDivision } from "../src/lib/mnewsRating/divisions";
+import { latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import { ALGORITHM_VERSION, RATING_NAME } from "../src/lib/mnewsRating/constants";
 
 const DATA_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
@@ -27,9 +27,11 @@ function main() {
   const display = buildDisplayEntries(publishable, asOf);
 
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
-  const classBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
+  const divisionBySlug = new Map(
+    Object.entries(records).map(([slug, entry]) => [slug, latestRizinDivision(entry.history ?? [])])
+  );
 
-  const featherweightAll = [...display.values()].filter((e) => mapToDivision(classBySlug.get(e.slug)) === "フェザー級");
+  const featherweightAll = [...display.values()].filter((e) => divisionBySlug.get(e.slug) === "フェザー級");
   const eligible = featherweightAll.filter((e) => e.eligible).sort((a, b) => b.displayRating - a.displayRating);
   const ineligible = featherweightAll.filter((e) => !e.eligible).sort((a, b) => b.displayRating - a.displayRating);
 

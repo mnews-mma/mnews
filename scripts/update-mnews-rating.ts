@@ -8,7 +8,6 @@
 // 実行: npx tsx scripts/update-mnews-rating.ts
 import fs from "fs";
 import path from "path";
-import { FIGHTERS } from "../src/lib/fighters";
 import {
   buildBouts,
   buildDisplayEntries,
@@ -16,16 +15,21 @@ import {
   detectWeighInMiss,
   filterPublishableStates,
   isRizinMmaEvent,
+  DisplayEntry,
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
 import { buildOpponentResolver } from "../src/lib/mnewsRating/nameIndex";
-import { MNEWS_DIVISIONS, mapToDivision } from "../src/lib/mnewsRating/divisions";
+import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import {
   buildDivisionRankings,
   divisionRankingsKey,
   hasRankingChange,
+  shouldSuppressDelta,
+  ChampionOverlay,
   RankingsFile,
 } from "../src/lib/mnewsRating/rankingsFile";
+import { RIZIN_CHAMPIONS } from "../src/lib/champions";
+import { ALGORITHM_VERSION } from "../src/lib/mnewsRating/constants";
 
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
 const OUT = path.join(process.cwd(), "data", "rankings.json");
@@ -50,6 +54,22 @@ function lastRizinMmaWeighInMiss(records: FighterRecordsInput, slug: string): bo
   return latest ? detectWeighInMiss(latest) : false;
 }
 
+// 王者は「事実」として、Elo掲載資格とは独立に表示する。displayは
+// filterPublishableStates由来(掲載資格でフィルタする前の全既知選手)なので、
+// 王者がEloの掲載資格を満たさなくても(あるいはレートが一切算出できていなくても)
+// ここで参照できる。RIZINに現王座が存在しない階級・DBに未登録の王者はnull。
+function championOverlayFor(division: MnewsDivision, display: Map<string, DisplayEntry>): ChampionOverlay | null {
+  const champ = RIZIN_CHAMPIONS.find((c) => c.org === "rizin" && c.weightClass === division);
+  if (!champ || !champ.slug) return null;
+  const d = display.get(champ.slug);
+  return {
+    fighterId: champ.slug,
+    rating: d ? Math.round(d.displayRating) : null,
+    record: d ? { wins: d.wins, losses: d.losses, draws: d.draws } : null,
+    lastFight: d ? d.lastFightDate : null,
+  };
+}
+
 function main() {
   if (!fs.existsSync(RECORDS_PATH)) {
     console.log("[mnewsレーティング] data/fighterRecords.json が存在しないためスキップ");
@@ -66,10 +86,15 @@ function main() {
   const asOf = new Date();
   const display = buildDisplayEntries(publishable, asOf);
 
-  const divisionBySlug = new Map(FIGHTERS.map((f) => [f.slug, mapToDivision(f.weightClass)]));
+  // 掲載階級は「階級が判明している直近のRIZIN MMA試合の階級」で決める
+  // (fighters.tsの名目weightClassへはフォールバックしない)。
+  const divisionBySlug = new Map(
+    Object.entries(records).map(([slug, entry]) => [slug, latestRizinDivision(entry.history ?? [])])
+  );
 
   const out: RankingsFile = {};
   for (const division of MNEWS_DIVISIONS) {
+    const champion = championOverlayFor(division, display);
     const eligibleEntries = [...display.entries()]
       .filter(([slug, e]) => e.eligible && divisionBySlug.get(slug) === division)
       .map(([slug, e]) => ({
@@ -77,7 +102,7 @@ function main() {
         display: e,
       }));
     const key = divisionRankingsKey(division);
-    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key]);
+    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion);
   }
 
   // 1階級でも順位変動があれば、その日の全階級スナップショットをアーカイブする。
@@ -98,6 +123,30 @@ function main() {
     console.log(`  ${division}: ${out[key].entries.length}名掲載`);
   }
   console.log(`除外warning: ${warnings.length}件 / アーカイブ保存: ${changed ? "あり(" + asOf.toISOString().slice(0, 10) + ")" : "なし(変動なし)"}`);
+
+  // C-3: algorithmVersionが前回から変わった日は、係数変更による見かけ上の増減を
+  // 「実際の順位変動」と誤認させないため全選手のdeltaを一律nullにする(buildDivisionRankings側で
+  // 実施済み)。ここでは適用有無・理由を内部ログに残すのみ。
+  const versionChangedDivisions = MNEWS_DIVISIONS.filter((d) => shouldSuppressDelta(prevOut[divisionRankingsKey(d)]));
+  if (versionChangedDivisions.length) {
+    const prevVersion = prevOut[divisionRankingsKey(versionChangedDivisions[0])]?.algorithmVersion;
+    console.log(
+      `[INFO] algorithmVersion変更を検出(v${prevVersion} → v${ALGORITHM_VERSION})のため、本日のdeltaは全選手nullに抑制(対象${versionChangedDivisions.length}階級): ${versionChangedDivisions.join(", ")}`
+    );
+  }
+
+  // 掲載資格(3戦以上・直近18ヶ月以内・1勝以上)は満たすのに、階級が判明している
+  // RIZIN MMA boutが1つも無いため、どの階級ランキングにも掲載されなかった選手。
+  // 手動配置の対象ではなく、EVENT_RESULTS側のデータ拡充で解消すべき対象として
+  // 可視化する(A-3)。
+  const eligibleUnknownDivision = [...display.entries()]
+    .filter(([slug, e]) => e.eligible && divisionBySlug.get(slug) == null)
+    .map(([slug]) => slug);
+  if (eligibleUnknownDivision.length) {
+    console.warn(
+      `[WARN] 掲載資格ありだが階級不明のため全ランキング非掲載(${eligibleUnknownDivision.length}名・EVENT_RESULTS側のデータ拡充対象):\n  ${eligibleUnknownDivision.join(", ")}`
+    );
+  }
 }
 
 // main()は同期関数だが、他のバッチスクリプト(update-fighter-records.ts等)と

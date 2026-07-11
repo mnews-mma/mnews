@@ -116,7 +116,7 @@ export default async function RankingsHubPage() {
                 )}
               </div>
 
-              {!published || !data || data.entries.length === 0 ? (
+              {!published || !data || (data.entries.length === 0 && !data.champion) ? (
                 <p style={{ fontSize: 13, color: "var(--muted)", padding: "8px 0" }}>準備中(算出は進行中、掲載は準備が整い次第)</p>
               ) : (
                 <div className="table-outer">
@@ -131,6 +131,18 @@ export default async function RankingsHubPage() {
                         </tr>
                       </thead>
                       <tbody>
+                        {data.champion && (
+                          <tr style={{ background: "rgba(194,154,75,0.1)" }}>
+                            <td style={{ fontFamily: "var(--mono)", fontWeight: 800, color: "var(--gold, #c29a4b)" }}>王者</td>
+                            <td className="col-opponent">
+                              <a href={`/fighters/${data.champion.fighterId}`} className="opponent-link">
+                                {nameBySlug.get(data.champion.fighterId) ?? data.champion.fighterId}
+                              </a>
+                            </td>
+                            <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{data.champion.rating ?? "—"}</td>
+                            <td>—</td>
+                          </tr>
+                        )}
                         {top.map((e) => (
                           <tr key={e.fighterId}>
                             <td style={{ fontFamily: "var(--mono)", fontWeight: 700 }}>{e.rank}</td>

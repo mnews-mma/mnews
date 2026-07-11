@@ -85,6 +85,7 @@ export interface Bout {
   opponentLabel: string; // 表示・ログ用の相手名(history.opponentそのまま)
   scoreA: number; // aNode視点: 1=勝ち, 0=負け, 0.5=分け
   finish: boolean;
+  method: string; // 同一実試合の重複検知(dedupeGhostWallBouts)に使う
 }
 
 export interface BuildBoutsResult {
@@ -175,20 +176,56 @@ export function buildBouts(
           continue;
         }
 
-        boutMap.set(key, { key, date: h.date, aNode: a, bNode: b, opponentLabel: h.opponent, scoreA: scoreForA, finish });
+        boutMap.set(key, { key, date: h.date, aNode: a, bNode: b, opponentLabel: h.opponent, scoreA: scoreForA, finish, method: h.method });
       } else {
         // 自社DB圏外の相手: 正規化名の疑似ノード。同名相手が別の選手の履歴にも
         // 登場すればそのたびに同じノードのレートが引き継がれる(1500へは戻らない)。
         const bNode = `name:${normalizeOpponentName(h.opponent)}`;
         const key = `wall|${h.date}|${slug}|${bNode}`;
         if (boutMap.has(key)) continue;
-        boutMap.set(key, { key, date: h.date, aNode: slug, bNode, opponentLabel: h.opponent, scoreA, finish });
+        boutMap.set(key, { key, date: h.date, aNode: slug, bNode, opponentLabel: h.opponent, scoreA, finish, method: h.method });
       }
     }
   }
 
-  const bouts = [...boutMap.values()].sort((x, y) => (x.date < y.date ? -1 : x.date > y.date ? 1 : x.key < y.key ? -1 : 1));
+  const deduped = dedupeGhostWallBouts([...boutMap.values()], warnings);
+  const bouts = deduped.sort((x, y) => (x.date < y.date ? -1 : x.date > y.date ? 1 : x.key < y.key ? -1 : 1));
   return { bouts, warnings };
+}
+
+// 「圏外相手」として登録されたwall boutが、実は別の選手側の記録が後から解決
+// できたことで同じ日付・同じ決着文言のdb boutとして重複登録されているケースを
+// 検出し、wall bout側を除外する(db bout側は双方向で裏付けが取れているためより
+// 信頼できる。残す)。
+// 実例: 西谷大成(fighters.ts上のnameJaは「大成」)は、対戦相手側の履歴では
+// 「西谷大成」表記で記録され解決に失敗し続けていたが、本人のWikipedia記事が
+// 後日解決されたことで本人視点のdb boutが新たに生成され、萩原京平・高木凌・
+// 鈴木博昭の3選手でそれぞれ同一試合が二重計上されていた(高木凌×コレスニック
+// の勝敗矛盾検出と同種の「一次データの後発的解決による整合崩れ」)。
+// 日付+決着文言(method)の完全一致という強いシグナルのみで判定するため、
+// 同日に複数試合をこなすトーナメント形式でも(相手・methodが異なれば)誤って
+// 統合しない。
+function dedupeGhostWallBouts(bouts: Bout[], warnings: ExclusionWarning[]): Bout[] {
+  const dbBoutByFighterDateMethod = new Map<string, Bout>();
+  for (const b of bouts) {
+    if (b.bNode.startsWith("name:")) continue; // wallはキーに登録しない(db同士のみ)
+    dbBoutByFighterDateMethod.set(`${b.aNode}|${b.date}|${b.method}`, b);
+    dbBoutByFighterDateMethod.set(`${b.bNode}|${b.date}|${b.method}`, b);
+  }
+
+  return bouts.filter((b) => {
+    if (!b.bNode.startsWith("name:")) return true; // dbはそのまま残す
+    const dup = dbBoutByFighterDateMethod.get(`${b.aNode}|${b.date}|${b.method}`);
+    if (!dup) return true;
+    const otherSlug = dup.aNode === b.aNode ? dup.bNode : dup.aNode;
+    warnings.push({
+      slug: b.aNode,
+      date: b.date,
+      opponent: b.opponentLabel,
+      reason: `対戦相手側の解決済み記録(${otherSlug})と同一試合(同日・同決着文言)と判定し重複除外`,
+    });
+    return false;
+  });
 }
 
 export interface RatingState {

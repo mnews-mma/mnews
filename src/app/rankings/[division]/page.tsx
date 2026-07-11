@@ -85,7 +85,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
       </div>
 
       <div style={{ padding: "8px 24px 48px" }}>
-        {!data || data.entries.length === 0 ? (
+        {!data || (data.entries.length === 0 && !data.champion) ? (
           <p style={{ fontSize: 13, color: "var(--muted)", padding: "8px 0" }}>掲載可能な選手が揃い次第、順位を公開します。</p>
         ) : (
           <div className="table-outer">
@@ -102,6 +102,24 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                   </tr>
                 </thead>
                 <tbody>
+                  {data.champion && (
+                    <tr style={{ background: "rgba(194,154,75,0.1)" }}>
+                      <td style={{ fontFamily: "var(--mono)", fontWeight: 800, color: "var(--gold, #c29a4b)" }}>王者</td>
+                      <td className="col-opponent">
+                        <a href={`/fighters/${data.champion.fighterId}`} className="opponent-link">
+                          {nameBySlug.get(data.champion.fighterId) ?? data.champion.fighterId}
+                        </a>
+                      </td>
+                      <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{data.champion.rating ?? "—"}</td>
+                      <td>—</td>
+                      <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>
+                        {data.champion.record
+                          ? `${data.champion.record.wins}-${data.champion.record.losses}${data.champion.record.draws > 0 ? `-${data.champion.record.draws}` : ""}`
+                          : "—"}
+                      </td>
+                      <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>{data.champion.lastFight ?? "-"}</td>
+                    </tr>
+                  )}
                   {data.entries.map((e) => (
                     <tr key={e.fighterId}>
                       <td style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.rank <= 3 ? "var(--accent)" : "var(--fg)" }}>
@@ -136,6 +154,11 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
           掲載はRIZINで通算3試合以上・直近18ヶ月以内に試合あり・1勝以上の選手に限ります。戦績はRIZIN(MMAルール)のみの集計です。
+          {data?.champion && (
+            <>
+              王者(RIZIN公式が認定する現王者)は番号付きランキングの対象外とし、事実として別掲載しています(Elo掲載資格の有無にかかわらず表示)。
+            </>
+          )}
         </p>
       </div>
       <Footer />
