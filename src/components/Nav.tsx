@@ -49,11 +49,13 @@ function MenuIcon({ open }: { open: boolean }) {
 // 「選手データベース」はヘッダーの赤いボタン(nav-fighters-link)と導線が
 // 重複するが、ハンバーガーメニュー内からも辿れるよう先頭に追加している
 // (ヘッダー側のボタンは削除しない=導線二重化を維持)。
-// 「ランキング」は/rankings(全階級ハブ)の新設に伴い追加(mnewsレーティング)。
+// 「RIZINランキング」は/rankings(全階級ハブ)の新設に伴い追加(mnewsレーティング)。
+// mnews独自算出でありRIZIN公式ではない点はページ側で明記済みだが、メニュー
+// ラベル自体もRIZIN限定であることが伝わるよう「RIZINランキング」とする。
 // ニュース・選手データベースと同列の主要導線として先頭寄りに配置する。
 const MENU_ITEMS = [
   { href: "/fighters", label: "選手データベース" },
-  { href: "/rankings", label: "ランキング" },
+  { href: "/rankings", label: "RIZINランキング" },
   { href: "/dream", label: "夢のカード" },
   { href: "/archive", label: "過去のニュース" },
   { href: "/events", label: "開催予定の大会" },
