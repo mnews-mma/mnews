@@ -11,16 +11,18 @@ import {
   filterPublishableStates,
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
-import { buildOpponentResolver } from "../src/lib/mnewsRating/nameIndex";
+import { buildOpponentResolver, buildKnownNamesLookup } from "../src/lib/mnewsRating/nameIndex";
 import { latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import { ALGORITHM_VERSION, RATING_NAME } from "../src/lib/mnewsRating/constants";
+import { lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
 
 const DATA_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
 
 function main() {
   const records: FighterRecordsInput = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
   const resolve = buildOpponentResolver(records);
-  const { bouts, warnings } = buildBouts(records, resolve);
+  const getKnownNames = buildKnownNamesLookup(records);
+  const { bouts, warnings } = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss);
   const states = computeRawRatings(bouts);
   const publishable = filterPublishableStates(states, records);
   const asOf = new Date();

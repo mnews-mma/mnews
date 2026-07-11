@@ -5,6 +5,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
+import { getDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
@@ -37,6 +38,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
   if (!division || !PUBLISHED_DIVISIONS.includes(division)) notFound();
 
   const data = await fetchDivisionRankings(slug);
+  const view = getDivisionRankingView(data); // topN省略=全件(ランキングページ本体)
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
 
   const breadcrumbs = [
@@ -46,13 +48,13 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
   ];
 
   const itemListLd =
-    data && data.entries.length > 0
+    data && view.contenders.length > 0
       ? {
           "@context": "https://schema.org",
           "@type": "ItemList",
           name: `RIZIN${division}ランキング`,
-          numberOfItems: data.entries.length,
-          itemListElement: data.entries.map((e) => ({
+          numberOfItems: view.contenders.length,
+          itemListElement: view.contenders.map((e) => ({
             "@type": "ListItem",
             position: e.rank,
             item: {
@@ -85,7 +87,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
       </div>
 
       <div style={{ padding: "8px 24px 48px" }}>
-        {!data || (data.entries.length === 0 && !data.champion) ? (
+        {!data || (view.contenders.length === 0 && !view.champion) ? (
           <p style={{ fontSize: 13, color: "var(--muted)", padding: "8px 0" }}>掲載可能な選手が揃い次第、順位を公開します。</p>
         ) : (
           <div className="table-outer">
@@ -102,25 +104,25 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                   </tr>
                 </thead>
                 <tbody>
-                  {data.champion && (
+                  {view.champion && (
                     <tr style={{ background: "rgba(194,154,75,0.1)" }}>
                       <td style={{ fontFamily: "var(--mono)", fontWeight: 800, color: "var(--gold, #c29a4b)" }}>王者</td>
                       <td className="col-opponent">
-                        <a href={`/fighters/${data.champion.fighterId}`} className="opponent-link">
-                          {nameBySlug.get(data.champion.fighterId) ?? data.champion.fighterId}
+                        <a href={`/fighters/${view.champion.fighterId}`} className="opponent-link">
+                          {nameBySlug.get(view.champion.fighterId) ?? view.champion.fighterId}
                         </a>
                       </td>
-                      <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{data.champion.rating ?? "—"}</td>
+                      <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{view.champion.rating ?? "—"}</td>
                       <td>—</td>
                       <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>
-                        {data.champion.record
-                          ? `${data.champion.record.wins}-${data.champion.record.losses}${data.champion.record.draws > 0 ? `-${data.champion.record.draws}` : ""}`
+                        {view.champion.record
+                          ? `${view.champion.record.wins}-${view.champion.record.losses}${view.champion.record.draws > 0 ? `-${view.champion.record.draws}` : ""}`
                           : "—"}
                       </td>
-                      <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>{data.champion.lastFight ?? "-"}</td>
+                      <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>{view.champion.lastFight ?? "-"}</td>
                     </tr>
                   )}
-                  {data.entries.map((e) => (
+                  {view.contenders.map((e) => (
                     <tr key={e.fighterId}>
                       <td style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.rank <= 3 ? "var(--accent)" : "var(--fg)" }}>
                         {e.rank}
@@ -154,7 +156,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
           掲載はRIZINで通算3試合以上・直近18ヶ月以内に試合あり・1勝以上の選手に限ります。戦績はRIZIN(MMAルール)のみの集計です。
-          {data?.champion && (
+          {view.champion && (
             <>
               王者(RIZIN公式が認定する現王者)は番号付きランキングの対象外とし、事実として別掲載しています(Elo掲載資格の有無にかかわらず表示)。
             </>

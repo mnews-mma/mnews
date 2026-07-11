@@ -97,6 +97,20 @@ function normalizeOpponentName(s: string): string {
   return s.replace(/[\s　・]/g, "");
 }
 
+// 計量オーバー側が勝った試合はノーコンテスト裁定として扱う(J-1)。
+// lookupWeighInMissが返す"self"/"opponent"は「このhistoryエントリの持ち主(self)と
+// 対戦相手(opponent)のどちらが計量オーバーしたか」を表す。オーバーした側が
+// 勝った場合のみノーコンテストに倒す(負け・引き分けなら通常どおり)。
+function applyWeighInMissRuling(
+  result: HistoryEntryLike["result"],
+  missedBy: "self" | "opponent" | null
+): HistoryEntryLike["result"] {
+  if (!missedBy) return result;
+  if (missedBy === "opponent" && result === "loss") return "nc"; // 相手(計量オーバー)が勝った
+  if (missedBy === "self" && result === "win") return "nc"; // 自分(計量オーバー)が勝った
+  return result;
+}
+
 // records内の全選手の全履歴からRIZIN MMA試合のみを抽出し、対戦の配列にする。
 // DB内対決(両者がfighterRecords.jsonのキー)は日付+両ノードで重複排除する
 // (両者の履歴に二重計上されるのを防ぐ)。その際、両者の記録の勝敗方向が食い違う
@@ -106,9 +120,14 @@ function normalizeOpponentName(s: string): string {
 // resolveOpponentSlug: history.opponent(自由記述の名前)→自社DB内の相手slug。
 // 解決できない、またはfighterRecords.json未収録の場合はnullを返してよい
 // (その場合は正規化名の疑似ノードとして扱う)。
+// getKnownNames: slug→既知の名前表記一覧(dedupeGhostWallBouts用、省略可)。
+// lookupWeighInMiss: (fighterId,date,opponent)→計量オーバーした側(省略可、
+// 常にnullを返す関数がデフォルト=計量オーバー考慮なし)。
 export function buildBouts(
   records: FighterRecordsInput,
-  resolveOpponentSlug: (opponentName: string, selfSlug: string) => string | null
+  resolveOpponentSlug: (opponentName: string, selfSlug: string) => string | null,
+  getKnownNames: (slug: string) => string[] = () => [],
+  lookupWeighInMiss: (fighterId: string, date: string, opponent: string) => "self" | "opponent" | null = () => null
 ): BuildBoutsResult {
   const warnings: ExclusionWarning[] = [];
   const boutMap = new Map<string, Bout>();
@@ -124,13 +143,25 @@ export function buildBouts(
         continue;
       }
 
+      const missedBy = lookupWeighInMiss(slug, h.date, h.opponent);
+      const effectiveResult = applyWeighInMissRuling(h.result, missedBy);
+      if (effectiveResult === "nc") {
+        warnings.push({
+          slug,
+          date: h.date,
+          opponent: h.opponent,
+          reason: `計量オーバー側(${missedBy === "self" ? slug : h.opponent})の勝利のためノーコンテスト裁定として除外`,
+        });
+        continue;
+      }
+
       const cls = classifyMethod(h.method);
       if (cls === "unknown") {
         warnings.push({ slug, date: h.date, opponent: h.opponent, reason: "決着方法(method)が空でフィニッシュ/判定を判定不能" });
         continue;
       }
 
-      const scoreA = h.result === "win" ? 1 : h.result === "draw" ? 0.5 : 0;
+      const scoreA = effectiveResult === "win" ? 1 : effectiveResult === "draw" ? 0.5 : 0;
       const finish = cls === "finish";
 
       const resolvedSlug = resolveOpponentSlug(h.opponent, slug);
@@ -188,43 +219,72 @@ export function buildBouts(
     }
   }
 
-  const deduped = dedupeGhostWallBouts([...boutMap.values()], warnings);
+  const deduped = dedupeGhostWallBouts([...boutMap.values()], warnings, getKnownNames);
   const bouts = deduped.sort((x, y) => (x.date < y.date ? -1 : x.date > y.date ? 1 : x.key < y.key ? -1 : 1));
   return { bouts, warnings };
 }
 
+// wallの相手名(正規化済み)が、db側のもう一方の選手の既知の名前表記
+// (nameJa/nameEn/aliases、正規化済み)のいずれかを部分一致で含む/含まれるか。
+// 「西谷大成」⊃「大成」のような、表記ゆれで解決に失敗したケースを拾う。
+function namesRelated(wallOpponentLabel: string, otherSlug: string, getKnownNames: (slug: string) => string[]): boolean {
+  const w = normalizeOpponentName(wallOpponentLabel);
+  if (!w) return false;
+  return getKnownNames(otherSlug).some((n) => n.length > 0 && (w.includes(n) || n.includes(w)));
+}
+
 // 「圏外相手」として登録されたwall boutが、実は別の選手側の記録が後から解決
-// できたことで同じ日付・同じ決着文言のdb boutとして重複登録されているケースを
-// 検出し、wall bout側を除外する(db bout側は双方向で裏付けが取れているためより
-// 信頼できる。残す)。
+// できたことで同じ日付のdb boutとして重複登録されているケースを検出し、
+// wall bout側を除外する(db bout側は双方向で裏付けが取れているためより
+// 信頼できる。残す)。判定は以下いずれかを満たす場合のみ(同日というだけで
+// 統合すると、同日複数試合をこなすトーナメント形式で無関係な2試合を誤って
+// 統合しうるため、必ずどちらかの強いシグナルを要求する):
+//   (a) 決着文言(method)が完全一致
+//   (b) 勝敗方向が一致 かつ wallの相手名がdb側のもう一方の選手の既知の名前と
+//       部分一致で関連付けられる(表記ゆれ)
 // 実例: 西谷大成(fighters.ts上のnameJaは「大成」)は、対戦相手側の履歴では
 // 「西谷大成」表記で記録され解決に失敗し続けていたが、本人のWikipedia記事が
 // 後日解決されたことで本人視点のdb boutが新たに生成され、萩原京平・高木凌・
 // 鈴木博昭の3選手でそれぞれ同一試合が二重計上されていた(高木凌×コレスニック
-// の勝敗矛盾検出と同種の「一次データの後発的解決による整合崩れ」)。
-// 日付+決着文言(method)の完全一致という強いシグナルのみで判定するため、
-// 同日に複数試合をこなすトーナメント形式でも(相手・methodが異なれば)誤って
-// 統合しない。
-function dedupeGhostWallBouts(bouts: Bout[], warnings: ExclusionWarning[]): Bout[] {
-  const dbBoutByFighterDateMethod = new Map<string, Bout>();
+// の勝敗矛盾検出と同種の「一次データの後発的解決による整合崩れ」)。萩原京平の
+// ケースはmethod文言が両者で異なっていたため(a)では拾えず、(b)で拾う。
+function dedupeGhostWallBouts(
+  bouts: Bout[],
+  warnings: ExclusionWarning[],
+  getKnownNames: (slug: string) => string[]
+): Bout[] {
+  const dbBoutsByFighterDate = new Map<string, Bout[]>();
   for (const b of bouts) {
     if (b.bNode.startsWith("name:")) continue; // wallはキーに登録しない(db同士のみ)
-    dbBoutByFighterDateMethod.set(`${b.aNode}|${b.date}|${b.method}`, b);
-    dbBoutByFighterDateMethod.set(`${b.bNode}|${b.date}|${b.method}`, b);
+    for (const node of [b.aNode, b.bNode]) {
+      const key = `${node}|${b.date}`;
+      const list = dbBoutsByFighterDate.get(key) ?? [];
+      list.push(b);
+      dbBoutsByFighterDate.set(key, list);
+    }
   }
 
   return bouts.filter((b) => {
     if (!b.bNode.startsWith("name:")) return true; // dbはそのまま残す
-    const dup = dbBoutByFighterDateMethod.get(`${b.aNode}|${b.date}|${b.method}`);
-    if (!dup) return true;
-    const otherSlug = dup.aNode === b.aNode ? dup.bNode : dup.aNode;
-    warnings.push({
-      slug: b.aNode,
-      date: b.date,
-      opponent: b.opponentLabel,
-      reason: `対戦相手側の解決済み記録(${otherSlug})と同一試合(同日・同決着文言)と判定し重複除外`,
-    });
-    return false;
+    const candidates = dbBoutsByFighterDate.get(`${b.aNode}|${b.date}`) ?? [];
+    for (const dup of candidates) {
+      const sameMethod = dup.method === b.method;
+      const otherSlug = dup.aNode === b.aNode ? dup.bNode : dup.aNode;
+      const dupScoreForA = dup.aNode === b.aNode ? dup.scoreA : 1 - dup.scoreA;
+      const consistentDirection = Math.abs(dupScoreForA - b.scoreA) < 1e-9;
+      if (!sameMethod && !(consistentDirection && namesRelated(b.opponentLabel, otherSlug, getKnownNames))) continue;
+
+      warnings.push({
+        slug: b.aNode,
+        date: b.date,
+        opponent: b.opponentLabel,
+        reason: sameMethod
+          ? `対戦相手側の解決済み記録(${otherSlug})と同一試合(同日・同決着文言)と判定し重複除外`
+          : `対戦相手側の解決済み記録(${otherSlug})と同一試合(同日・相手名の表記ゆれ・勝敗方向一致)と判定し重複除外`,
+      });
+      return false;
+    }
+    return true;
   });
 }
 

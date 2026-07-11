@@ -21,6 +21,7 @@ import {
   ChampionOverlay,
 } from "../src/lib/mnewsRating/rankingsFile";
 import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
+import { getDivisionRankingView } from "../src/lib/mnewsRating/divisionRankingView";
 
 let failures = 0;
 let passes = 0;
@@ -435,6 +436,94 @@ function makeResolver(map: Record<string, string>) {
     yamanBouts.some((b) => b.date === "2023-05-06" && b.opponentLabel === "三浦孝太"),
     "戦績訂正オーバーライド: 追加bout(2023-05-06 三浦孝太戦)がElo計算対象の対戦として計上される"
   );
+}
+
+// ── 14. 計量オーバーNC裁定(J): 一般ルールとして王者オーバーレイと独立にエンジンへ適用される ──
+{
+  // 14-1. 計量オーバー側が実際の試合で勝った → 双方ノーコンテスト(勝敗記録なし)
+  {
+    const records: FighterRecordsInput = {
+      "fighter-nc-winner-side": {
+        history: [{ date: "2026-05-01", opponent: "選手Z", result: "loss", method: "1R パウンド", event: "RIZIN.220" }],
+      },
+    };
+    const resolve = makeResolver({});
+    const lookupWeighInMiss = (fighterId: string, date: string, opponent: string) =>
+      fighterId === "fighter-nc-winner-side" && date === "2026-05-01" && opponent === "選手Z" ? "opponent" : null;
+    const { bouts, warnings } = buildBouts(records, resolve, () => [], lookupWeighInMiss);
+    check(bouts.length === 0, "計量オーバーNC: 計量オーバー側が勝った試合は対戦として計上されない(NC)");
+    check(
+      warnings.some((w) => w.reason.includes("ノーコンテスト")),
+      "計量オーバーNC: NC裁定の理由がwarningとして出力される"
+    );
+    const states = computeRawRatings(bouts);
+    check(!states.has("fighter-nc-winner-side"), "計量オーバーNC: NC裁定によりレート状態が一切生成されない(勝敗どちらにも計上されない)");
+  }
+
+  // 14-2. 計量オーバー側が実際の試合で負けた(または引き分けた) → 通常どおり結果が有効
+  {
+    const records: FighterRecordsInput = {
+      "fighter-nc-loser-side": {
+        history: [{ date: "2026-05-02", opponent: "選手Z2", result: "win", method: "5分3R終了 判定3-0", event: "RIZIN.221" }],
+      },
+    };
+    const resolve = makeResolver({});
+    const lookupWeighInMiss = (fighterId: string, date: string, opponent: string) =>
+      fighterId === "fighter-nc-loser-side" && date === "2026-05-02" && opponent === "選手Z2" ? "self" : null;
+    const { bouts, warnings } = buildBouts(records, resolve, () => [], lookupWeighInMiss);
+    check(bouts.length === 0, "計量オーバーNC: 計量オーバー側自身が負けた試合はNCとして除外される");
+    check(warnings.length === 1, "計量オーバーNC: 除外理由がwarningとして1件出力される");
+
+    // 相手側(計量オーバーしていない側)が勝った通常のケースは、対象外(missedBy=null)なら普通に計上される
+    const recordsOpponentWin: FighterRecordsInput = {
+      "fighter-nc-loser-side": {
+        history: [{ date: "2026-05-02", opponent: "選手Z2", result: "loss", method: "5分3R終了 判定0-3", event: "RIZIN.221" }],
+      },
+    };
+    const lookupWeighInMissForLoss = (fighterId: string, date: string, opponent: string) =>
+      fighterId === "fighter-nc-loser-side" && date === "2026-05-02" && opponent === "選手Z2" ? "self" : null;
+    const { bouts: boutsOpponentWin } = buildBouts(recordsOpponentWin, resolve, () => [], lookupWeighInMissForLoss);
+    check(
+      boutsOpponentWin.length === 1 && boutsOpponentWin[0].scoreA === 0,
+      "計量オーバーNC: 計量オーバー側が敗れた場合は相手の勝ちが通常どおり有効になる"
+    );
+  }
+}
+
+// ── 15. トップウィジェット/ランキングページ共有セレクタ(I) ────────────────
+{
+  const asOf = new Date("2026-06-01");
+  const champion: ChampionOverlay = { fighterId: "champ-shared", rating: 1650, record: { wins: 7, losses: 0, draws: 0 }, lastFight: "2026-05-01" };
+  const pool = [
+    {
+      meta: { slug: "shared-1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "shared-1", rawRating: 1600, displayRating: 1600, fights: 8, wins: 7, losses: 1, draws: 0, lastFightDate: "2026-04-01", eligible: true },
+    },
+    {
+      meta: { slug: "shared-2", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "shared-2", rawRating: 1580, displayRating: 1580, fights: 6, wins: 5, losses: 1, draws: 0, lastFightDate: "2026-03-01", eligible: true },
+    },
+  ];
+  const data = buildDivisionRankings("フェザー級", pool, asOf, undefined, champion, "overlay");
+
+  const pageView = getDivisionRankingView(data); // ページ本体: 全件
+  check(pageView.contenders.length === 2, "共有セレクタ: topN省略時は全件を返す(ページ本体用)");
+  check(pageView.champion?.fighterId === "champ-shared", "共有セレクタ: championフィールドをそのまま返す");
+  check(!pageView.contenders.some((e) => e.fighterId === "champ-shared"), "共有セレクタ: 王者は番号付きcontendersに含まれない");
+
+  const widgetView = getDivisionRankingView(data, 1); // ウィジェット: 上位N件
+  check(widgetView.contenders.length === 1 && widgetView.contenders[0].fighterId === "shared-1", "共有セレクタ: topN指定時は先頭N件のみを返す(ウィジェット用)");
+  check(widgetView.champion?.fighterId === pageView.champion?.fighterId, "共有セレクタ: ページとウィジェットで同じ王者・同じ並び順を返す(独自に組み立てない)");
+  check(
+    widgetView.contenders[0].fighterId === pageView.contenders[0].fighterId,
+    "共有セレクタ: ウィジェットの1位とページの1位が一致する"
+  );
+
+  check(getDivisionRankingView(null).champion === null && getDivisionRankingView(null).contenders.length === 0, "共有セレクタ: データが無い階級はchampion=null・contenders=[]を返す");
+
+  // 王者行のdeltaは表示側で常に固定値(RankingDelta(null))を渡す設計であり、
+  // championオブジェクト自体にdeltaフィールドが存在しないことで構造的に保証される。
+  check(!("delta" in (data.champion as object)), "共有セレクタ: champion情報にdeltaが存在しないため表示側は常に「—」になる");
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);
