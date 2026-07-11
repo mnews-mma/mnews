@@ -46,9 +46,10 @@ function MenuIcon({ open }: { open: boolean }) {
 }
 
 // メニュー項目は既存ルートのみ(未実装ページへのリンクを作らない)。
-// 「ランキング」は単一の統合ページ(/ranking)が存在しない(rizin/deep/shooto/
-// pancrase/undefeatedの個別ページのみ)ため、恣意的にどれか1つを選ばず掲載を見送る。
+// 「ランキング」は/rankings(全階級ハブ)の新設に伴い追加(mnewsレーティング)。
+// ニュース・選手データベースと同列の主要導線として先頭に配置する。
 const MENU_ITEMS = [
+  { href: "/rankings", label: "ランキング" },
   { href: "/dream", label: "夢のカード" },
   { href: "/archive", label: "過去のニュース" },
   { href: "/events", label: "開催予定の大会" },
