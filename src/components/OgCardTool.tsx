@@ -15,9 +15,17 @@ const SITE_URL = "https://www.mnews.jp";
 
 // カードに手指定できる階級プルダウン。/fighters と同じ並び順(共有のweightSortKey)。
 // 加えて「自由入力」で任意テキストも可。
-const WEIGHT_PRESETS = ["ストロー級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ウェルター級", "ヘビー級", "女子アトム級"].sort(
-  (a, b) => weightSortKey(a) - weightSortKey(b)
-);
+// 女子2階級(アトム級・女子スーパーアトム級)はweightSortKeyのキー("女子アトム級"等)と
+// 表記が異なるため個別ソート対象外(=男子階級のみソートし、女子2階級は末尾に軽い→
+// 重いの順で固定)。ラベルはこのプルダウン選択肢限定の見せ方であり、選手/イベントの
+// 階級マスタ(fighters.ts等)には触れない。
+const WEIGHT_PRESETS = [
+  ...["ストロー級", "フライ級", "バンタム級", "フェザー級", "ライト級", "ウェルター級", "ヘビー級"].sort(
+    (a, b) => weightSortKey(a) - weightSortKey(b)
+  ),
+  "アトム級",
+  "女子スーパーアトム級（49.0kg）",
+];
 const CUSTOM = "__custom__";
 
 export default function OgCardTool({ fighters }: { fighters: FighterOption[] }) {

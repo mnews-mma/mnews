@@ -52,18 +52,15 @@ export default async function DreamPage({
 
   const canGenerate = !!fighterA && !!fighterB && !!entryA && !!entryB && fighterA.slug !== fighterB.slug;
 
-  // 階級ラベルは"夢の"カードとして中央に1つだけ表示する(①のwc仕様と同じ扱い)。
-  // 階級跨ぎの場合は両階級を併記し、実在の対戦であるかのように誤読させない。
-  const weightLabel =
-    fighterA && fighterB
-      ? fighterA.weightClass === fighterB.weightClass
-        ? `夢の${fighterA.weightClass}マッチ`
-        : `夢のマッチ（${fighterA.weightClass} vs ${fighterB.weightClass}）`
-      : undefined;
+  // 夢のカードはデータ比較(戦績・勝率・共通対戦相手)が主役で、階級跨ぎOKの
+  // 設計上そもそも階級表記は不要(実在の対戦であるかのように誤読させないため
+  // 見出しから階級を外す)。表示用の見出しラベルのみで、階級パラメータ(wc)は
+  // シェアURLに含めない(長大なURLエンコードを避ける)。
+  const weightLabel = fighterA && fighterB ? "夢のマッチ" : undefined;
 
   const shareUrl =
     canGenerate && fighterA && fighterB
-      ? `${SITE_URL}/vs/${fighterA.slug}/${fighterB.slug}?wc=${encodeURIComponent(weightLabel ?? "")}`
+      ? `${SITE_URL}/vs/${fighterA.slug}/${fighterB.slug}`
       : null;
   const shareText =
     canGenerate && fighterA && fighterB

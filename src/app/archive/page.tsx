@@ -5,6 +5,7 @@ import { Article, relativeTimeJa } from "@/lib/articles";
 import { SOURCES, SourceKey } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { ORIGINAL_ARTICLES, originalArticleToFeedArticle } from "@/lib/originalArticles";
+import { fetchRawArticles } from "@/lib/feeds/aggregate";
 import type { FeedArticle } from "@/lib/newsClassify";
 
 export const dynamic = "force-dynamic";
@@ -30,6 +31,19 @@ async function fetchArchive(): Promise<Article[]> {
   }
 }
 
+// archive.jsonはバッチ(GitHub Actions)経由の蓄積のため、直近の新着記事が
+// 反映されるまでタイムラグがある。トップと同じ生取得(fetchRawArticles)も
+// 合わせて取り込み、URL重複を除いてマージすることで「過去のニュースに
+// 新着が抜けている」不具合を解消する(トップとの表示重複自体は容認する方針)。
+async function fetchLiveArticles(): Promise<Article[]> {
+  try {
+    const { articles } = await fetchRawArticles();
+    return articles;
+  } catch {
+    return [];
+  }
+}
+
 // トップ(UnifiedFeed)と同じ4タブ構成(すべて/公式/メディア/オリジナル)に統一する。
 // 順序・ラベルともトップ側のCHIPS定義(UnifiedFeed.tsx)に合わせている。
 type Tab = "all" | "official" | "media" | "original";
@@ -44,7 +58,15 @@ export default async function ArchivePage({
     tabParam === "official" || tabParam === "media" || tabParam === "original" ? tabParam : "all";
   const page = parseInt(pageParam ?? "1", 10) || 1;
 
-  const rssArticles: FeedArticle[] = (await fetchArchive()).map((a) => ({
+  const [archived, live] = await Promise.all([fetchArchive(), fetchLiveArticles()]);
+  const seenUrls = new Set<string>();
+  const mergedRaw: Article[] = [];
+  for (const a of [...live, ...archived]) {
+    if (seenUrls.has(a.url)) continue;
+    seenUrls.add(a.url);
+    mergedRaw.push(a);
+  }
+  const rssArticles: FeedArticle[] = mergedRaw.map((a) => ({
     ...a,
     kind: OFFICIAL_ORGS.has(a.source) ? "official" : "media",
     newsType: "article",
@@ -83,7 +105,6 @@ export default async function ArchivePage({
       <Nav />
       <div className="page-head">
         <h1 className="page-title">過去のニュース</h1>
-        <div className="page-sub">これまでの全記事をまとめたアーカイブです(新着はトップをご覧ください)</div>
       </div>
 
       <div className="uf">
