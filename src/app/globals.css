@@ -1524,6 +1524,74 @@ footer {
   font-size: 14px;
   font-weight: 700;
 }
+.nf-mk--empty {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* 直接対決(2選手間の対戦履歴)。共通対戦相手(第三者との対戦一致)とは別枠、
+   その上に常時表示する(折りたたみ対象外)。 */
+.nf-h2h {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+.nf-h2h-head {
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.nf-h2h-row {
+  padding: 6px 0;
+  border-top: 1px solid rgba(232, 0, 45, 0.12);
+  font-size: 12px;
+}
+.nf-h2h-row:first-of-type {
+  border-top: none;
+}
+.nf-h2h-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.nf-h2h-date {
+  font-family: var(--mono);
+  flex-shrink: 0;
+}
+.nf-h2h-event {
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.nf-h2h-result {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22px 22px minmax(0, 1fr);
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-weight: 700;
+}
+.nf-h2h-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.nf-h2h-name.mk-win { color: #16a34a; }
+.nf-h2h-name.mk-loss { color: #dc2626; }
+.nf-h2h-name.mk-draw { color: #9ca3af; }
+.nf-h2h-result .nf-h2h-name:last-child {
+  text-align: right;
+}
+.nf-h2h-method {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 11px;
+}
 
 /* 大会ページ・対戦カード内の共通対戦相手(折りたたみ・ネイティブdetails) */
 .bout-commons {

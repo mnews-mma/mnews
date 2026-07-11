@@ -5128,7 +5128,7 @@
     "draws": 0,
     "ko": 9,
     "sub": 2,
-    "decision": 3,
+    "decision": 2,
     "history": [
       {
         "date": "2026-05-10",
@@ -10302,12 +10302,12 @@
     "age": 23
   },
   "ohara-juri": {
-    "wins": 38,
-    "losses": 21,
+    "wins": 39,
+    "losses": 20,
     "draws": 2,
     "ko": 21,
     "sub": 2,
-    "decision": 12,
+    "decision": 13,
     "history": [
       {
         "date": "2026-05-04",
@@ -14182,12 +14182,12 @@
     "noRecordData": true
   },
   "strasser-kiichi": {
-    "wins": 21,
-    "losses": 13,
+    "wins": 20,
+    "losses": 12,
     "draws": 2,
     "ko": 2,
     "sub": 10,
-    "decision": 8,
+    "decision": 7,
     "history": [
       {
         "date": "2026-03-20",
@@ -14659,11 +14659,11 @@
     "noRecordData": true
   },
   "uoi-fullswing": {
-    "wins": 27,
-    "losses": 16,
+    "wins": 26,
+    "losses": 17,
     "draws": 4,
     "ko": 12,
-    "sub": 2,
+    "sub": 1,
     "decision": 13,
     "history": [
       {
@@ -15536,6 +15536,14 @@
         "result": "loss",
         "method": "1R 2:16 スリーパーホールド",
         "event": "PROFESSIONAL SHOOTO 2024 Vol.7",
+        "round": "R1"
+      },
+      {
+        "date": "2024-04-07",
+        "opponent": "澤田龍人",
+        "result": "win",
+        "method": "1R 3:38 ネックストレッチ",
+        "event": "SHOOTO GIG TOKYO Vol.36",
         "round": "R1"
       },
       {
@@ -17528,8 +17536,8 @@
     "wins": 25,
     "losses": 15,
     "draws": 9,
-    "ko": 6,
-    "sub": 6,
+    "ko": 7,
+    "sub": 5,
     "decision": 13,
     "history": [
       {
@@ -21143,12 +21151,12 @@
     "age": 32
   },
   "sheydullaev-rajabali": {
-    "wins": 19,
+    "wins": 22,
     "losses": 0,
     "draws": 0,
     "ko": 7,
-    "sub": 12,
-    "decision": 0,
+    "sub": 14,
+    "decision": 1,
     "history": [
       {
         "date": "2026-04-12",
@@ -25180,10 +25188,10 @@
     "age": 26
   },
   "lee-kaiwen": {
-    "wins": 16,
+    "wins": 15,
     "losses": 8,
     "draws": 0,
-    "ko": 9,
+    "ko": 8,
     "sub": 1,
     "decision": 6,
     "history": [

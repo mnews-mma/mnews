@@ -1,24 +1,42 @@
 import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { computeMethodSplit, computeFighterStripStats, LAST5_SYMBOL } from "@/lib/fighterStrip";
-import { computeCommonOpponents } from "@/lib/articleGenerator";
+import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
 import { findFighterSlugByName } from "@/lib/fighters";
 
-// 勝敗記号は ○ / X(ラテン大文字) / △ のみ。方向・凡例の概念が無く説明不要で読める。
-const MARK: Record<FighterRecordEntry["history"][number]["result"], string> = {
+type Result = FighterRecordEntry["history"][number]["result"];
+
+// 勝敗記号は ○ / ● / △ のみ(サイト全体で直近5戦と統一)。方向・凡例の概念が
+// 無く説明不要で読める。
+const MARK: Record<Result, string> = {
   win: "○",
-  loss: "X",
+  loss: "●",
   draw: "△",
   nc: "△",
 };
-const MARK_CLASS: Record<FighterRecordEntry["history"][number]["result"], string> = {
+const MARK_CLASS: Record<Result, string> = {
   win: "mk-win",
   loss: "mk-loss",
   draw: "mk-draw",
   nc: "mk-draw",
 };
 
+function oppositeResult(r: Result): Result {
+  if (r === "win") return "loss";
+  if (r === "loss") return "win";
+  return r; // draw/ncはそのまま
+}
+
+// 勝敗マス。resultがnull(同一相手との対戦回数が左右で異なり、片方に対戦が
+// 無い回)の場合は「-」の空欄表示にする。
+function MarkCell({ result }: { result: Result | null }) {
+  if (result === null) return <span className="nf-mk nf-mk--empty">-</span>;
+  return <span className={`nf-mk ${MARK_CLASS[result]}`}>{MARK[result]}</span>;
+}
+
 // 共通対戦相手の行(選手ページ次戦カード・大会ページ両対応の共有部分)。
-// マーク仕様(○/X/△)の変更は1箇所への反映で両方に伝播する。
+// 同一相手と複数回対戦がある場合はcommons配列側で既に行分割済み(1行=1対戦)
+// のため、ここでは連番から「(2戦目)」等のラベルを付けるだけでよい。
+// マーク仕様(○/●/△)の変更は1箇所への反映で両方に伝播する。
 function CommonOpponentRows({
   commons,
   visibleSlugs,
@@ -26,23 +44,62 @@ function CommonOpponentRows({
   commons: ReturnType<typeof computeCommonOpponents>;
   visibleSlugs: Set<string>;
 }) {
+  const nameCount = new Map<string, number>();
   return (
     <>
-      {commons.map((c) => {
+      {commons.map((c, i) => {
+        const seenBefore = nameCount.get(c.name) ?? 0;
+        nameCount.set(c.name, seenBefore + 1);
+        const label = seenBefore > 0 ? `${c.name}（${seenBefore + 1}戦目）` : c.name;
         const cSlug = findFighterSlugByName(c.name, undefined, visibleSlugs);
         return (
-          <div key={c.name} className="nf-common-row">
+          <div key={c.name + i} className="nf-common-row">
             {cSlug ? (
-              <a href={`/fighters/${cSlug}`} className="nf-common-name">{c.name}</a>
+              <a href={`/fighters/${cSlug}`} className="nf-common-name">{label}</a>
             ) : (
-              <span>{c.name}</span>
+              <span>{label}</span>
             )}
-            <span className={`nf-mk ${MARK_CLASS[c.resultA]}`}>{MARK[c.resultA]}</span>
-            <span className={`nf-mk ${MARK_CLASS[c.resultB]}`}>{MARK[c.resultB]}</span>
+            <MarkCell result={c.resultA} />
+            <MarkCell result={c.resultB} />
           </div>
         );
       })}
     </>
+  );
+}
+
+// 直接対決(2選手が過去に対戦している場合の履歴)。共通対戦相手(第三者との対戦の
+// 一致)とは概念が別物のため、独立した別枠として共通対戦相手テーブルの上に出す。
+// 0件ならこの枠自体を出さない。複数回対戦がある場合は新しい順に全て列挙する。
+function HeadToHeadBlock({
+  nameA,
+  nameB,
+  matches,
+}: {
+  nameA: string;
+  nameB: string;
+  matches: ReturnType<typeof computeHeadToHead>;
+}) {
+  if (matches.length === 0) return null;
+  return (
+    <div className="nf-h2h">
+      <div className="nf-h2h-head">過去対戦 {matches.length}回</div>
+      {matches.map((m, i) => (
+        <div key={i} className="nf-h2h-row">
+          <div className="nf-h2h-meta">
+            <span className="nf-h2h-date">{m.date}</span>
+            <span className="nf-h2h-event">{m.event}</span>
+          </div>
+          <div className="nf-h2h-result">
+            <span className={`nf-h2h-name ${MARK_CLASS[m.resultA]}`}>{nameA}</span>
+            <MarkCell result={m.resultA} />
+            <MarkCell result={oppositeResult(m.resultA)} />
+            <span className={`nf-h2h-name ${MARK_CLASS[oppositeResult(m.resultA)]}`}>{nameB}</span>
+          </div>
+          <div className="nf-h2h-method">{m.method}</div>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -95,8 +152,10 @@ export function NextFightCompare({
   const oppStats = computeFighterStripStats(opponent);
   const selfLast5 = last5Text(self);
   const oppLast5 = last5Text(opponent);
-  // 共通対戦相手(記事生成と同じロジックを流用・名前正規化つき重複除去済み)。
+  // 共通対戦相手(記事生成と同じロジックを流用。同一相手との複数対戦は行分割済み)。
   const commons = computeCommonOpponents(self, opponent).slice(0, 8);
+  // 直接対決(2選手同士の対戦履歴)。共通対戦相手とは別枠でその上に表示する。
+  const headToHead = computeHeadToHead(self, opponentName);
 
   return (
     <div className="nf-compare">
@@ -116,6 +175,8 @@ export function NextFightCompare({
         {oppLast5 && <div className="nf-cell--mr"><Last5Marks entry={opponent} /></div>}
       </div>
 
+      <HeadToHeadBlock nameA={selfName} nameB={opponentName} matches={headToHead} />
+
       {commons.length > 0 && (
         <div className="nf-commons">
           <div className="nf-commons-head">
@@ -130,9 +191,10 @@ export function NextFightCompare({
   );
 }
 
-// 大会ページの対戦カード用・共通対戦相手(折りたたみ)。
-// ロジックは選手ページの次戦カードと同一(computeCommonOpponents / CommonOpponentRows流用)。
-// 共通対戦相手0人、または片方が戦績データなし(noRecordData)の場合はnull(何も出さない)。
+// 大会ページの対戦カード用・直接対決+共通対戦相手(共通対戦相手のみ折りたたみ)。
+// ロジックは選手ページの次戦カードと同一(computeCommonOpponents/computeHeadToHead流用)。
+// 両方0件、または片方が戦績データなし(noRecordData)の場合はnull(何も出さない)。
+// 直接対決は基本情報として常時表示、共通対戦相手のみ折りたたみにする(方針通り)。
 export function EventCommonOpponents({
   nameA,
   entryA,
@@ -148,18 +210,27 @@ export function EventCommonOpponents({
 }) {
   if (entryA.noRecordData || entryB.noRecordData) return null;
   const commons = computeCommonOpponents(entryA, entryB).slice(0, 8);
-  if (commons.length === 0) return null;
+  const headToHead = computeHeadToHead(entryA, nameB);
+  if (commons.length === 0 && headToHead.length === 0) return null;
+  // 複数対戦は行分割されるため、summaryの人数はユニークな相手数で数える
+  // (行数=対戦数とは別の指標)。
+  const uniqueOpponentCount = new Set(commons.map((c) => c.name)).size;
 
   return (
-    <details className="bout-commons">
-      <summary className="bout-commons-summary">共通対戦相手 {commons.length}人</summary>
-      <div className="nf-commons-head">
-        <span>共通対戦相手</span>
-        <span className="nf-col">{nameA}</span>
-        <span className="nf-col">{nameB}</span>
-      </div>
-      <CommonOpponentRows commons={commons} visibleSlugs={visibleSlugs} />
-    </details>
+    <>
+      <HeadToHeadBlock nameA={nameA} nameB={nameB} matches={headToHead} />
+      {commons.length > 0 && (
+        <details className="bout-commons">
+          <summary className="bout-commons-summary">共通対戦相手 {uniqueOpponentCount}人</summary>
+          <div className="nf-commons-head">
+            <span>共通対戦相手</span>
+            <span className="nf-col">{nameA}</span>
+            <span className="nf-col">{nameB}</span>
+          </div>
+          <CommonOpponentRows commons={commons} visibleSlugs={visibleSlugs} />
+        </details>
+      )}
+    </>
   );
 }
 

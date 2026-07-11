@@ -205,10 +205,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <div className="article-subsection">
                   <div className="event-section-label" style={{ fontSize: 12, marginBottom: 8 }}>共通対戦相手</div>
                   <ul className="article-common-opponents">
-                    {fight.commonOpponents.map((o) => (
-                      <li key={o.name}>
-                        {o.name} — {fight.fighterA.nameJa} {RESULT_SYMBOL[o.resultA]} ／ {fight.fighterB.nameJa}{" "}
-                        {RESULT_SYMBOL[o.resultB]}
+                    {fight.commonOpponents.map((o, i) => (
+                      <li key={o.name + i}>
+                        {o.name} — {fight.fighterA.nameJa} {o.resultA ? RESULT_SYMBOL[o.resultA] : "-"} ／{" "}
+                        {fight.fighterB.nameJa} {o.resultB ? RESULT_SYMBOL[o.resultB] : "-"}
                       </li>
                     ))}
                   </ul>

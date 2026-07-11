@@ -16,10 +16,12 @@ export interface OriginalArticleFighterRef {
 }
 
 // 共通対戦相手1件(スナップショット)。resultA/Bは生成時点の対戦結果。
+// 同一相手と複数回対戦している場合、対戦ごとに行を分けて複数件を返す
+// (1行=1対戦を必ず保つ)。片方しか対戦していない回はnull(空欄表示)。
 export interface CommonOpponent {
   name: string;
-  resultA: "win" | "loss" | "draw" | "nc";
-  resultB: "win" | "loss" | "draw" | "nc";
+  resultA: "win" | "loss" | "draw" | "nc" | null;
+  resultB: "win" | "loss" | "draw" | "nc" | null;
 }
 
 export interface OriginalArticleFight {
