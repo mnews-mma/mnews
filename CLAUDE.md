@@ -24,6 +24,7 @@
 ## デプロイ
 - 通常: `git push origin main && vercel deploy --prod --yes`
 - 上記の本番保護ルールに該当する変更(大きい機能追加・データ変更等)は作業ブランチ + `vercel deploy`(プレビュー)で確認してからmainにマージする
+- **git worktreeからデプロイする場合**: worktree直下には`.vercel/`が無く、そのまま`vercel deploy`すると誤って新規プロジェクトが作成される(2026-07-11に`mnews-worktree-fontfix`を誤作成→削除した実例あり)。デプロイ前に必ず本体の`.vercel/project.json`(`projectId: prj_BOiZsdSXZ5tEVMQ0DV8WmOl0c6pg`, `projectName: mnews`)をworktreeにコピーするか`vercel link`で本番プロジェクトを明示指定してから実行する
 
 ## 認証境界(重要)
 - 認証必須は `/admin/*`(管理画面)と `/api/admin/*`(管理系API)のみ
