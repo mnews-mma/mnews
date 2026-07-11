@@ -1936,6 +1936,13 @@ footer {
   display: block;
   font-size: 15px;
   font-weight: 700;
+  line-height: 1.3;
+  /* 名前が1行/2行のどちらでも高さを揃える(常に2行分=15px*1.3*2を確保)。
+     em単位のcalcだと、長い名前ほどfont-sizeが縮小される(inline style)ため、
+     「2行分」の絶対px高さも選手ごとに変わってしまい、短い名前(15px,1行)と
+     長い名前(10.5px,2行)で結局揃わなかった(実測: 39px vs 27.3px)。
+     固定px値にすることで、font-sizeに関わらず高さの基準を統一する。 */
+  min-height: 39px;
 }
 
 .bout-vs {
