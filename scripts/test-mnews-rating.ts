@@ -6,6 +6,7 @@ import {
   buildBouts,
   buildDisplayEntries,
   computeRawRatings,
+  filterPublishableStates,
   isEligible,
   applyInactivityDecay,
   FighterRecordsInput,
@@ -179,7 +180,76 @@ function makeResolver(map: Record<string, string>) {
   check(isEligible(ok, asOf), "掲載資格: 3戦以上・直近18ヶ月以内・1勝以上を満たせば資格あり");
 }
 
-// ── 7. 冪等性(同じ入力→同じ出力。rawRatingはバッチ実行日に依存しない) ──
+// ── 7. 自社DB圏外の相手は正規化名で永続トラッキングされる(毎回1500へ戻らない) ──
+{
+  const records: FighterRecordsInput = {
+    "fighter-w1": {
+      history: [{ date: "2026-01-01", opponent: "無名選手", result: "win", method: "1R 1:08 KO（右ストレート）", event: "RIZIN.200" }],
+    },
+    "fighter-w2": {
+      history: [{ date: "2026-02-01", opponent: "無名選手", result: "win", method: "1R 1:08 KO（右ストレート）", event: "RIZIN.201" }],
+    },
+  };
+  const resolve = makeResolver({});
+  const { bouts } = buildBouts(records, resolve);
+  check(bouts.length === 2, "圏外相手の永続トラッキング: 同名相手への2試合が両方対戦として計上される");
+  check(bouts[0].bNode === bouts[1].bNode, "圏外相手の永続トラッキング: 同じ正規化名は同一の疑似ノードに解決される");
+
+  const states = computeRawRatings(bouts);
+  const wall = states.get(bouts[0].bNode)!;
+  check(wall.fights === 2 && wall.losses === 2, "圏外相手の永続トラッキング: 疑似ノードも2敗として状態が蓄積される");
+  // 2戦目の相手(fighter-w2)は、1敗して下がった後の相手レートを見ているため
+  // 1戦目の相手(fighter-w1)より得られるレートが少ない(=フレッシュな1500を毎回
+  // 狩れる歪みが解消されている)。
+  const w1 = states.get("fighter-w1")!;
+  const w2 = states.get("fighter-w2")!;
+  check(w1.rawRating > w2.rawRating, "圏外相手の永続トラッキング: 2人目の挑戦者は目減りした相手レートしか得られない");
+
+  const records2: FighterRecordsInput = JSON.parse(JSON.stringify(records));
+  const publishable = filterPublishableStates(computeRawRatings(buildBouts(records2, resolve).bouts), records2);
+  check(!publishable.has(bouts[0].bNode), "圏外相手の永続トラッキング: 疑似ノードはfilterPublishableStatesで公開対象から除外される");
+  check(publishable.has("fighter-w1") && publishable.has("fighter-w2"), "圏外相手の永続トラッキング: 実在選手は公開対象に残る");
+}
+
+// ── 8. DB内対決の勝敗矛盾は自動判定せず除外する ──────────────────────
+{
+  const records: FighterRecordsInput = {
+    "fighter-x": {
+      history: [{ date: "2026-03-01", opponent: "選手Y", result: "win", method: "5分3R終了 判定3-0", event: "RIZIN.210" }],
+    },
+    "fighter-y": {
+      // 同一試合について、自分も勝ったと記録している(矛盾)
+      history: [{ date: "2026-03-01", opponent: "選手X", result: "win", method: "5分3R終了 判定3-0", event: "RIZIN.210" }],
+    },
+  };
+  const resolve = makeResolver({ 選手X: "fighter-x", 選手Y: "fighter-y" });
+  const { bouts, warnings } = buildBouts(records, resolve);
+  check(bouts.length === 0, "勝敗矛盾: 双方が「勝った」と記録している対戦は計算対象から除外される");
+  check(
+    warnings.some((w) => w.reason.includes("矛盾")),
+    "勝敗矛盾: 除外理由がwarningとして出力される"
+  );
+
+  // 決着種別だけが食い違う場合(勝敗の方向は一致)は除外せずK=32側に倒す
+  const records2: FighterRecordsInput = {
+    "fighter-p": {
+      history: [{ date: "2026-04-01", opponent: "選手Q", result: "win", method: "1R 1:08 KO（右ストレート）", event: "RIZIN.211" }],
+    },
+    "fighter-q": {
+      history: [{ date: "2026-04-01", opponent: "選手P", result: "loss", method: "5分3R終了 判定0-3", event: "RIZIN.211" }],
+    },
+  };
+  const resolve2 = makeResolver({ 選手P: "fighter-p", 選手Q: "fighter-q" });
+  const { bouts: bouts2, warnings: warnings2 } = buildBouts(records2, resolve2);
+  check(bouts2.length === 1, "決着種別の食い違い: 勝敗が一致していれば除外せず1件として残す");
+  check(bouts2[0].finish === false, "決着種別の食い違い: 保守的に判定(K=32)側へ倒す");
+  check(
+    warnings2.some((w) => w.reason.includes("決着種別")),
+    "決着種別の食い違い: 食い違いがwarningとして出力される"
+  );
+}
+
+// ── 9. 冪等性(同じ入力→同じ出力。rawRatingはバッチ実行日に依存しない) ──
 {
   const records: FighterRecordsInput = {
     "fighter-a": {

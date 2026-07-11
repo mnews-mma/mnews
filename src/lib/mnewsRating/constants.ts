@@ -19,8 +19,3 @@ export const DECAY_FLOOR = 1400;
 export const ELIGIBILITY_MIN_FIGHTS = 3;
 export const ELIGIBILITY_MIN_WINS = 1;
 export const ELIGIBILITY_MAX_INACTIVE_MONTHS = 18;
-
-// 自社データベースに存在しない相手との対戦は、初期レートと同値の中立レートを
-// 相手側の暫定レートとして計算する(無名相手に勝っても大きく上がる／負けても
-// 大きく下がるといった非対称を作らない)。相手側のレート自体は更新しない。
-export const UNRATED_OPPONENT_RATING = INITIAL_RATING;

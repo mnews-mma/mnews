@@ -4,7 +4,13 @@
 import fs from "fs";
 import path from "path";
 import { FIGHTERS } from "../src/lib/fighters";
-import { buildBouts, buildDisplayEntries, computeRawRatings, FighterRecordsInput } from "../src/lib/mnewsRating/engine";
+import {
+  buildBouts,
+  buildDisplayEntries,
+  computeRawRatings,
+  filterPublishableStates,
+  FighterRecordsInput,
+} from "../src/lib/mnewsRating/engine";
 import { buildOpponentResolver } from "../src/lib/mnewsRating/nameIndex";
 import { isFeatherweightProfile } from "../src/lib/mnewsRating/division";
 import { ALGORITHM_VERSION, RATING_NAME } from "../src/lib/mnewsRating/constants";
@@ -16,8 +22,9 @@ function main() {
   const resolve = buildOpponentResolver(records);
   const { bouts, warnings } = buildBouts(records, resolve);
   const states = computeRawRatings(bouts);
+  const publishable = filterPublishableStates(states, records);
   const asOf = new Date();
-  const display = buildDisplayEntries(states, asOf);
+  const display = buildDisplayEntries(publishable, asOf);
 
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
   const classBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
