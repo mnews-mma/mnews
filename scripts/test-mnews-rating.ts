@@ -22,7 +22,7 @@ import {
 } from "../src/lib/mnewsRating/rankingsFile";
 import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
 import { getDivisionRankingView, getPublishedDivisionRankingView } from "../src/lib/mnewsRating/divisionRankingView";
-import { PUBLISHED_DIVISIONS } from "../src/lib/mnewsRating/divisions";
+import { PUBLISHED_DIVISIONS, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 
 let failures = 0;
 let passes = 0;
@@ -553,6 +553,70 @@ function makeResolver(map: Record<string, string>) {
   check(published.contenders.length === 1, "公開可否ゲート: 公開済み階級は通常どおり挑戦者ランキングを出す");
 
   check(getPublishedDivisionRankingView("フライ級", null, 5).contenders.length === 0, "公開可否ゲート: データが無い非公開階級もcontenders=[]のまま(エラーにならない)");
+}
+
+// ── 17. latestRizinDivision: 単発の未明示キャッチウェイト戦1つで階級バケットが ──
+// ────  ぶれない(武田光司・コレスニックがRIZIN.52の71.0kg契約1試合だけで
+// ────  フェザー級ランキングから消えたバグの修正)
+{
+  // 17-1. 直近1戦が未明示のkg契約で、それ以前の判明済み試合群と食い違う場合は
+  // 直近以前の多数決階級を採用する(武田光司の実データパターン: FW,FW,→LW一発)
+  check(
+    latestRizinDivision([
+      { date: "2026-03-07", weightClass: "71.0kg契約" },
+      { date: "2025-05-31", weightClass: "66.0kg契約" },
+    ]) === "フェザー級",
+    "latestRizinDivision: 直近の単発キャッチウェイト戦が過去の唯一の判明済み階級と食い違う場合、過去側を採用する"
+  );
+
+  // 17-2. 過去複数戦のうち多数派と食い違う場合も多数派を採用する(コレスニックの実データパターン)
+  check(
+    latestRizinDivision([
+      { date: "2026-03-07", weightClass: "71.0kg契約" },
+      { date: "2025-09-28", weightClass: "RIZINフェザー級タイトルマッチ" },
+      { date: "2025-06-14", weightClass: "66.0kg契約" },
+    ]) === "フェザー級",
+    "latestRizinDivision: 直近の単発キャッチウェイト戦が過去の多数派階級と食い違う場合、多数派を採用する"
+  );
+
+  // 17-3. 直近戦が階級名を明示している場合は、食い違っていてもそのまま直近戦を採用する
+  // (真の階級移動を示す明確なシグナルのため、キャッチウェイト救済ロジックの対象外)
+  check(
+    latestRizinDivision([
+      { date: "2026-06-01", weightClass: "RIZINバンタム級タイトルマッチ" },
+      { date: "2025-01-01", weightClass: "57.0kg契約" },
+    ]) === "バンタム級",
+    "latestRizinDivision: 直近戦が階級名を明示している場合は過去と食い違っても直近戦をそのまま採用する"
+  );
+
+  // 17-4. 比較対象となる過去の判明済み試合が無い場合(直近戦のみ)は、これまでどおり
+  // 直近戦をそのまま採用する(中村大介の実データパターン: 唯一の判明済み試合で正しい階級移動を反映)
+  check(
+    latestRizinDivision([{ date: "2025-05-04", weightClass: "71.0kg契約" }]) === "ライト級",
+    "latestRizinDivision: 過去の判明済み試合が無い場合は直近の1戦をそのまま採用する(既存の階級移動反映を壊さない)"
+  );
+
+  // 17-5. 直近戦が明示的に対象外階級(女子等)の場合はフォールバックせずnullを維持する
+  check(
+    latestRizinDivision([
+      { date: "2025-12-31", weightClass: "RIZIN女子スーパーアトム級タイトルマッチ" },
+      { date: "2025-07-27", weightClass: "52.0kg契約" },
+    ]) === null,
+    "latestRizinDivision: 直近戦が明示的に対象外階級(女子等)の場合は過去戦にフォールバックせずnullを維持する"
+  );
+
+  // 17-6. 直近戦が多数派と一致している場合は通常どおり直近戦を採用する(木村柊也の実データパターン=対照群)
+  check(
+    latestRizinDivision([
+      { date: "2026-03-07", weightClass: "66.0kg契約" },
+      { date: "2025-11-03", weightClass: "66.0kg契約" },
+      { date: "2025-06-14", weightClass: "66.0kg契約" },
+    ]) === "フェザー級",
+    "latestRizinDivision: 直近戦が過去の多数派と一致している場合は通常どおり直近戦を採用する(対照群: 影響を受けない)"
+  );
+
+  // 17-7. 該当boutが1つも無い選手はnull(名目階級へのフォールバックは行わない、既存方針)
+  check(latestRizinDivision([]) === null, "latestRizinDivision: 判明済みRIZIN MMA boutが無い選手はnull");
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

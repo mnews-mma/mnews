@@ -62,17 +62,47 @@ export interface HistoryBoutForDivision {
   weightClass?: string;
 }
 
-// 掲載階級の決定本体: 階級が判明している直近のRIZIN MMA boutの階級を使う。
+// weightClass文字列が階級名を明示しているか(例:「RIZINフェザー級タイトルマッチ」
+// 「57.0kg契約 フライ級トーナメント2回戦」)。明示が無い"◯◯kg契約"のみの表記は、
+// 単発のキャッチウェイト(2階級またぎの一戦)である可能性があり、その一戦だけで
+// 本来の階級バケットから弾き出すのを防ぐ判定に使う(下記latestRizinDivision参照)。
+const NAMED_DIVISION_RE = /フライ級|バンタム級|フェザー級|ライト級|ヘビー級|ストロー級/;
+
+// 掲載階級の決定本体: 階級が判明している直近のRIZIN MMA boutの階級を基本とする。
 // weightClassはenrichHistoryWeightClass.tsがRIZIN MMA boutにしか付与しない
 // ため、ここで改めてisRizinMmaEventを見る必要はない(weightClass有り＝
 // RIZIN MMA boutという不変条件)。該当boutが1つも無い(＝RIZIN MMA戦歴自体が
 // 無い、または全て階級不明の古い試合のみ)選手はnull(＝ランキング非掲載。
 // 名目階級へは絶対にフォールバックしない)。
+//
+// 例外: 直近の1戦が「階級名を明示しない単発のkg契約」で、かつそれ以前の
+// 判明済み試合群の階級と食い違う場合は、その1戦をノイズとみなし、直近以前の
+// 群の多数決階級を採用する(武田光司・コレスニックがRIZIN.52の71.0kg契約
+// (通常のフェザー級より重い単発カード)1試合だけでフェザー級ランキングから
+// 消えたバグの修正)。階級名が明示されている場合(例:「RIZINフェザー級
+// タイトルマッチ」)や、比較対象となる過去の判明済み試合が無い場合(例:
+// 直近戦しかRIZIN MMA戦績が無い選手の階級移動)は、これまでどおり直近の
+// 1戦をそのまま採用する(名目階級へのフォールバックは行わない)。
 export function latestRizinDivision(history: HistoryBoutForDivision[]): MnewsDivision | null {
-  const known = [...history]
-    .filter((h) => h.weightClass)
+  const known = history
+    .filter((h): h is HistoryBoutForDivision & { weightClass: string } => !!h.weightClass)
+    .map((h) => ({ date: h.date, weightClass: h.weightClass, division: mapToDivision(h.weightClass) }))
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
   const latest = known[0];
-  if (!latest || !latest.weightClass) return null;
-  return mapToDivision(latest.weightClass);
+  if (!latest) return null;
+  if (latest.division === null) return null; // 女子階級等、明示的に対象外の直近戦はフォールバックしない
+
+  const isUnnamedCatchweight = /kg契約/.test(latest.weightClass) && !NAMED_DIVISION_RE.test(latest.weightClass);
+  if (!isUnnamedCatchweight) return latest.division;
+
+  const others = known.slice(1).filter((k) => k.division !== null);
+  if (others.length === 0) return latest.division;
+
+  const counts = new Map<MnewsDivision, number>();
+  for (const o of others) counts.set(o.division as MnewsDivision, (counts.get(o.division as MnewsDivision) ?? 0) + 1);
+  const maxCount = Math.max(...counts.values());
+  const majority = [...counts.entries()].filter(([, c]) => c === maxCount).map(([d]) => d);
+  if (majority.includes(latest.division)) return latest.division; // 直近戦も多数派と一致=食い違いなし
+  if (majority.length === 1) return majority[0];
+  return others.find((o) => majority.includes(o.division as MnewsDivision))!.division as MnewsDivision; // 同数タイは直近優先
 }
