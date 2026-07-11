@@ -45,7 +45,6 @@ export default function Footer() {
           <a href="/fighters">選手戦績一覧</a>
           <a href="/rankings">RIZINランキング</a>
           <a href="/ranking/undefeated">無敗の日本人選手一覧</a>
-          <a href="/rankings">RIZINランキング</a>
           <a href="/dream">夢のカード</a>
         </div>
       </div>
