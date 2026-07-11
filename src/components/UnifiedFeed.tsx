@@ -109,6 +109,7 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
 
   return (
     <div className="uf">
+      <div className="uf-section-label">新着ニュース</div>
       <div className="uf-chips" role="tablist" aria-label="フィード絞り込み">
         {CHIPS.map((c) => (
           <button
@@ -137,7 +138,7 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
         ))}
         {days.length > 0 && (
           <a href="/archive" className="uf-more">
-            過去の記事 →
+            過去のニュースを見る →
           </a>
         )}
       </div>

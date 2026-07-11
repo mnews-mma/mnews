@@ -2250,6 +2250,14 @@ a.cmp-name:hover {
   margin: 0 auto;
   padding: 0 16px;
 }
+.uf-section-label {
+  font-family: var(--os);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  padding-top: 16px;
+}
 .uf-chips {
   position: sticky;
   top: 80px; /* NAVの高さ(sticky top:0, nav-top 52px + nav-subbar 28px)の直下に固定 */

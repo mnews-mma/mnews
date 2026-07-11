@@ -50,8 +50,9 @@ function MenuIcon({ open }: { open: boolean }) {
 // pancrase/undefeatedの個別ページのみ)ため、恣意的にどれか1つを選ばず掲載を見送る。
 const MENU_ITEMS = [
   { href: "/dream", label: "夢のカード" },
+  { href: "/archive", label: "過去のニュース" },
   { href: "/events", label: "開催予定の大会" },
-  { href: "/results", label: "結果まとめ" },
+  { href: "/results", label: "大会結果一覧" },
 ];
 
 export default function Nav() {
