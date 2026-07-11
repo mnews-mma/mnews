@@ -5,8 +5,8 @@
 export const RATING_NAME = "mnewsレーティング";
 export const RATING_KEY = "mnewsRating";
 
-// 係数を変更したらインクリメントし、CHANGELOGに記録する。
-export const ALGORITHM_VERSION = 1;
+// 係数を変更したらインクリメントし、CHANGELOG(/rankings/methodology)に記録する。
+export const ALGORITHM_VERSION = 2;
 
 export const INITIAL_RATING = 1500;
 export const K_BASE = 32; // 判定勝ち・ドロー

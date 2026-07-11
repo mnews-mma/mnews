@@ -24,10 +24,12 @@ import {
   buildDivisionRankings,
   divisionRankingsKey,
   hasRankingChange,
+  shouldSuppressDelta,
   ChampionOverlay,
   RankingsFile,
 } from "../src/lib/mnewsRating/rankingsFile";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
+import { ALGORITHM_VERSION } from "../src/lib/mnewsRating/constants";
 
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
 const OUT = path.join(process.cwd(), "data", "rankings.json");
@@ -121,6 +123,17 @@ function main() {
     console.log(`  ${division}: ${out[key].entries.length}名掲載`);
   }
   console.log(`除外warning: ${warnings.length}件 / アーカイブ保存: ${changed ? "あり(" + asOf.toISOString().slice(0, 10) + ")" : "なし(変動なし)"}`);
+
+  // C-3: algorithmVersionが前回から変わった日は、係数変更による見かけ上の増減を
+  // 「実際の順位変動」と誤認させないため全選手のdeltaを一律nullにする(buildDivisionRankings側で
+  // 実施済み)。ここでは適用有無・理由を内部ログに残すのみ。
+  const versionChangedDivisions = MNEWS_DIVISIONS.filter((d) => shouldSuppressDelta(prevOut[divisionRankingsKey(d)]));
+  if (versionChangedDivisions.length) {
+    const prevVersion = prevOut[divisionRankingsKey(versionChangedDivisions[0])]?.algorithmVersion;
+    console.log(
+      `[INFO] algorithmVersion変更を検出(v${prevVersion} → v${ALGORITHM_VERSION})のため、本日のdeltaは全選手nullに抑制(対象${versionChangedDivisions.length}階級): ${versionChangedDivisions.join(", ")}`
+    );
+  }
 
   // 掲載資格(3戦以上・直近18ヶ月以内・1勝以上)は満たすのに、階級が判明している
   // RIZIN MMA boutが1つも無いため、どの階級ランキングにも掲載されなかった選手。

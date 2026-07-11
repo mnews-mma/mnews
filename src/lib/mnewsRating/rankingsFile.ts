@@ -51,17 +51,29 @@ export interface FighterMeta {
   weighInMiss: boolean;
 }
 
+// algorithmVersionが前回バッチから変わった日はdeltaを一律nullにする(C-3)。
+// 係数変更による見かけ上の大きな増減を「実際の順位変動」と誤認させないため。
+// 個別のレート判定ではなくバージョン差分をトリガーにすることで、将来の係数
+// 変更時も自動で効く(このファイルを毎回書き換える必要が無い)。
+export function shouldSuppressDelta(prev: DivisionRankings | undefined): boolean {
+  return prev !== undefined && prev.algorithmVersion !== ALGORITHM_VERSION;
+}
+
 // 掲載資格ありのdisplayEntryを階級ごとに束ね、レート降順で順位を振る。
-// champion指定時(CHAMPION_DISPLAY_MODE==="overlay")は番号付きリストから
-// 王者を除外し、別途championフィールドとして返す(UFC方式)。
+// champion指定時、mode==="overlay"(デフォルト=CHAMPION_DISPLAY_MODE)なら番号付き
+// リストから王者を除外し、別途championフィールドとして返す(UFC方式)。
+// modeは通常呼び出し側で指定不要(CHAMPION_DISPLAY_MODEが使われる)。テストで
+// overlay/badge両方の切替動作を検証するために引数化してある。
 export function buildDivisionRankings(
   division: MnewsDivision,
   eligibleEntries: Array<{ meta: FighterMeta; display: DisplayEntry }>,
   updatedAt: Date,
   prev: DivisionRankings | undefined,
-  champion: ChampionOverlay | null
+  champion: ChampionOverlay | null,
+  mode: "overlay" | "badge" = CHAMPION_DISPLAY_MODE
 ): DivisionRankings {
-  const isBadgeMode = CHAMPION_DISPLAY_MODE === "badge";
+  const isBadgeMode = mode === "badge";
+  const suppressDelta = shouldSuppressDelta(prev);
   const prevRatingByFighter = new Map((prev?.entries ?? []).map((e) => [e.fighterId, e.rating]));
 
   const pool = isBadgeMode ? eligibleEntries : eligibleEntries.filter((e) => e.meta.slug !== champion?.fighterId);
@@ -74,7 +86,7 @@ export function buildDivisionRankings(
       fighterId: e.meta.slug,
       rank: i + 1,
       rating,
-      delta: prevRating === undefined ? null : rating - prevRating,
+      delta: suppressDelta || prevRating === undefined ? null : rating - prevRating,
       record: { wins: e.display.wins, losses: e.display.losses, draws: e.display.draws },
       lastFight: e.display.lastFightDate,
       weighInMiss: e.meta.weighInMiss,
@@ -100,6 +112,7 @@ export function divisionRankingsKey(division: MnewsDivision): string {
 // (アーカイブ保存の要否判定に使う)。
 export function hasRankingChange(current: DivisionRankings, prev: DivisionRankings | undefined): boolean {
   if (!prev) return current.entries.length > 0; // 初回公開もアーカイブ対象
+  if (prev.algorithmVersion !== current.algorithmVersion) return true; // バージョン変更は無条件でアーカイブ対象
   const prevIds = prev.entries.map((e) => e.fighterId).join(",");
   const currentIds = current.entries.map((e) => e.fighterId).join(",");
   if (prevIds !== currentIds) return true;

@@ -13,7 +13,14 @@ import {
   RatingState,
 } from "../src/lib/mnewsRating/engine";
 import { DECAY_FLOOR } from "../src/lib/mnewsRating/constants";
-import { buildDivisionRankings, hasRankingChange, DivisionRankings } from "../src/lib/mnewsRating/rankingsFile";
+import {
+  buildDivisionRankings,
+  hasRankingChange,
+  shouldSuppressDelta,
+  DivisionRankings,
+  ChampionOverlay,
+} from "../src/lib/mnewsRating/rankingsFile";
+import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
 
 let failures = 0;
 let passes = 0;
@@ -329,6 +336,105 @@ function makeResolver(map: Record<string, string>) {
   // 3回目: 完全に同じ顔ぶれ・同じレート → 変動なし
   const third = buildDivisionRankings("フェザー級", eligible2, new Date("2026-01-03"), second, null);
   check(!hasRankingChange(third, second), "rankings組み立て: 顔ぶれ・レートが完全に同一なら変動なしと判定される");
+}
+
+// ── 11. 王者の事実オーバーレイ(F) ──────────────────────────────────
+{
+  const asOf = new Date("2026-01-01");
+  const pool = [
+    {
+      meta: { slug: "champ", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "champ", rawRating: 1650, displayRating: 1650, fights: 7, wins: 7, losses: 0, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+    {
+      meta: { slug: "challenger-1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "challenger-1", rawRating: 1600, displayRating: 1600, fights: 8, wins: 7, losses: 1, draws: 0, lastFightDate: "2025-11-01", eligible: true },
+    },
+  ];
+  const champion: ChampionOverlay = { fighterId: "champ", rating: 1650, record: { wins: 7, losses: 0, draws: 0 }, lastFight: "2025-12-01" };
+
+  const overlay = buildDivisionRankings("フェザー級", pool, asOf, undefined, champion, "overlay");
+  check(!overlay.entries.some((e) => e.fighterId === "champ"), "王者オーバーレイ: overlayモードでは王者が番号付きentriesから除外される");
+  check(overlay.entries[0].fighterId === "challenger-1" && overlay.entries[0].rank === 1, "王者オーバーレイ: 除外後の1位は次点選手になる");
+  check(overlay.champion?.fighterId === "champ", "王者オーバーレイ: championフィールドに王者が設定される");
+  check(!("delta" in (overlay.champion as object)), "王者オーバーレイ: champion情報にdeltaフィールド自体が存在しない(表示側は常に—)");
+
+  const badge = buildDivisionRankings("フェザー級", pool, asOf, undefined, champion, "badge");
+  check(badge.entries.some((e) => e.fighterId === "champ"), "王者オーバーレイ: badgeモードでは王者もentriesに残る(切替が機能)");
+  check(badge.entries.find((e) => e.fighterId === "champ")?.isChampion === true, "王者オーバーレイ: badgeモードではisChampionフラグが立つ");
+  check(badge.champion === null, "王者オーバーレイ: badgeモードではchampionフィールドは使わない(null)");
+
+  // 王者がElo掲載資格を満たさない(3戦未満)・レート未算出でも事実として表示する
+  const noEloChampion: ChampionOverlay = { fighterId: "champ-no-data", rating: null, record: null, lastFight: null };
+  const overlayNoData = buildDivisionRankings("フェザー級", pool, asOf, undefined, noEloChampion, "overlay");
+  check(
+    overlayNoData.champion?.fighterId === "champ-no-data" && overlayNoData.champion.rating === null,
+    "王者オーバーレイ: Eloデータが無い王者でも事実(名前)としてchampionに設定される"
+  );
+}
+
+// ── 12. algorithmVersion変更日のdelta一律抑制(C-3) ───────────────────
+{
+  const pool = [
+    {
+      meta: { slug: "fighter-v1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-v1", rawRating: 1550, displayRating: 1550, fights: 5, wins: 3, losses: 2, draws: 0, lastFightDate: "2026-01-01", eligible: true },
+    },
+  ];
+  const prevSameVersion: DivisionRankings = {
+    division: "フェザー級",
+    updatedAt: "2025-12-31T00:00:00.000Z",
+    algorithmVersion: 2,
+    champion: null,
+    entries: [{ fighterId: "fighter-v1", rank: 1, rating: 1500, delta: 0, record: { wins: 3, losses: 2, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false }],
+  };
+  const sameVersionResult = buildDivisionRankings("フェザー級", pool, new Date("2026-01-02"), prevSameVersion, null);
+  check(sameVersionResult.entries[0].delta === 50, `バージョン不変日: 通常どおりdeltaが算出される (got ${sameVersionResult.entries[0].delta})`);
+
+  const prevOldVersion: DivisionRankings = { ...prevSameVersion, algorithmVersion: 1 };
+  check(shouldSuppressDelta(prevOldVersion), "delta抑制: algorithmVersionが前回と異なればshouldSuppressDeltaがtrue");
+  check(!shouldSuppressDelta(prevSameVersion), "delta抑制: algorithmVersionが同じならfalse");
+  check(!shouldSuppressDelta(undefined), "delta抑制: 前回データが無い(初回)場合はfalse(通常のnull初回扱いに任せる)");
+
+  const versionChangedResult = buildDivisionRankings("フェザー級", pool, new Date("2026-01-02"), prevOldVersion, null);
+  check(versionChangedResult.entries[0].delta === null, "delta抑制: algorithmVersion変更日はdeltaがnullに抑制される(前回データがあっても)");
+  check(hasRankingChange(versionChangedResult, prevOldVersion), "delta抑制: バージョン変更日は顔ぶれ・レート不変でもアーカイブ対象とみなす");
+}
+
+// ── 13. 戦績訂正オーバーライド(H): 実際のYA-MAN訂正で3勝2敗になる ────────
+{
+  const historyWithoutDebut = [
+    { date: "2023-12-31", opponent: "平本蓮", result: "loss" as const, method: "5分3R終了 判定0-3", event: "RIZIN.45", round: "R3" },
+    { date: "2024-07-28", opponent: "鈴木博昭", result: "win" as const, method: "1R 3:28 KO（左フック）", event: "超RIZIN.3", round: "R1" },
+    { date: "2024-12-31", opponent: "カルシャガ・ダウトベック", result: "loss" as const, method: "5分3R終了 判定0-3", event: "RIZIN.49", round: "R3" },
+    { date: "2025-07-27", opponent: "金原正徳", result: "win" as const, method: "3R 2:51 TKO（右アッパー→パウンド）", event: "超RIZIN.4 真夏の喧嘩祭り", round: "R3" },
+  ];
+  const corrected = applyRecordOverrides("ya-man", historyWithoutDebut);
+  check(corrected.length === 5, `戦績訂正オーバーライド: YA-MANのデビュー戦bout追加で5戦になる (got ${corrected.length})`);
+  check(
+    corrected.some((h) => h.date === "2023-05-06" && h.opponent === "三浦孝太" && h.result === "win"),
+    "戦績訂正オーバーライド: 追加されたboutの内容が正しい(出典付き)"
+  );
+
+  const totals = applyRecordOverridesToTotals("ya-man", { wins: 2, losses: 2, draws: 0, ko: 2, sub: 0, decision: 0 });
+  check(totals.wins === 3 && totals.losses === 2, `戦績訂正オーバーライド: 集計値もYA-MAN 3勝2敗に是正される (got ${totals.wins}-${totals.losses})`);
+
+  const correctedTwice = applyRecordOverrides("ya-man", corrected);
+  check(correctedTwice.length === 5, "戦績訂正オーバーライド: 既に適用済みの状態に再適用しても重複追加されない(冪等)");
+
+  const untouchedHistory = [{ date: "2020-01-01", opponent: "誰か", result: "win" as const, method: "判定", event: "RIZIN.1", round: "R1" }];
+  const untouched = applyRecordOverrides("no-such-fighter", untouchedHistory);
+  check(untouched === untouchedHistory, "戦績訂正オーバーライド: 対象外の選手のhistoryには一切影響しない");
+
+  // このbout追加自体がElo再計算に正しく反映されること(G/H共通の確認)。
+  // 訂正後のhistoryを実際にbuildBoutsへ通し、追加されたboutが対戦として計上されるかを見る。
+  const records: FighterRecordsInput = { "ya-man": { history: corrected } };
+  const resolveNone = () => null;
+  const { bouts: yamanBouts } = buildBouts(records, resolveNone);
+  check(
+    yamanBouts.some((b) => b.date === "2023-05-06" && b.opponentLabel === "三浦孝太"),
+    "戦績訂正オーバーライド: 追加bout(2023-05-06 三浦孝太戦)がElo計算対象の対戦として計上される"
+  );
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);
