@@ -12,7 +12,7 @@ import {
   FighterRecordsInput,
   RatingState,
 } from "../src/lib/mnewsRating/engine";
-import { DECAY_FLOOR } from "../src/lib/mnewsRating/constants";
+import { ALGORITHM_VERSION, DECAY_FLOOR } from "../src/lib/mnewsRating/constants";
 import {
   buildDivisionRankings,
   hasRankingChange,
@@ -22,7 +22,16 @@ import {
 } from "../src/lib/mnewsRating/rankingsFile";
 import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
 import { getDivisionRankingView, getPublishedDivisionRankingView } from "../src/lib/mnewsRating/divisionRankingView";
-import { PUBLISHED_DIVISIONS, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
+import { PUBLISHED_DIVISIONS, latestRizinDivision, MnewsDivision } from "../src/lib/mnewsRating/divisions";
+import {
+  FighterBoutSummary,
+  computeEligibilityFightsAndWins,
+  detectDivisionChangeCutoff,
+  findRankerWinExemptions,
+  isStandardEligible,
+  summarizeBoutsForFighter,
+} from "../src/lib/mnewsRating/eligibilityRules";
+import { Bout } from "../src/lib/mnewsRating/engine";
 
 let failures = 0;
 let passes = 0;
@@ -386,14 +395,14 @@ function makeResolver(map: Record<string, string>) {
   const prevSameVersion: DivisionRankings = {
     division: "フェザー級",
     updatedAt: "2025-12-31T00:00:00.000Z",
-    algorithmVersion: 2,
+    algorithmVersion: ALGORITHM_VERSION,
     champion: null,
     entries: [{ fighterId: "fighter-v1", rank: 1, rating: 1500, delta: 0, record: { wins: 3, losses: 2, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false }],
   };
   const sameVersionResult = buildDivisionRankings("フェザー級", pool, new Date("2026-01-02"), prevSameVersion, null);
   check(sameVersionResult.entries[0].delta === 50, `バージョン不変日: 通常どおりdeltaが算出される (got ${sameVersionResult.entries[0].delta})`);
 
-  const prevOldVersion: DivisionRankings = { ...prevSameVersion, algorithmVersion: 1 };
+  const prevOldVersion: DivisionRankings = { ...prevSameVersion, algorithmVersion: ALGORITHM_VERSION - 1 };
   check(shouldSuppressDelta(prevOldVersion), "delta抑制: algorithmVersionが前回と異なればshouldSuppressDeltaがtrue");
   check(!shouldSuppressDelta(prevSameVersion), "delta抑制: algorithmVersionが同じならfalse");
   check(!shouldSuppressDelta(undefined), "delta抑制: 前回データが無い(初回)場合はfalse(通常のnull初回扱いに任せる)");
@@ -617,6 +626,152 @@ function makeResolver(map: Record<string, string>) {
 
   // 17-7. 該当boutが1つも無い選手はnull(名目階級へのフォールバックは行わない、既存方針)
   check(latestRizinDivision([]) === null, "latestRizinDivision: 判明済みRIZIN MMA boutが無い選手はnull");
+}
+
+// ── 18. B-2: 階級変更後の資格スコープ ──────────────────────────────────
+{
+  // 18-1. 階級名が明示された食い違いが無ければcutoffはnull(全期間で判定・既存動作を維持)
+  {
+    const summaries: FighterBoutSummary[] = [
+      { date: "2026-03-07", weightClass: "66.0kg契約", isWin: true, opponentNode: "opp-a" },
+      { date: "2025-06-14", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-b" },
+    ];
+    check(detectDivisionChangeCutoff(summaries, "フェザー級") === null, "B-2: 階級名明示の食い違いが無ければcutoff=null(既存動作維持)");
+    const { fights, wins } = computeEligibilityFightsAndWins(summaries, "フェザー級");
+    check(fights === 2 && wins === 1, "B-2: cutoff無し時は全期間をそのままカウントする");
+  }
+
+  // 18-2. 未明示の単発キャッチウェイト(kg契約のみ)は階級変更の証拠にしない(latestRizinDivisionと同じ救済)
+  {
+    const summaries: FighterBoutSummary[] = [
+      { date: "2026-03-07", weightClass: "71.0kg契約", isWin: true, opponentNode: "opp-a" }, // ライト級相当だが未明示
+      { date: "2025-06-14", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-b" },
+    ];
+    check(detectDivisionChangeCutoff(summaries, "フェザー級") === null, "B-2: 未明示の単発キャッチウェイトは階級変更の証拠にしない");
+  }
+
+  // 18-3. 階級名が明示された食い違いがあれば、その直近日をcutoffとし、それ以前を除外する
+  {
+    const summaries: FighterBoutSummary[] = [
+      { date: "2026-03-07", weightClass: "66.0kg契約", isWin: true, opponentNode: "opp-a" }, // cutoff後: カウント対象
+      { date: "2025-06-14", weightClass: "RIZINバンタム級タイトルマッチ", isWin: false, opponentNode: "opp-b" }, // cutoff本体: 除外
+      { date: "2024-01-01", weightClass: "RIZINバンタム級タイトルマッチ", isWin: true, opponentNode: "opp-c" }, // cutoff以前: 除外
+    ];
+    check(detectDivisionChangeCutoff(summaries, "フェザー級") === "2025-06-14", "B-2: 階級名明示の食い違いの直近日をcutoffにする");
+    const { fights, wins } = computeEligibilityFightsAndWins(summaries, "フェザー級");
+    check(fights === 1 && wins === 1, "B-2: cutoff以降(厳密に後)の試合のみでカウントする(cutoff本体は除外)");
+  }
+
+  // 18-4. isStandardEligible: 階級変更後1勝未満ならランカーにしない
+  {
+    const summaries: FighterBoutSummary[] = [
+      { date: "2026-05-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-a" },
+      { date: "2026-03-07", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-b" },
+      { date: "2026-01-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-c" },
+      { date: "2025-06-14", weightClass: "RIZINバンタム級タイトルマッチ", isWin: true, opponentNode: "opp-d" },
+    ];
+    const asOf = new Date("2026-06-01");
+    check(
+      isStandardEligible(summaries, "フェザー級", "2026-05-01", asOf) === false,
+      "B-2: 階級変更後3戦以上あっても1勝もしていなければランカーにしない"
+    );
+  }
+}
+
+// ── 19. B-1: ランカー勝ち特例(二段階・単一パス・順位挿入なし) ────────────────
+{
+  function bout(date: string, aNode: string, bNode: string, scoreA: number): Bout {
+    return { key: `${date}|${aNode}|${bNode}`, date, aNode, bNode, opponentLabel: bNode, scoreA, finish: false, method: "判定" };
+  }
+
+  // 19-1. 3戦未満でも、その年にランカーへ勝てば3戦要件を免除される(1勝要件も兼ねる)
+  {
+    const bouts: Bout[] = [bout("2026-03-01", "newcomer", "ranker-1", 1)];
+    const divisionBySlug = new Map<string, MnewsDivision | null>([
+      ["newcomer", "フェザー級"],
+      ["ranker-1", "フェザー級"],
+    ]);
+    const baseRankers = new Map<MnewsDivision, Set<string>>([["フェザー級", new Set(["ranker-1"])]]);
+    const summariesBySlug = new Map<string, FighterBoutSummary[]>([
+      ["newcomer", summarizeBoutsForFighter(bouts, "newcomer")],
+      ["ranker-1", summarizeBoutsForFighter(bouts, "ranker-1")],
+    ]);
+    const exempted = findRankerWinExemptions(summariesBySlug, divisionBySlug, baseRankers, "2026-");
+    check(exempted.has("newcomer"), "B-1: 通算1戦でもその年にランカーへ勝てば資格特例の対象になる");
+  }
+
+  // 19-2. ランカーに負けた選手は免除対象にならない
+  {
+    const bouts: Bout[] = [bout("2026-03-01", "challenger", "ranker-1", 0)];
+    const divisionBySlug = new Map<string, MnewsDivision | null>([
+      ["challenger", "フェザー級"],
+      ["ranker-1", "フェザー級"],
+    ]);
+    const baseRankers = new Map<MnewsDivision, Set<string>>([["フェザー級", new Set(["ranker-1"])]]);
+    const summariesBySlug = new Map<string, FighterBoutSummary[]>([
+      ["challenger", summarizeBoutsForFighter(bouts, "challenger")],
+      ["ranker-1", summarizeBoutsForFighter(bouts, "ranker-1")],
+    ]);
+    const exempted = findRankerWinExemptions(summariesBySlug, divisionBySlug, baseRankers, "2026-");
+    check(!exempted.has("challenger"), "B-1: ランカーに負けた場合は資格特例の対象にならない");
+  }
+
+  // 19-3. 別階級のランカーに勝っても対象にならない(同一階級内のみ)
+  {
+    const bouts: Bout[] = [bout("2026-03-01", "candidate", "lw-ranker", 1)];
+    const divisionBySlug = new Map<string, MnewsDivision | null>([
+      ["candidate", "フェザー級"],
+      ["lw-ranker", "ライト級"],
+    ]);
+    const baseRankers = new Map<MnewsDivision, Set<string>>([
+      ["フェザー級", new Set()],
+      ["ライト級", new Set(["lw-ranker"])],
+    ]);
+    const summariesBySlug = new Map<string, FighterBoutSummary[]>([
+      ["candidate", summarizeBoutsForFighter(bouts, "candidate")],
+      ["lw-ranker", summarizeBoutsForFighter(bouts, "lw-ranker")],
+    ]);
+    const exempted = findRankerWinExemptions(summariesBySlug, divisionBySlug, baseRankers, "2026-");
+    check(!exempted.has("candidate"), "B-1: 掲載階級が異なるランカーへの勝利は対象にならない(同一階級内のみ)");
+  }
+
+  // 19-4. 前年の勝利は対象にならない(当年開催の大会のみ)
+  {
+    const bouts: Bout[] = [bout("2025-12-31", "candidate", "ranker-1", 1)];
+    const divisionBySlug = new Map<string, MnewsDivision | null>([
+      ["candidate", "フェザー級"],
+      ["ranker-1", "フェザー級"],
+    ]);
+    const baseRankers = new Map<MnewsDivision, Set<string>>([["フェザー級", new Set(["ranker-1"])]]);
+    const summariesBySlug = new Map<string, FighterBoutSummary[]>([
+      ["candidate", summarizeBoutsForFighter(bouts, "candidate")],
+      ["ranker-1", summarizeBoutsForFighter(bouts, "ranker-1")],
+    ]);
+    const exempted = findRankerWinExemptions(summariesBySlug, divisionBySlug, baseRankers, "2026-");
+    check(!exempted.has("candidate"), "B-1: 対象年より前の勝利は資格特例の対象にならない");
+  }
+
+  // 19-5. カスケードしない: 特例で新規に入った選手Bへの勝利では、Cは特例の対象にならない(単一パス)
+  {
+    const bouts: Bout[] = [
+      bout("2026-01-01", "newcomer-b", "ranker-1", 1), // Bがランカーに勝ち特例対象になる
+      bout("2026-03-01", "candidate-c", "newcomer-b", 1), // CはBに勝つ(Bはベースランカーではない)
+    ];
+    const divisionBySlug = new Map<string, MnewsDivision | null>([
+      ["newcomer-b", "フェザー級"],
+      ["candidate-c", "フェザー級"],
+      ["ranker-1", "フェザー級"],
+    ]);
+    const baseRankers = new Map<MnewsDivision, Set<string>>([["フェザー級", new Set(["ranker-1"])]]);
+    const summariesBySlug = new Map<string, FighterBoutSummary[]>([
+      ["newcomer-b", summarizeBoutsForFighter(bouts, "newcomer-b")],
+      ["candidate-c", summarizeBoutsForFighter(bouts, "candidate-c")],
+      ["ranker-1", summarizeBoutsForFighter(bouts, "ranker-1")],
+    ]);
+    const exempted = findRankerWinExemptions(summariesBySlug, divisionBySlug, baseRankers, "2026-");
+    check(exempted.has("newcomer-b"), "B-1: ベースランカーに勝った選手(B)は特例対象になる");
+    check(!exempted.has("candidate-c"), "B-1: 特例で新規に入った選手(B)への勝利では別選手(C)は特例対象にならない(カスケードしない・単一パス)");
+  }
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

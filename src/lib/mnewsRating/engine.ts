@@ -22,6 +22,7 @@ export interface HistoryEntryLike {
   method: string;
   event: string;
   round?: string;
+  weightClass?: string;
 }
 
 export interface FighterRecordEntryLike {
@@ -86,6 +87,7 @@ export interface Bout {
   scoreA: number; // aNode視点: 1=勝ち, 0=負け, 0.5=分け
   finish: boolean;
   method: string; // 同一実試合の重複検知(dedupeGhostWallBouts)に使う
+  weightClass?: string; // 掲載資格の階級変更検出(eligibilityRules.ts)に使う。EVENT_RESULTS突合分のみ判明
 }
 
 export interface BuildBoutsResult {
@@ -207,14 +209,14 @@ export function buildBouts(
           continue;
         }
 
-        boutMap.set(key, { key, date: h.date, aNode: a, bNode: b, opponentLabel: h.opponent, scoreA: scoreForA, finish, method: h.method });
+        boutMap.set(key, { key, date: h.date, aNode: a, bNode: b, opponentLabel: h.opponent, scoreA: scoreForA, finish, method: h.method, weightClass: h.weightClass });
       } else {
         // 自社DB圏外の相手: 正規化名の疑似ノード。同名相手が別の選手の履歴にも
         // 登場すればそのたびに同じノードのレートが引き継がれる(1500へは戻らない)。
         const bNode = `name:${normalizeOpponentName(h.opponent)}`;
         const key = `wall|${h.date}|${slug}|${bNode}`;
         if (boutMap.has(key)) continue;
-        boutMap.set(key, { key, date: h.date, aNode: slug, bNode, opponentLabel: h.opponent, scoreA, finish, method: h.method });
+        boutMap.set(key, { key, date: h.date, aNode: slug, bNode, opponentLabel: h.opponent, scoreA, finish, method: h.method, weightClass: h.weightClass });
       }
     }
   }
@@ -378,8 +380,17 @@ export interface DisplayEntry {
   eligible: boolean;
 }
 
+export interface EligibilityCounts {
+  fights: number;
+  wins: number;
+  lastFightDate: string | null;
+}
+
 // 掲載資格: RIZIN通算3試合以上・直近18ヶ月以内に試合・RIZIN1勝以上。
-export function isEligible(state: RatingState, asOf: Date): boolean {
+// RatingStateはEligibilityCountsのスーパーセットなのでそのまま渡せる(既存呼び出し
+// 元は無変更)。B-2(階級変更後の資格スコープ)が階級限定のfights/winsだけを
+// 差し替えて同じ判定を再利用できるよう、引数の型を最小限に絞ってある。
+export function isEligible(state: EligibilityCounts, asOf: Date): boolean {
   if (state.fights < ELIGIBILITY_MIN_FIGHTS) return false;
   if (state.wins < ELIGIBILITY_MIN_WINS) return false;
   if (!state.lastFightDate) return false;

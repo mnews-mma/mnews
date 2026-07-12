@@ -21,6 +21,12 @@ import {
 import { buildOpponentResolver, buildKnownNamesLookup } from "../src/lib/mnewsRating/nameIndex";
 import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import {
+  FighterBoutSummary,
+  findRankerWinExemptions,
+  isStandardEligible,
+  summarizeBoutsForFighter,
+} from "../src/lib/mnewsRating/eligibilityRules";
+import {
   buildDivisionRankings,
   divisionRankingsKey,
   hasRankingChange,
@@ -94,11 +100,44 @@ function main() {
     Object.entries(records).map(([slug, entry]) => [slug, latestRizinDivision(entry.history ?? [])])
   );
 
+  // B-1(ランカー勝ち特例)・B-2(階級変更後の資格スコープ)。二段階・単一パスで
+  // 掲載資格を確定する。順位はここでは一切決めない(Eloレート順は
+  // buildDivisionRankings側でこれまでどおりdisplayRating降順に組み立てる)。
+  const boutSummariesBySlug = new Map<string, FighterBoutSummary[]>();
+  for (const slug of Object.keys(records)) {
+    boutSummariesBySlug.set(slug, summarizeBoutsForFighter(bouts, slug));
+  }
+
+  // 1段階目: B-2適用後の「標準の掲載資格」を満たす選手を階級ごとのベース
+  // ランカー集合として1回だけ確定する(この時点の集合は後段で更新しない)。
+  const baseRankersByDivision = new Map<MnewsDivision, Set<string>>();
+  for (const division of MNEWS_DIVISIONS) baseRankersByDivision.set(division, new Set());
+  for (const [slug, division] of divisionBySlug) {
+    if (!division) continue;
+    const summaries = boutSummariesBySlug.get(slug) ?? [];
+    const lastFightDate = display.get(slug)?.lastFightDate ?? null;
+    if (isStandardEligible(summaries, division, lastFightDate, asOf)) {
+      baseRankersByDivision.get(division)!.add(slug);
+    }
+  }
+
+  // 2段階目: 1段階目で確定したベースランカーに、当年開催のRIZIN MMA本戦で
+  // 勝った選手は3戦要件を免除する(単一パス。ここで新たに資格を得た選手を
+  // 倒したかは見ない=カスケードしない)。
+  const currentYearPrefix = `${asOf.getFullYear()}-`;
+  const rankerWinExemptions = findRankerWinExemptions(
+    boutSummariesBySlug,
+    divisionBySlug,
+    baseRankersByDivision,
+    currentYearPrefix
+  );
+
   const out: RankingsFile = {};
   for (const division of MNEWS_DIVISIONS) {
     const champion = championOverlayFor(division, display);
+    const rankers = baseRankersByDivision.get(division)!;
     const eligibleEntries = [...display.entries()]
-      .filter(([slug, e]) => e.eligible && divisionBySlug.get(slug) === division)
+      .filter(([slug]) => divisionBySlug.get(slug) === division && (rankers.has(slug) || rankerWinExemptions.has(slug)))
       .map(([slug, e]) => ({
         meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
         display: e,
