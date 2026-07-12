@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-07-12T16:08:00.770Z",
+    "updatedAt": "2026-07-12T23:29:34.837Z",
     "algorithmVersion": 4,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -19,7 +19,7 @@
         "rank": 1,
         "rating": 1540,
         "rawRating": 1544.0818886710827,
-        "delta": -12,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 1,
@@ -33,7 +33,7 @@
         "rank": 2,
         "rating": 1530,
         "rawRating": 1534.3545229772656,
-        "delta": -61,
+        "delta": null,
         "record": {
           "wins": 12,
           "losses": 6,
@@ -47,7 +47,7 @@
         "rank": 3,
         "rating": 1500,
         "rawRating": 1504.9001463212107,
-        "delta": -50,
+        "delta": null,
         "record": {
           "wins": 14,
           "losses": 10,
@@ -61,7 +61,7 @@
         "rank": 4,
         "rating": 1500,
         "rawRating": 1501.632867359436,
-        "delta": -31,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 1,
@@ -75,7 +75,7 @@
         "rank": 5,
         "rating": 1500,
         "rawRating": 1499.8534072466553,
-        "delta": -89,
+        "delta": null,
         "record": {
           "wins": 10,
           "losses": 3,
@@ -89,7 +89,7 @@
         "rank": 6,
         "rating": 1490,
         "rawRating": 1491.2954477675428,
-        "delta": -9,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 1,
@@ -103,7 +103,7 @@
         "rank": 7,
         "rating": 1480,
         "rawRating": 1480.4150602174095,
-        "delta": -7,
+        "delta": null,
         "record": {
           "wins": 1,
           "losses": 2,
@@ -117,7 +117,7 @@
         "rank": 8,
         "rating": 1480,
         "rawRating": 1477.1268019935294,
-        "delta": -13,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 4,
@@ -131,7 +131,7 @@
         "rank": 9,
         "rating": 1470,
         "rawRating": 1474.7701138034836,
-        "delta": 9,
+        "delta": null,
         "record": {
           "wins": 1,
           "losses": 2,
@@ -145,7 +145,7 @@
         "rank": 10,
         "rating": 1470,
         "rawRating": 1474.3819384986095,
-        "delta": -35,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 2,
@@ -159,7 +159,7 @@
         "rank": 11,
         "rating": 1470,
         "rawRating": 1473.5762049840314,
-        "delta": -2,
+        "delta": null,
         "record": {
           "wins": 1,
           "losses": 1,
@@ -173,7 +173,7 @@
         "rank": 12,
         "rating": 1450,
         "rawRating": 1446.745017703438,
-        "delta": 8,
+        "delta": null,
         "record": {
           "wins": 5,
           "losses": 8,
@@ -187,7 +187,7 @@
         "rank": 13,
         "rating": 1430,
         "rawRating": 1434.6027297344467,
-        "delta": -21,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 5,
@@ -201,7 +201,7 @@
         "rank": 14,
         "rating": 1430,
         "rawRating": 1425.8622064917138,
-        "delta": -29,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 2,
@@ -214,7 +214,7 @@
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-07-12T16:08:00.770Z",
+    "updatedAt": "2026-07-12T23:29:34.837Z",
     "algorithmVersion": 4,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -232,7 +232,7 @@
         "rank": 1,
         "rating": 1530,
         "rawRating": 1528.6295969330765,
-        "delta": 5,
+        "delta": null,
         "record": {
           "wins": 1,
           "losses": 0,
@@ -246,7 +246,7 @@
         "rank": 2,
         "rating": 1520,
         "rawRating": 1519.6636241504157,
-        "delta": -18,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 0,
@@ -260,7 +260,7 @@
         "rank": 3,
         "rating": 1520,
         "rawRating": 1519.4030801017088,
-        "delta": -43,
+        "delta": null,
         "record": {
           "wins": 5,
           "losses": 1,
@@ -274,7 +274,7 @@
         "rank": 4,
         "rating": 1520,
         "rawRating": 1517.0746568437319,
-        "delta": -61,
+        "delta": null,
         "record": {
           "wins": 10,
           "losses": 3,
@@ -288,7 +288,7 @@
         "rank": 5,
         "rating": 1520,
         "rawRating": 1515.9639213537803,
-        "delta": -22,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 2,
@@ -302,7 +302,7 @@
         "rank": 6,
         "rating": 1510,
         "rawRating": 1513.5140095569802,
-        "delta": -9,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 1,
@@ -316,7 +316,7 @@
         "rank": 7,
         "rating": 1510,
         "rawRating": 1512.4871885944126,
-        "delta": -23,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 0,
@@ -330,7 +330,7 @@
         "rank": 8,
         "rating": 1510,
         "rawRating": 1506.6300155001015,
-        "delta": -32,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 2,
@@ -344,7 +344,7 @@
         "rank": 9,
         "rating": 1500,
         "rawRating": 1495.9741761774094,
-        "delta": -9,
+        "delta": null,
         "record": {
           "wins": 1,
           "losses": 1,
@@ -358,7 +358,7 @@
         "rank": 10,
         "rating": 1490,
         "rawRating": 1487.1014424771204,
-        "delta": -21,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 1,
@@ -372,7 +372,7 @@
         "rank": 11,
         "rating": 1480,
         "rawRating": 1478.2698469972906,
-        "delta": -50,
+        "delta": null,
         "record": {
           "wins": 7,
           "losses": 5,
@@ -386,7 +386,7 @@
         "rank": 12,
         "rating": 1480,
         "rawRating": 1475.9121867840072,
-        "delta": -21,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 1,
@@ -400,7 +400,7 @@
         "rank": 13,
         "rating": 1470,
         "rawRating": 1472.7216700560957,
-        "delta": -16,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 2,
@@ -414,7 +414,7 @@
         "rank": 14,
         "rating": 1470,
         "rawRating": 1468.7418153926462,
-        "delta": 0,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 6,
@@ -428,7 +428,7 @@
         "rank": 15,
         "rating": 1440,
         "rawRating": 1439.474752847815,
-        "delta": -13,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 3,
@@ -442,7 +442,7 @@
         "rank": 16,
         "rating": 1440,
         "rawRating": 1435.317685756612,
-        "delta": -3,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 4,
@@ -455,7 +455,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-07-12T16:08:00.770Z",
+    "updatedAt": "2026-07-12T23:29:34.837Z",
     "algorithmVersion": 4,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -473,7 +473,7 @@
         "rank": 1,
         "rating": 1550,
         "rawRating": 1547.2786369056373,
-        "delta": -54,
+        "delta": null,
         "record": {
           "wins": 7,
           "losses": 1,
@@ -483,11 +483,25 @@
         "weighInMiss": false
       },
       {
-        "fighterId": "takagi-ryo",
+        "fighterId": "dautbek-karshyga",
         "rank": 2,
         "rating": 1530,
+        "rawRating": 1531.5989093864634,
+        "delta": null,
+        "record": {
+          "wins": 5,
+          "losses": 2,
+          "draws": 0
+        },
+        "lastFight": "2026-09-10",
+        "weighInMiss": false
+      },
+      {
+        "fighterId": "takagi-ryo",
+        "rank": 3,
+        "rating": 1530,
         "rawRating": 1525.873776517064,
-        "delta": -43,
+        "delta": null,
         "record": {
           "wins": 5,
           "losses": 1,
@@ -498,10 +512,10 @@
       },
       {
         "fighterId": "koike-kleber",
-        "rank": 3,
+        "rank": 4,
         "rating": 1520,
         "rawRating": 1518.3082669055232,
-        "delta": -55,
+        "delta": null,
         "record": {
           "wins": 10,
           "losses": 4,
@@ -512,10 +526,10 @@
       },
       {
         "fighterId": "asakura-mikuru",
-        "rank": 4,
+        "rank": 5,
         "rating": 1510,
         "rawRating": 1507.276114339604,
-        "delta": -40,
+        "delta": null,
         "record": {
           "wins": 13,
           "losses": 6,
@@ -526,10 +540,10 @@
       },
       {
         "fighterId": "takeda-koji",
-        "rank": 5,
+        "rank": 6,
         "rating": 1500,
         "rawRating": 1497.1569851348734,
-        "delta": 1,
+        "delta": null,
         "record": {
           "wins": 8,
           "losses": 8,
@@ -539,25 +553,11 @@
         "weighInMiss": false
       },
       {
-        "fighterId": "dautbek-karshyga",
-        "rank": 6,
-        "rating": 1500,
-        "rawRating": 1495.7984476571648,
-        "delta": -13,
-        "record": {
-          "wins": 4,
-          "losses": 1,
-          "draws": 0
-        },
-        "lastFight": "2025-03-30",
-        "weighInMiss": false
-      },
-      {
         "fighterId": "majima-kazumasa",
         "rank": 7,
         "rating": 1500,
         "rawRating": 1495.7248906571897,
-        "delta": -20,
+        "delta": null,
         "record": {
           "wins": 5,
           "losses": 5,
@@ -571,7 +571,7 @@
         "rank": 8,
         "rating": 1500,
         "rawRating": 1495.6500532490857,
-        "delta": -66,
+        "delta": null,
         "record": {
           "wins": 9,
           "losses": 4,
@@ -585,7 +585,7 @@
         "rank": 9,
         "rating": 1490,
         "rawRating": 1493.188618408103,
-        "delta": -11,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 2,
@@ -599,7 +599,7 @@
         "rank": 10,
         "rating": 1490,
         "rawRating": 1491.202369655471,
-        "delta": -40,
+        "delta": null,
         "record": {
           "wins": 5,
           "losses": 3,
@@ -613,7 +613,7 @@
         "rank": 11,
         "rating": 1490,
         "rawRating": 1490.4709950765691,
-        "delta": -13,
+        "delta": null,
         "record": {
           "wins": 1,
           "losses": 1,
@@ -627,7 +627,7 @@
         "rank": 12,
         "rating": 1490,
         "rawRating": 1489.2571690385344,
-        "delta": -27,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 2,
@@ -641,7 +641,7 @@
         "rank": 13,
         "rating": 1460,
         "rawRating": 1455.770675039317,
-        "delta": -11,
+        "delta": null,
         "record": {
           "wins": 1,
           "losses": 3,
@@ -655,7 +655,7 @@
         "rank": 14,
         "rating": 1460,
         "rawRating": 1455.2806284636533,
-        "delta": -29,
+        "delta": null,
         "record": {
           "wins": 6,
           "losses": 6,
@@ -665,11 +665,25 @@
         "weighInMiss": false
       },
       {
-        "fighterId": "suzuki-chihiro",
+        "fighterId": "hagiwara-kyohei",
         "rank": 15,
+        "rating": 1450,
+        "rawRating": 1445.7172673925352,
+        "delta": null,
+        "record": {
+          "wins": 8,
+          "losses": 10,
+          "draws": 0
+        },
+        "lastFight": "2026-07-18",
+        "weighInMiss": false
+      },
+      {
+        "fighterId": "suzuki-chihiro",
+        "rank": 16,
         "rating": 1440,
         "rawRating": 1443.2094869789778,
-        "delta": -69,
+        "delta": null,
         "record": {
           "wins": 8,
           "losses": 4,
@@ -680,10 +694,10 @@
       },
       {
         "fighterId": "kintaro",
-        "rank": 16,
+        "rank": 17,
         "rating": 1430,
         "rawRating": 1434.6033075467801,
-        "delta": -15,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 8,
@@ -693,25 +707,11 @@
         "weighInMiss": false
       },
       {
-        "fighterId": "hagiwara-kyohei",
-        "rank": 17,
-        "rating": 1430,
-        "rawRating": 1429.025803378297,
-        "delta": -31,
-        "record": {
-          "wins": 8,
-          "losses": 9,
-          "draws": 0
-        },
-        "lastFight": "2025-11-03",
-        "weighInMiss": false
-      },
-      {
         "fighterId": "nii-suguru",
         "rank": 18,
         "rating": 1400,
         "rawRating": 1404.7291873831202,
-        "delta": -7,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 6,
@@ -724,7 +724,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-07-12T16:08:00.770Z",
+    "updatedAt": "2026-07-12T23:29:34.837Z",
     "algorithmVersion": 4,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -742,7 +742,7 @@
         "rank": 1,
         "rating": 1540,
         "rawRating": 1538.106006624069,
-        "delta": -70,
+        "delta": null,
         "record": {
           "wins": 13,
           "losses": 4,
@@ -756,7 +756,7 @@
         "rank": 2,
         "rating": 1530,
         "rawRating": 1532.2171772270317,
-        "delta": -24,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 1,
@@ -770,7 +770,7 @@
         "rank": 3,
         "rating": 1520,
         "rawRating": 1518.9115396390735,
-        "delta": 8,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 0,
@@ -784,7 +784,7 @@
         "rank": 4,
         "rating": 1520,
         "rawRating": 1518.8368339680662,
-        "delta": -39,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 1,
@@ -798,7 +798,7 @@
         "rank": 5,
         "rating": 1510,
         "rawRating": 1511.8947366623524,
-        "delta": -23,
+        "delta": null,
         "record": {
           "wins": 6,
           "losses": 4,
@@ -812,7 +812,7 @@
         "rank": 6,
         "rating": 1510,
         "rawRating": 1511.7182176442684,
-        "delta": -21,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 0,
@@ -826,7 +826,7 @@
         "rank": 7,
         "rating": 1500,
         "rawRating": 1501.1547092440446,
-        "delta": -43,
+        "delta": null,
         "record": {
           "wins": 13,
           "losses": 9,
@@ -840,7 +840,7 @@
         "rank": 8,
         "rating": 1500,
         "rawRating": 1496.3008585310743,
-        "delta": -8,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 2,
@@ -854,7 +854,7 @@
         "rank": 9,
         "rating": 1500,
         "rawRating": 1496.0121784987582,
-        "delta": -17,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 3,
@@ -868,7 +868,7 @@
         "rank": 10,
         "rating": 1490,
         "rawRating": 1486.2260767266018,
-        "delta": -43,
+        "delta": null,
         "record": {
           "wins": 5,
           "losses": 3,
@@ -882,7 +882,7 @@
         "rank": 11,
         "rating": 1450,
         "rawRating": 1449.4394030620783,
-        "delta": -25,
+        "delta": null,
         "record": {
           "wins": 2,
           "losses": 1,
@@ -895,7 +895,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-07-12T16:08:00.770Z",
+    "updatedAt": "2026-07-12T23:29:34.837Z",
     "algorithmVersion": 4,
     "champion": null,
     "entries": [
@@ -904,7 +904,7 @@
         "rank": 1,
         "rating": 1510,
         "rawRating": 1513.8556556043939,
-        "delta": -13,
+        "delta": null,
         "record": {
           "wins": 3,
           "losses": 0,
@@ -918,7 +918,7 @@
         "rank": 2,
         "rating": 1490,
         "rawRating": 1493.3204968599707,
-        "delta": -19,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 4,
@@ -932,7 +932,7 @@
         "rank": 3,
         "rating": 1480,
         "rawRating": 1481.8528444128574,
-        "delta": -19,
+        "delta": null,
         "record": {
           "wins": 4,
           "losses": 3,
@@ -946,7 +946,7 @@
         "rank": 4,
         "rating": 1440,
         "rawRating": 1443.148781556161,
-        "delta": -46,
+        "delta": null,
         "record": {
           "wins": 5,
           "losses": 3,
@@ -960,7 +960,7 @@
         "rank": 5,
         "rating": 1430,
         "rawRating": 1431.2347736363238,
-        "delta": -81,
+        "delta": null,
         "record": {
           "wins": 9,
           "losses": 4,
