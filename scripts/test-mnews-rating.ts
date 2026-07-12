@@ -11,18 +11,30 @@ import {
   applyInactivityDecay,
   FighterRecordsInput,
   RatingState,
+  AsymmetricEloParams,
+  NEUTRAL_ELO_PARAMS,
 } from "../src/lib/mnewsRating/engine";
-import { ALGORITHM_VERSION, DECAY_FLOOR } from "../src/lib/mnewsRating/constants";
+import {
+  ALGORITHM_VERSION,
+  DECAY_FLOOR,
+  ELIGIBILITY_RECENT_MIN_FIGHTS,
+  ELIGIBILITY_RECENT_YEAR_START,
+} from "../src/lib/mnewsRating/constants";
 import {
   buildDivisionRankings,
   hasRankingChange,
   shouldSuppressDelta,
+  roundToDisplayStep,
   DivisionRankings,
   ChampionOverlay,
 } from "../src/lib/mnewsRating/rankingsFile";
 import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
-import { getDivisionRankingView, getPublishedDivisionRankingView } from "../src/lib/mnewsRating/divisionRankingView";
-import { PUBLISHED_DIVISIONS, latestRizinDivision, MnewsDivision } from "../src/lib/mnewsRating/divisions";
+import {
+  getDivisionRankingView,
+  getPublishedDivisionRankingView,
+  toClientSafeDivisionRankingView,
+} from "../src/lib/mnewsRating/divisionRankingView";
+import { PUBLISHED_DIVISIONS, latestRizinDivision, isNominallyWomensDivision, MnewsDivision } from "../src/lib/mnewsRating/divisions";
 import {
   FighterBoutSummary,
   computeEligibilityFightsAndWins,
@@ -397,7 +409,7 @@ function makeResolver(map: Record<string, string>) {
     updatedAt: "2025-12-31T00:00:00.000Z",
     algorithmVersion: ALGORITHM_VERSION,
     champion: null,
-    entries: [{ fighterId: "fighter-v1", rank: 1, rating: 1500, delta: 0, record: { wins: 3, losses: 2, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false }],
+    entries: [{ fighterId: "fighter-v1", rank: 1, rating: 1500, rawRating: 1500, delta: 0, record: { wins: 3, losses: 2, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false }],
   };
   const sameVersionResult = buildDivisionRankings("フェザー級", pool, new Date("2026-01-02"), prevSameVersion, null);
   check(sameVersionResult.entries[0].delta === 50, `バージョン不変日: 通常どおりdeltaが算出される (got ${sameVersionResult.entries[0].delta})`);
@@ -772,6 +784,327 @@ function makeResolver(map: Record<string, string>) {
     check(exempted.has("newcomer-b"), "B-1: ベースランカーに勝った選手(B)は特例対象になる");
     check(!exempted.has("candidate-c"), "B-1: 特例で新規に入った選手(B)への勝利では別選手(C)は特例対象にならない(カスケードしない・単一パス)");
   }
+}
+
+// ── 20. (i) 女子選手の誤混入根絶: 名目階級(fighters.ts側)を主ソースにする ──
+{
+  check(isNominallyWomensDivision("女子スーパーアトム級"), "女子除外: 名目階級に「女子」を含めばtrue");
+  check(isNominallyWomensDivision("女子アトム級"), "女子除外: 「アトム」を含めばtrue");
+  check(!isNominallyWomensDivision("フライ級"), "女子除外: 通常の男子階級表記はfalse");
+  check(!isNominallyWomensDivision(undefined), "女子除外: 未指定はfalse");
+
+  // ケイト・ロータス型の実データパターン: bout単位のweightClassは全て性別ラベル
+  // なしの「49.0kg契約」(男子フライ級と同じkg数値レンジ)のみで、旧実装では
+  // これがフライ級へ素通りしていた。名目階級を渡せば階級横断でnullになる。
+  const womensOnlyKgBouts = [
+    { date: "2026-05-10", weightClass: "51.0kg契約" },
+    { date: "2026-03-07", weightClass: "49.0kg契約" },
+    { date: "2025-11-03", weightClass: "50.0kg契約" },
+  ];
+  check(
+    latestRizinDivision(womensOnlyKgBouts, "女子スーパーアトム級") === null,
+    "女子除外: 性別ラベルなしのkg契約のみでも、名目階級が女子系ならnullになる(誤混入バグの再発防止)"
+  );
+  check(
+    latestRizinDivision(womensOnlyKgBouts) === "フライ級",
+    "女子除外: 名目階級を渡さない場合は旧実装のバグを再現する(このテストで回帰を検知できる状態を保つ)"
+  );
+
+  // 男子選手は名目階級を渡しても通常どおり計算される(既存動作への影響なし)
+  check(
+    latestRizinDivision([{ date: "2026-01-01", weightClass: "66.0kg契約" }], "フェザー級") === "フェザー級",
+    "女子除外: 男子選手の名目階級は判定に影響しない(既存動作を壊さない)"
+  );
+}
+
+// ── 21. (iii) latestRizinDivisionのタイ解消バグ修正 ──────────────────────
+{
+  // 伊藤裕輝の実データパターン: フライ級2票・バンタム級2票のタイで、根拠の
+  // 弱い直近の未明示キャッチウェイト(バンタム級側の数値)にタイ解消の決定権を
+  // 与えず、othersの中で最も新しいタイ候補(フライ級)を採用する。
+  const tiedBouts = [
+    { date: "2026-03-07", weightClass: "59.0kg契約" }, // 直近(未明示) バンタム級ゾーン
+    { date: "2025-09-28", weightClass: "57.0kg契約 フライ級トーナメント2回戦" }, // 明示フライ級
+    { date: "2025-07-27", weightClass: "57.0kg契約" }, // フライ級ゾーン
+    { date: "2025-05-04", weightClass: "59.0kg契約" }, // バンタム級ゾーン
+    { date: "2025-03-30", weightClass: "59.0kg契約" }, // バンタム級ゾーン
+  ];
+  check(
+    latestRizinDivision(tiedBouts) === "フライ級",
+    "タイ解消: フライ級2票・バンタム級2票のタイでは、根拠の弱い直近戦ではなくothers内最新のタイ候補(フライ級)を採用する"
+  );
+
+  // 回帰確認: 単独多数派があるケース(武田光司・コレスニックのパターン)は
+  // これまでどおり多数派をそのまま採用する(タイでないので直近戦の値は無関係)。
+  check(
+    latestRizinDivision([
+      { date: "2026-03-07", weightClass: "71.0kg契約" },
+      { date: "2025-09-28", weightClass: "RIZINフェザー級タイトルマッチ" },
+      { date: "2025-06-14", weightClass: "66.0kg契約" },
+    ]) === "フェザー級",
+    "タイ解消: 単独多数派があるケースは回帰なく多数派をそのまま採用する"
+  );
+}
+
+// ── 22. (iv) 掲載資格基準: 通算3戦以上 OR 直近年2戦以上 ───────────────────
+{
+  const asOf = new Date(`${Number(ELIGIBILITY_RECENT_YEAR_START) + 1}-01-15`);
+
+  // 通算2戦のみだが、直近年に2戦(1勝1敗)している選手は資格を得る
+  const recentTwoFights: FighterBoutSummary[] = [
+    { date: `${ELIGIBILITY_RECENT_YEAR_START}-06-01`, isWin: true, opponentNode: "opp-a" },
+    { date: `${ELIGIBILITY_RECENT_YEAR_START}-03-01`, isWin: false, opponentNode: "opp-b" },
+  ];
+  check(
+    recentTwoFights.length < 3 && isStandardEligible(recentTwoFights, "フライ級", recentTwoFights[0].date, asOf),
+    `(iv): 通算${recentTwoFights.length}戦でも${ELIGIBILITY_RECENT_YEAR_START}年以降${ELIGIBILITY_RECENT_MIN_FIGHTS}戦以上・1勝あれば資格を得る`
+  );
+
+  // 直近年1戦のみ(基準未達)・通算も3戦未満なら資格なし
+  const recentOneFight: FighterBoutSummary[] = [{ date: `${ELIGIBILITY_RECENT_YEAR_START}-06-01`, isWin: true, opponentNode: "opp-a" }];
+  check(
+    !isStandardEligible(recentOneFight, "フライ級", recentOneFight[0].date, asOf),
+    "(iv): 直近年1戦のみ・通算も3戦未満なら、どちらの基準も満たさず資格なし"
+  );
+
+  // 通算3戦以上(直近年に集中していなくても)は従来どおり資格を得る(回帰確認)
+  const legacyThreeFights: FighterBoutSummary[] = [
+    { date: "2020-01-01", isWin: true, opponentNode: "opp-a" },
+    { date: "2021-01-01", isWin: true, opponentNode: "opp-b" },
+    { date: "2022-01-01", isWin: false, opponentNode: "opp-c" },
+  ];
+  // 直近性(18ヶ月)は満たさないため、直近日を新しく差し替えて確認する
+  const legacyRecentDate = new Date(asOf.getTime() - 30 * 86400000).toISOString().slice(0, 10);
+  const legacyWithRecentLastFight: FighterBoutSummary[] = [...legacyThreeFights, { date: legacyRecentDate, isWin: true, opponentNode: "opp-d" }];
+  check(
+    isStandardEligible(legacyWithRecentLastFight, "フライ級", legacyRecentDate, asOf),
+    "(iv): 通算3戦以上を満たす場合は従来どおり資格を得る(回帰確認)"
+  );
+}
+
+// ── 23. (v) 非対称傾斜Elo ────────────────────────────────────────────
+{
+  function bout(date: string, aNode: string, bNode: string, scoreA: number, finish = false): Bout {
+    return { key: `${date}|${aNode}|${bNode}`, date, aNode, bNode, opponentLabel: bNode, scoreA, finish, method: finish ? "KO" : "判定" };
+  }
+
+  // NEUTRAL_ELO_PARAMS(既定値)は既存の対称Eloと完全に同一の挙動になる(後方互換)
+  {
+    const bouts: Bout[] = [bout("2026-01-01", "fighter-a", "fighter-b", 1)];
+    const neutralStates = computeRawRatings(bouts); // params省略=NEUTRAL_ELO_PARAMS
+    const explicitNeutralStates = computeRawRatings(bouts, NEUTRAL_ELO_PARAMS);
+    check(
+      neutralStates.get("fighter-a")!.rawRating === explicitNeutralStates.get("fighter-a")!.rawRating,
+      "非対称Elo: params省略時はNEUTRAL_ELO_PARAMSを明示指定した場合と完全に同一の結果になる"
+    );
+    check(near(neutralStates.get("fighter-a")!.rawRating, 1516), "非対称Elo: NEUTRAL_ELO_PARAMSは既存の対称Elo(K=32)と同じ変動幅になる");
+  }
+
+  // 格上に勝った場合、非対称パラメータ(strongWinBoost>1)は中立時より加点が大きい
+  {
+    const params: AsymmetricEloParams = { strongWinBoost: 1.5, weakWinDampen: 1, strongLossDampen: 1, weakLossBoost: 1, thinResumeFightThreshold: 0, thinResumeWinDampen: 1 };
+    // fighter-yを先に強くしておき(格上化)、fighter-xがそれに勝つ
+    const setupBouts: Bout[] = [bout("2025-01-01", "fighter-y", "wall-1", 1), bout("2025-02-01", "fighter-y", "wall-2", 1)];
+    const upsetBout: Bout = bout("2026-01-01", "fighter-x", "fighter-y", 1);
+
+    const neutralStates = computeRawRatings([...setupBouts, upsetBout], NEUTRAL_ELO_PARAMS);
+    const boostedStates = computeRawRatings([...setupBouts, upsetBout], params);
+    check(
+      boostedStates.get("fighter-x")!.rawRating > neutralStates.get("fighter-x")!.rawRating,
+      "非対称Elo: strongWinBoost>1のとき、格上に勝った場合の加点が中立時より大きい"
+    );
+  }
+
+  // 格下に勝った場合、weakWinDampen<1は中立時より加点が小さい
+  {
+    const params: AsymmetricEloParams = { strongWinBoost: 1, weakWinDampen: 0.5, strongLossDampen: 1, weakLossBoost: 1, thinResumeFightThreshold: 0, thinResumeWinDampen: 1 };
+    const setupBouts: Bout[] = [bout("2025-01-01", "fighter-b", "wall-1", 0), bout("2025-02-01", "fighter-b", "wall-2", 0)];
+    const stompBout: Bout = bout("2026-01-01", "fighter-a", "fighter-b", 1);
+
+    const neutralStates = computeRawRatings([...setupBouts, stompBout], NEUTRAL_ELO_PARAMS);
+    const dampenedStates = computeRawRatings([...setupBouts, stompBout], params);
+    check(
+      dampenedStates.get("fighter-a")!.rawRating < neutralStates.get("fighter-a")!.rawRating,
+      "非対称Elo: weakWinDampen<1のとき、格下に勝った場合の加点が中立時より小さい"
+    );
+  }
+
+  // 格下に負けた場合、weakLossBoost>1は中立時より減点が大きい(「倒した相手より下」の解消)
+  {
+    const params: AsymmetricEloParams = { strongWinBoost: 1, weakWinDampen: 1, strongLossDampen: 1, weakLossBoost: 1.5, thinResumeFightThreshold: 0, thinResumeWinDampen: 1 };
+    const setupBouts: Bout[] = [bout("2025-01-01", "fighter-b", "wall-1", 0), bout("2025-02-01", "fighter-b", "wall-2", 0)];
+    const upsetLossBout: Bout = bout("2026-01-01", "fighter-a", "fighter-b", 0); // 格上のaが格下のbに負ける
+
+    const neutralStates = computeRawRatings([...setupBouts, upsetLossBout], NEUTRAL_ELO_PARAMS);
+    const boostedStates = computeRawRatings([...setupBouts, upsetLossBout], params);
+    check(
+      boostedStates.get("fighter-a")!.rawRating < neutralStates.get("fighter-a")!.rawRating,
+      "非対称Elo: weakLossBoost>1のとき、格下に負けた場合の減点が中立時より大きい"
+    );
+  }
+
+  // 格上に負けた場合、strongLossDampen<1は中立時より減点が小さい
+  {
+    const params: AsymmetricEloParams = { strongWinBoost: 1, weakWinDampen: 1, strongLossDampen: 0.5, weakLossBoost: 1, thinResumeFightThreshold: 0, thinResumeWinDampen: 1 };
+    const setupBouts: Bout[] = [bout("2025-01-01", "fighter-y", "wall-1", 1), bout("2025-02-01", "fighter-y", "wall-2", 1)];
+    const braveLossBout: Bout = bout("2026-01-01", "fighter-x", "fighter-y", 0);
+
+    const neutralStates = computeRawRatings([...setupBouts, braveLossBout], NEUTRAL_ELO_PARAMS);
+    const dampenedStates = computeRawRatings([...setupBouts, braveLossBout], params);
+    check(
+      dampenedStates.get("fighter-x")!.rawRating > neutralStates.get("fighter-x")!.rawRating,
+      "非対称Elo: strongLossDampen<1のとき、格上に負けた場合の減点が中立時より小さい(善戦の過度な沈み込みを防ぐ)"
+    );
+  }
+
+  // 対戦数の少ない(実績の薄い)相手への勝利は、thinResumeWinDampenでさらに加点が圧縮される
+  {
+    const params: AsymmetricEloParams = { strongWinBoost: 1, weakWinDampen: 1, strongLossDampen: 1, weakLossBoost: 1, thinResumeFightThreshold: 3, thinResumeWinDampen: 0.3 };
+    const thinBout: Bout = bout("2026-01-01", "fighter-a", "newcomer", 1); // newcomerは対戦数0(閾値3未満)
+
+    const neutralStates = computeRawRatings([thinBout], NEUTRAL_ELO_PARAMS);
+    const dampenedStates = computeRawRatings([thinBout], params);
+    check(
+      dampenedStates.get("fighter-a")!.rawRating < neutralStates.get("fighter-a")!.rawRating,
+      "非対称Elo: 対戦数が閾値未満の(実績の薄い)相手への勝利は、thinResumeWinDampenで加点がさらに圧縮される"
+    );
+  }
+
+  // ドローは非対称傾斜の対象外(常に中立と同じ変動になる)
+  {
+    const drawBout: Bout = bout("2026-01-01", "fighter-a", "fighter-b", 0.5);
+    const params: AsymmetricEloParams = { strongWinBoost: 2, weakWinDampen: 0.1, strongLossDampen: 0.1, weakLossBoost: 2, thinResumeFightThreshold: 10, thinResumeWinDampen: 0.1 };
+    const neutralStates = computeRawRatings([drawBout], NEUTRAL_ELO_PARAMS);
+    const extremeStates = computeRawRatings([drawBout], params);
+    check(
+      neutralStates.get("fighter-a")!.rawRating === extremeStates.get("fighter-a")!.rawRating,
+      "非対称Elo: ドローは傾斜パラメータの影響を受けない(常に中立と同じ結果)"
+    );
+  }
+}
+
+// ── 24. レート表示の丸め(B案): 10点刻み・表示層のみ・順位とdeltaは生レート基準 ──
+{
+  check(roundToDisplayStep(1638) === 1640, "丸め: 1638→1640");
+  check(roundToDisplayStep(1602) === 1600, "丸め: 1602→1600");
+  check(roundToDisplayStep(1569) === 1570, "丸め: 1569→1570");
+  check(roundToDisplayStep(1605) === 1610, "丸め: 中間値(1605)は四捨五入で切り上げ側(1610)になる");
+  check(roundToDisplayStep(1500) === 1500, "丸め: すでに10の倍数の値はそのまま");
+
+  // 順位は生レート順で決まる(丸めて同点表示になっても、生レートの差で順位が一意に決まる)
+  const asOf1 = new Date("2026-01-01");
+  const pool = [
+    {
+      meta: { slug: "fighter-x1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-x1", rawRating: 1603, displayRating: 1603, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+    {
+      meta: { slug: "fighter-x2", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-x2", rawRating: 1597, displayRating: 1597, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+  ];
+  const result = buildDivisionRankings("フェザー級", pool, asOf1, undefined, null);
+  check(
+    result.entries[0].rating === 1600 && result.entries[1].rating === 1600,
+    "丸め: 生レート1603と1597はどちらも表示上1600に丸められ、表示上は同点になる"
+  );
+  check(
+    result.entries[0].fighterId === "fighter-x1" && result.entries[0].rank === 1 && result.entries[1].rank === 2,
+    "丸め: 表示レートが同点でも、順位は生レートの差(1603>1597)で一意に決まる"
+  );
+
+  // deltaは丸め後の値同士の差ではなく、生レート同士の差で算出する(二重丸め誤差を避ける)
+  const asOf2 = new Date("2026-01-02");
+  const prevWithRaw: DivisionRankings = {
+    division: "フェザー級",
+    updatedAt: "2025-12-31T00:00:00.000Z",
+    algorithmVersion: 4,
+    champion: null,
+    entries: [
+      { fighterId: "fighter-x1", rank: 1, rating: 1600, rawRating: 1596, delta: null, record: { wins: 2, losses: 1, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false },
+    ],
+  };
+  const poolNext = [
+    {
+      meta: { slug: "fighter-x1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-x1", rawRating: 1603, displayRating: 1603, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+  ];
+  const nextResult = buildDivisionRankings("フェザー級", poolNext, asOf2, prevWithRaw, null);
+  check(
+    nextResult.entries[0].rating === 1600 && nextResult.entries[0].delta === 7,
+    `丸め: 表示レートは前回・今回とも1600(同点)だが、deltaは生レートの差(1603-1596=7)で算出され、丸め後の差(0)にはならない (got rating=${nextResult.entries[0].rating}, delta=${nextResult.entries[0].delta})`
+  );
+
+  // 旧スナップショット(rawRatingフィールドが無い)との互換性: 丸め済みratingへフォールバックする
+  const prevWithoutRaw = {
+    division: "フェザー級" as const,
+    updatedAt: "2025-12-31T00:00:00.000Z",
+    algorithmVersion: 4,
+    champion: null,
+    entries: [
+      { fighterId: "fighter-x1", rank: 1, rating: 1590, delta: null, record: { wins: 2, losses: 1, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false },
+    ],
+  } as unknown as DivisionRankings;
+  const fallbackResult = buildDivisionRankings("フェザー級", poolNext, asOf2, prevWithoutRaw, null);
+  check(
+    fallbackResult.entries[0].delta === 13,
+    `丸め: rawRatingが無い旧スナップショットとの互換性(丸め済みratingへフォールバック、1603-1590=13) (got ${fallbackResult.entries[0].delta})`
+  );
+
+  // rawRatingは表示用のratingとは独立のフィールドとして持つ(表示コンポーネントは
+  // 参照しない想定だが、値そのものは正しく生のdisplayRatingと一致すること)
+  check(nextResult.entries[0].rawRating === 1603, "丸め: rawRatingフィールドには丸め前の生の表示レートがそのまま入る");
+}
+
+// ── 25. "use client"コンポーネントへ渡す前にrating/rawRatingを必ず除去する(D-2) ──
+{
+  const asOf = new Date("2026-01-01");
+  const champion: ChampionOverlay = { fighterId: "champ-cs", rating: 1650, record: { wins: 7, losses: 0, draws: 0 }, lastFight: "2025-12-01" };
+  const pool = [
+    {
+      meta: { slug: "fighter-cs1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-cs1", rawRating: 1603.456, displayRating: 1603.456, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+  ];
+  const data = buildDivisionRankings("フェザー級", pool, asOf, undefined, champion);
+  const view = getDivisionRankingView(data);
+  check("rawRating" in view.contenders[0] && "rating" in view.contenders[0], "クライアント安全化: 変換前のcontendersにはrating/rawRatingが含まれる(前提の確認)");
+
+  const safeView = toClientSafeDivisionRankingView(view);
+  check(!("rawRating" in safeView.contenders[0]) && !("rating" in safeView.contenders[0]), "クライアント安全化: 適用後はcontendersからrating/rawRatingが両方とも除去される");
+  check(safeView.champion !== null && !("rating" in safeView.champion), "クライアント安全化: championからもratingが除去される");
+  check(safeView.contenders[0].fighterId === "fighter-cs1" && safeView.contenders[0].rank === 1, "クライアント安全化: rating以外のフィールド(fighterId/rank等)は維持される");
+  const serialized = JSON.stringify(safeView);
+  check(!serialized.includes("rawRating") && !serialized.includes("1603") && !serialized.includes("1650"), "クライアント安全化: JSON化してもrawRating文字列・生レート数値ともに一切残らない(シリアライズ時の漏洩防止の最終確認)");
+}
+
+// ── 26. 戦績訂正オーバーライド: patch-weight-class(既存boutのweightClassのみ補完) ──
+{
+  const historyMissingWeightClass = [
+    { date: "2022-03-20", opponent: "山本空良", result: "loss" as const, method: "5分3R終了 判定1-2", event: "RIZIN.34", round: "R3" },
+  ];
+  const patched = applyRecordOverrides("nakamura-daisuke", historyMissingWeightClass);
+  check(patched.length === 1, "patch-weight-class: bout件数は変わらない(追加でも削除でもない)");
+  check((patched[0] as { weightClass?: string }).weightClass === "68.0kg契約", "patch-weight-class: weightClassのみ補完される");
+  check(
+    patched[0].date === "2022-03-20" && patched[0].opponent === "山本空良" && patched[0].result === "loss" && patched[0].method === "5分3R終了 判定1-2",
+    "patch-weight-class: date/opponent/result/methodは一切変更されない"
+  );
+
+  const patchedTwice = applyRecordOverrides("nakamura-daisuke", patched);
+  check(
+    JSON.stringify(patchedTwice) === JSON.stringify(patched),
+    "patch-weight-class: 既に適用済みの状態に再適用しても結果が変わらない(冪等)"
+  );
+
+  const unrelated = applyRecordOverrides("nakamura-daisuke", [
+    { date: "2099-01-01", opponent: "別の誰か", result: "win" as const, method: "判定", event: "RIZIN.99", round: "R1" },
+  ]);
+  check(
+    (unrelated[0] as { weightClass?: string }).weightClass === undefined,
+    "patch-weight-class: date/opponentが一致しないboutには影響しない"
+  );
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

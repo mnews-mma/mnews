@@ -95,7 +95,6 @@ export async function GET(req: Request, { params }: { params: Promise<{ division
                 <div style={{ display: "flex", flex: 1, fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "30px", color: "#FFFFFF" }}>
                   {nameBySlug.get(e.fighterId) ?? e.fighterId}
                 </div>
-                <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "30px", color: COLORS.gold }}>{e.rating}</div>
               </div>
             ))}
           </div>

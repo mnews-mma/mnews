@@ -11,11 +11,22 @@ export interface RankingEntryRecord {
   draws: number;
 }
 
+// 表示用レートの丸め幅(B案: 10点刻み)。画面・ウィジェット・OGP・選手詳細等の
+// 外向き出力に出るレートはすべてこの粒度に丸める(内部の生Eloレートは出さない)。
+export const RATING_DISPLAY_STEP = 10;
+
+export function roundToDisplayStep(value: number): number {
+  return Math.round(value / RATING_DISPLAY_STEP) * RATING_DISPLAY_STEP;
+}
+
 export interface RankingEntry {
   fighterId: string;
   rank: number;
-  rating: number;
-  delta: number | null; // 前回バッチとの差分。初回(前回データ無し)はnull
+  rating: number; // 表示用(10点刻みに丸め済み)。順位はこの値ではなくrawRatingで決まる
+  // 前回バッチとのdelta算出専用の内部値(生の表示レート、丸めなし)。
+  // 画面・ウィジェット・OGP等では一切参照しない(常にrating/deltaのみを使う)。
+  rawRating: number;
+  delta: number | null; // 前回バッチとの差分。生レート同士の差(丸め後の値の差ではない)。初回(前回データ無し)はnull
   record: RankingEntryRecord;
   lastFight: string | null;
   weighInMiss: boolean;
@@ -74,19 +85,25 @@ export function buildDivisionRankings(
 ): DivisionRankings {
   const isBadgeMode = mode === "badge";
   const suppressDelta = shouldSuppressDelta(prev);
-  const prevRatingByFighter = new Map((prev?.entries ?? []).map((e) => [e.fighterId, e.rating]));
+  // delta算出は生の表示レート(丸め前)同士の差で行う(rawRatingが無い旧スナップ
+  // ショットとの互換のため、無ければ丸め済みratingにフォールバックする)。
+  const prevRawRatingByFighter = new Map((prev?.entries ?? []).map((e) => [e.fighterId, e.rawRating ?? e.rating]));
 
   const pool = isBadgeMode ? eligibleEntries : eligibleEntries.filter((e) => e.meta.slug !== champion?.fighterId);
+  // 順位は常に生の表示レート(丸め前)の降順で決める。丸めて同点表示になっても
+  // 順位は一意(生レートの差で決まる)。
   const sorted = [...pool].sort((a, b) => b.display.displayRating - a.display.displayRating);
 
   const entries: RankingEntry[] = sorted.map((e, i) => {
-    const rating = Math.round(e.display.displayRating);
-    const prevRating = prevRatingByFighter.get(e.meta.slug);
+    const rawRating = e.display.displayRating;
+    const rating = roundToDisplayStep(rawRating);
+    const prevRawRating = prevRawRatingByFighter.get(e.meta.slug);
     return {
       fighterId: e.meta.slug,
       rank: i + 1,
       rating,
-      delta: suppressDelta || prevRating === undefined ? null : rating - prevRating,
+      rawRating,
+      delta: suppressDelta || prevRawRating === undefined ? null : Math.round(rawRating - prevRawRating),
       record: { wins: e.display.wins, losses: e.display.losses, draws: e.display.draws },
       lastFight: e.display.lastFightDate,
       weighInMiss: e.meta.weighInMiss,

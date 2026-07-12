@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ division:
   }
   return pageMetadata({
     title: `RIZIN${division}ランキング【毎日更新】| mnews`,
-    description: `RIZIN${division}の非公式ランキング。mnews.jp独自アルゴリズム(${RATING_NAME})による自動算出・毎日更新。算出方法は完全公開。`,
+    description: `RIZIN${division}の非公式ランキング。mnews.jp独自算出(${RATING_NAME})・毎日更新。`,
     path: `/rankings/${slug}`,
     image: { url: `${SITE_URL}/api/og/rankings/${slug}`, width: 1200, height: 630, alt: `RIZIN${division}ランキング` },
   });
@@ -73,17 +73,13 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
       <Nav />
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
-        <h1 className="page-title">RIZIN{division}ランキング</h1>
-        {data && (
-          <div className="page-sub">
-            最終更新: {data.updatedAt.slice(0, 10)}(アルゴリズムv{data.algorithmVersion})
-          </div>
-        )}
+        <h1 className="page-title">AI RIZINランキング({division})</h1>
+        {data && <div className="page-sub">最終更新: {data.updatedAt.slice(0, 10)}</div>}
       </div>
 
       <div style={{ padding: "16px 24px 8px", maxWidth: 760, fontSize: 12, color: "var(--muted)", lineHeight: 1.8 }}>
-        RIZIN非公式。mnews.jp独自算出({RATING_NAME})。RIZIN開催のMMAルール試合の結果のみを対象に自動算出しています。
-        算出方法・掲載資格・更新履歴は<a href="/rankings/methodology" style={{ color: "var(--accent)" }}>メソドロジーページ</a>で公開しています。
+        RIZIN非公式。mnews.jp独自算出({RATING_NAME})。RIZIN開催のMMAルール試合の結果のみを対象に算出しています。
+        評価の考え方は<a href="/rankings/methodology" style={{ color: "var(--accent)" }}>ランキングについて</a>で公開しています。
       </div>
 
       <div style={{ padding: "8px 24px 48px" }}>
@@ -97,7 +93,6 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                   <tr>
                     <th style={{ width: 44 }}>順位</th>
                     <th>選手</th>
-                    <th style={{ width: 80 }}>レート</th>
                     <th style={{ width: 64 }}>前回比</th>
                     <th style={{ width: 96 }}>戦績</th>
                     <th style={{ width: 100 }}>直近試合</th>
@@ -112,7 +107,6 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                           {nameBySlug.get(view.champion.fighterId) ?? view.champion.fighterId}
                         </a>
                       </td>
-                      <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{view.champion.rating ?? "—"}</td>
                       <td>—</td>
                       <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>
                         {view.champion.record
@@ -137,7 +131,6 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                           </span>
                         )}
                       </td>
-                      <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{e.rating}</td>
                       <td>
                         <RankingDelta delta={e.delta} />
                       </td>
@@ -155,10 +148,10 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
         )}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
-          掲載はRIZINで通算3試合以上・直近18ヶ月以内に試合あり・1勝以上の選手に限ります。戦績はRIZIN(MMAルール)のみの集計です。
+          掲載は一定の出場実績がある選手に限ります。戦績はRIZIN(MMAルール)のみの集計です。
           {view.champion && (
             <>
-              王者(RIZIN公式が認定する現王者)は番号付きランキングの対象外とし、事実として別掲載しています(Elo掲載資格の有無にかかわらず表示)。
+              王者(RIZIN公式が認定する現王者)は番号付きランキングの対象外とし、事実として別掲載しています。
             </>
           )}
         </p>

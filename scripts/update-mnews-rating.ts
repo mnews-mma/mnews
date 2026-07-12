@@ -31,11 +31,14 @@ import {
   divisionRankingsKey,
   hasRankingChange,
   shouldSuppressDelta,
+  roundToDisplayStep,
   ChampionOverlay,
   RankingsFile,
 } from "../src/lib/mnewsRating/rankingsFile";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
-import { ALGORITHM_VERSION } from "../src/lib/mnewsRating/constants";
+import { FIGHTERS } from "../src/lib/fighters";
+import { isRetired } from "../src/lib/mnewsRating/retirements";
+import { ALGORITHM_VERSION, ELO_PARAMS_MODERATE } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
 
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
@@ -71,7 +74,7 @@ function championOverlayFor(division: MnewsDivision, display: Map<string, Displa
   const d = display.get(champ.slug);
   return {
     fighterId: champ.slug,
-    rating: d ? Math.round(d.displayRating) : null,
+    rating: d ? roundToDisplayStep(d.displayRating) : null,
     record: d ? { wins: d.wins, losses: d.losses, draws: d.draws } : null,
     lastFight: d ? d.lastFightDate : null,
   };
@@ -89,15 +92,29 @@ function main() {
   const resolve = buildOpponentResolver(records);
   const getKnownNames = buildKnownNamesLookup(records);
   const { bouts, warnings } = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss);
-  const states = computeRawRatings(bouts);
+  // v4確定パラメータ: MODERATE(比較ダンプでの目視レビューを経て採用)。
+  const states = computeRawRatings(bouts, ELO_PARAMS_MODERATE);
   const publishable = filterPublishableStates(states, records);
   const asOf = new Date();
   const display = buildDisplayEntries(publishable, asOf);
 
   // 掲載階級は「階級が判明している直近のRIZIN MMA試合の階級」で決める
-  // (fighters.tsの名目weightClassへはフォールバックしない)。
+  // (fighters.tsの名目weightClassへはフォールバックしない)。ただし女子/アトム系の
+  // 除外判定だけはfighters.ts側の名目階級を主ソースとして参照する(2026-07-13、
+  // bout単位テキストへの依存で女子選手が男子階級へ誤混入するバグの恒久修正)。
+  const nominalWeightClassBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
+  // 選手ページ/戦績データが公開されていない選手(fighters.ts側でhidden=true。
+  // 「Mレーティングが乗るまで非公開」の選手や、単一ソース由来で最終確認待ちの
+  // 選手が該当)は、fighterRecordsCache/getVisibleFighters側の一般的な公開判定
+  // (!hidden)と揃え、ランキングにも掲載しない。事実オーバーレイ(引退)とは別軸
+  // だが、いずれも「掲載資格を満たしていても事実として除外する」という扱いは同じ。
+  const hiddenSlugs = new Set(FIGHTERS.filter((f) => f.hidden).map((f) => f.slug));
+  const isExcludedByFact = (slug: string): boolean => isRetired(slug) || hiddenSlugs.has(slug);
   const divisionBySlug = new Map(
-    Object.entries(records).map(([slug, entry]) => [slug, latestRizinDivision(entry.history ?? [])])
+    Object.entries(records).map(([slug, entry]) => [
+      slug,
+      latestRizinDivision(entry.history ?? [], nominalWeightClassBySlug.get(slug)),
+    ])
   );
 
   // B-1(ランカー勝ち特例)・B-2(階級変更後の資格スコープ)。二段階・単一パスで
@@ -113,7 +130,7 @@ function main() {
   const baseRankersByDivision = new Map<MnewsDivision, Set<string>>();
   for (const division of MNEWS_DIVISIONS) baseRankersByDivision.set(division, new Set());
   for (const [slug, division] of divisionBySlug) {
-    if (!division) continue;
+    if (!division || isExcludedByFact(slug)) continue;
     const summaries = boutSummariesBySlug.get(slug) ?? [];
     const lastFightDate = display.get(slug)?.lastFightDate ?? null;
     if (isStandardEligible(summaries, division, lastFightDate, asOf)) {
@@ -137,7 +154,10 @@ function main() {
     const champion = championOverlayFor(division, display);
     const rankers = baseRankersByDivision.get(division)!;
     const eligibleEntries = [...display.entries()]
-      .filter(([slug]) => divisionBySlug.get(slug) === division && (rankers.has(slug) || rankerWinExemptions.has(slug)))
+      .filter(
+        ([slug]) =>
+          divisionBySlug.get(slug) === division && !isExcludedByFact(slug) && (rankers.has(slug) || rankerWinExemptions.has(slug))
+      )
       .map(([slug, e]) => ({
         meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
         display: e,

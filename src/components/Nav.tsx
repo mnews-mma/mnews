@@ -57,7 +57,7 @@ function MenuIcon({ open }: { open: boolean }) {
 // として先頭寄りに配置する。
 const MENU_ITEMS = [
   { href: "/fighters", label: "選手データベース" },
-  { href: "/rankings", label: "RIZINランキング" },
+  { href: "/rankings", label: "AI RIZINランキング" },
   { href: "/dream", label: "夢のカード" },
   { href: "/archive", label: "過去のニュース" },
   { href: "/events", label: "開催予定の大会" },
