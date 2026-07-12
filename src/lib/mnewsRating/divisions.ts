@@ -66,7 +66,7 @@ export interface HistoryBoutForDivision {
 // 「57.0kg契約 フライ級トーナメント2回戦」)。明示が無い"◯◯kg契約"のみの表記は、
 // 単発のキャッチウェイト(2階級またぎの一戦)である可能性があり、その一戦だけで
 // 本来の階級バケットから弾き出すのを防ぐ判定に使う(下記latestRizinDivision参照)。
-const NAMED_DIVISION_RE = /フライ級|バンタム級|フェザー級|ライト級|ヘビー級|ストロー級/;
+export const NAMED_DIVISION_RE = /フライ級|バンタム級|フェザー級|ライト級|ヘビー級|ストロー級/;
 
 // 掲載階級の決定本体: 階級が判明している直近のRIZIN MMA boutの階級を基本とする。
 // weightClassはenrichHistoryWeightClass.tsがRIZIN MMA boutにしか付与しない
