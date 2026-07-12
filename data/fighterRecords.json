@@ -5202,7 +5202,7 @@
     "draws": 0,
     "ko": 9,
     "sub": 2,
-    "decision": 2,
+    "decision": 3,
     "history": [
       {
         "date": "2026-05-10",
@@ -21139,13 +21139,29 @@
     "nickname": "ウラルの大魔神"
   },
   "dautbek-karshyga": {
-    "wins": 18,
-    "losses": 3,
+    "wins": 19,
+    "losses": 4,
     "draws": 0,
     "ko": 14,
     "sub": 1,
-    "decision": 3,
+    "decision": 4,
     "history": [
+      {
+        "date": "2026-09-10",
+        "opponent": "平本蓮",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "超RIZIN.5",
+        "round": "R3"
+      },
+      {
+        "date": "2026-07-18",
+        "opponent": "萩原京平",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN LAXDMARK 15",
+        "round": "R3"
+      },
       {
         "date": "2025-03-30",
         "opponent": "鈴木千裕",
@@ -22163,7 +22179,7 @@
     "live": true,
     "nickname": "ダゲスタンのバトルサイボーグ",
     "birthPlace": "ダゲスタン共和国マハチカラ",
-    "age": 24
+    "age": 25
   },
   "shimizu-hiroto": {
     "wins": 0,
