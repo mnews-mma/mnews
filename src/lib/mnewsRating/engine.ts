@@ -307,10 +307,64 @@ function expectedScore(rSelf: number, rOpp: number): number {
   return 1 / (1 + Math.pow(10, (rOpp - rSelf) / 400));
 }
 
-function applyResult(state: RatingState, score: number, opponentRating: number, k: number, date: string): RatingState {
+// 非対称傾斜Elo(v4)のパラメータ。勝ち点・負け点を対戦相手の質(対戦時点の
+// レート・RIZIN実績)に応じて非対称に傾斜させる度合いを調整する。
+// 全て1.0(NEUTRAL_ELO_PARAMS)なら既存のv3までの対称Eloと完全に同一の挙動になる
+// (後方互換・既存テストは無変更のまま通る)。
+export interface AsymmetricEloParams {
+  strongWinBoost: number; // 格上に勝った時、通常の加点にかける倍率(>1で強化)
+  weakWinDampen: number; // 格下に勝った時、通常の加点にかける倍率(<1で圧縮)
+  strongLossDampen: number; // 格上に負けた時、通常の減点にかける倍率(<1で緩和)
+  weakLossBoost: number; // 格下に負けた時、通常の減点にかける倍率(>1で強化)
+  thinResumeFightThreshold: number; // この試合数(対戦時点)未満の相手への勝利は加点をさらに圧縮する
+  thinResumeWinDampen: number; // ↑発動時に加点へかける追加倍率(<1で圧縮)
+}
+
+export const NEUTRAL_ELO_PARAMS: AsymmetricEloParams = {
+  strongWinBoost: 1,
+  weakWinDampen: 1,
+  strongLossDampen: 1,
+  weakLossBoost: 1,
+  thinResumeFightThreshold: 0,
+  thinResumeWinDampen: 1,
+};
+
+// score(自分視点): 1=勝ち, 0=負け, 0.5=分け。ドローは非対称傾斜の対象外(常に1倍)。
+// 「格上/格下」は対戦時点の相手レート(opponentRating)と自分の対戦前レート
+// (selfRatingBefore)の比較で判定する(後から相手が強く/弱くなった影響を受けない
+// ・逐次計算=冪等性を維持)。
+function asymmetricMultiplier(
+  score: number,
+  selfRatingBefore: number,
+  opponentRating: number,
+  opponentFights: number,
+  params: AsymmetricEloParams
+): number {
+  if (score === 0.5) return 1;
+  const opponentIsStronger = opponentRating > selfRatingBefore;
+  let multiplier: number;
+  if (score === 1) {
+    multiplier = opponentIsStronger ? params.strongWinBoost : params.weakWinDampen;
+    if (opponentFights < params.thinResumeFightThreshold) multiplier *= params.thinResumeWinDampen;
+  } else {
+    multiplier = opponentIsStronger ? params.strongLossDampen : params.weakLossBoost;
+  }
+  return multiplier;
+}
+
+function applyResult(
+  state: RatingState,
+  score: number,
+  opponentRating: number,
+  opponentFights: number,
+  k: number,
+  date: string,
+  params: AsymmetricEloParams
+): RatingState {
   const expected = expectedScore(state.rawRating, opponentRating);
+  const multiplier = asymmetricMultiplier(score, state.rawRating, opponentRating, opponentFights, params);
   return {
-    rawRating: state.rawRating + k * (score - expected),
+    rawRating: state.rawRating + k * multiplier * (score - expected),
     fights: state.fights + 1,
     wins: state.wins + (score === 1 ? 1 : 0),
     losses: state.losses + (score === 0 ? 1 : 0),
@@ -324,7 +378,8 @@ function applyResult(state: RatingState, score: number, opponentRating: number, 
 // Eloロジックで更新する)。公開して良いのはfighterRecords.jsonのキーに対応する
 // ノードのみ(filterPublishableStates参照)。
 // 冪等性優先: 常に全履歴を頭から再計算する(バッチ実行日には一切依存しない)。
-export function computeRawRatings(bouts: Bout[]): Map<string, RatingState> {
+// params省略時はNEUTRAL_ELO_PARAMS(対称Elo・v3までと同一挙動)。
+export function computeRawRatings(bouts: Bout[], params: AsymmetricEloParams = NEUTRAL_ELO_PARAMS): Map<string, RatingState> {
   const states = new Map<string, RatingState>();
   const get = (id: string) => states.get(id) ?? freshState();
 
@@ -334,8 +389,8 @@ export function computeRawRatings(bouts: Bout[]): Map<string, RatingState> {
     const k = bout.finish ? K_FINISH : K_BASE;
     const a = get(bout.aNode);
     const b = get(bout.bNode);
-    const newA = applyResult(a, bout.scoreA, b.rawRating, k, bout.date);
-    const newB = applyResult(b, 1 - bout.scoreA, a.rawRating, k, bout.date);
+    const newA = applyResult(a, bout.scoreA, b.rawRating, b.fights, k, bout.date, params);
+    const newB = applyResult(b, 1 - bout.scoreA, a.rawRating, a.fights, k, bout.date, params);
     states.set(bout.aNode, newA);
     states.set(bout.bNode, newB);
   }

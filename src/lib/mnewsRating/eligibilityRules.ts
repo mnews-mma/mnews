@@ -3,6 +3,7 @@
 // ここは「誰を掲載資格ありとするか」の判定レイヤーのみを担う純関数群。
 import { Bout, EligibilityCounts, isEligible } from "./engine";
 import { MnewsDivision, NAMED_DIVISION_RE, mapToDivision } from "./divisions";
+import { ELIGIBILITY_MIN_FIGHTS, ELIGIBILITY_RECENT_MIN_FIGHTS, ELIGIBILITY_RECENT_YEAR_START } from "./constants";
 
 export interface FighterBoutSummary {
   date: string;
@@ -55,16 +56,24 @@ export function computeEligibilityFightsAndWins(
   return { fights: scoped.length, wins: scoped.filter((s) => s.isWin).length };
 }
 
-// B-2適用後の「標準の掲載資格」を判定する(3戦以上・1勝以上は階級変更後スコープ、
+// B-2適用後の「標準の掲載資格」を判定する(1勝以上は階級変更後スコープ、
 // 18ヶ月直近性は既存の全期間lastFightDateのまま)。
+// 試合数の要件(v4追加)は「通算ELIGIBILITY_MIN_FIGHTS戦以上」OR
+// 「ELIGIBILITY_RECENT_YEAR_START年以降にELIGIBILITY_RECENT_MIN_FIGHTS戦以上」の
+// いずれかを満たせばよい(直近活動が濃い選手を拾うための代替基準)。
 export function isStandardEligible(
   summaries: FighterBoutSummary[],
   currentDivision: MnewsDivision,
   lastFightDate: string | null,
   asOf: Date
 ): boolean {
-  const { fights, wins } = computeEligibilityFightsAndWins(summaries, currentDivision);
-  const counts: EligibilityCounts = { fights, wins, lastFightDate };
+  const cutoff = detectDivisionChangeCutoff(summaries, currentDivision);
+  const scoped = cutoff ? summaries.filter((s) => s.date > cutoff) : summaries;
+  const fights = scoped.length;
+  const wins = scoped.filter((s) => s.isWin).length;
+  const recentFights = scoped.filter((s) => s.date >= `${ELIGIBILITY_RECENT_YEAR_START}-01-01`).length;
+  const meetsFightBar = fights >= ELIGIBILITY_MIN_FIGHTS || recentFights >= ELIGIBILITY_RECENT_MIN_FIGHTS;
+  const counts: EligibilityCounts = { fights: meetsFightBar ? Math.max(fights, ELIGIBILITY_MIN_FIGHTS) : fights, wins, lastFightDate };
   return isEligible(counts, asOf);
 }
 

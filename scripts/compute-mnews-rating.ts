@@ -29,8 +29,12 @@ function main() {
   const display = buildDisplayEntries(publishable, asOf);
 
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
+  const nominalWeightClassBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
   const divisionBySlug = new Map(
-    Object.entries(records).map(([slug, entry]) => [slug, latestRizinDivision(entry.history ?? [])])
+    Object.entries(records).map(([slug, entry]) => [
+      slug,
+      latestRizinDivision(entry.history ?? [], nominalWeightClassBySlug.get(slug)),
+    ])
   );
 
   const featherweightAll = [...display.values()].filter((e) => divisionBySlug.get(e.slug) === "フェザー級");

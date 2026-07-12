@@ -35,6 +35,8 @@ import {
   RankingsFile,
 } from "../src/lib/mnewsRating/rankingsFile";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
+import { FIGHTERS } from "../src/lib/fighters";
+import { isRetired } from "../src/lib/mnewsRating/retirements";
 import { ALGORITHM_VERSION } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
 
@@ -95,9 +97,15 @@ function main() {
   const display = buildDisplayEntries(publishable, asOf);
 
   // 掲載階級は「階級が判明している直近のRIZIN MMA試合の階級」で決める
-  // (fighters.tsの名目weightClassへはフォールバックしない)。
+  // (fighters.tsの名目weightClassへはフォールバックしない)。ただし女子/アトム系の
+  // 除外判定だけはfighters.ts側の名目階級を主ソースとして参照する(2026-07-13、
+  // bout単位テキストへの依存で女子選手が男子階級へ誤混入するバグの恒久修正)。
+  const nominalWeightClassBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
   const divisionBySlug = new Map(
-    Object.entries(records).map(([slug, entry]) => [slug, latestRizinDivision(entry.history ?? [])])
+    Object.entries(records).map(([slug, entry]) => [
+      slug,
+      latestRizinDivision(entry.history ?? [], nominalWeightClassBySlug.get(slug)),
+    ])
   );
 
   // B-1(ランカー勝ち特例)・B-2(階級変更後の資格スコープ)。二段階・単一パスで
@@ -113,7 +121,7 @@ function main() {
   const baseRankersByDivision = new Map<MnewsDivision, Set<string>>();
   for (const division of MNEWS_DIVISIONS) baseRankersByDivision.set(division, new Set());
   for (const [slug, division] of divisionBySlug) {
-    if (!division) continue;
+    if (!division || isRetired(slug)) continue;
     const summaries = boutSummariesBySlug.get(slug) ?? [];
     const lastFightDate = display.get(slug)?.lastFightDate ?? null;
     if (isStandardEligible(summaries, division, lastFightDate, asOf)) {
@@ -137,7 +145,10 @@ function main() {
     const champion = championOverlayFor(division, display);
     const rankers = baseRankersByDivision.get(division)!;
     const eligibleEntries = [...display.entries()]
-      .filter(([slug]) => divisionBySlug.get(slug) === division && (rankers.has(slug) || rankerWinExemptions.has(slug)))
+      .filter(
+        ([slug]) =>
+          divisionBySlug.get(slug) === division && !isRetired(slug) && (rankers.has(slug) || rankerWinExemptions.has(slug))
+      )
       .map(([slug, e]) => ({
         meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
         display: e,
