@@ -24,11 +24,16 @@ import {
   buildDivisionRankings,
   hasRankingChange,
   shouldSuppressDelta,
+  roundToDisplayStep,
   DivisionRankings,
   ChampionOverlay,
 } from "../src/lib/mnewsRating/rankingsFile";
 import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
-import { getDivisionRankingView, getPublishedDivisionRankingView } from "../src/lib/mnewsRating/divisionRankingView";
+import {
+  getDivisionRankingView,
+  getPublishedDivisionRankingView,
+  toClientSafeDivisionRankingView,
+} from "../src/lib/mnewsRating/divisionRankingView";
 import { PUBLISHED_DIVISIONS, latestRizinDivision, isNominallyWomensDivision, MnewsDivision } from "../src/lib/mnewsRating/divisions";
 import {
   FighterBoutSummary,
@@ -404,7 +409,7 @@ function makeResolver(map: Record<string, string>) {
     updatedAt: "2025-12-31T00:00:00.000Z",
     algorithmVersion: ALGORITHM_VERSION,
     champion: null,
-    entries: [{ fighterId: "fighter-v1", rank: 1, rating: 1500, delta: 0, record: { wins: 3, losses: 2, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false }],
+    entries: [{ fighterId: "fighter-v1", rank: 1, rating: 1500, rawRating: 1500, delta: 0, record: { wins: 3, losses: 2, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false }],
   };
   const sameVersionResult = buildDivisionRankings("フェザー級", pool, new Date("2026-01-02"), prevSameVersion, null);
   check(sameVersionResult.entries[0].delta === 50, `バージョン不変日: 通常どおりdeltaが算出される (got ${sameVersionResult.entries[0].delta})`);
@@ -976,6 +981,130 @@ function makeResolver(map: Record<string, string>) {
       "非対称Elo: ドローは傾斜パラメータの影響を受けない(常に中立と同じ結果)"
     );
   }
+}
+
+// ── 24. レート表示の丸め(B案): 10点刻み・表示層のみ・順位とdeltaは生レート基準 ──
+{
+  check(roundToDisplayStep(1638) === 1640, "丸め: 1638→1640");
+  check(roundToDisplayStep(1602) === 1600, "丸め: 1602→1600");
+  check(roundToDisplayStep(1569) === 1570, "丸め: 1569→1570");
+  check(roundToDisplayStep(1605) === 1610, "丸め: 中間値(1605)は四捨五入で切り上げ側(1610)になる");
+  check(roundToDisplayStep(1500) === 1500, "丸め: すでに10の倍数の値はそのまま");
+
+  // 順位は生レート順で決まる(丸めて同点表示になっても、生レートの差で順位が一意に決まる)
+  const asOf1 = new Date("2026-01-01");
+  const pool = [
+    {
+      meta: { slug: "fighter-x1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-x1", rawRating: 1603, displayRating: 1603, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+    {
+      meta: { slug: "fighter-x2", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-x2", rawRating: 1597, displayRating: 1597, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+  ];
+  const result = buildDivisionRankings("フェザー級", pool, asOf1, undefined, null);
+  check(
+    result.entries[0].rating === 1600 && result.entries[1].rating === 1600,
+    "丸め: 生レート1603と1597はどちらも表示上1600に丸められ、表示上は同点になる"
+  );
+  check(
+    result.entries[0].fighterId === "fighter-x1" && result.entries[0].rank === 1 && result.entries[1].rank === 2,
+    "丸め: 表示レートが同点でも、順位は生レートの差(1603>1597)で一意に決まる"
+  );
+
+  // deltaは丸め後の値同士の差ではなく、生レート同士の差で算出する(二重丸め誤差を避ける)
+  const asOf2 = new Date("2026-01-02");
+  const prevWithRaw: DivisionRankings = {
+    division: "フェザー級",
+    updatedAt: "2025-12-31T00:00:00.000Z",
+    algorithmVersion: 4,
+    champion: null,
+    entries: [
+      { fighterId: "fighter-x1", rank: 1, rating: 1600, rawRating: 1596, delta: null, record: { wins: 2, losses: 1, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false },
+    ],
+  };
+  const poolNext = [
+    {
+      meta: { slug: "fighter-x1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-x1", rawRating: 1603, displayRating: 1603, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+  ];
+  const nextResult = buildDivisionRankings("フェザー級", poolNext, asOf2, prevWithRaw, null);
+  check(
+    nextResult.entries[0].rating === 1600 && nextResult.entries[0].delta === 7,
+    `丸め: 表示レートは前回・今回とも1600(同点)だが、deltaは生レートの差(1603-1596=7)で算出され、丸め後の差(0)にはならない (got rating=${nextResult.entries[0].rating}, delta=${nextResult.entries[0].delta})`
+  );
+
+  // 旧スナップショット(rawRatingフィールドが無い)との互換性: 丸め済みratingへフォールバックする
+  const prevWithoutRaw = {
+    division: "フェザー級" as const,
+    updatedAt: "2025-12-31T00:00:00.000Z",
+    algorithmVersion: 4,
+    champion: null,
+    entries: [
+      { fighterId: "fighter-x1", rank: 1, rating: 1590, delta: null, record: { wins: 2, losses: 1, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false },
+    ],
+  } as unknown as DivisionRankings;
+  const fallbackResult = buildDivisionRankings("フェザー級", poolNext, asOf2, prevWithoutRaw, null);
+  check(
+    fallbackResult.entries[0].delta === 13,
+    `丸め: rawRatingが無い旧スナップショットとの互換性(丸め済みratingへフォールバック、1603-1590=13) (got ${fallbackResult.entries[0].delta})`
+  );
+
+  // rawRatingは表示用のratingとは独立のフィールドとして持つ(表示コンポーネントは
+  // 参照しない想定だが、値そのものは正しく生のdisplayRatingと一致すること)
+  check(nextResult.entries[0].rawRating === 1603, "丸め: rawRatingフィールドには丸め前の生の表示レートがそのまま入る");
+}
+
+// ── 25. "use client"コンポーネントへ渡す前にrating/rawRatingを必ず除去する(D-2) ──
+{
+  const asOf = new Date("2026-01-01");
+  const champion: ChampionOverlay = { fighterId: "champ-cs", rating: 1650, record: { wins: 7, losses: 0, draws: 0 }, lastFight: "2025-12-01" };
+  const pool = [
+    {
+      meta: { slug: "fighter-cs1", division: "フェザー級" as const, weighInMiss: false },
+      display: { slug: "fighter-cs1", rawRating: 1603.456, displayRating: 1603.456, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2025-12-01", eligible: true },
+    },
+  ];
+  const data = buildDivisionRankings("フェザー級", pool, asOf, undefined, champion);
+  const view = getDivisionRankingView(data);
+  check("rawRating" in view.contenders[0] && "rating" in view.contenders[0], "クライアント安全化: 変換前のcontendersにはrating/rawRatingが含まれる(前提の確認)");
+
+  const safeView = toClientSafeDivisionRankingView(view);
+  check(!("rawRating" in safeView.contenders[0]) && !("rating" in safeView.contenders[0]), "クライアント安全化: 適用後はcontendersからrating/rawRatingが両方とも除去される");
+  check(safeView.champion !== null && !("rating" in safeView.champion), "クライアント安全化: championからもratingが除去される");
+  check(safeView.contenders[0].fighterId === "fighter-cs1" && safeView.contenders[0].rank === 1, "クライアント安全化: rating以外のフィールド(fighterId/rank等)は維持される");
+  const serialized = JSON.stringify(safeView);
+  check(!serialized.includes("rawRating") && !serialized.includes("1603") && !serialized.includes("1650"), "クライアント安全化: JSON化してもrawRating文字列・生レート数値ともに一切残らない(シリアライズ時の漏洩防止の最終確認)");
+}
+
+// ── 26. 戦績訂正オーバーライド: patch-weight-class(既存boutのweightClassのみ補完) ──
+{
+  const historyMissingWeightClass = [
+    { date: "2022-03-20", opponent: "山本空良", result: "loss" as const, method: "5分3R終了 判定1-2", event: "RIZIN.34", round: "R3" },
+  ];
+  const patched = applyRecordOverrides("nakamura-daisuke", historyMissingWeightClass);
+  check(patched.length === 1, "patch-weight-class: bout件数は変わらない(追加でも削除でもない)");
+  check((patched[0] as { weightClass?: string }).weightClass === "68.0kg契約", "patch-weight-class: weightClassのみ補完される");
+  check(
+    patched[0].date === "2022-03-20" && patched[0].opponent === "山本空良" && patched[0].result === "loss" && patched[0].method === "5分3R終了 判定1-2",
+    "patch-weight-class: date/opponent/result/methodは一切変更されない"
+  );
+
+  const patchedTwice = applyRecordOverrides("nakamura-daisuke", patched);
+  check(
+    JSON.stringify(patchedTwice) === JSON.stringify(patched),
+    "patch-weight-class: 既に適用済みの状態に再適用しても結果が変わらない(冪等)"
+  );
+
+  const unrelated = applyRecordOverrides("nakamura-daisuke", [
+    { date: "2099-01-01", opponent: "別の誰か", result: "win" as const, method: "判定", event: "RIZIN.99", round: "R1" },
+  ]);
+  check(
+    (unrelated[0] as { weightClass?: string }).weightClass === undefined,
+    "patch-weight-class: date/opponentが一致しないboutには影響しない"
+  );
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

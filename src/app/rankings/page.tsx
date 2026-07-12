@@ -12,9 +12,8 @@ import { pageMetadata } from "@/lib/seo";
 export const revalidate = 3600;
 
 export const metadata = pageMetadata({
-  title: "RIZINランキング 階級別【毎日更新】| mnews",
-  description:
-    "RIZINには公式ランキングが存在しません。mnews.jpが独自アルゴリズム(mnewsレーティング)による自動算出で階級別ランキングを毎日更新して掲載します。算出方法は完全公開。",
+  title: "AI RIZINランキング 階級別【毎日更新】| mnews",
+  description: "RIZINには公式ランキングが存在しません。mnews.jp独自算出の階級別ランキング「AI RIZINランキング」を毎日更新して掲載します。",
   path: "/rankings",
 });
 
@@ -38,7 +37,7 @@ function faqJsonLd() {
         name: "このランキングの算出方法は？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "RIZIN開催のMMAルール試合の結果のみをもとに、Eloレーティングという方式で自動算出しています。編集部による主観的な順位補正は一切行いません。算出方法の詳細はメソドロジーページで全て公開しています。",
+          text: "RIZIN開催のMMAルール試合の結果のみをもとに、AIが総合評価して自動算出しています。編集部による主観的な順位補正は一切行いません。評価の考え方はランキングについてページで公開しています。",
         },
       },
       {
@@ -69,7 +68,7 @@ export default async function RankingsHubPage() {
       <Nav />
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
-        <h1 className="page-title">RIZINランキング(階級別)</h1>
+        <h1 className="page-title">AI RIZINランキング(階級別)</h1>
         {updatedAt && <div className="page-sub">最終更新: {updatedAt}</div>}
       </div>
 
@@ -90,9 +89,9 @@ export default async function RankingsHubPage() {
             ここに掲載しているのは、RIZIN開催のMMAルール試合の結果のみをもとにmnews.jpが独自算出する非公式のランキング
             (
             {RATING_NAME}
-            )です。編集部による主観的な順位補正は一切行わず、算出方法はすべて
+            )です。編集部による主観的な順位補正は一切行わず、評価の考え方は
             <a href="/rankings/methodology" style={{ color: "var(--accent)" }}>
-              メソドロジーページ
+              ランキングについて
             </a>
             で公開しています。RIZIN大会の翌日に自動更新されます。
           </p>
@@ -127,7 +126,6 @@ export default async function RankingsHubPage() {
                         <tr>
                           <th style={{ width: 44 }}>順位</th>
                           <th>選手</th>
-                          <th style={{ width: 80 }}>レート</th>
                           <th style={{ width: 60 }}>前回比</th>
                         </tr>
                       </thead>
@@ -140,7 +138,6 @@ export default async function RankingsHubPage() {
                                 {nameBySlug.get(view.champion.fighterId) ?? view.champion.fighterId}
                               </a>
                             </td>
-                            <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{view.champion.rating ?? "—"}</td>
                             <td>—</td>
                           </tr>
                         )}
@@ -152,7 +149,6 @@ export default async function RankingsHubPage() {
                                 {nameBySlug.get(e.fighterId) ?? e.fighterId}
                               </a>
                             </td>
-                            <td style={{ fontFamily: "var(--mono)", fontWeight: 800 }}>{e.rating}</td>
                             <td>
                               <RankingDelta delta={e.delta} />
                             </td>
@@ -168,9 +164,9 @@ export default async function RankingsHubPage() {
         })}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 24 }}>
-          RIZIN非公式。mnews.jp独自算出({RATING_NAME})。算出方法・更新履歴は
+          RIZIN非公式。mnews.jp独自算出({RATING_NAME})。評価の考え方は
           <a href="/rankings/methodology" style={{ color: "var(--accent)" }}>
-            メソドロジーページ
+            ランキングについて
           </a>
           で公開しています。
         </p>

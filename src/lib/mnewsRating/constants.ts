@@ -1,13 +1,16 @@
-// mnewsレーティング: パラメータ定義。
-// 「算出方法の完全公開」が編集部ランキングとの差別化のため、この定数群はそのまま
-// /rankings/methodology に転記される前提。秘匿しない(旧Mレーティングの
-// server-only非公開方式とは方針が逆)。
+// AI RIZINランキング(内部コード名は既存のまま: mnewsRating/mnewsレーティング):
+// パラメータ定義。2026-07-13、公開方針をD案(原則・方針は公開/具体的な係数・数値・
+// 実装手口は非公開)に変更した。/rankings/methodology には評価の原則のみを
+// 一般記述で載せ、この定数群の具体的な数値そのものは転記しない。
 import type { AsymmetricEloParams } from "./engine";
 
-export const RATING_NAME = "mnewsレーティング";
+// 表示名(D-1、2026-07-13): 外向き表示は「AI RIZINランキング」に統一。
+// RATING_NAME/RATING_KEYという定数名自体は内部コード名のため変更しない
+// (値=表示テキストのみを変更する)。
+export const RATING_NAME = "AI RIZINランキング";
 export const RATING_KEY = "mnewsRating";
 
-// 係数を変更したらインクリメントし、CHANGELOG(/rankings/methodology)に記録する。
+// 算出方法を変更したらインクリメントする。
 export const ALGORITHM_VERSION = 4;
 
 export const INITIAL_RATING = 1500;
@@ -36,10 +39,9 @@ export const ELIGIBILITY_RECENT_YEAR_START = "2025";
 // に一本化してあるため、切替時にページコンポーネントを直接いじる必要はない)。
 export const CHAMPION_DISPLAY_MODE: "overlay" | "badge" = "overlay";
 
-// 非対称傾斜Elo(v4)のパラメータプリセット。比較検証用に3段階を用意する。
-// 本番のcomputeRawRatings呼び出しはNEUTRAL_ELO_PARAMS(engine.ts、対称Elo)の
-// ままで、いずれのプリセットもまだ本番の算出には使われていない
-// (目視レビューでパラメータを選定した後、別ステップで本番に反映する)。
+// 非対称傾斜Eloのパラメータプリセット。比較検証用に3段階を用意し、目視レビュー
+// の結果MODERATEを採用した(update-mnews-rating.tsのcomputeRawRatings呼び出しで
+// 使用)。MILD/STRONGは将来の再検討用に残す。
 export const ELO_PARAMS_MILD: AsymmetricEloParams = {
   strongWinBoost: 1.15,
   weakWinDampen: 0.85,

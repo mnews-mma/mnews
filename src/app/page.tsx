@@ -10,7 +10,7 @@ import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
-import { getPublishedDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
+import { getPublishedDivisionRankingView, toClientSafeDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import MnewsRatingSection from "@/components/MnewsRatingSection";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
@@ -104,11 +104,15 @@ export default async function HomePage() {
   // (/rankingsと共通の唯一の真実源)をここで参照し、準備中の階級は挑戦者
   // ランキングを出さない(王者のみ表示。Elo算出済みでも/rankings非公開の階級を
   // トップだけフル表示してしまうドリフトを防ぐ)。
+  // MnewsRatingSectionは"use client"のため、渡すpropsはRSCペイロードとして
+  // HTML/JSにそのままシリアライズされる。rawRating(delta算出専用の内部の生
+  // レート)を含めたまま渡すと、画面に描画しなくても生HTML上には出力されて
+  // しまうため、toClientSafeDivisionRankingViewで必ず除去してから渡す。
   const mnewsRatingDivisions = {
-    フライ級: getPublishedDivisionRankingView("フライ級", flyweightRankings, 5),
-    バンタム級: getPublishedDivisionRankingView("バンタム級", bantamweightRankings, 5),
-    フェザー級: getPublishedDivisionRankingView("フェザー級", featherweightRankings, 5),
-    ライト級: getPublishedDivisionRankingView("ライト級", lightweightRankings, 5),
+    フライ級: toClientSafeDivisionRankingView(getPublishedDivisionRankingView("フライ級", flyweightRankings, 5)),
+    バンタム級: toClientSafeDivisionRankingView(getPublishedDivisionRankingView("バンタム級", bantamweightRankings, 5)),
+    フェザー級: toClientSafeDivisionRankingView(getPublishedDivisionRankingView("フェザー級", featherweightRankings, 5)),
+    ライト級: toClientSafeDivisionRankingView(getPublishedDivisionRankingView("ライト級", lightweightRankings, 5)),
   };
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};

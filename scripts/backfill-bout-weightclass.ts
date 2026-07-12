@@ -14,7 +14,7 @@ import path from "path";
 import { FIGHTERS } from "../src/lib/fighters";
 import type { FighterRecordsFile } from "../src/lib/fighterRecordsCache";
 import { enrichHistoryWithWeightClass } from "../src/lib/mnewsRating/enrichHistoryWeightClass";
-import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
+import { applyRecordOverrides } from "../src/lib/mnewsRating/recordOverrides";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 
@@ -37,17 +37,12 @@ function main() {
     const { history, nullBouts } = enrichHistoryWithWeightClass(nameJa, correctedHistory);
     enrichedBoutCount += history.filter((h) => h.weightClass).length;
     entry.history = history;
-    Object.assign(
-      entry,
-      applyRecordOverridesToTotals(slug, {
-        wins: entry.wins,
-        losses: entry.losses,
-        draws: entry.draws,
-        ko: entry.ko,
-        sub: entry.sub,
-        decision: entry.decision,
-      })
-    );
+    // 注意: entry.wins等はdata/fighterRecords.json側の「既に確定済みの」集計値
+    // (Wikipedia生値ではない)。applyRecordOverridesToTotalsは「Wikipedia生値」への
+    // 一回加算を前提とした関数のため、このスクリプトで再適用すると二重加算になる
+    // (update-fighter-records.tsの日次バッチは毎回Wikipediaから生値を取得し直すため
+    // 安全だが、こちらは既存データをその場でenrichするだけなので対象外)。
+    // このスクリプトはweightClass付与のみを担当し、集計値の再計算は行わない。
     for (const b of nullBouts) nullBoutLines.push(`${slug}(${nameJa}) ${b.date} vs ${b.opponent}`);
   }
 

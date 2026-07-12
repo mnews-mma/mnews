@@ -26,7 +26,17 @@ export interface RecordOverrideRemove extends RecordOverrideBase {
   type: "remove";
 }
 
-export type RecordOverride = RecordOverrideAdd | RecordOverrideRemove;
+// 既存のbout(date+opponentで特定)のweightClassのみを補完する。date/opponent/
+// result/method/eventは一切変更しない。EVENT_RESULTS収録期間(概ね直近18ヶ月)
+// より古く、自動突合(enrichHistoryWeightClass.ts)では階級が判明しない試合を、
+// RIZIN公式の当該試合結果ページからピンポイントで個別取得する場合に使う
+// (全面的な公式ソース化ではなく、個々の試合単位の補完)。
+export interface RecordOverridePatchWeightClass extends RecordOverrideBase {
+  type: "patch-weight-class";
+  weightClass: string;
+}
+
+export type RecordOverride = RecordOverrideAdd | RecordOverrideRemove | RecordOverridePatchWeightClass;
 
 export const RECORD_OVERRIDES: RecordOverride[] = [
   {
@@ -62,6 +72,30 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "萩原京平のRIZIN LANDMARK 13(2026-04-12)第9試合がWikipedia戦績表・EVENT_RESULTS両方に未掲載で" +
       "欠落していた。RIZIN公式試合結果ページで追加。この一戦は計量オーバー裁定によりノーコンテスト" +
       "(WEIGH_IN_MISS_RULINGS参照)。",
+  },
+  {
+    type: "patch-weight-class",
+    fighterId: "nakamura-daisuke",
+    date: "2022-03-20",
+    opponent: "山本空良",
+    weightClass: "68.0kg契約",
+    source: "https://jp.rizinff.com/_ct/17525892",
+    fetchedDate: "2026-07-13",
+    note:
+      "中村大介のRIZIN.34(2022-03-20)第14試合はEVENT_RESULTS収録期間(概ね直近18ヶ月)より古く、" +
+      "自動突合では階級不明のままだった。RIZIN公式試合結果一覧ページ(第14試合)から契約体重を個別取得。",
+  },
+  {
+    type: "patch-weight-class",
+    fighterId: "nakamura-daisuke",
+    date: "2021-10-24",
+    opponent: "新居すぐる",
+    weightClass: "66.0kg契約",
+    source: "https://jp.rizinff.com/_ct/17489769",
+    fetchedDate: "2026-07-13",
+    note:
+      "中村大介のRIZIN.31(2021-10-24)第6試合はEVENT_RESULTS収録期間(概ね直近18ヶ月)より古く、" +
+      "自動突合では階級不明のままだった。RIZIN公式試合結果一覧ページ(第6試合)から契約体重を個別取得。",
   },
 ];
 
@@ -108,6 +142,8 @@ export function applyRecordOverrides(fighterId: string, history: FightRecord[]):
     if (o.fighterId !== fighterId) continue;
     if (o.type === "remove") {
       result = result.filter((h) => !(h.date === o.date && h.opponent === o.opponent));
+    } else if (o.type === "patch-weight-class") {
+      result = result.map((h) => (h.date === o.date && h.opponent === o.opponent ? { ...h, weightClass: o.weightClass } : h));
     } else if (!result.some((h) => h.date === o.date && h.opponent === o.opponent)) {
       result = [
         ...result,
