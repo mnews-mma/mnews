@@ -1,5 +1,86 @@
 [
   {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "【あげ太くん×RIZINコラボ登場！】7/18（土）abc presents RIZIN LANDMARK 15 in HIROSHIMA グッズ販売ブース情報",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17849927",
+    "publishedAt": "2026-07-13T08:42:34.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【Lemino修斗】デビューと同じ後楽園ホールで30年目の宇野薫×TBJ児山佳宏、高岡宏気vs.キランテ、4連勝・藤田ムネノリvs.オルニド、フライ級シンバートルvs.シモンスズキ。三浦颯太が玉城悠とのスクランブル戦を制す。バンタム級・下間英史が山本敦章に判定勝ち＝速報中",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24318",
+    "publishedAt": "2026-07-13T08:42:32.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】篠塚辰樹が欠場で火の鳥が緊急代役参戦。骨太カード並ぶメインはサバテロvs.鹿志村の「バンタム級王座戦」、セミは9月大阪ドーム連続出場目指す萩原京平vs.ダウトベックに＝7月18日（土）広島",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24317",
+    "publishedAt": "2026-07-13T06:23:42.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】篠塚辰樹、負傷で広島大会を欠場 代役は火の鳥 試合順も決定",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2467388/",
+    "publishedAt": "2026-07-13T03:35:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
+    "id": "rizin-1",
+    "source": "rizin",
+    "title": "【カード変更】篠塚辰樹 vs. イ・ジェフン 試合中止によるカードのお知らせ／abc presents RIZIN LANDMARK 15 in HIROSHIMA",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17852101",
+    "publishedAt": "2026-07-13T03:30:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
+    "id": "mmaplanet-2",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】女子Sアトム級“見えないトーナメント”へ、パク・シウ「もう一度チャンピオンに」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/232871?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590rizin-landmark15%25e3%2580%2591%25e5%25a5%25b3%25e5%25ad%2590s%25e3%2582%25a2%25e3%2583%2588%25e3%2583%25a0%25e7%25b4%259a%25e8%25a6%258b%25e3%2581%2588%25e3%2581%25aa%25e3%2581%2584%25e3%2583%2588%25e3%2583%25bc%25e3%2583%258a%25e3%2583%25a1%25e3%2583%25b3%25e3%2583%2588",
+    "publishedAt": "2026-07-13T03:09:44.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
+    "id": "gonkaku-3",
+    "source": "other",
+    "title": "【RIZIN】パク・シウと大一番！ 須田萌里「（柔術的に）良いポジションは絶対にパウンドを打てるポジション」「あのとき指名したかったのは──」＝7月18日（土）『RIZIN LANDMARK 15 in HIROSHIMA』広島グリーンアリーナ",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24315",
+    "publishedAt": "2026-07-13T03:08:10.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
+    "id": "gonkaku-8",
+    "source": "other",
+    "title": "【UFC】マクレガーに何が起きたのか？ ダナ代表「5年も離れるのは過酷」、ホロウェイ「レフェリーに『試合を止めてくれ』と」、マクレガー「絶望の底にいる」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24312",
+    "publishedAt": "2026-07-13T01:37:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE 364：細川勇哉選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase364/interview_hosokawa.html",
+    "publishedAt": "2026-07-13T00:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
     "id": "gonkaku-0",
     "source": "other",
     "title": "【Lemino修斗】デビューと同じ後楽園ホールで30年目の宇野薫「メインとしての役割果たす」×TBJ児山佳宏「ベルト以上の価値のある人と最高の試合を」、高岡宏気vs.キランテ、4連勝・藤田ムネノリvs.オルニド、フライ級シンバートルvs.シモンスズキも＝全選手計量パス！",
@@ -162,6 +243,15 @@
     "firstSeenAt": "2026-07-11T06:27:28.181Z"
   },
   {
+    "id": "rizin-2",
+    "source": "rizin",
+    "title": "7/12（日）10時からスタート！超RIZIN.5 浪速の超復活祭り 一般発売",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17848890",
+    "publishedAt": "2026-07-11T01:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【UFC329】展望 地に堕ちた天才マクレガーが、不撓不屈の心で戦いを重ねたホロウェイに奇跡を起こすか",
@@ -241,6 +331,15 @@
     "url": "https://fc.rizinff.com/blogs/news/event_260720",
     "publishedAt": "2026-07-10T08:00:06.000Z",
     "firstSeenAt": "2026-07-10T10:37:18.273Z"
+  },
+  {
+    "id": "rizin-3",
+    "source": "rizin",
+    "title": "【観覧募集】『RIZIN史上最大の超絶スケール 超緊急＆超ド級カード発表記者会見』が7/20(月･祝)に開催！！！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17851341",
+    "publishedAt": "2026-07-10T08:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
   },
   {
     "id": "mmaplanet-1",
@@ -405,6 +504,15 @@
     "firstSeenAt": "2026-07-08T07:56:57.174Z"
   },
   {
+    "id": "rizin-4",
+    "source": "rizin",
+    "title": "【参加者募集】ファンクラブイベント開催決定！！abc presents RIZIN LANDMARK 15 in HIROSHIMA",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17851231",
+    "publishedAt": "2026-07-08T06:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【RIZIN LANDMARK15】ダウトベックと再起戦、萩原京平「自分的には相性は悪くないと思っている」",
@@ -459,6 +567,15 @@
     "firstSeenAt": "2026-07-07T18:33:27.874Z"
   },
   {
+    "id": "rizin-5",
+    "source": "rizin",
+    "title": "7/14(火)まで先行予約受付中！abc presents RIZIN LANDMARK 15 in HIROSHIMA公式グッズ予約販売",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17849893",
+    "publishedAt": "2026-07-07T11:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【ROMAN05】道着MMA王座決定Tに出場、エリック・メネギン「自分の柔術を信じて全員を極める」",
@@ -493,6 +610,15 @@
     "url": "https://j-shooto.com/2026/07/07/post-50846/",
     "publishedAt": "2026-07-07T04:00:56.000Z",
     "firstSeenAt": "2026-07-07T10:31:39.021Z"
+  },
+  {
+    "id": "rizin-6",
+    "source": "rizin",
+    "title": "【応募は7/9 12:00まで】試合直後のRIZINファイターも登壇！！『RIZIN後夜祭&RIZIN NIGHT』7/18に開催決定！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17850809",
+    "publishedAt": "2026-07-07T03:52:05.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
   },
   {
     "id": "shooto-0",
@@ -745,6 +871,15 @@
     "url": "https://gonkaku.jp/articles/24223",
     "publishedAt": "2026-07-04T05:42:05.000Z",
     "firstSeenAt": "2026-07-04T07:31:16.390Z"
+  },
+  {
+    "id": "rizin-7",
+    "source": "rizin",
+    "title": "「RIZINガール2026」追加メンバー3名が決定！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17850348",
+    "publishedAt": "2026-07-04T03:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
   },
   {
     "id": "oricon-0",
@@ -1028,6 +1163,15 @@
     "publishedAt": "2026-07-01T03:00:08.000Z"
   },
   {
+    "id": "rizin-8",
+    "source": "rizin",
+    "title": "摩嶋一整 vs. 武田光司が決定！／RIZIN.54追加対戦カード",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17849820",
+    "publishedAt": "2026-07-01T03:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
     "id": "shooto-0",
     "source": "shooto",
     "title": "2026年ライセンス保持者一覧（～2026年12月31日）",
@@ -1100,6 +1244,15 @@
     "publishedAt": "2026-06-29T10:00:04.000Z"
   },
   {
+    "id": "rizin-9",
+    "source": "rizin",
+    "title": "【配信あり】7/3（金）18時〜都内にてabc presents RIZIN LANDMARK 15 in HIROSHIMAの合同公開練習を開催！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17848858",
+    "publishedAt": "2026-06-29T10:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
+  },
+  {
     "id": "deep-0",
     "source": "deep",
     "title": "DEEP 132 IMPACTのメインは注目の相本宗輝VS山田聖真、越智晴雄の引退エキシビションなどの試合順が決定。U-NEXT、DEEPメンバーシップで配信でゲスト解説は泉武志、チケットは全て完売で当日券の販売は無し!",
@@ -1138,6 +1291,15 @@
     "origin": "ゴング格闘技",
     "url": "https://gonkaku.jp/articles/24181",
     "publishedAt": "2026-06-29T03:38:00.000Z"
+  },
+  {
+    "id": "rizin-10",
+    "source": "rizin",
+    "title": "鈴木博昭 vs. 宮川日向が決定！／abc presents RIZIN LANDMARK 15 in HIROSHIMA追加対戦カード",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17849293",
+    "publishedAt": "2026-06-29T03:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
   },
   {
     "id": "pancrase-1",
@@ -1283,6 +1445,15 @@
     "origin": "ゴング格闘技",
     "url": "https://gonkaku.jp/articles/24162",
     "publishedAt": "2026-06-27T06:54:04.000Z"
+  },
+  {
+    "id": "rizin-11",
+    "source": "rizin",
+    "title": "6/28（日）10時よりスタート！RIZIN.54 チケット一般発売",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17846054",
+    "publishedAt": "2026-06-27T01:00:00.000Z",
+    "firstSeenAt": "2026-07-13T10:42:34.698Z"
   },
   {
     "id": "pancrase-1",
