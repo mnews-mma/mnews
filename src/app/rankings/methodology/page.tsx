@@ -5,8 +5,8 @@ import { pageMetadata } from "@/lib/seo";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 
 export const metadata = pageMetadata({
-  title: `${RATING_NAME}について | mnews`,
-  description: `mnews.jp独自のRIZINランキング「${RATING_NAME}」の評価方針。RIZIN非公式・独自算出。`,
+  title: `${RATING_NAME}について｜RIZINランキングの評価方針【mnews】`,
+  description: `RIZINに公式ランキングはありません。独自開発のAIが総合評価して算出する「${RATING_NAME}」の評価方針を解説。RIZIN非公式・独自算出。`,
   path: "/rankings/methodology",
 });
 
