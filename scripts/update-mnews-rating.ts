@@ -41,7 +41,7 @@ import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
 import { getDivisionOverlay, getEligibilityScopeStartDate } from "../src/lib/mnewsRating/fighterDivisions";
-import { ALGORITHM_VERSION, ELO_PARAMS_MODERATE } from "../src/lib/mnewsRating/constants";
+import { ALGORITHM_VERSION, ELO_PARAMS_V5 } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -161,8 +161,8 @@ function main() {
   const resolve = buildOpponentResolver(records);
   const getKnownNames = buildKnownNamesLookup(records);
   const { bouts, warnings } = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss, asOf);
-  // v4確定パラメータ: MODERATE(比較ダンプでの目視レビューを経て採用)。
-  const states = computeRawRatings(bouts, ELO_PARAMS_MODERATE);
+  // v5確定パラメータ(比較ダンプでの目視レビューを経て採用)。
+  const states = computeRawRatings(bouts, ELO_PARAMS_V5);
   const publishable = filterPublishableStates(states, records);
   const display = buildDisplayEntries(publishable, asOf);
 
