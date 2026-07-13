@@ -77,6 +77,7 @@ export function applyRizinRecordsToHistory(
       result: newResult,
       method: match.methodRaw || h.method,
       weightClass: formatWeightClass(match) ?? h.weightClass,
+      isOpeningFight: match.isOpeningFight,
     });
   }
 

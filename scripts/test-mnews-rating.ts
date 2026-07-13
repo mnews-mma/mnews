@@ -20,7 +20,6 @@ import {
   DECAY_FLOOR,
   ELIGIBILITY_RECENT_MIN_FIGHTS,
   ELIGIBILITY_RECENT_YEAR_START,
-  MAX_RANKED_ENTRIES,
 } from "../src/lib/mnewsRating/constants";
 import {
   buildDivisionRankings,
@@ -30,7 +29,7 @@ import {
   DivisionRankings,
   ChampionOverlay,
 } from "../src/lib/mnewsRating/rankingsFile";
-import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
+import { applyRecordOverrides, applyRecordOverridesToTotals, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import {
   getDivisionRankingView,
   getPublishedDivisionRankingView,
@@ -935,34 +934,19 @@ function makeResolver(map: Record<string, string>) {
   );
 }
 
-// ── 22. (iv) 掲載資格基準: 通算3戦以上 OR 直近年3戦以上(2026-07-13、v5でRIZIN2戦→3戦に引き上げ) ──
+// ── 22. (iv) 掲載資格基準: 通算3戦以上 OR 直近年2戦以上(2026-07-13再修正で2戦に復帰。
+//      薄い戦績の掲載防止はオープニングファイト除外[B]で別途対応する) ──
 {
   const asOf = new Date(`${Number(ELIGIBILITY_RECENT_YEAR_START) + 1}-01-15`);
 
-  // 直近年に3戦(1勝2敗)している選手は資格を得る(v5でELIGIBILITY_RECENT_MIN_FIGHTS=
-  // ELIGIBILITY_MIN_FIGHTSと同値の3になったため、直近3戦は通算3戦以上の基準とも
-  // 一致して両基準が同時に満たされる。従来のような「通算は3戦未満だが直近年だけ
-  // 3戦」という独立した抜け道ケースは、この引き上げにより意味を持たなくなった
-  // 、というのがこの変更の意図そのもの=直樹型の薄い戦績での掲載を防ぐ)。
-  const recentThreeFights: FighterBoutSummary[] = [
-    { date: `${ELIGIBILITY_RECENT_YEAR_START}-06-01`, isWin: true, opponentNode: "opp-a" },
-    { date: `${ELIGIBILITY_RECENT_YEAR_START}-04-01`, isWin: false, opponentNode: "opp-b" },
-    { date: `${ELIGIBILITY_RECENT_YEAR_START}-03-01`, isWin: false, opponentNode: "opp-c" },
-  ];
-  check(
-    isStandardEligible(recentThreeFights, "フライ級", recentThreeFights[0].date, asOf),
-    `(iv): ${ELIGIBILITY_RECENT_YEAR_START}年以降${ELIGIBILITY_RECENT_MIN_FIGHTS}戦以上・1勝あれば資格を得る`
-  );
-
-  // 2026-07-13緊急修正: 直近年2戦のみ(旧基準では資格ありだったが、v5で3戦に
-  // 引き上げたため資格なしになる。直樹のケース=薄い戦績での掲載を防ぐ)。
+  // 通算2戦のみだが、直近年に2戦(1勝1敗)している選手は資格を得る
   const recentTwoFights: FighterBoutSummary[] = [
     { date: `${ELIGIBILITY_RECENT_YEAR_START}-06-01`, isWin: true, opponentNode: "opp-a" },
     { date: `${ELIGIBILITY_RECENT_YEAR_START}-03-01`, isWin: false, opponentNode: "opp-b" },
   ];
   check(
-    !isStandardEligible(recentTwoFights, "フライ級", recentTwoFights[0].date, asOf),
-    "(iv)v5厳格化: 直近年2戦のみでは資格を得ない(3戦に引き上げ済み。直樹型の薄い戦績掲載を防ぐ)"
+    recentTwoFights.length < 3 && isStandardEligible(recentTwoFights, "フライ級", recentTwoFights[0].date, asOf),
+    `(iv): 通算${recentTwoFights.length}戦でも${ELIGIBILITY_RECENT_YEAR_START}年以降${ELIGIBILITY_RECENT_MIN_FIGHTS}戦以上・1勝あれば資格を得る`
   );
 
   // 直近年1戦のみ(基準未達)・通算も3戦未満なら資格なし
@@ -1405,30 +1389,90 @@ function makeResolver(map: Record<string, string>) {
   );
 }
 
-// ── 33. v5: 掲載ランキングの表示上限(MAX_RANKED_ENTRIES) ─────────────────
+
+// ── 34. 2026-07-13: オープニングファイト除外(B) ─────────────────────────
 {
-  function makeEntry(slug: string, rawRating: number) {
-    return {
-      meta: { slug, division: "フェザー級" as const, weighInMiss: false },
-      display: { slug, rawRating, displayRating: rawRating, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2026-01-01", eligible: true },
-    };
-  }
-  const manyEntries = Array.from({ length: MAX_RANKED_ENTRIES + 5 }, (_, i) => makeEntry(`fighter-${i}`, 2000 - i));
-  const result = buildDivisionRankings("フェザー級", manyEntries, new Date("2026-01-01"), undefined, null);
-  check(result.entries.length === MAX_RANKED_ENTRIES, `v5: 掲載資格者が${manyEntries.length}名いても表示は上位${MAX_RANKED_ENTRIES}名まで (got ${result.entries.length})`);
+  // (a) オープニングファイトは資格カウントの対象試合に含めない(直樹の実データ
+  // パターン: RIZIN2戦のうち1戦=喧嘩三番勝負がオープニングファイト扱いになると
+  // 残り1戦しかなく、通算3戦未満・直近年2戦未満のいずれも満たさず資格なしになる)。
+  const naokiPattern: FighterBoutSummary[] = [
+    { date: "2025-07-28", isWin: false, opponentNode: "name:芦田崇宏", isOpeningFight: true }, // 喧嘩三番勝負(特例指定)
+    { date: "2026-06-06", isWin: true, opponentNode: "name:黒井海成", isOpeningFight: false },
+  ];
+  const asOf = new Date("2026-07-13");
   check(
-    result.entries[result.entries.length - 1].fighterId === `fighter-${MAX_RANKED_ENTRIES - 1}`,
-    "v5: 上限で切られるのはレート下位側(上位からMAX_RANKED_ENTRIES名がそのまま残る)"
+    !isStandardEligible(naokiPattern, "フェザー級", "2026-06-06", asOf),
+    "オープニングファイト除外: 喧嘩三番勝負を除くとRIZIN実質1戦のみとなり資格なし(直樹の実データパターン)"
+  );
+  const { fights } = computeEligibilityFightsAndWins(naokiPattern, "フェザー級");
+  check(fights === 1, `オープニングファイト除外: 資格カウント対象試合数からオープニングファイトが除かれる (got ${fights})`);
+
+  // 比較: オープニングファイトでなければ2戦とも数えられ資格を得る(回帰確認)
+  const notOpeningPattern: FighterBoutSummary[] = naokiPattern.map((s) => ({ ...s, isOpeningFight: false }));
+  check(
+    isStandardEligible(notOpeningPattern, "フェザー級", "2026-06-06", asOf),
+    "オープニングファイト除外(回帰): オープニングファイトでなければ2戦とも数えられ資格を得る"
   );
 
-  // 王者はoverlayモードで番号付きリストから既に除外されているため、上限には
-  // 数えない(MAX_RANKED_ENTRIES名の番号付き選手 + 王者1名 = 表示は計16名になる)。
-  const championSlug = "fighter-0";
-  const championOverlay: ChampionOverlay = { fighterId: championSlug, rating: 2000, record: { wins: 5, losses: 0, draws: 0 }, lastFight: "2026-01-01" };
-  const resultWithChampion = buildDivisionRankings("フェザー級", manyEntries, new Date("2026-01-01"), undefined, championOverlay);
+  // (b) オープニングファイトでの勝利はランカー勝ち特例の「本戦での勝利」に該当しない
+  const summariesBySlug = new Map<string, FighterBoutSummary[]>([
+    ["challenger", [{ date: "2026-03-01", isWin: true, opponentNode: "ranker-1", isOpeningFight: true }]],
+    ["ranker-1", [{ date: "2025-06-05", isWin: true, opponentNode: "filler-a", isOpeningFight: false }, { date: "2025-08-10", isWin: true, opponentNode: "filler-b", isOpeningFight: false }, { date: "2026-03-01", isWin: false, opponentNode: "challenger", isOpeningFight: true }]],
+  ]);
+  const divisionBySlug = new Map<string, MnewsDivision | null>([
+    ["challenger", "フェザー級"],
+    ["ranker-1", "フェザー級"],
+  ]);
+  const baseRankers = new Map<MnewsDivision, Set<string>>([["フェザー級", new Set(["ranker-1"])]]);
+  const exempted = findRankerWinExemptions(summariesBySlug, divisionBySlug, baseRankers, "2026-");
+  check(!exempted.has("challenger"), "オープニングファイト除外: オープニングファイトでの勝利はランカー勝ち特例を発動させない");
+}
+
+// ── 35. 2026-07-13: 喧嘩三番勝負の固定指定(直樹・RIZIN.公式ソース) ────────
+{
   check(
-    resultWithChampion.entries.length === MAX_RANKED_ENTRIES && resultWithChampion.champion?.fighterId === championSlug,
-    "v5: 王者はMAX_RANKED_ENTRIESの上限カウントに含まれない(番号付きリストは王者を除いた上位から数える)"
+    isOpeningFightOverride("naoki", "2025-07-28", "芦田崇宏"),
+    "喧嘩三番勝負固定指定: 直樹の2025-07-28芦田崇宏戦がオープニングファイトとして指定されている"
+  );
+  check(
+    !isOpeningFightOverride("naoki", "2026-06-06", "黒井海成"),
+    "喧嘩三番勝負固定指定: 対象外の試合(黒井戦)には適用されない"
+  );
+  check(
+    !isOpeningFightOverride("takeda-koji", "2025-07-28", "芦田崇宏"),
+    "喧嘩三番勝負固定指定: 対象外の選手には適用されない(fighterId一致が必須)"
+  );
+}
+
+// ── 36. 2026-07-13: 単発の他階級進出は階級変更とみなさない(C・ケラモフの実データパターン) ──
+{
+  // ケラモフの実データパターン: 2024-12-31のライト級タイトルマッチ1戦のみが
+  // 階級越えで、直前・直後はいずれも未明示の66kg契約(フェザー級相当)。
+  const karamovPattern: FighterBoutSummary[] = [
+    { date: "2023-07-30", weightClass: "フェザー級", isWin: true, opponentNode: "opp-a", isOpeningFight: false },
+    { date: "2023-11-04", weightClass: "フェザー級", isWin: false, opponentNode: "opp-b", isOpeningFight: false },
+    { date: "2024-11-17", weightClass: "66.0kg契約", isWin: true, opponentNode: "opp-c", isOpeningFight: false },
+    { date: "2024-12-31", weightClass: "RIZINライト級タイトルマッチ", isWin: false, opponentNode: "opp-d", isOpeningFight: false }, // 単発遠征
+    { date: "2025-06-14", weightClass: "66.0kg契約", isWin: true, opponentNode: "opp-e", isOpeningFight: false },
+    { date: "2025-12-31", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-f", isOpeningFight: false },
+  ];
+  check(
+    detectDivisionChangeCutoff(karamovPattern, "フェザー級") === null,
+    "単発遠征修正: 直前・直後がいずれも現階級相当の単発他階級進出は階級変更とみなさない(ケラモフの実データパターン)"
+  );
+  const { fights } = computeEligibilityFightsAndWins(karamovPattern, "フェザー級");
+  check(fights === 6, `単発遠征修正: 階級変更とみなされないため全6戦がカウント対象になる (got ${fights})`);
+
+  // 回帰確認: 真の階級変更(直前に現階級相当の試合が無い=移籍後ずっと新階級)は
+  // 従来どおりcutoffとして検出される(既存テスト18-3と同型: 変更前2戦→変更後1戦)。
+  const genuineChangePattern: FighterBoutSummary[] = [
+    { date: "2024-01-01", weightClass: "RIZINバンタム級タイトルマッチ", isWin: true, opponentNode: "opp-a", isOpeningFight: false },
+    { date: "2025-06-14", weightClass: "RIZINバンタム級タイトルマッチ", isWin: false, opponentNode: "opp-b", isOpeningFight: false },
+    { date: "2026-03-07", weightClass: "66.0kg契約", isWin: true, opponentNode: "opp-c", isOpeningFight: false },
+  ];
+  check(
+    detectDivisionChangeCutoff(genuineChangePattern, "フェザー級") === "2025-06-14",
+    "単発遠征修正(回帰): 真の階級変更(移籍後ずっと新階級)は従来どおりcutoffとして検出される"
   );
 }
 

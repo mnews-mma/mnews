@@ -23,6 +23,10 @@ export interface HistoryEntryLike {
   event: string;
   round?: string;
   weightClass?: string;
+  // rizinRecords.json(RIZIN公式ソース)由来のオープニングファイト判定
+  // (カード最下位=前座)。マッチする公式データが無い試合はundefined
+  // (前座かどうか不明。掲載資格カウントからは除外しない=推測補完しない)。
+  isOpeningFight?: boolean;
 }
 
 export interface FighterRecordEntryLike {
@@ -88,6 +92,10 @@ export interface Bout {
   finish: boolean;
   method: string; // 同一実試合の重複検知(dedupeGhostWallBouts)に使う
   weightClass?: string; // 掲載資格の階級変更検出(eligibilityRules.ts)に使う。EVENT_RESULTS突合分のみ判明
+  // オープニングファイト(前座)判定。Elo計算(computeRawRatings)には一切
+  // 使わない(順位・レートへの手動介入はしない)。掲載資格カウント
+  // (eligibilityRules.ts)でのみ参照する。未設定はfalse扱い(前座でない)。
+  isOpeningFight?: boolean;
 }
 
 export interface BuildBoutsResult {
@@ -125,12 +133,17 @@ export function applyWeighInMissRuling(
 // getKnownNames: slug→既知の名前表記一覧(dedupeGhostWallBouts用、省略可)。
 // lookupWeighInMiss: (fighterId,date,opponent)→計量オーバーした側(省略可、
 // 常にnullを返す関数がデフォルト=計量オーバー考慮なし)。
+// lookupOpeningFightOverride: (fighterId,date,opponent)→この試合を強制的に
+// オープニングファイト扱いにするか(省略可、常にfalseを返す関数がデフォルト)。
+// rizinRecords.json由来のisOpeningFight判定を補う一度きりの個別指定用
+// (例: 「喧嘩三番勝負」のような通常の前座判定に乗らないミニシリーズ)。
 export function buildBouts(
   records: FighterRecordsInput,
   resolveOpponentSlug: (opponentName: string, selfSlug: string) => string | null,
   getKnownNames: (slug: string) => string[] = () => [],
   lookupWeighInMiss: (fighterId: string, date: string, opponent: string) => "self" | "opponent" | null = () => null,
-  asOf: Date = new Date()
+  asOf: Date = new Date(),
+  lookupOpeningFightOverride: (fighterId: string, date: string, opponent: string) => boolean = () => false
 ): BuildBoutsResult {
   const warnings: ExclusionWarning[] = [];
   const boutMap = new Map<string, Bout>();
@@ -181,6 +194,7 @@ export function buildBouts(
 
       const scoreA = effectiveResult === "win" ? 1 : effectiveResult === "draw" ? 0.5 : 0;
       const finish = cls === "finish";
+      const isOpeningFight = (h.isOpeningFight ?? false) || lookupOpeningFightOverride(slug, h.date, h.opponent);
 
       const resolvedSlug = resolveOpponentSlug(h.opponent, slug);
       if (resolvedSlug === slug) {
@@ -225,14 +239,14 @@ export function buildBouts(
           continue;
         }
 
-        boutMap.set(key, { key, date: h.date, aNode: a, bNode: b, opponentLabel: h.opponent, scoreA: scoreForA, finish, method: h.method, weightClass: h.weightClass });
+        boutMap.set(key, { key, date: h.date, aNode: a, bNode: b, opponentLabel: h.opponent, scoreA: scoreForA, finish, method: h.method, weightClass: h.weightClass, isOpeningFight });
       } else {
         // 自社DB圏外の相手: 正規化名の疑似ノード。同名相手が別の選手の履歴にも
         // 登場すればそのたびに同じノードのレートが引き継がれる(1500へは戻らない)。
         const bNode = `name:${normalizeOpponentName(h.opponent)}`;
         const key = `wall|${h.date}|${slug}|${bNode}`;
         if (boutMap.has(key)) continue;
-        boutMap.set(key, { key, date: h.date, aNode: slug, bNode, opponentLabel: h.opponent, scoreA, finish, method: h.method, weightClass: h.weightClass });
+        boutMap.set(key, { key, date: h.date, aNode: slug, bNode, opponentLabel: h.opponent, scoreA, finish, method: h.method, weightClass: h.weightClass, isOpeningFight });
       }
     }
   }

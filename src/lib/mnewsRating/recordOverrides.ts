@@ -165,6 +165,42 @@ export function lookupWeighInMiss(fighterId: string, date: string, opponent: str
   return r ? r.missedBy : null;
 }
 
+export interface OpeningFightOverride {
+  fighterId: string;
+  date: string; // fighterRecords.json(history)側の表記日付。RIZIN公式ページの
+  // 開催日表記と1日ずれることがあるため、突合キーはhistory側の値に合わせる。
+  opponent: string;
+  source: string;
+  fetchedDate: string;
+  note: string;
+}
+
+// rizinRecords.json由来のisOpeningFight判定(カード最下位=前座)は「そのイベント
+// 内で最もカード順位が低い1試合のみ」を機械的に検出する。「喧嘩三番勝負」の
+// ような、メインカードとは別に3試合ぶんの前座ミニシリーズが組まれるケースは
+// 自動検出の対象外(最下位の1試合しか拾えない)ため、実質的に前座である試合を
+// ここに個別列挙し、資格カウント・ランカー勝ち特例の判定から除外する。
+// 「喧嘩三番勝負」は超RIZIN.4(2025-07-27開催)の一度きりの使用のため汎用の
+// カテゴリ判定は作らず、該当試合を固定指定する。
+export const OPENING_FIGHT_OVERRIDES: OpeningFightOverride[] = [
+  {
+    fighterId: "naoki",
+    date: "2025-07-28",
+    opponent: "芦田崇宏",
+    source: "https://jp.rizinff.com/_ct/17780689",
+    fetchedDate: "2026-07-13",
+    note:
+      "超RIZIN.4「真夏の喧嘩祭り」(RIZIN公式開催日2025-07-27)の「喧嘩三番勝負 第3試合」。" +
+      "RIZIN WORLD GP 2025トーナメント本戦とは別枠で組まれた前座ミニシリーズの1試合であり、" +
+      "実態はオープニングファイト。この名称の興行はこの一度きりで以後使われていないため、" +
+      "汎用のカテゴリ判定は作らず該当試合を個別に指定する。",
+  },
+];
+
+export function isOpeningFightOverride(fighterId: string, date: string, opponent: string): boolean {
+  return OPENING_FIGHT_OVERRIDES.some((o) => o.fighterId === fighterId && o.date === date && o.opponent === opponent);
+}
+
 // history配列にオーバーライドを適用する。add/removeとも冪等(同じ入力に何度
 // 適用しても結果は同じ)。
 export function applyRecordOverrides(fighterId: string, history: FightRecord[]): FightRecord[] {
