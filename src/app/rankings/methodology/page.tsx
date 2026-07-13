@@ -35,8 +35,10 @@ export default function MethodologyPage() {
         <ul style={{ color: "var(--muted)", lineHeight: 1.9 }}>
           <li>強い相手への勝利をより高く評価します</li>
           <li>フィニッシュ(KO/TKO・一本勝ち)を重視します</li>
-          <li>直近の活動状況を評価に反映します</li>
-          <li>一定の出場実績がある選手を評価の対象とします</li>
+          <li>RIZINで一定以上の試合数があり、直近でも活動している選手を対象とします</li>
+          <li>
+            長期間試合をしていない選手は評価が徐々に下がります。また、直近18ヶ月以内にRIZINでの試合がない選手はランキング対象外となります
+          </li>
         </ul>
 
         <p>
