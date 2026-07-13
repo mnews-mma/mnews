@@ -113,6 +113,9 @@ export const EVENTS: MEvent[] = [
     venue: "広島グリーンアリーナ",
     broadcast: ["RIZIN LIVE（U-NEXT PPV）", "フジテレビ（地上波・一部試合）"],
     sourceUrl: "https://jp.rizinff.com/_ct/17841138",
+    // カード変更(2026-07-13 ORICON): 篠塚辰樹が頚椎症性神経根症のため欠場。
+    // 対戦相手イ・ジェフンの代役は火の鳥。同時に試合順(第1〜12試合+
+    // オープニングファイト)も確定分に更新。
     bouts: [
       {
         weightClass: "バンタム級（61.0kg）",
@@ -132,29 +135,24 @@ export const EVENTS: MEvent[] = [
         fighterB: "イリスベク・ティレノフ",
       },
       {
-        weightClass: "ライト級（71.0kg）",
-        fighterA: "ジョニー・ケース",
-        fighterB: "天弥",
-      },
-      {
         weightClass: "フライ級（57.0kg）",
         fighterA: "ヒロヤ",
         fighterB: "山本アーセン",
       },
       {
-        weightClass: "フライ級（57.0kg）",
-        fighterA: "篠塚辰樹",
-        fighterB: "イ・ジェフン",
-      },
-      {
-        weightClass: "女子スーパーアトム級（49.0kg）",
-        fighterA: "パク・シウ",
-        fighterB: "須田萌里",
+        weightClass: "ライト級（71.0kg）",
+        fighterA: "ジョニー・ケース",
+        fighterB: "天弥",
       },
       {
         weightClass: "女子スーパーアトム級（49.0kg）",
         fighterA: "大島沙緒里",
         fighterB: "イ・イェジ",
+      },
+      {
+        weightClass: "女子スーパーアトム級（49.0kg）",
+        fighterA: "パク・シウ",
+        fighterB: "須田萌里",
       },
       {
         weightClass: "64.0kg契約",
@@ -172,16 +170,16 @@ export const EVENTS: MEvent[] = [
         fighterB: "林RICE陽太",
       },
       {
+        weightClass: "フライ級（57.0kg）",
+        fighterA: "火の鳥",
+        fighterB: "イ・ジェフン",
+        note: "篠塚辰樹が頚椎症性神経根症のため欠場→火の鳥が緊急代役",
+      },
+      {
         weightClass: "54.5kg契約",
         rule: "キックボクシング",
         fighterA: "芝宏二郎",
         fighterB: "遥心",
-      },
-      {
-        weightClass: "71.0kg契約",
-        fighterA: "シヴァエフ",
-        fighterB: "ベンジャミン",
-        note: "オープニングファイト",
       },
       {
         weightClass: "女子スーパーアトム級（49.0kg）",
@@ -193,6 +191,12 @@ export const EVENTS: MEvent[] = [
         weightClass: "バンタム級（61.0kg）",
         fighterA: "神田T800周一",
         fighterB: "長野将大",
+        note: "オープニングファイト",
+      },
+      {
+        weightClass: "71.0kg契約",
+        fighterA: "シヴァエフ",
+        fighterB: "ベンジャミン",
         note: "オープニングファイト",
       },
       {
