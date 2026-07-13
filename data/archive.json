@@ -1,5 +1,32 @@
 [
   {
+    "id": "shooto-0",
+    "source": "shooto",
+    "title": "プロ修斗7月13日後楽園大会『Lemino修斗.7』試合結果",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/07/13/post-51116/",
+    "publishedAt": "2026-07-13T13:33:46.000Z",
+    "firstSeenAt": "2026-07-13T18:13:24.787Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】負傷で欠場の篠塚辰樹「年内には必ずリングに戻る みんな待ってて」対戦相手やファンに謝罪",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2467577/",
+    "publishedAt": "2026-07-13T12:13:00.000Z",
+    "firstSeenAt": "2026-07-13T18:13:24.787Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "7/20（月・祝）『RIZIN史上最大の超絶スケール 超緊急＆超ド級カード発表記者会見』一般観覧者募集！！！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17852198",
+    "publishedAt": "2026-07-13T10:45:00.000Z",
+    "firstSeenAt": "2026-07-13T18:13:24.787Z"
+  },
+  {
     "id": "rizin-0",
     "source": "rizin",
     "title": "【あげ太くん×RIZINコラボ登場！】7/18（土）abc presents RIZIN LANDMARK 15 in HIROSHIMA グッズ販売ブース情報",
