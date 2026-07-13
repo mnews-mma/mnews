@@ -29,8 +29,9 @@ import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
-  title: "日本MMAニュース・選手データベース | Mニュース",
-  description: "RIZIN・DEEP・修斗・パンクラスのニュースと選手戦績データベースを一か所に。日本MMAの大会情報・試合結果もまとめて掲載。",
+  title: "AI RIZINランキング・選手戦績DB｜日本MMAニュース【mnews】",
+  description:
+    "独自開発のAIが算出するRIZIN階級別ランキングと、RIZIN・DEEP・修斗・パンクラスの選手戦績データベース。大会情報・試合結果もまとめて掲載。",
   path: "/",
 });
 
@@ -52,7 +53,8 @@ const WEBSITE_LD = {
   "@type": "WebSite",
   name: "Mニュース",
   url: "https://www.mnews.jp",
-  description: "RIZIN・DEEP・修斗・パンクラスのニュースと選手戦績データベースを一か所に。日本MMAの大会情報・試合結果もまとめて掲載。",
+  description:
+    "独自開発のAIが算出するRIZIN階級別ランキングと、RIZIN・DEEP・修斗・パンクラスの選手戦績データベース。大会情報・試合結果もまとめて掲載。",
   publisher: {
     "@type": "NewsMediaOrganization",
     name: "Mニュース",
