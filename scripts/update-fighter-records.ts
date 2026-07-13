@@ -31,7 +31,15 @@ function toCacheEntry(
   // 上流データ(Wikipedia)のパース誤り・欠落を出典付きで訂正(recordOverrides.ts)。
   // その後にRIZIN MMA boutへのweightClass付与を行う(訂正で追加されたboutも対象)。
   const correctedHistory = applyRecordOverrides(r.slug, r.history);
-  const { history, nullBouts } = enrichHistoryWithWeightClass(r.nameJa, correctedHistory);
+  // 未来日付(今日より後)のhistoryエントリを除去する。Wikipedia記事側に
+  // 「まだ開催されていない大会の結果」が確定済みであるかのように記載されている
+  // ケースが実在する(ダウトベックの記事に2026-07-18・2026-09-10の「結果」が
+  // 記載されていた実例。engine.ts のbuildBouts(asOf)と同じ考え方の一般ルールを
+  // 選手ページのhistory表示にも適用し、未開催の試合を既に起きたことにして
+  // 表示しない)。
+  const asOfKey = new Date().toISOString().slice(0, 10);
+  const noFutureHistory = correctedHistory.filter((h) => h.date <= asOfKey);
+  const { history, nullBouts } = enrichHistoryWithWeightClass(r.nameJa, noFutureHistory);
   // 2026-07-13緊急修正: 通算戦績(総合格闘技 戦績。RIZIN外を含む全キャリア)は
   // Wikipedia/DATA MMA/シード値(r.wins等)をそのまま据え置く。historyの都度
   // カウントには絶対に切り替えない(GAMMA戦績のように「試合履歴表には載っている

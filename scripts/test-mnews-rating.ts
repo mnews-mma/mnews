@@ -458,6 +458,15 @@ function makeResolver(map: Record<string, string>) {
   const correctedTwice = applyRecordOverrides("ya-man", corrected);
   check(correctedTwice.length === 5, "戦績訂正オーバーライド: 既に適用済みの状態に再適用しても重複追加されない(冪等)");
 
+  // 2026-07-13緊急修正: add型で追加したboutは末尾に付くだけなので、既存の
+  // 「日付が新しい順」という並びが崩れる(鈴木博昭の平本蓮戦2022-07-02が
+  // 最古の2021-10-02奥田啓介戦より後ろに表示されるバグとして実際に発生)。
+  // 追加後は日付降順に再ソートされることを確認する。
+  check(
+    corrected.every((h, i) => i === 0 || corrected[i - 1].date >= h.date),
+    "戦績訂正オーバーライド: add後のhistoryは日付の新しい順に正しく並ぶ(末尾への単純追加で順序が崩れない)"
+  );
+
   const untouchedHistory = [{ date: "2020-01-01", opponent: "誰か", result: "win" as const, method: "判定", event: "RIZIN.1", round: "R1" }];
   const untouched = applyRecordOverrides("no-such-fighter", untouchedHistory);
   check(untouched === untouchedHistory, "戦績訂正オーバーライド: 対象外の選手のhistoryには一切影響しない");
