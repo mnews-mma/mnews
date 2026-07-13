@@ -165,16 +165,22 @@ async function findRankingLink(slug: string): Promise<RankingLinkInfo | null> {
   return null;
 }
 
-// ランクバッジカード(A案): 数字を主役にしたUFC風の「格を示すバッジ」。
-// 王者は番号を持たないため「王者」表示にする(champion判定はfindRankingLink側で
-// 確定済み)。レート数値はここでも一切参照しない(rank/delta以外のフィールドを
-// 受け取らない型なので構造的に混入しない)。
-function RankBadgeCard({ info }: { info: RankingLinkInfo }) {
-  const isChampion = info.label === "王者";
-  const deltaMark = !isChampion && info.delta ? (info.delta > 0 ? "▲" : info.delta < 0 ? "▼" : null) : null;
+// バッジカードの外枠(赤枠・角丸12px・白背景ブロック+赤背景ブロック+chevron)を
+// ランカー用/王者用で共通化する。中身(左ブロックの表示・リンク先)だけ呼び出し側で変える。
+function BadgeCardShell({
+  href,
+  leftBlock,
+  eyebrow,
+  title,
+}: {
+  href: string;
+  leftBlock: React.ReactNode;
+  eyebrow: string;
+  title: React.ReactNode;
+}) {
   return (
     <a
-      href={`/rankings/${info.divisionSlug}`}
+      href={href}
       style={{
         display: "flex",
         alignItems: "stretch",
@@ -199,10 +205,7 @@ function RankBadgeCard({ info }: { info: RankingLinkInfo }) {
           color: "#fff",
         }}
       >
-        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1px" }}>RANK</div>
-        <div style={{ fontSize: isChampion ? 15 : 22, fontWeight: 500, lineHeight: 1, whiteSpace: "nowrap" }}>
-          {isChampion ? "王者" : `#${info.label}`}
-        </div>
+        {leftBlock}
       </div>
       <div
         style={{
@@ -215,11 +218,8 @@ function RankBadgeCard({ info }: { info: RankingLinkInfo }) {
           background: "var(--s1)",
         }}
       >
-        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", color: "var(--accent)" }}>AI RIZIN RANKING</div>
-        <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>
-          {info.divisionName}
-          {deltaMark && <span style={{ marginLeft: 6, color: info.delta! > 0 ? "#16a34a" : "#dc2626" }}>{deltaMark}</span>}
-        </div>
+        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", color: "var(--accent)" }}>{eyebrow}</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{title}</div>
       </div>
       <div style={{ display: "flex", alignItems: "center", padding: "0 10px", color: "var(--muted)" }}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -227,6 +227,54 @@ function RankBadgeCard({ info }: { info: RankingLinkInfo }) {
         </svg>
       </div>
     </a>
+  );
+}
+
+// ランクバッジカード(A案): 数字を主役にしたUFC風の「格を示すバッジ」。
+// AI RIZINランキングに順位付きで掲載されているランカー専用(王者はfindRankingLink
+// 側でlabel="王者"として区別され、下のChampionBadgeCardで別デザイン表示する。
+// AIの看板の下に事実データの王者を出すと「AIが王者を決めた」と誤読されるため、
+// この2つは意図的に分離している)。レート数値はここでも一切参照しない
+// (rank/delta以外のフィールドを受け取らない型なので構造的に混入しない)。
+function RankBadgeCard({ info }: { info: RankingLinkInfo & { label: number } }) {
+  const deltaMark = info.delta ? (info.delta > 0 ? "▲" : info.delta < 0 ? "▼" : null) : null;
+  return (
+    <BadgeCardShell
+      href={`/rankings/${info.divisionSlug}`}
+      leftBlock={
+        <>
+          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1px" }}>RANK</div>
+          <div style={{ fontSize: 22, fontWeight: 500, lineHeight: 1, whiteSpace: "nowrap" }}>#{info.label}</div>
+        </>
+      }
+      eyebrow="AI RIZIN RANKING"
+      title={
+        <>
+          {info.divisionName}
+          {deltaMark && <span style={{ marginLeft: 6, color: info.delta! > 0 ? "#16a34a" : "#dc2626" }}>{deltaMark}</span>}
+        </>
+      }
+    />
+  );
+}
+
+// 王者バッジカード: champions.ts由来の事実データ(RIZIN公式認定)専用の別デザイン。
+// 「AI RIZIN RANKING」の看板・番号は一切出さない(AI算出のランキングとは出所が
+// 別であることを見た目でも区別する)。リンク先もAIランキングページではなく、
+// 事実としての王者を示す公式ランキング・王者ページにする。
+function ChampionBadgeCard({ divisionName }: { divisionName: string }) {
+  return (
+    <BadgeCardShell
+      href="/ranking/rizin"
+      leftBlock={
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="6" />
+          <path d="M9 13.5 7 22l5-3 5 3-2-8.5" />
+        </svg>
+      }
+      eyebrow="RIZIN 王者"
+      title={divisionName}
+    />
   );
 }
 
@@ -387,7 +435,12 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
         {/* AI RIZINランキング掲載中の選手のみ、ランクバッジカードで該当階級ページへ
             リンク(レート数値は出さない。rank/deltaのみ使うRankingLinkInfo型のため
             構造的にレートが混入しない)。 */}
-        {rankingLink && <RankBadgeCard info={rankingLink} />}
+        {rankingLink &&
+          (rankingLink.label === "王者" ? (
+            <ChampionBadgeCard divisionName={rankingLink.divisionName} />
+          ) : (
+            <RankBadgeCard info={rankingLink as RankingLinkInfo & { label: number }} />
+          ))}
 
         {/* 次戦プレビュー: バナー行 + (相手がDB内なら)戦績比較・共通対戦相手 */}
         {nextFight && nextOpp && (
