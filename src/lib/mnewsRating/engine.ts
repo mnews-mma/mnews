@@ -103,7 +103,7 @@ function normalizeOpponentName(s: string): string {
 // lookupWeighInMissが返す"self"/"opponent"は「このhistoryエントリの持ち主(self)と
 // 対戦相手(opponent)のどちらが計量オーバーしたか」を表す。オーバーした側が
 // 勝った場合のみノーコンテストに倒す(負け・引き分けなら通常どおり)。
-function applyWeighInMissRuling(
+export function applyWeighInMissRuling(
   result: HistoryEntryLike["result"],
   missedBy: "self" | "opponent" | null
 ): HistoryEntryLike["result"] {

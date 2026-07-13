@@ -13,7 +13,9 @@ import { resolveFighter } from "../src/lib/feeds/resolveFighter";
 import type { FighterRecordEntry, FighterRecordsFile } from "../src/lib/fighterRecordsCache";
 import { checkFighterRecordIntegrity } from "../src/lib/fighterRecordIntegrity";
 import { enrichHistoryWithWeightClass } from "../src/lib/mnewsRating/enrichHistoryWeightClass";
-import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
+import { applyRecordOverrides, lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
+import { applyWeighInMissRuling } from "../src/lib/mnewsRating/engine";
+import { deriveRecordTotals } from "../src/lib/methodClassify";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 // fighterRecords.json自体には生成時刻を焼き込まない(選手データと運用メタ情報を
@@ -32,14 +34,22 @@ function toCacheEntry(
   // その後にRIZIN MMA boutへのweightClass付与を行う(訂正で追加されたboutも対象)。
   const correctedHistory = applyRecordOverrides(r.slug, r.history);
   const { history, nullBouts } = enrichHistoryWithWeightClass(r.nameJa, correctedHistory);
-  const totals = applyRecordOverridesToTotals(r.slug, {
-    wins: r.wins,
-    losses: r.losses,
-    draws: r.draws,
-    ko: r.ko,
-    sub: r.sub,
-    decision: r.decision,
-  });
+  // 集計値(wins/losses/draws/ko/sub/decision)はhistory(訂正済み)を都度数え直して
+  // 導出する(加算方式は非冪等: Wikipedia再取得のたびに変動しうる生値へ固定delta
+  // を積み増すと、生値側が追いついた時に二重加算になる。YA-MAN/高木凌で実際に
+  // 発生した集計ズレの根本原因)。historyが空(住村竜市朗のようにinfobox集計のみで
+  // 試合ごとの表が無い記事)の場合のみ、Wikipedia生値をそのまま採用する。
+  // 計量オーバー裁定(WEIGH_IN_MISS_RULINGS)がある試合は、表示用historyの
+  // resultはケージ内の実際の結果のまま保持しつつ(recordOverrides.ts参照)、
+  // 集計への算入だけはengine.tsと同じルールでノーコンテスト扱いに倒す
+  // (勝敗数に加算しない。萩原京平のLANDMARK13裁定など)。
+  const effectiveHistory = history.map((h) => ({
+    ...h,
+    result: applyWeighInMissRuling(h.result, lookupWeighInMiss(r.slug, h.date, h.opponent)),
+  }));
+  const totals = history.length > 0
+    ? deriveRecordTotals(effectiveHistory)
+    : { wins: r.wins, losses: r.losses, draws: r.draws, ko: r.ko, sub: r.sub, decision: r.decision };
   const entry: FighterRecordEntry = {
     ...totals,
     history,

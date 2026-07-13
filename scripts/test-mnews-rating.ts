@@ -29,7 +29,8 @@ import {
   DivisionRankings,
   ChampionOverlay,
 } from "../src/lib/mnewsRating/rankingsFile";
-import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
+import { applyRecordOverrides } from "../src/lib/mnewsRating/recordOverrides";
+import { deriveRecordTotals } from "../src/lib/methodClassify";
 import {
   getDivisionRankingView,
   getPublishedDivisionRankingView,
@@ -441,7 +442,10 @@ function makeResolver(map: Record<string, string>) {
     "戦績訂正オーバーライド: 追加されたboutの内容が正しい(出典付き)"
   );
 
-  const totals = applyRecordOverridesToTotals("ya-man", { wins: 2, losses: 2, draws: 0, ko: 2, sub: 0, decision: 0 });
+  // 2026-07-13(Phase4): 集計値は加算(applyRecordOverridesToTotals、廃止済み)ではなく
+  // 訂正後historyを都度数え直す方式(deriveRecordTotals)に統一。訂正で追加された
+  // boutを含むhistoryを数え直すだけでYA-MAN 3勝2敗になることを確認する。
+  const totals = deriveRecordTotals(corrected);
   check(totals.wins === 3 && totals.losses === 2, `戦績訂正オーバーライド: 集計値もYA-MAN 3勝2敗に是正される (got ${totals.wins}-${totals.losses})`);
 
   const correctedTwice = applyRecordOverrides("ya-man", corrected);
@@ -1257,6 +1261,39 @@ function makeResolver(map: Record<string, string>) {
     latestRizinDivision(akimotoPattern) === "フェザー級",
     "2年窓(b): 単発の明示評価1件だけでは単純多数決の結果を覆さない(秋元強真パターン。誤って階級を動かさない回帰確認)"
   );
+}
+
+// ── 32. Phase4: deriveRecordTotals(集計をhistory由来カウントに統一) ──────
+{
+  // 冪等性: 同一historyを2回連続で数えても完全一致する(加算方式(廃止した
+  // applyRecordOverridesToTotals)は毎回のWikipedia生値に対する固定delta加算
+  // だったため、生値が変動すると二重加算になっていた。history自体を都度
+  // 数え直す方式は入力が同じなら常に同じ結果になる)。
+  const history = [
+    { date: "2023-05-06", opponent: "三浦孝太", result: "win" as const, method: "1R 1:50 KO（左フック→パウンド）", event: "RIZIN.42" },
+    { date: "2023-12-31", opponent: "平本蓮", result: "loss" as const, method: "5分3R終了 判定0-3", event: "RIZIN.45" },
+    { date: "2024-07-28", opponent: "鈴木博昭", result: "win" as const, method: "1R 3:28 KO（左フック）", event: "超RIZIN.3" },
+    { date: "2024-12-31", opponent: "カルシャガ・ダウトベック", result: "loss" as const, method: "5分3R終了 判定0-3", event: "RIZIN.49" },
+    { date: "2025-07-27", opponent: "金原正徳", result: "win" as const, method: "3R 2:51 TKO（右アッパー→パウンド）", event: "超RIZIN.4" },
+  ];
+  const t1 = deriveRecordTotals(history);
+  const t2 = deriveRecordTotals(history);
+  check(t1.wins === 3 && t1.losses === 2, `Phase4: YA-MANの実データパターンで3勝2敗になる (got ${t1.wins}-${t1.losses})`);
+  check(t1.ko === 3, `Phase4: KO勝ち3件を正しく分類する (got ko${t1.ko})`);
+  check(
+    t1.wins === t2.wins && t1.ko === t2.ko && t1.sub === t2.sub && t1.decision === t2.decision,
+    "Phase4: deriveRecordTotalsは冪等(同一historyを2回計算しても完全一致する)"
+  );
+
+  // 一本(サブミッション)の技名分類。判定・KOと混在しても正しく振り分けられる。
+  const mixedHistory = [
+    { date: "2020-01-01", opponent: "X", result: "win" as const, method: "1R 4分43秒 SUB（テクニカルサブミッション：フロントチョーク）", event: "RIZIN.1" },
+    { date: "2020-02-01", opponent: "Y", result: "win" as const, method: "3R 判定 （2-1）", event: "RIZIN.2" },
+    { date: "2020-03-01", opponent: "Z", result: "loss" as const, method: "1R 4分37秒 TKO（グラウンドでの肘打ち）", event: "RIZIN.3" },
+  ];
+  const t3 = deriveRecordTotals(mixedHistory);
+  check(t3.wins === 2 && t3.losses === 1, "Phase4: 勝敗数は正しい");
+  check(t3.sub === 1 && t3.decision === 1 && t3.ko === 0, `Phase4: 一本1/判定1(負け試合のTKOは勝ち内訳に数えない) (got sub${t3.sub} decision${t3.decision} ko${t3.ko})`);
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

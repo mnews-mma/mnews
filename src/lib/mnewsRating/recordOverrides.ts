@@ -154,42 +154,8 @@ export function applyRecordOverrides(fighterId: string, history: FightRecord[]):
   return result;
 }
 
-export interface RecordTotals {
-  wins: number;
-  losses: number;
-  draws: number;
-  ko: number;
-  sub: number;
-  decision: number;
-}
-
-// Wikipedia infobox由来の集計値(wins/losses/ko/sub/decision)は履歴テーブルとは
-// 別管理のため、historyへadd追加しただけでは連動しない。オーバーライドで追加した
-// bout分だけ集計にも反映する(removeはWikipedia infobox側の値をそのまま信頼し
-// 調整しない=総合格闘技以外の戦績が混ざっている等、集計側の独立した誤りは
-// このタスクのスコープ外)。
-export function applyRecordOverridesToTotals(fighterId: string, totals: RecordTotals): RecordTotals {
-  const t = { ...totals };
-  for (const o of RECORD_OVERRIDES) {
-    if (o.fighterId !== fighterId || o.type !== "add") continue;
-
-    // 計量オーバー裁定でノーコンテストになる場合、集計(勝敗数)には一切加算しない
-    // (公式記録に合わせる。ケージ内の実際の結果=resultはhistoryにそのまま残す)。
-    const missedBy = lookupWeighInMiss(o.fighterId, o.date, o.opponent);
-    const isNc =
-      (missedBy === "opponent" && o.result === "loss") || (missedBy === "self" && o.result === "win");
-    if (isNc) continue;
-
-    if (o.result === "win") {
-      t.wins++;
-      if (/判定/.test(o.method)) t.decision++;
-      else if (/KO/i.test(o.method)) t.ko++;
-      else t.sub++;
-    } else if (o.result === "loss") {
-      t.losses++;
-    } else if (o.result === "draw") {
-      t.draws++;
-    }
-  }
-  return t;
-}
+// 2026-07-13(mnewsレーティングPhase4): 集計値(wins/losses/draws/ko/sub/decision)
+// はhistory(このファイルのapplyRecordOverridesで訂正済み)を都度数え直して導出する
+// 方式に統一した(methodClassify.tsのderiveRecordTotals参照)。かつてこのファイルに
+// あったapplyRecordOverridesToTotals(Wikipedia生値への固定delta加算)は、生値が
+// 変動するたびに二重加算が発生する非冪等バグの原因だったため廃止。

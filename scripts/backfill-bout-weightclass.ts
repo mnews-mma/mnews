@@ -14,7 +14,9 @@ import path from "path";
 import { FIGHTERS } from "../src/lib/fighters";
 import type { FighterRecordsFile } from "../src/lib/fighterRecordsCache";
 import { enrichHistoryWithWeightClass } from "../src/lib/mnewsRating/enrichHistoryWeightClass";
-import { applyRecordOverrides } from "../src/lib/mnewsRating/recordOverrides";
+import { applyRecordOverrides, lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
+import { applyWeighInMissRuling } from "../src/lib/mnewsRating/engine";
+import { deriveRecordTotals } from "../src/lib/methodClassify";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 
@@ -37,12 +39,19 @@ function main() {
     const { history, nullBouts } = enrichHistoryWithWeightClass(nameJa, correctedHistory);
     enrichedBoutCount += history.filter((h) => h.weightClass).length;
     entry.history = history;
-    // 注意: entry.wins等はdata/fighterRecords.json側の「既に確定済みの」集計値
-    // (Wikipedia生値ではない)。applyRecordOverridesToTotalsは「Wikipedia生値」への
-    // 一回加算を前提とした関数のため、このスクリプトで再適用すると二重加算になる
-    // (update-fighter-records.tsの日次バッチは毎回Wikipediaから生値を取得し直すため
-    // 安全だが、こちらは既存データをその場でenrichするだけなので対象外)。
-    // このスクリプトはweightClass付与のみを担当し、集計値の再計算は行わない。
+    // 集計値(wins/losses/draws/ko/sub/decision)はhistoryを都度数え直して導出する
+    // (deriveRecordTotalsは純関数・加算ではないため、再実行しても安全=冪等)。
+    // historyが空の記事はinfobox集計のみのケースのため、既存の集計値をそのまま残す。
+    // 計量オーバー裁定がある試合は集計への算入のみノーコンテスト扱いに倒す
+    // (update-fighter-records.tsと同じルール。historyのresultはケージ内の
+    // 実際の結果のまま保持する)。
+    if (history.length > 0) {
+      const effectiveHistory = history.map((h) => ({
+        ...h,
+        result: applyWeighInMissRuling(h.result, lookupWeighInMiss(slug, h.date, h.opponent)),
+      }));
+      Object.assign(entry, deriveRecordTotals(effectiveHistory));
+    }
     for (const b of nullBouts) nullBoutLines.push(`${slug}(${nameJa}) ${b.date} vs ${b.opponent}`);
   }
 
