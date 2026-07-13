@@ -5,6 +5,7 @@
 // 「RIZIN戦績」として意味を持つのはMMAルール戦のみのため、集計時に絞り込む
 // (対象外にした試合は削除ではなく理由つきでexcludedとして返す)。
 import { RizinRecordsBout, RizinRecordsEvent } from "./rizinScraper";
+import { classifyMethodJa, isUnknownMethod } from "../methodClassify";
 
 export interface RizinFighterBout {
   event: string;
@@ -29,7 +30,10 @@ export interface RizinFighterRecord {
   wins: number;
   losses: number;
   draws: number;
-  ncs: number;
+  ncs: number; // no_contest(勝敗いずれにも数えない)
+  ko: number; // 勝ちの内訳(KO/TKO)。ncs/draws/lossesには内訳を持たない
+  sub: number; // 勝ちの内訳(一本)
+  decision: number; // 勝ちの内訳(判定)
   bouts: RizinFighterBout[]; // MMAルール戦のみ(集計対象)
   excluded: RizinExcludedBout[]; // MMAルール以外・対象外として除外した試合
 }
@@ -45,6 +49,9 @@ export function computeFighterMmaRecord(events: RizinRecordsEvent[], slug: strin
   let losses = 0;
   let draws = 0;
   let ncs = 0;
+  let ko = 0;
+  let sub = 0;
+  let decision = 0;
 
   for (const ev of events) {
     for (const b of ev.bouts) {
@@ -69,8 +76,19 @@ export function computeFighterMmaRecord(events: RizinRecordsEvent[], slug: strin
       if (b.resultType === "nc") ncs++;
       else if (b.resultType === "draw") draws++;
       else if (b.resultType === "decisive") {
-        if (isWin) wins++;
-        else losses++;
+        if (isWin) {
+          wins++;
+          // 勝ちの内訳(KO/一本/判定)。分類不能(決着方法テキストが実質空)な
+          // 試合はko/sub/decisionいずれにも計上しない(捏造ゼロ。wins自体は
+          // 上で既に加算済みのため、内訳合計がwinsを下回ることはあっても
+          // 上回ることはない)。
+          if (!isUnknownMethod(b.methodRaw)) {
+            const cls = classifyMethodJa(b.methodRaw);
+            if (cls === "ko") ko++;
+            else if (cls === "sub") sub++;
+            else if (cls === "decision") decision++;
+          }
+        } else losses++;
       }
       // cancelled/unknownは勝敗・NCいずれにも数えない(試合が成立していない、
       // または決着種別を判定できないため)。boutsには記録として残す。
@@ -90,5 +108,5 @@ export function computeFighterMmaRecord(events: RizinRecordsEvent[], slug: strin
   }
 
   bouts.sort((a, b) => (a.date < b.date ? -1 : 1));
-  return { wins, losses, draws, ncs, bouts, excluded };
+  return { wins, losses, draws, ncs, ko, sub, decision, bouts, excluded };
 }

@@ -1270,7 +1270,7 @@
         "date": "2025-07-27",
         "opponent": "朝倉未来",
         "result": "loss",
-        "method": "3R終了3:25 KO (左ハイキック→パウンド)",
+        "method": "3R終了判定",
         "event": "超RIZIN.4 真夏の喧嘩祭り",
         "round": "R3",
         "weightClass": "RIZINフェザー級タイトルマッチ"
@@ -5447,7 +5447,7 @@
   "kate-lotus": {
     "wins": 10,
     "losses": 8,
-    "draws": 0,
+    "draws": 1,
     "ko": 2,
     "sub": 2,
     "decision": 6,
@@ -6023,10 +6023,10 @@
     "age": 24
   },
   "sato-masamitsu": {
-    "wins": 38,
+    "wins": 37,
     "losses": 17,
     "draws": 2,
-    "ko": 20,
+    "ko": 19,
     "sub": 4,
     "decision": 14,
     "history": [
@@ -9213,11 +9213,11 @@
     "age": 30
   },
   "tokoro-hideo": {
-    "wins": 36,
-    "losses": 34,
+    "wins": 33,
+    "losses": 29,
     "draws": 1,
-    "ko": 6,
-    "sub": 21,
+    "ko": 5,
+    "sub": 19,
     "decision": 9,
     "history": [
       {
@@ -10078,7 +10078,7 @@
   },
   "suzuki-hiroaki": {
     "wins": 6,
-    "losses": 6,
+    "losses": 5,
     "draws": 0,
     "ko": 4,
     "sub": 0,
@@ -10455,12 +10455,12 @@
     "age": 23
   },
   "ohara-juri": {
-    "wins": 38,
-    "losses": 21,
+    "wins": 39,
+    "losses": 20,
     "draws": 2,
     "ko": 21,
     "sub": 2,
-    "decision": 12,
+    "decision": 13,
     "history": [
       {
         "date": "2026-05-04",
@@ -13207,7 +13207,7 @@
   },
   "nakamura-daisuke": {
     "wins": 35,
-    "losses": 29,
+    "losses": 28,
     "draws": 1,
     "ko": 8,
     "sub": 19,
@@ -14342,12 +14342,12 @@
     "noRecordData": true
   },
   "strasser-kiichi": {
-    "wins": 21,
-    "losses": 13,
+    "wins": 20,
+    "losses": 12,
     "draws": 2,
     "ko": 2,
     "sub": 10,
-    "decision": 8,
+    "decision": 7,
     "history": [
       {
         "date": "2026-03-20",
@@ -14819,11 +14819,11 @@
     "noRecordData": true
   },
   "uoi-fullswing": {
-    "wins": 27,
-    "losses": 16,
+    "wins": 26,
+    "losses": 17,
     "draws": 4,
     "ko": 12,
-    "sub": 2,
+    "sub": 1,
     "decision": 13,
     "history": [
       {
@@ -15652,11 +15652,11 @@
     "noRecordData": true
   },
   "kurobe-kazusa": {
-    "wins": 6,
+    "wins": 5,
     "losses": 1,
     "draws": 1,
     "ko": 1,
-    "sub": 4,
+    "sub": 3,
     "decision": 1,
     "history": [
       {
@@ -17691,8 +17691,8 @@
     "wins": 25,
     "losses": 15,
     "draws": 9,
-    "ko": 6,
-    "sub": 6,
+    "ko": 7,
+    "sub": 5,
     "decision": 13,
     "history": [
       {
@@ -19452,7 +19452,7 @@
   },
   "patricky-pitbull": {
     "wins": 25,
-    "losses": 16,
+    "losses": 17,
     "draws": 0,
     "ko": 17,
     "sub": 1,
@@ -21340,12 +21340,12 @@
     "age": 32
   },
   "sheydullaev-rajabali": {
-    "wins": 19,
+    "wins": 22,
     "losses": 0,
     "draws": 0,
     "ko": 7,
-    "sub": 12,
-    "decision": 0,
+    "sub": 14,
+    "decision": 1,
     "history": [
       {
         "date": "2026-04-12",
@@ -23269,7 +23269,7 @@
   },
   "kitaoka-satoru": {
     "wins": 45,
-    "losses": 29,
+    "losses": 28,
     "draws": 10,
     "ko": 0,
     "sub": 22,
@@ -25406,10 +25406,10 @@
     "age": 26
   },
   "lee-kaiwen": {
-    "wins": 16,
+    "wins": 15,
     "losses": 8,
     "draws": 0,
-    "ko": 9,
+    "ko": 8,
     "sub": 1,
     "decision": 6,
     "history": [

@@ -1,4 +1,5 @@
 import type { FighterRecordEntry } from "./fighterRecordsCache";
+import { MethodCounts, tallyMethods } from "./methodClassify";
 
 // 戦績ストリップ(events/[slug]・results/[slug]で共用)のデータ算出ロジック。
 // fighterRecords.json のみをソースとし、算出不能な項目はnullで返す(呼び出し側が非表示にする)。
@@ -44,12 +45,7 @@ export interface WinMethodBreakdown {
   decisionPct: number;
 }
 
-export interface MethodCounts {
-  ko: number;
-  sub: number;
-  decision: number;
-  other: number;
-}
+export type { MethodCounts };
 
 // history[].method(日本語の生テキスト、例:"2R 2:24 TKO（パウンド）"
 // "1R 4:31 三角絞め" "5分3R終了 判定1-2")をKO/一本/判定に分類する。
@@ -57,47 +53,8 @@ export interface MethodCounts {
 // infoboxの明示集計値)は勝ち側専用で、負け側の内訳フィールドは存在しない。
 // このためhistoryのraw methodをキーワードで分類して再集計する(推定はしない、
 // 実データのテキスト分類のみ)。分類できない場合はotherに計上する。
-// 決着方法データが実質存在しない(round/time以外の記述が「N/A」のみ等)試合を
-// 検出する。「2R N/A 洗濯ばさみ」のようにtimeだけがN/Aで決まり技名は実在する
-// ケースを誤って弾かないよう、round+time相当のプレフィックスを取り除いた
-// 残りが本当に空/N/Aの場合のみ「不明」とする(捏造ゼロ: 存在しない決着方法を
-// 「その他」という決着があったかのように集計しない)。
-function isUnknownMethod(method: string): boolean {
-  const trimmed = method.trim();
-  if (trimmed === "" || trimmed === "—") return true;
-  const stripped = trimmed.replace(/^\S*\s+[\d:]+\s+/, "").trim();
-  return /^N\/A$/i.test(stripped);
-}
-
-function classifyMethodJa(method: string): keyof MethodCounts {
-  if (method.includes("判定")) return "decision";
-  if (/TKO|KO/i.test(method)) return "ko";
-  // 一本(サブミッション)は決まり技名で表現されることが多いため、代表的な
-  // 関節技・絞め技のキーワードで判定する。history実データを全選手分棚卸しして
-  // 判明した表記ゆれを網羅する:
-  // 絞め系(絞め/チョーク/スリーパー[ホールド]/ドラゴンスリーパー/ネックシザース/
-  // 洗濯ばさみ)、関節技系(固め/腕ひしぎ/三角/クランク/ロック/ヒール[フック・
-  // ホールド]/アームバー/オモプラッタ/アメリカーナ/ツイスター/アンクルホールド/
-  // ニーバー/ストレッチ[スロエフストレッチ・ネックストレッチ等])、その他
-  // 「サブミッション」表記そのもの・「一本」。
-  if (
-    /絞め|クランク|固め|三角|チョーク|腕ひしぎ|ロック|一本|スリーパー|ホールド|ヒール|アームバー|オモプラッタ|アメリカーナ|ツイスター|ネックシザース|洗濯ばさみ|サブミッション|スロエフ|ニーバー|ストレッチ/.test(
-      method
-    )
-  )
-    return "sub";
-  return "other";
-}
-
-function tallyMethods(fights: FighterRecordEntry["history"]): MethodCounts {
-  const counts: MethodCounts = { ko: 0, sub: 0, decision: 0, other: 0 };
-  for (const f of fights) {
-    if (isUnknownMethod(f.method)) continue; // 集計から除外(捏造ゼロ)
-    counts[classifyMethodJa(f.method)]++;
-  }
-  return counts;
-}
-
+// 分類ロジック本体はmethodClassify.tsに集約(mnewsRating側のRIZIN公式集計と
+// 判定基準を共有するため)。
 
 // 勝ち方の内訳(KO/一本/判定の比率)。fighters/[slug]/page.tsx のフィニッシュ内訳バーと
 // 同じ計算式(finishBase = max(wins, ko+sub+decision) || 1)に揃える。
