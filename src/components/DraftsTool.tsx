@@ -503,6 +503,23 @@ const RATIO_OPTIONS: { key: "1:1" | "4:5" | "16:9"; label: string }[] = [
   { key: "16:9", label: "横16:9" },
 ];
 
+// 通し番号(①②③…)の丸数字表記。実運用フォーマット
+// 「【大会名 注目カード①】」向け。21以上は丸数字が無いため"(21)"のように括弧数字にフォールバックする。
+const CIRCLED_DIGITS = "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳".split("");
+function circledNumber(n: number): string {
+  return CIRCLED_DIGITS[n - 1] ?? `(${n})`;
+}
+
+// events.ts側のweightClassは「女子スーパーアトム級（49.0kg）」のように階級名と
+// 契約体重が全角括弧でひとまとまりになっている。投稿文フォーマットは
+// 「女子スーパーアトム級・49.0kg」の中黒区切りのため、ここで組み替える
+// (捏造ではなく既存の1フィールドを表示用に分割するだけ)。括弧が無い表記
+// (例:「64.0kg契約」)はそのまま返す。
+function formatWeightClassForPost(wc: string): string {
+  const m = wc.match(/^(.*?)[（(]([^）)]+)[）)]\s*$/);
+  return m ? `${m[1]}・${m[2]}` : wc;
+}
+
 function VsCompareTab({
   fighters,
   events,
@@ -521,6 +538,9 @@ function VsCompareTab({
   const [manualA, setManualA] = useState("");
   const [manualB, setManualB] = useState("");
   const [ratio, setRatio] = useState<"1:1" | "4:5" | "16:9">("4:5");
+  // 通し番号(①②③…)。大会の複数カードを順番に書き出す運用のため、カード選択が
+  // 変わっても引き継ぐ(選択のたびにリセットしない)。運用者が手動で増減する。
+  const [cardNumber, setCardNumber] = useState(1);
 
   const event = events.find((e) => e.slug === eventSlug);
 
@@ -559,19 +579,30 @@ function VsCompareTab({
   const imagePath = picked ? ogImagePath(`/api/og/vs-compare/${picked.slugA}/${picked.slugB}?${query.toString()}`) : null;
   const imageUrl = imagePath ? `${SITE_URL}${imagePath}` : null;
 
-  // 投稿文の下書き(あくまで下書き補助。投稿は手動)。共通対戦相手・直近5戦・
-  // 注目点はタブ③と同じ純関数で算出する(このタブ独自のロジックは持たない)。
-  const postText = useMemo(() => {
+  // 投稿文の下書き(実運用フォーマットに準拠)。共通対戦相手・直近5戦・注目点は
+  // タブ③・OG画像ルートと同じ純関数で算出する(このタブ独自のデータ計算はしない)。
+  // 生成結果はあくまで叩き台で、下のtextareaで運用者が編集してから投稿する
+  // (自動投稿はしない)。
+  //
+  // フォーマット:
+  //   【{大会名} 注目カード{①②③…}】
+  //   {選手A} vs {選手B}（{階級}・{契約体重}）
+  //   共通対戦相手{N}人
+  //   {選手A} 直近{n}戦{w}勝{l}敗／{選手B} 直近{n}戦{w}勝{l}敗
+  //   ・{注目点1}
+  //   ・{注目点2}
+  //   #RIZIN #{大会名を詰めたハッシュタグ}
+  const suggestedPostText = useMemo(() => {
     if (!picked || !entryA || !entryB || entryA.noRecordData || entryB.noRecordData) return "";
     const statsA = computeFighterStripStats(entryA);
     const statsB = computeFighterStripStats(entryB);
     const commons = computeCommonOpponents(entryA, entryB);
     const uniqueCommons = new Set(commons.map((c) => c.name)).size;
     const notable = computeNotablePoints(picked.nameA, entryA, picked.nameB, entryB);
-    // 投稿冒頭は【大会名_注目カード】タグ(大会名は選択済みイベントから自動変換。
-    // 任意の2選手モード等、大会名が無い場合は名前部分を省いた【注目カード】)。
-    const tag = picked.ev ? `【${picked.ev}_注目カード】` : "【注目カード】";
-    const lines = [tag, `${picked.nameA} vs ${picked.nameB}${picked.wc ? `（${picked.wc}）` : ""}`];
+
+    const tag = picked.ev ? `【${picked.ev} 注目カード${circledNumber(cardNumber)}】` : `【注目カード${circledNumber(cardNumber)}】`;
+    const wcPart = picked.wc ? `（${formatWeightClassForPost(picked.wc)}）` : "";
+    const lines = [tag, `${picked.nameA} vs ${picked.nameB}${wcPart}`];
     if (uniqueCommons > 0) lines.push(`共通対戦相手${uniqueCommons}人`);
     if (statsA.last5.length > 0 || statsB.last5.length > 0) {
       const l5 = (name: string, s: typeof statsA) => {
@@ -588,7 +619,15 @@ function VsCompareTab({
     if (picked.ev) tags.push(`#${picked.ev.replace(/[\s　]/g, "")}`);
     lines.push(tags.join(" "));
     return lines.join("\n");
-  }, [picked, entryA, entryB]);
+  }, [picked, entryA, entryB, cardNumber]);
+
+  // 提案文をベースに運用者が自由編集できるようtextareaで保持する。選択(picked)や
+  // 通し番号が変わるたびに提案文へ追従する(直前の手直しは上書きされる。カードごとに
+  // 提案→必要なら微調整、という運用を想定)。
+  const [postText, setPostText] = useState("");
+  useEffect(() => {
+    setPostText(suggestedPostText);
+  }, [suggestedPostText]);
 
   return (
     <div>
@@ -668,12 +707,17 @@ function VsCompareTab({
         </div>
       )}
 
-      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-        {RATIO_OPTIONS.map((r) => (
-          <button key={r.key} style={ratio === r.key ? tabBtnActive : tabBtn} onClick={() => setRatio(r.key)}>
-            {r.label}
-          </button>
-        ))}
+      <div>
+        <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
+          通し番号(①②③…・大会の複数カードを順番に書き出す時に使う)
+        </label>
+        <input
+          type="number"
+          min={1}
+          value={cardNumber}
+          onChange={(e) => setCardNumber(Math.max(1, Number(e.target.value) || 1))}
+          style={{ padding: "8px 12px", fontSize: 14, width: 80, marginBottom: 16 }}
+        />
       </div>
 
       {picked && !dataAvailable && (
@@ -682,47 +726,71 @@ function VsCompareTab({
         </p>
       )}
 
-      {picked && dataAvailable && imagePath && (
+      {picked && dataAvailable && (
         <>
-          <div style={{ marginBottom: 16 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imagePath}
-              alt="対戦カード比較プレビュー"
-              style={{ width: "100%", maxWidth: 420, border: "1px solid var(--border)", display: "block" }}
+          {/* 投稿文の下書きが主導線(実際にXへ投稿しているフォーマットに合わせて自動生成)。
+              画像はMニュースの該当ページからスクショして使う運用のため、画像プレビュー・
+              ダウンロードは補助として下に残す。 */}
+          <div style={{ marginBottom: 24 }}>
+            <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
+              投稿文の下書き(自動生成・編集してから投稿してください)
+            </label>
+            <textarea
+              value={postText}
+              onChange={(e) => setPostText(e.target.value)}
+              rows={8}
+              style={{
+                display: "block",
+                width: "100%",
+                whiteSpace: "pre-wrap",
+                fontFamily: "var(--mono)",
+                fontSize: 13,
+                background: "var(--s2)",
+                padding: 12,
+                border: "1px solid var(--border)",
+                margin: "0 0 10px",
+                boxSizing: "border-box",
+              }}
             />
-          </div>
-          <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
-            <a
-              href={imagePath}
-              download={`${picked.slugA}-vs-${picked.slugB}-${ratio.replace(":", "x")}.png`}
-              style={{ padding: "10px 20px", background: "var(--accent)", color: "#fff", borderRadius: 6, fontWeight: 700, fontSize: 14, textDecoration: "none" }}
-            >
-              画像をダウンロード(PNG)
-            </a>
-            <CopyButton text={imageUrl ?? ""} label="画像URLをコピー" />
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <CopyButton text={postText} label="投稿文をコピー" />
+              {postText !== suggestedPostText && (
+                <button style={chip} onClick={() => setPostText(suggestedPostText)}>
+                  自動生成に戻す
+                </button>
+              )}
+            </div>
           </div>
 
-          {postText && (
-            <div>
-              <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
-                投稿文の下書き(参考用・手動で確認・編集してから投稿してください)
-              </label>
-              <pre
-                style={{
-                  whiteSpace: "pre-wrap",
-                  fontFamily: "var(--mono)",
-                  fontSize: 13,
-                  background: "var(--s2)",
-                  padding: 12,
-                  border: "1px solid var(--border)",
-                  margin: "0 0 10px",
-                }}
-              >
-                {postText}
-              </pre>
-              <CopyButton text={postText} label="投稿文をコピー" />
-            </div>
+          <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+            {RATIO_OPTIONS.map((r) => (
+              <button key={r.key} style={ratio === r.key ? tabBtnActive : tabBtn} onClick={() => setRatio(r.key)}>
+                {r.label}
+              </button>
+            ))}
+          </div>
+
+          {imagePath && (
+            <>
+              <div style={{ marginBottom: 16 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={imagePath}
+                  alt="対戦カード比較プレビュー"
+                  style={{ width: "100%", maxWidth: 420, border: "1px solid var(--border)", display: "block" }}
+                />
+              </div>
+              <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
+                <a
+                  href={imagePath}
+                  download={`${picked.slugA}-vs-${picked.slugB}-${ratio.replace(":", "x")}.png`}
+                  style={{ padding: "10px 20px", background: "var(--accent)", color: "#fff", borderRadius: 6, fontWeight: 700, fontSize: 14, textDecoration: "none" }}
+                >
+                  画像をダウンロード(PNG)
+                </a>
+                <CopyButton text={imageUrl ?? ""} label="画像URLをコピー" />
+              </div>
+            </>
           )}
         </>
       )}
