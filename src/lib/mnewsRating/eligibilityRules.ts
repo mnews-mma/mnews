@@ -77,11 +77,38 @@ export function isStandardEligible(
   return isEligible(counts, asOf);
 }
 
+// 2026-07-13厳格化: 対戦相手が、その勝利の日付「時点で」標準資格(B-2)を
+// 満たしていたかを判定する。baseRankersByDivisionは現在(バッチ実行時点)の
+// 標準資格集合の1スナップショットのため、「今は標準資格があるが、倒された
+// その試合の時点ではまだ資格条件(通算3戦 or 直近年2戦、1勝以上)を満たして
+// いなかった相手」への勝利まで特例対象に含めてしまう穴があった。対戦相手
+// 自身の対戦をその日付以前だけに絞り、その日を基準日として標準資格を
+// 再判定することでこれを塞ぐ(階級は現在の掲載階級をそのまま使う。階級変更
+// 自体はB-2の別ロジックで扱うためここでは再判定しない=対象外)。
+function wasStandardEligibleAsOfDate(
+  opponentSlug: string,
+  asOfDateStr: string,
+  boutSummariesBySlug: Map<string, FighterBoutSummary[]>,
+  divisionBySlug: Map<string, MnewsDivision | null>
+): boolean {
+  const opponentDivision = divisionBySlug.get(opponentSlug);
+  if (!opponentDivision) return false;
+  const opponentSummaries = boutSummariesBySlug.get(opponentSlug) ?? [];
+  const scoped = opponentSummaries.filter((s) => s.date <= asOfDateStr);
+  if (scoped.length === 0) return false;
+  const lastFightDate = scoped.reduce((latest, s) => (s.date > latest ? s.date : latest), scoped[0].date);
+  const asOfDate = new Date(`${asOfDateStr}T00:00:00Z`);
+  return isStandardEligible(scoped, opponentDivision, lastFightDate, asOfDate);
+}
+
 // B-1: ランカー勝ち特例。baseRankersByDivisionは「標準資格(B-2適用後)を満たす
 // 選手」の階級別集合を1回だけ確定させたもの(単一パス。この特例で新規に資格を
 // 得た選手を倒したかは見ない=カスケードしない)。対象選手が、自分の掲載階級の
-// ベースランカーに対し、yearPrefix年に開催されたRIZIN MMA本戦で勝っていれば
-// 免除対象とする(順位はElo通りのまま。ここは資格の可否のみを返す)。
+// ベースランカーに対し、yearPrefix年に開催されたRIZIN MMA本戦で勝っており、
+// かつその対戦相手がその勝利の時点でも標準資格(=ランキング掲載中のランカー)
+// だった場合にのみ免除対象とする(順位はElo通りのまま。ここは資格の可否のみを
+// 返す)。ノーランカー(その時点でまだ標準資格を満たしていなかった相手)への
+// 勝利では特例は発動しない。
 export function findRankerWinExemptions(
   boutSummariesBySlug: Map<string, FighterBoutSummary[]>,
   divisionBySlug: Map<string, MnewsDivision | null>,
@@ -94,7 +121,13 @@ export function findRankerWinExemptions(
     if (!division) continue;
     const rankers = baseRankersByDivision.get(division);
     if (!rankers || rankers.size === 0) continue;
-    const beatARanker = summaries.some((s) => s.isWin && s.date.startsWith(yearPrefix) && rankers.has(s.opponentNode));
+    const beatARanker = summaries.some(
+      (s) =>
+        s.isWin &&
+        s.date.startsWith(yearPrefix) &&
+        rankers.has(s.opponentNode) &&
+        wasStandardEligibleAsOfDate(s.opponentNode, s.date, boutSummariesBySlug, divisionBySlug)
+    );
     if (beatARanker) exempted.add(slug);
   }
   return exempted;

@@ -1,7 +1,7 @@
 // rankings.json の出力構造を組み立てる純関数群。I/O(fs)は持たない。
 // 呼び出し側(scripts/update-mnews-rating.ts)がdata/fighterRecords.jsonと
 // 前回のrankings.jsonを読み込み、ここへ渡す。
-import { ALGORITHM_VERSION, CHAMPION_DISPLAY_MODE } from "./constants";
+import { ALGORITHM_VERSION, CHAMPION_DISPLAY_MODE, MAX_RANKED_ENTRIES } from "./constants";
 import { DisplayEntry } from "./engine";
 import { DIVISION_SLUG, MnewsDivision } from "./divisions";
 
@@ -91,8 +91,10 @@ export function buildDivisionRankings(
 
   const pool = isBadgeMode ? eligibleEntries : eligibleEntries.filter((e) => e.meta.slug !== champion?.fighterId);
   // 順位は常に生の表示レート(丸め前)の降順で決める。丸めて同点表示になっても
-  // 順位は一意(生レートの差で決まる)。
-  const sorted = [...pool].sort((a, b) => b.display.displayRating - a.display.displayRating);
+  // 順位は一意(生レートの差で決まる)。表示は上位MAX_RANKED_ENTRIES名まで
+  // (掲載資格を満たす選手が増えても、資格ギリギリの下位選手まで延々と表示し
+  // 続けない。王者は別枠のためこの上限には数えない)。
+  const sorted = [...pool].sort((a, b) => b.display.displayRating - a.display.displayRating).slice(0, MAX_RANKED_ENTRIES);
 
   const entries: RankingEntry[] = sorted.map((e, i) => {
     const rawRating = e.display.displayRating;

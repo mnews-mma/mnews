@@ -20,6 +20,7 @@ import {
   DECAY_FLOOR,
   ELIGIBILITY_RECENT_MIN_FIGHTS,
   ELIGIBILITY_RECENT_YEAR_START,
+  MAX_RANKED_ENTRIES,
 } from "../src/lib/mnewsRating/constants";
 import {
   buildDivisionRankings,
@@ -718,9 +719,18 @@ function makeResolver(map: Record<string, string>) {
     return { key: `${date}|${aNode}|${bNode}`, date, aNode, bNode, opponentLabel: bNode, scoreA, finish: false, method: "判定" };
   }
 
+  // ranker-1: 「その時点で」標準資格を満たす実績を持つランカー役
+  // (2026年に2戦以上・通算1勝以上)。2026-07-13厳格化により、対戦相手自身も
+  // 勝利の時点で標準資格を満たしている必要があるため、テスト用ランカーにも
+  // 現実的な下地の戦績を持たせる。
+  const rankerBackground: Bout[] = [
+    bout("2025-06-05", "ranker-1", "filler-a", 1),
+    bout("2025-08-10", "ranker-1", "filler-b", 1),
+  ];
+
   // 19-1. 3戦未満でも、その年にランカーへ勝てば3戦要件を免除される(1勝要件も兼ねる)
   {
-    const bouts: Bout[] = [bout("2026-03-01", "newcomer", "ranker-1", 1)];
+    const bouts: Bout[] = [...rankerBackground, bout("2026-03-01", "newcomer", "ranker-1", 1)];
     const divisionBySlug = new Map<string, MnewsDivision | null>([
       ["newcomer", "フェザー級"],
       ["ranker-1", "フェザー級"],
@@ -734,9 +744,29 @@ function makeResolver(map: Record<string, string>) {
     check(exempted.has("newcomer"), "B-1: 通算1戦でもその年にランカーへ勝てば資格特例の対象になる");
   }
 
+  // 19-1b. 2026-07-13厳格化: 対戦相手がその勝利の時点でまだ標準資格を満たして
+  // いなければ(ノーランカー)、特例は発動しない。
+  {
+    const bouts: Bout[] = [bout("2026-03-01", "newcomer2", "no-ranker", 1)]; // no-rankerは他に実績なし
+    const divisionBySlug = new Map<string, MnewsDivision | null>([
+      ["newcomer2", "フェザー級"],
+      ["no-ranker", "フェザー級"],
+    ]);
+    // no-rankerは(現在は他選手の勝ちで偶然ベースランカー集合に入っているとしても)
+    // その勝利の時点では実績が無い、というケースを再現するため、baseRankersには
+    // 直接含めておく(現行スナップショットでは標準資格ありという体)。
+    const baseRankers = new Map<MnewsDivision, Set<string>>([["フェザー級", new Set(["no-ranker"])]]);
+    const summariesBySlug = new Map<string, FighterBoutSummary[]>([
+      ["newcomer2", summarizeBoutsForFighter(bouts, "newcomer2")],
+      ["no-ranker", summarizeBoutsForFighter(bouts, "no-ranker")],
+    ]);
+    const exempted = findRankerWinExemptions(summariesBySlug, divisionBySlug, baseRankers, "2026-");
+    check(!exempted.has("newcomer2"), "B-1厳格化: 対戦相手がその勝利の時点で標準資格を満たしていなければ特例は発動しない(黒井型のノーランカー穴を塞ぐ)");
+  }
+
   // 19-2. ランカーに負けた選手は免除対象にならない
   {
-    const bouts: Bout[] = [bout("2026-03-01", "challenger", "ranker-1", 0)];
+    const bouts: Bout[] = [...rankerBackground, bout("2026-03-01", "challenger", "ranker-1", 0)];
     const divisionBySlug = new Map<string, MnewsDivision | null>([
       ["challenger", "フェザー級"],
       ["ranker-1", "フェザー級"],
@@ -752,7 +782,11 @@ function makeResolver(map: Record<string, string>) {
 
   // 19-3. 別階級のランカーに勝っても対象にならない(同一階級内のみ)
   {
-    const bouts: Bout[] = [bout("2026-03-01", "candidate", "lw-ranker", 1)];
+    const bouts: Bout[] = [
+      bout("2026-01-05", "lw-ranker", "filler-a", 1),
+      bout("2026-02-10", "lw-ranker", "filler-b", 1),
+      bout("2026-03-01", "candidate", "lw-ranker", 1),
+    ];
     const divisionBySlug = new Map<string, MnewsDivision | null>([
       ["candidate", "フェザー級"],
       ["lw-ranker", "ライト級"],
@@ -771,7 +805,11 @@ function makeResolver(map: Record<string, string>) {
 
   // 19-4. 前年の勝利は対象にならない(当年開催の大会のみ)
   {
-    const bouts: Bout[] = [bout("2025-12-31", "candidate", "ranker-1", 1)];
+    const bouts: Bout[] = [
+      bout("2025-06-05", "ranker-1", "filler-a", 1),
+      bout("2025-08-10", "ranker-1", "filler-b", 1),
+      bout("2025-12-31", "candidate", "ranker-1", 1),
+    ];
     const divisionBySlug = new Map<string, MnewsDivision | null>([
       ["candidate", "フェザー級"],
       ["ranker-1", "フェザー級"],
@@ -788,6 +826,7 @@ function makeResolver(map: Record<string, string>) {
   // 19-5. カスケードしない: 特例で新規に入った選手Bへの勝利では、Cは特例の対象にならない(単一パス)
   {
     const bouts: Bout[] = [
+      ...rankerBackground,
       bout("2026-01-01", "newcomer-b", "ranker-1", 1), // Bがランカーに勝ち特例対象になる
       bout("2026-03-01", "candidate-c", "newcomer-b", 1), // CはBに勝つ(Bはベースランカーではない)
     ];
@@ -896,18 +935,34 @@ function makeResolver(map: Record<string, string>) {
   );
 }
 
-// ── 22. (iv) 掲載資格基準: 通算3戦以上 OR 直近年2戦以上 ───────────────────
+// ── 22. (iv) 掲載資格基準: 通算3戦以上 OR 直近年3戦以上(2026-07-13、v5でRIZIN2戦→3戦に引き上げ) ──
 {
   const asOf = new Date(`${Number(ELIGIBILITY_RECENT_YEAR_START) + 1}-01-15`);
 
-  // 通算2戦のみだが、直近年に2戦(1勝1敗)している選手は資格を得る
+  // 直近年に3戦(1勝2敗)している選手は資格を得る(v5でELIGIBILITY_RECENT_MIN_FIGHTS=
+  // ELIGIBILITY_MIN_FIGHTSと同値の3になったため、直近3戦は通算3戦以上の基準とも
+  // 一致して両基準が同時に満たされる。従来のような「通算は3戦未満だが直近年だけ
+  // 3戦」という独立した抜け道ケースは、この引き上げにより意味を持たなくなった
+  // 、というのがこの変更の意図そのもの=直樹型の薄い戦績での掲載を防ぐ)。
+  const recentThreeFights: FighterBoutSummary[] = [
+    { date: `${ELIGIBILITY_RECENT_YEAR_START}-06-01`, isWin: true, opponentNode: "opp-a" },
+    { date: `${ELIGIBILITY_RECENT_YEAR_START}-04-01`, isWin: false, opponentNode: "opp-b" },
+    { date: `${ELIGIBILITY_RECENT_YEAR_START}-03-01`, isWin: false, opponentNode: "opp-c" },
+  ];
+  check(
+    isStandardEligible(recentThreeFights, "フライ級", recentThreeFights[0].date, asOf),
+    `(iv): ${ELIGIBILITY_RECENT_YEAR_START}年以降${ELIGIBILITY_RECENT_MIN_FIGHTS}戦以上・1勝あれば資格を得る`
+  );
+
+  // 2026-07-13緊急修正: 直近年2戦のみ(旧基準では資格ありだったが、v5で3戦に
+  // 引き上げたため資格なしになる。直樹のケース=薄い戦績での掲載を防ぐ)。
   const recentTwoFights: FighterBoutSummary[] = [
     { date: `${ELIGIBILITY_RECENT_YEAR_START}-06-01`, isWin: true, opponentNode: "opp-a" },
     { date: `${ELIGIBILITY_RECENT_YEAR_START}-03-01`, isWin: false, opponentNode: "opp-b" },
   ];
   check(
-    recentTwoFights.length < 3 && isStandardEligible(recentTwoFights, "フライ級", recentTwoFights[0].date, asOf),
-    `(iv): 通算${recentTwoFights.length}戦でも${ELIGIBILITY_RECENT_YEAR_START}年以降${ELIGIBILITY_RECENT_MIN_FIGHTS}戦以上・1勝あれば資格を得る`
+    !isStandardEligible(recentTwoFights, "フライ級", recentTwoFights[0].date, asOf),
+    "(iv)v5厳格化: 直近年2戦のみでは資格を得ない(3戦に引き上げ済み。直樹型の薄い戦績掲載を防ぐ)"
   );
 
   // 直近年1戦のみ(基準未達)・通算も3戦未満なら資格なし
@@ -1068,7 +1123,7 @@ function makeResolver(map: Record<string, string>) {
   const prevWithRaw: DivisionRankings = {
     division: "フェザー級",
     updatedAt: "2025-12-31T00:00:00.000Z",
-    algorithmVersion: 4,
+    algorithmVersion: ALGORITHM_VERSION,
     champion: null,
     entries: [
       { fighterId: "fighter-x1", rank: 1, rating: 1600, rawRating: 1596, delta: null, record: { wins: 2, losses: 1, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false },
@@ -1090,7 +1145,7 @@ function makeResolver(map: Record<string, string>) {
   const prevWithoutRaw = {
     division: "フェザー級" as const,
     updatedAt: "2025-12-31T00:00:00.000Z",
-    algorithmVersion: 4,
+    algorithmVersion: ALGORITHM_VERSION,
     champion: null,
     entries: [
       { fighterId: "fighter-x1", rank: 1, rating: 1590, delta: null, record: { wins: 2, losses: 1, draws: 0 }, lastFight: "2025-12-01", weighInMiss: false },
@@ -1347,6 +1402,33 @@ function makeResolver(map: Record<string, string>) {
   check(
     suzukiHistory.some((h) => h.date === "2022-07-02" && h.opponent === "平本蓮"),
     "totalsAlreadyReflected: historyへの追加(試合結果テーブル表示)は行われる"
+  );
+}
+
+// ── 33. v5: 掲載ランキングの表示上限(MAX_RANKED_ENTRIES) ─────────────────
+{
+  function makeEntry(slug: string, rawRating: number) {
+    return {
+      meta: { slug, division: "フェザー級" as const, weighInMiss: false },
+      display: { slug, rawRating, displayRating: rawRating, fights: 3, wins: 2, losses: 1, draws: 0, lastFightDate: "2026-01-01", eligible: true },
+    };
+  }
+  const manyEntries = Array.from({ length: MAX_RANKED_ENTRIES + 5 }, (_, i) => makeEntry(`fighter-${i}`, 2000 - i));
+  const result = buildDivisionRankings("フェザー級", manyEntries, new Date("2026-01-01"), undefined, null);
+  check(result.entries.length === MAX_RANKED_ENTRIES, `v5: 掲載資格者が${manyEntries.length}名いても表示は上位${MAX_RANKED_ENTRIES}名まで (got ${result.entries.length})`);
+  check(
+    result.entries[result.entries.length - 1].fighterId === `fighter-${MAX_RANKED_ENTRIES - 1}`,
+    "v5: 上限で切られるのはレート下位側(上位からMAX_RANKED_ENTRIES名がそのまま残る)"
+  );
+
+  // 王者はoverlayモードで番号付きリストから既に除外されているため、上限には
+  // 数えない(MAX_RANKED_ENTRIES名の番号付き選手 + 王者1名 = 表示は計16名になる)。
+  const championSlug = "fighter-0";
+  const championOverlay: ChampionOverlay = { fighterId: championSlug, rating: 2000, record: { wins: 5, losses: 0, draws: 0 }, lastFight: "2026-01-01" };
+  const resultWithChampion = buildDivisionRankings("フェザー級", manyEntries, new Date("2026-01-01"), undefined, championOverlay);
+  check(
+    resultWithChampion.entries.length === MAX_RANKED_ENTRIES && resultWithChampion.champion?.fighterId === championSlug,
+    "v5: 王者はMAX_RANKED_ENTRIESの上限カウントに含まれない(番号付きリストは王者を除いた上位から数える)"
   );
 }
 

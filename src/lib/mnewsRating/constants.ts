@@ -11,7 +11,7 @@ export const RATING_NAME = "AI RIZINランキング";
 export const RATING_KEY = "mnewsRating";
 
 // 算出方法を変更したらインクリメントする。
-export const ALGORITHM_VERSION = 4;
+export const ALGORITHM_VERSION = 5;
 
 export const INITIAL_RATING = 1500;
 export const K_BASE = 32; // 判定勝ち・ドロー
@@ -28,8 +28,15 @@ export const ELIGIBILITY_MAX_INACTIVE_MONTHS = 18;
 // 2026-07-13追加(v4): 通算3戦未満でも、直近活動が濃い選手を拾うための代替基準。
 // 「通算3戦以上」OR「ELIGIBILITY_RECENT_YEAR_START年以降にELIGIBILITY_RECENT_MIN_FIGHTS戦以上」
 // のいずれかを満たせば試合数の要件をクリアする(1勝以上・18ヶ月以内は従来どおり必須)。
-export const ELIGIBILITY_RECENT_MIN_FIGHTS = 2;
+// 2026-07-13(v5)再修正: 2戦だと通算1勝1敗のような薄い戦績でも掲載されてしまう
+// (直樹のケースで発覚)ため、代替基準も通算基準と同じ3戦に引き上げた。
+export const ELIGIBILITY_RECENT_MIN_FIGHTS = 3;
 export const ELIGIBILITY_RECENT_YEAR_START = "2025";
+
+// 2026-07-13(v5): 掲載ランキングの表示上限(番号付きリストのみ・王者は別枠なので
+// 対象外)。掲載資格を満たす選手が増えても、下位の資格ギリギリの選手まで
+// 延々と表示し続けない。
+export const MAX_RANKED_ENTRIES = 15;
 
 // 王者の表示方式(UFC方式がデフォルト)。
 // "overlay": 番号付きランキングから王者を除外し、最上段に別掲載する(1位=王者を
@@ -40,8 +47,7 @@ export const ELIGIBILITY_RECENT_YEAR_START = "2025";
 export const CHAMPION_DISPLAY_MODE: "overlay" | "badge" = "overlay";
 
 // 非対称傾斜Eloのパラメータプリセット。比較検証用に3段階を用意し、目視レビュー
-// の結果MODERATEを採用した(update-mnews-rating.tsのcomputeRawRatings呼び出しで
-// 使用)。MILD/STRONGは将来の再検討用に残す。
+// の結果MODERATEを採用した。MILD/STRONGは将来の再検討用に残す(過去バージョンの参照用)。
 export const ELO_PARAMS_MILD: AsymmetricEloParams = {
   strongWinBoost: 1.15,
   weakWinDampen: 0.85,
@@ -67,4 +73,21 @@ export const ELO_PARAMS_STRONG: AsymmetricEloParams = {
   weakLossBoost: 1.5,
   thinResumeFightThreshold: 3,
   thinResumeWinDampen: 0.3,
+};
+
+// 2026-07-13(v5)追加: MODERATEの対称強化(勝ち側・負け側を同倍率で強める)は
+// 「自分の対戦前レートを基準に格上/格下を判定する」という仕組み上、直近で
+// 連敗した選手(自分の過去の高レートを基準に「格下に負けた」と判定されやすい)
+// をさらに沈め、逆に戦績が乱高下する選手(自分の一時的に下がったレートを基準に
+// 「格上を撃破した」と判定されやすい)をさらに持ち上げる、という比較ダンプでの
+// 目視レビューの結果判明した逆効果があった。勝ち側だけを強める非対称な調整
+// (weakLossBoostは現状維持に近い水準に留める)の方が意図に近い動きをしたため、
+// v5ではこちらを採用する。
+export const ELO_PARAMS_V5: AsymmetricEloParams = {
+  strongWinBoost: 1.8,
+  weakWinDampen: 0.7,
+  strongLossDampen: 0.9,
+  weakLossBoost: 1.1,
+  thinResumeFightThreshold: 3,
+  thinResumeWinDampen: 0.5,
 };
