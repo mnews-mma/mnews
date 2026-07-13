@@ -42,7 +42,7 @@ import {
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
-import { getDivisionOverlay, getEligibilityScopeStartDate } from "../src/lib/mnewsRating/fighterDivisions";
+import { getDivisionOverlay, getEligibilityScopeStartDate, getRecordDisplayExclusions } from "../src/lib/mnewsRating/fighterDivisions";
 import { ALGORITHM_VERSION, ELO_PARAMS_V5, DECAY_PARAMS_V6, INITIAL_RATING_BOOST_PARAMS_V6 } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
@@ -98,16 +98,18 @@ function lastRizinMmaWeighInMiss(records: FighterRecordsInput, slug: string): bo
   return latest ? detectWeighInMiss(latest) : false;
 }
 
-// 事実オーバーレイ(fighterDivisions.ts)に戦績スコープ起点日の指定がある選手は、
-// 表示用の戦績(wins/losses/draws)をその日付以降の対戦だけで数え直す(例: 武田光司の
-// フェザー転向後3-2)。rawRating/displayRating/eligibleはここでは一切変更しない
-// (順位・レートへの手動介入はしない、という原則を守るため、Eloは常に全期間の
-// 対戦列で計算したままにする。ここで上書きするのは表示専用のwins/losses/draws
-// フィールドのみ)。指定が無い選手はdisplayをそのまま返す(フォールバック)。
+// 事実オーバーレイ(fighterDivisions.ts)に戦績スコープ起点日・個別除外試合の
+// 指定がある選手は、表示用の戦績(wins/losses/draws)をそれに沿って数え直す
+// (例: 武田光司のフェザー転向後3-2、ケラモフの単発ライト級タイトルマッチ除外)。
+// rawRating/displayRating/eligibleはここでは一切変更しない(順位・レートへの
+// 手動介入はしない、という原則を守るため、Eloは常に全期間の対戦列で計算した
+// ままにする。ここで上書きするのは表示専用のwins/losses/drawsフィールドのみ)。
+// 指定が無い選手はdisplayをそのまま返す(フォールバック)。
 function applyEligibilityScopeToRecord(slug: string, display: DisplayEntry, bouts: Bout[]): DisplayEntry {
   const scopeStart = getEligibilityScopeStartDate(slug);
-  if (!scopeStart) return display;
-  const scoped = computeScopedRecord(bouts, slug, scopeStart);
+  const exclusions = getRecordDisplayExclusions(slug).map((e) => ({ date: e.date, opponentNode: e.opponentSlug }));
+  if (!scopeStart && exclusions.length === 0) return display;
+  const scoped = computeScopedRecord(bouts, slug, scopeStart, exclusions);
   return { ...display, wins: scoped.wins, losses: scoped.losses, draws: scoped.draws };
 }
 

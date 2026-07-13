@@ -12,11 +12,21 @@
 // されている場合のみ機能するが、RIZIN公式ソースでも階級名の明示が無い選手
 // (例: 武田光司)では自動検出できないため、事実として起点日を手動指定する。
 // 指定が無ければ従来どおり全期間を対象にする。
+// recordDisplayExclusions: 通算戦績のスコープ起点(eligibilityScopeStartDate)
+// では表現できない、キャリア途中の単発の他階級試合(例: フェザー級選手が
+// 一度だけライト級タイトルマッチに出た)を、戦績表示からピンポイントで
+// 除外する。順位・レート・掲載資格の判定には一切影響しない(表示テキストのみ)。
+export interface RecordDisplayExclusion {
+  date: string; // rizinRecords.json優先適用後のhistory側の日付
+  opponentSlug: string; // 対戦相手の自社DB slug
+}
+
 export interface FighterDivisionOverlayEntry {
   slug: string;
   name: string;
   division: "フライ級" | "バンタム級" | "フェザー級" | "ライト級" | "ヘビー級";
   eligibilityScopeStartDate?: string; // YYYY-MM-DD。この日付以降の試合のみを戦績集計の対象にする
+  recordDisplayExclusions?: RecordDisplayExclusion[];
   fetchedDate: string;
   note: string;
 }
@@ -76,6 +86,27 @@ export const FIGHTER_DIVISION_OVERLAYS: FighterDivisionOverlayEntry[] = [
       "問題なく満たすため資格判定には影響が無く、表示戦績のみが誤って通算表示に" +
       "なっていた。表示戦績のみ事実として起点日を手動指定する。",
   },
+  {
+    slug: "karamov-vugar",
+    name: "ヴガール・ケラモフ",
+    division: "フェザー級",
+    recordDisplayExclusions: [{ date: "2024-12-31", opponentSlug: "souza-roberto-satoshi" }],
+    fetchedDate: "2026-07-14",
+    note:
+      "ケラモフのフェザー級ランキング表示戦績が9-4になっていた(本番/rankings/featherweightで確認、" +
+      "2026-07-14)。原因は2件: (1) Wikipedia戦績表の本人ページだけ堀江圭功戦(RIZIN.41)を" +
+      "2023-04-02、朝倉未来戦(超RIZIN.2)を2023-07-31と1日ずれて記録しており(相手側ページ・" +
+      "RIZIN公式ソースはそれぞれ2023-04-01・2023-07-30で一致)、buildBoutsのDB内対決重複排除が" +
+      "date完全一致キーのため二重カウントされていた(RECORD_OVERRIDESのpatch-date型で訂正済み。" +
+      "訂正後の通算は7勝4敗)。(2) 2024-12-31のRIZIN.49はRIZINライト級タイトルマッチ(サトシ戦、" +
+      "敗戦)であり、ケラモフ自身はフェザー級選手でこの一戦のみ単発でライト級に出た" +
+      "(前後の試合はいずれもフェザー級)。武田光司の71.0kg契約単発と同種の一時的な階級越えだが、" +
+      "この試合は階級名が明示されている(「ライト級」)ため、latestRizinDivision/掲載資格には" +
+      "影響しない(単発ゆえ孤立excursionとして無視される)。フェザー級としての戦績表示からは" +
+      "この1敗を除外するのが妥当と判断し、eligibilityScopeStartDateでは表現できない" +
+      "(キャリア途中の単発試合のため)ため、recordDisplayExclusionsで個別に除外する。" +
+      "結果、表示戦績は7勝3敗。順位・レート・掲載資格の判定には一切影響しない。",
+  },
 ];
 
 export function getDivisionOverlay(
@@ -86,4 +117,8 @@ export function getDivisionOverlay(
 
 export function getEligibilityScopeStartDate(slug: string): string | null {
   return FIGHTER_DIVISION_OVERLAYS.find((o) => o.slug === slug)?.eligibilityScopeStartDate ?? null;
+}
+
+export function getRecordDisplayExclusions(slug: string): RecordDisplayExclusion[] {
+  return FIGHTER_DIVISION_OVERLAYS.find((o) => o.slug === slug)?.recordDisplayExclusions ?? [];
 }
