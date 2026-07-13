@@ -26,3 +26,7 @@ npm-debug.log*
 next-env.d.ts
 .claude/scheduled_tasks.lock
 .env*
+
+# 社内向けドキュメント(リポジトリはPublicのため、係数・数値等の非公開情報は
+# ここに置いてもgit管理・push対象にしない。ローカル参照専用)
+/docs/
