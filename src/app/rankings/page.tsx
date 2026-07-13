@@ -12,8 +12,9 @@ import { pageMetadata } from "@/lib/seo";
 export const revalidate = 3600;
 
 export const metadata = pageMetadata({
-  title: "AI RIZINランキング 階級別【毎日更新】| mnews",
-  description: "RIZINには公式ランキングが存在しません。mnews.jp独自算出の階級別ランキング「AI RIZINランキング」を毎日更新して掲載します。",
+  title: "AI RIZINランキング 階級別｜RIZIN公式にない独自ランキングをAIが算出【mnews】",
+  description:
+    "RIZINに公式ランキングはありません。独自開発のAIが全試合結果を分析して算出する階級別ランキング「AI RIZINランキング」。RIZIN大会の結果を反映して更新します。",
   path: "/rankings",
 });
 

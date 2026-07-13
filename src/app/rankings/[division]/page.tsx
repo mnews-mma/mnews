@@ -25,10 +25,10 @@ export async function generateMetadata({ params }: { params: Promise<{ division:
     return pageMetadata({ title: "ページが見つかりません | mnews", description: "", path: `/rankings/${slug}` });
   }
   return pageMetadata({
-    title: `RIZIN${division}ランキング【毎日更新】| mnews`,
-    description: `RIZIN${division}の非公式ランキング。mnews.jp独自算出(${RATING_NAME})・毎日更新。`,
+    title: `AI RIZIN${division}ランキング｜RIZINランキングをAIが算出【mnews】`,
+    description: `RIZIN${division}には公式ランキングがありません。独自開発のAIが全試合結果を分析して算出する非公式ランキング「${RATING_NAME}」。RIZIN大会の結果を反映して更新します。`,
     path: `/rankings/${slug}`,
-    image: { url: `${SITE_URL}/api/og/rankings/${slug}`, width: 1200, height: 630, alt: `RIZIN${division}ランキング` },
+    image: { url: `${SITE_URL}/api/og/rankings/${slug}`, width: 1200, height: 630, alt: `AI RIZIN${division}ランキング` },
   });
 }
 
