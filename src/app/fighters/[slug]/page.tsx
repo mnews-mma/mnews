@@ -18,7 +18,6 @@ import { MethodButterfly, NextFightCompare } from "@/components/FighterVisuals";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
-import { RATING_NAME } from "@/lib/mnewsRating/constants";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
@@ -145,18 +144,138 @@ function findEventSlug(eventName: string): string | null {
 }
 
 // 選手が公開中のAI RIZINランキングに掲載されているか(王者/ランカーいずれか)を
-// 公開4階級ぶん確認し、最初に見つかった階級への内部リンクを返す(rank(順位)
-// のみ使用し、rating/rawRatingは一切参照しない=レート非公開方針を維持)。
-async function findRankingLink(slug: string): Promise<{ division: string; label: "王者" | number } | null> {
+// 公開4階級ぶん確認し、最初に見つかった階級への内部リンク情報を返す(rank(順位)・
+// delta(順位変動、algorithmVersion変更日等はnull)のみ使用し、rating/rawRatingは
+// 一切参照しない=レート非公開方針を維持)。
+interface RankingLinkInfo {
+  divisionSlug: string;
+  divisionName: string;
+  label: "王者" | number;
+  delta: number | null;
+}
+async function findRankingLink(slug: string): Promise<RankingLinkInfo | null> {
   for (const division of PUBLISHED_DIVISIONS) {
     const divisionSlug = DIVISION_SLUG[division];
     const data = await fetchDivisionRankings(divisionSlug);
     if (!data) continue;
-    if (data.champion?.fighterId === slug) return { division: divisionSlug, label: "王者" };
+    if (data.champion?.fighterId === slug) return { divisionSlug, divisionName: division, label: "王者", delta: null };
     const entry = data.entries.find((e) => e.fighterId === slug);
-    if (entry) return { division: divisionSlug, label: entry.rank };
+    if (entry) return { divisionSlug, divisionName: division, label: entry.rank, delta: entry.delta };
   }
   return null;
+}
+
+// バッジカードの外枠(赤枠・角丸12px・白背景ブロック+赤背景ブロック+chevron)を
+// ランカー用/王者用で共通化する。中身(左ブロックの表示・リンク先)だけ呼び出し側で変える。
+function BadgeCardShell({
+  href,
+  leftBlock,
+  eyebrow,
+  title,
+}: {
+  href: string;
+  leftBlock: React.ReactNode;
+  eyebrow: string;
+  title: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      style={{
+        display: "flex",
+        alignItems: "stretch",
+        maxWidth: 340,
+        margin: "2px 0 10px",
+        borderRadius: 12,
+        border: "1px solid var(--accent)",
+        overflow: "hidden",
+        textDecoration: "none",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+          minWidth: 60,
+          padding: "8px 12px",
+          background: "var(--accent)",
+          color: "#fff",
+        }}
+      >
+        {leftBlock}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          flex: 1,
+          minWidth: 0,
+          padding: "8px 12px",
+          background: "var(--s1)",
+        }}
+      >
+        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", color: "var(--accent)" }}>{eyebrow}</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{title}</div>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", padding: "0 10px", color: "var(--muted)" }}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 6 15 12 9 18" />
+        </svg>
+      </div>
+    </a>
+  );
+}
+
+// ランクバッジカード(A案): 数字を主役にしたUFC風の「格を示すバッジ」。
+// AI RIZINランキングに順位付きで掲載されているランカー専用(王者はfindRankingLink
+// 側でlabel="王者"として区別され、下のChampionBadgeCardで別デザイン表示する。
+// AIの看板の下に事実データの王者を出すと「AIが王者を決めた」と誤読されるため、
+// この2つは意図的に分離している)。レート数値はここでも一切参照しない
+// (rank/delta以外のフィールドを受け取らない型なので構造的に混入しない)。
+function RankBadgeCard({ info }: { info: RankingLinkInfo & { label: number } }) {
+  const deltaMark = info.delta ? (info.delta > 0 ? "▲" : info.delta < 0 ? "▼" : null) : null;
+  return (
+    <BadgeCardShell
+      href={`/rankings/${info.divisionSlug}`}
+      leftBlock={
+        <>
+          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "1px" }}>RANK</div>
+          <div style={{ fontSize: 22, fontWeight: 500, lineHeight: 1, whiteSpace: "nowrap" }}>#{info.label}</div>
+        </>
+      }
+      eyebrow="AI RIZIN RANKING"
+      title={
+        <>
+          {info.divisionName}
+          {deltaMark && <span style={{ marginLeft: 6, color: info.delta! > 0 ? "#16a34a" : "#dc2626" }}>{deltaMark}</span>}
+        </>
+      }
+    />
+  );
+}
+
+// 王者バッジカード: champions.ts由来の事実データ(RIZIN公式認定)専用の別デザイン。
+// 「AI RIZIN RANKING」の看板・番号は一切出さない(AI算出のランキングとは出所が
+// 別であることを見た目でも区別する)。リンク先もAIランキングページではなく、
+// 事実としての王者を示す公式ランキング・王者ページにする。
+function ChampionBadgeCard({ divisionName }: { divisionName: string }) {
+  return (
+    <BadgeCardShell
+      href="/ranking/rizin"
+      leftBlock={
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="6" />
+          <path d="M9 13.5 7 22l5-3 5 3-2-8.5" />
+        </svg>
+      }
+      eyebrow="RIZIN 王者"
+      title={divisionName}
+    />
+  );
 }
 
 export default async function FighterPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -313,16 +432,15 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
           </span>
         </div>
 
-        {/* AI RIZINランキング掲載中の選手のみ、該当階級ページへリンク(レート数値は出さない)。 */}
-        {rankingLink && (
-          <div style={{ margin: "2px 0 8px" }}>
-            <a href={`/rankings/${rankingLink.division}`} className="fighter-next-fight-link" style={{ fontSize: 12 }}>
-              {RATING_NAME}
-              {rankingLink.label === "王者" ? "・王者として掲載中" : `・${rankingLink.label}位に掲載中`}
-              {" →"}
-            </a>
-          </div>
-        )}
+        {/* AI RIZINランキング掲載中の選手のみ、ランクバッジカードで該当階級ページへ
+            リンク(レート数値は出さない。rank/deltaのみ使うRankingLinkInfo型のため
+            構造的にレートが混入しない)。 */}
+        {rankingLink &&
+          (rankingLink.label === "王者" ? (
+            <ChampionBadgeCard divisionName={rankingLink.divisionName} />
+          ) : (
+            <RankBadgeCard info={rankingLink as RankingLinkInfo & { label: number }} />
+          ))}
 
         {/* 次戦プレビュー: バナー行 + (相手がDB内なら)戦績比較・共通対戦相手 */}
         {nextFight && nextOpp && (
