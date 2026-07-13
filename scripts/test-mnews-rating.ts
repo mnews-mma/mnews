@@ -1318,6 +1318,27 @@ function makeResolver(map: Record<string, string>) {
   // rizinRecords由来のRIZIN集計(computeFighterMmaRecord)はrizinRecords.jsonのみを
   // 対象とするため、GAMMA等の非RIZIN団体戦は最初からデータに存在せず、この種の
   // 混入は構造的に起こり得ない(test-rizin-records-aggregate.tsで別途検証済み)。
+
+  // (c) totalsAlreadyReflected: 集計値(infobox)は既に対象boutを反映済みだが、
+  // 試合結果テーブル(Fight-cont)にだけ欠落しているケース(鈴木博昭の平本蓮戦)。
+  // historyには追加するが、集計値には加算しない(既に正しいため)。
+  const totalsUnchanged = applyRecordOverridesToTotals("suzuki-hiroaki", [], {
+    wins: 6,
+    losses: 6,
+    draws: 0,
+    ko: 4,
+    sub: 0,
+    decision: 2,
+  });
+  check(
+    totalsUnchanged.wins === 6 && totalsUnchanged.losses === 6,
+    `totalsAlreadyReflected: 集計値には加算しない(鈴木博昭6勝6敗のまま) (got ${totalsUnchanged.wins}勝${totalsUnchanged.losses}敗)`
+  );
+  const suzukiHistory = applyRecordOverrides("suzuki-hiroaki", []);
+  check(
+    suzukiHistory.some((h) => h.date === "2022-07-02" && h.opponent === "平本蓮"),
+    "totalsAlreadyReflected: historyへの追加(試合結果テーブル表示)は行われる"
+  );
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

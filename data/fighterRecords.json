@@ -10173,6 +10173,14 @@
         "method": "1R 1:42 TKO（左膝蹴り→パウンド）",
         "event": "RIZIN LANDMARK vol.1",
         "round": "R1"
+      },
+      {
+        "date": "2022-07-02",
+        "opponent": "平本蓮",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "RIZIN.36",
+        "round": "R3"
       }
     ],
     "live": true,
@@ -21422,30 +21430,6 @@
         "method": "1R 4:00 リアネイキドチョーク",
         "event": "ROAD FC 064 【63kgトーナメント1回戦】",
         "round": "R1"
-      },
-      {
-        "date": "2022-11-12",
-        "opponent": "イブラヒム・カスエフ",
-        "result": "win",
-        "method": "1R 2:26 三角絞め",
-        "event": "GAMMA: Asian-Pacific Championships 2022 【GAMMAフェザー級王者決定トーナメント決勝】",
-        "round": "R1"
-      },
-      {
-        "date": "2022-11-11",
-        "opponent": "アリジ・ベシ",
-        "result": "win",
-        "method": "1R 0:51 キムラロック",
-        "event": "GAMMA: Asian-Pacific Championships 2022 【GAMMAフェザー級王者決定トーナメント準決勝】",
-        "round": "R1"
-      },
-      {
-        "date": "2022-11-10",
-        "opponent": "コシェン・アカノフ",
-        "result": "win",
-        "method": "3分3R終了 判定3-0",
-        "event": "GAMMA: Asian-Pacific Championships 2022 【GAMMAフェザー級王者決定トーナメント1回戦】",
-        "round": "R3"
       },
       {
         "date": "2022-10-16",
