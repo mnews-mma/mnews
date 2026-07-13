@@ -2646,6 +2646,14 @@
     "decision": 2,
     "history": [
       {
+        "date": "2026-04-12",
+        "opponent": "アバイジャ・カレオ・メヘウラ",
+        "result": "loss",
+        "method": "1R パウンド",
+        "event": "RIZIN LANDMARK 13",
+        "round": "R1"
+      },
+      {
         "date": "2025-11-03",
         "opponent": "秋元強真",
         "result": "loss",
@@ -2807,14 +2815,6 @@
         "method": "2R 1:36 腕ひしぎ十字固め",
         "event": "DEEP SAITAMA IMPACT 2017",
         "round": "R2"
-      },
-      {
-        "date": "2026-04-12",
-        "opponent": "アバイジャ・カレオ・メヘウラ",
-        "result": "loss",
-        "method": "1R パウンド",
-        "event": "RIZIN LANDMARK 13",
-        "round": "R1"
       }
     ],
     "live": true,
@@ -10151,6 +10151,14 @@
         "round": "R3"
       },
       {
+        "date": "2022-07-02",
+        "opponent": "平本蓮",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "RIZIN.36",
+        "round": "R3"
+      },
+      {
         "date": "2022-03-06",
         "opponent": "昇侍",
         "result": "win",
@@ -10173,14 +10181,6 @@
         "method": "1R 1:42 TKO（左膝蹴り→パウンド）",
         "event": "RIZIN LANDMARK vol.1",
         "round": "R1"
-      },
-      {
-        "date": "2022-07-02",
-        "opponent": "平本蓮",
-        "result": "loss",
-        "method": "5分3R終了 判定1-2",
-        "event": "RIZIN.36",
-        "round": "R3"
       }
     ],
     "live": true,
@@ -21149,29 +21149,13 @@
     "nickname": "ウラルの大魔神"
   },
   "dautbek-karshyga": {
-    "wins": 19,
-    "losses": 4,
+    "wins": 18,
+    "losses": 3,
     "draws": 0,
     "ko": 14,
     "sub": 1,
-    "decision": 4,
+    "decision": 3,
     "history": [
-      {
-        "date": "2026-09-10",
-        "opponent": "平本蓮",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "超RIZIN.5",
-        "round": "R3"
-      },
-      {
-        "date": "2026-07-18",
-        "opponent": "萩原京平",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "RIZIN LAXDMARK 15",
-        "round": "R3"
-      },
       {
         "date": "2025-03-30",
         "opponent": "鈴木千裕",

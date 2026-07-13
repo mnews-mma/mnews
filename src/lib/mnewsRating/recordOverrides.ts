@@ -169,6 +169,7 @@ export function lookupWeighInMiss(fighterId: string, date: string, opponent: str
 // 適用しても結果は同じ)。
 export function applyRecordOverrides(fighterId: string, history: FightRecord[]): FightRecord[] {
   let result = history;
+  let added = false;
   for (const o of RECORD_OVERRIDES) {
     if (o.fighterId !== fighterId) continue;
     if (o.type === "remove") {
@@ -180,9 +181,15 @@ export function applyRecordOverrides(fighterId: string, history: FightRecord[]):
         ...result,
         { date: o.date, opponent: o.opponent, result: o.result, method: o.method, event: o.event, round: o.round ?? "—" },
       ];
+      added = true;
     }
   }
-  return result;
+  // add型は末尾に追加するだけなので、日付の新しい順(既存historyの並びと同じ
+  // 基準)へ再ソートする(2026-07-13緊急修正: 鈴木博昭の平本蓮戦(2022年)が
+  // 末尾=最古の奥田啓介戦2021年より後ろに表示され、日付順が崩れていたバグの
+  // 修正。add以外(remove/patch-weight-class)は既存の並びを変えないので
+  // 再ソート不要)。
+  return added ? [...result].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)) : result;
 }
 
 export interface RecordTotals {
