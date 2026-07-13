@@ -16,6 +16,9 @@ import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { fullWidthLength } from "@/lib/tweetDigest";
 import { MethodButterfly, NextFightCompare } from "@/components/FighterVisuals";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
+import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
+import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
+import { RATING_NAME } from "@/lib/mnewsRating/constants";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
@@ -141,6 +144,21 @@ function findEventSlug(eventName: string): string | null {
   return match ? match.slug : null;
 }
 
+// 選手が公開中のAI RIZINランキングに掲載されているか(王者/ランカーいずれか)を
+// 公開4階級ぶん確認し、最初に見つかった階級への内部リンクを返す(rank(順位)
+// のみ使用し、rating/rawRatingは一切参照しない=レート非公開方針を維持)。
+async function findRankingLink(slug: string): Promise<{ division: string; label: "王者" | number } | null> {
+  for (const division of PUBLISHED_DIVISIONS) {
+    const divisionSlug = DIVISION_SLUG[division];
+    const data = await fetchDivisionRankings(divisionSlug);
+    if (!data) continue;
+    if (data.champion?.fighterId === slug) return { division: divisionSlug, label: "王者" };
+    const entry = data.entries.find((e) => e.fighterId === slug);
+    if (entry) return { division: divisionSlug, label: entry.rank };
+  }
+  return null;
+}
+
 export default async function FighterPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const seed = getFighter(slug);
@@ -153,6 +171,8 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
   // 団体タグ(導出・新規公開昇格分のみ)。既存公開選手は空。
   const orgRankings = await fetchOrgRankings();
   const orgTags = computeFighterTags(fighter, orgRankings);
+  // AI RIZINランキング掲載中なら該当階級ページへ内部リンク(回遊性向上)。
+  const rankingLink = seed.hidden ? null : await findRankingLink(slug);
   const appearance = findNextAppearance(fighter.nameJa);
   const nextFight = appearance?.kind === "bout" ? { event: appearance.event, bout: appearance.bout } : null;
   const { winRate, finishRate } = calcFighterRates(fighter);
@@ -217,6 +237,16 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
     affiliation: { "@type": "SportsOrganization", name: orgDef.label, url: orgDef.url },
   };
 
+  // ProfilePage: 選手ページ自体が「その選手のプロフィールページである」ことを
+  // 明示するラッパー(mainEntity=Person)。レート数値は一切含めない。
+  const profilePageLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: `${fighter.nameJa}（${orgDef.label}）の戦績・試合結果`,
+    url: `${SITE_URL}/fighters/${fighter.slug}`,
+    mainEntity: personLd,
+  };
+
   return (
     <>
       <script
@@ -225,7 +255,7 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageLd) }}
       />
       <Nav />
       <div className="page-head">
@@ -282,6 +312,17 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
             {fighter.weightClass}
           </span>
         </div>
+
+        {/* AI RIZINランキング掲載中の選手のみ、該当階級ページへリンク(レート数値は出さない)。 */}
+        {rankingLink && (
+          <div style={{ margin: "2px 0 8px" }}>
+            <a href={`/rankings/${rankingLink.division}`} className="fighter-next-fight-link" style={{ fontSize: 12 }}>
+              {RATING_NAME}
+              {rankingLink.label === "王者" ? "・王者として掲載中" : `・${rankingLink.label}位に掲載中`}
+              {" →"}
+            </a>
+          </div>
+        )}
 
         {/* 次戦プレビュー: バナー行 + (相手がDB内なら)戦績比較・共通対戦相手 */}
         {nextFight && nextOpp && (
