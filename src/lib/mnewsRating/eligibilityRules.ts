@@ -3,7 +3,12 @@
 // ここは「誰を掲載資格ありとするか」の判定レイヤーのみを担う純関数群。
 import { Bout, EligibilityCounts, isEligible } from "./engine";
 import { MnewsDivision, NAMED_DIVISION_RE, mapToDivision } from "./divisions";
-import { ELIGIBILITY_MIN_FIGHTS, ELIGIBILITY_RECENT_MIN_FIGHTS, ELIGIBILITY_RECENT_YEAR_START } from "./constants";
+import {
+  ELIGIBILITY_MAX_INACTIVE_MONTHS,
+  ELIGIBILITY_MIN_FIGHTS,
+  ELIGIBILITY_RECENT_MIN_FIGHTS,
+  ELIGIBILITY_RECENT_YEAR_START,
+} from "./constants";
 
 export interface FighterBoutSummary {
   date: string;
@@ -75,18 +80,49 @@ export function detectDivisionChangeCutoff(summaries: FighterBoutSummary[], curr
   return mismatchDates.reduce((latest, d) => (d > latest ? d : latest));
 }
 
-// B-2: 資格判定用のfights/winsを算出する。階級変更が検出された場合は
-// cutoff日より後の対戦のみでカウントする(=変更後の当該階級の試合で評価)。
-// オープニングファイトは資格カウントの対象試合に含めない(2026-07-13追加)。
-// 直近性(18ヶ月)は既存どおりRatingState.lastFightDate(階級横断・全期間)を
-// 呼び出し側で別途使うため、ここでは扱わない。
+// 2026-07-13追加: 直近の活動と3年超も間が空いた古い試合が、階級名の明示が
+// 無いというだけの理由で無条件に「通算◯戦」の資格カウントへ混入し続ける穴を
+// 塞ぐ。detectDivisionChangeCutoffの階級不一致検出とは独立に、時系列で隣接
+// する既知の対戦同士の間隔がELIGIBILITY_MAX_INACTIVE_MONTHSを超える箇所が
+// あれば、そこより前の対戦は「現在の活動と地続きではない過去」とみなし資格
+// カウントから除外する(中村大介: 2022-03-20を最後に2025-05-04まで約38ヶ月
+// 空いており、直近1戦しか実質無いのに空白前の2戦を合算して通算3戦の資格
+// バーを満たしてしまっていた)。既存の武田光司・コレスニック・ケラモフの
+// ケースはいずれも最大空白が18ヶ月未満のため、この一般ルール追加では
+// 資格判定が変わらないことをテストで確認済み。
+function detectInactivityGapCutoff(summaries: FighterBoutSummary[]): string | null {
+  const sorted = [...summaries].sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  const gapCutoffDates: string[] = [];
+  for (let i = 1; i < sorted.length; i++) {
+    const gapMonths = (new Date(sorted[i].date).getTime() - new Date(sorted[i - 1].date).getTime()) / (30.44 * 86400000);
+    if (gapMonths > ELIGIBILITY_MAX_INACTIVE_MONTHS) gapCutoffDates.push(sorted[i - 1].date);
+  }
+  if (gapCutoffDates.length === 0) return null;
+  return gapCutoffDates.reduce((latest, d) => (d > latest ? d : latest));
+}
+
+// 階級変更(B-2)・活動空白(上記)いずれかで検出されたcutoffのうち、より新しい
+// (=より対象試合を絞り込む)方を採用する。
+function resolveEligibilityScope(summaries: FighterBoutSummary[], currentDivision: MnewsDivision): FighterBoutSummary[] {
+  const withoutOpeners = excludeOpeningFights(summaries);
+  const divisionCutoff = detectDivisionChangeCutoff(withoutOpeners, currentDivision);
+  const gapCutoff = detectInactivityGapCutoff(withoutOpeners);
+  const cutoff =
+    divisionCutoff && gapCutoff ? (divisionCutoff > gapCutoff ? divisionCutoff : gapCutoff) : divisionCutoff ?? gapCutoff;
+  return cutoff ? withoutOpeners.filter((s) => s.date > cutoff) : withoutOpeners;
+}
+
+// B-2: 資格判定用のfights/winsを算出する。階級変更または活動空白のcutoffが
+// 検出された場合はcutoff日より後の対戦のみでカウントする(=変更後の当該階級・
+// 現在の活動と地続きの試合で評価)。オープニングファイトは資格カウントの
+// 対象試合に含めない(2026-07-13追加)。直近性(18ヶ月)は既存どおり
+// RatingState.lastFightDate(階級横断・全期間)を呼び出し側で別途使うため、
+// ここでは扱わない。
 export function computeEligibilityFightsAndWins(
   summaries: FighterBoutSummary[],
   currentDivision: MnewsDivision
 ): { fights: number; wins: number } {
-  const withoutOpeners = excludeOpeningFights(summaries);
-  const cutoff = detectDivisionChangeCutoff(withoutOpeners, currentDivision);
-  const scoped = cutoff ? withoutOpeners.filter((s) => s.date > cutoff) : withoutOpeners;
+  const scoped = resolveEligibilityScope(summaries, currentDivision);
   return { fights: scoped.length, wins: scoped.filter((s) => s.isWin).length };
 }
 
@@ -102,9 +138,7 @@ export function isStandardEligible(
   lastFightDate: string | null,
   asOf: Date
 ): boolean {
-  const withoutOpeners = excludeOpeningFights(summaries);
-  const cutoff = detectDivisionChangeCutoff(withoutOpeners, currentDivision);
-  const scoped = cutoff ? withoutOpeners.filter((s) => s.date > cutoff) : withoutOpeners;
+  const scoped = resolveEligibilityScope(summaries, currentDivision);
   const fights = scoped.length;
   const wins = scoped.filter((s) => s.isWin).length;
   const recentFights = scoped.filter((s) => s.date >= `${ELIGIBILITY_RECENT_YEAR_START}-01-01`).length;

@@ -956,18 +956,33 @@ function makeResolver(map: Record<string, string>) {
     "(iv): 直近年1戦のみ・通算も3戦未満なら、どちらの基準も満たさず資格なし"
   );
 
-  // 通算3戦以上(直近年に集中していなくても)は従来どおり資格を得る(回帰確認)
+  // 通算3戦以上(直近年に集中していなくても)は、対戦間隔が詰まっていれば
+  // 従来どおり資格を得る(回帰確認。個々の間隔は18ヶ月未満)
+  const denseThreeFights: FighterBoutSummary[] = [
+    { date: "2024-08-01", isWin: true, opponentNode: "opp-a" },
+    { date: "2024-11-01", isWin: true, opponentNode: "opp-b" },
+    { date: "2025-02-01", isWin: false, opponentNode: "opp-c" },
+  ];
+  check(
+    isStandardEligible(denseThreeFights, "フライ級", denseThreeFights[2].date, asOf),
+    "(iv): 通算3戦以上(対戦間隔が詰まっている)は従来どおり資格を得る(回帰確認)"
+  );
+
+  // 2026-07-13追加: 通算3戦あっても、直近の1戦とそれ以前の戦歴との間に
+  // 18ヶ月超の空白があれば、空白より前は資格カウントから除外され、
+  // 残り1戦のみでは資格を得ない(中村大介: 2022年の試合から2025年の
+  // 復帰戦まで約38ヶ月の空白があったのに通算3戦の資格バーを満たして
+  // しまっていたバグの一般ルール修正)
   const legacyThreeFights: FighterBoutSummary[] = [
     { date: "2020-01-01", isWin: true, opponentNode: "opp-a" },
     { date: "2021-01-01", isWin: true, opponentNode: "opp-b" },
     { date: "2022-01-01", isWin: false, opponentNode: "opp-c" },
   ];
-  // 直近性(18ヶ月)は満たさないため、直近日を新しく差し替えて確認する
   const legacyRecentDate = new Date(asOf.getTime() - 30 * 86400000).toISOString().slice(0, 10);
-  const legacyWithRecentLastFight: FighterBoutSummary[] = [...legacyThreeFights, { date: legacyRecentDate, isWin: true, opponentNode: "opp-d" }];
+  const legacyWithGapComeback: FighterBoutSummary[] = [...legacyThreeFights, { date: legacyRecentDate, isWin: true, opponentNode: "opp-d" }];
   check(
-    isStandardEligible(legacyWithRecentLastFight, "フライ級", legacyRecentDate, asOf),
-    "(iv): 通算3戦以上を満たす場合は従来どおり資格を得る(回帰確認)"
+    !isStandardEligible(legacyWithGapComeback, "フライ級", legacyRecentDate, asOf),
+    "(iv): 18ヶ月超の活動空白より前の戦歴は資格カウントから除外され、復帰1戦のみでは資格を得ない"
   );
 }
 

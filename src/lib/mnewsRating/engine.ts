@@ -329,8 +329,67 @@ export interface RatingState {
   lastFightDate: string | null;
 }
 
-function freshState(): RatingState {
-  return { rawRating: INITIAL_RATING, fights: 0, wins: 0, losses: 0, draws: 0, lastFightDate: null };
+function freshState(initialRating: number = INITIAL_RATING): RatingState {
+  return { rawRating: initialRating, fights: 0, wins: 0, losses: 0, draws: 0, lastFightDate: null };
+}
+
+// RIZIN参戦前の戦績(pre-debut record)を機械算出するためのMMAルール判定。
+// isRizinMmaEventのキックルール/エキシビション除外キーワードは団体を問わず
+// 一般に通用するため、他団体のhistoryエントリにもそのまま適用する。
+export function isMmaRuleEvent(eventName: string): boolean {
+  return !NON_MMA_EVENT_KEYWORDS.test(eventName ?? "");
+}
+
+export interface PreDebutRecord {
+  wins: number;
+  losses: number;
+  draws: number;
+  fights: number;
+}
+
+// 各選手のRIZIN初参戦日(=最も古いRIZIN MMA boutの日付)より前の全団体での
+// 戦績を、既存のhistory(Wiki/DATA MMA由来の全団体戦歴)から機械的に数える。
+// RIZIN初参戦が無い選手(まだRIZINで戦っていない)はMap未登録(呼び出し側は
+// 存在しない場合0扱い=補正なしとして扱う)。手動の選手別数値は一切使わない。
+export function computePreDebutRecords(records: FighterRecordsInput): Map<string, PreDebutRecord> {
+  const out = new Map<string, PreDebutRecord>();
+  for (const [slug, entry] of Object.entries(records)) {
+    const history = entry.history ?? [];
+    const rizinMmaDates = history.filter((h) => isRizinMmaEvent(h.event) && h.date).map((h) => h.date);
+    if (rizinMmaDates.length === 0) continue;
+    const debutDate = rizinMmaDates.reduce((min, d) => (d < min ? d : min));
+
+    const preDebut = history.filter((h) => h.date && h.date < debutDate && isMmaRuleEvent(h.event));
+    const wins = preDebut.filter((h) => h.result === "win").length;
+    const losses = preDebut.filter((h) => h.result === "loss").length;
+    const draws = preDebut.filter((h) => h.result === "draw").length;
+    out.set(slug, { wins, losses, draws, fights: preDebut.length });
+  }
+  return out;
+}
+
+// RIZIN参戦前実績の初期レートへの機械反映パラメータ。恣意的な選手別数値では
+// なく、通算戦績(勝敗数)から一律の計算式で補正する。
+export interface InitialRatingBoostParams {
+  perNetWinPoints: number; // 参戦前の純勝ち星(勝ち-負け)1つあたりの補正点
+  maxBoost: number; // 補正の絶対値上限(効きすぎ防止)
+  minPreDebutFights: number; // この試合数未満の参戦前戦歴は補正対象外(ノイズ回避)
+}
+
+export const INITIAL_RATING_BOOST_OFF: InitialRatingBoostParams = { perNetWinPoints: 0, maxBoost: 0, minPreDebutFights: 3 };
+
+export function computeInitialRatingOverrides(
+  preDebutRecords: Map<string, PreDebutRecord>,
+  params: InitialRatingBoostParams
+): Map<string, number> {
+  const out = new Map<string, number>();
+  for (const [slug, rec] of preDebutRecords) {
+    if (rec.fights < params.minPreDebutFights) continue;
+    const netWins = rec.wins - rec.losses;
+    const boost = Math.max(-params.maxBoost, Math.min(params.maxBoost, netWins * params.perNetWinPoints));
+    if (boost !== 0) out.set(slug, INITIAL_RATING + boost);
+  }
+  return out;
 }
 
 function expectedScore(rSelf: number, rOpp: number): number {
@@ -409,9 +468,13 @@ function applyResult(
 // ノードのみ(filterPublishableStates参照)。
 // 冪等性優先: 常に全履歴を頭から再計算する(バッチ実行日には一切依存しない)。
 // params省略時はNEUTRAL_ELO_PARAMS(対称Elo・v3までと同一挙動)。
-export function computeRawRatings(bouts: Bout[], params: AsymmetricEloParams = NEUTRAL_ELO_PARAMS): Map<string, RatingState> {
+export function computeRawRatings(
+  bouts: Bout[],
+  params: AsymmetricEloParams = NEUTRAL_ELO_PARAMS,
+  initialRatingOverrides?: Map<string, number>
+): Map<string, RatingState> {
   const states = new Map<string, RatingState>();
-  const get = (id: string) => states.get(id) ?? freshState();
+  const get = (id: string) => states.get(id) ?? freshState(initialRatingOverrides?.get(id));
 
   const sorted = [...bouts].sort((x, y) => (x.date < y.date ? -1 : x.date > y.date ? 1 : x.key < y.key ? -1 : 1));
 
@@ -471,15 +534,33 @@ export function filterPublishableStates(
   return out;
 }
 
-// 不活性ディケイ: 最終試合からDECAY_PERIOD_DAYSごとにDECAY_PER_PERIODを減衰(下限DECAY_FLOOR)。
+export interface DecayParams {
+  periodDays: number;
+  perPeriod: number;
+  floor: number;
+}
+
+export const DECAY_PARAMS_DEFAULT: DecayParams = { periodDays: DECAY_PERIOD_DAYS, perPeriod: DECAY_PER_PERIOD, floor: DECAY_FLOOR };
+// 廃止版: 試合間隔での減衰を一切行わない(18ヶ月ルールで完全休眠選手は
+// 既存の掲載資格側で除外されるため、ディケイ自体が冗長という仮説の検証用)。
+export const DECAY_PARAMS_OFF: DecayParams = { periodDays: DECAY_PERIOD_DAYS, perPeriod: 0, floor: DECAY_FLOOR };
+// 弱化版: 発動間隔そのままで減衰量を半減。
+export const DECAY_PARAMS_WEAK: DecayParams = { periodDays: DECAY_PERIOD_DAYS, perPeriod: DECAY_PER_PERIOD / 2, floor: DECAY_FLOOR };
+
+// 不活性ディケイ: 最終試合からperiodDaysごとにperPeriodを減衰(下限floor)。
 // 表示用レートにのみ適用し、rawRatingには一切影響しない(次回のElo計算はrawRatingを使う)。
-export function applyInactivityDecay(rawRating: number, lastFightDate: string | null, asOf: Date): number {
+export function applyInactivityDecay(
+  rawRating: number,
+  lastFightDate: string | null,
+  asOf: Date,
+  decayParams: DecayParams = DECAY_PARAMS_DEFAULT
+): number {
   if (!lastFightDate) return rawRating;
   const lastMs = new Date(lastFightDate).getTime();
   const daysSince = (asOf.getTime() - lastMs) / 86400000;
-  const periods = Math.floor(daysSince / DECAY_PERIOD_DAYS);
+  const periods = Math.floor(daysSince / decayParams.periodDays);
   if (periods <= 0) return rawRating;
-  return Math.max(DECAY_FLOOR, rawRating - periods * DECAY_PER_PERIOD);
+  return Math.max(decayParams.floor, rawRating - periods * decayParams.perPeriod);
 }
 
 export interface DisplayEntry {
@@ -513,13 +594,17 @@ export function isEligible(state: EligibilityCounts, asOf: Date): boolean {
   return true;
 }
 
-export function buildDisplayEntries(states: Map<string, RatingState>, asOf: Date): Map<string, DisplayEntry> {
+export function buildDisplayEntries(
+  states: Map<string, RatingState>,
+  asOf: Date,
+  decayParams: DecayParams = DECAY_PARAMS_DEFAULT
+): Map<string, DisplayEntry> {
   const out = new Map<string, DisplayEntry>();
   for (const [slug, state] of states) {
     out.set(slug, {
       slug,
       rawRating: state.rawRating,
-      displayRating: applyInactivityDecay(state.rawRating, state.lastFightDate, asOf),
+      displayRating: applyInactivityDecay(state.rawRating, state.lastFightDate, asOf, decayParams),
       fights: state.fights,
       wins: state.wins,
       losses: state.losses,
