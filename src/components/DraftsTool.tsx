@@ -8,7 +8,13 @@ import { rankChangeText, type RankChange } from "@/lib/rankingDiff";
 import { buildMatchupContextPost } from "@/lib/xPost";
 import { WEIGHT_KG } from "@/lib/weightClasses";
 import { computeFighterStripStats, computeWinMethodBreakdown, LAST5_SYMBOL } from "@/lib/fighterStrip";
-import { buildFightSectionDraft, generateArticleCode, generateArticleAnnounceText } from "@/lib/articleGenerator";
+import {
+  buildFightSectionDraft,
+  generateArticleCode,
+  generateArticleAnnounceText,
+  computeCommonOpponents,
+  computeNotablePoints,
+} from "@/lib/articleGenerator";
 import type { FighterRecordsFile } from "@/lib/fighterRecordsCache";
 import type { OriginalArticle, OriginalArticleFight } from "@/lib/originalArticles";
 import { findFighterSlugByName } from "@/lib/fighters";
@@ -484,6 +490,244 @@ function ArticleGenTab({
   );
 }
 
+// ── タブ④: 対戦カード比較ビジュアル生成 ──
+// 「共通対戦相手・直近5戦・相性」のSNS投稿画像(/api/og/vs-compare)を、大会選択
+// または任意の2選手指定から生成する。データ算出はタブ③と同じ純関数
+// (computeCommonOpponents/computeFighterStripStats/computeNotablePoints)を流用し、
+// 二重実装はしない。画像自体の生成(共通対戦相手テーブル描画等)はOG画像ルート側
+// (edge runtime)で行う。この画面はプレビュー・比率切替・PNGダウンロード・
+// 投稿文の下書き表示のみ(自動投稿はしない=既存タブと同じ運用方針)。
+const RATIO_OPTIONS: { key: "1:1" | "4:5" | "16:9"; label: string }[] = [
+  { key: "4:5", label: "縦4:5" },
+  { key: "1:1", label: "正方形1:1" },
+  { key: "16:9", label: "横16:9" },
+];
+
+function VsCompareTab({
+  fighters,
+  events,
+  fighterRecords,
+}: {
+  fighters: DraftFighterOption[];
+  events: ArticleEventOption[];
+  fighterRecords: FighterRecordsFile;
+}) {
+  const visibleSlugs = useMemo(() => new Set(fighters.map((f) => f.slug)), [fighters]);
+  const resolveSlug = (name: string) => findFighterSlugByName(name, undefined, visibleSlugs);
+
+  const [mode, setMode] = useState<"event" | "manual">("event");
+  const [eventSlug, setEventSlug] = useState("");
+  const [fightIndex, setFightIndex] = useState<number | null>(null);
+  const [manualA, setManualA] = useState("");
+  const [manualB, setManualB] = useState("");
+  const [ratio, setRatio] = useState<"1:1" | "4:5" | "16:9">("4:5");
+
+  const event = events.find((e) => e.slug === eventSlug);
+
+  useEffect(() => {
+    setFightIndex(null);
+  }, [eventSlug]);
+
+  // 大会モード: 選択中の試合から選手slug・階級・大会名を確定する。
+  // 手動モード: プルダウンで直接指定した2選手(大会名・階級は入力しない=空欄)。
+  const picked = useMemo(() => {
+    if (mode === "event") {
+      if (!event || fightIndex === null) return null;
+      const f = event.fights[fightIndex];
+      if (!f) return null;
+      const slugA = resolveSlug(f.fighterA);
+      const slugB = resolveSlug(f.fighterB);
+      if (!slugA || !slugB) return null;
+      return { slugA, nameA: f.fighterA, slugB, nameB: f.fighterB, wc: f.weightClass ?? "", ev: event.eventName };
+    }
+    if (!manualA || !manualB || manualA === manualB) return null;
+    const a = fighters.find((f) => f.slug === manualA);
+    const b = fighters.find((f) => f.slug === manualB);
+    if (!a || !b) return null;
+    return { slugA: manualA, nameA: a.nameJa, slugB: manualB, nameB: b.nameJa, wc: "", ev: "" };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, event, fightIndex, manualA, manualB, fighters]);
+
+  const entryA = picked ? fighterRecords[picked.slugA] : undefined;
+  const entryB = picked ? fighterRecords[picked.slugB] : undefined;
+  const dataAvailable = !!entryA && !!entryB && !entryA.noRecordData && !entryB.noRecordData;
+
+  const query = new URLSearchParams();
+  if (picked?.wc) query.set("wc", picked.wc);
+  if (picked?.ev) query.set("ev", picked.ev);
+  query.set("ratio", ratio);
+  const imagePath = picked ? ogImagePath(`/api/og/vs-compare/${picked.slugA}/${picked.slugB}?${query.toString()}`) : null;
+  const imageUrl = imagePath ? `${SITE_URL}${imagePath}` : null;
+
+  // 投稿文の下書き(あくまで下書き補助。投稿は手動)。共通対戦相手・直近5戦・
+  // 注目点はタブ③と同じ純関数で算出する(このタブ独自のロジックは持たない)。
+  const postText = useMemo(() => {
+    if (!picked || !entryA || !entryB || entryA.noRecordData || entryB.noRecordData) return "";
+    const statsA = computeFighterStripStats(entryA);
+    const statsB = computeFighterStripStats(entryB);
+    const commons = computeCommonOpponents(entryA, entryB);
+    const uniqueCommons = new Set(commons.map((c) => c.name)).size;
+    const notable = computeNotablePoints(picked.nameA, entryA, picked.nameB, entryB);
+    const lines = [`【見どころ】${picked.nameA} vs ${picked.nameB}`];
+    if (picked.ev) lines.push(picked.ev + (picked.wc ? `（${picked.wc}）` : ""));
+    if (uniqueCommons > 0) lines.push(`共通対戦相手${uniqueCommons}人`);
+    if (statsA.last5.length > 0 || statsB.last5.length > 0) {
+      const l5 = (name: string, s: typeof statsA) => {
+        if (s.last5.length === 0) return null;
+        const w = s.last5.filter((r) => r === "win").length;
+        const l = s.last5.filter((r) => r === "loss").length;
+        return `${name} 直近${s.last5.length}戦${w}勝${l}敗`;
+      };
+      const parts = [l5(picked.nameA, statsA), l5(picked.nameB, statsB)].filter((x): x is string => !!x);
+      if (parts.length > 0) lines.push(parts.join("／"));
+    }
+    for (const p of notable.slice(0, 2)) lines.push(`・${p}`);
+    const tags = ["#RIZIN"];
+    if (picked.ev) tags.push(`#${picked.ev.replace(/[\s　]/g, "")}`);
+    lines.push(tags.join(" "));
+    return lines.join("\n");
+  }, [picked, entryA, entryB]);
+
+  return (
+    <div>
+      <div
+        style={{
+          border: "1px solid var(--border)",
+          borderRadius: 8,
+          padding: "12px 16px",
+          marginBottom: 20,
+          background: "var(--s2)",
+          fontSize: 13,
+          lineHeight: 1.8,
+        }}
+      >
+        <div style={{ fontWeight: 700, marginBottom: 4 }}>使い方</div>
+        <ol style={{ margin: 0, paddingLeft: 18 }}>
+          <li>大会から対戦カードを選ぶ(または任意の2選手を指定する)</li>
+          <li>比率を選んでプレビューを確認する</li>
+          <li>「画像をダウンロード」でPNGを保存し、Xに直接添付して投稿する</li>
+          <li>投稿文の下書きは参考用。内容を確認してから手動で投稿してください</li>
+        </ol>
+      </div>
+
+      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+        <button style={mode === "event" ? tabBtnActive : tabBtn} onClick={() => setMode("event")}>
+          大会から選ぶ
+        </button>
+        <button style={mode === "manual" ? tabBtnActive : tabBtn} onClick={() => setMode("manual")}>
+          任意の2選手
+        </button>
+      </div>
+
+      {mode === "event" && (
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
+          <div>
+            <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>大会</label>
+            <select value={eventSlug} onChange={(e) => setEventSlug(e.target.value)} style={{ padding: "8px 12px", fontSize: 14, minWidth: 260 }}>
+              <option value="">(未選択)</option>
+              {events.map((e) => (
+                <option key={e.slug} value={e.slug}>
+                  {e.eventName}
+                </option>
+              ))}
+            </select>
+          </div>
+          {event && (
+            <div style={{ width: "100%" }}>
+              <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>対戦カード(1試合を選択)</label>
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                {event.fights.map((f, i) => {
+                  const hasData = !!resolveSlug(f.fighterA) && !!resolveSlug(f.fighterB);
+                  return (
+                    <label key={i} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, opacity: hasData ? 1 : 0.5 }}>
+                      <input
+                        type="radio"
+                        name="vs-compare-fight"
+                        checked={fightIndex === i}
+                        disabled={!hasData}
+                        onChange={() => setFightIndex(i)}
+                      />
+                      {f.fighterA} vs {f.fighterB}
+                      {f.weightClass && <span style={{ color: "var(--muted)" }}>({f.weightClass})</span>}
+                      {!hasData && <span style={{ color: "var(--accent)", fontSize: 11 }}>戦績データなし・対象外</span>}
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {mode === "manual" && (
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
+          <FighterPicker label="選手A" fighters={fighters} value={manualA} onChange={setManualA} />
+          <FighterPicker label="選手B" fighters={fighters} value={manualB} onChange={setManualB} />
+        </div>
+      )}
+
+      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+        {RATIO_OPTIONS.map((r) => (
+          <button key={r.key} style={ratio === r.key ? tabBtnActive : tabBtn} onClick={() => setRatio(r.key)}>
+            {r.label}
+          </button>
+        ))}
+      </div>
+
+      {picked && !dataAvailable && (
+        <p style={{ color: "var(--accent)", fontSize: 13, marginBottom: 16 }}>
+          選手いずれかの戦績データがありません。この組み合わせは画像化できません。
+        </p>
+      )}
+
+      {picked && dataAvailable && imagePath && (
+        <>
+          <div style={{ marginBottom: 16 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imagePath}
+              alt="対戦カード比較プレビュー"
+              style={{ width: "100%", maxWidth: 420, border: "1px solid var(--border)", display: "block" }}
+            />
+          </div>
+          <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
+            <a
+              href={imagePath}
+              download={`${picked.slugA}-vs-${picked.slugB}-${ratio.replace(":", "x")}.png`}
+              style={{ padding: "10px 20px", background: "var(--accent)", color: "#fff", borderRadius: 6, fontWeight: 700, fontSize: 14, textDecoration: "none" }}
+            >
+              画像をダウンロード(PNG)
+            </a>
+            <CopyButton text={imageUrl ?? ""} label="画像URLをコピー" />
+          </div>
+
+          {postText && (
+            <div>
+              <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
+                投稿文の下書き(参考用・手動で確認・編集してから投稿してください)
+              </label>
+              <pre
+                style={{
+                  whiteSpace: "pre-wrap",
+                  fontFamily: "var(--mono)",
+                  fontSize: 13,
+                  background: "var(--s2)",
+                  padding: 12,
+                  border: "1px solid var(--border)",
+                  margin: "0 0 10px",
+                }}
+              >
+                {postText}
+              </pre>
+              <CopyButton text={postText} label="投稿文をコピー" />
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function DraftsTool({
   fighters,
   changes,
@@ -495,7 +739,7 @@ export default function DraftsTool({
   events: ArticleEventOption[];
   fighterRecords: FighterRecordsFile;
 }) {
-  const [tab, setTab] = useState<"matchup" | "ranking" | "article">("matchup");
+  const [tab, setTab] = useState<"matchup" | "ranking" | "article" | "vscompare">("matchup");
 
   return (
     <div style={{ padding: "20px 16px 60px", maxWidth: 720, margin: "0 auto" }}>
@@ -517,10 +761,14 @@ export default function DraftsTool({
         <button style={tab === "article" ? tabBtnActive : tabBtn} onClick={() => setTab("article")}>
           ③数字で見る記事生成
         </button>
+        <button style={tab === "vscompare" ? tabBtnActive : tabBtn} onClick={() => setTab("vscompare")}>
+          ④対戦カード比較ビジュアル
+        </button>
       </div>
       {tab === "matchup" && <MatchupTab fighters={fighters} />}
       {tab === "ranking" && <RankingTab changes={changes} />}
       {tab === "article" && <ArticleGenTab fighters={fighters} events={events} fighterRecords={fighterRecords} />}
+      {tab === "vscompare" && <VsCompareTab fighters={fighters} events={events} fighterRecords={fighterRecords} />}
     </div>
   );
 }
