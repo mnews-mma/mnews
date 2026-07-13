@@ -20,6 +20,15 @@ export interface RecordOverrideAdd extends RecordOverrideBase {
   method: string;
   event: string;
   round?: string;
+  // Wikipedia infobox(通算戦績の集計値)が既にこの試合を反映済みかどうか。
+  // true の場合、historyへの追加(試合結果テーブルへの表示)のみ行い、
+  // applyRecordOverridesToTotals による集計値への加算はスキップする
+  // (集計値は既に正しいのに追加分をさらに+1すると二重加算になるため)。
+  // 例: 鈴木博昭は通算6敗(infobox)が既に平本蓮戦を含んだ数字だったが、
+  // Wikipediaの試合結果テーブル(Fight-cont)にはこの一戦だけ抜け落ちていた
+  // (YA-MANのように集計自体が古い/欠落しているケースとは異なる)。
+  // 未指定(デフォルト)はfalse=従来どおり集計値にも反映する。
+  totalsAlreadyReflected?: boolean;
 }
 
 export interface RecordOverrideRemove extends RecordOverrideBase {
@@ -72,6 +81,28 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "萩原京平のRIZIN LANDMARK 13(2026-04-12)第9試合がWikipedia戦績表・EVENT_RESULTS両方に未掲載で" +
       "欠落していた。RIZIN公式試合結果ページで追加。この一戦は計量オーバー裁定によりノーコンテスト" +
       "(WEIGH_IN_MISS_RULINGS参照)。",
+  },
+  {
+    type: "add",
+    fighterId: "suzuki-hiroaki",
+    date: "2022-07-02",
+    opponent: "平本蓮",
+    result: "loss",
+    method: "5分3R終了 判定1-2",
+    event: "RIZIN.36",
+    round: "R3",
+    // Wikipedia infobox(通算6敗)は既にこの一戦を反映済み(記事本文にも
+    // 「2022年7月2日、RIZIN.36で平本蓮と対戦し...1-2の判定負け」と明記されている)。
+    // しかし試合結果テーブル({{Fight-cont}})にはこの一戦だけ欠落しており、
+    // 選手ページの対戦テーブルに表示されていなかった(集計値は既に正しい)。
+    totalsAlreadyReflected: true,
+    source: "https://jp.rizinff.com/_ct/17552126",
+    fetchedDate: "2026-07-13",
+    note:
+      "鈴木博昭のRIZIN.36(2022-07-02)平本蓮戦がWikipedia記事本文には記載されているものの、" +
+      "試合結果テーブル({{Fight-cont}})にだけ欠落しており、選手ページの対戦テーブルに表示されて" +
+      "いなかった(通算戦績6敗は既にこの一戦を含んだ正しい値のため、集計値への加算は行わない)。" +
+      "RIZIN公式試合結果ページで追加。",
   },
   {
     type: "patch-weight-class",
@@ -181,6 +212,11 @@ export function applyRecordOverridesToTotals(fighterId: string, rawHistory: Figh
   const t = { ...totals };
   for (const o of RECORD_OVERRIDES) {
     if (o.fighterId !== fighterId || o.type !== "add") continue;
+
+    // 集計値(infobox)側は既にこの試合を反映済みと判明している場合(鈴木博昭の
+    // 平本蓮戦のように、試合結果テーブルにだけ欠落しているケース)は、history
+    // への追加のみ行い集計値には加算しない(二重加算防止)。
+    if (o.totalsAlreadyReflected) continue;
 
     // Wikipedia側の生historyに既にこのboutが存在するなら、Wikipedia生値の
     // 集計にも既に反映されている可能性が高いため加算をスキップする(二重加算防止)。

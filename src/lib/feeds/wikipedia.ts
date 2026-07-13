@@ -339,6 +339,10 @@ function parseJaDate(raw: string): string {
 // 「=== アマチュア○○ ===」見出しから次の見出しまでの範囲を丸ごと除去する。
 // アマチュア戦績がプロの戦績表(Fight-cont/recordbox集計)に混入するのを防ぐ。
 function stripAmateurSections(text: string): string {
+  return stripBoldAmateurPseudoSections(stripHeadingAmateurSections(text));
+}
+
+function stripHeadingAmateurSections(text: string): string {
   const amateurHeadingRe = /={2,4}[^=\n]*アマチュア[^=\n]*={2,4}/g;
   const allHeadingsRe = /={2,4}[^=\n]+={2,4}/g;
   let result = "";
@@ -350,6 +354,33 @@ function stripAmateurSections(text: string): string {
     const next = allHeadingsRe.exec(text);
     cursor = next ? next.index : text.length;
     amateurHeadingRe.lastIndex = cursor;
+  }
+  result += text.slice(cursor);
+  return result;
+}
+
+// 2026-07-13(緊急修正): 一部の記事は正式な「=== アマチュア○○ ===」見出しではなく
+// '''アマチュア総合格闘技'''のような太字テキストを見出し代わりに使っている
+// (シェイドゥラエフの記事で発見。GAMMA: Asian-Pacific Championships 2022の
+// 3試合がプロの==総合格闘技==節の中に、太字疑似見出し付きで紛れ込んでいた。
+// これにより通算戦績19-0のはずが「勝ち方の内訳」バーがhistory全体=22戦分を
+// 数えてしまい、通算カードと内訳バーの合計が食い違う事故が発生した)。
+// 太字疑似見出しは正式な==見出し==を伴わないため、直後の{{Fight-end}}までを
+// 1ブロックとして除去する(観測した用法は「太字見出し+ひとつのFight-start/
+// Fight-endブロック」のみのため、次の{{Fight-end}}を安全な区切りとみなす)。
+function stripBoldAmateurPseudoSections(text: string): string {
+  const boldHeadingRe = /'''[^'\n]*アマチュア[^'\n]*'''/g;
+  const fightEndRe = /\{\{Fight-end\}\}/g;
+  let result = "";
+  let cursor = 0;
+  let m: RegExpExecArray | null;
+  while ((m = boldHeadingRe.exec(text))) {
+    if (m.index < cursor) continue; // 既に除去済み範囲内の重複マッチはスキップ
+    result += text.slice(cursor, m.index);
+    fightEndRe.lastIndex = m.index + m[0].length;
+    const next = fightEndRe.exec(text);
+    cursor = next ? next.index + next[0].length : text.length;
+    boldHeadingRe.lastIndex = cursor;
   }
   result += text.slice(cursor);
   return result;
