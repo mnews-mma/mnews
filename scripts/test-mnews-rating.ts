@@ -579,14 +579,14 @@ function makeResolver(map: Record<string, string>) {
   const champion: ChampionOverlay = { fighterId: "champ-gate", rating: 1600, record: { wins: 5, losses: 0, draws: 0 }, lastFight: "2026-05-01" };
   const pool = [
     {
-      meta: { slug: "gate-1", division: "フライ級" as const, weighInMiss: false },
+      meta: { slug: "gate-1", division: "ヘビー級" as const, weighInMiss: false },
       display: { slug: "gate-1", rawRating: 1550, displayRating: 1550, fights: 5, wins: 4, losses: 1, draws: 0, lastFightDate: "2026-04-01", eligible: true },
     },
   ];
-  const data = buildDivisionRankings("フライ級", pool, asOf, undefined, champion, "overlay");
+  const data = buildDivisionRankings("ヘビー級", pool, asOf, undefined, champion, "overlay");
 
-  check(!PUBLISHED_DIVISIONS.includes("フライ級"), "公開可否ゲート: フライ級は現時点で非公開(前提の確認)");
-  const gated = getPublishedDivisionRankingView("フライ級", data, 5);
+  check(!PUBLISHED_DIVISIONS.includes("ヘビー級"), "公開可否ゲート: ヘビー級は現時点で非公開(前提の確認)");
+  const gated = getPublishedDivisionRankingView("ヘビー級", data, 5);
   check(gated.contenders.length === 0, "公開可否ゲート: 非公開階級はElo算出済みでも挑戦者ランキングを出さない");
   check(gated.champion?.fighterId === "champ-gate", "公開可否ゲート: 非公開階級でも王者は事実として表示を維持する");
 
@@ -595,7 +595,7 @@ function makeResolver(map: Record<string, string>) {
   const published = getPublishedDivisionRankingView("フェザー級", featherData, 5);
   check(published.contenders.length === 1, "公開可否ゲート: 公開済み階級は通常どおり挑戦者ランキングを出す");
 
-  check(getPublishedDivisionRankingView("フライ級", null, 5).contenders.length === 0, "公開可否ゲート: データが無い非公開階級もcontenders=[]のまま(エラーにならない)");
+  check(getPublishedDivisionRankingView("ヘビー級", null, 5).contenders.length === 0, "公開可否ゲート: データが無い非公開階級もcontenders=[]のまま(エラーにならない)");
 }
 
 // ── 17. latestRizinDivision: 単発の未明示キャッチウェイト戦1つで階級バケットが ──
@@ -956,18 +956,33 @@ function makeResolver(map: Record<string, string>) {
     "(iv): 直近年1戦のみ・通算も3戦未満なら、どちらの基準も満たさず資格なし"
   );
 
-  // 通算3戦以上(直近年に集中していなくても)は従来どおり資格を得る(回帰確認)
+  // 通算3戦以上(直近年に集中していなくても)は、対戦間隔が詰まっていれば
+  // 従来どおり資格を得る(回帰確認。個々の間隔は18ヶ月未満)
+  const denseThreeFights: FighterBoutSummary[] = [
+    { date: "2024-08-01", isWin: true, opponentNode: "opp-a" },
+    { date: "2024-11-01", isWin: true, opponentNode: "opp-b" },
+    { date: "2025-02-01", isWin: false, opponentNode: "opp-c" },
+  ];
+  check(
+    isStandardEligible(denseThreeFights, "フライ級", denseThreeFights[2].date, asOf),
+    "(iv): 通算3戦以上(対戦間隔が詰まっている)は従来どおり資格を得る(回帰確認)"
+  );
+
+  // 2026-07-13追加: 通算3戦あっても、直近の1戦とそれ以前の戦歴との間に
+  // 18ヶ月超の空白があれば、空白より前は資格カウントから除外され、
+  // 残り1戦のみでは資格を得ない(中村大介: 2022年の試合から2025年の
+  // 復帰戦まで約38ヶ月の空白があったのに通算3戦の資格バーを満たして
+  // しまっていたバグの一般ルール修正)
   const legacyThreeFights: FighterBoutSummary[] = [
     { date: "2020-01-01", isWin: true, opponentNode: "opp-a" },
     { date: "2021-01-01", isWin: true, opponentNode: "opp-b" },
     { date: "2022-01-01", isWin: false, opponentNode: "opp-c" },
   ];
-  // 直近性(18ヶ月)は満たさないため、直近日を新しく差し替えて確認する
   const legacyRecentDate = new Date(asOf.getTime() - 30 * 86400000).toISOString().slice(0, 10);
-  const legacyWithRecentLastFight: FighterBoutSummary[] = [...legacyThreeFights, { date: legacyRecentDate, isWin: true, opponentNode: "opp-d" }];
+  const legacyWithGapComeback: FighterBoutSummary[] = [...legacyThreeFights, { date: legacyRecentDate, isWin: true, opponentNode: "opp-d" }];
   check(
-    isStandardEligible(legacyWithRecentLastFight, "フライ級", legacyRecentDate, asOf),
-    "(iv): 通算3戦以上を満たす場合は従来どおり資格を得る(回帰確認)"
+    !isStandardEligible(legacyWithGapComeback, "フライ級", legacyRecentDate, asOf),
+    "(iv): 18ヶ月超の活動空白より前の戦歴は資格カウントから除外され、復帰1戦のみでは資格を得ない"
   );
 }
 

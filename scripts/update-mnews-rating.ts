@@ -13,6 +13,8 @@ import {
   buildDisplayEntries,
   computeRawRatings,
   computeScopedRecord,
+  computePreDebutRecords,
+  computeInitialRatingOverrides,
   detectWeighInMiss,
   filterPublishableStates,
   isRizinMmaEvent,
@@ -41,7 +43,7 @@ import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
 import { getDivisionOverlay, getEligibilityScopeStartDate } from "../src/lib/mnewsRating/fighterDivisions";
-import { ALGORITHM_VERSION, ELO_PARAMS_V5 } from "../src/lib/mnewsRating/constants";
+import { ALGORITHM_VERSION, ELO_PARAMS_V5, DECAY_PARAMS_V6, INITIAL_RATING_BOOST_PARAMS_V6 } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -162,9 +164,13 @@ function main() {
   const getKnownNames = buildKnownNamesLookup(records);
   const { bouts, warnings } = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss, asOf, isOpeningFightOverride);
   // v5確定パラメータ(比較ダンプでの目視レビューを経て採用)。
-  const states = computeRawRatings(bouts, ELO_PARAMS_V5);
+  // v6: RIZIN参戦前実績(既存history、全団体分)から機械算出した初期レート補正。
+  const preDebutRecords = computePreDebutRecords(records);
+  const initialRatingOverrides = computeInitialRatingOverrides(preDebutRecords, INITIAL_RATING_BOOST_PARAMS_V6);
+  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides);
   const publishable = filterPublishableStates(states, records);
-  const display = buildDisplayEntries(publishable, asOf);
+  // v6: 不活性ディケイ廃止(比較ダンプでの目視レビューを経て採用)。
+  const display = buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6);
 
   // 選手ページ/戦績データが公開されていない選手(fighters.ts側でhidden=true。
   // 「Mレーティングが乗るまで非公開」の選手や、単一ソース由来で最終確認待ちの

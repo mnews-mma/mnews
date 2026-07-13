@@ -2,7 +2,7 @@
 // パラメータ定義。2026-07-13、公開方針をD案(原則・方針は公開/具体的な係数・数値・
 // 実装手口は非公開)に変更した。/rankings/methodology には評価の原則のみを
 // 一般記述で載せ、この定数群の具体的な数値そのものは転記しない。
-import type { AsymmetricEloParams } from "./engine";
+import type { AsymmetricEloParams, DecayParams, InitialRatingBoostParams } from "./engine";
 
 // 表示名(D-1、2026-07-13): 外向き表示は「AI RIZINランキング」に統一。
 // RATING_NAME/RATING_KEYという定数名自体は内部コード名のため変更しない
@@ -11,7 +11,7 @@ export const RATING_NAME = "AI RIZINランキング";
 export const RATING_KEY = "mnewsRating";
 
 // 算出方法を変更したらインクリメントする。
-export const ALGORITHM_VERSION = 5;
+export const ALGORITHM_VERSION = 6;
 
 export const INITIAL_RATING = 1500;
 export const K_BASE = 32; // 判定勝ち・ドロー
@@ -90,4 +90,21 @@ export const ELO_PARAMS_V5: AsymmetricEloParams = {
   weakLossBoost: 1.1,
   thinResumeFightThreshold: 3,
   thinResumeWinDampen: 0.5,
+};
+
+// 2026-07-13(v6)追加: 不活性ディケイの廃止 + RIZIN参戦前実績の初期レート反映。
+// フライ/バンタム級で「実績組(他団体で実績を積んでからRIZIN参戦した選手)が
+// 沈み、格下勝ち勢が浮く」という体感ズレを、全階級共通の一般ルール2点で
+// 是正する(個別選手のハードコードはしない)。ライト級・フェザー級を含む
+// 全4階級での比較ダンプ・目視レビューを経て採用(野村駿太・コレスニックの
+// 順位上昇は許容範囲として容認)。
+// ディケイ廃止: 試合間隔での表示レート減衰を行わない(18ヶ月ルールで
+// 完全休眠選手は既に対象外になるため冗長、という判断)。
+export const DECAY_PARAMS_V6: DecayParams = { periodDays: DECAY_PERIOD_DAYS, perPeriod: 0, floor: DECAY_FLOOR };
+// 初期補正: RIZIN初参戦日より前の全団体戦歴(既存history)から機械算出した
+// 純勝ち数(勝-負)×10pt、上限150pt(参戦前3戦未満はノイズとして補正なし)。
+export const INITIAL_RATING_BOOST_PARAMS_V6: InitialRatingBoostParams = {
+  perNetWinPoints: 10,
+  maxBoost: 150,
+  minPreDebutFights: 3,
 };
