@@ -38,6 +38,7 @@ import {
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
+import { getDivisionOverlay } from "../src/lib/mnewsRating/fighterDivisions";
 import { ALGORITHM_VERSION, ELO_PARAMS_MODERATE } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
 
@@ -98,10 +99,13 @@ function main() {
   const asOf = new Date();
   const display = buildDisplayEntries(publishable, asOf);
 
-  // 掲載階級は「階級が判明している直近のRIZIN MMA試合の階級」で決める
-  // (fighters.tsの名目weightClassへはフォールバックしない)。ただし女子/アトム系の
-  // 除外判定だけはfighters.ts側の名目階級を主ソースとして参照する(2026-07-13、
-  // bout単位テキストへの依存で女子選手が男子階級へ誤混入するバグの恒久修正)。
+  // 掲載階級は「事実オーバーレイ(fighterDivisions.ts)に指定があればそれを優先し、
+  // 無ければ階級が判明している直近のRIZIN MMA試合の階級」で決める(fighters.tsの
+  // 名目weightClassへはフォールバックしない)。ただし女子/アトム系の除外判定だけは
+  // fighters.ts側の名目階級を主ソースとして参照する(2026-07-13、bout単位テキストへの
+  // 依存で女子選手が男子階級へ誤混入するバグの恒久修正)。事実オーバーレイは
+  // 「どの階級バケットに載せるか」だけを上書きし、順位・レートには一切触れない
+  // (Elo算出は従来どおり階級横断で1本のまま)。
   const nominalWeightClassBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
   // 選手ページ/戦績データが公開されていない選手(fighters.ts側でhidden=true。
   // 「Mレーティングが乗るまで非公開」の選手や、単一ソース由来で最終確認待ちの
@@ -113,7 +117,7 @@ function main() {
   const divisionBySlug = new Map(
     Object.entries(records).map(([slug, entry]) => [
       slug,
-      latestRizinDivision(entry.history ?? [], nominalWeightClassBySlug.get(slug)),
+      getDivisionOverlay(slug) ?? latestRizinDivision(entry.history ?? [], nominalWeightClassBySlug.get(slug)),
     ])
   );
 
