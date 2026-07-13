@@ -129,11 +129,17 @@ export function buildBouts(
   records: FighterRecordsInput,
   resolveOpponentSlug: (opponentName: string, selfSlug: string) => string | null,
   getKnownNames: (slug: string) => string[] = () => [],
-  lookupWeighInMiss: (fighterId: string, date: string, opponent: string) => "self" | "opponent" | null = () => null
+  lookupWeighInMiss: (fighterId: string, date: string, opponent: string) => "self" | "opponent" | null = () => null,
+  asOf: Date = new Date()
 ): BuildBoutsResult {
   const warnings: ExclusionWarning[] = [];
   const boutMap = new Map<string, Bout>();
   const conflictKeys = new Set<string>();
+  // 開催日がasOfより未来の「結果」は、データソース側の誤り(Wikipediaの
+  // いたずら・時期尚早な編集等で、開催前の試合に確定済みの結果が書き込まれる
+  // ケースが実在した=カルシャガ・ダウトベックのRIZIN LANDMARK 15/超RIZIN.5戦)
+  // であり、集計から一律除外する一般ルール。個別選手のハードコード対応はしない。
+  const asOfKey = asOf.toISOString().slice(0, 10);
 
   for (const [slug, entry] of Object.entries(records)) {
     for (const h of entry.history ?? []) {
@@ -142,6 +148,16 @@ export function buildBouts(
 
       if (!h.date || !h.opponent) {
         warnings.push({ slug, date: h.date ?? "", opponent: h.opponent ?? "", reason: "日付または対戦相手名が欠損" });
+        continue;
+      }
+
+      if (h.date > asOfKey) {
+        warnings.push({
+          slug,
+          date: h.date,
+          opponent: h.opponent,
+          reason: "開催日が現在日付より未来のため除外(未開催の試合に結果が入っているデータ不整合の可能性)",
+        });
         continue;
       }
 
@@ -396,6 +412,35 @@ export function computeRawRatings(bouts: Bout[], params: AsymmetricEloParams = N
   }
 
   return states;
+}
+
+export interface ScopedRecord {
+  wins: number;
+  losses: number;
+  draws: number;
+  fights: number;
+}
+
+// 指定日付以降の対戦だけを対象に、勝敗を数え直す(順位・レートには一切
+// 触れない。表示用の戦績スコープ起点(fighterDivisions.tsの
+// eligibilityScopeStartDate)を反映するために使う。階級変更後の試合だけを
+// 数えたい選手向けで、Elo自体は従来どおり全期間の対戦列で計算する)。
+export function computeScopedRecord(bouts: Bout[], slug: string, scopeStartDate: string): ScopedRecord {
+  let wins = 0;
+  let losses = 0;
+  let draws = 0;
+  let fights = 0;
+  for (const bout of bouts) {
+    if (bout.date < scopeStartDate) continue;
+    const isA = bout.aNode === slug;
+    if (!isA && bout.bNode !== slug) continue;
+    const score = isA ? bout.scoreA : 1 - bout.scoreA;
+    fights++;
+    if (score === 1) wins++;
+    else if (score === 0) losses++;
+    else draws++;
+  }
+  return { wins, losses, draws, fights };
 }
 
 // 公開可能なノードだけに絞る(fighterRecords.jsonのキーを持つ実在選手のみ)。

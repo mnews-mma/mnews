@@ -12,9 +12,11 @@ import {
   buildBouts,
   buildDisplayEntries,
   computeRawRatings,
+  computeScopedRecord,
   detectWeighInMiss,
   filterPublishableStates,
   isRizinMmaEvent,
+  Bout,
   DisplayEntry,
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
@@ -38,14 +40,50 @@ import {
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
-import { getDivisionOverlay } from "../src/lib/mnewsRating/fighterDivisions";
+import { getDivisionOverlay, getEligibilityScopeStartDate } from "../src/lib/mnewsRating/fighterDivisions";
 import { ALGORITHM_VERSION, ELO_PARAMS_MODERATE } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
+import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
+import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
 
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
+const RIZIN_RECORDS_PATH = path.join(process.cwd(), "data", "rizinRecords.json");
 const OUT = path.join(process.cwd(), "data", "rankings.json");
 const OUT_PREV = path.join(process.cwd(), "data", "rankings.prev.json");
 const ARCHIVE_DIR = path.join(process.cwd(), "data", "rankings", "archive");
+
+// Phase 2: rizinRecords.json(RIZIN公式ソース)を優先し、無ければ従来のhistory
+// にフォールバックする。今回はフェザー級(公開中)のみ対象とする(他階級は
+// 従来どおりhistoryベースのまま・非公開維持)。「フェザー級かどうか」は
+// このオーバーライド適用前に確定させたdivisionBySlug(事実オーバーレイ→
+// 自動判定の優先順位、従来と不変)を使う(オーバーライド後のデータで階級判定を
+// やり直すことはしない=判定ロジックの循環を避ける)。
+function applyPhase2RizinRecordsOverride(
+  records: FighterRecordsInput,
+  divisionBySlug: Map<string, MnewsDivision | null>
+): FighterRecordsInput {
+  if (!fs.existsSync(RIZIN_RECORDS_PATH)) return records;
+  const rizinEvents: RizinRecordsEvent[] = JSON.parse(fs.readFileSync(RIZIN_RECORDS_PATH, "utf8"));
+  const index = buildRizinRecordsIndex(rizinEvents);
+
+  const out: FighterRecordsInput = {};
+  let totalOverridden = 0;
+  let totalExcluded = 0;
+  for (const [slug, entry] of Object.entries(records)) {
+    if (divisionBySlug.get(slug) !== "フェザー級") {
+      out[slug] = entry;
+      continue;
+    }
+    const { history, overriddenCount, excludedCount } = applyRizinRecordsToHistory(slug, entry.history ?? [], index);
+    out[slug] = { ...entry, history };
+    totalOverridden += overriddenCount;
+    totalExcluded += excludedCount;
+  }
+  console.log(
+    `[INFO] Phase2: rizinRecords.jsonをフェザー級選手に優先適用(公式ソースで上書き${totalOverridden}試合・MMA以外/中止で除外${totalExcluded}試合)`
+  );
+  return out;
+}
 
 // 既存JSONの読み込み。破損している場合は空({})にフォールバックして続行する
 // (update-org-rankings.tsと同じ思想: 破損ファイルでのクラッシュループを避ける)。
@@ -63,6 +101,19 @@ function lastRizinMmaWeighInMiss(records: FighterRecordsInput, slug: string): bo
   const history = (records[slug]?.history ?? []).filter((h) => isRizinMmaEvent(h.event));
   const latest = [...history].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))[0];
   return latest ? detectWeighInMiss(latest) : false;
+}
+
+// 事実オーバーレイ(fighterDivisions.ts)に戦績スコープ起点日の指定がある選手は、
+// 表示用の戦績(wins/losses/draws)をその日付以降の対戦だけで数え直す(例: 武田光司の
+// フェザー転向後3-2)。rawRating/displayRating/eligibleはここでは一切変更しない
+// (順位・レートへの手動介入はしない、という原則を守るため、Eloは常に全期間の
+// 対戦列で計算したままにする。ここで上書きするのは表示専用のwins/losses/draws
+// フィールドのみ)。指定が無い選手はdisplayをそのまま返す(フォールバック)。
+function applyEligibilityScopeToRecord(slug: string, display: DisplayEntry, bouts: Bout[]): DisplayEntry {
+  const scopeStart = getEligibilityScopeStartDate(slug);
+  if (!scopeStart) return display;
+  const scoped = computeScopedRecord(bouts, slug, scopeStart);
+  return { ...display, wins: scoped.wins, losses: scoped.losses, draws: scoped.draws };
 }
 
 // 王者は「事実」として、Elo掲載資格とは独立に表示する。displayは
@@ -87,17 +138,8 @@ function main() {
     return;
   }
 
-  const records: FighterRecordsInput = JSON.parse(fs.readFileSync(RECORDS_PATH, "utf8"));
+  const rawRecords: FighterRecordsInput = JSON.parse(fs.readFileSync(RECORDS_PATH, "utf8"));
   const prevOut = loadRankingsFile(OUT);
-
-  const resolve = buildOpponentResolver(records);
-  const getKnownNames = buildKnownNamesLookup(records);
-  const { bouts, warnings } = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss);
-  // v4確定パラメータ: MODERATE(比較ダンプでの目視レビューを経て採用)。
-  const states = computeRawRatings(bouts, ELO_PARAMS_MODERATE);
-  const publishable = filterPublishableStates(states, records);
-  const asOf = new Date();
-  const display = buildDisplayEntries(publishable, asOf);
 
   // 掲載階級は「事実オーバーレイ(fighterDivisions.ts)に指定があればそれを優先し、
   // 無ければ階級が判明している直近のRIZIN MMA試合の階級」で決める(fighters.tsの
@@ -105,8 +147,30 @@ function main() {
   // fighters.ts側の名目階級を主ソースとして参照する(2026-07-13、bout単位テキストへの
   // 依存で女子選手が男子階級へ誤混入するバグの恒久修正)。事実オーバーレイは
   // 「どの階級バケットに載せるか」だけを上書きし、順位・レートには一切触れない
-  // (Elo算出は従来どおり階級横断で1本のまま)。
+  // (Elo算出は従来どおり階級横断で1本のまま)。Phase2のrizinRecordsオーバーライド
+  // (下記)より前に、必ずrawRecords(公式ソース未適用の元データ)で計算する
+  // (階級判定→オーバーライド適用対象の決定、という順序を固定し循環を避ける)。
   const nominalWeightClassBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
+  const divisionBySlug = new Map(
+    Object.entries(rawRecords).map(([slug, entry]) => [
+      slug,
+      getDivisionOverlay(slug) ?? latestRizinDivision(entry.history ?? [], nominalWeightClassBySlug.get(slug)),
+    ])
+  );
+
+  // Phase2: フェザー級(公開中)のみ、rizinRecords.json(RIZIN公式ソース)を
+  // history より優先する。他階級は従来どおりrawRecordsのまま(非公開維持)。
+  const records = applyPhase2RizinRecordsOverride(rawRecords, divisionBySlug);
+
+  const asOf = new Date();
+  const resolve = buildOpponentResolver(records);
+  const getKnownNames = buildKnownNamesLookup(records);
+  const { bouts, warnings } = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss, asOf);
+  // v4確定パラメータ: MODERATE(比較ダンプでの目視レビューを経て採用)。
+  const states = computeRawRatings(bouts, ELO_PARAMS_MODERATE);
+  const publishable = filterPublishableStates(states, records);
+  const display = buildDisplayEntries(publishable, asOf);
+
   // 選手ページ/戦績データが公開されていない選手(fighters.ts側でhidden=true。
   // 「Mレーティングが乗るまで非公開」の選手や、単一ソース由来で最終確認待ちの
   // 選手が該当)は、fighterRecordsCache/getVisibleFighters側の一般的な公開判定
@@ -114,12 +178,6 @@ function main() {
   // だが、いずれも「掲載資格を満たしていても事実として除外する」という扱いは同じ。
   const hiddenSlugs = new Set(FIGHTERS.filter((f) => f.hidden).map((f) => f.slug));
   const isExcludedByFact = (slug: string): boolean => isRetired(slug) || hiddenSlugs.has(slug);
-  const divisionBySlug = new Map(
-    Object.entries(records).map(([slug, entry]) => [
-      slug,
-      getDivisionOverlay(slug) ?? latestRizinDivision(entry.history ?? [], nominalWeightClassBySlug.get(slug)),
-    ])
-  );
 
   // B-1(ランカー勝ち特例)・B-2(階級変更後の資格スコープ)。二段階・単一パスで
   // 掲載資格を確定する。順位はここでは一切決めない(Eloレート順は
@@ -164,7 +222,7 @@ function main() {
       )
       .map(([slug, e]) => ({
         meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
-        display: e,
+        display: applyEligibilityScopeToRecord(slug, e, bouts),
       }));
     const key = divisionRankingsKey(division);
     out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion);

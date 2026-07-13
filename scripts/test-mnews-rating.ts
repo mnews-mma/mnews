@@ -6,6 +6,7 @@ import {
   buildBouts,
   buildDisplayEntries,
   computeRawRatings,
+  computeScopedRecord,
   filterPublishableStates,
   isEligible,
   applyInactivityDecay,
@@ -1152,6 +1153,59 @@ function makeResolver(map: Record<string, string>) {
   const overlayDivision = getDivisionOverlay("kintaro");
   const resolved = overlayDivision ?? autoWouldSayFeatherweight;
   check(resolved === "バンタム級", "階級オーバーレイ: 自動判定の結果と異なっていてもオーバーレイが優先される(順位・レートには一切触れない=掲載階級バケットの決定のみ)");
+}
+
+// ── 28. buildBouts: 開催日が現在日付より未来の「結果」は一般ルールで除外する
+//       (カルシャガ・ダウトベックのWikipedia記事に、まだ開催されていない
+//       RIZIN LANDMARK 15/超RIZIN.5の「結果」が書き込まれていた実例の回帰確認。
+//       個別選手のハードコードではなく、asOfより未来のdateを一律除外する) ──
+{
+  const asOf = new Date("2026-07-13");
+  const records: FighterRecordsInput = {
+    "fighter-future1": {
+      history: [
+        { date: "2026-07-18", opponent: "fighter-future2", result: "win", method: "判定3-0", event: "RIZIN LANDMARK 15" },
+        { date: "2026-01-01", opponent: "fighter-future2", result: "win", method: "判定3-0", event: "RIZIN.60" },
+      ],
+    },
+    "fighter-future2": { history: [] },
+  };
+  const resolve = (name: string) => (name === "fighter-future2" ? "fighter-future2" : null);
+  const { bouts, warnings } = buildBouts(records, resolve, undefined, undefined, asOf);
+  check(bouts.length === 1, "未来日付フィルタ: asOfより未来の試合は除外し、過去の試合だけが残る");
+  check(bouts[0].date === "2026-01-01", "未来日付フィルタ: 除外後に残るのは過去の試合のみ");
+  check(
+    warnings.some((w) => w.date === "2026-07-18" && w.reason.includes("未来")),
+    "未来日付フィルタ: 除外した試合はwarningとして記録する(捏造ではなく可視化)"
+  );
+}
+
+// ── 29. buildBouts: asOf未指定時は現在日時がデフォルトになる(回帰確認。
+//       過去の全テストがasOfを渡していなくても壊れないことの確認) ──
+{
+  const records: FighterRecordsInput = {
+    "fighter-past-a": {
+      history: [{ date: "2020-01-01", opponent: "fighter-past-b", result: "win", method: "判定3-0", event: "RIZIN.20" }],
+    },
+    "fighter-past-b": { history: [] },
+  };
+  const resolve = (name: string) => (name === "fighter-past-b" ? "fighter-past-b" : null);
+  const { bouts } = buildBouts(records, resolve);
+  check(bouts.length === 1, "asOf未指定: 過去日付の試合はデフォルト(現在日時)でも除外されない");
+}
+
+// ── 30. computeScopedRecord: 指定日付以降の対戦だけで勝敗を数え直す
+//       (武田光司のフェザー転向後3-2表示の基盤機能) ──
+{
+  const bouts: Bout[] = [
+    { key: "1", date: "2019-04-21", aNode: "takeda", bNode: "opp1", opponentLabel: "opp1", scoreA: 0, finish: true, method: "" },
+    { key: "2", date: "2024-03-23", aNode: "takeda", bNode: "opp2", opponentLabel: "opp2", scoreA: 1, finish: false, method: "" },
+    { key: "3", date: "2024-06-09", aNode: "opp3", bNode: "takeda", opponentLabel: "takeda", scoreA: 1, finish: true, method: "" }, // takedaはbNode側→自視点score=0(負け)
+    { key: "4", date: "2026-03-07", aNode: "opp4", bNode: "takeda", opponentLabel: "takeda", scoreA: 0, finish: false, method: "" }, // takedaはbNode側→自視点score=1(勝ち)
+  ];
+  const scoped = computeScopedRecord(bouts, "takeda", "2024-03-23");
+  check(scoped.fights === 3, "computeScopedRecord: 起点日以降の対戦だけを数える(2019年分は除外)");
+  check(scoped.wins === 2 && scoped.losses === 1, "computeScopedRecord: aNode/bNodeどちらの視点でも正しく勝敗を数える");
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);
