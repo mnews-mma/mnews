@@ -210,6 +210,27 @@ export const FIGHTER_DIVISION_OVERLAYS: FighterDivisionOverlayEntry[] = [
       "表示戦績は2勝2敗(fights=4)。既存の掲載階級(バンタム級、rank5)自体は変わらない。順位・" +
       "レート・掲載資格の判定には一切影響しない(表示戦績のみ)。",
   },
+  {
+    slug: "akimoto-kyoma",
+    name: "秋元強真",
+    division: "フェザー級",
+    recordDisplayExclusions: [
+      { date: "2024-09-29", opponentSlug: "kintaro" },
+      { date: "2024-12-31", opponentSlug: "motoya-yuki" },
+    ],
+    fetchedDate: "2026-07-14",
+    note:
+      "秋元強真のフェザー級ランキング表示戦績が7勝1敗になっていた(本番/rankings/featherweightで" +
+      "確認、2026-07-14)。rizinRecords.json(RIZIN公式ソース)で全8戦の内訳を確認したところ、" +
+      "2024-09-29 金太郎戦(RIZIN.48・61kg=バンタム級マッピング、勝利)と2024-12-31 元谷友貴戦" +
+      "(RIZIN.49・61kg、公式が明示的に「バンタム級」と記載、敗戦)の2試合がバンタム級で、" +
+      "残る6戦(2024-11-17鈴木博昭・2025-05-04高木凌・2025-07-27赤田功輝[68kg契約だが" +
+      "フェザー級として実施]・2025-11-03萩原京平・2025-12-31新居すぐる・2026-03-07パッチー・" +
+      "ミックス、いずれも66kg=フェザー級)はフェザー級。この2戦は単発の他階級越えで前後の試合が" +
+      "いずれもフェザー級のため、eligibilityScopeStartDateでは表現できずrecordDisplayExclusionsで" +
+      "個別に除外する。結果、表示戦績は6勝0敗。順位・レート・掲載資格の判定には一切影響しない" +
+      "(表示戦績のみ)。",
+  },
 ];
 
 export function getDivisionOverlay(
