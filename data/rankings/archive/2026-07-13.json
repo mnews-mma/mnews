@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-07-13T01:33:31.937Z",
+    "updatedAt": "2026-07-13T04:44:30.820Z",
     "algorithmVersion": 4,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -214,7 +214,7 @@
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-07-13T01:33:31.937Z",
+    "updatedAt": "2026-07-13T04:44:30.820Z",
     "algorithmVersion": 4,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -343,7 +343,7 @@
         "fighterId": "inoue-seiya",
         "rank": 9,
         "rating": 1500,
-        "rawRating": 1495.9741761774094,
+        "rawRating": 1495.982518233408,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -456,7 +456,7 @@
         "rank": 17,
         "rating": 1430,
         "rawRating": 1434.6033075467801,
-        "delta": null,
+        "delta": 0,
         "record": {
           "wins": 4,
           "losses": 8,
@@ -469,7 +469,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-07-13T01:33:31.937Z",
+    "updatedAt": "2026-07-13T04:44:30.820Z",
     "algorithmVersion": 4,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -485,8 +485,8 @@
       {
         "fighterId": "akimoto-kyoma",
         "rank": 1,
-        "rating": 1550,
-        "rawRating": 1547.2786369056373,
+        "rating": 1560,
+        "rawRating": 1556.4121922823088,
         "delta": 0,
         "record": {
           "wins": 7,
@@ -497,36 +497,8 @@
         "weighInMiss": false
       },
       {
-        "fighterId": "dautbek-karshyga",
-        "rank": 2,
-        "rating": 1530,
-        "rawRating": 1531.5989093864634,
-        "delta": 0,
-        "record": {
-          "wins": 5,
-          "losses": 2,
-          "draws": 0
-        },
-        "lastFight": "2026-09-10",
-        "weighInMiss": false
-      },
-      {
-        "fighterId": "takagi-ryo",
-        "rank": 3,
-        "rating": 1530,
-        "rawRating": 1525.873776517064,
-        "delta": 0,
-        "record": {
-          "wins": 5,
-          "losses": 1,
-          "draws": 0
-        },
-        "lastFight": "2026-05-10",
-        "weighInMiss": false
-      },
-      {
         "fighterId": "koike-kleber",
-        "rank": 4,
+        "rank": 2,
         "rating": 1520,
         "rawRating": 1518.3082669055232,
         "delta": 0,
@@ -539,10 +511,24 @@
         "weighInMiss": false
       },
       {
+        "fighterId": "takagi-ryo",
+        "rank": 3,
+        "rating": 1520,
+        "rawRating": 1517.0094685594838,
+        "delta": 0,
+        "record": {
+          "wins": 5,
+          "losses": 2,
+          "draws": 0
+        },
+        "lastFight": "2026-05-10",
+        "weighInMiss": false
+      },
+      {
         "fighterId": "asakura-mikuru",
-        "rank": 5,
+        "rank": 4,
         "rating": 1510,
-        "rawRating": 1507.276114339604,
+        "rawRating": 1507.2769915771414,
         "delta": 0,
         "record": {
           "wins": 13,
@@ -554,16 +540,30 @@
       },
       {
         "fighterId": "takeda-koji",
-        "rank": 6,
+        "rank": 5,
         "rating": 1500,
-        "rawRating": 1497.1569851348734,
+        "rawRating": 1497.1890744781533,
         "delta": 0,
         "record": {
-          "wins": 8,
-          "losses": 8,
+          "wins": 3,
+          "losses": 2,
           "draws": 0
         },
         "lastFight": "2026-03-07",
+        "weighInMiss": false
+      },
+      {
+        "fighterId": "dautbek-karshyga",
+        "rank": 6,
+        "rating": 1500,
+        "rawRating": 1495.7984476571648,
+        "delta": -36,
+        "record": {
+          "wins": 4,
+          "losses": 1,
+          "draws": 0
+        },
+        "lastFight": "2025-03-30",
         "weighInMiss": false
       },
       {
@@ -612,7 +612,7 @@
         "fighterId": "kubo-yuta",
         "rank": 10,
         "rating": 1490,
-        "rawRating": 1491.202369655471,
+        "rawRating": 1491.2031570157142,
         "delta": 0,
         "record": {
           "wins": 5,
@@ -640,10 +640,10 @@
         "fighterId": "kolesnik-viktor",
         "rank": 12,
         "rating": 1490,
-        "rawRating": 1489.2571690385344,
+        "rawRating": 1489.7677091208598,
         "delta": 0,
         "record": {
-          "wins": 3,
+          "wins": 4,
           "losses": 2,
           "draws": 0
         },
@@ -654,7 +654,7 @@
         "fighterId": "kimura-shuya",
         "rank": 13,
         "rating": 1460,
-        "rawRating": 1455.770675039317,
+        "rawRating": 1455.394610714614,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -679,22 +679,8 @@
         "weighInMiss": false
       },
       {
-        "fighterId": "hagiwara-kyohei",
-        "rank": 15,
-        "rating": 1450,
-        "rawRating": 1445.7172673925352,
-        "delta": 0,
-        "record": {
-          "wins": 8,
-          "losses": 10,
-          "draws": 0
-        },
-        "lastFight": "2026-07-18",
-        "weighInMiss": false
-      },
-      {
         "fighterId": "suzuki-chihiro",
-        "rank": 16,
+        "rank": 15,
         "rating": 1440,
         "rawRating": 1443.2094869789778,
         "delta": 0,
@@ -707,10 +693,24 @@
         "weighInMiss": false
       },
       {
+        "fighterId": "hagiwara-kyohei",
+        "rank": 16,
+        "rating": 1430,
+        "rawRating": 1429.0278959000334,
+        "delta": -17,
+        "record": {
+          "wins": 8,
+          "losses": 9,
+          "draws": 0
+        },
+        "lastFight": "2025-11-03",
+        "weighInMiss": false
+      },
+      {
         "fighterId": "nii-suguru",
         "rank": 17,
-        "rating": 1400,
-        "rawRating": 1404.7291873831202,
+        "rating": 1410,
+        "rawRating": 1405.0915079122733,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -724,7 +724,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-07-13T01:33:31.937Z",
+    "updatedAt": "2026-07-13T04:44:30.820Z",
     "algorithmVersion": 4,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -895,7 +895,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-07-13T01:33:31.937Z",
+    "updatedAt": "2026-07-13T04:44:30.820Z",
     "algorithmVersion": 4,
     "champion": null,
     "entries": [
