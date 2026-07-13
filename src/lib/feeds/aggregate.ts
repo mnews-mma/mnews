@@ -239,7 +239,10 @@ export interface FeedResult {
 // 制限はかけない。アーカイブ用スクリプトなどでも再利用するため公開する。
 export async function fetchRawArticles(): Promise<FeedResult> {
   const tasks: Promise<Article[]>[] = [
-    fetchOfficialFeed("https://fc.rizinff.com/blogs/news.atom", "atom", "rizin", "RIZIN公式", "rizin"),
+    // fc.rizinff.com/blogs/news.atomはファンクラブサイト「強者ノ巣」のブログで
+    // 本体公式サイトの発表(カード変更等)が反映されず更新が遅れる問題があった
+    // (2026-07-13発覚)。本体サイト(jp.rizinff.com)の正式RSSフィードに差し替え。
+    fetchOfficialFeed("https://jp.rizinff.com/_rss/rss20.xml", "rss", "rizin", "RIZIN公式", "rizin"),
     fetchOfficialFeed("https://www.deep2001.com/feed", "rss", "deep", "DEEP公式", "deep"),
     fetchOfficialFeed("https://j-shooto.com/category/professional/feed/", "rss", "shooto", "日本修斗協会公式", "shooto"),
     fetchPancraseReleases(),
