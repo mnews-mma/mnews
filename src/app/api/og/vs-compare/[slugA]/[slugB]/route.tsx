@@ -7,8 +7,8 @@
 //
 // データは既存の純関数(computeFighterStripStats/computeCommonOpponents)を
 // そのまま流用し、算出ロジックの二重実装はしない。レート数値(mnewsRating)は
-// 一切出さない — ランキング掲載中の場合のみ「AI RIZINランキング◯位」の
-// 順位バッジを出す(rankのみ参照、rating/rawRatingは非参照)。
+// 一切出さない。ランキング順位バッジは2026-07-14、実際の生成画像を見た運用側の
+// 判断で「ノイズになる」として廃止した(情報量よりカードの読みやすさを優先)。
 import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, type Fighter } from "@/lib/fighters";
@@ -16,8 +16,6 @@ import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterReco
 import { fitName, type FitOpts } from "@/lib/og/fitName";
 import { computeFighterStripStats, LAST5_SYMBOL } from "@/lib/fighterStrip";
 import { computeCommonOpponents } from "@/lib/articleGenerator";
-import { fetchDivisionRankingsEdge } from "@/lib/mnewsRatingDataEdge";
-import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import {
   OG_COLORS as COLORS,
   SITE_URL,
@@ -51,19 +49,6 @@ const RESULT_COLOR: Record<string, string> = {
 };
 const RESULT_MARK: Record<string, string> = { win: "○", loss: "●", draw: "△", nc: "△" };
 
-// 公開中の階級ランキングに掲載されていれば「◯位」または「王者」を返す
-// (rankのみ参照。rating/rawRatingは一切参照しない=レート非公開方針の維持)。
-async function findRankBadge(slug: string): Promise<string | null> {
-  for (const division of PUBLISHED_DIVISIONS) {
-    const data = await fetchDivisionRankingsEdge(DIVISION_SLUG[division]);
-    if (!data) continue;
-    if (data.champion?.fighterId === slug) return "王者";
-    const entry = data.entries.find((e) => e.fighterId === slug);
-    if (entry) return `${entry.rank}位`;
-  }
-  return null;
-}
-
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ slugA: string; slugB: string }> }
@@ -90,8 +75,6 @@ export async function GET(
     const ratioKey = (searchParams.get("ratio") ?? "4:5").trim();
     const { width, height } = RATIOS[ratioKey] ?? RATIOS["4:5"];
 
-    const [rankA, rankB] = await Promise.all([findRankBadge(slugA), findRankBadge(slugB)]);
-
     const nameZone: FitOpts = { maxWidth: (width - 120) / 2, maxHeight: 100, maxFont: 52, minFont: 24, maxLines: 2 };
     const fitAOwn = fitName(fighterA.nameJa, nameZone);
     const fitBOwn = fitName(fighterB.nameJa, nameZone);
@@ -115,6 +98,13 @@ export async function GET(
     });
     const commons = commonsAll.slice(0, 6);
     const commonsOverflow = commonsAll.length - commons.length;
+
+    // 共通対戦相手テーブルの列見出し。「A」「B」等の記号表記はどちらの選手か
+    // 直感的に分からず分かりにくいというフィードバックを受け、実際の選手名
+    // (短い列幅に収まるよう個別にfitName)に変更した(2026-07-14)。
+    const tableColZone: FitOpts = { maxWidth: 108, maxHeight: 40, maxFont: 15, minFont: 10, maxLines: 2 };
+    const tableFitA = fitName(fighterA.nameJa, tableColZone);
+    const tableFitB = fitName(fighterB.nameJa, tableColZone);
 
     const fonts = await loadOgFonts();
 
@@ -160,14 +150,9 @@ export async function GET(
             )}
           </div>
 
-          {/* 両者名 + VS + ランキング順位バッジ(任意) */}
+          {/* 両者名 + VS */}
           <div style={{ display: "flex", alignItems: "center", padding: "18px 24px 0" }}>
             <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: "flex-start" }}>
-              {rankA && (
-                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "14px", color: COLORS.gold, marginBottom: "6px" }}>
-                  AI RIZINランキング {rankA}
-                </div>
-              )}
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {fitA.lines.map((line, i) => (
                   <div key={i} style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${fitA.fontSize}px`, lineHeight: 1.1, color: "#FFFFFF" }}>
@@ -178,11 +163,6 @@ export async function GET(
             </div>
             <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "48px", color: COLORS.shu, padding: "0 16px" }}>VS</div>
             <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: "flex-end" }}>
-              {rankB && (
-                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "14px", color: COLORS.gold, marginBottom: "6px" }}>
-                  AI RIZINランキング {rankB}
-                </div>
-              )}
               <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
                 {fitB.lines.map((line, i) => (
                   <div key={i} style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${fitB.fontSize}px`, lineHeight: 1.1, color: "#FFFFFF" }}>
@@ -258,9 +238,21 @@ export async function GET(
                 }}
               >
                 <div style={{ display: "flex" }}>共通対戦相手</div>
-                <div style={{ display: "flex", gap: "36px" }}>
-                  <div style={{ display: "flex", width: "40px", justifyContent: "center" }}>A</div>
-                  <div style={{ display: "flex", width: "40px", justifyContent: "center" }}>B</div>
+                <div style={{ display: "flex", gap: "16px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", width: "108px", alignItems: "center" }}>
+                    {tableFitA.lines.map((line, i) => (
+                      <div key={i} style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${tableFitA.fontSize}px`, lineHeight: 1.2, color: COLORS.gold }}>
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", width: "108px", alignItems: "center" }}>
+                    {tableFitB.lines.map((line, i) => (
+                      <div key={i} style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${tableFitB.fontSize}px`, lineHeight: 1.2, color: COLORS.gold }}>
+                        {line}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
               {commons.map((c, i) => (
@@ -277,11 +269,11 @@ export async function GET(
                   <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "18px", color: "#FFFFFF" }}>
                     {c.label}
                   </div>
-                  <div style={{ display: "flex", gap: "36px" }}>
-                    <div style={{ display: "flex", width: "40px", justifyContent: "center", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "22px", color: c.resultA ? RESULT_COLOR[c.resultA] : COLORS.ash }}>
+                  <div style={{ display: "flex", gap: "16px" }}>
+                    <div style={{ display: "flex", width: "108px", justifyContent: "center", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "22px", color: c.resultA ? RESULT_COLOR[c.resultA] : COLORS.ash }}>
                       {c.resultA ? RESULT_MARK[c.resultA] : "-"}
                     </div>
-                    <div style={{ display: "flex", width: "40px", justifyContent: "center", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "22px", color: c.resultB ? RESULT_COLOR[c.resultB] : COLORS.ash }}>
+                    <div style={{ display: "flex", width: "108px", justifyContent: "center", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "22px", color: c.resultB ? RESULT_COLOR[c.resultB] : COLORS.ash }}>
                       {c.resultB ? RESULT_MARK[c.resultB] : "-"}
                     </div>
                   </div>

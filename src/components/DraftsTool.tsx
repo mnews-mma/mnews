@@ -568,8 +568,10 @@ function VsCompareTab({
     const commons = computeCommonOpponents(entryA, entryB);
     const uniqueCommons = new Set(commons.map((c) => c.name)).size;
     const notable = computeNotablePoints(picked.nameA, entryA, picked.nameB, entryB);
-    const lines = [`【見どころ】${picked.nameA} vs ${picked.nameB}`];
-    if (picked.ev) lines.push(picked.ev + (picked.wc ? `（${picked.wc}）` : ""));
+    // 投稿冒頭は【大会名_注目カード】タグ(大会名は選択済みイベントから自動変換。
+    // 任意の2選手モード等、大会名が無い場合は名前部分を省いた【注目カード】)。
+    const tag = picked.ev ? `【${picked.ev}_注目カード】` : "【注目カード】";
+    const lines = [tag, `${picked.nameA} vs ${picked.nameB}${picked.wc ? `（${picked.wc}）` : ""}`];
     if (uniqueCommons > 0) lines.push(`共通対戦相手${uniqueCommons}人`);
     if (statsA.last5.length > 0 || statsB.last5.length > 0) {
       const l5 = (name: string, s: typeof statsA) => {
