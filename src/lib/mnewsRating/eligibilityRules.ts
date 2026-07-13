@@ -10,6 +10,9 @@ export interface FighterBoutSummary {
   weightClass?: string;
   isWin: boolean;
   opponentNode: string;
+  // オープニングファイト(前座)判定。掲載資格のカウント対象・ランカー勝ち
+  // 特例の「本戦での勝利」判定からは除外する(2026-07-13追加)。未設定はfalse扱い。
+  isOpeningFight?: boolean;
 }
 
 // bouts(Eloエンジンが既に重複排除・計量オーバーNC裁定を適用済みの対戦リスト)から、
@@ -20,12 +23,20 @@ export function summarizeBoutsForFighter(bouts: Bout[], slug: string): FighterBo
   const out: FighterBoutSummary[] = [];
   for (const b of bouts) {
     if (b.aNode === slug) {
-      out.push({ date: b.date, weightClass: b.weightClass, isWin: b.scoreA === 1, opponentNode: b.bNode });
+      out.push({ date: b.date, weightClass: b.weightClass, isWin: b.scoreA === 1, opponentNode: b.bNode, isOpeningFight: b.isOpeningFight });
     } else if (b.bNode === slug) {
-      out.push({ date: b.date, weightClass: b.weightClass, isWin: b.scoreA === 0, opponentNode: b.aNode });
+      out.push({ date: b.date, weightClass: b.weightClass, isWin: b.scoreA === 0, opponentNode: b.aNode, isOpeningFight: b.isOpeningFight });
     }
   }
   return out;
+}
+
+// 掲載資格のカウント対象試合(オープニングファイトを除いたもの)を返す共通ヘルパー。
+// B-2(階級変更検出・資格スコープ)・B-1(ランカー勝ち特例)いずれもこの絞り込み後の
+// 対戦を土台にする(オープニングファイトは「試合数」にも「相手の質」にも
+// 数えない、という方針を一箇所に集約する)。
+function excludeOpeningFights(summaries: FighterBoutSummary[]): FighterBoutSummary[] {
+  return summaries.filter((s) => !s.isOpeningFight);
 }
 
 // B-2: 階級変更の検出。判明済みweightClassのうち階級名が明示されており
@@ -34,41 +45,66 @@ export function summarizeBoutsForFighter(bouts: Bout[], slug: string): FighterBo
 // 単発の未明示キャッチウェイト戦(kg契約のみの表記)はlatestRizinDivision同様
 // ノイズとみなし証拠にしない(武田光司・コレスニックの71.0kg契約と同じ理由)。
 // 該当が無ければnull(=階級変更は検出されない。資格判定は全期間のまま)。
+//
+// 2026-07-13再修正: 単発の他階級進出(1戦のみで、その前後の直近の判明済み
+// 試合がいずれも現階級)は「階級変更」と見なさない。ミスマッチの試合の
+// 直前・直後(時系列で隣接する判明済み試合。明示・未明示のkg換算いずれでも可。
+// latestRizinDivisionと同じmapToDivision基準)がどちらも現階級相当であれば、
+// 一時的な遠征として無視する(ケラモフの実データ: 2024-12-31のライト級
+// タイトルマッチ1戦のみが階級越えで、直前・直後はいずれも未明示の66kg契約=
+// フェザー級相当。これを階級変更と誤判定すると資格対象試合が2戦まで絞り
+// 込まれ、脱落してしまっていた)。単に「その後どこかで現階級に戻っている」
+// だけでは不十分(直前・直後どちらも隣接一致を要求しないと、実際に階級を
+// 移った選手の変更前戦績まで無視してしまう=既存テストで確認済み)。
 export function detectDivisionChangeCutoff(summaries: FighterBoutSummary[], currentDivision: MnewsDivision): string | null {
-  const mismatches = summaries
-    .filter((s): s is FighterBoutSummary & { weightClass: string } => !!s.weightClass && NAMED_DIVISION_RE.test(s.weightClass))
-    .map((s) => ({ date: s.date, division: mapToDivision(s.weightClass) }))
-    .filter((s): s is { date: string; division: MnewsDivision } => s.division !== null && s.division !== currentDivision);
-  if (mismatches.length === 0) return null;
-  return mismatches.reduce((latest, m) => (m.date > latest.date ? m : latest)).date;
+  const known = summaries
+    .filter((s): s is FighterBoutSummary & { weightClass: string } => !!s.weightClass)
+    .map((s) => ({ date: s.date, division: mapToDivision(s.weightClass), named: NAMED_DIVISION_RE.test(s.weightClass) }))
+    .filter((s): s is { date: string; division: MnewsDivision; named: boolean } => s.division !== null)
+    .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+
+  const mismatchDates: string[] = [];
+  known.forEach((k, i) => {
+    if (!k.named || k.division === currentDivision) return;
+    const prev = known[i - 1];
+    const next = known[i + 1];
+    const isIsolatedExcursion = prev?.division === currentDivision && next?.division === currentDivision;
+    if (!isIsolatedExcursion) mismatchDates.push(k.date);
+  });
+  if (mismatchDates.length === 0) return null;
+  return mismatchDates.reduce((latest, d) => (d > latest ? d : latest));
 }
 
 // B-2: 資格判定用のfights/winsを算出する。階級変更が検出された場合は
 // cutoff日より後の対戦のみでカウントする(=変更後の当該階級の試合で評価)。
+// オープニングファイトは資格カウントの対象試合に含めない(2026-07-13追加)。
 // 直近性(18ヶ月)は既存どおりRatingState.lastFightDate(階級横断・全期間)を
 // 呼び出し側で別途使うため、ここでは扱わない。
 export function computeEligibilityFightsAndWins(
   summaries: FighterBoutSummary[],
   currentDivision: MnewsDivision
 ): { fights: number; wins: number } {
-  const cutoff = detectDivisionChangeCutoff(summaries, currentDivision);
-  const scoped = cutoff ? summaries.filter((s) => s.date > cutoff) : summaries;
+  const withoutOpeners = excludeOpeningFights(summaries);
+  const cutoff = detectDivisionChangeCutoff(withoutOpeners, currentDivision);
+  const scoped = cutoff ? withoutOpeners.filter((s) => s.date > cutoff) : withoutOpeners;
   return { fights: scoped.length, wins: scoped.filter((s) => s.isWin).length };
 }
 
 // B-2適用後の「標準の掲載資格」を判定する(1勝以上は階級変更後スコープ、
 // 18ヶ月直近性は既存の全期間lastFightDateのまま)。
-// 試合数の要件(v4追加)は「通算ELIGIBILITY_MIN_FIGHTS戦以上」OR
-// 「ELIGIBILITY_RECENT_YEAR_START年以降にELIGIBILITY_RECENT_MIN_FIGHTS戦以上」の
-// いずれかを満たせばよい(直近活動が濃い選手を拾うための代替基準)。
+// 試合数の要件は「通算ELIGIBILITY_MIN_FIGHTS戦以上」OR「ELIGIBILITY_RECENT_YEAR_START年
+// 以降にELIGIBILITY_RECENT_MIN_FIGHTS戦以上」のいずれかを満たせばよい(直近活動が
+// 濃い選手を拾うための代替基準)。オープニングファイトはどちらのカウントにも
+// 含めない(2026-07-13追加)。
 export function isStandardEligible(
   summaries: FighterBoutSummary[],
   currentDivision: MnewsDivision,
   lastFightDate: string | null,
   asOf: Date
 ): boolean {
-  const cutoff = detectDivisionChangeCutoff(summaries, currentDivision);
-  const scoped = cutoff ? summaries.filter((s) => s.date > cutoff) : summaries;
+  const withoutOpeners = excludeOpeningFights(summaries);
+  const cutoff = detectDivisionChangeCutoff(withoutOpeners, currentDivision);
+  const scoped = cutoff ? withoutOpeners.filter((s) => s.date > cutoff) : withoutOpeners;
   const fights = scoped.length;
   const wins = scoped.filter((s) => s.isWin).length;
   const recentFights = scoped.filter((s) => s.date >= `${ELIGIBILITY_RECENT_YEAR_START}-01-01`).length;
@@ -104,11 +140,12 @@ function wasStandardEligibleAsOfDate(
 // B-1: ランカー勝ち特例。baseRankersByDivisionは「標準資格(B-2適用後)を満たす
 // 選手」の階級別集合を1回だけ確定させたもの(単一パス。この特例で新規に資格を
 // 得た選手を倒したかは見ない=カスケードしない)。対象選手が、自分の掲載階級の
-// ベースランカーに対し、yearPrefix年に開催されたRIZIN MMA本戦で勝っており、
-// かつその対戦相手がその勝利の時点でも標準資格(=ランキング掲載中のランカー)
-// だった場合にのみ免除対象とする(順位はElo通りのまま。ここは資格の可否のみを
-// 返す)。ノーランカー(その時点でまだ標準資格を満たしていなかった相手)への
-// 勝利では特例は発動しない。
+// ベースランカーに対し、yearPrefix年に開催された本戦(オープニングファイトで
+// ない)RIZIN MMAで勝っており、かつその対戦相手がその勝利の時点でも標準資格
+// (=ランキング掲載中のランカー)だった場合にのみ免除対象とする(順位はElo
+// 通りのまま。ここは資格の可否のみを返す)。ノーランカー(その時点でまだ標準
+// 資格を満たしていなかった相手)への勝利、およびオープニングファイトでの
+// 勝利では特例は発動しない(2026-07-13追加)。
 export function findRankerWinExemptions(
   boutSummariesBySlug: Map<string, FighterBoutSummary[]>,
   divisionBySlug: Map<string, MnewsDivision | null>,
@@ -124,6 +161,7 @@ export function findRankerWinExemptions(
     const beatARanker = summaries.some(
       (s) =>
         s.isWin &&
+        !s.isOpeningFight &&
         s.date.startsWith(yearPrefix) &&
         rankers.has(s.opponentNode) &&
         wasStandardEligibleAsOfDate(s.opponentNode, s.date, boutSummariesBySlug, divisionBySlug)
