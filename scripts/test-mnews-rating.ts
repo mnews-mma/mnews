@@ -35,6 +35,7 @@ import {
   toClientSafeDivisionRankingView,
 } from "../src/lib/mnewsRating/divisionRankingView";
 import { PUBLISHED_DIVISIONS, latestRizinDivision, isNominallyWomensDivision, MnewsDivision } from "../src/lib/mnewsRating/divisions";
+import { getDivisionOverlay } from "../src/lib/mnewsRating/fighterDivisions";
 import {
   FighterBoutSummary,
   computeEligibilityFightsAndWins,
@@ -817,11 +818,11 @@ function makeResolver(map: Record<string, string>) {
   );
 }
 
-// ── 21. (iii) latestRizinDivisionのタイ解消バグ修正 ──────────────────────
+// ── 21. (iii) latestRizinDivisionのタイ解消ロジック(2026-07-13再修正) ──────
 {
-  // 伊藤裕輝の実データパターン: フライ級2票・バンタム級2票のタイで、根拠の
-  // 弱い直近の未明示キャッチウェイト(バンタム級側の数値)にタイ解消の決定権を
-  // 与えず、othersの中で最も新しいタイ候補(フライ級)を採用する。
+  // 伊藤裕輝の実データパターン: フライ級2票・バンタム級2票のタイで、タイ候補の
+  // 中に階級名が明示された試合(フライ級)があるため、それを最優先の証拠として
+  // 採用する(日付の新しさより明示的な階級名を優先)。
   const tiedBouts = [
     { date: "2026-03-07", weightClass: "59.0kg契約" }, // 直近(未明示) バンタム級ゾーン
     { date: "2025-09-28", weightClass: "57.0kg契約 フライ級トーナメント2回戦" }, // 明示フライ級
@@ -831,7 +832,22 @@ function makeResolver(map: Record<string, string>) {
   ];
   check(
     latestRizinDivision(tiedBouts) === "フライ級",
-    "タイ解消: フライ級2票・バンタム級2票のタイでは、根拠の弱い直近戦ではなくothers内最新のタイ候補(フライ級)を採用する"
+    "タイ解消(a): タイ候補の中に階級名明示の試合(フライ級)があれば最優先で採用する"
+  );
+
+  // 金太郎の実データパターン(2026-07-13本番混入の直接原因): フェザー級1票・
+  // バンタム級1票のタイで、階級名の明示は無い。直近戦(バンタム級)自身の値が
+  // タイ候補に含まれるため、それを採用する(全3戦の単純多数決=バンタム2:
+  // フェザー1とも整合する)。旧ロジックはothersのみ(直近戦を除いた2戦)で
+  // タイを取り、othersの中で最新のフェザー級を誤って採用していた。
+  const kintaroPattern = [
+    { date: "2026-05-10", weightClass: "61.0kg契約" }, // 直近(未明示) バンタム級ゾーン
+    { date: "2025-11-03", weightClass: "62.0kg契約" }, // フェザー級ゾーン
+    { date: "2025-05-31", weightClass: "61.0kg契約" }, // バンタム級ゾーン
+  ];
+  check(
+    latestRizinDivision(kintaroPattern) === "バンタム級",
+    "タイ解消(b): 階級名明示が無いタイでは、直近戦自身の値がタイ候補に含まれればそれを採用する(金太郎の混入バグ修正)"
   );
 
   // 回帰確認: 単独多数派があるケース(武田光司・コレスニックのパターン)は
@@ -843,6 +859,19 @@ function makeResolver(map: Record<string, string>) {
       { date: "2025-06-14", weightClass: "66.0kg契約" },
     ]) === "フェザー級",
     "タイ解消: 単独多数派があるケースは回帰なく多数派をそのまま採用する"
+  );
+
+  // 回帰確認: laramie-tony/jolly/torres-jose型(othersのみで単独多数派、または
+  // others1件のみ)は、直近戦を含めた全体集計に切り替えても結果が変わらない
+  // (単独多数派の分岐がothersのみの集計を維持しているため無影響)。
+  check(
+    latestRizinDivision([
+      { date: "2026-06-06", weightClass: "59.0kg契約" }, // 直近(未明示) バンタム級
+      { date: "2026-03-07", weightClass: "57.0kg契約" }, // フライ級
+      { date: "2025-11-03", weightClass: "57.0kg契約" }, // フライ級
+      { date: "2025-03-30", weightClass: "59.0kg契約" }, // バンタム級
+    ]) === "フライ級",
+    "回帰: othersのみで単独多数派(フライ級2:バンタム級1)のケースは従来どおり不変"
   );
 }
 
@@ -1105,6 +1134,24 @@ function makeResolver(map: Record<string, string>) {
     (unrelated[0] as { weightClass?: string }).weightClass === undefined,
     "patch-weight-class: date/opponentが一致しないboutには影響しない"
   );
+}
+
+// ── 27. 掲載階級の事実オーバーレイ(fighterDivisions.ts): オーバーレイ優先 ──
+{
+  check(getDivisionOverlay("kintaro") === "バンタム級", "階級オーバーレイ: 金太郎はバンタム級で確定指定されている");
+  check(getDivisionOverlay("takeda-koji") === "フェザー級", "階級オーバーレイ: 武田光司はフェザー級で確定指定されている");
+  check(getDivisionOverlay("ito-yuki") === null, "階級オーバーレイ: 指定の無い選手はnull(自動判定にフォールバックする対象)");
+  check(getDivisionOverlay("nakamura-daisuke") === null, "階級オーバーレイ: 中村大介は今回指定なし(自動判定のまま)");
+
+  // 優先順位の確認: オーバーレイの値は自動判定(latestRizinDivision)の結果に
+  // かかわらず必ず勝つ(update-mnews-rating.tsと同じ合成: overlay ?? auto)。
+  const autoWouldSayFeatherweight = latestRizinDivision([
+    { date: "2026-01-01", weightClass: "66.0kg契約" },
+  ]);
+  check(autoWouldSayFeatherweight === "フェザー級", "前提確認: このダミーデータは自動判定でもフェザー級になる");
+  const overlayDivision = getDivisionOverlay("kintaro");
+  const resolved = overlayDivision ?? autoWouldSayFeatherweight;
+  check(resolved === "バンタム級", "階級オーバーレイ: 自動判定の結果と異なっていてもオーバーレイが優先される(順位・レートには一切触れない=掲載階級バケットの決定のみ)");
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

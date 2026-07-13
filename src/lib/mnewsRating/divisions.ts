@@ -123,12 +123,26 @@ export function latestRizinDivision(history: HistoryBoutForDivision[], nominalWe
   const majority = [...counts.entries()].filter(([, c]) => c === maxCount).map(([d]) => d);
   // 単独の多数派があれば、直近戦の値にかかわらずそれを採用する。
   if (majority.length === 1) return majority[0];
-  // 複数タイの場合は、直近戦(未明示の単発キャッチウェイトで根拠が弱い)自身の
-  // 値をタイ解消には使わない。othersの中で最も新しい、タイ候補に含まれる
-  // 試合の階級を採用する(2026-07-13修正: 旧実装は「直近戦の値がタイ候補に
-  // 含まれていれば直近戦を優先」としていたが、これは直近戦の弱い根拠に
-  // タイ解消の決定権を与えてしまい、伊藤裕輝がフライ級2票・バンタム級2票の
-  // タイで、根拠の弱い直近59kg契約(バンタム級)側にたまたま引きずられて
-  // バンタム級に誤配置される原因になっていた)。
+  // 複数タイの場合の解消順序(2026-07-13再修正): 単なる日付の新しさより、
+  // 証拠の強さで優先順位をつける。
+  // (a) タイ候補の中に階級名が明示された試合(NAMED_DIVISION_RE一致)があれば、
+  //     それを最優先の証拠として採用する(伊藤裕輝: フライ級2票のうち1件が
+  //     「フライ級トーナメント2回戦リザーブ」と明示されており、この明示evidenceが
+  //     単なる日付の新しさに優先する)。
+  const namedAmongTied = others.filter(
+    (o) => majority.includes(o.division as MnewsDivision) && NAMED_DIVISION_RE.test(o.weightClass)
+  );
+  if (namedAmongTied.length > 0) {
+    return namedAmongTied.sort((a, b) => (a.date < b.date ? 1 : -1))[0].division as MnewsDivision;
+  }
+  // (b) 明示された階級名の証拠が無い場合、直近戦(未明示の単発キャッチウェイト)
+  //     自身の階級がタイ候補に含まれていれば採用する。これはothersのみでの
+  //     単純集計がたまたまタイになっただけで、直近戦を含めた全体では明確な
+  //     多数派になっているケースを救う(金太郎: 直近61kg=バンタムがタイ候補
+  //     [フェザー,バンタム]に含まれるためバンタムを採用。全3戦の単純集計でも
+  //     バンタム2:フェザー1で一致する)。
+  if (majority.includes(latest.division)) return latest.division;
+  // (c) それでも決まらない場合は、タイ候補の中で最も新しい試合の階級を採用する
+  //     (従来どおりのフォールバック)。
   return others.find((o) => majority.includes(o.division as MnewsDivision))!.division as MnewsDivision;
 }
