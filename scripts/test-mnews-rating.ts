@@ -579,14 +579,14 @@ function makeResolver(map: Record<string, string>) {
   const champion: ChampionOverlay = { fighterId: "champ-gate", rating: 1600, record: { wins: 5, losses: 0, draws: 0 }, lastFight: "2026-05-01" };
   const pool = [
     {
-      meta: { slug: "gate-1", division: "フライ級" as const, weighInMiss: false },
+      meta: { slug: "gate-1", division: "ヘビー級" as const, weighInMiss: false },
       display: { slug: "gate-1", rawRating: 1550, displayRating: 1550, fights: 5, wins: 4, losses: 1, draws: 0, lastFightDate: "2026-04-01", eligible: true },
     },
   ];
-  const data = buildDivisionRankings("フライ級", pool, asOf, undefined, champion, "overlay");
+  const data = buildDivisionRankings("ヘビー級", pool, asOf, undefined, champion, "overlay");
 
-  check(!PUBLISHED_DIVISIONS.includes("フライ級"), "公開可否ゲート: フライ級は現時点で非公開(前提の確認)");
-  const gated = getPublishedDivisionRankingView("フライ級", data, 5);
+  check(!PUBLISHED_DIVISIONS.includes("ヘビー級"), "公開可否ゲート: ヘビー級は現時点で非公開(前提の確認)");
+  const gated = getPublishedDivisionRankingView("ヘビー級", data, 5);
   check(gated.contenders.length === 0, "公開可否ゲート: 非公開階級はElo算出済みでも挑戦者ランキングを出さない");
   check(gated.champion?.fighterId === "champ-gate", "公開可否ゲート: 非公開階級でも王者は事実として表示を維持する");
 
@@ -595,7 +595,7 @@ function makeResolver(map: Record<string, string>) {
   const published = getPublishedDivisionRankingView("フェザー級", featherData, 5);
   check(published.contenders.length === 1, "公開可否ゲート: 公開済み階級は通常どおり挑戦者ランキングを出す");
 
-  check(getPublishedDivisionRankingView("フライ級", null, 5).contenders.length === 0, "公開可否ゲート: データが無い非公開階級もcontenders=[]のまま(エラーにならない)");
+  check(getPublishedDivisionRankingView("ヘビー級", null, 5).contenders.length === 0, "公開可否ゲート: データが無い非公開階級もcontenders=[]のまま(エラーにならない)");
 }
 
 // ── 17. latestRizinDivision: 単発の未明示キャッチウェイト戦1つで階級バケットが ──
