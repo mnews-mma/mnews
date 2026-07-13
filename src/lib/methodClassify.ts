@@ -59,20 +59,11 @@ export function tallyMethods(fights: MethodClassifiable[]): MethodCounts {
   return counts;
 }
 
-// history(または同型の配列)からwins/losses/draws/ko/sub/decisionを導出する。
-// ko/sub/decisionは勝ち側のみの内訳(既存のko/sub/decisionフィールドの定義を踏襲)。
-// 加算・stored値の書き換えは一切行わない純関数(同じ入力なら常に同じ結果=冪等)。
-export function deriveRecordTotals(history: MethodClassifiable[]): {
-  wins: number;
-  losses: number;
-  draws: number;
-  ko: number;
-  sub: number;
-  decision: number;
-} {
-  const wins = history.filter((h) => h.result === "win");
-  const losses = history.filter((h) => h.result === "loss").length;
-  const draws = history.filter((h) => h.result === "draw").length;
-  const m = tallyMethods(wins);
-  return { wins: wins.length, losses, draws, ko: m.ko, sub: m.sub, decision: m.decision };
-}
+// 注意: 通算戦績(総合格闘技 戦績。RIZIN外を含む全キャリア)をhistory配列から
+// 都度カウントして導出する関数はここに置かない。2026-07-13、GAMMA戦績のように
+// 「Wikipediaの試合履歴表には載っているが編集方針上プロ戦績には数えない」試合が
+// 混入し、シェイドゥラエフの通算が19-0→22-0に水増しされる事故が発生した
+// (Wikipedia infoboxの編集判断でしか弾けない除外がある)。通算戦績は
+// Wikipedia/DATA MMA/シード値(resolveFighterの戻り値)をそのまま信頼する。
+// RIZIN限定の集計(ランキング/Elo駆動)はrizinRecordsAggregate.tsのcomputeFighterMmaRecord
+// が別途rizinRecords.json(公式ソース)から導出する。

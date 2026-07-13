@@ -29,8 +29,7 @@ import {
   DivisionRankings,
   ChampionOverlay,
 } from "../src/lib/mnewsRating/rankingsFile";
-import { applyRecordOverrides } from "../src/lib/mnewsRating/recordOverrides";
-import { deriveRecordTotals } from "../src/lib/methodClassify";
+import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
 import {
   getDivisionRankingView,
   getPublishedDivisionRankingView,
@@ -442,11 +441,19 @@ function makeResolver(map: Record<string, string>) {
     "戦績訂正オーバーライド: 追加されたboutの内容が正しい(出典付き)"
   );
 
-  // 2026-07-13(Phase4): 集計値は加算(applyRecordOverridesToTotals、廃止済み)ではなく
-  // 訂正後historyを都度数え直す方式(deriveRecordTotals)に統一。訂正で追加された
-  // boutを含むhistoryを数え直すだけでYA-MAN 3勝2敗になることを確認する。
-  const totals = deriveRecordTotals(corrected);
-  check(totals.wins === 3 && totals.losses === 2, `戦績訂正オーバーライド: 集計値もYA-MAN 3勝2敗に是正される (got ${totals.wins}-${totals.losses})`);
+  // 通算戦績(集計値)はhistoryの都度カウントでは導出しない(GAMMA戦績混入による
+  // シェイドゥラエフ水増し事故のため。Wikipedia/シード値を据え置く)。
+  // ただしRECORD_OVERRIDES(add型)で明示的に欠落が判明しているboutは、
+  // Wikipedia生値(historyWithoutDebut)に対して個別補正する。
+  const totals = applyRecordOverridesToTotals("ya-man", historyWithoutDebut, {
+    wins: 2,
+    losses: 2,
+    draws: 0,
+    ko: 2,
+    sub: 0,
+    decision: 0,
+  });
+  check(totals.wins === 3 && totals.ko === 3, `戦績訂正オーバーライド: 集計値もYA-MAN 3勝(KO3)に是正される (got ${totals.wins}勝 ko${totals.ko})`);
 
   const correctedTwice = applyRecordOverrides("ya-man", corrected);
   check(correctedTwice.length === 5, "戦績訂正オーバーライド: 既に適用済みの状態に再適用しても重複追加されない(冪等)");
@@ -1263,37 +1270,54 @@ function makeResolver(map: Record<string, string>) {
   );
 }
 
-// ── 32. Phase4: deriveRecordTotals(集計をhistory由来カウントに統一) ──────
+// ── 32. 2026-07-13緊急修正: 通算戦績はWiki/シード据え置き・RIZIN集計は導出、の分離 ──
 {
-  // 冪等性: 同一historyを2回連続で数えても完全一致する(加算方式(廃止した
-  // applyRecordOverridesToTotals)は毎回のWikipedia生値に対する固定delta加算
-  // だったため、生値が変動すると二重加算になっていた。history自体を都度
-  // 数え直す方式は入力が同じなら常に同じ結果になる)。
-  const history = [
-    { date: "2023-05-06", opponent: "三浦孝太", result: "win" as const, method: "1R 1:50 KO（左フック→パウンド）", event: "RIZIN.42" },
-    { date: "2023-12-31", opponent: "平本蓮", result: "loss" as const, method: "5分3R終了 判定0-3", event: "RIZIN.45" },
-    { date: "2024-07-28", opponent: "鈴木博昭", result: "win" as const, method: "1R 3:28 KO（左フック）", event: "超RIZIN.3" },
-    { date: "2024-12-31", opponent: "カルシャガ・ダウトベック", result: "loss" as const, method: "5分3R終了 判定0-3", event: "RIZIN.49" },
-    { date: "2025-07-27", opponent: "金原正徳", result: "win" as const, method: "3R 2:51 TKO（右アッパー→パウンド）", event: "超RIZIN.4" },
+  // (a) 非冪等バグの再発防止(核心): 旧実装(廃止済みのapplyRecordOverridesToTotals)は
+  // 「Wikipedia生値に毎回+1」という固定delta加算だったため、Wikipedia側が独自に
+  // そのboutを取り込んだ瞬間、生値(既に+1込み)にさらに+1してしまい二重加算に
+  // なっていた(YA-MAN wins3→4、高木凌decision2→3で実際に発生)。新実装は毎回
+  // 生historyを見て対象boutの有無を判定するため、Wikipedia側が追いついた後は
+  // 自動的に加算をやめる(=同じ入力なら常に同じ結果になる。非冪等バグは再発しない)。
+  const rawHistoryBeforeWikiCatchesUp = [
+    { date: "2023-12-31", opponent: "平本蓮", result: "loss" as const, method: "判定0-3", event: "RIZIN.45", round: "R3" },
   ];
-  const t1 = deriveRecordTotals(history);
-  const t2 = deriveRecordTotals(history);
-  check(t1.wins === 3 && t1.losses === 2, `Phase4: YA-MANの実データパターンで3勝2敗になる (got ${t1.wins}-${t1.losses})`);
-  check(t1.ko === 3, `Phase4: KO勝ち3件を正しく分類する (got ko${t1.ko})`);
+  const totalsBefore = applyRecordOverridesToTotals("ya-man", rawHistoryBeforeWikiCatchesUp, {
+    wins: 0,
+    losses: 1,
+    draws: 0,
+    ko: 0,
+    sub: 0,
+    decision: 0,
+  });
+  check(totalsBefore.wins === 1, `緊急修正(a): Wikipedia未収録時は+1補正が効く (got wins${totalsBefore.wins})`);
+
+  // Wikipedia側が独自にこのboutを取り込んだ後(生historyに既に存在する状態)。
+  // 生値(totals引数)も既にこのboutを反映した値になっているはずなので、
+  // ここでさらに+1すると二重加算になる。新実装はrawHistoryに存在するため
+  // 加算をスキップし、二重加算しない。
+  const rawHistoryAfterWikiCatchesUp = [
+    { date: "2023-05-06", opponent: "三浦孝太", result: "win" as const, method: "1R KO", event: "RIZIN.42", round: "R1" },
+    { date: "2023-12-31", opponent: "平本蓮", result: "loss" as const, method: "判定0-3", event: "RIZIN.45", round: "R3" },
+  ];
+  const totalsAfter = applyRecordOverridesToTotals("ya-man", rawHistoryAfterWikiCatchesUp, {
+    wins: 1, // Wikipedia側が追いついて既にこのboutを反映した生値
+    losses: 1,
+    draws: 0,
+    ko: 1,
+    sub: 0,
+    decision: 0,
+  });
   check(
-    t1.wins === t2.wins && t1.ko === t2.ko && t1.sub === t2.sub && t1.decision === t2.decision,
-    "Phase4: deriveRecordTotalsは冪等(同一historyを2回計算しても完全一致する)"
+    totalsAfter.wins === 1 && totalsAfter.ko === 1,
+    `緊急修正(a): Wikipedia側が追いついた後は加算をスキップし二重加算しない(冪等) (got wins${totalsAfter.wins} ko${totalsAfter.ko})`
   );
 
-  // 一本(サブミッション)の技名分類。判定・KOと混在しても正しく振り分けられる。
-  const mixedHistory = [
-    { date: "2020-01-01", opponent: "X", result: "win" as const, method: "1R 4分43秒 SUB（テクニカルサブミッション：フロントチョーク）", event: "RIZIN.1" },
-    { date: "2020-02-01", opponent: "Y", result: "win" as const, method: "3R 判定 （2-1）", event: "RIZIN.2" },
-    { date: "2020-03-01", opponent: "Z", result: "loss" as const, method: "1R 4分37秒 TKO（グラウンドでの肘打ち）", event: "RIZIN.3" },
-  ];
-  const t3 = deriveRecordTotals(mixedHistory);
-  check(t3.wins === 2 && t3.losses === 1, "Phase4: 勝敗数は正しい");
-  check(t3.sub === 1 && t3.decision === 1 && t3.ko === 0, `Phase4: 一本1/判定1(負け試合のTKOは勝ち内訳に数えない) (got sub${t3.sub} decision${t3.decision} ko${t3.ko})`);
+  // (b) 分離原則: 通算戦績(総合格闘技 戦績)はWiki/シード値を据え置く。GAMMA等の
+  // 他団体戦績が混入したhistoryを都度カウントすることはしない、という原則を
+  // 明文化する回帰テスト(シェイドゥラエフ19-0が22-0に水増しされた事故の再発防止)。
+  // rizinRecords由来のRIZIN集計(computeFighterMmaRecord)はrizinRecords.jsonのみを
+  // 対象とするため、GAMMA等の非RIZIN団体戦は最初からデータに存在せず、この種の
+  // 混入は構造的に起こり得ない(test-rizin-records-aggregate.tsで別途検証済み)。
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

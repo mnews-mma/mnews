@@ -13,9 +13,7 @@ import { resolveFighter } from "../src/lib/feeds/resolveFighter";
 import type { FighterRecordEntry, FighterRecordsFile } from "../src/lib/fighterRecordsCache";
 import { checkFighterRecordIntegrity } from "../src/lib/fighterRecordIntegrity";
 import { enrichHistoryWithWeightClass } from "../src/lib/mnewsRating/enrichHistoryWeightClass";
-import { applyRecordOverrides, lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
-import { applyWeighInMissRuling } from "../src/lib/mnewsRating/engine";
-import { deriveRecordTotals } from "../src/lib/methodClassify";
+import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 // fighterRecords.json自体には生成時刻を焼き込まない(選手データと運用メタ情報を
@@ -34,22 +32,26 @@ function toCacheEntry(
   // その後にRIZIN MMA boutへのweightClass付与を行う(訂正で追加されたboutも対象)。
   const correctedHistory = applyRecordOverrides(r.slug, r.history);
   const { history, nullBouts } = enrichHistoryWithWeightClass(r.nameJa, correctedHistory);
-  // 集計値(wins/losses/draws/ko/sub/decision)はhistory(訂正済み)を都度数え直して
-  // 導出する(加算方式は非冪等: Wikipedia再取得のたびに変動しうる生値へ固定delta
-  // を積み増すと、生値側が追いついた時に二重加算になる。YA-MAN/高木凌で実際に
-  // 発生した集計ズレの根本原因)。historyが空(住村竜市朗のようにinfobox集計のみで
-  // 試合ごとの表が無い記事)の場合のみ、Wikipedia生値をそのまま採用する。
-  // 計量オーバー裁定(WEIGH_IN_MISS_RULINGS)がある試合は、表示用historyの
-  // resultはケージ内の実際の結果のまま保持しつつ(recordOverrides.ts参照)、
-  // 集計への算入だけはengine.tsと同じルールでノーコンテスト扱いに倒す
-  // (勝敗数に加算しない。萩原京平のLANDMARK13裁定など)。
-  const effectiveHistory = history.map((h) => ({
-    ...h,
-    result: applyWeighInMissRuling(h.result, lookupWeighInMiss(r.slug, h.date, h.opponent)),
-  }));
-  const totals = history.length > 0
-    ? deriveRecordTotals(effectiveHistory)
-    : { wins: r.wins, losses: r.losses, draws: r.draws, ko: r.ko, sub: r.sub, decision: r.decision };
+  // 2026-07-13緊急修正: 通算戦績(総合格闘技 戦績。RIZIN外を含む全キャリア)は
+  // Wikipedia/DATA MMA/シード値(r.wins等)をそのまま据え置く。historyの都度
+  // カウントには絶対に切り替えない(GAMMA戦績のように「試合履歴表には載っている
+  // が編集方針上プロ戦績には数えない」試合が混入し、シェイドゥラエフの通算が
+  // 19-0→22-0に水増しされる事故が発生したため)。通算戦績はRIZIN公式では
+  // 裏取りできず、Wikipedia infoboxの編集判断を信頼するほかない値であり、
+  // 「rizinRecords由来カウントに統一する」というPhase4の対象はRIZIN限定の集計
+  // (rizinRecordsAggregate.ts)のみで、この通算戦績フィールドは対象外だった。
+  // ただしRECORD_OVERRIDES(add型)で明示的に「Wikipedia戦績表に丸ごと欠落して
+  // いる」と判明済みのbout(YA-MANのRIZIN.42デビュー戦等)は、生値(r.wins)への
+  // 個別補正を維持する(r.historyという生値を毎回見て判定するため非冪等バグは
+  // 再発しない。applyRecordOverridesToTotalsのコメント参照)。
+  const totals = applyRecordOverridesToTotals(r.slug, r.history, {
+    wins: r.wins,
+    losses: r.losses,
+    draws: r.draws,
+    ko: r.ko,
+    sub: r.sub,
+    decision: r.decision,
+  });
   const entry: FighterRecordEntry = {
     ...totals,
     history,

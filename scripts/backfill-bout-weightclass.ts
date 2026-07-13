@@ -14,9 +14,7 @@ import path from "path";
 import { FIGHTERS } from "../src/lib/fighters";
 import type { FighterRecordsFile } from "../src/lib/fighterRecordsCache";
 import { enrichHistoryWithWeightClass } from "../src/lib/mnewsRating/enrichHistoryWeightClass";
-import { applyRecordOverrides, lookupWeighInMiss } from "../src/lib/mnewsRating/recordOverrides";
-import { applyWeighInMissRuling } from "../src/lib/mnewsRating/engine";
-import { deriveRecordTotals } from "../src/lib/methodClassify";
+import { applyRecordOverrides } from "../src/lib/mnewsRating/recordOverrides";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 
@@ -39,19 +37,11 @@ function main() {
     const { history, nullBouts } = enrichHistoryWithWeightClass(nameJa, correctedHistory);
     enrichedBoutCount += history.filter((h) => h.weightClass).length;
     entry.history = history;
-    // 集計値(wins/losses/draws/ko/sub/decision)はhistoryを都度数え直して導出する
-    // (deriveRecordTotalsは純関数・加算ではないため、再実行しても安全=冪等)。
-    // historyが空の記事はinfobox集計のみのケースのため、既存の集計値をそのまま残す。
-    // 計量オーバー裁定がある試合は集計への算入のみノーコンテスト扱いに倒す
-    // (update-fighter-records.tsと同じルール。historyのresultはケージ内の
-    // 実際の結果のまま保持する)。
-    if (history.length > 0) {
-      const effectiveHistory = history.map((h) => ({
-        ...h,
-        result: applyWeighInMissRuling(h.result, lookupWeighInMiss(slug, h.date, h.opponent)),
-      }));
-      Object.assign(entry, deriveRecordTotals(effectiveHistory));
-    }
+    // 注意: entry.wins等(通算戦績)には一切触れない。通算戦績はWikipedia/DATA MMA/
+    // シード値を据え置く方針(2026-07-13緊急修正。historyの都度カウントに切り替えると
+    // GAMMA戦績のような「試合履歴表には載っているがプロ戦績には数えない」試合が
+    // 混入し水増しされる事故が起きたため)。このスクリプトはweightClass付与のみを
+    // 担当する。
     for (const b of nullBouts) nullBoutLines.push(`${slug}(${nameJa}) ${b.date} vs ${b.opponent}`);
   }
 

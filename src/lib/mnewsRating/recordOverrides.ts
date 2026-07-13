@@ -154,8 +154,56 @@ export function applyRecordOverrides(fighterId: string, history: FightRecord[]):
   return result;
 }
 
-// 2026-07-13(mnewsレーティングPhase4): 集計値(wins/losses/draws/ko/sub/decision)
-// はhistory(このファイルのapplyRecordOverridesで訂正済み)を都度数え直して導出する
-// 方式に統一した(methodClassify.tsのderiveRecordTotals参照)。かつてこのファイルに
-// あったapplyRecordOverridesToTotals(Wikipedia生値への固定delta加算)は、生値が
-// 変動するたびに二重加算が発生する非冪等バグの原因だったため廃止。
+export interface RecordTotals {
+  wins: number;
+  losses: number;
+  draws: number;
+  ko: number;
+  sub: number;
+  decision: number;
+}
+
+// 2026-07-13(mnewsレーティングPhase4): 通算戦績(総合格闘技 戦績。RIZIN外を含む
+// 全キャリア)の集計値はWikipedia/DATA MMA/シード値(totals引数)をそのまま
+// 据え置くのが原則(historyの都度カウントには絶対に切り替えない。GAMMA戦績の
+// ように「試合履歴表には載っているが編集方針上プロ戦績には数えない」試合が
+// 混入し、シェイドゥラエフの通算が19-0→22-0に水増しされる事故が発生したため)。
+//
+// ただしRECORD_OVERRIDES(add型)で追加したbout(=Wikipedia戦績表に丸ごと
+// 欠落していたことが判明している試合)は、その欠落が集計値にも及んでいる限り
+// 補正が必要。旧実装(廃止済み)は「Wikipedia生値に毎回+1」という固定delta加算
+// だったため、Wikipedia側が独自にそのboutを取り込んだ瞬間に二重加算になる
+// 非冪等バグの原因だった。この実装は毎回rawHistory(オーバーライド適用前の
+// Wikipedia生history)を見て、対象boutが既に含まれているかを判定してから
+// 加算するかどうかを決める(同じ入力なら常に同じ結果になる=冪等。Wikipedia側が
+// 追いついて生historyに載れば自動的に加算をやめる)。
+export function applyRecordOverridesToTotals(fighterId: string, rawHistory: FightRecord[], totals: RecordTotals): RecordTotals {
+  const t = { ...totals };
+  for (const o of RECORD_OVERRIDES) {
+    if (o.fighterId !== fighterId || o.type !== "add") continue;
+
+    // Wikipedia側の生historyに既にこのboutが存在するなら、Wikipedia生値の
+    // 集計にも既に反映されている可能性が高いため加算をスキップする(二重加算防止)。
+    const alreadyInRawHistory = rawHistory.some((h) => h.date === o.date && h.opponent === o.opponent);
+    if (alreadyInRawHistory) continue;
+
+    // 計量オーバー裁定でノーコンテストになる場合、集計(勝敗数)には一切加算しない
+    // (公式記録に合わせる。ケージ内の実際の結果=resultはhistoryにそのまま残す)。
+    const missedBy = lookupWeighInMiss(o.fighterId, o.date, o.opponent);
+    const isNc =
+      (missedBy === "opponent" && o.result === "loss") || (missedBy === "self" && o.result === "win");
+    if (isNc) continue;
+
+    if (o.result === "win") {
+      t.wins++;
+      if (/判定/.test(o.method)) t.decision++;
+      else if (/KO/i.test(o.method)) t.ko++;
+      else t.sub++;
+    } else if (o.result === "loss") {
+      t.losses++;
+    } else if (o.result === "draw") {
+      t.draws++;
+    }
+  }
+  return t;
+}
