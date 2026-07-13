@@ -52,16 +52,13 @@ const OUT = path.join(process.cwd(), "data", "rankings.json");
 const OUT_PREV = path.join(process.cwd(), "data", "rankings.prev.json");
 const ARCHIVE_DIR = path.join(process.cwd(), "data", "rankings", "archive");
 
-// Phase 2: rizinRecords.json(RIZIN公式ソース)を優先し、無ければ従来のhistory
-// にフォールバックする。今回はフェザー級(公開中)のみ対象とする(他階級は
-// 従来どおりhistoryベースのまま・非公開維持)。「フェザー級かどうか」は
-// このオーバーライド適用前に確定させたdivisionBySlug(事実オーバーレイ→
-// 自動判定の優先順位、従来と不変)を使う(オーバーライド後のデータで階級判定を
-// やり直すことはしない=判定ロジックの循環を避ける)。
-function applyPhase2RizinRecordsOverride(
-  records: FighterRecordsInput,
-  divisionBySlug: Map<string, MnewsDivision | null>
-): FighterRecordsInput {
+// Phase 3: rizinRecords.json(RIZIN公式ソース)を優先し、無ければ従来のhistory
+// にフォールバックする。Phase2ではフェザー級のみに限定していたが、フェザー級で
+// 実証済みのため全階級に適用する(階級による分岐は撤去)。マッチする
+// rizinRecords エントリが無い選手・試合は従来どおりhistoryのままなので、
+// 非公開階級の算出データが更新されるだけで、点灯(公開)には一切関与しない
+// (点灯可否は引き続きdivisions.tsのPUBLISHED_DIVISIONSのみで決まる)。
+function applyRizinRecordsOverride(records: FighterRecordsInput): FighterRecordsInput {
   if (!fs.existsSync(RIZIN_RECORDS_PATH)) return records;
   const rizinEvents: RizinRecordsEvent[] = JSON.parse(fs.readFileSync(RIZIN_RECORDS_PATH, "utf8"));
   const index = buildRizinRecordsIndex(rizinEvents);
@@ -70,17 +67,13 @@ function applyPhase2RizinRecordsOverride(
   let totalOverridden = 0;
   let totalExcluded = 0;
   for (const [slug, entry] of Object.entries(records)) {
-    if (divisionBySlug.get(slug) !== "フェザー級") {
-      out[slug] = entry;
-      continue;
-    }
     const { history, overriddenCount, excludedCount } = applyRizinRecordsToHistory(slug, entry.history ?? [], index);
     out[slug] = { ...entry, history };
     totalOverridden += overriddenCount;
     totalExcluded += excludedCount;
   }
   console.log(
-    `[INFO] Phase2: rizinRecords.jsonをフェザー級選手に優先適用(公式ソースで上書き${totalOverridden}試合・MMA以外/中止で除外${totalExcluded}試合)`
+    `[INFO] Phase3: rizinRecords.jsonを全階級に優先適用(公式ソースで上書き${totalOverridden}試合・MMA以外/中止で除外${totalExcluded}試合)`
   );
   return out;
 }
@@ -141,26 +134,28 @@ function main() {
   const rawRecords: FighterRecordsInput = JSON.parse(fs.readFileSync(RECORDS_PATH, "utf8"));
   const prevOut = loadRankingsFile(OUT);
 
+  // Phase3: rizinRecords.json(RIZIN公式ソース)を全階級のhistoryより優先する
+  // (Phase2ではフェザー級限定だったが、階級による分岐は撤去した)。マッチする
+  // 試合が無ければ従来どおりrawRecordsのままフォールバックする。階級判定
+  // (下記)もこのオーバーライド後のデータで行う(公式ソースのweightClassの
+  // 正確性を階級判定にも反映させるため。中村大介・伊藤裕輝等、過去に個別
+  // パッチで対応していたケースが公式ソースだけで正しく解決するかの検証対象)。
+  const records = applyRizinRecordsOverride(rawRecords);
+
   // 掲載階級は「事実オーバーレイ(fighterDivisions.ts)に指定があればそれを優先し、
   // 無ければ階級が判明している直近のRIZIN MMA試合の階級」で決める(fighters.tsの
   // 名目weightClassへはフォールバックしない)。ただし女子/アトム系の除外判定だけは
   // fighters.ts側の名目階級を主ソースとして参照する(2026-07-13、bout単位テキストへの
   // 依存で女子選手が男子階級へ誤混入するバグの恒久修正)。事実オーバーレイは
   // 「どの階級バケットに載せるか」だけを上書きし、順位・レートには一切触れない
-  // (Elo算出は従来どおり階級横断で1本のまま)。Phase2のrizinRecordsオーバーライド
-  // (下記)より前に、必ずrawRecords(公式ソース未適用の元データ)で計算する
-  // (階級判定→オーバーライド適用対象の決定、という順序を固定し循環を避ける)。
+  // (Elo算出は従来どおり階級横断で1本のまま)。
   const nominalWeightClassBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.weightClass]));
   const divisionBySlug = new Map(
-    Object.entries(rawRecords).map(([slug, entry]) => [
+    Object.entries(records).map(([slug, entry]) => [
       slug,
       getDivisionOverlay(slug) ?? latestRizinDivision(entry.history ?? [], nominalWeightClassBySlug.get(slug)),
     ])
   );
-
-  // Phase2: フェザー級(公開中)のみ、rizinRecords.json(RIZIN公式ソース)を
-  // history より優先する。他階級は従来どおりrawRecordsのまま(非公開維持)。
-  const records = applyPhase2RizinRecordsOverride(rawRecords, divisionBySlug);
 
   const asOf = new Date();
   const resolve = buildOpponentResolver(records);

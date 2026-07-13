@@ -82,6 +82,15 @@ export interface HistoryBoutForDivision {
 // 本来の階級バケットから弾き出すのを防ぐ判定に使う(下記latestRizinDivision参照)。
 export const NAMED_DIVISION_RE = /フライ級|バンタム級|フェザー級|ライト級|ヘビー級|ストロー級/;
 
+// 直近戦の日付から2年遡った日付文字列を返す(YYYY-MM-DD文字列比較用)。
+// 「直近の事実」の集計対象を絞るための時間窓。ELIGIBILITY_MAX_INACTIVE_MONTHS
+// (18ヶ月)より少し広めに取り、階級変更後の実績が数試合分は必ず窓に収まる
+// ようにしている。
+function twoYearsBefore(dateStr: string): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return `${y - 2}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+}
+
 // 掲載階級の決定本体: 階級が判明している直近のRIZIN MMA boutの階級を基本とする。
 // weightClassはenrichHistoryWeightClass.tsがRIZIN MMA boutにしか付与しない
 // ため、ここで改めてisRizinMmaEventを見る必要はない(weightClass有り＝
@@ -114,8 +123,21 @@ export function latestRizinDivision(history: HistoryBoutForDivision[], nominalWe
   const isUnnamedCatchweight = /kg契約/.test(latest.weightClass) && !NAMED_DIVISION_RE.test(latest.weightClass);
   if (!isUnnamedCatchweight) return latest.division;
 
-  const others = known.slice(1).filter((k) => k.division !== null);
-  if (others.length === 0) return latest.division;
+  const allOthers = known.slice(1).filter((k) => k.division !== null);
+  if (allOthers.length === 0) return latest.division;
+
+  // 2026-07-13再修正(Phase3): rizinRecords.jsonで全期間の判明済み試合が揃った
+  // ことで、「直近の事実より過去の物量が勝つ」構造的な穴が露呈した(元谷友貴:
+  // 2025年の明示フライ級×3より、2016〜2024年の未明示61kg契約×十数件が
+  // 単純集計で数の力により上回り、バンタム級に誤判定していた)。othersを
+  // 直近戦の2年以内に絞ってから多数決することで、キャリア全体の物量ではなく
+  // 「今の階級」を表す直近の実績を優先する(明示された階級名を過去の未明示より
+  // 優先する、という原則も従来どおり内側のタイ解消で維持する)。2年以内に
+  // othersが1件も無ければ(直近2年に他の判明済み試合が無い選手)、従来どおり
+  // 全期間のothersにフォールバックする(捏造を避け、判定不能に倒さない)。
+  const recentCutoff = twoYearsBefore(latest.date);
+  const recentOthers = allOthers.filter((o) => o.date >= recentCutoff);
+  const others = recentOthers.length > 0 ? recentOthers : allOthers;
 
   const counts = new Map<MnewsDivision, number>();
   for (const o of others) counts.set(o.division as MnewsDivision, (counts.get(o.division as MnewsDivision) ?? 0) + 1);
