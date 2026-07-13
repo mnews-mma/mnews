@@ -3209,6 +3209,26 @@ EVENT_RESULTS.push(
       { weightClass: "キッズ・ジュニア修斗", fighterA: "稲場豪健", fighterB: "佐久間丈", winner: "稲場豪健", method: "V1アームロック", round: "1R 2:38" },
     ],
   },
+  {
+    slug: "lemino-shooto-7",
+    org: "shooto",
+    eventName: "Lemino修斗.7",
+    date: "2026-07-13",
+    venue: "後楽園ホール",
+    sourceUrl: "https://j-shooto.com/2026/07/13/post-51116/",
+    fights: [
+      { weightClass: "フェザー級（65.8kg）", fighterA: "宇野薫", fighterB: "児山佳宏", winner: "児山佳宏", method: "判定（0-3）" },
+      { weightClass: "バンタム級（61.2kg）", fighterA: "高岡宏気", fighterB: "マーウィン・キランテ", winner: "高岡宏気", method: "判定（2-1）" },
+      { weightClass: "バンタム級（61.2kg）", fighterA: "藤田ムネノリ", fighterB: "ジョン・オルニド", winner: "藤田ムネノリ", method: "判定（3-0）" },
+      { weightClass: "フライ級（56.7kg）", fighterA: "シモンスズキ", fighterB: "シンバートル・バットエルデネ", winner: "シモンスズキ", method: "リアネイキッドチョーク", round: "1R 1:46" },
+      { weightClass: "バンタム級（61.2kg）", fighterA: "下間英史", fighterB: "山本敦章", winner: "下間英史", method: "判定（2-0）" },
+      { weightClass: "フライ級（56.7kg）", fighterA: "饒平名知靖", fighterB: "村泉空", winner: "饒平名知靖", method: "判定（2-0）" },
+      { weightClass: "フライ級（56.7kg）", fighterA: "玉城悠", fighterB: "三浦颯太", winner: "三浦颯太", method: "判定（0-2）" },
+      { weightClass: "フェザー級（65.8kg）", fighterA: "松村海青", fighterB: "井上理久", winner: "井上理久", method: "腕十字固め", round: "1R 4:41" },
+      { weightClass: "ライト級（70.3kg）", fighterA: "モリシマン", fighterB: "手島響", winner: "引き分け", method: "判定（0-0）" },
+      { weightClass: "フェザー級（65.8kg）", fighterA: "松田拳哉", fighterB: "佐藤大知", winner: "佐藤大知", method: "判定（0-3）" },
+    ],
+  },
 );
 
 export function getEventResult(slug: string): EventResult | undefined {
