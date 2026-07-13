@@ -148,7 +148,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
         )}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
-          掲載は一定の出場実績がある選手に限ります。戦績はRIZIN(MMAルール)のみの集計です。
+          掲載は一定の出場実績がある選手に限ります。戦績は同階級RIZIN(MMAルール)のみの集計です。
           {view.champion && (
             <>
               王者(RIZIN公式が認定する現王者)は番号付きランキングの対象外とし、事実として別掲載しています。
