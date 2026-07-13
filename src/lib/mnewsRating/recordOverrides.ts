@@ -45,7 +45,18 @@ export interface RecordOverridePatchWeightClass extends RecordOverrideBase {
   weightClass: string;
 }
 
-export type RecordOverride = RecordOverrideAdd | RecordOverrideRemove | RecordOverridePatchWeightClass;
+// 既存のbout(date+opponentで特定)のdateのみを訂正する。opponent/result/method/
+// eventは一切変更しない。Wikipedia側で対戦カード双方の日付表記が1日ずれている
+// (例: 本人ページは試合翌日表記、相手ページは当日表記)ケースを、RIZIN公式の
+// 開催日に合わせて訂正する。この種のズレはbuildBouts(engine.ts)のDB内対決
+// 重複排除がdate完全一致キーのため、放置すると同一試合が両者の視点で二重に
+// カウントされる(片方は本人の誤日付のまま試合が「別試合」として残る)。
+export interface RecordOverridePatchDate extends RecordOverrideBase {
+  type: "patch-date";
+  correctedDate: string;
+}
+
+export type RecordOverride = RecordOverrideAdd | RecordOverrideRemove | RecordOverridePatchWeightClass | RecordOverridePatchDate;
 
 export const RECORD_OVERRIDES: RecordOverride[] = [
   {
@@ -127,6 +138,33 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
     note:
       "中村大介のRIZIN.31(2021-10-24)第6試合はEVENT_RESULTS収録期間(概ね直近18ヶ月)より古く、" +
       "自動突合では階級不明のままだった。RIZIN公式試合結果一覧ページ(第6試合)から契約体重を個別取得。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "karamov-vugar",
+    date: "2023-04-02",
+    opponent: "堀江圭功",
+    correctedDate: "2023-04-01",
+    source: "https://jp.rizinff.com/_ct/17552126",
+    fetchedDate: "2026-07-13",
+    note:
+      "ヴガール・ケラモフのWikipedia戦績表がRIZIN.41の堀江圭功戦を2023-04-02表記していたが、" +
+      "RIZIN公式(rizinRecords.json)では開催日2023-04-01(堀江圭功側の自己記録も2023-04-01で一致)。" +
+      "本人視点だけ1日ずれていたためbuildBoutsのDB内対決重複排除(date完全一致キー)が効かず、" +
+      "同一試合が二重カウントされ、フェザー級ランキングの表示戦績が9-4(正しくは7-4)になっていた。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "karamov-vugar",
+    date: "2023-07-31",
+    opponent: "朝倉未来",
+    correctedDate: "2023-07-30",
+    source: "https://jp.rizinff.com/_ct/17552126",
+    fetchedDate: "2026-07-13",
+    note:
+      "ヴガール・ケラモフのWikipedia戦績表が超RIZIN.2の朝倉未来戦を2023-07-31表記していたが、" +
+      "RIZIN公式(rizinRecords.json)では開催日2023-07-30(朝倉未来側の自己記録も2023-07-30で一致)。" +
+      "上記堀江圭功戦と同種の二重カウント原因。",
   },
 ];
 
@@ -212,6 +250,8 @@ export function applyRecordOverrides(fighterId: string, history: FightRecord[]):
       result = result.filter((h) => !(h.date === o.date && h.opponent === o.opponent));
     } else if (o.type === "patch-weight-class") {
       result = result.map((h) => (h.date === o.date && h.opponent === o.opponent ? { ...h, weightClass: o.weightClass } : h));
+    } else if (o.type === "patch-date") {
+      result = result.map((h) => (h.date === o.date && h.opponent === o.opponent ? { ...h, date: o.correctedDate } : h));
     } else if (!result.some((h) => h.date === o.date && h.opponent === o.opponent)) {
       result = [
         ...result,

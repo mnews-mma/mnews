@@ -498,19 +498,35 @@ export interface ScopedRecord {
   fights: number;
 }
 
+// 個別の対戦を戦績表示から除外する指定(date + 相手ノード)。
+export interface RecordScopeExclusion {
+  date: string;
+  opponentNode: string; // 対戦相手の解決済みノード(自社DBのslug、または圏外相手の疑似ノードID)
+}
+
 // 指定日付以降の対戦だけを対象に、勝敗を数え直す(順位・レートには一切
 // 触れない。表示用の戦績スコープ起点(fighterDivisions.tsの
 // eligibilityScopeStartDate)を反映するために使う。階級変更後の試合だけを
 // 数えたい選手向けで、Elo自体は従来どおり全期間の対戦列で計算する)。
-export function computeScopedRecord(bouts: Bout[], slug: string, scopeStartDate: string): ScopedRecord {
+// scopeStartDate省略時は日付での絞り込みを行わない(exclusionsのみで個別の
+// 対戦を除外したい選手向け。例: 単発で他階級のタイトルマッチに出た試合1つ
+// だけを戦績表示から外す)。
+export function computeScopedRecord(
+  bouts: Bout[],
+  slug: string,
+  scopeStartDate?: string | null,
+  exclusions: RecordScopeExclusion[] = []
+): ScopedRecord {
   let wins = 0;
   let losses = 0;
   let draws = 0;
   let fights = 0;
   for (const bout of bouts) {
-    if (bout.date < scopeStartDate) continue;
+    if (scopeStartDate && bout.date < scopeStartDate) continue;
     const isA = bout.aNode === slug;
     if (!isA && bout.bNode !== slug) continue;
+    const opponentNode = isA ? bout.bNode : bout.aNode;
+    if (exclusions.some((e) => e.date === bout.date && e.opponentNode === opponentNode)) continue;
     const score = isA ? bout.scoreA : 1 - bout.scoreA;
     fights++;
     if (score === 1) wins++;
