@@ -193,7 +193,13 @@ function main() {
   // v5確定パラメータ(比較ダンプでの目視レビューを経て採用)。
   // v6: RIZIN参戦前実績(既存history、全団体分)から機械算出した初期レート補正。
   const preDebutRecords = computePreDebutRecords(records);
-  const initialRatingOverrides = computeInitialRatingOverrides(preDebutRecords, INITIAL_RATING_BOOST_PARAMS_V6);
+  // shrinkage(Task E「D案」)用のn(RIZIN実戦試合数)。boutsは既に構築済みのため
+  // ここで先に算出できる(summarizeBoutsForFighterはeligibility判定にも後段で
+  // 使うが、shrinkageはそれより前の初期レート算出段階で必要なため個別に呼ぶ)。
+  const rizinFightCountsForSeed = new Map(
+    [...preDebutRecords.keys()].map((slug) => [slug, summarizeBoutsForFighter(bouts, slug).length])
+  );
+  const initialRatingOverrides = computeInitialRatingOverrides(preDebutRecords, INITIAL_RATING_BOOST_PARAMS_V6, rizinFightCountsForSeed);
   const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides);
   const publishable = filterPublishableStates(states, records);
   // v6: 不活性ディケイ廃止(比較ダンプでの目視レビューを経て採用)。

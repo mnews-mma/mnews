@@ -1,0 +1,1362 @@
+{
+  "type": "seed-tuning-audit",
+  "reason": "Task E: seed cap150→80 + shrinkage(k=5) 導入(D案採用)。順位・レートは実際に変動するため、通常のdata-correction「静かな反映(スナップなし)」方針を今回は上書きし、変動を後追い可能な監査ログとして保存する。",
+  "algorithmVersion": 6,
+  "paramsBefore": {
+    "perNetWinPoints": 10,
+    "maxBoost": 150,
+    "minPreDebutFights": 3,
+    "shrinkageK": null
+  },
+  "paramsAfter": {
+    "perNetWinPoints": 10,
+    "maxBoost": 80,
+    "minPreDebutFights": 3,
+    "shrinkageK": 5
+  },
+  "generatedAt": "2026-07-14T14:29:24.146Z",
+  "entries": [
+    {
+      "division": "flyweight",
+      "fighterId": "ougikubo-hiromasa",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "ratingBefore": 1630,
+      "ratingAfter": 1590,
+      "rawRatingBefore": 1629.69,
+      "rawRatingAfter": 1594.19,
+      "seedBefore": 140,
+      "seedAfter": 61.8,
+      "recordBefore": {
+        "wins": 5,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 5,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "laramie-tony",
+      "rankBefore": 2,
+      "rankAfter": 2,
+      "ratingBefore": 1610,
+      "ratingAfter": 1580,
+      "rawRatingBefore": 1610.81,
+      "rawRatingAfter": 1581.03,
+      "seedBefore": 70,
+      "seedAfter": 35,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "motoya-yuki",
+      "rankBefore": 3,
+      "rankAfter": 3,
+      "ratingBefore": 1600,
+      "ratingAfter": 1560,
+      "rawRatingBefore": 1600.82,
+      "rawRatingAfter": 1564.61,
+      "seedBefore": 140,
+      "seedAfter": 66.2,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "gadzhamatov-alibeg",
+      "rankBefore": 5,
+      "rankAfter": 4,
+      "ratingBefore": 1580,
+      "ratingAfter": 1550,
+      "rawRatingBefore": 1578.31,
+      "rawRatingAfter": 1552.46,
+      "seedBefore": 40,
+      "seedAfter": 15,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "ito-yuki",
+      "rankBefore": 7,
+      "rankAfter": 5,
+      "ratingBefore": 1560,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1556.43,
+      "rawRatingAfter": 1534.74,
+      "seedBefore": 50,
+      "seedAfter": 36.1,
+      "recordBefore": {
+        "wins": 10,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 10,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "torres-jose",
+      "rankBefore": 4,
+      "rankAfter": 6,
+      "ratingBefore": 1590,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1586.55,
+      "rawRatingAfter": 1533.77,
+      "seedBefore": 90,
+      "seedAfter": 30,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "dodson-john",
+      "rankBefore": 6,
+      "rankAfter": 7,
+      "ratingBefore": 1570,
+      "ratingAfter": 1520,
+      "rawRatingBefore": 1567.87,
+      "rawRatingAfter": 1520.67,
+      "seedBefore": 90,
+      "seedAfter": 35.6,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "shinotsuka-tatsuki",
+      "rankBefore": 9,
+      "rankAfter": 8,
+      "ratingBefore": 1510,
+      "ratingAfter": 1510,
+      "rawRatingBefore": 1514.78,
+      "rawRatingAfter": 1514.92,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "hiramoto-jo",
+      "rankBefore": 11,
+      "rankAfter": 9,
+      "ratingBefore": 1510,
+      "ratingAfter": 1510,
+      "rawRatingBefore": 1510.44,
+      "rawRatingAfter": 1510.44,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "yamamoto-arsen",
+      "rankBefore": 10,
+      "rankAfter": 10,
+      "ratingBefore": 1510,
+      "ratingAfter": 1510,
+      "rawRatingBefore": 1513.15,
+      "rawRatingAfter": 1507,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "seiya-takashi",
+      "rankBefore": 8,
+      "rankAfter": 11,
+      "ratingBefore": 1520,
+      "ratingAfter": 1500,
+      "rawRatingBefore": 1523.65,
+      "rawRatingAfter": 1497.5,
+      "seedBefore": 50,
+      "seedAfter": 30.8,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 4,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 4,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "tomizawa-daichi",
+      "rankBefore": 13,
+      "rankAfter": 12,
+      "ratingBefore": 1490,
+      "ratingAfter": 1490,
+      "rawRatingBefore": 1493.49,
+      "rawRatingAfter": 1493.33,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "lee-junghyun",
+      "rankBefore": 12,
+      "rankAfter": 13,
+      "ratingBefore": 1510,
+      "ratingAfter": 1490,
+      "rawRatingBefore": 1506.76,
+      "rawRatingAfter": 1487.7,
+      "seedBefore": 30,
+      "seedAfter": 11.3,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 1,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "flyweight",
+      "fighterId": "hiroya",
+      "rankBefore": 14,
+      "rankAfter": 14,
+      "ratingBefore": 1480,
+      "ratingAfter": 1480,
+      "rawRatingBefore": 1476.95,
+      "rawRatingAfter": 1476.47,
+      "seedBefore": -20,
+      "seedAfter": -12.3,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 5,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 5,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "inoue-naoki",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "ratingBefore": 1640,
+      "ratingAfter": 1600,
+      "rawRatingBefore": 1644.63,
+      "rawRatingAfter": 1598.04,
+      "seedBefore": 80,
+      "seedAfter": 57.8,
+      "recordBefore": {
+        "wins": 10,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 10,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "sato-masamitsu",
+      "rankBefore": 2,
+      "rankAfter": 2,
+      "ratingBefore": 1640,
+      "ratingAfter": 1580,
+      "rawRatingBefore": 1642.32,
+      "rawRatingAfter": 1580.7,
+      "seedBefore": 150,
+      "seedAfter": 43.6,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "goto-joji",
+      "rankBefore": 3,
+      "rankAfter": 3,
+      "ratingBefore": 1590,
+      "ratingAfter": 1550,
+      "rawRatingBefore": 1594.41,
+      "rawRatingAfter": 1554.37,
+      "seedBefore": 70,
+      "seedAfter": 38.2,
+      "recordBefore": {
+        "wins": 5,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 5,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "temirov-azizbek",
+      "rankBefore": 6,
+      "rankAfter": 4,
+      "ratingBefore": 1570,
+      "ratingAfter": 1550,
+      "rawRatingBefore": 1573.67,
+      "rawRatingAfter": 1546.93,
+      "seedBefore": 30,
+      "seedAfter": 5,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 1,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "fukuda-ryuya",
+      "rankBefore": 5,
+      "rankAfter": 5,
+      "ratingBefore": 1580,
+      "ratingAfter": 1540,
+      "rawRatingBefore": 1578.47,
+      "rawRatingAfter": 1537.15,
+      "seedBefore": 70,
+      "seedAfter": 38.2,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "ota-shinobu",
+      "rankBefore": 7,
+      "rankAfter": 6,
+      "ratingBefore": 1560,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1558.18,
+      "rawRatingAfter": 1534.42,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 7,
+        "losses": 5,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 7,
+        "losses": 5,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "ando-tatsuya",
+      "rankBefore": 4,
+      "rankAfter": 7,
+      "ratingBefore": 1590,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1592.97,
+      "rawRatingAfter": 1532.22,
+      "seedBefore": 100,
+      "seedAfter": 30,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "kashimura-ninnosuke",
+      "rankBefore": 9,
+      "rankAfter": 8,
+      "ratingBefore": 1550,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1546,
+      "rawRatingAfter": 1530.05,
+      "seedBefore": 40,
+      "seedAfter": 15,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "kim-soochul",
+      "rankBefore": 8,
+      "rankAfter": 9,
+      "ratingBefore": 1560,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1556.88,
+      "rawRatingAfter": 1527.68,
+      "seedBefore": 60,
+      "seedAfter": 32.7,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "jolly",
+      "rankBefore": 11,
+      "rankAfter": 10,
+      "ratingBefore": 1520,
+      "ratingAfter": 1520,
+      "rawRatingBefore": 1520.07,
+      "rawRatingAfter": 1519.98,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "miyagawa-hinata",
+      "rankBefore": 12,
+      "rankAfter": 11,
+      "ratingBefore": 1510,
+      "ratingAfter": 1520,
+      "rawRatingBefore": 1513.48,
+      "rawRatingAfter": 1517.98,
+      "seedBefore": -20,
+      "seedAfter": -5.7,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "yang-jiyong",
+      "rankBefore": 10,
+      "rankAfter": 12,
+      "ratingBefore": 1530,
+      "ratingAfter": 1500,
+      "rawRatingBefore": 1532.82,
+      "rawRatingAfter": 1502.11,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "inoue-seiya",
+      "rankBefore": 13,
+      "rankAfter": 13,
+      "ratingBefore": 1500,
+      "ratingAfter": 1490,
+      "rawRatingBefore": 1500.52,
+      "rawRatingAfter": 1493.09,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "umeno-genji",
+      "rankBefore": 14,
+      "rankAfter": 14,
+      "ratingBefore": 1490,
+      "ratingAfter": 1490,
+      "rawRatingBefore": 1492.34,
+      "rawRatingAfter": 1492.22,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "ashizawa-ryusei",
+      "rankBefore": 16,
+      "rankAfter": 15,
+      "ratingBefore": 1470,
+      "ratingAfter": 1460,
+      "rawRatingBefore": 1466.31,
+      "rawRatingAfter": 1464.37,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 4,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 4,
+        "draws": 0
+      }
+    },
+    {
+      "division": "bantamweight",
+      "fighterId": "kintaro",
+      "rankBefore": 15,
+      "rankAfter": 16,
+      "ratingBefore": 1480,
+      "ratingAfter": 1460,
+      "rawRatingBefore": 1475.1,
+      "rawRatingAfter": 1456.92,
+      "seedBefore": 40,
+      "seedAfter": 28.2,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 8,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 8,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "koike-kleber",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "ratingBefore": 1640,
+      "ratingAfter": 1610,
+      "rawRatingBefore": 1643.46,
+      "rawRatingAfter": 1610.61,
+      "seedBefore": 150,
+      "seedAfter": 58.9,
+      "recordBefore": {
+        "wins": 10,
+        "losses": 4,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 10,
+        "losses": 4,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "asakura-mikuru",
+      "rankBefore": 2,
+      "rankAfter": 2,
+      "ratingBefore": 1640,
+      "ratingAfter": 1610,
+      "rawRatingBefore": 1635.22,
+      "rawRatingAfter": 1606.23,
+      "seedBefore": 50,
+      "seedAfter": 39.1,
+      "recordBefore": {
+        "wins": 13,
+        "losses": 5,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 13,
+        "losses": 5,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "akimoto-kyoma",
+      "rankBefore": 4,
+      "rankAfter": 3,
+      "ratingBefore": 1620,
+      "ratingAfter": 1580,
+      "rawRatingBefore": 1616.43,
+      "rawRatingAfter": 1583.91,
+      "seedBefore": 50,
+      "seedAfter": 30.8,
+      "recordBefore": {
+        "wins": 7,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 7,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "dautbek-karshyga",
+      "rankBefore": 6,
+      "rankAfter": 4,
+      "ratingBefore": 1600,
+      "ratingAfter": 1580,
+      "rawRatingBefore": 1604.28,
+      "rawRatingAfter": 1576.8,
+      "seedBefore": 70,
+      "seedAfter": 35,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "karamov-vugar",
+      "rankBefore": 5,
+      "rankAfter": 5,
+      "ratingBefore": 1620,
+      "ratingAfter": 1570,
+      "rawRatingBefore": 1616.14,
+      "rawRatingAfter": 1571.57,
+      "seedBefore": 100,
+      "seedAfter": 55,
+      "recordBefore": {
+        "wins": 7,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 7,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "ya-man",
+      "rankBefore": 11,
+      "rankAfter": 6,
+      "ratingBefore": 1560,
+      "ratingAfter": 1550,
+      "rawRatingBefore": 1557.12,
+      "rawRatingAfter": 1554.97,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "takagi-ryo",
+      "rankBefore": 7,
+      "rankAfter": 7,
+      "ratingBefore": 1590,
+      "ratingAfter": 1540,
+      "rawRatingBefore": 1589.09,
+      "rawRatingAfter": 1544.14,
+      "seedBefore": 50,
+      "seedAfter": 29.2,
+      "recordBefore": {
+        "wins": 5,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 5,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "suzuki-chihiro",
+      "rankBefore": 9,
+      "rankAfter": 8,
+      "ratingBefore": 1560,
+      "ratingAfter": 1540,
+      "rawRatingBefore": 1563.09,
+      "rawRatingAfter": 1541.34,
+      "seedBefore": 30,
+      "seedAfter": 21.2,
+      "recordBefore": {
+        "wins": 8,
+        "losses": 4,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 8,
+        "losses": 4,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "takeda-koji",
+      "rankBefore": 10,
+      "rankAfter": 9,
+      "ratingBefore": 1560,
+      "ratingAfter": 1540,
+      "rawRatingBefore": 1562.07,
+      "rawRatingAfter": 1536.14,
+      "seedBefore": 80,
+      "seedAfter": 61,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "majima-kazumasa",
+      "rankBefore": 8,
+      "rankAfter": 10,
+      "ratingBefore": 1570,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1573.4,
+      "rawRatingAfter": 1532.12,
+      "seedBefore": 130,
+      "seedAfter": 53.3,
+      "recordBefore": {
+        "wins": 5,
+        "losses": 5,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 5,
+        "losses": 5,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "kolesnik-viktor",
+      "rankBefore": 3,
+      "rankAfter": 11,
+      "ratingBefore": 1630,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1626.94,
+      "rawRatingAfter": 1531.14,
+      "seedBefore": 150,
+      "seedAfter": 43.6,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "kubo-yuta",
+      "rankBefore": 12,
+      "rankAfter": 12,
+      "ratingBefore": 1540,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1535.63,
+      "rawRatingAfter": 1525.11,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 5,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 5,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "suzuki-hiroaki",
+      "rankBefore": 13,
+      "rankAfter": 13,
+      "ratingBefore": 1510,
+      "ratingAfter": 1510,
+      "rawRatingBefore": 1510.77,
+      "rawRatingAfter": 1508.11,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 6,
+        "losses": 6,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 6,
+        "losses": 6,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "kimura-shuya",
+      "rankBefore": 14,
+      "rankAfter": 14,
+      "ratingBefore": 1500,
+      "ratingAfter": 1480,
+      "rawRatingBefore": 1501.53,
+      "rawRatingAfter": 1478.13,
+      "seedBefore": 40,
+      "seedAfter": 17.8,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 1,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "nii-suguru",
+      "rankBefore": 15,
+      "rankAfter": 15,
+      "ratingBefore": 1480,
+      "ratingAfter": 1470,
+      "rawRatingBefore": 1476.15,
+      "rawRatingAfter": 1472.29,
+      "seedBefore": 60,
+      "seedAfter": 36.9,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 6,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 6,
+        "draws": 0
+      }
+    },
+    {
+      "division": "featherweight",
+      "fighterId": "hagiwara-kyohei",
+      "rankBefore": 16,
+      "rankAfter": 16,
+      "ratingBefore": 1470,
+      "ratingAfter": 1460,
+      "rawRatingBefore": 1467.87,
+      "rawRatingAfter": 1461.32,
+      "seedBefore": -10,
+      "seedAfter": -7.7,
+      "recordBefore": {
+        "wins": 8,
+        "losses": 9,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 8,
+        "losses": 9,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "souza-roberto-satoshi",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "ratingBefore": 1680,
+      "ratingAfter": 1630,
+      "rawRatingBefore": 1684.72,
+      "rawRatingAfter": 1629.53,
+      "seedBefore": 70,
+      "seedAfter": 53.3,
+      "recordBefore": {
+        "wins": 13,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 13,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "nozimov-ilkhom",
+      "rankBefore": 3,
+      "rankAfter": 2,
+      "ratingBefore": 1610,
+      "ratingAfter": 1580,
+      "rawRatingBefore": 1613.56,
+      "rawRatingAfter": 1581.8,
+      "seedBefore": 60,
+      "seedAfter": 30,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "nomura-shunta",
+      "rankBefore": 2,
+      "rankAfter": 3,
+      "ratingBefore": 1630,
+      "ratingAfter": 1580,
+      "rawRatingBefore": 1626.14,
+      "rawRatingAfter": 1581.17,
+      "seedBefore": 60,
+      "seedAfter": 17.1,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "horie-keiko",
+      "rankBefore": 5,
+      "rankAfter": 4,
+      "ratingBefore": 1580,
+      "ratingAfter": 1560,
+      "rawRatingBefore": 1581.69,
+      "rawRatingAfter": 1555.13,
+      "seedBefore": 60,
+      "seedAfter": 38.6,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "kim-kyungpyo",
+      "rankBefore": 6,
+      "rankAfter": 5,
+      "ratingBefore": 1580,
+      "ratingAfter": 1550,
+      "rawRatingBefore": 1576.78,
+      "rawRatingAfter": 1554.04,
+      "seedBefore": 70,
+      "seedAfter": 35,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 1,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 1,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "zhumagazy-nurkhan",
+      "rankBefore": 4,
+      "rankAfter": 6,
+      "ratingBefore": 1590,
+      "ratingAfter": 1530,
+      "rawRatingBefore": 1590.15,
+      "rawRatingAfter": 1534.2,
+      "seedBefore": 80,
+      "seedAfter": 22.9,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "sakuraba-taisei",
+      "rankBefore": 7,
+      "rankAfter": 7,
+      "ratingBefore": 1550,
+      "ratingAfter": 1510,
+      "rawRatingBefore": 1548.83,
+      "rawRatingAfter": 1514.97,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "yachi-yusuke",
+      "rankBefore": 8,
+      "rankAfter": 8,
+      "ratingBefore": 1550,
+      "ratingAfter": 1510,
+      "rawRatingBefore": 1546.36,
+      "rawRatingAfter": 1513.54,
+      "seedBefore": 90,
+      "seedAfter": 65.2,
+      "recordBefore": {
+        "wins": 13,
+        "losses": 9,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 13,
+        "losses": 9,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "usami-sho-patrick",
+      "rankBefore": 9,
+      "rankAfter": 9,
+      "ratingBefore": 1520,
+      "ratingAfter": 1510,
+      "rawRatingBefore": 1521.56,
+      "rawRatingAfter": 1508.96,
+      "seedBefore": 30,
+      "seedAfter": 18.5,
+      "recordBefore": {
+        "wins": 5,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 5,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "beinoa",
+      "rankBefore": 10,
+      "rankAfter": 10,
+      "ratingBefore": 1520,
+      "ratingAfter": 1500,
+      "rawRatingBefore": 1518.54,
+      "rawRatingAfter": 1501.52,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 4,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 4,
+        "draws": 0
+      }
+    },
+    {
+      "division": "lightweight",
+      "fighterId": "saiga-yanbo-tatsuya",
+      "rankBefore": 11,
+      "rankAfter": 11,
+      "ratingBefore": 1490,
+      "ratingAfter": 1470,
+      "rawRatingBefore": 1488.04,
+      "rawRatingAfter": 1466.07,
+      "seedBefore": 50,
+      "seedAfter": 25,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 4,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 1,
+        "losses": 4,
+        "draws": 0
+      }
+    },
+    {
+      "division": "heavyweight",
+      "fighterId": "soldatkin-alexander",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "ratingBefore": 1620,
+      "ratingAfter": 1580,
+      "rawRatingBefore": 1620.6,
+      "rawRatingAfter": 1579.52,
+      "seedBefore": 100,
+      "seedAfter": 30,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 0,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 3,
+        "losses": 0,
+        "draws": 0
+      }
+    },
+    {
+      "division": "heavyweight",
+      "fighterId": "ueda-mikio",
+      "rankBefore": 2,
+      "rankAfter": 2,
+      "ratingBefore": 1560,
+      "ratingAfter": 1550,
+      "rawRatingBefore": 1557.36,
+      "rawRatingAfter": 1549.38,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 3,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 3,
+        "draws": 0
+      }
+    },
+    {
+      "division": "heavyweight",
+      "fighterId": "kikanoshin",
+      "rankBefore": 3,
+      "rankAfter": 3,
+      "ratingBefore": 1510,
+      "ratingAfter": 1500,
+      "rawRatingBefore": 1508.96,
+      "rawRatingAfter": 1497.55,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 4,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 4,
+        "losses": 4,
+        "draws": 0
+      }
+    },
+    {
+      "division": "heavyweight",
+      "fighterId": "sudario-tsuyoshi",
+      "rankBefore": 4,
+      "rankAfter": 4,
+      "ratingBefore": 1500,
+      "ratingAfter": 1500,
+      "rawRatingBefore": 1495.43,
+      "rawRatingAfter": 1495.44,
+      "seedBefore": 0,
+      "seedAfter": 0,
+      "recordBefore": {
+        "wins": 9,
+        "losses": 4,
+        "draws": 0
+      },
+      "recordAfter": {
+        "wins": 9,
+        "losses": 4,
+        "draws": 0
+      }
+    }
+  ]
+}
