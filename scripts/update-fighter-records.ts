@@ -97,14 +97,27 @@ function loadPrev(out: string): FighterRecordsFile {
   }
 }
 
+// --slug=<fighterId> で単一選手だけを再取得・再生成する(全選手のWikipedia
+// 再取得を伴う通常バッチとは別モード)。recordOverrides.ts等のコード側修正を
+// 即座にdata/fighterRecords.jsonへ反映させたいが、300人超の全体再取得は
+// 時間・Wikipedia負荷の面で避けたい場合に使う(例: 2026-07-14 高木凌の
+// patch-result反映)。指定時は対象外の選手全員を前回値(prev)からそのまま
+// 引き継ぐため、この選手以外への影響はゼロ(blast radiusを1人に限定)。
+const onlySlug = process.argv.find((a) => a.startsWith("--slug="))?.split("=")[1];
+
 async function main() {
   const prev: FighterRecordsFile = loadPrev(OUT);
 
   // hidden選手も対象に含める(公開判定はgetVisibleFighters側のfilterが担うため、
   // ここで戦績を先取りしておいても表には出ない。hidden選手も追加時にWikipedia URLを
   // 設定する運用のため、公開昇格した瞬間に「データなし」にならないよう事前に温めておく)。
-  const targets = FIGHTERS;
-  const out: FighterRecordsFile = {};
+  const targets = onlySlug ? FIGHTERS.filter((f) => f.slug === onlySlug) : FIGHTERS;
+  if (onlySlug && targets.length === 0) {
+    throw new Error(`--slug=${onlySlug} に一致する選手がFIGHTERSに見つかりません`);
+  }
+  // 単一選手モードでは対象外の選手を前回値でそのまま引き継ぐ(全体再構築しない)。
+  // 通常モード(onlySlug未指定)は従来どおり空から全員分を再構築する。
+  const out: FighterRecordsFile = onlySlug ? { ...prev } : {};
   const failedNoFallback: string[] = [];
   const failedKeptPrev: string[] = [];
   const fatalIssues: string[] = [];
