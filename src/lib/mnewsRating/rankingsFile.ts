@@ -135,3 +135,59 @@ export function hasRankingChange(current: DivisionRankings, prev: DivisionRankin
   if (prevIds !== currentIds) return true;
   return current.entries.some((e) => e.delta !== null && e.delta !== 0);
 }
+
+// data-correctionモード専用。「rawRatingの大きさ」では実データ修正由来の
+// ripple(例: 2026-07-14の秋元強真-16.47)と本物の新規試合結果による変動を
+// 区別できないため(閾値・丸め基準では確実に防げないと判明済み)、判定は
+// 実行コンテキスト(呼び出し元がdata-correctionモードかどうか)で行う。
+// この関数はそのモードでの唯一の検出ロジック: baseline(最後にnew-results
+// モードが正当に確定させた状態)と現在の生成結果を全階級・全選手突合し、
+// rawRatingが動いた選手を漏れなく列挙する(±3位圏等の目視推測はしない)。
+export interface RippleEntry {
+  divisionSlug: string;
+  fighterId: string;
+  rawBefore: number;
+  rawAfter: number;
+  rawDiff: number; // after - before
+  deltaInOutput: number | null;
+}
+
+export function auditRankingsRipple(baseline: RankingsFile, current: RankingsFile, epsilon = 0.001): RippleEntry[] {
+  const out: RippleEntry[] = [];
+  for (const [divisionSlug, div] of Object.entries(current)) {
+    const baseEntries = new Map((baseline[divisionSlug]?.entries ?? []).map((e) => [e.fighterId, e]));
+    for (const e of div.entries) {
+      const base = baseEntries.get(e.fighterId);
+      if (!base) continue; // 新規掲載選手はripple対象外(baseline側に無い=比較不能)
+      const rawDiff = e.rawRating - base.rawRating;
+      if (Math.abs(rawDiff) > epsilon) {
+        out.push({
+          divisionSlug,
+          fighterId: e.fighterId,
+          rawBefore: base.rawRating,
+          rawAfter: e.rawRating,
+          rawDiff,
+          deltaInOutput: e.delta,
+        });
+      }
+    }
+  }
+  return out;
+}
+
+// data-correctionモード実行結果に、auditRankingsRippleで検出されたripple対象
+// 選手のdeltaを一律0に強制する(丸め・閾値ではなく「このモードで動いた選手は
+// 全員」という一律ルール)。呼び出し側(update-mnews-rating.ts)は、この適用後に
+// 必ずauditRankingsRippleを再実行してdeltaInOutput===0が全件で成立することを
+// 自己検証してから書き込むこと(2026-07-14の手順5違反の再発防止)。
+export function suppressRippleDelta(current: RankingsFile, ripple: RippleEntry[]): RankingsFile {
+  const targets = new Set(ripple.map((r) => `${r.divisionSlug}:${r.fighterId}`));
+  const out: RankingsFile = {};
+  for (const [divisionSlug, div] of Object.entries(current)) {
+    out[divisionSlug] = {
+      ...div,
+      entries: div.entries.map((e) => (targets.has(`${divisionSlug}:${e.fighterId}`) ? { ...e, delta: 0 } : e)),
+    };
+  }
+  return out;
+}
