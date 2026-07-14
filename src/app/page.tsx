@@ -22,6 +22,7 @@ import { toFeedArticles } from "@/lib/newsClassify";
 import { matchRelatedFighters } from "@/lib/relatedFighterChips";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { ORIGINAL_ARTICLES, originalArticleToFeedArticle } from "@/lib/originalArticles";
+import { RANKING_MOVEMENT_ARTICLES, rankingMovementArticleToFeedArticle } from "@/lib/rankingMovementArticles";
 import { fetchFirstSeenMap, enrichFirstSeen } from "@/lib/firstSeen";
 import { pageMetadata } from "@/lib/seo";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
@@ -133,7 +134,10 @@ export default async function HomePage() {
   // 統一フィード: 当日含む直近3日分(JST暦日)を表示。ただし3日分が8件未満なら
   // 直近8件まで遡って表示する(下限保証)。並び順・時刻は publishedAt 基準。
   // オリジナル記事(数字で見る対戦カード等)もRSS由来記事と同じ並びに混在させる。
-  const originalFeedArticles = ORIGINAL_ARTICLES.map(originalArticleToFeedArticle);
+  const originalFeedArticles = [
+    ...ORIGINAL_ARTICLES.map(originalArticleToFeedArticle),
+    ...RANKING_MOVEMENT_ARTICLES.map(rankingMovementArticleToFeedArticle),
+  ];
   const feedAll = [...toFeedArticles(enrichFirstSeen(articles, firstSeenMap)), ...originalFeedArticles].sort(
     (x, y) => new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime()
   );

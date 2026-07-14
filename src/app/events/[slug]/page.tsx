@@ -11,6 +11,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import BoutCard, { FighterName } from "@/components/BoutCard";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
+import { findRankingMovementArticlesForEvent, rankingMovementArticleToFeedArticle } from "@/lib/rankingMovementArticles";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
@@ -74,6 +75,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
   // この大会についての「数字で見る対戦カード」記事(存在する場合のみリンクを出す)
   const relatedArticles = findArticlesForEvent(event.slug);
+  // この大会結果を受けたランキング変動記事(Task B、存在する場合のみ)
+  const relatedMovementArticles = findRankingMovementArticlesForEvent(event.slug);
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },
@@ -193,6 +196,24 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                   <span style={{ minWidth: 0 }}>{a.title}</span>
                 </a>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* この大会結果を受けたAIランキング変動(Task B、存在する場合のみ) */}
+        {relatedMovementArticles.length > 0 && (
+          <div className="event-related">
+            <div className="event-section-label">関連記事</div>
+            <div className="event-related-links">
+              {relatedMovementArticles.map((a) => {
+                const feed = rankingMovementArticleToFeedArticle(a);
+                return (
+                  <a key={a.slug} href={feed.url} className="event-related-link" style={{ borderLeftColor: "var(--accent)" }}>
+                    <span className="article-original-badge">オリジナル</span>
+                    <span style={{ minWidth: 0 }}>{a.title}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         )}

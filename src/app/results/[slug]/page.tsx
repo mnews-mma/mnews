@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { EVENT_RESULTS, getEventResult, buildEventSummary } from "@/lib/eventResults";
+import { findRankingMovementArticlesForEvent, rankingMovementArticleToFeedArticle } from "@/lib/rankingMovementArticles";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata, isoDate } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
@@ -52,6 +53,8 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
 
   const summary = buildEventSummary(event);
   const eventDate = isoDate(event.date);
+  // この大会結果を受けたAIランキング変動(Task B、存在する場合のみ)
+  const relatedMovementArticles = findRankingMovementArticlesForEvent(event.slug);
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },
@@ -102,6 +105,23 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
       <div style={{ padding: "0 24px 40px" }}>
         {summary && (
           <p className="event-summary">{summary}</p>
+        )}
+
+        {relatedMovementArticles.length > 0 && (
+          <div className="event-related">
+            <div className="event-section-label">関連記事</div>
+            <div className="event-related-links">
+              {relatedMovementArticles.map((a) => {
+                const feed = rankingMovementArticleToFeedArticle(a);
+                return (
+                  <a key={a.slug} href={feed.url} className="event-related-link" style={{ borderLeftColor: "var(--accent)" }}>
+                    <span className="article-original-badge">オリジナル</span>
+                    <span style={{ minWidth: 0 }}>{a.title}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         )}
 
         {event.fights.length === 0 ? (
