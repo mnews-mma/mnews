@@ -374,19 +374,34 @@ export interface InitialRatingBoostParams {
   perNetWinPoints: number; // 参戦前の純勝ち星(勝ち-負け)1つあたりの補正点
   maxBoost: number; // 補正の絶対値上限(効きすぎ防止)
   minPreDebutFights: number; // この試合数未満の参戦前戦歴は補正対象外(ノイズ回避)
+  // shrinkage(2026-07-14新設・Task E「D案」): 未指定ならshrinkageなし(v6当初の挙動と
+  // 完全互換)。指定時、有効補正 = 素の補正 × n/(n+shrinkageK)(nはそのRIZIN実戦試合数)。
+  // 「seedは出発点のハンデ、実戦の積み重ねで薄まっていく」という中間思想を反映する。
+  // n=0でshrinkageK=5なら有効補正は0(デビュー前は完全にseedのみ)、nが増えるほど
+  // n/(n+5)は1に漸近しseedの影響は相対的に縮小する(絶対値としては固定のまま消えない
+  // 点に注意。「実戦成績が良ければseedを追い越せる」を保証する仕組みではなく、
+  // あくまでseedの絶対的な効きを試合数に応じて弱める仕組み)。
+  shrinkageK?: number;
 }
 
 export const INITIAL_RATING_BOOST_OFF: InitialRatingBoostParams = { perNetWinPoints: 0, maxBoost: 0, minPreDebutFights: 3 };
 
+// rizinFightCounts省略時(または該当選手が未登録)はshrinkageなしとして扱う
+// (shrinkageK未指定時と同じ後方互換動作)。
 export function computeInitialRatingOverrides(
   preDebutRecords: Map<string, PreDebutRecord>,
-  params: InitialRatingBoostParams
+  params: InitialRatingBoostParams,
+  rizinFightCounts?: Map<string, number>
 ): Map<string, number> {
   const out = new Map<string, number>();
   for (const [slug, rec] of preDebutRecords) {
     if (rec.fights < params.minPreDebutFights) continue;
     const netWins = rec.wins - rec.losses;
-    const boost = Math.max(-params.maxBoost, Math.min(params.maxBoost, netWins * params.perNetWinPoints));
+    let boost = Math.max(-params.maxBoost, Math.min(params.maxBoost, netWins * params.perNetWinPoints));
+    if (params.shrinkageK !== undefined) {
+      const n = rizinFightCounts?.get(slug) ?? 0;
+      boost = boost * (n / (n + params.shrinkageK));
+    }
     if (boost !== 0) out.set(slug, INITIAL_RATING + boost);
   }
   return out;

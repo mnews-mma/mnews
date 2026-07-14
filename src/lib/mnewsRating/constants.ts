@@ -102,9 +102,19 @@ export const ELO_PARAMS_V5: AsymmetricEloParams = {
 // 完全休眠選手は既に対象外になるため冗長、という判断)。
 export const DECAY_PARAMS_V6: DecayParams = { periodDays: DECAY_PERIOD_DAYS, perPeriod: 0, floor: DECAY_FLOOR };
 // 初期補正: RIZIN初参戦日より前の全団体戦歴(既存history)から機械算出した
-// 純勝ち数(勝-負)×10pt、上限150pt(参戦前3戦未満はノイズとして補正なし)。
+// 純勝ち数(勝-負)×10pt、上限80pt・shrinkageK=5(参戦前3戦未満はノイズとして
+// 補正なし)。2026-07-14、Task E「D案」として上限150→80pt+shrinkage(実戦試合数
+// nに応じ有効補正=素の補正×n/(n+5))へ変更。理由: 上限150ptがRIZIN実戦の純増減
+// (通常±数十pt)を上回り、一部選手でseedがほぼ結論を決めてしまっていたため
+// (例: ビクター・コレスニックがRIZIN実戦4勝2敗・inRing-23ptにもかかわらずseed
+// 150ptでフェザー級3位に押し上げられていた)。「seedは出発点のハンデ、実戦の
+// 積み重ねで薄まっていく」という中間思想にもとづき、cap引き下げのみ(案A)・
+// shrinkageのみ(案B)・逓減(案C)・cap+shrinkage併用(案D)を試算した結果、Dが
+// 王座級の入れ替えを起こさずseed絶対値を最も圧縮できたため採用
+// (docs/ranking-internal-spec-v6.md「Task Eシミュレーション結果」参照)。
 export const INITIAL_RATING_BOOST_PARAMS_V6: InitialRatingBoostParams = {
   perNetWinPoints: 10,
-  maxBoost: 150,
+  maxBoost: 80,
   minPreDebutFights: 3,
+  shrinkageK: 5,
 };

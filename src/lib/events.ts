@@ -334,9 +334,70 @@ export const EVENTS: MEvent[] = [
     status: "upcoming",
     eventName: "PANCRASE 365",
     date: "2026-09-06",
+    openTime: "13:00",
+    startTime: "13:30",
+    scheduleNote: "開場・開始時刻は予定です",
     venue: "立川ステージガーデン",
     sourceUrl: "https://www.pancrase.co.jp/tour/2026/pancrase365/index.html",
-    bouts: [],
+    bouts: [
+      {
+        weightClass: "ミドル級（83.9kg）",
+        fighterA: "コシム・サルドロフ",
+        fighterB: "林源平",
+        isTitleMatch: true,
+        note: "第16代ミドル級王座防衛戦",
+      },
+      {
+        weightClass: "フライ級（56.7kg）",
+        fighterA: "猿飛流",
+        fighterB: "眞藤源太",
+        note: "フライ級次期挑戦者決定戦",
+      },
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "敢流",
+        fighterB: "遠藤来生",
+      },
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "畠山祐輔",
+        fighterB: "福里凱亜",
+      },
+      {
+        weightClass: "フライ級（56.7kg）",
+        fighterA: "増田大河",
+        fighterB: "ジョセフ・カマチョ",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "矢澤諒",
+        fighterB: "千種純平",
+      },
+      {
+        weightClass: "ウェルター級（77.1kg）",
+        fighterA: "村山暁洋",
+        fighterB: "平田旭",
+      },
+      // プレリミナリー
+      {
+        weightClass: "フライ級（56.7kg）",
+        fighterA: "稲垣祐司",
+        fighterB: "獅道",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "石原健流",
+        fighterB: "伊藤一輝",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "木村耀人",
+        fighterB: "上野惇平",
+        note: "プレリミナリー",
+      },
+    ],
   },
   {
     slug: "cho-rizin-5",
