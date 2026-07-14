@@ -400,6 +400,27 @@ export const EVENTS: MEvent[] = [
     ],
   },
   {
+    slug: "pancrase-366",
+    org: "pancrase",
+    status: "upcoming",
+    eventName: "PANCRASE 366",
+    date: "2026-09-23",
+    openTime: "13:00",
+    startTime: "13:30",
+    scheduleNote: "開場・開始時刻は予定です",
+    venue: "立川ステージガーデン",
+    sourceUrl: "https://www.pancrase.co.jp/tour/2026/pancrase366/index.html",
+    bouts: [
+      {
+        weightClass: "ストロー級",
+        fighterA: "本野美樹",
+        fighterB: "SARAMI",
+        isTitleMatch: true,
+        note: "クイーン オブ パンクラス チャンピオンシップ。SARAMIが2階級制覇を懸けて挑戦",
+      },
+    ],
+  },
+  {
     slug: "cho-rizin-5",
     org: "rizin",
     status: "upcoming",
