@@ -27,12 +27,15 @@ jobs:
       - name: Update mnews rating rankings
         run: npx tsx scripts/update-mnews-rating.ts
 
+      - name: Generate ranking movement content (bout-driven only, guarded)
+        run: npx tsx scripts/generate-ranking-movement-content.ts
+
       - name: Commit and push if changed
         run: |
           git config user.name "mnews-bot"
           git config user.email "actions@users.noreply.github.com"
-          if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive; then
-            git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive
+          if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive src/lib/rankingMovementArticles.ts; then
+            git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive src/lib/rankingMovementArticles.ts
             git commit -m "chore: update fighter records + mnews rating [skip ci]"
             git push
           else
