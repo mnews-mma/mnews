@@ -6,6 +6,17 @@
 // data/rankings/archive/YYYY-MM-DD.jsonへ永続保存する(機関としての歴史的記録)。
 //
 // 実行: npx tsx scripts/update-mnews-rating.ts
+//
+// --mode=data-correction: 戦績修正・階級分類是正・seed調整など、新しい試合結果
+// ではなくデータ修正が起点の再計算用(2026-07-14新設)。「rawRatingの大きさ」だけ
+// では、データ修正由来のElo連鎖リップル(例: 高木凌の戦績修正で秋元強真が
+// -16.47動いた)と、本物の新規試合結果による変動を区別できない(閾値・丸め基準
+// では確実に防げないと判明済み)。判定は数値ではなく実行コンテキスト(このフラグ)
+// で行う: data/rankings.legitimateBaseline.json(最後にmode未指定=new-results
+// 実行が正当に確定させた状態。data-correction実行では絶対に更新しない)との
+// 全選手突合でrawRatingが動いた選手を漏れなく検出し、delta を一律0に強制した上で
+// 自己検証(残存が1件でもあれば例外で書き込み自体を止める)してから書き込む。
+// 未指定時(デフォルト)は従来どおり(new-results相当、全挙動を完全維持)。
 import fs from "fs";
 import path from "path";
 import {
@@ -36,6 +47,8 @@ import {
   hasRankingChange,
   shouldSuppressDelta,
   roundToDisplayStep,
+  auditRankingsRipple,
+  suppressRippleDelta,
   ChampionOverlay,
   RankingsFile,
 } from "../src/lib/mnewsRating/rankingsFile";
@@ -53,6 +66,18 @@ const RIZIN_RECORDS_PATH = path.join(process.cwd(), "data", "rizinRecords.json")
 const OUT = path.join(process.cwd(), "data", "rankings.json");
 const OUT_PREV = path.join(process.cwd(), "data", "rankings.prev.json");
 const ARCHIVE_DIR = path.join(process.cwd(), "data", "rankings", "archive");
+// data-correctionモード専用の「最後にnew-resultsが正当に確定させた状態」。
+// 通常のrankings.prev.jsonは実行のたびに1歩ずつ前進する(data-correction実行
+// 自体でも更新される)ため、同日にdata-correctionを複数回連続実行すると比較
+// 基準がその都度ずれて取りこぼしが起きうる。このファイルはnew-results実行時
+// のみ更新し、data-correction実行では絶対に更新しない(常に固定の1点との
+// 累積差分を取ることで、複数回実行しても原理的に取りこぼさない)。
+const BASELINE_PATH = path.join(process.cwd(), "data", "rankings.legitimateBaseline.json");
+
+const MODE = process.argv.find((a) => a.startsWith("--mode="))?.split("=")[1] ?? "new-results";
+if (MODE !== "new-results" && MODE !== "data-correction") {
+  throw new Error(`未知の--mode: ${MODE}(new-results | data-correction のみ対応)`);
+}
 
 // Phase 3: rizinRecords.json(RIZIN公式ソース)を優先し、無ければ従来のhistory
 // にフォールバックする。Phase2ではフェザー級のみに限定していたが、フェザー級で
@@ -231,22 +256,53 @@ function main() {
     out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion);
   }
 
+  let published: RankingsFile = out;
+  let rippleReport: ReturnType<typeof auditRankingsRipple> = [];
+  if (MODE === "data-correction") {
+    const baseline = loadRankingsFile(BASELINE_PATH);
+    rippleReport = auditRankingsRipple(baseline, out);
+    published = suppressRippleDelta(out, rippleReport);
+    // 自己検証: 抑制後もbaselineとの差分を再突合し、delta!==0の残存が
+    // 1件でもあれば書き込み自体を止める(2026-07-14の手順5違反の再発防止。
+    // 人手の「変更選手の±3位圏」目視確認に依存しない)。
+    const remaining = auditRankingsRipple(baseline, published).filter((r) => r.deltaInOutput !== 0);
+    if (remaining.length > 0) {
+      throw new Error(
+        `[FATAL] data-correctionモードなのにdelta!==0が残存(${remaining.length}件): ` +
+          remaining.map((r) => `${r.divisionSlug}:${r.fighterId}(delta=${r.deltaInOutput})`).join(", ")
+      );
+    }
+    console.log(`[INFO] data-correctionモード: baseline突合でripple検出${rippleReport.length}件(delta=0に強制・非公開の内部ログ):`);
+    for (const r of rippleReport) {
+      console.log(`  ${r.divisionSlug}:${r.fighterId} rawRating ${r.rawBefore.toFixed(2)} -> ${r.rawAfter.toFixed(2)} (diff ${r.rawDiff.toFixed(2)})`);
+    }
+  }
+
   // 1階級でも順位変動があれば、その日の全階級スナップショットをアーカイブする。
-  const changed = Object.entries(out).some(([key, div]) => hasRankingChange(div, prevOut[key]));
+  // data-correctionモードは抑制後は実質「変動なし」として扱い、アーカイブしない
+  // (静かに反映する既指示のため。内部レポートはrippleReportとして上記に出力済み)。
+  const changed = MODE === "new-results" && Object.entries(published).some(([key, div]) => hasRankingChange(div, prevOut[key]));
   if (changed) {
     fs.mkdirSync(ARCHIVE_DIR, { recursive: true });
     const dateKey = asOf.toISOString().slice(0, 10);
-    fs.writeFileSync(path.join(ARCHIVE_DIR, `${dateKey}.json`), JSON.stringify(out, null, 2) + "\n");
+    fs.writeFileSync(path.join(ARCHIVE_DIR, `${dateKey}.json`), JSON.stringify(published, null, 2) + "\n");
+  }
+
+  // baselineはnew-results実行時のみ前進させる(このモードのdeltaは全て正当な
+  // 実データ変動のため、次回以降のdata-correction実行の比較基準として使ってよい)。
+  if (MODE === "new-results") {
+    fs.mkdirSync(path.dirname(BASELINE_PATH), { recursive: true });
+    fs.writeFileSync(BASELINE_PATH, JSON.stringify(published, null, 2) + "\n");
   }
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT_PREV, JSON.stringify(prevOut, null, 2) + "\n");
-  fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n");
+  fs.writeFileSync(OUT, JSON.stringify(published, null, 2) + "\n");
 
-  console.log(`=== mnewsレーティング rankings.json 更新 (asOf=${asOf.toISOString()}) ===`);
+  console.log(`=== mnewsレーティング rankings.json 更新 (mode=${MODE}, asOf=${asOf.toISOString()}) ===`);
   for (const division of MNEWS_DIVISIONS) {
     const key = divisionRankingsKey(division);
-    console.log(`  ${division}: ${out[key].entries.length}名掲載`);
+    console.log(`  ${division}: ${published[key].entries.length}名掲載`);
   }
   console.log(`除外warning: ${warnings.length}件 / アーカイブ保存: ${changed ? "あり(" + asOf.toISOString().slice(0, 10) + ")" : "なし(変動なし)"}`);
 
