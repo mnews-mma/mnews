@@ -3,12 +3,11 @@ import Footer from "@/components/Footer";
 import UnifiedFeed from "@/components/UnifiedFeed";
 import EventRail from "@/components/EventRail";
 import SocialSection from "@/components/SocialSection";
-import EventWeekHub from "@/components/EventWeekHub";
 import { ARTICLES, Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
-import { FIGHTERS, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
+import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
-import { resolveFightersCached, fetchFighterRecords, FighterRecordsFile } from "@/lib/fighterRecordsCache";
+import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { getPublishedDivisionRankingView, toClientSafeDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
@@ -17,7 +16,6 @@ import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { getUpcomingEvents } from "@/lib/events";
-import { getActiveRizinEventWeek } from "@/lib/eventWeekHub";
 import { toFeedArticles } from "@/lib/newsClassify";
 import { matchRelatedFighters } from "@/lib/relatedFighterChips";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
@@ -152,32 +150,6 @@ export default async function HomePage() {
     relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs),
   }));
 
-  // 大会週ハブ(RIZIN限定)。windowに入っていなければnullで既存レイアウトの
-  // まま(平時に完全復帰)。判定ロジック自体はeventWeekHub.tsに集約(既存の
-  // 「結果投入→EVENTS手動削除」フローとは独立)。
-  const eventWeek = getActiveRizinEventWeek();
-  let eventWeekRecords: FighterRecordsFile = {};
-  let eventWeekRelatedArticles: Array<ReturnType<typeof toFeedArticles>[number] & { relatedFighters: ReturnType<typeof matchRelatedFighters> }> = [];
-  if (eventWeek) {
-    eventWeekRecords = await fetchFighterRecords();
-    const participantNames =
-      eventWeek.phase === "scheduled"
-        ? eventWeek.scheduledEvent!.bouts.flatMap((b) => [b.fighterA, b.fighterB])
-        : eventWeek.resultsEvent!.fights.flatMap((f) => [f.fighterA, f.fighterB]);
-    const participantSlugs = new Set(
-      participantNames
-        .map((n) => findFighterSlugByName(n, undefined, visibleFighterSlugs))
-        .filter((s): s is string => !!s)
-    );
-    // A②: 既存のmatchRelatedFighters(選手名の文字列マッチ)を大会の出場選手
-    // リストに対して都度実行するだけで集約する(新規の記事↔大会紐付け
-    // データは増やさない)。feedAllは日付の上限を切っていない全件プールの
-    // ため、大会週の少し前に出た記事も拾える。
-    eventWeekRelatedArticles = feedAll
-      .map((a) => ({ ...a, relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs) }))
-      .filter((a) => a.relatedFighters.some((r) => participantSlugs.has(r.slug)));
-  }
-
   // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて
   // EventRail側でさらに自動調整)。所属団体のラベル/色だけ先に確定させて渡す。
   const railEvents = upcomingEvents.slice(0, 5).map((e) => ({
@@ -226,14 +198,6 @@ export default async function HomePage() {
 
       <div className="home-wrap">
       <div className="home-main">
-        {/* 大会週ハブ(RIZIN限定): 大会-3日〜大会翌日+1日のwindow中のみ、
-            通常フィードの直上(一等地)に差し込む。window外はnullで
-            レンダリングされず、平時レイアウトに完全復帰する。 */}
-        {eventWeek && (
-          <div className="home-feed">
-            <EventWeekHub hub={eventWeek} visibleSlugs={visibleFighterSlugs} records={eventWeekRecords} relatedArticles={eventWeekRelatedArticles} />
-          </div>
-        )}
         <div className="home-feed">
           <UnifiedFeed articles={feedArticles} />
         </div>
