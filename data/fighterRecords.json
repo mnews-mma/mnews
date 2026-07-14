@@ -5197,12 +5197,12 @@
     "nickname": "壬生の大蛇"
   },
   "takagi-ryo": {
-    "wins": 13,
-    "losses": 1,
+    "wins": 11,
+    "losses": 3,
     "draws": 0,
-    "ko": 9,
-    "sub": 2,
-    "decision": 3,
+    "ko": 8,
+    "sub": 1,
+    "decision": 2,
     "history": [
       {
         "date": "2026-05-10",
@@ -5259,10 +5259,10 @@
       {
         "date": "2023-10-01",
         "opponent": "ビクター・コレスニック",
-        "result": "win",
-        "method": "2R3:35TKO(右ストレート→パウンド)",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
         "event": "RIZIN LANDMARK 6",
-        "round": "R2"
+        "round": "R3"
       },
       {
         "date": "2023-07-09",
@@ -5283,7 +5283,7 @@
       {
         "date": "2022-12-25",
         "opponent": "新居すぐる",
-        "result": "win",
+        "result": "loss",
         "method": "1R 1:14 アームロック",
         "event": "PANCRASE 330",
         "round": "R1"

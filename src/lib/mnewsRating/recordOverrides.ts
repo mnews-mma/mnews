@@ -56,7 +56,27 @@ export interface RecordOverridePatchDate extends RecordOverrideBase {
   correctedDate: string;
 }
 
-export type RecordOverride = RecordOverrideAdd | RecordOverrideRemove | RecordOverridePatchWeightClass | RecordOverridePatchDate;
+// 既存のbout(date+opponentで特定)のresult/method/roundを訂正する。上流
+// (Wikipedia戦績表)が勝敗を取り違えて記録していたケース向け。この訂正が
+// 1件でも存在する選手は、通算戦績(wins/losses/draws/ko/sub/decision)も
+// Wikipedia infobox値をそのまま据え置かず、訂正後のhistory全体から
+// re-derive する(applyRecordOverridesToTotals参照。通常は「絶対にhistory
+// から都度カウントしない」方針だが、勝敗そのものが誤っていた場合はinfobox側の
+// 集計値も連動して誤っている可能性が高く、個別訂正のdelta調整では追いつけない
+// ため、この訂正が存在する選手に限り例外的にhistoryを正とする)。
+export interface RecordOverridePatchResult extends RecordOverrideBase {
+  type: "patch-result";
+  correctedResult: "win" | "loss" | "draw" | "nc";
+  correctedMethod: string;
+  correctedRound?: string;
+}
+
+export type RecordOverride =
+  | RecordOverrideAdd
+  | RecordOverrideRemove
+  | RecordOverridePatchWeightClass
+  | RecordOverridePatchDate
+  | RecordOverridePatchResult;
 
 export const RECORD_OVERRIDES: RecordOverride[] = [
   {
@@ -166,6 +186,37 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "RIZIN公式(rizinRecords.json)では開催日2023-07-30(朝倉未来側の自己記録も2023-07-30で一致)。" +
       "上記堀江圭功戦と同種の二重カウント原因。",
   },
+  {
+    type: "patch-result",
+    fighterId: "takagi-ryo",
+    date: "2023-10-01",
+    opponent: "ビクター・コレスニック",
+    correctedResult: "loss",
+    correctedMethod: "5分3R終了 判定0-3",
+    correctedRound: "R3",
+    source: "https://jp.rizinff.com/_ct/17658615",
+    fetchedDate: "2026-07-14",
+    note:
+      "Wikipedia戦績表がRIZIN LANDMARK 6(2023-10-01)のコレスニック戦を「高木の勝ち・2R3:35TKO」と" +
+      "誤記録していたが、RIZIN公式試合結果ページでは「コレスニック勝利・3R判定(3-0)」" +
+      "(rizinRecords.jsonのwinnerSlug=kolesnik-viktorとも一致)。check-fighter-records-integrity.tsが" +
+      "決着内訳合計(ko9+sub2+decision3=14)がwins(13)を超過するfatalとして検出(2026-07-14)。",
+  },
+  {
+    type: "patch-result",
+    fighterId: "takagi-ryo",
+    date: "2022-12-25",
+    opponent: "新居すぐる",
+    correctedResult: "loss",
+    correctedMethod: "1R 1:14 アームロック",
+    correctedRound: "R1",
+    source: "https://www.pancrase.co.jp/data/result/2022/1225.html",
+    fetchedDate: "2026-07-14",
+    note:
+      "Wikipedia戦績表がPANCRASE 330(2022-12-25)第4試合の新居すぐる戦を「高木の勝ち」と" +
+      "誤記録していたが、パンクラス公式結果ページでは「新居すぐる勝利・1R1:14 TO/アームロック」。" +
+      "上記コレスニック戦と合わせ2件の勝敗誤りが、決着内訳合計がwinsを超過するfatalの原因だった。",
+  },
 ];
 
 export interface WeighInMissRuling {
@@ -252,6 +303,12 @@ export function applyRecordOverrides(fighterId: string, history: FightRecord[]):
       result = result.map((h) => (h.date === o.date && h.opponent === o.opponent ? { ...h, weightClass: o.weightClass } : h));
     } else if (o.type === "patch-date") {
       result = result.map((h) => (h.date === o.date && h.opponent === o.opponent ? { ...h, date: o.correctedDate } : h));
+    } else if (o.type === "patch-result") {
+      result = result.map((h) =>
+        h.date === o.date && h.opponent === o.opponent
+          ? { ...h, result: o.correctedResult, method: o.correctedMethod, round: o.correctedRound ?? h.round }
+          : h
+      );
     } else if (!result.some((h) => h.date === o.date && h.opponent === o.opponent)) {
       result = [
         ...result,
@@ -291,7 +348,34 @@ export interface RecordTotals {
 // Wikipedia生history)を見て、対象boutが既に含まれているかを判定してから
 // 加算するかどうかを決める(同じ入力なら常に同じ結果になる=冪等。Wikipedia側が
 // 追いついて生historyに載れば自動的に加算をやめる)。
+// patch-result(勝敗そのものの誤り訂正)が1件でも存在する選手は、Wikipedia
+// infobox値を信頼する上記方針の例外として、訂正後のhistory全体から通算戦績を
+// re-deriveする。infobox側の集計値自体が(勝敗を取り違えた記録から作られたため)
+// 誤っている可能性が高く、個別boutのdelta調整では追いつけないため
+// (2026-07-14、高木凌: Wikipediaが2試合の勝敗を取り違えて記録しており、
+// 決着内訳合計がwinsを超過するfatalをcheck-fighter-records-integrity.tsが検出)。
+function deriveTotalsFromHistory(history: FightRecord[]): RecordTotals {
+  const t: RecordTotals = { wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0 };
+  for (const h of history) {
+    if (h.result === "win") {
+      t.wins++;
+      if (/判定/.test(h.method)) t.decision++;
+      else if (/KO/i.test(h.method)) t.ko++;
+      else t.sub++;
+    } else if (h.result === "loss") {
+      t.losses++;
+    } else if (h.result === "draw") {
+      t.draws++;
+    }
+  }
+  return t;
+}
+
 export function applyRecordOverridesToTotals(fighterId: string, rawHistory: FightRecord[], totals: RecordTotals): RecordTotals {
+  const hasPatchResult = RECORD_OVERRIDES.some((o) => o.fighterId === fighterId && o.type === "patch-result");
+  if (hasPatchResult) {
+    return deriveTotalsFromHistory(applyRecordOverrides(fighterId, rawHistory));
+  }
   const t = { ...totals };
   for (const o of RECORD_OVERRIDES) {
     if (o.fighterId !== fighterId || o.type !== "add") continue;

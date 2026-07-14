@@ -1990,6 +1990,12 @@ footer {
   white-space: nowrap;
   min-width: 0;
 }
+.fighter-strip-row1 {
+  /* 全角「）」のグリフがem枠左寄りで右半分が余白になり、右寄せ側
+     (.bout-side--right)で戦績末尾が選手名の右端と揃わずに見える問題の対策。
+     戦績(record)+勝率(winrate)の行だけに限定(row2/row3・選手名には波及させない)。 */
+  font-feature-settings: "palt";
+}
 .bout-side--right .fighter-strip-row1,
 .bout-side--right .fighter-strip-row2,
 .bout-side--right .fighter-strip-row3 {
