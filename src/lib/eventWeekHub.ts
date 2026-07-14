@@ -28,22 +28,11 @@ export interface EventWeekHub {
   resultsEvent?: EventResult;
 }
 
-// asOf基準でのJST暦日差(b - a、日単位)。時刻は無視する。
-// 本番(Vercel/UTC実行環境)とローカル開発環境(JST)で判定がズレるバグの
-// 修正(2026-07-15): getFullYear/getMonth/getDateはサーバーのローカル
-// タイムゾーンに依存するgetterのため、UTC実行環境では「今日」がUTC基準に
-// なってしまい、JSTでは既にwindow開始日を過ぎているのに大会週ハブが
-// 表示されない不具合が本番で発生した(RIZIN LANDMARK 15、2026-07-18の
-// 3日前=2026-07-15 JST基準では既にwindow入りしているが、当時UTCでは
-// 07-14のままだったため)。b(現在時刻)にJSTオフセット(+9時間)を加算した
-// 上でgetUTC*系のgetter(実行環境のタイムゾーンに依存しない)を使うことで、
-// サーバーのタイムゾーンに関わらず常にJSTの暦日で判定する
-// (src/app/page.tsxのjstNow計算と同じ手法)。
+// asOf基準でのUTC暦日差(b - a、日単位)。時刻は無視する。
 function dayDiff(a: string, b: Date): number {
   const target = new Date(a);
-  const aUTC = Date.UTC(target.getUTCFullYear(), target.getUTCMonth(), target.getUTCDate());
-  const jstB = new Date(b.getTime() + 9 * 3600_000);
-  const bUTC = Date.UTC(jstB.getUTCFullYear(), jstB.getUTCMonth(), jstB.getUTCDate());
+  const aUTC = Date.UTC(target.getFullYear(), target.getMonth(), target.getDate());
+  const bUTC = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
   return Math.round((bUTC - aUTC) / 86400000);
 }
 
