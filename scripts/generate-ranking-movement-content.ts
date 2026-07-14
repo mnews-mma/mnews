@@ -124,11 +124,21 @@ for (const division of MNEWS_DIVISIONS) {
   }
 }
 
-// ── 2. 異常値ガード: 1件でも検知したら自動掲載を止める(非ブロッキング) ──
+// ── 2. 異常値ガード: 1件でも検知したら自動掲載を止める ──────────────
+// 2026-07-15追記: このスクリプトはCI上でfighterRecords/rankings.jsonの
+// 通常コミットとは別の独立ジョブ(ranking-movement、.github/workflows/
+// update-fighter-records.yml参照)として実行される設計に変更した。よって
+// ここでexit(1)しても、通常のデータコミット(update job)は既に完了済みで
+// 影響を受けない。exit(1)で「このジョブ自体」を失敗扱いにすることで、
+// GitHub Actionsの標準通知(scheduled workflow失敗時、リポジトリの通知設定に
+// 従ってメール等が飛ぶ)を確実に発火させる。::warning::annotationだけでは
+// Actionsのログを能動的に見に行かない限り気づけない、という指摘を受けての
+// 変更(単なるログ出力ではなく、ジョブそのものを赤くする)。
 if (anomalies.length > 0) {
   warn(`ランキング変動の異常値を${anomalies.length}件検知したため、自動掲載を停止しました(rankingMovementArticles.tsへの書き込みなし)。人手での確認が必要です。`);
   for (const a of anomalies) warn(a);
-  process.exit(0);
+  console.error(`[FATAL] 異常値ガード発火(${anomalies.length}件)。このジョブは失敗扱いとして終了する(GitHub Actions通知を発火させるため)。`);
+  process.exit(1);
 }
 
 // ── 3. イベント絞り込み・大会ごとにグルーピング ───────────────────────
@@ -172,6 +182,7 @@ function buildTitle(m: BoutDrivenMovement, eventName: string): string {
 let fileContent = fs.readFileSync(ARTICLES_PATH, "utf8");
 const marker = "export const RANKING_MOVEMENT_ARTICLES: RankingMovementArticle[] = [";
 let totalPublished = 0;
+let structuralError = false; // ファイル構造の破損等、人手の調査が要る不具合(ジョブを失敗させる)
 
 for (const [eventName, eventMovements] of byEvent) {
   if (eventName === "__unknown__") {
@@ -224,11 +235,13 @@ ${entriesCode}
   const idx = fileContent.indexOf(marker);
   if (idx === -1) {
     warn(`rankingMovementArticles.tsに配列の宣言が見つかりません(marker="${marker}")。自動掲載を停止しました。ファイル構造が変わった可能性があります。`);
+    structuralError = true;
     break;
   }
   const closeIdx = fileContent.indexOf("];", idx);
   if (closeIdx === -1) {
     warn(`rankingMovementArticles.tsで配列の終端(];)が見つかりません。自動掲載を停止しました。`);
+    structuralError = true;
     break;
   }
   const before = fileContent.slice(0, idx + marker.length);
@@ -246,4 +259,9 @@ if (totalPublished > 0) {
   fs.writeFileSync(ARTICLES_PATH, fileContent);
 } else {
   console.log("[INFO] 新規掲載0件(全て既掲載済み・イベント未解決・または直近試合日不明のいずれか)。ファイルへの書き込みは行いませんでした。");
+}
+
+if (structuralError) {
+  console.error("[FATAL] rankingMovementArticles.tsのファイル構造が想定と異なる(人手の調査が必要)。このジョブは失敗扱いとして終了する。");
+  process.exit(1);
 }

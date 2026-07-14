@@ -27,6 +27,41 @@ jobs:
       - name: Update mnews rating rankings
         run: npx tsx scripts/update-mnews-rating.ts
 
+      - name: Commit and push if changed
+        run: |
+          git config user.name "mnews-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive; then
+            git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive
+            git commit -m "chore: update fighter records + mnews rating [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+  # 2026-07-15: ランキング変動ネタ化(Task B)を上のupdateジョブから分離した
+  # 独立ジョブ。理由: generate-ranking-movement-content.tsは異常値ガード
+  # 発火時にexit(1)でこのジョブ自体を失敗させる設計にしており(GitHub Actions
+  # の標準通知を確実に発火させるため)、これをupdateジョブに同居させると、
+  # ランキング変動側の異常でfighterRecords/rankings.jsonの通常コミットまで
+  # 巻き込んで失敗扱いになってしまう。ジョブを分けることで、日々のデータ更新
+  # (update)は常に独立して成功し、ランキング変動ネタ化(ranking-movement)側の
+  # 異常だけを切り離して赤くできる。
+  ranking-movement:
+    needs: update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main # updateジョブがpushした最新コミットを取り直す
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Generate ranking movement content (bout-driven only, guarded)
         run: npx tsx scripts/generate-ranking-movement-content.ts
 
@@ -34,9 +69,9 @@ jobs:
         run: |
           git config user.name "mnews-bot"
           git config user.email "actions@users.noreply.github.com"
-          if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive src/lib/rankingMovementArticles.ts; then
-            git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive src/lib/rankingMovementArticles.ts
-            git commit -m "chore: update fighter records + mnews rating [skip ci]"
+          if ! git diff --quiet -- src/lib/rankingMovementArticles.ts; then
+            git add src/lib/rankingMovementArticles.ts
+            git commit -m "chore: publish bout-driven ranking movement content [skip ci]"
             git push
           else
             echo "No changes to commit."
