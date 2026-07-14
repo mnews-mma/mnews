@@ -655,7 +655,7 @@
         "rank": 14,
         "rating": 1500,
         "rawRating": 1501.5285867959901,
-        "delta": -1,
+        "delta": 0,
         "record": {
           "wins": 1,
           "losses": 3,
@@ -669,7 +669,7 @@
         "rank": 15,
         "rating": 1480,
         "rawRating": 1476.1473553829994,
-        "delta": -1,
+        "delta": 0,
         "record": {
           "wins": 2,
           "losses": 6,
@@ -683,7 +683,7 @@
         "rank": 16,
         "rating": 1470,
         "rawRating": 1467.8739654775702,
-        "delta": -2,
+        "delta": 0,
         "record": {
           "wins": 8,
           "losses": 9,
