@@ -2,10 +2,13 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import BoutCard from "@/components/BoutCard";
 import DreamPicker from "@/components/DreamPicker";
+import DreamPickerV2 from "@/components/DreamPickerV2";
+import DreamCardV2 from "@/components/matchup/DreamCardV2";
 import XShareLink from "@/components/XShareLink";
 import { getFighter } from "@/lib/fighters";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
+import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
 import { pageMetadata } from "@/lib/seo";
 
 const SITE_URL = "https://www.mnews.jp";
@@ -30,6 +33,7 @@ export default async function DreamPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const sp = await searchParams;
+  const isV2 = isNewMatchupUiEnabled(sp);
 
   // 選択候補は公開母集団(hidden除外・戦績データあり)のみ。/fighters・Xカードツールと
   // 同じgetVisibleFighters()経由なので、未登録選手は最初から候補に出ない。
@@ -51,6 +55,7 @@ export default async function DreamPage({
   const entryB = fighterB ? (records[fighterB.slug] ?? null) : null;
 
   const canGenerate = !!fighterA && !!fighterB && !!entryA && !!entryB && fighterA.slug !== fighterB.slug;
+  const canGenerateV2 = canGenerate && !entryA!.noRecordData && !entryB!.noRecordData;
 
   // 夢のカードはデータ比較(戦績・勝率・共通対戦相手)が主役で、階級跨ぎOKの
   // 設計上そもそも階級表記は不要(実在の対戦であるかのように誤読させないため
@@ -77,10 +82,52 @@ export default async function DreamPage({
         </div>
       </div>
 
-      <DreamPicker fighters={fighters} initialA={slugA} initialB={slugB} />
+      {isV2 ? (
+        <DreamPickerV2 fighters={fighters} initialA={slugA} initialB={slugB} preview={isV2} />
+      ) : (
+        <DreamPicker fighters={fighters} initialA={slugA} initialB={slugB} />
+      )}
 
-      <div style={{ padding: "0 24px 40px" }}>
-        {canGenerate && fighterA && fighterB ? (
+      <div id="dream-card-v2" style={{ padding: "0 24px 40px" }}>
+        {isV2 ? (
+          canGenerateV2 && fighterA && fighterB ? (
+            <>
+              <DreamCardV2
+                nameA={fighterA.nameJa}
+                nameB={fighterB.nameJa}
+                slugA={fighterA.slug}
+                slugB={fighterB.slug}
+                nicknameA={fighterA.nickname}
+                nicknameB={fighterB.nickname}
+                entryA={entryA!}
+                entryB={entryB!}
+                visibleSlugs={visibleSlugs}
+              />
+              <div style={{ marginTop: 16 }}>
+                <XShareLink
+                  text={shareText}
+                  url={shareUrl!}
+                  style={{
+                    display: "inline-block",
+                    padding: "10px 20px",
+                    background: "#000",
+                    color: "#fff",
+                    fontWeight: 700,
+                    borderRadius: 4,
+                    fontSize: 14,
+                    textDecoration: "none",
+                  }}
+                >
+                  𝕏 でシェア
+                </XShareLink>
+              </div>
+            </>
+          ) : (
+            <p style={{ color: "var(--muted)", fontSize: 13, padding: "24px 0" }}>
+              選手を2人選ぶとカードが表示されます。
+            </p>
+          )
+        ) : canGenerate && fighterA && fighterB ? (
           <>
             <BoutCard
               nameA={fighterA.nameJa}

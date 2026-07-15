@@ -9,12 +9,21 @@ import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import BoutCard, { FighterName } from "@/components/BoutCard";
+import EventBoutCardV2 from "@/components/matchup/EventBoutCardV2";
+import matchupStyles from "@/styles/matchup.module.css";
+import { isNewMatchupUiEnabledByEnv } from "@/lib/matchupUi";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
 }
+
+// SSG(generateStaticParams)を維持するため dynamic export は付けず、
+// searchParamsにも一切触れない。v2出し分けはビルド時環境変数
+// (NEXT_PUBLIC_NEW_MATCHUP_UI)のみで行う(?ui=newクエリはこのページでは非対応。
+// route segment configの値をビルド環境ごとに出し分けようとしたが、Next.jsが
+// リテラル以外を拒否するため断念し、env var一本化に切り替えた)。
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -60,6 +69,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params;
   const event = getEvent(slug);
   if (!event) notFound();
+  const isV2 = isNewMatchupUiEnabledByEnv();
   const visibleSlugs = await getVisibleFighterSlugs();
   const records = await fetchFighterRecords();
 
@@ -219,40 +229,120 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
             対戦カードは準備中です。
           </p>
         ) : event.status === "upcoming" || event.status === "live" ? (
-          /* upcoming / live: カード表示 */
-          <div className="bout-list">
-            {orderedBouts.map((b, i) => {
-              const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
-              const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
-              const entryA = slugA ? (records[slugA] ?? null) : null;
-              const entryB = slugB ? (records[slugB] ?? null) : null;
-              return (
-                <BoutCard
-                  key={i}
-                  nameA={b.fighterA}
-                  nameB={b.fighterB}
-                  slugA={slugA}
-                  slugB={slugB}
-                  entryA={entryA}
-                  entryB={entryB}
-                  visibleSlugs={visibleSlugs}
-                  weightClass={b.weightClass}
-                  rule={b.rule}
-                  isTitleMatch={b.isTitleMatch}
-                  cancelled={b.cancelled}
-                  note={b.note}
-                  resultLine={
-                    b.result && event.status === "live" ? (
-                      <>
-                        {b.result.winner ?? "引き分け"} ／ {b.result.method}
-                        {b.result.round && <span> ／ {b.result.round}</span>}
-                      </>
-                    ) : undefined
-                  }
-                />
-              );
-            })}
-          </div>
+          isV2 ? (
+            /* v2プレビュー: 上位3試合を新デザインで固定表示、残りは折りたたみで旧デザイン表示。
+               残り試合(旧BoutCard)はglobals.cssの--bg/--muted/--dim/--gold等をそのまま参照する
+               ため、.mv2のCSS変数スコープの外側に置く(内側に置くとmv2側の同名変数で上書きされ
+               旧デザインの配色が壊れるため)。 */
+            <>
+              <div className={matchupStyles.mv2}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
+                  {orderedBouts.slice(0, 3).map((b, i) => {
+                    const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
+                    const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
+                    const entryA = slugA ? (records[slugA] ?? null) : null;
+                    const entryB = slugB ? (records[slugB] ?? null) : null;
+                    return (
+                      <EventBoutCardV2
+                        key={i}
+                        nameA={b.fighterA}
+                        nameB={b.fighterB}
+                        slugA={slugA}
+                        slugB={slugB}
+                        entryA={entryA}
+                        entryB={entryB}
+                        visibleSlugs={visibleSlugs}
+                        weightClass={b.weightClass}
+                        isTitleMatch={b.isTitleMatch}
+                        cancelled={b.cancelled}
+                        note={b.note}
+                        result={b.result}
+                        isEventLive={event.status === "live"}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+              {orderedBouts.length > 3 && (
+                <details style={{ marginTop: 12 }}>
+                  <summary
+                    style={{
+                      padding: "13px 15px",
+                      textAlign: "center",
+                      border: "1px solid var(--border)",
+                      borderRadius: 14,
+                      background: "#fff",
+                      fontSize: 13,
+                      fontWeight: 800,
+                      cursor: "pointer",
+                    }}
+                  >
+                    対戦カード全体を見る →
+                  </summary>
+                  <div className="bout-list" style={{ marginTop: 13 }}>
+                    {orderedBouts.slice(3).map((b, i) => {
+                      const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
+                      const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
+                      const entryA = slugA ? (records[slugA] ?? null) : null;
+                      const entryB = slugB ? (records[slugB] ?? null) : null;
+                      return (
+                        <BoutCard
+                          key={i}
+                          nameA={b.fighterA}
+                          nameB={b.fighterB}
+                          slugA={slugA}
+                          slugB={slugB}
+                          entryA={entryA}
+                          entryB={entryB}
+                          visibleSlugs={visibleSlugs}
+                          weightClass={b.weightClass}
+                          rule={b.rule}
+                          isTitleMatch={b.isTitleMatch}
+                          cancelled={b.cancelled}
+                          note={b.note}
+                        />
+                      );
+                    })}
+                  </div>
+                </details>
+              )}
+            </>
+          ) : (
+            /* upcoming / live: カード表示(旧デザイン) */
+            <div className="bout-list">
+              {orderedBouts.map((b, i) => {
+                const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
+                const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
+                const entryA = slugA ? (records[slugA] ?? null) : null;
+                const entryB = slugB ? (records[slugB] ?? null) : null;
+                return (
+                  <BoutCard
+                    key={i}
+                    nameA={b.fighterA}
+                    nameB={b.fighterB}
+                    slugA={slugA}
+                    slugB={slugB}
+                    entryA={entryA}
+                    entryB={entryB}
+                    visibleSlugs={visibleSlugs}
+                    weightClass={b.weightClass}
+                    rule={b.rule}
+                    isTitleMatch={b.isTitleMatch}
+                    cancelled={b.cancelled}
+                    note={b.note}
+                    resultLine={
+                      b.result && event.status === "live" ? (
+                        <>
+                          {b.result.winner ?? "引き分け"} ／ {b.result.method}
+                          {b.result.round && <span> ／ {b.result.round}</span>}
+                        </>
+                      ) : undefined
+                    }
+                  />
+                );
+              })}
+            </div>
+          )
         ) : (
           /* completed: テーブル表示 */
           <div className="table-scroll">

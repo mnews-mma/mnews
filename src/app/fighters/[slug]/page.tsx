@@ -15,6 +15,8 @@ import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { fullWidthLength } from "@/lib/tweetDigest";
 import { MethodButterfly, NextFightCompare } from "@/components/FighterVisuals";
+import NextFightCardV2 from "@/components/matchup/NextFightCardV2";
+import { resolveMatchupUiV2ForDynamicPage } from "@/lib/matchupUi";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
@@ -278,10 +280,17 @@ function ChampionBadgeCard({ divisionName }: { divisionName: string }) {
   );
 }
 
-export default async function FighterPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function FighterPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { slug } = await params;
   const seed = getFighter(slug);
   if (!seed) notFound();
+  const isV2 = await resolveMatchupUiV2ForDynamicPage(searchParams);
 
   const fighter = await resolveFighterCached(seed);
   const { history, wins, losses, draws, nickname, birthPlace, age, noRecordData } = fighter;
@@ -442,36 +451,55 @@ export default async function FighterPage({ params }: { params: Promise<{ slug: 
             <RankBadgeCard info={rankingLink as RankingLinkInfo & { label: number }} />
           ))}
 
-        {/* 次戦プレビュー: バナー行 + (相手がDB内なら)戦績比較・共通対戦相手 */}
-        {nextFight && nextOpp && (
-          <div className="fighter-next-fight" style={{ display: "block" }}>
-            <div className="fighter-next-fight-row">
-              <span className="fighter-next-fight-label">次戦</span>
-              <a href={`/events/${nextFight.event.slug}`} className="fighter-next-fight-link">
-                {nextFight.event.date} ／ {nextFight.event.eventName}
-              </a>
-              {" ／ vs "}
-              {nextOpp.slug ? (
-                <a href={`/fighters/${nextOpp.slug}`} className="fighter-next-fight-link">
-                  {nextOpp.name}
+        {/* 次戦プレビュー: バナー行 + (相手がDB内なら)戦績比較・共通対戦相手。
+            v2プレビュー(?ui=new)では、相手の実データが揃っている場合のみ新デザイン
+            (NextFightCardV2)に差し替える。データが無い場合は旧来のバナーのみ表示に
+            フォールバックする(捏造ゼロ・タペを描けない状態で無理に新デザインを出さない)。 */}
+        {nextFight && nextOpp && isV2 && !noRecordData && nextOpp.slug && nextOpp.entry ? (
+          <NextFightCardV2
+            selfName={fighter.nameJa}
+            self={fighter}
+            eventSlug={nextFight.event.slug}
+            eventDate={nextFight.event.date}
+            eventName={nextFight.event.eventName}
+            weightClass={nextFight.bout.weightClass}
+            opponentName={nextOpp.name}
+            opponentSlug={nextOpp.slug}
+            opponent={nextOpp.entry}
+            visibleSlugs={visibleSlugs}
+          />
+        ) : (
+          nextFight &&
+          nextOpp && (
+            <div className="fighter-next-fight" style={{ display: "block" }}>
+              <div className="fighter-next-fight-row">
+                <span className="fighter-next-fight-label">次戦</span>
+                <a href={`/events/${nextFight.event.slug}`} className="fighter-next-fight-link">
+                  {nextFight.event.date} ／ {nextFight.event.eventName}
                 </a>
-              ) : (
-                nextOpp.name
+                {" ／ vs "}
+                {nextOpp.slug ? (
+                  <a href={`/fighters/${nextOpp.slug}`} className="fighter-next-fight-link">
+                    {nextOpp.name}
+                  </a>
+                ) : (
+                  nextOpp.name
+                )}
+                {" ／ "}
+                {nextFight.bout.weightClass}
+              </div>
+              {!noRecordData && nextOpp.slug && nextOpp.entry && (
+                <NextFightCompare
+                  selfName={fighter.nameJa}
+                  self={fighter}
+                  opponentName={nextOpp.name}
+                  opponentSlug={nextOpp.slug}
+                  opponent={nextOpp.entry}
+                  visibleSlugs={visibleSlugs}
+                />
               )}
-              {" ／ "}
-              {nextFight.bout.weightClass}
             </div>
-            {!noRecordData && nextOpp.slug && nextOpp.entry && (
-              <NextFightCompare
-                selfName={fighter.nameJa}
-                self={fighter}
-                opponentName={nextOpp.name}
-                opponentSlug={nextOpp.slug}
-                opponent={nextOpp.entry}
-                visibleSlugs={visibleSlugs}
-              />
-            )}
-          </div>
+          )
         )}
 
         {/* 参戦予定バナー（対戦カード未定。カード確定後は上の次戦表示に自動で切替） */}
