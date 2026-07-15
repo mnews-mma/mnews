@@ -2,7 +2,7 @@
 // パラメータ定義。2026-07-13、公開方針をD案(原則・方針は公開/具体的な係数・数値・
 // 実装手口は非公開)に変更した。/rankings/methodology には評価の原則のみを
 // 一般記述で載せ、この定数群の具体的な数値そのものは転記しない。
-import type { AsymmetricEloParams, DecayParams, InitialRatingBoostParams } from "./engine";
+import type { AsymmetricEloParams, DecayParams, InitialRatingBoostParams, ShrinkageParams } from "./engine";
 
 // 表示名(D-1、2026-07-13): 外向き表示は「AI RIZINランキング」に統一。
 // RATING_NAME/RATING_KEYという定数名自体は内部コード名のため変更しない
@@ -11,7 +11,7 @@ export const RATING_NAME = "AI RIZINランキング";
 export const RATING_KEY = "mnewsRating";
 
 // 算出方法を変更したらインクリメントする。
-export const ALGORITHM_VERSION = 6;
+export const ALGORITHM_VERSION = 7;
 
 export const INITIAL_RATING = 1500;
 export const K_BASE = 32; // 判定勝ち・ドロー
@@ -117,4 +117,72 @@ export const INITIAL_RATING_BOOST_PARAMS_V6: InitialRatingBoostParams = {
   maxBoost: 80,
   minPreDebutFights: 3,
   shrinkageK: 5,
+};
+
+// 2026-07-16【不採用・却下・設計ノート】: 小サンプル補正(表示レートのshrinkage)。
+// 数学的に「両者の生レートが母集団平均の同じ側にある場合、kをどう変えても
+// 順序を反転できない」ことが判明した(shrunk = target + (raw-target)*n/(n+k)
+// という凸結合の性質上、targetを挟まない2値は常に同じ大小関係を保つ)。
+// 当初の目標設定(篠塚を冨澤より下げる)自体が直接対決の事実(2025-12-31、
+// 篠塚が冨澤に勝利済み)に反していたため、この目標は撤回した。「篠塚>冨澤」は
+// H2Hとして正しく、反転させるべき対象ではない(下記SIGMA_DISCOUNT_COEFFICIENT_V7
+// 参照)。関数(engine.ts applyDisplayShrinkage)自体は不採用の記録として残置。
+export const DISPLAY_SHRINKAGE_PARAMS_V7: ShrinkageParams = { k: 4 };
+
+// 2026-07-16採用・確定(v7): 不確実性ディスカウント。
+// 順位付け指標を R - coefficient/√n に変更する(σ(n)=C/√nのCとkを一本化した
+// 単一係数)。対戦数nが少ない選手ほど一律に順位を割り引く演算子で、shrinkageと
+// 異なり「平均のどちら側にいるか」に依存せず対戦数の多寡そのもので順序を
+// 動かせる(この性質差がP1をshrinkageからσディスカウントへ置き換えた理由)。
+//
+// 【本丸】フライ級で2戦の篠塚辰樹が8戦4勝4敗の征矢貴より上位に浮く問題
+// (小サンプルの過信)を、対戦数の多い征矢を守り対戦数の少ない篠塚を下げる形で
+// 是正する。これがKainaが最初に指摘した不満の直接解決。
+//
+// 【D=70に決定した理由】(全階級比較ダンプ、6候補[30,50,70,100,130,160]で検証)
+// - 征矢>篠塚: D=50では順位差1で脆い。D=70では順位差4と余裕があり、征矢の
+//   優位が安定する。この逆転はσディスカウント単体で成立する(H2Hペアで
+//   ないため下記の単調性オーバーレイに依存しない=頑健)。
+// - 篠塚>冨澤(H2H): D=70では生のσ順位でもなお篠塚が僅かに上(約3pt差)を
+//   保っており、単調性オーバーレイ(下記MONOTONICITY_MAX_RANK_GAP)はその上に
+//   バックストップとして効く(オーバーレイに順序決定を依存しない=理想形)。
+// - D>=100は却下: 篠塚と冨澤の順位差がオーバーレイの許容差(N=2)を超えて
+//   広がり、Kainaが「直接対決の事実として正しい」と確定させた篠塚>冨澤の
+//   順序自体が壊れる。
+// - 他階級(バンタム/フェザー/ライト/ヘビー)はいずれの候補でも「対戦数が
+//   多い選手が薄いサンプルの選手に対して相対的に順位を上げる」という設計
+//   どおりの挙動のみで、不可解な崩れは検出されなかった。
+// - 階級ごとに値を振ることはしない(全階級共通の単一定数)。個別階級への
+//   最適化はオーバーフィットであり、一般ルールという設計原則に反するため。
+//
+// 【次フェーズ(今回は着手しない)】このσ=C/√nは簡易proxyであり、将来
+// 階級を跨いだ運用で破綻が見つかった場合はGlicko-2(μ・RD nativeでμ-2·RDを
+// 順位指標にする)への正式移行を検討する。ヒロヤ戦のようなupset(格下勝ち)
+// への敗北ペナルティ強化(ELO_PARAMS_V6候補、weakLossBoost 1.1→1.4)は
+// 別レバーとして保留のまま(今回のD=70確定とは独立)。
+export const SIGMA_DISCOUNT_COEFFICIENT_V7 = 70;
+
+// 2026-07-16採用・確定(v7): 直接対決の単調性オーバーレイをON(N=2)で運用する。
+// σディスカウントが対戦数の少ない選手を押し下げた結果、直接対決で勝っている
+// 相手より下位に落ちてしまうケースを、順位が近い場合(隣接N位以内)に限り
+// 復元する。D=70では篠塚>冨澤の関係を主に生のσ順位そのものが満たしており、
+// このオーバーレイは「万一の際の保険」として機能する(このオーバーレイの
+// 発火に順序決定を依存させない設計)。循環(A>B>C>A)が検出された組は
+// 補正をスキップする(monotonicity.ts参照)。
+export const MONOTONICITY_MAX_RANK_GAP = 2;
+
+// 2026-07-16(v7候補・未採用): 敗北ペナルティ強化。ELO_PARAMS_V5は勝ち側
+// (strongWinBoost=1.8)に比べ負け側(weakLossBoost=1.1)の傾斜が緩く、
+// 「格下相手に負けた」ケースの減点が相対的に甘い。weakLossBoostのみを
+// 引き上げ、strongLossDampen(格上に負けた際の緩和)は現状維持のまま
+// 据え置く(ELO_PARAMS_V5採用時の「勝ち側だけ強く傾け負け側はほぼ対称のまま」
+// という設計意図を踏襲し、負け側全体を対称に強めるのではなく「格下に負けた」
+// ケースだけを狙って強める)。1.1→1.4は比較ダンプでの調整前の初期候補値。
+export const ELO_PARAMS_V6: AsymmetricEloParams = {
+  strongWinBoost: 1.8,
+  weakWinDampen: 0.7,
+  strongLossDampen: 0.9,
+  weakLossBoost: 1.4,
+  thinResumeFightThreshold: 3,
+  thinResumeWinDampen: 0.5,
 };

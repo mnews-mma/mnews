@@ -56,7 +56,15 @@ import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
 import { getDivisionOverlay, getEligibilityScopeStartDate, getRecordDisplayExclusions } from "../src/lib/mnewsRating/fighterDivisions";
-import { ALGORITHM_VERSION, ELO_PARAMS_V5, DECAY_PARAMS_V6, INITIAL_RATING_BOOST_PARAMS_V6 } from "../src/lib/mnewsRating/constants";
+import {
+  ALGORITHM_VERSION,
+  ELO_PARAMS_V5,
+  DECAY_PARAMS_V6,
+  INITIAL_RATING_BOOST_PARAMS_V6,
+  SIGMA_DISCOUNT_COEFFICIENT_V7,
+  MONOTONICITY_MAX_RANK_GAP,
+} from "../src/lib/mnewsRating/constants";
+import { extractH2HWinsForDivision } from "../src/lib/mnewsRating/monotonicity";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -258,8 +266,17 @@ function main() {
         meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
         display: applyEligibilityScopeToRecord(slug, e, bouts),
       }));
+    // P1(σディスカウント D=70)+P2(単調性オーバーレイN=2、2026-07-16採用確定)。
+    // H2Hはこのdivisionの資格保有選手同士の決着済み対戦のみ(捏造ゼロ、boutsは
+    // 既に構築済みのElo計算用の全対戦から抽出。詳細はconstants.tsの
+    // SIGMA_DISCOUNT_COEFFICIENT_V7コメント参照)。
+    const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
+    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs);
     const key = divisionRankingsKey(division);
-    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion);
+    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion, undefined, SIGMA_DISCOUNT_COEFFICIENT_V7, {
+      h2hWins,
+      maxRankGap: MONOTONICITY_MAX_RANK_GAP,
+    });
   }
 
   let published: RankingsFile = out;
