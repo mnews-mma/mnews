@@ -2,8 +2,9 @@
 // 呼び出し側(scripts/update-mnews-rating.ts)がdata/fighterRecords.jsonと
 // 前回のrankings.jsonを読み込み、ここへ渡す。
 import { ALGORITHM_VERSION, CHAMPION_DISPLAY_MODE } from "./constants";
-import { applyDisplayShrinkage, DisplayEntry, ShrinkageParams } from "./engine";
+import { computeSigmaDiscountedRating, DisplayEntry } from "./engine";
 import { DIVISION_SLUG, MnewsDivision } from "./divisions";
+import { applyHeadToHeadMonotonicity, H2HWin } from "./monotonicity";
 
 export interface RankingEntryRecord {
   wins: number;
@@ -82,11 +83,16 @@ export function buildDivisionRankings(
   prev: DivisionRankings | undefined,
   champion: ChampionOverlay | null,
   mode: "overlay" | "badge" = CHAMPION_DISPLAY_MODE,
-  // 小サンプル補正(P1・2026-07-16追加、未採用/比較検証用)。指定時のみ
-  // pool内(このランキングで実際に比較される母集団)の平均へ対戦数に応じて
-  // 引き寄せた値を順位・表示レートの両方に使う。未指定(デフォルト)は
-  // 従来どおり生の表示レートをそのまま使う(挙動を完全維持)。
-  shrinkageParams?: ShrinkageParams
+  // 不確実性ディスカウント(P1・2026-07-16追加、未採用/比較検証用)。指定時のみ
+  // 順位付け指標を R - coefficient/√n に変更する(engine.tsのcomputeSigmaDiscountedRating
+  // 参照)。未指定(デフォルト)は従来どおり生の表示レートをそのまま使う
+  // (挙動を完全維持)。
+  sigmaDiscountCoefficient?: number,
+  // 直接対決の単調性オーバーレイ(P2・2026-07-16追加、未採用/比較検証用)。
+  // 指定時のみ、上記の順位付け後に「AがBに直接勝っているのに順位がAの方が
+  // 下(順位差maxRankGap以内)」を補正する(monotonicity.ts参照)。h2hWinsは
+  // このdivision内の決着済み対戦のみを渡すこと(呼び出し側の責務)。
+  monotonicity?: { h2hWins: H2HWin[]; maxRankGap: number }
 ): DivisionRankings {
   const isBadgeMode = mode === "badge";
   const suppressDelta = shouldSuppressDelta(prev);
@@ -95,17 +101,24 @@ export function buildDivisionRankings(
   const prevRawRatingByFighter = new Map((prev?.entries ?? []).map((e) => [e.fighterId, e.rawRating ?? e.rating]));
 
   const pool = isBadgeMode ? eligibleEntries : eligibleEntries.filter((e) => e.meta.slug !== champion?.fighterId);
-  const shrunkBySlug = shrinkageParams
-    ? applyDisplayShrinkage(
-        pool.map((e) => ({ slug: e.meta.slug, displayRating: e.display.displayRating, fights: e.display.fights })),
-        shrinkageParams
-      )
-    : null;
   const effectiveRating = (e: { meta: FighterMeta; display: DisplayEntry }): number =>
-    shrunkBySlug?.get(e.meta.slug) ?? e.display.displayRating;
-  // 順位は常に生の表示レート(丸め前、shrinkage指定時はshrinkage後)の降順で決める。
-  // 丸めて同点表示になっても順位は一意(生レートの差で決まる)。
-  const sorted = [...pool].sort((a, b) => effectiveRating(b) - effectiveRating(a));
+    sigmaDiscountCoefficient !== undefined
+      ? computeSigmaDiscountedRating(e.display.displayRating, e.display.fights, sigmaDiscountCoefficient)
+      : e.display.displayRating;
+  // 順位は常に生の表示レート(丸め前、sigmaDiscountCoefficient指定時は
+  // ディスカウント後)の降順で決める。丸めて同点表示になっても順位は一意
+  // (生レートの差で決まる)。
+  let sorted = [...pool].sort((a, b) => effectiveRating(b) - effectiveRating(a));
+
+  if (monotonicity) {
+    const bySlug = new Map(sorted.map((e) => [e.meta.slug, e]));
+    const reorderedSlugs = applyHeadToHeadMonotonicity(
+      sorted.map((e) => e.meta.slug),
+      monotonicity.h2hWins,
+      { maxRankGap: monotonicity.maxRankGap }
+    );
+    sorted = reorderedSlugs.map((slug) => bySlug.get(slug)!);
+  }
 
   const entries: RankingEntry[] = sorted.map((e, i) => {
     const rawRating = effectiveRating(e);

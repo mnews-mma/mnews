@@ -651,13 +651,14 @@ export interface ShrinkageParams {
   k: number; // 3〜5想定。小さいほど平均へ強く引き寄せる
 }
 
-// 小サンプル補正(shrinkage): 対戦数nが少ない選手の表示レートを、
-// 比較対象母集団の平均μへ n/(n+k) の比率で引き寄せる(nが大きいほど原値のまま)。
-// 個別選手のハードコードではなく、対戦数という客観指標のみで機械的に決まる
-// 一般ルール。既存のRIZIN参戦前実績シード(INITIAL_RATING_BOOST_PARAMS_V6の
-// shrinkageK)と同じ数式形をレート表示側にも適用する。
-// poolは「実際に比較される母集団」(例: 1階級分のランキング表示対象)を渡す
-// 想定で、μはそのpool内で算出する(階級横断の全選手平均は使わない)。
+// 【2026-07-16・不採用/未配線】小サンプル補正(平均回帰shrinkage)。
+// 対戦数nが少ない選手の表示レートを、比較対象母集団の平均μへ n/(n+k) の比率で
+// 引き寄せる。数学的性質として、2選手の生レートが母集団平均の同じ側にある場合
+// (今回の篠塚/冨澤のように両者とも平均未満、または両者とも平均超)、kの値に
+// 関わらず順序を反転できない(平均という単一の目標点へ両者を引き寄せる操作の
+// 必然的帰結)。この理由により不採用とし、下記のσディスカウント方式
+// (computeSigmaDiscountedRating)に置き換えた。関数自体は参照用に残す
+// (ELO_PARAMS_MILD/MODERATE/STRONG等、過去バージョンを残す既存の慣習に倣う)。
 export function applyDisplayShrinkage(
   pool: Array<{ slug: string; displayRating: number; fights: number }>,
   params: ShrinkageParams
@@ -670,4 +671,17 @@ export function applyDisplayShrinkage(
     out.set(e.slug, mu + (e.displayRating - mu) * ratio);
   }
   return out;
+}
+
+// 2026-07-16採用: 不確実性ディスカウント(σディスカウント)。
+// 順位付けに使う指標を R - coefficient/√n に変更する(σ(n)=C/√nのシンプルな
+// proxy、C・kはcoefficient一本にまとめて表現。フルGlickoのRD(rating deviation)
+// を使わない簡易近似で、後段でGlicko-2への移行を検討する余地を残す)。
+// shrinkageと違い「平均のどちら側にいるか」に依存せず、対戦数が少ないほど
+// 一律に順位を押し下げる(母集団平均への回帰ではなく、対戦数そのものに基づく
+// 信頼度の割引)。これにより「対戦数が少ないのに高いレートで上位に浮く」問題を
+// 直接是正できる(2戦の選手が8戦の選手より上、という逆転を作れる)。
+export function computeSigmaDiscountedRating(rawRating: number, fights: number, coefficient: number): number {
+  if (fights <= 0) return rawRating;
+  return rawRating - coefficient / Math.sqrt(fights);
 }
