@@ -2585,10 +2585,10 @@
     "age": 38
   },
   "ya-man": {
-    "wins": 3,
+    "wins": 4,
     "losses": 2,
     "draws": 0,
-    "ko": 3,
+    "ko": 4,
     "sub": 0,
     "decision": 0,
     "history": [
@@ -10313,7 +10313,7 @@
     "live": true,
     "nickname": "スモーカーの若獅子",
     "birthPlace": "滋賀県",
-    "age": 23
+    "age": 24
   },
   "naoki": {
     "wins": 3,
