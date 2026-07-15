@@ -11,7 +11,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import BoutCard, { FighterName } from "@/components/BoutCard";
 import EventBoutCardV2 from "@/components/matchup/EventBoutCardV2";
 import matchupStyles from "@/styles/matchup.module.css";
-import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
+import { isNewMatchupUiEnabledByEnv } from "@/lib/matchupUi";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
 
@@ -19,11 +19,11 @@ export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
 }
 
-// v2プレビュー(?ui=new)はsearchParams読み出しが必要なため、このページに限り
-// 動的レンダリングに切り替える(§0: 既存公開ルートの見た目は変えないが、
-// レンダリング方式そのものはプレビュー用ブランチの一時的な変更として許容する。
-// 本番反映時にSSG/ISRへ戻すか再検討する)。
-export const dynamic = "force-dynamic";
+// SSG(generateStaticParams)を維持するため dynamic export は付けず、
+// searchParamsにも一切触れない。v2出し分けはビルド時環境変数
+// (NEXT_PUBLIC_NEW_MATCHUP_UI)のみで行う(?ui=newクエリはこのページでは非対応。
+// route segment configの値をビルド環境ごとに出し分けようとしたが、Next.jsが
+// リテラル以外を拒否するため断念し、env var一本化に切り替えた)。
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -65,17 +65,11 @@ function formatDateJa(dateStr: string): string {
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;
 }
 
-export default async function EventPage({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
+export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const event = getEvent(slug);
   if (!event) notFound();
-  const isV2 = isNewMatchupUiEnabled(await searchParams);
+  const isV2 = isNewMatchupUiEnabledByEnv();
   const visibleSlugs = await getVisibleFighterSlugs();
   const records = await fetchFighterRecords();
 

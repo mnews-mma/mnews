@@ -16,7 +16,7 @@ import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { fullWidthLength } from "@/lib/tweetDigest";
 import { MethodButterfly, NextFightCompare } from "@/components/FighterVisuals";
 import NextFightCardV2 from "@/components/matchup/NextFightCardV2";
-import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
+import { resolveMatchupUiV2ForDynamicPage } from "@/lib/matchupUi";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
@@ -290,7 +290,7 @@ export default async function FighterPage({
   const { slug } = await params;
   const seed = getFighter(slug);
   if (!seed) notFound();
-  const isV2 = isNewMatchupUiEnabled(await searchParams);
+  const isV2 = await resolveMatchupUiV2ForDynamicPage(searchParams);
 
   const fighter = await resolveFighterCached(seed);
   const { history, wins, losses, draws, nickname, birthPlace, age, noRecordData } = fighter;
