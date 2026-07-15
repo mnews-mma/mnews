@@ -3,7 +3,7 @@
     "org": "pancrase",
     "source": "パンクラス公式ランキング",
     "sourceUrl": "https://www.pancrase.co.jp/rls/ranking.html",
-    "fetchedDate": "2026-07-15",
+    "fetchedDate": "2026-07-16",
     "rankingLabel": "7月2日発表",
     "classes": [
       {
@@ -442,7 +442,7 @@
     "org": "shooto",
     "source": "修斗公式ランキング",
     "sourceUrl": "https://www.shooto-mma.com/ranking/",
-    "fetchedDate": "2026-07-15",
+    "fetchedDate": "2026-07-16",
     "rankingLabel": "7月1日付け",
     "classes": [
       {
