@@ -256,6 +256,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                         isTitleMatch={b.isTitleMatch}
                         cancelled={b.cancelled}
                         note={b.note}
+                        result={b.result}
+                        isEventLive={event.status === "live"}
                       />
                     );
                   })}

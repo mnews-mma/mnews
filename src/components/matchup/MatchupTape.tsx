@@ -31,17 +31,32 @@ function MethodCountsLine({ counts }: { counts: { ko: number; sub: number; decis
   );
 }
 
+const RESULT_MARK_SYMBOL: Record<NonNullable<TapeFighterData["resultMark"]>, string> = {
+  win: "◯",
+  loss: "✕",
+  draw: "△",
+};
+const RESULT_MARK_CLASS: Record<NonNullable<TapeFighterData["resultMark"]>, string> = {
+  win: styles.resW,
+  loss: styles.resL,
+  draw: styles.resN,
+};
+
 function TapeCorner({ side, data }: { side: "red" | "blue"; data: TapeFighterData }) {
   const cornerClass = `${styles.corner} ${side === "red" ? styles.cornerRed : styles.cornerBlue}`;
   const nameNode = <h3 className={styles.fighterName}>{data.name}</h3>;
+  const nameRow = (
+    <div className={styles.tapeNameRow}>
+      {data.resultMark && (
+        <span className={`${styles.res} ${RESULT_MARK_CLASS[data.resultMark]}`}>{RESULT_MARK_SYMBOL[data.resultMark]}</span>
+      )}
+      {data.slug ? <a href={`/fighters/${data.slug}`}>{nameNode}</a> : nameNode}
+    </div>
+  );
   return (
     <div className={cornerClass}>
       {data.nickname && <span className={styles.nick}>{data.nickname}</span>}
-      {data.slug ? (
-        <a href={`/fighters/${data.slug}`}>{nameNode}</a>
-      ) : (
-        nameNode
-      )}
+      {nameRow}
       <div className={styles.record}>
         <span className={`${styles.recordWl} ${styles.num}`}>{data.record}</span>
       </div>

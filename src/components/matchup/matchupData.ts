@@ -12,6 +12,9 @@ export interface TapeFighterData {
   finishRate: number | null;
   last5?: Result[];
   methodCounts?: { ko: number; sub: number; decision: number };
+  // このカードが表す試合そのものの決着マーク(◯✕△、events向け・確定結果がある場合のみ)。
+  // last5(直近5戦の勝敗)とは別概念。
+  resultMark?: "win" | "loss" | "draw";
 }
 
 // entry(FighterRecordEntry)から表示用データを組み立てる。既存の算出ロジック
@@ -20,7 +23,12 @@ export function buildTapeData(
   name: string,
   slug: string | null | undefined,
   entry: FighterRecordEntry,
-  opts?: { nickname?: string; withLast5?: boolean; withMethodCounts?: boolean }
+  opts?: {
+    nickname?: string;
+    withLast5?: boolean;
+    withMethodCounts?: boolean;
+    resultMark?: TapeFighterData["resultMark"];
+  }
 ): TapeFighterData {
   const stats = computeFighterStripStats(entry);
   return {
@@ -32,5 +40,6 @@ export function buildTapeData(
     finishRate: stats.finishRate,
     last5: opts?.withLast5 ? stats.last5 : undefined,
     methodCounts: opts?.withMethodCounts ? { ko: entry.ko, sub: entry.sub, decision: entry.decision } : undefined,
+    resultMark: opts?.resultMark,
   };
 }
