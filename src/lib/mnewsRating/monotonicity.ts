@@ -1,19 +1,43 @@
-// P2(2026-07-16・未採用・デフォルトOFF): 直接対決の単調性オーバーレイ。
+// P2(2026-07-16採用・N=2でON運用): 直接対決の単調性オーバーレイ。
 // 「RIZIN内でAがBに勝っているのに、順位ではAがBより下」という見た目の矛盾を、
 // 順位差がmaxRankGap以内の隣接ケースに限り後段で補正する。Elo自体・レート値には
 // 一切触れず、最終的な順位配列(rankedSlugs)の並び替えのみを行う。
 // 循環(A>B>C>A)が検出された組は補正をスキップする(全順序が定義できないため)。
 //
-// 【重要・P1(小サンプル補正)との関係】 shrinkageは対戦数が少ない選手を
-// 母集団平均へ引き寄せるため、「AがBに直接勝っているのに対戦数差でAがBより
-// 下位になる」ケースを新たに作りうる。両方を同時にONにする場合、この
-// オーバーレイが常にshrinkage後の順位を上書きする形になり、shrinkageの意図
-// (対戦数が少ない選手を評価しすぎない)と直接対決の単調性が競合する。
-// 現時点はどちらも未採用のため、採用判断時に方向性を揃える必要がある。
+// P1(σディスカウント、constants.tsのSIGMA_DISCOUNT_COEFFICIENT_V7)との関係:
+// σディスカウントは対戦数が少ない選手を一律に押し下げるため、「AがBに直接
+// 勝っているのに対戦数差でAがBより下位になる」ケースを新たに作りうる。この
+// オーバーレイはその後段バックストップとして機能する。D=70採用時点では
+// 篠塚>冨澤(H2H)はσディスカウント単体でも成立しており、このオーバーレイは
+// 「保険」として効いている(順序決定をこのオーバーレイの発火に依存させない
+// 設計。詳細はconstants.tsのSIGMA_DISCOUNT_COEFFICIENT_V7のコメント参照)。
 
 export interface H2HWin {
   winnerSlug: string;
   loserSlug: string;
+}
+
+// engine.tsの薄いBout型(circular import回避のため必要フィールドのみで受ける)。
+interface BoutLike {
+  aNode: string;
+  bNode: string;
+  scoreA: number;
+}
+
+// 指定階級の資格保有選手同士(divisionSlugsに両者が含まれる対戦)の決着済み
+// 対戦(引き分け/NC除く)をH2HWin[]化する。boutsはElo計算用の全対戦(階級横断)
+// のため、両ノードが対象divisionのslug集合に含まれるものだけを抽出する。
+// scripts/update-mnews-rating.ts(実運用)とdump-ranking-p1-comparison.ts
+// (比較ダンプ)の両方から共有で使う(ロジックの重複・ドリフトを避けるため)。
+export function extractH2HWinsForDivision(bouts: BoutLike[], divisionSlugs: Set<string>): H2HWin[] {
+  const wins: H2HWin[] = [];
+  for (const b of bouts) {
+    if (!divisionSlugs.has(b.aNode) || !divisionSlugs.has(b.bNode)) continue;
+    if (b.scoreA === 1) wins.push({ winnerSlug: b.aNode, loserSlug: b.bNode });
+    else if (b.scoreA === 0) wins.push({ winnerSlug: b.bNode, loserSlug: b.aNode });
+    // scoreA===0.5(引き分け)は方向性シグナルが無いためスキップ
+  }
+  return wins;
 }
 
 export interface MonotonicityParams {
