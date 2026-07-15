@@ -230,83 +230,37 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </p>
         ) : event.status === "upcoming" || event.status === "live" ? (
           isV2 ? (
-            /* v2プレビュー: 上位3試合を新デザインで固定表示、残りは折りたたみで旧デザイン表示。
-               残り試合(旧BoutCard)はglobals.cssの--bg/--muted/--dim/--gold等をそのまま参照する
-               ため、.mv2のCSS変数スコープの外側に置く(内側に置くとmv2側の同名変数で上書きされ
-               旧デザインの配色が壊れるため)。 */
-            <>
-              <div className={matchupStyles.mv2}>
-                <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
-                  {orderedBouts.slice(0, 3).map((b, i) => {
-                    const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
-                    const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
-                    const entryA = slugA ? (records[slugA] ?? null) : null;
-                    const entryB = slugB ? (records[slugB] ?? null) : null;
-                    return (
-                      <EventBoutCardV2
-                        key={i}
-                        nameA={b.fighterA}
-                        nameB={b.fighterB}
-                        slugA={slugA}
-                        slugB={slugB}
-                        entryA={entryA}
-                        entryB={entryB}
-                        visibleSlugs={visibleSlugs}
-                        weightClass={b.weightClass}
-                        isTitleMatch={b.isTitleMatch}
-                        cancelled={b.cancelled}
-                        note={b.note}
-                        result={b.result}
-                        isEventLive={event.status === "live"}
-                      />
-                    );
-                  })}
-                </div>
+            /* v2: 大会の全対戦カードを新デザインで表示する(旧BoutCardとの新旧混在・
+               クリック展開は廃止。上位3試合固定+折りたたみ運用はやめ、最初から
+               全カードを新デザインで出す)。 */
+            <div className={matchupStyles.mv2}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
+                {orderedBouts.map((b, i) => {
+                  const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
+                  const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
+                  const entryA = slugA ? (records[slugA] ?? null) : null;
+                  const entryB = slugB ? (records[slugB] ?? null) : null;
+                  return (
+                    <EventBoutCardV2
+                      key={i}
+                      nameA={b.fighterA}
+                      nameB={b.fighterB}
+                      slugA={slugA}
+                      slugB={slugB}
+                      entryA={entryA}
+                      entryB={entryB}
+                      visibleSlugs={visibleSlugs}
+                      weightClass={b.weightClass}
+                      isTitleMatch={b.isTitleMatch}
+                      cancelled={b.cancelled}
+                      note={b.note}
+                      result={b.result}
+                      isEventLive={event.status === "live"}
+                    />
+                  );
+                })}
               </div>
-              {orderedBouts.length > 3 && (
-                <details style={{ marginTop: 12 }}>
-                  <summary
-                    style={{
-                      padding: "13px 15px",
-                      textAlign: "center",
-                      border: "1px solid var(--border)",
-                      borderRadius: 14,
-                      background: "#fff",
-                      fontSize: 13,
-                      fontWeight: 800,
-                      cursor: "pointer",
-                    }}
-                  >
-                    対戦カード全体を見る →
-                  </summary>
-                  <div className="bout-list" style={{ marginTop: 13 }}>
-                    {orderedBouts.slice(3).map((b, i) => {
-                      const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
-                      const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
-                      const entryA = slugA ? (records[slugA] ?? null) : null;
-                      const entryB = slugB ? (records[slugB] ?? null) : null;
-                      return (
-                        <BoutCard
-                          key={i}
-                          nameA={b.fighterA}
-                          nameB={b.fighterB}
-                          slugA={slugA}
-                          slugB={slugB}
-                          entryA={entryA}
-                          entryB={entryB}
-                          visibleSlugs={visibleSlugs}
-                          weightClass={b.weightClass}
-                          rule={b.rule}
-                          isTitleMatch={b.isTitleMatch}
-                          cancelled={b.cancelled}
-                          note={b.note}
-                        />
-                      );
-                    })}
-                  </div>
-                </details>
-              )}
-            </>
+            </div>
           ) : (
             /* upcoming / live: カード表示(旧デザイン) */
             <div className="bout-list">

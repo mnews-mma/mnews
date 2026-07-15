@@ -38,7 +38,7 @@ export default function DreamCardV2({
         />
         <div className={styles.commonsHead}>
           <h4>共通の対戦相手</h4>
-          <CommonOpponentsInline commons={commons} visibleSlugs={visibleSlugs} />
+          <CommonOpponentsInline leftName={nameA} rightName={nameB} commons={commons} visibleSlugs={visibleSlugs} />
         </div>
       </article>
     </div>

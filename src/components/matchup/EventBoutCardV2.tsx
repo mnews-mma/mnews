@@ -134,11 +134,11 @@ export default function EventBoutCardV2({
         />
       ) : (
         <div className={styles.tape}>
-          <div className={`${styles.corner} ${styles.cornerRed}`}>
+          <div className={`${styles.na} ${styles.cornerRed}`}>
             <h3 className={styles.fighterName}>{nameA}</h3>
           </div>
           <div className={styles.vs}>VS</div>
-          <div className={`${styles.corner} ${styles.cornerBlue}`}>
+          <div className={`${styles.nb} ${styles.cornerBlue}`}>
             <h3 className={styles.fighterName}>{nameB}</h3>
           </div>
         </div>
@@ -146,7 +146,9 @@ export default function EventBoutCardV2({
       {result && !cancelled && <ResultBanner result={result} />}
       {!cancelled && <HeadToHeadBanner nameA={nameA} nameB={nameB} matches={headToHead} />}
       {note && !isTitleMatch && !cancelled && <div className={styles.emptyCommons}>{note}</div>}
-      {bothRegistered && <CommonOpponentsToggle commons={commons} visibleSlugs={visibleSlugs} />}
+      {bothRegistered && (
+        <CommonOpponentsToggle leftName={nameA} rightName={nameB} commons={commons} visibleSlugs={visibleSlugs} />
+      )}
     </article>
   );
 }
