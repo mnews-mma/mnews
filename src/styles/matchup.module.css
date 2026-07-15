@@ -120,19 +120,24 @@
   }
 }
 
-/* タレント・オブ・ザ・テープ: grid-template-areasで行(名前/記録/戦績/戦績ドット)
-   ごとに左右を同じ行に固定する。左右をそれぞれflex columnで縦積みすると、
-   名前の行数差で下の行がズレる(構造的にズレる設計のため目視調整では直らない)。
-   grid化により「その行で左右どちらか高い方」に行の高さが揃うため、次の行は
-   必ず両側とも同じ基準線から始まる。 */
+/* タレント・オブ・ザ・テープ: grid-template-areasで行(通称/名前/記録/戦績/
+   戦績ドット)ごとに左右を同じ行に固定する。左右をそれぞれflex columnで
+   縦積みすると、通称・名前の行数差で下の行がズレる(構造的にズレる設計の
+   ため目視調整では直らない)。通称と名前を別々の行に分離しているのが重要:
+   両方を1つのブロックに内包すると「通称1行+名前1行」と「通称1行+名前2行」
+   のような組み合わせでブロック合計の高さが左右で変わり、次の行(記録)が
+   段違いになる(通称行は通称同士・名前行は名前同士で高さを共有させる必要が
+   ある)。grid化により各行は「その行で左右どちらか高い方」に揃うため、
+   次の行は必ず両側とも同じ基準線から始まる。 */
 .tape {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   grid-template-areas:
-    "na vs nb"
-    "ra vs rb"
-    "sa vs sb"
-    "fa vs fb";
+    "nka vs nkb"
+    "na  vs nb"
+    "ra  vs rb"
+    "sa  vs sb"
+    "fa  vs fb";
   column-gap: 12px;
   row-gap: 5px;
   padding: 16px 14px;
@@ -143,6 +148,10 @@
   padding: 14px 14px;
 }
 
+.nka {
+  grid-area: nka;
+  min-width: 0;
+}
 .na {
   grid-area: na;
   min-width: 0;
@@ -158,6 +167,12 @@
 .fa {
   grid-area: fa;
   min-width: 0;
+}
+.nkb {
+  grid-area: nkb;
+  min-width: 0;
+  justify-self: end;
+  text-align: right;
 }
 .nb {
   grid-area: nb;
@@ -189,7 +204,6 @@
   font-weight: 700;
   color: var(--muted);
   overflow-wrap: anywhere;
-  margin-bottom: 3px;
 }
 
 .tapeNameRow {
@@ -203,13 +217,21 @@
   flex-direction: row-reverse;
 }
 
+/* カタカナ・中黒名の折り返し制御。overflow-wrap:anywhereは任意の文字間で
+   折れてしまい、小書き仮名(ョ等)や長音記号が行頭に来る不自然な折り返しを
+   起こす。word-break:normal + line-break:strictで、中黒(・)やスペース等の
+   自然な区切りでのみ折り返す(禁則処理も効く)。長すぎて中黒が無い/収まらない
+   極端なケースへの保険としてclamp()でフォントサイズを可変にする
+   (320px幅でも破綻しない下限16pxを設定)。 */
 .fighterName {
   font-weight: 900;
-  font-size: 20px;
+  font-size: clamp(16px, 5vw, 20px);
   line-height: 1.12;
   letter-spacing: 0.01em;
   color: var(--ink);
-  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
   min-width: 0;
 }
 
