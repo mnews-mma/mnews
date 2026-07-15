@@ -20,12 +20,6 @@ const MARK_CLASS: Record<Result, string> = {
   nc: "mk-draw",
 };
 
-function oppositeResult(r: Result): Result {
-  if (r === "win") return "loss";
-  if (r === "loss") return "win";
-  return r; // draw/ncはそのまま
-}
-
 // 勝敗マス。resultがnull(同一相手との対戦回数が左右で異なり、片方に対戦が
 // 無い回)の場合は「-」の空欄表示にする。
 function MarkCell({ result }: { result: Result | null }) {
@@ -71,6 +65,10 @@ function CommonOpponentRows({
 // 直接対決(2選手が過去に対戦している場合の履歴)。共通対戦相手(第三者との対戦の
 // 一致)とは概念が別物のため、独立した別枠として共通対戦相手テーブルの上に出す。
 // 0件ならこの枠自体を出さない。複数回対戦がある場合は新しい順に全て列挙する。
+// 1対戦=1行(折り返し許容)に圧縮: 日付・大会名・勝者名・決着方法を1つの
+// 文として並べる(以前は日付+大会名/両者名+マーク/決着方法の3段だった)。
+// 決着方法(m.method)はhistoryの生テキストをそのまま使い、要約・言い換えは
+// しない(捏造ゼロ)。
 function HeadToHeadBlock({
   nameA,
   nameB,
@@ -84,21 +82,28 @@ function HeadToHeadBlock({
   return (
     <div className="nf-h2h">
       <div className="nf-h2h-head">過去対戦 {matches.length}回</div>
-      {matches.map((m, i) => (
-        <div key={i} className="nf-h2h-row">
-          <div className="nf-h2h-meta">
-            <span className="nf-h2h-date">{m.date}</span>
-            <span className="nf-h2h-event">{m.event}</span>
+      {matches.map((m, i) => {
+        const winner = m.resultA === "win" ? nameA : m.resultA === "loss" ? nameB : null;
+        return (
+          <div key={i} className="nf-h2h-row">
+            <span className="nf-h2h-date">{m.date}</span> <span className="nf-h2h-event">{m.event}</span>{" "}
+            {winner ? (
+              <>
+                <span className={`nf-h2h-name ${MARK_CLASS.win}`}>
+                  <MarkCell result="win" />
+                  {winner}
+                </span>
+                が{m.method}
+              </>
+            ) : (
+              <span className={`nf-h2h-name ${MARK_CLASS.draw}`}>
+                <MarkCell result="draw" />
+                引き分け（{m.method}）
+              </span>
+            )}
           </div>
-          <div className="nf-h2h-result">
-            <span className={`nf-h2h-name ${MARK_CLASS[m.resultA]}`}>{nameA}</span>
-            <MarkCell result={m.resultA} />
-            <MarkCell result={oppositeResult(m.resultA)} />
-            <span className={`nf-h2h-name ${MARK_CLASS[oppositeResult(m.resultA)]}`}>{nameB}</span>
-          </div>
-          <div className="nf-h2h-method">{m.method}</div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

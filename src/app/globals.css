@@ -1606,57 +1606,40 @@ footer {
   color: var(--muted);
   margin-bottom: 6px;
 }
+/* 1対戦=1行(折り返し許容で最大2行程度)に圧縮。以前は日付+大会名/両者名+
+   マーク/決着方法の3段だったが、日付・大会名・勝者名・決着方法を1つの文
+   として並べる。折り返しは単語(トークン)単位のみ許可し、大会名や決着方法
+   の途中で割れないようにする。 */
 .nf-h2h-row {
   padding: 6px 0;
   border-top: 1px solid rgba(232, 0, 45, 0.12);
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
 }
 .nf-h2h-row:first-of-type {
   border-top: none;
 }
-.nf-h2h-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 11px;
-}
 .nf-h2h-date {
   font-family: var(--mono);
-  flex-shrink: 0;
+  color: var(--text);
 }
 .nf-h2h-event {
-  text-align: right;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 0;
-}
-.nf-h2h-result {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 22px 22px minmax(0, 1fr);
-  align-items: center;
-  gap: 4px;
-  margin-top: 4px;
-  font-weight: 700;
+  color: var(--text);
 }
 .nf-h2h-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 700;
   white-space: nowrap;
-  min-width: 0;
+}
+.nf-h2h-name .nf-mk {
+  font-size: 12px;
 }
 .nf-h2h-name.mk-win { color: #16a34a; }
 .nf-h2h-name.mk-loss { color: #dc2626; }
 .nf-h2h-name.mk-draw { color: #9ca3af; }
-.nf-h2h-result .nf-h2h-name:last-child {
-  text-align: right;
-}
-.nf-h2h-method {
-  margin-top: 2px;
-  color: var(--muted);
-  font-size: 11px;
-}
 
 /* 大会ページ・対戦カード内の共通対戦相手(折りたたみ・ネイティブdetails) */
 .bout-commons {
@@ -2018,18 +2001,34 @@ footer {
   font-size: 9px;
   color: var(--muted);
 }
+/* 直近5戦ドット: 色だけでなくW/L/D/Nの文字でも勝敗を示す丸バッジにする
+   (シェア画像や初見の人には○●だけでは伝わらないため)。直径は従来の文字
+   表示より一回り大きく(目安+3px)し、文字が小さくても判読できるようにする。 */
 .fighter-strip-last5 {
-  letter-spacing: 0.5px;
+  display: inline-flex;
+  gap: 3px;
+}
+.fighter-strip-last5 span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
 }
 .fighter-strip-last5-win {
-  color: #16a34a;
+  background: #16a34a;
 }
 .fighter-strip-last5-loss {
-  color: #dc2626;
+  background: #dc2626;
 }
 .fighter-strip-last5-draw,
 .fighter-strip-last5-nc {
-  color: #6b7280;
+  background: #6b7280;
 }
 
 /* 「数字で見る」オリジナル記事(/articles/[slug])のバッジ。

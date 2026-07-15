@@ -13,11 +13,14 @@ export interface FighterStripStats {
   last5: FighterRecordEntry["history"][number]["result"][];
 }
 
+// シェア画像等で初見の人にも勝敗が伝わるよう、色だけでなく文字(W/L/D/N)でも
+// 二重に符号化する(色覚多様性・モノクロスクショ対策)。表示側は丸バッジ化する
+// (globals.cssの.fighter-strip-last5-*)。
 export const LAST5_SYMBOL: Record<FighterRecordEntry["history"][number]["result"], string> = {
-  win: "○",
-  loss: "●",
-  draw: "△",
-  nc: "△",
+  win: "W",
+  loss: "L",
+  draw: "D",
+  nc: "N",
 };
 
 export function computeFighterStripStats(entry: FighterRecordEntry): FighterStripStats {
