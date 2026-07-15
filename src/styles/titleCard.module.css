@@ -1,0 +1,232 @@
+/* 対戦カード1枚だけの試作(feat/title-card-v3)。既存のmatchup.module.css /
+   MatchupTape.tsxとは完全に独立させる(展開判断が出るまで他ページ・共有
+   コンポーネントには一切触れないため)。トークンは既存の.mv2と同じ配色を
+   踏襲しつつ、このファイル単体で完結させる。 */
+.wrap {
+  --bg: #f4f2ed;
+  --card: #fff;
+  --line: #e7e3db;
+  --ink: #1b1b20;
+  --muted: #8b887e;
+  --dim: #c7c3b8;
+  --red: #e60028;
+  --blue: #1f5fe0;
+  --gold: #a9812b;
+  --gold-tint: #f7efdc;
+  --win: #1f8a4c;
+  --loss: #c23b3b;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* ヘッダー: TITLEバッジ+階級のみ。罫線はカード全体でこの1本だけに絞る。 */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.titleBadge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--gold);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.weightClass {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* タレント・オブ・ザ・テープ本体。行=通称/名前/記録/率/ドットの5行gridで、
+   左右コーナーは行ごとに同じ基準線に揃う(高さが左右で変わるのは通称・名前
+   の行数差が原因なので、行を分離しておけば名前が1行でも2〜3行でも記録
+   以下は必ず両側とも同じ位置から始まる)。罫線は中央のVS縦線1本のみにし、
+   行間の区切りは余白の大小で表現する(情報の優先度=名前>記録>率>ドット
+   をそのままフォントサイズと余白の強弱に翻訳する)。 */
+.tape {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas:
+    "nka vs nkb"
+    "na  vs nb"
+    "ra  vs rb"
+    "sa  vs sb"
+    "fa  vs fb";
+  column-gap: 14px;
+  padding: 22px 18px 20px;
+}
+
+.nka {
+  grid-area: nka;
+  min-width: 0;
+  padding-bottom: 2px;
+}
+.nkb {
+  grid-area: nkb;
+  min-width: 0;
+  padding-bottom: 2px;
+  justify-self: end;
+  text-align: right;
+}
+.na {
+  grid-area: na;
+  min-width: 0;
+  padding-bottom: 10px;
+}
+.nb {
+  grid-area: nb;
+  min-width: 0;
+  padding-bottom: 10px;
+  justify-self: end;
+  text-align: right;
+}
+.ra {
+  grid-area: ra;
+  min-width: 0;
+  padding-bottom: 6px;
+}
+.rb {
+  grid-area: rb;
+  min-width: 0;
+  padding-bottom: 6px;
+  justify-self: end;
+  text-align: right;
+}
+.sa {
+  grid-area: sa;
+  min-width: 0;
+  padding-bottom: 10px;
+}
+.sb {
+  grid-area: sb;
+  min-width: 0;
+  padding-bottom: 10px;
+  justify-self: end;
+  text-align: right;
+}
+.fa {
+  grid-area: fa;
+  min-width: 0;
+}
+.fb {
+  grid-area: fb;
+  min-width: 0;
+  justify-self: end;
+}
+
+.vs {
+  grid-area: vs;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  position: relative;
+}
+.vs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+}
+.vsLabel {
+  position: relative;
+  background: var(--card);
+  color: var(--dim);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 4px 0;
+}
+
+/* 通称: 一番目立たせない情報。小さく・薄く。 */
+.nick {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+
+/* 名前: 情報の最優先。カード内で最大級のフォント+最も濃い色(赤/青)。 */
+.name {
+  font-weight: 900;
+  font-size: clamp(21px, 6.8vw, 27px);
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  min-width: 0;
+}
+.nameRed {
+  color: var(--red);
+}
+.nameBlue {
+  color: var(--blue);
+}
+
+/* 記録: 名前の次に重要。数字であることが伝わる書体・太さにする。 */
+.record {
+  font-weight: 800;
+  font-size: clamp(19px, 5.4vw, 23px);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+/* 率: 3番目の優先度。勝率・フィニッシュ率を別行のblockにする(1行に
+   まとめて折り返すと「フィニッシュ」のようなカタカナ語が単語の途中で
+   割れることがあるため、単語単位の改行になるようそもそも折り返しを
+   発生させない設計にした)。 */
+.rate {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.rate b {
+  color: var(--ink);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ドット: 最下位の優先度。直近5戦を小さいチップで示すだけに留める。 */
+.form {
+  display: flex;
+  gap: 4px;
+}
+.formB {
+  justify-content: flex-end;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dim);
+}
+.dotW {
+  background: var(--win);
+}
+.dotL {
+  background: var(--loss);
+}
