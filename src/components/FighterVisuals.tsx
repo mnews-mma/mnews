@@ -2,6 +2,7 @@ import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { computeMethodSplit, computeFighterStripStats, LAST5_SYMBOL } from "@/lib/fighterStrip";
 import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
 import { findFighterSlugByName } from "@/lib/fighters";
+import { renderWrappableName } from "@/lib/renderWrappableName";
 
 type Result = FighterRecordEntry["history"][number]["result"];
 
@@ -62,13 +63,24 @@ function CommonOpponentRows({
   );
 }
 
+// 決着方法(m.method)内の半角/全角スペースを非改行スペースに置き換え、通常時は
+// 1塊の見た目を保つ(「5分3R終了 判定0-3」がスペース位置で泣き別れしない)。
+// white-space:nowrapによる完全な改行禁止は、稀に存在する長い決着テキスト
+// (旧団体の記録等)で320px幅の横オーバーフローを起こすため使わない。CSS側の
+// word-break:normal;line-break:strict;と組み合わせ、収まらない極端なケースは
+// 通常のCJK改行にフォールバックさせて安全性を優先する。
+function nowrapMethodText(method: string): string {
+  return method.replace(/[ 　]/g, " ");
+}
+
 // 直接対決(2選手が過去に対戦している場合の履歴)。共通対戦相手(第三者との対戦の
 // 一致)とは概念が別物のため、独立した別枠として共通対戦相手テーブルの上に出す。
 // 0件ならこの枠自体を出さない。複数回対戦がある場合は新しい順に全て列挙する。
-// 1対戦=1行(折り返し許容)に圧縮: 日付・大会名・勝者名・決着方法を1つの
-// 文として並べる(以前は日付+大会名/両者名+マーク/決着方法の3段だった)。
-// 決着方法(m.method)はhistoryの生テキストをそのまま使い、要約・言い換えは
-// しない(捏造ゼロ)。
+// 1対戦=役割で2行に分ける(以前は3段、その前は無理に1行へ詰めていた):
+// 1行目=日付+大会名、2行目=勝者マーク+勝者名+決着方法。決着方法(m.method)は
+// historyの生テキストをそのまま使い、要約・言い換えはしない(捏造ゼロ)。
+// 決着方法はwhite-space:nowrapで1塊にし(CSS側)、選手名が長い場合は名前側だけ
+// 折り返す。勝者マークは直近5戦のW/Lドットと同じ丸バッジ意匠(.nf-h2h-badge)。
 function HeadToHeadBlock({
   nameA,
   nameB,
@@ -86,21 +98,24 @@ function HeadToHeadBlock({
         const winner = m.resultA === "win" ? nameA : m.resultA === "loss" ? nameB : null;
         return (
           <div key={i} className="nf-h2h-row">
-            <span className="nf-h2h-date">{m.date}</span> <span className="nf-h2h-event">{m.event}</span>{" "}
-            {winner ? (
-              <>
-                <span className={`nf-h2h-name ${MARK_CLASS.win}`}>
-                  <MarkCell result="win" />
-                  {winner}
-                </span>
-                が{m.method}
-              </>
-            ) : (
-              <span className={`nf-h2h-name ${MARK_CLASS.draw}`}>
-                <MarkCell result="draw" />
-                引き分け（{m.method}）
-              </span>
-            )}
+            <div className="nf-h2h-line1">
+              <span className="nf-h2h-date">{m.date}</span> <span className="nf-h2h-event">{m.event}</span>
+            </div>
+            <div className="nf-h2h-line2">
+              {winner ? (
+                <>
+                  <span className="nf-h2h-badge nf-h2h-badge--win">W</span>
+                  <span className="nf-h2h-winner">{winner}</span>
+                  <span className="nf-h2h-method">{nowrapMethodText(m.method)}</span>
+                </>
+              ) : (
+                <>
+                  <span className="nf-h2h-badge nf-h2h-badge--draw">D</span>
+                  <span className="nf-h2h-winner">引き分け</span>
+                  <span className="nf-h2h-method">（{nowrapMethodText(m.method)}）</span>
+                </>
+              )}
+            </div>
           </div>
         );
       })}
@@ -164,13 +179,15 @@ export function NextFightCompare({
 
   return (
     <div className="nf-compare">
-      {/* 名前・戦績・直近5戦を行グリッドで整列。名前が2行に折り返しても
-          名前は下端揃え(align-items:end)なので戦績以下の高さがズレない。 */}
+      {/* 名前・戦績・直近5戦を行グリッドで整列。名前は上端揃え(align-items:start)
+          なので、名前が1行/2行いずれでも戦績以下の行は左右で揃う。名前の折り返しは
+          renderWrappableName(BoutCard.tsxと共有)で中黒・スペース位置のみに限定し、
+          「フ」のような1文字だけの孤立行を作らない。 */}
       <div className="nf-vs">
-        <div className="nf-name nf-cell--nl">{selfName}</div>
+        <div className="nf-name nf-cell--nl">{renderWrappableName(selfName)}</div>
         <div className="nf-vs-mark">VS</div>
         <a href={`/fighters/${opponentSlug}`} className="nf-name nf-name--link nf-cell--nr">
-          {opponentName}
+          {renderWrappableName(opponentName)}
         </a>
         <div className="nf-record nf-cell--rl">{selfStats.record}</div>
         <div className="nf-record nf-cell--rr">{oppStats.record}</div>

@@ -1501,7 +1501,11 @@ footer {
     "rl vs rr"
     "ll vs lr"
     "ml vs mr";
-  align-items: end; /* 名前は下端揃え。2行折り返しでも戦績以下の高さが揃う */
+  /* 名前は上端揃え(名前が1行/2行でも記録以下の行は左右で揃う。行の高さは
+     グリッド行トラックが左右の最大値を取るため、align-itemsの値に関係なく
+     記録行以降は揃う。以前はend=下端揃えで、1行の名前が2行の相手側に
+     引っ張られて不自然に沈んで見えていたため、読み順に合わせてstartにした)。 */
+  align-items: start;
   column-gap: 8px;
   row-gap: 2px;
 }
@@ -1519,6 +1523,13 @@ footer {
   line-height: 1.35;
   color: var(--text);
   min-width: 0;
+  /* 大会ページの対戦カードで採用した折り返し方針と同じ: 小書き仮名・長音・
+     中黒直後の不自然な位置で切れないようにする(既定のCJK文字単位改行だと
+     「アリベク・ガジャマトフ」のような長い外国人名で最後の1文字だけが
+     孤立行になることがある)。 */
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
 }
 .nf-name--link {
   color: var(--accent);
@@ -1606,22 +1617,24 @@ footer {
   color: var(--muted);
   margin-bottom: 6px;
 }
-/* 1対戦=1行(折り返し許容で最大2行程度)に圧縮。以前は日付+大会名/両者名+
-   マーク/決着方法の3段だったが、日付・大会名・勝者名・決着方法を1つの文
-   として並べる。折り返しは単語(トークン)単位のみ許可し、大会名や決着方法
-   の途中で割れないようにする。 */
+/* 1対戦=役割で2行に分ける: 1行目=日付+大会名、2行目=勝者マーク+勝者名+
+   決着方法。決着方法(nf-h2h-method)はwhite-space:nowrapで1塊にし、大会名や
+   決着表記の途中で泣き別れさせない。選手名(nf-h2h-winner)側だけ折り返しを
+   許可し、収まらない決着方法は行ごと下に落ちる(flex-wrap)。 */
 .nf-h2h-row {
   padding: 6px 0;
   border-top: 1px solid rgba(232, 0, 45, 0.12);
   font-size: 11px;
-  line-height: 1.6;
   color: var(--muted);
-  word-break: normal;
-  line-break: strict;
-  overflow-wrap: break-word;
 }
 .nf-h2h-row:first-of-type {
   border-top: none;
+}
+.nf-h2h-line1 {
+  margin-bottom: 3px;
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
 }
 .nf-h2h-date {
   font-family: var(--mono);
@@ -1630,16 +1643,52 @@ footer {
 .nf-h2h-event {
   color: var(--text);
 }
-.nf-h2h-name {
+.nf-h2h-line2 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
   font-weight: 700;
-  white-space: nowrap;
+  color: var(--text);
 }
-.nf-h2h-name .nf-mk {
-  font-size: 12px;
+/* 直近5戦のW/Lドット(.fighter-strip-last5 span)と同じ意匠の丸バッジ。
+   H2Hの「勝ち」記号を本文の○文字ではなくこの緑地Wバッジに統一する。 */
+.nf-h2h-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  flex-shrink: 0;
 }
-.nf-h2h-name.mk-win { color: #16a34a; }
-.nf-h2h-name.mk-loss { color: #dc2626; }
-.nf-h2h-name.mk-draw { color: #9ca3af; }
+.nf-h2h-badge--win {
+  background: #16a34a;
+}
+.nf-h2h-badge--draw {
+  background: #6b7280;
+}
+.nf-h2h-winner {
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+/* 決着方法は内部のスペースを非改行スペースに置換済み(FighterVisuals.tsxの
+   nowrapMethodText)なので通常は1塊に見える。white-space:nowrapで完全に
+   改行を禁止すると、稀な長い決着テキストで320px幅を横に突き破るため使わず、
+   収まらない場合は通常のCJK改行にフォールバックさせる(安全性を優先)。 */
+.nf-h2h-method {
+  font-weight: 400;
+  color: var(--muted);
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
 
 /* 大会ページ・対戦カード内の共通対戦相手(折りたたみ・ネイティブdetails) */
 .bout-commons {
@@ -2238,6 +2287,20 @@ a.cmp-name:hover {
 .fighter-next-fight-link {
   color: var(--accent);
   text-decoration: underline;
+}
+
+/* 区切りは「／」の代わりに.fighter-next-fight-rowのflex+gapだけで作る
+   (旧: 各要素の間に生テキストの「／」を挟んでいたため、折り返し時にこの
+   記号だけが行頭に孤立するケースがあった)。 */
+.fighter-next-fight-vs {
+  color: var(--muted);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.fighter-next-fight-weight {
+  color: var(--muted);
+  flex-shrink: 0;
 }
 
 .fighter-next-fight-label {
