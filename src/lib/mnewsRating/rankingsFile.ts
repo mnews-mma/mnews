@@ -2,7 +2,7 @@
 // 呼び出し側(scripts/update-mnews-rating.ts)がdata/fighterRecords.jsonと
 // 前回のrankings.jsonを読み込み、ここへ渡す。
 import { ALGORITHM_VERSION, CHAMPION_DISPLAY_MODE } from "./constants";
-import { DisplayEntry } from "./engine";
+import { applyDisplayShrinkage, DisplayEntry, ShrinkageParams } from "./engine";
 import { DIVISION_SLUG, MnewsDivision } from "./divisions";
 
 export interface RankingEntryRecord {
@@ -81,7 +81,12 @@ export function buildDivisionRankings(
   updatedAt: Date,
   prev: DivisionRankings | undefined,
   champion: ChampionOverlay | null,
-  mode: "overlay" | "badge" = CHAMPION_DISPLAY_MODE
+  mode: "overlay" | "badge" = CHAMPION_DISPLAY_MODE,
+  // 小サンプル補正(P1・2026-07-16追加、未採用/比較検証用)。指定時のみ
+  // pool内(このランキングで実際に比較される母集団)の平均へ対戦数に応じて
+  // 引き寄せた値を順位・表示レートの両方に使う。未指定(デフォルト)は
+  // 従来どおり生の表示レートをそのまま使う(挙動を完全維持)。
+  shrinkageParams?: ShrinkageParams
 ): DivisionRankings {
   const isBadgeMode = mode === "badge";
   const suppressDelta = shouldSuppressDelta(prev);
@@ -90,12 +95,20 @@ export function buildDivisionRankings(
   const prevRawRatingByFighter = new Map((prev?.entries ?? []).map((e) => [e.fighterId, e.rawRating ?? e.rating]));
 
   const pool = isBadgeMode ? eligibleEntries : eligibleEntries.filter((e) => e.meta.slug !== champion?.fighterId);
-  // 順位は常に生の表示レート(丸め前)の降順で決める。丸めて同点表示になっても
-  // 順位は一意(生レートの差で決まる)。
-  const sorted = [...pool].sort((a, b) => b.display.displayRating - a.display.displayRating);
+  const shrunkBySlug = shrinkageParams
+    ? applyDisplayShrinkage(
+        pool.map((e) => ({ slug: e.meta.slug, displayRating: e.display.displayRating, fights: e.display.fights })),
+        shrinkageParams
+      )
+    : null;
+  const effectiveRating = (e: { meta: FighterMeta; display: DisplayEntry }): number =>
+    shrunkBySlug?.get(e.meta.slug) ?? e.display.displayRating;
+  // 順位は常に生の表示レート(丸め前、shrinkage指定時はshrinkage後)の降順で決める。
+  // 丸めて同点表示になっても順位は一意(生レートの差で決まる)。
+  const sorted = [...pool].sort((a, b) => effectiveRating(b) - effectiveRating(a));
 
   const entries: RankingEntry[] = sorted.map((e, i) => {
-    const rawRating = e.display.displayRating;
+    const rawRating = effectiveRating(e);
     const rating = roundToDisplayStep(rawRating);
     const prevRawRating = prevRawRatingByFighter.get(e.meta.slug);
     return {

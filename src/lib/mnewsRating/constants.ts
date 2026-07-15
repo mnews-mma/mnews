@@ -2,7 +2,7 @@
 // パラメータ定義。2026-07-13、公開方針をD案(原則・方針は公開/具体的な係数・数値・
 // 実装手口は非公開)に変更した。/rankings/methodology には評価の原則のみを
 // 一般記述で載せ、この定数群の具体的な数値そのものは転記しない。
-import type { AsymmetricEloParams, DecayParams, InitialRatingBoostParams } from "./engine";
+import type { AsymmetricEloParams, DecayParams, InitialRatingBoostParams, ShrinkageParams } from "./engine";
 
 // 表示名(D-1、2026-07-13): 外向き表示は「AI RIZINランキング」に統一。
 // RATING_NAME/RATING_KEYという定数名自体は内部コード名のため変更しない
@@ -117,4 +117,32 @@ export const INITIAL_RATING_BOOST_PARAMS_V6: InitialRatingBoostParams = {
   maxBoost: 80,
   minPreDebutFights: 3,
   shrinkageK: 5,
+};
+
+// 2026-07-16(v7候補・未採用): 小サンプル補正(表示レートのshrinkage)。
+// 対戦数2桁に満たない選手が、母集団平均から離れた極端な生レートのまま
+// 上位に浮く事象(例: 通算2戦1勝1敗の選手が通算5戦3勝2敗の選手より上位)への
+// 対処。既存のRIZIN参戦前実績シードのshrinkageK(5)と同じ数式形を表示レート
+// 側にも適用する(engine.tsのapplyDisplayShrinkage参照)。kは3〜5の範囲で
+// 比較ダンプにより調整する想定、現時点はk=4を初期候補として置く。
+// 【重要】このパラメータは直接対決の結果と衝突しうる(例: AがBに直接勝った
+// 場合でも、Aの対戦数が少なければshrinkageでAがBより下位になり得る)。
+// P2の単調性オーバーレイ(デフォルトOFF)と方向性が矛盾するため、両方を
+// 同時にONにする場合は挙動の整合を要確認。
+export const DISPLAY_SHRINKAGE_PARAMS_V7: ShrinkageParams = { k: 4 };
+
+// 2026-07-16(v7候補・未採用): 敗北ペナルティ強化。ELO_PARAMS_V5は勝ち側
+// (strongWinBoost=1.8)に比べ負け側(weakLossBoost=1.1)の傾斜が緩く、
+// 「格下相手に負けた」ケースの減点が相対的に甘い。weakLossBoostのみを
+// 引き上げ、strongLossDampen(格上に負けた際の緩和)は現状維持のまま
+// 据え置く(ELO_PARAMS_V5採用時の「勝ち側だけ強く傾け負け側はほぼ対称のまま」
+// という設計意図を踏襲し、負け側全体を対称に強めるのではなく「格下に負けた」
+// ケースだけを狙って強める)。1.1→1.4は比較ダンプでの調整前の初期候補値。
+export const ELO_PARAMS_V6: AsymmetricEloParams = {
+  strongWinBoost: 1.8,
+  weakWinDampen: 0.7,
+  strongLossDampen: 0.9,
+  weakLossBoost: 1.4,
+  thinResumeFightThreshold: 3,
+  thinResumeWinDampen: 0.5,
 };

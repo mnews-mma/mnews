@@ -646,3 +646,28 @@ export function buildDisplayEntries(
   }
   return out;
 }
+
+export interface ShrinkageParams {
+  k: number; // 3〜5想定。小さいほど平均へ強く引き寄せる
+}
+
+// 小サンプル補正(shrinkage): 対戦数nが少ない選手の表示レートを、
+// 比較対象母集団の平均μへ n/(n+k) の比率で引き寄せる(nが大きいほど原値のまま)。
+// 個別選手のハードコードではなく、対戦数という客観指標のみで機械的に決まる
+// 一般ルール。既存のRIZIN参戦前実績シード(INITIAL_RATING_BOOST_PARAMS_V6の
+// shrinkageK)と同じ数式形をレート表示側にも適用する。
+// poolは「実際に比較される母集団」(例: 1階級分のランキング表示対象)を渡す
+// 想定で、μはそのpool内で算出する(階級横断の全選手平均は使わない)。
+export function applyDisplayShrinkage(
+  pool: Array<{ slug: string; displayRating: number; fights: number }>,
+  params: ShrinkageParams
+): Map<string, number> {
+  const out = new Map<string, number>();
+  if (pool.length === 0) return out;
+  const mu = pool.reduce((sum, e) => sum + e.displayRating, 0) / pool.length;
+  for (const e of pool) {
+    const ratio = e.fights / (e.fights + params.k);
+    out.set(e.slug, mu + (e.displayRating - mu) * ratio);
+  }
+  return out;
+}
