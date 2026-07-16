@@ -475,18 +475,17 @@ export default async function FighterPage({
               <div className="fighter-next-fight-row">
                 <span className="fighter-next-fight-label">次戦</span>
                 <a href={`/events/${nextFight.event.slug}`} className="fighter-next-fight-link">
-                  {nextFight.event.date} ／ {nextFight.event.eventName}
+                  {nextFight.event.date} {nextFight.event.eventName}
                 </a>
-                {" ／ vs "}
+                <span className="fighter-next-fight-vs">vs</span>
                 {nextOpp.slug ? (
                   <a href={`/fighters/${nextOpp.slug}`} className="fighter-next-fight-link">
                     {nextOpp.name}
                   </a>
                 ) : (
-                  nextOpp.name
+                  <span>{nextOpp.name}</span>
                 )}
-                {" ／ "}
-                {nextFight.bout.weightClass}
+                <span className="fighter-next-fight-weight">{nextFight.bout.weightClass}</span>
               </div>
               {!noRecordData && nextOpp.slug && nextOpp.entry && (
                 <NextFightCompare
