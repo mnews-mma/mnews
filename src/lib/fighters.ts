@@ -567,9 +567,12 @@ export const FIGHTERS: Fighter[] = [
     nickname: "極めのミクロクイーン",
   },
   {
-    slug: "kashimura-ninnosuke",
+    // slug/nameEn修正(2026-07-18): 「仁之介」の読みは「じんのすけ」
+    // (旧kashimura-ninnosukeは誤読み)。旧slugはfighterSlugRedirects.tsに
+    // 恒久リダイレクトとして残す。
+    slug: "kashimura-jinnosuke",
     nameJa: "鹿志村 仁之介",
-    nameEn: "Ninnosuke Kashimura",
+    nameEn: "Jinnosuke Kashimura",
     org: "rizin",
     weightClass: "バンタム級",
     wins: 12,
@@ -582,9 +585,12 @@ export const FIGHTERS: Fighter[] = [
     nickname: "黒帯のリベリオン",
   },
   {
-    slug: "sato-masamitsu",
+    // slug/nameEn修正(2026-07-18): 「将光」の読みは「しょうこう」
+    // (旧sato-masamitsuは誤読み)。旧slugはfighterSlugRedirects.tsに
+    // 恒久リダイレクトとして残す。
+    slug: "sato-shoko",
     nameJa: "佐藤 将光",
-    nameEn: "Masamitsu Sato",
+    nameEn: "Shoko Sato",
     org: "rizin",
     weightClass: "バンタム級",
     wins: 38,
@@ -644,9 +650,12 @@ export const FIGHTERS: Fighter[] = [
     nickname: "天下無双の稲妻ボーイ",
   },
   {
-    slug: "seiya-takashi",
+    // slug/nameEn修正(2026-07-18): 姓「征矢」は「そや」、名「貴」は
+    // 「たかき」(旧seiya-takashiは誤読み)。旧slugはfighterSlugRedirects.ts
+    // に恒久リダイレクトとして残す。
+    slug: "soya-takaki",
     nameJa: "征矢 貴",
-    nameEn: "Takashi Seiya",
+    nameEn: "Takaki Soya",
     org: "rizin",
     weightClass: "フライ級",
     wins: 13,
@@ -705,9 +714,12 @@ export const FIGHTERS: Fighter[] = [
     nickname: "格闘一家の最強DNA",
   },
   {
-    slug: "horie-keiko",
+    // slug/nameEn修正(2026-07-18): 「圭功」の読みは「よしのり」
+    // (旧horie-keikoは誤読み)。旧slugはfighterSlugRedirects.tsに
+    // 恒久リダイレクトとして残す。
+    slug: "horie-yoshinori",
     nameJa: "堀江 圭功",
-    nameEn: "Keikou Horie",
+    nameEn: "Yoshinori Horie",
     org: "rizin",
     weightClass: "ライト級",
     wins: 15,
@@ -950,9 +962,12 @@ export const FIGHTERS: Fighter[] = [
     nickname: "元 貴ノ富士",
   },
   {
-    slug: "kikanoshin",
+    // slug/nameEn修正(2026-07-18): 「貴賢神」の読みは「たけんしん」
+    // (旧kikanoshinは誤読み)。旧slugはfighterSlugRedirects.tsに
+    // 恒久リダイレクトとして残す。
+    slug: "takenshin",
     nameJa: "貴賢神",
-    nameEn: "Kikanoshin",
+    nameEn: "Takenshin",
     org: "rizin",
     weightClass: "ヘビー級",
     wins: 4,
@@ -1020,9 +1035,12 @@ export const FIGHTERS: Fighter[] = [
     nickname: "怪物くん",
   },
   {
-    slug: "miyagawa-hinata",
+    // slug/nameEn修正(2026-07-18): 「日向」の読みは「ひゅうが」
+    // (旧miyagawa-hinataは誤読み)。旧slugはfighterSlugRedirects.tsに
+    // 恒久リダイレクトとして残す。
+    slug: "miyagawa-hyuga",
     nameJa: "宮川 日向",
-    nameEn: "Hinata Miyagawa",
+    nameEn: "Hyuga Miyagawa",
     org: "rizin",
     weightClass: "バンタム級",
     wins: 7,
