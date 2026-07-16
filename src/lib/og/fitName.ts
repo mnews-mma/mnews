@@ -71,6 +71,11 @@ export function fitName(
       return { fontSize: size, lines };
     }
   }
+  // ここまでで(縮小しても)maxLines以内に収まる組み合わせが無かった場合
+  // (極端に長い名前)。minFontでpackした上でmaxLinesを超えるぶんは
+  // 打ち切る(3行目以降は表示しない)。呼び出し側の固定高name-zoneに
+  // overflow:hiddenを併用することで、万一の幅超過も含め固定高から
+  // 確実にはみ出さないようにする(2026-07-18・3行名対策)。
   const maxEm = (o.maxWidth * safety) / o.minFont;
-  return { fontSize: o.minFont, lines: pack(units, maxEm) };
+  return { fontSize: o.minFont, lines: pack(units, maxEm).slice(0, maxLines) };
 }
