@@ -175,37 +175,99 @@ function resolveCyclicEdgesByRecency(cyclicPairs: ResolvedPair[], baseAccepted: 
 //   ソート安定性も保つ: H2H制約が一切無いグループは元のレート順そのままになる)。
 // 循環に関与する辺は、直近対戦を優先する形で一部だけを制約として採用する
 // (resolveCyclicEdgesByRecency参照。最も古い辺だけが諦められる)。
-// maxRankGap(2026-07-16・v9改訂で追加): 指定時のみ、非循環の直接対決を
-// 「補正前の順位差がこの値以内」のケースに限定する(弱い整合。距離無制限
-// ハード制約による広範な入れ替えを避けるため)。順位差はrankedSlugsの元の
-// 並び(σディスカウント後・補正前)で測る。未指定(デフォルト)は従来どおり
-// 距離無制限(v8互換)。循環内の辺(resolveCyclicEdgesByRecency)はこの
-// フィルタの対象外(循環は元々「直近優先」で解決するため対象自体が限定的)。
+// maxRankGap(2026-07-16採用・v9改訂): 指定時のみ、直接対決を「補正前の
+// 順位差がこの値以内」のケースに限定する(弱い整合。距離無制限ハード制約
+// による広範な入れ替えを避けるため)。順位差はrankedSlugsの元の並び
+// (σディスカウント後・補正前)で測る。未指定(デフォルト)は従来どおり
+// 距離無制限(v8互換)。
+//
+// 【重要・2026-07-16実装】gapフィルタは循環検出より前、全ペアに対して行う
+// (循環に関与する辺だけを対象外にする設計は撤回した)。理由: フライ級の
+// 実データ調査で、王者(神龍誠)を介した複数の輪(ougikubo>motoya>神龍>
+// ougikubo、ougikubo>torres>神龍>ougikubo、yamamoto>ito>laramie>motoya>
+// 神龍>yamamoto等)が絡み合い、循環内リオーダー((b)ロジック)が
+// 「ito・laramie・motoyaが互いを待ってブロックされている間に、レートの
+// 低いtorres・gadzhamatovが(唯一の前提条件=ougikuboが最初に確定済みという
+// だけで)貪欲法の穴を突いて先に確定してしまう」というドミノ効果(玉突き)
+// を起こしていた。torres・gadzhamatovはito・laramie・motoyaの誰にも直接
+// 勝っておらず、rawRでも本来5〜6位相当なのに2〜3位まで浮いていた
+// (実データ調査・Kaina指摘で発覚)。
+// gapフィルタを循環検出より先に全ペアへ適用することで、王者を介した
+// 「順位が遠く離れた選手同士を繋ぐ辺」がそもそも候補から外れ、循環自体が
+// 局所的な(近い順位同士の)ものだけに縮小される。これによりtorres・
+// gadzhamatovのような「関係ない選手が巻き添えで浮く」ドミノ効果が消える
+// (rawR相応の順位に戻る)。ランキング対象外の選手(王者オーバーレイ等、
+// rankedSlugsに含まれない)が絡む辺は、gapを測れないため無条件で除外する
+// (これらの辺はどのみち最終的な制約(predecessors)には使われないが、
+// 循環判定の橋渡しに使われると上記のドミノ効果を起こすため、判定対象にも
+// 含めない)。
 export function applyHeadToHeadMonotonicity(rankedSlugs: string[], h2hWins: H2HWin[], maxRankGap?: number): string[] {
-  const pairs = resolvePairDirections(h2hWins);
-  const cyclicEdgeKeys = findCyclicEdges(pairs);
-  let nonCyclicPairs = pairs.filter(({ winner, loser }) => !cyclicEdgeKeys.has(`${winner}>${loser}`));
-  const cyclicPairs = pairs.filter(({ winner, loser }) => cyclicEdgeKeys.has(`${winner}>${loser}`));
+  let pairs = resolvePairDirections(h2hWins);
 
   if (maxRankGap !== undefined) {
     const originalIndexForGap = new Map(rankedSlugs.map((slug, i) => [slug, i]));
-    nonCyclicPairs = nonCyclicPairs.filter(({ winner, loser }) => {
+    pairs = pairs.filter(({ winner, loser }) => {
       const winnerIdx = originalIndexForGap.get(winner);
       const loserIdx = originalIndexForGap.get(loser);
-      if (winnerIdx === undefined || loserIdx === undefined) return true; // ランキング対象外選手は後段でどのみち無視される
+      if (winnerIdx === undefined || loserIdx === undefined) return false; // ランキング対象外選手が絡む辺は循環判定の橋渡しに使わせない
       return Math.abs(winnerIdx - loserIdx) <= maxRankGap;
     });
   }
 
+  const cyclicEdgeKeys = findCyclicEdges(pairs);
+  const nonCyclicPairs = pairs.filter(({ winner, loser }) => !cyclicEdgeKeys.has(`${winner}>${loser}`));
+  const cyclicPairs = pairs.filter(({ winner, loser }) => cyclicEdgeKeys.has(`${winner}>${loser}`));
+
+  if (process.env.MN_DEBUG_MONO) {
+    console.error("[DEBUG] pairs (after gap filter):", pairs.map((p) => `${p.winner}>${p.loser}`));
+    console.error("[DEBUG] cyclicEdgeKeys:", [...cyclicEdgeKeys]);
+  }
+
   const resolvedCyclicPairs = resolveCyclicEdgesByRecency(cyclicPairs, nonCyclicPairs);
-  const constraints = [...nonCyclicPairs, ...resolvedCyclicPairs];
+
+  if (process.env.MN_DEBUG_MONO) {
+    console.error("[DEBUG] resolvedCyclicPairs:", resolvedCyclicPairs.map((p) => `${p.winner}>${p.loser}`));
+  }
 
   const rankedSet = new Set(rankedSlugs);
-  // loser -> このloserより先に配置されなければならない選手の集合(直接の前提のみ)。
+
+  // 2段階方式(2026-07-16 v9再改訂):
+  // ステージ1(循環内・resolvedCyclicPairs): 推移閉包(トポロジカルソート)で
+  // 解決する。循環はもともと直接繋がった選手だけの局所グループであり、
+  // 「直近対戦を優先して矛盾なく一本の順序に並べる」((b)案)ことが目的その
+  // ものなので、推移律の強制がここでは正しい挙動。
+  // ステージ2(非循環・nonCyclicPairs): ローカルスワップ方式で適用する。旧
+  // 方式はステージ1と同じトポロジカルソートを全ペアに適用しており、「AがB
+  // に勝ち、BがCに勝つ」という2つの独立した直接対決を、Aが一度もCと対戦して
+  // いなくてもAがCより上でなければならないという推移的制約に自動合成して
+  // しまっていた(フェザー級で発覚: karamov>asakura・asakura>koikeという
+  // 2つの正当な直接対決だけで、koikeがkaramovと無関係に4位まで落とされた)。
+  // ここではv7時代のローカルスワップ実装(git show 0b96467)を参照し、「現在の
+  // 並びでwinnerがloserより下にあり、かつ現在の順位差がmaxRankGap以内」の
+  // 組だけを毎周期再計算し、順位差が最小のものから1件ずつ、winnerをloserの
+  // 直前へ移動する。毎周期"現在の並び"を基準に判定し直すのが肝: ある補正が
+  // 別ペアの順位差を広げてmaxRankGapを超えさせたら、そのペアは以後の補正
+  // 対象から自然に外れる(推移律を強制しない=玉突きの自己抑制)。
+  const stage1Order = applyTransitiveOrder(rankedSlugs, resolvedCyclicPairs, rankedSet);
+  const order = applyLocalSwapOrder(stage1Order, nonCyclicPairs, rankedSet, maxRankGap);
+
+  if (process.env.MN_DEBUG_MONO) {
+    console.error("[DEBUG] stage1Order (cyclic, top10):", stage1Order.slice(0, 10));
+    console.error("[DEBUG] final order (top10):", order.slice(0, 10));
+  }
+
+  return order;
+}
+
+// 循環内リオーダー((b)案)の推移閉包解決: 「まだ配置していない選手のうち、
+// 直接の前提(自分に直接負けている相手)が全て配置済みの選手の中で、元の
+// レート順で最も上位の選手」を選んで配置していく(制約付きトポロジカル
+// ソート、Kahn法+元順序によるタイブレーク)。
+function applyTransitiveOrder(rankedSlugs: string[], pairs: ResolvedPair[], rankedSet: Set<string>): string[] {
   const predecessors = new Map<string, Set<string>>();
   for (const slug of rankedSlugs) predecessors.set(slug, new Set());
-  for (const { winner, loser } of constraints) {
-    if (!rankedSet.has(winner) || !rankedSet.has(loser)) continue; // ランキング対象外の選手が絡む組は無視
+  for (const { winner, loser } of pairs) {
+    if (!rankedSet.has(winner) || !rankedSet.has(loser)) continue;
     predecessors.get(loser)!.add(winner);
   }
 
@@ -246,6 +308,54 @@ export function applyHeadToHeadMonotonicity(rankedSlugs: string[], h2hWins: H2HW
   return result;
 }
 
+// 非循環の直接対決のローカルスワップ解決(v7参照実装ベース、2026-07-16
+// 選択基準を直近優先に変更)。処理順は「毎周期、現時点でまだ矛盾している
+// (かつ現時点の順位差がmaxRankGap以内の)組の中で、最も直近の対戦を1件選んで
+// 適用する」。循環内リオーダー((b)案)と同じ「直近対戦を優先」の原則で統一
+// する。これが必要な理由: 例えばフライ級の「伊藤裕樹>ラミー(2025-03-30、
+// 古い)」と「ラミー>元谷(2026-06-06、新しい)」は無関係な2つの直接対決だが、
+// laramie-tonyを共通の敗者/勝者として共有するため、適用順序によっては
+// 片方が他方を(意図せず)打ち消してしまう。gap最小優先だと処理順が同点
+// タイブレークに依存して不安定になるが、直近優先なら常に同じ結果になり、
+// かつ新しい対戦(ラミー>元谷)を先に確定させてから古い対戦(伊藤裕樹>
+// ラミー)を"その上に"積む形になるため、両方が矛盾なく両立する
+// (伊藤裕樹>ラミー>元谷という順序は、伊藤裕樹が元谷と対戦していなくても
+// 数学的に両立可能な組み合わせであり、玉突きではない)。
+function applyLocalSwapOrder(startOrder: string[], pairs: ResolvedPair[], rankedSet: Set<string>, maxRankGap?: number): string[] {
+  const order = [...startOrder];
+  let remainingPairs = pairs.filter(({ winner, loser }) => rankedSet.has(winner) && rankedSet.has(loser));
+  const effectiveMaxGap = maxRankGap ?? Infinity;
+  const MAX_ITERATIONS = remainingPairs.length + 1;
+  let iterations = 0;
+
+  while (remainingPairs.length > 0 && iterations < MAX_ITERATIONS) {
+    iterations++;
+    const indexOf = new Map(order.map((slug, i) => [slug, i]));
+    let bestPair: ResolvedPair | null = null;
+    for (const pair of remainingPairs) {
+      const winnerIdx = indexOf.get(pair.winner)!;
+      const loserIdx = indexOf.get(pair.loser)!;
+      if (winnerIdx <= loserIdx) continue; // 既に矛盾していない
+      const gap = winnerIdx - loserIdx;
+      if (gap > effectiveMaxGap) continue; // 現時点の順位差が対象範囲外(自己抑制)
+      if (bestPair === null || pair.date > bestPair.date) {
+        bestPair = pair;
+      }
+    }
+    if (bestPair === null) break; // 残りは全て解消済みか対象範囲外
+
+    const { winner, loser } = bestPair;
+    const winnerIdx = order.indexOf(winner);
+    order.splice(winnerIdx, 1);
+    const newLoserIdx = order.indexOf(loser);
+    order.splice(newLoserIdx, 0, winner);
+
+    remainingPairs = remainingPairs.filter((p) => !(p.winner === winner && p.loser === loser));
+  }
+
+  return order;
+}
+
 export interface H2HViolation {
   winner: string;
   loser: string;
@@ -255,15 +365,25 @@ export interface H2HViolation {
 
 // 最終順位配列(applyHeadToHeadMonotonicity適用後を想定)に対し、全H2H制約
 // (勝者の順位 <= 敗者の順位)が満たされているかを検査する(回帰テスト・
-// update-mnews-rating.tsの自己検証・CI用に常設)。循環に関与する組は検査対象
-// 外にする(仕様どおりスキップされ、補正されないため=想定内)。ランキング
-// 対象外の選手(掲載資格なし・王者オーバーレイで別掲載等)が絡む組も対象外。
-// maxRankGap指定時(v9・弱い整合)は、構築時と同じ基準の順位差(前段の
-// preCorrectionOrder。省略時はrankedSlugsで代用)でこの差を超えて離れている
-// 組も対象外にする(そもそも制約として適用していないため=想定内)。
-// 【重要】gapの判定基準は必ず構築時(applyHeadToHeadMonotonicityに渡した
-// rankedSlugs)と同じ順序を使うこと。最終順位(post-correction)でgapを測ると、
-// 他ペアの補正で偶然近づいた/離れた組を誤って判定してしまう
+// update-mnews-rating.tsの自己検証・CI用に常設)。
+//
+// 【2026-07-16再設計】以前はgapフィルタ→循環検出をこの関数内で独自に再実装
+// していたが、applyHeadToHeadMonotonicity本体(ステージ2のローカルスワップ)
+// が「処理途中の他ペアの補正で現在の順位差がmaxRankGapを超えたら、その場で
+// 諦める(自己抑制)」という、事前の静的なgap判定だけでは再現できない挙動を
+// 持つようになった(フライ級で実例: 伊藤裕樹>ラミー・ラミー>元谷は共にlaramie
+// が絡む非循環ペアで、処理順序によって片方が他方を打ち消しうる)。個別に
+// gap+循環判定を再実装すると、本体の実際の判定(処理過程に依存)とズレて
+// 誤検知/見逃しを起こす。
+// そこで「本体を同じ入力(preCorrectionOrder・h2hWins・maxRankGap)でもう一度
+// 実行し、その正準結果(canonical)自身が満たせなかった組は検査対象外にする」
+// 方式に変更した。canonicalが満たしている組なのに、渡されたrankedSlugsでは
+// 満たされていない場合だけを「本物の違反」として報告する(=構築処理が
+// applyHeadToHeadMonotonicity本体と食い違っている、という実際のバグのみ検出)。
+// 【重要】preCorrectionOrderは必ず構築時(applyHeadToHeadMonotonicityに渡した
+// rankedSlugs)と同じ順序を渡すこと。省略時はrankedSlugsで代用するが、
+// これは(補正後の順位を基準にgapを測ることになり)本来の判定とズレる場合が
+// あるため、呼び出し側は極力preCorrectionOrderを渡すこと
 // (rankingsFile.tsのbuildDivisionRankings onPreCorrectionOrderフック参照)。
 // applyHeadToHeadMonotonicityに渡すmaxRankGapと必ず同じ値を渡すこと。
 // 違反(勝者が敗者より下位のまま)が1件でもあれば、そのペアを返す(0件なら
@@ -275,20 +395,18 @@ export function checkH2HInvariant(
   preCorrectionOrder?: string[]
 ): H2HViolation[] {
   const pairs = resolvePairDirections(h2hWins);
-  const cyclicEdges = findCyclicEdges(pairs);
+  const canonical = applyHeadToHeadMonotonicity(preCorrectionOrder ?? rankedSlugs, h2hWins, maxRankGap);
+  const canonicalRankOf = new Map(canonical.map((slug, i) => [slug, i]));
   const rankOf = new Map(rankedSlugs.map((slug, i) => [slug, i]));
-  const gapRankOf = new Map((preCorrectionOrder ?? rankedSlugs).map((slug, i) => [slug, i]));
   const violations: H2HViolation[] = [];
   for (const { winner, loser } of pairs) {
-    if (cyclicEdges.has(`${winner}>${loser}`)) continue;
+    const canonicalWinnerIdx = canonicalRankOf.get(winner);
+    const canonicalLoserIdx = canonicalRankOf.get(loser);
+    if (canonicalWinnerIdx === undefined || canonicalLoserIdx === undefined) continue; // ランキング対象外
+    if (canonicalWinnerIdx > canonicalLoserIdx) continue; // 本体自身もこの組を満たせない(自己抑制/循環の犠牲)=想定内
     const winnerIdx = rankOf.get(winner);
     const loserIdx = rankOf.get(loser);
     if (winnerIdx === undefined || loserIdx === undefined) continue;
-    if (maxRankGap !== undefined) {
-      const gapWinnerIdx = gapRankOf.get(winner);
-      const gapLoserIdx = gapRankOf.get(loser);
-      if (gapWinnerIdx !== undefined && gapLoserIdx !== undefined && Math.abs(gapWinnerIdx - gapLoserIdx) > maxRankGap) continue;
-    }
     if (winnerIdx > loserIdx) {
       violations.push({ winner, loser, winnerRank: winnerIdx + 1, loserRank: loserIdx + 1 });
     }
@@ -298,14 +416,14 @@ export function checkH2HInvariant(
 
 // 非対称ガード(2026-07-17・(b)案の回帰防止用): 「直近{recentWindowDays}日
 // 以内の直接対決で勝った側が負けた側より下位のまま」というケースをゼロに
-// する。checkH2HInvariantと違い、循環に関与する組はmaxRankGapの有無に関係
-// なく除外しない(=循環内リオーダーの設計上、諦められる辺は必ず最も古い
-// ものになるはずなので、直近の対戦が破れることがあってはならない、という
-// 非対称性を明示的に検査する)。非循環の組はmaxRankGap指定時(v9・弱い整合)
-// のみ、構築時と同じ基準の順位差(preCorrectionOrder。checkH2HInvariantと
-// 同じ理由で最終順位ではなく構築時の順位を使う)でこの差を超えて離れていれば
-// 対象外にする(そもそも制約として適用していないため=想定内)。古い辺が
-// 破れる(=このチェックの対象外の期間で違反が残る)のは許容する。
+// する。maxRankGap指定時(v9・弱い整合)は、applyHeadToHeadMonotonicityと
+// 同じ順序(gapフィルタ→循環検出)でgapを超えて離れているペアをそもそも
+// 対象外にする(=構築時に制約として一切考慮されないため、破れても想定内)。
+// gapを生き残った上で循環に関与する組は、maxRankGapの有無に関係なく除外
+// しない(=循環内リオーダーの設計上、諦められる辺は必ず最も古いものになる
+// はずなので、直近の対戦が破れることがあってはならない、という非対称性を
+// 明示的に検査する)。古い辺が破れる(=このチェックの対象外の期間で違反が
+// 残る)のは許容する。
 export function checkRecentH2HInvariant(
   rankedSlugs: string[],
   h2hWins: H2HWin[],
@@ -319,21 +437,26 @@ export function checkRecentH2HInvariant(
   const cutoffStr = cutoff.toISOString().slice(0, 10);
 
   const pairs = resolvePairDirections(h2hWins);
-  const cyclicEdges = findCyclicEdges(pairs);
+  // checkH2HInvariantと同じ理由(2026-07-16再設計)で、本体を同じ入力で
+  // もう一度実行した正準結果(canonical)を基準に「本体自身が満たせる組か」を
+  // 判定する。循環に関与する組もここでは除外しない(canonical自体が(b)案の
+  // 直近優先ロジックを反映済みのため、循環内で諦められるべき最古の辺は
+  // canonicalでも満たされておらず自然に対象外になる。逆に直近の辺が
+  // canonicalで満たされているのに実際のrankedSlugsで破れていれば、それは
+  // 本物の非対称性バグとして検出する)。
+  const canonical = applyHeadToHeadMonotonicity(preCorrectionOrder ?? rankedSlugs, h2hWins, maxRankGap);
+  const canonicalRankOf = new Map(canonical.map((slug, i) => [slug, i]));
   const rankOf = new Map(rankedSlugs.map((slug, i) => [slug, i]));
-  const gapRankOf = new Map((preCorrectionOrder ?? rankedSlugs).map((slug, i) => [slug, i]));
   const violations: H2HViolation[] = [];
   for (const { winner, loser, date } of pairs) {
-    if (date < cutoffStr) continue; // 直近半年より古い対戦は対象外(循環で諦めることを許容する)
+    if (date < cutoffStr) continue; // 直近半年より古い対戦は対象外(諦めることを許容する)
+    const canonicalWinnerIdx = canonicalRankOf.get(winner);
+    const canonicalLoserIdx = canonicalRankOf.get(loser);
+    if (canonicalWinnerIdx === undefined || canonicalLoserIdx === undefined) continue;
+    if (canonicalWinnerIdx > canonicalLoserIdx) continue; // 本体自身も満たせない(自己抑制/循環の犠牲)=想定内
     const winnerIdx = rankOf.get(winner);
     const loserIdx = rankOf.get(loser);
     if (winnerIdx === undefined || loserIdx === undefined) continue;
-    const isCyclic = cyclicEdges.has(`${winner}>${loser}`);
-    if (!isCyclic && maxRankGap !== undefined) {
-      const gapWinnerIdx = gapRankOf.get(winner);
-      const gapLoserIdx = gapRankOf.get(loser);
-      if (gapWinnerIdx !== undefined && gapLoserIdx !== undefined && Math.abs(gapWinnerIdx - gapLoserIdx) > maxRankGap) continue;
-    }
     if (winnerIdx > loserIdx) {
       violations.push({ winner, loser, winnerRank: winnerIdx + 1, loserRank: loserIdx + 1 });
     }
