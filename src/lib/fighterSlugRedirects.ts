@@ -18,4 +18,11 @@ export const FIGHTER_SLUG_REDIRECTS: FighterSlugRedirect[] = [
   { from: "sato-masamitsu", to: "sato-shoko", note: "佐藤将光: まさみつ→しょうこう(2026-07-18)" },
   { from: "kashimura-ninnosuke", to: "kashimura-jinnosuke", note: "鹿志村仁之介: にんのすけ→じんのすけ(2026-07-18)" },
   { from: "miyagawa-hinata", to: "miyagawa-hyuga", note: "宮川日向: ひなた→ひゅうが(2026-07-18)" },
+  { from: "suzuki-tomoya", to: "suzuki-chikaya", note: "鈴木慈也: ともや→ちかや(2026-07-18・Pancrase公式で確認)" },
+  { from: "terasaki-ryu", to: "terasaki-shoryu", note: "寺崎昇龍: りゅう→しょうりゅう(2026-07-18・「昇」欠落。MMAPLANETで確認)" },
+  { from: "hatakeyama-takanori", to: "hatakeyama-ryuya", note: "畠山隆称: たかのり→りゅうや(2026-07-18・別読み。修斗公式/本人インタビューで確認)" },
+  { from: "ushiku-kentaro", to: "ushiku-juntaro", note: "牛久絢太郎: けんたろう→じゅんたろう(2026-07-18・Pancrase/RIZIN公式で確認。元RIZINフェザー級王者)" },
+  { from: "yamagami-mikio", to: "yamagami-mikihito", note: "山上幹臣: みきお→みきひと(2026-07-18・Kaina目視確定。修斗元世界フライ級王者)" },
+  { from: "nakano-takaki", to: "nakano-goki", note: "中野剛貴: たかき→ごうき(2026-07-18・Kaina目視確定)" },
+  { from: "dautbek-karshyga", to: "karshyga-dautbek", note: "slug語順修正(誤読みではなく姓名順の不整合。カルシャガが姓・ダウトベックが名、2026-07-18)" },
 ];

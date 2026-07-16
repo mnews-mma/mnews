@@ -1134,7 +1134,10 @@ export const FIGHTERS: Fighter[] = [
   { slug: "kenshiro", nameJa: "ケンシロウ", nameEn: "Kenshiro", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nakatani-yuga", nameJa: "中谷優我", nameEn: "Yuga Nakatani", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "suzuki-taisei", nameJa: "鈴木大晟", nameEn: "Taisei Suzuki", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "ushiku-kentaro", nameJa: "牛久絢太郎", nameEn: "Kentaro Ushiku", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // slug/nameEn修正(2026-07-18): 「絢太郎」の読みは「じゅんたろう」(旧
+  // ushiku-kentaroは誤読み、Pancrase/RIZIN公式で確認。元RIZINフェザー級
+  // 王者)。旧slugはfighterSlugRedirects.tsに恒久リダイレクトとして残す。
+  { slug: "ushiku-juntaro", nameJa: "牛久絢太郎", nameEn: "Juntaro Ushiku", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "muramoto-yutaro", nameJa: "村元友太郎", nameEn: "Yutaro Muramoto", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "hiramatsu-sho", nameJa: "平松翔", nameEn: "Sho Hiramatsu", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "sugiyama-sora", nameJa: "杉山空", nameEn: "Sora Sugiyama", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1157,7 +1160,10 @@ export const FIGHTERS: Fighter[] = [
   { slug: "uoi-fullswing", nameJa: "魚井フルスイング", nameEn: "Fullswing Uoi", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   // --- 第2弾: 読み確定・高信頼7名(複数ソース一致) ---
   { slug: "arato-hidetaka", nameJa: "荒東英貴", nameEn: "Hidetaka Arato", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "terasaki-ryu", nameJa: "寺崎昇龍", nameEn: "Ryu Terasaki", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // slug/nameEn修正(2026-07-18): 「昇龍」の読みは「しょうりゅう」(旧
+  // terasaki-ryuは「昇」が欠落した誤読み、MMAPLANETで確認)。旧slugは
+  // fighterSlugRedirects.tsに恒久リダイレクトとして残す。
+  { slug: "terasaki-shoryu", nameJa: "寺崎昇龍", nameEn: "Shoryu Terasaki", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "miyabi-shunsuke", nameJa: "雅駿介", nameEn: "Shunsuke Miyabi", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // 狩野優は本人IG/X表記が Karino(漢字だけなら Kano だが誤り)
   { slug: "karino-yu", nameJa: "狩野優", nameEn: "Yu Karino", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1177,9 +1183,16 @@ export const FIGHTERS: Fighter[] = [
   { slug: "tanoue-koyuru", nameJa: "田上こゆる", nameEn: "Koyuru Tanoue", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "naito-shoki", nameJa: "内藤頌貴", nameEn: "Shoki Naito", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "toma-yoshinao", nameJa: "当真佳直", nameEn: "Yoshinao Toma", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
-  { slug: "hatakeyama-takanori", nameJa: "畠山隆称", nameEn: "Takanori Hatakeyama", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  // slug/nameEn修正(2026-07-18): 「隆称」の読みは「りゅうや」(旧
+  // hatakeyama-takanoriは全く別の誤読み、Theパラエストラ沖縄インタビュー・
+  // 修斗公式サイトで確認)。旧slugはfighterSlugRedirects.tsに恒久リダイレクト
+  // として残す。
+  { slug: "hatakeyama-ryuya", nameJa: "畠山隆称", nameEn: "Ryuya Hatakeyama", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "kurobe-kazusa", nameJa: "黒部和沙", nameEn: "Kazusa Kurobe", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
-  { slug: "yamagami-mikio", nameJa: "山上幹臣", nameEn: "Mikio Yamagami", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  // slug/nameEn修正(2026-07-18): 「幹臣」の読みは「みきひと」(旧
+  // yamagami-mikioは誤読み、Kaina目視確定。修斗元世界フライ級王者)。
+  // 旧slugはfighterSlugRedirects.tsに恒久リダイレクトとして残す。
+  { slug: "yamagami-mikihito", nameJa: "山上幹臣", nameEn: "Mikihito Yamagami", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "ryoga", nameJa: "亮我", nameEn: "Ryoga", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "takaoka-hiroki", nameJa: "高岡宏気", nameEn: "Hiroki Takaoka", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "arai-jo", nameJa: "新井丈", nameEn: "Jo Arai", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "NEVER GIVE UP" },
@@ -1188,7 +1201,10 @@ export const FIGHTERS: Fighter[] = [
   { slug: "nakamura-yusaku", nameJa: "中村優作", nameEn: "Yusaku Nakamura", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nagai-kanata", nameJa: "永井奏多", nameEn: "Kanata Nagai", org: "shooto", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "saito-shoji", nameJa: "齋藤奨司", nameEn: "Shoji Saito", org: "shooto", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "nakano-takaki", nameJa: "中野剛貴", nameEn: "Takaki Nakano", org: "shooto", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  // slug/nameEn修正(2026-07-18): 「剛貴」の読みは「ごうき」(旧
+  // nakano-takakiは誤読み、Kaina目視確定)。旧slugはfighterSlugRedirects.ts
+  // に恒久リダイレクトとして残す。
+  { slug: "nakano-goki", nameJa: "中野剛貴", nameEn: "Goki Nakano", org: "shooto", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "sugino-kosei", nameJa: "杉野光星", nameEn: "Kosei Sugino", org: "shooto", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "baterdene-simbaatar", nameJa: "シンバートルバットエルデネ", nameEn: "Simbaatar Baterdene", org: "shooto", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "nose-shohei", nameJa: "野瀬翔平", nameEn: "Shohei Nose", org: "shooto", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1231,7 +1247,10 @@ export const FIGHTERS: Fighter[] = [
   // 方針(引用符のみ除去・ニックネーム本文は残す)に合わせnameJaを補完。EVENT_RESULTS
   // 等で使われる素の「ベイノア」表記はaliasesで引き続き解決できるようにする。
   { slug: "beinoa", nameJa: "ブラックパンサーベイノア", nameEn: "Noah Bey", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "“ブラックパンサー”ベイノア", aliases: ["ベイノア"], nickname: "極真の黒豹" },
-  { slug: "suzuki-tomoya", nameJa: "鈴木慈也", nameEn: "Tomoya Suzuki", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  // slug/nameEn修正(2026-07-18): 「慈也」の読みは「ちかや」(旧suzuki-tomoya
+  // は誤読み、Pancrase公式プロフィールで確認)。旧slugはfighterSlugRedirects.ts
+  // に恒久リダイレクトとして残す。
+  { slug: "suzuki-chikaya", nameJa: "鈴木慈也", nameEn: "Chikaya Suzuki", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "yanagawa-yuito", nameJa: "栁川唯人", nameEn: "Yuito Yanagawa", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "rajabov-otabek", nameJa: "オタベク・ラジャボフ", nameEn: "Otabek Rajabov", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "arzykul-kalybek", nameJa: "カリベク・アルジクルウール", nameEn: "Kalybek Arzykul uulu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
@@ -1272,7 +1291,11 @@ export const FIGHTERS: Fighter[] = [
   { slug: "torres-jose", nameJa: "ホセ・トーレス", nameEn: "Jose Torres", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ホセ・トーレス (格闘家)", nickname: "BRAVE CFの弾丸レスラー" },
   { slug: "gustavo-luis", nameJa: "ルイス・グスタボ", nameEn: "Luiz Gustavo", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ルイス・グスタボ", nickname: "ファベーラの必殺仕事人" },
   { slug: "soldatkin-alexander", nameJa: "アレクサンダー・ソルダトキン", nameEn: "Aleksandr Soldatkin", org: "rizin", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "アレクサンダー・ソルダトキン", nickname: "ウラルの大魔神" },
-  { slug: "dautbek-karshyga", nameJa: "カルシャガ・ダウトベック", nameEn: "Karshyga Dautbek", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "カルシャガ・ダウトベック", nickname: "King of Kazakhstan" },
+  // slug語順修正(2026-07-18): カルシャガが姓・ダウトベックが名(nameJa表記
+  // 順=nameEn表記順と一致)。旧dautbek-karshygaはslugだけ姓名が逆だった
+  // (誤読みではなく語順の不整合)。nameJa/nameEnは変更不要(既に正しい)。
+  // 旧slugはfighterSlugRedirects.tsに恒久リダイレクトとして残す。
+  { slug: "karshyga-dautbek", nameJa: "カルシャガ・ダウトベック", nameEn: "Karshyga Dautbek", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "カルシャガ・ダウトベック", nickname: "King of Kazakhstan" },
   { slug: "sheydullaev-rajabali", nameJa: "ラジャブアリ・シェイドゥラエフ", nameEn: "Razhabali Shaidulloev", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ラジャブアリ・シェイドゥラエフ", nickname: "キルギスの犬鷲" },
   { slug: "karamov-vugar", nameJa: "ヴガール・ケラモフ", nameEn: "Vugar Karamov", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ヴガール・ケラモフ", nickname: "コーカサスの雷" },
   { slug: "nozimov-ilkhom", nameJa: "イルホム・ノジモフ", nameEn: "Ilkhom Nozimov", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "イルホム・ノジモフ", nickname: "タシケントの闘犬" },
