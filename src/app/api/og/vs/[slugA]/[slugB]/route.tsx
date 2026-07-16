@@ -53,7 +53,12 @@ function FighterSide({
           display: "flex",
           flexDirection: "column",
           width: `${NAME_ZONE.maxWidth}px`,
-          maxHeight: `${NAME_ZONE.maxHeight}px`,
+          // maxHeightだと1行の名前(例: 平本蓮)は実高さが縮み、2行の名前
+          // (例: ダニー・サバテロ)より短くなる。左右で名前の行数が違うと
+          // 名前より下の戦績/勝率/バッジが左右でズレる原因になっていたため、
+          // 1行でも2行でも常にこの高さを占有する固定heightにする(fitNameの
+          // maxLines:2により3行以上にはならない前提)。
+          height: `${NAME_ZONE.maxHeight}px`,
           justifyContent: "center",
           alignItems: align,
         }}
