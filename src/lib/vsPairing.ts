@@ -2,6 +2,7 @@
 import type { Fighter } from "./fighters";
 import type { FighterRecordEntry } from "./fighterRecordsCache";
 import { computeHeadToHead, computeCommonOpponents } from "./articleGenerator";
+import { findMatchupEvent } from "./events";
 
 // 正規順 = スラッグの辞書順昇順(spec §1.2)。/vs/a/bと/vs/b/aの重複URLを許さない。
 export function normalizeVsSlugs(slugA: string, slugB: string): { a: string; b: string; wasSwapped: boolean } {
@@ -23,6 +24,18 @@ export function isVsPairIndexable(
 }
 
 // シェア文言(spec §3)。将来イベント連動時の差し替えに備え1箇所に集約する。
+// 架空カード(夢のカード)用のデフォルト文言。
 export function vsShareText(nameA: string, nameB: string): string {
   return `もし「${nameA} vs ${nameB}」が実現したら―― #夢のカード`;
+}
+
+// spec §3で予告されていた「将来イベント連動時の差し替え」を実装したもの(旧PR#28の
+// 運用フィードバック: 実際に組まれている大会の対戦カードを「もし実現したら」と
+// 仮定形で投稿するのは実態と合わない、との指摘)。
+// findMatchupEvent()で開催予定大会の実カードと一致すれば【大会名_注目カード】タグを
+// 冒頭に付けた実況調の文言にし、一致しなければ従来の夢のカード文言にフォールバックする。
+export function buildVsShareText(nameA: string, nameB: string): string {
+  const matchup = findMatchupEvent(nameA, nameB);
+  if (matchup) return `【${matchup.event.eventName}_注目カード】${nameA} vs ${nameB}`;
+  return vsShareText(nameA, nameB);
 }

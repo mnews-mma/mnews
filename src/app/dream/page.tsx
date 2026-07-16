@@ -9,7 +9,7 @@ import { getFighter } from "@/lib/fighters";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
-import { normalizeVsSlugs, vsShareText } from "@/lib/vsPairing";
+import { normalizeVsSlugs, buildVsShareText } from "@/lib/vsPairing";
 import { pageMetadata } from "@/lib/seo";
 
 const SITE_URL = "https://www.mnews.jp";
@@ -70,7 +70,7 @@ export default async function DreamPage({
   const vsPagePath = normalized ? `/vs/${normalized.a}/${normalized.b}` : null;
   const shareUrl = vsPagePath ? `${SITE_URL}${vsPagePath}` : null;
   const shareText =
-    canGenerate && fighterA && fighterB ? vsShareText(fighterA.nameJa, fighterB.nameJa) : "";
+    canGenerate && fighterA && fighterB ? buildVsShareText(fighterA.nameJa, fighterB.nameJa) : "";
 
   return (
     <>
