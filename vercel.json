@@ -8,5 +8,10 @@
       "path": "/api/cron/daily-digest",
       "schedule": "0 23 * * *"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_NEW_MATCHUP_UI": "0"
+    }
+  }
 }
