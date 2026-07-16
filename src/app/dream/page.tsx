@@ -3,12 +3,13 @@ import Footer from "@/components/Footer";
 import BoutCard from "@/components/BoutCard";
 import DreamPicker from "@/components/DreamPicker";
 import DreamPickerV2 from "@/components/DreamPickerV2";
-import DreamCardV2 from "@/components/matchup/DreamCardV2";
+import VsCard from "@/components/matchup/VsCard";
 import XShareLink from "@/components/XShareLink";
 import { getFighter } from "@/lib/fighters";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
+import { normalizeVsSlugs, vsShareText } from "@/lib/vsPairing";
 import { pageMetadata } from "@/lib/seo";
 
 const SITE_URL = "https://www.mnews.jp";
@@ -63,14 +64,13 @@ export default async function DreamPage({
   // シェアURLに含めない(長大なURLエンコードを避ける)。
   const weightLabel = fighterA && fighterB ? "夢のマッチ" : undefined;
 
-  const shareUrl =
-    canGenerate && fighterA && fighterB
-      ? `${SITE_URL}/vs/${fighterA.slug}/${fighterB.slug}`
-      : null;
+  // 共有先・「このカードのページへ」リンクは正規順(スラッグ辞書順)の/vs URLに統一する
+  // (spec §1.2)。/dream側の画面表示順(A/B選択順)は変えない。
+  const normalized = canGenerate && fighterA && fighterB ? normalizeVsSlugs(fighterA.slug, fighterB.slug) : null;
+  const vsPagePath = normalized ? `/vs/${normalized.a}/${normalized.b}` : null;
+  const shareUrl = vsPagePath ? `${SITE_URL}${vsPagePath}` : null;
   const shareText =
-    canGenerate && fighterA && fighterB
-      ? `もし「${fighterA.nameJa} vs ${fighterB.nameJa}」が実現したら—— #夢のカード`
-      : "";
+    canGenerate && fighterA && fighterB ? vsShareText(fighterA.nameJa, fighterB.nameJa) : "";
 
   return (
     <>
@@ -92,7 +92,7 @@ export default async function DreamPage({
         {isV2 ? (
           canGenerateV2 && fighterA && fighterB ? (
             <>
-              <DreamCardV2
+              <VsCard
                 nameA={fighterA.nameJa}
                 nameB={fighterB.nameJa}
                 slugA={fighterA.slug}
@@ -103,7 +103,7 @@ export default async function DreamPage({
                 entryB={entryB!}
                 visibleSlugs={visibleSlugs}
               />
-              <div style={{ marginTop: 16 }}>
+              <div style={{ marginTop: 16, display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <XShareLink
                   text={shareText}
                   url={shareUrl!}
@@ -120,6 +120,21 @@ export default async function DreamPage({
                 >
                   𝕏 でシェア
                 </XShareLink>
+                <a
+                  href={vsPagePath!}
+                  style={{
+                    display: "inline-block",
+                    padding: "10px 20px",
+                    border: "1px solid var(--border)",
+                    color: "inherit",
+                    fontWeight: 700,
+                    borderRadius: 4,
+                    fontSize: 14,
+                    textDecoration: "none",
+                  }}
+                >
+                  このカードのページへ
+                </a>
               </div>
             </>
           ) : (
