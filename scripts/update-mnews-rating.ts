@@ -55,15 +55,16 @@ import {
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
+import { isDivisionExit } from "../src/lib/mnewsRating/divisionExits";
 import { getDivisionOverlay, getEligibilityScopeStartDate, getRecordDisplayExclusions } from "../src/lib/mnewsRating/fighterDivisions";
 import {
   ALGORITHM_VERSION,
   ELO_PARAMS_V5,
   DECAY_PARAMS_V6,
   INITIAL_RATING_BOOST_PARAMS_V6,
-  SIGMA_DISCOUNT_COEFFICIENT_V7,
+  SIGMA_DISCOUNT_COEFFICIENT_V9,
+  RECENCY_HALF_LIFE_MONTHS_V9,
 } from "../src/lib/mnewsRating/constants";
-import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -207,7 +208,15 @@ function main() {
     [...preDebutRecords.keys()].map((slug) => [slug, summarizeBoutsForFighter(bouts, slug).length])
   );
   const initialRatingOverrides = computeInitialRatingOverrides(preDebutRecords, INITIAL_RATING_BOOST_PARAMS_V6, rizinFightCountsForSeed);
-  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides);
+  // v9: recency(K減衰)基準日は、カレンダー当日ではなく全体で最も新しい
+  // RIZIN MMA boutの開催日を使う(constants.tsのRECENCY_HALF_LIFE_MONTHS_V9
+  // コメント参照。大会が開催されていない期間に全選手が一律に減衰し続ける
+  // のを避けるため)。boutsは既に構築済みなのでここで単純に最大日付を取る。
+  const recencyAsOf = bouts.reduce((max, b) => (b.date > max ? b.date : max), "");
+  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides, {
+    asOf: recencyAsOf ? new Date(recencyAsOf) : asOf,
+    halfLifeMonths: RECENCY_HALF_LIFE_MONTHS_V9,
+  });
   const publishable = filterPublishableStates(states, records);
   // v6: 不活性ディケイ廃止(比較ダンプでの目視レビューを経て採用)。
   const display = buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6);
@@ -218,7 +227,10 @@ function main() {
   // (!hidden)と揃え、ランキングにも掲載しない。事実オーバーレイ(引退)とは別軸
   // だが、いずれも「掲載資格を満たしていても事実として除外する」という扱いは同じ。
   const hiddenSlugs = new Set(FIGHTERS.filter((f) => f.hidden).map((f) => f.slug));
-  const isExcludedByFact = (slug: string): boolean => isRetired(slug) || hiddenSlugs.has(slug);
+  // v9: 王座返上・階級離脱(divisionExits.ts)は階級ごとの除外のため、
+  // isRetired/hiddenと違い対象divisionを引数に取る。
+  const isExcludedByFact = (slug: string, division: MnewsDivision): boolean =>
+    isRetired(slug) || hiddenSlugs.has(slug) || isDivisionExit(slug, division);
 
   // B-1(ランカー勝ち特例)・B-2(階級変更後の資格スコープ)。二段階・単一パスで
   // 掲載資格を確定する。順位はここでは一切決めない(Eloレート順は
@@ -233,7 +245,8 @@ function main() {
   const baseRankersByDivision = new Map<MnewsDivision, Set<string>>();
   for (const division of MNEWS_DIVISIONS) baseRankersByDivision.set(division, new Set());
   for (const [slug, division] of divisionBySlug) {
-    if (!division || isExcludedByFact(slug)) continue;
+    if (!division) continue;
+    if (isExcludedByFact(slug, division)) continue;
     const summaries = boutSummariesBySlug.get(slug) ?? [];
     const lastFightDate = display.get(slug)?.lastFightDate ?? null;
     if (isStandardEligible(summaries, division, lastFightDate, asOf)) {
@@ -259,51 +272,19 @@ function main() {
     const eligibleEntries = [...display.entries()]
       .filter(
         ([slug]) =>
-          divisionBySlug.get(slug) === division && !isExcludedByFact(slug) && (rankers.has(slug) || rankerWinExemptions.has(slug))
+          divisionBySlug.get(slug) === division &&
+          !isExcludedByFact(slug, division) &&
+          (rankers.has(slug) || rankerWinExemptions.has(slug))
       )
       .map(([slug, e]) => ({
         meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
         display: applyEligibilityScopeToRecord(slug, e, bouts),
       }));
-    // P1(σディスカウント D=70)+P0-B(単調性オーバーレイ、距離無制限ハード
-    // 制約、2026-07-17改訂)。H2Hはこのdivisionの資格保有選手同士の決着済み
-    // 対戦のみ(捏造ゼロ、boutsは既に構築済みのElo計算用の全対戦から抽出。
-    // 詳細はconstants.tsのSIGMA_DISCOUNT_COEFFICIENT_V7コメント参照)。
-    const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
-    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs);
+    // v9: H2H単調性オーバーレイは完全にOFF(constants.tsのSIGMA_DISCOUNT_
+    // COEFFICIENT_V9直前の設計ノート参照)。σディスカウントのみ有効
+    // (monotonicity引数を渡さない=undefined)。
     const key = divisionRankingsKey(division);
-    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion, undefined, SIGMA_DISCOUNT_COEFFICIENT_V7, {
-      h2hWins,
-    });
-
-    // 常設の自己検証(2026-07-17 P0-B): 全H2Hペアで「勝者の順位<=敗者の順位」
-    // または循環(スキップ対象)のいずれかが成立していることを機械チェックする。
-    // 違反が1件でもあれば書き込み前に例外で止める(P0-Aで発見した「実は
-    // バグではなく循環だった」ケースとの取り違えを防ぐため、循環は
-    // checkH2HInvariant内部で除外済み=ここで検出される違反は正真正銘の
-    // バグのみ)。
-    const finalRankedSlugs = out[key].entries.map((e) => e.fighterId);
-    const violations = checkH2HInvariant(finalRankedSlugs, h2hWins);
-    if (violations.length > 0) {
-      console.error(`H2H不変条件違反を検出(${division}):`);
-      for (const v of violations) {
-        console.error(`  ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直接勝っているのに下位のまま`);
-      }
-      throw new Error(`H2H不変条件違反が${violations.length}件検出されたため書き込みを中止しました(${division})`);
-    }
-
-    // 非対称ガード(2026-07-17・(b)案): 循環内リオーダーは「最も古い辺だけを
-    // 諦める」設計のため、直近半年以内の対戦で勝者が敗者より下位のままという
-    // ケースは循環の有無を問わずゼロでなければならない(古い辺が破れるのは
-    // 許容、新しい辺が破れるのは不許可という非対称性をここで機械的に強制する)。
-    const recentViolations = checkRecentH2HInvariant(finalRankedSlugs, h2hWins, asOf);
-    if (recentViolations.length > 0) {
-      console.error(`直近半年H2H非対称ガード違反を検出(${division}):`);
-      for (const v of recentViolations) {
-        console.error(`  ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直近半年以内の直接対決で勝っているのに下位のまま`);
-      }
-      throw new Error(`直近半年H2H非対称ガード違反が${recentViolations.length}件検出されたため書き込みを中止しました(${division})`);
-    }
+    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion, undefined, SIGMA_DISCOUNT_COEFFICIENT_V9);
   }
 
   let published: RankingsFile = out;

@@ -483,10 +483,28 @@ function applyResult(
 // ノードのみ(filterPublishableStates参照)。
 // 冪等性優先: 常に全履歴を頭から再計算する(バッチ実行日には一切依存しない)。
 // params省略時はNEUTRAL_ELO_PARAMS(対称Elo・v3までと同一挙動)。
+// recency(時間減衰): 各試合のElo更新量Kに、試合日からasOfまでの経過に応じた
+// 重み 0.5^(ageMonths / halfLifeMonths) を掛ける。asOfは基準日(直近大会日を
+// 想定。カレンダー当日にすると無大会期間もじわじわ全員減衰するため)。
+// 省略時は減衰なし(現行と完全に後方互換)。
+export interface RecencyOptions {
+  asOf: Date;
+  halfLifeMonths: number;
+}
+function recencyWeight(boutDate: string, opt: RecencyOptions): number {
+  const ageMonths = (opt.asOf.getTime() - new Date(boutDate).getTime()) / (1000 * 60 * 60 * 24 * 30.4375);
+  if (ageMonths <= 0) return 1;
+  return Math.pow(0.5, ageMonths / opt.halfLifeMonths);
+}
+
 export function computeRawRatings(
   bouts: Bout[],
   params: AsymmetricEloParams = NEUTRAL_ELO_PARAMS,
-  initialRatingOverrides?: Map<string, number>
+  initialRatingOverrides?: Map<string, number>,
+  recency?: RecencyOptions,
+  // ダンプ/検証用: 各試合の処理直前に両者の「その時点(当時)のrawRating・実戦数」を
+  // 通知する。ランキング本体には一切影響しない(読み取り専用のフック)。
+  onBout?: (bout: Bout, aBefore: number, bBefore: number, aFights: number, bFights: number) => void
 ): Map<string, RatingState> {
   const states = new Map<string, RatingState>();
   const get = (id: string) => states.get(id) ?? freshState(initialRatingOverrides?.get(id));
@@ -494,9 +512,11 @@ export function computeRawRatings(
   const sorted = [...bouts].sort((x, y) => (x.date < y.date ? -1 : x.date > y.date ? 1 : x.key < y.key ? -1 : 1));
 
   for (const bout of sorted) {
-    const k = bout.finish ? K_FINISH : K_BASE;
+    let k = bout.finish ? K_FINISH : K_BASE;
+    if (recency) k *= recencyWeight(bout.date, recency);
     const a = get(bout.aNode);
     const b = get(bout.bNode);
+    if (onBout) onBout(bout, a.rawRating, b.rawRating, a.fights, b.fights);
     const newA = applyResult(a, bout.scoreA, b.rawRating, b.fights, k, bout.date, params);
     const newB = applyResult(b, 1 - bout.scoreA, a.rawRating, a.fights, k, bout.date, params);
     states.set(bout.aNode, newA);

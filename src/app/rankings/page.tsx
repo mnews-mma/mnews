@@ -3,13 +3,18 @@ import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
-import { fetchRankings, RANKINGS_REVALIDATE } from "@/lib/mnewsRatingData";
+import { fetchRankings } from "@/lib/mnewsRatingData";
 import { getDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { MNEWS_DIVISIONS, DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata } from "@/lib/seo";
 
-export const revalidate = RANKINGS_REVALIDATE;
+// Next.jsのページセグメントconfig(revalidate)は静的解析のみでリテラル値しか
+// 認識できず、importした定数を直接代入するとビルドエラーになる
+// (「can't recognize the exported `config` field」)。mnewsRatingData.tsの
+// RANKINGS_REVALIDATEと必ず同じ値を保つこと(データ層とページ層のキャッシュ窓を
+// 揃えて新旧混在ゼロを担保する設計のため、値を変える際は両方を同時に変更する)。
+export const revalidate = 900;
 
 export const metadata = pageMetadata({
   title: "AI RIZINランキング 階級別｜RIZIN公式にない独自ランキングをAIが算出【mnews】",
