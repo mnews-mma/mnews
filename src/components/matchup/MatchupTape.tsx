@@ -1,4 +1,6 @@
 import styles from "@/styles/matchup.module.css";
+import TugBar from "./TugBar";
+import { fighterNameSize, insertNameBreaks } from "@/lib/vsMath";
 import type { Result, TapeFighterData } from "./matchupData";
 
 const FORM_LABEL: Record<Result, string> = { win: "W", loss: "L", draw: "D", nc: "D" };
@@ -8,6 +10,22 @@ const FORM_CLASS: Record<Result, string> = {
   draw: styles.formD,
   nc: styles.formD,
 };
+
+// 選手名の表示用ノード。文字数段階(spec §4.2)でフォントサイズを決め、
+// 「・」直後で改行できるようゼロ幅スペースを挿む(spec §4.3)。
+function FighterNameText({ name }: { name: string }) {
+  return (
+    <h3 className={styles.fighterName} style={{ fontSize: `${fighterNameSize(name)}px` }}>
+      {insertNameBreaks(name)}
+    </h3>
+  );
+}
+
+// 戦績(勝率)行の数値表示。「勝率」算出不能(未勝負)の場合は記録のみ、
+// 記録自体が完全に空欄(データなし)の呼び出しは想定しない(呼び出し側でnoRecordData分岐済み)。
+function recordDisplay(record: string, winRate: number | null): string {
+  return winRate === null ? record : `${record}（勝率${winRate}%）`;
+}
 
 function FormChips({ last5, side }: { last5: Result[]; side: "red" | "blue" }) {
   if (last5.length === 0) return null;
@@ -25,10 +43,10 @@ function FormChips({ last5, side }: { last5: Result[]; side: "red" | "blue" }) {
 
 function MethodCountsLine({ counts }: { counts: { ko: number; sub: number; decision: number } }) {
   return (
-    <li className={styles.statsBreak}>
+    <div className={styles.statsBreak}>
       KO<b className={styles.num}>{counts.ko}</b>一本<b className={styles.num}>{counts.sub}</b>判定
       <b className={styles.num}>{counts.decision}</b>
-    </li>
+    </div>
   );
 }
 
@@ -43,10 +61,13 @@ const RESULT_MARK_CLASS: Record<NonNullable<TapeFighterData["resultMark"]>, stri
   draw: styles.resN,
 };
 
-// タレント・オブ・ザ・テープ1コーナー分を、4つの独立したgrid-area要素として描画する
-// (名前=na/nb・記録=ra/rb・戦績=sa/sb・戦績ドット=fa/fb)。左右セットで同じ行に
-// 配置されることで、片方の名前が2行に折り返しても次の行(記録)は両側とも同じ
-// 基準線から始まる(構造的な行揃え、目視調整に頼らない)。
+// タレント・オブ・ザ・テープを、独立したgrid-area要素として描画する
+// (名前=na/nb・戦績+勝率/フィニッシュ率バー=bar1/bar2(全幅)・内訳=ma/mb・
+// 戦績ドット=fa/fb)。左右セットで同じ行に配置されることで、片方の名前が
+// 2行に折り返しても次の行は両側とも同じ基準線から始まる
+// (構造的な行揃え、目視調整に頼らない)。戦績・勝率・フィニッシュ率は
+// spec §5の綱引きバーで表現し、絶対値(記録)はバーの数値行に統合する
+// (旧デザインの ra/rb 独立行は廃止)。
 export default function MatchupTape({
   left,
   right,
@@ -56,8 +77,7 @@ export default function MatchupTape({
   right: TapeFighterData;
   compact?: boolean;
 }) {
-  const leftName = <h3 className={styles.fighterName}>{left.name}</h3>;
-  const rightName = <h3 className={styles.fighterName}>{right.name}</h3>;
+  const hasMethodCounts = !!left.methodCounts || !!right.methodCounts;
 
   return (
     <div className={`${styles.tape}${compact ? ` ${styles.tapeCompact}` : ""}`}>
@@ -72,28 +92,15 @@ export default function MatchupTape({
           {left.resultMark && (
             <span className={`${styles.res} ${RESULT_MARK_CLASS[left.resultMark]}`}>{RESULT_MARK_SYMBOL[left.resultMark]}</span>
           )}
-          {left.slug ? <a href={`/fighters/${left.slug}`}>{leftName}</a> : leftName}
+          {left.slug ? (
+            <a href={`/fighters/${left.slug}`}>
+              <FighterNameText name={left.name} />
+            </a>
+          ) : (
+            <FighterNameText name={left.name} />
+          )}
         </div>
       </div>
-      <div className={`${styles.ra} ${styles.cornerRed}`}>
-        <span className={`${styles.recordWl} ${styles.num}`}>{left.record}</span>
-      </div>
-      <ul className={`${styles.sa} ${styles.stats}`}>
-        {left.winRate !== null && (
-          <li>
-            勝率<b className={styles.num}>{left.winRate}%</b>
-          </li>
-        )}
-        {left.finishRate !== null && (
-          <li>
-            フィニッシュ率<b className={styles.num}>{left.finishRate}%</b>
-          </li>
-        )}
-        {left.methodCounts && <MethodCountsLine counts={left.methodCounts} />}
-      </ul>
-      {left.last5 && <FormChips last5={left.last5} side="red" />}
-
-      <div className={styles.vs}>VS</div>
 
       {/* 右(青)コーナー */}
       <div className={`${styles.nkb} ${styles.cornerBlue}`}>
@@ -104,25 +111,49 @@ export default function MatchupTape({
           {right.resultMark && (
             <span className={`${styles.res} ${RESULT_MARK_CLASS[right.resultMark]}`}>{RESULT_MARK_SYMBOL[right.resultMark]}</span>
           )}
-          {right.slug ? <a href={`/fighters/${right.slug}`}>{rightName}</a> : rightName}
+          {right.slug ? (
+            <a href={`/fighters/${right.slug}`}>
+              <FighterNameText name={right.name} />
+            </a>
+          ) : (
+            <FighterNameText name={right.name} />
+          )}
         </div>
       </div>
-      <div className={`${styles.rb} ${styles.cornerBlue}`}>
-        <span className={`${styles.recordWl} ${styles.num}`}>{right.record}</span>
+
+      <div className={styles.vs}>VS</div>
+
+      <div className={styles.bar1}>
+        <TugBar
+          label="戦績"
+          valueA={left.winRate}
+          valueB={right.winRate}
+          displayA={recordDisplay(left.record, left.winRate)}
+          displayB={recordDisplay(right.record, right.winRate)}
+        />
       </div>
-      <ul className={`${styles.sb} ${styles.stats}`}>
-        {right.winRate !== null && (
-          <li>
-            勝率<b className={styles.num}>{right.winRate}%</b>
-          </li>
-        )}
-        {right.finishRate !== null && (
-          <li>
-            フィニッシュ率<b className={styles.num}>{right.finishRate}%</b>
-          </li>
-        )}
-        {right.methodCounts && <MethodCountsLine counts={right.methodCounts} />}
-      </ul>
+      <div className={styles.bar2}>
+        <TugBar
+          label="フィニッシュ率"
+          valueA={left.finishRate}
+          valueB={right.finishRate}
+          displayA={left.finishRate === null ? "—" : `${left.finishRate}%`}
+          displayB={right.finishRate === null ? "—" : `${right.finishRate}%`}
+        />
+      </div>
+
+      {hasMethodCounts && (
+        <>
+          <div className={styles.ma}>
+            {left.methodCounts && <MethodCountsLine counts={left.methodCounts} />}
+          </div>
+          <div className={styles.mb}>
+            {right.methodCounts && <MethodCountsLine counts={right.methodCounts} />}
+          </div>
+        </>
+      )}
+
+      {left.last5 && <FormChips last5={left.last5} side="red" />}
       {right.last5 && <FormChips last5={right.last5} side="blue" />}
     </div>
   );
