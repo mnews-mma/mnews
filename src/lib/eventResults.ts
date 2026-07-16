@@ -1575,7 +1575,7 @@ export const EVENT_RESULTS: EventResult[] = [
         fighterA: "神龍誠",
         fighterB: "エンカジムーロ・ズールー",
         winner: "神龍誠",
-        method: "アームロック",
+        method: "キムラロック",
         round: "1R 2:52",
       },
       {
