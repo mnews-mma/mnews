@@ -1,5 +1,86 @@
 [
   {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】萩原京平、ダウトベック戦へ「普通ならありえないカードだけど、勝てば一気に序列も変わってくる、僕が2RでKO」平本蓮の「やるならダウトベック」には「勝ったら必然的に僕になる。“黙って待っとけ”」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24346",
+    "publishedAt": "2026-07-16T11:33:14.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】ダウトベックが萩原京平をリスペクト「強い相手にもひるまず戦っていく、その姿を本当に私は尊敬している。相手として不足はない」秋元強真とも「ぜひやりたい」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24345",
+    "publishedAt": "2026-07-16T10:56:33.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】萩原京平「ダウトベックを2RでKOする」9月の大阪ドームは「平本蓮とやりますよ」",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468369/",
+    "publishedAt": "2026-07-16T10:25:00.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "試合後から7/25（土）まで！RIZIN LANDMARK 15 in HIROSHIMA × KAKEHASHI コラボオークション開催！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17852488",
+    "publishedAt": "2026-07-16T09:14:18.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
+    "id": "oricon-1",
+    "source": "other",
+    "title": "【RIZIN】鹿志村仁之介、打倒サバテロに自信「穴は見えている」ジョリーへの“黙ってろ”発言の真意も説明",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468329/",
+    "publishedAt": "2026-07-16T09:06:00.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
+    "id": "rizin-1",
+    "source": "rizin",
+    "title": "【参加者募集】「コーエィ株式会社 presents RIZINビーチハウス 子供海の家 PROJECT 2026」開催！参加料金完全無料！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17852763",
+    "publishedAt": "2026-07-16T08:50:07.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
+    "id": "oricon-2",
+    "source": "other",
+    "title": "【RIZIN】ヒロヤ、連敗脱出へ強い覚悟 欠場の篠塚辰樹へ「はよ治せよ」POWポーズも披露",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468287/",
+    "publishedAt": "2026-07-16T07:40:00.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
+    "id": "gonkaku-3",
+    "source": "other",
+    "title": "【RIZIN】荒ぶるサバテロ「鹿志村はビッチの役立たず。全くレベルが違う」「自分が蹴った鹿志村の頭がそのまま観客席に飛んでいって最高のお土産になる」「平本“4勝3敗”蓮はクソ野郎。いい加減黙った方がいい」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24343",
+    "publishedAt": "2026-07-16T06:47:42.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
+    "id": "oricon-3",
+    "source": "other",
+    "title": "【RIZIN】王者サバテロ「必ずフィニッシュする」平本蓮にも口撃「昔から大嫌い。マザー◯ァッカー」",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468262/",
+    "publishedAt": "2026-07-16T06:47:00.000Z",
+    "firstSeenAt": "2026-07-16T12:10:43.251Z"
+  },
+  {
     "id": "oricon-0",
     "source": "other",
     "title": "【RIZIN】「篠塚辰樹はパーティ三昧のくせに私が怖くて逃げた」イ・ジェフンが痛烈に挑発 火の鳥も「弱い」",
