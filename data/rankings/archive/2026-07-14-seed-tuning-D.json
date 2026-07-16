@@ -238,7 +238,7 @@
     },
     {
       "division": "flyweight",
-      "fighterId": "seiya-takashi",
+      "fighterId": "soya-takaki",
       "rankBefore": 8,
       "rankAfter": 11,
       "ratingBefore": 1520,
@@ -348,7 +348,7 @@
     },
     {
       "division": "bantamweight",
-      "fighterId": "sato-masamitsu",
+      "fighterId": "sato-shoko",
       "rankBefore": 2,
       "rankAfter": 2,
       "ratingBefore": 1640,
@@ -480,7 +480,7 @@
     },
     {
       "division": "bantamweight",
-      "fighterId": "kashimura-ninnosuke",
+      "fighterId": "kashimura-jinnosuke",
       "rankBefore": 9,
       "rankAfter": 8,
       "ratingBefore": 1550,
@@ -546,7 +546,7 @@
     },
     {
       "division": "bantamweight",
-      "fighterId": "miyagawa-hinata",
+      "fighterId": "miyagawa-hyuga",
       "rankBefore": 12,
       "rankAfter": 11,
       "ratingBefore": 1510,
@@ -744,7 +744,7 @@
     },
     {
       "division": "featherweight",
-      "fighterId": "dautbek-karshyga",
+      "fighterId": "karshyga-dautbek",
       "rankBefore": 6,
       "rankAfter": 4,
       "ratingBefore": 1600,
@@ -1096,7 +1096,7 @@
     },
     {
       "division": "lightweight",
-      "fighterId": "horie-keiko",
+      "fighterId": "horie-yoshinori",
       "rankBefore": 5,
       "rankAfter": 4,
       "ratingBefore": 1580,
@@ -1316,7 +1316,7 @@
     },
     {
       "division": "heavyweight",
-      "fighterId": "kikanoshin",
+      "fighterId": "takenshin",
       "rankBefore": 3,
       "rankAfter": 3,
       "ratingBefore": 1510,

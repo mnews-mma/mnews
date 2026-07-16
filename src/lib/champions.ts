@@ -76,7 +76,7 @@ export const DEEP_RANKING_CLASSES: { weightClass: string; entries: { rank: strin
     weightClass: "バンタム級",
     entries: [
       { rank: "王者", name: "福田龍彌", slug: "fukuda-ryuya" },
-      { rank: "暫定王者", name: "鹿志村仁之介", slug: "kashimura-ninnosuke" },
+      { rank: "暫定王者", name: "鹿志村仁之介", slug: "kashimura-jinnosuke" },
     ],
   },
   {

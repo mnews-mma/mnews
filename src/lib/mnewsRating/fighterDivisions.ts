@@ -183,7 +183,7 @@ export const FIGHTER_DIVISION_OVERLAYS: FighterDivisionOverlayEntry[] = [
       "判定には一切影響しない(表示戦績のみ)。",
   },
   {
-    slug: "horie-keiko",
+    slug: "horie-yoshinori",
     name: "堀江圭功",
     division: "ライト級",
     eligibilityScopeStartDate: "2023-09-24",

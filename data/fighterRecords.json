@@ -5869,7 +5869,7 @@
     "birthPlace": "島根県浜田市",
     "age": 31
   },
-  "kashimura-ninnosuke": {
+  "kashimura-jinnosuke": {
     "wins": 12,
     "losses": 5,
     "draws": 0,
@@ -6022,7 +6022,7 @@
     "birthPlace": "茨城県",
     "age": 24
   },
-  "sato-masamitsu": {
+  "sato-shoko": {
     "wins": 38,
     "losses": 17,
     "draws": 2,
@@ -7132,7 +7132,7 @@
     "birthPlace": "東京都三鷹市",
     "age": 27
   },
-  "seiya-takashi": {
+  "soya-takaki": {
     "wins": 13,
     "losses": 8,
     "draws": 1,
@@ -7625,7 +7625,7 @@
     "birthPlace": "神奈川県",
     "age": 29
   },
-  "horie-keiko": {
+  "horie-yoshinori": {
     "wins": 15,
     "losses": 6,
     "draws": 0,
@@ -9967,7 +9967,7 @@
     "birthPlace": "栃木県小山市",
     "age": 29
   },
-  "kikanoshin": {
+  "takenshin": {
     "wins": 4,
     "losses": 4,
     "draws": 0,
@@ -10187,7 +10187,7 @@
     "nickname": "怪物くん",
     "birthPlace": "愛知県豊橋市"
   },
-  "miyagawa-hinata": {
+  "miyagawa-hyuga": {
     "wins": 7,
     "losses": 7,
     "draws": 0,
@@ -12080,7 +12080,7 @@
     "live": false,
     "noRecordData": true
   },
-  "ushiku-kentaro": {
+  "ushiku-juntaro": {
     "wins": 22,
     "losses": 12,
     "draws": 0,
@@ -15226,7 +15226,7 @@
     "live": false,
     "noRecordData": true
   },
-  "terasaki-ryu": {
+  "terasaki-shoryu": {
     "wins": 0,
     "losses": 0,
     "draws": 0,
@@ -15647,7 +15647,7 @@
     "live": false,
     "noRecordData": true
   },
-  "hatakeyama-takanori": {
+  "hatakeyama-ryuya": {
     "wins": 0,
     "losses": 0,
     "draws": 0,
@@ -15727,7 +15727,7 @@
     "birthPlace": "東京都",
     "age": 24
   },
-  "yamagami-mikio": {
+  "yamagami-mikihito": {
     "wins": 12,
     "losses": 6,
     "draws": 0,
@@ -16564,7 +16564,7 @@
     "live": false,
     "noRecordData": true
   },
-  "nakano-takaki": {
+  "nakano-goki": {
     "wins": 0,
     "losses": 0,
     "draws": 0,
@@ -18414,7 +18414,7 @@
     "live": true,
     "nickname": "極真の黒豹"
   },
-  "suzuki-tomoya": {
+  "suzuki-chikaya": {
     "wins": 0,
     "losses": 0,
     "draws": 0,
@@ -21147,7 +21147,7 @@
     "live": true,
     "nickname": "ウラルの大魔神"
   },
-  "dautbek-karshyga": {
+  "karshyga-dautbek": {
     "wins": 19,
     "losses": 3,
     "draws": 0,

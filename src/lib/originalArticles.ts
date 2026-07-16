@@ -53,7 +53,7 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
     fights: [
       {
         fighterA: { slug: "sabatello-danny", nameJa: "ダニー・サバテロ" },
-        fighterB: { slug: "kashimura-ninnosuke", nameJa: "鹿志村仁之介" },
+        fighterB: { slug: "kashimura-jinnosuke", nameJa: "鹿志村仁之介" },
         weightClass: "バンタム級（61.0kg）",
         isTitleMatch: true,
         // 共通対戦相手: 後藤丈治(サバテロは2026-04-12に判定勝ち、鹿志村は

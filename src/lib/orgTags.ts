@@ -38,10 +38,10 @@ const norm = (s: string) => s.replace(/[\s　・☆]/g, "");
 export const NEW_TAGGED_SLUGS = new Set<string>([
   "ohara-juri", "kuramoto-daigo", "shimada-ibuki", "sakai-ryo", "sekihara-sho", "rikiya",
   "gomyo-hiroto", "tsubaki-asuka", "hibino-junya", "kenshiro", "nakatani-yuga", "suzuki-taisei",
-  "ushiku-kentaro", "muramoto-yutaro", "hiramatsu-sho", "sugiyama-sora", "abe-daiji", "takizawa-kenta",
+  "ushiku-juntaro", "muramoto-yutaro", "hiramatsu-sho", "sugiyama-sora", "abe-daiji", "takizawa-kenta",
   "nakamura-daisuke", "izumi-takeshi", "kindaichi-kosuke", "kubota-taito", "kozaki-ren", "seigo",
   "suwabe-teppei", "sugino-aren", "daiya", "strasser-kiichi", "kinoshita-karate", "naito-tank",
-  "arato-hidetaka", "terasaki-ryu", "miyabi-shunsuke", "karino-yu", "yamamoto-soushi", "kadono-kohei",
+  "arato-hidetaka", "terasaki-shoryu", "miyabi-shunsuke", "karino-yu", "yamamoto-soushi", "kadono-kohei",
   "ryoga", "takaoka-hiroki", "nakamura-yusaku", "nagai-kanata", "saito-shoji", "nose-shohei",
   "sasuke", "hikaru", "aoi-taichi", "tateo", "toma", "goto-ryo", "captain-africa", "nishio-shinsuke",
   "barboza-rafael", "kamiya-daichi", "kasuya-yusuke", "yanagawa-yuito", "rajabov-otabek", "hirata-naoki",
