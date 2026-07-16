@@ -53,7 +53,17 @@ function FighterSide({
           display: "flex",
           flexDirection: "column",
           width: `${NAME_ZONE.maxWidth}px`,
-          maxHeight: `${NAME_ZONE.maxHeight}px`,
+          // maxHeightだと1行の名前(例: 平本蓮)は実高さが縮み、2行の名前
+          // (例: ダニー・サバテロ)より短くなる。左右で名前の行数が違うと
+          // 名前より下の戦績/勝率/バッジが左右でズレる原因になっていたため、
+          // 1行でも2行でも常にこの高さを占有する固定heightにする。
+          height: `${NAME_ZONE.maxHeight}px`,
+          // 3行名対策(2026-07-18): fitName()はmaxLines:2に収まるようフォント
+          // 縮小を試みるが、極端に長い外国人名では縮小しても2行に収まらず
+          // 3行目以降を打ち切って返す(fitName.ts参照)。それでも幅推定誤差
+          // 等で万一はみ出した場合の最終防衛としてoverflow:hiddenを併用し、
+          // 固定高からの食み出しを構造的に防ぐ。
+          overflow: "hidden",
           justifyContent: "center",
           alignItems: align,
         }}

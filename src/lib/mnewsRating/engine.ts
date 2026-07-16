@@ -483,10 +483,28 @@ function applyResult(
 // ノードのみ(filterPublishableStates参照)。
 // 冪等性優先: 常に全履歴を頭から再計算する(バッチ実行日には一切依存しない)。
 // params省略時はNEUTRAL_ELO_PARAMS(対称Elo・v3までと同一挙動)。
+// recency(時間減衰): 各試合のElo更新量Kに、試合日からasOfまでの経過に応じた
+// 重み 0.5^(ageMonths / halfLifeMonths) を掛ける。asOfは基準日(直近大会日を
+// 想定。カレンダー当日にすると無大会期間もじわじわ全員減衰するため)。
+// 省略時は減衰なし(現行と完全に後方互換)。
+export interface RecencyOptions {
+  asOf: Date;
+  halfLifeMonths: number;
+}
+function recencyWeight(boutDate: string, opt: RecencyOptions): number {
+  const ageMonths = (opt.asOf.getTime() - new Date(boutDate).getTime()) / (1000 * 60 * 60 * 24 * 30.4375);
+  if (ageMonths <= 0) return 1;
+  return Math.pow(0.5, ageMonths / opt.halfLifeMonths);
+}
+
 export function computeRawRatings(
   bouts: Bout[],
   params: AsymmetricEloParams = NEUTRAL_ELO_PARAMS,
-  initialRatingOverrides?: Map<string, number>
+  initialRatingOverrides?: Map<string, number>,
+  recency?: RecencyOptions,
+  // ダンプ/検証用: 各試合の処理直前に両者の「その時点(当時)のrawRating・実戦数」を
+  // 通知する。ランキング本体には一切影響しない(読み取り専用のフック)。
+  onBout?: (bout: Bout, aBefore: number, bBefore: number, aFights: number, bFights: number) => void
 ): Map<string, RatingState> {
   const states = new Map<string, RatingState>();
   const get = (id: string) => states.get(id) ?? freshState(initialRatingOverrides?.get(id));
@@ -494,9 +512,11 @@ export function computeRawRatings(
   const sorted = [...bouts].sort((x, y) => (x.date < y.date ? -1 : x.date > y.date ? 1 : x.key < y.key ? -1 : 1));
 
   for (const bout of sorted) {
-    const k = bout.finish ? K_FINISH : K_BASE;
+    let k = bout.finish ? K_FINISH : K_BASE;
+    if (recency) k *= recencyWeight(bout.date, recency);
     const a = get(bout.aNode);
     const b = get(bout.bNode);
+    if (onBout) onBout(bout, a.rawRating, b.rawRating, a.fights, b.fights);
     const newA = applyResult(a, bout.scoreA, b.rawRating, b.fights, k, bout.date, params);
     const newB = applyResult(b, 1 - bout.scoreA, a.rawRating, a.fights, k, bout.date, params);
     states.set(bout.aNode, newA);
@@ -681,7 +701,13 @@ export function applyDisplayShrinkage(
 // 一律に順位を押し下げる(母集団平均への回帰ではなく、対戦数そのものに基づく
 // 信頼度の割引)。これにより「対戦数が少ないのに高いレートで上位に浮く」問題を
 // 直接是正できる(2戦の選手が8戦の選手より上、という逆転を作れる)。
+//
+// 2026-07-17(P1)追加: n=1へのディスカウント上限。σ(n)=C/√nのままだとn=1の
+// フルヒット(1戦のみの選手)がC/√1=C(D=70なら70pt)という過大な割引になり、
+// n=2(C/√2≈49.5pt)との差が不自然に大きい。分母をmax(n,2)にキャップし、
+// n=1もn=2と同じ割引(実質上限≈49.5pt@D=70)に揃える。n>=2は従来どおり
+// √nのまま変化なし(この変更はn=1のみに影響する)。
 export function computeSigmaDiscountedRating(rawRating: number, fights: number, coefficient: number): number {
   if (fights <= 0) return rawRating;
-  return rawRating - coefficient / Math.sqrt(fights);
+  return rawRating - coefficient / Math.sqrt(Math.max(fights, 2));
 }
