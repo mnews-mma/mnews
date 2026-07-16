@@ -1,5 +1,86 @@
 [
   {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】「篠塚辰樹はパーティ三昧のくせに私が怖くて逃げた」イ・ジェフンが痛烈に挑発 火の鳥も「弱い」",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468221/",
+    "publishedAt": "2026-07-16T04:40:00.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】シェイドゥラエフ推薦「これからRIZINファンの皆さんに注目を浴びるような、素晴らしい試合を見せると自信を持っている」、兄と慕うティレノフ「早期フィニッシュを当然狙う」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24342",
+    "publishedAt": "2026-07-16T04:30:17.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
+    "id": "oricon-1",
+    "source": "other",
+    "title": "【RIZIN】RIZIN新王者・神龍誠、父へ感謝のサプライズ「あなたの息子は世界最強になります」 武藤敬司が“必殺技”を伝授「実戦でいけるじゃん！」",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468198/",
+    "publishedAt": "2026-07-16T03:46:00.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "abc presents RIZIN LANDMARK 15 in HIROSHIMA 来場のご案内",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17849924",
+    "publishedAt": "2026-07-16T02:00:54.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】鹿志村の挑戦を受ける王者、ダニー・サバテロ「切り抜きの試合なんて見たくない」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233110?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590rizin-landmark15%25e3%2580%2591%25e9%25b9%25bf%25e5%25bf%2597%25e6%259d%2591%25e3%2581%25ae%25e6%258c%2591%25e6%2588%25a6%25e3%2582%2592%25e5%258f%2597%25e3%2581%2591%25e3%2582%258b%25e7%258e%258b%25e8%2580%2585%25e3%2580%2581%25e3%2583%2580%25e3%2583%258b%25e3%2583%25bc%25e3%2583%25bb%25e3%2582%25b5",
+    "publishedAt": "2026-07-16T01:30:22.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
+    "id": "rizin-1",
+    "source": "rizin",
+    "title": "7/17(金)14時半よりライブ配信！abc presents RIZIN LANDMARK 15 in HIROSHIMA 公開計量",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17852203",
+    "publishedAt": "2026-07-16T01:02:30.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】サバテロに挑戦、鹿志村仁之介「レスラーって得意なタイプなんですよね」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233102?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590rizin-landmark15%25e3%2580%2591%25e3%2582%25b5%25e3%2583%2590%25e3%2583%2586%25e3%2583%25ad%25e3%2581%25ab%25e6%258c%2591%25e6%2588%25a6%25e3%2580%2581%25e9%25b9%25bf%25e5%25bf%2597%25e6%259d%2591%25e4%25bb%2581%25e4%25b9%258b%25e4%25bb%258b%25e3%2580%258c%25e3%2583%25ac%25e3%2582%25b9%25e3%2583%25a9",
+    "publishedAt": "2026-07-16T00:00:56.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE 364：カリベク・アルジクル ウール選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase364/interview_kalybekarzykul.html",
+    "publishedAt": "2026-07-16T00:00:00.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
+    "id": "mmaplanet-2",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】初参戦で大島沙緒里とのリマッチ、イ・イェジ「攻め続けるというポリシー」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233089?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590rizin-landmark15%25e3%2580%2591%25e5%2588%259d%25e5%258f%2582%25e6%2588%25a6%25e3%2581%25a7%25e5%25a4%25a7%25e5%25b3%25b6%25e6%25b2%2599%25e7%25b7%2592%25e9%2587%258c%25e3%2581%25a8%25e3%2581%25ae%25e3%2583%25aa%25e3%2583%259e%25e3%2583%2583%25e3%2583%2581%25e3%2580%2581%25e3%2582%25a4%25e3%2583%25bb",
+    "publishedAt": "2026-07-15T22:42:22.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【RIZIN LANDMARK15】萩原京平との復帰戦へ、カルシャガ・ダウトベック「現時点ではフェザー級に」",
@@ -7,6 +88,15 @@
     "url": "https://mmaplanet.jp/233058?utm_source=rss&utm_medium=rss&utm_campaign=%25e3%2580%2590rizin-landmark15%25e3%2580%2591%25e8%2590%25a9%25e5%258e%259f%25e4%25ba%25ac%25e5%25b9%25b3%25e3%2581%25a8%25e3%2581%25ae%25e5%25be%25a9%25e5%25b8%25b0%25e6%2588%25a6%25e3%2581%25b8%25e3%2580%2581%25e3%2582%25ab%25e3%2583%25ab%25e3%2582%25b7%25e3%2583%25a3%25e3%2582%25ac%25e3%2583%25bb%25e3%2583%2580",
     "publishedAt": "2026-07-15T11:26:53.000Z",
     "firstSeenAt": "2026-07-15T12:55:34.982Z"
+  },
+  {
+    "id": "shooto-0",
+    "source": "shooto",
+    "title": "プロ修斗8月2日千葉大会『Lemino修斗~POUND OUT~』対戦カード②",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/07/15/post-51155/",
+    "publishedAt": "2026-07-15T09:15:00.000Z",
+    "firstSeenAt": "2026-07-16T06:37:44.791Z"
   },
   {
     "id": "shooto-0",
