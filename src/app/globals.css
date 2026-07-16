@@ -1478,11 +1478,6 @@ footer {
   margin-bottom: 8px;
 }
 
-/* 勝敗記号(○/✗/△)。方向・凡例の概念が無いので説明不要。✗はU+2717。 */
-.mk-win { color: #16a34a; }
-.mk-loss { color: #dc2626; }
-.mk-draw { color: #9ca3af; }
-
 /* 次戦プレビュー(バナー行の下に展開する比較+共通対戦相手) */
 .fighter-next-fight-row {
   display: flex;
@@ -1594,15 +1589,36 @@ footer {
 .nf-common-name:hover {
   text-decoration-color: var(--accent);
 }
+/* 共通対戦相手の勝敗マーク。直近5戦ドット(.fighter-strip-last5 span)・
+   直接対決バッジ(.nf-h2h-badge)と同じ13px丸バッジ意匠に統一する
+   (同一カード内で「勝ち」の記号がW/L/○/●等に混在しないようにするため)。
+   グリッドの列幅いっぱいに広がる素のspanを中央寄せする必要があるため
+   justify-self:centerを付ける(ヘッダー側は従来どおりtext-align:centerで
+   選手名の真下に揃う)。 */
 .nf-mk {
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  font-size: 8px;
   font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  justify-self: center;
+}
+.nf-mk--win {
+  background: #16a34a;
+}
+.nf-mk--loss {
+  background: #dc2626;
+}
+.nf-mk--draw {
+  background: #6b7280;
 }
 .nf-mk--empty {
-  color: var(--muted);
-  font-weight: 400;
+  background: #9ca3af;
 }
 
 /* 直接対決(2選手間の対戦履歴)。共通対戦相手(第三者との対戦一致)とは別枠、

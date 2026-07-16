@@ -6,32 +6,27 @@ import { renderWrappableName } from "@/lib/renderWrappableName";
 
 type Result = FighterRecordEntry["history"][number]["result"];
 
-// 勝敗記号は ○ / ● / △ のみ(サイト全体で直近5戦と統一)。方向・凡例の概念が
-// 無く説明不要で読める。
-const MARK: Record<Result, string> = {
-  win: "○",
-  loss: "●",
-  draw: "△",
-  nc: "△",
-};
+// 勝敗マークは直近5戦ドット(.fighter-strip-last5)と同じ意匠(緑地W/赤地L/
+// グレー地D・N)の丸バッジに統一する。文字もLAST5_SYMBOLを共有し、記号の
+// 二重定義を避ける。
 const MARK_CLASS: Record<Result, string> = {
-  win: "mk-win",
-  loss: "mk-loss",
-  draw: "mk-draw",
-  nc: "mk-draw",
+  win: "nf-mk--win",
+  loss: "nf-mk--loss",
+  draw: "nf-mk--draw",
+  nc: "nf-mk--draw",
 };
 
 // 勝敗マス。resultがnull(同一相手との対戦回数が左右で異なり、片方に対戦が
-// 無い回)の場合は「-」の空欄表示にする。
+// 無い回)の場合は、サイズ・形をW/Lと揃えたグレー地の「—」ドット表示にする。
 function MarkCell({ result }: { result: Result | null }) {
-  if (result === null) return <span className="nf-mk nf-mk--empty">-</span>;
-  return <span className={`nf-mk ${MARK_CLASS[result]}`}>{MARK[result]}</span>;
+  if (result === null) return <span className="nf-mk nf-mk--empty">—</span>;
+  return <span className={`nf-mk ${MARK_CLASS[result]}`}>{LAST5_SYMBOL[result]}</span>;
 }
 
 // 共通対戦相手の行(選手ページ次戦カード・大会ページ両対応の共有部分)。
 // 同一相手と複数回対戦がある場合はcommons配列側で既に行分割済み(1行=1対戦)
 // のため、ここでは連番から「(2戦目)」等のラベルを付けるだけでよい。
-// マーク仕様(○/●/△)の変更は1箇所への反映で両方に伝播する。
+// マーク仕様(W/L/D/N丸バッジ)の変更は1箇所への反映で両方に伝播する。
 function CommonOpponentRows({
   commons,
   visibleSlugs,
