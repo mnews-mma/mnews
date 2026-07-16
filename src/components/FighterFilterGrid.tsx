@@ -155,6 +155,17 @@ export default function FighterFilterGrid({
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => syncUrl({ q: v || null }), QUERY_SYNC_DEBOUNCE_MS);
   }
+
+  // ヘッダーの虫眼鏡アイコン(/fighters?focus=1)からの着地時のみ検索入力に
+  // オートフォーカスする(mnews-homepage-instructions.md §4.1)。他の遷移元
+  // (関連選手タグ等)からの通常アクセスでは、モバイルで意図せずキーボードが
+  // 開くのを避けるためフォーカスしない。
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    if (searchParams.get("focus") === "1") searchInputRef.current?.focus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
@@ -213,6 +224,7 @@ export default function FighterFilterGrid({
         <div className="fighter-filter-group">
           <span className="fighter-filter-label">検索</span>
           <input
+            ref={searchInputRef}
             type="text"
             className="fighter-search-input"
             placeholder="選手名で検索（日本語・カナ・ローマ字）"

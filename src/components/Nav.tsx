@@ -4,23 +4,11 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 
-function DatabaseIcon() {
+function SearchIcon() {
   return (
-    <svg
-      className="nav-fighters-icon"
-      width="13"
-      height="13"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <ellipse cx="12" cy="5" rx="9" ry="3" />
-      <path d="M3 5v6c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
-      <path d="M3 11v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
   );
 }
@@ -45,23 +33,20 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
-// メニュー項目は既存ルートのみ(未実装ページへのリンクを作らない)。
-// 「選手データベース」はヘッダーの赤いボタン(nav-fighters-link)と導線が
-// 重複するが、ハンバーガーメニュー内からも辿れるよう先頭に追加している
-// (ヘッダー側のボタンは削除しない=導線二重化を維持)。
-// 「RIZINランキング」は/rankings(全階級ハブ)の新設に伴い追加(mnewsレーティング)。
-// mnews独自算出でありRIZIN公式ではない点はページ側で明記済みだが、メニュー
-// ラベル自体もRIZIN限定であることが伝わるよう、また「RIZIN ランキング」検索
-// クエリの内部アンカーテキスト最適化のため「RIZINランキング」表記にする
-// (遷移先/rankingsは変更なし)。ニュース・選手データベースと同列の主要導線
-// として先頭寄りに配置する。
-const MENU_ITEMS = [
-  { href: "/fighters", label: "選手データベース" },
+// メニュー項目は既存ルートのみ(未実装ページへのリンクを作らない)。3ブロック
+// 構成(データ資産→大会→ニュース)でヒーローの序列と一致させる
+// (mnews-homepage-instructions.md §3.2)。ブロック間はdividerで区切る。
+// 「AI RIZINランキング」はmnews独自算出でありRIZIN公式ではない点はページ側で
+// 明記済みだが、メニューラベル自体もRIZIN限定であることが伝わるよう、また
+// 「RIZIN ランキング」検索クエリの内部アンカーテキスト最適化のためこの表記
+// にする(遷移先/rankingsは変更なし)。
+const MENU_ITEMS: { href: string; label: string; dividerBefore?: boolean }[] = [
   { href: "/rankings", label: "AI RIZINランキング" },
+  { href: "/fighters", label: "選手データベース" },
   { href: "/dream", label: "夢のカード" },
-  { href: "/archive", label: "過去のニュース" },
-  { href: "/events", label: "開催予定の大会" },
-  { href: "/results", label: "大会結果一覧" },
+  { href: "/events", label: "大会日程", dividerBefore: true },
+  { href: "/results", label: "大会結果" },
+  { href: "/archive", label: "ニュース一覧", dividerBefore: true },
 ];
 
 export default function Nav() {
@@ -97,15 +82,12 @@ export default function Nav() {
             />
             <div id="site-menu-panel" className="nav-menu-panel" role="menu">
               {MENU_ITEMS.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="nav-menu-item"
-                  role="menuitem"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                <div key={item.href}>
+                  {item.dividerBefore && <div className="nav-menu-divider" role="separator" />}
+                  <Link href={item.href} className="nav-menu-item" role="menuitem" onClick={() => setMenuOpen(false)}>
+                    {item.label}
+                  </Link>
+                </div>
               ))}
             </div>
           </>,
@@ -122,9 +104,8 @@ export default function Nav() {
           <span className="logo-tagline logo-tagline-short">JAPAN MMA NEWS</span>
         </Link>
         <div className="nav-right">
-          <Link href="/fighters" className="nav-fighters-link">
-            <DatabaseIcon />
-            選手データベース
+          <Link href="/fighters?focus=1" className="nav-search-btn" aria-label="選手を検索">
+            <SearchIcon />
           </Link>
           <button
             type="button"
