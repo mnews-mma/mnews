@@ -25,8 +25,15 @@ export interface RecordOverrideAdd extends RecordOverrideBase {
   // applyRecordOverridesToTotals による集計値への加算はスキップする
   // (集計値は既に正しいのに追加分をさらに+1すると二重加算になるため)。
   // 例: 鈴木博昭は通算6敗(infobox)が既に平本蓮戦を含んだ数字だったが、
-  // Wikipediaの試合結果テーブル(Fight-cont)にはこの一戦だけ抜け落ちていた
-  // (YA-MANのように集計自体が古い/欠落しているケースとは異なる)。
+  // Wikipediaの試合結果テーブル(Fight-cont)にはこの一戦だけ抜け落ちていた。
+  // YA-MANも当初(2026-07-12)はinfobox自体がこの一戦を含まない値(2-2)
+  // だったためtotalsAlreadyReflected無しで作成したが、その後Wikipedia側の
+  // infobox数値だけが3-2に追いついた(結果テーブルの行は追加されないまま)。
+  // 「+1固定加算」型のオーバーライドは、作成時点では正しくても上流(Wikipedia)
+  // が後追いでinfoboxだけ更新すると静かに二重加算へ転じる、という設計上の
+  // 弱点がある(2026-07-16時点で鈴木博昭・YA-MANの2例で実際に発生)。
+  // 【設計メモ】3例目が出た場合は、この「+1固定加算」方式自体を見直し、
+  // (差分ではなく)絶対値を直接指定する方式への変更を検討すること。
   // 未指定(デフォルト)はfalse=従来どおり集計値にも反映する。
   totalsAlreadyReflected?: boolean;
 }
