@@ -13,7 +13,11 @@ import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFightersCached, fetchFighterRecords, FighterRecordsFile } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
-import { getPublishedDivisionRankingView, toClientSafeDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
+import {
+  getPublishedDivisionRankingView,
+  resolveDivisionRankingView,
+  toClientSafeResolvedDivisionRankingView,
+} from "@/lib/mnewsRating/divisionRankingView";
 import MnewsRatingSection from "@/components/MnewsRatingSection";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
@@ -114,12 +118,24 @@ export default async function HomePage() {
   // MnewsRatingSectionは"use client"のため、渡すpropsはRSCペイロードとして
   // HTML/JSにそのままシリアライズされる。rawRating(delta算出専用の内部の生
   // レート)を含めたまま渡すと、画面に描画しなくても生HTML上には出力されて
-  // しまうため、toClientSafeDivisionRankingViewで必ず除去してから渡す。
+  // しまうため、toClientSafeResolvedDivisionRankingViewで必ず除去してから渡す。
+  // resolveDivisionRankingViewはfighters.tsに存在しないfighterIdを除外して
+  // 表示順位を振り直す(スラッグ生表示フォールバック禁止)。topNは除外・繰り上げ
+  // 後の件数に適用するため、getPublishedDivisionRankingViewには渡さず全件取得
+  // してからresolve側でtopN=5を適用する。
   const mnewsRatingDivisions = {
-    フライ級: toClientSafeDivisionRankingView(getPublishedDivisionRankingView("フライ級", flyweightRankings, 5)),
-    バンタム級: toClientSafeDivisionRankingView(getPublishedDivisionRankingView("バンタム級", bantamweightRankings, 5)),
-    フェザー級: toClientSafeDivisionRankingView(getPublishedDivisionRankingView("フェザー級", featherweightRankings, 5)),
-    ライト級: toClientSafeDivisionRankingView(getPublishedDivisionRankingView("ライト級", lightweightRankings, 5)),
+    フライ級: toClientSafeResolvedDivisionRankingView(
+      resolveDivisionRankingView(getPublishedDivisionRankingView("フライ級", flyweightRankings), nameBySlug, 5)
+    ),
+    バンタム級: toClientSafeResolvedDivisionRankingView(
+      resolveDivisionRankingView(getPublishedDivisionRankingView("バンタム級", bantamweightRankings), nameBySlug, 5)
+    ),
+    フェザー級: toClientSafeResolvedDivisionRankingView(
+      resolveDivisionRankingView(getPublishedDivisionRankingView("フェザー級", featherweightRankings), nameBySlug, 5)
+    ),
+    ライト級: toClientSafeResolvedDivisionRankingView(
+      resolveDivisionRankingView(getPublishedDivisionRankingView("ライト級", lightweightRankings), nameBySlug, 5)
+    ),
   };
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};
@@ -333,7 +349,7 @@ export default async function HomePage() {
             独立配置し、RIZIN非公式の集計であることが伝わる名称にする。
             階級切替(デフォルト:フェザー級)はクライアント側で行う(4階級分を
             サーバーで取得済みのため追加fetch無しで切り替え可能)。 */}
-        <MnewsRatingSection divisions={mnewsRatingDivisions} nameBySlug={Object.fromEntries(nameBySlug)} />
+        <MnewsRatingSection divisions={mnewsRatingDivisions} />
 
         {/* 主要選手 戦績まとめ（/fighters と同じチップ体裁のカード） */}
         <section className="rail-panel">

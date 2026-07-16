@@ -5,12 +5,14 @@ import RankingDelta from "@/components/RankingDelta";
 
 interface RatingEntry {
   fighterId: string;
-  rank: number;
+  nameJa: string;
+  displayRank: number;
   delta: number | null;
 }
 
 interface ChampionEntry {
   fighterId: string;
+  nameJa: string;
 }
 
 interface DivisionView {
@@ -22,18 +24,18 @@ const DIVISIONS = ["フライ級", "バンタム級", "フェザー級", "ライ
 type Division = (typeof DIVISIONS)[number];
 
 // トップページのAI RIZINランキング(独自算出)セクション。4階級ぶんの
-// {champion, contenders}をサーバー側(getDivisionRankingView経由)で取得済みで
-// 受け取り、階級切替はクライアント側のstate切り替えのみ(追加fetch無し)で行う。
-// デフォルトはフェザー級。ランキングページ本体と同じ共有セレクタ由来のデータ
-// なので、王者行の有無・並びが常に一致する(ここで独自に組み立てない)。
-// レート数値は外向き表示に出さない方針のため、順位・選手名・戦績・前回比のみ
-// 表示する(値自体もtoClientSafeDivisionRankingViewでprops化前に除去済み)。
+// {champion, contenders}をサーバー側(resolveDivisionRankingView経由)で選手名
+// 解決・スラッグ生表示フォールバック排除・繰り上げ済みの状態で受け取り、階級切替は
+// クライアント側のstate切り替えのみ(追加fetch無し)で行う。デフォルトはフェザー級。
+// ランキングページ本体と同じ共有セレクタ由来のデータなので、王者行の有無・並びが
+// 常に一致する(ここで独自に組み立てない)。fighters.tsに解決できなかった選手は
+// サーバー側で既に除外済みのため、ここでは生スラッグへのフォールバックを行わない
+// (fighterIdをそのまま表示に使わない)。レート数値は外向き表示に出さない方針の
+// ため、順位・選手名・戦績・前回比のみ表示する(値自体もサーバー側で除去済み)。
 export default function MnewsRatingSection({
   divisions,
-  nameBySlug,
 }: {
   divisions: Record<Division, DivisionView>;
-  nameBySlug: Record<string, string>;
 }) {
   const [division, setDivision] = useState<Division>("フェザー級");
   const view = divisions[division] ?? { champion: null, contenders: [] };
@@ -65,7 +67,7 @@ export default function MnewsRatingSection({
             <a href={`/fighters/${view.champion.fighterId}`} className="rail-item">
               <div className="rail-item-title" style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontFamily: "var(--mono)", fontWeight: 800, color: "var(--gold, #c29a4b)" }}>王者</span>
-                <span style={{ flex: 1 }}>{nameBySlug[view.champion.fighterId] ?? view.champion.fighterId}</span>
+                <span style={{ flex: 1 }}>{view.champion.nameJa}</span>
                 <RankingDelta delta={null} />
               </div>
             </a>
@@ -73,10 +75,10 @@ export default function MnewsRatingSection({
           {view.contenders.map((e) => (
             <a key={e.fighterId} href={`/fighters/${e.fighterId}`} className="rail-item">
               <div className="rail-item-title" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.rank <= 3 ? "var(--accent)" : "var(--muted)" }}>
-                  {e.rank}
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.displayRank <= 3 ? "var(--accent)" : "var(--muted)" }}>
+                  {e.displayRank}
                 </span>
-                <span style={{ flex: 1 }}>{nameBySlug[e.fighterId] ?? e.fighterId}</span>
+                <span style={{ flex: 1 }}>{e.nameJa}</span>
                 <RankingDelta delta={e.delta} />
               </div>
             </a>

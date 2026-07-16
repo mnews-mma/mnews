@@ -5,7 +5,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
-import { getDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
+import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
@@ -43,8 +43,10 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
   if (!division || !PUBLISHED_DIVISIONS.includes(division)) notFound();
 
   const data = await fetchDivisionRankings(slug);
-  const view = getDivisionRankingView(data); // topN省略=全件(ランキングページ本体)
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
+  // fighters.tsに存在しないfighterIdは除外して表示順位を振り直す
+  // (スラッグ生表示フォールバック禁止・解決失敗時は行非表示+繰り上げ)。
+  const view = resolveDivisionRankingView(getDivisionRankingView(data), nameBySlug);
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },
@@ -61,10 +63,10 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
           numberOfItems: view.contenders.length,
           itemListElement: view.contenders.map((e) => ({
             "@type": "ListItem",
-            position: e.rank,
+            position: e.displayRank,
             item: {
               "@type": "Person",
-              name: nameBySlug.get(e.fighterId) ?? e.fighterId,
+              name: e.nameJa,
               url: `${SITE_URL}/fighters/${e.fighterId}`,
             },
           })),
@@ -114,7 +116,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                       <td style={{ fontFamily: "var(--mono)", fontWeight: 800, color: "var(--gold, #c29a4b)" }}>王者</td>
                       <td className="col-opponent">
                         <a href={`/fighters/${view.champion.fighterId}`} className="opponent-link">
-                          {nameBySlug.get(view.champion.fighterId) ?? view.champion.fighterId}
+                          {view.champion.nameJa}
                         </a>
                       </td>
                       <td>—</td>
@@ -128,12 +130,12 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                   )}
                   {view.contenders.map((e) => (
                     <tr key={e.fighterId}>
-                      <td style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.rank <= 3 ? "var(--accent)" : "var(--fg)" }}>
-                        {e.rank}
+                      <td style={{ fontFamily: "var(--mono)", fontWeight: 700, color: e.displayRank <= 3 ? "var(--accent)" : "var(--fg)" }}>
+                        {e.displayRank}
                       </td>
                       <td className="col-opponent">
                         <a href={`/fighters/${e.fighterId}`} className="opponent-link">
-                          {nameBySlug.get(e.fighterId) ?? e.fighterId}
+                          {e.nameJa}
                         </a>
                         {e.weighInMiss && (
                           <span style={{ marginLeft: 6, fontSize: 10, color: "var(--accent)" }} title="直近試合で計量オーバー">
