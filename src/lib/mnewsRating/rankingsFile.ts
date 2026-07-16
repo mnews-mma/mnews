@@ -88,11 +88,12 @@ export function buildDivisionRankings(
   // 参照)。未指定(デフォルト)は従来どおり生の表示レートをそのまま使う
   // (挙動を完全維持)。
   sigmaDiscountCoefficient?: number,
-  // 直接対決の単調性オーバーレイ(P2・2026-07-16追加、未採用/比較検証用)。
-  // 指定時のみ、上記の順位付け後に「AがBに直接勝っているのに順位がAの方が
-  // 下(順位差maxRankGap以内)」を補正する(monotonicity.ts参照)。h2hWinsは
-  // このdivision内の決着済み対戦のみを渡すこと(呼び出し側の責務)。
-  monotonicity?: { h2hWins: H2HWin[]; maxRankGap: number }
+  // 直接対決の単調性オーバーレイ(P2・2026-07-16採用、2026-07-17 P0-Bで
+  // ハード制約化=距離制限撤廃)。指定時のみ、上記の順位付け後に「AがBに
+  // 直接勝っているのに順位がAの方が下」を距離無制限で補正する
+  // (monotonicity.ts参照)。h2hWinsはこのdivision内の決着済み対戦のみを
+  // 渡すこと(呼び出し側の責務)。
+  monotonicity?: { h2hWins: H2HWin[] }
 ): DivisionRankings {
   const isBadgeMode = mode === "badge";
   const suppressDelta = shouldSuppressDelta(prev);
@@ -114,8 +115,7 @@ export function buildDivisionRankings(
     const bySlug = new Map(sorted.map((e) => [e.meta.slug, e]));
     const reorderedSlugs = applyHeadToHeadMonotonicity(
       sorted.map((e) => e.meta.slug),
-      monotonicity.h2hWins,
-      { maxRankGap: monotonicity.maxRankGap }
+      monotonicity.h2hWins
     );
     sorted = reorderedSlugs.map((slug) => bySlug.get(slug)!);
   }

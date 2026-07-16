@@ -25,12 +25,14 @@
 - 通常: `git push origin main && vercel deploy --prod --yes`
 - 上記の本番保護ルールに該当する変更(大きい機能追加・データ変更等)は作業ブランチ + `vercel deploy`(プレビュー)で確認してからmainにマージする
 - **git worktreeからデプロイする場合**: worktree直下には`.vercel/`が無く、そのまま`vercel deploy`すると誤って新規プロジェクトが作成される(2026-07-11に`mnews-worktree-fontfix`を誤作成→削除した実例あり)。デプロイ前に必ず本体の`.vercel/project.json`(`projectId: prj_BOiZsdSXZ5tEVMQ0DV8WmOl0c6pg`, `projectName: mnews`)をworktreeにコピーするか`vercel link`で本番プロジェクトを明示指定してから実行する
+- **deployはISRキャッシュを自動パージしない**(2026-07-17判明)。`data/rankings.json`等のデータはGitHub raw経由でrevalidate:3600(最大1時間)のfetchキャッシュに乗っており、「mainにマージしただけで新規デプロイをしていない」場合は最大1時間古い値が残る。新規デプロイ自体もURLに埋め込まれたcommit SHAが変わるため次回アクセスで自動的に最新を取るが、即時反映させたい場合は`POST /api/revalidate-rankings`(`Authorization: Bearer <REVALIDATE_TOKEN>`、Vercel環境変数に別途設定が必要)を呼ぶ。**データ更新を伴うdeploy後はrevalidate必須**。反映確認は全公開階級(`/rankings/[division]`)でJSON-LDを取得し、最終更新日付が全ページ一致していることを見る。
 
 ## 認証境界(重要)
 - 認証必須は `/admin/*`(管理画面)と `/api/admin/*`(管理系API)のみ
 - 一般ユーザーが使う機能は絶対に `/admin` 配下に置かない(middlewareに巻き込まれ一般ユーザーがログイン画面に飛ばされるデグレになる):
   - X投稿用カード作成ツール → `/tools/fighter-card`
   - OG/シェア画像生成API → `/api/og/*`
+- `/api/revalidate-rankings`(2026-07-17追加): デプロイスクリプト等の自動実行から呼ぶ想定のため、意図的に`/api/admin/*`(Cookie/ブックマークURL認証)の外に置き、専用トークン`REVALIDATE_TOKEN`(`ADMIN_TOKEN`とは別、Vercel環境変数に別途設定)によるBearer認証のみで守っている。`/api/admin/*`側のmiddleware認証境界には一切手を加えていない(認証境界の変更は必ず事前確認を取ること)。
 
 ## クレデンシャル取り扱い(厳守)
 - **既存の**トークン・APIキー・パスワード等クレデンシャルの生値は、目的を問わず読み出し・出力・ログ表示・エコーを一切禁止する(マスクした値の確認は可)

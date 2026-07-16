@@ -681,7 +681,13 @@ export function applyDisplayShrinkage(
 // 一律に順位を押し下げる(母集団平均への回帰ではなく、対戦数そのものに基づく
 // 信頼度の割引)。これにより「対戦数が少ないのに高いレートで上位に浮く」問題を
 // 直接是正できる(2戦の選手が8戦の選手より上、という逆転を作れる)。
+//
+// 2026-07-17(P1)追加: n=1へのディスカウント上限。σ(n)=C/√nのままだとn=1の
+// フルヒット(1戦のみの選手)がC/√1=C(D=70なら70pt)という過大な割引になり、
+// n=2(C/√2≈49.5pt)との差が不自然に大きい。分母をmax(n,2)にキャップし、
+// n=1もn=2と同じ割引(実質上限≈49.5pt@D=70)に揃える。n>=2は従来どおり
+// √nのまま変化なし(この変更はn=1のみに影響する)。
 export function computeSigmaDiscountedRating(rawRating: number, fights: number, coefficient: number): number {
   if (fights <= 0) return rawRating;
-  return rawRating - coefficient / Math.sqrt(fights);
+  return rawRating - coefficient / Math.sqrt(Math.max(fights, 2));
 }

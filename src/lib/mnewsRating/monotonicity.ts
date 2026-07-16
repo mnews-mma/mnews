@@ -1,20 +1,24 @@
-// P2(2026-07-16採用・N=2でON運用): 直接対決の単調性オーバーレイ。
+// P0(2026-07-16採用・N=2運用 → 2026-07-17 P0-Bでハード制約化): 直接対決の単調性オーバーレイ。
 // 「RIZIN内でAがBに勝っているのに、順位ではAがBより下」という見た目の矛盾を、
-// 順位差がmaxRankGap以内の隣接ケースに限り後段で補正する。Elo自体・レート値には
+// 距離制限なしで補正する(2026-07-17: 従来はmaxRankGap=2以内の隣接ケースのみ
+// 補正していたが、距離制限そのものを撤廃しハード制約にした)。Elo自体・レート値には
 // 一切触れず、最終的な順位配列(rankedSlugs)の並び替えのみを行う。
-// 循環(A>B>C>A)が検出された組は補正をスキップする(全順序が定義できないため)。
+// 循環(A>B>C>A)が検出された組は補正をスキップする(全順序が定義できないため。
+// 実例: 元谷友貴>神龍誠>伊藤裕樹>トニー・ララミー>元谷友貴の4者循環が
+// フライ級の実データに存在する。ラミー>元谷という個別の勝敗は事実として
+// 正しいが、この一戦だけを強制すると他の3辺のいずれかを必ず破ることになり
+// 「循環はスキップする」という設計判断自体が正しい。2026-07-17のP0-A調査で
+// 確認済み・test-mnews-rating.tsに再現テストを追加した)。
 //
 // P1(σディスカウント、constants.tsのSIGMA_DISCOUNT_COEFFICIENT_V7)との関係:
 // σディスカウントは対戦数が少ない選手を一律に押し下げるため、「AがBに直接
 // 勝っているのに対戦数差でAがBより下位になる」ケースを新たに作りうる。この
-// オーバーレイはその後段バックストップとして機能する。D=70採用時点では
-// 篠塚>冨澤(H2H)はσディスカウント単体でも成立しており、このオーバーレイは
-// 「保険」として効いている(順序決定をこのオーバーレイの発火に依存させない
-// 設計。詳細はconstants.tsのSIGMA_DISCOUNT_COEFFICIENT_V7のコメント参照)。
+// オーバーレイはその後段バックストップとして機能する。
 
 export interface H2HWin {
   winnerSlug: string;
   loserSlug: string;
+  date: string; // 複数回対戦時の直近優先判定に使う(YYYY-MM-DD)
 }
 
 // engine.tsの薄いBout型(circular import回避のため必要フィールドのみで受ける)。
@@ -22,6 +26,7 @@ interface BoutLike {
   aNode: string;
   bNode: string;
   scoreA: number;
+  date: string;
 }
 
 // 指定階級の資格保有選手同士(divisionSlugsに両者が含まれる対戦)の決着済み
@@ -33,50 +38,32 @@ export function extractH2HWinsForDivision(bouts: BoutLike[], divisionSlugs: Set<
   const wins: H2HWin[] = [];
   for (const b of bouts) {
     if (!divisionSlugs.has(b.aNode) || !divisionSlugs.has(b.bNode)) continue;
-    if (b.scoreA === 1) wins.push({ winnerSlug: b.aNode, loserSlug: b.bNode });
-    else if (b.scoreA === 0) wins.push({ winnerSlug: b.bNode, loserSlug: b.aNode });
+    if (b.scoreA === 1) wins.push({ winnerSlug: b.aNode, loserSlug: b.bNode, date: b.date });
+    else if (b.scoreA === 0) wins.push({ winnerSlug: b.bNode, loserSlug: b.aNode, date: b.date });
     // scoreA===0.5(引き分け)は方向性シグナルが無いためスキップ
   }
   return wins;
 }
 
-export interface MonotonicityParams {
-  maxRankGap: number; // N。この順位差以内の隣接ケースのみ補正対象にする
-}
-
-// 勝敗が矛盾しない(AがBに勝ち、BがAに勝った記録が無い)組だけを対象にする。
-// 同一カードで複数回対戦し勝敗が割れている(1勝1敗等)場合は「どちらが上か」の
-// 単一方向のシグナルが無いため、両方向とも除外する。
-function buildUnambiguousWinPairs(h2hWins: H2HWin[]): Array<{ winner: string; loser: string }> {
-  const winners = new Map<string, Set<string>>(); // key: `${a}|${b}` (aがbに勝った) の存在チェック用
+// 同一カードで複数回対戦しているペアは、直近の対戦結果(dateが最も新しいもの)を
+// そのペアの正とする(2026-07-17 P0-B: 以前は勝敗が割れる=splitの場合、方向性
+// シグナルが無いとして両方向とも除外していたが、「直近の対戦結果を優先」という
+// 明確なルールに変更し、より多くのペアにH2H制約を適用できるようにした)。
+function resolvePairDirections(h2hWins: H2HWin[]): Array<{ winner: string; loser: string }> {
   const pairKey = (x: string, y: string) => [x, y].sort().join("|");
-  const resultsByPair = new Map<string, Set<string>>(); // pairKey -> 勝者の集合(1人だけなら一方向、2人ならsplit)
-
-  for (const { winnerSlug, loserSlug } of h2hWins) {
-    const key = pairKey(winnerSlug, loserSlug);
-    if (!resultsByPair.has(key)) resultsByPair.set(key, new Set());
-    resultsByPair.get(key)!.add(winnerSlug);
+  const latestByPair = new Map<string, H2HWin>();
+  for (const win of h2hWins) {
+    const key = pairKey(win.winnerSlug, win.loserSlug);
+    const existing = latestByPair.get(key);
+    if (!existing || win.date > existing.date) {
+      latestByPair.set(key, win);
+    }
   }
-
-  const pairs: Array<{ winner: string; loser: string }> = [];
-  for (const { winnerSlug, loserSlug } of h2hWins) {
-    const key = pairKey(winnerSlug, loserSlug);
-    const winnersOfPair = resultsByPair.get(key)!;
-    if (winnersOfPair.size !== 1) continue; // split(1勝1敗等)は単一方向のシグナルが無いため除外
-    pairs.push({ winner: winnerSlug, loser: loserSlug });
-  }
-  // 重複排除(同一カードで複数回対戦し全勝の場合、同じ組が複数回入るのを1つに畳む)
-  const seen = new Set<string>();
-  return pairs.filter(({ winner, loser }) => {
-    const key = `${winner}>${loser}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
+  return [...latestByPair.values()].map((w) => ({ winner: w.winnerSlug, loser: w.loserSlug }));
 }
 
 // 有向グラフ内の循環に関与する辺を検出する(DFSベースの単純な実装。
-// N=2運用を想定した小規模グラフ向けで、全探索の効率最適化はしていない)。
+// 階級あたり数十人規模のグラフ向けで、全探索の効率最適化はしていない)。
 function findCyclicEdges(pairs: Array<{ winner: string; loser: string }>): Set<string> {
   const adjacency = new Map<string, string[]>();
   for (const { winner, loser } of pairs) {
@@ -122,53 +109,96 @@ function findCyclicEdges(pairs: Array<{ winner: string; loser: string }>): Set<s
   return cyclicEdges;
 }
 
-// rankedSlugs(0-indexed、先頭=1位)を、直接対決の単調性に沿って補正する。
-// 補正は「順位差の小さいものから順」に1件ずつ、勝者(winner)を敗者(loser)の
-// 直上へ移動する形で適用する(他の選手の相対順序はそのまま)。
-// 循環に関与する組は補正対象から除外する(スキップ)。
-export function applyHeadToHeadMonotonicity(
-  rankedSlugs: string[],
-  h2hWins: H2HWin[],
-  params: MonotonicityParams
-): string[] {
-  const unambiguousPairs = buildUnambiguousWinPairs(h2hWins);
-  const cyclicEdges = findCyclicEdges(unambiguousPairs);
-  const acyclicPairs = unambiguousPairs.filter(({ winner, loser }) => !cyclicEdges.has(`${winner}>${loser}`));
+// rankedSlugs(0-indexed、先頭=1位、σディスカウント後の生レート降順)を、
+// 直接対決の制約を全て満たす順序に並び替える。「H2H制約を満たす最小の順位
+// 入替」= 各ステップで「まだ配置していない選手のうち、H2Hの勝者側の制約を
+// 全て満たしている(＝自分に直接負けている相手がまだ未配置、ということが無い)
+// 選手の中で、元のレート順で最も上位の選手」を選んで配置していく(制約付き
+// トポロジカルソート、Kahn法+元順序によるタイブレーク)。この方式は:
+// - 全ての(非循環の)H2H制約を厳密に満たす(距離制限なし=ハード制約)。
+// - 制約を満たす順序の中で、レート順からの乖離が最小になる(貪欲法だが、
+//   「まだ動かせる中で一番レートが高い人を先に確定する」という単純な規則が
+//   ソート安定性も保つ: H2H制約が一切無いグループは元のレート順そのままになる)。
+// 循環に関与する辺は制約から除外し(現状維持、findCyclicEdges参照)、その
+// ペアの相対順序はレートベースの元順序のまま変化しない。
+export function applyHeadToHeadMonotonicity(rankedSlugs: string[], h2hWins: H2HWin[]): string[] {
+  const pairs = resolvePairDirections(h2hWins);
+  const cyclicEdges = findCyclicEdges(pairs);
+  const constraints = pairs.filter(({ winner, loser }) => !cyclicEdges.has(`${winner}>${loser}`));
 
-  let order = [...rankedSlugs];
-
-  // 順位差が小さい違反から解消する(大きな入れ替えを先にやると後続の判定が
-  // 崩れやすいため)。violationsは適用のたびに順位が変わるので、1件ずつ
-  // 再計算しながら処理する。
-  let remaining = acyclicPairs;
-  // 安全弁: 理論上は毎回最低1件消化されるはずだが、想定外の入力でも
-  // 無限ループにならないよう試行回数の上限を設ける。
-  const maxIterations = acyclicPairs.length + 1;
-  for (let iter = 0; iter < maxIterations && remaining.length > 0; iter++) {
-    const violations = remaining
-      .map(({ winner, loser }) => {
-        const winnerIdx = order.indexOf(winner);
-        const loserIdx = order.indexOf(loser);
-        if (winnerIdx === -1 || loserIdx === -1) return null; // ランキング対象外の選手が絡む組は無視
-        if (winnerIdx <= loserIdx) return null; // 既に矛盾していない
-        const gap = winnerIdx - loserIdx;
-        if (gap > params.maxRankGap) return null; // 対象範囲外
-        return { winner, loser, gap };
-      })
-      .filter((v): v is { winner: string; loser: string; gap: number } => v !== null);
-
-    if (violations.length === 0) break;
-    violations.sort((a, b) => a.gap - b.gap);
-    const { winner, loser } = violations[0];
-
-    const winnerIdx = order.indexOf(winner);
-    const loserIdx = order.indexOf(loser);
-    order.splice(winnerIdx, 1);
-    const newLoserIdx = order.indexOf(loser);
-    order.splice(newLoserIdx, 0, winner);
-
-    remaining = remaining.filter((p) => !(p.winner === winner && p.loser === loser));
+  const rankedSet = new Set(rankedSlugs);
+  // loser -> このloserより先に配置されなければならない選手の集合(直接の前提のみ)。
+  const predecessors = new Map<string, Set<string>>();
+  for (const slug of rankedSlugs) predecessors.set(slug, new Set());
+  for (const { winner, loser } of constraints) {
+    if (!rankedSet.has(winner) || !rankedSet.has(loser)) continue; // ランキング対象外の選手が絡む組は無視
+    predecessors.get(loser)!.add(winner);
   }
 
-  return order;
+  const originalIndex = new Map(rankedSlugs.map((slug, i) => [slug, i]));
+  const remaining = new Set(rankedSlugs);
+  const result: string[] = [];
+
+  while (remaining.size > 0) {
+    let best: string | null = null;
+    let bestIdx = Infinity;
+    for (const slug of remaining) {
+      let ready = true;
+      for (const pred of predecessors.get(slug)!) {
+        if (remaining.has(pred)) {
+          ready = false;
+          break;
+        }
+      }
+      if (!ready) continue;
+      const idx = originalIndex.get(slug)!;
+      if (idx < bestIdx) {
+        bestIdx = idx;
+        best = slug;
+      }
+    }
+    if (best === null) {
+      // 循環は事前に除去済みのため理論上到達しないが、安全弁として残りを
+      // 元の順序のまま追加して打ち切る(無限ループ防止)。
+      for (const slug of rankedSlugs) {
+        if (remaining.has(slug)) result.push(slug);
+      }
+      break;
+    }
+    result.push(best);
+    remaining.delete(best);
+  }
+
+  return result;
+}
+
+export interface H2HViolation {
+  winner: string;
+  loser: string;
+  winnerRank: number; // 1-indexed
+  loserRank: number;
+}
+
+// 最終順位配列(applyHeadToHeadMonotonicity適用後を想定)に対し、全H2H制約
+// (勝者の順位 <= 敗者の順位)が満たされているかを検査する(回帰テスト・
+// update-mnews-rating.tsの自己検証・CI用に常設)。循環に関与する組は検査対象
+// 外にする(仕様どおりスキップされ、補正されないため=想定内)。ランキング
+// 対象外の選手(掲載資格なし・王者オーバーレイで別掲載等)が絡む組も対象外。
+// 違反(勝者が敗者より下位のまま)が1件でもあれば、そのペアを返す(0件なら
+// 空配列=常にこうあるべき)。
+export function checkH2HInvariant(rankedSlugs: string[], h2hWins: H2HWin[]): H2HViolation[] {
+  const pairs = resolvePairDirections(h2hWins);
+  const cyclicEdges = findCyclicEdges(pairs);
+  const rankOf = new Map(rankedSlugs.map((slug, i) => [slug, i]));
+  const violations: H2HViolation[] = [];
+  for (const { winner, loser } of pairs) {
+    if (cyclicEdges.has(`${winner}>${loser}`)) continue;
+    const winnerIdx = rankOf.get(winner);
+    const loserIdx = rankOf.get(loser);
+    if (winnerIdx === undefined || loserIdx === undefined) continue;
+    if (winnerIdx > loserIdx) {
+      violations.push({ winner, loser, winnerRank: winnerIdx + 1, loserRank: loserIdx + 1 });
+    }
+  }
+  return violations;
 }

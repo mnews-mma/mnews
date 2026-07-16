@@ -7,6 +7,7 @@ import {
   buildDisplayEntries,
   computeRawRatings,
   computeScopedRecord,
+  computeSigmaDiscountedRating,
   filterPublishableStates,
   isEligible,
   applyInactivityDecay,
@@ -15,6 +16,7 @@ import {
   AsymmetricEloParams,
   NEUTRAL_ELO_PARAMS,
 } from "../src/lib/mnewsRating/engine";
+import { applyHeadToHeadMonotonicity, extractH2HWinsForDivision, H2HWin } from "../src/lib/mnewsRating/monotonicity";
 import {
   ALGORITHM_VERSION,
   DECAY_FLOOR,
@@ -1489,6 +1491,96 @@ function makeResolver(map: Record<string, string>) {
     detectDivisionChangeCutoff(genuineChangePattern, "フェザー級") === "2025-06-14",
     "単発遠征修正(回帰): 真の階級変更(移籍後ずっと新階級)は従来どおりcutoffとして検出される"
   );
+}
+
+// P0-A(2026-07-17)の再現テスト: 元谷友貴>神龍誠>伊藤裕樹>トニー・ララミー>
+// 元谷友貴という4者循環の実データパターン。ララミー>元谷という個別の勝敗は
+// 事実として正しいが、循環に含まれるため補正されない(仕様どおり・バグではない)。
+// 実データ(fighterRecords.json)は将来変わりうるため、調査時点の実際の勝敗関係を
+// 固定した最小データで再現する(スラッグ名は実データと同じものを使い、調査結果との
+// 対応を追跡しやすくする)。
+{
+  const cycleWins: H2HWin[] = [
+    { winnerSlug: "motoya-yuki", loserSlug: "shinryu-makoto", date: "2025-09-28" },
+    { winnerSlug: "shinryu-makoto", loserSlug: "ito-yuki", date: "2025-05-04" },
+    { winnerSlug: "ito-yuki", loserSlug: "laramie-tony", date: "2025-03-30" },
+    { winnerSlug: "laramie-tony", loserSlug: "motoya-yuki", date: "2026-06-06" },
+  ];
+  // レート順(σディスカウント後想定)でmotoya-yukiがlaramie-tonyよりわずかに上位。
+  const rankedSlugs = ["shinryu-makoto", "motoya-yuki", "laramie-tony", "ito-yuki"];
+  const result = applyHeadToHeadMonotonicity(rankedSlugs, cycleWins);
+  check(
+    result.indexOf("motoya-yuki") < result.indexOf("laramie-tony"),
+    "P0-A再現: 4者循環(元谷>神龍>伊藤裕樹>ララミー>元谷)に含まれるH2Hは補正されず、" +
+      "元谷がララミーより上位のまま(循環スキップは仕様どおり)"
+  );
+}
+
+// P0-B(2026-07-17)のテスト: H2H単調性のハード制約化(距離制限N=2の撤廃)。
+{
+  // winnerがloserより6ランクも下位(旧N=2なら補正対象外)でも、非循環の
+  // 単一H2Hであれば距離無制限で補正されることを確認する。
+  const farApartWins: H2HWin[] = [{ winnerSlug: "z-fighter", loserSlug: "a-fighter", date: "2026-01-01" }];
+  const farApartRanked = ["a-fighter", "b", "c", "d", "e", "f", "z-fighter"];
+  const farApartResult = applyHeadToHeadMonotonicity(farApartRanked, farApartWins);
+  check(
+    farApartResult.indexOf("z-fighter") < farApartResult.indexOf("a-fighter"),
+    "P0-B: 距離無制限化により、順位差6(旧N=2なら対象外)でもH2H勝者が上位に補正される"
+  );
+  // 補正は最小移動(勝者を敗者の直前へ)であり、無関係な他選手の相対順序は
+  // 保たれることを確認する(b,c,d,e,fの並び順は変化しない)。
+  const untouched = ["b", "c", "d", "e", "f"];
+  const untouchedOrder = farApartResult.filter((s) => untouched.includes(s));
+  check(
+    JSON.stringify(untouchedOrder) === JSON.stringify(untouched),
+    "P0-B: H2H制約に関係ない選手同士の相対順序はレート順のまま変化しない(最小順位入替)"
+  );
+
+  // 複数回対戦時は直近の対戦結果を優先する。
+  const splitWins: H2HWin[] = [
+    { winnerSlug: "old-winner", loserSlug: "old-loser", date: "2024-01-01" },
+    { winnerSlug: "old-loser", loserSlug: "old-winner", date: "2026-01-01" }, // リターンマッチで逆転
+  ];
+  const splitRanked = ["old-winner", "old-loser"]; // old-winnerが上位のまま(誤り)という前提
+  const splitResult = applyHeadToHeadMonotonicity(splitRanked, splitWins);
+  check(
+    splitResult.indexOf("old-loser") < splitResult.indexOf("old-winner"),
+    "P0-B: 複数回対戦時は直近の対戦結果(2026-01-01のリターンマッチ)を正として補正する"
+  );
+
+  // extractH2HWinsForDivisionがBout由来のdateを正しく伝搬することを確認する
+  // (resolvePairDirectionsの直近判定に必須のフィールド)。
+  const bouts = [
+    { aNode: "x", bNode: "y", scoreA: 1, date: "2025-05-05" },
+    { aNode: "y", bNode: "z", scoreA: 0, date: "2025-06-06" },
+  ];
+  const extracted = extractH2HWinsForDivision(bouts, new Set(["x", "y", "z"]));
+  check(
+    extracted.some((w) => w.winnerSlug === "x" && w.loserSlug === "y" && w.date === "2025-05-05"),
+    "P0-B: extractH2HWinsForDivisionがdateフィールドを正しく伝搬する(x>y)"
+  );
+  check(
+    extracted.some((w) => w.winnerSlug === "z" && w.loserSlug === "y" && w.date === "2025-06-06"),
+    "P0-B: extractH2HWinsForDivisionがdateフィールドを正しく伝搬する(z>y、scoreA=0側)"
+  );
+}
+
+// P1(2026-07-17)のテスト: n=1へのディスカウント上限(σ(n)=C/√max(n,2))。
+{
+  const coefficient = 70;
+  const n1 = computeSigmaDiscountedRating(1500, 1, coefficient);
+  const n2 = computeSigmaDiscountedRating(1500, 2, coefficient);
+  const n4 = computeSigmaDiscountedRating(1500, 4, coefficient);
+  check(
+    Math.abs(n1 - n2) < 1e-9,
+    `P1: n=1のディスカウントはn=2と同じ値にキャップされる(n1=${n1.toFixed(3)}, n2=${n2.toFixed(3)})`
+  );
+  check(
+    Math.abs(n1 - (1500 - coefficient / Math.sqrt(2))) < 1e-9,
+    `P1: n=1の実質上限は約49.5pt(coefficient/√2)になる (got discount=${(1500 - n1).toFixed(3)})`
+  );
+  check(n4 > n2, "P1: n=2以上は従来どおりnが増えるほどディスカウント後レートが高くなる(単調性は維持)");
+  check(n4 > n1, "P1: n=4のディスカウントはn=1のキャップより小さい(緩い)");
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

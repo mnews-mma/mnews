@@ -1,8 +1,11 @@
-// P1(σディスカウント D=70)+P2(単調性オーバーレイ N=2) 最終確認ダンプ。
-// data/rankings.json等への書き込みは一切行わない(読み取り専用・目視確認用)。
-// 王者の除外・番号付けは実運用(scripts/update-mnews-rating.ts)と同じロジックで
-// 解決するため、この採番は公開ページ(/rankings/[division])の表示と一致する。
-// 実行: npx tsx scripts/dump-ranking-p1-comparison.ts
+// H2H不変条件の機械チェック(読み取り専用・data/rankings.json等への書き込み
+// なし)。2026-07-17 P0-Bで追加、以後の回帰テストとして常設する。
+// 全階級・全H2Hペアについて「勝者の順位<=敗者の順位」または循環(スキップ
+// 対象)のいずれかが成立していることを検証する。update-mnews-rating.ts側にも
+// 同じチェックを書き込み前の自己検証として組み込み済みだが、このスクリプトは
+// 書き込みを伴わずに現在のdata/fighterRecords.jsonから再計算して単体で
+// 検証できる(CI・手動確認用)。
+// 実行: npx tsx scripts/check-h2h-invariant.ts
 import fs from "fs";
 import path from "path";
 import {
@@ -11,30 +14,23 @@ import {
   computeRawRatings,
   computePreDebutRecords,
   computeInitialRatingOverrides,
-  detectWeighInMiss,
   filterPublishableStates,
-  isRizinMmaEvent,
-  DisplayEntry,
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
 import { buildOpponentResolver, buildKnownNamesLookup } from "../src/lib/mnewsRating/nameIndex";
 import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import { findRankerWinExemptions, isStandardEligible, summarizeBoutsForFighter } from "../src/lib/mnewsRating/eligibilityRules";
-import { buildDivisionRankings, ChampionOverlay, FighterMeta, roundToDisplayStep } from "../src/lib/mnewsRating/rankingsFile";
-import { extractH2HWinsForDivision, H2HWin } from "../src/lib/mnewsRating/monotonicity";
+import { buildDivisionRankings, ChampionOverlay, FighterMeta } from "../src/lib/mnewsRating/rankingsFile";
+import { extractH2HWinsForDivision, checkH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
 import { getDivisionOverlay } from "../src/lib/mnewsRating/fighterDivisions";
-import {
-  ELO_PARAMS_V5,
-  DECAY_PARAMS_V6,
-  INITIAL_RATING_BOOST_PARAMS_V6,
-  SIGMA_DISCOUNT_COEFFICIENT_V7,
-} from "../src/lib/mnewsRating/constants";
+import { ELO_PARAMS_V5, DECAY_PARAMS_V6, INITIAL_RATING_BOOST_PARAMS_V6, SIGMA_DISCOUNT_COEFFICIENT_V7 } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
+import { DisplayEntry } from "../src/lib/mnewsRating/engine";
 
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
 const RIZIN_RECORDS_PATH = path.join(process.cwd(), "data", "rizinRecords.json");
@@ -51,28 +47,19 @@ function applyRizinRecordsOverride(records: FighterRecordsInput): FighterRecords
   return out;
 }
 
-function lastRizinMmaWeighInMiss(records: FighterRecordsInput, slug: string): boolean {
-  const history = (records[slug]?.history ?? []).filter((h) => isRizinMmaEvent(h.event));
-  const latest = [...history].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))[0];
-  return latest ? detectWeighInMiss(latest) : false;
-}
-
-// 王者は「事実」としてElo掲載資格とは独立に表示する(update-mnews-rating.tsの
-// championOverlayForと同一ロジック)。この解決を省略すると番号付きランキングの
-// 採番が公開ページ(王者別掲→1..N)とズレる(2026-07-16に判明した表示アーティファクト)。
 function championOverlayFor(division: MnewsDivision, display: Map<string, DisplayEntry>): ChampionOverlay | null {
   const champ = RIZIN_CHAMPIONS.find((c) => c.org === "rizin" && c.weightClass === division);
   if (!champ || !champ.slug) return null;
   const d = display.get(champ.slug);
   return {
     fighterId: champ.slug,
-    rating: d ? roundToDisplayStep(d.displayRating) : null,
+    rating: null,
     record: d ? { wins: d.wins, losses: d.losses, draws: d.draws } : null,
     lastFight: d?.lastFightDate ?? null,
   };
 }
 
-function setup() {
+function main() {
   const rawRecords: FighterRecordsInput = JSON.parse(fs.readFileSync(RECORDS_PATH, "utf8"));
   const records = applyRizinRecordsOverride(rawRecords);
 
@@ -119,65 +106,42 @@ function setup() {
   const currentYearPrefix = `${asOf.getFullYear()}-`;
   const rankerWinExemptions = findRankerWinExemptions(boutSummariesBySlug, divisionBySlug, baseRankersByDivision, currentYearPrefix);
 
-  const eligibleEntriesByDivision = new Map<MnewsDivision, Array<{ meta: FighterMeta; display: DisplayEntry }>>();
-  const h2hWinsByDivision = new Map<MnewsDivision, H2HWin[]>();
-  const championByDivision = new Map<MnewsDivision, ChampionOverlay | null>();
+  let totalViolations = 0;
+  console.log("=== H2H不変条件 機械チェック(全階級) ===");
+  console.log("読み取り専用・書き込みなし。違反0件であることを確認する。\n");
+
   for (const division of MNEWS_DIVISIONS) {
     const rankers = baseRankersByDivision.get(division)!;
-    const entries = [...display.entries()]
-      .filter(([slug]) => divisionBySlug.get(slug) === division && !isExcludedByFact(slug) && (rankers.has(slug) || rankerWinExemptions.has(slug)))
-      .map(([slug, e]) => ({ meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) }, display: e }));
-    eligibleEntriesByDivision.set(division, entries);
-    h2hWinsByDivision.set(division, extractH2HWinsForDivision(bouts, new Set(entries.map((e) => e.meta.slug))));
-    championByDivision.set(division, championOverlayFor(division, display));
-  }
-
-  return { asOf, eligibleEntriesByDivision, h2hWinsByDivision, championByDivision };
-}
-
-function main() {
-  console.log(`=== P1(σディスカウント D=${SIGMA_DISCOUNT_COEFFICIENT_V7})+P0-B(単調性オーバーレイ・距離無制限ハード制約) 最終確認ダンプ ===`);
-  console.log("読み取り専用・data/rankings.json等への書き込みなし。採番は公開ページと同一ロジック(王者別掲)\n");
-
-  const { asOf, eligibleEntriesByDivision, h2hWinsByDivision, championByDivision } = setup();
-
-  for (const division of MNEWS_DIVISIONS) {
-    const eligibleEntries = eligibleEntriesByDivision.get(division)!;
+    const eligibleEntries = [...display.entries()]
+      .filter(
+        ([slug]) =>
+          divisionBySlug.get(slug) === division && !isExcludedByFact(slug) && (rankers.has(slug) || rankerWinExemptions.has(slug))
+      )
+      .map(([slug, e]) => ({ meta: { slug, division, weighInMiss: false } as FighterMeta, display: e }));
     if (eligibleEntries.length === 0) continue;
-    const h2hWins = h2hWinsByDivision.get(division)!;
-    const champion = championByDivision.get(division)!;
 
-    // 現行(σディスカウントなし・単調性オーバーレイなし)
-    const baseline = buildDivisionRankings(division, eligibleEntries, asOf, undefined, champion);
-    const baselineRankBySlug = new Map(baseline.entries.map((e) => [e.fighterId, e.rank]));
-
-    // 最終候補(D=70 + 単調性オーバーレイ・距離無制限ハード制約)
-    const final = buildDivisionRankings(division, eligibleEntries, asOf, undefined, champion, "overlay", SIGMA_DISCOUNT_COEFFICIENT_V7, {
+    const champion = championOverlayFor(division, display);
+    const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
+    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs);
+    const result = buildDivisionRankings(division, eligibleEntries, asOf, undefined, champion, "overlay", SIGMA_DISCOUNT_COEFFICIENT_V7, {
       h2hWins,
     });
-    const finalRankBySlug = new Map(final.entries.map((e) => [e.fighterId, e.rank]));
+    const finalRankedSlugs = result.entries.map((e) => e.fighterId);
+    const violations = checkH2HInvariant(finalRankedSlugs, h2hWins);
 
-    console.log(`\n=== ${division}${champion ? `(王者: ${champion.fighterId})` : ""} ===`);
-    console.log(`${"slug".padEnd(24)} ${"旧rank".padEnd(7)} ${"新rank".padEnd(7)} ${"rawR".padEnd(9)} n`);
-
-    const rows = eligibleEntries
-      .filter((e) => e.meta.slug !== champion?.fighterId)
-      .map((e) => ({
-        slug: e.meta.slug,
-        rawR: e.display.displayRating,
-        n: e.display.fights,
-        oldRank: baselineRankBySlug.get(e.meta.slug) ?? 999,
-        newRank: finalRankBySlug.get(e.meta.slug) ?? 999,
-      }))
-      .sort((a, b) => a.newRank - b.newRank);
-
-    for (const row of rows) {
-      const moved = row.oldRank !== row.newRank ? ` (${row.oldRank > row.newRank ? "↑" : "↓"}${Math.abs(row.oldRank - row.newRank)})` : "";
-      console.log(
-        `${row.slug.padEnd(24)} ${String(row.oldRank).padEnd(7)} ${(String(row.newRank) + moved).padEnd(7)} ${row.rawR.toFixed(1).padEnd(9)} ${row.n}`
-      );
+    console.log(`${division}: H2Hペア${h2hWins.length}件中、違反${violations.length}件`);
+    for (const v of violations) {
+      console.log(`  NG: ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直接勝っているのに下位のまま`);
+      totalViolations++;
     }
   }
+
+  console.log(`\n合計違反件数: ${totalViolations}`);
+  if (totalViolations > 0) {
+    console.error("FAIL: H2H不変条件違反が検出されました。");
+    process.exit(1);
+  }
+  console.log("PASS: 全階級でH2H不変条件が成立しています(循環はスキップ対象外として除外済み)。");
 }
 
 main();

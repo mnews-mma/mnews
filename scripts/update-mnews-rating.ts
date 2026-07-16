@@ -62,9 +62,8 @@ import {
   DECAY_PARAMS_V6,
   INITIAL_RATING_BOOST_PARAMS_V6,
   SIGMA_DISCOUNT_COEFFICIENT_V7,
-  MONOTONICITY_MAX_RANK_GAP,
 } from "../src/lib/mnewsRating/constants";
-import { extractH2HWinsForDivision } from "../src/lib/mnewsRating/monotonicity";
+import { extractH2HWinsForDivision, checkH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -266,17 +265,32 @@ function main() {
         meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
         display: applyEligibilityScopeToRecord(slug, e, bouts),
       }));
-    // P1(σディスカウント D=70)+P2(単調性オーバーレイN=2、2026-07-16採用確定)。
-    // H2Hはこのdivisionの資格保有選手同士の決着済み対戦のみ(捏造ゼロ、boutsは
-    // 既に構築済みのElo計算用の全対戦から抽出。詳細はconstants.tsの
-    // SIGMA_DISCOUNT_COEFFICIENT_V7コメント参照)。
+    // P1(σディスカウント D=70)+P0-B(単調性オーバーレイ、距離無制限ハード
+    // 制約、2026-07-17改訂)。H2Hはこのdivisionの資格保有選手同士の決着済み
+    // 対戦のみ(捏造ゼロ、boutsは既に構築済みのElo計算用の全対戦から抽出。
+    // 詳細はconstants.tsのSIGMA_DISCOUNT_COEFFICIENT_V7コメント参照)。
     const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
     const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs);
     const key = divisionRankingsKey(division);
     out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion, undefined, SIGMA_DISCOUNT_COEFFICIENT_V7, {
       h2hWins,
-      maxRankGap: MONOTONICITY_MAX_RANK_GAP,
     });
+
+    // 常設の自己検証(2026-07-17 P0-B): 全H2Hペアで「勝者の順位<=敗者の順位」
+    // または循環(スキップ対象)のいずれかが成立していることを機械チェックする。
+    // 違反が1件でもあれば書き込み前に例外で止める(P0-Aで発見した「実は
+    // バグではなく循環だった」ケースとの取り違えを防ぐため、循環は
+    // checkH2HInvariant内部で除外済み=ここで検出される違反は正真正銘の
+    // バグのみ)。
+    const finalRankedSlugs = out[key].entries.map((e) => e.fighterId);
+    const violations = checkH2HInvariant(finalRankedSlugs, h2hWins);
+    if (violations.length > 0) {
+      console.error(`H2H不変条件違反を検出(${division}):`);
+      for (const v of violations) {
+        console.error(`  ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直接勝っているのに下位のまま`);
+      }
+      throw new Error(`H2H不変条件違反が${violations.length}件検出されたため書き込みを中止しました(${division})`);
+    }
   }
 
   let published: RankingsFile = out;
