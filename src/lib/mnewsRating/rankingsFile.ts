@@ -89,11 +89,19 @@ export function buildDivisionRankings(
   // (挙動を完全維持)。
   sigmaDiscountCoefficient?: number,
   // 直接対決の単調性オーバーレイ(P2・2026-07-16採用、2026-07-17 P0-Bで
-  // ハード制約化=距離制限撤廃)。指定時のみ、上記の順位付け後に「AがBに
-  // 直接勝っているのに順位がAの方が下」を距離無制限で補正する
-  // (monotonicity.ts参照)。h2hWinsはこのdivision内の決着済み対戦のみを
-  // 渡すこと(呼び出し側の責務)。
-  monotonicity?: { h2hWins: H2HWin[] }
+  // ハード制約化=距離制限撤廃、2026-07-16 v9改訂でmaxRankGapによる弱い
+  // 整合に戻す)。指定時のみ、上記の順位付け後に「AがBに直接勝っているのに
+  // 順位がAの方が下」を補正する(monotonicity.ts参照)。h2hWinsはこの
+  // division内の決着済み対戦のみを渡すこと(呼び出し側の責務)。maxRankGap
+  // 省略時は距離無制限(v8互換)。
+  monotonicity?: { h2hWins: H2HWin[]; maxRankGap?: number },
+  // ダンプ/検証用: monotonicity補正が適用される直前の順序(σディスカウント後・
+  // maxRankGapフィルタの基準になった並び)を通知する。ランキング本体には
+  // 一切影響しない読み取り専用のフック(engine.tsのcomputeRawRatings
+  // onBoutと同じ思想)。checkH2HInvariant等の自己検証で、構築時と同じ基準で
+  // gap判定するために使う(post-hoc最終順位でgapを測ると構築時の判定と
+  // ズレるため)。
+  onPreCorrectionOrder?: (slugs: string[]) => void
 ): DivisionRankings {
   const isBadgeMode = mode === "badge";
   const suppressDelta = shouldSuppressDelta(prev);
@@ -112,10 +120,12 @@ export function buildDivisionRankings(
   let sorted = [...pool].sort((a, b) => effectiveRating(b) - effectiveRating(a));
 
   if (monotonicity) {
+    onPreCorrectionOrder?.(sorted.map((e) => e.meta.slug));
     const bySlug = new Map(sorted.map((e) => [e.meta.slug, e]));
     const reorderedSlugs = applyHeadToHeadMonotonicity(
       sorted.map((e) => e.meta.slug),
-      monotonicity.h2hWins
+      monotonicity.h2hWins,
+      monotonicity.maxRankGap
     );
     sorted = reorderedSlugs.map((slug) => bySlug.get(slug)!);
   }

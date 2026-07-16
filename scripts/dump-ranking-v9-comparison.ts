@@ -1,7 +1,9 @@
-// v9(recency主軸への組み替え)最終確認ダンプ。読み取り専用・data/rankings.json
+// v9(recency撤回・H2H弱整合)最終確認ダンプ。読み取り専用・data/rankings.json
 // 等への書き込みは一切行わない。「旧rank」は現在デプロイ済みのdata/rankings.json
 // (v8)、「新rank」はupdate-mnews-rating.tsと同一ロジックで計算したv9候補。
-// 実行: npx tsx scripts/dump-ranking-v9-comparison.ts
+// 実行: npx tsx scripts/dump-ranking-v9-comparison.ts [maxRankGap]
+// (maxRankGap省略時はconstants.tsのMONOTONICITY_MAX_RANK_GAP_V9を使う。
+// 候補値の比較検証用に引数で上書きできるようにしてある)
 import fs from "fs";
 import path from "path";
 import {
@@ -20,6 +22,7 @@ import { buildOpponentResolver, buildKnownNamesLookup } from "../src/lib/mnewsRa
 import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import { findRankerWinExemptions, isStandardEligible, summarizeBoutsForFighter } from "../src/lib/mnewsRating/eligibilityRules";
 import { buildDivisionRankings, ChampionOverlay, FighterMeta, divisionRankingsKey, roundToDisplayStep, RankingsFile } from "../src/lib/mnewsRating/rankingsFile";
+import { extractH2HWinsForDivision, checkH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
@@ -29,8 +32,8 @@ import {
   ELO_PARAMS_V5,
   DECAY_PARAMS_V6,
   INITIAL_RATING_BOOST_PARAMS_V6,
-  SIGMA_DISCOUNT_COEFFICIENT_V9,
-  RECENCY_HALF_LIFE_MONTHS_V9,
+  SIGMA_DISCOUNT_COEFFICIENT_V7,
+  MONOTONICITY_MAX_RANK_GAP_V9,
 } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
@@ -39,6 +42,9 @@ import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
 const RIZIN_RECORDS_PATH = path.join(process.cwd(), "data", "rizinRecords.json");
 const DEPLOYED_RANKINGS_PATH = path.join(process.cwd(), "data", "rankings.json");
+
+const argGap = process.argv[2] ? Number(process.argv[2]) : undefined;
+const MAX_RANK_GAP = argGap !== undefined && !Number.isNaN(argGap) ? argGap : MONOTONICITY_MAX_RANK_GAP_V9;
 
 function applyRizinRecordsOverride(records: FighterRecordsInput): FighterRecordsInput {
   if (!fs.existsSync(RIZIN_RECORDS_PATH)) return records;
@@ -97,12 +103,8 @@ function main() {
     [...preDebutRecords.keys()].map((slug) => [slug, summarizeBoutsForFighter(bouts, slug).length])
   );
   const initialRatingOverrides = computeInitialRatingOverrides(preDebutRecords, INITIAL_RATING_BOOST_PARAMS_V6, rizinFightCountsForSeed);
-  const recencyAsOf = bouts.reduce((max, b) => (b.date > max ? b.date : max), "");
-  console.log(`recency基準日(直近大会日): ${recencyAsOf}`);
-  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides, {
-    asOf: recencyAsOf ? new Date(recencyAsOf) : asOf,
-    halfLifeMonths: RECENCY_HALF_LIFE_MONTHS_V9,
-  });
+  // recency K減衰は撤回済み。第4引数を渡さない(v8までと同じ挙動)。
+  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides);
   const publishable = filterPublishableStates(states, records);
   const display = buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6);
 
@@ -130,8 +132,10 @@ function main() {
   const currentYearPrefix = `${asOf.getFullYear()}-`;
   const rankerWinExemptions = findRankerWinExemptions(boutSummariesBySlug, divisionBySlug, baseRankersByDivision, currentYearPrefix);
 
-  console.log(`=== v9(recency主軸)最終確認ダンプ σ=${SIGMA_DISCOUNT_COEFFICIENT_V9} halfLife=${RECENCY_HALF_LIFE_MONTHS_V9}ヶ月 H2H=OFF ===`);
+  console.log(`=== v9(recency撤回・H2H弱整合)最終確認ダンプ σ=${SIGMA_DISCOUNT_COEFFICIENT_V7} maxRankGap=${MAX_RANK_GAP} ===`);
   console.log("読み取り専用・書き込みなし。「旧rank」は現在の data/rankings.json(v8)。\n");
+
+  let totalViolations = 0;
 
   for (const division of MNEWS_DIVISIONS) {
     const champion = championOverlayFor(division, display);
@@ -149,7 +153,27 @@ function main() {
       }));
     if (eligibleEntries.length === 0) continue;
 
-    const final = buildDivisionRankings(division, eligibleEntries, asOf, undefined, champion, "overlay", SIGMA_DISCOUNT_COEFFICIENT_V9);
+    const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
+    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs);
+
+    let preCorrectionOrder: string[] = [];
+    const final = buildDivisionRankings(
+      division,
+      eligibleEntries,
+      asOf,
+      undefined,
+      champion,
+      "overlay",
+      SIGMA_DISCOUNT_COEFFICIENT_V7,
+      { h2hWins, maxRankGap: MAX_RANK_GAP },
+      (slugs) => {
+        preCorrectionOrder = slugs;
+      }
+    );
+
+    const finalRankedSlugs = final.entries.map((e) => e.fighterId);
+    const violations = checkH2HInvariant(finalRankedSlugs, h2hWins, MAX_RANK_GAP, preCorrectionOrder);
+    totalViolations += violations.length;
 
     const deployedKey = divisionRankingsKey(division);
     const deployedRanks = new Map((deployed[deployedKey]?.entries ?? []).map((e) => [e.fighterId, e.rank]));
@@ -162,6 +186,12 @@ function main() {
       console.log(
         `  王者rawRating: 旧(表示丸め)=${deployedChampionRaw ?? "N/A"} 新(生値)=${champNewRaw !== null ? champNewRaw.toFixed(1) : "N/A"} lastFight=${champion.lastFight ?? "N/A"}`
       );
+    }
+    if (violations.length > 0) {
+      console.log(`  [H2H違反 ${violations.length}件]`);
+      for (const v of violations) {
+        console.log(`    NG: ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直接勝っているのに下位のまま`);
+      }
     }
     console.log(`${"slug".padEnd(24)} ${"旧rank".padEnd(7)} ${"新rank".padEnd(9)} ${"rawR".padEnd(9)} n`);
 
@@ -180,6 +210,8 @@ function main() {
       );
     }
   }
+
+  console.log(`\n合計H2H違反件数: ${totalViolations}`);
 }
 
 main();

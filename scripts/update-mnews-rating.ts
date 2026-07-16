@@ -62,9 +62,10 @@ import {
   ELO_PARAMS_V5,
   DECAY_PARAMS_V6,
   INITIAL_RATING_BOOST_PARAMS_V6,
-  SIGMA_DISCOUNT_COEFFICIENT_V9,
-  RECENCY_HALF_LIFE_MONTHS_V9,
+  SIGMA_DISCOUNT_COEFFICIENT_V7,
+  MONOTONICITY_MAX_RANK_GAP_V9,
 } from "../src/lib/mnewsRating/constants";
+import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -208,15 +209,11 @@ function main() {
     [...preDebutRecords.keys()].map((slug) => [slug, summarizeBoutsForFighter(bouts, slug).length])
   );
   const initialRatingOverrides = computeInitialRatingOverrides(preDebutRecords, INITIAL_RATING_BOOST_PARAMS_V6, rizinFightCountsForSeed);
-  // v9: recency(K減衰)基準日は、カレンダー当日ではなく全体で最も新しい
-  // RIZIN MMA boutの開催日を使う(constants.tsのRECENCY_HALF_LIFE_MONTHS_V9
-  // コメント参照。大会が開催されていない期間に全選手が一律に減衰し続ける
-  // のを避けるため)。boutsは既に構築済みなのでここで単純に最大日付を取る。
-  const recencyAsOf = bouts.reduce((max, b) => (b.date > max ? b.date : max), "");
-  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides, {
-    asOf: recencyAsOf ? new Date(recencyAsOf) : asOf,
-    halfLifeMonths: RECENCY_HALF_LIFE_MONTHS_V9,
-  });
+  // v9(2026-07-16、recency K減衰を撤回): 要件を過不足なく満たす最小構成に
+  // 戻した(constants.ts MONOTONICITY_MAX_RANK_GAP_V9直前の設計ノート参照)。
+  // computeRawRatingsのrecencyオプション自体は後方互換で残すが、ここでは
+  // 使わない(第4引数を渡さない=v8までと同じ挙動)。
+  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides);
   const publishable = filterPublishableStates(states, records);
   // v6: 不活性ディケイ廃止(比較ダンプでの目視レビューを経て採用)。
   const display = buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6);
@@ -280,11 +277,54 @@ function main() {
         meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
         display: applyEligibilityScopeToRecord(slug, e, bouts),
       }));
-    // v9: H2H単調性オーバーレイは完全にOFF(constants.tsのSIGMA_DISCOUNT_
-    // COEFFICIENT_V9直前の設計ノート参照)。σディスカウントのみ有効
-    // (monotonicity引数を渡さない=undefined)。
+    // v9(recency撤回・H2H限定復活): σディスカウント(V7=70、維持)+
+    // H2H単調性オーバーレイを弱い整合(MONOTONICITY_MAX_RANK_GAP_V9)で復活。
+    // 循環は引き続き直近優先で解決((b)ロジック、monotonicity.ts参照・
+    // gap制限の対象外)。H2Hはこのdivisionの資格保有選手同士の決着済み対戦
+    // のみ(捏造ゼロ、boutsは既に構築済みのElo計算用の全対戦から抽出)。
+    const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
+    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs);
     const key = divisionRankingsKey(division);
-    out[key] = buildDivisionRankings(division, eligibleEntries, asOf, prevOut[key], champion, undefined, SIGMA_DISCOUNT_COEFFICIENT_V9);
+    let preCorrectionOrder: string[] = [];
+    out[key] = buildDivisionRankings(
+      division,
+      eligibleEntries,
+      asOf,
+      prevOut[key],
+      champion,
+      undefined,
+      SIGMA_DISCOUNT_COEFFICIENT_V7,
+      { h2hWins, maxRankGap: MONOTONICITY_MAX_RANK_GAP_V9 },
+      (slugs) => {
+        preCorrectionOrder = slugs;
+      }
+    );
+
+    // 常設の自己検証: H2H制約(gap制限内・非循環)+循環内(直近優先)がいずれも
+    // 満たされていることを機械チェックする。gap判定は構築時と同じ基準
+    // (preCorrectionOrder)で行う(最終順位で測ると他ペアの補正でズレる)。
+    // 違反が1件でもあれば書き込み前に例外で止める。
+    const finalRankedSlugs = out[key].entries.map((e) => e.fighterId);
+    const violations = checkH2HInvariant(finalRankedSlugs, h2hWins, MONOTONICITY_MAX_RANK_GAP_V9, preCorrectionOrder);
+    if (violations.length > 0) {
+      console.error(`H2H不変条件違反を検出(${division}):`);
+      for (const v of violations) {
+        console.error(`  ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直接勝っているのに下位のまま`);
+      }
+      throw new Error(`H2H不変条件違反が${violations.length}件検出されたため書き込みを中止しました(${division})`);
+    }
+
+    // 非対称ガード: 循環内の直近優先解決((b)ロジック)は、直近半年以内の
+    // 対戦であれば循環の有無・gap制限に関係なく必ず満たされていなければ
+    // ならない(古い辺が破れるのは許容、新しい辺が破れるのは不許可)。
+    const recentViolations = checkRecentH2HInvariant(finalRankedSlugs, h2hWins, asOf, undefined, MONOTONICITY_MAX_RANK_GAP_V9, preCorrectionOrder);
+    if (recentViolations.length > 0) {
+      console.error(`直近半年H2H非対称ガード違反を検出(${division}):`);
+      for (const v of recentViolations) {
+        console.error(`  ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直近半年以内の直接対決で勝っているのに下位のまま`);
+      }
+      throw new Error(`直近半年H2H非対称ガード違反が${recentViolations.length}件検出されたため書き込みを中止しました(${division})`);
+    }
   }
 
   let published: RankingsFile = out;

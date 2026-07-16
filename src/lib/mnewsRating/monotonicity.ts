@@ -175,11 +175,28 @@ function resolveCyclicEdgesByRecency(cyclicPairs: ResolvedPair[], baseAccepted: 
 //   ソート安定性も保つ: H2H制約が一切無いグループは元のレート順そのままになる)。
 // 循環に関与する辺は、直近対戦を優先する形で一部だけを制約として採用する
 // (resolveCyclicEdgesByRecency参照。最も古い辺だけが諦められる)。
-export function applyHeadToHeadMonotonicity(rankedSlugs: string[], h2hWins: H2HWin[]): string[] {
+// maxRankGap(2026-07-16・v9改訂で追加): 指定時のみ、非循環の直接対決を
+// 「補正前の順位差がこの値以内」のケースに限定する(弱い整合。距離無制限
+// ハード制約による広範な入れ替えを避けるため)。順位差はrankedSlugsの元の
+// 並び(σディスカウント後・補正前)で測る。未指定(デフォルト)は従来どおり
+// 距離無制限(v8互換)。循環内の辺(resolveCyclicEdgesByRecency)はこの
+// フィルタの対象外(循環は元々「直近優先」で解決するため対象自体が限定的)。
+export function applyHeadToHeadMonotonicity(rankedSlugs: string[], h2hWins: H2HWin[], maxRankGap?: number): string[] {
   const pairs = resolvePairDirections(h2hWins);
   const cyclicEdgeKeys = findCyclicEdges(pairs);
-  const nonCyclicPairs = pairs.filter(({ winner, loser }) => !cyclicEdgeKeys.has(`${winner}>${loser}`));
+  let nonCyclicPairs = pairs.filter(({ winner, loser }) => !cyclicEdgeKeys.has(`${winner}>${loser}`));
   const cyclicPairs = pairs.filter(({ winner, loser }) => cyclicEdgeKeys.has(`${winner}>${loser}`));
+
+  if (maxRankGap !== undefined) {
+    const originalIndexForGap = new Map(rankedSlugs.map((slug, i) => [slug, i]));
+    nonCyclicPairs = nonCyclicPairs.filter(({ winner, loser }) => {
+      const winnerIdx = originalIndexForGap.get(winner);
+      const loserIdx = originalIndexForGap.get(loser);
+      if (winnerIdx === undefined || loserIdx === undefined) return true; // ランキング対象外選手は後段でどのみち無視される
+      return Math.abs(winnerIdx - loserIdx) <= maxRankGap;
+    });
+  }
+
   const resolvedCyclicPairs = resolveCyclicEdgesByRecency(cyclicPairs, nonCyclicPairs);
   const constraints = [...nonCyclicPairs, ...resolvedCyclicPairs];
 
@@ -241,18 +258,37 @@ export interface H2HViolation {
 // update-mnews-rating.tsの自己検証・CI用に常設)。循環に関与する組は検査対象
 // 外にする(仕様どおりスキップされ、補正されないため=想定内)。ランキング
 // 対象外の選手(掲載資格なし・王者オーバーレイで別掲載等)が絡む組も対象外。
+// maxRankGap指定時(v9・弱い整合)は、構築時と同じ基準の順位差(前段の
+// preCorrectionOrder。省略時はrankedSlugsで代用)でこの差を超えて離れている
+// 組も対象外にする(そもそも制約として適用していないため=想定内)。
+// 【重要】gapの判定基準は必ず構築時(applyHeadToHeadMonotonicityに渡した
+// rankedSlugs)と同じ順序を使うこと。最終順位(post-correction)でgapを測ると、
+// 他ペアの補正で偶然近づいた/離れた組を誤って判定してしまう
+// (rankingsFile.tsのbuildDivisionRankings onPreCorrectionOrderフック参照)。
+// applyHeadToHeadMonotonicityに渡すmaxRankGapと必ず同じ値を渡すこと。
 // 違反(勝者が敗者より下位のまま)が1件でもあれば、そのペアを返す(0件なら
 // 空配列=常にこうあるべき)。
-export function checkH2HInvariant(rankedSlugs: string[], h2hWins: H2HWin[]): H2HViolation[] {
+export function checkH2HInvariant(
+  rankedSlugs: string[],
+  h2hWins: H2HWin[],
+  maxRankGap?: number,
+  preCorrectionOrder?: string[]
+): H2HViolation[] {
   const pairs = resolvePairDirections(h2hWins);
   const cyclicEdges = findCyclicEdges(pairs);
   const rankOf = new Map(rankedSlugs.map((slug, i) => [slug, i]));
+  const gapRankOf = new Map((preCorrectionOrder ?? rankedSlugs).map((slug, i) => [slug, i]));
   const violations: H2HViolation[] = [];
   for (const { winner, loser } of pairs) {
     if (cyclicEdges.has(`${winner}>${loser}`)) continue;
     const winnerIdx = rankOf.get(winner);
     const loserIdx = rankOf.get(loser);
     if (winnerIdx === undefined || loserIdx === undefined) continue;
+    if (maxRankGap !== undefined) {
+      const gapWinnerIdx = gapRankOf.get(winner);
+      const gapLoserIdx = gapRankOf.get(loser);
+      if (gapWinnerIdx !== undefined && gapLoserIdx !== undefined && Math.abs(gapWinnerIdx - gapLoserIdx) > maxRankGap) continue;
+    }
     if (winnerIdx > loserIdx) {
       violations.push({ winner, loser, winnerRank: winnerIdx + 1, loserRank: loserIdx + 1 });
     }
@@ -262,28 +298,42 @@ export function checkH2HInvariant(rankedSlugs: string[], h2hWins: H2HWin[]): H2H
 
 // 非対称ガード(2026-07-17・(b)案の回帰防止用): 「直近{recentWindowDays}日
 // 以内の直接対決で勝った側が負けた側より下位のまま」というケースをゼロに
-// する。checkH2HInvariantと違い、循環に関与する組でも除外しない(=循環内
-// リオーダーの設計上、諦められる辺は必ず最も古いものになるはずなので、直近の
-// 対戦が破れることがあってはならない、という非対称性を明示的に検査する)。
-// 古い辺が破れる(=このチェックの対象外の期間で違反が残る)のは許容する。
+// する。checkH2HInvariantと違い、循環に関与する組はmaxRankGapの有無に関係
+// なく除外しない(=循環内リオーダーの設計上、諦められる辺は必ず最も古い
+// ものになるはずなので、直近の対戦が破れることがあってはならない、という
+// 非対称性を明示的に検査する)。非循環の組はmaxRankGap指定時(v9・弱い整合)
+// のみ、構築時と同じ基準の順位差(preCorrectionOrder。checkH2HInvariantと
+// 同じ理由で最終順位ではなく構築時の順位を使う)でこの差を超えて離れていれば
+// 対象外にする(そもそも制約として適用していないため=想定内)。古い辺が
+// 破れる(=このチェックの対象外の期間で違反が残る)のは許容する。
 export function checkRecentH2HInvariant(
   rankedSlugs: string[],
   h2hWins: H2HWin[],
   asOf: Date,
-  recentWindowDays = 182 // 約6ヶ月(DECAY_PERIOD_DAYSと同じ定義に揃える)
+  recentWindowDays = 182, // 約6ヶ月(DECAY_PERIOD_DAYSと同じ定義に揃える)
+  maxRankGap?: number,
+  preCorrectionOrder?: string[]
 ): H2HViolation[] {
   const cutoff = new Date(asOf);
   cutoff.setDate(cutoff.getDate() - recentWindowDays);
   const cutoffStr = cutoff.toISOString().slice(0, 10);
 
   const pairs = resolvePairDirections(h2hWins);
+  const cyclicEdges = findCyclicEdges(pairs);
   const rankOf = new Map(rankedSlugs.map((slug, i) => [slug, i]));
+  const gapRankOf = new Map((preCorrectionOrder ?? rankedSlugs).map((slug, i) => [slug, i]));
   const violations: H2HViolation[] = [];
   for (const { winner, loser, date } of pairs) {
     if (date < cutoffStr) continue; // 直近半年より古い対戦は対象外(循環で諦めることを許容する)
     const winnerIdx = rankOf.get(winner);
     const loserIdx = rankOf.get(loser);
     if (winnerIdx === undefined || loserIdx === undefined) continue;
+    const isCyclic = cyclicEdges.has(`${winner}>${loser}`);
+    if (!isCyclic && maxRankGap !== undefined) {
+      const gapWinnerIdx = gapRankOf.get(winner);
+      const gapLoserIdx = gapRankOf.get(loser);
+      if (gapWinnerIdx !== undefined && gapLoserIdx !== undefined && Math.abs(gapWinnerIdx - gapLoserIdx) > maxRankGap) continue;
+    }
     if (winnerIdx > loserIdx) {
       violations.push({ winner, loser, winnerRank: winnerIdx + 1, loserRank: loserIdx + 1 });
     }
