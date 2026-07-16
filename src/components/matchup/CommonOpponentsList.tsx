@@ -2,17 +2,20 @@ import styles from "@/styles/matchup.module.css";
 import { findFighterSlugByName } from "@/lib/fighters";
 import type { CommonOpponent } from "@/lib/originalArticles";
 
-// 共通対戦相手1人分の勝敗マーク(◯✕は実データ、△は引き分け/NC、—は片側のみ対戦の空欄)。
+// 共通対戦相手1人分の勝敗マーク。直近戦績ドット(MatchupTape.tsxのFormChips、
+// styles.formChip/formW/formL/formD)と同じ意匠に統一する(勝ち=緑地W、
+// 負け=赤地L、引き分け/NC=グレー地D)。片側のみ対戦(対戦なし)は同じ
+// サイズ・形のグレー地「—」ドットにする(styles.formN)。
 function markFor(result: CommonOpponent["resultA"]): { symbol: string; cls: string } {
-  if (result === null) return { symbol: "—", cls: styles.resN };
-  if (result === "win") return { symbol: "◯", cls: styles.resW };
-  if (result === "loss") return { symbol: "✕", cls: styles.resL };
-  return { symbol: "△", cls: styles.resN };
+  if (result === null) return { symbol: "—", cls: styles.formN };
+  if (result === "win") return { symbol: "W", cls: styles.formW };
+  if (result === "loss") return { symbol: "L", cls: styles.formL };
+  return { symbol: "D", cls: styles.formD };
 }
 
 function ResMark({ result }: { result: CommonOpponent["resultA"] }) {
   const { symbol, cls } = markFor(result);
-  return <span className={`${styles.res} ${cls}`}>{symbol}</span>;
+  return <span className={`${styles.formChip} ${styles.resChip} ${cls}`}>{symbol}</span>;
 }
 
 // 列見出し(自分/相手の名前を赤・青で色分け、収まらない場合は省略記号+title属性で

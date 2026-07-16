@@ -325,6 +325,13 @@
   color: #fff;
 }
 
+/* 共通対戦相手の「対戦なし」用(片側のみ対戦)。W/L/Dと同じformChipの
+   サイズ・形のまま、グレー地の「—」にして意匠だけ揃える。 */
+.formN {
+  background: var(--dim);
+  color: #fff;
+}
+
 .vs {
   grid-area: vs;
   align-self: center;
@@ -543,6 +550,13 @@
   background: transparent;
   color: var(--dim);
   border: 1px solid var(--line);
+}
+
+/* 共通対戦相手のマーク(styles.formChip流用)をcrowHeaderのグリッド列
+   (2.4rem)内で中央寄せする。formChipは固定幅のためgrid-itemの既定
+   justify-self:stretchが効かず、中央寄せには明示指定が必要。 */
+.resChip {
+  justify-self: center;
 }
 
 .emptyCommons {

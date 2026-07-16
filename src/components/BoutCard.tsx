@@ -3,30 +3,12 @@ import { findFighterSlugByName } from "@/lib/fighters";
 import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import FighterStrip from "@/components/FighterStrip";
 import { EventCommonOpponents } from "@/components/FighterVisuals";
+import { renderWrappableName } from "@/lib/renderWrappableName";
 
 // 選手名は全選手で同じfont-sizeに統一する(文字数連動の縮小はしない)。
 // 長い名前は縮小せず2行折り返しで吸収する(375px幅で最長クラスの名前が
 // 2行に収まる大きさを実測して決定)。
 export const FIGHTER_NAME_FONT_SIZE = "12px";
-
-// 選手名の折り返しは中黒「・」やスペースの位置でのみ発生させ、単語(トークン)
-// 途中で割れないようにする(区切りで分割しnowrapブロック化)。ただし区切りの
-// 無い外国人リングネーム等(例:シンバートルバットエルデネ=13文字)をnowrap化
-// すると375px幅のカラムからはみ出すため、1トークンが一定文字数を超える場合は
-// 強制せず通常のCJK折り返し(文字単位)にフォールバックする(はみ出し優先回避)。
-const NOWRAP_TOKEN_MAX_LEN = 10;
-function renderWrappableName(name: string): ReactNode {
-  const parts = name.split(/(・|\s+)/).filter((p) => p !== "");
-  return parts.map((part, i) =>
-    part === "・" || /^\s+$/.test(part) || part.length > NOWRAP_TOKEN_MAX_LEN ? (
-      part
-    ) : (
-      <span key={i} style={{ whiteSpace: "nowrap" }}>
-        {part}
-      </span>
-    )
-  );
-}
 
 // 戦績データが無い(no-data)/hiddenの選手はリンクにせずテキスト表示にする
 // (visibleSlugsで判定・判定ロジックの二重定義はしない)。

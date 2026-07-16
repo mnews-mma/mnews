@@ -2,41 +2,31 @@ import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { computeMethodSplit, computeFighterStripStats, LAST5_SYMBOL } from "@/lib/fighterStrip";
 import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
 import { findFighterSlugByName } from "@/lib/fighters";
+import { renderWrappableName } from "@/lib/renderWrappableName";
 
 type Result = FighterRecordEntry["history"][number]["result"];
 
-// 勝敗記号は ○ / ● / △ のみ(サイト全体で直近5戦と統一)。方向・凡例の概念が
-// 無く説明不要で読める。
-const MARK: Record<Result, string> = {
-  win: "○",
-  loss: "●",
-  draw: "△",
-  nc: "△",
-};
+// 勝敗マークは直近5戦ドット(.fighter-strip-last5)と同じ意匠(緑地W/赤地L/
+// グレー地D・N)の丸バッジに統一する。文字もLAST5_SYMBOLを共有し、記号の
+// 二重定義を避ける。
 const MARK_CLASS: Record<Result, string> = {
-  win: "mk-win",
-  loss: "mk-loss",
-  draw: "mk-draw",
-  nc: "mk-draw",
+  win: "nf-mk--win",
+  loss: "nf-mk--loss",
+  draw: "nf-mk--draw",
+  nc: "nf-mk--draw",
 };
-
-function oppositeResult(r: Result): Result {
-  if (r === "win") return "loss";
-  if (r === "loss") return "win";
-  return r; // draw/ncはそのまま
-}
 
 // 勝敗マス。resultがnull(同一相手との対戦回数が左右で異なり、片方に対戦が
-// 無い回)の場合は「-」の空欄表示にする。
+// 無い回)の場合は、サイズ・形をW/Lと揃えたグレー地の「—」ドット表示にする。
 function MarkCell({ result }: { result: Result | null }) {
-  if (result === null) return <span className="nf-mk nf-mk--empty">-</span>;
-  return <span className={`nf-mk ${MARK_CLASS[result]}`}>{MARK[result]}</span>;
+  if (result === null) return <span className="nf-mk nf-mk--empty">—</span>;
+  return <span className={`nf-mk ${MARK_CLASS[result]}`}>{LAST5_SYMBOL[result]}</span>;
 }
 
 // 共通対戦相手の行(選手ページ次戦カード・大会ページ両対応の共有部分)。
 // 同一相手と複数回対戦がある場合はcommons配列側で既に行分割済み(1行=1対戦)
 // のため、ここでは連番から「(2戦目)」等のラベルを付けるだけでよい。
-// マーク仕様(○/●/△)の変更は1箇所への反映で両方に伝播する。
+// マーク仕様(W/L/D/N丸バッジ)の変更は1箇所への反映で両方に伝播する。
 function CommonOpponentRows({
   commons,
   visibleSlugs,
@@ -68,9 +58,24 @@ function CommonOpponentRows({
   );
 }
 
+// 決着方法(m.method)内の半角/全角スペースを非改行スペースに置き換え、通常時は
+// 1塊の見た目を保つ(「5分3R終了 判定0-3」がスペース位置で泣き別れしない)。
+// white-space:nowrapによる完全な改行禁止は、稀に存在する長い決着テキスト
+// (旧団体の記録等)で320px幅の横オーバーフローを起こすため使わない。CSS側の
+// word-break:normal;line-break:strict;と組み合わせ、収まらない極端なケースは
+// 通常のCJK改行にフォールバックさせて安全性を優先する。
+function nowrapMethodText(method: string): string {
+  return method.replace(/[ 　]/g, " ");
+}
+
 // 直接対決(2選手が過去に対戦している場合の履歴)。共通対戦相手(第三者との対戦の
 // 一致)とは概念が別物のため、独立した別枠として共通対戦相手テーブルの上に出す。
 // 0件ならこの枠自体を出さない。複数回対戦がある場合は新しい順に全て列挙する。
+// 1対戦=役割で2行に分ける(以前は3段、その前は無理に1行へ詰めていた):
+// 1行目=日付+大会名、2行目=勝者マーク+勝者名+決着方法。決着方法(m.method)は
+// historyの生テキストをそのまま使い、要約・言い換えはしない(捏造ゼロ)。
+// 決着方法はwhite-space:nowrapで1塊にし(CSS側)、選手名が長い場合は名前側だけ
+// 折り返す。勝者マークは直近5戦のW/Lドットと同じ丸バッジ意匠(.nf-h2h-badge)。
 function HeadToHeadBlock({
   nameA,
   nameB,
@@ -84,21 +89,31 @@ function HeadToHeadBlock({
   return (
     <div className="nf-h2h">
       <div className="nf-h2h-head">過去対戦 {matches.length}回</div>
-      {matches.map((m, i) => (
-        <div key={i} className="nf-h2h-row">
-          <div className="nf-h2h-meta">
-            <span className="nf-h2h-date">{m.date}</span>
-            <span className="nf-h2h-event">{m.event}</span>
+      {matches.map((m, i) => {
+        const winner = m.resultA === "win" ? nameA : m.resultA === "loss" ? nameB : null;
+        return (
+          <div key={i} className="nf-h2h-row">
+            <div className="nf-h2h-line1">
+              <span className="nf-h2h-date">{m.date}</span> <span className="nf-h2h-event">{m.event}</span>
+            </div>
+            <div className="nf-h2h-line2">
+              {winner ? (
+                <>
+                  <span className="nf-h2h-badge nf-h2h-badge--win">W</span>
+                  <span className="nf-h2h-winner">{winner}</span>
+                  <span className="nf-h2h-method">{nowrapMethodText(m.method)}</span>
+                </>
+              ) : (
+                <>
+                  <span className="nf-h2h-badge nf-h2h-badge--draw">D</span>
+                  <span className="nf-h2h-winner">引き分け</span>
+                  <span className="nf-h2h-method">（{nowrapMethodText(m.method)}）</span>
+                </>
+              )}
+            </div>
           </div>
-          <div className="nf-h2h-result">
-            <span className={`nf-h2h-name ${MARK_CLASS[m.resultA]}`}>{nameA}</span>
-            <MarkCell result={m.resultA} />
-            <MarkCell result={oppositeResult(m.resultA)} />
-            <span className={`nf-h2h-name ${MARK_CLASS[oppositeResult(m.resultA)]}`}>{nameB}</span>
-          </div>
-          <div className="nf-h2h-method">{m.method}</div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -159,13 +174,15 @@ export function NextFightCompare({
 
   return (
     <div className="nf-compare">
-      {/* 名前・戦績・直近5戦を行グリッドで整列。名前が2行に折り返しても
-          名前は下端揃え(align-items:end)なので戦績以下の高さがズレない。 */}
+      {/* 名前・戦績・直近5戦を行グリッドで整列。名前は上端揃え(align-items:start)
+          なので、名前が1行/2行いずれでも戦績以下の行は左右で揃う。名前の折り返しは
+          renderWrappableName(BoutCard.tsxと共有)で中黒・スペース位置のみに限定し、
+          「フ」のような1文字だけの孤立行を作らない。 */}
       <div className="nf-vs">
-        <div className="nf-name nf-cell--nl">{selfName}</div>
+        <div className="nf-name nf-cell--nl">{renderWrappableName(selfName)}</div>
         <div className="nf-vs-mark">VS</div>
         <a href={`/fighters/${opponentSlug}`} className="nf-name nf-name--link nf-cell--nr">
-          {opponentName}
+          {renderWrappableName(opponentName)}
         </a>
         <div className="nf-record nf-cell--rl">{selfStats.record}</div>
         <div className="nf-record nf-cell--rr">{oppStats.record}</div>

@@ -1478,11 +1478,6 @@ footer {
   margin-bottom: 8px;
 }
 
-/* 勝敗記号(○/✗/△)。方向・凡例の概念が無いので説明不要。✗はU+2717。 */
-.mk-win { color: #16a34a; }
-.mk-loss { color: #dc2626; }
-.mk-draw { color: #9ca3af; }
-
 /* 次戦プレビュー(バナー行の下に展開する比較+共通対戦相手) */
 .fighter-next-fight-row {
   display: flex;
@@ -1501,7 +1496,11 @@ footer {
     "rl vs rr"
     "ll vs lr"
     "ml vs mr";
-  align-items: end; /* 名前は下端揃え。2行折り返しでも戦績以下の高さが揃う */
+  /* 名前は上端揃え(名前が1行/2行でも記録以下の行は左右で揃う。行の高さは
+     グリッド行トラックが左右の最大値を取るため、align-itemsの値に関係なく
+     記録行以降は揃う。以前はend=下端揃えで、1行の名前が2行の相手側に
+     引っ張られて不自然に沈んで見えていたため、読み順に合わせてstartにした)。 */
+  align-items: start;
   column-gap: 8px;
   row-gap: 2px;
 }
@@ -1519,6 +1518,13 @@ footer {
   line-height: 1.35;
   color: var(--text);
   min-width: 0;
+  /* 大会ページの対戦カードで採用した折り返し方針と同じ: 小書き仮名・長音・
+     中黒直後の不自然な位置で切れないようにする(既定のCJK文字単位改行だと
+     「アリベク・ガジャマトフ」のような長い外国人名で最後の1文字だけが
+     孤立行になることがある)。 */
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
 }
 .nf-name--link {
   color: var(--accent);
@@ -1583,15 +1589,36 @@ footer {
 .nf-common-name:hover {
   text-decoration-color: var(--accent);
 }
+/* 共通対戦相手の勝敗マーク。直近5戦ドット(.fighter-strip-last5 span)・
+   直接対決バッジ(.nf-h2h-badge)と同じ13px丸バッジ意匠に統一する
+   (同一カード内で「勝ち」の記号がW/L/○/●等に混在しないようにするため)。
+   グリッドの列幅いっぱいに広がる素のspanを中央寄せする必要があるため
+   justify-self:centerを付ける(ヘッダー側は従来どおりtext-align:centerで
+   選手名の真下に揃う)。 */
 .nf-mk {
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  font-size: 8px;
   font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  justify-self: center;
+}
+.nf-mk--win {
+  background: #16a34a;
+}
+.nf-mk--loss {
+  background: #dc2626;
+}
+.nf-mk--draw {
+  background: #6b7280;
 }
 .nf-mk--empty {
-  color: var(--muted);
-  font-weight: 400;
+  background: #9ca3af;
 }
 
 /* 直接対決(2選手間の対戦履歴)。共通対戦相手(第三者との対戦一致)とは別枠、
@@ -1606,56 +1633,77 @@ footer {
   color: var(--muted);
   margin-bottom: 6px;
 }
+/* 1対戦=役割で2行に分ける: 1行目=日付+大会名、2行目=勝者マーク+勝者名+
+   決着方法。決着方法(nf-h2h-method)はwhite-space:nowrapで1塊にし、大会名や
+   決着表記の途中で泣き別れさせない。選手名(nf-h2h-winner)側だけ折り返しを
+   許可し、収まらない決着方法は行ごと下に落ちる(flex-wrap)。 */
 .nf-h2h-row {
   padding: 6px 0;
   border-top: 1px solid rgba(232, 0, 45, 0.12);
-  font-size: 12px;
+  font-size: 11px;
+  color: var(--muted);
 }
 .nf-h2h-row:first-of-type {
   border-top: none;
 }
-.nf-h2h-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 11px;
+.nf-h2h-line1 {
+  margin-bottom: 3px;
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
 }
 .nf-h2h-date {
   font-family: var(--mono);
-  flex-shrink: 0;
+  color: var(--text);
 }
 .nf-h2h-event {
-  text-align: right;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 0;
+  color: var(--text);
 }
-.nf-h2h-result {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 22px 22px minmax(0, 1fr);
+.nf-h2h-line2 {
+  display: flex;
   align-items: center;
-  gap: 4px;
-  margin-top: 4px;
+  flex-wrap: wrap;
+  gap: 5px;
   font-weight: 700;
+  color: var(--text);
 }
-.nf-h2h-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+/* 直近5戦のW/Lドット(.fighter-strip-last5 span)と同じ意匠の丸バッジ。
+   H2Hの「勝ち」記号を本文の○文字ではなくこの緑地Wバッジに統一する。 */
+.nf-h2h-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  flex-shrink: 0;
+}
+.nf-h2h-badge--win {
+  background: #16a34a;
+}
+.nf-h2h-badge--draw {
+  background: #6b7280;
+}
+.nf-h2h-winner {
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
   min-width: 0;
 }
-.nf-h2h-name.mk-win { color: #16a34a; }
-.nf-h2h-name.mk-loss { color: #dc2626; }
-.nf-h2h-name.mk-draw { color: #9ca3af; }
-.nf-h2h-result .nf-h2h-name:last-child {
-  text-align: right;
-}
+/* 決着方法は内部のスペースを非改行スペースに置換済み(FighterVisuals.tsxの
+   nowrapMethodText)なので通常は1塊に見える。white-space:nowrapで完全に
+   改行を禁止すると、稀な長い決着テキストで320px幅を横に突き破るため使わず、
+   収まらない場合は通常のCJK改行にフォールバックさせる(安全性を優先)。 */
 .nf-h2h-method {
-  margin-top: 2px;
+  font-weight: 400;
   color: var(--muted);
-  font-size: 11px;
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
 }
 
 /* 大会ページ・対戦カード内の共通対戦相手(折りたたみ・ネイティブdetails) */
@@ -2018,18 +2066,34 @@ footer {
   font-size: 9px;
   color: var(--muted);
 }
+/* 直近5戦ドット: 色だけでなくW/L/D/Nの文字でも勝敗を示す丸バッジにする
+   (シェア画像や初見の人には○●だけでは伝わらないため)。直径は従来の文字
+   表示より一回り大きく(目安+3px)し、文字が小さくても判読できるようにする。 */
 .fighter-strip-last5 {
-  letter-spacing: 0.5px;
+  display: inline-flex;
+  gap: 3px;
+}
+.fighter-strip-last5 span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
 }
 .fighter-strip-last5-win {
-  color: #16a34a;
+  background: #16a34a;
 }
 .fighter-strip-last5-loss {
-  color: #dc2626;
+  background: #dc2626;
 }
 .fighter-strip-last5-draw,
 .fighter-strip-last5-nc {
-  color: #6b7280;
+  background: #6b7280;
 }
 
 /* 「数字で見る」オリジナル記事(/articles/[slug])のバッジ。
@@ -2239,6 +2303,20 @@ a.cmp-name:hover {
 .fighter-next-fight-link {
   color: var(--accent);
   text-decoration: underline;
+}
+
+/* 区切りは「／」の代わりに.fighter-next-fight-rowのflex+gapだけで作る
+   (旧: 各要素の間に生テキストの「／」を挟んでいたため、折り返し時にこの
+   記号だけが行頭に孤立するケースがあった)。 */
+.fighter-next-fight-vs {
+  color: var(--muted);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.fighter-next-fight-weight {
+  color: var(--muted);
+  flex-shrink: 0;
 }
 
 .fighter-next-fight-label {
