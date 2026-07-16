@@ -1,14 +1,22 @@
-// P0(2026-07-16採用・N=2運用 → 2026-07-17 P0-Bでハード制約化): 直接対決の単調性オーバーレイ。
-// 「RIZIN内でAがBに勝っているのに、順位ではAがBより下」という見た目の矛盾を、
-// 距離制限なしで補正する(2026-07-17: 従来はmaxRankGap=2以内の隣接ケースのみ
-// 補正していたが、距離制限そのものを撤廃しハード制約にした)。Elo自体・レート値には
-// 一切触れず、最終的な順位配列(rankedSlugs)の並び替えのみを行う。
-// 循環(A>B>C>A)が検出された組は補正をスキップする(全順序が定義できないため。
-// 実例: 元谷友貴>神龍誠>伊藤裕樹>トニー・ララミー>元谷友貴の4者循環が
-// フライ級の実データに存在する。ラミー>元谷という個別の勝敗は事実として
-// 正しいが、この一戦だけを強制すると他の3辺のいずれかを必ず破ることになり
-// 「循環はスキップする」という設計判断自体が正しい。2026-07-17のP0-A調査で
-// 確認済み・test-mnews-rating.tsに再現テストを追加した)。
+// P0(2026-07-16採用・N=2運用 → 2026-07-17 P0-Bでハード制約化 → 同日(b)で
+// 循環内リオーダー追加): 直接対決の単調性オーバーレイ。「RIZIN内でAがBに
+// 勝っているのに、順位ではAがBより下」という見た目の矛盾を、距離制限なしで
+// 補正する。Elo自体・レート値には一切触れず、最終的な順位配列(rankedSlugs)の
+// 並び替えのみを行う。
+//
+// 循環(A>B>C>A)の扱い(2026-07-17改訂・(b)案): 循環に関与する全辺を同時に
+// 満たす線形順序は数学的に存在しないため、以前は循環自体を検出したら全辺を
+// 丸ごと補正対象から除外していた(P0-A実例: 元谷友貴>神龍誠>伊藤裕樹>
+// トニー・ララミー>元谷友貴の4者循環で、事実として正しいはずのラミー>元谷が
+// 補正されなかった)。(b)案では循環の検出はそのまま維持しつつ、循環内の
+// メンバーの並び順だけを「直近対戦を優先」で決める: 循環に関与する辺を試合日
+// 降順(新しい順)にソートし、既に採用済みの辺(循環外の辺+これまでに採用した
+// 循環内の辺)と矛盾しない限り採用する。矛盾=採用すると循環に戻ってしまう
+// (loserからwinnerへの経路が既にできている)場合はその辺だけをスキップする。
+// 新しい辺から順に処理するため、諦める辺は最も古いものに収束する(4者循環
+// なら3辺を満たし最古の1辺だけを諦める形になる)。上記の実例では最新の
+// ラミー>元谷(2026-06-06)が必ず満たされ、最古の伊藤裕樹>ラミー(2025-03-30)
+// が諦められる(resolveCyclicEdgesByRecency参照)。
 //
 // P1(σディスカウント、constants.tsのSIGMA_DISCOUNT_COEFFICIENT_V7)との関係:
 // σディスカウントは対戦数が少ない選手を一律に押し下げるため、「AがBに直接
@@ -45,11 +53,17 @@ export function extractH2HWinsForDivision(bouts: BoutLike[], divisionSlugs: Set<
   return wins;
 }
 
+export interface ResolvedPair {
+  winner: string;
+  loser: string;
+  date: string; // このペアの正とした対戦の日付(循環内リオーダーの新しい順ソートに使う)
+}
+
 // 同一カードで複数回対戦しているペアは、直近の対戦結果(dateが最も新しいもの)を
 // そのペアの正とする(2026-07-17 P0-B: 以前は勝敗が割れる=splitの場合、方向性
 // シグナルが無いとして両方向とも除外していたが、「直近の対戦結果を優先」という
 // 明確なルールに変更し、より多くのペアにH2H制約を適用できるようにした)。
-function resolvePairDirections(h2hWins: H2HWin[]): Array<{ winner: string; loser: string }> {
+function resolvePairDirections(h2hWins: H2HWin[]): ResolvedPair[] {
   const pairKey = (x: string, y: string) => [x, y].sort().join("|");
   const latestByPair = new Map<string, H2HWin>();
   for (const win of h2hWins) {
@@ -59,7 +73,7 @@ function resolvePairDirections(h2hWins: H2HWin[]): Array<{ winner: string; loser
       latestByPair.set(key, win);
     }
   }
-  return [...latestByPair.values()].map((w) => ({ winner: w.winnerSlug, loser: w.loserSlug }));
+  return [...latestByPair.values()].map((w) => ({ winner: w.winnerSlug, loser: w.loserSlug, date: w.date }));
 }
 
 // 有向グラフ内の循環に関与する辺を検出する(DFSベースの単純な実装。
@@ -109,6 +123,46 @@ function findCyclicEdges(pairs: Array<{ winner: string; loser: string }>): Set<s
   return cyclicEdges;
 }
 
+// 循環内メンバーの並び順を「直近対戦を優先」で決める((b)案、2026-07-17)。
+// baseAcceptedは循環外の辺(既にDAGであることが保証済み)を初期状態として
+// 受け取り、循環に関与する辺を試合日降順(新しい順)に1本ずつ試す: 追加すると
+// (baseAccepted+これまでに採用した循環内の辺のグラフ上で)loserからwinnerへ
+// 既に経路がある=循環に戻ってしまう場合はその辺をスキップし、無ければ採用する。
+// 新しい辺から順に処理するため、スキップされる(=諦められる)辺は各循環の中で
+// 最も古いものに収束する。戻り値は「採用された循環内の辺」のみ(baseAcceptedは
+// 含まない、呼び出し側で結合する)。
+function resolveCyclicEdgesByRecency(cyclicPairs: ResolvedPair[], baseAccepted: Array<{ winner: string; loser: string }>): ResolvedPair[] {
+  const adjacency = new Map<string, string[]>();
+  const addEdge = (winner: string, loser: string) => {
+    if (!adjacency.has(winner)) adjacency.set(winner, []);
+    adjacency.get(winner)!.push(loser);
+  };
+  for (const { winner, loser } of baseAccepted) addEdge(winner, loser);
+
+  function hasPath(from: string, to: string): boolean {
+    if (from === to) return true;
+    const visited = new Set<string>();
+    const stack = [from];
+    while (stack.length > 0) {
+      const node = stack.pop()!;
+      if (node === to) return true;
+      if (visited.has(node)) continue;
+      visited.add(node);
+      for (const next of adjacency.get(node) ?? []) stack.push(next);
+    }
+    return false;
+  }
+
+  const sortedNewestFirst = [...cyclicPairs].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  const accepted: ResolvedPair[] = [];
+  for (const pair of sortedNewestFirst) {
+    if (hasPath(pair.loser, pair.winner)) continue; // 採用すると循環に戻るためスキップ(最古の辺が対象になりやすい)
+    addEdge(pair.winner, pair.loser);
+    accepted.push(pair);
+  }
+  return accepted;
+}
+
 // rankedSlugs(0-indexed、先頭=1位、σディスカウント後の生レート降順)を、
 // 直接対決の制約を全て満たす順序に並び替える。「H2H制約を満たす最小の順位
 // 入替」= 各ステップで「まだ配置していない選手のうち、H2Hの勝者側の制約を
@@ -119,12 +173,15 @@ function findCyclicEdges(pairs: Array<{ winner: string; loser: string }>): Set<s
 // - 制約を満たす順序の中で、レート順からの乖離が最小になる(貪欲法だが、
 //   「まだ動かせる中で一番レートが高い人を先に確定する」という単純な規則が
 //   ソート安定性も保つ: H2H制約が一切無いグループは元のレート順そのままになる)。
-// 循環に関与する辺は制約から除外し(現状維持、findCyclicEdges参照)、その
-// ペアの相対順序はレートベースの元順序のまま変化しない。
+// 循環に関与する辺は、直近対戦を優先する形で一部だけを制約として採用する
+// (resolveCyclicEdgesByRecency参照。最も古い辺だけが諦められる)。
 export function applyHeadToHeadMonotonicity(rankedSlugs: string[], h2hWins: H2HWin[]): string[] {
   const pairs = resolvePairDirections(h2hWins);
-  const cyclicEdges = findCyclicEdges(pairs);
-  const constraints = pairs.filter(({ winner, loser }) => !cyclicEdges.has(`${winner}>${loser}`));
+  const cyclicEdgeKeys = findCyclicEdges(pairs);
+  const nonCyclicPairs = pairs.filter(({ winner, loser }) => !cyclicEdgeKeys.has(`${winner}>${loser}`));
+  const cyclicPairs = pairs.filter(({ winner, loser }) => cyclicEdgeKeys.has(`${winner}>${loser}`));
+  const resolvedCyclicPairs = resolveCyclicEdgesByRecency(cyclicPairs, nonCyclicPairs);
+  const constraints = [...nonCyclicPairs, ...resolvedCyclicPairs];
 
   const rankedSet = new Set(rankedSlugs);
   // loser -> このloserより先に配置されなければならない選手の集合(直接の前提のみ)。
@@ -193,6 +250,37 @@ export function checkH2HInvariant(rankedSlugs: string[], h2hWins: H2HWin[]): H2H
   const violations: H2HViolation[] = [];
   for (const { winner, loser } of pairs) {
     if (cyclicEdges.has(`${winner}>${loser}`)) continue;
+    const winnerIdx = rankOf.get(winner);
+    const loserIdx = rankOf.get(loser);
+    if (winnerIdx === undefined || loserIdx === undefined) continue;
+    if (winnerIdx > loserIdx) {
+      violations.push({ winner, loser, winnerRank: winnerIdx + 1, loserRank: loserIdx + 1 });
+    }
+  }
+  return violations;
+}
+
+// 非対称ガード(2026-07-17・(b)案の回帰防止用): 「直近{recentWindowDays}日
+// 以内の直接対決で勝った側が負けた側より下位のまま」というケースをゼロに
+// する。checkH2HInvariantと違い、循環に関与する組でも除外しない(=循環内
+// リオーダーの設計上、諦められる辺は必ず最も古いものになるはずなので、直近の
+// 対戦が破れることがあってはならない、という非対称性を明示的に検査する)。
+// 古い辺が破れる(=このチェックの対象外の期間で違反が残る)のは許容する。
+export function checkRecentH2HInvariant(
+  rankedSlugs: string[],
+  h2hWins: H2HWin[],
+  asOf: Date,
+  recentWindowDays = 182 // 約6ヶ月(DECAY_PERIOD_DAYSと同じ定義に揃える)
+): H2HViolation[] {
+  const cutoff = new Date(asOf);
+  cutoff.setDate(cutoff.getDate() - recentWindowDays);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+  const pairs = resolvePairDirections(h2hWins);
+  const rankOf = new Map(rankedSlugs.map((slug, i) => [slug, i]));
+  const violations: H2HViolation[] = [];
+  for (const { winner, loser, date } of pairs) {
+    if (date < cutoffStr) continue; // 直近半年より古い対戦は対象外(循環で諦めることを許容する)
     const winnerIdx = rankOf.get(winner);
     const loserIdx = rankOf.get(loser);
     if (winnerIdx === undefined || loserIdx === undefined) continue;

@@ -21,7 +21,7 @@ import { buildOpponentResolver, buildKnownNamesLookup } from "../src/lib/mnewsRa
 import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import { findRankerWinExemptions, isStandardEligible, summarizeBoutsForFighter } from "../src/lib/mnewsRating/eligibilityRules";
 import { buildDivisionRankings, ChampionOverlay, FighterMeta } from "../src/lib/mnewsRating/rankingsFile";
-import { extractH2HWinsForDivision, checkH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
+import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
@@ -129,9 +129,19 @@ function main() {
     const finalRankedSlugs = result.entries.map((e) => e.fighterId);
     const violations = checkH2HInvariant(finalRankedSlugs, h2hWins);
 
-    console.log(`${division}: H2Hペア${h2hWins.length}件中、違反${violations.length}件`);
+    console.log(`${division}: H2Hペア${h2hWins.length}件中、違反${violations.length}件(循環除外)`);
     for (const v of violations) {
       console.log(`  NG: ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直接勝っているのに下位のまま`);
+      totalViolations++;
+    }
+
+    // 非対称ガード(2026-07-17・(b)案): 循環内リオーダーは最も古い辺だけを
+    // 諦める設計のため、直近半年以内の対戦は循環の有無を問わず違反ゼロで
+    // なければならない。
+    const recentViolations = checkRecentH2HInvariant(finalRankedSlugs, h2hWins, asOf);
+    console.log(`${division}: 直近半年以内H2H非対称ガード違反${recentViolations.length}件`);
+    for (const v of recentViolations) {
+      console.log(`  NG(直近半年): ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直近半年以内の直接対決で勝っているのに下位のまま`);
       totalViolations++;
     }
   }

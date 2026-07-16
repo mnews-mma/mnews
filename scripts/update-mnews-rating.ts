@@ -63,7 +63,7 @@ import {
   INITIAL_RATING_BOOST_PARAMS_V6,
   SIGMA_DISCOUNT_COEFFICIENT_V7,
 } from "../src/lib/mnewsRating/constants";
-import { extractH2HWinsForDivision, checkH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
+import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -290,6 +290,19 @@ function main() {
         console.error(`  ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直接勝っているのに下位のまま`);
       }
       throw new Error(`H2H不変条件違反が${violations.length}件検出されたため書き込みを中止しました(${division})`);
+    }
+
+    // 非対称ガード(2026-07-17・(b)案): 循環内リオーダーは「最も古い辺だけを
+    // 諦める」設計のため、直近半年以内の対戦で勝者が敗者より下位のままという
+    // ケースは循環の有無を問わずゼロでなければならない(古い辺が破れるのは
+    // 許容、新しい辺が破れるのは不許可という非対称性をここで機械的に強制する)。
+    const recentViolations = checkRecentH2HInvariant(finalRankedSlugs, h2hWins, asOf);
+    if (recentViolations.length > 0) {
+      console.error(`直近半年H2H非対称ガード違反を検出(${division}):`);
+      for (const v of recentViolations) {
+        console.error(`  ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直近半年以内の直接対決で勝っているのに下位のまま`);
+      }
+      throw new Error(`直近半年H2H非対称ガード違反が${recentViolations.length}件検出されたため書き込みを中止しました(${division})`);
     }
   }
 

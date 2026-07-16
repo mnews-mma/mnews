@@ -16,7 +16,13 @@ import {
   AsymmetricEloParams,
   NEUTRAL_ELO_PARAMS,
 } from "../src/lib/mnewsRating/engine";
-import { applyHeadToHeadMonotonicity, extractH2HWinsForDivision, H2HWin } from "../src/lib/mnewsRating/monotonicity";
+import {
+  applyHeadToHeadMonotonicity,
+  extractH2HWinsForDivision,
+  checkH2HInvariant,
+  checkRecentH2HInvariant,
+  H2HWin,
+} from "../src/lib/mnewsRating/monotonicity";
 import {
   ALGORITHM_VERSION,
   DECAY_FLOOR,
@@ -1494,8 +1500,9 @@ function makeResolver(map: Record<string, string>) {
 }
 
 // P0-A(2026-07-17)の再現テスト: 元谷友貴>神龍誠>伊藤裕樹>トニー・ララミー>
-// 元谷友貴という4者循環の実データパターン。ララミー>元谷という個別の勝敗は
-// 事実として正しいが、循環に含まれるため補正されない(仕様どおり・バグではない)。
+// 元谷友貴という4者循環の実データパターン。調査当初は循環を丸ごとスキップ
+// する設計だったため、事実として正しいラミー>元谷が補正されなかった。
+// 同日(b)案でこの挙動を変更: 循環内は直近対戦を優先する形でリオーダーする。
 // 実データ(fighterRecords.json)は将来変わりうるため、調査時点の実際の勝敗関係を
 // 固定した最小データで再現する(スラッグ名は実データと同じものを使い、調査結果との
 // 対応を追跡しやすくする)。
@@ -1504,15 +1511,130 @@ function makeResolver(map: Record<string, string>) {
     { winnerSlug: "motoya-yuki", loserSlug: "shinryu-makoto", date: "2025-09-28" },
     { winnerSlug: "shinryu-makoto", loserSlug: "ito-yuki", date: "2025-05-04" },
     { winnerSlug: "ito-yuki", loserSlug: "laramie-tony", date: "2025-03-30" },
-    { winnerSlug: "laramie-tony", loserSlug: "motoya-yuki", date: "2026-06-06" },
+    { winnerSlug: "laramie-tony", loserSlug: "motoya-yuki", date: "2026-06-06" }, // 最新
   ];
   // レート順(σディスカウント後想定)でmotoya-yukiがlaramie-tonyよりわずかに上位。
   const rankedSlugs = ["shinryu-makoto", "motoya-yuki", "laramie-tony", "ito-yuki"];
   const result = applyHeadToHeadMonotonicity(rankedSlugs, cycleWins);
   check(
-    result.indexOf("motoya-yuki") < result.indexOf("laramie-tony"),
-    "P0-A再現: 4者循環(元谷>神龍>伊藤裕樹>ララミー>元谷)に含まれるH2Hは補正されず、" +
-      "元谷がララミーより上位のまま(循環スキップは仕様どおり)"
+    result.indexOf("laramie-tony") < result.indexOf("motoya-yuki"),
+    "P0-A再現(b案): 4者循環でも最新の対戦(ラミー>元谷、2026-06-06)は必ず満たされ、" +
+      "ラミーが元谷より上位になる"
+  );
+  check(
+    result.indexOf("motoya-yuki") < result.indexOf("shinryu-makoto"),
+    "P0-A再現(b案): 元谷>神龍(2025-09-28)も満たされる"
+  );
+  check(
+    result.indexOf("shinryu-makoto") < result.indexOf("ito-yuki"),
+    "P0-A再現(b案): 神龍>伊藤裕樹(2025-05-04)も満たされる"
+  );
+  // 最古の伊藤裕樹>ラミー(2025-03-30)だけが諦められる(4辺同時充足は不可能なため)。
+  check(
+    result.indexOf("laramie-tony") < result.indexOf("ito-yuki"),
+    "P0-A再現(b案): 最古の伊藤裕樹>ラミーだけが諦められ、ラミーは伊藤裕樹より上位のまま"
+  );
+}
+
+// (b)案: 循環内リオーダーの単体テスト(3者・5者・複数循環)。
+{
+  // 3者循環: A>B>C>A。C>Aが最新なので必ず満たす(Cが A より上位)。次に新しい
+  // B>Cも満たす(B が C より上位)。最古のA>Bだけを諦める。結果はB>C>Aの順
+  // (「勝者が上位」なので、Bが1位・Cが2位・Aが3位)。
+  const triangleWins: H2HWin[] = [
+    { winnerSlug: "A", loserSlug: "B", date: "2025-01-01" }, // 最古(諦められる)
+    { winnerSlug: "B", loserSlug: "C", date: "2025-06-01" },
+    { winnerSlug: "C", loserSlug: "A", date: "2026-01-01" }, // 最新
+  ];
+  const triangleRanked = ["A", "B", "C"];
+  const triangleResult = applyHeadToHeadMonotonicity(triangleRanked, triangleWins);
+  check(
+    triangleResult.indexOf("B") < triangleResult.indexOf("C") &&
+      triangleResult.indexOf("C") < triangleResult.indexOf("A"),
+    `3者循環: 新しい2辺(C>A, B>C)が満たされB>C>Aの順になる(最古のA>Bのみ諦める) (got ${JSON.stringify(triangleResult)})`
+  );
+
+  // 5者循環: A>B>C>D>E>A。最新はE>A(Eが上位)。同様に新しい順にB>C>D>Eの
+  // 4辺が満たされ、最古のA>Bだけが諦められる。結果はB>C>D>E>Aの順。
+  const pentagonWins: H2HWin[] = [
+    { winnerSlug: "A", loserSlug: "B", date: "2025-01-01" }, // 最古(諦められる)
+    { winnerSlug: "B", loserSlug: "C", date: "2025-02-01" },
+    { winnerSlug: "C", loserSlug: "D", date: "2025-03-01" },
+    { winnerSlug: "D", loserSlug: "E", date: "2025-04-01" },
+    { winnerSlug: "E", loserSlug: "A", date: "2026-01-01" }, // 最新
+  ];
+  const pentagonRanked = ["A", "B", "C", "D", "E"];
+  const pentagonResult = applyHeadToHeadMonotonicity(pentagonRanked, pentagonWins);
+  check(
+    pentagonResult.indexOf("E") < pentagonResult.indexOf("A"),
+    `5者循環: 最新のE>Aが必ず満たされる(Eが上位) (got ${JSON.stringify(pentagonResult)})`
+  );
+  check(
+    pentagonResult.indexOf("B") < pentagonResult.indexOf("C") &&
+      pentagonResult.indexOf("C") < pentagonResult.indexOf("D") &&
+      pentagonResult.indexOf("D") < pentagonResult.indexOf("E"),
+    `5者循環: B>C>D>Eも満たされ、B>C>D>E>Aの順になる(最古のA>Bのみ諦める) (got ${JSON.stringify(pentagonResult)})`
+  );
+
+  // 複数循環(互いに独立): {A,B,C}の3者循環と{X,Y,Z}の3者循環が同時に存在。
+  // 片方の循環が他方の解決に影響しないことを確認する。
+  const twoCyclesWins: H2HWin[] = [
+    { winnerSlug: "A", loserSlug: "B", date: "2025-01-01" }, // 最古(諦められる)
+    { winnerSlug: "B", loserSlug: "C", date: "2025-06-01" },
+    { winnerSlug: "C", loserSlug: "A", date: "2026-01-01" }, // 最新
+    { winnerSlug: "X", loserSlug: "Y", date: "2024-01-01" }, // 最古(諦められる)
+    { winnerSlug: "Y", loserSlug: "Z", date: "2024-06-01" },
+    { winnerSlug: "Z", loserSlug: "X", date: "2025-01-01" }, // こちらの循環内では最新
+  ];
+  const twoCyclesRanked = ["A", "B", "C", "X", "Y", "Z"];
+  const twoCyclesResult = applyHeadToHeadMonotonicity(twoCyclesRanked, twoCyclesWins);
+  check(
+    twoCyclesResult.indexOf("B") < twoCyclesResult.indexOf("C") && twoCyclesResult.indexOf("C") < twoCyclesResult.indexOf("A"),
+    `複数循環: {A,B,C}側はB>C>Aの順になる(独立して解決される) (got ${JSON.stringify(twoCyclesResult)})`
+  );
+  check(
+    twoCyclesResult.indexOf("Y") < twoCyclesResult.indexOf("Z") && twoCyclesResult.indexOf("Z") < twoCyclesResult.indexOf("X"),
+    `複数循環: {X,Y,Z}側はY>Z>Xの順になる(独立して解決される) (got ${JSON.stringify(twoCyclesResult)})`
+  );
+}
+
+// 非対称ガード(2026-07-17・(b)案): checkRecentH2HInvariantは直近の対戦が
+// 破れるケースを検出しなければならず、古い対戦が破れるケースは許容する。
+{
+  const asOf = new Date("2026-07-17");
+  const cycleWins: H2HWin[] = [
+    { winnerSlug: "motoya-yuki", loserSlug: "shinryu-makoto", date: "2025-09-28" },
+    { winnerSlug: "shinryu-makoto", loserSlug: "ito-yuki", date: "2025-05-04" },
+    { winnerSlug: "ito-yuki", loserSlug: "laramie-tony", date: "2025-03-30" }, // 半年より古い(諦められて良い)
+    { winnerSlug: "laramie-tony", loserSlug: "motoya-yuki", date: "2026-06-06" }, // 直近(必ず満たされるべき)
+  ];
+  const rankedSlugs = ["shinryu-makoto", "motoya-yuki", "laramie-tony", "ito-yuki"];
+  const result = applyHeadToHeadMonotonicity(rankedSlugs, cycleWins);
+  const recentViolations = checkRecentH2HInvariant(result, cycleWins, asOf);
+  check(
+    recentViolations.length === 0,
+    `非対称ガード: (b)案適用後は直近半年以内のH2H違反が0件になる (got ${JSON.stringify(recentViolations)})`
+  );
+
+  // 対照実験: もし(誤って)最新の辺ではなく最古の辺を優先する実装だったら
+  // このガードが違反を検出するはずであることを確認する(ガード自体の健全性)。
+  const brokenRankedSlugs = ["shinryu-makoto", "motoya-yuki", "ito-yuki", "laramie-tony"]; // 元谷がラミーより上位(誤り)
+  const brokenViolations = checkRecentH2HInvariant(brokenRankedSlugs, cycleWins, asOf);
+  check(
+    brokenViolations.length === 1 &&
+      brokenViolations[0].winner === "laramie-tony" &&
+      brokenViolations[0].loser === "motoya-yuki",
+    `非対称ガード健全性確認: 直近対戦(ラミー>元谷)が破れている順序では違反を検出する (got ${JSON.stringify(brokenViolations)})`
+  );
+
+  // 古い辺(伊藤裕樹>ラミー、半年より前)が破れていても、非対称ガードは
+  // 違反として検出しない(許容される)ことを確認する。
+  const oldEdgeViolations = checkH2HInvariant(result, cycleWins);
+  // checkH2HInvariantは循環自体を除外するため0件になるはずだが、念のため
+  // 「循環に関与しない組」のみで判定していることも合わせて確認する。
+  check(
+    oldEdgeViolations.length === 0,
+    `既存のcheckH2HInvariant(循環除外)は引き続き0件を維持する (got ${JSON.stringify(oldEdgeViolations)})`
   );
 }
 
