@@ -4,13 +4,13 @@ import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
-import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
+import { fetchDivisionRankings, RANKINGS_REVALIDATE } from "@/lib/mnewsRatingData";
 import { getDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 
-export const revalidate = 3600;
+export const revalidate = RANKINGS_REVALIDATE;
 
 // 公開階級のみ静的生成する(第一弾はフェザー級のみ)。他階級は算出済みでも
 // ページとしては未公開のため、このルートへ来ても後段のnotFound()で弾く。
