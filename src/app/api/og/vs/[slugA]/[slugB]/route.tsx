@@ -5,6 +5,7 @@ import { type ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterRecordsCache";
 import { findMatchupEvent } from "@/lib/events";
 import { fitName, type FitOpts } from "@/lib/og/fitName";
+import { computeTugShare } from "@/lib/vsMath";
 import {
   OG_COLORS as COLORS,
   SITE_URL,
@@ -150,6 +151,49 @@ function FighterSide({
   );
 }
 
+// 綱引きバー(spec §5・§7)。Web版(TugBar.tsx)と同じvsMath.computeTugShare()を
+// 使い、算出ロジックを二重実装しない(倍率スケールのみOGP用に変える)。
+// 両者の値が揃っている場合のみ描画し、片方欠損時は行ごと出さない
+// (既存の個人カラム側の「—」表示と重複させない)。
+function TugBarRow({
+  label,
+  valueA,
+  valueB,
+}: {
+  label: string;
+  valueA: number | null;
+  valueB: number | null;
+}) {
+  if (valueA === null || valueB === null) return null;
+  const share = computeTugShare(valueA, valueB);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", width: "100%", gap: "6px" }}>
+      <div
+        style={{
+          display: "flex",
+          fontFamily: "Noto Sans JP",
+          fontWeight: 900,
+          fontSize: "13px",
+          color: COLORS.ash,
+          letterSpacing: "1px",
+        }}
+      >
+        {label}
+      </div>
+      <div style={{ display: "flex", width: "100%", height: "10px", borderRadius: "5px", overflow: "hidden" }}>
+        {share.neutral ? (
+          <div style={{ display: "flex", width: "100%", height: "100%", backgroundColor: "rgba(255,255,255,0.18)" }} />
+        ) : (
+          <>
+            <div style={{ display: "flex", width: `${share.shareA * 100}%`, height: "100%", backgroundColor: COLORS.shu }} />
+            <div style={{ display: "flex", width: `${share.shareB * 100}%`, height: "100%", backgroundColor: COLORS.indigo, marginLeft: "3px" }} />
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ slugA: string; slugB: string }> }
@@ -190,6 +234,9 @@ export async function GET(
     const sharedZone: FitOpts = { ...NAME_ZONE, maxFont: sharedFontSize, minFont: sharedFontSize };
     const fitA = fitName(fighterA.nameJa, sharedZone);
     const fitB = fitName(fighterB.nameJa, sharedZone);
+
+    const ratesA = calcFighterRates(fighterA);
+    const ratesB = calcFighterRates(fighterB);
 
     const matchup = findMatchupEvent(fighterA.nameJa, fighterB.nameJa);
     const eventLabel = matchup
@@ -327,6 +374,14 @@ export async function GET(
             </div>
 
             <FighterSide f={fighterB} corner="right" fit={fitB} />
+          </div>
+
+          {/* 綱引きバー(spec §5・§7): 勝率・フィニッシュ率の相対優劣を1本のバーで表す。
+              Web版(MatchupTape/TugBar)と同じcomputeTugShare()を共用し、倍率スケールのみ
+              OGPの1200x630座標系に合わせる。 */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "0 56px 26px" }}>
+            <TugBarRow label="勝率" valueA={ratesA.winRate} valueB={ratesB.winRate} />
+            <TugBarRow label="フィニッシュ率" valueA={ratesA.finishRate} valueB={ratesB.finishRate} />
           </div>
 
           {/* フッター */}
