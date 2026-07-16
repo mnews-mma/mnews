@@ -8,7 +8,7 @@ import { ogImagePath } from "@/lib/ogShared";
 import { pageMetadata } from "@/lib/seo";
 import { fetchFighterRecordsStrict, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { getVisibleFighters } from "@/lib/visibleFighters";
-import { normalizeVsSlugs, isVsPairIndexable, vsShareText } from "@/lib/vsPairing";
+import { normalizeVsSlugs, isVsPairIndexable, buildVsShareText } from "@/lib/vsPairing";
 
 const SITE_URL = "https://www.mnews.jp";
 
@@ -120,7 +120,7 @@ export default async function VsPage({
   const visibleSlugs = new Set(visible.map((f) => f.slug));
 
   const shareUrl = `${SITE_URL}/vs/${norm.a}/${norm.b}${vsQuery(wc, ev)}`;
-  const shareText = vsShareText(fighterA.nameJa, fighterB.nameJa);
+  const shareText = buildVsShareText(fighterA.nameJa, fighterB.nameJa);
   const dreamReselectPath = `/dream?a=${norm.a}&b=${norm.b}`;
 
   return (
