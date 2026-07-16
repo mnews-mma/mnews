@@ -2,6 +2,8 @@
 // リポジトリに既存のテストフレームワークが無いため(check-fighter-records-integrity.ts
 // と同じ流儀で)tsxで直接実行するassertベースのスクリプトにしている。
 // 実行: npx tsx scripts/test-mnews-rating.ts
+import fs from "fs";
+import path from "path";
 import {
   buildBouts,
   buildDisplayEntries,
@@ -37,7 +39,9 @@ import {
   DivisionRankings,
   ChampionOverlay,
 } from "../src/lib/mnewsRating/rankingsFile";
-import { applyRecordOverrides, applyRecordOverridesToTotals, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
+import { applyRecordOverrides, applyRecordOverridesToTotals, isOpeningFightOverride, RECORD_OVERRIDES } from "../src/lib/mnewsRating/recordOverrides";
+import { checkFighterRecordIntegrity } from "../src/lib/fighterRecordIntegrity";
+import { FIGHTERS } from "../src/lib/fighters";
 import {
   getDivisionRankingView,
   getPublishedDivisionRankingView,
@@ -451,8 +455,12 @@ function makeResolver(map: Record<string, string>) {
 
   // 通算戦績(集計値)はhistoryの都度カウントでは導出しない(GAMMA戦績混入による
   // シェイドゥラエフ水増し事故のため。Wikipedia/シード値を据え置く)。
-  // ただしRECORD_OVERRIDES(add型)で明示的に欠落が判明しているboutは、
-  // Wikipedia生値(historyWithoutDebut)に対して個別補正する。
+  // 【2026-07-16訂正】YA-MANのRECORD_OVERRIDESエントリはtotalsAlreadyReflected:
+  // trueが付いている(Wikipedia infobox側の集計値が既にこの一戦を反映済みと
+  // 判明したため、historyへの行追加のみ行い集計値には加算しない設計に変更。
+  // 以前はここで+1加算していたが、それがWikipedia側が既に織り込み済みの値に
+  // さらに+1する二重加算バグの原因だった=YA-MANの表示が4-2-0になっていた実例)。
+  // よって集計値(totals引数)はここでは変化しない。
   const totals = applyRecordOverridesToTotals("ya-man", historyWithoutDebut, {
     wins: 2,
     losses: 2,
@@ -461,7 +469,10 @@ function makeResolver(map: Record<string, string>) {
     sub: 0,
     decision: 0,
   });
-  check(totals.wins === 3 && totals.ko === 3, `戦績訂正オーバーライド: 集計値もYA-MAN 3勝(KO3)に是正される (got ${totals.wins}勝 ko${totals.ko})`);
+  check(
+    totals.wins === 2 && totals.ko === 2,
+    `戦績訂正オーバーライド: totalsAlreadyReflectedにより集計値には加算しない(historyのみ追加) (got ${totals.wins}勝 ko${totals.ko})`
+  );
 
   const correctedTwice = applyRecordOverrides("ya-man", corrected);
   check(correctedTwice.length === 5, "戦績訂正オーバーライド: 既に適用済みの状態に再適用しても重複追加されない(冪等)");
@@ -1349,10 +1360,34 @@ function makeResolver(map: Record<string, string>) {
   // なっていた(YA-MAN wins3→4、高木凌decision2→3で実際に発生)。新実装は毎回
   // 生historyを見て対象boutの有無を判定するため、Wikipedia側が追いついた後は
   // 自動的に加算をやめる(=同じ入力なら常に同じ結果になる。非冪等バグは再発しない)。
+  //
+  // 【2026-07-16注記】このテストは"alreadyInRawHistory"の一般的な冪等性検証が
+  // 目的のため、実在選手のRECORD_OVERRIDESに依存しない専用のテスト用エントリを
+  // 一時的に追加して検証する(以前はya-manの実エントリを流用していたが、
+  // ya-man自身が別件(totalsAlreadyReflected欠落によるYA-MAN本人の二重加算
+  // バグ)の修正でtotalsAlreadyReflected:trueになり、alreadyInRawHistory
+  // 分岐まで到達しなくなったため、この検証には使えなくなった。実在選手の
+  // 状態変化でこの一般的な回帰テストが道連れで壊れないよう、テスト専用の
+  // 架空選手IDに切り離す)。
+  const testFixtureId = "__test_fixture_idempotency__";
+  RECORD_OVERRIDES.push({
+    type: "add",
+    fighterId: testFixtureId,
+    date: "2023-05-06",
+    opponent: "三浦孝太",
+    result: "win",
+    method: "1R KO",
+    event: "RIZIN.42",
+    round: "R1",
+    source: "test-fixture",
+    fetchedDate: "2026-07-16",
+    note: "テスト専用フィクスチャ(alreadyInRawHistoryの冪等性検証)。実在選手ではない。",
+  });
+
   const rawHistoryBeforeWikiCatchesUp = [
     { date: "2023-12-31", opponent: "平本蓮", result: "loss" as const, method: "判定0-3", event: "RIZIN.45", round: "R3" },
   ];
-  const totalsBefore = applyRecordOverridesToTotals("ya-man", rawHistoryBeforeWikiCatchesUp, {
+  const totalsBefore = applyRecordOverridesToTotals(testFixtureId, rawHistoryBeforeWikiCatchesUp, {
     wins: 0,
     losses: 1,
     draws: 0,
@@ -1370,7 +1405,7 @@ function makeResolver(map: Record<string, string>) {
     { date: "2023-05-06", opponent: "三浦孝太", result: "win" as const, method: "1R KO", event: "RIZIN.42", round: "R1" },
     { date: "2023-12-31", opponent: "平本蓮", result: "loss" as const, method: "判定0-3", event: "RIZIN.45", round: "R3" },
   ];
-  const totalsAfter = applyRecordOverridesToTotals("ya-man", rawHistoryAfterWikiCatchesUp, {
+  const totalsAfter = applyRecordOverridesToTotals(testFixtureId, rawHistoryAfterWikiCatchesUp, {
     wins: 1, // Wikipedia側が追いついて既にこのboutを反映した生値
     losses: 1,
     draws: 0,
@@ -1703,6 +1738,52 @@ function makeResolver(map: Record<string, string>) {
   );
   check(n4 > n2, "P1: n=2以上は従来どおりnが増えるほどディスカウント後レートが高くなる(単調性は維持)");
   check(n4 > n1, "P1: n=4のディスカウントはn=1のキャップより小さい(緩い)");
+}
+
+// 再発防止(2026-07-16緊急修正・YA-MAN案件): RECORD_OVERRIDESの"add"/
+// "patch-result"型は、上流(Wikipedia)側の集計値が既にその一戦を反映済みに
+// なった場合、totalsAlreadyReflectedを付けないと集計値に二重加算してしまう
+// (YA-MANの通算が3-2-0のはずが4-2-0になっていたバグ)。この失敗モードを
+// ピンポイントで再発検知する: totalsAlreadyReflectedが無い"add"/
+// "patch-result"型オーバーライドを持つ選手は、data/fighterRecords.jsonの
+// 集計値とhistory再集計値が必ず一致していなければならない(一致しなければ
+// このオーバーライドが二重加算を起こしている可能性が高い)。
+// 【対象外にする理由その1】オーバーライドを一切持たない選手の集計/history
+// 不一致(2026-07-16時点で13件)は、Wikipedia infobox自体と結果テーブル自体が
+// 食い違っている上流データの問題であり、この機械チェックの対象ではない
+// (一次ソース確認が必要な既知の保留リスト。checkFighterRecordIntegrityの
+// warningとして別途機械チェック・記録済み)。
+// 【対象外にする理由その2】hagiwara-kyoheiは"add"型オーバーライドを持つが、
+// この一戦は計量オーバーによりケージ内の実結果(TKO負け)とは別に公式記録上は
+// ノーコンテスト(WEIGH_IN_MISS_RULINGS+engine.tsのルールで変換)。集計値
+// (公式記録・NC扱いで敗数に含めない)とhistory(ケージ内の実結果をそのまま
+// 「敗」として表示)が意図的に食い違う設計であり、YA-MAN案件とは原因が
+// 異なる(バグではない)。
+const KNOWN_INTENTIONAL_MISMATCH_SLUGS = new Set(["hagiwara-kyohei"]);
+{
+  const recordsPath = path.join(process.cwd(), "data", "fighterRecords.json");
+  if (fs.existsSync(recordsPath)) {
+    const records = JSON.parse(fs.readFileSync(recordsPath, "utf8"));
+    const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
+    const overrideSlugsToVerify = new Set(
+      RECORD_OVERRIDES.filter(
+        (o) =>
+          (o.type === "add" || o.type === "patch-result") &&
+          !("totalsAlreadyReflected" in o && o.totalsAlreadyReflected) &&
+          !KNOWN_INTENTIONAL_MISMATCH_SLUGS.has(o.fighterId)
+      ).map((o) => o.fighterId)
+    );
+    for (const slug of overrideSlugsToVerify) {
+      const entry = records[slug];
+      if (!entry || entry.noRecordData) continue;
+      const issue = checkFighterRecordIntegrity(slug, nameBySlug.get(slug) ?? slug, entry);
+      check(
+        issue === null,
+        `再発防止: ${slug}はtotalsAlreadyReflected無しのadd/patch-result型オーバーライドを持つため集計とhistoryが一致しているべき` +
+          (issue ? ` (${issue.message})` : "")
+      );
+    }
+  }
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

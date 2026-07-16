@@ -88,6 +88,13 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
     method: "1R 3:13 KO（膝とパンチ）",
     event: "RIZIN.42",
     round: "R1",
+    // 2026-07-16緊急修正: Wikipedia infobox側の通算(wins)は現時点で既にこの
+    // 一戦を反映済み(3-2)であることが判明(生fetch値で確認: raw wins=3だが
+    // raw history行にはこの一戦が無い=行だけ欠落・集計は既に正しい状態に
+    // 変わっていた)。totalsAlreadyReflectedが無いままだったため、history
+    // への行追加に加えて集計値にも+1してしまい、表示が4-2-0(誤)になっていた
+    // (Kaina発見・正は3-2-0)。鈴木博昭(suzuki-hiroaki)の前例と同じ原因。
+    totalsAlreadyReflected: true,
     source: "https://data-mma.com/fighter/yaman",
     fetchedDate: "2026-07-12",
     note:
