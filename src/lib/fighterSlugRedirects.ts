@@ -3,7 +3,12 @@
 // 【重要】エントリの削除・上書きは禁止。一度でも公開したslugへの被リンク・
 // 検索インデックスは死ぬまで残りうるため、旧slugは恒久的に保持する。
 // next.config.tsのredirects()がこの配列を読み、/fighters/[from] →
-// /fighters/[to] の301(permanent)リダイレクトを機械的に生成する。
+// /fighters/[to] の恒久リダイレクトを機械的に生成する。
+// 【2026-07-18確定】slug恒久リダイレクトはNext.js redirects()のpermanent:true
+// (実装上は308 Permanent Redirect)。301ではないが、Googleは301と同等の
+// 恒久リダイレクトシグナルとして扱うため、被リンク・インデックス引き継ぎという
+// 意図は満たす。GET専用の選手ページでは301との実害差もゼロ。middleware化は
+// しない(redirects()で十分・運用コストが低い)。
 export interface FighterSlugRedirect {
   from: string; // 旧slug
   to: string; // 新slug(現在fighters.tsで使われている値と一致させること)
