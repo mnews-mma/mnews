@@ -120,21 +120,6 @@ export default async function DreamPage({
                 >
                   𝕏 でシェア
                 </XShareLink>
-                <a
-                  href={vsPagePath!}
-                  style={{
-                    display: "inline-block",
-                    padding: "10px 20px",
-                    border: "1px solid var(--border)",
-                    color: "inherit",
-                    fontWeight: 700,
-                    borderRadius: 4,
-                    fontSize: 14,
-                    textDecoration: "none",
-                  }}
-                >
-                  このカードのページへ
-                </a>
               </div>
             </>
           ) : (

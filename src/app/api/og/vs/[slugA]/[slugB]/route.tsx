@@ -5,15 +5,8 @@ import { type ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterRecordsCache";
 import { findMatchupEvent } from "@/lib/events";
 import { fitName, type FitOpts } from "@/lib/og/fitName";
-import { computeTugShare } from "@/lib/vsMath";
-import {
-  OG_COLORS as COLORS,
-  SITE_URL,
-  loadOgFonts,
-  OG_FONT_FAMILIES,
-  stripeTexture,
-  cornerVignette,
-} from "@/lib/ogShared";
+import { computeFighterStripStats } from "@/lib/fighterStrip";
+import { SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
 
 export const runtime = "edge";
 
@@ -28,42 +21,72 @@ function fallbackRedirect() {
   });
 }
 
-// 名前ゾーンの寸法。本番カードの名前領域の実寸に合わせる
-// (VS列140px・フッター等を除いた片側の実効幅474pxに対し、安全マージンを
-// 見て460。高さは下の戦績/勝率/二つ名が収まる範囲で2行までを許容)。
-const NAME_ZONE: FitOpts = { maxWidth: 460, maxHeight: 180, maxFont: 120, minFont: 32, maxLines: 2 };
+// Webカード(matchup.module.css の .mv2 配下CSS変数)と同じ配色をリテラル値で
+// 持つ(Satoriはcssカスタムプロパティを解決できないため)。ここが唯一のOG側
+// 配色ソースで、Webのトークンが変わったらここも追随させる。
+const COLORS = {
+  card: "#ffffff",
+  panel: "#fbfaf6",
+  line: "#e7e3db",
+  lineSoft: "#efebe3",
+  ink: "#1b1b20",
+  muted: "#8b887e",
+  dim: "#b7b3a8",
+  red: "#e60028",
+  redInk: "#cc0025",
+  blue: "#1f5fe0",
+  blueInk: "#1a4fbf",
+  gold: "#a9812b",
+  win: "#1f9e4d",
+  loss: "#d9d5cc",
+  lossInk: "#9a968c",
+  draw: "#cfcabf",
+};
 
-function FighterSide({
-  f,
-  corner,
+// 選手名の行分割・フォントサイズ決定は、Satoriにライブなテキスト計測ができない
+// (=DOMが無く、幅を測ってから折り返す通常のCSSレイアウトが使えない)ため、
+// Web版(renderWrappableName + fighterNameSize、CSSのline-break:strictに依存)
+// とは別の事前計算方式(fitName.ts)を使う。過去にSatori標準の自動折り返しに
+// 委ねる実装を試みたが崩れの原因になり廃止した経緯がある(ogShared.ts参照)ため、
+// 決定的な事前計算方式は維持する。ただし折り返し規則(「・」の直後でのみ改行し、
+// カタカナ単語の途中では折らない)はWebと完全に同一のルールをfitName.ts側で
+// 独立実装している(toUnits()参照)。
+const NAME_ZONE: FitOpts = { maxWidth: 460, maxHeight: 150, maxFont: 108, minFont: 30, maxLines: 2 };
+
+const LAST5_LABEL: Record<string, string> = { win: "W", loss: "L", draw: "D", nc: "D" };
+const LAST5_COLOR: Record<string, { bg: string; fg: string }> = {
+  win: { bg: COLORS.win, fg: "#ffffff" },
+  loss: { bg: COLORS.loss, fg: COLORS.lossInk },
+  draw: { bg: COLORS.draw, fg: "#ffffff" },
+  nc: { bg: COLORS.draw, fg: "#ffffff" },
+};
+
+// 名前ゾーン: fitName()で事前確定した行を1行ずつ描画する(赤/青コーナーの
+// 色分けはWebの.cornerRed/.cornerBlueと同じ)。
+function NameBlock({
+  nickname,
   fit,
+  side,
 }: {
-  f: ResolvedFighter;
-  corner: "left" | "right";
+  nickname?: string;
   fit: { fontSize: number; lines: string[] };
+  side: "left" | "right";
 }) {
-  const { winRate, finishRate } = calcFighterRates(f);
-  const align = corner === "left" ? "flex-start" : "flex-end";
-
+  const align = side === "left" ? "flex-start" : "flex-end";
+  const color = side === "left" ? COLORS.redInk : COLORS.blueInk;
   return (
-    <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: align, padding: "0 28px" }}>
-      {/* 団体表示・選手DB階級は出さない(夢のカード対応)。階級ラベルは中央に1つだけ。 */}
-      {/* 名前ゾーン: fitName()で事前確定した行を1行ずつ描画(satoriの自動折り返しに頼らない) */}
+    <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: align }}>
+      {nickname && (
+        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 700, fontSize: "16px", color: COLORS.muted, marginBottom: "6px" }}>
+          {nickname}
+        </div>
+      )}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           width: `${NAME_ZONE.maxWidth}px`,
-          // maxHeightだと1行の名前(例: 平本蓮)は実高さが縮み、2行の名前
-          // (例: ダニー・サバテロ)より短くなる。左右で名前の行数が違うと
-          // 名前より下の戦績/勝率/バッジが左右でズレる原因になっていたため、
-          // 1行でも2行でも常にこの高さを占有する固定heightにする。
           height: `${NAME_ZONE.maxHeight}px`,
-          // 3行名対策(2026-07-18): fitName()はmaxLines:2に収まるようフォント
-          // 縮小を試みるが、極端に長い外国人名では縮小しても2行に収まらず
-          // 3行目以降を打ち切って返す(fitName.ts参照)。それでも幅推定誤差
-          // 等で万一はみ出した場合の最終防衛としてoverflow:hiddenを併用し、
-          // 固定高からの食み出しを構造的に防ぐ。
           overflow: "hidden",
           justifyContent: "center",
           alignItems: align,
@@ -77,9 +100,9 @@ function FighterSide({
               fontFamily: "Noto Sans JP",
               fontWeight: 900,
               fontSize: `${fit.fontSize}px`,
-              lineHeight: 1.05,
+              lineHeight: 1.15,
               letterSpacing: "-1px",
-              color: "#FFFFFF",
+              color,
               whiteSpace: "nowrap",
             }}
           >
@@ -87,109 +110,69 @@ function FighterSide({
           </div>
         ))}
       </div>
-
-      <div
-        style={{
-          display: "flex",
-          fontFamily: "Bebas Neue",
-          fontSize: "20px",
-          color: COLORS.ash,
-          marginTop: "8px",
-          letterSpacing: "1px",
-        }}
-      >
-        {f.nameEn}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          fontFamily: "Bebas Neue",
-          fontSize: "80px",
-          color: COLORS.gold,
-          lineHeight: 1,
-          marginTop: "22px",
-        }}
-      >
-        {f.wins}-{f.losses}
-        {f.draws > 0 ? `-${f.draws}` : ""}
-      </div>
-      <div style={{ display: "flex", gap: "18px", marginTop: "12px" }}>
-        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "19px", color: COLORS.ash }}>
-          勝率{winRate !== null ? `${winRate}%` : "—"}
-        </div>
-        <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "19px", color: COLORS.ash }}>
-          フィニッシュ{finishRate !== null ? `${finishRate}%` : "—"}
-        </div>
-      </div>
-      {/* フィニッシュ内訳(KO/一本/判定)。個人OGカードと同じ resolveFighter 由来の
-          ko/sub/decision をそのまま表示するだけで、算出ロジックは再実装しない。
-          メソッド不明の試合は既存の classifyMethod によりどのカテゴリにも入らず
-          合計が戦績と一致しないことがあるが、数値は捏造せずそのまま出す。 */}
-      <div style={{ display: "flex", gap: "18px", marginTop: "16px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <div style={{ display: "flex", width: "11px", height: "11px", borderRadius: "2px", backgroundColor: COLORS.shu }} />
-          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "16px", color: "#FFFFFF" }}>
-            KO {f.ko}
-          </div>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <div style={{ display: "flex", width: "11px", height: "11px", borderRadius: "2px", backgroundColor: COLORS.gold }} />
-          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "16px", color: "#FFFFFF" }}>
-            一本 {f.sub}
-          </div>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <div style={{ display: "flex", width: "11px", height: "11px", borderRadius: "2px", backgroundColor: COLORS.indigo }} />
-          <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "16px", color: "#FFFFFF" }}>
-            判定 {f.decision}
-          </div>
-        </div>
-      </div>
-      {/* 通称はVSカードでは非表示(片側だけにあると要素数がズレて名前・戦績の縦位置が
-          左右非対称になるため)。個人OGカードでは引き続き表示する。 */}
     </div>
   );
 }
 
-// 綱引きバー(spec §5・§7)。Web版(TugBar.tsx)と同じvsMath.computeTugShare()を
-// 使い、算出ロジックを二重実装しない(倍率スケールのみOGP用に変える)。
-// 両者の値が揃っている場合のみ描画し、片方欠損時は行ごと出さない
-// (既存の個人カラム側の「—」表示と重複させない)。
-function TugBarRow({
-  label,
-  valueA,
-  valueB,
-}: {
-  label: string;
-  valueA: number | null;
-  valueB: number | null;
-}) {
-  if (valueA === null || valueB === null) return null;
-  const share = computeTugShare(valueA, valueB);
+// 戦績・勝率・フィニッシュ率の3行。Web版TugBar.tsx(綱引きバー廃止後の
+// 3カラムグリッド: 左=赤値左端/中央=ラベル固定中央/右=青値右端)と同じ構成を
+// flexboxで再現する(flex:1を両端に置くとgrid-template-columns:1fr auto 1fr
+// と同じ挙動になり、値の文字数に関わらずラベルが常に中央に来る)。
+function StatRow({ label, displayA, displayB }: { label: string; displayA: string; displayB: string }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", width: "100%", gap: "6px" }}>
-      <div
-        style={{
-          display: "flex",
-          fontFamily: "Noto Sans JP",
-          fontWeight: 900,
-          fontSize: "13px",
-          color: COLORS.ash,
-          letterSpacing: "1px",
-        }}
-      >
+    <div style={{ display: "flex", alignItems: "baseline", width: "100%", padding: "6px 56px" }}>
+      <div style={{ display: "flex", flex: 1, justifyContent: "flex-start", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "32px", color: COLORS.redInk }}>
+        {displayA}
+      </div>
+      <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 700, fontSize: "18px", color: COLORS.muted, padding: "0 24px", whiteSpace: "nowrap" }}>
         {label}
       </div>
-      <div style={{ display: "flex", width: "100%", height: "10px", borderRadius: "5px", overflow: "hidden" }}>
-        {share.neutral ? (
-          <div style={{ display: "flex", width: "100%", height: "100%", backgroundColor: "rgba(255,255,255,0.18)" }} />
-        ) : (
-          <>
-            <div style={{ display: "flex", width: `${share.shareA * 100}%`, height: "100%", backgroundColor: COLORS.shu }} />
-            <div style={{ display: "flex", width: `${share.shareB * 100}%`, height: "100%", backgroundColor: COLORS.indigo, marginLeft: "3px" }} />
-          </>
-        )}
+      <div style={{ display: "flex", flex: 1, justifyContent: "flex-end", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "32px", color: COLORS.blueInk }}>
+        {displayB}
       </div>
+    </div>
+  );
+}
+
+// KO/一本/判定の内訳(Web版MatchupTape.tsxのMethodCountsLineと同じ、ムード地の
+// 数字のみのテキスト行。左右で3カラムの外側2列だけ使う=中央は空)。
+function MethodRow({ f, side }: { f: ResolvedFighter; side: "left" | "right" }) {
+  const justify = side === "left" ? "flex-start" : "flex-end";
+  return (
+    <div style={{ display: "flex", flex: 1, justifyContent: justify, fontFamily: "Noto Sans JP", fontWeight: 600, fontSize: "16px", color: COLORS.muted }}>
+      KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
+    </div>
+  );
+}
+
+// 直近5戦のW/L/Dドット(Web版MatchupTape.tsxのFormChipsと同じ配色・記号)。
+function FormDots({ results, side }: { results: string[]; side: "left" | "right" }) {
+  const justify = side === "left" ? "flex-start" : "flex-end";
+  return (
+    <div style={{ display: "flex", flex: 1, justifyContent: justify, gap: "6px" }}>
+      {results.map((r, i) => {
+        const c = LAST5_COLOR[r] ?? LAST5_COLOR.draw;
+        return (
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "26px",
+              height: "26px",
+              borderRadius: "6px",
+              backgroundColor: c.bg,
+              color: c.fg,
+              fontFamily: "Noto Sans JP",
+              fontWeight: 800,
+              fontSize: "13px",
+            }}
+          >
+            {LAST5_LABEL[r] ?? "D"}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -220,9 +203,8 @@ export async function GET(
     const searchParams = new URL(req.url).searchParams;
     const wcLabel = (searchParams.get("wc") ?? "").trim();
     // 大会名(手指定・任意)。findMatchupEventによる自動紐付け(eventLabel、
-    // 最上部の白帯)とは別物で、自動紐付けが無い対戦(夢のカード等)でも
-    // MATCH UPラベルのすぐ上に軽量なサブラインとして表示できるようにする。
-    // 空欄なら行ごと出さず従来レイアウトを維持する。
+    // 最上部の帯)とは別物で、自動紐付けが無い対戦(夢のカード等)でも
+    // 軽量なサブラインとして表示できるようにする。空欄なら行ごと出さない。
     const evLabel = (searchParams.get("ev") ?? "").trim();
 
     // 左右の選手名は必ず同一フォントサイズにする。各名を個別にfitNameし、
@@ -237,6 +219,8 @@ export async function GET(
 
     const ratesA = calcFighterRates(fighterA);
     const ratesB = calcFighterRates(fighterB);
+    const statsA = computeFighterStripStats(fighterA);
+    const statsB = computeFighterStripStats(fighterB);
 
     const matchup = findMatchupEvent(fighterA.nameJa, fighterB.nameJa);
     const eventLabel = matchup
@@ -255,154 +239,96 @@ export async function GET(
             height: "630px",
             display: "flex",
             flexDirection: "column",
-            backgroundColor: COLORS.sumi,
-            backgroundImage: `${cornerVignette()}, ${stripeTexture()}`,
+            backgroundColor: COLORS.card,
             position: "relative",
           }}
         >
-          {/* 大会情報帯（紐付けデータがある場合のみ。ない場合は帯ごと非表示でレイアウトは自然に詰まる） */}
+          {/* コーナーストリップ(Web版.card::beforeと同じ、左半分赤/右半分青) */}
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "10px",
+              backgroundImage: `linear-gradient(to right, ${COLORS.red} 0%, ${COLORS.red} 50%, ${COLORS.blue} 50%, ${COLORS.blue} 100%)`,
+            }}
+          />
+
+          {/* 大会情報帯(findMatchupEventで紐付いた場合のみ。無ければ帯ごと省略) */}
           {eventLabel && (
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: COLORS.washi,
-                padding: "14px 0",
+                backgroundColor: COLORS.panel,
+                borderBottom: `1px solid ${COLORS.lineSoft}`,
+                padding: "12px 0",
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "Noto Sans JP",
-                  fontWeight: 900,
-                  fontSize: "18px",
-                  color: COLORS.sumi,
-                  letterSpacing: "1px",
-                }}
-              >
+              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "16px", color: COLORS.ink }}>
                 {eventLabel}
               </div>
             </div>
           )}
 
-          {/* 手指定の大会名(任意) + MATCH UP ラベル + 手指定の階級ラベル
-              (対戦全体で1つずつ・空欄ならそれぞれ非表示) */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "10px",
-              padding: "20px 0 0",
-            }}
-          >
-            {evLabel !== "" && (
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "Noto Sans JP",
-                  fontWeight: 900,
-                  fontSize: "24px",
-                  color: "#FFFFFF",
-                  letterSpacing: "1px",
-                }}
-              >
-                {evLabel}
-              </div>
-            )}
-            <div
-              style={{
-                display: "flex",
-                fontFamily: "Bebas Neue",
-                fontSize: "26px",
-                color: COLORS.ash,
-                letterSpacing: "10px",
-                // letterSpacingは文字の後ろに余白を作るため、末尾の1文字分
-                // (10px)だけ右側に余分な幅が残り、alignItems:centerでの
-                // 中央寄せがglyph基準でletterSpacingの半分(≒5px)左に
-                // ズレる(実測−4.5px)。paddingLeftをletterSpacingと同値
-                // 付与し、trailingの余白を相殺する(glyph幅に依存せず
-                // letterSpacing値だけで補正量が確定するため逆算不要)。
-                paddingLeft: "10px",
-              }}
-            >
-              MATCH UP
+          {/* 手指定の大会名(任意)+階級ラベル(任意)。空欄ならそれぞれ非表示 */}
+          {(evLabel !== "" || wcLabel !== "") && (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", padding: "14px 0 0" }}>
+              {evLabel !== "" && (
+                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "18px", color: COLORS.ink }}>
+                  {evLabel}
+                </div>
+              )}
+              {wcLabel !== "" && (
+                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "16px", color: COLORS.gold }}>
+                  {wcLabel}
+                </div>
+              )}
             </div>
-            {wcLabel !== "" && (
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "Noto Sans JP",
-                  fontWeight: 900,
-                  fontSize: "30px",
-                  color: COLORS.gold,
-                  letterSpacing: "1px",
-                }}
-              >
-                {wcLabel}
-              </div>
-            )}
+          )}
+
+          {/* 選手名 + 中央VS */}
+          <div style={{ display: "flex", alignItems: "center", padding: "28px 56px 0" }}>
+            <NameBlock nickname={fighterA.nickname} fit={fitA} side="left" />
+            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "44px", color: COLORS.dim, letterSpacing: "2px", padding: "0 24px" }}>
+              VS
+            </div>
+            <NameBlock nickname={fighterB.nickname} fit={fitB} side="right" />
           </div>
 
-          {/* 両選手 + 中央VS(中央の区切りはVSテキストと背景グラデの見切りで成立) */}
-          <div style={{ display: "flex", flex: 1, alignItems: "center" }}>
-            <FighterSide f={fighterA} corner="left" fit={fitA} />
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "140px",
-                flexShrink: 0,
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "Bebas Neue",
-                  fontSize: "112px",
-                  color: "#FFFFFF",
-                  letterSpacing: "0px",
-                  textShadow: "0 0 34px rgba(0,0,0,0.7)",
-                }}
-              >
-                VS
-              </div>
-            </div>
-
-            <FighterSide f={fighterB} corner="right" fit={fitB} />
+          {/* 戦績・勝率・フィニッシュ率(Web版と同じ3行構成・3カラム配置) */}
+          <div style={{ display: "flex", flexDirection: "column", marginTop: "20px" }}>
+            <StatRow label="戦績" displayA={`${fighterA.wins}-${fighterA.losses}${fighterA.draws > 0 ? `-${fighterA.draws}` : ""}`} displayB={`${fighterB.wins}-${fighterB.losses}${fighterB.draws > 0 ? `-${fighterB.draws}` : ""}`} />
+            <StatRow label="勝率" displayA={ratesA.winRate !== null ? `${ratesA.winRate}%` : "—"} displayB={ratesB.winRate !== null ? `${ratesB.winRate}%` : "—"} />
+            <StatRow label="フィニッシュ率" displayA={ratesA.finishRate !== null ? `${ratesA.finishRate}%` : "—"} displayB={ratesB.finishRate !== null ? `${ratesB.finishRate}%` : "—"} />
           </div>
 
-          {/* 綱引きバー(spec §5・§7): 勝率・フィニッシュ率の相対優劣を1本のバーで表す。
-              Web版(MatchupTape/TugBar)と同じcomputeTugShare()を共用し、倍率スケールのみ
-              OGPの1200x630座標系に合わせる。 */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "0 56px 26px" }}>
-            <TugBarRow label="勝率" valueA={ratesA.winRate} valueB={ratesB.winRate} />
-            <TugBarRow label="フィニッシュ率" valueA={ratesA.finishRate} valueB={ratesB.finishRate} />
+          {/* KO/一本/判定の内訳 */}
+          <div style={{ display: "flex", padding: "10px 56px 0" }}>
+            <MethodRow f={fighterA} side="left" />
+            <MethodRow f={fighterB} side="right" />
+          </div>
+
+          {/* 直近5戦のW/L/Dドット(綱引きバーは廃止済みのため出さない) */}
+          <div style={{ display: "flex", padding: "14px 56px 0" }}>
+            <FormDots results={statsA.last5} side="left" />
+            <FormDots results={statsB.last5} side="right" />
           </div>
 
           {/* フッター */}
           <div
             style={{
               display: "flex",
+              flex: 1,
               justifyContent: "flex-end",
-              alignItems: "center",
-              backgroundColor: COLORS.foot,
-              padding: "18px 56px",
+              alignItems: "flex-end",
+              backgroundColor: COLORS.panel,
+              borderTop: `1px solid ${COLORS.lineSoft}`,
+              padding: "16px 56px",
+              marginTop: "20px",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                fontFamily: "Bebas Neue",
-                fontSize: "20px",
-                color: COLORS.ash,
-                letterSpacing: "1px",
-              }}
-            >
+            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "20px", color: COLORS.muted, letterSpacing: "1px" }}>
               MNEWS.JP
             </div>
           </div>
