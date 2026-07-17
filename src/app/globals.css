@@ -769,6 +769,26 @@ footer {
   outline: none;
   border-color: var(--accent);
 }
+/* /fightersヘッダーの/dream導線ボタン。検索ボックス・フィルタチップと同じ
+   トーン(border + 控えめ背景 + 角丸2px)に揃える */
+.dream-cta {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  background: var(--s1);
+  color: var(--text);
+  font-family: var(--os);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.dream-cta:hover {
+  background: var(--s2);
+  border-color: var(--accent);
+}
 .fighter-card {
   background: var(--s1);
   padding: 20px 24px;
@@ -2622,26 +2642,27 @@ a.uf-card:hover { border-color: var(--muted); }
   color: var(--muted);
   margin-top: 2px;
 }
-.hero-ranking-tabs {
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
-}
-.hero-ranking-tab {
+/* 階級切替プルダウン。旧タブ(2行に折り返していた)を1行のselectに置き換え。
+   ネイティブの矢印はappearance:noneで消し、SVGシェブロンを右端に描く。 */
+.hero-ranking-select {
   font-family: var(--os);
   font-size: 12px;
   font-weight: 700;
-  padding: 6px 12px;
+  padding: 6px 30px 6px 14px;
   border-radius: 100px;
   border: 1px solid var(--border);
-  background: #fff;
-  color: var(--muted);
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  color: var(--text);
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
-.hero-ranking-tab.active {
-  background: var(--accent);
+.hero-ranking-select:focus {
+  outline: none;
   border-color: var(--accent);
-  color: #fff;
 }
 .hero-ranking-list {
   display: flex;
@@ -2679,12 +2700,6 @@ a.uf-card:hover { border-color: var(--muted); }
   flex: 1;
   font-size: 14px;
   font-weight: 600;
-}
-.hero-ranking-record {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  white-space: nowrap;
 }
 .hero-ranking-empty {
   padding: 16px 18px;
