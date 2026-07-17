@@ -2607,20 +2607,18 @@ a.uf-card:hover { border-color: var(--muted); }
 }
 
 /* ===== ヒーロー(データ資産ブロック。mnews-homepage-instructions.md §2) =====
-   ライブ帯の直下・ニュースフィードの上。.home-wrapと同じmax-width/paddingで
-   左右端を揃える。 */
+   ニュースフィードの直下・.home-sectionsの上。.home-wrap内に配置される
+   ため、左右の幅制約・パディングは親(.home-wrap)に一本化し、ここでは
+   持たない(.home-sectionsと同じ扱い。二重paddingで左右端がズレるのを防ぐ)。 */
 .home-hero {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 16px 16px 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-top: 16px;
 }
 @media (min-width: 1200px) {
   .home-hero {
-    max-width: 1080px;
-    padding: 20px 24px 0;
+    padding-top: 20px;
   }
 }
 
