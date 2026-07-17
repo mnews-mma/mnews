@@ -273,6 +273,22 @@
   color: var(--blue-ink);
 }
 
+/* 選手ページへのリンクがある名前だけ下線を付け、赤/青のみでは伝わらない
+   「押せる」合図にする(未収録選手はaタグ自体で囲まれないため対象外、
+   §誤誘導防止)。下線はcurrentColor(=各コーナー色)に揃え、コーナー帯・
+   罫線と干渉しないようtext-underline-offsetで名前本体から離す。 */
+a .fighterName {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+a:hover .fighterName,
+a:active .fighterName {
+  text-decoration-thickness: 2.5px;
+}
+
 .statsBreak {
   font-size: 11px;
   color: var(--muted);
