@@ -31,11 +31,6 @@ interface DivisionView {
 const DIVISIONS = ["フライ級", "バンタム級", "フェザー級", "ライト級"] as const;
 type Division = (typeof DIVISIONS)[number];
 
-function formatRecord(r: RatingRecord | null): string {
-  if (!r) return "—";
-  return `${r.wins}-${r.losses}${r.draws > 0 ? `-${r.draws}` : ""}`;
-}
-
 // トップページのヒーロー「AI RIZINランキング」カード(データ資産ブロック。
 // mnews-homepage-instructions.md §2.1)。4階級ぶんの{champion, contenders}を
 // サーバー側(resolveDivisionRankingView経由)で選手名解決・スラッグ生表示
@@ -87,7 +82,6 @@ export default function MnewsRatingSection({
             <a href={`/fighters/${view.champion.fighterId}`} className="hero-ranking-row">
               <span className="hero-ranking-rank hero-ranking-rank-champion">王者</span>
               <span className="hero-ranking-name">{view.champion.nameJa}</span>
-              <span className="hero-ranking-record">{formatRecord(view.champion.record)}</span>
               <RankingDelta delta={null} />
             </a>
           )}
@@ -95,7 +89,6 @@ export default function MnewsRatingSection({
             <a key={e.fighterId} href={`/fighters/${e.fighterId}`} className="hero-ranking-row">
               <span className={`hero-ranking-rank ${e.displayRank <= 3 ? "hero-ranking-rank-top" : ""}`}>{e.displayRank}</span>
               <span className="hero-ranking-name">{e.nameJa}</span>
-              <span className="hero-ranking-record">{formatRecord(e.record)}</span>
               <RankingDelta delta={e.delta} />
             </a>
           ))}
