@@ -584,6 +584,26 @@
   color: var(--blue-ink);
 }
 
+/* 列見出しの赤/青ドット。選手名テキストだと文字切れ(「ダニ…」等)が起きるため、
+   色のみでタレント・オブ・ザ・テープの左右と対応させる(フルネームはtitleで保持)。 */
+.cheadDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 auto;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.cheadDot.cheadR {
+  background: var(--red-ink);
+}
+
+.cheadDot.cheadB {
+  background: var(--blue-ink);
+}
+
 .crowHeader {
   padding: 8px 2px;
   border-bottom: 1px solid var(--line-soft);
