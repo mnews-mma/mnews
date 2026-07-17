@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "check:fighter-records": "tsx scripts/check-fighter-records-integrity.ts",
-    "build": "npm run check:fighter-records && next build",
+    "check:revalidate-literal": "tsx scripts/check-revalidate-literal.ts",
+    "build": "npm run check:fighter-records && npm run check:revalidate-literal && next build",
     "test:mnews-rating": "tsx scripts/test-mnews-rating.ts",
     "mrating:compute": "tsx scripts/compute-mnews-rating.ts",
     "mrating:update": "tsx scripts/update-mnews-rating.ts",
