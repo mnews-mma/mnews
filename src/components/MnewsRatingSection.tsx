@@ -43,7 +43,7 @@ function formatRecord(r: RatingRecord | null): string {
 // state切り替えのみ(追加fetch無し)で行う。デフォルトはフェザー級。
 // ランキングページ本体と同じ共有セレクタ由来のデータなので、王者行の有無・並びが
 // 常に一致する(ここで独自に組み立てない)。未公開階級はdivisionsに含まれない
-// (タブ自体を出さない=グレーで見せない)。fighters.tsに解決できなかった選手は
+// (プルダウンの選択肢に出さない=グレーで見せない)。fighters.tsに解決できなかった選手は
 // サーバー側で既に除外済みのため、ここでは生スラッグへのフォールバックを行わない
 // (fighterIdをそのまま表示に使わない)。レート数値は外向き表示に出さない方針の
 // ため、順位・選手名・戦績・前回比のみ表示する(値自体もサーバー側で除去済み)。
@@ -68,20 +68,18 @@ export default function MnewsRatingSection({
           <div className="hero-ranking-title">AI RIZINランキング</div>
           <div className="hero-ranking-subtitle">独自AIが大会翌日に更新</div>
         </div>
-        <div className="hero-ranking-tabs" role="tablist" aria-label="階級を選択">
+        <select
+          className="hero-ranking-select"
+          aria-label="階級を選択"
+          value={division}
+          onChange={(e) => setDivision(e.target.value as Division)}
+        >
           {availableDivisions.map((d) => (
-            <button
-              key={d}
-              type="button"
-              role="tab"
-              aria-selected={division === d}
-              className={`hero-ranking-tab ${division === d ? "active" : ""}`}
-              onClick={() => setDivision(d)}
-            >
+            <option key={d} value={d}>
               {d}
-            </button>
+            </option>
           ))}
-        </div>
+        </select>
       </div>
       {top3.length > 0 || view.champion ? (
         <div className="hero-ranking-list">
