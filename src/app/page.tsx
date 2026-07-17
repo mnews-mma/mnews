@@ -19,6 +19,9 @@ import {
   toClientSafeResolvedDivisionRankingView,
 } from "@/lib/mnewsRating/divisionRankingView";
 import MnewsRatingSection from "@/components/MnewsRatingSection";
+import HeroFighterSearch from "@/components/HeroFighterSearch";
+import LiveBand from "@/components/LiveBand";
+import { computeLiveBand } from "@/lib/liveBand";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
@@ -180,6 +183,18 @@ export default async function HomePage() {
   const jstNow = new Date(Date.now() + 9 * 3600_000);
   const startOfTodayJstMs =
     Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()) - 9 * 3600_000;
+
+  // ライブ帯(mnews-homepage-instructions.md §1)。日数判定はJST・SSR確定
+  // (force-dynamicのためリクエスト時に毎回再計算され、クライアント時刻には
+  // 依存しない)。
+  const liveBandInfo = computeLiveBand(startOfTodayJstMs, upcomingEvents, EVENT_RESULTS);
+  const todayJstDateStr = `${jstNow.getUTCFullYear()}-${String(jstNow.getUTCMonth() + 1).padStart(2, "0")}-${String(jstNow.getUTCDate()).padStart(2, "0")}`;
+  // POST帯の「AIランキング本日更新」文言は、実際に本日分のバッチが反映済みの
+  // 場合のみ出す(未反映なのに更新済みと読める表現は不可、§1.1)。
+  const rankingsUpdatedToday = featherweightRankings?.updatedAt
+    ? featherweightRankings.updatedAt.slice(0, 10) === todayJstDateStr
+    : false;
+
   const cutoffMs = startOfTodayJstMs - 2 * 86400_000; // 当日含む直近3日
   const within3d = feedAll.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
   // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを
@@ -237,6 +252,16 @@ export default async function HomePage() {
       )}
       <Nav />
       <h1 className="visually-hidden">日本MMAニュース・選手データベース</h1>
+
+      {liveBandInfo && <LiveBand info={liveBandInfo} rankingsUpdatedToday={rankingsUpdatedToday} />}
+
+      {/* ヒーロー(データ資産ブロック): ライブ帯の直下・ニュースフィードの上に配置
+          (mnews-homepage-instructions.md §2)。AI RIZINランキングカード+選手DB
+          検索ボックスの2枚構成。 */}
+      <div className="home-hero">
+        <MnewsRatingSection divisions={mnewsRatingDivisions} />
+        <HeroFighterSearch fighterCount={FIGHTERS.length} />
+      </div>
 
       <div className="home-wrap">
       <div className="home-main">
@@ -344,12 +369,6 @@ export default async function HomePage() {
           <a href="/ranking/pancrase" className="rail-more">パンクラス 公式ランキングを見る →</a>
           <a href="/ranking/shooto" className="rail-more">修斗 公式ランキングを見る →</a>
         </section>
-
-        {/* MnewsRIZINレーティング(独自算出)。公式ランキング・王者セクションの下に
-            独立配置し、RIZIN非公式の集計であることが伝わる名称にする。
-            階級切替(デフォルト:フェザー級)はクライアント側で行う(4階級分を
-            サーバーで取得済みのため追加fetch無しで切り替え可能)。 */}
-        <MnewsRatingSection divisions={mnewsRatingDivisions} />
 
         {/* 主要選手 戦績まとめ（/fighters と同じチップ体裁のカード） */}
         <section className="rail-panel">
