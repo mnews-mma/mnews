@@ -59,12 +59,12 @@ export default async function FightersPage() {
         <div className="page-sub" style={{ fontFamily: "var(--body)", fontSize: 13, letterSpacing: 0, color: "var(--text)", lineHeight: 1.8 }}>
           RIZIN・DEEP・パンクラス・修斗などに参戦する日本人MMA選手の戦績を掲載。勝敗・KO/一本/判定の内訳、勝率、フィニッシュ率をデータで確認できます。
         </div>
-        <div className="page-sub">
-          日本MMA主要選手の戦績データ
-          <a href="/dream" style={{ fontSize: 13, color: "var(--accent)", marginLeft: 8 }}>
-            → X投稿用カード作成
-          </a>
-        </div>
+        <div className="page-sub">日本MMA主要選手の戦績データ</div>
+        {/* /dreamへの導線: ユーザーのやりたいこと(2選手の比較・カード作り)を
+            主語にした文言で、検索ボックス周りと同じトーンのボタン型にする */}
+        <a href="/dream" className="dream-cta">
+          好きな2人で対戦カードを作る →
+        </a>
         <DataFreshness generatedAt={generatedAt} />
       </div>
       <FighterFilterGrid fighters={fighters} tagsBySlug={tagsBySlug} />
