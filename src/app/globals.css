@@ -2721,14 +2721,6 @@ a.uf-card:hover { border-color: var(--muted); }
   font-size: 13px;
   color: var(--muted);
 }
-.hero-search-count {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
 /* ===== 開催予定 右レール パネル(1列・赤背景廃止・最近1件のみ赤) ===== */
 .rail-panel {
   border: 1px solid var(--border);
