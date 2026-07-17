@@ -46,6 +46,72 @@ export function toClientSafeDivisionRankingView(view: DivisionRankingView): Clie
   };
 }
 
+export interface ResolvedRankingEntry extends RankingEntry {
+  nameJa: string;
+  displayRank: number; // 表示順位(1始まり)。解決失敗エントリを除外した後に振り直す
+}
+
+export interface ResolvedChampionOverlay extends ChampionOverlay {
+  nameJa: string;
+}
+
+export interface ResolvedDivisionRankingView {
+  champion: ResolvedChampionOverlay | null;
+  contenders: ResolvedRankingEntry[];
+}
+
+// fighters.tsに存在しないfighterIdを画面にスラッグのまま出さない(生スラッグ
+// 表示フォールバック禁止)。王者が解決できない場合は王者行ごと非表示にする
+// (代替表示はしない)。挑戦者は解決できないエントリを除外した上で表示順位を
+// 1から振り直す(=繰り上げ)。全スラッグがfighters.tsに存在することは
+// scripts/check-rankings-fighter-slugs.tsでビルド時に保証しているため、ここで
+// 弾かれるのは異常系(データ生成側の不整合)に対する最終防衛ラインという位置づけ。
+//
+// topNは「解決・除外・繰り上げ後」の件数に適用する(除外前に切ると、除外分だけ
+// 表示件数が欠けたり、本来繰り上がるはずの選手が表示から漏れたりするため、
+// 必ずこの順序を守る)。
+export function resolveDivisionRankingView(
+  view: DivisionRankingView,
+  nameBySlug: Map<string, string> | Record<string, string>,
+  topN?: number
+): ResolvedDivisionRankingView {
+  const lookup = (id: string): string | undefined =>
+    nameBySlug instanceof Map ? nameBySlug.get(id) : nameBySlug[id];
+
+  const championName = view.champion ? lookup(view.champion.fighterId) : undefined;
+  const champion = view.champion && championName ? { ...view.champion, nameJa: championName } : null;
+
+  const contenders: ResolvedRankingEntry[] = [];
+  for (const e of view.contenders) {
+    const nameJa = lookup(e.fighterId);
+    if (!nameJa) continue;
+    contenders.push({ ...e, nameJa, displayRank: contenders.length + 1 });
+  }
+
+  return { champion, contenders: topN !== undefined ? contenders.slice(0, topN) : contenders };
+}
+
+// resolveDivisionRankingView後のデータを"use client"コンポーネントへpropsとして
+// 渡す前に、rating/rawRatingを必ず除去する(toClientSafeDivisionRankingViewと
+// 同じ理由・同じ方針(D-2)。nameJa/displayRankはクライアント側で表示に使うため保持)。
+export type ClientSafeResolvedRankingEntry = Omit<ResolvedRankingEntry, "rawRating" | "rating">;
+export type ClientSafeResolvedChampionOverlay = Omit<ResolvedChampionOverlay, "rating"> | null;
+
+export interface ClientSafeResolvedDivisionRankingView {
+  champion: ClientSafeResolvedChampionOverlay;
+  contenders: ClientSafeResolvedRankingEntry[];
+}
+
+export function toClientSafeResolvedDivisionRankingView(
+  view: ResolvedDivisionRankingView
+): ClientSafeResolvedDivisionRankingView {
+  const champion = view.champion ? (({ rating: _rating, ...safe }) => safe)(view.champion) : null;
+  return {
+    champion,
+    contenders: view.contenders.map(({ rawRating: _rawRating, rating: _rating, ...safe }) => safe),
+  };
+}
+
 // 「公開可否」の判定はPUBLISHED_DIVISIONS(divisions.ts)を唯一の真実源とする。
 // /rankings/[division]・/rankings(ハブ)は既にこのホワイトリストを直接参照して
 // 非公開階級を「準備中」として扱っている。トップページのウィジェットも同じ

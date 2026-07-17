@@ -4,7 +4,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchRankings } from "@/lib/mnewsRatingData";
-import { getDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
+import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { MNEWS_DIVISIONS, DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata } from "@/lib/seo";
@@ -110,7 +110,10 @@ export default async function RankingsHubPage() {
           const slug = DIVISION_SLUG[division];
           const published = PUBLISHED_DIVISIONS.includes(division);
           const data = rankings[slug];
-          const view = getDivisionRankingView(data, TOP_N_ON_HUB);
+          // topNは解決・除外・繰り上げ後の件数に適用するため、getDivisionRankingViewは
+          // 全件取得してからresolveDivisionRankingView側でTOP_N_ON_HUBを適用する
+          // (スラッグ生表示フォールバック禁止・解決失敗時は行非表示+繰り上げ)。
+          const view = resolveDivisionRankingView(getDivisionRankingView(data), nameBySlug, TOP_N_ON_HUB);
 
           return (
             <section key={division} style={{ marginBottom: 32 }}>
@@ -142,7 +145,7 @@ export default async function RankingsHubPage() {
                             <td style={{ fontFamily: "var(--mono)", fontWeight: 800, color: "var(--gold, #c29a4b)" }}>王者</td>
                             <td className="col-opponent">
                               <a href={`/fighters/${view.champion.fighterId}`} className="opponent-link">
-                                {nameBySlug.get(view.champion.fighterId) ?? view.champion.fighterId}
+                                {view.champion.nameJa}
                               </a>
                             </td>
                             <td>—</td>
@@ -150,10 +153,10 @@ export default async function RankingsHubPage() {
                         )}
                         {view.contenders.map((e) => (
                           <tr key={e.fighterId}>
-                            <td style={{ fontFamily: "var(--mono)", fontWeight: 700 }}>{e.rank}</td>
+                            <td style={{ fontFamily: "var(--mono)", fontWeight: 700 }}>{e.displayRank}</td>
                             <td className="col-opponent">
                               <a href={`/fighters/${e.fighterId}`} className="opponent-link">
-                                {nameBySlug.get(e.fighterId) ?? e.fighterId}
+                                {e.nameJa}
                               </a>
                             </td>
                             <td>

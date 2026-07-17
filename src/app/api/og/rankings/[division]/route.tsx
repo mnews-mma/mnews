@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchDivisionRankingsEdge } from "@/lib/mnewsRatingDataEdge";
+import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { OG_COLORS as COLORS, SITE_URL, loadOgFonts, OG_FONT_FAMILIES, stripeTexture } from "@/lib/ogShared";
@@ -25,7 +26,10 @@ export async function GET(req: Request, { params }: { params: Promise<{ division
     if (!data || data.entries.length === 0) return fallbackRedirect();
 
     const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
-    const top5 = data.entries.slice(0, 5);
+    // fighters.tsに存在しないfighterIdは除外して表示順位を振り直す
+    // (スラッグ生表示フォールバック禁止・解決失敗時は行非表示+繰り上げ)。
+    const top5 = resolveDivisionRankingView(getDivisionRankingView(data), nameBySlug, 5).contenders;
+    if (top5.length === 0) return fallbackRedirect();
     const updatedAt = data.updatedAt.slice(0, 10);
     const fonts = await loadOgFonts();
 
@@ -87,13 +91,13 @@ export async function GET(req: Request, { params }: { params: Promise<{ division
                     width: "56px",
                     fontFamily: "Bebas Neue",
                     fontSize: "34px",
-                    color: e.rank <= 3 ? COLORS.shu : COLORS.ash,
+                    color: e.displayRank <= 3 ? COLORS.shu : COLORS.ash,
                   }}
                 >
-                  {e.rank}
+                  {e.displayRank}
                 </div>
                 <div style={{ display: "flex", flex: 1, fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "30px", color: "#FFFFFF" }}>
-                  {nameBySlug.get(e.fighterId) ?? e.fighterId}
+                  {e.nameJa}
                 </div>
               </div>
             ))}
