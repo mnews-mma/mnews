@@ -18,18 +18,25 @@ function ResMark({ result }: { result: CommonOpponent["resultA"] }) {
   return <span className={`${styles.formChip} ${styles.resChip} ${cls}`}>{symbol}</span>;
 }
 
-// 列見出し(自分/相手の名前を赤・青で色分け、収まらない場合は省略記号+title属性で
-// フルネーム保持。§5-4)。全カード(大会/夢のカード/選手)で共通に使う。
+// 列見出し(自分/相手をテキストではなく赤・青のコーナー色ドットで区別する。
+// 文字切れを避けるため、フルネームはtitle/aria-labelにのみ保持する)。
+// 全カード(大会/夢のカード/選手)で共通に使う。
 function CommonOpponentsHeaderRow({ leftName, rightName }: { leftName: string; rightName: string }) {
   return (
     <div className={styles.chead}>
       <span className={styles.cheadLbl}>対戦相手</span>
-      <span className={styles.cheadR} title={leftName}>
-        {leftName}
-      </span>
-      <span className={styles.cheadB} title={rightName}>
-        {rightName}
-      </span>
+      <span
+        className={`${styles.cheadDot} ${styles.cheadR}`}
+        role="img"
+        aria-label={leftName}
+        title={leftName}
+      />
+      <span
+        className={`${styles.cheadDot} ${styles.cheadB}`}
+        role="img"
+        aria-label={rightName}
+        title={rightName}
+      />
     </div>
   );
 }
