@@ -37,9 +37,25 @@ export default function DreamPickerV2({
   const findInitialClass = (slug: string) => fighters.find((f) => f.slug === slug)?.weightClass ?? weightClasses[0] ?? "";
   const [classFilterA, setClassFilterA] = useState(() => findInitialClass(initialA));
   const [classFilterB, setClassFilterB] = useState(() => findInitialClass(initialB));
+  // 選手名フリーワード検索(部分一致)。/tools/fighter-cardから移植(§6統合)。
+  // 選択肢自体は既存のプルダウンのまま、絞り込みは表示するoptionを減らすだけ。
+  const [nameFilterA, setNameFilterA] = useState("");
+  const [nameFilterB, setNameFilterB] = useState("");
 
-  const fightersA = useMemo(() => fighters.filter((f) => f.weightClass === classFilterA), [fighters, classFilterA]);
-  const fightersB = useMemo(() => fighters.filter((f) => f.weightClass === classFilterB), [fighters, classFilterB]);
+  const fightersA = useMemo(
+    () =>
+      fighters.filter(
+        (f) => f.weightClass === classFilterA && (!nameFilterA.trim() || f.nameJa.includes(nameFilterA.trim()))
+      ),
+    [fighters, classFilterA, nameFilterA]
+  );
+  const fightersB = useMemo(
+    () =>
+      fighters.filter(
+        (f) => f.weightClass === classFilterB && (!nameFilterB.trim() || f.nameJa.includes(nameFilterB.trim()))
+      ),
+    [fighters, classFilterB, nameFilterB]
+  );
 
   useEffect(() => {
     if (fightersA.length > 0 && !fightersA.some((f) => f.slug === slugA)) {
@@ -67,6 +83,11 @@ export default function DreamPickerV2({
   const swap = () => {
     setClassFilterA(classFilterB);
     setClassFilterB(classFilterA);
+    // 検索文字列も一緒に入れ替える。入れ替えないと、片方の検索窓の絞り込み
+    // テキストが新しい選手と一致せず、直後の自動補正effectがスワップ結果を
+    // 即座に上書きしてしまう(OgCardTool.tsxと同じ理由)。
+    setNameFilterA(nameFilterB);
+    setNameFilterB(nameFilterA);
     setSlugA(slugB);
     setSlugB(slugA);
   };
@@ -91,6 +112,14 @@ export default function DreamPickerV2({
                 ))}
               </select>
             </label>
+            <input
+              type="text"
+              aria-label="選手Aを検索"
+              value={nameFilterA}
+              onChange={(e) => setNameFilterA(e.target.value)}
+              placeholder="選手名で検索"
+              className={styles.sel}
+            />
             <label className={styles.sel} style={{ display: "block" }}>
               <select
                 aria-label="選手Aを選ぶ"
@@ -124,6 +153,14 @@ export default function DreamPickerV2({
                 ))}
               </select>
             </label>
+            <input
+              type="text"
+              aria-label="選手Bを検索"
+              value={nameFilterB}
+              onChange={(e) => setNameFilterB(e.target.value)}
+              placeholder="選手名で検索"
+              className={styles.sel}
+            />
             <label className={styles.sel} style={{ display: "block" }}>
               <select
                 aria-label="選手Bを選ぶ"
