@@ -1,6 +1,7 @@
 import styles from "@/styles/matchup.module.css";
 import TugBar from "./TugBar";
-import { fighterNameSize, insertNameBreaks } from "@/lib/vsMath";
+import { fighterNameSize } from "@/lib/vsMath";
+import { renderWrappableName } from "@/lib/renderWrappableName";
 import type { Result, TapeFighterData } from "./matchupData";
 
 const FORM_LABEL: Record<Result, string> = { win: "W", loss: "L", draw: "D", nc: "D" };
@@ -13,11 +14,13 @@ const FORM_CLASS: Record<Result, string> = {
 
 // 選手名の表示用ノード。左右で同じfontSizeを受け取り、カード内は常に
 // 左右同一サイズにする(長い方の名前が収まるサイズに両方揃える)。
-// 「・」直後で改行できるようゼロ幅スペースを挿む(spec §4.3)。
-function FighterNameText({ name, fontSize }: { name: string; fontSize: number }) {
+// 折り返しは「・」直後とスペースのみ(renderWrappableNameのnowrapトークン化で
+// 単語途中の改行を禁止。BoutCard等と同一の共通実装)。EventBoutCardV2の
+// 未登録選手フォールバックからも使うためexportする。
+export function FighterNameText({ name, fontSize }: { name: string; fontSize: number }) {
   return (
     <h3 className={styles.fighterName} style={{ fontSize: `${fontSize}px` }}>
-      {insertNameBreaks(name)}
+      {renderWrappableName(name)}
     </h3>
   );
 }

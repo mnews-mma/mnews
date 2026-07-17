@@ -5,8 +5,9 @@ import type { ReactNode } from "react";
 // 無い外国人リングネーム等(例:シンバートルバットエルデネ=13文字)をnowrap化
 // すると375px幅のカラムからはみ出すため、1トークンが一定文字数を超える場合は
 // 強制せず通常のCJK折り返し(文字単位)にフォールバックする(はみ出し優先回避)。
-// BoutCard.tsx(大会ページ・夢のカード)とFighterVisuals.tsx(選手ページ次戦)の
-// 両方で使う共有ヘルパー(循環import回避のため単独ファイルに切り出し)。
+// BoutCard.tsx(大会ページ・夢のカード)・FighterVisuals.tsx(選手ページ次戦)・
+// MatchupTape.tsx(VSカード系v2の名前描画)で使う共有ヘルパー=名前折り返しの
+// 単一実装(循環import回避のため単独ファイルに切り出し)。
 const NOWRAP_TOKEN_MAX_LEN = 10;
 
 export function renderWrappableName(name: string): ReactNode {

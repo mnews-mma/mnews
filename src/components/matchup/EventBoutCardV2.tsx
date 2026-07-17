@@ -2,7 +2,8 @@ import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import type { BoutResult } from "@/lib/events";
 import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
 import styles from "@/styles/matchup.module.css";
-import MatchupTape from "./MatchupTape";
+import MatchupTape, { FighterNameText } from "./MatchupTape";
+import { fighterNameSize } from "@/lib/vsMath";
 import { CommonOpponentsToggle } from "./CommonOpponentsList";
 import HeadToHeadBanner from "./HeadToHeadBanner";
 import { buildTapeData, type TapeFighterData } from "./matchupData";
@@ -104,12 +105,14 @@ export default function EventBoutCardV2({
         />
       ) : (
         <div className={styles.tape}>
+          {/* 未登録選手のミニマル表示も登録済みカード(MatchupTape)と同じ
+              名前描画・サイズ規則(左右同一・長い側基準)に揃える */}
           <div className={`${styles.na} ${styles.cornerRed}`}>
-            <h3 className={styles.fighterName}>{nameA}</h3>
+            <FighterNameText name={nameA} fontSize={Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
           </div>
           <div className={styles.vs}>VS</div>
           <div className={`${styles.nb} ${styles.cornerBlue}`}>
-            <h3 className={styles.fighterName}>{nameB}</h3>
+            <FighterNameText name={nameB} fontSize={Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
           </div>
         </div>
       )}
