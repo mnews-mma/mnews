@@ -9,11 +9,16 @@ const nextConfig: NextConfig = {
   // 一覧はsrc/lib/fighterSlugRedirects.tsが単一の情報源(削除・上書き禁止、
   // 旧slugは追記のみ)。
   async redirects() {
-    return FIGHTER_SLUG_REDIRECTS.map(({ from, to }) => ({
-      source: `/fighters/${from}`,
-      destination: `/fighters/${to}`,
-      permanent: true,
-    }));
+    return [
+      ...FIGHTER_SLUG_REDIRECTS.map(({ from, to }) => ({
+        source: `/fighters/${from}`,
+        destination: `/fighters/${to}`,
+        permanent: true,
+      })),
+      // /tools/fighter-cardは/dreamと機能重複のため統合・廃止(2026-07-17)。
+      // 固有機能(選手名検索・階級絞り込み・A/B入れ替え)はDreamPickerV2へ移植済み。
+      { source: "/tools/fighter-card", destination: "/dream", permanent: true },
+    ];
   },
 };
 

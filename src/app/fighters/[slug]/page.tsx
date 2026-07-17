@@ -539,8 +539,8 @@ export default async function FighterPage({
             noRecordData/履歴なしは非表示。 */}
         {!noRecordData && <MethodButterfly history={history} />}
 
-        {/* X投稿カードボタン */}
-        <a href={`/tools/fighter-card?fighter=${fighter.slug}`} className="fighter-card-btn">
+        {/* X投稿カードボタン(/tools/fighter-card廃止・/dreamへ統合、2026-07-17) */}
+        <a href={`/dream?a=${fighter.slug}`} className="fighter-card-btn">
           𝕏 投稿用カード作成
         </a>
 

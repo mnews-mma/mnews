@@ -61,7 +61,7 @@ export default async function FightersPage() {
         </div>
         <div className="page-sub">
           日本MMA主要選手の戦績データ
-          <a href="/tools/fighter-card" style={{ fontSize: 13, color: "var(--accent)", marginLeft: 8 }}>
+          <a href="/dream" style={{ fontSize: 13, color: "var(--accent)", marginLeft: 8 }}>
             → X投稿用カード作成
           </a>
         </div>

@@ -2,7 +2,7 @@
 // 既存の /api/og/vs (通算戦績のみのVSカード)を拡張し、管理画面
 // (/admin/drafts タブ④)向けに「共通対戦相手テーブル・直近5戦」を追加した
 // 縦長SNS向けカードを生成する。既存 /api/og/vs 自体は他の呼び出し元
-// (/vs/[slugA]/[slugB]、/tools/fighter-card、記事下書き)がそのまま使い続ける
+// (/vs/[slugA]/[slugB]、/dream、記事下書き)がそのまま使い続ける
 // ため変更しない(このルートは完全に新規・独立)。
 //
 // データは既存の純関数(computeFighterStripStats/computeCommonOpponents)を
