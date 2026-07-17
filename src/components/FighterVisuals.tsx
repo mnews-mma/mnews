@@ -1,6 +1,6 @@
 import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { computeMethodSplit, computeFighterStripStats, LAST5_SYMBOL } from "@/lib/fighterStrip";
-import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
+import { computeCommonOpponents, computeHeadToHead, groupCommonOpponents } from "@/lib/articleGenerator";
 import { findFighterSlugByName } from "@/lib/fighters";
 import { renderWrappableName } from "@/lib/renderWrappableName";
 
@@ -24,8 +24,8 @@ function MarkCell({ result }: { result: Result | null }) {
 }
 
 // 共通対戦相手の行(選手ページ次戦カード・大会ページ両対応の共有部分)。
-// 同一相手と複数回対戦がある場合はcommons配列側で既に行分割済み(1行=1対戦)
-// のため、ここでは連番から「(2戦目)」等のラベルを付けるだけでよい。
+// 同一相手と複数回対戦がある場合は1相手=1行に集約し(groupCommonOpponents)、
+// 結果マークを時系列順(古→新)に横に複数並べる。
 // マーク仕様(W/L/D/N丸バッジ)の変更は1箇所への反映で両方に伝播する。
 function CommonOpponentRows({
   commons,
@@ -34,23 +34,28 @@ function CommonOpponentRows({
   commons: ReturnType<typeof computeCommonOpponents>;
   visibleSlugs: Set<string>;
 }) {
-  const nameCount = new Map<string, number>();
+  const grouped = groupCommonOpponents(commons);
   return (
     <>
-      {commons.map((c, i) => {
-        const seenBefore = nameCount.get(c.name) ?? 0;
-        nameCount.set(c.name, seenBefore + 1);
-        const label = seenBefore > 0 ? `${c.name}（${seenBefore + 1}戦目）` : c.name;
-        const cSlug = findFighterSlugByName(c.name, undefined, visibleSlugs);
+      {grouped.map((g) => {
+        const cSlug = findFighterSlugByName(g.name, undefined, visibleSlugs);
         return (
-          <div key={c.name + i} className="nf-common-row">
+          <div key={g.name} className="nf-common-row">
             {cSlug ? (
-              <a href={`/fighters/${cSlug}`} className="nf-common-name">{label}</a>
+              <a href={`/fighters/${cSlug}`} className="nf-common-name">{g.name}</a>
             ) : (
-              <span>{label}</span>
+              <span>{g.name}</span>
             )}
-            <MarkCell result={c.resultA} />
-            <MarkCell result={c.resultB} />
+            <span className="nf-mk-group">
+              {g.results.map((r, i) => (
+                <MarkCell key={i} result={r.resultA} />
+              ))}
+            </span>
+            <span className="nf-mk-group">
+              {g.results.map((r, i) => (
+                <MarkCell key={i} result={r.resultB} />
+              ))}
+            </span>
           </div>
         );
       })}

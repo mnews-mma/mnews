@@ -57,6 +57,29 @@ export function computeCommonOpponents(
   return results;
 }
 
+export interface GroupedCommonOpponent {
+  name: string;
+  results: { resultA: CommonOpponent["resultA"]; resultB: CommonOpponent["resultB"] }[];
+}
+
+// computeCommonOpponents()の1行=1対戦のフラットな配列を、表示用に1相手=1行へ
+// まとめる(表示レイヤーのみの変換。元のcomputeCommonOpponents自体はOGP画像・
+// 記事生成スナップショット等の既存消費先がそのままの形で使い続けるため変更しない)。
+// 同一名の行は既に時系列順(古→新)で連続して並んでいるため、出現順を保ったまま
+// name単位でresults配列にまとめるだけでよい。
+export function groupCommonOpponents(commons: CommonOpponent[]): GroupedCommonOpponent[] {
+  const order: string[] = [];
+  const map = new Map<string, GroupedCommonOpponent["results"]>();
+  for (const c of commons) {
+    if (!map.has(c.name)) {
+      map.set(c.name, []);
+      order.push(c.name);
+    }
+    map.get(c.name)!.push({ resultA: c.resultA, resultB: c.resultB });
+  }
+  return order.map((name) => ({ name, results: map.get(name)! }));
+}
+
 export interface HeadToHeadMatch {
   date: string;
   event: string;

@@ -1,5 +1,6 @@
 import styles from "@/styles/matchup.module.css";
 import { findFighterSlugByName } from "@/lib/fighters";
+import { groupCommonOpponents } from "@/lib/articleGenerator";
 import type { CommonOpponent } from "@/lib/originalArticles";
 
 // 共通対戦相手1人分の勝敗マーク。直近戦績ドット(MatchupTape.tsxのFormChips、
@@ -41,28 +42,30 @@ function CommonOpponentsHeaderRow({ leftName, rightName }: { leftName: string; r
   );
 }
 
-// 同一相手との複数対戦は commons 配列側で既に行分割済み(1行=1対戦)のため、
-// ここでは連番から「(2戦目)」等のラベルを付けるだけでよい。行は常に
-// name-res-res の順(見出しの列と揃える)。◯✕は右にまとめて表示する。
+// 同一相手と複数回対戦している場合は1相手=1行に集約し、結果ドットを時系列順
+// (古→新)に横に並べる(groupCommonOpponents)。片側だけ対戦回数が多い場合も
+// 同じ行数のドットを両側に並べ、対戦していない回はResMarkが「—」で埋める。
 function CommonOpponentRows({ commons, visibleSlugs }: { commons: CommonOpponent[]; visibleSlugs: Set<string> }) {
-  const nameCount = new Map<string, number>();
+  const grouped = groupCommonOpponents(commons);
   return (
     <>
-      {commons.map((c, i) => {
-        const seenBefore = nameCount.get(c.name) ?? 0;
-        nameCount.set(c.name, seenBefore + 1);
-        const cSlug = findFighterSlugByName(c.name, undefined, visibleSlugs);
-        const nameNode = seenBefore > 0 ? (
-          <span className={`${styles.crowName} ${styles.crowNameSub}`}>{c.name}（{seenBefore + 1}戦目）</span>
-        ) : (
-          <span className={styles.crowName}>{c.name}</span>
-        );
+      {grouped.map((g) => {
+        const cSlug = findFighterSlugByName(g.name, undefined, visibleSlugs);
+        const nameNode = <span className={styles.crowName}>{g.name}</span>;
         const nameLink = cSlug ? <a href={`/fighters/${cSlug}`}>{nameNode}</a> : nameNode;
         return (
-          <div key={c.name + i} className={styles.crowHeader}>
+          <div key={g.name} className={styles.crowHeader}>
             {nameLink}
-            <ResMark result={c.resultA} />
-            <ResMark result={c.resultB} />
+            <span className={styles.resGroup}>
+              {g.results.map((r, i) => (
+                <ResMark key={i} result={r.resultA} />
+              ))}
+            </span>
+            <span className={styles.resGroup}>
+              {g.results.map((r, i) => (
+                <ResMark key={i} result={r.resultB} />
+              ))}
+            </span>
           </div>
         );
       })}

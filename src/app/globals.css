@@ -1604,6 +1604,15 @@ footer {
 .nf-common-name:hover {
   text-decoration-color: var(--accent);
 }
+/* 同一相手との複数対戦の勝敗マークを横並びにまとめる箱(res列の中で中央寄せ)。 */
+.nf-mk-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
 /* 共通対戦相手の勝敗マーク。直近5戦ドット(.fighter-strip-last5 span)・
    直接対決バッジ(.nf-h2h-badge)と同じ13px丸バッジ意匠に統一する
    (同一カード内で「勝ち」の記号がW/L/○/●等に混在しないようにするため)。
