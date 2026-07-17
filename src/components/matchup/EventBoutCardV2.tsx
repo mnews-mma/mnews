@@ -110,13 +110,16 @@ export default function EventBoutCardV2({
       ) : (
         <div className={styles.tape}>
           {/* 未登録選手のミニマル表示も登録済みカード(MatchupTape)と同じ
-              名前描画・サイズ規則(左右同一・長い側基準)に揃える */}
+              名前描画・サイズ規則に揃える。ページ単位のnameSizeOverrideが
+              渡されている場合は必ずそれを使い、このカード単体で独自に
+              サイズを決め直さない(戦績なし簡易カードだけ他カードよりサイズが
+              大きくなるバグの原因だったため)。 */}
           <div className={`${styles.na} ${styles.cornerRed}`}>
-            <FighterNameText name={nameA} fontSize={Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+            <FighterNameText name={nameA} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
           </div>
           <div className={styles.vs}>VS</div>
           <div className={`${styles.nb} ${styles.cornerBlue}`}>
-            <FighterNameText name={nameB} fontSize={Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+            <FighterNameText name={nameB} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
           </div>
         </div>
       )}

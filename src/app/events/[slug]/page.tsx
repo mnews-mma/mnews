@@ -235,19 +235,20 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                クリック展開は廃止。上位3試合固定+折りたたみ運用はやめ、最初から
                全カードを新デザインで出す)。 */
             (() => {
-              // ページ内の全カードで選手名サイズを統一する。カードごとの
-              // fighterNameSize()の最小値(=ページ内最長名が2行に収まる最大サイズ)
-              // を全カード共通で使う(/vs・/dreamの単独カード算出は変えない)。
+              // ページ内の全カード(戦績あり・戦績なし簡易表示問わず)で選手名
+              // サイズを統一する。カードの種類によって名前描画コンポーネントが
+              // 分岐しても(MatchupTape/EventBoutCardV2の簡易フォールバック)、
+              // サイズ自体は必ずこのページ単位の値(nameSizeOverride)を使う
+              // (コンポーネント側で独自にfighterNameSize()を計算し直さない)。
+              // 戦績なしの選手も対象に含めないと、その選手が短い名前の場合に
+              // 他カードより大きく表示されてしまう(再発したバグ)。
               let pageNameSize = 20;
               const resolvedBouts = orderedBouts.map((b) => {
                 const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
                 const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
                 const entryA = slugA ? (records[slugA] ?? null) : null;
                 const entryB = slugB ? (records[slugB] ?? null) : null;
-                const bothRegistered = !!entryA && !!entryB && !entryA.noRecordData && !entryB.noRecordData;
-                if (bothRegistered) {
-                  pageNameSize = Math.min(pageNameSize, fighterNameSize(b.fighterA), fighterNameSize(b.fighterB));
-                }
+                pageNameSize = Math.min(pageNameSize, fighterNameSize(b.fighterA), fighterNameSize(b.fighterB));
                 return { b, slugA, slugB, entryA, entryB };
               });
               return (
