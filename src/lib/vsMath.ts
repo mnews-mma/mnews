@@ -2,19 +2,34 @@
 // Web(MatchupTape等のCSS)とOGP(Satori)の両方から参照する単一ソース。
 // レイアウト計算はすべて決定的(JS実行時の計測に依存しない)であること。
 
-// 選手名の文字数(サロゲート考慮のcode point数、空白除く)からフォントサイズを
-// 決める(spec §4.2)。CSSの自動縮小(clamp/vw)はSatori非対応のため使わない。
-export function fighterNameSize(name: string): number {
-  const len = [...name.replace(/\s/g, "")].length;
-  if (len <= 7) return 20;
-  if (len <= 11) return 17;
-  return 15;
-}
+// 選手名フォントサイズの決定(spec §4.2)。改行は「・」直後とスペースのみ許可
+// (renderWrappableNameのnowrapトークン化と対)という前提で、名前を2行以内に
+// 分割したときに最も短くできる「最大行長」(code point数)を求め、その行が
+// 最小想定カラム幅(モバイル360px時の名前カラム・勝敗マーク併記時≒105px)に
+// 収まるサイズを返す。左右ペアでは呼び出し側がMath.minを取ることで
+// 「長い側基準で両方縮小」になる。CSSの自動縮小(clamp/vw)はSatori非対応の
+// ため使わず、決定的計算で揃える。
+const NAME_LINE_BUDGET_PX = 105;
+const NAME_SIZE_MAX = 20;
+const NAME_SIZE_MIN = 11;
 
-// 「・」の直後で改行できるようゼロ幅スペースを挿む(spec §4.3)。Web側は<wbr>を
-// 使えるが、文字列としても同じ挿入結果を返せるようここに一本化する。
-export function insertNameBreaks(name: string): string {
-  return name.replaceAll("・", "・​");
+export function fighterNameSize(name: string): number {
+  // 折り返し可能な単位: スペース区切り+「・」の直後(・は前の単位末尾に残す)
+  const units = name
+    .split(/\s+/)
+    .filter(Boolean)
+    .flatMap((w) => w.split(/(?<=・)/));
+  const lens = units.map((u) => [...u].length);
+  const total = lens.reduce((a, b) => a + b, 0);
+  if (total === 0) return NAME_SIZE_MAX;
+  // 2行以内に分割する全パターン(分割なし含む)のうち、最大行長が最小のもの
+  let maxLine = total;
+  let left = 0;
+  for (let i = 0; i < lens.length - 1; i++) {
+    left += lens[i];
+    maxLine = Math.min(maxLine, Math.max(left, total - left));
+  }
+  return Math.min(NAME_SIZE_MAX, Math.max(NAME_SIZE_MIN, Math.floor(NAME_LINE_BUDGET_PX / maxLine)));
 }
 
 export interface TugShare {

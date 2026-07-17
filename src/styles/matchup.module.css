@@ -236,13 +236,14 @@
   flex-direction: row-reverse;
 }
 
-/* カタカナ・中黒名の折り返し制御。overflow-wrap:anywhereは任意の文字間で
-   折れてしまい、小書き仮名(ョ等)や長音記号が行頭に来る不自然な折り返しを
-   起こす。word-break:normal + line-break:strictで、中黒(・)やスペース等の
-   自然な区切りでのみ折り返す(禁則処理も効く)。フォントサイズ自体は
-   fighterNameSize()(spec §4.2、文字数段階20/17/15px)がJS側で決定的に
-   決める値をインラインstyleで渡す(CSSのclamp/vwはSatori非対応のため
-   Web側もこの決定的関数に揃える)。最大2行はline-clampでハードリミット。 */
+/* カタカナ・中黒名の折り返し制御。改行位置はrenderWrappableName(トークンを
+   nowrapスパン化し「・」直後・スペースのみで折る共通実装)側で決める。
+   overflow-wrap:anywhereは、区切りの無い超長尺トークン(nowrap化されない
+   フォールバック)がカラム幅を超えた場合の非常弁としてのみ効く。
+   フォントサイズはfighterNameSize()(spec §4.2、2行分割時の最大行長ベース)が
+   JS側で決定的に決める値をインラインstyleで渡す(CSSのclamp/vwはSatori
+   非対応のためWeb側もこの決定的関数に揃える)。最大2行はline-clampで
+   ハードリミット。 */
 .fighterName {
   font-weight: 900;
   line-height: 1.25;
