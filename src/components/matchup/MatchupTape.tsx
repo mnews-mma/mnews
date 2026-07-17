@@ -25,10 +25,9 @@ export function FighterNameText({ name, fontSize }: { name: string; fontSize: nu
   );
 }
 
-// 戦績(勝率)行の数値表示。「勝率」算出不能(未勝負)の場合は記録のみ、
-// 記録自体が完全に空欄(データなし)の呼び出しは想定しない(呼び出し側でnoRecordData分岐済み)。
-function recordDisplay(record: string, winRate: number | null): string {
-  return winRate === null ? record : `${record}（勝率${winRate}%）`;
+// 勝率行の数値表示。算出不能(未勝負)の場合は「—」。
+function winRateDisplay(winRate: number | null): string {
+  return winRate === null ? "—" : `${winRate}%`;
 }
 
 function FormChips({ last5, side }: { last5: Result[]; side: "red" | "blue" }) {
@@ -134,13 +133,12 @@ export default function MatchupTape({
       <div className={styles.vs}>VS</div>
 
       <div className={styles.bar1}>
-        <TugBar
-          label="戦績"
-          displayA={recordDisplay(left.record, left.winRate)}
-          displayB={recordDisplay(right.record, right.winRate)}
-        />
+        <TugBar label="戦績" displayA={left.record} displayB={right.record} />
       </div>
       <div className={styles.bar2}>
+        <TugBar label="勝率" displayA={winRateDisplay(left.winRate)} displayB={winRateDisplay(right.winRate)} />
+      </div>
+      <div className={styles.bar3}>
         <TugBar
           label="フィニッシュ率"
           displayA={left.finishRate === null ? "—" : `${left.finishRate}%`}

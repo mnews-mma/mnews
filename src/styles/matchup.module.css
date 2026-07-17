@@ -156,6 +156,7 @@
     "na  vs nb"
     "bar1 bar1 bar1"
     "bar2 bar2 bar2"
+    "bar3 bar3 bar3"
     "ma  .  mb"
     "fa  .  fb";
   column-gap: 12px;
@@ -183,6 +184,10 @@
 }
 .bar2 {
   grid-area: bar2;
+  min-width: 0;
+}
+.bar3 {
+  grid-area: bar3;
   min-width: 0;
 }
 .ma {
