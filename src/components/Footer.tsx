@@ -37,15 +37,15 @@ export default function Footer() {
           <span>@mnews_mma をフォロー</span>
           <ArrowRightIcon />
         </a>
-        <p className="footer-x-caption">試合結果・最新ニュースをお届け</p>
+        <p className="footer-x-caption">MMAニュースを毎日お届け</p>
       </div>
       <div>
         <div className="footer-col-title">コンテンツ</div>
         <div className="footer-links">
-          <a href="/fighters">選手戦績一覧</a>
           <a href="/rankings">AI RIZINランキング</a>
-          <a href="/ranking/undefeated">無敗の日本人選手一覧</a>
+          <a href="/fighters">選手戦績一覧</a>
           <a href="/dream">夢のカード</a>
+          <a href="/ranking/undefeated">無敗の日本人選手一覧</a>
         </div>
       </div>
       <div>
