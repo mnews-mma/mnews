@@ -321,25 +321,7 @@
   white-space: nowrap;
 }
 
-/* バー本体+中央50%ラベルを1つの箱にまとめ、ラベル分の高さをpadding-topで
-   確保する(絶対配置の要素が箱の外(=グリッドの前の行)へはみ出さないように
-   するため。負のtopで飛び出す実装は前行の名前と重なるバグを起こした)。 */
-.tugBarWrap {
-  position: relative;
-  padding-top: 11px;
-}
-
-.tugMidLabel {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 9px;
-  font-family: monospace;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
+/* 中央50%地点は数値ラベルを置かず、バー内の細い基準線(tugMidLine)のみで示す */
 .tugBar {
   position: relative;
   display: flex;

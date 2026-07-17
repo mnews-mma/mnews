@@ -27,19 +27,16 @@ export default function TugBar({
         <span className={`${styles.tugValB} ${styles.num}`}>{displayB}</span>
       </div>
       {hasBoth ? (
-        <div className={styles.tugBarWrap}>
-          <span className={styles.tugMidLabel}>50%</span>
-          <div className={styles.tugBar}>
-            {share!.neutral ? (
-              <div className={styles.tugNeutral} />
-            ) : (
-              <>
-                <div className={styles.tugSegA} style={{ width: `${share!.shareA * 100}%` }} />
-                <div className={styles.tugSegB} style={{ width: `${share!.shareB * 100}%` }} />
-                <div className={styles.tugMidLine} />
-              </>
-            )}
-          </div>
+        <div className={styles.tugBar}>
+          {share!.neutral ? (
+            <div className={styles.tugNeutral} />
+          ) : (
+            <>
+              <div className={styles.tugSegA} style={{ width: `${share!.shareA * 100}%` }} />
+              <div className={styles.tugSegB} style={{ width: `${share!.shareB * 100}%` }} />
+              <div className={styles.tugMidLine} />
+            </>
+          )}
         </div>
       ) : (
         <div className={styles.tugBarEmpty} />
