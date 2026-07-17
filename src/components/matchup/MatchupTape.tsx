@@ -11,11 +11,12 @@ const FORM_CLASS: Record<Result, string> = {
   nc: styles.formD,
 };
 
-// 選手名の表示用ノード。文字数段階(spec §4.2)でフォントサイズを決め、
+// 選手名の表示用ノード。左右で同じfontSizeを受け取り、カード内は常に
+// 左右同一サイズにする(長い方の名前が収まるサイズに両方揃える)。
 // 「・」直後で改行できるようゼロ幅スペースを挿む(spec §4.3)。
-function FighterNameText({ name }: { name: string }) {
+function FighterNameText({ name, fontSize }: { name: string; fontSize: number }) {
   return (
-    <h3 className={styles.fighterName} style={{ fontSize: `${fighterNameSize(name)}px` }}>
+    <h3 className={styles.fighterName} style={{ fontSize: `${fontSize}px` }}>
       {insertNameBreaks(name)}
     </h3>
   );
@@ -78,6 +79,8 @@ export default function MatchupTape({
   compact?: boolean;
 }) {
   const hasMethodCounts = !!left.methodCounts || !!right.methodCounts;
+  // 左右で別々のサイズにならないよう、長い方の名前が収まるサイズに揃える。
+  const sharedNameSize = Math.min(fighterNameSize(left.name), fighterNameSize(right.name));
 
   return (
     <div className={`${styles.tape}${compact ? ` ${styles.tapeCompact}` : ""}`}>
@@ -94,10 +97,10 @@ export default function MatchupTape({
           )}
           {left.slug ? (
             <a href={`/fighters/${left.slug}`}>
-              <FighterNameText name={left.name} />
+              <FighterNameText name={left.name} fontSize={sharedNameSize} />
             </a>
           ) : (
-            <FighterNameText name={left.name} />
+            <FighterNameText name={left.name} fontSize={sharedNameSize} />
           )}
         </div>
       </div>
@@ -113,10 +116,10 @@ export default function MatchupTape({
           )}
           {right.slug ? (
             <a href={`/fighters/${right.slug}`}>
-              <FighterNameText name={right.name} />
+              <FighterNameText name={right.name} fontSize={sharedNameSize} />
             </a>
           ) : (
-            <FighterNameText name={right.name} />
+            <FighterNameText name={right.name} fontSize={sharedNameSize} />
           )}
         </div>
       </div>
