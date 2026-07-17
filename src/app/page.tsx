@@ -3,14 +3,11 @@ import Footer from "@/components/Footer";
 import UnifiedFeed from "@/components/UnifiedFeed";
 import EventRail from "@/components/EventRail";
 import SocialSection from "@/components/SocialSection";
-import EventBoutCardV2 from "@/components/matchup/EventBoutCardV2";
-import matchupStyles from "@/styles/matchup.module.css";
-import { isNewMatchupUiEnabledByEnv } from "@/lib/matchupUi";
 import { ARTICLES, Article } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
-import { FIGHTERS, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
+import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
-import { resolveFightersCached, fetchFighterRecords, FighterRecordsFile } from "@/lib/fighterRecordsCache";
+import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import {
@@ -98,7 +95,6 @@ export default async function HomePage() {
     bantamweightRankings,
     featherweightRankings,
     lightweightRankings,
-    fighterRecords,
   ] = await Promise.all([
     fetchAllArticles().catch(() => null),
     resolveFightersCached(homepageFighters),
@@ -110,7 +106,6 @@ export default async function HomePage() {
     fetchDivisionRankings("bantamweight").catch(() => null),
     fetchDivisionRankings("featherweight").catch(() => null),
     fetchDivisionRankings("lightweight").catch(() => null),
-    fetchFighterRecords().catch((): FighterRecordsFile => ({})),
   ]);
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
   // ランキングページ本体と同じ共有セレクタ経由で{champion, contenders}を取り出す
@@ -151,27 +146,6 @@ export default async function HomePage() {
   }
 
   const upcomingEvents = getUpcomingEvents();
-  const isV2 = isNewMatchupUiEnabledByEnv();
-
-  // ホーム「注目の対戦カード」: 直近の開催予定大会(対戦カードが決まっているもの)の
-  // 上位3試合を新デザインで表示する。並び順はevents/[slug]と同じ(エキシビ/特別
-  // マッチを先頭、以降は主催掲載順)。対戦カード未定の大会(bouts.length===0)は
-  // スキップし、実際にカードが決まっている直近大会を採用する。
-  const featuredEvent = upcomingEvents.find((e) => e.bouts.length > 0) ?? null;
-  const featuredOrderedBouts = featuredEvent
-    ? [...featuredEvent.bouts.filter((b) => b.isExhibition), ...featuredEvent.bouts.filter((b) => !b.isExhibition)]
-    : [];
-  const featuredBouts = featuredOrderedBouts.slice(0, 3).map((b) => {
-    const slugA = findFighterSlugByName(b.fighterA, undefined, visibleFighterSlugs);
-    const slugB = findFighterSlugByName(b.fighterB, undefined, visibleFighterSlugs);
-    return {
-      bout: b,
-      slugA,
-      slugB,
-      entryA: slugA ? (fighterRecords[slugA] ?? null) : null,
-      entryB: slugB ? (fighterRecords[slugB] ?? null) : null,
-    };
-  });
 
   // 統一フィード: 当日含む直近3日分(JST暦日)を表示。ただし3日分が8件未満なら
   // 直近8件まで遡って表示する(下限保証)。並び順・時刻は publishedAt 基準。
@@ -276,56 +250,6 @@ export default async function HomePage() {
           </aside>
         )}
       </div>
-
-      {/* ホーム「注目の対戦カード」: 直近大会のメイン3試合を新デザインで表示
-          (v2のみ・旧デザイン時はこのブロック自体を出さない=回帰なし)。 */}
-      {isV2 && featuredEvent && featuredBouts.length > 0 && (
-        <div style={{ padding: "0 24px", marginTop: 24 }}>
-          <div className="event-section-label" style={{ marginBottom: 16 }}>
-            注目の対戦カード
-          </div>
-          <div className={matchupStyles.mv2}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
-              {featuredBouts.map(({ bout, slugA, slugB, entryA, entryB }, i) => (
-                <EventBoutCardV2
-                  key={i}
-                  nameA={bout.fighterA}
-                  nameB={bout.fighterB}
-                  slugA={slugA}
-                  slugB={slugB}
-                  entryA={entryA}
-                  entryB={entryB}
-                  visibleSlugs={visibleFighterSlugs}
-                  weightClass={bout.weightClass}
-                  isTitleMatch={bout.isTitleMatch}
-                  cancelled={bout.cancelled}
-                  note={bout.note}
-                  result={bout.result}
-                  isEventLive={featuredEvent.status === "live"}
-                />
-              ))}
-            </div>
-            <a
-              href={`/events/${featuredEvent.slug}`}
-              style={{
-                display: "block",
-                marginTop: 13,
-                padding: "13px 15px",
-                textAlign: "center",
-                border: "1px solid var(--line)",
-                borderRadius: 14,
-                background: "#fff",
-                fontSize: 13,
-                fontWeight: 800,
-                color: "var(--ink)",
-                textDecoration: "none",
-              }}
-            >
-              {featuredEvent.eventName} の対戦カードを見る →
-            </a>
-          </div>
-        </div>
-      )}
 
       <div className="home-sections">
         {/* 大会結果まとめ（開催予定の大会と同じパネル構造） */}
