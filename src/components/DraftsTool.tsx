@@ -139,16 +139,18 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
       eventName: eventName.trim() || undefined,
       weightClass: weightClass || undefined,
     });
-    // 大会名/階級ラベルを画像URLにも反映する(OgCardTool.tsxと同じ方式)。
-    // 以前はテキスト本文にだけ反映され、画像プレビューには渡っておらず
-    // MATCH UPのみの版になっていた(パラメータ渡し漏れ)。
+    // 大会名/階級ラベル(自由入力)を画像に反映するには、公開・非認証の
+    // /api/og/vs ではなく管理画面限定の/api/og/vs-compareを使う(こちらは
+    // クエリの任意文字列を受け付けない設計にした。第三者が実在選手の公式風
+    // 偽カード画像を作れる穴になるため)。プレビュー画像も従来と近い横長
+    // 16:9で見えるようratio=16:9を指定する。
     const imgQuery = new URLSearchParams();
     if (eventName.trim()) imgQuery.set("ev", eventName.trim());
     if (weightClass) imgQuery.set("wc", weightClass);
-    const imgQs = imgQuery.toString();
+    imgQuery.set("ratio", "16:9");
     setDraft({
       text: post.text,
-      imageUrl: ogImagePath(`/api/og/vs/${a.slug}/${b.slug}${imgQs ? `?${imgQs}` : ""}`),
+      imageUrl: ogImagePath(`/api/og/vs-compare/${a.slug}/${b.slug}?${imgQuery.toString()}`),
     });
   }
 
