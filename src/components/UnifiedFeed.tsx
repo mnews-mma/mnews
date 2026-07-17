@@ -90,12 +90,17 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
     window.history.replaceState(null, "", url);
   }
 
-  const filtered = articles.filter((a) => {
-    if (filter === "all") return true;
-    if (filter === "original") return !!a.isOriginal;
+  function matchesFilter(a: FeedArticle, f: Filter): boolean {
+    if (f === "all") return true;
+    if (f === "original") return !!a.isOriginal;
     // official/mediaタブにはオリジナル記事を混ぜない(専用のオリジナルタブでのみ表示)
-    return !a.isOriginal && a.kind === filter;
-  });
+    return !a.isOriginal && a.kind === f;
+  }
+
+  const filtered = articles.filter((a) => matchesFilter(a, filter));
+  // 該当記事が本当に0件のタブ(例: オリジナル記事が1本も無い状態)だけ非表示にする。
+  // 「すべて」は常に出す。
+  const visibleChips = CHIPS.filter((c) => c.key === "all" || articles.some((a) => matchesFilter(a, c.key)));
   const todayKey = jstDayKey(new Date().toISOString());
 
   // 日付でグルーピング（detected_at降順は入力側で確定済み）
@@ -111,7 +116,7 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
     <div className="uf">
       <div className="uf-section-label">新着ニュース</div>
       <div className="uf-chips" role="tablist" aria-label="フィード絞り込み">
-        {CHIPS.map((c) => (
+        {visibleChips.map((c) => (
           <button
             key={c.key}
             role="tab"

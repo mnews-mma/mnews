@@ -169,17 +169,26 @@ export default async function HomePage() {
     ? featherweightRankings.updatedAt.slice(0, 10) === todayJstDateStr
     : false;
 
+  // 直近3日/上位8件の「鮮度ウィンドウ」はRSS由来のニュース記事にのみ適用する。
+  // オリジナル記事(数字で見る対戦カード等)は鮮度で消える性質のコンテンツでは
+  // ないため、公開日に関わらず常にフィードへ含める(でないと「オリジナル」
+  // フィルタタブが記事があるのに0件表示になる回帰が起きる)。
   const cutoffMs = startOfTodayJstMs - 2 * 86400_000; // 当日含む直近3日
-  const within3d = feedAll.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
+  const nonOriginalFeed = feedAll.filter((a) => !a.isOriginal);
+  const originalFeedOnly = feedAll.filter((a) => a.isOriginal);
+  const within3d = nonOriginalFeed.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
+  const windowedNonOriginal = within3d.length >= 8 ? within3d : nonOriginalFeed.slice(0, 8);
   // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを
   // 突合。クライアントにはマッチング結果(name/slug)のみを渡す(ロジック自体は
   // 送らない)。visibleFighterSlugsで戦績データが空(noRecordData)の選手を除外し、
   // 中身の無い選手ページへのタグ化を防ぐ(選手ページ・対戦カードと同じ「表示可能」
   // 判定基準=getVisibleFighterSlugsに揃える)。
-  const feedArticles = (within3d.length >= 8 ? within3d : feedAll.slice(0, 8)).map((a) => ({
-    ...a,
-    relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs),
-  }));
+  const feedArticles = [...windowedNonOriginal, ...originalFeedOnly]
+    .sort((x, y) => new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime())
+    .map((a) => ({
+      ...a,
+      relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs),
+    }));
 
   // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて
   // EventRail側でさらに自動調整)。所属団体のラベル/色だけ先に確定させて渡す。
@@ -229,14 +238,6 @@ export default async function HomePage() {
 
       {liveBandInfo && <LiveBand info={liveBandInfo} rankingsUpdatedToday={rankingsUpdatedToday} />}
 
-      {/* ヒーロー(データ資産ブロック): ライブ帯の直下・ニュースフィードの上に配置
-          (mnews-homepage-instructions.md §2)。AI RIZINランキングカード+選手DB
-          検索ボックスの2枚構成。 */}
-      <div className="home-hero">
-        <MnewsRatingSection divisions={mnewsRatingDivisions} />
-        <HeroFighterSearch />
-      </div>
-
       <div className="home-wrap">
       <div className="home-main">
         <div className="home-feed">
@@ -249,6 +250,14 @@ export default async function HomePage() {
             <EventRail events={railEvents} />
           </aside>
         )}
+      </div>
+
+      {/* ヒーロー(データ資産ブロック): ニュースフィードの直下に配置
+          (mnews-homepage-instructions.md §2見直し)。AI RIZINランキングカード+
+          選手DB検索ボックスの2枚構成。 */}
+      <div className="home-hero">
+        <MnewsRatingSection divisions={mnewsRatingDivisions} />
+        <HeroFighterSearch />
       </div>
 
       <div className="home-sections">
