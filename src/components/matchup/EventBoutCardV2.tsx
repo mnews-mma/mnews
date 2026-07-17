@@ -73,6 +73,7 @@ export default function EventBoutCardV2({
   const commons = bothRegistered ? computeCommonOpponents(entryA!, entryB!).slice(0, 8) : [];
   const isPendingLive = !cancelled && !result && !!isEventLive;
 
+  // 情報価値のあるバッジ(中止・変更/TITLE/再戦)のみ出す。「注目カード」は廃止。
   let tag: { label: string; cls: string } | null = null;
   if (cancelled) {
     tag = { label: "中止・変更", cls: styles.tagMain };
@@ -80,8 +81,6 @@ export default function EventBoutCardV2({
     tag = { label: "TITLE", cls: styles.tagTitle };
   } else if (headToHead.length > 0) {
     tag = { label: "再戦", cls: styles.tagRe };
-  } else {
-    tag = { label: "注目カード", cls: styles.tagMain };
   }
 
   return (

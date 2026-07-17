@@ -136,8 +136,6 @@ export default function MatchupTape({
       <div className={styles.bar1}>
         <TugBar
           label="戦績"
-          valueA={left.winRate}
-          valueB={right.winRate}
           displayA={recordDisplay(left.record, left.winRate)}
           displayB={recordDisplay(right.record, right.winRate)}
         />
@@ -145,8 +143,6 @@ export default function MatchupTape({
       <div className={styles.bar2}>
         <TugBar
           label="フィニッシュ率"
-          valueA={left.finishRate}
-          valueB={right.finishRate}
           displayA={left.finishRate === null ? "—" : `${left.finishRate}%`}
           displayB={right.finishRate === null ? "—" : `${right.finishRate}%`}
         />

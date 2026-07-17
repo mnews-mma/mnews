@@ -280,18 +280,12 @@
   margin: 0 2px;
 }
 
-/* 綱引きバー(spec §5)。数値行(絶対値)+バー(相対優劣)の1セット。 */
+/* 戦績・勝率・フィニッシュ率の数値行(綱引きバーは廃止。数値+ラベルのみ)。 */
 .tugRow {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 3px 0;
-}
-
-.tugValues {
   display: flex;
   align-items: baseline;
   gap: 8px;
+  padding: 2px 0;
 }
 
 .tugValA,
@@ -320,50 +314,6 @@
   color: var(--muted);
   white-space: nowrap;
 }
-
-/* 中央50%地点は数値ラベルを置かず、バー内の細い基準線(tugMidLine)のみで示す */
-.tugBar {
-  position: relative;
-  display: flex;
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--line-soft);
-}
-
-.tugSegA {
-  background: var(--red);
-  border-radius: 4px 0 0 4px;
-}
-
-.tugSegB {
-  background: var(--blue);
-  border-radius: 0 4px 4px 0;
-  margin-left: 3px;
-}
-
-.tugNeutral {
-  width: 100%;
-  background: var(--dim);
-}
-
-.tugBarEmpty {
-  height: 8px;
-  border-radius: 4px;
-  background: var(--line-soft);
-}
-
-.tugMidLine {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 100%;
-  background: var(--muted);
-  opacity: 0.45;
-}
-
 .form {
   display: flex;
   gap: 3px;
@@ -419,8 +369,6 @@
   height: 100%;
   display: flex;
   align-items: center;
-  border-left: 1px solid var(--line-soft);
-  border-right: 1px solid var(--line-soft);
 }
 
 .h2h {
