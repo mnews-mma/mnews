@@ -280,11 +280,16 @@
   margin: 0 2px;
 }
 
-/* 戦績・勝率・フィニッシュ率の数値行(綱引きバーは廃止。数値+ラベルのみ)。 */
+/* 戦績・勝率・フィニッシュ率の数値行(綱引きバーは廃止。数値+ラベルのみ)。
+   左=赤値/中央=ラベル/右=青値の3カラムグリッドで統一し、値の文字数に
+   関わらずラベルが常に中央・右値が常に右端に来るようにする(左右反転しても
+   対称に見えるのが合格基準。以前のflex実装はラベルが左値のすぐ右に
+   張り付き、値の長さで見た目の対称性が崩れていた)。 */
 .tugRow {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: baseline;
-  gap: 8px;
+  column-gap: 8px;
   padding: 2px 0;
 }
 
@@ -299,16 +304,17 @@
 .tugValA {
   color: var(--red-ink);
   text-align: left;
+  justify-self: start;
 }
 
 .tugValB {
   color: var(--blue-ink);
   text-align: right;
-  margin-left: auto;
+  justify-self: end;
 }
 
 .tugLabel {
-  flex: none;
+  justify-self: center;
   font-size: 10.5px;
   font-weight: 700;
   color: var(--muted);
