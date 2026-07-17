@@ -33,12 +33,24 @@
 }
 
 .card {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 10px 26px -20px rgba(0, 0, 0, 0.35);
   min-width: 0;
+}
+
+/* コーナーストリップ(spec §3-1): 高さ4px、左半分red / 右半分blue */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--red) 0%, var(--red) 50%, var(--blue) 50%, var(--blue) 100%);
 }
 
 .cardTitle {
@@ -120,24 +132,32 @@
   }
 }
 
-/* タレント・オブ・ザ・テープ: grid-template-areasで行(通称/名前/記録/戦績/
+/* タレント・オブ・ザ・テープ: grid-template-areasで行(通称/名前/バー/内訳/
    戦績ドット)ごとに左右を同じ行に固定する。左右をそれぞれflex columnで
    縦積みすると、通称・名前の行数差で下の行がズレる(構造的にズレる設計の
    ため目視調整では直らない)。通称と名前を別々の行に分離しているのが重要:
    両方を1つのブロックに内包すると「通称1行+名前1行」と「通称1行+名前2行」
-   のような組み合わせでブロック合計の高さが左右で変わり、次の行(記録)が
-   段違いになる(通称行は通称同士・名前行は名前同士で高さを共有させる必要が
-   ある)。grid化により各行は「その行で左右どちらか高い方」に揃うため、
-   次の行は必ず両側とも同じ基準線から始まる。 */
+   のような組み合わせでブロック合計の高さが左右で変わり、次の行がズレる
+   (通称行は通称同士・名前行は名前同士で高さを共有させる必要がある)。
+   grid化により各行は「その行で左右どちらか高い方」に揃うため、次の行は
+   必ず両側とも同じ基準線から始まる。戦績・勝率・フィニッシュ率は綱引きバー
+   (spec §5)で全幅の行(bar1/bar2)として描き、絶対値の記録数字はバー自身の
+   数値行に統合する(左右独立列は持たない)。 */
 .tape {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  /* 「vs」areaはnka/na行のみで使う(=VSバッジは名前帯のみに固定、spec §4.1)。
+     grid-template-areasは各area名が単一の矩形を形成する必要があり、
+     bar1行を挟んでvsを再度使うと非矩形になり宣言全体が無効化される
+     (実際に無効化され、全行が同一位置に重なるレイアウト崩壊を起こした)。
+     bar/内訳/戦績ドットの中央列は「.」(未使用セル)にする。 */
   grid-template-areas:
     "nka vs nkb"
     "na  vs nb"
-    "ra  vs rb"
-    "sa  vs sb"
-    "fa  vs fb";
+    "bar1 bar1 bar1"
+    "bar2 bar2 bar2"
+    "ma  .  mb"
+    "fa  .  fb";
   column-gap: 12px;
   row-gap: 5px;
   padding: 16px 14px;
@@ -156,13 +176,24 @@
   grid-area: na;
   min-width: 0;
 }
-.ra {
-  grid-area: ra;
+.bar1 {
+  grid-area: bar1;
+  min-width: 0;
+  margin-top: 2px;
+}
+.bar2 {
+  grid-area: bar2;
   min-width: 0;
 }
-.sa {
-  grid-area: sa;
+.ma {
+  grid-area: ma;
   min-width: 0;
+}
+.mb {
+  grid-area: mb;
+  min-width: 0;
+  justify-self: end;
+  text-align: right;
 }
 .fa {
   grid-area: fa;
@@ -176,18 +207,6 @@
 }
 .nb {
   grid-area: nb;
-  min-width: 0;
-  justify-self: end;
-  text-align: right;
-}
-.rb {
-  grid-area: rb;
-  min-width: 0;
-  justify-self: end;
-  text-align: right;
-}
-.sb {
-  grid-area: sb;
   min-width: 0;
   justify-self: end;
   text-align: right;
@@ -220,19 +239,24 @@
 /* カタカナ・中黒名の折り返し制御。overflow-wrap:anywhereは任意の文字間で
    折れてしまい、小書き仮名(ョ等)や長音記号が行頭に来る不自然な折り返しを
    起こす。word-break:normal + line-break:strictで、中黒(・)やスペース等の
-   自然な区切りでのみ折り返す(禁則処理も効く)。長すぎて中黒が無い/収まらない
-   極端なケースへの保険としてclamp()でフォントサイズを可変にする
-   (320px幅でも破綻しない下限16pxを設定)。 */
+   自然な区切りでのみ折り返す(禁則処理も効く)。フォントサイズ自体は
+   fighterNameSize()(spec §4.2、文字数段階20/17/15px)がJS側で決定的に
+   決める値をインラインstyleで渡す(CSSのclamp/vwはSatori非対応のため
+   Web側もこの決定的関数に揃える)。最大2行はline-clampでハードリミット。 */
 .fighterName {
   font-weight: 900;
-  font-size: clamp(16px, 5vw, 20px);
-  line-height: 1.12;
+  line-height: 1.25;
   letter-spacing: 0.01em;
   color: var(--ink);
   word-break: normal;
   line-break: strict;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .cornerRed .fighterName {
@@ -241,39 +265,6 @@
 
 .cornerBlue .fighterName {
   color: var(--blue-ink);
-}
-
-.recordWl {
-  font-weight: 900;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-}
-
-.cornerRed .recordWl {
-  color: var(--red-ink);
-}
-
-.cornerBlue .recordWl {
-  color: var(--blue-ink);
-}
-
-.stats {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.stats li {
-  font-size: 11.5px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.stats li b {
-  color: var(--ink);
-  font-weight: 800;
-  margin-left: 3px;
 }
 
 .statsBreak {
@@ -286,6 +277,108 @@
   color: var(--ink);
   font-weight: 700;
   margin: 0 2px;
+}
+
+/* 綱引きバー(spec §5)。数値行(絶対値)+バー(相対優劣)の1セット。 */
+.tugRow {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 3px 0;
+}
+
+.tugValues {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.tugValA,
+.tugValB {
+  font-weight: 800;
+  font-size: 14px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.tugValA {
+  color: var(--red-ink);
+  text-align: left;
+}
+
+.tugValB {
+  color: var(--blue-ink);
+  text-align: right;
+  margin-left: auto;
+}
+
+.tugLabel {
+  flex: none;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* バー本体+中央50%ラベルを1つの箱にまとめ、ラベル分の高さをpadding-topで
+   確保する(絶対配置の要素が箱の外(=グリッドの前の行)へはみ出さないように
+   するため。負のtopで飛び出す実装は前行の名前と重なるバグを起こした)。 */
+.tugBarWrap {
+  position: relative;
+  padding-top: 11px;
+}
+
+.tugMidLabel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-family: monospace;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.tugBar {
+  position: relative;
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--line-soft);
+}
+
+.tugSegA {
+  background: var(--red);
+  border-radius: 4px 0 0 4px;
+}
+
+.tugSegB {
+  background: var(--blue);
+  border-radius: 0 4px 4px 0;
+  margin-left: 3px;
+}
+
+.tugNeutral {
+  width: 100%;
+  background: var(--dim);
+}
+
+.tugBarEmpty {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--line-soft);
+}
+
+.tugMidLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: var(--muted);
+  opacity: 0.45;
 }
 
 .form {
