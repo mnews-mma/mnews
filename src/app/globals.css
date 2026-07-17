@@ -769,6 +769,26 @@ footer {
   outline: none;
   border-color: var(--accent);
 }
+/* /fightersヘッダーの/dream導線ボタン。検索ボックス・フィルタチップと同じ
+   トーン(border + 控えめ背景 + 角丸2px)に揃える */
+.dream-cta {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  background: var(--s1);
+  color: var(--text);
+  font-family: var(--os);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.dream-cta:hover {
+  background: var(--s2);
+  border-color: var(--accent);
+}
 .fighter-card {
   background: var(--s1);
   padding: 20px 24px;
