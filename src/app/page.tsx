@@ -169,15 +169,22 @@ export default async function HomePage() {
     ? featherweightRankings.updatedAt.slice(0, 10) === todayJstDateStr
     : false;
 
-  // 直近3日/上位8件の「鮮度ウィンドウ」はRSS由来のニュース記事にのみ適用する。
+  // 直近48時間/最大15件の「鮮度ウィンドウ」はRSS由来のニュース記事にのみ適用する。
   // オリジナル記事(数字で見る対戦カード等)は鮮度で消える性質のコンテンツでは
   // ないため、公開日に関わらず常にフィードへ含める(でないと「オリジナル」
-  // フィルタタブが記事があるのに0件表示になる回帰が起きる)。
-  const cutoffMs = startOfTodayJstMs - 2 * 86400_000; // 当日含む直近3日
+  // フィルタタブが記事があるのに0件表示になる回帰が起きる)。ウィンドウ超過分は
+  // トップには出さず/archive(ニュース一覧)側でのみ表示する。閑散期対策として
+  // 48時間以内の件数がFEED_MIN_FALLBACK未満の場合は直近FEED_MIN_FALLBACK件を
+  // 表示する(0〜数件だけの寂しいトップにしない)。
+  const FEED_WINDOW_HOURS = 48;
+  const FEED_MAX_ITEMS = 15;
+  const FEED_MIN_FALLBACK = 5;
+  const cutoffMs = Date.now() - FEED_WINDOW_HOURS * 3600_000;
   const nonOriginalFeed = feedAll.filter((a) => !a.isOriginal);
   const originalFeedOnly = feedAll.filter((a) => a.isOriginal);
-  const within3d = nonOriginalFeed.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
-  const windowedNonOriginal = within3d.length >= 8 ? within3d : nonOriginalFeed.slice(0, 8);
+  const within48h = nonOriginalFeed.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
+  const windowedNonOriginal =
+    within48h.length >= FEED_MIN_FALLBACK ? within48h.slice(0, FEED_MAX_ITEMS) : nonOriginalFeed.slice(0, FEED_MIN_FALLBACK);
   // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを
   // 突合。クライアントにはマッチング結果(name/slug)のみを渡す(ロジック自体は
   // 送らない)。visibleFighterSlugsで戦績データが空(noRecordData)の選手を除外し、

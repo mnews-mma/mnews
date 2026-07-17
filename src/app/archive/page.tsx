@@ -11,7 +11,7 @@ import type { FeedArticle } from "@/lib/newsClassify";
 export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
-  title: "過去のニュース | Mニュース",
+  title: "ニュース一覧 | Mニュース",
   description: "RIZIN・DEEP・パンクラス・修斗の公式発表とMMAニュースのアーカイブ。",
   path: "/archive",
 });
@@ -19,7 +19,7 @@ export const metadata = pageMetadata({
 const ARCHIVE_URL = "https://raw.githubusercontent.com/mnews-mma/mnews/main/data/archive.json";
 const PAGE_SIZE = 20;
 const OFFICIAL_ORGS = new Set<SourceKey>(["rizin", "deep", "shooto", "pancrase"]);
-const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "過去のニュース" }];
+const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "ニュース一覧" }];
 
 async function fetchArchive(): Promise<Article[]> {
   try {
@@ -104,7 +104,7 @@ export default async function ArchivePage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
       <Nav />
       <div className="page-head">
-        <h1 className="page-title">過去のニュース</h1>
+        <h1 className="page-title">ニュース一覧</h1>
       </div>
 
       <div className="uf">
