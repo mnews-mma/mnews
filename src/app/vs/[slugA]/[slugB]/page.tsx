@@ -1,32 +1,16 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import XShareLink from "@/components/XShareLink";
-import { getFighter, type Fighter } from "@/lib/fighters";
-import { SOURCES } from "@/lib/sources";
+import VsCard from "@/components/matchup/VsCard";
+import { getFighter } from "@/lib/fighters";
 import { ogImagePath } from "@/lib/ogShared";
 import { pageMetadata } from "@/lib/seo";
-import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterRecordsCache";
-import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
+import { fetchFighterRecordsStrict, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
+import { getVisibleFighters } from "@/lib/visibleFighters";
+import { normalizeVsSlugs, isVsPairIndexable, buildVsShareText } from "@/lib/vsPairing";
 
 const SITE_URL = "https://www.mnews.jp";
-
-// OG画像(route.tsx)と同じマージ済み戦績を本体ページでも使う(以前は本体だけ
-// getFighter()のシード値をそのまま描画しており、実戦績ではなく0-0-0が
-// 出ていた=マージ漏れ)。fetchは1回に統合(片方だけ非対称に失敗する余地を
-// 排除)。本体は自動投稿の対象ではないため、fetch失敗時は0-0を確定表示せず
-// 「不明(—)」に倒す(フォールバック画像への切替はOGルート側のみで行う)。
-async function resolveVsFighters(
-  seedA: Fighter,
-  seedB: Fighter
-): Promise<{ fighterA: ResolvedFighter; fighterB: ResolvedFighter } | null> {
-  const recordsResult = await fetchFighterRecordsStrict();
-  if (!recordsResult.ok) return null;
-  return {
-    fighterA: mergeFighterRecord(seedA, recordsResult.records),
-    fighterB: mergeFighterRecord(seedB, recordsResult.records),
-  };
-}
 
 // Xカードツールの手指定階級ラベル(?wc=)・大会名(?ev=)を OG画像に反映するための共通ヘルパ。
 function wcOf(searchParams: Record<string, string | string[] | undefined>): string {
@@ -48,6 +32,12 @@ function vsOgPath(slugA: string, slugB: string, wc: string, ev: string): string 
   return `/api/og/vs/${slugA}/${slugB}${vsQuery(wc, ev)}`;
 }
 
+// 空エントリ(戦績データ未取得時)のフォールバック。捏造しない0値で、
+// VsCard/MatchupTape側は winRate/finishRate が null になり「—」表示に倒れる。
+function emptyEntry(): FighterRecordEntry {
+  return { wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], live: false, noRecordData: true };
+}
+
 export async function generateMetadata({
   params,
   searchParams,
@@ -56,31 +46,47 @@ export async function generateMetadata({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slugA, slugB } = await params;
-  const fighterA = getFighter(slugA);
-  const fighterB = getFighter(slugB);
+  const norm = normalizeVsSlugs(slugA, slugB);
+  const fighterA = getFighter(norm.a);
+  const fighterB = getFighter(norm.b);
   if (!fighterA || !fighterB) return { title: "対戦カード | Mニュース", robots: { index: false, follow: false } };
 
   const sp = await searchParams;
   const wc = wcOf(sp);
   const ev = evOf(sp);
-  const title = `${fighterA.nameJa} vs ${fighterB.nameJa} | Mニュース`;
-  // fetch失敗時はシードの0-0-0を誤って見せず、戦績部分を省いた安全な文言にする。
-  const resolved = await resolveVsFighters(fighterA, fighterB);
-  const description = resolved
-    ? `${resolved.fighterA.nameJa}（${resolved.fighterA.wins}勝${resolved.fighterA.losses}敗）vs ${resolved.fighterB.nameJa}（${resolved.fighterB.wins}勝${resolved.fighterB.losses}敗）の対戦カード。`
-    : `${fighterA.nameJa} vs ${fighterB.nameJa}の対戦カード。`;
+  const title = `${fighterA.nameJa} vs ${fighterB.nameJa} 対戦比較｜戦績・共通対戦相手 - Mニュース`;
 
-  return pageMetadata({
+  const recordsResult = await fetchFighterRecordsStrict();
+  const entryA = recordsResult.ok ? (recordsResult.records[norm.a] ?? emptyEntry()) : emptyEntry();
+  const entryB = recordsResult.ok ? (recordsResult.records[norm.b] ?? emptyEntry()) : emptyEntry();
+  const indexable = recordsResult.ok && isVsPairIndexable(fighterA, fighterB, entryA, entryB);
+
+  const commonCount =
+    recordsResult.ok && !entryA.noRecordData && !entryB.noRecordData
+      ? new Set(
+          entryA.history
+            .map((h) => h.opponent)
+            .filter((name) => entryB.history.some((h2) => h2.opponent === name))
+        ).size
+      : 0;
+  const description = `${fighterA.nameJa}（${entryA.wins}勝${entryA.losses}敗）vs ${fighterB.nameJa}（${entryB.wins}勝${entryB.losses}敗）の対戦カード。共通対戦相手${commonCount}人。`;
+
+  const meta = pageMetadata({
     title,
     description,
-    path: `/vs/${slugA}/${slugB}`,
+    path: `/vs/${norm.a}/${norm.b}`,
     image: {
-      url: ogImagePath(vsOgPath(slugA, slugB, wc, ev)),
+      url: ogImagePath(vsOgPath(norm.a, norm.b, wc, ev)),
       width: 1200,
       height: 630,
       alt: `${fighterA.nameJa} vs ${fighterB.nameJa}`,
     },
   });
+  // 組み合わせは選手数の二乗のオーダーで発生する(spec §4)。過去対戦・共通対戦相手・
+  // 同一団体同一階級のいずれも無ければ薄いプログラマティックページとしてnoindexにする
+  // (デフォルトnoindex,follow。sitemapにも載せない=sitemap.ts側で同じ判定を共有)。
+  meta.robots = indexable ? undefined : { index: false, follow: true };
+  return meta;
 }
 
 export default async function VsPage({
@@ -91,23 +97,31 @@ export default async function VsPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slugA, slugB } = await params;
-  const fighterA = getFighter(slugA);
-  const fighterB = getFighter(slugB);
-  if (!fighterA || !fighterB) notFound();
+  const norm = normalizeVsSlugs(slugA, slugB);
   const sp = await searchParams;
   const wc = wcOf(sp);
   const ev = evOf(sp);
 
-  // OG画像と同じマージ済み戦績を使う。fetch失敗時はnull→各選手「不明」表示に倒す
-  // (org/weightClassはFighter型のシード値のままでよい。mergeFighterRecordが
-  // マージするのはFighterRecordEntry型のフィールド(wins/losses/history等)の
-  // みで、orgはfighters.ts由来のまま=そもそもマージ対象外)。
-  const resolved = await resolveVsFighters(fighterA, fighterB);
-  const recordA = resolved?.fighterA;
-  const recordB = resolved?.fighterB;
+  // 非正規順(/vs/b/a)は正規順(/vs/a/b、スラッグ辞書順)へ308恒久リダイレクト(spec §1.2)。
+  if (norm.wasSwapped) {
+    permanentRedirect(`/vs/${norm.a}/${norm.b}${vsQuery(wc, ev)}`);
+  }
 
-  const orgA = SOURCES[fighterA.org]?.label ?? fighterA.org;
-  const orgB = SOURCES[fighterB.org]?.label ?? fighterB.org;
+  const fighterA = getFighter(norm.a);
+  const fighterB = getFighter(norm.b);
+  if (!fighterA || !fighterB) notFound();
+
+  const recordsResult = await fetchFighterRecordsStrict();
+  const entryA = recordsResult.ok ? (recordsResult.records[norm.a] ?? emptyEntry()) : emptyEntry();
+  const entryB = recordsResult.ok ? (recordsResult.records[norm.b] ?? emptyEntry()) : emptyEntry();
+  const bothRegistered = !entryA.noRecordData && !entryB.noRecordData;
+
+  const visible = await getVisibleFighters();
+  const visibleSlugs = new Set(visible.map((f) => f.slug));
+
+  const shareUrl = `${SITE_URL}/vs/${norm.a}/${norm.b}${vsQuery(wc, ev)}`;
+  const shareText = buildVsShareText(fighterA.nameJa, fighterB.nameJa);
+  const dreamReselectPath = `/dream?a=${norm.a}&b=${norm.b}`;
 
   return (
     <>
@@ -116,44 +130,55 @@ export default async function VsPage({
         <div className="page-title">対戦カード</div>
       </div>
 
-      <div style={{ padding: "0 24px 40px", maxWidth: 800 }}>
-        <img
-          src={ogImagePath(vsOgPath(slugA, slugB, wc, ev))}
-          alt={`${fighterA.nameJa} vs ${fighterB.nameJa}`}
-          style={{ width: "100%", border: "1px solid var(--border)", display: "block", marginBottom: 16 }}
-        />
+      <div style={{ padding: "0 24px 40px", maxWidth: 640 }}>
+        {bothRegistered ? (
+          <VsCard
+            nameA={fighterA.nameJa}
+            nameB={fighterB.nameJa}
+            slugA={fighterA.slug}
+            slugB={fighterB.slug}
+            nicknameA={fighterA.nickname}
+            nicknameB={fighterB.nickname}
+            entryA={entryA}
+            entryB={entryB}
+            visibleSlugs={visibleSlugs}
+          />
+        ) : (
+          <img
+            src={ogImagePath(vsOgPath(norm.a, norm.b, wc, ev))}
+            alt={`${fighterA.nameJa} vs ${fighterB.nameJa}`}
+            style={{ width: "100%", border: "1px solid var(--border)", display: "block", marginBottom: 16 }}
+          />
+        )}
 
-        <div style={{ display: "flex", gap: 8, marginBottom: 32 }}>
+        <div style={{ display: "flex", gap: 8, marginTop: 16, marginBottom: 32, flexWrap: "wrap" }}>
           <XShareLink
-            url={`${SITE_URL}/vs/${slugA}/${slugB}${vsQuery(wc, ev)}`}
+            text={shareText}
+            url={shareUrl}
             style={{ padding: "10px 20px", background: "#000", color: "#fff", fontWeight: 700, borderRadius: 4, fontSize: 14, textDecoration: "none" }}
           >
             𝕏 に投稿
           </XShareLink>
+          <a
+            href={dreamReselectPath}
+            style={{ padding: "10px 20px", border: "1px solid var(--border)", color: "inherit", fontWeight: 700, borderRadius: 4, fontSize: 14, textDecoration: "none" }}
+          >
+            選手を入れ替えて再選択
+          </a>
+          <a
+            href="/dream"
+            style={{ padding: "10px 20px", border: "1px solid var(--border)", color: "inherit", fontWeight: 700, borderRadius: 4, fontSize: 14, textDecoration: "none" }}
+          >
+            別のカードを作る
+          </a>
         </div>
 
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href={`/fighters/${slugA}`} className="fighter-card" style={{ borderLeftColor: SOURCES[fighterA.org]?.color, flex: 1, minWidth: 140 }}>
-            <div className="fighter-org" style={{ color: SOURCES[fighterA.org]?.color }}>{orgA} / {fighterA.weightClass}</div>
-            <div className="fighter-name">{fighterA.nameJa}</div>
-            {!recordA ? (
-              <div className="fighter-record" style={{ color: "var(--muted)" }}>—</div>
-            ) : recordA.noRecordData ? (
-              <div className="fighter-record" style={{ color: "var(--muted)", fontSize: 14 }}>データなし</div>
-            ) : (
-              <div className="fighter-record">{recordA.wins}-{recordA.losses}-{recordA.draws}</div>
-            )}
+          <a href={`/fighters/${fighterA.slug}`} className="fighter-card" style={{ flex: 1, minWidth: 140 }}>
+            <div className="fighter-name">{fighterA.nameJa}の選手ページへ</div>
           </a>
-          <a href={`/fighters/${slugB}`} className="fighter-card" style={{ borderLeftColor: SOURCES[fighterB.org]?.color, flex: 1, minWidth: 140 }}>
-            <div className="fighter-org" style={{ color: SOURCES[fighterB.org]?.color }}>{orgB} / {fighterB.weightClass}</div>
-            <div className="fighter-name">{fighterB.nameJa}</div>
-            {!recordB ? (
-              <div className="fighter-record" style={{ color: "var(--muted)" }}>—</div>
-            ) : recordB.noRecordData ? (
-              <div className="fighter-record" style={{ color: "var(--muted)", fontSize: 14 }}>データなし</div>
-            ) : (
-              <div className="fighter-record">{recordB.wins}-{recordB.losses}-{recordB.draws}</div>
-            )}
+          <a href={`/fighters/${fighterB.slug}`} className="fighter-card" style={{ flex: 1, minWidth: 140 }}>
+            <div className="fighter-name">{fighterB.nameJa}の選手ページへ</div>
           </a>
         </div>
       </div>

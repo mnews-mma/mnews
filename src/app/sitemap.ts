@@ -5,6 +5,8 @@ import { EVENTS } from "@/lib/events";
 import { ORIGINAL_ARTICLES } from "@/lib/originalArticles";
 import { fetchRankings } from "@/lib/mnewsRatingData";
 import { DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
+import { getVisibleFighters } from "@/lib/visibleFighters";
+import { isVsPairIndexable, normalizeVsSlugs } from "@/lib/vsPairing";
 
 const BASE_URL = "https://www.mnews.jp";
 const TODAY = new Date().toISOString().split("T")[0];
@@ -74,5 +76,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: a.publishedAt,
   }));
 
-  return [...staticRoutes, ...rankingDivisionRoutes, ...fighterRoutes, ...resultRoutes, ...eventRoutes, ...articleRoutes];
+  // /vs/{a}/{b} は組み合わせが選手数の二乗のオーダーで発生する(spec §4)ため、
+  // 索引許可条件(過去対戦・共通対戦相手・同一団体同一階級のいずれか)を満たす
+  // ペアのみ載せる。判定ロジックはgenerateMetadataのrobots判定と同一関数
+  // (isVsPairIndexable)を共有し、二重実装しない。
+  const visibleFighters = await getVisibleFighters();
+  const vsRoutes: MetadataRoute.Sitemap = [];
+  for (let i = 0; i < visibleFighters.length; i++) {
+    for (let j = i + 1; j < visibleFighters.length; j++) {
+      const fA = visibleFighters[i];
+      const fB = visibleFighters[j];
+      if (!isVsPairIndexable(fA, fB, fA, fB)) continue;
+      const norm = normalizeVsSlugs(fA.slug, fB.slug);
+      vsRoutes.push({
+        url: `${BASE_URL}/vs/${norm.a}/${norm.b}`,
+        changeFrequency: "weekly",
+        priority: 0.4,
+        lastModified: TODAY,
+      });
+    }
+  }
+
+  return [
+    ...staticRoutes,
+    ...rankingDivisionRoutes,
+    ...fighterRoutes,
+    ...resultRoutes,
+    ...eventRoutes,
+    ...articleRoutes,
+    ...vsRoutes,
+  ];
 }
