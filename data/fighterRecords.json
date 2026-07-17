@@ -20136,6 +20136,56 @@
     "birthPlace": "ニューメキシコ州アルバカーキ",
     "age": 41
   },
+  "zulu-nkazimulo": {
+    "wins": 1,
+    "losses": 3,
+    "draws": 0,
+    "ko": 1,
+    "sub": 0,
+    "decision": 0,
+    "history": [
+      {
+        "date": "2026-04-12",
+        "opponent": "神龍誠",
+        "result": "loss",
+        "method": "キムラロック",
+        "event": "RIZIN LANDMARK 13",
+        "round": "1R 2:52",
+        "time": "2:52",
+        "weightClass": "57.0kg契約"
+      },
+      {
+        "date": "2025-07-27",
+        "opponent": "伊藤裕樹",
+        "result": "loss",
+        "method": "判定（3-0）",
+        "event": "超RIZIN.4 真夏の喧嘩祭り",
+        "round": "3R",
+        "weightClass": "57.0kg契約"
+      },
+      {
+        "date": "2024-12-31",
+        "opponent": "堀口恭司",
+        "result": "loss",
+        "method": "判定（3-0）",
+        "event": "RIZIN.49",
+        "round": "3R",
+        "weightClass": "RIZINフライ級タイトルマッチ"
+      },
+      {
+        "date": "2024-09-29",
+        "opponent": "新井丈",
+        "result": "win",
+        "method": "TKO（スタンドパンチ連打）",
+        "event": "RIZIN.48",
+        "round": "1R 4:18",
+        "time": "4:18",
+        "weightClass": "フライ級"
+      }
+    ],
+    "live": true,
+    "nickname": "アフリカ軽量級の雄"
+  },
   "gallagher-james": {
     "wins": 13,
     "losses": 4,
