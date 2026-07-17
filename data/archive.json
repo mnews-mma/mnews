@@ -1,5 +1,14 @@
 [
   {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】広島でファンイベント「前夜祭」開催 神龍誠、井上直樹、摩嶋一整、西谷大成があすの注目カード予想",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468641/",
+    "publishedAt": "2026-07-17T12:18:00.000Z",
+    "firstSeenAt": "2026-07-17T16:42:38.855Z"
+  },
+  {
     "id": "rizin-0",
     "source": "rizin",
     "title": "abc presents RIZIN LANDMARK 15 in HIROSHIMA 計量結果／フェイスオフ、身長差、リーチ差も掲載中",
@@ -88,6 +97,15 @@
     "url": "https://www.pancrase.co.jp/tour/2026/pancrase364/interview_miyake.html",
     "publishedAt": "2026-07-17T00:00:00.000Z",
     "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "アマチュアパンクラスMMA2026年8月16日(日)横浜ケージファイト25 Sクラスルールトーナメント＆Aクラスルールワンマッチ開催のお知らせ",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/rls/2026/0816amateur.html",
+    "publishedAt": "2026-07-17T00:00:00.000Z",
+    "firstSeenAt": "2026-07-17T16:42:38.855Z"
   },
   {
     "id": "gonkaku-0",
