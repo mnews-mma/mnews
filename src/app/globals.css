@@ -2680,12 +2680,6 @@ a.uf-card:hover { border-color: var(--muted); }
   font-size: 14px;
   font-weight: 600;
 }
-.hero-ranking-record {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  white-space: nowrap;
-}
 .hero-ranking-empty {
   padding: 16px 18px;
   font-size: 13px;
