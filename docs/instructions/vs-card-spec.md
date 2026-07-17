@@ -1,5 +1,14 @@
 # VS対戦比較カード リデザイン仕様書
 
+> **status: superseded（2026-07-18）** — 実装済みだが、以下の点で現行実装と乖離している。将来の実装判断はコード（`src/components/matchup/`, `src/lib/vsMath.ts`, `src/lib/renderWrappableName.tsx`）と CLAUDE.md を正とし、本書を実装根拠にしないこと。
+>
+> - **綱引きバー（§5）は廃止済み。** 数値+ラベルのみの3行統計（戦績・勝率・フィニッシュ率）に置き換わっている（`src/components/matchup/TugBar.tsx`, `MatchupTape.tsx:135-147`）。`computeTugShare()`（`src/lib/vsMath.ts`）は未使用のまま関数だけ残存。
+> - **フォントサイズ段階（§4.2）は廃止済み。** 文字数によるサイズ分岐ではなく、左右で同じ選手名帯の中では常に同一サイズ（長い方の名前が収まるサイズに両方揃える）。`renderWrappableName`（`src/lib/renderWrappableName.tsx`）が改行制御を担う。
+> - **OGP（§7）はダーク版ではなくライト基調に刷新済み**（白背景+赤/青コーナーストリップ、`src/lib/og/vsCardBlocks.tsx`）。バージョン管理は `OG_DESIGN_VERSION`（`src/lib/ogShared.ts`、2026-07-18時点で7）で行う。
+> - スラッグ正規化（§8前提）・noindex判定は別文書 `vs-dream-merge-instructions.md` 側の設計通り実装済み（`src/lib/vsPairing.ts`）。
+>
+> 上記以外（DOM構造・選手名帯のレイアウト崩れ対策の考え方・直近5戦/過去対戦の仕様）はおおむね現行と一致している。
+
 対象: `/events/*`（対戦カード比較ブロック）、`/dream`（夢のカード）、`/vs/{slugA}/{slugB}`（共有先ページ + OGP）
 版: v1.0（2026-07-16）
 前提: 既存の文字サイズ・情報構成は変更しない。見た目のみ刷新。

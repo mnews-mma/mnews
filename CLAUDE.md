@@ -22,9 +22,12 @@
 - cron(daily-digest, JST 8:00 = UTC 23:00)の予定時刻付近に本番デプロイを重ねるとその日のcron実行がスキップされることがある。8:00前後のデプロイは避け、重なった日は翌朝メール到達を確認する
 
 ## デプロイ
-- 通常: `git push origin main && vercel deploy --prod --yes`
-- 上記の本番保護ルールに該当する変更(大きい機能追加・データ変更等)は作業ブランチ + `vercel deploy`(プレビュー)で確認してからmainにマージする
-- **git worktreeからデプロイする場合**: worktree直下には`.vercel/`が無く、そのまま`vercel deploy`すると誤って新規プロジェクトが作成される(2026-07-11に`mnews-worktree-fontfix`を誤作成→削除した実例あり)。デプロイ前に必ず本体の`.vercel/project.json`(`projectId: prj_BOiZsdSXZ5tEVMQ0DV8WmOl0c6pg`, `projectName: mnews`)をworktreeにコピーするか`vercel link`で本番プロジェクトを明示指定してから実行する
+- 通常: `git push origin main`。mainへのマージ(push)がそのまま本番への自動デプロイになる。**mainマージとデプロイは分離した工程ではない** — 上記「本番サービスの保護」の深夜帯ルール等はマージ操作そのものに適用される
+- `vercel deploy --prod` の直接実行は禁止。本番反映は必ずmainへのマージ経由で行う
+- 上記の本番保護ルールに該当する変更(大きい機能追加・データ変更等)は作業ブランチ + `vercel deploy`(プレビュー、本番ではない)で確認してからmainにマージする
+- **PR作成直前に最新mainへrebaseしてからpush**する。マージ前にconflictや前提のズレを解消しておく
+- **積み木PR(他PRの未マージブランチをベースにするPR)は原則禁止**。並行作業は必ずmainから分岐する。やむを得ず積み木構成にした場合、下段のPRをマージする際にブランチを削除しない(上段PRのベースがなくなるため)
+- **git worktreeからデプロイする場合**: worktree直下には`.vercel/`が無く、そのまま`vercel deploy`すると誤って新規プロジェクトが作成される(2026-07-11に`mnews-worktree-fontfix`を誤作成→削除した実例あり)。プレビュー確認前に必ず本体の`.vercel/project.json`(`projectId: prj_BOiZsdSXZ5tEVMQ0DV8WmOl0c6pg`, `projectName: mnews`)をworktreeにコピーするか`vercel link`で本番プロジェクトを明示指定してから実行する
 - **deployはISRキャッシュを自動パージしない**(2026-07-17判明)。`data/rankings.json`等のデータはGitHub raw経由でrevalidate:3600(最大1時間)のfetchキャッシュに乗っており、「mainにマージしただけで新規デプロイをしていない」場合は最大1時間古い値が残る。新規デプロイ自体もURLに埋め込まれたcommit SHAが変わるため次回アクセスで自動的に最新を取るが、即時反映させたい場合は`POST /api/revalidate-rankings`(`Authorization: Bearer <REVALIDATE_TOKEN>`、Vercel環境変数に別途設定が必要)を呼ぶ。**データ更新を伴うdeploy後はrevalidate必須**。反映確認は全公開階級(`/rankings/[division]`)でJSON-LDを取得し、最終更新日付が全ページ一致していることを見る。
 
 ## 認証境界(重要)
@@ -116,3 +119,9 @@
 3. 通常のgitコミット(作業ブランチ推奨) → デプロイで公開する(この画面からの自動公開・自動git書き込みは行わない)。
 4. デプロイ後 `/articles/[slug]` が正しく表示されることを確認する。
 5. 「告知テキストをコピー」でX告知文をコピーし、記事URL有効化後に手動投稿する。
+
+## docs/instructions/ の運用ルール
+
+- 各指示書の冒頭に `status: active` / `status: superseded` / `status: done` のいずれかを明記する
+- `superseded`(実装済みだが内容が古い) / `done`(役目を終えた) の指示書は**実装の根拠として参照しない**。現行実装の正はコードと本CLAUDE.mdであり、指示書はあくまで作成時点の設計意図の記録
+- 実装が指示書の内容から変わった場合、指示書を都度全面書き換えする必要はない。冒頭にstatusと簡単な補足(何が現行と異なるか)を付ければ足りる
