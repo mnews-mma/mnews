@@ -143,7 +143,7 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
         ))}
         {days.length > 0 && (
           <a href="/archive" className="uf-more">
-            過去のニュースを見る →
+            ニュース一覧を見る →
           </a>
         )}
       </div>

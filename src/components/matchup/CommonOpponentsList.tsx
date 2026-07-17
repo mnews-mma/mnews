@@ -19,6 +19,32 @@ function ResMark({ result }: { result: CommonOpponent["resultA"] }) {
   return <span className={`${styles.formChip} ${styles.resChip} ${cls}`}>{symbol}</span>;
 }
 
+// 片側3個までは現サイズで横並びし、稀に4個以上ある場合は最新3個のみ表示して
+// 先頭に「+n」バッジを置く(nは省略した古い対戦の数)。省略した分を含む全履歴は
+// title/aria-labelでアクセス可能にする(視覚的に見えなくても情報は失わない)。
+const DOT_CAP = 3;
+
+function ResultDots({
+  results,
+  opponentName,
+}: {
+  results: CommonOpponent["resultA"][];
+  opponentName: string;
+}) {
+  const overflow = results.length - DOT_CAP;
+  const shown = overflow > 0 ? results.slice(-DOT_CAP) : results;
+  const fullHistory = results.map((r) => markFor(r).symbol).join(" ");
+  const label = `${opponentName} 全${results.length}戦: ${fullHistory}`;
+  return (
+    <span className={styles.resGroup} title={overflow > 0 ? label : undefined} aria-label={overflow > 0 ? label : undefined}>
+      {overflow > 0 && <span className={styles.resOverflow}>+{overflow}</span>}
+      {shown.map((r, i) => (
+        <ResMark key={i} result={r} />
+      ))}
+    </span>
+  );
+}
+
 // 列見出し(自分/相手をテキストではなく赤・青のコーナー色ドットで区別する。
 // 文字切れを避けるため、フルネームはtitle/aria-labelにのみ保持する)。
 // 全カード(大会/夢のカード/選手)で共通に使う。
@@ -56,16 +82,8 @@ function CommonOpponentRows({ commons, visibleSlugs }: { commons: CommonOpponent
         return (
           <div key={g.name} className={styles.crowHeader}>
             {nameLink}
-            <span className={styles.resGroup}>
-              {g.results.map((r, i) => (
-                <ResMark key={i} result={r.resultA} />
-              ))}
-            </span>
-            <span className={styles.resGroup}>
-              {g.results.map((r, i) => (
-                <ResMark key={i} result={r.resultB} />
-              ))}
-            </span>
+            <ResultDots results={g.results.map((r) => r.resultA)} opponentName={g.name} />
+            <ResultDots results={g.results.map((r) => r.resultB)} opponentName={g.name} />
           </div>
         );
       })}

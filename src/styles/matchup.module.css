@@ -584,6 +584,16 @@
   flex-wrap: wrap;
 }
 
+/* 表示しきれない古い対戦の件数バッジ(「+n」)。ドットと同じ行高に馴染む
+   よう控えめなグレー文字にする(強調色は使わない=省略情報であって
+   新しい結果ではないため)。 */
+.resOverflow {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
 .res {
   width: 20px;
   height: 20px;
