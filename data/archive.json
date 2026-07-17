@@ -1,5 +1,86 @@
 [
   {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】計量終了。スクランブル参戦の火の鳥を、バンタム級王者サバテロがオマージュ",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233160",
+    "publishedAt": "2026-07-17T07:25:43.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】ヒロヤと山本アーセンが至近距離で瞬きひとつせずにらみ合い、バチバチの前日公開計量",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24355",
+    "publishedAt": "2026-07-17T07:08:54.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】萩原京平、10連勝中のダウトベックを堂々KO宣言「絶対倒します」平本蓮戦は実現なるか",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468533/",
+    "publishedAt": "2026-07-17T06:50:00.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】萩原京平とダウトベックは嵐の前の静かなる公開計量、萩原「倒します、KOで」ダウトベック「必ず面白い試合にします」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24354",
+    "publishedAt": "2026-07-17T06:48:38.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "oricon-1",
+    "source": "other",
+    "title": "【RIZIN】ヒロヤと山本アーセンが乱闘寸前のバチバチ スタッフが慌ててストップ",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468304/",
+    "publishedAt": "2026-07-17T06:32:00.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "gonkaku-2",
+    "source": "other",
+    "title": "【RIZIN】「目を合わせる気はないです」と言っていた鹿志村仁之介がガン睨み＆アッパー挑発ポーズ、王者サバテロ「このクソ野郎に勝ちたい」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24353",
+    "publishedAt": "2026-07-17T06:27:00.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "gonkaku-3",
+    "source": "other",
+    "title": "【RIZIN】ヒロヤ、山本アーセンを「1、2Rぐらいでフィニッシュするような試合になると思ってる」「レスリングはアーセン選手の方が上、でもMMAだと俺は負けないよ」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24352",
+    "publishedAt": "2026-07-17T05:28:35.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "gonkaku-5",
+    "source": "other",
+    "title": "【RIZIN】全席完売、『RIZIN LANDMARK 15 in HIROSHIMA』。メインは「バンタム級タイトルマッチ」。女子スーパーアトム級の「見えないトーナメント」も＝7月18日（土）広島グリーンアリーナ",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24350",
+    "publishedAt": "2026-07-17T01:12:36.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE 364：三宅輝砂選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase364/interview_miyake.html",
+    "publishedAt": "2026-07-17T00:00:00.000Z",
+    "firstSeenAt": "2026-07-17T07:35:05.455Z"
+  },
+  {
     "id": "gonkaku-0",
     "source": "other",
     "title": "【RIZIN】鹿志村仁之介、サバテロの“穴”を突く「実は打撃があるかもしれない。いろいろなことを吸収しながら自分のMMAを作ってきたつもりなので、それを全面的にぶつけられれば」",
