@@ -68,6 +68,30 @@ function toIsoJst(dateStr: string): string {
   return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
 }
 
+// 流入元トラッキングパラメータを除去する。ソース側(MMAPLANETのRSS等)が
+// ?utm_source=rss&utm_medium=rss&...を付けたまま配信してくるため、同一記事が
+// パラメータ違いでURL重複除去(seen.has)をすり抜けないよう、集約の最終段で
+// 一括正規化する(個別フェッチャー側では対応しない)。
+const TRACKING_PARAM_PREFIXES = ["utm_"];
+const TRACKING_PARAM_NAMES = new Set(["fbclid", "gclid"]);
+
+function stripTrackingParams(url: string): string {
+  let u: URL;
+  try {
+    u = new URL(url);
+  } catch {
+    return url;
+  }
+  const toDelete: string[] = [];
+  u.searchParams.forEach((_, key) => {
+    if (TRACKING_PARAM_NAMES.has(key) || TRACKING_PARAM_PREFIXES.some((p) => key.startsWith(p))) {
+      toDelete.push(key);
+    }
+  });
+  toDelete.forEach((key) => u.searchParams.delete(key));
+  return u.toString();
+}
+
 function toArticle(
   item: RawItem,
   source: SourceKey,
@@ -259,6 +283,12 @@ export async function fetchRawArticles(): Promise<FeedResult> {
       fetchedSources++;
       articles.push(...r.value);
     }
+  }
+
+  // トラッキングパラメータ除去(dedupより前。パラメータ違いの同一記事を
+  // 別URL扱いしてすり抜けさせないため)
+  for (const a of articles) {
+    a.url = stripTrackingParams(a.url);
   }
 
   // De-duplicate by URL (per spec: 重複記事の排除）
