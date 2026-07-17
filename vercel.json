@@ -11,7 +11,7 @@
   ],
   "build": {
     "env": {
-      "NEXT_PUBLIC_NEW_MATCHUP_UI": "0"
+      "NEXT_PUBLIC_NEW_MATCHUP_UI": "1"
     }
   }
 }
