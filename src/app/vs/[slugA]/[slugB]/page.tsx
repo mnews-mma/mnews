@@ -12,24 +12,15 @@ import { normalizeVsSlugs, isVsPairIndexable, buildVsShareText } from "@/lib/vsP
 
 const SITE_URL = "https://www.mnews.jp";
 
-// Xカードツールの手指定階級ラベル(?wc=)・大会名(?ev=)を OG画像に反映するための共通ヘルパ。
-function wcOf(searchParams: Record<string, string | string[] | undefined>): string {
-  const raw = searchParams.wc;
-  return (Array.isArray(raw) ? raw[0] : raw ?? "").trim();
-}
-function evOf(searchParams: Record<string, string | string[] | undefined>): string {
-  const raw = searchParams.ev;
-  return (Array.isArray(raw) ? raw[0] : raw ?? "").trim();
-}
-function vsQuery(wc: string, ev: string): string {
-  const params = new URLSearchParams();
-  if (wc) params.set("wc", wc);
-  if (ev) params.set("ev", ev);
-  const qs = params.toString();
-  return qs ? `?${qs}` : "";
-}
-function vsOgPath(slugA: string, slugB: string, wc: string, ev: string): string {
-  return `/api/og/vs/${slugA}/${slugB}${vsQuery(wc, ev)}`;
+// 以前はここで?wc=/?ev=のクエリを受け取りOG画像へ手指定の階級・大会名を
+// 反映していたが、公開・非認証のこのページ経由で誰でも実在選手の公式風
+// 偽カード画像を作れる穴になっていたため廃止した。大会名は/api/og/vs側の
+// findMatchupEvent()によるDB由来の自動判定のみを使う(セキュリティ境界の
+// 詳細はsrc/app/api/og/vs/[slugA]/[slugB]/route.tsxのコメント参照)。
+// 任意の大会名・階級を画像に出したい場合は管理画面限定の
+// /api/og/vs-compareを使うこと。
+function vsOgPath(slugA: string, slugB: string): string {
+  return `/api/og/vs/${slugA}/${slugB}`;
 }
 
 // 空エントリ(戦績データ未取得時)のフォールバック。捏造しない0値で、
@@ -40,10 +31,8 @@ function emptyEntry(): FighterRecordEntry {
 
 export async function generateMetadata({
   params,
-  searchParams,
 }: {
   params: Promise<{ slugA: string; slugB: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slugA, slugB } = await params;
   const norm = normalizeVsSlugs(slugA, slugB);
@@ -51,9 +40,6 @@ export async function generateMetadata({
   const fighterB = getFighter(norm.b);
   if (!fighterA || !fighterB) return { title: "対戦カード | Mニュース", robots: { index: false, follow: false } };
 
-  const sp = await searchParams;
-  const wc = wcOf(sp);
-  const ev = evOf(sp);
   const title = `${fighterA.nameJa} vs ${fighterB.nameJa} 対戦比較｜戦績・共通対戦相手 - Mニュース`;
 
   const recordsResult = await fetchFighterRecordsStrict();
@@ -76,7 +62,7 @@ export async function generateMetadata({
     description,
     path: `/vs/${norm.a}/${norm.b}`,
     image: {
-      url: ogImagePath(vsOgPath(norm.a, norm.b, wc, ev)),
+      url: ogImagePath(vsOgPath(norm.a, norm.b)),
       width: 1200,
       height: 630,
       alt: `${fighterA.nameJa} vs ${fighterB.nameJa}`,
@@ -91,20 +77,15 @@ export async function generateMetadata({
 
 export default async function VsPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ slugA: string; slugB: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slugA, slugB } = await params;
   const norm = normalizeVsSlugs(slugA, slugB);
-  const sp = await searchParams;
-  const wc = wcOf(sp);
-  const ev = evOf(sp);
 
   // 非正規順(/vs/b/a)は正規順(/vs/a/b、スラッグ辞書順)へ308恒久リダイレクト(spec §1.2)。
   if (norm.wasSwapped) {
-    permanentRedirect(`/vs/${norm.a}/${norm.b}${vsQuery(wc, ev)}`);
+    permanentRedirect(`/vs/${norm.a}/${norm.b}`);
   }
 
   const fighterA = getFighter(norm.a);
@@ -119,7 +100,7 @@ export default async function VsPage({
   const visible = await getVisibleFighters();
   const visibleSlugs = new Set(visible.map((f) => f.slug));
 
-  const shareUrl = `${SITE_URL}/vs/${norm.a}/${norm.b}${vsQuery(wc, ev)}`;
+  const shareUrl = `${SITE_URL}/vs/${norm.a}/${norm.b}`;
   const shareText = buildVsShareText(fighterA.nameJa, fighterB.nameJa);
   const dreamReselectPath = `/dream?a=${norm.a}&b=${norm.b}`;
 
@@ -145,7 +126,7 @@ export default async function VsPage({
           />
         ) : (
           <img
-            src={ogImagePath(vsOgPath(norm.a, norm.b, wc, ev))}
+            src={ogImagePath(vsOgPath(norm.a, norm.b))}
             alt={`${fighterA.nameJa} vs ${fighterB.nameJa}`}
             style={{ width: "100%", border: "1px solid var(--border)", display: "block", marginBottom: 16 }}
           />
