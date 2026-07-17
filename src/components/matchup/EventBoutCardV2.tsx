@@ -25,6 +25,9 @@ export interface EventBoutCardV2Props {
   // 大会全体が現在開催中(event.status==="live")かどうか。resultが無くこれがtrueの
   // 場合のみ「進行中(結果待ち)」インジケータを出す。
   isEventLive?: boolean;
+  // ページ内の全カードで選手名サイズを統一するための共通サイズ(呼び出し元の
+  // イベントページで算出)。
+  nameSizeOverride?: number;
 }
 
 const normSpace = (s: string) => s.replace(/[\s　]/g, "");
@@ -63,6 +66,7 @@ export default function EventBoutCardV2({
   note,
   result,
   isEventLive,
+  nameSizeOverride,
 }: EventBoutCardV2Props) {
   const bothRegistered = !!entryA && !!entryB && !entryA.noRecordData && !entryB.noRecordData;
   const headToHead = bothRegistered ? computeHeadToHead(entryA!, nameB) : [];
@@ -102,6 +106,7 @@ export default function EventBoutCardV2({
         <MatchupTape
           left={buildTapeData(nameA, slugA, entryA!, { withLast5: true, resultMark: resultMarkFor(nameA, result) })}
           right={buildTapeData(nameB, slugB, entryB!, { withLast5: true, resultMark: resultMarkFor(nameB, result) })}
+          nameSizeOverride={nameSizeOverride}
         />
       ) : (
         <div className={styles.tape}>

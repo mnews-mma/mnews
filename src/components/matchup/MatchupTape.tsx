@@ -76,14 +76,18 @@ export default function MatchupTape({
   left,
   right,
   compact,
+  nameSizeOverride,
 }: {
   left: TapeFighterData;
   right: TapeFighterData;
   compact?: boolean;
+  // 呼び出し側(イベントページ)がページ内全カード共通のサイズを渡す場合に使う。
+  // 未指定時は従来通りこのカード単体(左右)で決まるサイズになる(/vs・/dream用)。
+  nameSizeOverride?: number;
 }) {
   const hasMethodCounts = !!left.methodCounts || !!right.methodCounts;
   // 左右で別々のサイズにならないよう、長い方の名前が収まるサイズに揃える。
-  const sharedNameSize = Math.min(fighterNameSize(left.name), fighterNameSize(right.name));
+  const sharedNameSize = nameSizeOverride ?? Math.min(fighterNameSize(left.name), fighterNameSize(right.name));
 
   return (
     <div className={`${styles.tape}${compact ? ` ${styles.tapeCompact}` : ""}`}>

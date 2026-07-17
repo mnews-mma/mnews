@@ -12,6 +12,7 @@ import BoutCard, { FighterName } from "@/components/BoutCard";
 import EventBoutCardV2 from "@/components/matchup/EventBoutCardV2";
 import matchupStyles from "@/styles/matchup.module.css";
 import { isNewMatchupUiEnabledByEnv } from "@/lib/matchupUi";
+import { fighterNameSize } from "@/lib/vsMath";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
 
@@ -233,34 +234,48 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
             /* v2: 大会の全対戦カードを新デザインで表示する(旧BoutCardとの新旧混在・
                クリック展開は廃止。上位3試合固定+折りたたみ運用はやめ、最初から
                全カードを新デザインで出す)。 */
-            <div className={matchupStyles.mv2}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
-                {orderedBouts.map((b, i) => {
-                  const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
-                  const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
-                  const entryA = slugA ? (records[slugA] ?? null) : null;
-                  const entryB = slugB ? (records[slugB] ?? null) : null;
-                  return (
-                    <EventBoutCardV2
-                      key={i}
-                      nameA={b.fighterA}
-                      nameB={b.fighterB}
-                      slugA={slugA}
-                      slugB={slugB}
-                      entryA={entryA}
-                      entryB={entryB}
-                      visibleSlugs={visibleSlugs}
-                      weightClass={b.weightClass}
-                      isTitleMatch={b.isTitleMatch}
-                      cancelled={b.cancelled}
-                      note={b.note}
-                      result={b.result}
-                      isEventLive={event.status === "live"}
-                    />
-                  );
-                })}
-              </div>
-            </div>
+            (() => {
+              // ページ内の全カードで選手名サイズを統一する。カードごとの
+              // fighterNameSize()の最小値(=ページ内最長名が2行に収まる最大サイズ)
+              // を全カード共通で使う(/vs・/dreamの単独カード算出は変えない)。
+              let pageNameSize = 20;
+              const resolvedBouts = orderedBouts.map((b) => {
+                const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
+                const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
+                const entryA = slugA ? (records[slugA] ?? null) : null;
+                const entryB = slugB ? (records[slugB] ?? null) : null;
+                const bothRegistered = !!entryA && !!entryB && !entryA.noRecordData && !entryB.noRecordData;
+                if (bothRegistered) {
+                  pageNameSize = Math.min(pageNameSize, fighterNameSize(b.fighterA), fighterNameSize(b.fighterB));
+                }
+                return { b, slugA, slugB, entryA, entryB };
+              });
+              return (
+                <div className={matchupStyles.mv2}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
+                    {resolvedBouts.map(({ b, slugA, slugB, entryA, entryB }, i) => (
+                      <EventBoutCardV2
+                        key={i}
+                        nameA={b.fighterA}
+                        nameB={b.fighterB}
+                        slugA={slugA}
+                        slugB={slugB}
+                        entryA={entryA}
+                        entryB={entryB}
+                        visibleSlugs={visibleSlugs}
+                        weightClass={b.weightClass}
+                        isTitleMatch={b.isTitleMatch}
+                        cancelled={b.cancelled}
+                        note={b.note}
+                        result={b.result}
+                        isEventLive={event.status === "live"}
+                        nameSizeOverride={pageNameSize}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })()
           ) : (
             /* upcoming / live: カード表示(旧デザイン) */
             <div className="bout-list">
