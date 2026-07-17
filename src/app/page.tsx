@@ -260,7 +260,7 @@ export default async function HomePage() {
           検索ボックスの2枚構成。 */}
       <div className="home-hero">
         <MnewsRatingSection divisions={mnewsRatingDivisions} />
-        <HeroFighterSearch fighterCount={FIGHTERS.length} />
+        <HeroFighterSearch />
       </div>
 
       <div className="home-wrap">
