@@ -1,5 +1,131 @@
 [
   {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】榊原CEO「平本蓮vsダウトベックを発表できるよう最大限やっていく」敗れた萩原京平にも言及",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468763/",
+    "publishedAt": "2026-07-18T14:27:00.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "oricon-1",
+    "source": "other",
+    "title": "【RIZIN】萩原京平に勝利のダウトベック「誰とでもやる姿勢は変わらない」平本蓮と対戦の可能性は…",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468751/",
+    "publishedAt": "2026-07-18T12:41:00.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】寝技に付き合わず、ダニー・サバテロが鹿志村仁之介を右フックでKO",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233478",
+    "publishedAt": "2026-07-18T11:21:05.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】復活の左ストレート!! ダウトベックが萩原を吹っ飛ばす、バースデーKO",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233471",
+    "publishedAt": "2026-07-18T10:33:29.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "mmaplanet-2",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】シェイドゥラエフの同門＝ティレノフが太田忍にTKO勝利し、王座挑戦をアピール",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233362",
+    "publishedAt": "2026-07-18T10:16:05.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "mmaplanet-3",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】ノンストップMMA真っ向勝負=組みの圧を打撃に乗せたアーセンがヒロヤに競り勝つ",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233451",
+    "publishedAt": "2026-07-18T09:50:13.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】“月イチRIZIN”追加日程を発表、10月3日に初上陸の長崎、11月8日に千葉で『LANDMARK』開催が決定",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24362",
+    "publishedAt": "2026-07-18T09:45:22.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "oricon-2",
+    "source": "other",
+    "title": "【RIZIN】負傷欠場の篠塚辰樹がファンに謝罪「絶対に年内に復活するので待ってて」",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468736/",
+    "publishedAt": "2026-07-18T09:18:00.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "mmaplanet-4",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】スピーディーな打撃戦は、ケースが右アッパー→左フックで天弥を沈める",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233410",
+    "publishedAt": "2026-07-18T08:39:43.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "RIZIN LANDMARK 17 in CHIBA 大会情報／チケット",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17852466",
+    "publishedAt": "2026-07-18T08:34:11.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "rizin-1",
+    "source": "rizin",
+    "title": "RIZIN LANDMARK 16 in NAGASAKI 大会情報／チケット",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17852438",
+    "publishedAt": "2026-07-18T08:30:55.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "mmaplanet-5",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】大島沙緒里がヒザ十字でイェジにリベンジ達成「極めることが出来てうれしい」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233355",
+    "publishedAt": "2026-07-18T08:20:41.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "mmaplanet-6",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】須田萌里、「一番強い」パク・シウに組み続けるも疲弊。ダウンも喫し判定負け",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233403",
+    "publishedAt": "2026-07-18T08:12:14.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "mmaplanet-7",
+    "source": "other",
+    "title": "【RIZIN LANDMARK15】ヒジを受けながらもTD→サブミッションへ。昇侍が梅野をフルマークで下す",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233284",
+    "publishedAt": "2026-07-18T07:36:59.000Z",
+    "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【RIZIN LANDMARK15】緊急参戦の火の鳥、TDでジェフンを削り続けて3Rにパウンドアウト",
