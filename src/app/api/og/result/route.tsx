@@ -9,8 +9,34 @@ import {
   stripeTexture,
   fitFontSize,
 } from "@/lib/ogShared";
+// 赤/青コーナー色は既存のVSカード配色(vsCardBlocks.tsx)のトークンをそのまま使う
+// (このファイルで独自に赤/青の値を定義しない=配色ソースを1本化する)。
+import { VS_COLORS } from "@/lib/og/vsCardBlocks";
 
 export const runtime = "edge";
+
+// 勝者コーナー色。fighterA=赤コーナー/fighterB=青コーナーの割当ては
+// サイト既存のVSカード配色(vsCardBlocks.tsx CornerStrip)と同じ規約に揃える。
+// ドロー/NCは勝者コーナーが定まらないため中立グレー(OG_COLORS.ash)。
+const CORNER_RED = VS_COLORS.redInk;
+const CORNER_BLUE = VS_COLORS.blueInk;
+const CORNER_NEUTRAL = COLORS.ash;
+
+// 日付・イベント名・「RESULT」ラベルは勝敗コーナー色と紛れないよう固定色
+// (クローム)にする。勝者コーナーの赤/青と衝突しない専用トーンを使う。
+const CHROME_INK = "#1b1b1d";
+const CHROME_GOLD = "#b8912f";
+
+// 敗者名: 現状のOG_COLORS.ashより一段明るいグレー(強調)
+const LOSER_GRAY = "#b0aa9c";
+
+function hexToRgba(hex: string, alpha: number): string {
+  const h = hex.replace("#", "");
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
 
 // URLパラメータ不正・フォント取得失敗等のフォールバック。no-storeを明示せず
 // 307自体がCDN/Xに長期キャッシュされると、原因解消後もフォールバック画像に
@@ -64,8 +90,8 @@ export async function GET(req: Request) {
     const methodText = method || (isDraw ? "引き分け" : "");
     const methodSize = fitFontSize(methodText, METHOD_STEPS);
     const rt = [round, time].filter(Boolean).join(" ");
-    // 右側余白に敷くゴーストテキスト(結果種別)
-    const ghost = isDraw ? (method.includes("ノーコンテスト") ? "NC" : "DRAW") : "WIN";
+    // 勝者コーナー色: A=赤コーナー/B=青コーナー、ドロー/NCは中立グレー
+    const cornerColor = isDraw ? CORNER_NEUTRAL : winnerSide === "B" ? CORNER_BLUE : CORNER_RED;
 
     const d = new Date(event.date);
     const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
@@ -84,6 +110,35 @@ export async function GET(req: Request) {
             backgroundImage: stripeTexture(),
           }}
         >
+          {/* 左端の縦帯(勝者コーナー色) */}
+          <div
+            style={{
+              position: "absolute",
+              display: "flex",
+              left: 0,
+              top: 0,
+              width: "14px",
+              height: "675px",
+              backgroundColor: cornerColor,
+            }}
+          />
+
+          {/* 右側背景の薄いアクセント・ウェッジ(勝者コーナー色、opacity 0.13〜0.15相当) */}
+          <div
+            style={{
+              position: "absolute",
+              display: "flex",
+              right: 0,
+              top: 0,
+              width: "620px",
+              height: "675px",
+              backgroundImage: `linear-gradient(112deg, transparent 0%, transparent 58%, ${hexToRgba(
+                cornerColor,
+                0.14
+              )} 58%, ${hexToRgba(cornerColor, 0.14)} 100%)`,
+            }}
+          />
+
           {/* 大会名帯 */}
           <div
             style={{
@@ -94,29 +149,12 @@ export async function GET(req: Request) {
               padding: "16px 56px",
             }}
           >
-            <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "32px", color: COLORS.sumi }}>
+            <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "32px", color: CHROME_INK }}>
               {event.eventName}
             </div>
-            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "28px", color: COLORS.shu, letterSpacing: "1px" }}>
+            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "28px", color: CHROME_INK, letterSpacing: "1px" }}>
               {dateLabel}
             </div>
-          </div>
-
-          {/* 右側余白のゴースト(結果種別を薄く敷く) */}
-          <div
-            style={{
-              position: "absolute",
-              display: "flex",
-              right: "20px",
-              top: "120px",
-              fontFamily: "Bebas Neue",
-              fontSize: "340px",
-              lineHeight: 1,
-              color: "rgba(197, 164, 90, 0.09)",
-              letterSpacing: "6px",
-            }}
-          >
-            {ghost}
           </div>
 
           {/* 本体: 縦をspace-betweenで使い切る(中央寄せの上下帯を作らない) */}
@@ -163,9 +201,12 @@ export async function GET(req: Request) {
               {winner}
             </div>
 
+            {/* 勝者名下の短い区切り線(勝者コーナー色) */}
+            <div style={{ display: "flex", width: "140px", height: "5px", backgroundColor: cornerColor, marginTop: "2px" }} />
+
             {/* 決着方法 + R/タイム(大きく) */}
             <div style={{ display: "flex", alignItems: "baseline", gap: "28px" }}>
-              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${methodSize}px`, color: COLORS.shu }}>
+              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${methodSize}px`, color: cornerColor }}>
                 {methodText}
               </div>
               {rt && (
@@ -175,13 +216,13 @@ export async function GET(req: Request) {
               )}
             </div>
 
-            {/* 敗者(グレーダウン) */}
+            {/* 敗者(明るめグレーで強調) */}
             {!isDraw && (
               <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                 <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "30px", color: COLORS.ash, letterSpacing: "2px" }}>
                   DEF.
                 </div>
-                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "44px", color: COLORS.ash }}>
+                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "52px", color: LOSER_GRAY }}>
                   {loser}
                 </div>
               </div>
@@ -203,7 +244,7 @@ export async function GET(req: Request) {
               padding: "16px 56px",
             }}
           >
-            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "20px", color: COLORS.shu, letterSpacing: "3px" }}>
+            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "20px", color: CHROME_GOLD, letterSpacing: "3px" }}>
               RESULT
             </div>
             <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "22px", color: COLORS.ash, letterSpacing: "1px" }}>
