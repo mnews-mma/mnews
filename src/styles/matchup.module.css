@@ -276,22 +276,24 @@
 /* 選手ページへのリンクがある名前だけ下線を付け、赤/青のみでは伝わらない
    「押せる」合図にする(未収録選手はaタグ自体で囲まれないため対象外、
    §誤誘導防止)。下線は各コーナー色に揃え、コーナー帯・罫線と干渉しない
-   ようtext-underline-offsetで名前本体から離す。
+   ようtext-underline-offsetで名前本体から離す。細く・低opacityにして
+   名前本体(赤/青のフル発色)より控えめにする(色はcolor-mixで半透明化。
+   --red-ink/--blue-inkはhexのためrgba()に直接渡せない)。
    下線は.fighterName(-webkit-box/line-clampで折り返す2行要素)ではなく
    親の<a>に付ける。-webkit-box直下に付けると折り返し後の行に下線が
    引き継がれないブラウザ挙動があり、1行に折り返し不要な単一トークン名でも
    同じ理由で下線が欠けることがあったため(先頭行のみ下線が付くバグの原因)。 */
 .cornerRed a {
   text-decoration: underline;
-  text-decoration-color: var(--red-ink);
-  text-decoration-thickness: 1.5px;
+  text-decoration-color: color-mix(in srgb, var(--red-ink) 45%, transparent);
+  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
 .cornerBlue a {
   text-decoration: underline;
-  text-decoration-color: var(--blue-ink);
-  text-decoration-thickness: 1.5px;
+  text-decoration-color: color-mix(in srgb, var(--blue-ink) 45%, transparent);
+  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
@@ -299,7 +301,7 @@
 .cornerRed a:active,
 .cornerBlue a:hover,
 .cornerBlue a:active {
-  text-decoration-thickness: 2.5px;
+  text-decoration-thickness: 1.75px;
 }
 
 .statsBreak {
