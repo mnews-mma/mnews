@@ -1794,22 +1794,24 @@ export const EVENT_RESULTS: EventResult[] = [
       },
     ],
   },
-  // 2023-09-24 vs岡田遼(中島太一の勝利)は指示で日付・対戦相手・勝敗のみ判明。
-  // 大会名・決着方法・ラウンドは一次ソースで裏取りできておらず、捏造せず
-  // 「未確認」のまま明示する(PR説明で人間確認を依頼)。岡田遼は引退選手のため
-  // FIGHTERSへの新規選手登録はせず、名寄せ表示のみ(既存の慣習に従う)。
+  // 2023-09-24 vs岡田遼(中島太一の勝利)は、人間の確認によりRIZIN公式サイト
+  // (jp.rizinff.com)を一次ソースとして大会名・決着方法を確定(2026-07-18)。
+  // 岡田遼は引退選手のためFIGHTERSへの新規選手登録はせず、名寄せ表示のみ
+  // (既存の慣習に従う)。
   {
     slug: "rizin-2023-0924-nakajima-okada",
     org: "rizin",
-    eventName: "RIZIN(2023-09-24開催・大会名未確認)",
+    eventName: "RIZIN.44",
     date: "2023-09-24",
+    sourceUrl: "https://jp.rizinff.com/_ct/17656533",
     fights: [
       {
-        weightClass: "バンタム級",
+        weightClass: "61.0kg契約",
         fighterA: "岡田遼",
         fighterB: "中島太一",
         winner: "中島太一",
-        method: "（決着方法未確認）",
+        method: "判定（3-0）",
+        round: "3R",
       },
     ],
   },

@@ -20291,7 +20291,7 @@
     "draws": 0,
     "ko": 2,
     "sub": 0,
-    "decision": 0,
+    "decision": 1,
     "history": [
       {
         "date": "2026-05-24",
@@ -20337,10 +20337,10 @@
         "date": "2023-09-24",
         "opponent": "岡田遼",
         "result": "win",
-        "method": "（決着方法未確認）",
-        "event": "RIZIN(2023-09-24開催・大会名未確認)",
-        "round": "",
-        "weightClass": "バンタム級"
+        "method": "判定（3-0）",
+        "event": "RIZIN.44",
+        "round": "3R",
+        "weightClass": "61.0kg契約"
       },
       {
         "date": "2022-04-17",
