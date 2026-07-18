@@ -2,13 +2,17 @@
 // 別の概念で、こちらは前回スナップショットとの「順位番号(何位から何位へ)」の
 // 差分を表示する。数値は必ずrankPositionDelta.tsの後処理パイプラインから来た
 // 値のみを使い、ここでは一切算出・捏造しない(未算出/前回データ無しは常に—)。
+import { SUPPRESS_RANKING_MOVEMENT } from "@/lib/mnewsRating/rankingMovementGate";
+
 export interface RankPositionDeltaValue {
   kind: "up" | "down" | "same" | "new";
   positions: number;
 }
 
 export default function RankPositionDeltaBadge({ delta }: { delta: RankPositionDeltaValue | null | undefined }) {
-  if (!delta || delta.kind === "same") {
+  // 一時ゲート(2026-07-18): 手動追加に伴う挿入シフトを成績変動と誤読させないため、
+  // 明日のLANDMARK 15結果反映まで順位変動表示を一律「—」に固定する(rankingMovementGate.ts)。
+  if (SUPPRESS_RANKING_MOVEMENT || !delta || delta.kind === "same") {
     return (
       <span style={{ color: "var(--muted)", fontSize: 11 }} title="前回から順位変動なし">
         —
