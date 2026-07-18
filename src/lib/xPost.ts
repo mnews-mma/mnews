@@ -195,10 +195,18 @@ export function eventTag(eventName: string): string {
   return n.replace(/[^A-Za-z0-9぀-ヿ一-鿿]/g, "");
 }
 
+// findRankLabelInDivision由来のラベルは"王者"か"{数字}位"のいずれか。
+// 「AI RIZINランキング」は数字順位にのみ前置し、王者には付けない
+// (「AI RIZINランキング王者」は不自然なため)。
+function isNumericRankLabel(rank: string): boolean {
+  return /^\d+位$/.test(rank);
+}
+
 // winner/loserの表示名に、あれば「AI RIZINランキング」順位ラベルを差し込む。
-// ラベル自体は文中で最初に登場する(=winner側優先の)ランク入り選手の直前に
-// 1回だけ付け、以降のランク入り選手は「{順位}」のみを名前の直前に付ける。
-// 両者とも未ランク(rank未指定/null)ならどちらの名前も変更しない。
+// - 王者ラベルは枕詞なしの「王者」のみ(「AI RIZINランキング」を付けない)。
+// - 「AI RIZINランキング」は文中で最初に登場する(=winner側優先の)数字順位
+//   ラベルにだけ1回前置する。2人目以降の数字順位ラベルは「{順位}」のみ。
+// - 未ランク(rank未指定/null)は枕詞なし・名前のみ。
 function withRankPrefix(
   winner: string,
   loser: string,
@@ -206,13 +214,14 @@ function withRankPrefix(
   loserRank?: string | null
 ): { winner: string; loser: string } {
   if (!winnerRank && !loserRank) return { winner, loser };
-  const winnerText = winnerRank ? `${winnerRank}${winner}` : winner;
-  const loserText = loserRank ? `${loserRank}${loser}` : loser;
+  const winnerIsNumeric = !!winnerRank && isNumericRankLabel(winnerRank);
+  const loserIsNumeric = !!loserRank && isNumericRankLabel(loserRank);
   // 文中で先に登場するのは常にwinner側(引き分け時もfighterA側)なので、
-  // winnerがランク入りしていればそちらへ、そうでなければloser側へラベルを付ける。
-  return winnerRank
-    ? { winner: `AI RIZINランキング${winnerText}`, loser: loserText }
-    : { winner: winnerText, loser: `AI RIZINランキング${loserText}` };
+  // winnerが数字順位ならそちらへ、そうでなければ(未ランク/王者)loser側の
+  // 数字順位へ前置する。
+  const winnerLabel = winnerIsNumeric ? `AI RIZINランキング${winnerRank}` : winnerRank ?? "";
+  const loserLabel = !winnerIsNumeric && loserIsNumeric ? `AI RIZINランキング${loserRank}` : loserRank ?? "";
+  return { winner: `${winnerLabel}${winner}`, loser: `${loserLabel}${loser}` };
 }
 
 export function buildResultPost(opts: {
