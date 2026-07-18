@@ -20148,43 +20148,219 @@
         "date": "2026-04-12",
         "opponent": "神龍誠",
         "result": "loss",
-        "method": "キムラロック",
+        "method": "1R 2:52 アームロック",
         "event": "RIZIN LANDMARK 13",
-        "round": "1R 2:52",
-        "time": "2:52",
+        "round": "R1",
         "weightClass": "57.0kg契約"
       },
       {
         "date": "2025-07-27",
         "opponent": "伊藤裕樹",
         "result": "loss",
-        "method": "判定（3-0）",
-        "event": "超RIZIN.4 真夏の喧嘩祭り",
-        "round": "3R",
+        "method": "5分3R終了 判定0-3",
+        "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINフライ級ワールドグランプリ1回戦】",
+        "round": "R3",
         "weightClass": "57.0kg契約"
       },
       {
         "date": "2024-12-31",
         "opponent": "堀口恭司",
         "result": "loss",
-        "method": "判定（3-0）",
-        "event": "RIZIN.49",
-        "round": "3R",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN.49 【RIZINフライ級タイトルマッチ】",
+        "round": "R3",
         "weightClass": "RIZINフライ級タイトルマッチ"
       },
       {
         "date": "2024-09-29",
         "opponent": "新井丈",
         "result": "win",
-        "method": "TKO（スタンドパンチ連打）",
+        "method": "1R 4:12 TKO（スタンドパンチ連打）",
         "event": "RIZIN.48",
-        "round": "1R 4:18",
-        "time": "4:18",
+        "round": "R1",
         "weightClass": "フライ級"
+      },
+      {
+        "date": "2024-03-07",
+        "opponent": "ギフト・ウォーカー",
+        "result": "win",
+        "method": "3R 2:38 ギロチンチョーク",
+        "event": "EFC 111 【EFCフライ級タイトルマッチ】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-07-13",
+        "opponent": "ムサ・セスワペ",
+        "result": "win",
+        "method": "4R 3:15 リアネイキドチョーク",
+        "event": "EFC 105 【EFCバンタム級王座決定戦】",
+        "round": "R4"
+      },
+      {
+        "date": "2022-12-01",
+        "opponent": "ニコラス・フウェンデ",
+        "result": "loss",
+        "method": "5分5R終了 判定0-3",
+        "event": "EFC 100 【EFCバンタム級タイトルマッチ】",
+        "round": "R5"
+      },
+      {
+        "date": "2022-05-07",
+        "opponent": "ジャン・ソウザ",
+        "result": "draw",
+        "method": "5分3R終了 判定1-1",
+        "event": "EFC Fight Night 2",
+        "round": "R3"
+      },
+      {
+        "date": "2021-12-04",
+        "opponent": "ルサンド・ビコ",
+        "result": "loss",
+        "method": "1R 0:26 TKO（右フック→パウンド）",
+        "event": "EFC 91 【EFCフライ級タイトルマッチ】",
+        "round": "R1"
+      },
+      {
+        "date": "2021-09-10",
+        "opponent": "ルサンド・ビコ",
+        "result": "win",
+        "method": "2R 2:52 ギロチンチョーク",
+        "event": "EFC 89 【EFCフライ級タイトルマッチ】",
+        "round": "R2"
+      },
+      {
+        "date": "2021-05-08",
+        "opponent": "ファファ・オワマ",
+        "result": "win",
+        "method": "2R 3:00 三角絞め",
+        "event": "EFC 85",
+        "round": "R2"
+      },
+      {
+        "date": "2019-08-10",
+        "opponent": "フェイズ・ジェイコブス",
+        "result": "loss",
+        "method": "5分5R終了 判定1-2",
+        "event": "EFC 81 【EFCバンタム級暫定王座決定戦】",
+        "round": "R5"
+      },
+      {
+        "date": "2019-04-13",
+        "opponent": "ジェイク・ハドリー",
+        "result": "loss",
+        "method": "5分5R終了 判定0-3",
+        "event": "EFC 78 【EFCフライ級タイトルマッチ】",
+        "round": "R5"
+      },
+      {
+        "date": "2018-11-03",
+        "opponent": "ゲイリー・ジョシュア",
+        "result": "win",
+        "method": "5R 2:25 ギロチンチョーク",
+        "event": "EFC 75 【EFCフライ級タイトルマッチ】",
+        "round": "R5"
+      },
+      {
+        "date": "2018-06-23",
+        "opponent": "マグノ・アウベス",
+        "result": "win",
+        "method": "1R 4:18 TKO（パウンド）",
+        "event": "EFC 71 【EFCフライ級タイトルマッチ】",
+        "round": "R1"
+      },
+      {
+        "date": "2018-06-23",
+        "opponent": "シルベスター・チップファンブ",
+        "result": "win",
+        "method": "4R 1:38 TKO（スタンドパンチ連打）",
+        "event": "EFC 62 【EFCフライ級タイトルマッチ】",
+        "round": "R4"
+      },
+      {
+        "date": "2015-08-27",
+        "opponent": "クレイグ・ニノウ",
+        "result": "win",
+        "method": "1R 2:16 TKO（右アッパー→パウンド）",
+        "event": "EFC 43 【EFCフライ級王座決定戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2014-12-11",
+        "opponent": "フランソワ・グローネヴァルト",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "EFC 36",
+        "round": "R3"
+      },
+      {
+        "date": "2014-12-11",
+        "opponent": "デマルテ・ペナ",
+        "result": "loss",
+        "method": "5分5R終了 判定0-3",
+        "event": "EFC 31 【EFCバンタム級タイトルマッチ】",
+        "round": "R5"
+      },
+      {
+        "date": "2014-02-27",
+        "opponent": "チャーリー・ウェイヤー",
+        "result": "win",
+        "method": "1R 3:34 TKO（パウンド）",
+        "event": "EFC 27 【EFCバンタム級王座決定戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2013-10-10",
+        "opponent": "クレイグ・ニノウ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "EFC 24",
+        "round": "R3"
+      },
+      {
+        "date": "2013-08-15",
+        "opponent": "セドリック・ドイル",
+        "result": "win",
+        "method": "2R 4:32 三角絞め",
+        "event": "EFC 22",
+        "round": "R2"
+      },
+      {
+        "date": "2013-07-25",
+        "opponent": "ロウレンス・ボテス",
+        "result": "win",
+        "method": "2R 0:20 KO（右ハイキック）",
+        "event": "EFC 21",
+        "round": "R2"
+      },
+      {
+        "date": "2013-05-28",
+        "opponent": "ソク・チェンダ",
+        "result": "win",
+        "method": "2R 2:28 三角絞め",
+        "event": "CTN Promotions Khmer Warrior Championship",
+        "round": "R2"
+      },
+      {
+        "date": "2013-04-19",
+        "opponent": "ドノヴァン・ウィルケン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "EFC 19",
+        "round": "R3"
+      },
+      {
+        "date": "2013-03-08",
+        "opponent": "チュット・チュンリー",
+        "result": "win",
+        "method": "TKO（エルボー）",
+        "event": "CTN Promotions CTN 10th Anniversary Show",
+        "round": "—"
       }
     ],
     "live": true,
-    "nickname": "アフリカ軽量級の雄"
+    "nickname": "アフリカ軽量級の雄",
+    "birthPlace": "南アフリカ共和国プレトリア",
+    "age": 37
   },
   "gallagher-james": {
     "wins": 13,
@@ -20345,66 +20521,278 @@
     "history": [
       {
         "date": "2026-05-24",
-        "opponent": "日比野“エビ中”純也",
+        "opponent": "日比野\"エビ中\"純也",
         "result": "win",
-        "method": "TKO",
+        "method": "2R 0:34 TKO（右ストレート→パウンド）",
         "event": "DEEP TOKYO IMPACT 2026 3rd ROUND",
-        "round": "2R 2:59",
-        "time": "2:59",
-        "weightClass": "DEEPバンタム級"
+        "round": "R2"
       },
       {
         "date": "2025-11-03",
         "opponent": "後藤丈治",
         "result": "loss",
-        "method": "KO（スタンドパンチ）",
-        "event": "RIZIN LANDMARK 12 in KOBE",
-        "round": "1R 1:49",
-        "time": "1:49",
+        "method": "1R 1:49 KO（左フック）",
+        "event": "RIZIN LANDMARK 12",
+        "round": "R1",
         "weightClass": "61.0kg契約"
       },
       {
         "date": "2025-06-14",
         "opponent": "CORO",
         "result": "win",
-        "method": "KO",
-        "event": "RIZIN LANDMARK 11 in SAPPORO",
-        "round": "1R 1:17",
-        "time": "1:17",
+        "method": "1R 1:34 TKO（左フック→パウンド）",
+        "event": "RIZIN LANDMARK 11",
+        "round": "R1",
         "weightClass": "61.0kg契約"
+      },
+      {
+        "date": "2025-04-13",
+        "opponent": "ハルク大城",
+        "result": "win",
+        "method": "2R 3:19 TKO（ドクターストップ：脛の出血）",
+        "event": "DEEP TOKYO IMPACT 2025 2nd ROUND",
+        "round": "R2"
       },
       {
         "date": "2024-04-29",
         "opponent": "キム・スーチョル",
         "result": "loss",
-        "method": "KO（左フック）",
+        "method": "2R 0:06 KO（左フック）",
         "event": "RIZIN.46 【日韓対抗戦】",
-        "round": "2R 0:06",
-        "time": "0:06",
+        "round": "R2",
         "weightClass": "61.0kg契約"
       },
       {
         "date": "2023-09-24",
         "opponent": "岡田遼",
         "result": "win",
-        "method": "判定（3-0）",
+        "method": "5分3R終了 判定3-0",
         "event": "RIZIN.44",
-        "round": "3R",
+        "round": "R3",
         "weightClass": "61.0kg契約"
+      },
+      {
+        "date": "2023-04-30",
+        "opponent": "田嶋椋",
+        "result": "win",
+        "method": "5分5R終了 判定3-0",
+        "event": "PANCRASE 333 【バンタム級キング・オブ・パンクラス王者統一戦】",
+        "round": "R5"
       },
       {
         "date": "2022-04-17",
         "opponent": "ヴガール・ケラモフ",
         "result": "loss",
-        "method": "前三角絞",
+        "method": "1R 2:00 前三角絞",
         "event": "RIZIN.35",
-        "round": "1R 2:00",
-        "time": "2:00",
+        "round": "R1",
         "weightClass": "フェザー級"
+      },
+      {
+        "date": "2021-12-12",
+        "opponent": "井村塁",
+        "result": "win",
+        "method": "2R 0:08 TKO（スタンドパンチ連打）",
+        "event": "PANCRASE 325 【バンタム級キング・オブ・パンクラス暫定王者決定戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2021-05-30",
+        "opponent": "ISAO",
+        "result": "loss",
+        "method": "5分5R終了 判定0-3",
+        "event": "PANCRASE 321 【フェザー級キング・オブ・パンクラスタイトルマッチ】",
+        "round": "R5"
+      },
+      {
+        "date": "2020-09-27",
+        "opponent": "堀江圭功",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
+        "event": "PANCRASE 318 【フェザー級キング・オブ・パンクラス次期挑戦者決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2020-02-16",
+        "opponent": "ボリス・フェドロフ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PANCRASE 312",
+        "round": "R3"
+      },
+      {
+        "date": "2019-07-21",
+        "opponent": "ユータ&ロック",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "PANCRASE 307",
+        "round": "R3"
+      },
+      {
+        "date": "2019-04-14",
+        "opponent": "カイル・アグォン",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "PANCRASE 304 【フェザー級キング・オブ・パンクラス次期挑戦者決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2018-09-09",
+        "opponent": "田村一聖",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PANCRASE 299",
+        "round": "R3"
+      },
+      {
+        "date": "2017-09-30",
+        "opponent": "トゥラル・ラギモフ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "ACB 71: Moscow",
+        "round": "R3"
+      },
+      {
+        "date": "2017-05-20",
+        "opponent": "アルマン・オスパノフ",
+        "result": "loss",
+        "method": "2R 1:35 KO（後ろ回し蹴り）",
+        "event": "ACB 61: Balaev vs. Bataev",
+        "round": "R2"
+      },
+      {
+        "date": "2017-03-24",
+        "opponent": "フェイジディニ・ラザバリ",
+        "result": "win",
+        "method": "2R 1:20 キムラロック",
+        "event": "ACB 55: Tajikistan",
+        "round": "R2"
+      },
+      {
+        "date": "2016-09-17",
+        "opponent": "マゴメド・カムザエフ",
+        "result": "win",
+        "method": "1R 4:15 KO（ミドルキック）",
+        "event": "ACB 45",
+        "round": "R1"
+      },
+      {
+        "date": "2016-06-03",
+        "opponent": "イスラム・メシェフ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "ACB 40: Battleground",
+        "round": "R3"
+      },
+      {
+        "date": "2016-02-07",
+        "opponent": "アーノルド・クエロ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "WSOF GC 2: Japan 1",
+        "round": "R3"
+      },
+      {
+        "date": "2015-11-28",
+        "opponent": "ダン・イゲ",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
+        "event": "PANCRASE 272",
+        "round": "R3"
+      },
+      {
+        "date": "2015-05-31",
+        "opponent": "ビクター・ヘンリー",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "PANCRASE 267",
+        "round": "R3"
+      },
+      {
+        "date": "2014-12-31",
+        "opponent": "北田俊亮",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "DEEP DREAM IMPACT 2014 〜大晦日SPECIAL〜",
+        "round": "R3"
+      },
+      {
+        "date": "2014-03-30",
+        "opponent": "マルシオ・セザール",
+        "result": "win",
+        "method": "1R 2:38 KO（右バックスピンキック）",
+        "event": "PANCRASE 257 【ワールドスラムトーナメント バンタム級 決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2013-09-29",
+        "opponent": "サーワン・カカイ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PANCRASE 252 【ワールドスラムトーナメント バンタム級 1回戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2013-05-19",
+        "opponent": "手塚基伸",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "PANCRASE 247",
+        "round": "R3"
+      },
+      {
+        "date": "2013-02-03",
+        "opponent": "佐藤将光",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PANCRASE 245",
+        "round": "R3"
+      },
+      {
+        "date": "2012-11-10",
+        "opponent": "滝田J太郎",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PANCRASE 2012 PROGRESS TOUR",
+        "round": "R3"
+      },
+      {
+        "date": "2012-09-01",
+        "opponent": "北郷祐介",
+        "result": "win",
+        "method": "1R 3:19 アームロック",
+        "event": "PANCRASE 2012 PROGRESS TOUR 【ネオブラッド・トーナメント バンタム級 決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2012-07-01",
+        "opponent": "土佐健市",
+        "result": "win",
+        "method": "2R 1:03 チョークスリーパー",
+        "event": "PANCRASE 2012 PROGRESS TOUR 【ネオブラッド・トーナメント バンタム級 準決勝】",
+        "round": "R2"
+      },
+      {
+        "date": "2012-04-28",
+        "opponent": "CORO",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "PANCRASE 2012 PROGRESS TOUR 【ネオブラッド・トーナメント バンタム級 1回戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2011-12-17",
+        "opponent": "チェ・ドンソン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "HEAT20 〜HEAT20回記念大会〜",
+        "round": "R3"
       }
     ],
     "live": true,
-    "nickname": "ハイブリッドクッキングパパ"
+    "nickname": "ハイブリッドクッキングパパ",
+    "birthPlace": "東京都西東京市",
+    "age": 37
   },
   "case-johnny": {
     "wins": 28,
