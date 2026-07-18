@@ -1758,6 +1758,61 @@ export const EVENT_RESULTS: EventResult[] = [
       },
     ],
   },
+  // A-3(2026-07-18)追加: 中島太一選手戦績投入のため、data/fighterRecords.json内の
+  // 対戦相手側(ヴガール・ケラモフ=karamov-vugar, キム・スーチョル=kim-soochul)の
+  // 既存戦績データに既に記録されていた事実をそのまま転記。会場は未確認のため
+  // 空欄(捏造しない)。カード全体は未収集のため中島太一の1試合のみ収録。
+  {
+    slug: "rizin-35",
+    org: "rizin",
+    eventName: "RIZIN.35",
+    date: "2022-04-17",
+    fights: [
+      {
+        weightClass: "フェザー級",
+        fighterA: "ヴガール・ケラモフ",
+        fighterB: "中島太一",
+        winner: "ヴガール・ケラモフ",
+        method: "前三角絞",
+        round: "1R 2:00",
+      },
+    ],
+  },
+  {
+    slug: "rizin-46",
+    org: "rizin",
+    eventName: "RIZIN.46 【日韓対抗戦】",
+    date: "2024-04-29",
+    fights: [
+      {
+        weightClass: "61.0kg契約",
+        fighterA: "キム・スーチョル",
+        fighterB: "中島太一",
+        winner: "キム・スーチョル",
+        method: "KO（左フック）",
+        round: "2R 0:06",
+      },
+    ],
+  },
+  // 2023-09-24 vs岡田遼(中島太一の勝利)は指示で日付・対戦相手・勝敗のみ判明。
+  // 大会名・決着方法・ラウンドは一次ソースで裏取りできておらず、捏造せず
+  // 「未確認」のまま明示する(PR説明で人間確認を依頼)。岡田遼は引退選手のため
+  // FIGHTERSへの新規選手登録はせず、名寄せ表示のみ(既存の慣習に従う)。
+  {
+    slug: "rizin-2023-0924-nakajima-okada",
+    org: "rizin",
+    eventName: "RIZIN(2023-09-24開催・大会名未確認)",
+    date: "2023-09-24",
+    fights: [
+      {
+        weightClass: "バンタム級",
+        fighterA: "岡田遼",
+        fighterB: "中島太一",
+        winner: "中島太一",
+        method: "（決着方法未確認）",
+      },
+    ],
+  },
   {
     slug: "rizin-50",
     org: "rizin",
