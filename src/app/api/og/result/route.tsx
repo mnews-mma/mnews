@@ -201,9 +201,6 @@ export async function GET(req: Request) {
               {winner}
             </div>
 
-            {/* 勝者名下の短い区切り線(勝者コーナー色) */}
-            <div style={{ display: "flex", width: "140px", height: "5px", backgroundColor: cornerColor, marginTop: "2px" }} />
-
             {/* 決着方法 + R/タイム(大きく) */}
             <div style={{ display: "flex", alignItems: "baseline", gap: "28px" }}>
               <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${methodSize}px`, color: cornerColor }}>
