@@ -1,4 +1,5 @@
 import { SourceKey } from "./sources";
+import { fighterNameSize } from "./vsMath";
 
 export type EventStatus = "upcoming" | "live" | "completed";
 
@@ -769,6 +770,18 @@ export const EVENTS: MEvent[] = [
     ],
   },
 ];
+
+// 選手名フォントサイズを全イベントページ横断で統一するための共通値。
+// 従来は各イベントページが自ページ内の最長名だけを基準にサイズを決めていた
+// ため、大会をまたぐと絶対値がバラついていた(意図的なデザイン変更で統一)。
+// EVENTS(全大会・全カード)を基準に一度だけ算出し、events/[slug]/page.tsxは
+// 必ずこの値を使う(ページ単体でfighterNameSizeを再計算しない)。
+export const GLOBAL_FIGHTER_NAME_SIZE = EVENTS.reduce((min, event) => {
+  return event.bouts.reduce(
+    (m, b) => Math.min(m, fighterNameSize(b.fighterA), fighterNameSize(b.fighterB)),
+    min
+  );
+}, 20);
 
 export function getEvent(slug: string): MEvent | undefined {
   return EVENTS.find((e) => e.slug === slug);

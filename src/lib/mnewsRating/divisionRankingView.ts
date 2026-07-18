@@ -112,6 +112,18 @@ export function toClientSafeResolvedDivisionRankingView(
   };
 }
 
+// 指定階級のランキングデータ内で、slugが王者/ランカーのいずれかに該当すれば
+// 表示用の順位ラベル("王者"または"◯位")を返す。掲載無し(未ランク)はnull
+// (順位を捏造しない)。/api/og/vs-compareのfindRankBadgeと同じ「rankのみ参照」
+// 方針だが、あちらは複数階級を横断探索するのに対し、こちらは呼び出し側が
+// 特定した1階級のみを見る(ライブ結果入力は「その試合の階級」で判定するため)。
+export function findRankLabelInDivision(data: DivisionRankings | null | undefined, slug: string): string | null {
+  if (!data) return null;
+  if (data.champion?.fighterId === slug) return "王者";
+  const entry = data.entries.find((e) => e.fighterId === slug);
+  return entry ? `${entry.rank}位` : null;
+}
+
 // 「公開可否」の判定はPUBLISHED_DIVISIONS(divisions.ts)を唯一の真実源とする。
 // /rankings/[division]・/rankings(ハブ)は既にこのホワイトリストを直接参照して
 // 非公開階級を「準備中」として扱っている。トップページのウィジェットも同じ

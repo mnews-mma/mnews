@@ -1286,7 +1286,25 @@ export const FIGHTERS: Fighter[] = [
   { slug: "sabatello-danny", nameJa: "ダニー・サバテロ", nameEn: "Danny Sabatello", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ダニー・サバテロ", nickname: "The Italian Gangster" },
   { slug: "patricky-pitbull", nameJa: "パトリッキー・ピットブル", nameEn: "Patricky Pitbull", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パトリッキー・ピットブル", nickname: "冥界の番犬" },
   { slug: "dodson-john", nameJa: "ジョン・ドッドソン", nameEn: "John Dodson", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジョン・ドッドソン", nickname: "ザ・マジシャン" },
+  // A-2(2026-07-18)追加。他の外国籍RIZIN参戦選手(Sabatello/Mix/Dodson等)と同じ
+  // recordFromResults方式(自社EVENT_RESULTS由来のみを表示戦績とする)を採用。
+  // 通算戦績16勝7敗1分(RIZIN外の海外プロモーション分含む)は一次ソース裏取りが
+  // 出来ていないため、他の同パターン選手と同様にwins/losses等は0のまま据え置き、
+  // 捏造しない。表示される戦績はEVENT_RESULTS登録済みのRIZIN 4戦のみ(1-3-0)に
+  // なる。この方針で良いか人間の判断を要する(PR説明を参照)。
+  { slug: "zulu-nkazimulo", nameJa: "エンカジムーロ・ズールー", nameEn: "Nkazimulo Zulu", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "アフリカ軽量級の雄" },
   { slug: "gallagher-james", nameJa: "ジェームズ・ギャラガー", nameEn: "James Gallagher", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジェームズ・ギャラガー", nickname: "アイリッシュ・チョーカー" },
+  // A-3(2026-07-18)追加。recordFromResults方式(自社EVENT_RESULTS由来のみを
+  // 表示戦績とする)を採用。最新戦(2025-11-03 vs後藤丈治)が61.0kg契約のため
+  // 自動階級判定ロジック(mapToDivision: kg<=61.5→バンタム級)によりバンタム級
+  // 扱いになる想定。DEEP戦績(vs日比野・vsハルク大城)は自社EVENT_RESULTSに
+  // 登録されていればプロフィール通算成績に含まれるが、Mレーティング
+  // (mnewsRating/engine.ts の isRizinMmaEvent)がイベント名に"RIZIN"を含む
+  // 試合のみを対象にするため、DEEP戦は自動的にランキング集計から除外される
+  // (個別選手への hidden 等のフラグ付与は不要、既存の団体名フィルタで完結)。
+  // vsハルク大城(DEEP)は日付・決着方法が一次ソースで裏取りできておらず、
+  // 捏造を避けるためEVENT_RESULTSに未登録(PR説明で人間確認を依頼)。
+  { slug: "nakajima-taichi", nameJa: "中島太一", nameEn: "Taichi Nakajima", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "ハイブリッドクッキングパパ" },
   { slug: "case-johnny", nameJa: "ジョニー・ケース", nameEn: "Johnny Case", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジョニー・ケース", nickname: "非情な貴公子" },
   { slug: "torres-jose", nameJa: "ホセ・トーレス", nameEn: "Jose Torres", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ホセ・トーレス (格闘家)", nickname: "BRAVE CFの弾丸レスラー" },
   { slug: "gustavo-luis", nameJa: "ルイス・グスタボ", nameEn: "Luiz Gustavo", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ルイス・グスタボ", nickname: "ファベーラの必殺仕事人" },

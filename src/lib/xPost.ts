@@ -174,18 +174,54 @@ const ORG_HASHTAG: Record<string, string> = {
   shooto: "#修斗",
 };
 
-// 大会名からXハッシュタグを生成する。
-// 「DEEP 132 IMPACT」のような「団体名+号数」型は #DEEP132 に短縮し、
-// それ以外は開催地サフィックス(" in HIROSHIMA"等)を落として記号を除いた
-// 連結形にする(例: RIZIN LANDMARK 15 in HIROSHIMA → #RIZINLANDMARK15)。
-export function eventHashtag(eventName: string): string {
+// 大会名から「団体_大会名」形式の大会タグを生成する(#無し・生トークン)。
+// @メンションとハッシュタグの両方でこの1トークンを共用する。開催地サフィックス
+// (" in HIROSHIMA"等)は落とし、先頭の英字org部分とそれ以降の大会名部分
+// (空白・記号を除去)をアンダースコアで連結する
+// (例: RIZIN LANDMARK 15 in HIROSHIMA → RIZIN_LANDMARK15、PANCRASE 364 →
+// PANCRASE_364、RIZIN.54 → RIZIN_54)。
+// 先頭が英字でない大会名(例:「超RIZIN.5」)は区切り位置を判定できないため、
+// 従来どおり全体を1トークンに詰めた値をそのまま返す(アンダースコア無し)。
+export function eventTag(eventName: string): string {
   let n = eventName.trim().replace(/\s+in\s+.+$/i, "");
   // 号数の後に日本語の副題が続く場合は号数まで(例: 超RIZIN.5 浪速の超復活祭り → 超RIZIN.5)
   n = n.replace(/([0-9])[\s　]+[぀-ヿ一-鿿].*$/, "$1");
-  const m = n.match(/^([A-Za-z]+)[\s.]+(\d+)/);
-  if (m) return `#${m[1].toUpperCase()}${m[2]}`;
-  const compact = n.replace(/[^A-Za-z0-9぀-ヿ一-鿿]/g, "");
-  return compact ? `#${compact}` : "";
+  const m = n.match(/^([A-Za-z]+)(.*)$/);
+  if (m) {
+    const org = m[1].toUpperCase();
+    const rest = m[2].replace(/[^A-Za-z0-9぀-ヿ一-鿿]/g, "").toUpperCase();
+    return rest ? `${org}_${rest}` : org;
+  }
+  return n.replace(/[^A-Za-z0-9぀-ヿ一-鿿]/g, "");
+}
+
+// findRankLabelInDivision由来のラベルは"王者"か"{数字}位"のいずれか。
+// 「AI RIZINランキング」は数字順位にのみ前置し、王者には付けない
+// (「AI RIZINランキング王者」は不自然なため)。
+function isNumericRankLabel(rank: string): boolean {
+  return /^\d+位$/.test(rank);
+}
+
+// winner/loserの表示名に、あれば「AI RIZINランキング」順位ラベルを差し込む。
+// - 王者ラベルは枕詞なしの「王者」のみ(「AI RIZINランキング」を付けない)。
+// - 「AI RIZINランキング」は文中で最初に登場する(=winner側優先の)数字順位
+//   ラベルにだけ1回前置する。2人目以降の数字順位ラベルは「{順位}」のみ。
+// - 未ランク(rank未指定/null)は枕詞なし・名前のみ。
+function withRankPrefix(
+  winner: string,
+  loser: string,
+  winnerRank?: string | null,
+  loserRank?: string | null
+): { winner: string; loser: string } {
+  if (!winnerRank && !loserRank) return { winner, loser };
+  const winnerIsNumeric = !!winnerRank && isNumericRankLabel(winnerRank);
+  const loserIsNumeric = !!loserRank && isNumericRankLabel(loserRank);
+  // 文中で先に登場するのは常にwinner側(引き分け時もfighterA側)なので、
+  // winnerが数字順位ならそちらへ、そうでなければ(未ランク/王者)loser側の
+  // 数字順位へ前置する。
+  const winnerLabel = winnerIsNumeric ? `AI RIZINランキング${winnerRank}` : winnerRank ?? "";
+  const loserLabel = !winnerIsNumeric && loserIsNumeric ? `AI RIZINランキング${loserRank}` : loserRank ?? "";
+  return { winner: `${winnerLabel}${winner}`, loser: `${loserLabel}${loser}` };
 }
 
 export function buildResultPost(opts: {
@@ -194,6 +230,10 @@ export function buildResultPost(opts: {
   loser: string;
   method: string;
   isDraw?: boolean;
+  // その試合の階級におけるAI RIZINランキング順位ラベル("王者"/"◯位")。
+  // 未ランクはnull(順位を捏造しない)。省略時は両者未ランク扱い。
+  winnerRank?: string | null;
+  loserRank?: string | null;
   // 大会名(あれば #DEEP132 のような大会ハッシュタグを付ける)
   eventName?: string;
   // ライブ結果入力から登録される試合結果は news_type=result 固定。
@@ -201,13 +241,15 @@ export function buildResultPost(opts: {
   newsType?: NewsType;
 }): BuiltPost {
   const orgTag = ORG_HASHTAG[opts.org] ?? "";
-  const evTag = opts.eventName ? eventHashtag(opts.eventName) : "";
-  // ハッシュタグは「団体+大会名」。#MMA(ビッグワード)は付けない
-  const hashtags = [orgTag, evTag !== orgTag ? evTag : ""].filter(Boolean).join(" ");
+  const tag = opts.eventName ? eventTag(opts.eventName) : "";
+  // ハッシュタグは「団体+大会タグ(#団体_大会名)」。#MMA(ビッグワード)は付けない
+  const evHashtag = tag ? `#${tag}` : "";
+  const hashtags = [orgTag, evHashtag !== orgTag ? evHashtag : ""].filter(Boolean).join(" ");
   const prefix = flashPrefixForType(opts.newsType ?? "result");
+  const { winner, loser } = withRankPrefix(opts.winner, opts.loser, opts.winnerRank, opts.loserRank);
   const body = opts.isDraw
-    ? `${prefix}${opts.winner} vs ${opts.loser}は${opts.method || "引き分け"}`
-    : `${prefix}${opts.winner}が${opts.loser}に${opts.method}勝ち`;
+    ? `${prefix}${winner} vs ${loser}は${opts.method || "引き分け"}`
+    : `${prefix}${winner}が${loser}に${opts.method}勝ち`;
   return applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.result);
 }
 

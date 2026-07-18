@@ -9,8 +9,34 @@ import {
   stripeTexture,
   fitFontSize,
 } from "@/lib/ogShared";
+// 赤/青コーナー色は既存のVSカード配色(vsCardBlocks.tsx)のトークンをそのまま使う
+// (このファイルで独自に赤/青の値を定義しない=配色ソースを1本化する)。
+import { VS_COLORS } from "@/lib/og/vsCardBlocks";
 
 export const runtime = "edge";
+
+// 勝者コーナー色。fighterA=赤コーナー/fighterB=青コーナーの割当ては
+// サイト既存のVSカード配色(vsCardBlocks.tsx CornerStrip)と同じ規約に揃える。
+// ドロー/NCは勝者コーナーが定まらないため中立グレー(OG_COLORS.ash)。
+const CORNER_RED = VS_COLORS.redInk;
+const CORNER_BLUE = VS_COLORS.blueInk;
+const CORNER_NEUTRAL = COLORS.ash;
+
+// 日付・イベント名・「RESULT」ラベルは勝敗コーナー色と紛れないよう固定色
+// (クローム)にする。勝者コーナーの赤/青と衝突しない専用トーンを使う。
+const CHROME_INK = "#1b1b1d";
+const CHROME_GOLD = "#b8912f";
+
+// 敗者名: 現状のOG_COLORS.ashより一段明るいグレー(強調)
+const LOSER_GRAY = "#b0aa9c";
+
+function hexToRgba(hex: string, alpha: number): string {
+  const h = hex.replace("#", "");
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
 
 // URLパラメータ不正・フォント取得失敗等のフォールバック。no-storeを明示せず
 // 307自体がCDN/Xに長期キャッシュされると、原因解消後もフォールバック画像に
@@ -23,14 +49,44 @@ function fallbackRedirect() {
   });
 }
 
-// 勝者名は最大サイズ。文字数に応じ段階縮小(中途半端なサイズを残さない)
-const WINNER_STEPS = [
-  { maxLen: 5, size: 160 },
-  { maxLen: 8, size: 118 },
-  { maxLen: 11, size: 90 },
-  { maxLen: 16, size: 66 },
-  { maxLen: 24, size: 54 },
-];
+// 勝者名フォントサイズ: 基準サイズ(=拡大の上限)を固定し、通常の名前は常に
+// このサイズで描く。推定幅がカード内の利用可能幅に収まらない場合のみ、
+// 収まるところまで縮小する(shrink-to-fit、拡大はしない)。旧実装は文字数の
+// 段階テーブルで「カード幅いっぱいにフィット」させていたため、短い名前
+// (例:「火の鳥」)ほど巨大化していた(bug)。
+// satoriは実行時にテキスト実寸を測れない(canvasのmeasureText相当が無い)ため、
+// 文字種ごとの推定幅(半角=0.55em/全角=1.0em)で見積もる。和文+ラテン混在名
+// (例:「林RICE陽太」)でも幅のズレを吸収する。
+const WINNER_NAME_BASE_SIZE = 120; // 基準(=最大)。旧実装の「典型的な長さの名前」の
+// サイズ(旧8文字以下ステップ=118px)に合わせており、通常時の見た目より大きくしない。
+const WINNER_NAME_MIN_SIZE = 56; // 下限(旧実装の最小ステップ=54pxと同水準)
+// 勝者名エリアの内寸(カード幅1200px - 本体左右パディング56px×2)。
+const WINNER_NAME_MAX_WIDTH_PX = 1200 - 56 * 2;
+// 縮小時にベースラインがズレて見えないよう、勝者名の描画エリア自体は
+// 基準サイズ基準の固定高さにして上下中央揃えで安定させる。
+const WINNER_NAME_AREA_HEIGHT_PX = Math.round(WINNER_NAME_BASE_SIZE * 1.15);
+
+function estimateNameWidthEm(text: string): number {
+  let w = 0;
+  for (const ch of text) {
+    // コードポイント255以下(Latin-1範囲)=半角ラテン/数字/記号、それ以外=全角(漢字/かな/カナ)
+    const isHalfWidth = (ch.codePointAt(0) ?? 0) <= 255;
+    w += isHalfWidth ? 0.55 : 1.0;
+  }
+  return w;
+}
+
+function fitNameFontSize(
+  text: string,
+  maxWidthPx: number,
+  baseSize = WINNER_NAME_BASE_SIZE,
+  minSize = WINNER_NAME_MIN_SIZE
+): number {
+  const widthEm = estimateNameWidthEm(text);
+  if (widthEm === 0) return baseSize;
+  const fitted = maxWidthPx / widthEm; // 推定幅がmaxWidthPxに収まる最大サイズ
+  return Math.max(minSize, Math.min(baseSize, fitted));
+}
 
 // 決着方法も長さに応じて段階縮小(「一本（リアネイキッドチョーク）」等の長文対策)
 const METHOD_STEPS = [
@@ -60,12 +116,17 @@ export async function GET(req: Request) {
     const isDraw = winnerSide !== "A" && winnerSide !== "B";
     const winner = winnerSide === "B" ? bout.fighterB : bout.fighterA;
     const loser = winnerSide === "B" ? bout.fighterA : bout.fighterB;
-    const winnerSize = fitFontSize(winner, WINNER_STEPS);
+    const winnerSize = fitNameFontSize(winner, WINNER_NAME_MAX_WIDTH_PX);
     const methodText = method || (isDraw ? "引き分け" : "");
     const methodSize = fitFontSize(methodText, METHOD_STEPS);
-    const rt = [round, time].filter(Boolean).join(" ");
-    // 右側余白に敷くゴーストテキスト(結果種別)
-    const ghost = isDraw ? (method.includes("ノーコンテスト") ? "NC" : "DRAW") : "WIN";
+    // 判定・ドローはラウンドまで戦い切るためラウンド番号が意味を持たない
+    // (管理画面のラウンド選択の初期値がそのまま出て誤解を招く)ので出さない。
+    // 「判定」はスコア付き表記(例:「判定（3-0）」)でも出るため前方一致で判定する。
+    // ノーコンテストは途中終了があり得るため引き続きラウンドを表示する。
+    const showRound = !methodText.startsWith("判定") && methodText !== "ドロー" && methodText !== "引き分け";
+    const rt = [showRound ? round : "", time].filter(Boolean).join(" ");
+    // 勝者コーナー色: A=赤コーナー/B=青コーナー、ドロー/NCは中立グレー
+    const cornerColor = isDraw ? CORNER_NEUTRAL : winnerSide === "B" ? CORNER_BLUE : CORNER_RED;
 
     const d = new Date(event.date);
     const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
@@ -84,6 +145,35 @@ export async function GET(req: Request) {
             backgroundImage: stripeTexture(),
           }}
         >
+          {/* 左端の縦帯(勝者コーナー色) */}
+          <div
+            style={{
+              position: "absolute",
+              display: "flex",
+              left: 0,
+              top: 0,
+              width: "14px",
+              height: "675px",
+              backgroundColor: cornerColor,
+            }}
+          />
+
+          {/* 右側背景の薄いアクセント・ウェッジ(勝者コーナー色、opacity 0.13〜0.15相当) */}
+          <div
+            style={{
+              position: "absolute",
+              display: "flex",
+              right: 0,
+              top: 0,
+              width: "620px",
+              height: "675px",
+              backgroundImage: `linear-gradient(112deg, transparent 0%, transparent 58%, ${hexToRgba(
+                cornerColor,
+                0.14
+              )} 58%, ${hexToRgba(cornerColor, 0.14)} 100%)`,
+            }}
+          />
+
           {/* 大会名帯 */}
           <div
             style={{
@@ -94,29 +184,12 @@ export async function GET(req: Request) {
               padding: "16px 56px",
             }}
           >
-            <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "32px", color: COLORS.sumi }}>
+            <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "32px", color: CHROME_INK }}>
               {event.eventName}
             </div>
-            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "28px", color: COLORS.shu, letterSpacing: "1px" }}>
+            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "28px", color: CHROME_INK, letterSpacing: "1px" }}>
               {dateLabel}
             </div>
-          </div>
-
-          {/* 右側余白のゴースト(結果種別を薄く敷く) */}
-          <div
-            style={{
-              position: "absolute",
-              display: "flex",
-              right: "20px",
-              top: "120px",
-              fontFamily: "Bebas Neue",
-              fontSize: "340px",
-              lineHeight: 1,
-              color: "rgba(197, 164, 90, 0.09)",
-              letterSpacing: "6px",
-            }}
-          >
-            {ghost}
           </div>
 
           {/* 本体: 縦をspace-betweenで使い切る(中央寄せの上下帯を作らない) */}
@@ -149,23 +222,33 @@ export async function GET(req: Request) {
               </div>
             </div>
 
-            {/* 勝者名(最大) */}
+            {/* 勝者名: 固定高さのエリア内で上下中央揃え(サイズが縮んでも
+                ベースラインがズレて見えないようにする)。基準サイズは
+                拡大の上限、収まらない名前だけ下限まで縮小する。 */}
             <div
               style={{
                 display: "flex",
-                fontFamily: "Noto Sans JP",
-                fontWeight: 900,
-                fontSize: `${winnerSize}px`,
-                lineHeight: 1.05,
-                color: "#FFFFFF",
+                alignItems: "center",
+                height: `${WINNER_NAME_AREA_HEIGHT_PX}px`,
               }}
             >
-              {winner}
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Noto Sans JP",
+                  fontWeight: 900,
+                  fontSize: `${winnerSize}px`,
+                  lineHeight: 1.05,
+                  color: "#FFFFFF",
+                }}
+              >
+                {winner}
+              </div>
             </div>
 
             {/* 決着方法 + R/タイム(大きく) */}
             <div style={{ display: "flex", alignItems: "baseline", gap: "28px" }}>
-              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${methodSize}px`, color: COLORS.shu }}>
+              <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: `${methodSize}px`, color: cornerColor }}>
                 {methodText}
               </div>
               {rt && (
@@ -175,13 +258,13 @@ export async function GET(req: Request) {
               )}
             </div>
 
-            {/* 敗者(グレーダウン) */}
+            {/* 敗者(明るめグレーで強調) */}
             {!isDraw && (
               <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                 <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "30px", color: COLORS.ash, letterSpacing: "2px" }}>
                   DEF.
                 </div>
-                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "44px", color: COLORS.ash }}>
+                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "52px", color: LOSER_GRAY }}>
                   {loser}
                 </div>
               </div>
@@ -203,7 +286,7 @@ export async function GET(req: Request) {
               padding: "16px 56px",
             }}
           >
-            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "20px", color: COLORS.shu, letterSpacing: "3px" }}>
+            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "20px", color: CHROME_GOLD, letterSpacing: "3px" }}>
               RESULT
             </div>
             <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "22px", color: COLORS.ash, letterSpacing: "1px" }}>

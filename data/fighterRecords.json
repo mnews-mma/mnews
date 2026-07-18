@@ -20136,6 +20136,56 @@
     "birthPlace": "ニューメキシコ州アルバカーキ",
     "age": 41
   },
+  "zulu-nkazimulo": {
+    "wins": 1,
+    "losses": 3,
+    "draws": 0,
+    "ko": 1,
+    "sub": 0,
+    "decision": 0,
+    "history": [
+      {
+        "date": "2026-04-12",
+        "opponent": "神龍誠",
+        "result": "loss",
+        "method": "キムラロック",
+        "event": "RIZIN LANDMARK 13",
+        "round": "1R 2:52",
+        "time": "2:52",
+        "weightClass": "57.0kg契約"
+      },
+      {
+        "date": "2025-07-27",
+        "opponent": "伊藤裕樹",
+        "result": "loss",
+        "method": "判定（3-0）",
+        "event": "超RIZIN.4 真夏の喧嘩祭り",
+        "round": "3R",
+        "weightClass": "57.0kg契約"
+      },
+      {
+        "date": "2024-12-31",
+        "opponent": "堀口恭司",
+        "result": "loss",
+        "method": "判定（3-0）",
+        "event": "RIZIN.49",
+        "round": "3R",
+        "weightClass": "RIZINフライ級タイトルマッチ"
+      },
+      {
+        "date": "2024-09-29",
+        "opponent": "新井丈",
+        "result": "win",
+        "method": "TKO（スタンドパンチ連打）",
+        "event": "RIZIN.48",
+        "round": "1R 4:18",
+        "time": "4:18",
+        "weightClass": "フライ級"
+      }
+    ],
+    "live": true,
+    "nickname": "アフリカ軽量級の雄"
+  },
   "gallagher-james": {
     "wins": 13,
     "losses": 4,
@@ -20284,6 +20334,77 @@
     ],
     "live": true,
     "nickname": "アイリッシュ・チョーカー"
+  },
+  "nakajima-taichi": {
+    "wins": 3,
+    "losses": 3,
+    "draws": 0,
+    "ko": 2,
+    "sub": 0,
+    "decision": 1,
+    "history": [
+      {
+        "date": "2026-05-24",
+        "opponent": "日比野“エビ中”純也",
+        "result": "win",
+        "method": "TKO",
+        "event": "DEEP TOKYO IMPACT 2026 3rd ROUND",
+        "round": "2R 2:59",
+        "time": "2:59",
+        "weightClass": "DEEPバンタム級"
+      },
+      {
+        "date": "2025-11-03",
+        "opponent": "後藤丈治",
+        "result": "loss",
+        "method": "KO（スタンドパンチ）",
+        "event": "RIZIN LANDMARK 12 in KOBE",
+        "round": "1R 1:49",
+        "time": "1:49",
+        "weightClass": "61.0kg契約"
+      },
+      {
+        "date": "2025-06-14",
+        "opponent": "CORO",
+        "result": "win",
+        "method": "KO",
+        "event": "RIZIN LANDMARK 11 in SAPPORO",
+        "round": "1R 1:17",
+        "time": "1:17",
+        "weightClass": "61.0kg契約"
+      },
+      {
+        "date": "2024-04-29",
+        "opponent": "キム・スーチョル",
+        "result": "loss",
+        "method": "KO（左フック）",
+        "event": "RIZIN.46 【日韓対抗戦】",
+        "round": "2R 0:06",
+        "time": "0:06",
+        "weightClass": "61.0kg契約"
+      },
+      {
+        "date": "2023-09-24",
+        "opponent": "岡田遼",
+        "result": "win",
+        "method": "判定（3-0）",
+        "event": "RIZIN.44",
+        "round": "3R",
+        "weightClass": "61.0kg契約"
+      },
+      {
+        "date": "2022-04-17",
+        "opponent": "ヴガール・ケラモフ",
+        "result": "loss",
+        "method": "前三角絞",
+        "event": "RIZIN.35",
+        "round": "1R 2:00",
+        "time": "2:00",
+        "weightClass": "フェザー級"
+      }
+    ],
+    "live": true,
+    "nickname": "ハイブリッドクッキングパパ"
   },
   "case-johnny": {
     "wins": 28,

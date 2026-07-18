@@ -273,21 +273,11 @@
   color: var(--blue-ink);
 }
 
-/* 選手ページへのリンクがある名前だけ下線を付け、赤/青のみでは伝わらない
-   「押せる」合図にする(未収録選手はaタグ自体で囲まれないため対象外、
-   §誤誘導防止)。下線はcurrentColor(=各コーナー色)に揃え、コーナー帯・
-   罫線と干渉しないようtext-underline-offsetで名前本体から離す。 */
-a .fighterName {
-  text-decoration: underline;
-  text-decoration-color: currentColor;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 4px;
-}
-
-a:hover .fighterName,
-a:active .fighterName {
-  text-decoration-thickness: 2.5px;
-}
+/* 選手ページへのリンクがある名前は下線ではなく赤/青の色分けのみで示す
+   (#83で下線を追加→#95で細く調整したが、スマホ幅で名前が2行に折り返すと
+   1行目にしか下線が付かず崩れる問題が解消しなかったため、下線という手法
+   自体を廃止した。リンク判別が色のみに戻る点は許容。名前の色自体は
+   .cornerRed/.cornerBlue .fighterNameで付与されており、ここでは何もしない)。 */
 
 .statsBreak {
   font-size: 11px;
@@ -531,7 +521,12 @@ a:active .fighterName {
   text-overflow: ellipsis;
 }
 
-.cheadLbl {
+/* .chead spanのtext-align:centerより詳細度を上げて左寄せを確実に効かせる
+   (単なる.cheadLblだと.chead span(class+element)に詳細度で負けて中央寄せの
+   ままになる回帰があったため、.chead .cheadLblで明示的に上書きする)。
+   「対戦相手」は下の相手名列(左寄せ)の見出しなので、右のドット列(cheadR/
+   cheadB)と違い中央寄せは誤り。 */
+.chead .cheadLbl {
   text-align: left;
   color: var(--dim);
 }

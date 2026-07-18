@@ -113,13 +113,27 @@ export default function EventBoutCardV2({
               名前描画・サイズ規則に揃える。ページ単位のnameSizeOverrideが
               渡されている場合は必ずそれを使い、このカード単体で独自に
               サイズを決め直さない(戦績なし簡易カードだけ他カードよりサイズが
-              大きくなるバグの原因だったため)。 */}
+              大きくなるバグの原因だったため)。
+              片方の選手のみDB収録の場合でも、収録済みの側は個別にリンクする
+              (bothRegisteredで両側リンクの可否を一括判定しない)。 */}
           <div className={`${styles.na} ${styles.cornerRed}`}>
-            <FighterNameText name={nameA} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+            {slugA ? (
+              <a href={`/fighters/${slugA}`}>
+                <FighterNameText name={nameA} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+              </a>
+            ) : (
+              <FighterNameText name={nameA} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+            )}
           </div>
           <div className={styles.vs}>VS</div>
           <div className={`${styles.nb} ${styles.cornerBlue}`}>
-            <FighterNameText name={nameB} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+            {slugB ? (
+              <a href={`/fighters/${slugB}`}>
+                <FighterNameText name={nameB} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+              </a>
+            ) : (
+              <FighterNameText name={nameB} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+            )}
           </div>
         </div>
       )}

@@ -169,37 +169,39 @@ export default async function HomePage() {
     ? featherweightRankings.updatedAt.slice(0, 10) === todayJstDateStr
     : false;
 
-  // 直近48時間/最大15件の「鮮度ウィンドウ」はRSS由来のニュース記事に適用する。
-  // オリジナル記事(数字で見る対戦カード等)のうち最新1件のみは鮮度で消える性質の
-  // コンテンツではないため、公開日に関わらず固定枠として常にフィードへ含める
-  // (でないと「オリジナル」フィルタタブが記事があるのに0件表示になる回帰が
-  // 起きる)。ただし無制限に全オリジナル記事を鮮度ウィンドウ対象外にすると、
-  // オリジナル記事が増えるにつれ何ヶ月も前の記事がトップに残り続けてしまうため、
-  // 固定枠は最新1件のみとし、2件目以降のオリジナル記事は通常のRSS記事と同じ
-  // 48時間ルールに従わせる(2026-07-18 明示化)。ウィンドウ超過分はトップには
-  // 出さず/archive(ニュース一覧)側でのみ表示する。閑散期対策として48時間以内の
-  // 件数がFEED_MIN_FALLBACK未満の場合は直近FEED_MIN_FALLBACK件を表示する
+  // 直近48時間/最大15件の「鮮度ウィンドウ」は、オリジナル記事(数字で見る対戦
+  // カード等)も含めた全記事に一律で適用する(オリジナルの無期限固定ピンは廃止、
+  // 2026-07-18)。48時間を超えた記事はトップの新着ニュースには出さず/archive
+  // (ニュース一覧)側でのみ表示する。閑散期対策として48時間以内の件数が
+  // FEED_MIN_FALLBACK未満の場合は直近FEED_MIN_FALLBACK件を表示する
   // (0〜数件だけの寂しいトップにしない)。
   const FEED_WINDOW_HOURS = 48;
   const FEED_MAX_ITEMS = 15;
   const FEED_MIN_FALLBACK = 5;
-  const ORIGINAL_PINNED_COUNT = 1;
   const cutoffMs = Date.now() - FEED_WINDOW_HOURS * 3600_000;
-  // feedAllは公開日時降順でソート済みのため、先頭からのisOriginal抽出が
-  // そのまま「最新のオリジナル記事」になる。
-  const pinnedOriginals = feedAll.filter((a) => a.isOriginal).slice(0, ORIGINAL_PINNED_COUNT);
-  const pinnedOriginalIds = new Set(pinnedOriginals.map((a) => a.id));
-  const windowCandidates = feedAll.filter((a) => !pinnedOriginalIds.has(a.id));
-  const within48h = windowCandidates.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
+  const within48h = feedAll.filter((a) => new Date(a.publishedAt).getTime() >= cutoffMs);
   const windowedRest =
-    within48h.length >= FEED_MIN_FALLBACK ? within48h.slice(0, FEED_MAX_ITEMS) : windowCandidates.slice(0, FEED_MIN_FALLBACK);
+    within48h.length >= FEED_MIN_FALLBACK ? within48h.slice(0, FEED_MAX_ITEMS) : feedAll.slice(0, FEED_MIN_FALLBACK);
   // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを
   // 突合。クライアントにはマッチング結果(name/slug)のみを渡す(ロジック自体は
   // 送らない)。visibleFighterSlugsで戦績データが空(noRecordData)の選手を除外し、
   // 中身の無い選手ページへのタグ化を防ぐ(選手ページ・対戦カードと同じ「表示可能」
   // 判定基準=getVisibleFighterSlugsに揃える)。
-  const feedArticles = [...pinnedOriginals, ...windowedRest]
+  const feedArticles = windowedRest
     .sort((x, y) => new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime())
+    .map((a) => ({
+      ...a,
+      relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs),
+    }));
+
+  // 「オリジナル」タブ専用: 48時間カットオフの対象外で全オリジナル記事を新しい順に
+  // 表示する(明示フィルタ時のみの発掘用。デフォルトの「すべて」タブは
+  // feedArticles=48時間ウィンドウ済みのまま、#96の意図を維持)。表示件数上限は
+  // 新着フィードと同じFEED_MAX_ITEMSを流用する(新規の定数は作らない)。
+  const originalTabArticles = originalFeedArticles
+    .slice()
+    .sort((x, y) => new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime())
+    .slice(0, FEED_MAX_ITEMS)
     .map((a) => ({
       ...a,
       relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs),
@@ -256,7 +258,19 @@ export default async function HomePage() {
       <div className="home-wrap">
       <div className="home-main">
         <div className="home-feed">
-          <UnifiedFeed articles={feedArticles} />
+          <UnifiedFeed articles={feedArticles} originalArticles={originalTabArticles} />
+
+          {/* データ資産ブロック(AIランキング+選手DB検索、2枚1組): 新着ニュース
+              の直下・開催予定の大会より上(至急対応・2026-07-18/2026-07-18再修正)。
+              ランキングと検索は分離せず必ず隣接させる(元のhome-hero構成に戻す)。
+              .home-feedがPC(≥1200px)グリッドの左カラム(固定幅)なので、ここに
+              含めることでモバイル/PC双方で「新着ニュース→AIランキング→検索」
+              の並びになる。home-mainのgrid構造(feed/railの2カラム)自体は
+              変更しない。 */}
+          <div className="home-hero">
+            <MnewsRatingSection divisions={mnewsRatingDivisions} />
+            <HeroFighterSearch />
+          </div>
         </div>
 
         {/* UPCOMING EVENTS: PC(≥1200px)は右レール(sticky・高さ収め) / スマホは従来どおり下部表示 */}
@@ -265,14 +279,6 @@ export default async function HomePage() {
             <EventRail events={railEvents} />
           </aside>
         )}
-      </div>
-
-      {/* ヒーロー(データ資産ブロック): ニュースフィードの直下に配置
-          (mnews-homepage-instructions.md §2見直し)。AI RIZINランキングカード+
-          選手DB検索ボックスの2枚構成。 */}
-      <div className="home-hero">
-        <MnewsRatingSection divisions={mnewsRatingDivisions} />
-        <HeroFighterSearch />
       </div>
 
       <div className="home-sections">
