@@ -1,5 +1,131 @@
 [
   {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】ダニー・サバテロが世界中のバンタム級選手に宣戦布告「世界中の誰であろうがやる。みんなが井上直樹との試合を見たいのであれば、俺はそれを喜んで受けるだけだ」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24364",
+    "publishedAt": "2026-07-18T17:29:33.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第12試合／ダニー・サバテロ vs. 鹿志村仁之介",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853302",
+    "publishedAt": "2026-07-18T17:08:45.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-1",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第11試合／カルシャガ・ダウトベック vs. 萩原京平",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853300",
+    "publishedAt": "2026-07-18T16:48:30.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-2",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第10試合／太田忍 vs. イリスベク・ティレノフ",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853296",
+    "publishedAt": "2026-07-18T16:13:53.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】平本蓮vs.ダウトベックは「口説くというか、やらせます」7・20『超RIZIN.5』の会見は「ビビッてたじろぐようなカードをズバッと皆さんにお届けしたい」（榊原CEO）",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24363",
+    "publishedAt": "2026-07-18T15:27:54.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-3",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第9試合／ヒロヤ vs. 山本アーセン",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853293",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-4",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第8試合／ジョニー・ケース vs. 天弥",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853292",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-5",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第7試合／大島沙保里 vs. イ・イェジ",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853290",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-6",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第6試合／パク・シウ vs. 須田萌里",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853289",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-7",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第5試合／昇侍 vs. 梅野源治",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853287",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-8",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第4試合／鈴木博昭 vs. 宮川日向",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853286",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-9",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第3試合／佐々木信治 vs. 林RICE陽太",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853284",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-10",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第2試合／火の鳥 vs. イ・ジェフン",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853283",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "rizin-11",
+    "source": "rizin",
+    "title": "【試合結果】abc presents RIZIN LANDMARK 15 in HIROSHIMA 第1試合／芝宏二郎 vs. 遥心",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853282",
+    "publishedAt": "2026-07-18T15:00:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
     "id": "oricon-0",
     "source": "other",
     "title": "【RIZIN】榊原CEO「平本蓮vsダウトベックを発表できるよう最大限やっていく」敗れた萩原京平にも言及",
@@ -7,6 +133,24 @@
     "url": "https://www.oricon.co.jp/news/2468763/",
     "publishedAt": "2026-07-18T14:27:00.000Z",
     "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "【RIZIN】平本蓮、9月MMA復帰戦はダウトベック濃厚 榊原CEOが試合後に明言「口説きます。やらせます」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033694/",
+    "publishedAt": "2026-07-18T13:21:19.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "encount-1",
+    "source": "other",
+    "title": "【RIZIN】萩原京平、痛恨のKO敗戦「全く見えてなかった」 9月・平本蓮戦は事実上消滅「負けたので諦めます」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033689/",
+    "publishedAt": "2026-07-18T12:41:39.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
   },
   {
     "id": "oricon-1",
@@ -18,6 +162,24 @@
     "firstSeenAt": "2026-07-18T14:42:13.384Z"
   },
   {
+    "id": "encount-2",
+    "source": "other",
+    "title": "【RIZIN】11連勝ダウトベック、9月京セラDでの平本蓮戦プランは「全く知らなかった」も…「オファーが来た相手は誰でも戦う」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033675/",
+    "publishedAt": "2026-07-18T12:05:39.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "encount-3",
+    "source": "other",
+    "title": "【RIZIN】萩原京平、衝撃TKO敗戦にSNSも沈痛「ショックすぎる」「もう厳しい」 カザフ戦士は11連勝…平本蓮対戦相手に急浮上",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033634/",
+    "publishedAt": "2026-07-18T11:33:54.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【RIZIN LANDMARK15】寝技に付き合わず、ダニー・サバテロが鹿志村仁之介を右フックでKO",
@@ -25,6 +187,15 @@
     "url": "https://mmaplanet.jp/233478",
     "publishedAt": "2026-07-18T11:21:05.000Z",
     "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "encount-4",
+    "source": "other",
+    "title": "【RIZIN】王者サバテロが失神KOで2度目の防衛成功 新鋭・鹿志村の意識を一撃で刈り取る…歓喜のシャンパンファイト",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033611/",
+    "publishedAt": "2026-07-18T11:18:30.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
   },
   {
     "id": "mmaplanet-1",
@@ -36,6 +207,24 @@
     "firstSeenAt": "2026-07-18T14:42:13.384Z"
   },
   {
+    "id": "encount-5",
+    "source": "other",
+    "title": "【RIZIN】萩原京平、1RTKO負けに会場沈黙 難敵ダウトベックのワンパンで沈む…リングサイドの平本蓮との再戦も絶望的に",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033585/",
+    "publishedAt": "2026-07-18T10:33:09.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
+    "id": "encount-6",
+    "source": "other",
+    "title": "【RIZIN】初参戦シェイドゥラエフ“同門”が衝撃KOデビュー リオ五輪メダリストを圧倒「サバテロ待っていろ」タイトル戦線殴り込み",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033582/",
+    "publishedAt": "2026-07-18T10:29:21.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
     "id": "mmaplanet-2",
     "source": "other",
     "title": "【RIZIN LANDMARK15】シェイドゥラエフの同門＝ティレノフが太田忍にTKO勝利し、王座挑戦をアピール",
@@ -43,6 +232,15 @@
     "url": "https://mmaplanet.jp/233362",
     "publishedAt": "2026-07-18T10:16:05.000Z",
     "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "encount-7",
+    "source": "other",
+    "title": "【RIZIN】山本アーセンの「アッパーがKIDみたい！」 ヒロヤ撃破に超満員の観衆沸かす…SNSも興奮「強くなってるよな」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033562/",
+    "publishedAt": "2026-07-18T09:59:33.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
   },
   {
     "id": "mmaplanet-3",
@@ -63,6 +261,15 @@
     "firstSeenAt": "2026-07-18T14:42:13.384Z"
   },
   {
+    "id": "encount-8",
+    "source": "other",
+    "title": "【RIZIN】1763日ぶり勝利の43歳・昇侍、“負けたら引退”で臨んだ復帰戦 連敗中は「本当に暗いトンネルの中にずっといた」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033551/",
+    "publishedAt": "2026-07-18T09:31:34.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
+  },
+  {
     "id": "oricon-2",
     "source": "other",
     "title": "【RIZIN】負傷欠場の篠塚辰樹がファンに謝罪「絶対に年内に復活するので待ってて」",
@@ -79,6 +286,15 @@
     "url": "https://mmaplanet.jp/233410",
     "publishedAt": "2026-07-18T08:39:43.000Z",
     "firstSeenAt": "2026-07-18T14:42:13.384Z"
+  },
+  {
+    "id": "encount-9",
+    "source": "other",
+    "title": "“RIZINの前田敦子”が電光石火の100秒フィニッシュ！ あざと可愛い韓国ファイターが苦悶のタップ",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033521/",
+    "publishedAt": "2026-07-18T08:36:00.000Z",
+    "firstSeenAt": "2026-07-18T18:10:07.641Z"
   },
   {
     "id": "rizin-0",
