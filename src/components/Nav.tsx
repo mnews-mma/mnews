@@ -33,20 +33,21 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
-// メニュー項目は既存ルートのみ(未実装ページへのリンクを作らない)。3ブロック
-// 構成(データ資産→大会→ニュース)でヒーローの序列と一致させる
-// (mnews-homepage-instructions.md §3.2)。ブロック間はdividerで区切る。
-// 「AI RIZINランキング」はmnews独自算出でありRIZIN公式ではない点はページ側で
-// 明記済みだが、メニューラベル自体もRIZIN限定であることが伝わるよう、また
-// 「RIZIN ランキング」検索クエリの内部アンカーテキスト最適化のためこの表記
-// にする(遷移先/rankingsは変更なし)。
+// メニュー項目は既存ルートのみ(未実装ページへのリンクを作らない)。トップの
+// 序列(ニュース→データ資産→大会)に合わせ、ニュースを先頭ブロックにする
+// (mnews-homepage-instructions.md §3.2、フッターとも思想を揃える)。
+// 3ブロック構成(ニュース→データ資産→大会)は維持し、ブロック間はdividerで
+// 区切る。「AI RIZINランキング」はmnews独自算出でありRIZIN公式ではない点は
+// ページ側で明記済みだが、メニューラベル自体もRIZIN限定であることが伝わる
+// よう、また「RIZIN ランキング」検索クエリの内部アンカーテキスト最適化の
+// ためこの表記にする(遷移先/rankingsは変更なし)。
 const MENU_ITEMS: { href: string; label: string; dividerBefore?: boolean }[] = [
-  { href: "/rankings", label: "AI RIZINランキング" },
+  { href: "/archive", label: "ニュース一覧" },
+  { href: "/rankings", label: "AI RIZINランキング", dividerBefore: true },
   { href: "/fighters", label: "選手データベース" },
   { href: "/dream", label: "夢のカード" },
   { href: "/events", label: "大会日程", dividerBefore: true },
   { href: "/results", label: "大会結果" },
-  { href: "/archive", label: "ニュース一覧", dividerBefore: true },
 ];
 
 export default function Nav() {
