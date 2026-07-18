@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import RankingDelta from "@/components/RankingDelta";
+import RankPositionDeltaBadge, { RankPositionDeltaValue } from "@/components/RankPositionDeltaBadge";
 
 interface RatingRecord {
   wins: number;
@@ -14,6 +14,7 @@ interface RatingEntry {
   nameJa: string;
   displayRank: number;
   delta: number | null;
+  rankPositionDelta?: RankPositionDeltaValue | null;
   record: RatingRecord;
 }
 
@@ -42,7 +43,10 @@ type Division = (typeof DIVISIONS)[number];
 // サーバー側で既に除外済みのため、ここでは生スラッグへのフォールバックを行わない
 // (fighterIdをそのまま表示に使わない)。レート数値は外向き表示に出さない方針の
 // ため、順位・選手名・戦績・前回比のみ表示する(値自体もサーバー側で除去済み)。
-// 前回比(▲▼—)は差分計算パイプライン未実装のため現状すべて初回掲載扱い(—)。
+// 前回比(▲▼—/NEW)はA-4(2026-07-18)で実装した順位差分パイプライン
+// (rankPositionDelta.ts)の出力をそのまま表示する。「順位番号」の前回比較で
+// あり、レート点数の増減(RankingDelta)とは別概念(スコア計算ロジックには
+// 一切関与しない後処理)。王者行は「順位番号」を持たない事実表示のため、常に—。
 export default function MnewsRatingSection({
   divisions,
 }: {
@@ -82,14 +86,14 @@ export default function MnewsRatingSection({
             <a href={`/fighters/${view.champion.fighterId}`} className="hero-ranking-row">
               <span className="hero-ranking-rank hero-ranking-rank-champion">王者</span>
               <span className="hero-ranking-name">{view.champion.nameJa}</span>
-              <RankingDelta delta={null} />
+              <RankPositionDeltaBadge delta={null} />
             </a>
           )}
           {top3.map((e) => (
             <a key={e.fighterId} href={`/fighters/${e.fighterId}`} className="hero-ranking-row">
               <span className={`hero-ranking-rank ${e.displayRank <= 3 ? "hero-ranking-rank-top" : ""}`}>{e.displayRank}</span>
               <span className="hero-ranking-name">{e.nameJa}</span>
-              <RankingDelta delta={e.delta} />
+              <RankPositionDeltaBadge delta={e.rankPositionDelta ?? null} />
             </a>
           ))}
         </div>
