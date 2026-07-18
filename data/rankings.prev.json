@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-07-17T20:40:10.012Z",
+    "updatedAt": "2026-07-18T00:42:57.179Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -26,7 +26,11 @@
           "draws": 0
         },
         "lastFight": "2026-06-06",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "ito-yuki",
@@ -40,7 +44,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "laramie-tony",
@@ -54,7 +62,11 @@
           "draws": 0
         },
         "lastFight": "2026-06-06",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "motoya-yuki",
@@ -68,7 +80,11 @@
           "draws": 0
         },
         "lastFight": "2026-06-06",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "gadzhamatov-alibeg",
@@ -82,7 +98,11 @@
           "draws": 0
         },
         "lastFight": "2025-09-28",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "torres-jose",
@@ -96,7 +116,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "yamamoto-arsen",
@@ -110,7 +134,11 @@
           "draws": 0
         },
         "lastFight": "2025-09-28",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "soya-takaki",
@@ -124,7 +152,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "dodson-john",
@@ -138,7 +170,11 @@
           "draws": 0
         },
         "lastFight": "2025-05-04",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "hiramoto-jo",
@@ -152,7 +188,11 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "hiroya",
@@ -166,7 +206,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "shinotsuka-tatsuki",
@@ -180,7 +224,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "tomizawa-daichi",
@@ -194,7 +242,11 @@
           "draws": 0
         },
         "lastFight": "2026-06-06",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "lee-junghyun",
@@ -208,13 +260,17 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       }
     ]
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-07-17T20:40:10.012Z",
+    "updatedAt": "2026-07-18T00:42:57.179Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -239,7 +295,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "sato-shoko",
@@ -253,7 +313,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "goto-joji",
@@ -267,7 +331,11 @@
           "draws": 0
         },
         "lastFight": "2026-04-12",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "ota-shinobu",
@@ -281,7 +349,11 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "temirov-azizbek",
@@ -295,7 +367,11 @@
           "draws": 0
         },
         "lastFight": "2026-04-12",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "fukuda-ryuya",
@@ -309,7 +385,11 @@
           "draws": 0
         },
         "lastFight": "2026-04-12",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "kim-soochul",
@@ -323,7 +403,11 @@
           "draws": 0
         },
         "lastFight": "2025-05-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "ando-tatsuya",
@@ -337,7 +421,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "kashimura-jinnosuke",
@@ -351,7 +439,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "yang-jiyong",
@@ -365,7 +457,11 @@
           "draws": 0
         },
         "lastFight": "2025-07-27",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "jolly",
@@ -379,7 +475,11 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "miyagawa-hyuga",
@@ -393,7 +493,11 @@
           "draws": 0
         },
         "lastFight": "2026-04-12",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "umeno-genji",
@@ -407,7 +511,11 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "inoue-seiya",
@@ -421,7 +529,11 @@
           "draws": 0
         },
         "lastFight": "2026-06-01",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "kintaro",
@@ -435,7 +547,11 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "ashizawa-ryusei",
@@ -449,13 +565,17 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       }
     ]
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-07-17T20:40:10.012Z",
+    "updatedAt": "2026-07-18T00:42:57.179Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -480,7 +600,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "koike-kleber",
@@ -494,7 +618,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "akimoto-kyoma",
@@ -508,7 +636,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "karamov-vugar",
@@ -522,7 +654,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "karshyga-dautbek",
@@ -536,7 +672,11 @@
           "draws": 0
         },
         "lastFight": "2025-03-30",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "ya-man",
@@ -550,7 +690,11 @@
           "draws": 0
         },
         "lastFight": "2025-07-27",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "suzuki-chihiro",
@@ -564,7 +708,11 @@
           "draws": 0
         },
         "lastFight": "2025-05-04",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "takeda-koji",
@@ -578,7 +726,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "kolesnik-viktor",
@@ -592,7 +744,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "takagi-ryo",
@@ -606,7 +762,11 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "majima-kazumasa",
@@ -620,7 +780,11 @@
           "draws": 0
         },
         "lastFight": "2026-04-12",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "kubo-yuta",
@@ -634,7 +798,11 @@
           "draws": 0
         },
         "lastFight": "2026-04-12",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "hagiwara-kyohei",
@@ -648,7 +816,11 @@
           "draws": 0
         },
         "lastFight": "2025-11-03",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "suzuki-hiroaki",
@@ -662,7 +834,11 @@
           "draws": 0
         },
         "lastFight": "2025-09-28",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "nii-suguru",
@@ -676,7 +852,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "kimura-shuya",
@@ -690,13 +870,17 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       }
     ]
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-07-17T20:40:10.012Z",
+    "updatedAt": "2026-07-18T00:42:57.179Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -721,7 +905,11 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "souza-roberto-satoshi",
@@ -735,7 +923,11 @@
           "draws": 0
         },
         "lastFight": "2025-12-31",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "horie-yoshinori",
@@ -749,7 +941,11 @@
           "draws": 0
         },
         "lastFight": "2026-04-12",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "nomura-shunta",
@@ -763,7 +959,11 @@
           "draws": 0
         },
         "lastFight": "2025-07-27",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "kim-kyungpyo",
@@ -777,7 +977,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "yachi-yusuke",
@@ -791,7 +995,11 @@
           "draws": 0
         },
         "lastFight": "2026-06-06",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "zhumagazy-nurkhan",
@@ -805,7 +1013,11 @@
           "draws": 0
         },
         "lastFight": "2026-04-12",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "sakuraba-taisei",
@@ -819,7 +1031,11 @@
           "draws": 0
         },
         "lastFight": "2026-03-07",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "usami-sho-patrick",
@@ -833,7 +1049,11 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "beinoa",
@@ -847,7 +1067,11 @@
           "draws": 0
         },
         "lastFight": "2026-06-06",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "saiga-yanbo-tatsuya",
@@ -861,13 +1085,17 @@
           "draws": 0
         },
         "lastFight": "2026-05-10",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       }
     ]
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-07-17T20:40:10.012Z",
+    "updatedAt": "2026-07-18T00:42:57.179Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [
@@ -883,7 +1111,11 @@
           "draws": 0
         },
         "lastFight": "2025-09-28",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "ueda-mikio",
@@ -897,7 +1129,11 @@
           "draws": 0
         },
         "lastFight": "2025-07-27",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "sudario-tsuyoshi",
@@ -911,7 +1147,11 @@
           "draws": 0
         },
         "lastFight": "2025-05-04",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       },
       {
         "fighterId": "takenshin",
@@ -925,7 +1165,11 @@
           "draws": 0
         },
         "lastFight": "2026-06-06",
-        "weighInMiss": false
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
       }
     ]
   }
