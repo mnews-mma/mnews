@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { EVENTS, getEvent } from "@/lib/events";
+import { EVENTS, getEvent, GLOBAL_FIGHTER_NAME_SIZE } from "@/lib/events";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
@@ -12,7 +12,6 @@ import BoutCard, { FighterName } from "@/components/BoutCard";
 import EventBoutCardV2 from "@/components/matchup/EventBoutCardV2";
 import matchupStyles from "@/styles/matchup.module.css";
 import { isNewMatchupUiEnabledByEnv } from "@/lib/matchupUi";
-import { fighterNameSize } from "@/lib/vsMath";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
 
@@ -240,15 +239,16 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
               // 分岐しても(MatchupTape/EventBoutCardV2の簡易フォールバック)、
               // サイズ自体は必ずこのページ単位の値(nameSizeOverride)を使う
               // (コンポーネント側で独自にfighterNameSize()を計算し直さない)。
-              // 戦績なしの選手も対象に含めないと、その選手が短い名前の場合に
-              // 他カードより大きく表示されてしまう(再発したバグ)。
-              let pageNameSize = 20;
+              // サイズの値自体はページ内最長名ではなく全イベント横断の最長名
+              // (GLOBAL_FIGHTER_NAME_SIZE、events.tsでEVENTS全体から算出)を
+              // 使う。イベントをまたいで選手名の絶対サイズが変わらないようにする
+              // ための意図的な仕様(#76の再発防止テストがこの一致を検査する)。
+              const pageNameSize = GLOBAL_FIGHTER_NAME_SIZE;
               const resolvedBouts = orderedBouts.map((b) => {
                 const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
                 const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
                 const entryA = slugA ? (records[slugA] ?? null) : null;
                 const entryB = slugB ? (records[slugB] ?? null) : null;
-                pageNameSize = Math.min(pageNameSize, fighterNameSize(b.fighterA), fighterNameSize(b.fighterB));
                 return { b, slugA, slugB, entryA, entryB };
               });
               return (
