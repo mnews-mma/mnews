@@ -2519,7 +2519,16 @@ a.uf-card:hover { border-color: var(--muted); }
   padding-left: 0;
   padding-right: 0;
 }
-/* <1200px は通常フロー(feed → 右レール内容=開催予定の大会 を下部にそのまま表示) */
+/* <1200px は通常フロー(feed → 右レール内容=開催予定の大会 を下部にそのまま表示)。
+   .home-sectionsのパネル間ギャップ(gap:20px)と同じ値で統一し、feedの末尾
+   (AIランキング+検索の.home-hero)と右レール内容(開催予定の大会)が余白なしで
+   密着しないようにする(2026-07-18再修正)。≥1200pxは下のgrid定義で
+   display/gapとも上書きされる。 */
+.home-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 @media (min-width: 1200px) {
   .home-wrap {
     max-width: 1080px;
