@@ -194,6 +194,19 @@ export default async function HomePage() {
       relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs),
     }));
 
+  // 「オリジナル」タブ専用: 48時間カットオフの対象外で全オリジナル記事を新しい順に
+  // 表示する(明示フィルタ時のみの発掘用。デフォルトの「すべて」タブは
+  // feedArticles=48時間ウィンドウ済みのまま、#96の意図を維持)。表示件数上限は
+  // 新着フィードと同じFEED_MAX_ITEMSを流用する(新規の定数は作らない)。
+  const originalTabArticles = originalFeedArticles
+    .slice()
+    .sort((x, y) => new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime())
+    .slice(0, FEED_MAX_ITEMS)
+    .map((a) => ({
+      ...a,
+      relatedFighters: matchRelatedFighters(a.title, visibleFighterSlugs),
+    }));
+
   // 右レール用: 開催予定を開催日昇順で最大5件(表示件数はレール高さに応じて
   // EventRail側でさらに自動調整)。所属団体のラベル/色だけ先に確定させて渡す。
   const railEvents = upcomingEvents.slice(0, 5).map((e) => ({
@@ -245,7 +258,7 @@ export default async function HomePage() {
       <div className="home-wrap">
       <div className="home-main">
         <div className="home-feed">
-          <UnifiedFeed articles={feedArticles} />
+          <UnifiedFeed articles={feedArticles} originalArticles={originalTabArticles} />
 
           {/* データ資産ブロック(AIランキング+選手DB検索、2枚1組): 新着ニュース
               の直下・開催予定の大会より上(至急対応・2026-07-18/2026-07-18再修正)。
