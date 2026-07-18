@@ -112,16 +112,41 @@ export function toClientSafeResolvedDivisionRankingView(
   };
 }
 
-// 指定階級のランキングデータ内で、slugが王者/ランカーのいずれかに該当すれば
-// 表示用の順位ラベル("王者"または"◯位")を返す。掲載無し(未ランク)はnull
-// (順位を捏造しない)。/api/og/vs-compareのfindRankBadgeと同じ「rankのみ参照」
-// 方針だが、あちらは複数階級を横断探索するのに対し、こちらは呼び出し側が
-// 特定した1階級のみを見る(ライブ結果入力は「その試合の階級」で判定するため)。
-export function findRankLabelInDivision(data: DivisionRankings | null | undefined, slug: string): string | null {
+// ランキング表示のキャップ(王者は別枠・番号付きは1〜この値までのみ表示)。
+// /rankings各階級一覧・選手ページのランクバッジ・X投稿のランキング注入の3面が
+// 必ずこの定数を経由してキャップ値を参照する(値を変える箇所を1つに保つ)。
+export const RANKING_DISPLAY_CAP = 15;
+
+// 「表示ランク」の判定結果。"champion"=王者(番号付きランキングの対象外・
+// 別枠で常に表示)/ number=1〜RANKING_DISPLAY_CAPの順位番号 / null=圏外
+// (RANKING_DISPLAY_CAPより下、または未掲載)。表示上は「未ランク」として
+// 扱う=順位を出さない。
+export type DisplayRank = "champion" | number | null;
+
+// 指定階級のランキングデータ内で、slugの「表示ランク」を返す唯一のヘルパー。
+// /rankings各階級一覧・選手ページのランクバッジ・X投稿のランキング注入
+// (findRankLabelInDivision経由)、この3面すべてがここを参照する(各所で個別に
+// キャップ判定を書かない=単一ソース)。buildDivisionRankings確定後のrank番号を
+// 表示用に判定するだけで、スコア計算・資格判定には一切関与しない。
+export function getDisplayRank(data: DivisionRankings | null | undefined, slug: string): DisplayRank {
   if (!data) return null;
-  if (data.champion?.fighterId === slug) return "王者";
+  if (data.champion?.fighterId === slug) return "champion";
   const entry = data.entries.find((e) => e.fighterId === slug);
-  return entry ? `${entry.rank}位` : null;
+  if (!entry || entry.rank > RANKING_DISPLAY_CAP) return null;
+  return entry.rank;
+}
+
+// 指定階級のランキングデータ内で、slugが王者/表示ランク内のランカーのいずれかに
+// 該当すれば表示用の順位ラベル("王者"または"◯位")を返す。掲載無し(未ランク・
+// RANKING_DISPLAY_CAPより下)はnull(順位を捏造しない)。getDisplayRankの薄い
+// フォーマッタで、キャップ判定はgetDisplayRank側の単一ソースに委ねる。
+// /api/og/vs-compareのfindRankBadgeと同じ「rankのみ参照」方針だが、あちらは
+// 複数階級を横断探索するのに対し、こちらは呼び出し側が特定した1階級のみを見る
+// (ライブ結果入力は「その試合の階級」で判定するため)。
+export function findRankLabelInDivision(data: DivisionRankings | null | undefined, slug: string): string | null {
+  const displayRank = getDisplayRank(data, slug);
+  if (displayRank === null) return null;
+  return displayRank === "champion" ? "王者" : `${displayRank}位`;
 }
 
 // 「公開可否」の判定はPUBLISHED_DIVISIONS(divisions.ts)を唯一の真実源とする。

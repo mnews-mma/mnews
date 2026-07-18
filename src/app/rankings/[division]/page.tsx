@@ -5,7 +5,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
-import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
+import { getDivisionRankingView, resolveDivisionRankingView, RANKING_DISPLAY_CAP } from "@/lib/mnewsRating/divisionRankingView";
 import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
@@ -46,7 +46,12 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
   // fighters.tsに存在しないfighterIdは除外して表示順位を振り直す
   // (スラッグ生表示フォールバック禁止・解決失敗時は行非表示+繰り上げ)。
-  const view = resolveDivisionRankingView(getDivisionRankingView(data), nameBySlug);
+  // topNにRANKING_DISPLAY_CAP(=15、選手ページのランクバッジ・X投稿のランキング
+  // 注入と共有する単一の定数)を渡し、王者＋1〜15位のみ表示する(16位以下は
+  // 一覧から非表示。resolveDivisionRankingViewは解決・除外・繰り上げ後の件数に
+  // topNを適用するため、この1回のスライスがgetDisplayRankを全件に個別適用
+  // するのと同じ結果になる)。
+  const view = resolveDivisionRankingView(getDivisionRankingView(data), nameBySlug, RANKING_DISPLAY_CAP);
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },

@@ -20,6 +20,7 @@ import { resolveMatchupUiV2ForDynamicPage } from "@/lib/matchupUi";
 import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
+import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
@@ -145,10 +146,13 @@ function findEventSlug(eventName: string): string | null {
   return match ? match.slug : null;
 }
 
-// 選手が公開中のAI RIZINランキングに掲載されているか(王者/ランカーいずれか)を
-// 公開4階級ぶん確認し、最初に見つかった階級への内部リンク情報を返す(rank(順位)・
-// delta(順位変動、algorithmVersion変更日等はnull)のみ使用し、rating/rawRatingは
-// 一切参照しない=レート非公開方針を維持)。
+// 選手が公開中のAI RIZINランキングに掲載されているか(王者/表示ランク内の
+// ランカーいずれか)を公開4階級ぶん確認し、最初に見つかった階級への内部リンク
+// 情報を返す(rank(順位)・delta(順位変動、algorithmVersion変更日等はnull)の
+// み使用し、rating/rawRatingは一切参照しない=レート非公開方針を維持)。
+// getDisplayRank(RANKING_DISPLAY_CAP=15)経由で判定するため、16位以下は
+// バッジ非表示(表示上は未ランク扱い)。/rankings各階級一覧・X投稿のランキング
+// 注入と同じキャップ・同じ単一ヘルパーを共有する。
 interface RankingLinkInfo {
   divisionSlug: string;
   divisionName: string;
@@ -160,9 +164,11 @@ async function findRankingLink(slug: string): Promise<RankingLinkInfo | null> {
     const divisionSlug = DIVISION_SLUG[division];
     const data = await fetchDivisionRankings(divisionSlug);
     if (!data) continue;
-    if (data.champion?.fighterId === slug) return { divisionSlug, divisionName: division, label: "王者", delta: null };
-    const entry = data.entries.find((e) => e.fighterId === slug);
-    if (entry) return { divisionSlug, divisionName: division, label: entry.rank, delta: entry.delta };
+    const displayRank = getDisplayRank(data, slug);
+    if (displayRank === null) continue;
+    if (displayRank === "champion") return { divisionSlug, divisionName: division, label: "王者", delta: null };
+    const entry = data.entries.find((e) => e.fighterId === slug)!;
+    return { divisionSlug, divisionName: division, label: displayRank, delta: entry.delta };
   }
   return null;
 }
