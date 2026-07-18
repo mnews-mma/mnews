@@ -148,6 +148,19 @@ async function fetchMediaFeed(
   return out;
 }
 
+// ENCOUNT(encount.press)の「総合格闘技」カテゴリ専用RSS。格闘技カテゴリ配下には
+// ボクシング/プロレス/BreakingDown/立ち技等の他サブカテゴリもあるが、このフィードURLは
+// 総合格闘技サブカテゴリのみに絞られている(配信元のカテゴリ分類に依拠。キーワード
+// フィルタは不要かつ誤って対象記事を落としかねないので使わない)。
+async function fetchEncountMma(): Promise<Article[]> {
+  const xml = await fetchText("https://encount.press/archives/category/martial-arts/mma/feed/");
+  if (!xml) return [];
+  const items = parseRss(xml);
+  return items
+    .map((it, i) => toArticle(it, "other", "ENCOUNT", "encount", i))
+    .filter((a): a is Article => a !== null);
+}
+
 // パンクラス公式サイトのリリース一覧（公式ブログは2023年で更新停止していた
 // ため、こちらの月別お知らせページを使う）。"<h3>6月</h3><ul><li>06.28：
 // <a href="...">タイトル</a></li>...</ul>" という構造で、新しい月から降順
@@ -273,6 +286,7 @@ export async function fetchRawArticles(): Promise<FeedResult> {
     fetchMediaFeed("https://gonkaku.jp/feed", "rss", "ゴング格闘技", "gonkaku"),
     fetchMediaFeed("https://mmaplanet.jp/feed", "rss", "MMAPLANET", "mmaplanet"),
     fetchOriconRizin(),
+    fetchEncountMma(),
   ];
 
   const results = await Promise.allSettled(tasks);
