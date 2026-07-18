@@ -90,12 +90,10 @@ export default function MatchupTape({
 
   return (
     <div className={`${styles.tape}${compact ? ` ${styles.tapeCompact}` : ""}`}>
-      {/* 左(赤)コーナー: 通称行(nka)と名前行(na)を別areaにする(修正1)。
-          通称が無い選手はnka側が空セル(高さ0)になるだけで、行の対応関係は
-          崩れない。 */}
-      <div className={`${styles.nka} ${styles.cornerRed}`}>
-        {left.nickname && <span className={styles.nick}>{left.nickname}</span>}
-      </div>
+      {/* 左(赤)コーナー: 通称行(nka)は対戦カードでは表示しない(選手個別ページのみ
+          通称を出す方針)。grid-template-areasのnka行は空セル(高さ0)のまま維持し、
+          名前行(na)との行対応レイアウトを崩さない。 */}
+      <div className={`${styles.nka} ${styles.cornerRed}`} />
       <div className={`${styles.na} ${styles.cornerRed}`}>
         <div className={styles.tapeNameRow}>
           {left.resultMark && (
@@ -111,10 +109,8 @@ export default function MatchupTape({
         </div>
       </div>
 
-      {/* 右(青)コーナー */}
-      <div className={`${styles.nkb} ${styles.cornerBlue}`}>
-        {right.nickname && <span className={styles.nick}>{right.nickname}</span>}
-      </div>
+      {/* 右(青)コーナー: 通称は同上の理由で対戦カードでは表示しない。 */}
+      <div className={`${styles.nkb} ${styles.cornerBlue}`} />
       <div className={`${styles.nb} ${styles.cornerBlue}`}>
         <div className={styles.tapeNameRow}>
           {right.resultMark && (

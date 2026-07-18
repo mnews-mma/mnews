@@ -1758,6 +1758,44 @@ export const EVENT_RESULTS: EventResult[] = [
       },
     ],
   },
+  // A-2(2026-07-18)追加: ズールー選手戦績投入のため、data/fighterRecords.json内の
+  // 対戦相手側(新井丈=arai-jo, 堀口恭司=horiguchi-kyoji)の既存戦績データに
+  // 既に記録されていた事実(日付・イベント名・決着方法)をそのまま転記。
+  // 会場は未確認のため空欄(捏造しない)。カード全体(他の対戦)は未収集のため、
+  // ズールーの1試合のみを収録(EVENT_RESULTS is 網羅を理想とするが、今回は
+  // 判明している事実のみを追加する最小限の投入)。
+  {
+    slug: "rizin-48",
+    org: "rizin",
+    eventName: "RIZIN.48",
+    date: "2024-09-29",
+    fights: [
+      {
+        weightClass: "フライ級",
+        fighterA: "新井丈",
+        fighterB: "エンカジムーロ・ズールー",
+        winner: "エンカジムーロ・ズールー",
+        method: "TKO（スタンドパンチ連打）",
+        round: "1R 4:18",
+      },
+    ],
+  },
+  {
+    slug: "rizin-49",
+    org: "rizin",
+    eventName: "RIZIN.49",
+    date: "2024-12-31",
+    fights: [
+      {
+        weightClass: "RIZINフライ級タイトルマッチ",
+        fighterA: "堀口恭司",
+        fighterB: "エンカジムーロ・ズールー",
+        winner: "堀口恭司",
+        method: "判定（3-0）",
+        round: "3R",
+      },
+    ],
+  },
   // A-3(2026-07-18)追加: 中島太一選手戦績投入のため、data/fighterRecords.json内の
   // 対戦相手側(ヴガール・ケラモフ=karamov-vugar, キム・スーチョル=kim-soochul)の
   // 既存戦績データに既に記録されていた事実をそのまま転記。会場は未確認のため
