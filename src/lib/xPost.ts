@@ -238,11 +238,9 @@ export function buildResultPost(opts: {
   const hashtags = [orgTag, evHashtag !== orgTag ? evHashtag : ""].filter(Boolean).join(" ");
   const prefix = flashPrefixForType(opts.newsType ?? "result");
   const { winner, loser } = withRankPrefix(opts.winner, opts.loser, opts.winnerRank, opts.loserRank);
-  // 大会タグは結果文の直後にスペース無しで@メンション形式で付ける
-  const eventMention = tag ? `@${tag}` : "";
   const body = opts.isDraw
-    ? `${prefix}${winner} vs ${loser}は${opts.method || "引き分け"}${eventMention}`
-    : `${prefix}${winner}が${loser}に${opts.method}勝ち${eventMention}`;
+    ? `${prefix}${winner} vs ${loser}は${opts.method || "引き分け"}`
+    : `${prefix}${winner}が${loser}に${opts.method}勝ち`;
   return applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.result);
 }
 
