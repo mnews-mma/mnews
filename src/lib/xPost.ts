@@ -174,18 +174,25 @@ const ORG_HASHTAG: Record<string, string> = {
   shooto: "#修斗",
 };
 
-// 大会名からXハッシュタグを生成する。
-// 「DEEP 132 IMPACT」のような「団体名+号数」型は #DEEP132 に短縮し、
-// それ以外は開催地サフィックス(" in HIROSHIMA"等)を落として記号を除いた
-// 連結形にする(例: RIZIN LANDMARK 15 in HIROSHIMA → #RIZINLANDMARK15)。
-export function eventHashtag(eventName: string): string {
+// 大会名から「団体_大会名」形式の大会タグを生成する(#無し・生トークン)。
+// @メンションとハッシュタグの両方でこの1トークンを共用する。開催地サフィックス
+// (" in HIROSHIMA"等)は落とし、先頭の英字org部分とそれ以降の大会名部分
+// (空白・記号を除去)をアンダースコアで連結する
+// (例: RIZIN LANDMARK 15 in HIROSHIMA → RIZIN_LANDMARK15、PANCRASE 364 →
+// PANCRASE_364、RIZIN.54 → RIZIN_54)。
+// 先頭が英字でない大会名(例:「超RIZIN.5」)は区切り位置を判定できないため、
+// 従来どおり全体を1トークンに詰めた値をそのまま返す(アンダースコア無し)。
+export function eventTag(eventName: string): string {
   let n = eventName.trim().replace(/\s+in\s+.+$/i, "");
   // 号数の後に日本語の副題が続く場合は号数まで(例: 超RIZIN.5 浪速の超復活祭り → 超RIZIN.5)
   n = n.replace(/([0-9])[\s　]+[぀-ヿ一-鿿].*$/, "$1");
-  const m = n.match(/^([A-Za-z]+)[\s.]+(\d+)/);
-  if (m) return `#${m[1].toUpperCase()}${m[2]}`;
-  const compact = n.replace(/[^A-Za-z0-9぀-ヿ一-鿿]/g, "");
-  return compact ? `#${compact}` : "";
+  const m = n.match(/^([A-Za-z]+)(.*)$/);
+  if (m) {
+    const org = m[1].toUpperCase();
+    const rest = m[2].replace(/[^A-Za-z0-9぀-ヿ一-鿿]/g, "").toUpperCase();
+    return rest ? `${org}_${rest}` : org;
+  }
+  return n.replace(/[^A-Za-z0-9぀-ヿ一-鿿]/g, "");
 }
 
 // winner/loserの表示名に、あれば「AI RIZINランキング」順位ラベルを差し込む。
@@ -225,14 +232,17 @@ export function buildResultPost(opts: {
   newsType?: NewsType;
 }): BuiltPost {
   const orgTag = ORG_HASHTAG[opts.org] ?? "";
-  const evTag = opts.eventName ? eventHashtag(opts.eventName) : "";
-  // ハッシュタグは「団体+大会名」。#MMA(ビッグワード)は付けない
-  const hashtags = [orgTag, evTag !== orgTag ? evTag : ""].filter(Boolean).join(" ");
+  const tag = opts.eventName ? eventTag(opts.eventName) : "";
+  // ハッシュタグは「団体+大会タグ(#団体_大会名)」。#MMA(ビッグワード)は付けない
+  const evHashtag = tag ? `#${tag}` : "";
+  const hashtags = [orgTag, evHashtag !== orgTag ? evHashtag : ""].filter(Boolean).join(" ");
   const prefix = flashPrefixForType(opts.newsType ?? "result");
   const { winner, loser } = withRankPrefix(opts.winner, opts.loser, opts.winnerRank, opts.loserRank);
+  // 大会タグは結果文の直後にスペース無しで@メンション形式で付ける
+  const eventMention = tag ? `@${tag}` : "";
   const body = opts.isDraw
-    ? `${prefix}${winner} vs ${loser}は${opts.method || "引き分け"}`
-    : `${prefix}${winner}が${loser}に${opts.method}勝ち`;
+    ? `${prefix}${winner} vs ${loser}は${opts.method || "引き分け"}${eventMention}`
+    : `${prefix}${winner}が${loser}に${opts.method}勝ち${eventMention}`;
   return applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.result);
 }
 
