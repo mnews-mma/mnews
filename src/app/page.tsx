@@ -246,6 +246,15 @@ export default async function HomePage() {
       <div className="home-main">
         <div className="home-feed">
           <UnifiedFeed articles={feedArticles} />
+
+          {/* AIランキング: 新着ニュースの直下・開催予定の大会より上(至急対応・
+              2026-07-18)。.home-feedがPC(≥1200px)グリッドの左カラム(固定幅)
+              なので、ここに含めることでモバイル/PC双方で「新着ニュース→
+              AIランキング」の直後配置になる。home-mainのgrid構造(feed/rail
+              の2カラム)自体は変更しない。 */}
+          <div className="home-hero">
+            <MnewsRatingSection divisions={mnewsRatingDivisions} />
+          </div>
         </div>
 
         {/* UPCOMING EVENTS: PC(≥1200px)は右レール(sticky・高さ収め) / スマホは従来どおり下部表示 */}
@@ -256,11 +265,9 @@ export default async function HomePage() {
         )}
       </div>
 
-      {/* ヒーロー(データ資産ブロック): ニュースフィードの直下に配置
-          (mnews-homepage-instructions.md §2見直し)。AI RIZINランキングカード+
-          選手DB検索ボックスの2枚構成。 */}
+      {/* 選手DB検索ボックス: 開催予定の大会の直下(至急対応・2026-07-18でAI
+          ランキングをここから上へ移動したため、検索ボックスのみ残る)。 */}
       <div className="home-hero">
-        <MnewsRatingSection divisions={mnewsRatingDivisions} />
         <HeroFighterSearch />
       </div>
 
