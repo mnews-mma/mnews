@@ -9,7 +9,8 @@ export type SourceKey =
   | "other"
   | "gonkaku"
   | "mmaplanet"
-  | "efight";
+  | "efight"
+  | "encount";
 
 export interface SourceDef {
   key: SourceKey;
@@ -32,6 +33,7 @@ export const SOURCES: Record<SourceKey, SourceDef> = {
   gonkaku: { key: "gonkaku", label: "ゴング格闘技", color: "#555555", type: "media", url: "https://gonkaku.jp" },
   mmaplanet: { key: "mmaplanet", label: "MMAPLANET", color: "#888888", type: "media", url: "https://mmaplanet.jp" },
   efight: { key: "efight", label: "イーファイト", color: "#059669", type: "media", url: "https://efight.jp" },
+  encount: { key: "encount", label: "ENCOUNT", color: "#0EA5E9", type: "media", url: "https://encount.press" },
 };
 
 export const SOURCE_LIST = Object.values(SOURCES);
