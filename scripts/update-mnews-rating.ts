@@ -66,6 +66,7 @@ import {
   MONOTONICITY_MAX_RANK_GAP_V9,
 } from "../src/lib/mnewsRating/constants";
 import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
+import { computeRankPositionDeltas } from "../src/lib/mnewsRating/rankPositionDelta";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -347,6 +348,36 @@ function main() {
     for (const r of rippleReport) {
       console.log(`  ${r.divisionSlug}:${r.fighterId} rawRating ${r.rawBefore.toFixed(2)} -> ${r.rawAfter.toFixed(2)} (diff ${r.rawDiff.toFixed(2)})`);
     }
+  }
+
+  // A-4(2026-07-18)追加: 「▲▼順位変動」の後処理。buildDivisionRankings確定後
+  // (スコア計算・H2H単調性補正・資格判定・data-correctionのripple抑制まで全て
+  // 完了した後)の最終段階でのみ、rank番号を前回スナップショット(prevOut)と
+  // 比較する。スコア計算ロジック自体には一切手を加えない(pure post-processing、
+  // rankPositionDelta.ts参照)。
+  // data-correctionモードは戦績修正・階級是正が起点で「本物のランキング更新」
+  // ではないため、rating delta(見出しの数値差分)と同様にrankPositionDeltaも
+  // 全選手nullに抑制する(データ修正由来の見かけ上の順位入れ替わりを、実際の
+  // 順位変動として利用者に見せない)。
+  if (MODE === "new-results") {
+    const withPositionDeltas: RankingsFile = {};
+    for (const [key, div] of Object.entries(published)) {
+      const deltas = computeRankPositionDeltas(div, prevOut[key]);
+      withPositionDeltas[key] = {
+        ...div,
+        entries: div.entries.map((e) => ({ ...e, rankPositionDelta: deltas.get(e.fighterId) ?? null })),
+      };
+    }
+    published = withPositionDeltas;
+  } else {
+    const withNullPositionDeltas: RankingsFile = {};
+    for (const [key, div] of Object.entries(published)) {
+      withNullPositionDeltas[key] = {
+        ...div,
+        entries: div.entries.map((e) => ({ ...e, rankPositionDelta: null })),
+      };
+    }
+    published = withNullPositionDeltas;
   }
 
   // 1階級でも順位変動があれば、その日の全階級スナップショットをアーカイブする。

@@ -5,6 +5,7 @@ import { ALGORITHM_VERSION, CHAMPION_DISPLAY_MODE } from "./constants";
 import { computeSigmaDiscountedRating, DisplayEntry } from "./engine";
 import { DIVISION_SLUG, MnewsDivision } from "./divisions";
 import { applyHeadToHeadMonotonicity, H2HWin } from "./monotonicity";
+import type { RankPositionDelta } from "./rankPositionDelta";
 
 export interface RankingEntryRecord {
   wins: number;
@@ -34,6 +35,13 @@ export interface RankingEntry {
   // CHAMPION_DISPLAY_MODE==="badge"時のみ、王者の行にtrueが付く。
   // "overlay"時は王者自体がentriesに含まれないため常にundefined。
   isChampion?: boolean;
+  // A-4(2026-07-18)追加: 前回スナップショットとの「順位番号(rank)」差分
+  // (▲上昇/▼下降/—変動なし/NEW新規ランクイン)。buildDivisionRankings自体は
+  // このフィールドを設定しない(スコア確定ロジックに差分計算を混在させない)。
+  // 呼び出し側(update-mnews-rating.ts)がbuildDivisionRankings確定後に
+  // rankPositionDelta.tsの純関数で後付けする。前回データが無い場合や
+  // 未計算の場合はnull(捏造しない)。
+  rankPositionDelta?: RankPositionDelta | null;
 }
 
 // 王者の事実オーバーレイ(Elo掲載資格とは独立)。CHAMPION_DISPLAY_MODE==="overlay"の
