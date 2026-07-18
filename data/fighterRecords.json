@@ -20137,12 +20137,12 @@
     "age": 41
   },
   "zulu-nkazimulo": {
-    "wins": 1,
-    "losses": 3,
-    "draws": 0,
-    "ko": 1,
-    "sub": 0,
-    "decision": 0,
+    "wins": 16,
+    "losses": 9,
+    "draws": 1,
+    "ko": 7,
+    "sub": 7,
+    "decision": 2,
     "history": [
       {
         "date": "2026-04-12",
@@ -20336,12 +20336,12 @@
     "nickname": "アイリッシュ・チョーカー"
   },
   "nakajima-taichi": {
-    "wins": 3,
-    "losses": 3,
+    "wins": 19,
+    "losses": 14,
     "draws": 0,
-    "ko": 2,
-    "sub": 0,
-    "decision": 1,
+    "ko": 7,
+    "sub": 3,
+    "decision": 9,
     "history": [
       {
         "date": "2026-05-24",
