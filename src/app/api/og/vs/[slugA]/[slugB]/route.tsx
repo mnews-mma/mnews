@@ -94,13 +94,16 @@ export async function GET(
             </div>
           )}
 
-          {/* 選手名 + 中央VS */}
+          {/* 選手名 + 中央VS。通称はWebカード側(MatchupTape)で対戦カードから
+              廃止済み(選手個別ページのみ表示、対戦カード系は選手名のみ)の方針に
+              揃え、ここでも表示しない(2026-07-18: OG側が追随しておらず旧デザイン
+              のまま通称が残っていたのを修正)。 */}
           <div style={{ display: "flex", alignItems: "center", padding: "28px 56px 0" }}>
-            <NameBlock nickname={fighterA.nickname} fit={fitA} zone={NAME_ZONE} side="left" />
+            <NameBlock fit={fitA} zone={NAME_ZONE} side="left" />
             <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "44px", color: VS_COLORS.dim, letterSpacing: "2px", padding: "0 24px" }}>
               VS
             </div>
-            <NameBlock nickname={fighterB.nickname} fit={fitB} zone={NAME_ZONE} side="right" />
+            <NameBlock fit={fitB} zone={NAME_ZONE} side="right" />
           </div>
 
           {/* 戦績・勝率・フィニッシュ率(Web版と同じ3行構成・3カラム配置) */}

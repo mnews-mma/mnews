@@ -17,7 +17,7 @@ export const SITE_URL = "https://www.mnews.jp";
 // 全カード種別(個人/MATCH UP/結果/ダイジェスト)共通のキャッシュバスターで、
 // ?v= が変わることでCDN・ブラウザ・X側の古い画像キャッシュを無効化する。
 // 「カード種別ごとの個別キャッシュ対策」はしない — 必ずこの共通機構を使うこと。
-export const OG_DESIGN_VERSION = 8;
+export const OG_DESIGN_VERSION = 9;
 
 // /api/og/* のパスにデザインバージョンを付与する。og画像URLを組む側は
 // 直接パスを書かず必ずこれを通す。
