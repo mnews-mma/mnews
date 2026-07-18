@@ -1,8 +1,9 @@
 import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
-import { computeCommonOpponents } from "@/lib/articleGenerator";
+import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
 import styles from "@/styles/matchup.module.css";
 import MatchupTape from "./MatchupTape";
 import { CommonOpponentsHeader } from "./CommonOpponentsList";
+import HeadToHeadBanner from "./HeadToHeadBanner";
 import { buildTapeData } from "./matchupData";
 
 export default function NextFightCardV2({
@@ -28,6 +29,7 @@ export default function NextFightCardV2({
   opponent: FighterRecordEntry;
   visibleSlugs: Set<string>;
 }) {
+  const headToHead = computeHeadToHead(self, opponentName);
   const commons = computeCommonOpponents(self, opponent).slice(0, 8);
 
   return (
@@ -45,6 +47,7 @@ export default function NextFightCardV2({
           left={buildTapeData(selfName, null, self, { withLast5: true })}
           right={buildTapeData(opponentName, opponentSlug, opponent, { withLast5: true })}
         />
+        <HeadToHeadBanner nameA={selfName} nameB={opponentName} matches={headToHead} />
         <CommonOpponentsHeader
           selfName={selfName}
           opponentName={opponentName}
