@@ -309,7 +309,8 @@
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "RIZIN.49 【RIZINフライ級タイトルマッチ】",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "RIZINフライ級タイトルマッチ"
       },
       {
         "date": "2024-06-09",
@@ -2639,12 +2640,20 @@
   },
   "hagiwara-kyohei": {
     "wins": 9,
-    "losses": 11,
+    "losses": 12,
     "draws": 0,
     "ko": 7,
     "sub": 0,
     "decision": 2,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "カルシャガ・ダウトベック",
+        "result": "loss",
+        "method": "1R 4:08 TKO（左フック→パウンド）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R1"
+      },
       {
         "date": "2026-04-12",
         "opponent": "アバイジャ・カレオ・メヘウラ",
@@ -3040,12 +3049,20 @@
   },
   "hiroya": {
     "wins": 11,
-    "losses": 15,
+    "losses": 16,
     "draws": 1,
     "ko": 4,
     "sub": 3,
     "decision": 4,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "山本アーセン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R3"
+      },
       {
         "date": "2025-12-31",
         "opponent": "神龍誠",
@@ -5328,12 +5345,20 @@
   },
   "ota-shinobu": {
     "wins": 8,
-    "losses": 5,
+    "losses": 6,
     "draws": 0,
     "ko": 4,
     "sub": 2,
     "decision": 2,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "イリスベク・ティレノフ",
+        "result": "loss",
+        "method": "2R 3:04 KO（右膝蹴り）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R2"
+      },
       {
         "date": "2026-05-10",
         "opponent": "金太郎",
@@ -5670,13 +5695,21 @@
     "age": 22
   },
   "oshima-saori": {
-    "wins": 16,
+    "wins": 17,
     "losses": 7,
     "draws": 0,
     "ko": 2,
-    "sub": 9,
+    "sub": 10,
     "decision": 5,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "イ・イェジ",
+        "result": "win",
+        "method": "1R 1:40 膝十字固め",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R1"
+      },
       {
         "date": "2026-03-07",
         "opponent": "ケイト・ロータス",
@@ -5871,12 +5904,20 @@
   },
   "kashimura-jinnosuke": {
     "wins": 12,
-    "losses": 5,
+    "losses": 6,
     "draws": 0,
     "ko": 1,
     "sub": 10,
     "decision": 1,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "ダニー・サバテロ",
+        "result": "loss",
+        "method": "3R 0:40 KO（右フック）",
+        "event": "RIZIN LANDMARK 15 【RIZINバンタム級タイトルマッチ】",
+        "round": "R3"
+      },
       {
         "date": "2026-05-04",
         "opponent": "平松翔",
@@ -7497,13 +7538,21 @@
     "nickname": "駿速のKARATEヘラクレス"
   },
   "yamamoto-arsen": {
-    "wins": 6,
+    "wins": 7,
     "losses": 8,
     "draws": 0,
     "ko": 2,
     "sub": 1,
-    "decision": 3,
+    "decision": 4,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "ヒロヤ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R3"
+      },
       {
         "date": "2025-09-28",
         "opponent": "伊藤裕樹",
@@ -8389,12 +8438,20 @@
   },
   "umeno-genji": {
     "wins": 2,
-    "losses": 1,
+    "losses": 2,
     "draws": 0,
     "ko": 0,
     "sub": 0,
     "decision": 2,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "昇侍",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R3"
+      },
       {
         "date": "2026-05-10",
         "opponent": "ダイキ・ライトイヤー",
@@ -8716,12 +8773,20 @@
   },
   "suda-moeri": {
     "wins": 15,
-    "losses": 7,
+    "losses": 8,
     "draws": 0,
     "ko": 0,
     "sub": 10,
     "decision": 5,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "パク・シウ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R3"
+      },
       {
         "date": "2026-03-08",
         "opponent": "HIME",
@@ -10077,13 +10142,21 @@
     "nickname": "鋼のエンペラー"
   },
   "suzuki-hiroaki": {
-    "wins": 6,
+    "wins": 7,
     "losses": 6,
     "draws": 0,
-    "ko": 4,
+    "ko": 5,
     "sub": 0,
     "decision": 2,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "宮川日向",
+        "result": "win",
+        "method": "2R 3:29 TKO（グラウンド状態での膝蹴り）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R2"
+      },
       {
         "date": "2025-09-28",
         "opponent": "ファン・イェーロウ",
@@ -10189,12 +10262,20 @@
   },
   "miyagawa-hyuga": {
     "wins": 7,
-    "losses": 7,
+    "losses": 8,
     "draws": 0,
     "ko": 4,
     "sub": 0,
     "decision": 3,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "鈴木博昭",
+        "result": "loss",
+        "method": "2R 3:29 TKO（グラウンド状態での膝蹴り）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R2"
+      },
       {
         "date": "2026-04-12",
         "opponent": "井上聖矢",
@@ -16051,7 +16132,8 @@
         "result": "loss",
         "method": "1R 4:18 TKO（スタンドパンチ連打）",
         "event": "RIZIN.48",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フライ級"
       },
       {
         "date": "2023-12-31",
@@ -19258,13 +19340,21 @@
     "nickname": "ザ・ウィザード"
   },
   "sabatello-danny": {
-    "wins": 18,
+    "wins": 19,
     "losses": 4,
     "draws": 1,
-    "ko": 4,
+    "ko": 5,
     "sub": 5,
     "decision": 9,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "鹿志村仁之介",
+        "result": "win",
+        "method": "3R 0:40 KO（右フック）",
+        "event": "RIZIN LANDMARK 15 【RIZINバンタム級タイトルマッチ】",
+        "round": "R3"
+      },
       {
         "date": "2026-04-12",
         "opponent": "後藤丈治",
@@ -20795,13 +20885,21 @@
     "age": 37
   },
   "case-johnny": {
-    "wins": 28,
+    "wins": 29,
     "losses": 10,
     "draws": 1,
-    "ko": 20,
+    "ko": 21,
     "sub": 4,
     "decision": 4,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "天弥",
+        "result": "win",
+        "method": "1R 3:14 TKO（右アッパー→パウンド）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R1"
+      },
       {
         "date": "2024-06-09",
         "opponent": "\"ブラックパンサー\"ベイノア",
@@ -21665,6 +21763,14 @@
     "decision": 4,
     "history": [
       {
+        "date": "2026-07-18",
+        "opponent": "萩原京平",
+        "result": "win",
+        "method": "1R 4:08 TKO（左フック→パウンド）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R1"
+      },
+      {
         "date": "2025-03-30",
         "opponent": "鈴木千裕",
         "result": "win",
@@ -22087,7 +22193,8 @@
         "result": "win",
         "method": "1R 2:00 前三角絞",
         "event": "RIZIN.35",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フェザー級"
       },
       {
         "date": "2021-06-13",
@@ -22683,12 +22790,20 @@
   },
   "tenya": {
     "wins": 5,
-    "losses": 3,
+    "losses": 4,
     "draws": 0,
     "ko": 3,
     "sub": 1,
     "decision": 1,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "ジョニー・ケース",
+        "result": "loss",
+        "method": "1R 3:14 TKO（右アッパー→パウンド）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R1"
+      },
       {
         "date": "2026-04-12",
         "opponent": "ヌルハン・ズマガジー",
@@ -23741,7 +23856,7 @@
     ],
     "live": true,
     "birthPlace": "大阪府河内長野市",
-    "age": 34
+    "age": 35
   },
   "kitaoka-satoru": {
     "wins": 45,
@@ -24465,13 +24580,21 @@
     "noRecordData": true
   },
   "park-siwoo": {
-    "wins": 13,
+    "wins": 14,
     "losses": 6,
     "draws": 0,
     "ko": 3,
     "sub": 0,
-    "decision": 10,
+    "decision": 11,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "須田萌里",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R3"
+      },
       {
         "date": "2025-11-23",
         "opponent": "彩綺",
@@ -24631,12 +24754,20 @@
   },
   "lee-yeji": {
     "wins": 7,
-    "losses": 8,
+    "losses": 9,
     "draws": 0,
     "ko": 1,
     "sub": 1,
     "decision": 5,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "大島沙緒里",
+        "result": "loss",
+        "method": "1R 1:40 膝十字固め",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R1"
+      },
       {
         "date": "2026-05-24",
         "opponent": "竹林エル",
@@ -28816,13 +28947,21 @@
     "age": 30
   },
   "hinotori": {
-    "wins": 5,
+    "wins": 6,
     "losses": 1,
     "draws": 0,
-    "ko": 3,
+    "ko": 4,
     "sub": 1,
     "decision": 1,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "イ・ジェフン",
+        "result": "win",
+        "method": "3R 4:25 TKO（パウンド）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R3"
+      },
       {
         "date": "2026-07-05",
         "opponent": "猿寿健太",
@@ -29055,7 +29194,8 @@
         "result": "win",
         "method": "2R 0:06 KO（左フック）",
         "event": "RIZIN.46 【日韓対抗戦】",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "61.0kg契約"
       },
       {
         "date": "2023-10-29",
@@ -29534,13 +29674,21 @@
     "age": 23
   },
   "yrysbek-tilenov": {
-    "wins": 7,
+    "wins": 8,
     "losses": 1,
     "draws": 0,
-    "ko": 4,
+    "ko": 5,
     "sub": 1,
     "decision": 2,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "太田忍",
+        "result": "win",
+        "method": "2R 3:04 KO（右膝蹴り）",
+        "event": "RIZIN LANDMARK 15",
+        "round": "R2"
+      },
       {
         "date": "2026-04-25",
         "opponent": "ファリド・アリババザデ",
