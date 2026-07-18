@@ -76,7 +76,16 @@ function FeedCard({ a }: { a: FeedArticle }) {
   );
 }
 
-export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
+export default function UnifiedFeed({
+  articles,
+  originalArticles,
+}: {
+  articles: FeedArticle[];
+  // オリジナルタブ専用の記事リスト(48時間カットオフの対象外、/archiveと同じ4タブ
+  // 構成にするための追加分)。省略時はarticles側のisOriginalのみで絞り込む
+  // (48時間ウィンドウ内のオリジナルのみ表示、従来挙動)。
+  originalArticles?: FeedArticle[];
+}) {
   const sp = useSearchParams();
   const initial = ((sp.get("f") as Filter) || "all") as Filter;
   const [filter, setFilter] = useState<Filter>(
@@ -97,10 +106,13 @@ export default function UnifiedFeed({ articles }: { articles: FeedArticle[] }) {
     return !a.isOriginal && a.kind === f;
   }
 
-  const filtered = articles.filter((a) => matchesFilter(a, filter));
-  // 該当記事が本当に0件のタブ(例: オリジナル記事が1本も無い状態)だけ非表示にする。
-  // 「すべて」は常に出す。
-  const visibleChips = CHIPS.filter((c) => c.key === "all" || articles.some((a) => matchesFilter(a, c.key)));
+  // オリジナルタブのみ、48時間カットオフの対象外である別リスト(originalArticles)を
+  // 使う。すべて/公式/メディアは従来どおりarticles(48時間ウィンドウ済み)のまま
+  // (#96で廃止した無期限固定ピンをデフォルトフィードに復活させないため)。
+  const filtered =
+    filter === "original" && originalArticles ? originalArticles : articles.filter((a) => matchesFilter(a, filter));
+  // タブは記事有無に関わらず常に表示する(/archiveと統一)。
+  const visibleChips = CHIPS;
   const todayKey = jstDayKey(new Date().toISOString());
 
   // 日付でグルーピング（detected_at降順は入力側で確定済み）
