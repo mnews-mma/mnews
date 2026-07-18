@@ -188,12 +188,36 @@ export function eventHashtag(eventName: string): string {
   return compact ? `#${compact}` : "";
 }
 
+// winner/loserの表示名に、あれば「AI RIZINランキング」順位ラベルを差し込む。
+// ラベル自体は文中で最初に登場する(=winner側優先の)ランク入り選手の直前に
+// 1回だけ付け、以降のランク入り選手は「{順位}」のみを名前の直前に付ける。
+// 両者とも未ランク(rank未指定/null)ならどちらの名前も変更しない。
+function withRankPrefix(
+  winner: string,
+  loser: string,
+  winnerRank?: string | null,
+  loserRank?: string | null
+): { winner: string; loser: string } {
+  if (!winnerRank && !loserRank) return { winner, loser };
+  const winnerText = winnerRank ? `${winnerRank}${winner}` : winner;
+  const loserText = loserRank ? `${loserRank}${loser}` : loser;
+  // 文中で先に登場するのは常にwinner側(引き分け時もfighterA側)なので、
+  // winnerがランク入りしていればそちらへ、そうでなければloser側へラベルを付ける。
+  return winnerRank
+    ? { winner: `AI RIZINランキング${winnerText}`, loser: loserText }
+    : { winner: winnerText, loser: `AI RIZINランキング${loserText}` };
+}
+
 export function buildResultPost(opts: {
   org: string;
   winner: string;
   loser: string;
   method: string;
   isDraw?: boolean;
+  // その試合の階級におけるAI RIZINランキング順位ラベル("王者"/"◯位")。
+  // 未ランクはnull(順位を捏造しない)。省略時は両者未ランク扱い。
+  winnerRank?: string | null;
+  loserRank?: string | null;
   // 大会名(あれば #DEEP132 のような大会ハッシュタグを付ける)
   eventName?: string;
   // ライブ結果入力から登録される試合結果は news_type=result 固定。
@@ -205,9 +229,10 @@ export function buildResultPost(opts: {
   // ハッシュタグは「団体+大会名」。#MMA(ビッグワード)は付けない
   const hashtags = [orgTag, evTag !== orgTag ? evTag : ""].filter(Boolean).join(" ");
   const prefix = flashPrefixForType(opts.newsType ?? "result");
+  const { winner, loser } = withRankPrefix(opts.winner, opts.loser, opts.winnerRank, opts.loserRank);
   const body = opts.isDraw
-    ? `${prefix}${opts.winner} vs ${opts.loser}は${opts.method || "引き分け"}`
-    : `${prefix}${opts.winner}が${opts.loser}に${opts.method}勝ち`;
+    ? `${prefix}${winner} vs ${loser}は${opts.method || "引き分け"}`
+    : `${prefix}${winner}が${loser}に${opts.method}勝ち`;
   return applyLinkPlacement(body, hashtags, SITE_LINK, X_POST_CONFIG.linkPlacement.result);
 }
 

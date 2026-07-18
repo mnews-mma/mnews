@@ -12,6 +12,8 @@ interface BoutLite {
   fighterB: string;
   isTitleMatch: boolean;
   cancelled: boolean;
+  fighterARank: string | null;
+  fighterBRank: string | null;
 }
 interface EventLite {
   slug: string;
@@ -120,6 +122,8 @@ export default function LiveResultTool({ events }: { events: EventLite[] }) {
       org: event.org,
       winner: winner === "B" ? bout.fighterB : bout.fighterA,
       loser: winner === "B" ? bout.fighterA : bout.fighterB,
+      winnerRank: winner === "B" ? bout.fighterBRank : bout.fighterARank,
+      loserRank: winner === "B" ? bout.fighterARank : bout.fighterBRank,
       method: m,
       isDraw,
       eventName: event.eventName, // #DEEP132 のような大会ハッシュタグ用
