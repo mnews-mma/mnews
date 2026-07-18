@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import RankingDelta from "@/components/RankingDelta";
+import { DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 
 interface RatingRecord {
   wins: number;
@@ -97,7 +98,7 @@ export default function MnewsRatingSection({
         <p className="hero-ranking-empty">この階級のデータは準備中です。</p>
       )}
       <div className="hero-ranking-foot">
-        <a href="/rankings">全ランキング →</a>
+        <a href={`/rankings/${DIVISION_SLUG[division]}`}>全ランキング →</a>
         <a href="/rankings/methodology">算出方法</a>
       </div>
     </section>
