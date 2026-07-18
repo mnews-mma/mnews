@@ -119,7 +119,12 @@ export async function GET(req: Request) {
     const winnerSize = fitNameFontSize(winner, WINNER_NAME_MAX_WIDTH_PX);
     const methodText = method || (isDraw ? "引き分け" : "");
     const methodSize = fitFontSize(methodText, METHOD_STEPS);
-    const rt = [round, time].filter(Boolean).join(" ");
+    // 判定・ドローはラウンドまで戦い切るためラウンド番号が意味を持たない
+    // (管理画面のラウンド選択の初期値がそのまま出て誤解を招く)ので出さない。
+    // 「判定」はスコア付き表記(例:「判定（3-0）」)でも出るため前方一致で判定する。
+    // ノーコンテストは途中終了があり得るため引き続きラウンドを表示する。
+    const showRound = !methodText.startsWith("判定") && methodText !== "ドロー" && methodText !== "引き分け";
+    const rt = [showRound ? round : "", time].filter(Boolean).join(" ");
     // 勝者コーナー色: A=赤コーナー/B=青コーナー、ドロー/NCは中立グレー
     const cornerColor = isDraw ? CORNER_NEUTRAL : winnerSide === "B" ? CORNER_BLUE : CORNER_RED;
 
