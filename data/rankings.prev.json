@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-07-19T08:57:19.071Z",
+    "updatedAt": "2026-07-19T10:03:07.648Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -73,8 +73,8 @@
         "lastFight": "2026-07-18",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "up",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -259,15 +259,15 @@
         "lastFight": "2026-07-18",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 3
+          "kind": "same",
+          "positions": 0
         }
       }
     ]
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-07-19T08:57:19.071Z",
+    "updatedAt": "2026-07-19T10:03:07.648Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -569,7 +569,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-07-19T08:57:19.071Z",
+    "updatedAt": "2026-07-19T10:03:07.648Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -749,8 +749,8 @@
         "lastFight": "2026-07-18",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "up",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -835,7 +835,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-07-19T08:57:19.071Z",
+    "updatedAt": "2026-07-19T10:03:07.648Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -1045,12 +1045,45 @@
         "lastFight": "2026-05-10",
         "weighInMiss": false,
         "rankPositionDelta": null
+      },
+      {
+        "fighterId": "tenya",
+        "rank": 14,
+        "rating": 1430,
+        "rawRating": 1429.0943008147626,
+        "delta": 0,
+        "record": {
+          "wins": 0,
+          "losses": 2,
+          "draws": 0
+        },
+        "lastFight": "2026-07-18",
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "same",
+          "positions": 0
+        }
+      },
+      {
+        "fighterId": "haga-bilalkai",
+        "rank": 15,
+        "rating": 1420,
+        "rawRating": 1421.2160738111302,
+        "delta": 0,
+        "record": {
+          "wins": 0,
+          "losses": 2,
+          "draws": 0
+        },
+        "lastFight": "2026-06-06",
+        "weighInMiss": false,
+        "rankPositionDelta": null
       }
     ]
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-07-19T08:57:19.071Z",
+    "updatedAt": "2026-07-19T10:03:07.648Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [
@@ -1123,6 +1156,21 @@
         "record": {
           "wins": 4,
           "losses": 4,
+          "draws": 0
+        },
+        "lastFight": "2026-06-06",
+        "weighInMiss": false,
+        "rankPositionDelta": null
+      },
+      {
+        "fighterId": "sakai-ryo",
+        "rank": 6,
+        "rating": 1420,
+        "rawRating": 1420.7078184032482,
+        "delta": 0,
+        "record": {
+          "wins": 0,
+          "losses": 2,
           "draws": 0
         },
         "lastFight": "2026-06-06",

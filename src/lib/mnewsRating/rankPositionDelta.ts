@@ -9,7 +9,7 @@
 // 最終段階でのみ呼び出す(スコア確定前には一切介入しない)。
 import type { DivisionRankings } from "./rankingsFile";
 
-export type RankPositionDeltaKind = "up" | "down" | "same" | "new";
+export type RankPositionDeltaKind = "up" | "down" | "same" | "new" | "nr";
 
 export interface RankPositionDelta {
   kind: RankPositionDeltaKind;
@@ -60,6 +60,8 @@ export function formatRankPositionDelta(d: RankPositionDelta | null | undefined)
   switch (d.kind) {
     case "new":
       return "NEW";
+    case "nr":
+      return "NR";
     case "same":
       return "—";
     case "up":

@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-07-19T09:12:26.402Z",
+    "updatedAt": "2026-07-19T10:03:24.611Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -181,7 +181,7 @@
         "lastFight": "2026-07-18",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "same",
+          "kind": "nr",
           "positions": 0
         }
       },
@@ -267,7 +267,7 @@
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-07-19T09:12:26.402Z",
+    "updatedAt": "2026-07-19T10:03:24.611Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -384,7 +384,7 @@
         "lastFight": "2026-07-18",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "same",
+          "kind": "nr",
           "positions": 0
         }
       },
@@ -569,7 +569,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-07-19T09:12:26.402Z",
+    "updatedAt": "2026-07-19T10:03:24.611Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -835,7 +835,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-07-19T09:12:26.402Z",
+    "updatedAt": "2026-07-19T10:03:24.611Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -1051,7 +1051,7 @@
         "rank": 14,
         "rating": 1430,
         "rawRating": 1429.0943008147626,
-        "delta": null,
+        "delta": 0,
         "record": {
           "wins": 0,
           "losses": 2,
@@ -1060,7 +1060,7 @@
         "lastFight": "2026-07-18",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "new",
+          "kind": "same",
           "positions": 0
         }
       },
@@ -1083,7 +1083,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-07-19T09:12:26.402Z",
+    "updatedAt": "2026-07-19T10:03:24.611Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [
