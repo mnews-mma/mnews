@@ -1,5 +1,59 @@
 [
   {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "サイン入りポスターをプレゼント！abc presents RIZIN LANDMARK 15 in HIROSHIMA 来場・視聴者アンケートご協力のお願い",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853394",
+    "publishedAt": "2026-07-19T06:12:38.000Z",
+    "firstSeenAt": "2026-07-19T06:49:11.999Z"
+  },
+  {
+    "id": "rizin-1",
+    "source": "rizin",
+    "title": "【ライブ配信決定】7/20(月･祝)『RIZIN史上最大の超絶スケール 超緊急＆超ド級カード発表記者会見』",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853390",
+    "publishedAt": "2026-07-19T05:35:00.000Z",
+    "firstSeenAt": "2026-07-19T06:49:11.999Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【UFC】DDPデュ・プレシウスマンがウスマンに左ハイ効かせて判定勝ち再起、ダンカンがキャノニア下し5連勝、体重超過のフーパーが一本勝ち、投げるクラインがヒッチに判定勝ちで4連勝、マクミレンがモンテスTKOでMMA11勝無敗に、フライ級コリアがニコルに判定勝ち",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24365",
+    "publishedAt": "2026-07-19T02:26:56.000Z",
+    "firstSeenAt": "2026-07-19T06:49:11.999Z"
+  },
+  {
+    "id": "rizin-2",
+    "source": "rizin",
+    "title": "abc presents RIZIN LANDMARK 15 in HIROSHIMA 試合結果一覧",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853329",
+    "publishedAt": "2026-07-19T00:22:00.000Z",
+    "firstSeenAt": "2026-07-19T06:49:11.999Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE 364：山田浩平選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancrase364/interview_yamada.html",
+    "publishedAt": "2026-07-19T00:00:00.000Z",
+    "firstSeenAt": "2026-07-19T06:49:11.999Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "盟友・朝倉海との約束で“漢”封印、1763日ぶり勝利の43歳・昇侍 「負けたら引退」退路断った舞台裏",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033699/",
+    "publishedAt": "2026-07-18T23:20:00.000Z",
+    "firstSeenAt": "2026-07-19T06:49:11.999Z"
+  },
+  {
     "id": "gonkaku-0",
     "source": "other",
     "title": "【RIZIN】ダニー・サバテロが世界中のバンタム級選手に宣戦布告「世界中の誰であろうがやる。みんなが井上直樹との試合を見たいのであれば、俺はそれを喜んで受けるだけだ」",
