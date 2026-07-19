@@ -329,6 +329,14 @@
         "round": "R2"
       },
       {
+        "date": "2023-07-30",
+        "opponent": "神龍誠",
+        "result": "nc",
+        "method": "1R 0:25 ノーコンテスト（偶発的なサミング）",
+        "event": "超RIZIN.2 【Bellator世界フライ級王座決定戦】",
+        "round": "R1"
+      },
+      {
         "date": "2022-12-31",
         "opponent": "扇久保博正",
         "result": "win",
@@ -1271,7 +1279,7 @@
         "date": "2025-07-27",
         "opponent": "朝倉未来",
         "result": "loss",
-        "method": "3R終了判定",
+        "method": "5分3R終了 判定1-2",
         "event": "超RIZIN.4 真夏の喧嘩祭り",
         "round": "R3",
         "weightClass": "RIZINフェザー級タイトルマッチ"
@@ -1316,6 +1324,14 @@
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN.44",
         "round": "R3"
+      },
+      {
+        "date": "2023-06-24",
+        "opponent": "鈴木千裕",
+        "result": "nc",
+        "method": "ノーコンテスト（クレベルの体重超過）",
+        "event": "RIZIN.43 【RIZINフェザー級タイトルマッチ】",
+        "round": "—"
       },
       {
         "date": "2022-12-31",
@@ -3389,6 +3405,14 @@
         "method": "2R 3:44 リアネイキッドチョーク",
         "event": "RIZIN.45 【RIZINフライ級王座決定戦】",
         "round": "R2"
+      },
+      {
+        "date": "2023-07-30",
+        "opponent": "堀口恭司",
+        "result": "nc",
+        "method": "1R 0:25 無効試合（偶発的なアイポーク）",
+        "event": "超RIZIN.2 【Bellator世界フライ級王座決定戦】",
+        "round": "R1"
       },
       {
         "date": "2023-04-01",
@@ -7064,6 +7088,14 @@
         "round": "R1"
       },
       {
+        "date": "2023-06-24",
+        "opponent": "クレベル・コイケ",
+        "result": "nc",
+        "method": "ノーコンテスト（クレベルの体重超過）",
+        "event": "RIZIN.43 【RIZINフェザー級タイトルマッチ】",
+        "round": "—"
+      },
+      {
         "date": "2022-12-31",
         "opponent": "中原由貴",
         "result": "win",
@@ -8986,6 +9018,15 @@
         "weightClass": "RIZINフェザー級タイトルマッチ"
       },
       {
+        "date": "2025-12-31",
+        "opponent": "カルシャガ・ダウトベック",
+        "result": "nc",
+        "method": "ノーコンテスト（偶発的なサミング）",
+        "event": "RIZIN 師走の超強者祭り",
+        "round": "—",
+        "weightClass": "66.0kg契約"
+      },
+      {
         "date": "2024-12-31",
         "opponent": "ラジャブアリ・シェイドゥラエフ",
         "result": "loss",
@@ -10567,6 +10608,15 @@
         "round": "R2"
       },
       {
+        "date": "2025-05-31",
+        "opponent": "ジョニー・ケース",
+        "result": "nc",
+        "method": "ノーコンテスト（ケースの体重超過）",
+        "event": "RIZIN WORLD SERIES in KOREA",
+        "round": "—",
+        "weightClass": "71.0kg契約"
+      },
+      {
         "date": "2024-12-28",
         "opponent": "ムン・ギボム",
         "result": "loss",
@@ -10796,6 +10846,14 @@
         "result": "win",
         "method": "5分2R終了 判定2-0",
         "event": "DEEP 80 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2017-08-20",
+        "opponent": "横山恭典",
+        "result": "nc",
+        "method": "2R 2:45 無効試合（ローブロー）",
+        "event": "PANCRASE 289",
         "round": "R2"
       },
       {
@@ -20901,6 +20959,15 @@
         "round": "R1"
       },
       {
+        "date": "2025-05-31",
+        "opponent": "大原樹理",
+        "result": "nc",
+        "method": "ノーコンテスト（ケースの体重超過）",
+        "event": "RIZIN WORLD SERIES in KOREA",
+        "round": "—",
+        "weightClass": "71.0kg契約"
+      },
+      {
         "date": "2024-06-09",
         "opponent": "\"ブラックパンサー\"ベイノア",
         "result": "loss",
@@ -21769,6 +21836,15 @@
         "method": "1R 4:08 TKO（左フック→パウンド）",
         "event": "RIZIN LANDMARK 15",
         "round": "R1"
+      },
+      {
+        "date": "2025-12-31",
+        "opponent": "久保優太",
+        "result": "nc",
+        "method": "ノーコンテスト（偶発的なアイポーク）",
+        "event": "RIZIN 師走の超強者祭り",
+        "round": "—",
+        "weightClass": "66.0kg契約"
       },
       {
         "date": "2025-03-30",

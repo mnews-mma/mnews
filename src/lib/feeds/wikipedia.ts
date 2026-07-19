@@ -94,12 +94,13 @@ function parseDtsDate(rawInput: string): string {
   return "";
 }
 
-function rowResult(field: string): "win" | "loss" | "draw" | null {
+function rowResult(field: string): "win" | "loss" | "draw" | "nc" | null {
   const f = stripInvisible(field).toLowerCase();
   if (f.includes("win")) return "win";
   if (f.includes("loss")) return "loss";
   if (f.includes("draw")) return "draw";
-  return null; // e.g. NC (no contest) — not representable, skip
+  if (f.includes("nc")) return "nc";
+  return null;
 }
 
 export function parseMmaRecordTable(wikitext: string): FightRecord[] {
@@ -315,12 +316,13 @@ function splitTemplateParams(content: string): string[] {
   return parts;
 }
 
-function jaResult(marker: string): "win" | "loss" | "draw" | null {
+function jaResult(marker: string): "win" | "loss" | "draw" | "nc" | null {
   const m = stripInvisible(marker).trim();
   if (m === "○" || m === "〇") return "win";
   if (m === "×" || m === "✕" || m === "✗") return "loss";
   if (m === "△") return "draw";
-  return null; // 空欄（今後の試合）・「－」（無効試合）などはスキップ
+  if (m === "－" || m === "-" || m === "―" || m === "ー" || m === "NC") return "nc";
+  return null; // 空欄（今後の試合）などはスキップ
 }
 
 function parseJaDate(raw: string): string {
