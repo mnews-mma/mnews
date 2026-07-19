@@ -143,6 +143,32 @@ export function latestRizinDivision(history: HistoryBoutForDivision[], nominalWe
   const recentOthers = allOthers.filter((o) => o.date >= recentCutoff);
   const others = recentOthers.length > 0 ? recentOthers : allOthers;
 
+  // 2026-07-19追加: 比較対象(others)がちょうど1件のみ、かつその1件・直近戦の
+  // 双方が未明示のkg契約(ラベルなし)の場合に限り、件数ベースの多数決ではなく
+  // 契約体重(kg数値)を比較し、軽い方を採用する。直樹(naoki)が唯一の比較対象
+  // (未明示68kg契約=ライト級相当)に押し切られ、直近戦(66kg契約=フェザー級
+  // 相当)の方が正しいのに誤ってライト級と判定された事故で発覚: 件数ベースの
+  // 多数決はサンプル数1件でも無条件に「多数派」とみなしてしまう。キャッチ
+  // ウェイトは通常自階級以上の相手と受けるため、より軽い契約体重の方が本来の
+  // 階級に近い代理指標になる(武田光司: 直近71kg契約[ライト級相当]より過去
+  // 66kg契約[フェザー級相当]の方が軽く、フェザー級が正しい、という既存修正
+  // とも両立する)。
+  // 比較対象が2件以上の場合、または1件でもどちらかにラベルがある場合は
+  // この特別扱いを行わず、以下の従来どおりの多数決+タイ解消ロジックに委ねる
+  // (元谷友貴・秋元強真・金太郎・伊藤裕輝の既存回帰テストが機能する範囲を
+  // 変えない)。
+  if (others.length === 1) {
+    const only = others[0];
+    const onlyIsUnnamedCatchweight = /kg契約/.test(only.weightClass) && !NAMED_DIVISION_RE.test(only.weightClass);
+    if (onlyIsUnnamedCatchweight) {
+      const kgOf = (weightClass: string): number => {
+        const m = weightClass.match(/(\d+(?:\.\d+)?)\s*kg/);
+        return m ? Number(m[1]) : Infinity;
+      };
+      return kgOf(only.weightClass) < kgOf(latest.weightClass) ? (only.division as MnewsDivision) : latest.division;
+    }
+  }
+
   const counts = new Map<MnewsDivision, number>();
   for (const o of others) counts.set(o.division as MnewsDivision, (counts.get(o.division as MnewsDivision) ?? 0) + 1);
   const maxCount = Math.max(...counts.values());
