@@ -43,3 +43,24 @@ export const DIVISION_EXIT_FIGHTERS: DivisionExitEntry[] = [
 export function isDivisionExit(slug: string, division: import("./divisions").MnewsDivision): boolean {
   return DIVISION_EXIT_FIGHTERS.some((e) => e.slug === slug && e.division === division);
 }
+
+// オペレーター判断による階級別除外(上のDIVISION_EXIT_FIGHTERS=一次ソースで確認できる
+// 王座返上・階級離脱の「事実」リストとは別軸)。レート・戦績・他階級には触れず、
+// 当該階級のランキング掲載からのみ手動除外。用途は「Eloも履歴も正しいが、直近の
+// 資格対象戦がキャッチウェイト主体で当該階級への確信的なバケットができない」選手。
+export const DIVISION_AMBIGUOUS_EXCLUSIONS: DivisionExitEntry[] = [
+  {
+    slug: "tokoro-hideo",
+    division: "バンタム級",
+    name: "所英男",
+    reason:
+      "直近の資格対象戦がキャッチウェイト主体で、バンタム級への確信的な階級判定が" +
+      "できないため当該階級ランキングから除外(オペレーター判断)。Elo・戦績・他階級には触れない。",
+    source: "operator-judgment (Kaina, 2026-07-19)",
+    fetchedDate: "2026-07-19",
+  },
+];
+
+export function isDivisionAmbiguousExcluded(slug: string, division: import("./divisions").MnewsDivision): boolean {
+  return DIVISION_AMBIGUOUS_EXCLUSIONS.some((e) => e.slug === slug && e.division === division);
+}

@@ -55,7 +55,7 @@ import {
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
-import { isDivisionExit } from "../src/lib/mnewsRating/divisionExits";
+import { isDivisionExit, isDivisionAmbiguousExcluded } from "../src/lib/mnewsRating/divisionExits";
 import { getDivisionOverlay, getEligibilityScopeStartDate, getRecordDisplayExclusions } from "../src/lib/mnewsRating/fighterDivisions";
 import {
   ALGORITHM_VERSION,
@@ -228,7 +228,7 @@ function main() {
   // v9: 王座返上・階級離脱(divisionExits.ts)は階級ごとの除外のため、
   // isRetired/hiddenと違い対象divisionを引数に取る。
   const isExcludedByFact = (slug: string, division: MnewsDivision): boolean =>
-    isRetired(slug) || hiddenSlugs.has(slug) || isDivisionExit(slug, division);
+    isRetired(slug) || hiddenSlugs.has(slug) || isDivisionExit(slug, division) || isDivisionAmbiguousExcluded(slug, division);
 
   // B-1(ランカー勝ち特例)・B-2(階級変更後の資格スコープ)。二段階・単一パスで
   // 掲載資格を確定する。順位はここでは一切決めない(Eloレート順は
