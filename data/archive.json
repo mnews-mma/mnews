@@ -1,5 +1,14 @@
 [
   {
+    "id": "shooto-0",
+    "source": "shooto",
+    "title": "プロ修斗7月20日後楽園ホール大会『PROFESSIONAL SHOOTO 2026 Vol.5』計量結果",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/07/19/post-51206/",
+    "publishedAt": "2026-07-19T08:25:40.000Z",
+    "firstSeenAt": "2026-07-19T11:34:04.252Z"
+  },
+  {
     "id": "rizin-0",
     "source": "rizin",
     "title": "サイン入りポスターをプレゼント！abc presents RIZIN LANDMARK 15 in HIROSHIMA 来場・視聴者アンケートご協力のお願い",
@@ -27,6 +36,33 @@
     "firstSeenAt": "2026-07-19T06:49:11.999Z"
   },
   {
+    "id": "mmaplanet-3",
+    "source": "other",
+    "title": "【PFL2026#09】ヒジ&左右のフックでカサンガネイをKO。エブレンが暫定王座に就きスティーニスと再戦へ",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233598",
+    "publishedAt": "2026-07-19T02:08:40.000Z",
+    "firstSeenAt": "2026-07-19T11:34:04.252Z"
+  },
+  {
+    "id": "mmaplanet-4",
+    "source": "other",
+    "title": "【PFL2026#09】LFAで上久保を下したムリーシャ。PFLデビュー戦は4連勝中のマグリレンをRNCで仕留める",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233577",
+    "publishedAt": "2026-07-19T01:29:12.000Z",
+    "firstSeenAt": "2026-07-19T11:34:04.252Z"
+  },
+  {
+    "id": "mmaplanet-7",
+    "source": "other",
+    "title": "【PFL2026#09】計量失敗も、スクランブル発進のルケットに猛攻&初回TKOのピネドがAJと王座決定戦要求",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233562",
+    "publishedAt": "2026-07-19T00:27:35.000Z",
+    "firstSeenAt": "2026-07-19T11:34:04.252Z"
+  },
+  {
     "id": "rizin-2",
     "source": "rizin",
     "title": "abc presents RIZIN LANDMARK 15 in HIROSHIMA 試合結果一覧",
@@ -43,6 +79,24 @@
     "url": "https://www.pancrase.co.jp/tour/2026/pancrase364/interview_yamada.html",
     "publishedAt": "2026-07-19T00:00:00.000Z",
     "firstSeenAt": "2026-07-19T06:49:11.999Z"
+  },
+  {
+    "id": "mmaplanet-8",
+    "source": "other",
+    "title": "【UFN281】互角にやりあったコ・ソクヒョンだが、手数が減り――レバスノヤニに判定負け。UFC3連勝逃す",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233543",
+    "publishedAt": "2026-07-18T23:43:10.000Z",
+    "firstSeenAt": "2026-07-19T11:34:04.252Z"
+  },
+  {
+    "id": "mmaplanet-9",
+    "source": "other",
+    "title": "【PFL2026#09】LFAからPFLへ。空道世界王者サヴィチェバがヴァスケスにスプリット判定で勝利",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/233540",
+    "publishedAt": "2026-07-18T23:31:14.000Z",
+    "firstSeenAt": "2026-07-19T11:34:04.252Z"
   },
   {
     "id": "encount-0",
