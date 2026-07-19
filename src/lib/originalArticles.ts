@@ -36,12 +36,24 @@ export interface OriginalArticleFight {
   notablePoints?: string[];
 }
 
+// ランキング更新告知など、対戦カード比較以外のプロース記事1件分のスナップショット。
+// 生成時点のdata/rankings.jsonの値をここに焼き込む(告知記事は「その時点の状態を
+// 報告する」性質のため、対戦カード記事のライブ戦績方針とは異なりスナップショット固定でよい)。
+export interface RankingDivisionSnapshot {
+  divisionLabel: string; // 例: "フライ級"
+  divisionSlug: string; // /rankings/[division] のslug。例: "flyweight"
+  champion: string;
+  top5: string[]; // 1〜5位の表示名
+}
+
 export interface OriginalArticle {
   slug: string;
   title: string;
   eventSlug: string; // 大会ページ(/events/[slug] または /results/[slug])との相互リンク用
   publishedAt: string; // YYYY-MM-DD
-  fights: OriginalArticleFight[]; // 選択した試合ごとに1セクション(通常1件、複数可)
+  fights: OriginalArticleFight[]; // 選択した試合ごとに1セクション(通常1件、複数可)。プロース記事では空配列
+  body?: string[]; // 自由記述段落(ランキング更新告知等、対戦カード比較に当てはまらない記事用)
+  rankingSnapshots?: RankingDivisionSnapshot[]; // ランキング更新告知の階級別スナップショット表示
 }
 
 export const ORIGINAL_ARTICLES: OriginalArticle[] = [
@@ -67,6 +79,46 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
           "鹿志村仁之介は一本勝ちの比率が83%を占め、サブミッション色が強い",
           "両者のフィニッシュ率には42ポイントの差がある(ダニー・サバテロ50% / 鹿志村仁之介92%)",
         ],
+      },
+    ],
+  },
+  {
+    slug: "ai-rizin-rankings-update-landmark15",
+    title: "AI RIZINランキング更新: abc presents RIZIN LANDMARK 15の結果を反映",
+    eventSlug: "rizin-landmark-15",
+    publishedAt: "2026-07-19",
+    fights: [],
+    body: [
+      "7月18日に開催されたabc presents RIZIN LANDMARK 15の全MMA試合結果を反映し、AI RIZINランキング(階級別)を更新しました。",
+      "RIZINに公式ランキングは存在しません。AI RIZINランキングは、RIZIN開催のMMAルール試合の結果のみをもとにmnews.jpが独自算出する非公式ランキングです。編集部による主観的な順位補正は行っていません。",
+      "今回の更新で特に動きがあったのがバンタム級です。第10試合で太田忍を2R 3:04、TKO(レフェリーストップ:グラウンドでの膝打撃)で下したイリスベク・ティレノフが、初戦にして7位にランクイン。RIZIN参戦前の海外戦績(8勝1敗)も加味した算出により、いきなり上位圏に食い込みました。",
+      "フライ級では、第2試合でイ・ジェフンに3R 4:25 TKO(レフェリーストップ:グラウンドパンチ)で勝利した火の鳥が通算6勝1敗とし、11位に浮上しています。",
+      "フェザー級はカルシャガ・ダウトベックが3位を維持。他階級を含めた王者・トップ5の詳細は、各階級ランキングページでご確認ください。",
+    ],
+    rankingSnapshots: [
+      {
+        divisionLabel: "フライ級",
+        divisionSlug: "flyweight",
+        champion: "神龍誠",
+        top5: ["扇久保博正", "トニー・ララミー", "元谷友貴", "山本アーセン", "伊藤裕樹"],
+      },
+      {
+        divisionLabel: "バンタム級",
+        divisionSlug: "bantamweight",
+        champion: "ダニー・サバテロ",
+        top5: ["井上直樹", "佐藤将光", "後藤丈治", "アジズベク・テミロフ", "福田龍彌"],
+      },
+      {
+        divisionLabel: "フェザー級",
+        divisionSlug: "featherweight",
+        champion: "ラジャブアリ・シェイドゥラエフ",
+        top5: ["朝倉未来", "クレベル・コイケ", "カルシャガ・ダウトベック", "秋元強真", "ヴガール・ケラモフ"],
+      },
+      {
+        divisionLabel: "ライト級",
+        divisionSlug: "lightweight",
+        champion: "ルイス・グスタボ",
+        top5: ["イルホム・ノジモフ", "ホベルト・サトシ・ソウザ", "堀江圭功", "野村駿太", "キム・ギョンピョ"],
       },
     ],
   },
