@@ -1329,9 +1329,9 @@
         "date": "2023-06-24",
         "opponent": "鈴木千裕",
         "result": "nc",
-        "method": "ノーコンテスト（クレベルの体重超過）",
+        "method": "1R 2:59 ノーコンテスト（クレベルの体重超過・イエローカード提示）",
         "event": "RIZIN.43 【RIZINフェザー級タイトルマッチ】",
-        "round": "—"
+        "round": "R1"
       },
       {
         "date": "2022-12-31",
@@ -7091,9 +7091,9 @@
         "date": "2023-06-24",
         "opponent": "クレベル・コイケ",
         "result": "nc",
-        "method": "ノーコンテスト（クレベルの体重超過）",
+        "method": "1R 2:59 ノーコンテスト（クレベルの体重超過・イエローカード提示）",
         "event": "RIZIN.43 【RIZINフェザー級タイトルマッチ】",
-        "round": "—"
+        "round": "R1"
       },
       {
         "date": "2022-12-31",
@@ -9021,9 +9021,9 @@
         "date": "2025-12-31",
         "opponent": "カルシャガ・ダウトベック",
         "result": "nc",
-        "method": "ノーコンテスト（偶発的なサミング）",
+        "method": "1R 3:15 ノーコンテスト（偶発的なアイポーク）",
         "event": "RIZIN 師走の超強者祭り",
-        "round": "—",
+        "round": "R1",
         "weightClass": "66.0kg契約"
       },
       {
@@ -10600,6 +10600,14 @@
         "round": "R1"
       },
       {
+        "date": "2026-03-20",
+        "opponent": "倉本大悟",
+        "result": "nc",
+        "method": "1R 1:29 ノーコンテスト（大原選手ローブローにより試合続行不可能）",
+        "event": "DEEP 130 IMPACT 【DEEPライト級タイトルマッチ】",
+        "round": "R1"
+      },
+      {
         "date": "2025-11-02",
         "opponent": "神田コウヤ",
         "result": "win",
@@ -10611,9 +10619,9 @@
         "date": "2025-05-31",
         "opponent": "ジョニー・ケース",
         "result": "nc",
-        "method": "ノーコンテスト（ケースの体重超過）",
+        "method": "1R 2:22 ノーコンテスト（ケースの体重超過）",
         "event": "RIZIN WORLD SERIES in KOREA",
-        "round": "—",
+        "round": "R1",
         "weightClass": "71.0kg契約"
       },
       {
@@ -10846,6 +10854,14 @@
         "result": "win",
         "method": "5分2R終了 判定2-0",
         "event": "DEEP 80 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2017-08-20",
+        "opponent": "横山恭典",
+        "result": "nc",
+        "method": "2R 2:45 無効試合（ローブロー）",
+        "event": "PANCRASE 289",
         "round": "R2"
       },
       {
@@ -11107,6 +11123,14 @@
         "result": "loss",
         "method": "1R 2:19 TKO（右フック→踏みつけ）",
         "event": "DEEP 131 IMPACT 【DEEPライト級暫定タイトルマッチ】",
+        "round": "R1"
+      },
+      {
+        "date": "2026-03-20",
+        "opponent": "大原樹理",
+        "result": "nc",
+        "method": "1R 1:29 ノーコンテスト（大原選手ローブローにより試合続行不可能）",
+        "event": "DEEP 130 IMPACT 【DEEPライト級タイトルマッチ】",
         "round": "R1"
       },
       {
@@ -20954,9 +20978,9 @@
         "date": "2025-05-31",
         "opponent": "大原樹理",
         "result": "nc",
-        "method": "ノーコンテスト（ケースの体重超過）",
+        "method": "1R 2:22 ノーコンテスト（ケースの体重超過）",
         "event": "RIZIN WORLD SERIES in KOREA",
-        "round": "—",
+        "round": "R1",
         "weightClass": "71.0kg契約"
       },
       {
@@ -21833,9 +21857,9 @@
         "date": "2025-12-31",
         "opponent": "久保優太",
         "result": "nc",
-        "method": "ノーコンテスト（偶発的なアイポーク）",
+        "method": "1R 3:15 ノーコンテスト（偶発的なアイポーク）",
         "event": "RIZIN 師走の超強者祭り",
-        "round": "—",
+        "round": "R1",
         "weightClass": "66.0kg契約"
       },
       {
