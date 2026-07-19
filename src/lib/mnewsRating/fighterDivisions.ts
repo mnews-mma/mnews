@@ -210,6 +210,31 @@ export const FIGHTER_DIVISION_OVERLAYS: FighterDivisionOverlayEntry[] = [
       "表示戦績は2勝2敗(fights=4)。既存の掲載階級(バンタム級、rank5)自体は変わらない。順位・" +
       "レート・掲載資格の判定には一切影響しない(表示戦績のみ)。",
   },
+  {
+    slug: "miyagawa-hyuga",
+    name: "宮川日向",
+    division: "バンタム級",
+    recordDisplayExclusions: [{ date: "2026-07-18", opponentSlug: "suzuki-hiroaki" }],
+    fetchedDate: "2026-07-19",
+    note:
+      "対鈴木博昭戦(2026-07-18、RIZIN LANDMARK 15)は66.0kg契約=フェザーへの単発excursion。" +
+      "宮川はバンタムのランカーで前後の試合はいずれも61.0kg契約。ケラモフ/トーレスと同種の" +
+      "単発階級越えとして、この1敗をバンタム級としての表示戦績から除外する(ユーザー判断)。" +
+      "除外後の表示戦績は2勝0敗。latestRizinDivisionはバンタムのまま、順位・レート・掲載資格" +
+      "の判定には一切影響しない(表示戦績のみ)。",
+  },
+  {
+    slug: "umeno-genji",
+    name: "梅野源治",
+    division: "バンタム級",
+    recordDisplayExclusions: [{ date: "2026-07-18", opponentSlug: "name:昇侍" }],
+    fetchedDate: "2026-07-19",
+    note:
+      "対昇侍戦(2026-07-18、RIZIN LANDMARK 15)は64.0kgキャッチの単発excursion。昇侍は自社DB" +
+      "未登録のためopponentSlugは疑似ノード(name:昇侍)で指定する。この1敗をバンタム級としての" +
+      "表示戦績から除外する(ユーザー判断)。除外後の表示戦績は2勝1敗。順位・レート・掲載資格" +
+      "の判定には一切影響しない(表示戦績のみ)。",
+  },
 ];
 
 export function getDivisionOverlay(
