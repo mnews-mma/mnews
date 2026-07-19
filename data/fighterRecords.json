@@ -15722,6 +15722,14 @@
         "round": "R2"
       },
       {
+        "date": "2017-10-22",
+        "opponent": "中村勇太",
+        "result": "nc",
+        "method": "無効試合（体重超過）",
+        "event": "PANCRASE札幌大会2017",
+        "round": "—"
+      },
+      {
         "date": "2017-04-15",
         "opponent": "ラマザン・クラマゴメドフ",
         "result": "loss",
@@ -19125,7 +19133,16 @@
     "ko": 0,
     "sub": 0,
     "decision": 0,
-    "history": [],
+    "history": [
+      {
+        "date": "2015-10-04",
+        "opponent": "北方大地",
+        "result": "nc",
+        "method": "3R 1:26 無効試合（体重超過）",
+        "event": "PANCRASE 270",
+        "round": "R3"
+      }
+    ],
     "live": false,
     "noRecordData": true
   },
@@ -22876,7 +22893,16 @@
     "ko": 0,
     "sub": 0,
     "decision": 0,
-    "history": [],
+    "history": [
+      {
+        "date": "2025-07-27",
+        "opponent": "濱田巧",
+        "result": "nc",
+        "method": "3R 2:25 ノーコンテスト（偶発的なバッティング）",
+        "event": "PANCRASE 355 【フライ級キング・オブ・パンクラス王者決定戦】",
+        "round": "R3"
+      }
+    ],
     "live": false,
     "noRecordData": true
   },
@@ -23215,6 +23241,14 @@
         "round": "R1"
       },
       {
+        "date": "2015-09-19",
+        "opponent": "森川修次",
+        "result": "nc",
+        "method": "1R 1:02 無効試合（ローブロー）",
+        "event": "GRACHAN 19",
+        "round": "R1"
+      },
+      {
         "date": "2012-11-18",
         "opponent": "キム・ヘスン",
         "result": "loss",
@@ -23378,6 +23412,22 @@
         "method": "3分3R終了 判定3-0",
         "event": "PANCRASE 大阪大会",
         "round": "R3"
+      },
+      {
+        "date": "2015-10-04",
+        "opponent": "リトル",
+        "result": "nc",
+        "method": "3R 1:26 無効試合（体重超過）",
+        "event": "PANCRASE 270",
+        "round": "R3"
+      },
+      {
+        "date": "2015-07-05",
+        "opponent": "ハイミソン･ブルーノ",
+        "result": "nc",
+        "method": "1R 0:49 無効試合（ローブロー）",
+        "event": "PANCRASE 268",
+        "round": "R1"
       },
       {
         "date": "2015-04-29",
@@ -25367,6 +25417,14 @@
         "method": "5分5R終了 判定2-1",
         "event": "PANCRASE 358 【フライ級キング・オブ・パンクラス王者決定戦】",
         "round": "R5"
+      },
+      {
+        "date": "2025-07-27",
+        "opponent": "大塚智貴",
+        "result": "nc",
+        "method": "3R 2:25 ノーコンテスト（偶発的なバッティング）",
+        "event": "PANCRASE 355 【フライ級キング・オブ・パンクラス王者決定戦】",
+        "round": "R3"
       },
       {
         "date": "2024-07-21",
@@ -28237,6 +28295,14 @@
         "round": "R1"
       },
       {
+        "date": "2017-05-28",
+        "opponent": "タイアニー・ソウザ",
+        "result": "nc",
+        "method": "1R 3:25 袈裟固（三浦の計量失格による無効試合）",
+        "event": "PANCRASE 287",
+        "round": "R1"
+      },
+      {
         "date": "2017-03-12",
         "opponent": "マグダレナ・ソルモバ",
         "result": "win",
@@ -29281,6 +29347,14 @@
         "weightClass": "61.0kg契約"
       },
       {
+        "date": "2024-12-29",
+        "opponent": "ヤン・ジヨン",
+        "result": "nc",
+        "method": "1R 1:02 ノーコンテスト（バッティング）",
+        "event": "ROAD FC 071 【ROAD FC 63kgトーナメント 決勝】",
+        "round": "R1"
+      },
+      {
         "date": "2024-10-27",
         "opponent": "キム・ヒョンウ",
         "result": "win",
@@ -29583,6 +29657,14 @@
         "result": "loss",
         "method": "1R 1:26 TKO（パウンド）",
         "event": "ROAD FC 072",
+        "round": "R1"
+      },
+      {
+        "date": "2024-12-29",
+        "opponent": "キム・スーチョル",
+        "result": "nc",
+        "method": "1R 1:02 ノーコンテスト（バッティング）",
+        "event": "ROAD FC 071 【63kgトーナメント決勝】",
         "round": "R1"
       },
       {
