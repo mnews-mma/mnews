@@ -99,6 +99,9 @@ function rowResult(field: string): "win" | "loss" | "draw" | "nc" | null {
   if (f.includes("win")) return "win";
   if (f.includes("loss")) return "loss";
   if (f.includes("draw")) return "draw";
+  // "cancelled"/"unfought" 等、対戦自体が実施されなかった行はNCと別クラス
+  // (jaResult側のCANCELLED_NOT_NC_REと同じ考え方)。
+  if (/cancel|unfought/.test(f)) return null;
   if (f.includes("nc")) return "nc";
   return null;
 }
@@ -327,13 +330,26 @@ function splitTemplateParams(content: string): string[] {
 // NCとして採用する。無ければ根拠不明として従来どおりスキップする。
 const NC_KEYWORD_RE = /無効試合|ノーコンテスト|no contest|\bnc\b/i;
 
+// 「試合中止」「不成立」は計量失敗等により対戦自体が実施されなかった
+// ケースの表現で、ケージ内で試合が始まり何らかの理由で無効化された
+// 「無効試合/ノーコンテスト」とは別クラス(そもそも成立していない試合)。
+// 2026-07-19: ストラッサー起一の記事本文(表ではなく地の文)に「イゴールが
+// 前日計量で規定体重を3.25kg超過したことで試合は中止となった」という
+// 記述が見つかり、NC監査の過程で誤ってNC扱いされていないか要確認と
+// なった実例(実際にはこの一戦はFight-cont行自体が存在せず表に載って
+// おらず、パーサの対象外だったため誤爆はしていなかったが、将来
+// Fight-cont行の中にこの種の文言が混入した場合に備えて明示的に除外する)。
+const CANCELLED_NOT_NC_RE = /試合中止|不成立/;
+
 function jaResult(marker: string, methodText: string): "win" | "loss" | "draw" | "nc" | null {
   const m = stripInvisible(marker).trim();
   if (m === "○" || m === "〇") return "win";
   if (m === "×" || m === "✕" || m === "✗") return "loss";
   if (m === "△") return "draw";
   const isDashMarker = m === "－" || m === "-" || m === "―" || m === "ー";
-  if (isDashMarker && NC_KEYWORD_RE.test(stripInvisible(methodText))) return "nc";
+  const cleanMethod = stripInvisible(methodText);
+  if (isDashMarker && CANCELLED_NOT_NC_RE.test(cleanMethod)) return null;
+  if (isDashMarker && NC_KEYWORD_RE.test(cleanMethod)) return "nc";
   return null; // 空欄（今後の試合）・根拠不明な「その他」区分などはスキップ
 }
 
