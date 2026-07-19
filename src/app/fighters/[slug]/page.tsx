@@ -547,7 +547,7 @@ export default async function FighterPage({
 
         {/* X投稿カードボタン(/tools/fighter-card廃止・/dreamへ統合、2026-07-17) */}
         <a href={`/dream?a=${fighter.slug}`} className="fighter-card-btn">
-          𝕏 投稿用カード作成
+          𝕏 この選手で対戦カードを作る
         </a>
 
         {/* 出身・年齢 */}
