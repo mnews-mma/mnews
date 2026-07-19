@@ -33,6 +33,7 @@ export default async function AdminDraftsPage() {
     return {
       slug: f.slug,
       nameJa: f.nameJa,
+      weightClass: f.weightClass,
       wins: rec.wins,
       losses: rec.losses,
       ko: rec.ko,

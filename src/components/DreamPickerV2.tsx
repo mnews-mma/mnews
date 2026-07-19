@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { weightSortKey } from "@/lib/weightClasses";
+import { weightSortKey, WEIGHT_KG } from "@/lib/weightClasses";
 import styles from "@/styles/matchup.module.css";
 
 interface FighterOption {
@@ -11,6 +11,9 @@ interface FighterOption {
   weightClass: string;
 }
 
+const CARD_WEIGHT_OPTIONS = Object.keys(WEIGHT_KG).sort((a, b) => WEIGHT_KG[a] - WEIGHT_KG[b]);
+const EVENT_NAME_MAX_LEN = 60;
+
 // 夢のカードv2ピッカー: 「階級→選手」の2段選択のみ(全選手からの直接検索はしない、§3-2)。
 // slug単位でstateを持つ既存パターン(DreamPicker.tsx)を踏襲し、フィルタ変更で選択中の
 // slugが候補から消えた場合は表示中の先頭候補へ明示的に同期する(同じ過去バグ対策)。
@@ -18,11 +21,15 @@ export default function DreamPickerV2({
   fighters,
   initialA,
   initialB,
+  initialEvent,
+  initialWeight,
   preview,
 }: {
   fighters: FighterOption[];
   initialA: string;
   initialB: string;
+  initialEvent?: string;
+  initialWeight?: string;
   preview: boolean;
 }) {
   const router = useRouter();
@@ -37,6 +44,13 @@ export default function DreamPickerV2({
   const findInitialClass = (slug: string) => fighters.find((f) => f.slug === slug)?.weightClass ?? weightClasses[0] ?? "";
   const [classFilterA, setClassFilterA] = useState(() => findInitialClass(initialA));
   const [classFilterB, setClassFilterB] = useState(() => findInitialClass(initialB));
+
+  // カード用の任意入力(大会名・階級)。両選手が同一階級なら階級の初期値としてのみ
+  // プリフィルする(継続的な自動追従はしない。ユーザーが選び直した値を上書きしない)。
+  const [eventName, setEventName] = useState(initialEvent ?? "");
+  const [cardWeight, setCardWeight] = useState(
+    () => initialWeight ?? (classFilterA && classFilterA === classFilterB ? classFilterA : "")
+  );
   // 選手名フリーワード検索(部分一致)。/tools/fighter-cardから移植(§6統合)。
   // 選択肢自体は既存のプルダウンのまま、絞り込みは表示するoptionを減らすだけ。
   const [nameFilterA, setNameFilterA] = useState("");
@@ -68,6 +82,10 @@ export default function DreamPickerV2({
     }
   }, [fightersB, slugB]);
 
+  // URL(?a=&b=&event=&weight=)への反映は1つのeffectにまとめてデバウンスする。
+  // 大会名は自由入力(=キー入力毎の更新)なので、都度router.replaceすると
+  // ナビゲーションが多発する。選手/階級セレクトの変更も含め400ms待ってから
+  // まとめて1回のURL更新にする。
   const mountedRef = useRef(false);
   useEffect(() => {
     if (!mountedRef.current) {
@@ -77,8 +95,14 @@ export default function DreamPickerV2({
     if (!slugA || !slugB) return;
     const params = new URLSearchParams({ a: slugA, b: slugB });
     if (preview) params.set("ui", "new");
-    router.replace(`/dream?${params.toString()}`, { scroll: false });
-  }, [slugA, slugB, preview, router]);
+    const ev = eventName.trim();
+    if (ev) params.set("event", ev);
+    if (cardWeight) params.set("weight", cardWeight);
+    const t = setTimeout(() => {
+      router.replace(`/dream?${params.toString()}`, { scroll: false });
+    }, 400);
+    return () => clearTimeout(t);
+  }, [slugA, slugB, preview, eventName, cardWeight, router]);
 
   const swap = () => {
     setClassFilterA(classFilterB);
@@ -175,6 +199,29 @@ export default function DreamPickerV2({
                 ))}
               </select>
             </label>
+          </div>
+        </div>
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", padding: "0 16px 16px" }}>
+          <div>
+            <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>大会名(任意)</label>
+            <input
+              type="text"
+              value={eventName}
+              onChange={(e) => setEventName(e.target.value.replace(/[\r\n]+/g, " ").slice(0, EVENT_NAME_MAX_LEN))}
+              placeholder="例: RIZIN LANDMARK 16"
+              style={{ padding: "8px 12px", fontSize: 14, minWidth: 200 }}
+            />
+          </div>
+          <div>
+            <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>階級(任意)</label>
+            <select value={cardWeight} onChange={(e) => setCardWeight(e.target.value)} style={{ padding: "8px 12px", fontSize: 14, minWidth: 160 }}>
+              <option value="">（なし）</option>
+              {CARD_WEIGHT_OPTIONS.map((w) => (
+                <option key={w} value={w}>
+                  {w}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <button
