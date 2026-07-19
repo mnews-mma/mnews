@@ -106,7 +106,14 @@ function detectInactivityGapCutoff(summaries: FighterBoutSummary[]): string | nu
 function resolveEligibilityScope(summaries: FighterBoutSummary[], currentDivision: MnewsDivision): FighterBoutSummary[] {
   const withoutOpeners = excludeOpeningFights(summaries);
   const divisionCutoff = detectDivisionChangeCutoff(withoutOpeners, currentDivision);
-  const gapCutoff = detectInactivityGapCutoff(withoutOpeners);
+  // 2026-07-19(確立ベテラン例外): 活動空白カットオフは薄いカムバック(中村大介=
+  // 空白前2戦)を弾く穴埋めであって、空白前に既にELIGIBILITY_MIN_FIGHTS戦以上を積んだ
+  // 確立選手が復帰して直近に試合している場合まで過去を全消しする意図ではない。
+  // 空白前の対戦数が資格バー以上なら確立済みとみなし活動空白カットオフを無効化する
+  // (階級変更カットオフは別途そのまま効く)。ケース(空白前7戦)該当・中村(2戦)非該当。
+  const rawGapCutoff = detectInactivityGapCutoff(withoutOpeners);
+  const preGapFights = rawGapCutoff ? withoutOpeners.filter((s) => s.date <= rawGapCutoff).length : 0;
+  const gapCutoff = rawGapCutoff && preGapFights >= ELIGIBILITY_MIN_FIGHTS ? null : rawGapCutoff;
   const cutoff =
     divisionCutoff && gapCutoff ? (divisionCutoff > gapCutoff ? divisionCutoff : gapCutoff) : divisionCutoff ?? gapCutoff;
   return cutoff ? withoutOpeners.filter((s) => s.date > cutoff) : withoutOpeners;
