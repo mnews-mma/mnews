@@ -1231,6 +1231,14 @@
         "round": "R1"
       },
       {
+        "date": "2016-03-27",
+        "opponent": "Ryo",
+        "result": "nc",
+        "method": "無効試合",
+        "event": "THE OUTSIDER第39戦 【65-70kg級タイトルマッチ】",
+        "round": "—"
+      },
+      {
         "date": "2015-12-10",
         "opponent": "樋口武大",
         "result": "win",
@@ -2668,15 +2676,16 @@
         "result": "loss",
         "method": "1R 4:08 TKO（左フック→パウンド）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2026-04-12",
         "opponent": "アバイジャ・カレオ・メヘウラ",
-        "result": "loss",
-        "method": "1R パウンド",
+        "result": "nc",
+        "method": "ノーコンテスト（メヘウラの体重超過）",
         "event": "RIZIN LANDMARK 13",
-        "round": "R1"
+        "round": "—"
       },
       {
         "date": "2025-11-03",
@@ -3077,7 +3086,8 @@
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN LANDMARK 15",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "フライ級（57.0kg）"
       },
       {
         "date": "2025-12-31",
@@ -4204,6 +4214,14 @@
         "round": "R1"
       },
       {
+        "date": "2015-12-29",
+        "opponent": "フェリペ・エフライン",
+        "result": "nc",
+        "method": "1R 1:56 無効試合（相手選手の体重超過）",
+        "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
+        "round": "R1"
+      },
+      {
         "date": "2015-10-17",
         "opponent": "小島壮太",
         "result": "win",
@@ -4427,6 +4445,14 @@
         "method": "1R 2:50 リアネイキッドチョーク",
         "event": "RIZIN.43",
         "round": "R1"
+      },
+      {
+        "date": "2022-12-28",
+        "opponent": "木村ミノル",
+        "result": "nc",
+        "method": "無効試合（木村による他団体の薬物検査失格）",
+        "event": "INOKI BOM-BA-YE × 巌流島 in 両国",
+        "round": "—"
       },
       {
         "date": "2022-10-23",
@@ -5381,7 +5407,8 @@
         "result": "loss",
         "method": "2R 3:04 KO（右膝蹴り）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "バンタム級（61.0kg）"
       },
       {
         "date": "2026-05-10",
@@ -5732,7 +5759,8 @@
         "result": "win",
         "method": "1R 1:40 膝十字固め",
         "event": "RIZIN LANDMARK 15",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "女子スーパーアトム級（49.0kg）"
       },
       {
         "date": "2026-03-07",
@@ -5940,7 +5968,8 @@
         "result": "loss",
         "method": "3R 0:40 KO（右フック）",
         "event": "RIZIN LANDMARK 15 【RIZINバンタム級タイトルマッチ】",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "RIZINバンタム級タイトルマッチ"
       },
       {
         "date": "2026-05-04",
@@ -6513,6 +6542,14 @@
         "method": "1R 0:33 TKO（ドクターストップ）",
         "event": "Tribelate vol. 21 【TRIBELATEフェザー級タイトルマッチ】",
         "round": "R1"
+      },
+      {
+        "date": "2008-12-06",
+        "opponent": "西村広和",
+        "result": "nc",
+        "method": "無効試合（レフリングミス）",
+        "event": "Cage Force 9",
+        "round": "—"
       },
       {
         "date": "2008-10-13",
@@ -7583,7 +7620,8 @@
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "RIZIN LANDMARK 15",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "フライ級（57.0kg）"
       },
       {
         "date": "2025-09-28",
@@ -8482,7 +8520,8 @@
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN LANDMARK 15",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "64.0kg契約"
       },
       {
         "date": "2026-05-10",
@@ -8817,7 +8856,8 @@
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN LANDMARK 15",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "女子スーパーアトム級（49.0kg）"
       },
       {
         "date": "2026-03-08",
@@ -10196,7 +10236,8 @@
         "result": "win",
         "method": "2R 3:29 TKO（グラウンド状態での膝蹴り）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2025-09-28",
@@ -10298,8 +10339,7 @@
       }
     ],
     "live": true,
-    "nickname": "怪物くん",
-    "birthPlace": "愛知県豊橋市"
+    "nickname": "怪物くん"
   },
   "miyagawa-hyuga": {
     "wins": 7,
@@ -10315,7 +10355,8 @@
         "result": "loss",
         "method": "2R 3:29 TKO（グラウンド状態での膝蹴り）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2026-04-12",
@@ -10476,7 +10517,8 @@
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "超RIZIN.4 真夏の喧嘩祭り",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "68.0kg契約 喧嘩三番勝負"
       },
       {
         "date": "2025-05-05",
@@ -14736,6 +14778,14 @@
         "round": "R2"
       },
       {
+        "date": "2008-09-07",
+        "opponent": "吉岡宏高",
+        "result": "nc",
+        "method": "1R 2:10 ノーコンテスト（バッティング）",
+        "event": "PANCRASE 2008 SHINING TOUR",
+        "round": "R1"
+      },
+      {
         "date": "2008-05-25",
         "opponent": "枝折優士",
         "result": "win",
@@ -15422,6 +15472,14 @@
         "result": "win",
         "method": "1R 0:52 KO（顔面への膝蹴り）",
         "event": "DEEP 124 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2024-09-16",
+        "opponent": "谷岡祐樹",
+        "result": "nc",
+        "method": "1R 4:39 ノーコンテスト（偶発的なサミング）",
+        "event": "DEEP 121 IMPACT",
         "round": "R1"
       },
       {
@@ -19444,7 +19502,8 @@
         "result": "win",
         "method": "3R 0:40 KO（右フック）",
         "event": "RIZIN LANDMARK 15 【RIZINバンタム級タイトルマッチ】",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "RIZINバンタム級タイトルマッチ"
       },
       {
         "date": "2026-04-12",
@@ -20989,7 +21048,8 @@
         "result": "win",
         "method": "1R 3:14 TKO（右アッパー→パウンド）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "ライト級（71.0kg）"
       },
       {
         "date": "2025-05-31",
@@ -21723,6 +21783,14 @@
         "round": "R3"
       },
       {
+        "date": "2023-05-11",
+        "opponent": "ベンジャミン・シェヒッチ",
+        "result": "nc",
+        "method": "無効試合（ソルダトキンによる薬物検査失格）",
+        "event": "Ares FC 15: Pena vs. Saadi",
+        "round": "—"
+      },
+      {
         "date": "2022-11-12",
         "opponent": "ロジャース・ソウザ",
         "result": "win",
@@ -21868,7 +21936,8 @@
         "result": "win",
         "method": "1R 4:08 TKO（左フック→パウンド）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2025-12-31",
@@ -22920,7 +22989,8 @@
         "result": "loss",
         "method": "1R 3:14 TKO（右アッパー→パウンド）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "ライト級（71.0kg）"
       },
       {
         "date": "2026-04-12",
@@ -24735,7 +24805,8 @@
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "RIZIN LANDMARK 15",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "女子スーパーアトム級（49.0kg）"
       },
       {
         "date": "2025-11-23",
@@ -24908,7 +24979,8 @@
         "result": "loss",
         "method": "1R 1:40 膝十字固め",
         "event": "RIZIN LANDMARK 15",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "女子スーパーアトム級（49.0kg）"
       },
       {
         "date": "2026-05-24",
@@ -26503,6 +26575,14 @@
         "round": "R3"
       },
       {
+        "date": "2024-09-21",
+        "opponent": "ジャスティン・パットン",
+        "result": "nc",
+        "method": "1R 1:54 無効試合 (偶発的なアイポーク)",
+        "event": "247 FC: Brawl in the Burgh 23",
+        "round": "R1"
+      },
+      {
         "date": "2023-12-15",
         "opponent": "クリスティアン・ロペス",
         "result": "loss",
@@ -27453,7 +27533,7 @@
         "date": "2008-03-15",
         "opponent": "J.Z.カルバン",
         "result": "nc",
-        "method": "1R 3:46 偶発的な反則(肘・首)により続行不能、ノーコンテスト(没収試合扱い)",
+        "method": "1R 3:46 ノーコンテスト（偶発的な反則）",
         "event": "DREAM.1 ライト級グランプリ2008 開幕戦 【ライト級グランプリ 1回戦】",
         "round": "R1"
       },
@@ -28101,9 +28181,9 @@
         "date": "2009-08-05",
         "opponent": "RYOTA",
         "result": "nc",
-        "method": "2R 偶発的なローブローによりRYOTA選手続行不能のためノーコンテスト",
+        "method": "ノーコンテスト（和田の偶発的な反則）",
         "event": "キングダムエルガイツ 10周年記念興行",
-        "round": "R2"
+        "round": "—"
       },
       {
         "date": "2009-06-30",
@@ -28152,12 +28232,20 @@
   },
   "ayaka-miura": {
     "wins": 16,
-    "losses": 6,
+    "losses": 7,
     "draws": 0,
     "ko": 0,
     "sub": 11,
     "decision": 5,
     "history": [
+      {
+        "date": "2026-07-18",
+        "opponent": "ビクトリア・ソウザ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "ONE Fight Night 45",
+        "round": "R3"
+      },
       {
         "date": "2026-04-29",
         "opponent": "澤田千優",
@@ -29134,7 +29222,8 @@
         "result": "win",
         "method": "3R 4:25 TKO（パウンド）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "フライ級（57.0kg）"
       },
       {
         "date": "2026-07-05",
@@ -29877,7 +29966,8 @@
         "result": "win",
         "method": "2R 3:04 KO（右膝蹴り）",
         "event": "RIZIN LANDMARK 15",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "バンタム級（61.0kg）"
       },
       {
         "date": "2026-04-25",
@@ -30225,7 +30315,8 @@
         "result": "win",
         "method": "3R 0:28 KO（左フック→パウンド）",
         "event": "RIZIN LANDMARK 14",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "61.0kg契約"
       },
       {
         "date": "2026-04-12",
