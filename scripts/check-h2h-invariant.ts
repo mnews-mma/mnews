@@ -171,9 +171,17 @@ function main() {
   const requiredViolations = checkRequiredInvariants(finalRankedSlugsByDivision);
   console.log(`\n必達不変条件チェック: 違反${requiredViolations.length}件`);
   for (const v of requiredViolations) {
-    console.log(
-      `  NG(必達): ${v.division} ${v.winnerSlug}(${v.winnerRank}位) が ${v.loserSlug}(${v.loserRank}位) より下位 [${v.note}]`
-    );
+    if (v.reason === "division-not-found") {
+      console.log(`  NG(必達・階級未検出): ${v.division}がランキング対象に存在しません [${v.winnerSlug} vs ${v.loserSlug}] [${v.note}]`);
+    } else if (v.reason === "winner-not-found") {
+      console.log(`  NG(必達・勝者未検出): ${v.division} ${v.winnerSlug}が現在のランク圏内に見つかりません(敗者${v.loserSlug}は${v.loserRank}位) [${v.note}]`);
+    } else if (v.reason === "loser-not-found") {
+      console.log(`  NG(必達・敗者未検出): ${v.division} ${v.loserSlug}が現在のランク圏内に見つかりません(勝者${v.winnerSlug}は${v.winnerRank}位) [${v.note}]`);
+    } else {
+      console.log(
+        `  NG(必達・順位逆転): ${v.division} ${v.winnerSlug}(${v.winnerRank}位) が ${v.loserSlug}(${v.loserRank}位) より下位 [${v.note}]`
+      );
+    }
     totalViolations++;
   }
 

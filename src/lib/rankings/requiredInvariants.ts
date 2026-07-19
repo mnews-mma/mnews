@@ -44,28 +44,62 @@ export const REQUIRED_RANKING_INVARIANTS: RequiredInvariantEntry[] = [
   },
 ];
 
+// reason: "order"=順位関係が逆転している / "winner-not-found"・
+// "loser-not-found"=該当選手が当該階級のランク圏内に存在しない /
+// "division-not-found"=当該階級自体がランキング対象外。
+// 見つからない場合を"チェック対象外"として黙ってスキップすると、リストの
+// slugが実データと紐付いていない死んだエントリ(誰にもマッチせず常にpassする
+// だけの行)が検証をすり抜けてしまう。資格喪失等で選手が圏外に落ちた場合も
+// 含め、必ず違反として報告し人間判断に上げる(推測での自動除外はしない)。
+export type RequiredInvariantViolationReason =
+  | "order"
+  | "winner-not-found"
+  | "loser-not-found"
+  | "division-not-found";
+
 export interface RequiredInvariantViolation {
   division: MnewsDivision;
   winnerSlug: string;
   loserSlug: string;
-  winnerRank: number;
-  loserRank: number;
+  winnerRank: number | null;
+  loserRank: number | null;
   note: string;
+  reason: RequiredInvariantViolationReason;
 }
 
 // rankedSlugsByDivision: 階級ごとの最終順位配列(0番目が1位)。
-// 対象階級がスコープ外、またはいずれかの選手が現在ランク圏内に存在しない
-// 場合はチェック対象外(そもそも順位関係が定義できないため)。
 export function checkRequiredInvariants(
   rankedSlugsByDivision: Map<MnewsDivision, string[]>
 ): RequiredInvariantViolation[] {
   const violations: RequiredInvariantViolation[] = [];
   for (const entry of REQUIRED_RANKING_INVARIANTS) {
     const rankedSlugs = rankedSlugsByDivision.get(entry.division);
-    if (!rankedSlugs) continue;
+    if (!rankedSlugs) {
+      violations.push({
+        division: entry.division,
+        winnerSlug: entry.winnerSlug,
+        loserSlug: entry.loserSlug,
+        winnerRank: null,
+        loserRank: null,
+        note: entry.note,
+        reason: "division-not-found",
+      });
+      continue;
+    }
     const winnerIdx = rankedSlugs.indexOf(entry.winnerSlug);
     const loserIdx = rankedSlugs.indexOf(entry.loserSlug);
-    if (winnerIdx === -1 || loserIdx === -1) continue;
+    if (winnerIdx === -1 || loserIdx === -1) {
+      violations.push({
+        division: entry.division,
+        winnerSlug: entry.winnerSlug,
+        loserSlug: entry.loserSlug,
+        winnerRank: winnerIdx === -1 ? null : winnerIdx + 1,
+        loserRank: loserIdx === -1 ? null : loserIdx + 1,
+        note: entry.note,
+        reason: winnerIdx === -1 ? "winner-not-found" : "loser-not-found",
+      });
+      continue;
+    }
     if (winnerIdx > loserIdx) {
       violations.push({
         division: entry.division,
@@ -74,6 +108,7 @@ export function checkRequiredInvariants(
         winnerRank: winnerIdx + 1,
         loserRank: loserIdx + 1,
         note: entry.note,
+        reason: "order",
       });
     }
   }
