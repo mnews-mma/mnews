@@ -360,12 +360,27 @@ function main() {
   // 全選手nullに抑制する(データ修正由来の見かけ上の順位入れ替わりを、実際の
   // 順位変動として利用者に見せない)。
   if (MODE === "new-results") {
+    // 2026-07-19: 「直近イベントに出場した選手だけ▲▼を出す」。新規掲載選手の挿入
+    // シフト(下位が1つずつ繰り下がる)やH2H閾値/seed等の再較正に伴う順位ずれは
+    // 「成績変動」ではないため、出場していない選手には▲▼/レート差分を出さない
+    // (=「—」)。lastFightが最新イベント日と一致する選手を出場者とみなす。これで
+    // rankingMovementGateの一律抑止(PR #118)を、出場者スコープの恒久ロジックへ置換。
+    const latestEventDate = Object.values(published)
+      .flatMap((d) => d.entries.map((e) => e.lastFight ?? ""))
+      .reduce((m, d) => (d > m ? d : m), "");
     const withPositionDeltas: RankingsFile = {};
     for (const [key, div] of Object.entries(published)) {
       const deltas = computeRankPositionDeltas(div, prevOut[key]);
       withPositionDeltas[key] = {
         ...div,
-        entries: div.entries.map((e) => ({ ...e, rankPositionDelta: deltas.get(e.fighterId) ?? null })),
+        entries: div.entries.map((e) => {
+          const competedInLatestEvent = (e.lastFight ?? "") === latestEventDate && latestEventDate !== "";
+          return {
+            ...e,
+            rankPositionDelta: competedInLatestEvent ? (deltas.get(e.fighterId) ?? null) : null,
+            delta: competedInLatestEvent ? e.delta : 0,
+          };
+        }),
       };
     }
     published = withPositionDeltas;
