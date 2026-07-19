@@ -149,7 +149,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                         )}
                       </td>
                       <td>
-                        <RankingDelta delta={e.delta} />
+                        <RankingDelta delta={e.delta} nr={e.rankPositionDelta?.kind === "nr"} />
                       </td>
                       <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>
                         {e.record.wins}-{e.record.losses}

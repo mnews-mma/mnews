@@ -159,7 +159,7 @@ export default async function RankingsHubPage() {
                               </a>
                             </td>
                             <td>
-                              <RankingDelta delta={e.delta} />
+                              <RankingDelta delta={e.delta} nr={e.rankPositionDelta?.kind === "nr"} />
                             </td>
                           </tr>
                         ))}
