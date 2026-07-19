@@ -235,6 +235,26 @@ export const FIGHTER_DIVISION_OVERLAYS: FighterDivisionOverlayEntry[] = [
       "表示戦績から除外する(ユーザー判断)。除外後の表示戦績は2勝1敗。順位・レート・掲載資格" +
       "の判定には一切影響しない(表示戦績のみ)。",
   },
+  {
+    slug: "akimoto-kyoma",
+    name: "秋元強真",
+    division: "フェザー級",
+    recordDisplayExclusions: [
+      { date: "2024-09-29", opponentSlug: "kintaro" },
+      { date: "2024-12-31", opponentSlug: "motoya-yuki" },
+    ],
+    fetchedDate: "2026-07-20",
+    note:
+      "秋元強真のフェザー級表示戦績に、実際はバンタム級だった2試合が混入していた" +
+      "(通算7勝1敗→正しくは6勝0敗)。RIZIN公式ソース(rizinRecords.json)で両試合とも" +
+      "61kg(バンタム級)であることを確認済み: Yogibo presents RIZIN.48(2024-09-29、" +
+      "対金太郎、61kg)、RIZIN DECADE / Yogibo presents RIZIN.49(2024-12-31、対元谷友貴、" +
+      "namedDivision=バンタム級明示)。トーレス・ケラモフと同種の単発他階級試合として、" +
+      "この2試合をフェザー級としての表示戦績から除外する。除外後の表示戦績は6勝0敗。" +
+      "順位・レート・掲載資格の判定には一切影響しない(表示戦績のみ。Eloは階級横断の" +
+      "生涯レートのため、この2試合が実在の対戦である以上レート自体は変更しない。既存の" +
+      "設計判断(本ファイル冒頭コメント参照)と同じ扱い)。",
+  },
 ];
 
 export function getDivisionOverlay(
