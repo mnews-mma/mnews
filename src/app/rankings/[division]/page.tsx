@@ -94,7 +94,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
         評価の考え方は<a href="/rankings/methodology" style={{ color: "var(--accent)" }}>ランキングについて</a>で公開しています。
         {data && (
           <span style={{ display: "block", fontSize: 10, opacity: 0.7, marginTop: 4 }}>
-            データ更新: {data.updatedAt.slice(0, 10)} / 算出ロジック: v{data.algorithmVersion}
+            データ更新: {data.updatedAt.slice(0, 10)}
           </span>
         )}
       </div>

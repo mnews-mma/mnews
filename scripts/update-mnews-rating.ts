@@ -77,6 +77,12 @@ const RIZIN_RECORDS_PATH = path.join(process.cwd(), "data", "rizinRecords.json")
 const OUT = path.join(process.cwd(), "data", "rankings.json");
 const OUT_PREV = path.join(process.cwd(), "data", "rankings.prev.json");
 const ARCHIVE_DIR = path.join(process.cwd(), "data", "rankings", "archive");
+// 静的NRオーバーレイ(2026-07-19): 今サイクル(gap再較正+新規挿入で出場者矢印が
+// 汚染されている間)、エンジンの自動▲▼/NEW判定を迂回して特定選手にだけ「NR」を
+// 手動確定表示するための一覧。committedファイルのため毎日再生成でも消えない。
+// 次の「純粋な結果のみ」の大会でSUPPRESS_RANKING_MOVEMENTをfalseに戻す際、
+// 本ファイルは撤去しエンジンのNEW判定に一本化する(rankingMovementGate.ts参照)。
+const MOVEMENT_OVERRIDES_PATH = path.join(process.cwd(), "data", "rankings", "movementOverrides.json");
 // data-correctionモード専用の「最後にnew-resultsが正当に確定させた状態」。
 // 通常のrankings.prev.jsonは実行のたびに1歩ずつ前進する(data-correction実行
 // 自体でも更新される)ため、同日にdata-correctionを複数回連続実行すると比較
@@ -378,6 +384,9 @@ function main() {
     const latestEventDate = Object.values(published)
       .flatMap((d) => d.entries.map((e) => e.lastFight ?? ""))
       .reduce((m, d) => (d > m ? d : m), "");
+    const movementOverrides: Record<string, "NR"> = fs.existsSync(MOVEMENT_OVERRIDES_PATH)
+      ? JSON.parse(fs.readFileSync(MOVEMENT_OVERRIDES_PATH, "utf8"))
+      : {};
     const withPositionDeltas: RankingsFile = {};
     for (const [key, div] of Object.entries(published)) {
       const deltas = computeRankPositionDeltas(div, prevOut[key]);
@@ -385,6 +394,12 @@ function main() {
         ...div,
         entries: div.entries.map((e) => {
           const competedInLatestEvent = (e.lastFight ?? "") === latestEventDate && latestEventDate !== "";
+          // 静的NRオーバーレイ: movementOverrides.jsonで指定された選手は、出場者
+          // スコープ判定・エンジンの自動判定に関わらずrankPositionDeltaを"nr"に
+          // 固定する(表示側でゲートより優先してNRを描画する。レート差分は対象外)。
+          if (movementOverrides[e.fighterId] === "NR") {
+            return { ...e, rankPositionDelta: { kind: "nr" as const, positions: 0 }, delta: competedInLatestEvent ? e.delta : 0 };
+          }
           return {
             ...e,
             rankPositionDelta: competedInLatestEvent ? (deltas.get(e.fighterId) ?? null) : null,

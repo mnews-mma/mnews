@@ -64,7 +64,6 @@ export default async function RankingsHubPage() {
 
   const anyDivision = Object.values(rankings)[0];
   const updatedAt = anyDivision?.updatedAt ? anyDivision.updatedAt.slice(0, 10) : null;
-  const algorithmVersion = anyDivision?.algorithmVersion ?? null;
 
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "ランキング" }];
 
@@ -180,9 +179,9 @@ export default async function RankingsHubPage() {
           </a>
           で公開しています。
         </p>
-        {updatedAt && algorithmVersion !== null && (
+        {updatedAt && (
           <p style={{ fontSize: 10, color: "var(--muted)", opacity: 0.7, marginTop: 4 }}>
-            データ更新: {updatedAt} / 算出ロジック: v{algorithmVersion}
+            データ更新: {updatedAt}
           </p>
         )}
       </div>

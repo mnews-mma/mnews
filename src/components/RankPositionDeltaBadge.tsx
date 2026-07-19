@@ -5,11 +5,21 @@
 import { SUPPRESS_RANKING_MOVEMENT } from "@/lib/mnewsRating/rankingMovementGate";
 
 export interface RankPositionDeltaValue {
-  kind: "up" | "down" | "same" | "new";
+  kind: "up" | "down" | "same" | "new" | "nr";
   positions: number;
 }
 
 export default function RankPositionDeltaBadge({ delta }: { delta: RankPositionDeltaValue | null | undefined }) {
+  // 静的NRオーバーレイ(2026-07-19): movementOverrides.jsonで明示指定された選手は、
+  // エンジンの自動▲▼/NEW判定(今サイクルはgap再較正+新規挿入で汚染されている)を
+  // 迂回し、ゲート(SUPPRESS_RANKING_MOVEMENT)より優先して「NR」を表示する。
+  if (delta?.kind === "nr") {
+    return (
+      <span style={{ color: "#b45309", fontWeight: 700, fontSize: 11 }} title="今回新規ランクイン(手動確定)">
+        NR
+      </span>
+    );
+  }
   // 一時ゲート(2026-07-18): 手動追加に伴う挿入シフトを成績変動と誤読させないため、
   // 明日のLANDMARK 15結果反映まで順位変動表示を一律「—」に固定する(rankingMovementGate.ts)。
   if (SUPPRESS_RANKING_MOVEMENT || !delta || delta.kind === "same") {
