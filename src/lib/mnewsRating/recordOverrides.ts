@@ -385,6 +385,50 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "誤記録していたが、パンクラス公式結果ページでは「新居すぐる勝利・1R1:14 TO/アームロック」。" +
       "上記コレスニック戦と合わせ2件の勝敗誤りが、決着内訳合計がwinsを超過するfatalの原因だった。",
   },
+  {
+    // 2026-07-19: NC全DB監査(fix/nc-missing-from-record-table後継)で発見。
+    // 和田竜光のWikipedia戦績表には{{Fight-cont}}行としてこの一戦が既に
+    // 存在し、厳格化済みパーサ(ダッシュ+method欄の明示語)でも正しくNC判定
+    // されるが、当日はWikipedia APIレート制限中でupdate-fighter-records.ts
+    // --slug再実行が行えなかったため、直前に取得済みだった生パース結果を
+    // 出典としてこのオーバーライドで反映する(resultはnc=勝敗数に非算入のため
+    // totalsAlreadyReflectedの区別は不要)。
+    type: "add",
+    fighterId: "tatsumitsu-wada",
+    date: "2009-08-05",
+    opponent: "RYOTA",
+    result: "nc",
+    method: "2R 偶発的なローブローによりRYOTA選手続行不能のためノーコンテスト",
+    event: "キングダムエルガイツ 10周年記念興行",
+    round: "R2",
+    source: "https://ja.wikipedia.org/wiki/和田竜光",
+    fetchedDate: "2026-07-19",
+    note:
+      "和田竜光×RYOTA(キングダムエルガイツ10周年記念興行、2009-08-05)。2R、和田の偶発的な" +
+      "ローブローによりRYOTAが続行不能となりノーコンテスト。Wikipedia戦績表(Fight-cont)の記載を" +
+      "そのまま反映。",
+  },
+  {
+    // 2026-07-19: 同監査で発見。決着は単純な「偶発的な反則によるNC」ではなく、
+    // 肘・首への偶発的な反則で続行不可能となった末の裁定がNC(最終的には
+    // 没収試合扱い)で、DREAM.2で再戦が組まれた経緯がある。丸めた「クリーンな
+    // NC」表記にせず、この経緯をmethodに明記する。
+    type: "add",
+    fighterId: "shinya-aoki",
+    date: "2008-03-15",
+    opponent: "J.Z.カルバン",
+    result: "nc",
+    method: "1R 3:46 偶発的な反則(肘・首)により続行不能、ノーコンテスト(没収試合扱い)",
+    event: "DREAM.1 ライト級グランプリ2008 開幕戦 【ライト級グランプリ 1回戦】",
+    round: "R1",
+    source: "https://ja.wikipedia.org/wiki/青木真也",
+    fetchedDate: "2026-07-19",
+    note:
+      "青木真也×J.Z.カルバン(DREAM.1 ライト級グランプリ2008開幕戦・1回戦、2008-03-15)。" +
+      "1R3分46秒、偶発的な反則(肘・首)によりカルバンが続行不能となった末の裁定がノーコンテスト" +
+      "(最終的には没収試合の扱い)。この一戦を受けてDREAM.2で再戦が組まれている。決着の経緯を" +
+      "「偶発反則によるクリーンなNC」に丸めず、没収試合の裁定であることを明記して記録する。",
+  },
 ];
 
 export interface WeighInMissRuling {
