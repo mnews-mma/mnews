@@ -42,11 +42,11 @@ export default function VsCard({
   return (
     <div className={styles.mv2}>
       <article className={styles.card}>
-        {dreamMode && (
-          <div className={styles.meta}>
-            <span className={styles.dreamMarker}>夢のカード / もし実現したら</span>
-            {weightClass && <span className={styles.weight}>{weightClass}</span>}
-            {eventName && <span className={styles.weight}>{eventName}</span>}
+        {dreamMode && (eventName || weightClass) && (
+          <div className={styles.dreamMeta}>
+            {eventName && <span className={styles.dreamMetaEvent}>{eventName}</span>}
+            {eventName && weightClass && <span className={styles.dreamMetaSep}>・</span>}
+            {weightClass && <span className={styles.dreamMetaWeight}>{weightClass}</span>}
           </div>
         )}
         <MatchupTape
