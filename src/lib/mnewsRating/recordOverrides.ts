@@ -355,6 +355,38 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "上記堀江圭功戦と同種の二重カウント原因。",
   },
   {
+    type: "patch-date",
+    fighterId: "naoki",
+    date: "2025-07-28",
+    opponent: "芦田崇宏",
+    correctedDate: "2025-07-27",
+    source: "https://jp.rizinff.com/_ct/17780689",
+    fetchedDate: "2026-07-19",
+    note:
+      "直樹(naoki)のWikipedia戦績表が超RIZIN.4 真夏の喧嘩祭りの芦田崇宏戦を2025-07-28表記していたが、" +
+      "RIZIN公式(rizinRecords.json)では開催日2025-07-27(同イベントを記録する他26名は全員2025-07-27で" +
+      "一致、直樹のみ1日ずれた外れ値)。日付ズレによりrizinRecords.jsonとのマッチングが成立せず" +
+      "(1) 権威データによるweightClass補完(68.0kg契約)が効かず階級null検査(check-rizin-weightclass-null.ts)" +
+      "でfatal検出、(2) 前座(オープニングファイト)判定が効かず誤って資格カウント対象外になり、" +
+      "2025年以降の資格カウント対象試合が1戦のみとなって標準資格を満たさずフェザー級ランキング非掲載に" +
+      "なっていた(2026-07-19発覚)。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "inoue-seiya",
+    date: "2026-06-01",
+    opponent: "赤田功輝",
+    correctedDate: "2026-06-06",
+    source: "https://jp.rizinff.com/_ct/17843850",
+    fetchedDate: "2026-07-19",
+    note:
+      "井上聖矢のWikipedia戦績表がRIZIN LANDMARK 14の赤田功輝戦を2026-06-01表記していたが、" +
+      "RIZIN公式(rizinRecords.json)では開催日2026-06-06(同イベントを記録する他11名は全員2026-06-06で" +
+      "一致、井上聖矢のみ5日ずれた外れ値)。日付ズレによりrizinRecords.jsonとのマッチングが成立せず、" +
+      "権威データによるweightClass補完が効かず階級null検査(check-rizin-weightclass-null.ts)でfatal検出" +
+      "(2026-07-19発覚)。",
+  },
+  {
     type: "patch-result",
     fighterId: "takagi-ryo",
     date: "2023-10-01",
