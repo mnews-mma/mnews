@@ -94,12 +94,13 @@ function parseDtsDate(rawInput: string): string {
   return "";
 }
 
-function rowResult(field: string): "win" | "loss" | "draw" | null {
+function rowResult(field: string): "win" | "loss" | "draw" | "nc" | null {
   const f = stripInvisible(field).toLowerCase();
   if (f.includes("win")) return "win";
   if (f.includes("loss")) return "loss";
   if (f.includes("draw")) return "draw";
-  return null; // e.g. NC (no contest) — not representable, skip
+  if (f.includes("nc")) return "nc";
+  return null;
 }
 
 export function parseMmaRecordTable(wikitext: string): FightRecord[] {
@@ -315,12 +316,25 @@ function splitTemplateParams(content: string): string[] {
   return parts;
 }
 
-function jaResult(marker: string): "win" | "loss" | "draw" | null {
+// 「勝敗マーカーがダッシュ類=NC」と決め打ちしない。日本語版Wikipediaの
+// ダッシュ系マーカー(－/ー/-/―)は「無効試合」専用ではなく、記事・団体に
+// よっては反則・不成立・エキシビション等の「その他」区分の代用としても
+// 使われている(実例: PANCRASE公式サイトの凡例は「-：その他」であり
+// No Contest専用ではない。この誤判定でパンクラス戦の1件が誤ってNC扱いに
+// なりかけたため、ダッシュ単独では確定させない設計に修正)。
+// ダッシュ系マーカーが出た場合でも、決着方法(method)欄に「無効試合」
+// 「ノーコンテスト」「No Contest」「NC」のいずれか明示的な語がある場合のみ
+// NCとして採用する。無ければ根拠不明として従来どおりスキップする。
+const NC_KEYWORD_RE = /無効試合|ノーコンテスト|no contest|\bnc\b/i;
+
+function jaResult(marker: string, methodText: string): "win" | "loss" | "draw" | "nc" | null {
   const m = stripInvisible(marker).trim();
   if (m === "○" || m === "〇") return "win";
   if (m === "×" || m === "✕" || m === "✗") return "loss";
   if (m === "△") return "draw";
-  return null; // 空欄（今後の試合）・「－」（無効試合）などはスキップ
+  const isDashMarker = m === "－" || m === "-" || m === "―" || m === "ー";
+  if (isDashMarker && NC_KEYWORD_RE.test(stripInvisible(methodText))) return "nc";
+  return null; // 空欄（今後の試合）・根拠不明な「その他」区分などはスキップ
 }
 
 function parseJaDate(raw: string): string {
@@ -450,7 +464,7 @@ export function parseJaFightHistory(wikitext: string): FightRecord[] {
     const parts = splitTemplateParams(content).map((p) => p.trim());
     if (parts.length < 5) continue;
 
-    const result = jaResult(parts[0]);
+    const result = jaResult(parts[0], parts[2]);
     if (!result) continue;
 
     const opponent = cleanWikiMarkup(parts[1]);

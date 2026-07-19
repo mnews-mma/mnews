@@ -78,14 +78,168 @@ export interface RecordOverridePatchResult extends RecordOverrideBase {
   correctedRound?: string;
 }
 
+// 既存のbout(date+opponentで特定)のmethod/round/eventの表記のみを補完する。
+// resultは一切変更しない(勝敗の取り違え訂正ではなく、決着の詳細情報が
+// Wikipedia戦績表に欠落・不正確だった場合の表記補完専用)。patch-resultとは
+// 異なりapplyRecordOverridesToTotalsのhasPatchResult判定対象に含めない
+// ため、この訂正だけでは集計値のhistoryからの再導出は発生しない
+// (patch-weight-class/patch-dateと同じ「安全な」表記補完カテゴリ)。
+export interface RecordOverridePatchMethod extends RecordOverrideBase {
+  type: "patch-method";
+  correctedMethod: string;
+  correctedRound?: string;
+  correctedEvent?: string;
+}
+
 export type RecordOverride =
   | RecordOverrideAdd
   | RecordOverrideRemove
   | RecordOverridePatchWeightClass
   | RecordOverridePatchDate
-  | RecordOverridePatchResult;
+  | RecordOverridePatchResult
+  | RecordOverridePatchMethod;
 
 export const RECORD_OVERRIDES: RecordOverride[] = [
+  {
+    // 2026-07-19: wikipedia.tsのNCパーサ修正(ダッシュ系マーカー+methodにNC系
+    // キーワードがある場合のみNC採用)を機に、大原樹理(PANCRASE、2017-08-20 vs
+    // 横山恭典)が新たにNC行として復活。当初はWikipedia自身の集計との件数
+    // 不一致・PANCRASE公式凡例(ダッシュ=「その他」の汎用区分)を理由に一時
+    // 除外していたが、パンクラス公式サイトの個別戦績ページで実在・裁定を
+    // 直接確認できたため保留解除する。
+    // 出典: パンクラス公式(大原樹理プロフィールページ・横山恭典プロフィール
+    // ページの双方に同一記載): 2017.08.20 ディファ有明、3x3R:2R2:45、
+    // 「ノーコンテスト」、「PANCRASE対DEEP、５VS.５対抗戦　次鋒戦」。
+    // round/timeの表記はWikipedia戦績表の記載(2R 2:45 無効試合（ローブロー）)と
+    // 完全一致しており、追加のpatch-methodは不要。
+    type: "patch-method",
+    fighterId: "ohara-juri",
+    date: "2017-08-20",
+    opponent: "横山恭典",
+    correctedMethod: "2R 2:45 無効試合（ローブロー）",
+    correctedRound: "R2",
+    source: "https://www.pancrase.co.jp/data/prfl2/yokoyama.html",
+    fetchedDate: "2026-07-19",
+    note:
+      "パンクラス公式サイト(大原樹理・横山恭典両プロフィールページ)で実在・裁定を確認済み。" +
+      "2017.08.20ディファ有明、PANCRASE対DEEP 5VS5対抗戦・次鋒戦、2R2:45ノーコンテスト" +
+      "(ローブローにより続行不能)。Wikipedia戦績表の記載と内容が完全一致するためmethod/round自体は" +
+      "変更なし(出典を明記する記録として残す)。",
+  },
+  {
+    // 2026-07-19: 同日中のWikipedia再取得で新たに検出された3件目のNC候補
+    // (大原樹理 vs 倉本大悟、DEEP 130 IMPACT 2026-03-20)。DEEP公式サイトの
+    // 試合結果記事で実在・裁定を確認できたため保留解除する。
+    // Wikipedia戦績表はround/timeが欠落("ノーコンテスト（偶発的なローブロー）"
+    // のみ、round"—")、かつイベント名が「暫定タイトルマッチ」表記だったため
+    // (実際は大原が王者としての通常防衛戦で暫定ではない)、DEEP公式の表記で補完する。
+    type: "patch-method",
+    fighterId: "ohara-juri",
+    date: "2026-03-20",
+    opponent: "倉本大悟",
+    correctedMethod: "1R 1:29 ノーコンテスト（大原選手ローブローにより試合続行不可能）",
+    correctedRound: "R1",
+    correctedEvent: "DEEP 130 IMPACT 【DEEPライト級タイトルマッチ】",
+    source:
+      "https://www.deep2001.com/deep-130-impact-2026%e5%b9%b43%e6%9c%8820%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e5%be%8c%e6%a5%bd%e5%9c%92%e3%83%9b%e3%83%bc%e3%83%ab-%e8%a9%a6%e5%90%88%e7%b5%90%e6%9e%9c/",
+    fetchedDate: "2026-07-19",
+    note:
+      "DEEP公式サイトの試合結果記事(2026年3月20日後楽園ホール)で実在・裁定を確認済み: " +
+      "メインイベント第10試合DEEPライト級タイトルマッチ、王者大原樹理 vs 挑戦者倉本大悟、" +
+      "1R1分29秒ノーコンテスト(大原選手ローブローにより試合続行不可能)。Wikipedia戦績表は" +
+      "round/timeが欠落・イベント名が「暫定タイトルマッチ」と誤っていたため公式表記で補正。",
+  },
+  {
+    // 上記と同一試合の倉本大悟側(相手視点)。倉本大悟もFIGHTERSに登録されている
+    // ため、双方のhistoryにmethod/round/eventの補正を反映する。
+    type: "patch-method",
+    fighterId: "kuramoto-daigo",
+    date: "2026-03-20",
+    opponent: "大原樹理",
+    correctedMethod: "1R 1:29 ノーコンテスト（大原選手ローブローにより試合続行不可能）",
+    correctedRound: "R1",
+    correctedEvent: "DEEP 130 IMPACT 【DEEPライト級タイトルマッチ】",
+    source:
+      "https://www.deep2001.com/deep-130-impact-2026%e5%b9%b43%e6%9c%8820%e6%97%a5%ef%bc%88%e9%87%91%ef%bc%89%e5%be%8c%e6%a5%bd%e5%9c%92%e3%83%9b%e3%83%bc%e3%83%ab-%e8%a9%a6%e5%90%88%e7%b5%90%e6%9e%9c/",
+    fetchedDate: "2026-07-19",
+    note: "上記大原樹理側と同一試合(相手視点)。DEEP公式試合結果記事の表記でmethod/round/eventを補正。",
+  },
+  {
+    // 2026-07-19: RIZIN.43(2023-06-24)クレベル・コイケ×鈴木千裕戦。
+    // Wikipedia戦績表はround/timeが欠落していたため、RIZIN公式個別試合結果
+    // ページの表記(1R2分59秒、クレベルの体重超過によるイエローカード提示)で補完。
+    type: "patch-method",
+    fighterId: "koike-kleber",
+    date: "2023-06-24",
+    opponent: "鈴木千裕",
+    correctedMethod: "1R 2:59 ノーコンテスト（クレベルの体重超過・イエローカード提示）",
+    correctedRound: "R1",
+    source: "https://jp.rizinff.com/_ct/17637535",
+    fetchedDate: "2026-07-19",
+    note: "RIZIN公式個別試合結果ページの表記でround/timeを補完。",
+  },
+  {
+    type: "patch-method",
+    fighterId: "suzuki-chihiro",
+    date: "2023-06-24",
+    opponent: "クレベル・コイケ",
+    correctedMethod: "1R 2:59 ノーコンテスト（クレベルの体重超過・イエローカード提示）",
+    correctedRound: "R1",
+    source: "https://jp.rizinff.com/_ct/17637535",
+    fetchedDate: "2026-07-19",
+    note: "上記クレベル・コイケ側と同一試合(相手視点)。RIZIN公式個別試合結果ページの表記でround/timeを補完。",
+  },
+  {
+    // 2026-07-19: RIZIN師走の超強者祭り(2025-12-31)カルシャガ・ダウトベック×
+    // 久保優太戦。Wikipedia戦績表はround/timeが欠落していたため、RIZIN公式
+    // 個別試合結果ページの表記(1R3分15秒、久保の指がダウトベックの目に入り
+    // 続行不可能)で補完。
+    type: "patch-method",
+    fighterId: "karshyga-dautbek",
+    date: "2025-12-31",
+    opponent: "久保優太",
+    correctedMethod: "1R 3:15 ノーコンテスト（偶発的なアイポーク）",
+    correctedRound: "R1",
+    source: "https://jp.rizinff.com/_ct/17813415",
+    fetchedDate: "2026-07-19",
+    note: "RIZIN公式個別試合結果ページの表記でround/timeを補完。",
+  },
+  {
+    type: "patch-method",
+    fighterId: "kubo-yuta",
+    date: "2025-12-31",
+    opponent: "カルシャガ・ダウトベック",
+    correctedMethod: "1R 3:15 ノーコンテスト（偶発的なアイポーク）",
+    correctedRound: "R1",
+    source: "https://jp.rizinff.com/_ct/17813415",
+    fetchedDate: "2026-07-19",
+    note: "上記カルシャガ・ダウトベック側と同一試合(相手視点)。RIZIN公式個別試合結果ページの表記でround/timeを補完。",
+  },
+  {
+    // 2026-07-19: RIZIN WORLD SERIES in KOREA(2025-05-31)大原樹理×ジョニー・
+    // ケース戦(このPRの発端となった欠落バグ本体)。Wikipedia戦績表はround/timeが
+    // 欠落していたため、RIZIN公式個別試合結果ページの表記(1R2分22秒)で補完。
+    type: "patch-method",
+    fighterId: "ohara-juri",
+    date: "2025-05-31",
+    opponent: "ジョニー・ケース",
+    correctedMethod: "1R 2:22 ノーコンテスト（ケースの体重超過）",
+    correctedRound: "R1",
+    source: "https://jp.rizinff.com/_ct/17769399",
+    fetchedDate: "2026-07-19",
+    note: "RIZIN公式個別試合結果ページの表記でround/timeを補完。",
+  },
+  {
+    type: "patch-method",
+    fighterId: "case-johnny",
+    date: "2025-05-31",
+    opponent: "大原樹理",
+    correctedMethod: "1R 2:22 ノーコンテスト（ケースの体重超過）",
+    correctedRound: "R1",
+    source: "https://jp.rizinff.com/_ct/17769399",
+    fetchedDate: "2026-07-19",
+    note: "上記大原樹理側と同一試合(相手視点)。RIZIN公式個別試合結果ページの表記でround/timeを補完。",
+  },
   {
     type: "add",
     fighterId: "ya-man",
@@ -321,6 +475,17 @@ export function applyRecordOverrides(fighterId: string, history: FightRecord[]):
       result = result.map((h) =>
         h.date === o.date && h.opponent === o.opponent
           ? { ...h, result: o.correctedResult, method: o.correctedMethod, round: o.correctedRound ?? h.round }
+          : h
+      );
+    } else if (o.type === "patch-method") {
+      result = result.map((h) =>
+        h.date === o.date && h.opponent === o.opponent
+          ? {
+              ...h,
+              method: o.correctedMethod,
+              round: o.correctedRound ?? h.round,
+              event: o.correctedEvent ?? h.event,
+            }
           : h
       );
     } else if (!result.some((h) => h.date === o.date && h.opponent === o.opponent)) {
