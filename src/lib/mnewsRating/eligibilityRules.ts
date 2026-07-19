@@ -6,6 +6,7 @@ import { MnewsDivision, NAMED_DIVISION_RE, mapToDivision } from "./divisions";
 import {
   ELIGIBILITY_MAX_INACTIVE_MONTHS,
   ELIGIBILITY_MIN_FIGHTS,
+  ELIGIBILITY_MIN_WINS,
   ELIGIBILITY_RECENT_MIN_FIGHTS,
   ELIGIBILITY_RECENT_YEAR_START,
 } from "./constants";
@@ -150,7 +151,14 @@ export function isStandardEligible(
   const wins = scoped.filter((s) => s.isWin).length;
   const recentFights = scoped.filter((s) => s.date >= `${ELIGIBILITY_RECENT_YEAR_START}-01-01`).length;
   const meetsFightBar = fights >= ELIGIBILITY_MIN_FIGHTS || recentFights >= ELIGIBILITY_RECENT_MIN_FIGHTS;
-  const counts: EligibilityCounts = { fights: meetsFightBar ? Math.max(fights, ELIGIBILITY_MIN_FIGHTS) : fights, wins, lastFightDate };
+  // 2026-07-19: 勝利要件(ELIGIBILITY_MIN_WINS)は「直近2戦ルート」で資格を満たす選手には免除する。
+  // 公開methodologyは勝利要件を明記せず「一定以上の試合数+直近でも活動している選手」を基準とする。
+  // 直近(ELIGIBILITY_RECENT_YEAR_START年以降)に2戦以上こなしている=現役ロースター選手は、まだ
+  // 勝ち星が無くても対象とする(天弥・芳賀ビラル海=0勝でも2025以降2戦)。一方「通算3戦ルート」のみで
+  // 入る選手(直近が薄く古い戦績で嵩上げ)には従来どおり1勝を求め未勝利者を弾く(新井丈=2025以降1戦のみ)。
+  const qualifiesViaRecent = recentFights >= ELIGIBILITY_RECENT_MIN_FIGHTS;
+  const effectiveWins = qualifiesViaRecent ? Math.max(wins, ELIGIBILITY_MIN_WINS) : wins;
+  const counts: EligibilityCounts = { fights: meetsFightBar ? Math.max(fights, ELIGIBILITY_MIN_FIGHTS) : fights, wins: effectiveWins, lastFightDate };
   return isEligible(counts, asOf);
 }
 
