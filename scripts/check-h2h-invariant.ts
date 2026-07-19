@@ -22,6 +22,7 @@ import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/
 import { findRankerWinExemptions, isStandardEligible, summarizeBoutsForFighter } from "../src/lib/mnewsRating/eligibilityRules";
 import { buildDivisionRankings, ChampionOverlay, FighterMeta } from "../src/lib/mnewsRating/rankingsFile";
 import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
+import { checkRequiredInvariants } from "../src/lib/rankings/requiredInvariants";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
@@ -125,6 +126,8 @@ function main() {
   console.log("=== H2H不変条件 機械チェック(全階級) ===");
   console.log("読み取り専用・書き込みなし。違反0件であることを確認する。\n");
 
+  const finalRankedSlugsByDivision = new Map<MnewsDivision, string[]>();
+
   for (const division of MNEWS_DIVISIONS) {
     const rankers = baseRankersByDivision.get(division)!;
     const eligibleEntries = [...display.entries()]
@@ -142,6 +145,7 @@ function main() {
       h2hWins,
     });
     const finalRankedSlugs = result.entries.map((e) => e.fighterId);
+    finalRankedSlugsByDivision.set(division, finalRankedSlugs);
     const violations = checkH2HInvariant(finalRankedSlugs, h2hWins);
 
     console.log(`${division}: H2Hペア${h2hWins.length}件中、違反${violations.length}件(循環除外)`);
@@ -159,6 +163,26 @@ function main() {
       console.log(`  NG(直近半年): ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直近半年以内の直接対決で勝っているのに下位のまま`);
       totalViolations++;
     }
+  }
+
+  // 必達不変条件(PR-1・2026-07-19): rank gap・recency窓に関係なく常時成立
+  // しなければならないペアのリスト。checkRecentH2HInvariantが対象外にする
+  // 範囲(gap超過・182日超)でもここは無条件でチェックする。
+  const requiredViolations = checkRequiredInvariants(finalRankedSlugsByDivision);
+  console.log(`\n必達不変条件チェック: 違反${requiredViolations.length}件`);
+  for (const v of requiredViolations) {
+    if (v.reason === "division-not-found") {
+      console.log(`  NG(必達・階級未検出): ${v.division}がランキング対象に存在しません [${v.winnerSlug} vs ${v.loserSlug}] [${v.note}]`);
+    } else if (v.reason === "winner-not-found") {
+      console.log(`  NG(必達・勝者未検出): ${v.division} ${v.winnerSlug}が現在のランク圏内に見つかりません(敗者${v.loserSlug}は${v.loserRank}位) [${v.note}]`);
+    } else if (v.reason === "loser-not-found") {
+      console.log(`  NG(必達・敗者未検出): ${v.division} ${v.loserSlug}が現在のランク圏内に見つかりません(勝者${v.winnerSlug}は${v.winnerRank}位) [${v.note}]`);
+    } else {
+      console.log(
+        `  NG(必達・順位逆転): ${v.division} ${v.winnerSlug}(${v.winnerRank}位) が ${v.loserSlug}(${v.loserRank}位) より下位 [${v.note}]`
+      );
+    }
+    totalViolations++;
   }
 
   console.log(`\n合計違反件数: ${totalViolations}`);
