@@ -245,6 +245,13 @@ function ArticleGenTab({
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [publishedAt, setPublishedAt] = useState(() => new Date().toISOString().slice(0, 10));
+  // 新着フィード(「すべて」タブ)での並び順に使う実際の公開時刻。空欄(00:00扱い)だと
+  // 当日中の他記事より常に古く扱われ48時間ウィンドウから溢れるため、実際にmainへ
+  // マージ・デプロイする時刻に合わせて必ず入力する(originalArticles.ts参照)。
+  const [publishedAtTime, setPublishedAtTime] = useState(() => {
+    const d = new Date();
+    return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+  });
 
   const event = events.find((e) => e.slug === eventSlug);
 
@@ -309,6 +316,7 @@ function ArticleGenTab({
           title: title || suggestedTitle,
           eventSlug: event.slug,
           publishedAt,
+          publishedAtTime,
           fights: fightDrafts,
         }
       : null;
@@ -406,6 +414,17 @@ function ArticleGenTab({
                 type="date"
                 value={publishedAt}
                 onChange={(e) => setPublishedAt(e.target.value)}
+                style={{ padding: "8px 12px", fontSize: 14 }}
+              />
+            </div>
+            <div>
+              <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>
+                公開時刻(JST・実際にmainへマージする時刻)
+              </label>
+              <input
+                type="time"
+                value={publishedAtTime}
+                onChange={(e) => setPublishedAtTime(e.target.value)}
                 style={{ padding: "8px 12px", fontSize: 14 }}
               />
             </div>

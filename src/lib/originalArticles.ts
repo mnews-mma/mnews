@@ -51,11 +51,12 @@ export interface OriginalArticle {
   title: string;
   eventSlug: string; // 大会ページ(/events/[slug] または /results/[slug])との相互リンク用
   publishedAt: string; // YYYY-MM-DD
-  // 新着フィードでの並び替え用の公開時刻(JST、HH:MM)。省略時は"00:00"扱いになり、
-  // 当日中に投稿される他の実タイムスタンプ付き記事より常に古く扱われて48時間
-  // ウィンドウ上位から溢れやすい(2026-07-19、ランキング更新記事が「すべて」タブに
-  // 出ない不具合の原因)。実際の公開時刻に合わせて指定すること。
-  publishedAtTime?: string;
+  // 新着フィードでの並び替え用の公開時刻(JST、HH:MM)。必須(未設定だと
+  // "00:00"扱いになり、当日中に投稿される他の実タイムスタンプ付き記事より
+  // 常に古く扱われて48時間ウィンドウ上位から溢れる。2026-07-19、ランキング
+  // 更新記事が「すべて」タブに出ない不具合の原因になったため必須化した)。
+  // 実際にmainへマージ・デプロイする時刻に合わせて指定すること。
+  publishedAtTime: string;
   fights: OriginalArticleFight[]; // 選択した試合ごとに1セクション(通常1件、複数可)。プロース記事では空配列
   body?: string[]; // 自由記述段落(ランキング更新告知等、対戦カード比較に当てはまらない記事用)
   rankingSnapshots?: RankingDivisionSnapshot[]; // ランキング更新告知の階級別スナップショット表示
@@ -67,6 +68,7 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
     title: "数字で見る対戦カード: RIZIN LANDMARK 15 ダニー・サバテロ vs 鹿志村仁之介",
     eventSlug: "rizin-landmark-15",
     publishedAt: "2026-07-10",
+    publishedAtTime: "00:00", // 実際の公開時刻は未記録(publishedAtTime必須化以前に公開)
     fights: [
       {
         fighterA: { slug: "sabatello-danny", nameJa: "ダニー・サバテロ" },
@@ -151,7 +153,7 @@ export function originalArticleToFeedArticle(
     title: article.title,
     origin: "Mニュース",
     url: `/articles/${article.slug}`,
-    publishedAt: new Date(`${article.publishedAt}T${article.publishedAtTime ?? "00:00"}:00+09:00`).toISOString(),
+    publishedAt: new Date(`${article.publishedAt}T${article.publishedAtTime}:00+09:00`).toISOString(),
     kind: "media",
     newsType: "article",
     flash: false,
