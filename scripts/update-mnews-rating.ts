@@ -384,9 +384,16 @@ function main() {
     const latestEventDate = Object.values(published)
       .flatMap((d) => d.entries.map((e) => e.lastFight ?? ""))
       .reduce((m, d) => (d > m ? d : m), "");
-    const movementOverrides: Record<string, "NR"> = fs.existsSync(MOVEMENT_OVERRIDES_PATH)
+    interface MovementOverrideEntry {
+      badge: "NR";
+      expires: string; // YYYY-MM-DD(JST基準)。この日付のtoday(JST)以降は自動失効しスキップする。
+    }
+    const movementOverrides: Record<string, MovementOverrideEntry> = fs.existsSync(MOVEMENT_OVERRIDES_PATH)
       ? JSON.parse(fs.readFileSync(MOVEMENT_OVERRIDES_PATH, "utf8"))
       : {};
+    // 壁時計today(JST)。UTC実行環境(GitHub Actions)でも日付境界を正しくJSTで
+    // 判定するため+9h補正してからtoISOStringのUTC日付部分を読む。
+    const todayJst = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
     const withPositionDeltas: RankingsFile = {};
     for (const [key, div] of Object.entries(published)) {
       const deltas = computeRankPositionDeltas(div, prevOut[key]);
@@ -397,7 +404,9 @@ function main() {
           // 静的NRオーバーレイ: movementOverrides.jsonで指定された選手は、出場者
           // スコープ判定・エンジンの自動判定に関わらずrankPositionDeltaを"nr"に
           // 固定する(表示側でゲートより優先してNRを描画する。レート差分は対象外)。
-          if (movementOverrides[e.fighterId] === "NR") {
+          // today(JST) >= expires になった時点で自動失効(スキップ・手動撤去不要)。
+          const override = movementOverrides[e.fighterId];
+          if (override && override.badge === "NR" && todayJst < override.expires) {
             return { ...e, rankPositionDelta: { kind: "nr" as const, positions: 0 }, delta: competedInLatestEvent ? e.delta : 0 };
           }
           return {
