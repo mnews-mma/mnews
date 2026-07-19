@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const firstFight = article.fights[0];
   const description = firstFight
     ? `${firstFight.fighterA.nameJa} vs ${firstFight.fighterB.nameJa}の戦績・フィニッシュ率・直近5戦を数字で比較。${article.title}`
-    : article.title;
+    : article.body?.[0] ?? article.title;
   return pageMetadata({
     title: `${article.title} | Mニュース`,
     description,
@@ -94,6 +94,46 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       </div>
 
       <div style={{ padding: "0 24px 40px" }}>
+        {article.body && (
+          <div className="article-body" style={{ marginBottom: 24 }}>
+            {article.body.map((p, i) => (
+              <p key={i} style={{ marginBottom: 14, lineHeight: 1.8 }}>
+                {p}
+              </p>
+            ))}
+          </div>
+        )}
+
+        {article.rankingSnapshots && article.rankingSnapshots.length > 0 && (
+          <div style={{ marginBottom: 24 }}>
+            {article.rankingSnapshots.map((snap) => (
+              <div key={snap.divisionSlug} className="article-subsection">
+                <div className="event-section-label" style={{ fontSize: 12, marginBottom: 8 }}>
+                  {snap.divisionLabel}
+                </div>
+                <p style={{ marginBottom: 6 }}>
+                  王者: <strong>{snap.champion}</strong>
+                </p>
+                <ol style={{ marginBottom: 8, paddingLeft: 20 }}>
+                  {snap.top5.map((name, i) => (
+                    <li key={i}>{name}</li>
+                  ))}
+                </ol>
+                <p style={{ fontSize: 13 }}>
+                  <a href={`/rankings/${snap.divisionSlug}`} style={{ color: "var(--accent)" }}>
+                    → {snap.divisionLabel}ランキングを見る
+                  </a>
+                </p>
+              </div>
+            ))}
+            <p style={{ fontSize: 13, marginTop: 12 }}>
+              <a href="/rankings/methodology" style={{ color: "var(--accent)" }}>
+                → AI RIZINランキングの算出方法について
+              </a>
+            </p>
+          </div>
+        )}
+
         {article.fights.map((fight, i) => {
           const entryA = records[fight.fighterA.slug];
           const entryB = records[fight.fighterB.slug];
