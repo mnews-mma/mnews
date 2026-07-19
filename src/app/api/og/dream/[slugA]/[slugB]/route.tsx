@@ -1,11 +1,12 @@
 // /dream(夢のカード)専用OGP画像。公開・非認証のルートだが、/api/og/vsと違い
 // event/weight のクエリ自由入力を許可する。理由: /dreamはそもそも「実現したら」の
 // 仮定(妄想)機能であり、ユーザーが任意の大会名を入れること自体が想定用途。
-// ただし実カード(【対戦決定】)との混同=偽の公式発表に見えることを防ぐため、
-// 「夢のカード / もし実現したら」マーカーを最上部に常時・固定表示し、
-// クエリでは消せないようにする(/api/og/vsが自由入力eventを禁止する設計思想と対になる
-// 安全策)。/api/og/vs・/api/og/vs-compareと同じvsCardBlocks.tsxの共有部品を使い、
-// 見た目のベースは1実装に揃える。通称は表示しない(公開/vs・vs-compareと同じ方針)。
+// 「夢のカード / もし実現したら」の常時マーカー表示は2026-07-19の追いPRで撤去した
+// (シェア投稿文が「もし{大会名}で〜が実現したら――」で仮定の枠づけを担うため、
+// 画像側での重複表示は冗長という判断。画像単体だと/vs実カードと見た目が同一化する
+// トレードオフは承知の上での決定)。/api/og/vs・/api/og/vs-compareと同じ
+// vsCardBlocks.tsxの共有部品を使い、見た目のベースは1実装に揃える。通称は
+// 表示しない(公開/vs・vs-compareと同じ方針)。
 import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, type Fighter } from "@/lib/fighters";
@@ -71,29 +72,38 @@ export async function GET(
         >
           <CornerStrip />
 
-          {/* 夢のカードマーカー: 常時表示・パラメータで消せない(偽の対戦決定カードに
-              見えないようにする安全策)。大会名・階級はあれば併記する。 */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "4px",
-              backgroundColor: VS_COLORS.panel,
-              borderBottom: `1px solid ${VS_COLORS.lineSoft}`,
-              padding: "12px 0",
-            }}
-          >
-            <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "16px", color: VS_COLORS.gold }}>
-              夢のカード / もし実現したら
+          {/* 大会名・階級メタ行(中央寄せ1行、ニュートラル配色)。0/1/2項目のいずれでも
+              高さ・余白が崩れないよう、行全体をeventLabel/weightLabelの有無で
+              出し分ける(両方無ければ行自体を消す=空の帯を残さない)。 */}
+          {(eventLabel || weightLabel) && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "baseline",
+                gap: "8px",
+                backgroundColor: VS_COLORS.panel,
+                borderBottom: `1px solid ${VS_COLORS.lineSoft}`,
+                padding: "12px 0",
+              }}
+            >
+              {eventLabel && (
+                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "16px", color: VS_COLORS.ink }}>
+                  {eventLabel}
+                </div>
+              )}
+              {eventLabel && weightLabel && (
+                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 700, fontSize: "14px", color: VS_COLORS.muted }}>
+                  ・
+                </div>
+              )}
+              {weightLabel && (
+                <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 700, fontSize: "14px", color: VS_COLORS.muted }}>
+                  {weightLabel}
+                </div>
+              )}
             </div>
-            {(eventLabel || weightLabel) && (
-              <div style={{ display: "flex", gap: "10px", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "14px", color: VS_COLORS.ink }}>
-                {eventLabel && <div style={{ display: "flex" }}>{eventLabel}</div>}
-                {weightLabel && <div style={{ display: "flex" }}>{weightLabel}</div>}
-              </div>
-            )}
-          </div>
+          )}
 
           {/* 選手名 + 中央VS(通称は表示しない。公開/vs・vs-compareと同じ方針) */}
           <div style={{ display: "flex", alignItems: "center", padding: "20px 56px 0" }}>

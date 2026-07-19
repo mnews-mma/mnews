@@ -74,13 +74,34 @@
   overflow-wrap: anywhere;
 }
 
-/* /dream(夢のカード)専用マーカー。実カード(/vs)と混同されないよう、
-   常時表示・非表示不可の帯として最上部に固定する(偽カード防止)。 */
-.dreamMarker {
-  font-size: 11px;
+/* /dream(夢のカード)の大会名・階級メタ行(中央寄せ1行)。マーカー表示は
+   2026-07-19の追いPRで撤去済み(シェア文言側の「もし〜が実現したら――」が
+   仮定の枠づけを担うため、画像側での重複表示をやめた)。金アクセントも廃止し
+   ニュートラル(チャコール系)に統一する。 */
+.dreamMeta {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 6px;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.dreamMetaEvent {
+  font-size: 13px;
   font-weight: 800;
-  color: var(--gold);
-  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.dreamMetaWeight {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.dreamMetaSep {
+  font-size: 12px;
+  color: var(--dim);
 }
 
 .tagGroup {
