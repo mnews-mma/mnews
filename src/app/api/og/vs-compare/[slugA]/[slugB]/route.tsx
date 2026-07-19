@@ -2,8 +2,7 @@
 // 公開の/api/og/vsと同じ「新カードUI」レンダラー部品(src/lib/og/vsCardBlocks.tsx)
 // を共有し、見た目を1実装に一本化する(コーナーストリップ・赤/青選手名・
 // 戦績/勝率/フィニッシュ率の3行・W/Lドット)。このルート固有の追加要素
-// (共通対戦相手テーブル・AI RIZINランキング順位バッジ・複数アスペクト比)は
-// このファイル側で描画する。
+// (共通対戦相手テーブル・複数アスペクト比)はこのファイル側で描画する。
 //
 // セキュリティ境界: このルートは/admin/drafts(管理画面)タブ④専用で、
 // 公開ページからは一切リンクされない。そのため「大会名(任意)・階級(任意)」の
@@ -11,17 +10,16 @@
 // /api/og/vs側は同じ理由で任意文字列を一切受け付けない(そちらのコメント参照)。
 //
 // データは既存の純関数(computeFighterStripStats/computeCommonOpponents)を
-// そのまま流用し、算出ロジックの二重実装はしない。レート数値(mnewsRating)は
-// 一切出さない — ランキング掲載中の場合のみ「AI RIZINランキング◯位」の
-// 順位バッジを出す(rankのみ参照、rating/rawRatingは非参照)。
+// そのまま流用し、算出ロジックの二重実装はしない。
+// 通称・AI RIZINランキングはカード画像には出さない(2026-07-19: 公開/api/og/vs・
+// Web版MatchupTape/VsCardと同じ方針に統一。単一ソース化のため)。AIランキングは
+// 引き続きXポスト本文側でのみ表示する(xPost.tsのwithRankPrefix、既存方針は維持)。
 import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, type Fighter } from "@/lib/fighters";
 import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterRecordsCache";
 import type { FitOpts } from "@/lib/og/fitName";
 import { computeCommonOpponents } from "@/lib/articleGenerator";
-import { fetchDivisionRankingsEdge } from "@/lib/mnewsRatingDataEdge";
-import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
 import { VS_COLORS, CornerStrip, NameBlock, StatRow, MethodRow, FormDots, CardFooter, sharedNameFit, fighterVsStats } from "@/lib/og/vsCardBlocks";
 
@@ -56,19 +54,6 @@ const RESULT_COLOR: Record<string, string> = {
 };
 const RESULT_MARK: Record<string, string> = { win: "○", loss: "●", draw: "△", nc: "△" };
 
-// 公開中の階級ランキングに掲載されていれば「◯位」または「王者」を返す
-// (rankのみ参照。rating/rawRatingは一切参照しない=レート非公開方針の維持)。
-async function findRankBadge(slug: string): Promise<string | null> {
-  for (const division of PUBLISHED_DIVISIONS) {
-    const data = await fetchDivisionRankingsEdge(DIVISION_SLUG[division]);
-    if (!data) continue;
-    if (data.champion?.fighterId === slug) return "王者";
-    const entry = data.entries.find((e) => e.fighterId === slug);
-    if (entry) return `${entry.rank}位`;
-  }
-  return null;
-}
-
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ slugA: string; slugB: string }> }
@@ -97,8 +82,6 @@ export async function GET(
     const ratioKey = (searchParams.get("ratio") ?? "4:5").trim();
     const { width, height } = RATIOS[ratioKey] ?? RATIOS["4:5"];
     const maxCommonsRows = MAX_COMMONS_ROWS[ratioKey] ?? MAX_COMMONS_ROWS["4:5"];
-
-    const [rankA, rankB] = await Promise.all([findRankBadge(slugA), findRankBadge(slugB)]);
 
     const nameZone: FitOpts = { maxWidth: (width - 200) / 2, maxHeight: 110, maxFont: 56, minFont: 26, maxLines: 2 };
     const { fitA, fitB } = sharedNameFit(fighterA.nameJa, fighterB.nameJa, nameZone);
@@ -161,25 +144,13 @@ export async function GET(
             </div>
           )}
 
-          {/* ランキング順位バッジ(任意) */}
-          {(rankA || rankB) && (
-            <div style={{ display: "flex", padding: "16px 56px 0" }}>
-              <div style={{ display: "flex", flex: 1, justifyContent: "flex-start", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "14px", color: VS_COLORS.gold }}>
-                {rankA ? `AI RIZINランキング ${rankA}` : ""}
-              </div>
-              <div style={{ display: "flex", flex: 1, justifyContent: "flex-end", fontFamily: "Noto Sans JP", fontWeight: 800, fontSize: "14px", color: VS_COLORS.gold }}>
-                {rankB ? `AI RIZINランキング ${rankB}` : ""}
-              </div>
-            </div>
-          )}
-
           {/* 選手名 + 中央VS */}
-          <div style={{ display: "flex", alignItems: "center", padding: `${rankA || rankB ? "10px" : "20px"} 56px 0` }}>
-            <NameBlock nickname={fighterA.nickname} fit={fitA} zone={nameZone} side="left" nicknameSize={14} />
+          <div style={{ display: "flex", alignItems: "center", padding: "20px 56px 0" }}>
+            <NameBlock fit={fitA} zone={nameZone} side="left" />
             <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "36px", color: VS_COLORS.dim, letterSpacing: "2px", padding: "0 16px" }}>
               VS
             </div>
-            <NameBlock nickname={fighterB.nickname} fit={fitB} zone={nameZone} side="right" nicknameSize={14} />
+            <NameBlock fit={fitB} zone={nameZone} side="right" />
           </div>
 
           {/* 戦績・勝率・フィニッシュ率(公開/api/og/vsと同じ3行構成・3カラム配置) */}

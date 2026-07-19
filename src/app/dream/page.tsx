@@ -9,23 +9,81 @@ import { getFighter } from "@/lib/fighters";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
-import { normalizeVsSlugs, buildVsShareText } from "@/lib/vsPairing";
+import { normalizeVsSlugs, buildVsShareText, buildDreamShareText } from "@/lib/vsPairing";
 import { pageMetadata } from "@/lib/seo";
+import { ogImagePath } from "@/lib/ogShared";
 
 const SITE_URL = "https://www.mnews.jp";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = pageMetadata({
-  title: "夢のカード | 任意の2選手でVS対戦カードを作る - Mニュース",
-  description:
-    "任意の2選手を選んで仮想の対戦カードを作成。戦績・フィニッシュ率・直近5戦・共通対戦相手を並べて比較し、Xでシェアできます。",
-  path: "/dream",
-});
-
 function param(sp: Record<string, string | string[] | undefined>, key: string): string {
   const raw = sp[key];
   return (Array.isArray(raw) ? raw[0] : raw) ?? "";
+}
+
+// 自由入力(大会名・階級)の無害化。改行除去・トリム・長さ上限のみ
+// (表示崩れ対策。/api/og/dream側のsanitizeLabelと同じ方針)。
+function sanitizeParam(raw: string, maxLen: number): string {
+  return raw.replace(/[\r\n]+/g, " ").trim().slice(0, maxLen);
+}
+
+// 選択候補・a/bの解決はgenerateMetadata/ページ本体の両方で必要なため共通化する。
+async function resolveDreamSlugs(sp: Record<string, string | string[] | undefined>) {
+  const visible = await getVisibleFighters();
+  const fighters = visible.map((f) => ({ slug: f.slug, nameJa: f.nameJa, weightClass: f.weightClass }));
+  const visibleSlugs = new Set(fighters.map((f) => f.slug));
+  const reqA = param(sp, "a");
+  const reqB = param(sp, "b");
+  const slugA = visibleSlugs.has(reqA) ? reqA : (fighters[0]?.slug ?? "");
+  const slugB = visibleSlugs.has(reqB) ? reqB : (fighters[1]?.slug ?? "");
+  return { fighters, visibleSlugs, slugA, slugB };
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const sp = await searchParams;
+  const { slugA, slugB } = await resolveDreamSlugs(sp);
+  const fighterA = slugA ? getFighter(slugA) : undefined;
+  const fighterB = slugB ? getFighter(slugB) : undefined;
+  const eventName = sanitizeParam(param(sp, "event"), 60);
+  const weightClass = sanitizeParam(param(sp, "weight"), 20);
+  const hasParams = !!(param(sp, "a") || param(sp, "b") || eventName || weightClass);
+
+  const title =
+    fighterA && fighterB
+      ? `もし${eventName ? `${eventName}で` : ""}「${fighterA.nameJa} vs ${fighterB.nameJa}」が実現したら | 夢のカード - Mニュース`
+      : "夢のカード | 任意の2選手でVS対戦カードを作る - Mニュース";
+  const description =
+    fighterA && fighterB
+      ? `${fighterA.nameJa} vs ${fighterB.nameJa}の夢の対戦カード。戦績・フィニッシュ率・直近5戦を比較。実現したら見てみたい組み合わせをXでシェアできます。`
+      : "任意の2選手を選んで仮想の対戦カードを作成。戦績・フィニッシュ率・直近5戦・共通対戦相手を並べて比較し、Xでシェアできます。";
+
+  const image =
+    fighterA && fighterB
+      ? (() => {
+          const q = new URLSearchParams();
+          if (eventName) q.set("event", eventName);
+          if (weightClass) q.set("weight", weightClass);
+          const qs = q.toString();
+          return {
+            url: ogImagePath(`/api/og/dream/${fighterA.slug}/${fighterB.slug}${qs ? `?${qs}` : ""}`),
+            width: 1200,
+            height: 630,
+            alt: `${fighterA.nameJa} vs ${fighterB.nameJa}(夢のカード)`,
+          };
+        })()
+      : undefined;
+
+  const meta = pageMetadata({ title, description, path: "/dream", image });
+  // a/b/event/weight付きの組み合わせは無数に生成されうるプログラマティックページ
+  // なので、ベースの/dream(パラメータ無し)のみをindexableとし、それ以外は
+  // noindex,followにする(/vsのisVsPairIndexableと同じ考え方)。
+  meta.robots = hasParams ? { index: false, follow: true } : undefined;
+  return meta;
 }
 
 export default async function DreamPage({
@@ -38,16 +96,11 @@ export default async function DreamPage({
 
   // 選択候補は公開母集団(hidden除外・戦績データあり)のみ。/fighters・Xカードツールと
   // 同じgetVisibleFighters()経由なので、未登録選手は最初から候補に出ない。
-  const visible = await getVisibleFighters();
-  const fighters = visible.map((f) => ({ slug: f.slug, nameJa: f.nameJa, weightClass: f.weightClass }));
-  const visibleSlugs = new Set(fighters.map((f) => f.slug));
-
   // URLのa/bが未指定・不正な場合は候補の先頭2人にフォールバックする
   // (Xカードツールの初期選択と同じ挙動)。
-  const reqA = param(sp, "a");
-  const reqB = param(sp, "b");
-  const slugA = visibleSlugs.has(reqA) ? reqA : (fighters[0]?.slug ?? "");
-  const slugB = visibleSlugs.has(reqB) ? reqB : (fighters[1]?.slug ?? "");
+  const { fighters, visibleSlugs, slugA, slugB } = await resolveDreamSlugs(sp);
+  const eventName = sanitizeParam(param(sp, "event"), 60);
+  const weightClass = sanitizeParam(param(sp, "weight"), 20);
 
   const fighterA = slugA ? getFighter(slugA) : undefined;
   const fighterB = slugB ? getFighter(slugB) : undefined;
@@ -72,6 +125,19 @@ export default async function DreamPage({
   const shareText =
     canGenerate && fighterA && fighterB ? buildVsShareText(fighterA.nameJa, fighterB.nameJa) : "";
 
+  // v2(dreamMode)フローのシェアは、大会名・階級を反映した専用OGP
+  // (/api/og/dream)を持つ/dream自身のパラメータ付きURLに向ける(/vsの
+  // 実カードOGPとは意図的に別ブランド)。文言も夢のカード専用のものを使う。
+  let dreamShareUrl: string | null = null;
+  let dreamShareText = "";
+  if (canGenerateV2 && fighterA && fighterB) {
+    const q = new URLSearchParams({ a: fighterA.slug, b: fighterB.slug });
+    if (eventName) q.set("event", eventName);
+    if (weightClass) q.set("weight", weightClass);
+    dreamShareUrl = `${SITE_URL}/dream?${q.toString()}`;
+    dreamShareText = buildDreamShareText(fighterA.nameJa, fighterB.nameJa, eventName || undefined);
+  }
+
   return (
     <>
       <Nav />
@@ -83,7 +149,14 @@ export default async function DreamPage({
       </div>
 
       {isV2 ? (
-        <DreamPickerV2 fighters={fighters} initialA={slugA} initialB={slugB} preview={isV2} />
+        <DreamPickerV2
+          fighters={fighters}
+          initialA={slugA}
+          initialB={slugB}
+          initialEvent={eventName}
+          initialWeight={weightClass}
+          preview={isV2}
+        />
       ) : (
         <DreamPicker fighters={fighters} initialA={slugA} initialB={slugB} />
       )}
@@ -102,11 +175,14 @@ export default async function DreamPage({
                 entryA={entryA!}
                 entryB={entryB!}
                 visibleSlugs={visibleSlugs}
+                dreamMode
+                eventName={eventName || undefined}
+                weightClass={weightClass || undefined}
               />
               <div style={{ marginTop: 16, display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <XShareLink
-                  text={shareText}
-                  url={shareUrl!}
+                  text={dreamShareText}
+                  url={dreamShareUrl!}
                   style={{
                     display: "inline-block",
                     padding: "10px 20px",

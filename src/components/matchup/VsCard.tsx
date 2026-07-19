@@ -18,6 +18,9 @@ export default function VsCard({
   entryA,
   entryB,
   visibleSlugs,
+  dreamMode,
+  eventName,
+  weightClass,
 }: {
   nameA: string;
   nameB: string;
@@ -28,6 +31,10 @@ export default function VsCard({
   entryA: FighterRecordEntry;
   entryB: FighterRecordEntry;
   visibleSlugs: Set<string>;
+  // /dream(夢のカード)専用。実カード(/vs)には渡さない。
+  dreamMode?: boolean;
+  eventName?: string;
+  weightClass?: string;
 }) {
   const headToHead = computeHeadToHead(entryA, nameB);
   const commons = computeCommonOpponents(entryA, entryB).slice(0, 8);
@@ -35,6 +42,13 @@ export default function VsCard({
   return (
     <div className={styles.mv2}>
       <article className={styles.card}>
+        {dreamMode && (
+          <div className={styles.meta}>
+            <span className={styles.dreamMarker}>夢のカード / もし実現したら</span>
+            {weightClass && <span className={styles.weight}>{weightClass}</span>}
+            {eventName && <span className={styles.weight}>{eventName}</span>}
+          </div>
+        )}
         <MatchupTape
           compact
           left={buildTapeData(nameA, slugA, entryA, { nickname: nicknameA, withLast5: true, withMethodCounts: true })}

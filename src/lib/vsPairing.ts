@@ -39,3 +39,13 @@ export function buildVsShareText(nameA: string, nameB: string): string {
   if (matchup) return `【${matchup.event.eventName}_注目カード】${nameA} vs ${nameB}`;
   return vsShareText(nameA, nameB);
 }
+
+// /dream(夢のカード)専用のシェア文言。ユーザーが自由入力した大会名を
+// 常に「もし実現したら」の仮定形で扱う(実在イベントとの自動一致判定=
+// findMatchupEventは使わない。夢のカードは本質的に仮定であり、実在大会名を
+// 入れても実況調に切り替えない=buildVsShareTextとは意図的に別ロジック)。
+// 階級はシェア文言には含めない(カード本体で表示するため)。
+export function buildDreamShareText(nameA: string, nameB: string, eventName?: string): string {
+  if (eventName) return `もし${eventName}で「${nameA} vs ${nameB}」が実現したら―― #夢のカード`;
+  return vsShareText(nameA, nameB);
+}

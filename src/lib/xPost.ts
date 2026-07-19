@@ -8,6 +8,7 @@ import {
   condenseTopic,
   fullWidthLength,
 } from "./tweetDigest";
+import { normalizeVsSlugs } from "./vsPairing";
 
 // ─────────────────────────────────────────────
 // X投稿の組み立て設定（リンク戦略・上限）。
@@ -25,6 +26,7 @@ export interface XPostConfig {
     digest: LinkPlacement; // 朝のまとめ: リプライにリンク
     countdown: LinkPlacement; // 大会前日: リプライにリンク
     result: LinkPlacement; // 試合結果速報: 画像のみ
+    matchup: LinkPlacement; // 管理画面①対戦カード文脈: リプライにリンク
   };
   // 1日の自動ポスト上限(本文のみカウント、リプライは含まない)。
   // 枠が厳しい場合はここで絞り、優先度(速報>カウントダウン>キュレーション)で間引く
@@ -38,6 +40,7 @@ export const X_POST_CONFIG: XPostConfig = {
     digest: "reply",
     countdown: "reply",
     result: "none",
+    matchup: "reply",
   },
   dailyPostLimit: 8,
 };
@@ -389,7 +392,10 @@ export function buildMatchupContextPost(opts: {
   const line = (f: MatchupFighterInput) => {
     const fr = finishRatePercent(f);
     const frLabel = fr !== null ? `${fr}%` : "—";
-    return `・${f.nameJa}：戦績${f.wins}勝${f.losses}敗（KO${f.ko}、一本${f.sub}、フィニッシュ率${frLabel}） ${SITE_LINK}/fighters/${f.slug}`;
+    return `・${f.nameJa}：戦績${f.wins}勝${f.losses}敗（KO${f.ko}、一本${f.sub}、フィニッシュ率${frLabel}）`;
   };
-  return { text: [title, line(opts.fighterA), line(opts.fighterB)].join("\n"), method: "none" };
+  const body = [title, line(opts.fighterA), line(opts.fighterB)].join("\n");
+  const norm = normalizeVsSlugs(opts.fighterA.slug, opts.fighterB.slug);
+  const vsUrl = `${SITE_LINK}/vs/${norm.a}/${norm.b}`;
+  return applyLinkPlacement(body, "", vsUrl, X_POST_CONFIG.linkPlacement.matchup, "対戦カード比較はこちら👇");
 }

@@ -6,7 +6,7 @@ import { ogImagePath } from "@/lib/ogShared";
 import { SITE_URL } from "@/lib/seo";
 import { rankChangeText, type RankChange } from "@/lib/rankingDiff";
 import { buildMatchupContextPost } from "@/lib/xPost";
-import { WEIGHT_KG } from "@/lib/weightClasses";
+import { WEIGHT_KG, weightSortKey } from "@/lib/weightClasses";
 import { computeFighterStripStats, computeWinMethodBreakdown, LAST5_SYMBOL } from "@/lib/fighterStrip";
 import {
   buildFightSectionDraft,
@@ -23,6 +23,7 @@ import AdminBackLink from "@/components/AdminBackLink";
 export interface DraftFighterOption {
   slug: string;
   nameJa: string;
+  weightClass: string;
   wins: number;
   losses: number;
   ko: number;
@@ -63,7 +64,7 @@ const chip: React.CSSProperties = {
   cursor: "pointer",
 };
 
-function DraftCard({ text, imageUrl }: { text: string; imageUrl?: string }) {
+function DraftCard({ text, imageUrl, replyText }: { text: string; imageUrl?: string; replyText?: string }) {
   return (
     <div style={{ border: "1px solid var(--border)", borderRadius: 8, padding: 16, marginBottom: 16 }}>
       <pre style={{ whiteSpace: "pre-wrap", fontFamily: "var(--mono)", fontSize: 13, background: "var(--s2)", padding: 12, border: "1px solid var(--border)", margin: "0 0 10px" }}>
@@ -74,6 +75,15 @@ function DraftCard({ text, imageUrl }: { text: string; imageUrl?: string }) {
         <img src={imageUrl} alt="カードプレビュー" style={{ width: "100%", maxWidth: 500, border: "1px solid var(--border)", display: "block", marginBottom: 10 }} />
       )}
       <CopyButton text={text} label="本文コピー" />
+      {replyText && (
+        <div style={{ marginTop: 12 }}>
+          <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>セルフリプライ</label>
+          <pre style={{ whiteSpace: "pre-wrap", fontFamily: "var(--mono)", fontSize: 13, background: "var(--s2)", padding: 12, border: "1px solid var(--border)", margin: "0 0 10px" }}>
+            {replyText}
+          </pre>
+          <CopyButton text={replyText} label="リプライコピー" />
+        </div>
+      )}
     </div>
   );
 }
@@ -92,13 +102,35 @@ function FighterPicker({
   onChange: (slug: string) => void;
 }) {
   const [filter, setFilter] = useState("");
+  // 階級で絞る(任意)。あくまで選手を探しやすくするための一覧フィルタで、
+  // 選択そのものを制約しない(/dreamのDreamPickerと同じパターン)。
+  const [classFilter, setClassFilter] = useState("");
+  const weightClasses = useMemo(
+    () => Array.from(new Set(fighters.map((f) => f.weightClass))).sort((a, b) => weightSortKey(a) - weightSortKey(b)),
+    [fighters]
+  );
   const filtered = useMemo(
-    () => (filter.trim() ? fighters.filter((f) => f.nameJa.includes(filter.trim())) : fighters),
-    [fighters, filter]
+    () =>
+      fighters.filter(
+        (f) => (!filter.trim() || f.nameJa.includes(filter.trim())) && (!classFilter || f.weightClass === classFilter)
+      ),
+    [fighters, filter, classFilter]
   );
   return (
     <div>
       <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>{label}</label>
+      <select
+        value={classFilter}
+        onChange={(e) => setClassFilter(e.target.value)}
+        style={{ display: "block", padding: "6px 10px", fontSize: 13, minWidth: 220, marginBottom: 4 }}
+      >
+        <option value="">階級で絞る: すべて</option>
+        {weightClasses.map((w) => (
+          <option key={w} value={w}>
+            {w}
+          </option>
+        ))}
+      </select>
       <input
         type="text"
         value={filter}
@@ -125,7 +157,7 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
   const [eventName, setEventName] = useState("");
   const [weightPreset, setWeightPreset] = useState("");
   const [weightCustom, setWeightCustom] = useState("");
-  const [draft, setDraft] = useState<{ text: string; imageUrl?: string } | null>(null);
+  const [draft, setDraft] = useState<{ text: string; imageUrl?: string; replyText?: string } | null>(null);
 
   const weightClass = (weightPreset === CUSTOM_WEIGHT ? weightCustom : weightPreset).trim();
 
@@ -151,6 +183,7 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
     setDraft({
       text: post.text,
       imageUrl: ogImagePath(`/api/og/vs-compare/${a.slug}/${b.slug}?${imgQuery.toString()}`),
+      replyText: post.replyText,
     });
   }
 
@@ -200,7 +233,7 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
       <button onClick={generate} disabled={!slugA || !slugB} style={{ ...chip, marginBottom: 16, opacity: !slugA || !slugB ? 0.5 : 1 }}>
         ドラフト生成
       </button>
-      {draft && <DraftCard text={draft.text} imageUrl={draft.imageUrl} />}
+      {draft && <DraftCard text={draft.text} imageUrl={draft.imageUrl} replyText={draft.replyText} />}
     </div>
   );
 }
