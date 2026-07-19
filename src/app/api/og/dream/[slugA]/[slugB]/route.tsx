@@ -14,6 +14,7 @@ import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterReco
 import type { FitOpts } from "@/lib/og/fitName";
 import { SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
 import { VS_COLORS, CornerStrip, NameBlock, StatRow, MethodRow, FormDots, CardFooter, sharedNameFit, fighterVsStats } from "@/lib/og/vsCardBlocks";
+import { weightCodeToClass } from "@/lib/weightClasses";
 
 export const runtime = "edge";
 
@@ -48,9 +49,13 @@ export async function GET(
     const fighterA = mergeFighterRecord(seedA as Fighter, recordsResult.records);
     const fighterB = mergeFighterRecord(seedB as Fighter, recordsResult.records);
 
+    // URL短縮(§H): 新形式 e=/w={コード}を優先し、旧形式(event=/weight=生日本語)の
+    // リンクも引き続き受理する。weightはコード表(weightCodeToClass)で復元し、
+    // 表に無い値は旧リンクの生日本語ラベルとみなしてそのまま使う。
     const searchParams = new URL(req.url).searchParams;
-    const eventLabel = sanitizeLabel(searchParams.get("event"), 60);
-    const weightLabel = sanitizeLabel(searchParams.get("weight"), 20);
+    const eventLabel = sanitizeLabel(searchParams.get("e") ?? searchParams.get("event"), 60);
+    const weightRaw = sanitizeLabel(searchParams.get("w") ?? searchParams.get("weight"), 20);
+    const weightLabel = weightRaw ? weightCodeToClass(weightRaw) : "";
 
     const { fitA, fitB } = sharedNameFit(fighterA.nameJa, fighterB.nameJa, NAME_ZONE);
     const statsA = fighterVsStats(fighterA);

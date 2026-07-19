@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { weightSortKey, WEIGHT_KG } from "@/lib/weightClasses";
+import { weightSortKey, WEIGHT_KG, weightClassToCode } from "@/lib/weightClasses";
 import styles from "@/styles/matchup.module.css";
 
 interface FighterOption {
@@ -82,10 +82,10 @@ export default function DreamPickerV2({
     }
   }, [fightersB, slugB]);
 
-  // URL(?a=&b=&event=&weight=)への反映は1つのeffectにまとめてデバウンスする。
+  // URL(?a=&b=&e=&w=)への反映は1つのeffectにまとめてデバウンスする。
   // 大会名は自由入力(=キー入力毎の更新)なので、都度router.replaceすると
   // ナビゲーションが多発する。選手/階級セレクトの変更も含め400ms待ってから
-  // まとめて1回のURL更新にする。
+  // まとめて1回のURL更新にする。階級はURL短縮(§H)のため短縮コードで書き込む。
   const mountedRef = useRef(false);
   useEffect(() => {
     if (!mountedRef.current) {
@@ -96,8 +96,8 @@ export default function DreamPickerV2({
     const params = new URLSearchParams({ a: slugA, b: slugB });
     if (preview) params.set("ui", "new");
     const ev = eventName.trim();
-    if (ev) params.set("event", ev);
-    if (cardWeight) params.set("weight", cardWeight);
+    if (ev) params.set("e", ev);
+    if (cardWeight) params.set("w", weightClassToCode(cardWeight));
     const t = setTimeout(() => {
       router.replace(`/dream?${params.toString()}`, { scroll: false });
     }, 400);

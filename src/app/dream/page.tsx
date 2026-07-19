@@ -12,6 +12,7 @@ import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
 import { normalizeVsSlugs, buildVsShareText, buildDreamShareText } from "@/lib/vsPairing";
 import { pageMetadata } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
+import { weightClassToCode, weightCodeToClass } from "@/lib/weightClasses";
 
 const SITE_URL = "https://www.mnews.jp";
 
@@ -26,6 +27,19 @@ function param(sp: Record<string, string | string[] | undefined>, key: string): 
 // (表示崩れ対策。/api/og/dream側のsanitizeLabelと同じ方針)。
 function sanitizeParam(raw: string, maxLen: number): string {
   return raw.replace(/[\r\n]+/g, " ").trim().slice(0, maxLen);
+}
+
+// URL短縮(§H): 新形式は e=大会名 / w=階級コード。旧形式(event=/weight=生日本語)で
+// 出回ったリンクも引き続き受理するため、新キー優先・無ければ旧キーにフォール
+// バックする。weightはコード表(weightCodeToClass)で復元し、表に無い値は
+// 「旧リンクの生日本語がそのまま来た」とみなしてそのままラベル扱いする。
+function readEventParam(sp: Record<string, string | string[] | undefined>): string {
+  return sanitizeParam(param(sp, "e") || param(sp, "event"), 60);
+}
+
+function readWeightParam(sp: Record<string, string | string[] | undefined>): string {
+  const raw = sanitizeParam(param(sp, "w") || param(sp, "weight"), 20);
+  return raw ? weightCodeToClass(raw) : "";
 }
 
 // 選択候補・a/bの解決はgenerateMetadata/ページ本体の両方で必要なため共通化する。
@@ -49,8 +63,8 @@ export async function generateMetadata({
   const { slugA, slugB } = await resolveDreamSlugs(sp);
   const fighterA = slugA ? getFighter(slugA) : undefined;
   const fighterB = slugB ? getFighter(slugB) : undefined;
-  const eventName = sanitizeParam(param(sp, "event"), 60);
-  const weightClass = sanitizeParam(param(sp, "weight"), 20);
+  const eventName = readEventParam(sp);
+  const weightClass = readWeightParam(sp);
   const hasParams = !!(param(sp, "a") || param(sp, "b") || eventName || weightClass);
 
   const title =
@@ -66,8 +80,8 @@ export async function generateMetadata({
     fighterA && fighterB
       ? (() => {
           const q = new URLSearchParams();
-          if (eventName) q.set("event", eventName);
-          if (weightClass) q.set("weight", weightClass);
+          if (eventName) q.set("e", eventName);
+          if (weightClass) q.set("w", weightClassToCode(weightClass));
           const qs = q.toString();
           return {
             url: ogImagePath(`/api/og/dream/${fighterA.slug}/${fighterB.slug}${qs ? `?${qs}` : ""}`),
@@ -99,8 +113,8 @@ export default async function DreamPage({
   // URLのa/bが未指定・不正な場合は候補の先頭2人にフォールバックする
   // (Xカードツールの初期選択と同じ挙動)。
   const { fighters, visibleSlugs, slugA, slugB } = await resolveDreamSlugs(sp);
-  const eventName = sanitizeParam(param(sp, "event"), 60);
-  const weightClass = sanitizeParam(param(sp, "weight"), 20);
+  const eventName = readEventParam(sp);
+  const weightClass = readWeightParam(sp);
 
   const fighterA = slugA ? getFighter(slugA) : undefined;
   const fighterB = slugB ? getFighter(slugB) : undefined;
@@ -132,8 +146,8 @@ export default async function DreamPage({
   let dreamShareText = "";
   if (canGenerateV2 && fighterA && fighterB) {
     const q = new URLSearchParams({ a: fighterA.slug, b: fighterB.slug });
-    if (eventName) q.set("event", eventName);
-    if (weightClass) q.set("weight", weightClass);
+    if (eventName) q.set("e", eventName);
+    if (weightClass) q.set("w", weightClassToCode(weightClass));
     dreamShareUrl = `${SITE_URL}/dream?${q.toString()}`;
     dreamShareText = buildDreamShareText(fighterA.nameJa, fighterB.nameJa, eventName || undefined);
   }
