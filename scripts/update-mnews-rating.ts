@@ -64,6 +64,7 @@ import {
   INITIAL_RATING_BOOST_PARAMS_V6,
   SIGMA_DISCOUNT_COEFFICIENT_V7,
   MONOTONICITY_MAX_RANK_GAP_V9,
+  MONOTONICITY_H2H_RECENCY_MONTHS,
 } from "../src/lib/mnewsRating/constants";
 import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
 import { computeRankPositionDeltas } from "../src/lib/mnewsRating/rankPositionDelta";
@@ -263,6 +264,15 @@ function main() {
     currentYearPrefix
   );
 
+  // データ駆動アンカー: 最新bout日 - MONOTONICITY_H2H_RECENCY_MONTHS。壁時計非依存で無風日ドリフト防止。
+  const latestBoutDate = bouts.reduce((m, b) => (b.date > m ? b.date : m), "");
+  const h2hRecencyCutoff = (() => {
+    const base = latestBoutDate || asOf.toISOString().slice(0, 10);
+    const d = new Date(base);
+    d.setMonth(d.getMonth() - MONOTONICITY_H2H_RECENCY_MONTHS);
+    return d.toISOString().slice(0, 10);
+  })();
+
   const out: RankingsFile = {};
   for (const division of MNEWS_DIVISIONS) {
     const champion = championOverlayFor(division, display);
@@ -284,7 +294,7 @@ function main() {
     // gap制限の対象外)。H2Hはこのdivisionの資格保有選手同士の決着済み対戦
     // のみ(捏造ゼロ、boutsは既に構築済みのElo計算用の全対戦から抽出)。
     const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
-    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs);
+    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs, h2hRecencyCutoff);
     const key = divisionRankingsKey(division);
     let preCorrectionOrder: string[] = [];
     out[key] = buildDivisionRankings(

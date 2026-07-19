@@ -42,10 +42,11 @@ interface BoutLike {
 // のため、両ノードが対象divisionのslug集合に含まれるものだけを抽出する。
 // scripts/update-mnews-rating.ts(実運用)とdump-ranking-p1-comparison.ts
 // (比較ダンプ)の両方から共有で使う(ロジックの重複・ドリフトを避けるため)。
-export function extractH2HWinsForDivision(bouts: BoutLike[], divisionSlugs: Set<string>): H2HWin[] {
+export function extractH2HWinsForDivision(bouts: BoutLike[], divisionSlugs: Set<string>, recencyCutoff = ""): H2HWin[] {
   const wins: H2HWin[] = [];
   for (const b of bouts) {
     if (!divisionSlugs.has(b.aNode) || !divisionSlugs.has(b.bNode)) continue;
+    if (recencyCutoff && b.date < recencyCutoff) continue; // recencyCutoffより古い直接対決は単調性の対象外
     if (b.scoreA === 1) wins.push({ winnerSlug: b.aNode, loserSlug: b.bNode, date: b.date });
     else if (b.scoreA === 0) wins.push({ winnerSlug: b.bNode, loserSlug: b.aNode, date: b.date });
     // scoreA===0.5(引き分け)は方向性シグナルが無いためスキップ

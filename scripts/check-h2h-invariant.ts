@@ -26,7 +26,13 @@ import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
 import { getDivisionOverlay } from "../src/lib/mnewsRating/fighterDivisions";
-import { ELO_PARAMS_V5, DECAY_PARAMS_V6, INITIAL_RATING_BOOST_PARAMS_V6, SIGMA_DISCOUNT_COEFFICIENT_V7 } from "../src/lib/mnewsRating/constants";
+import {
+  ELO_PARAMS_V5,
+  DECAY_PARAMS_V6,
+  INITIAL_RATING_BOOST_PARAMS_V6,
+  SIGMA_DISCOUNT_COEFFICIENT_V7,
+  MONOTONICITY_H2H_RECENCY_MONTHS,
+} from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
@@ -106,6 +112,15 @@ function main() {
   const currentYearPrefix = `${asOf.getFullYear()}-`;
   const rankerWinExemptions = findRankerWinExemptions(boutSummariesBySlug, divisionBySlug, baseRankersByDivision, currentYearPrefix);
 
+  // データ駆動アンカー: update-mnews-rating.tsと同じ算出(最新bout日 - MONOTONICITY_H2H_RECENCY_MONTHS)。
+  const latestBoutDate = bouts.reduce((m, b) => (b.date > m ? b.date : m), "");
+  const h2hRecencyCutoff = (() => {
+    const base = latestBoutDate || asOf.toISOString().slice(0, 10);
+    const d = new Date(base);
+    d.setMonth(d.getMonth() - MONOTONICITY_H2H_RECENCY_MONTHS);
+    return d.toISOString().slice(0, 10);
+  })();
+
   let totalViolations = 0;
   console.log("=== H2H不変条件 機械チェック(全階級) ===");
   console.log("読み取り専用・書き込みなし。違反0件であることを確認する。\n");
@@ -122,7 +137,7 @@ function main() {
 
     const champion = championOverlayFor(division, display);
     const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
-    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs);
+    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs, h2hRecencyCutoff);
     const result = buildDivisionRankings(division, eligibleEntries, asOf, undefined, champion, "overlay", SIGMA_DISCOUNT_COEFFICIENT_V7, {
       h2hWins,
     });
