@@ -80,10 +80,26 @@ export async function fetchFighterRecordsStrict(): Promise<
 }
 
 // Fighter(静的シード)にキャッシュ済み戦績をマージしてResolvedFighter相当にする。
-// キャッシュに無い(バッチ未対象=hiddenのみのはず)選手はシードのままlive:falseで返す。
+// キャッシュに無い(バッチ未実行=新規追加直後等)選手は、fighters.ts側のシード値
+// (手動入力の見込み値であることがある)をそのまま出さない。通算集計とhistory
+// テーブルは必ず同一取込(バッチ実行結果)から生成し、「集計だけ入って明細が空」の
+// サイレントな不整合を避ける(捏造ゼロ。mckee-aj案件で実際に発生した事故の再発防止)。
 export function mergeFighterRecord(fighter: Fighter, records: FighterRecordsFile): ResolvedFighter {
   const rec = records[fighter.slug];
-  if (!rec) return { ...fighter, live: false };
+  if (!rec) {
+    return {
+      ...fighter,
+      wins: 0,
+      losses: 0,
+      draws: 0,
+      ko: 0,
+      sub: 0,
+      decision: 0,
+      history: [],
+      noRecordData: true,
+      live: false,
+    };
+  }
   return { ...fighter, ...rec };
 }
 
