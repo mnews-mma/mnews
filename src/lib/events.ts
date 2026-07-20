@@ -329,9 +329,54 @@ export const EVENTS: MEvent[] = [
     venue: "京セラドーム大阪",
     broadcast: ["未定（決定次第更新）"],
     sourceUrl: "https://jp.rizinff.com/_ct/17834937",
-    // カード追加発表が続く大会。参戦予定→対戦カード確定時は bouts へ移動する
-    expectedFighters: ["朝倉未来", "平本蓮", "斎藤裕", "鈴木千裕", "YA-MAN"],
+    // 2026-07-20 会見でカード決定(出典: RIZIN公式X @rizin_PR 投稿7本)。
+    // 最終FIGHT ORDER(試合順)は未発表のため、ダブルタイトルマッチ=メインとした暫定順。
+    // 公式が試合順を発表次第、並びを再調整すること。鈴木千裕は欠場(左脇腹肋軟骨骨折)。
     bouts: [
+      {
+        weightClass: "フェザー級（66.0kg）",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "ラジャブアリ・シェイドゥラエフ",
+        fighterB: "AJ・マッキー",
+        isTitleMatch: true,
+        note: "RIZIN＆PFLフェザー級ダブルタイトルマッチ",
+      },
+      {
+        weightClass: "71.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "朝倉未来",
+        fighterB: "青木真也",
+      },
+      {
+        weightClass: "66.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "平本蓮",
+        fighterB: "カルシャガ・ダウトベック",
+      },
+      {
+        weightClass: "71.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "ホベルト・サトシ・ソウザ",
+        fighterB: "野村駿太",
+      },
+      {
+        weightClass: "66.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "斎藤裕",
+        fighterB: "YA-MAN",
+      },
+      {
+        weightClass: "66.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "ヴガール・ケラモフ",
+        fighterB: "高木凌",
+      },
+      {
+        weightClass: "59.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "冨澤大智",
+        fighterB: "ドンマイ川端",
+      },
       {
         weightClass: "49.0kg契約",
         rule: "RIZIN MMAルール 5分3R",

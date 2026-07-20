@@ -1320,6 +1320,10 @@ export const FIGHTERS: Fighter[] = [
   { slug: "zhumagazy-nurkhan", nameJa: "ヌルハン・ズマガジー", nameEn: "Nurkhan Zhumagazy", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ヌルハン・ズマガジー", nickname: "カザフの新星" },
   { slug: "temirov-azizbek", nameJa: "アジズベク・テミロフ", nameEn: "Azizbek Temirov", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "アジズベク・テミロフ", nickname: "蒼き剛腕ブラザー弟" },
   { slug: "gadzhamatov-alibeg", nameJa: "アリベク・ガジャマトフ", nameEn: "Alibek Gadzhammatov", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "アリベク・ガジャマトフ", nickname: "ダゲスタンのバトルサイボーグ" },
+  // 元Bellatorフェザー級王者。RIZIN登録戦はRIZIN.40(2022-12-31)ソウザ戦の判定勝ちのみ
+  // (超RIZIN.2はブドウ球菌感染で欠場=不戦のためRIZIN戦績に含まれない)。
+  // 通算戦績はja-Wikipedia記事から日次バッチが取得する前提でここでは0シード。
+  { slug: "mckee-aj", nameJa: "AJ・マッキー", nameEn: "AJ McKee", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "AJ・マッキー", nickname: "ファンタスティックAJ" },
 
   // --- 団体ランキング top-5 未照合ぶんのDB追加(2026-07) ---
   { slug: "shimizu-hiroto", nameJa: "清水博人", nameEn: "Hiroto Shimizu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
