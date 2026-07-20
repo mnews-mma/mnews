@@ -50,7 +50,7 @@ export function buildTapeData(
 // 「—」表示、直近5戦ドットは無し)。数値は一切生成しない(zero-fabrication)。
 // ※両者ともデータ無しのカードはこのビルダーを使わず、呼び出し側で名前のみの
 //   簡易表示に倒す(空の比較テープを出しても情報がないため)。
-export const NO_DATA_LABEL = "データなし";
+export const NO_DATA_LABEL = "No data";
 
 export function buildNoDataTapeData(
   name: string,
