@@ -23,8 +23,10 @@ import {
   extractH2HWinsForDivision,
   checkH2HInvariant,
   checkRecentH2HInvariant,
+  resolvePairDirections,
   H2HWin,
 } from "../src/lib/mnewsRating/monotonicity";
+import { computeExpiredH2HEdges } from "../src/lib/mnewsRating/rankAttribution";
 import {
   ALGORITHM_VERSION,
   DECAY_FLOOR,
@@ -1797,6 +1799,53 @@ const KNOWN_INTENTIONAL_MISMATCH_SLUGS = new Set(["hagiwara-kyohei"]);
       );
     }
   }
+}
+
+// ── PR-3: computeExpiredH2HEdges(失効H2Hエッジ検出、rankAttribution.ts) ──────
+// 2026-07-20追加: 実データ(篠塚辰樹エッジ)での再現を試みたところ、当該エッジは
+// LM15サイクルの新規失効ではなく既に07-11時点で失効済みだったため実データでは
+// 検証できなかった(アーカイブがLM14サイクル以前まで遡れないため)。実際の失効
+// 遷移(前回は有効・今回は窓外)は今後いつでも実データで再発しうる経路であり、
+// PR-1のsilent no-op・naokiの未テスト経路と同じ理由で、合成データによる恒久
+// レグレッションガードとして残す。
+{
+  const divisionSlugs = new Set(["synth-a", "synth-b", "synth-c"]);
+
+  // 前回時点のbouts: A>B(2024-01-01)のみ。前回のlatestBoutDate=2024-01-01。
+  const prevBouts = [{ aNode: "synth-a", bNode: "synth-b", scoreA: 1, date: "2024-01-01" }];
+  const prevH2hWins = extractH2HWinsForDivision(prevBouts, divisionSlugs, "2023-01-01");
+  const prevResolvedPairs = resolvePairDirections(prevH2hWins);
+  check(
+    prevResolvedPairs.length === 1 && prevResolvedPairs[0].winner === "synth-a" && prevResolvedPairs[0].loser === "synth-b",
+    "computeExpiredH2HEdges前提: 前回cutoff内ではA>Bエッジが有効"
+  );
+
+  // 今回時点のbouts: 上記に加え、C選手が新しい試合をしてlatestBoutDateが進む
+  // (A>Bのペア自体は変わらないが、他の試合でcutoffだけが1年進み窓外になる)。
+  const currentBouts = [
+    { aNode: "synth-a", bNode: "synth-b", scoreA: 1, date: "2024-01-01" },
+    { aNode: "synth-c", bNode: "synth-a", scoreA: 1, date: "2025-06-01" },
+  ];
+  const currentH2hWins = extractH2HWinsForDivision(currentBouts, divisionSlugs, "2024-06-01");
+  const currentResolvedPairs = resolvePairDirections(currentH2hWins);
+  check(
+    currentResolvedPairs.length === 1 && currentResolvedPairs[0].winner === "synth-c" && currentResolvedPairs[0].loser === "synth-a",
+    "computeExpiredH2HEdges前提: 今回cutoffではA>Bエッジは窓外・C>Aのみ有効"
+  );
+
+  const expired = computeExpiredH2HEdges(currentBouts, divisionSlugs, "2024-01-01", currentResolvedPairs, 12);
+  check(
+    expired.length === 1 && expired[0].winner === "synth-a" && expired[0].loser === "synth-b",
+    "computeExpiredH2HEdges: 前回有効・今回窓外になったA>Bエッジを失効として検出する"
+  );
+
+  // 回帰確認: 前回データが無い(prevLatestBoutDate=null)場合は失効判定を行わず空配列。
+  const expiredNoPrev = computeExpiredH2HEdges(currentBouts, divisionSlugs, null, currentResolvedPairs, 12);
+  check(expiredNoPrev.length === 0, "computeExpiredH2HEdges: 前回データが無い場合は失効エッジ無し(空配列)");
+
+  // 回帰確認: 前回・今回でcutoffが変わらない(新規試合が無い)場合は失効なし。
+  const expiredNoChange = computeExpiredH2HEdges(prevBouts, divisionSlugs, "2024-01-01", prevResolvedPairs, 12);
+  check(expiredNoChange.length === 0, "computeExpiredH2HEdges: cutoffが変わらなければ失効エッジ無し");
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);
