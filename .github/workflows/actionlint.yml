@@ -1,0 +1,30 @@
+name: Lint workflow files
+
+# .github/workflows/**を変更するPRでactionlintを走らせる。目的は「ワークフローYAMLが
+# 壊れていて永遠に発火しない」クラスをマージ前に捕まえること(#143のwarm-routes.ymlは
+# 文字列中のコロン+スペースがYAMLのマッピング区切りと誤認されパース失敗→jobsゼロ→
+# deployment_statusを一度も評価できず黙って発火しなかった)。
+# deployment_status系ワークフローはPR上では実行されないため、通常のCIでは発火して
+# 初めて壊れが分かる。パース時の静的検証がマージ前に捕まえる唯一の現実的手段。
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download actionlint
+        run: bash <(curl -s https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+        shell: bash
+
+      # 引数なし = リポジトリ内の全ワークフローをlint(新規の壊れだけでなく既存の壊れも一掃)
+      - name: Check workflow files
+        run: ./actionlint -color
+        shell: bash
