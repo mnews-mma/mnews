@@ -39,6 +39,7 @@ export default async function AdminDraftsPage() {
       draws: rec.draws,
       ko: rec.ko,
       sub: rec.sub,
+      history: rec.history,
     };
   });
 

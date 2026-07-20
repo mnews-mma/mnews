@@ -16,7 +16,7 @@ import {
   computeCommonOpponents,
   computeNotablePoints,
 } from "@/lib/articleGenerator";
-import type { FighterRecordsFile } from "@/lib/fighterRecordsCache";
+import type { FighterRecordEntry, FighterRecordsFile } from "@/lib/fighterRecordsCache";
 import type { OriginalArticle, OriginalArticleFight } from "@/lib/originalArticles";
 import { findFighterSlugByName } from "@/lib/fighters";
 import AdminBackLink from "@/components/AdminBackLink";
@@ -30,6 +30,9 @@ export interface DraftFighterOption {
   draws: number;
   ko: number;
   sub: number;
+  // フィニッシュ率の再分類(tallyMethods)に使う。空配列は「集計値のみ持つ選手」を表し、
+  // 呼び出し側はko/subへフォールバックする。
+  history: FighterRecordEntry["history"];
 }
 
 // タブ③(数字で見る記事生成)用: 大会選択の候補(events.ts/eventResults.tsを
@@ -215,8 +218,8 @@ function MatchupTab({
     const hasCommonOpponents = !!entryA && !!entryB && computeCommonOpponents(entryA, entryB).length > 0;
 
     const post = buildMatchupContextPost({
-      fighterA: { nameJa: a.nameJa, slug: a.slug, wins: a.wins, losses: a.losses, draws: a.draws, ko: a.ko, sub: a.sub },
-      fighterB: { nameJa: b.nameJa, slug: b.slug, wins: b.wins, losses: b.losses, draws: b.draws, ko: b.ko, sub: b.sub },
+      fighterA: { nameJa: a.nameJa, slug: a.slug, wins: a.wins, losses: a.losses, draws: a.draws, ko: a.ko, sub: a.sub, history: a.history },
+      fighterB: { nameJa: b.nameJa, slug: b.slug, wins: b.wins, losses: b.losses, draws: b.draws, ko: b.ko, sub: b.sub, history: b.history },
       eventName: eventName.trim() || undefined,
       weightClass: weightClass || undefined,
       hasCommonOpponents,

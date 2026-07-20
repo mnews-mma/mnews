@@ -9,6 +9,7 @@ import {
   fullWidthLength,
 } from "./tweetDigest";
 import { normalizeVsSlugs } from "./vsPairing";
+import { tallyMethods, type MethodClassifiable } from "./methodClassify";
 
 // ─────────────────────────────────────────────
 // X投稿の組み立て設定（リンク戦略・上限）。
@@ -405,6 +406,9 @@ export interface MatchupFighterInput {
   draws: number;
   ko: number;
   sub: number; // 一本
+  // フィニッシュ率の再分類(tallyMethods)に使う。resultは"win"のみ見る。
+  // 省略/空配列時はko/subにフォールバック(集計値のみ持つ選手向け)。
+  history?: MethodClassifiable[];
 }
 
 // X(Twitter)の重み付き文字数(全角=2、半角=1)。URLはt.co短縮により実際の
@@ -436,8 +440,18 @@ function winRatePercent(f: MatchupFighterInput): number | null {
   return denom > 0 ? Math.round((f.wins / denom) * 100) : null;
 }
 // フィニッシュ率=(KO+一本)/勝利数。勝利0はnull。
+// KO/一本の内訳はf.ko/f.sub(Wikipedia infobox由来、取りこぼしあり)を信頼せず、
+// historyの各勝利のmethodテキストをtallyMethodsで再分類した値を使う
+// (fighterStrip.ts の computeFighterStripStats / fighters.ts の calcFighterRates
+// と同じ考え方。2026-07-20修正: このタブだけ再分類前のinfobox値を使っていたため、
+// 公開ページ側の表示と数値が食い違っていた)。historyが空(集計値のみ持つ選手)は
+// f.ko/f.subにフォールバックする。
 function finishRatePercent(f: MatchupFighterInput): number | null {
-  return f.wins > 0 ? Math.round(((f.ko + f.sub) / f.wins) * 100) : null;
+  if (f.wins <= 0) return null;
+  if (!f.history || f.history.length === 0) return Math.round(((f.ko + f.sub) / f.wins) * 100);
+  const wins = f.history.filter((h) => h.result === "win");
+  const { ko, sub } = tallyMethods(wins);
+  return Math.round(((ko + sub) / f.wins) * 100);
 }
 
 export function buildMatchupContextPost(opts: {
