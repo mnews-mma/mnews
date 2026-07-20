@@ -53,12 +53,26 @@ const LAST5_COLOR: Record<string, { bg: string; fg: string }> = {
 // 決定的な事前計算方式は維持する。ただし折り返し規則(「・」の直後でのみ改行し、
 // カタカナ単語の途中では折らない)はWebと完全に同一のルールをfitName.ts側で
 // 独立実装している(toUnits()参照)。呼び出し側(各route.ts)がカード幅に応じた
-// FitOptsを渡す。
-export function sharedNameFit(nameA: string, nameB: string, zone: FitOpts) {
-  const fitAOwn = fitName(nameA, zone);
-  const fitBOwn = fitName(nameB, zone);
+// NameZoneを渡す。
+//
+// 公開OGP(1200x630, /api/og/vs)の選手名フォントサイズ天井(2026-07-20)。
+// 天井が無いと、名前が短い選手ほど枠幅いっぱいまで拡大され、同じカードの
+// はずが対戦カードごとにサイズがバラバラに見える不具合が出る(例:
+// 「青木真也」が「ホベルト・サトシ・ソウザ」より遥かに大きく表示される)。
+// 現行デザインで長めの2語名(例:サトシ・ソウザ)が自然に収まるサイズ(63px)を
+// 天井にすることで、短い名前もそこで頭打ちになりカード間のサイズが揃う。
+// 呼び出し側でmaxFontを個別に指定させない(sharedNameFitのmaxSize引数で
+// 強制する)ことで、天井の値がカードごとに分岐する再発を防ぐ。
+export const CEILING_OG = 63;
+
+export type NameZone = Omit<FitOpts, "maxFont">;
+
+export function sharedNameFit(nameA: string, nameB: string, zone: NameZone, maxSize: number) {
+  const fullZone: FitOpts = { ...zone, maxFont: maxSize };
+  const fitAOwn = fitName(nameA, fullZone);
+  const fitBOwn = fitName(nameB, fullZone);
   const sharedFontSize = Math.min(fitAOwn.fontSize, fitBOwn.fontSize);
-  const sharedZone: FitOpts = { ...zone, maxFont: sharedFontSize, minFont: sharedFontSize };
+  const sharedZone: FitOpts = { ...fullZone, maxFont: sharedFontSize, minFont: sharedFontSize };
   return { fitA: fitName(nameA, sharedZone), fitB: fitName(nameB, sharedZone) };
 }
 
@@ -87,7 +101,7 @@ export function NameBlock({
 }: {
   nickname?: string;
   fit: { fontSize: number; lines: string[] };
-  zone: FitOpts;
+  zone: NameZone;
   side: "left" | "right";
   nicknameSize?: number;
 }) {
