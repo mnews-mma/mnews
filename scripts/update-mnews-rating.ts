@@ -63,7 +63,12 @@ import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
 import { isRetired } from "../src/lib/mnewsRating/retirements";
 import { isDivisionExit, isDivisionAmbiguousExcluded } from "../src/lib/mnewsRating/divisionExits";
-import { getDivisionOverlay, getEligibilityScopeStartDate, getRecordDisplayExclusions } from "../src/lib/mnewsRating/fighterDivisions";
+import {
+  getDivisionOverlay,
+  getEligibilityScopeStartDate,
+  getRecordDisplayExclusions,
+  findZeroMatchRecordDisplayExclusions,
+} from "../src/lib/mnewsRating/fighterDivisions";
 import {
   ALGORITHM_VERSION,
   ELO_PARAMS_V5,
@@ -220,6 +225,18 @@ function main() {
   const resolve = buildOpponentResolver(records);
   const getKnownNames = buildKnownNamesLookup(records);
   const { bouts, warnings } = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss, asOf, isOpeningFightOverride);
+
+  // 567バケット監査(2026-07-20)のfail-loud化: recordDisplayExclusionsが
+  // 1件でも黙ってno-op(zero-match)していないかを毎回チェックする。表示戦績
+  // には影響しない読み取り専用チェックで、ビルドはブロックしない(warningのみ)。
+  const zeroMatchExclusions = findZeroMatchRecordDisplayExclusions(bouts);
+  if (zeroMatchExclusions.length > 0) {
+    console.warn(
+      `[WARN] recordDisplayExclusionsにzero-match(設定してあるがboutsと1件もマッチしない)を検出(${zeroMatchExclusions.length}件)。表示戦績が意図通り除外されていない可能性があります:\n` +
+        zeroMatchExclusions.map((z) => `  ${z.slug} date=${z.date} opponentNode=${z.opponentNode}`).join("\n")
+    );
+  }
+
   // v5確定パラメータ(比較ダンプでの目視レビューを経て採用)。
   // v6: RIZIN参戦前実績(既存history、全団体分)から機械算出した初期レート補正。
   const preDebutRecords = computePreDebutRecords(records);
