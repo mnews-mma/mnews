@@ -159,8 +159,15 @@ export default function DreamPickerV2({
               </select>
             </label>
           </div>
-          <button type="button" onClick={swap} title="AとBを入れ替え" className={styles.buildVsLabel} style={{ background: "none", border: "none", cursor: "pointer" }}>
-            VS
+          <button
+            type="button"
+            onClick={swap}
+            title="赤コーナーと青コーナーを入れ替え"
+            aria-label="赤コーナーと青コーナーを入れ替え"
+            className={styles.buildVsLabel}
+            style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20 }}
+          >
+            ⇄
           </button>
           <div className={styles.slot}>
             <label className={styles.sel} style={{ display: "block" }}>
