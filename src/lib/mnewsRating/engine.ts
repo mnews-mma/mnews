@@ -502,9 +502,10 @@ export function computeRawRatings(
   params: AsymmetricEloParams = NEUTRAL_ELO_PARAMS,
   initialRatingOverrides?: Map<string, number>,
   recency?: RecencyOptions,
-  // ダンプ/検証用: 各試合の処理直前に両者の「その時点(当時)のrawRating・実戦数」を
-  // 通知する。ランキング本体には一切影響しない(読み取り専用のフック)。
-  onBout?: (bout: Bout, aBefore: number, bBefore: number, aFights: number, bFights: number) => void
+  // ダンプ/検証用: 各試合の適用前後の両者の「rawRating・実戦数」を通知する。
+  // ランキング本体には一切影響しない(読み取り専用のフック)。PR-3の
+  // attributionレポート(bout単位のrawレート差分の内訳出力)がこれを使う。
+  onBout?: (bout: Bout, aBefore: number, bBefore: number, aFights: number, bFights: number, aAfter: number, bAfter: number) => void
 ): Map<string, RatingState> {
   const states = new Map<string, RatingState>();
   const get = (id: string) => states.get(id) ?? freshState(initialRatingOverrides?.get(id));
@@ -516,9 +517,9 @@ export function computeRawRatings(
     if (recency) k *= recencyWeight(bout.date, recency);
     const a = get(bout.aNode);
     const b = get(bout.bNode);
-    if (onBout) onBout(bout, a.rawRating, b.rawRating, a.fights, b.fights);
     const newA = applyResult(a, bout.scoreA, b.rawRating, b.fights, k, bout.date, params);
     const newB = applyResult(b, 1 - bout.scoreA, a.rawRating, a.fights, k, bout.date, params);
+    if (onBout) onBout(bout, a.rawRating, b.rawRating, a.fights, b.fights, newA.rawRating, newB.rawRating);
     states.set(bout.aNode, newA);
     states.set(bout.bNode, newB);
   }

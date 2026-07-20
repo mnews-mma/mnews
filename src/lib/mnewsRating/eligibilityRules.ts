@@ -134,18 +134,28 @@ export function computeEligibilityFightsAndWins(
   return { fights: scoped.length, wins: scoped.filter((s) => s.isWin).length };
 }
 
-// B-2適用後の「標準の掲載資格」を判定する(1勝以上は階級変更後スコープ、
-// 18ヶ月直近性は既存の全期間lastFightDateのまま)。
-// 試合数の要件は「通算ELIGIBILITY_MIN_FIGHTS戦以上」OR「ELIGIBILITY_RECENT_YEAR_START年
-// 以降にELIGIBILITY_RECENT_MIN_FIGHTS戦以上」のいずれかを満たせばよい(直近活動が
-// 濃い選手を拾うための代替基準)。オープニングファイトはどちらのカウントにも
-// 含めない(2026-07-13追加)。
-export function isStandardEligible(
+// PR-3(2026-07-20)のattributionレポート用: isStandardEligibleが判定に使った
+// 内訳をすべて開示する。naokiのケース(rawレート変動ゼロなのに「非掲載→掲載」
+// という順位変動が起きた原因が、この内訳を見ないと分からない)への対応。
+// isStandardEligible自体はこの関数の.eligibleを返すだけの薄いラッパーに
+// リファクタリングしており、判定ロジックはここに一本化(重複・ドリフト無し)。
+export interface EligibilityExplanation {
+  fights: number; // 資格カウント対象試合数(オープニングファイト・cutoff除外後)
+  recentFights: number; // うちELIGIBILITY_RECENT_YEAR_START年以降の試合数
+  wins: number; // 資格カウント対象試合のうちの勝利数
+  effectiveWins: number; // 直近ルート免除適用後の実効勝利数(判定に使う値)
+  meetsFightBar: boolean; // 通算ELIGIBILITY_MIN_FIGHTS戦 or 直近ELIGIBILITY_RECENT_MIN_FIGHTS戦のいずれかを満たすか
+  qualifiesViaRecent: boolean; // 直近ルート(2025年以降N戦)で試合数要件を満たしたか(=勝利要件免除の対象)
+  eligible: boolean; // 最終判定(isStandardEligibleの戻り値と同一)
+  totalExcludedByOpeningFight: number; // オープニングファイト判定で除外された試合数
+}
+
+export function explainStandardEligibility(
   summaries: FighterBoutSummary[],
   currentDivision: MnewsDivision,
   lastFightDate: string | null,
   asOf: Date
-): boolean {
+): EligibilityExplanation {
   const scoped = resolveEligibilityScope(summaries, currentDivision);
   const fights = scoped.length;
   const wins = scoped.filter((s) => s.isWin).length;
@@ -159,7 +169,24 @@ export function isStandardEligible(
   const qualifiesViaRecent = recentFights >= ELIGIBILITY_RECENT_MIN_FIGHTS;
   const effectiveWins = qualifiesViaRecent ? Math.max(wins, ELIGIBILITY_MIN_WINS) : wins;
   const counts: EligibilityCounts = { fights: meetsFightBar ? Math.max(fights, ELIGIBILITY_MIN_FIGHTS) : fights, wins: effectiveWins, lastFightDate };
-  return isEligible(counts, asOf);
+  const eligible = isEligible(counts, asOf);
+  const totalExcludedByOpeningFight = summaries.filter((s) => s.isOpeningFight).length;
+  return { fights, recentFights, wins, effectiveWins, meetsFightBar, qualifiesViaRecent, eligible, totalExcludedByOpeningFight };
+}
+
+// B-2適用後の「標準の掲載資格」を判定する(1勝以上は階級変更後スコープ、
+// 18ヶ月直近性は既存の全期間lastFightDateのまま)。
+// 試合数の要件は「通算ELIGIBILITY_MIN_FIGHTS戦以上」OR「ELIGIBILITY_RECENT_YEAR_START年
+// 以降にELIGIBILITY_RECENT_MIN_FIGHTS戦以上」のいずれかを満たせばよい(直近活動が
+// 濃い選手を拾うための代替基準)。オープニングファイトはどちらのカウントにも
+// 含めない(2026-07-13追加)。
+export function isStandardEligible(
+  summaries: FighterBoutSummary[],
+  currentDivision: MnewsDivision,
+  lastFightDate: string | null,
+  asOf: Date
+): boolean {
+  return explainStandardEligibility(summaries, currentDivision, lastFightDate, asOf).eligible;
 }
 
 // 2026-07-13厳格化: 対戦相手が、その勝利の日付「時点で」標準資格(B-2)を

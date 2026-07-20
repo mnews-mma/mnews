@@ -33,12 +33,19 @@ import {
   DisplayEntry,
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
+import {
+  RankAttributionCollector,
+  writeRankAttributionReport,
+  resolveAttributionBaseline,
+  computeExpiredH2HEdges,
+} from "../src/lib/mnewsRating/rankAttribution";
 import { buildOpponentResolver, buildKnownNamesLookup } from "../src/lib/mnewsRating/nameIndex";
 import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import {
   FighterBoutSummary,
   findRankerWinExemptions,
   isStandardEligible,
+  explainStandardEligibility,
   summarizeBoutsForFighter,
 } from "../src/lib/mnewsRating/eligibilityRules";
 import {
@@ -66,7 +73,13 @@ import {
   MONOTONICITY_MAX_RANK_GAP_V9,
   MONOTONICITY_H2H_RECENCY_MONTHS,
 } from "../src/lib/mnewsRating/constants";
-import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
+import {
+  extractH2HWinsForDivision,
+  checkH2HInvariant,
+  checkRecentH2HInvariant,
+  resolvePairDirections,
+  ResolvedPair,
+} from "../src/lib/mnewsRating/monotonicity";
 import { computeRankPositionDeltas } from "../src/lib/mnewsRating/rankPositionDelta";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
@@ -221,7 +234,10 @@ function main() {
   // 戻した(constants.ts MONOTONICITY_MAX_RANK_GAP_V9直前の設計ノート参照)。
   // computeRawRatingsのrecencyオプション自体は後方互換で残すが、ここでは
   // 使わない(第4引数を渡さない=v8までと同じ挙動)。
-  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides);
+  // PR-3: attributionレポート用にbout単位のrawレート変動を収集する(読み取り
+  // 専用フック、ランキング計算そのものには一切影響しない)。
+  const attribution = new RankAttributionCollector();
+  const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides, undefined, attribution.onBout);
   const publishable = filterPublishableStates(states, records);
   // v6: 不活性ディケイ廃止(比較ダンプでの目視レビューを経て採用)。
   const display = buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6);
@@ -302,6 +318,47 @@ function main() {
     const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
     const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs, h2hRecencyCutoff);
     const key = divisionRankingsKey(division);
+
+    // PR-3: 資格ステータス変化の収集(読み取り専用)。今回・baseline(前回
+    // rankings.json)いずれかにのみ掲載されている選手(=非掲載↔掲載のflip)
+    // について、explainStandardEligibilityで現在の資格判定内訳を記録する。
+    // naokiのようにrawレート差分ゼロ・H2H無関与でも順位変動(新規掲載)だけは
+    // 起きるケースを、hasChange判定に「資格ステータス変化」として拾わせる。
+    {
+      const prevDivision = prevOut[key];
+      const prevListedSlugs = new Set((prevDivision?.entries ?? []).map((e) => e.fighterId));
+      const slugsToCheck = new Set<string>([...divisionSlugs, ...prevListedSlugs]);
+      for (const slug of slugsToCheck) {
+        const wasListedBefore = prevListedSlugs.has(slug);
+        const isListedNow = divisionSlugs.has(slug);
+        if (wasListedBefore === isListedNow) continue;
+        const summaries = boutSummariesBySlug.get(slug) ?? [];
+        const lastFightDate = display.get(slug)?.lastFightDate ?? null;
+        const explanation = explainStandardEligibility(summaries, division, lastFightDate, asOf);
+        attribution.recordEligibility(slug, wasListedBefore, isListedNow, explanation);
+      }
+    }
+
+    // PR-3: H2H関与エッジ・失効エッジの収集(読み取り専用、ランキング計算には
+    // 一切影響しない)。前回のlatestBoutDateはrankings.jsonに保存されていない
+    // ため、前回entriesのlastFight最大値で近似する(computeExpiredH2HEdges参照、
+    // 単体テストはtest-mnews-rating.tsの合成データケースを参照)。
+    {
+      const resolvedPairs = resolvePairDirections(h2hWins);
+      const prevDivision = prevOut[key];
+      const prevLatestBoutDate = prevDivision
+        ? prevDivision.entries.reduce((m, e) => (e.lastFight && e.lastFight > m ? e.lastFight : m), "") || null
+        : null;
+      const expiredPairs = computeExpiredH2HEdges(
+        bouts,
+        divisionSlugs,
+        prevLatestBoutDate,
+        resolvedPairs,
+        MONOTONICITY_H2H_RECENCY_MONTHS
+      );
+      attribution.recordDivisionH2H(division, resolvedPairs, expiredPairs);
+    }
+
     let preCorrectionOrder: string[] = [];
     out[key] = buildDivisionRankings(
       division,
@@ -449,6 +506,15 @@ function main() {
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT_PREV, JSON.stringify(prevOut, null, 2) + "\n");
   fs.writeFileSync(OUT, JSON.stringify(published, null, 2) + "\n");
+
+  // PR-3: attributionレポート(out/rank-attribution.md、非公開・gitignore対象)。
+  // rankings.json本体の書き込みが完了した後にのみ生成する副産物ログのため、
+  // 失敗してもrankings.json生成自体は成功として扱う(warningのみで続行)。
+  try {
+    writeRankAttributionReport(attribution, published, resolveAttributionBaseline(prevOut));
+  } catch (e) {
+    console.warn(`[WARN] out/rank-attribution.md の生成に失敗(rankings.json本体には影響なし): ${e}`);
+  }
 
   console.log(`=== mnewsレーティング rankings.json 更新 (mode=${MODE}, asOf=${asOf.toISOString()}) ===`);
   for (const division of MNEWS_DIVISIONS) {

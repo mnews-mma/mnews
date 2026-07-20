@@ -64,7 +64,9 @@ export interface ResolvedPair {
 // そのペアの正とする(2026-07-17 P0-B: 以前は勝敗が割れる=splitの場合、方向性
 // シグナルが無いとして両方向とも除外していたが、「直近の対戦結果を優先」という
 // 明確なルールに変更し、より多くのペアにH2H制約を適用できるようにした)。
-function resolvePairDirections(h2hWins: H2HWin[]): ResolvedPair[] {
+// PR-3のattributionレポートがH2H補正の根拠エッジを再構成するために外部から
+// 呼び出す(既存の内部利用箇所には影響しない、exportの追加のみ)。
+export function resolvePairDirections(h2hWins: H2HWin[]): ResolvedPair[] {
   const pairKey = (x: string, y: string) => [x, y].sort().join("|");
   const latestByPair = new Map<string, H2HWin>();
   for (const win of h2hWins) {
