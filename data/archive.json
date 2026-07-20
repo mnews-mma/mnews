@@ -1,5 +1,50 @@
 [
   {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "ANGEL CHAMPAGNE presents 超RIZIN.5 浪速の超復活祭り 対戦カード",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17853585",
+    "publishedAt": "2026-07-20T14:48:08.000Z",
+    "firstSeenAt": "2026-07-20T16:17:40.757Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】榊原CEOが語るシェイドゥラエフvsマッキーの舞台裏 朝倉未来と平本蓮の再戦の可能性は!?【囲み取材全文】",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2468999/",
+    "publishedAt": "2026-07-20T13:23:00.000Z",
+    "firstSeenAt": "2026-07-20T16:17:40.757Z"
+  },
+  {
+    "id": "shooto-0",
+    "source": "shooto",
+    "title": "プロ修斗7月20日後楽園ホール大会『PROFESSIONAL SHOOTO 2026 Vol.5』試合結果",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/07/20/post-51209/",
+    "publishedAt": "2026-07-20T13:22:41.000Z",
+    "firstSeenAt": "2026-07-20T16:17:40.757Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "朝倉未来―青木真也、正式決定は3日前 榊原CEOが明かしたギリギリの舞台裏「死ぬに死にきれていない」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1033701/",
+    "publishedAt": "2026-07-20T12:46:39.000Z",
+    "firstSeenAt": "2026-07-20T16:17:40.757Z"
+  },
+  {
+    "id": "encount-1",
+    "source": "other",
+    "title": "【RIZIN】BreakingDown・冨澤大智の参戦に「マジ富澤いらないだろ」「真剣にみたいやついるの？笑」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1034668/",
+    "publishedAt": "2026-07-20T10:40:16.000Z",
+    "firstSeenAt": "2026-07-20T16:17:40.757Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【SUPER RIZIN05】PFLは王座決定戦、RIZINは防衛戦。榊原CEO「茨の道を行くと、要望を快諾してくれた」",
