@@ -370,15 +370,23 @@ export function buildWeighInPost(opts: {
 // 本文末尾の/vs URLをX側のOGPアンフルで出す(画像直貼りはしない、/dreamと
 // 同方式)。戦績詳細2行はカード画像に全部載っていて本文では冗長なため削除。
 //
-// 2026-07-20追い変更: 当初は🟥/🟦の並びを/vsの辞書順正規化に無条件で
-// 合わせ、コーナー(赤/青)選択を本文側では表現不能にしていた(=「/vsが
-// 1ペア1カード・コーナー中立設計である以上、本文だけ選べても実カードに
-// 反映できない」ため)。/vs・/api/og/vsに?red={slug}(赤コーナー指定、
-// 未指定時は辞書順先がデフォルト)を追加したことでこの制約が外れたため、
-// 呼び出し側(opts.fighterA)が選んだ赤をそのまま尊重するよう戻した。
-// 選んだ赤が辞書順先(=デフォルト)と一致する場合は?red=を省略し
-// クリーンURLのまま(既存キャッシュ・organic訪問に影響なし)、逆の場合のみ
-// ?red={選んだ赤のslug}を付与して/vs側のカードを追従させる。
+// 2026-07-20追い変更(1回目): 当初は🟥/🟦の並びを/vsの辞書順正規化に無条件で
+// 合わせ、コーナー(赤/青)選択を本文側では表現不能にしていた。/vs・
+// /api/og/vsに?red={slug}(赤コーナー指定、未指定時は辞書順先がデフォルト)を
+// 追加したことでこの制約が外れたため、呼び出し側(opts.fighterA)が選んだ赤を
+// そのまま尊重するよう戻した。選んだ赤が辞書順先(=デフォルト)と一致する
+// 場合は?red=を省略しクリーンURLのまま、逆の場合のみ?red={選んだ赤のslug}
+// を付与して/vs側のカードを追従させる(この?red=ロジック自体は本改訂でも
+// 不変)。
+//
+// 2026-07-20追い変更(2回目・本文ブラッシュアップ): 🟥/🟦・区切り線・複数行の
+// コーナー装飾を撤去し、ヘッダー1行(【対戦決定】A vs B（階級）)に戻した。
+// 本文からコーナー表現そのものが消えるため、本文とカードの色不一致問題は
+// 構造ごと解消する(カードの赤/青は引き続き?red=が制御し、swapの役割は
+// 不変)。代わりに、カード画像に載っていないmnews独自の付加価値データを
+// 「フック行」として最大1行だけ添える(優先順: ①同一階級の両者AIランク
+// ②3連勝以上 ③共通の対戦相手。いずれも呼び出し側が事前に解決した値のみを
+// 受け取り、xPost.ts側でデータ取得は一切行わない=zero-fabrication)。
 // ─────────────────────────────────────────────
 export interface MatchupFighterInput {
   nameJa: string;
@@ -389,11 +397,53 @@ export interface MatchupFighterInput {
   sub: number; // 一本
 }
 
+// X(Twitter)の重み付き文字数(全角=2、半角=1)。URLはt.co短縮により実際の
+// 文字数によらず常に23として数える(公式仕様)。
+function weightedCharLength(s: string): number {
+  let len = 0;
+  for (const ch of s) len += ch.charCodeAt(0) <= 0xff ? 1 : 2;
+  return len;
+}
+const X_URL_WEIGHT = 23;
+const X_MAX_WEIGHT = 280;
+
+// 本文中のURL部分だけ実文字数ではなく固定23として数える(URL以外は実文字数で
+// 重み付け計算する)。本文中に同じURLが複数回現れない前提(buildMatchupContextPost
+// は必ず1回のみ挿入する)。
+function weightedTweetLength(text: string, url: string): number {
+  if (!text.includes(url)) return weightedCharLength(text);
+  const placeholder = "x".repeat(X_URL_WEIGHT);
+  return weightedCharLength(text.split(url).join(placeholder));
+}
+
+// 優先順①同一階級AIランク②3連勝以上③共通の対戦相手。該当なければ行ごと
+// 省略(埋め草禁止)。各フック候補はopts側で事前に解決済みの値のみを受け取り、
+// ここでは優先順位判定とフォーマットのみ行う。
+function pickHookLine(opts: {
+  rankHook?: { labelA: string; labelB: string };
+  streakHook?: { name: string; count: number };
+  commonOpponentsHook?: { names: string[] };
+}): string | undefined {
+  if (opts.rankHook) return `📊 AIランク: ${opts.rankHook.labelA} vs ${opts.rankHook.labelB}`;
+  if (opts.streakHook && opts.streakHook.count >= 3) return `🔥 ${opts.streakHook.name} ${opts.streakHook.count}連勝中`;
+  if (opts.commonOpponentsHook && opts.commonOpponentsHook.names.length > 0) {
+    const { names } = opts.commonOpponentsHook;
+    const label = names.length === 1 ? names[0] : `${names.length}人`;
+    return `🤝 共通の対戦相手: ${label}`;
+  }
+  return undefined;
+}
+
 export function buildMatchupContextPost(opts: {
   fighterA: MatchupFighterInput; // 管理画面で「赤」に置いた選手(タブ①のswapで入れ替え可能)
   fighterB: MatchupFighterInput; // 「青」
   eventName?: string;
   weightClass?: string;
+  // データフック候補(zero-fabrication: 呼び出し側が実データから事前に
+  // 解決できた場合のみ渡す。憶測・埋め草は渡さない)。
+  rankHook?: { labelA: string; labelB: string };
+  streakHook?: { name: string; count: number };
+  commonOpponentsHook?: { names: string[] };
 }): BuiltPost {
   const redFighter = opts.fighterA;
   const blueFighter = opts.fighterB;
@@ -401,20 +451,43 @@ export function buildMatchupContextPost(opts: {
   const redParam = norm.a !== redFighter.slug ? `?red=${redFighter.slug}` : "";
   const vsUrl = `${SITE_LINK}/vs/${norm.a}/${norm.b}${redParam}`;
 
-  const lines: string[] = [];
-  const ev = opts.eventName?.trim();
-  lines.push(ev ? `【対戦決定】#${ev.replace(/[\s　]/g, "")}` : "【対戦決定】");
-  lines.push("");
-  lines.push(`🟥 ${redFighter.nameJa}`);
-  lines.push("―――🆚―――");
-  lines.push(`🟦 ${blueFighter.nameJa}`);
+  const hookLine = pickHookLine(opts);
   const wc = opts.weightClass?.trim();
-  if (wc) {
-    lines.push("");
-    lines.push(`⚖️ ${wc}`);
-  }
-  lines.push("");
-  lines.push(vsUrl);
+  const ev = opts.eventName?.trim();
+  // Xのタグは`.`「・」空白の直後で切れるため、大会名から除去して正規化する
+  // (例: 「超RIZIN.5」→「#超RIZIN5」)。
+  const evTag = ev ? ev.replace(/[.\s　・]/g, "") : "";
 
-  return { text: lines.join("\n"), method: "inline" };
+  function assemble(includeHook: boolean, includeWeightClass: boolean): string {
+    const wcPart = includeWeightClass && wc ? `（${wc}）` : "";
+    const lines: string[] = [`【対戦決定】${redFighter.nameJa} vs ${blueFighter.nameJa}${wcPart}`];
+    if (includeHook && hookLine) {
+      lines.push("");
+      lines.push(hookLine);
+    }
+    lines.push("");
+    lines.push("詳細データで比較👇");
+    lines.push(vsUrl);
+    if (evTag) {
+      lines.push("");
+      lines.push(`#${evTag}`);
+    }
+    return lines.join("\n");
+  }
+
+  // 文字数ガード(X上限280、weighted): 超過時はフック行→⚖️階級の順に
+  // 自動で落とす。ヘッダー・選手名・URLは死守(この2つ以外は削らない)。
+  let includeHook = true;
+  let includeWeightClass = true;
+  let text = assemble(includeHook, includeWeightClass);
+  if (weightedTweetLength(text, vsUrl) > X_MAX_WEIGHT && includeHook) {
+    includeHook = false;
+    text = assemble(includeHook, includeWeightClass);
+  }
+  if (weightedTweetLength(text, vsUrl) > X_MAX_WEIGHT && includeWeightClass) {
+    includeWeightClass = false;
+    text = assemble(includeHook, includeWeightClass);
+  }
+
+  return { text, method: "inline" };
 }

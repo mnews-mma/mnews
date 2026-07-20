@@ -4,6 +4,9 @@ import { fetchOrgRankings, fetchOrgRankingsPrev } from "@/lib/orgRankingsData";
 import { diffRankings } from "@/lib/rankingDiff";
 import { EVENTS } from "@/lib/events";
 import { EVENT_RESULTS } from "@/lib/eventResults";
+import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
+import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
+import type { DivisionRankings } from "@/lib/mnewsRating/rankingsFile";
 import DraftsTool, { type ArticleEventOption } from "@/components/DraftsTool";
 
 // 投稿の下書き工場(管理画面)。誤爆防止のためX投稿API連携は一切持たない
@@ -16,11 +19,15 @@ export const metadata = {
 };
 
 export default async function AdminDraftsPage() {
-  const [records, cur, prev] = await Promise.all([
+  const [records, cur, prev, rankingsByDivisionEntries] = await Promise.all([
     fetchFighterRecords(),
     fetchOrgRankings(),
     fetchOrgRankingsPrev(),
+    // タブ①の「AIランク」データフック用。公開中の階級のみ(非公開階級は
+    // /rankingsと同じ判定で対象外)。
+    Promise.all(PUBLISHED_DIVISIONS.map(async (division) => [division, await fetchDivisionRankings(DIVISION_SLUG[division])] as const)),
   ]);
+  const rankingsByDivision: Record<string, DivisionRankings | null> = Object.fromEntries(rankingsByDivisionEntries);
 
   // 選手セレクタ(タブ①)は全FIGHTERS対象(hidden含む。運用スタッフは公開前選手も
   // 参照できる必要があるため公開判定=getVisibleFightersは使わない)。ただし
@@ -71,7 +78,16 @@ export default async function AdminDraftsPage() {
     })),
   ];
 
-  // タブ③は共通対戦相手・直近5戦の算出にhistory全量が要るため、フル戦績を渡す
-  // (管理画面は/admin配下で認証必須。運用頻度が低いため848KB程度のペイロードは許容)。
-  return <DraftsTool fighters={fighters} changes={changes} events={eventOptions} fighterRecords={records} />;
+  // タブ①③は共通対戦相手・直近5戦・連勝数の算出にhistory全量が要るため、
+  // フル戦績を渡す(管理画面は/admin配下で認証必須。運用頻度が低いため
+  // 848KB程度のペイロードは許容)。
+  return (
+    <DraftsTool
+      fighters={fighters}
+      changes={changes}
+      events={eventOptions}
+      fighterRecords={records}
+      rankingsByDivision={rankingsByDivision}
+    />
+  );
 }
