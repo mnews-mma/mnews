@@ -22944,6 +22944,234 @@
     "birthPlace": "ダゲスタン共和国マハチカラ",
     "age": 25
   },
+  "mckee-aj": {
+    "wins": 25,
+    "losses": 2,
+    "draws": 0,
+    "ko": 6,
+    "sub": 8,
+    "decision": 11,
+    "history": [
+      {
+        "date": "2026-06-27",
+        "opponent": "サラマット・イスブラエフ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PFL San Diego: McKee vs. Isbulaev",
+        "round": "R3"
+      },
+      {
+        "date": "2026-03-20",
+        "opponent": "アダム・ボリッチ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PFL Madrid: Van Steenis vs. Edwards 2",
+        "round": "R3"
+      },
+      {
+        "date": "2025-07-19",
+        "opponent": "アクメド・マゴメドフ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PFL Africa 1: Cape Town 2025",
+        "round": "R3"
+      },
+      {
+        "date": "2024-10-19",
+        "opponent": "ポール・ヒューズ",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "PFL Super Fights: Battle of the Giants",
+        "round": "R3"
+      },
+      {
+        "date": "2024-02-24",
+        "opponent": "クレイ・コラード",
+        "result": "win",
+        "method": "1R 1:10 腕ひしぎ十字固め",
+        "event": "PFL vs. Bellator: Champs",
+        "round": "R1"
+      },
+      {
+        "date": "2023-11-17",
+        "opponent": "シドニー・アウトロー",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 301: Amosov vs. Jackson",
+        "round": "R3"
+      },
+      {
+        "date": "2022-12-31",
+        "opponent": "ホベルト・サトシ・ソウザ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN.40 【RIZIN × BELLATOR全面対抗戦 大将戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2022-10-01",
+        "opponent": "スパイク・カーライル",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 286: Pitbull vs. Borics",
+        "round": "R3"
+      },
+      {
+        "date": "2022-04-15",
+        "opponent": "パトリシオ・ピットブル",
+        "result": "loss",
+        "method": "5分5R終了 判定0-3",
+        "event": "Bellator 277: McKee vs. Pitbull 2 【Bellator世界フェザー級タイトルマッチ】",
+        "round": "R5"
+      },
+      {
+        "date": "2021-07-31",
+        "opponent": "パトリシオ・ピットブル",
+        "result": "win",
+        "method": "1R 1:57 ギロチンチョーク",
+        "event": "Bellator 263: Pitbull vs. McKee 【Bellator世界フェザー級タイトルマッチ/Bellatorフェザー級ワールドグランプリ決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2020-11-19",
+        "opponent": "ダリオン・コールドウェル",
+        "result": "win",
+        "method": "1R 1:11 ネッククランク",
+        "event": "Bellator 253: Caldwell vs. McKee 【Bellatorフェザー級ワールドグランプリ準決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2019-12-21",
+        "opponent": "デレック・カンポス",
+        "result": "win",
+        "method": "3R 1:08 腕ひしぎ三角固め",
+        "event": "Bellator 236: Macfarlane vs. Jackson 【Bellatorフェザー級ワールドグランプリ準々決勝】",
+        "round": "R3"
+      },
+      {
+        "date": "2019-09-28",
+        "opponent": "ジョージ・カラカニヤン",
+        "result": "win",
+        "method": "1R 0:08 KO（左フック→パウンド）",
+        "event": "Bellator 228: Pitbull vs. Archuleta 【Bellatorフェザー級ワールドグランプリ1回戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2019-05-11",
+        "opponent": "パット・カラン",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 221: Chandler vs. Pitbull",
+        "round": "R3"
+      },
+      {
+        "date": "2018-12-14",
+        "opponent": "ダニエル・クロフォード",
+        "result": "win",
+        "method": "1R 3:19 アナコンダチョーク",
+        "event": "Bellator 212: Primus vs. Chandler 2",
+        "round": "R1"
+      },
+      {
+        "date": "2018-09-21",
+        "opponent": "ジョン・マカパ",
+        "result": "win",
+        "method": "1R 1:09 KO（左フック）",
+        "event": "Bellator 205: McKee vs. Macapa",
+        "round": "R1"
+      },
+      {
+        "date": "2018-08-13",
+        "opponent": "ジャスティン・ローレンス",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 197: Chandler vs. Girtz",
+        "round": "R3"
+      },
+      {
+        "date": "2017-11-10",
+        "opponent": "ブライアン・ムーア",
+        "result": "win",
+        "method": "3R 0:42 リアネイキドチョーク",
+        "event": "Bellator 187: McKee vs. Moore",
+        "round": "R3"
+      },
+      {
+        "date": "2017-08-25",
+        "opponent": "ブレア・タグマン",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 182: Koreshkov vs. Njokuani",
+        "round": "R3"
+      },
+      {
+        "date": "2017-04-21",
+        "opponent": "ドミニク・マゾッタ",
+        "result": "win",
+        "method": "1R 1:15 KO（左ハイキック）",
+        "event": "Bellator 178: Straus vs. Pitbull 4",
+        "round": "R1"
+      },
+      {
+        "date": "2017-01-27",
+        "opponent": "ブランドン・フィリップス",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 171: Guillard vs. Njokuani",
+        "round": "R3"
+      },
+      {
+        "date": "2016-12-02",
+        "opponent": "レイ・ウッド",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Bellator 166: Dantas vs. Warren 2",
+        "round": "R3"
+      },
+      {
+        "date": "2016-08-26",
+        "opponent": "コーディ・ウォーカー",
+        "result": "win",
+        "method": "2R 0:32 ギロチンチョーク",
+        "event": "Bellator 160: Henderson vs. Pitbull",
+        "round": "R2"
+      },
+      {
+        "date": "2016-04-16",
+        "opponent": "ダニーロ・ベルアルド",
+        "result": "win",
+        "method": "1R 2:44 TKO（スタンドパンチ連打→パウンド）",
+        "event": "Bellator 152: Freire vs. Souza",
+        "round": "R1"
+      },
+      {
+        "date": "2015-12-04",
+        "opponent": "JT・ドナルドソン",
+        "result": "win",
+        "method": "1R 3:19 KO（右膝蹴り）",
+        "event": "Bellator 147: Thomson vs. Villaseca",
+        "round": "R1"
+      },
+      {
+        "date": "2015-08-28",
+        "opponent": "ジェームズ・バーンズ",
+        "result": "win",
+        "method": "1R 1:42 KO（左フック）",
+        "event": "Bellator 141: Guillard vs. Girtz",
+        "round": "R1"
+      },
+      {
+        "date": "2015-04-10",
+        "opponent": "マルコス・ボニージャ",
+        "result": "win",
+        "method": "1R 2:08 リアネイキドチョーク",
+        "event": "Bellator 136: Brooks vs. Jansen",
+        "round": "R1"
+      }
+    ],
+    "live": true,
+    "nickname": "ファンタスティックAJ"
+  },
   "shimizu-hiroto": {
     "wins": 0,
     "losses": 0,
@@ -30529,233 +30757,5 @@
     "nickname": "非RIZIN流 決意の出陣",
     "birthPlace": "神奈川県横浜市",
     "age": 33
-  },
-  "mckee-aj": {
-    "wins": 25,
-    "losses": 2,
-    "draws": 0,
-    "ko": 6,
-    "sub": 8,
-    "decision": 11,
-    "history": [
-      {
-        "date": "2026-06-27",
-        "opponent": "サラマット・イスブラエフ",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "PFL San Diego: McKee vs. Isbulaev",
-        "round": "R3"
-      },
-      {
-        "date": "2026-03-20",
-        "opponent": "アダム・ボリッチ",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "PFL Madrid: Van Steenis vs. Edwards 2",
-        "round": "R3"
-      },
-      {
-        "date": "2025-07-19",
-        "opponent": "アクメド・マゴメドフ",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "PFL Africa 1: Cape Town 2025",
-        "round": "R3"
-      },
-      {
-        "date": "2024-10-19",
-        "opponent": "ポール・ヒューズ",
-        "result": "loss",
-        "method": "5分3R終了 判定1-2",
-        "event": "PFL Super Fights: Battle of the Giants",
-        "round": "R3"
-      },
-      {
-        "date": "2024-02-24",
-        "opponent": "クレイ・コラード",
-        "result": "win",
-        "method": "1R 1:10 腕ひしぎ十字固め",
-        "event": "PFL vs. Bellator: Champs",
-        "round": "R1"
-      },
-      {
-        "date": "2023-11-17",
-        "opponent": "シドニー・アウトロー",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "Bellator 301: Amosov vs. Jackson",
-        "round": "R3"
-      },
-      {
-        "date": "2022-12-31",
-        "opponent": "ホベルト・サトシ・ソウザ",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "RIZIN.40 【RIZIN × BELLATOR全面対抗戦 大将戦】",
-        "round": "R3"
-      },
-      {
-        "date": "2022-10-01",
-        "opponent": "スパイク・カーライル",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "Bellator 286: Pitbull vs. Borics",
-        "round": "R3"
-      },
-      {
-        "date": "2022-04-15",
-        "opponent": "パトリシオ・ピットブル",
-        "result": "loss",
-        "method": "5分5R終了 判定0-3",
-        "event": "Bellator 277: McKee vs. Pitbull 2 【Bellator世界フェザー級タイトルマッチ】",
-        "round": "R5"
-      },
-      {
-        "date": "2021-07-31",
-        "opponent": "パトリシオ・ピットブル",
-        "result": "win",
-        "method": "1R 1:57 ギロチンチョーク",
-        "event": "Bellator 263: Pitbull vs. McKee 【Bellator世界フェザー級タイトルマッチ/Bellatorフェザー級ワールドグランプリ決勝】",
-        "round": "R1"
-      },
-      {
-        "date": "2020-11-19",
-        "opponent": "ダリオン・コールドウェル",
-        "result": "win",
-        "method": "1R 1:11 ネッククランク",
-        "event": "Bellator 253: Caldwell vs. McKee 【Bellatorフェザー級ワールドグランプリ準決勝】",
-        "round": "R1"
-      },
-      {
-        "date": "2019-12-21",
-        "opponent": "デレック・カンポス",
-        "result": "win",
-        "method": "3R 1:08 腕ひしぎ三角固め",
-        "event": "Bellator 236: Macfarlane vs. Jackson 【Bellatorフェザー級ワールドグランプリ準々決勝】",
-        "round": "R3"
-      },
-      {
-        "date": "2019-09-28",
-        "opponent": "ジョージ・カラカニヤン",
-        "result": "win",
-        "method": "1R 0:08 KO（左フック→パウンド）",
-        "event": "Bellator 228: Pitbull vs. Archuleta 【Bellatorフェザー級ワールドグランプリ1回戦】",
-        "round": "R1"
-      },
-      {
-        "date": "2019-05-11",
-        "opponent": "パット・カラン",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "Bellator 221: Chandler vs. Pitbull",
-        "round": "R3"
-      },
-      {
-        "date": "2018-12-14",
-        "opponent": "ダニエル・クロフォード",
-        "result": "win",
-        "method": "1R 3:19 アナコンダチョーク",
-        "event": "Bellator 212: Primus vs. Chandler 2",
-        "round": "R1"
-      },
-      {
-        "date": "2018-09-21",
-        "opponent": "ジョン・マカパ",
-        "result": "win",
-        "method": "1R 1:09 KO（左フック）",
-        "event": "Bellator 205: McKee vs. Macapa",
-        "round": "R1"
-      },
-      {
-        "date": "2018-08-13",
-        "opponent": "ジャスティン・ローレンス",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "Bellator 197: Chandler vs. Girtz",
-        "round": "R3"
-      },
-      {
-        "date": "2017-11-10",
-        "opponent": "ブライアン・ムーア",
-        "result": "win",
-        "method": "3R 0:42 リアネイキドチョーク",
-        "event": "Bellator 187: McKee vs. Moore",
-        "round": "R3"
-      },
-      {
-        "date": "2017-08-25",
-        "opponent": "ブレア・タグマン",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "Bellator 182: Koreshkov vs. Njokuani",
-        "round": "R3"
-      },
-      {
-        "date": "2017-04-21",
-        "opponent": "ドミニク・マゾッタ",
-        "result": "win",
-        "method": "1R 1:15 KO（左ハイキック）",
-        "event": "Bellator 178: Straus vs. Pitbull 4",
-        "round": "R1"
-      },
-      {
-        "date": "2017-01-27",
-        "opponent": "ブランドン・フィリップス",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "Bellator 171: Guillard vs. Njokuani",
-        "round": "R3"
-      },
-      {
-        "date": "2016-12-02",
-        "opponent": "レイ・ウッド",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "Bellator 166: Dantas vs. Warren 2",
-        "round": "R3"
-      },
-      {
-        "date": "2016-08-26",
-        "opponent": "コーディ・ウォーカー",
-        "result": "win",
-        "method": "2R 0:32 ギロチンチョーク",
-        "event": "Bellator 160: Henderson vs. Pitbull",
-        "round": "R2"
-      },
-      {
-        "date": "2016-04-16",
-        "opponent": "ダニーロ・ベルアルド",
-        "result": "win",
-        "method": "1R 2:44 TKO（スタンドパンチ連打→パウンド）",
-        "event": "Bellator 152: Freire vs. Souza",
-        "round": "R1"
-      },
-      {
-        "date": "2015-12-04",
-        "opponent": "JT・ドナルドソン",
-        "result": "win",
-        "method": "1R 3:19 KO（右膝蹴り）",
-        "event": "Bellator 147: Thomson vs. Villaseca",
-        "round": "R1"
-      },
-      {
-        "date": "2015-08-28",
-        "opponent": "ジェームズ・バーンズ",
-        "result": "win",
-        "method": "1R 1:42 KO（左フック）",
-        "event": "Bellator 141: Guillard vs. Girtz",
-        "round": "R1"
-      },
-      {
-        "date": "2015-04-10",
-        "opponent": "マルコス・ボニージャ",
-        "result": "win",
-        "method": "1R 2:08 リアネイキドチョーク",
-        "event": "Bellator 136: Brooks vs. Jansen",
-        "round": "R1"
-      }
-    ],
-    "live": true,
-    "nickname": "ファンタスティックAJ"
   }
 }
