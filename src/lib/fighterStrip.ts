@@ -7,6 +7,10 @@ import { MethodCounts, tallyMethods } from "./methodClassify";
 export interface FighterStripStats {
   record: string; // 例 "12-3-1"(wins-losses-draws)
   // フィニッシュ率 = (KO+一本)/勝数。勝数0は算出不能としてnull。
+  // KO/一本の内訳はentry.ko/entry.sub(Wikipedia infobox由来、取りこぼしあり)を
+  // 信頼せず、history各試合のmethodテキストをtallyMethodsで再分類した値を使う
+  // (2026-07-20修正: カルシャガ・ダウトベックでinfobox側のko集計が実際のhistory
+  // より1件少なく79%と表示されていた実例を検知。正しくは84%)。
   finishRate: number | null;
   // 直近5戦。history を日付降順に並べ替えてから先頭5件を取る
   // (元データが既に降順の場合も多いが、順序を前提にしない)。
@@ -25,8 +29,13 @@ export const LAST5_SYMBOL: Record<FighterRecordEntry["history"][number]["result"
 
 export function computeFighterStripStats(entry: FighterRecordEntry): FighterStripStats {
   const record = `${entry.wins}-${entry.losses}-${entry.draws}`;
-  const finishRate = entry.wins > 0 ? Math.round(((entry.ko + entry.sub) / entry.wins) * 100) : null;
+  // historyが空(集計値のみ持つ記事。例: 住村竜市朗)はentry.ko/entry.subにフォールバックする。
+  const winMethods = tallyMethods(entry.history.filter((h) => h.result === "win"));
+  const finishCount = entry.history.length > 0 ? winMethods.ko + winMethods.sub : entry.ko + entry.sub;
+  const finishRate = entry.wins > 0 ? Math.round((finishCount / entry.wins) * 100) : null;
+  // NC(無効試合)は勝敗ストリークとして意味を持たないため除外し、繰り上げて直近5戦を埋める。
   const last5 = [...entry.history]
+    .filter((h) => h.result !== "nc")
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     .slice(0, 5)
     .map((h) => h.result);

@@ -1,4 +1,5 @@
 import { SourceKey } from "./sources";
+import { tallyMethods } from "./methodClassify";
 
 export interface FightRecord {
   date: string;
@@ -1406,11 +1407,19 @@ export interface FighterRates {
   finishRate: number | null; // フィニッシュ率（%） (KO+一本) / wins
 }
 
-export function calcFighterRates(f: Pick<Fighter, "wins" | "losses" | "draws" | "ko" | "sub">): FighterRates {
+export function calcFighterRates(
+  f: Pick<Fighter, "wins" | "losses" | "draws" | "ko" | "sub" | "history">
+): FighterRates {
   // 勝率は勝敗のみで算出（引き分けは母数から除外）
   const decided = f.wins + f.losses;
   const winRate = decided > 0 ? Math.round((f.wins / decided) * 100) : null;
-  const finishRate = f.wins > 0 ? Math.round(((f.ko + f.sub) / f.wins) * 100) : null;
+  // フィニッシュ内訳はf.ko/f.sub(Wikipedia infobox由来、取りこぼしあり)を信頼せず、
+  // historyの各試合methodテキストをtallyMethodsで再分類した値を使う
+  // (fighterStrip.tsのcomputeFighterStripStatsと同じ考え方。2026-07-20修正)。
+  // historyが空(未取得・シード段階)の選手はf.ko/f.subにフォールバックする。
+  const winMethods = tallyMethods(f.history.filter((h) => h.result === "win"));
+  const finishCount = f.history.length > 0 ? winMethods.ko + winMethods.sub : f.ko + f.sub;
+  const finishRate = f.wins > 0 ? Math.round((finishCount / f.wins) * 100) : null;
   return { winRate, finishRate };
 }
 
