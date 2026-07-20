@@ -270,3 +270,34 @@ export function getEligibilityScopeStartDate(slug: string): string | null {
 export function getRecordDisplayExclusions(slug: string): RecordDisplayExclusion[] {
   return FIGHTER_DIVISION_OVERLAYS.find((o) => o.slug === slug)?.recordDisplayExclusions ?? [];
 }
+
+// 567バケット監査(2026-07-20)のfail-loud化: recordDisplayExclusionsは
+// date+opponentSlug(DB外相手は"name:正規化名"疑似ノード)の完全一致でboutsと
+// 突合する(computeScopedRecord参照)。表記ミスや対象試合の消滅(データ修正で
+// 日付が変わった等)があると、設定してあるのに1件もマッチせず「沈黙する誤設定」
+// になりうる(除外されるはずの試合が除外されないまま表示戦績に残る)。
+// このチェックは呼び出し側(update-mnews-rating.ts)がbouts構築後に1回呼び、
+// zero-matchがあればconsole.warnで通知する(ビルドはブロックしない、ログのみ)。
+// 純関数(I/O無し)としてここに置き、実際の警告出力は呼び出し側の責務にする。
+export interface RecordDisplayExclusionZeroMatch {
+  slug: string;
+  date: string;
+  opponentNode: string;
+}
+
+export function findZeroMatchRecordDisplayExclusions(
+  bouts: { date: string; aNode: string; bNode: string }[]
+): RecordDisplayExclusionZeroMatch[] {
+  const zeroMatch: RecordDisplayExclusionZeroMatch[] = [];
+  for (const overlay of FIGHTER_DIVISION_OVERLAYS) {
+    for (const excl of overlay.recordDisplayExclusions ?? []) {
+      const hit = bouts.some(
+        (b) =>
+          b.date === excl.date &&
+          ((b.aNode === overlay.slug && b.bNode === excl.opponentSlug) || (b.bNode === overlay.slug && b.aNode === excl.opponentSlug))
+      );
+      if (!hit) zeroMatch.push({ slug: overlay.slug, date: excl.date, opponentNode: excl.opponentSlug });
+    }
+  }
+  return zeroMatch;
+}
