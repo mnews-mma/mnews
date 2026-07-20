@@ -19,6 +19,9 @@ import {
 import type { FighterRecordsFile } from "@/lib/fighterRecordsCache";
 import type { OriginalArticle, OriginalArticleFight } from "@/lib/originalArticles";
 import { findFighterSlugByName } from "@/lib/fighters";
+import { mapToDivision } from "@/lib/mnewsRating/divisions";
+import { findRankLabelInDivision } from "@/lib/mnewsRating/divisionRankingView";
+import type { DivisionRankings } from "@/lib/mnewsRating/rankingsFile";
 import AdminBackLink from "@/components/AdminBackLink";
 
 export interface DraftFighterOption {
@@ -185,8 +188,28 @@ function FighterPicker({
   );
 }
 
+// 直近から連続勝利数を数える(2026-07-20、タブ①フック用)。computeFighterStripStats
+// と同じ日付降順ソートを使い、最新試合から負け/分け/NCに当たるまでカウントする。
+function computeWinStreak(history: { date: string; result: string }[]): number {
+  const sorted = [...history].sort((a, b) => (a.date < b.date ? 1 : -1));
+  let streak = 0;
+  for (const h of sorted) {
+    if (h.result === "win") streak++;
+    else break;
+  }
+  return streak;
+}
+
 // ── タブ①: 対戦カード文脈ドラフト ──
-function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
+function MatchupTab({
+  fighters,
+  fighterRecords,
+  rankingsByDivision,
+}: {
+  fighters: DraftFighterOption[];
+  fighterRecords: FighterRecordsFile;
+  rankingsByDivision: Record<string, DivisionRankings | null>;
+}) {
   const [slugA, setSlugA] = useState("");
   const [slugB, setSlugB] = useState("");
   const [eventName, setEventName] = useState("");
@@ -200,11 +223,48 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
     const a = fighters.find((f) => f.slug === slugA);
     const b = fighters.find((f) => f.slug === slugB);
     if (!a || !b) return;
+
+    // データフック(zero-fabrication): 自DBから実際に解決できた場合のみ渡す。
+    // 優先順位・整形はbuildMatchupContextPost側が担う(ここでは候補算出のみ)。
+    const entryA = fighterRecords[a.slug];
+    const entryB = fighterRecords[b.slug];
+
+    // ①同一階級(公開ランキング対象)で両者ともランクインしていれば付与。
+    let rankHook: { labelA: string; labelB: string } | undefined;
+    const divA = mapToDivision(a.weightClass);
+    const divB = mapToDivision(b.weightClass);
+    if (divA && divA === divB) {
+      const data = rankingsByDivision[divA] ?? null;
+      const labelA = findRankLabelInDivision(data, a.slug);
+      const labelB = findRankLabelInDivision(data, b.slug);
+      if (labelA && labelB) rankHook = { labelA, labelB };
+    }
+
+    // ②どちらかが3連勝以上なら付与(両方該当時は連勝数が長い方を採用)。
+    let streakHook: { name: string; count: number } | undefined;
+    if (entryA && entryB) {
+      const streakA = computeWinStreak(entryA.history);
+      const streakB = computeWinStreak(entryB.history);
+      if (streakA >= 3 || streakB >= 3) {
+        streakHook = streakA >= streakB ? { name: a.nameJa, count: streakA } : { name: b.nameJa, count: streakB };
+      }
+    }
+
+    // ③共通の対戦相手(/vsの計算ロジックをそのまま流用)。
+    let commonOpponentsHook: { names: string[] } | undefined;
+    if (entryA && entryB) {
+      const names = Array.from(new Set(computeCommonOpponents(entryA, entryB).map((c) => c.name)));
+      if (names.length > 0) commonOpponentsHook = { names };
+    }
+
     const post = buildMatchupContextPost({
       fighterA: { nameJa: a.nameJa, slug: a.slug, wins: a.wins, losses: a.losses, ko: a.ko, sub: a.sub },
       fighterB: { nameJa: b.nameJa, slug: b.slug, wins: b.wins, losses: b.losses, ko: b.ko, sub: b.sub },
       eventName: eventName.trim() || undefined,
       weightClass: weightClass || undefined,
+      rankHook,
+      streakHook,
+      commonOpponentsHook,
     });
     // 2026-07-20〜: 画像は直貼りせず、本文末尾の/vs URLをXのOGPアンフルで
     // 出す(/dreamと同方式)。プレビューも実際にアンフルされるのと同じ公開
@@ -822,11 +882,13 @@ export default function DraftsTool({
   changes,
   events,
   fighterRecords,
+  rankingsByDivision,
 }: {
   fighters: DraftFighterOption[];
   changes: RankChange[];
   events: ArticleEventOption[];
   fighterRecords: FighterRecordsFile;
+  rankingsByDivision: Record<string, DivisionRankings | null>;
 }) {
   const [tab, setTab] = useState<"matchup" | "ranking" | "article" | "vscompare">("matchup");
 
@@ -854,7 +916,9 @@ export default function DraftsTool({
           ④対戦カード比較ビジュアル
         </button>
       </div>
-      {tab === "matchup" && <MatchupTab fighters={fighters} />}
+      {tab === "matchup" && (
+        <MatchupTab fighters={fighters} fighterRecords={fighterRecords} rankingsByDivision={rankingsByDivision} />
+      )}
       {tab === "ranking" && <RankingTab changes={changes} />}
       {tab === "article" && <ArticleGenTab fighters={fighters} events={events} fighterRecords={fighterRecords} />}
       {tab === "vscompare" && <VsCompareTab fighters={fighters} events={events} fighterRecords={fighterRecords} />}
