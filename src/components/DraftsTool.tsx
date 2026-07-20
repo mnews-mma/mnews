@@ -6,6 +6,7 @@ import { ogImagePath } from "@/lib/ogShared";
 import { SITE_URL } from "@/lib/seo";
 import { rankChangeText, type RankChange } from "@/lib/rankingDiff";
 import { buildMatchupContextPost } from "@/lib/xPost";
+import { normalizeVsSlugs } from "@/lib/vsPairing";
 import { WEIGHT_KG, weightSortKey } from "@/lib/weightClasses";
 import { computeFighterStripStats, computeWinMethodBreakdown, LAST5_SYMBOL } from "@/lib/fighterStrip";
 import {
@@ -191,7 +192,7 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
   const [eventName, setEventName] = useState("");
   const [weightPreset, setWeightPreset] = useState("");
   const [weightCustom, setWeightCustom] = useState("");
-  const [draft, setDraft] = useState<{ text: string; imageUrl?: string; replyText?: string } | null>(null);
+  const [draft, setDraft] = useState<{ text: string; imageUrl?: string } | null>(null);
 
   const weightClass = (weightPreset === CUSTOM_WEIGHT ? weightCustom : weightPreset).trim();
 
@@ -205,19 +206,15 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
       eventName: eventName.trim() || undefined,
       weightClass: weightClass || undefined,
     });
-    // 大会名/階級ラベル(自由入力)を画像に反映するには、公開・非認証の
-    // /api/og/vs ではなく管理画面限定の/api/og/vs-compareを使う(こちらは
-    // クエリの任意文字列を受け付けない設計にした。第三者が実在選手の公式風
-    // 偽カード画像を作れる穴になるため)。プレビュー画像も従来と近い横長
-    // 16:9で見えるようratio=16:9を指定する。
-    const imgQuery = new URLSearchParams();
-    if (eventName.trim()) imgQuery.set("ev", eventName.trim());
-    if (weightClass) imgQuery.set("wc", weightClass);
-    imgQuery.set("ratio", "16:9");
+    // 2026-07-20〜: 画像は直貼りせず、本文末尾の/vs URLをXのOGPアンフルで
+    // 出す(/dreamと同方式)。プレビューも実際にアンフルされるのと同じ公開
+    // /api/og/vs(スラッグ辞書順)を使う。大会名/階級ラベル(自由入力)は
+    // /api/og/vsが受け付けない(公開・非認証ルートのため任意文字列を拒否する
+    // 設計、route.tsx側のコメント参照)ため画像には反映されない。
+    const norm = normalizeVsSlugs(a.slug, b.slug);
     setDraft({
       text: post.text,
-      imageUrl: ogImagePath(`/api/og/vs-compare/${a.slug}/${b.slug}?${imgQuery.toString()}`),
-      replyText: post.replyText,
+      imageUrl: ogImagePath(`/api/og/vs/${norm.a}/${norm.b}`),
     });
   }
 
@@ -268,7 +265,7 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
       <button onClick={generate} disabled={!slugA || !slugB} style={{ ...chip, marginBottom: 16, opacity: !slugA || !slugB ? 0.5 : 1 }}>
         ドラフト生成
       </button>
-      {draft && <DraftCard text={draft.text} imageUrl={draft.imageUrl} replyText={draft.replyText} />}
+      {draft && <DraftCard text={draft.text} imageUrl={draft.imageUrl} />}
     </div>
   );
 }

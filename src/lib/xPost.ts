@@ -26,7 +26,7 @@ export interface XPostConfig {
     digest: LinkPlacement; // 朝のまとめ: リプライにリンク
     countdown: LinkPlacement; // 大会前日: リプライにリンク
     result: LinkPlacement; // 試合結果速報: 画像のみ
-    matchup: LinkPlacement; // 管理画面①対戦カード文脈: リプライにリンク
+    matchup: LinkPlacement; // 管理画面①対戦カード文脈: 単一ツイート本文末尾にリンク(2026-07-20〜、buildMatchupContextPost側で直接組み立てるため実際には未参照)
   };
   // 1日の自動ポスト上限(本文のみカウント、リプライは含まない)。
   // 枠が厳しい場合はここで絞り、優先度(速報>カウントダウン>キュレーション)で間引く
@@ -40,7 +40,7 @@ export const X_POST_CONFIG: XPostConfig = {
     digest: "reply",
     countdown: "reply",
     result: "none",
-    matchup: "reply",
+    matchup: "inline",
   },
   dailyPostLimit: 8,
 };
@@ -364,8 +364,18 @@ export function buildWeighInPost(opts: {
 // 大手メディアが「対戦決定」と速報した直後に差し込む"参照"用。速報ではないため
 // 戦績データの多少のラグは許容(fighterRecords.jsonのバッチ結果をそのまま使う)。
 // nodata選手はタブ側の選択肢自体から除外する運用のため、wins/losses/ko/subは
-// 必須(オプショナルにしない)。フィニッシュ率＝(KO+一本)÷勝利数×100
-// (calcFighterRatesと同じ式。分母は総試合数ではなく勝利数)。
+// 必須(オプショナルにしない)。
+//
+// 2026-07-20リフォーマット: 単一ツイート化(セルフリプライ廃止)。カードは
+// 本文末尾の/vs URLをX側のOGPアンフルで出す(画像直貼りはしない、/dreamと
+// 同方式)。戦績詳細2行はカード画像に全部載っていて本文では冗長なため削除。
+// 🟥/🟦の並びは/vs側の正規化(normalizeVsSlugs、スラッグ辞書順)に必ず合わせる
+// ことで、本文の赤青とアンフルされる/vsカードの赤青を常に一致させる
+// (以前は呼び出し側が選んだA/B順のまま出しており、辞書順と逆になる組み合わせで
+// 本文とカードの赤青が食い違うケースがあった)。この結果、コーナー(赤/青)の
+// 選択は本文側では表現できなくなる(=/vsが「1ペア1カード・コーナー中立」で
+// 設計されている以上、そもそも本文側だけ選べても実カードには反映できない
+// ため、割り切って正直に辞書順で見せる)。
 // ─────────────────────────────────────────────
 export interface MatchupFighterInput {
   nameJa: string;
@@ -376,26 +386,31 @@ export interface MatchupFighterInput {
   sub: number; // 一本
 }
 
-function finishRatePercent(f: MatchupFighterInput): number | null {
-  return f.wins > 0 ? Math.round(((f.ko + f.sub) / f.wins) * 100) : null;
-}
-
 export function buildMatchupContextPost(opts: {
   fighterA: MatchupFighterInput;
   fighterB: MatchupFighterInput;
   eventName?: string;
   weightClass?: string;
 }): BuiltPost {
-  const evPart = opts.eventName ? `（${opts.eventName}）` : "";
-  const wcPart = opts.weightClass ? `/${opts.weightClass}` : "";
-  const title = `【対戦決定】${opts.fighterA.nameJa} vs ${opts.fighterB.nameJa}${evPart}${wcPart}`;
-  const line = (f: MatchupFighterInput) => {
-    const fr = finishRatePercent(f);
-    const frLabel = fr !== null ? `${fr}%` : "—";
-    return `・${f.nameJa}：戦績${f.wins}勝${f.losses}敗（KO${f.ko}、一本${f.sub}、フィニッシュ率${frLabel}）`;
-  };
-  const body = [title, line(opts.fighterA), line(opts.fighterB)].join("\n");
   const norm = normalizeVsSlugs(opts.fighterA.slug, opts.fighterB.slug);
+  const redFighter = norm.wasSwapped ? opts.fighterB : opts.fighterA;
+  const blueFighter = norm.wasSwapped ? opts.fighterA : opts.fighterB;
   const vsUrl = `${SITE_LINK}/vs/${norm.a}/${norm.b}`;
-  return applyLinkPlacement(body, "", vsUrl, X_POST_CONFIG.linkPlacement.matchup, "対戦カード比較はこちら👇");
+
+  const lines: string[] = [];
+  const ev = opts.eventName?.trim();
+  lines.push(ev ? `【対戦決定】#${ev.replace(/[\s　]/g, "")}` : "【対戦決定】");
+  lines.push("");
+  lines.push(`🟥 ${redFighter.nameJa}`);
+  lines.push("―――🆚―――");
+  lines.push(`🟦 ${blueFighter.nameJa}`);
+  const wc = opts.weightClass?.trim();
+  if (wc) {
+    lines.push("");
+    lines.push(`⚖️ ${wc}`);
+  }
+  lines.push("");
+  lines.push(vsUrl);
+
+  return { text: lines.join("\n"), method: "inline" };
 }
