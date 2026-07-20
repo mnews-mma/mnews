@@ -26,7 +26,8 @@ jobs:
         run: npm ci
 
       - name: Log trigger (fired, not silently skipped)
-        run: echo "warm-routes fired: deployment=${{ github.event.deployment.id }} sha=${{ github.event.deployment.sha }} environment=${{ github.event.deployment_status.environment }}"
+        run: |
+          echo "warm-routes fired - deployment=${{ github.event.deployment.id }} sha=${{ github.event.deployment.sha }} environment=${{ github.event.deployment_status.environment }}"
 
       - name: Warm production routes (best-effort)
         run: npx tsx scripts/warm-routes.ts
