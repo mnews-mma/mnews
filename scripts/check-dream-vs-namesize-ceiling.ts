@@ -9,6 +9,7 @@
 // 変更し、公開/api/og/vs側はCEILING_OGを唯一のソースとして使うようにした。
 // このスクリプトは、その不変条件が将来のリファクタで壊れないことを継続検査する。
 import { sharedNameFit, CEILING_OG, type NameZone } from "../src/lib/og/vsCardBlocks";
+import { fighterNameSize, CEILING_WEB } from "../src/lib/vsMath";
 import fs from "fs";
 import path from "path";
 
@@ -71,6 +72,37 @@ function main() {
     violations.push(
       `CEILING_OG(${CEILING_OG})が長い名前の自然なサイズ(最大${maxLongestNatural})より大きすぎます。短い名前が長い名前より極端に大きく表示される不揃いが再発する可能性があります(天井は長い名前のサイズに近い値にしてください)。`
     );
+  }
+
+  // (f) Web側(/dream・/vsのオンページカード、fighterNameSize)も同じ2条件を
+  //     満たすこと: 天井(CEILING_WEB)を超えない・カード内2名は同一サイズ
+  //     (MatchupTape.tsx側でMath.minを取って1つのsharedNameSize変数を両名に
+  //     使う実装のため、ここではfighterNameSize単体の天井超過が無いことのみ
+  //     確認すれば十分。2名同一サイズの保証は(g)のソース検査で担保する)。
+  for (const name of [...SHORT_NAMES, ...LONG_NAMES]) {
+    const size = fighterNameSize(name);
+    if (size > CEILING_WEB) {
+      violations.push(`fighterNameSize("${name}")がCEILING_WEB(${CEILING_WEB})を超えています: ${size}`);
+    }
+  }
+
+  // (g) MatchupTape.tsxが左右で別々のfontSizeを計算していないか(sharedNameSize
+  //     という単一変数を両方のFighterNameTextに渡しているか)を正規表現で検査する。
+  {
+    const rel = "src/components/matchup/MatchupTape.tsx";
+    const file = path.join(process.cwd(), rel);
+    if (!fs.existsSync(file)) {
+      violations.push(`${rel}: ファイルが見つかりません(対象ファイル名が変わった場合はこのスクリプトも更新してください)`);
+    } else {
+      const content = fs.readFileSync(file, "utf8");
+      const fontSizeProps = content.match(/fontSize=\{[^}]*\}/g) ?? [];
+      const nonSharedUsage = fontSizeProps.filter((m) => m.includes("fighterNameSize(") && !m.includes("nameSizeOverride"));
+      if (nonSharedUsage.length > 0) {
+        violations.push(
+          `${rel}: FighterNameTextへのfontSizeが共有変数(sharedNameSize)を経由せずfighterNameSize()を直接呼んでいます: ${nonSharedUsage.join(", ")}`
+        );
+      }
+    }
   }
 
   // (e) sharedNameFitの呼び出し元(公開/vs・管理vs-compare)が、天井を
