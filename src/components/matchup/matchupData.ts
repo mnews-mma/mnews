@@ -43,3 +43,27 @@ export function buildTapeData(
     resultMark: opts?.resultMark,
   };
 }
+
+// 相手がDB未収録(デビュー戦などで戦績データが無い)側の表示データ。
+// 収録済みの側は buildTapeData で通常どおり戦績/勝率/フィニッシュ率/直近5戦を出し、
+// データの無いこちら側は戦績行に「データなし」を出す(勝率・フィニッシュ率はnull=
+// 「—」表示、直近5戦ドットは無し)。数値は一切生成しない(zero-fabrication)。
+// ※両者ともデータ無しのカードはこのビルダーを使わず、呼び出し側で名前のみの
+//   簡易表示に倒す(空の比較テープを出しても情報がないため)。
+export const NO_DATA_LABEL = "データなし";
+
+export function buildNoDataTapeData(
+  name: string,
+  slug: string | null | undefined,
+  opts?: { resultMark?: TapeFighterData["resultMark"] }
+): TapeFighterData {
+  return {
+    slug,
+    name,
+    record: NO_DATA_LABEL,
+    winRate: null,
+    finishRate: null,
+    last5: [],
+    resultMark: opts?.resultMark,
+  };
+}
