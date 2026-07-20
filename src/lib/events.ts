@@ -328,10 +328,10 @@ export const EVENTS: MEvent[] = [
     scheduleNote: "開場・開演時間は予定です（変更の可能性あり）",
     venue: "京セラドーム大阪",
     broadcast: ["未定（決定次第更新）"],
-    sourceUrl: "https://jp.rizinff.com/_ct/17834937",
+    sourceUrl: "https://jp.rizinff.com/_ct/17853585",
     // 2026-07-20 会見でカード決定(出典: RIZIN公式X @rizin_PR 投稿7本)。
-    // 最終FIGHT ORDER(試合順)は未発表のため、ダブルタイトルマッチ=メインとした暫定順。
-    // 公式が試合順を発表次第、並びを再調整すること。鈴木千裕は欠場(左脇腹肋軟骨骨折)。
+    // 2026-07-21 公式サイト(https://jp.rizinff.com/_ct/17853585)でFIGHT ORDER(試合順)確定を確認、並びを反映。
+    // 鈴木千裕は欠場(左脇腹肋軟骨骨折)。
     bouts: [
       {
         weightClass: "フェザー級（66.0kg）",
@@ -348,6 +348,12 @@ export const EVENTS: MEvent[] = [
         fighterB: "青木真也",
       },
       {
+        weightClass: "71.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "ホベルト・サトシ・ソウザ",
+        fighterB: "野村駿太",
+      },
+      {
         weightClass: "66.0kg契約",
         rule: "RIZIN MMAルール 5分3R",
         // コーナー修正: 公式X投稿の絵文字表記(🟥平本蓮/🟦ダウトベック)は誤りで、
@@ -356,12 +362,6 @@ export const EVENTS: MEvent[] = [
         // 画像側(他カードと一貫した表記)を正としてfighterA/Bを入れ替えた。
         fighterA: "カルシャガ・ダウトベック",
         fighterB: "平本蓮",
-      },
-      {
-        weightClass: "71.0kg契約",
-        rule: "RIZIN MMAルール 5分3R",
-        fighterA: "ホベルト・サトシ・ソウザ",
-        fighterB: "野村駿太",
       },
       {
         weightClass: "66.0kg契約",
@@ -376,16 +376,16 @@ export const EVENTS: MEvent[] = [
         fighterB: "高木凌",
       },
       {
-        weightClass: "59.0kg契約",
-        rule: "RIZIN MMAルール 5分3R",
-        fighterA: "冨澤大智",
-        fighterB: "ドンマイ川端",
-      },
-      {
         weightClass: "49.0kg契約",
         rule: "RIZIN MMAルール 5分3R",
         fighterA: "RENA",
         fighterB: "ナターシャ・クジュティナ",
+      },
+      {
+        weightClass: "59.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "冨澤大智",
+        fighterB: "ドンマイ川端",
       },
     ],
   },
