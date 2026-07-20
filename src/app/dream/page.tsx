@@ -6,6 +6,7 @@ import DreamPickerV2 from "@/components/DreamPickerV2";
 import VsCard from "@/components/matchup/VsCard";
 import XShareLink from "@/components/XShareLink";
 import { getFighter } from "@/lib/fighters";
+import { GLOBAL_FIGHTER_NAME_SIZE } from "@/lib/events";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
@@ -192,6 +193,7 @@ export default async function DreamPage({
                 dreamMode
                 eventName={eventName || undefined}
                 weightClass={weightClass || undefined}
+                nameSizeOverride={GLOBAL_FIGHTER_NAME_SIZE}
               />
               <div style={{ marginTop: 16, display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <XShareLink

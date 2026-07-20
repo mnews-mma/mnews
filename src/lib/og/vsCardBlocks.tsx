@@ -55,16 +55,14 @@ const LAST5_COLOR: Record<string, { bg: string; fg: string }> = {
 // 独立実装している(toUnits()参照)。呼び出し側(各route.ts)がカード幅に応じた
 // NameZoneを渡す。
 //
-// 公開OGP(1200x630, /api/og/vs)の選手名フォントサイズ天井(2026-07-20)。
-// 天井が無いと、名前が短い選手ほど枠幅いっぱいまで拡大され、同じカードの
-// はずが対戦カードごとにサイズがバラバラに見える不具合が出る(例:
-// 「青木真也」が「ホベルト・サトシ・ソウザ」より遥かに大きく表示される)。
-// 現行デザインで長めの2語名(例:サトシ・ソウザ)が自然に収まるサイズ(63px)を
-// 天井にすることで、短い名前もそこで頭打ちになりカード間のサイズが揃う。
-// 呼び出し側でmaxFontを個別に指定させない(sharedNameFitのmaxSize引数で
-// 強制する)ことで、天井の値がカードごとに分岐する再発を防ぐ。
-export const CEILING_OG = 63;
-
+// 公開OGP(1200x630, /api/og/vs・/api/og/dream)の選手名フォントサイズ天井は
+// src/lib/events.ts の OG_DREAM_VS_CEILING を単一ソースとして使う
+// (2026-07-20、天井をここに固定値でベタ書きしていた版から変更。EVENTSの
+// 最長名から逆算する方式にしたことで、短名が長名より大きく見える不揃いだけ
+// でなく、天井以下の名前がカードごとに別サイズになる不揃いも解消し、
+// 全カード単一サイズに揃う)。呼び出し側でmaxFontを個別に指定させず、
+// sharedNameFitのmaxSize引数で天井を強制することで、値がカードごとに
+// 分岐する再発を防ぐ。
 export type NameZone = Omit<FitOpts, "maxFont">;
 
 export function sharedNameFit(nameA: string, nameB: string, zone: NameZone, maxSize: number) {

@@ -21,6 +21,7 @@ export default function VsCard({
   dreamMode,
   eventName,
   weightClass,
+  nameSizeOverride,
 }: {
   nameA: string;
   nameB: string;
@@ -35,6 +36,10 @@ export default function VsCard({
   dreamMode?: boolean;
   eventName?: string;
   weightClass?: string;
+  // 呼び出し側(/dream・/vs)が全カード共通のサイズを渡す場合に使う
+  // (events/[slug]/page.tsxのnameSizeOverrideと同じパターン、2026-07-20)。
+  // 未指定時は従来通りこのカード単体(左右)で決まるサイズになる。
+  nameSizeOverride?: number;
 }) {
   const headToHead = computeHeadToHead(entryA, nameB);
   const commons = computeCommonOpponents(entryA, entryB).slice(0, 8);
@@ -51,6 +56,7 @@ export default function VsCard({
         )}
         <MatchupTape
           compact
+          nameSizeOverride={nameSizeOverride}
           left={buildTapeData(nameA, slugA, entryA, { nickname: nicknameA, withLast5: true, withMethodCounts: true })}
           right={buildTapeData(nameB, slugB, entryB, { nickname: nicknameB, withLast5: true, withMethodCounts: true })}
         />
