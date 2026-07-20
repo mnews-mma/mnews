@@ -1,0 +1,34 @@
+name: Warm routes after production deploy
+
+# Vercelの本番デプロイがProductionエイリアスへ昇格・成功した直後にのみ発火する。
+# 昇格前やプレビューURLをウォームしても無意味なため、
+# deployment_status(environment=Production, state=success)をトリガーにする。
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  warm:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      (github.event.deployment_status.environment == 'Production' || github.event.deployment_status.environment == 'production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Log trigger (fired, not silently skipped)
+        run: echo "warm-routes fired: deployment=${{ github.event.deployment.id }} sha=${{ github.event.deployment.sha }} environment=${{ github.event.deployment_status.environment }}"
+
+      - name: Warm production routes (best-effort)
+        run: npx tsx scripts/warm-routes.ts
+        env:
+          WARM_BASE_URL: https://www.mnews.jp
