@@ -35,9 +35,6 @@ export interface Fighter {
   ufcSlug?: string;
   // 日本語版WikipediaのFight-cont戦績データを使う場合のページ名。
   wikiTitleJa?: string;
-  // ja-wiki記事の更新が止まっている(古い戦績のまま凍結)選手向け。true の場合、
-  // wikiTitleJa/既定タイトル推測を問わずja-wiki取得自体を行わず、英語版のみを使う。
-  noJaWiki?: boolean;
   // 通称（ニックネーム）を表示しない選手向けフラグ。
   noNickname?: boolean;
   // 通称を固定値で指定する場合に使う。設定時はUFC公式/Wikipediaからの
@@ -1326,13 +1323,7 @@ export const FIGHTERS: Fighter[] = [
   // 元Bellatorフェザー級王者。RIZIN登録戦はRIZIN.40(2022-12-31)ソウザ戦の判定勝ちのみ
   // (超RIZIN.2はブドウ球菌感染で欠場=不戦のためRIZIN戦績に含まれない)。
   // 通算戦績はja-Wikipedia記事から日次バッチが取得する前提でここでは0シード。
-  // ja-wiki(AJ・マッキー)は2024-02のコラード戦以降更新が止まっており(22-2で凍結)、
-  // そのまま使うと2026-06-27 PFL San Diego(サラマト・イスブラエフ戦・判定勝ち)以降の
-  // 更新が反映されない。noJaWiki:trueでja-wiki取得を止め、en-wiki(A. J. McKee)を
-  // 出典にする。出典: en.Wikipedia "A. J. McKee" MMA record + PFL公式/複数メディアの
-  // San Diego戦結果(2026-07-20確認)。RIZIN登録戦(recordFromResults由来のランキング
-  // 入力)はRIZIN.40(2022-12-31)ソウザ戦の判定勝ち1-0のみで、この変更では触らない。
-  { slug: "mckee-aj", nameJa: "AJ・マッキー", nameEn: "AJ McKee", org: "rizin", weightClass: "フェザー級", wins: 25, losses: 2, draws: 0, ko: 6, sub: 8, decision: 11, history: [], recordFromResults: true, noJaWiki: true, wikiTitleEn: "A. J. McKee", nickname: "ファンタスティックAJ" },
+  { slug: "mckee-aj", nameJa: "AJ・マッキー", nameEn: "AJ McKee", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "AJ・マッキー", nickname: "ファンタスティックAJ" },
 
   // --- 団体ランキング top-5 未照合ぶんのDB追加(2026-07) ---
   { slug: "shimizu-hiroto", nameJa: "清水博人", nameEn: "Hiroto Shimizu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
