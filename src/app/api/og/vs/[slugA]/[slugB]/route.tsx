@@ -28,7 +28,7 @@ function fallbackRedirect() {
 const NAME_ZONE: NameZone = { maxWidth: 460, maxHeight: 150, minFont: 30, maxLines: 2 };
 
 export async function GET(
-  _req: Request,
+  req: Request,
   { params }: { params: Promise<{ slugA: string; slugB: string }> }
 ) {
   try {
@@ -44,8 +44,16 @@ export async function GET(
     const recordsResult = await fetchFighterRecordsStrict();
     if (!recordsResult.ok) return fallbackRedirect();
 
-    const fighterA = mergeFighterRecord(seedA as Fighter, recordsResult.records);
-    const fighterB = mergeFighterRecord(seedB as Fighter, recordsResult.records);
+    const mergedA = mergeFighterRecord(seedA as Fighter, recordsResult.records);
+    const mergedB = mergeFighterRecord(seedB as Fighter, recordsResult.records);
+
+    // ?red={slug}: 赤コーナーを指定する(2026-07-20)。値がslugA/slugBの
+    // いずれとも一致しない場合(未指定・不正値含む)は無視し、従来通り
+    // slugAが赤のデフォルトを維持する(organic/SEO訪問への影響ゼロ)。
+    const redParam = new URL(req.url).searchParams.get("red");
+    const swapCorners = redParam === slugB;
+    const fighterA = swapCorners ? mergedB : mergedA;
+    const fighterB = swapCorners ? mergedA : mergedB;
 
     const { fitA, fitB } = sharedNameFit(fighterA.nameJa, fighterB.nameJa, NAME_ZONE, OG_DREAM_VS_CEILING);
     const statsA = fighterVsStats(fighterA);

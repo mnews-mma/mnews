@@ -369,13 +369,16 @@ export function buildWeighInPost(opts: {
 // 2026-07-20リフォーマット: 単一ツイート化(セルフリプライ廃止)。カードは
 // 本文末尾の/vs URLをX側のOGPアンフルで出す(画像直貼りはしない、/dreamと
 // 同方式)。戦績詳細2行はカード画像に全部載っていて本文では冗長なため削除。
-// 🟥/🟦の並びは/vs側の正規化(normalizeVsSlugs、スラッグ辞書順)に必ず合わせる
-// ことで、本文の赤青とアンフルされる/vsカードの赤青を常に一致させる
-// (以前は呼び出し側が選んだA/B順のまま出しており、辞書順と逆になる組み合わせで
-// 本文とカードの赤青が食い違うケースがあった)。この結果、コーナー(赤/青)の
-// 選択は本文側では表現できなくなる(=/vsが「1ペア1カード・コーナー中立」で
-// 設計されている以上、そもそも本文側だけ選べても実カードには反映できない
-// ため、割り切って正直に辞書順で見せる)。
+//
+// 2026-07-20追い変更: 当初は🟥/🟦の並びを/vsの辞書順正規化に無条件で
+// 合わせ、コーナー(赤/青)選択を本文側では表現不能にしていた(=「/vsが
+// 1ペア1カード・コーナー中立設計である以上、本文だけ選べても実カードに
+// 反映できない」ため)。/vs・/api/og/vsに?red={slug}(赤コーナー指定、
+// 未指定時は辞書順先がデフォルト)を追加したことでこの制約が外れたため、
+// 呼び出し側(opts.fighterA)が選んだ赤をそのまま尊重するよう戻した。
+// 選んだ赤が辞書順先(=デフォルト)と一致する場合は?red=を省略し
+// クリーンURLのまま(既存キャッシュ・organic訪問に影響なし)、逆の場合のみ
+// ?red={選んだ赤のslug}を付与して/vs側のカードを追従させる。
 // ─────────────────────────────────────────────
 export interface MatchupFighterInput {
   nameJa: string;
@@ -387,15 +390,16 @@ export interface MatchupFighterInput {
 }
 
 export function buildMatchupContextPost(opts: {
-  fighterA: MatchupFighterInput;
-  fighterB: MatchupFighterInput;
+  fighterA: MatchupFighterInput; // 管理画面で「赤」に置いた選手(タブ①のswapで入れ替え可能)
+  fighterB: MatchupFighterInput; // 「青」
   eventName?: string;
   weightClass?: string;
 }): BuiltPost {
-  const norm = normalizeVsSlugs(opts.fighterA.slug, opts.fighterB.slug);
-  const redFighter = norm.wasSwapped ? opts.fighterB : opts.fighterA;
-  const blueFighter = norm.wasSwapped ? opts.fighterA : opts.fighterB;
-  const vsUrl = `${SITE_LINK}/vs/${norm.a}/${norm.b}`;
+  const redFighter = opts.fighterA;
+  const blueFighter = opts.fighterB;
+  const norm = normalizeVsSlugs(redFighter.slug, blueFighter.slug);
+  const redParam = norm.a !== redFighter.slug ? `?red=${redFighter.slug}` : "";
+  const vsUrl = `${SITE_LINK}/vs/${norm.a}/${norm.b}${redParam}`;
 
   const lines: string[] = [];
   const ev = opts.eventName?.trim();

@@ -208,13 +208,15 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
     });
     // 2026-07-20〜: 画像は直貼りせず、本文末尾の/vs URLをXのOGPアンフルで
     // 出す(/dreamと同方式)。プレビューも実際にアンフルされるのと同じ公開
-    // /api/og/vs(スラッグ辞書順)を使う。大会名/階級ラベル(自由入力)は
-    // /api/og/vsが受け付けない(公開・非認証ルートのため任意文字列を拒否する
-    // 設計、route.tsx側のコメント参照)ため画像には反映されない。
+    // /api/og/vs(スラッグ辞書順+?red=、本文のURL組み立てと同じロジック)を
+    // 使う。大会名/階級ラベル(自由入力)は/api/og/vsが受け付けない
+    // (公開・非認証ルートのため任意文字列を拒否する設計、route.tsx側の
+    // コメント参照)ため画像には反映されない。
     const norm = normalizeVsSlugs(a.slug, b.slug);
+    const redParam = norm.a !== a.slug ? `?red=${a.slug}` : "";
     setDraft({
       text: post.text,
-      imageUrl: ogImagePath(`/api/og/vs/${norm.a}/${norm.b}`),
+      imageUrl: ogImagePath(`/api/og/vs/${norm.a}/${norm.b}${redParam}`),
     });
   }
 
