@@ -2098,7 +2098,7 @@ export const EVENT_RESULTS: EventResult[] = [
     ],
   },
   {
-    slug: "cho-rizin-4",
+    slug: "super-rizin-4",
     org: "rizin",
     eventName: "超RIZIN.4 真夏の喧嘩祭り",
     date: "2025-07-27",

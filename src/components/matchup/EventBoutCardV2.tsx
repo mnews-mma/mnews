@@ -6,7 +6,7 @@ import MatchupTape, { FighterNameText } from "./MatchupTape";
 import { fighterNameSize } from "@/lib/vsMath";
 import { CommonOpponentsToggle } from "./CommonOpponentsList";
 import HeadToHeadBanner from "./HeadToHeadBanner";
-import { buildTapeData, type TapeFighterData } from "./matchupData";
+import { buildTapeData, buildNoDataTapeData, type TapeFighterData } from "./matchupData";
 
 export interface EventBoutCardV2Props {
   nameA: string;
@@ -68,7 +68,16 @@ export default function EventBoutCardV2({
   isEventLive,
   nameSizeOverride,
 }: EventBoutCardV2Props) {
-  const bothRegistered = !!entryA && !!entryB && !entryA.noRecordData && !entryB.noRecordData;
+  // 選手ごとに戦績データの有無を独立して判定する。
+  // - 収録済みの側は他カードと同様に戦績/勝率/フィニッシュ率/直近5戦を出す。
+  // - 未収録の側(デビュー戦など)は「データなし」表示にする。
+  // 片方でもデータがあれば比較テープ(MatchupTape)を出し、両者とも無い場合のみ
+  // 名前だけの簡易表示に倒す。
+  const hasDataA = !!entryA && !entryA.noRecordData;
+  const hasDataB = !!entryB && !entryB.noRecordData;
+  const anyData = hasDataA || hasDataB;
+  // 直接対決(再戦バッジ)・共通対戦相手は両者の履歴が揃っている時のみ算出可能。
+  const bothRegistered = hasDataA && hasDataB;
   const headToHead = bothRegistered ? computeHeadToHead(entryA!, nameB) : [];
   const commons = bothRegistered ? computeCommonOpponents(entryA!, entryB!).slice(0, 8) : [];
   const isPendingLive = !cancelled && !result && !!isEventLive;
@@ -101,21 +110,30 @@ export default function EventBoutCardV2({
           )}
         </div>
       )}
-      {bothRegistered ? (
+      {anyData ? (
         <MatchupTape
-          left={buildTapeData(nameA, slugA, entryA!, { withLast5: true, resultMark: resultMarkFor(nameA, result) })}
-          right={buildTapeData(nameB, slugB, entryB!, { withLast5: true, resultMark: resultMarkFor(nameB, result) })}
+          left={
+            hasDataA
+              ? buildTapeData(nameA, slugA, entryA!, { withLast5: true, resultMark: resultMarkFor(nameA, result) })
+              : buildNoDataTapeData(nameA, slugA, { resultMark: resultMarkFor(nameA, result) })
+          }
+          right={
+            hasDataB
+              ? buildTapeData(nameB, slugB, entryB!, { withLast5: true, resultMark: resultMarkFor(nameB, result) })
+              : buildNoDataTapeData(nameB, slugB, { resultMark: resultMarkFor(nameB, result) })
+          }
           nameSizeOverride={nameSizeOverride}
         />
       ) : (
         <div className={styles.tape}>
-          {/* 未登録選手のミニマル表示も登録済みカード(MatchupTape)と同じ
+          {/* 両者ともDB未収録(戦績データ無し)の場合のみ、名前だけの簡易表示に
+              倒す。片方でもデータがあればこの分岐には来ず、上のMatchupTape側で
+              「データあり=通常表示 / データなし=データなし表示」を出す。
+              未登録選手のミニマル表示も登録済みカード(MatchupTape)と同じ
               名前描画・サイズ規則に揃える。ページ単位のnameSizeOverrideが
               渡されている場合は必ずそれを使い、このカード単体で独自に
               サイズを決め直さない(戦績なし簡易カードだけ他カードよりサイズが
-              大きくなるバグの原因だったため)。
-              片方の選手のみDB収録の場合でも、収録済みの側は個別にリンクする
-              (bothRegisteredで両側リンクの可否を一括判定しない)。 */}
+              大きくなるバグの原因だったため)。 */}
           <div className={`${styles.na} ${styles.cornerRed}`}>
             {slugA ? (
               <a href={`/fighters/${slugA}`}>

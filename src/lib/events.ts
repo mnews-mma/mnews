@@ -318,7 +318,7 @@ export const EVENTS: MEvent[] = [
     ],
   },
   {
-    slug: "cho-rizin-5",
+    slug: "super-rizin-5",
     org: "rizin",
     status: "upcoming",
     eventName: "超RIZIN.5 浪速の超復活祭り",
