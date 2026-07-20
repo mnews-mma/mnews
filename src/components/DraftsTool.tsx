@@ -88,6 +88,34 @@ function DraftCard({ text, imageUrl, replyText }: { text: string; imageUrl?: str
   );
 }
 
+// AとBの選手slugを入れ替えるボタン。赤/青コーナーは正規のa/b順そのもので
+// 一元管理されており(表示専用の反転フラグは持たない)、a↔bを入れ替えれば
+// カード画像・投稿文のコーナー表示が全面で一緒に反転する(2026-07-20)。
+function SwapCornersButton({ onSwap, disabled }: { onSwap: () => void; disabled: boolean }) {
+  return (
+    <button
+      type="button"
+      onClick={onSwap}
+      disabled={disabled}
+      title="AとBを入れ替え"
+      aria-label="AとBを入れ替え"
+      style={{
+        alignSelf: "flex-end",
+        marginBottom: 8,
+        padding: "8px 12px",
+        fontSize: 16,
+        background: "none",
+        border: "1px solid var(--border)",
+        borderRadius: 6,
+        cursor: disabled ? "default" : "pointer",
+        opacity: disabled ? 0.4 : 1,
+      }}
+    >
+      ⇄
+    </button>
+  );
+}
+
 // フリーワード検索付きの選手セレクタ(既存/tools/fighter-cardと同じパターンを再利用)。
 // nodata選手(戦績データ無し)はfighters配列に含めない運用(呼び出し側で除外済み)。
 function FighterPicker({
@@ -109,13 +137,19 @@ function FighterPicker({
     () => Array.from(new Set(fighters.map((f) => f.weightClass))).sort((a, b) => weightSortKey(a) - weightSortKey(b)),
     [fighters]
   );
-  const filtered = useMemo(
-    () =>
-      fighters.filter(
-        (f) => (!filter.trim() || f.nameJa.includes(filter.trim())) && (!classFilter || f.weightClass === classFilter)
-      ),
-    [fighters, filter, classFilter]
-  );
+  const filtered = useMemo(() => {
+    const base = fighters.filter(
+      (f) => (!filter.trim() || f.nameJa.includes(filter.trim())) && (!classFilter || f.weightClass === classFilter)
+    );
+    // 選択中のslugが絞り込みで消えても<select>から見失わないよう、常に
+    // 先頭へ含める(⇄で入れ替えた直後、旧フィルタのままだと新しい選手が
+    // 一覧から消えて選択内容が空欄化してしまうのを防ぐ)。
+    if (value && !base.some((f) => f.slug === value)) {
+      const selected = fighters.find((f) => f.slug === value);
+      if (selected) return [selected, ...base];
+    }
+    return base;
+  }, [fighters, filter, classFilter, value]);
   return (
     <div>
       <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>{label}</label>
@@ -191,6 +225,7 @@ function MatchupTab({ fighters }: { fighters: DraftFighterOption[] }) {
     <div>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
         <FighterPicker label="選手A" fighters={fighters} value={slugA} onChange={setSlugA} />
+        <SwapCornersButton onSwap={() => { setSlugA(slugB); setSlugB(slugA); }} disabled={!slugA && !slugB} />
         <FighterPicker label="選手B" fighters={fighters} value={slugB} onChange={setSlugB} />
         <div>
           <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>大会名(任意)</label>
@@ -716,6 +751,7 @@ function VsCompareTab({
       {mode === "manual" && (
         <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
           <FighterPicker label="選手A" fighters={fighters} value={manualA} onChange={setManualA} />
+          <SwapCornersButton onSwap={() => { setManualA(manualB); setManualB(manualA); }} disabled={!manualA && !manualB} />
           <FighterPicker label="選手B" fighters={fighters} value={manualB} onChange={setManualB} />
         </div>
       )}
