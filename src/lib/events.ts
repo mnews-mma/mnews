@@ -350,8 +350,12 @@ export const EVENTS: MEvent[] = [
       {
         weightClass: "66.0kg契約",
         rule: "RIZIN MMAルール 5分3R",
-        fighterA: "平本蓮",
-        fighterB: "カルシャガ・ダウトベック",
+        // コーナー修正: 公式X投稿の絵文字表記(🟥平本蓮/🟦ダウトベック)は誤りで、
+        // 同投稿添付の対戦カード画像(他6カードと同じ「左=赤」レイアウト。
+        // KARSHYGA DAUTBEK ✕ REN HIRAMOTOでダウトベックが左)と矛盾していたため、
+        // 画像側(他カードと一貫した表記)を正としてfighterA/Bを入れ替えた。
+        fighterA: "カルシャガ・ダウトベック",
+        fighterB: "平本蓮",
       },
       {
         weightClass: "71.0kg契約",
