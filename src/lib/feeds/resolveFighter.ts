@@ -36,11 +36,13 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // 補完する(取れなければ no data)。
   // ja/en とも国内勢(recordFromResults)は既定タイトル(ja=nameJaスペース除去 / en=nameEn)で引き、
   // 同名別人は下の overlap ガードで弾く。ja→enの順で生涯戦績を補完(取れなければ no data)。
-  const jaTitle = fighter.wikiTitleJa ?? fighter.nameJa.replace(/\s/g, "");
+  // noJaWiki: ja-wiki記事の更新が凍結(古い戦績のまま)と判明している選手向け。
+  // wikiTitleJa/既定タイトル推測を問わずja-wiki取得自体を止め、en-wikiのみ使う。
+  const jaTitle = fighter.noJaWiki ? null : (fighter.wikiTitleJa ?? fighter.nameJa.replace(/\s/g, ""));
   const enTitle = fighter.wikiTitleEn ?? (fighter.recordFromResults ? fighter.nameEn : null);
   const [enWikiRaw, jaWikiRaw] = await Promise.all([
     enTitle ? fetchWikiFighterRecord(enTitle).catch(() => null) : null,
-    fetchJaWikiFighterRecord(jaTitle).catch(() => null),
+    jaTitle ? fetchJaWikiFighterRecord(jaTitle).catch(() => null) : null,
   ]);
 
   // 同名別人ガード(Dodson型のタイトル違い・同名別人対策): 既定タイトルを推測した
