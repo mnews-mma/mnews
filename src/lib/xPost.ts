@@ -379,20 +379,30 @@ export function buildWeighInPost(opts: {
 // を付与して/vs側のカードを追従させる(この?red=ロジック自体は本改訂でも
 // 不変)。
 //
-// 2026-07-20追い変更(2回目・本文ブラッシュアップ): 🟥/🟦・区切り線・複数行の
-// コーナー装飾を撤去し、ヘッダー1行(【対戦決定】A vs B（階級）)に戻した。
-// 本文からコーナー表現そのものが消えるため、本文とカードの色不一致問題は
-// 構造ごと解消する(カードの赤/青は引き続き?red=が制御し、swapの役割は
-// 不変)。代わりに、カード画像に載っていないmnews独自の付加価値データを
-// 「フック行」として最大1行だけ添える(優先順: ①同一階級の両者AIランク
-// ②3連勝以上 ③共通の対戦相手。いずれも呼び出し側が事前に解決した値のみを
-// 受け取り、xPost.ts側でデータ取得は一切行わない=zero-fabrication)。
+// 2026-07-20追い変更(2回目・本文ブラッシュアップ→3回目・最終形で置き換え):
+// 2回目でmnews独自データを「フック行」として1行添える案(AIランク/連勝/
+// 共通対戦相手を優先順位で1つ選ぶ)を入れたが、3回目でスタッツ2行方式に
+// 置き換えた。AIランキングは別機能に温存し本文からは撤去。共通対戦相手は
+// フック行ではなくCTA文言の出し分け(あり/なしの2択)に用途を変更。
+//
+// 3回目(最終形)の構成:
+// - ヘッダー1行: 【対戦決定】A vs B（階級／大会名）。階級・大会名は任意、
+//   無い項目は詰める(両方無ければ（）ごと省略、片方だけなら区切り無し)。
+// - スタッツ2行: 選手ごとに「名前　戦績｜勝率X%｜フィニッシュ率Y%」。
+//   ％は整数(小数出さない)。戦績はカードと同形式(引き分け有りはW-L-D)。
+//   並びはA→B(swap選択順=ヘッダーと一致)。色(🟥🟦)は本文に出さない
+//   (カードの赤/青は引き続き?red=が担当、swapの役割は不変)。
+// - CTA: 共通の対戦相手が1名以上いれば「共通の対戦相手など詳細データで
+//   比較👇」、いなければ「詳細データで比較👇」(無いのに書かない=
+//   zero-fabrication)。
+// - 大会名ハッシュ(末尾1個のみ、選手名はタグ化しない)。
 // ─────────────────────────────────────────────
 export interface MatchupFighterInput {
   nameJa: string;
   slug: string;
   wins: number;
   losses: number;
+  draws: number;
   ko: number;
   sub: number; // 一本
 }
@@ -416,22 +426,18 @@ function weightedTweetLength(text: string, url: string): number {
   return weightedCharLength(text.split(url).join(placeholder));
 }
 
-// 優先順①同一階級AIランク②3連勝以上③共通の対戦相手。該当なければ行ごと
-// 省略(埋め草禁止)。各フック候補はopts側で事前に解決済みの値のみを受け取り、
-// ここでは優先順位判定とフォーマットのみ行う。
-function pickHookLine(opts: {
-  rankHook?: { labelA: string; labelB: string };
-  streakHook?: { name: string; count: number };
-  commonOpponentsHook?: { names: string[] };
-}): string | undefined {
-  if (opts.rankHook) return `📊 AIランク: ${opts.rankHook.labelA} vs ${opts.rankHook.labelB}`;
-  if (opts.streakHook && opts.streakHook.count >= 3) return `🔥 ${opts.streakHook.name} ${opts.streakHook.count}連勝中`;
-  if (opts.commonOpponentsHook && opts.commonOpponentsHook.names.length > 0) {
-    const { names } = opts.commonOpponentsHook;
-    const label = names.length === 1 ? names[0] : `${names.length}人`;
-    return `🤝 共通の対戦相手: ${label}`;
-  }
-  return undefined;
+// 戦績表示(カードと同形式): 引き分けが1以上あればW-L-D、無ければW-L。
+function formatRecord(f: MatchupFighterInput): string {
+  return f.draws > 0 ? `${f.wins}-${f.losses}-${f.draws}` : `${f.wins}-${f.losses}`;
+}
+// 勝率=勝/(勝+敗)。分母0(未勝負)はnull(捏造しない、呼び出し側は「—」)。
+function winRatePercent(f: MatchupFighterInput): number | null {
+  const denom = f.wins + f.losses;
+  return denom > 0 ? Math.round((f.wins / denom) * 100) : null;
+}
+// フィニッシュ率=(KO+一本)/勝利数。勝利0はnull。
+function finishRatePercent(f: MatchupFighterInput): number | null {
+  return f.wins > 0 ? Math.round(((f.ko + f.sub) / f.wins) * 100) : null;
 }
 
 export function buildMatchupContextPost(opts: {
@@ -439,11 +445,9 @@ export function buildMatchupContextPost(opts: {
   fighterB: MatchupFighterInput; // 「青」
   eventName?: string;
   weightClass?: string;
-  // データフック候補(zero-fabrication: 呼び出し側が実データから事前に
-  // 解決できた場合のみ渡す。憶測・埋め草は渡さない)。
-  rankHook?: { labelA: string; labelB: string };
-  streakHook?: { name: string; count: number };
-  commonOpponentsHook?: { names: string[] };
+  // 共通の対戦相手が1名以上いるか(zero-fabrication: 呼び出し側がcomputeCommonOpponents
+  // 等で実データから事前判定した値のみを渡す)。CTA文言の出し分けにのみ使う。
+  hasCommonOpponents?: boolean;
 }): BuiltPost {
   const redFighter = opts.fighterA;
   const blueFighter = opts.fighterB;
@@ -451,23 +455,38 @@ export function buildMatchupContextPost(opts: {
   const redParam = norm.a !== redFighter.slug ? `?red=${redFighter.slug}` : "";
   const vsUrl = `${SITE_LINK}/vs/${norm.a}/${norm.b}${redParam}`;
 
-  const hookLine = pickHookLine(opts);
   const wc = opts.weightClass?.trim();
   const ev = opts.eventName?.trim();
   // Xのタグは`.`「・」空白の直後で切れるため、大会名から除去して正規化する
   // (例: 「超RIZIN.5」→「#超RIZIN5」)。
   const evTag = ev ? ev.replace(/[.\s　・]/g, "") : "";
+  const cta = opts.hasCommonOpponents ? "共通の対戦相手など詳細データで比較👇" : "詳細データで比較👇";
 
-  function assemble(includeHook: boolean, includeWeightClass: boolean): string {
-    const wcPart = includeWeightClass && wc ? `（${wc}）` : "";
-    const lines: string[] = [`【対戦決定】${redFighter.nameJa} vs ${blueFighter.nameJa}${wcPart}`];
-    if (includeHook && hookLine) {
-      lines.push("");
-      lines.push(hookLine);
+  function statLine(f: MatchupFighterInput, includeFinishRate: boolean): string {
+    const wr = winRatePercent(f);
+    const wrPart = `｜勝率${wr !== null ? `${wr}%` : "—"}`;
+    let frPart = "";
+    if (includeFinishRate) {
+      const fr = finishRatePercent(f);
+      frPart = `｜フィニッシュ率${fr !== null ? `${fr}%` : "—"}`;
     }
-    lines.push("");
-    lines.push("詳細データで比較👇");
-    lines.push(vsUrl);
+    return `${f.nameJa}　${formatRecord(f)}${wrPart}${frPart}`;
+  }
+
+  function assemble(includeEventInHeader: boolean, includeWeightClassInHeader: boolean, includeFinishRate: boolean): string {
+    const metaParts: string[] = [];
+    if (includeWeightClassInHeader && wc) metaParts.push(wc);
+    if (includeEventInHeader && ev) metaParts.push(ev);
+    const metaPart = metaParts.length > 0 ? `（${metaParts.join("／")}）` : "";
+    const lines: string[] = [
+      `【対戦決定】${redFighter.nameJa} vs ${blueFighter.nameJa}${metaPart}`,
+      "",
+      statLine(redFighter, includeFinishRate),
+      statLine(blueFighter, includeFinishRate),
+      "",
+      cta,
+      vsUrl,
+    ];
     if (evTag) {
       lines.push("");
       lines.push(`#${evTag}`);
@@ -475,18 +494,24 @@ export function buildMatchupContextPost(opts: {
     return lines.join("\n");
   }
 
-  // 文字数ガード(X上限280、weighted): 超過時はフック行→⚖️階級の順に
-  // 自動で落とす。ヘッダー・選手名・URLは死守(この2つ以外は削らない)。
-  let includeHook = true;
-  let includeWeightClass = true;
-  let text = assemble(includeHook, includeWeightClass);
-  if (weightedTweetLength(text, vsUrl) > X_MAX_WEIGHT && includeHook) {
-    includeHook = false;
-    text = assemble(includeHook, includeWeightClass);
+  // 文字数ガード(X上限280、weighted): 超過時は大会名(ヘッダー)→階級(ヘッダー)
+  // →フィニッシュ率の順に自動で落とす。名前・戦績・勝率・URL・ハッシュは
+  // 死守(この3つ以外は削らない)。
+  let includeEventInHeader = true;
+  let includeWeightClassInHeader = true;
+  let includeFinishRate = true;
+  let text = assemble(includeEventInHeader, includeWeightClassInHeader, includeFinishRate);
+  if (weightedTweetLength(text, vsUrl) > X_MAX_WEIGHT && includeEventInHeader) {
+    includeEventInHeader = false;
+    text = assemble(includeEventInHeader, includeWeightClassInHeader, includeFinishRate);
   }
-  if (weightedTweetLength(text, vsUrl) > X_MAX_WEIGHT && includeWeightClass) {
-    includeWeightClass = false;
-    text = assemble(includeHook, includeWeightClass);
+  if (weightedTweetLength(text, vsUrl) > X_MAX_WEIGHT && includeWeightClassInHeader) {
+    includeWeightClassInHeader = false;
+    text = assemble(includeEventInHeader, includeWeightClassInHeader, includeFinishRate);
+  }
+  if (weightedTweetLength(text, vsUrl) > X_MAX_WEIGHT && includeFinishRate) {
+    includeFinishRate = false;
+    text = assemble(includeEventInHeader, includeWeightClassInHeader, includeFinishRate);
   }
 
   return { text, method: "inline" };
