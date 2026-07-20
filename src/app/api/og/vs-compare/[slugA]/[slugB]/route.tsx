@@ -18,7 +18,7 @@ import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, type Fighter } from "@/lib/fighters";
 import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterRecordsCache";
-import type { FitOpts } from "@/lib/og/fitName";
+import type { NameZone } from "@/lib/og/vsCardBlocks";
 import { computeCommonOpponents } from "@/lib/articleGenerator";
 import { SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
 import { VS_COLORS, CornerStrip, NameBlock, StatRow, MethodRow, FormDots, CardFooter, sharedNameFit, fighterVsStats } from "@/lib/og/vsCardBlocks";
@@ -83,8 +83,12 @@ export async function GET(
     const { width, height } = RATIOS[ratioKey] ?? RATIOS["4:5"];
     const maxCommonsRows = MAX_COMMONS_ROWS[ratioKey] ?? MAX_COMMONS_ROWS["4:5"];
 
-    const nameZone: FitOpts = { maxWidth: (width - 200) / 2, maxHeight: 110, maxFont: 56, minFont: 26, maxLines: 2 };
-    const { fitA, fitB } = sharedNameFit(fighterA.nameJa, fighterB.nameJa, nameZone);
+    // 管理画面限定ツールは公開/api/og/vsとは別に3アスペクト比(1:1/4:5/16:9)を
+    // 描画する狭い名前ゾーン(高さ110px)のため、公開側のCEILING_OG(63px)とは
+    // 独立の天井(56px)をこのルート専用で維持する(2026-07-20)。
+    const CEILING_VS_COMPARE = 56;
+    const nameZone: NameZone = { maxWidth: (width - 200) / 2, maxHeight: 110, minFont: 26, maxLines: 2 };
+    const { fitA, fitB } = sharedNameFit(fighterA.nameJa, fighterB.nameJa, nameZone, CEILING_VS_COMPARE);
 
     const statsA = fighterVsStats(fighterA);
     const statsB = fighterVsStats(fighterB);

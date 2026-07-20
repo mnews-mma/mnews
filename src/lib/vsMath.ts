@@ -10,7 +10,9 @@
 // 「長い側基準で両方縮小」になる。CSSの自動縮小(clamp/vw)はSatori非対応の
 // ため使わず、決定的計算で揃える。
 const NAME_LINE_BUDGET_PX = 105;
-const NAME_SIZE_MAX = 20;
+// Web幅(/dream・/vsのオンページカード)側の選手名フォントサイズ天井。
+// 単一定数で持ち、カード間で天井を必ず共有する(2026-07-20)。
+export const CEILING_WEB = 20;
 const NAME_SIZE_MIN = 11;
 
 export function fighterNameSize(name: string): number {
@@ -21,7 +23,7 @@ export function fighterNameSize(name: string): number {
     .flatMap((w) => w.split(/(?<=・)/));
   const lens = units.map((u) => [...u].length);
   const total = lens.reduce((a, b) => a + b, 0);
-  if (total === 0) return NAME_SIZE_MAX;
+  if (total === 0) return CEILING_WEB;
   // 2行以内に分割する全パターン(分割なし含む)のうち、最大行長が最小のもの
   let maxLine = total;
   let left = 0;
@@ -29,7 +31,7 @@ export function fighterNameSize(name: string): number {
     left += lens[i];
     maxLine = Math.min(maxLine, Math.max(left, total - left));
   }
-  return Math.min(NAME_SIZE_MAX, Math.max(NAME_SIZE_MIN, Math.floor(NAME_LINE_BUDGET_PX / maxLine)));
+  return Math.min(CEILING_WEB, Math.max(NAME_SIZE_MIN, Math.floor(NAME_LINE_BUDGET_PX / maxLine)));
 }
 
 export interface TugShare {
