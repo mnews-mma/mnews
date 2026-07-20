@@ -648,72 +648,7 @@ export const EVENTS: MEvent[] = [
       },
     ],
   },
-  {
-    slug: "shooto-2026-vol5",
-    org: "shooto",
-    status: "upcoming",
-    eventName: "PROFESSIONAL SHOOTO 2026 Vol.5",
-    date: "2026-07-20",
-    openTime: "17:00",
-    startTime: "17:30",
-    venue: "後楽園ホール",
-    sourceUrl: "https://www.shooto-mma.com/schedule/?id=254",
-    bouts: [
-      {
-        weightClass: "女子スーパーアトム級（50.0kg）",
-        fighterA: "渡辺彩華",
-        fighterB: "高本千代",
-        isTitleMatch: true,
-        note: "修斗世界女子スーパーアトム級タイトルマッチ 5分5R",
-      },
-      {
-        weightClass: "ミドル級（83.9kg）",
-        fighterA: "岩﨑大河",
-        fighterB: "荒井勇二",
-        note: "5分5R",
-      },
-      {
-        weightClass: "フライ級（56.7kg）",
-        fighterA: "関口祐冬",
-        fighterB: "中池武寛",
-      },
-      {
-        weightClass: "バンタム級（61.2kg）",
-        fighterA: "チョウ・スソン",
-        fighterB: "ジェイク・ムラタ",
-      },
-      {
-        weightClass: "女子アトム級（47.6kg）",
-        fighterA: "中村未来",
-        fighterB: "嶋屋澪",
-      },
-      {
-        weightClass: "バンタム級（61.2kg）",
-        fighterA: "武田勇輝",
-        fighterB: "上杉隼哉",
-      },
-      {
-        weightClass: "バンタム級（61.2kg）",
-        fighterA: "松下祐介",
-        fighterB: "伊集龍皇",
-      },
-      {
-        weightClass: "フェザー級（65.8kg）",
-        fighterA: "澤江優侍",
-        fighterB: "塩沼諒太",
-      },
-      {
-        weightClass: "バンタム級（61.2kg）",
-        fighterA: "人見礼王",
-        fighterB: "ライダーHIRO",
-      },
-      {
-        weightClass: "フェザー級（65.8kg）",
-        fighterA: "田中永遠",
-        fighterB: "加藤岡善",
-      },
-    ],
-  },
+  // PROFESSIONAL SHOOTO 2026 Vol.5(2026-07-20)は開催済み → EVENT_RESULTS(shooto-2026-vol5)へ移動。
 ];
 
 // 選手名フォントサイズを全イベントページ横断で統一するための共通値。
