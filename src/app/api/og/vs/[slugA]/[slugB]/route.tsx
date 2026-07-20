@@ -2,10 +2,10 @@ import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
 import { getFighter, type Fighter } from "@/lib/fighters";
 import { fetchFighterRecordsStrict, mergeFighterRecord } from "@/lib/fighterRecordsCache";
-import { findMatchupEvent } from "@/lib/events";
+import { findMatchupEvent, OG_DREAM_VS_CEILING } from "@/lib/events";
 import type { NameZone } from "@/lib/og/vsCardBlocks";
 import { SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
-import { VS_COLORS, CornerStrip, NameBlock, StatRow, MethodRow, FormDots, CardFooter, sharedNameFit, fighterVsStats, CEILING_OG } from "@/lib/og/vsCardBlocks";
+import { VS_COLORS, CornerStrip, NameBlock, StatRow, MethodRow, FormDots, CardFooter, sharedNameFit, fighterVsStats } from "@/lib/og/vsCardBlocks";
 
 export const runtime = "edge";
 
@@ -47,7 +47,7 @@ export async function GET(
     const fighterA = mergeFighterRecord(seedA as Fighter, recordsResult.records);
     const fighterB = mergeFighterRecord(seedB as Fighter, recordsResult.records);
 
-    const { fitA, fitB } = sharedNameFit(fighterA.nameJa, fighterB.nameJa, NAME_ZONE, CEILING_OG);
+    const { fitA, fitB } = sharedNameFit(fighterA.nameJa, fighterB.nameJa, NAME_ZONE, OG_DREAM_VS_CEILING);
     const statsA = fighterVsStats(fighterA);
     const statsB = fighterVsStats(fighterB);
 

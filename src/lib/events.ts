@@ -1,5 +1,6 @@
 import { SourceKey } from "./sources";
 import { fighterNameSize } from "./vsMath";
+import { fitName, type FitOpts } from "./og/fitName";
 
 export type EventStatus = "upcoming" | "live" | "completed";
 
@@ -677,6 +678,27 @@ export const GLOBAL_FIGHTER_NAME_SIZE = EVENTS.reduce((min, event) => {
     min
   );
 }, 20);
+
+// 夢のカード/VSカード(/dream・/vs)公開OGP(1200x630)の選手名フォントサイズを
+// 全カード横断で単一値に統一するための天井(2026-07-20)。GLOBAL_FIGHTER_NAME_SIZE
+// と同じ思想: 天井を固定値でベタ書きせず、EVENTS(全大会・全カード=/dream・/vsで
+// 実際に組まれ得る現実的な対戦の母集団)の中で最も長い名前がOGPキャンバスの
+// 名前ゾーン(NAME_ZONE、幅460×高さ150、最大2行)にちょうど収まるサイズを
+// 逆算し、それを全カード共通の天井として使う。将来選手が追加されてもこの値は
+// 自動的に追随する(ベタ書きの再チューニング不要)。天井を超えない名前は
+// すべてこのサイズで揃い、天井より長い名前(EVENTSに実例が無い極端なケース)
+// のみさらに縮む。
+// NAME_ZONEの寸法はsrc/app/api/og/vs・og/dream route.tsxのNAME_ZONEと同じ値を
+// ここで独立に持つ(events.ts側がOGPルートの実装詳細に依存しないようにするため。
+// 変更する場合は両方を揃えること)。
+const OG_DREAM_VS_ZONE: FitOpts = { maxWidth: 460, maxHeight: 150, maxFont: 999, minFont: 30, maxLines: 2 };
+export const OG_DREAM_VS_CEILING = EVENTS.reduce((min, event) => {
+  return event.bouts.reduce(
+    (m, b) =>
+      Math.min(m, fitName(b.fighterA, OG_DREAM_VS_ZONE).fontSize, fitName(b.fighterB, OG_DREAM_VS_ZONE).fontSize),
+    min
+  );
+}, 108);
 
 export function getEvent(slug: string): MEvent | undefined {
   return EVENTS.find((e) => e.slug === slug);
