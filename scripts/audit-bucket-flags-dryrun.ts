@@ -54,6 +54,77 @@ const OUT_DIR = path.join(process.cwd(), "out");
 type Category = "dropped" | "misbucketed" | "unclassifiable";
 type Status = "pending" | "elo-pending" | "data-conflict";
 
+// Gate2 §0条件3(2026-07-20、人間確認済み・resolution確定)。ここに載っている
+// エントリはconfirmed=trueとしてマークし、resolutionを確定値で上書きする。
+// 追加・変更は必ず実データ(fighterRecords.json/rizinRecords.json)で裏取り
+// した上で行う(zero-fabrication)。opponentSlugがnullのものはDB外の相手
+// (opponentLabelで照合)。
+interface ConfirmedResolution {
+  slug: string;
+  date: string;
+  opponentSlug: string | null;
+  resolution: string;
+  note: string;
+}
+
+const CONFIRMED_RESOLUTIONS: ConfirmedResolution[] = [
+  // elo-pending 7件: 既存FIGHTER_DIVISION_OVERLAYSのnoteで根拠確認済み
+  // (いずれも「前後の試合は現階級と一貫、対象の1戦のみ単発excursion」
+  // パターン)。Eloは未修正のため、boutDivisionへのリバケットをGate2の
+  // T5適用対象として確定する。
+  { slug: "akimoto-kyoma", date: "2024-09-29", opponentSlug: "kintaro", resolution: "バンタム級", note: "elo-pending(既存recordDisplayExclusions根拠確認済み)" },
+  { slug: "akimoto-kyoma", date: "2024-12-31", opponentSlug: "motoya-yuki", resolution: "バンタム級", note: "elo-pending(既存recordDisplayExclusions根拠確認済み)" },
+  { slug: "karamov-vugar", date: "2024-12-31", opponentSlug: "souza-roberto-satoshi", resolution: "ライト級", note: "elo-pending(既存recordDisplayExclusions根拠確認済み)" },
+  { slug: "miyagawa-hyuga", date: "2026-07-18", opponentSlug: "suzuki-hiroaki", resolution: "フェザー級", note: "elo-pending(既存recordDisplayExclusions根拠確認済み)" },
+  { slug: "ougikubo-hiromasa", date: "2023-07-30", opponentSlug: null, resolution: "バンタム級", note: "elo-pending(既存recordDisplayExclusions根拠確認済み、相手はDB外=フアン・アーチュレッタ)" },
+  { slug: "torres-jose", date: "2025-12-31", opponentSlug: "goto-joji", resolution: "バンタム級", note: "elo-pending(既存recordDisplayExclusions根拠確認済み)" },
+  { slug: "umeno-genji", date: "2026-07-18", opponentSlug: null, resolution: "フェザー級", note: "elo-pending(既存recordDisplayExclusions根拠確認済み、相手はDB外=昇侍、MMAルール確認済み)" },
+  // 元谷友貴の対バンタム級選手戦20件: 契約体重(59〜61.2kg)が一貫してバンタム
+  // 級域、スポット確認済み(2026-07-20)。
+  { slug: "motoya-yuki", date: "2016-12-29", opponentSlug: null, resolution: "バンタム級", note: "契約体重60kg" },
+  { slug: "motoya-yuki", date: "2018-08-12", opponentSlug: null, resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2018-12-31", opponentSlug: null, resolution: "バンタム級", note: "契約体重60kg" },
+  { slug: "motoya-yuki", date: "2019-07-28", opponentSlug: "ougikubo-hiromasa", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2019-12-31", opponentSlug: "patchy-mix", resolution: "バンタム級", note: "契約体重61.2kg" },
+  { slug: "motoya-yuki", date: "2020-08-10", opponentSlug: "uoi-fullswing", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2020-12-31", opponentSlug: "inoue-naoki", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2021-06-13", opponentSlug: null, resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2021-09-19", opponentSlug: "takizawa-kenta", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2021-12-31", opponentSlug: "kintaro", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2022-04-17", opponentSlug: null, resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2022-07-31", opponentSlug: "ota-shinobu", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2022-11-06", opponentSlug: null, resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2022-12-31", opponentSlug: null, resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2023-05-06", opponentSlug: "asakura-kai", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2023-12-31", opponentSlug: null, resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2024-09-29", opponentSlug: "ota-shinobu", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2024-12-31", opponentSlug: "akimoto-kyoma", resolution: "バンタム級", note: "バンタム級明示(akimoto-kyoma側と同一bout)" },
+  { slug: "motoya-yuki", date: "2025-03-30", opponentSlug: "inoue-naoki", resolution: "バンタム級", note: "契約体重61kg" },
+  { slug: "motoya-yuki", date: "2026-06-06", opponentSlug: "laramie-tony", resolution: "バンタム級", note: "契約体重59kg" },
+  // unclassifiable 9件: 72〜75kg契約(ウェルター〜ライトヘビー相当、現5階級
+  // システムの対象外域)。全件、直前・直後の試合が通常階級(主にライト級
+  // 71kg前後)と一貫することを個別確認済み(2026-07-20)。既存のケラモフ/
+  // トーレス/宮川と同種の単発excursionと判断し「対象外」で確定する。
+  { slug: "beinoa", date: "2021-11-20", opponentSlug: null, resolution: "対象外", note: "72kg契約、前後ライト級一貫" },
+  { slug: "beinoa", date: "2025-12-31", opponentSlug: null, resolution: "対象外", note: "73kg契約、前後ライト級一貫" },
+  { slug: "case-johnny", date: "2022-07-31", opponentSlug: "takeda-koji", resolution: "対象外", note: "72kg契約、前後ライト級一貫" },
+  { slug: "izumi-takeshi", date: "2022-04-16", opponentSlug: null, resolution: "対象外", note: "72kg契約、直後ライト級" },
+  { slug: "ohara-juri", date: "2021-11-20", opponentSlug: null, resolution: "対象外", note: "72kg契約、直後ライト級" },
+  { slug: "saiga-yanbo-tatsuya", date: "2025-12-31", opponentSlug: null, resolution: "対象外", note: "73kg契約、前後ライト級一貫" },
+  { slug: "takeda-koji", date: "2022-07-31", opponentSlug: "case-johnny", resolution: "対象外", note: "72kg契約、当時(2022年)前後ライト級一貫。現在の掲載階級(フェザー)への転向は後年" },
+  { slug: "usami-sho-patrick", date: "2022-10-23", opponentSlug: null, resolution: "対象外", note: "75kg契約、直後ライト級" },
+  { slug: "yachi-yusuke", date: "2017-12-31", opponentSlug: null, resolution: "対象外", note: "72kg契約、前後ライト級一貫" },
+];
+
+function findConfirmedResolution(slug: string, date: string, opponentSlug: string | null, opponentLabel: string): ConfirmedResolution | undefined {
+  return CONFIRMED_RESOLUTIONS.find(
+    (c) =>
+      c.slug === slug &&
+      c.date === date &&
+      (c.opponentSlug === opponentSlug || (c.opponentSlug === null && opponentSlug === null))
+  );
+}
+
 interface QueueEntry {
   slug: string;
   opponentSlug: string | null;
@@ -62,6 +133,7 @@ interface QueueEntry {
   event: string;
   weightClassRaw: string | null;
   result: string;
+  confirmed: boolean;
   currentDivision: MnewsDivision;
   boutDivision: MnewsDivision | null;
   category: Category;
@@ -188,6 +260,8 @@ function main() {
 
       const currentlyRanked = rankedSlugs.has(slug);
 
+      const confirmedEntry = findConfirmedResolution(slug, h.date, opponentSlug, h.opponent);
+
       if (!weightClassRaw) {
         queue.push({
           slug,
@@ -203,8 +277,9 @@ function main() {
           crossViewMismatch,
           status: "pending",
           currentlyRanked,
+          confirmed: !!confirmedEntry,
           sourceUrl: "",
-          resolution: "",
+          resolution: confirmedEntry ? `確定: ${confirmedEntry.resolution}(${confirmedEntry.note}、人間確認済み2026-07-20)` : "",
         });
         continue;
       }
@@ -213,10 +288,8 @@ function main() {
       if (boutDivision === null) {
         // §4-5トリアージ調査(2026-07-20)で判明: unclassifiableの大半は72〜75kg
         // 契約体重(ウェルター〜ライトヘビー相当、mapByKgが意図的にnullを返す
-        // 現5階級システムの対象外域)。人的確認の結果、該当9件はいずれも武田光司・
-        // コレスニックと同種の単発excursion(前後の試合は現階級と一致)だったため、
-        // ヒントとして機械提案を残す。ただし最終確定はresolution欄への人手記入で
-        // 行う(ここではpending・ヒントのみ、自動確定しない)。
+        // 現5階級システムの対象外域)。9件全件、直前・直後の試合が通常階級と
+        // 一貫することを個別確認済み(CONFIRMED_RESOLUTIONS参照)。
         const kgMatch = weightClassRaw.match(/(\d+(?:\.\d+)?)\s*kg/);
         const kg = kgMatch ? Number(kgMatch[1]) : null;
         const hint = kg !== null && kg > 71.5 && kg < 93.0
@@ -236,8 +309,9 @@ function main() {
           crossViewMismatch,
           status: "pending",
           currentlyRanked,
+          confirmed: !!confirmedEntry,
           sourceUrl: "",
-          resolution: hint,
+          resolution: confirmedEntry ? `確定: ${confirmedEntry.resolution}(${confirmedEntry.note}、人間確認済み2026-07-20)` : hint,
         });
         continue;
       }
@@ -250,11 +324,14 @@ function main() {
       // モードA: 現階級と不一致、または両視点不一致。
       const excludedInDisplay = getRecordDisplayExclusions(slug).some((e) => e.date === h.date && matchesExclusion(e.opponentSlug, opponentSlug, h.opponent));
       const status: Status = crossViewMismatch ? "data-conflict" : excludedInDisplay ? "elo-pending" : "pending";
-      // §5: data-conflictは機械提案しない(正解が決まらない)。それ以外のmisbucketedは
-      // bout単位weightClassから読み取れる階級を提案値として付与する(Gate2のバッチ適用候補)。
+      // §5: data-conflictは機械提案しない(正解が決まらない)。人間確認済み(confirmed)
+      // ならCONFIRMED_RESOLUTIONSの確定値、それ以外のmisbucketedはbout単位
+      // weightClassから読み取れる階級を提案値として付与する(Gate2のバッチ適用候補)。
       const resolution =
         status === "data-conflict"
           ? ""
+          : confirmedEntry
+          ? `確定: ${confirmedEntry.resolution}(${confirmedEntry.note}、人間確認済み2026-07-20)`
           : excludedInDisplay
           ? `提案: ${boutDivision}(表示戦績のみrecordDisplayExclusionsで除外済み・Eloは未修正・Gate2のElo是正対象)`
           : `提案: ${boutDivision}`;
@@ -272,6 +349,7 @@ function main() {
         crossViewMismatch,
         status,
         currentlyRanked,
+        confirmed: !!confirmedEntry,
         sourceUrl: "",
         resolution,
       });
@@ -327,6 +405,7 @@ function main() {
     "crossViewMismatch",
     "status",
     "currentlyRanked",
+    "confirmed",
     "sourceUrl",
     "resolution",
   ];
@@ -345,6 +424,7 @@ function main() {
       q.crossViewMismatch ? "true" : "false",
       q.status,
       q.currentlyRanked ? "true" : "false",
+      q.confirmed ? "true" : "false",
       q.sourceUrl,
       q.resolution,
     ]
@@ -386,12 +466,17 @@ function main() {
   mdLines.push("## ステータス内訳");
   for (const [k, v] of byStatus) mdLines.push(`- ${k}: ${v}件`);
   mdLines.push("");
+  const confirmedCount = queue.filter((q) => q.confirmed).length;
+  mdLines.push(`## 確定状況(Gate2 §0条件3)`);
+  mdLines.push(`- confirmed(人間確認済み・resolution確定): ${confirmedCount}件`);
+  mdLines.push(`- 未確定(pending据え置き): ${queue.length - confirmedCount}件`);
+  mdLines.push("");
   mdLines.push("## 明細(優先順位順: 掲載中選手のmisbucketed/dropped → 非掲載選手 → unclassifiable/data-conflict)");
   mdLines.push("");
   for (const q of queue) {
     const name = nameBySlug.get(q.slug) ?? q.slug;
     mdLines.push(
-      `- [${q.category}/${q.status}${q.currentlyRanked ? "/掲載中" : ""}] ${q.slug}(${name}) vs ${q.opponentLabel}(${q.opponentSlug ?? "未解決"}) ${q.date} ${q.event} — weightClass="${q.weightClassRaw ?? "(欠落)"}" boutDivision=${q.boutDivision ?? "?"} currentDivision=${q.currentDivision}${q.crossViewMismatch ? " [両視点不一致]" : ""}${q.resolution ? ` / ${q.resolution}` : ""}`
+      `- [${q.category}/${q.status}${q.currentlyRanked ? "/掲載中" : ""}${q.confirmed ? "/確定済" : ""}] ${q.slug}(${name}) vs ${q.opponentLabel}(${q.opponentSlug ?? "未解決"}) ${q.date} ${q.event} — weightClass="${q.weightClassRaw ?? "(欠落)"}" boutDivision=${q.boutDivision ?? "?"} currentDivision=${q.currentDivision}${q.crossViewMismatch ? " [両視点不一致]" : ""}${q.resolution ? ` / ${q.resolution}` : ""}`
     );
   }
   fs.writeFileSync(path.join(OUT_DIR, "bucket-audit-queue.md"), mdLines.join("\n") + "\n");
@@ -402,6 +487,7 @@ function main() {
   console.log(`flagged内訳: 選手視点=${flaggedByPerspective} / 試合単位ユニーク=${flaggedByUniqueBout} / 両視点二重計上分=${doubleCountedFromBothPerspectives}`);
   console.log(`カテゴリ内訳: ${[...byCategory.entries()].map(([k, v]) => `${k}=${v}`).join(" / ")}`);
   console.log(`ステータス内訳: ${[...byStatus.entries()].map(([k, v]) => `${k}=${v}`).join(" / ")}`);
+  console.log(`確定状況: confirmed=${confirmedCount}件 / 未確定(pending)=${queue.length - confirmedCount}件`);
   console.log(`出力: out/bucket-audit-queue.{json,csv,md}`);
 }
 
