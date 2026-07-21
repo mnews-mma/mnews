@@ -311,13 +311,32 @@ export interface DigestTopic {
 
 // タイトル先頭の【…】または本文から大会/団体タグを検出し、
 // 「NEXUS MANIA2026#02」→「NEXUS」のように基幹名へ正規化する
+// mnewsが扱う4団体の本文検出(表記ゆれ→正規タグ)。優先順=RIZIN>DEEP>パンクラス>修斗。
+// メディア(ENCOUNT等)はRIZIN関連の記事でも先頭【】無しで配信することがあるため、
+// ラベルが無い見出しは本文から団体名を推定してタグ欠落を防ぐ。複数団体が
+// 出てくる見出し(例「RIZIN & PFL」)はmnews扱いの4団体を優先し先頭一致を採用する。
+const BODY_ORG_PATTERNS: { tag: string; keywords: string[] }[] = [
+  { tag: "RIZIN", keywords: ["RIZIN", "ライジン"] },
+  { tag: "DEEP", keywords: ["DEEP"] },
+  { tag: "PANCRASE", keywords: ["パンクラス", "PANCRASE"] },
+  { tag: "修斗", keywords: ["修斗", "SHOOTO"] },
+];
+
+function detectOrgFromBody(title: string): string {
+  const upper = title.toUpperCase();
+  for (const { tag, keywords } of BODY_ORG_PATTERNS) {
+    if (keywords.some((k) => upper.includes(k.toUpperCase()) || title.includes(k))) return tag;
+  }
+  return "";
+}
+
 export function detectEventTag(title: string, source: SourceKey): string {
   const m = title.match(/^【([^】]+)】/);
   let raw = m ? m[1] : "";
   if (!raw) {
-    // ラベルなし: 公式ソースなら団体名
+    // ラベルなし: 公式ソースなら団体名、メディアは本文から団体名を推定する
     if (SOURCES[source]?.type === "official") return SOURCES[source].label;
-    return "";
+    return detectOrgFromBody(title);
   }
   const full = raw;
   raw = raw.split(/[\s#＃]/)[0]; // 「NEXUS MANIA2026#02」→「NEXUS」
