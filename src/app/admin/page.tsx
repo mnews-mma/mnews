@@ -6,10 +6,10 @@ export const metadata = {
 };
 
 const LINKS = [
-  { href: "/admin/x-preview", label: "📝 X投稿 下書き(まとめ・カウントダウン)" },
-  { href: "/admin/drafts", label: "🗂️ 投稿ドラフト工場(対戦カード・ランキング変動)" },
-  { href: "/admin/live", label: "🔴 ライブ結果入力(結果カード生成)" },
-  { href: "/admin/weigh-in", label: "⚖️ 計量結果まとめ投稿" },
+  { href: "/admin/x-preview", label: "📝 Xニュースまとめ投稿" },
+  { href: "/admin/drafts", label: "🥊 X対戦カード決定投稿" },
+  { href: "/admin/live", label: "🔴 X結果速報投稿" },
+  { href: "/admin/weigh-in", label: "⚖️ X計量結果まとめ投稿" },
   { href: "/admin/email-test", label: "メール送信テスト" },
   { href: "/admin/x-test", label: "🧪 X API 疎通確認(技術テスト)" },
 ];
