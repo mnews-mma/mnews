@@ -1401,21 +1401,21 @@ export const FIGHTERS: Fighter[] = [
   // wikiTitleJa設定によりupdate-fighter-records.tsのWikipedia同期対象になる。
   // wins/losses等の数値はWikipedia記事のrecordbox/statsbox3時点のスナップショット
   // (シード値。実表示はバッチ実行後history由来に切り替わる)。2026-07-22 公開。
-  { slug: "ameyama-seiya", nameJa: "飴山聖也", nameEn: "Seiya Ameyama", org: "deep", weightClass: "フライ級", wins: 6, losses: 4, draws: 0, ko: 6, sub: 0, decision: 0, history: [], wikiTitleJa: "飴山聖也", nickname: "浪速のワンパン男" },
-  { slug: "yasui-hyuma", nameJa: "安井飛馬", nameEn: "Hyuma Yasui", org: "deep", weightClass: "フェザー級", wins: 4, losses: 1, draws: 0, ko: 0, sub: 1, decision: 2, history: [], wikiTitleJa: "安井飛馬", nickname: "ブレダウのヤワラくん" },
+  { slug: "ameyama-seiya", nameJa: "飴山聖也", nameEn: "Seiya Ameyama", org: "deep", weightClass: "フライ級", wins: 6, losses: 4, draws: 0, ko: 6, sub: 0, decision: 0, history: [], wikiTitleJa: "飴山聖也" },
+  { slug: "yasui-hyuma", nameJa: "安井飛馬", nameEn: "Hyuma Yasui", org: "deep", weightClass: "フェザー級", wins: 4, losses: 1, draws: 0, ko: 0, sub: 1, decision: 2, history: [], wikiTitleJa: "安井飛馬" },
   { slug: "uno-caol", nameJa: "宇野薫", nameEn: "Caol Uno", org: "shooto", weightClass: "フェザー級", wins: 35, losses: 23, draws: 5, ko: 3, sub: 18, decision: 14, history: [], wikiTitleJa: "宇野薫", wikiTitleEn: "Caol Uno" },
-  { slug: "ishizuka-koichi", nameJa: "石司晃一", nameEn: "Koichi Ishizuka", org: "deep", weightClass: "バンタム級", wins: 21, losses: 6, draws: 1, ko: 8, sub: 5, decision: 8, history: [], wikiTitleJa: "石司晃一", nickname: "不屈の苦労人" },
+  { slug: "ishizuka-koichi", nameJa: "石司晃一", nameEn: "Koichi Ishizuka", org: "deep", weightClass: "バンタム級", wins: 21, losses: 6, draws: 1, ko: 8, sub: 5, decision: 8, history: [], wikiTitleJa: "石司晃一" },
   { slug: "sasaki-hiro", nameJa: "佐々木大", nameEn: "Hiro Sasaki", org: "deep", weightClass: "ライト級", wins: 3, losses: 5, draws: 0, ko: 0, sub: 3, decision: 0, history: [], wikiTitleJa: "佐々木大" },
   { slug: "sugiyama-kohei", nameJa: "杉山廣平", nameEn: "Kohei Sugiyama", org: "deep", weightClass: "フライ級", wins: 15, losses: 10, draws: 0, ko: 2, sub: 5, decision: 8, history: [], wikiTitleJa: "杉山廣平" },
-  { slug: "isao", nameJa: "ISAO", nameEn: "ISAO", org: "pancrase", weightClass: "フェザー級", wins: 27, losses: 9, draws: 2, ko: 9, sub: 2, decision: 14, history: [], wikiTitleJa: "ISAO (格闘家)", nickname: "難攻不落の絶対王者" },
-  { slug: "coro", nameJa: "CORO", nameEn: "CORO", org: "deep", weightClass: "バンタム級", wins: 17, losses: 22, draws: 5, ko: 2, sub: 8, decision: 7, history: [], wikiTitleJa: "CORO", nickname: "伊澤の旦那" },
+  { slug: "isao", nameJa: "ISAO", nameEn: "ISAO", org: "pancrase", weightClass: "フェザー級", wins: 27, losses: 9, draws: 2, ko: 9, sub: 2, decision: 14, history: [], wikiTitleJa: "ISAO (格闘家)" },
+  { slug: "coro", nameJa: "CORO", nameEn: "CORO", org: "deep", weightClass: "バンタム級", wins: 17, losses: 22, draws: 5, ko: 2, sub: 8, decision: 7, history: [], wikiTitleJa: "CORO" },
   // 竹内龍吾: 直近戦はONE(2026-02 ONE Fight Night 40)。元DEEP。orgはONE表記。
   { slug: "takeuchi-ryugo", nameJa: "竹内龍吾", nameEn: "Ryugo Takeuchi", org: "one", weightClass: "ヘビー級", wins: 5, losses: 3, draws: 0, ko: 5, sub: 0, decision: 0, history: [], wikiTitleJa: "竹内龍吾" },
   { slug: "uchida-takeru", nameJa: "内田タケル", nameEn: "Takeru Uchida", org: "shooto", weightClass: "フライ級", wins: 9, losses: 2, draws: 0, ko: 0, sub: 9, decision: 0, history: [], wikiTitleJa: "内田タケル" },
   { slug: "suzuki-takaya", nameJa: "鈴木崇矢", nameEn: "Takaya Suzuki", org: "shooto", weightClass: "フライ級", wins: 8, losses: 1, draws: 0, ko: 6, sub: 0, decision: 2, history: [], wikiTitleJa: "鈴木崇矢" },
   { slug: "miyaguchi-ryuho", nameJa: "宮口龍鳳", nameEn: "Ryuho Miyaguchi", org: "shooto", weightClass: "バンタム級", wins: 7, losses: 1, draws: 0, ko: 6, sub: 0, decision: 1, history: [], wikiTitleJa: "宮口龍鳳" },
   // 溝口司: 直近戦はONE(2025-04 ONE Friday Fights 104)。元修斗。orgはONE表記。
-  { slug: "mizoguchi-tsukasa", nameJa: "溝口司", nameEn: "Tsukasa Mizoguchi", org: "one", weightClass: "バンタム級", wins: 4, losses: 0, draws: 0, ko: 3, sub: 0, decision: 1, history: [], wikiTitleJa: "溝口司", nickname: "超マス十段" },
+  { slug: "mizoguchi-tsukasa", nameJa: "溝口司", nameEn: "Tsukasa Mizoguchi", org: "one", weightClass: "バンタム級", wins: 4, losses: 0, draws: 0, ko: 3, sub: 0, decision: 1, history: [], wikiTitleJa: "溝口司" },
   // 箕輪ひろば: 元修斗世界ストロー級王者。直近戦はONE(2025-07 ONE Friday Fights 116)。orgはONE表記。
   { slug: "minowa-hiroba", nameJa: "箕輪ひろば", nameEn: "Hiroba Minowa", org: "one", weightClass: "ストロー級", wins: 14, losses: 6, draws: 0, ko: 3, sub: 8, decision: 3, history: [], wikiTitleJa: "箕輪ひろば" },
   { slug: "honda-ryosuke", nameJa: "本田良介", nameEn: "Ryosuke Honda", org: "deep", weightClass: "フライ級", wins: 14, losses: 8, draws: 1, ko: 2, sub: 3, decision: 9, history: [], wikiTitleJa: "本田良介" },
