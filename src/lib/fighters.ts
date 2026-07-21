@@ -1396,6 +1396,30 @@ export const FIGHTERS: Fighter[] = [
   { slug: "inoue-seiya", nameJa: "井上聖矢", nameEn: "Seiya Inoue", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "井上聖矢", nickname: "火の国のKOボーイ" },
   // 松嶋こよみ: RIZIN出場は2025-11 RIZIN LANDMARK 12が初(手動でRIZINタグ扱い)。
   { slug: "matsushima-koyomi", nameJa: "松嶋こよみ", nameEn: "Koyomi Matsushima", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "松嶋こよみ", nickname: "非RIZIN流 決意の出陣" },
+
+  // DEEP/パンクラス/修斗 未掲載選手 追加分(2026-07 ja.Wikipedia監査由来)。
+  // wikiTitleJa設定によりupdate-fighter-records.tsのWikipedia同期対象になる。
+  // wins/losses等の数値はWikipedia記事のrecordbox/statsbox3時点のスナップショット
+  // (シード値。実表示はバッチ実行後history由来に切り替わる)。hidden:trueで
+  // Mレーティングが乗るまで非公開。
+  { slug: "ameyama-seiya", nameJa: "飴山聖也", nameEn: "Seiya Ameyama", org: "deep", weightClass: "フライ級", wins: 6, losses: 4, draws: 0, ko: 6, sub: 0, decision: 0, history: [], wikiTitleJa: "飴山聖也", nickname: "浪速のワンパン男", hidden: true },
+  { slug: "yasui-hyuma", nameJa: "安井飛馬", nameEn: "Hyuma Yasui", org: "deep", weightClass: "フェザー級", wins: 4, losses: 1, draws: 0, ko: 0, sub: 1, decision: 2, history: [], wikiTitleJa: "安井飛馬", nickname: "ブレダウのヤワラくん", hidden: true },
+  { slug: "uno-caol", nameJa: "宇野薫", nameEn: "Caol Uno", org: "shooto", weightClass: "フェザー級", wins: 35, losses: 23, draws: 5, ko: 3, sub: 18, decision: 14, history: [], wikiTitleJa: "宇野薫", wikiTitleEn: "Caol Uno", hidden: true },
+  { slug: "ishizuka-koichi", nameJa: "石司晃一", nameEn: "Koichi Ishizuka", org: "deep", weightClass: "バンタム級", wins: 21, losses: 6, draws: 1, ko: 8, sub: 5, decision: 8, history: [], wikiTitleJa: "石司晃一", nickname: "不屈の苦労人", hidden: true },
+  { slug: "sasaki-hiro", nameJa: "佐々木大", nameEn: "Hiro Sasaki", org: "deep", weightClass: "ライト級", wins: 3, losses: 5, draws: 0, ko: 0, sub: 3, decision: 0, history: [], wikiTitleJa: "佐々木大", hidden: true },
+  { slug: "sugiyama-kohei", nameJa: "杉山廣平", nameEn: "Kohei Sugiyama", org: "deep", weightClass: "フライ級", wins: 15, losses: 10, draws: 0, ko: 2, sub: 5, decision: 8, history: [], wikiTitleJa: "杉山廣平", hidden: true },
+  { slug: "isao", nameJa: "ISAO", nameEn: "ISAO", org: "pancrase", weightClass: "フェザー級", wins: 27, losses: 9, draws: 2, ko: 9, sub: 2, decision: 14, history: [], wikiTitleJa: "ISAO (格闘家)", nickname: "難攻不落の絶対王者", hidden: true },
+  { slug: "coro", nameJa: "CORO", nameEn: "CORO", org: "deep", weightClass: "バンタム級", wins: 17, losses: 22, draws: 5, ko: 2, sub: 8, decision: 7, history: [], wikiTitleJa: "CORO", nickname: "伊澤の旦那", hidden: true },
+  // 竹内龍吾: 直近戦はONE(2026-02 ONE Fight Night 40)。元DEEP。orgはONE表記。
+  { slug: "takeuchi-ryugo", nameJa: "竹内龍吾", nameEn: "Ryugo Takeuchi", org: "one", weightClass: "ヘビー級", wins: 5, losses: 3, draws: 0, ko: 5, sub: 0, decision: 0, history: [], wikiTitleJa: "竹内龍吾", hidden: true },
+  { slug: "uchida-takeru", nameJa: "内田タケル", nameEn: "Takeru Uchida", org: "shooto", weightClass: "フライ級", wins: 9, losses: 2, draws: 0, ko: 0, sub: 9, decision: 0, history: [], wikiTitleJa: "内田タケル", hidden: true },
+  { slug: "suzuki-takaya", nameJa: "鈴木崇矢", nameEn: "Takaya Suzuki", org: "shooto", weightClass: "フライ級", wins: 8, losses: 1, draws: 0, ko: 6, sub: 0, decision: 2, history: [], wikiTitleJa: "鈴木崇矢", hidden: true },
+  { slug: "miyaguchi-ryuho", nameJa: "宮口龍鳳", nameEn: "Ryuho Miyaguchi", org: "shooto", weightClass: "バンタム級", wins: 7, losses: 1, draws: 0, ko: 6, sub: 0, decision: 1, history: [], wikiTitleJa: "宮口龍鳳", hidden: true },
+  // 溝口司: 直近戦はONE(2025-04 ONE Friday Fights 104)。元修斗。orgはONE表記。
+  { slug: "mizoguchi-tsukasa", nameJa: "溝口司", nameEn: "Tsukasa Mizoguchi", org: "one", weightClass: "バンタム級", wins: 4, losses: 0, draws: 0, ko: 3, sub: 0, decision: 1, history: [], wikiTitleJa: "溝口司", nickname: "超マス十段", hidden: true },
+  // 箕輪ひろば: 元修斗世界ストロー級王者。直近戦はONE(2025-07 ONE Friday Fights 116)。orgはONE表記。
+  { slug: "minowa-hiroba", nameJa: "箕輪ひろば", nameEn: "Hiroba Minowa", org: "one", weightClass: "ストロー級", wins: 14, losses: 6, draws: 0, ko: 3, sub: 8, decision: 3, history: [], wikiTitleJa: "箕輪ひろば", hidden: true },
+  { slug: "honda-ryosuke", nameJa: "本田良介", nameEn: "Ryosuke Honda", org: "deep", weightClass: "フライ級", wins: 14, losses: 8, draws: 1, ko: 2, sub: 3, decision: 9, history: [], wikiTitleJa: "本田良介", hidden: true },
 ];
 
 export function getFighter(slug: string): Fighter | undefined {
