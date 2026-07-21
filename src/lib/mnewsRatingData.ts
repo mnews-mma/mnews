@@ -19,6 +19,7 @@
 import fs from "fs";
 import path from "path";
 import type { RankingsFile, DivisionRankings } from "./mnewsRating/rankingsFile";
+import type { P4PFile } from "./mnewsRating/p4pFile";
 
 // データ層(fetch)とページ層(ISR)で共有する再検証間隔(秒)。
 // cronは1日2回更新のため、15分あれば実用上の遅延は十分小さい。
@@ -50,4 +51,24 @@ export async function fetchRankings(): Promise<RankingsFile> {
 export async function fetchDivisionRankings(divisionSlug: string): Promise<DivisionRankings | null> {
   const all = await fetchWithLocalFallback();
   return all[divisionSlug] ?? null;
+}
+
+// data/p4p.json の読み出し。data/rankings.jsonと完全に同じ思想(GitHub raw
+// 参照+デプロイSHAキャッシュバスト+ローカルフォールバック、同じ
+// RANKINGS_REVALIDATE窓)を踏襲する(別ファイルだが取得パターンは統一する)。
+const P4P_RAW_URL = `https://raw.githubusercontent.com/mnews-mma/mnews/main/data/p4p.json?v=${CACHE_BUSTER}`;
+
+export async function fetchP4PRankings(): Promise<P4PFile | null> {
+  try {
+    const res = await fetch(P4P_RAW_URL, { next: { revalidate: RANKINGS_REVALIDATE } });
+    if (res.ok) return (await res.json()) as P4PFile;
+  } catch {
+    /* fall through to local */
+  }
+  try {
+    const local = path.join(process.cwd(), "data", "p4p.json");
+    return JSON.parse(fs.readFileSync(local, "utf8")) as P4PFile;
+  } catch {
+    return null;
+  }
 }

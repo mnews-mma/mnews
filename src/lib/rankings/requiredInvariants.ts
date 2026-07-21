@@ -114,3 +114,17 @@ export function checkRequiredInvariants(
   }
   return violations;
 }
+
+// ===== P4P(パウンドフォーパウンド)必達不変条件(2026-07-22追加) =====
+//
+// 上記のREQUIRED_RANKING_INVARIANTS(H2H直接対決の手動キュレーションリスト)
+// とは性質が異なる(P4Pは階級横断の構造的な不変条件であり、個別の対戦カード
+// リストではない)ため、実装(判定ロジック)自体はP4Pビルダーと同じファイル
+// (src/lib/mnewsRating/p4pFile.ts)に置く。ここでは「必達不変条件の検証は
+// この1ファイルを見ればすべて分かる」という既存の意図を維持するため、
+// scripts/generate-p4p.tsが呼ぶ入口として再エクスポートするだけに留める。
+export {
+  verifyChampionTierPosition as checkP4PChampionTierPosition,
+  verifyDivisionOrderInvariant as checkP4PDivisionOrderInvariant,
+  verifyPublishedDivisionsOnly as checkP4PPublishedDivisionsOnly,
+} from "../mnewsRating/p4pFile";

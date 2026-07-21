@@ -33,6 +33,16 @@ interface DivisionView {
 const DIVISIONS = ["フライ級", "バンタム級", "フェザー級", "ライト級"] as const;
 type Division = (typeof DIVISIONS)[number];
 
+// P4P(パウンドフォーパウンド、2026-07-22追加)はMnewsDivisionではない疑似区分
+// なので、既存のDivision型(プルダウンの選択肢の型)には含めない。プルダウンの
+// 選択状態はSelectableKeyで扱い、P4P選択時だけ別経路(p4pView prop・
+// /rankings/pound-for-pound へのリンク)を通す。P4Pは王者4名がP4P1〜4位に
+// 固定表示される設計のため、王者ティア(champion:null固定)のような別枠行は
+// 無く、contenders(先頭3件)がそのまま王者を含む順位付きリストになる
+// (既存のview.champion有無で分岐するレンダリングをそのまま流用できる)。
+const P4P_KEY = "パウンドフォーパウンド" as const;
+type SelectableKey = Division | typeof P4P_KEY;
+
 // トップページのヒーロー「AI RIZINランキング」カード(データ資産ブロック。
 // mnews-homepage-instructions.md §2.1)。4階級ぶんの{champion, contenders}を
 // サーバー側(resolveDivisionRankingView経由)で選手名解決・スラッグ生表示
@@ -50,14 +60,23 @@ type Division = (typeof DIVISIONS)[number];
 // 一切関与しない後処理)。王者行は「順位番号」を持たない事実表示のため、常に—。
 export default function MnewsRatingSection({
   divisions,
+  p4pView,
 }: {
   divisions: Record<Division, DivisionView>;
+  // P4Pは母集団・順位ロジックが階級別ランキングと別物のため、既存のdivisions
+  // propの型(Record<Division, DivisionView>)は変えずオプション引数で渡す
+  // (未指定時はプルダウンにP4Pを出さない=段階的ロールアウト・障害切り分けが
+  // 容易になる)。
+  p4pView?: DivisionView | null;
 }) {
-  const [division, setDivision] = useState<Division>("フェザー級");
-  const view = divisions[division] ?? { champion: null, contenders: [] };
+  const [selected, setSelected] = useState<SelectableKey>("フェザー級");
+  const isP4P = selected === P4P_KEY;
+  const view = isP4P ? (p4pView ?? { champion: null, contenders: [] }) : divisions[selected as Division] ?? { champion: null, contenders: [] };
   const availableDivisions = DIVISIONS.filter((d) => (divisions[d]?.contenders.length ?? 0) > 0 || divisions[d]?.champion);
+  const p4pAvailable = (p4pView?.contenders.length ?? 0) > 0;
+  const availableSelectables: SelectableKey[] = p4pAvailable ? [...availableDivisions, P4P_KEY] : availableDivisions;
 
-  if (availableDivisions.length === 0) return null;
+  if (availableSelectables.length === 0) return null;
 
   const top3 = view.contenders.slice(0, 3);
 
@@ -71,10 +90,10 @@ export default function MnewsRatingSection({
         <select
           className="hero-ranking-select"
           aria-label="階級を選択"
-          value={division}
-          onChange={(e) => setDivision(e.target.value as Division)}
+          value={selected}
+          onChange={(e) => setSelected(e.target.value as SelectableKey)}
         >
-          {availableDivisions.map((d) => (
+          {availableSelectables.map((d) => (
             <option key={d} value={d}>
               {d}
             </option>
@@ -102,7 +121,7 @@ export default function MnewsRatingSection({
         <p className="hero-ranking-empty">この階級のデータは準備中です。</p>
       )}
       <div className="hero-ranking-foot">
-        <a href={`/rankings/${DIVISION_SLUG[division]}`}>全ランキング →</a>
+        <a href={isP4P ? "/rankings/pound-for-pound" : `/rankings/${DIVISION_SLUG[selected as Division]}`}>全ランキング →</a>
         <a href="/rankings/methodology">算出方法</a>
       </div>
     </section>

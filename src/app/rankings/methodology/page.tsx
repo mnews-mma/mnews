@@ -48,6 +48,23 @@ export default function MethodologyPage() {
           より新しい対戦結果を優先して順位付けします。
         </p>
 
+        <h2 style={{ fontSize: 16, fontWeight: 800, marginTop: 32 }}>
+          パウンドフォーパウンド(P4P)ランキングについて
+        </h2>
+        <p>
+          <a href="/rankings/pound-for-pound" style={{ color: "var(--accent)" }}>P4Pランキング</a>
+          は、上記の階級別ランキングをもとに、階級を超えた強さの序列を示す参考指標です。RIZINに公式のP4Pランキングは
+          ありません。統計的な純度よりも、見て違和感のない順位になることを優先した設計です。
+        </p>
+        <ul style={{ color: "var(--muted)", lineHeight: 1.9 }}>
+          <li>公開している4階級の現王者は、必ずP4Pの上位に固定表示します。王者どうしの順序はタイトル防衛回数(多い方が上位)で決め、同数の場合は通算勝率で決めます。</li>
+          <li>王者以外の選手(挑戦者)は、それぞれの階級での強さが平均よりどれだけ突出しているか(ドミナンス)で階級を横断して並べます。</li>
+          <li>同じ階級内での順序は、階級別ランキングの順位を絶対に逆転しません(自階級の1位より2位がP4Pで上に来ることはありません)。</li>
+        </ul>
+        <p style={{ fontSize: 12, color: "var(--muted)" }}>
+          P4Pは主観的・興行的な色合いの強い参考指標であり、階級別ランキングのような算出根拠の厳密さを備えたものではありません。
+        </p>
+
         <p className="prose-updated">RIZIN非公式。mnews.jp独自算出。</p>
       </div>
       <Footer />
