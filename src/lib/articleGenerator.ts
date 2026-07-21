@@ -4,7 +4,7 @@
 // 表示可否を確定させ、空セクションのコードを出力しないため)。
 import type { FighterRecordEntry } from "./fighterRecordsCache";
 import { computeFighterStripStats, computeWinMethodBreakdown } from "./fighterStrip";
-import type { CommonOpponent, OriginalArticle, OriginalArticleFight } from "./originalArticles";
+import type { CommonOpponent, OriginalArticle, OriginalArticleFight, RankingDivisionSnapshot } from "./originalArticles";
 
 const norm = (s: string) => s.replace(/[\s　・☆]/g, "");
 
@@ -160,6 +160,28 @@ export function generateArticleCode(article: OriginalArticle): string {
 // X告知テキスト(記事URL+ハッシュタグ)。
 export function generateArticleAnnounceText(article: OriginalArticle, siteUrl: string): string {
   return `${article.title}\n\n${siteUrl}/articles/${article.slug}\n\n#MMA #Mニュース`;
+}
+
+// ランキング変動記事(告知記事)専用のX投稿本文。「淡々リスト」型: 更新事実+
+// 階級別トップ5スナップショットのみを語り、▲▼(順位の上下)や圏外落ち選手の
+// 名指しは一切しない(表示中のランキングと必ず一致させるzero-fabrication方針、
+// および▲▼抑制中の運用ルールのため)。リンクと免責文言は本文に含めず、
+// 呼び出し側でセルフリプライとして別ツイートに分離する想定。
+export function generateRankingAnnounceText(article: OriginalArticle): string {
+  const lines = (article.rankingSnapshots ?? []).map((s: RankingDivisionSnapshot) => {
+    const top5 = s.top5.map((name, i) => `${i + 1})${name}`).join(" ");
+    return `・${s.divisionLabel} 王者:${s.champion} TOP5:${top5}`;
+  });
+  return [`📊 ${article.title}`, "", ...lines, "", "#MMA #RIZIN"].join("\n");
+}
+
+// セルフリプライ用: 記事URL+免責(RIZINに公式ランキングは無い旨)。
+export function generateRankingAnnounceReplyText(article: OriginalArticle, siteUrl: string): string {
+  return [
+    `${siteUrl}/articles/${article.slug}`,
+    "",
+    "※RIZINに公式ランキングは存在しません。mnews.jpが独自算出する非公式ランキングです。",
+  ].join("\n");
 }
 
 export function buildFightSectionDraft(
