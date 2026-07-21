@@ -648,6 +648,131 @@ export const EVENTS: MEvent[] = [
       },
     ],
   },
+  {
+    slug: "deep-osaka-impact-2026-4th",
+    org: "deep",
+    status: "upcoming",
+    eventName: "DEEP OSAKA IMPACT 2026 4th ROUND",
+    date: "2026-09-20",
+    openTime: "11:30",
+    startTime: "12:00",
+    venue: "錦秀会 住吉区民センター大ホール",
+    sourceUrl: "https://www.deep2001.com/deep-osaka-impact-2026-4th-round/",
+    relatedEventSlugs: ["deep-osaka-impact-2026-5th"],
+    bouts: [
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "本田良介",
+        fighterB: "濱口奏琉",
+      },
+      {
+        weightClass: "DEEPストロー級（52.2kg）",
+        fighterA: "杉山空",
+        fighterB: "武蔵",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "鈴木琢仁",
+        fighterB: "小川道的",
+      },
+      {
+        weightClass: "DEEP JEWELSバンタム級",
+        fighterA: "樹季",
+        fighterB: "中尾あづき",
+      },
+      {
+        weightClass: "DEEP JEWELSフライ級",
+        fighterA: "ルリー・サンシャイン",
+        fighterB: "田川真帆",
+      },
+      {
+        weightClass: "DEEPメガトン級",
+        fighterA: "ステファン\"スマッシュ\"",
+        fighterB: "アモリン",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "砂田華杜",
+        fighterB: "マサムネ",
+      },
+      {
+        weightClass: "DEEPメガトン級",
+        fighterA: "大家皆",
+        fighterB: "奥野充貴",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "古根川充",
+        fighterB: "澤田龍美",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "木下竜馬",
+        fighterB: "フェルナンド",
+      },
+      {
+        weightClass: "DEEPストロー級（52.2kg）",
+        fighterA: "太一",
+        fighterB: "大谷凌",
+        note: "オープニングファイト",
+      },
+    ],
+  },
+  {
+    slug: "deep-osaka-impact-2026-5th",
+    org: "deep",
+    status: "upcoming",
+    eventName: "DEEP OSAKA IMPACT 2026 5th ROUND",
+    date: "2026-09-20",
+    openTime: "16:30",
+    startTime: "17:00",
+    venue: "錦秀会 住吉区民センター大ホール",
+    sourceUrl: "https://www.deep2001.com/deep-osaka-impact-2026-5th-round/",
+    relatedEventSlugs: ["deep-osaka-impact-2026-4th"],
+    // DEEP WEST JAPAN BANTAMWEIGHT GP 2026 準決勝(4名)は公式サイトで
+    // 「※抽選で組み合わせ決定」と明記されており、対戦カード未確定。
+    // 架空の組み合わせを作らず expectedFighters に留める(bouts確定後に移す)。
+    expectedFighters: ["MG眞介", "前薗渓", "切嶋龍輝", "大空斗"],
+    bouts: [
+      {
+        weightClass: "DEEP JEWELSフライ級",
+        fighterA: "栗山葵",
+        fighterB: "ブリザード",
+      },
+      {
+        weightClass: "DEEPライト級（70.3kg）",
+        fighterA: "トミー渡部",
+        fighterB: "大澤将司",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "ケン・モーリス",
+        fighterB: "しゅんすけ",
+      },
+      {
+        weightClass: "DEEPライト級（70.3kg）",
+        fighterA: "河坂修斗",
+        fighterB: "田中雄大",
+      },
+      {
+        weightClass: "DEEP JEWELSストロー級",
+        fighterA: "SAAYA",
+        fighterB: "abbie",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "今村豊",
+        fighterB: "澄斗",
+      },
+      {
+        weightClass: "75kg以下",
+        rule: "アマチュアルール 3分2R",
+        fighterA: "居谷匠真",
+        fighterB: "髙松大空",
+        note: "オープニングファイト",
+      },
+    ],
+  },
   // PROFESSIONAL SHOOTO 2026 Vol.5(2026-07-20)は開催済み → EVENT_RESULTS(shooto-2026-vol5)へ移動。
 ];
 
