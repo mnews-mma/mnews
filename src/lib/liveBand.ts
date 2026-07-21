@@ -5,6 +5,8 @@
 //
 // 大前提: 試合結果の速報はやらない。「速報」「LIVE」「リアルタイム」「即日反映」
 // の文言はこのモジュール・呼び出し側とも使わないこと。
+import type { SourceKey } from "./sources";
+
 export type LiveBandState = "PRE" | "DAY" | "POST";
 
 export interface LiveBandInfo {
@@ -12,6 +14,9 @@ export interface LiveBandInfo {
   eventName: string;
   slug: string;
   daysUntil: number; // PRE: 1〜3 / DAY: 0 / POST: -1
+  // AIランキングはRIZIN専用のため、POST帯のランキング告知はorg==="rizin"の
+  // ときのみ出す(PRE/DAYでは未使用)。
+  org?: SourceKey;
 }
 
 interface UpcomingEventLike {
@@ -24,6 +29,7 @@ interface ResultEventLike {
   slug: string;
   eventName: string;
   date: string; // YYYY-MM-DD
+  org: SourceKey;
 }
 
 function daysUntilFromJstMidnight(dateStr: string, startOfTodayJstMs: number): number {
@@ -57,7 +63,7 @@ export function computeLiveBand(
   for (const r of results) {
     const daysUntil = daysUntilFromJstMidnight(r.date, startOfTodayJstMs);
     if (daysUntil === -1) {
-      candidates.push({ state: "POST", eventName: r.eventName, slug: r.slug, daysUntil: -1 });
+      candidates.push({ state: "POST", eventName: r.eventName, slug: r.slug, daysUntil: -1, org: r.org });
     }
   }
 

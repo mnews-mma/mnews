@@ -8,7 +8,7 @@ export default function LiveBand({ info, rankingsUpdatedToday }: { info: LiveBan
   const showPulse = info.state === "PRE" || info.state === "DAY";
 
   let headline: string;
-  let subline: string;
+  let subline: string | null;
   let ctaLabel: string;
   let ctaHref: string;
 
@@ -24,7 +24,14 @@ export default function LiveBand({ info, rankingsUpdatedToday }: { info: LiveBan
     ctaHref = `/events/${info.slug}`;
   } else {
     headline = `${info.eventName} 結果まとめ公開`;
-    subline = rankingsUpdatedToday ? "AIランキング本日更新" : "AIランキングは本日中に更新";
+    // AIランキングはRIZIN専用のため、告知はorg==="rizin"のときのみ出す。
+    // 団体不明(org未設定)の場合も非RIZIN側に倒し、告知は出さない。
+    subline =
+      info.org === "rizin"
+        ? rankingsUpdatedToday
+          ? "AIランキング本日更新"
+          : "AIランキングは本日中に更新"
+        : null;
     ctaLabel = "結果を見る";
     ctaHref = `/results/${info.slug}`;
   }
@@ -34,7 +41,7 @@ export default function LiveBand({ info, rankingsUpdatedToday }: { info: LiveBan
       <div className="live-band-text">
         {showPulse && <span className="live-band-dot" aria-hidden="true" />}
         <span className="live-band-headline">{headline}</span>
-        <span className="live-band-sub">{subline}</span>
+        {subline && <span className="live-band-sub">{subline}</span>}
       </div>
       <span className="live-band-cta">{ctaLabel} →</span>
     </a>
