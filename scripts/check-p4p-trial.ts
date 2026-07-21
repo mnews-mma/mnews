@@ -705,6 +705,102 @@ function computeChurn(results: SnapshotResult[]): Record<Variant, ChurnAgg> {
   return agg;
 }
 
+// 2026-07-21追加指示書#3 D-1: チャーンを「読者が実際に見る範囲」に再スコープする。
+// §10のグローバル順位ベースの集計(40位→45位のような不可視の入替も含む)とは
+// 別に、トップ15(RANKING_DISPLAY_CAP)ウィンドウ内での相対順位変動・出入りだけを
+// 測る。安定階級(公開rank不変)所属の選手のみが対象(§10と同じ「無風日」定義)。
+interface PublicWindowBucket {
+  bucket1: number; // |Δ|=1
+  bucket2: number; // |Δ|=2
+  bucket3plus: number; // |Δ|>=3
+  entries: number; // トップ15圏外→圏内(公開rank不変にもかかわらず新規出現)
+  exits: number; // トップ15圏内→圏外(公開rank不変にもかかわらず消失)
+  legitCount: number; // 発生したペアで他階級の公開rankが実際に動いていた(=波及として説明可能)
+  pureNoiseCount: number; // 発生したペアでどの階級の公開rankも動いていなかった(=純粋な正規化ノイズ)
+}
+
+function computePublicWindowChurn(results: SnapshotResult[]): Record<Variant, PublicWindowBucket> {
+  const agg: Record<Variant, PublicWindowBucket> = {
+    A: { bucket1: 0, bucket2: 0, bucket3plus: 0, entries: 0, exits: 0, legitCount: 0, pureNoiseCount: 0 },
+    B: { bucket1: 0, bucket2: 0, bucket3plus: 0, entries: 0, exits: 0, legitCount: 0, pureNoiseCount: 0 },
+    C: { bucket1: 0, bucket2: 0, bucket3plus: 0, entries: 0, exits: 0, legitCount: 0, pureNoiseCount: 0 },
+  };
+  for (let i = 1; i < results.length; i++) {
+    const prev = results[i - 1];
+    const curr = results[i];
+    const stableDivs: MnewsDivision[] = [];
+    let anyChanged = false;
+    for (const division of PUBLISHED_DIVISIONS) {
+      const stable = JSON.stringify(prev.divisionOrder.get(division)) === JSON.stringify(curr.divisionOrder.get(division));
+      if (stable) stableDivs.push(division);
+      else anyChanged = true;
+    }
+    if (stableDivs.length === 0) continue; // 観測対象(安定階級所属選手)がいない
+    // このペアで「他階級の公開rankが実際に動いたか」を1つのフラグとして扱う
+    // (個々の変動を発生源まで一意に遡るのは不確実性が残るため、ペア単位の
+    // 二値分類にとどめる。0件ならこのペアの変動はすべて「純粋ノイズ」候補)。
+    const pairIsExplainableByOtherDivisionChange = anyChanged;
+
+    const consideredSlugs = new Set<string>();
+    for (const d of stableDivs) {
+      for (const slug of prev.divisionOrder.get(d)!) consideredSlugs.add(slug);
+    }
+    for (const slug of consideredSlugs) {
+      for (const variant of VARIANTS) {
+        const posBefore = prev.globalRank[variant].get(slug);
+        const posAfter = curr.globalRank[variant].get(slug);
+        if (posBefore === undefined || posAfter === undefined) continue;
+        const inWindowBefore = posBefore <= RANKING_DISPLAY_CAP;
+        const inWindowAfter = posAfter <= RANKING_DISPLAY_CAP;
+        if (!inWindowBefore && !inWindowAfter) continue; // 不可視圏のまま=対象外
+        const bucket = agg[variant];
+        if (inWindowBefore && inWindowAfter) {
+          const delta = Math.abs(posAfter - posBefore);
+          if (delta === 0) continue;
+          if (delta === 1) bucket.bucket1++;
+          else if (delta === 2) bucket.bucket2++;
+          else bucket.bucket3plus++;
+        } else if (inWindowBefore && !inWindowAfter) {
+          bucket.exits++;
+        } else {
+          bucket.entries++;
+        }
+        if (pairIsExplainableByOtherDivisionChange) bucket.legitCount++;
+        else bucket.pureNoiseCount++;
+      }
+    }
+  }
+  return agg;
+}
+
+function buildPublicWindowChurnLines(results: SnapshotResult[]): string[] {
+  const lines: string[] = [];
+  const agg = computePublicWindowChurn(results);
+  lines.push(
+    `公開窓=トップ${RANKING_DISPLAY_CAP}(RANKING_DISPLAY_CAP)。§10と同じ「安定階級(公開rank不変)所属の選手」のみを対象に、グローバル順位ではなくトップ${RANKING_DISPLAY_CAP}ウィンドウ内の出入り・相対順位変動だけを数える。原因切り分けは「発生したペアで他の公開階級のrankが実際に動いていたか」をペア単位の二値で判定(個々の変動を発生源まで一意に遡ることはできないため、ペアが説明可能かどうかまでにとどめる)。`
+  );
+  lines.push("");
+  lines.push("| 変種 | ±1 | ±2 | ±3以上 | 圏内→圏外(消失) | 圏外→圏内(新規出現) | うち他階級変動で説明可能(legit) | うちどの階級も不変(純粋ノイズ) |");
+  lines.push("|---|---|---|---|---|---|---|---|");
+  for (const variant of VARIANTS) {
+    const b = agg[variant];
+    lines.push(
+      `| ${variant} | ${b.bucket1} | ${b.bucket2} | ${b.bucket3plus} | ${b.exits} | ${b.entries} | ${b.legitCount} | ${b.pureNoiseCount} |`
+    );
+  }
+  lines.push("");
+  const totalPureNoise = VARIANTS.reduce((s, v) => s + agg[v].pureNoiseCount, 0);
+  if (totalPureNoise === 0) {
+    lines.push(
+      "純粋ノイズ(どの公開階級も動いていないのにトップ15内の順位・出入りが変化したケース)は今回のN=4・3ペアでは0件。観測された全変動は、少なくとも1つの他階級で公開rankが実際に動いていたペア内で発生している(=クロス階級の再正規化波及として一応説明可能。ただしどの階級の変動がどの選手の移動を引き起こしたかまでの一意な特定はしていない)。"
+    );
+  } else {
+    lines.push(`純粋ノイズ(どの公開階級も動いていないのに変化したケース)が${totalPureNoise}件(変種合計)確認された。`);
+  }
+  lines.push("");
+  return lines;
+}
+
 function buildChurnBacktestLines(rankings: RankingsFile): string[] {
   const lines: string[] = [];
   const probeKey = divisionRankingsKey(PUBLISHED_DIVISIONS[0]);
@@ -744,7 +840,13 @@ function buildChurnBacktestLines(rankings: RankingsFile): string[] {
   }
   lines.push("");
 
-  lines.push("### 変種別チャーン量(公開rank不変の階級に属する選手の、clamp後グローバルP4P順位の変動)");
+  lines.push("### D-1(2026-07-21追加指示書#3・最優先): 公開窓(トップ15)に再スコープしたチャーン");
+  lines.push("");
+  lines.push("読者が実際に見るのはトップ15までなので、まずここで実害の有無を測る。下記「参考」節のグローバル順位ベースの集計(40位→45位のような不可視の入替も含む)より、こちらが実質的な判断材料。");
+  lines.push("");
+  lines.push(...buildPublicWindowChurnLines(results));
+
+  lines.push("### 参考: グローバル順位ベースのチャーン(公開rank不変の階級に属する選手の、clamp後グローバルP4P順位の変動。トップ15圏外の不可視の動きも含む)");
   lines.push("");
   lines.push("| 変種 | 観測数(安定階級所属選手×断面ペア) | 順位が動いた件数 | 平均|Δ順位| | 最大|Δ順位| |");
   lines.push("|---|---|---|---|---|");
@@ -967,6 +1069,10 @@ function buildReport(
       lines.push(`| ${d.nameJa} | ${d.slug} | ${division} | ${d.ranks.A} | ${d.ranks.B} | ${d.ranks.C} | ${d.spread} | ${note} |`);
     }
   }
+  lines.push("");
+  lines.push(
+    "**変種再評価メモ(2026-07-21追加指示書#3 D-3、事実の記述のみ・採用推奨はしない)**: §9のフライ級分布診断で、フライ級の裾の重さ(σ/MAD=1.845、4階級中最大)の実体は上側の外れ値=王者本人(神龍誠)であることが判明している。変種B(中央値+MAD)がフライ級で神龍誠を変種A(zスコア)より上位(#1)に押し上げるのは、低分散(MADが小さい)階級で王者のスコアがMADで割られて増幅されるという、小標本(n=17)特有の感度の現れとして説明できる。"
+  );
   lines.push("");
 
   lines.push("## 4. 王者仮説の検証(clamp後スコア基準。各公開階級の王者、または王者不在/算出不能なら#1がP4Pトップ10に入るか)");
