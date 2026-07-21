@@ -3,7 +3,7 @@
     "org": "pancrase",
     "source": "パンクラス公式ランキング",
     "sourceUrl": "https://www.pancrase.co.jp/rls/ranking.html",
-    "fetchedDate": "2026-07-21",
+    "fetchedDate": "2026-07-22",
     "rankingLabel": "7月2日発表",
     "classes": [
       {
@@ -442,7 +442,7 @@
     "org": "shooto",
     "source": "修斗公式ランキング",
     "sourceUrl": "https://www.shooto-mma.com/ranking/",
-    "fetchedDate": "2026-07-21",
+    "fetchedDate": "2026-07-22",
     "rankingLabel": "7月1日付け",
     "classes": [
       {
@@ -562,6 +562,16 @@
             "rank": "10",
             "officialName": "岡田 嵐士",
             "slug": null
+          },
+          {
+            "rank": "11",
+            "officialName": "中池 武寛",
+            "slug": null
+          },
+          {
+            "rank": "12",
+            "officialName": "鈴木 尊",
+            "slug": null
           }
         ]
       },
@@ -621,6 +631,16 @@
           {
             "rank": "10",
             "officialName": "宮口 龍鳳",
+            "slug": "miyaguchi-ryuho"
+          },
+          {
+            "rank": "11",
+            "officialName": "中島 陸",
+            "slug": null
+          },
+          {
+            "rank": "12",
+            "officialName": "野尻 定由",
             "slug": null
           }
         ]
@@ -681,6 +701,11 @@
           {
             "rank": "10",
             "officialName": "飯野 雄斗",
+            "slug": null
+          },
+          {
+            "rank": "11",
+            "officialName": "ネイン デイネッシュ",
             "slug": null
           }
         ]
