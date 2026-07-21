@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/admin/drafts", label: "🥊 X対戦カード決定投稿" },
   { href: "/admin/live", label: "🔴 X結果速報投稿" },
   { href: "/admin/weigh-in", label: "⚖️ X計量結果まとめ投稿" },
+  { href: "/admin/ranking-article", label: "📊 ランキング変動記事作成" },
   { href: "/admin/email-test", label: "メール送信テスト" },
   { href: "/admin/x-test", label: "🧪 X API 疎通確認(技術テスト)" },
 ];
