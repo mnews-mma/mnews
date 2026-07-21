@@ -72,6 +72,48 @@ const RAW_MISMATCH_EPSILON = 0.01; // 浮動小数の丸め誤差許容(pt)
 type Variant = "A" | "B" | "C";
 const VARIANTS: Variant[] = ["A", "B", "C"];
 
+// 2026-07-21追加指示書#4 E-1: 王者ティアの序列に使う防衛回数(自動取得不可・
+// 少量の手動維持データ)。出所: ja.wikipedia.org/wiki/RIZIN王者一覧(WebFetch
+// による自動要約を2回・別プロンプトで取得し数値が一致することを確認、
+// 2026-07-21)。champions.tsのオーバーレイ(現王者名)と一致することも確認済み。
+// 数値を自動更新する仕組みではないため、王座交代・防衛試合のたびに手動更新が
+// 必要になる(この点は本番実装時の運用コストとして人間判断に委ねる)。
+interface ChampionDefenseRecord {
+  slug: string;
+  defenseCount: number;
+  source: string;
+  fetchedDate: string;
+}
+const CHAMPION_DEFENSE_DATA: ChampionDefenseRecord[] = [
+  {
+    slug: "shinryu-makoto",
+    defenseCount: 0,
+    source: "ja.wikipedia.org/wiki/RIZIN王者一覧(戴冠2026-06-06、防衛なし)",
+    fetchedDate: "2026-07-21",
+  },
+  {
+    slug: "sabatello-danny",
+    defenseCount: 2,
+    source: "ja.wikipedia.org/wiki/RIZIN王者一覧(戴冠2025-12-31、直近防衛2026-07-15※ページ更新日以降の可能性あり)",
+    fetchedDate: "2026-07-21",
+  },
+  {
+    slug: "sheydullaev-rajabali",
+    defenseCount: 3,
+    source: "ja.wikipedia.org/wiki/RIZIN王者一覧(戴冠2025-05-04、直近防衛2026-02-01※ページ更新日以降の可能性あり)",
+    fetchedDate: "2026-07-21",
+  },
+  {
+    slug: "gustavo-luis",
+    defenseCount: 0,
+    source: "ja.wikipedia.org/wiki/RIZIN王者一覧(戴冠2026-05-10、防衛なし)",
+    fetchedDate: "2026-07-21",
+  },
+];
+function getChampionDefenseInfo(slug: string): ChampionDefenseRecord | null {
+  return CHAMPION_DEFENSE_DATA.find((d) => d.slug === slug) ?? null;
+}
+
 interface Candidate {
   slug: string;
   nameJa: string;
@@ -496,6 +538,93 @@ function buildRankedLists(scored: ClampedCandidate[], basis: "raw" | "clamped"):
 function scoreOf(c: ClampedCandidate, variant: Variant, basis: "raw" | "clamped"): number {
   const key = basis === "clamped" ? clampedScoreKey(variant) : rawScoreKey(variant);
   return c[key];
+}
+
+// ===== 2026-07-21追加指示書#4: 王者ティア =====
+interface ChampionTierEntry {
+  slug: string;
+  nameJa: string;
+  division: MnewsDivision;
+  rawRating: number;
+  scoreA: number; // ドミナンスzスコア(タイブレークのみに使用)
+  wins: number;
+  losses: number;
+  draws: number;
+  winRate: number | null; // wins/(wins+losses)。RIZIN参戦記録ベース(buildBoutsはRIZIN MMA本戦のみ集計)。wins+losses=0ならnull
+  defenseCount: number | null; // CHAMPION_DEFENSE_DATAに無ければnull(推定しない)
+  defenseSource: string | null;
+}
+
+// E-1: 王者どうしの序列を (1)防衛回数降順 (2)通算勝率降順 (3)ドミナンスzスコア
+// (変種A)降順 の優先度で決める。P4P専用のロジックであり、既存Eloランキング
+// (data/rankings.json・階級別公開rank)には一切逆流させない(読み取り専用)。
+// 防衛回数・勝率が未取得(null)の場合は最下位側に回す(推定して埋めない)。
+function buildChampionTier(statsByDivision: Map<MnewsDivision, DivisionStats>, displayMap: Map<string, DisplayEntry>): ChampionTierEntry[] {
+  const entries: ChampionTierEntry[] = [];
+  for (const division of PUBLISHED_DIVISIONS) {
+    const s = statsByDivision.get(division)!;
+    if (!s.championSlug || s.championRawRating === null) continue; // 空位/未掲載/算出不能はティア対象外
+    const champDisplay = displayMap.get(s.championSlug);
+    const wins = champDisplay?.wins ?? 0;
+    const losses = champDisplay?.losses ?? 0;
+    const draws = champDisplay?.draws ?? 0;
+    const winRate = wins + losses > 0 ? wins / (wins + losses) : null;
+    const defenseInfo = getChampionDefenseInfo(s.championSlug);
+    const scoreA = s.sigma === 0 ? 0 : (s.championRawRating - s.mean) / s.sigma;
+    entries.push({
+      slug: s.championSlug,
+      nameJa: resolveName(s.championSlug),
+      division,
+      rawRating: s.championRawRating,
+      scoreA,
+      wins,
+      losses,
+      draws,
+      winRate,
+      defenseCount: defenseInfo?.defenseCount ?? null,
+      defenseSource: defenseInfo?.source ?? null,
+    });
+  }
+  entries.sort((a, b) => {
+    const da = a.defenseCount ?? -1; // 未取得は最下位側(推定はしない、比較上劣後させるだけ)
+    const db = b.defenseCount ?? -1;
+    if (da !== db) return db - da;
+    const wa = a.winRate ?? -1;
+    const wb = b.winRate ?? -1;
+    if (wa !== wb) return wb - wa;
+    return b.scoreA - a.scoreA;
+  });
+  return entries;
+}
+
+// E-1〜E-3: 王者ティアを1〜k位に固定し、その後ろにE-2(同一階級内は公開rank順を
+// 厳守=clamp後スコア)を満たす挑戦者を変種別スコアで並べたリストを構築する。
+// 王者ティアの並びは全変種で共通(defenseCount/winRate/scoreAで決まる、変種に
+// 依存しない設計判断のため)。挑戦者の並びだけが変種ごとに異なる。
+function buildOfficialRankedLists(clamped: ClampedCandidate[], championTier: ChampionTierEntry[]): RankedList[] {
+  const championSlugSet = new Set(championTier.map((c) => c.slug));
+  const bySlug = new Map(clamped.map((c) => [c.slug, c]));
+  const championRankedBase = championTier.map((ct) => bySlug.get(ct.slug)!);
+  return VARIANTS.map((variant) => {
+    const key = clampedScoreKey(variant);
+    const challengers = clamped
+      .filter((c) => !championSlugSet.has(c.slug))
+      .sort((a, b) => b[key] - a[key] || (a.divisionRank as number) - (b.divisionRank as number));
+    return { variant, ranked: [...championRankedBase, ...challengers] };
+  });
+}
+
+// 自己検証: 王者ティアが必ず先頭k位を占めること(全変種で確認、破れたらexit 1)。
+function verifyChampionTierFixed(lists: RankedList[], championTier: ChampionTierEntry[]): string[] {
+  const errors: string[] = [];
+  const expectedSlugs = championTier.map((c) => c.slug);
+  for (const l of lists) {
+    const actualHead = l.ranked.slice(0, expectedSlugs.length).map((c) => c.slug);
+    if (JSON.stringify(actualHead) !== JSON.stringify(expectedSlugs)) {
+      errors.push(`変種${l.variant}: 先頭${expectedSlugs.length}位が王者ティア順(${expectedSlugs.join(",")})と不一致(実際: ${actualHead.join(",")})`);
+    }
+  }
+  return errors;
 }
 
 function findDivergentVariants(
@@ -970,6 +1099,94 @@ function buildClampDiagnosticLines(
   return lines;
 }
 
+// 2026-07-21追加指示書#4 E-1〜E-4: 王者ティア確定後の公式P4Pトップ15。
+function buildChampionTierSectionLines(
+  championTier: ChampionTierEntry[],
+  officialLists: RankedList[],
+  tierCheckErrors: string[]
+): string[] {
+  const lines: string[] = [];
+  lines.push(
+    "設計方針: P4Pは主観的・興行的な指標のため、統計の純度よりも「MMAファンが見て違和感のない順位」を優先する(複雑な重み付け・多パラメータ化はしない)。王者4名を必ずP4P1〜4位に固定し、王者どうしの序列は(1)タイトル防衛回数降順→(2)通算勝率降順→(3)ドミナンスzスコア(変種A)降順のタイブレークで決める。5位以下(挑戦者)は変種Aのドミナンスzスコアで並べる(既定。変種B/Cは比較用として残すのみで本番想定はA)。同一階級内の順序は公開rank順を厳守(逆転ゼロ、既存clampの延長で保証)。"
+  );
+  lines.push("");
+
+  lines.push("### 防衛回数・通算勝率の取得明細");
+  lines.push("");
+  lines.push("| 選手 | slug | 階級 | 防衛回数 | 出所 | 通算成績(RIZIN参戦記録ベース) | 勝率 |");
+  lines.push("|---|---|---|---|---|---|---|");
+  for (const c of championTier) {
+    const record = `${c.wins}勝${c.losses}敗${c.draws}分`;
+    const winRateLabel = c.winRate !== null ? `${(c.winRate * 100).toFixed(1)}%` : "算出不能(勝敗数0)";
+    const defenseLabel = c.defenseCount !== null ? `${c.defenseCount}` : "取得不能(推定なし)";
+    lines.push(`| ${c.nameJa} | ${c.slug} | ${c.division} | ${defenseLabel} | ${c.defenseSource ?? "-"} | ${record} | ${winRateLabel} |`);
+  }
+  lines.push("");
+  lines.push(
+    "通算成績はbuildBouts(RIZIN MMA本戦のみ集計)由来のdisplayEntry.wins/losses/drawsを使用(全団体・全キャリア通算ではない点に注意)。防衛回数はWikipedia「RIZIN王者一覧」からのWebFetch自動要約を2回・別プロンプトで取得し数値が一致することを確認(2026-07-21)。champions.tsの現王者オーバーレイと不一致は検出されなかった。この防衛回数データは自動更新されない少量の手動維持データであり、王座交代・防衛試合のたびに人間が更新する必要がある。"
+  );
+  lines.push("");
+
+  lines.push("### 王者ティア確定順(P4P 1〜{{K}}位)".replace("{{K}}", String(championTier.length)));
+  lines.push("");
+  lines.push("| ティア順 | 選手名 | slug | 階級 | 防衛回数 | 勝率 | zスコア(タイブレークのみ) |");
+  lines.push("|---|---|---|---|---|---|---|");
+  championTier.forEach((c, i) => {
+    const winRateLabel = c.winRate !== null ? `${(c.winRate * 100).toFixed(1)}%` : "-";
+    const defenseLabel = c.defenseCount !== null ? `${c.defenseCount}` : "取得不能";
+    lines.push(`| ${i + 1} | ${c.nameJa} | ${c.slug} | ${c.division} | ${defenseLabel} | ${winRateLabel} | ${formatNum(c.scoreA)} |`);
+  });
+  lines.push("");
+
+  const expectedOrder = ["sheydullaev-rajabali", "sabatello-danny"];
+  const actualTop2 = championTier.slice(0, 2).map((c) => c.slug);
+  const matchesExpectation = JSON.stringify(actualTop2) === JSON.stringify(expectedOrder);
+  lines.push(
+    matchesExpectation
+      ? "期待順(シェイドゥラエフ1位・サバテロ2位)と**一致**。防衛回数3(シェイドゥラエフ)>2(サバテロ)>0(神龍・グスタボ、勝率/zスコアでタイブレーク)という並びがデータで確認できた。"
+      : `期待順(シェイドゥラエフ1位・サバテロ2位)と**不一致**。実際の上位2名: ${championTier.slice(0, 2).map((c) => `${c.nameJa}(${c.slug})`).join(", ")}。防衛回数・勝率の数値を上記明細で確認し、人間判断に回す。`
+  );
+  lines.push("");
+
+  lines.push("### 公式P4Pトップ15(変種A・王者ティア確定後)");
+  lines.push("");
+  lines.push("| 順位 | 選手名 | slug | 階級 | 階級内位置 | 防衛回数(王者のみ) | 通算成績(RIZIN参戦記録ベース、王者のみ) | zスコア | ティア |");
+  lines.push("|---|---|---|---|---|---|---|---|---|");
+  const officialA = officialLists.find((l) => l.variant === "A")!;
+  const championSlugSet = new Set(championTier.map((c) => c.slug));
+  const championBySlug = new Map(championTier.map((c) => [c.slug, c]));
+  officialA.ranked.slice(0, 15).forEach((c, i) => {
+    const isChamp = championSlugSet.has(c.slug);
+    const ct = championBySlug.get(c.slug);
+    const rankLabel = c.isChampion ? "王者" : `${c.divisionRank}`;
+    const defenseLabel = isChamp && ct ? (ct.defenseCount !== null ? `${ct.defenseCount}` : "取得不能") : "-";
+    const recordLabel = isChamp && ct ? `${ct.wins}勝${ct.losses}敗${ct.draws}分` : "-";
+    // zスコア列はclampedScoreA(実際の並び替えに使った値)を表示する。王者は
+    // clamp対象外なのでclampedScoreA===scoreA(常に同値)。生scoreAをそのまま
+    // 出すと、clampされた挑戦者だけ表示値と並び順が食い違って見える
+    // (clampされた選手は生スコアの方が大きいままのため、一見「逆転」して
+    // 見えてしまう)。
+    lines.push(
+      `| ${i + 1} | ${c.nameJa} | ${c.slug} | ${c.division} | ${rankLabel} | ${defenseLabel} | ${recordLabel} | ${formatNum(c.clampedScoreA)} | ${isChamp ? "王者ティア" : "挑戦者"} |`
+    );
+  });
+  lines.push("");
+  lines.push(
+    "本番表示方針(想定・未実装): 上記のような数値スコアは公開ページには出さない(既存の数値非公開方針を維持)。公開する場合は「順位+階級+防衛回数バッジ(王者のみ)」等、数値を伴わない表示を想定する。"
+  );
+  lines.push("");
+
+  lines.push("### 自己検証結果");
+  lines.push("");
+  lines.push(
+    tierCheckErrors.length === 0
+      ? `王者${championTier.length}名が全変種で先頭${championTier.length}位に固定されていることを確認済み(破れていればexit 1)。同一階級内の順序が公開rank順と一致することも§8の自己検証(c)で確認済み(変更なし)。2回連続実行の完全一致・data/差分ゼロ・エンジン無変更も維持。`
+      : `自己検証失敗: ${tierCheckErrors.join(" / ")}`
+  );
+  lines.push("");
+  return lines;
+}
+
 function buildReport(
   candidates: Candidate[],
   statsByDivision: Map<MnewsDivision, DivisionStats>,
@@ -981,7 +1198,8 @@ function buildReport(
   recomputeMismatches: string[],
   clampDiagnosticLines: string[],
   flyweightDiagnosticLines: string[],
-  churnBacktestLines: string[]
+  churnBacktestLines: string[],
+  championTierSectionLines: string[]
 ): string {
   const lists = clampedLists; // §2以降の「公式」interleaveはclamp後スコア(指示書#2 C-3)
   const rankMaps: Record<Variant, Map<string, number>> = { A: new Map(), B: new Map(), C: new Map() };
@@ -1156,6 +1374,10 @@ function buildReport(
   lines.push("");
   lines.push(...churnBacktestLines);
 
+  lines.push("## 11. 王者ティア確定後の公式P4Pトップ15(2026-07-21追加指示書#4)");
+  lines.push("");
+  lines.push(...championTierSectionLines);
+
   return lines.join("\n") + "\n";
 }
 
@@ -1189,6 +1411,17 @@ function runOnce(): { report: string; clampedCount: number } {
   const flyweightDiagnosticLines = buildFlyweightDiagnosticLines(candidates, statsByDivision);
   const churnBacktestLines = buildChurnBacktestLines(rankings);
 
+  // 2026-07-21追加指示書#4: 王者ティア確定 + 公式トップ15(変種A既定)。
+  const championTier = buildChampionTier(statsByDivision, displayMap);
+  const officialLists = buildOfficialRankedLists(clamped, championTier);
+  const tierCheckErrors = verifyChampionTierFixed(officialLists, championTier);
+  if (tierCheckErrors.length > 0) {
+    console.error("[FATAL] 自己検証(王者ティア固定)失敗:");
+    for (const e of tierCheckErrors) console.error(`  ${e}`);
+    throw new Error("自己検証(王者ティア固定)失敗");
+  }
+  const championTierSectionLines = buildChampionTierSectionLines(championTier, officialLists, tierCheckErrors);
+
   const report = buildReport(
     candidates,
     statsByDivision,
@@ -1200,7 +1433,8 @@ function runOnce(): { report: string; clampedCount: number } {
     recomputeMismatches,
     clampDiagnosticLines,
     flyweightDiagnosticLines,
-    churnBacktestLines
+    churnBacktestLines,
+    championTierSectionLines
   );
   return { report, clampedCount: clamped.length };
 }
