@@ -1,5 +1,4 @@
 import { SourceKey } from "./sources";
-import { fighterNameSize } from "./vsMath";
 import { fitName, type FitOpts } from "./og/fitName";
 
 export type EventStatus = "upcoming" | "live" | "completed";
@@ -776,17 +775,13 @@ export const EVENTS: MEvent[] = [
   // PROFESSIONAL SHOOTO 2026 Vol.5(2026-07-20)は開催済み → EVENT_RESULTS(shooto-2026-vol5)へ移動。
 ];
 
-// 選手名フォントサイズを全イベントページ横断で統一するための共通値。
-// 従来は各イベントページが自ページ内の最長名だけを基準にサイズを決めていた
-// ため、大会をまたぐと絶対値がバラついていた(意図的なデザイン変更で統一)。
-// EVENTS(全大会・全カード)を基準に一度だけ算出し、events/[slug]/page.tsxは
-// 必ずこの値を使う(ページ単体でfighterNameSizeを再計算しない)。
-export const GLOBAL_FIGHTER_NAME_SIZE = EVENTS.reduce((min, event) => {
-  return event.bouts.reduce(
-    (m, b) => Math.min(m, fighterNameSize(b.fighterA), fighterNameSize(b.fighterB)),
-    min
-  );
-}, 20);
+// (廃止・2026-07-22) GLOBAL_FIGHTER_NAME_SIZE: Web側の選手名フォントを全イベント
+// 横断の単一サイズに固定する定数だったが、選手個別ページの次戦カードと
+// サイズが揃わない(ページによって大きさが違う)ため廃止。Web側の選手名サイズは
+// カード単体ルール(MatchupTape内: 左右の長い方が収まるサイズ・天井は
+// vsMath.tsのCEILING_WEB)に一本化した。ページ/全体固定サイズへ差し戻さないこと
+// (scripts/check-event-namesize-override.tsが検査)。OGP側の天井
+// OG_DREAM_VS_CEILING(下)は従来通り維持する。
 
 // 夢のカード/VSカード(/dream・/vs)公開OGP(1200x630)の選手名フォントサイズを
 // 全カード横断で単一値に統一するための天井(2026-07-20)。GLOBAL_FIGHTER_NAME_SIZE

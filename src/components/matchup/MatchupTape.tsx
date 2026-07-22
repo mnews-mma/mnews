@@ -75,18 +75,19 @@ export default function MatchupTape({
   left,
   right,
   compact,
-  nameSizeOverride,
 }: {
   left: TapeFighterData;
   right: TapeFighterData;
   compact?: boolean;
-  // 呼び出し側(イベントページ)がページ内全カード共通のサイズを渡す場合に使う。
-  // 未指定時は従来通りこのカード単体(左右)で決まるサイズになる(/vs・/dream用)。
-  nameSizeOverride?: number;
 }) {
   const hasMethodCounts = !!left.methodCounts || !!right.methodCounts;
-  // 左右で別々のサイズにならないよう、長い方の名前が収まるサイズに揃える。
-  const sharedNameSize = nameSizeOverride ?? Math.min(fighterNameSize(left.name), fighterNameSize(right.name));
+  // 選手名サイズの単一ルール(2026-07-22統一): カード単体で決める。
+  // 左右で別々のサイズにならないよう、長い方の名前が収まるサイズに揃える
+  // (天井はvsMath.tsのCEILING_WEB)。選手個別ページの次戦カードと同じ見た目に
+  // なるよう、ページ側からのnameSizeOverride(旧GLOBAL_FIGHTER_NAME_SIZE)は
+  // 廃止した。ページ単位/全イベント横断の固定サイズへ差し戻さないこと
+  // (check-event-namesize-override.ts / check-dream-vs-namesize-ceiling.tsで検査)。
+  const sharedNameSize = Math.min(fighterNameSize(left.name), fighterNameSize(right.name));
 
   return (
     <div className={`${styles.tape}${compact ? ` ${styles.tapeCompact}` : ""}`}>

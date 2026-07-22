@@ -25,9 +25,6 @@ export interface EventBoutCardV2Props {
   // 大会全体が現在開催中(event.status==="live")かどうか。resultが無くこれがtrueの
   // 場合のみ「進行中(結果待ち)」インジケータを出す。
   isEventLive?: boolean;
-  // ページ内の全カードで選手名サイズを統一するための共通サイズ(呼び出し元の
-  // イベントページで算出)。
-  nameSizeOverride?: number;
 }
 
 const normSpace = (s: string) => s.replace(/[\s　]/g, "");
@@ -66,7 +63,6 @@ export default function EventBoutCardV2({
   note,
   result,
   isEventLive,
-  nameSizeOverride,
 }: EventBoutCardV2Props) {
   // 選手ごとに戦績データの有無を独立して判定する。
   // - 収録済みの側は他カードと同様に戦績/勝率/フィニッシュ率/直近5戦を出す。
@@ -81,6 +77,9 @@ export default function EventBoutCardV2({
   const headToHead = bothRegistered ? computeHeadToHead(entryA!, nameB) : [];
   const commons = bothRegistered ? computeCommonOpponents(entryA!, entryB!).slice(0, 8) : [];
   const isPendingLive = !cancelled && !result && !!isEventLive;
+  // 両者ともデータ無しの簡易表示用: MatchupTapeと同じカード単体ルールで
+  // 左右共通の選手名サイズを1回だけ算出して共有する。
+  const sharedFallbackNameSize = Math.min(fighterNameSize(nameA), fighterNameSize(nameB));
 
   // 情報価値のあるバッジ(中止・変更/TITLE/再戦)のみ出す。「注目カード」は廃止。
   let tag: { label: string; cls: string } | null = null;
@@ -122,7 +121,6 @@ export default function EventBoutCardV2({
               ? buildTapeData(nameB, slugB, entryB!, { withLast5: true, resultMark: resultMarkFor(nameB, result) })
               : buildNoDataTapeData(nameB, slugB, { resultMark: resultMarkFor(nameB, result) })
           }
-          nameSizeOverride={nameSizeOverride}
         />
       ) : (
         <div className={styles.tape}>
@@ -130,27 +128,25 @@ export default function EventBoutCardV2({
               倒す。片方でもデータがあればこの分岐には来ず、上のMatchupTape側で
               「データあり=通常表示 / データなし=データなし表示」を出す。
               未登録選手のミニマル表示も登録済みカード(MatchupTape)と同じ
-              名前描画・サイズ規則に揃える。ページ単位のnameSizeOverrideが
-              渡されている場合は必ずそれを使い、このカード単体で独自に
-              サイズを決め直さない(戦績なし簡易カードだけ他カードよりサイズが
-              大きくなるバグの原因だったため)。 */}
+              名前描画・サイズ規則(カード単体で左右共通サイズ、2026-07-22統一)に
+              揃える。左右で別サイズ・別ロジックにしないこと。 */}
           <div className={`${styles.na} ${styles.cornerRed}`}>
             {slugA ? (
               <a href={`/fighters/${slugA}`}>
-                <FighterNameText name={nameA} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+                <FighterNameText name={nameA} fontSize={sharedFallbackNameSize} />
               </a>
             ) : (
-              <FighterNameText name={nameA} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+              <FighterNameText name={nameA} fontSize={sharedFallbackNameSize} />
             )}
           </div>
           <div className={styles.vs}>VS</div>
           <div className={`${styles.nb} ${styles.cornerBlue}`}>
             {slugB ? (
               <a href={`/fighters/${slugB}`}>
-                <FighterNameText name={nameB} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+                <FighterNameText name={nameB} fontSize={sharedFallbackNameSize} />
               </a>
             ) : (
-              <FighterNameText name={nameB} fontSize={nameSizeOverride ?? Math.min(fighterNameSize(nameA), fighterNameSize(nameB))} />
+              <FighterNameText name={nameB} fontSize={sharedFallbackNameSize} />
             )}
           </div>
         </div>
