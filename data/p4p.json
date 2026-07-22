@@ -162,8 +162,8 @@
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 5,
-        "losses": 2,
+        "wins": 11,
+        "losses": 6,
         "draws": 0
       },
       "lastFight": "2026-06-06",
@@ -200,8 +200,8 @@
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 6,
-        "losses": 0,
+        "wins": 7,
+        "losses": 1,
         "draws": 0
       },
       "lastFight": "2026-03-07",
@@ -238,8 +238,8 @@
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 2,
-        "losses": 2,
+        "wins": 14,
+        "losses": 10,
         "draws": 0
       },
       "lastFight": "2026-06-06",
@@ -277,7 +277,7 @@
       "defenseCount": null,
       "record": {
         "wins": 7,
-        "losses": 3,
+        "losses": 4,
         "draws": 0
       },
       "lastFight": "2025-12-31",
@@ -295,7 +295,7 @@
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 1,
+        "wins": 4,
         "losses": 1,
         "draws": 0
       },
@@ -352,8 +352,8 @@
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 3,
-        "losses": 2,
+        "wins": 6,
+        "losses": 3,
         "draws": 0
       },
       "lastFight": "2026-04-12",
@@ -466,8 +466,8 @@
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 3,
-        "losses": 2,
+        "wins": 8,
+        "losses": 8,
         "draws": 0
       },
       "lastFight": "2026-03-07",
@@ -542,7 +542,7 @@
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 2,
+        "wins": 4,
         "losses": 2,
         "draws": 0
       },
@@ -567,8 +567,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1508.5934793396752
     },
@@ -605,8 +605,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1507.1155501461287
     },
@@ -681,8 +681,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1499.0579680153535
     },
@@ -694,8 +694,8 @@
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 4,
-        "losses": 3,
+        "wins": 6,
+        "losses": 7,
         "draws": 0
       },
       "lastFight": "2026-07-18",
@@ -733,7 +733,7 @@
       "defenseCount": null,
       "record": {
         "wins": 1,
-        "losses": 1,
+        "losses": 2,
         "draws": 0
       },
       "lastFight": "2025-12-31",
@@ -871,8 +871,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "up",
-        "positions": 6
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1481.0419336491127
     },
@@ -1094,13 +1094,13 @@
       "defenseCount": null,
       "record": {
         "wins": 2,
-        "losses": 0,
+        "losses": 1,
         "draws": 0
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1453.378883952685
     },
@@ -1213,8 +1213,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1439.8694981672095
     },
@@ -1246,13 +1246,13 @@
       "defenseCount": null,
       "record": {
         "wins": 2,
-        "losses": 1,
+        "losses": 2,
         "draws": 0
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 2
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1436.7615589318639
     },
@@ -1308,8 +1308,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1432.6723960220527
     },
@@ -1327,8 +1327,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1429.0963629852072
     },
@@ -1371,5 +1371,6 @@
       "internalScore": 1416.3041273157125
     }
   ],
-  "defenseDataIssues": []
+  "defenseDataIssues": [],
+  "recordDataIssues": []
 }

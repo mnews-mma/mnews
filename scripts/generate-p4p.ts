@@ -160,10 +160,20 @@ function runOnce(): P4PFile {
     throw new Error("[FATAL] data/rankings.jsonからalgorithmVersionを取得できません");
   }
 
+  // RIZIN通算戦績(階級スコープなし)。engine.tsのbuildDisplayEntriesはRIZIN MMA
+  // 全試合(階級を問わない)からwins/losses/drawsを積むため、これがそのまま
+  // 「RIZIN通算」になる。data/rankings.json側のrecordは階級移籍選手について
+  // 階級スコープ済みなのでP4Pでは使わない(p4pFile.tsのBuildP4PFileInputの
+  // コメント参照)。
+  const allRizinRecords = new Map(
+    [...displayMap.entries()].map(([slug, d]) => [slug, { wins: d.wins, losses: d.losses, draws: d.draws }])
+  );
+
   const file = buildP4PFile({
     rankings,
     championRawRatings,
     defenseData: CHAMPION_DEFENSES,
+    allRizinRecords,
     // 壁時計非依存(指示書§4系の既存方針を踏襲): updatedAtはdata/rankings.json
     // 側の最新updatedAtをそのまま転記する(このスクリプト自身の実行時刻は使わない)。
     updatedAt: Object.values(rankings).reduce((m, d) => (d.updatedAt > m ? d.updatedAt : m), ""),
@@ -203,6 +213,10 @@ function runOnce(): P4PFile {
   const errors = [
     ...checkP4PAllChampionsPresent(withDeltas, expectedChampionSlugs),
     ...checkP4PPublishedDivisionsOnly(withDeltas),
+    // RIZIN通算戦績が1件でも解決できていない場合は書き込みを中止する。
+    // 階級スコープ済み戦績にフォールバックしたまま公開すると、P4P内で
+    // 「RIZIN通算の選手」と「その階級だけの選手」が混在し意味が壊れるため。
+    ...file.recordDataIssues,
   ];
   if (errors.length > 0) {
     console.error("[FATAL] P4P自己検証失敗:");
