@@ -28,7 +28,6 @@ interface ResolvedP4PEntry {
   nameJa: string;
   displayRank: number;
   division: string;
-  tier: "champion" | "challenger";
   record: { wins: number; losses: number; draws: number };
   lastFight: string | null;
   // P4Pはrating点数(内部非公開のzスコア)の概念を持たないため、「前回比」は
@@ -51,7 +50,6 @@ export default async function PoundForPoundRankingPage() {
         nameJa,
         displayRank: resolved.length + 1,
         division: e.division,
-        tier: e.tier,
         record: e.record,
         lastFight: e.lastFight,
         rankPositionDelta: e.rankPositionDelta,
@@ -127,12 +125,12 @@ export default async function PoundForPoundRankingPage() {
                 </thead>
                 <tbody>
                   {view.map((e) => (
-                    <tr key={e.fighterId} style={e.tier === "champion" ? { background: "rgba(194,154,75,0.1)" } : undefined}>
+                    <tr key={e.fighterId}>
                       <td
                         style={{
                           fontFamily: "var(--mono)",
                           fontWeight: 800,
-                          color: e.tier === "champion" ? "var(--gold, #c29a4b)" : e.displayRank <= 3 ? "var(--accent)" : "var(--fg)",
+                          color: e.displayRank <= 3 ? "var(--accent)" : "var(--fg)",
                         }}
                       >
                         {e.displayRank}
@@ -141,11 +139,6 @@ export default async function PoundForPoundRankingPage() {
                         <a href={`/fighters/${e.fighterId}`} className="opponent-link">
                           {e.nameJa}
                         </a>
-                        {e.tier === "champion" && (
-                          <span style={{ marginLeft: 6, fontSize: 10, color: "var(--gold, #c29a4b)", fontWeight: 700 }}>
-                            王者
-                          </span>
-                        )}
                       </td>
                       <td style={{ fontSize: 11, color: "var(--muted)", whiteSpace: "nowrap" }}>
                         {e.division}
@@ -167,9 +160,8 @@ export default async function PoundForPoundRankingPage() {
         )}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
-          王者・挑戦者を区別せず、階級を超えた強さ(rawRatingの絶対値)だけで一本に並べています。王者(RIZIN公式が認定する現王者)は
-          必ず上位に来るとは限りません。戦績は階級を問わないRIZIN通算です(階級別ランキングの戦績は、階級を移った選手についてはその階級での
-          戦績に絞っているため、数字が異なることがあります)。
+          王座の有無を問わず、階級を超えた強さ(rawRatingの絶対値)だけで一本に並べています。戦績は階級を問わないRIZIN通算です
+          (階級別ランキングの戦績は、階級を移った選手についてはその階級での戦績に絞っているため、数字が異なることがあります)。
         </p>
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
           <strong style={{ color: "var(--fg)" }}>階級別ランキングとの違い:</strong>{" "}
