@@ -10,17 +10,29 @@
 // 「長い側基準で両方縮小」になる。CSSの自動縮小(clamp/vw)はSatori非対応の
 // ため使わず、決定的計算で揃える。
 const NAME_LINE_BUDGET_PX = 105;
+// nowrap(単語途中で折らない)を強制するトークン長の上限。これを超えるトークンは
+// renderWrappableNameがnowrap化せず、通常のCJK折り返し(文字単位で任意の位置に
+// 折れる)にフォールバックする。fighterNameSize()もこの挙動に合わせて計算する
+// 必要があるため、定数はここ(react非依存のvsMath)に置きrenderWrappableNameが
+// import する = 折り返しルールの単一ソース。
+export const NOWRAP_TOKEN_MAX_LEN = 10;
 // Web幅(/dream・/vsのオンページカード)側の選手名フォントサイズ天井。
 // 単一定数で持ち、カード間で天井を必ず共有する(2026-07-20)。
 export const CEILING_WEB = 20;
 const NAME_SIZE_MIN = 11;
 
 export function fighterNameSize(name: string): number {
-  // 折り返し可能な単位: スペース区切り+「・」の直後(・は前の単位末尾に残す)
+  // 折り返し可能な単位: スペース区切り+「・」の直後(・は前の単位末尾に残す)。
+  // さらに、NOWRAP_TOKEN_MAX_LENを超えるトークンはrenderWrappableNameがnowrap化
+  // しない(=文字単位でどこでも折れる)ため、ここでも1文字ずつの単位に分解する。
+  // これを忘れると「区切りの無い長い名前」を折り返し不能とみなして極端に小さい
+  // サイズを返し、全カード共通サイズ(GLOBAL_FIGHTER_NAME_SIZE)まで巻き添えで
+  // 引き下げてしまう(2026-07-22の11px事故の真因)。
   const units = name
     .split(/\s+/)
     .filter(Boolean)
-    .flatMap((w) => w.split(/(?<=・)/));
+    .flatMap((w) => w.split(/(?<=・)/))
+    .flatMap((u) => ([...u].length > NOWRAP_TOKEN_MAX_LEN ? [...u] : [u]));
   const lens = units.map((u) => [...u].length);
   const total = lens.reduce((a, b) => a + b, 0);
   if (total === 0) return CEILING_WEB;

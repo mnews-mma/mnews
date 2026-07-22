@@ -123,12 +123,11 @@ function main() {
     }
   }
 
-  // (e) Web側(/dream・/vs)のページとVsCardが、廃止済みのページ側サイズ上書き
-  //     (nameSizeOverride prop / GLOBAL_FIGHTER_NAME_SIZE)を再導入していない
-  //     こと(2026-07-22統一: Web側の選手名サイズはMatchupTape内のカード単体
-  //     ルールに一本化。選手個別ページの次戦カードと同一仕様)。詳細な検査は
-  //     check-event-namesize-override.ts側に集約し、ここでは/dream・/vs固有の
-  //     ファイルだけを重ねて検査する。
+  // (e) Web側(/dream・/vs)のページとVsCardが、独自のサイズ計算
+  //     (fighterNameSize直呼び)を持ち込んでいないこと。Web側の選手名サイズは
+  //     GLOBAL_FIGHTER_NAME_SIZE(events.ts)の単一値で、MatchupTapeが参照する。
+  //     詳細はcheck-event-namesize-override.ts側に集約し、ここでは
+  //     /dream・/vs固有のファイルだけを重ねて検査する。
   const WEB_PAGE_FILES = [
     "src/app/dream/page.tsx",
     "src/app/vs/[slugA]/[slugB]/page.tsx",
@@ -143,8 +142,8 @@ function main() {
     const content = fs.readFileSync(file, "utf8");
     for (const line of content.split("\n")) {
       const code = line.replace(/\/\/.*$/, "");
-      if (/nameSizeOverride\s*[=:?,]/.test(code) || /\bGLOBAL_FIGHTER_NAME_SIZE\b/.test(code)) {
-        violations.push(`${rel}: 廃止済みのページ側サイズ上書き(nameSizeOverride/GLOBAL_FIGHTER_NAME_SIZE)の再導入を検出: ${line.trim()}`);
+      if (/fighterNameSize\s*\(/.test(code) || /nameSizeOverride\s*[=:?,]/.test(code)) {
+        violations.push(`${rel}: ページ/カード単位の独自サイズ計算を検出(GLOBAL_FIGHTER_NAME_SIZEに統一): ${line.trim()}`);
       }
     }
   }

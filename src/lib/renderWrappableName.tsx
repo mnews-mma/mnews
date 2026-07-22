@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { NOWRAP_TOKEN_MAX_LEN } from "./vsMath";
 
 // 選手名の折り返しは中黒「・」やスペースの位置でのみ発生させ、単語(トークン)
 // 途中で割れないようにする(区切りで分割しnowrapブロック化)。ただし区切りの
@@ -8,8 +9,6 @@ import type { ReactNode } from "react";
 // BoutCard.tsx(大会ページ・夢のカード)・FighterVisuals.tsx(選手ページ次戦)・
 // MatchupTape.tsx(VSカード系v2の名前描画)で使う共有ヘルパー=名前折り返しの
 // 単一実装(循環import回避のため単独ファイルに切り出し)。
-const NOWRAP_TOKEN_MAX_LEN = 10;
-
 export function renderWrappableName(name: string): ReactNode {
   const parts = name.split(/(・|\s+)/).filter((p) => p !== "");
   return parts.map((part, i) =>

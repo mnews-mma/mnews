@@ -1,6 +1,6 @@
 import styles from "@/styles/matchup.module.css";
 import TugBar from "./TugBar";
-import { fighterNameSize } from "@/lib/vsMath";
+import { GLOBAL_FIGHTER_NAME_SIZE } from "@/lib/events";
 import { renderWrappableName } from "@/lib/renderWrappableName";
 import type { Result, TapeFighterData } from "./matchupData";
 
@@ -81,13 +81,9 @@ export default function MatchupTape({
   compact?: boolean;
 }) {
   const hasMethodCounts = !!left.methodCounts || !!right.methodCounts;
-  // 選手名サイズの単一ルール(2026-07-22統一): カード単体で決める。
-  // 左右で別々のサイズにならないよう、長い方の名前が収まるサイズに揃える
-  // (天井はvsMath.tsのCEILING_WEB)。選手個別ページの次戦カードと同じ見た目に
-  // なるよう、ページ側からのnameSizeOverride(旧GLOBAL_FIGHTER_NAME_SIZE)は
-  // 廃止した。ページ単位/全イベント横断の固定サイズへ差し戻さないこと
-  // (check-event-namesize-override.ts / check-dream-vs-namesize-ceiling.tsで検査)。
-  const sharedNameSize = Math.min(fighterNameSize(left.name), fighterNameSize(right.name));
+  // 選手名サイズはサイト全体で単一(2026-07-22)。カード単体・ページ単体で
+  // 計算し直さない(カードごと/ページごとに大きさが変わる回帰の温床。過去5回再発)。
+  const sharedNameSize = GLOBAL_FIGHTER_NAME_SIZE;
 
   return (
     <div className={`${styles.tape}${compact ? ` ${styles.tapeCompact}` : ""}`}>

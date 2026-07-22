@@ -1,9 +1,8 @@
 import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
-import type { BoutResult } from "@/lib/events";
+import { GLOBAL_FIGHTER_NAME_SIZE, type BoutResult } from "@/lib/events";
 import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
 import styles from "@/styles/matchup.module.css";
 import MatchupTape, { FighterNameText } from "./MatchupTape";
-import { fighterNameSize } from "@/lib/vsMath";
 import { CommonOpponentsToggle } from "./CommonOpponentsList";
 import HeadToHeadBanner from "./HeadToHeadBanner";
 import { buildTapeData, buildNoDataTapeData, type TapeFighterData } from "./matchupData";
@@ -77,9 +76,9 @@ export default function EventBoutCardV2({
   const headToHead = bothRegistered ? computeHeadToHead(entryA!, nameB) : [];
   const commons = bothRegistered ? computeCommonOpponents(entryA!, entryB!).slice(0, 8) : [];
   const isPendingLive = !cancelled && !result && !!isEventLive;
-  // 両者ともデータ無しの簡易表示用: MatchupTapeと同じカード単体ルールで
-  // 左右共通の選手名サイズを1回だけ算出して共有する。
-  const sharedFallbackNameSize = Math.min(fighterNameSize(nameA), fighterNameSize(nameB));
+  // 両者ともデータ無しの簡易表示用。MatchupTapeと同じ全サイト単一サイズを使う
+  // (この分岐だけ別サイズになる回帰が過去に発生している)。
+  const sharedFallbackNameSize = GLOBAL_FIGHTER_NAME_SIZE;
 
   // 情報価値のあるバッジ(中止・変更/TITLE/再戦)のみ出す。「注目カード」は廃止。
   let tag: { label: string; cls: string } | null = null;
