@@ -95,9 +95,8 @@ export default async function PoundForPoundRankingPage() {
       </div>
 
       <div style={{ padding: "16px 24px 8px", maxWidth: 760, fontSize: 12, color: "var(--muted)", lineHeight: 1.8 }}>
-        RIZIN非公式。mnews.jp独自算出。RIZINに公式のP4Pランキングはありません。階級別ランキング({RATING_NAME})の元になっている
-        レート(rawRating)をそのまま使い、階級の壁を取り払って全選手を横並びにした参考指標です。
-        階級別ランキングとは順位が食い違うことがあります(下記の注記を参照)。
+        RIZIN非公式。mnews.jp独自算出。RIZINに公式のP4Pランキングはありません。階級別ランキング({RATING_NAME})をもとに、
+        階級の壁を取り払って全選手を横並びにした参考指標です(階級別ランキングの順位はそのまま維持しています)。
         評価の考え方は<a href="/rankings/methodology" style={{ color: "var(--accent)" }}>ランキングについて</a>で公開しています。
         {data && (
           <span style={{ display: "block", fontSize: 10, opacity: 0.7, marginTop: 4 }}>
@@ -160,14 +159,11 @@ export default async function PoundForPoundRankingPage() {
         )}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
-          王座の有無を問わず、階級を超えた強さ(rawRatingの絶対値)だけで一本に並べています。戦績は階級を問わないRIZIN通算です
-          (階級別ランキングの戦績は、階級を移った選手についてはその階級での戦績に絞っているため、数字が異なることがあります)。
-        </p>
-        <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
-          <strong style={{ color: "var(--fg)" }}>階級別ランキングとの違い:</strong>{" "}
+          王座の有無を問わず、階級を超えた強さだけで一本に並べています。
           <a href="/rankings" style={{ color: "var(--accent)" }}>階級別ランキング</a>
-          は「その階級の中で誰が強いか」を、直接対決の結果を優先して決めています。P4Pは「階級を問わず誰が強いか」を、
-          対戦相手を問わず積み上げたレートの絶対値だけで決めています。このため両者で順位が食い違うことがあります。
+          の順位は必ず維持しており、同じ階級の中で前後が入れ替わることはありません。
+          戦績は階級を問わないRIZIN通算です(階級別ランキングの戦績は、階級を移った選手についてはその階級での戦績に絞っているため、
+          数字が異なることがあります)。
         </p>
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
           P4Pは主観的・参考指標であり、階級別ランキングの正式な代替ではありません。
