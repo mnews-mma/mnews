@@ -1,4 +1,5 @@
 import { SourceKey } from "./sources";
+import { fighterNameSize } from "./vsMath";
 import { fitName, type FitOpts } from "./og/fitName";
 
 export type EventStatus = "upcoming" | "live" | "completed";
@@ -775,13 +776,27 @@ export const EVENTS: MEvent[] = [
   // PROFESSIONAL SHOOTO 2026 Vol.5(2026-07-20)は開催済み → EVENT_RESULTS(shooto-2026-vol5)へ移動。
 ];
 
-// (廃止・2026-07-22) GLOBAL_FIGHTER_NAME_SIZE: Web側の選手名フォントを全イベント
-// 横断の単一サイズに固定する定数だったが、選手個別ページの次戦カードと
-// サイズが揃わない(ページによって大きさが違う)ため廃止。Web側の選手名サイズは
-// カード単体ルール(MatchupTape内: 左右の長い方が収まるサイズ・天井は
-// vsMath.tsのCEILING_WEB)に一本化した。ページ/全体固定サイズへ差し戻さないこと
-// (scripts/check-event-namesize-override.tsが検査)。OGP側の天井
-// OG_DREAM_VS_CEILING(下)は従来通り維持する。
+// Web側(オンページ)の選手名フォントサイズ。サイト全体で「常にこの1つの値」を
+// 使う(2026-07-22 再確立)。イベントページ内のカード間・ページ間(選手ページの
+// 次戦カード / /events / /vs / /dream)のいずれでもサイズが変わらないことが
+// ユーザー要件。EVENTS(全大会・全カード)の中で最も厳しい名前が2行で収まる
+// サイズを算出し、それを全カードに適用する。
+//
+// ★重要: この値は「最も厳しい1名」で決まるため、折り返し計算のバグや極端な
+// 表記ゆれ1件でサイト全体が縮む。実際に2026-07-22、区切りの無い長い名前を
+// fighterNameSize()が折り返し不能と誤判定して全体が11pxまで落ちた。
+// そのため scripts/check-event-namesize-override.ts が下限(GLOBAL_NAME_SIZE_FLOOR)
+// を検査し、下回ったらビルドを止めて原因の名前を表示する。
+export const GLOBAL_FIGHTER_NAME_SIZE = EVENTS.reduce((min, event) => {
+  return event.bouts.reduce(
+    (m, b) => Math.min(m, fighterNameSize(b.fighterA), fighterNameSize(b.fighterB)),
+    min
+  );
+}, 20);
+
+// GLOBAL_FIGHTER_NAME_SIZEの許容下限。これを下回る=どこかの名前が異常に
+// 折り返し不能と判定されている疑い(全カードが巻き添えで小さくなる)。
+export const GLOBAL_NAME_SIZE_FLOOR = 13;
 
 // 夢のカード/VSカード(/dream・/vs)公開OGP(1200x630)の選手名フォントサイズを
 // 全カード横断で単一値に統一するための天井(2026-07-20)。GLOBAL_FIGHTER_NAME_SIZE
