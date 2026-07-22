@@ -30,6 +30,26 @@ export const ELIGIBILITY_MIN_FIGHTS = 3;
 export const ELIGIBILITY_MIN_WINS = 1;
 export const ELIGIBILITY_MAX_INACTIVE_MONTHS = 18;
 
+// 2026-07-22追加: 「確立ベテラン」の定義(活動空白カットオフを無効化する下限)。
+// ELIGIBILITY_MIN_FIGHTSとは別概念であることを明示するために定数として分離した。
+//
+// 経緯: 2026-07-19に入った確立ベテラン例外(resolveEligibilityScope)は、この判定に
+// ELIGIBILITY_MIN_FIGHTS(=3)を流用していた。しかしそちらは「掲載資格の試合数バー」
+// であって「確立選手の定義」ではなく、値が3で一致していたのは偶然の結合。例外の意図
+// (ケース=空白前7戦は通す / 中村大介=空白前2戦は弾く)は4〜7のどの閾値でも満たせるため、
+// 3である必然性は無かった。分離しないと、将来ELIGIBILITY_MIN_FIGHTSを触ったときに
+// 確立ベテラン例外の境界が黙って一緒に動く。
+//
+// 閾値3の実害: 「空白前ちょうど3戦 + 復帰1戦」が例外に吸い込まれ、この例外が塞ぐ
+// はずだった中村大介クラスの薄いカムバックを境界上で再び通してしまう(既存テスト(iv)が
+// これを検出して2026-07-19から赤になっていた)。
+//
+// 4を採用した根拠は「(iv)を緑に戻す最小値」かつ「本番の掲載結果が一切変わらない値」
+// であること(閾値3〜6の実測比較による。詳細はPR本文の閾値表)。この値を動かすと
+// ランキングの掲載可否が変わりうるため、変更時は--mode=data-correctionのdry-runで
+// 差分を確認すること。
+export const ELIGIBILITY_ESTABLISHED_VETERAN_MIN_FIGHTS = 4;
+
 // 2026-07-13追加(v4): 通算3戦未満でも、直近活動が濃い選手を拾うための代替基準。
 // 「通算3戦以上」OR「ELIGIBILITY_RECENT_YEAR_START年以降にELIGIBILITY_RECENT_MIN_FIGHTS戦以上」
 // のいずれかを満たせば試合数の要件をクリアする(1勝以上・18ヶ月以内は従来どおり必須)。

@@ -30,6 +30,7 @@ import { computeExpiredH2HEdges } from "../src/lib/mnewsRating/rankAttribution";
 import {
   ALGORITHM_VERSION,
   DECAY_FLOOR,
+  ELIGIBILITY_ESTABLISHED_VETERAN_MIN_FIGHTS,
   ELIGIBILITY_RECENT_MIN_FIGHTS,
   ELIGIBILITY_RECENT_YEAR_START,
 } from "../src/lib/mnewsRating/constants";
@@ -1018,6 +1019,47 @@ function makeResolver(map: Record<string, string>) {
     !isStandardEligible(legacyWithGapComeback, "フライ級", legacyRecentDate, asOf),
     "(iv): 18ヶ月超の活動空白より前の戦歴は資格カウントから除外され、復帰1戦のみでは資格を得ない"
   );
+
+  // ── 確立ベテラン例外(2026-07-19導入)の境界テスト(2026-07-22追加) ──
+  // この例外は「空白前に十分な試合数を積んだ確立選手には活動空白カットオフを
+  // 効かせない」もので、閾値はELIGIBILITY_ESTABLISHED_VETERAN_MIN_FIGHTS。
+  // 導入時は閾値にELIGIBILITY_MIN_FIGHTS(=3)を流用しており、そのせいで
+  // 「空白前ちょうど3戦+復帰1戦」が例外に吸い込まれ、直上の(iv)が守っていた
+  // 性質(中村大介クラスの薄いカムバックを弾く)を境界上で破っていた。
+  // 境界が偶然の結合で決まっていたことが原因なので、境界そのものを固定する。
+  // 期待値は定数から導出し、閾値を動かしてもテストが自動追随するようにしている。
+  {
+    // 空白前にn戦(いずれも勝ち、間隔12ヶ月=18ヶ月未満で地続き)を積み、
+    // その後18ヶ月超の空白を挟んで復帰1戦、という共通フィクスチャ。
+    const veteranWithComeback = (preGapFights: number): FighterBoutSummary[] => {
+      const pre: FighterBoutSummary[] = [];
+      for (let i = 0; i < preGapFights; i++) {
+        pre.push({ date: `${2022 - (preGapFights - 1 - i)}-01-01`, isWin: true, opponentNode: `opp-pre-${i}` });
+      }
+      return [...pre, { date: legacyRecentDate, isWin: true, opponentNode: "opp-comeback" }];
+    };
+    const bar = ELIGIBILITY_ESTABLISHED_VETERAN_MIN_FIGHTS;
+
+    check(
+      isStandardEligible(veteranWithComeback(bar), "フライ級", legacyRecentDate, asOf),
+      `確立ベテラン例外: 空白前が閾値ちょうど(${bar}戦)なら例外が適用され、空白前の戦歴が資格カウントに残る`
+    );
+    check(
+      !isStandardEligible(veteranWithComeback(bar - 1), "フライ級", legacyRecentDate, asOf),
+      `確立ベテラン例外: 空白前が閾値未満(${bar - 1}戦)なら例外は適用されず、活動空白カットオフが効いて資格を得ない`
+    );
+    // 中村大介型(空白前2戦+復帰1戦)。この例外が塞ぐべきではない側=
+    // 例外導入前から弾かれ続けなければならない回帰ガード。
+    check(
+      !isStandardEligible(veteranWithComeback(2), "フライ級", legacyRecentDate, asOf),
+      "確立ベテラン例外: 中村大介型(空白前2戦+復帰1戦)は例外の対象外で、引き続き資格を得ない"
+    );
+    // ケース型(空白前7戦+復帰1戦)。この例外がそもそも救うために作られた側。
+    check(
+      isStandardEligible(veteranWithComeback(7), "フライ級", legacyRecentDate, asOf),
+      "確立ベテラン例外: ケース型(空白前7戦+復帰1戦)は引き続き例外の対象で資格を保つ"
+    );
+  }
 }
 
 // ── 23. (v) 非対称傾斜Elo ────────────────────────────────────────────
