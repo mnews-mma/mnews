@@ -72,6 +72,10 @@ export interface P4PFile {
   algorithmVersion: number; // 参照したdata/rankings.jsonの各階級algorithmVersion(全階級一致が前提)
   entries: P4PEntry[]; // p4pRank昇順、全候補(表示キャップはページ側で適用)
   defenseDataIssues: string[]; // 現王者で防衛回数データが無かった場合の明細(空なら問題なし)
+  // RIZIN通算戦績(allRizinRecords)を解決できなかった選手の明細(空なら問題なし)。
+  // 空でない場合はscripts/generate-p4p.ts側でexit 1する(階級スコープ済み戦績と
+  // RIZIN通算戦績が混在した状態で公開しないため)。
+  recordDataIssues: string[];
 }
 
 // data/rankings.jsonのentries由来の候補(非王者)。
@@ -187,6 +191,18 @@ export interface BuildP4PFileInput {
   rankings: RankingsFile;
   championRawRatings: ChampionRawRatingInput[]; // scripts/generate-p4p.ts側のエンジン読み取り専用再計算で取得
   defenseData: ChampionDefenseEntry[];
+  // RIZIN通算戦績(階級スコープなし)。scripts/generate-p4p.ts側のエンジン
+  // 読み取り専用再計算(buildDisplayEntries)から渡す。
+  //
+  // data/rankings.jsonのrecordを使わない理由(2026-07-22): あちらは
+  // update-mnews-rating.tsのapplyEligibilityScopeToRecordにより、階級移籍選手に
+  // ついて「その階級での戦績」へスコープ済み(fighterDivisions.tsの
+  // eligibilityScopeStartDate/recordDisplayExclusions)。階級別ランキングでは
+  // それが正しいが、P4Pは階級を跨いだ通算rawRatingで順位を決める指標なので、
+  // 隣に表示する戦績も同じ「RIZIN通算」でないと意味が食い違う
+  // (例: 扇久保博正はフライ級スコープだと5勝2敗だがRIZIN通算では11勝6敗、
+  // 元谷友貴はフライ級スコープだと2勝2敗だがバンタム級戦を含む通算では14勝10敗)。
+  allRizinRecords: Map<string, RankingEntryRecord>;
   updatedAt: string; // ISO(壁時計非依存にするため呼び出し側から渡す)
   algorithmVersion: number;
 }
@@ -212,6 +228,20 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
   const championRecords = collectChampionRecords(input.rankings);
   const { champions, defenseDataIssues } = buildChampionEntries(input.championRawRatings, championRecords, input.defenseData);
 
+  // 戦績はdata/rankings.json由来の階級スコープ済みの値ではなく、必ずRIZIN通算
+  // (allRizinRecords)を使う(BuildP4PFileInputのコメント参照)。解決できない
+  // slugは0埋め・階級スコープ値へのフォールバックをせず、理由付きで
+  // recordDataIssuesに積む(呼び出し側がexit 1する)。
+  const recordDataIssues: string[] = [];
+  const resolveRecord = (slug: string, division: MnewsDivision, fallback: RankingEntryRecord): RankingEntryRecord => {
+    const rizinTotal = input.allRizinRecords.get(slug);
+    if (!rizinTotal) {
+      recordDataIssues.push(`${division}:${slug} — RIZIN通算戦績がエンジン再計算で解決できず(階級スコープ済み戦績との混在を避けるため生成を中止する)`);
+      return fallback;
+    }
+    return rizinTotal;
+  };
+
   const combined: P4PEntry[] = [
     ...champions.map((c) => ({
       fighterId: c.slug,
@@ -220,7 +250,7 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
       divisionRank: "champion" as const,
       tier: "champion" as const,
       defenseCount: c.defenseCount,
-      record: c.record,
+      record: resolveRecord(c.slug, c.division, c.record),
       lastFight: c.lastFight,
       rankPositionDelta: null,
       internalScore: c.rawRating,
@@ -232,7 +262,7 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
       divisionRank: c.divisionRank,
       tier: "challenger" as const,
       defenseCount: null,
-      record: c.record,
+      record: resolveRecord(c.slug, c.division, c.record),
       lastFight: c.lastFight,
       rankPositionDelta: null,
       internalScore: c.rawRating,
@@ -251,6 +281,7 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
     algorithmVersion: input.algorithmVersion,
     entries,
     defenseDataIssues,
+    recordDataIssues,
   };
 }
 

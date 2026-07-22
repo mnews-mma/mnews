@@ -28,7 +28,6 @@ interface ResolvedP4PEntry {
   nameJa: string;
   displayRank: number;
   division: string;
-  divisionLabel: string; // "王者" | "1位" 等
   tier: "champion" | "challenger";
   record: { wins: number; losses: number; draws: number };
   lastFight: string | null;
@@ -52,7 +51,6 @@ export default async function PoundForPoundRankingPage() {
         nameJa,
         displayRank: resolved.length + 1,
         division: e.division,
-        divisionLabel: e.divisionRank === "champion" ? "王者" : `${e.divisionRank}位`,
         tier: e.tier,
         record: e.record,
         lastFight: e.lastFight,
@@ -123,7 +121,7 @@ export default async function PoundForPoundRankingPage() {
                     <th>選手</th>
                     <th style={{ width: 72 }}>階級</th>
                     <th style={{ width: 64 }}>前回比</th>
-                    <th style={{ width: 96 }}>戦績</th>
+                    <th style={{ width: 96 }}>RIZIN通算</th>
                     <th style={{ width: 100 }}>直近試合</th>
                   </tr>
                 </thead>
@@ -150,7 +148,7 @@ export default async function PoundForPoundRankingPage() {
                         )}
                       </td>
                       <td style={{ fontSize: 11, color: "var(--muted)", whiteSpace: "nowrap" }}>
-                        {e.division}{e.tier === "challenger" ? `${e.divisionLabel}` : ""}
+                        {e.division}
                       </td>
                       <td>
                         <RankPositionDeltaBadge delta={e.rankPositionDelta} />
@@ -170,7 +168,8 @@ export default async function PoundForPoundRankingPage() {
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
           王者・挑戦者を区別せず、階級を超えた強さ(rawRatingの絶対値)だけで一本に並べています。王者(RIZIN公式が認定する現王者)は
-          必ず上位に来るとは限りません。
+          必ず上位に来るとは限りません。戦績は階級を問わないRIZIN通算です(階級別ランキングの戦績は、階級を移った選手についてはその階級での
+          戦績に絞っているため、数字が異なることがあります)。
         </p>
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
           <strong style={{ color: "var(--fg)" }}>階級別ランキングとの違い:</strong>{" "}
