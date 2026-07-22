@@ -1,13 +1,17 @@
 // パウンドフォーパウンド(P4P)ランキングの生成ロジック(2026-07-22追加)。
 //
-// 設計方針(2026-07-21試算PR #172での人間レビューで確定): P4Pは主観的・興行的な
-// 指標のため、統計の純度よりも「MMAファンが見て違和感のない順位」を優先する。
-// - 公開4階級(PUBLISHED_DIVISIONS)の王者を必ずP4P 1〜4位に固定する。
-//   序列は(1)タイトル防衛回数降順→(2)通算勝率降順→(3)ドミナンスzスコア降順の
-//   タイブレーク。
-// - 5位以下(挑戦者)は、階級内平均・σからのドミナンスzスコアで階級横断に
-//   並べる。ただし同一階級内の順序は公開rank順(王者>1位>2位…)を絶対に
-//   逆転させない(clamp、running-min方式)。
+// 設計方針改訂(2026-07-22、王者ティア固定を撤回): 当初(2026-07-21試算PR #172)
+// は「王者を必ずP4P1〜4位に固定し、防衛回数→勝率でタイブレークする」設計
+// だったが、人間レビューで「防衛回数の重み付けは階級の厳しさを考慮しておらず、
+// かといって階級難易度まで加味すると複雑になりすぎる」との指摘を受け、
+// 王者ティアの固定枠を撤回した。現在の設計は以下のシンプルな1本のルールのみ:
+// - 全員(王者+挑戦者)を、階級内平均・σからのドミナンスzスコア(1本の指標)で
+//   階級横断にフラットに並べる。防衛回数・勝率は表示上の参考情報としては残すが、
+//   順位には一切使わない。
+// - ただし挑戦者(非王者)については、同一階級内の順序が公開rank順(1位>2位…)を
+//   絶対に逆転しないようclamp(running-min方式)をかける。王者は階級内の「公開
+//   rank」という概念を持たない(overlay設計、番号付きランキングの対象外)ため、
+//   clamp対象外(生のzスコアのままグローバル順位に参加する)。
 //
 // このモジュールはdata/rankings.json(既存Eloランキング)を読み取り専用の入力
 // とし、data/rankings.json自体・engine.ts・共有定数には一切影響しない
@@ -153,20 +157,23 @@ export interface ChampionTierEntry {
   lastFight: string | null;
   winRate: number | null;
   defenseCount: number | null;
-  scoreA: number; // タイブレークのみに使うドミナンスzスコア(挑戦者と同じ階級内平均/σ基準)
+  scoreA: number; // グローバル順位に使う王者本人のドミナンスzスコア(挑戦者と同じ階級内平均/σ基準)。clamp対象外。
 }
 
-// 王者ティアの序列: (1)防衛回数降順 (2)通算勝率降順 (3)ドミナンスzスコア降順。
-// 防衛回数・勝率が無い(null)場合は最下位側に回す(推定して埋めない)。
-export function buildChampionTier(
+// 王者ごとのドミナンスzスコア・戦績・防衛回数を算出する(順位付けはしない)。
+// 2026-07-22改訂: 防衛回数・通算勝率は表示上の参考情報として引き続き算出・
+// 保持するが、順位には使わない(王者どうしの序列も含め、全員を同じzスコア
+// 1本で比較する設計に変更したため)。防衛回数データが無い王者は取得不能を
+// 明示フラグする(0埋め・推定は禁止、championDefenses.ts参照)。
+export function buildChampionEntries(
   championRawRatings: ChampionRawRatingInput[],
   championRecords: Map<string, { record: RankingEntryRecord; lastFight: string | null }>,
   defenseData: ChampionDefenseEntry[],
   challengerStats: Map<MnewsDivision, { mean: number; sigma: number }>
-): { tier: ChampionTierEntry[]; defenseDataIssues: string[] } {
+): { champions: ChampionTierEntry[]; defenseDataIssues: string[] } {
   const defenseBySlug = new Map(defenseData.map((d) => [d.slug, d]));
   const issues: string[] = [];
-  const tier: ChampionTierEntry[] = [];
+  const champions: ChampionTierEntry[] = [];
   for (const champ of championRawRatings) {
     const recordInfo = championRecords.get(champ.slug);
     const record = recordInfo?.record ?? { wins: 0, losses: 0, draws: 0 };
@@ -177,7 +184,7 @@ export function buildChampionTier(
     }
     const s = challengerStats.get(champ.division);
     const scoreA = s && s.sigma !== 0 ? (champ.rawRating - s.mean) / s.sigma : 0;
-    tier.push({
+    champions.push({
       slug: champ.slug,
       division: champ.division,
       record,
@@ -187,16 +194,7 @@ export function buildChampionTier(
       scoreA,
     });
   }
-  tier.sort((a, b) => {
-    const da = a.defenseCount ?? -1;
-    const db = b.defenseCount ?? -1;
-    if (da !== db) return db - da;
-    const wa = a.winRate ?? -1;
-    const wb = b.winRate ?? -1;
-    if (wa !== wb) return wb - wa;
-    return b.scoreA - a.scoreA;
-  });
-  return { tier, defenseDataIssues: issues };
+  return { champions, defenseDataIssues: issues };
 }
 
 // 前回のp4p.jsonとの▲▼(順位番号)差分。既存の階級別ランキングの
@@ -248,20 +246,20 @@ function collectChampionRecords(rankings: RankingsFile): Map<string, { record: R
   return out;
 }
 
-// P4Pファイル本体を構築する(王者ティア固定 + 挑戦者clamp後interleave)。
+// P4Pファイル本体を構築する(2026-07-22改訂: 王者ティア固定を撤回。全員を
+// 同じドミナンスzスコア1本でフラットに並べる。挑戦者はclamp後のスコアを
+// 使うため、同一階級内の公開rank順は引き続き逆転しない。王者はclamp対象外
+// [公開rankという概念を持たないため]で、生のzスコアのままグローバル順位に
+// 参加する=場合によっては挑戦者より下位に来ることもある、という仕様変更)。
 export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
   const challengerCandidates = collectChallengerCandidates(input.rankings);
   const stats = divisionStats(challengerCandidates, input.championRawRatings);
   const scoredChallengers = scoreAndClampChallengers(challengerCandidates, stats);
   const championRecords = collectChampionRecords(input.rankings);
-  const { tier, defenseDataIssues } = buildChampionTier(input.championRawRatings, championRecords, input.defenseData, stats);
+  const { champions, defenseDataIssues } = buildChampionEntries(input.championRawRatings, championRecords, input.defenseData, stats);
 
-  const sortedChallengers = [...scoredChallengers].sort(
-    (a, b) => b.clampedScore - a.clampedScore || a.divisionRank - b.divisionRank
-  );
-
-  const entries: P4PEntry[] = [
-    ...tier.map((c) => ({
+  const combined: P4PEntry[] = [
+    ...champions.map((c) => ({
       fighterId: c.slug,
       division: c.division,
       p4pRank: 0, // 後で振り直す
@@ -273,7 +271,7 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
       rankPositionDelta: null,
       internalScore: c.scoreA,
     })),
-    ...sortedChallengers.map((c) => ({
+    ...scoredChallengers.map((c) => ({
       fighterId: c.slug,
       division: c.division,
       p4pRank: 0,
@@ -286,6 +284,20 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
       internalScore: c.clampedScore,
     })),
   ];
+  // 全員を同じinternalScore(ドミナンスzスコア、挑戦者はclamp後)で降順ソート。
+  // 同点タイブレーク: まず階級内順位(公開rank、王者は0扱い)昇順。clampは
+  // 意図的に同点(スコアが直前値まで引き下げられる)を作るため、同一階級内の
+  // 同点をfighterId(アルファベット順)で解決すると公開rank順が壊れ、
+  // verifyDivisionOrderInvariantが破れる。階級内順位で解決すれば同一階級内は
+  // 常に公開rank順のまま、異なる階級間の同点はどちらが先でも不変条件に影響
+  // しないため、最後にfighterIdで完全決定的にする。
+  const entries = combined.sort((a, b) => {
+    if (b.internalScore !== a.internalScore) return b.internalScore - a.internalScore;
+    const rankA = a.divisionRank === "champion" ? 0 : a.divisionRank;
+    const rankB = b.divisionRank === "champion" ? 0 : b.divisionRank;
+    if (rankA !== rankB) return rankA - rankB;
+    return a.fighterId.localeCompare(b.fighterId);
+  });
   entries.forEach((e, i) => {
     e.p4pRank = i + 1;
   });
@@ -299,16 +311,21 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
 }
 
 // ===== 自己検証(scripts/generate-p4p.ts側で呼び出し、破れたらexit 1) =====
+//
+// 2026-07-22改訂: 王者ティア固定を撤回したため、「王者が先頭N件を占める」
+// という不変条件は無くなった(王者が挑戦者より下位に来るのは仕様どおり)。
+// 代わりに「全公開階級の王者が必ずentriesに1件ずつ存在すること」(算出できな
+// かった王者が黙って消えていないか)を確認する。
 
-// 1. 公開4階級の王者がP4P先頭(王者数ぶん)を占めること。
-export function verifyChampionTierPosition(file: P4PFile, expectedChampionSlugs: string[]): string[] {
+// 1. rawRatingを算出できた王者が、全員entriesに含まれていること(位置は問わない)。
+export function verifyAllChampionsPresent(file: P4PFile, expectedChampionSlugs: string[]): string[] {
   const errors: string[] = [];
-  const actualHead = file.entries.slice(0, expectedChampionSlugs.length).map((e) => e.fighterId);
-  if (JSON.stringify(actualHead) !== JSON.stringify(expectedChampionSlugs)) {
-    errors.push(`王者ティアが先頭${expectedChampionSlugs.length}件に固定されていない(期待: ${expectedChampionSlugs.join(",")} / 実際: ${actualHead.join(",")})`);
+  const presentSlugs = new Set(file.entries.filter((e) => e.tier === "champion").map((e) => e.fighterId));
+  for (const slug of expectedChampionSlugs) {
+    if (!presentSlugs.has(slug)) errors.push(`王者${slug}がentriesに存在しない(消失の疑い)`);
   }
-  for (const e of file.entries.slice(expectedChampionSlugs.length)) {
-    if (e.tier === "champion") errors.push(`${e.fighterId}: 王者ティア以外の位置(p4pRank=${e.p4pRank})に王者tierのエントリが混入`);
+  if (presentSlugs.size !== expectedChampionSlugs.length) {
+    errors.push(`王者tierの件数が期待値と不一致(期待: ${expectedChampionSlugs.length} / 実際: ${presentSlugs.size})`);
   }
   return errors;
 }

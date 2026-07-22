@@ -3,28 +3,9 @@
   "algorithmVersion": 9,
   "entries": [
     {
-      "fighterId": "sheydullaev-rajabali",
-      "division": "フェザー級",
-      "p4pRank": 1,
-      "divisionRank": "champion",
-      "tier": "champion",
-      "defenseCount": 3,
-      "record": {
-        "wins": 7,
-        "losses": 0,
-        "draws": 0
-      },
-      "lastFight": "2026-04-12",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 2.130232742225238
-    },
-    {
       "fighterId": "sabatello-danny",
       "division": "バンタム級",
-      "p4pRank": 2,
+      "p4pRank": 1,
       "divisionRank": "champion",
       "tier": "champion",
       "defenseCount": 2,
@@ -35,15 +16,15 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
+        "kind": "up",
+        "positions": 1
       },
       "internalScore": 2.667743832217386
     },
     {
       "fighterId": "shinryu-makoto",
       "division": "フライ級",
-      "p4pRank": 3,
+      "p4pRank": 2,
       "divisionRank": "champion",
       "tier": "champion",
       "defenseCount": 0,
@@ -60,28 +41,28 @@
       "internalScore": 2.1436645568280683
     },
     {
-      "fighterId": "gustavo-luis",
-      "division": "ライト級",
-      "p4pRank": 4,
+      "fighterId": "sheydullaev-rajabali",
+      "division": "フェザー級",
+      "p4pRank": 3,
       "divisionRank": "champion",
       "tier": "champion",
-      "defenseCount": 0,
+      "defenseCount": 3,
       "record": {
-        "wins": 8,
-        "losses": 4,
+        "wins": 7,
+        "losses": 0,
         "draws": 0
       },
-      "lastFight": "2026-05-10",
+      "lastFight": "2026-04-12",
       "rankPositionDelta": {
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 1.6936868845804707
+      "internalScore": 2.130232742225238
     },
     {
       "fighterId": "ougikubo-hiromasa",
       "division": "フライ級",
-      "p4pRank": 5,
+      "p4pRank": 4,
       "divisionRank": 1,
       "tier": "challenger",
       "defenseCount": null,
@@ -100,7 +81,7 @@
     {
       "fighterId": "inoue-naoki",
       "division": "バンタム級",
-      "p4pRank": 6,
+      "p4pRank": 5,
       "divisionRank": 1,
       "tier": "challenger",
       "defenseCount": null,
@@ -115,6 +96,25 @@
         "positions": 0
       },
       "internalScore": 1.7497118602473045
+    },
+    {
+      "fighterId": "gustavo-luis",
+      "division": "ライト級",
+      "p4pRank": 6,
+      "divisionRank": "champion",
+      "tier": "champion",
+      "defenseCount": 0,
+      "record": {
+        "wins": 8,
+        "losses": 4,
+        "draws": 0
+      },
+      "lastFight": "2026-05-10",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1.6936868845804707
     },
     {
       "fighterId": "asakura-mikuru",

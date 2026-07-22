@@ -42,7 +42,7 @@ import {
   P4PFile,
 } from "../src/lib/mnewsRating/p4pFile";
 import {
-  checkP4PChampionTierPosition,
+  checkP4PAllChampionsPresent,
   checkP4PDivisionOrderInvariant,
   checkP4PPublishedDivisionsOnly,
 } from "../src/lib/rankings/requiredInvariants";
@@ -196,17 +196,12 @@ function runOnce(): P4PFile {
   };
 
   // 自己検証: 破れたら書き込み自体を止める(既存パイプラインのH2H不変条件
-  // チェックと同じ「書き込み前に必ず検証」の設計を踏襲)。
-  const expectedChampionSlugs = championRawRatings
-    .map((c) => c.slug)
-    // buildP4PFile内部と同じ順序(防衛回数→勝率→zスコア)で並べ直す必要が
-    // あるが、順序自体の正しさは verifyDivisionOrderInvariant 等では検証
-    // できないため、ここでは「file.entriesの先頭に実際に並んだ王者集合」を
-    // 期待値として使う(集合の一致・王者以外の混入ゼロを検証する)。
-    .slice()
-    .sort((a, b) => file.entries.findIndex((e) => e.fighterId === a) - file.entries.findIndex((e) => e.fighterId === b));
+  // チェックと同じ「書き込み前に必ず検証」の設計を踏襲)。王者ティア固定を
+  // 撤回したため(2026-07-22)、「王者が先頭を占める」ではなく「rawRatingを
+  // 算出できた王者が全員entriesに存在する(位置は問わない)」ことを検証する。
+  const expectedChampionSlugs = championRawRatings.map((c) => c.slug);
   const errors = [
-    ...checkP4PChampionTierPosition(withDeltas, expectedChampionSlugs),
+    ...checkP4PAllChampionsPresent(withDeltas, expectedChampionSlugs),
     ...checkP4PDivisionOrderInvariant(withDeltas),
     ...checkP4PPublishedDivisionsOnly(withDeltas),
   ];
