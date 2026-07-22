@@ -124,7 +124,7 @@ export function checkRequiredInvariants(
 // この1ファイルを見ればすべて分かる」という既存の意図を維持するため、
 // scripts/generate-p4p.tsが呼ぶ入口として再エクスポートするだけに留める。
 export {
-  verifyChampionTierPosition as checkP4PChampionTierPosition,
+  verifyAllChampionsPresent as checkP4PAllChampionsPresent,
   verifyDivisionOrderInvariant as checkP4PDivisionOrderInvariant,
   verifyPublishedDivisionsOnly as checkP4PPublishedDivisionsOnly,
 } from "../mnewsRating/p4pFile";

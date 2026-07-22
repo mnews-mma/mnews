@@ -36,10 +36,11 @@ type Division = (typeof DIVISIONS)[number];
 // P4P(パウンドフォーパウンド、2026-07-22追加)はMnewsDivisionではない疑似区分
 // なので、既存のDivision型(プルダウンの選択肢の型)には含めない。プルダウンの
 // 選択状態はSelectableKeyで扱い、P4P選択時だけ別経路(p4pView prop・
-// /rankings/pound-for-pound へのリンク)を通す。P4Pは王者4名がP4P1〜4位に
-// 固定表示される設計のため、王者ティア(champion:null固定)のような別枠行は
-// 無く、contenders(先頭3件)がそのまま王者を含む順位付きリストになる
-// (既存のview.champion有無で分岐するレンダリングをそのまま流用できる)。
+// /rankings/pound-for-pound へのリンク)を通す。P4Pは王者・挑戦者を区別せず
+// zスコア1本でフラットに並べる設計(2026-07-22改訂、王者ティア固定は撤回済み)
+// のため、champion:null固定で「別枠の王者行」を持たず、contenders(先頭3件)
+// がそのまま順位付きリストになる(既存のview.champion有無で分岐する
+// レンダリングをそのまま流用できる)。
 const P4P_KEY = "パウンドフォーパウンド" as const;
 type SelectableKey = Division | typeof P4P_KEY;
 
