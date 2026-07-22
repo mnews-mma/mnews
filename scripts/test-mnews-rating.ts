@@ -730,18 +730,47 @@ function makeResolver(map: Record<string, string>) {
     check(fights === 1 && wins === 1, "B-2: cutoff以降(厳密に後)の試合のみでカウントする(cutoff本体は除外)");
   }
 
-  // 18-4. isStandardEligible: 階級変更後1勝未満ならランカーにしない
+  // 18-4. isStandardEligible: 階級変更後の1勝要件。
+  // 2026-07-22分割: 443d74c(直近2戦ルートの勝利要件免除、2026-07-19)以降、
+  // この論点は「どちらのルートで資格を得ようとしているか」で答えが分かれる。
+  // 元は1本のテストだったが、免除の導入で片方の期待値が反転したため2本に分けた。
+  // 1本のまま期待値を反転させると、18-4aが守っていたガード(通算3戦ルートでは
+  // 1勝要件を維持する)が黙って失われるため、必ず両方を残すこと。
+
+  // 18-4a. 通算3戦ルートのみで資格を得ようとする0勝の選手は、従来どおり非掲載。
+  // 443d74c以前からのガードで、免除の導入後も維持されている性質(免除される
+  // のは直近2戦ルートだけ)。直近(ELIGIBILITY_RECENT_YEAR_START年以降)の対象戦を
+  // 1戦に抑えることでqualifiesViaRecentを不成立にし、通算3戦ルート単独の判定にしている。
+  {
+    const summaries: FighterBoutSummary[] = [
+      { date: "2025-03-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-a" }, // 2025年以降はこの1戦のみ
+      { date: "2024-06-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-b" },
+      { date: "2024-01-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-c" },
+      { date: "2023-06-01", weightClass: "RIZINバンタム級タイトルマッチ", isWin: true, opponentNode: "opp-d" }, // cutoff本体(除外)
+    ];
+    const asOf = new Date("2026-06-01");
+    check(
+      isStandardEligible(summaries, "フェザー級", "2025-03-01", asOf) === false,
+      "B-2: 通算3戦ルートのみ(直近2戦ルート不成立)で1勝もしていなければランカーにしない"
+    );
+  }
+
+  // 18-4b. 直近2戦ルート(ELIGIBILITY_RECENT_YEAR_START年以降に
+  // ELIGIBILITY_RECENT_MIN_FIGHTS戦以上)を満たす選手は、階級変更後0勝でも掲載する。
+  // 443d74c(2026-07-19)で導入。公開methodologyは勝利要件を明記せず「一定以上の
+  // 試合数+直近でも活動している選手」を基準とするため、現役ロースター選手を
+  // 勝ち星の有無で弾かない。本番該当例: 天弥・芳賀ビラル海(いずれも2025年以降2戦0勝)。
   {
     const summaries: FighterBoutSummary[] = [
       { date: "2026-05-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-a" },
       { date: "2026-03-07", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-b" },
       { date: "2026-01-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-c" },
-      { date: "2025-06-14", weightClass: "RIZINバンタム級タイトルマッチ", isWin: true, opponentNode: "opp-d" },
+      { date: "2025-06-14", weightClass: "RIZINバンタム級タイトルマッチ", isWin: true, opponentNode: "opp-d" }, // cutoff本体(除外)
     ];
     const asOf = new Date("2026-06-01");
     check(
-      isStandardEligible(summaries, "フェザー級", "2026-05-01", asOf) === false,
-      "B-2: 階級変更後3戦以上あっても1勝もしていなければランカーにしない"
+      isStandardEligible(summaries, "フェザー級", "2026-05-01", asOf) === true,
+      "B-2: 直近2戦ルートを満たせば階級変更後0勝でもランカーにする(443d74cの勝利要件免除)"
     );
   }
 }
