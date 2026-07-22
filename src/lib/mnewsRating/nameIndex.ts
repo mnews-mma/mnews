@@ -4,7 +4,13 @@
 import { FIGHTERS } from "../fighters";
 import { FighterRecordsInput } from "./engine";
 
-const norm = (s: string) => s.replace(/[\s　・]/g, "");
+// NFKC正規化: Wikipedia由来データに康熙部首(例: U+2F2D「⼭」)等のCJK互換
+// 異体字が混入し、見た目は同一漢字でも文字コードが違うため名前解決が失敗する
+// ケースがある(伊藤裕樹「杉⼭廣平」問題、2026-07-22発見)。上流(ja.Wikipedia)
+// 自体がこの異体字を使っているため、データ側の1文字修正では次回スクレイプで
+// 再発する。NFKCは全角/半角・互換文字の統合のみ行い、意味の異なる漢字同士を
+// 同一視することはない(Unicode標準の等価性テーブルに基づく決定的な正規化)。
+const norm = (s: string) => s.normalize("NFKC").replace(/[\s　・]/g, "");
 
 export function buildOpponentResolver(
   records: FighterRecordsInput
