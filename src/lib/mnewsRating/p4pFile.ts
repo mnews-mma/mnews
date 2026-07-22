@@ -23,8 +23,9 @@
 //   オール」)で計算されている。この通算の強さをそのまま見せる方が実態に
 //   即しており、単一階級の公開rank順に縛る（clampする）とその情報を
 //   隠してしまう。
-// - 防衛回数・通算勝率は表示上の参考情報として引き続き算出・保持するが、
-//   順位には一切使わない。
+// - 防衛回数・通算勝率は順位にも画面表示にも使わない(2026-07-22、表示も
+//   取りやめ)。データ自体はdata/p4p.jsonに保持し続けるが、これは将来の
+//   再利用に備えた据え置き(championDefenses.tsの冒頭コメント参照)。
 //
 // 【重要な仕様変更】上記の結果、P4Pの並び順は`/rankings/[division]`の公開
 // ランキングの並び順と食い違うことがある(例: ライト級の公開1位ノジモフより
@@ -118,14 +119,14 @@ export interface ChampionTierEntry {
   division: MnewsDivision;
   record: RankingEntryRecord;
   lastFight: string | null;
-  winRate: number | null; // 表示上の参考情報。順位には使わない
-  defenseCount: number | null; // 表示上の参考情報。順位には使わない
+  winRate: number | null; // 現在は順位にも表示にも未使用(将来の再利用に備えた据え置き)
+  defenseCount: number | null; // 現在は順位にも表示にも未使用(将来の再利用に備えた据え置き)
   rawRating: number; // P4P順位を決める値そのもの
 }
 
-// 王者ごとの戦績・防衛回数・勝率を算出する(いずれも表示上の参考情報、
-// 順位付けには使わない)。防衛回数データが無い王者は取得不能を明示フラグする
-// (0埋め・推定は禁止、championDefenses.ts参照)。
+// 王者ごとの戦績・防衛回数・勝率を算出する(防衛回数・勝率は現在いずれも
+// 順位・表示ともに未使用。将来の再利用に備えた据え置き)。防衛回数データが
+// 無い王者は取得不能を明示フラグする(0埋め・推定は禁止、championDefenses.ts参照)。
 export function buildChampionEntries(
   championRawRatings: ChampionRawRatingInput[],
   championRecords: Map<string, { record: RankingEntryRecord; lastFight: string | null }>,

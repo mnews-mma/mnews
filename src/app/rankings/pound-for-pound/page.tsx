@@ -30,7 +30,6 @@ interface ResolvedP4PEntry {
   division: string;
   divisionLabel: string; // "王者" | "1位" 等
   tier: "champion" | "challenger";
-  defenseCount: number | null;
   record: { wins: number; losses: number; draws: number };
   lastFight: string | null;
   // P4Pはrating点数(内部非公開のzスコア)の概念を持たないため、「前回比」は
@@ -55,7 +54,6 @@ export default async function PoundForPoundRankingPage() {
         division: e.division,
         divisionLabel: e.divisionRank === "champion" ? "王者" : `${e.divisionRank}位`,
         tier: e.tier,
-        defenseCount: e.defenseCount,
         record: e.record,
         lastFight: e.lastFight,
         rankPositionDelta: e.rankPositionDelta,
@@ -146,11 +144,8 @@ export default async function PoundForPoundRankingPage() {
                           {e.nameJa}
                         </a>
                         {e.tier === "champion" && (
-                          <span
-                            style={{ marginLeft: 6, fontSize: 10, color: "var(--gold, #c29a4b)", fontWeight: 700 }}
-                            title={e.defenseCount !== null ? `防衛${e.defenseCount}回` : "防衛回数データ未取得"}
-                          >
-                            王者{e.defenseCount !== null ? `・防衛${e.defenseCount}回` : ""}
+                          <span style={{ marginLeft: 6, fontSize: 10, color: "var(--gold, #c29a4b)", fontWeight: 700 }}>
+                            王者
                           </span>
                         )}
                       </td>
@@ -175,15 +170,13 @@ export default async function PoundForPoundRankingPage() {
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
           王者・挑戦者を区別せず、階級を超えた強さ(rawRatingの絶対値)だけで一本に並べています。王者(RIZIN公式が認定する現王者)は
-          必ず上位に来るとは限りません。防衛回数は参考情報として表示していますが、順位には使っていません。
+          必ず上位に来るとは限りません。
         </p>
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
           <strong style={{ color: "var(--fg)" }}>階級別ランキングとの違い:</strong>{" "}
           <a href="/rankings" style={{ color: "var(--accent)" }}>階級別ランキング</a>
           は「その階級の中で誰が強いか」を、直接対決の結果を優先して決めています。P4Pは「階級を問わず誰が強いか」を、
-          対戦相手を問わず積み上げたレートの絶対値だけで決めています。このためP4Pでは、同じ階級の中でも公開ランキングの
-          順位と前後が入れ替わって見えることがあります(例: 直接対決で勝っている選手が、レートの絶対値では負けている選手より
-          P4Pで下に来る)。どちらが「正しい」というより、見ている問いが違うためです。
+          対戦相手を問わず積み上げたレートの絶対値だけで決めています。このため両者で順位が食い違うことがあります。
         </p>
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
           P4Pは主観的・参考指標であり、階級別ランキングの正式な代替ではありません。
