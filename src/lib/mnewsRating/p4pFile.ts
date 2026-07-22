@@ -1,17 +1,39 @@
 // パウンドフォーパウンド(P4P)ランキングの生成ロジック(2026-07-22追加)。
 //
-// 設計方針改訂(2026-07-22、王者ティア固定を撤回): 当初(2026-07-21試算PR #172)
-// は「王者を必ずP4P1〜4位に固定し、防衛回数→勝率でタイブレークする」設計
-// だったが、人間レビューで「防衛回数の重み付けは階級の厳しさを考慮しておらず、
-// かといって階級難易度まで加味すると複雑になりすぎる」との指摘を受け、
-// 王者ティアの固定枠を撤回した。現在の設計は以下のシンプルな1本のルールのみ:
-// - 全員(王者+挑戦者)を、階級内平均・σからのドミナンスzスコア(1本の指標)で
-//   階級横断にフラットに並べる。防衛回数・勝率は表示上の参考情報としては残すが、
+// 設計方針改訂(2026-07-22、2回目): 当初(2026-07-21試算PR #172)は「王者を
+// 必ずP4P1〜4位に固定し、防衛回数→勝率でタイブレークする」設計、次に
+// 「王者ティア固定を撤回し、階級内zスコア1本でフラットに並べる」設計を経て、
+// 最終的に以下に変更した:
+// - 全員(王者+挑戦者)を、rawRating(σディスカウント後のEloレート)の絶対値
+//   そのままで階級横断にフラットに並べる。階級内平均・σによる正規化
+//   (zスコア)は撤回した。
+//   理由: zスコアは「強い階級ほど損をする」逆転を生む(フェザー級は4階級中
+//   最も水準が高いため、フェザー級王者シェイドゥラエフの絶対rawRatingは
+//   4王者中最高なのに、zスコアでは3位に落ちていた)。rawRatingは階級を跨いだ
+//   1本のEloで計算されており(engine.tsのbuildBoutsは階級でフィルタしない、
+//   王者・挑戦者を問わず同じ計算式)、層の厚い階級で勝ち続けること自体が
+//   自然にレートを押し上げる。zスコアで正規化するとこの効果を打ち消して
+//   しまうため、正規化なしの絶対値の方がファンの直感(強い階級での防衛・
+//   活躍がそのまま評価される)に合う。
+// - 挑戦者(非王者)の同一階級内での「公開rank順(1位>2位…)を絶対に逆転
+//   させない」clampも撤回した。
+//   理由: 元谷友貴(フライ級3位)のように、Elo自体はフライ級だけでなく
+//   RIZINバンタム級タイトルマッチ等バンタム級での対戦も含めた通算(engine.ts
+//   のbuildBoutsは階級でフィルタしないため、rawRatingは元々「RIZIN通算
+//   オール」)で計算されている。この通算の強さをそのまま見せる方が実態に
+//   即しており、単一階級の公開rank順に縛る（clampする）とその情報を
+//   隠してしまう。
+// - 防衛回数・通算勝率は表示上の参考情報として引き続き算出・保持するが、
 //   順位には一切使わない。
-// - ただし挑戦者(非王者)については、同一階級内の順序が公開rank順(1位>2位…)を
-//   絶対に逆転しないようclamp(running-min方式)をかける。王者は階級内の「公開
-//   rank」という概念を持たない(overlay設計、番号付きランキングの対象外)ため、
-//   clamp対象外(生のzスコアのままグローバル順位に参加する)。
+//
+// 【重要な仕様変更】上記の結果、P4Pの並び順は`/rankings/[division]`の公開
+// ランキングの並び順と食い違うことがある(例: ライト級の公開1位ノジモフより
+// 公開2位サトシ・ソウザがP4Pで上に来る。これはノジモフがサトシに直接対決で
+// 勝っている、というH2H単調性補正が階級別公開ランキング側にのみかかっている
+// ため)。これは実装上の不整合ではなく、「階級別ランキングは直接対決結果を
+// 優先する」「P4Pは階級を跨いだ通算の強さをそのまま見せる」という、2つの
+// ページが異なる問いに答えている、という意図的な設計として扱う(ページの
+// 説明文で明示する)。
 //
 // このモジュールはdata/rankings.json(既存Eloランキング)を読み取り専用の入力
 // とし、data/rankings.json自体・engine.ts・共有定数には一切影響しない
@@ -30,10 +52,10 @@ export interface P4PRankPositionDelta {
 export interface P4PEntry {
   fighterId: string;
   division: MnewsDivision;
-  p4pRank: number; // 1始まり、王者ティア→挑戦者の順
-  divisionRank: number | "champion"; // 階級内位置(公開rank、王者は"champion")
+  p4pRank: number; // 1始まり、rawRating降順
+  divisionRank: number | "champion"; // 階級内位置(公開rank、王者は"champion")。参考表示用、順位計算には使わない
   tier: P4PTier;
-  defenseCount: number | null; // 王者のみ。取得不能はnull(0埋め・推定禁止)
+  defenseCount: number | null; // 王者のみ。参考表示用(順位には使わない)。取得不能はnull(0埋め・推定禁止)
   record: RankingEntryRecord;
   lastFight: string | null;
   // buildP4PFileの時点ではnull。scripts/generate-p4p.tsがcomputeP4PRankPositionDeltas
@@ -41,7 +63,7 @@ export interface P4PEntry {
   // 既存の階級別ランキングと同じ「後処理として付与する」設計を踏襲)。
   rankPositionDelta: P4PRankPositionDelta | null;
   // 内部専用フィールド(次回実行時のdelta計算にのみ使う、公開ページには出さない)。
-  internalScore: number; // 挑戦者=clamp後zスコア、王者=タイブレークに使った生zスコア
+  internalScore: number; // rawRatingそのもの(σディスカウント後、正規化なし)。これがP4P順位を決める唯一の値
 }
 
 export interface P4PFile {
@@ -70,10 +92,6 @@ export interface ChampionRawRatingInput {
   rawRating: number;
 }
 
-function mean(xs: number[]): number {
-  return xs.reduce((s, x) => s + x, 0) / xs.length;
-}
-
 // 挑戦者候補をdata/rankings.jsonのentriesからそのまま抽出する(公開階級のみ)。
 export function collectChallengerCandidates(rankings: RankingsFile): ChallengerCandidate[] {
   const out: ChallengerCandidate[] = [];
@@ -95,81 +113,23 @@ export function collectChallengerCandidates(rankings: RankingsFile): ChallengerC
   return out;
 }
 
-// 階級ごとの平均・σ(母集団)。2026-07-21試算PR #172の統計サマリ(§1)と同じ
-// 定義に揃える: 母集団は「その階級の候補プール全員」= 挑戦者 + 王者(算出できた
-// 場合)。王者を母集団から除くと、承認済みの試算結果(トップ15の並び順)から
-// ズレる(挑戦者のzスコアが変わり、挑戦者間の順序が変わりうる)ため、必ず
-// 王者を含めて計算すること。
-function divisionStats(
-  challengers: ChallengerCandidate[],
-  championRawRatings: ChampionRawRatingInput[]
-): Map<MnewsDivision, { mean: number; sigma: number }> {
-  const out = new Map<MnewsDivision, { mean: number; sigma: number }>();
-  for (const division of PUBLISHED_DIVISIONS) {
-    const ratings = challengers.filter((c) => c.division === division).map((c) => c.rawRating);
-    const champ = championRawRatings.find((c) => c.division === division);
-    if (champ) ratings.push(champ.rawRating);
-    if (ratings.length === 0) continue;
-    const m = mean(ratings);
-    const sigma = Math.sqrt(mean(ratings.map((x) => (x - m) ** 2)));
-    out.set(division, { mean: m, sigma });
-  }
-  return out;
-}
-
-interface ScoredChallenger extends ChallengerCandidate {
-  rawScore: number; // (rawRating-平均)/σ
-  clampedScore: number; // 階級内running-min適用後
-}
-
-// 不変条件Clamp: 各階級で公開rank昇順に並べ、直前の(clamp後)スコアを上回って
-// いれば直前値まで引き下げる(running min)。これにより同一階級内でP4Pスコア
-// 順が必ず公開rank順と一致する(2026-07-21試算PR #172 §8で検証済みのロジック
-// をそのまま移植)。
-function scoreAndClampChallengers(
-  challengers: ChallengerCandidate[],
-  stats: Map<MnewsDivision, { mean: number; sigma: number }>
-): ScoredChallenger[] {
-  const byDivision = new Map<MnewsDivision, ChallengerCandidate[]>();
-  for (const c of challengers) {
-    if (!byDivision.has(c.division)) byDivision.set(c.division, []);
-    byDivision.get(c.division)!.push(c);
-  }
-  const out: ScoredChallenger[] = [];
-  for (const [division, list] of byDivision) {
-    const s = stats.get(division);
-    const byRankAsc = [...list].sort((a, b) => a.divisionRank - b.divisionRank);
-    let runningMin = Infinity;
-    for (const c of byRankAsc) {
-      const rawScore = s && s.sigma !== 0 ? (c.rawRating - s.mean) / s.sigma : 0;
-      const clampedScore = Math.min(rawScore, runningMin);
-      runningMin = clampedScore;
-      out.push({ ...c, rawScore, clampedScore });
-    }
-  }
-  return out;
-}
-
 export interface ChampionTierEntry {
   slug: string;
   division: MnewsDivision;
   record: RankingEntryRecord;
   lastFight: string | null;
-  winRate: number | null;
-  defenseCount: number | null;
-  scoreA: number; // グローバル順位に使う王者本人のドミナンスzスコア(挑戦者と同じ階級内平均/σ基準)。clamp対象外。
+  winRate: number | null; // 表示上の参考情報。順位には使わない
+  defenseCount: number | null; // 表示上の参考情報。順位には使わない
+  rawRating: number; // P4P順位を決める値そのもの
 }
 
-// 王者ごとのドミナンスzスコア・戦績・防衛回数を算出する(順位付けはしない)。
-// 2026-07-22改訂: 防衛回数・通算勝率は表示上の参考情報として引き続き算出・
-// 保持するが、順位には使わない(王者どうしの序列も含め、全員を同じzスコア
-// 1本で比較する設計に変更したため)。防衛回数データが無い王者は取得不能を
-// 明示フラグする(0埋め・推定は禁止、championDefenses.ts参照)。
+// 王者ごとの戦績・防衛回数・勝率を算出する(いずれも表示上の参考情報、
+// 順位付けには使わない)。防衛回数データが無い王者は取得不能を明示フラグする
+// (0埋め・推定は禁止、championDefenses.ts参照)。
 export function buildChampionEntries(
   championRawRatings: ChampionRawRatingInput[],
   championRecords: Map<string, { record: RankingEntryRecord; lastFight: string | null }>,
-  defenseData: ChampionDefenseEntry[],
-  challengerStats: Map<MnewsDivision, { mean: number; sigma: number }>
+  defenseData: ChampionDefenseEntry[]
 ): { champions: ChampionTierEntry[]; defenseDataIssues: string[] } {
   const defenseBySlug = new Map(defenseData.map((d) => [d.slug, d]));
   const issues: string[] = [];
@@ -182,8 +142,6 @@ export function buildChampionEntries(
     if (!defenseEntry) {
       issues.push(`${champ.division}:${champ.slug} — 防衛回数データが championDefenses.ts に見つからず(取得不能として扱う)`);
     }
-    const s = challengerStats.get(champ.division);
-    const scoreA = s && s.sigma !== 0 ? (champ.rawRating - s.mean) / s.sigma : 0;
     champions.push({
       slug: champ.slug,
       division: champ.division,
@@ -191,7 +149,7 @@ export function buildChampionEntries(
       lastFight: recordInfo?.lastFight ?? null,
       winRate,
       defenseCount: defenseEntry?.defenseCount ?? null,
-      scoreA,
+      rawRating: champ.rawRating,
     });
   }
   return { champions, defenseDataIssues: issues };
@@ -246,17 +204,12 @@ function collectChampionRecords(rankings: RankingsFile): Map<string, { record: R
   return out;
 }
 
-// P4Pファイル本体を構築する(2026-07-22改訂: 王者ティア固定を撤回。全員を
-// 同じドミナンスzスコア1本でフラットに並べる。挑戦者はclamp後のスコアを
-// 使うため、同一階級内の公開rank順は引き続き逆転しない。王者はclamp対象外
-// [公開rankという概念を持たないため]で、生のzスコアのままグローバル順位に
-// 参加する=場合によっては挑戦者より下位に来ることもある、という仕様変更)。
+// P4Pファイル本体を構築する(2026-07-22改訂・2回目: zスコア正規化・clampを
+// 撤回。全員をrawRatingの絶対値そのままでフラットに並べる)。
 export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
   const challengerCandidates = collectChallengerCandidates(input.rankings);
-  const stats = divisionStats(challengerCandidates, input.championRawRatings);
-  const scoredChallengers = scoreAndClampChallengers(challengerCandidates, stats);
   const championRecords = collectChampionRecords(input.rankings);
-  const { champions, defenseDataIssues } = buildChampionEntries(input.championRawRatings, championRecords, input.defenseData, stats);
+  const { champions, defenseDataIssues } = buildChampionEntries(input.championRawRatings, championRecords, input.defenseData);
 
   const combined: P4PEntry[] = [
     ...champions.map((c) => ({
@@ -269,9 +222,9 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
       record: c.record,
       lastFight: c.lastFight,
       rankPositionDelta: null,
-      internalScore: c.scoreA,
+      internalScore: c.rawRating,
     })),
-    ...scoredChallengers.map((c) => ({
+    ...challengerCandidates.map((c) => ({
       fighterId: c.slug,
       division: c.division,
       p4pRank: 0,
@@ -281,23 +234,13 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
       record: c.record,
       lastFight: c.lastFight,
       rankPositionDelta: null,
-      internalScore: c.clampedScore,
+      internalScore: c.rawRating,
     })),
   ];
-  // 全員を同じinternalScore(ドミナンスzスコア、挑戦者はclamp後)で降順ソート。
-  // 同点タイブレーク: まず階級内順位(公開rank、王者は0扱い)昇順。clampは
-  // 意図的に同点(スコアが直前値まで引き下げられる)を作るため、同一階級内の
-  // 同点をfighterId(アルファベット順)で解決すると公開rank順が壊れ、
-  // verifyDivisionOrderInvariantが破れる。階級内順位で解決すれば同一階級内は
-  // 常に公開rank順のまま、異なる階級間の同点はどちらが先でも不変条件に影響
-  // しないため、最後にfighterIdで完全決定的にする。
-  const entries = combined.sort((a, b) => {
-    if (b.internalScore !== a.internalScore) return b.internalScore - a.internalScore;
-    const rankA = a.divisionRank === "champion" ? 0 : a.divisionRank;
-    const rankB = b.divisionRank === "champion" ? 0 : b.divisionRank;
-    if (rankA !== rankB) return rankA - rankB;
-    return a.fighterId.localeCompare(b.fighterId);
-  });
+  // rawRating(internalScore)降順でソート。同点タイブレークはfighterId昇順
+  // (決定的・恣意性ゼロ。normalization・clampを撤回したため、階級内順位を
+  // 優先するタイブレークは不要になった)。
+  const entries = combined.sort((a, b) => b.internalScore - a.internalScore || a.fighterId.localeCompare(b.fighterId));
   entries.forEach((e, i) => {
     e.p4pRank = i + 1;
   });
@@ -312,10 +255,10 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
 
 // ===== 自己検証(scripts/generate-p4p.ts側で呼び出し、破れたらexit 1) =====
 //
-// 2026-07-22改訂: 王者ティア固定を撤回したため、「王者が先頭N件を占める」
-// という不変条件は無くなった(王者が挑戦者より下位に来るのは仕様どおり)。
-// 代わりに「全公開階級の王者が必ずentriesに1件ずつ存在すること」(算出できな
-// かった王者が黙って消えていないか)を確認する。
+// 2026-07-22改訂(2回目): zスコア正規化・clampを撤回したため、「同一階級内の
+// P4P順序が公開rank順と一致する」という不変条件も撤回した(意図的にP4Pと
+// 階級別公開ランキングの順序が食い違いうる設計のため)。「王者が先頭N件を
+// 占める」も1回目の改訂で既に撤回済み。残る不変条件は以下の2つ。
 
 // 1. rawRatingを算出できた王者が、全員entriesに含まれていること(位置は問わない)。
 export function verifyAllChampionsPresent(file: P4PFile, expectedChampionSlugs: string[]): string[] {
@@ -330,26 +273,7 @@ export function verifyAllChampionsPresent(file: P4PFile, expectedChampionSlugs: 
   return errors;
 }
 
-// 2. 同一階級内のP4P順序 == 階級別公開rank順(逆転ゼロ)。王者は対象外。
-export function verifyDivisionOrderInvariant(file: P4PFile): string[] {
-  const errors: string[] = [];
-  const byDivision = new Map<MnewsDivision, P4PEntry[]>();
-  for (const e of file.entries) {
-    if (e.tier === "champion") continue;
-    if (!byDivision.has(e.division)) byDivision.set(e.division, []);
-    byDivision.get(e.division)!.push(e);
-  }
-  for (const [division, list] of byDivision) {
-    const byPublicRank = [...list].sort((a, b) => (a.divisionRank as number) - (b.divisionRank as number)).map((e) => e.fighterId);
-    const byP4PRank = [...list].sort((a, b) => a.p4pRank - b.p4pRank).map((e) => e.fighterId);
-    if (JSON.stringify(byPublicRank) !== JSON.stringify(byP4PRank)) {
-      errors.push(`${division}: P4P順序が公開rank順と不一致(逆転を検出)`);
-    }
-  }
-  return errors;
-}
-
-// 3. 非公開階級の選手が一切出ないこと(候補プールをPUBLISHED_DIVISIONSのみから
+// 2. 非公開階級の選手が一切出ないこと(候補プールをPUBLISHED_DIVISIONSのみから
 // 組み立てている以上構造的に満たすはずだが、将来の改修による混入を防ぐ最終防衛)。
 export function verifyPublishedDivisionsOnly(file: P4PFile): string[] {
   const errors: string[] = [];

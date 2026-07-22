@@ -101,8 +101,9 @@ export default async function PoundForPoundRankingPage() {
       </div>
 
       <div style={{ padding: "16px 24px 8px", maxWidth: 760, fontSize: 12, color: "var(--muted)", lineHeight: 1.8 }}>
-        RIZIN非公式。mnews.jp独自算出。RIZINに公式のP4Pランキングはありません。階級別ランキング({RATING_NAME})をもとに、
-        階級を超えた強さの序列を独自AIが算出する参考指標です。
+        RIZIN非公式。mnews.jp独自算出。RIZINに公式のP4Pランキングはありません。階級別ランキング({RATING_NAME})の元になっている
+        レート(rawRating)をそのまま使い、階級の壁を取り払って全選手を横並びにした参考指標です。
+        階級別ランキングとは順位が食い違うことがあります(下記の注記を参照)。
         評価の考え方は<a href="/rankings/methodology" style={{ color: "var(--accent)" }}>ランキングについて</a>で公開しています。
         {data && (
           <span style={{ display: "block", fontSize: 10, opacity: 0.7, marginTop: 4 }}>
@@ -173,9 +174,18 @@ export default async function PoundForPoundRankingPage() {
         )}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
-          王者・挑戦者を区別せず、階級を超えた強さの指標(自階級内での突出度)で一本に並べています。
-          王者(RIZIN公式が認定する現王者)は必ず上位に来るとは限りません。防衛回数は参考情報として表示していますが、順位には使っていません。
-          挑戦者は各階級の順位を維持したまま並んでいます(自階級の下位選手が上位選手を追い越すことはありません)。
+          王者・挑戦者を区別せず、階級を超えた強さ(rawRatingの絶対値)だけで一本に並べています。王者(RIZIN公式が認定する現王者)は
+          必ず上位に来るとは限りません。防衛回数は参考情報として表示していますが、順位には使っていません。
+        </p>
+        <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
+          <strong style={{ color: "var(--fg)" }}>階級別ランキングとの違い:</strong>{" "}
+          <a href="/rankings" style={{ color: "var(--accent)" }}>階級別ランキング</a>
+          は「その階級の中で誰が強いか」を、直接対決の結果を優先して決めています。P4Pは「階級を問わず誰が強いか」を、
+          対戦相手を問わず積み上げたレートの絶対値だけで決めています。このためP4Pでは、同じ階級の中でも公開ランキングの
+          順位と前後が入れ替わって見えることがあります(例: 直接対決で勝っている選手が、レートの絶対値では負けている選手より
+          P4Pで下に来る)。どちらが「正しい」というより、見ている問いが違うためです。
+        </p>
+        <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
           P4Pは主観的・参考指標であり、階級別ランキングの正式な代替ではありません。
         </p>
       </div>

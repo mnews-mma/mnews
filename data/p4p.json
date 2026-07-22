@@ -3,47 +3,9 @@
   "algorithmVersion": 9,
   "entries": [
     {
-      "fighterId": "sabatello-danny",
-      "division": "バンタム級",
-      "p4pRank": 1,
-      "divisionRank": "champion",
-      "tier": "champion",
-      "defenseCount": 2,
-      "record": {
-        "wins": 5,
-        "losses": 0,
-        "draws": 0
-      },
-      "lastFight": "2026-07-18",
-      "rankPositionDelta": {
-        "kind": "up",
-        "positions": 1
-      },
-      "internalScore": 2.667743832217386
-    },
-    {
-      "fighterId": "shinryu-makoto",
-      "division": "フライ級",
-      "p4pRank": 2,
-      "divisionRank": "champion",
-      "tier": "champion",
-      "defenseCount": 0,
-      "record": {
-        "wins": 9,
-        "losses": 4,
-        "draws": 0
-      },
-      "lastFight": "2026-06-06",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 2.1436645568280683
-    },
-    {
       "fighterId": "sheydullaev-rajabali",
       "division": "フェザー級",
-      "p4pRank": 3,
+      "p4pRank": 1,
       "divisionRank": "champion",
       "tier": "champion",
       "defenseCount": 3,
@@ -57,37 +19,37 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 2.130232742225238
+      "internalScore": 1634.1875318765804
     },
     {
-      "fighterId": "ougikubo-hiromasa",
-      "division": "フライ級",
-      "p4pRank": 4,
-      "divisionRank": 1,
-      "tier": "challenger",
-      "defenseCount": null,
+      "fighterId": "sabatello-danny",
+      "division": "バンタム級",
+      "p4pRank": 2,
+      "divisionRank": "champion",
+      "tier": "champion",
+      "defenseCount": 2,
       "record": {
         "wins": 5,
-        "losses": 2,
+        "losses": 0,
         "draws": 0
       },
-      "lastFight": "2026-06-06",
+      "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
+        "kind": "down",
+        "positions": 1
       },
-      "internalScore": 1.8034803705295877
+      "internalScore": 1623.825407770858
     },
     {
-      "fighterId": "inoue-naoki",
-      "division": "バンタム級",
-      "p4pRank": 5,
-      "divisionRank": 1,
+      "fighterId": "souza-roberto-satoshi",
+      "division": "ライト級",
+      "p4pRank": 3,
+      "divisionRank": 2,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 10,
-        "losses": 3,
+        "wins": 13,
+        "losses": 4,
         "draws": 0
       },
       "lastFight": "2025-12-31",
@@ -95,7 +57,45 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 1.7497118602473045
+      "internalScore": 1596.0984267720842
+    },
+    {
+      "fighterId": "shinryu-makoto",
+      "division": "フライ級",
+      "p4pRank": 4,
+      "divisionRank": "champion",
+      "tier": "champion",
+      "defenseCount": 0,
+      "record": {
+        "wins": 9,
+        "losses": 4,
+        "draws": 0
+      },
+      "lastFight": "2026-06-06",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1592.1334595267667
+    },
+    {
+      "fighterId": "koike-kleber",
+      "division": "フェザー級",
+      "p4pRank": 5,
+      "divisionRank": 2,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 10,
+        "losses": 4,
+        "draws": 0
+      },
+      "lastFight": "2025-12-31",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1591.8431179557226
     },
     {
       "fighterId": "gustavo-luis",
@@ -114,7 +114,7 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 1.6936868845804707
+      "internalScore": 1590.605409102791
     },
     {
       "fighterId": "asakura-mikuru",
@@ -133,113 +133,18 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 1.3017144729973282
+      "internalScore": 1589.782855110453
     },
     {
-      "fighterId": "koike-kleber",
-      "division": "フェザー級",
-      "p4pRank": 8,
-      "divisionRank": 2,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 10,
-        "losses": 4,
-        "draws": 0
-      },
-      "lastFight": "2025-12-31",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 1.3017144729973282
-    },
-    {
-      "fighterId": "sato-shoko",
+      "fighterId": "inoue-naoki",
       "division": "バンタム級",
-      "p4pRank": 9,
-      "divisionRank": 2,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 4,
-        "losses": 2,
-        "draws": 0
-      },
-      "lastFight": "2026-03-07",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 1.209069741686158
-    },
-    {
-      "fighterId": "laramie-tony",
-      "division": "フライ級",
-      "p4pRank": 10,
-      "divisionRank": 2,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 4,
-        "losses": 1,
-        "draws": 0
-      },
-      "lastFight": "2026-06-06",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 1.1727835590588491
-    },
-    {
-      "fighterId": "motoya-yuki",
-      "division": "フライ級",
-      "p4pRank": 11,
-      "divisionRank": 3,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 2,
-        "draws": 0
-      },
-      "lastFight": "2026-06-06",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 1.1727835590588491
-    },
-    {
-      "fighterId": "nozimov-ilkhom",
-      "division": "ライト級",
-      "p4pRank": 12,
+      "p4pRank": 8,
       "divisionRank": 1,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 1,
-        "losses": 1,
-        "draws": 0
-      },
-      "lastFight": "2026-05-10",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 0.8655137677591969
-    },
-    {
-      "fighterId": "souza-roberto-satoshi",
-      "division": "ライト級",
-      "p4pRank": 13,
-      "divisionRank": 2,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 13,
-        "losses": 4,
+        "wins": 10,
+        "losses": 3,
         "draws": 0
       },
       "lastFight": "2025-12-31",
@@ -247,31 +152,31 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.8655137677591969
+      "internalScore": 1578.828414613511
     },
     {
-      "fighterId": "goto-joji",
-      "division": "バンタム級",
-      "p4pRank": 14,
-      "divisionRank": 3,
+      "fighterId": "ougikubo-hiromasa",
+      "division": "フライ級",
+      "p4pRank": 9,
+      "divisionRank": 1,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
         "wins": 5,
-        "losses": 1,
+        "losses": 2,
         "draws": 0
       },
-      "lastFight": "2026-04-12",
+      "lastFight": "2026-06-06",
       "rankPositionDelta": {
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.8014209198806898
+      "internalScore": 1577.2735812849503
     },
     {
       "fighterId": "karshyga-dautbek",
       "division": "フェザー級",
-      "p4pRank": 15,
+      "p4pRank": 10,
       "divisionRank": 3,
       "tier": "challenger",
       "defenseCount": null,
@@ -282,15 +187,15 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
+        "kind": "up",
+        "positions": 5
       },
-      "internalScore": 0.7505261383189817
+      "internalScore": 1560.2417565641767
     },
     {
       "fighterId": "akimoto-kyoma",
       "division": "フェザー級",
-      "p4pRank": 16,
+      "p4pRank": 11,
       "divisionRank": 4,
       "tier": "challenger",
       "defenseCount": null,
@@ -304,18 +209,113 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.7304300228612954
+      "internalScore": 1559.1646994318278
     },
     {
-      "fighterId": "horie-yoshinori",
-      "division": "ライト級",
-      "p4pRank": 17,
+      "fighterId": "sato-shoko",
+      "division": "バンタム級",
+      "p4pRank": 12,
+      "divisionRank": 2,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 4,
+        "losses": 2,
+        "draws": 0
+      },
+      "lastFight": "2026-03-07",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1552.3290437285696
+    },
+    {
+      "fighterId": "motoya-yuki",
+      "division": "フライ級",
+      "p4pRank": 13,
       "divisionRank": 3,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 3,
+        "wins": 2,
         "losses": 2,
+        "draws": 0
+      },
+      "lastFight": "2026-06-06",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1550.3100278050915
+    },
+    {
+      "fighterId": "karamov-vugar",
+      "division": "フェザー級",
+      "p4pRank": 14,
+      "divisionRank": 5,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 7,
+        "losses": 3,
+        "draws": 0
+      },
+      "lastFight": "2025-12-31",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1549.7320620091912
+    },
+    {
+      "fighterId": "laramie-tony",
+      "division": "フライ級",
+      "p4pRank": 15,
+      "divisionRank": 2,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 4,
+        "losses": 1,
+        "draws": 0
+      },
+      "lastFight": "2026-06-06",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1549.7235710157079
+    },
+    {
+      "fighterId": "nozimov-ilkhom",
+      "division": "ライト級",
+      "p4pRank": 16,
+      "divisionRank": 1,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      },
+      "lastFight": "2026-05-10",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1548.8411691994168
+    },
+    {
+      "fighterId": "patricky-pitbull",
+      "division": "ライト級",
+      "p4pRank": 17,
+      "divisionRank": 5,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 3,
+        "losses": 3,
         "draws": 0
       },
       "lastFight": "2026-04-12",
@@ -323,7 +323,7 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.5753183915764433
+      "internalScore": 1537.423339503629
     },
     {
       "fighterId": "nomura-shunta",
@@ -342,93 +342,17 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.5753183915764433
+      "internalScore": 1534.951811316617
     },
     {
-      "fighterId": "patricky-pitbull",
+      "fighterId": "horie-yoshinori",
       "division": "ライト級",
       "p4pRank": 19,
-      "divisionRank": 5,
+      "divisionRank": 3,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
         "wins": 3,
-        "losses": 3,
-        "draws": 0
-      },
-      "lastFight": "2026-04-12",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 0.5753183915764433
-    },
-    {
-      "fighterId": "karamov-vugar",
-      "division": "フェザー級",
-      "p4pRank": 20,
-      "divisionRank": 5,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 7,
-        "losses": 3,
-        "draws": 0
-      },
-      "lastFight": "2025-12-31",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 0.554432515373102
-    },
-    {
-      "fighterId": "kim-kyungpyo",
-      "division": "ライト級",
-      "p4pRank": 21,
-      "divisionRank": 6,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 4,
-        "losses": 1,
-        "draws": 0
-      },
-      "lastFight": "2026-03-07",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 0.34798767423973953
-    },
-    {
-      "fighterId": "temirov-azizbek",
-      "division": "バンタム級",
-      "p4pRank": 22,
-      "divisionRank": 4,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 1,
-        "losses": 0,
-        "draws": 0
-      },
-      "lastFight": "2026-04-12",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 0.08911498837905373
-    },
-    {
-      "fighterId": "fukuda-ryuya",
-      "division": "バンタム級",
-      "p4pRank": 23,
-      "divisionRank": 5,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
         "losses": 2,
         "draws": 0
       },
@@ -437,50 +361,31 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.08911498837905373
+      "internalScore": 1534.2068022251963
     },
     {
-      "fighterId": "kim-soochul",
+      "fighterId": "goto-joji",
       "division": "バンタム級",
-      "p4pRank": 24,
-      "divisionRank": 6,
+      "p4pRank": 20,
+      "divisionRank": 3,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 3,
-        "losses": 3,
+        "wins": 5,
+        "losses": 1,
         "draws": 0
       },
-      "lastFight": "2025-05-31",
+      "lastFight": "2026-04-12",
       "rankPositionDelta": {
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.08911498837905373
-    },
-    {
-      "fighterId": "yrysbek-tilenov",
-      "division": "バンタム級",
-      "p4pRank": 25,
-      "divisionRank": 7,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 1,
-        "losses": 0,
-        "draws": 0
-      },
-      "lastFight": "2026-07-18",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": 0.08911498837905373
+      "internalScore": 1532.3482894569972
     },
     {
       "fighterId": "ya-man",
       "division": "フェザー級",
-      "p4pRank": 26,
+      "p4pRank": 21,
       "divisionRank": 6,
       "tier": "challenger",
       "defenseCount": null,
@@ -494,31 +399,31 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.07009824514074443
+      "internalScore": 1523.774026423002
     },
     {
-      "fighterId": "case-johnny",
+      "fighterId": "kim-kyungpyo",
       "division": "ライト級",
-      "p4pRank": 27,
-      "divisionRank": 7,
+      "p4pRank": 22,
+      "divisionRank": 6,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 5,
-        "losses": 4,
+        "wins": 4,
+        "losses": 1,
         "draws": 0
       },
-      "lastFight": "2026-07-18",
+      "lastFight": "2026-03-07",
       "rankPositionDelta": {
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.06741341125528182
+      "internalScore": 1522.7426597368508
     },
     {
       "fighterId": "suzuki-chihiro",
       "division": "フェザー級",
-      "p4pRank": 28,
+      "p4pRank": 23,
       "divisionRank": 7,
       "tier": "challenger",
       "defenseCount": null,
@@ -532,69 +437,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": 0.023782547181336454
-    },
-    {
-      "fighterId": "yamamoto-arsen",
-      "division": "フライ級",
-      "p4pRank": 29,
-      "divisionRank": 4,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 4,
-        "losses": 3,
-        "draws": 0
-      },
-      "lastFight": "2026-07-18",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.015068608086011811
-    },
-    {
-      "fighterId": "ito-yuki",
-      "division": "フライ級",
-      "p4pRank": 30,
-      "divisionRank": 5,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 10,
-        "losses": 3,
-        "draws": 0
-      },
-      "lastFight": "2026-03-07",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.015068608086011811
-    },
-    {
-      "fighterId": "gadzhamatov-alibeg",
-      "division": "フライ級",
-      "p4pRank": 31,
-      "divisionRank": 6,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 1,
-        "draws": 0
-      },
-      "lastFight": "2025-09-28",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.015068608086011811
+      "internalScore": 1521.2917231673337
     },
     {
       "fighterId": "takeda-koji",
       "division": "フェザー級",
-      "p4pRank": 32,
+      "p4pRank": 24,
       "divisionRank": 8,
       "tier": "challenger",
       "defenseCount": null,
@@ -608,50 +456,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.023692615255399993
-    },
-    {
-      "fighterId": "ando-tatsuya",
-      "division": "バンタム級",
-      "p4pRank": 33,
-      "divisionRank": 8,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 1,
-        "draws": 0
-      },
-      "lastFight": "2025-12-31",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.025689607360677314
-    },
-    {
-      "fighterId": "ota-shinobu",
-      "division": "バンタム級",
-      "p4pRank": 34,
-      "divisionRank": 9,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 7,
-        "losses": 6,
-        "draws": 0
-      },
-      "lastFight": "2026-07-18",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.02765853360789788
+      "internalScore": 1518.747278076959
     },
     {
       "fighterId": "takagi-ryo",
       "division": "フェザー級",
-      "p4pRank": 35,
+      "p4pRank": 25,
       "divisionRank": 9,
       "tier": "challenger",
       "defenseCount": null,
@@ -665,69 +475,50 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.043637197975986426
+      "internalScore": 1517.6783423855732
     },
     {
-      "fighterId": "torres-jose",
+      "fighterId": "ito-yuki",
       "division": "フライ級",
-      "p4pRank": 36,
-      "divisionRank": 7,
+      "p4pRank": 26,
+      "divisionRank": 5,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 1,
-        "losses": 1,
+        "wins": 10,
+        "losses": 3,
         "draws": 0
       },
-      "lastFight": "2025-12-31",
+      "lastFight": "2026-03-07",
       "rankPositionDelta": {
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.1111619949678262
+      "internalScore": 1515.8214017812297
     },
     {
-      "fighterId": "yachi-yusuke",
-      "division": "ライト級",
-      "p4pRank": 37,
-      "divisionRank": 8,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 13,
-        "losses": 9,
-        "draws": 0
-      },
-      "lastFight": "2026-06-06",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.1276543812415931
-    },
-    {
-      "fighterId": "kashimura-jinnosuke",
-      "division": "バンタム級",
-      "p4pRank": 38,
-      "divisionRank": 10,
+      "fighterId": "gadzhamatov-alibeg",
+      "division": "フライ級",
+      "p4pRank": 27,
+      "divisionRank": 6,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
         "wins": 2,
-        "losses": 2,
+        "losses": 1,
         "draws": 0
       },
-      "lastFight": "2026-07-18",
+      "lastFight": "2025-09-28",
       "rankPositionDelta": {
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.16142791625076636
+      "internalScore": 1512.042828351789
     },
     {
       "fighterId": "majima-kazumasa",
       "division": "フェザー級",
-      "p4pRank": 39,
+      "p4pRank": 28,
       "divisionRank": 10,
       "tier": "challenger",
       "defenseCount": null,
@@ -741,12 +532,50 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.18701332504516485
+      "internalScore": 1509.9940573010463
+    },
+    {
+      "fighterId": "case-johnny",
+      "division": "ライト級",
+      "p4pRank": 29,
+      "divisionRank": 7,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 5,
+        "losses": 4,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "down",
+        "positions": 2
+      },
+      "internalScore": 1508.5934793396752
+    },
+    {
+      "fighterId": "fukuda-ryuya",
+      "division": "バンタム級",
+      "p4pRank": 30,
+      "divisionRank": 5,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      },
+      "lastFight": "2026-04-12",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1508.5772348134788
     },
     {
       "fighterId": "suzuki-hiroaki",
       "division": "フェザー級",
-      "p4pRank": 40,
+      "p4pRank": 31,
       "divisionRank": 11,
       "tier": "challenger",
       "defenseCount": null,
@@ -757,34 +586,15 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
+        "kind": "up",
+        "positions": 9
       },
-      "internalScore": -0.24073411385504312
-    },
-    {
-      "fighterId": "dodson-john",
-      "division": "フライ級",
-      "p4pRank": 41,
-      "divisionRank": 8,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 2,
-        "draws": 0
-      },
-      "lastFight": "2025-05-04",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.29359921333752026
+      "internalScore": 1507.1148760550527
     },
     {
       "fighterId": "kolesnik-viktor",
       "division": "フェザー級",
-      "p4pRank": 42,
+      "p4pRank": 32,
       "divisionRank": 12,
       "tier": "challenger",
       "defenseCount": null,
@@ -798,12 +608,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.3255770944200791
+      "internalScore": 1502.567691921894
     },
     {
       "fighterId": "kubo-yuta",
       "division": "フェザー級",
-      "p4pRank": 43,
+      "p4pRank": 33,
       "divisionRank": 13,
       "tier": "challenger",
       "defenseCount": null,
@@ -817,7 +627,197 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.3667492480981793
+      "internalScore": 1500.3610584127198
+    },
+    {
+      "fighterId": "kim-soochul",
+      "division": "バンタム級",
+      "p4pRank": 34,
+      "divisionRank": 6,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "draws": 0
+      },
+      "lastFight": "2025-05-31",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1499.4570572937796
+    },
+    {
+      "fighterId": "yrysbek-tilenov",
+      "division": "バンタム級",
+      "p4pRank": 35,
+      "divisionRank": 7,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 1,
+        "losses": 0,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "down",
+        "positions": 10
+      },
+      "internalScore": 1499.0561349714608
+    },
+    {
+      "fighterId": "yachi-yusuke",
+      "division": "ライト級",
+      "p4pRank": 36,
+      "divisionRank": 8,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 13,
+        "losses": 9,
+        "draws": 0
+      },
+      "lastFight": "2026-06-06",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1498.7563354892075
+    },
+    {
+      "fighterId": "yamamoto-arsen",
+      "division": "フライ級",
+      "p4pRank": 37,
+      "divisionRank": 4,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 4,
+        "losses": 3,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "down",
+        "positions": 8
+      },
+      "internalScore": 1497.8359781057807
+    },
+    {
+      "fighterId": "temirov-azizbek",
+      "division": "バンタム級",
+      "p4pRank": 38,
+      "divisionRank": 4,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 1,
+        "losses": 0,
+        "draws": 0
+      },
+      "lastFight": "2026-04-12",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1497.4348810961376
+    },
+    {
+      "fighterId": "torres-jose",
+      "division": "フライ級",
+      "p4pRank": 39,
+      "divisionRank": 7,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 1,
+        "losses": 1,
+        "draws": 0
+      },
+      "lastFight": "2025-12-31",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1493.6384401648058
+    },
+    {
+      "fighterId": "ando-tatsuya",
+      "division": "バンタム級",
+      "p4pRank": 40,
+      "divisionRank": 8,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      },
+      "lastFight": "2025-12-31",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1491.807776848508
+    },
+    {
+      "fighterId": "ota-shinobu",
+      "division": "バンタム級",
+      "p4pRank": 41,
+      "divisionRank": 9,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 7,
+        "losses": 6,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "down",
+        "positions": 7
+      },
+      "internalScore": 1491.711270666176
+    },
+    {
+      "fighterId": "dodson-john",
+      "division": "フライ級",
+      "p4pRank": 42,
+      "divisionRank": 8,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      },
+      "lastFight": "2025-05-04",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1485.6692430035637
+    },
+    {
+      "fighterId": "kashimura-jinnosuke",
+      "division": "バンタム級",
+      "p4pRank": 43,
+      "divisionRank": 10,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "down",
+        "positions": 5
+      },
+      "internalScore": 1485.1546144938136
     },
     {
       "fighterId": "zhumagazy-nurkhan",
@@ -836,69 +836,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.4052253365581127
-    },
-    {
-      "fighterId": "yang-jiyong",
-      "division": "バンタム級",
-      "p4pRank": 45,
-      "divisionRank": 11,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 3,
-        "losses": 2,
-        "draws": 0
-      },
-      "lastFight": "2025-07-27",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.45415134647760375
-    },
-    {
-      "fighterId": "jolly",
-      "division": "バンタム級",
-      "p4pRank": 46,
-      "divisionRank": 12,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 0,
-        "draws": 0
-      },
-      "lastFight": "2026-05-10",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.4606749216434241
-    },
-    {
-      "fighterId": "sakuraba-taisei",
-      "division": "ライト級",
-      "p4pRank": 47,
-      "divisionRank": 10,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 2,
-        "draws": 0
-      },
-      "lastFight": "2026-03-07",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.501043336206682
+      "internalScore": 1484.7586099743503
     },
     {
       "fighterId": "usami-sho-patrick",
       "division": "ライト級",
-      "p4pRank": 48,
+      "p4pRank": 45,
       "divisionRank": 11,
       "tier": "challenger",
       "defenseCount": null,
@@ -912,31 +855,31 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.501043336206682
+      "internalScore": 1484.2212021169619
     },
     {
-      "fighterId": "hiramoto-jo",
-      "division": "フライ級",
-      "p4pRank": 49,
-      "divisionRank": 9,
+      "fighterId": "sakuraba-taisei",
+      "division": "ライト級",
+      "p4pRank": 46,
+      "divisionRank": 10,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 3,
-        "losses": 1,
+        "wins": 2,
+        "losses": 2,
         "draws": 0
       },
-      "lastFight": "2026-05-10",
+      "lastFight": "2026-03-07",
       "rankPositionDelta": {
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.5278894633120246
+      "internalScore": 1479.9265696157547
     },
     {
       "fighterId": "beinoa",
       "division": "ライト級",
-      "p4pRank": 50,
+      "p4pRank": 47,
       "divisionRank": 12,
       "tier": "challenger",
       "defenseCount": null,
@@ -950,12 +893,31 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.5612457934219105
+      "internalScore": 1476.8905982531971
+    },
+    {
+      "fighterId": "hiramoto-jo",
+      "division": "フライ級",
+      "p4pRank": 48,
+      "divisionRank": 9,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 3,
+        "losses": 1,
+        "draws": 0
+      },
+      "lastFight": "2026-05-10",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1475.4350089383413
     },
     {
       "fighterId": "soya-takaki",
       "division": "フライ級",
-      "p4pRank": 51,
+      "p4pRank": 49,
       "divisionRank": 10,
       "tier": "challenger",
       "defenseCount": null,
@@ -969,7 +931,45 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.5892848351976281
+      "internalScore": 1472.753144855363
+    },
+    {
+      "fighterId": "yang-jiyong",
+      "division": "バンタム級",
+      "p4pRank": 50,
+      "divisionRank": 11,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      },
+      "lastFight": "2025-07-27",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1470.8068852326574
+    },
+    {
+      "fighterId": "jolly",
+      "division": "バンタム級",
+      "p4pRank": 51,
+      "divisionRank": 12,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      },
+      "lastFight": "2026-05-10",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1470.4871346400196
     },
     {
       "fighterId": "hinotori",
@@ -988,31 +988,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.6557926409575234
-    },
-    {
-      "fighterId": "nakajima-taichi",
-      "division": "バンタム級",
-      "p4pRank": 53,
-      "divisionRank": 13,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 3,
-        "draws": 0
-      },
-      "lastFight": "2025-11-03",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.6691902611003467
+      "internalScore": 1469.847960147996
     },
     {
       "fighterId": "zulu-nkazimulo",
       "division": "フライ級",
-      "p4pRank": 54,
+      "p4pRank": 53,
       "divisionRank": 12,
       "tier": "challenger",
       "defenseCount": null,
@@ -1026,12 +1007,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.7086285927921991
+      "internalScore": 1467.5399874594452
     },
     {
       "fighterId": "shinotsuka-tatsuki",
       "division": "フライ級",
-      "p4pRank": 55,
+      "p4pRank": 54,
       "divisionRank": 13,
       "tier": "challenger",
       "defenseCount": null,
@@ -1045,31 +1026,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.757769697926137
-    },
-    {
-      "fighterId": "miyagawa-hyuga",
-      "division": "バンタム級",
-      "p4pRank": 56,
-      "divisionRank": 14,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 0,
-        "draws": 0
-      },
-      "lastFight": "2026-07-18",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -0.8097196314244952
+      "internalScore": 1465.3934125498229
     },
     {
       "fighterId": "tomizawa-daichi",
       "division": "フライ級",
-      "p4pRank": 57,
+      "p4pRank": 55,
       "divisionRank": 14,
       "tier": "challenger",
       "defenseCount": null,
@@ -1083,13 +1045,51 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -0.8348700943993477
+      "internalScore": 1462.0255237703532
     },
     {
-      "fighterId": "inoue-seiya",
+      "fighterId": "nakajima-taichi",
       "division": "バンタム級",
+      "p4pRank": 56,
+      "divisionRank": 13,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "draws": 0
+      },
+      "lastFight": "2025-11-03",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1460.2668333986476
+    },
+    {
+      "fighterId": "miyagawa-hyuga",
+      "division": "バンタム級",
+      "p4pRank": 57,
+      "divisionRank": 14,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "down",
+        "positions": 1
+      },
+      "internalScore": 1453.3788389627762
+    },
+    {
+      "fighterId": "naoki",
+      "division": "フェザー級",
       "p4pRank": 58,
-      "divisionRank": 15,
+      "divisionRank": 14,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
@@ -1102,56 +1102,18 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -1.0107898455674913
+      "internalScore": 1450.5079929564488
     },
     {
-      "fighterId": "umeno-genji",
-      "division": "バンタム級",
+      "fighterId": "nii-suguru",
+      "division": "フェザー級",
       "p4pRank": 59,
-      "divisionRank": 16,
+      "divisionRank": 15,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
         "wins": 2,
-        "losses": 1,
-        "draws": 0
-      },
-      "lastFight": "2026-07-18",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -1.1487807448289116
-    },
-    {
-      "fighterId": "kintaro",
-      "division": "バンタム級",
-      "p4pRank": 60,
-      "divisionRank": 17,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 4,
-        "losses": 8,
-        "draws": 0
-      },
-      "lastFight": "2026-05-10",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -1.1494368656714566
-    },
-    {
-      "fighterId": "ashizawa-ryusei",
-      "division": "バンタム級",
-      "p4pRank": 61,
-      "divisionRank": 18,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 4,
+        "losses": 6,
         "draws": 0
       },
       "lastFight": "2025-12-31",
@@ -1159,12 +1121,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -1.1685472846425085
+      "internalScore": 1447.5495904302857
     },
     {
       "fighterId": "lee-junghyun",
       "division": "フライ級",
-      "p4pRank": 62,
+      "p4pRank": 60,
       "divisionRank": 15,
       "tier": "challenger",
       "defenseCount": null,
@@ -1178,13 +1140,13 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -1.1714082775808692
+      "internalScore": 1447.324909728842
     },
     {
-      "fighterId": "naoki",
-      "division": "フェザー級",
-      "p4pRank": 63,
-      "divisionRank": 14,
+      "fighterId": "inoue-seiya",
+      "division": "バンタム級",
+      "p4pRank": 61,
+      "divisionRank": 15,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
@@ -1197,69 +1159,12 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -1.2969254933859937
-    },
-    {
-      "fighterId": "hiroya",
-      "division": "フライ級",
-      "p4pRank": 64,
-      "divisionRank": 16,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 3,
-        "losses": 6,
-        "draws": 0
-      },
-      "lastFight": "2026-07-18",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -1.3474982614677664
-    },
-    {
-      "fighterId": "nii-suguru",
-      "division": "フェザー級",
-      "p4pRank": 65,
-      "divisionRank": 15,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 2,
-        "losses": 6,
-        "draws": 0
-      },
-      "lastFight": "2025-12-31",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -1.3521244210477281
-    },
-    {
-      "fighterId": "saiga-yanbo-tatsuya",
-      "division": "ライト級",
-      "p4pRank": 66,
-      "divisionRank": 13,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 1,
-        "losses": 4,
-        "draws": 0
-      },
-      "lastFight": "2026-05-10",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "internalScore": -1.3964861363893941
+      "internalScore": 1443.5234577492845
     },
     {
       "fighterId": "kimura-shuya",
       "division": "フェザー級",
-      "p4pRank": 67,
+      "p4pRank": 62,
       "divisionRank": 16,
       "tier": "challenger",
       "defenseCount": null,
@@ -1273,31 +1178,107 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -1.435194297198075
+      "internalScore": 1443.0974363421255
     },
     {
-      "fighterId": "tenya",
-      "division": "ライト級",
-      "p4pRank": 68,
-      "divisionRank": 14,
+      "fighterId": "hiroya",
+      "division": "フライ級",
+      "p4pRank": 63,
+      "divisionRank": 16,
       "tier": "challenger",
       "defenseCount": null,
       "record": {
-        "wins": 0,
-        "losses": 2,
+        "wins": 3,
+        "losses": 6,
         "draws": 0
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
+        "kind": "up",
+        "positions": 1
+      },
+      "internalScore": 1439.6329715801744
+    },
+    {
+      "fighterId": "umeno-genji",
+      "division": "バンタム級",
+      "p4pRank": 64,
+      "divisionRank": 16,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "down",
+        "positions": 5
+      },
+      "internalScore": 1436.7598855214922
+    },
+    {
+      "fighterId": "kintaro",
+      "division": "バンタム級",
+      "p4pRank": 65,
+      "divisionRank": 17,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 4,
+        "losses": 8,
+        "draws": 0
+      },
+      "lastFight": "2026-05-10",
+      "rankPositionDelta": {
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -1.5089920203269636
+      "internalScore": 1436.7277260042163
+    },
+    {
+      "fighterId": "ashizawa-ryusei",
+      "division": "バンタム級",
+      "p4pRank": 66,
+      "divisionRank": 18,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 2,
+        "losses": 4,
+        "draws": 0
+      },
+      "lastFight": "2025-12-31",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1435.791035978237
+    },
+    {
+      "fighterId": "saiga-yanbo-tatsuya",
+      "division": "ライト級",
+      "p4pRank": 67,
+      "divisionRank": 13,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "draws": 0
+      },
+      "lastFight": "2026-05-10",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "internalScore": 1434.7699626612564
     },
     {
       "fighterId": "hagiwara-kyohei",
       "division": "フェザー級",
-      "p4pRank": 69,
+      "p4pRank": 68,
       "divisionRank": 17,
       "tier": "challenger",
       "defenseCount": null,
@@ -1308,10 +1289,29 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
+        "kind": "up",
+        "positions": 1
       },
-      "internalScore": -1.6297244685299486
+      "internalScore": 1432.671535429523
+    },
+    {
+      "fighterId": "tenya",
+      "division": "ライト級",
+      "p4pRank": 69,
+      "divisionRank": 14,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "down",
+        "positions": 1
+      },
+      "internalScore": 1429.0963629852072
     },
     {
       "fighterId": "haga-bilalkai",
@@ -1330,7 +1330,7 @@
         "kind": "same",
         "positions": 0
       },
-      "internalScore": -1.6651961525290644
+      "internalScore": 1421.2190886343726
     }
   ],
   "defenseDataIssues": []
