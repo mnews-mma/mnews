@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import XShareLink from "@/components/XShareLink";
 import VsCard from "@/components/matchup/VsCard";
 import { getFighter } from "@/lib/fighters";
-import { GLOBAL_FIGHTER_NAME_SIZE } from "@/lib/events";
 import { ogImagePath } from "@/lib/ogShared";
 import { pageMetadata } from "@/lib/seo";
 import { fetchFighterRecordsStrict, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
@@ -161,7 +160,6 @@ export default async function VsPage({
             entryA={cardRedEntry}
             entryB={cardBlueEntry}
             visibleSlugs={visibleSlugs}
-            nameSizeOverride={GLOBAL_FIGHTER_NAME_SIZE}
           />
         ) : (
           <img

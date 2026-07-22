@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { EVENTS, getEvent, GLOBAL_FIGHTER_NAME_SIZE } from "@/lib/events";
+import { EVENTS, getEvent } from "@/lib/events";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
@@ -234,16 +234,10 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                クリック展開は廃止。上位3試合固定+折りたたみ運用はやめ、最初から
                全カードを新デザインで出す)。 */
             (() => {
-              // ページ内の全カード(戦績あり・戦績なし簡易表示問わず)で選手名
-              // サイズを統一する。カードの種類によって名前描画コンポーネントが
-              // 分岐しても(MatchupTape/EventBoutCardV2の簡易フォールバック)、
-              // サイズ自体は必ずこのページ単位の値(nameSizeOverride)を使う
-              // (コンポーネント側で独自にfighterNameSize()を計算し直さない)。
-              // サイズの値自体はページ内最長名ではなく全イベント横断の最長名
-              // (GLOBAL_FIGHTER_NAME_SIZE、events.tsでEVENTS全体から算出)を
-              // 使う。イベントをまたいで選手名の絶対サイズが変わらないようにする
-              // ための意図的な仕様(#76の再発防止テストがこの一致を検査する)。
-              const pageNameSize = GLOBAL_FIGHTER_NAME_SIZE;
+              // 選手名サイズはカード単体ルール(EventBoutCardV2/MatchupTape内の
+              // 「左右の長い方が収まるサイズ・天井CEILING_WEB」)に一本化
+              // (2026-07-22)。選手個別ページの次戦カードと同一仕様にするため、
+              // ページ側からのサイズ上書き(旧GLOBAL_FIGHTER_NAME_SIZE)は廃止。
               const resolvedBouts = orderedBouts.map((b) => {
                 const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
                 const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
@@ -270,7 +264,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                         note={b.note}
                         result={b.result}
                         isEventLive={event.status === "live"}
-                        nameSizeOverride={pageNameSize}
                       />
                     ))}
                   </div>

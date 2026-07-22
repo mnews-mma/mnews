@@ -15,7 +15,7 @@
 // 天井になる(=カードごとに別サイズにならない)」ことまで検査する
 // (前者だけのassertでは今回の不揃いを検出できなかったため強化)。
 import { sharedNameFit, type NameZone } from "../src/lib/og/vsCardBlocks";
-import { OG_DREAM_VS_CEILING, GLOBAL_FIGHTER_NAME_SIZE } from "../src/lib/events";
+import { OG_DREAM_VS_CEILING } from "../src/lib/events";
 import fs from "fs";
 import path from "path";
 
@@ -84,9 +84,6 @@ function main() {
   if (!(OG_DREAM_VS_CEILING >= 20 && OG_DREAM_VS_CEILING <= 108)) {
     violations.push(`OG_DREAM_VS_CEILING(${OG_DREAM_VS_CEILING})が想定範囲(20〜108px)外です。events.tsの算出式を確認してください。`);
   }
-  if (!(GLOBAL_FIGHTER_NAME_SIZE >= 11 && GLOBAL_FIGHTER_NAME_SIZE <= 20)) {
-    violations.push(`GLOBAL_FIGHTER_NAME_SIZE(${GLOBAL_FIGHTER_NAME_SIZE})が想定範囲(11〜20px)外です。events.tsの算出式を確認してください。`);
-  }
 
   // (d) sharedNameFitの呼び出し元(公開/vs・/dream・管理vs-compare)が、天井を
   //     ローカルなmaxFontフィールドとして再導入していないか(単一ソース逸脱の
@@ -126,13 +123,16 @@ function main() {
     }
   }
 
-  // (e) Web側(/dream・/vs)のページが、VsCardへ必ずnameSizeOverride
-  //     (GLOBAL_FIGHTER_NAME_SIZE)を渡していること。渡し忘れるとそのページ
-  //     だけ従来のカード単体計算(fighterNameSize経由)に戻り、単一サイズが
-  //     崩れる。
+  // (e) Web側(/dream・/vs)のページとVsCardが、廃止済みのページ側サイズ上書き
+  //     (nameSizeOverride prop / GLOBAL_FIGHTER_NAME_SIZE)を再導入していない
+  //     こと(2026-07-22統一: Web側の選手名サイズはMatchupTape内のカード単体
+  //     ルールに一本化。選手個別ページの次戦カードと同一仕様)。詳細な検査は
+  //     check-event-namesize-override.ts側に集約し、ここでは/dream・/vs固有の
+  //     ファイルだけを重ねて検査する。
   const WEB_PAGE_FILES = [
     "src/app/dream/page.tsx",
     "src/app/vs/[slugA]/[slugB]/page.tsx",
+    "src/components/matchup/VsCard.tsx",
   ];
   for (const rel of WEB_PAGE_FILES) {
     const file = path.join(process.cwd(), rel);
@@ -141,21 +141,11 @@ function main() {
       continue;
     }
     const content = fs.readFileSync(file, "utf8");
-    if (!/GLOBAL_FIGHTER_NAME_SIZE/.test(content)) {
-      violations.push(`${rel}: GLOBAL_FIGHTER_NAME_SIZE(events.ts)をimportしていません`);
-    }
-    if (!/nameSizeOverride=\{GLOBAL_FIGHTER_NAME_SIZE\}/.test(content)) {
-      violations.push(`${rel}: <VsCard>へnameSizeOverride={GLOBAL_FIGHTER_NAME_SIZE}を渡していません`);
-    }
-  }
-
-  // (f) VsCard.tsxがnameSizeOverrideを受け取り、MatchupTapeへ転送している
-  //     こと(プロップのバケツリレーが途中で切れていないか)。
-  {
-    const rel = "src/components/matchup/VsCard.tsx";
-    const content = fs.readFileSync(path.join(process.cwd(), rel), "utf8");
-    if (!/nameSizeOverride=\{nameSizeOverride\}/.test(content)) {
-      violations.push(`${rel}: <MatchupTape>へnameSizeOverride={nameSizeOverride}を転送していません`);
+    for (const line of content.split("\n")) {
+      const code = line.replace(/\/\/.*$/, "");
+      if (/nameSizeOverride\s*[=:?,]/.test(code) || /\bGLOBAL_FIGHTER_NAME_SIZE\b/.test(code)) {
+        violations.push(`${rel}: 廃止済みのページ側サイズ上書き(nameSizeOverride/GLOBAL_FIGHTER_NAME_SIZE)の再導入を検出: ${line.trim()}`);
+      }
     }
   }
 
@@ -169,10 +159,10 @@ function main() {
     } else {
       const content = fs.readFileSync(file, "utf8");
       const fontSizeProps = content.match(/fontSize=\{[^}]*\}/g) ?? [];
-      const nonSharedUsage = fontSizeProps.filter((m) => m.includes("fighterNameSize(") && !m.includes("nameSizeOverride"));
+      const nonSharedUsage = fontSizeProps.filter((m) => !m.includes("sharedNameSize"));
       if (nonSharedUsage.length > 0) {
         violations.push(
-          `${rel}: FighterNameTextへのfontSizeが共有変数(sharedNameSize)を経由せずfighterNameSize()を直接呼んでいます: ${nonSharedUsage.join(", ")}`
+          `${rel}: FighterNameTextへのfontSizeが共有変数(sharedNameSize)を経由していません: ${nonSharedUsage.join(", ")}`
         );
       }
     }
@@ -185,7 +175,7 @@ function main() {
     process.exit(1);
   }
 
-  console.log(`[夢のカード/VSカード 選手名フォント単一サイズ検査] OK (OG_DREAM_VS_CEILING=${OG_DREAM_VS_CEILING}, GLOBAL_FIGHTER_NAME_SIZE=${GLOBAL_FIGHTER_NAME_SIZE})`);
+  console.log(`[夢のカード/VSカード 選手名フォント単一サイズ検査] OK (OG_DREAM_VS_CEILING=${OG_DREAM_VS_CEILING})`);
 }
 
 main();
