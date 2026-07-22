@@ -129,4 +129,5 @@ export function checkRequiredInvariants(
 export {
   verifyAllChampionsPresent as checkP4PAllChampionsPresent,
   verifyPublishedDivisionsOnly as checkP4PPublishedDivisionsOnly,
+  verifyDivisionOrderInvariant as checkP4PDivisionOrderInvariant,
 } from "../mnewsRating/p4pFile";

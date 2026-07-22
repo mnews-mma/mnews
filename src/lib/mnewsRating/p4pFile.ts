@@ -15,26 +15,32 @@
 //   自然にレートを押し上げる。zスコアで正規化するとこの効果を打ち消して
 //   しまうため、正規化なしの絶対値の方がファンの直感(強い階級での防衛・
 //   活躍がそのまま評価される)に合う。
-// - 挑戦者(非王者)の同一階級内での「公開rank順(1位>2位…)を絶対に逆転
-//   させない」clampも撤回した。
-//   理由: 元谷友貴(フライ級3位)のように、Elo自体はフライ級だけでなく
-//   RIZINバンタム級タイトルマッチ等バンタム級での対戦も含めた通算(engine.ts
-//   のbuildBoutsは階級でフィルタしないため、rawRatingは元々「RIZIN通算
-//   オール」)で計算されている。この通算の強さをそのまま見せる方が実態に
-//   即しており、単一階級の公開rank順に縛る（clampする）とその情報を
-//   隠してしまう。
+// - 挑戦者(非王者)は、同一階級内の順序が階級別公開ランキングのrank順
+//   (1位>2位>3位…)を絶対に逆転しないようclampする(running-min方式:
+//   公開rank昇順に見て、直前のclamp後スコアを上回っていたら直前値まで
+//   引き下げる)。
+//   理由(2026-07-22、一度撤回した後に復活させた): clampを外すと、同じ階級の
+//   中でP4Pと階級別ランキングの前後が入れ替わって見える(例: フェザー級は
+//   公開1位の朝倉未来より公開2位のクレベル・コイケがP4Pで上、フライ級は
+//   公開2位のトニー・ララミーより公開3位の元谷友貴がP4Pで上)。原因は
+//   H2H単調性補正が階級別ランキング側にのみかかっていることで、説明自体は
+//   可能だが「同じサイトの2ページで前後が逆」を読者に納得させる説明コストが
+//   高すぎると判断した。P4Pは階級を跨いだ比較のための指標であり、階級内の
+//   序列は階級別ランキングに従わせる方が一貫する。
+//   なお王者は階級内の「公開rank」を持たない(overlay設計で番号付きランキングの
+//   対象外)ためclampの対象にできず、生のrawRatingのままグローバル順位に
+//   参加する。王者を上位固定するティアは設けない(2026-07-22、撤回済み)。
 // - 防衛回数・通算勝率は順位にも画面表示にも使わない(2026-07-22、表示も
 //   取りやめ)。データ自体はdata/p4p.jsonに保持し続けるが、これは将来の
 //   再利用に備えた据え置き(championDefenses.tsの冒頭コメント参照)。
 //
-// 【重要な仕様変更】上記の結果、P4Pの並び順は`/rankings/[division]`の公開
-// ランキングの並び順と食い違うことがある(例: ライト級の公開1位ノジモフより
-// 公開2位サトシ・ソウザがP4Pで上に来る。これはノジモフがサトシに直接対決で
-// 勝っている、というH2H単調性補正が階級別公開ランキング側にのみかかっている
-// ため)。これは実装上の不整合ではなく、「階級別ランキングは直接対決結果を
-// 優先する」「P4Pは階級を跨いだ通算の強さをそのまま見せる」という、2つの
-// ページが異なる問いに答えている、という意図的な設計として扱う(ページの
-// 説明文で明示する)。
+// 【clampの副作用・意図的に受け入れている点】clampは「自階級の上位者を
+// 追い越さない」制約なので、Eloレート自体は高いのに自階級の公開上位者に
+// 直接対決で負けている選手は、その上位者のスコアまで引き下げられてP4Pの
+// 順位を落とす(例: ホベルト・サトシ・ソウザはrawRating 1596.10と全体3位相当
+// だが、ライト級公開1位のイルホム・ノジモフ(1548.84)に直接対決で敗れている
+// ため1548.84まで引き下げられ、トップ15圏外に落ちる)。これは階級内の整合性を
+// 優先した設計上のトレードオフとして受け入れる。
 //
 // このモジュールはdata/rankings.json(既存Eloランキング)を読み取り専用の入力
 // とし、data/rankings.json自体・engine.ts・共有定数には一切影響しない
@@ -113,6 +119,29 @@ export function collectChallengerCandidates(rankings: RankingsFile): ChallengerC
         record: e.record,
         lastFight: e.lastFight,
       });
+    }
+  }
+  return out;
+}
+
+// 階級内順序clamp: 各階級で公開rank昇順(1位→2位→…)に並べ、直前の
+// (clamp後)rawRatingを上回っていれば直前値まで引き下げる(running min)。
+// これにより同一階級内のP4P順序が必ず公開rank順と一致する。
+// 王者は公開rankを持たないため対象外(呼び出し側で挑戦者のみ渡す)。
+export function clampChallengersToDivisionOrder(challengers: ChallengerCandidate[]): ChallengerCandidate[] {
+  const byDivision = new Map<MnewsDivision, ChallengerCandidate[]>();
+  for (const c of challengers) {
+    if (!byDivision.has(c.division)) byDivision.set(c.division, []);
+    byDivision.get(c.division)!.push(c);
+  }
+  const out: ChallengerCandidate[] = [];
+  for (const [, list] of byDivision) {
+    const byRankAsc = [...list].sort((a, b) => a.divisionRank - b.divisionRank);
+    let runningMin = Infinity;
+    for (const c of byRankAsc) {
+      const clamped = Math.min(c.rawRating, runningMin);
+      runningMin = clamped;
+      out.push({ ...c, rawRating: clamped });
     }
   }
   return out;
@@ -221,10 +250,11 @@ function collectChampionRecords(rankings: RankingsFile): Map<string, { record: R
   return out;
 }
 
-// P4Pファイル本体を構築する(2026-07-22改訂・2回目: zスコア正規化・clampを
-// 撤回。全員をrawRatingの絶対値そのままでフラットに並べる)。
+// P4Pファイル本体を構築する(2026-07-22最終: zスコア正規化なし・王者ティア
+// なし・挑戦者は階級内clampあり。冒頭の設計方針コメント参照)。
 export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
-  const challengerCandidates = collectChallengerCandidates(input.rankings);
+  // 挑戦者は階級内の公開rank順を逆転しないようclampしてからグローバルに並べる。
+  const challengerCandidates = clampChallengersToDivisionOrder(collectChallengerCandidates(input.rankings));
   const championRecords = collectChampionRecords(input.rankings);
   const { champions, defenseDataIssues } = buildChampionEntries(input.championRawRatings, championRecords, input.defenseData);
 
@@ -268,10 +298,18 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
       internalScore: c.rawRating,
     })),
   ];
-  // rawRating(internalScore)降順でソート。同点タイブレークはfighterId昇順
-  // (決定的・恣意性ゼロ。normalization・clampを撤回したため、階級内順位を
-  // 優先するタイブレークは不要になった)。
-  const entries = combined.sort((a, b) => b.internalScore - a.internalScore || a.fighterId.localeCompare(b.fighterId));
+  // internalScore(clamp後rawRating)降順でソート。
+  // 同点タイブレーク: clampは意図的に同点(直前値まで引き下げ)を作るため、
+  // 同一階級内の同点をfighterId(アルファベット順)で解くと公開rank順が壊れ、
+  // verifyDivisionOrderInvariantが破れる。まず階級内順位(王者は0扱い)昇順で
+  // 解き、最後にfighterIdで完全決定的にする。
+  const entries = combined.sort((a, b) => {
+    if (b.internalScore !== a.internalScore) return b.internalScore - a.internalScore;
+    const rankA = a.divisionRank === "champion" ? 0 : a.divisionRank;
+    const rankB = b.divisionRank === "champion" ? 0 : b.divisionRank;
+    if (rankA !== rankB) return rankA - rankB;
+    return a.fighterId.localeCompare(b.fighterId);
+  });
   entries.forEach((e, i) => {
     e.p4pRank = i + 1;
   });
@@ -287,10 +325,9 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
 
 // ===== 自己検証(scripts/generate-p4p.ts側で呼び出し、破れたらexit 1) =====
 //
-// 2026-07-22改訂(2回目): zスコア正規化・clampを撤回したため、「同一階級内の
-// P4P順序が公開rank順と一致する」という不変条件も撤回した(意図的にP4Pと
-// 階級別公開ランキングの順序が食い違いうる設計のため)。「王者が先頭N件を
-// 占める」も1回目の改訂で既に撤回済み。残る不変条件は以下の2つ。
+// 2026-07-22最終: 「王者が先頭N件を占める」は撤回済み(王者ティアなし)。
+// 「同一階級内のP4P順序が公開rank順と一致する」はclamp復活に伴い再導入した
+// (下記3)。
 
 // 1. rawRatingを算出できた王者が、全員entriesに含まれていること(位置は問わない)。
 export function verifyAllChampionsPresent(file: P4PFile, expectedChampionSlugs: string[]): string[] {
@@ -312,6 +349,26 @@ export function verifyPublishedDivisionsOnly(file: P4PFile): string[] {
   for (const e of file.entries) {
     if (!PUBLISHED_DIVISIONS.includes(e.division)) {
       errors.push(`${e.fighterId}: 非公開階級(${e.division})のエントリが混入`);
+    }
+  }
+  return errors;
+}
+
+// 3. 同一階級内のP4P順序 == 階級別公開rank順(逆転ゼロ)。clampが効いていれば
+// 必ず満たされる。王者は公開rankを持たないため対象外。
+export function verifyDivisionOrderInvariant(file: P4PFile): string[] {
+  const errors: string[] = [];
+  const byDivision = new Map<MnewsDivision, P4PEntry[]>();
+  for (const e of file.entries) {
+    if (e.tier === "champion") continue;
+    if (!byDivision.has(e.division)) byDivision.set(e.division, []);
+    byDivision.get(e.division)!.push(e);
+  }
+  for (const [division, list] of byDivision) {
+    const byPublicRank = [...list].sort((a, b) => (a.divisionRank as number) - (b.divisionRank as number)).map((e) => e.fighterId);
+    const byP4PRank = [...list].sort((a, b) => a.p4pRank - b.p4pRank).map((e) => e.fighterId);
+    if (JSON.stringify(byPublicRank) !== JSON.stringify(byP4PRank)) {
+      errors.push(`${division}: P4P順序が階級別公開rank順と不一致(clampが効いていない)`);
     }
   }
   return errors;

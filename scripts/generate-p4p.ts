@@ -44,6 +44,7 @@ import {
 import {
   checkP4PAllChampionsPresent,
   checkP4PPublishedDivisionsOnly,
+  checkP4PDivisionOrderInvariant,
 } from "../src/lib/rankings/requiredInvariants";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { CHAMPION_DEFENSES } from "../src/lib/championDefenses";
@@ -213,6 +214,8 @@ function runOnce(): P4PFile {
   const errors = [
     ...checkP4PAllChampionsPresent(withDeltas, expectedChampionSlugs),
     ...checkP4PPublishedDivisionsOnly(withDeltas),
+    // 挑戦者の階級内順序が階級別公開ランキングと一致すること(clampの検証)。
+    ...checkP4PDivisionOrderInvariant(withDeltas),
     // RIZIN通算戦績が1件でも解決できていない場合は書き込みを中止する。
     // 階級スコープ済み戦績にフォールバックしたまま公開すると、P4P内で
     // 「RIZIN通算の選手」と「その階級だけの選手」が混在し意味が壊れるため。
