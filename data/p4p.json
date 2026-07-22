@@ -35,8 +35,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1623.825407770858
     },
@@ -187,8 +187,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "up",
-        "positions": 5
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1560.2417565641767
     },
@@ -548,8 +548,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 2
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1508.5934793396752
     },
@@ -586,8 +586,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "up",
-        "positions": 9
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1507.1148760550527
     },
@@ -662,8 +662,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 10
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1499.0561349714608
     },
@@ -700,8 +700,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 8
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1497.8359781057807
     },
@@ -776,8 +776,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 7
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1491.711270666176
     },
@@ -814,8 +814,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 5
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1485.1546144938136
     },
@@ -1080,8 +1080,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1453.3788389627762
     },
@@ -1194,8 +1194,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "up",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1439.6329715801744
     },
@@ -1213,8 +1213,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 5
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1436.7598855214922
     },
@@ -1289,8 +1289,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "up",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1432.671535429523
     },
@@ -1308,8 +1308,8 @@
       },
       "lastFight": "2026-07-18",
       "rankPositionDelta": {
-        "kind": "down",
-        "positions": 1
+        "kind": "same",
+        "positions": 0
       },
       "internalScore": 1429.0963629852072
     },
