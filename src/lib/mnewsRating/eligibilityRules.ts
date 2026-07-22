@@ -6,6 +6,7 @@ import { MnewsDivision, NAMED_DIVISION_RE, mapToDivision } from "./divisions";
 import {
   ELIGIBILITY_MAX_INACTIVE_MONTHS,
   ELIGIBILITY_MIN_FIGHTS,
+  ELIGIBILITY_ESTABLISHED_VETERAN_MIN_FIGHTS,
   ELIGIBILITY_MIN_WINS,
   ELIGIBILITY_RECENT_MIN_FIGHTS,
   ELIGIBILITY_RECENT_YEAR_START,
@@ -108,13 +109,19 @@ function resolveEligibilityScope(summaries: FighterBoutSummary[], currentDivisio
   const withoutOpeners = excludeOpeningFights(summaries);
   const divisionCutoff = detectDivisionChangeCutoff(withoutOpeners, currentDivision);
   // 2026-07-19(確立ベテラン例外): 活動空白カットオフは薄いカムバック(中村大介=
-  // 空白前2戦)を弾く穴埋めであって、空白前に既にELIGIBILITY_MIN_FIGHTS戦以上を積んだ
-  // 確立選手が復帰して直近に試合している場合まで過去を全消しする意図ではない。
-  // 空白前の対戦数が資格バー以上なら確立済みとみなし活動空白カットオフを無効化する
-  // (階級変更カットオフは別途そのまま効く)。ケース(空白前7戦)該当・中村(2戦)非該当。
+  // 空白前2戦)を弾く穴埋めであって、空白前に既に十分な試合数を積んだ確立選手が
+  // 復帰して直近に試合している場合まで過去を全消しする意図ではない。空白前の対戦数が
+  // ELIGIBILITY_ESTABLISHED_VETERAN_MIN_FIGHTS以上なら確立済みとみなし、活動空白
+  // カットオフを無効化する(階級変更カットオフは別途そのまま効く)。
+  // ケース(空白前7戦)該当・中村(2戦)非該当。
+  //
+  // 2026-07-22: 閾値をELIGIBILITY_MIN_FIGHTS(掲載資格の試合数バー)の流用から専用定数へ
+  // 分離した。両者は別概念で、値が3で一致していたのは偶然の結合。閾値3では「空白前
+  // ちょうど3戦 + 復帰1戦」がこの例外に吸い込まれ、例外が塞ぐはずだった中村大介クラスの
+  // 薄いカムバックを境界上で通してしまっていた(constants.ts側の定義コメント参照)。
   const rawGapCutoff = detectInactivityGapCutoff(withoutOpeners);
   const preGapFights = rawGapCutoff ? withoutOpeners.filter((s) => s.date <= rawGapCutoff).length : 0;
-  const gapCutoff = rawGapCutoff && preGapFights >= ELIGIBILITY_MIN_FIGHTS ? null : rawGapCutoff;
+  const gapCutoff = rawGapCutoff && preGapFights >= ELIGIBILITY_ESTABLISHED_VETERAN_MIN_FIGHTS ? null : rawGapCutoff;
   const cutoff =
     divisionCutoff && gapCutoff ? (divisionCutoff > gapCutoff ? divisionCutoff : gapCutoff) : divisionCutoff ?? gapCutoff;
   return cutoff ? withoutOpeners.filter((s) => s.date > cutoff) : withoutOpeners;
