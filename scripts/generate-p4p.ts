@@ -43,7 +43,6 @@ import {
 } from "../src/lib/mnewsRating/p4pFile";
 import {
   checkP4PAllChampionsPresent,
-  checkP4PDivisionOrderInvariant,
   checkP4PPublishedDivisionsOnly,
 } from "../src/lib/rankings/requiredInvariants";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
@@ -196,13 +195,13 @@ function runOnce(): P4PFile {
   };
 
   // 自己検証: 破れたら書き込み自体を止める(既存パイプラインのH2H不変条件
-  // チェックと同じ「書き込み前に必ず検証」の設計を踏襲)。王者ティア固定を
-  // 撤回したため(2026-07-22)、「王者が先頭を占める」ではなく「rawRatingを
-  // 算出できた王者が全員entriesに存在する(位置は問わない)」ことを検証する。
+  // チェックと同じ「書き込み前に必ず検証」の設計を踏襲)。王者ティア固定・
+  // zスコア正規化・clampを撤回したため(2026-07-22)、「王者が先頭を占める」
+  // 「同一階級内が公開rank順」はいずれも撤回済み。rawRatingを算出できた王者が
+  // 全員entriesに存在する(位置は問わない)ことと、非公開階級混入ゼロのみを検証する。
   const expectedChampionSlugs = championRawRatings.map((c) => c.slug);
   const errors = [
     ...checkP4PAllChampionsPresent(withDeltas, expectedChampionSlugs),
-    ...checkP4PDivisionOrderInvariant(withDeltas),
     ...checkP4PPublishedDivisionsOnly(withDeltas),
   ];
   if (errors.length > 0) {

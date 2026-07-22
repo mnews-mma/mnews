@@ -115,7 +115,10 @@ export function checkRequiredInvariants(
   return violations;
 }
 
-// ===== P4P(パウンドフォーパウンド)必達不変条件(2026-07-22追加) =====
+// ===== P4P(パウンドフォーパウンド)必達不変条件(2026-07-22追加、同日2回目の
+// 改訂でzスコア正規化・clampを撤回したため「同一階級内の順序が公開rank順と
+// 一致する」不変条件は撤回済み。P4Pは階級を跨いだ通算rawRatingの絶対値で
+// 並べるため、公開ランキングとの食い違いは意図的な仕様) =====
 //
 // 上記のREQUIRED_RANKING_INVARIANTS(H2H直接対決の手動キュレーションリスト)
 // とは性質が異なる(P4Pは階級横断の構造的な不変条件であり、個別の対戦カード
@@ -125,6 +128,5 @@ export function checkRequiredInvariants(
 // scripts/generate-p4p.tsが呼ぶ入口として再エクスポートするだけに留める。
 export {
   verifyAllChampionsPresent as checkP4PAllChampionsPresent,
-  verifyDivisionOrderInvariant as checkP4PDivisionOrderInvariant,
   verifyPublishedDivisionsOnly as checkP4PPublishedDivisionsOnly,
 } from "../mnewsRating/p4pFile";
