@@ -31,8 +31,14 @@ jobs:
         run: |
           git config user.name "mnews-bot"
           git config user.email "actions@users.noreply.github.com"
-          if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive; then
-            git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive
+          # data/rankings.legitimateBaseline.json: update-mnews-rating.tsのnew-results
+          # モード(このジョブの既定実行)は毎回このファイルを前進させて書き出すが、
+          # 従来ここのgit add対象に含まれていなかったためコミットされず、CI実行の
+          # たびに書き捨てられていた(2026-07-20 19:28以降凍結)。baselineが前進しない
+          # と、後日--mode=data-correctionを実行した際のripple検出(auditRankingsRipple)
+          # が古い基準と比較し続け、無関係な選手のdeltaまで誤ってゼロに抑制する。
+          if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json; then
+            git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json
             git commit -m "chore: update fighter records + mnews rating [skip ci]"
             git push
           else

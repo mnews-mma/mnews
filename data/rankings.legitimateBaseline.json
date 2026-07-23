@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-07-20T10:27:53.604Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -18,7 +18,7 @@
         "fighterId": "ougikubo-hiromasa",
         "rank": 1,
         "rating": 1580,
-        "rawRating": 1577.2735812849503,
+        "rawRating": 1577.2740312657202,
         "delta": 0,
         "record": {
           "wins": 5,
@@ -33,7 +33,7 @@
         "fighterId": "laramie-tony",
         "rank": 2,
         "rating": 1550,
-        "rawRating": 1549.7235710157079,
+        "rawRating": 1549.7276759912338,
         "delta": 0,
         "record": {
           "wins": 4,
@@ -48,7 +48,7 @@
         "fighterId": "motoya-yuki",
         "rank": 3,
         "rating": 1550,
-        "rawRating": 1550.3100278050915,
+        "rawRating": 1550.311283618803,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -63,7 +63,7 @@
         "fighterId": "yamamoto-arsen",
         "rank": 4,
         "rating": 1500,
-        "rawRating": 1497.8359781057807,
+        "rawRating": 1497.8512744993754,
         "delta": 0,
         "record": {
           "wins": 4,
@@ -81,7 +81,7 @@
         "fighterId": "ito-yuki",
         "rank": 5,
         "rating": 1520,
-        "rawRating": 1515.8214017812297,
+        "rawRating": 1515.9175347838063,
         "delta": 0,
         "record": {
           "wins": 10,
@@ -96,7 +96,7 @@
         "fighterId": "gadzhamatov-alibeg",
         "rank": 6,
         "rating": 1510,
-        "rawRating": 1512.042828351789,
+        "rawRating": 1512.0428569162355,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -111,7 +111,7 @@
         "fighterId": "torres-jose",
         "rank": 7,
         "rating": 1490,
-        "rawRating": 1493.6384401648058,
+        "rawRating": 1493.6389624379512,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -126,7 +126,7 @@
         "fighterId": "dodson-john",
         "rank": 8,
         "rating": 1490,
-        "rawRating": 1485.6692430035637,
+        "rawRating": 1485.6692587194732,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -138,40 +138,10 @@
         "rankPositionDelta": null
       },
       {
-        "fighterId": "hiramoto-jo",
+        "fighterId": "hinotori",
         "rank": 9,
         "rating": 1480,
-        "rawRating": 1475.4350089383413,
-        "delta": 0,
-        "record": {
-          "wins": 3,
-          "losses": 1,
-          "draws": 0
-        },
-        "lastFight": "2026-05-10",
-        "weighInMiss": false,
-        "rankPositionDelta": null
-      },
-      {
-        "fighterId": "soya-takaki",
-        "rank": 10,
-        "rating": 1470,
-        "rawRating": 1472.753144855363,
-        "delta": 0,
-        "record": {
-          "wins": 4,
-          "losses": 4,
-          "draws": 0
-        },
-        "lastFight": "2026-03-07",
-        "weighInMiss": false,
-        "rankPositionDelta": null
-      },
-      {
-        "fighterId": "hinotori",
-        "rank": 11,
-        "rating": 1470,
-        "rawRating": 1469.847960147996,
+        "rawRating": 1481.0419336491127,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -186,10 +156,25 @@
         }
       },
       {
-        "fighterId": "zulu-nkazimulo",
-        "rank": 12,
+        "fighterId": "soya-takaki",
+        "rank": 10,
         "rating": 1470,
-        "rawRating": 1467.5399874594452,
+        "rawRating": 1472.7536349914599,
+        "delta": 0,
+        "record": {
+          "wins": 4,
+          "losses": 4,
+          "draws": 0
+        },
+        "lastFight": "2026-03-07",
+        "weighInMiss": false,
+        "rankPositionDelta": null
+      },
+      {
+        "fighterId": "zulu-nkazimulo",
+        "rank": 11,
+        "rating": 1470,
+        "rawRating": 1467.5445189272402,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -202,9 +187,9 @@
       },
       {
         "fighterId": "shinotsuka-tatsuki",
-        "rank": 13,
+        "rank": 12,
         "rating": 1470,
-        "rawRating": 1465.3934125498229,
+        "rawRating": 1465.3937056370278,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -217,9 +202,9 @@
       },
       {
         "fighterId": "tomizawa-daichi",
-        "rank": 14,
+        "rank": 13,
         "rating": 1460,
-        "rawRating": 1462.0255237703532,
+        "rawRating": 1462.0259989513277,
         "delta": 0,
         "record": {
           "wins": 3,
@@ -231,10 +216,25 @@
         "rankPositionDelta": null
       },
       {
+        "fighterId": "hiramoto-jo",
+        "rank": 14,
+        "rating": 1460,
+        "rawRating": 1463.8471405718678,
+        "delta": 0,
+        "record": {
+          "wins": 3,
+          "losses": 1,
+          "draws": 0
+        },
+        "lastFight": "2026-05-10",
+        "weighInMiss": false,
+        "rankPositionDelta": null
+      },
+      {
         "fighterId": "lee-junghyun",
         "rank": 15,
         "rating": 1450,
-        "rawRating": 1447.324909728842,
+        "rawRating": 1447.3305446651732,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -249,7 +249,7 @@
         "fighterId": "hiroya",
         "rank": 16,
         "rating": 1440,
-        "rawRating": 1439.6329715801744,
+        "rawRating": 1439.6375035905412,
         "delta": 0,
         "record": {
           "wins": 3,
@@ -262,12 +262,27 @@
           "kind": "same",
           "positions": 0
         }
+      },
+      {
+        "fighterId": "ameyama-seiya",
+        "rank": 17,
+        "rating": 1420,
+        "rawRating": 1416.3040554735258,
+        "delta": 0,
+        "record": {
+          "wins": 0,
+          "losses": 2,
+          "draws": 0
+        },
+        "lastFight": "2026-05-10",
+        "weighInMiss": false,
+        "rankPositionDelta": null
       }
     ]
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-07-20T10:27:53.604Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -284,7 +299,7 @@
         "fighterId": "inoue-naoki",
         "rank": 1,
         "rating": 1580,
-        "rawRating": 1578.828414613511,
+        "rawRating": 1578.8284352241947,
         "delta": 0,
         "record": {
           "wins": 10,
@@ -314,7 +329,7 @@
         "fighterId": "goto-joji",
         "rank": 3,
         "rating": 1530,
-        "rawRating": 1532.3482894569972,
+        "rawRating": 1532.3602299185704,
         "delta": 0,
         "record": {
           "wins": 5,
@@ -329,7 +344,7 @@
         "fighterId": "temirov-azizbek",
         "rank": 4,
         "rating": 1500,
-        "rawRating": 1497.4348810961376,
+        "rawRating": 1497.4349172920543,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -344,7 +359,7 @@
         "fighterId": "fukuda-ryuya",
         "rank": 5,
         "rating": 1510,
-        "rawRating": 1508.5772348134788,
+        "rawRating": 1508.5775717709191,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -374,7 +389,7 @@
         "fighterId": "yrysbek-tilenov",
         "rank": 7,
         "rating": 1500,
-        "rawRating": 1499.0561349714608,
+        "rawRating": 1499.0579680153535,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -392,7 +407,7 @@
         "fighterId": "ando-tatsuya",
         "rank": 8,
         "rating": 1490,
-        "rawRating": 1491.807776848508,
+        "rawRating": 1491.8085537651166,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -407,7 +422,7 @@
         "fighterId": "ota-shinobu",
         "rank": 9,
         "rating": 1490,
-        "rawRating": 1491.711270666176,
+        "rawRating": 1491.72793068491,
         "delta": 0,
         "record": {
           "wins": 7,
@@ -425,7 +440,7 @@
         "fighterId": "kashimura-jinnosuke",
         "rank": 10,
         "rating": 1490,
-        "rawRating": 1485.1546144938136,
+        "rawRating": 1485.1546408625243,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -443,7 +458,7 @@
         "fighterId": "yang-jiyong",
         "rank": 11,
         "rating": 1470,
-        "rawRating": 1470.8068852326574,
+        "rawRating": 1470.8257654585198,
         "delta": 0,
         "record": {
           "wins": 3,
@@ -458,7 +473,7 @@
         "fighterId": "jolly",
         "rank": 12,
         "rating": 1470,
-        "rawRating": 1470.4871346400196,
+        "rawRating": 1470.4871353695492,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -473,7 +488,7 @@
         "fighterId": "nakajima-taichi",
         "rank": 13,
         "rating": 1460,
-        "rawRating": 1460.2668333986476,
+        "rawRating": 1460.5703746475824,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -488,7 +503,7 @@
         "fighterId": "miyagawa-hyuga",
         "rank": 14,
         "rating": 1450,
-        "rawRating": 1453.3788389627762,
+        "rawRating": 1453.378883952685,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -506,7 +521,7 @@
         "fighterId": "inoue-seiya",
         "rank": 15,
         "rating": 1440,
-        "rawRating": 1443.5234577492845,
+        "rawRating": 1443.523476913162,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -518,10 +533,25 @@
         "rankPositionDelta": null
       },
       {
-        "fighterId": "umeno-genji",
+        "fighterId": "kintaro",
         "rank": 16,
         "rating": 1440,
-        "rawRating": 1436.7598855214922,
+        "rawRating": 1437.1553649721927,
+        "delta": 0,
+        "record": {
+          "wins": 4,
+          "losses": 8,
+          "draws": 0
+        },
+        "lastFight": "2026-05-10",
+        "weighInMiss": false,
+        "rankPositionDelta": null
+      },
+      {
+        "fighterId": "umeno-genji",
+        "rank": 17,
+        "rating": 1440,
+        "rawRating": 1436.7615305291274,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -536,25 +566,10 @@
         }
       },
       {
-        "fighterId": "kintaro",
-        "rank": 17,
-        "rating": 1440,
-        "rawRating": 1436.7277260042163,
-        "delta": 0,
-        "record": {
-          "wins": 4,
-          "losses": 8,
-          "draws": 0
-        },
-        "lastFight": "2026-05-10",
-        "weighInMiss": false,
-        "rankPositionDelta": null
-      },
-      {
         "fighterId": "ashizawa-ryusei",
         "rank": 18,
         "rating": 1440,
-        "rawRating": 1435.791035978237,
+        "rawRating": 1435.791053550306,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -569,7 +584,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-07-20T10:27:53.604Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -601,7 +616,7 @@
         "fighterId": "koike-kleber",
         "rank": 2,
         "rating": 1590,
-        "rawRating": 1591.8409870189678,
+        "rawRating": 1591.8431179557226,
         "delta": 0,
         "record": {
           "wins": 10,
@@ -616,7 +631,7 @@
         "fighterId": "karshyga-dautbek",
         "rank": 3,
         "rating": 1560,
-        "rawRating": 1560.2417565641767,
+        "rawRating": 1560.2417890244758,
         "delta": 0,
         "record": {
           "wins": 5,
@@ -634,7 +649,7 @@
         "fighterId": "akimoto-kyoma",
         "rank": 4,
         "rating": 1560,
-        "rawRating": 1559.1646994318278,
+        "rawRating": 1559.1813474871444,
         "delta": 0,
         "record": {
           "wins": 6,
@@ -649,7 +664,7 @@
         "fighterId": "karamov-vugar",
         "rank": 5,
         "rating": 1550,
-        "rawRating": 1549.70764454891,
+        "rawRating": 1549.7320620091912,
         "delta": 0,
         "record": {
           "wins": 7,
@@ -709,7 +724,7 @@
         "fighterId": "takagi-ryo",
         "rank": 9,
         "rating": 1520,
-        "rawRating": 1517.6783033230017,
+        "rawRating": 1517.679084958555,
         "delta": 0,
         "record": {
           "wins": 5,
@@ -724,7 +739,7 @@
         "fighterId": "majima-kazumasa",
         "rank": 10,
         "rating": 1510,
-        "rawRating": 1509.994036554153,
+        "rawRating": 1509.9940573010463,
         "delta": 0,
         "record": {
           "wins": 5,
@@ -739,7 +754,7 @@
         "fighterId": "suzuki-hiroaki",
         "rank": 11,
         "rating": 1510,
-        "rawRating": 1507.1148760550527,
+        "rawRating": 1507.1155501461287,
         "delta": 0,
         "record": {
           "wins": 7,
@@ -802,7 +817,7 @@
         "fighterId": "nii-suguru",
         "rank": 15,
         "rating": 1450,
-        "rawRating": 1447.5495904302857,
+        "rawRating": 1447.5504585244723,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -817,7 +832,7 @@
         "fighterId": "kimura-shuya",
         "rank": 16,
         "rating": 1440,
-        "rawRating": 1443.0964908010353,
+        "rawRating": 1443.0974769262236,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -832,7 +847,7 @@
         "fighterId": "hagiwara-kyohei",
         "rank": 17,
         "rating": 1430,
-        "rawRating": 1432.671535429523,
+        "rawRating": 1432.6723960220527,
         "delta": 0,
         "record": {
           "wins": 8,
@@ -850,7 +865,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-07-20T10:27:53.604Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -867,7 +882,7 @@
         "fighterId": "nozimov-ilkhom",
         "rank": 1,
         "rating": 1550,
-        "rawRating": 1548.796935591422,
+        "rawRating": 1548.8411691994168,
         "delta": 0,
         "record": {
           "wins": 1,
@@ -882,7 +897,7 @@
         "fighterId": "souza-roberto-satoshi",
         "rank": 2,
         "rating": 1600,
-        "rawRating": 1595.66801097747,
+        "rawRating": 1596.0984267720842,
         "delta": 0,
         "record": {
           "wins": 13,
@@ -897,7 +912,7 @@
         "fighterId": "horie-yoshinori",
         "rank": 3,
         "rating": 1530,
-        "rawRating": 1534.1804937209506,
+        "rawRating": 1534.2068022251963,
         "delta": 0,
         "record": {
           "wins": 3,
@@ -912,7 +927,7 @@
         "fighterId": "nomura-shunta",
         "rank": 4,
         "rating": 1530,
-        "rawRating": 1534.9440907519142,
+        "rawRating": 1534.951811316617,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -927,7 +942,7 @@
         "fighterId": "patricky-pitbull",
         "rank": 5,
         "rating": 1540,
-        "rawRating": 1537.364850910445,
+        "rawRating": 1537.423339503629,
         "delta": 0,
         "record": {
           "wins": 3,
@@ -942,7 +957,7 @@
         "fighterId": "kim-kyungpyo",
         "rank": 6,
         "rating": 1520,
-        "rawRating": 1522.74123498511,
+        "rawRating": 1522.7426597368508,
         "delta": 0,
         "record": {
           "wins": 4,
@@ -974,8 +989,8 @@
       {
         "fighterId": "yachi-yusuke",
         "rank": 8,
-        "rating": 1500,
-        "rawRating": 1498.7562599666485,
+        "rating": 1510,
+        "rawRating": 1507.9009001729776,
         "delta": 0,
         "record": {
           "wins": 13,
@@ -1005,7 +1020,7 @@
         "fighterId": "sakuraba-taisei",
         "rank": 10,
         "rating": 1480,
-        "rawRating": 1479.9248385938386,
+        "rawRating": 1479.9265696157547,
         "delta": 0,
         "record": {
           "wins": 2,
@@ -1098,7 +1113,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-07-20T10:27:53.604Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [
