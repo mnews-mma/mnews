@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-07-22T21:51:45.893Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -282,7 +282,7 @@
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-07-22T21:51:45.893Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -584,7 +584,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-07-22T21:51:45.893Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -865,7 +865,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-07-22T21:51:45.893Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -1113,7 +1113,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-07-22T21:51:45.893Z",
+    "updatedAt": "2026-07-23T20:55:08.054Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [
