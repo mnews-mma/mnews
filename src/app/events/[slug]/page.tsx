@@ -14,6 +14,7 @@ import matchupStyles from "@/styles/matchup.module.css";
 import { isNewMatchupUiEnabledByEnv } from "@/lib/matchupUi";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
+import EventCountdownBadge from "@/components/EventCountdownBadge";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
@@ -51,14 +52,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
-function daysUntil(dateStr: string): number {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const target = new Date(dateStr);
-  target.setHours(0, 0, 0, 0);
-  return Math.round((target.getTime() - today.getTime()) / 86400000);
-}
-
 function formatDateJa(dateStr: string): string {
   const d = new Date(dateStr);
   const days = ["日", "月", "火", "水", "木", "金", "土"];
@@ -73,7 +66,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const visibleSlugs = await getVisibleFighterSlugs();
   const records = await fetchFighterRecords();
 
-  const days = daysUntil(event.date);
   const srcColor = SOURCES[event.org].color;
   const srcLabel = SOURCES[event.org].label;
 
@@ -164,12 +156,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </div>
         )}
 
-        {/* カウントダウン (upcoming/live のみ) */}
-        {event.status !== "completed" && days >= 0 && (
-          <div className="event-countdown">
-            {days === 0 ? "本日開催" : `開催まであと ${days} 日`}
-          </div>
-        )}
+        {/* カウントダウン (upcoming/live のみ)。日数はクライアントで JST 基準に
+            算出(静的ページでも常に最新・帯と一致)。開催済みは badge 側で非表示。 */}
+        {event.status !== "completed" && <EventCountdownBadge date={event.date} />}
       </div>
 
       <div style={{ padding: "0 24px 40px" }}>

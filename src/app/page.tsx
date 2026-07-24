@@ -19,6 +19,7 @@ import MnewsRatingSection from "@/components/MnewsRatingSection";
 import HeroFighterSearch from "@/components/HeroFighterSearch";
 import LiveBand from "@/components/LiveBand";
 import { computeLiveBand } from "@/lib/liveBand";
+import { startOfTodayJstMs as computeStartOfTodayJstMs } from "@/lib/eventCountdown";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
@@ -155,8 +156,8 @@ export default async function HomePage() {
   const originalFeedArticles = ORIGINAL_ARTICLES.map(originalArticleToFeedArticle);
   const feedUniverse = [...toFeedArticles(enrichFirstSeen(articles, firstSeenMap)), ...originalFeedArticles];
   const jstNow = new Date(Date.now() + 9 * 3600_000);
-  const startOfTodayJstMs =
-    Date.UTC(jstNow.getUTCFullYear(), jstNow.getUTCMonth(), jstNow.getUTCDate()) - 9 * 3600_000;
+  // 残り日数の基準(JST 0:00)は src/lib/eventCountdown.ts に一本化。
+  const startOfTodayJstMs = computeStartOfTodayJstMs();
 
   // ライブ帯(mnews-homepage-instructions.md §1)。日数判定はJST・SSR確定
   // (force-dynamicのためリクエスト時に毎回再計算され、クライアント時刻には

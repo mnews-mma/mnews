@@ -6,6 +6,7 @@
 // 大前提: 試合結果の速報はやらない。「速報」「LIVE」「リアルタイム」「即日反映」
 // の文言はこのモジュール・呼び出し側とも使わないこと。
 import type { SourceKey } from "./sources";
+import { daysUntilEventJstFromMidnight } from "./eventCountdown";
 
 export type LiveBandState = "PRE" | "DAY" | "POST";
 
@@ -32,10 +33,9 @@ interface ResultEventLike {
   org: SourceKey;
 }
 
-function daysUntilFromJstMidnight(dateStr: string, startOfTodayJstMs: number): number {
-  const eventMs = Date.parse(`${dateStr}T00:00:00+09:00`);
-  return Math.round((eventMs - startOfTodayJstMs) / 86400000);
-}
+// 残り日数の算出は src/lib/eventCountdown.ts に一本化。ここは SSR/ISR で確定
+// させた JST 0:00(startOfTodayJstMs)を渡す純粋差分版を使う。
+const daysUntilFromJstMidnight = daysUntilEventJstFromMidnight;
 
 // 複数大会が候補になった場合は開催日が近い方(|daysUntil|が小さい方)を優先。
 // 同着はPRE/DAY(daysUntil>=0、能動的に見に行ける対戦カード導線)をPOSTより優先する。
