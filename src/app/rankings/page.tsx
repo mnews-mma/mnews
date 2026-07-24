@@ -104,6 +104,24 @@ export default async function RankingsHubPage() {
         </div>
       </div>
 
+      <div style={{ padding: "8px 24px 0" }}>
+        <a
+          href="/rankings/pound-for-pound"
+          style={{
+            display: "block",
+            border: "1px solid var(--border)",
+            borderRadius: 8,
+            padding: "14px 18px",
+            marginBottom: 8,
+            fontSize: 13,
+            color: "var(--fg)",
+          }}
+        >
+          <strong style={{ color: "var(--accent)" }}>階級を超えた強さは？ →</strong>{" "}
+          パウンドフォーパウンド(P4P)ランキングを見る
+        </a>
+      </div>
+
       <div style={{ padding: "8px 24px 48px" }}>
         {MNEWS_DIVISIONS.map((division) => {
           const slug = DIVISION_SLUG[division];

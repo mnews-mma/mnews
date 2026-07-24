@@ -9,7 +9,7 @@ import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
-import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
+import { fetchDivisionRankings, fetchP4PRankings } from "@/lib/mnewsRatingData";
 import {
   getPublishedDivisionRankingView,
   resolveDivisionRankingView,
@@ -96,6 +96,7 @@ export default async function HomePage() {
     bantamweightRankings,
     featherweightRankings,
     lightweightRankings,
+    p4pRankings,
   ] = await Promise.all([
     fetchAllArticles().catch(() => null),
     resolveFightersCached(homepageFighters),
@@ -107,6 +108,7 @@ export default async function HomePage() {
     fetchDivisionRankings("bantamweight").catch(() => null),
     fetchDivisionRankings("featherweight").catch(() => null),
     fetchDivisionRankings("lightweight").catch(() => null),
+    fetchP4PRankings().catch(() => null),
   ]);
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
   // ランキングページ本体と同じ共有セレクタ経由で{champion, contenders}を取り出す
@@ -136,6 +138,36 @@ export default async function HomePage() {
       resolveDivisionRankingView(getPublishedDivisionRankingView("ライト級", lightweightRankings), nameBySlug, 5)
     ),
   };
+  // P4P(パウンドフォーパウンド、2026-07-22追加)。data/rankings.jsonとは別の
+  // data/p4p.jsonが正で、DivisionRankingView(champion/contenders)の型には
+  // 自然に収まらないため、この画面向けに直接組み立てる。P4Pは王者4名が
+  // p4pRank1〜4に固定表示される設計のため、championは常にnull(別枠行を出さず、
+  // 王者を含む先頭Nがそのまま順位付きcontendersになる)。ratingの数値は一切
+  // 含めない(公開ページに出さない方針)。fighters.tsに存在しないfighterIdは
+  // 除外して表示順位を振り直す(既存の resolveDivisionRankingView と同じ
+  // 「生スラッグ表示フォールバック禁止・繰り上げ」方針)。
+  const p4pContenders: {
+    fighterId: string;
+    nameJa: string;
+    displayRank: number;
+    delta: null;
+    rankPositionDelta: { kind: "up" | "down" | "same" | "new"; positions: number } | null;
+    record: { wins: number; losses: number; draws: number };
+  }[] = [];
+  for (const e of p4pRankings?.entries ?? []) {
+    const nameJa = nameBySlug.get(e.fighterId);
+    if (!nameJa) continue;
+    p4pContenders.push({
+      fighterId: e.fighterId,
+      nameJa,
+      displayRank: p4pContenders.length + 1,
+      delta: null,
+      rankPositionDelta: e.rankPositionDelta,
+      record: e.record,
+    });
+    if (p4pContenders.length >= 5) break;
+  }
+  const p4pView = { champion: null, contenders: p4pContenders };
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};
   for (const f of fighters) {
@@ -250,7 +282,7 @@ export default async function HomePage() {
               の並びになる。home-mainのgrid構造(feed/railの2カラム)自体は
               変更しない。 */}
           <div className="home-hero">
-            <MnewsRatingSection divisions={mnewsRatingDivisions} />
+            <MnewsRatingSection divisions={mnewsRatingDivisions} p4pView={p4pView} />
             <HeroFighterSearch />
           </div>
         </div>
