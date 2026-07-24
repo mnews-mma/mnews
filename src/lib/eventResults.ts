@@ -45,6 +45,78 @@ export function buildEventSummary(event: EventResult): string {
 
 export const EVENT_RESULTS: EventResult[] = [
   {
+    slug: "deep-fight-challenge-2026-2nd-round",
+    org: "deep",
+    eventName: "DEEP FIGHT CHALLENGE 2026 2nd ROUND",
+    date: "2026-07-24",
+    venue: "恵比寿ガーデンルーム",
+    sourceUrl:
+      "https://www.deep2001.com/deep-fight-challenge-2026-2nd-round%e7%b5%90%e6%9e%9c/",
+    fights: [
+      {
+        weightClass: "DEEPバンタム級",
+        fighterA: "坂野周平",
+        fighterB: "井上セナ",
+        winner: "坂野周平",
+        method: "フロントチョーク",
+        round: "1R 3:26",
+      },
+      {
+        weightClass: "DEEPフェザー級",
+        fighterA: "マイティ・saw",
+        fighterB: "中尾響",
+        winner: "マイティ・saw",
+        method: "ダースチョーク",
+        round: "1R 4:45",
+      },
+      {
+        weightClass: "DEEPバンタム級",
+        fighterA: "朝比奈龍希",
+        fighterB: "川口海翔",
+        winner: "朝比奈龍希",
+        method: "判定（3-0）",
+      },
+      {
+        weightClass: "DEEPフライ級",
+        fighterA: "今野蓮弥",
+        fighterB: "今井風快",
+        winner: "今野蓮弥",
+        method: "判定（3-0）",
+      },
+      {
+        weightClass: "DEEPバンタム級（アマチュアSルール）",
+        fighterA: "琥",
+        fighterB: "渡部恵多",
+        winner: "琥",
+        method: "KO",
+        round: "1R 0:24",
+      },
+      {
+        weightClass: "DEEPフェザー級（アマチュアSルール）",
+        fighterA: "佐々木琢磨",
+        fighterB: "大越充悟",
+        winner: "佐々木琢磨",
+        method: "KO",
+        round: "1R 1:56",
+      },
+      {
+        weightClass: "DEEPフライ級（アマチュアSルール）",
+        fighterA: "国分獅斗",
+        fighterB: "福島司",
+        winner: "国分獅斗",
+        method: "TKO",
+        round: "1R 2:32",
+      },
+      {
+        weightClass: "DEEPバンタム級（アマチュアSルール）",
+        fighterA: "齋藤未来",
+        fighterB: "森谷風真",
+        winner: "齋藤未来",
+        method: "判定（3-0）",
+      },
+    ],
+  },
+  {
     slug: "shooto-2026-vol5",
     org: "shooto",
     eventName: "PROFESSIONAL SHOOTO 2026 Vol.5",
