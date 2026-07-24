@@ -143,6 +143,16 @@ export const EVENTS: MEvent[] = [
         fighterB: "アリベク・ガジャマトフ",
       },
       {
+        weightClass: "120.0kg契約",
+        fighterA: "スダリオ剛",
+        fighterB: "酒井リョウ",
+      },
+      {
+        weightClass: "120.0kg契約",
+        fighterA: "上田幹雄",
+        fighterB: "エドポロキング",
+      },
+      {
         weightClass: "フライ級（57.0kg）",
         fighterA: "平本丈",
         fighterB: "ジョリー",
