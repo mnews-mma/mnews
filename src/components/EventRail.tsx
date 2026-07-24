@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import { daysUntilEventJst } from "@/lib/eventCountdown";
 
 export interface RailEvent {
   slug: string;
@@ -54,9 +55,6 @@ export default function EventRail({ events }: { events: RailEvent[] }) {
     return () => window.removeEventListener("resize", measure);
   }, [events]);
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
   return (
     <div className="rail-panel">
       <div className="rail-head" ref={headRef}>
@@ -68,9 +66,7 @@ export default function EventRail({ events }: { events: RailEvent[] }) {
         style={listMax !== undefined ? { maxHeight: listMax, overflow: "hidden" } : undefined}
       >
         {events.map((e, idx) => {
-          const target = new Date(e.date);
-          target.setHours(0, 0, 0, 0);
-          const days = Math.round((target.getTime() - today.getTime()) / 86400000);
+          const days = daysUntilEventJst(e.date);
           const d = new Date(e.date);
           const dateJa = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${DAY[d.getDay()]}）`;
           const nearest = idx === 0; // 最も近い1件のみ赤で強調

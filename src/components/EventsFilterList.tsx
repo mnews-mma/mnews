@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { MEvent } from "@/lib/events";
 import { SOURCES, SourceKey } from "@/lib/sources";
+import { daysUntilEventJst } from "@/lib/eventCountdown";
 
 const ORG_OPTIONS: { key: SourceKey; label: string }[] = [
   { key: "rizin", label: SOURCES.rizin.label },
@@ -21,9 +22,6 @@ export default function EventsFilterList({ events }: { events: MEvent[] }) {
   const filtered = useMemo(() => {
     return events.filter((e) => (org ? e.org === org : true));
   }, [events, org]);
-
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
 
   return (
     <>
@@ -47,9 +45,7 @@ export default function EventsFilterList({ events }: { events: MEvent[] }) {
 
       <div className="results-list">
         {filtered.map((e, idx) => {
-          const target = new Date(e.date);
-          target.setHours(0, 0, 0, 0);
-          const days = Math.round((target.getTime() - today.getTime()) / 86400000);
+          const days = daysUntilEventJst(e.date);
           const d = new Date(e.date);
           const dateJa = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${DAY_NAMES[d.getDay()]}）`;
           const nearest = idx === 0; // フィルタ後の先頭1件のみ赤で強調
