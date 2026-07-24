@@ -15,32 +15,24 @@
 //   自然にレートを押し上げる。zスコアで正規化するとこの効果を打ち消して
 //   しまうため、正規化なしの絶対値の方がファンの直感(強い階級での防衛・
 //   活躍がそのまま評価される)に合う。
-// - 挑戦者(非王者)は、同一階級内の順序が階級別公開ランキングのrank順
-//   (1位>2位>3位…)を絶対に逆転しないようclampする(running-min方式:
-//   公開rank昇順に見て、直前のclamp後スコアを上回っていたら直前値まで
-//   引き下げる)。
-//   理由(2026-07-22、一度撤回した後に復活させた): clampを外すと、同じ階級の
-//   中でP4Pと階級別ランキングの前後が入れ替わって見える(例: フェザー級は
-//   公開1位の朝倉未来より公開2位のクレベル・コイケがP4Pで上、フライ級は
-//   公開2位のトニー・ララミーより公開3位の元谷友貴がP4Pで上)。原因は
-//   H2H単調性補正が階級別ランキング側にのみかかっていることで、説明自体は
-//   可能だが「同じサイトの2ページで前後が逆」を読者に納得させる説明コストが
-//   高すぎると判断した。P4Pは階級を跨いだ比較のための指標であり、階級内の
-//   序列は階級別ランキングに従わせる方が一貫する。
+// - 挑戦者(非王者)は、同一階級内で「僅差の順位逆転」だけを抑制する
+//   閾値付きclampをかける(clampChallengersToDivisionOrder参照)。公開下位
+//   ランクの選手が公開上位ランクの選手をP4Pで追い越せるのは、レート差が閾値
+//   (P4P_DIVISION_ORDER_THRESHOLD=10)を超える明確な格上のときだけ。僅差の
+//   逆転は同点化して階級別ランキングの順位を保つ。
+//   経緯(2026-07-22、clampあり↔なしを往復した末の最終形): clampを完全に外すと
+//   フェザー級 クレベル(公開2位)>朝倉(公開1位)=gap2.06、フライ級 元谷(公開3位)>
+//   ララミー(公開2位)=gap0.58 のような僅差逆転が起き、「同じサイトの2ページで
+//   前後が逆」の説明コストが高い。逆に完全clampだとホベルト・サトシ・ソウザ
+//   (公開2位,1596.10)がノジモフ(公開1位,1548.84)に47.26差で勝っていても
+//   ノジモフのスコアまで引き下げられ圏外に落ちる。実データ上、逆転gapは4.29以下
+//   と11.14以上に断層があり、閾値10で「僅差は抑制・明確な格上は許可」を両立できる。
 //   なお王者は階級内の「公開rank」を持たない(overlay設計で番号付きランキングの
 //   対象外)ためclampの対象にできず、生のrawRatingのままグローバル順位に
 //   参加する。王者を上位固定するティアは設けない(2026-07-22、撤回済み)。
 // - 防衛回数・通算勝率は順位にも画面表示にも使わない(2026-07-22、表示も
 //   取りやめ)。データ自体はdata/p4p.jsonに保持し続けるが、これは将来の
 //   再利用に備えた据え置き(championDefenses.tsの冒頭コメント参照)。
-//
-// 【clampの副作用・意図的に受け入れている点】clampは「自階級の上位者を
-// 追い越さない」制約なので、Eloレート自体は高いのに自階級の公開上位者に
-// 直接対決で負けている選手は、その上位者のスコアまで引き下げられてP4Pの
-// 順位を落とす(例: ホベルト・サトシ・ソウザはrawRating 1596.10と全体3位相当
-// だが、ライト級公開1位のイルホム・ノジモフ(1548.84)に直接対決で敗れている
-// ため1548.84まで引き下げられ、トップ15圏外に落ちる)。これは階級内の整合性を
-// 優先した設計上のトレードオフとして受け入れる。
 //
 // このモジュールはdata/rankings.json(既存Eloランキング)を読み取り専用の入力
 // とし、data/rankings.json自体・engine.ts・共有定数には一切影響しない
@@ -124,11 +116,31 @@ export function collectChallengerCandidates(rankings: RankingsFile): ChallengerC
   return out;
 }
 
-// 階級内順序clamp: 各階級で公開rank昇順(1位→2位→…)に並べ、直前の
-// (clamp後)rawRatingを上回っていれば直前値まで引き下げる(running min)。
-// これにより同一階級内のP4P順序が必ず公開rank順と一致する。
-// 王者は公開rankを持たないため対象外(呼び出し側で挑戦者のみ渡す)。
-export function clampChallengersToDivisionOrder(challengers: ChallengerCandidate[]): ChallengerCandidate[] {
+// 閾値付き階級内clamp(2026-07-22最終形): 同一階級内で、公開下位ランクの選手が
+// 公開上位ランクの選手をP4Pで追い越すのは「レート差が閾値を超える明確な格上」
+// のときだけ許す。僅差(near-tie)の逆転は抑制し、階級別ランキングの順位を保つ。
+//
+// 背景: 純粋なrawRating順(clampなし)だと、H2H単調性補正が階級別ランキング側
+// にのみかかる関係で、同一階級で僅差の順位逆転が起きる(フェザー級 クレベル(公開
+// 2位,1591.84)>朝倉(公開1位,1589.78)=gap2.06、フライ級 元谷(公開3位,1550.31)>
+// ララミー(公開2位,1549.73)=gap0.58)。これらは「同じサイトの2ページで順位が
+// 逆」に見え説明コストが高い。一方でホベルト・サトシ・ソウザ(公開2位,1596.10)が
+// ノジモフ(公開1位,1548.84)を47.26差で上回るような明確な格上の逆転は、活かした方
+// がP4Pの趣旨(階級を超えた強さ)に合う。実データ上、逆転のgapは4.29以下の群と
+// 11.14以上の群にはっきり分かれており(断層あり)、その間の10を閾値に置くと両者を
+// きれいに分離できる(表示レートも10点刻みなので自然)。
+export const P4P_DIVISION_ORDER_THRESHOLD = 10;
+
+// 各階級で公開rank昇順に走査し、上位陣の到達下限(ceiling)を維持する:
+//  - 現在の選手のrawが ceiling + 閾値 を超える → 明確な格上として「突き抜け」を
+//    許し、rawをそのまま採用する(ceilingは据え置き=突き抜けた選手は
+//    「階級内序列の鎖」から外れる)。
+//  - そうでなければ min(raw, ceiling) に丸める(僅差の逆転は同点化し、後段の
+//    タイブレークで公開rank順が保たれる)。
+export function clampChallengersToDivisionOrder(
+  challengers: ChallengerCandidate[],
+  threshold: number = P4P_DIVISION_ORDER_THRESHOLD
+): ChallengerCandidate[] {
   const byDivision = new Map<MnewsDivision, ChallengerCandidate[]>();
   for (const c of challengers) {
     if (!byDivision.has(c.division)) byDivision.set(c.division, []);
@@ -137,11 +149,16 @@ export function clampChallengersToDivisionOrder(challengers: ChallengerCandidate
   const out: ChallengerCandidate[] = [];
   for (const [, list] of byDivision) {
     const byRankAsc = [...list].sort((a, b) => a.divisionRank - b.divisionRank);
-    let runningMin = Infinity;
+    let ceiling = Infinity;
     for (const c of byRankAsc) {
-      const clamped = Math.min(c.rawRating, runningMin);
-      runningMin = clamped;
-      out.push({ ...c, rawRating: clamped });
+      if (c.rawRating > ceiling + threshold) {
+        // 明確な格上: 突き抜けを許す(ceilingは更新しない)。
+        out.push({ ...c });
+      } else {
+        const clamped = Math.min(c.rawRating, ceiling);
+        ceiling = clamped;
+        out.push({ ...c, rawRating: clamped });
+      }
     }
   }
   return out;
@@ -354,9 +371,12 @@ export function verifyPublishedDivisionsOnly(file: P4PFile): string[] {
   return errors;
 }
 
-// 3. 同一階級内のP4P順序 == 階級別公開rank順(逆転ゼロ)。clampが効いていれば
-// 必ず満たされる。王者は公開rankを持たないため対象外。
-export function verifyDivisionOrderInvariant(file: P4PFile): string[] {
+// 3. 同一階級内の順位逆転は「レート差が閾値超の明確な格上」のときだけ許される。
+// 僅差(閾値以下)の逆転が1件でもあればclamp実装バグとしてexit 1。王者は公開rank
+// を持たないため対象外。internalScoreはclamp後のP4P順位を決める値そのもの
+// (突き抜けた選手は原rawのまま、抑制された選手は引き下げ済み)なので、
+// P4P上位側のinternalScoreが下位側+閾値を必ず超えていることを検証すればよい。
+export function verifyDivisionOrderInvariant(file: P4PFile, threshold: number = P4P_DIVISION_ORDER_THRESHOLD): string[] {
   const errors: string[] = [];
   const byDivision = new Map<MnewsDivision, P4PEntry[]>();
   for (const e of file.entries) {
@@ -365,10 +385,17 @@ export function verifyDivisionOrderInvariant(file: P4PFile): string[] {
     byDivision.get(e.division)!.push(e);
   }
   for (const [division, list] of byDivision) {
-    const byPublicRank = [...list].sort((a, b) => (a.divisionRank as number) - (b.divisionRank as number)).map((e) => e.fighterId);
-    const byP4PRank = [...list].sort((a, b) => a.p4pRank - b.p4pRank).map((e) => e.fighterId);
-    if (JSON.stringify(byPublicRank) !== JSON.stringify(byP4PRank)) {
-      errors.push(`${division}: P4P順序が階級別公開rank順と不一致(clampが効いていない)`);
+    for (const a of list) {
+      for (const b of list) {
+        // a が b よりP4Pで上位、かつ a の公開rankが b より下位(=逆転)の場合。
+        if (a.p4pRank < b.p4pRank && (a.divisionRank as number) > (b.divisionRank as number)) {
+          if (a.internalScore - b.internalScore <= threshold) {
+            errors.push(
+              `${division}: ${a.fighterId}(公開${a.divisionRank}位)が${b.fighterId}(公開${b.divisionRank}位)を閾値以下の僅差(${(a.internalScore - b.internalScore).toFixed(2)})で逆転(clamp実装バグ)`
+            );
+          }
+        }
+      }
     }
   }
   return errors;

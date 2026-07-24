@@ -159,9 +159,9 @@ export default async function PoundForPoundRankingPage() {
         )}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
-          王座の有無を問わず、階級を超えた強さだけで一本に並べています。
+          王座の有無を問わず、階級を超えた強さだけで一本に並べています。同じ階級の選手どうしは、原則として
           <a href="/rankings" style={{ color: "var(--accent)" }}>階級別ランキング</a>
-          の順位は必ず維持しており、同じ階級の中で前後が入れ替わることはありません。
+          の順位に従います(明確に格上と評価される場合のみ順位が入れ替わります)。
           戦績は階級を問わないRIZIN通算です(階級別ランキングの戦績は、階級を移った選手についてはその階級での戦績に絞っているため、
           数字が異なることがあります)。
         </p>
