@@ -1,0 +1,52 @@
+slug,name,org,weight_class,needs_review,has_record,record_count,hidden_set_commit,hidden_set_at,commit_message,in_necessary_set,necessary_set_org,necessary_set_weight_class,necessary_set_rank
+uoi-fullswing,魚井フルスイング,deep,バンタム級,true,true,47,1fb68a1cb03c10a756cc72bf2420a1bd709a1d29,2026-07-05,DEEP保留分から13名を読み確定して追加投入(計40名)、保留は3名に,false,,,
+yamamoto-arihito,山本有人,deep,バンタム級,true,false,0,1fb68a1cb03c10a756cc72bf2420a1bd709a1d29,2026-07-05,DEEP保留分から13名を読み確定して追加投入(計40名)、保留は3名に,false,,,
+ishizaka-kushi,石坂空志,deep,バンタム級,true,false,0,1fb68a1cb03c10a756cc72bf2420a1bd709a1d29,2026-07-05,DEEP保留分から13名を読み確定して追加投入(計40名)、保留は3名に,false,,,
+tanoue-koyuru,田上こゆる,shooto,ストロー級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ストロー級,王者
+naito-shoki,内藤頌貴,shooto,ストロー級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ストロー級,1
+toma-yoshinao,当真佳直,shooto,ストロー級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ストロー級,2
+hatakeyama-ryuya,畠山隆称,shooto,ストロー級,true,false,0,bd7061dc02f5d1439c645933c774ff6961d144a5,2026-07-16,選手slug追加7件(確度A4+目視確定3)を修正+301(Next.js実装上は308)リダイレクト,true,shooto,ストロー級,3
+kurobe-kazusa,黒部和沙,shooto,ストロー級,true,true,7,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ストロー級,4
+yamagami-mikihito,山上幹臣,shooto,ストロー級,true,true,18,bd7061dc02f5d1439c645933c774ff6961d144a5,2026-07-16,選手slug追加7件(確度A4+目視確定3)を修正+301(Next.js実装上は308)リダイレクト,true,shooto,ストロー級,5
+suzuki-simon,シモンスズキ,shooto,フライ級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,フライ級,3
+sekiguchi-yuto,関口祐冬,shooto,フライ級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,フライ級,4
+nakano-goki,中野剛貴,shooto,バンタム級,true,false,0,bd7061dc02f5d1439c645933c774ff6961d144a5,2026-07-16,選手slug追加7件(確度A4+目視確定3)を修正+301(Next.js実装上は308)リダイレクト,true,shooto,バンタム級,2
+sugino-kosei,杉野光星,shooto,バンタム級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,バンタム級,3
+baterdene-simbaatar,シンバートルバットエルデネ,shooto,バンタム級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,バンタム級,5
+horie-taishi,堀江耐志,shooto,フェザー級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,フェザー級,5
+im-kwangwoo,イムクァンウ,shooto,ライト級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ライト級,1
+shivaev,シヴァエフ,shooto,ライト級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ライト級,4
+desouza-marcel,デソウザマルセル,shooto,ウェルター級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ウェルター級,1
+sumiyoshi-ryota,墨吉涼太,shooto,ウェルター級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ウェルター級,2
+cooper-makoa,マコアクーパー,shooto,ウェルター級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ウェルター級,3
+saijo-hidenari,西條英成,shooto,ウェルター級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ウェルター級,4
+soki,ソーキ,shooto,ウェルター級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,shooto,ウェルター級,5
+sardorov-koshim,コシム・サルドロフ,pancrase,ミドル級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ミドル級,王者
+hayashi-genpei,林源平,pancrase,ミドル級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ミドル級,1
+hirata-akira,平田旭,pancrase,ミドル級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ミドル級,2
+sato-ryutaro,佐藤龍汰朗,pancrase,ミドル級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ミドル級,3
+okamura-toshiki,岡村寿紀,pancrase,ミドル級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ミドル級,4
+naito-yura,内藤由良,pancrase,ウェルター級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ウェルター級,1
+musha-kotaro,武者孝大郎,pancrase,ウェルター級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ウェルター級,2
+murayama-akihiro,村山暁洋,pancrase,ウェルター級,true,true,49,a6879a587f7c883fdf5eccd047fcdbf03c894293,2026-07-07,feat: 選手18名追加(ONE9名・DEEP3名・新規)+既存5名Wiki URL補完、ONE団体タグ追加、/fighters階級・団体並び順変更、Xカードにフリーワード検索追加,true,pancrase,ウェルター級,4
+suzuki-chikaya,鈴木慈也,pancrase,ライト級,true,false,0,bd7061dc02f5d1439c645933c774ff6961d144a5,2026-07-16,選手slug追加7件(確度A4+目視確定3)を修正+301(Next.js実装上は308)リダイレクト,true,pancrase,ライト級,4
+arzykul-kalybek,カリベク・アルジクルウール,pancrase,フェザー級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,フェザー級,1
+kanru,敢流,pancrase,フェザー級,true,true,9,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,フェザー級,2
+kinoshita-naosuke,木下尚祐,pancrase,フェザー級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,フェザー級,3
+miyagi-naraho,宮城成歩滝,pancrase,バンタム級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,バンタム級,暫定王者
+takashiro-mitsuhiro,高城光弘,pancrase,バンタム級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,バンタム級,1
+yamaguchi-satoshi,山口怜臣,pancrase,バンタム級,true,true,7,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,バンタム級,2
+tokida-takashige,時田隆成,pancrase,フライ級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,フライ級,王者
+kishida-hiroto,岸田宙大,pancrase,フライ級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,フライ級,2
+shindo-genta,眞藤源太,pancrase,フライ級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,フライ級,3
+tanimura-taika,谷村泰嘉,pancrase,フライ級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,フライ級,4
+miyazawa-yuta,宮澤雄大,pancrase,ストロー級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ストロー級,王者
+sasaki-shunma,佐々木瞬真,pancrase,ストロー級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ストロー級,1
+funada-denchi,船田電池,pancrase,ストロー級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ストロー級,2
+little,リトル,pancrase,ストロー級,false,true,1,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ストロー級,3
+ujihara-kaisei,氏原魁星,pancrase,ストロー級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,true,pancrase,ストロー級,4
+nakagiri-ryosuke,中桐涼輔,nexus,バンタム級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,false,,,
+chiharu,千春,nexus,フェザー級,false,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,false,,,
+mori-subaru,森昴星,nexus,ウェルター級,true,false,0,46cf1bf7edc151531442931d4cb56ea07e56f7f2,2026-07-05,第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者75名を投入,false,,,
+kanbe-atsubo,神部篤坊,pancrase,バンタム級,true,false,0,9901534b738e77a5b439eaa084b0bb1906ddb0a6,2026-07-06,A2+B+C+D+①: en-wiki補完/no-data範囲/ランキングtop5追加/RIZIN・UFCタグ復活/導線,true,pancrase,バンタム級,5
+nishitani-taisei,大成,deep,ヘビー級,false,true,15,7a801ff65c7ac76fe7dcbf371ed14ee622d0d8c0,2026-07-08,選手DBのメガトン級をヘビー級に統一(サイト内カテゴリ),true,deep,ヘビー級,C
