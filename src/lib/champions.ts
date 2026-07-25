@@ -103,6 +103,15 @@ export const DEEP_RANKING_CLASSES: { weightClass: string; entries: { rank: strin
   { weightClass: "女子フライ級", entries: [{ rank: "王者", name: "中井りん", slug: null }] },
   { weightClass: "女子バンタム級", entries: [{ rank: "王者", name: "百湖", slug: null }] },
   { weightClass: "女子フェザー級", entries: [{ rank: "王者", name: "東ようこ", slug: null }] },
+  // 指示書②-c(2026-07-25)で追加。DEEP公式サイト(https://www.deep2001.com/champ/)に掲載されているが
+  // 上記に含まれていなかった王座。取得日2026-07-25。戴冠日は公式ページに記載が無いため空欄(捏造しない)。
+  // 女子アトム級(48kg以下、DEEP JEWELS冠の付かない別系統)は本監査時点でVACANT(空位)のため追加していない
+  // (既存の「女子アトム級」ラベルはDEEP JEWELS版=伊澤星花を指しており、同名で別物を表すことになり構造的に
+  // 紛らわしいため。空位でもあり実害が小さいことも踏まえ、ラベルの整理は今回のスコープ外として保留)。
+  { weightClass: "女子無差別級", entries: [{ rank: "王者", name: "アマンダ・ルーカス", slug: null }] },
+  // 大島沙緒里は既存公開選手(findFighterSlugByNameで oshima-saori に一致・hiddenでない)。
+  { weightClass: "女子ミクロ級", entries: [{ rank: "王者", name: "大島沙緒里", slug: "oshima-saori" }] },
+  { weightClass: "DEEP JEWELS 女子ミクロ級", entries: [{ rank: "王者", name: "大島沙緒里", slug: "oshima-saori" }] },
 ];
 
 export function deepRankingData(): OrgRankingData {

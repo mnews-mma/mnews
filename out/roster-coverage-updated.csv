@@ -1,0 +1,190 @@
+org,weight_class_raw,weight_class_mnews,weight_class_reason,rank,name_official,name_normalized,source_url,fetched_at,mnews_slug,status,match_confidence
+pancrase,ミドル級,ミドル級,,王者,コシム・サルドロフ,コシム・サルドロフ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,sardorov-koshim,hidden,exact
+pancrase,ミドル級,ミドル級,,1,林 源平,林源平,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,hayashi-genpei,hidden,exact
+pancrase,ミドル級,ミドル級,,2,平田 旭,平田旭,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,hirata-akira,hidden,exact
+pancrase,ミドル級,ミドル級,,3,佐藤龍汰朗,佐藤龍汰朗,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,sato-ryutaro,hidden,exact
+pancrase,ミドル級,ミドル級,,4,岡村寿紀,岡村寿紀,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,okamura-toshiki,hidden,exact
+pancrase,ウェルター級,ウェルター級,,王者,ゴイチ・ヤマウチ,ゴイチ・ヤマウチ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,yamauchi-goiti,listed,exact
+pancrase,ウェルター級,ウェルター級,,1,内藤由良,内藤由良,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,naito-yura,hidden,exact
+pancrase,ウェルター級,ウェルター級,,2,武者孝大郎,武者孝大郎,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,musha-kotaro,hidden,exact
+pancrase,ウェルター級,ウェルター級,,3,佐藤生虎,佐藤生虎,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,ウェルター級,ウェルター級,,4,村山暁洋,村山暁洋,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,murayama-akihiro,hidden,exact
+pancrase,ライト級,ライト級,,王者,ラファエル・バルボーザ,ラファエル・バルボーザ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,barboza-rafael,listed,exact
+pancrase,ライト級,ライト級,,1,神谷大智,神谷大智,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,kamiya-daichi,listed,exact
+pancrase,ライト級,ライト級,,2,粕谷優介,粕谷優介,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,kasuya-yusuke,listed,exact
+pancrase,ライト級,ライト級,,3,雑賀ヤン坊達也,雑賀ヤン坊達也,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,saiga-yanbo-tatsuya,listed,exact
+pancrase,ライト級,ライト級,,4,鈴木慈也,鈴木慈也,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,suzuki-chikaya,hidden,exact
+pancrase,ライト級,ライト級,,5,天弥,天弥,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,tenya,listed,exact
+pancrase,ライト級,ライト級,,6,平信一,平信一,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,ライト級,ライト級,,7,張豊,張豊,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,ライト級,ライト級,,8,鈴木悠斗,鈴木悠斗,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フェザー級,フェザー級,,王者,栁川唯人,栁川唯人,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,yanagawa-yuito,listed,exact
+pancrase,フェザー級,フェザー級,,暫定王者,オタベク・ラジャボフ,オタベク・ラジャボフ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,rajabov-otabek,listed,exact
+pancrase,フェザー級,フェザー級,,1,カリベク・アルジクル ウール,カリベク・アルジクルウール,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,arzykul-kalybek,hidden,exact
+pancrase,フェザー級,フェザー級,,2,敢流,敢流,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,kanru,hidden,exact
+pancrase,フェザー級,フェザー級,,3,木下尚祐,木下尚祐,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,kinoshita-naosuke,hidden,exact
+pancrase,フェザー級,フェザー級,,4,平田直樹,平田直樹,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,hirata-naoki,listed,exact
+pancrase,フェザー級,フェザー級,,5,清水博人,清水博人,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,shimizu-hiroto,listed,exact
+pancrase,フェザー級,フェザー級,,6,透暉鷹,透暉鷹,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フェザー級,フェザー級,,7,三宅輝砂,三宅輝砂,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,miyake-kisa,listed,exact
+pancrase,フェザー級,フェザー級,,8,岡田拓真,岡田拓真,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フェザー級,フェザー級,,9,Ryo,Ryo,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フェザー級,フェザー級,,10,遠藤来生,遠藤来生,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フェザー級,フェザー級,,11,名田英平,名田英平,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フェザー級,フェザー級,,12,関 翔渚,関翔渚,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フェザー級,フェザー級,,13,糸川義人,糸川義人,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フェザー級,フェザー級,,14,石田陸也,石田陸也,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,バンタム級,バンタム級,,王者,田嶋椋,田嶋椋,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,tajima-ryo,listed,exact
+pancrase,バンタム級,バンタム級,,暫定王者,宮城成歩滝,宮城成歩滝,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,miyagi-naraho,hidden,exact
+pancrase,バンタム級,バンタム級,,1,高城光弘,高城光弘,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,takashiro-mitsuhiro,hidden,exact
+pancrase,バンタム級,バンタム級,,2,山口怜臣,山口怜臣,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,yamaguchi-satoshi,hidden,exact
+pancrase,バンタム級,バンタム級,,3,松井 涼,松井涼,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,matsui-ryo,listed,exact
+pancrase,バンタム級,バンタム級,,4,井村塁,井村塁,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,imura-rui,listed,exact
+pancrase,バンタム級,バンタム級,,5,神部篤坊,神部篤坊,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,kanbe-atsubo,hidden,exact
+pancrase,バンタム級,バンタム級,,6,荒田大輝,荒田大輝,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,バンタム級,バンタム級,,7,佐藤ゆうじ,佐藤ゆうじ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,バンタム級,バンタム級,,8,バラカトゥロ・アサドゥラエフ,バラカトゥロ・アサドゥラエフ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,バンタム級,バンタム級,,9,山木麻弥,山木麻弥,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,バンタム級,バンタム級,,10,前田浩平,前田浩平,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,バンタム級,バンタム級,,11,合島大樹,合島大樹,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,バンタム級,バンタム級,,12,白井誠司,白井誠司,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,王者,時田隆成,時田隆成,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,tokida-takashige,hidden,exact
+pancrase,フライ級,フライ級,,1,猿飛流,猿飛流,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,2,岸田宙大,岸田宙大,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,kishida-hiroto,hidden,exact
+pancrase,フライ級,フライ級,,3,眞藤源太,眞藤源太,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,shindo-genta,hidden,exact
+pancrase,フライ級,フライ級,,4,谷村泰嘉,谷村泰嘉,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,tanimura-taika,hidden,exact
+pancrase,フライ級,フライ級,,5,大塚智貴,大塚智貴,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,otsuka-tomoki,listed,exact
+pancrase,フライ級,フライ級,,6,ラファエル・リベイロ,ラファエル・リベイロ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,7,増田大河,増田大河,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,8,浜本キャット雄大,浜本キャット雄大,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,9,植松洋貴,植松洋貴,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,10,濱田 巧,濱田巧,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,hamada-takumi,listed,exact
+pancrase,フライ級,フライ級,,11,小林了平,小林了平,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,12,菅歩夢,菅歩夢,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,13,山崎蒼空,山崎蒼空,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,フライ級,フライ級,,14,本川ハルアキ,本川ハルアキ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,ストロー級,ストロー級,,王者,宮澤雄大,宮澤雄大,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,miyazawa-yuta,hidden,exact
+pancrase,ストロー級,ストロー級,,1,佐々木瞬真,佐々木瞬真,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,sasaki-shunma,hidden,exact
+pancrase,ストロー級,ストロー級,,2,船田電池,船田電池,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,funada-denchi,hidden,exact
+pancrase,ストロー級,ストロー級,,3,リトル,リトル,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,little,hidden,exact
+pancrase,ストロー級,ストロー級,,4,氏原魁星,氏原魁星,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,ujihara-kaisei,hidden,exact
+pancrase,ストロー級,ストロー級,,5,寺岡拓永,寺岡拓永,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,女子フライ級,女子フライ級,,王者,杉山しずか,杉山しずか,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,女子フライ級,女子フライ級,,1,和田綾音,和田綾音,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,女子フライ級,女子フライ級,,2,ライカ,ライカ,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,女子ストロー級,女子ストロー級,,王者,本野美樹,本野美樹,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,女子ストロー級,女子ストロー級,,1,KAREN,KAREN,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+pancrase,女子アトム級,女子アトム級,,王者,SARAMI,SARAMI,https://www.pancrase.co.jp/rls/ranking.html,2026-07-25,,missing,none
+shooto,ストロー級,ストロー級,,王者,田上 こゆる,田上こゆる,https://www.shooto-mma.com/ranking/,2026-07-25,tanoue-koyuru,hidden,exact
+shooto,ストロー級,ストロー級,,1,内藤 頌貴,内藤頌貴,https://www.shooto-mma.com/ranking/,2026-07-25,naito-shoki,hidden,exact
+shooto,ストロー級,ストロー級,,2,当真 佳直,当真佳直,https://www.shooto-mma.com/ranking/,2026-07-25,toma-yoshinao,hidden,exact
+shooto,ストロー級,ストロー級,,3,畠山 隆称,畠山隆称,https://www.shooto-mma.com/ranking/,2026-07-25,hatakeyama-ryuya,hidden,exact
+shooto,ストロー級,ストロー級,,4,黒部 和沙,黒部和沙,https://www.shooto-mma.com/ranking/,2026-07-25,kurobe-kazusa,hidden,exact
+shooto,ストロー級,ストロー級,,5,山上 幹臣,山上幹臣,https://www.shooto-mma.com/ranking/,2026-07-25,yamagami-mikihito,hidden,exact
+shooto,ストロー級,ストロー級,,6,旭那 拳,旭那拳,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ストロー級,ストロー級,,7,田口 恵大,田口恵大,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ストロー級,ストロー級,,8,友利 琉偉,友利琉偉,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ストロー級,ストロー級,,9,友利 幸汰,友利幸汰,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ストロー級,ストロー級,,10,梅木 勇徳,梅木勇徳,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フライ級,フライ級,,王者,亮我,亮我,https://www.shooto-mma.com/ranking/,2026-07-25,ryoga,listed,exact
+shooto,フライ級,フライ級,,1,高岡 宏気,高岡宏気,https://www.shooto-mma.com/ranking/,2026-07-25,takaoka-hiroki,listed,exact
+shooto,フライ級,フライ級,,2,新井 丈,新井丈,https://www.shooto-mma.com/ranking/,2026-07-25,arai-jo,listed,exact
+shooto,フライ級,フライ級,,3,シモン スズキ,シモンスズキ,https://www.shooto-mma.com/ranking/,2026-07-25,suzuki-simon,hidden,exact
+shooto,フライ級,フライ級,,4,関口 祐冬,関口祐冬,https://www.shooto-mma.com/ranking/,2026-07-25,sekiguchi-yuto,hidden,exact
+shooto,フライ級,フライ級,,5,杉本 静弥,杉本静弥,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フライ級,フライ級,,6,中村 優作,中村優作,https://www.shooto-mma.com/ranking/,2026-07-25,nakamura-yusaku,listed,exact
+shooto,フライ級,フライ級,,7,砂辺 光久,砂辺光久,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フライ級,フライ級,,8,梅筋 毒一郎,梅筋毒一郎,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フライ級,フライ級,,9,山内 渉,山内渉,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フライ級,フライ級,,10,岡田 嵐士,岡田嵐士,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フライ級,フライ級,,11,中池 武寛,中池武寛,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フライ級,フライ級,,12,鈴木 尊,鈴木尊,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,バンタム級,バンタム級,,王者,永井 奏多,永井奏多,https://www.shooto-mma.com/ranking/,2026-07-25,nagai-kanata,listed,exact
+shooto,バンタム級,バンタム級,,1,齋藤 奨司,齋藤奨司,https://www.shooto-mma.com/ranking/,2026-07-25,saito-shoji,listed,exact
+shooto,バンタム級,バンタム級,,2,中野 剛貴,中野剛貴,https://www.shooto-mma.com/ranking/,2026-07-25,nakano-goki,hidden,exact
+shooto,バンタム級,バンタム級,,3,杉野 光星,杉野光星,https://www.shooto-mma.com/ranking/,2026-07-25,sugino-kosei,hidden,exact
+shooto,バンタム級,バンタム級,,4,野瀬 翔平,野瀬翔平,https://www.shooto-mma.com/ranking/,2026-07-25,nose-shohei,listed,exact
+shooto,バンタム級,バンタム級,,5,シンバートル バットエルデネ,シンバートルバットエルデネ,https://www.shooto-mma.com/ranking/,2026-07-25,baterdene-simbaatar,hidden,exact
+shooto,バンタム級,バンタム級,,6,川北 晏生,川北晏生,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,バンタム級,バンタム級,,7,チョウ スソン,チョウスソン,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,バンタム級,バンタム級,,8,藤井 伸樹,藤井伸樹,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,バンタム級,バンタム級,,9,ダイキ ライトイヤー,ダイキライトイヤー,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,バンタム級,バンタム級,,10,宮口 龍鳳,宮口龍鳳,https://www.shooto-mma.com/ranking/,2026-07-25,miyaguchi-ryuho,listed,exact
+shooto,バンタム級,バンタム級,,11,中島 陸,中島陸,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,バンタム級,バンタム級,,12,野尻 定由,野尻定由,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フェザー級,フェザー級,,王者,SASUKE,SASUKE,https://www.shooto-mma.com/ranking/,2026-07-25,sasuke,listed,exact
+shooto,フェザー級,フェザー級,,1,ヒカル,ヒカル,https://www.shooto-mma.com/ranking/,2026-07-25,hikaru,listed,exact
+shooto,フェザー級,フェザー級,,2,青井 太一,青井太一,https://www.shooto-mma.com/ranking/,2026-07-25,aoi-taichi,listed,exact
+shooto,フェザー級,フェザー級,,3,たてお,たてお,https://www.shooto-mma.com/ranking/,2026-07-25,tateo,listed,exact
+shooto,フェザー級,フェザー級,,4,TOMA,TOMA,https://www.shooto-mma.com/ranking/,2026-07-25,toma,listed,exact
+shooto,フェザー級,フェザー級,,5,堀江 耐志,堀江耐志,https://www.shooto-mma.com/ranking/,2026-07-25,horie-taishi,hidden,exact
+shooto,フェザー級,フェザー級,,6,パク ジョンジュン,パクジョンジュン,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フェザー級,フェザー級,,7,齋藤 翼,齋藤翼,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フェザー級,フェザー級,,8,上原 平,上原平,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フェザー級,フェザー級,,9,磯城嶋 一真,磯城嶋一真,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フェザー級,フェザー級,,10,飯野 雄斗,飯野雄斗,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,フェザー級,フェザー級,,11,ネイン デイネッシュ,ネインデイネッシュ,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ライト級,ライト級,,王者,エフェヴィガ 雄志,エフェヴィガ雄志,https://www.shooto-mma.com/ranking/,2026-07-25,efeviga-yushi,listed,exact
+shooto,ライト級,ライト級,,1,イム クァンウ,イムクァンウ,https://www.shooto-mma.com/ranking/,2026-07-25,im-kwangwoo,hidden,exact
+shooto,ライト級,ライト級,,2,後藤 亮,後藤亮,https://www.shooto-mma.com/ranking/,2026-07-25,goto-ryo,listed,exact
+shooto,ライト級,ライト級,,3,キャプテン ☆ アフリカ,キャプテン☆アフリカ,https://www.shooto-mma.com/ranking/,2026-07-25,captain-africa,listed,exact
+shooto,ライト級,ライト級,,4,シヴァエフ,シヴァエフ,https://www.shooto-mma.com/ranking/,2026-07-25,shivaev,hidden,exact
+shooto,ライト級,ライト級,,5,西尾 真輔,西尾真輔,https://www.shooto-mma.com/ranking/,2026-07-25,nishio-shinsuke,listed,exact
+shooto,ライト級,ライト級,,6,結城 大樹,結城大樹,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ライト級,ライト級,,7,安海 健人,安海健人,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ライト級,ライト級,,8,マックス・ザ・ボディ,マックス・ザ・ボディ,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ライト級,ライト級,,9,大尊 伸光,大尊伸光,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ライト級,ライト級,,10,田中 有,田中有,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ウェルター級,ウェルター級,,王者,住村 竜市朗,住村竜市朗,https://www.shooto-mma.com/ranking/,2026-07-25,sumimura-ryuichiro,listed,exact
+shooto,ウェルター級,ウェルター級,,1,デソウザ マルセル,デソウザマルセル,https://www.shooto-mma.com/ranking/,2026-07-25,desouza-marcel,hidden,exact
+shooto,ウェルター級,ウェルター級,,2,墨吉 涼太,墨吉涼太,https://www.shooto-mma.com/ranking/,2026-07-25,sumiyoshi-ryota,hidden,exact
+shooto,ウェルター級,ウェルター級,,3,マコア クーパー,マコアクーパー,https://www.shooto-mma.com/ranking/,2026-07-25,cooper-makoa,hidden,exact
+shooto,ウェルター級,ウェルター級,,4,西條 英成,西條英成,https://www.shooto-mma.com/ranking/,2026-07-25,saijo-hidenari,hidden,exact
+shooto,ウェルター級,ウェルター級,,5,ソーキ,ソーキ,https://www.shooto-mma.com/ranking/,2026-07-25,soki,hidden,exact
+shooto,ウェルター級,ウェルター級,,6,ヴィクター バレンズエラ,ヴィクターバレンズエラ,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ウェルター級,ウェルター級,,7,エルナニ ペルペトゥオ,エルナニペルペトゥオ,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ウェルター級,ウェルター級,,8,田村 ヒビキ,田村ヒビキ,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ウェルター級,ウェルター級,,9,グラップラー脇,グラップラー脇,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ミドル級,ミドル級,,1,岩﨑 大河,岩﨑大河,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ミドル級,ミドル級,,2,荒井 勇ニ,荒井勇ニ,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ミドル級,ミドル級,,3,沙門,沙門,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ミドル級,ミドル級,,4,HENRY,HENRY,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,ミドル級,ミドル級,,5,キム ジェヨン,キムジェヨン,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子アトム級,女子アトム級,,王者,青野 ひかる,青野ひかる,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子アトム級,女子アトム級,,1,徳本 望愛,徳本望愛,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子アトム級,女子アトム級,,2,中村 未来,中村未来,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子アトム級,女子アトム級,,3,杉本 恵,杉本恵,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子アトム級,女子アトム級,,4,平田 彩音,平田彩音,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子アトム級,女子アトム級,,5,パク ソヨン,パクソヨン,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子アトム級,女子アトム級,,6,NOEL,NOEL,https://www.shooto-mma.com/ranking/,2026-07-25,noel,listed,exact
+shooto,女子アトム級,女子アトム級,,7,ジェニー ファン,ジェニーファン,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子アトム級,女子アトム級,,8,嶋屋 澪,嶋屋澪,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子スーパーアトム級,女子スーパーアトム級,,王者,渡辺 彩華,渡辺彩華,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子スーパーアトム級,女子スーパーアトム級,,1,高本 千代,高本千代,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子スーパーアトム級,女子スーパーアトム級,,2,erika,erika,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子スーパーアトム級,女子スーパーアトム級,,3,村上 彩,村上彩,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子スーパーアトム級,女子スーパーアトム級,,4,片山 智絵,片山智絵,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子スーパーアトム級,女子スーパーアトム級,,5,黒部 三奈,黒部三奈,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子スーパーアトム級,女子スーパーアトム級,,6,SARAMI,SARAMI,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子ストロー級,女子ストロー級,,王者,藤野 恵実,藤野恵実,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子ストロー級,女子ストロー級,,1,宝珠山 桃花,宝珠山桃花,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子ストロー級,女子ストロー級,,2,パク ボヒョン,パクボヒョン,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子ストロー級,女子ストロー級,,3,ハイライ ウーシャアモー,ハイライウーシャアモー,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子ストロー級,女子ストロー級,,4,ソルト,ソルト,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子ストロー級,女子ストロー級,,5,KAREN,KAREN,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+shooto,女子ストロー級,女子ストロー級,,6,高田 暖妃,高田暖妃,https://www.shooto-mma.com/ranking/,2026-07-25,,missing,none
+deep,ストロー級,ストロー級,,C,知名昴海,知名昴海,https://www.deep2001.com/champ/,2026-07-25,,missing,none
+deep,フライ級,フライ級,,C,村元友太郎,村元友太郎,https://www.deep2001.com/champ/,2026-07-25,muramoto-yutaro,listed,exact
+deep,バンタム級,バンタム級,,C,福田龍彌,福田龍彌,https://www.deep2001.com/champ/,2026-07-25,fukuda-ryuya,listed,exact
+deep,フェザー級,フェザー級,,C,青井人,青井人,https://www.deep2001.com/champ/,2026-07-25,aoi-jin,listed,exact
+deep,ライト級,ライト級,,C,野村駿太,野村駿太,https://www.deep2001.com/champ/,2026-07-25,nomura-shunta,listed,exact
+deep,ウェルター級,ウェルター級,,C,嶋田伊吹,嶋田伊吹,https://www.deep2001.com/champ/,2026-07-25,shimada-ibuki,listed,exact
+deep,ヘビー級,ヘビー級,,C,大成,大成,https://www.deep2001.com/champ/,2026-07-25,nishitani-taisei,hidden,exact
+deep,女子アトム級,女子アトム級,,C,伊澤星花,伊澤星花,https://www.deep2001.com/champ/,2026-07-25,izawa-seika,listed,exact
+deep,女子ストロー級,女子ストロー級,,C,万智,万智,https://www.deep2001.com/champ/,2026-07-25,,missing,none
+deep,女子フライ級,女子フライ級,,C,中井りん,中井りん,https://www.deep2001.com/champ/,2026-07-25,,missing,none
+deep,女子バンタム級,女子バンタム級,,C,百湖,百湖,https://www.deep2001.com/champ/,2026-07-25,,missing,none
+deep,女子フェザー級,女子フェザー級,,C,東ようこ,東ようこ,https://www.deep2001.com/champ/,2026-07-25,,missing,none
+deep,女子無差別級,,weightClasses.tsのWEIGHT_KGに存在しない階級ラベル,C,アマンダ・ルーカス,アマンダ・ルーカス,https://www.deep2001.com/champ/,2026-07-25,,missing,none
+deep,女子ミクロ級,,weightClasses.tsのWEIGHT_KGに存在しない階級ラベル,C,大島沙緒里,大島沙緒里,https://www.deep2001.com/champ/,2026-07-25,oshima-saori,listed,exact
+deep,DEEP JEWELS 女子ミクロ級,,weightClasses.tsのWEIGHT_KGに存在しない階級ラベル,C,大島沙緒里,大島沙緒里,https://www.deep2001.com/champ/,2026-07-25,oshima-saori,listed,exact

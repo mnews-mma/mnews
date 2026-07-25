@@ -1,0 +1,783 @@
+event_id,brand,event_date,bout_index,side,result,name_raw,gym_raw,name_normalized,weight_class_raw,source_url,fetched_at,mnews_slug,status,match_confidence,name_confidence
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,1,A,win,坂野周平,サツキジム横浜,坂野周平,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,1,B,loss,井上セナ,K-Clann,井上セナ,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,2,A,win,マイティ・saw,T・GRIP TOKYO,マイティ・saw,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,foreign
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,2,B,loss,中尾響,JAPAN TOP TEAM,中尾響,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,3,A,win,朝比奈龍希,JAPAN TOP TEAM,朝比奈龍希,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,3,B,loss,川口海翔,ALLIANCE,川口海翔,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,4,A,win,今野蓮弥,TEAM大和魂,今野蓮弥,DEEPフライ級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,4,B,loss,今井風快,TRIBE TOKYO MMA,今井風快,DEEPフライ級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,5,A,win,琥,フリー,琥,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,5,B,loss,渡部恵多,パラエストラ八王子,渡部恵多,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,6,A,loss,大越充悟,パラエストラ八王子,大越充悟,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,6,B,win,佐々木琢磨,ALLIANCE,佐々木琢磨,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,7,A,loss,森谷風真,T・GRIP TOKYO,森谷風真,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-2nd-round,DEEP FIGHT CHALLENGE,2026-07-24,7,B,win,齋藤未来,FIGHTER`S FLOW,齋藤未来,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,1,A,win,相本宗輝,ROOM,相本宗輝,DEEPライト5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,aimoto-kazuki,listed,exact,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,1,B,loss,山田聖真,JAPAN TOP TEAM,山田聖真,DEEPライト5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,2,A,loss,猿寿健太,K-Clann,猿寿健太,DEEP 58kg以下 5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,enju-kenta,listed,exact,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,2,B,win,火の鳥,BRAVE GYM,火の鳥,DEEP 58kg以下 5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,hinotori,listed,exact,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,3,A,win,五明宏人,JAPAN TOP TEAM,五明宏人,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,gomyo-hiroto,listed,exact,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,3,B,loss,太田将吾,NEX SPORTS,太田将吾,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,4,A,loss,神田コウヤ,THE BLACK BELT JAPAN,神田コウヤ,DEEPライト5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,koya-kanda,listed,exact,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,4,B,win,ケンシロウ,FIGHTER’S FLOW,ケンシロウ,DEEPライト5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,kenshiro,listed,exact,kana_only
+deep-132-impact,DEEP IMPACT,2026-07-05,5,A,win,河村泰博,和術慧舟會AKZA,河村泰博,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,5,B,loss,山本有人,リバーサルジム東京スタンドアウト,山本有人,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-132-impact/,2026-07-25,yamamoto-arihito,hidden,exact,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,6,A,loss,鈴木大晟,パラエストラ八王子,鈴木大晟,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,suzuki-taisei,listed,exact,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,6,B,win,高橋正親,BRAVE GYM,高橋正親,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,7,A,loss,マサト・ナカムラ,レンジャージム,マサト・ナカムラ,DEEＰフライ級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,kana_only
+deep-132-impact,DEEP IMPACT,2026-07-05,7,B,win,斎藤璃貴,Fight Holic,斎藤璃貴,DEEＰフライ級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,8,A,win,松井優磨,KATANA GYM,松井優磨,DEEPフライ級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,8,B,loss,石原射,GRABAKA,石原射,DEEPフライ級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,9,A,win,石坂空志,クボジム/BRAVE GYM,石坂空志,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,ishizaka-kushi,hidden,exact,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,9,B,loss,矢野武蔵,パラエストラ愛媛,矢野武蔵,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,10,A,loss,武利侑都,KRAZY BEE,武利侑都,DEEPフライ級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,10,B,win,横内三旺,フリー,横内三旺,DEEPフライ級 5分2R,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,11,A,win,秋元優志,JAPAN TOP TEAM,秋元優志,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-132-impact,DEEP IMPACT,2026-07-05,11,B,loss,荒井夕翔,FIRED UP GYM,荒井夕翔,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-132-impact/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,1,A,loss,栗山葵,SMOKER GYM,栗山葵,DEEP JEWELSフライ級 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,1,B,win,サラ・マフムード,Badger MMA,サラ・マフムード,DEEP JEWELSフライ級 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,2,A,win,Street♡★Bob洸助,BOND GYM,Street♡★Bob洸助,DEEPライト級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,2,B,loss,河坂修斗,KNOCKOUTクロスポイント・パラエストラ吉祥寺,河坂修斗,DEEPライト級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,3,A,win,小川道的,柔術兄弟,小川道的,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,3,B,loss,澤田龍美,リバーサルジム神戸HIZUMI,澤田龍美,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,4,A,win,フェルナンド,Brotherhood / Pitbull Brothers,フェルナンド,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,4,B,loss,カーレッジユウキ,VICTORY GYM,カーレッジユウキ,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,5,A,loss,橋本葵,SMOKER GYM,橋本葵,DEEP JEWELSストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,5,B,win,渡辺真央,POLARGYMOSAKA,渡辺真央,DEEP JEWELSストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,6,A,win,加藤憂也,POLARGYMOSAKA,加藤憂也,DEEPフェザー級 3分2RアマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,6,B,loss,大島伊玖都,パラエストラ天満,大島伊玖都,DEEPフェザー級 3分2RアマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,7,A,win,切嶋龍輝,マーシャルアーツクラブ中津川,切嶋龍輝,DEEP WEST JAPAN BANTAMWEIHT GP 2026一回戦 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,7,B,loss,寺崎昇龍,Fight Holic,寺崎昇龍,DEEP WEST JAPAN BANTAMWEIHT GP 2026一回戦 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,terasaki-shoryu,listed,exact,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,8,A,win,大空斗,パンクラス大阪稲垣組,大空斗,DEEP WEST JAPAN BANTAMWEIHT GP 2026一回戦 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,8,B,loss,谷岡祐樹,パラエストラ加古川,谷岡祐樹,DEEP WEST JAPAN BANTAMWEIHT GP 2026一回戦 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,9,A,win,MG眞介,reversal gym osaka anne,MG眞介,DEEP WEST JAPAN BANTAMWEIHT GP 2026一回戦 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,9,B,loss,みやび,糸満MMA,みやび,DEEP WEST JAPAN BANTAMWEIHT GP 2026一回戦 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,10,A,win,虎鉄,パンクラス大阪稲垣組,虎鉄,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,10,B,loss,窪田大羅,evermove,窪田大羅,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,11,A,loss,鈴木 “QP” まい,寒天ファイトスピリット,鈴木“QP”まい,DEEP JEWELSフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,11,B,win,ルリー・サンシャイン,フリー,ルリー・サンシャイン,DEEP JEWELSフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,12,A,win,古根川充,修斗ジムASH,古根川充,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,12,B,loss,権藤大剛,KNOCKOUTクロスポイント・パラエストラ吉祥寺,権藤大剛,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,13,A,win,ステファン“スマッシュ”,フリー,ステファン“スマッシュ”,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-3rd-round,DEEP OSAKA IMPACT,2026-06-21,13,B,loss,酒井天佑,blooM,酒井天佑,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,1,A,loss,TATSUMI,NEXSPORTS,TATSUMI,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,1,B,win,加藤綾真,CLUBF3,加藤綾真,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,2,A,win,浅野功暉,REBOOT,浅野功暉,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,2,B,loss,カーン・ソガズ,フリー,カーン・ソガズ,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,3,A,win,時任流架,SPLASH,時任流架,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,3,B,loss,鈴木幹也,戦ジム,鈴木幹也,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,4,A,loss,中川内 羽矢斗,COMRADE,中川内羽矢斗,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,4,B,win,熊澤バイオレンス,グラップリングシュートボクサーズ,熊澤バイオレンス,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,5,A,loss,宜野座ケビン,SPLASH,宜野座ケビン,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,5,B,win,大澤空,キラリジム拳心會,大澤空,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,6,A,win,ユリカ・グラップリングシュートボクサーズジム,グラップリングシュートボクサーズ,ユリカ・グラップリングシュートボクサーズジム,MAXFCJAPAN公式戦 -48kg契約 3分3R（EX1R）,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,6,B,loss,パク・ソヨン,済州チームドラゴン,パク・ソヨン,MAXFCJAPAN公式戦 -48kg契約 3分3R（EX1R）,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,7,A,loss,SHOYA,戦ジム,SHOYA,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,7,B,win,吉田翼,SPLASH,吉田翼,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,8,A,win,朱里グラップリングシュートボクサーズジム,グラップリングシュートボクサーズ,朱里グラップリングシュートボクサーズジム,MAXFCJAPAN公式戦 -54kg契約 3分3R（EX1R）,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,8,B,loss,チェ・ウンジ,大邱FEARLESS GYM,チェ・ウンジ,MAXFCJAPAN公式戦 -54kg契約 3分3R（EX1R）,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,9,A,loss,青井佑磨,寒天ファイトスピリット,青井佑磨,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,9,B,win,三島康貴,NEXSPORTS,三島康貴,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,10,A,loss,黒川晃司,戦ジム,黒川晃司,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,10,B,win,早田大牙,寒天ファイトスピリット,早田大牙,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,11,A,win,三ツ塚勇介,Evermove,三ツ塚勇介,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,11,B,loss,永井宏人,TEAMTMT,永井宏人,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,12,A,loss,古市陸,クラブバーバリアン,古市陸,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,12,B,win,橋上壮馬,REBOOT,橋上壮馬,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,13,A,win,椿馨,NEXSPORTS,椿馨,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,13,B,loss,青代享,Evermove,青代享,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,14,A,win,山田悠太,SPLASH,山田悠太,DEEPフライ級 5分2,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,14,B,loss,川畑凜斗,Evermove,川畑凜斗,DEEPフライ級 5分2,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,15,A,win,内田 菱牙,G.O.S MMA,内田菱牙,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,15,B,loss,吉口聖也,パラエストラ岐阜,吉口聖也,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,16,A,win,真下健嗣,BLUE HOUSE,真下健嗣,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,16,B,loss,土屋太郎,バッファローMMA,土屋太郎,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,17,A,loss,細川晄希,ALIVE,細川晄希,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-2nd-round,DEEP NAGOYA IMPACT,2026-06-14,17,B,win,倉冨立聖,Concilio,倉冨立聖,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,1,A,loss,内山拓真,ボンサイ柔術,内山拓真,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,1,B,win,MG眞介,reversal gym osaka anne,MG眞介,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,2,A,loss,奥野充貴,BOND GYM,奥野充貴,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,2,B,win,木之下喧壱,NEX SPORTS,木之下喧壱,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,3,A,win,青田剛,KO GYM,青田剛,DEEPフライ級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,3,B,loss,大野勇斗,ROYS GYM,大野勇斗,DEEPフライ級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,4,A,win,AKIYOSHI,NEX SPORTS,AKIYOSHI,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,4,B,loss,西原大貴,ROYS GYM,西原大貴,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,5,A,win,伊藤一輝,ボンサイ柔術,伊藤一輝,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,5,B,loss,ルーク中村,JAPAN TOP TEAM,ルーク中村,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,6,A,loss,小林ゆたか,夕月堂本舗,小林ゆたか,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,6,B,win,真野アミル,NEX SPORTS,真野アミル,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,7,A,loss,平井総一郎,フリー,平井総一郎,DEEPフライ級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,7,B,win,マサムネ,BOND GYM,マサムネ,DEEPフライ級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,8,A,loss,一輝,MtF MUGEN GYM,一輝,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,8,B,win,佐藤修斗,JAPAN TOP TEAM,佐藤修斗,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,9,A,win,加藤翔奏,NeighborHood,加藤翔奏,DEEPストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,9,B,loss,ショーン・ホマレー,Four Rhombus,ショーン・ホマレー,DEEPストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,10,A,win,高田真音,ISHITSUNA MMA,高田真音,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,10,B,loss,石津隼人,KO GYM,石津隼人,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,11,A,win,菊池創太,NeighborHood,菊池創太,DEEPストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,11,B,loss,フェリペ・ハセヤマ,キラービーズ,フェリペ・ハセヤマ,DEEPストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,12,A,loss,上瀬あかり,毛利道場,上瀬あかり,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,12,B,win,渡邊花美,ボンサイ柔術,渡邊花美,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,13,A,loss,和久田月聖,JAWZ WEST,和久田月聖,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,13,B,win,黒太翔人,KATO GYM,黒太翔人,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,14,A,win,トーマ,BOND GYM,トーマ,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,14,B,loss,RYUA,CLUB F3,RYUA,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,15,A,loss,ランボルギーニ,フリー,ランボルギーニ,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,15,B,win,高橋典斗,ボンサイ柔術,高橋典斗,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,16,A,loss,金子徹哉,bellwood fight team,金子徹哉,DEEP 60kg以下 3分3R KICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,16,B,win,平田大地,ALLジム,平田大地,DEEP 60kg以下 3分3R KICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,17,A,win,久留拓磨,ZERO ONE GYM,久留拓磨,DEEP 62.5kg以下 3分3R KICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,17,B,loss,仁,LEGEND GYM,仁,DEEP 62.5kg以下 3分3R KICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,18,A,loss,熊谷輝彦,bellwood fight team,熊谷輝彦,DEEP 62kg以下2分3R アマチュアKICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,18,B,win,金城壮志,魁塾,金城壮志,DEEP 62kg以下2分3R アマチュアKICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,19,A,loss,津島忠彦,bellwood fight team,津島忠彦,DEEP 60kg以下 2分3R アマチュアKICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,19,B,win,中村大和,NJKF心将塾,中村大和,DEEP 60kg以下 2分3R アマチュアKICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,20,A,loss,比企那菜実,bellwood fight team,比企那菜実,DEEP JEWELS ストロー級 2分2R アマチュアKICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2026-1st-round,DEEP HAMAMATSU IMPACT,2026-05-31,20,B,win,AKINA,NJKF TOP GUN GYM,AKINA,DEEP JEWELS ストロー級 2分2R アマチュアKICKルール,https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,1,A,win,中井りん,修斗道場四国,中井りん,DEEP JEWELSフライ級タイトルマッチ 5分3R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,1,B,loss,奥富夕夏,"リバーサルジム新宿ME,WE",奥富夕夏,DEEP JEWELSフライ級タイトルマッチ 5分3R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,2,A,loss,竹林 エル,伊澤星花チャレンジ,竹林エル,DEEP JEWELS 49kg以下 5分3R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,2,B,win,イ・イェジ,team aom,イ・イェジ,DEEP JEWELS 49kg以下 5分3R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,lee-yeji,listed,exact,kana_only
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,3,A,win,ののか,FIGHTER’S FLOW,ののか,DEEP JEWELSストロー級 5分3R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,kana_only
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,3,B,loss,キム・ソユル,MOB Training Center,キム・ソユル,DEEP JEWELSストロー級 5分3R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,kana_only
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,4,A,win,桐生祐子,FourRhombus,桐生祐子,DEEP JEWELSストロー級 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,4,B,loss,月井隼南,フリー,月井隼南,DEEP JEWELSストロー級 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,5,A,win,彩綺,和術慧舟會HEARTS,彩綺,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,5,B,loss,abbie,POLAR GYM OSAKA,abbie,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,6,A,win,樹季,KING GYM KOBE,樹季,DEEP JEWELS 65kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,6,B,loss,Te-a,AACC,Te-a,DEEP JEWELS 65kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,7,A,loss,古林礼名,"リバーサルジム新宿Me,We",古林礼名,DEEP JEWELSミクロ級 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,7,B,win,大井すず,和術慧舟會HEARTS,大井すず,DEEP JEWELSミクロ級 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,8,A,win,SAAYA,フリー,SAAYA,DEEP JEWELS 53kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,8,B,loss,渡辺真央,POLARGYMOSAKA,渡辺真央,DEEP JEWELS 53kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,9,A,win,鈴木”BOSS”遥,SAI-GYM,鈴木”BOSS”遥,DEEP JEWELS 58kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,9,B,loss,田川真帆,IDEA ASAKUSA,田川真帆,DEEP JEWELS 58kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,10,A,win,JUICY,URUSHI DOJO,JUICY,DEEP JEWELS 60kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,10,B,loss,うらら,レンジャージム,うらら,DEEP JEWELS 60kg以下 5分2R,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,kana_only
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,11,A,win,山吹マリン,和術慧舟會AKZA,山吹マリン,DEEP JEWELS 50kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,11,B,loss,谷山心優,フリー,谷山心優,DEEP JEWELS 50kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,12,A,loss,あきぴ,ABLAZE八王子,あきぴ,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,kana_only
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,12,B,win,村松美直,ALMA FIGHT GYM PUGNUS,村松美直,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,13,A,loss,愛温,CAVE,愛温,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,13,B,win,山内梨緒,伊澤星花チャレンジ,山内梨緒,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,14,A,loss,横江 明日香,リバーサル立川 ALPHA,横江明日香,DEEP JEWELS 49kg 以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,clean
+deep-jewels-52-2,DEEP JEWELS,2026-05-24,14,B,win,デスティニー,FIGHT BASE 都立大,デスティニー,DEEP JEWELS 49kg 以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52-2/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,1,A,loss,高橋遼伍,KRAZY BEE,高橋遼伍,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,1,B,win,三井俊希,reversal gym osaka anne,三井俊希,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,mitsui-shunki,listed,exact,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,2,A,win,中島太一,JAPAN TOP TEAM,中島太一,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,nakajima-taichi,listed,exact,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,2,B,loss,日比野”エビ中”純也,フリー,日比野”エビ中”純也,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,hibino-junya,listed,alias,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,3,A,win,長谷川賢,フリー,長谷川賢,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,3,B,loss,ブラックタイガー,BOND GYM,ブラックタイガー,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,4,A,loss,カンジ,和術慧舟會HEARTS,カンジ,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,4,B,win,KINNO,NEX SPORTS,KINNO,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,5,A,win,黒岡裕真,和術慧舟會HEARS,黒岡裕真,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,5,B,loss,笹崎健司,マッハ道場,笹崎健司,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,6,A,win,坂本岳,JAPAN TOP TEAM,坂本岳,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,6,B,loss,ハム・ギワン,MOB Training Center,ハム・ギワン,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,7,A,win,仁井田右楽,JAPAN TOP TEAM,仁井田右楽,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,7,B,loss,廣瀬裕斗,マーシャルアーツクラブ中津川,廣瀬裕斗,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,8,A,loss,渡邉龍太郎,SONIC SQUAD,渡邉龍太郎,DEEP 60kg以下 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,8,B,win,キンジ,RESURGO MMA,キンジ,DEEP 60kg以下 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,9,A,loss,ガブリエル,RESURGO MMA,ガブリエル,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,9,B,win,尚太郎,ROYS GYM,尚太郎,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,10,A,loss,TAKUMA,JAPAN TOP TEAM,TAKUMA,DEEPウェルター級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,10,B,win,猿丸凛太朗,BRAVE GYM,猿丸凛太朗,DEEPウェルター級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,11,A,loss,菊間瑛太,Y＆K ACADEMY,菊間瑛太,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-3rd-round,DEEP TOKYO IMPACT,2026-05-24,11,B,win,小嵐翔真,THE BLACK BELT JAPAN,小嵐翔真,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/,2026-07-25,,missing,none,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,1,A,loss,牛久絢太郎,アメリカン・トップチーム,牛久絢太郎,DEEPフェザー級暫定王者決定戦 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,ushiku-juntaro,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,1,B,win,水野新太,フリー,水野新太,DEEPフェザー級暫定王者決定戦 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,mizuno-shinta,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,2,A,win,大原樹理,KIBAマーシャルアーツクラブ,大原樹理,DEEPライト級タイトルマッチ 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,ohara-juri,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,2,B,loss,倉本大悟,JAPAN TOP TEAM,倉本大悟,DEEPライト級タイトルマッチ 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,kuramoto-daigo,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,3,A,win,村元友太郎,ALIVE,村元友太郎,DEEPフライ級タイトルマッチ 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,muramoto-yutaro,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,3,B,loss,力也,FIGHT FARM,力也,DEEPフライ級タイトルマッチ 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,rikiya,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,4,A,loss,平松翔,BLACK BELT JAPAN,平松翔,DEEPバンタム級暫定王者決定戦 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,hiramatsu-sho,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,4,B,win,鹿志村仁之介,Battle-Box,鹿志村仁之介,DEEPバンタム級暫定王者決定戦 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,kashimura-jinnosuke,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,5,A,loss,杉山空,THE BLACK BELT JAPAN,杉山空,DEEPストロー級タイトルマッチ 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,sugiyama-sora,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,5,B,win,知名昴海,フリー,知名昴海,DEEPストロー級タイトルマッチ 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,,missing,none,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,6,A,loss,阿部大治,TITAN GYM,阿部大治,DEEPウェルター級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,abe-daiji,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,6,B,win,角野晃平,TEAM FAUST,角野晃平,DEEPウェルター級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,kadono-kohei,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,7,A,loss,猿寿健太,K-Clann,猿寿健太,DEEP 59kg以下 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,enju-kenta,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,7,B,win,関原翔,RESURGO MMA,関原翔,DEEP 59kg以下 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,sekihara-sho,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,8,A,win,瀧澤謙太,Fired Up Gym,瀧澤謙太,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,takizawa-kenta,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,8,B,loss,雅駿介,CAVE,雅駿介,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,miyabi-shunsuke,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,9,A,loss,中村大介,夕月堂本舗,中村大介,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,nakamura-daisuke,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,9,B,win,狩野優,TRIBE TOKYO MMA,狩野優,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,karino-yu,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,10,A,win,泉武志,FIGHTER’S FLOW,泉武志,DEEPライト級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,izumi-takeshi,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,10,B,loss,山本颯志,JAPAN TOP TEAM,山本颯志,DEEPライト級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,yamamoto-soushi,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,11,A,win,赤沢幸典,フリー,赤沢幸典,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,akazawa-yukinori,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,11,B,loss,金田一孝介,RESURGO MMA,金田一孝介,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,kindaichi-kosuke,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,12,A,loss,窪田泰斗,FourRhombus,窪田泰斗,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,kubota-taito,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,12,B,win,小崎連,リバーサルジム久喜WINGS,小崎連,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-131-impact/,2026-07-25,kozaki-ren,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,13,A,loss,誠悟,AACC,誠悟,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-131-impact/,2026-07-25,seigo,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,13,B,win,タンク内藤,レンジャージム,タンク内藤,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-131-impact/,2026-07-25,naito-tank,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,14,A,loss,諏訪部哲平,IGGY HAND’S GYM,諏訪部哲平,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-131-impact/,2026-07-25,suwabe-teppei,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,14,B,win,石坂空志,クボジム/BRAVE GYM,石坂空志,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-131-impact/,2026-07-25,ishizaka-kushi,hidden,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,15,A,win,杉野亜蓮,パラエストラ八王子,杉野亜蓮,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-131-impact/,2026-07-25,sugino-aren,listed,exact,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,15,B,loss,ダイヤ,FIRED UP GYM,ダイヤ,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-131-impact/,2026-07-25,daiya,listed,exact,kana_only
+deep-131-impact,DEEP IMPACT,2026-05-04,16,A,win,今野連弥,PUREBRED,今野連弥,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-131-impact/,2026-07-25,,missing,none,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,16,B,loss,武井大将,BLACK BELT JAPAN,武井大将,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-131-impact/,2026-07-25,,missing,none,clean
+deep-131-impact,DEEP IMPACT,2026-05-04,17,A,win,ショウエイ,パンクライズム横浜,ショウエイ,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-131-impact/,2026-07-25,,missing,none,kana_only
+deep-131-impact,DEEP IMPACT,2026-05-04,17,B,loss,矢代光,フリー,矢代光,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-131-impact/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,1,A,win,安井飛馬,JAPAN TOP TEAM,安井飛馬,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,yasui-hyuma,listed,exact,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,1,B,loss,森俊樹,FIGHTER’S FLOW,森俊樹,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,2,A,win,太田将吾,NEX SPORTS,太田将吾,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,2,B,loss,中村雄一,パラエストラ八戸,中村雄一,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,3,A,win,堂園悠,修和館,堂園悠,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,3,B,loss,唐沢タツヤ,GRABAKA,唐沢タツヤ,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,4,A,win,橋本優大,CAVE,橋本優大,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,4,B,loss,横内三旺,Battle-Box,横内三旺,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,5,A,win,コビー・レオン,Gracie Technics/Nito Boxing,コビー・レオン,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,5,B,loss,石原射,GRABAKA,石原射,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,6,A,loss,安永吏成,IRIE BASE,安永吏成,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,6,B,win,高橋健斗,BRAVE GYM,高橋健斗,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,7,A,loss,朝比奈龍希,JAPAN TOP TEAM,朝比奈龍希,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,7,B,win,井上セナ,K-clann,井上セナ,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,8,A,win,トミー渡部,KATANA GYM,トミー渡部,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,8,B,loss,井上竜旗,剛毅會,井上竜旗,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,9,A,win,寉岡樹記,MASTER BRIDGE/INHERIT ONENESS,寉岡樹記,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,9,B,loss,川口海翔,ALLIANCE,川口海翔,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,10,A,win,藤井連,FIGHTER’S FLOW,藤井連,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,10,B,loss,マイティ・saw,T・GRIP TOKYO,マイティ・saw,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,foreign
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,11,A,win,中尾響,JAPAN TOP TEAM,中尾響,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,11,B,loss,山田葵生,ALLIANCE,山田葵生,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,12,A,win,佐藤聖優,JAPAN TOP TEAM,佐藤聖優,DEEP 64kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,12,B,loss,サンシャイン,FIRED UP GYM,サンシャイン,DEEP 64kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,13,A,win,荒井夕翔,FIRED UP GYM,荒井夕翔,DEEP 58kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-2nd-round,DEEP TOKYO IMPACT,2026-04-19,13,B,loss,ごとう瑠海,Y&amp;K MMA ACADEMY,ごとう瑠海,DEEP 58kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,1,A,win,酒井リョウ,レンジャージム,酒井リョウ,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-130-impact/,2026-07-25,sakai-ryo,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,1,B,loss,荒東”怪獣キラー”英貴,パンクラス大阪稲垣組,荒東”怪獣キラー”英貴,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-130-impact/,2026-07-25,arato-hidetaka,listed,alias,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,2,A,loss,関原翔,RESURGO MMA,関原翔,DEEPフライ級 5分3R,https://www.deep2001.com/deep-130-impact/,2026-07-25,sekihara-sho,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,2,B,win,力也,FIGHT FARM,力也,DEEPフライ級 5分3R,https://www.deep2001.com/deep-130-impact/,2026-07-25,rikiya,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,3,A,loss,五明宏人,JAPAN TOP TEAM,五明宏人,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-130-impact/,2026-07-25,gomyo-hiroto,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,3,B,win,椿飛鳥,フリー,椿飛鳥,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-130-impact/,2026-07-25,tsubaki-asuka,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,4,A,loss,木下カラテ,和術慧舟會HEARTS,木下カラテ,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-130-impact/,2026-07-25,kinoshita-karate,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,4,B,win,直樹,FIGHTER’S FLOW,直樹,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-130-impact/,2026-07-25,naoki,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,5,A,loss,魚井フルスイング,和術慧舟會HEARTS,魚井フルスイング,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-130-impact/,2026-07-25,uoi-fullswing,hidden,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,5,B,win,寺崎昇龍,Fight Holic,寺崎昇龍,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-130-impact/,2026-07-25,terasaki-shoryu,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,6,A,loss,日比野”エビ中”純也,フリー,日比野”エビ中”純也,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-130-impact/,2026-07-25,hibino-junya,listed,alias,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,6,B,win,山本有人,リバーサルジム東京スタンドアウト,山本有人,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-130-impact/,2026-07-25,yamamoto-arihito,hidden,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,7,A,win,ケンシロウ,FIGHTER’S FLOW,ケンシロウ,DEEPライト級 5分2R,https://www.deep2001.com/deep-130-impact/,2026-07-25,kenshiro,listed,exact,kana_only
+deep-130-impact,DEEP IMPACT,2026-03-20,7,B,loss,中谷優我,BRAVE GYM,中谷優我,DEEPライト級 5分2R,https://www.deep2001.com/deep-130-impact/,2026-07-25,nakatani-yuga,listed,exact,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,8,A,win,秋元優志,JAPAN TOP TEAM,秋元優志,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-130-impact/,2026-07-25,,missing,none,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,8,B,loss,谷口仁歩,NEX SPORTS,谷口仁歩,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-130-impact/,2026-07-25,,missing,none,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,9,A,win,高尾凌生,JAPAN TOP TEAM,高尾凌生,DEEPバンタム級3分2RアマチュアSルール,https://www.deep2001.com/deep-130-impact/,2026-07-25,,missing,none,clean
+deep-130-impact,DEEP IMPACT,2026-03-20,9,B,loss,河島ノブヒデ,KATANA GYM,河島ノブヒデ,DEEPバンタム級3分2RアマチュアSルール,https://www.deep2001.com/deep-130-impact/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,1,A,win,濱口奏琉,フリー,濱口奏琉,DEEPフライ級 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,1,B,loss,松井優磨,KATANA GYM,松井優磨,DEEPフライ級 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,2,A,win,栗山葵,SMOKER GYM,栗山葵,DEEP JEWELSフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,2,B,loss,鈴木 “QP” まい,寒天ファイトスピリット,鈴木“QP”まい,DEEP JEWELSフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,3,A,win,松場貴志,パラエストラ加古川,松場貴志,DEEPフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,3,B,loss,松原聖也,Team FreeStyle,松原聖也,DEEPフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,4,A,loss,古根川充,修斗ジムASH,古根川充,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,4,B,win,小川道的,柔術兄弟,小川道的,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,5,A,loss,岩本達彦,BLOWS,岩本達彦,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,5,B,win,藤田宇宙,パンクラス大阪稲垣組,藤田宇宙,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,6,A,win,木下竜馬,KING GYM KOBE,木下竜馬,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,6,B,loss,福田泰暉,TEAM STAKE,福田泰暉,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,7,A,loss,あー子,フリー,あー子,DEEP JEWELS 50kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,7,B,win,abbie,POLARGYMOSAKA,abbie,DEEP JEWELS 50kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,8,A,loss,瀧口脩生,総合格闘技スタジオSTYLE,瀧口脩生,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,8,B,win,澤田龍美,リバーサルジム神戸HIZUMI,澤田龍美,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,9,A,loss,田中壱季,ENCOUNTER,田中壱季,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,9,B,win,井康勢,M3A FITplus,井康勢,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,10,A,loss,橋本葵,SMOKER GYM,橋本葵,DEEP JEWELSストロー級 3分2R アマチュアSPルール,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-2nd-round,DEEP OSAKA IMPACT,2026-03-08,10,B,win,大西未来,トライフォース泉南,大西未来,DEEP JEWELSストロー級 3分2R アマチュアSPルール,https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,1,A,win,須田萌里,SCORPION GYM,須田萌里,DEEP JEWELS 49kg以下 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,suda-moeri,listed,exact,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,1,B,loss,HIME,毛利道場,HIME,DEEP JEWELS 49kg以下 5分3R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,2,A,win,知名昴海,フリー,知名昴海,セミファイナル DEEPストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,2,B,loss,武蔵,All My Homies,武蔵,セミファイナル DEEPストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,3,A,win,飴山聖也,ENCOUNTER,飴山聖也,DEEPフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,ameyama-seiya,listed,exact,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,3,B,loss,太一,blooM,太一,DEEPフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,4,A,loss,今村豊,POLAR GYM OSAKA,今村豊,DEEPライト級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,4,B,win,河坂修斗,KNOCK OUT クロスポイント・パラエストラ吉祥寺,河坂修斗,DEEPライト級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,5,A,loss,谷岡祐樹,パラエストラ加古川,谷岡祐樹,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,5,B,win,矢野武蔵,パラエストラ愛媛,矢野武蔵,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,6,A,win,上瀬あかり,毛利道場,上瀬あかり,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,6,B,loss,SAAYA,フリー,SAAYA,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,7,A,loss,MANA,BlooM,MANA,DEEP JEWELSバンタム級5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,7,B,win,中尾あづき,AACC,中尾あづき,DEEP JEWELSバンタム級5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,8,A,win,ベンジャミン,blooM,ベンジャミン,DEEPライト級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,8,B,loss,武蔵坊慶輔,UBF,武蔵坊慶輔,DEEPライト級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,9,A,win,マサムネ,BOND GYM,マサムネ,DEEPフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,9,B,loss,米原剛希,パラエストラ加古川,米原剛希,DEEPフライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,10,A,loss,西川将輝,ENCOUNTER,西川将輝,DEEP 97kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,10,B,win,アモリン,HARVEST,アモリン,DEEP 97kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,11,A,loss,ぽちゃんZ,パラエストラ東京/レグルス池袋,ぽちゃんZ,DEEP JEWELS 68kg以下5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,11,B,win,Bobo飛鳥,blooM,Bobo飛鳥,DEEP JEWELS 68kg以下5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,12,A,loss,近藤世里菜,総合格闘技道場ARMS,近藤世里菜,DEEP JEWELSフェザー級5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,12,B,win,JUICY,フリー,JUICY,DEEP JEWELSフェザー級5分2R,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,13,A,loss,佐藤勇真,KING GYM KOBE,佐藤勇真,DEEP メガトン級 3分2RアマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,13,B,win,酒井天佑,blooM,酒井天佑,DEEP メガトン級 3分2RアマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,14,A,loss,朝井啓太,ENCOUNTER,朝井啓太,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2026-1st-round,DEEP OSAKA IMPACT,2026-03-08,14,B,win,杉映都,reversal gym osaka anne,杉映都,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,1,A,win,百湖,リバーサルジム横浜グランドスラム,百湖,DEEP JEWELSバンタム級王者決定戦 5分3R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,1,B,loss,樹季,KING GYM KOBE,樹季,DEEP JEWELSバンタム級王者決定戦 5分3R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,2,A,win,万智,フリー,万智,DEEP JEWELSストロー級 5分3R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,2,B,loss,キム・ダンビ,Red Hook MMA,キム・ダンビ,DEEP JEWELSストロー級 5分3R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,kana_only
+deep-jewels-52,DEEP JEWELS,2026-02-23,3,A,win,竹林エル,伊澤星花チャレンジ,竹林エル,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,3,B,loss,海咲イルカ,リバーサルジム立川ALPHA,海咲イルカ,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,4,A,win,桐生祐子,FourRhombus,桐生祐子,DEEP JEWELSストロー級 5分2R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,4,B,loss,堀井かりん,クロスポイント・パラエストラ拝島,堀井かりん,DEEP JEWELSストロー級 5分2R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,5,A,win,横瀬友愛,BELVA,横瀬友愛,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,5,B,loss,岡美紀,伊澤星花チャレンジ,岡美紀,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,6,A,win,坂本瑠華,江口道場,坂本瑠華,DEEP JEWELSストロー級 2分2R KICKルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,6,B,loss,ダイナマイト♡ユラ,フリー,ダイナマイト♡ユラ,DEEP JEWELSストロー級 2分2R KICKルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,7,A,win,島村優花,KRAZY BEE越谷,島村優花,DEEP JEWELS 50kg以下 2分2R KICKルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,7,B,loss,中澤諒香,北斗會中平道場,中澤諒香,DEEP JEWELS 50kg以下 2分2R KICKルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,8,A,win,山吹マリン,和術慧舟會AKZA,山吹マリン,DEEP JEWELS 49kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,8,B,loss,村井成美,Evermove,村井成美,DEEP JEWELS 49kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,9,A,win,あきぴ,ABLAZE八王子,あきぴ,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,kana_only
+deep-jewels-52,DEEP JEWELS,2026-02-23,9,B,loss,ちゃんりな,Ｙ＆K ACADEMY,ちゃんりな,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,kana_only
+deep-jewels-52,DEEP JEWELS,2026-02-23,10,A,loss,谷山心優,フリー,谷山心優,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,10,B,win,村松美直,ALMA FIGHT GYM PUGNUS,村松美直,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,11,A,win,せりな,JAPAN TOP TEAM,せりな,DEEP JEWELS 50kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,kana_only
+deep-jewels-52,DEEP JEWELS,2026-02-23,11,B,loss,山岸佳音,リバーサルジム立川ALPHA,山岸佳音,DEEP JEWELS 50kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-jewels-52,DEEP JEWELS,2026-02-23,12,A,loss,たから,HIDE’S KICK!,たから,DEEP JEWELSフライ級3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,kana_only
+deep-jewels-52,DEEP JEWELS,2026-02-23,12,B,win,田川真帆,IDEA ASAKUSA,田川真帆,DEEP JEWELSフライ級3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-52/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,1,A,win,海飛,和術慧舟會HEARTS,海飛,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,kaito,listed,exact,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,1,B,loss,関鉄矢,SONIC SQUAD,関鉄矢,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,2,A,loss,神田コウヤ,THE BLACK BELT JAPAN,神田コウヤ,DEEPライト 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,koya-kanda,listed,exact,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,2,B,win,山田聖真,JAPAN TOP TEAM,山田聖真,DEEPライト 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,3,A,win,三井俊希,reversal gym osaka anne,三井俊希,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,mitsui-shunki,listed,exact,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,3,B,loss,黒井海成,BRAVE GYM,黒井海成,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,4,A,loss,中務修良,NOMAD,中務修良,DEEP 55kg以下 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,4,B,win,火の鳥,BRAVEGYM,火の鳥,DEEP 55kg以下 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,hinotori,listed,exact,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,5,A,win,諏訪部哲平,IGGY HAND’S GYM,諏訪部哲平,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,suwabe-teppei,listed,exact,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,5,B,loss,黒岡裕真,和術慧舟會HEARS,黒岡裕真,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,6,A,win,御代川敏志,THE BLACK BELT JAPAN,御代川敏志,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,6,B,loss,吉田悠太郎,EVERMOVE,吉田悠太郎,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,7,A,loss,マサト・ナカムラ,レンジャージム,マサト・ナカムラ,DEEＰフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,7,B,win,武利侑都,KRAZY BEE,武利侑都,DEEＰフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,8,A,loss,ウラケン,ハイブリッドレスリング山田道場/TGFC,ウラケン,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,8,B,win,山崎弥十朗,ガスワン,山崎弥十朗,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,yamasaki-yajuro,listed,exact,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,9,A,win,平井聡一朗,フリー,平井聡一朗,DEEＰフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,9,B,loss,石井涼馬,BLACK BELT JAPAN,石井涼馬,DEEＰフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,10,A,win,西山亮翔,パラエストラ八王子,西山亮翔,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,10,B,loss,小林よしずみ,OLBET GYM,小林よしずみ,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,11,A,win,小笠原孝成,ISHITSUNA MMA,小笠原孝成,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,11,B,loss,須山豪,Roys GYM,須山豪,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,12,A,loss,菊間瑛太,Y＆K ACADEMY,菊間瑛太,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,12,B,win,今野蓮弥,PUREBRED,今野蓮弥,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,13,A,loss,Michael北見,フリー,Michael北見,DEEPストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2026-1st-round,DEEP TOKYO IMPACT,2026-02-23,13,B,win,加藤翔奏,NeighborHood,加藤翔奏,DEEPストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,1,A,win,吉田陸,SPLASH,吉田陸,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,1,B,loss,脇田仁,COMRADE,脇田仁,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,2,A,win,藤岡陸,GSB多治見,藤岡陸,DEEPライト級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,2,B,loss,真野アミル,NEXSPORTS,真野アミル,DEEPライト級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,3,A,win,加藤綾真,CLUB F3,加藤綾真,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,3,B,loss,宜野座ケビン,SPLASH,宜野座ケビン,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,4,A,win,AKIYOSHI,NEXSPORTS,AKIYOSHI,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,4,B,loss,中川内羽矢斗,COMRADE,中川内羽矢斗,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,5,A,win,田中慎一郎,グラップリングシュートボクサーズ,田中慎一郎,DEEPライト級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,5,B,loss,平澤克明,SPLASH,平澤克明,DEEPライト級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,6,A,win,熊澤バイオレンス,グラップリングシュートボクサーズ,熊澤バイオレンス,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,6,B,loss,小澤亮太,寒天ファイトスピリット,小澤亮太,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,7,A,win,細川晄希,ALIVE,細川晄希,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,7,B,loss,加藤颯,GSB多治見,加藤颯,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,8,A,win,廣瀬裕斗,マーシャルアーツクラブ中津川,廣瀬裕斗,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,8,B,loss,永井宏人,TEAM TMT,永井宏人,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,9,A,win,木之下喧壱,NEX SPORTS,木之下喧壱,DEEPライトヘビー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,9,B,loss,勇太,REBOOT,勇太,DEEPライトヘビー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,10,A,loss,大岩翔哉,戦ジム,大岩翔哉,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,10,B,win,川崎ごうる,ボンサイ柔術,川崎ごうる,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,11,A,loss,山田悠太,SPLASH,山田悠太,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,11,B,win,前田遊,クラブバーバリアン,前田遊,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,12,A,loss,出口誉,COMRADE,出口誉,DEEPライト級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,12,B,win,伊藤叶,NAGOYA MMA,伊藤叶,DEEPライト級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,13,A,loss,権藤悠太郎,NEXSPORTS,権藤悠太郎,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,13,B,win,杉村祥真,ストライキングジムアレス,杉村祥真,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,14,A,loss,内田菱牙,G.O.S MMA,内田菱牙,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,14,B,win,切嶋黎,マーシャルアーツクラブ中津川,切嶋黎,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,15,A,win,小林ゆたか,夕月堂本舗,小林ゆたか,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,15,B,loss,浅野功暉,REBOOT,浅野功暉,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,16,A,loss,石田ガリット勝也,NEXSPORTS,石田ガリット勝也,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,decorated_suspect
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,16,B,win,伊藤一輝,ボンサイ柔術,伊藤一輝,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,17,A,win,古市陸,クラブバーバリアン,古市陸,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,17,B,loss,村田和生,戦ジム,村田和生,DEEPフライ級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,18,A,loss,椿馨,NEXSPORTS,椿馨,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,18,B,win,鈴木幹也,戦ジム,鈴木幹也,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,19,A,win,福山佳祐,寒天ファイトスピリット,福山佳祐,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,19,B,loss,濱本佳樹,SPLASH,濱本佳樹,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,20,A,win,三島康貴,NEXSPORTS,三島康貴,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,20,B,loss,武山詩音,ALIVE,武山詩音,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,21,A,win,吉田翼,SPLASH,吉田翼,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,21,B,loss,高橋典斗,ボンサイ柔術,高橋典斗,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,22,A,win,森大夢,G.O.S MMA,森大夢,DEEPフライ級 3分2RアマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2026-1st-round,DEEP NAGOYA IMPACT,2026-02-23,22,B,loss,内野誠哉,COMRADE,内野誠哉,DEEPフライ級 3分2RアマチュアSルール,https://www.deep2001.com/deep-nagoya-impact-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,1,A,loss,佐々木耀,k-clann,佐々木耀,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,1,B,win,ダイヤ,FIRED UP GYM,ダイヤ,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,daiya,listed,exact,kana_only
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,2,A,win,トミー渡辺,KATANA GYM,トミー渡辺,DEEPライト級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,2,B,loss,アニンタ・アリ,FIRED UP GYM,アニンタ・アリ,DEEPライト級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,3,A,loss,ブラックタイガー,BOND GYM,ブラックタイガー,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,3,B,win,ホワイトベア,レンジャージム新宿,ホワイトベア,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,kana_only
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,4,A,loss,佐藤カナウ,KNOCK OUT クロスポイント・パラエストラ吉祥寺,佐藤カナウ,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,4,B,win,大越充悟,パラエストラ八王子,大越充悟,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,5,A,loss,佐藤照栄,パンクライズム横浜,佐藤照栄,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,5,B,win,福嶋司,パラエストラ八王子,福嶋司,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,6,A,loss,金子蒼空,FIGHTER`S FLOW,金子蒼空,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,6,B,win,横山桔平,THE BLACK BELT JAPAN,横山桔平,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,7,A,loss,佐藤修斗,JAPAN TOP TEAM,佐藤修斗,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-fight-challenge-2026-1st-round,DEEP FIGHT CHALLENGE,2026-01-23,7,B,win,ランペイジ竜太,K-Clann,ランペイジ竜太,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-fight-challenge-2026-1st-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,1,A,loss,越智晴雄,Little Giant Gym,越智晴雄,DEEPストロー級タイトルマッチ 5分3R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,1,B,win,杉山空,THE BLACK BELT JAPAN,杉山空,DEEPストロー級タイトルマッチ 5分3R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,sugiyama-sora,listed,exact,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,2,A,loss,小崎連,リバーサルジム久喜WINGS,小崎連,セミファイナル DEEPバンタム級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,kozaki-ren,listed,exact,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,2,B,win,中務太陽,BLOWS,中務太陽,セミファイナル DEEPバンタム級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,nakatsukasa-taiyo,listed,exact,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,3,A,loss,安谷屋智弘,氷ヲ刻メ／池田道場,安谷屋智弘,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,3,B,win,力也,FIGHT FARM,力也,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,rikiya,listed,exact,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,4,A,loss,松岡疾人,NEX SPORTS,松岡疾人,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,4,B,win,松井優磨,KATANA GYM,松井優磨,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,5,A,win,鈴木大晟,パラエストラ八王子,鈴木大晟,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,suzuki-taisei,listed,exact,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,5,B,loss,藤井連,FIGHTER’S FLOW,藤井連,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,6,A,loss,今村豊,POLAR GYM OSAKA,今村豊,DEEP 68kg以下 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,6,B,win,カンジ,和術慧舟會HEARTS,カンジ,DEEP 68kg以下 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,7,A,win,井上竜旗,剛毅會,井上竜旗,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,7,B,loss,野尻大輔,パラエストラ八王子,野尻大輔,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,8,A,win,仁井田右楽,JAPAN TOP TEAM,仁井田右楽,DEEP 60kg以下 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,8,B,loss,左京,レンジャージム,左京,DEEP 60kg以下 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,9,A,loss,横瀬友愛,BELVA,横瀬友愛,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,9,B,win,堀内美沙紀,FIGHT BASE都立大,堀内美沙紀,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,10,A,loss,秋元優志,JAPAN TOP TEAM,秋元優志,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,10,B,win,国分獅斗,THE BLACK BELT JAPAN,国分獅斗,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,11,A,win,高尾凌生,JAPAN TOP TEAM,高尾凌生,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,11,B,loss,菊池佳歩,IRIE BASE,菊池佳歩,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,12,A,win,佐藤聖優,JAPAN TOP TEAM,佐藤聖優,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-6th-round,DEEP TOKYO IMPACT,2025-12-14,12,B,loss,佐藤凛,KATANA GYM,佐藤凛,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,1,A,loss,高橋遼伍,KRAZY BEE,高橋遼伍,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,1,B,win,相本宗輝,ROOM,相本宗輝,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-129-impact/,2026-07-25,aimoto-kazuki,listed,exact,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,2,A,win,武田光司,TRIBE TOKYO MMA,武田光司,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-129-impact/,2026-07-25,takeda-koji,listed,exact,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,2,B,loss,奥山貴大,NEX SPORTS,奥山貴大,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,3,A,win,石司晃一,フリー,石司晃一,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-129-impact/,2026-07-25,ishizuka-koichi,listed,exact,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,3,B,loss,河村泰博,和術慧舟會AKZA,河村泰博,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,4,A,win,水野竜也,フリー,水野竜也,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,4,B,loss,稲田将,BOND GYM,稲田将,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,5,A,win,杉山廣平,THE BLACK BELT JAPAN,杉山廣平,DEEPフライ級 5分2R,https://www.deep2001.com/deep-129-impact/,2026-07-25,sugiyama-kohei,listed,exact,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,5,B,loss,橋本ユウタ,CAVE,橋本ユウタ,DEEPフライ級 5分2R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,6,A,win,高橋正親,BRAVE GYM,高橋正親,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,6,B,loss,杉野亜蓮,パラエストラ八王子,杉野亜蓮,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-129-impact/,2026-07-25,sugino-aren,listed,exact,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,7,A,win,横内三旺,Battle-Box,横内三旺,DEEPフライ級 5分2R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,7,B,loss,石原射,GRABAKA,石原射,DEEPフライ級 5分2R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,8,A,win,荒井銀二,BRAVEGYM,荒井銀二,DEEPライト級 5分2R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,8,B,loss,平石光一,PUREBRED,平石光一,DEEPライト級 5分2R,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,9,A,win,TAKUMA,JAPAN TOP TEAM,TAKUMA,DEEPメガトン級 3分2R アマチュアSルール,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-129-impact,DEEP IMPACT,2025-12-14,9,B,loss,ハチミツ大魔王,焼肉京ちゃん,ハチミツ大魔王,DEEPメガトン級 3分2R アマチュアSルール,https://www.deep2001.com/deep-129-impact/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,1,A,win,延命そら,TEAM FAUST,延命そら,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,1,B,loss,牧野滉風,柔術&amp;MMAアカデミーG-face,牧野滉風,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,2,A,loss,三村亘,パンクラス大阪稲垣組,三村亘,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,2,B,win,鈴木琢仁,ボンサイ柔術,鈴木琢仁,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,3,A,win,樹季,KING GYM KOBE,樹季,DEEP JEWELSバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,3,B,loss,鈴木”BOSS”遥,SAI-GYM,鈴木”BOSS”遥,DEEP JEWELSバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,4,A,win,堂園悠,修和館,堂園悠,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,4,B,loss,坂本岳,JAPAN TOP TEAM,坂本岳,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,5,A,win,谷岡祐樹,パラエストラ加古川,谷岡祐樹,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,5,B,loss,大空斗,パンクラス大阪稲垣組,大空斗,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,6,A,win,ステファン“スマッシュ”,フリー,ステファン“スマッシュ”,DEEPメガトン級 5分２R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,6,B,loss,大家皆,総合格闘技道場加藤,大家皆,DEEPメガトン級 5分２R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,7,A,win,山﨑鼓大,BLOWS,山﨑鼓大,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,7,B,loss,脇田仁,COMRADE,脇田仁,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,8,A,win,小川道的,柔術兄弟,小川道的,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,8,B,loss,藤田宇宙,パンクラス大阪稲垣組,藤田宇宙,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,9,A,win,福田泰暉,TEAM STAKE,福田泰暉,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,9,B,loss,田口貴規,総合格闘技Asura,田口貴規,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,10,A,win,ベンジャミン,blooM,ベンジャミン,DEEPライト級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,10,B,loss,河坂修斗,クロスポイント・パラエストラ吉祥寺,河坂修斗,DEEPライト級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,11,A,win,大澤将司,BLOWS,大澤将司,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,11,B,loss,上田拳翔,reversal gym osaka anne,上田拳翔,DEEPウェルター級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,12,A,win,木下竜馬,KING GYM KOBE,木下竜馬,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,12,B,loss,カーレッジユウキ,VICTORY GYM,カーレッジユウキ,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,13,A,win,武蔵,All My Homies,武蔵,DEEPストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,13,B,loss,上村亮馬,パラエストラ森ノ宮,上村亮馬,DEEPストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,14,A,win,廣瀬裕斗,マーシャルアーツクラブ中津川,廣瀬裕斗,DEEPフライ級 5分２R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,14,B,loss,米原剛希,パラエストラ加古川,米原剛希,DEEPフライ級 5分２R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,15,A,win,原田闘鬼,心将塾,原田闘鬼,DEEP 63kg以下 3分3R KICKルール,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,15,B,loss,丸山晃毅,VICTORY GYM,丸山晃毅,DEEP 63kg以下 3分3R KICKルール,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,16,A,win,Bobo飛鳥,blooM,Bobo飛鳥,DEEP JEWELS 64kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,16,B,loss,近藤世里菜,総合格闘技道場ARMS,近藤世里菜,DEEP JEWELS 64kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,17,A,win,澤田龍美,リバーサルジム神戸HIZUMI,澤田龍美,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,17,B,loss,石田拓己,志道場,石田拓己,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,18,A,loss,朝井啓太,ENCOUNTER,朝井啓太,DEEPフライ級 3分2RアマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,18,B,win,吉村凌仁郎,リバーサルジム神戸HIZUMI,吉村凌仁郎,DEEPフライ級 3分2RアマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,19,A,loss,佐藤勇真,KING GYM KOBE,佐藤勇真,DEEPメガトン級 3分2R アマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,19,B,win,西川将輝,ENCOUNTER,西川将輝,DEEPメガトン級 3分2R アマチュアSルール,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,20,A,loss,大西未来,トライフォース泉南,大西未来,DEEP JEWELSストロー級 3分2R アマチュアSPルール,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-5th-round,DEEP OSAKA IMPACT,2025-12-07,20,B,win,abbie,POLARGYMOSAKA,abbie,DEEP JEWELSストロー級 3分2R アマチュアSPルール,https://www.deep2001.com/deep-osaka-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,1,A,win,浜崎朱加,フリー,浜崎朱加,DEEP JEWELS 49kg以下 5分3R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,1,B,loss,イ・イェジ,TEAM aom,イ・イェジ,DEEP JEWELS 49kg以下 5分3R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,lee-yeji,listed,exact,kana_only
+deep-jewels-51,DEEP JEWELS,2025-11-23,2,A,win,パク・シウ,HAVAS,パク・シウ,DEEP JEWELS 49kg以下 5分3R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,park-siwoo,listed,exact,kana_only
+deep-jewels-51,DEEP JEWELS,2025-11-23,2,B,loss,彩綺,和術慧舟會HEARTS,彩綺,DEEP JEWELS 49kg以下 5分3R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,3,A,win,竹林エル,伊澤星花チャレンジ,竹林エル,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,3,B,loss,サラ,fightbase都立大,サラ,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,kana_only
+deep-jewels-51,DEEP JEWELS,2025-11-23,4,A,win,月井隼南,フリー,月井隼南,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,4,B,loss,SAAYA,フリー,SAAYA,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,5,A,loss,堀井かりん,クロスポイント・パラエストラ拝島,堀井かりん,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,5,B,win,岡美紀,伊澤星花チャレンジ,岡美紀,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,6,A,win,大井すず,和術慧舟會HEARTS,大井すず,DEEP JEWELSミクロ級 5分2R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,6,B,loss,小雪,京都宇治ブラジリアン柔術,小雪,DEEP JEWELSミクロ級 5分2R,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,7,A,win,あきぴ,ABLAZE八王子,あきぴ,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,kana_only
+deep-jewels-51,DEEP JEWELS,2025-11-23,7,B,loss,谷山心優,フリー,谷山心優,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,8,A,win,渡邊花美,ボンサイ柔術,渡邊花美,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,8,B,loss,村松美直,ALMA FIGHT GYM PUGNUS,村松美直,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,9,A,loss,横江明日香,リバーサルジム立川ALPHA,横江明日香,DEEP JEWELS 49kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,9,B,win,五十嵐莉子,フリー,五十嵐莉子,DEEP JEWELS 49kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-jewels-51,DEEP JEWELS,2025-11-23,10,A,loss,せりな,JAPAN TOP TEAM,せりな,DEEP JEWELS 49kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,kana_only
+deep-jewels-51,DEEP JEWELS,2025-11-23,10,B,win,和智美音,リバーサルジム立川ALPHA,和智美音,DEEP JEWELS 49kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-51/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,1,A,win,赤沢幸典,フリー,赤沢幸典,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,akazawa-yukinori,listed,exact,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,1,B,loss,Guts,リバーサルジム立川ALPHA,Guts,DEEPメガトン級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,2,A,win,阿部大治,TITAN GYM,阿部大治,セミファイナル DEEPウェルター級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,abe-daiji,listed,exact,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,2,B,loss,小林ゆたか,夕月堂本舗,小林ゆたか,セミファイナル DEEPウェルター級 5分3R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,3,A,loss,神酒龍一,HERMIT CLUB,神酒龍一,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,3,B,win,マサト・ナカムラ,レンジャージム,マサト・ナカムラ,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,4,A,win,中谷優我,BRAVE GYM,中谷優我,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,nakatani-yuga,listed,exact,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,4,B,loss,アニンタ・アリ,FIRED UP GYM,アニンタ・アリ,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,5,A,win,黒岡裕真,和術慧舟會HEARS,黒岡裕真,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,5,B,loss,湯浅帝蓮,FIGHTERS FLOW,湯浅帝蓮,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,6,A,loss,多湖力翔,NEXT SPORTS,多湖力翔,DEEPストロー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,6,B,win,知名昴海,フリー,知名昴海,DEEPストロー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,7,A,loss,キム・ミンソク,Cornerman gym,キム・ミンソク,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,7,B,win,ダイヤ,FIRED UP GYM,ダイヤ,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,daiya,listed,exact,kana_only
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,8,A,loss,山口コウタ,パラエストラ八王子,山口コウタ,DEEPバンタム 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,8,B,win,井上セナ,K-Clann,井上セナ,DEEPバンタム 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,9,A,loss,丈太,KNOCKOUTクロスポイント・パラエストラ吉祥寺,丈太,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,9,B,win,笹崎健司,マッハ道場,笹崎健司,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,10,A,win,寉岡樹記,MASTER BRIDGE/INHERIT ONENESS,寉岡樹記,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,10,B,loss,須山豪,Roys GYM,須山豪,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,11,A,win,田中悠翔,パラエストラ八王子,田中悠翔,DEEP 64kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,11,B,loss,ランボルギーニ,フリー,ランボルギーニ,DEEP 64kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,12,A,loss,池森ヨシキ,カタナジム,池森ヨシキ,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,12,B,win,松元大樹,THE BLACKBELT JAPAN,松元大樹,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,13,A,loss,上田遥斗,パラエストラ八王子,上田遥斗,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-5th-round,DEEP TOKYO IMPACT,2025-11-23,13,B,win,菊間瑛太,Y＆K ACADEMY,菊間瑛太,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/,2026-07-25,,missing,none,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,1,A,win,大原樹理,KIBAマーシャルアーツクラブ,大原樹理,メインイベント DEEPライト級暫定王者決定戦 5分3R,https://www.deep2001.com/deep-128-impact/,2026-07-25,ohara-juri,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,1,B,loss,神田コウヤ,THE BLACK BELT JAPAN,神田コウヤ,メインイベント DEEPライト級暫定王者決定戦 5分3R,https://www.deep2001.com/deep-128-impact/,2026-07-25,koya-kanda,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,2,A,win,牛久絢太郎,アメリカン・トップチーム,牛久絢太郎,セミファイナル DEEPフェザー級 5分3R,https://www.deep2001.com/deep-128-impact/,2026-07-25,ushiku-juntaro,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,2,B,loss,椿飛鳥,フリー,椿飛鳥,セミファイナル DEEPフェザー級 5分3R,https://www.deep2001.com/deep-128-impact/,2026-07-25,tsubaki-asuka,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,3,A,loss,大木良太,KRAZY BEE,大木良太,DEEPライト級 5分3R,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,3,B,win,倉本大悟,JAPAN TOP TEAM,倉本大悟,DEEPライト級 5分3R,https://www.deep2001.com/deep-128-impact/,2026-07-25,kuramoto-daigo,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,4,A,loss,北岡悟,パンクラスイズム横浜,北岡悟,DEEPライト級 5分3R,https://www.deep2001.com/deep-128-impact/,2026-07-25,kitaoka-satoru,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,4,B,win,山田聖真,JAPAN TOP TEAM,山田聖真,DEEPライト級 5分3R,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,5,A,loss,直樹,FIGHTER’S FLOW,直樹,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,naoki,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,5,B,win,三井俊希,reversal gym osaka anne,三井俊希,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,mitsui-shunki,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,6,A,loss,高野優樹,フリー,高野優樹,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,6,B,win,山本有人,リバーサルジム東京スタンドアウト,山本有人,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,yamamoto-arihito,hidden,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,7,A,win,木村琉音,K-clann,木村琉音,DEEP 59kg以下 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,7,B,loss,火の鳥,BRAVE GYM,火の鳥,DEEP 59kg以下 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,hinotori,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,8,A,win,誠悟,AACC,誠悟,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,seigo,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,8,B,loss,バッファロー,ROOM,バッファロー,DEEPメガトン級 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,kana_only
+deep-128-impact,DEEP IMPACT,2025-11-02,9,A,loss,寺崎昇龍,Fight Holic,寺崎昇龍,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,terasaki-shoryu,listed,exact,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,9,B,win,唐沢タツヤ,GRABAKA,唐沢タツヤ,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,10,A,loss,大越充悟,パラエストラ八王子,大越充悟,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,10,B,win,マイティ・saw,T・GRIP TOKYO,マイティ・saw,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,foreign
+deep-128-impact,DEEP IMPACT,2025-11-02,11,A,loss,大将,THE BLACK BELT JAPAN,大将,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,clean
+deep-128-impact,DEEP IMPACT,2025-11-02,11,B,win,金子蒼空,FIGHTER’S FLOW,金子蒼空,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-128-impact/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,1,A,win,高尾凌生,JAPAN TOP TEAM,高尾凌生,DEEP バンタム級アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,1,B,loss,小笠原孝成,ISHITSUNA MMA,小笠原孝成,DEEP バンタム級アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,2,A,win,桜井聡紀,FIGHTER’S FLOW,桜井聡紀,DEEPミドル級アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,2,B,loss,奥野充貴,BOND GYM,奥野充貴,DEEPミドル級アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,3,A,win,武田祈和,KO GYM,武田祈和,DEEPフライ級アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,3,B,loss,イトカズ・コウセイ,関谷柔術アカデミー,イトカズ・コウセイ,DEEPフライ級アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,4,A,loss,菊池創太,NeighborHood,菊池創太,DEEPストロー級アマチュアSPルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,4,B,win,小林桜太,THE BLACKBELT JAPAN,小林桜太,DEEPストロー級アマチュアSPルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,5,A,win,フェリペ・ハセヤマ,キラービーズ,フェリペ・ハセヤマ,DEEPストロー級アマチュアSPルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,5,B,loss,加藤翔奏,NeighborHood,加藤翔奏,DEEPストロー級アマチュアSPルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,6,A,win,佐藤聖優,JAPAN TOP TEAM,佐藤聖優,DEEPバンタム級アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,6,B,loss,南谷純也,BOND GYM,南谷純也,DEEPバンタム級アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,7,A,win,ドリーム★キミ,ドリームスタッフ,ドリーム★キミ,DEEPメガトン級アマチュアKICKルール1分30秒2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,7,B,loss,喪黒★福蔵,FIGHTER‘S FLOW,喪黒★福蔵,DEEPメガトン級アマチュアKICKルール1分30秒2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,8,A,loss,渡辺真央,POLAR GYM OSAKA,渡辺真央,DEEP JEWELS 49kg以下アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,8,B,win,渡邊花美,ボンサイ柔術,渡邊花美,DEEP JEWELS 49kg以下アマチュアSルール 3分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,9,A,loss,胸毛ニキ,FIGHTER‘S FLOW,胸毛ニキ,DEEPライト級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,9,B,win,KINNO,NEX SPORTS,KINNO,DEEPライト級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,10,A,win,内山拓真,ボンサイ柔術,内山拓真,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,10,B,loss,朝比奈龍希,JAPAN TOP TEAM,朝比奈龍希,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,11,A,loss,切嶋龍希,マーシャルアーツクラブ中津川,切嶋龍希,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,11,B,win,坂本岳,JAPAN TOP TEAM,坂本岳,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,12,A,win,真野アミル,NEX SPORTS,真野アミル,DEEPライト級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,12,B,loss,トミー渡部,カタナジム,トミー渡部,DEEPライト級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,13,A,win,吉田陸,SPLASH,吉田陸,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,13,B,loss,大岩翔哉,戦ジム,大岩翔哉,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,14,A,loss,伊藤一輝,ボンサイ柔術,伊藤一輝,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,14,B,win,Akiyoshi,NEX SPORTS,Akiyoshi,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,15,A,win,石井涼馬,THE BLACKBELT JAPAN,石井涼馬,DEEPストロー級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,15,B,loss,金光優真,JAWS WEST,金光優真,DEEPストロー級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,16,A,win,川崎ごうる,ボンサイ柔術,川崎ごうる,DEEPフライ級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,16,B,loss,マサムネ,BOND GYM,マサムネ,DEEPフライ級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,kana_only
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,17,A,loss,中野ハヤト,エンジョイジム,中野ハヤト,DEEPフライ級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,17,B,win,廣瀬裕斗,マーシャルアーツクラブ中津川,廣瀬裕斗,DEEPフライ級 5分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,18,A,loss,高林和真,TEAM HAMBOLT .KCC,高林和真,DEEP54kg以下KICKルール2分３R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,18,B,win,和泉直人,TenCloverGym,和泉直人,DEEP54kg以下KICKルール2分３R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,19,A,loss,WATARU,STRIKEs GYM,WATARU,DEEP68kg以下KICKルール2分3R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,19,B,win,中川北斗,TEAM TMT,中川北斗,DEEP68kg以下KICKルール2分3R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,20,A,loss,小林直貴,TenCloverGym,小林直貴,DEEP65kg以下KICKルール2分３R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,20,B,win,伊藤陸都,格闘技道場ブレイヴ,伊藤陸都,DEEP65kg以下KICKルール2分３R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,21,A,win,高山敦,ストライキングジム アレス,高山敦,DEEP56kg以下KICKルール2分３R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,21,B,loss,稲村健心,T -KIX GYM,稲村健心,DEEP56kg以下KICKルール2分３R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,22,A,loss,鈴木克彰,STRIKEs GYM,鈴木克彰,DEEP60kg以下KICKルール2分３R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,22,B,win,加藤宥希,ISHITUNA MMA,加藤宥希,DEEP60kg以下KICKルール2分３R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,23,A,loss,大川怜輝,TenCloverGym,大川怜輝,DEEP49kg以下KICKルール2分3R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,23,B,win,伊藤佑都,格闘技道場ブレイヴ,伊藤佑都,DEEP49kg以下KICKルール2分3R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,24,A,loss,鈴木柚来,TenCloverGym,鈴木柚来,DEEP70kg以下KICKルール2分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,24,B,win,望月琉偉,MtF MUGEN GYM,望月琉偉,DEEP70kg以下KICKルール2分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,25,A,loss,袴田玲,STRIKEs GYM,袴田玲,DEEP60kg以下KICKルール2分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,25,B,win,浅野劉生,格闘技道場ブレイヴ,浅野劉生,DEEP60kg以下KICKルール2分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,26,A,loss,河合奏太朗,TenCloverGym,河合奏太朗,DEEP53kg以下KICKルール2分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,26,B,win,有村至恩,MEIBUKAI,有村至恩,DEEP53kg以下KICKルール2分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,27,A,win,山本凌己,TenCloverGym,山本凌己,DEEP54kg以下KICKルール2分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-hamamatsu-impact-2025-2nd-round,DEEP HAMAMATSU IMPACT,2025-10-05,27,B,loss,児玉英志朗,格闘技道場ブレイヴ,児玉英志朗,DEEP54kg以下KICKルール2分2R,https://www.deep2001.com/deep-hamamatsu-impact-2025-2nd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,1,A,win,小崎連,リバーサルジム久喜WINGS,小崎連,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,kozaki-ren,listed,exact,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,1,B,loss,前園渓,吉田道場,前園渓,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,2,A,loss,GINJI,BLOWS,GINJI,DEEP フェザー級 5 分 2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,2,B,win,鈴木琢仁,ボンサイ柔術,鈴木琢仁,DEEP フェザー級 5 分 2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,3,A,win,虎鉄,パンクラス大阪稲垣組,虎鉄,DEEP ウェルター級 5 分 2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,3,B,loss,浅野功暉,REBOOT,浅野功暉,DEEP ウェルター級 5 分 2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,4,A,loss,大空斗,パンクラス大阪稲垣組,大空斗,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,4,B,win,時任流架,SPLASH,時任流架,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,5,A,loss,田中壱季,ENCOUNTER,田中壱季,DEEP フェザー級 5 分 2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,5,B,win,加藤綾真,CLUB F3,加藤綾真,DEEP フェザー級 5 分 2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,6,A,win,澄斗,VICTORY GYM,澄斗,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,6,B,loss,中川内羽矢斗,COMRADE,中川内羽矢斗,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,7,A,loss,太一,blooM,太一,DEEP ストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,7,B,win,武蔵,All My Homies,武蔵,DEEP ストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,8,A,loss,酒井天佑,blooM,酒井天佑,DEEP アマチュアSルール メガトン級 3分２R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,8,B,win,大家皆,総合格闘技道場加藤塾,大家皆,DEEP アマチュアSルール メガトン級 3分２R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,9,A,win,澤田龍美,リバーサルジム神戸HIZUMI,澤田龍美,DEEPアマチュアSルール フェザー級 3分2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-4th-round,DEEP OSAKA IMPACT,2025-09-21,9,B,loss,大原宇竜,パンクラス大阪,大原宇竜,DEEPアマチュアSルール フェザー級 3分2R,https://www.deep2001.com/deep-osaka-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,1,A,win,青井人,BLOWS,青井人,DEEP フェザー級 5分3R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,aoi-jin,listed,exact,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,1,B,loss,チェ・ソンヒョク,TEAM HAN CLUB,チェ・ソンヒョク,DEEP フェザー級 5分3R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,2,A,loss,栗山葵,SMOKER GYM,栗山葵,DEEP JEWELS バンタム級 5分3R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,2,B,win,樹季,フリー,樹季,DEEP JEWELS バンタム級 5分3R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,3,A,loss,山﨑鼓大,BLOWS,山﨑鼓大,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,3,B,win,矢野武蔵,パラエストラ愛媛,矢野武蔵,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,4,A,loss,瀧口脩生,総合格闘技スタジオSTYLE,瀧口脩生,DEEP フェザー級 5 分 2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,4,B,win,藤田宇宙,パンクラス大阪稲垣組,藤田宇宙,DEEP フェザー級 5 分 2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,5,A,loss,サダエ☆マヌーフ,総合格闘技道場コブラ会,サダエ☆マヌーフ,DEEP JEWELS 51kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,5,B,win,横瀬友愛,BELVA,横瀬友愛,DEEP JEWELS 51kg以下 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,6,A,win,ベンジャミン,blooM,ベンジャミン,DEEP ライト級 5 分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,kana_only
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,6,B,loss,大野“虎眼”賢良,KING GYM KOBE,大野“虎眼”賢良,DEEP ライト級 5 分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,7,A,win,松原聖也,Team FreeStyle,松原聖也,DEEP フライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,7,B,loss,前田遊,クラブバーバリアン,前田遊,DEEP フライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,8,A,win,砂田華社,TEAM AGENT,砂田華社,DEEP フライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,8,B,loss,古市陸,クラブバーバリアン,古市陸,DEEP フライ級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,9,A,win,上瀬あかり,毛利道場,上瀬あかり,DEEP JEWELS アトム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,9,B,loss,横瀬美久,BELVA,横瀬美久,DEEP JEWELS アトム級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,10,A,win,堀井かりん,クロスポイント・パラエストラ拝島,堀井かりん,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-osaka-impact-2025-3rd-round,DEEP OSAKA IMPACT,2025-09-21,10,B,loss,成本優良,POLARGYMOSAKA,成本優良,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,1,A,loss,佐藤洋一郎,KATANA GYM,佐藤洋一郎,DEEPウェルター級 5分3R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,1,B,win,ストラッサー起一,総合格闘技道場コブラ会,ストラッサー起一,DEEPウェルター級 5分3R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,strasser-kiichi,listed,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,2,A,loss,木下カラテ,和術慧舟會HEARTS,木下カラテ,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,kinoshita-karate,listed,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,2,B,win,相本宗輝,ROOM,相本宗輝,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,aimoto-kazuki,listed,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,3,A,loss,五明宏人,JAPAN TOP TEAM,五明宏人,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,gomyo-hiroto,listed,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,3,B,win,関鉄矢,SONIC SQUAD,関鉄矢,DEEPフェザー級 5分3R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,4,A,win,大島沙緒里,"リバーサルジム新宿ME,WE",大島沙緒里,DEEP JEWELS アトム級 5分3R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,oshima-saori,listed,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,4,B,loss,須田萌里,SCORPION GYM,須田萌里,DEEP JEWELS アトム級 5分3R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,suda-moeri,listed,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,5,A,win,力也,FIGHT FARM,力也,DEEP 58.5kg以下 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,rikiya,listed,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,5,B,loss,濱口奏琉,パラエストラ和泉,濱口奏琉,DEEP 58.5kg以下 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,6,A,win,郷野聡寛,リングス・ジャパン/ファイティスジムMSC,郷野聡寛,DEEP 73kg以下 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,6,B,loss,近藤有己,パンクラスイズム横浜,近藤有己,DEEP 73kg以下 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,7,A,loss,魚井フルスイング,和術慧舟會HEARTS,魚井フルスイング,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,uoi-fullswing,hidden,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,7,B,win,春日井“寒天”たけし,寒天ファイトスピリット,春日井“寒天”たけし,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,8,A,loss,中務修良,NOMAD,中務修良,DEEPストロー級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,8,B,win,杉山空,THE BLACK BELT JAPAN,杉山空,DEEPストロー級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,sugiyama-sora,listed,exact,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,9,A,loss,石塚雄馬,AACC,石塚雄馬,DEEPライト級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,9,B,win,ケンシロウ,FIGHTER’S FLOW,ケンシロウ,DEEPライト級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,kenshiro,listed,exact,kana_only
+deep-127-impact-2,DEEP IMPACT,2025-09-15,10,A,win,高橋正親,BRAVE GYM,高橋正親,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,10,B,loss,佐々木耀,k-clann,佐々木耀,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,11,A,loss,平石光一,PUREBRED,平石光一,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,11,B,win,菊川イサム,KATANA GYM,菊川イサム,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,12,A,loss,RYOTA,JAPAN TOP TEAM,RYOTA,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-127-impact-2,DEEP IMPACT,2025-09-15,12,B,win,佐藤照栄,パンクラスイズム横浜,佐藤照栄,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-127-impact-2/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,1,A,loss,富松恵美,THE BLACK BELT JAPAN,富松恵美,DEEP JEWELS 50kg以下 5分3R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,1,B,win,ケイト・ロータス,フリー,ケイト・ロータス,DEEP JEWELS 50kg以下 5分3R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,kate-lotus,listed,exact,kana_only
+deep-jewels-50,DEEP JEWELS,2025-09-07,2,A,loss,桐生祐子,FourRhombus,桐生祐子,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,2,B,win,サラ,fightbase都立大,サラ,DEEP JEWELS 49kg以下 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,kana_only
+deep-jewels-50,DEEP JEWELS,2025-09-07,3,A,loss,月井隼南,FIGHTER’S FLOW,月井隼南,DEEP JEWELS 50kg以下 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,3,B,win,SAAYA,フリー,SAAYA,DEEP JEWELS 50kg以下 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,4,A,win,ののか,FIGHTER’S FLOW,ののか,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,kana_only
+deep-jewels-50,DEEP JEWELS,2025-09-07,4,B,loss,堀内美沙紀,FIGHT BASE都立大,堀内美沙紀,DEEP JEWELS ストロー級 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,5,A,loss,きたりこ,FASCINATE FIGHT TEAM,きたりこ,DEEP JEWELS 52kg 2分3R KICKルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,kana_only
+deep-jewels-50,DEEP JEWELS,2025-09-07,5,B,win,MANAKA,GRABAKA,MANAKA,DEEP JEWELS 52kg 2分3R KICKルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,6,A,loss,谷山瞳,フリー,谷山瞳,DEEP JEWELSフェザー級 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,6,B,win,ぽちゃんZ,パラエストラ東京/レグルス池袋,ぽちゃんZ,DEEP JEWELSフェザー級 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,7,A,loss,ジャカ季美香,SONIC SQUAD,ジャカ季美香,DEEP JEWELSミクロ級 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,7,B,win,大井すず,和術慧舟會HEARTS,大井すず,DEEP JEWELSミクロ級 5分2R,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,8,A,loss,あきぴ,ABLAZE八王子,あきぴ,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,kana_only
+deep-jewels-50,DEEP JEWELS,2025-09-07,8,B,win,山吹マリン,和術慧舟會AKZA,山吹マリン,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,9,A,loss,せりな,JAPAN TOP TEAM,せりな,DEEP JEWELS 49kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,kana_only
+deep-jewels-50,DEEP JEWELS,2025-09-07,9,B,win,横江明日香,リバーサルジム立川ALPHA,横江明日香,DEEP JEWELS 49kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,10,A,win,須山ゆな,Roys GYM,須山ゆな,DEEP JEWELS 51kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,10,B,loss,ちゃんりな,Ｙ＆K ACADEMY,ちゃんりな,DEEP JEWELS 51kg以下 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,kana_only
+deep-jewels-50,DEEP JEWELS,2025-09-07,11,A,loss,和智美音,リバーサルジム立川ALPHA,和智美音,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-jewels-50,DEEP JEWELS,2025-09-07,11,B,win,谷山心優,フリー,谷山心優,DEEP JEWELSストロー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-jewels-50/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,1,A,win,橋本優大,CAVE,橋本優大,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,1,B,loss,安永吏成,IRIE BASE,安永吏成,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,2,A,loss,横内三旺,Battle-Box,横内三旺,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,2,B,win,松井優磨,KATANA GYM,松井優磨,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,3,A,win,黒井海成,BRAVE GYM,黒井海成,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,3,B,loss,丈太,KNOCKOUTクロスポイント・パラエストラ吉祥寺,丈太,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,4,A,win,山崎弥十朗,ガスワン,山崎弥十朗,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,yamasaki-yajuro,listed,exact,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,4,B,loss,アサン・ゲェイデ,ROOTSジム,アサン・ゲェイデ,DEEPライト級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,5,A,win,鈴木大晟,パラエストラ八王子,鈴木大晟,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,suzuki-taisei,listed,exact,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,5,B,loss,今村豊,POLAR GYM OSAKA,今村豊,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,6,A,loss,颯斗,神龍ワールドジム,颯斗,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,6,B,win,石原射,GRABAKA,石原射,DEEPフライ級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,7,A,loss,生田大雅,BLUE DOGGYM,生田大雅,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,7,B,win,西山亮翔,パラエストラ八王子,西山亮翔,DEEPバンタム級 5分2R,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,8,A,win,寉岡樹記,MASTER BRIDE,寉岡樹記,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,8,B,loss,大和田龍斗,GRABAKA郡山,大和田龍斗,DEEPバンタム級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,9,A,loss,菅涼星,パラエストラ八王子,菅涼星,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,9,B,win,ダイア,FIRED UP GYM,ダイア,DEEPフェザー級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,kana_only
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,10,A,loss,岸翔大,IRIE BASE,岸翔大,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-tokyo-impact-2025-4th-round,DEEP TOKYO IMPACT,2025-09-07,10,B,win,荒井夕翔,Fired UP Gym,荒井夕翔,DEEPフライ級 3分2R アマチュアSルール,https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/,2026-07-25,,missing,none,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,1,A,loss,高橋遼伍,KRAZY BEE,高橋遼伍,メインイベント DEEPフェザー級GP決勝 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,,missing,none,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,1,B,win,水野新太,フリー,水野新太,メインイベント DEEPフェザー級GP決勝 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,mizuno-shinta,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,2,A,win,村元友太郎,ALIVE,村元友太郎,セミファイナル DEEPフライ級王座決定戦 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,muramoto-yutaro,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,2,B,loss,KENTA,K-Clann,KENTA,セミファイナル DEEPフライ級王座決定戦 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,enju-kenta,listed,alias,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,3,A,loss,酒井リョウ,レンジャージム,酒井リョウ,DEEPメガトン級王座決定戦 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,sakai-ryo,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,3,B,win,大成,フリー,大成,DEEPメガトン級王座決定戦 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,nishitani-taisei,hidden,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,4,A,win,関原翔,K-PLACE,関原翔,EEP 58.0kg以下 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,sekihara-sho,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,4,B,loss,北方大地,パンクラス大阪稲垣組,北方大地,EEP 58.0kg以下 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,kitakata-daichi,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,5,A,win,神田コウヤ,THE BLACK BELT JAPAN,神田コウヤ,DEEPライト級 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,koya-kanda,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,5,B,loss,佐々木大,JAPAN TOP TEAM,佐々木大,DEEPライト級 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,sasaki-hiro,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,6,A,win,本田良介,タイガームエタイ,本田良介,DEEPフライ級 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,honda-ryosuke,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,6,B,loss,力也,FIGHT FARM,力也,DEEPフライ級 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,rikiya,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,7,A,win,平松翔,BLACK BELT JAPAN,平松翔,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,hiramatsu-sho,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,7,B,loss,諏訪部哲平,IGGY HNAD GYM,諏訪部哲平,DEEPバンタム級 5分3R,https://www.deep2001.com/deep-126-impact/,2026-07-25,suwabe-teppei,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,8,A,loss,原虎徹,CAVE,原虎徹,DEEPフライ級 5分2R,https://www.deep2001.com/deep-126-impact/,2026-07-25,,missing,none,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,8,B,win,松岡疾人,NEX SPORTS,松岡疾人,DEEPフライ級 5分2R,https://www.deep2001.com/deep-126-impact/,2026-07-25,,missing,none,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,9,A,win,杉野亜蓮,パラエストラ八王子,杉野亜蓮,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-126-impact/,2026-07-25,sugino-aren,listed,exact,clean
+deep-126-impact,DEEP IMPACT,2025-08-17,9,B,loss,中尾響,JAPAN TOP TEAM,中尾響,DEEPフェザー級 5分2R,https://www.deep2001.com/deep-126-impact/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,1,A,loss,松岡疾人,NEX SPORTS,松岡疾人,DEEP フライ級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,1,B,win,八尋大輝,ニコニコファイトクラブ,八尋大輝,DEEP フライ級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,2,A,loss,吉田陸,SPLASH,吉田陸,DEEP バンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,2,B,win,草野ガブリエル,草野道場,草野ガブリエル,DEEP バンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,3,A,win,中西哲夫,エキポセロ,中西哲夫,DEEP フライ級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,3,B,loss,廣瀬裕斗,マーシャルアーツクラブ中津川,廣瀬裕斗,DEEP フライ級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,4,A,loss,藤岡陸,GSB 多治見,藤岡陸,フェザー級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,4,B,win,加藤綾真,CLUB F3,加藤綾真,フェザー級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,5,A,loss,大岩翔哉,戦ジム,大岩翔哉,DEEP バンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,5,B,win,田口貴規,総合格闘技 阿修羅 GYM,田口貴規,DEEP バンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,6,A,win,脇田仁,COMERADE,脇田仁,バンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,6,B,loss,野木崇政,空手道禅道会駒ヶ根,野木崇政,バンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,7,A,win,浅野功暉,REBOOT,浅野功暉,DEEP 80kg 以下 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,7,B,loss,アモリン,HARVEST,アモリン,DEEP 80kg 以下 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,kana_only
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,8,A,loss,河村嘉展,NEXSPORTS,河村嘉展,DEEPライト級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,8,B,win,平澤克明,SPLASH,平澤克明,DEEPライト級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,9,A,win,髙村友晴,寒天ファイトスピリット,髙村友晴,DEEP フライ級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,9,B,loss,山田悠太,SPLASH,山田悠太,DEEP フライ級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,10,A,win,ブラックタイガー,BOND GYM,ブラックタイガー,DEEPメガトン級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,kana_only
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,10,B,loss,もも太郎,CLIMB GYM,もも太郎,DEEPメガトン級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,11,A,loss,Akiyoshi,NEXSPORTS,Akiyoshi,DEEP バンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,11,B,win,古市陸,クラブバーバリアン,古市陸,DEEP バンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,12,A,loss,福井達郎,MTKfightjapan,福井達郎,DEEPバンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,12,B,win,永井宏人,TEAM TMT,永井宏人,DEEPバンタム級 5 分 2R,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,13,A,loss,平山稔和,NEXSPORTS,平山稔和,DEEP バンタム級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,13,B,win,河野太喜,グラップリングシュートボクサーズ,河野太喜,DEEP バンタム級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,14,A,loss,熊澤愛希也,グラップリングシュートボクサーズ,熊澤愛希也,DEEPバンタム級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,14,B,win,吉田翼,SPLASH,吉田翼,DEEPバンタム級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,15,A,win,中川内羽矢斗,COMRADE,中川内羽矢斗,DEEP バンタム級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,15,B,loss,切嶋黎,マーシャルアーツクラブ中津川,切嶋黎,DEEP バンタム級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,16,A,win,谷口仁歩,NEXSPORTS,谷口仁歩,DEEPフライ級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,16,B,loss,村田和生,戦ジム,村田和生,DEEPフライ級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,17,A,win,濱本佳樹,SPLASH,濱本佳樹,DEEP フェザー級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,17,B,loss,西川玲司,NEXSPORTS,西川玲司,DEEP フェザー級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,18,A,win,大森仁,COMRADE,大森仁,DEEP ストロー級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
+deep-nagoya-impact-2025-1st-round,DEEP NAGOYA IMPACT,,18,B,loss,西村凛惺,GSB 多治見,西村凛惺,DEEP ストロー級 3 分 2R アマチュア S ルール,https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/,2026-07-25,,missing,none,clean
