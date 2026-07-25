@@ -19,7 +19,7 @@ import MnewsRatingSection from "@/components/MnewsRatingSection";
 import HeroFighterSearch from "@/components/HeroFighterSearch";
 import LiveBand from "@/components/LiveBand";
 import { computeLiveBand } from "@/lib/liveBand";
-import { startOfTodayJstMs as computeStartOfTodayJstMs } from "@/lib/eventCountdown";
+import { startOfTodayJstMs as computeStartOfTodayJstMs, toJstDateStr } from "@/lib/eventCountdown";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
@@ -155,7 +155,6 @@ export default async function HomePage() {
   // タブ固有の分岐ロジックはページ側に持たない(メディアのみソフト上限10件)。
   const originalFeedArticles = ORIGINAL_ARTICLES.map(originalArticleToFeedArticle);
   const feedUniverse = [...toFeedArticles(enrichFirstSeen(articles, firstSeenMap)), ...originalFeedArticles];
-  const jstNow = new Date(Date.now() + 9 * 3600_000);
   // 残り日数の基準(JST 0:00)は src/lib/eventCountdown.ts に一本化。
   const startOfTodayJstMs = computeStartOfTodayJstMs();
 
@@ -163,11 +162,14 @@ export default async function HomePage() {
   // (force-dynamicのためリクエスト時に毎回再計算され、クライアント時刻には
   // 依存しない)。
   const liveBandInfo = computeLiveBand(startOfTodayJstMs, upcomingEvents, EVENT_RESULTS);
-  const todayJstDateStr = `${jstNow.getUTCFullYear()}-${String(jstNow.getUTCMonth() + 1).padStart(2, "0")}-${String(jstNow.getUTCDate()).padStart(2, "0")}`;
+  const todayJstDateStr = toJstDateStr();
   // POST帯の「AIランキング本日更新」文言は、実際に本日分のバッチが反映済みの
   // 場合のみ出す(未反映なのに更新済みと読める表現は不可、§1.1)。
+  // updatedAtはUTC ISO文字列のため、単純な.slice(0,10)比較だとUTC日付と
+  // JST日付を比較する型違いになりズレる(監査#1)。toJstDateStr()でJST基準に
+  // 正規化してから比較する。
   const rankingsUpdatedToday = featherweightRankings?.updatedAt
-    ? featherweightRankings.updatedAt.slice(0, 10) === todayJstDateStr
+    ? toJstDateStr(Date.parse(featherweightRankings.updatedAt)) === todayJstDateStr
     : false;
 
   // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを

@@ -7,9 +7,12 @@ import { fetchRankings } from "@/lib/mnewsRatingData";
 import { DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { isVsPairIndexable, normalizeVsSlugs } from "@/lib/vsPairing";
+import { toJstDateStr } from "@/lib/eventCountdown";
 
 const BASE_URL = "https://www.mnews.jp";
-const TODAY = new Date().toISOString().split("T")[0];
+// JST基準の日付文字列(監査#3: 以前はnew Date().toISOString()というUTC基準で、
+// JST 0:00〜8:59台にlastModifiedが1日古くなっていた)。
+const TODAY = toJstDateStr();
 
 // data/rankings.jsonはビルド無しの日次バッチでも更新される(GitHub raw経由)ため、
 // 他のstaticRoutesと違いここだけfetchして最新のupdatedAtをlastmodに反映する
@@ -18,7 +21,8 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const rankings = await fetchRankings();
-  const rankingsUpdatedAt = Object.values(rankings)[0]?.updatedAt.slice(0, 10) ?? TODAY;
+  const anyRankingsUpdatedAt = Object.values(rankings)[0]?.updatedAt;
+  const rankingsUpdatedAt = anyRankingsUpdatedAt ? toJstDateStr(Date.parse(anyRankingsUpdatedAt)) : TODAY;
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, changeFrequency: "always", priority: 1, lastModified: TODAY },
@@ -39,12 +43,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/contact`, changeFrequency: "monthly", priority: 0.2 },
   ];
 
-  const rankingDivisionRoutes: MetadataRoute.Sitemap = PUBLISHED_DIVISIONS.map((division) => ({
-    url: `${BASE_URL}/rankings/${DIVISION_SLUG[division]}`,
-    changeFrequency: "daily",
-    priority: 0.8,
-    lastModified: rankings[DIVISION_SLUG[division]]?.updatedAt.slice(0, 10) ?? rankingsUpdatedAt,
-  }));
+  const rankingDivisionRoutes: MetadataRoute.Sitemap = PUBLISHED_DIVISIONS.map((division) => {
+    const divisionUpdatedAt = rankings[DIVISION_SLUG[division]]?.updatedAt;
+    return {
+      url: `${BASE_URL}/rankings/${DIVISION_SLUG[division]}`,
+      changeFrequency: "daily",
+      priority: 0.8,
+      lastModified: divisionUpdatedAt ? toJstDateStr(Date.parse(divisionUpdatedAt)) : rankingsUpdatedAt,
+    };
+  });
 
   // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)はサイトマップに載せない。
   const fighterRoutes: MetadataRoute.Sitemap = FIGHTERS.filter((f) => !f.hidden).map((f) => ({
