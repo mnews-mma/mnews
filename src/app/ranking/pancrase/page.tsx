@@ -6,7 +6,7 @@ import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { FIGHTERS } from "@/lib/fighters";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { pageMetadata } from "@/lib/seo";
-import { buildOfficialRankingTitle, buildRankingItemLists } from "@/lib/orgRankings";
+import { buildOfficialRankingTitle, buildOfficialRankingDescription, buildRankingItemLists } from "@/lib/orgRankings";
 
 // ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
 // no-data / hidden(needsReview) / 未照合 は名前のみ表示にする。
@@ -19,14 +19,15 @@ async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
 // cron(update-org-rankings)が data/orgRankings.json を更新→raw参照で自動反映。
 export const revalidate = 3600;
 
-// titleのみ階級数・発表ラベルで動的化(SEO: 戦績ページと同じ思想)。
-// description/OGP画像/canonicalはpageMetadataの固定値のまま変更しない。
+// title・descriptionとも階級数/階級リストで動的化(SEO: 戦績ページと同じ思想)。
+// 階級リストをハードコードすると団体側の階級構成変化でdescriptionだけが実態と
+// 乖離するため、data/orgRankings.json由来で生成する(buildOfficialRankingDescription)。
+// OGP画像/canonicalはpageMetadataの固定値のまま変更しない。
 export async function generateMetadata() {
   const { pancrase } = await fetchOrgRankings();
   return pageMetadata({
     title: buildOfficialRankingTitle("パンクラス", pancrase),
-    description:
-      "パンクラス（PANCRASE）公式ランキングを階級別に掲載。フライ級・バンタム級・フェザー級・ライト級の王者・ランカーを最新の公式発表から転載。",
+    description: buildOfficialRankingDescription("パンクラス", pancrase),
     path: "/ranking/pancrase",
   });
 }
