@@ -9,6 +9,7 @@ import { getDivisionRankingView, resolveDivisionRankingView, RANKING_DISPLAY_CAP
 import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
+import { toJstDateStr } from "@/lib/eventCountdown";
 
 // Next.jsのページセグメントconfig(revalidate)は静的解析のみでリテラル値しか
 // 認識できず、importした定数を直接代入するとビルドエラーになる
@@ -86,7 +87,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
         <h1 className="page-title">AI RIZINランキング({division})</h1>
-        {data && <div className="page-sub">最終更新: {data.updatedAt.slice(0, 10)}</div>}
+        {data && <div className="page-sub">最終更新: {toJstDateStr(Date.parse(data.updatedAt))}</div>}
       </div>
 
       <div style={{ padding: "16px 24px 8px", maxWidth: 760, fontSize: 12, color: "var(--muted)", lineHeight: 1.8 }}>
@@ -94,7 +95,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
         評価の考え方は<a href="/rankings/methodology" style={{ color: "var(--accent)" }}>ランキングについて</a>で公開しています。
         {data && (
           <span style={{ display: "block", fontSize: 10, opacity: 0.7, marginTop: 4 }}>
-            データ更新: {data.updatedAt.slice(0, 10)}
+            データ更新: {toJstDateStr(Date.parse(data.updatedAt))}
           </span>
         )}
       </div>

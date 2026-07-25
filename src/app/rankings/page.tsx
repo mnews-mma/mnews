@@ -8,6 +8,7 @@ import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsR
 import { MNEWS_DIVISIONS, DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata } from "@/lib/seo";
+import { toJstDateStr } from "@/lib/eventCountdown";
 
 // Next.jsのページセグメントconfig(revalidate)は静的解析のみでリテラル値しか
 // 認識できず、importした定数を直接代入するとビルドエラーになる
@@ -63,7 +64,7 @@ export default async function RankingsHubPage() {
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
 
   const anyDivision = Object.values(rankings)[0];
-  const updatedAt = anyDivision?.updatedAt ? anyDivision.updatedAt.slice(0, 10) : null;
+  const updatedAt = anyDivision?.updatedAt ? toJstDateStr(Date.parse(anyDivision.updatedAt)) : null;
 
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "ランキング" }];
 

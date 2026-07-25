@@ -6,6 +6,7 @@ import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsR
 import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { OG_COLORS as COLORS, SITE_URL, loadOgFonts, OG_FONT_FAMILIES, stripeTexture } from "@/lib/ogShared";
+import { toJstDateStr } from "@/lib/eventCountdown";
 
 export const runtime = "edge";
 
@@ -30,7 +31,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ division
     // (スラッグ生表示フォールバック禁止・解決失敗時は行非表示+繰り上げ)。
     const top5 = resolveDivisionRankingView(getDivisionRankingView(data), nameBySlug, 5).contenders;
     if (top5.length === 0) return fallbackRedirect();
-    const updatedAt = data.updatedAt.slice(0, 10);
+    const updatedAt = toJstDateStr(Date.parse(data.updatedAt));
     const fonts = await loadOgFonts();
 
     const img = new ImageResponse(

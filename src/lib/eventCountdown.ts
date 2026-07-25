@@ -31,3 +31,15 @@ export function daysUntilEventJstFromMidnight(dateStr: string, todayJstMs: numbe
 export function daysUntilEventJst(dateStr: string, nowMs: number = Date.now()): number {
   return daysUntilEventJstFromMidnight(dateStr, startOfTodayJstMs(nowMs));
 }
+
+// 指定時刻(既定=現在)が属する JST 暦日を "YYYY-MM-DD" で返す表示用ヘルパー。
+// 残り日数計算(daysUntilEventJst等)とは責務が別(こちらは「更新日」「本日か」
+// 表示・比較用のJST日付ラベル生成)。用途例: updatedAt(UTC ISO)をJST基準の
+// 「最終更新日」表示に揃える、sitemapのlastModifiedをJST基準にする、等。
+// nowMs には Date.parse(iso) の結果を渡せば任意のUTCタイムスタンプもJST日付
+// 文字列に変換できる。startOfTodayJstMs()と同じ+9h固定オフセット正規化を
+// 再利用しており、二重実装しない。
+export function toJstDateStr(nowMs: number = Date.now()): string {
+  const jstMidnightMs = startOfTodayJstMs(nowMs);
+  return new Date(jstMidnightMs + JST_OFFSET_MS).toISOString().slice(0, 10);
+}
