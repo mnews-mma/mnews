@@ -80,6 +80,13 @@ export function formatEventYearMonthJa(dateStr: string): string {
   return `${y}年${m}月`;
 }
 
+// 「M/D」(年・曜日・ゼロ埋めなし)。次戦句(「次戦8/11 RIZIN」等、指示書
+// followups-2026-07-26e C-2c)専用の、数字のみの短い日付表記。
+export function formatMonthDayNumeric(dateStr: string): string {
+  const [, m, d] = dateStr.split("-").map(Number);
+  return `${m}/${d}`;
+}
+
 // 大会日文字列("YYYY-MM-DD")から deltaDays 日ずらした暦日文字列を返す
 // (deltaDays=-1で前日)。純粋なカレンダー日算術のみ(時刻成分・タイムゾーンの
 // 概念が一切登場しない)ため、"今"や"JST"のオフセットには依存しない。

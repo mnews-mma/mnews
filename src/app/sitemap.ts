@@ -8,6 +8,8 @@ import { DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions"
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { isVsPairIndexable, normalizeVsSlugs } from "@/lib/vsPairing";
 import { toJstDateStr } from "@/lib/eventCountdown";
+import { findMatchupEvent } from "@/lib/events";
+import { fetchFighterRecordsGeneratedAt } from "@/lib/fighterRecordsCache";
 
 const BASE_URL = "https://www.mnews.jp";
 // JST基準の日付文字列(監査#3: 以前はnew Date().toISOString()というUTC基準で、
@@ -23,6 +25,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const rankings = await fetchRankings();
   const anyRankingsUpdatedAt = Object.values(rankings)[0]?.updatedAt;
   const rankingsUpdatedAt = anyRankingsUpdatedAt ? toJstDateStr(Date.parse(anyRankingsUpdatedAt)) : TODAY;
+  // VSルートのlastmod用(指示書followups-2026-07-26e C-2b): EVENTSには発表日
+  // (announced_at相当)フィールドが無いため、選手戦績データのバッチ生成時刻
+  // (data/fighterRecordsMeta.jsonのgeneratedAt。/fighters・/ranking/undefeated
+  // で「データ最終更新」表示に使っているのと同じ実データ)をfallbackの源にする。
+  // 取得できない場合のみ、捏造せずTODAYのまま(以前の全VSルート一律の挙動を維持)。
+  const fighterRecordsGeneratedAt = await fetchFighterRecordsGeneratedAt();
+  const fighterRecordsUpdatedAtJst = fighterRecordsGeneratedAt
+    ? toJstDateStr(Date.parse(fighterRecordsGeneratedAt))
+    : null;
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, changeFrequency: "always", priority: 1, lastModified: TODAY },
@@ -84,9 +95,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // /vs/{a}/{b} は組み合わせが選手数の二乗のオーダーで発生する(spec §4)ため、
-  // 索引許可条件(過去対戦・共通対戦相手・同一団体同一階級のいずれか)を満たす
-  // ペアのみ載せる。判定ロジックはgenerateMetadataのrobots判定と同一関数
+  // 索引許可条件(過去対戦・共通対戦相手・同一団体同一階級・実カードのいずれか)を
+  // 満たすペアのみ載せる。判定ロジックはgenerateMetadataのrobots判定と同一関数
   // (isVsPairIndexable)を共有し、二重実装しない。
+  //
+  // lastmod(指示書followups-2026-07-26e C-2b): 以前は全VSルート一律で
+  // 「実行時点の今日」を機械的に入れており、実際の更新内容と無関係な鮮度シグナルを
+  // 出し続けていた(検索エンジンにlastmod自体を信用されなくなる副作用がある)。
+  // 実カード(findMatchupEventがヒット)がある場合はそのイベント日を使う。ただし
+  // findMatchupEventはgetUpcomingEvents()(upcoming/live)のみを見るため、
+  // イベント日はほぼ常に「未来日」になる(lastmodが未来日になってはいけない制約
+  // があるため、e.date <= TODAYの場合のみ採用する。YYYY-MM-DD文字列同士の
+  // 比較なので日付として正しく大小判定できる=new Date()での再パース不要)。
+  // それ以外(未来日のイベント日、または実カードが無いペア)は、戦績データ自体の
+  // バッチ生成時刻をfallbackにする(それも取得できない場合のみTODAYで捏造を避ける)。
   const visibleFighters = await getVisibleFighters();
   const vsRoutes: MetadataRoute.Sitemap = [];
   for (let i = 0; i < visibleFighters.length; i++) {
@@ -95,12 +117,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const fB = visibleFighters[j];
       if (!isVsPairIndexable(fA, fB, fA, fB)) continue;
       const norm = normalizeVsSlugs(fA.slug, fB.slug);
+      const matchup = findMatchupEvent(fA.nameJa, fB.nameJa);
+      const eventDate = matchup?.event.date;
+      const lastModified =
+        eventDate && eventDate <= TODAY ? eventDate : (fighterRecordsUpdatedAtJst ?? TODAY);
       vsRoutes.push({
         url: `${BASE_URL}/vs/${norm.a}/${norm.b}`,
         changeFrequency: "weekly",
         priority: 0.4,
-        lastModified: TODAY,
-      });
+        lastModified,
+      } as MetadataRoute.Sitemap[number]);
     }
   }
 

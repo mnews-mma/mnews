@@ -10,7 +10,10 @@ export function normalizeVsSlugs(slugA: string, slugB: string): { a: string; b: 
   return { a: slugB, b: slugA, wasSwapped: true };
 }
 
-// noindex解除条件(spec §4): 過去対戦1回以上 / 共通対戦相手1人以上 / 同一団体かつ同一階級。
+// noindex解除条件(spec §4 + 指示書followups-2026-07-26e C-2a-1で追加):
+// 過去対戦1回以上 / 共通対戦相手1人以上 / 同一団体かつ同一階級 / 実カード(発表済みの
+// 未来イベントで対戦が組まれている)。既存3条件は削らない(追加のみ。削減可否は
+// 別判断=out/c2a-index-conditions.mdのB集合を見て人間が決める)。
 export function isVsPairIndexable(
   fighterA: Pick<Fighter, "org" | "weightClass" | "nameJa">,
   fighterB: Pick<Fighter, "org" | "weightClass" | "nameJa">,
@@ -20,6 +23,7 @@ export function isVsPairIndexable(
   if (fighterA.org === fighterB.org && fighterA.weightClass === fighterB.weightClass) return true;
   if (computeHeadToHead(entryA, fighterB.nameJa).length > 0) return true;
   if (computeCommonOpponents(entryA, entryB).length > 0) return true;
+  if (findMatchupEvent(fighterA.nameJa, fighterB.nameJa)) return true;
   return false;
 }
 

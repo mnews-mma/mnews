@@ -10,7 +10,7 @@ import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
 import { EVENT_RESULTS } from "@/lib/eventResults";
-import { findNextAppearance } from "@/lib/events";
+import { findNextAppearance, findNextFight } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { MethodButterfly, NextFightCompare } from "@/components/FighterVisuals";
@@ -60,6 +60,11 @@ export async function generateMetadata({
   // 同じhidden除外を共有する。findRankingLinkはgetDisplayRank(表示ランクヘルパー)
   // 経由=ハードコード禁止・16位以下は非表示)。
   const rankingLink = seed.hidden ? null : await findRankingLink(slug);
+  // 次戦句(指示書followups-2026-07-26e C-2c)の源。発表済み・未消化(bout確定済み、
+  // 相手未定のexpectedFightersは対象外=26dのC-1-4母数実測と対象範囲を揃える)の
+  // 次戦のみ。findNextFightは内部でgetUpcomingEvents()(status: upcoming/live)
+  // のみを見るため、「未消化」の判定もEVENTS側のstatusを単一ソースにしている。
+  const nextFight = findNextFight(fighter.nameJa);
   const metaInput = {
     nameJa: fighter.nameJa,
     nameEn: fighter.nameEn,
@@ -72,6 +77,7 @@ export async function generateMetadata({
     latestDate: fighter.history[0]?.date ?? null,
     latestEvent: fighter.history[0]?.event ?? null,
     rank: rankingLink ? { divisionName: rankingLink.divisionName, label: rankingLink.label } : null,
+    nextFight: nextFight ? { date: nextFight.event.date, orgLabel: SOURCES[nextFight.event.org]?.label ?? null } : null,
   };
   const meta = pageMetadata({
     title: buildFighterMetaTitle(metaInput),
