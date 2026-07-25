@@ -189,6 +189,48 @@ export function buildOfficialRankingTitle(
   return `${orgName}公式ランキング｜全${classCount}階級最新順位 | Mニュース`;
 }
 
+// パンクラス/修斗用description: 階級リストをdata由来で動的生成する(titleは
+// 階級数を動的に出しているのに、descriptionの階級名リストが固定文言のままだと
+// 団体側の階級構成が変わった際にdescriptionだけが嘘になるため)。出典(団体公式
+// サイトのドメイン)もOrgRankingData.sourceUrlから機械的に明記する。
+// data無し/階級0件はフォールバック(捏造ゼロ)。
+// 全角90字を目安に、階級リストが収まらない場合は末尾から間引いて
+// 「{先頭○階級}など{全体数}階級」に丸める(階級の列挙順に優先度は無いため、
+// 収録順の末尾から落とすだけで足りると判断)。
+const DESCRIPTION_MAX = 90;
+
+export function buildOfficialRankingDescription(
+  orgName: string,
+  data: OrgRankingData | null | undefined
+): string {
+  const fallback = `${orgName}公式ランキングを階級別に掲載。最新の公式発表から転載。`;
+  if (!data) return fallback;
+  const classNames = data.classes.filter((c) => c.entries.length > 0).map((c) => c.weightClass);
+  if (classNames.length === 0) return fallback;
+
+  let domain = "";
+  try {
+    domain = new URL(data.sourceUrl).hostname;
+  } catch {
+    domain = data.sourceUrl;
+  }
+  const sourcePart = domain ? `(出典: ${domain})` : "";
+
+  const assemble = (shown: string[]) => {
+    const listText =
+      shown.length < classNames.length ? `${shown.join("・")}など${classNames.length}階級` : shown.join("・");
+    return `${orgName}公式ランキングを階級別に掲載。${listText}の王者・ランカーを最新の公式発表${sourcePart}から転載。`;
+  };
+
+  let shown = classNames;
+  let desc = assemble(shown);
+  while (fullWidthLength(desc) > DESCRIPTION_MAX && shown.length > 1) {
+    shown = shown.slice(0, shown.length - 1);
+    desc = assemble(shown);
+  }
+  return desc;
+}
+
 // rankingLabelは各団体公式サイトのHTML由来の文言をそのまま転載しており、
 // 「〜発表」「〜付け」等の語尾が団体ごとに異なる(元データ・本文表示は不変、
 // この正規化はtitle生成時のみのインメモリ処理)。
