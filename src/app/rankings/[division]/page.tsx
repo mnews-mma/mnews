@@ -111,31 +111,6 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
         )}
       </div>
 
-      {/* 固有テキスト(PR-B)。表・数字だけのページに情報量を足す。
-          data/rankings.json・data/fighterRecords.json・champions.tsからの
-          機械生成のみ(src/lib/rankingsDivisionCopy.ts)。評価語・予測・
-          順位変動語は含めない(scripts/check-rankings-copy-banned-words.tsで
-          機械チェック)。 */}
-      <div style={{ padding: "0 24px 8px", maxWidth: 760, fontSize: 13, color: "var(--fg)", lineHeight: 1.9 }}>
-        <p style={{ margin: "0 0 8px" }}>{divisionCopy.definitionParagraph}</p>
-        <p style={{ margin: "0 0 8px" }}>
-          {divisionCopy.algorithmSummary.before}
-          <a href={divisionCopy.algorithmSummary.linkHref} style={{ color: "var(--accent)" }}>
-            {divisionCopy.algorithmSummary.linkText}
-          </a>
-          {divisionCopy.algorithmSummary.after}
-        </p>
-        <p style={{ margin: "0 0 8px" }}>{divisionCopy.scopeParagraph}</p>
-        {divisionCopy.championParagraph && <p style={{ margin: "0 0 8px" }}>{divisionCopy.championParagraph}</p>}
-        {divisionCopy.recentFacts.length > 0 && (
-          <ul style={{ margin: "0 0 8px", paddingLeft: 18, color: "var(--muted)", fontSize: 12 }}>
-            {divisionCopy.recentFacts.map((fact) => (
-              <li key={fact}>{fact}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-
       <div style={{ padding: "8px 24px 48px" }}>
         {!data || (view.contenders.length === 0 && !view.champion) ? (
           <p style={{ fontSize: 13, color: "var(--muted)", padding: "8px 0" }}>掲載可能な選手が揃い次第、順位を公開します。</p>
@@ -210,6 +185,34 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
           )}
         </p>
       </div>
+
+      {/* 固有テキスト(PR-B)。表の下に配置(B3-1): このページは「順位を見に
+          来る」ページであり、300〜800字を表より前に置くと目的到達までの
+          スクロールが増える。表・数字だけのページに情報量を足す目的で、表の
+          直後に解説として置く。data/rankings.json・data/fighterRecords.json・
+          champions.tsからの機械生成のみ(src/lib/rankingsDivisionCopy.ts)。
+          評価語・予測・順位変動語は含めない
+          (scripts/check-rankings-copy-banned-words.tsで機械チェック)。 */}
+      <div style={{ padding: "8px 24px 24px", maxWidth: 760, fontSize: 13, color: "var(--fg)", lineHeight: 1.9 }}>
+        <p style={{ margin: "0 0 8px" }}>{divisionCopy.definitionParagraph}</p>
+        <p style={{ margin: "0 0 8px" }}>
+          {divisionCopy.algorithmSummary.before}
+          <a href={divisionCopy.algorithmSummary.linkHref} style={{ color: "var(--accent)" }}>
+            {divisionCopy.algorithmSummary.linkText}
+          </a>
+          {divisionCopy.algorithmSummary.after}
+        </p>
+        <p style={{ margin: "0 0 8px" }}>{divisionCopy.scopeParagraph}</p>
+        {divisionCopy.championParagraph && <p style={{ margin: "0 0 8px" }}>{divisionCopy.championParagraph}</p>}
+        {divisionCopy.recentFacts.length > 0 && (
+          <ul style={{ margin: "0 0 8px", paddingLeft: 18, color: "var(--muted)", fontSize: 12 }}>
+            {divisionCopy.recentFacts.map((fact) => (
+              <li key={fact}>{fact}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+
       <Footer />
     </>
   );
