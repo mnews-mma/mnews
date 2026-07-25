@@ -14,7 +14,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: DEFAULT_TITLE,
   description: DEFAULT_DESCRIPTION,
-  icons: { icon: "/logo.png" },
   verification: {
     google: "27FkFBIjjBO1gprFMpi5nX-aMEOwVWuv_vOtWC_Udoo",
   },
