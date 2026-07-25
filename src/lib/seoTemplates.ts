@@ -2,7 +2,7 @@
 // (選手名サイズ・通称・コーナー割当と同じ「単一ソース化」原則)。
 // data/配下のデータは一切変更せず、既存フィールドの読み出し・整形のみを行う。
 import { fullWidthLength } from "./tweetDigest";
-import { toJstDateStr } from "./eventCountdown";
+import { toJstDateStr, formatEventYearMonthJa, formatDateJa } from "./eventCountdown";
 
 const FIGHTER_TITLE_MAX = 36;
 const FIGHTER_DESCRIPTION_MAX = 75;
@@ -23,11 +23,12 @@ export interface FighterMetaInput {
 }
 
 // 直近試合の一言「{YYYY年M月} {大会名}」。評価語・予測は含めない機械生成。
+// 日付文字列("YYYY-MM-DD")→「YYYY年M月」の整形はeventCountdown.tsの
+// formatEventYearMonthJa(single source)を呼ぶ。ここで独自にsplit/parseしない
+// (component側の独自ロジックが再発の温床になるため。formatJaDate削除と同じ理由)。
 function latestResultClause(input: FighterMetaInput): string | null {
   if (!input.latestDate || !input.latestEvent) return null;
-  const m = input.latestDate.match(/^(\d{4})-(\d{1,2})-/);
-  if (!m) return null;
-  return `${m[1]}年${Number(m[2])}月 ${input.latestEvent}`;
+  return `${formatEventYearMonthJa(input.latestDate)} ${input.latestEvent}`;
 }
 
 export function buildFighterTitle(input: FighterMetaInput): string {
@@ -103,26 +104,22 @@ export function buildVsTitle(nameA: string, nameB: string, matchupEventName: str
 }
 
 // updatedAt(UTC ISO文字列) → JST暦日の「YYYY年M月D日」。JST変換自体は
-// eventCountdown.tsのtoJstDateStr(single source)に委ね、ここでは表示用の
-// 整形のみ行う(ページ本文の「最終更新」表示と同じ基準に揃える・二重実装しない)。
-// 不正値はnull(埋め草を出さない)。
-export function formatJaDate(dateStr: string | null): string | null {
-  if (!dateStr) return null;
-  const ms = Date.parse(dateStr);
-  if (Number.isNaN(ms)) return null;
-  const [y, m, d] = toJstDateStr(ms).split("-").map(Number);
-  return `${y}年${m}月${d}日`;
-}
+// eventCountdown.tsのtoJstDateStr(single source)を直接呼び、暦日文字列→
+// 表示整形もeventCountdown.tsのformatDateJaを呼ぶ(ここでは独自にsplitしない。
+// component側の独自ロジックが再発の温床になるため)。不正値はnull(埋め草を
+// 出さない)。
 
 export function buildRankingsHubTitle(updatedAt: string | null): string {
-  const dateStr = formatJaDate(updatedAt);
+  const jstDate = updatedAt ? toJstDateStr(Date.parse(updatedAt)) : null;
+  const dateStr = jstDate ? formatDateJa(jstDate) : null;
   return dateStr
     ? `AI RIZINランキング｜RIZIN全階級の選手順位【${dateStr}更新】｜Mニュース`
     : `AI RIZINランキング｜RIZIN全階級の選手順位｜Mニュース`;
 }
 
 export function buildRankingsDivisionTitle(division: string, updatedAt: string | null): string {
-  const dateStr = formatJaDate(updatedAt);
+  const jstDate = updatedAt ? toJstDateStr(Date.parse(updatedAt)) : null;
+  const dateStr = jstDate ? formatDateJa(jstDate) : null;
   return dateStr
     ? `AI RIZIN${division}ランキング【${dateStr}更新】｜RIZIN選手の階級別順位｜Mニュース`
     : `AI RIZIN${division}ランキング｜RIZIN選手の階級別順位｜Mニュース`;

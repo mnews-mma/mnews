@@ -1,0 +1,505 @@
+{
+  "_readme": [
+    "このファイルはscripts/check-jst-date-bypass.tsのbaseline(ratchet)です。",
+    "手で編集しないこと。再生成: npx tsx scripts/check-jst-date-bypass.ts --write-baseline",
+    "既存項目を直した後、または新規違反をレビュー済みでgrandfatherする場合にのみ再生成すること。",
+    "新しく書いたコードの違反はbaselineに入れず先に直すこと(baselineの意味が無くなるため)。"
+  ],
+  "violations": [
+    {
+      "file": "scripts/check-h2h-invariant.ts",
+      "pattern": "local getter .getFullYear()",
+      "code": "const currentYearPrefix = `${asOf.getFullYear()}-`;"
+    },
+    {
+      "file": "scripts/check-h2h-invariant.ts",
+      "pattern": "local getter .getMonth()",
+      "code": "d.setMonth(d.getMonth() - MONOTONICITY_H2H_RECENCY_MONTHS);"
+    },
+    {
+      "file": "scripts/check-h2h-invariant.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const base = latestBoutDate || asOf.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/check-h2h-invariant.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "return d.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/check-rizin-weightclass-null.ts",
+      "pattern": "local getter .getMonth()",
+      "code": "d.setMonth(d.getMonth() - RECENT_WINDOW_MONTHS);"
+    },
+    {
+      "file": "scripts/check-rizin-weightclass-null.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const base = latestRizinMmaDate || new Date().toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/check-rizin-weightclass-null.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "return d.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/compute-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "console.log(`=== ${RATING_NAME} v${ALGORITHM_VERSION} フェザー級 (asOf=${asOf.toISOString().slice(0, 10)}) ===`);"
+    },
+    {
+      "file": "scripts/dump-ranking-p1-comparison.ts",
+      "pattern": "local getter .getFullYear()",
+      "code": "const currentYearPrefix = `${asOf.getFullYear()}-`;"
+    },
+    {
+      "file": "scripts/dump-ranking-v9-comparison.ts",
+      "pattern": "local getter .getFullYear()",
+      "code": "const currentYearPrefix = `${asOf.getFullYear()}-`;"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-01-01\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-01-01\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-06-01\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-06-01\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-06-01\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-06-01\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-07-11T00:00:00Z\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-07-11T00:00:00Z\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-07-13\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-07-13\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf = new Date(\"2026-07-17\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf1 = new Date(\"2026-01-01\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf1 = new Date(\"2026-01-01\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf2 = new Date(\"2026-01-02\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOf2 = new Date(\"2026-01-02\");"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d1 = buildDisplayEntries(states1, new Date(\"2026-07-11\"));"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d2 = buildDisplayEntries(states1, new Date(\"2027-01-01\"));"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const sameVersionResult = buildDivisionRankings(\"フェザー級\", pool, new Date(\"2026-01-02\"), prevSameVersion, null);"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const third = buildDivisionRankings(\"フェザー級\", eligible2, new Date(\"2026-01-03\"), second, null);"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const versionChangedResult = buildDivisionRankings(\"フェザー級\", pool, new Date(\"2026-01-02\"), prevOldVersion, null);"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const lastFight400daysAgo = new Date(asOf.getTime() - 400 * 86400000).toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const legacyRecentDate = new Date(asOf.getTime() - 30 * 86400000).toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const twentyMonthsAgo = new Date(asOf.getTime() - 20 * 30.44 * 86400000).toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/test-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const veryOld = new Date(asOf.getTime() - 5 * 365 * 86400000).toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/update-mnews-rating.ts",
+      "pattern": "local getter .getFullYear()",
+      "code": "const currentYearPrefix = `${asOf.getFullYear()}-`;"
+    },
+    {
+      "file": "scripts/update-mnews-rating.ts",
+      "pattern": "local getter .getMonth()",
+      "code": "d.setMonth(d.getMonth() - MONOTONICITY_H2H_RECENCY_MONTHS);"
+    },
+    {
+      "file": "scripts/update-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "console.log(`除外warning: ${warnings.length}件 / アーカイブ保存: ${changed ? \"あり(\" + asOf.toISOString().slice(0, 10) + \")\" : \"なし(変動なし)\"}`);"
+    },
+    {
+      "file": "scripts/update-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const base = latestBoutDate || asOf.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/update-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const dateKey = asOf.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/update-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const todayJst = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/update-mnews-rating.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "return d.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "scripts/update-rizin-records.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "fetchedDate: new Date().toISOString().slice(0, 10),"
+    },
+    {
+      "file": "src/app/api/cron/countdown-post/route.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "return new Date(Date.now() + 9 * 3600_000 + 86400_000).toISOString().slice(0, 10);"
+    },
+    {
+      "file": "src/app/api/og/digest/route.tsx",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(dateStr);"
+    },
+    {
+      "file": "src/app/api/og/digest/route.tsx",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const dayStart = new Date(`${dateStr}T00:00:00+09:00`).getTime();"
+    },
+    {
+      "file": "src/app/api/og/digest/route.tsx",
+      "pattern": "local getter .getDate()",
+      "code": "const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;"
+    },
+    {
+      "file": "src/app/api/og/digest/route.tsx",
+      "pattern": "local getter .getFullYear()",
+      "code": "const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;"
+    },
+    {
+      "file": "src/app/api/og/digest/route.tsx",
+      "pattern": "local getter .getMonth()",
+      "code": "const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;"
+    },
+    {
+      "file": "src/app/api/og/event-card/[slug]/route.tsx",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(event.date);"
+    },
+    {
+      "file": "src/app/api/og/event-card/[slug]/route.tsx",
+      "pattern": "local getter .getDate()",
+      "code": "const dateLabel = `${d.getMonth() + 1}/${d.getDate()}${event.startTime ? ` ${event.startTime}〜` : \"\"}`;"
+    },
+    {
+      "file": "src/app/api/og/event-card/[slug]/route.tsx",
+      "pattern": "local getter .getMonth()",
+      "code": "const dateLabel = `${d.getMonth() + 1}/${d.getDate()}${event.startTime ? ` ${event.startTime}〜` : \"\"}`;"
+    },
+    {
+      "file": "src/app/api/og/event-result/[slug]/route.tsx",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(event.date);"
+    },
+    {
+      "file": "src/app/api/og/event-result/[slug]/route.tsx",
+      "pattern": "local getter .getDate()",
+      "code": "const dateLabel = `${d.getMonth() + 1}/${d.getDate()}`;"
+    },
+    {
+      "file": "src/app/api/og/event-result/[slug]/route.tsx",
+      "pattern": "local getter .getMonth()",
+      "code": "const dateLabel = `${d.getMonth() + 1}/${d.getDate()}`;"
+    },
+    {
+      "file": "src/app/api/og/result/route.tsx",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(event.date);"
+    },
+    {
+      "file": "src/app/api/og/result/route.tsx",
+      "pattern": "local getter .getDate()",
+      "code": "const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;"
+    },
+    {
+      "file": "src/app/api/og/result/route.tsx",
+      "pattern": "local getter .getFullYear()",
+      "code": "const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;"
+    },
+    {
+      "file": "src/app/api/og/result/route.tsx",
+      "pattern": "local getter .getMonth()",
+      "code": "const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;"
+    },
+    {
+      "file": "src/app/events/[slug]/page.tsx",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(dateStr);"
+    },
+    {
+      "file": "src/app/events/[slug]/page.tsx",
+      "pattern": "local getter .getDate()",
+      "code": "return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;"
+    },
+    {
+      "file": "src/app/events/[slug]/page.tsx",
+      "pattern": "local getter .getDay()",
+      "code": "return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;"
+    },
+    {
+      "file": "src/app/events/[slug]/page.tsx",
+      "pattern": "local getter .getFullYear()",
+      "code": "return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;"
+    },
+    {
+      "file": "src/app/events/[slug]/page.tsx",
+      "pattern": "local getter .getMonth()",
+      "code": "return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;"
+    },
+    {
+      "file": "src/components/DataFreshness.tsx",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const dateStr = jst.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "src/components/UnifiedFeed.tsx",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "return new Date(new Date(iso).getTime() + 9 * 3600_000).toISOString().slice(0, 10);"
+    },
+    {
+      "file": "src/lib/eventResults.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(event.date);"
+    },
+    {
+      "file": "src/lib/eventResults.ts",
+      "pattern": "local getter .getDate()",
+      "code": "const dateJa = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;"
+    },
+    {
+      "file": "src/lib/eventResults.ts",
+      "pattern": "local getter .getFullYear()",
+      "code": "const dateJa = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;"
+    },
+    {
+      "file": "src/lib/eventResults.ts",
+      "pattern": "local getter .getMonth()",
+      "code": "const dateJa = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;"
+    },
+    {
+      "file": "src/lib/feeds/aggregate.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(`${dateStr}+09:00`);"
+    },
+    {
+      "file": "src/lib/feeds/aggregate.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(dateStr);"
+    },
+    {
+      "file": "src/lib/feeds/aggregate.ts",
+      "pattern": "local getter .getFullYear()",
+      "code": "let year = new Date().getFullYear();"
+    },
+    {
+      "file": "src/lib/feeds/wikipedia.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "records.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());"
+    },
+    {
+      "file": "src/lib/feeds/wikipedia.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "records.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());"
+    },
+    {
+      "file": "src/lib/feeds/wikipedia.ts",
+      "pattern": "regex date decomposition",
+      "code": "const dotted = raw.match(/\\{\\{dts\\|(\\d{4})\\.(\\d{1,2})\\.(\\d{1,2})/i);"
+    },
+    {
+      "file": "src/lib/feeds/wikipedia.ts",
+      "pattern": "regex date decomposition",
+      "code": "const m = cleanWikiMarkup(raw).match(/(\\d{4})年(\\d{1,2})月(\\d{1,2})日/);"
+    },
+    {
+      "file": "src/lib/feeds/wikipedia.ts",
+      "pattern": "regex date decomposition",
+      "code": "const m = stripInvisible(birthRaw).match(/\\{\\{生年月日と年齢\\|(\\d{4})\\|(\\d{1,2})\\|(\\d{1,2})/);"
+    },
+    {
+      "file": "src/lib/feeds/wikipedia.ts",
+      "pattern": "regex date decomposition",
+      "code": "const piped = raw.match(/\\{\\{dts\\|(\\d{4})\\|([A-Za-z0-9]+)\\|(\\d{1,2})/i);"
+    },
+    {
+      "file": "src/lib/mnewsRating/divisions.ts",
+      "pattern": "date string split(\"-\")",
+      "code": "const [y, m, d] = dateStr.split(\"-\").map(Number);"
+    },
+    {
+      "file": "src/lib/mnewsRating/eligibilityRules.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const asOfDate = new Date(`${asOfDateStr}T00:00:00Z`);"
+    },
+    {
+      "file": "src/lib/mnewsRating/eligibilityRules.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const gapMonths = (new Date(sorted[i].date).getTime() - new Date(sorted[i - 1].date).getTime()) / (30.44 * 86400000);"
+    },
+    {
+      "file": "src/lib/mnewsRating/eligibilityRules.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const gapMonths = (new Date(sorted[i].date).getTime() - new Date(sorted[i - 1].date).getTime()) / (30.44 * 86400000);"
+    },
+    {
+      "file": "src/lib/mnewsRating/engine.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const ageMonths = (opt.asOf.getTime() - new Date(boutDate).getTime()) / (1000 * 60 * 60 * 24 * 30.4375);"
+    },
+    {
+      "file": "src/lib/mnewsRating/engine.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const lastMs = new Date(lastFightDate).getTime();"
+    },
+    {
+      "file": "src/lib/mnewsRating/engine.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const monthsSince = (asOf.getTime() - new Date(state.lastFightDate).getTime()) / (30.44 * 86400000);"
+    },
+    {
+      "file": "src/lib/mnewsRating/engine.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const asOfKey = asOf.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "src/lib/mnewsRating/monotonicity.ts",
+      "pattern": "local getter .getDate()",
+      "code": "cutoff.setDate(cutoff.getDate() - recentWindowDays);"
+    },
+    {
+      "file": "src/lib/mnewsRating/monotonicity.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "const cutoffStr = cutoff.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "src/lib/mnewsRating/rankAttribution.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(prevLatestBoutDate);"
+    },
+    {
+      "file": "src/lib/mnewsRating/rankAttribution.ts",
+      "pattern": "local getter .getMonth()",
+      "code": "d.setMonth(d.getMonth() - recencyMonths);"
+    },
+    {
+      "file": "src/lib/mnewsRating/rankAttribution.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "return d.toISOString().slice(0, 10);"
+    },
+    {
+      "file": "src/lib/orgRankings.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "fetchedDate: new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10),"
+    },
+    {
+      "file": "src/lib/orgRankings.ts",
+      "pattern": "toISOString().slice(0,10)",
+      "code": "fetchedDate: new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10),"
+    },
+    {
+      "file": "src/lib/xPost.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(dateStr);"
+    },
+    {
+      "file": "src/lib/xPost.ts",
+      "pattern": "date-only string passed to Date constructor",
+      "code": "const d = new Date(opts.weighInDate);"
+    },
+    {
+      "file": "src/lib/xPost.ts",
+      "pattern": "local getter .getDate()",
+      "code": "const dateLabel = `${d.getMonth() + 1}/${d.getDate()}`;"
+    },
+    {
+      "file": "src/lib/xPost.ts",
+      "pattern": "local getter .getDate()",
+      "code": "return `${d.getMonth() + 1}/${d.getDate()}`;"
+    },
+    {
+      "file": "src/lib/xPost.ts",
+      "pattern": "local getter .getMonth()",
+      "code": "const dateLabel = `${d.getMonth() + 1}/${d.getDate()}`;"
+    },
+    {
+      "file": "src/lib/xPost.ts",
+      "pattern": "local getter .getMonth()",
+      "code": "return `${d.getMonth() + 1}/${d.getDate()}`;"
+    }
+  ]
+}
