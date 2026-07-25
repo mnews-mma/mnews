@@ -1,4 +1,5 @@
 import { FightRecord } from "../fighters";
+import { toJstDateStr } from "../eventCountdown";
 
 const FETCH_TIMEOUT_MS = 8000;
 const REVALIDATE_SECONDS = 86400; // Wikipedia data changes slowly; refresh daily
@@ -169,6 +170,19 @@ function extractField(wikitext: string, field: string): string | null {
   return value || null;
 }
 
+// 生年月日(Y/M/D)から年齢を算出する。「今日」はJST暦日として扱う
+// (toJstDateStr()。マシンtz非依存)。誕生日・今日とも「今」を含まない
+// 暦日の数値同士で比較するだけで済み、Dateオブジェクトのローカルgetterには
+// 一切頼らない(監査#5: 以前はUTC暦日の「今日」で比較しており、誕生日
+// 当日のJST 0:00〜9:00台に年齢が1少なく出ていた)。
+export function calcAgeJst(birthYear: number, birthMonth: number, birthDay: number, nowMs: number = Date.now()): number {
+  const [ty, tm, td] = toJstDateStr(nowMs).split("-").map(Number);
+  let age = ty - birthYear;
+  const hasHadBirthdayThisYear = tm > birthMonth || (tm === birthMonth && td >= birthDay);
+  if (!hasHadBirthdayThisYear) age--;
+  return age;
+}
+
 function parseBirthDate(rawInput: string): { iso: string; age: number } | null {
   const raw = stripInvisible(rawInput);
   const templateMatch = raw.match(/\{\{birth date and age\|([^}]*)\}\}/i);
@@ -184,13 +198,7 @@ function parseBirthDate(rawInput: string): { iso: string; age: number } | null {
   const year = Number(y);
   const month = Number(mo);
   const day = Number(d);
-  const birth = new Date(Date.UTC(year, month - 1, day));
-  const now = new Date();
-  let age = now.getUTCFullYear() - birth.getUTCFullYear();
-  const hasHadBirthdayThisYear =
-    now.getUTCMonth() > birth.getUTCMonth() ||
-    (now.getUTCMonth() === birth.getUTCMonth() && now.getUTCDate() >= birth.getUTCDate());
-  if (!hasHadBirthdayThisYear) age--;
+  const age = calcAgeJst(year, month, day);
   return { iso: `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`, age };
 }
 
@@ -523,14 +531,7 @@ export function parseInfoboxJa(wikitext: string): WikiInfobox {
     const m = stripInvisible(birthRaw).match(/\{\{生年月日と年齢\|(\d{4})\|(\d{1,2})\|(\d{1,2})/);
     if (m) {
       const [, y, mo, d] = m;
-      const birth = new Date(Date.UTC(Number(y), Number(mo) - 1, Number(d)));
-      const now = new Date();
-      let age = now.getUTCFullYear() - birth.getUTCFullYear();
-      const hadBirthday =
-        now.getUTCMonth() > birth.getUTCMonth() ||
-        (now.getUTCMonth() === birth.getUTCMonth() && now.getUTCDate() >= birth.getUTCDate());
-      if (!hadBirthday) age--;
-      result.age = age;
+      result.age = calcAgeJst(Number(y), Number(mo), Number(d));
     }
   }
 
