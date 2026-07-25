@@ -16,6 +16,7 @@
     "test:future-history-filter": "tsx scripts/test-future-history-filter.ts",
     "test:calc-age-jst": "tsx scripts/test-calc-age-jst.ts",
     "test:digest-date": "tsx scripts/test-digest-date.ts",
+    "check:jst-date-bypass": "tsx scripts/check-jst-date-bypass.ts",
     "build": "npm run check:fighter-records && npm run check:revalidate-literal && npm run check:rankings-slugs && npm run check:event-namesize && npm run check:rizin-weightclass && npm run check:dream-vs-namesize && npm run test:event-countdown && npm run test:jst-date-str && npm run test:event-date-format && npm run test:future-history-filter && npm run test:calc-age-jst && npm run test:digest-date && next build",
     "test:mnews-rating": "tsx scripts/test-mnews-rating.ts",
     "mrating:compute": "tsx scripts/compute-mnews-rating.ts",

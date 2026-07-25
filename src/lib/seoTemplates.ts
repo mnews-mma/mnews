@@ -103,26 +103,24 @@ export function buildVsTitle(nameA: string, nameB: string, matchupEventName: str
 }
 
 // updatedAt(UTC ISO文字列) → JST暦日の「YYYY年M月D日」。JST変換自体は
-// eventCountdown.tsのtoJstDateStr(single source)に委ね、ここでは表示用の
-// 整形のみ行う(ページ本文の「最終更新」表示と同じ基準に揃える・二重実装しない)。
-// 不正値はnull(埋め草を出さない)。
-export function formatJaDate(dateStr: string | null): string | null {
-  if (!dateStr) return null;
-  const ms = Date.parse(dateStr);
-  if (Number.isNaN(ms)) return null;
-  const [y, m, d] = toJstDateStr(ms).split("-").map(Number);
-  return `${y}年${m}月${d}日`;
-}
+// eventCountdown.tsのtoJstDateStr(single source)を直接呼び、ここでは
+// 解決済みの暦日文字列("YYYY-MM-DD")を punctuation 整形するだけ(tz概念を
+// 含む処理を独自ラッパーに切り出さない。フェーズ2-Aが/rankings系で確立した
+// 呼び方と同じ)。不正値はnull(埋め草を出さない)。
 
 export function buildRankingsHubTitle(updatedAt: string | null): string {
-  const dateStr = formatJaDate(updatedAt);
+  const jstDate = updatedAt ? toJstDateStr(Date.parse(updatedAt)) : null;
+  const [y, m, d] = jstDate ? jstDate.split("-").map(Number) : [];
+  const dateStr = jstDate ? `${y}年${m}月${d}日` : null;
   return dateStr
     ? `AI RIZINランキング｜RIZIN全階級の選手順位【${dateStr}更新】｜Mニュース`
     : `AI RIZINランキング｜RIZIN全階級の選手順位｜Mニュース`;
 }
 
 export function buildRankingsDivisionTitle(division: string, updatedAt: string | null): string {
-  const dateStr = formatJaDate(updatedAt);
+  const jstDate = updatedAt ? toJstDateStr(Date.parse(updatedAt)) : null;
+  const [y, m, d] = jstDate ? jstDate.split("-").map(Number) : [];
+  const dateStr = jstDate ? `${y}年${m}月${d}日` : null;
   return dateStr
     ? `AI RIZIN${division}ランキング【${dateStr}更新】｜RIZIN選手の階級別順位｜Mニュース`
     : `AI RIZIN${division}ランキング｜RIZIN選手の階級別順位｜Mニュース`;
