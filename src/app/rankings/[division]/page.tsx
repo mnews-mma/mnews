@@ -5,12 +5,14 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
+import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import { getDivisionRankingView, resolveDivisionRankingView, RANKING_DISPLAY_CAP } from "@/lib/mnewsRating/divisionRankingView";
 import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { toJstDateStr } from "@/lib/eventCountdown";
 import { buildRankingsDivisionTitle } from "@/lib/seoTemplates";
+import { buildDivisionCopy } from "@/lib/rankingsDivisionCopy";
 
 // Next.jsのページセグメントconfig(revalidate)は静的解析のみでリテラル値しか
 // 認識できず、importした定数を直接代入するとビルドエラーになる
@@ -57,6 +59,11 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
   // topNを適用するため、この1回のスライスがgetDisplayRankを全件に個別適用
   // するのと同じ結果になる)。
   const view = resolveDivisionRankingView(getDivisionRankingView(data), nameBySlug, RANKING_DISPLAY_CAP);
+  // 固有テキスト(PR-B)は上位5名の事実を使う。RANKING_DISPLAY_CAP(=15)は常に
+  // 5以上のため、表と同じviewをそのまま渡せば足りる(buildDivisionCopy側で
+  // 先頭5件のみ使用)。
+  const fighterRecords = await fetchFighterRecords();
+  const divisionCopy = buildDivisionCopy(division, view, fighterRecords);
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },
@@ -101,6 +108,31 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
           <span style={{ display: "block", fontSize: 10, opacity: 0.7, marginTop: 4 }}>
             データ更新: {toJstDateStr(Date.parse(data.updatedAt))}
           </span>
+        )}
+      </div>
+
+      {/* 固有テキスト(PR-B)。表・数字だけのページに情報量を足す。
+          data/rankings.json・data/fighterRecords.json・champions.tsからの
+          機械生成のみ(src/lib/rankingsDivisionCopy.ts)。評価語・予測・
+          順位変動語は含めない(scripts/check-rankings-copy-banned-words.tsで
+          機械チェック)。 */}
+      <div style={{ padding: "0 24px 8px", maxWidth: 760, fontSize: 13, color: "var(--fg)", lineHeight: 1.9 }}>
+        <p style={{ margin: "0 0 8px" }}>{divisionCopy.definitionParagraph}</p>
+        <p style={{ margin: "0 0 8px" }}>
+          {divisionCopy.algorithmSummary.before}
+          <a href={divisionCopy.algorithmSummary.linkHref} style={{ color: "var(--accent)" }}>
+            {divisionCopy.algorithmSummary.linkText}
+          </a>
+          {divisionCopy.algorithmSummary.after}
+        </p>
+        <p style={{ margin: "0 0 8px" }}>{divisionCopy.scopeParagraph}</p>
+        {divisionCopy.championParagraph && <p style={{ margin: "0 0 8px" }}>{divisionCopy.championParagraph}</p>}
+        {divisionCopy.recentFacts.length > 0 && (
+          <ul style={{ margin: "0 0 8px", paddingLeft: 18, color: "var(--muted)", fontSize: 12 }}>
+            {divisionCopy.recentFacts.map((fact) => (
+              <li key={fact}>{fact}</li>
+            ))}
+          </ul>
         )}
       </div>
 
