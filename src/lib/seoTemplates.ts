@@ -5,6 +5,7 @@ import { fullWidthLength } from "./tweetDigest";
 import { toJstDateStr } from "./eventCountdown";
 
 const FIGHTER_TITLE_MAX = 36;
+const FIGHTER_DESCRIPTION_MAX = 75;
 
 export interface FighterMetaInput {
   nameJa: string;
@@ -58,19 +59,39 @@ export function buildFighterTitle(input: FighterMetaInput): string {
   return title;
 }
 
-export function buildFighterDescription(input: FighterMetaInput): string {
-  const altName = input.nameEn && input.nameEn !== input.nameJa ? `（${input.nameEn}）` : "";
+function assembleDescription(
+  input: FighterMetaInput,
+  opts: { includeAlt: boolean; includeOrg: boolean; includeRank: boolean }
+): string {
+  const altName = opts.includeAlt && input.nameEn && input.nameEn !== input.nameJa ? `（${input.nameEn}）` : "";
   // 16位以下(表示ランクヘルパーの戻り値がnull)の選手には付けない。
-  const rankClause = input.rank
+  const rankClause = opts.includeRank && input.rank
     ? input.rank.label === "王者"
       ? `AI RIZIN${input.rank.divisionName}王者。`
       : `AI RIZIN${input.rank.divisionName}ランキング${input.rank.label}位。`
     : "";
+  const orgClause = opts.includeOrg ? `${input.orgLabel}所属。` : "";
 
   if (input.noRecordData) {
-    return `${rankClause}${input.nameJa}${altName}のプロフィールを掲載。${input.orgLabel}所属。`;
+    return `${rankClause}${input.nameJa}${altName}のプロフィールを掲載。${orgClause}`;
   }
-  return `${rankClause}${input.nameJa}${altName}の戦績・全試合結果・決着方法の内訳をデータベースで掲載。通算${input.wins}勝${input.losses}敗${input.draws}分。${input.orgLabel}所属。`;
+  return `${rankClause}${input.nameJa}${altName}の戦績・全試合結果・決着方法の内訳をデータベースで掲載。通算${input.wins}勝${input.losses}敗${input.draws}分。${orgClause}`;
+}
+
+export function buildFighterDescription(input: FighterMetaInput): string {
+  // 60-75字目標。超過時は末尾から句単位で落とす(英字別表記 → 所属句 → ランク句の順。
+  // 選手名・本文(戦績・全試合結果の説明)・戦績数字は必ず残す)。
+  let desc = assembleDescription(input, { includeAlt: true, includeOrg: true, includeRank: true });
+  if (fullWidthLength(desc) > FIGHTER_DESCRIPTION_MAX) {
+    desc = assembleDescription(input, { includeAlt: false, includeOrg: true, includeRank: true });
+  }
+  if (fullWidthLength(desc) > FIGHTER_DESCRIPTION_MAX) {
+    desc = assembleDescription(input, { includeAlt: false, includeOrg: false, includeRank: true });
+  }
+  if (fullWidthLength(desc) > FIGHTER_DESCRIPTION_MAX) {
+    desc = assembleDescription(input, { includeAlt: false, includeOrg: false, includeRank: false });
+  }
+  return desc;
 }
 
 // 実カード(findMatchupEvent一致)/非実カードでtitleの意図(検索意図=カード情報)を
