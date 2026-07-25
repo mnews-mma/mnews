@@ -2,7 +2,7 @@
 // 序列はmnewsが作らず団体公式の値をそのまま転載。対象は男子(ストロー〜ミドル)+
 // 女子の該当階級のみ(修斗の環太平洋ランキングのような重複/対象外区分はスキップ)。
 import { FIGHTERS } from "./fighters";
-import { rankSortKey } from "./weightClasses";
+import { rankSortKey, sortByWeightClass } from "./weightClasses";
 import { fullWidthLength } from "./tweetDigest";
 import { SITE_URL } from "./seo";
 
@@ -187,6 +187,37 @@ export function buildOfficialRankingTitle(
 
   // 60字超過時は「・${発表ラベル}」部分から先に削る(団体名・「公式ランキング」・階級数は必ず残す)。
   return `${orgName}公式ランキング｜全${classCount}階級最新順位 | Mニュース`;
+}
+
+// パンクラス/修斗用: description内の階級リストを実データ(data.classes)から生成する
+// (指示書PR-I I2-3)。titleは既にbuildOfficialRankingTitleで階級数を動的化しているが、
+// descriptionは階級名を固定4つのハードコードのままだったため、公式の階級構成が変わると
+// 「titleは全10階級と言っているのにdescriptionは4階級のまま」という不整合(捏造ではないが
+// 実態と乖離した表示)が起きていた。DEEP(champions.tsの静的スナップショット)は対象外
+// (呼び出し側で分岐する。無理に動的化しない)。
+//
+// 省略ルール: budgetCharsを超える手前まで階級名を「・」区切りで先頭から積み、超える直前で
+// 打ち切って「ほか${残り数}階級」を付ける(全階級が収まる場合は付けない)。表示順は
+// OrgRankingViewと同じsortByWeightClass(既存の共有ソート関数、二重実装しない)。
+export function buildOfficialRankingWeightClassList(data: OrgRankingData, budgetChars: number): string {
+  const active = data.classes.filter((c) => c.entries.length > 0);
+  const sorted = sortByWeightClass(active, (c) => c.weightClass);
+  const labels = sorted.map((c) => c.weightClass);
+  if (labels.length === 0) return "";
+
+  let included: string[] = [];
+  for (let i = 0; i < labels.length; i++) {
+    const candidateLabels = [...included, labels[i]];
+    const remaining = labels.length - candidateLabels.length;
+    const candidateText = remaining > 0 ? `${candidateLabels.join("・")}ほか${remaining}階級` : candidateLabels.join("・");
+    if (fullWidthLength(candidateText) > budgetChars) break;
+    included = candidateLabels;
+  }
+  // 1階級も収まらない極端なケースの安全側フォールバック(空文字より階級数のみ出す)。
+  if (included.length === 0) return `全${labels.length}階級`;
+
+  const remaining = labels.length - included.length;
+  return remaining > 0 ? `${included.join("・")}ほか${remaining}階級` : included.join("・");
 }
 
 // rankingLabelは各団体公式サイトのHTML由来の文言をそのまま転載しており、
