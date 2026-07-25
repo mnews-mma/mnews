@@ -1,15 +1,23 @@
-// デプロイ前ゲート: JST日付計算の唯一の実装(src/lib/eventCountdown.ts)を
-// 迂回する新規コードを検出する。
+// デプロイ前ゲート(baseline/ratchet方式): JST日付計算の唯一の実装
+// (src/lib/eventCountdown.ts)を迂回する新規コードを検出する。
 //
 // 背景(JSTズレ監査 フェーズ3): フェーズ2-AでtoJstDateStrへの一本化・境界5ケース
 // のTZ3種テストをbuildゲートに入れたが、PR-Aは同じ穴(日付の素朴なパース)を
-// 再生産した。既存テストは「ヘルパーが正しいか」しか検証せず、ヘルパーを迂回した
-// 新規コードは検出しない。監査はある時点のスイープであり、並行ブランチは対象外
-// だった。境界ケースを増やすのではなく、迂回そのものをbuildで落とす
-// (フォントサイズで3回再発した後に入れたfighterNameSize直呼び検出と同じ形。
-// check-event-namesize-override.ts参照)。
+// 再生産した。既存テストは「ヘルパーが正しいか」を検証するもので、ヘルパーを
+// 迂回した新規コードは検出しない。境界ケースを増やすのではなく、迂回そのものを
+// buildで落とす(フォントサイズで3回再発した後に入れたfighterNameSize直呼び
+// 検出と同じ形。check-event-namesize-override.ts参照)。
 //
-// 検出対象(いずれもeventCountdown.ts本体と既存の日付テストの外で使われたら違反):
+// baseline方式にした理由: 初回スキャン時点で既存コードに98件の該当があった
+// (大半はPR-Aと無関係な既存コード)。全件を一括で直す/allowlistに入れるのは
+// 人間判断が要る一方、ゲート自体を無効のまま放置すると「新規の迂回コードの
+// 追加」という当の再発を何も防げない。そこで既存98件はbaseline(scripts/
+// jst-date-bypass-baseline.json)にスナップショットとして記録し、baselineに
+// 無い新規違反のみでbuildを落とす(ratchet)。既存分はbaselineから1件ずつ
+// 減らしていける。
+//
+// 検出対象(いずれもeventCountdown.ts本体と既存の日付テストの外で使われたら
+// 違反候補。baselineに載っていれば通過、載っていなければbuild失敗):
 //   1. date-only文字列のnew Date("YYYY-MM-DD")パース
 //   2. .toISOString().split("T") / .toISOString().slice(0,10) によるタイムスタンプ
 //      からの日付抽出
@@ -17,9 +25,13 @@
 //   4. getFullYear()/getMonth()/getDate()/getDay() などローカルgetterの直呼び
 //      (getUTCXxx は対象外)
 //
-// 自動修正はしない(検出・停止・ログのみ)。allowlistに入れるか実装を直すかは
-// 人間判断。
-// 実行: npx tsx scripts/check-jst-date-bypass.ts
+// 運用:
+//   通常実行:            npx tsx scripts/check-jst-date-bypass.ts
+//   baseline再生成:       npx tsx scripts/check-jst-date-bypass.ts --write-baseline
+//     (既存のbaseline項目を直した後、または新規違反をレビュー済みで意図的に
+//      grandfatherする場合に実行し、jst-date-bypass-baseline.jsonをコミットする。
+//      「新規に書いたコードの違反をbaselineで免罪しない」— 直せるものはこの
+//      コマンドを打つ前に直すこと)
 import fs from "fs";
 import path from "path";
 
@@ -37,11 +49,47 @@ const ALLOWLIST = new Set([
 // 探索しない。
 const SCAN_DIRS = ["src", "scripts"];
 
+const BASELINE_PATH = path.join(ROOT, "scripts", "jst-date-bypass-baseline.json");
+
 interface Violation {
   file: string;
   line: number;
   pattern: string;
   code: string;
+}
+
+interface BaselineFile {
+  _readme: string[];
+  violations: { file: string; pattern: string; code: string }[];
+}
+
+// baseline識別子: file+pattern+codeテキストの組み合わせ。行番号は含めない
+// (無関係な編集で行がズレてもbaselineが誤って「新規違反」を報告しないため)。
+// 該当行のコード自体が変わった場合のみ「新規」として再度検出対象になる
+// (それは実質的に見直すべきタイミングなので意図的な挙動)。
+function violationKey(v: { file: string; pattern: string; code: string }): string {
+  return `${v.file}::${v.pattern}::${v.code}`;
+}
+
+function loadBaseline(): Set<string> {
+  if (!fs.existsSync(BASELINE_PATH)) return new Set();
+  const parsed: BaselineFile = JSON.parse(fs.readFileSync(BASELINE_PATH, "utf8"));
+  return new Set(parsed.violations.map(violationKey));
+}
+
+function writeBaseline(violations: Violation[]) {
+  const data: BaselineFile = {
+    _readme: [
+      "このファイルはscripts/check-jst-date-bypass.tsのbaseline(ratchet)です。",
+      "手で編集しないこと。再生成: npx tsx scripts/check-jst-date-bypass.ts --write-baseline",
+      "既存項目を直した後、または新規違反をレビュー済みでgrandfatherする場合にのみ再生成すること。",
+      "新しく書いたコードの違反はbaselineに入れず先に直すこと(baselineの意味が無くなるため)。",
+    ],
+    violations: violations
+      .map((v) => ({ file: v.file, pattern: v.pattern, code: v.code }))
+      .sort((a, b) => (a.file + a.pattern + a.code).localeCompare(b.file + b.pattern + b.code)),
+  };
+  fs.writeFileSync(BASELINE_PATH, JSON.stringify(data, null, 2) + "\n");
 }
 
 function listTsFiles(dir: string): string[] {
@@ -107,9 +155,8 @@ function scanFile(file: string, violations: Violation[]) {
   });
 }
 
-function main() {
+function scanAll(): Violation[] {
   const violations: Violation[] = [];
-
   for (const dir of SCAN_DIRS) {
     const full = path.join(ROOT, dir);
     if (!fs.existsSync(full)) continue;
@@ -119,20 +166,42 @@ function main() {
       scanFile(rel, violations);
     }
   }
+  return violations;
+}
 
-  if (violations.length) {
-    const list = violations
+function main() {
+  const violations = scanAll();
+
+  if (process.argv.includes("--write-baseline")) {
+    writeBaseline(violations);
+    console.log(`[JST日付バイパス検査] baseline再生成: ${violations.length}件を scripts/jst-date-bypass-baseline.json に記録しました。`);
+    return;
+  }
+
+  const baseline = loadBaseline();
+  const newViolations = violations.filter((v) => !baseline.has(violationKey(v)));
+  const knownCount = violations.length - newViolations.length;
+  const fixedCount = [...baseline].filter((k) => !violations.some((v) => violationKey(v) === k)).length;
+
+  if (newViolations.length) {
+    const list = newViolations
       .map((v) => `    ${v.file}:${v.line} [${v.pattern}] ${v.code}`)
       .join("\n");
     console.error(
-      `[JST日付バイパス検査] ★eventCountdown.ts経由のJST日付ヘルパーを迂回している疑いのある箇所を検出(${violations.length}件)。デプロイをブロックします:\n${list}\n` +
+      `[JST日付バイパス検査] ★baselineに無い新規のJST日付ヘルパー迂回を検出(${newViolations.length}件)。デプロイをブロックします:\n${list}\n` +
         `  対処: eventCountdown.tsのtoJstDateStr/formatEventDateJa/shiftDateStr等の既存ヘルパー経由に書き換えるか、` +
-        `本当に迂回が必要な理由があるならこのスクリプトのALLOWLISTに追加してください(判断は人間が行う)。`
+        `レビュー済みで意図的にgrandfatherするなら npx tsx scripts/check-jst-date-bypass.ts --write-baseline を実行してbaselineをコミットしてください` +
+        `(新しく書いたコードの違反を安易にbaselineへ入れないこと)。`
     );
     process.exit(1);
   }
 
-  console.log(`[JST日付バイパス検査] OK (0件)`);
+  console.log(
+    `[JST日付バイパス検査] OK (新規違反0件。baseline内の既知違反${knownCount}件は引き続き通過)` +
+      (fixedCount > 0
+        ? ` — baseline中${fixedCount}件が解消済みのようです。npx tsx scripts/check-jst-date-bypass.ts --write-baseline でbaselineを更新してください。`
+        : "")
+  );
 }
 
 main();

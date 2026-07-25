@@ -23,11 +23,16 @@ export interface FighterMetaInput {
 }
 
 // 直近試合の一言「{YYYY年M月} {大会名}」。評価語・予測は含めない機械生成。
+// 日付文字列("YYYY-MM-DD")の年月抽出は正規表現ではなく文字列split(eventCountdown.ts
+// のformatEventDateJa/shiftDateStrと同じ手法)で行う。既知の暦日文字列の構成要素を
+// 取り出すだけでtzの概念が絡まないため、new Date()もローカルgetterも不要。
 function latestResultClause(input: FighterMetaInput): string | null {
   if (!input.latestDate || !input.latestEvent) return null;
-  const m = input.latestDate.match(/^(\d{4})-(\d{1,2})-/);
-  if (!m) return null;
-  return `${m[1]}年${Number(m[2])}月 ${input.latestEvent}`;
+  const parts = input.latestDate.split("-");
+  if (parts.length < 2) return null;
+  const [y, m] = parts.map(Number);
+  if (!y || !m) return null;
+  return `${y}年${m}月 ${input.latestEvent}`;
 }
 
 export function buildFighterTitle(input: FighterMetaInput): string {
