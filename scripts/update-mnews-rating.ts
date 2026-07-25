@@ -153,7 +153,15 @@ async function assertNoConflictingScheduledRun(): Promise<void> {
       { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json" } }
     );
     if (!res.ok) {
-      throw new Error(`GitHub Actions API failed: ${res.status} ${await res.text()}`);
+      const body = await res.text();
+      if (res.status === 403) {
+        throw new Error(
+          `GitHub Actions API failed: 403 ${body}\n` +
+            `(権限不足の可能性: GITHUB_REPO_TOKEN に actions:read が付与されていないと発生します。` +
+            `ネットワーク障害やレート制限とは別の原因のため、まずトークンの権限設定を確認してください)`
+        );
+      }
+      throw new Error(`GitHub Actions API failed: ${res.status} ${body}`);
     }
     const json = await res.json();
     runs = json.workflow_runs;
