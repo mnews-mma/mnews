@@ -15,6 +15,7 @@ import { isNewMatchupUiEnabledByEnv } from "@/lib/matchupUi";
 import { buildSportsEventLd, eventOgImageUrl } from "@/lib/eventJsonLd";
 import { findArticlesForEvent } from "@/lib/originalArticles";
 import EventCountdownBadge from "@/components/EventCountdownBadge";
+import { daysUntilEventJst } from "@/lib/eventCountdown";
 
 export function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }));
@@ -68,6 +69,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
   const srcColor = SOURCES[event.org].color;
   const srcLabel = SOURCES[event.org].label;
+  // ビルド時点(SSG)のJST基準残り日数。静的HTMLに文言を載せるための初期値。
+  // クライアント側の再計算はEventCountdownBadge内のuseEffectで行う。
+  const initialCountdownDays = daysUntilEventJst(event.date);
 
   // 関連大会を解決
   const relatedEvents = (event.relatedEventSlugs ?? [])
@@ -156,9 +160,12 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </div>
         )}
 
-        {/* カウントダウン (upcoming/live のみ)。日数はクライアントで JST 基準に
-            算出(静的ページでも常に最新・帯と一致)。開催済みは badge 側で非表示。 */}
-        {event.status !== "completed" && <EventCountdownBadge date={event.date} />}
+        {/* カウントダウン (upcoming/live のみ)。ビルド時算出のinitialDaysを
+            静的HTMLに載せ(検索クローラ向けの鮮度シグナル)、マウント後はクライアント
+            側で再計算して上書きする(badge内useEffect)。開催済みはbadge側で非表示。 */}
+        {event.status !== "completed" && (
+          <EventCountdownBadge date={event.date} initialDays={initialCountdownDays} />
+        )}
       </div>
 
       <div style={{ padding: "0 24px 40px" }}>

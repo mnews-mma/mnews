@@ -1,26 +1,53 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { daysUntilEventJst } from "@/lib/eventCountdown";
+import { daysUntilEventJst, startOfTodayJstMs } from "@/lib/eventCountdown";
 
-// 大会詳細ページのカウントダウン表示。詳細ページは SSG(generateStaticParams)
-// のため、サーバー側で日数を算出すると build 時点の値で固定されてしまう
-// (=日付が変わっても更新されない/UTCビルドだと JST とずれる)。そこで
-// クライアント側で現在時刻(JST正規化)から算出し、静的ページでも常に正しい
-// 残り日数を表示する。文言・見た目は従来のサーバー描画時と同一。
-export default function EventCountdownBadge({ date }: { date: string }) {
-  const [days, setDays] = useState(() => daysUntilEventJst(date));
+const DAY_MS = 86_400_000;
 
-  // マウント後にクライアントの現在時刻で再計算(静的HTMLの build 時値を上書き)。
+// 大会詳細ページのカウントダウン表示。
+//
+// initialDays はサーバー(SSGビルド時)にJST基準で算出した値をpropsで受け取り、
+// useStateの初期値にそのまま使う(クライアント側でDate.now()を呼ばない)ため、
+// サーバーが吐いた静的HTMLとクライアントの初回レンダーが常に一致し、
+// hydration mismatch が起きない。検索クローラ向けにも「開催まであとN日」の
+// 文言が静的HTMLに載る(鮮度シグナル)。
+//
+// マウント後(=hydration後)にuseEffectでクライアント時刻から再計算し、
+// ビルド時点と閲覧時点で日付をまたいでいた場合の値を上書きする。加えて、
+// タブを開きっぱなしで日付をまたぐケースに備え、次のJST 0:00に自動で
+// 再計算するタイマーを仕込む(アンマウント時にclearTimeout)。
+export default function EventCountdownBadge({
+  date,
+  initialDays,
+}: {
+  date: string;
+  initialDays: number;
+}) {
+  const [days, setDays] = useState(initialDays);
+
   useEffect(() => {
     setDays(daysUntilEventJst(date));
+
+    let timer: ReturnType<typeof setTimeout>;
+    function scheduleNextRecalc() {
+      const nowMs = Date.now();
+      const nextMidnightJstMs = startOfTodayJstMs(nowMs) + DAY_MS;
+      timer = setTimeout(() => {
+        setDays(daysUntilEventJst(date));
+        scheduleNextRecalc();
+      }, nextMidnightJstMs - nowMs + 500);
+    }
+    scheduleNextRecalc();
+
+    return () => clearTimeout(timer);
   }, [date]);
 
   // 開催済み(負数)は表示しない。呼び出し側で status !== "completed" を担保する。
   if (days < 0) return null;
 
   return (
-    <div className="event-countdown" suppressHydrationWarning>
+    <div className="event-countdown">
       {days === 0 ? "本日開催" : `開催まであと ${days} 日`}
     </div>
   );
