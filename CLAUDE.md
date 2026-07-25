@@ -19,7 +19,7 @@
 - 本番反映後、主要ページが正常表示されているか確認してから次の作業に進む。エラー(ビルド失敗、500、白画面)が出た場合は直前のデプロイに即ロールバックし、原因調査はその後に行う
 - 複数タスクの本番反映をまとめて一度に行わない(タスク単位でデプロイを分ける)
 - 通常の本番反映は原則深夜帯(閲覧者が少ない時間帯)に行う。ただし一般ユーザーに影響が出ているデグレの修正は緊急対応として時間帯を問わず即時デプロイしてよい
-- cron(daily-digest, JST 8:00 = UTC 23:00)の予定時刻付近に本番デプロイを重ねるとその日のcron実行がスキップされることがある。8:00前後のデプロイは避け、重なった日は翌朝メール到達を確認する
+- 本番デプロイは、下記「定期実行ジョブ一覧」の実行時刻帯を避けて計画する。特にdata/配下を書き換えるジョブの実行中にデプロイが重なると、その回の実行がスキップされたり内容が競合したりすることがある。重なった日は該当ジョブの結果(メール到達・data/の更新内容)を確認する
 
 ## デプロイ
 - 通常: `git push origin main`。mainへのマージ(push)がそのまま本番への自動デプロイになる。**mainマージとデプロイは分離した工程ではない** — 上記「本番サービスの保護」の深夜帯ルール等はマージ操作そのものに適用される
@@ -29,6 +29,31 @@
 - **積み木PR(他PRの未マージブランチをベースにするPR)は原則禁止**。並行作業は必ずmainから分岐する。やむを得ず積み木構成にした場合、下段のPRをマージする際にブランチを削除しない(上段PRのベースがなくなるため)
 - **git worktreeからデプロイする場合**: worktree直下には`.vercel/`が無く、そのまま`vercel deploy`すると誤って新規プロジェクトが作成される(2026-07-11に`mnews-worktree-fontfix`を誤作成→削除した実例あり)。プレビュー確認前に必ず本体の`.vercel/project.json`(`projectId: prj_BOiZsdSXZ5tEVMQ0DV8WmOl0c6pg`, `projectName: mnews`)をworktreeにコピーするか`vercel link`で本番プロジェクトを明示指定してから実行する
 - **deployはISRキャッシュを自動パージしない**(2026-07-17判明)。`data/rankings.json`等のデータはGitHub raw経由でrevalidate:3600(最大1時間)のfetchキャッシュに乗っており、「mainにマージしただけで新規デプロイをしていない」場合は最大1時間古い値が残る。新規デプロイ自体もURLに埋め込まれたcommit SHAが変わるため次回アクセスで自動的に最新を取るが、即時反映させたい場合は`POST /api/revalidate-rankings`(`Authorization: Bearer <REVALIDATE_TOKEN>`、Vercel環境変数に別途設定が必要)を呼ぶ。**データ更新を伴うdeploy後はrevalidate必須**。反映確認は全公開階級(`/rankings/[division]`)でJSON-LDを取得し、最終更新日付が全ページ一致していることを見る。
+
+## 定期実行ジョブ一覧
+出典は`.github/workflows/*.yml`と`vercel.json`の実ファイルのみ(2026-07-25調査時点)。デプロイ計画・data/配下を触るPRの時間帯判断はこの表を参照する。個別のcron時刻をコード外の記憶で補わない。
+
+| ジョブ | 種別 | cron (UTC) | JST | 書き込み先 | 備考 |
+|---|---|---|---|---|---|
+| `archive-articles.yml` | GHA schedule | `*/30 * * * *` | 常時(30分ごと) | `data/archive.json` | |
+| `update-org-rankings.yml` | GHA schedule | `17 15 * * *` | 0:17 | `data/orgRankings.json`, `data/orgRankings-prev.json` | |
+| `update-fighter-records.yml` | GHA schedule | `30 17 * * *` | 2:30 | `data/fighterRecords.json`, `data/rankings.json`, `data/rankings.prev.json`, `data/rankings/archive/*`, `data/rankings.legitimateBaseline.json` | 同一ジョブ内で`update-mnews-rating.ts`(mode未指定=new-results)も実行 |
+| `/api/cron/countdown-post` | Vercel Cron | `0 11 * * *` | 20:00 | `data/postedCountdowns.json`(GitHub Contents API経由の書き込み) | X投稿の冪等性フラグ |
+| `/api/cron/daily-digest` | Vercel Cron | `0 23 * * *` | 8:00 | 書き込みなし(`sendDigestEmail()`によるメール送信のみ) | |
+| `daily-digest.yml` | GHA(無効) | schedule無し(`workflow_dispatch`のみ) | — | 書き込みなし(echoのみ) | メール送信はVercel Cronの`/api/cron/daily-digest`に移行済み。ワークフロー自体は無効化済みの記録として残置 |
+| `warm-routes.yml` | GHA(`deployment_status`トリガー) | schedule無し | — | 書き込みなし(本番ルートへのGETのみ) | Production環境のdeployment_statusがsuccessの時のみ発火 |
+| `actionlint.yml` | GHA(`pull_request`トリガー) | schedule無し | — | 書き込みなし(lintのみ) | `.github/workflows/**`変更時のみ |
+
+GitHub Actions・Vercel Cron以外の外部トリガー(webhook等)は無い。
+
+**スケジュール未設定だが手動運用されているスクリプト(data/配下に書き込みうるもの)**:
+- `scripts/update-mnews-rating.ts --mode=data-correction`: `data/rankings.json`, `data/rankings.prev.json`, `data/rankings/archive/*`, `data/rankings.legitimateBaseline.json`(条件付き)。同スクリプトはmode未指定(new-results)で上記2:30バッチからも呼ばれるため、手動実行のタイミング次第でバッチと競合しうる
+- `scripts/update-rizin-records.ts`: `data/rizinRecords.json`。出力は2:30バッチ(`update-fighter-records.ts`・`update-mnews-rating.ts`)の入力として読まれるが、この生成スクリプト自体はどこからもスケジュール実行されていない
+- `scripts/backfill-bout-weightclass.ts`: `data/fighterRecords.json`(2:30バッチと同じ出力ファイル)
+- `scripts/strip-tracking-params-migration.ts`: `data/archive.json`(30分ごとバッチと同じ出力ファイル。ファイル名からは一回限りの移行用途と見られる)
+
+**孤立・要注意**:
+- `scripts/daily-digest.ts`: ファイル冒頭のコメントは「毎朝8:00(JST)にGitHub Actionsから実行」と記載しているが、実際にはどのworkflowからも呼ばれていない(2026-07-25、grep実測で確認)。実際のメール送信は上記`/api/cron/daily-digest`(`sendDigestEmail()`)が担っており、このスクリプトは別実装のまま孤立している。出力`data/tweet-digest.txt`はアプリ側のどこからも読まれていない
 
 ## 認証境界(重要)
 - 認証必須は `/admin/*`(管理画面)と `/api/admin/*`(管理系API)のみ
