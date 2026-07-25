@@ -44,6 +44,9 @@
 | `warm-routes.yml` | GHA(`deployment_status`トリガー) | schedule無し | — | 書き込みなし(本番ルートへのGETのみ) | Production環境のdeployment_statusがsuccessの時のみ発火 |
 | `actionlint.yml` | GHA(`pull_request`トリガー) | schedule無し | — | 書き込みなし(lintのみ) | `.github/workflows/**`変更時のみ |
 
+**上表のJST列はcron式の宣言値(nominal)であり、実際の起動時刻ではない。** GitHub Actionsのscheduled実行はキュー混雑で遅延することがあり、`update-fighter-records.yml`の直近18回分の実行履歴(2026-07-07〜2026-07-24、`gh run list --workflow=update-fighter-records.yml`で取得)では、nominal cron時刻(UTC 17:30=JST 2:30)に対する実起動の遅延が**中央値3.27時間・最大5.25時間・最小2.68時間**だった(全18件が2〜5時間台の遅延で、定刻どおりに起動した回は無い)。**したがって「この時間帯を避ければ安全」という時刻ベースの回避は成立しない。** data/を書くジョブとの衝突回避は、時刻ではなく実行中run自体をGitHub Actions APIで照会する方式で行う(PR-G, #210)。
+なお実行時間(起動後の所要時間)自体は安定しており、同じ18件の実測で中央値8.5分・最大13.8分・最小8.0分だった。
+
 GitHub Actions・Vercel Cron以外の外部トリガー(webhook等)は無い。
 
 **スケジュール未設定だが手動運用されているスクリプト(data/配下に書き込みうるもの)**:
