@@ -46,36 +46,35 @@ export function toJstDateStr(nowMs: number = Date.now()): string {
 
 const DAY_JA = ["日", "月", "火", "水", "木", "金", "土"];
 
-// 大会日文字列("YYYY-MM-DD")を「◯年◯月◯日（曜）」に整形する表示用ヘルパー。
-// 大会日はJSTの暦日そのもの(時刻成分を持たない値)を正としているため、
-// 「今」は一切関与しない(toJstDateStr/daysUntilEventJstとは別の関心事:
-// あちらは時刻からJST暦日を導出、こちらは既知の暦日文字列を表示用に整形する
-// だけ)。訪問者の実行環境tz(ブラウザのローカルtz等)に一切依存させないため、
-// new Date(dateStr)のローカルgetter(getFullYear/getMonth/getDate/getDay)は
-// 使わない — date-onlyの文字列はUTC 0時としてパースされる仕様があるため、
-// ローカルgetterで読むとJSTより西のtzで日付・曜日が1日ズレるfootgunがある
-// (監査#7)。文字列を直接split→Date.UTC()経由の曜日算出のみに限定することで
-// tz非依存を保証する。
-export function formatEventDateJa(dateStr: string): string {
-  const [y, m, d] = dateStr.split("-").map(Number);
-  const dow = DAY_JA[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
-  return `${y}年${m}月${d}日（${dow}）`;
-}
+// 暦日文字列("YYYY-MM-DD")の表示整形ヘルパー3種。いずれも大会日はJSTの暦日
+// そのもの(時刻成分を持たない値)を正として扱うため「今」は一切関与しない
+// (toJstDateStr/daysUntilEventJstとは別の関心事: あちらは時刻からJST暦日を
+// 導出、こちらは既知の暦日文字列を表示用に整形するだけ)。訪問者の実行環境tz
+// (ブラウザのローカルtz等)に一切依存させないため、new Date(dateStr)のローカル
+// getter(getFullYear/getMonth/getDate/getDay)は使わない — date-onlyの文字列は
+// UTC 0時としてパースされる仕様があるため、ローカルgetterで読むとJSTより西の
+// tzで日付・曜日が1日ズレるfootgunがある(監査#7)。文字列を直接split→
+// Date.UTC()経由の曜日算出のみに限定することでtz非依存を保証する。
+//
+// 使い分け: 曜日が要る(大会日表示等) → formatEventDateJa。曜日不要の
+// フル日付(「◯年◯月◯日更新」等) → formatDateJa。日にちも不要な年月のみ
+// (「直近試合の一言」等) → formatEventYearMonthJa。
 
-// 暦日文字列("YYYY-MM-DD")を「◯年◯月◯日」に整形する表示用ヘルパー(曜日なし)。
-// formatEventDateJa(曜日あり)・formatEventYearMonthJa(年月のみ)と役割を
-// 分ける。tz非依存(文字列split、Dateオブジェクトのローカルgetterは使わない)。
-// ランキングページの「◯◯更新」等、曜日を出したくない場面向け
-// (seoTemplates.tsから利用)。
+// 「◯年◯月◯日」(曜日なし)。
 export function formatDateJa(dateStr: string): string {
   const [y, m, d] = dateStr.split("-").map(Number);
   return `${y}年${m}月${d}日`;
 }
 
-// 大会日文字列("YYYY-MM-DD")を「◯年◯月」に整形する表示用ヘルパー(日・曜日
-// なし)。formatEventDateJaと同じくtz非依存(文字列split、Dateオブジェクトの
-// ローカルgetterは使わない)。選手ページの「直近試合の一言」等、日にちまで
-// 出す必要が無い場面向け(seoTemplates.tsから利用)。
+// 「◯年◯月◯日（曜）」。formatDateJaに曜日を付加したもの(曜日算出のみ
+// Date.UTC()を使うが、ローカルgetterには一切頼らない)。
+export function formatEventDateJa(dateStr: string): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const dow = DAY_JA[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
+  return `${formatDateJa(dateStr)}（${dow}）`;
+}
+
+// 「◯年◯月」(日・曜日なし)。
 export function formatEventYearMonthJa(dateStr: string): string {
   const [y, m] = dateStr.split("-").map(Number);
   return `${y}年${m}月`;
