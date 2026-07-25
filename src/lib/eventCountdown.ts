@@ -43,3 +43,34 @@ export function toJstDateStr(nowMs: number = Date.now()): string {
   const jstMidnightMs = startOfTodayJstMs(nowMs);
   return new Date(jstMidnightMs + JST_OFFSET_MS).toISOString().slice(0, 10);
 }
+
+const DAY_JA = ["日", "月", "火", "水", "木", "金", "土"];
+
+// 大会日文字列("YYYY-MM-DD")を「◯年◯月◯日（曜）」に整形する表示用ヘルパー。
+// 大会日はJSTの暦日そのもの(時刻成分を持たない値)を正としているため、
+// 「今」は一切関与しない(toJstDateStr/daysUntilEventJstとは別の関心事:
+// あちらは時刻からJST暦日を導出、こちらは既知の暦日文字列を表示用に整形する
+// だけ)。訪問者の実行環境tz(ブラウザのローカルtz等)に一切依存させないため、
+// new Date(dateStr)のローカルgetter(getFullYear/getMonth/getDate/getDay)は
+// 使わない — date-onlyの文字列はUTC 0時としてパースされる仕様があるため、
+// ローカルgetterで読むとJSTより西のtzで日付・曜日が1日ズレるfootgunがある
+// (監査#7)。文字列を直接split→Date.UTC()経由の曜日算出のみに限定することで
+// tz非依存を保証する。
+export function formatEventDateJa(dateStr: string): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const dow = DAY_JA[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
+  return `${y}年${m}月${d}日（${dow}）`;
+}
+
+// 大会日文字列("YYYY-MM-DD")から deltaDays 日ずらした暦日文字列を返す
+// (deltaDays=-1で前日)。純粋なカレンダー日算術のみ(時刻成分・タイムゾーンの
+// 概念が一切登場しない)ため、"今"や"JST"のオフセットには依存しない。
+// 監査#4: 従来は`+09:00`でJST anchorした後にローカルgetter(getDate/setDate)
+// で加減算し、最後にtoISOString()(UTC)で出力していたため、anchorの効果が
+// 最後のUTC変換で打ち消され、実行環境tzに関わらず常に1日多くズレていた。
+export function shiftDateStr(dateStr: string, deltaDays: number): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const shiftedMs = Date.UTC(y, m - 1, d) + deltaDays * 86400000;
+  const shifted = new Date(shiftedMs);
+  return `${shifted.getUTCFullYear()}-${String(shifted.getUTCMonth() + 1).padStart(2, "0")}-${String(shifted.getUTCDate()).padStart(2, "0")}`;
+}

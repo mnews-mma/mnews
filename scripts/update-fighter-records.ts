@@ -14,6 +14,7 @@ import type { FighterRecordEntry, FighterRecordsFile } from "../src/lib/fighterR
 import { checkFighterRecordIntegrity } from "../src/lib/fighterRecordIntegrity";
 import { enrichHistoryWithWeightClass } from "../src/lib/mnewsRating/enrichHistoryWeightClass";
 import { applyRecordOverrides, applyRecordOverridesToTotals } from "../src/lib/mnewsRating/recordOverrides";
+import { toJstDateStr } from "../src/lib/eventCountdown";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 // fighterRecords.json自体には生成時刻を焼き込まない(選手データと運用メタ情報を
@@ -37,7 +38,12 @@ function toCacheEntry(
   // 記載されていた実例。engine.ts のbuildBouts(asOf)と同じ考え方の一般ルールを
   // 選手ページのhistory表示にも適用し、未開催の試合を既に起きたことにして
   // 表示しない)。
-  const asOfKey = new Date().toISOString().slice(0, 10);
+  // 監査#6: 以前はnew Date().toISOString()というUTC基準の「今日」を使っており、
+  // このバッチのcron実行時刻(JST 2:30固定)がJST 0:00〜9:00帯にあるため、
+  // 深夜開催+即日Wikipedia反映が重なると当日の試合結果が「未来」と誤判定され
+  // 除外されていた。toJstDateStr()はマシンtz非依存(Date.UTC/getUTC*のみ)の
+  // JST基準判定のため、実行環境(GitHub Actions=UTC)に関わらず正しく判定する。
+  const asOfKey = toJstDateStr();
   const noFutureHistory = correctedHistory.filter((h) => h.date <= asOfKey);
   const { history, nullBouts } = enrichHistoryWithWeightClass(r.nameJa, noFutureHistory);
   // 2026-07-13緊急修正: 通算戦績(総合格闘技 戦績。RIZIN外を含む全キャリア)は

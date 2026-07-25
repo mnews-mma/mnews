@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { buildWeighInPost, type WeighInBoutInput } from "@/lib/xPost";
+import { shiftDateStr } from "@/lib/eventCountdown";
 import CopyButton from "@/components/CopyButton";
 import AdminBackLink from "@/components/AdminBackLink";
 
@@ -54,9 +55,7 @@ export default function WeighInTool({ events }: { events: EventOption[] }) {
   const [weighInDate, setWeighInDate] = useState(() => {
     // 大会前日をデフォルトに
     if (!event) return "";
-    const d = new Date(`${event.date}T00:00:00+09:00`);
-    d.setDate(d.getDate() - 1);
-    return d.toISOString().slice(0, 10);
+    return shiftDateStr(event.date, -1);
   });
   const [rows, setRows] = useState<Row[]>(() =>
     event && event.bouts.length > 0
@@ -101,9 +100,7 @@ export default function WeighInTool({ events }: { events: EventOption[] }) {
               ? ev.bouts.map((b) => ({ ...emptyRow(), fighterA: b.fighterA, fighterB: b.fighterB }))
               : [emptyRow()]
           );
-          const d = new Date(`${ev.date}T00:00:00+09:00`);
-          d.setDate(d.getDate() - 1);
-          setWeighInDate(d.toISOString().slice(0, 10));
+          setWeighInDate(shiftDateStr(ev.date, -1));
         }}
         style={{ width: "100%", fontSize: 15, padding: "12px", borderRadius: 8, marginBottom: 12 }}
       >

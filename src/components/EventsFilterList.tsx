@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { MEvent } from "@/lib/events";
 import { SOURCES, SourceKey } from "@/lib/sources";
-import { daysUntilEventJst } from "@/lib/eventCountdown";
+import { daysUntilEventJst, formatEventDateJa } from "@/lib/eventCountdown";
 
 const ORG_OPTIONS: { key: SourceKey; label: string }[] = [
   { key: "rizin", label: SOURCES.rizin.label },
@@ -11,8 +11,6 @@ const ORG_OPTIONS: { key: SourceKey; label: string }[] = [
   { key: "pancrase", label: SOURCES.pancrase.label },
   { key: "shooto", label: SOURCES.shooto.label },
 ];
-
-const DAY_NAMES = ["日", "月", "火", "水", "木", "金", "土"];
 
 export default function EventsFilterList({ events }: { events: MEvent[] }) {
   const [org, setOrg] = useState<SourceKey | null>(null);
@@ -46,8 +44,7 @@ export default function EventsFilterList({ events }: { events: MEvent[] }) {
       <div className="results-list">
         {filtered.map((e, idx) => {
           const days = daysUntilEventJst(e.date);
-          const d = new Date(e.date);
-          const dateJa = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${DAY_NAMES[d.getDay()]}）`;
+          const dateJa = formatEventDateJa(e.date);
           const nearest = idx === 0; // フィルタ後の先頭1件のみ赤で強調
           return (
             <a

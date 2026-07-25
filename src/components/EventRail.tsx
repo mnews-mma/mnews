@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
-import { daysUntilEventJst } from "@/lib/eventCountdown";
+import { daysUntilEventJst, formatEventDateJa } from "@/lib/eventCountdown";
 
 export interface RailEvent {
   slug: string;
@@ -12,7 +12,6 @@ export interface RailEvent {
   date: string; // YYYY-MM-DD
 }
 
-const DAY = ["日", "月", "火", "水", "木", "金", "土"];
 // .home-rail(sticky top:64 + margin-top:12)＋下部余白ぶんを差し引く。
 const RAIL_OFFSET = 96;
 // 右レール化(=高さ収め)を有効にするビューポート幅。これ未満(スマホ/タブレット)は
@@ -67,8 +66,7 @@ export default function EventRail({ events }: { events: RailEvent[] }) {
       >
         {events.map((e, idx) => {
           const days = daysUntilEventJst(e.date);
-          const d = new Date(e.date);
-          const dateJa = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${DAY[d.getDay()]}）`;
+          const dateJa = formatEventDateJa(e.date);
           const nearest = idx === 0; // 最も近い1件のみ赤で強調
           return (
             <a
