@@ -9,6 +9,7 @@ import CopyButton from "@/components/CopyButton";
 import DigestPicker from "@/components/DigestPicker";
 import type { PickerArticle } from "@/components/DigestPicker";
 import AdminBackLink from "@/components/AdminBackLink";
+import { toJstDateStr, shiftDateStr } from "@/lib/eventCountdown";
 
 // このページが唯一の「X投稿下書き」ワークフロー。
 // 朝まとめ: 過去24時間の全ニュースを一覧表示→手動で選択→X投稿文に変換
@@ -25,11 +26,6 @@ function tagToHashtag(tag: string): string {
   if (t.includes("PANCRASE") || tag.includes("パンクラス")) return "#パンクラス";
   if (tag.includes("修斗") || t.includes("SHOOTO")) return "#修斗";
   return "";
-}
-
-function jstDateStr(offsetDays: number): string {
-  const d = new Date(Date.now() + 9 * 3600_000 - offsetDays * 86400_000);
-  return d.toISOString().slice(0, 10);
 }
 
 function PostBlock({ title, text, replyText, imageUrl, method }: {
@@ -117,8 +113,11 @@ export default async function XPreviewPage() {
     };
   });
 
-  const d = new Date(`${jstDateStr(1)}T00:00:00+09:00`);
-  const dateLabel = `${d.getMonth() + 1}/${d.getDate()}`;
+  // 「昨日(JST)」= toJstDateStr()(今日のJST暦日)をshiftDateStr()で-1日。
+  // どちらもマシンtz非依存(監査#8: 以前はローカルgetterで再展開しており、
+  // Vercel(UTC)では常に1日ズレていた)。M/D表記への整形はDigestPicker側に
+  // 一本化し、サーバー・クライアントで同じdateIso文字列を唯一の元にする。
+  const yesterdayJstIso = shiftDateStr(toJstDateStr(), -1);
 
   // 直近のupcomingイベントのカウントダウンポスト下書き
   const nextEvent = getUpcomingEvents()[0] ?? null;
@@ -143,7 +142,7 @@ export default async function XPreviewPage() {
         (選手名をテキストで載せて検索・エゴサに引っかける方針)。
         「候補」は自動スコアの参考表示で、最終判断は手動。
       </p>
-      <DigestPicker articles={pickerArticles} dateLabel={dateLabel} dateIso={jstDateStr(1)} />
+      <DigestPicker articles={pickerArticles} dateIso={yesterdayJstIso} />
 
       <h2 style={{ fontSize: 15, fontWeight: 700, margin: "32px 0 16px" }}>
         大会前日カウントダウン(直近イベント)

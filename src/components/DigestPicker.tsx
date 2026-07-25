@@ -2,7 +2,15 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { condenseTopic, fullWidthLength } from "@/lib/tweetDigest";
+import { toJstDateStr, shiftDateStr } from "@/lib/eventCountdown";
 import CopyButton from "@/components/CopyButton";
+
+// JST暦日文字列("YYYY-MM-DD")を投稿文用の"M/D"表記に整形する(tz非依存の
+// 文字列パースのみ、Dateオブジェクトを経由しない)。
+function jstIsoToMD(iso: string): string {
+  const [, m, d] = iso.split("-");
+  return `${Number(m)}/${Number(d)}`;
+}
 
 // 朝まとめの手動選択ワークフロー:
 // 過去24時間の全ニュースをテキスト一覧で表示 → 手動でチェック →
@@ -28,24 +36,24 @@ const LINE_MAX = 50;
 
 export default function DigestPicker({
   articles,
-  dateLabel,
   dateIso,
 }: {
   articles: PickerArticle[];
-  dateLabel: string; // サーバ算出の「昨日(JST)」M/D。SSR初期表示用フォールバック
-  dateIso: string; // サーバ算出の「昨日(JST)」YYYY-MM-DD。リンクのキャッシュバスタ用
+  dateIso: string; // サーバ算出の「昨日(JST)」YYYY-MM-DD(唯一の元。M/D表記はここから導出する)
 }) {
   // 「昨日(JST)」はブラウザ側でも算出し直す。サーバレンダのキャッシュや
   // 開きっぱなしタブ/bfcache復帰で日付が前日のまま固定されるのを防ぎ、
-  // 閲覧時点の昨日を常に自動反映する。初期値はSSR値(ハイドレーション一致)。
-  const [dayLabel, setDayLabel] = useState(dateLabel);
+  // 閲覧時点の昨日を常に自動反映する。初期値はpropsのdateIsoをそのまま
+  // useStateの初期値に使う(クライアント側でDate.now()を初期render時に
+  // 呼ばない)ため、サーバーHTMLとクライアント初回レンダーが一致し
+  // hydration mismatchが起きない(PR#196のEventCountdownBadgeと同じ型)。
   const [dayIso, setDayIso] = useState(dateIso);
+  const dayLabel = jstIsoToMD(dayIso);
   useEffect(() => {
     const recompute = () => {
-      // jstDateStr と同じ方式: UTCに+9hしてJSTの暦日にし、-1日。TZ非依存。
-      const y = new Date(Date.now() + 9 * 3600_000 - 86400_000);
-      setDayLabel(`${y.getUTCMonth() + 1}/${y.getUTCDate()}`);
-      setDayIso(y.toISOString().slice(0, 10));
+      // page.tsx側と同じ式(toJstDateStr→shiftDateStr、いずれもマシンtz
+      // 非依存)で「昨日(JST)」を再計算する。
+      setDayIso(shiftDateStr(toJstDateStr(), -1));
     };
     recompute();
     window.addEventListener("pageshow", recompute); // bfcache復帰時も再計算
