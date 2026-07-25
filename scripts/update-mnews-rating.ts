@@ -114,6 +114,69 @@ if (MODE !== "new-results" && MODE !== "data-correction") {
   throw new Error(`未知の--mode: ${MODE}(new-results | data-correction のみ対応)`);
 }
 
+// data-correction実行時の衝突防止ガード: update-fighter-records.yml(このスクリプトを
+// mode未指定=new-resultsで呼ぶ毎日JST 2:30予定のバッチ)が同じdata/ファイル群
+// (rankings.json/rankings.prev.json/rankings/archive/*/rankings.legitimateBaseline.json)
+// に書き込み中/開始待ちの場合、手動のdata-correction実行を拒否する。
+//
+// 時刻ベースの窓ではなく実際のワークフロー実行状態をGitHub Actions APIで照会する
+// (GitHub Actionsのscheduled runは実測でnominal cron時刻から中央値3.27時間・
+// 最大5.25時間遅延することが判明しており、時刻ガードは機能しないため)。
+//
+// fail-closed: APIが呼べない(トークン未設定・ネットワークエラー・権限不足等)
+// 場合は「確認できなかった=安全」とみなさず拒否する。意図的に突破する場合のみ
+// --force-ignore-run-guard を明示指定する(黙って続行しない)。
+const RUN_GUARD_WORKFLOW = "update-fighter-records.yml";
+const FORCE_IGNORE_RUN_GUARD = process.argv.includes("--force-ignore-run-guard");
+
+async function assertNoConflictingScheduledRun(): Promise<void> {
+  if (FORCE_IGNORE_RUN_GUARD) {
+    console.warn(
+      `[WARN] --force-ignore-run-guard が指定されたため、${RUN_GUARD_WORKFLOW} の実行中チェックをスキップします。` +
+        `data/への書き込みが競合していないか手動で確認してください。`
+    );
+    return;
+  }
+
+  const token = process.env.GITHUB_REPO_TOKEN;
+  if (!token) {
+    throw new Error(
+      `[data-correctionガード] GITHUB_REPO_TOKEN が未設定のため ${RUN_GUARD_WORKFLOW} の実行状態を確認できません。` +
+        `安全側で実行を拒否します(fail-closed)。確認済みで続行する場合は --force-ignore-run-guard を付けてください。`
+    );
+  }
+
+  let runs: { id: number; status: string; html_url: string }[];
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/mnews-mma/mnews/actions/workflows/${RUN_GUARD_WORKFLOW}/runs?per_page=5`,
+      { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json" } }
+    );
+    if (!res.ok) {
+      throw new Error(`GitHub Actions API failed: ${res.status} ${await res.text()}`);
+    }
+    const json = await res.json();
+    runs = json.workflow_runs;
+  } catch (e) {
+    throw new Error(
+      `[data-correctionガード] ${RUN_GUARD_WORKFLOW} の実行状態の確認に失敗しました。安全側で実行を拒否します` +
+        `(fail-closed)。確認済みで続行する場合は --force-ignore-run-guard を付けてください。原因: ${e}`
+    );
+  }
+
+  const conflicting = runs.filter((r) => r.status === "in_progress" || r.status === "queued");
+  if (conflicting.length > 0) {
+    throw new Error(
+      `[data-correctionガード] ${RUN_GUARD_WORKFLOW} が実行中/開始待ちのため、data-correctionモードの実行を拒否します` +
+        `(同じdata/ファイル群への書き込みが競合する可能性があります):\n` +
+        conflicting.map((r) => `  run ${r.id} (${r.status}): ${r.html_url}`).join("\n") +
+        `\n該当バッチの完了を待ってから再実行するか、確認済みで続行する場合は --force-ignore-run-guard を付けてください。`
+    );
+  }
+
+  console.log(`[data-correctionガード] ${RUN_GUARD_WORKFLOW} の実行中/開始待ちrunなし。続行します。`);
+}
+
 // Phase 3: rizinRecords.json(RIZIN公式ソース)を優先し、無ければ従来のhistory
 // にフォールバックする。Phase2ではフェザー級のみに限定していたが、フェザー級で
 // 実証済みのため全階級に適用する(階級による分岐は撤去)。マッチする
@@ -571,9 +634,16 @@ function main() {
 // 前回のrankings.jsonがそのまま残る(中途半端なファイルを書かない)。
 // CI(update-fighter-records.yml)は前段のupdate-fighter-records.tsが失敗すれば
 // GitHub Actionsのデフォルト挙動でこのステップ自体が実行されない。
-try {
+// data-correctionモードのみ、main()実行前に衝突防止ガード(GitHub Actions API照会)
+// を通す(mode未指定=new-resultsの通常バッチ自身はガード不要=自分自身を待たない)。
+async function run() {
+  if (MODE === "data-correction") {
+    await assertNoConflictingScheduledRun();
+  }
   main();
-} catch (e) {
+}
+
+run().catch((e) => {
   console.error(e);
   process.exit(1);
-}
+});
