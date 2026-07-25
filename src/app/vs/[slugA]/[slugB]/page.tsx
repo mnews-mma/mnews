@@ -9,6 +9,8 @@ import { pageMetadata } from "@/lib/seo";
 import { fetchFighterRecordsStrict, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { normalizeVsSlugs, isVsPairIndexable, buildVsShareText } from "@/lib/vsPairing";
+import { findMatchupEvent } from "@/lib/events";
+import { buildVsTitle } from "@/lib/seoTemplates";
 
 const SITE_URL = "https://www.mnews.jp";
 
@@ -53,7 +55,10 @@ export async function generateMetadata({
   const fighterB = getFighter(norm.b);
   if (!fighterA || !fighterB) return { title: "対戦カード | Mニュース", robots: { index: false, follow: false } };
 
-  const title = `${fighterA.nameJa} vs ${fighterB.nameJa} 対戦比較｜戦績・共通対戦相手 - Mニュース`;
+  // findMatchupEvent()で開催予定大会の実カードと一致すれば、検索意図(カード情報)
+  // に寄せたtitleにする(一致しなければ従来どおりの汎用戦績比較titleにフォールバック)。
+  const matchup = findMatchupEvent(fighterA.nameJa, fighterB.nameJa);
+  const title = buildVsTitle(fighterA.nameJa, fighterB.nameJa, matchup?.event.eventName ?? null);
 
   const recordsResult = await fetchFighterRecordsStrict();
   const entryA = recordsResult.ok ? (recordsResult.records[norm.a] ?? emptyEntry()) : emptyEntry();

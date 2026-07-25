@@ -13,14 +13,13 @@ import { EVENT_RESULTS } from "@/lib/eventResults";
 import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
-import { fullWidthLength } from "@/lib/tweetDigest";
 import { MethodButterfly, NextFightCompare } from "@/components/FighterVisuals";
 import NextFightCardV2 from "@/components/matchup/NextFightCardV2";
 import { resolveMatchupUiV2ForDynamicPage } from "@/lib/matchupUi";
-import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
+import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } from "@/lib/seoTemplates";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
@@ -40,35 +39,6 @@ const TAG_LINK: Record<OrgTagKey, string | null> = {
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
 
-// 戦績クエリ(例「武田光司 戦績」)でSearch Console順位はあるのにCTRが低い
-// 問題への対応。titleに通算戦績・直近結果を差し込んでクリックを拾う。
-// 数字はfighterRecordsCache由来の値をそのまま使い、捏造・独自集計はしない
-// (totalはwins+losses+drawsの合計。history.lengthは13人でズレるため使わない)。
-const LATEST_RESULT_LABEL: Record<string, string> = {
-  win: "直近◯勝利",
-  loss: "直近●黒星",
-  draw: "直近△引分",
-  nc: "最新試合結果",
-};
-
-function buildFighterTitle(fighter: ResolvedFighter, orgLabel: string): string {
-  const fallback = `${fighter.nameJa}（${orgLabel}）の戦績・試合結果 | Mニュース`;
-  // 戦績データが取れていない選手(81人)は現行titleのまま(捏造ゼロ)。
-  if (fighter.noRecordData) return fallback;
-
-  const total = fighter.wins + fighter.losses + fighter.draws;
-  const drawsPart = fighter.draws > 0 ? `${fighter.draws}分` : "";
-  const latestPart =
-    fighter.history.length > 0 ? LATEST_RESULT_LABEL[fighter.history[0].result] : "最新試合結果";
-
-  const full = `${fighter.nameJa}（${orgLabel}）の戦績・${total}戦${fighter.wins}勝${fighter.losses}敗${drawsPart}｜${latestPart} | Mニュース`;
-  if (fullWidthLength(full) <= 60) return full;
-
-  // 60字超過時は「｜{latestPart}」から先に削る(選手名・団体名・戦績数字は必ず残す)。
-  const trimmed = `${fighter.nameJa}（${orgLabel}）の戦績・${total}戦${fighter.wins}勝${fighter.losses}敗${drawsPart} | Mニュース`;
-  return trimmed;
-}
-
 export async function generateMetadata({
   params,
   searchParams,
@@ -85,20 +55,27 @@ export async function generateMetadata({
   const ogPath = `/api/og/fighter/${slug}${wc ? `?wc=${encodeURIComponent(wc)}` : ""}`;
   // Wikipedia から取得した実際の戦績を meta にも反映（seed と乖離させない）
   const fighter = await resolveFighterCached(seed);
-  const appearance = findNextAppearance(fighter.nameJa);
-  const nextFightDesc =
-    appearance?.kind === "bout"
-      ? `次戦は${appearance.event.date}『${appearance.event.eventName}』でvs${
-          normSpace(appearance.bout.fighterA) === normSpace(fighter.nameJa) ? appearance.bout.fighterB : appearance.bout.fighterA
-        }。`
-      : appearance?.kind === "expected"
-        ? `${appearance.event.date}『${appearance.event.eventName}』に参戦予定（対戦相手未定）。`
-        : "";
   const orgLabel = SOURCES[fighter.org].label;
-  const title = buildFighterTitle(fighter, orgLabel);
+  // AI RIZINランキング掲載中の選手のみランク句を出す(本文のランクバッジと同じ判定・
+  // 同じhidden除外を共有する。findRankingLinkはgetDisplayRank(表示ランクヘルパー)
+  // 経由=ハードコード禁止・16位以下は非表示)。
+  const rankingLink = seed.hidden ? null : await findRankingLink(slug);
+  const metaInput = {
+    nameJa: fighter.nameJa,
+    nameEn: fighter.nameEn,
+    orgLabel,
+    noRecordData: !!fighter.noRecordData,
+    wins: fighter.wins,
+    losses: fighter.losses,
+    draws: fighter.draws,
+    historyLength: fighter.history.length,
+    latestDate: fighter.history[0]?.date ?? null,
+    latestEvent: fighter.history[0]?.event ?? null,
+    rank: rankingLink ? { divisionName: rankingLink.divisionName, label: rankingLink.label } : null,
+  };
   const meta = pageMetadata({
-    title,
-    description: `${fighter.nameJa}の戦績、試合結果、プロフィールをまとめて掲載。${orgLabel}・${fighter.weightClass}所属、通算${fighter.wins}勝${fighter.losses}敗（KO${fighter.ko}・一本${fighter.sub}・判定${fighter.decision}）。RIZIN・DEEP・修斗・パンクラスなど日本MMAの選手情報。${nextFightDesc}`,
+    title: buildFighterMetaTitle(metaInput),
+    description: buildFighterDescription(metaInput),
     path: `/fighters/${fighter.slug}`,
     image: {
       url: ogImagePath(ogPath),

@@ -51,3 +51,11 @@ export async function fetchDivisionRankings(divisionSlug: string): Promise<Divis
   const all = await fetchWithLocalFallback();
   return all[divisionSlug] ?? null;
 }
+
+// hub("最終更新"表示・meta titleの更新日)が参照する代表updatedAt。
+// 全階級が同じ日次バッチで一括更新されるため、収録されている中の1件を使う
+// (rankings/page.tsx本体の表示・generateMetadataで同じ値を共有する)。
+export function getRankingsUpdatedAt(rankings: RankingsFile): string | null {
+  const anyDivision = Object.values(rankings)[0];
+  return anyDivision?.updatedAt ?? null;
+}

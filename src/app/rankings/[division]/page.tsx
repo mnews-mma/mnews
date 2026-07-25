@@ -10,6 +10,7 @@ import { DIVISION_BY_SLUG, PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnew
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { toJstDateStr } from "@/lib/eventCountdown";
+import { buildRankingsDivisionTitle } from "@/lib/seoTemplates";
 
 // Next.jsのページセグメントconfig(revalidate)は静的解析のみでリテラル値しか
 // 認識できず、importした定数を直接代入するとビルドエラーになる
@@ -30,8 +31,11 @@ export async function generateMetadata({ params }: { params: Promise<{ division:
   if (!division || !PUBLISHED_DIVISIONS.includes(division)) {
     return pageMetadata({ title: "ページが見つかりません | mnews", description: "", path: `/rankings/${slug}` });
   }
+  // 「◯◯ ランキング」検索での埋没対策(A-3)で更新日をtitleに含める。
+  // updatedAtはdata/rankings.json由来のみを使う(ハードコード禁止)。
+  const data = await fetchDivisionRankings(slug);
   return pageMetadata({
-    title: `AI RIZIN${division}ランキング｜RIZINランキングをAIが算出【mnews】`,
+    title: buildRankingsDivisionTitle(division, data?.updatedAt ?? null),
     description: `RIZIN${division}には公式ランキングがありません。独自開発のAIが全試合結果を分析して算出する非公式ランキング「${RATING_NAME}」。RIZIN大会の結果を反映して更新します。`,
     path: `/rankings/${slug}`,
     image: { url: `${SITE_URL}/api/og/rankings/${slug}`, width: 1200, height: 630, alt: `AI RIZIN${division}ランキング` },
