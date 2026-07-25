@@ -51,6 +51,7 @@
 //      コマンドを打つ前に直すこと)
 import fs from "fs";
 import path from "path";
+import { execSync } from "child_process";
 
 const ROOT = process.cwd();
 
@@ -77,10 +78,10 @@ interface Violation {
 
 interface BaselineFile {
   _readme: string[];
-  violations: { file: string; pattern: string; code: string }[];
+  violations: { file: string; pattern: string; code: string; commit_sha: string; commit_date: string }[];
 }
 
-// baseline識別子: file+pattern+codeテキストの組み合わせ。行番号は含めない
+// baseline識別子: file+pattern+codeテキストの組み合わせ。行番号・由来情報は含めない
 // (無関係な編集で行がズレてもbaselineが誤って「新規違反」を報告しないため)。
 // 該当行のコード自体が変わった場合のみ「新規」として再度検出対象になる
 // (それは実質的に見直すべきタイミングなので意図的な挙動)。
@@ -94,6 +95,36 @@ function loadBaseline(): Set<string> {
   return new Set(parsed.violations.map(violationKey));
 }
 
+// PR-F2b: baseline各行に由来コミット(SHA・作成日)を付記する。指示書②-cの
+// 「大島沙緒里」の件・PR-F2bそのものの発端(baseline増加分の由来を巡る2つの
+// 報告の食い違い)がいずれも「由来をgit履歴で都度洗い直す手間」から生じたため、
+// baseline再生成時に一度だけgit blameしてスナップショットに埋め込み、以後は
+// このファイルを見るだけで由来が分かるようにする(照合ロジック自体は変更しない
+// 軽い追加。violationKeyの構成要素には含めないため、既存のratchet挙動は不変)。
+function blameInfo(file: string, line: number): { commit_sha: string; commit_date: string } {
+  try {
+    const out = execSync(`git blame -w -L ${line},${line} --porcelain -- "${file}"`, {
+      cwd: ROOT,
+      encoding: "utf8",
+    });
+    const firstLine = out.split("\n")[0];
+    const sha = firstLine.split(" ")[0];
+    // このツール自身がゲート対象(src/・scripts/配下)のため、ゲートが検出する
+    // toISOString().slice(0,10)等は使わない。commit_dateはUTC基準の暦日で足りる
+    // (このコミット日付表示自体はJST変換が必要な性質のものではない)ため、
+    // getUTCXxx(ゲート対象外)のみで組み立てる。
+    const atMatch = out.match(/^author-time (\d+)$/m);
+    let date = "";
+    if (atMatch) {
+      const d = new Date(parseInt(atMatch[1], 10) * 1000);
+      date = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-${String(d.getUTCDate()).padStart(2, "0")}`;
+    }
+    return { commit_sha: sha.slice(0, 10), commit_date: date };
+  } catch {
+    return { commit_sha: "(unknown)", commit_date: "" };
+  }
+}
+
 function writeBaseline(violations: Violation[]) {
   const data: BaselineFile = {
     _readme: [
@@ -101,9 +132,12 @@ function writeBaseline(violations: Violation[]) {
       "手で編集しないこと。再生成: npx tsx scripts/check-jst-date-bypass.ts --write-baseline",
       "既存項目を直した後、または新規違反をレビュー済みでgrandfatherする場合にのみ再生成すること。",
       "新しく書いたコードの違反はbaselineに入れず先に直すこと(baselineの意味が無くなるため)。",
+      "commit_sha/commit_dateはbaseline再生成時点のgit blame結果(再生成の都度更新される。",
+      "追加前にこの日付を見て「既存負債(legacy)か新規に書かれたコード(new)か」を判断すること。" +
+        "legacyの目安はPR-A(#199)着手コミットより前かどうか(PR-F2b参照)。",
     ],
     violations: violations
-      .map((v) => ({ file: v.file, pattern: v.pattern, code: v.code }))
+      .map((v) => ({ file: v.file, pattern: v.pattern, code: v.code, ...blameInfo(v.file, v.line) }))
       .sort((a, b) => (a.file + a.pattern + a.code).localeCompare(b.file + b.pattern + b.code)),
   };
   fs.writeFileSync(BASELINE_PATH, JSON.stringify(data, null, 2) + "\n");
