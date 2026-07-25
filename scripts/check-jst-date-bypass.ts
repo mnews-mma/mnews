@@ -24,6 +24,10 @@
 //   3. 正規表現による日付文字列の分解(.match/.exec + \d{4}を含むパターン)
 //   4. getFullYear()/getMonth()/getDate()/getDay() などローカルgetterの直呼び
 //      (getUTCXxx は対象外)
+//   5. 日付文字列に対するsplit("-")/split("/")による分解(受け手の変数名/
+//      プロパティ名に"date"を含む場合のみ対象。汎用的な文字列分割との誤検出を
+//      抑えるため。PR-Fでlatestresultclauseがこのパターンでゲートを迂回した
+//      実例があり追加)
 //
 // 運用:
 //   通常実行:            npx tsx scripts/check-jst-date-bypass.ts
@@ -151,6 +155,16 @@ function scanFile(file: string, violations: Violation[]) {
     // 4. ローカルgetterの直呼び(getUTCXxxは対象外。"UTC"が続く場合はマッチしない)
     for (const m of line.matchAll(/\.get(FullYear|Month|Date|Day)\(\)/g)) {
       violations.push({ file, line: lineNo, pattern: `local getter .get${m[1]}()`, code: rawLine.trim() });
+    }
+
+    // 5. 日付文字列に対するsplit("-")/split("/")による分解。受け手の変数名/
+    // プロパティ名(レシーバ式)に"date"を含む場合のみ対象とし、無関係な文字列
+    // 分割(URL・スラッグ・カンマ区切りリスト等)との誤検出を抑える。
+    for (const m of line.matchAll(/([\w.[\]]+)\.split\(\s*["'`]([-/])["'`]\s*\)/g)) {
+      const receiver = m[1];
+      if (/date/i.test(receiver)) {
+        violations.push({ file, line: lineNo, pattern: `date string split("${m[2]}")`, code: rawLine.trim() });
+      }
     }
   });
 }

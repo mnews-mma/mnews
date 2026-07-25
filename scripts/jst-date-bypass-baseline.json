@@ -397,6 +397,11 @@
       "code": "const piped = raw.match(/\\{\\{dts\\|(\\d{4})\\|([A-Za-z0-9]+)\\|(\\d{1,2})/i);"
     },
     {
+      "file": "src/lib/mnewsRating/divisions.ts",
+      "pattern": "date string split(\"-\")",
+      "code": "const [y, m, d] = dateStr.split(\"-\").map(Number);"
+    },
+    {
       "file": "src/lib/mnewsRating/eligibilityRules.ts",
       "pattern": "date-only string passed to Date constructor",
       "code": "const asOfDate = new Date(`${asOfDateStr}T00:00:00Z`);"

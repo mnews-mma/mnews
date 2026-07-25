@@ -62,6 +62,25 @@ export function formatEventDateJa(dateStr: string): string {
   return `${y}年${m}月${d}日（${dow}）`;
 }
 
+// 暦日文字列("YYYY-MM-DD")を「◯年◯月◯日」に整形する表示用ヘルパー(曜日なし)。
+// formatEventDateJa(曜日あり)・formatEventYearMonthJa(年月のみ)と役割を
+// 分ける。tz非依存(文字列split、Dateオブジェクトのローカルgetterは使わない)。
+// ランキングページの「◯◯更新」等、曜日を出したくない場面向け
+// (seoTemplates.tsから利用)。
+export function formatDateJa(dateStr: string): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return `${y}年${m}月${d}日`;
+}
+
+// 大会日文字列("YYYY-MM-DD")を「◯年◯月」に整形する表示用ヘルパー(日・曜日
+// なし)。formatEventDateJaと同じくtz非依存(文字列split、Dateオブジェクトの
+// ローカルgetterは使わない)。選手ページの「直近試合の一言」等、日にちまで
+// 出す必要が無い場面向け(seoTemplates.tsから利用)。
+export function formatEventYearMonthJa(dateStr: string): string {
+  const [y, m] = dateStr.split("-").map(Number);
+  return `${y}年${m}月`;
+}
+
 // 大会日文字列("YYYY-MM-DD")から deltaDays 日ずらした暦日文字列を返す
 // (deltaDays=-1で前日)。純粋なカレンダー日算術のみ(時刻成分・タイムゾーンの
 // 概念が一切登場しない)ため、"今"や"JST"のオフセットには依存しない。
