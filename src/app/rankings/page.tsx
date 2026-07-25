@@ -3,12 +3,13 @@ import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
 import { FIGHTERS } from "@/lib/fighters";
-import { fetchRankings } from "@/lib/mnewsRatingData";
+import { fetchRankings, getRankingsUpdatedAt } from "@/lib/mnewsRatingData";
 import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { MNEWS_DIVISIONS, DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
 import { pageMetadata } from "@/lib/seo";
 import { toJstDateStr } from "@/lib/eventCountdown";
+import { buildRankingsHubTitle } from "@/lib/seoTemplates";
 
 // Next.jsのページセグメントconfig(revalidate)は静的解析のみでリテラル値しか
 // 認識できず、importした定数を直接代入するとビルドエラーになる
@@ -17,12 +18,18 @@ import { toJstDateStr } from "@/lib/eventCountdown";
 // 揃えて新旧混在ゼロを担保する設計のため、値を変える際は両方を同時に変更する)。
 export const revalidate = 900;
 
-export const metadata = pageMetadata({
-  title: "AI RIZINランキング 階級別｜RIZIN公式にない独自ランキングをAIが算出【mnews】",
-  description:
-    "RIZINに公式ランキングはありません。独自開発のAIが全試合結果を分析して算出する階級別ランキング「AI RIZINランキング」。RIZIN大会の結果を反映して更新します。",
-  path: "/rankings",
-});
+// 「rizin ランキング」検索で埋もれている(34位)対応。更新日をtitleに含めて
+// 鮮度をアピールする(更新日はdata/rankings.json由来・ハードコード禁止)。
+export async function generateMetadata() {
+  const rankings = await fetchRankings();
+  const updatedAt = getRankingsUpdatedAt(rankings);
+  return pageMetadata({
+    title: buildRankingsHubTitle(updatedAt),
+    description:
+      "RIZINに公式ランキングはありません。独自開発のAIが全試合結果を分析して算出する階級別ランキング「AI RIZINランキング」。RIZIN大会の結果を反映して更新します。",
+    path: "/rankings",
+  });
+}
 
 const TOP_N_ON_HUB = 5;
 
@@ -63,8 +70,8 @@ export default async function RankingsHubPage() {
   const rankings = await fetchRankings();
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
 
-  const anyDivision = Object.values(rankings)[0];
-  const updatedAt = anyDivision?.updatedAt ? toJstDateStr(Date.parse(anyDivision.updatedAt)) : null;
+  const rawUpdatedAt = getRankingsUpdatedAt(rankings);
+  const updatedAt = rawUpdatedAt ? toJstDateStr(Date.parse(rawUpdatedAt)) : null;
 
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "ランキング" }];
 
