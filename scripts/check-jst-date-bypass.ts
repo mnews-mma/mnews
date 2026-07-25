@@ -55,11 +55,16 @@ import path from "path";
 const ROOT = process.cwd();
 
 // この検査自体の対象外(JST日付計算の正規の実装場所+既存の日付テストのみ)。
+// check-jst-date-bypass.ts自身も対象外: この検出器は日付らしき文字列の
+// "形"を判定するために\d{4}を含む正規表現をその実装として持つ必要があり
+// (isDateOnlyStringLiteral等)、これはアプリコード側の迂回とは性質が異なる
+// 自己参照(検出器が自分自身の実装を誤検出する)。PR-J実装時に判明。
 const ALLOWLIST = new Set([
   "src/lib/eventCountdown.ts",
   "scripts/test-jst-date-str.ts",
   "scripts/test-event-date-format.ts",
   "scripts/test-future-history-filter.ts",
+  "scripts/check-jst-date-bypass.ts",
 ]);
 
 // スキャン対象ディレクトリ(アプリコード+運用スクリプト)。node_modules/.next等は
@@ -123,13 +128,32 @@ function listTsFiles(dir: string): string[] {
   return out;
 }
 
+// 文字列リテラル("YYYY-MM-DD..."で始まるクォート文字列)が、time成分や
+// UTC明示(Z/オフセット)を一切含まない「date-onlyのみ」の表記かどうかを判定
+// する。T・Z・明示的なUTCオフセット(+HH:MM/-HH:MM)のいずれかを含む場合は
+// 曖昧性の無いフルタイムスタンプであり、date-onlyパースの踏み穴(UTC 0時解釈)
+// には該当しないため対象外とする(2026-07-26 PR-J: #177調査で
+// new Date("2999-01-01T00:00:00.000Z")が誤検出されていたことが判明)。
+function isDateOnlyStringLiteral(trimmed: string): boolean {
+  const m = trimmed.match(/^["'`](\d{4}-\d{1,2}-\d{1,2}[^"'`]*)["'`]/);
+  if (!m) return false;
+  const inner = m[1];
+  if (/T/.test(inner)) return false;
+  if (/Z/.test(inner)) return false;
+  if (/[+-]\d{2}:\d{2}/.test(inner)) return false;
+  return true;
+}
+
 // new Date(...) の引数を見て「date-onlyの文字列をパースしている」と判断できる
 // ケースだけを拾う。no-arg(new Date())やepoch-ms系(new Date(nowMs)等)は対象外。
 function isDateOnlyDateConstructorArg(arg: string): boolean {
   const trimmed = arg.trim();
   if (trimmed === "") return false; // new Date()
-  // リテラルの日付文字列("YYYY-MM-DD"、"YYYY-MM-DDT..."含む)
-  if (/^["'`]\d{4}-\d{1,2}-\d{1,2}/.test(trimmed)) return true;
+  // リテラルの日付文字列: date-onlyのみ対象(T/Z/オフセット付きのフルタイム
+  // スタンプは対象外)。
+  if (/^["'`]/.test(trimmed)) return isDateOnlyStringLiteral(trimmed);
+  // 以下は変数/式渡し(中身を静的判定できないため、従来どおりの挙動を維持する。
+  // 絞りすぎて検出漏れを作らないため変更しない)。
   // epoch-ms/timestamp/Date.now()由来と見られる引数は対象外
   if (/Ms\b|epoch|timestamp|Date\.now\(\)/i.test(trimmed)) return false;
   // 変数名・プロパティ名に"date"を含む場合のみ疑わしいとみなす

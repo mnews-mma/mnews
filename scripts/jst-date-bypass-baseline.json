@@ -89,16 +89,6 @@
     {
       "file": "scripts/test-mnews-rating.ts",
       "pattern": "date-only string passed to Date constructor",
-      "code": "const asOf = new Date(\"2026-07-11T00:00:00Z\");"
-    },
-    {
-      "file": "scripts/test-mnews-rating.ts",
-      "pattern": "date-only string passed to Date constructor",
-      "code": "const asOf = new Date(\"2026-07-11T00:00:00Z\");"
-    },
-    {
-      "file": "scripts/test-mnews-rating.ts",
-      "pattern": "date-only string passed to Date constructor",
       "code": "const asOf = new Date(\"2026-07-13\");"
     },
     {
@@ -228,11 +218,6 @@
     },
     {
       "file": "src/app/api/og/digest/route.tsx",
-      "pattern": "date-only string passed to Date constructor",
-      "code": "const dayStart = new Date(`${dateStr}T00:00:00+09:00`).getTime();"
-    },
-    {
-      "file": "src/app/api/og/digest/route.tsx",
       "pattern": "local getter .getDate()",
       "code": "const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;"
     },
@@ -354,11 +339,6 @@
     {
       "file": "src/lib/feeds/aggregate.ts",
       "pattern": "date-only string passed to Date constructor",
-      "code": "const d = new Date(`${dateStr}+09:00`);"
-    },
-    {
-      "file": "src/lib/feeds/aggregate.ts",
-      "pattern": "date-only string passed to Date constructor",
       "code": "const d = new Date(dateStr);"
     },
     {
@@ -400,11 +380,6 @@
       "file": "src/lib/mnewsRating/divisions.ts",
       "pattern": "date string split(\"-\")",
       "code": "const [y, m, d] = dateStr.split(\"-\").map(Number);"
-    },
-    {
-      "file": "src/lib/mnewsRating/eligibilityRules.ts",
-      "pattern": "date-only string passed to Date constructor",
-      "code": "const asOfDate = new Date(`${asOfDateStr}T00:00:00Z`);"
     },
     {
       "file": "src/lib/mnewsRating/eligibilityRules.ts",
