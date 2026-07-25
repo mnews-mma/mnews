@@ -2,7 +2,7 @@
 // 序列はmnewsが作らず団体公式の値をそのまま転載。対象は男子(ストロー〜ミドル)+
 // 女子の該当階級のみ(修斗の環太平洋ランキングのような重複/対象外区分はスキップ)。
 import { FIGHTERS } from "./fighters";
-import { rankSortKey } from "./weightClasses";
+import { rankSortKey, sortByWeightClass } from "./weightClasses";
 import { fullWidthLength } from "./tweetDigest";
 import { SITE_URL } from "./seo";
 
@@ -194,9 +194,11 @@ export function buildOfficialRankingTitle(
 // 団体側の階級構成が変わった際にdescriptionだけが嘘になるため)。出典(団体公式
 // サイトのドメイン)もOrgRankingData.sourceUrlから機械的に明記する。
 // data無し/階級0件はフォールバック(捏造ゼロ)。
-// 全角90字を目安に、階級リストが収まらない場合は末尾から間引いて
-// 「{先頭○階級}など{全体数}階級」に丸める(階級の列挙順に優先度は無いため、
-// 収録順の末尾から落とすだけで足りると判断)。
+// 階級の列挙順はOrgRankingView(実際の表示テーブル)と同じsortByWeightClassで
+// 揃える(修正前はJSON収録順=公式サイトHTMLのブロック出現順のままで、団体ごと
+// バラバラかつ軽量級/重量級どちらが先とも決まらない順序になっていた)。
+// 全角90字を目安に、階級リストが収まらない場合は軽量級側を優先して末尾(重量級側)
+// から間引き「{先頭○階級}など{全体数}階級」に丸める。
 const DESCRIPTION_MAX = 90;
 
 export function buildOfficialRankingDescription(
@@ -205,7 +207,11 @@ export function buildOfficialRankingDescription(
 ): string {
   const fallback = `${orgName}公式ランキングを階級別に掲載。最新の公式発表から転載。`;
   if (!data) return fallback;
-  const classNames = data.classes.filter((c) => c.entries.length > 0).map((c) => c.weightClass);
+  const activeClasses = sortByWeightClass(
+    data.classes.filter((c) => c.entries.length > 0),
+    (c) => c.weightClass
+  );
+  const classNames = activeClasses.map((c) => c.weightClass);
   if (classNames.length === 0) return fallback;
 
   let domain = "";
