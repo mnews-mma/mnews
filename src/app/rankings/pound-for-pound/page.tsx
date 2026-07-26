@@ -116,7 +116,6 @@ export default async function PoundForPoundRankingPage() {
                   <tr>
                     <th style={{ width: 44 }}>順位</th>
                     <th>選手</th>
-                    <th style={{ width: 72 }}>階級</th>
                     <th style={{ width: 64 }}>前回比</th>
                     <th style={{ width: 96 }}>RIZIN通算</th>
                     <th style={{ width: 100 }}>直近試合</th>
@@ -139,9 +138,6 @@ export default async function PoundForPoundRankingPage() {
                           {e.nameJa}
                         </a>
                       </td>
-                      <td style={{ fontSize: 11, color: "var(--muted)", whiteSpace: "nowrap" }}>
-                        {e.division}
-                      </td>
                       <td>
                         <RankPositionDeltaBadge delta={e.rankPositionDelta} />
                       </td>
@@ -159,10 +155,9 @@ export default async function PoundForPoundRankingPage() {
         )}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
-          王座戦など、試合の価値を加味したうえで、階級の壁を取り払って一本に並べています。
+          P4Pでは、王者も番号付きの順位に含めます。王座戦など、試合の価値を加味したうえで、階級の壁を取り払って一本に並べています。
           戦績は階級を問わないRIZIN通算です(階級別ランキングの戦績は、階級を移った選手についてはその階級での戦績に絞っているため、
           数字が異なることがあります)。直近の実績ほど重く評価します。
-          順位はすべて自動算出です。恣意的な編集判断や手動での補正は一切していません。
         </p>
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 8 }}>
           P4Pは主観的・参考指標であり、階級別ランキングの正式な代替ではありません。
