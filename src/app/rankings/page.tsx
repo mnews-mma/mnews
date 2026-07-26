@@ -91,7 +91,9 @@ export default async function RankingsHubPage() {
       });
     }
   }
-  const p4pView = p4pResolved.slice(0, TOP_N_ON_HUB);
+  // 他の階級セクションは「王者1行+TOP_N_ON_HUB(5)件」で計6行見える構成のため、
+  // 王者行を持たないP4Pだけ件数を合わせてTOP_N_ON_HUB+1(6件)にする。
+  const p4pView = p4pResolved.slice(0, TOP_N_ON_HUB + 1);
 
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "ランキング" }];
 
