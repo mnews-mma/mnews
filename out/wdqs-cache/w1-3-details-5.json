@@ -1,0 +1,36 @@
+{
+  "head" : {
+    "vars" : [ "p", "labelJa", "labelEn", "altJa", "sherdogId", "tapologyId", "birth" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126005809"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "金田一孝介"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kōsuke Kindaichi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "47762"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1989"
+      }
+    } ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "head" : {
+    "vars" : [ "p", "pLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P2818"
+      },
+      "pLabel" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "SHERDOG選手識別子"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/P9728"
+      },
+      "pLabel" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "Tapology選手識別子"
+      }
+    } ]
+  }
+}

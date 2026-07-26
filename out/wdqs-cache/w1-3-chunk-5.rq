@@ -1,0 +1,10 @@
+SELECT ?p (SAMPLE(?pLabel_ja) AS ?labelJa) (SAMPLE(?pLabel_en) AS ?labelEn) (GROUP_CONCAT(DISTINCT ?alt_ja; separator="|") AS ?altJa) (SAMPLE(?sherdog) AS ?sherdogId) (SAMPLE(?tapology) AS ?tapologyId) (MIN(?birthYear) AS ?birth) WHERE {
+  VALUES ?p { wd:Q126005809 }
+  OPTIONAL { ?p rdfs:label ?pLabel_ja . FILTER(LANG(?pLabel_ja)="ja") }
+  OPTIONAL { ?p rdfs:label ?pLabel_en . FILTER(LANG(?pLabel_en)="en") }
+  OPTIONAL { ?p skos:altLabel ?alt_ja . FILTER(LANG(?alt_ja)="ja") }
+  OPTIONAL { ?p wdt:P2818 ?sherdog . }
+  OPTIONAL { ?p wdt:P9728 ?tapology . }
+  OPTIONAL { ?p wdt:P569 ?birthDate . BIND(YEAR(?birthDate) AS ?birthYear) }
+}
+GROUP BY ?p

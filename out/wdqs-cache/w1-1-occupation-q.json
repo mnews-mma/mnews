@@ -1,0 +1,48 @@
+{
+  "head" : {
+    "vars" : [ "q", "qLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "q" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11607585"
+      },
+      "qLabel" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "総合格闘家"
+      }
+    }, {
+      "q" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q52008305"
+      },
+      "qLabel" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "総合格闘技レフェリー"
+      }
+    }, {
+      "q" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q52008306"
+      },
+      "qLabel" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "総合格闘技ジャッジ"
+      }
+    }, {
+      "q" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q57997670"
+      },
+      "qLabel" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "総合格闘技コーチ"
+      }
+    } ]
+  }
+}

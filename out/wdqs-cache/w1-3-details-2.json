@@ -1,0 +1,4320 @@
+{
+  "head" : {
+    "vars" : [ "p", "labelJa", "labelEn", "altJa", "sherdogId", "tapologyId", "birth" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11457264"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "富田里奈"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rina Tomita"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "40764"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1984"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11559119"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "海老原まどか"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madoka Ebihara"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "♂ha@THE♀"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "19270"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1986"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11559987"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "深岬パトラ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Patra Misaki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "小澤深岬"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "40763"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1986"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11585301"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "石原美和子"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Miwako Ishihara"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "4233"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1970"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11619137"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "菅原伊織"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iori Sugawara"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1978"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11620755"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "葉山智昭"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tomoaki Hayama"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "446"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1970"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11629450"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "西良典"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yoshinori Nishi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "472"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1955"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11632181"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "謙吾"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kengo"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "渡部謙吾"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1049"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1976"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11635321"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "赤井太志朗"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tashirō Akai"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "西内太志朗"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1498"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11638783"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "近藤定男"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sadao Kondō"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "28153"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1979"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15987739"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "鈴木信達"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nobutatsu Suzuki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "15160"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15987792"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "久米鷹介"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takasuke Kume"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "21731"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1985"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "8848-takasuke-kume"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15987810"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "ゴイチ・ヤマウチ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goiti Yamauchi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "48629"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1993"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "36559-goiti-yamauchi"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16769563"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "ISAO"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "ISAO"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "36680"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1988"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16770400"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "岸本泰昭"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yasuaki Kishimoto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "21996"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1984"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17158832"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "山本アーセン"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Erson Yamamoto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "佐々木アーセン"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "211093"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1996"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17160466"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "TAISHO"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tomomi Iwama"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "6077"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17221921"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "矢地祐介"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yūsuke Yachi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "44738"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1990"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17224941"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中井光義"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mitsuyoshi Nakai"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "54006"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1989"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17349970"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "佐々木信治"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sasaki Shinji"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "14367"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17349973"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "佐藤天"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takashi Satō"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "147403"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1990"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17361532"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "元谷友貴"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yūki Motoya"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "もとや ゆうき"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "66241"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1989"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18687926"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "井上和浩"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazuhiro Inoue"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1319"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1973"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18687947"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "石川誠"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Makoto Ishikawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1277"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1974"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "5661-makoto-ishikawa"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18817645"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "シバター"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shibatar"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "齋藤光"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "78906"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1985"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19577433"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Masaki Nishizawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1268"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1972"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19578371"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jinzaburo Yonezawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1284"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19666844"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "小島弘之"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hiroyuki Kojima"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1218"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1975"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20011567"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "松田干城"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tateki Matsuda"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "45607"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1986"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20030028"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "太田忍"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shinobu Ōta"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "378738"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1993"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "279365-shinobu-ota"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20038580"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "安西信昌"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shinsho Anzai"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "47183"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1985"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20736459"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hiroshi Umemura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1308"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1972"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30502025"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "井上直樹"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Naoki Inoue"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "158487"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1997"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "60855-naoki-inoue"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38276105"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "風田陣"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jin Kazeta"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "3485"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1971"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38276186"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "スダリオ剛"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takanofuji Sanzo"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "貴公俊 剛|貴ノ富士 三造"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "375500"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1997"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "271208-tsuyoshi-sudario-takanofuji-sanzo"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42302288"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "那須川天心"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tenshin Nasukawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "241529"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1998"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "146669-tenshin-nasukawa"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45819117"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中村倫也"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rinya Nakamura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "386855"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1995"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "296781-tomoya-nakamura"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45819258"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "渡辺華奈"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kana Watanabe"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "渡辺 華奈"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "265441"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1988"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "168540-kana-watanabe"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47465008"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "浅倉カンナ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kanna Asakura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "176903"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1997"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "79993-kanna-asakura"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q53764824"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "黒部三奈"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mina Kurobe"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "119851"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56354137"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "松本光史"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kōshi Matsumoto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "42341"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1983"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60194618"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "平本蓮"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ren Hiramoto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "378737"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1998"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "237092-ren-hiramoto"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q73112038"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "鈴木千裕"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chihiro Suzuki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "226285"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1999"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "140868-chihiro-suzuki"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q107451328"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "大島沙緒里"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saori Oshima"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "361683"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1994"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "250331-saori-oshima"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q108109572"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "伊澤星花"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seika Izawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "375399"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1997"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "269818-seika-izawa"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q108109936"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "平良達郎"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tatsuro Taira"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "293975"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "2000"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "145595-tatsuro-taira"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q110402185"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "北方大地"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Daichi Kitakata"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "58645"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1991"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q112238102"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "関原翔"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shō Sekihara"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "308893"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1993"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126934596"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tatsuya Ando"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "174625"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1990"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "76663-tatsuya-ando"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q133826011"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "鮫島るい"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rui Samejima"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "武村綾華"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "295585"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1992"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "195354-aya"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8060566"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "辻結花"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yuka Tsuji"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "6983"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1974"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8060656"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "佐々木有生"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yuki Sasaki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1255"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1976"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8060664"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "正城ユウキ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yuki Shoujou"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "9577"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8060747"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "坂口征夫"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yukio Sakaguchi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "坂口 征夫"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "22195"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1973"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8062053"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "久保優太"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yuta Kubo"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "391321"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1987"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8062231"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "白井祐矢"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yuya Shirai"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "9532"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q10854975"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "我龍真吾"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shingo Garyū"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "235035"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1975"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11192033"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "Barbaro44"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbaro44"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "富岡義宏"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "12072"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1979"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11214259"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "玉海力剛"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yukio Kawabe"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "玉海力 剛"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "10505"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1966"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11222258"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "HARI"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hari"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "張替美佳"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "5094"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1982"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11227821"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "KG心斗"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "KG Shinto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "30409"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1982"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11252092"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "URAKEN"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "URAKEN"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "宇良健吾"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "7164"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1981"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11300096"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "グッドマン田中"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goodman Tanaka"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "14441"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1979"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11301795"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "ゲーリー・ノムライト"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yohei Nomura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "155769"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11309833"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "ジャックナイフツネオ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackknife Tsuneo"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "24406"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1982"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11312418"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "ストラッサー起一"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kiichi Kunimoto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "国本起一"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "21039"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1981"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11316001"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "タカ・クノウ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takanori Kuno"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "タカクノウ"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "14535"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1967"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11341646"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "マンモス佐々木"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sasaki Manmosu"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "浪速嘉則|佐々木嘉則"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "3717"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1974"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11410246"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "及川千尋"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chihiro Oikawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "42436"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1987"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11439822"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "大門まい子"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maiko Ōkado"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "10010"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q542566"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "黒田エミ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Emi Kuroda"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "秋本美鈴"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "13733"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1978"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1739023"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "佐々木健介"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kensuke Sasaki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "パワー・ウォリアー"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "2641"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1966"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2699043"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "三崎和雄"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazuo Misaki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1829"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1976"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3082436"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "宮田和幸"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazuyuki Miyata"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "11707"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1976"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3098857"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "桜井速人"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hayato Sakurai"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "桜井マッハ速人|桜井\"マッハ\"速人"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "432"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1975"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "hayato-sakurai-mach"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3108267"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "泉浩"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hiroshi Izumi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "52100"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1982"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3136380"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "横井宏考"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hirotaka Yokoi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1334"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1978"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3174577"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中村和裕"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazuhiro Nakamura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "6943"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1979"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3242787"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中井りん"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rin Nakai"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "18887"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1986"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "rin-nakai"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3291394"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "高阪剛"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tsuyoshi Kosaka"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "190"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1970"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "tsuyoshi-kosaka-tk"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3343678"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "山本徳郁"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Norifumi Yamamoto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "額少年|GAKUS|山本KID徳郁|山本“KID”徳郁|山本\"KID\"徳郁"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1354"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "norifumi-yamamoto-kid"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3453178"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "佐藤ルミナ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rumina Sato"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "421"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1973"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3514206"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "杉浦貴"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takashi Sugiura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "4837"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1970"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3573150"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中井祐樹"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yuki Nakai"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "中井裕樹"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "429"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1970"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3783656"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "日沖発"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hatsu Hioki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "5466"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1983"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3874914"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "永田克彦"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Katsuhiko Nagata"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "14811"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1973"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4057557"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "東孝"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takashi Azuma"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1949"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4220449"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "菊地昭"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Akira Kikuchi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "3483"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1978"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "2348-akira-kikuchi"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4352443"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "廣田瑞人"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mizuto Hirota"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "12078"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1981"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4673000"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "アレクサンダー大塚"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alexander Otsuka"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "大塚崇"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "5"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1971"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "alexander-otsuka-the-diet-butcher"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4701157"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "前田日明"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Akira Maeda"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "前田明"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "5022"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1959"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4701246"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "田村彰敏"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Akitoshi Tamura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1365"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "akitoshi-tamura-ironman"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4701279"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "西浦聡生"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Akiyo Nishiura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "西浦\"ウィッキー\"聡生|ウィッキー聡生"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "13085"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1983"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4803483"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "小寺麻美"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Asami Kodera"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "7087"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1978"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4845534"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "瀧本誠"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Makoto Takimoto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "11814"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1974"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "makoto-takimoto"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4921076"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "RENA"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rena Kubota"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "レーナ"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "209061"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1991"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "118827-rena-kubota"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5209170"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "DJ.taiki"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Daiki Hata"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "畑大樹"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "12315"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1982"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5209653"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中村大介 (プロレスラー)"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Daisuke Nakamura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "4910"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5288771"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "三島☆ド根性ノ助"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dokonjonosuke Mishima"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1170"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1972"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "dokonjonosuke-mishima"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5349218"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "光岡映二"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eiji Mitsuoka"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "光岡エイジ"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "2235"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1976"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5371059"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "藤野恵実"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Emi Fujino"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "10006"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "emi-fujino"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5371429"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "柳澤龍志"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ryūshi Yanagisawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "柳沢龍志"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "668"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1972"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5639983"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "大原はじめ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hajime Ohara"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "レイ大原"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "17919"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1984"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6314410"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "KODO"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Junya Kodo"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "小堂準也"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "19376"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1983"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6378095"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "藤井克久"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Katsuhisa Fujii"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "藤井軍鶏侍|藤井勝久"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "234"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1972"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "katsuhisa-fujii-shamoji"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6378220"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "井上克也"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Katsuya Inoue"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "6940"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1979"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6378241"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "柴田勝頼"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Katsuyori Shibata"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "魔界4号"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "10434"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1979"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6381456"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "浜中和宏"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazuhiro Hamanaka"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "7684"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1978"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6381619"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "横田一則"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazunori Yokota"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "11335"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1978"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6381671"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "高橋義生"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazuo Takahashi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "高橋“人喰い”義生|高橋和生|人喰い義生"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "153"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1969"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6381685"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "山崎一夫"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazuo Yamazaki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1962"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6383637"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "山宮恵一郎"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Keiichirō Yamamiya"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "KEI山宮"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "237"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1972"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6383697"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "たま☆ちゃん"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Keiko Tamai"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "玉井敬子"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "10702"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1982"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6383882"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "藤原敬典"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Keisuke Fujiwara"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "22680"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1982"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6383921"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中村K太郎"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Keita Nakamura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "9572"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1984"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "keita-nakamura-k-taro"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6388985"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "ケンドー・カシン"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kendo Kashin"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "石澤常光|ケンドー・カ・シン"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "329"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1968"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7334037"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "福田力"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Riki Fukuda"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "10229"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1981"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7385254"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "川村亮"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ryo Kawamura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "13514"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1981"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7385501"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "村田龍一"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ryuichi Murata"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "13413"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1976"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "ryuichi-murata"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7385531"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "上山龍紀"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ryuki Ueyama"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "うえやま りゅうき"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1479"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1976"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7420869"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "石岡沙織"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saori Ishioka"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "21463"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1987"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "4162-saori-ishioka-shooting-star"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7426351"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "しなしさとこ"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Satoko Shinashi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "6974"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7446613"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "池本誠知"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seichi Ikemoto"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1315"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1975"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7446684"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "井上誠午"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seigo Inoue"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "24230"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1986"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7477629"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中尾芳広"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yoshihiro Nakao"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "9397"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1972"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7496341"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "大澤茂樹"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shigeki Osawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "44501"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1986"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7497516"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "小島伸一"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shinichi Kojima"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "8669"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1979"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7497713"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "神取忍"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shinobu Kandori"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "神取しのぶ"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "19313"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1964"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "21616-shinobu-kandori"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7497781"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "石渡伸太郎"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shintaro Ishiwatari"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "15245"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1985"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "shintaro-ishiwatari"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7499482"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "杉山しずか"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shizuka Sugiyama"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "40759"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1987"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7674340"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "安田忠夫"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tadao Yasuda"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "富士の森忠雄|富士の森|孝乃富士忠雄|孝乃富士"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "584"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1963"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7676422"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "小比類巻貴之"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takayuki Kohiruimaki"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "小比類巻太信|こひるいまき たかゆき|こひるいまき たいしん"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "92397"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7676451"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "奥野泰舗"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Taisuke Okuno"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "奥野\"轟天\"泰舗"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "13389"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7677355"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中蔵隆志"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takashi Nakakura"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "5369"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7678038"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "佐藤豪則"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takenori Sato"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "12196"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1985"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7678115"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "リオン武"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takeshi Inoue"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "井上武"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "7718"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1980"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7678583"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "中山巧"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Takumi Nakayama"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "タクミ,"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1325"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1973"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7706865"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "加藤鉄史"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tetsuji Kato"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "423"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1977"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "tetsuji-kato"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7827434"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "矢野通"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Toru Yano"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "8317"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1978"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7960773"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "鈴川真一"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wakakirin Shinichi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "若麒麟真一|若麒麟"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "74753"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1983"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7960843"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "馬場口洋一"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wakashoyo Shunichi"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "若翔洋俊一|若翔洋|WAKASYOYO|WAKASHOYO"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "13345"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1966"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7973015"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "坂田亘"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wataru Sakata"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "ナットーマン"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1447"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1973"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8012929"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "西島洋介"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yōsuke Nishijima"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "陽海山|西島洋介山"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "14884"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1973"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8049996"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "漆谷康宏"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yasuhiro Urushitani"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1349"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1976"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8050001"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "滑川康仁"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yasuhito Namekawa"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "1462"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1974"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8054598"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "山田よう子"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yoko Yamada"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "7230"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1979"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8055988"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "谷津嘉章"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yoshiaki Yatsu"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "津谷章嘉"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "326"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1956"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8056267"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "前田吉朗"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yoshiro Maeda"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "6887"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1981"
+      },
+      "tapologyId" : {
+        "type" : "literal",
+        "value" : "yoshiro-maeda"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8056339"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "吉田善行"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yoshiyuki Yoshida"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : ""
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "12073"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1974"
+      }
+    }, {
+      "p" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8060542"
+      },
+      "labelJa" : {
+        "xml:lang" : "ja",
+        "type" : "literal",
+        "value" : "KUSHIDA"
+      },
+      "labelEn" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kushida"
+      },
+      "altJa" : {
+        "type" : "literal",
+        "value" : "櫛田雄二郎"
+      },
+      "sherdogId" : {
+        "type" : "literal",
+        "value" : "8916"
+      },
+      "birth" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "1983"
+      }
+    } ]
+  }
+}
