@@ -111,7 +111,11 @@ function recomputeDisplayMap(): Map<string, DisplayEntry> {
   const FAR_FUTURE_PROBE = new Date("2999-01-01T00:00:00.000Z");
   const provisionalBouts = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss, FAR_FUTURE_PROBE, isOpeningFightOverride).bouts;
   const latestBoutDate = provisionalBouts.reduce((m, b) => (b.date > m ? b.date : m), "");
-  const asOf = latestBoutDate ? new Date(latestBoutDate) : FAR_FUTURE_PROBE;
+  // "YYYY-MM-DD"のみをnew Dateに渡すとブラウザ/Node実装依存の暗黙のタイムゾーン
+  // 解釈に頼ることになるため、UTC真夜中であることを明示する(T00:00:00.000Z)。
+  // engine.ts側もasOf.toISOString().slice(0,10)で日付文字列に戻すだけ(UTC↔UTC
+  // の往復)でJST変換を挟まないため、この時点でも壁時計非依存性は変わらない。
+  const asOf = latestBoutDate ? new Date(`${latestBoutDate}T00:00:00.000Z`) : FAR_FUTURE_PROBE;
 
   const { bouts } = buildBouts(records, resolve, getKnownNames, lookupWeighInMiss, asOf, isOpeningFightOverride);
   const preDebutRecords = computePreDebutRecords(records);
