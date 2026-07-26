@@ -41,7 +41,7 @@ type Division = (typeof DIVISIONS)[number];
 // のため、champion:null固定で「別枠の王者行」を持たず、contenders(先頭3件)
 // がそのまま順位付きリストになる(既存のview.champion有無で分岐する
 // レンダリングをそのまま流用できる)。
-const P4P_KEY = "パウンドフォーパウンド" as const;
+const P4P_KEY = "男子パウンドフォーパウンド" as const;
 type SelectableKey = Division | typeof P4P_KEY;
 
 // トップページのヒーロー「AI RIZINランキング」カード(データ資産ブロック。
