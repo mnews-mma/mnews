@@ -95,8 +95,8 @@ export default async function PoundForPoundRankingPage() {
       </div>
 
       <div style={{ padding: "16px 24px 8px", maxWidth: 760, fontSize: 12, color: "var(--muted)", lineHeight: 1.8 }}>
-        RIZIN非公式。mnews.jp独自算出。RIZINに公式のP4Pランキングはありません。階級別ランキング({RATING_NAME})をもとに、
-        階級の壁を取り払って全選手を横並びにした参考指標です(階級別ランキングの順位はそのまま維持しています)。
+        RIZIN非公式。mnews.jp独自算出。RIZINに公式のP4Pランキングはありません。階級別ランキング({RATING_NAME})の元になっている
+        レートをそのまま使い、階級の壁を取り払って全選手を横並びにした参考指標です。
         評価の考え方は<a href="/rankings/methodology" style={{ color: "var(--accent)" }}>ランキングについて</a>で公開しています。
         {data && (
           <span style={{ display: "block", fontSize: 10, opacity: 0.7, marginTop: 4 }}>

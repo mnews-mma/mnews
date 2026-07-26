@@ -15,17 +15,17 @@
 //   自然にレートを押し上げる。zスコアで正規化するとこの効果を打ち消して
 //   しまうため、正規化なしの絶対値の方がファンの直感(強い階級での防衛・
 //   活躍がそのまま評価される)に合う。
-// - 挑戦者(非王者)は、同一階級内で階級別公開ランキングの順序を絶対に逆転
-//   しない完全clampをかける(clampChallengersToDivisionOrder参照、閾値0)。
-//   公開下位ランクの選手が公開上位ランクの選手をP4Pで追い越すことは一切ない。
-//   経緯(2026-07-22最終決定): 一時期は閾値付き(P4P_DIVISION_ORDER_THRESHOLD=10、
-//   僅差の逆転のみ抑制・大ギャップの逆転=サトシ・ソウザ等は許容)を採用したが、
-//   UFC/リング誌/ESPN等の実P4Pはいずれも単一の評価主体が階級・P4P両方を決める
-//   ため両者が矛盾しないという調査結果を踏まえ、mnewsのP4Pも「階級ページと
-//   常に一致する」方針に統一した。閾値10は「階級別ランキング(H2H補正Elo)と
-//   P4P(生Elo)という別ロジック併用」から生じる構造的アーティファクトへの
-//   対症療法であり、閾値0の方が一貫している(詳細な経緯はP4P_DIVISION_ORDER_
-//   THRESHOLDのコメント参照)。
+// - 挑戦者(非王者)は、同一階級内で「僅差なら階級別公開rank順を維持・明確な
+//   格上(レート差>閾値)ならrawをそのまま採用して逆転を許す」部分clampを
+//   かける(clampChallengersToDivisionOrder参照、閾値30)。
+//   経緯(2026-07-26復帰): 2026-07-22に一旦閾値0(逆転を一切許さない完全clamp)へ
+//   倒したが、完全clampは階級別ランキングのH2H補正で公開順位が下がった選手の
+//   「生Eloの高さ」を潰してしまう(例: ホベルト・サトシ・ソウザは生rawRating
+//   1596で公開1位ノジモフ1548より高いのに、完全clampだとノジモフまで引き下げ
+//   られP4P16位に沈む)。P4Pは階級を跨いだ生Eloの絶対値で強さを示す指標なので、
+//   閾値clampに戻して「明確に格上の選手は公開順位に関わらず本来のレートで並ぶ」
+//   挙動にした(サトシはP4P3位に上がる)。閾値の値・選定理由は
+//   P4P_DIVISION_ORDER_THRESHOLDのコメント参照。
 //   なお王者は階級内の「公開rank」を持たない(overlay設計で番号付きランキングの
 //   対象外)ためclampの対象にできず、生のrawRatingのままグローバル順位に
 //   参加する。王者を上位固定する明示的なティアロジックは設けていない
@@ -120,27 +120,30 @@ export function collectChallengerCandidates(rankings: RankingsFile): ChallengerC
 // 閾値付き階級内clamp: 同一階級内で、公開下位ランクの選手が公開上位ランクの
 // 選手をP4Pで追い越せるのは「レート差が閾値を超える明確な格上」のときだけ。
 //
-// 閾値=0(2026-07-22最終決定・現在値): 逆転を一切許さない完全clamp。
-// 同一階級内のP4P順序は常に階級別公開rank順と一致する(サトシ・ソウザが
-// ライト級公開1位ノジモフの下に収まる等)。
-//   経緯: 一時期は閾値10(僅差の逆転は抑制・大ギャップの逆転=サトシは許容)を
-//   採用したが、UFC/リング誌/ESPN等の実P4Pはいずれも単一の評価主体が階級・P4P
-//   両方を決めるため両者は矛盾しない、という調査結果を踏まえ、mnewsのP4Pも
-//   「階級ページと必ず一致する」方針に統一した。閾値10は「階級別ランキング
-//   (H2H補正Elo)とP4P(生Elo)という別ロジック併用」から生じる構造的
-//   アーティファクトへの対症療法であり、根本的には閾値0の方が一貫している。
-//   副次的に、マジックナンバーの再調整や複合逆転(#2#3が揃って#1を抜く等)の
-//   リスクも消える。
-// 正の値にすると再び「大ギャップの逆転だけ許容」する挙動に戻せる(値の意味は
-// 上記の閾値10の経緯コメント、および過去のgit履歴を参照)。
-export const P4P_DIVISION_ORDER_THRESHOLD = 0;
+// 閾値=30(2026-07-26復帰・現在値): 「僅差なら階級別公開rank順、明確な格上
+// (レート差>閾値)ならrawをそのまま採用して逆転を許す」部分clamp。
+//   経緯: 2026-07-22に一旦閾値0(逆転を一切許さない完全clamp)へ倒したが、
+//   完全clampは階級別ランキングのH2H補正で公開順位が下がった選手の「生Eloの
+//   高さ」を潰してしまう副作用があった。具体例=ホベルト・サトシ・ソウザ:
+//   ライト級の生rawRatingは1596で公開1位ノジモフ(1548)より明確に高いのに、
+//   公開順位はH2H等でノジモフが1位・サトシが2位。完全clampだとサトシがノジモフ
+//   まで引き下げられP4P16位に沈む(=生Eloで見た「階級を超えた強さ」というP4Pの
+//   趣旨と食い違う)。閾値clampに戻すとサトシは本来の生レートでP4P3位に上がる。
+//   値の選定(30): 実データでの逆転はサトシのギャップ(約47)が突出しており、
+//   閾値を20〜47のどこに置いても「逆転はサトシ1件」に収束する(それ未満の
+//   小さな逆転=福田>テミロフ等は閾値20で消える)。データが多少ドリフトしても
+//   挙動が変わりにくい中央値として30を採る。福田>テミロフのような直接対決
+//   (H2H)と矛盾する小逆転を再導入しないことも30を選ぶ理由(H2H整合は
+//   requiredInvariants.tsのcheckP4PH2HRespectで別途機械的に守る)。
+// 閾値を大きくするほどclampは強く(突き抜けにより大きなレート差を要求)、
+// 0にすると完全clamp(逆転ゼロ)に戻る。
+export const P4P_DIVISION_ORDER_THRESHOLD = 30;
 
 // 各階級で公開rank昇順に走査し、上位陣の到達下限(ceiling)を維持する:
 //  - 現在の選手のrawが ceiling + 閾値 を超える → 「突き抜け」を許し、rawを
-//    そのまま採用する(ceilingは据え置き)。閾値0(現在値)では「1でも上回れば
-//    即座にceilingまで引き下げ」になるため、この分岐は実質発火せず、常にelse側
-//    (完全clamp)になる。閾値を正の値に戻したときのために分岐自体は残している。
-//  - そうでなければ min(raw, ceiling) に丸める(逆転は同点化し、後段の
+//    そのまま採用する(ceilingは据え置き)。閾値30(現在値)では、明確な格上
+//    (例: サトシ・ソウザ)のみがこの分岐に入り、公開上位を追い越せる。
+//  - そうでなければ min(raw, ceiling) に丸める(僅差の逆転は同点化し、後段の
 //    タイブレークで公開rank順が保たれる)。
 export function clampChallengersToDivisionOrder(
   challengers: ChallengerCandidate[],
@@ -157,11 +160,11 @@ export function clampChallengersToDivisionOrder(
     let ceiling = Infinity;
     for (const c of byRankAsc) {
       // threshold>0の場合のみ「gapがthresholdを超えたら突き抜け」を判定する。
-      // threshold<=0(現在値0)は特別扱いで常にfalse=常にclamp側に落とす。
+      // threshold<=0(完全clamp)は特別扱いで常にfalse=常にclamp側に落とす。
       // 単純に「rawRating > ceiling + threshold」だけだと、threshold=0のとき
       // 「ceilingを1でも上回れば」が式の上では常に真になり、「常に突き抜け」
       // (=clampなしと同じ)という意図と正反対の挙動になるバグがあった
-      // (2026-07-22発見・修正)。
+      // (2026-07-22発見・修正)。閾値を0に戻すときのためにこのガードは残す。
       const breakthrough = threshold > 0 && c.rawRating > ceiling + threshold;
       if (breakthrough) {
         // 明確な格上: 突き抜けを許す(ceilingは更新しない)。
@@ -354,9 +357,14 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
 
 // ===== 自己検証(scripts/generate-p4p.ts側で呼び出し、破れたらexit 1) =====
 //
-// 2026-07-22最終: 「王者が先頭N件を占める」は撤回済み(王者ティアなし)。
-// 「同一階級内のP4P順序が公開rank順と一致する」はclamp復活に伴い再導入した
-// (下記3)。
+// 2026-07-22: 「王者が先頭N件を占める」は撤回済み(王者ティアなし)。
+// 2026-07-26: 閾値clamp(閾値30)へ戻したため、「同一階級内のP4P順序が公開rank順と
+// 完全一致する」不変条件(旧verifyDivisionOrderInvariant)は撤回した。明確な格上
+// (レート差>閾値)の逆転は設計上の意図した挙動なので、完全一致を強制すると
+// サトシ・ソウザの逆転で常にexit 1してしまう。代わりに「P4Pが直接対決(H2H)の
+// 結果と矛盾しない」ことをrequiredInvariants.tsのcheckP4PH2HRespectで機械的に守る
+// (福田>テミロフのようなH2H矛盾の逆転を再導入しない最終防衛)。clampの
+// 内部状態や閾値の値には一切依存しない独立チェック。
 
 // 1. rawRatingを算出できた王者が、全員entriesに含まれていること(位置は問わない)。
 export function verifyAllChampionsPresent(file: P4PFile, expectedChampionSlugs: string[]): string[] {
@@ -383,37 +391,6 @@ export function verifyPublishedDivisionsOnly(file: P4PFile): string[] {
   return errors;
 }
 
-// 3. 同一階級内のP4P順序 == 階級別公開rank順(逆転ゼロ)。
-//
-// 2026-07-25改訂(clamp実装から独立させた): 旧実装はP4P_DIVISION_ORDER_
-// THRESHOLDとinternalScoreの差分を判定に使っており、clampのbreakthrough
-// 条件(ceiling+threshold)と同じ閾値ロジックを検証側でも共有していた。この
-// ため、clamp本体の閾値比較式に境界バグ(threshold=0で「1でも上回れば
-// 常に突き抜け」という逆の挙動になっていた不具合)があったとき、検証側も
-// 同じ土俵で「gapが閾値以下かどうか」を判定してしまい、clampが実質無効化
-// されている状態を検出できなかった(サトシ・ソウザの逆転が「明確な格上」
-// として素通りしたケース)。バグは自己検証ではなく人力の突き合わせで発覚した。
-//
-// この教訓を受け、閾値・ceiling・clamp関数の内部状態を一切参照しない形に
-// 書き換えた。見るのは生成後の最終成果物(P4PEntry.p4pRankとdivisionRankの
-// 突合)のみ: 各公開階級で、P4P順(p4pRank昇順)に並べた選手のfighterId列と、
-// 階級別公開rank順(divisionRank昇順)に並べた選手のfighterId列が完全一致
-// することを見る。閾値がいくつであっても(将来clampの挙動が変わっても)、
-// 逆転が1件でもあれば必ず検出できる。王者は公開rankを持たないため対象外。
-export function verifyDivisionOrderInvariant(file: P4PFile): string[] {
-  const errors: string[] = [];
-  const byDivision = new Map<MnewsDivision, P4PEntry[]>();
-  for (const e of file.entries) {
-    if (e.tier === "champion") continue;
-    if (!byDivision.has(e.division)) byDivision.set(e.division, []);
-    byDivision.get(e.division)!.push(e);
-  }
-  for (const [division, list] of byDivision) {
-    const byPublicRank = [...list].sort((a, b) => (a.divisionRank as number) - (b.divisionRank as number)).map((e) => e.fighterId);
-    const byP4PRank = [...list].sort((a, b) => a.p4pRank - b.p4pRank).map((e) => e.fighterId);
-    if (JSON.stringify(byPublicRank) !== JSON.stringify(byP4PRank)) {
-      errors.push(`${division}: P4P順序が階級別公開rank順と不一致(逆転を検出): 公開rank順=[${byPublicRank.join(",")}] / P4P順=[${byP4PRank.join(",")}]`);
-    }
-  }
-  return errors;
-}
+// (3の「同一階級内P4P順序==公開rank順」不変条件は2026-07-26に撤回。
+//  閾値clampでは明確な格上の逆転が意図した挙動のため。H2H整合の検証は
+//  requiredInvariants.tsのcheckP4PH2HRespectに移した。)
