@@ -96,7 +96,7 @@ export default async function PoundForPoundRankingPage() {
 
       <div style={{ padding: "16px 24px 8px", maxWidth: 760, fontSize: 12, color: "var(--muted)", lineHeight: 1.8 }}>
         RIZIN非公式。mnews.jp独自算出。RIZINに公式のP4Pランキングはありません。階級別ランキング({RATING_NAME})の元になっている
-        レートに、RIZIN王座の獲得・防衛の実績を加味して、階級の壁を取り払って全選手を横並びにした参考指標です。
+        レートをもとに、階級の壁を取り払って全選手を横並びにした参考指標です。
         評価の考え方は<a href="/rankings/methodology" style={{ color: "var(--accent)" }}>ランキングについて</a>で公開しています。
         {data && (
           <span style={{ display: "block", fontSize: 10, opacity: 0.7, marginTop: 4 }}>
@@ -159,7 +159,7 @@ export default async function PoundForPoundRankingPage() {
         )}
 
         <p style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.8, marginTop: 12 }}>
-          RIZIN王座の獲得・防衛の実績を評価したうえで、階級の壁を取り払って一本に並べています。
+          王座戦など、試合の価値を加味したうえで、階級の壁を取り払って一本に並べています。
           戦績は階級を問わないRIZIN通算です(階級別ランキングの戦績は、階級を移った選手についてはその階級での戦績に絞っているため、
           数字が異なることがあります)。
         </p>
