@@ -53,15 +53,12 @@ export default function MethodologyPage() {
         </h2>
         <p>
           <a href="/rankings/pound-for-pound" style={{ color: "var(--accent)" }}>P4Pランキング</a>
-          は、上記の階級別ランキングの元になっているレートをそのまま使い、階級の壁を取り払って全選手を
-          横並びにした参考指標です。RIZINに公式のP4Pランキングはありません。
+          は、上記の階級別ランキングの元になっているレートをもとに、階級の壁を取り払って全選手を
+          横並びにした参考指標です。
         </p>
         <ul style={{ color: "var(--muted)", lineHeight: 1.9 }}>
-          <li>
-            王座の有無を問わず、レートの絶対値だけで階級を横断して並べます(階級ごとの平均で正規化はしません)。
-            現王者だからといって上位に固定することはしません。
-          </li>
-          <li>戦績は階級を問わないRIZIN通算です(階級別ランキングは階級を移った選手をその階級での戦績に絞るため、数字が異なることがあります)。</li>
+          <li>王座戦など、試合の価値を加味します</li>
+          <li>階級を問わないRIZIN通算の戦績をもとにします</li>
         </ul>
 
         <p className="prose-updated">RIZIN非公式。mnews.jp独自算出。</p>

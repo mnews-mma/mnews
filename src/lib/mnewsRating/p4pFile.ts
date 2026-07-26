@@ -1,39 +1,63 @@
 // パウンドフォーパウンド(P4P)ランキングの生成ロジック(2026-07-22追加)。
 //
-// 設計方針改訂(2026-07-22、2回目): 当初(2026-07-21試算PR #172)は「王者を
-// 必ずP4P1〜4位に固定し、防衛回数→勝率でタイブレークする」設計、次に
-// 「王者ティア固定を撤回し、階級内zスコア1本でフラットに並べる」設計を経て、
-// 最終的に以下に変更した:
-// - 全員(王者+挑戦者)を、rawRating(σディスカウント後のEloレート)の絶対値
-//   そのままで階級横断にフラットに並べる。階級内平均・σによる正規化
-//   (zスコア)は撤回した。
-//   理由: zスコアは「強い階級ほど損をする」逆転を生む(フェザー級は4階級中
-//   最も水準が高いため、フェザー級王者シェイドゥラエフの絶対rawRatingは
-//   4王者中最高なのに、zスコアでは3位に落ちていた)。rawRatingは階級を跨いだ
-//   1本のEloで計算されており(engine.tsのbuildBoutsは階級でフィルタしない、
-//   王者・挑戦者を問わず同じ計算式)、層の厚い階級で勝ち続けること自体が
-//   自然にレートを押し上げる。zスコアで正規化するとこの効果を打ち消して
-//   しまうため、正規化なしの絶対値の方がファンの直感(強い階級での防衛・
-//   活躍がそのまま評価される)に合う。
-// - 挑戦者(非王者)は、同一階級内で「僅差なら階級別公開rank順を維持・明確な
-//   格上(レート差>閾値)ならrawをそのまま採用して逆転を許す」部分clampを
-//   かける(clampChallengersToDivisionOrder参照、閾値30)。
-//   経緯(2026-07-26復帰): 2026-07-22に一旦閾値0(逆転を一切許さない完全clamp)へ
-//   倒したが、完全clampは階級別ランキングのH2H補正で公開順位が下がった選手の
-//   「生Eloの高さ」を潰してしまう(例: ホベルト・サトシ・ソウザは生rawRating
-//   1596で公開1位ノジモフ1548より高いのに、完全clampだとノジモフまで引き下げ
-//   られP4P16位に沈む)。P4Pは階級を跨いだ生Eloの絶対値で強さを示す指標なので、
-//   閾値clampに戻して「明確に格上の選手は公開順位に関わらず本来のレートで並ぶ」
-//   挙動にした(サトシはP4P3位に上がる)。閾値の値・選定理由は
-//   P4P_DIVISION_ORDER_THRESHOLDのコメント参照。
-//   なお王者は階級内の「公開rank」を持たない(overlay設計で番号付きランキングの
-//   対象外)ためclampの対象にできず、生のrawRatingのままグローバル順位に
-//   参加する。王者を上位固定する明示的なティアロジックは設けていない
-//   (2026-07-22、撤回済み)が、王者はいずれも自階級で最高のrawRatingを持つため、
-//   完全clamp下では結果的に4王者が1〜4位に並ぶ。
-// - 防衛回数・通算勝率は順位にも画面表示にも使わない(2026-07-22、表示も
-//   取りやめ)。データ自体はdata/p4p.jsonに保持し続けるが、これは将来の
-//   再利用に備えた据え置き(championDefenses.tsの冒頭コメント参照)。
+// 設計方針(2026-07-26改訂・現行): P4Pは「階級を超えた強さ」を1本に並べる指標。
+// 評価軸は次の3つで、優先順位もこの順に強い。
+//
+// 1. 階級内順位は絶対(最優先)
+//    同一階級では、必ず [王者 → 公開1位 → 公開2位 → …] の順を維持する。
+//    P4Pが階級別ランキングと食い違うと、同じサイト内で矛盾した2つの序列を
+//    出すことになるため。
+//    衝突したときは「下位を引き下げる」のではなく「上位を引き上げる」
+//    (enforceDivisionOrderByPullUp)。ここが設計の要で、例えばライト級では
+//    元王者サトシ・ソウザ(戴冠+5度防衛)の実績スコアが公開1位ノジモフを
+//    上回るが、このときサトシを削るのではなくノジモフ・グスタボを引き上げる。
+//    → 「サトシがいる階級」全体の評価が上がる。ライト級上位陣が不当に低く
+//      評価される問題が解消し、順位はグスタボ>ノジモフ>サトシのまま保たれる。
+//    引き下げ方式(2026-07-22の完全clamp)だと、サトシの実績・レートが公開1位に
+//    削られてP4P16位に沈み、ベルトを巻いたことのない他階級のランカーより
+//    下になっていた。これが違和感の正体だった。
+//
+// 2. 王座実績(RIZIN王座戦での勝利 = 戴冠 + 防衛。鮮度で減衰させる)
+//    P4Pは「その階級で最強を証明したか」を見る指標なので、ベルトを獲り
+//    防衛した実績を明示的に加点する(TITLE_WIN_BONUS)。
+//    これが無いと、一度もベルトを巻いていない選手(佐藤将光・トニー・ララミー・
+//    元谷友貴・秋元強真・カルシャガ・ダウトベック等)が、5度防衛した元王者
+//    サトシより上に来てしまう(2026-07-26に実データで発生していた)。
+//    逆に元王者(井上直樹・クレベル・コイケ・扇久保博正)が上位に来るのは
+//    この軸で自然に説明できる。
+//    ただし実績は永久に同じ重みでは効かせない。半減期2年の指数減衰をかけ、
+//    直近の防衛ほど重く、古い戴冠ほど軽くする(titleAchievements.tsの
+//    TITLE_RECENCY_HALF_LIFE_YEARS)。減衰が無いと、3年前に一度ベルトを
+//    巻いただけの選手の加点が、pull-upを通じて階級の上位陣まで押し上げて
+//    しまう(実例: ヴガール・ケラモフ2023年の王座勝がダウトベック・秋元を、
+//    鈴木千裕2023-24年の王座勝がYA-MANを不当に押し上げていた)。
+//    王座実績は手書きの元王者リストではなく戦績データから機械的に導出する
+//    (titleAchievements.ts参照 = 捏造ゼロ・今後のタイトル戦に自動追従)。
+//
+// 3. レート(rawRating: σディスカウント後のEloレート、正規化なし)
+//    現在の強さの基礎点。階級内平均・σによる正規化(zスコア)は使わない。
+//    理由: zスコアは「層の厚い階級ほど損をする」逆転を生む(フェザー級は
+//    4階級中最も水準が高いため、王者シェイドゥラエフの絶対rawRatingは4王者中
+//    最高なのに、zスコアでは3位に落ちていた)。rawRatingは階級を跨いだ1本の
+//    Eloで計算されており(engine.tsのbuildBoutsは階級でフィルタしない)、
+//    層の厚い階級で勝ち続けること自体が自然にレートを押し上げるため、
+//    正規化しない絶対値の方が実感に合う。
+//
+// 最終スコア = rawRating + TITLE_WIN_BONUS × 鮮度減衰後のRIZIN王座実績値
+//              → その後、階級内でpull-up補正(上記1)をかけて確定
+//
+// 撤回済みの設計(再導入しないこと):
+// - 王者をP4P1〜4位に固定するティアロジック(2026-07-22撤回)。王座実績は
+//   上記2の連続値で評価するため、固定枠は不要。
+// - 階級内zスコア正規化(2026-07-22撤回、理由は上記3)。
+// - 閾値付き部分clamp(P4P_DIVISION_ORDER_THRESHOLD、2026-07-26撤回)。
+//   「レート差が閾値を超えたら階級内順位を逆転してよい」という設計だったが、
+//   階級内順位を崩さずにサトシを正当に評価する方法(pull-up + 王座実績)が
+//   見つかったため不要になった。閾値というマジックナンバーの調整も消えた。
+// - 防衛回数(championDefenses.ts)・通算勝率による順位付け。データは
+//   data/p4p.jsonに保持し続けるが順位・表示には使わない(将来の再利用に
+//   備えた据え置き)。王座実績は上記2のとおり戦績データ由来の値を使う
+//   (championDefenses.tsは現王者しか持たず元王者を表現できないため)。
 //
 // このモジュールはdata/rankings.json(既存Eloランキング)を読み取り専用の入力
 // とし、data/rankings.json自体・engine.ts・共有定数には一切影響しない
@@ -41,6 +65,7 @@
 import { MnewsDivision, PUBLISHED_DIVISIONS } from "./divisions";
 import { RankingsFile, RankingEntryRecord, divisionRankingsKey } from "./rankingsFile";
 import { ChampionDefenseEntry } from "../championDefenses";
+import type { TitleAchievement } from "./titleAchievements";
 
 export type P4PTier = "champion" | "challenger";
 
@@ -52,18 +77,31 @@ export interface P4PRankPositionDelta {
 export interface P4PEntry {
   fighterId: string;
   division: MnewsDivision;
-  p4pRank: number; // 1始まり、rawRating降順
-  divisionRank: number | "champion"; // 階級内位置(公開rank、王者は"champion")。参考表示用、順位計算には使わない
+  p4pRank: number; // 1始まり、internalScore降順
+  // 階級内位置(公開rank、王者は"champion")。「階級内順位は絶対」の入力として
+  // pull-up補正と同点タイブレークの両方で使う(参考表示だけの値ではない)。
+  divisionRank: number | "champion";
   tier: P4PTier;
-  defenseCount: number | null; // 王者のみ。参考表示用(順位には使わない)。取得不能はnull(0埋め・推定禁止)
+  defenseCount: number | null; // 王者のみ。順位・表示ともに未使用(据え置き)。取得不能はnull(0埋め・推定禁止)
   record: RankingEntryRecord;
   lastFight: string | null;
   // buildP4PFileの時点ではnull。scripts/generate-p4p.tsがcomputeP4PRankPositionDeltas
   // で前回data/p4p.jsonとの差分を算出した後に埋める(rankPositionDelta.tsの
   // 既存の階級別ランキングと同じ「後処理として付与する」設計を踏襲)。
   rankPositionDelta: P4PRankPositionDelta | null;
+  // RIZIN王座戦(タイトルマッチ・王座決定戦)での勝利数 = 戴冠 + 防衛。
+  // 戦績データから機械的に導出した減衰なしの事実値(titleAchievements.ts)。
+  // 将来的な画面表示(「元王者」バッジ等)にも再利用できる。
+  titleWins: number;
+  // 鮮度減衰(半減期TITLE_RECENCY_HALF_LIFE_YEARS年)をかけた王座実績値。
+  // 順位計算に実際に使うのはこちら(古い戴冠は軽くなる)。
+  titleValue: number;
+  // 直近の王座戦勝利日(無ければnull)。表示・デバッグ用。
+  lastTitleWin: string | null;
   // 内部専用フィールド(次回実行時のdelta計算にのみ使う、公開ページには出さない)。
-  internalScore: number; // rawRatingそのもの(σディスカウント後、正規化なし)。これがP4P順位を決める唯一の値
+  // rawRating + TITLE_WIN_BONUS×titleValue に階級内pull-up補正をかけた最終値。
+  // これがP4P順位を決める唯一の値。
+  internalScore: number;
 }
 
 export interface P4PFile {
@@ -117,63 +155,54 @@ export function collectChallengerCandidates(rankings: RankingsFile): ChallengerC
   return out;
 }
 
-// 閾値付き階級内clamp: 同一階級内で、公開下位ランクの選手が公開上位ランクの
-// 選手をP4Pで追い越せるのは「レート差が閾値を超える明確な格上」のときだけ。
+// 王座実績1件(直近の戴冠 または 防衛1回、減衰前)あたりの加点。
+// 実際の加点は TITLE_WIN_BONUS × 鮮度減衰後の実績値(titleValue)。
 //
-// 閾値=30(2026-07-26復帰・現在値): 「僅差なら階級別公開rank順、明確な格上
-// (レート差>閾値)ならrawをそのまま採用して逆転を許す」部分clamp。
-//   経緯: 2026-07-22に一旦閾値0(逆転を一切許さない完全clamp)へ倒したが、
-//   完全clampは階級別ランキングのH2H補正で公開順位が下がった選手の「生Eloの
-//   高さ」を潰してしまう副作用があった。具体例=ホベルト・サトシ・ソウザ:
-//   ライト級の生rawRatingは1596で公開1位ノジモフ(1548)より明確に高いのに、
-//   公開順位はH2H等でノジモフが1位・サトシが2位。完全clampだとサトシがノジモフ
-//   まで引き下げられP4P16位に沈む(=生Eloで見た「階級を超えた強さ」というP4Pの
-//   趣旨と食い違う)。閾値clampに戻すとサトシは本来の生レートでP4P3位に上がる。
-//   値の選定(30): 実データでの逆転はサトシのギャップ(約47)が突出しており、
-//   閾値を20〜47のどこに置いても「逆転はサトシ1件」に収束する(それ未満の
-//   小さな逆転=福田>テミロフ等は閾値20で消える)。データが多少ドリフトしても
-//   挙動が変わりにくい中央値として30を採る。福田>テミロフのような直接対決
-//   (H2H)と矛盾する小逆転を再導入しないことも30を選ぶ理由(H2H整合は
-//   requiredInvariants.tsのcheckP4PH2HRespectで別途機械的に守る)。
-// 閾値を大きくするほどclampは強く(突き抜けにより大きなレート差を要求)、
-// 0にすると完全clamp(逆転ゼロ)に戻る。
-export const P4P_DIVISION_ORDER_THRESHOLD = 30;
+// 値の選定(15): 実データ(2026-07-26)で以下を全て満たす範囲から選んだ。
+//  - 元王者サトシ(RIZIN王座戦6勝)が、ベルト未経験のランカー(佐藤将光・
+//    トニー・ララミー・元谷友貴・秋元強真・カルシャガ・ダウトベック)より
+//    確実に上に来る
+//  - 3連続防衛中のダニー・サバテロ(直近3勝)が、1勝のみのルイス・グスタボより
+//    上に来る(鮮度減衰と組み合わせて成立する)
+//  - サトシの実績でライト級全体が引き上がり、グスタボ>ノジモフ>サトシの
+//    階級内順位は保たれる(これはpull-upにより構造的に保証される)
+//  - 無敗の現王者シェイドゥラエフ(直近4勝)がP4P1位を維持する
+// 感覚的には「直近の王座戦1勝 ≒ 15レート分の価値」と読める。
+export const TITLE_WIN_BONUS = 15;
 
-// 各階級で公開rank昇順に走査し、上位陣の到達下限(ceiling)を維持する:
-//  - 現在の選手のrawが ceiling + 閾値 を超える → 「突き抜け」を許し、rawを
-//    そのまま採用する(ceilingは据え置き)。閾値30(現在値)では、明確な格上
-//    (例: サトシ・ソウザ)のみがこの分岐に入り、公開上位を追い越せる。
-//  - そうでなければ min(raw, ceiling) に丸める(僅差の逆転は同点化し、後段の
-//    タイブレークで公開rank順が保たれる)。
-export function clampChallengersToDivisionOrder(
-  challengers: ChallengerCandidate[],
-  threshold: number = P4P_DIVISION_ORDER_THRESHOLD
-): ChallengerCandidate[] {
-  const byDivision = new Map<MnewsDivision, ChallengerCandidate[]>();
-  for (const c of challengers) {
+// 階級内順位の絶対優先(pull-up方式)。
+//
+// 同一階級を [王者(0) → 公開1位 → 公開2位 → …] の順に見て、下位から上へ
+// 走査しながら「自分より下にいる誰よりも低いスコアにはならない」ように
+// 床(floor)を引き上げていく。結果、階級内のスコアは必ず単調非増加になり、
+// P4Pの並びが階級別ランキングの並びと完全に一致する。
+//
+// なぜ引き下げ(clamp)ではなく引き上げ(pull-up)なのか:
+//   引き下げ方式では、階級内の下位に突出した選手(実績・レートの高い元王者)が
+//   いると、その選手のスコアが上位ランカーの水準まで削られる。つまり
+//   「強い選手がいる階級ほど、その選手を評価できない」という逆進性が出る。
+//   実例(2026-07-26): 元王者サトシ(戴冠+5度防衛、生レートは公開1位より上)が
+//   公開1位ノジモフまで削られてP4P16位まで沈み、ベルト未経験の他階級ランカーの
+//   下に来ていた。引き上げなら、サトシの実績はサトシ自身に残したまま、同じ
+//   階級の上位陣(ノジモフ・グスタボ)を「その実績者より上にいる者」として
+//   一緒に引き上げられる。「強い元王者を擁する階級は格が高い」という直感にも合う。
+export function enforceDivisionOrderByPullUp<
+  T extends { division: MnewsDivision; divisionPosition: number; score: number }
+>(candidates: T[]): T[] {
+  const byDivision = new Map<MnewsDivision, T[]>();
+  for (const c of candidates) {
     if (!byDivision.has(c.division)) byDivision.set(c.division, []);
     byDivision.get(c.division)!.push(c);
   }
-  const out: ChallengerCandidate[] = [];
+  const out: T[] = [];
   for (const [, list] of byDivision) {
-    const byRankAsc = [...list].sort((a, b) => a.divisionRank - b.divisionRank);
-    let ceiling = Infinity;
-    for (const c of byRankAsc) {
-      // threshold>0の場合のみ「gapがthresholdを超えたら突き抜け」を判定する。
-      // threshold<=0(完全clamp)は特別扱いで常にfalse=常にclamp側に落とす。
-      // 単純に「rawRating > ceiling + threshold」だけだと、threshold=0のとき
-      // 「ceilingを1でも上回れば」が式の上では常に真になり、「常に突き抜け」
-      // (=clampなしと同じ)という意図と正反対の挙動になるバグがあった
-      // (2026-07-22発見・修正)。閾値を0に戻すときのためにこのガードは残す。
-      const breakthrough = threshold > 0 && c.rawRating > ceiling + threshold;
-      if (breakthrough) {
-        // 明確な格上: 突き抜けを許す(ceilingは更新しない)。
-        out.push({ ...c });
-      } else {
-        const clamped = Math.min(c.rawRating, ceiling);
-        ceiling = clamped;
-        out.push({ ...c, rawRating: clamped });
-      }
+    // 王者(0) → 公開1位 → 公開2位 … に整列し、下位から上へ床を上げていく。
+    const byPositionAsc = [...list].sort((a, b) => a.divisionPosition - b.divisionPosition);
+    let floor = -Infinity;
+    for (let i = byPositionAsc.length - 1; i >= 0; i--) {
+      const c = byPositionAsc[i];
+      floor = Math.max(floor, c.score);
+      out.push({ ...c, score: floor } as T);
     }
   }
   return out;
@@ -264,6 +293,12 @@ export interface BuildP4PFileInput {
   // (例: 扇久保博正はフライ級スコープだと5勝2敗だがRIZIN通算では11勝6敗、
   // 元谷友貴はフライ級スコープだと2勝2敗だがバンタム級戦を含む通算では14勝10敗)。
   allRizinRecords: Map<string, RankingEntryRecord>;
+  // slug -> RIZIN王座実績(勝利数と鮮度減衰後の実績値)。scripts/generate-p4p.ts
+  // 側で data/fighterRecords.json から buildTitleAchievementIndex
+  // (titleAchievements.ts)を使って導出したものを渡す。索引に無いslugは0扱い
+  // (王座戦の記録が無い=未戴冠、という素直な解釈。捏造ではなく実データの
+  // 不在をそのまま反映する)。
+  titleAchievementsBySlug: Map<string, TitleAchievement>;
   updatedAt: string; // ISO(壁時計非依存にするため呼び出し側から渡す)
   algorithmVersion: number;
 }
@@ -282,11 +317,26 @@ function collectChampionRecords(rankings: RankingsFile): Map<string, { record: R
   return out;
 }
 
-// P4Pファイル本体を構築する(2026-07-22最終: zスコア正規化なし・王者ティア
-// なし・挑戦者は階級内clampあり。冒頭の設計方針コメント参照)。
+// 階級内pull-up前の、スコア付き候補(王者+挑戦者を同じ土俵に載せた中間表現)。
+interface ScoredCandidate {
+  fighterId: string;
+  division: MnewsDivision;
+  divisionPosition: number; // 0=王者、1..n=階級別公開rank(pull-upと同点解決に使う)
+  divisionRank: number | "champion"; // 出力用の表現
+  tier: P4PTier;
+  defenseCount: number | null;
+  record: RankingEntryRecord;
+  lastFight: string | null;
+  titleWins: number;
+  titleValue: number;
+  lastTitleWin: string | null;
+  score: number;
+}
+
+// P4Pファイル本体を構築する(冒頭の設計方針コメント参照)。
+// スコア = rawRating + TITLE_WIN_BONUS×王座戦勝利数 → 階級内pull-up補正で確定。
 export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
-  // 挑戦者は階級内の公開rank順を逆転しないようclampしてからグローバルに並べる。
-  const challengerCandidates = clampChallengersToDivisionOrder(collectChallengerCandidates(input.rankings));
+  const challengerCandidates = collectChallengerCandidates(input.rankings);
   const championRecords = collectChampionRecords(input.rankings);
   const { champions, defenseDataIssues } = buildChampionEntries(input.championRawRatings, championRecords, input.defenseData);
 
@@ -304,47 +354,77 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
     return rizinTotal;
   };
 
-  const combined: P4PEntry[] = [
-    ...champions.map((c) => ({
-      fighterId: c.slug,
-      division: c.division,
-      p4pRank: 0, // 後で振り直す
-      divisionRank: "champion" as const,
-      tier: "champion" as const,
-      defenseCount: c.defenseCount,
-      record: resolveRecord(c.slug, c.division, c.record),
-      lastFight: c.lastFight,
-      rankPositionDelta: null,
-      internalScore: c.rawRating,
-    })),
-    ...challengerCandidates.map((c) => ({
-      fighterId: c.slug,
-      division: c.division,
-      p4pRank: 0,
-      divisionRank: c.divisionRank,
-      tier: "challenger" as const,
-      defenseCount: null,
-      record: resolveRecord(c.slug, c.division, c.record),
-      lastFight: c.lastFight,
-      rankPositionDelta: null,
-      internalScore: c.rawRating,
-    })),
+  // 王座実績は索引に無ければ0(=王座戦の記録が無い=未戴冠)として扱う。
+  const NO_TITLE: TitleAchievement = { wins: 0, value: 0, lastTitleWin: null };
+  const titleOf = (slug: string): TitleAchievement => input.titleAchievementsBySlug.get(slug) ?? NO_TITLE;
+
+  // 王者(divisionPosition=0)と挑戦者(公開rank)を1つのプールにまとめ、
+  // スコア = rawRating + TITLE_WIN_BONUS×鮮度減衰後の王座実績値 を与える。
+  const scored: ScoredCandidate[] = [
+    ...champions.map((c) => {
+      const t = titleOf(c.slug);
+      return {
+        fighterId: c.slug,
+        division: c.division,
+        divisionPosition: 0,
+        divisionRank: "champion" as const,
+        tier: "champion" as P4PTier,
+        defenseCount: c.defenseCount,
+        record: resolveRecord(c.slug, c.division, c.record),
+        lastFight: c.lastFight,
+        titleWins: t.wins,
+        titleValue: t.value,
+        lastTitleWin: t.lastTitleWin,
+        score: c.rawRating + TITLE_WIN_BONUS * t.value,
+      };
+    }),
+    ...challengerCandidates.map((c) => {
+      const t = titleOf(c.slug);
+      return {
+        fighterId: c.slug,
+        division: c.division,
+        divisionPosition: c.divisionRank,
+        divisionRank: c.divisionRank,
+        tier: "challenger" as P4PTier,
+        defenseCount: null,
+        record: resolveRecord(c.slug, c.division, c.record),
+        lastFight: c.lastFight,
+        titleWins: t.wins,
+        titleValue: t.value,
+        lastTitleWin: t.lastTitleWin,
+        score: c.rawRating + TITLE_WIN_BONUS * t.value,
+      };
+    }),
   ];
-  // internalScore(clamp後rawRating)降順でソート。
-  // 同点タイブレーク: clampは意図的に同点(直前値まで引き下げ)を作るため、
-  // 同一階級内の同点をfighterId(アルファベット順)で解くと公開rank順が壊れ、
-  // verifyDivisionOrderInvariantが破れる。まず階級内順位(王者は0扱い)昇順で
-  // 解き、最後にfighterIdで完全決定的にする。
-  const entries = combined.sort((a, b) => {
-    if (b.internalScore !== a.internalScore) return b.internalScore - a.internalScore;
-    const rankA = a.divisionRank === "champion" ? 0 : a.divisionRank;
-    const rankB = b.divisionRank === "champion" ? 0 : b.divisionRank;
-    if (rankA !== rankB) return rankA - rankB;
-    return a.fighterId.localeCompare(b.fighterId);
-  });
-  entries.forEach((e, i) => {
-    e.p4pRank = i + 1;
-  });
+
+  // 階級内順位は絶対: 下位に突出した選手がいる場合は上位を引き上げて順序を守る。
+  const lifted = enforceDivisionOrderByPullUp(scored);
+
+  // スコア降順でソート。pull-upは意図的に同点(階級内で床を共有する)を作るため、
+  // 同点は必ず階級内位置(王者=0)昇順で解く。ここをfighterId順で解くと階級内の
+  // 順序が壊れ、verifyDivisionOrderInvariantが破れる。最後にfighterIdで
+  // 完全決定的にする(2回実行の出力一致=決定性チェックのため)。
+  const entries: P4PEntry[] = [...lifted]
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      if (a.divisionPosition !== b.divisionPosition) return a.divisionPosition - b.divisionPosition;
+      return a.fighterId.localeCompare(b.fighterId);
+    })
+    .map((e, i) => ({
+      fighterId: e.fighterId,
+      division: e.division,
+      p4pRank: i + 1,
+      divisionRank: e.divisionRank,
+      tier: e.tier,
+      defenseCount: e.defenseCount,
+      record: e.record,
+      lastFight: e.lastFight,
+      rankPositionDelta: null,
+      titleWins: e.titleWins,
+      titleValue: e.titleValue,
+      lastTitleWin: e.lastTitleWin,
+      internalScore: e.score,
+    }));
 
   return {
     updatedAt: input.updatedAt,
@@ -357,14 +437,12 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
 
 // ===== 自己検証(scripts/generate-p4p.ts側で呼び出し、破れたらexit 1) =====
 //
-// 2026-07-22: 「王者が先頭N件を占める」は撤回済み(王者ティアなし)。
-// 2026-07-26: 閾値clamp(閾値30)へ戻したため、「同一階級内のP4P順序が公開rank順と
-// 完全一致する」不変条件(旧verifyDivisionOrderInvariant)は撤回した。明確な格上
-// (レート差>閾値)の逆転は設計上の意図した挙動なので、完全一致を強制すると
-// サトシ・ソウザの逆転で常にexit 1してしまう。代わりに「P4Pが直接対決(H2H)の
-// 結果と矛盾しない」ことをrequiredInvariants.tsのcheckP4PH2HRespectで機械的に守る
-// (福田>テミロフのようなH2H矛盾の逆転を再導入しない最終防衛)。clampの
-// 内部状態や閾値の値には一切依存しない独立チェック。
+// 2026-07-22: 「王者が先頭N件を占める」は撤回済み(王者ティア固定なし)。
+// 2026-07-26: 「階級内順位は絶対」を設計の最優先ルールに据えたため、
+// verifyDivisionOrderInvariantを王者込みの完全版として復活させた(下記3)。
+// あわせてrequiredInvariants.tsのcheckP4PH2HRespect(P4Pが直接対決の結果と
+// 矛盾しないこと)も併用する。3が守られていればH2H整合は同一階級内では
+// 自動的に従うが、独立した最終防衛として両方を回す。
 
 // 1. rawRatingを算出できた王者が、全員entriesに含まれていること(位置は問わない)。
 export function verifyAllChampionsPresent(file: P4PFile, expectedChampionSlugs: string[]): string[] {
@@ -391,6 +469,33 @@ export function verifyPublishedDivisionsOnly(file: P4PFile): string[] {
   return errors;
 }
 
-// (3の「同一階級内P4P順序==公開rank順」不変条件は2026-07-26に撤回。
-//  閾値clampでは明確な格上の逆転が意図した挙動のため。H2H整合の検証は
-//  requiredInvariants.tsのcheckP4PH2HRespectに移した。)
+// 3. 各階級内のP4P順序が [王者 → 公開1位 → 公開2位 → …] と完全一致すること。
+//    設計上の最優先ルール「階級内順位は絶対」を機械的に強制する。
+//
+// 実装から独立した検証であることが重要: 判定に使うのはpull-up後の最終成果物
+// (P4PEntry.p4pRank と divisionRank)だけで、スコアの中身・TITLE_WIN_BONUS・
+// pull-up関数の内部状態には一切触れない。
+// この独立性は過去の事故の教訓による(2026-07-25): 旧実装は検証側でもclampと
+// 同じ閾値ロジックを共有していたため、clamp本体の境界バグ(threshold=0で挙動が
+// 反転する不具合)を検証がすり抜け、人力の突き合わせで初めて発覚した。
+// 「補正が届く範囲」と「検証が届く範囲」を同一にしない、という原則
+// (requiredInvariants.ts冒頭コメント参照)をここでも守る。
+export function verifyDivisionOrderInvariant(file: P4PFile): string[] {
+  const errors: string[] = [];
+  const byDivision = new Map<MnewsDivision, P4PEntry[]>();
+  for (const e of file.entries) {
+    if (!byDivision.has(e.division)) byDivision.set(e.division, []);
+    byDivision.get(e.division)!.push(e);
+  }
+  const positionOf = (e: P4PEntry): number => (e.divisionRank === "champion" ? 0 : e.divisionRank);
+  for (const [division, list] of byDivision) {
+    const expected = [...list].sort((a, b) => positionOf(a) - positionOf(b)).map((e) => e.fighterId);
+    const actual = [...list].sort((a, b) => a.p4pRank - b.p4pRank).map((e) => e.fighterId);
+    if (JSON.stringify(expected) !== JSON.stringify(actual)) {
+      errors.push(
+        `${division}: P4P順序が階級別ランキングの並びと不一致: 期待(王者→1位→2位…)=[${expected.join(",")}] / 実際(P4P順)=[${actual.join(",")}]`
+      );
+    }
+  }
+  return errors;
+}
