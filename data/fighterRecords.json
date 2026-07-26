@@ -4872,7 +4872,7 @@
         "date": "2024-12-31",
         "opponent": "福田龍彌",
         "result": "loss",
-        "method": "1R 0:54 KO（左フック）",
+        "method": "1R 0:54 KO（左フック→パウンド）",
         "event": "RIZIN.49",
         "round": "R1"
       },
@@ -4999,7 +4999,7 @@
         "date": "2024-12-31",
         "opponent": "芦澤竜誠",
         "result": "win",
-        "method": "1R 0:54 KO（左フック）",
+        "method": "1R 0:54 KO（左フック→パウンド）",
         "event": "RIZIN.49",
         "round": "R1"
       },
@@ -7432,7 +7432,8 @@
     ],
     "live": true,
     "nickname": "松戸の不死鳥",
-    "birthPlace": "千葉県松戸市"
+    "birthPlace": "千葉県松戸市",
+    "age": 31
   },
   "noel": {
     "wins": 4,
@@ -25334,13 +25335,21 @@
     "live": true
   },
   "miyake-kisa": {
-    "wins": 13,
+    "wins": 14,
     "losses": 5,
     "draws": 0,
     "ko": 6,
     "sub": 3,
-    "decision": 4,
+    "decision": 5,
     "history": [
+      {
+        "date": "2026-07-26",
+        "opponent": "カリベク・アルジクル ウール",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "PANCRASE 364",
+        "round": "R3"
+      },
       {
         "date": "2026-05-31",
         "opponent": "遠藤来生",
