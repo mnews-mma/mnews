@@ -44,7 +44,7 @@ import {
 import {
   checkP4PAllChampionsPresent,
   checkP4PPublishedDivisionsOnly,
-  checkP4PDivisionOrderInvariant,
+  checkP4PH2HRespect,
 } from "../src/lib/rankings/requiredInvariants";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { CHAMPION_DEFENSES } from "../src/lib/championDefenses";
@@ -210,16 +210,18 @@ function runOnce(): P4PFile {
   };
 
   // 自己検証: 破れたら書き込み自体を止める(既存パイプラインのH2H不変条件
-  // チェックと同じ「書き込み前に必ず検証」の設計を踏襲)。王者ティア固定・
-  // zスコア正規化・clampを撤回したため(2026-07-22)、「王者が先頭を占める」
-  // 「同一階級内が公開rank順」はいずれも撤回済み。rawRatingを算出できた王者が
-  // 全員entriesに存在する(位置は問わない)ことと、非公開階級混入ゼロのみを検証する。
+  // チェックと同じ「書き込み前に必ず検証」の設計を踏襲)。検証項目:
+  // (1) rawRatingを算出できた王者が全員entriesに存在すること(位置は問わない)、
+  // (2) 非公開階級混入ゼロ、(3) P4Pが直接対決(H2H)の結果と矛盾しないこと。
+  // 2026-07-26: 閾値clamp(閾値30)へ戻したため「同一階級内が公開rank順と完全一致」
+  // は撤回(明確な格上の逆転=サトシ・ソウザ等は意図した挙動)。代わりに(3)で
+  // H2H矛盾の逆転(福田>テミロフ等)だけを機械的に弾く。
   const expectedChampionSlugs = championRawRatings.map((c) => c.slug);
   const errors = [
     ...checkP4PAllChampionsPresent(withDeltas, expectedChampionSlugs),
     ...checkP4PPublishedDivisionsOnly(withDeltas),
-    // 挑戦者の階級内順序が階級別公開ランキングと一致すること(clampの検証)。
-    ...checkP4PDivisionOrderInvariant(withDeltas),
+    // P4Pが直接対決(H2H)の結果と矛盾しないこと(閾値clampの最終防衛)。
+    ...checkP4PH2HRespect(withDeltas),
     // RIZIN通算戦績が1件でも解決できていない場合は書き込みを中止する。
     // 階級スコープ済み戦績にフォールバックしたまま公開すると、P4P内で
     // 「RIZIN通算の選手」と「その階級だけの選手」が混在し意味が壊れるため。
