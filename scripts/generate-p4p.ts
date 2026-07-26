@@ -41,7 +41,7 @@ import {
   ChampionRawRatingInput,
   P4PFile,
 } from "../src/lib/mnewsRating/p4pFile";
-import { buildTitleWinsIndex } from "../src/lib/mnewsRating/titleAchievements";
+import { buildTitleAchievementIndex } from "../src/lib/mnewsRating/titleAchievements";
 import {
   checkP4PAllChampionsPresent,
   checkP4PPublishedDivisionsOnly,
@@ -96,7 +96,11 @@ function applyRizinRecordsOverride(records: FighterRecordsInput): FighterRecords
 // update-mnews-rating.ts/check-h2h-invariant.ts/scripts/check-p4p-trial.tsと
 // 同じ思想の読み取り専用エンジン再実行。王者のrawRating取得だけがこの再計算の
 // 目的で、階級付け・掲載資格判定はここでは行わない(data/rankings.jsonを正として使う)。
-function recomputeDisplayMap(): { displayMap: Map<string, DisplayEntry>; records: FighterRecordsInput } {
+function recomputeDisplayMap(): {
+  displayMap: Map<string, DisplayEntry>;
+  records: FighterRecordsInput;
+  latestBoutDate: string;
+} {
   if (!fs.existsSync(RECORDS_PATH)) {
     throw new Error(`[FATAL] data/fighterRecords.json が存在しません: ${RECORDS_PATH}`);
   }
@@ -128,10 +132,12 @@ function recomputeDisplayMap(): { displayMap: Map<string, DisplayEntry>; records
   const initialRatingOverrides = computeInitialRatingOverrides(preDebutRecords, INITIAL_RATING_BOOST_PARAMS_V6, rizinFightCountsForSeed);
   const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides);
   const publishable = filterPublishableStates(states, records);
-  // recordsも返す: 王座実績(RIZIN王座戦での勝利数)をhistoryのイベント表記から
-  // 導出するため(titleAchievements.ts)。rizinRecordsOverride適用後の同じ
-  // recordsを使い、エンジンが見ている戦績と食い違わないようにする。
-  return { displayMap: buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6), records };
+  // recordsとlatestBoutDateも返す: 王座実績(RIZIN王座戦での勝利)をhistoryの
+  // イベント表記から導出し、その鮮度減衰の基準日に使うため(titleAchievements.ts)。
+  // rizinRecordsOverride適用後の同じrecordsを使い、エンジンが見ている戦績と
+  // 食い違わないようにする。基準日に実行時の壁時計ではなくデータ内の最新試合日を
+  // 使うことで、同じコミットなら常に同じ出力になる(決定性)。
+  return { displayMap: buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6), records, latestBoutDate };
 }
 
 function effectiveRatingOf(display: DisplayEntry): number {
@@ -162,10 +168,14 @@ function resolveChampionRawRatings(displayMap: Map<string, DisplayEntry>): Champ
 function runOnce(): P4PFile {
   const rankings = loadRankings();
   const prev = loadP4PFile();
-  const { displayMap, records } = recomputeDisplayMap();
+  const { displayMap, records, latestBoutDate } = recomputeDisplayMap();
   const championRawRatings = resolveChampionRawRatings(displayMap);
-  // 王座実績(戴冠+防衛): 手書きの元王者リストではなく戦績データから機械的に導出。
-  const titleWinsBySlug = buildTitleWinsIndex(records);
+  // 王座実績(戴冠+防衛): 手書きの元王者リストではなく戦績データから機械的に導出し、
+  // データ内最新試合日を基準に鮮度減衰(半減期2年)をかける。
+  if (!latestBoutDate) {
+    throw new Error("[FATAL] 最新試合日を特定できません(王座実績の鮮度減衰の基準日が決まらない)");
+  }
+  const titleAchievementsBySlug = buildTitleAchievementIndex(records, latestBoutDate);
 
   const algorithmVersion = Object.values(rankings)[0]?.algorithmVersion ?? -1;
   if (algorithmVersion === -1) {
@@ -186,7 +196,7 @@ function runOnce(): P4PFile {
     championRawRatings,
     defenseData: CHAMPION_DEFENSES,
     allRizinRecords,
-    titleWinsBySlug,
+    titleAchievementsBySlug,
     // 壁時計非依存(指示書§4系の既存方針を踏襲): updatedAtはdata/rankings.json
     // 側の最新updatedAtをそのまま転記する(このスクリプト自身の実行時刻は使わない)。
     updatedAt: Object.values(rankings).reduce((m, d) => (d.updatedAt > m ? d.updatedAt : m), ""),

@@ -20,12 +20,36 @@
         "positions": 0
       },
       "titleWins": 4,
-      "internalScore": 1694.1875318765804
+      "titleValue": 3.155974198852761,
+      "lastTitleWin": "2026-04-12",
+      "internalScore": 1681.5271448593717
+    },
+    {
+      "fighterId": "sabatello-danny",
+      "division": "バンタム級",
+      "p4pRank": 2,
+      "divisionRank": "champion",
+      "tier": "champion",
+      "defenseCount": 2,
+      "record": {
+        "wins": 5,
+        "losses": 0,
+        "draws": 0
+      },
+      "lastFight": "2026-07-18",
+      "rankPositionDelta": {
+        "kind": "up",
+        "positions": 3
+      },
+      "titleWins": 3,
+      "titleValue": 2.7400004009111103,
+      "lastTitleWin": "2026-07-18",
+      "internalScore": 1664.917509368295
     },
     {
       "fighterId": "gustavo-luis",
       "division": "ライト級",
-      "p4pRank": 2,
+      "p4pRank": 3,
       "divisionRank": "champion",
       "tier": "champion",
       "defenseCount": 0,
@@ -40,12 +64,14 @@
         "positions": 0
       },
       "titleWins": 1,
-      "internalScore": 1686.0984267720842
+      "titleValue": 0.9366254520980418,
+      "lastTitleWin": "2026-05-10",
+      "internalScore": 1633.389945177004
     },
     {
       "fighterId": "nozimov-ilkhom",
       "division": "ライト級",
-      "p4pRank": 3,
+      "p4pRank": 4,
       "divisionRank": 1,
       "tier": "challenger",
       "defenseCount": null,
@@ -60,12 +86,14 @@
         "positions": 0
       },
       "titleWins": 1,
-      "internalScore": 1686.0984267720842
+      "titleValue": 0.8279318054034959,
+      "lastTitleWin": "2025-12-31",
+      "internalScore": 1633.389945177004
     },
     {
       "fighterId": "souza-roberto-satoshi",
       "division": "ライト級",
-      "p4pRank": 4,
+      "p4pRank": 5,
       "divisionRank": 2,
       "tier": "challenger",
       "defenseCount": null,
@@ -80,27 +108,9 @@
         "positions": 0
       },
       "titleWins": 6,
-      "internalScore": 1686.0984267720842
-    },
-    {
-      "fighterId": "sabatello-danny",
-      "division": "バンタム級",
-      "p4pRank": 5,
-      "divisionRank": "champion",
-      "tier": "champion",
-      "defenseCount": 2,
-      "record": {
-        "wins": 5,
-        "losses": 0,
-        "draws": 0
-      },
-      "lastFight": "2026-07-18",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "titleWins": 3,
-      "internalScore": 1668.8175033546283
+      "titleValue": 2.4861012269946485,
+      "lastTitleWin": "2025-09-28",
+      "internalScore": 1633.389945177004
     },
     {
       "fighterId": "inoue-naoki",
@@ -120,52 +130,14 @@
         "positions": 0
       },
       "titleWins": 3,
-      "internalScore": 1623.8284352241947
-    },
-    {
-      "fighterId": "asakura-mikuru",
-      "division": "フェザー級",
-      "p4pRank": 7,
-      "divisionRank": 1,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 13,
-        "losses": 5,
-        "draws": 0
-      },
-      "lastFight": "2025-12-31",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "titleWins": 0,
-      "internalScore": 1621.8431179557226
-    },
-    {
-      "fighterId": "koike-kleber",
-      "division": "フェザー級",
-      "p4pRank": 8,
-      "divisionRank": 2,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 10,
-        "losses": 4,
-        "draws": 0
-      },
-      "lastFight": "2025-12-31",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "titleWins": 2,
-      "internalScore": 1621.8431179557226
+      "titleValue": 1.8866304855274043,
+      "lastTitleWin": "2025-07-27",
+      "internalScore": 1607.1278925071058
     },
     {
       "fighterId": "shinryu-makoto",
       "division": "フライ級",
-      "p4pRank": 9,
+      "p4pRank": 7,
       "divisionRank": "champion",
       "tier": "champion",
       "defenseCount": 0,
@@ -180,7 +152,53 @@
         "positions": 0
       },
       "titleWins": 1,
-      "internalScore": 1606.7440798365737
+      "titleValue": 0.9609312576889957,
+      "lastTitleWin": "2026-06-06",
+      "internalScore": 1606.1580487019087
+    },
+    {
+      "fighterId": "asakura-mikuru",
+      "division": "フェザー級",
+      "p4pRank": 8,
+      "divisionRank": 1,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 13,
+        "losses": 5,
+        "draws": 0
+      },
+      "lastFight": "2025-12-31",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
+      "internalScore": 1604.73827709971
+    },
+    {
+      "fighterId": "koike-kleber",
+      "division": "フェザー級",
+      "p4pRank": 9,
+      "divisionRank": 2,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 10,
+        "losses": 4,
+        "draws": 0
+      },
+      "lastFight": "2025-12-31",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "titleWins": 2,
+      "titleValue": 0.8596772762658251,
+      "lastTitleWin": "2024-12-31",
+      "internalScore": 1604.73827709971
     },
     {
       "fighterId": "ougikubo-hiromasa",
@@ -200,7 +218,9 @@
         "positions": 0
       },
       "titleWins": 1,
-      "internalScore": 1592.2740312657202
+      "titleValue": 0.8279318054034959,
+      "lastTitleWin": "2025-12-31",
+      "internalScore": 1589.6930083467726
     },
     {
       "fighterId": "karshyga-dautbek",
@@ -220,7 +240,9 @@
         "positions": 0
       },
       "titleWins": 0,
-      "internalScore": 1564.7320620091912
+      "titleValue": 0,
+      "lastTitleWin": null,
+      "internalScore": 1560.2417890244758
     },
     {
       "fighterId": "akimoto-kyoma",
@@ -240,7 +262,9 @@
         "positions": 0
       },
       "titleWins": 0,
-      "internalScore": 1564.7320620091912
+      "titleValue": 0,
+      "lastTitleWin": null,
+      "internalScore": 1559.1813474871444
     },
     {
       "fighterId": "karamov-vugar",
@@ -260,7 +284,9 @@
         "positions": 0
       },
       "titleWins": 1,
-      "internalScore": 1564.7320620091912
+      "titleValue": 0.3575172786203699,
+      "lastTitleWin": "2023-07-30",
+      "internalScore": 1555.0948211884968
     },
     {
       "fighterId": "sato-shoko",
@@ -280,52 +306,14 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1552.3290437285696
-    },
-    {
-      "fighterId": "ya-man",
-      "division": "フェザー級",
-      "p4pRank": 15,
-      "divisionRank": 6,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 3,
-        "losses": 2,
-        "draws": 0
-      },
-      "lastFight": "2025-07-27",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "titleWins": 0,
-      "internalScore": 1551.2917231673337
-    },
-    {
-      "fighterId": "suzuki-chihiro",
-      "division": "フェザー級",
-      "p4pRank": 16,
-      "divisionRank": 7,
-      "tier": "challenger",
-      "defenseCount": null,
-      "record": {
-        "wins": 8,
-        "losses": 4,
-        "draws": 0
-      },
-      "lastFight": "2025-05-04",
-      "rankPositionDelta": {
-        "kind": "same",
-        "positions": 0
-      },
-      "titleWins": 2,
-      "internalScore": 1551.2917231673337
     },
     {
       "fighterId": "laramie-tony",
       "division": "フライ級",
-      "p4pRank": 17,
+      "p4pRank": 15,
       "divisionRank": 2,
       "tier": "challenger",
       "defenseCount": null,
@@ -340,12 +328,14 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1550.311283618803
     },
     {
       "fighterId": "motoya-yuki",
       "division": "フライ級",
-      "p4pRank": 18,
+      "p4pRank": 16,
       "divisionRank": 3,
       "tier": "challenger",
       "defenseCount": null,
@@ -360,12 +350,14 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1550.311283618803
     },
     {
       "fighterId": "horie-yoshinori",
       "division": "ライト級",
-      "p4pRank": 19,
+      "p4pRank": 17,
       "divisionRank": 3,
       "tier": "challenger",
       "defenseCount": null,
@@ -380,12 +372,14 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1537.423339503629
     },
     {
       "fighterId": "nomura-shunta",
       "division": "ライト級",
-      "p4pRank": 20,
+      "p4pRank": 18,
       "divisionRank": 4,
       "tier": "challenger",
       "defenseCount": null,
@@ -400,12 +394,14 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1537.423339503629
     },
     {
       "fighterId": "patricky-pitbull",
       "division": "ライト級",
-      "p4pRank": 21,
+      "p4pRank": 19,
       "divisionRank": 5,
       "tier": "challenger",
       "defenseCount": null,
@@ -420,7 +416,53 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1537.423339503629
+    },
+    {
+      "fighterId": "ya-man",
+      "division": "フェザー級",
+      "p4pRank": 20,
+      "divisionRank": 6,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 3,
+        "losses": 2,
+        "draws": 0
+      },
+      "lastFight": "2025-07-27",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
+      "internalScore": 1534.1265499991152
+    },
+    {
+      "fighterId": "suzuki-chihiro",
+      "division": "フェザー級",
+      "p4pRank": 21,
+      "divisionRank": 7,
+      "tier": "challenger",
+      "defenseCount": null,
+      "record": {
+        "wins": 8,
+        "losses": 4,
+        "draws": 0
+      },
+      "lastFight": "2025-05-04",
+      "rankPositionDelta": {
+        "kind": "same",
+        "positions": 0
+      },
+      "titleWins": 2,
+      "titleValue": 0.855655122118776,
+      "lastTitleWin": "2024-04-29",
+      "internalScore": 1534.1265499991152
     },
     {
       "fighterId": "goto-joji",
@@ -440,6 +482,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1532.3602299185704
     },
     {
@@ -460,6 +504,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1522.7426597368508
     },
     {
@@ -480,6 +526,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1518.747278076959
     },
     {
@@ -500,6 +548,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1517.679084958555
     },
     {
@@ -520,6 +570,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1515.9175347838063
     },
     {
@@ -540,6 +592,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1515.9175347838063
     },
     {
@@ -560,6 +614,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1512.0428569162355
     },
     {
@@ -580,6 +636,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1509.9940573010463
     },
     {
@@ -600,6 +658,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1508.5934793396752
     },
     {
@@ -620,6 +680,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1508.5775717709191
     },
     {
@@ -640,6 +702,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1508.5775717709191
     },
     {
@@ -660,6 +724,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1507.9009001729776
     },
     {
@@ -680,6 +746,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1507.1155501461287
     },
     {
@@ -700,6 +768,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1502.567691921894
     },
     {
@@ -720,6 +790,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1500.3610584127198
     },
     {
@@ -740,6 +812,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1499.4570572937796
     },
     {
@@ -760,6 +834,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1499.0579680153535
     },
     {
@@ -780,6 +856,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1493.6389624379512
     },
     {
@@ -800,6 +878,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1491.8085537651166
     },
     {
@@ -820,6 +900,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1491.72793068491
     },
     {
@@ -840,6 +922,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1485.6692587194732
     },
     {
@@ -860,6 +944,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1485.1546408625243
     },
     {
@@ -880,6 +966,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1484.7586099743503
     },
     {
@@ -900,6 +988,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1484.2212021169619
     },
     {
@@ -920,6 +1010,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1484.2212021169619
     },
     {
@@ -940,6 +1032,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1481.0419336491127
     },
     {
@@ -960,6 +1054,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1476.8905982531971
     },
     {
@@ -980,6 +1076,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1472.7536349914599
     },
     {
@@ -1000,6 +1098,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1470.8257654585198
     },
     {
@@ -1020,6 +1120,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1470.4871353695492
     },
     {
@@ -1040,6 +1142,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1467.5445189272402
     },
     {
@@ -1060,6 +1164,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1465.3937056370278
     },
     {
@@ -1080,6 +1186,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1463.8471405718678
     },
     {
@@ -1100,6 +1208,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1463.8471405718678
     },
     {
@@ -1120,6 +1230,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1460.5703746475824
     },
     {
@@ -1140,6 +1252,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1453.378883952685
     },
     {
@@ -1160,6 +1274,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1450.5079929564488
     },
     {
@@ -1180,6 +1296,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1447.5504585244723
     },
     {
@@ -1200,6 +1318,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1447.3305446651732
     },
     {
@@ -1220,6 +1340,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1443.523476913162
     },
     {
@@ -1240,6 +1362,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1443.0974769262236
     },
     {
@@ -1260,6 +1384,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1439.6375035905412
     },
     {
@@ -1280,6 +1406,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1437.1553649721927
     },
     {
@@ -1300,6 +1428,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1436.7615305291274
     },
     {
@@ -1320,6 +1450,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1435.791053550306
     },
     {
@@ -1340,6 +1472,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1434.7699626612564
     },
     {
@@ -1360,6 +1494,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1432.6723960220527
     },
     {
@@ -1380,6 +1516,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1429.0963629852072
     },
     {
@@ -1400,6 +1538,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1421.2190886343726
     },
     {
@@ -1420,6 +1560,8 @@
         "positions": 0
       },
       "titleWins": 0,
+      "titleValue": 0,
+      "lastTitleWin": null,
       "internalScore": 1416.3040554735258
     }
   ],

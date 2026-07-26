@@ -17,7 +17,7 @@
 //    削られてP4P16位に沈み、ベルトを巻いたことのない他階級のランカーより
 //    下になっていた。これが違和感の正体だった。
 //
-// 2. 王座実績(RIZIN王座戦での勝利数 = 戴冠 + 防衛)
+// 2. 王座実績(RIZIN王座戦での勝利 = 戴冠 + 防衛。鮮度で減衰させる)
 //    P4Pは「その階級で最強を証明したか」を見る指標なので、ベルトを獲り
 //    防衛した実績を明示的に加点する(TITLE_WIN_BONUS)。
 //    これが無いと、一度もベルトを巻いていない選手(佐藤将光・トニー・ララミー・
@@ -25,6 +25,12 @@
 //    サトシより上に来てしまう(2026-07-26に実データで発生していた)。
 //    逆に元王者(井上直樹・クレベル・コイケ・扇久保博正)が上位に来るのは
 //    この軸で自然に説明できる。
+//    ただし実績は永久に同じ重みでは効かせない。半減期2年の指数減衰をかけ、
+//    直近の防衛ほど重く、古い戴冠ほど軽くする(titleAchievements.tsの
+//    TITLE_RECENCY_HALF_LIFE_YEARS)。減衰が無いと、3年前に一度ベルトを
+//    巻いただけの選手の加点が、pull-upを通じて階級の上位陣まで押し上げて
+//    しまう(実例: ヴガール・ケラモフ2023年の王座勝がダウトベック・秋元を、
+//    鈴木千裕2023-24年の王座勝がYA-MANを不当に押し上げていた)。
 //    王座実績は手書きの元王者リストではなく戦績データから機械的に導出する
 //    (titleAchievements.ts参照 = 捏造ゼロ・今後のタイトル戦に自動追従)。
 //
@@ -37,7 +43,7 @@
 //    層の厚い階級で勝ち続けること自体が自然にレートを押し上げるため、
 //    正規化しない絶対値の方が実感に合う。
 //
-// 最終スコア = rawRating + TITLE_WIN_BONUS × RIZIN王座戦勝利数
+// 最終スコア = rawRating + TITLE_WIN_BONUS × 鮮度減衰後のRIZIN王座実績値
 //              → その後、階級内でpull-up補正(上記1)をかけて確定
 //
 // 撤回済みの設計(再導入しないこと):
@@ -59,6 +65,7 @@
 import { MnewsDivision, PUBLISHED_DIVISIONS } from "./divisions";
 import { RankingsFile, RankingEntryRecord, divisionRankingsKey } from "./rankingsFile";
 import { ChampionDefenseEntry } from "../championDefenses";
+import type { TitleAchievement } from "./titleAchievements";
 
 export type P4PTier = "champion" | "challenger";
 
@@ -83,11 +90,16 @@ export interface P4PEntry {
   // 既存の階級別ランキングと同じ「後処理として付与する」設計を踏襲)。
   rankPositionDelta: P4PRankPositionDelta | null;
   // RIZIN王座戦(タイトルマッチ・王座決定戦)での勝利数 = 戴冠 + 防衛。
-  // 戦績データから機械的に導出した事実値(titleAchievements.ts)。順位計算の
-  // 入力であり、将来的な画面表示(「元王者」バッジ等)にも再利用できる。
+  // 戦績データから機械的に導出した減衰なしの事実値(titleAchievements.ts)。
+  // 将来的な画面表示(「元王者」バッジ等)にも再利用できる。
   titleWins: number;
+  // 鮮度減衰(半減期TITLE_RECENCY_HALF_LIFE_YEARS年)をかけた王座実績値。
+  // 順位計算に実際に使うのはこちら(古い戴冠は軽くなる)。
+  titleValue: number;
+  // 直近の王座戦勝利日(無ければnull)。表示・デバッグ用。
+  lastTitleWin: string | null;
   // 内部専用フィールド(次回実行時のdelta計算にのみ使う、公開ページには出さない)。
-  // rawRating + TITLE_WIN_BONUS×titleWins に階級内pull-up補正をかけた最終値。
+  // rawRating + TITLE_WIN_BONUS×titleValue に階級内pull-up補正をかけた最終値。
   // これがP4P順位を決める唯一の値。
   internalScore: number;
 }
@@ -143,18 +155,19 @@ export function collectChallengerCandidates(rankings: RankingsFile): ChallengerC
   return out;
 }
 
-// 王座実績1勝(戴冠 または 防衛1回)あたりの加点。
+// 王座実績1件(直近の戴冠 または 防衛1回、減衰前)あたりの加点。
+// 実際の加点は TITLE_WIN_BONUS × 鮮度減衰後の実績値(titleValue)。
 //
 // 値の選定(15): 実データ(2026-07-26)で以下を全て満たす範囲から選んだ。
 //  - 元王者サトシ(RIZIN王座戦6勝)が、ベルト未経験のランカー(佐藤将光・
 //    トニー・ララミー・元谷友貴・秋元強真・カルシャガ・ダウトベック)より
 //    確実に上に来る
+//  - 3連続防衛中のダニー・サバテロ(直近3勝)が、1勝のみのルイス・グスタボより
+//    上に来る(鮮度減衰と組み合わせて成立する)
 //  - サトシの実績でライト級全体が引き上がり、グスタボ>ノジモフ>サトシの
 //    階級内順位は保たれる(これはpull-upにより構造的に保証される)
-//  - 無敗の現王者シェイドゥラエフ(王座戦4勝)がP4P1位を維持する
-// K=5〜30のいずれでも前2つは満たすが、K=20以上ではライト級勢が
-// シェイドゥラエフを追い越すため15を採る。
-// 感覚的には「王座戦1勝 ≒ 15レート分の価値」と読める。
+//  - 無敗の現王者シェイドゥラエフ(直近4勝)がP4P1位を維持する
+// 感覚的には「直近の王座戦1勝 ≒ 15レート分の価値」と読める。
 export const TITLE_WIN_BONUS = 15;
 
 // 階級内順位の絶対優先(pull-up方式)。
@@ -280,11 +293,12 @@ export interface BuildP4PFileInput {
   // (例: 扇久保博正はフライ級スコープだと5勝2敗だがRIZIN通算では11勝6敗、
   // 元谷友貴はフライ級スコープだと2勝2敗だがバンタム級戦を含む通算では14勝10敗)。
   allRizinRecords: Map<string, RankingEntryRecord>;
-  // slug -> RIZIN王座戦での勝利数(戴冠+防衛)。scripts/generate-p4p.ts側で
-  // data/fighterRecords.jsonからbuildTitleWinsIndex(titleAchievements.ts)を
-  // 使って導出したものを渡す。索引に無いslugは0扱い(王座戦の記録が無い=
-  // 未戴冠、という素直な解釈。捏造ではなく実データの不在をそのまま反映する)。
-  titleWinsBySlug: Map<string, number>;
+  // slug -> RIZIN王座実績(勝利数と鮮度減衰後の実績値)。scripts/generate-p4p.ts
+  // 側で data/fighterRecords.json から buildTitleAchievementIndex
+  // (titleAchievements.ts)を使って導出したものを渡す。索引に無いslugは0扱い
+  // (王座戦の記録が無い=未戴冠、という素直な解釈。捏造ではなく実データの
+  // 不在をそのまま反映する)。
+  titleAchievementsBySlug: Map<string, TitleAchievement>;
   updatedAt: string; // ISO(壁時計非依存にするため呼び出し側から渡す)
   algorithmVersion: number;
 }
@@ -314,6 +328,8 @@ interface ScoredCandidate {
   record: RankingEntryRecord;
   lastFight: string | null;
   titleWins: number;
+  titleValue: number;
+  lastTitleWin: string | null;
   score: number;
 }
 
@@ -339,35 +355,46 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
   };
 
   // 王座実績は索引に無ければ0(=王座戦の記録が無い=未戴冠)として扱う。
-  const titleWinsOf = (slug: string): number => input.titleWinsBySlug.get(slug) ?? 0;
+  const NO_TITLE: TitleAchievement = { wins: 0, value: 0, lastTitleWin: null };
+  const titleOf = (slug: string): TitleAchievement => input.titleAchievementsBySlug.get(slug) ?? NO_TITLE;
 
   // 王者(divisionPosition=0)と挑戦者(公開rank)を1つのプールにまとめ、
-  // スコア = rawRating + 王座実績ボーナス を与える。
+  // スコア = rawRating + TITLE_WIN_BONUS×鮮度減衰後の王座実績値 を与える。
   const scored: ScoredCandidate[] = [
-    ...champions.map((c) => ({
-      fighterId: c.slug,
-      division: c.division,
-      divisionPosition: 0,
-      divisionRank: "champion" as const,
-      tier: "champion" as P4PTier,
-      defenseCount: c.defenseCount,
-      record: resolveRecord(c.slug, c.division, c.record),
-      lastFight: c.lastFight,
-      titleWins: titleWinsOf(c.slug),
-      score: c.rawRating + TITLE_WIN_BONUS * titleWinsOf(c.slug),
-    })),
-    ...challengerCandidates.map((c) => ({
-      fighterId: c.slug,
-      division: c.division,
-      divisionPosition: c.divisionRank,
-      divisionRank: c.divisionRank,
-      tier: "challenger" as P4PTier,
-      defenseCount: null,
-      record: resolveRecord(c.slug, c.division, c.record),
-      lastFight: c.lastFight,
-      titleWins: titleWinsOf(c.slug),
-      score: c.rawRating + TITLE_WIN_BONUS * titleWinsOf(c.slug),
-    })),
+    ...champions.map((c) => {
+      const t = titleOf(c.slug);
+      return {
+        fighterId: c.slug,
+        division: c.division,
+        divisionPosition: 0,
+        divisionRank: "champion" as const,
+        tier: "champion" as P4PTier,
+        defenseCount: c.defenseCount,
+        record: resolveRecord(c.slug, c.division, c.record),
+        lastFight: c.lastFight,
+        titleWins: t.wins,
+        titleValue: t.value,
+        lastTitleWin: t.lastTitleWin,
+        score: c.rawRating + TITLE_WIN_BONUS * t.value,
+      };
+    }),
+    ...challengerCandidates.map((c) => {
+      const t = titleOf(c.slug);
+      return {
+        fighterId: c.slug,
+        division: c.division,
+        divisionPosition: c.divisionRank,
+        divisionRank: c.divisionRank,
+        tier: "challenger" as P4PTier,
+        defenseCount: null,
+        record: resolveRecord(c.slug, c.division, c.record),
+        lastFight: c.lastFight,
+        titleWins: t.wins,
+        titleValue: t.value,
+        lastTitleWin: t.lastTitleWin,
+        score: c.rawRating + TITLE_WIN_BONUS * t.value,
+      };
+    }),
   ];
 
   // 階級内順位は絶対: 下位に突出した選手がいる場合は上位を引き上げて順序を守る。
@@ -394,6 +421,8 @@ export function buildP4PFile(input: BuildP4PFileInput): P4PFile {
       lastFight: e.lastFight,
       rankPositionDelta: null,
       titleWins: e.titleWins,
+      titleValue: e.titleValue,
+      lastTitleWin: e.lastTitleWin,
       internalScore: e.score,
     }));
 
