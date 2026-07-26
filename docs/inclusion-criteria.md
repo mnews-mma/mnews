@@ -17,19 +17,21 @@ DEEPは公式ランキングを持たないため、メタルールの後段(出
 
 ### 「プロ戦」の判定方法(実装から読み取った定義)
 
-判定器の実装(`scripts/apply-inclusion-criteria.ts`、Phase1の`scripts/analyze-inclusion-criteria.ts`の集計ロジックを移植)は、DEEP参加者データセット(`out/_input-deep-event-participants-updated.csv`、選手ごとに1試合1行)の`weight_class_raw`列を対象に、以下の正規表現で「アマチュア」の文字列を検出する。
+判定器の実装(`scripts/apply-inclusion-criteria.ts`、Phase1の`scripts/analyze-inclusion-criteria.ts`の集計ロジックを移植)は、DEEP参加者データセット(`out/_input-deep-event-participants-updated.csv`、選手ごとに1試合1行)の`weight_class_raw`列を対象に、以下の正規表現で「アマチュア」の文字列を検出する。移植元はPhase1(PR #220)の`scripts/analyze-inclusion-criteria.ts:146`(`AMATEUR_RE`定義)。
 
 ```ts
 const AMATEUR_RE = /アマチュア/;
 ```
+(`scripts/apply-inclusion-criteria.ts:188`)
 
-選手1名の全出場行のうち、`weight_class_raw`に「アマチュア」を含む行数(`amateurCount`)が、その選手の総出場行数(`rows.length`)と一致する場合にのみ「全出場がアマチュア(`isAllAmateur`)」と判定する。
+選手1名の全出場行のうち、`weight_class_raw`に「アマチュア」を含む行数(`amateurCount`)が、その選手の総出場行数(`rows.length`)と一致する場合にのみ「全出場がアマチュア(`isAllAmateur`)」と判定する。移植元はPhase1`scripts/analyze-inclusion-criteria.ts:195`(`isAllAmateur: datedAppearances > 0 ? amateurCount === rows.length : amateurCount === rows.length && rows.length > 0`)。全選手が1件以上の出場行を持つため`rows.length > 0`は常に真であり、両分岐は機能的に同一のため、Phase2では単純化して移植した(判定内容に変更なし)。
 
 ```ts
 isAllAmateur: amateurCount === rows.length
 ```
+(`scripts/apply-inclusion-criteria.ts:224`)
 
-判定関数はこの`isAllAmateur`をそのまま使う二値判定である。
+判定関数はこの`isAllAmateur`をそのまま使う二値判定である。候補C自体の定義はPhase1`scripts/analyze-inclusion-criteria.ts:250`(`{ id: "C", label: "プロ戦基準: アマチュア戦のみの選手を除外", test: (f) => !f.isAllAmateur }`)。
 
 ```ts
 function decideCriterionC(f: FighterAgg): Decision {
@@ -39,6 +41,7 @@ function decideCriterionC(f: FighterAgg): Decision {
   return { adopted: true, reasonCode: "C_HAS_PRO_APPEARANCE" };
 }
 ```
+(`scripts/apply-inclusion-criteria.ts:236-241`)
 
 **重要な限界(推測ではなく実装の性質として明記する)**: 本判定は「プロ」を示す明示的な表記を検出しているのではなく、「アマチュア」表記の**不在**をもってプロ戦とみなす、消去法の判定である。Phase1の分析(`out/inclusion-criteria-analysis.md` §7)でも「エキシビション試合を示す明示的な表記は`weight_class_raw`から検出できなかった(判定不能)」と記録されている。したがって、エキシビション等アマチュアともプロとも表記されない出場があった場合、本判定はそれを「プロ」側に分類する(アマチュア表記がないため)。この限界は残ったままである。
 
