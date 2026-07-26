@@ -81,6 +81,24 @@
     "firstSeenAt": "2026-07-26T09:00:06.506Z"
   },
   {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.11結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2026/0726_pb11.html",
+    "publishedAt": "2026-07-26T00:00:00.000Z",
+    "firstSeenAt": "2026-07-26T12:45:02.676Z"
+  },
+  {
+    "id": "pancrase-1",
+    "source": "pancrase",
+    "title": "PANCRASE 364結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2026/0726.html",
+    "publishedAt": "2026-07-26T00:00:00.000Z",
+    "firstSeenAt": "2026-07-26T12:45:02.676Z"
+  },
+  {
     "id": "encount-0",
     "source": "other",
     "title": "青木真也は「不安がすごかった」 DEEP佐伯代表が明かすRIZIN会見控室での姿「昔をみんな忘れていく」",
