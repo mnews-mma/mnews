@@ -1,0 +1,231 @@
+{
+  "uniqueCount": 490,
+  "statusCounts": {
+    "listed": 64,
+    "hidden": 4,
+    "missing": 422
+  },
+  "rosterCount": 189,
+  "S1": {
+    "all": {
+      "brands": [
+        "DEEP FIGHT CHALLENGE",
+        "DEEP HAMAMATSU IMPACT",
+        "DEEP IMPACT",
+        "DEEP JEWELS",
+        "DEEP NAGOYA IMPACT",
+        "DEEP OSAKA IMPACT",
+        "DEEP TOKYO IMPACT",
+        "other"
+      ],
+      "table": {
+        "DEEP FIGHT CHALLENGE": {
+          "1回": 12,
+          "2回": 7,
+          "3回以上": 4
+        },
+        "DEEP HAMAMATSU IMPACT": {
+          "1回": 54,
+          "2回": 10,
+          "3回以上": 6
+        },
+        "DEEP IMPACT": {
+          "1回": 48,
+          "2回": 22,
+          "3回以上": 22
+        },
+        "DEEP JEWELS": {
+          "1回": 31,
+          "2回": 10,
+          "3回以上": 14
+        },
+        "DEEP NAGOYA IMPACT": {
+          "1回": 45,
+          "2回": 15,
+          "3回以上": 11
+        },
+        "DEEP OSAKA IMPACT": {
+          "1回": 40,
+          "2回": 29,
+          "3回以上": 14
+        },
+        "DEEP TOKYO IMPACT": {
+          "1回": 49,
+          "2回": 23,
+          "3回以上": 14
+        },
+        "other": {
+          "1回": 9,
+          "2回": 1,
+          "3回以上": 0
+        }
+      }
+    },
+    "listed": {
+      "brands": [
+        "DEEP IMPACT",
+        "DEEP JEWELS",
+        "DEEP OSAKA IMPACT",
+        "DEEP TOKYO IMPACT"
+      ],
+      "table": {
+        "DEEP IMPACT": {
+          "1回": 22,
+          "2回": 15,
+          "3回以上": 13
+        },
+        "DEEP JEWELS": {
+          "1回": 2,
+          "2回": 1,
+          "3回以上": 0
+        },
+        "DEEP OSAKA IMPACT": {
+          "1回": 2,
+          "2回": 1,
+          "3回以上": 0
+        },
+        "DEEP TOKYO IMPACT": {
+          "1回": 4,
+          "2回": 2,
+          "3回以上": 2
+        }
+      }
+    },
+    "hidden": {
+      "brands": [
+        "DEEP IMPACT"
+      ],
+      "table": {
+        "DEEP IMPACT": {
+          "1回": 1,
+          "2回": 2,
+          "3回以上": 1
+        }
+      }
+    },
+    "missing": {
+      "brands": [
+        "DEEP FIGHT CHALLENGE",
+        "DEEP HAMAMATSU IMPACT",
+        "DEEP IMPACT",
+        "DEEP JEWELS",
+        "DEEP NAGOYA IMPACT",
+        "DEEP OSAKA IMPACT",
+        "DEEP TOKYO IMPACT",
+        "other"
+      ],
+      "table": {
+        "DEEP FIGHT CHALLENGE": {
+          "1回": 12,
+          "2回": 7,
+          "3回以上": 4
+        },
+        "DEEP HAMAMATSU IMPACT": {
+          "1回": 54,
+          "2回": 10,
+          "3回以上": 6
+        },
+        "DEEP IMPACT": {
+          "1回": 25,
+          "2回": 5,
+          "3回以上": 8
+        },
+        "DEEP JEWELS": {
+          "1回": 29,
+          "2回": 9,
+          "3回以上": 14
+        },
+        "DEEP NAGOYA IMPACT": {
+          "1回": 45,
+          "2回": 15,
+          "3回以上": 11
+        },
+        "DEEP OSAKA IMPACT": {
+          "1回": 38,
+          "2回": 28,
+          "3回以上": 14
+        },
+        "DEEP TOKYO IMPACT": {
+          "1回": 45,
+          "2回": 21,
+          "3回以上": 12
+        },
+        "other": {
+          "1回": 9,
+          "2回": 1,
+          "3回以上": 0
+        }
+      }
+    }
+  },
+  "multiBrandCount": 95,
+  "allAmateurCount": 119,
+  "anyAmateurCount": 20,
+  "titleMatchCount": 12,
+  "overlapWithRosterCount": 8,
+  "listedCount": 64,
+  "threshold": 12,
+  "overThresholdIds": [
+    "B1",
+    "B2",
+    "D"
+  ],
+  "results": [
+    {
+      "id": "F",
+      "label": "基準なし(全件採用)",
+      "adopted": 490,
+      "rejected": 0,
+      "newlyAdopted": 422,
+      "existingExcluded": 0
+    },
+    {
+      "id": "A",
+      "label": "ブランド基準: 本戦(DEEP IMPACT/DEEP JEWELS)出場者のみ",
+      "adopted": 172,
+      "rejected": 318,
+      "newlyAdopted": 111,
+      "existingExcluded": 7
+    },
+    {
+      "id": "B1",
+      "label": "出場回数基準: (収集期間内)2回以上",
+      "adopted": 202,
+      "rejected": 288,
+      "newlyAdopted": 165,
+      "existingExcluded": 30
+    },
+    {
+      "id": "B2",
+      "label": "出場回数基準: (収集期間内)3回以上",
+      "adopted": 85,
+      "rejected": 405,
+      "newlyAdopted": 69,
+      "existingExcluded": 49
+    },
+    {
+      "id": "C",
+      "label": "プロ戦基準: アマチュア戦のみの選手を除外",
+      "adopted": 371,
+      "rejected": 119,
+      "newlyAdopted": 303,
+      "existingExcluded": 0
+    },
+    {
+      "id": "D",
+      "label": "実績基準: タイトル戦出場歴のある選手",
+      "adopted": 12,
+      "rejected": 478,
+      "newlyAdopted": 4,
+      "existingExcluded": 57
+    },
+    {
+      "id": "E",
+      "label": "複合: AまたはD",
+      "adopted": 173,
+      "rejected": 317,
+      "newlyAdopted": 112,
+      "existingExcluded": 7
+    }
+  ]
+}
