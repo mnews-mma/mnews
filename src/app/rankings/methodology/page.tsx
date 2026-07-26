@@ -59,6 +59,8 @@ export default function MethodologyPage() {
         <ul style={{ color: "var(--muted)", lineHeight: 1.9 }}>
           <li>王座戦など、試合の価値を加味します</li>
           <li>階級を問わないRIZIN通算の戦績をもとにします</li>
+          <li>直近の実績ほど重く評価します</li>
+          <li>順位はすべて自動算出です。恣意的な編集判断や手動での補正は一切していません</li>
         </ul>
 
         <p className="prose-updated">RIZIN非公式。mnews.jp独自算出。</p>
