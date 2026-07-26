@@ -122,14 +122,13 @@ export function checkRequiredInvariants(
 // P4Pビルダーと同じファイル(src/lib/mnewsRating/p4pFile.ts)に置き、ここでは
 // scripts/generate-p4p.tsが呼ぶ入口として再エクスポートするに留める。
 //
-// 2026-07-26: 閾値clamp(閾値30)へ戻したため「同一階級内P4P順序==公開rank順」の
-// 完全一致チェック(旧checkP4PDivisionOrderInvariant)は撤回した。明確な格上
-// (レート差>閾値)の逆転は意図した挙動であり、完全一致を強制するとサトシ・
-// ソウザの逆転で常に落ちてしまう。代わりに下記checkP4PH2HRespectで「P4Pが
-// 直接対決(H2H)の結果と矛盾しない」ことだけを守る。
+// 2026-07-26: P4Pの最優先ルールを「階級内順位は絶対(王者→公開1位→2位→…)」に
+// 据え直したため、checkP4PDivisionOrderInvariantを王者込みの完全版として復活。
+// 併せて下記checkP4PH2HRespect(P4Pが直接対決の結果と矛盾しない)も回す。
 export {
   verifyAllChampionsPresent as checkP4PAllChampionsPresent,
   verifyPublishedDivisionsOnly as checkP4PPublishedDivisionsOnly,
+  verifyDivisionOrderInvariant as checkP4PDivisionOrderInvariant,
 } from "../mnewsRating/p4pFile";
 
 // P4P版のH2H整合チェック。上のREQUIRED_RANKING_INVARIANTS(階級別ランキング用に

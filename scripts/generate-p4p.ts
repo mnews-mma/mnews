@@ -41,9 +41,11 @@ import {
   ChampionRawRatingInput,
   P4PFile,
 } from "../src/lib/mnewsRating/p4pFile";
+import { buildTitleWinsIndex } from "../src/lib/mnewsRating/titleAchievements";
 import {
   checkP4PAllChampionsPresent,
   checkP4PPublishedDivisionsOnly,
+  checkP4PDivisionOrderInvariant,
   checkP4PH2HRespect,
 } from "../src/lib/rankings/requiredInvariants";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
@@ -94,7 +96,7 @@ function applyRizinRecordsOverride(records: FighterRecordsInput): FighterRecords
 // update-mnews-rating.ts/check-h2h-invariant.ts/scripts/check-p4p-trial.tsと
 // 同じ思想の読み取り専用エンジン再実行。王者のrawRating取得だけがこの再計算の
 // 目的で、階級付け・掲載資格判定はここでは行わない(data/rankings.jsonを正として使う)。
-function recomputeDisplayMap(): Map<string, DisplayEntry> {
+function recomputeDisplayMap(): { displayMap: Map<string, DisplayEntry>; records: FighterRecordsInput } {
   if (!fs.existsSync(RECORDS_PATH)) {
     throw new Error(`[FATAL] data/fighterRecords.json が存在しません: ${RECORDS_PATH}`);
   }
@@ -126,7 +128,10 @@ function recomputeDisplayMap(): Map<string, DisplayEntry> {
   const initialRatingOverrides = computeInitialRatingOverrides(preDebutRecords, INITIAL_RATING_BOOST_PARAMS_V6, rizinFightCountsForSeed);
   const states = computeRawRatings(bouts, ELO_PARAMS_V5, initialRatingOverrides);
   const publishable = filterPublishableStates(states, records);
-  return buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6);
+  // recordsも返す: 王座実績(RIZIN王座戦での勝利数)をhistoryのイベント表記から
+  // 導出するため(titleAchievements.ts)。rizinRecordsOverride適用後の同じ
+  // recordsを使い、エンジンが見ている戦績と食い違わないようにする。
+  return { displayMap: buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6), records };
 }
 
 function effectiveRatingOf(display: DisplayEntry): number {
@@ -157,8 +162,10 @@ function resolveChampionRawRatings(displayMap: Map<string, DisplayEntry>): Champ
 function runOnce(): P4PFile {
   const rankings = loadRankings();
   const prev = loadP4PFile();
-  const displayMap = recomputeDisplayMap();
+  const { displayMap, records } = recomputeDisplayMap();
   const championRawRatings = resolveChampionRawRatings(displayMap);
+  // 王座実績(戴冠+防衛): 手書きの元王者リストではなく戦績データから機械的に導出。
+  const titleWinsBySlug = buildTitleWinsIndex(records);
 
   const algorithmVersion = Object.values(rankings)[0]?.algorithmVersion ?? -1;
   if (algorithmVersion === -1) {
@@ -179,6 +186,7 @@ function runOnce(): P4PFile {
     championRawRatings,
     defenseData: CHAMPION_DEFENSES,
     allRizinRecords,
+    titleWinsBySlug,
     // 壁時計非依存(指示書§4系の既存方針を踏襲): updatedAtはdata/rankings.json
     // 側の最新updatedAtをそのまま転記する(このスクリプト自身の実行時刻は使わない)。
     updatedAt: Object.values(rankings).reduce((m, d) => (d.updatedAt > m ? d.updatedAt : m), ""),
@@ -212,15 +220,17 @@ function runOnce(): P4PFile {
   // 自己検証: 破れたら書き込み自体を止める(既存パイプラインのH2H不変条件
   // チェックと同じ「書き込み前に必ず検証」の設計を踏襲)。検証項目:
   // (1) rawRatingを算出できた王者が全員entriesに存在すること(位置は問わない)、
-  // (2) 非公開階級混入ゼロ、(3) P4Pが直接対決(H2H)の結果と矛盾しないこと。
-  // 2026-07-26: 閾値clamp(閾値30)へ戻したため「同一階級内が公開rank順と完全一致」
-  // は撤回(明確な格上の逆転=サトシ・ソウザ等は意図した挙動)。代わりに(3)で
-  // H2H矛盾の逆転(福田>テミロフ等)だけを機械的に弾く。
+  // (2) 非公開階級混入ゼロ、
+  // (3) 各階級のP4P順序が [王者→公開1位→公開2位→…] と完全一致すること
+  //     (最優先ルール「階級内順位は絶対」の機械的強制)、
+  // (4) P4Pが直接対決(H2H)の結果と矛盾しないこと。
   const expectedChampionSlugs = championRawRatings.map((c) => c.slug);
   const errors = [
     ...checkP4PAllChampionsPresent(withDeltas, expectedChampionSlugs),
     ...checkP4PPublishedDivisionsOnly(withDeltas),
-    // P4Pが直接対決(H2H)の結果と矛盾しないこと(閾値clampの最終防衛)。
+    // 階級内順位は絶対(pull-up補正が効いていることの最終確認)。
+    ...checkP4PDivisionOrderInvariant(withDeltas),
+    // P4Pが直接対決(H2H)の結果と矛盾しないこと。
     ...checkP4PH2HRespect(withDeltas),
     // RIZIN通算戦績が1件でも解決できていない場合は書き込みを中止する。
     // 階級スコープ済み戦績にフォールバックしたまま公開すると、P4P内で
