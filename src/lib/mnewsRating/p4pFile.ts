@@ -383,12 +383,24 @@ export function verifyPublishedDivisionsOnly(file: P4PFile): string[] {
   return errors;
 }
 
-// 3. 同一階級内のP4P順序 == 階級別公開rank順(逆転ゼロ、閾値0の完全clamp下では
-// 常にこれが成立するはず)。逆転が1件でもあればclamp実装バグとしてexit 1。
-// 王者は公開rankを持たないため対象外。internalScoreはclamp後のP4P順位を決める値そのもの
-// (突き抜けた選手は原rawのまま、抑制された選手は引き下げ済み)なので、
-// P4P上位側のinternalScoreが下位側+閾値を必ず超えていることを検証すればよい。
-export function verifyDivisionOrderInvariant(file: P4PFile, threshold: number = P4P_DIVISION_ORDER_THRESHOLD): string[] {
+// 3. 同一階級内のP4P順序 == 階級別公開rank順(逆転ゼロ)。
+//
+// 2026-07-25改訂(clamp実装から独立させた): 旧実装はP4P_DIVISION_ORDER_
+// THRESHOLDとinternalScoreの差分を判定に使っており、clampのbreakthrough
+// 条件(ceiling+threshold)と同じ閾値ロジックを検証側でも共有していた。この
+// ため、clamp本体の閾値比較式に境界バグ(threshold=0で「1でも上回れば
+// 常に突き抜け」という逆の挙動になっていた不具合)があったとき、検証側も
+// 同じ土俵で「gapが閾値以下かどうか」を判定してしまい、clampが実質無効化
+// されている状態を検出できなかった(サトシ・ソウザの逆転が「明確な格上」
+// として素通りしたケース)。バグは自己検証ではなく人力の突き合わせで発覚した。
+//
+// この教訓を受け、閾値・ceiling・clamp関数の内部状態を一切参照しない形に
+// 書き換えた。見るのは生成後の最終成果物(P4PEntry.p4pRankとdivisionRankの
+// 突合)のみ: 各公開階級で、P4P順(p4pRank昇順)に並べた選手のfighterId列と、
+// 階級別公開rank順(divisionRank昇順)に並べた選手のfighterId列が完全一致
+// することを見る。閾値がいくつであっても(将来clampの挙動が変わっても)、
+// 逆転が1件でもあれば必ず検出できる。王者は公開rankを持たないため対象外。
+export function verifyDivisionOrderInvariant(file: P4PFile): string[] {
   const errors: string[] = [];
   const byDivision = new Map<MnewsDivision, P4PEntry[]>();
   for (const e of file.entries) {
@@ -397,17 +409,10 @@ export function verifyDivisionOrderInvariant(file: P4PFile, threshold: number = 
     byDivision.get(e.division)!.push(e);
   }
   for (const [division, list] of byDivision) {
-    for (const a of list) {
-      for (const b of list) {
-        // a が b よりP4Pで上位、かつ a の公開rankが b より下位(=逆転)の場合。
-        if (a.p4pRank < b.p4pRank && (a.divisionRank as number) > (b.divisionRank as number)) {
-          if (a.internalScore - b.internalScore <= threshold) {
-            errors.push(
-              `${division}: ${a.fighterId}(公開${a.divisionRank}位)が${b.fighterId}(公開${b.divisionRank}位)を閾値以下の僅差(${(a.internalScore - b.internalScore).toFixed(2)})で逆転(clamp実装バグ)`
-            );
-          }
-        }
-      }
+    const byPublicRank = [...list].sort((a, b) => (a.divisionRank as number) - (b.divisionRank as number)).map((e) => e.fighterId);
+    const byP4PRank = [...list].sort((a, b) => a.p4pRank - b.p4pRank).map((e) => e.fighterId);
+    if (JSON.stringify(byPublicRank) !== JSON.stringify(byP4PRank)) {
+      errors.push(`${division}: P4P順序が階級別公開rank順と不一致(逆転を検出): 公開rank順=[${byPublicRank.join(",")}] / P4P順=[${byP4PRank.join(",")}]`);
     }
   }
   return errors;
