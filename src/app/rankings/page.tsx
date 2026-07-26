@@ -2,8 +2,9 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankingDelta from "@/components/RankingDelta";
+import RankPositionDeltaBadge, { RankPositionDeltaValue } from "@/components/RankPositionDeltaBadge";
 import { FIGHTERS } from "@/lib/fighters";
-import { fetchRankings, getRankingsUpdatedAt } from "@/lib/mnewsRatingData";
+import { fetchRankings, fetchP4PRankings, getRankingsUpdatedAt } from "@/lib/mnewsRatingData";
 import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
 import { MNEWS_DIVISIONS, DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
 import { RATING_NAME } from "@/lib/mnewsRating/constants";
@@ -68,10 +69,29 @@ function faqJsonLd() {
 
 export default async function RankingsHubPage() {
   const rankings = await fetchRankings();
+  const p4pData = await fetchP4PRankings();
   const nameBySlug = new Map(FIGHTERS.map((f) => [f.slug, f.nameJa]));
 
   const rawUpdatedAt = getRankingsUpdatedAt(rankings);
   const updatedAt = rawUpdatedAt ? toJstDateStr(Date.parse(rawUpdatedAt)) : null;
+
+  // fighters.tsに解決できないfighterIdはハブ画面にも出さない(既存の
+  // /rankings/pound-for-poundと同じ「生スラッグ表示フォールバック禁止」方針)。
+  // 除外後に表示順位を1から振り直し、TOP_N_ON_HUBはその後に適用する。
+  const p4pResolved: { fighterId: string; nameJa: string; displayRank: number; rankPositionDelta: RankPositionDeltaValue | null }[] = [];
+  if (p4pData) {
+    for (const e of p4pData.entries) {
+      const nameJa = nameBySlug.get(e.fighterId);
+      if (!nameJa) continue;
+      p4pResolved.push({
+        fighterId: e.fighterId,
+        nameJa,
+        displayRank: p4pResolved.length + 1,
+        rankPositionDelta: e.rankPositionDelta,
+      });
+    }
+  }
+  const p4pView = p4pResolved.slice(0, TOP_N_ON_HUB);
 
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "ランキング" }];
 
@@ -113,21 +133,49 @@ export default async function RankingsHubPage() {
       </div>
 
       <div style={{ padding: "8px 24px 0" }}>
-        <a
-          href="/rankings/pound-for-pound"
-          style={{
-            display: "block",
-            border: "1px solid var(--border)",
-            borderRadius: 8,
-            padding: "14px 18px",
-            marginBottom: 8,
-            fontSize: 13,
-            color: "var(--fg)",
-          }}
-        >
-          <strong style={{ color: "var(--accent)" }}>階級を超えた強さは？ →</strong>{" "}
-          パウンドフォーパウンド(P4P)ランキングを見る
-        </a>
+        <section style={{ marginBottom: 32 }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 10 }}>
+            <h2 style={{ fontSize: 15, fontWeight: 800, margin: 0, color: "var(--fg)" }}>男子パウンドフォーパウンド(P4P)</h2>
+            {p4pView.length > 0 && (
+              <a href="/rankings/pound-for-pound" style={{ fontSize: 12, color: "var(--accent)" }}>
+                全順位を見る →
+              </a>
+            )}
+          </div>
+
+          {p4pView.length === 0 ? (
+            <p style={{ fontSize: 13, color: "var(--muted)", padding: "8px 0" }}>準備中(算出は進行中、掲載は準備が整い次第)</p>
+          ) : (
+            <div className="table-outer">
+              <div className="table-scroll">
+                <table className="history-table">
+                  <thead>
+                    <tr>
+                      <th style={{ width: 44 }}>順位</th>
+                      <th>選手</th>
+                      <th style={{ width: 60 }}>前回比</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {p4pView.map((e) => (
+                      <tr key={e.fighterId}>
+                        <td style={{ fontFamily: "var(--mono)", fontWeight: 700 }}>{e.displayRank}</td>
+                        <td className="col-opponent">
+                          <a href={`/fighters/${e.fighterId}`} className="opponent-link">
+                            {e.nameJa}
+                          </a>
+                        </td>
+                        <td>
+                          <RankPositionDeltaBadge delta={e.rankPositionDelta} />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </section>
       </div>
 
       <div style={{ padding: "8px 24px 48px" }}>

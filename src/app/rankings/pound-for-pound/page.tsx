@@ -14,8 +14,8 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 export const revalidate = 900;
 
 export const metadata = pageMetadata({
-  title: "AI RIZINパウンドフォーパウンド(P4P)ランキング｜階級を超えた強さをAIが算出【mnews】",
-  description: `RIZINに公式のパウンドフォーパウンド(P4P)ランキングはありません。独自開発のAIが階級別ランキング(${RATING_NAME})をもとに、階級を超えた強さの序列を算出する非公式P4Pランキング。`,
+  title: "AI RIZIN男子パウンドフォーパウンド(P4P)ランキング｜階級を超えた強さをAIが算出【mnews】",
+  description: `RIZINに公式の男子パウンドフォーパウンド(P4P)ランキングはありません。独自開発のAIが階級別ランキング(${RATING_NAME})をもとに、階級を超えた強さの序列を算出する非公式P4Pランキング。`,
   path: "/rankings/pound-for-pound",
 });
 
@@ -61,7 +61,7 @@ export default async function PoundForPoundRankingPage() {
   const breadcrumbs = [
     { label: "トップ", href: "/" },
     { label: "ランキング", href: "/rankings" },
-    { label: "パウンドフォーパウンド" },
+    { label: "男子パウンドフォーパウンド" },
   ];
 
   const itemListLd =
@@ -69,7 +69,7 @@ export default async function PoundForPoundRankingPage() {
       ? {
           "@context": "https://schema.org",
           "@type": "ItemList",
-          name: "RIZIN パウンドフォーパウンド(P4P)ランキング",
+          name: "RIZIN 男子パウンドフォーパウンド(P4P)ランキング",
           numberOfItems: view.length,
           itemListElement: view.map((e) => ({
             "@type": "ListItem",
@@ -90,7 +90,7 @@ export default async function PoundForPoundRankingPage() {
       <Nav />
       <div className="page-head">
         <Breadcrumb items={breadcrumbs} />
-        <h1 className="page-title">AI RIZINパウンドフォーパウンド(P4P)ランキング</h1>
+        <h1 className="page-title">AI RIZIN男子パウンドフォーパウンド(P4P)ランキング</h1>
         {data && <div className="page-sub">最終更新: {data.updatedAt.slice(0, 10)}</div>}
       </div>
 
