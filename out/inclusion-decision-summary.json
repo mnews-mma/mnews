@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-07-26T08:25:40.823Z",
+  "s0": {
+    "participantsUnique": 490,
+    "participantsStatus": {
+      "listed": 64,
+      "hidden": 4,
+      "missing": 422
+    },
+    "rosterTotal": 189,
+    "rosterStatus": {
+      "listed": 43,
+      "hidden": 45,
+      "missing": 101
+    },
+    "rosterMissingByOrg": {
+      "pancrase": 35,
+      "shooto": 60,
+      "deep": 6
+    },
+    "ok": true
+  },
+  "s3": {
+    "adopted": 371,
+    "rejected": 119,
+    "total": 490,
+    "newlyAdopted": 303,
+    "existingExcluded": 0,
+    "matchesExpected": true
+  },
+  "s4": {
+    "listedCount": 64,
+    "listedExcluded": 0,
+    "ok": true
+  }
+}
