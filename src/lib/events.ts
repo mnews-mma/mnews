@@ -1,6 +1,7 @@
 import { SourceKey } from "./sources";
 import { fighterNameSize } from "./vsMath";
 import { fitName, type FitOpts } from "./og/fitName";
+import { exactFitNameFontSize } from "./og/resultNameFit";
 
 export type EventStatus = "upcoming" | "live" | "completed";
 
@@ -828,6 +829,36 @@ export const OG_DREAM_VS_CEILING = EVENTS.reduce((min, event) => {
     min
   );
 }, 108);
+
+// X結果速報カード(RESULT/WIN、/api/og/result)の勝者名フォントサイズを全カード
+// 単一値に統一するための天井(2026-07-27)。OG_DREAM_VS_CEILINGと同じ思想:
+// 天井をベタ書きせず、EVENTS(RESULTカードが実際に表示し得る全対戦カードの
+// 勝者候補=fighterA/fighterB)の中で最も長い名前がカード内寸(幅1200px-左右
+// パディング56px×2)にちょうど収まるサイズを逆算し、全カード共通の天井として
+// 使う。天井以下の名前は必ずこの値で描画され(route.tsx側で
+// Math.min(ceiling, 個別fit)するため)、天井算出の母集団に無い将来の極端な
+// 長い名前だけが下限(OG_RESULT_WINNER_NAME_FLOOR)まで自然に縮む。
+// 幅の値はroute.tsx側のWINNER_NAME_MAX_WIDTH_PXと同じ値をここで独立に持つ
+// (events.ts側がOGPルートの実装詳細に依存しないようにするため。変更する
+// 場合は両方を揃えること)。
+const RESULT_WINNER_MAX_WIDTH_PX = 1200 - 56 * 2;
+export const OG_RESULT_WINNER_NAME_CEILING = Math.floor(
+  EVENTS.reduce((min, event) => {
+    return event.bouts.reduce(
+      (m, b) =>
+        Math.min(
+          m,
+          exactFitNameFontSize(b.fighterA, RESULT_WINNER_MAX_WIDTH_PX),
+          exactFitNameFontSize(b.fighterB, RESULT_WINNER_MAX_WIDTH_PX)
+        ),
+      min
+    );
+  }, 120)
+);
+
+// OG_RESULT_WINNER_NAME_CEILINGの許容下限。これを下回る=どこかの名前の推定幅が
+// 異常に大きい疑い(全RESULTカードが巻き添えで小さくなる)。
+export const OG_RESULT_WINNER_NAME_FLOOR = 56;
 
 export function getEvent(slug: string): MEvent | undefined {
   return EVENTS.find((e) => e.slug === slug);
