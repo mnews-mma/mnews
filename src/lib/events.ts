@@ -176,67 +176,6 @@ export const EVENTS: MEvent[] = [
     ],
   },
   {
-    slug: "pancrase-364",
-    org: "pancrase",
-    status: "upcoming",
-    eventName: "PANCRASE 364",
-    date: "2026-07-26",
-    openTime: "12:15",
-    startTime: "12:30",
-    venue: "ニューピアホール",
-    broadcast: ["U-NEXT（国内独占）", "UFC FIGHT PASS（海外）"],
-    affiliateUrl: "", // U-NEXTアフィリエイトURL（実装予定）
-    sourceUrl: "https://www.pancrase.co.jp/tour/2026/pancrase364/index.html",
-    bouts: [
-      {
-        weightClass: "ストロー級（52.2kg）",
-        fighterA: "佐々木瞬真",
-        fighterB: "船田電池",
-        isTitleMatch: false,
-        note: "ストロー級次期挑戦者決定戦",
-      },
-      {
-        weightClass: "フェザー級（65.8kg）",
-        fighterA: "カリベク・アルジクル ウール",
-        fighterB: "三宅輝砂",
-      },
-      {
-        weightClass: "バンタム級（61.2kg）",
-        fighterA: "髙城光弘",
-        fighterB: "佐藤ゆうじ",
-      },
-      {
-        weightClass: "バンタム級（61.2kg）",
-        fighterA: "前田浩平",
-        fighterB: "小原統哉",
-      },
-      {
-        weightClass: "ライト級（70.3kg）",
-        fighterA: "藤村健悟",
-        fighterB: "佐藤力斗",
-      },
-      // プレリミナリー
-      {
-        weightClass: "フェザー級（65.8kg）",
-        fighterA: "小野瑛大",
-        fighterB: "山田浩平",
-        note: "プレリミナリー",
-      },
-      {
-        weightClass: "フライ級（56.7kg）",
-        fighterA: "米泉乾太",
-        fighterB: "細川勇哉",
-        note: "プレリミナリー",
-      },
-      {
-        weightClass: "ストロー級（52.2kg）",
-        fighterA: "山口秀斗",
-        fighterB: "猿魔",
-        note: "プレリミナリー",
-      },
-    ],
-  },
-  {
     slug: "pancrase-365",
     org: "pancrase",
     status: "upcoming",
