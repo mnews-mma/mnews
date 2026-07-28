@@ -7,18 +7,22 @@
 // 上書きするのはresult/method/weightClassの3フィールドのみ(date/opponent/event
 // はhistory側の表記をそのまま維持する。recordOverrides.tsのpatch-weight-classと
 // 同じ「必要最小限のフィールドだけ直す」設計)。
-// - ルール種別が非MMAと積極的に判定できる場合(キックボクシング・シュート
-//   ボクシング・グラップリング・その他。CONFIRMED_NON_MMA_RULE_TYPES参照)は
+// - ルール種別が非MMAと積極的に判定できる場合(NON_MMA_RULE_TYPE_LABELS参照。
+//   キックボクシング・シュートボクシング・グラップリング・ベアナックル・
+//   スタンディングバウト・エキシビジョン・MIXルール・チャレンジルール・その他)は
 //   historyから除外する(RIZIN戦績としては数えない。捏造ではなく対象外として
 //   扱う)。判定は「MMAという文字列と厳密一致するか」ではなく「非MMAと確定
 //   できる値を名指しした一覧に入っているか」で行う(#240の続き。旧ロジックの
 //   厳密一致だと"女子MMA"のような複合ラベルまで誤除外してしまう事故があった)。
+//   この非MMA判定リストはrizinScraper.tsのparseRuleInfo()が使うものと同一の
+//   NON_MMA_RULE_TYPE_LABELSをそのままimportして使う(判定が2箇所に分かれて
+//   食い違うことを防ぐため。PR #250で一本化)。
 // - 試合中止(cancelled)もhistoryから除外する(試合が成立していないため)。
 // - ルール情報欠落で種別判定不能(ruleType==="unknown")の場合、および決着種別が
 //   判定不能(resultType==="unknown")の場合は、除外もWikipedia上書きもせず
 //   元のhistoryのまま使う(判定不能をMMAとも非MMAとも決めつけない)。
 import { HistoryEntryLike, isRizinMmaEvent } from "./engine";
-import { RizinRecordsBout, RizinRecordsEvent } from "./rizinScraper";
+import { RizinRecordsBout, RizinRecordsEvent, NON_MMA_RULE_TYPE_LABELS } from "./rizinScraper";
 
 // rizinRecords.json(自動スクレイピング)がbout単位のruleTypeを誤タグ付けした
 // ことが一次ソース(RIZIN公式個別試合結果ページ等)で確認できたケースの、
@@ -45,6 +49,15 @@ export const RIZIN_RECORDS_RULE_TYPE_OVERRIDES: RizinRecordsRuleTypeOverride[] =
     // ライト級13-3という欠落状態の原因)。イベント表記に含まれる
     // 【Bellatorライト級ワールドグランプリ1回戦】という特殊ラベルがルール種別
     // パーサーを混乱させたと推定されるが、実際は通常のMMAルール一戦(3R0:49TKO)。
+    //
+    // 【2026-07-28追記・PR #250】この試合の公式ページの実際のルール表記は
+    // 「ユニファイドルール」(超RIZIN.2 Bellatorパートの他4試合と同一表記)で
+    // あることをPR #246の悉皆監査で確認済み。parseRuleInfo()の判定反転(非MMAを
+    // 名指しし、それ以外はMMAとして扱う)により、この試合は反転後のロジックだけで
+    // 自動的にruleType="MMA"になる(ISKA/キックボクシング等の非MMA語に一致しない
+    // ため)。つまりこのピンポイント訂正は反転後は冗長(no-op)だが、実害はない
+    // (同じ"MMA"を再代入するだけ)ため削除はしていない。将来parseRuleInfo側の
+    // ロジックが再度変わった場合の保険として残す。
     eventName: "のむシリカ presents 超RIZIN.2 powered by U-NEXT",
     date: "2023-07-30",
     fighterAName: "パトリッキー・ピットブル",
@@ -56,7 +69,8 @@ export const RIZIN_RECORDS_RULE_TYPE_OVERRIDES: RizinRecordsRuleTypeOverride[] =
       "RIZIN公式個別試合結果ページで実在・MMAルールでの決着(3R0:49TKO、カーフキック→パウンド)を" +
       "確認済み。rizinRecords.json側のruleType「その他」はイベント名内の" +
       "【Bellatorライト級ワールドグランプリ1回戦】ラベルによる自動判定の誤りと推定されるが、" +
-      "パーサー自体の修正は本対応のスコープ外(この1試合のみをピンポイントで訂正)。",
+      "パーサー自体の修正は本対応のスコープ外(この1試合のみをピンポイントで訂正)。" +
+      "2026-07-28: parseRuleInfo反転(PR #250)によりこの訂正は冗長化したが実害が無いため残置。",
   },
 ];
 
@@ -89,20 +103,6 @@ function formatWeightClass(b: RizinRecordsBout): string | undefined {
   if (b.weightKg) return `${b.weightKg}kg契約`;
   return undefined;
 }
-
-// 非MMAと積極的に判定できるルール種別のdenylist。以前は`ruleType !== "MMA"`
-// という厳密一致で除外していたが、これだと"MMA"という文字列そのものを含まない
-// 複合ラベル(例: 手動書き起こし分の"女子MMA")まで巻き込んで誤除外してしまう
-// (RENA×山本美憂戦(RIZIN.2、2016-09-25)で実際に発生・#243で発見)。#240で
-// 確立した「除外は積極的に非MMAと判定できたときだけ」という原則を、ruleType
-// 判定にも一貫させるための変更(#240の続き)。
-// data/rizinRecords.json実在のruleType全件列挙(2026-07-28時点、777MMA/
-// 148キックボクシング/44その他/28unknown/5女子MMA/1シュートボクシング/
-// 1グラップリング)を踏まえ、確定的に非MMAと言える4種のみを列挙する。
-// "MMA"・"女子MMA"(いずれもMMA実戦)はここに含めない。将来ここに無い新しい
-// ラベルが現れた場合も、名指しされていない限り誤って除外されない(不明な
-// ラベルをMMA以外と決めつけない、という設計)。
-const CONFIRMED_NON_MMA_RULE_TYPES = new Set<string>(["キックボクシング", "シュートボクシング", "グラップリング", "その他"]);
 
 export interface RizinOverrideResult {
   history: HistoryEntryLike[];
@@ -141,7 +141,7 @@ export function applyRizinRecordsToHistory(
       result.push(h);
       continue;
     }
-    if (CONFIRMED_NON_MMA_RULE_TYPES.has(match.ruleType) || match.resultType === "cancelled") {
+    if (NON_MMA_RULE_TYPE_LABELS.has(match.ruleType) || match.resultType === "cancelled") {
       excludedCount++;
       continue; // MMA以外と確定できた試合・中止試合は戦績集計から除外する
     }
