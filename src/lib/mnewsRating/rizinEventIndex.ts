@@ -21,12 +21,24 @@ export interface RizinEventIndexEntry {
   eventName: string; // 大会情報タグのタイトル表記そのまま
   date: string; // YYYY-MM-DD
   infoPageId: string; // 大会情報／チケットページ(参考。スクレイパーは使わない)
-  resultsPageId: string; // 試合結果一覧ページ(スクレイパーが実際にfetchする対象)
+  resultsPageId: string; // 試合結果一覧ページ(参考情報として残す。manualOverride=trueの場合はfetchしない)
   note?: string; // タイトル形式が通常と異なる等の特記事項
+  manualOverride?: boolean; // trueの場合、update-rizin-records.tsはこのエントリを自動fetchしない
+  // (2016年当時の旧テンプレートでrizinScraper.tsのパーサーが対応できず、
+  // rizinRecordOverrides.tsに手動書き起こし済みのため)。判定はeventNameの
+  // 文字列一致ではなくこのフラグで行う(表記ゆれで判定が壊れて二重計上に
+  // 戻ることを防ぐため)。resultsPageIdは出典参照として残したまま維持する。
 }
 
 export const RIZIN_EVENT_INDEX: RizinEventIndexEntry[] = [
-  { eventName: "RIZIN.2 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 開幕戦", date: "2016-09-25", infoPageId: "16978368", resultsPageId: "16997624" },
+  {
+    eventName: "RIZIN.2 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 開幕戦",
+    date: "2016-09-25",
+    infoPageId: "16978368",
+    resultsPageId: "16997624",
+    manualOverride: true,
+    note: "2016年当時の旧テンプレート(<div id=\"match-list\">ベース)のためrizinScraper.tsのパーサーでは0試合になる。rizinRecordOverrides.tsのRIZIN_2_BOUTSに全13試合を手動書き起こし済み。",
+  },
   { eventName: "RIZIN.3 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 2ND ROUND", date: "2016-12-29", infoPageId: "16978370", resultsPageId: "17026316" },
   { eventName: "RIZIN.4 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 FINAL ROUND", date: "2016-12-31", infoPageId: "16978371", resultsPageId: "17026860" },
   { eventName: "RIZIN.5 RIZIN 2017 in YOKOHAMA -SAKURA-", date: "2017-04-16", infoPageId: "17028393", resultsPageId: "17065978" },
