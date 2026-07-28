@@ -275,6 +275,16 @@ export function parseBoutBox(boutId: number, chunk: string): ShootoRawBout | nul
   if (!resultTypeMatch) {
     resultTypeMatch = chunk.match(/<span class="(ko|tko|submision|ud|f|nm|technical-ud|technical-draw|draw|nc)">([^<]*)<\/span>/);
   }
+  // さらに別の旧テンプレート(2026-07-29、レビュー指摘の再監査で発見。14件):
+  // <div class="getresult">自体が存在せず、<div><span class="nocontest">
+  // ノーコンテスト</span><div class="note">...</div></div>という最小構造のみ
+  // (result-type・ud-score・opacityによる判定材料が一切無い)。230大会全bout
+  // (2,145件)を対象にresult-type/nocontest/該当無しの3パターンで全数を確認済み
+  // (getresultあり2,130件+nocontestのみ14件+どちらも無し1件〈id=80、実際に
+  // 結果データが無いFORCE 09〉=2,145件で過不足なし)。
+  if (!resultTypeMatch) {
+    resultTypeMatch = chunk.match(/<span class="(nocontest)">([^<]*)<\/span>/);
+  }
   const resultTypeClass = resultTypeMatch ? resultTypeMatch[1] : null;
   const resultTypeText = resultTypeMatch ? resultTypeMatch[2].trim() : null;
 
@@ -403,6 +413,16 @@ export function resolveOutcome(raw: ShootoRawBout): ShootoOutcome {
   // (オラクルとの照合だけでは検出できない一致した誤り)。
   if (raw.resultTypeClass === "technical-draw" || raw.resultTypeClass === "draw") {
     return { winner: null, resultType: "draw" };
+  }
+
+  // 同じく最優先: 「nocontest」クラス(<span class="nocontest">ノーコンテスト
+  // </span>、getresult div自体が存在しない最小構造のページでのみ確認。14件)は
+  // 明示的なノーコンテスト確定表示であり、ノート欄のキーワード有無に関わらず
+  // 常にnc・winner=nullとする。opacity/scoreの判定材料自体がこの構造には存在
+  // しない(該当bout chunkにはresult-type/ud-score/center-block opacityの
+  // いずれも意味のある値を持たない)。
+  if (raw.resultTypeClass === "nocontest") {
+    return { winner: null, resultType: "nc" };
   }
 
   // 1. スコア判定: result-typeテキスト内の「N-M」(例:「判定 2-1」)。
