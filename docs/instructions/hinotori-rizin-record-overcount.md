@@ -1,6 +1,6 @@
-# 火の鳥 RIZIN戦績 +1敗 過剰算入 調査(S1〜S3・停止)
+# 火の鳥 RIZIN戦績 +1敗 過剰算入 調査(S1〜S3・上流で自然解消)
 
-> **status: active（2026-07-29）** — S1〜S3を実測完了、S3の停止条件に該当したため実装(S4)は未着手。人間判断待ち。
+> **status: done（2026-07-29）** — S1〜S3実測完了・S4着手準備中(fighterRecords.json手動訂正+recordOverrides.ts恒久ガード)の最中に、定期スクレイプバッチ(2026-07-28 19:02 UTC、コミット6c233fb)がWikipedia側の当該記載を独自に自己修正し、rankings.jsonも同バッチで2-0に正しく更新済みであることが判明。手動データ修正は不要になった。詳細は末尾「決着」参照。recordOverrides.tsへの恒久回帰防止ガードのみ追加で残す。
 
 ## 経緯
 
@@ -41,4 +41,25 @@
 1. **表示戦績のみ`recordDisplayExclusions`で2-0に補正し、rawRatingのファントム汚染は残したまま(不整合を許容)** — 表示と裏側のレートが食い違う状態を意図的に残すことになり、望ましくない可能性が高い。
 2. **tomizawa-daichi側のデータそのものを訂正する(相手名を三浦孝太に訂正)** — `src/lib/mnewsRating/recordOverrides.ts`の`RECORD_OVERRIDES`(remove+add)で対応可能だが、これは`update-fighter-records.ts`実行時にのみ反映される機構であり、rawRating/順位が複数選手(hinotori/tomizawa-daichi/shinotsuka-tatsuki他)にわたって動く。指示書の「マージ」節が定める「順位が動く結論になった場合は深夜帯ルールを適用するか人間判断を仰ぐ」に該当する規模。
 
-いずれもS4着手前に人間の判断が必要なため、本調査はここで一旦提出する。S5(同型ケースの総点検)も本件の方針確定後に着手する。
+いずれもS4着手前に人間の判断が必要なため、本調査はここで一旦提出した。
+
+## 決着(2026-07-29)
+
+人間判断でS4は「2. データ訂正」方針に決定。S4-0(削除ではなく実際の相手名訂正での再測定)を実施し、三浦孝太が自社DB外選手(fighters.tsにslugなし)であることを確認、二重計上リスクなしと確認した。
+
+`--mode=data-correction`の実測中に、**現在のbaseline(`rankings.legitimateBaseline.json`)自体が本件と無関係な理由で既に古い**(2026-07-27 21:51 UTC時点のもので、その後にマージされたPR #250「parseRuleInfoの判定反転(#246の21件解消)」の効果が未反映)ことが判明。これにより`--mode=data-correction`を素朴に実行すると、火の鳥の訂正分と無関係なdrift(40件、bantamweight/featherweightにも波及)が1コミットに混ざってしまう状態だった。
+
+人間判断で「PR-1(#250をbaselineに吸収)→PR-2(火の鳥のdata-correction)」の2段階に分割する方針が決定されたが、**PR-1着手の準備中に、定期スクレイプバッチ(`update-fighter-records.yml`、2026-07-28 19:02 UTC完了、コミット6c233fb)が自然に完了し、両方の問題を一度に解消した**:
+
+1. Wikipedia側の冨澤大智の戦績表自体が、対戦相手名を「火の鳥」から「三浦孝太」へ**上流で自己修正済み**であることを確認(誰が修正したか・いつ修正されたかは不明だが、本調査で参照した2026-07-28以前の取得データでは誤記のままだった)。
+2. 同バッチは`update-mnews-rating.ts`をnew-resultsモードで実行し、`rankings.legitimateBaseline.json`を最新状態(PR #250反映後)へ前進させた。
+
+結果、`origin/main`の`data/rankings.json`は既に火の鳥を`{"wins": 2, "losses": 0}`(rank 9、フライ級)と正しく表示しており、本調査で計画していた手動のPR-1・PR-2はいずれも不要になった。
+
+### 実際に行った対応
+
+- `data/fighterRecords.json`への手動編集は破棄した(mainの新しいスクレイプ結果と完全一致するため、rebase後に差分ゼロで吸収された)。
+- `src/lib/mnewsRating/recordOverrides.ts`への`remove`+`add`ペアのみ残した。現状は完全にno-op(適用前後でhistoryが1バイトも変わらないことを実測確認済み)だが、Wikipedia側が将来この行を再度誤記へ差し戻した場合の回帰防止ガードとして機能する(既存の`rizinRecordsOverride.ts`のPatrickyケースと同じ「no-opだが保険として残す」方針)。
+- `rankings.json`/`rankings.prev.json`/`rankings.legitimateBaseline.json`はこのPRでは一切触らない(既にmain側で正しく更新済みのため)。
+
+S5(同型ケースの総点検: 相手名の誤記が偶然別選手のDB登録名と一致してファントム戦を生むケースが他にないか)は、本件の緊急性が解消したため、優先度を下げて別途着手する。

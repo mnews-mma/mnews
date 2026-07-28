@@ -101,17 +101,26 @@ export type RecordOverride =
 
 export const RECORD_OVERRIDES: RecordOverride[] = [
   {
-    // 2026-07-29: 冨澤大智(tomizawa-daichi)のWikipedia戦績表がRIZIN DECADE
-    // 雷神番外地(2024-12-31)第4試合の対戦相手名を「火の鳥」と誤記録していた。
-    // RIZIN公式(rizinRecords.json、2026-07-28取得)では同日同大会の冨澤大智の
-    // 相手は「三浦孝太」(1R1:53 KO・スタンドでの膝打撃)であり、ラウンド・
-    // タイム・決着方法(KO)がWikipedia側の記載と完全一致しているため同一試合の
-    // 相手名誤記と特定できる。この誤った相手名がfighters.ts上のhinotori
-    // (nameJa:「火の鳥」)の登録名と偶然完全一致したため、名前解決経由で
-    // hinotori本人の対戦明細に一切現れないファントムの敗戦としてElo集計に
+    // 2026-07-29(PR #257で発見): 冨澤大智(tomizawa-daichi)のWikipedia戦績表が
+    // RIZIN DECADE 雷神番外地(2024-12-31)第4試合の対戦相手名を「火の鳥」と
+    // 誤記録していた。RIZIN公式(rizinRecords.json、2026-07-28取得)では同日
+    // 同大会の冨澤大智の相手は「三浦孝太」(1R1:53 KO・スタンドでの膝打撃)で
+    // あり、ラウンド・タイム・決着方法(KO)がWikipedia側の記載と完全一致して
+    // いるため同一試合の相手名誤記と特定できる。この誤った相手名がfighters.ts
+    // 上のhinotori(nameJa:「火の鳥」)の登録名と偶然完全一致したため、名前解決
+    // 経由でhinotori本人の対戦明細に一切現れないファントムの敗戦としてElo集計に
     // 混入し、RIZINランキング(フライ級)の表示戦績が2-0のはずの選手を2-1と
-    // 誤表示させていた(PR #257で発見)。三浦孝太は自社DB外の選手(fighters.tsに
-    // slugなし)のため、この訂正で冨澤大智側の勝敗数(5勝1敗)自体は変わらない。
+    // 誤表示させていた。
+    //
+    // 【2026-07-28夜間バッチ(6c233fb)で自然解消】このoverride作成の準備中に
+    // 定期スクレイプが走り、Wikipedia側の当該行自体が「三浦孝太」へ既に
+    // 自己修正されていることを確認した(上流の編集合戦・訂正待ちだったと推定)。
+    // rankings.jsonも同バッチで2-0に正しく更新済みのため、このoverride自体は
+    // 現時点でno-op(remove対象の「火の鳥」エントリが既に存在しない→removeは
+    // 何もしない、addは既存の「三浦孝太」エントリと重複するため追加されない)。
+    // 実害が無いため削除はせず、Wikipedia側が将来この行を再度「火の鳥」等の
+    // 誤記へ差し戻した場合の回帰防止の保険として残す(rizinRecordsOverride.ts側の
+    // PatrickyケースやNC全DB監査と同じ方針)。
     type: "remove",
     fighterId: "tomizawa-daichi",
     date: "2024-12-31",
@@ -120,7 +129,8 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
     fetchedDate: "2026-07-28",
     note:
       "RIZIN DECADE 雷神番外地(2024-12-31)第4試合の対戦相手名の誤記(火の鳥→三浦孝太)を訂正するための" +
-      "remove(この後のadd型で正しい相手名のエントリを追加する)。",
+      "remove(この後のadd型で正しい相手名のエントリを追加する)。2026-07-28夜間バッチでWikipedia側が" +
+      "自己修正済みのため現状はno-op(将来の差し戻しに備えた回帰防止用)。",
   },
   {
     type: "add",
@@ -136,8 +146,9 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
     fetchedDate: "2026-07-28",
     note:
       "上記removeで除去した誤記載エントリ(相手名「火の鳥」)を、正しい相手名「三浦孝太」で再追加する。" +
-      "totalsAlreadyReflected: true(元のWikipedia infobox集計値5勝1敗は、相手名を問わずこの試合の勝ちを" +
-      "既に含んでいるため、集計値への追加加算はしない=相手名の訂正のみ)。",
+      "totalsAlreadyReflected: true(元のWikipedia infobox集計値は相手名を問わずこの試合の勝ちを" +
+      "既に含んでいるため、集計値への追加加算はしない=相手名の訂正のみ)。2026-07-28夜間バッチで" +
+      "Wikipedia側に同一エントリが既に存在するためこちらもno-op(将来の差し戻しに備えた回帰防止用)。",
   },
   {
     // 2026-07-19: wikipedia.tsのNCパーサ修正(ダッシュ系マーカー+methodにNC系
