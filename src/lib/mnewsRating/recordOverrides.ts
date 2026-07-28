@@ -101,6 +101,45 @@ export type RecordOverride =
 
 export const RECORD_OVERRIDES: RecordOverride[] = [
   {
+    // 2026-07-29: 冨澤大智(tomizawa-daichi)のWikipedia戦績表がRIZIN DECADE
+    // 雷神番外地(2024-12-31)第4試合の対戦相手名を「火の鳥」と誤記録していた。
+    // RIZIN公式(rizinRecords.json、2026-07-28取得)では同日同大会の冨澤大智の
+    // 相手は「三浦孝太」(1R1:53 KO・スタンドでの膝打撃)であり、ラウンド・
+    // タイム・決着方法(KO)がWikipedia側の記載と完全一致しているため同一試合の
+    // 相手名誤記と特定できる。この誤った相手名がfighters.ts上のhinotori
+    // (nameJa:「火の鳥」)の登録名と偶然完全一致したため、名前解決経由で
+    // hinotori本人の対戦明細に一切現れないファントムの敗戦としてElo集計に
+    // 混入し、RIZINランキング(フライ級)の表示戦績が2-0のはずの選手を2-1と
+    // 誤表示させていた(PR #257で発見)。三浦孝太は自社DB外の選手(fighters.tsに
+    // slugなし)のため、この訂正で冨澤大智側の勝敗数(5勝1敗)自体は変わらない。
+    type: "remove",
+    fighterId: "tomizawa-daichi",
+    date: "2024-12-31",
+    opponent: "火の鳥",
+    source: "https://jp.rizinff.com/_ct/17741870",
+    fetchedDate: "2026-07-28",
+    note:
+      "RIZIN DECADE 雷神番外地(2024-12-31)第4試合の対戦相手名の誤記(火の鳥→三浦孝太)を訂正するための" +
+      "remove(この後のadd型で正しい相手名のエントリを追加する)。",
+  },
+  {
+    type: "add",
+    fighterId: "tomizawa-daichi",
+    date: "2024-12-31",
+    opponent: "三浦孝太",
+    result: "win",
+    method: "1R 1:53 KO（左膝蹴り）",
+    event: "RIZIN DECADE",
+    round: "R1",
+    totalsAlreadyReflected: true,
+    source: "https://jp.rizinff.com/_ct/17741870",
+    fetchedDate: "2026-07-28",
+    note:
+      "上記removeで除去した誤記載エントリ(相手名「火の鳥」)を、正しい相手名「三浦孝太」で再追加する。" +
+      "totalsAlreadyReflected: true(元のWikipedia infobox集計値5勝1敗は、相手名を問わずこの試合の勝ちを" +
+      "既に含んでいるため、集計値への追加加算はしない=相手名の訂正のみ)。",
+  },
+  {
     // 2026-07-19: wikipedia.tsのNCパーサ修正(ダッシュ系マーカー+methodにNC系
     // キーワードがある場合のみNC採用)を機に、大原樹理(PANCRASE、2017-08-20 vs
     // 横山恭典)が新たにNC行として復活。当初はWikipedia自身の集計との件数
