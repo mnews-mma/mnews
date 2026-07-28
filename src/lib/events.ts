@@ -384,6 +384,7 @@ export const EVENTS: MEvent[] = [
     eventName: "RIZIN LANDMARK 16 in NAGASAKI",
     date: "2026-10-03",
     venue: "長崎スタジアムシティ HAPPINESS ARENA",
+    sourceUrl: "https://jp.rizinff.com/_ct/17852438",
     bouts: [],
   },
   {
@@ -393,6 +394,7 @@ export const EVENTS: MEvent[] = [
     eventName: "RIZIN LANDMARK 17 in CHIBA",
     date: "2026-11-08",
     venue: "LaLa arena TOKYO-BAY",
+    sourceUrl: "https://jp.rizinff.com/_ct/17852466",
     bouts: [],
   },
   {
@@ -404,6 +406,7 @@ export const EVENTS: MEvent[] = [
     eventName: "大晦日 名古屋大会（仮）",
     date: "2026-12-31",
     venue: "バンテリンドーム ナゴヤ",
+    sourceUrl: "https://jp.rizinff.com/_ct/17813466",
     bouts: [],
   },
   {
