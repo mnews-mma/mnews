@@ -4787,20 +4787,30 @@
     "nickname": "THE PROBLEM BOY"
   },
   "tomizawa-daichi": {
-    "wins": 5,
-    "losses": 1,
+    "wins": 3,
+    "losses": 2,
     "draws": 0,
-    "ko": 3,
+    "ko": 2,
     "sub": 0,
     "decision": 1,
     "history": [
       {
         "date": "2026-06-06",
-        "opponent": "新井丈",
+        "opponent": "加藤瑠偉",
         "result": "win",
         "method": "1R 4:37 TKO（グラウンドでの肘打ち）",
         "event": "RIZIN LANDMARK 14",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "57.0kg契約"
+      },
+      {
+        "date": "2025-12-31",
+        "opponent": "篠塚辰樹",
+        "result": "loss",
+        "method": "2R 3:22 TKO（右フック→パウンド）",
+        "event": "RIZIN 師走の超強者祭り",
+        "round": "R2",
+        "weightClass": "57.0kg契約"
       },
       {
         "date": "2025-09-28",
@@ -4815,14 +4825,14 @@
         "date": "2025-05-04",
         "opponent": "山本アーセン",
         "result": "loss",
-        "method": "5分3R 判定0-3-3",
+        "method": "2R 1:24 リアネイキッドチョーク",
         "event": "RIZIN男祭り",
-        "round": "R3",
+        "round": "R2",
         "weightClass": "57.0kg契約"
       },
       {
         "date": "2024-12-31",
-        "opponent": "火の鳥",
+        "opponent": "三浦孝太",
         "result": "win",
         "method": "1R 1:53 KO（左膝蹴り）",
         "event": "RIZIN DECADE",
