@@ -134,3 +134,103 @@ slug衝突チェック(投入対象内92名同士 + 既存FIGHTERS全258名と�
 - `scripts/roster-injection-94/`: 生成に使った読み取り専用スクリプト一式(`parse_reports.py` / `generate.ts` / `emit.ts`)。今後の同種投入の参考に残置。
 - `out/pancrase-{bouts,fighters}.csv` / `out/pancrase-records.md` / `out/shooto-{bouts,fighters}.csv` / `out/shooto-records.md`: PR #247/#248成果物のコピー(このリポジトリの `out/` は.gitignore対象だが、他worktreeから取り込んだ元ファイル。差分としては追跡されない)。
 - `out/roster-injection-94.md`: 本ファイル。
+
+## 付録: 投入92名 一覧
+
+`⚠パンクラスURL(語境界未確定)`= slug/nameEnとも姓名の切れ目が未確認(30名)。`⚠要人間確認(読み不確定)`= 読みそのものが確定できない/最善推定(4名)。`⚠null(不明)`= weightClass判定不能。詳細は本文3〜4節参照。
+
+| slug | nameJa | nameEn | org(s) | 階級 | 戦績(W-L-D) | slug確度 |
+|---|---|---|---|---|---|---|
+| `aono-hikaru` | 青野 ひかる | Hikaru Aono | shooto | 女子アトム級 | 2-1-0 | 修斗名鑑ローマ字 |
+| `aratadaiki` | 荒田大輝 | Aratadaiki | pancrase | バンタム級 | 6-1-0 | ⚠パンクラスURL(語境界未確定) |
+| `asadulloev` | バラカトゥロ・アサドゥラエフ | Asadulloev | pancrase | バンタム級 | 1-0-0 | ⚠パンクラスURL(語境界未確定) |
+| `asahina-ken` | 旭那 拳 | Ken Asahina | shooto | ストロー級 | 10-7-0 | 修斗名鑑ローマ字 |
+| `aya-murakami` | 村上 彩 | Murakami Aya | shooto | 女子スーパーアトム級 | 2-3-0 | 修斗名鑑ローマ字 |
+| `azumi-kento` | 安海 健人 | Kento Azumi | shooto | ライト級 | 3-1-1 | 修斗名鑑ローマ字 |
+| `baikin-dokuichiro` | 梅筋 毒一郎 | Dokuichiro Baikin | shooto | フライ級 | 1-2-0 | 修斗名鑑ローマ字 |
+| `body-maxthe` | マックス・ザ・ボディ | Max The Body | shooto | ライト級 | 4-5-0 | 修斗名鑑ローマ字 |
+| `dinesh-nain` | ネイン デイネッシュ | Nain Dinesh | shooto | フェザー級 | 7-2-0 | 修斗名鑑ローマ字 |
+| `endoraiki` | 遠藤来生 | Endoraiki | pancrase | フェザー級 | 3-8-0 | ⚠パンクラスURL(語境界未確定) |
+| `erika` | erika | Erika | shooto | 女子スーパーアトム級 | 3-1-0 | 修斗名鑑ローマ字 |
+| `fujii-nobuki` | 藤井 伸樹 | Nobuki Fujii | shooto | バンタム級 | 8-8-0 | 修斗名鑑ローマ字 |
+| `fujino-emi` | 藤野 恵実 | Emi Fujino | shooto | 女子ストロー級 | 6-0-0 | 修斗名鑑ローマ字 |
+| `gojima-daiki` | 合島大樹 | Daiki Gojima | pancrase | バンタム級 | 8-9-1 | 修斗名鑑ローマ字 |
+| `hailaiwusamo` | ハイライ ウーシャアモー | Hailaiwusamo | shooto | 女子ストロー級 | 1-0-0 | 修斗名鑑ローマ字 |
+| `hamamoto` | 浜本キャット雄大 | Hamamoto | pancrase | フライ級 | 1-3-0 | ⚠パンクラスURL(語境界未確定) |
+| `henry` | HENRY | Henry | shooto | ⚠null(不明) | 0-1-0 | ラテン表記そのまま |
+| `hirata-ayane` | 平田 彩音 | Ayane Hirata | shooto | 女子アトム級 | 4-2-0 | 修斗名鑑ローマ字 |
+| `hoshuyama-momoka` | 宝珠山 桃花 | Momoka Hoshuyama | shooto | 女子ストロー級 | 8-7-0 | 修斗名鑑ローマ字 |
+| `huang-jenny` | ジェニー ファン | Jenny Huang | shooto | 女子アトム級 | 1-1-0 | 修斗名鑑ローマ字 |
+| `iino-yuto` | 飯野 雄斗 | Yuto Iino | shooto | フェザー級 | 5-0-0 | 修斗名鑑ローマ字 |
+| `ishidarikuya` | 石田陸也 | Ishidarikuya | pancrase | フェザー級 | 3-5-0 | ⚠パンクラスURL(語境界未確定) |
+| `itokawayoshito` | 糸川義人 | Itokawayoshito | pancrase | フェザー級 | 4-7-0 | ⚠パンクラスURL(語境界未確定) |
+| `iwasaki-taiga` | 岩﨑 大河 | Taiga Iwasaki | shooto | ミドル級 | 7-1-0 | 修斗名鑑ローマ字 |
+| `kanayumu` | 菅歩夢 | Kanayumu | pancrase | フライ級 | 6-2-0 | ⚠パンクラスURL(語境界未確定) |
+| `karen` | KAREN | Karen | shooto+pancrase | 女子ストロー級 | 10-3-0 | 修斗名鑑ローマ字 |
+| `katayama-tomoe` | 片山 智絵 | Tomoe Katayama | shooto | 女子スーパーアトム級 | 3-1-0 | 修斗名鑑ローマ字 |
+| `kawakita-haruki` | 川北 晏生 | Haruki Kawakita | shooto | バンタム級 | 6-1-3 | 修斗名鑑ローマ字 |
+| `kobayashiryohei` | 小林了平 | Kobayashiryohei | pancrase | フライ級 | 2-3-0 | ⚠パンクラスURL(語境界未確定) |
+| `kurobe-mina` | 黒部 三奈 | Mina Kurobe | shooto | 女子ストロー級 | 6-4-0 | 修斗名鑑ローマ字 |
+| `lightyear-daiki` | ダイキ ライトイヤー | Daiki Lightyear | shooto | バンタム級 | 9-9-2 | 修斗名鑑ローマ字 |
+| `maedakohei` | 前田浩平 | Maedakohei | pancrase | バンタム級 | 10-8-0 | ⚠パンクラスURL(語境界未確定) |
+| `masudataiga` | 増田大河 | Masudataiga | pancrase | フライ級 | 4-3-0 | ⚠パンクラスURL(語境界未確定) |
+| `mio-shiyama` | 嶋屋 澪 | Shiyama Mio | shooto | 女子アトム級 | 2-5-1 | 修斗名鑑ローマ字 |
+| `motokawaharuaki` | 本川ハルアキ | Motokawaharuaki | pancrase | フライ級 | 3-0-0 | ⚠パンクラスURL(語境界未確定) |
+| `motonomiki` | 本野美樹 | Motonomiki | pancrase | 女子ストロー級 | 2-0-0 | ⚠パンクラスURL(語境界未確定) |
+| `nada` | 名田英平 | Nada | pancrase | フェザー級 | 10-9-2 | ⚠パンクラスURL(語境界未確定) |
+| `nakaike-takehiro` | 中池 武寛 | Takehiro Nakaike | shooto | フライ級 | 8-2-0 | 修斗名鑑ローマ字 |
+| `nakajima-riku` | 中島 陸 | Riku Nakajima | shooto | バンタム級 | 8-1-0 | ⚠要人間確認(読み不確定) |
+| `nakamura-miku` | 中村 未来 | Miku Nakamura | shooto | 女子アトム級 | 9-6-0 | 修斗名鑑ローマ字 |
+| `noa-tokumoto` | 徳本 望愛 | Tokumoto Noa | shooto | 女子アトム級 | 5-1-0 | 修斗名鑑ローマ字 |
+| `nojiri-yasuyuki` | 野尻 定由 | Yasuyuki Nojiri | shooto | バンタム級 | 7-6-2 | 修斗名鑑ローマ字 |
+| `okada-arashi` | 岡田 嵐士 | Arashi Okada | shooto | フライ級 | 7-2-0 | 修斗名鑑ローマ字 |
+| `okadatakuma` | 岡田拓真 | Okadatakuma | pancrase | フェザー級 | 5-2-0 | ⚠パンクラスURL(語境界未確定) |
+| `park-bohyun` | パク ボヒョン | Bo Hyun Park | shooto | 女子ストロー級 | 3-0-0 | 修斗名鑑ローマ字 |
+| `park-jongjun` | パク ジョンジュン | Jong Jun Park | shooto | フェザー級 | 1-0-0 | 修斗名鑑ローマ字 |
+| `rafaelribeiro` | ラファエル・リベイロ | Rafaelribeiro | pancrase | フライ級 | 2-1-0 | ⚠パンクラスURL(語境界未確定) |
+| `raika` | ライカ | Raika | pancrase | 女子フライ級 | 7-8-0 | 修斗名鑑ローマ字 |
+| `ryoa` | Ryo | Ryoa | pancrase | フェザー級 | 5-7-0 | ⚠パンクラスURL(語境界未確定) |
+| `saito-tsubasa` | 齋藤 翼 | Tsubasa Saito | shooto | フェザー級 | 13-10-0 | 修斗名鑑ローマ字 |
+| `salt` | ソルト | Salt | shooto | 女子ストロー級 | 2-4-0 | 修斗名鑑ローマ字 |
+| `sarami` | SARAMI | Sarami | shooto+pancrase | 女子アトム級 | 6-1-0 | 修斗名鑑ローマ字 |
+| `satoru` | 猿飛流 | Satoru | pancrase | フライ級 | 10-4-0 | ⚠パンクラスURL(語境界未確定) |
+| `satoshogo` | 佐藤生虎 | Satoshogo | pancrase | ウェルター級 | 5-1-0 | ⚠パンクラスURL(語境界未確定) |
+| `satoyujibonsai` | 佐藤ゆうじ | Satoyujibonsai | pancrase | バンタム級 | 4-3-0 | ⚠パンクラスURL(語境界未確定) |
+| `sekisena` | 関翔渚 | Sekisena | pancrase | フェザー級 | 4-0-0 | ⚠パンクラスURL(語境界未確定) |
+| `shikijima-kazuma` | 磯城嶋 一真 | Kazuma Shikijima | shooto | フェザー級 | 6-1-2 | 修斗名鑑ローマ字 |
+| `shiraijoji` | 白井誠司 | Shiraijoji | pancrase | バンタム級 | 4-1-0 | ⚠パンクラスURL(語境界未確定) |
+| `sugimoto-megumi` | 杉本 恵 | Megumi Sugimoto | shooto | 女子アトム級 | 11-7-1 | 修斗名鑑ローマ字 |
+| `sugimoto-seiya` | 杉本 静弥 | Seiya Sugimoto | shooto | フライ級 | 5-1-1 | 修斗名鑑ローマ字 |
+| `sugiyama` | 杉山しずか | Sugiyama | pancrase | 女子フライ級 | 3-1-0 | ⚠パンクラスURL(語境界未確定) |
+| `susung` | チョウ スソン | Susung | shooto | バンタム級 | 4-2-0 | 修斗名鑑ローマ字 |
+| `suzuki-takeru` | 鈴木 尊 | Takeru Suzuki | shooto | フライ級 | 5-0-0 | 修斗名鑑ローマ字 |
+| `suzukiyuto` | 鈴木悠斗 | Suzukiyuto | pancrase | ライト級 | 6-1-0 | ⚠パンクラスURL(語境界未確定) |
+| `taguchi-keita` | 田口 恵大 | Keita Taguchi | shooto | ストロー級 | 2-4-0 | 修斗名鑑ローマ字 |
+| `taira` | 平信一 | Taira | pancrase | ライト級 | 7-7-0 | ⚠パンクラスURL(語境界未確定) |
+| `takada-atsuhi` | 高田 暖妃 | Atsuhi Takada | shooto | 女子ストロー級 | 3-1-0 | 修斗名鑑ローマ字 |
+| `takamoto-chiyo` | 高本 千代 | Chiyo Takamoto | shooto | 女子スーパーアトム級 | 3-4-1 | 修斗名鑑ローマ字 |
+| `tamura-hibiki` | 田村 ヒビキ | Hibiki Tamura | shooto | ウェルター級 | 1-0-0 | 修斗名鑑ローマ字 |
+| `tanaka-yu` | 田中 有 | Yu Tanaka | shooto | ライト級 | 5-3-0 | 修斗名鑑ローマ字 |
+| `teraokatakuei` | 寺岡拓永 | Teraokatakuei | pancrase | ストロー級 | 4-4-1 | ⚠パンクラスURL(語境界未確定) |
+| `tomori-kota` | 友利 幸汰 | Kota Tomori | shooto | ストロー級 | 4-1-0 | 修斗名鑑ローマ字 |
+| `tomori-rui` | 友利 琉偉 | Rui Tomori | shooto | ストロー級 | 4-3-0 | 修斗名鑑ローマ字 |
+| `tou-hoiin` | 透暉鷹 | Hoiin Tou | pancrase | バンタム級 | 9-1-0 | 修斗名鑑ローマ字 |
+| `tyson-nobumitsu` | 大尊 伸光 | Nobumitsu Tyson | shooto | ライト級 | 5-3-0 | 修斗名鑑ローマ字 |
+| `uehara-taira` | 上原 平 | Taira Uehara | shooto | フェザー級 | 7-3-3 | 修斗名鑑ローマ字 |
+| `uematsuyoshiki` | 植松洋貴 | Uematsuyoshiki | pancrase | フライ級 | 6-4-0 | ⚠パンクラスURL(語境界未確定) |
+| `umeki-yutoku` | 梅木 勇徳 | Yutoku Umeki | shooto | ストロー級 | 4-6-1 | 修斗名鑑ローマ字 |
+| `unconfirmed-shooto-1849` | 沙門 | Unconfirmed | shooto | ミドル級 | 1-1-0 | ⚠要人間確認(読み不確定) |
+| `unconfirmed-shooto-1875` | 砂辺 光久 | Unconfirmed | shooto | フライ級 | 2-0-0 | ⚠要人間確認(読み不確定) |
+| `valenzuela-victor` | ヴィクター バレンズエラ | Victor Valenzuela | shooto | ウェルター級 | 1-0-0 | ⚠要人間確認(読み不確定) |
+| `wadaayane` | 和田綾音 | Wadaayane | pancrase | 女子フライ級 | 2-1-0 | ⚠パンクラスURL(語境界未確定) |
+| `waki-grappler` | グラップラー脇 | Grappler Waki | shooto | ウェルター級 | 2-1-0 | 修斗名鑑ローマ字 |
+| `watanabe-ayaka` | 渡辺 彩華 | Ayaka Watanabe | shooto | 女子スーパーアトム級 | 3-1-0 | 修斗名鑑ローマ字 |
+| `yamakimahiro` | 山木麻弥 | Yamakimahiro | pancrase | バンタム級 | 3-2-0 | ⚠パンクラスURL(語境界未確定) |
+| `yamasakisora` | 山崎蒼空 | Yamasakisora | pancrase | フライ級 | 5-1-0 | ⚠パンクラスURL(語境界未確定) |
+| `yamauchi-wataru` | 山内 渉 | Wataru Yamauchi | shooto | フライ級 | 7-1-0 | 修斗名鑑ローマ字 |
+| `young-kim` | キム ジェヨン | Kim Young | shooto | ミドル級 | 0-2-0 | 修斗名鑑ローマ字 |
+| `young-parkseo` | パク ソヨン | Park Seo Young | shooto | 女子アトム級 | 3-3-0 | 修斗名鑑ローマ字 |
+| `yuji-arai` | 荒井 勇ニ | Arai Yuji | shooto | ミドル級 | 1-1-0 | 修斗名鑑ローマ字 |
+| `yuki-daiki` | 結城 大樹 | Daiki Yuki | shooto | ライト級 | 7-5-1 | 修斗名鑑ローマ字 |
+| `zhangyuta` | 張豊 | Zhangyuta | pancrase | ライト級 | 2-1-0 | ⚠パンクラスURL(語境界未確定) |
+
