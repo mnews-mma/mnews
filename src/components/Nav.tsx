@@ -5,15 +5,6 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-function SearchIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="11" cy="11" r="7" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  );
-}
-
 function MenuIcon({ open }: { open: boolean }) {
   // 開閉でハンバーガー(三本線)↔×に切り替える(状態が見た目に出るようにする)。
   return (
@@ -51,8 +42,8 @@ const MENU_ITEMS: { href: string; label: string; dividerBefore?: boolean }[] = [
   { href: "/results", label: "大会結果" },
 ];
 
-// トップ以外の全ページで常時表示するサブナビ(ランキング/選手/大会)。
-// .nav-subbar(タグライン行)と同じ枠を流用し、NAV総高さ80px
+// 全ページで常時表示するサブナビ(ランキング/選手/大会)。
+// .nav-subbar(旧タグライン行)と同じ枠を流用し、NAV総高さ80px
 // (nav-top 52px + nav-subbar 28px、UnifiedFeedの.uf-chips等がsticky top:80pxで
 // 依存している)を崩さないようにする。
 const SUBNAV_ITEMS: { href: string; label: string; isActive: (pathname: string) => boolean }[] = [
@@ -75,7 +66,6 @@ const SUBNAV_ITEMS: { href: string; label: string; isActive: (pathname: string) 
 
 export default function Nav() {
   const pathname = usePathname();
-  const isTop = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   // portalの描画先(document.body)はクライアントマウント後にしか存在しないため、
   // マウント完了までは使わない(SSR/ハイドレーション不一致を避ける)。
@@ -130,11 +120,6 @@ export default function Nav() {
           <span className="logo-tagline logo-tagline-short">JAPAN MMA NEWS</span>
         </Link>
         <div className="nav-right">
-          {isTop && (
-            <Link href="/fighters?focus=1" className="nav-search-btn" aria-label="選手を検索">
-              <SearchIcon />
-            </Link>
-          )}
           <button
             type="button"
             className="nav-menu-btn"
@@ -147,24 +132,18 @@ export default function Nav() {
           </button>
         </div>
       </div>
-      {isTop ? (
-        <div className="nav-subbar">
-          RIZIN・DEEP・修斗・パンクラス — ニュースを、ひとつに
-        </div>
-      ) : (
-        <div className="nav-subbar nav-subnav" role="navigation" aria-label="主要セクション">
-          {SUBNAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`nav-subnav-item${item.isActive(pathname ?? "") ? " active" : ""}`}
-              aria-current={item.isActive(pathname ?? "") ? "page" : undefined}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      )}
+      <div className="nav-subbar nav-subnav" role="navigation" aria-label="主要セクション">
+        {SUBNAV_ITEMS.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`nav-subnav-item${item.isActive(pathname ?? "") ? " active" : ""}`}
+            aria-current={item.isActive(pathname ?? "") ? "page" : undefined}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
 
       {menuLayer}
     </nav>

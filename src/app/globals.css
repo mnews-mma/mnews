@@ -150,23 +150,6 @@ a {
   align-items: center;
   gap: 12px;
 }
-/* ヘッダーの選手検索アイコン(旧: 「選手データベース」テキストボタン)。
-   ハンバーガーボタンと同じ44px四方のタップ領域・アイコンのみの体裁で揃える
-   (mnews-homepage-instructions.md §4.1)。 */
-.nav-search-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  color: #fff;
-  transition: opacity 0.15s;
-}
-.nav-search-btn:hover {
-  opacity: 0.8;
-}
-
 /* ハンバーガーメニュー: タップ領域44px以上を確保、開閉はアイコン切替のみで
    状態表現(色反転はしない・ヘッダー配色と地続き)。 */
 .nav-menu-btn {
