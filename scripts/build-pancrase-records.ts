@@ -251,7 +251,37 @@ function parseBoutTable(tableHtml: string): RawBout | null {
   const result0Matches = [...tableHtml.matchAll(/<td colspan="5" class="result0">([\s\S]*?)<\/td>/g)]
     .map((m) => m[1])
     .filter((raw) => !raw.includes('class="pancrasech"'));
-  const decisionRaw = result0Matches.length > 0 ? stripTags(result0Matches[0]) : "";
+  let decisionRaw = result0Matches.length > 0 ? stripTags(result0Matches[0]) : "";
+
+  // result0が1件も無い場合のフォールバック其の1: class="md"(実測:
+  // 1994-0119の全6試合のみで確認。ごく初期の1994年のみに存在する古い
+  // マークアップで、当時は決着テキストがresult0ではなくclass="md"の
+  // td(例:「7分37秒、ヒザ十字固め」)に入っている)。
+  if (result0Matches.length === 0) {
+    const mdMatch = tableHtml.match(/<td colspan="5"[^>]*class="md">([\s\S]*?)<\/td>/);
+    if (mdMatch) {
+      decisionRaw = stripTags(mdMatch[1]);
+    }
+  }
+
+  // result0が1件も無い場合のフォールバック其の2: class="result"(実測:
+  // 2010-1205 草・MAX戦、2005-0227 長谷川孝司戦、2016-0612 藤野敦史戦など
+  // 計11件超で確認)。公式サイト側が本来result0に入れるべき決着テキストを
+  // 誤ってclass="result"(通常はレフェリー名・体重・判定内訳を入れる欄)に
+  // 直接書いてしまっているマークアップ崩れ。result0・class="md"のいずれも
+  // 無い場合に限り、resultからwcube(体重)・レフェリー行・判定内訳
+  // (スコアカード)を取り除いた残りのテキストを決着テキストとして採用する
+  // (判定のスコアカード自体は多数決推測の材料にしないため明示的に除外する)。
+  if (result0Matches.length === 0 && !decisionRaw) {
+    const resultMatch = tableHtml.match(/<td colspan="5" class="result">([\s\S]*?)<\/td>/);
+    if (resultMatch) {
+      let fallback = resultMatch[1];
+      fallback = fallback.replace(/<div class="wcube">[\s\S]*?<\/div>/g, "");
+      fallback = fallback.replace(/判定[：:][\s\S]*?(?=レフェリー|$)/, "");
+      fallback = fallback.replace(/レフェリー[：:][^\n<]*/g, "");
+      decisionRaw = stripTags(fallback);
+    }
+  }
 
   // 計量後体重は class="wcube" の div (例: "武田光博(83.4kg)")。選手名の
   // 部分一致で左右どちらのコーナーの値か判定する(単純に出現順=左右とは
@@ -345,15 +375,28 @@ interface ResolvedResult {
   note: string | null;
 }
 
-function resolveResult(left: RawCorner, right: RawCorner, decisionRaw: string): ResolvedResult {
+// マーカー(○/◯/〇/×/△/-)が明示されている場合、それを最優先の一次ソース表現
+// として扱い、決着テキストの文言(「試合中止」等)で上書きしない。
+//
+// 背景(2026-07-29、修斗#255のバグクラス波及調査で発見): 当初の実装は
+// 「決着テキストに"試合中止"を含む→無条件でcancelled」を最優先にしていたため、
+// 実際には○/×マーカーで明示的に勝者が決まっている一部の不戦勝ケース(例:
+// 2018-0311 亀井晨佑○×塩津良介「試合中止/塩津良介：試合前検診でドクター
+// ストップ」)まで、マーカーを無視してcancelled・winnerName=nullに上書きして
+// いた。修斗#255はスコア欄の多数決に頼ってマーカー(バッジ)を無視したことが
+// 原因だったが、本件はその逆方向(マーカーというバッジがあるのに、別のテキスト
+// シグナルで上書きしてしまう)の同種バグであり、優先順位をマーカー最優先に
+// 修正した(該当1件のみ確認、実測は build-pancrase-records.tsのPR本文参照)。
+function resolveResult(left: RawCorner, right: RawCorner, decisionRaw: string, headingText: string): ResolvedResult {
   let leftMarkerRaw = left.markerRaw;
   let rightMarkerRaw = right.markerRaw;
   let note: string | null = null;
+  const decisiveMarkers = ["○", "◯", "〇"];
 
   // 片側のみマーカー欠落(公式サイト側の記載漏れ)の機械的推定。
   // 決着方法テキストが引き分け/NC相当を示していない場合に限り、反対コーナーの
   // 明示マーカーから対称的に導出する(推測で埋めるのではなく対称性からの導出)。
-  const decisiveMarkers = ["○", "◯", "〇"];
+  const originallyBothEmpty = !leftMarkerRaw && !rightMarkerRaw;
   if (!leftMarkerRaw && rightMarkerRaw && decisiveMarkers.includes(rightMarkerRaw) && !/試合中止/.test(decisionRaw)) {
     leftMarkerRaw = "×";
     note = "left_marker_inferred_from_opponent(source_omitted_x)";
@@ -363,19 +406,56 @@ function resolveResult(left: RawCorner, right: RawCorner, decisionRaw: string): 
   }
 
   let resultType: ResultType;
-  if (/試合中止/.test(decisionRaw)) {
-    resultType = "cancelled";
-  } else if (leftMarkerRaw === "△" || rightMarkerRaw === "△") {
+  if (leftMarkerRaw === "△" || rightMarkerRaw === "△") {
     resultType = "draw";
   } else if (leftMarkerRaw === "-" || rightMarkerRaw === "-") {
     resultType = "nc";
   } else if (decisiveMarkers.includes(leftMarkerRaw) || decisiveMarkers.includes(rightMarkerRaw)) {
     resultType = "decisive";
-  } else if (!leftMarkerRaw && !rightMarkerRaw) {
-    resultType = "unknown";
-    note = note ?? "no_marker_in_source";
   } else {
-    resultType = "unknown";
+    // 両コーナーともマーカーが無い場合のみ、決着テキスト/見出しの明示語で
+    // 分類する(一次ソースであるマーカーが無い場合の次善のシグナル)。
+    // 判定のスコアカード数値(例:「判定/1-1」「29-28/28-29/28-28」)からの
+    // 多数決推測は一切行わない(修斗#255と同種の誤判定を避けるため)。
+    // 実測(2026-07-29、全77件の目視監査): ノーコンテスト系「ノーコンテスト」
+    // 「ノー コンテスト」(半角スペース混在の表記ゆれを確認)「無効試合」
+    // 「試合不成立」/ドロー系「時間切れドロー」「時間切れ引き分け」/中止系
+    // 「試合中止」を含まない「中止」単独表記(2026-0314等)・「計量失格」単独
+    // 表記(2025-0506「両者計量失格」等、"中止"の字を含まない)を確認したため、
+    // 「試合中止」固定文字列だけでなくこれらの表記ゆれも判定対象に含めた。
+    const combined = `${headingText} ${decisionRaw}`;
+    // 2018-1224「3vs3道場対抗グラップリングマッチ」第1試合(パンクラス大阪 vs
+    // パラエストラ東大阪)のみに実在する特殊フォーマット: 個人ではなく道場
+    // チーム対抗で、決着テキストが「チーム対戦成績(引分互角なら0-0)/各
+    // ラウンドの△(引分)○(勝ち)記号」という team score 形式(例:
+    // "0-0/(1)△(2)△(3)△")。通常個人戦のコーナーマーカーとは別の表現だが、
+    // 先頭のチーム対戦成績が同数(0-0)で3ラウンド全て△(引分)の場合は
+    // 明示的な引き分け宣言として扱う(スコアの多数決推測ではなく、"0-0"という
+    // 明示された最終成績そのものを読んでいる点で判定/N-M個別採点とは性質が
+    // 異なる)。データセット全体でこの team score 形式は当該大会の2件のみで、
+    // もう1件(BLOWS vs 総合格闘技道場コブラ会、"0-1/…")は既に×/○マーカーが
+    // 明示されているため通常のdecisive分岐で処理される。
+    const teamScoreMatch = decisionRaw.match(/^(\d+)-(\d+)\/\(1\)△\(2\)△\(3\)△/);
+    if (teamScoreMatch && teamScoreMatch[1] === teamScoreMatch[2]) {
+      resultType = "draw";
+      note = "team_match_tied_score_marker(0-0)";
+    } else if (/中止|計量失格/.test(combined)) {
+      resultType = "cancelled";
+    } else if (/ノーコンテスト|ノー\s*コンテスト|無効試合|試合不成立/.test(combined)) {
+      resultType = "nc";
+    } else if (/時間切れドロー|時間切れ引き分け|引き分け/.test(combined)) {
+      resultType = "draw";
+    } else {
+      resultType = "unknown";
+    }
+  }
+
+  // 元のソースにマーカーが一切無かった事実そのものは、最終的な分類結果に
+  // かかわらず記録しておく(この注記が無いと「マーカー由来かテキスト由来か」
+  // を後から区別できなくなるため)。既に個別の注記(片側マーカー推定・
+  // チームスコア引き分け等)が付いている場合はそちらを優先し上書きしない。
+  if (originallyBothEmpty && !note) {
+    note = "no_marker_in_source";
   }
 
   return { resultType, leftMarkerRaw, rightMarkerRaw, note };
@@ -467,7 +547,7 @@ function buildEventBouts(html: string): { bouts: PancraseRecordsBout[]; parseFai
   // (rizinScraper.tsのsplitIntoBoutChunksまわりのコメントと同じ発想)。
   const total = successful.length;
   const bouts: PancraseRecordsBout[] = successful.map((raw, idx) => {
-    const { resultType, leftMarkerRaw, rightMarkerRaw, note } = resolveResult(raw.left, raw.right, raw.decisionRaw);
+    const { resultType, leftMarkerRaw, rightMarkerRaw, note } = resolveResult(raw.left, raw.right, raw.decisionRaw, raw.headingText);
     const { round, time } = parseRoundTime(raw.decisionRaw);
     const ruleType = resolveRuleType(raw.headingText);
     const weightClassRaw = extractNamedDivision(raw.headingText);
