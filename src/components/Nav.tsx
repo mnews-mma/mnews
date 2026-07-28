@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function SearchIcon() {
   return (
@@ -50,7 +51,31 @@ const MENU_ITEMS: { href: string; label: string; dividerBefore?: boolean }[] = [
   { href: "/results", label: "大会結果" },
 ];
 
+// トップ以外の全ページで常時表示するサブナビ(ランキング/選手/大会)。
+// .nav-subbar(タグライン行)と同じ枠を流用し、NAV総高さ80px
+// (nav-top 52px + nav-subbar 28px、UnifiedFeedの.uf-chips等がsticky top:80pxで
+// 依存している)を崩さないようにする。
+const SUBNAV_ITEMS: { href: string; label: string; isActive: (pathname: string) => boolean }[] = [
+  {
+    href: "/rankings",
+    label: "ランキング",
+    isActive: (p) => p === "/rankings" || p.startsWith("/rankings/"),
+  },
+  {
+    href: "/fighters",
+    label: "選手",
+    isActive: (p) => p === "/fighters" || p.startsWith("/fighters/"),
+  },
+  {
+    href: "/events",
+    label: "大会",
+    isActive: (p) => p === "/events" || p.startsWith("/events/"),
+  },
+];
+
 export default function Nav() {
+  const pathname = usePathname();
+  const isTop = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   // portalの描画先(document.body)はクライアントマウント後にしか存在しないため、
   // マウント完了までは使わない(SSR/ハイドレーション不一致を避ける)。
@@ -105,9 +130,11 @@ export default function Nav() {
           <span className="logo-tagline logo-tagline-short">JAPAN MMA NEWS</span>
         </Link>
         <div className="nav-right">
-          <Link href="/fighters?focus=1" className="nav-search-btn" aria-label="選手を検索">
-            <SearchIcon />
-          </Link>
+          {isTop && (
+            <Link href="/fighters?focus=1" className="nav-search-btn" aria-label="選手を検索">
+              <SearchIcon />
+            </Link>
+          )}
           <button
             type="button"
             className="nav-menu-btn"
@@ -120,9 +147,24 @@ export default function Nav() {
           </button>
         </div>
       </div>
-      <div className="nav-subbar">
-        RIZIN・DEEP・修斗・パンクラス — ニュースを、ひとつに
-      </div>
+      {isTop ? (
+        <div className="nav-subbar">
+          RIZIN・DEEP・修斗・パンクラス — ニュースを、ひとつに
+        </div>
+      ) : (
+        <div className="nav-subbar nav-subnav" role="navigation" aria-label="主要セクション">
+          {SUBNAV_ITEMS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`nav-subnav-item${item.isActive(pathname ?? "") ? " active" : ""}`}
+              aria-current={item.isActive(pathname ?? "") ? "page" : undefined}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
 
       {menuLayer}
     </nav>

@@ -125,6 +125,25 @@ a {
   color: #888;
   letter-spacing: 0.5px;
 }
+/* トップ以外の全ページ用サブナビ(ランキング/選手/大会)。.nav-subbarと同じ
+   padding/line-heightを流用し、NAV総高さ80pxを変えない(.uf-chips等の
+   sticky top:80px計算がこれに依存しているため)。 */
+.nav-subnav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-subnav-item {
+  font-family: var(--os);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #888;
+  white-space: nowrap;
+}
+.nav-subnav-item.active {
+  color: var(--accent);
+}
 .nav-right {
   margin-left: auto;
   display: flex;
@@ -1252,6 +1271,12 @@ footer {
   }
   .nav-subbar {
     padding: 8px 16px; /* 縦paddingはPCと同一を維持(NAV高さ80pxの計算が崩れないよう) */
+    font-size: 11px;
+  }
+  .nav-subnav {
+    gap: 16px;
+  }
+  .nav-subnav-item {
     font-size: 11px;
   }
   footer {
