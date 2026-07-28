@@ -49,17 +49,17 @@ const MENU_ITEMS: { href: string; label: string; dividerBefore?: boolean }[] = [
 const SUBNAV_ITEMS: { href: string; label: string; isActive: (pathname: string) => boolean }[] = [
   {
     href: "/rankings",
-    label: "ランキング",
+    label: "AIランキング",
     isActive: (p) => p === "/rankings" || p.startsWith("/rankings/"),
   },
   {
     href: "/fighters",
-    label: "選手",
+    label: "選手データベース",
     isActive: (p) => p === "/fighters" || p.startsWith("/fighters/"),
   },
   {
     href: "/events",
-    label: "大会",
+    label: "大会スケジュール",
     isActive: (p) => p === "/events" || p.startsWith("/events/"),
   },
 ];
