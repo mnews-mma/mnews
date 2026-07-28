@@ -382,19 +382,26 @@ const CANCELLED_HEADING_KEYWORDS = ["中止", "欠場", "試合不成立"];
 const DRAW_KEYWORDS = ["引き分け"];
 
 export function resolveOutcome(raw: ShootoRawBout): ShootoOutcome {
-  // 最優先: technical-draw クラスは常にdraw(オラクルCSVで直接確認済み:
-  // resolution_reason="technical-draw class")。opacity/score/noteの判定を経由しない。
+  // 最優先: draw/technical-draw クラスは常にdraw。opacity/score/noteの判定を
+  // 経由しない。
   //
-  // 注意: 素の「draw」クラス(<span class="draw">ドロー</span>、旧テンプレートの
-  // 一部ページで確認)はここでは特別扱いしない。実データを調べたところ、この
-  // 「ドロー」バッジはページ側が判定スコアや採点データを持たない場合の汎用
-  // プレースホルダーとして出ており、実際の勝敗(ノート欄のジャッジ採点の多数決
-  // 等で判明する)と食い違うケースが複数あった(例: event id=221 bout=4292は
-  // ノート採点の多数決でF1勝ちだが「draw」バッジが出ている。event id=267
-  // bout=4656はノーコンテストの注記があるのに「draw」バッジが出ている)。
-  // そのためresultTypeClass/resultTypeTextへは引き続き生データとして残すが、
-  // 勝敗解決の判定材料には使わない(1〜3のフォールバックだけで判定する)。
-  if (raw.resultTypeClass === "technical-draw") {
+  // 「draw」クラス(<span class="draw">ドロー</span>、result-typeの外側の
+  // 兄弟spanとして現れる。旧テンプレートの一部ページで確認、全230大会走査で
+  // 52件)は、ページ自身が明示的に描画している確定済みの結果バッジであり、
+  // 最優先で扱う。
+  //
+  // 経緯(2026-07-29、レビュー指摘により修正): 実装当初はこのバッジを「判定
+  // スコアや採点データを持たない場合の汎用プレースホルダー」と誤って解釈し、
+  // ノート欄のジャッジ採点多数決やオラクルCSV(PR#247参考実装)の判定を優先する
+  // 実装にしていた。しかし52件全件を目視・再検証した結果、「draw」バッジは
+  // ページ側が正しく算出した確定結果であり、誤っていたのはこちら側の単純な
+  // 相対多数決(favorsA>favorsBだけで決着とする実装)だったと判明した。実際の
+  // MMA/ボクシングの採点慣習(例: 3人中1人だけが支持し残り2人がタイなら
+  // 「majority draw」であって決着ではない)に照らしても「draw」バッジ側が正しい。
+  // オラクルCSV自身も同じ単純多数決ロジックを使っており同じ誤りを持っていたため、
+  // 「オラクルと一致する」ことは「draw」バッジのケースでは正しさの根拠にならない
+  // (オラクルとの照合だけでは検出できない一致した誤り)。
+  if (raw.resultTypeClass === "technical-draw" || raw.resultTypeClass === "draw") {
     return { winner: null, resultType: "draw" };
   }
 
