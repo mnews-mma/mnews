@@ -7,7 +7,7 @@
 import fs from "fs";
 import path from "path";
 import { RIZIN_EVENT_INDEX } from "../src/lib/mnewsRating/rizinEventIndex";
-import { RIZIN_1_BOUTS, RIZIN_1_SOURCE } from "../src/lib/mnewsRating/rizinRecordOverrides";
+import { RIZIN_1_BOUTS, RIZIN_1_SOURCE, RIZIN_2_BOUTS, RIZIN_2_SOURCE } from "../src/lib/mnewsRating/rizinRecordOverrides";
 import {
   splitIntoBoutChunks,
   parseBoutChunk,
@@ -149,7 +149,48 @@ async function main() {
   });
   totalBouts += rizin1Bouts.length;
 
+  // RIZIN.2(旧テンプレート・手動書き起こし分)。RIZIN_EVENT_INDEX内の該当エントリは
+  // manualOverride:trueが立っているため、下記ループでは自動fetchされない(二重計上防止)。
+  const rizin2Bouts: RizinRecordsBout[] = RIZIN_2_BOUTS.map((b) => {
+    const fighterASlug = findFighterSlugByName(b.fighterAName);
+    const fighterBSlug = findFighterSlugByName(b.fighterBName);
+    const winnerSlug = b.winnerName === b.fighterAName ? fighterASlug : b.winnerName === b.fighterBName ? fighterBSlug : null;
+    return {
+      cardPosition: b.cardPosition,
+      isOpeningFight: b.cardPosition === 1,
+      headingText: `第${b.cardPosition}試合`,
+      fighterAName: b.fighterAName,
+      fighterBName: b.fighterBName,
+      fighterASlug,
+      fighterBSlug,
+      ruleType: b.ruleType,
+      weightKg: b.weightKg,
+      namedDivision: b.namedDivision,
+      resultType: b.resultType,
+      winnerName: b.winnerName,
+      winnerSlug,
+      round: b.round ?? null,
+      time: b.time ?? null,
+      methodRaw: b.methodRaw,
+      isWeighInMiss: false,
+    };
+  });
+  out.push({
+    eventName: RIZIN_2_SOURCE.eventName,
+    date: RIZIN_2_SOURCE.date,
+    sourceUrl: RIZIN_2_SOURCE.sourceUrl,
+    fetchedDate: RIZIN_2_SOURCE.fetchedDate,
+    bouts: rizin2Bouts,
+    parseFailures: 0,
+  });
+  totalBouts += rizin2Bouts.length;
+
   for (const entry of RIZIN_EVENT_INDEX) {
+    if (entry.manualOverride) {
+      // 旧テンプレートで手動書き起こし済み(rizinRecordOverrides.ts)。二重計上防止のため
+      // ここではfetchしない。判定はeventNameの文字列一致ではなくこのフラグで行う。
+      continue;
+    }
     const url = `https://jp.rizinff.com/_ct/${entry.resultsPageId}`;
     const html = await fetchHtml(url);
     if (!html) {
