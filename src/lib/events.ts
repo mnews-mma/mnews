@@ -195,6 +195,11 @@ export const EVENTS: MEvent[] = [
         note: "第16代ミドル級王座防衛戦",
       },
       {
+        weightClass: "ライト級（70.3kg）",
+        fighterA: "葛西和希",
+        fighterB: "シャーマン・デブジエフ",
+      },
+      {
         weightClass: "フライ級（56.7kg）",
         fighterA: "猿飛流",
         fighterB: "眞藤源太",
@@ -242,6 +247,12 @@ export const EVENTS: MEvent[] = [
         weightClass: "バンタム級（61.2kg）",
         fighterA: "木村耀人",
         fighterB: "上野惇平",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "近藤悠真",
+        fighterB: "井川智貴",
         note: "プレリミナリー",
       },
     ],
