@@ -103,7 +103,12 @@ function extractDetailUrl(chunk: string): string | null {
 // <div class="raw-html"><p style="text-align:center;">ルール情報<br>
 // <span style="font-weight:bold">（WIN）<a>A</a> vs. <a>B</a>（LOSE）</span><br>決着方式</p>…</div>
 function parseBoutChunkFormatA(chunk: string, headingText: string): RizinRawBout | null {
-  const rawHtmlMatch = chunk.match(/<div class="raw-html">([\s\S]*?)<\/div>/);
+  // 貪欲マッチ: 1チャンク内に複数のraw-html divがあるケース(例: RIZIN.21の
+  // YouTube動画埋め込み用div→結果本体のdivの順)で、非貪欲マッチだと1つ目の
+  // divの内側の入れ子</div>で打ち切られ結果本体に届かなかった(PR #239で特定)。
+  // チャンク境界(次のh2見出し直前)までの範囲でしか動かないため、貪欲化しても
+  // 他チャンクへ食い込むことはない。
+  const rawHtmlMatch = chunk.match(/<div class="raw-html">([\s\S]*)<\/div>/);
   if (!rawHtmlMatch) return null;
   const rawHtml = rawHtmlMatch[1];
 
@@ -111,7 +116,9 @@ function parseBoutChunkFormatA(chunk: string, headingText: string): RizinRawBout
   if (!pMatch) return null;
   const pContent = pMatch[1];
 
-  const spanMatch = pContent.match(/<span style="font-weight:bold">([\s\S]*?)<\/span>/);
+  // font-weight:bold(スペースなし)とfont-weight: bold(スペースあり)の両方を
+  // 許容する(RIZIN.10で後者の表記が使われていたためPR #239で特定)。
+  const spanMatch = pContent.match(/<span style="font-weight:\s*bold">([\s\S]*?)<\/span>/);
   if (!spanMatch) return null;
   const spanContent = spanMatch[1];
 
@@ -140,7 +147,8 @@ function parseBoutChunkFormatA(chunk: string, headingText: string): RizinRawBout
 }
 
 // フォーマットB: 2016〜2017年頃の旧テンプレート。選手名はリンクされておらず
-// プレーンテキスト、勝敗は半角角括弧[Win]/[Lose]表記、決着方式は選手名の間の
+// プレーンテキスト、勝敗は角括弧[Win]/[Lose]表記(半角・全角［Win］／［Lose］の
+// 両方が実在。RIZIN.5は全角、PR #239で特定)、決着方式は選手名の間の
 // 全角括弧内に埋め込まれる。
 // <p>［ルール情報］</p><h3 class="article-subheading">[Win] A （ 決着方式 ） B [Lose]</h3>
 function parseBoutChunkFormatB(chunk: string, headingText: string): RizinRawBout | null {
@@ -151,7 +159,9 @@ function parseBoutChunkFormatB(chunk: string, headingText: string): RizinRawBout
   if (!h3Match) return null;
   const h3Text = stripTags(h3Match[1]);
 
-  const m = h3Text.match(/^\[(\w+)\]\s*(.+?)\s*（([\s\S]*?)）\s*(.+?)\s*\[(\w+)\]/);
+  // 半角[Win]/[Lose]と全角［Win］／［Lose］の両方を許容する(RIZIN.5で
+  // 全角表記が使われていたためPR #239で特定)。
+  const m = h3Text.match(/^[\[［](\w+)[\]］]\s*(.+?)\s*（([\s\S]*?)）\s*(.+?)\s*[\[［](\w+)[\]］]/);
   if (!m) return null;
   const [, markerARaw, fighterAName, methodRaw, fighterBName, markerBRaw] = m;
 
@@ -269,8 +279,15 @@ export function extractCardNumber(headingText: string): number | null {
 }
 
 // ruleLineRawから: ルール種別・契約体重(kg)・階級名(明示されている場合)を抽出する。
+// "unknown"は「MMA以外と積極的に判定できたわけではない」ことを表す(RIZIN公式
+// ページ側にルール行の記載自体が無いケースで発生。矢地祐介×ディエゴ・ヌネス戦
+// (RIZIN.10、2018-05-06)で、ルール行の欠落により"その他"へ誤分類され、
+// applyRizinRecordsToHistory()の「MMA以外は除外」ロジックが誤爆してWikipedia側の
+// 正しい戦績(win)を消してしまう事故が発生したため導入。"その他"は今後、
+// 既知キーワードには一致しないが具体的なルール行テキスト自体は存在する
+// (=「MMAではない」と積極的に判定できる根拠がある)場合のみに限定する。
 export interface ParsedRuleInfo {
-  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "グラップリング" | "その他";
+  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "グラップリング" | "その他" | "unknown";
   weightKg: number | null;
   namedDivision: string | null; // 例:「フェザー級」「バンタム級」。明示が無ければnull
 }
@@ -278,11 +295,15 @@ export interface ParsedRuleInfo {
 const NAMED_DIVISION_RE = /(フライ級|バンタム級|フェザー級|ライト級|ウェルター級|ミドル級|ライトヘビー級|ヘビー級|ストロー級|アトム級)/;
 
 export function parseRuleInfo(ruleLineRaw: string): ParsedRuleInfo {
-  let ruleType: ParsedRuleInfo["ruleType"] = "その他";
+  let ruleType: ParsedRuleInfo["ruleType"];
   if (/MMA/i.test(ruleLineRaw)) ruleType = "MMA";
   else if (/キックボクシング/.test(ruleLineRaw)) ruleType = "キックボクシング";
   else if (/シュートボクシング/.test(ruleLineRaw)) ruleType = "シュートボクシング";
   else if (/グラップリング/.test(ruleLineRaw)) ruleType = "グラップリング";
+  // ルール行テキスト自体が無い(空文字)場合は「MMA以外」と確定できないため、
+  // 決めつけずunknown(判定不能)を返す(捏造ゼロの原則)。
+  else if (ruleLineRaw.trim() === "") ruleType = "unknown";
+  else ruleType = "その他";
 
   const weightMatch = ruleLineRaw.match(/(\d+(?:\.\d+)?)\s*kg/);
   const weightKg = weightMatch ? Number(weightMatch[1]) : null;
