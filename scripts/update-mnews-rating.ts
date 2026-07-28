@@ -199,14 +199,21 @@ function applyRizinRecordsOverride(records: FighterRecordsInput): FighterRecords
   const out: FighterRecordsInput = {};
   let totalOverridden = 0;
   let totalExcluded = 0;
+  let totalRuleUnknown = 0;
   for (const [slug, entry] of Object.entries(records)) {
-    const { history, overriddenCount, excludedCount } = applyRizinRecordsToHistory(slug, entry.history ?? [], index);
+    const { history, overriddenCount, excludedCount, ruleUnknownCount } = applyRizinRecordsToHistory(
+      slug,
+      entry.history ?? [],
+      index
+    );
     out[slug] = { ...entry, history };
     totalOverridden += overriddenCount;
     totalExcluded += excludedCount;
+    totalRuleUnknown += ruleUnknownCount;
   }
   console.log(
-    `[INFO] Phase3: rizinRecords.jsonを全階級に優先適用(公式ソースで上書き${totalOverridden}試合・MMA以外/中止で除外${totalExcluded}試合)`
+    `[INFO] Phase3: rizinRecords.jsonを全階級に優先適用(公式ソースで上書き${totalOverridden}試合・MMA以外/中止で除外${totalExcluded}試合・` +
+      `ルール情報欠落で判定不能のためWikipedia側を温存${totalRuleUnknown}試合)`
   );
   return out;
 }

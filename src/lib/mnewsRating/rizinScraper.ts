@@ -279,8 +279,15 @@ export function extractCardNumber(headingText: string): number | null {
 }
 
 // ruleLineRawから: ルール種別・契約体重(kg)・階級名(明示されている場合)を抽出する。
+// "unknown"は「MMA以外と積極的に判定できたわけではない」ことを表す(RIZIN公式
+// ページ側にルール行の記載自体が無いケースで発生。矢地祐介×ディエゴ・ヌネス戦
+// (RIZIN.10、2018-05-06)で、ルール行の欠落により"その他"へ誤分類され、
+// applyRizinRecordsToHistory()の「MMA以外は除外」ロジックが誤爆してWikipedia側の
+// 正しい戦績(win)を消してしまう事故が発生したため導入。"その他"は今後、
+// 既知キーワードには一致しないが具体的なルール行テキスト自体は存在する
+// (=「MMAではない」と積極的に判定できる根拠がある)場合のみに限定する。
 export interface ParsedRuleInfo {
-  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "グラップリング" | "その他";
+  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "グラップリング" | "その他" | "unknown";
   weightKg: number | null;
   namedDivision: string | null; // 例:「フェザー級」「バンタム級」。明示が無ければnull
 }
@@ -288,11 +295,15 @@ export interface ParsedRuleInfo {
 const NAMED_DIVISION_RE = /(フライ級|バンタム級|フェザー級|ライト級|ウェルター級|ミドル級|ライトヘビー級|ヘビー級|ストロー級|アトム級)/;
 
 export function parseRuleInfo(ruleLineRaw: string): ParsedRuleInfo {
-  let ruleType: ParsedRuleInfo["ruleType"] = "その他";
+  let ruleType: ParsedRuleInfo["ruleType"];
   if (/MMA/i.test(ruleLineRaw)) ruleType = "MMA";
   else if (/キックボクシング/.test(ruleLineRaw)) ruleType = "キックボクシング";
   else if (/シュートボクシング/.test(ruleLineRaw)) ruleType = "シュートボクシング";
   else if (/グラップリング/.test(ruleLineRaw)) ruleType = "グラップリング";
+  // ルール行テキスト自体が無い(空文字)場合は「MMA以外」と確定できないため、
+  // 決めつけずunknown(判定不能)を返す(捏造ゼロの原則)。
+  else if (ruleLineRaw.trim() === "") ruleType = "unknown";
+  else ruleType = "その他";
 
   const weightMatch = ruleLineRaw.match(/(\d+(?:\.\d+)?)\s*kg/);
   const weightKg = weightMatch ? Number(weightMatch[1]) : null;

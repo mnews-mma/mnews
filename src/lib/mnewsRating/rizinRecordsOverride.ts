@@ -87,7 +87,11 @@ function formatWeightClass(b: RizinRecordsBout): string | undefined {
 export interface RizinOverrideResult {
   history: HistoryEntryLike[];
   overriddenCount: number; // result/methodを公式ソースで上書きした試合数
-  excludedCount: number; // MMA以外・試合中止で除外した試合数
+  excludedCount: number; // MMA以外と積極的に判定できた試合・試合中止で除外した試合数
+  ruleUnknownCount: number; // ルール情報欠落で種別判定不能のため、除外もWikipedia上書きも
+  // せず元のまま温存した試合数(矢地祐介×ディエゴ・ヌネス戦(RIZIN.10、2018-05-06)の
+  // 事故を受けて導入。判定不能をMMAと決めつけるのでも非MMAとして除外するのでもなく、
+  // 素通りさせてWikipedia側の記録を信頼する)
 }
 
 export function applyRizinRecordsToHistory(
@@ -97,6 +101,7 @@ export function applyRizinRecordsToHistory(
 ): RizinOverrideResult {
   let overriddenCount = 0;
   let excludedCount = 0;
+  let ruleUnknownCount = 0;
   const result: HistoryEntryLike[] = [];
 
   for (const h of history) {
@@ -109,9 +114,16 @@ export function applyRizinRecordsToHistory(
       result.push(h); // 対応するrizinRecordsが無い試合はフォールバック(元のまま)
       continue;
     }
+    if (match.ruleType === "unknown") {
+      // ルール行の記載自体が無く「MMA以外」と確定できない試合。除外(非MMA扱い)も
+      // 上書き(MMA扱い)もせず、Wikipedia側の記録をそのまま温存する。
+      ruleUnknownCount++;
+      result.push(h);
+      continue;
+    }
     if (match.ruleType !== "MMA" || match.resultType === "cancelled") {
       excludedCount++;
-      continue; // MMA以外・中止試合は戦績集計から除外する
+      continue; // MMA以外と確定できた試合・中止試合は戦績集計から除外する
     }
     if (match.resultType === "unknown") {
       result.push(h); // 判定不能は補完せず元のまま
@@ -133,5 +145,5 @@ export function applyRizinRecordsToHistory(
     });
   }
 
-  return { history: result, overriddenCount, excludedCount };
+  return { history: result, overriddenCount, excludedCount, ruleUnknownCount };
 }
