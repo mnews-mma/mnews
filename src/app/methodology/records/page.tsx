@@ -3,11 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { pageMetadata } from "@/lib/seo";
-
-// DEEPのデータがまだ投入されておらず、本ページの記載内容(4団体通算)が
-// 現状の実データ(RIZIN+パンクラス+修斗の3団体)と一致しないため、
-// SHOW_MULTI_ORG_RECORDがtrueに戻るまで非公開にする(sitemapにも含めない)。
-const SHOW_MULTI_ORG_RECORD = false;
+import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
 
 export const metadata = pageMetadata({
   title: "戦績の集計方法について｜mnews",

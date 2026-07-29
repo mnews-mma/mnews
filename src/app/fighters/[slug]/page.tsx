@@ -22,10 +22,7 @@ import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
 import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } from "@/lib/seoTemplates";
 import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords } from "@/lib/multiOrgRecordsData";
 import { computeMultiOrgRecord, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
-
-// 戦績2行目(RIZIN+修斗+パンクラス合算)の一時非表示フラグ。trueに戻せば元通り
-// (集計ロジック・data/・multiOrgRecordsData.tsは変更していない)。
-const SHOW_MULTI_ORG_RECORD = false;
+import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
