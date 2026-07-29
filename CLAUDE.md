@@ -30,7 +30,9 @@
 - **deployはISRキャッシュを自動パージしない**(2026-07-17判明)。`data/rankings.json`等のデータはGitHub raw経由でrevalidate:3600(最大1時間)のfetchキャッシュに乗っており、「mainにマージしただけで新規デプロイをしていない」場合は最大1時間古い値が残る。新規デプロイ自体もURLに埋め込まれたcommit SHAが変わるため次回アクセスで自動的に最新を取るが、即時反映させたい場合は`POST /api/revalidate-rankings`(`Authorization: Bearer <REVALIDATE_TOKEN>`、Vercel環境変数に別途設定が必要)を呼ぶ。**データ更新を伴うdeploy後はrevalidate必須**。反映確認は全公開階級(`/rankings/[division]`)でJSON-LDを取得し、最終更新日付が全ページ一致していることを見る。
 
 ## 定期実行ジョブ一覧
-出典は`.github/workflows/*.yml`と`vercel.json`の実ファイルのみ(2026-07-25調査時点)。デプロイ計画・data/配下を触るPRの時間帯判断はこの表を参照する。個別のcron時刻をコード外の記憶で補わない。
+出典は`.github/workflows/*.yml`と`vercel.json`の実ファイルのみ(2026-07-25調査時点)。個別のcron時刻をコード外の記憶で補わない。
+
+data/配下を触るPRをマージする前に、この表のジョブが実行中または待機中でないかを GitHub API で確認する。実行中の場合は完了を待ってからマージする。時間帯による制約はない。
 
 | ジョブ | 種別 | cron (UTC) | JST | 書き込み先 | 備考 |
 |---|---|---|---|---|---|
