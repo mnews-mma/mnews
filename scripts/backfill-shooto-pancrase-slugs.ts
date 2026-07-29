@@ -12,8 +12,10 @@
 // (src/lib/fighters.ts)は一切変更せず、ロジックも再利用しない):
 // - hidden:trueの選手も解決対象に含める(findFighterSlugByNameはhidden除外
 //   だが、それは表示用リンク解決の共有関数のため今回は使わない)。
-// - 正規化はNFKC + 空白除去のみ(カタカナ/ひらがな変換等はしない。
-//   findFighterSlugByNameより厳格な完全一致)。
+// - 正規化はNFKC + 空白除去 + 異体字統一(髙→高・﨑→崎・齋/齊/斎→斉・
+//   濵→浜等) + 漢字/カタカナ同形文字統一(ニ→二・ロ→口・カ→力・エ→工・
+//   ト→卜) + 引用符/中黒等の記号除去。ひらがな/カタカナ間の変換はしない。
+//   findFighterSlugByNameより厳格な完全一致(#260継続、2026-07-29追加正規化)。
 // - 対象候補は全選手のnameJa + aliases。正規化後、bout側の生表記と
 //   完全一致した場合のみ解決する(部分一致・あいまい一致は禁止)。
 // - 複数選手が同じ正規化名にマッチする場合(曖昧)も未解決のまま残す
@@ -29,10 +31,43 @@ const OUT_DIR = path.join(process.cwd(), "out");
 const TARGET_FILES = ["shootoRecords.json", "pancraseRecords.json"];
 
 // ------------------------------------------------------------------
-// 正規化・候補インデックス構築(このスクリプト専用、NFKC+空白除去のみ)
+// 正規化・候補インデックス構築
+// (NFKC + 空白除去 + 異体字統一 + 漢字/カタカナ同形統一 + 引用符・記号除去。
+//  カタカナ/ひらがな変換は引き続きしない)
 // ------------------------------------------------------------------
+
+// 旧字体・異体字 -> 統一先。読みが同じ別字(斎/斉等)も実データ上サイトウ姓の
+// 表記ゆれとして混在しているため統一対象に含める。
+const VARIANT_CHAR_MAP: Record<string, string> = {
+  "髙": "高",
+  "﨑": "崎",
+  "齋": "斉",
+  "齊": "斉",
+  "斎": "斉",
+  "濵": "浜",
+};
+const VARIANT_CHAR_RE = new RegExp(`[${Object.keys(VARIANT_CHAR_MAP).join("")}]`, "g");
+
+// 漢字とカタカナで字形が同じ/酷似する文字の統一(片方をもう片方に寄せる)。
+const HOMOGRAPH_CHAR_MAP: Record<string, string> = {
+  "ニ": "二",
+  "ロ": "口",
+  "カ": "力",
+  "エ": "工",
+  "ト": "卜",
+};
+const HOMOGRAPH_CHAR_RE = new RegExp(`[${Object.keys(HOMOGRAPH_CHAR_MAP).join("")}]`, "g");
+
+// 引用符・区切り記号の除去対象(装飾ニックネームの囲みや中黒等)。
+const QUOTE_SYMBOL_RE = /["'‘’“”〝〞〟・·‧]/g;
+
 function normalize(s: string): string {
-  return s.normalize("NFKC").replace(/[\s　]/g, "");
+  return s
+    .normalize("NFKC")
+    .replace(/[\s　]/g, "")
+    .replace(QUOTE_SYMBOL_RE, "")
+    .replace(VARIANT_CHAR_RE, (c) => VARIANT_CHAR_MAP[c])
+    .replace(HOMOGRAPH_CHAR_RE, (c) => HOMOGRAPH_CHAR_MAP[c]);
 }
 
 // 正規化名 -> slug。複数選手が同名の場合はnull(曖昧・解決しない)を入れる。
@@ -115,6 +150,10 @@ interface NearMiss {
 // 未解決の生表記(name -> 出現bout件数)ごとに、全候補名との編集距離を計算し、
 // 距離1〜2のものだけを列挙する(距離0=完全一致は既に解決済みのはずなので
 // ここには出現しない)。同一人物かどうかの判断はしない(機械的な列挙のみ)。
+//
+// 距離1については、正規化後の生表記が3文字以下の場合は候補を出さない
+// (修我/亮我・圭太郎/金太郎・雅也/力也のような短いリングネーム同士は
+// 距離1でもほぼ別人で、一覧のノイズになるため。2026-07-29追加)。
 function findNearMisses(unresolved: Map<string, number>, candidates: CandidateName[]): NearMiss[] {
   const out: NearMiss[] = [];
   for (const [rawName, count] of unresolved) {
@@ -124,6 +163,7 @@ function findNearMisses(unresolved: Map<string, number>, candidates: CandidateNa
       // 明らかに文字数差が大きい候補は距離2を超えるため計算を省略する(高速化)。
       if (Math.abs(cand.normName.length - norm.length) > 2) continue;
       const dist = levenshtein(norm, cand.normName);
+      if (dist === 1 && norm.length <= 3) continue;
       if (dist === 1 || dist === 2) {
         out.push({ rawName, rawNameBoutCount: count, candidateName: cand.displayName, candidateSlug: cand.slug, distance: dist });
       }
@@ -195,7 +235,9 @@ function main() {
   lines.push("");
   lines.push(`生成日時: ${new Date().toISOString()}`);
   lines.push("");
-  lines.push("正規化方式: NFKC + 空白除去のみ(カタカナ/ひらがな変換なし)。fighters.tsの全選手(hidden含む)の");
+  lines.push("正規化方式: NFKC + 空白除去 + 異体字統一(髙→高・﨑→崎・齋/齊/斎→斉・濵→浜等) + 漢字/カタカナ同形文字統一");
+  lines.push("(ニ→二・ロ→口・カ→力・エ→工・ト→卜) + 引用符/中黒等の記号除去(#260継続、2026-07-29追加)。ひらがな/カタカナ間の");
+  lines.push("変換はしない。fighters.tsの全選手(hidden含む)の");
   lines.push("nameJa/aliasesと完全一致した場合のみ解決。複数選手が同一正規化名を持つ場合は曖昧として未解決のまま残す。");
   lines.push("");
 

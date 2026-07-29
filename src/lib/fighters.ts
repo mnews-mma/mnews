@@ -1134,7 +1134,7 @@ export const FIGHTERS: Fighter[] = [
   // fighterRecordFromResults.ts 隣の DEEP_HELD_FIGHTERS を参照。
   // needsReview=true は単一ソース由来などで最終確認待ちの選手。
   // ===========================================================================
-  { slug: "ohara-juri", nameJa: "大原樹理", nameEn: "Juri Ohara", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "ohara-juri", nameJa: "大原樹理", nameEn: "Juri Ohara", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["大原樹里"] },
   { slug: "kuramoto-daigo", nameJa: "倉本大悟", nameEn: "Daigo Kuramoto", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "shimada-ibuki", nameJa: "嶋田伊吹", nameEn: "Ibuki Shimada", org: "deep", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "sakai-ryo", nameJa: "酒井リョウ", nameEn: "Ryo Sakai", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "メガトンの砦" },
@@ -1265,7 +1265,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "suzuki-chikaya", nameJa: "鈴木慈也", nameEn: "Chikaya Suzuki", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "yanagawa-yuito", nameJa: "栁川唯人", nameEn: "Yuito Yanagawa", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "rajabov-otabek", nameJa: "オタベク・ラジャボフ", nameEn: "Otabek Rajabov", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "arzykul-kalybek", nameJa: "カリベク・アルジクルウール", nameEn: "Kalybek Arzykul uulu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
+  { slug: "arzykul-kalybek", nameJa: "カリベク・アルジクルウール", nameEn: "Kalybek Arzykul uulu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true, aliases: ["カリベク・アルジクル ウルル"] },
   { slug: "kanru", nameJa: "敢流", nameEn: "Kanru", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "kinoshita-naosuke", nameJa: "木下尚祐", nameEn: "Naosuke Kinoshita", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], hidden: true, recordFromResults: true, needsReview: true },
   { slug: "hirata-naoki", nameJa: "平田直樹", nameEn: "Naoki Hirata", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
