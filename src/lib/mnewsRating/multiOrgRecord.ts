@@ -32,8 +32,9 @@ import { computeFighterPancraseRecord } from "./pancraseRecordsAggregate";
 import { DeepRecordsEvent } from "./deepScraper";
 import { computeFighterDeepRecord } from "./deepRecordsAggregate";
 
-// 表示ラベル用の固定表記(実装済み4団体を列挙)。
-export const MULTI_ORG_RECORD_LABEL = "RIZIN・パンクラス・修斗・DEEP 通算";
+// 表示ラベル用の固定表記(実装済み4団体を列挙。並び順は確定済み:
+// RIZIN・DEEP・パンクラス・修斗、2026-07-30ユーザー指定)。
+export const MULTI_ORG_RECORD_LABEL = "RIZIN・DEEP・パンクラス・修斗 通算";
 
 export interface MultiOrgRecord {
   wins: number;
@@ -60,9 +61,9 @@ export function computeMultiOrgRecord(
 
   const orgsWithBouts: string[] = [];
   if (rizin.bouts.length > 0 || rizin.excluded.length > 0) orgsWithBouts.push("RIZIN");
+  if (deep.bouts.length > 0 || deep.excluded.length > 0) orgsWithBouts.push("DEEP");
   if (pancrase.bouts.length > 0 || pancrase.excluded.length > 0) orgsWithBouts.push("パンクラス");
   if (shooto.bouts.length > 0 || shooto.excluded.length > 0) orgsWithBouts.push("修斗");
-  if (deep.bouts.length > 0 || deep.excluded.length > 0) orgsWithBouts.push("DEEP");
 
   return {
     wins: rizin.wins + shooto.wins + pancrase.wins + deep.wins,
