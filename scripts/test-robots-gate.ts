@@ -61,6 +61,24 @@ async function runFetchIntegrationCases(): Promise<string[]> {
       }) as Response) as typeof fetch;
   }
 
+  function mockFetchAlways(status: number, body: string | null) {
+    let calls = 0;
+    global.fetch = (async () => {
+      calls++;
+      return { ok: status >= 200 && status < 300, status, text: async () => body ?? "" } as Response;
+    }) as typeof fetch;
+    return () => calls;
+  }
+
+  function mockFetchAlwaysThrows() {
+    let calls = 0;
+    global.fetch = (async () => {
+      calls++;
+      throw new Error("network error(mock)");
+    }) as typeof fetch;
+    return () => calls;
+  }
+
   async function check(label: string, run: () => Promise<void>, expectThrow: boolean) {
     let threw = false;
     try {
@@ -74,13 +92,37 @@ async function runFetchIntegrationCases(): Promise<string[]> {
     if (!ok) failures.push(label);
   }
 
-  // 404 → 許可扱い(パンクラス相当)。
+  // 4xx → 許可扱い(RFC 9309。パンクラスの404が実例)。
   mockFetchOnce(404, null);
-  await check("robots.txt 404 → 許可扱い", () => assertAllowedByRobots("https://example-404.mnews-test/data/result/index.html", UA), false);
+  await check("robots.txt 404(4xx) → 許可扱い", () => assertAllowedByRobots("https://example-404.mnews-test/data/result/index.html", UA), false);
 
-  // 5xx → 判定不能につき許可扱い。
-  mockFetchOnce(500, null);
-  await check("robots.txt 5xx → 許可扱い(判定不能)", () => assertAllowedByRobots("https://example-500.mnews-test/data/result/index.html", UA), false);
+  // 5xxはリトライ(2回)してもなお失敗する場合、RFC 9309に従い全面拒否として停止する。
+  {
+    const getCalls = mockFetchAlways(500, null);
+    await check(
+      "robots.txt 5xx(リトライ後も失敗) → 全面拒否で例外",
+      () => assertAllowedByRobots("https://example-500.mnews-test/data/result/index.html", UA),
+      true
+    );
+    const calls = getCalls();
+    const ok = calls === 3; // 初回+リトライ2回
+    console.log(`${ok ? "  OK" : "FAIL"}  5xxリトライ回数=${calls} (expect 3: 初回+リトライ2回)`);
+    if (!ok) failures.push(`5xx retry count = ${calls}, expected 3`);
+  }
+
+  // ネットワークエラー(タイムアウト等)もリトライ後になお失敗すれば同様に全面拒否。
+  {
+    const getCalls = mockFetchAlwaysThrows();
+    await check(
+      "robots.txt 通信エラー(リトライ後も失敗) → 全面拒否で例外",
+      () => assertAllowedByRobots("https://example-neterror.mnews-test/data/result/index.html", UA),
+      true
+    );
+    const calls = getCalls();
+    const ok = calls === 3;
+    console.log(`${ok ? "  OK" : "FAIL"}  通信エラーリトライ回数=${calls} (expect 3: 初回+リトライ2回)`);
+    if (!ok) failures.push(`network error retry count = ${calls}, expected 3`);
+  }
 
   // Disallow該当 → 例外。
   mockFetchOnce(200, "User-agent: *\nDisallow: /data/result/\n");
