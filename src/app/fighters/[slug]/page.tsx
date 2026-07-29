@@ -303,6 +303,12 @@ export default async function FighterPage({
     fetchPancraseRecords(),
   ]);
   const multiOrgRecord = computeMultiOrgRecord(fighter.slug, { rizinEvents, shootoEvents, pancraseEvents });
+  const hasMultiOrgRecord =
+    multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0;
+  // Wikipedia通算が無い(noRecordData)が3団体合算(2行目)は取れている選手
+  // (Wikiを持たない修斗・パンクラス選手が該当)は、「通算戦績 データなし」を
+  // 出さず2行目のみを表示する。両方無い場合のみ従来どおり「データなし」。
+  const suppressNoRecordRow = noRecordData && SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord;
 
   // 次戦の対戦相手情報(次戦プレビュー用)。相手がDB外/戦績データなしの場合は
   // entry=null になり、バナーのみ表示(比較・共通対戦相手は出さない=捏造ゼロ)。
@@ -512,27 +518,31 @@ export default async function FighterPage({
           </div>
         )}
 
-        {/* 戦績スタットカード(生涯戦績が取れない選手は「データなし」を明示) */}
-        <div className="fighter-stats-grid">
-          <div className="fighter-stat-card">
-            <div className="fighter-stat-num" style={noRecordData ? { fontSize: 20, color: "var(--muted)" } : undefined}>
-              {noRecordData ? "データなし" : `${wins}-${losses}-${draws}`}
+        {/* 戦績スタットカード(生涯戦績が取れない選手は「データなし」を明示)。
+            ただしWikipedia通算が無くても3団体合算(2行目)が取れている選手は
+            この1行目自体を出さず、下の2行目のみを表示する(suppressNoRecordRow)。 */}
+        {!suppressNoRecordRow && (
+          <div className="fighter-stats-grid">
+            <div className="fighter-stat-card">
+              <div className="fighter-stat-num" style={noRecordData ? { fontSize: 20, color: "var(--muted)" } : undefined}>
+                {noRecordData ? "データなし" : `${wins}-${losses}-${draws}`}
+              </div>
+              <div className="fighter-stat-label">通算戦績</div>
             </div>
-            <div className="fighter-stat-label">通算戦績</div>
+            {!noRecordData && winRate !== null && (
+              <div className="fighter-stat-card">
+                <div className="fighter-stat-num">{winRate}%</div>
+                <div className="fighter-stat-label">勝率</div>
+              </div>
+            )}
+            {finishRate !== null && (
+              <div className="fighter-stat-card">
+                <div className="fighter-stat-num">{finishRate}%</div>
+                <div className="fighter-stat-label">フィニッシュ率</div>
+              </div>
+            )}
           </div>
-          {!noRecordData && winRate !== null && (
-            <div className="fighter-stat-card">
-              <div className="fighter-stat-num">{winRate}%</div>
-              <div className="fighter-stat-label">勝率</div>
-            </div>
-          )}
-          {finishRate !== null && (
-            <div className="fighter-stat-card">
-              <div className="fighter-stat-num">{finishRate}%</div>
-              <div className="fighter-stat-label">フィニッシュ率</div>
-            </div>
-          )}
-        </div>
+        )}
 
         {/* 戦績スタットカード2行目: RIZIN+修斗+パンクラスの3団体公式データ
             (data/rizinRecords.json・data/shootoRecords.json・
@@ -540,8 +550,7 @@ export default async function FighterPage({
             とは集計元・集計ロジックが別。fighters.tsのwins/losses/history
             (PR #252投入値)は参照しない(#258で誤りが見つかっており信頼できない
             ため)。3団体とも0件(該当bout無し)の場合はブロックごと非表示にする。 */}
-        {SHOW_MULTI_ORG_RECORD &&
-          (multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0) && (
+        {SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord && (
           <div className="fighter-stats-grid">
             <div className="fighter-stat-card">
               <div className="fighter-stat-num">
