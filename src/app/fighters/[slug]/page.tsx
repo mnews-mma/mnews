@@ -23,6 +23,10 @@ import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } f
 import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords } from "@/lib/multiOrgRecordsData";
 import { computeMultiOrgRecord, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
 
+// 戦績2行目(RIZIN+修斗+パンクラス合算)の一時非表示フラグ。trueに戻せば元通り
+// (集計ロジック・data/・multiOrgRecordsData.tsは変更していない)。
+const SHOW_MULTI_ORG_RECORD = false;
+
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
 // (events.tsのfindNextFight内部の判定と同じ基準に揃える)。
@@ -536,7 +540,8 @@ export default async function FighterPage({
             とは集計元・集計ロジックが別。fighters.tsのwins/losses/history
             (PR #252投入値)は参照しない(#258で誤りが見つかっており信頼できない
             ため)。3団体とも0件(該当bout無し)の場合はブロックごと非表示にする。 */}
-        {(multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0) && (
+        {SHOW_MULTI_ORG_RECORD &&
+          (multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0) && (
           <div className="fighter-stats-grid">
             <div className="fighter-stat-card">
               <div className="fighter-stat-num">
