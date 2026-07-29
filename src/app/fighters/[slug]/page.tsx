@@ -556,7 +556,13 @@ export default async function FighterPage({
               <div className="fighter-stat-num">
                 {multiOrgRecord.wins}-{multiOrgRecord.losses}-{multiOrgRecord.draws}
               </div>
-              <div className="fighter-stat-label">{MULTI_ORG_RECORD_LABEL}</div>
+              <div className="fighter-stat-label">
+                {MULTI_ORG_RECORD_LABEL}
+                {" "}
+                <a href="/methodology/records" style={{ color: "var(--muted)", textDecoration: "underline" }}>
+                  集計について
+                </a>
+              </div>
             </div>
           </div>
         )}
