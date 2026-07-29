@@ -21,7 +21,7 @@ import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions"
 import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
 import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } from "@/lib/seoTemplates";
 import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords, fetchDeepRecords } from "@/lib/multiOrgRecordsData";
-import { computeMultiOrgRecord, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
+import { computeMultiOrgRecord, computeMultiOrgBoutTable, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
 import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
@@ -106,6 +106,26 @@ const RESULT_CLASS: Record<string, string> = {
   draw: "result-draw",
   nc: "result-draw",
 };
+
+// Wikipedia由来(history)・3団体bout由来(computeMultiOrgBoutTable)のどちらから
+// 来た行も同じ対戦テーブルで描画するための共通形。
+interface DisplayBoutRow {
+  date: string;
+  opponentName: string;
+  opponentSlug: string | null;
+  result: "win" | "loss" | "draw" | "nc";
+  method: string;
+  event: string;
+}
+
+// data/の3団体boutが持つopponentSlugは、fighters.tsとのslug完全一致で
+// 突合済みだが、hidden選手への内部リンクは張らない(既存のfindFighterSlugByName
+// と同じ規則)ため、ここでも同様にhidden選手は非リンク(生表記)にする。
+function resolveLinkableOpponentSlug(oppSlug: string | null): string | null {
+  if (!oppSlug) return null;
+  const opponent = getFighter(oppSlug);
+  return opponent && !opponent.hidden ? oppSlug : null;
+}
 
 // 大会名（RIZIN.52など）からMニュース掲載の結果ページを探す。
 // 表記揺れ（全角/半角・サブタイトル付き等）があるため、双方向の部分一致で見る。
@@ -307,6 +327,32 @@ export default async function FighterPage({
   // (Wikiを持たない修斗・パンクラス・DEEP選手が該当)は、「通算戦績 データなし」を
   // 出さず2行目のみを表示する。両方無い場合のみ従来どおり「データなし」。
   const suppressNoRecordRow = noRecordData && SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord;
+
+  // 対戦テーブル: Wikipedia由来のhistoryがあればそれを使い、無い選手
+  // (noRecordData。修斗・パンクラス・DEEPのみで戦っておりWikipedia記事が無い選手が
+  // 該当)はdata/の4団体bout(2行目と同じcomputeMultiOrgBoutTable、cancelled/unknown
+  // 除外済み)からテーブルを組み立てる。表示項目は既存テーブル(日付/対戦相手/結果/
+  // 決着/大会名)に揃え、新しい項目は増やさない。
+  const displayHistory: DisplayBoutRow[] =
+    history.length > 0
+      ? history.map((h) => ({
+          date: h.date,
+          opponentName: h.opponent,
+          opponentSlug: resolveOpponentSlug(h.opponent, slug, visibleSlugs, { fighterSlug: slug, date: h.date }),
+          result: h.result,
+          method: h.method,
+          event: h.event,
+        }))
+      : SHOW_MULTI_ORG_RECORD
+        ? computeMultiOrgBoutTable(fighter.slug, { rizinEvents, shootoEvents, pancraseEvents, deepEvents }).map((b) => ({
+            date: b.date,
+            opponentName: b.opponentName,
+            opponentSlug: resolveLinkableOpponentSlug(b.opponentSlug),
+            result: b.result,
+            method: b.method,
+            event: b.event,
+          }))
+        : [];
 
   // 次戦の対戦相手情報(次戦プレビュー用)。相手がDB外/戦績データなしの場合は
   // entry=null になり、バナーのみ表示(比較・共通対戦相手は出さない=捏造ゼロ)。
@@ -587,7 +633,7 @@ export default async function FighterPage({
         <h2 style={{ fontSize: 14, fontWeight: 700, marginBottom: 16, color: "var(--fg)" }}>
           {fighter.nameJa}の最新試合結果・戦績
         </h2>
-        {history.length === 0 ? (
+        {displayHistory.length === 0 ? (
           <p style={{ color: "var(--muted)", fontSize: 13, padding: "24px 0" }}>
             {noRecordData
               ? "戦績データがありません（公式・Wikipediaの生涯戦績が確認でき次第、掲載します）。"
@@ -607,22 +653,18 @@ export default async function FighterPage({
                 </tr>
               </thead>
               <tbody>
-                {history.map((h, i) => {
-                  const opponentSlug = resolveOpponentSlug(h.opponent, slug, visibleSlugs, {
-                    fighterSlug: slug,
-                    date: h.date,
-                  });
+                {displayHistory.map((h, i) => {
                   const eventSlug = findEventSlug(h.event);
                   return (
                     <tr key={i}>
                       <td>{h.date}</td>
                       <td className="col-opponent">
-                        {opponentSlug ? (
-                          <a href={`/fighters/${opponentSlug}`} className="opponent-link">
-                            {breakAtDot(h.opponent)}
+                        {h.opponentSlug ? (
+                          <a href={`/fighters/${h.opponentSlug}`} className="opponent-link">
+                            {breakAtDot(h.opponentName)}
                           </a>
                         ) : (
-                          breakAtDot(h.opponent)
+                          breakAtDot(h.opponentName)
                         )}
                       </td>
                       <td><span className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</span></td>

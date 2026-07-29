@@ -72,3 +72,65 @@ export function computeMultiOrgRecord(
     orgsWithBouts,
   };
 }
+
+// Wikipedia記事が無い選手(noRecordData)向けの対戦テーブル用。上と同じ3団体の
+// bouts(集計対象=MMAルール戦のみ、ルール種別対象外はこの時点で除外済み)を
+// 日付降順にマージして返す。resultTypeの扱いはcomputeMultiOrgRecord(2行目集計)
+// と揃える: decisive→win/loss、draw→draw、nc→nc(無効。既存の対戦テーブルの
+// "無効"表示と同じ)。cancelled/unknownは2行目の勝敗・NC集計に数えないのと同様、
+// この対戦テーブルにも出さない(相当する表示区分が既存テーブルに無いため)。
+export interface MultiOrgBoutRow {
+  date: string;
+  opponentName: string;
+  opponentSlug: string | null;
+  result: "win" | "loss" | "draw" | "nc";
+  method: string;
+  event: string;
+}
+
+function toBoutRow(b: {
+  event: string;
+  date: string | null;
+  opponentName: string;
+  opponentSlug: string | null;
+  resultType: string;
+  isWin: boolean;
+  methodRaw: string;
+}): MultiOrgBoutRow | null {
+  if (!b.date) return null; // 日付未確定の試合(実測: パンクラス418大会中2件)は出さない
+  let result: MultiOrgBoutRow["result"];
+  if (b.resultType === "decisive") result = b.isWin ? "win" : "loss";
+  else if (b.resultType === "draw") result = "draw";
+  else if (b.resultType === "nc") result = "nc";
+  else return null; // cancelled/unknown
+  return {
+    date: b.date,
+    opponentName: b.opponentName,
+    opponentSlug: b.opponentSlug,
+    result,
+    method: b.methodRaw,
+    event: b.event,
+  };
+}
+
+export function computeMultiOrgBoutTable(
+  slug: string,
+  data: {
+    rizinEvents: RizinRecordsEvent[];
+    shootoEvents: ShootoRecordsEvent[];
+    pancraseEvents: PancraseRecordsEvent[];
+    deepEvents: DeepRecordsEvent[];
+  }
+): MultiOrgBoutRow[] {
+  const rizin = computeFighterMmaRecord(data.rizinEvents, slug);
+  const shooto = computeFighterShootoRecord(data.shootoEvents, slug);
+  const pancrase = computeFighterPancraseRecord(data.pancraseEvents, slug);
+  const deep = computeFighterDeepRecord(data.deepEvents, slug);
+
+  const rows = [...rizin.bouts, ...deep.bouts, ...shooto.bouts, ...pancrase.bouts]
+    .map(toBoutRow)
+    .filter((r): r is MultiOrgBoutRow => r !== null);
+
+  rows.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  return rows;
+}
