@@ -3,7 +3,7 @@
     "org": "pancrase",
     "source": "パンクラス公式ランキング",
     "sourceUrl": "https://www.pancrase.co.jp/rls/ranking.html",
-    "fetchedDate": "2026-07-29",
+    "fetchedDate": "2026-07-30",
     "rankingLabel": "7月2日発表",
     "classes": [
       {
@@ -57,7 +57,7 @@
           {
             "rank": "3",
             "officialName": "佐藤生虎",
-            "slug": null
+            "slug": "satoshogo"
           },
           {
             "rank": "4",
@@ -102,17 +102,17 @@
           {
             "rank": "6",
             "officialName": "平信一",
-            "slug": null
+            "slug": "taira"
           },
           {
             "rank": "7",
             "officialName": "張豊",
-            "slug": null
+            "slug": "zhangyuta"
           },
           {
             "rank": "8",
             "officialName": "鈴木悠斗",
-            "slug": null
+            "slug": "suzukiyuto"
           }
         ]
       },
@@ -157,7 +157,7 @@
           {
             "rank": "6",
             "officialName": "透暉鷹",
-            "slug": null
+            "slug": "tou-hoiin"
           },
           {
             "rank": "7",
@@ -167,37 +167,37 @@
           {
             "rank": "8",
             "officialName": "岡田拓真",
-            "slug": null
+            "slug": "okadatakuma"
           },
           {
             "rank": "9",
             "officialName": "Ryo",
-            "slug": null
+            "slug": "ryoa"
           },
           {
             "rank": "10",
             "officialName": "遠藤来生",
-            "slug": null
+            "slug": "endoraiki"
           },
           {
             "rank": "11",
             "officialName": "名田英平",
-            "slug": null
+            "slug": "nada"
           },
           {
             "rank": "12",
             "officialName": "関 翔渚",
-            "slug": null
+            "slug": "sekisena"
           },
           {
             "rank": "13",
             "officialName": "糸川義人",
-            "slug": null
+            "slug": "itokawayoshito"
           },
           {
             "rank": "14",
             "officialName": "石田陸也",
-            "slug": null
+            "slug": "ishidarikuya"
           }
         ]
       },
@@ -242,37 +242,37 @@
           {
             "rank": "6",
             "officialName": "荒田大輝",
-            "slug": null
+            "slug": "aratadaiki"
           },
           {
             "rank": "7",
             "officialName": "佐藤ゆうじ",
-            "slug": null
+            "slug": "satoyujibonsai"
           },
           {
             "rank": "8",
             "officialName": "バラカトゥロ・アサドゥラエフ",
-            "slug": null
+            "slug": "asadulloev"
           },
           {
             "rank": "9",
             "officialName": "山木麻弥",
-            "slug": null
+            "slug": "yamakimahiro"
           },
           {
             "rank": "10",
             "officialName": "前田浩平",
-            "slug": null
+            "slug": "maedakohei"
           },
           {
             "rank": "11",
             "officialName": "合島大樹",
-            "slug": null
+            "slug": "gojima-daiki"
           },
           {
             "rank": "12",
             "officialName": "白井誠司",
-            "slug": null
+            "slug": "shiraijoji"
           }
         ]
       },
@@ -287,7 +287,7 @@
           {
             "rank": "1",
             "officialName": "猿飛流",
-            "slug": null
+            "slug": "satoru"
           },
           {
             "rank": "2",
@@ -312,22 +312,22 @@
           {
             "rank": "6",
             "officialName": "ラファエル・リベイロ",
-            "slug": null
+            "slug": "rafaelribeiro"
           },
           {
             "rank": "7",
             "officialName": "増田大河",
-            "slug": null
+            "slug": "masudataiga"
           },
           {
             "rank": "8",
             "officialName": "浜本キャット雄大",
-            "slug": null
+            "slug": "hamamoto"
           },
           {
             "rank": "9",
             "officialName": "植松洋貴",
-            "slug": null
+            "slug": "uematsuyoshiki"
           },
           {
             "rank": "10",
@@ -337,22 +337,22 @@
           {
             "rank": "11",
             "officialName": "小林了平",
-            "slug": null
+            "slug": "kobayashiryohei"
           },
           {
             "rank": "12",
             "officialName": "菅歩夢",
-            "slug": null
+            "slug": "kanayumu"
           },
           {
             "rank": "13",
             "officialName": "山崎蒼空",
-            "slug": null
+            "slug": "yamasakisora"
           },
           {
             "rank": "14",
             "officialName": "本川ハルアキ",
-            "slug": null
+            "slug": "motokawaharuaki"
           }
         ]
       },
@@ -387,7 +387,7 @@
           {
             "rank": "5",
             "officialName": "寺岡拓永",
-            "slug": null
+            "slug": "teraokatakuei"
           }
         ]
       },
@@ -397,17 +397,17 @@
           {
             "rank": "王者",
             "officialName": "杉山しずか",
-            "slug": null
+            "slug": "sugiyama"
           },
           {
             "rank": "1",
             "officialName": "和田綾音",
-            "slug": null
+            "slug": "wadaayane"
           },
           {
             "rank": "2",
             "officialName": "ライカ",
-            "slug": null
+            "slug": "raika"
           }
         ]
       },
@@ -417,12 +417,12 @@
           {
             "rank": "王者",
             "officialName": "本野美樹",
-            "slug": null
+            "slug": "motonomiki"
           },
           {
             "rank": "1",
             "officialName": "KAREN",
-            "slug": null
+            "slug": "karen"
           }
         ]
       },
@@ -432,7 +432,7 @@
           {
             "rank": "王者",
             "officialName": "SARAMI",
-            "slug": null
+            "slug": "sarami"
           }
         ]
       }
@@ -442,7 +442,7 @@
     "org": "shooto",
     "source": "修斗公式ランキング",
     "sourceUrl": "https://www.shooto-mma.com/ranking/",
-    "fetchedDate": "2026-07-29",
+    "fetchedDate": "2026-07-30",
     "rankingLabel": "7月1日付け",
     "classes": [
       {
@@ -481,27 +481,27 @@
           {
             "rank": "6",
             "officialName": "旭那 拳",
-            "slug": null
+            "slug": "asahina-ken"
           },
           {
             "rank": "7",
             "officialName": "田口 恵大",
-            "slug": null
+            "slug": "taguchi-keita"
           },
           {
             "rank": "8",
             "officialName": "友利 琉偉",
-            "slug": null
+            "slug": "tomori-rui"
           },
           {
             "rank": "9",
             "officialName": "友利 幸汰",
-            "slug": null
+            "slug": "tomori-kota"
           },
           {
             "rank": "10",
             "officialName": "梅木 勇徳",
-            "slug": null
+            "slug": "umeki-yutoku"
           }
         ]
       },
@@ -536,7 +536,7 @@
           {
             "rank": "5",
             "officialName": "杉本 静弥",
-            "slug": null
+            "slug": "sugimoto-seiya"
           },
           {
             "rank": "6",
@@ -546,32 +546,32 @@
           {
             "rank": "7",
             "officialName": "砂辺 光久",
-            "slug": null
+            "slug": "unconfirmed-shooto-1875"
           },
           {
             "rank": "8",
             "officialName": "梅筋 毒一郎",
-            "slug": null
+            "slug": "baikin-dokuichiro"
           },
           {
             "rank": "9",
             "officialName": "山内 渉",
-            "slug": null
+            "slug": "yamauchi-wataru"
           },
           {
             "rank": "10",
             "officialName": "岡田 嵐士",
-            "slug": null
+            "slug": "okada-arashi"
           },
           {
             "rank": "11",
             "officialName": "中池 武寛",
-            "slug": null
+            "slug": "nakaike-takehiro"
           },
           {
             "rank": "12",
             "officialName": "鈴木 尊",
-            "slug": null
+            "slug": "suzuki-takeru"
           }
         ]
       },
@@ -611,22 +611,22 @@
           {
             "rank": "6",
             "officialName": "川北 晏生",
-            "slug": null
+            "slug": "kawakita-haruki"
           },
           {
             "rank": "7",
             "officialName": "チョウ スソン",
-            "slug": null
+            "slug": "susung"
           },
           {
             "rank": "8",
             "officialName": "藤井 伸樹",
-            "slug": null
+            "slug": "fujii-nobuki"
           },
           {
             "rank": "9",
             "officialName": "ダイキ ライトイヤー",
-            "slug": null
+            "slug": "lightyear-daiki"
           },
           {
             "rank": "10",
@@ -636,12 +636,12 @@
           {
             "rank": "11",
             "officialName": "中島 陸",
-            "slug": null
+            "slug": "nakajima-riku"
           },
           {
             "rank": "12",
             "officialName": "野尻 定由",
-            "slug": null
+            "slug": "nojiri-yasuyuki"
           }
         ]
       },
@@ -681,32 +681,32 @@
           {
             "rank": "6",
             "officialName": "パク ジョンジュン",
-            "slug": null
+            "slug": "park-jongjun"
           },
           {
             "rank": "7",
             "officialName": "齋藤 翼",
-            "slug": null
+            "slug": "saito-tsubasa"
           },
           {
             "rank": "8",
             "officialName": "上原 平",
-            "slug": null
+            "slug": "uehara-taira"
           },
           {
             "rank": "9",
             "officialName": "磯城嶋 一真",
-            "slug": null
+            "slug": "shikijima-kazuma"
           },
           {
             "rank": "10",
             "officialName": "飯野 雄斗",
-            "slug": null
+            "slug": "iino-yuto"
           },
           {
             "rank": "11",
             "officialName": "ネイン デイネッシュ",
-            "slug": null
+            "slug": "dinesh-nain"
           }
         ]
       },
@@ -746,27 +746,27 @@
           {
             "rank": "6",
             "officialName": "結城 大樹",
-            "slug": null
+            "slug": "yuki-daiki"
           },
           {
             "rank": "7",
             "officialName": "安海 健人",
-            "slug": null
+            "slug": "azumi-kento"
           },
           {
             "rank": "8",
             "officialName": "マックス・ザ・ボディ",
-            "slug": null
+            "slug": "body-maxthe"
           },
           {
             "rank": "9",
             "officialName": "大尊 伸光",
-            "slug": null
+            "slug": "tyson-nobumitsu"
           },
           {
             "rank": "10",
             "officialName": "田中 有",
-            "slug": null
+            "slug": "tanaka-yu"
           }
         ]
       },
@@ -806,7 +806,7 @@
           {
             "rank": "6",
             "officialName": "ヴィクター バレンズエラ",
-            "slug": null
+            "slug": "valenzuela-victor"
           },
           {
             "rank": "7",
@@ -816,12 +816,12 @@
           {
             "rank": "8",
             "officialName": "田村 ヒビキ",
-            "slug": null
+            "slug": "tamura-hibiki"
           },
           {
             "rank": "9",
             "officialName": "グラップラー脇",
-            "slug": null
+            "slug": "waki-grappler"
           }
         ]
       },
@@ -831,27 +831,27 @@
           {
             "rank": "1",
             "officialName": "岩﨑 大河",
-            "slug": null
+            "slug": "iwasaki-taiga"
           },
           {
             "rank": "2",
             "officialName": "荒井 勇ニ",
-            "slug": null
+            "slug": "yuji-arai"
           },
           {
             "rank": "3",
             "officialName": "沙門",
-            "slug": null
+            "slug": "unconfirmed-shooto-1849"
           },
           {
             "rank": "4",
             "officialName": "HENRY",
-            "slug": null
+            "slug": "henry"
           },
           {
             "rank": "5",
             "officialName": "キム ジェヨン",
-            "slug": null
+            "slug": "young-kim"
           }
         ]
       },
@@ -861,32 +861,32 @@
           {
             "rank": "王者",
             "officialName": "青野 ひかる",
-            "slug": null
+            "slug": "aono-hikaru"
           },
           {
             "rank": "1",
             "officialName": "徳本 望愛",
-            "slug": null
+            "slug": "noa-tokumoto"
           },
           {
             "rank": "2",
             "officialName": "中村 未来",
-            "slug": null
+            "slug": "nakamura-miku"
           },
           {
             "rank": "3",
             "officialName": "杉本 恵",
-            "slug": null
+            "slug": "sugimoto-megumi"
           },
           {
             "rank": "4",
             "officialName": "平田 彩音",
-            "slug": null
+            "slug": "hirata-ayane"
           },
           {
             "rank": "5",
             "officialName": "パク ソヨン",
-            "slug": null
+            "slug": "young-parkseo"
           },
           {
             "rank": "6",
@@ -896,12 +896,12 @@
           {
             "rank": "7",
             "officialName": "ジェニー ファン",
-            "slug": null
+            "slug": "huang-jenny"
           },
           {
             "rank": "8",
             "officialName": "嶋屋 澪",
-            "slug": null
+            "slug": "mio-shiyama"
           }
         ]
       },
@@ -911,37 +911,37 @@
           {
             "rank": "王者",
             "officialName": "渡辺 彩華",
-            "slug": null
+            "slug": "watanabe-ayaka"
           },
           {
             "rank": "1",
             "officialName": "高本 千代",
-            "slug": null
+            "slug": "takamoto-chiyo"
           },
           {
             "rank": "2",
             "officialName": "erika",
-            "slug": null
+            "slug": "erika"
           },
           {
             "rank": "3",
             "officialName": "村上 彩",
-            "slug": null
+            "slug": "aya-murakami"
           },
           {
             "rank": "4",
             "officialName": "片山 智絵",
-            "slug": null
+            "slug": "katayama-tomoe"
           },
           {
             "rank": "5",
             "officialName": "黒部 三奈",
-            "slug": null
+            "slug": "kurobe-mina"
           },
           {
             "rank": "6",
             "officialName": "SARAMI",
-            "slug": null
+            "slug": "sarami"
           }
         ]
       },
@@ -951,37 +951,37 @@
           {
             "rank": "王者",
             "officialName": "藤野 恵実",
-            "slug": null
+            "slug": "fujino-emi"
           },
           {
             "rank": "1",
             "officialName": "宝珠山 桃花",
-            "slug": null
+            "slug": "hoshuyama-momoka"
           },
           {
             "rank": "2",
             "officialName": "パク ボヒョン",
-            "slug": null
+            "slug": "park-bohyun"
           },
           {
             "rank": "3",
             "officialName": "ハイライ ウーシャアモー",
-            "slug": null
+            "slug": "hailaiwusamo"
           },
           {
             "rank": "4",
             "officialName": "ソルト",
-            "slug": null
+            "slug": "salt"
           },
           {
             "rank": "5",
             "officialName": "KAREN",
-            "slug": null
+            "slug": "karen"
           },
           {
             "rank": "6",
             "officialName": "高田 暖妃",
-            "slug": null
+            "slug": "takada-atsuhi"
           }
         ]
       }
