@@ -20,6 +20,8 @@ import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
 import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } from "@/lib/seoTemplates";
+import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords } from "@/lib/multiOrgRecordsData";
+import { computeMultiOrgRecord, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
@@ -288,6 +290,16 @@ export default async function FighterPage({
   const nextFight = appearance?.kind === "bout" ? { event: appearance.event, bout: appearance.bout } : null;
   const { winRate, finishRate } = calcFighterRates(fighter);
 
+  // 戦績スタットカード2行目用: RIZIN+修斗+パンクラスの3団体公式データを
+  // 毎回合算する(fighters.tsのwins/losses/historyは参照しない。詳細は
+  // src/lib/mnewsRating/multiOrgRecord.tsのコメント参照)。
+  const [rizinEvents, shootoEvents, pancraseEvents] = await Promise.all([
+    fetchRizinRecords(),
+    fetchShootoRecords(),
+    fetchPancraseRecords(),
+  ]);
+  const multiOrgRecord = computeMultiOrgRecord(fighter.slug, { rizinEvents, shootoEvents, pancraseEvents });
+
   // 次戦の対戦相手情報(次戦プレビュー用)。相手がDB外/戦績データなしの場合は
   // entry=null になり、バナーのみ表示(比較・共通対戦相手は出さない=捏造ゼロ)。
   const records = await fetchFighterRecords();
@@ -517,6 +529,23 @@ export default async function FighterPage({
             </div>
           )}
         </div>
+
+        {/* 戦績スタットカード2行目: RIZIN+修斗+パンクラスの3団体公式データ
+            (data/rizinRecords.json・data/shootoRecords.json・
+            data/pancraseRecords.json)を毎回合算した戦績。1行目(Wikipedia通算)
+            とは集計元・集計ロジックが別。fighters.tsのwins/losses/history
+            (PR #252投入値)は参照しない(#258で誤りが見つかっており信頼できない
+            ため)。3団体とも0件(該当bout無し)の場合はブロックごと非表示にする。 */}
+        {(multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0) && (
+          <div className="fighter-stats-grid">
+            <div className="fighter-stat-card">
+              <div className="fighter-stat-num">
+                {multiOrgRecord.wins}-{multiOrgRecord.losses}-{multiOrgRecord.draws}
+              </div>
+              <div className="fighter-stat-label">{MULTI_ORG_RECORD_LABEL}</div>
+            </div>
+          </div>
+        )}
 
         {/* 勝ち方と負け方(バタフライ・CSSのみ)。historyのraw method再解析、
             noRecordData/履歴なしは非表示。 */}
