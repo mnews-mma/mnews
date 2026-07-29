@@ -20,7 +20,7 @@ import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
 import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } from "@/lib/seoTemplates";
-import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords } from "@/lib/multiOrgRecordsData";
+import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords, fetchDeepRecords } from "@/lib/multiOrgRecordsData";
 import { computeMultiOrgRecord, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
 import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
 
@@ -291,19 +291,20 @@ export default async function FighterPage({
   const nextFight = appearance?.kind === "bout" ? { event: appearance.event, bout: appearance.bout } : null;
   const { winRate, finishRate } = calcFighterRates(fighter);
 
-  // 戦績スタットカード2行目用: RIZIN+修斗+パンクラスの3団体公式データを
+  // 戦績スタットカード2行目用: RIZIN+修斗+パンクラス+DEEPの4団体公式データを
   // 毎回合算する(fighters.tsのwins/losses/historyは参照しない。詳細は
   // src/lib/mnewsRating/multiOrgRecord.tsのコメント参照)。
-  const [rizinEvents, shootoEvents, pancraseEvents] = await Promise.all([
+  const [rizinEvents, shootoEvents, pancraseEvents, deepEvents] = await Promise.all([
     fetchRizinRecords(),
     fetchShootoRecords(),
     fetchPancraseRecords(),
+    fetchDeepRecords(),
   ]);
-  const multiOrgRecord = computeMultiOrgRecord(fighter.slug, { rizinEvents, shootoEvents, pancraseEvents });
+  const multiOrgRecord = computeMultiOrgRecord(fighter.slug, { rizinEvents, shootoEvents, pancraseEvents, deepEvents });
   const hasMultiOrgRecord =
     multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0;
-  // Wikipedia通算が無い(noRecordData)が3団体合算(2行目)は取れている選手
-  // (Wikiを持たない修斗・パンクラス選手が該当)は、「通算戦績 データなし」を
+  // Wikipedia通算が無い(noRecordData)が4団体合算(2行目)は取れている選手
+  // (Wikiを持たない修斗・パンクラス・DEEP選手が該当)は、「通算戦績 データなし」を
   // 出さず2行目のみを表示する。両方無い場合のみ従来どおり「データなし」。
   const suppressNoRecordRow = noRecordData && SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord;
 

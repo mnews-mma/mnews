@@ -1,8 +1,8 @@
-// data/rizinRecords.json・data/shootoRecords.json・data/pancraseRecords.json
-// の読み出し。orgRankingsData.ts/mnewsRatingData.tsと同じ思想: 本番はGitHub
-// rawを取得日つきで参照し、更新があれば再デプロイ無しで反映される
-// (revalidate)。取得失敗時やプレビュー(未マージ)時はリポジトリ同梱の
-// ローカルファイルにフォールバックする。
+// data/rizinRecords.json・data/shootoRecords.json・data/pancraseRecords.json・
+// data/deepRecords.jsonの読み出し。orgRankingsData.ts/mnewsRatingData.tsと
+// 同じ思想: 本番はGitHub rawを取得日つきで参照し、更新があれば再デプロイ無しで
+// 反映される(revalidate)。取得失敗時やプレビュー(未マージ)時はリポジトリ
+// 同梱のローカルファイルにフォールバックする。
 //
 // デプロイ毎に変わるコミットSHAをクエリに付け、Vercel Data Cache
 // (revalidate:3600)をデプロイ単位でバスターする(mnewsRatingData.ts等と
@@ -12,6 +12,7 @@ import path from "path";
 import type { RizinRecordsEvent } from "./mnewsRating/rizinScraper";
 import type { ShootoRecordsEvent } from "./mnewsRating/shootoScraper";
 import type { PancraseRecordsEvent } from "./mnewsRating/pancraseRecordsTypes";
+import type { DeepRecordsEvent } from "./mnewsRating/deepScraper";
 
 const CACHE_BUSTER = process.env.VERCEL_GIT_COMMIT_SHA ?? "dev";
 const MULTI_ORG_RECORDS_REVALIDATE = 3600;
@@ -45,4 +46,8 @@ export async function fetchShootoRecords(): Promise<ShootoRecordsEvent[]> {
 
 export async function fetchPancraseRecords(): Promise<PancraseRecordsEvent[]> {
   return fetchJsonArrayWithLocalFallback<PancraseRecordsEvent>("pancraseRecords.json");
+}
+
+export async function fetchDeepRecords(): Promise<DeepRecordsEvent[]> {
+  return fetchJsonArrayWithLocalFallback<DeepRecordsEvent>("deepRecords.json");
 }
