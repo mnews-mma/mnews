@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-07-28T19:02:45.551Z",
+    "updatedAt": "2026-07-30T14:49:03.042Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -64,7 +64,7 @@
         "rank": 4,
         "rating": 1490,
         "rawRating": 1488.8336169043132,
-        "delta": -1,
+        "delta": 0,
         "record": {
           "wins": 4,
           "losses": 3,
@@ -72,10 +72,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "ito-yuki",
@@ -142,7 +139,7 @@
         "rank": 9,
         "rating": 1480,
         "rawRating": 1481.0419336491127,
-        "delta": 10,
+        "delta": 0,
         "record": {
           "wins": 2,
           "losses": 0,
@@ -150,10 +147,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "nr",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "soya-takaki",
@@ -258,10 +252,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "ameyama-seiya",
@@ -282,7 +273,7 @@
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-07-28T19:02:45.551Z",
+    "updatedAt": "2026-07-30T14:49:03.042Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -299,7 +290,7 @@
         "fighterId": "inoue-naoki",
         "rank": 1,
         "rating": 1580,
-        "rawRating": 1577.968342813383,
+        "rawRating": 1577.9683428133833,
         "delta": 0,
         "record": {
           "wins": 10,
@@ -398,10 +389,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "nr",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "ando-tatsuya",
@@ -431,10 +419,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "kashimura-jinnosuke",
@@ -449,10 +434,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "yang-jiyong",
@@ -512,10 +494,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "inoue-seiya",
@@ -560,10 +539,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "ashizawa-ryusei",
@@ -584,7 +560,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-07-28T19:02:45.551Z",
+    "updatedAt": "2026-07-30T14:49:03.042Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -640,10 +616,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "akimoto-kyoma",
@@ -763,10 +736,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "kolesnik-viktor",
@@ -856,16 +826,13 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       }
     ]
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-07-28T19:02:45.551Z",
+    "updatedAt": "2026-07-30T14:49:03.042Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -981,10 +948,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "yachi-yusuke",
@@ -1089,10 +1053,7 @@
         },
         "lastFight": "2026-07-18",
         "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "same",
-          "positions": 0
-        }
+        "rankPositionDelta": null
       },
       {
         "fighterId": "haga-bilalkai",
@@ -1113,7 +1074,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-07-28T19:02:45.551Z",
+    "updatedAt": "2026-07-30T14:49:03.042Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [
