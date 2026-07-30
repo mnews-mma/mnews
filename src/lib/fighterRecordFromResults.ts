@@ -8,13 +8,14 @@ import { EVENT_RESULTS } from "./eventResults";
 // 名前照合すれば取り出せる)。
 // 奥村歩生は2026-07 DEEP133 IMPACT公式カード表記「奥村アイル」+ Sherdog slug
 // Airu-Okumura で読み確定・FIGHTERS投入済みにつき保留解除(このリストから削除)。
+// 知名昴海は2026-07-31、修斗公認サイト(SUKAI CHINA)+本人所属エージェンシー公式
+// ページ(China Sukai)で読み確定・FIGHTERS投入済みにつき保留解除(このリストから削除)。
 export interface HeldFighter {
   nameJa: string;
   reason: "表記ゆれ" | "読み" | "取得不可";
   note: string;
 }
 export const DEEP_HELD_FIGHTERS: HeldFighter[] = [
-  { nameJa: "知名昴海", reason: "取得不可", note: "検証ソースに出現せず読み推定不能" },
   { nameJa: "猿寿健太", reason: "取得不可", note: "検証ソースに出現せず読み推定不能" },
   { nameJa: "鬼山班猫", reason: "取得不可", note: "DEEP133 IMPACT出場。Sherdog/DATA MMA/ja-wiki等どこにも英語表記・読みが出現せず推定不能" },
   { nameJa: "松岡疾人", reason: "取得不可", note: "DEEP133 IMPACT出場。Sherdog/DATA MMA/ja-wiki等どこにも英語表記・読みが出現せず推定不能" },

@@ -1187,6 +1187,17 @@ export const FIGHTERS: Fighter[] = [
   { slug: "akazawa-yukinori", nameJa: "赤沢幸典", nameEn: "Yukinori Akazawa", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, needsReview: true, wikiTitleJa: "赤沢幸典" },
   // 空志→Kushi は非自明。DEEP名簿に「石阪空志」(阪違い)併存=同一/別人未確認
   { slug: "ishizaka-kushi", nameJa: "石坂空志", nameEn: "Kuushi Ishizaka", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // --- DEEP公式ランキング王者・未登録5名の追加(2026-07-31)。champions.ts
+  // で王者として掲載されているがFIGHTERSに未登録だった5名。全員ローマ字読みを
+  // 修斗公認サイト/パンクラス公式サイト/ja.wikipedia単独記事/海外MMA団体公式
+  // ロースター(PFL・Invicta)等の複数ソースで確認済みのため hidden にしない。
+  // nameJaは各団体の表記(champions.ts/orgRankings.jsonのofficialName)に合わせ、
+  // 本名・異体字表記はaliasesに収める(ランキングリンク照合はnameJa完全一致のため)。
+  { slug: "china-sukai", nameJa: "知名昴海", nameEn: "Sukai China", org: "deep", orgs: ["deep", "shooto"], weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "fukuda-machi", nameJa: "万智", nameEn: "Machi Fukuda", org: "deep", weightClass: "女子ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["福田万智"] },
+  { slug: "saito-momoko", nameJa: "百湖", nameEn: "Momoko Saito", org: "deep", weightClass: "女子バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["斎藤百湖", "斉藤百湖", "齊藤百湖"] },
+  { slug: "higashi-yoko", nameJa: "東ようこ", nameEn: "Yoko Higashi", org: "deep", weightClass: "女子フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["東よう子"] },
+  { slug: "nakai-rin", nameJa: "中井りん", nameEn: "Rin Nakai", org: "deep", weightClass: "女子フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // ===========================================================================
   // 第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者(2026-07-05スナップショット)
   // hidden=true / recordFromResults=true。読み不確定は needsReview=true。

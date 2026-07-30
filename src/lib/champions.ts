@@ -58,7 +58,7 @@ export const DEEP_CHAMPIONS: ChampionEntry[] = [
   { org: "deep", weightClass: "フェザー級", name: "青井人", generation: "第12代", slug: "aoi-jin" },
   { org: "deep", weightClass: "バンタム級", name: "福田龍彌", generation: "第11代", slug: "fukuda-ryuya" }, // DB内nameJaは"福田 龍彌"(スペースあり)。EVENT_RESULTS(DEEPバンタム級タイトルマッチ勝利)で同一人物を確認済み
   { org: "deep", weightClass: "フライ級", name: "村元友太郎", generation: "第7代", slug: "muramoto-yutaro" },
-  { org: "deep", weightClass: "ストロー級", name: "知名昴海", generation: "第6代", slug: null }, // 読み確定できず未登録(HELD)
+  { org: "deep", weightClass: "ストロー級", name: "知名昴海", generation: "第6代", slug: "china-sukai" }, // 2026-07-31: ローマ字読み(SUKAI CHINA)を修斗公認サイト/本人所属エージェンシー公式ページで確認、fighters.tsに登録済み
   // 女子階級: 女子無差別級/女子アトム級/女子ミクロ級/DEEP JEWELS各級が併存し、
   // 「女子スーパーアトム」に一意対応しないため今回は掲載しない(曖昧なら出さない)。
   // ライトヘビー級・ミドル級: 現在「空位」のため掲載しない。
@@ -70,7 +70,7 @@ export const DEEP_CHAMPIONS: ChampionEntry[] = [
 // 人力で行う運用)。暫定王者・空位を表現できるよう RankedClass[] を直接記述する
 // (championsToRankingData の1階級1王者前提では表現できないため)。
 export const DEEP_RANKING_CLASSES: { weightClass: string; entries: { rank: string; name: string; slug: string | null }[] }[] = [
-  { weightClass: "ストロー級", entries: [{ rank: "王者", name: "知名昴海", slug: null }] },
+  { weightClass: "ストロー級", entries: [{ rank: "王者", name: "知名昴海", slug: "china-sukai" }] },
   { weightClass: "フライ級", entries: [{ rank: "王者", name: "村元友太郎", slug: "muramoto-yutaro" }] },
   {
     weightClass: "バンタム級",
@@ -99,10 +99,10 @@ export const DEEP_RANKING_CLASSES: { weightClass: string; entries: { rank: strin
   { weightClass: "ヘビー級", entries: [{ rank: "王者", name: "大成", slug: "sekino-taisei" }] }, // メガトン級から統合表示
   // DEEP JEWELS(女子)
   { weightClass: "女子アトム級", entries: [{ rank: "王者", name: "伊澤星花", slug: "izawa-seika" }] },
-  { weightClass: "女子ストロー級", entries: [{ rank: "王者", name: "万智", slug: null }] },
-  { weightClass: "女子フライ級", entries: [{ rank: "王者", name: "中井りん", slug: null }] },
-  { weightClass: "女子バンタム級", entries: [{ rank: "王者", name: "百湖", slug: null }] },
-  { weightClass: "女子フェザー級", entries: [{ rank: "王者", name: "東ようこ", slug: null }] },
+  { weightClass: "女子ストロー級", entries: [{ rank: "王者", name: "万智", slug: "fukuda-machi" }] },
+  { weightClass: "女子フライ級", entries: [{ rank: "王者", name: "中井りん", slug: "nakai-rin" }] },
+  { weightClass: "女子バンタム級", entries: [{ rank: "王者", name: "百湖", slug: "saito-momoko" }] },
+  { weightClass: "女子フェザー級", entries: [{ rank: "王者", name: "東ようこ", slug: "higashi-yoko" }] },
 ];
 
 export function deepRankingData(): OrgRankingData {

@@ -1,25 +1,32 @@
 # RIZIN選手slug再解決バックフィル結果
 
-生成日時: 2026-07-30T15:33:07.155Z
+生成日時: 2026-07-30T15:58:33.322Z
 
 正規化ロジックはscripts/lib/fighterNameBackfill.ts(backfill-shooto-pancrase-slugs.tsと共通)を使用。
 fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場合のみ解決。既存の解決済みslugは上書きしない。
 
 - bout×コーナー総数: 2008
 - 既に解決済みだった件数: 901
-- 今回新規解決(コーナー単位): 0
-- 今回新規解決(ユニークbout件数): 0
-- 依然未解決(延べ): 1107
-- 依然未解決(ユニーク生表記数): 611
+- 今回新規解決(コーナー単位): 4
+- 今回新規解決(ユニークbout件数): 4
+- 依然未解決(延べ): 1103
+- 依然未解決(ユニーク生表記数): 609
 
 ## 影響を受けた選手一覧(選手名・解決bout数・4団体通算の変化)
 
-(該当なし)
+| slug | 新規解決bout数 | 4団体通算(変更前) | 4団体通算(変更後) |
+|---|---|---|---|
+| fukuda-machi | 3 | 7-1-0 | 7-4-0 |
+| nakai-rin | 1 | 18-0-1 | 18-1-1 |
 
 ## 新規解決bout明細
 
 | 大会 | 日付 | コーナー | 生表記 | 解決slug |
 |---|---|---|---|---|
+| RIZIN.3 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 2ND ROUND | 2016-12-29 | A | 中井りん | nakai-rin |
+| For Japan presents RIZIN LANDMARK 6 in NAGOYA | 2023-10-01 | B | 万智 | fukuda-machi |
+| RIZIN.50 | 2025-03-30 | A | 万智 | fukuda-machi |
+| RIZIN LANDMARK 11 in SAPPORO | 2025-06-14 | B | 万智 | fukuda-machi |
 
 ## 編集距離1の不一致候補(参考、機械列挙のみ・同一人物判定はしていない)
 
@@ -122,7 +129,6 @@ fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場�
 - クレア・ロペス (3件)
 - 横山武司 (3件)
 - イゴール・タナベ (3件)
-- 万智 (3件)
 - シン・ユリ (3件)
 - シナ・カリミアン (3件)
 - 朝久泰央 (3件)
@@ -255,7 +261,6 @@ fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場�
 - マリオ・シスムンド (1件)
 - カイ・カラフランス (1件)
 - ニキータ・サプン (1件)
-- 中井りん (1件)
 - カウイカ・オリージョ (1件)
 - 桜井“マッハ”速人 (1件)
 - 坂田亘 (1件)
