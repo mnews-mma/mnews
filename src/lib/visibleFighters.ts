@@ -44,3 +44,12 @@ export async function getVisibleFighterSlugs(): Promise<Set<string>> {
   const visible = await getVisibleFighters();
   return new Set(visible.map((f) => f.slug));
 }
+
+// /ranking/{org}(現王者・序列表)で「名前+リンク」にできる選手を絞り込む。
+// 「表示できる戦績が何かある」の判定はgetVisibleFighterSlugs()(=getVisibleFighters())
+// 1箇所に一本化し、呼び出し側で同じ条件を再実装しない(2026-07-31、/fighters一覧と
+// ランキングページで別実装の同一判定が存在していたことが原因の不整合を解消)。
+export async function filterVisibleSlugs(slugs: Iterable<string>): Promise<string[]> {
+  const visible = await getVisibleFighterSlugs();
+  return Array.from(slugs).filter((s) => visible.has(s));
+}

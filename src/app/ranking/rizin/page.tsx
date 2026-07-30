@@ -2,19 +2,10 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import OrgRankingView from "@/components/OrgRankingView";
-import { FIGHTERS } from "@/lib/fighters";
-import { resolveFightersCached } from "@/lib/fighterRecordsCache";
+import { filterVisibleSlugs } from "@/lib/visibleFighters";
 import { RIZIN_CHAMPIONS, championsToRankingData } from "@/lib/champions";
 import { pageMetadata } from "@/lib/seo";
 import { buildChampionTitle } from "@/lib/orgRankings";
-
-// ランキング表で「名前＋リンク」にできるのは 公開かつ戦績データありの選手だけ。
-// no-data / hidden(needsReview) / 未照合は名前のみ表示にする(パンクラス/修斗と同じ挙動)。
-async function linkableSlugsFor(slugs: Set<string>): Promise<string[]> {
-  const fs = FIGHTERS.filter((f) => slugs.has(f.slug) && !f.hidden);
-  const resolved = await resolveFightersCached(fs);
-  return resolved.filter((r) => !r.noRecordData).map((r) => r.slug);
-}
 
 // titleのみ王座数で動的化(SEO)。championsToRankingDataのfetchedDateは
 // champions.ts内のハードコード固定値のため、嘘シグナルになるtitleへは出さない。
@@ -33,7 +24,7 @@ export default async function RizinChampionsPage() {
   const rizin = championsToRankingData("rizin", RIZIN_CHAMPIONS);
   const matched = new Set<string>();
   for (const c of rizin.classes) for (const e of c.entries) if (e.slug) matched.add(e.slug);
-  const linkable = await linkableSlugsFor(matched);
+  const linkable = await filterVisibleSlugs(matched);
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "RIZIN 現王者" }];
   return (
     <>
