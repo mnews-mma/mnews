@@ -4,4 +4,4 @@
 // (a) methodologyだけ公開: DEEPのデータが無いのに「DEEP 2002年〜」と書かれたページが出る
 // (b) 選手ページだけ公開: 「集計について」リンクが404に飛ぶ
 // という事故になるため、必ずこの定数を両方から参照する。
-export const SHOW_MULTI_ORG_RECORD = false;
+export const SHOW_MULTI_ORG_RECORD = true;
