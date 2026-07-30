@@ -11,6 +11,10 @@ export interface ResolvedFighter extends Fighter {
   // ja-wikiのフル戦績が取れず、生涯戦績を出せない選手。薄い自社数戦を生涯戦績の
   // ように見せず「データなし」を明示するためのフラグ(捏造ゼロ・集約思想)。
   noRecordData?: boolean;
+  // noRecordDataの選手のうち、4団体(RIZIN・DEEP・パンクラス・修斗)合算戦績が
+  // 取れている場合のみ付与(visibleFighters.ts参照)。/fighters一覧カードで
+  // 「データなし」の代わりにこの数字+出典注記を表示するために使う。
+  multiOrgRecord?: { wins: number; losses: number; draws: number };
 }
 
 // ja-wiki記事が「同一人物」かの検証: ja-wikiの戦績に、自社EVENT_RESULTS由来の
