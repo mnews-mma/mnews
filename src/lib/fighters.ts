@@ -1466,7 +1466,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2018-04-22", opponent: "木内SKINNYZOMBIE崇雅", result: "loss", method: "S/スリーパーホールド", event: "SHOOTO GIG TOKYO Vol.25", round: "R2 02:07" },
       { date: "2017-09-02", opponent: "高橋梨王", result: "win", method: "S/スリーパー・ホールド", event: "RUN & FIGHT & MOSH Vol.1", round: "R1 04:01" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1489,7 +1488,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-01-19", opponent: "知名昴海", result: "loss", method: "反則失格", event: "PROFESSIONAL SHOOTO 2025 開幕戦", round: "R2 03:47" },
       { date: "2024-04-29", opponent: "TAKUMI", result: "win", method: "判定 3-0", event: "新潟・新潟LOT", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1513,7 +1511,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-11-10", opponent: "知名昴海", result: "loss", method: "S/スリーパーホールド", event: "沖縄・コザミュージックタウン音市場", round: "R1 05:00" },
       { date: "2024-07-21", opponent: "牧ヶ谷篤", result: "win", method: "判定 0-2", event: "PROFESSIONAL SHOOTO 2024 Vol.5", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1535,7 +1532,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-05-18", opponent: "牧ヶ谷篤", result: "win", method: "判定 0-3", event: "【第1部】PROFESSIONAL SHOOTO 2025 Vol.3", round: "" },
       { date: "2024-11-10", opponent: "大田ノヒロ", result: "win", method: "KO", event: "沖縄・コザミュージックタウン音市場", round: "R1 03:42" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1563,7 +1559,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-04-03", opponent: "牧ヶ谷篤", result: "win", method: "判定 0-2", event: "SHOOTO GIG TOKYO Vol.32", round: "" },
       { date: "2021-11-14", opponent: "新垣健司", result: "loss", method: "S/フロントスリーパーホールド", event: "THE SHOOTO OKINAWA vol.５", round: "R2 03:40" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1587,7 +1582,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-05-26", opponent: "若宮龍斗", result: "win", method: "TKO/レフェリーストップ", event: "TORAO32", round: "R2 01:52" },
       { date: "2023-11-19", opponent: "大竹陽", result: "draw", method: "判定 0-0", event: "PROFESSIONAL SHOOTO 2023 Vol.7", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1606,7 +1600,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2026-04-19", opponent: "梅筋毒一郎", result: "win", method: "判定 0-2", event: "Lemino修斗.5", round: "" },
       { date: "2025-10-19", opponent: "福島祐貴", result: "win", method: "S/リアネイキッドチョーク", event: "Lemino修斗.2", round: "R1 04:41" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1626,7 +1619,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-11-22", opponent: "杉本静弥", result: "loss", method: "TKO/スタンドパンチ→グランドパンチ", event: "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA", round: "R1 02:18" },
       { date: "2024-11-10", opponent: "宮城友一", result: "win", method: "KO", event: "沖縄・コザミュージックタウン音市場", round: "R2 00:42" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1651,7 +1643,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2021-11-06", opponent: "高橋SUBMISSION雄己", result: "win", method: "判定 0-2", event: "PROFESSIONAL SHOOTO 2021 Vol.7 Supported by ONE Championship", round: "" },
       { date: "2021-07-25", opponent: "植木令和新", result: "win", method: "S/三角絞め", event: "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship", round: "R2 04:35" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1677,7 +1668,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-05-19", opponent: "シューティングガイコツ", result: "win", method: "S/スリーパーホールド", event: "【第1部】PROFESSIONAL SHOOTO 2024 Vol.4", round: "R2 02:32" },
       { date: "2024-03-02", opponent: "中村悠磨", result: "win", method: "S/スリーパーホールド", event: "修斗Live!Tokyo", round: "R2 02:24" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1704,7 +1694,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-11-19", opponent: "本多弥彦直樹", result: "win", method: "TKO/グラウンドパンチ", event: "PROFESSIONAL SHOOTO 2023 Vol.7", round: "R1 01:32" },
       { date: "2019-01-27", opponent: "中山陽心", result: "win", method: "S/腕ひしぎ十字固め", event: "SHOOTO 30th ANNIVERSARY TOUR 開幕戦", round: "R1 02:22" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1726,7 +1715,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-09-01", opponent: "本多弥彦直樹", result: "win", method: "S/スリーパーホールド", event: "越後風神祭り13", round: "R1 01:22" },
       { date: "2024-04-29", opponent: "隼吾", result: "win", method: "S/スリーパーホールド", event: "新潟・新潟LOT", round: "R1 00:46" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1753,7 +1741,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-04-17", opponent: "南風原吉良斗", result: "draw", method: "判定 0-0", event: "THE SHOOTO OKINAWA vol.6", round: "" },
       { date: "2021-11-07", opponent: "大悟", result: "draw", method: "判定 1-1", event: "FORCE GIG 01", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1776,7 +1763,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-09-19", opponent: "齋藤翼", result: "win", method: "判定 0-3", event: "PROFESSIONAL SHOOTO 2022 Vol.6", round: "" },
       { date: "2021-07-25", opponent: "村山大介", result: "loss", method: "判定 3-0", event: "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1809,7 +1795,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2019-01-27", opponent: "魚井フルスイング", result: "loss", method: "判定 3-0", event: "SHOOTO 30th ANNIVERSARY TOUR 開幕戦", round: "" },
       { date: "2018-11-17", opponent: "岡田遼", result: "loss", method: "判定 3-0", event: "プロフェッショナル修斗後楽園ホール大会", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1846,7 +1831,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2015-12-23", opponent: "虎刃殺獅", result: "loss", method: "S/スリーパーホールド", event: "BORDER -season7-「The 3rd」", round: "R1 04:30" },
       { date: "2015-06-21", opponent: "鷹亜希", result: "win", method: "S/リアネイキッドチョーク", event: "VTJ in OSAKA", round: "R1 02:34" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1872,7 +1856,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-09-29", opponent: "岩佐和哉", result: "win", method: "S/三角絞め", event: "BORDER2024「The1st」", round: "R1 04:45" },
       { date: "2024-03-24", opponent: "森貴史", result: "win", method: "TKO/レフリーストップ", event: "FORCE 19", round: "R1 02:29" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1904,7 +1887,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2019-12-22", opponent: "林宏仲", result: "win", method: "KO", event: "SHOOTO GIG TOKYO Vol.29 Supported by ONE Championship", round: "R2 02:43" },
       { date: "2019-03-24", opponent: "奥平季之", result: "win", method: "KO", event: "SHOOTO 30th ANNIVERSARY TOUR 第2戦 Supported by ONE Championship", round: "R2 01:56" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1922,7 +1904,6 @@ export const FIGHTERS: Fighter[] = [
     history: [
       { date: "2025-05-25", opponent: "宇藤彰貴", result: "win", method: "TKO/レフェリーストップ/グラウンドパンチ", event: "PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA", round: "R1 02:41" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1962,7 +1943,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2016-05-28", opponent: "高橋孝徳", result: "loss", method: "判定 3-0", event: "SHOOTO GIG TOKYO Vol.21", round: "R2" },
       { date: "2015-12-20", opponent: "海下DRAGON竜太", result: "loss", method: "判定 3-0", event: "インフィニティリーグ2015フェザー級最終戦", round: "R2" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -1993,7 +1973,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2021-01-31", opponent: "ヨシイノウエ", result: "draw", method: "判定 1-1", event: "《第1部》PROFESSIONAL SHOOTO 2021開幕戦 Supported by ONE Championship", round: "" },
       { date: "2019-12-22", opponent: "水野怜", result: "win", method: "KO", event: "SHOOTO GIG TOKYO Vol.29 Supported by ONE Championship", round: "R1 00:33" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2019,7 +1998,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-12-11", opponent: "轟轟", result: "win", method: "判定 1-0", event: "PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA", round: "" },
       { date: "2022-06-05", opponent: "鹿野太雅", result: "win", method: "判定 3-0", event: "北海道大会", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2041,7 +2019,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-09-21", opponent: "齋藤優", result: "win", method: "S/リアネイキッドチョーク", event: "【第2部】PROFESSIONAL SHOOTO 2025 Vol.8", round: "R2 04:07" },
       { date: "2025-04-20", opponent: "翔べ！ゆうすけ！", result: "win", method: "判定 3-0", event: "THE SHOOTO OKINAWA vol.12", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2067,7 +2044,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-12-02", opponent: "青井太一", result: "win", method: "判定 0-3", event: "FIGHT&MOSH", round: "" },
       { date: "2023-08-20", opponent: "健太エスペランサ", result: "win", method: "TKO", event: "広島大会「TORAO30」", round: "R2 02:12" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2097,7 +2073,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2020-12-13", opponent: "國頭武", result: "win", method: "判定 3-0", event: "闘裸男×FORCE", round: "" },
       { date: "2018-07-15", opponent: "高橋孝徳", result: "draw", method: "判定 0-0", event: "プロフェッショナル修斗後楽園ホール大会", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2119,7 +2094,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-01-15", opponent: "深見弦汰", result: "win", method: "判定 3-0", event: "PROFESSIONAL SHOOTO 2023 開幕戦", round: "" },
       { date: "2022-06-05", opponent: "磯部鉄心", result: "win", method: "KO", event: "北海道大会", round: "R2 04:04" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2145,7 +2119,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2021-01-31", opponent: "西川大和", result: "loss", method: "TKO/レフェリーストップ", event: "《第1部》PROFESSIONAL SHOOTO 2021開幕戦 Supported by ONE Championship", round: "R2 03:23" },
       { date: "2020-09-19", opponent: "大尊伸光", result: "loss", method: "KO", event: "PROFESSIONAL SHOOTO 2020 Vol.6 Supported by ONE Championship  第1部", round: "R1 03:07" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2170,7 +2143,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2017-10-15", opponent: "松本光史", result: "loss", method: "KO", event: "プロフェッショナル修斗公式戦", round: "R2 00:53" },
       { date: "2017-05-12", opponent: "木村孔明", result: "win", method: "S/ネックロック", event: "後楽園ホール大会", round: "R1 01:33" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2195,7 +2167,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2017-12-23", opponent: "林RICE陽太", result: "win", method: "S/スリーパーホールド", event: "BORDER-season9-「The3rd」", round: "R1 02:26" },
       { date: "2017-09-03", opponent: "伊集守道", result: "win", method: "TKO", event: "BORDER-season9-「The2nd」", round: "R1 04:15" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2213,7 +2184,6 @@ export const FIGHTERS: Fighter[] = [
     history: [
       { date: "2026-03-30", opponent: "木下憂朔", result: "win", method: "KO", event: "Lemino修斗.4", round: "R2 04:13" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2231,7 +2201,6 @@ export const FIGHTERS: Fighter[] = [
     history: [
       { date: "2022-05-15", opponent: "ソーキ", result: "win", method: "KO", event: "TORAO27", round: "R2 03:15" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2251,7 +2220,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-05-11", opponent: "平尾大和", result: "win", method: "判定 3-0", event: "TORAO35", round: "" },
       { date: "2024-05-26", opponent: "深見弦汰", result: "loss", method: "判定 2-0", event: "TORAO32", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2276,7 +2244,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2021-11-06", opponent: "清水洸志", result: "win", method: "S/スリーパーホールド", event: "PROFESSIONAL SHOOTO 2021 Vol.7 Supported by ONE Championship", round: "" },
       { date: "2021-09-20", opponent: "今市凌太", result: "win", method: "TKO/レフェリーストップ", event: "PROFESSIONAL SHOOTO 2021 Vol.6 Supported by ONE Championship", round: "R1 04:14" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2295,7 +2262,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2026-07-20", opponent: "岩﨑大河", result: "loss", method: "KO", event: "PROFESSIONAL SHOOTO 2026 Vol.5", round: "R2 00:28" },
       { date: "2026-03-29", opponent: "沙門", result: "win", method: "判定 2-0", event: "PROFESSIONAL SHOOTO 2026 Vol.2", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2314,7 +2280,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2026-03-29", opponent: "荒井勇ニ", result: "loss", method: "判定 2-0", event: "PROFESSIONAL SHOOTO 2026 Vol.2", round: "" },
       { date: "2025-07-13", opponent: "SOKO", result: "win", method: "TKO/レフェリーストップ/グラウンドパンチ", event: "広島大会", round: "R1 04:45" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2332,7 +2297,6 @@ export const FIGHTERS: Fighter[] = [
     history: [
       { date: "2026-03-29", opponent: "岩﨑大河", result: "loss", method: "S/リアネイキッドチョーク", event: "PROFESSIONAL SHOOTO 2026 Vol.2", round: "R3 04:29" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2351,7 +2315,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-11-30", opponent: "岡見勇信", result: "loss", method: "判定 3-0", event: "PROFESSIONAL SHOOTO 2024 Vol.8", round: "" },
       { date: "2023-12-02", opponent: "岡見勇信", result: "loss", method: "判定 2-1", event: "FIGHT&MOSH", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2371,7 +2334,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2026-01-18", opponent: "深井志保", result: "win", method: "S/アームロック", event: "【第1部】COLORS Produce by SHOOTO Vol.6", round: "R1 03:42" },
       { date: "2025-09-21", opponent: "中村未来", result: "loss", method: "S/腕十字固め", event: "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7", round: "R2 04:46" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2394,7 +2356,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-08-03", opponent: "片山智絵", result: "loss", method: "判定 0-1", event: "COLORS Produce by SHOOTO Vol.3", round: "" },
       { date: "2024-04-14", opponent: "高田双葉", result: "win", method: "判定 0-3", event: "THE SHOOTO OKINAWA vol.10", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2426,7 +2387,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2020-05-31", opponent: "杉本恵", result: "loss", method: "S/スリーパーホールド", event: "PROFESSIONAL SHOOTO 2020 Vol.3 ABEMAテレビマッチ Supported by ONE Championship", round: "R2 03:32" },
       { date: "2020-02-16", opponent: "梅原拓未", result: "win", method: "判定 0-3", event: "PROFESSIONAL SHOOTO 2020 Vol.2 Supported by ONE Championship", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2463,7 +2423,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2019-03-24", opponent: "原田よき", result: "win", method: "判定 0-3", event: "SHOOTO 30th ANNIVERSARY TOUR 第2戦 Supported by ONE Championship", round: "" },
       { date: "2019-01-27", opponent: "木越めぐみ", result: "win", method: "判定 3-0", event: "SHOOTO 30th ANNIVERSARY TOUR 開幕戦", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2486,7 +2445,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-12-02", opponent: "MIYU", result: "win", method: "TKO/レフェリーストップ", event: "COLORS Produce by SHOOTO Vol.2 “FIGHT&MOSH”", round: "R2 03:09" },
       { date: "2023-08-20", opponent: "ヒヤマNFC", result: "win", method: "判定 2-0", event: "広島大会「TORAO | colors」", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2509,7 +2467,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-08-20", opponent: "古賀愛蘭", result: "loss", method: "判定 3-0", event: "広島大会「TORAO | colors」", round: "" },
       { date: "2022-07-17", opponent: "黒部三奈", result: "loss", method: "S/スリーパーホールド", event: "PROFESSIONAL SHOOTO 2022 Vol.5", round: "R2 01:34" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2528,7 +2485,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-08-03", opponent: "古賀愛蘭", result: "loss", method: "判定 1-2", event: "COLORS Produce by SHOOTO Vol.3", round: "" },
       { date: "2023-05-21", opponent: "古賀愛蘭", result: "win", method: "S/スリーパーホールド", event: "Colors（カラーズ）", round: "R3 02:35" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2553,7 +2509,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-12-29", opponent: "Fukky", result: "draw", method: "", event: "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA", round: "" },
       { date: "2024-08-03", opponent: "植田咲", result: "win", method: "TKO", event: "COLORS Produce by SHOOTO Vol.3", round: "R2 01:28" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2574,7 +2529,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-05-21", opponent: "SARAMI", result: "win", method: "TKO/レフェリーストップ", event: "Colors（カラーズ）", round: "R2 02:36" },
       { date: "2023-01-15", opponent: "黒部三奈", result: "win", method: "KO", event: "PROFESSIONAL SHOOTO 2023 開幕戦", round: "R2 02:29" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2599,7 +2553,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-08-03", opponent: "宝珠山桃花", result: "loss", method: "判定 1-0", event: "COLORS Produce by SHOOTO Vol.3", round: "" },
       { date: "2023-12-03", opponent: "古賀愛蘭", result: "loss", method: "判定 3-0", event: "山口大会「TORAO31」", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2620,7 +2573,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-05-18", opponent: "村上彩", result: "win", method: "判定 0-2", event: "【第2部】PROFESSIONAL SHOOTO 2025 Vol.4", round: "" },
       { date: "2024-12-15", opponent: "吉成はるか", result: "win", method: "判定 0-3", event: "COLORS Produce by SHOOTO Vol.4", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2642,7 +2594,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-07-21", opponent: "片山智絵", result: "win", method: "S/腕十字固め", event: "PROFESSIONAL SHOOTO 2025 Vol.6", round: "R2 04:49" },
       { date: "2025-05-18", opponent: "erika", result: "loss", method: "判定 0-2", event: "【第2部】PROFESSIONAL SHOOTO 2025 Vol.4", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2663,7 +2614,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-07-21", opponent: "村上彩", result: "loss", method: "S/腕十字固め", event: "PROFESSIONAL SHOOTO 2025 Vol.6", round: "R2 04:49" },
       { date: "2024-08-03", opponent: "徳本望愛", result: "win", method: "判定 0-1", event: "COLORS Produce by SHOOTO Vol.3", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2691,7 +2641,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2019-11-24", opponent: "ターニャアンゲラー", result: "win", method: "KO", event: "SHOOTO 30th ANNIVERSARY TOUR FINAL Supported by ONE Championship", round: "R2 04:52" },
       { date: "2019-07-15", opponent: "イイェジ", result: "win", method: "S/スリーパーホールド", event: "SHOOTO 30th ANNIVERSARY TOUR 第6戦 Supported by ONE Championship", round: "R2 04:48" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2716,7 +2665,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2021-07-25", opponent: "中村未来", result: "win", method: "TKO", event: "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship", round: "R2 02:48" },
       { date: "2020-11-23", opponent: "杉本恵", result: "win", method: "S/腕十字固め", event: "プロフェッショナル修斗公式戦", round: "R1 02:46" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2739,7 +2687,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-09-24", opponent: "宝珠山桃花", result: "win", method: "判定 0-2", event: "PROFESSIONAL SHOOTO 2023 Vol.6", round: "" },
       { date: "2023-07-23", opponent: "エンゼル☆志穂", result: "win", method: "S/スリーパーホールド", event: "PROFESSIONAL SHOOTO 2023 Vol.5", round: "R1 03:06" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2771,7 +2718,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2021-12-05", opponent: "和田千聖", result: "win", method: "判定 3-0", event: "闘裸男26", round: "" },
       { date: "2021-05-16", opponent: "柳仙香", result: "loss", method: "TKO/レフェリーストップ", event: "PROFESSIONAL SHOOTO 2021 Vol.3 Supported by ONE Championship", round: "R2 01:47" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2791,7 +2737,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-03-16", opponent: "ソルト", result: "win", method: "判定 3-0", event: "PROFESSIONAL SHOOTO 2025 Vol.2", round: "" },
       { date: "2024-08-03", opponent: "渡辺彩華", result: "win", method: "判定 0-3", event: "COLORS Produce by SHOOTO Vol.3", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2809,7 +2754,6 @@ export const FIGHTERS: Fighter[] = [
     history: [
       { date: "2024-05-19", opponent: "ソルト", result: "win", method: "判定 1-2", event: "【第2部】修斗×YFU 7対7 日中対抗戦", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2832,7 +2776,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-06-05", opponent: "和田千聖", result: "win", method: "判定 3-0", event: "北海道大会", round: "" },
       { date: "2022-01-16", opponent: "杉本恵", result: "loss", method: "判定 3-0", event: "PROFESSIONAL SHOOTO 2022 開幕戦", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2863,7 +2806,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2020-10-25", opponent: "青木文菜", result: "win", method: "タップアウト/RNC", event: "PANCRASE 319", round: "R1 4:22" },
       { date: "2019-12-08", opponent: "DIANA", result: "win", method: "判定/0-3", event: "PANCRASE311", round: "R3 3:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2884,7 +2826,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-12-15", opponent: "チョンチャヒョン", result: "win", method: "", event: "COLORS Produce by SHOOTO Vol.4", round: "" },
       { date: "2022-06-05", opponent: "山内絵里", result: "win", method: "判定 0-2", event: "北海道大会", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2907,7 +2848,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-09-24", opponent: "渡邉ショーン", result: "win", method: "TKO/グラウンドのパンチ", event: "PANCRASE 337", round: "R1 0:35" },
       { date: "2023-07-09", opponent: "伊藤丈皓", result: "win", method: "TKO/グラウンドのパンチ", event: "PANCRASE 336", round: "R1 1:01" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2938,7 +2878,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2019-10-20", opponent: "阿部右京", result: "win", method: "判定/0-3", event: "PANCRASE309", round: "R3 3:00" },
       { date: "2019-07-21", opponent: "松岡嵩志", result: "loss", method: "判定/3-0", event: "PANCRASE307", round: "R3 3:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2958,7 +2897,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-05-06", opponent: "アンディ サカイ", result: "win", method: "判定/3-0", event: "PANCRASE BLOOD.6", round: "R3 5:00" },
       { date: "2024-12-15", opponent: "平 信一", result: "loss", method: "TKO/グラウンドのパンチ", event: "PANCRASE 351", round: "R2 3:22" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -2982,7 +2920,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-11-12", opponent: "上田智大", result: "win", method: "TKO/グラウンドのパンチ", event: "PANCRASE 338", round: "R1 0:57" },
       { date: "2023-07-09", opponent: "水杉泰誠", result: "win", method: "判定/0-3", event: "PANCRASE 335", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3009,7 +2946,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2020-10-25", opponent: "田中半蔵", result: "win", method: "判定/0-3", event: "PANCRASE 319", round: "R3 5:00" },
       { date: "2020-07-24", opponent: "小森真誉", result: "win", method: "タップアウト/バックチョーク", event: "PANCRASE316", round: "R1 3:12" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3033,7 +2969,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-08-27", opponent: "望月貴史", result: "win", method: "判定/3-0", event: "NEO BLOOD! 5", round: "R3 5:00" },
       { date: "2023-06-04", opponent: "上田智大", result: "win", method: "TO/RNC", event: "PANCRASE 334", round: "R1 2:22" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3062,7 +2997,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2020-12-13", opponent: "林優作", result: "win", method: "TO/フロントチョーク", event: "PANCRASE 320", round: "R1 1:12" },
       { date: "2020-10-25", opponent: "滝田J太郎", result: "win", method: "判定/0-3", event: "PANCRASE 319", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3090,7 +3024,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2021-09-12", opponent: "岩本達彦", result: "loss", method: "TO/フロントチョーク", event: "PANCRASE 323", round: "R2 2:47" },
       { date: "2021-06-27", opponent: "中川皓貴", result: "win", method: "判定/3-0", event: "PANCRASE 322", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3128,7 +3061,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2014-07-20", opponent: "上野藤士", result: "draw", method: "時間切れドロー", event: "パンクラス大阪主催興行　PANCRASE 大阪大会", round: "R2 3:00" },
       { date: "2012-11-25", opponent: "山田雅道", result: "win", method: "1R、TKO(レフェリーストップ)/グラウンドのパンチ", event: "", round: "" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3149,7 +3081,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-09-23", opponent: "星野柊哉", result: "win", method: "TO/フロントチョーク", event: "PANCRASE 356", round: "R2 2:35" },
       { date: "2025-04-27", opponent: "松岡 拓", result: "win", method: "判定/0-3", event: "PANCRASE 353", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3177,7 +3108,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-10-10", opponent: "石田陸也", result: "win", method: "判定/3-0", event: "NEO BLOOD! 2", round: "R3 5:00" },
       { date: "2022-05-22", opponent: "FUMA", result: "win", method: "TKO(レフェリーストップ)/頭部裂傷", event: "NEO BLOOD! 1", round: "R1 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3202,7 +3132,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-10-10", opponent: "糸川義人", result: "loss", method: "判定/3-0", event: "NEO BLOOD! 2", round: "R3 5:00" },
       { date: "2022-05-22", opponent: "大森光", result: "win", method: "TO/三角絞め", event: "NEO BLOOD! 1", round: "R1 3:32" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3226,7 +3155,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-05-25", opponent: "目怒頑丈", result: "win", method: "TO/RNC", event: "PANCRASE 343", round: "R2 4:41" },
       { date: "2024-02-25", opponent: "嶺 大基", result: "win", method: "TO/腕十字固め", event: "PANCRASE BLOOD.2", round: "R2 1:43" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3250,7 +3178,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-02-11", opponent: "小間駿史", result: "win", method: "TO/ヒールホールド", event: "PANCRASE BLOOD.5", round: "R1 2:47" },
       { date: "2024-06-30", opponent: "渡邉泰斗", result: "loss", method: "判定/3-0", event: "PANCRASE 344", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3268,7 +3195,6 @@ export const FIGHTERS: Fighter[] = [
     history: [
       { date: "2026-05-31", opponent: "矢澤 諒", result: "win", method: "判定/0-3", event: "PANCRASE 362", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3290,7 +3216,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-11-10", opponent: "宮城成歩滝", result: "win", method: "TKO/肘によるカット", event: "PANCRASE 348", round: "R1 4:15" },
       { date: "2024-07-28", opponent: "前田 海", result: "win", method: "TKO/グラウンドのパンチ", event: "PANCRASE BLOOD.3", round: "R2 0:29" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3325,7 +3250,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2019-05-26", opponent: "宮川峻", result: "win", method: "判定/3-0", event: "PANCRASE305", round: "R3 3:00" },
       { date: "2019-03-17", opponent: "平田純一", result: "win", method: "判定/3-0", event: "PANCRASE303", round: "R3 3:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3360,7 +3284,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2014-06-29", opponent: "CORO", result: "win", method: "判定/1-2", event: "PANCRASE 259", round: "R3 3:00" },
       { date: "2014-02-02", opponent: "富田浩司", result: "draw", method: "判定/0-0", event: "PANCRASE 256", round: "R2 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3382,7 +3305,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-05-25", opponent: "梅原規祥", result: "win", method: "判定/3-0", event: "PANCRASE 343", round: "R3 5:00" },
       { date: "2024-02-25", opponent: "タカリンダマン", result: "win", method: "TKO/グラウンドのパンチ", event: "PANCRASE BLOOD.2", round: "R3 0:39" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3413,7 +3335,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2018-03-11", opponent: "廣中克至", result: "win", method: "ギブアップ/腕十字固め", event: "PANCRASE294", round: "R1 2:09" },
       { date: "2017-12-10", opponent: "杉山廣平", result: "loss", method: "TKO/スタンドの膝蹴り", event: "PANCRASE292", round: "R1 0:27" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3433,7 +3354,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-04-27", opponent: "眞藤源太", result: "win", method: "TO/肩固め", event: "PANCRASE 353", round: "R2 2:30" },
       { date: "2024-07-21", opponent: "濱田 巧", result: "loss", method: "判定/2-1", event: "PANCRASE 346", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3457,7 +3377,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-03-04", opponent: "大和田光太郎", result: "win", method: "TKO/グラウンドのパンチ", event: "NEO BLOOD! 3", round: "R1 4:09" },
       { date: "2022-10-10", opponent: "清沢魁人", result: "win", method: "TKO/スタンドのパンチ", event: "NEO BLOOD! 2", round: "R3 0:30" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3478,7 +3397,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-11-10", opponent: "眞藤源太", result: "loss", method: "判定/1-2", event: "PANCRASE 349", round: "R3 5:00" },
       { date: "2024-05-25", opponent: "ジョセフ・カマチョ", result: "win", method: "判定/3-0", event: "PANCRASE 343", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3505,7 +3423,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-03-21", opponent: "大城正也", result: "win", method: "判定/0-3", event: "PANCRASE 326", round: "R3 5:00" },
       { date: "2021-12-12", opponent: "佐藤良太", result: "win", method: "TO/RNC", event: "PANCRASE 325", round: "R1 4:03" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3527,7 +3444,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-06-30", opponent: "大野友哉", result: "win", method: "判定/0-3", event: "PANCRASE 344", round: "R3 5:00" },
       { date: "2023-07-09", opponent: "黒澤亮平", result: "loss", method: "KO/スタンドのパンチ", event: "PANCRASE 335", round: "R1 1:40" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3552,7 +3468,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-06-04", opponent: "寺本雄輝", result: "win", method: "TKO/グラウンドのパンチ", event: "PANCRASE 334", round: "R1 1:02" },
       { date: "2023-03-04", opponent: "髙杉遼介", result: "win", method: "判定/0-3", event: "NEO BLOOD! 3", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3575,7 +3490,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-02-25", opponent: "佐々木瞬真", result: "win", method: "TO/RNC", event: "PANCRASE BLOOD.2", round: "R3 4:25" },
       { date: "2023-08-27", opponent: "伊藤勇輝", result: "win", method: "判定/3-0", event: "NEO BLOOD! 5", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3595,7 +3509,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-05-06", opponent: "齋藤楼貴", result: "win", method: "判定/0-3", event: "PANCRASE BLOOD.6", round: "R3 5:00" },
       { date: "2025-02-11", opponent: "降旗健太郎", result: "win", method: "TKO/ツイスター", event: "PANCRASE BLOOD.5", round: "R2 2:26" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3621,7 +3534,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2023-06-04", opponent: "米山唯人", result: "win", method: "判定/0-3", event: "PANCRASE 334", round: "R3 5:00" },
       { date: "2023-03-04", opponent: "孫悟空DATE", result: "win", method: "判定/0-3", event: "NEO BLOOD! 3", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3642,7 +3554,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2024-07-21", opponent: "重田ホノカ", result: "win", method: "TKO/フロントチョーク", event: "PANCRASE 346", round: "R1 2:40" },
       { date: "2024-03-31", opponent: "ライカ", result: "win", method: "判定/3-0", event: "PANCRASE 341", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3662,7 +3573,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-06-01", opponent: "オノダマン", result: "win", method: "判定/3-0", event: "PANCRASE 354", round: "R3 5:00" },
       { date: "2024-07-28", opponent: "ライカ", result: "win", method: "判定/0-3", event: "PANCRASE BLOOD.3", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3694,7 +3604,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2016-07-24", opponent: "中井りん", result: "loss", method: "TKO/グラウンドでの肘", event: "PANCRASE279", round: "R3 2:43" },
       { date: "2015-07-05", opponent: "ズラブカ・ビタリー", result: "win", method: "判定/2-1", event: "PANCRASE 268", round: "R3 3:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
   {
@@ -3713,7 +3622,6 @@ export const FIGHTERS: Fighter[] = [
       { date: "2025-12-21", opponent: "KAREN", result: "win", method: "判定/0-3", event: "PANCRASE 360", round: "R5 5:00" },
       { date: "2025-03-09", opponent: "藤野恵実", result: "win", method: "判定/0-3", event: "PANCRASE 352", round: "R3 5:00" },
     ],
-    hidden: true,
     needsReview: true,
   },
 ];
