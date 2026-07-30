@@ -186,8 +186,9 @@ export default function FighterFilterGrid({
 
   // 階級フィルタの選択肢は実際にDBへ存在する階級だけを、共有の体重ソートキーで
   // 並べて出す(配列順・追加順に依存しない。後から階級を足しても正しい位置に入る)。
+  // 階級が未確定(空/"不明")の選手は選択肢に出さない(選手自体は「すべて」表示に残る)。
   const weightOptions = useMemo(() => {
-    const set = new Set(fighters.map((f) => f.weightClass));
+    const set = new Set(fighters.map((f) => f.weightClass).filter((w) => w && w !== "不明"));
     return Array.from(set).sort((a, b) => weightSortKey(a) - weightSortKey(b));
   }, [fighters]);
 
