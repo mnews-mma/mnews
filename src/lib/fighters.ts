@@ -2290,7 +2290,11 @@ export const FIGHTERS: Fighter[] = [
     nameJa: "HENRY",
     nameEn: "Henry",
     org: "shooto",
-    weightClass: "不明",
+    // 修斗公式アーカイブのbout記録(2026-03-29 vs 岩﨑大河)はheadingTextが
+    // 「世界ミドル級チャンピオン決定トーナメント」・weigh-in 81.3kg(ミドル級上限
+    // 83.9kg以内)でミドル級を裏付け。加えて修斗公式ランキング
+    // (https://www.shooto-mma.com/ranking/)で世界ミドル級4位に掲載を確認(2026-07-31)。
+    weightClass: "ミドル級",
     wins: 0,
     losses: 1,
     draws: 0,
