@@ -1347,8 +1347,8 @@ export const FIGHTERS: Fighter[] = [
   // 2026-07-30調査(#277)で人物取り違えと判明: 表示名「大成」の実体は関野大成の
   // DEEPメガトン級戦績。従来wikiTitleJa:"西谷大成"としていたのは別人(フェザー級)。
   // sekino-taiseiへ付け替え、西谷大成本人は下でnishitani-taiseiとして新規追加。
-  { slug: "sekino-taisei", nameJa: "関野大成", nameEn: "Taisei Sekino", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true },
-  { slug: "nishitani-taisei", nameJa: "西谷大成", nameEn: "Taisei Nishitani", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, hidden: true },
+  { slug: "sekino-taisei", nameJa: "関野大成", nameEn: "Taisei Sekino", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "nishitani-taisei", nameJa: "西谷大成", nameEn: "Taisei Nishitani", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "shibisai-shoma", nameJa: "シビサイ頌真", nameEn: "Shoma Shibisai", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kitakata-daichi", nameJa: "北方大地", nameEn: "Daichi Kitakata", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kaito", nameJa: "海飛", nameEn: "Kaito", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
