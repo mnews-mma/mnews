@@ -22,6 +22,7 @@ import fs from "fs";
 import path from "path";
 import { findFighterSlugByName } from "../src/lib/fighters";
 import { toJstDateStr } from "../src/lib/eventCountdown";
+import { assertAllowedByRobots } from "./lib/robotsGate";
 
 const OUT = path.join(process.cwd(), "data", "pancraseRecords.json");
 const UA = "Mozilla/5.0 (compatible; MNewsBot/1.0; +https://www.mnews.jp)";
@@ -32,6 +33,7 @@ async function sleep(ms: number) {
 }
 
 async function fetchText(url: string, retries = 2): Promise<string | null> {
+  await assertAllowedByRobots(url, UA);
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
       const res = await fetch(url, { headers: { "User-Agent": UA } });

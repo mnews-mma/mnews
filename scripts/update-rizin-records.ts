@@ -17,6 +17,7 @@ import {
   RizinRecordsEvent,
 } from "../src/lib/mnewsRating/rizinScraper";
 import { findFighterSlugByName } from "../src/lib/fighters";
+import { assertAllowedByRobots } from "./lib/robotsGate";
 
 const OUT = path.join(process.cwd(), "data", "rizinRecords.json");
 const UA = "Mozilla/5.0 (compatible; MNewsBot/1.0; +https://www.mnews.jp)";
@@ -28,6 +29,7 @@ async function sleep(ms: number) {
 }
 
 async function fetchHtml(url: string, retries = 2): Promise<string | null> {
+  await assertAllowedByRobots(url, UA);
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
       const res = await fetch(url, { headers: { "User-Agent": UA } });

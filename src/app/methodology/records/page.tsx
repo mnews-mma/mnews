@@ -88,6 +88,8 @@ export default function MethodologyRecordsPage() {
           </table>
         </div>
 
+        <p>各団体の公式サイトで公開されている試合結果を出典としています。</p>
+
         <p className="prose-updated">mnews.jp独自集計。</p>
       </div>
       <Footer />
