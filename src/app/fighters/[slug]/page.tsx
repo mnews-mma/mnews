@@ -23,6 +23,7 @@ import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } f
 import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords, fetchDeepRecords } from "@/lib/multiOrgRecordsData";
 import { computeMultiOrgRecord, computeMultiOrgBoutTable, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
 import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
+import { normalizeDecisionScorePerspective } from "@/lib/decisionScorePerspective";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
@@ -668,7 +669,7 @@ export default async function FighterPage({
                         )}
                       </td>
                       <td><span className={RESULT_CLASS[h.result]}>{RESULT_LABEL[h.result]}</span></td>
-                      <td className="col-method">{h.method}</td>
+                      <td className="col-method">{normalizeDecisionScorePerspective(h.method, h.result)}</td>
                       <td className="col-wrap">
                         {eventSlug ? (
                           <a href={`/results/${eventSlug}`} className="opponent-link">
