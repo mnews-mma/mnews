@@ -52,7 +52,7 @@ export const RIZIN_CHAMPIONS: ChampionEntry[] = [
 ];
 
 export const DEEP_CHAMPIONS: ChampionEntry[] = [
-  { org: "deep", weightClass: "ヘビー級", name: "大成", generation: "第7代", slug: null }, // DEEP公式はメガトン級だがサイト内はヘビー級に統一。slug nishitani-taisei は hidden のためリンクなし
+  { org: "deep", weightClass: "ヘビー級", name: "大成", generation: "第7代", slug: "sekino-taisei" }, // DEEP公式はメガトン級だがサイト内はヘビー級に統一。同姓同名の西谷大成(nishitani-taisei)とは別人で、Sherdogの裸表記アンカー「大成」がTaisei-Sekino-379256(Heavyweight)にリンクしていることをPR #278で確認済み
   { org: "deep", weightClass: "ウェルター級", name: "嶋田伊吹", generation: "第14代", slug: "shimada-ibuki" },
   { org: "deep", weightClass: "ライト級", name: "野村駿太", generation: "第13代", slug: "nomura-shunta" },
   { org: "deep", weightClass: "フェザー級", name: "青井人", generation: "第12代", slug: "aoi-jin" },
@@ -96,7 +96,7 @@ export const DEEP_RANKING_CLASSES: { weightClass: string; entries: { rank: strin
   { weightClass: "ウェルター級", entries: [{ rank: "王者", name: "嶋田伊吹", slug: "shimada-ibuki" }] },
   { weightClass: "ミドル級", entries: [{ rank: "空位", name: "空位", slug: null }] },
   { weightClass: "ライトヘビー級", entries: [{ rank: "空位", name: "空位", slug: null }] },
-  { weightClass: "ヘビー級", entries: [{ rank: "王者", name: "大成", slug: null }] }, // メガトン級から統合表示
+  { weightClass: "ヘビー級", entries: [{ rank: "王者", name: "大成", slug: "sekino-taisei" }] }, // メガトン級から統合表示
   // DEEP JEWELS(女子)
   { weightClass: "女子アトム級", entries: [{ rank: "王者", name: "伊澤星花", slug: "izawa-seika" }] },
   { weightClass: "女子ストロー級", entries: [{ rank: "王者", name: "万智", slug: null }] },
