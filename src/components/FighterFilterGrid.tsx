@@ -7,6 +7,7 @@ import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import type { OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { weightSortKey } from "@/lib/weightClasses";
+import { MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
 
 // 団体フィルタ(並び順固定)。UFC/RIZINは既存公開選手のみ、DEEP/パンクラス/修斗/ONEは
 // 新規公開昇格分に付与(computeFighterTags側で制御)。
@@ -323,9 +324,20 @@ export default function FighterFilterGrid({
               <div className="fighter-name">{f.nameJa}</div>
               {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
               {f.noRecordData ? (
-                <div className="fighter-record" style={{ fontSize: 14, color: "var(--muted)" }}>
-                  データなし
-                </div>
+                f.multiOrgRecord ? (
+                  <>
+                    <div className="fighter-record">
+                      {f.multiOrgRecord.wins}-{f.multiOrgRecord.losses}-{f.multiOrgRecord.draws}
+                    </div>
+                    <div className="fighter-rates">
+                      <span>{MULTI_ORG_RECORD_LABEL}</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="fighter-record" style={{ fontSize: 14, color: "var(--muted)" }}>
+                    データなし
+                  </div>
+                )
               ) : (
                 <>
                   <div className="fighter-record">
