@@ -794,6 +794,63 @@ export const EVENTS: MEvent[] = [
     ],
   },
   // PROFESSIONAL SHOOTO 2026 Vol.5(2026-07-20)は開催済み → EVENT_RESULTS(shooto-2026-vol5)へ移動。
+  {
+    slug: "shooto-2026-vol6",
+    org: "shooto",
+    status: "upcoming",
+    eventName: "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2026 Vol.6",
+    date: "2026-09-27",
+    venue: "ニューピアホール",
+    sourceUrl: "https://www.shooto-mma.com/schedule/?id=255",
+    // 2026-07-30時点で決定分7試合。追加カードが今後発表される見込みのため、
+    // カード確定扱いにはしない(発表され次第、本配列に追記する)。
+    bouts: [
+      {
+        weightClass: "女子アトム級（47.6kg）",
+        fighterA: "青野ひかる",
+        fighterB: "徳本望愛",
+        isTitleMatch: true,
+        note: "修斗世界女子アトム級タイトルマッチ 5分5R",
+      },
+      {
+        weightClass: "バンタム級（61.2kg）",
+        fighterA: "川北晏生",
+        fighterB: "中野剛貴",
+        isTitleMatch: true,
+        note: "修斗環太平洋バンタム級タイトルマッチ 5分3R",
+      },
+      {
+        weightClass: "フェザー級（65.8kg）",
+        fighterA: "ヒカル",
+        fighterB: "齋藤翼",
+        note: "5分3R",
+      },
+      {
+        weightClass: "バンタム級 インフィニティリーグ2026",
+        fighterA: "武田勇輝",
+        fighterB: "関根累",
+        note: "5分2R",
+      },
+      {
+        weightClass: "バンタム級 インフィニティリーグ2026",
+        fighterA: "上杉隼哉",
+        fighterB: "吉村拓海",
+        note: "5分2R",
+      },
+      {
+        weightClass: "フライ級 新人王決定トーナメント2回戦",
+        fighterA: "宇佐美泰生",
+        fighterB: "小鉄",
+        note: "5分2R",
+      },
+      {
+        weightClass: "バンタム級 新人王決定トーナメント2回戦",
+        fighterA: "菊西拓馬",
+        fighterB: "福田侑飛",
+        note: "5分2R",
+      },
+    ],
+  },
 ];
 
 // Web側(オンページ)の選手名フォントサイズ。サイト全体で「常にこの1つの値」を
