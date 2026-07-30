@@ -22180,7 +22180,7 @@
         "date": "2024-09-29",
         "opponent": "フアン・アーチュレッタ",
         "result": "win",
-        "method": "1R 3:10 腕ひしぎ十字固め",
+        "method": "1R 3:12 腕ひしぎ十字固め",
         "event": "RIZIN.48",
         "round": "R1"
       },
@@ -23301,6 +23301,17 @@
     "live": false,
     "noRecordData": true
   },
+  "sekino-taisei": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
   "nishitani-taisei": {
     "wins": 6,
     "losses": 9,
@@ -23315,7 +23326,8 @@
         "result": "loss",
         "method": "1R KO（右ストレート）",
         "event": "RIZIN男祭り",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "66.0kg契約"
       },
       {
         "date": "2024-08-31",
