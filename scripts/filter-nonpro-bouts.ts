@@ -64,6 +64,7 @@ function filterEvents<E extends { eventName: string; date: string | null; bouts:
     non_mma_submission_only: 0,
     not_pro_amateur: 0,
     not_pro_tryout: 0,
+    not_pro_cage_gate: 0,
   };
   let totalBoutsBefore = 0;
   let totalBoutsAfter = 0;

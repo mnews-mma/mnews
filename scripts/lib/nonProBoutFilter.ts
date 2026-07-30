@@ -10,6 +10,21 @@
 // トーナメントとして団体が公式戦績扱いしており、このフィルタでは除外しない
 // (=対応するキーワードをこのファイルに含めない)。
 //
+// 「パンクラスゲート」(2002-2021、262bout、通常のPANCRASE本戦/大阪大会/札幌大会等の
+// undercard)は除外しない。結果ページ本文にアマチュア表記が無く通常の対戦カードと
+// 同一形式であり、除外する根拠が無いため(2026-07-30追加調査で確定)。
+// 「PANCRASE CAGE GATE」/「CAGE GATE」/「CAGEGATE」(2013-2014のみ・Bayside FIGHT
+// 1〜3限定・37bout)はパンクラス代表が公式リリースで明示的に「アマチュア専用試合」と
+// 説明しており、かつ年代・大会の両面で「パンクラスゲート」とは完全に別シリーズである
+// ことを確認した(大会名・出現年が一切重複しない)ため除外する。両者を同じ「ゲート」
+// 系として一括で扱わないこと。
+//
+// 例外(1件確認済み): Bayside FIGHT.3(2014-04-20)の「CAGE GATE 第1試合 第20回
+// ネオブラッド・トーナメント フライ級一回戦」は、CAGE GATE表記を含みつつも実体は
+// NEO BLOOD!トーナメントの公式戦であり、含める対象(NEO BLOOD!)と除外対象
+// (CAGE GATE)の両方に該当する。この場合はNEO BLOOD!を含める判断を優先する
+// (=除外しない)。isNeoBloodBout()でCAGE GATE判定より先にガードする。
+//
 // DEEP等の他団体データに同じ基準を適用する場合、bout側に headingText/strapTitle/
 // noteRaw/namedDivision 相当のフィールドがあれば isExcludedBout() をそのまま
 // 流用できる。フィールド名が異なる場合は toHaystack() 相当の変換だけ差し替えること。
@@ -19,7 +34,8 @@ export type NonProBoutCategory =
   | "non_mma_kids_shooto" // キッズ・ジュニア修斗(子供の組技試合)
   | "non_mma_submission_only" // 寝試合(提出限定ルール。通常のMMAルールと異なる)
   | "not_pro_amateur" // 明確な「アマチュア」表記(IMMAF/JMMAF含む)
-  | "not_pro_tryout"; // トライアウト(トライアウトルール/トライアウトマッチ)
+  | "not_pro_tryout" // トライアウト(トライアウトルール/トライアウトマッチ)
+  | "not_pro_cage_gate"; // PANCRASE CAGE GATE/CAGE GATE/CAGEGATE(Bayside FIGHT限定、公式にアマチュア専用と明言)
 
 // 判定順は無関係(複数カテゴリに同時該当してもいずれか1つ返せば除外対象と分かる)。
 // ただし呼び出し側でカテゴリ別集計をする場合は先勝ちになる点に注意。
@@ -29,6 +45,7 @@ const CATEGORY_KEYWORDS: Record<NonProBoutCategory, string[]> = {
   non_mma_submission_only: ["寝試合"],
   not_pro_amateur: ["アマ", "IMMAF", "JMMAF"],
   not_pro_tryout: ["トライアウト"],
+  not_pro_cage_gate: ["CAGE GATE", "CAGEGATE"],
 };
 
 const CATEGORY_ORDER: NonProBoutCategory[] = [
@@ -37,6 +54,7 @@ const CATEGORY_ORDER: NonProBoutCategory[] = [
   "non_mma_submission_only",
   "not_pro_amateur",
   "not_pro_tryout",
+  "not_pro_cage_gate",
 ];
 
 export interface NonProBoutFilterInput {
@@ -52,9 +70,20 @@ function toHaystack(bout: NonProBoutFilterInput): string {
     .join(" ");
 }
 
+const NEO_BLOOD_MARKERS = ["ネオブラッド", "NEO BLOOD"];
+
+// NEO BLOOD!トーナメントの公式戦であることを示す表記を含むか。
+// CAGE GATE表記と同時に現れるケース(Bayside FIGHT.3等)があり、その場合は
+// NEO BLOOD!を含める判断を優先するためのガードに使う。
+function isNeoBloodBout(haystack: string): boolean {
+  const upper = haystack.toUpperCase();
+  return NEO_BLOOD_MARKERS.some((m) => haystack.includes(m) || upper.includes(m.toUpperCase()));
+}
+
 // 該当した最初のカテゴリを返す(複数該当時は判定順で先勝ち)。非該当はnull。
 export function classifyNonProBout(bout: NonProBoutFilterInput): NonProBoutCategory | null {
   const haystack = toHaystack(bout);
+  if (isNeoBloodBout(haystack)) return null;
   for (const category of CATEGORY_ORDER) {
     if (CATEGORY_KEYWORDS[category].some((kw) => haystack.includes(kw))) {
       return category;
