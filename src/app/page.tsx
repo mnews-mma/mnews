@@ -68,7 +68,7 @@ const WEBSITE_LD = {
     "@type": "NewsMediaOrganization",
     name: "Mニュース",
     url: "https://www.mnews.jp",
-    logo: { "@type": "ImageObject", url: "https://www.mnews.jp/logo.png" },
+    logo: { "@type": "ImageObject", url: "https://www.mnews.jp/logo.png?v=1" },
     sameAs: ["https://x.com/mnews_mma"],
   },
   potentialAction: {
