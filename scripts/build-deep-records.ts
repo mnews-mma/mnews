@@ -20,10 +20,22 @@
 // 文字列一致のみで行う(あいまいな判定はしない)。除外大会名は全件レポートに
 // 列挙する。
 //
+// 除外(bout単位の非プロ/非MMA混入、2026-07-30追加): 大会名自体はプロ大会でも、
+// カード内の一部bout(主にオープニングファイト)に成人アマチュア戦・キッズ/
+// ジュニア戦・トライアウト戦・寝試合(提出限定ルール)等が混入することがある
+// (out/amateur-contamination-audit.md参照。修斗/パンクラスで確認済みの混入
+// パターンと同型で、DEEP側でも実例を確認済み: 例 DEEP TOKYO IMPACT 2019の
+// 「アマチュアグラップリングBルール」「アマチュアSPルール」等のundercard)。
+// この判定はPR #265(修斗/パンクラスのアマチュア混入監査)が抽出した共有
+// 判定器 scripts/lib/nonProBoutFilter.ts をそのまま流用する(新規キーワード
+// 一覧は作らない)。判定対象はheadingText/namedDivisionのみ(DEEPの生データ
+// スキーマにはstrapTitle/noteRaw相当のフィールドが無いため)。
+//
 // 実行: npx tsx scripts/build-deep-records.ts
 import fs from "fs";
 import path from "path";
 import { toJstDateStr } from "../src/lib/eventCountdown";
+import { isExcludedNonProBout } from "./lib/nonProBoutFilter";
 import {
   extractArchiveLinks,
   detectPagination,
@@ -89,6 +101,7 @@ interface EventDiag {
   parseFailures: number;
   unresolvedNames: number;
   unknownResults: number;
+  nonProBoutCount: number;
 }
 
 async function main() {
@@ -169,16 +182,34 @@ async function main() {
     // と同じ「黙って欠落させない」方針)。Group1/Group2/Group4/F2/F8/F10は
     // 見出しに通し番号を持たない/連番が前提でないためこの検出は行わない
     // (該当形式では実施しない=検出できないという限界を持つ。unknownResultsとは
-    // 別軸の指標)。
+    // 別軸の指標)。非プロ/非MMA bout除外(下記)より前に計算する: 除外は
+    // 「正しく抽出できた上での内容フィルタ」であり、抽出失敗とは別軸のため。
     let parseFailures = 0;
     if (formatsUsed[0] === "F1") {
       const headingNumbers = new Set([...clean.matchAll(/第\s*(\d+)試合/g)].map((m) => Number(m[1])));
       parseFailures = Math.max(0, headingNumbers.size - rawBouts.length);
     }
 
+    // bout単位の非プロ/非MMA混入除外(PR #265の共有判定器、ファイル冒頭コメント参照)。
+    const excludedNonProCount = rawBouts.length;
+    const proRawBouts = rawBouts.filter(
+      (raw) => !isExcludedNonProBout({ headingText: raw.weightClassRaw, namedDivision: raw.weightClassRaw })
+    );
+    const nonProBoutCount = excludedNonProCount - proRawBouts.length;
+
+    if (proRawBouts.length === 0) {
+      excludedZeroBout.push({
+        eventName: link.title,
+        date,
+        url: link.url,
+        reason: `全bout(${rawBouts.length}件)が非プロ/非MMA混入判定(アマチュア・キッズ・トライアウト・寝試合等)により除外`,
+      });
+      continue;
+    }
+
     let unresolvedNames = 0;
     let unknownResults = 0;
-    const bouts: DeepRecordsBout[] = rawBouts.map((raw, idx) => {
+    const bouts: DeepRecordsBout[] = proRawBouts.map((raw, idx) => {
       const outcome = resolveOutcome(raw);
       if (outcome.resultType === "unknown") unknownResults++;
       const fighterASlug = findFighterSlugByName(raw.fighterAName);
@@ -189,8 +220,8 @@ async function main() {
       const winnerSlug = outcome.winner === "A" ? fighterASlug : outcome.winner === "B" ? fighterBSlug : null;
 
       return {
-        cardPosition: rawBouts.length - idx,
-        isOpeningFight: idx === rawBouts.length - 1,
+        cardPosition: proRawBouts.length - idx,
+        isOpeningFight: idx === proRawBouts.length - 1,
         headingText: raw.weightClassRaw ?? "",
         fighterAName: raw.fighterAName,
         fighterBName: raw.fighterBName,
@@ -229,6 +260,7 @@ async function main() {
       parseFailures,
       unresolvedNames,
       unknownResults,
+      nonProBoutCount,
     });
   }
 
@@ -238,6 +270,7 @@ async function main() {
   const totalUnknown = diags.reduce((sum, d) => sum + d.unknownResults, 0);
   const totalUnresolved = diags.reduce((sum, d) => sum + d.unresolvedNames, 0);
   const totalParseFailures = diags.reduce((sum, d) => sum + d.parseFailures, 0);
+  const totalNonProBouts = diags.reduce((sum, d) => sum + d.nonProBoutCount, 0);
 
   console.log(`\n=== 集計結果 ===`);
   console.log(`候補大会数(開催済・KICK/アマチュア除く): ${candidateCount}`);
@@ -248,6 +281,7 @@ async function main() {
   console.log(`除外(抽出0件・F7/F11相当): ${excludedZeroBout.length}`);
   console.log(`投入大会数: ${events.length}`);
   console.log(`bout数: ${totalBouts}`);
+  console.log(`除外(bout単位の非プロ/非MMA混入): ${totalNonProBouts}件`);
   console.log(`parseFailures(F1見出し数との差分): ${totalParseFailures}`);
   console.log(`resultType=unknown: ${totalUnknown}`);
   console.log(`選手名未解決: ${totalUnresolved}`);
@@ -290,6 +324,7 @@ async function main() {
   reportLines.push(`- parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): ${totalParseFailures}件`);
   reportLines.push(`- resultType=unknown: ${totalUnknown}件`);
   reportLines.push(`- 選手名未解決(fighterASlug/fighterBSlug null): ${totalUnresolved}件`);
+  reportLines.push(`- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): ${totalNonProBouts}件`);
   reportLines.push(`- 除外(アマチュア大会): ${excludedAmateur.length}件`);
   reportLines.push(`- 除外(抽出0件・F7/F11相当): ${excludedZeroBout.length}件`);
   reportLines.push(`- 除外(開催日不明): ${excludedDateUnknown.length}件`);
@@ -314,10 +349,10 @@ async function main() {
     reportLines.push(``);
   }
   reportLines.push(`## 大会別内訳`);
-  reportLines.push(`| 大会名 | 日付 | bout数 | フォーマット | parseFailures | unknown | 未解決名 |`);
-  reportLines.push(`|---|---|---|---|---|---|---|`);
+  reportLines.push(`| 大会名 | 日付 | bout数 | フォーマット | parseFailures | unknown | 未解決名 | 非プロ除外bout |`);
+  reportLines.push(`|---|---|---|---|---|---|---|---|`);
   for (const d of diags) {
-    reportLines.push(`| ${d.eventName} | ${d.date} | ${d.boutCount} | ${d.formatsUsed.join(",")} | ${d.parseFailures} | ${d.unknownResults} | ${d.unresolvedNames} |`);
+    reportLines.push(`| ${d.eventName} | ${d.date} | ${d.boutCount} | ${d.formatsUsed.join(",")} | ${d.parseFailures} | ${d.unknownResults} | ${d.unresolvedNames} | ${d.nonProBoutCount} |`);
   }
   fs.writeFileSync(REPORT_OUT, reportLines.join("\n") + "\n");
   console.log(`[OK] ${REPORT_OUT} に書き出しました。`);
