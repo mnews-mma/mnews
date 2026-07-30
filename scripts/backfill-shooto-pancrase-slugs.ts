@@ -1,12 +1,12 @@
-// data/shootoRecords.json・data/pancraseRecords.json の fighterASlug/
-// fighterBSlug を埋め直すバックフィル専用スクリプト。
+// data/shootoRecords.json・data/pancraseRecords.json・data/deepRecords.json の
+// fighterASlug/fighterBSlugを埋め直すバックフィル専用スクリプト(ファイル名は
+// 修斗/パンクラス投入時のままだが、2026-07-29にdeepRecords.jsonも対象に追加した)。
 //
-// 背景: 両ファイルは生成時点(main、PR #252「roster-injection-94」未マージ
-// 状態のfighters.ts)でslug解決しているため、#252で新規投入された92名を
-// 含む多数の選手のbout側slugがnullのままになっている。#252は既にmainへ
-// マージ済みのため、既存の2ファイルを対象に再度slug解決を行い、
-// fighterASlug/fighterBSlugフィールドだけを更新して書き戻す(本文・その他
-// フィールドは一切変更しない。サイトへの再フェッチは不要)。
+// 背景: 各ファイルは生成時点のfighters.tsでslug解決しているため、その後の
+// fighters.ts更新(新規選手投入等)を反映できていないbout側slugがnullのまま
+// 残る。対象ファイルを再度slug解決し、fighterASlug/fighterBSlugフィールドだけを
+// 更新して書き戻す(本文・その他フィールドは一切変更しない。サイトへの
+// 再フェッチは不要)。
 //
 // 解決ロジック(このスクリプト専用の新規実装。既存findFighterSlugByName
 // (src/lib/fighters.ts)は一切変更せず、ロジックも再利用しない):
@@ -28,7 +28,7 @@ import { FIGHTERS } from "../src/lib/fighters";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const OUT_DIR = path.join(process.cwd(), "out");
-const TARGET_FILES = ["shootoRecords.json", "pancraseRecords.json"];
+const TARGET_FILES = ["shootoRecords.json", "pancraseRecords.json", "deepRecords.json"];
 
 // ------------------------------------------------------------------
 // 正規化・候補インデックス構築
