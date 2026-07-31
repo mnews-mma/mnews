@@ -16,6 +16,12 @@
 //   一切上書きしない(このスクリプトは書き込み前に必ずnullチェックする)。
 // - 生の選手名表記(fighterAName/fighterBName)・その他フィールドは変更しない。
 // - 曖昧一致(複数選手が同一正規化名)は解決しない(推測で埋めない)。
+// - winnerSlugがnullで、winnerNameが指すコーナーのslugが(このスクリプトの
+//   実行前後を問わず)解決済みの場合、その値をwinnerSlugに埋める(2026-07-31追加。
+//   #292調査で発見: rizinRecordsAggregate.tsの勝敗判定はwinnerSlug===slugで
+//   行うため、fighterASlug/fighterBSlugだけ埋めてwinnerSlugを再計算しないと、
+//   本来の勝者が「勝ちの解決slugがwinnerSlugと一致しない」ため敗扱いになり、
+//   同一boutの両者が「敗」と表示される。winnerSlugが既に非nullの値は上書きしない)。
 //
 // 実行: npx tsx scripts/backfill-rizin-slugs.ts
 import fs from "fs";
@@ -65,6 +71,7 @@ function main() {
   const affectedSlugs = new Set<string>();
   // 既存の解決済みslugが変わっていないことの自己検証用(念のための二重チェック)。
   const preExistingSlugChanged: string[] = [];
+  const winnerSlugFixed: AffectedBout[] = [];
 
   for (const ev of rizinEventsAfter) {
     for (const b of ev.bouts as any[]) {
@@ -99,6 +106,26 @@ function main() {
           unresolved.set(name, (unresolved.get(name) ?? 0) + 1);
         }
       }
+
+      // winnerSlugがnullで、winnerNameが指すコーナーのslugが解決済みなら埋める。
+      // 既に非nullのwinnerSlugは上書きしない(上と同じ安全方針)。
+      if (!b.winnerSlug && b.winnerName) {
+        const winnerCorner: "A" | "B" | null =
+          b.winnerName === b.fighterAName ? "A" : b.winnerName === b.fighterBName ? "B" : null;
+        const winnerSlugCandidate = winnerCorner === "A" ? b.fighterASlug : winnerCorner === "B" ? b.fighterBSlug : null;
+        if (winnerSlugCandidate) {
+          b.winnerSlug = winnerSlugCandidate;
+          affectedSlugs.add(winnerSlugCandidate);
+          winnerSlugFixed.push({
+            event: ev.eventName,
+            date: ev.date ?? null,
+            cardPosition: b.cardPosition,
+            corner: winnerCorner as "A" | "B",
+            rawName: b.winnerName,
+            resolvedSlug: winnerSlugCandidate,
+          });
+        }
+      }
     }
   }
 
@@ -109,7 +136,7 @@ function main() {
     for (let j = 0; j < (evBefore.bouts as any[]).length; j++) {
       const bBefore = (evBefore.bouts as any[])[j];
       const bAfter = (evAfter.bouts as any[])[j];
-      for (const slugField of ["fighterASlug", "fighterBSlug"] as const) {
+      for (const slugField of ["fighterASlug", "fighterBSlug", "winnerSlug"] as const) {
         if (bBefore[slugField] && bBefore[slugField] !== bAfter[slugField]) {
           preExistingSlugChanged.push(`${evBefore.eventName} ${slugField} (${bBefore[slugField]} -> ${bAfter[slugField]})`);
         }
@@ -183,6 +210,7 @@ function main() {
   lines.push(`- 今回新規解決(ユニークbout件数): ${new Set(affectedBouts.map((b) => `${b.event}#${b.cardPosition}`)).size}`);
   lines.push(`- 依然未解決(延べ): ${[...unresolved.values()].reduce((a, b) => a + b, 0)}`);
   lines.push(`- 依然未解決(ユニーク生表記数): ${unresolved.size}`);
+  lines.push(`- winnerSlug再計算で埋めた件数: ${winnerSlugFixed.length}`);
   lines.push("");
 
   lines.push("## 影響を受けた選手一覧(選手名・解決bout数・4団体通算の変化)");
@@ -205,6 +233,19 @@ function main() {
   lines.push("|---|---|---|---|---|");
   for (const b of affectedBouts) {
     lines.push(`| ${b.event} | ${b.date ?? "-"} | ${b.corner} | ${b.rawName} | ${b.resolvedSlug} |`);
+  }
+  lines.push("");
+
+  lines.push("## winnerSlug再計算明細(fighterA/BSlugは解決済みだがwinnerSlugがnullのまま残っていたbout)");
+  lines.push("");
+  if (winnerSlugFixed.length === 0) {
+    lines.push("(該当なし)");
+  } else {
+    lines.push("| 大会 | 日付 | コーナー | 勝者名 | 解決slug |");
+    lines.push("|---|---|---|---|---|");
+    for (const b of winnerSlugFixed) {
+      lines.push(`| ${b.event} | ${b.date ?? "-"} | ${b.corner} | ${b.rawName} | ${b.resolvedSlug} |`);
+    }
   }
   lines.push("");
 
@@ -236,6 +277,7 @@ function main() {
   console.log(`新規解決(ユニークbout件数): ${new Set(affectedBouts.map((b) => `${b.event}#${b.cardPosition}`)).size}`);
   console.log(`既解決: ${alreadyResolved}`);
   console.log(`依然未解決(延べ): ${[...unresolved.values()].reduce((a, b) => a + b, 0)}`);
+  console.log(`winnerSlug再計算で埋めた件数: ${winnerSlugFixed.length}`);
   console.log(`影響選手数: ${impacts.length}`);
   console.log(`編集距離1の不一致: ${nearMisses.length}件`);
   console.log(`レポート: out/rizin-slug-backfill.md`);
