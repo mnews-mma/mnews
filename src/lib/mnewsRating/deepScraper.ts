@@ -16,6 +16,20 @@
 // トーナメント優勝者サマリー型(F7)・本文が空のページ(F11)は仕様上の限界として
 // 除外する(scripts/build-deep-records.tsが実行時に検出・報告する)。
 
+// methodRaw等に&#8217;(’)・&#8221;(”)のような数値文字参照が生デコードされずに
+// 残っていた(2026-07-31判明)。&nbsp;と同じ場所で、かつそれより後に処理する
+// (&nbsp;は上で個別に空白へ変換済みのため、ここでの汎用デコードと競合しない)。
+const decodeHtmlEntities = (text: string): string => {
+  return text
+    .replace(/&#(\d+);/g, (_, dec: string) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex: string) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+};
+
 const stripTags = (html: string): string => {
   let clean = html.replace(/<[^>]+>/g, "|");
   clean = clean.replace(/\|+/g, "|");
@@ -23,6 +37,7 @@ const stripTags = (html: string): string => {
   // 見出し内部にも出現することが判明。デコードせずに残すと「第(\d+)試合」の
   // ような見出し正規表現が一致せず、bout1件が丸ごと欠落する)。
   clean = clean.replace(/&nbsp;/g, " ");
+  clean = decodeHtmlEntities(clean);
   // 絵文字の直後にU+FE0E(テキスト表示指定子)が付くことがある(2026-07-29、
   // 「⚪︎上迫博仁」のように⚪の直後に付き、markの1文字読み取りでは消費されず
   // 選手名の先頭に紛れ込む不可視文字として残ってしまっていた)。表示に
