@@ -1277,7 +1277,11 @@ export const FIGHTERS: Fighter[] = [
   { slug: "yanagawa-yuito", nameJa: "栁川唯人", nameEn: "Yuito Yanagawa", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "rajabov-otabek", nameJa: "オタベク・ラジャボフ", nameEn: "Otabek Rajabov", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "arzykul-kalybek", nameJa: "カリベク・アルジクルウール", nameEn: "Kalybek Arzykul uulu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["カリベク・アルジクル ウルル"] },
-  { slug: "kanru", nameJa: "敢流", nameEn: "Isana", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // DEEP OSAKA IMPACT 2023 3rd ROUND(2023-11-26)で対戦相手側の表記が
+  // 「森田敢流」のため、findFighterSlugByName突合用にaliasを追加(同一人物と
+  // 見られる。姓+リングネームの一貫したパターン。表示名は変えない。
+  // out/wiki_vs_multiorg_diff.json・out/all_direction_name_variant_matches.json参照)。
+  { slug: "kanru", nameJa: "敢流", nameEn: "Isana", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["森田敢流"] },
   { slug: "kinoshita-naosuke", nameJa: "木下尚祐", nameEn: "Shosuke Kinoshita", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "hirata-naoki", nameJa: "平田直樹", nameEn: "Naoki Hirata", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "tajima-ryo", nameJa: "田嶋椋", nameEn: "Ryo Tajima", org: "pancrase", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1351,7 +1355,11 @@ export const FIGHTERS: Fighter[] = [
   // --- 団体ランキング top-5 未照合ぶんのDB追加(2026-07) ---
   { slug: "shimizu-hiroto", nameJa: "清水博人", nameEn: "Hiroto Shimizu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "otsuka-tomoki", nameJa: "大塚智貴", nameEn: "Tomoki Otsuka", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "tenya", nameJa: "天弥", nameEn: "Tenya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "爆走ステゴロ番長" },
+  // NEO BLOOD! 3/5・PANCRASE 334(いずれも2023年)で対戦相手側の表記が
+  // 「吉村天弥」のため、findFighterSlugByName突合用にaliasを追加(同一人物と
+  // 見られる。姓が3件とも一貫。表示名は変えない。out/wiki_vs_multiorg_diff.json・
+  // out/all_direction_name_variant_matches.json参照)。
+  { slug: "tenya", nameJa: "天弥", nameEn: "Tenya", org: "pancrase", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "爆走ステゴロ番長", aliases: ["吉村天弥"] },
   { slug: "kanbe-atsubo", nameJa: "神部篤坊", nameEn: "Atsubo Kanbe", org: "pancrase", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
 
   // --- DEEP 133 IMPACT(2026-09-13)出場選手のDB突合・追加分(2026-07) ---
