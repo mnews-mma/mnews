@@ -1219,7 +1219,18 @@ export const FIGHTERS: Fighter[] = [
   { slug: "ryoga", nameJa: "亮我", nameEn: "Ryoga", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // 修斗公式サイト id=1316(https://www.shooto-mma.com/fighters/?id=1316)。
   // data/shootoRecords.json内の姓なし表記「泰斗」8件の解決先(旧・未解決)。
-  { slug: "taito", nameJa: "泰斗", nameEn: "Taito", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // 指示書U(2026-08-01)注記: 「泰斗」という表示名はslugとして曖昧。
+  // パンクラス公式には別人2名(taito.html=1989年生・山梨・KIBAマーシャル
+  // アーツクラブ、taitosc.html=1990年生・東京・真月流COMBAD)がいて
+  // 未登録のまま(収録基準の判断が別途必要)、修斗公式にはこの選手
+  // (id=1316、1996年生・福岡・MMA RANGERS GYM)がいる。slugを単純な
+  // "taito"にすると将来パンクラス側の2名を登録する際に衝突するため、
+  // 所属ジムで区別した"taito-rangers"を使う(表示名nameJaは"泰斗"のまま、
+  // slugのみ曖昧さ回避)。パンクラス公式にはさらに「渡邉泰斗」
+  // (../prfl2/watanabetaito.html)という4件目のプロフィールも存在するが、
+  // taito/taitoscいずれかの本名(フルネーム)表記の可能性があり同一人物か
+  // 未確認(指示書Uのスコープ外、要人力確認)。
+  { slug: "taito-rangers", nameJa: "泰斗", nameEn: "Taito", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "takaoka-hiroki", nameJa: "高岡宏気", nameEn: "Hiroki Takaoka", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "arai-jo", nameJa: "新井丈", nameEn: "Jo Arai", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "NEVER GIVE UP" },
   { slug: "suzuki-simon", nameJa: "シモンスズキ", nameEn: "Shimon Suzuki", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },

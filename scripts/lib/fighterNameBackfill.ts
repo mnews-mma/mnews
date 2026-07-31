@@ -3,6 +3,7 @@
 // RIZINバックフィル追加時に切り出し)。正規化ルールはここが単一の正。
 // 新しい正規化を追加する場合もこのファイルのみを変更する。
 import { FIGHTERS } from "../../src/lib/fighters";
+import { NAME_COLLISION_DENYLIST_SET } from "./nameCollisionDenylist";
 
 // 旧字体・異体字 -> 統一先。読みが同じ別字(斎/斉等)も実データ上サイトウ姓の
 // 表記ゆれとして混在しているため統一対象に含める。
@@ -80,8 +81,17 @@ export function stripQuotedInsert(name: string): string {
   return name.replace(QUOTED_INSERT_RE, "");
 }
 
+// 指示書U(2026-08-01): denylist登録名の正規化版セット(nameCollisionDenylist.ts
+// の生文字列一覧をnormalize()通し済みにしたもの)。resolveSlug()の入口で
+// 直接一致・挿入部除去一致のいずれについても、正規化後の文字列がこの集合に
+// 含まれる場合は無条件でnullを返す(=自動解決の対象外・未解決のまま残す)。
+const NORMALIZED_DENYLIST: ReadonlySet<string> = new Set(
+  [...NAME_COLLISION_DENYLIST_SET].map((raw) => normalize(raw))
+);
+
 export function resolveSlug(name: string, index: Map<string, string | null>): string | null {
   const n = normalize(name);
+  if (n && NORMALIZED_DENYLIST.has(n)) return null;
   const direct = n ? (index.get(n) ?? null) : null;
 
   const stripped = stripQuotedInsert(name);
@@ -90,6 +100,7 @@ export function resolveSlug(name: string, index: Map<string, string | null>): st
     return direct;
   }
   const ns = normalize(stripped);
+  if (ns && NORMALIZED_DENYLIST.has(ns)) return null;
   const viaStrip = ns ? (index.get(ns) ?? null) : null;
 
   if (direct && viaStrip) {
