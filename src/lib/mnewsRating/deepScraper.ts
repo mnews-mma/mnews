@@ -584,11 +584,20 @@ function scopeToResultsSection(bodyClean: string): string {
 // 許容)は最後に近い位置に置く(見出し前提が広いフォーマットほど、より
 // 厳密なフォーマットが本来一致すべき本文を誤って先取りするリスクが高いため、
 // 意図的に後段に置く)。marks自体を持たないGroup1(VS型)が最終フォールバック。
-// 「第N試合」見出しのユニーク番号数(=本来あるはずのbout数の目安)。0件の
-// ページ(見出し自体が第N試合形式でない旧テンプレート等)ではheadingCount=0を
-// 返し、下記の選定ロジックでは「目安なし」として扱う。
+// 「第N試合」見出しの出現回数(=本来あるはずのbout数の目安)。0件のページ
+// (見出し自体が第N試合形式でない旧テンプレート等)ではheadingCount=0を返し、
+// 下記の選定ロジックでは「目安なし」として扱う。
+//
+// ユニーク番号数ではなく出現回数(生カウント)をそのまま使う(2026-07-31、
+// DEEP 121 IMPACTで判明した事故: プロカード(第1〜第9試合、第6試合は無し=
+// 8件)とアマチュア undercard(別セクションで第1試合・第2試合から番号が
+// 振り直される)が同一ページに混在するケースで、番号をSetで重複排除すると
+// アマチュア分の「1」「2」がプロ分と同じ集合要素に潰れてheadingCountが
+// 実際の見出し件数(10件)より少ない8件に過小評価され、本来正しく全10件を
+// 抽出できていたF1が「見出し数から乖離している」と誤判定されて、実際には
+// 1件取りこぼしている劣ったフォーマットに採用が入れ替わってしまった)。
 function countBoutHeadings(bodyClean: string): number {
-  return new Set([...bodyClean.matchAll(/第\s*(\d+)試合/g)].map((m) => Number(m[1]))).size;
+  return [...bodyClean.matchAll(/第\s*(\d+)試合/g)].length;
 }
 
 // 2026-07-31、悉皆突合調査(PR #290/#291)で判明した事故: 「最初に見つかった
@@ -607,6 +616,31 @@ function countBoutHeadings(bodyClean: string): number {
 // しない・1つだけ採用する」という既存方針は変えない(採用基準を精緻化した
 // だけ)。同点の場合は既存の優先順位(F1→Group4→F2→F10→F8→Group2→Group1)を
 // 維持する。
+// 選手名として明らかに不自然な値(見出し・セクション区切り記号で始まる)を
+// 含む候補は、境界判定を誤ってページの別セクションを飲み込んでいる可能性が
+// 高いため丸ごと不採用にする(2026-07-31、DEEP TOKYO IMPACT 2023 6th ROUND等で
+// 発見: headingCountに数値上近いというだけでf8がf2より優先されたが、f8の
+// 実体はfighterBNameに次boutの見出しテキスト「▼DEEPメガトン級 5分3R」等が
+// 丸ごと紛れ込んだ壊れた抽出だった)。件数の近さだけでなく内容の健全性も
+// 選定基準に加える。
+const HEADING_MARKER_RE = /^[▼■【]/;
+// 決着方法(methodRaw)は実例上どれだけ長くても数十文字程度(例:「判定0-3
+// (27-28/27-28/27-29)」)。2026-07-31、DEEP JEWELS 47・DEEP OSAKA IMPACT
+// 2024 1st ROUND(いずれもgroup1_vs採用時)で発見: 次bout以降の見出しや、
+// 最終boutでは大会概要・ニュース一覧・script等ページ全体の残骸がmethodRawに
+// 丸ごと紛れ込む事故があった(名前欄は正常に見えるため選手名チェックだけでは
+// 検出できない)。閾値は実在する最長の正当なmethod文より十分大きく、
+// 事故時の混入量(数百〜数千文字)より十分小さい200文字に設定する。
+const MAX_PLAUSIBLE_METHOD_LEN = 200;
+function hasGarbledContent(bouts: DeepRawBout[]): boolean {
+  return bouts.some(
+    (b) =>
+      HEADING_MARKER_RE.test(b.fighterAName) ||
+      HEADING_MARKER_RE.test(b.fighterBName) ||
+      b.methodRaw.length > MAX_PLAUSIBLE_METHOD_LEN
+  );
+}
+
 export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; formatsUsed: DeepBoutFormat[] } {
   const bodyClean = scopeToResultsSection(rawBodyClean);
   const headingCount = countBoutHeadings(bodyClean);
@@ -620,7 +654,7 @@ export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; 
     { bouts: extractGroup2Bouts(bodyClean), format: "group2_no_heading" },
     { bouts: extractVsBouts(bodyClean), format: "group1_vs" },
   ];
-  const candidates = allCandidates.filter((c) => c.bouts.length > 0);
+  const candidates = allCandidates.filter((c) => c.bouts.length > 0 && !hasGarbledContent(c.bouts));
 
   if (candidates.length === 0) return { bouts: [], formatsUsed: [] };
 

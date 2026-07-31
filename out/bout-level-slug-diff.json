@@ -1,0 +1,74 @@
+[
+  {
+    "event": "DEEP JEWELS 19",
+    "date": "2018-03-10",
+    "fighterAName": "KINGレイナ",
+    "fighterBName": "パク・ソヨン",
+    "beforeASlug": null,
+    "beforeBSlug": "young-parkseo",
+    "afterASlug": null,
+    "afterBSlug": null,
+    "boutFoundAfter": true,
+    "headingText": "DEEP JEWELSライト級 5分3R※肘あり"
+  },
+  {
+    "event": "DEEP 105 IMPACT",
+    "date": "2021-12-12",
+    "fighterAName": "赤沢幸典",
+    "fighterBName": "大成",
+    "beforeASlug": "akazawa-yukinori",
+    "beforeBSlug": "sekino-taisei",
+    "afterASlug": "akazawa-yukinori",
+    "afterBSlug": null,
+    "boutFoundAfter": true,
+    "headingText": "DEEPメガトン級 5分2R"
+  },
+  {
+    "event": "DEEP TOKYO IMPACT 2022 2nd ROUND",
+    "date": "2022-03-13",
+    "fighterAName": "酒井リョウ",
+    "fighterBName": "大成",
+    "beforeASlug": "sakai-ryo",
+    "beforeBSlug": "sekino-taisei",
+    "afterASlug": "sakai-ryo",
+    "afterBSlug": null,
+    "boutFoundAfter": true,
+    "headingText": "DEEPメガトン級 5分2R"
+  },
+  {
+    "event": "DEEP 121 IMPACT",
+    "date": "2024-09-16",
+    "fighterAName": "水野竜也",
+    "fighterBName": "大成",
+    "beforeASlug": null,
+    "beforeBSlug": "sekino-taisei",
+    "afterASlug": null,
+    "afterBSlug": null,
+    "boutFoundAfter": true,
+    "headingText": "DEEPメガトン級 5分3R"
+  },
+  {
+    "event": "DEEP 126 IMPACT",
+    "date": "2025-08-17",
+    "fighterAName": "酒井リョウ",
+    "fighterBName": "大成",
+    "beforeASlug": "sakai-ryo",
+    "beforeBSlug": "sekino-taisei",
+    "afterASlug": "sakai-ryo",
+    "afterBSlug": null,
+    "boutFoundAfter": true,
+    "headingText": "DEEPメガトン級王座決定戦 5分3R"
+  },
+  {
+    "event": "DEEP NAGOYA IMPACT 2026 2nd ROUND",
+    "date": "2026-06-14",
+    "fighterAName": "ユリカ・グラップリングシュートボクサーズジム",
+    "fighterBName": "パク・ソヨン",
+    "beforeASlug": null,
+    "beforeBSlug": "young-parkseo",
+    "afterASlug": null,
+    "afterBSlug": null,
+    "boutFoundAfter": true,
+    "headingText": "MAXFCJAPAN公式戦 -48kg契約 3分3R（EX1R）"
+  }
+]

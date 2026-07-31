@@ -5,11 +5,11 @@
 - アーカイブ総リンク数: 288
 - 候補大会数(開催済・KICK/アマチュア除く): 271
 - 投入大会数: 242
-- bout数: 2381
-- parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 5件
-- resultType=unknown: 136件
-- 選手名未解決(fighterASlug/fighterBSlug null): 3884件
-- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 191件
+- bout数: 2360
+- parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 6件
+- resultType=unknown: 63件
+- 選手名未解決(fighterASlug/fighterBSlug null): 3817件
+- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 228件
 - 除外(アマチュア大会): 9件
 - 除外(抽出0件・F7/F11相当): 29件
 - 除外(開催日不明): 1件
@@ -69,53 +69,53 @@
 | DEEP OSAKA IMPACT 2026 3rd ROUND | 2026-06-21 | 19 | F1 | 0 | 0 | 37 | 2 |
 | DEEP NAGOYA IMPACT 2026 2nd ROUND | 2026-06-14 | 13 | F1 | 1 | 0 | 26 | 5 |
 | DEEP HAMAMATSU IMPACT 2026 1ST ROUND | 2026-05-31 | 12 | F1 | 0 | 1 | 24 | 9 |
-| DEEP JEWELS 53 | 2026-05-24 | 13 | group1_vs | 0 | 12 | 25 | 0 |
-| DEEP TOKYO IMPACT 2026 3rd ROUND | 2026-05-24 | 10 | group2_no_heading | 0 | 0 | 17 | 1 |
-| DEEP 131 IMPACT 25th Anniversary | 2026-05-04 | 13 | group2_no_heading | 0 | 0 | 0 | 2 |
+| DEEP JEWELS 53 | 2026-05-24 | 10 | F1 | 0 | 0 | 18 | 4 |
+| DEEP TOKYO IMPACT 2026 3rd ROUND | 2026-05-24 | 10 | F1 | 0 | 0 | 17 | 2 |
+| DEEP 131 IMPACT 25th Anniversary | 2026-05-04 | 15 | F1 | 0 | 0 | 0 | 2 |
 | DEEP TOKYO IMPACT 2026 2nd ROUND | 2026-04-19 | 11 | F1 | 0 | 0 | 21 | 2 |
 | DEEP 130 IMPACT | 2026-03-20 | 8 | F1 | 0 | 0 | 1 | 2 |
-| DEEP OSAKA IMPACT 2026 2nd ROUND | 2026-03-08 | 10 | group2_no_heading | 0 | 0 | 20 | 0 |
-| DEEP OSAKA IMPACT 2026 1st ROUND | 2026-03-08 | 11 | group2_no_heading | 0 | 0 | 20 | 2 |
+| DEEP OSAKA IMPACT 2026 2nd ROUND | 2026-03-08 | 11 | F1 | 0 | 0 | 22 | 2 |
+| DEEP OSAKA IMPACT 2026 1st ROUND | 2026-03-08 | 12 | F1 | 0 | 0 | 21 | 2 |
 | DEEP JEWELS 52 | 2026-02-23 | 8 | F1 | 0 | 0 | 14 | 5 |
-| DEEP TOKYO IMPACT 2026 1st ROUND | 2026-02-23 | 10 | group2_no_heading | 0 | 0 | 14 | 1 |
+| DEEP TOKYO IMPACT 2026 1st ROUND | 2026-02-23 | 10 | F1 | 0 | 0 | 14 | 3 |
 | DEEP NAGOYA IMPACT 2026 1st ROUND | 2026-02-23 | 15 | F1 | 0 | 1 | 30 | 8 |
 | DEEP FIGHT CHALLENGE 2026 1st ROUND | 2026-01-23 | 3 | F1 | 0 | 0 | 5 | 4 |
-| DEEP TOKYO IMPACT 2025 6th ROUND | 2025-12-14 | 12 | group1_vs | 0 | 12 | 20 | 0 |
-| DEEP 129 IMPACT | 2025-12-14 | 8 | F1 | 0 | 0 | 11 | 2 |
+| DEEP TOKYO IMPACT 2025 6th ROUND | 2025-12-14 | 11 | F1 | 0 | 0 | 17 | 3 |
+| DEEP 129 IMPACT | 2025-12-14 | 9 | group4_detached_mark | 0 | 0 | 11 | 2 |
 | DEEP OSAKA IMPACT 2025 5th ROUND | 2025-12-07 | 18 | F1 | 0 | 0 | 35 | 3 |
 | DEEP JEWELS 51 | 2025-11-23 | 6 | F1 | 0 | 0 | 10 | 4 |
 | DEEP TOKYO IMPACT 2025 5th ROUND | 2025-11-23 | 9 | F1 | 0 | 0 | 13 | 4 |
-| DEEP 128 IMPACT | 2025-11-02 | 8 | group2_no_heading | 0 | 0 | 6 | 2 |
-| DEEP HAMAMATSU IMPACT 2025 2nd ROUND | 2025-10-05 | 19 | group2_no_heading | 0 | 0 | 38 | 6 |
+| DEEP 128 IMPACT | 2025-11-02 | 9 | F1 | 0 | 0 | 6 | 2 |
+| DEEP HAMAMATSU IMPACT 2025 2nd ROUND | 2025-10-05 | 19 | F1 | 0 | 0 | 38 | 8 |
 | DEEP OSAKA IMPACT 2025 4th ROUND | 2025-09-21 | 7 | F1 | 0 | 0 | 13 | 2 |
 | DEEP OSAKA IMPACT 2025 3rd ROUND | 2025-09-21 | 10 | F1 | 0 | 0 | 19 | 0 |
 | DEEP 127 IMPACT | 2025-09-15 | 11 | F1 | 0 | 0 | 12 | 1 |
 | DEEP JEWELS 50 | 2025-09-07 | 7 | F1 | 0 | 0 | 13 | 4 |
-| DEEP TOKYO IMPACT 2025 4th ROUND | 2025-09-07 | 8 | F1 | 0 | 0 | 14 | 3 |
+| DEEP TOKYO IMPACT 2025 4th ROUND | 2025-09-07 | 11 | group2_no_heading | 0 | 0 | 17 | 3 |
 | DEEP 126 IMPACT | 2025-08-17 | 9 | F1 | 0 | 0 | 5 | 0 |
 | DEEP OSAKA IMPACT 2025 2nd ROUND | 2025-06-29 | 16 | F1 | 0 | 0 | 28 | 0 |
-| DEEP TOKYO IMPACT 2025 3rd ROUND | 2025-05-25 | 7 | F1 | 1 | 0 | 11 | 2 |
+| DEEP TOKYO IMPACT 2025 3rd ROUND | 2025-05-25 | 10 | group2_no_heading | 0 | 0 | 15 | 2 |
 | DEEP JEWELS 49 | 2025-05-25 | 5 | F1 | 0 | 0 | 10 | 3 |
-| DEEP 125 IMPACT | 2025-05-05 | 8 | group2_no_heading | 0 | 4 | 4 | 2 |
+| DEEP 125 IMPACT | 2025-05-05 | 10 | F1 | 0 | 5 | 4 | 2 |
 | DEEP HAMAMATSU IMPACT 2025 1st ROUND | 2025-04-27 | 9 | F1 | 1 | 0 | 17 | 9 |
 | DEEP NAGOYA IMPACT 2025 1st ROUND | 2025-04-20 | 13 | F1 | 0 | 0 | 26 | 6 |
-| DEEP TOKYO IMPACT 2025 2nd ROUND | 2025-04-13 | 10 | group2_no_heading | 0 | 0 | 15 | 1 |
+| DEEP TOKYO IMPACT 2025 2nd ROUND | 2025-04-13 | 10 | F1 | 0 | 0 | 15 | 3 |
 | DEEP OSAKA IMPACT 2025 1st ROUND | 2025-04-06 | 18 | F1 | 0 | 0 | 34 | 1 |
-| DEEP TOKYO IMPACT 2025 1st ROUND | 2025-03-23 | 9 | group2_no_heading | 0 | 0 | 13 | 0 |
+| DEEP TOKYO IMPACT 2025 1st ROUND | 2025-03-23 | 9 | group4_detached_mark | 0 | 0 | 13 | 3 |
 | DEEP JEWELS 48 | 2025-03-23 | 10 | F1 | 0 | 1 | 17 | 1 |
 | DEEP 124 IMPACT | 2025-03-15 | 6 | F1 | 0 | 0 | 5 | 0 |
 | DEEP OSAKA IMPACT 2024 5th ROUND | 2024-12-22 | 9 | group1_vs | 0 | 0 | 17 | 0 |
 | DEEP OSAKA IMPACT 2024 4th ROUND | 2024-12-22 | 8 | group1_vs | 0 | 0 | 11 | 0 |
 | DEEP 123 IMPACT | 2024-12-08 | 9 | F1 | 0 | 0 | 9 | 2 |
-| DEEP TOKYO IMPACT 2024 6th ROUND | 2024-12-08 | 12 | group1_vs | 0 | 12 | 20 | 0 |
+| DEEP TOKYO IMPACT 2024 6th ROUND | 2024-12-08 | 10 | F1 | 0 | 0 | 16 | 3 |
 | DEEP JEWELS 47 | 2024-11-23 | 6 | F1 | 0 | 0 | 10 | 3 |
 | DEEP TOKYO IMPACT 2024 5th ROUND | 2024-11-23 | 11 | F1 | 0 | 0 | 13 | 3 |
-| DEEP 122 IMPACT | 2024-11-04 | 9 | group1_vs | 0 | 9 | 11 | 0 |
+| DEEP 122 IMPACT | 2024-11-04 | 8 | F1 | 0 | 0 | 10 | 2 |
 | DEEP HAMAMATSU IMPACT 2024 | 2024-10-06 | 15 | group4_detached_mark | 0 | 1 | 28 | 5 |
 | DEEP OSAKA IMPACT 2024 3rd ROUND | 2024-09-22 | 15 | group1_vs | 0 | 2 | 24 | 0 |
-| DEEP 121 IMPACT | 2024-09-16 | 7 | group2_no_heading | 0 | 1 | 6 | 2 |
-| DEEP JEWELS 46 | 2024-09-08 | 7 | group2_no_heading | 0 | 0 | 12 | 1 |
-| DEEP TOKYO IMPACT 2024 4th ROUND | 2024-09-08 | 13 | group1_vs | 0 | 13 | 24 | 0 |
+| DEEP 121 IMPACT | 2024-09-16 | 8 | F1 | 0 | 1 | 6 | 2 |
+| DEEP JEWELS 46 | 2024-09-08 | 8 | F1 | 0 | 0 | 13 | 3 |
+| DEEP TOKYO IMPACT 2024 4th ROUND | 2024-09-08 | 12 | F1 | 0 | 0 | 22 | 2 |
 | DEEPサマーフェスティバル2024 inお台場 | 2024-08-31 | 7 | F1 | 0 | 0 | 9 | 1 |
 | DEEP 120 IMPACT | 2024-07-14 | 10 | F1 | 0 | 0 | 7 | 0 |
 | DEEP NAGOYA IMPACT 2024 4th ROUND | 2024-08-25 | 7 | group1_vs | 0 | 0 | 14 | 0 |
@@ -129,13 +129,13 @@
 | DEEP NAGOYA IMPACT 2024 1st/2nd ROUND | 2024-04-07 | 14 | group1_vs | 0 | 1 | 28 | 0 |
 | DEEP JEWELS 44 | 2024-03-24 | 6 | F1 | 0 | 0 | 11 | 1 |
 | DEEP TOKYO IMPACT 2024 1st ROUND | 2024-03-24 | 10 | F1 | 0 | 1 | 17 | 1 |
-| DEEP OSAKA IMPACT 2024 1st ROUND | 2024-03-17 | 16 | group1_vs | 0 | 16 | 29 | 0 |
+| DEEP OSAKA IMPACT 2024 1st ROUND | 2024-03-17 | 10 | F1 | 2 | 0 | 18 | 4 |
 | DEEP 118 IMPACT | 2024-03-09 | 5 | F1 | 1 | 0 | 3 | 1 |
-| DEEP TOKYO IMPACT 2023 7th ROUND | 2023-12-10 | 8 | f8_fully_separated | 0 | 6 | 16 | 0 |
-| DEEP 117 IMPACT | 2023-12-10 | 10 | f8_fully_separated | 0 | 6 | 20 | 0 |
-| DEEP OSAKA IMPACT 2023 3rd ROUND | 2023-11-26 | 16 | f8_fully_separated | 0 | 7 | 30 | 0 |
+| DEEP TOKYO IMPACT 2023 7th ROUND | 2023-12-10 | 1 | f2_method_middle | 0 | 1 | 1 | 2 |
+| DEEP 117 IMPACT | 2023-12-10 | 2 | f2_method_middle | 0 | 2 | 2 | 2 |
+| DEEP OSAKA IMPACT 2023 3rd ROUND | 2023-11-26 | 10 | f2_method_middle | 0 | 10 | 19 | 0 |
 | DEEP JEWELS 43 | 2003-11-23 | 7 | group2_no_heading | 0 | 3 | 13 | 0 |
-| DEEP TOKYO IMPACT 2023 6th ROUND | 2023-11-23 | 11 | f8_fully_separated | 0 | 3 | 22 | 0 |
+| DEEP TOKYO IMPACT 2023 6th ROUND | 2023-11-23 | 9 | f2_method_middle | 0 | 9 | 16 | 1 |
 | DEEP 116 IMPACT | 2023-11-11 | 9 | group2_no_heading | 0 | 0 | 8 | 2 |
 | DEEP HAMAMATSU IMPACT 2023 | 2023-09-24 | 16 | group4_detached_mark | 0 | 0 | 30 | 4 |
 | DEEP 115 IMPACT～DEEP VS BLACK COMBAT～ | 2023-09-18 | 9 | F1 | 0 | 0 | 9 | 1 |
