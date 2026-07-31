@@ -1,0 +1,4182 @@
+{
+  "requestCount": 416,
+  "total": 418,
+  "results": [
+    {
+      "eventName": "PANCRASE BLOOD.11",
+      "date": "2026-07-26",
+      "url": "https://www.pancrase.co.jp/data/result/2026/0726_pb11.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 364",
+      "date": "2026-07-26",
+      "url": "https://www.pancrase.co.jp/data/result/2026/0726.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 363",
+      "date": "2026-06-28",
+      "url": "https://www.pancrase.co.jp/data/result/2026/0628.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 362",
+      "date": "2026-05-31",
+      "url": "https://www.pancrase.co.jp/data/result/2026/0531.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.10",
+      "date": "2026-05-04",
+      "url": "https://www.pancrase.co.jp/data/result/2026/0504.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 361",
+      "date": "2026-03-14",
+      "url": "https://www.pancrase.co.jp/data/result/2026/0314.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.9",
+      "date": "2026-02-11",
+      "url": "https://www.pancrase.co.jp/data/result/2026/0211.html",
+      "existingCount": 33,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 33,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 360",
+      "date": "2025-12-21",
+      "url": "https://www.pancrase.co.jp/data/result/2025/1221.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 359",
+      "date": "2025-11-09",
+      "url": "https://www.pancrase.co.jp/data/result/2025/1109n.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 358",
+      "date": "2025-11-09",
+      "url": "https://www.pancrase.co.jp/data/result/2025/1109d.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 357",
+      "date": "2025-09-23",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0923n.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 356",
+      "date": "2025-09-23",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0923d.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.8",
+      "date": "2025-08-10",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0810.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 355",
+      "date": "2025-07-27",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0727.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 354",
+      "date": "2025-06-01",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0601.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.7",
+      "date": "2025-05-18",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0518.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.6",
+      "date": "2025-05-06",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0506.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 353",
+      "date": "2025-04-27",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0427.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 352",
+      "date": "2025-03-09",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0309.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.5",
+      "date": "2025-02-11",
+      "url": "https://www.pancrase.co.jp/data/result/2025/0211.html",
+      "existingCount": 33,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 33,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 351",
+      "date": "2024-12-15",
+      "url": "https://www.pancrase.co.jp/data/result/2024/1215n.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 350",
+      "date": "2024-12-15",
+      "url": "https://www.pancrase.co.jp/data/result/2024/1215d.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 349",
+      "date": "2024-11-10",
+      "url": "https://www.pancrase.co.jp/data/result/2024/1110n.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 348",
+      "date": "2024-11-10",
+      "url": "https://www.pancrase.co.jp/data/result/2024/1110d.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 347",
+      "date": "2024-09-29",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0929.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.4",
+      "date": "2024-08-25",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0825.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.3",
+      "date": "2024-07-28",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0728.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 346",
+      "date": "2024-07-21",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0721.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 345",
+      "date": "2024-06-30",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0630n.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 344",
+      "date": "2024-06-30",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0630d.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 343",
+      "date": "2024-05-25",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0525.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 342",
+      "date": "2024-04-29",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0429.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 341",
+      "date": "2024-03-31",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0331.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.2",
+      "date": "2024-02-25",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0225.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE BLOOD.1",
+      "date": "2024-02-18",
+      "url": "https://www.pancrase.co.jp/data/result/2024/0218.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 340",
+      "date": "2023-12-24",
+      "url": "https://www.pancrase.co.jp/data/result/2023/1224.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 339",
+      "date": "2023-11-12",
+      "url": "https://www.pancrase.co.jp/data/result/2023/1112night.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 338",
+      "date": "2023-11-12",
+      "url": "https://www.pancrase.co.jp/data/result/2023/1112day.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "NEO BLOOD! 6",
+      "date": "2023-11-03",
+      "url": "https://www.pancrase.co.jp/data/result/2023/1103.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 337",
+      "date": "2023-09-24",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0924.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "NEO BLOOD! 5",
+      "date": "2023-08-27",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0827.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 336",
+      "date": "2023-07-09",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0709night.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 335",
+      "date": "2023-07-09",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0709day.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 334",
+      "date": "2023-06-04",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0604.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 333",
+      "date": "2023-04-30",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0430.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 332",
+      "date": "2023-03-26",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0326n.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 1
+    },
+    {
+      "eventName": "PANCRASE 331",
+      "date": "2023-03-26",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0326.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "NEO BLOOD! 3",
+      "date": "2023-03-04",
+      "url": "https://www.pancrase.co.jp/data/result/2023/0304.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 330",
+      "date": "2022-12-25",
+      "url": "https://www.pancrase.co.jp/data/result/2022/1225.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 1
+    },
+    {
+      "eventName": "NEO BLOOD! 2",
+      "date": "2022-10-10",
+      "url": "https://www.pancrase.co.jp/data/result/2022/1010.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 329",
+      "date": "2022-09-11",
+      "url": "https://www.pancrase.co.jp/data/result/2022/0911.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 328",
+      "date": "2022-07-18",
+      "url": "https://www.pancrase.co.jp/data/result/2022/0718.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "NEO BLOOD! 1",
+      "date": "2022-05-22",
+      "url": "https://www.pancrase.co.jp/data/result/2022/0522.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 327",
+      "date": "2022-04-29",
+      "url": "https://www.pancrase.co.jp/data/result/2022/0429.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "前田吉朗引退興行",
+      "date": "2022-04-10",
+      "url": "https://www.pancrase.co.jp/data/result/2022/0410.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 326",
+      "date": "2022-03-21",
+      "url": "https://www.pancrase.co.jp/data/result/2022/0321.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 325",
+      "date": "2021-12-12",
+      "url": "https://www.pancrase.co.jp/data/result/2021/1212.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 324",
+      "date": "2021-10-17",
+      "url": "https://www.pancrase.co.jp/data/result/2021/1017.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 323",
+      "date": "2021-09-12",
+      "url": "https://www.pancrase.co.jp/data/result/2021/0912.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE大阪大会",
+      "date": "2021-07-18",
+      "url": "https://www.pancrase.co.jp/data/result/2021/0718.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 322",
+      "date": "2021-06-27",
+      "url": "https://www.pancrase.co.jp/data/result/2021/0627.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 321",
+      "date": "2021-05-30",
+      "url": "https://www.pancrase.co.jp/data/result/2021/0530.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 大阪大会",
+      "date": "2021-04-04",
+      "url": "https://www.pancrase.co.jp/data/result/2021/0404.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 320",
+      "date": "2020-12-13",
+      "url": "https://www.pancrase.co.jp/data/result/2020/1213.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "DEEP ＆ PANCRASE 大阪大会",
+      "date": "2020-11-29",
+      "url": "https://www.pancrase.co.jp/data/result/2020/1129.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 319",
+      "date": "2020-10-25",
+      "url": "https://www.pancrase.co.jp/data/result/2020/1025.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 318 -Beyond317-",
+      "date": "2020-09-27",
+      "url": "https://www.pancrase.co.jp/data/result/2020/0927.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE大阪大会",
+      "date": "2020-08-09",
+      "url": "https://www.pancrase.co.jp/data/result/2020/0809.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE316",
+      "date": "2020-07-24",
+      "url": "https://www.pancrase.co.jp/data/result/2020/0724.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE312",
+      "date": "2020-02-16",
+      "url": "https://www.pancrase.co.jp/data/result/2020/0216.html",
+      "existingCount": 23,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 23,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE311",
+      "date": "2019-12-08",
+      "url": "https://www.pancrase.co.jp/data/result/2019/1208.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "DEEP & PANCRASE大阪大会",
+      "date": "2019-11-17",
+      "url": "https://www.pancrase.co.jp/data/result/2019/1117.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE310",
+      "date": "2019-11-10",
+      "url": "https://www.pancrase.co.jp/data/result/2019/1110.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE309",
+      "date": "2019-10-20",
+      "url": "https://www.pancrase.co.jp/data/result/2019/1020.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE308",
+      "date": "2019-09-29",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0929.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE札幌大会",
+      "date": "2019-09-23",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0923.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "Road to ONE:CENTURY",
+      "date": "2019-09-01",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0901.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE307",
+      "date": "2019-07-21",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0721.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE大阪大会",
+      "date": "2019-07-15",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0715.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE306",
+      "date": "2019-06-30",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0630.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE305",
+      "date": "2019-05-26",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0526.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE304",
+      "date": "2019-04-14",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0414.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE303",
+      "date": "2019-03-17",
+      "url": "https://www.pancrase.co.jp/data/result/2019/0317.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE302",
+      "date": "2018-12-24",
+      "url": "https://www.pancrase.co.jp/data/result/2018/1224.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE302",
+      "date": "2018-12-09",
+      "url": "https://www.pancrase.co.jp/data/result/2018/1209.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE301",
+      "date": "2018-11-25",
+      "url": "https://www.pancrase.co.jp/data/result/2018/1125.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE300",
+      "date": "2018-10-21",
+      "url": "https://www.pancrase.co.jp/data/result/2018/1021.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE299",
+      "date": "2018-09-09",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0909.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE298",
+      "date": "2018-08-05",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0805.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 大阪大会",
+      "date": "2018-07-15",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0715.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE297",
+      "date": "2018-07-01",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0701.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE296",
+      "date": "2018-05-20",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0520.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE札幌大会",
+      "date": "2018-05-13",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0513.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE295",
+      "date": "2018-04-15",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0415.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE294",
+      "date": "2018-03-11",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0311.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE293",
+      "date": "2018-02-04",
+      "url": "https://www.pancrase.co.jp/data/result/2018/0204.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "光野有二朗グループpresents PANCRASE vs DEEP 大阪大会",
+      "date": "2017-12-24",
+      "url": "https://www.pancrase.co.jp/data/result/2017/1224.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE292",
+      "date": "2017-12-10",
+      "url": "https://www.pancrase.co.jp/data/result/2017/1210.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE291",
+      "date": "2017-11-12",
+      "url": "https://www.pancrase.co.jp/data/result/2017/1112.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE札幌大会",
+      "date": "2017-10-22",
+      "url": "https://www.pancrase.co.jp/data/result/2017/1022.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE290",
+      "date": "2017-10-08",
+      "url": "https://www.pancrase.co.jp/data/result/2017/1008.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE289",
+      "date": "2017-08-20",
+      "url": "https://www.pancrase.co.jp/data/result/2017/0820.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE大阪大会",
+      "date": "2017-07-16",
+      "url": "https://www.pancrase.co.jp/data/result/2017/0716.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE288",
+      "date": "2017-07-02",
+      "url": "https://www.pancrase.co.jp/data/result/2017/0702.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE287",
+      "date": "2017-05-28",
+      "url": "https://www.pancrase.co.jp/data/result/2017/0528.html",
+      "existingCount": 22,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 22,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE札幌大会",
+      "date": "2017-05-14",
+      "url": "https://www.pancrase.co.jp/data/result/2017/0514.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 3
+    },
+    {
+      "eventName": "PANCRASE286",
+      "date": "2017-04-23",
+      "url": "https://www.pancrase.co.jp/data/result/2017/0423.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE285",
+      "date": "2017-03-12",
+      "url": "https://www.pancrase.co.jp/data/result/2017/0312.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE284",
+      "date": "2017-02-05",
+      "url": "https://www.pancrase.co.jp/data/result/2017/0205.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE283",
+      "date": "2016-12-18",
+      "url": "https://www.pancrase.co.jp/data/result/2016/1218.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE大阪大会",
+      "date": "2016-12-11",
+      "url": "https://www.pancrase.co.jp/data/result/2016/1211.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE282",
+      "date": "2016-11-13",
+      "url": "https://www.pancrase.co.jp/data/result/2016/1113.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE札幌大会",
+      "date": "2016-10-16",
+      "url": "https://www.pancrase.co.jp/data/result/2016/1016.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE281",
+      "date": "2016-10-02",
+      "url": "https://www.pancrase.co.jp/data/result/2016/1002.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE280",
+      "date": "2016-09-11",
+      "url": "https://www.pancrase.co.jp/data/result/2016/0911.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE大阪大会",
+      "date": "2016-07-31",
+      "url": "https://www.pancrase.co.jp/data/result/2016/0731.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE279",
+      "date": "2016-07-24",
+      "url": "https://www.pancrase.co.jp/data/result/2016/0724.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE278",
+      "date": "2016-06-12",
+      "url": "https://www.pancrase.co.jp/data/result/2016/0612.html",
+      "existingCount": 22,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 22,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE札幌大会",
+      "date": "2016-05-29",
+      "url": "https://www.pancrase.co.jp/data/result/2016/0529.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE277",
+      "date": "2016-04-24",
+      "url": "https://www.pancrase.co.jp/data/result/2016/0424.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE276",
+      "date": "2016-03-13",
+      "url": "https://www.pancrase.co.jp/data/result/2016/0313.html",
+      "existingCount": 22,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 22,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE275",
+      "date": "2016-01-31",
+      "url": "https://www.pancrase.co.jp/data/result/2016/0131.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 大阪大会",
+      "date": "2015-12-23",
+      "url": "https://www.pancrase.co.jp/data/result/2015/1223.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 274",
+      "date": "2015-12-20",
+      "url": "https://www.pancrase.co.jp/data/result/2015/1220.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 1
+    },
+    {
+      "eventName": "PANCRASE 273",
+      "date": "2015-12-13",
+      "url": "https://www.pancrase.co.jp/data/result/2015/1213.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE札幌大会2015",
+      "date": "2015-12-06",
+      "url": "https://www.pancrase.co.jp/data/result/2015/1206.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 272",
+      "date": "2015-11-28",
+      "url": "https://www.pancrase.co.jp/data/result/2015/1128.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 271",
+      "date": "2015-11-01",
+      "url": "https://www.pancrase.co.jp/data/result/2015/1101.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 270",
+      "date": "2015-10-04",
+      "url": "https://www.pancrase.co.jp/data/result/2015/1004.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 269",
+      "date": "2015-08-09",
+      "url": "https://www.pancrase.co.jp/data/result/2015/0809.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 1
+    },
+    {
+      "eventName": "PANCRASE大阪大会",
+      "date": "2015-07-26",
+      "url": "https://www.pancrase.co.jp/data/result/2015/0726.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 268",
+      "date": "2015-07-05",
+      "url": "https://www.pancrase.co.jp/data/result/2015/0705.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 267",
+      "date": "2015-05-31",
+      "url": "https://www.pancrase.co.jp/data/result/2015/0531.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE札幌大会2015",
+      "date": "2015-05-17",
+      "url": "https://www.pancrase.co.jp/data/result/2015/0517.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 266",
+      "date": "2015-04-26",
+      "url": "https://www.pancrase.co.jp/data/result/2015/0426.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 265",
+      "date": "2015-03-15",
+      "url": "https://www.pancrase.co.jp/data/result/2015/0315.html",
+      "existingCount": 27,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 27,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 264",
+      "date": "2015-02-01",
+      "url": "https://www.pancrase.co.jp/data/result/2015/0201.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "パンクラス大阪主催興行 PANCRASE 大阪大会",
+      "date": "2014-12-21",
+      "url": "https://www.pancrase.co.jp/data/result/2014/1221.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 263",
+      "date": "2014-12-06",
+      "url": "https://www.pancrase.co.jp/data/result/2014/1206.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 262",
+      "date": "2014-11-02",
+      "url": "https://www.pancrase.co.jp/data/result/2014/1102.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 261",
+      "date": "2014-10-05",
+      "url": "https://www.pancrase.co.jp/data/result/2014/1005.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 260",
+      "date": "2014-08-10",
+      "url": "https://www.pancrase.co.jp/data/result/2014/0810.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "パンクラス大阪主催興行 PANCRASE 大阪大会",
+      "date": "2014-07-20",
+      "url": "https://www.pancrase.co.jp/data/result/2014/0720.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 259",
+      "date": "2014-06-29",
+      "url": "https://www.pancrase.co.jp/data/result/2014/0629.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "パンクラス北海道大会",
+      "date": "2014-06-22",
+      "url": "https://www.pancrase.co.jp/data/result/2014/0622.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 258",
+      "date": "2014-05-11",
+      "url": "https://www.pancrase.co.jp/data/result/2014/0511.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "Bayside FIGHT.3",
+      "date": "2014-04-20",
+      "url": "https://www.pancrase.co.jp/data/result/2014/0420.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 25,
+      "existingNote": null,
+      "gap_chunkVsExisting": 11
+    },
+    {
+      "eventName": "PANCRASE 257",
+      "date": "2014-03-30",
+      "url": "https://www.pancrase.co.jp/data/result/2014/0330.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 256",
+      "date": "2014-02-02",
+      "url": "https://www.pancrase.co.jp/data/result/2014/0202.html",
+      "existingCount": 35,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 35,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "BOUT 17",
+      "date": "2014-10-19",
+      "url": "https://www.pancrase.co.jp/data/result/2014/bout.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "Bayside FIGHT.2",
+      "date": "2013-12-31",
+      "url": "https://www.pancrase.co.jp/data/result/2013/1231.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 4
+    },
+    {
+      "eventName": "PANCRASE 255",
+      "date": "2013-12-08",
+      "url": "https://www.pancrase.co.jp/data/result/2013/1208.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 254",
+      "date": "2013-12-07",
+      "url": "https://www.pancrase.co.jp/data/result/2013/1207.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 253",
+      "date": "2013-11-03",
+      "url": "https://www.pancrase.co.jp/data/result/2013/1103.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 252",
+      "date": "2013-09-29",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0929.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 251",
+      "date": "2013-09-07",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0907.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "Bayside FIGHT",
+      "date": "2013-09-01",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0901.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 29,
+      "existingNote": null,
+      "gap_chunkVsExisting": 21
+    },
+    {
+      "eventName": "PANCRASE250",
+      "date": "2013-07-28",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0728.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE249",
+      "date": "2013-07-14",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0714.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE248",
+      "date": "2013-06-30",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0630.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE247",
+      "date": "2013-05-19",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0519.html",
+      "existingCount": 27,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 27,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "(株)リョウ エンタープライズpresents 坂口道場×パンクラス合同興行",
+      "date": "2013-04-21",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0421.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE246",
+      "date": "2013-03-17",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0317.html",
+      "existingCount": 24,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 24,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE245",
+      "date": "2013-02-03",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0203.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE244",
+      "date": "2013-01-12",
+      "url": "https://www.pancrase.co.jp/data/result/2013/0112.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-12-01",
+      "url": "https://www.pancrase.co.jp/data/result/2012/1201.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-11-25",
+      "url": "https://www.pancrase.co.jp/data/result/2012/1125.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-11-10",
+      "url": "https://www.pancrase.co.jp/data/result/2012/1110.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-10-06",
+      "url": "https://www.pancrase.co.jp/data/result/2012/1006.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-09-01",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0901.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-08-05",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0805.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-07-29",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0729.html",
+      "existingCount": 0,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 0,
+      "existingNote": "no_bout_table_in_source",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-07-01",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0701.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-06-02",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0602.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-05-20",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0520.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-04-28",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0428.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-04-01",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0401.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-03-11",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0311.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-03-03",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0303.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-01-28",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0128.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2012 PROGRESS TOUR",
+      "date": "2012-01-22",
+      "url": "https://www.pancrase.co.jp/data/result/2012/0122.html",
+      "existingCount": 0,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 0,
+      "existingNote": "no_bout_table_in_source",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-12-03",
+      "url": "https://www.pancrase.co.jp/data/result/2011/1203.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-11-27",
+      "url": "https://www.pancrase.co.jp/data/result/2011/1127n.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-11-27",
+      "url": "https://www.pancrase.co.jp/data/result/2011/1127d.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-11-12",
+      "url": "https://www.pancrase.co.jp/data/result/2011/1112.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-10-02",
+      "url": "https://www.pancrase.co.jp/data/result/2011/1002.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-09-04",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0904.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-08-07",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0807.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-07-31",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0731.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-07-23",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0723.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-07-10",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0710.html",
+      "existingCount": 0,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 0,
+      "existingNote": "no_bout_table_in_source",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-06-05",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0605.html",
+      "existingCount": 23,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 23,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-05-03",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0503.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-04-03",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0403.html",
+      "existingCount": 23,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 23,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-03-13",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0313.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2011 IMPRESSIVE TOUR",
+      "date": "2011-02-06",
+      "url": "https://www.pancrase.co.jp/data/result/2011/0206.html",
+      "existingCount": 19,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 19,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "01.30 ゴールドジムサウス東京アネックス",
+      "date": null,
+      "url": "https://www.pancrase.co.jp/data/result/2011/0130.pdf",
+      "existingCount": 0,
+      "freshChunkCount": null,
+      "note": "pdf_only_no_html(既存メタデータより)"
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-12-19",
+      "url": "https://www.pancrase.co.jp/data/result/2010/1219.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-12-05",
+      "url": "https://www.pancrase.co.jp/data/result/2010/1205.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-11-03",
+      "url": "https://www.pancrase.co.jp/data/result/2010/1103.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-10-03",
+      "url": "https://www.pancrase.co.jp/data/result/2010/1003.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-09-19",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0919.html",
+      "existingCount": 2,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 2,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-09-05",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0905.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-08-08",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0808.html",
+      "existingCount": 21,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 21,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-07-04",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0704.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-06-05",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0605.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "05.16 ゴールドジムサウス東京アネックス(PDFファイル)",
+      "date": null,
+      "url": "https://www.pancrase.co.jp/data/result/2010/0516.pdf",
+      "existingCount": 0,
+      "freshChunkCount": null,
+      "note": "pdf_only_no_html(既存メタデータより)"
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-04-29",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0429.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-04-04",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0404.html",
+      "existingCount": 20,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 20,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-03-22",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0322.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2010 PASSION TOUR",
+      "date": "2010-02-07",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0207.html",
+      "existingCount": 22,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 22,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "パンクラスゲート4th CHANCE",
+      "date": "2010-01-10",
+      "url": "https://www.pancrase.co.jp/data/result/2010/0110.html",
+      "existingCount": 3,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 3,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2009 CHANGING TOUR",
+      "date": "2009-12-06",
+      "url": "https://www.pancrase.co.jp/data/result/2009/1206.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2009 CHANGING TOUR",
+      "date": "2009-11-08",
+      "url": "https://www.pancrase.co.jp/data/result/2009/1108.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2009 CHANGING TOUR",
+      "date": "2009-10-25",
+      "url": "https://www.pancrase.co.jp/data/result/2009/1025.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2009 CHANGING TOUR",
+      "date": "2009-10-17",
+      "url": "https://www.pancrase.co.jp/data/result/2009/1017.html",
+      "existingCount": 31,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 31,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2009 CHANGING TOUR",
+      "date": "2009-08-08",
+      "url": "https://www.pancrase.co.jp/data/result/2009/0808.html",
+      "existingCount": 18,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 18,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "パンクラスゲート2009",
+      "date": "2009-07-26",
+      "url": "https://www.pancrase.co.jp/data/result/2009/0726.html",
+      "existingCount": 23,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 23,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2009 CHANGING TOUR",
+      "date": "2009-06-07",
+      "url": "https://www.pancrase.co.jp/data/result/2009/0607.html",
+      "existingCount": 23,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 23,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "パンクラスゲート2009",
+      "date": "2009-05-24",
+      "url": "https://www.pancrase.co.jp/data/result/2009/0524.html",
+      "existingCount": 22,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 22,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2009 CHANGING TOUR",
+      "date": "2009-04-05",
+      "url": "https://www.pancrase.co.jp/data/result/2009/0405.html",
+      "existingCount": 22,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 22,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2009 CHANGING TOUR",
+      "date": "2009-02-01",
+      "url": "https://www.pancrase.co.jp/data/result/2009/0201.html",
+      "existingCount": 32,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 32,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-12-07",
+      "url": "https://www.pancrase.co.jp/data/result/2008/1207.html",
+      "existingCount": 17,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 17,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-10-26",
+      "url": "https://www.pancrase.co.jp/data/result/2008/1026.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-10-01",
+      "url": "https://www.pancrase.co.jp/data/result/2008/1001.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-09-07",
+      "url": "https://www.pancrase.co.jp/data/result/2008/0907.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-08-27",
+      "url": "https://www.pancrase.co.jp/data/result/2008/0827.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-06-01",
+      "url": "https://www.pancrase.co.jp/data/result/2008/0601.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-05-25",
+      "url": "https://www.pancrase.co.jp/data/result/2008/0525.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-04-27",
+      "url": "https://www.pancrase.co.jp/data/result/2008/0427.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-03-26",
+      "url": "https://www.pancrase.co.jp/data/result/2008/0326.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-03-23",
+      "url": "https://www.pancrase.co.jp/data/result/2008/0323.html",
+      "existingCount": 30,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 30,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2008 SHINING TOUR",
+      "date": "2008-01-30",
+      "url": "https://www.pancrase.co.jp/data/result/2008/0130.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-12-22",
+      "url": "https://www.pancrase.co.jp/data/result/2007/1222.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-11-28",
+      "url": "https://www.pancrase.co.jp/data/result/2007/1128.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-10-14",
+      "url": "https://www.pancrase.co.jp/data/result/2007/1014.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-09-30",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0930.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-09-05",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0905.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-07-27",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0727.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-05-30",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0530.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-05-06",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0506.html",
+      "existingCount": 13,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 13,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-04-27",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0427.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE REAL 2007",
+      "date": "2007-04-08",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0408.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-03-25",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0325.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-03-18",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0318.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-02-28",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0228.html",
+      "existingCount": 14,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 14,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2007 RISING TOUR",
+      "date": "2007-02-04",
+      "url": "https://www.pancrase.co.jp/data/result/2007/0204.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-12-10",
+      "url": "https://www.pancrase.co.jp/data/result/2006/1210.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-12-02",
+      "url": "https://www.pancrase.co.jp/data/result/2006/1202.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-10-25",
+      "url": "https://www.pancrase.co.jp/data/result/2006/1025.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-10-01",
+      "url": "https://www.pancrase.co.jp/data/result/2006/1001.html",
+      "existingCount": 15,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 15,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-09-16",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0916.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-08-27",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0827.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-07-28",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0728.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-06-06",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0606.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-05-02",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0502.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-04-09",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0409.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-04-02",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0402.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-03-19",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0319.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-02-19",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0219.html",
+      "existingCount": 0,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 0,
+      "existingNote": "no_bout_table_in_source",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2006 BLOW TOUR",
+      "date": "2006-01-26",
+      "url": "https://www.pancrase.co.jp/data/result/2006/0126.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-12-04",
+      "url": "https://www.pancrase.co.jp/data/result/2005/1204.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-11-04",
+      "url": "https://www.pancrase.co.jp/data/result/2005/1104.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-10-02",
+      "url": "https://www.pancrase.co.jp/data/result/2005/1002.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-09-04",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0904.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE Z",
+      "date": "2005-09-03",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0903.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-08-27",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0827.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-07-31",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0731.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-07-10",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0710.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-06-05",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0605.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-05-01",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0501.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-04-10",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0410.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-03-06",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0306.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-02-27",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0227.html",
+      "existingCount": 16,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 16,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2005 SPIRAL TOUR",
+      "date": "2005-02-04",
+      "url": "https://www.pancrase.co.jp/data/result/2005/0204.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-12-21",
+      "url": "https://www.pancrase.co.jp/data/result/2004/1221.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-11-26",
+      "url": "https://www.pancrase.co.jp/data/result/2004/1126.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-11-07",
+      "url": "https://www.pancrase.co.jp/data/result/2004/1107.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-10-12",
+      "url": "https://www.pancrase.co.jp/data/result/2004/1012.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-09-24",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0924.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-08-22",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0822.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-07-25",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0725n.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-07-25",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0725d.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-06-22",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0622.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-05-28",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0528.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-05-02",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0502.html",
+      "existingCount": 0,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 0,
+      "existingNote": "no_bout_table_in_source",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-04-23",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0423.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-03-29",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0329.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-02-15",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0215.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2004 BRAVE TOUR",
+      "date": "2004-02-06",
+      "url": "https://www.pancrase.co.jp/data/result/2004/0206.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-12-21",
+      "url": "https://www.pancrase.co.jp/data/result/2003/1221.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-11-30",
+      "url": "https://www.pancrase.co.jp/data/result/2003/1130.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-10-31",
+      "url": "https://www.pancrase.co.jp/data/result/2003/1031.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-10-04",
+      "url": "https://www.pancrase.co.jp/data/result/2003/1004.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-08-31",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0831.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-07-27",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0727n.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-07-27",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0727d.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-06-22",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0622.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-06-07",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0607.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-05-18",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0518.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-04-12",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0412.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-03-08",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0308.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-02-16",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0216.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2003 HYBRID TOUR PANCRASE 2003 HYBRID TOUR",
+      "date": "2003-01-26",
+      "url": "https://www.pancrase.co.jp/data/result/2003/0126.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-12-21",
+      "url": "https://www.pancrase.co.jp/data/result/2002/1221.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-11-30",
+      "url": "https://www.pancrase.co.jp/data/result/2002/1130.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-10-29",
+      "url": "https://www.pancrase.co.jp/data/result/2002/1029.html",
+      "existingCount": 10,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 10,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-09-29",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0929.html",
+      "existingCount": 11,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 11,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-08-25",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0825.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-07-28",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0728n.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-07-28",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0728d.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-05-28",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0528.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-05-11",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0511.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-03-25",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0325.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-02-17",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0217.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2002 SPIRIT TOUR",
+      "date": "2002-01-27",
+      "url": "https://www.pancrase.co.jp/data/result/2002/0127.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-12-01",
+      "url": "https://www.pancrase.co.jp/data/result/2001/1201.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-10-30",
+      "url": "https://www.pancrase.co.jp/data/result/2001/1030.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-09-30",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0930.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-08-25",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0825.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-07-29",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0729n.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-07-29",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0729d.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-06-26",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0626.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-05-13",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0513.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": "date_from_filename_fallback",
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-05-05",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0505.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-03-31",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0331.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2001 PROOF TOUR",
+      "date": "2001-02-04",
+      "url": "https://www.pancrase.co.jp/data/result/2001/0204.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-12-09",
+      "url": "https://www.pancrase.co.jp/data/result/2000/1209.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-12-04",
+      "url": "https://www.pancrase.co.jp/data/result/2000/1204.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-10-31",
+      "url": "https://www.pancrase.co.jp/data/result/2000/1031.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-09-24",
+      "url": "https://www.pancrase.co.jp/data/result/2000/0924.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-08-27",
+      "url": "https://www.pancrase.co.jp/data/result/2000/0827.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-07-23",
+      "url": "https://www.pancrase.co.jp/data/result/2000/0723n.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-07-23",
+      "url": "https://www.pancrase.co.jp/data/result/2000/0723d.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-06-26",
+      "url": "https://www.pancrase.co.jp/data/result/2000/0626.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-04-30",
+      "url": "https://www.pancrase.co.jp/data/result/2000/0430.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-02-27",
+      "url": "https://www.pancrase.co.jp/data/result/2000/0227.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 2000 TRANS TOUR",
+      "date": "2000-01-23",
+      "url": "https://www.pancrase.co.jp/data/result/2000/0123.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-12-18",
+      "url": "https://www.pancrase.co.jp/data/result/1999/1218.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-11-28",
+      "url": "https://www.pancrase.co.jp/data/result/1999/1128.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-10-25",
+      "url": "https://www.pancrase.co.jp/data/result/1999/1025.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-09-18",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0918.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-09-04",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0904.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-08-01",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0801n.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-08-01",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0801d.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-07-06",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0706.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-06-11",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0611.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-05-23",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0523.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-04-18",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0418.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-03-09",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0309.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-02-11",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0211.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1999 BREAKTHROUGH TOUR",
+      "date": "1999-01-19",
+      "url": "https://www.pancrase.co.jp/data/result/1999/0119.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-12-19",
+      "url": "https://www.pancrase.co.jp/data/result/1998/1219.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-11-29",
+      "url": "https://www.pancrase.co.jp/data/result/1998/1129.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-10-26",
+      "url": "https://www.pancrase.co.jp/data/result/1998/1026.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-10-04",
+      "url": "https://www.pancrase.co.jp/data/result/1998/1004.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-09-14",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0914.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-07-26",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0726.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-07-07",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0707.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-06-21",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0621.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-06-02",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0602.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-05-12",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0512.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-04-26",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0426.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-03-18",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0318.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-03-01",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0301.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-02-06",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0206.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1998 ADVANCE TOUR",
+      "date": "1998-01-16",
+      "url": "https://www.pancrase.co.jp/data/result/1998/0116.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-12-20",
+      "url": "https://www.pancrase.co.jp/data/result/1997/1220.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-11-16",
+      "url": "https://www.pancrase.co.jp/data/result/1997/1116.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-10-29",
+      "url": "https://www.pancrase.co.jp/data/result/1997/1029.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-09-06",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0906.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-08-09",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0809.html",
+      "existingCount": 4,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 4,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-07-20",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0720n.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-07-20",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0720d.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-06-30",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0630.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-06-18",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0618.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-05-24",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0524.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-04-27",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0427.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-03-22",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0322.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-02-22",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0222.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE 1997 ALIVE TOUR",
+      "date": "1997-01-17",
+      "url": "https://www.pancrase.co.jp/data/result/1997/0117.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-12-15",
+      "url": "https://www.pancrase.co.jp/data/result/1996/1215.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-11-09",
+      "url": "https://www.pancrase.co.jp/data/result/1996/1109.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-10-22",
+      "url": "https://www.pancrase.co.jp/data/result/1996/1022.html",
+      "existingCount": 3,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 3,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-10-08",
+      "url": "https://www.pancrase.co.jp/data/result/1996/1008.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-09-07",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0907.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-07-23",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0723.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-07-22",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0722.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-06-25",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0625.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-05-16",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0516.html",
+      "existingCount": 9,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 9,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-04-07",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0407n.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-04-07",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0407d.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-03-02",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0302.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASE TOUR 1996 TRUTH",
+      "date": "1996-01-28",
+      "url": "https://www.pancrase.co.jp/data/result/1996/0128.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-12-14",
+      "url": "https://www.pancrase.co.jp/data/result/1995/1214.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-11-04",
+      "url": "https://www.pancrase.co.jp/data/result/1995/1104.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-09-01",
+      "url": "https://www.pancrase.co.jp/data/result/1995/0901.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-07-23",
+      "url": "https://www.pancrase.co.jp/data/result/1995/0723.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-07-22",
+      "url": "https://www.pancrase.co.jp/data/result/1995/0722.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-06-13",
+      "url": "https://www.pancrase.co.jp/data/result/1995/0613.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-05-13",
+      "url": "https://www.pancrase.co.jp/data/result/1995/0513.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-04-08",
+      "url": "https://www.pancrase.co.jp/data/result/1995/0408.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-03-10",
+      "url": "https://www.pancrase.co.jp/data/result/1995/0310.html",
+      "existingCount": 8,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 8,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "EYES OF BEAST",
+      "date": "1995-01-26",
+      "url": "https://www.pancrase.co.jp/data/result/1995/0126.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "KING OF PANCRASE TOURNAMENT",
+      "date": "1994-12-17",
+      "url": "https://www.pancrase.co.jp/data/result/1994/1217.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "KING OF PANCRASE TOURNAMENT",
+      "date": "1994-12-16",
+      "url": "https://www.pancrase.co.jp/data/result/1994/1216.html",
+      "existingCount": 12,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 12,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "ROAD TO THE CHAMPIONSHIP",
+      "date": "1994-10-15",
+      "url": "https://www.pancrase.co.jp/data/result/1994/1015.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "ROAD TO THE CHAMPIONSHIP",
+      "date": "1994-09-01",
+      "url": "https://www.pancrase.co.jp/data/result/1994/0901.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "ROAD TO THE CHAMPIONSHIP",
+      "date": "1994-07-26",
+      "url": "https://www.pancrase.co.jp/data/result/1994/0726.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "ROAD TO THE CHAMPIONSHIP",
+      "date": "1994-07-06",
+      "url": "https://www.pancrase.co.jp/data/result/1994/0706.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "ROAD TO THE CHAMPIONSHIP",
+      "date": "1994-05-31",
+      "url": "https://www.pancrase.co.jp/data/result/1994/0531.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASH!",
+      "date": "1994-04-21",
+      "url": "https://www.pancrase.co.jp/data/result/1994/0421.html",
+      "existingCount": 7,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 7,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASH!",
+      "date": "1994-03-12",
+      "url": "https://www.pancrase.co.jp/data/result/1994/0312.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "PANCRASH!",
+      "date": "1994-01-19",
+      "url": "https://www.pancrase.co.jp/data/result/1994/0119.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "YES,WE ARE HYBRID WRESTLERS",
+      "date": "1993-12-08",
+      "url": "https://www.pancrase.co.jp/data/result/1993/1208.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "YES,WE ARE HYBRID WRESTLERS",
+      "date": "1993-11-08",
+      "url": "https://www.pancrase.co.jp/data/result/1993/1108.html",
+      "existingCount": 6,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 6,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "YES,WE ARE HYBRID WRESTLERS",
+      "date": "1993-10-14",
+      "url": "https://www.pancrase.co.jp/data/result/1993/1014.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    },
+    {
+      "eventName": "YES,WE ARE HYBRID WRESTLERS",
+      "date": "1993-09-21",
+      "url": "https://www.pancrase.co.jp/data/result/1993/0921.html",
+      "existingCount": 5,
+      "existingExcludedAlreadyInData": 0,
+      "freshChunkCount": 5,
+      "existingNote": null,
+      "gap_chunkVsExisting": 0
+    }
+  ]
+}
