@@ -191,9 +191,16 @@ async function main() {
     }
 
     // bout単位の非プロ/非MMA混入除外(PR #265の共有判定器、ファイル冒頭コメント参照)。
+    // DEEPフューチャーキングトーナメントはキーワードが大会名にしか現れないため
+    // eventName(link.title)も判定器に渡す(nonProBoutFilter.ts冒頭コメント参照)。
     const excludedNonProCount = rawBouts.length;
     const proRawBouts = rawBouts.filter(
-      (raw) => !isExcludedNonProBout({ headingText: raw.weightClassRaw, namedDivision: raw.weightClassRaw })
+      (raw) =>
+        !isExcludedNonProBout({
+          headingText: raw.weightClassRaw,
+          namedDivision: raw.weightClassRaw,
+          eventName: link.title,
+        })
     );
     const nonProBoutCount = excludedNonProCount - proRawBouts.length;
 

@@ -28,6 +28,16 @@
 // DEEP等の他団体データに同じ基準を適用する場合、bout側に headingText/strapTitle/
 // noteRaw/namedDivision 相当のフィールドがあれば isExcludedBout() をそのまま
 // 流用できる。フィールド名が異なる場合は toHaystack() 相当の変換だけ差し替えること。
+//
+// DEEPフューチャーキングトーナメント(2026-07-31追加)は、キーワードが個別bout側
+// (headingText/namedDivision、例:「▼フライ級決勝」)ではなく大会名(eventName)
+// にしか現れないため、この判定器だけ例外的に eventName もオプション入力として
+// 受け付ける。修斗の新人王決定トーナメント・パンクラスのNEO BLOOD!はプロの
+// 登竜門として団体が公式戦績扱いしており対象外(このファイルに該当キーワードを
+// 持たない)だが、DEEPフューチャーキングトーナメントはDEEP公式サイト上でアマチュア
+// 大会として開催されており性質が異なるため除外する。eventNameを渡さない既存
+// 呼び出し(修斗/パンクラスのfilter-nonpro-bouts.ts)はこのフィールドが
+// undefinedのままなので、この追加による挙動変化は一切ない。
 
 export type NonProBoutCategory =
   | "non_mma_karate" // 空手道連盟(CKC)主催トーナメント(成人・小学生とも。MMAではない別競技)
@@ -35,7 +45,8 @@ export type NonProBoutCategory =
   | "non_mma_submission_only" // 寝試合(提出限定ルール。通常のMMAルールと異なる)
   | "not_pro_amateur" // 明確な「アマチュア」表記(IMMAF/JMMAF含む)
   | "not_pro_tryout" // トライアウト(トライアウトルール/トライアウトマッチ)
-  | "not_pro_cage_gate"; // PANCRASE CAGE GATE/CAGE GATE/CAGEGATE(Bayside FIGHT限定、公式にアマチュア専用と明言)
+  | "not_pro_cage_gate" // PANCRASE CAGE GATE/CAGE GATE/CAGEGATE(Bayside FIGHT限定、公式にアマチュア専用と明言)
+  | "not_pro_futureking"; // DEEPフューチャーキングトーナメント(アマチュア大会。eventNameでのみ判定)
 
 // 判定順は無関係(複数カテゴリに同時該当してもいずれか1つ返せば除外対象と分かる)。
 // ただし呼び出し側でカテゴリ別集計をする場合は先勝ちになる点に注意。
@@ -46,6 +57,7 @@ const CATEGORY_KEYWORDS: Record<NonProBoutCategory, string[]> = {
   not_pro_amateur: ["アマ", "IMMAF", "JMMAF"],
   not_pro_tryout: ["トライアウト"],
   not_pro_cage_gate: ["CAGE GATE", "CAGEGATE"],
+  not_pro_futureking: ["フューチャーキング"],
 };
 
 const CATEGORY_ORDER: NonProBoutCategory[] = [
@@ -55,6 +67,7 @@ const CATEGORY_ORDER: NonProBoutCategory[] = [
   "not_pro_amateur",
   "not_pro_tryout",
   "not_pro_cage_gate",
+  "not_pro_futureking",
 ];
 
 export interface NonProBoutFilterInput {
@@ -62,10 +75,11 @@ export interface NonProBoutFilterInput {
   strapTitle?: string | null;
   noteRaw?: string | null;
   namedDivision?: string | null;
+  eventName?: string | null;
 }
 
 function toHaystack(bout: NonProBoutFilterInput): string {
-  return [bout.headingText, bout.strapTitle, bout.noteRaw, bout.namedDivision]
+  return [bout.headingText, bout.strapTitle, bout.noteRaw, bout.namedDivision, bout.eventName]
     .filter((v): v is string => !!v)
     .join(" ");
 }

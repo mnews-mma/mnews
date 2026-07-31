@@ -65,6 +65,7 @@ function filterEvents<E extends { eventName: string; date: string | null; bouts:
     not_pro_amateur: 0,
     not_pro_tryout: 0,
     not_pro_cage_gate: 0,
+    not_pro_futureking: 0, // 修斗/パンクラスの呼び出しはeventNameを渡さないため常に0(scripts/lib/nonProBoutFilter.ts参照)
   };
   let totalBoutsBefore = 0;
   let totalBoutsAfter = 0;
