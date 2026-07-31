@@ -1,0 +1,922 @@
+[
+  {
+    "org": "RIZIN",
+    "year": "2021",
+    "event": "Yogibo presents RIZIN.29",
+    "date": "2021-06-27",
+    "format": null,
+    "fighterAName": "中村優作",
+    "fighterBName": "北方大地",
+    "methodRaw": ""
+  },
+  {
+    "org": "RIZIN",
+    "year": "2025",
+    "event": "RIZIN男祭り",
+    "date": "2025-05-04",
+    "format": null,
+    "fighterAName": "皇治",
+    "fighterBName": "シナ・カリミアン",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2018",
+    "event": "FORCE 09",
+    "date": "2018-04-15",
+    "format": null,
+    "fighterAName": "一水 浩二",
+    "fighterBName": "キシシ",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2019",
+    "event": "プロフェッショナル修斗公式戦香川大会「FORCE 12」",
+    "date": "2019-12-15",
+    "format": null,
+    "fighterAName": "安芸 柊斗",
+    "fighterBName": "TARKER",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2020",
+    "event": "【中止】PROFESSIONAL SHOOTO 2020 Supported by ONE Championship",
+    "date": "2020-03-29",
+    "format": null,
+    "fighterAName": "斎藤 裕",
+    "fighterBName": "内藤 太尊",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2020",
+    "event": "【中止】PROFESSIONAL SHOOTO 2020 Supported by ONE Championship",
+    "date": "2020-03-29",
+    "format": null,
+    "fighterAName": "清水 清隆",
+    "fighterBName": "平良 達郎",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2020",
+    "event": "【中止】PROFESSIONAL SHOOTO 2020 Supported by ONE Championship",
+    "date": "2020-03-29",
+    "format": null,
+    "fighterAName": "手塚 基伸",
+    "fighterBName": "安藤 達也",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2020",
+    "event": "【中止】PROFESSIONAL SHOOTO 2020 Supported by ONE Championship",
+    "date": "2020-03-29",
+    "format": null,
+    "fighterAName": "木内 SKINNY ZOMBIE 崇雅",
+    "fighterBName": "黒澤 亮平",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2020",
+    "event": "【中止】PROFESSIONAL SHOOTO 2020 Supported by ONE Championship",
+    "date": "2020-03-29",
+    "format": null,
+    "fighterAName": "黒部 三奈",
+    "fighterBName": "大島 沙緒里",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2020",
+    "event": "【中止】PROFESSIONAL SHOOTO 2020 Supported by ONE Championship",
+    "date": "2020-03-29",
+    "format": null,
+    "fighterAName": "杉本 恵",
+    "fighterBName": "中村 未来",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2020",
+    "event": "【中止】PROFESSIONAL SHOOTO 2020 Supported by ONE Championship",
+    "date": "2020-03-29",
+    "format": null,
+    "fighterAName": "小林 孝秀",
+    "fighterBName": "野瀬 翔平",
+    "methodRaw": ""
+  },
+  {
+    "org": "修斗",
+    "year": "2025",
+    "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.3",
+    "date": "2025-05-18",
+    "format": null,
+    "fighterAName": "住村 竜市朗",
+    "fighterBName": "皇治",
+    "methodRaw": ""
+  },
+  {
+    "org": "パンクラス",
+    "year": "2025",
+    "event": "PANCRASE 355",
+    "date": "2025-07-27",
+    "format": null,
+    "fighterAName": "久米鷹介",
+    "fighterBName": "",
+    "methodRaw": ""
+  },
+  {
+    "org": "パンクラス",
+    "year": "2025",
+    "event": "PANCRASE 354",
+    "date": "2025-06-01",
+    "format": null,
+    "fighterAName": "三宅輝砂",
+    "fighterBName": "中田大貴",
+    "methodRaw": "1R 3:48、TKO/スタンドのパンチ"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2023",
+    "event": "PANCRASE 332",
+    "date": "2023-03-26",
+    "format": null,
+    "fighterAName": "植松洋貴",
+    "fighterBName": "リトル",
+    "methodRaw": "3R 5:00、判定/1-1"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2022",
+    "event": "前田吉朗引退興行",
+    "date": "2022-04-10",
+    "format": null,
+    "fighterAName": "前田吉朗",
+    "fighterBName": "稲垣克臣",
+    "methodRaw": ""
+  },
+  {
+    "org": "パンクラス",
+    "year": "2022",
+    "event": "前田吉朗引退興行",
+    "date": "2022-04-10",
+    "format": null,
+    "fighterAName": "前田吉朗",
+    "fighterBName": "北方大地",
+    "methodRaw": ""
+  },
+  {
+    "org": "パンクラス",
+    "year": "2022",
+    "event": "前田吉朗引退興行",
+    "date": "2022-04-10",
+    "format": null,
+    "fighterAName": "前田吉朗",
+    "fighterBName": "砂辺光久",
+    "methodRaw": ""
+  },
+  {
+    "org": "パンクラス",
+    "year": "2019",
+    "event": "PANCRASE307",
+    "date": "2019-07-21",
+    "format": null,
+    "fighterAName": "菊入正行",
+    "fighterBName": "岸本泰昭",
+    "methodRaw": "3R 5:00、判定/1-1"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2018",
+    "event": "PANCRASE札幌大会",
+    "date": "2018-05-13",
+    "format": null,
+    "fighterAName": "武田光博",
+    "fighterBName": "アローイ石橋",
+    "methodRaw": "1R 3:00"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2014",
+    "event": "パンクラス北海道大会",
+    "date": "2014-06-22",
+    "format": null,
+    "fighterAName": "武田光博",
+    "fighterBName": "鈴木正則",
+    "methodRaw": "1R 5:00、エキシビジョンマッチの勝敗なし"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2013",
+    "event": "PANCRASE 254",
+    "date": "2013-12-07",
+    "format": null,
+    "fighterAName": "前田吉朗",
+    "fighterBName": "吉武伸洋",
+    "methodRaw": "エキジビションマッチにより勝敗なし"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2013",
+    "event": "PANCRASE 252",
+    "date": "2013-09-29",
+    "format": null,
+    "fighterAName": "近藤有己",
+    "fighterBName": "中井光義",
+    "methodRaw": "3R 1:00"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2012",
+    "event": "PANCRASE 2012 PROGRESS TOUR",
+    "date": "2012-11-25",
+    "format": null,
+    "fighterAName": "前田吉朗",
+    "fighterBName": "名城裕司",
+    "methodRaw": "1R 5:00"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2010",
+    "event": "PANCRASE 2010 PASSION TOUR",
+    "date": "2010-02-07",
+    "format": null,
+    "fighterAName": "ワッサン相原",
+    "fighterBName": "野口岳人",
+    "methodRaw": "0R 0:00、不戦勝/計量オーバー"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2007",
+    "event": "PANCRASE REAL 2007",
+    "date": "2007-04-08",
+    "format": null,
+    "fighterAName": "鈴木みのる(三冠ヘビー級王者) ×冨宅飛駈(SGPグローバルジュニア王者)",
+    "fighterBName": "シーサー・マスク○ ミラクルマン",
+    "methodRaw": "13:42、3カウント/体固め"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2007",
+    "event": "PANCRASE REAL 2007",
+    "date": "2007-04-08",
+    "format": null,
+    "fighterAName": "宮城友一",
+    "fighterBName": "浅野倫久",
+    "methodRaw": "2R 5:00、判定/3-0"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2005",
+    "event": "PANCRASE Z",
+    "date": "2005-09-03",
+    "format": null,
+    "fighterAName": "近藤有己",
+    "fighterBName": "北岡悟",
+    "methodRaw": "1R 3:00、エキシビションのため勝敗なし"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2005",
+    "event": "PANCRASE 2005 SPIRAL TOUR",
+    "date": "2005-05-01",
+    "format": null,
+    "fighterAName": "鈴木みのる",
+    "fighterBName": "川村亮",
+    "methodRaw": "1R 5分00秒、勝者無し/エキシビジョンの為"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2005",
+    "event": "PANCRASE 2005 SPIRAL TOUR",
+    "date": "2005-02-27",
+    "format": null,
+    "fighterAName": "長谷川孝司",
+    "fighterBName": "井上学",
+    "methodRaw": "※井上選手のローブローによるダメージにより、長谷川選手が試合続行不可能に。試合結果はコミッショナー預かりとなり、詳細は後日発表。"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2002",
+    "event": "PANCRASE 2002 SPIRIT TOUR",
+    "date": "2002-01-27",
+    "format": null,
+    "fighterAName": "菊田早苗",
+    "fighterBName": "岩崎達也",
+    "methodRaw": "3分00秒"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2002",
+    "event": "PANCRASE 2002 SPIRIT TOUR",
+    "date": "2002-01-27",
+    "format": null,
+    "fighterAName": "鈴木みのる",
+    "fighterBName": "宮沢熹一",
+    "methodRaw": "3分00秒"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2001",
+    "event": "PANCRASE 2001 PROOF TOUR",
+    "date": "2001-05-13",
+    "format": null,
+    "fighterAName": "山田学",
+    "fighterBName": "朝日昇",
+    "methodRaw": "5分00秒"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2000",
+    "event": "PANCRASE 2000 TRANS TOUR",
+    "date": "2000-12-04",
+    "format": null,
+    "fighterAName": "近藤有己",
+    "fighterBName": "鈴木みのる",
+    "methodRaw": "3分00秒"
+  },
+  {
+    "org": "パンクラス",
+    "year": "2000",
+    "event": "PANCRASE 2000 TRANS TOUR",
+    "date": "2000-08-27",
+    "format": null,
+    "fighterAName": "近藤有己",
+    "fighterBName": "菊田早苗",
+    "methodRaw": "3分00秒"
+  },
+  {
+    "org": "パンクラス",
+    "year": "1999",
+    "event": "PANCRASE 1999 BREAKTHROUGH TOUR",
+    "date": "1999-12-18",
+    "format": null,
+    "fighterAName": "船木誠勝",
+    "fighterBName": "渋谷修身",
+    "methodRaw": "3分00秒"
+  },
+  {
+    "org": "DEEP",
+    "year": "2003",
+    "event": "DEEP JEWELS 43",
+    "date": "2003-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "熊谷麻理奈",
+    "fighterBName": "Te-a",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2014",
+    "event": "DEEP JEWELS 6",
+    "date": "2014-11-03",
+    "format": "f2_method_middle",
+    "fighterAName": "関友紀子",
+    "fighterBName": "Warning",
+    "methodRaw": "TKO 2R1分17秒"
+  },
+  {
+    "org": "DEEP",
+    "year": "2015",
+    "event": "FUNABASHI BOM-BA-YE",
+    "date": "2015-05-09",
+    "format": "f2_method_middle",
+    "fighterAName": "ー富松恵美",
+    "fighterBName": "ーV.V.Mei",
+    "methodRaw": "勝敗なし"
+  },
+  {
+    "org": "DEEP",
+    "year": "2019",
+    "event": "DEEP JEWELS 23",
+    "date": "2019-03-09",
+    "format": "f2_method_middle",
+    "fighterAName": "にっせー",
+    "fighterBName": "○KOTORI",
+    "methodRaw": "判定0-2 ※18-20、19-19、18-20"
+  },
+  {
+    "org": "DEEP",
+    "year": "2019",
+    "event": "DEEP 92 IMPACT",
+    "date": "2019-10-22",
+    "format": "F1",
+    "fighterAName": "水野竜也",
+    "fighterBName": "失格 2R 3分49秒",
+    "methodRaw": "⚫酒井リョウ（レンジャージム）"
+  },
+  {
+    "org": "DEEP",
+    "year": "2019",
+    "event": "DEEP JEWELS 26",
+    "date": "2019-10-22",
+    "format": "f2_method_middle",
+    "fighterAName": "KAI",
+    "fighterBName": "◯",
+    "methodRaw": "判定1-2 ※2者が19-19 古瀬、1者が19-19 KAI"
+  },
+  {
+    "org": "DEEP",
+    "year": "2019",
+    "event": "DEEP JEWELS 26",
+    "date": "2019-10-22",
+    "format": "f2_method_middle",
+    "fighterAName": "玉田育子",
+    "fighterBName": "●KOTORI",
+    "methodRaw": "判定3-0 ※20-17、20-18、20-18"
+  },
+  {
+    "org": "DEEP",
+    "year": "2019",
+    "event": "DEEP 93 IMPACT",
+    "date": "2019-12-15",
+    "format": "f2_method_middle",
+    "fighterAName": "ロッキー・マルティネス",
+    "fighterBName": "※マルティネスがタイトル防衛",
+    "methodRaw": "TKO 2R 2分09秒 (レフェリーストップ：スタンドパンチ)"
+  },
+  {
+    "org": "DEEP",
+    "year": "2020",
+    "event": "DEEP 94 IMPACT",
+    "date": "2020-03-01",
+    "format": "F1",
+    "fighterAName": "大山釼呑助",
+    "fighterBName": "失格 1R 2分50秒",
+    "methodRaw": "⚫ハリー・スタローン（ブラジル／マカコ・ゴールドチーム・ジャパン）"
+  },
+  {
+    "org": "DEEP",
+    "year": "2020",
+    "event": "DEEP＆PANCRASE大阪大会",
+    "date": "2020-11-29",
+    "format": "F1",
+    "fighterAName": "安谷屋智弘",
+    "fighterBName": "[判定0-3]",
+    "methodRaw": "○秋葉太樹（総合格闘技道場reliable）58.5kg"
+  },
+  {
+    "org": "DEEP",
+    "year": "2020",
+    "event": "DEEP JEWELS 31",
+    "date": "2020-12-19",
+    "format": "f2_method_middle",
+    "fighterAName": "須田萌里",
+    "fighterBName": "※19‐19",
+    "methodRaw": "判定0-3"
+  },
+  {
+    "org": "DEEP",
+    "year": "2021",
+    "event": "DEEP 100 IMPACT ～20th Anniversary～",
+    "date": "2021-02-21",
+    "format": "F1",
+    "fighterAName": "安谷屋智弘",
+    "fighterBName": "[判定3-0] ※20-18, 19-19×2",
+    "methodRaw": "×松場貴志（パラエストラ加古川）57.05kg"
+  },
+  {
+    "org": "DEEP",
+    "year": "2022",
+    "event": "前田吉朗引退興行",
+    "date": "2022-04-10",
+    "format": "group1_vs",
+    "fighterAName": "前田吉朗",
+    "fighterBName": "稲垣克臣",
+    "methodRaw": "セミファイナル DEEP公式戦 ストロー級5分3R"
+  },
+  {
+    "org": "DEEP",
+    "year": "2022",
+    "event": "前田吉朗引退興行",
+    "date": "2022-04-10",
+    "format": "group1_vs",
+    "fighterAName": "山﨑鼓大",
+    "fighterBName": "上田祐起",
+    "methodRaw": ""
+  },
+  {
+    "org": "DEEP",
+    "year": "2022",
+    "event": "DEEP 107 IMPACT",
+    "date": "2022-05-08",
+    "format": "f8_fully_separated",
+    "fighterAName": "NEWS",
+    "fighterBName": "DEEP FIGHT CHALLENGE 2026 2nd ROUND 大会レポート",
+    "methodRaw": "2026/07/29"
+  },
+  {
+    "org": "DEEP",
+    "year": "2022",
+    "event": "DEEP 110 IMPACT",
+    "date": "2022-11-12",
+    "format": "f8_fully_separated",
+    "fighterAName": "○",
+    "fighterBName": "酒井リョウ",
+    "methodRaw": ""
+  },
+  {
+    "org": "DEEP",
+    "year": "2022",
+    "event": "DEEP 110 IMPACT",
+    "date": "2022-11-12",
+    "format": "f8_fully_separated",
+    "fighterAName": "NEWS",
+    "fighterBName": "DEEP FIGHT CHALLENGE 2026 2nd ROUND 大会レポート",
+    "methodRaw": "2026/07/29"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP NAGOYA 2023 公武堂ファイト1st ROUND",
+    "date": "2023-04-16",
+    "format": "group1_vs",
+    "fighterAName": "オサモリチャードソン",
+    "fighterBName": "岩堀徹大",
+    "methodRaw": "2R 2分10秒 リアネイキットチョーク"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "水野竜也",
+    "fighterBName": "SAINT",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "赤沢幸典",
+    "fighterBName": "ハリー・KIMURA",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "稲田将",
+    "fighterBName": "トーマス",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "嶋田伊吹",
+    "fighterBName": "鈴木琢仁",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "島袋チカラ",
+    "fighterBName": "京之介",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "安永吏成",
+    "fighterBName": "坂本岳",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "前田啓伍",
+    "fighterBName": "山田聖真",
+    "methodRaw": "○"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "岩見凌",
+    "fighterBName": "生田大雅",
+    "methodRaw": "○"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 6th ROUND",
+    "date": "2023-11-23",
+    "format": "f2_method_middle",
+    "fighterAName": "JUICY",
+    "fighterBName": "Peach",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "秋田良隆",
+    "fighterBName": "藤田宇宙",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "木村総一郎",
+    "fighterBName": "森田敢流",
+    "methodRaw": "○"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "関本龍翔",
+    "fighterBName": "田中壱季",
+    "methodRaw": "○"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "松原聖也",
+    "fighterBName": "上谷章",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "MG眞介",
+    "fighterBName": "山﨑鼓大",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "瀧口脩生",
+    "fighterBName": "牧野滉風",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "古林礼名",
+    "fighterBName": "永易加代",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "上荷大夢",
+    "fighterBName": "八尋大輝",
+    "methodRaw": "○"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "小林裕",
+    "fighterBName": "角野晃平",
+    "methodRaw": "○"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+    "date": "2023-11-26",
+    "format": "f2_method_middle",
+    "fighterAName": "泉彰洋",
+    "fighterBName": "大野“虎眼”賢良",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP TOKYO IMPACT 2023 7th ROUND",
+    "date": "2023-12-10",
+    "format": "f2_method_middle",
+    "fighterAName": "倉本大悟",
+    "fighterBName": "井上竜旗",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP 117 IMPACT",
+    "date": "2023-12-10",
+    "format": "f2_method_middle",
+    "fighterAName": "パク・シウ",
+    "fighterBName": "プリンセス・ザ・ロケット",
+    "methodRaw": "●"
+  },
+  {
+    "org": "DEEP",
+    "year": "2023",
+    "event": "DEEP 117 IMPACT",
+    "date": "2023-12-10",
+    "format": "f2_method_middle",
+    "fighterAName": "RYOGA",
+    "fighterBName": "Max",
+    "methodRaw": "○"
+  },
+  {
+    "org": "DEEP",
+    "year": "2024",
+    "event": "DEEP TOKYO IMPACT 2024 1st ROUND",
+    "date": "2024-03-24",
+    "format": "F1",
+    "fighterAName": "太田将吾",
+    "fighterBName": "立成洋太",
+    "methodRaw": "判定3-0"
+  },
+  {
+    "org": "DEEP",
+    "year": "2024",
+    "event": "DEEP NAGOYA IMPACT 2024 1st/2nd ROUND",
+    "date": "2024-04-07",
+    "format": "group1_vs",
+    "fighterAName": "多湖力翔",
+    "fighterBName": "鶴斗",
+    "methodRaw": "2R 1:56 チョークスリーパー"
+  },
+  {
+    "org": "DEEP",
+    "year": "2024",
+    "event": "DEEP OSAKA IMPACT 2024 2nd ROUND",
+    "date": "2024-06-02",
+    "format": "group1_vs",
+    "fighterAName": "前薗渓",
+    "fighterBName": "ペレイラ ユウジ ラファエル",
+    "methodRaw": "判定3-0"
+  },
+  {
+    "org": "DEEP",
+    "year": "2024",
+    "event": "DEEP NAGOYA IMPACT 2024 3rd ROUND",
+    "date": "2024-08-25",
+    "format": "group1_vs",
+    "fighterAName": "川畑凛斗",
+    "fighterBName": "村田和生",
+    "methodRaw": "判定3-0"
+  },
+  {
+    "org": "DEEP",
+    "year": "2024",
+    "event": "DEEP 121 IMPACT",
+    "date": "2024-09-16",
+    "format": "F1",
+    "fighterAName": "雅駿介",
+    "fighterBName": "谷岡祐樹",
+    "methodRaw": "1R 4’39”"
+  },
+  {
+    "org": "DEEP",
+    "year": "2024",
+    "event": "DEEP OSAKA IMPACT 2024 3rd ROUND",
+    "date": "2024-09-22",
+    "format": "group1_vs",
+    "fighterAName": "山﨑鼓大",
+    "fighterBName": "カーレッジユウキ",
+    "methodRaw": "判定2-1"
+  },
+  {
+    "org": "DEEP",
+    "year": "2024",
+    "event": "DEEP OSAKA IMPACT 2024 3rd ROUND",
+    "date": "2024-09-22",
+    "format": "group1_vs",
+    "fighterAName": "宜野座ケビン",
+    "fighterBName": "小西澄斗",
+    "methodRaw": "判定2-1"
+  },
+  {
+    "org": "DEEP",
+    "year": "2024",
+    "event": "DEEP HAMAMATSU IMPACT 2024",
+    "date": "2024-10-06",
+    "format": "F1",
+    "fighterAName": "内山拓真",
+    "fighterBName": "胸毛ニキ",
+    "methodRaw": "勝敗無し"
+  },
+  {
+    "org": "DEEP",
+    "year": "2025",
+    "event": "DEEP JEWELS 48",
+    "date": "2025-03-23",
+    "format": "F1",
+    "fighterAName": "須田美咲",
+    "fighterBName": "SAAYA",
+    "methodRaw": "判定2-1"
+  },
+  {
+    "org": "DEEP",
+    "year": "2025",
+    "event": "DEEP 125 IMPACT",
+    "date": "2025-05-05",
+    "format": "F1",
+    "fighterAName": "海飛",
+    "fighterBName": "水野新太",
+    "methodRaw": ""
+  },
+  {
+    "org": "DEEP",
+    "year": "2025",
+    "event": "DEEP 125 IMPACT",
+    "date": "2025-05-05",
+    "format": "F1",
+    "fighterAName": "五明宏人",
+    "fighterBName": "高橋遼伍",
+    "methodRaw": ""
+  },
+  {
+    "org": "DEEP",
+    "year": "2025",
+    "event": "DEEP 125 IMPACT",
+    "date": "2025-05-05",
+    "format": "F1",
+    "fighterAName": "村元友太郎",
+    "fighterBName": "関原翔",
+    "methodRaw": ""
+  },
+  {
+    "org": "DEEP",
+    "year": "2025",
+    "event": "DEEP 125 IMPACT",
+    "date": "2025-05-05",
+    "format": "F1",
+    "fighterAName": "大島沙緒里",
+    "fighterBName": "イ・イェジ",
+    "methodRaw": ""
+  },
+  {
+    "org": "DEEP",
+    "year": "2025",
+    "event": "DEEP 125 IMPACT",
+    "date": "2025-05-05",
+    "format": "F1",
+    "fighterAName": "奥山貴大",
+    "fighterBName": "直樹",
+    "methodRaw": ""
+  },
+  {
+    "org": "DEEP",
+    "year": "2026",
+    "event": "DEEP NAGOYA IMPACT 2026 1st ROUND",
+    "date": "2026-02-23",
+    "format": "F1",
+    "fighterAName": "MASANARI",
+    "fighterBName": "時任流架",
+    "methodRaw": ""
+  },
+  {
+    "org": "DEEP",
+    "year": "2026",
+    "event": "DEEP HAMAMATSU IMPACT 2026 1ST ROUND",
+    "date": "2026-05-31",
+    "format": "F1",
+    "fighterAName": "拓MAX",
+    "fighterBName": "胸毛ウナギニキ",
+    "methodRaw": "1R 1’53” TKO"
+  }
+]
