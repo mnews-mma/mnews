@@ -26684,7 +26684,7 @@
         "fighterAName": "赤沢幸典",
         "fighterBName": "大成",
         "fighterASlug": "akazawa-yukinori",
-        "fighterBSlug": null,
+        "fighterBSlug": "sekino-taisei",
         "ruleType": "unknown",
         "weightKg": null,
         "namedDivision": "DEEPメガトン級 5分2R",
@@ -27249,7 +27249,7 @@
         "fighterAName": "酒井リョウ",
         "fighterBName": "大成",
         "fighterASlug": "sakai-ryo",
-        "fighterBSlug": null,
+        "fighterBSlug": "sekino-taisei",
         "ruleType": "unknown",
         "weightKg": null,
         "namedDivision": "DEEPメガトン級 5分2R",
@@ -27735,7 +27735,7 @@
     "fetchedDate": "2026-07-31",
     "bouts": [
       {
-        "cardPosition": 8,
+        "cardPosition": 7,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "山本有人",
@@ -27756,7 +27756,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 7,
+        "cardPosition": 6,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "島袋チカラ",
@@ -27777,7 +27777,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 6,
+        "cardPosition": 5,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "誠悟",
@@ -27798,7 +27798,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 5,
+        "cardPosition": 4,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "伊藤裕樹",
@@ -27819,7 +27819,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 4,
+        "cardPosition": 3,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "福田龍彌",
@@ -27840,7 +27840,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 3,
+        "cardPosition": 2,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "神田コウヤ",
@@ -27861,8 +27861,8 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 2,
-        "isOpeningFight": false,
+        "cardPosition": 1,
+        "isOpeningFight": true,
         "headingText": "",
         "fighterAName": "DJ.TAIKI",
         "fighterBName": "○",
@@ -27877,27 +27877,6 @@
         "round": null,
         "time": null,
         "methodRaw": "判定0-5",
-        "isWeighInMiss": false,
-        "format": "f8_fully_separated",
-        "boutNumber": null
-      },
-      {
-        "cardPosition": 1,
-        "isOpeningFight": true,
-        "headingText": "",
-        "fighterAName": "NEWS",
-        "fighterBName": "RIZNNで活躍した加藤健二が地元で息子と親子で参戦で日比野えび中純也と対戦に元WARDOGストロー級王者の中務修良に土木ネキが出場など今年2度目のDEEP HAMAMATSU IMPACT 2026が開催!",
-        "fighterASlug": null,
-        "fighterBSlug": null,
-        "ruleType": "unknown",
-        "weightKg": null,
-        "namedDivision": null,
-        "resultType": "unknown",
-        "winnerName": null,
-        "winnerSlug": null,
-        "round": null,
-        "time": null,
-        "methodRaw": "2026/07/30",
         "isWeighInMiss": false,
         "format": "f8_fully_separated",
         "boutNumber": null
@@ -30836,7 +30815,7 @@
     "fetchedDate": "2026-07-31",
     "bouts": [
       {
-        "cardPosition": 8,
+        "cardPosition": 7,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "KENTA",
@@ -30857,7 +30836,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 7,
+        "cardPosition": 6,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "TATSUMI",
@@ -30878,7 +30857,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 6,
+        "cardPosition": 5,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "雅駿介",
@@ -30899,7 +30878,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 5,
+        "cardPosition": 4,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "川名TENCHO雄生",
@@ -30920,7 +30899,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 4,
+        "cardPosition": 3,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "中村大介",
@@ -30941,7 +30920,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 3,
+        "cardPosition": 2,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "北岡悟",
@@ -30962,8 +30941,8 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 2,
-        "isOpeningFight": false,
+        "cardPosition": 1,
+        "isOpeningFight": true,
         "headingText": "",
         "fighterAName": "○",
         "fighterBName": "酒井リョウ",
@@ -30978,27 +30957,6 @@
         "round": null,
         "time": null,
         "methodRaw": "",
-        "isWeighInMiss": false,
-        "format": "f8_fully_separated",
-        "boutNumber": null
-      },
-      {
-        "cardPosition": 1,
-        "isOpeningFight": true,
-        "headingText": "",
-        "fighterAName": "NEWS",
-        "fighterBName": "RIZNNで活躍した加藤健二が地元で息子と親子で参戦で日比野えび中純也と対戦に元WARDOGストロー級王者の中務修良に土木ネキが出場など今年2度目のDEEP HAMAMATSU IMPACT 2026が開催!",
-        "fighterASlug": null,
-        "fighterBSlug": null,
-        "ruleType": "unknown",
-        "weightKg": null,
-        "namedDivision": null,
-        "resultType": "unknown",
-        "winnerName": null,
-        "winnerSlug": null,
-        "round": null,
-        "time": null,
-        "methodRaw": "2026/07/30",
         "isWeighInMiss": false,
         "format": "f8_fully_separated",
         "boutNumber": null
@@ -40551,13 +40509,13 @@
         "fighterAName": "水野竜也",
         "fighterBName": "大成",
         "fighterASlug": null,
-        "fighterBSlug": null,
+        "fighterBSlug": "sekino-taisei",
         "ruleType": "unknown",
         "weightKg": null,
         "namedDivision": "DEEPメガトン級 5分3R",
         "resultType": "decisive",
         "winnerName": "大成",
-        "winnerSlug": null,
+        "winnerSlug": "sekino-taisei",
         "round": null,
         "time": null,
         "methodRaw": "1R 3&#8217;13&#8221; TKO",
@@ -45297,13 +45255,13 @@
         "fighterAName": "酒井リョウ",
         "fighterBName": "大成",
         "fighterASlug": "sakai-ryo",
-        "fighterBSlug": null,
+        "fighterBSlug": "sekino-taisei",
         "ruleType": "unknown",
         "weightKg": null,
         "namedDivision": "DEEPメガトン級王座決定戦 5分3R",
         "resultType": "decisive",
         "winnerName": "大成",
-        "winnerSlug": null,
+        "winnerSlug": "sekino-taisei",
         "round": null,
         "time": null,
         "methodRaw": "3R 2&#8217;38&#8221; TKO",
