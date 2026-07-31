@@ -110,3 +110,20 @@ export function computeFighterMmaRecord(events: RizinRecordsEvent[], slug: strin
   bouts.sort((a, b) => (a.date < b.date ? -1 : 1));
   return { wins, losses, draws, ncs, ko, sub, decision, bouts, excluded };
 }
+
+// 指示書E(2026-07-31): 特定選手向けの集計(上記)はslug不一致boutを黙って
+// 読み飛ばす(捏造ゼロの設計上、名前フォールバックで拾わない)。その代わり
+// data全体でslug未解決のまま残っているbout側(fighterASlug/fighterBSlugが
+// nullだが選手名は入っている)の総数を、選手に紐付けない集計として別途
+// 保持する。npm run build のベースライン検知(scripts/check-null-slug-baseline.ts)
+// が回帰検知に使う。
+export function countUnresolvedRizinBoutSides(events: RizinRecordsEvent[]): number {
+  let count = 0;
+  for (const ev of events) {
+    for (const b of ev.bouts) {
+      if (b.fighterASlug === null && b.fighterAName) count++;
+      if (b.fighterBSlug === null && b.fighterBName) count++;
+    }
+  }
+  return count;
+}

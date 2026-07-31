@@ -81,3 +81,21 @@ export function computeFighterDeepRecord(events: DeepRecordsEvent[], slug: strin
   bouts.sort((a, b) => (a.date < b.date ? -1 : 1));
   return { wins, losses, draws, ncs, bouts, excluded };
 }
+
+// 指示書E(2026-07-31): rizinRecordsAggregate.tsのcountUnresolvedRizinBoutSides
+// と同じ思想。選手に紐付けない、data全体のslug未解決bout側の総数。
+// DEEPは修斗/パンクラス(backfill-shooto-pancrase-slugs.ts)やRIZIN
+// (backfill-rizin-slugs.ts)と異なり専用のslugバックフィルスクリプトが
+// 現状存在しない(絶対件数は歴史の長いパンクラスの方が多いが、これは
+// バックフィル未整備が主因ではなく母数の差によるもの。scripts/
+// check-null-slug-baseline.tsのBASELINE参照)。
+export function countUnresolvedDeepBoutSides(events: DeepRecordsEvent[]): number {
+  let count = 0;
+  for (const ev of events) {
+    for (const b of ev.bouts as DeepRecordsBout[]) {
+      if (b.fighterASlug === null && b.fighterAName) count++;
+      if (b.fighterBSlug === null && b.fighterBName) count++;
+    }
+  }
+  return count;
+}
