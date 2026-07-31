@@ -1,0 +1,714 @@
+[
+  {
+    "name": "木村“フィリップ”ミノル",
+    "stripped": "木村ミノル",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "チャールズ・“クレイジー・ホース”・ベネット",
+    "stripped": "チャールズ・・ベネット",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "桜井“マッハ”速人",
+    "stripped": "桜井速人",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "森本“狂犬”義久",
+    "stripped": "森本義久",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "西浦”ウィッキー”聡生",
+    "stripped": "西浦聡生",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "浜本“キャット”雄大",
+    "stripped": "浜本雄大",
+    "direct": "hamamoto",
+    "viaStrip": null,
+    "finalResolved": "hamamoto",
+    "category": "direct(既存normalizeで解決済み)"
+  },
+  {
+    "name": "パトリッキー・“ピットブル”・フレイレ",
+    "stripped": "パトリッキー・・フレイレ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "マイケル・“ヴェノム”・ペイジ",
+    "stripped": "マイケル・・ペイジ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "クイントン・“ランペイジ”・ジャクソン",
+    "stripped": "クイントン・・ジャクソン",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "関根\"シュレック\"秀樹",
+    "stripped": "関根秀樹",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "春日井“寒天”たけし",
+    "stripped": "春日井たけし",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "“ブラックパンサー”ベイノア",
+    "stripped": "ベイノア",
+    "direct": "beinoa",
+    "viaStrip": "beinoa",
+    "finalResolved": "beinoa",
+    "category": "direct(既存normalizeで解決済み)"
+  },
+  {
+    "name": "アラン“ヒロ”ヤマニハ",
+    "stripped": "アランヤマニハ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "関根“シュレック”秀樹",
+    "stripped": "関根秀樹",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "雑賀“ヤン坊”達也",
+    "stripped": "雑賀達也",
+    "direct": "saiga-yanbo-tatsuya",
+    "viaStrip": "saiga-yanbo-tatsuya",
+    "finalResolved": "saiga-yanbo-tatsuya",
+    "category": "direct(既存normalizeで解決済み)"
+  },
+  {
+    "name": "日比野“エビ中”純也",
+    "stripped": "日比野純也",
+    "direct": null,
+    "viaStrip": "hibino-junya",
+    "finalResolved": "hibino-junya",
+    "category": "newly_resolved_by_strip"
+  },
+  {
+    "name": "木村“ケルベロス”颯太",
+    "stripped": "木村颯太",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "荒東“怪獣キラー”英貴",
+    "stripped": "荒東英貴",
+    "direct": null,
+    "viaStrip": "arato-hidetaka",
+    "finalResolved": "arato-hidetaka",
+    "category": "newly_resolved_by_strip"
+  },
+  {
+    "name": "柴田“MONKEY”有哉",
+    "stripped": "柴田有哉",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "柿原 “RR” 昇太",
+    "stripped": "柿原  昇太",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "高橋“Bancho”良明",
+    "stripped": "高橋良明",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "いちょう“Snufkin”ともなが",
+    "stripped": "いちょうともなが",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "西浦“ウィッキー\"聡生",
+    "stripped": "西浦聡生",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "高橋“Bancho\"良明",
+    "stripped": "高橋良明",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "アラン“ヒロ\"ヤマニハ",
+    "stripped": "アランヤマニハ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "松川“ショットガン”直裕",
+    "stripped": "松川直裕",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "白川“Dark”陸斗",
+    "stripped": "白川陸斗",
+    "direct": null,
+    "viaStrip": "shirakawa-rikuto",
+    "finalResolved": "shirakawa-rikuto",
+    "category": "newly_resolved_by_strip"
+  },
+  {
+    "name": "柴田“モンキー\"有哉",
+    "stripped": "柴田有哉",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ジャレッド“スパイダー・モンキー”ブルックス",
+    "stripped": "ジャレッドブルックス",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "白川“Dark\"陸斗",
+    "stripped": "白川陸斗",
+    "direct": null,
+    "viaStrip": "shirakawa-rikuto",
+    "finalResolved": "shirakawa-rikuto",
+    "category": "newly_resolved_by_strip"
+  },
+  {
+    "name": "ドミニク“fallen angel\"ロビンソン",
+    "stripped": "ドミニクロビンソン",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "三苫“king kong”亮人",
+    "stripped": "三苫亮人",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ウィル“THE KILL\"チョープ",
+    "stripped": "ウィルチョープ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "三苫“キングコング”″亮人",
+    "stripped": "三苫″亮人",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "IKE“The Beast\"CHRIS",
+    "stripped": "IKECHRIS",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ドミニク“fallen angel”ロビンソン",
+    "stripped": "ドミニクロビンソン",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ブリアナ“ザ・ピンクレンジャー”フィソリ",
+    "stripped": "ブリアナフィソリ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ウィル“THE KILL”チョープ",
+    "stripped": "ウィルチョープ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "エリック“ザ アメリカン ソルジャー\"プリンドル",
+    "stripped": "エリックプリンドル",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "高橋“フリーザ”達也",
+    "stripped": "高橋達也",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ルイス“ベタオ”ノゲイラ",
+    "stripped": "ルイスノゲイラ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "小野“名人\"浩",
+    "stripped": "小野浩",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "三苫“キングコング”亮人",
+    "stripped": "三苫亮人",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "奥野“轟天\" 泰舗",
+    "stripped": "奥野 泰舗",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ダニエル“ニンジャ”ロバーツ",
+    "stripped": "ダニエルロバーツ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ロビー“スーパーナチュラル”オストヴィッチ",
+    "stripped": "ロビーオストヴィッチ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ロン“ザ・ケイブマン”スローター",
+    "stripped": "ロンスローター",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "TJ“ザ・トゥルース”ララミー",
+    "stripped": "TJララミー",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ウィル“ザ キル”チョープ",
+    "stripped": "ウィルチョープ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": ".奥野 “轟天\" 泰舗",
+    "stripped": ".奥野  泰舗",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "増田“BULL\"徹平",
+    "stripped": "増田徹平",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "EDDY“RONIN”JOSHUA",
+    "stripped": "EDDYJOSHUA",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "レアンドロ“ブスカペ”シウバ",
+    "stripped": "レアンドロシウバ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "金内“サイダー\"雄哉",
+    "stripped": "金内雄哉",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ウィル“アイアン”ノーランド",
+    "stripped": "ウィルノーランド",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "増田“BULL”徹平",
+    "stripped": "増田徹平",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "金内“サイダー”雄哉",
+    "stripped": "金内雄哉",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "小野“名人”浩",
+    "stripped": "小野浩",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "鈴木“PJ\"敏和",
+    "stripped": "鈴木敏和",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "内山“ピット\"シゲオ",
+    "stripped": "内山シゲオ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "大野“虎眼\"賢良",
+    "stripped": "大野賢良",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "内山“ピット”シゲオ",
+    "stripped": "内山シゲオ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "須崎“ジオング”康文",
+    "stripped": "須崎康文",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "大野“虎眼”賢良",
+    "stripped": "大野賢良",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ジェイソン“ミュータント\"シマック",
+    "stripped": "ジェイソンシマック",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ジャミール“ザ・サージェント”マスー",
+    "stripped": "ジャミールマスー",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "植村“ジャック”龍介",
+    "stripped": "植村龍介",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "アンソニー“辰治”ネツラー",
+    "stripped": "アンソニーネツラー",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "シャノン“ザ・キャノン”リッチ",
+    "stripped": "シャノンリッチ",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ヴァーノン“タイガー”ホワイト",
+    "stripped": "ヴァーノンホワイト",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ヴァーノン”タイガー”ホワイト",
+    "stripped": "ヴァーノンホワイト",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "中村“アイアン”浩士",
+    "stripped": "中村浩士",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "関根”シュレック”秀樹",
+    "stripped": "関根秀樹",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "奥野“轟天”泰舗",
+    "stripped": "奥野泰舗",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "いちょう”Snufkin”ともなが",
+    "stripped": "いちょうともなが",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "咲間“不良先輩”ヒロト",
+    "stripped": "咲間ヒロト",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "島村“烈魅一牙”直希",
+    "stripped": "島村直希",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "新居”コンバ王子”卓",
+    "stripped": "新居卓",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "咲間”不良先輩”ヒロト",
+    "stripped": "咲間ヒロト",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "奥野”轟天”泰舗",
+    "stripped": "奥野泰舗",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "片平”なぎさ”吉幸",
+    "stripped": "片平吉幸",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "片平“なぎさ”吉幸",
+    "stripped": "片平吉幸",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "白川”Dark”陸斗",
+    "stripped": "白川陸斗",
+    "direct": null,
+    "viaStrip": "shirakawa-rikuto",
+    "finalResolved": "shirakawa-rikuto",
+    "category": "newly_resolved_by_strip"
+  },
+  {
+    "name": "―片平”なぎさ”吉幸",
+    "stripped": "―片平吉幸",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "日比野”エビ中”純也",
+    "stripped": "日比野純也",
+    "direct": null,
+    "viaStrip": "hibino-junya",
+    "finalResolved": "hibino-junya",
+    "category": "newly_resolved_by_strip"
+  },
+  {
+    "name": "鈴木”BOSS”遥",
+    "stripped": "鈴木遥",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "ステファン“スマッシュ”",
+    "stripped": "ステファン",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "鈴木 “QP” まい",
+    "stripped": "鈴木  まい",
+    "direct": null,
+    "viaStrip": null,
+    "finalResolved": null,
+    "category": "still_unresolved"
+  },
+  {
+    "name": "荒東”怪獣キラー”英貴",
+    "stripped": "荒東英貴",
+    "direct": null,
+    "viaStrip": "arato-hidetaka",
+    "finalResolved": "arato-hidetaka",
+    "category": "newly_resolved_by_strip"
+  }
+]

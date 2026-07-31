@@ -1,6 +1,6 @@
 # RIZIN選手slug再解決バックフィル結果
 
-生成日時: 2026-07-31T02:15:07.222Z
+生成日時: 2026-07-31T11:20:49.301Z
 
 正規化ロジックはscripts/lib/fighterNameBackfill.ts(backfill-shooto-pancrase-slugs.tsと共通)を使用。
 fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場合のみ解決。既存の解決済みslugは上書きしない。
@@ -11,21 +11,11 @@ fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場�
 - 今回新規解決(ユニークbout件数): 0
 - 依然未解決(延べ): 1103
 - 依然未解決(ユニーク生表記数): 609
-- winnerSlug再計算で埋めた件数: 22
+- winnerSlug再計算で埋めた件数: 0
 
 ## 影響を受けた選手一覧(選手名・解決bout数・4団体通算の変化)
 
-| slug | 新規解決bout数 | 4団体通算(変更前) | 4団体通算(変更後) |
-|---|---|---|---|
-| endoraiki | 0 | 3-10-0 | 4-9-0 |
-| fukuda-machi | 0 | 7-4-0 | 10-1-0 |
-| ishizaka-kushi | 0 | 5-2-0 | 6-1-0 |
-| lightyear-daiki | 0 | 9-12-2 | 11-10-2 |
-| nakai-rin | 0 | 18-1-1 | 19-0-1 |
-| ohara-juri | 0 | 21-13-3 | 22-12-3 |
-| sarami | 0 | 11-12-0 | 12-11-0 |
-| sudario-tsuyoshi | 0 | 0-13-0 | 9-4-0 |
-| uoi-fullswing | 0 | 10-17-0 | 13-14-0 |
+(該当なし)
 
 ## 新規解決bout明細
 
@@ -34,30 +24,7 @@ fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場�
 
 ## winnerSlug再計算明細(fighterA/BSlugは解決済みだがwinnerSlugがnullのまま残っていたbout)
 
-| 大会 | 日付 | コーナー | 勝者名 | 解決slug |
-|---|---|---|---|---|
-| RIZIN.3 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 2ND ROUND | 2016-12-29 | A | 中井りん | nakai-rin |
-| RIZIN.16 | 2019-06-02 | A | 魚井フルスイング | uoi-fullswing |
-| Yogibo presents RIZIN.24 | 2020-09-27 | A | スダリオ剛 | sudario-tsuyoshi |
-| Yogibo presents RIZIN.24 | 2020-09-27 | B | 大原樹里 | ohara-juri |
-| Yogibo presents RIZIN.26 | 2020-12-31 | B | スダリオ剛 | sudario-tsuyoshi |
-| Yogibo presents RIZIN.27 | 2021-03-21 | A | スダリオ剛 | sudario-tsuyoshi |
-| Yogibo presents RIZIN.31 | 2021-10-24 | A | スダリオ剛 | sudario-tsuyoshi |
-| RIZIN TRIGGER 1st | 2021-11-28 | B | 魚井フルスイング | uoi-fullswing |
-| RIZIN TRIGGER 1st | 2021-11-28 | B | ダイキ・ライトイヤー | lightyear-daiki |
-| 湘南美容クリニック presents RIZIN.37 | 2022-07-31 | B | スダリオ剛 | sudario-tsuyoshi |
-| 湘南美容クリニック presents RIZIN.39 | 2022-10-23 | A | スダリオ剛 | sudario-tsuyoshi |
-| ANGEL CHAMPAGNE presents RIZIN LANDMARK 4 in NAGOYA | 2022-11-06 | A | SARAMI | sarami |
-| FEDELTA presents RIZIN LANDMARK 5 in YOYOGI | 2023-04-29 | A | スダリオ剛 | sudario-tsuyoshi |
-| For Japan presents RIZIN LANDMARK 6 in NAGOYA | 2023-10-01 | A | スダリオ剛 | sudario-tsuyoshi |
-| For Japan presents RIZIN LANDMARK 6 in NAGOYA | 2023-10-01 | B | 万智 | fukuda-machi |
-| RIZIN LANDMARK 10 in NAGOYA | 2024-11-17 | A | スダリオ剛 | sudario-tsuyoshi |
-| RIZIN.50 | 2025-03-30 | A | 万智 | fukuda-machi |
-| RIZIN.50 | 2025-03-30 | A | 魚井フルスイング | uoi-fullswing |
-| RIZIN LANDMARK 11 in SAPPORO | 2025-06-14 | B | 万智 | fukuda-machi |
-| RIZIN LANDMARK 11 in SAPPORO | 2025-06-14 | A | 遠藤来生 | endoraiki |
-| RIZIN.51 | 2025-09-28 | B | 石坂空志 | ishizaka-kushi |
-| RIZIN.53 | 2026-05-10 | A | ダイキ・ライトイヤー | lightyear-daiki |
+(該当なし)
 
 ## 編集距離1の不一致候補(参考、機械列挙のみ・同一人物判定はしていない)
 
