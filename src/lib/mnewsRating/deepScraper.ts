@@ -224,6 +224,35 @@ const BOUT_RE_GROUP2 = new RegExp(
   "g"
 );
 
+// F4(マーカー分離+末尾method型。2026-07-31、finish-text-normalize検証中に
+// 決着欄が「●」「○」「VS」単体になっているbout=13大会・60件超で発見)。
+// DEEP公式サイトのマークアップが、勝者側は`<strong>○名前</strong>`と
+// マーク+名前が同じ要素に同居する一方、敗者側だけ`<br>●<strong>名前</strong>`
+// のようにマークが直前の要素の外に出てしまっている実例が多数ある(同一ページ
+// 内で勝者側・敗者側どちらが分離するかは一定しない)。VSのみが独立した
+// セル(1試合だけVSが選手名と別セルに分離)になる亜種もある(DEEP＆PANCRASE
+// 大阪大会で確認)。stripTagsでタグ境界が全て「|」になるため、この
+// マーク単体・VS単体が独立したパイプ区切り要素として現れ、既存フォーマット
+// (mark+名前が同一要素内に同居する前提)ではこの要素をmethod欄や選手名欄と
+// 誤認識してしまう。
+// Group2と同じ「短い見出しテキスト(≤30文字)・両者ジム(丸括弧)必須」を
+// アンカーにしつつ、各選手の直前に来る「マーク単体+パイプ」(および両者の
+// 間に来る「VS単体+パイプ」)を任意で吸収する点だけがGroup2との違い。
+// 見出し無し前提のフォーマットのため優先順位はGroup2と同格に置く(F1→
+// Group4→F2→F10→F8→Group2→F4→Group1)。
+// 見出し長の上限はGroup2の30文字ではなく80文字にする(2026-07-31、DEEP
+// PANCRASE大阪大会の「第2試合 PANCRASE公式戦 ウェルター級 3分3ラウンド」
+// (31文字)がGroup2と同じ30文字上限だと1文字差で弾かれて1bout欠落した実例
+// で判明。両者ジム(丸括弧)必須という強いアンカーが別途あるため、上限を
+// 広げても無関係な地の文を誤って「見出し」として飲み込むリスクは低い)。
+const BOUT_RE_F4 = new RegExp(
+  `(?:^|\\|)\\s*([^|]{0,80}?)\\|\\s*` +
+    `(?:([●○〇△◯×⚪⚫])\\s*\\|\\s*)?${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]${KG_SUFFIX}` +
+    `\\|\\s*(?:VS\\s*\\|\\s*)?(?:([●○〇△◯×⚪⚫])\\s*\\|\\s*)?${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]${KG_SUFFIX}` +
+    `\\|\\s*([^|]+)`,
+  "g"
+);
+
 // F2(method中間型)。決着方法が勝者と敗者の間に挟まる: 第N試合[見出し]|
 // mark+勝者(ジム)|method|mark+敗者(ジム)。現行(F1)は末尾method前提のため
 // この構造では抽出できない(2023年以前221件の全件分類で最大勢力・142件)。
@@ -318,7 +347,8 @@ export type DeepBoutFormat =
   | "group4_detached_mark"
   | "f2_method_middle"
   | "f8_fully_separated"
-  | "f10_vs_and_mark";
+  | "f10_vs_and_mark"
+  | "f4_detached_mark_label";
 
 export interface DeepRawBout {
   format: DeepBoutFormat;
@@ -388,6 +418,31 @@ function extractGroup2Bouts(bodyClean: string): DeepRawBout[] {
       fighterBName: m[6].trim(),
       fighterBGym: m[7].trim() || null,
       methodRaw: m[8].trim(),
+      winnerNameHintRaw: null,
+    });
+  }
+  return bouts;
+}
+
+// F4(マーカー分離+末尾method型)。マークが選手名と同居する場合(inline)・
+// 直前で独立したセルになっている場合(isolated)のどちらか一方だけを採る
+// (実例上、両方が同時に埋まることはない)。
+function extractF4Bouts(bodyClean: string): DeepRawBout[] {
+  const bouts: DeepRawBout[] = [];
+  BOUT_RE_F4.lastIndex = 0;
+  let m: RegExpExecArray | null;
+  while ((m = BOUT_RE_F4.exec(bodyClean))) {
+    bouts.push({
+      format: "f4_detached_mark_label",
+      boutNumber: null,
+      weightClassRaw: m[1].trim() || null,
+      fighterAMark: m[2] || m[3] || null,
+      fighterAName: m[4].trim(),
+      fighterAGym: m[5].trim() || null,
+      fighterBMark: m[6] || m[7] || null,
+      fighterBName: m[8].trim(),
+      fighterBGym: m[9].trim() || null,
+      methodRaw: m[10].trim(),
       winnerNameHintRaw: null,
     });
   }
@@ -647,12 +702,23 @@ const HEADING_MARKER_RE = /^[▼■【]/;
 // 検出できない)。閾値は実在する最長の正当なmethod文より十分大きく、
 // 事故時の混入量(数百〜数千文字)より十分小さい200文字に設定する。
 const MAX_PLAUSIBLE_METHOD_LEN = 200;
+// 2026-07-31、finish-text-normalize検証中に発見: マーカー分離型(F4対応の
+// 発端)のページで、methodRaw欄に決まり手ではなく勝敗マーク単体(●○等)や
+// 「VS」単体が丸ごと入ってしまう事故があった(実体は選手ブロックの一部が
+// stripTags後に独立したセルとして誤って「method」欄に割り当てられたもの)。
+// これらは実在する決まり手表記としてあり得ない値のため、他の判定基準と同様
+// 「壊れた抽出」として不採用にする。これにより、同じページで「第N試合」
+// 見出しを要求する既存フォーマット(F2等)がこのマーク単体を拾って誤って
+// 選ばれてしまう場合でも不採用となり、マーク分離を正しく吸収するF4が
+// 選ばれるようになる(既存フォーマットの正規表現自体は変更しない)。
+const MARKER_ONLY_METHOD_RE = /^[●○〇△◯×⚪⚫]$|^vs$/i;
 function hasGarbledContent(bouts: DeepRawBout[]): boolean {
   return bouts.some(
     (b) =>
       HEADING_MARKER_RE.test(b.fighterAName) ||
       HEADING_MARKER_RE.test(b.fighterBName) ||
-      b.methodRaw.length > MAX_PLAUSIBLE_METHOD_LEN
+      b.methodRaw.length > MAX_PLAUSIBLE_METHOD_LEN ||
+      MARKER_ONLY_METHOD_RE.test(b.methodRaw)
   );
 }
 
@@ -667,6 +733,7 @@ export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; 
     { bouts: extractF10Bouts(bodyClean), format: "f10_vs_and_mark" },
     { bouts: extractF8Bouts(bodyClean), format: "f8_fully_separated" },
     { bouts: extractGroup2Bouts(bodyClean), format: "group2_no_heading" },
+    { bouts: extractF4Bouts(bodyClean), format: "f4_detached_mark_label" },
     { bouts: extractVsBouts(bodyClean), format: "group1_vs" },
   ];
   const candidates = allCandidates.filter((c) => c.bouts.length > 0 && !hasGarbledContent(c.bouts));
