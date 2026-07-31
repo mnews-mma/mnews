@@ -29,15 +29,24 @@ function loadJson<T>(file: string): T {
   return JSON.parse(fs.readFileSync(p, "utf8")) as T;
 }
 
-// 2026-07-31実測値(指示書I: backfill-shooto-pancrase-slugs.tsを#301の
-// alias追加後に再実行した結果を反映。RIZINは対象外=backfill-rizin-slugs.ts
-// 側の管轄で今回は未実行のため据え置き)。org別に個別のベースラインを持つ
-// (合計だけだと、ある団体の悪化を別団体の改善が相殺して隠す恐れがあるため)。
+// 2026-07-31実測値。org別に個別のベースラインを持つ(合計だけだと、ある団体の
+// 悪化を別団体の改善が相殺して隠す恐れがあるため)。
+//
+// 緊急調整(#302マージ後): #302(指示書I、kanru/tenyaのalias反映バックフィル)は
+// PR #294(DEEP取りこぼし17大会+疑い6大会の取り込み、約156bout追加)より前の
+// mainから分岐しており、両者は独立にdata/deepRecords.jsonを更新していた。
+// #294が先にmainへ入っていたため、#302マージ後の実データは「#294が追加した
+// 新規bout(未解決の選手名を多数含む)」+「#302のkanru/tenya解決」の両方を
+// 反映した状態になり、DEEPのunresolvedが3670→3806(+136、うち2件は
+// backfill-shooto-pancrase-slugs.tsの再実行で自動解決)へ増加した。
+// これは新規データ投入に伴う正当な増加であり、退行(regression)ではない
+// (#294は本チェック導入=#300より前にマージ作業が進んでいたため、導入時に
+// 想定していなかった)。パンクラスも同様の理由で8497→8498(+1)。
 const BASELINE = {
   rizin: 1103,
   shooto: 2921,
-  pancrase: 8497,
-  deep: 3670,
+  pancrase: 8498,
+  deep: 3806,
 };
 
 function main() {
