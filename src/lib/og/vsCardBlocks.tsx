@@ -14,6 +14,7 @@ import type { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import { calcFighterRates } from "@/lib/fighters";
 import { computeFighterStripStats } from "@/lib/fighterStrip";
 import { fitName, type FitOpts } from "@/lib/og/fitName";
+import { NO_DATA_LABEL } from "@/components/matchup/matchupData";
 
 // Webカード(matchup.module.css の .mv2 配下CSS変数)と同じ配色をリテラル値で
 // 持つ(Satoriはcssカスタムプロパティを解決できないため)。ここが唯一のOG側
@@ -181,8 +182,11 @@ export function StatRow({
 
 // KO/一本/判定の内訳(Web版MatchupTape.tsxのMethodCountsLineと同じ、ムード地の
 // 数字のみのテキスト行。左右で3カラムの外側2列だけ使う=中央は空)。
+// noRecordData(Wikipedia戦績未登録)の選手は0の内訳を実データのように出さず、
+// 行そのものを空にする(fighterVsStats/buildNoDataTapeDataと同じ捏造ゼロ方針)。
 export function MethodRow({ f, side, size = 16 }: { f: ResolvedFighter; side: "left" | "right"; size?: number }) {
   const justify = side === "left" ? "flex-start" : "flex-end";
+  if (f.noRecordData) return <div style={{ display: "flex", flex: 1 }} />;
   return (
     <div style={{ display: "flex", flex: 1, justifyContent: justify, fontFamily: "Noto Sans JP", fontWeight: 600, fontSize: `${size}px`, color: VS_COLORS.muted }}>
       KO {f.ko} / 一本 {f.sub} / 判定 {f.decision}
@@ -242,7 +246,13 @@ export function CardFooter({ sidePadding = 56 }: { sidePadding?: number }) {
 }
 
 // 通算戦績・勝率・フィニッシュ率をまとめて計算する(呼び出し側の重複を防ぐ)。
+// noRecordData(Wikipedia戦績が無い選手。4団体通算のみ取れている場合を含む)は
+// 「0-0」等の実データに見える値を出さず、Web版buildNoDataTapeDataと同じ
+// NO_DATA_LABEL/null/空配列を返す(捏造ゼロ・オンページとOGPの表示を揃える)。
 export function fighterVsStats(f: ResolvedFighter) {
+  if (f.noRecordData) {
+    return { record: NO_DATA_LABEL, winRate: null, finishRate: null, last5: [] };
+  }
   const rates = calcFighterRates(f);
   const strip = computeFighterStripStats(f);
   const record = `${f.wins}-${f.losses}${f.draws > 0 ? `-${f.draws}` : ""}`;
