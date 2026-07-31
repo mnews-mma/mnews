@@ -3,6 +3,18 @@
 調査対象: `data/{rizin,deep,pancrase,shooto}Records.json`(main時点、2026-07-31)。
 修正は行っていない(`git diff` は `scripts/audit-winner-marker.mjs` の新規追加のみ)。
 
+## 訂正(2026-07-31、#292での真因判明を受けて追記)
+
+**「① 同一boutで両者勝ち/両者負け = 0件」は誤ったオールクリアだった。** 本調査でチェックしたのは `Records JSON`(生データ)と `fighterRecords.json`(選手別展開データ)の2層のみで、症状が実際に出る**集計層**(`rizinRecordsAggregate.ts`)を見ていなかったため、そこに存在した不整合を検出できなかった。
+
+`#292` で判明した真因: `backfill-rizin-slugs.ts` が `fighterASlug`/`fighterBSlug` を埋め直す際に `winnerSlug` を再計算していなかった。`rizinRecordsAggregate.ts` 側は `winnerSlug === slug` で各選手の勝敗を判定するため、backfillでslugが埋まった/変わった選手について `winnerSlug` が古いまま(あるいは元々null)だと、真の勝者側の選手も `winnerSlug !== slug` と判定されて「敗」扱いになる。RIZINで**22件**該当。
+
+この22件は、本調査で副次確認していた「winnerNameから導出可能なのにwinnerSlugがnullのまま」のRIZIN 22件(4節参照)と**同一の22件**である。つまり件数自体は本調査で正しく検出できていたが、「これは誤読ではなく未導出」という当時の切り分けが誤りで、実際には未導出がそのまま集計層での誤表示に直結していた。
+
+**教訓**: 不変条件チェック(両者勝ち/両者負けの矛盾がないか等)は、症状が現れる層(この場合は集計層)で回さないと意味がない。生データが正しくても、生データから派生する中間表現(slugのbackfillなど)が不整合だと、最終的な表示層で症状が再発しうる。
+
+以下は訂正前の原文(該当箇所は上記を正としてください)。
+
 ## 0. きっかけと結論の先出し
 
 2023-10-01 RIZIN LANDMARK 6 万智 vs 渡辺彩華戦で、選手ページが両者とも「敗」表示になっている件(#292で個別対応中)について、**`rizinRecords.json` 自体の当該boutは正しい**ことをまず確認した。
@@ -23,7 +35,7 @@
 
 | チェック内容 | RIZIN | DEEP | PANCRASE | SHOOTO | 合計 |
 |---|---|---|---|---|---|
-| ① 同一boutで両者勝ち/両者負け(パンクラスのleftMarkerRaw/rightMarkerRaw突合) | 0 | – | 0 | – | 0 |
+| ① 同一boutで両者勝ち/両者負け(パンクラスのleftMarkerRaw/rightMarkerRaw突合) ※Records JSON層のみ。集計層(rizinRecordsAggregate.ts)ではRIZIN 22件が該当していた。上記「訂正」参照 | 0 | – | 0 | – | 0 |
 | ② resultType=decisiveなのにwinnerName/winnerSlugが空・欠損 | 7 | 0 | 0 | 0 | 7 |
 | ③ winnerNameが出場者どちらとも不一致 | 0 | 0 | 0 | 0 | 0 |
 | ④ 勝敗マーカー記号(○×●等)が名前欄に混入 | 0 | 7 | 1 | 0 | 8 |
@@ -87,4 +99,4 @@
 - ①のパンクラス`leftMarkerRaw`/`rightMarkerRaw`とwinnerNameの不一致チェックは0件だったが、これは「両フィールドが揃っている場合」のみの検証。片方が欠損しているケースは対象外(別途調査要)。
 - ④のマーカー文字検出は正規表現ベースの機械的抽出であり、リングネームに使われる「☆」「★」は既知の誤検知源として除外済み(例: `ANIMAL☆KOJI`, `WINDY智美` は正常な名前)。除外後も未知の記号パターン(全角波ダッシュ・特殊約物等)による混入は検出対象外の可能性がある。
 - `fighterRecords.json`との突合は、mainに現在マージ済みのデータ(351名)のみが対象。pancrase-records/shooto-records/deep-records-data等、未マージブランチ側で今後生成される`fighterRecords.json`は未検証。
-- winnerSlugが導出可能(winnerNameがfighterA/BSlugのどちらかの表示名と一致)にもかかわらずnullのままのケースが、RIZIN 22件・DEEP 105件・PANCRASE 374件・SHOOTO 371件と広範に存在することを確認した(本調査の4基準には含まれないため件数のみ記録、個別列挙はしていない)。これ自体は「誤読」ではなく「未導出」だが、下流の選手別戦績生成がwinnerSlug依存だった場合の潜在リスクとして申し送る。
+- winnerSlugが導出可能(winnerNameがfighterA/BSlugのどちらかの表示名と一致)にもかかわらずnullのままのケースが、RIZIN 22件・DEEP 105件・PANCRASE 374件・SHOOTO 371件と広範に存在することを確認した(本調査の4基準には含まれないため件数のみ記録、個別列挙はしていない)。**【訂正】** 当時「誤読ではなく未導出」と切り分けたが誤りだった。RIZINの22件は、まさに`rizinRecordsAggregate.ts`が`winnerSlug === slug`判定で敗者扱いしてしまう本体そのものだった(上記「訂正」節参照、#292で判明)。DEEP/PANCRASE/SHOOTOの同種105/374/371件についても、各団体の集計層が同じ`winnerSlug`依存判定を行っているなら同型の誤表示を起こしている可能性があり、未検証のまま残っている。
