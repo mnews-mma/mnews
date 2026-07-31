@@ -330,6 +330,13 @@ export default function FighterFilterGrid({
                     <div className="fighter-record">
                       {f.multiOrgRecord.wins}-{f.multiOrgRecord.losses}-{f.multiOrgRecord.draws}
                     </div>
+                    <div className="fighter-breakdown">
+                      KO {f.multiOrgRecord.ko} / 一本 {f.multiOrgRecord.sub} / 判定 {f.multiOrgRecord.decision}
+                    </div>
+                    <div className="fighter-rates">
+                      {f.multiOrgRecord.winRate !== null && <span>勝率 {f.multiOrgRecord.winRate}%</span>}
+                      {f.multiOrgRecord.finishRate !== null && <span>フィニッシュ率 {f.multiOrgRecord.finishRate}%</span>}
+                    </div>
                     <div className="fighter-rates">
                       <span>{MULTI_ORG_RECORD_LABEL}</span>
                     </div>

@@ -14,7 +14,19 @@ export interface ResolvedFighter extends Fighter {
   // noRecordDataの選手のうち、4団体(RIZIN・DEEP・パンクラス・修斗)合算戦績が
   // 取れている場合のみ付与(visibleFighters.ts参照)。/fighters一覧カードで
   // 「データなし」の代わりにこの数字+出典注記を表示するために使う。
-  multiOrgRecord?: { wins: number; losses: number; draws: number };
+  // ko/sub/decision/winRate/finishRateは指示書A(2026-08-01)で追加。
+  // Wikipedia由来(1行目)と同じ内訳・率をこちら側でも出すため
+  // (出典によって情報量が割れるのを防ぐ)。
+  multiOrgRecord?: {
+    wins: number;
+    losses: number;
+    draws: number;
+    ko: number;
+    sub: number;
+    decision: number;
+    winRate: number | null;
+    finishRate: number | null;
+  };
 }
 
 // ja-wiki記事が「同一人物」かの検証: ja-wikiの戦績に、自社EVENT_RESULTS由来の
