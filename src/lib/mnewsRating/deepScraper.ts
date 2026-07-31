@@ -118,14 +118,40 @@ export function isPlausibleEventDate(day: string): boolean {
   return year >= EARLIEST_PLAUSIBLE_YEAR;
 }
 
-// 本文(タグ除去済み)から開催日(YYYY年M月D日)を抽出する(PR #201/#231と同一正規表現)。
+// Date.getUTCDay()の0=日曜起点に合わせた曜日の日本語表記。
+const WEEKDAY_JA = ["日", "月", "火", "水", "木", "金", "土"];
+
+function actualWeekdayJa(y: number, mo: number, d: number): string {
+  return WEEKDAY_JA[new Date(Date.UTC(y, mo - 1, d)).getUTCDay()];
+}
+
+// 日付直後の「（月・祝）」等の曜日注記付きの日付表記に一致する正規表現。
+const DATE_WITH_WEEKDAY_RE = /(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日\s*[（(]\s*([日月火水木金土])/g;
+
+// 本文(タグ除去済み)から開催日(YYYY年M月D日)を抽出する(PR #201/#231と同一正規表現がベース)。
 export function extractEventDate(bodyClean: string): string | null {
-  // 年月日の各文字の前後に半角空白が入る旧テンプレートがある(例:「2022 年 12
-  // 月 11 日」、2026-07-29、全期間拡張時にDEEP TOKYO IMPACT 2022 7th ROUND等
-  // 複数件で確認)。
-  const m = bodyClean.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
-  if (!m) return null;
-  const [, y, mo, d] = m;
+  // DEEP公式ページは同一ページ内に日付表記が複数箇所(試合結果見出し・
+  // 「●日時：」欄等)あることがあり、どちらか一方に誤字が入っていることがある
+  // (2026-08-01発見。DEEP JEWELS 43は見出し側が「2003年」の誤字、DEEP JEWELS 52は
+  // 逆に「●日時：」欄側が「2025年」の誤字で、誤字の出る場所は一定しない)。
+  // 単純な先頭一致では誤字を拾う場合があるため、日付直後に「（月・祝）」等の
+  // 曜日注記が付いている表記だけを候補にし、実際の曜日と突き合わせて検証する
+  // (誤字混入時は年がずれるため曜日も必ず食い違う。休日名の有無までは見ない)。
+  // 曜日注記付きの候補が複数ある場合は、実際の曜日と一致する最初の候補を採用する。
+  let m: RegExpExecArray | null;
+  DATE_WITH_WEEKDAY_RE.lastIndex = 0;
+  while ((m = DATE_WITH_WEEKDAY_RE.exec(bodyClean))) {
+    const [, y, mo, d, weekdayJa] = m;
+    const date = `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
+    if (!isPlausibleEventDate(date)) continue;
+    if (actualWeekdayJa(Number(y), Number(mo), Number(d)) === weekdayJa) return date;
+  }
+
+  // 曜日注記付きの候補が無い、またはどれも曜日が一致しない(検証不能)ページは
+  // 従来どおり本文中最初の日付表記にフォールバックする。
+  const fallback = bodyClean.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
+  if (!fallback) return null;
+  const [, y, mo, d] = fallback;
   const date = `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
   return isPlausibleEventDate(date) ? date : null;
 }
