@@ -33,11 +33,24 @@ function loadJson<T>(file: string): T {
 // alias追加後に再実行した結果を反映。RIZINは対象外=backfill-rizin-slugs.ts
 // 側の管轄で今回は未実行のため据え置き)。org別に個別のベースラインを持つ
 // (合計だけだと、ある団体の悪化を別団体の改善が相殺して隠す恐れがあるため)。
+//
+// deepのみ3670→3808に再修正(PR #297作業時に判明): PR #294(DEEP取りこぼし
+// 17大会+疑い6大会の取り込み)がこのゲート追加(0bec1be)より前に分岐された
+// ブランチのままrebase無しでマージされ、再パースで新規に捕捉されたbout(以前は
+// パース失敗でそもそもdata/に入っていなかった)に伴うslug未解決分+138が
+// ベースライン比較から漏れていた。増分の内訳を旧deepRecords.json(コミット
+// 0bec1be時点)と現在とで大会単位に突合し、増加した15大会(DEEP HAMAMATSU
+// IMPACT 2023/2024・DEEP 81/94/92/100 IMPACT・DEEP JEWELS 22/43/19・DEEP
+// TOKYO IMPACT 2025 1st/3rd/4th ROUND・DEEP＆PANCRASE大阪大会・DEEP NAGOYA
+// IMPACT 2022公武堂ファイト/2026 2nd ROUND)が全てPR #294の対象23大会に
+// 含まれること、data/deepRecords.json自体がPR #294マージ後は他コミットで
+// 変更されていないことを確認済み(詳細はPR #294のout/deep-parse-failure-fix-
+// report.md参照)。無関係な大会からの混入は無い。
 const BASELINE = {
   rizin: 1103,
   shooto: 2921,
   pancrase: 8497,
-  deep: 3670,
+  deep: 3808,
 };
 
 function main() {
@@ -67,7 +80,12 @@ function main() {
       `[null-slug検査] ★slug未解決bout側がベースラインを超えて増加しています。デプロイをブロックします:\n` +
         `  ${regressed.join("\n  ")}\n` +
         `  対処法: 新規追加データの選手名がfighters.tsのnameJa/nameEn/aliasesと一致するか確認してください。` +
-        `別人でなければaliasを追加し、該当団体のbuild-*-records.tsを再実行してdata/を再生成してください。`
+        `別人でなければaliasを追加し、該当団体のbuild-*-records.tsを再実行してdata/を再生成してください。\n` +
+        `  注意: data/{rizin,shooto,pancrase,deep}Records.jsonに新規大会を追加するPRでは、` +
+        `再パースで新たに捕捉されたbout分だけ未解決件数が自然に増えることがあります。` +
+        `増分が追加大会由来だと確認できたら、このPRの中でBASELINEも実測値に更新してください` +
+        `(古いbranchから分岐したままrebase無しでマージすると、このゲート追加後の他PRの` +
+        `増分に気づけず後から一括で発覚します)。`
     );
     process.exit(1);
   }
