@@ -1217,6 +1217,9 @@ export const FIGHTERS: Fighter[] = [
   // 旧slugはfighterSlugRedirects.tsに恒久リダイレクトとして残す。
   { slug: "yamagami-mikihito", nameJa: "山上幹臣", nameEn: "Mikihito Yamagami", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "ryoga", nameJa: "亮我", nameEn: "Ryoga", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // 修斗公式サイト id=1316(https://www.shooto-mma.com/fighters/?id=1316)。
+  // data/shootoRecords.json内の姓なし表記「泰斗」8件の解決先(旧・未解決)。
+  { slug: "taito", nameJa: "泰斗", nameEn: "Taito", org: "shooto", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "takaoka-hiroki", nameJa: "高岡宏気", nameEn: "Hiroki Takaoka", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "arai-jo", nameJa: "新井丈", nameEn: "Jo Arai", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "NEVER GIVE UP" },
   { slug: "suzuki-simon", nameJa: "シモンスズキ", nameEn: "Shimon Suzuki", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
