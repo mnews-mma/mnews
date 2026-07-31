@@ -1,6 +1,6 @@
 # deep-records-data-ingest-report
 
-生成日時(JST): 2026-07-31
+生成日時(JST): 2026-08-01
 
 - アーカイブ総リンク数: 288
 - 候補大会数(開催済・KICK/アマチュア除く): 266
@@ -8,7 +8,7 @@
 - bout数: 2333
 - parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 4件
 - resultType=unknown: 34件
-- 選手名未解決(fighterASlug/fighterBSlug null): 3756件
+- 選手名未解決(fighterASlug/fighterBSlug null): 3753件
 - 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 234件
 - 除外(アマチュア大会): 9件
 - 除外(抽出0件・F7/F11相当): 29件
@@ -200,12 +200,12 @@
 | DEEP 103 IMPACT ～20th Anniversary～ | 2021-09-23 | 9 | F1 | 0 | 0 | 10 | 0 |
 | DEEP JEWELS 34 | 2021-09-04 | 3 | f2_method_middle | 0 | 0 | 5 | 0 |
 | DEEP OSAKA IMPACT 2021 | 2021-07-18 | 9 | group1_vs | 0 | 0 | 17 | 0 |
-| DEEP 102 IMPACT | 2021-07-04 | 6 | group2_no_heading | 0 | 0 | 8 | 0 |
+| DEEP 102 IMPACT | 2021-07-04 | 6 | group2_no_heading | 0 | 0 | 7 | 0 |
 | DEEP JEWELS 33 | 2021-06-20 | 6 | f2_method_middle | 0 | 0 | 9 | 0 |
 | DEEP TOKYO IMPACT 2nd ROUND | 2021-06-19 | 1 | f2_method_middle | 0 | 0 | 2 | 2 |
 | DEEP TOKYO IMPACT 1st ROUND | 2021-06-19 | 1 | f2_method_middle | 0 | 0 | 2 | 1 |
 | DEEP 101 IMPACT | 2021-05-05 | 7 | f2_method_middle | 0 | 0 | 6 | 0 |
-| DEEP TOKYO IMPACT 2021 | 2021-03-13 | 10 | f2_method_middle | 0 | 0 | 16 | 0 |
+| DEEP TOKYO IMPACT 2021 | 2021-03-13 | 10 | f2_method_middle | 0 | 0 | 15 | 0 |
 | DEEP JEWELS 32 | 2021-03-07 | 8 | f2_method_middle | 0 | 0 | 9 | 1 |
 | DEEP 100 IMPACT ～20th Anniversary～ | 2021-02-21 | 16 | f2_method_middle | 0 | 3 | 19 | 0 |
 | DEEP TOKYO IMPACT 2020 | 2020-12-19 | 9 | f2_method_middle | 0 | 0 | 14 | 0 |
@@ -213,7 +213,7 @@
 | DEEP 99 IMPACT | 2020-11-01 | 3 | f2_method_middle | 0 | 0 | 6 | 0 |
 | DEEP 98 IMPACT | 2020-11-01 | 5 | f2_method_middle | 0 | 0 | 5 | 0 |
 | DEEP JEWELS 30 | 2020-10-31 | 7 | f2_method_middle | 0 | 0 | 10 | 1 |
-| DEEP 97 IMPACT | 2020-09-20 | 5 | f2_method_middle | 0 | 0 | 8 | 0 |
+| DEEP 97 IMPACT | 2020-09-20 | 5 | f2_method_middle | 0 | 0 | 7 | 0 |
 | DEEP 96 IMPACT | 2020-08-23 | 8 | f2_method_middle | 0 | 0 | 12 | 0 |
 | DEEP 95 IMPACT | 2020-08-23 | 8 | f2_method_middle | 0 | 0 | 13 | 0 |
 | DEEP JEWELS 29 | 2020-07-23 | 5 | f2_method_middle | 0 | 0 | 6 | 1 |
