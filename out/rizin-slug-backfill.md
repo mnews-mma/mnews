@@ -1,6 +1,6 @@
 # RIZIN選手slug再解決バックフィル結果
 
-生成日時: 2026-07-31T11:20:49.301Z
+生成日時: 2026-07-31T11:36:43.904Z
 
 正規化ロジックはscripts/lib/fighterNameBackfill.ts(backfill-shooto-pancrase-slugs.tsと共通)を使用。
 fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場合のみ解決。既存の解決済みslugは上書きしない。

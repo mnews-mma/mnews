@@ -85,9 +85,16 @@ shirakawa-rikuto・arato-hidetakaの該当bout自体は、`findFighterSlugByName
 - ローカル`next start`で主要ページ200確認: `/`・`/fighters`・
   `/fighters/hibino-junya`・`/fighters/shirakawa-rikuto`・`/events`・`/results`・`/rankings`
 
-## 補足: 他PRとの関係
+## 補足: リベース後の実測(#302マージ後)
 
-PR #302(指示書I)も同じmainから分岐し、`data/deepRecords.json`・
-`data/pancraseRecords.json`・`scripts/check-null-slug-baseline.ts`の同じ箇所を
-独立に更新している。どちらを先にマージしても、後からマージする側でこのPRの
-差分(コンフリクト解消+BASELINE再調整)が必要になる。
+#302→本PRの順でマージするようユーザー指示があり、#302を先にmainへマージした。
+その後、本PRのブランチをmain(#294・#302・緊急hotfix #310反映後)へリベースし、
+コンフリクトが出た`scripts/check-null-slug-baseline.ts`はmain側を採用した上で
+バックフィルスクリプトを再実行してdata/を作り直した(手でのコンフリクト解消は
+行っていない)。
+
+結果、mainとの実質差分は**hibino-junyaの1boutのみ**に収束した(kanru・tenyaは
+既に#302でmainに反映済みのため重複解決なし)。DEEPのBASELINEを3806→3805に
+再調整した(パンクラスは変化なし、8497のまま)。
+`git diff origin/main -- data/deepRecords.json data/pancraseRecords.json`は
+1行の差分(hibino-junyaのfighterBSlug)のみ。
