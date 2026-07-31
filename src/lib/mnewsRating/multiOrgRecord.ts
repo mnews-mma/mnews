@@ -31,6 +31,7 @@ import { PancraseRecordsEvent } from "./pancraseRecordsTypes";
 import { computeFighterPancraseRecord } from "./pancraseRecordsAggregate";
 import { DeepRecordsEvent } from "./deepScraper";
 import { computeFighterDeepRecord } from "./deepRecordsAggregate";
+import { normalizeFinishText } from "../finishTextNormalize";
 
 // 表示ラベル用の固定表記(実装済み4団体を列挙。並び順は確定済み:
 // RIZIN・DEEP・パンクラス・修斗、2026-07-30ユーザー指定)。
@@ -108,7 +109,7 @@ function toBoutRow(b: {
     opponentName: b.opponentName,
     opponentSlug: b.opponentSlug,
     result,
-    method: b.methodRaw,
+    method: normalizeFinishText(b.methodRaw),
     event: b.event,
   };
 }
