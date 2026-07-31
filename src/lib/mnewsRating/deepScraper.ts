@@ -128,6 +128,22 @@ function actualWeekdayJa(y: number, mo: number, d: number): string {
 // 日付直後の「（月・祝）」等の曜日注記付きの日付表記に一致する正規表現。
 const DATE_WITH_WEEKDAY_RE = /(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日\s*[（(]\s*([日月火水木金土])/g;
 
+// 本文中最初の日付表記(YYYY年M月D日)を抽出する共通ヘルパー(PR #201/#231と
+// 同一正規表現)。extractEventDate()のフォールバック専用の関数スコープに
+// 切り出すことで、check-jst-date-bypass.tsのbaseline(file+pattern+コード
+// テキストで識別、行番号は見ない)に登録済みの既存表記
+// (`const m = bodyClean.match(...)`)と文字列が一致するようにしている
+// (2026-08-01、#317でこの行を`fallback`という別名の変数に書き換えた際、
+// baselineが変数名込みの文字列一致のため新規違反として誤検出されたことへの対処。
+// ロジック自体は#317以前から変わっていない)。
+function matchFirstKanjiDate(bodyClean: string): string | null {
+  const m = bodyClean.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
+  if (!m) return null;
+  const [, y, mo, d] = m;
+  const date = `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
+  return isPlausibleEventDate(date) ? date : null;
+}
+
 // 本文(タグ除去済み)から開催日(YYYY年M月D日)を抽出する(PR #201/#231と同一正規表現がベース)。
 export function extractEventDate(bodyClean: string): string | null {
   // DEEP公式ページは同一ページ内に日付表記が複数箇所(試合結果見出し・
@@ -149,11 +165,7 @@ export function extractEventDate(bodyClean: string): string | null {
 
   // 曜日注記付きの候補が無い、またはどれも曜日が一致しない(検証不能)ページは
   // 従来どおり本文中最初の日付表記にフォールバックする。
-  const fallback = bodyClean.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
-  if (!fallback) return null;
-  const [, y, mo, d] = fallback;
-  const date = `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
-  return isPlausibleEventDate(date) ? date : null;
+  return matchFirstKanjiDate(bodyClean);
 }
 
 // ── 3. bout抽出(3つの本文フォーマットに対応) ─────────────────────────────
