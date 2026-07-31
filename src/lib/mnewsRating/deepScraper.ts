@@ -648,9 +648,37 @@ function extractVsBouts(bodyClean: string): DeepRawBout[] {
 // 見出しが見つからない場合は本文全体を対象にする(この前処理はあくまで
 // 2024年以降テンプレート固有の重複セクション除去であり、見つからないこと
 // 自体を抽出失敗として扱わない)。
-const NON_RESULT_SECTION_MARKERS = ["【計量結果】", "【大会概要】", "PAST EVENT", "CONTACT"];
+// 2026-08-01追記: 「計量結果」セクション名の表記ゆれ(前日計量の模様/
+// 前日計量/計量の模様/計量の様子/【対戦カード】計量結果 等)が既存の
+// 「【計量結果】」(鍵括弧つき完全一致)だけでは拾いきれず、この計量
+// セクションが「第N試合 階級名」+選手名(ジム)という結果本文と同じ見出し
+// 構造を体重kg付きで再掲するため、F1/group2等が誤ってマッチし、正しい
+// bout(決まり手あり)の隣に空欄の重複boutを生む事故が発生した(実例:
+// DEEP 125 IMPACT 5件)。全237大会+キャッシュ済み過去大会を走査し、
+// 見つかった表記ゆれをすべて追加する(1件ずつの対症療法にしない)。
+// 「計量オーバー」(体重超過による無効試合等の説明、決着文中に正当に
+// 現れる語)は含めない――走査した実例はいずれも独立した見出しとしての
+// 出現のみで、決着文の一部として埋め込まれた例は無かった。
+const NON_RESULT_SECTION_MARKERS = [
+  "【計量結果】",
+  "計量結果",
+  "前日計量",
+  "計量の模様",
+  "計量の様子",
+  "【大会概要】",
+  "PAST EVENT",
+  "CONTACT",
+];
 
 function scopeToResultsSection(bodyClean: string): string {
+  // 2026-08-01、DEEP 125 IMPACT等「【試合結果】」(鍵括弧つき)の見出しを
+  // 持たないページで試した「見つからない場合はbodyClean先頭から末尾除外
+  // する」という変更は、ページ冒頭のチケット告知文等に「前日計量」
+  // 「計量結果」を含む無関係な文言が出現するページを大量に誤短縮し、
+  // 抽出0件停止条件(閾値30)を237件中180件超過で踏むという重大な回帰に
+  // なったため撤回した(この関数は従来どおりstartIdxが見つかった場合のみ
+  // 末尾除外を行う)。計量セクション混入による重複bout(DEEP 125 IMPACT
+  // 5件)への対応はdeduplicateBoutsByFighterPair(下記)で行う。
   const startIdx = bodyClean.indexOf("【試合結果】");
   if (startIdx === -1) return bodyClean;
   let endIdx = bodyClean.length;
@@ -748,11 +776,47 @@ function hasGarbledContent(bouts: DeepRawBout[]): boolean {
   );
 }
 
+// 2026-08-01、DEEP 125 IMPACTで発見: 「【試合結果】」見出しを持たない
+// ページでは、決着セクションの後に続く「前日計量の模様」等(体重kgを
+// 決まり手欄の位置に持つ計量結果の再掲)が結果セクションと同じ見出し
+// 構造を使っているためF1/group2等に誤マッチし、正しく抽出できたboutの
+// 隣に「同じ対戦カードだが決着欄が空」の重複が生まれる。
+// scopeToResultsSection側の対応(開始位置が見つからない場合も末尾除外を
+// 適用)は、ページ冒頭のチケット告知文等に「前日計量」を含む無関係な
+// ページを大量に誤短縮する重大な回帰を起こしたため撤回し(該当コメント
+// 参照)、代わりにフォーマット単位の後処理として対応する: 同一
+// フォーマット内で対戦カード(選手2名の組み合わせ、順不同)が重複し、
+// 片方だけ決着欄が空の場合は空の側を不採用にする。両方空・両方非空の
+// 組み合わせ(同一カード内での正当な再戦等、捏造ゼロ原則により推測しない)
+// はそのまま残す。
+function dedupeBoutsByFighterPair(bouts: DeepRawBout[]): DeepRawBout[] {
+  const indexByPairKey = new Map<string, number>();
+  const result: DeepRawBout[] = [];
+  for (const b of bouts) {
+    const key = [b.fighterAName, b.fighterBName].sort().join(" ");
+    const existingIdx = indexByPairKey.get(key);
+    if (existingIdx === undefined) {
+      indexByPairKey.set(key, result.length);
+      result.push(b);
+      continue;
+    }
+    const existing = result[existingIdx];
+    if (existing.methodRaw === "" && b.methodRaw !== "") {
+      result[existingIdx] = b;
+    } else if (existing.methodRaw !== "" && b.methodRaw === "") {
+      // bを不採用(existingを残す)
+    } else {
+      result.push(b);
+    }
+  }
+  return result;
+}
+
 export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; formatsUsed: DeepBoutFormat[] } {
   const bodyClean = scopeToResultsSection(rawBodyClean);
   const headingCount = countBoutHeadings(bodyClean);
 
-  const allCandidates: { bouts: DeepRawBout[]; format: DeepBoutFormat }[] = [
+  const rawCandidates: { bouts: DeepRawBout[]; format: DeepBoutFormat }[] = [
     { bouts: extractNumberedMarkBouts(bodyClean, BOUT_RE_F1, "F1"), format: "F1" },
     { bouts: extractNumberedMarkBouts(bodyClean, BOUT_RE_GROUP4, "group4_detached_mark"), format: "group4_detached_mark" },
     { bouts: extractF2Bouts(bodyClean), format: "f2_method_middle" },
@@ -762,6 +826,7 @@ export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; 
     { bouts: extractF4Bouts(bodyClean), format: "f4_detached_mark_label" },
     { bouts: extractVsBouts(bodyClean), format: "group1_vs" },
   ];
+  const allCandidates = rawCandidates.map((c) => ({ ...c, bouts: dedupeBoutsByFighterPair(c.bouts) }));
   const candidates = allCandidates.filter((c) => c.bouts.length > 0 && !hasGarbledContent(c.bouts));
 
   if (candidates.length === 0) return { bouts: [], formatsUsed: [] };
