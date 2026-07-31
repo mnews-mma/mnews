@@ -142,7 +142,7 @@
 | DEEP TOKYO IMPACT 2023 7th ROUND | 2023-12-10 | 9 | f4_detached_mark_label | 0 | 0 | 15 | 3 |
 | DEEP 117 IMPACT | 2023-12-10 | 6 | f4_detached_mark_label | 0 | 0 | 8 | 4 |
 | DEEP OSAKA IMPACT 2023 3rd ROUND | 2023-11-26 | 16 | f4_detached_mark_label | 0 | 0 | 29 | 1 |
-| DEEP JEWELS 43 | 2003-11-23 | 10 | f4_detached_mark_label | 0 | 0 | 17 | 1 |
+| DEEP JEWELS 43 | 2023-11-23 | 10 | f4_detached_mark_label | 0 | 0 | 17 | 1 |
 | DEEP TOKYO IMPACT 2023 6th ROUND | 2023-11-23 | 10 | f4_detached_mark_label | 0 | 0 | 18 | 2 |
 | DEEP 116 IMPACT | 2023-11-11 | 9 | group2_no_heading | 0 | 0 | 8 | 2 |
 | DEEP HAMAMATSU IMPACT 2023 | 2023-09-24 | 16 | group4_detached_mark | 0 | 0 | 30 | 4 |
