@@ -21,7 +21,7 @@ import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions"
 import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
 import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } from "@/lib/seoTemplates";
 import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords, fetchDeepRecords } from "@/lib/multiOrgRecordsData";
-import { computeMultiOrgRecord, computeMultiOrgBoutTable, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
+import { computeMultiOrgRecord, computeMultiOrgBoutTable, computeMultiOrgRates, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
 import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
 import { normalizeDecisionScorePerspective } from "@/lib/decisionScorePerspective";
 
@@ -321,9 +321,15 @@ export default async function FighterPage({
     fetchPancraseRecords(),
     fetchDeepRecords(),
   ]);
-  const multiOrgRecord = computeMultiOrgRecord(fighter.slug, { rizinEvents, shootoEvents, pancraseEvents, deepEvents });
+  const multiOrgData = { rizinEvents, shootoEvents, pancraseEvents, deepEvents };
+  const multiOrgRecord = computeMultiOrgRecord(fighter.slug, multiOrgData);
   const hasMultiOrgRecord =
     multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0;
+  // 指示書A(2026-08-01): 2行目(4団体集計)にも1行目(Wikipedia通算)と同じ
+  // KO/一本/判定の内訳・勝率・フィニッシュ率を出す(出典で情報量が割れるのを防ぐ)。
+  // bout table自体はdisplayHistory(下)とも共有し、二重に計算しない。
+  const multiOrgBoutRows = SHOW_MULTI_ORG_RECORD ? computeMultiOrgBoutTable(fighter.slug, multiOrgData) : [];
+  const multiOrgRates = hasMultiOrgRecord ? computeMultiOrgRates(multiOrgRecord, multiOrgBoutRows) : null;
   // Wikipedia通算が無い(noRecordData)が4団体合算(2行目)は取れている選手
   // (Wikiを持たない修斗・パンクラス・DEEP選手が該当)は、「通算戦績 データなし」を
   // 出さず2行目のみを表示する。両方無い場合のみ従来どおり「データなし」。
@@ -345,7 +351,7 @@ export default async function FighterPage({
           event: h.event,
         }))
       : SHOW_MULTI_ORG_RECORD
-        ? computeMultiOrgBoutTable(fighter.slug, { rizinEvents, shootoEvents, pancraseEvents, deepEvents }).map((b) => ({
+        ? multiOrgBoutRows.map((b) => ({
             date: b.date,
             opponentName: b.opponentName,
             opponentSlug: resolveLinkableOpponentSlug(b.opponentSlug),
@@ -589,13 +595,17 @@ export default async function FighterPage({
           </div>
         )}
 
-        {/* 戦績スタットカード2行目: RIZIN+修斗+パンクラスの3団体公式データ
+        {/* 戦績スタットカード2行目: RIZIN+DEEP+パンクラス+修斗の4団体公式データ
             (data/rizinRecords.json・data/shootoRecords.json・
-            data/pancraseRecords.json)を毎回合算した戦績。1行目(Wikipedia通算)
-            とは集計元・集計ロジックが別。fighters.tsのwins/losses/history
-            (PR #252投入値)は参照しない(#258で誤りが見つかっており信頼できない
-            ため)。3団体とも0件(該当bout無し)の場合はブロックごと非表示にする。 */}
-        {SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord && (
+            data/pancraseRecords.json・data/deepRecords.json)を毎回合算した戦績。
+            1行目(Wikipedia通算)とは集計元・集計ロジックが別。fighters.tsの
+            wins/losses/history(PR #252投入値)は参照しない(#258で誤りが
+            見つかっており信頼できないため)。4団体とも0件(該当bout無し)の
+            場合はブロックごと非表示にする。指示書A(2026-08-01): 出典によって
+            情報量が割れないよう、1行目と同じ内訳(KO/一本/判定)・勝率・
+            フィニッシュ率をこちらにも出す(classifyMethodJa経由、
+            computeMultiOrgRates参照)。 */}
+        {SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord && multiOrgRates && (
           <div className="fighter-stats-grid">
             <div className="fighter-stat-card">
               <div className="fighter-stat-num">
@@ -609,6 +619,18 @@ export default async function FighterPage({
                 </a>
               </div>
             </div>
+            {multiOrgRates.winRate !== null && (
+              <div className="fighter-stat-card">
+                <div className="fighter-stat-num">{multiOrgRates.winRate}%</div>
+                <div className="fighter-stat-label">勝率</div>
+              </div>
+            )}
+            {multiOrgRates.finishRate !== null && (
+              <div className="fighter-stat-card">
+                <div className="fighter-stat-num">{multiOrgRates.finishRate}%</div>
+                <div className="fighter-stat-label">フィニッシュ率</div>
+              </div>
+            )}
           </div>
         )}
 

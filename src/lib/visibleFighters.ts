@@ -2,7 +2,7 @@ import { FIGHTERS } from "./fighters";
 import { ResolvedFighter } from "./feeds/resolveFighter";
 import { fetchFighterRecords, resolveFightersFromRecords } from "./fighterRecordsCache";
 import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords, fetchDeepRecords } from "./multiOrgRecordsData";
-import { computeMultiOrgRecord } from "./mnewsRating/multiOrgRecord";
+import { computeMultiOrgRecord, computeMultiOrgBoutTable, computeMultiOrgRates } from "./mnewsRating/multiOrgRecord";
 import { SHOW_MULTI_ORG_RECORD } from "./featureFlags";
 
 // /fighters 一覧・Xカードツールで共通の「公開母集団」を返す。
@@ -30,9 +30,11 @@ export async function getVisibleFighters(): Promise<ResolvedFighter[]> {
   return resolved
     .map((f) => {
       if (!f.noRecordData) return f;
-      const mr = computeMultiOrgRecord(f.slug, { rizinEvents, shootoEvents, pancraseEvents, deepEvents });
+      const data = { rizinEvents, shootoEvents, pancraseEvents, deepEvents };
+      const mr = computeMultiOrgRecord(f.slug, data);
       if (mr.wins === 0 && mr.losses === 0 && mr.draws === 0) return f;
-      return { ...f, multiOrgRecord: { wins: mr.wins, losses: mr.losses, draws: mr.draws } };
+      const rates = computeMultiOrgRates(mr, computeMultiOrgBoutTable(f.slug, data));
+      return { ...f, multiOrgRecord: { wins: mr.wins, losses: mr.losses, draws: mr.draws, ...rates } };
     })
     .filter((f) => !f.noRecordData || !!f.multiOrgRecord);
 }

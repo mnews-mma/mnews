@@ -32,6 +32,7 @@ import { computeFighterPancraseRecord } from "./pancraseRecordsAggregate";
 import { DeepRecordsEvent } from "./deepScraper";
 import { computeFighterDeepRecord } from "./deepRecordsAggregate";
 import { normalizeFinishText } from "../finishTextNormalize";
+import { tallyMethods } from "../methodClassify";
 
 // 表示ラベル用の固定表記(実装済み4団体を列挙。並び順は確定済み:
 // RIZIN・DEEP・パンクラス・修斗、2026-07-30ユーザー指定)。
@@ -112,6 +113,29 @@ function toBoutRow(b: {
     method: normalizeFinishText(b.methodRaw),
     event: b.event,
   };
+}
+
+// 指示書A(2026-08-01): 4団体集計側(2行目)にもWikipedia由来(1行目)と同じ
+// KO/一本/判定の内訳・勝率・フィニッシュ率を出す。分類はclassifyMethodJa
+// (tallyMethods経由)を使い、Wikipedia側(calcFighterRates)と同一の判定基準に
+// 揃える。methodテキストはcomputeMultiOrgBoutTable()が返す時点で既に
+// normalizeFinishText(PR #303)を通過済みのものを使う(呼び出し側で別途
+// 正規化する必要はない)。
+export interface MultiOrgRates {
+  ko: number;
+  sub: number;
+  decision: number;
+  winRate: number | null;
+  finishRate: number | null;
+}
+
+export function computeMultiOrgRates(record: MultiOrgRecord, rows: MultiOrgBoutRow[]): MultiOrgRates {
+  const winRows = rows.filter((r) => r.result === "win");
+  const { ko, sub, decision } = tallyMethods(winRows);
+  const decided = record.wins + record.losses;
+  const winRate = decided > 0 ? Math.round((record.wins / decided) * 100) : null;
+  const finishRate = record.wins > 0 ? Math.round(((ko + sub) / record.wins) * 100) : null;
+  return { ko, sub, decision, winRate, finishRate };
 }
 
 export function computeMultiOrgBoutTable(
