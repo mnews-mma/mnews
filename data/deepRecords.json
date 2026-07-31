@@ -31694,7 +31694,7 @@
     "fetchedDate": "2026-08-01",
     "bouts": [
       {
-        "cardPosition": 13,
+        "cardPosition": 15,
         "isOpeningFight": false,
         "headingText": "DEEPフェザー級5分3R",
         "fighterAName": "岩本達彦",
@@ -31715,7 +31715,7 @@
         "boutNumber": 13
       },
       {
-        "cardPosition": 12,
+        "cardPosition": 14,
         "isOpeningFight": false,
         "headingText": "DEEPバンタム級5分3R",
         "fighterAName": "中本龍平",
@@ -31736,7 +31736,7 @@
         "boutNumber": 12
       },
       {
-        "cardPosition": 11,
+        "cardPosition": 13,
         "isOpeningFight": false,
         "headingText": "DEEPフライ級5分2R",
         "fighterAName": "松場貴志",
@@ -31757,7 +31757,7 @@
         "boutNumber": 11
       },
       {
-        "cardPosition": 10,
+        "cardPosition": 12,
         "isOpeningFight": false,
         "headingText": "DEEPバンタム級 5分2R",
         "fighterAName": "MG眞介",
@@ -31778,7 +31778,7 @@
         "boutNumber": 10
       },
       {
-        "cardPosition": 9,
+        "cardPosition": 11,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELSアトム級5分2R",
         "fighterAName": "サダエ☆マヌーフ",
@@ -31799,7 +31799,7 @@
         "boutNumber": 9
       },
       {
-        "cardPosition": 8,
+        "cardPosition": 10,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELSストロー級5分2R",
         "fighterAName": "松田亜莉紗",
@@ -31820,7 +31820,7 @@
         "boutNumber": 8
       },
       {
-        "cardPosition": 7,
+        "cardPosition": 9,
         "isOpeningFight": false,
         "headingText": "DEEPフェザー級5分2R",
         "fighterAName": "瀧口脩生",
@@ -31841,7 +31841,7 @@
         "boutNumber": 7
       },
       {
-        "cardPosition": 6,
+        "cardPosition": 8,
         "isOpeningFight": false,
         "headingText": "DEEPフェザー級5分2R",
         "fighterAName": "堂園悠",
@@ -31862,7 +31862,7 @@
         "boutNumber": 6
       },
       {
-        "cardPosition": 5,
+        "cardPosition": 7,
         "isOpeningFight": false,
         "headingText": "DEEPフェザー級5分2R",
         "fighterAName": "前薗渓",
@@ -31883,7 +31883,7 @@
         "boutNumber": 5
       },
       {
-        "cardPosition": 4,
+        "cardPosition": 6,
         "isOpeningFight": false,
         "headingText": "DEEPバンタム級5分2R",
         "fighterAName": "山﨑鼓大",
@@ -31904,7 +31904,7 @@
         "boutNumber": 4
       },
       {
-        "cardPosition": 3,
+        "cardPosition": 5,
         "isOpeningFight": false,
         "headingText": "DEEPストロー級5分2R",
         "fighterAName": "多湖力翔",
@@ -31925,7 +31925,7 @@
         "boutNumber": 3
       },
       {
-        "cardPosition": 2,
+        "cardPosition": 4,
         "isOpeningFight": false,
         "headingText": "DEEPバンタム級5分2R",
         "fighterAName": "キャプテン禎",
@@ -31946,8 +31946,8 @@
         "boutNumber": 2
       },
       {
-        "cardPosition": 1,
-        "isOpeningFight": true,
+        "cardPosition": 3,
+        "isOpeningFight": false,
         "headingText": "DEEPバンタム級5分2R",
         "fighterAName": "関本龍翔",
         "fighterBName": "千種純平",
@@ -31965,6 +31965,48 @@
         "isWeighInMiss": false,
         "format": "f10_vs_and_mark",
         "boutNumber": 1
+      },
+      {
+        "cardPosition": 2,
+        "isOpeningFight": false,
+        "headingText": "メインイベント DEEPバンタム級5分3R",
+        "fighterAName": "平松翔",
+        "fighterBName": "谷岡祐樹",
+        "fighterASlug": "hiramatsu-sho",
+        "fighterBSlug": null,
+        "ruleType": "unknown",
+        "weightKg": null,
+        "namedDivision": "メインイベント DEEPバンタム級5分3R",
+        "resultType": "decisive",
+        "winnerName": "平松翔",
+        "winnerSlug": "hiramatsu-sho",
+        "round": null,
+        "time": null,
+        "methodRaw": "１ROUND 4：13 TKO",
+        "isWeighInMiss": false,
+        "format": "f10_vs_and_mark",
+        "boutNumber": null
+      },
+      {
+        "cardPosition": 1,
+        "isOpeningFight": true,
+        "headingText": "オープニングファイトDEEPフェザー級5分2R",
+        "fighterAName": "森田敢流",
+        "fighterBName": "入江一輝",
+        "fighterASlug": "kanru",
+        "fighterBSlug": null,
+        "ruleType": "unknown",
+        "weightKg": null,
+        "namedDivision": "オープニングファイトDEEPフェザー級5分2R",
+        "resultType": "decisive",
+        "winnerName": "森田敢流",
+        "winnerSlug": "kanru",
+        "round": null,
+        "time": null,
+        "methodRaw": "判定 3－0",
+        "isWeighInMiss": false,
+        "format": "f10_vs_and_mark",
+        "boutNumber": null
       }
     ],
     "parseFailures": 0,
