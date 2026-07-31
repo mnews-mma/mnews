@@ -1311,7 +1311,11 @@ export const FIGHTERS: Fighter[] = [
   // ===========================================================================
   { slug: "patchy-mix", nameJa: "パッチー・ミックス", nameEn: "Patchy Mix", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パッチー・ミックス", nickname: "ザ・ウィザード" },
   { slug: "sabatello-danny", nameJa: "ダニー・サバテロ", nameEn: "Danny Sabatello", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ダニー・サバテロ", nickname: "The Italian Gangster" },
-  { slug: "patricky-pitbull", nameJa: "パトリッキー・ピットブル", nameEn: "Patricky Pitbull", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パトリッキー・ピットブル", nickname: "冥界の番犬" },
+  // RIZIN.19/RIZIN.20(2019年)のdata/rizinRecords.json側表記が「パトリッキー・
+  // "ピットブル"・フレイレ」(本名フルネーム)のため、findFighterSlugByName
+  // 突合用にaliasを追加(同一人物。表示名は変えない。指示書O/T参照)。
+  // 「パトリシオ・ピットブル」(実兄、フェザー級、別選手)とは絶対に同一視しない。
+  { slug: "patricky-pitbull", nameJa: "パトリッキー・ピットブル", nameEn: "Patricky Pitbull", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パトリッキー・ピットブル", nickname: "冥界の番犬", aliases: ["パトリッキー・“ピットブル”・フレイレ", "パトリッキー・フレイレ"] },
   { slug: "dodson-john", nameJa: "ジョン・ドッドソン", nameEn: "John Dodson", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジョン・ドッドソン", nickname: "ザ・マジシャン" },
   // A-2(2026-07-18)追加。他の外国籍RIZIN参戦選手(Sabatello/Mix/Dodson等)と同じ
   // recordFromResults方式(自社EVENT_RESULTS由来のみを表示戦績とする)を採用。
