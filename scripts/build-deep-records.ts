@@ -31,6 +31,31 @@
 // 一覧は作らない)。判定対象はheadingText/namedDivisionのみ(DEEPの生データ
 // スキーマにはstrapTitle/noteRaw相当のフィールドが無いため)。
 //
+// 裸表記(姓のみ・下の名前のみ)選手名の階級限定フォールバック解決
+// (2026-07-31、champions.tsのDEEPヘビー級王者調査・PR #278の人物特定修正を
+// 受けて追加)。DEEP公式サイトは著名選手を裸表記(例:「大成」)のみで表示する
+// ことがあり、#278でnameJaを「大成」→「関野大成」(姓+名)に修正した際、
+// bout側のテキストが引き続き裸表記のままのため通常のfindFighterSlugByName
+// (完全一致)では解決できなくなった選手が発生した(関野大成/sekino-taisei、
+// メガトン級=ヘビー級)。同姓の西谷大成(nishitani-taisei)はフェザー級のため、
+// 名前だけでは曖昧でも階級と組み合わせれば一意に特定できる。
+//
+// aliasesへの追加(裸表記を無条件で許容)はしない: 将来DEEPに同じ裸表記を
+// 名乗る別選手(体重が別の選手)が出た場合に誤って拾ってしまうため、
+// 階級パターンとの一致を必須条件にする。該当しない場合はnullのまま
+// (推測で埋めない)。
+const BARE_NAME_WEIGHT_CLASS_OVERRIDES: { bareName: string; weightClassPattern: RegExp; slug: string }[] = [
+  { bareName: "大成", weightClassPattern: /メガトン級/, slug: "sekino-taisei" },
+];
+
+function resolveBareNameWithWeightClass(name: string, weightClassRaw: string | null): string | null {
+  const trimmed = name.trim();
+  const hit = BARE_NAME_WEIGHT_CLASS_OVERRIDES.find(
+    (o) => o.bareName === trimmed && !!weightClassRaw && o.weightClassPattern.test(weightClassRaw)
+  );
+  return hit ? hit.slug : null;
+}
+
 // 実行: npx tsx scripts/build-deep-records.ts
 import fs from "fs";
 import path from "path";
@@ -219,8 +244,10 @@ async function main() {
     const bouts: DeepRecordsBout[] = proRawBouts.map((raw, idx) => {
       const outcome = resolveOutcome(raw);
       if (outcome.resultType === "unknown") unknownResults++;
-      const fighterASlug = findFighterSlugByName(raw.fighterAName);
-      const fighterBSlug = findFighterSlugByName(raw.fighterBName);
+      const fighterASlug =
+        findFighterSlugByName(raw.fighterAName) ?? resolveBareNameWithWeightClass(raw.fighterAName, raw.weightClassRaw);
+      const fighterBSlug =
+        findFighterSlugByName(raw.fighterBName) ?? resolveBareNameWithWeightClass(raw.fighterBName, raw.weightClassRaw);
       if (!fighterASlug) unresolvedNames++;
       if (!fighterBSlug) unresolvedNames++;
       const winnerName = outcome.winner === "A" ? raw.fighterAName : outcome.winner === "B" ? raw.fighterBName : null;

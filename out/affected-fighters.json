@@ -1,0 +1,233 @@
+[
+  {
+    "slug": "coro",
+    "nameJa": "CORO",
+    "before": "13-19-5",
+    "after": "16-20-5",
+    "delta": 4
+  },
+  {
+    "slug": "ohara-juri",
+    "nameJa": "大原樹理",
+    "before": "21-13-3",
+    "after": "22-15-3",
+    "delta": 3
+  },
+  {
+    "slug": "young-parkseo",
+    "nameJa": "パク ソヨン",
+    "before": "3-6-0",
+    "after": "3-4-0",
+    "delta": -2
+  },
+  {
+    "slug": "sumimura-ryuichiro",
+    "nameJa": "住村竜市朗",
+    "before": "18-6-0",
+    "after": "20-6-0",
+    "delta": 2
+  },
+  {
+    "slug": "takeda-koji",
+    "nameJa": "武田 光司",
+    "before": "14-8-0",
+    "after": "16-8-0",
+    "delta": 2
+  },
+  {
+    "slug": "ishizuka-koichi",
+    "nameJa": "石司晃一",
+    "before": "15-4-1",
+    "after": "16-5-1",
+    "delta": 2
+  },
+  {
+    "slug": "koya-kanda",
+    "nameJa": "神田コウヤ",
+    "before": "9-6-0",
+    "after": "11-6-0",
+    "delta": 2
+  },
+  {
+    "slug": "kurobe-mina",
+    "nameJa": "黒部 三奈",
+    "before": "17-7-0",
+    "after": "18-8-0",
+    "delta": 2
+  },
+  {
+    "slug": "sarami",
+    "nameJa": "SARAMI",
+    "before": "11-12-0",
+    "after": "12-12-0",
+    "delta": 1
+  },
+  {
+    "slug": "kenshiro",
+    "nameJa": "ケンシロウ",
+    "before": "5-0-0",
+    "after": "6-0-0",
+    "delta": 1
+  },
+  {
+    "slug": "naito-tank",
+    "nameJa": "タンク内藤",
+    "before": "1-0-0",
+    "after": "2-0-0",
+    "delta": 1
+  },
+  {
+    "slug": "hiroya",
+    "nameJa": "ヒロヤ",
+    "before": "8-11-0",
+    "after": "8-12-0",
+    "delta": 1
+  },
+  {
+    "slug": "ryoga",
+    "nameJa": "亮我",
+    "before": "15-6-1",
+    "after": "16-6-1",
+    "delta": 1
+  },
+  {
+    "slug": "kuramoto-daigo",
+    "nameJa": "倉本大悟",
+    "before": "5-3-0",
+    "after": "6-3-0",
+    "delta": 1
+  },
+  {
+    "slug": "motoya-yuki",
+    "nameJa": "元谷 友貴",
+    "before": "26-12-0",
+    "after": "27-12-0",
+    "delta": 1
+  },
+  {
+    "slug": "rikiya",
+    "nameJa": "力也",
+    "before": "13-11-0",
+    "after": "13-12-0",
+    "delta": 1
+  },
+  {
+    "slug": "kitaoka-satoru",
+    "nameJa": "北岡悟",
+    "before": "36-22-8",
+    "after": "36-23-8",
+    "delta": 1
+  },
+  {
+    "slug": "shimada-ibuki",
+    "nameJa": "嶋田伊吹",
+    "before": "10-3-0",
+    "after": "11-3-0",
+    "delta": 1
+  },
+  {
+    "slug": "sugiyama-kohei",
+    "nameJa": "杉山廣平",
+    "before": "13-10-0",
+    "after": "14-10-0",
+    "delta": 1
+  },
+  {
+    "slug": "mizuno-shinta",
+    "nameJa": "水野 新太",
+    "before": "6-0-0",
+    "after": "6-1-0",
+    "delta": 1
+  },
+  {
+    "slug": "kaito",
+    "nameJa": "海飛",
+    "before": "5-5-0",
+    "after": "6-5-0",
+    "delta": 1
+  },
+  {
+    "slug": "saito-momoko",
+    "nameJa": "百湖",
+    "before": "3-0-0",
+    "after": "3-1-0",
+    "delta": 1
+  },
+  {
+    "slug": "ishizaka-kushi",
+    "nameJa": "石坂空志",
+    "before": "5-2-0",
+    "after": "6-2-0",
+    "delta": 1
+  },
+  {
+    "slug": "kubota-taito",
+    "nameJa": "窪田泰斗",
+    "before": "13-6-0",
+    "after": "13-7-0",
+    "delta": 1
+  },
+  {
+    "slug": "nishitani-taisei",
+    "nameJa": "西谷大成",
+    "before": "5-9-0",
+    "after": "6-9-0",
+    "delta": 1
+  },
+  {
+    "slug": "seigo",
+    "nameJa": "誠悟",
+    "before": "10-11-0",
+    "after": "10-12-0",
+    "delta": 1
+  },
+  {
+    "slug": "endoraiki",
+    "nameJa": "遠藤来生",
+    "before": "3-10-0",
+    "after": "3-11-0",
+    "delta": 1
+  },
+  {
+    "slug": "sakai-ryo",
+    "nameJa": "酒井リョウ",
+    "before": "10-7-0",
+    "after": "10-8-0",
+    "delta": 1
+  },
+  {
+    "slug": "sekihara-sho",
+    "nameJa": "関原翔",
+    "before": "11-6-0",
+    "after": "12-6-0",
+    "delta": 1
+  },
+  {
+    "slug": "abe-daiji",
+    "nameJa": "阿部大治",
+    "before": "11-6-0",
+    "after": "12-6-0",
+    "delta": 1
+  },
+  {
+    "slug": "miyabi-shunsuke",
+    "nameJa": "雅駿介",
+    "before": "7-3-0",
+    "after": "8-3-0",
+    "delta": 1
+  },
+  {
+    "slug": "aoi-jin",
+    "nameJa": "青井人",
+    "before": "11-5-1",
+    "after": "12-5-1",
+    "delta": 1
+  },
+  {
+    "slug": "kashimura-jinnosuke",
+    "nameJa": "鹿志村 仁之介",
+    "before": "9-4-0",
+    "after": "10-4-0",
+    "delta": 1
+  }
+]

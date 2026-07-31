@@ -159,7 +159,13 @@ export function extractEventDate(bodyClean: string): string | null {
 // 空白(例:「(BOND GYM) |」)を吸収するため(2026-07-29、DEEP OSAKA IMPACT
 // 2026 3rd ROUND等で確認: 体重表記が無い時にこの空白だけでマッチ全体が
 // 失敗していた)。
-const KG_SUFFIX = "(?:\\s*[\\d.]+(?:\\s*[Kk]g)?)?\\s*";
+// 計量に関する注記(例:「※公開計量間に合わず→」)が、ジム名の閉じ括弧と
+// 体重の間にパイプ区切りで挟まることがある(2026-07-31、DEEP 100 IMPACT
+// 〜20th Anniversary〜 OPファイト第2試合で確認: 西谷大成の体重直前に
+// 挿入され、この1bout全体が抽出漏れになっていた)。「※」で始まり「→」で
+// 終わる注記のみ限定的に許容する(汎用的に「パイプ区切りの何か」を許容すると
+// 無関係な文言まで飲み込む懸念があるため、実例で確認した表記のみに絞る)。
+const KG_SUFFIX = "(?:\\s*\\|\\s*※[^|]*?→\\s*\\|?\\s*)?(?:\\s*[\\d.]+(?:\\s*[Kk]g)?)?\\s*";
 
 // markは付かないbout(事故によるノーコンテスト等、勝敗記号自体が存在しない
 // 実例を確認済み)もあるため、mark自体を任意にする。両者ともmark無しの場合は
@@ -593,30 +599,97 @@ function scopeToResultsSection(bodyClean: string): string {
 // 許容)は最後に近い位置に置く(見出し前提が広いフォーマットほど、より
 // 厳密なフォーマットが本来一致すべき本文を誤って先取りするリスクが高いため、
 // 意図的に後段に置く)。marks自体を持たないGroup1(VS型)が最終フォールバック。
+// 「第N試合」見出しの出現回数(=本来あるはずのbout数の目安)。0件のページ
+// (見出し自体が第N試合形式でない旧テンプレート等)ではheadingCount=0を返し、
+// 下記の選定ロジックでは「目安なし」として扱う。
+//
+// ユニーク番号数ではなく出現回数(生カウント)をそのまま使う(2026-07-31、
+// DEEP 121 IMPACTで判明した事故: プロカード(第1〜第9試合、第6試合は無し=
+// 8件)とアマチュア undercard(別セクションで第1試合・第2試合から番号が
+// 振り直される)が同一ページに混在するケースで、番号をSetで重複排除すると
+// アマチュア分の「1」「2」がプロ分と同じ集合要素に潰れてheadingCountが
+// 実際の見出し件数(10件)より少ない8件に過小評価され、本来正しく全10件を
+// 抽出できていたF1が「見出し数から乖離している」と誤判定されて、実際には
+// 1件取りこぼしている劣ったフォーマットに採用が入れ替わってしまった)。
+function countBoutHeadings(bodyClean: string): number {
+  return [...bodyClean.matchAll(/第\s*(\d+)試合/g)].length;
+}
+
+// 2026-07-31、悉皆突合調査(PR #290/#291)で判明した事故: 「最初に見つかった
+// フォーマット1つだけを採用する」設計そのものは正しいが、「1件以上マッチ=
+// 成功」という判定基準が粗すぎるため、本来method中間型(f2)等で全bout抽出
+// できるページで、F1/Group4の正規表現がページ内の「第N試合」見出しの並びを
+// 跨いで1件だけ誤マッチ(前boutのmethod文を次boutの選手名として誤認識)して
+// しまい、その1件を「F1が成功した」と誤判定してf2以降を一切試さないまま
+// 大半のboutを取りこぼす事故が最大17大会で発生していた(DEEP 100 IMPACT等)。
+//
+// 対策: 各フォーマットを従来と同じ優先順位で全て計算したうえで、「第N試合」
+// 見出し数が判明している場合はその数に最も近い候補を採用する(1件のみの
+// 誤マッチは通常headingCountから大きく乖離するため自然に除外される)。
+// 見出し数が0件のページ(旧テンプレート等)では目安が無いため、素直に
+// マッチ数最大の候補を採用する。いずれの場合も「複数フォーマットを合算
+// しない・1つだけ採用する」という既存方針は変えない(採用基準を精緻化した
+// だけ)。同点の場合は既存の優先順位(F1→Group4→F2→F10→F8→Group2→Group1)を
+// 維持する。
+// 選手名として明らかに不自然な値(見出し・セクション区切り記号で始まる)を
+// 含む候補は、境界判定を誤ってページの別セクションを飲み込んでいる可能性が
+// 高いため丸ごと不採用にする(2026-07-31、DEEP TOKYO IMPACT 2023 6th ROUND等で
+// 発見: headingCountに数値上近いというだけでf8がf2より優先されたが、f8の
+// 実体はfighterBNameに次boutの見出しテキスト「▼DEEPメガトン級 5分3R」等が
+// 丸ごと紛れ込んだ壊れた抽出だった)。件数の近さだけでなく内容の健全性も
+// 選定基準に加える。
+const HEADING_MARKER_RE = /^[▼■【]/;
+// 決着方法(methodRaw)は実例上どれだけ長くても数十文字程度(例:「判定0-3
+// (27-28/27-28/27-29)」)。2026-07-31、DEEP JEWELS 47・DEEP OSAKA IMPACT
+// 2024 1st ROUND(いずれもgroup1_vs採用時)で発見: 次bout以降の見出しや、
+// 最終boutでは大会概要・ニュース一覧・script等ページ全体の残骸がmethodRawに
+// 丸ごと紛れ込む事故があった(名前欄は正常に見えるため選手名チェックだけでは
+// 検出できない)。閾値は実在する最長の正当なmethod文より十分大きく、
+// 事故時の混入量(数百〜数千文字)より十分小さい200文字に設定する。
+const MAX_PLAUSIBLE_METHOD_LEN = 200;
+function hasGarbledContent(bouts: DeepRawBout[]): boolean {
+  return bouts.some(
+    (b) =>
+      HEADING_MARKER_RE.test(b.fighterAName) ||
+      HEADING_MARKER_RE.test(b.fighterBName) ||
+      b.methodRaw.length > MAX_PLAUSIBLE_METHOD_LEN
+  );
+}
+
 export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; formatsUsed: DeepBoutFormat[] } {
   const bodyClean = scopeToResultsSection(rawBodyClean);
-  const f1 = extractNumberedMarkBouts(bodyClean, BOUT_RE_F1, "F1");
-  if (f1.length > 0) return { bouts: f1, formatsUsed: ["F1"] };
+  const headingCount = countBoutHeadings(bodyClean);
 
-  const group4 = extractNumberedMarkBouts(bodyClean, BOUT_RE_GROUP4, "group4_detached_mark");
-  if (group4.length > 0) return { bouts: group4, formatsUsed: ["group4_detached_mark"] };
+  const allCandidates: { bouts: DeepRawBout[]; format: DeepBoutFormat }[] = [
+    { bouts: extractNumberedMarkBouts(bodyClean, BOUT_RE_F1, "F1"), format: "F1" },
+    { bouts: extractNumberedMarkBouts(bodyClean, BOUT_RE_GROUP4, "group4_detached_mark"), format: "group4_detached_mark" },
+    { bouts: extractF2Bouts(bodyClean), format: "f2_method_middle" },
+    { bouts: extractF10Bouts(bodyClean), format: "f10_vs_and_mark" },
+    { bouts: extractF8Bouts(bodyClean), format: "f8_fully_separated" },
+    { bouts: extractGroup2Bouts(bodyClean), format: "group2_no_heading" },
+    { bouts: extractVsBouts(bodyClean), format: "group1_vs" },
+  ];
+  const candidates = allCandidates.filter((c) => c.bouts.length > 0 && !hasGarbledContent(c.bouts));
 
-  const f2 = extractF2Bouts(bodyClean);
-  if (f2.length > 0) return { bouts: f2, formatsUsed: ["f2_method_middle"] };
+  if (candidates.length === 0) return { bouts: [], formatsUsed: [] };
 
-  const f10 = extractF10Bouts(bodyClean);
-  if (f10.length > 0) return { bouts: f10, formatsUsed: ["f10_vs_and_mark"] };
+  let best = candidates[0];
+  if (headingCount > 0) {
+    let bestDiff = Math.abs(best.bouts.length - headingCount);
+    for (const c of candidates.slice(1)) {
+      const diff = Math.abs(c.bouts.length - headingCount);
+      if (diff < bestDiff) {
+        best = c;
+        bestDiff = diff;
+      }
+    }
+  } else {
+    for (const c of candidates.slice(1)) {
+      if (c.bouts.length > best.bouts.length) best = c;
+    }
+  }
 
-  const f8 = extractF8Bouts(bodyClean);
-  if (f8.length > 0) return { bouts: f8, formatsUsed: ["f8_fully_separated"] };
-
-  const group2 = extractGroup2Bouts(bodyClean);
-  if (group2.length > 0) return { bouts: group2, formatsUsed: ["group2_no_heading"] };
-
-  const vs = extractVsBouts(bodyClean);
-  if (vs.length > 0) return { bouts: vs, formatsUsed: ["group1_vs"] };
-
-  return { bouts: [], formatsUsed: [] };
+  return { bouts: best.bouts, formatsUsed: [best.format] };
 }
 
 // ── 4. 勝敗判定 ──────────────────────────────────────────────────────────
