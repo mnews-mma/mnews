@@ -101,6 +101,29 @@ const STOP_EXTRA_ZERO_BOUT_THRESHOLD = 30;
 // (実データを黙って切り捨てる意図の上限ではない)。
 const CANDIDATE_SAFETY_WARN = 500;
 
+// DEEP＆PANCRASE共催大会の除外リスト(2026-07-31、指示書「決着欄マーカー分離
+// 型」PR内で発覚)。共催大会はDEEP公式・PANCRASE公式の両方が同じ大会を
+// 別々に結果ページとして持っており、data/deepRecords.json・
+// data/pancraseRecords.jsonの両方に同じboutが投入されると
+// computeMultiOrgRecord(4団体通算)で二重計上される(実例: 嶋田伊吹
+// (shimada-ibuki)がDEEP＆PANCRASE大阪大会2020-11-29の1戦で二重計上されて
+// いた)。集計層(multiOrgRecord.ts)側での汎用的な重複排除は、同名別人・
+// 表記ゆれ由来の誤判定が全選手に波及するリスクが大きいため行わず、この
+// 取得元(build-deep-records.ts)でPANCRASE側と重複する共催大会そのものを
+// 個別に除外する。除外対象はPANCRASE側が同一大会をより網羅的に持っている
+// ことを確認済みの4件のみ(2026-07-31、date+選手名重複走査で確認。修斗との
+// 共催重複は無し)。将来的にDEEP公式に同種の共催大会が追加された場合は
+// 都度この配列に追記する(自動検出はしない)。
+const CO_HOSTED_PANCRASE_EXCLUSIONS: { title: string; date: string; pancraseUrl: string }[] = [
+  { title: "PANCRASE vs DEEP 大阪大会", date: "2017-12-24", pancraseUrl: "https://www.pancrase.co.jp/data/result/2017/1224.html" },
+  { title: "PANCRASE vs DEEP 大阪大会", date: "2019-11-17", pancraseUrl: "https://www.pancrase.co.jp/data/result/2019/1117.html" },
+  { title: "DEEP＆PANCRASE大阪大会", date: "2020-11-29", pancraseUrl: "https://www.pancrase.co.jp/data/result/2020/1129.html" },
+  { title: "前田吉朗引退興行", date: "2022-04-10", pancraseUrl: "https://www.pancrase.co.jp/data/result/2022/0410.html" },
+];
+function isCoHostedPancraseDuplicate(title: string, date: string): boolean {
+  return CO_HOSTED_PANCRASE_EXCLUSIONS.some((e) => e.title === title && e.date === date);
+}
+
 async function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -161,6 +184,7 @@ async function main() {
   const excludedAmateur: string[] = [];
   const excludedFutureUnheld: string[] = [];
   const excludedDateUnknown: { eventName: string; url: string }[] = [];
+  const excludedCoHostedPancrase: { title: string; date: string }[] = [];
   let candidateCount = 0;
 
   for (const link of allLinks) {
@@ -190,6 +214,12 @@ async function main() {
     // 先の日付は「開催予定」であって「結果」ではないため、0boutのまま投入しない。
     if (date > fetchedDate) {
       excludedFutureUnheld.push(link.title);
+      continue;
+    }
+
+    // DEEP＆PANCRASE共催大会の除外(CO_HOSTED_PANCRASE_EXCLUSIONS参照)。
+    if (isCoHostedPancraseDuplicate(link.title, date)) {
+      excludedCoHostedPancrase.push({ title: link.title, date });
       continue;
     }
 
@@ -311,6 +341,7 @@ async function main() {
   console.log(`除外(KICK): ${excludedKick.length}`);
   console.log(`除外(アマチュア大会): ${excludedAmateur.length}`);
   console.log(`除外(未開催・結果データ無し): ${excludedFutureUnheld.length}`);
+  console.log(`除外(DEEP＆PANCRASE共催大会・PANCRASE側を正とする): ${excludedCoHostedPancrase.length}`);
   console.log(`除外(開催日不明): ${excludedDateUnknown.length}`);
   console.log(`除外(抽出0件・F7/F11相当): ${excludedZeroBout.length}`);
   console.log(`投入大会数: ${events.length}`);
@@ -361,11 +392,17 @@ async function main() {
   reportLines.push(`- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): ${totalNonProBouts}件`);
   reportLines.push(`- 除外(アマチュア大会): ${excludedAmateur.length}件`);
   reportLines.push(`- 除外(抽出0件・F7/F11相当): ${excludedZeroBout.length}件`);
+  reportLines.push(`- 除外(DEEP＆PANCRASE共催大会・PANCRASE側を正とする): ${excludedCoHostedPancrase.length}件`);
   reportLines.push(`- 除外(開催日不明): ${excludedDateUnknown.length}件`);
   reportLines.push(``);
   reportLines.push(`## 除外(アマチュア大会。大会名に「アマチュア」を含むもの)`);
   for (const title of excludedAmateur) {
     reportLines.push(`- ${title}`);
+  }
+  reportLines.push(``);
+  reportLines.push(`## 除外(DEEP＆PANCRASE共催大会。PANCRASE公式側がより網羅的なため除外・二重計上防止)`);
+  for (const e of excludedCoHostedPancrase) {
+    reportLines.push(`- ${e.title}(${e.date})`);
   }
   reportLines.push(``);
   reportLines.push(`## 除外(抽出0件・個別結果データ無し)`);

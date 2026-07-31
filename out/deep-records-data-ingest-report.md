@@ -3,15 +3,16 @@
 生成日時(JST): 2026-07-31
 
 - アーカイブ総リンク数: 288
-- 候補大会数(開催済・KICK/アマチュア除く): 271
-- 投入大会数: 242
-- bout数: 2384
+- 候補大会数(開催済・KICK/アマチュア除く): 266
+- 投入大会数: 237
+- bout数: 2333
 - parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 4件
-- resultType=unknown: 36件
-- 選手名未解決(fighterASlug/fighterBSlug null): 3852件
+- resultType=unknown: 34件
+- 選手名未解決(fighterASlug/fighterBSlug null): 3756件
 - 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 234件
 - 除外(アマチュア大会): 9件
 - 除外(抽出0件・F7/F11相当): 29件
+- 除外(DEEP＆PANCRASE共催大会・PANCRASE側を正とする): 5件
 - 除外(開催日不明): 1件
 
 ## 除外(アマチュア大会。大会名に「アマチュア」を含むもの)
@@ -24,6 +25,13 @@
 - DEEP JEWELSアマチュア
 - DEEP JEWELS アマチュア
 - DEEP JEWELS アマチュア
+
+## 除外(DEEP＆PANCRASE共催大会。PANCRASE公式側がより網羅的なため除外・二重計上防止)
+- 前田吉朗引退興行(2022-04-10)
+- DEEP＆PANCRASE大阪大会(2020-11-29)
+- DEEP＆PANCRASE大阪大会(2020-11-29)
+- PANCRASE vs DEEP 大阪大会(2019-11-17)
+- PANCRASE vs DEEP 大阪大会(2017-12-24)
 
 ## 除外(抽出0件・個別結果データ無し)
 | 大会名 | 日付 | URL | 推定理由 |
@@ -177,7 +185,6 @@
 | DEEP TOKYO IMPACT 2022 3rd ROUND | 2022-05-29 | 11 | f2_method_middle | 0 | 0 | 20 | 2 |
 | DEEP 107 IMPACT | 2022-05-08 | 7 | f8_fully_separated | 0 | 0 | 7 | 0 |
 | DEEP JEWELS 37 | 2022-05-08 | 5 | f2_method_middle | 0 | 0 | 6 | 0 |
-| 前田吉朗引退興行 | 2022-04-10 | 8 | group1_vs | 0 | 2 | 15 | 0 |
 | DEEP CAGE IMPACT IN OSAKA 2022 | 2022-04-10 | 7 | group1_vs | 0 | 0 | 12 | 0 |
 | DEEP TOKYO IMPACT 2022 2nd ROUND | 2022-03-13 | 8 | f2_method_middle | 0 | 0 | 12 | 0 |
 | DEEP JEWELS 36 | 2022-03-12 | 5 | f2_method_middle | 0 | 0 | 6 | 1 |
@@ -203,8 +210,6 @@
 | DEEP 100 IMPACT ～20th Anniversary～ | 2021-02-21 | 16 | f2_method_middle | 0 | 3 | 19 | 0 |
 | DEEP TOKYO IMPACT 2020 | 2020-12-19 | 9 | f2_method_middle | 0 | 0 | 14 | 0 |
 | DEEP JEWELS 31 | 2020-12-19 | 5 | f2_method_middle | 0 | 1 | 5 | 0 |
-| DEEP＆PANCRASE大阪大会 | 2020-11-29 | 7 | f4_detached_mark_label | 0 | 0 | 14 | 0 |
-| DEEP＆PANCRASE大阪大会 | 2020-11-29 | 6 | f2_method_middle | 0 | 0 | 11 | 0 |
 | DEEP 99 IMPACT | 2020-11-01 | 3 | f2_method_middle | 0 | 0 | 6 | 0 |
 | DEEP 98 IMPACT | 2020-11-01 | 5 | f2_method_middle | 0 | 0 | 5 | 0 |
 | DEEP JEWELS 30 | 2020-10-31 | 7 | f2_method_middle | 0 | 0 | 10 | 1 |
@@ -216,7 +221,6 @@
 | DEEP JEWELS 28 | 2020-02-24 | 8 | f2_method_middle | 0 | 0 | 15 | 0 |
 | DEEP JEWELS 27 | 2019-12-22 | 5 | f2_method_middle | 0 | 0 | 10 | 5 |
 | DEEP 93 IMPACT | 2019-12-15 | 24 | f2_method_middle | 0 | 1 | 36 | 0 |
-| PANCRASE vs DEEP 大阪大会 | 2019-11-17 | 16 | F1 | 0 | 0 | 31 | 0 |
 | DEEP 92 IMPACT | 2019-10-22 | 9 | f2_method_middle | 0 | 0 | 12 | 0 |
 | DEEP JEWELS 26 | 2019-10-22 | 9 | f2_method_middle | 0 | 2 | 17 | 0 |
 | DEEP 91 IMPACT | 2019-09-08 | 14 | f2_method_middle | 0 | 0 | 22 | 0 |
@@ -240,7 +244,6 @@
 | DEEP CAGE IMPACT 2018 in大阪 | 2018-04-08 | 14 | f2_method_middle | 0 | 0 | 26 | 0 |
 | DEEP JEWELS 19 | 2018-03-10 | 9 | f2_method_middle | 0 | 0 | 15 | 0 |
 | DEEP 82 IMPACT | 2018-02-24 | 9 | f2_method_middle | 0 | 0 | 15 | 0 |
-| PANCRASE vs DEEP 大阪大会 | 2017-12-24 | 14 | f2_method_middle | 0 | 0 | 25 | 0 |
 | DEEP 81 IMPACT | 2017-12-23 | 13 | f2_method_middle | 0 | 0 | 20 | 0 |
 | DEEP JEWELS 18 | 2017-12-03 | 10 | f2_method_middle | 0 | 0 | 18 | 1 |
 | DEEP 80 IMPACT | 2017-10-21 | 20 | f2_method_middle | 0 | 0 | 37 | 0 |
