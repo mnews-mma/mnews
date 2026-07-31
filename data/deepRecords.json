@@ -932,14 +932,14 @@
         "isOpeningFight": false,
         "headingText": "/無差別級】",
         "fighterAName": "誠悟",
-        "fighterBName": "関根&#8221;シュレック&#8221;秀樹",
+        "fighterBName": "関根”シュレック”秀樹",
         "fighterASlug": "seigo",
         "fighterBSlug": null,
         "ruleType": "unknown",
         "weightKg": null,
         "namedDivision": "/無差別級】",
         "resultType": "decisive",
-        "winnerName": "関根&#8221;シュレック&#8221;秀樹",
+        "winnerName": "関根”シュレック”秀樹",
         "winnerSlug": null,
         "round": null,
         "time": null,
@@ -10718,7 +10718,7 @@
         "isOpeningFight": false,
         "headingText": "／バンタム級（61.2kg以下） 5分2R",
         "fighterAName": "城田和秀",
-        "fighterBName": "咲間&#8221;不良先輩&#8221;ヒロト",
+        "fighterBName": "咲間”不良先輩”ヒロト",
         "fighterASlug": null,
         "fighterBSlug": null,
         "ruleType": "unknown",
@@ -15516,8 +15516,8 @@
         "cardPosition": 10,
         "isOpeningFight": false,
         "headingText": "PANCRASE公式戦 バンタム級",
-        "fighterAName": "&#8211; 三村亘",
-        "fighterBName": "&#8211; 平田丈二",
+        "fighterAName": "– 三村亘",
+        "fighterBName": "– 平田丈二",
         "fighterASlug": null,
         "fighterBSlug": null,
         "ruleType": "unknown",
@@ -15558,8 +15558,8 @@
         "cardPosition": 8,
         "isOpeningFight": false,
         "headingText": "PANCRASE公式戦 ストロー級",
-        "fighterAName": "&#8211; 三谷敏生",
-        "fighterBName": "&#8211; 後藤琢也",
+        "fighterAName": "– 三谷敏生",
+        "fighterBName": "– 後藤琢也",
         "fighterASlug": null,
         "fighterBSlug": null,
         "ruleType": "unknown",
@@ -15622,7 +15622,7 @@
         "isOpeningFight": false,
         "headingText": "DEEPストロー級",
         "fighterAName": "磯貝太一",
-        "fighterBName": "いちょう&#8221;Snufkin&#8221;ともなが",
+        "fighterBName": "いちょう”Snufkin”ともなが",
         "fighterASlug": null,
         "fighterBSlug": null,
         "ruleType": "unknown",
@@ -15748,7 +15748,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 1R 3&#8217;09&#8221; 肩固め",
+        "methodRaw": "TO 1R 3’09” 肩固め",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 9
@@ -15769,7 +15769,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 4&#8217;37&#8221; レフェリーストップ：グラウンドのヒジ",
+        "methodRaw": "TKO 1R 4’37” レフェリーストップ：グラウンドのヒジ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 8
@@ -15790,7 +15790,7 @@
         "winnerSlug": "ishizuka-koichi",
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 3&#8217;19&#8221; レフェリーストップ：スタンドパンチ",
+        "methodRaw": "TKO 1R 3’19” レフェリーストップ：スタンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 7
@@ -15853,7 +15853,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 4&#8217;05&#8221; レフェリーストップ：スタンドパンチ",
+        "methodRaw": "TKO 4’05” レフェリーストップ：スタンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 4
@@ -15916,7 +15916,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 1R 0&#8217;48&#8221; フロントチョーク",
+        "methodRaw": "TO 1R 0’48” フロントチョーク",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 1
@@ -16492,7 +16492,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 2R 2&#8217;39&#8221; レフェリーストップ：スタンドパンチ",
+        "methodRaw": "TKO 2R 2’39” レフェリーストップ：スタンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 11
@@ -16555,7 +16555,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 4&#8217;37&#8221; レフェリーストップ：グラウンドパンチ",
+        "methodRaw": "TKO 1R 4’37” レフェリーストップ：グラウンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 8
@@ -16565,7 +16565,7 @@
         "isOpeningFight": false,
         "headingText": "ウェルター級 5分2R",
         "fighterAName": "―桜井隆多",
-        "fighterBName": "―片平&#8221;なぎさ&#8221;吉幸",
+        "fighterBName": "―片平”なぎさ”吉幸",
         "fighterASlug": null,
         "fighterBSlug": null,
         "ruleType": "unknown",
@@ -16639,7 +16639,7 @@
         "winnerSlug": "kubota-taito",
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 2&#8217;51&#8221; レフェリーストップ：アームロック",
+        "methodRaw": "TKO 1R 2’51” レフェリーストップ：アームロック",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 4
@@ -16660,7 +16660,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 3&#8217;17&#8221; レフェリーストップ：グラウンドパンチ",
+        "methodRaw": "TKO 1R 3’17” レフェリーストップ：グラウンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 3
@@ -16932,7 +16932,7 @@
         "winnerSlug": "motoya-yuki",
         "round": null,
         "time": null,
-        "methodRaw": "TKO 2R 4&#8217;23&#8221; レフェリーストップ：グラウンドパンチ",
+        "methodRaw": "TKO 2R 4’23” レフェリーストップ：グラウンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 17
@@ -16953,7 +16953,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 1R 1&#8217;35&#8221; アームロック",
+        "methodRaw": "TO 1R 1’35” アームロック",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 16
@@ -17016,7 +17016,7 @@
         "winnerSlug": "sakai-ryo",
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 2&#8217;36&#8221; レフェリーストップ：スタンドパンチ",
+        "methodRaw": "TKO 1R 2’36” レフェリーストップ：スタンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 13
@@ -17037,7 +17037,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 3&#8217;33&#8221; レフェリーストップ：グラウンドパンチ",
+        "methodRaw": "TKO 1R 3’33” レフェリーストップ：グラウンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 12
@@ -17142,7 +17142,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 4&#8217;19&#8221; レフェリーストップ：グラウンドパンチ",
+        "methodRaw": "TKO 1R 4’19” レフェリーストップ：グラウンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 6
@@ -17163,7 +17163,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "KO 1R 3&#8217;09&#8221; スタンドパンチ",
+        "methodRaw": "KO 1R 3’09” スタンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 5
@@ -17205,7 +17205,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "ノーコンテスト 1R 1&#8217;34&#8221;",
+        "methodRaw": "ノーコンテスト 1R 1’34”",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 3
@@ -17226,7 +17226,7 @@
         "winnerSlug": "koya-kanda",
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 4&#8217;24&#8221; レフェリーストップ：グラウンドパンチ",
+        "methodRaw": "TKO 1R 4’24” レフェリーストップ：グラウンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 2
@@ -17247,7 +17247,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 1R 1&#8217;38&#8221; 腕ひしぎ十字固め",
+        "methodRaw": "TO 1R 1’38” 腕ひしぎ十字固め",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 1
@@ -17278,7 +17278,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "KO 3R 1&#8217;36&#8221; スタンドキック",
+        "methodRaw": "KO 3R 1’36” スタンドキック",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 9
@@ -17320,7 +17320,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 2R 2&#8217;05&#8221; レフェリーストップ：グラウンドパンチ",
+        "methodRaw": "TKO 2R 2’05” レフェリーストップ：グラウンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 7
@@ -17362,7 +17362,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 1R 4&#8217;20&#8221; アームバー：腕ひしぎ十字固め",
+        "methodRaw": "TO 1R 4’20” アームバー：腕ひしぎ十字固め",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 5
@@ -17488,7 +17488,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 1R 1&#8217;23&#8221; リアネイキッド・チョーク",
+        "methodRaw": "TO 1R 1’23” リアネイキッド・チョーク",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 1
@@ -17707,7 +17707,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 2R 2&#8217;53&#8221; リアネイキッドチョーク",
+        "methodRaw": "TO 2R 2’53” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 9
@@ -17770,7 +17770,7 @@
         "winnerSlug": "ohara-juri",
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 2&#8217;02&#8221; レフェリーストップ：負傷",
+        "methodRaw": "TKO 1R 2’02” レフェリーストップ：負傷",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 6
@@ -17812,7 +17812,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "KO 1R 0&#8217;27&#8221; スタンドパンチ",
+        "methodRaw": "KO 1R 0’27” スタンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 4
@@ -17833,7 +17833,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 1&#8217;52&#8221; レフェリーストップ：リアネイキッドチョーク",
+        "methodRaw": "TKO 1R 1’52” レフェリーストップ：リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 3
@@ -17875,7 +17875,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 1R 1&#8217;29&#8221; リアネイキッドチョーク",
+        "methodRaw": "TO 1R 1’29” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 1
@@ -23821,7 +23821,7 @@
         "winnerSlug": "ohara-juri",
         "round": null,
         "time": null,
-        "methodRaw": "3R 0&#8217;07&#8221; テクニカル判定5-0",
+        "methodRaw": "3R 0’07” テクニカル判定5-0",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -23842,7 +23842,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "3R 2&#8217;43&#8221; TKO (レフェリーストップ：右ハイキック→グラウンドパンチ)",
+        "methodRaw": "3R 2’43” TKO (レフェリーストップ：右ハイキック→グラウンドパンチ)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -23905,7 +23905,7 @@
         "winnerSlug": "tsuruya-rei",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;05&#8221; フロントチョーク",
+        "methodRaw": "1R 2’05” フロントチョーク",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -25380,7 +25380,7 @@
         "isOpeningFight": false,
         "headingText": "DEEP 58kg以下 5分2R",
         "fighterAName": "ヒロヤ",
-        "fighterBName": "日比野&#8221;エビ中&#8221;純也",
+        "fighterBName": "日比野”エビ中”純也",
         "fighterASlug": "hiroya",
         "fighterBSlug": null,
         "ruleType": "unknown",
@@ -27338,7 +27338,7 @@
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "中村大介",
-        "fighterBName": "ユータ&amp;ロック",
+        "fighterBName": "ユータ&ロック",
         "fighterASlug": "nakamura-daisuke",
         "fighterBSlug": null,
         "ruleType": "unknown",
@@ -29004,7 +29004,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "KO 1R 4&#8217;59&#8221; スタンドパンチ",
+        "methodRaw": "KO 1R 4’59” スタンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 9
@@ -29025,7 +29025,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;49&#8221; フロントチョーク",
+        "methodRaw": "2R 1’49” フロントチョーク",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 8
@@ -29088,7 +29088,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "KO 1R 0&#8217;08” グラウンドパンチ",
+        "methodRaw": "KO 1R 0’08” グラウンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 5
@@ -29151,7 +29151,7 @@
         "winnerSlug": "shimada-ibuki",
         "round": null,
         "time": null,
-        "methodRaw": "TKO 1R 2&#8217;50&#8221; レフェリーストップ：スタンドパンチ",
+        "methodRaw": "TKO 1R 2’50” レフェリーストップ：スタンドパンチ",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 2
@@ -29172,7 +29172,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "TO 1R 4&#8217;36&#8221; フロントチョーク",
+        "methodRaw": "TO 1R 4’36” フロントチョーク",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 1
@@ -33422,7 +33422,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;00 KO(RNC)",
+        "methodRaw": "2R 3’00 KO(RNC)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -33443,7 +33443,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;45 TKO(グランドパンチ)",
+        "methodRaw": "2R 4’45 TKO(グランドパンチ)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -33464,7 +33464,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "3R 3&#8217;07 TO(肩固め)",
+        "methodRaw": "3R 3’07 TO(肩固め)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -33506,7 +33506,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;18 TO(RNC)",
+        "methodRaw": "1R 4’18 TO(RNC)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -33590,7 +33590,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;55 VTO(アームロック)",
+        "methodRaw": "1R 2’55 VTO(アームロック)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -33611,7 +33611,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;37 TO(RNC)",
+        "methodRaw": "2R 1’37 TO(RNC)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -33653,7 +33653,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;17 TKO(グランドパンチ)",
+        "methodRaw": "1R 1’17 TKO(グランドパンチ)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -33674,7 +33674,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;11 TKO(パンチによるカット)",
+        "methodRaw": "2R 1’11 TKO(パンチによるカット)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -33695,7 +33695,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;12 TKO(スタンドパンチ)",
+        "methodRaw": "1R 0’12 TKO(スタンドパンチ)",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -34238,7 +34238,7 @@
         "cardPosition": 11,
         "isOpeningFight": false,
         "headingText": "DEEP フェザー級 5 分 2R",
-        "fighterAName": "ユータ&amp;ロック",
+        "fighterAName": "ユータ&ロック",
         "fighterBName": "TATSUMI",
         "fighterASlug": null,
         "fighterBSlug": null,
@@ -34246,7 +34246,7 @@
         "weightKg": null,
         "namedDivision": "DEEP フェザー級 5 分 2R",
         "resultType": "decisive",
-        "winnerName": "ユータ&amp;ロック",
+        "winnerName": "ユータ&ロック",
         "winnerSlug": null,
         "round": null,
         "time": null,
@@ -34721,7 +34721,7 @@
         "winnerSlug": "motoya-yuki",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;分&#8217;09&#8243;秒&#8221; TKO",
+        "methodRaw": "2R 4’分’09″秒” TKO",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -34805,7 +34805,7 @@
         "winnerSlug": "rikiya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;20&#8243;秒&#8221; TKO",
+        "methodRaw": "1R 1’20″秒” TKO",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -34826,7 +34826,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;04&#8243;秒&#8221; 腕十字",
+        "methodRaw": "1R 1’04″秒” 腕十字",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -34868,7 +34868,7 @@
         "winnerSlug": "sasaki-hiro",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;45&#8221; ヒールホールド",
+        "methodRaw": "1R 1’45” ヒールホールド",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -34889,7 +34889,7 @@
         "winnerSlug": "akimoto-kyoma",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;44&#8221; TKO",
+        "methodRaw": "1R 0’44” TKO",
         "isWeighInMiss": false,
         "format": "group2_no_heading",
         "boutNumber": null
@@ -35558,7 +35558,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;50&#8221; KO",
+        "methodRaw": "1R 2’50” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -35579,7 +35579,7 @@
         "winnerSlug": "takeuchi-ryugo",
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;35&#8221; TKO",
+        "methodRaw": "2R 0’35” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -35600,7 +35600,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;18&#8221; 腕十字",
+        "methodRaw": "1R 4’18” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -35621,7 +35621,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;57&#8221; 腕十字",
+        "methodRaw": "1R 3’57” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -35684,7 +35684,7 @@
         "winnerSlug": "ameyama-seiya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;35&#8221; TKO",
+        "methodRaw": "1R 1’35” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 12
@@ -35705,7 +35705,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;18&#8221; TKO",
+        "methodRaw": "1R 0’18” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 13
@@ -35757,7 +35757,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;36&#8221; KO",
+        "methodRaw": "1R 0’36” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -35977,7 +35977,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;48&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 3’48” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -36040,7 +36040,7 @@
         "winnerSlug": "suwabe-teppei",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;50&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 4’50” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -36061,7 +36061,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;17&#8221; TKO",
+        "methodRaw": "2R 4’17” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -36082,7 +36082,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;05&#8221; 腕十字",
+        "methodRaw": "1R 3’05” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -36438,7 +36438,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;12&#8221; TKO",
+        "methodRaw": "2R 2’12” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -36459,7 +36459,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;09&#8221; TKO",
+        "methodRaw": "2R 1’09” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -36480,7 +36480,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;32&#8221; TKO",
+        "methodRaw": "2R 1’32” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -36501,7 +36501,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;28&#8221; TKO",
+        "methodRaw": "1R 4’28” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -36522,7 +36522,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;40&#8221; TKO",
+        "methodRaw": "1R 0’40” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -36543,7 +36543,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;33&#8221; TKO",
+        "methodRaw": "1R 0’33” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -36616,7 +36616,7 @@
         "winnerSlug": "kuramoto-daigo",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;55&#8221; TKO",
+        "methodRaw": "1R 4’55” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -36679,7 +36679,7 @@
         "winnerSlug": "hibino-junya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;27&#8221; チョークスリーパー",
+        "methodRaw": "1R 0’27” チョークスリーパー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -36700,7 +36700,7 @@
         "winnerSlug": "kubota-taito",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;50&#8243; アームロック",
+        "methodRaw": "1R 1’50″ アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -36773,7 +36773,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;50&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 0’50” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 10
@@ -36815,7 +36815,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;09&#8221; ヒザ十字",
+        "methodRaw": "1R 2’09” ヒザ十字",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 8
@@ -36836,7 +36836,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;16&#8221; TKO",
+        "methodRaw": "2R 0’16” TKO",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 7
@@ -36857,7 +36857,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;55&#8221; ドクターストップ(頭部裂傷)",
+        "methodRaw": "2R 0’55” ドクターストップ(頭部裂傷)",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 6
@@ -36888,7 +36888,7 @@
         "winnerSlug": "oshima-saori",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;05&#8221; TKO",
+        "methodRaw": "1R 3’05” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -36930,7 +36930,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "3R 1&#8217;33&#8221; フロントチョーク",
+        "methodRaw": "3R 1’33” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -36951,7 +36951,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;39&#8221; TKO",
+        "methodRaw": "2R 3’39” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -37003,7 +37003,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;59&#8221; フロントチョーク",
+        "methodRaw": "1R 1’59” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 12
@@ -37087,7 +37087,7 @@
         "winnerSlug": "akazawa-yukinori",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;31&#8221; TKO",
+        "methodRaw": "1R 1’31” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -37611,7 +37611,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;03&#8221; TKO",
+        "methodRaw": "1R 2’03” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -37674,7 +37674,7 @@
         "winnerSlug": "shimada-ibuki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;06&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 3’06” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -37716,7 +37716,7 @@
         "winnerSlug": "nomura-shunta",
         "round": null,
         "time": null,
-        "methodRaw": "3R 0&#8217;32&#8221; TKO",
+        "methodRaw": "3R 0’32” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -37737,7 +37737,7 @@
         "winnerSlug": "seigo",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;45&#8221; アームロック",
+        "methodRaw": "1R 2’45” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -37779,7 +37779,7 @@
         "winnerSlug": "aimoto-kazuki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;53&#8221; TKO",
+        "methodRaw": "1R 1’53” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -38229,7 +38229,7 @@
         "winnerSlug": "kaito",
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;50&#8221; フロントチョーク",
+        "methodRaw": "2R 1’50” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -38250,7 +38250,7 @@
         "winnerSlug": "kubota-taito",
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;59&#8221; ツイスター",
+        "methodRaw": "2R 3’59” ツイスター",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -38292,7 +38292,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;39&#8221; TKO",
+        "methodRaw": "1R 2’39” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -38313,7 +38313,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;11&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’11” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -38334,7 +38334,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;39&#8221; TKO",
+        "methodRaw": "1R 0’39” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -38365,7 +38365,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;43&#8221; 肩固め",
+        "methodRaw": "2R 2’43” 肩固め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -38407,7 +38407,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;49&#8221; 腕十時",
+        "methodRaw": "2R 4’49” 腕十時",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -38449,7 +38449,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;38&#8221; TKO",
+        "methodRaw": "2R 4’38” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -38512,7 +38512,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;56&#8221; 腕十時",
+        "methodRaw": "1R 3’56” 腕十時",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -38564,7 +38564,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;29&#8221; KO",
+        "methodRaw": "1R 2’29” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -38648,7 +38648,7 @@
         "winnerSlug": "mizuno-shinta",
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;56&#8221; TKO",
+        "methodRaw": "2R 0’56” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -38669,7 +38669,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;59&#8221; 腕十時",
+        "methodRaw": "1R 0’59” 腕十時",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -38690,7 +38690,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;16&#8221; アームバー",
+        "methodRaw": "1R 3’16” アームバー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -38711,7 +38711,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;06&#8221; TKO",
+        "methodRaw": "2R 1’06” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -38805,7 +38805,7 @@
         "winnerSlug": "fukuda-ryuya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;19&#8221; KO",
+        "methodRaw": "1R 4’19” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -38826,7 +38826,7 @@
         "winnerSlug": "sekino-taisei",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;13&#8221; TKO",
+        "methodRaw": "1R 3’13” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -38847,7 +38847,7 @@
         "winnerSlug": "enju-kenta",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;11&#8221; ニンジャチョーク",
+        "methodRaw": "1R 3’11” ニンジャチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -38910,7 +38910,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;39&#8221;",
+        "methodRaw": "1R 4’39”",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -38931,7 +38931,7 @@
         "winnerSlug": "kashimura-jinnosuke",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;14&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’14” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -39413,7 +39413,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;10&#8221; TKO",
+        "methodRaw": "1R 1’10” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 15
@@ -39434,7 +39434,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;37&#8221; TKO",
+        "methodRaw": "2R 4’37” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 14
@@ -39633,7 +39633,7 @@
         "winnerSlug": "sakai-ryo",
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8242; 12&#8243; 判定0-2",
+        "methodRaw": "2R 3′ 12″ 判定0-2",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -39654,7 +39654,7 @@
         "winnerSlug": "kate-lotus",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;01&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 4’01” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -39675,7 +39675,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;29&#8221; TKO",
+        "methodRaw": "1R 4’29” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -39696,7 +39696,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;22&#8221; 腕十字",
+        "methodRaw": "1R 2’22” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -39759,7 +39759,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;27&#8221; TKO",
+        "methodRaw": "2R 1’27” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -39790,7 +39790,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;32&#8221; TKO",
+        "methodRaw": "1R 3’32” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -39811,7 +39811,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;27&#8221; ヒールホールド",
+        "methodRaw": "2R 2’27” ヒールホールド",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -39832,7 +39832,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;08&#8221; アームロック",
+        "methodRaw": "1R 1’08” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -39874,7 +39874,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;10&#8221; 三角締め",
+        "methodRaw": "2R 3’10” 三角締め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -39895,7 +39895,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;06&#8221; チョークスリーパー",
+        "methodRaw": "1R 4’06” チョークスリーパー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -39968,7 +39968,7 @@
         "winnerSlug": "rikiya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;47&#8221; 肩固め",
+        "methodRaw": "1R 2’47” 肩固め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -40010,7 +40010,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;58&#8221; TKO",
+        "methodRaw": "2R 1’58” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -40031,7 +40031,7 @@
         "winnerSlug": "karino-yu",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;34&#8221; 腕十字",
+        "methodRaw": "1R 2’34” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -40073,7 +40073,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;00&#8221; KO",
+        "methodRaw": "1R 1’00” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -40094,7 +40094,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3`17&#8243; TKO",
+        "methodRaw": "2R 3`17″ TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -40115,7 +40115,7 @@
         "winnerSlug": "kenshiro",
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;18&#8221; TKO",
+        "methodRaw": "2R 3’18” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -40136,7 +40136,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;07&#8221; KO",
+        "methodRaw": "1R 1’07” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -40167,7 +40167,7 @@
         "winnerSlug": "aoi-jin",
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;26&#8221; TKO",
+        "methodRaw": "2R 2’26” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -40188,7 +40188,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;04&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 4’04” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -40230,7 +40230,7 @@
         "winnerSlug": "sekihara-sho",
         "round": null,
         "time": null,
-        "methodRaw": "1R 5&#8217;00&#8221; 反則により",
+        "methodRaw": "1R 5’00” 反則により",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -40293,7 +40293,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;46&#8221; TKO",
+        "methodRaw": "1R 2’46” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -40335,7 +40335,7 @@
         "winnerSlug": "yasui-hyuma",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;01&#8221; TKO",
+        "methodRaw": "1R 1’01” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -40366,7 +40366,7 @@
         "winnerSlug": "aimoto-kazuki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;21&#8221; TKO",
+        "methodRaw": "1R 4’21” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -40387,7 +40387,7 @@
         "winnerSlug": "shimada-ibuki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;28&#8221; アームバー",
+        "methodRaw": "1R 1’28” アームバー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -40471,7 +40471,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;12&#8221; ノーコンテスト",
+        "methodRaw": "1R 1’12” ノーコンテスト",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -40492,7 +40492,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0`45&#8243; TKO",
+        "methodRaw": "1R 0`45″ TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -40555,7 +40555,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;1&#8217;22&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 0’1’22” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -40984,7 +40984,7 @@
         "winnerSlug": "mizuno-shinta",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;21&#8221; TKO",
+        "methodRaw": "1R 4’21” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -41047,7 +41047,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;26 TKO",
+        "methodRaw": "1R 1’26 TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -41099,7 +41099,7 @@
         "winnerSlug": "rikiya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;14&#8221; KO",
+        "methodRaw": "1R 0’14” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -41141,7 +41141,7 @@
         "winnerSlug": "karino-yu",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;44&#8221; TKO",
+        "methodRaw": "2R 4’44” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -41183,7 +41183,7 @@
         "winnerSlug": "suzuki-taisei",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;32&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 3’32” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -41225,7 +41225,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;19&#8221; TKO",
+        "methodRaw": "2R 0’19” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -41277,7 +41277,7 @@
         "winnerSlug": "suda-moeri",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;28&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’28” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -41298,7 +41298,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;48&#8221; TKO",
+        "methodRaw": "2R 3’48” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -41361,7 +41361,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;18&#8221; TKO",
+        "methodRaw": "2R 4’18” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -41403,7 +41403,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;50&#8221; TKO",
+        "methodRaw": "2R 4’50” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -41424,7 +41424,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;10&#8221; アームトライアングル",
+        "methodRaw": "2R 1’10” アームトライアングル",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -41445,7 +41445,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;25&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’25” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -41518,7 +41518,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;53&#8221; TKO",
+        "methodRaw": "1R 1’53” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -41539,7 +41539,7 @@
         "winnerSlug": "nakatsukasa-taiyo",
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;35 ツイスター",
+        "methodRaw": "2R 1’35 ツイスター",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -41623,7 +41623,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;56&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 1’56” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -41644,7 +41644,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;14&#8221; TKO",
+        "methodRaw": "1R 2’14” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -41665,7 +41665,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;39&#8221; TKO",
+        "methodRaw": "1R 0’39” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -41686,7 +41686,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8243;59&#8243; TKO",
+        "methodRaw": "2R 0″59″ TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 19
@@ -41707,7 +41707,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;22&#8221; アームバー",
+        "methodRaw": "1R 1’22” アームバー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 18
@@ -41749,7 +41749,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;49&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’49” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 16
@@ -41791,7 +41791,7 @@
         "winnerSlug": "mitsui-shunki",
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;16 TKO",
+        "methodRaw": "2R 3’16 TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 14
@@ -41854,7 +41854,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;36&#8221;",
+        "methodRaw": "1R 3’36”",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -41885,7 +41885,7 @@
         "winnerSlug": "nakajima-taichi",
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;19&#8221; TKO",
+        "methodRaw": "2R 3’19” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -41927,7 +41927,7 @@
         "winnerSlug": "sugiyama-sora",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;21&#8221; TKO",
+        "methodRaw": "1R 3’21” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -41948,7 +41948,7 @@
         "winnerSlug": "sasaki-hiro",
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;34&#8221; ヒールフック",
+        "methodRaw": "2R 0’34” ヒールフック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -41969,7 +41969,7 @@
         "winnerSlug": "terasaki-shoryu",
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8242; 00&#8243; リアネイキッドチョーク",
+        "methodRaw": "2R 2′ 00″ リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -41990,7 +41990,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;13&#8221; KO",
+        "methodRaw": "1R 0’13” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -42011,7 +42011,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;32&#8221; TKO",
+        "methodRaw": "2R 0’32” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -42032,7 +42032,7 @@
         "winnerSlug": "kenshiro",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;21&#8221; TKO",
+        "methodRaw": "2R 4’21” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -42114,7 +42114,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;10&#8221; TKO",
+        "methodRaw": "1R 1’10” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 19
@@ -42198,7 +42198,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;10&#8221; KO",
+        "methodRaw": "2R 1’10” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 15
@@ -42240,7 +42240,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;8&#8243; リアネイキッドチョーク",
+        "methodRaw": "1R 2’8″ リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 13
@@ -42345,7 +42345,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;40&#8221; KO",
+        "methodRaw": "1R 1’40” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -42397,7 +42397,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;12&#8221; TKO(タオル投入)",
+        "methodRaw": "1R 1’12” TKO(タオル投入)",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 19
@@ -42460,7 +42460,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;14&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 4’14” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 15
@@ -42502,7 +42502,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;10&#8221; KO",
+        "methodRaw": "1R 1’10” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 13
@@ -42544,7 +42544,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;11&#8221; KO",
+        "methodRaw": "1R 0’11” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -42565,7 +42565,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;19&#8221; TKO",
+        "methodRaw": "1R 2’19” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -42680,7 +42680,7 @@
         "winnerSlug": "naoki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;48&#8221; KO",
+        "methodRaw": "1R 1’48” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -42816,7 +42816,7 @@
         "winnerSlug": "miyabi-shunsuke",
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;18&#8221; KO",
+        "methodRaw": "2R 1’18” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -42837,7 +42837,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;37&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 3’37” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -42921,7 +42921,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4`07&#8243; TKO",
+        "methodRaw": "1R 4`07″ TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -42973,7 +42973,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;00&#8221; 腕ひしぎ三角固め",
+        "methodRaw": "2R 3’00” 腕ひしぎ三角固め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -43036,7 +43036,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;39&#8221; アームロック",
+        "methodRaw": "1R 1’39” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -43057,7 +43057,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;16&#8221; TKO",
+        "methodRaw": "2R 1’16” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -43088,7 +43088,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "3R 4&#8217;02&#8221; TKO",
+        "methodRaw": "3R 4’02” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -43109,7 +43109,7 @@
         "winnerSlug": "ameyama-seiya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 5&#8217;00&#8221; TKO",
+        "methodRaw": "1R 5’00” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -43130,7 +43130,7 @@
         "winnerSlug": "hibino-junya",
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;59&#8221; 失格(グラウンドポジションでの頭部へのキック攻撃)",
+        "methodRaw": "2R 0’59” 失格(グラウンドポジションでの頭部へのキック攻撃)",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -43151,7 +43151,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;30 TKO",
+        "methodRaw": "2R 4’30 TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -43172,7 +43172,7 @@
         "winnerSlug": "terasaki-shoryu",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;43&#8221; KO",
+        "methodRaw": "1R 3’43” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -43193,7 +43193,7 @@
         "winnerSlug": "mitsui-shunki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;18&#8221; TKO",
+        "methodRaw": "1R 1’18” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -43235,7 +43235,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;54&#8221; アームバー",
+        "methodRaw": "1R 0’54” アームバー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -43256,7 +43256,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;27&#8221; TKO",
+        "methodRaw": "1R 3’27” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -43277,7 +43277,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;38&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 2’38” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -43298,7 +43298,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;51&#8221; TKO",
+        "methodRaw": "1R 1’51” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 12
@@ -43319,7 +43319,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "5R 0&#8217;35&#8221; フロントチョーク",
+        "methodRaw": "5R 0’35” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 13
@@ -43340,7 +43340,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8242; 23&#8243; 三角締め(テクニカルサブミッション)",
+        "methodRaw": "2R 1′ 23″ 三角締め(テクニカルサブミッション)",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 14
@@ -43361,7 +43361,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;49&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’49” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 15
@@ -43382,7 +43382,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;50&#8221; TKO",
+        "methodRaw": "1R 2’50” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 16
@@ -43455,7 +43455,7 @@
         "winnerSlug": "muramoto-yutaro",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;08&#8221; TKO",
+        "methodRaw": "2R 4’08” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -43476,7 +43476,7 @@
         "winnerSlug": "sekino-taisei",
         "round": null,
         "time": null,
-        "methodRaw": "3R 2&#8217;38&#8221; TKO",
+        "methodRaw": "3R 2’38” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -43518,7 +43518,7 @@
         "winnerSlug": "koya-kanda",
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;13&#8221; TKO",
+        "methodRaw": "2R 1’13” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -43539,7 +43539,7 @@
         "winnerSlug": "honda-ryosuke",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;51&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 4’51” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -43633,7 +43633,7 @@
         "winnerSlug": "kate-lotus",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;03&#8221; TKO",
+        "methodRaw": "2R 4’03” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -43654,7 +43654,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;16&#8221; TKO",
+        "methodRaw": "1R 2’16” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -43675,7 +43675,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;36&#8221;",
+        "methodRaw": "1R 3’36”",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -43696,7 +43696,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;16&#8221; 肩固め",
+        "methodRaw": "1R 2’16” 肩固め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -43832,7 +43832,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;01&#8221; 三角締め",
+        "methodRaw": "1R 2’01” 三角締め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -43895,7 +43895,7 @@
         "winnerSlug": "suzuki-taisei",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;09&#8221; TKO",
+        "methodRaw": "1R 1’09” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -43937,7 +43937,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;59&#8221; TKO",
+        "methodRaw": "1R 1’59” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -43989,7 +43989,7 @@
         "winnerSlug": "aimoto-kazuki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;14&#8221; TKO",
+        "methodRaw": "1R 0’14” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -44052,7 +44052,7 @@
         "winnerSlug": "rikiya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;21&#8221; TKO",
+        "methodRaw": "1R 4’21” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -44115,7 +44115,7 @@
         "winnerSlug": "sugiyama-sora",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;48&#8221; TKO",
+        "methodRaw": "1R 3’48” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -44136,7 +44136,7 @@
         "winnerSlug": "kenshiro",
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;31&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 1’31” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -44230,7 +44230,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;22&#8221; TKO",
+        "methodRaw": "1R 1’22” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -44251,7 +44251,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;49&#8221; TKO",
+        "methodRaw": "1R 2’49” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -44293,7 +44293,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;53&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 2’53” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -44387,7 +44387,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;55&#8221; アームロック",
+        "methodRaw": "1R 0’55” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -44429,7 +44429,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;25&#8221; KO",
+        "methodRaw": "1R 0’25” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -44450,7 +44450,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;17&#8221; (相手の顔面に指を向ける行為)",
+        "methodRaw": "2R 0’17” (相手の顔面に指を向ける行為)",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -44471,7 +44471,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;32&#8221; TKO",
+        "methodRaw": "1R 2’32” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -44492,7 +44492,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;35&#8221; TKO",
+        "methodRaw": "1R 2’35” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -44513,7 +44513,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;33&#8221; KO",
+        "methodRaw": "1R 4’33” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -44555,7 +44555,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;09&#8221; リアネイクッドチョーク",
+        "methodRaw": "1R 1’09” リアネイクッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -44586,7 +44586,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;18&#8221; TKO",
+        "methodRaw": "1R 0’18” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -44607,7 +44607,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;10&#8221; アームロック",
+        "methodRaw": "1R 2’10” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -44628,7 +44628,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;29&#8221; 腕十字",
+        "methodRaw": "1R 2’29” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -44649,7 +44649,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;40&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 0’40” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -44670,7 +44670,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;14&#8221; KO",
+        "methodRaw": "2R 1’14” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -44754,7 +44754,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;26&#8221; フロントチョーク",
+        "methodRaw": "1R 3’26” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -44995,7 +44995,7 @@
         "winnerSlug": "ohara-juri",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;59&#8221; TKO",
+        "methodRaw": "2R 4’59” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -45016,7 +45016,7 @@
         "winnerSlug": "ushiku-juntaro",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;58&#8221; ヴァンフルーチョーク",
+        "methodRaw": "1R 0’58” ヴァンフルーチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -45037,7 +45037,7 @@
         "winnerSlug": "kuramoto-daigo",
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;29&#8221; TKO",
+        "methodRaw": "2R 0’29” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -45079,7 +45079,7 @@
         "winnerSlug": "mitsui-shunki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;27&#8221; KO",
+        "methodRaw": "1R 0’27” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -45142,7 +45142,7 @@
         "winnerSlug": "seigo",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;23&#8221; アームバー",
+        "methodRaw": "1R 1’23” アームバー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -45215,7 +45215,7 @@
         "winnerSlug": "park-siwoo",
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;22&#8221; TKO",
+        "methodRaw": "2R 3’22” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -45257,7 +45257,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;35&#8221; TKO",
+        "methodRaw": "1R 0’35” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -45299,7 +45299,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;44&#8221; アームロック",
+        "methodRaw": "1R 1’44” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -45330,7 +45330,7 @@
         "winnerSlug": "akazawa-yukinori",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;11&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 3’11” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -45351,7 +45351,7 @@
         "winnerSlug": "abe-daiji",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;06&#8221; 三角絞め",
+        "methodRaw": "1R 1’06” 三角絞め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -45414,7 +45414,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;33&#8221; TKO",
+        "methodRaw": "1R 0’33” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -45435,7 +45435,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;22&#8221; TKO",
+        "methodRaw": "1R 3’22” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -45456,7 +45456,7 @@
         "winnerSlug": "daiya",
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;03&#8221; TKO",
+        "methodRaw": "2R 1’03” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -45477,7 +45477,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;37&#8221; 三角絞め",
+        "methodRaw": "2R 3’37” 三角絞め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -45529,7 +45529,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;37&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 1’37” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -45550,7 +45550,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;05&#8221; KO",
+        "methodRaw": "1R 3’05” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -45592,7 +45592,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;13&#8221; 洗濯バサミ",
+        "methodRaw": "1R 1’13” 洗濯バサミ",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -45613,7 +45613,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;24&#8221; KO",
+        "methodRaw": "1R 1’24” KO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -45655,7 +45655,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;33&#8221; TKO",
+        "methodRaw": "1R 1’33” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -45676,7 +45676,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;16&#8221; TKO",
+        "methodRaw": "1R 1’16” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -45718,7 +45718,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;27&#8221; TKO",
+        "methodRaw": "1R 4’27” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -45760,7 +45760,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;01&#8221; TKO",
+        "methodRaw": "1R 4’01” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 20
@@ -45781,7 +45781,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;21&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 1’21” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 19
@@ -45802,7 +45802,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;46&#8221; アームロック",
+        "methodRaw": "1R 1’46” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 18
@@ -45844,7 +45844,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;58&#8221; TKO",
+        "methodRaw": "1R 1’58” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 16
@@ -45938,7 +45938,7 @@
         "winnerSlug": "nakatsukasa-taiyo",
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;24&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 0’24” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -45959,7 +45959,7 @@
         "winnerSlug": "rikiya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;32&#8221; TKO",
+        "methodRaw": "1R 2’32” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -45980,7 +45980,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;51&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 3’51” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -46001,7 +46001,7 @@
         "winnerSlug": "suzuki-taisei",
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;13&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 1’13” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -46022,7 +46022,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;07&#8221; TKO",
+        "methodRaw": "1R 3’07” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -46064,7 +46064,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;55&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’55” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -46127,7 +46127,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;44&#8221; 肩固め",
+        "methodRaw": "1R 3’44” 肩固め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -46158,7 +46158,7 @@
         "winnerSlug": "aimoto-kazuki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;28&#8221; TKO",
+        "methodRaw": "1R 3’28” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -46179,7 +46179,7 @@
         "winnerSlug": "takeda-koji",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;01&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 4’01” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -46221,7 +46221,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;43&#8221; アームロック",
+        "methodRaw": "2R 0’43” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -46242,7 +46242,7 @@
         "winnerSlug": "sugiyama-kohei",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;00&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 4’00” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -46305,7 +46305,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8242; 41&#8243; リアネイキッドチョーク",
+        "methodRaw": "1R 2′ 41″ リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -46336,7 +46336,7 @@
         "winnerSlug": "daiya",
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;03&#8221; 腕十字",
+        "methodRaw": "2R 1’03” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -46357,7 +46357,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;13&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 2’13” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -46409,7 +46409,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;13&#8221; TKO",
+        "methodRaw": "2R 3’13” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -46430,7 +46430,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;58&#8221; フロントチョーク",
+        "methodRaw": "1R 0’58” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -46451,7 +46451,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8242; 08&#8243; TKO",
+        "methodRaw": "2R 1′ 08″ TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -46472,7 +46472,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;29&#8221; 腕十字",
+        "methodRaw": "1R 4’29” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -46493,7 +46493,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;42&#8221; ヴォンフルーチョーク",
+        "methodRaw": "2R 3’42” ヴォンフルーチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -46629,7 +46629,7 @@
         "winnerSlug": "mitsui-shunki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;23&#8221; TKO",
+        "methodRaw": "1R 2’23” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -46650,7 +46650,7 @@
         "winnerSlug": "hinotori",
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;07&#8221; ツイスター",
+        "methodRaw": "2R 2’07” ツイスター",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -46671,7 +46671,7 @@
         "winnerSlug": "suwabe-teppei",
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;14&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 2’14” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -46755,7 +46755,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;22&#8221; フロントチョーク",
+        "methodRaw": "2R 0’22” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -46776,7 +46776,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;19&#8221; TKO",
+        "methodRaw": "1R 4’19” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -46807,7 +46807,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;17&#8221; TKO",
+        "methodRaw": "1R 0’17” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 23
@@ -46849,7 +46849,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;34&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 0’34” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 21
@@ -46975,7 +46975,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;01&#8221; ヴォンフルーチョーク",
+        "methodRaw": "1R 1’01” ヴォンフルーチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 13
@@ -47038,7 +47038,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;20&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 3’20” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -47059,7 +47059,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;26&#8221; TKO",
+        "methodRaw": "2R 0’26” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -47101,7 +47101,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;59&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 3’59” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -47132,7 +47132,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;44&#8221; TKO",
+        "methodRaw": "1R 3’44” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -47153,7 +47153,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;27&#8221; TKO",
+        "methodRaw": "1R 0’27” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -47174,7 +47174,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;18&#8221; TKO",
+        "methodRaw": "2R 3’18” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -47216,7 +47216,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;01&#8221; アームバー",
+        "methodRaw": "2R 4’01” アームバー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -47237,7 +47237,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;02&#8221; TKO",
+        "methodRaw": "1R 2’02” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -47321,7 +47321,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;09&#8221; TKO",
+        "methodRaw": "1R 1’09” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 2
@@ -47394,7 +47394,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;43&#8221; 三角締め",
+        "methodRaw": "1R 4’43” 三角締め",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -47415,7 +47415,7 @@
         "winnerSlug": "ameyama-seiya",
         "round": null,
         "time": null,
-        "methodRaw": "1R 1’39&#8243; TKO",
+        "methodRaw": "1R 1’39″ TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -47436,7 +47436,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;13&#8221; TKO",
+        "methodRaw": "2R 1’13” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -47478,7 +47478,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;58&#8221; アームバー",
+        "methodRaw": "1R 2’58” アームバー",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -47499,7 +47499,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;00&#8221; アームロック",
+        "methodRaw": "1R 4’00” アームロック",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -47541,7 +47541,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;50&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 4’50” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -47562,7 +47562,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;54&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 3’54” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -47604,7 +47604,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;06&#8221; TKO",
+        "methodRaw": "2R 2’06” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -47635,7 +47635,7 @@
         "winnerSlug": "sakai-ryo",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;26&#8221; TKO",
+        "methodRaw": "1R 3’26” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -47677,7 +47677,7 @@
         "winnerSlug": "tsubaki-asuka",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;38&#8221; TKO",
+        "methodRaw": "2R 4’38” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -47698,7 +47698,7 @@
         "winnerSlug": "naoki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;22&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 0’22” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -47740,7 +47740,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;20&#8221; 失格",
+        "methodRaw": "1R 0’20” 失格",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -47782,7 +47782,7 @@
         "winnerSlug": "suzuki-taisei",
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;25” TKO",
+        "methodRaw": "1R 3’25” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -47855,7 +47855,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;03&#8221; TKO",
+        "methodRaw": "1R 3’03” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -47939,7 +47939,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;41&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 2’41” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -47960,7 +47960,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;22&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 1’22” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -48084,7 +48084,7 @@
         "winnerSlug": "ohara-juri",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;19&#8221; TKO",
+        "methodRaw": "1R 2’19” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 14
@@ -48105,7 +48105,7 @@
         "winnerSlug": "muramoto-yutaro",
         "round": null,
         "time": null,
-        "methodRaw": "2R 4&#8217;48&#8221; 膝十字",
+        "methodRaw": "2R 4’48” 膝十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 13
@@ -48126,7 +48126,7 @@
         "winnerSlug": "kashimura-jinnosuke",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;16&#8221; TKO",
+        "methodRaw": "1R 0’16” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 12
@@ -48210,7 +48210,7 @@
         "winnerSlug": "takizawa-kenta",
         "round": null,
         "time": null,
-        "methodRaw": "3R 2&#8217;22&#8221; TKO",
+        "methodRaw": "3R 2’22” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -48273,7 +48273,7 @@
         "winnerSlug": "akazawa-yukinori",
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;36&#8221; TKO",
+        "methodRaw": "1R 4’36” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -48315,7 +48315,7 @@
         "winnerSlug": "naito-tank",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;36&#8221; TKO",
+        "methodRaw": "1R 0’36” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -48357,7 +48357,7 @@
         "winnerSlug": "sugino-aren",
         "round": null,
         "time": null,
-        "methodRaw": "2R 0&#8217;36&#8221; フロントチョーク",
+        "methodRaw": "2R 0’36” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -48451,7 +48451,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;37 TKO",
+        "methodRaw": "2R 1’37 TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -48472,7 +48472,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "0R 0&#8217;32 TKO",
+        "methodRaw": "0R 0’32 TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -48493,7 +48493,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;44&#8221; TKO",
+        "methodRaw": "1R 3’44” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -48577,7 +48577,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;17&#8221; TKO",
+        "methodRaw": "1R 1’17” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -48608,7 +48608,7 @@
         "winnerSlug": "mitsui-shunki",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;59&#8221; TKO",
+        "methodRaw": "1R 2’59” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -48629,7 +48629,7 @@
         "winnerSlug": "nakajima-taichi",
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;59&#8221; TKO",
+        "methodRaw": "2R 2’59” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -48650,7 +48650,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;49&#8221; TKO",
+        "methodRaw": "1R 0’49” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -48671,7 +48671,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;03&#8221; TKO",
+        "methodRaw": "1R 3’03” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
@@ -48692,7 +48692,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;08&#8221; フロントチョーク",
+        "methodRaw": "1R 3’08” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 6
@@ -48734,7 +48734,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;16&#8221; 腕十字",
+        "methodRaw": "1R 4’16” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -48755,7 +48755,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;21&#8221; 腕十字",
+        "methodRaw": "1R 1’21” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 3
@@ -48797,7 +48797,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;30&#8221; TKO",
+        "methodRaw": "1R 3’30” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -48828,7 +48828,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;59&#8221; TKO",
+        "methodRaw": "1R 4’59” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 21
@@ -48849,7 +48849,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;22&#8221; 反則",
+        "methodRaw": "1R 4’22” 反則",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 20
@@ -48870,7 +48870,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;53&#8221; TKO",
+        "methodRaw": "1R 1’53” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 19
@@ -48912,7 +48912,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8242; 57&#8243; TKO",
+        "methodRaw": "1R 0′ 57″ TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 17
@@ -49017,7 +49017,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;28&#8221; 腕十字",
+        "methodRaw": "1R 1’28” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -49132,7 +49132,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R4&#8217;32&#8221; 腕十字",
+        "methodRaw": "1R4’32” 腕十字",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 17
@@ -49436,7 +49436,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 1&#8217;37&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 1’37” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 18
@@ -49457,7 +49457,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;04&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 4’04” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 17
@@ -49478,7 +49478,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;34&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 4’34” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 16
@@ -49520,7 +49520,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 2&#8217;43&#8221; リアネイキッドチョーク",
+        "methodRaw": "2R 2’43” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 14
@@ -49583,7 +49583,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "3R 1&#8217;35&#8221; リアネイキッドチョーク",
+        "methodRaw": "3R 1’35” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -49604,7 +49604,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 5&#8217;00&#8221; TKO",
+        "methodRaw": "2R 5’00” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -49667,7 +49667,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "2R 3&#8217;31&#8221; TKO",
+        "methodRaw": "2R 3’31” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -49751,7 +49751,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 1&#8217;19&#8221; TKO",
+        "methodRaw": "1R 1’19” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 1
@@ -49782,7 +49782,7 @@
         "winnerSlug": "aimoto-kazuki",
         "round": null,
         "time": null,
-        "methodRaw": "3R 1&#8217;55&#8221; TKO",
+        "methodRaw": "3R 1’55” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 11
@@ -49803,7 +49803,7 @@
         "winnerSlug": "hinotori",
         "round": null,
         "time": null,
-        "methodRaw": "1R 0&#8217;31&#8221; TKO",
+        "methodRaw": "1R 0’31” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 10
@@ -49824,7 +49824,7 @@
         "winnerSlug": "gomyo-hiroto",
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;37&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’37” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 9
@@ -49908,7 +49908,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 2&#8217;24&#8221; リアネイキッドチョーク",
+        "methodRaw": "1R 2’24” リアネイキッドチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 5
@@ -49929,7 +49929,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 5&#8217;00&#8221; TKO",
+        "methodRaw": "1R 5’00” TKO",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 4
@@ -50002,7 +50002,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 3&#8217;26&#8221; フロントチョーク",
+        "methodRaw": "1R 3’26” フロントチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 8
@@ -50023,7 +50023,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "1R 4&#8217;45&#8221; ダースチョーク",
+        "methodRaw": "1R 4’45” ダースチョーク",
         "isWeighInMiss": false,
         "format": "F1",
         "boutNumber": 7
