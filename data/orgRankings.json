@@ -3,7 +3,7 @@
     "org": "pancrase",
     "source": "パンクラス公式ランキング",
     "sourceUrl": "https://www.pancrase.co.jp/rls/ranking.html",
-    "fetchedDate": "2026-07-31",
+    "fetchedDate": "2026-08-01",
     "rankingLabel": "7月30日発表",
     "classes": [
       {
@@ -447,7 +447,7 @@
     "org": "shooto",
     "source": "修斗公式ランキング",
     "sourceUrl": "https://www.shooto-mma.com/ranking/",
-    "fetchedDate": "2026-07-31",
+    "fetchedDate": "2026-08-01",
     "rankingLabel": "7月1日付け",
     "classes": [
       {
@@ -1005,7 +1005,7 @@
           {
             "rank": "王者",
             "officialName": "知名昴海",
-            "slug": null
+            "slug": "china-sukai"
           }
         ]
       },
@@ -1120,7 +1120,7 @@
           {
             "rank": "王者",
             "officialName": "万智",
-            "slug": null
+            "slug": "fukuda-machi"
           }
         ]
       },
@@ -1130,7 +1130,7 @@
           {
             "rank": "王者",
             "officialName": "中井りん",
-            "slug": null
+            "slug": "nakai-rin"
           }
         ]
       },
@@ -1140,7 +1140,7 @@
           {
             "rank": "王者",
             "officialName": "百湖",
-            "slug": null
+            "slug": "saito-momoko"
           }
         ]
       },
@@ -1150,7 +1150,7 @@
           {
             "rank": "王者",
             "officialName": "東ようこ",
-            "slug": null
+            "slug": "higashi-yoko"
           }
         ]
       }

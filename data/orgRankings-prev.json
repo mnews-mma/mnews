@@ -3,8 +3,8 @@
     "org": "pancrase",
     "source": "パンクラス公式ランキング",
     "sourceUrl": "https://www.pancrase.co.jp/rls/ranking.html",
-    "fetchedDate": "2026-07-30",
-    "rankingLabel": "7月2日発表",
+    "fetchedDate": "2026-07-31",
+    "rankingLabel": "7月30日発表",
     "classes": [
       {
         "weightClass": "ミドル級",
@@ -26,11 +26,16 @@
           },
           {
             "rank": "3",
+            "officialName": "手塚晴希",
+            "slug": null
+          },
+          {
+            "rank": "4",
             "officialName": "佐藤龍汰朗",
             "slug": "sato-ryutaro"
           },
           {
-            "rank": "4",
+            "rank": "5",
             "officialName": "岡村寿紀",
             "slug": "okamura-toshiki"
           }
@@ -56,11 +61,16 @@
           },
           {
             "rank": "3",
+            "officialName": "ガブリエル・レーベン",
+            "slug": null
+          },
+          {
+            "rank": "4",
             "officialName": "佐藤生虎",
             "slug": "satoshogo"
           },
           {
-            "rank": "4",
+            "rank": "5",
             "officialName": "村山暁洋",
             "slug": "murayama-akihiro"
           }
@@ -96,13 +106,13 @@
           },
           {
             "rank": "5",
-            "officialName": "天弥",
-            "slug": "tenya"
+            "officialName": "平信一",
+            "slug": "taira"
           },
           {
             "rank": "6",
-            "officialName": "平信一",
-            "slug": "taira"
+            "officialName": "天弥",
+            "slug": "tenya"
           },
           {
             "rank": "7",
@@ -171,23 +181,23 @@
           },
           {
             "rank": "9",
-            "officialName": "Ryo",
-            "slug": "ryoa"
-          },
-          {
-            "rank": "10",
             "officialName": "遠藤来生",
             "slug": "endoraiki"
           },
           {
+            "rank": "10",
+            "officialName": "関 翔渚",
+            "slug": "sekisena"
+          },
+          {
             "rank": "11",
-            "officialName": "名田英平",
-            "slug": "nada"
+            "officialName": "Ryo",
+            "slug": "ryoa"
           },
           {
             "rank": "12",
-            "officialName": "関 翔渚",
-            "slug": "sekisena"
+            "officialName": "名田英平",
+            "slug": "nada"
           },
           {
             "rank": "13",
@@ -231,18 +241,18 @@
           },
           {
             "rank": "4",
+            "officialName": "荒田大輝",
+            "slug": "aratadaiki"
+          },
+          {
+            "rank": "5",
             "officialName": "井村塁",
             "slug": "imura-rui"
           },
           {
-            "rank": "5",
+            "rank": "6",
             "officialName": "神部篤坊",
             "slug": "kanbe-atsubo"
-          },
-          {
-            "rank": "6",
-            "officialName": "荒田大輝",
-            "slug": "aratadaiki"
           },
           {
             "rank": "7",
@@ -256,13 +266,13 @@
           },
           {
             "rank": "9",
-            "officialName": "山木麻弥",
-            "slug": "yamakimahiro"
+            "officialName": "前田浩平",
+            "slug": "maedakohei"
           },
           {
             "rank": "10",
-            "officialName": "前田浩平",
-            "slug": "maedakohei"
+            "officialName": "山木麻弥",
+            "slug": "yamakimahiro"
           },
           {
             "rank": "11",
@@ -311,38 +321,38 @@
           },
           {
             "rank": "6",
-            "officialName": "ラファエル・リベイロ",
-            "slug": "rafaelribeiro"
-          },
-          {
-            "rank": "7",
             "officialName": "増田大河",
             "slug": "masudataiga"
           },
           {
+            "rank": "7",
+            "officialName": "菅歩夢",
+            "slug": "kanayumu"
+          },
+          {
             "rank": "8",
+            "officialName": "ラファエル・リベイロ",
+            "slug": "rafaelribeiro"
+          },
+          {
+            "rank": "9",
             "officialName": "浜本キャット雄大",
             "slug": "hamamoto"
           },
           {
-            "rank": "9",
+            "rank": "10",
             "officialName": "植松洋貴",
             "slug": "uematsuyoshiki"
           },
           {
-            "rank": "10",
+            "rank": "11",
             "officialName": "濱田 巧",
             "slug": "hamada-takumi"
           },
           {
-            "rank": "11",
+            "rank": "12",
             "officialName": "小林了平",
             "slug": "kobayashiryohei"
-          },
-          {
-            "rank": "12",
-            "officialName": "菅歩夢",
-            "slug": "kanayumu"
           },
           {
             "rank": "13",
@@ -366,13 +376,13 @@
           },
           {
             "rank": "1",
-            "officialName": "佐々木瞬真",
-            "slug": "sasaki-shunma"
+            "officialName": "船田電池",
+            "slug": "funada-denchi"
           },
           {
             "rank": "2",
-            "officialName": "船田電池",
-            "slug": "funada-denchi"
+            "officialName": "佐々木瞬真",
+            "slug": "sasaki-shunma"
           },
           {
             "rank": "3",
@@ -403,11 +413,6 @@
             "rank": "1",
             "officialName": "和田綾音",
             "slug": "wadaayane"
-          },
-          {
-            "rank": "2",
-            "officialName": "ライカ",
-            "slug": "raika"
           }
         ]
       },
@@ -442,7 +447,7 @@
     "org": "shooto",
     "source": "修斗公式ランキング",
     "sourceUrl": "https://www.shooto-mma.com/ranking/",
-    "fetchedDate": "2026-07-30",
+    "fetchedDate": "2026-07-31",
     "rankingLabel": "7月1日付け",
     "classes": [
       {
@@ -1095,7 +1100,7 @@
           {
             "rank": "王者",
             "officialName": "大成",
-            "slug": null
+            "slug": "sekino-taisei"
           }
         ]
       },
