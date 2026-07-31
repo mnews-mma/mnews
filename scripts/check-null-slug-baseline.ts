@@ -29,13 +29,15 @@ function loadJson<T>(file: string): T {
   return JSON.parse(fs.readFileSync(p, "utf8")) as T;
 }
 
-// 2026-07-31実測値(このPR時点)。org別に個別のベースラインを持つ
+// 2026-07-31実測値(指示書I: backfill-shooto-pancrase-slugs.tsを#301の
+// alias追加後に再実行した結果を反映。RIZINは対象外=backfill-rizin-slugs.ts
+// 側の管轄で今回は未実行のため据え置き)。org別に個別のベースラインを持つ
 // (合計だけだと、ある団体の悪化を別団体の改善が相殺して隠す恐れがあるため)。
 const BASELINE = {
   rizin: 1103,
   shooto: 2921,
-  pancrase: 8500,
-  deep: 3671,
+  pancrase: 8497,
+  deep: 3670,
 };
 
 function main() {
