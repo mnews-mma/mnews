@@ -58,10 +58,46 @@ export function buildNameIndex(): Map<string, string | null> {
   return index;
 }
 
+// 指示書N(2026-07-31): パンクラス等の生表記に「姓"ニックネーム"名」型の挿入
+// (例: 新居"コンバ王子"卓・植村"ジャック"龍介)が多数あり、これらはnormalize()
+// (引用符記号の除去のみ・ニックネーム本文はそのまま残る)だけでは
+// fighters.tsのnameJa(ニックネーム無し表記)と一致しない。挿入部を丸ごと
+// (引用符+中身)除去した版も候補として試す。
+// 引用符はカーリー/直線が混在する(例: 西浦"ウィッキー"聡生のように開始と
+// 終了で別種の文字が使われるケースが実データに存在する)ため、開始・終了で
+// 同一文字である必要はなく、種類を問わず引用符的文字のペアで囲まれた区間を
+// 除去する。カギ括弧「」も同種の挿入に使われうるため対象に含める(実データでは
+// 未観測だが指示書の指定通り対応する)。丸括弧は対象に含めない
+// (fighterAName等の生表記側には出現せず、ジム名は別フィールドfighterAGymに
+// 既に分離済みのため、丸括弧を対象にすると別の意味を持つ表記を誤って
+// 壊す恐れがある)。
+// この関数はsrc/lib/fighters.tsのstripDecorativeNickname()と機能的に同種
+// (findFighterSlugByName側は元々この処理を持っていた)。バックフィル
+// スクリプト側(このファイル)には無かったため今回追加した。
+const QUOTED_INSERT_RE = /["'‘’“”][^"'‘’“”]*["'‘’“”]|「[^」]*」/g;
+
+export function stripQuotedInsert(name: string): string {
+  return name.replace(QUOTED_INSERT_RE, "");
+}
+
 export function resolveSlug(name: string, index: Map<string, string | null>): string | null {
   const n = normalize(name);
-  if (!n) return null;
-  return index.get(n) ?? null;
+  const direct = n ? (index.get(n) ?? null) : null;
+
+  const stripped = stripQuotedInsert(name);
+  if (stripped === name) {
+    // 引用符付き挿入が無い(通常ケース)。従来どおり直接一致の結果のみ返す。
+    return direct;
+  }
+  const ns = normalize(stripped);
+  const viaStrip = ns ? (index.get(ns) ?? null) : null;
+
+  if (direct && viaStrip) {
+    // 除去前後の両方でマッチした場合、同一slugなら採用、別slugなら
+    // 曖昧(推測不能)として弾く(指示書N指定の安全策)。
+    return direct === viaStrip ? direct : null;
+  }
+  return direct ?? viaStrip;
 }
 
 export function levenshtein(a: string, b: string): number {
