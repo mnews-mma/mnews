@@ -22,6 +22,17 @@
 //
 // 名前ごとの詳細(衝突相手のurlStem/id)は out/name_collision_denylist_candidates.json
 // (非コミット、build_denylist.tsの出力)を参照。
+//
+// 「パク・ソヨン」(PR #334調査、2026-08-01): DEEP公式結果ページ2件
+// (DEEP JEWELS 19・DEEP NAGOYA IMPACT 2026 2nd ROUND)に登場する同名選手を、
+// 修斗所属のyoung-parkseo(PARK SEO YOUNG、shootoId=1464)と誤って同一視して
+// いたことが判明したため追加。判定材料(所属ジム・生年月日・階級)で不一致:
+// young-parkseoの修斗公式プロフィールは所属「ROADジム・GUNSAN ROADジム」・
+// 生年月日2003/5/31・階級「女子スーパーアトム級」。一方DEEP JEWELS 19
+// (2018-03-10)出場の同名選手は所属「GUMI Team Hon」・階級「ライト級」で、
+// 当時young-parkseoは14歳(修斗デビューは2022年)のため別人と断定できる。
+// DEEP NAGOYA IMPACT 2026 2nd ROUND(2026-06-14)出場の同名選手も所属
+// 「済州チームドラゴン」で一致せず、同一人物と確定できなかった。
 export const NAME_COLLISION_DENYLIST: readonly string[] = [
   "HIRO",
   "TERU",
@@ -43,6 +54,7 @@ export const NAME_COLLISION_DENYLIST: readonly string[] = [
   "クリス・ライトル",
   "ジャレッドライアンアルマザン",
   "タクミ",
+  "パク・ソヨン",
   "ヒカル",
   "ヒカルドリッキーボテーリョ",
   "フランク“アニマル”ロブマン",
