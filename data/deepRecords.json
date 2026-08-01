@@ -17578,7 +17578,7 @@
     "fetchedDate": "2026-08-01",
     "bouts": [
       {
-        "cardPosition": 10,
+        "cardPosition": 11,
         "isOpeningFight": false,
         "headingText": "メインイベント DEEP JEWELSアトム級タイトルマッチ 5分3R※肘あ",
         "fighterAName": "黒部三奈",
@@ -17599,7 +17599,7 @@
         "boutNumber": 8
       },
       {
-        "cardPosition": 9,
+        "cardPosition": 10,
         "isOpeningFight": false,
         "headingText": "65kg以下契約 5分3R※肘あり",
         "fighterAName": "KINGレイナ",
@@ -17620,7 +17620,7 @@
         "boutNumber": 7
       },
       {
-        "cardPosition": 8,
+        "cardPosition": 9,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELSアトム級 5分3R※肘あり",
         "fighterAName": "SARAMI",
@@ -17641,7 +17641,7 @@
         "boutNumber": 6
       },
       {
-        "cardPosition": 7,
+        "cardPosition": 8,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELSストロー級 5分2R",
         "fighterAName": "長野美香",
@@ -17662,7 +17662,7 @@
         "boutNumber": 5
       },
       {
-        "cardPosition": 6,
+        "cardPosition": 7,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELSフライ級 5分2R",
         "fighterAName": "奈部ゆかり",
@@ -17683,7 +17683,7 @@
         "boutNumber": 4
       },
       {
-        "cardPosition": 5,
+        "cardPosition": 6,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELSストロー級 5分2R",
         "fighterAName": "Yuko.S",
@@ -17704,7 +17704,7 @@
         "boutNumber": 3
       },
       {
-        "cardPosition": 4,
+        "cardPosition": 5,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELSアトム級 5分2R",
         "fighterAName": "川村虹花",
@@ -17725,7 +17725,7 @@
         "boutNumber": 2
       },
       {
-        "cardPosition": 3,
+        "cardPosition": 4,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELS 53.5kg以下 5分2R",
         "fighterAName": "ジェット・イズミ",
@@ -17746,7 +17746,7 @@
         "boutNumber": 1
       },
       {
-        "cardPosition": 2,
+        "cardPosition": 3,
         "isOpeningFight": false,
         "headingText": "DEEP JEWELS68kg以下 3分2R SPルール",
         "fighterAName": "チェルシー",
@@ -17767,11 +17767,11 @@
         "boutNumber": 3
       },
       {
-        "cardPosition": 1,
-        "isOpeningFight": true,
+        "cardPosition": 2,
+        "isOpeningFight": false,
         "headingText": "アトム級 3分2R AAルール（ヘッドギアあり）",
         "fighterAName": "國保小枝",
-        "fighterBName": "佐々木萌",
+        "fighterBName": "ANJU",
         "fighterASlug": null,
         "fighterBSlug": null,
         "ruleType": "unknown",
@@ -17782,10 +17782,31 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "▼第1試合 ストロー級 3分2R AAルール（ヘッドギアあり）",
+        "methodRaw": "ドロー 判定0-1 ※18-19、19-19、19-19",
         "isWeighInMiss": false,
         "format": "f2_method_middle",
         "boutNumber": 2
+      },
+      {
+        "cardPosition": 1,
+        "isOpeningFight": true,
+        "headingText": "ストロー級 3分2R AAルール（ヘッドギアあり）",
+        "fighterAName": "佐々木萌",
+        "fighterBName": "湊琴梨",
+        "fighterASlug": null,
+        "fighterBSlug": null,
+        "ruleType": "unknown",
+        "weightKg": null,
+        "namedDivision": "ストロー級 3分2R AAルール（ヘッドギアあり）",
+        "resultType": "decisive",
+        "winnerName": "湊琴梨",
+        "winnerSlug": null,
+        "round": null,
+        "time": null,
+        "methodRaw": "判定0-2 ※18-20、19-19、18-20",
+        "isWeighInMiss": false,
+        "format": "f2_method_middle",
+        "boutNumber": 1
       }
     ],
     "parseFailures": 0,
