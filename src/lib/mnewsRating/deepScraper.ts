@@ -203,7 +203,16 @@ export function extractEventDate(bodyClean: string): string | null {
 // 挿入され、この1bout全体が抽出漏れになっていた)。「※」で始まり「→」で
 // 終わる注記のみ限定的に許容する(汎用的に「パイプ区切りの何か」を許容すると
 // 無関係な文言まで飲み込む懸念があるため、実例で確認した表記のみに絞る)。
-const KG_SUFFIX = "(?:\\s*\\|\\s*※[^|]*?→\\s*\\|?\\s*)?(?:\\s*[\\d.]+(?:\\s*[Kk]g)?)?\\s*";
+//
+// 上記は「※...→」で完結する注記(パイプ区切り・アロー終端)のみを想定して
+// いたが、体重の直前に「※」だけが付き矢印もパイプ区切りも無い前置注記も
+// 実在する(2026-08-01、DEEP＆PANCRASE大阪大会2020-11-29「さくら（フリー）
+// ※52kg」で確認: 「※」の直後にそのまま体重が続き、さくら vs 伊澤星花戦が
+// 丸ごと抽出漏れになっていた)。体重の数値部分の直前だけに「※」を任意で
+// 許容する(既存の「※...→」パターンとは独立に判定する。矢印を要求しないため
+// 誤って別の意味の注記まで飲み込まないよう、「※」の直後は数値以外を許容
+// しない)。
+const KG_SUFFIX = "(?:\\s*\\|\\s*※[^|]*?→\\s*\\|?\\s*)?(?:\\s*※?\\s*[\\d.]+(?:\\s*[Kk]g)?)?\\s*";
 
 // markは付かないbout(事故によるノーコンテスト等、勝敗記号自体が存在しない
 // 実例を確認済み)もあるため、mark自体を任意にする。両者ともmark無しの場合は
@@ -575,42 +584,67 @@ function extractF8Bouts(bodyClean: string): DeepRawBout[] {
 }
 
 // F10は「VS+mark併記型」: mark+勝者(ジム) VS mark+敗者(ジム)|method。
+//
+// 「第N試合」見出しを要求するBOUT_RE_F10と、見出し無し(短い任意文字列)でも
+// 拾えるBOUT_RE_F10_NO_HEADINGの2種類があるが、従来はBOUT_RE_F10が1件でも
+// マッチしたら即returnし、NO_HEADINGを一切試していなかった。この設計は
+// ページ全体が「見出し無し」形式か「第N試合」形式かのどちらか一方に統一
+// されている前提だったが、同一ページ内で見出し形式が混在するケースが実在
+// する(2026-08-01、DEEP OSAKA IMPACT 2023 1st ROUND: 13試合は「第N試合」、
+// 敢流 vs 入江一輝の1試合だけ見出しが「オープニングファイト」でNO_HEADING
+// 側にしかマッチしない。heading文字数上限の緩和では解決しない=そもそも
+// BOUT_RE_F10側の「第N試合」固定パターンには入り口すら無いため)。
+// 両方を常に走らせ、選手名A・選手名B・method(=試合内容)の組が一致する
+// 重複だけを弾く(NO_HEADING側は見出し制約が緩い分、既にF10側で拾った
+// bout本体を字面違いで再ヒットする恐れがあるため)。
 function extractF10Bouts(bodyClean: string): DeepRawBout[] {
   const bouts: DeepRawBout[] = [];
+  const seen = new Set<string>();
+  const dedupeKey = (a: string, b: string, method: string) => `${a}|${b}|${method}`;
+
   BOUT_RE_F10.lastIndex = 0;
   let m: RegExpExecArray | null;
   while ((m = BOUT_RE_F10.exec(bodyClean))) {
+    const fighterAName = m[4].trim();
+    const fighterBName = m[7].trim();
+    const methodRaw = m[9].trim();
     bouts.push({
       format: "f10_vs_and_mark",
       boutNumber: Number(m[1]),
       weightClassRaw: m[2].trim() || null,
       fighterAMark: m[3],
-      fighterAName: m[4].trim(),
+      fighterAName,
       fighterAGym: m[5].trim() || null,
       fighterBMark: m[6],
-      fighterBName: m[7].trim(),
+      fighterBName,
       fighterBGym: m[8].trim() || null,
-      methodRaw: m[9].trim(),
+      methodRaw,
       winnerNameHintRaw: null,
     });
+    seen.add(dedupeKey(fighterAName, fighterBName, methodRaw));
   }
-  if (bouts.length > 0) return bouts;
 
   BOUT_RE_F10_NO_HEADING.lastIndex = 0;
   while ((m = BOUT_RE_F10_NO_HEADING.exec(bodyClean))) {
+    const fighterAName = m[3].trim();
+    const fighterBName = m[6].trim();
+    const methodRaw = m[8].trim();
+    const key = dedupeKey(fighterAName, fighterBName, methodRaw);
+    if (seen.has(key)) continue;
     bouts.push({
       format: "f10_vs_and_mark",
       boutNumber: null,
       weightClassRaw: m[1].trim() || null,
       fighterAMark: m[2],
-      fighterAName: m[3].trim(),
+      fighterAName,
       fighterAGym: m[4].trim() || null,
       fighterBMark: m[5],
-      fighterBName: m[6].trim(),
+      fighterBName,
       fighterBGym: m[7].trim() || null,
-      methodRaw: m[8].trim(),
+      methodRaw,
       winnerNameHintRaw: null,
     });
+    seen.add(key);
   }
   return bouts;
 }

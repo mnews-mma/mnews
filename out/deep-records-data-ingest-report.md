@@ -5,10 +5,10 @@
 - アーカイブ総リンク数: 288
 - 候補大会数(開催済・KICK/アマチュア除く): 266
 - 投入大会数: 237
-- bout数: 2328
+- bout数: 2330
 - parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 6件
 - resultType=unknown: 29件
-- 選手名未解決(fighterASlug/fighterBSlug null): 3751件
+- 選手名未解決(fighterASlug/fighterBSlug null): 3753件
 - 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 233件
 - 除外(アマチュア大会): 9件
 - 除外(抽出0件・F7/F11相当): 29件
@@ -159,7 +159,7 @@
 | DEEP TOKYO IMPACT 2023 3rd ROUND | 2023-05-07 | 9 | f8_fully_separated | 0 | 0 | 13 | 0 |
 | DEEP NAGOYA IMPACT 2023公武堂ファイト2nd ROUND | 2023-04-16 | 12 | group1_vs | 0 | 0 | 23 | 0 |
 | DEEP NAGOYA 2023 公武堂ファイト1st ROUND | 2023-04-16 | 10 | group1_vs | 0 | 1 | 18 | 0 |
-| DEEP OSAKA IMPACT 2023 1st ROUND | 2023-04-02 | 13 | f10_vs_and_mark | 0 | 0 | 25 | 0 |
+| DEEP OSAKA IMPACT 2023 1st ROUND | 2023-04-02 | 15 | f10_vs_and_mark | 0 | 0 | 27 | 0 |
 | DEEP TOKYO IMPACT 2023 2nd ROUND | 2023-03-25 | 8 | f10_vs_and_mark | 0 | 0 | 11 | 1 |
 | DEEP TOKYO IMPACT 2023 1st ROUND | 2023-03-25 | 7 | f10_vs_and_mark | 0 | 0 | 10 | 1 |
 | DEEP JEWELS 40 | 2023-02-18 | 9 | f2_method_middle | 0 | 0 | 14 | 0 |
