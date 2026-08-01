@@ -5,10 +5,10 @@
 - アーカイブ総リンク数: 288
 - 候補大会数(開催済・KICK/アマチュア除く): 266
 - 投入大会数: 237
-- bout数: 2333
+- bout数: 2337
 - parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 4件
-- resultType=unknown: 24件
-- 選手名未解決(fighterASlug/fighterBSlug null): 3756件
+- resultType=unknown: 19件
+- 選手名未解決(fighterASlug/fighterBSlug null): 3763件
 - 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 235件
 - 除外(アマチュア大会): 9件
 - 除外(抽出0件・F7/F11相当): 29件
@@ -179,7 +179,7 @@
 | DEEP OSAKA IMPACT 2022 2nd ROUND | 2022-08-28 | 8 | group1_vs | 0 | 0 | 16 | 0 |
 | DEEP JEWELS 38 | 2022-09-11 | 5 | f2_method_middle | 0 | 0 | 9 | 4 |
 | DEEP 109 IMPACT | 2022-08-21 | 11 | f8_fully_separated | 0 | 0 | 15 | 0 |
-| DEEP NAGOYA IMPACT 2022公武堂ファイト | 2022-07-24 | 5 | f2_method_middle | 0 | 5 | 10 | 0 |
+| DEEP NAGOYA IMPACT 2022公武堂ファイト | 2022-07-24 | 9 | f1_method_glued | 0 | 0 | 18 | 0 |
 | DEEP 108 IMPACT | 2022-07-10 | 13 | f8_fully_separated | 0 | 0 | 13 | 0 |
 | DEEP TOKYO IMPACT 2022 4th ROUND | 2022-05-29 | 9 | f2_method_middle | 0 | 0 | 13 | 2 |
 | DEEP TOKYO IMPACT 2022 3rd ROUND | 2022-05-29 | 11 | f2_method_middle | 0 | 0 | 20 | 2 |
@@ -244,7 +244,7 @@
 | DEEP CAGE IMPACT 2018 in大阪 | 2018-04-08 | 14 | f2_method_middle | 0 | 0 | 26 | 0 |
 | DEEP JEWELS 19 | 2018-03-10 | 9 | f2_method_middle | 0 | 0 | 15 | 0 |
 | DEEP 82 IMPACT | 2018-02-24 | 9 | f2_method_middle | 0 | 0 | 15 | 0 |
-| DEEP 81 IMPACT | 2017-12-23 | 13 | f2_method_middle | 0 | 0 | 20 | 0 |
+| DEEP 81 IMPACT | 2017-12-23 | 13 | f2_method_middle | 0 | 0 | 19 | 0 |
 | DEEP JEWELS 18 | 2017-12-03 | 10 | f2_method_middle | 0 | 0 | 18 | 1 |
 | DEEP 80 IMPACT | 2017-10-21 | 20 | f2_method_middle | 0 | 0 | 37 | 0 |
 | DEEP 79 IMPACT | 2017-09-16 | 19 | f2_method_middle | 0 | 0 | 34 | 0 |
