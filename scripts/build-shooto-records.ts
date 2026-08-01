@@ -55,7 +55,7 @@ async function fetchHtml(url: string, retries = 2): Promise<string | null> {
 
 const WEIGH_IN_MISS_KEYWORDS = ["体重超過", "計量失格", "計量オーバー", "計量を行うことが出来なかった", "計量をクリアできず"];
 
-function buildEventBouts(html: string): { bouts: ShootoRecordsBout[]; parseFailures: number } {
+function buildEventBouts(html: string, eventName: string): { bouts: ShootoRecordsBout[]; parseFailures: number } {
   const boxes = splitIntoBoutBoxes(html);
   let parseFailures = 0;
   const successful: ShootoRawBout[] = [];
@@ -71,7 +71,7 @@ function buildEventBouts(html: string): { bouts: ShootoRecordsBout[]; parseFailu
 
   const total = successful.length;
   const bouts: ShootoRecordsBout[] = successful.map((raw, idx) => {
-    const outcome = resolveOutcome(raw);
+    const outcome = resolveOutcome(raw, eventName);
     const fighterASlug = findFighterSlugByName(raw.fighterA.name);
     const fighterBSlug = findFighterSlugByName(raw.fighterB.name);
     const winnerName = outcome.winner === "A" ? raw.fighterA.name : outcome.winner === "B" ? raw.fighterB.name : null;
@@ -170,7 +170,7 @@ async function main() {
       console.warn(`[WARN] 実在イベントと判定できないためスキップ: id=${id} (${url})`);
       continue;
     }
-    const { bouts, parseFailures } = buildEventBouts(html);
+    const { bouts, parseFailures } = buildEventBouts(html, meta.eventName);
     events.push({
       eventName: meta.eventName,
       date: meta.date,
