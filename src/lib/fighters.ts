@@ -1323,7 +1323,9 @@ export const FIGHTERS: Fighter[] = [
   // ① 著名勢=綴り確定+戦績あり → hidden=false(公開)。② 中央アジア勢=綴り裏取り
   //   待ちで hidden=true/needsReview=true。全員 recordFromResults(自社結果で背骨)。
   // ===========================================================================
-  { slug: "patchy-mix", nameJa: "パッチー・ミックス", nameEn: "Patchy Mix", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パッチー・ミックス", wikiTitleEn: "Patchy Mix", nickname: "ザ・ウィザード" },
+  // aliases: 本名"Patrick"表記(RIZIN.20 2019-12-31の対戦相手表記)。
+  // out/foreign_null_slug_candidates.md(指示書2)で高確度候補として特定。
+  { slug: "patchy-mix", nameJa: "パッチー・ミックス", nameEn: "Patchy Mix", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パッチー・ミックス", wikiTitleEn: "Patchy Mix", nickname: "ザ・ウィザード", aliases: ["パトリック・ミックス"] },
   { slug: "sabatello-danny", nameJa: "ダニー・サバテロ", nameEn: "Danny Sabatello", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ダニー・サバテロ", wikiTitleEn: "Danny Sabatello", nickname: "The Italian Gangster" },
   // RIZIN.19/RIZIN.20(2019年)のdata/rizinRecords.json側表記が「パトリッキー・
   // "ピットブル"・フレイレ」(本名フルネーム)のため、findFighterSlugByName
@@ -2160,6 +2162,9 @@ export const FIGHTERS: Fighter[] = [
       { date: "2020-09-19", opponent: "大尊伸光", result: "loss", method: "KO", event: "PROFESSIONAL SHOOTO 2020 Vol.6 Supported by ONE Championship  第1部", round: "R1 03:07" },
     ],
     needsReview: true,
+    // 長音符の有無だけの表記ゆれ(DEEP 81 IMPACT 2017-12-23の対戦相手表記)。
+    // out/foreign_null_slug_candidates.md(指示書2)で高確度候補として特定。
+    aliases: ["マックス・ザ・ボディー"],
   },
   {
     slug: "tyson-nobumitsu",
