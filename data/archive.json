@@ -1,5 +1,14 @@
 [
   {
+    "id": "encount-0",
+    "source": "other",
+    "title": "格闘技未経験“普通の大学生”、デビュー3年で元RIZIN王者撃破 人生を変えた朝倉未来との“出会い”",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1040863/",
+    "publishedAt": "2026-08-01T01:30:00.000Z",
+    "firstSeenAt": "2026-08-01T04:56:16.282Z"
+  },
+  {
     "id": "shooto-0",
     "source": "shooto",
     "title": "2026年8月度世界ランキング",
@@ -34,6 +43,15 @@
     "url": "https://mmaplanet.jp/234537",
     "publishedAt": "2026-08-01T00:34:04.000Z",
     "firstSeenAt": "2026-08-01T01:07:19.573Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.12：小林了平選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood12/interview_kobayashi.html",
+    "publishedAt": "2026-08-01T00:00:00.000Z",
+    "firstSeenAt": "2026-08-01T04:56:16.282Z"
   },
   {
     "id": "mmaplanet-2",
