@@ -395,8 +395,25 @@ const FIGHTER_BLOCK_VS = "([^|(（]+?)\\|?\\s*[(（]([^)）]*)[)）]\\s*(?:\\|?\
 // 存在しないbout(例: 樹季 vs 成本優良)も、この設計であれば正しく1件の
 // boutとして捕捉できる(「勝者」必須にすると当該boutがまるごと欠落するバグに
 // なるため、修斗/パンクラスでの反省を踏まえてbout捕捉とwinner抽出を分離した)。
+// 2026-08-01、DEEP CAGE IMPACT IN OSAKA 2022(7件・大会全体)で発見:
+// 次bout開始の判定(「|N.」「【」「文字列末尾」)が、次boutの見出し行
+// (「セミファイナル DEEP JEWELS 49kg以下 5分3R」等、「N.」形式の番号を
+// 持たない地の文見出し)を考慮していなかったため、method欄のlazy captureが
+// 次見出し丸ごとを飲み込むまで確定せず、そのまま「勝者：」抽出ロジックが
+// 「勝者：Name」を文頭付近で検出して「それより前は空」と誤判定し、method欄
+// が実質空になっていた。次bout番号の直前に短い見出し文が挟まっていてもよい
+// ことを先読みに明示し、method欄のキャプチャ自体が見出しへ食い込まないよう
+// にする。見出し文字数の上限はGroup2/F9の30文字ではなく50文字にする
+// (実データで「セミファイナル DEEP JEWELS 49kg以下 5分3R」(32文字)が
+// 30文字上限だと弾かれ、見出し全体がmethod欄に混入したまま残る実例で判明)。
+// 「【試合結果】」見出しを持たないページ(本イベントがまさにそう)では
+// scopeToResultsSectionが本文を絞り込めず、最終boutのmethod欄が「文字列
+// 末尾」まで到達する前に、DEEP公式テンプレート共通のPHP警告文
+// (「Warning: Use of undefined constant za...」、全期間で確認済みの
+// サイト全体の既知バグ由来の定型文言)を先に飲み込んでしまう。この定型文言
+// も次bout開始と同じ「もうbout本文ではない」の境界として先読みに加える。
 const BOUT_RE_GROUP1 = new RegExp(
-  `(\\d+)\\.\\s*(?:\\|\\s*)*${FIGHTER_BLOCK_VS}\\s*(?:\\|\\s*)*VS(?:&nbsp;|\\s)*(?:\\|\\s*)*${FIGHTER_BLOCK_VS}\\s*(?:\\|\\s*)+([\\s\\S]*?)(?=\\|\\s*(?:\\d{1,2}\\.\\|?[^\\d|]|【|$))`,
+  `(\\d+)\\.\\s*(?:\\|\\s*)*${FIGHTER_BLOCK_VS}\\s*(?:\\|\\s*)*VS(?:&nbsp;|\\s)*(?:\\|\\s*)*${FIGHTER_BLOCK_VS}\\s*(?:\\|\\s*)+([\\s\\S]*?)(?=\\|\\s*(?:[^|]{0,50}\\|\\s*)?(?:\\d{1,2}\\.\\|?[^\\d|]|【|Warning|$))`,
   "g"
 );
 const WINNER_HINT_RE = /勝者[:：]?\s*\|?\s*([^\s|]+)/;
@@ -670,7 +687,19 @@ function extractVsBouts(bodyClean: string): DeepRawBout[] {
   while ((m = BOUT_RE_GROUP1.exec(bodyClean))) {
     const trailingRaw = m[6].replace(/\|/g, " ").replace(/\s+/g, " ").trim();
     const winnerMatch = trailingRaw.match(WINNER_HINT_RE);
-    const methodRaw = winnerMatch ? trailingRaw.slice(0, winnerMatch.index).trim() : trailingRaw;
+    // 「決着方法 勝者 Name」(勝者ヒントが末尾寄り)の語順が前提だったが、
+    // 2026-08-01、DEEP CAGE IMPACT IN OSAKA 2022で「勝者：Name 決着方法」
+    // (勝者ヒントが文頭)の語順も実在すると判明。勝者ヒントが文頭(index 0)
+    // にある場合はヒントの直後からを決着方法とみなす(既存の「文頭から
+    // ヒント直前まで」ロジックのままだと決着方法が常に空になっていた)。
+    let methodRaw: string;
+    if (!winnerMatch) {
+      methodRaw = trailingRaw;
+    } else if (winnerMatch.index === 0) {
+      methodRaw = trailingRaw.slice(winnerMatch.index + winnerMatch[0].length).trim();
+    } else {
+      methodRaw = trailingRaw.slice(0, winnerMatch.index).trim();
+    }
     bouts.push({
       format: "group1_vs",
       boutNumber: Number(m[1]),
