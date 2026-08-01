@@ -10443,10 +10443,10 @@
       },
       {
         "date": "2023-09-30",
-        "opponent": "坪内一将",
+        "opponent": "ジョビン",
         "result": "loss",
-        "method": "5分2R終了 判定0-3",
-        "event": "GLADIATOR 023",
+        "method": "2R 2:03 対応の悪さにより無効試合",
+        "event": "DEEP伝説のネタ物祭り",
         "round": "R2"
       },
       {
@@ -15422,15 +15422,138 @@
     "age": 41
   },
   "arato-hidetaka": {
-    "wins": 0,
-    "losses": 0,
+    "wins": 11,
+    "losses": 4,
     "draws": 0,
-    "ko": 0,
+    "ko": 7,
     "sub": 0,
-    "decision": 0,
-    "history": [],
-    "live": false,
-    "noRecordData": true
+    "decision": 4,
+    "history": [
+      {
+        "date": "2026-03-20",
+        "opponent": "酒井リョウ",
+        "result": "loss",
+        "method": "1R 3:26 TKO（パウンド）",
+        "event": "DEEP 130 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2025-09-14",
+        "opponent": "べ・ドンヒョン",
+        "result": "loss",
+        "method": "3R 4:59 TKO（グラウンドパンチ）",
+        "event": "GRACHAN 77<br/ >【GRACHANヘビー級タイトルマッチ】",
+        "round": "R3"
+      },
+      {
+        "date": "2025-06-14",
+        "opponent": "シナ・カリミアン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN LANDMARK 11",
+        "round": "R3",
+        "weightClass": "120.0kg契約"
+      },
+      {
+        "date": "2025-02-02",
+        "opponent": "大場慎之助",
+        "result": "win",
+        "method": "2R 3:06 TKO（左ヒザ→パウンド）",
+        "event": "GRACHAN 72",
+        "round": "R2"
+      },
+      {
+        "date": "2024-07-25",
+        "opponent": "プリンス・アウンアラー",
+        "result": "loss",
+        "method": "1R 3:21 TKO（右ストレート→パウンド）",
+        "event": "HMMA 19<br/ >【HMMAヘビー級タイトルマッチ】",
+        "round": "R1"
+      },
+      {
+        "date": "2023-10-01",
+        "opponent": "貴賢神",
+        "result": "win",
+        "method": "2R 4:49 TKO（スタンドパンチ連打）",
+        "event": "RIZIN LANDMARK 6",
+        "round": "R2"
+      },
+      {
+        "date": "2023-02-26",
+        "opponent": "ハシモト・ブランドン",
+        "result": "win",
+        "method": "1R 4:52 TKO（グラウンドパンチ）",
+        "event": "GRACHAN 60<br/ >【初代GRACHAN無差別級王座決定トーナメント決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2022-12-04",
+        "opponent": "桜井隆多",
+        "result": "win",
+        "method": "2R 4:48 負傷判定3-0",
+        "event": "GRACHAN 58<br/ >【初代GRACHAN無差別級王座決定トーナメント準決勝】",
+        "round": "R2"
+      },
+      {
+        "date": "2022-08-07",
+        "opponent": "岡本純一朗",
+        "result": "win",
+        "method": "1R 3:10 TKO（グラウンドパンチ）",
+        "event": "GRACHAN 56<br/ >【初代GRACHAN無差別級王座決定トーナメント1回戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2022-05-15",
+        "opponent": "瓜田幸造",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "GRACHAN 55",
+        "round": "R2"
+      },
+      {
+        "date": "2021-12-19",
+        "opponent": "ラデック",
+        "result": "win",
+        "method": "1R 3:54 TKO（グラウンドパンチ）",
+        "event": "GRACHAN 52",
+        "round": "R1"
+      },
+      {
+        "date": "2021-08-07",
+        "opponent": "田馬場貴裕",
+        "result": "win",
+        "method": "1R 1:08 TKO（右フック→パウンド）",
+        "event": "GRACHAN 49",
+        "round": "R1"
+      },
+      {
+        "date": "2021-04-25",
+        "opponent": "誠悟",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "GRACHAN 47",
+        "round": "R2"
+      },
+      {
+        "date": "2020-08-22",
+        "opponent": "Daniel Doerrer",
+        "result": "win",
+        "method": "3分3R終了 判定3-0",
+        "event": "FMD 19: Fight Circus Vol. 1",
+        "round": "R3"
+      },
+      {
+        "date": "2019-08-31",
+        "opponent": "Stan Tskitishvili",
+        "result": "win",
+        "method": "2R 3:00 TKO（膝蹴り）",
+        "event": "FMD 17: Mad Nutt's Fury SOI",
+        "round": "R2"
+      }
+    ],
+    "live": true,
+    "birthPlace": "兵庫県",
+    "age": 38
   },
   "terasaki-shoryu": {
     "wins": 0,
@@ -15836,6 +15959,481 @@
     "live": false,
     "noRecordData": true
   },
+  "china-sukai": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
+  "fukuda-machi": {
+    "wins": 11,
+    "losses": 2,
+    "draws": 0,
+    "ko": 2,
+    "sub": 5,
+    "decision": 4,
+    "history": [
+      {
+        "date": "2026-05-28",
+        "opponent": "アネーリャ・トクトゴノヴァ",
+        "result": "win",
+        "method": "2R 1:53 TKO（パウンド）",
+        "event": "Road to UFC Season 5 【女子ストロー級トーナメント1回戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2026-02-23",
+        "opponent": "キム・ダンビ",
+        "result": "win",
+        "method": "1R 0:58 ギロチンチョーク",
+        "event": "DEEP JEWELS 52",
+        "round": "R1"
+      },
+      {
+        "date": "2025-09-07",
+        "opponent": "パク・シウ",
+        "result": "win",
+        "method": "5分3R終了 判定3-2",
+        "event": "DEEP JEWELS 50 【DEEP JEWELSストロー級タイトルマッチ】",
+        "round": "R3"
+      },
+      {
+        "date": "2025-06-14",
+        "opponent": "ソルト",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN LANDMARK 11",
+        "round": "R3",
+        "weightClass": "52.5kg契約"
+      },
+      {
+        "date": "2025-03-30",
+        "opponent": "パク・ソヨン",
+        "result": "win",
+        "method": "2R 4:04 TKO（パウンド）",
+        "event": "RIZIN.50",
+        "round": "R2",
+        "weightClass": "52.0kg契約"
+      },
+      {
+        "date": "2024-11-23",
+        "opponent": "アム・ザ・ロケット",
+        "result": "win",
+        "method": "2R 2:27 ヒールフック",
+        "event": "DEEP JEWELS 47",
+        "round": "R2"
+      },
+      {
+        "date": "2024-09-08",
+        "opponent": "スーリ・マンフレディ",
+        "result": "win",
+        "method": "2R 2:43 肩固め",
+        "event": "DEEP JEWELS 46",
+        "round": "R2"
+      },
+      {
+        "date": "2024-05-26",
+        "opponent": "パク・シウ",
+        "result": "loss",
+        "method": "5分3R終了 判定1-4",
+        "event": "DEEP JEWELS 45 【DEEP JEWELS ストロー級暫定王座決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-11-23",
+        "opponent": "松田亜莉紗",
+        "result": "loss",
+        "method": "5分3R終了 判定2-3",
+        "event": "DEEP JEWELS 43 【DEEP JEWELS ストロー級暫定王座決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-10-01",
+        "opponent": "渡辺彩華",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
+        "event": "RIZIN LANDMARK 6",
+        "round": "R3"
+      },
+      {
+        "date": "2023-05-28",
+        "opponent": "キム・ユジョン",
+        "result": "win",
+        "method": "1R 2:42 アメリカーナ",
+        "event": "DEEP JEWELS 41",
+        "round": "R1"
+      },
+      {
+        "date": "2023-02-18",
+        "opponent": "HIME",
+        "result": "win",
+        "method": "1R 4:55 リアネイキッドチョーク",
+        "event": "DEEP JEWELS 40",
+        "round": "R1"
+      },
+      {
+        "date": "2022-11-23",
+        "opponent": "ARAMI",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP JEWELS 39",
+        "round": "R2"
+      }
+    ],
+    "live": true
+  },
+  "saito-momoko": {
+    "wins": 4,
+    "losses": 2,
+    "draws": 0,
+    "ko": 3,
+    "sub": 0,
+    "decision": 1,
+    "history": [
+      {
+        "date": "2026-02-23",
+        "opponent": "樹季",
+        "result": "win",
+        "method": "2R 3:13 TKO（パウンド）",
+        "event": "DEEP JEWELS 52 【DEEP JEWELS バンタム級王座決定戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2024-11-23",
+        "opponent": "ゆりな",
+        "result": "win",
+        "method": "2R 4:14 TKO（パウンド）",
+        "event": "DEEP JEWELS 47",
+        "round": "R2"
+      },
+      {
+        "date": "2024-09-08",
+        "opponent": "MANA",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP JEWELS 46",
+        "round": "R2"
+      },
+      {
+        "date": "2024-05-26",
+        "opponent": "Te-a",
+        "result": "win",
+        "method": "2R 3:39 TKO（パウンド）",
+        "event": "DEEP JEWELS 45",
+        "round": "R2"
+      },
+      {
+        "date": "2024-03-24",
+        "opponent": "奥富夕夏",
+        "result": "nc",
+        "method": "無効試合（体重超過）",
+        "event": "DEEP JEWELS 44",
+        "round": "—"
+      },
+      {
+        "date": "2023-11-22",
+        "opponent": "栗山葵",
+        "result": "loss",
+        "method": "1R 2:51 TKO（パウンド）",
+        "event": "DEEP JEWELS 43",
+        "round": "R1"
+      },
+      {
+        "date": "2023-09-10",
+        "opponent": "NØRI",
+        "result": "loss",
+        "method": "5分2R終了 判定1-2",
+        "event": "DEEP JEWELS 42",
+        "round": "R2"
+      }
+    ],
+    "live": true
+  },
+  "higashi-yoko": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
+  "nakai-rin": {
+    "wins": 29,
+    "losses": 2,
+    "draws": 1,
+    "ko": 10,
+    "sub": 12,
+    "decision": 7,
+    "history": [
+      {
+        "date": "2026-05-24",
+        "opponent": "奥富夕夏",
+        "result": "win",
+        "method": "5分3R終了 判定5-0",
+        "event": "DEEP JEWELS 53 【DEEP JEWELSフライ級タイトルマッチ】",
+        "round": "R3"
+      },
+      {
+        "date": "2024-11-23",
+        "opponent": "鈴木\"BOSS\"遥",
+        "result": "win",
+        "method": "1R 3:32 TKO（左フック→パウンド）",
+        "event": "DEEP JEWELS 47",
+        "round": "R1"
+      },
+      {
+        "date": "2024-05-26",
+        "opponent": "HIME",
+        "result": "win",
+        "method": "3R 1:33 ギロチンチョーク",
+        "event": "DEEP JEWELS 45",
+        "round": "R3"
+      },
+      {
+        "date": "2023-02-18",
+        "opponent": "栗山葵",
+        "result": "win",
+        "method": "2R 4:31 リアネイキッドチョーク",
+        "event": "DEEP JEWELS 40",
+        "round": "R2"
+      },
+      {
+        "date": "2022-05-08",
+        "opponent": "杉山しずか",
+        "result": "win",
+        "method": "1R 4:53 腕ひしぎ十字固め",
+        "event": "DEEP JEWELS 37 【DEEP JEWELSフライ級グランプリ 決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2022-05-08",
+        "opponent": "Te-a",
+        "result": "win",
+        "method": "2R 4:43 腕ひしぎ十字固め",
+        "event": "DEEP JEWELS 37 【DEEP JEWELSフライ級グランプリ 準決勝】",
+        "round": "R2"
+      },
+      {
+        "date": "2022-03-12",
+        "opponent": "藤田翔子",
+        "result": "win",
+        "method": "2R 4:38 TKO（パウンド）",
+        "event": "DEEP JEWELS 36 【DEEP JEWELSフライ級グランプリ 1回戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2019-10-22",
+        "opponent": "ダイヤモンドローズ・ザ・ロケット",
+        "result": "win",
+        "method": "1R 3:20 腕ひしぎ十字固め",
+        "event": "DEEP JEWELS 26",
+        "round": "R1"
+      },
+      {
+        "date": "2019-06-09",
+        "opponent": "ゲオチャイ",
+        "result": "win",
+        "method": "2R 1:56 TKO（パウンド）",
+        "event": "DEEP JEWELS 24",
+        "round": "R2"
+      },
+      {
+        "date": "2018-02-24",
+        "opponent": "キム・ヨンギ",
+        "result": "win",
+        "method": "1R 4:37 TKO（マウントパンチ）",
+        "event": "DEEP 82 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2016-12-29",
+        "opponent": "村田夏南子",
+        "result": "win",
+        "method": "3R 1:16 リアネイキッドチョーク",
+        "event": "RIZIN.3",
+        "round": "R3"
+      },
+      {
+        "date": "2016-11-13",
+        "opponent": "シャーリーン・ワット",
+        "result": "win",
+        "method": "2R 3:43 TKO（マウントパンチ）",
+        "event": "PANCRASE 282",
+        "round": "R2"
+      },
+      {
+        "date": "2016-07-24",
+        "opponent": "ライカ",
+        "result": "win",
+        "method": "3R 2:43 TKO（グラウンドの肘打ち）",
+        "event": "PANCRASE 279",
+        "round": "R3"
+      },
+      {
+        "date": "2016-03-19",
+        "opponent": "レスリー・スミス",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "UFC Fight Night: Hunt vs. Mir",
+        "round": "R3"
+      },
+      {
+        "date": "2014-09-20",
+        "opponent": "ミーシャ・テイト",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "UFC Fight Night: Hunt vs. Nelson",
+        "round": "R3"
+      },
+      {
+        "date": "2014-05-11",
+        "opponent": "サラ・ダレリオ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PANCRASE 258",
+        "round": "R3"
+      },
+      {
+        "date": "2013-09-29",
+        "opponent": "タラ・ラローサ",
+        "result": "win",
+        "method": "5分3R終了 判定2-0",
+        "event": "PANCRASE 252",
+        "round": "R3"
+      },
+      {
+        "date": "2013-05-19",
+        "opponent": "ブレンダ・ゴンザレス",
+        "result": "win",
+        "method": "1R 4:47 チョークスリーパー",
+        "event": "PANCRASE 247",
+        "round": "R1"
+      },
+      {
+        "date": "2012-12-01",
+        "opponent": "ダニエル・ウェスト",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PANCRASE 2012 PROGRESS TOUR 【バンタム級クィーン・オブ・パンクラシスト決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2012-09-01",
+        "opponent": "超弁慶",
+        "result": "win",
+        "method": "2R 3:45 TKO（パウンド）",
+        "event": "PANCRASE 2012 PROGRESS TOUR 【バンタム級クィーン・オブ・パンクラシスト決定トーナメント Aブロック】",
+        "round": "R2"
+      },
+      {
+        "date": "2012-05-20",
+        "opponent": "木村響子",
+        "result": "win",
+        "method": "1R 4:32 腕ひしぎ十字固め",
+        "event": "PANCRASE 2012 PROGRESS TOUR",
+        "round": "R1"
+      },
+      {
+        "date": "2011-09-04",
+        "opponent": "ダニエル・ウェスト",
+        "result": "draw",
+        "method": "5分3R終了 判定1-1",
+        "event": "PANCRASE 2011 IMPRESSIVE TOUR",
+        "round": "R3"
+      },
+      {
+        "date": "2010-12-30",
+        "opponent": "HARI",
+        "result": "win",
+        "method": "1R 2:09 V1アームロック",
+        "event": "戦極 Soul of Fight",
+        "round": "R1"
+      },
+      {
+        "date": "2010-11-28",
+        "opponent": "佐藤瑞穂",
+        "result": "win",
+        "method": "1R終了時 TKO（ドクターストップ：左目の眼窩底骨折の疑い）",
+        "event": "VALKYRIE 08 【女子無差別級初代チャンピオン決定トーナメント 決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2010-09-26",
+        "opponent": "超弁慶",
+        "result": "win",
+        "method": "1R 2:40 腕ひしぎ十字固め",
+        "event": "VALKYRIE 07 【女子無差別級初代チャンピオン決定トーナメント 準決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2010-06-19",
+        "opponent": "藪下めぐみ",
+        "result": "win",
+        "method": "3分3R終了 判定3-0",
+        "event": "VALKYRIE 06",
+        "round": "R3"
+      },
+      {
+        "date": "2010-02-11",
+        "opponent": "佐藤瑞穂",
+        "result": "win",
+        "method": "3R 1:50 チキンウィングアームロック",
+        "event": "VALKYRIE 04",
+        "round": "R3"
+      },
+      {
+        "date": "2008-12-07",
+        "opponent": "WINDY智美",
+        "result": "win",
+        "method": "1R 1:33 TKO（マウントパンチ）",
+        "event": "PANCRASE 2008 SHINING TOUR",
+        "round": "R1"
+      },
+      {
+        "date": "2008-04-25",
+        "opponent": "竹下嘉奈子",
+        "result": "win",
+        "method": "5分2R終了 判定2-1",
+        "event": "SMACKGIRL WORLD ReMix TOURNAMENT 2008 準決勝",
+        "round": "R2"
+      },
+      {
+        "date": "2007-09-06",
+        "opponent": "アシャ・ザ・バシャ",
+        "result": "win",
+        "method": "1R 1:03 腕ひしぎ十字固め",
+        "event": "SMACKGIRL 2007 〜女王たちの一番熱い夏〜",
+        "round": "R1"
+      },
+      {
+        "date": "2007-05-19",
+        "opponent": "真武和恵",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "SMACKGIRL 2007 〜最強はUSAだと女王は言った〜",
+        "round": "R2"
+      },
+      {
+        "date": "2006-10-01",
+        "opponent": "伊藤あすか",
+        "result": "win",
+        "method": "1R 1:25 TKO（ドクターストップ）",
+        "event": "PANCRASE 2006 BLOW TOUR",
+        "round": "R1"
+      }
+    ],
+    "live": true,
+    "birthPlace": "愛媛県",
+    "age": 39
+  },
   "tanoue-koyuru": {
     "wins": 0,
     "losses": 0,
@@ -16230,6 +16828,17 @@
     "live": true,
     "birthPlace": "兵庫県神戸市",
     "age": 27
+  },
+  "taito-rangers": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
   },
   "takaoka-hiroki": {
     "wins": 0,
@@ -21553,7 +22162,7 @@
     "live": true,
     "nickname": "BRAVE CFの弾丸レスラー",
     "birthPlace": "イリノイ州シカゴ",
-    "age": 33
+    "age": 34
   },
   "gustavo-luis": {
     "wins": 16,
@@ -22197,7 +22806,7 @@
         "opponent": "マゴメド・アル・アブドゥラ",
         "result": "win",
         "method": "2R 3:40 リアネイキドチョーク",
-        "event": "45",
+        "event": "UAE Warriors 45",
         "round": "R2"
       },
       {
@@ -38732,178 +39341,223 @@
     "live": false
   },
   "salt": {
-    "wins": 2,
-    "losses": 4,
+    "wins": 5,
+    "losses": 6,
     "draws": 0,
     "ko": 1,
     "sub": 0,
-    "decision": 1,
+    "decision": 4,
     "history": [
       {
-        "date": "2025-03-16",
-        "opponent": "パクボヒョン",
+        "date": "2025-06-14",
+        "opponent": "万智",
         "result": "loss",
-        "method": "判定 3-0",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN LANDMARK 11",
+        "round": "R3",
+        "weightClass": "52.5kg契約"
+      },
+      {
+        "date": "2025-03-16",
+        "opponent": "パク・ボヒョン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
         "event": "PROFESSIONAL SHOOTO 2025 Vol.2",
-        "round": ""
+        "round": "R3"
+      },
+      {
+        "date": "2024-09-29",
+        "opponent": "藤野恵実",
+        "result": "win",
+        "method": "5分5R終了 判定3-0",
+        "event": "PANCRASE 347 【ストロー級クィーン・オブ・パンクラス・チャンピオンシップ】",
+        "round": "R5"
       },
       {
         "date": "2024-05-19",
-        "opponent": "ハイライウーシャアモー",
+        "opponent": "ハイライ・ウサモ",
         "result": "loss",
-        "method": "判定 1-2",
-        "event": "【第2部】修斗×YFU 7対7 日中対抗戦",
-        "round": ""
+        "method": "5分3R終了 判定1-2",
+        "event": "PROFESSIONAL SHOOTO 2024 vol.4 【修斗vsYFU 日中7対7 対抗戦 三将戦】",
+        "round": "R3"
       },
       {
-        "date": "2023-12-02",
-        "opponent": "ホジュギョン",
+        "date": "2023-12-01",
+        "opponent": "チュ・ギョンホ",
         "result": "win",
-        "method": "TKO/レフェリーストップ",
-        "event": "COLORS Produce by SHOOTO Vol.2 “FIGHT&MOSH”",
-        "round": "R1 02:37"
+        "method": "1R 2:37 TKO (パンチと膝)",
+        "event": "PROFESSIONAL SHOOTO COLORS vol.2",
+        "round": "R1"
+      },
+      {
+        "date": "2023-06-24",
+        "opponent": "大島沙緒里",
+        "result": "loss",
+        "method": "1R 1:16 Vクロスアームロック",
+        "event": "RIZIN.43",
+        "round": "R1"
+      },
+      {
+        "date": "2023-04-30",
+        "opponent": "KAREN",
+        "result": "win",
+        "method": "5分5R終了 判定3-0",
+        "event": "PANCRASE 333 【ストロー級クイーン・オブ・パンクラス・チャンピオンシップ】",
+        "round": "R5"
+      },
+      {
+        "date": "2022-12-25",
+        "opponent": "KAREN",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PANCRASE 330",
+        "round": "R3"
       },
       {
         "date": "2022-07-17",
         "opponent": "柳仙香",
         "result": "loss",
-        "method": "S/腕十字固め",
-        "event": "PROFESSIONAL SHOOTO 2022 Vol.5",
+        "method": "2R 2:06 腕挫十字固",
+        "event": "PROFESSIONAL SHOOTO 2022 Vol.5 【2022年度新人王決定トーナメント一回戦 女子ストロー級】",
         "round": "R2"
       },
       {
         "date": "2022-06-05",
         "opponent": "和田千聖",
         "result": "win",
-        "method": "判定 3-0",
-        "event": "北海道大会",
-        "round": ""
+        "method": "5分2R終了 判定3-0",
+        "event": "SHOOTO 2022 Hokkaido",
+        "round": "R2"
       },
       {
         "date": "2022-01-16",
         "opponent": "杉本恵",
         "result": "loss",
-        "method": "判定 3-0",
+        "method": "5分2R終了 判定0-3",
         "event": "PROFESSIONAL SHOOTO 2022 開幕戦",
-        "round": ""
+        "round": "R2"
       }
     ],
-    "live": false
+    "live": true,
+    "birthPlace": "北海道室蘭市",
+    "age": 35
   },
   "karen": {
     "wins": 10,
     "losses": 3,
     "draws": 0,
     "ko": 4,
-    "sub": 0,
+    "sub": 1,
     "decision": 5,
     "history": [
       {
         "date": "2025-12-21",
         "opponent": "本野美樹",
         "result": "loss",
-        "method": "判定/0-3",
-        "event": "PANCRASE 360",
-        "round": "R5 5:00"
+        "method": "5分5R終了 判定0-3",
+        "event": "PANCRASE 360 【ストロー級クイーン・オブ・パンクラス・チャンピオンシップ】",
+        "round": "R5"
       },
       {
         "date": "2024-09-29",
         "opponent": "エジナ・トラキナス",
         "result": "win",
-        "method": "判定/3-0",
+        "method": "5分3R終了 判定3-0",
         "event": "PANCRASE 347",
-        "round": "R3 5:00"
+        "round": "R3"
       },
       {
         "date": "2024-04-29",
         "opponent": "ホン・イェリン",
         "result": "win",
-        "method": "判定/3-0",
+        "method": "5分3R終了 判定3-0",
         "event": "PANCRASE 342",
-        "round": "R3 5:00"
+        "round": "R3"
       },
       {
         "date": "2023-12-02",
-        "opponent": "パクソヨン",
+        "opponent": "パク・ソヨン",
         "result": "win",
-        "method": "TKO/レフェリーストップ",
-        "event": "COLORS Produce by SHOOTO Vol.2 “FIGHT&MOSH”",
-        "round": "R1 04:44"
+        "method": "1R 4:44 TKO（パウンド）",
+        "event": "プロフェッショナル修斗公式戦 COLORS Vol.2",
+        "round": "R1"
       },
       {
         "date": "2023-09-24",
         "opponent": "高本千代",
         "result": "win",
-        "method": "判定/3-0",
+        "method": "5分3R終了 判定3-0",
         "event": "PANCRASE 337",
-        "round": "R3 5:00"
+        "round": "R3"
       },
       {
         "date": "2023-04-30",
         "opponent": "ソルト",
         "result": "loss",
-        "method": "判定/0-3",
-        "event": "PANCRASE 333",
-        "round": "R5 5:00"
+        "method": "5分5R終了 判定0-3",
+        "event": "PANCRASE 333 【ストロー級クイーン・オブ・パンクラス・チャンピオンシップ】",
+        "round": "R5"
       },
       {
         "date": "2022-12-25",
         "opponent": "ソルト",
         "result": "loss",
-        "method": "判定/0-3",
+        "method": "5分3R終了 判定0-3",
         "event": "PANCRASE 330",
-        "round": "R3 5:00"
+        "round": "R3"
       },
       {
         "date": "2022-09-11",
         "opponent": "宝珠山桃花",
         "result": "win",
-        "method": "判定/3-0",
+        "method": "5分3R終了 判定3-0",
         "event": "PANCRASE 329",
-        "round": "R3 5:00"
+        "round": "R3"
       },
       {
         "date": "2022-03-21",
         "opponent": "藤野恵実",
         "result": "win",
-        "method": "TKO/肘による額のカット",
-        "event": "PANCRASE 326",
-        "round": "R4 3:18"
+        "method": "4R 3:18 TKO（レフェリーストップ：カットでの出血）",
+        "event": "PANCRASE 326 【ストロー級クイーン・オブ・パンクラス・チャンピオンシップ】",
+        "round": "R4"
       },
       {
         "date": "2021-10-17",
         "opponent": "新谷琴美",
         "result": "win",
-        "method": "TKO/肘によるカット",
+        "method": "1R 1:39 TKO（ドクターストップ：カットでの出血）",
         "event": "PANCRASE 324",
-        "round": "R1 1:39"
+        "round": "R1"
       },
       {
         "date": "2021-06-27",
         "opponent": "EDGE",
         "result": "win",
-        "method": "TKO/グラウンドのパンチ",
+        "method": "3R 1:10 TKO（グラウンドパンチ）",
         "event": "PANCRASE 322",
-        "round": "R3 1:10"
+        "round": "R3"
       },
       {
         "date": "2020-10-25",
         "opponent": "青木文菜",
         "result": "win",
-        "method": "タップアウト/RNC",
+        "method": "1R 4:22 チョークスリーパー",
         "event": "PANCRASE 319",
-        "round": "R1 4:22"
+        "round": "R1"
       },
       {
         "date": "2019-12-08",
         "opponent": "DIANA",
         "result": "win",
-        "method": "判定/0-3",
-        "event": "PANCRASE311",
-        "round": "R3 3:00"
+        "method": "3分3R終了 判定3-0",
+        "event": "PANCRASE 311",
+        "round": "R3"
       }
     ],
-    "live": false
+    "live": true,
+    "birthPlace": "東京都",
+    "age": 22
   },
   "takada-atsuhi": {
     "wins": 3,
