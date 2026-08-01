@@ -606,32 +606,42 @@ export default async function FighterPage({
             フィニッシュ率をこちらにも出す(classifyMethodJa経由、
             computeMultiOrgRates参照)。 */}
         {SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord && multiOrgRates && (
-          <div className="fighter-stats-grid">
-            <div className="fighter-stat-card">
-              <div className="fighter-stat-num">
-                {multiOrgRecord.wins}-{multiOrgRecord.losses}-{multiOrgRecord.draws}
+          <>
+            <div className="fighter-stats-grid">
+              <div className="fighter-stat-card">
+                <div className="fighter-stat-num">
+                  {multiOrgRecord.wins}-{multiOrgRecord.losses}-{multiOrgRecord.draws}
+                </div>
+                <div className="fighter-stat-label">
+                  {MULTI_ORG_RECORD_LABEL}
+                  {" "}
+                  <a href="/methodology/records" style={{ color: "var(--muted)", textDecoration: "underline" }}>
+                    集計について
+                  </a>
+                </div>
               </div>
-              <div className="fighter-stat-label">
-                {MULTI_ORG_RECORD_LABEL}
-                {" "}
-                <a href="/methodology/records" style={{ color: "var(--muted)", textDecoration: "underline" }}>
-                  集計について
-                </a>
-              </div>
+              {multiOrgRates.winRate !== null && (
+                <div className="fighter-stat-card">
+                  <div className="fighter-stat-num">{multiOrgRates.winRate}%</div>
+                  <div className="fighter-stat-label">勝率</div>
+                </div>
+              )}
+              {multiOrgRates.finishRate !== null && (
+                <div className="fighter-stat-card">
+                  <div className="fighter-stat-num">{multiOrgRates.finishRate}%</div>
+                  <div className="fighter-stat-label">フィニッシュ率</div>
+                </div>
+              )}
             </div>
-            {multiOrgRates.winRate !== null && (
-              <div className="fighter-stat-card">
-                <div className="fighter-stat-num">{multiOrgRates.winRate}%</div>
-                <div className="fighter-stat-label">勝率</div>
-              </div>
+            {/* 指示書(2026-08-01): 1行目(通算戦績)が無く2行目(4団体通算)のみの
+                選手向けの注記。suppressNoRecordRowは既存の判定(1行目データなし
+                かつ2行目が取れている)をそのまま再利用する。 */}
+            {suppressNoRecordRow && (
+              <p style={{ fontSize: 12, color: "var(--muted)", marginTop: 4 }}>
+                他団体・海外での試合は含みません
+              </p>
             )}
-            {multiOrgRates.finishRate !== null && (
-              <div className="fighter-stat-card">
-                <div className="fighter-stat-num">{multiOrgRates.finishRate}%</div>
-                <div className="fighter-stat-label">フィニッシュ率</div>
-              </div>
-            )}
-          </div>
+          </>
         )}
 
         {/* 勝ち方と負け方(バタフライ・CSSのみ)。historyのraw method再解析、
