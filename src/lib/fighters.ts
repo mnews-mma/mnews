@@ -1171,7 +1171,11 @@ export const FIGHTERS: Fighter[] = [
   // 魚井は Uoi/Uonoi で揺れ(確度低め)→ needsReview
   { slug: "uoi-fullswing", nameJa: "魚井フルスイング", nameEn: "Fullswing Uoi", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // --- 第2弾: 読み確定・高信頼7名(複数ソース一致) ---
-  { slug: "arato-hidetaka", nameJa: "荒東英貴", nameEn: "Hidetaka Arato", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // wikiTitleJa明示指定(2026-08-01、指示書W W4検出漏れ疑い): デフォルトタイトル
+  // 推測("荒東英貴")では記事が見つからず常時noRecordDataだった。実際のja-wiki
+  // 記事タイトルは引用符付きニックネーム入りの「荒東"怪獣キラー"英貴」(hibino-junya
+  // と同型の不具合。実測で戦績11勝4敗・history15件を確認済み)。
+  { slug: "arato-hidetaka", nameJa: "荒東英貴", nameEn: "Hidetaka Arato", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: '荒東"怪獣キラー"英貴' },
   // slug/nameEn修正(2026-07-18): 「昇龍」の読みは「しょうりゅう」(旧
   // terasaki-ryuは「昇」が欠落した誤読み、MMAPLANETで確認)。旧slugは
   // fighterSlugRedirects.tsに恒久リダイレクトとして残す。
@@ -2825,7 +2829,15 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-06-05", opponent: "和田千聖", result: "win", method: "判定 3-0", event: "北海道大会", round: "" },
       { date: "2022-01-16", opponent: "杉本恵", result: "loss", method: "判定 3-0", event: "PROFESSIONAL SHOOTO 2022 開幕戦", round: "" },
     ],
+    // wikiTitleJa明示指定(2026-08-01、指示書W B分類): デフォルトタイトル
+    // 推測("ソルト")は曖昧さ回避ページに解決してしまい(「塩」「暗号のsalt」
+    // 「映画」等の一覧)、記事あり・戦績表なし(recordbox無し)と誤分類されていた。
+    // 実際の記事は「ソルト (格闘家)」で、戦績表を持つ(実測5勝6敗・history11件)。
+    // 反映後は上記の手動入力(needsReview分・2勝4敗)より件数が多いWikipedia側の
+    // 戦績に置き換わる(このフィールド自体はrecordFromResults無効時もwiki解決が
+    // 優先されるresolveFighter()の仕様どおり)。
     needsReview: true,
+    wikiTitleJa: "ソルト (格闘家)",
   },
   {
     slug: "karen",
@@ -2855,7 +2867,12 @@ export const FIGHTERS: Fighter[] = [
       { date: "2020-10-25", opponent: "青木文菜", result: "win", method: "タップアウト/RNC", event: "PANCRASE 319", round: "R1 4:22" },
       { date: "2019-12-08", opponent: "DIANA", result: "win", method: "判定/0-3", event: "PANCRASE311", round: "R3 3:00" },
     ],
+    // wikiTitleJa明示指定(2026-08-01、指示書W B分類・曖昧さ回避付き): デフォルト
+    // タイトル推測("KAREN")は曖昧さ回避ページに解決してしまい記事あり・
+    // 未使用と分類されていた。実際の記事は「KAREN (格闘家)」(実測10勝3敗・
+    // history13件で上記手動入力と一致することを確認済み)。
     needsReview: true,
+    wikiTitleJa: "KAREN (格闘家)",
   },
   {
     slug: "takada-atsuhi",
