@@ -1,5 +1,59 @@
 [
   {
+    "id": "shooto-0",
+    "source": "shooto",
+    "title": "2026年8月度世界ランキング",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/08/01/post-51300/",
+    "publishedAt": "2026-08-01T01:01:30.000Z",
+    "firstSeenAt": "2026-08-01T01:07:19.573Z"
+  },
+  {
+    "id": "shooto-1",
+    "source": "shooto",
+    "title": "2026年8月度環太平洋ランキング",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/08/01/post-51298/",
+    "publishedAt": "2026-08-01T01:00:02.000Z",
+    "firstSeenAt": "2026-08-01T01:07:19.573Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【PFL2026#11】ウスマン・ヌルマゴメドフ強し！右ハイを効かせてコーガンをパウンドアウトし、王座防衛",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/234559",
+    "publishedAt": "2026-08-01T00:50:31.000Z",
+    "firstSeenAt": "2026-08-01T01:07:19.573Z"
+  },
+  {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【PFL2026#11】ディチェバが体格差も活かしてキルホルツを圧倒。フルマークの判定勝ちを収める",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/234537",
+    "publishedAt": "2026-08-01T00:34:04.000Z",
+    "firstSeenAt": "2026-08-01T01:07:19.573Z"
+  },
+  {
+    "id": "mmaplanet-2",
+    "source": "other",
+    "title": "【PFL2026#11】カーフでアルバレスの足を痛めつけてパウンドアウト。マゴメドフがデビュー以来10連勝",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/234516",
+    "publishedAt": "2026-07-31T23:57:41.000Z",
+    "firstSeenAt": "2026-08-01T01:07:19.573Z"
+  },
+  {
+    "id": "mmaplanet-4",
+    "source": "other",
+    "title": "【PFL2026#11】無敗ダイロン、自分の距離とペースを保ってスプリット勝利。スタッツは3連敗に",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/234492",
+    "publishedAt": "2026-07-31T23:14:46.000Z",
+    "firstSeenAt": "2026-08-01T01:07:19.573Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【PFL2026#11】HEX二冠&コンテンダーシリーズ勝者ガウシーが、TD&コントロールでベゴッソに完勝",
