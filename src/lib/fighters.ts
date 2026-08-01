@@ -1270,7 +1270,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "okamura-toshiki", nameJa: "岡村寿紀", nameEn: "Kazuki Okamura", org: "pancrase", weightClass: "ミドル級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   // 現パンクラスウェルター級王者。公式綴りは"Goiti"(旧登録の"Goichi"表記を修正)。
   // 王座保持中=現ランカーのため公開(hidden解除)。
-  { slug: "yamauchi-goiti", nameJa: "ゴイチ・ヤマウチ", nameEn: "Goiti Yamauchi", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ゴイチ・ヤマウチ" },
+  { slug: "yamauchi-goiti", nameJa: "ゴイチ・ヤマウチ", nameEn: "Goiti Yamauchi", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ゴイチ・ヤマウチ", wikiTitleEn: "Goiti Yamauchi" },
   { slug: "naito-yura", nameJa: "内藤由良", nameEn: "Yura Naito", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "musha-kotaro", nameJa: "武者孝大郎", nameEn: "Kotaro Musha", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "murayama-akihiro", nameJa: "村山暁洋", nameEn: "Akihiro Murayama", org: "pancrase", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "村山暁洋" },
@@ -1323,14 +1323,14 @@ export const FIGHTERS: Fighter[] = [
   // ① 著名勢=綴り確定+戦績あり → hidden=false(公開)。② 中央アジア勢=綴り裏取り
   //   待ちで hidden=true/needsReview=true。全員 recordFromResults(自社結果で背骨)。
   // ===========================================================================
-  { slug: "patchy-mix", nameJa: "パッチー・ミックス", nameEn: "Patchy Mix", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パッチー・ミックス", nickname: "ザ・ウィザード" },
-  { slug: "sabatello-danny", nameJa: "ダニー・サバテロ", nameEn: "Danny Sabatello", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ダニー・サバテロ", nickname: "The Italian Gangster" },
+  { slug: "patchy-mix", nameJa: "パッチー・ミックス", nameEn: "Patchy Mix", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パッチー・ミックス", wikiTitleEn: "Patchy Mix", nickname: "ザ・ウィザード" },
+  { slug: "sabatello-danny", nameJa: "ダニー・サバテロ", nameEn: "Danny Sabatello", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ダニー・サバテロ", wikiTitleEn: "Danny Sabatello", nickname: "The Italian Gangster" },
   // RIZIN.19/RIZIN.20(2019年)のdata/rizinRecords.json側表記が「パトリッキー・
   // "ピットブル"・フレイレ」(本名フルネーム)のため、findFighterSlugByName
   // 突合用にaliasを追加(同一人物。表示名は変えない。指示書O/T参照)。
   // 「パトリシオ・ピットブル」(実兄、フェザー級、別選手)とは絶対に同一視しない。
-  { slug: "patricky-pitbull", nameJa: "パトリッキー・ピットブル", nameEn: "Patricky Pitbull", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パトリッキー・ピットブル", nickname: "冥界の番犬", aliases: ["パトリッキー・“ピットブル”・フレイレ", "パトリッキー・フレイレ"] },
-  { slug: "dodson-john", nameJa: "ジョン・ドッドソン", nameEn: "John Dodson", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジョン・ドッドソン", nickname: "ザ・マジシャン" },
+  { slug: "patricky-pitbull", nameJa: "パトリッキー・ピットブル", nameEn: "Patricky Pitbull", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "パトリッキー・ピットブル", wikiTitleEn: "Patricky Pitbull", nickname: "冥界の番犬", aliases: ["パトリッキー・“ピットブル”・フレイレ", "パトリッキー・フレイレ"] },
+  { slug: "dodson-john", nameJa: "ジョン・ドッドソン", nameEn: "John Dodson", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジョン・ドッドソン", wikiTitleEn: "John Dodson (fighter)", nickname: "ザ・マジシャン" },
   // A-2(2026-07-18)追加。他の外国籍RIZIN参戦選手(Sabatello/Mix/Dodson等)と同じ
   // recordFromResults方式(自社EVENT_RESULTS由来のみを表示戦績とする)を採用。
   // 通算戦績16勝7敗1分(RIZIN外の海外プロモーション分含む)は一次ソース裏取りが
@@ -1338,7 +1338,7 @@ export const FIGHTERS: Fighter[] = [
   // 捏造しない。表示される戦績はEVENT_RESULTS登録済みのRIZIN 4戦のみ(1-3-0)に
   // なる。この方針で良いか人間の判断を要する(PR説明を参照)。
   { slug: "zulu-nkazimulo", nameJa: "エンカジムーロ・ズールー", nameEn: "Nkazimulo Zulu", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "アフリカ軽量級の雄" },
-  { slug: "gallagher-james", nameJa: "ジェームズ・ギャラガー", nameEn: "James Gallagher", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジェームズ・ギャラガー", nickname: "アイリッシュ・チョーカー" },
+  { slug: "gallagher-james", nameJa: "ジェームズ・ギャラガー", nameEn: "James Gallagher", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジェームズ・ギャラガー", wikiTitleEn: "James Gallagher (fighter)", nickname: "アイリッシュ・チョーカー" },
   // A-3(2026-07-18)追加。recordFromResults方式(自社EVENT_RESULTS由来のみを
   // 表示戦績とする)を採用。最新戦(2025-11-03 vs後藤丈治)が61.0kg契約のため
   // 自動階級判定ロジック(mapToDivision: kg<=61.5→バンタム級)によりバンタム級
@@ -1350,8 +1350,8 @@ export const FIGHTERS: Fighter[] = [
   // vsハルク大城(DEEP)は日付・決着方法が一次ソースで裏取りできておらず、
   // 捏造を避けるためEVENT_RESULTSに未登録(PR説明で人間確認を依頼)。
   { slug: "nakajima-taichi", nameJa: "中島太一", nameEn: "Taichi Nakajima", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, nickname: "ハイブリッドクッキングパパ" },
-  { slug: "case-johnny", nameJa: "ジョニー・ケース", nameEn: "Johnny Case", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジョニー・ケース", nickname: "非情な貴公子" },
-  { slug: "torres-jose", nameJa: "ホセ・トーレス", nameEn: "Jose Torres", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ホセ・トーレス (格闘家)", nickname: "BRAVE CFの弾丸レスラー" },
+  { slug: "case-johnny", nameJa: "ジョニー・ケース", nameEn: "Johnny Case", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ジョニー・ケース", wikiTitleEn: "Johnny Case", nickname: "非情な貴公子" },
+  { slug: "torres-jose", nameJa: "ホセ・トーレス", nameEn: "Jose Torres", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ホセ・トーレス (格闘家)", wikiTitleEn: "Jose Torres (fighter)", nickname: "BRAVE CFの弾丸レスラー" },
   { slug: "gustavo-luis", nameJa: "ルイス・グスタボ", nameEn: "Luiz Gustavo", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ルイス・グスタボ", nickname: "ファベーラの必殺仕事人" },
   { slug: "soldatkin-alexander", nameJa: "アレクサンダー・ソルダトキン", nameEn: "Aleksandr Soldatkin", org: "rizin", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "アレクサンダー・ソルダトキン", nickname: "ウラルの大魔神" },
   // slug語順修正(2026-07-18): カルシャガが姓・ダウトベックが名(nameJa表記
@@ -1361,14 +1361,14 @@ export const FIGHTERS: Fighter[] = [
   { slug: "karshyga-dautbek", nameJa: "カルシャガ・ダウトベック", nameEn: "Karshyga Dautbek", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "カルシャガ・ダウトベック", nickname: "King of Kazakhstan" },
   { slug: "sheydullaev-rajabali", nameJa: "ラジャブアリ・シェイドゥラエフ", nameEn: "Razhabali Shaidulloev", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ラジャブアリ・シェイドゥラエフ", nickname: "キルギスの犬鷲" },
   { slug: "karamov-vugar", nameJa: "ヴガール・ケラモフ", nameEn: "Vugar Karamov", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ヴガール・ケラモフ", nickname: "コーカサスの雷" },
-  { slug: "nozimov-ilkhom", nameJa: "イルホム・ノジモフ", nameEn: "Ilkhom Nozimov", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "イルホム・ノジモフ", nickname: "タシケントの闘犬" },
+  { slug: "nozimov-ilkhom", nameJa: "イルホム・ノジモフ", nameEn: "Ilkhom Nozimov", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "イルホム・ノジモフ", wikiTitleEn: "Ilkhom Nozimov", nickname: "タシケントの闘犬" },
   { slug: "zhumagazy-nurkhan", nameJa: "ヌルハン・ズマガジー", nameEn: "Nurkhan Zhumagazy", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "ヌルハン・ズマガジー", nickname: "カザフの新星" },
   { slug: "temirov-azizbek", nameJa: "アジズベク・テミロフ", nameEn: "Azizbek Temirov", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "アジズベク・テミロフ", nickname: "蒼き剛腕ブラザー弟" },
   { slug: "gadzhamatov-alibeg", nameJa: "アリベク・ガジャマトフ", nameEn: "Alibek Gadzhammatov", org: "rizin", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "アリベク・ガジャマトフ", nickname: "ダゲスタンのバトルサイボーグ" },
   // 元Bellatorフェザー級王者。RIZIN登録戦はRIZIN.40(2022-12-31)ソウザ戦の判定勝ちのみ
   // (超RIZIN.2はブドウ球菌感染で欠場=不戦のためRIZIN戦績に含まれない)。
   // 通算戦績はja-Wikipedia記事から日次バッチが取得する前提でここでは0シード。
-  { slug: "mckee-aj", nameJa: "AJ・マッキー", nameEn: "AJ McKee", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "AJ・マッキー", nickname: "ファンタスティックAJ" },
+  { slug: "mckee-aj", nameJa: "AJ・マッキー", nameEn: "AJ McKee", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "AJ・マッキー", wikiTitleEn: "A. J. McKee", nickname: "ファンタスティックAJ" },
 
   // --- 団体ランキング top-5 未照合ぶんのDB追加(2026-07) ---
   { slug: "shimizu-hiroto", nameJa: "清水博人", nameEn: "Hiroto Shimizu", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1400,7 +1400,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "okumura-airu", nameJa: "奥村アイル", nameEn: "Airu Okumura", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
 
   // --- 手動追加6名(2026-07・通称なし指定) ---
-  { slug: "park-siwoo", nameJa: "パク・シウ", nameEn: "Si Woo Park", org: "deep", weightClass: "女子スーパーアトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
+  { slug: "park-siwoo", nameJa: "パク・シウ", nameEn: "Si Woo Park", org: "deep", weightClass: "女子スーパーアトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleEn: "Si Woo Park", noNickname: true },
   { slug: "lee-yeji", nameJa: "イ・イェジ", nameEn: "Ye Ji Lee", org: "deep", weightClass: "女子スーパーアトム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "miyake-kisa", nameJa: "三宅輝砂", nameEn: "Kisa Miyake", org: "pancrase", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
   { slug: "aoi-jin", nameJa: "青井人", nameEn: "Jin Aoi", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, noNickname: true },
