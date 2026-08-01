@@ -1,4 +1,4 @@
-import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
+import { hasWikipediaRecord, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { GLOBAL_FIGHTER_NAME_SIZE, type BoutResult } from "@/lib/events";
 import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
 import styles from "@/styles/matchup.module.css";
@@ -68,8 +68,8 @@ export default function EventBoutCardV2({
   // - 未収録の側(デビュー戦など)は「データなし」表示にする。
   // 片方でもデータがあれば比較テープ(MatchupTape)を出し、両者とも無い場合のみ
   // 名前だけの簡易表示に倒す。
-  const hasDataA = !!entryA && !entryA.noRecordData;
-  const hasDataB = !!entryB && !entryB.noRecordData;
+  const hasDataA = hasWikipediaRecord(entryA);
+  const hasDataB = hasWikipediaRecord(entryB);
   const anyData = hasDataA || hasDataB;
   // 直接対決(再戦バッジ)・共通対戦相手は両者の履歴が揃っている時のみ算出可能。
   const bothRegistered = hasDataA && hasDataB;

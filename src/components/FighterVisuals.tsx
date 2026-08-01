@@ -1,4 +1,4 @@
-import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
+import { hasWikipediaRecord, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { computeMethodSplit, computeFighterStripStats, LAST5_SYMBOL } from "@/lib/fighterStrip";
 import { computeCommonOpponents, computeHeadToHead, groupCommonOpponents } from "@/lib/articleGenerator";
 import { findFighterSlugByName } from "@/lib/fighters";
@@ -230,7 +230,7 @@ export function EventCommonOpponents({
   entryB: FighterRecordEntry;
   visibleSlugs: Set<string>;
 }) {
-  if (entryA.noRecordData || entryB.noRecordData) return null;
+  if (!hasWikipediaRecord(entryA) || !hasWikipediaRecord(entryB)) return null;
   const commons = computeCommonOpponents(entryA, entryB).slice(0, 8);
   const headToHead = computeHeadToHead(entryA, nameB);
   if (commons.length === 0 && headToHead.length === 0) return null;

@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { findFighterSlugByName } from "@/lib/fighters";
-import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
+import { hasWikipediaRecord, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import FighterStrip from "@/components/FighterStrip";
 import { EventCommonOpponents } from "@/components/FighterVisuals";
 import { renderWrappableName } from "@/lib/renderWrappableName";
@@ -71,7 +71,7 @@ export default function BoutCard({
   note,
   resultLine,
 }: BoutCardProps) {
-  const bothRegistered = !!entryA && !!entryB && !entryA.noRecordData && !entryB.noRecordData;
+  const bothRegistered = hasWikipediaRecord(entryA) && hasWikipediaRecord(entryB);
   const hasMeta = !!weightClass || !!rule || !!isTitleMatch || !!cancelled || !!note;
 
   return (
