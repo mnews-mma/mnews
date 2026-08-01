@@ -1,0 +1,110 @@
+{
+  "dupNameEnGroups": [
+    [
+      "unconfirmed",
+      [
+        "unconfirmed-shooto-1875",
+        "unconfirmed-shooto-1849"
+      ]
+    ]
+  ],
+  "totalResolvedSlots": 3987,
+  "nameEnOnlyRows": [
+    {
+      "file": "rizinRecords.json",
+      "event": "RIZIN.19",
+      "date": "2019-10-12",
+      "rawName": "HIROYA",
+      "resolvedSlug": "hiroya",
+      "nameEn": "Hiroya"
+    },
+    {
+      "file": "rizinRecords.json",
+      "event": "Yogibo presents RIZIN.26",
+      "date": "2020-12-31",
+      "rawName": "HIROYA",
+      "resolvedSlug": "hiroya",
+      "nameEn": "Hiroya"
+    },
+    {
+      "file": "rizinRecords.json",
+      "event": "RIZIN LANDMARK 8 in SAGA",
+      "date": "2024-02-24",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP TOKYO IMPACT 2021 1st ROUND",
+      "date": "2021-10-17",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP TOKYO IMPACT 2022 1st ROUND",
+      "date": "2022-03-12",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP OKINAWA IMPACT 2022",
+      "date": "2022-10-30",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP TOKYO IMPACT 2022 6th ROUND",
+      "date": "2022-11-23",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP TOKYO IMPACT 2022 7th ROUND",
+      "date": "2022-12-11",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP X NARIAGARI",
+      "date": "2023-07-23",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP 117 IMPACT",
+      "date": "2023-12-10",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP TOKYO IMPACT 2024 6th ROUND",
+      "date": "2024-12-08",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    },
+    {
+      "file": "deepRecords.json",
+      "event": "DEEP TOKYO IMPACT 2025 3rd ROUND",
+      "date": "2025-05-25",
+      "rawName": "RYOGA",
+      "resolvedSlug": "ryoga",
+      "nameEn": "Ryoga"
+    }
+  ]
+}

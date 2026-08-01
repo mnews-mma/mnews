@@ -1,0 +1,232 @@
+
+
+########## isao ##########
+1行目: 27-9-2
+
+--- 1行目historyの各試合と、同日付の2行目bout(あれば)を突合 ---
+[突合] 2026-06-06 1行目:矢地祐介->loss(RIZIN LANDMARK 14) | 2行目:RIZIN:矢地祐介->loss(RIZIN LANDMARK 14 in SENDAI, resultType=decisive)
+[突合] 2025-12-21 1行目:粕谷優介->loss(PANCRASE 360) | 2行目:パンクラス:粕谷優介->loss(PANCRASE 360, resultType=decisive)
+[突合] 2025-07-27 1行目:カリベク・アルジクル ウルル->loss(PANCRASE 355) | 2行目:パンクラス:カリベク・アルジクル ウルル->loss(PANCRASE 355, resultType=decisive)
+[1行目のみ] 2023-11-17 vs イーブス・ランドゥー -> loss (Bellator 301: Amosov vs. Jackson) : 2行目に同日付の試合なし
+[突合] 2021-05-30 1行目:中島太一->win(PANCRASE 321 【フェザー級キング・オブ・パンクラスタイトルマッチ】) | 2行目:パンクラス:中島太一->win(PANCRASE 321, resultType=decisive)
+[突合] 2020-07-24 1行目:アキラ->win(PANCRASE 316) | 2行目:パンクラス:アキラ->win(PANCRASE316, resultType=decisive)
+[突合] 2019-10-20 1行目:カイル・アグォン->win(PANCRASE 309 【フェザー級キング・オブ・パンクラスタイトルマッチ】) | 2行目:パンクラス:カイル・アグオン->win(PANCRASE309, resultType=decisive)
+[突合] 2019-05-26 1行目:ナザレノ・マレガリエ->win(PANCRASE 305 【フェザー級王座統一戦】) | 2行目:パンクラス:ナザレノ・マレガリエ->win(PANCRASE305, resultType=decisive)
+[突合] 2018-04-15 1行目:松嶋こよみ->win(PANCRASE 295 【フェザー級暫定王座決定戦】) | 2行目:パンクラス:松嶋こよみ->win(PANCRASE295, resultType=decisive)
+[突合] 2017-12-10 1行目:粕谷優介->win(PANCRASE 292) | 2行目:パンクラス:粕谷優介->win(PANCRASE292, resultType=decisive)
+[突合] 2017-08-20 1行目:カイル・アグォン->loss(PANCRASE 289) | 2行目:パンクラス:カイル・アグオン->loss(PANCRASE289, resultType=decisive)
+[突合] 2017-04-23 1行目:マルコ・ブルシッチ->win(PANCRASE 286) | 2行目:パンクラス:マルコ・ブルシッチ->win(PANCRASE286, resultType=decisive)
+[突合] 2016-12-18 1行目:高谷裕之->win(PANCRASE 283) | 2行目:パンクラス:髙谷裕之->win(PANCRASE283, resultType=decisive)
+[突合] 2016-09-19 1行目:斎藤裕->win(VTJ 8th) | 2行目:修斗:斎藤 裕->win(VTJ 8th, resultType=decisive)
+[1行目のみ] 2016-06-24 vs ジャスティン・ローレンス (総合格闘家) -> loss (Bellator 157: Dynamite 2) : 2行目に同日付の試合なし
+[1行目のみ] 2015-10-23 vs ゴイチ・ヤマウチ -> loss (Bellator 144: Halsey vs. Carvalho) : 2行目に同日付の試合なし
+[突合] 2015-08-09 1行目:ウィル・チョープ->win(PANCRASE 269) | 2行目:パンクラス:ウィル“THE KILL”チョープ->win(PANCRASE 269, resultType=decisive)
+[突合] 2015-04-26 1行目:マルロン・サンドロ->win(PANCRASE 266) | 2行目:パンクラス:マルロン・サンドロ->win(PANCRASE 266, resultType=decisive)
+[突合] 2014-12-31 1行目:横田一則->loss(DEEP DREAM IMPACT 2014 〜大晦日SPECIAL〜) | 2行目:DEEP:横田一則->loss(DEEP DREAM IMPACT 2014～大晦日special～, resultType=decisive)
+[突合] 2014-10-04 1行目:リオン武->win(VTJ 6th) | 2行目:修斗:リオン 武->win(VTJ 6th, resultType=decisive)
+[突合] 2014-03-30 1行目:弘中邦佳->win(PANCRASE 257) | 2行目:パンクラス:弘中邦佳->win(PANCRASE 257, resultType=decisive)
+[突合] 2013-09-29 1行目:高橋"Bancho"良明->win(PANCRASE 252 【ライト級キング・オブ・パンクラスタイトルマッチ】) | 2行目:パンクラス:高橋“Bancho”良明->win(PANCRASE 252, resultType=decisive)
+[突合] 2013-03-17 1行目:ジョルジ・パチーユ・マカコ->draw(PANCRASE 246) | 2行目:パンクラス:ジョルジ・パチーユ・マカコ->draw(PANCRASE246, resultType=draw)
+[突合] 2012-12-01 1行目:冨樫健一郎->win(PANCRASE 2012 PROGRESS TOUR) | 2行目:パンクラス:冨樫健一郎->win(PANCRASE 2012 PROGRESS TOUR, resultType=decisive)
+[突合] 2012-09-01 1行目:田中達憲->win(PANCRASE 2012 PROGRESS TOUR) | 2行目:パンクラス:田中達憲->win(PANCRASE 2012 PROGRESS TOUR, resultType=decisive)
+[突合] 2012-04-01 1行目:大石幸史->win(PANCRASE 2012 PROGRESS TOUR 【ライト級キング・オブ・パンクラスタイトルマッチ】) | 2行目:パンクラス:大石幸史->win(PANCRASE 2012 PROGRESS TOUR, resultType=decisive)
+[突合] 2011-12-03 1行目:徳留一樹->win(PANCRASE 2011 IMPRESSIVE TOUR 【ライト級GP 2011トーナメント 決勝】) | 2行目:パンクラス:徳留一樹->win(PANCRASE 2011 IMPRESSIVE TOUR, resultType=decisive)
+[突合] 2011-08-07 1行目:岩見谷智義->win(PANCRASE 2011 IMPRESSIVE TOUR 【ライト級GP 2011トーナメント 準決勝】) | 2行目:パンクラス:岩見谷智義->win(PANCRASE 2011 IMPRESSIVE TOUR, resultType=decisive)
+[1行目のみ] 2011-05-23 vs 田村ヒビキ -> win (PANCRASE 2011 IMPRESSIVE TOUR 【ライト級GP 2011トーナメント 1回戦】) : 2行目に同日付の試合なし
+[突合] 2010-11-03 1行目:アルトゥール・ウマハノフ->win(PANCRASE 2010 PASSION TOUR) | 2行目:パンクラス:ウマハノフ・アルトゥール->win(PANCRASE 2010 PASSION TOUR, resultType=decisive)
+[突合] 2010-07-04 1行目:岩見谷智義->draw(PANCRASE 2010 PASSION TOUR) | 2行目:パンクラス:岩見谷智義->draw(PANCRASE 2010 PASSION TOUR, resultType=draw)
+[突合] 2010-04-04 1行目:大石幸史->loss(PANCRASE 2010 PASSION TOUR) | 2行目:パンクラス:大石幸史->loss(PANCRASE 2010 PASSION TOUR, resultType=decisive)
+[突合] 2010-02-07 1行目:AB->win(PANCRASE 2010 PASSION TOUR) | 2行目:パンクラス:AB->win(PANCRASE 2010 PASSION TOUR, resultType=decisive)
+[突合] 2009-10-25 1行目:AB->win(PANCRASE 2009 CHANGING TOUR) | 2行目:パンクラス:AB->win(PANCRASE 2009 CHANGING TOUR, resultType=decisive)
+[突合] 2009-08-08 1行目:富山浩宇->win(PANCRASE 2009 CHANGING TOUR 【ネオブラッド・トーナメント ライト級 決勝】) | 2行目:パンクラス:富山浩宇->win(PANCRASE 2009 CHANGING TOUR, resultType=decisive)
+[突合] 2009-06-07 1行目:中村晃司->win(PANCRASE 2009 CHANGING TOUR 【ネオブラッド・トーナメント ライト級 準決勝】) | 2行目:パンクラス:中村晃司->win(PANCRASE 2009 CHANGING TOUR, resultType=decisive)
+[1行目のみ] 2009-04-25 vs 鴻野洋一 -> win (TRIBELATE vol.23 -Hybrid Club Fight-) : 2行目に同日付の試合なし
+[1行目のみ] 2008-04-26 vs イ・デヨン -> win (TRIBELATE vol.17 -Hybrid Club Fight-) : 2行目に同日付の試合なし
+
+--- 2行目にあって1行目に同日付が無い試合(超過) ---
+[2行目のみ] 2011-05-03 パンクラス:田村ヒビキ -> win (PANCRASE 2011 IMPRESSIVE TOUR)
+[2行目のみ] 2008-12-07 パンクラス:徳重祐樹 -> draw (PANCRASE 2008 SHINING TOUR)
+[2行目のみ] 2008-10-01 パンクラス:草ホンマン -> draw (PANCRASE 2008 SHINING TOUR)
+
+
+########## kate-lotus ##########
+1行目: 10-8-0
+
+--- 1行目historyの各試合と、同日付の2行目bout(あれば)を突合 ---
+[突合] 2026-05-10 1行目:ケイティ・ペレス->win(RIZIN.53) | 2行目:RIZIN:ケイティ・ペレス->win(RIZIN.53, resultType=decisive)
+[突合] 2026-03-07 1行目:大島沙緒里->loss(RIZIN.52) | 2行目:RIZIN:大島沙緒里->loss(RIZIN.52, resultType=decisive)
+[突合] 2025-11-03 1行目:イ・ボミ->win(RIZIN LANDMARK 12) | 2行目:RIZIN:イ・ボミ->win(RIZIN LANDMARK 12 in KOBE, resultType=decisive)
+[突合] 2025-09-07 1行目:富松恵美->win(DEEP JEWELS 50) | 2行目:DEEP:富松恵美->win(DEEP JEWELS 50, resultType=decisive)
+[突合] 2025-05-31 1行目:シン・ユリ->win(RIZIN WORLD SERIES in KOREA) | 2行目:RIZIN:シン・ユリ->win(RIZIN WORLD SERIES in KOREA, resultType=decisive)
+[突合] 2024-11-04 1行目:月井隼南->win(DEEP 122 IMPACT) | 2行目:DEEP:月井準南->win(DEEP 122 IMPACT, resultType=decisive)
+[突合] 2024-07-28 1行目:RENA->loss(超RIZIN.3) | 2行目:RIZIN:RENA->loss(Yogibo presents 超RIZIN.3, resultType=decisive)
+[1行目のみ] 2024-03-24 vs 桐生祐子 -> win (DEEP JEWELS 44) : 2行目に同日付の試合なし
+[突合] 2023-09-10 1行目:須田萌里->loss(DEEP JEWELS 42) | 2行目:DEEP:須田萌里->loss(DEEP JEWELS 42 ~10th Anniversary～, resultType=decisive)
+[突合] 2023-05-28 1行目:彩綺->win(DEEP JEWELS 41) | 2行目:DEEP:彩綺->win(DEEP JEWELS 41, resultType=decisive)
+[突合] 2023-02-18 1行目:青野ひかる->loss(DEEP JEWELS 40) | 2行目:DEEP:青野ひかる->loss(DEEP JEWELS 40, resultType=decisive)
+[突合] 2022-10-30 1行目:にっせー->draw(DEEP OKINAWA IMPACT 2022) | 2行目:DEEP:にっせー->draw(DEEP OKINAWA IMPACT 2022, resultType=draw)
+[突合] 2022-09-11 1行目:竹林愛留->win(DEEP JEWELS 38) | 2行目:DEEP:竹林愛留->win(DEEP JEWELS 38, resultType=decisive)
+[突合] 2022-07-10 1行目:ARAMI->loss(DEEP 108 IMPACT) | 2行目:DEEP:ARAMI->loss(DEEP 108 IMPACT, resultType=decisive)
+[突合] 2022-05-08 1行目:長野美香->loss(DEEP JEWELS 37) | 2行目:DEEP:長野美香->loss(DEEP JEWELS 37, resultType=decisive)
+[突合] 2021-12-11 1行目:栗山葵->win(DEEP JEWELS 35) | 2行目:DEEP:栗山葵->win(DEEP JEWELS 35, resultType=decisive)
+[1行目のみ] 2021-09-04 vs ミッコ・ニルバーナ -> loss (DEEP JEWELS 34) : 2行目に同日付の試合なし
+[突合] 2021-03-07 1行目:HIME->loss(DEEP JEWELS 32) | 2行目:DEEP:HIME->loss(DEEP JEWELS 32, resultType=decisive)
+[1行目のみ] 2020-12-19 vs 熊谷麻理奈 -> win (DEEP JEWELS 31) : 2行目に同日付の試合なし
+
+--- 2行目にあって1行目に同日付が無い試合(超過) ---
+
+
+########## goto-joji ##########
+1行目: 19-9-0
+
+--- 1行目historyの各試合と、同日付の2行目bout(あれば)を突合 ---
+[突合] 2026-04-12 1行目:ダニー・サバテロ->loss(RIZIN LANDMARK 13 【RIZINバンタム級タイトルマッチ】) | 2行目:RIZIN:ダニー・サバテロ->loss(大和開発 presents RIZIN LANDMARK 13 in FUKUOKA, resultType=decisive)
+[突合] 2025-12-31 1行目:ホセ・トーレス->win(RIZIN 師走の超強者祭り) | 2行目:RIZIN:ホセ・トーレス->win(Yogibo presents RIZIN師走の超強者祭り, resultType=decisive)
+[突合] 2025-11-03 1行目:中島太一->win(RIZIN LANDMARK 12) | 2行目:RIZIN:中島太一->win(RIZIN LANDMARK 12 in KOBE, resultType=decisive)
+[突合] 2025-06-14 1行目:鹿志村仁之介->win(RIZIN LANDMARK 11) | 2行目:RIZIN:鹿志村仁之介->win(RIZIN LANDMARK 11 in SAPPORO, resultType=decisive)
+[突合] 2025-03-09 1行目:合島大樹->win(PANCRASE 352) | 2行目:パンクラス:合島大樹->win(PANCRASE 352, resultType=decisive)
+[1行目のみ] 2024-12-08 vs マンド・グティエレス -> loss (DEEP 122 IMPACT) : 2行目に同日付の試合なし
+[1行目のみ] 2024-05-03 vs イリアス・エジエフ -> loss (ONE FRIDAY FIGHTS 61) : 2行目に同日付の試合なし
+[突合] 2023-10-01 1行目:日比野"エビ中"純也->win(RIZIN LANDMARK 6) | 2行目:RIZIN:日比野“エビ中”純也->win(For Japan presents RIZIN LANDMARK 6 in NAGOYA, resultType=decisive)
+[突合] 2023-06-24 1行目:トレント・ガーダム->win(RIZIN.43) | 2行目:RIZIN:トレント・ガーダム->win(RIZIN.43, resultType=decisive)
+[突合] 2022-11-27 1行目:須藤拓真->loss(SHOOTO PROFESSIONAL SHOOTO 2022 VOL. 7) | 2行目:修斗:須藤 拓真->loss(PROFESSIONAL SHOOTO 2022 Vol.7, resultType=decisive)
+[突合] 2022-09-19 1行目:加藤ケンジ->win(SHOOTO PROFESSIONAL SHOOTO 2022 VOL. 6) | 2行目:修斗:加藤 ケンジ->win(PROFESSIONAL SHOOTO 2022 Vol.6, resultType=decisive)
+[突合] 2022-03-21 1行目:ダイキ・ライトイヤー->win(SHOOTO PROFESSIONAL SHOOTO 2022 VOL. 2) | 2行目:修斗:ダイキ ライトイヤー->win(PROFESSIONAL SHOOTO 2022 Vol.2, resultType=decisive)
+[突合] 2021-09-20 1行目:石橋圭太->loss(SHOOTO PROFESSIONAL SHOOTO 2021 VOL. 6) | 2行目:修斗:石橋 佳大->loss(PROFESSIONAL SHOOTO 2021 Vol.6 Supported by ONE Championship, resultType=decisive)
+[突合] 2021-03-20 1行目:魚井フルスイング->win(SHOOTO PROFESSIONAL SHOOTO 2021 VOL. 2) | 2行目:修斗:魚井 フルスイング->win(PROFESSIONAL SHOOTO 2021 Vol.2 Supported by ONE Championship, resultType=decisive)
+[1行目のみ] 2020-12-19 vs 服部健太 -> win (TRIBE TOKYO FIGHT TTF CHALLENGE 09) : 2行目に同日付の試合なし
+[突合] 2020-09-19 1行目:藤井伸樹->loss(SHOOTO PROFESSIONAL SHOOTO 2020 VOL. 6) | 2行目:修斗:藤井 伸樹->loss(PROFESSIONAL SHOOTO 2020 Vol.6 Supported by ONE Championship 第2部, resultType=decisive)
+[1行目のみ] 2020-04-17 vs 祖根寿麻 -> win (SHOOTO ROAD TO ONE 2ND ABEMA) : 2行目に同日付の試合なし
+[突合] 2020-02-16 1行目:力也->win(PANCRASE 312) | 2行目:パンクラス:力也->win(PANCRASE312, resultType=decisive)
+[突合] 2019-09-23 1行目:道端雅志->win(PANCRASE SAPPORO) | 2行目:パンクラス:道端正司->win(PANCRASE札幌大会, resultType=decisive)
+[突合] 2019-07-21 1行目:平田淳一->win(PANCRASE 307) | 2行目:パンクラス:平田純一->win(PANCRASE307, resultType=decisive)
+[突合] 2019-05-26 1行目:山田誠央->win(PANCRASE 305) | 2行目:パンクラス:聖王DATE->win(PANCRASE305, resultType=decisive)
+[突合] 2018-12-09 1行目:米山千隼->loss(PANCRASE 302) | 2行目:パンクラス:米山千隼->loss(PANCRASE302, resultType=decisive)
+[1行目のみ] 2018-07-01 vs 佐々木文哉 -> win (GFG 1 GLOBAL FIGHTINGSPORTS GAME 1) : 2行目に同日付の試合なし
+[突合] 2018-05-13 1行目:杉山廣平->loss(PANCRASE SAPPORO) | 2行目:パンクラス:杉山廣平->loss(PANCRASE札幌大会, resultType=decisive)
+[突合] 2017-12-10 1行目:渡辺達也->win(PANCRASE 292) | 2行目:パンクラス:渡辺竜也->win(PANCRASE292, resultType=decisive)
+[突合] 2017-10-22 1行目:桑原優->win(PANCRASE SAPPORO) | 2行目:パンクラス:桑原悠->win(PANCRASE札幌大会, resultType=decisive)
+[突合] 2017-05-14 1行目:竹内直哉->win(PANCRASE SAPPORO) | 2行目:パンクラス:竹内直矢->win(PANCRASE札幌大会, resultType=decisive)
+[突合] 2016-10-16 1行目:飯島重喜->loss(PANCRASE SAPPORO) | 2行目:パンクラス:飯島重樹->loss(PANCRASE札幌大会, resultType=decisive)
+
+--- 2行目にあって1行目に同日付が無い試合(超過) ---
+[2行目のみ] 2020-12-20 修斗:服部 賢大 -> win (TTF CHALLENGE 09)
+[2行目のみ] 2016-05-29 パンクラス:冨田正美 -> win (PANCRASE札幌大会)
+[2行目のみ] 2015-12-06 パンクラス:松浦孝弥 -> draw (PANCRASE札幌大会2015)
+[2行目のみ] 2024-11-23 DEEP:マンド・グディエレス -> loss (DEEP TOKYO IMPACT 2024 5th ROUND)
+
+
+########## ito-yuki ##########
+1行目: 20-7-0
+
+--- 1行目historyの各試合と、同日付の2行目bout(あれば)を突合 ---
+[突合] 2026-03-07 1行目:カルロス・モタ->win(RIZIN.52) | 2行目:RIZIN:カルロス・モタ->win(RIZIN.52, resultType=decisive)
+[突合] 2025-09-28 1行目:山本アーセン->loss(RIZIN.51 【RIZINフライ級ワールドグランプリ・リザーブマッチ】) | 2行目:RIZIN:山本アーセン->loss(RIZIN.51, resultType=decisive)
+[突合] 2025-07-27 1行目:エンカジムーロ・ズールー->win(超RIZIN.4 真夏の喧嘩祭り 【RIZINフライ級ワールドグランプリ1回戦】) | 2行目:RIZIN:エンカジムーロ・ズールー->win(超RIZIN.4 真夏の喧嘩祭り, resultType=decisive)
+[突合] 2025-05-04 1行目:神龍誠->loss(RIZIN男祭り) | 2行目:RIZIN:神龍誠->loss(RIZIN男祭り, resultType=decisive)
+[突合] 2025-03-30 1行目:トニー・ララミー->win(RIZIN.50) | 2行目:RIZIN:トニー・ララミー->win(RIZIN.50, resultType=decisive)
+[突合] 2024-11-17 1行目:イ・ジョンヒョン->win(RIZIN LANDMARK 10) | 2行目:RIZIN:イ・ジョンヒョン->win(RIZIN LANDMARK 10 in NAGOYA, resultType=decisive)
+[突合] 2024-02-24 1行目:上田将年->win(RIZIN LANDMARK 8) | 2行目:RIZIN:上田将年->win(RIZIN LANDMARK 8 in SAGA, resultType=decisive)
+[突合] 2023-10-01 1行目:トップノイ・キウラム->win(RIZIN LANDMARK 6) | 2行目:RIZIN:トップノイ・キウラム->win(For Japan presents RIZIN LANDMARK 6 in NAGOYA, resultType=decisive)
+[突合] 2023-07-30 1行目:ヒロヤ->win(超RIZIN.2) | 2行目:RIZIN:ヒロヤ->win(のむシリカ presents 超RIZIN.2 powered by U-NEXT, resultType=decisive)
+[突合] 2023-05-06 1行目:山本アーセン->loss(RIZIN.42) | 2行目:RIZIN:山本アーセン->loss(RIZIN.42, resultType=decisive)
+[突合] 2023-02-11 1行目:本田良介->loss(DEEP 112 IMPACT 【DEEPフライ級グランプリ準決勝】) | 2行目:DEEP:本田良介->loss(DEEP 112 IMPACT, resultType=decisive)
+[突合] 2022-12-11 1行目:ビョン・ジェウン->win(DEEP 111 IMPACT 【DEEPフライ級グランプリ2回戦】) | 2行目:DEEP:ビョン・ジェウン->loss(DEEP 111 IMPACT, resultType=decisive) *** MISMATCH ***
+[突合] 2022-08-21 1行目:原虎徹->win(DEEP 109 IMPACT 【DEEPフライ級グランプリ1回戦】) | 2行目:DEEP:原虎徹->win(DEEP 109 IMPACT, resultType=decisive)
+[突合] 2022-07-02 1行目:宮城友一->win(RIZIN.36) | 2行目:RIZIN:宮城友一->win(湘南美容クリニック presents RIZIN.36, resultType=decisive)
+[突合] 2022-05-08 1行目:関原翔->win(DEEP 107 IMPACT) | 2行目:DEEP:関原翔->win(DEEP 107 IMPACT, resultType=decisive)
+[突合] 2022-02-26 1行目:福田龍彌->loss(DEEP 106 IMPACT) | 2行目:DEEP:福田龍彌->loss(DEEP 106 IMPACT, resultType=decisive)
+[突合] 2021-10-24 1行目:中村優作->win(RIZIN.31) | 2行目:RIZIN:中村優作->win(Yogibo presents RIZIN.31, resultType=decisive)
+[突合] 2021-09-23 1行目:藤田大和->loss(DEEP 103 IMPACT 【DEEPフライ級暫定タイトルマッチ】) | 2行目:DEEP:藤田大和->loss(DEEP 103 IMPACT ～20th Anniversary～, resultType=decisive)
+[1行目のみ] 2021-06-20 vs 安谷屋智弘 -> win (DEEP 101 IMPACT) : 2行目に同日付の試合なし
+[突合] 2021-03-21 1行目:杉⼭廣平->win(RIZIN.27) | 2行目:RIZIN:杉⼭廣平->win(Yogibo presents RIZIN.27, resultType=decisive)
+[突合] 2019-12-15 1行目:鮎田直人->loss(DEEP 93 IMPACT) | 2行目:DEEP:鮎田直人->loss(DEEP 93 IMPACT, resultType=decisive)
+[突合] 2019-09-08 1行目:藤田大和->win(DEEP 91 IMPACT) | 2行目:DEEP:藤田大和->win(DEEP 91 IMPACT, resultType=decisive)
+[突合] 2019-06-29 1行目:中山ハルキ->win(DEEP 90 IMPACT) | 2行目:DEEP:中山ハルキ->win(DEEP 90 IMPACT, resultType=decisive)
+[1行目のみ] 2019-05-26 vs ヨシKING -> win (DEEP NAGOYA IMPACT 公武堂ファイト) : 2行目に同日付の試合なし
+[1行目のみ] 2018-11-03 vs キム・テギュン -> win (RORD FC 050) : 2行目に同日付の試合なし
+[1行目のみ] 2018-03-10 vs 新井悠介 -> win (THE OUTSIDER 第50戦～有明ファイナル～ 【50-55kg級タイトルマッチ】) : 2行目に同日付の試合なし
+[1行目のみ] 2017-12-10 vs コ・ドンヒョク -> win (THE OUTSIDER～大田区総合体育館SPECIAL～) : 2行目に同日付の試合なし
+
+--- 2行目にあって1行目に同日付が無い試合(超過) ---
+[2行目のみ] 2021-05-05 DEEP:安谷屋智弘 -> win (DEEP 101 IMPACT)
+
+
+########## noel ##########
+1行目: 4-2-0
+
+--- 1行目historyの各試合と、同日付の2行目bout(あれば)を突合 ---
+[突合] 2026-03-07 1行目:イ・ボミ->win(RIZIN.52) | 2行目:RIZIN:イ・ボミ->win(RIZIN.52, resultType=decisive)
+[突合] 2025-11-03 1行目:海咲イルカ->win(RIZIN LANDMARK 12) | 2行目:RIZIN:海咲イルカ->win(RIZIN LANDMARK 12 in KOBE, resultType=decisive)
+[突合] 2025-07-27 1行目:須田萌里->loss(超RIZIN.4 真夏の喧嘩祭り) | 2行目:RIZIN:須田萌里->loss(超RIZIN.4 真夏の喧嘩祭り, resultType=decisive)
+[突合] 2024-12-15 1行目:平田彩音->win(COLORS Produce by SHOOTO Vol.4) | 2行目:修斗:平田 彩音->win(COLORS Produce by SHOOTO Vol.4, resultType=decisive)
+[突合] 2024-09-22 1行目:パク・ソヨン->loss(PROFESSIONAL SHOOTO 2024 Vol.7) | 2行目:修斗:パク ソヨン->loss(PROFESSIONAL SHOOTO 2024 Vol.7, resultType=decisive)
+[突合] 2024-08-03 1行目:ヒヤマNFC->win(COLORS Produce by SHOOTO Vol.3) | 2行目:修斗:ヒヤマ NFC->win(COLORS Produce by SHOOTO Vol.3, resultType=decisive)
+
+--- 2行目にあって1行目に同日付が無い試合(超過) ---
+[2行目のみ] 2023-05-21 修斗:井上 愛羅 -> draw (Colors（カラーズ）)
+
+
+########## kubo-yuta ##########
+1行目: 5-3-0
+
+--- 1行目historyの各試合と、同日付の2行目bout(あれば)を突合 ---
+[突合] 2026-04-12 1行目:ラジャブアリ・シェイドゥラエフ->loss(RIZIN LANDMARK 13 【RIZINフェザー級タイトルマッチ】) | 2行目:RIZIN:ラジャブアリ・シェイドゥラエフ->loss(大和開発 presents RIZIN LANDMARK 13 in FUKUOKA, resultType=decisive)
+[1行目のみ] 2025-12-31 vs カルシャガ・ダウトベック -> nc (RIZIN 師走の超強者祭り) : 2行目に同日付の試合なし
+[突合] 2024-12-31 1行目:ラジャブアリ・シェイドゥラエフ->loss(RIZIN.49) | 2行目:RIZIN:ラジャブアリ・シェイドゥラエフ->loss(RIZIN DECADE / Yogibo presents RIZIN.49, resultType=decisive)
+[突合] 2024-07-28 1行目:斎藤裕->win(超RIZIN.3) | 2行目:RIZIN:斎藤裕->win(Yogibo presents 超RIZIN.3, resultType=decisive)
+[突合] 2024-03-23 1行目:高橋遼伍->win(RIZIN LANDMARK 9) | 2行目:RIZIN:高橋遼伍->win(RIZIN LANDMARK 9 in KOBE, resultType=decisive)
+[突合] 2023-12-31 1行目:安保瑠輝也->win(RIZIN.45) | 2行目:RIZIN:安保瑠輝也->win(にゃんこ大戦争 presents RIZIN.45, resultType=decisive)
+[突合] 2023-06-24 1行目:木下カラテ->win(RIZIN.43) | 2行目:RIZIN:木下カラテ->win(RIZIN.43, resultType=decisive)
+[突合] 2022-11-06 1行目:奥田啓介->win(RIZIN LANDMARK 4) | 2行目:RIZIN:奥田啓介->win(ANGEL CHAMPAGNE presents RIZIN LANDMARK 4 in NAGOYA, resultType=decisive)
+[突合] 2021-09-19 1行目:太田忍->loss(RIZIN.30) | 2行目:RIZIN:太田忍->loss(Yogibo presents RIZIN.30, resultType=decisive)
+
+--- 2行目にあって1行目に同日付が無い試合(超過) ---
+[2行目のみ] 2021-12-31 RIZIN:シバター -> loss (Yogibo presents RIZIN.33)
+
+
+########## karen ##########
+1行目: 10-3-0
+
+--- 1行目historyの各試合と、同日付の2行目bout(あれば)を突合 ---
+[突合] 2025-12-21 1行目:本野美樹->loss(PANCRASE 360) | 2行目:パンクラス:本野美樹->loss(PANCRASE 360, resultType=decisive)
+[突合] 2024-09-29 1行目:エジナ・トラキナス->win(PANCRASE 347) | 2行目:パンクラス:エジナ・トラキナス->win(PANCRASE 347, resultType=decisive)
+[突合] 2024-04-29 1行目:ホン・イェリン->win(PANCRASE 342) | 2行目:パンクラス:ホン・イェリン->win(PANCRASE 342, resultType=decisive)
+[突合] 2023-12-02 1行目:パクソヨン->win(COLORS Produce by SHOOTO Vol.2 “FIGHT&MOSH”) | 2行目:修斗:パク ソヨン->win(COLORS Produce by SHOOTO Vol.2 “FIGHT&MOSH”, resultType=decisive)
+[突合] 2023-09-24 1行目:高本千代->win(PANCRASE 337) | 2行目:パンクラス:高本千代->win(PANCRASE 337, resultType=decisive)
+[突合] 2023-04-30 1行目:ソルト->loss(PANCRASE 333) | 2行目:パンクラス:ソルト->loss(PANCRASE 333, resultType=decisive)
+[突合] 2022-12-25 1行目:ソルト->loss(PANCRASE 330) | 2行目:パンクラス:ソルト->loss(PANCRASE 330, resultType=decisive)
+[突合] 2022-09-11 1行目:宝珠山桃花->win(PANCRASE 329) | 2行目:パンクラス:宝珠山桃花->win(PANCRASE 329, resultType=decisive)
+[突合] 2022-03-21 1行目:藤野恵実->win(PANCRASE 326) | 2行目:パンクラス:藤野恵実->win(PANCRASE 326, resultType=decisive)
+[突合] 2021-10-17 1行目:新谷琴美->win(PANCRASE 324) | 2行目:パンクラス:新谷琴美->win(PANCRASE 324, resultType=decisive)
+[1行目のみ] 2021-06-27 vs EDGE -> win (PANCRASE 322) : 2行目に同日付の試合なし
+[1行目のみ] 2020-10-25 vs 青木文菜 -> win (PANCRASE 319) : 2行目に同日付の試合なし
+[1行目のみ] 2019-12-08 vs DIANA -> win (PANCRASE311) : 2行目に同日付の試合なし
+
+--- 2行目にあって1行目に同日付が無い試合(超過) ---
+
+
+########## yamagami-mikihito ##########
+1行目: 12-6-0
+
+--- 1行目historyの各試合と、同日付の2行目bout(あれば)を突合 ---
+[突合] 2025-09-21 1行目:田上こゆる->loss(PROFESSIONAL SHOOTO 2025 Vol.7) | 2行目:修斗:田上 こゆる->loss(【第1部】PROFESSIONAL SHOOTO 2025 Vol.7, resultType=decisive)
+[突合] 2025-01-19 1行目:当真佳直->win(PROFESSIONAL SHOOTO 2025 開幕戦) | 2行目:修斗:当真 佳直->win(PROFESSIONAL SHOOTO 2025 開幕戦, resultType=decisive)
+[突合] 2024-09-22 1行目:黒部和沙->win(PROFESSIONAL SHOOTO 2024 Vol.7) | 2行目:修斗:黒部 和沙->win(PROFESSIONAL SHOOTO 2024 Vol.7, resultType=decisive)
+[1行目のみ] 2024-05-05 vs 今井健斗 -> loss (GLADIATOR026) : 2行目に同日付の試合なし
+[1行目のみ] 2014-12-14 vs Jae Nam Yoo -> loss (ROAD FC 20) : 2行目に同日付の試合なし
+[1行目のみ] 2014-02-09 vs Nam Jin Jo -> loss (ROAD FC 14) : 2行目に同日付の試合なし
+[1行目のみ] 2013-12-15 vs Narongchai Dragontail -> win (Heat) : 2行目に同日付の試合なし
+[突合] 2013-06-22 1行目:山口守->win(VTJ 2nd) | 2行目:修斗:マモル->win(VTJ 2nd, resultType=decisive)
+[1行目のみ] 2012-09-30 vs 猿丸ジュンジ -> win (プロフェッショナル修斗公式戦～東日本大震災復興支援チャリティ～【修斗世界フライ級チャンピオンシップ】) : 2行目に同日付の試合なし
+[1行目のみ] 2011-11-05 vs 生駒純司 -> win (SHOOTO THE SHOOTO 2011 【修斗世界フライ級チャンピオンシップ】) : 2行目に同日付の試合なし
+[1行目のみ] 2011-04-29 vs ATCHアナーキー -> win (SHOOTO TRADITION 2011) : 2行目に同日付の試合なし
+[1行目のみ] 2010-11-19 vs 室伏シンヤ -> win (プロフェッショナル修斗公式戦) : 2行目に同日付の試合なし
+[1行目のみ] 2010-07-04 vs 春崎武裕 -> win (修斗) : 2行目に同日付の試合なし
+[1行目のみ] 2009-08-09 vs ザ・タイガー石井 -> loss (修斗) : 2行目に同日付の試合なし
+[1行目のみ] 2009-03-20 vs ATCHアナーキー -> loss (修斗) : 2行目に同日付の試合なし
+[1行目のみ] 2008-12-13 vs 猿丸ジュンジ -> win (修斗【新人王決定戦トーナメント決勝】) : 2行目に同日付の試合なし
+[1行目のみ] 2008-10-05 vs 天風ゆうすけ -> win (修斗【新人王決定戦トーナメント準決勝】) : 2行目に同日付の試合なし
+[1行目のみ] 2008-08-03 vs ろん -> win (SHOOTO GIG CENTRAL Vol.15【新人王決定戦トーナメント2回戦】) : 2行目に同日付の試合なし
+
+--- 2行目にあって1行目に同日付が無い試合(超過) ---
