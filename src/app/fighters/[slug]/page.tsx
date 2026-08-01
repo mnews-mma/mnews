@@ -333,7 +333,17 @@ export default async function FighterPage({
   // Wikipedia通算が無い(noRecordData)が4団体合算(2行目)は取れている選手
   // (Wikiを持たない修斗・パンクラス・DEEP選手が該当)は、「通算戦績 データなし」を
   // 出さず2行目のみを表示する。両方無い場合のみ従来どおり「データなし」。
-  const suppressNoRecordRow = noRecordData && SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord;
+  //
+  // 指示書R-2(2026-08-01): 1行目にデータはあるが単一ソース由来で限定的な選手
+  // (needsReview/recordFromResults。詳細は指示書R-1bの調査参照)は、2行目(4団体
+  // 合算)の総試合数が1行目を上回る場合に限り1行目を出さない。判定は
+  // needsReview/recordFromResultsフラグのみで行い、超過幅などのヒューリスティックは
+  // 使わない(真正Wikipedia選手を誤って対象にしないため)。
+  const limitedSourceRow1Exceeded =
+    (fighter.needsReview || fighter.recordFromResults) &&
+    multiOrgRecord.wins + multiOrgRecord.losses + multiOrgRecord.draws > wins + losses + draws;
+  const suppressNoRecordRow =
+    (noRecordData || limitedSourceRow1Exceeded) && SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord;
 
   // 対戦テーブル: Wikipedia由来のhistoryがあればそれを使い、無い選手
   // (noRecordData。修斗・パンクラス・DEEPのみで戦っておりWikipedia記事が無い選手が
