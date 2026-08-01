@@ -7151,7 +7151,7 @@
     "eventName": "Yogibo presents RIZIN.29",
     "date": "2021-06-27",
     "sourceUrl": "https://jp.rizinff.com/_ct/17462946",
-    "fetchedDate": "2026-07-18",
+    "fetchedDate": "2026-08-01",
     "bouts": [
       {
         "cardPosition": 13,
@@ -7297,7 +7297,7 @@
         "ruleType": "MMA",
         "weightKg": 57,
         "namedDivision": null,
-        "resultType": "unknown",
+        "resultType": "cancelled",
         "winnerName": null,
         "winnerSlug": null,
         "round": null,

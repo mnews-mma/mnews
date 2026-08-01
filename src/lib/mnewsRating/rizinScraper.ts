@@ -389,7 +389,19 @@ export interface ParsedMethod {
   isWeighInMiss: boolean; // 「体重超過」の明示
 }
 
-export function parseMethod(methodRaw: string, markerA: RizinRawBout["markerA"]): ParsedMethod {
+// headingTextはデフォルト空文字(既存呼び出し元との後方互換のため省略可能)。
+// 背景(2026-08-01、指示書Zの調査で発見): 「※試合中止」等の中止表記が
+// methodRaw側ではなくheadingText側にのみ書かれ、methodRawが空文字になる
+// ケースが存在する(例: RIZIN.29 中村優作 vs 北方大地)。methodRawだけを
+// 見ていると中止判定に掛からずunknownに落ちてしまうため、中止/キャンセルの
+// 判定だけはheadingTextも合わせて見る(他の判定(NC/ドロー等)はmethodRaw側の
+// 表記のみで従来通り判定する。実測でheadingTextに「試合中止」「キャンセル」
+// を含む行は全データセット中1件のみと確認済み、既存の中止判定への影響なし)。
+export function parseMethod(
+  methodRaw: string,
+  markerA: RizinRawBout["markerA"],
+  headingText: string = ""
+): ParsedMethod {
   if (markerA === "NC" || /ノーコンテスト/.test(methodRaw)) {
     return {
       resultType: "nc",
@@ -402,7 +414,7 @@ export function parseMethod(methodRaw: string, markerA: RizinRawBout["markerA"])
   if (/ドロー/.test(methodRaw)) {
     return { resultType: "draw", round: null, time: null, technique: methodRaw, isWeighInMiss: false };
   }
-  if (/中止|キャンセル/.test(methodRaw)) {
+  if (/中止|キャンセル/.test(methodRaw) || /中止|キャンセル/.test(headingText)) {
     return { resultType: "cancelled", round: null, time: null, technique: methodRaw, isWeighInMiss: false };
   }
   // 例:「2R 0分37秒 TKO（レフェリーストップ：グラウンドでのキック）」
