@@ -128,17 +128,32 @@ async function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function fetchHtml(url: string, retries = 2): Promise<string | null> {
+// 取得タイムアウト・有限リトライ(2026-08-01、指示書「fetchHtml()に取得タイムアウトを
+// 入れる」)。真のハング(fetch()のPromiseが永久に解決しない)はcatchで捕まらないため
+// 従来の実装には対策が無く、実際にbuild-deep-records.tsが複数回無限に停止する
+// 事故を起こした。AbortControllerでの強制タイムアウトを追加する。
+// リトライを使い切った場合は黙ってnullを返さず例外で落とす(部分データのまま
+// data/deepRecords.jsonを上書きするのを防ぐため)。
+const FETCH_TIMEOUT_MS = 30_000;
+
+async function fetchHtml(url: string, retries = 3): Promise<string> {
+  let lastError: unknown;
   for (let attempt = 0; attempt <= retries; attempt++) {
+    process.stderr.write(`[fetch] ${url} (試行${attempt + 1}/${retries + 1})\n`);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
     try {
-      const res = await fetch(url, { headers: { "User-Agent": UA } });
+      const res = await fetch(url, { headers: { "User-Agent": UA }, signal: controller.signal });
       if (res.ok) return await res.text();
-    } catch {
-      /* fall through to retry */
+      lastError = new Error(`HTTPステータス${res.status}`);
+    } catch (err) {
+      lastError = err;
+    } finally {
+      clearTimeout(timer);
     }
-    if (attempt < retries) await sleep(1500);
+    if (attempt < retries) await sleep(1000 * 2 ** attempt);
   }
-  return null;
+  throw new Error(`[fetch] 取得に失敗しました(${retries + 1}回試行): ${url} (${String(lastError)})`);
 }
 
 interface EventDiag {
@@ -158,11 +173,6 @@ async function main() {
 
   console.log(`DEEP公式 /result/ アーカイブを取得中...`);
   const archiveHtml = await fetchHtml(ARCHIVE_URL);
-  if (!archiveHtml) {
-    console.error(`[FATAL] /result/ アーカイブの取得に失敗しました。`);
-    process.exitCode = 1;
-    return;
-  }
 
   const paginationLinks = detectPagination(archiveHtml);
   if (paginationLinks.length > 0) {
@@ -199,10 +209,6 @@ async function main() {
 
     await sleep(1200);
     const html = await fetchHtml(link.url);
-    if (!html) {
-      console.warn(`[WARN] fetch失敗: ${link.title} (${link.url})`);
-      continue;
-    }
 
     const clean = stripTags(html);
     const date = extractEventDate(clean);

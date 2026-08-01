@@ -39,18 +39,29 @@ async function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function fetchHtml(url: string, retries = 2): Promise<string | null> {
+// 取得タイムアウト・有限リトライ(2026-08-01、指示書「fetchHtml()に取得タイムアウトを
+// 入れる」。詳細はbuild-deep-records.tsの同名関数のコメント参照)。
+const FETCH_TIMEOUT_MS = 30_000;
+
+async function fetchHtml(url: string, retries = 3): Promise<string> {
   await assertAllowedByRobots(url, UA);
+  let lastError: unknown;
   for (let attempt = 0; attempt <= retries; attempt++) {
+    process.stderr.write(`[fetch] ${url} (試行${attempt + 1}/${retries + 1})\n`);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
     try {
-      const res = await fetch(url, { headers: { "User-Agent": UA } });
+      const res = await fetch(url, { headers: { "User-Agent": UA }, signal: controller.signal });
       if (res.ok) return await res.text();
-    } catch {
-      /* fall through to retry */
+      lastError = new Error(`HTTPステータス${res.status}`);
+    } catch (err) {
+      lastError = err;
+    } finally {
+      clearTimeout(timer);
     }
-    if (attempt < retries) await sleep(1500);
+    if (attempt < retries) await sleep(1000 * 2 ** attempt);
   }
-  return null;
+  throw new Error(`[fetch] 取得に失敗しました(${retries + 1}回試行): ${url} (${String(lastError)})`);
 }
 
 const WEIGH_IN_MISS_KEYWORDS = ["体重超過", "計量失格", "計量オーバー", "計量を行うことが出来なかった", "計量をクリアできず"];
@@ -114,7 +125,6 @@ function buildEventBouts(html: string, eventName: string): { bouts: ShootoRecord
 
 async function discoverEventIds(): Promise<number[]> {
   const indexHtml = await fetchHtml(INDEX_URL);
-  if (!indexHtml) throw new Error(`大会一覧ページの取得に失敗しました: ${INDEX_URL}`);
   const linkedIds = extractLinkedEventIds(indexHtml);
   console.log(`[discover] リンク済み大会id: ${linkedIds.length}件 (範囲 ${Math.min(...linkedIds)}〜${Math.max(...linkedIds)})`);
 
@@ -125,10 +135,6 @@ async function discoverEventIds(): Promise<number[]> {
   for (const id of missingIds) {
     await sleep(300);
     const html = await fetchHtml(eventUrl(id));
-    if (!html) {
-      console.warn(`[discover][WARN] 欠番id=${id} の取得に失敗(スキップ)`);
-      continue;
-    }
     if (isRealMissingEvent(html)) {
       extraIds.push(id);
       console.log(`[discover] id=${id}: リンク欠落だが実在する大会として追加`);
@@ -157,10 +163,6 @@ async function main() {
     await sleep(300);
     const url = eventUrl(id);
     const html = await fetchHtml(url);
-    if (!html) {
-      console.warn(`[WARN] fetch失敗: id=${id} (${url})`);
-      continue;
-    }
     // parseEventMeta自体が「実在しうる日付か」「テストページでないか」を判定する
     // (linkedなidにbout件数0件を要求しない。id=66のように実在するがbout件数が
     // 0件のページも有効な大会として扱う。欠番id探索専用の厳しめの判定

@@ -28,18 +28,29 @@ async function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function fetchHtml(url: string, retries = 2): Promise<string | null> {
+// 取得タイムアウト・有限リトライ(2026-08-01、指示書「fetchHtml()に取得タイムアウトを
+// 入れる」。詳細はbuild-deep-records.tsの同名関数のコメント参照)。
+const FETCH_TIMEOUT_MS = 30_000;
+
+async function fetchHtml(url: string, retries = 3): Promise<string> {
   await assertAllowedByRobots(url, UA);
+  let lastError: unknown;
   for (let attempt = 0; attempt <= retries; attempt++) {
+    process.stderr.write(`[fetch] ${url} (試行${attempt + 1}/${retries + 1})\n`);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
     try {
-      const res = await fetch(url, { headers: { "User-Agent": UA } });
+      const res = await fetch(url, { headers: { "User-Agent": UA }, signal: controller.signal });
       if (res.ok) return await res.text();
-    } catch {
-      /* fall through to retry */
+      lastError = new Error(`HTTPステータス${res.status}`);
+    } catch (err) {
+      lastError = err;
+    } finally {
+      clearTimeout(timer);
     }
-    if (attempt < retries) await sleep(1500);
+    if (attempt < retries) await sleep(1000 * 2 ** attempt);
   }
-  return null;
+  throw new Error(`[fetch] 取得に失敗しました(${retries + 1}回試行): ${url} (${String(lastError)})`);
 }
 
 function resolveWinnerName(
@@ -195,11 +206,6 @@ async function main() {
     }
     const url = `https://jp.rizinff.com/_ct/${entry.resultsPageId}`;
     const html = await fetchHtml(url);
-    if (!html) {
-      console.warn(`[WARN] fetch失敗: ${entry.eventName} (${url})`);
-      await sleep(400);
-      continue;
-    }
     const { bouts, parseFailures } = buildEventBouts(entry.eventName, entry.date, html);
     out.push({
       eventName: entry.eventName,
