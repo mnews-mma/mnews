@@ -391,7 +391,16 @@ const NC_NOTE_KEYWORDS = ["ノーコンテスト", "無効試合", "勝敗なし
 const CANCELLED_HEADING_KEYWORDS = ["中止", "欠場", "試合不成立"];
 const DRAW_KEYWORDS = ["引き分け"];
 
-export function resolveOutcome(raw: ShootoRawBout): ShootoOutcome {
+// eventNameはデフォルト空文字(既存呼び出し元との後方互換のため省略可能)。
+// 背景(2026-08-01、指示書Zの調査で発見): 大会自体が中止された場合、公式サイトは
+// イベント名(見出しページのタイトル)側にのみ「【中止】」と付け、各bout単位の
+// headingText(「第N試合 ○○級 5分2R」等)には中止の痕跡が一切残らない
+// (試合が実施されていないため当然、個々のカードの見出しには理由が書かれない)。
+// CANCELLED_HEADING_KEYWORDSはbout単位のheadingTextしか見ていないため、
+// このケース(大会単位の中止)を検出できずunknownに落ちていた
+// (実測: 全データセット中「【中止】」を含むeventNameは1件のみ、
+// PROFESSIONAL SHOOTO 2020 Supported by ONE Championship・該当7bout全件)。
+export function resolveOutcome(raw: ShootoRawBout, eventName: string = ""): ShootoOutcome {
   // 最優先: draw/technical-draw クラスは常にdraw。opacity/score/noteの判定を
   // 経由しない。
   //
@@ -481,7 +490,7 @@ export function resolveOutcome(raw: ShootoRawBout): ShootoOutcome {
     resultType = "decisive";
   } else if (notedNc) {
     resultType = "nc";
-  } else if (CANCELLED_HEADING_KEYWORDS.some((k) => raw.headingText.includes(k))) {
+  } else if (CANCELLED_HEADING_KEYWORDS.some((k) => raw.headingText.includes(k) || eventName.includes(k))) {
     resultType = "cancelled";
   } else {
     resultType = "unknown";
