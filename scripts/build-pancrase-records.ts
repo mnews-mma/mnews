@@ -32,19 +32,33 @@ async function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function fetchText(url: string, retries = 2): Promise<string | null> {
+// 取得タイムアウト・有限リトライ(2026-08-01、指示書「fetchHtml()に取得タイムアウトを
+// 入れる」。詳細はbuild-deep-records.tsの同名関数のコメント参照)。404は「PDFのみ
+// 大会等、そもそもHTML結果ページが存在しない」という正常系のため、従来どおり
+// リトライせず即座にnullを返す(例外にはしない)。それ以外の理由で取得に失敗し
+// リトライを使い切った場合のみ例外で落とす。
+const FETCH_TIMEOUT_MS = 30_000;
+
+async function fetchText(url: string, retries = 3): Promise<string | null> {
   await assertAllowedByRobots(url, UA);
+  let lastError: unknown;
   for (let attempt = 0; attempt <= retries; attempt++) {
+    process.stderr.write(`[fetch] ${url} (試行${attempt + 1}/${retries + 1})\n`);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
     try {
-      const res = await fetch(url, { headers: { "User-Agent": UA } });
+      const res = await fetch(url, { headers: { "User-Agent": UA }, signal: controller.signal });
       if (res.ok) return await res.text();
       if (res.status === 404) return null; // リトライしても無駄(PDFのみ大会等)
-    } catch {
-      /* fall through to retry */
+      lastError = new Error(`HTTPステータス${res.status}`);
+    } catch (err) {
+      lastError = err;
+    } finally {
+      clearTimeout(timer);
     }
-    if (attempt < retries) await sleep(1200);
+    if (attempt < retries) await sleep(1000 * 2 ** attempt);
   }
-  return null;
+  throw new Error(`[fetch] 取得に失敗しました(${retries + 1}回試行): ${url} (${String(lastError)})`);
 }
 
 // ------------------------------------------------------------------
