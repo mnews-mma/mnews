@@ -93,10 +93,24 @@ function violationKey(v: { file: string; pattern: string; code: string }): strin
   return `${v.file}::${v.pattern}::${v.code}`;
 }
 
+// 指示書W(2026-08-01): file::pattern単位の粗いキー(行内容を含まない)。
+// 完全一致キー(exact)で拾えなかった違反を、この粗いキー単位の「件数の
+// 増減」で最終判定するために使う(baseline-key-fragility.md 案1+案2の
+// ハイブリッド。詳細はこのファイル冒頭のコメント・PR説明参照)。
+function looseKey(v: { file: string; pattern: string }): string {
+  return `${v.file}::${v.pattern}`;
+}
+
 function loadBaseline(): Set<string> {
   if (!fs.existsSync(BASELINE_PATH)) return new Set();
   const parsed: BaselineFile = JSON.parse(fs.readFileSync(BASELINE_PATH, "utf8"));
   return new Set(parsed.violations.map(violationKey));
+}
+
+function loadBaselineRaw(): { file: string; pattern: string; code: string }[] {
+  if (!fs.existsSync(BASELINE_PATH)) return [];
+  const parsed: BaselineFile = JSON.parse(fs.readFileSync(BASELINE_PATH, "utf8"));
+  return parsed.violations;
 }
 
 function writeBaseline(violations: Violation[]) {
@@ -220,6 +234,28 @@ function scanAll(): Violation[] {
   return violations;
 }
 
+// 指示書W(2026-08-01): baseline完全一致キー(file::pattern::code)は、
+// 該当行の変数名変更・整形・ヘルパー抽出への書き換え等、違反の実質が
+// 変わらないリファクタでも機械的に「新規」扱いになる脆弱性がある
+// (out/baseline-key-fragility.md参照、案1〜4の比較検討済み)。
+// #317→#319→#318→#321で実際にこの経路で本番ビルドが2回落ちた
+// (#318が#319のbaseline修正を無自覚に上書きした)。
+//
+// 対策(案1「file::patternのみをキーにする」+案2「件数管理にする」の
+// ハイブリッド): 完全一致(exact)で拾えなかった違反は、即座に「新規」と
+// 断定せず、粗いキー(file::pattern、行内容を含まない)単位で件数を
+// baseline側の同キー件数と比較する。
+//   - 完全一致: 従来どおり無条件で通過(最も確実なケース)。
+//   - 不一致だが、その(file,pattern)の不一致件数がbaseline側の
+//     不一致件数以下 → 「要確認」(変数名変更・行の書き換え等による
+//     キーのズレの可能性が高い。ビルドは止めない。CIログに出す)。
+//   - 不一致件数がbaseline側の不一致件数を超える → 超過分だけを
+//     「新規違反」として扱いビルドを止める(真に新しく増えた違反を
+//     見逃さない)。
+// これにより、コードの実質を変えないリファクタ(要件①)ではビルドが
+// 落ちず、真に新規のコードが増えた場合(要件②)は従来どおり検出され、
+// baseline再生成のタイミングのズレで静かに保護が外れる経路(要件③)は
+// 「新規違反」と「要確認」で区別してログに出るようになる。
 function main() {
   const violations = scanAll();
 
@@ -229,17 +265,75 @@ function main() {
     return;
   }
 
-  const baseline = loadBaseline();
-  const newViolations = violations.filter((v) => !baseline.has(violationKey(v)));
-  const knownCount = violations.length - newViolations.length;
-  const fixedCount = [...baseline].filter((k) => !violations.some((v) => violationKey(v) === k)).length;
+  const baselineExact = loadBaseline();
+  const baselineRaw = loadBaselineRaw();
 
-  if (newViolations.length) {
-    const list = newViolations
-      .map((v) => `    ${v.file}:${v.line} [${v.pattern}] ${v.code}`)
-      .join("\n");
+  // 完全一致で判定できたものを両側から取り除く。
+  const exactMatchedCurrentKeys = new Set<string>();
+  const currentUnmatched: Violation[] = [];
+  for (const v of violations) {
+    const k = violationKey(v);
+    if (baselineExact.has(k)) {
+      exactMatchedCurrentKeys.add(k);
+    } else {
+      currentUnmatched.push(v);
+    }
+  }
+  const baselineUnmatched = baselineRaw.filter((b) => !violations.some((v) => violationKey(v) === violationKey(b)));
+
+  // 不一致分を粗いキー(file::pattern)単位で件数集計する。
+  function countByLooseKey<T extends { file: string; pattern: string }>(items: T[]): Map<string, number> {
+    const m = new Map<string, number>();
+    for (const it of items) {
+      const k = looseKey(it);
+      m.set(k, (m.get(k) ?? 0) + 1);
+    }
+    return m;
+  }
+  const currentUnmatchedCounts = countByLooseKey(currentUnmatched);
+  const baselineUnmatchedCounts = countByLooseKey(baselineUnmatched);
+
+  // currentUnmatchedを(file,pattern)ごとにグループ化し、baseline側の
+  // 同キー在庫(quota)を消費する形で「要確認」/「新規違反」に振り分ける。
+  const groupedCurrentUnmatched = new Map<string, Violation[]>();
+  for (const v of currentUnmatched) {
+    const k = looseKey(v);
+    if (!groupedCurrentUnmatched.has(k)) groupedCurrentUnmatched.set(k, []);
+    groupedCurrentUnmatched.get(k)!.push(v);
+  }
+
+  const hardNewViolations: Violation[] = [];
+  const needsReview: Violation[] = [];
+  for (const [k, items] of groupedCurrentUnmatched) {
+    const quota = baselineUnmatchedCounts.get(k) ?? 0;
+    items.forEach((v, i) => {
+      if (i < quota) needsReview.push(v);
+      else hardNewViolations.push(v);
+    });
+  }
+
+  // quotaとして消費されなかったbaseline側の不一致件数 = 実質的に解消済み
+  // (対応するcurrent違反が無い。真に直った/削除されたケース)。
+  let consumedBaselineTotal = 0;
+  for (const [k, count] of currentUnmatchedCounts) {
+    consumedBaselineTotal += Math.min(count, baselineUnmatchedCounts.get(k) ?? 0);
+  }
+  const fixedCount = baselineUnmatched.length - consumedBaselineTotal;
+  const knownCount = violations.length - hardNewViolations.length - needsReview.length;
+
+  if (needsReview.length) {
+    const list = needsReview.map((v) => `    ${v.file}:${v.line} [${v.pattern}] ${v.code}`).join("\n");
+    console.warn(
+      `[JST日付バイパス検査] △要確認(${needsReview.length}件、ビルドはブロックしません): baselineの完全一致キー(コードテキスト)からは外れましたが、` +
+        `同一ファイル・同一パターンの件数は増えていないため、変数名変更や行の書き換え等によるキーのズレの可能性が高いです:\n${list}\n` +
+        `  対処: 意図した変更であれば npx tsx scripts/check-jst-date-bypass.ts --write-baseline でbaselineを更新してコミットしてください。`
+    );
+  }
+
+  if (hardNewViolations.length) {
+    const list = hardNewViolations.map((v) => `    ${v.file}:${v.line} [${v.pattern}] ${v.code}`).join("\n");
     console.error(
-      `[JST日付バイパス検査] ★baselineに無い新規のJST日付ヘルパー迂回を検出(${newViolations.length}件)。デプロイをブロックします:\n${list}\n` +
+      `[JST日付バイパス検査] ★baselineに無い新規のJST日付ヘルパー迂回を検出(${hardNewViolations.length}件)。デプロイをブロックします:\n${list}\n` +
         `  対処: eventCountdown.tsのtoJstDateStr/formatEventDateJa/shiftDateStr等の既存ヘルパー経由に書き換えるか、` +
         `レビュー済みで意図的にgrandfatherするなら npx tsx scripts/check-jst-date-bypass.ts --write-baseline を実行してbaselineをコミットしてください` +
         `(新しく書いたコードの違反を安易にbaselineへ入れないこと)。`
@@ -248,7 +342,9 @@ function main() {
   }
 
   console.log(
-    `[JST日付バイパス検査] OK (新規違反0件。baseline内の既知違反${knownCount}件は引き続き通過)` +
+    `[JST日付バイパス検査] OK (新規違反0件。baseline内の既知違反${knownCount}件は引き続き通過` +
+      (needsReview.length ? `、要確認${needsReview.length}件` : "") +
+      `)` +
       (fixedCount > 0
         ? ` — baseline中${fixedCount}件が解消済みのようです。npx tsx scripts/check-jst-date-bypass.ts --write-baseline でbaselineを更新してください。`
         : "")
