@@ -6,7 +6,7 @@ import VsCard from "@/components/matchup/VsCard";
 import { getFighter } from "@/lib/fighters";
 import { ogImagePath } from "@/lib/ogShared";
 import { pageMetadata } from "@/lib/seo";
-import { fetchFighterRecordsStrict, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
+import { fetchFighterRecordsStrict, hasWikipediaRecord, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { normalizeVsSlugs, isVsPairIndexable, buildVsShareText } from "@/lib/vsPairing";
 import { findMatchupEvent } from "@/lib/events";
@@ -66,7 +66,7 @@ export async function generateMetadata({
   const indexable = recordsResult.ok && isVsPairIndexable(fighterA, fighterB, entryA, entryB);
 
   const commonCount =
-    recordsResult.ok && !entryA.noRecordData && !entryB.noRecordData
+    recordsResult.ok && hasWikipediaRecord(entryA) && hasWikipediaRecord(entryB)
       ? new Set(
           entryA.history
             .map((h) => h.opponent)
@@ -128,7 +128,7 @@ export default async function VsPage({
   const recordsResult = await fetchFighterRecordsStrict();
   const entryA = recordsResult.ok ? (recordsResult.records[norm.a] ?? emptyEntry()) : emptyEntry();
   const entryB = recordsResult.ok ? (recordsResult.records[norm.b] ?? emptyEntry()) : emptyEntry();
-  const bothRegistered = !entryA.noRecordData && !entryB.noRecordData;
+  const bothRegistered = hasWikipediaRecord(entryA) && hasWikipediaRecord(entryB);
 
   const visible = await getVisibleFighters();
   const visibleSlugs = new Set(visible.map((f) => f.slug));

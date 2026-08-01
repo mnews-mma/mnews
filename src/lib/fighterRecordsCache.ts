@@ -103,6 +103,18 @@ export function mergeFighterRecord(fighter: Fighter, records: FighterRecordsFile
   return { ...fighter, ...rec };
 }
 
+// 対戦カード/OGPで戦績を表示してよいか(Wikipedia由来か)の判定。
+// noRecordData===falseは「Wikipedia戦績が無い」の全ケースを捉えきれない:
+// recordFromResults選手やキャッシュ未生成選手はnoRecordData:trueが立つが、
+// fighters.ts側に静的シード値(4団体アーカイブ由来等)を持つ選手はWikipedia
+// 記事が無くてもnoRecordData:trueにならず、live:falseのままシード値が
+// resolveFighter()の最終フォールバックでそのまま素通しされる(遠藤来生の
+// PANCRASE 365カードで3-8-0が実データのように表示されていた実例の真因)。
+// live===trueはWikipedia解決に成功した場合のみ立つため、これ一本を判定基準にする。
+export function hasWikipediaRecord(entry: FighterRecordEntry | null | undefined): boolean {
+  return !!entry && entry.live === true;
+}
+
 export function resolveFightersFromRecords(
   fighters: Fighter[],
   records: FighterRecordsFile

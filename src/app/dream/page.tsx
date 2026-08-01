@@ -7,7 +7,7 @@ import VsCard from "@/components/matchup/VsCard";
 import XShareLink from "@/components/XShareLink";
 import { getFighter } from "@/lib/fighters";
 import { getVisibleFighters } from "@/lib/visibleFighters";
-import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
+import { fetchFighterRecords, hasWikipediaRecord } from "@/lib/fighterRecordsCache";
 import { isNewMatchupUiEnabled } from "@/lib/matchupUi";
 import { normalizeVsSlugs, buildVsShareText, buildDreamShareText } from "@/lib/vsPairing";
 import { pageMetadata } from "@/lib/seo";
@@ -123,7 +123,7 @@ export default async function DreamPage({
   const entryB = fighterB ? (records[fighterB.slug] ?? null) : null;
 
   const canGenerate = !!fighterA && !!fighterB && !!entryA && !!entryB && fighterA.slug !== fighterB.slug;
-  const canGenerateV2 = canGenerate && !entryA!.noRecordData && !entryB!.noRecordData;
+  const canGenerateV2 = canGenerate && hasWikipediaRecord(entryA) && hasWikipediaRecord(entryB);
 
   // 夢のカードはデータ比較(戦績・勝率・共通対戦相手)が主役で、階級跨ぎOKの
   // 設計上そもそも階級表記は不要(実在の対戦であるかのように誤読させないため
