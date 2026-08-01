@@ -262,7 +262,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "2R 2’51” TKO (レフェリーストップ：グラウンドパンチ)",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 11
@@ -283,7 +283,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "2R 0’39” TKO (ドクターストップ：膝蹴りによる鼻の負傷)",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 10
@@ -304,7 +304,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "1R 1’00” 腕ひしぎ十字固め",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 9
@@ -325,7 +325,7 @@
         "winnerSlug": "seigo",
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "1R 3’13” KO (左フック)",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 8
@@ -346,7 +346,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "判定3-0",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 7
@@ -367,7 +367,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "判定3-0",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 6
@@ -388,7 +388,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "判定3-0",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 5
@@ -409,7 +409,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "判定3-0",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 4
@@ -430,7 +430,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "判定0-3",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 3
@@ -451,7 +451,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "判定0-1",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 2
@@ -472,7 +472,7 @@
         "winnerSlug": null,
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "2R 3’55” TKO (レフェリーストップ：グラウンドパンチ)",
         "isWeighInMiss": false,
         "format": "group4_detached_mark",
         "boutNumber": 1
@@ -43790,7 +43790,7 @@
         "time": null,
         "methodRaw": "判定0-5",
         "isWeighInMiss": false,
-        "format": "F1",
+        "format": "group4_detached_mark",
         "boutNumber": 7
       },
       {
@@ -43811,7 +43811,7 @@
         "time": null,
         "methodRaw": "判定0-5",
         "isWeighInMiss": false,
-        "format": "F1",
+        "format": "group4_detached_mark",
         "boutNumber": 6
       },
       {
@@ -43832,7 +43832,7 @@
         "time": null,
         "methodRaw": "判定2-1",
         "isWeighInMiss": false,
-        "format": "F1",
+        "format": "group4_detached_mark",
         "boutNumber": 4
       },
       {
@@ -43853,7 +43853,7 @@
         "time": null,
         "methodRaw": "判定0-3",
         "isWeighInMiss": false,
-        "format": "F1",
+        "format": "group4_detached_mark",
         "boutNumber": 3
       },
       {
@@ -43874,11 +43874,11 @@
         "time": null,
         "methodRaw": "1R 1’48” KO",
         "isWeighInMiss": false,
-        "format": "F1",
+        "format": "group4_detached_mark",
         "boutNumber": 2
       }
     ],
-    "parseFailures": 2,
+    "parseFailures": 0,
     "venue": null
   },
   {
