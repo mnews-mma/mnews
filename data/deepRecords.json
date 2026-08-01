@@ -26499,7 +26499,7 @@
     "fetchedDate": "2026-08-01",
     "bouts": [
       {
-        "cardPosition": 7,
+        "cardPosition": 8,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "山本有人",
@@ -26520,7 +26520,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 6,
+        "cardPosition": 7,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "島袋チカラ",
@@ -26541,7 +26541,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 5,
+        "cardPosition": 6,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "誠悟",
@@ -26562,7 +26562,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 4,
+        "cardPosition": 5,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "伊藤裕樹",
@@ -26583,7 +26583,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 3,
+        "cardPosition": 4,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "福田龍彌",
@@ -26604,7 +26604,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 2,
+        "cardPosition": 3,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "神田コウヤ",
@@ -26625,22 +26625,43 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 1,
-        "isOpeningFight": true,
+        "cardPosition": 2,
+        "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "DJ.TAIKI",
-        "fighterBName": "○",
+        "fighterBName": "",
         "fighterASlug": null,
         "fighterBSlug": null,
         "ruleType": "unknown",
         "weightKg": null,
         "namedDivision": null,
         "resultType": "decisive",
-        "winnerName": "○",
+        "winnerName": "",
         "winnerSlug": null,
         "round": null,
         "time": null,
         "methodRaw": "判定0-5",
+        "isWeighInMiss": false,
+        "format": "f8_fully_separated",
+        "boutNumber": null
+      },
+      {
+        "cardPosition": 1,
+        "isOpeningFight": true,
+        "headingText": "",
+        "fighterAName": "神龍誠",
+        "fighterBName": "",
+        "fighterASlug": "shinryu-makoto",
+        "fighterBSlug": null,
+        "ruleType": "unknown",
+        "weightKg": null,
+        "namedDivision": null,
+        "resultType": "decisive",
+        "winnerName": "神龍誠",
+        "winnerSlug": "shinryu-makoto",
+        "round": null,
+        "time": null,
+        "methodRaw": "一本 3R 53秒",
         "isWeighInMiss": false,
         "format": "f8_fully_separated",
         "boutNumber": null
@@ -29579,7 +29600,7 @@
     "fetchedDate": "2026-08-01",
     "bouts": [
       {
-        "cardPosition": 7,
+        "cardPosition": 8,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "KENTA",
@@ -29600,7 +29621,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 6,
+        "cardPosition": 7,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "TATSUMI",
@@ -29621,7 +29642,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 5,
+        "cardPosition": 6,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "雅駿介",
@@ -29642,7 +29663,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 4,
+        "cardPosition": 5,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "川名TENCHO雄生",
@@ -29663,7 +29684,7 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 3,
+        "cardPosition": 4,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "中村大介",
@@ -29684,18 +29705,18 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 2,
+        "cardPosition": 3,
         "isOpeningFight": false,
         "headingText": "",
         "fighterAName": "北岡悟",
-        "fighterBName": "○",
+        "fighterBName": "",
         "fighterASlug": "kitaoka-satoru",
         "fighterBSlug": null,
         "ruleType": "unknown",
         "weightKg": null,
         "namedDivision": null,
         "resultType": "decisive",
-        "winnerName": "○",
+        "winnerName": "",
         "winnerSlug": null,
         "round": null,
         "time": null,
@@ -29705,22 +29726,43 @@
         "boutNumber": null
       },
       {
-        "cardPosition": 1,
-        "isOpeningFight": true,
+        "cardPosition": 2,
+        "isOpeningFight": false,
         "headingText": "",
-        "fighterAName": "○",
-        "fighterBName": "酒井リョウ",
-        "fighterASlug": null,
-        "fighterBSlug": "sakai-ryo",
+        "fighterAName": "大島沙緒里",
+        "fighterBName": "古瀬美月",
+        "fighterASlug": "oshima-saori",
+        "fighterBSlug": null,
         "ruleType": "unknown",
         "weightKg": null,
         "namedDivision": null,
-        "resultType": "unknown",
-        "winnerName": null,
-        "winnerSlug": null,
+        "resultType": "decisive",
+        "winnerName": "大島沙緒里",
+        "winnerSlug": "oshima-saori",
         "round": null,
         "time": null,
-        "methodRaw": "",
+        "methodRaw": "一本 1R 1分24秒 ※アームロック",
+        "isWeighInMiss": false,
+        "format": "f8_fully_separated",
+        "boutNumber": null
+      },
+      {
+        "cardPosition": 1,
+        "isOpeningFight": true,
+        "headingText": "",
+        "fighterAName": "酒井リョウ",
+        "fighterBName": "赤沢幸典",
+        "fighterASlug": "sakai-ryo",
+        "fighterBSlug": "akazawa-yukinori",
+        "ruleType": "unknown",
+        "weightKg": null,
+        "namedDivision": null,
+        "resultType": "decisive",
+        "winnerName": "酒井リョウ",
+        "winnerSlug": "sakai-ryo",
+        "round": null,
+        "time": null,
+        "methodRaw": "KO 1R 33秒",
         "isWeighInMiss": false,
         "format": "f8_fully_separated",
         "boutNumber": null
