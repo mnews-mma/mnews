@@ -255,6 +255,39 @@ const BOUT_RE_F1 = new RegExp(
   "g"
 );
 
+// F1のmethod(末尾)が独立した<br>セルを持たず、敗者のジム括弧の直後に
+// 改行無しでそのまま連結されている亜種(2026-08-01、DEEP NAGOYA IMPACT
+// 2022公武堂ファイトで発見: 9試合中8試合が「〇岡本秀義（翼鍛錬所）|
+// ×廣瀬裕斗（マーシャルアーツクラブ中津川） 1R 2分20秒 TKO（ハイキック）」
+// のように、敗者情報とmethodが同じセルに同居していた。F1は末尾methodの
+// 前に`\|`(パイプ)を必須にしているため、この構造の8試合はF1では一切
+// マッチせず、代わりにF2(method中間型)が誤って選ばれ、決着方法テキスト
+// 全体を「method」として飲み込んだ末に次boutの見出しを敗者名として拾う
+// 連鎖破損になっていた。同一大会内でも1試合だけ(第6試合)は敗者情報と
+// methodの間に本来の<br>があり、この1試合だけはF1が正しく抽出できていた。
+// 敗者側の閉じ括弧の直後にパイプが有っても無くても対応できるよう
+// `[)）]\s*(?:\|\s*)?`で任意にすることで、この大会の全9試合を1つの
+// フォーマットで統一的に扱えるようにする(F1本体の必須パイプ要件は
+// 変更しない。既存142件超のF1採用ページへの影響を避けるため、別の
+// 新規フォーマットとして追加する)。
+//
+// method欄の内容を無条件に許容すると、DEEP 125 IMPACT等の「計量結果」
+// セクション(王者/挑戦者の対戦カード告知・体重のみの記載)まで誤って
+// bout本体として一致してしまい、8大会でbout数が水増しされる重大な回帰を
+// 起こした(2026-08-01、実装直後の全237大会回帰確認で発見。DEEP 125
+// IMPACTが5bout→14boutに急増したことで検出できた)。実在する決着方法は
+// 必ず「判定」「KO」「TKO」等の決着キーワード、またはラウンド数字+「R」
+// (「1R」等)で始まるため、method欄がこのいずれかで始まることを先読みで
+// 必須にする。これにより「：挑戦者」「66.15kg」のような計量セクションの
+// 地の文はmethod欄として認識されなくなり、それらの誤bout自体が生成
+// されなくなる(NOT_METHOD_TEXTと同じキーワード集合の肯定形)。
+const METHOD_LOOKS_REAL =
+  "(?=\\d+R|判定|KO|TKO|Ｋ．Ｏ|一本|反則|不戦|棄権|降参|エキシビション|ノーコンテスト|試合中止)";
+const BOUT_RE_F1_GLUED = new RegExp(
+  `第\\s*(\\d+)試合\\s*\\|?\\s*([^|]+?)\\|\\s*${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]${KG_SUFFIX}\\|\\s*${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]\\s*(?:\\|\\s*)?${METHOD_LOOKS_REAL}([^|]*)`,
+  "g"
+);
+
 // Group4(mark分離+空セル)。F1との違い: 見出しと1人目markの間に任意の
 // 「空セル(|のみ)」を許容し、mark直後に選手名が同居しない(単独セル)場合も
 // 許容する。両フィールドとも「必ず1件以上のパイプ」を要求することで、F1が
@@ -472,6 +505,7 @@ const WINNER_HINT_RE = /勝者[:：]?\s*\|?\s*([^\s|]+)/;
 
 export type DeepBoutFormat =
   | "F1"
+  | "f1_method_glued"
   | "group1_vs"
   | "group2_no_heading"
   | "group4_detached_mark"
@@ -981,6 +1015,7 @@ export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; 
 
   const rawCandidates: { bouts: DeepRawBout[]; format: DeepBoutFormat }[] = [
     { bouts: extractNumberedMarkBouts(bodyClean, BOUT_RE_F1, "F1"), format: "F1" },
+    { bouts: extractNumberedMarkBouts(bodyClean, BOUT_RE_F1_GLUED, "f1_method_glued"), format: "f1_method_glued" },
     { bouts: extractNumberedMarkBouts(bodyClean, BOUT_RE_GROUP4, "group4_detached_mark"), format: "group4_detached_mark" },
     { bouts: extractF2Bouts(bodyClean), format: "f2_method_middle" },
     { bouts: extractF10Bouts(bodyClean), format: "f10_vs_and_mark" },
