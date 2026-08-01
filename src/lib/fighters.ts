@@ -2843,6 +2843,13 @@ export const FIGHTERS: Fighter[] = [
     slug: "karen",
     nameJa: "KAREN",
     nameEn: "Karen",
+    // 指示書R-4(2026-08-01): 2021-10-17のPANCRASE 324で「華蓮DATE」から
+    // 改名(efight.jp「パンクラス初参戦の華蓮DATEがKARENに改名し」参照)。
+    // それ以前のDEEP JEWELS・パンクラスの生データは旧リングネーム
+    // 「華蓮DATE」(半角スペース有り無り両表記あり、いずれも
+    // fighterNameBackfill.tsのnfkc_whitespace正規化で吸収される)で
+    // 記録されているため、alias登録により旧名義のboutを本人に解決する。
+    aliases: ["華蓮DATE"],
     org: "pancrase",
     orgs: ["shooto", "pancrase"],
     weightClass: "女子ストロー級",
