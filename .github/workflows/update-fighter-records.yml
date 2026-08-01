@@ -40,7 +40,28 @@ jobs:
           if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json; then
             git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json
             git commit -m "chore: update fighter records + mnews rating [skip ci]"
-            git push
+
+            # archive-articles.yml(30分毎にmainへpush)とこのジョブ(所要8.5〜13.8分)の
+            # 実行が重なると、pushがnon-fast-forwardで拒否され、計算結果ごと静かに
+            # 失われる事故が実際に発生した(2026-07-19・2026-07-31、過去27回中2回)。
+            # 対象ファイルが競合しない前提でfetch+rebaseしてリトライする。rebase自体が
+            # 競合した場合は異常終了させる(黙って上書き・破棄しない)。
+            max_attempts=5
+            attempt=1
+            until git push; do
+              if [ "$attempt" -ge "$max_attempts" ]; then
+                echo "::error::push が ${max_attempts} 回連続で失敗しました。競合を解消できないため異常終了します(データは破棄していません。ローカルコミットを確認してください)。"
+                exit 1
+              fi
+              echo "push失敗(試行${attempt}/${max_attempts})。origin/mainを取り込んでrebaseし再試行します。"
+              git fetch origin main
+              if ! git rebase origin/main; then
+                echo "::error::git rebase が競合しました。手動確認が必要です(黙って上書きしません)。"
+                git rebase --abort
+                exit 1
+              fi
+              attempt=$((attempt + 1))
+            done
           else
             echo "No changes to commit."
           fi
