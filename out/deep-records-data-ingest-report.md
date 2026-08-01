@@ -7,9 +7,9 @@
 - 投入大会数: 237
 - bout数: 2333
 - parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 4件
-- resultType=unknown: 28件
+- resultType=unknown: 24件
 - 選手名未解決(fighterASlug/fighterBSlug null): 3756件
-- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 234件
+- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 235件
 - 除外(アマチュア大会): 9件
 - 除外(抽出0件・F7/F11相当): 29件
 - 除外(DEEP＆PANCRASE共催大会・PANCRASE側を正とする): 5件
@@ -206,7 +206,7 @@
 | DEEP TOKYO IMPACT 1st ROUND | 2021-06-19 | 1 | f2_method_middle | 0 | 0 | 2 | 1 |
 | DEEP 101 IMPACT | 2021-05-05 | 7 | f2_method_middle | 0 | 0 | 6 | 0 |
 | DEEP TOKYO IMPACT 2021 | 2021-03-13 | 10 | f2_method_middle | 0 | 0 | 15 | 0 |
-| DEEP JEWELS 32 | 2021-03-07 | 8 | f2_method_middle | 0 | 0 | 9 | 1 |
+| DEEP JEWELS 32 | 2021-03-07 | 8 | f2_method_middle | 0 | 0 | 9 | 2 |
 | DEEP 100 IMPACT ～20th Anniversary～ | 2021-02-21 | 16 | f2_method_middle | 0 | 3 | 19 | 0 |
 | DEEP TOKYO IMPACT 2020 | 2020-12-19 | 9 | f2_method_middle | 0 | 0 | 14 | 0 |
 | DEEP JEWELS 31 | 2020-12-19 | 5 | f2_method_middle | 0 | 1 | 5 | 0 |
@@ -217,12 +217,12 @@
 | DEEP 96 IMPACT | 2020-08-23 | 8 | f2_method_middle | 0 | 0 | 12 | 0 |
 | DEEP 95 IMPACT | 2020-08-23 | 8 | f2_method_middle | 0 | 0 | 13 | 0 |
 | DEEP JEWELS 29 | 2020-07-23 | 5 | f2_method_middle | 0 | 0 | 6 | 1 |
-| DEEP 94 IMPACT | 2020-03-01 | 10 | f2_method_middle | 0 | 1 | 15 | 0 |
+| DEEP 94 IMPACT | 2020-03-01 | 10 | f2_method_middle | 0 | 0 | 15 | 0 |
 | DEEP JEWELS 28 | 2020-02-24 | 8 | f2_method_middle | 0 | 0 | 15 | 0 |
 | DEEP JEWELS 27 | 2019-12-22 | 5 | f2_method_middle | 0 | 0 | 10 | 5 |
 | DEEP 93 IMPACT | 2019-12-15 | 24 | f2_method_middle | 0 | 1 | 36 | 0 |
 | DEEP 92 IMPACT | 2019-10-22 | 9 | f2_method_middle | 0 | 0 | 12 | 0 |
-| DEEP JEWELS 26 | 2019-10-22 | 9 | f2_method_middle | 0 | 2 | 17 | 0 |
+| DEEP JEWELS 26 | 2019-10-22 | 9 | f2_method_middle | 0 | 0 | 17 | 0 |
 | DEEP 91 IMPACT | 2019-09-08 | 14 | f2_method_middle | 0 | 0 | 22 | 0 |
 | DEEP TOKYO IMPACT 2019 | 2019-09-01 | 3 | f2_method_middle | 0 | 0 | 5 | 8 |
 | DEEP JEWELS 25 | 2019-09-01 | 7 | f2_method_middle | 0 | 0 | 12 | 0 |
@@ -232,7 +232,7 @@
 | DEEP CAGE IMPACT 2019 in 大阪 | 2019-04-28 | 15 | F1 | 0 | 0 | 28 | 0 |
 | DEEP TOKYO IMPACT 2019 | 2019-03-16 | 9 | f2_method_middle | 0 | 0 | 17 | 2 |
 | DEEP 88 IMPACT | 2019-03-09 | 12 | f2_method_middle | 0 | 0 | 17 | 0 |
-| DEEP JEWELS 23 | 2019-03-09 | 10 | f2_method_middle | 0 | 1 | 19 | 0 |
+| DEEP JEWELS 23 | 2019-03-09 | 10 | f2_method_middle | 0 | 0 | 19 | 0 |
 | DEEP 87 IMPACT | 2018-12-22 | 9 | f2_method_middle | 0 | 0 | 15 | 0 |
 | DEEP JEWELS 22 | 2018-12-01 | 11 | f2_method_middle | 0 | 0 | 20 | 0 |
 | DEEP 86 IMPACT | 2022-10-27 | 14 | f2_method_middle | 0 | 0 | 22 | 0 |

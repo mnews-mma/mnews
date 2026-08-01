@@ -238,8 +238,16 @@ const MARK_OPT = "([●○〇△◯×⚪⚫]?)";
 // (「S 1R」等の略号)場合も除外する。実在の選手名がこれらのパターンで
 // 始まることは無い(捏造ゼロ原則の裏付けとして、既存231件のdata/でこの
 // パターンで始まる実在選手名は確認されていない)。
+//
+// 「KO」「TKO」は後ろに英字が続かない場合に限定する(2026-08-01、DEEP
+// JEWELS 26で発見: 選手名「KOTORI」が偶然「KO」で始まるため、方式名の
+// 「KO」と誤って前方一致し、mark文字が選手名側へ押し出されてしまっていた
+// (「●KOTORI」のように選手名にmark文字が混入する事故)。「KO 1R」等の
+// 実際の決着方法表記は「KO」の直後が空白・数字・全角文字等であり、英字が
+// 続くことは無いため、後ろに英字が続かないことを条件に加えても決着方法の
+// 除外効果は変わらない)。
 const NOT_METHOD_TEXT =
-  "(?!\\d|[A-Za-zＡ-Ｚａ-ｚ]{1,4}\\s*\\d|判定|KO|TKO|Ｋ．Ｏ|一本|反則|不戦|棄権|降参|エキシビション|ノーコンテスト|試合中止)";
+  "(?!\\d|[A-Za-zＡ-Ｚａ-ｚ]{1,4}\\s*\\d|判定|(?:KO|TKO|Ｋ．Ｏ)(?![A-Za-zＡ-Ｚａ-ｚ])|一本|反則|不戦|棄権|降参|エキシビション|ノーコンテスト|試合中止)";
 
 // F1(現行、PR#201/#231のBOUT_REをベースに、上記kg表記・mark任意化を拡張)。
 const BOUT_RE_F1 = new RegExp(
@@ -335,8 +343,19 @@ const BOUT_RE_F4 = new RegExp(
 // キャプチャを終端させる。
 const GYM_CLOSE = "[)）〉]";
 const GYM_CONTENT = "[^)）〉]*";
+// markが選手名と同じセルに同居せず、独立したパイプ区切りセルになっている
+// 実例がある(2026-08-01、DEEP JEWELS 26「KAI |◯|古瀬美月」で発見。HTML側の
+// <strong>タグの開始・終了位置が決着方法とmarkをまたいでいるため、
+// stripTags後にmarkだけが前後をパイプで挟まれた単独セルになる)。従来は
+// mark直後に選手名が同居する前提だったため、mark単独セルの直後にある
+// パイプが選手名キャプチャの開始条件(パイプで始まらない)を満たせず、
+// 選手名キャプチャがmark文字自体を選手名として飲み込み、本来の選手名
+// (古瀬美月)が完全に失われていた(単なる誤表示ではなくデータ消失)。
+// mark直後に任意個のパイプ区切りセルを許容することで、mark単独セルを
+// スキップして本来の選手名セルまで正しく到達できるようにする。
+const MARK_CELL_SEP = "(?:\\|\\s*)*";
 const BOUT_RE_F2 = new RegExp(
-  `第\\s*(\\d+)試合\\s*\\|?\\s*([^|]+?)(?:\\|\\s*)+${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)(?:[(（](${GYM_CONTENT})${GYM_CLOSE})?${KG_SUFFIX}(?:\\|\\s*)+([^|]+?)(?:\\|\\s*)+${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)(?:[(（](${GYM_CONTENT})${GYM_CLOSE})?${KG_SUFFIX}(?=\\|)`,
+  `第\\s*(\\d+)試合\\s*\\|?\\s*([^|]+?)(?:\\|\\s*)+${MARK_OPT}${MARK_CELL_SEP}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)(?:[(（](${GYM_CONTENT})${GYM_CLOSE})?${KG_SUFFIX}(?:\\|\\s*)+([^|]+?)(?:\\|\\s*)+${MARK_OPT}${MARK_CELL_SEP}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)(?:[(（](${GYM_CONTENT})${GYM_CLOSE})?${KG_SUFFIX}(?=\\|)`,
   "g"
 );
 
@@ -349,9 +368,10 @@ const BOUT_RE_F2 = new RegExp(
 // すると弱い手がかり同士が重なり合い、無関係な地の文まで誤って大量に
 // マッチする事故が起きた。2026-07-29、初回実装でnagoya4th等の2024年以降
 // VS型ページまで誤マッチする重大な回帰を確認・修正)。
-// ジムの閉じ括弧の異表記(「〉」)についてはBOUT_RE_F2と同じ対応をする。
+// ジムの閉じ括弧の異表記(「〉」)・mark単独セル(MARK_CELL_SEP)についても
+// BOUT_RE_F2と同じ対応をする。
 const BOUT_RE_F2_NO_HEADING = new RegExp(
-  `(?:^|\\|)\\s*([^|]{0,30}?)\\|\\s*([●○〇△◯×⚪⚫])\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)[(（](${GYM_CONTENT})${GYM_CLOSE}${KG_SUFFIX}\\|\\s*([^|]+?)\\|\\s*${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)[(（](${GYM_CONTENT})${GYM_CLOSE}${KG_SUFFIX}(?=\\|)`,
+  `(?:^|\\|)\\s*([^|]{0,30}?)\\|\\s*([●○〇△◯×⚪⚫])${MARK_CELL_SEP}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)[(（](${GYM_CONTENT})${GYM_CLOSE}${KG_SUFFIX}\\|\\s*([^|]+?)\\|\\s*${MARK_OPT}${MARK_CELL_SEP}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)[(（](${GYM_CONTENT})${GYM_CLOSE}${KG_SUFFIX}(?=\\|)`,
   "g"
 );
 
@@ -937,6 +957,24 @@ function dedupeBoutsByFighterPair(bouts: DeepRawBout[]): DeepRawBout[] {
   return result;
 }
 
+// DEEP公式サイト側のPHP実行時警告(例:「<b>Warning</b>: Use of undefined
+// constant za...」)が、選手名欄の直後に実在の対戦相手情報が無いページ末尾の
+// boutで、選手名として誤って拾われることがある(2026-08-01、DEEP JEWELS 6・
+// DEEP NAGOYA IMPACT 2022公武堂ファイトの各最終boutで発見。対戦相手欄が
+// 公式ページ自体に存在しないため、正規表現がページ末尾の実コンテンツ
+// (このPHP警告)まで探しに行ってしまう)。個別大会を除外するのではなく、
+// stripTags後に単独の"Warning"という語として残るこの定型文を選手名欄から
+// 汎用的に検知し、捏造せず空文字列(未取得)に戻す(将来の新規大会でも同じ
+// 定型文が出た場合に自動的に対応できるようにする)。
+const PHP_WARNING_BOILERPLATE = "Warning";
+function scrubPhpWarningLeak(bouts: DeepRawBout[]): DeepRawBout[] {
+  return bouts.map((b) => ({
+    ...b,
+    fighterAName: b.fighterAName.trim() === PHP_WARNING_BOILERPLATE ? "" : b.fighterAName,
+    fighterBName: b.fighterBName.trim() === PHP_WARNING_BOILERPLATE ? "" : b.fighterBName,
+  }));
+}
+
 export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; formatsUsed: DeepBoutFormat[] } {
   const bodyClean = scopeToResultsSection(rawBodyClean);
   const headingCount = countBoutHeadings(bodyClean);
@@ -972,7 +1010,7 @@ export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; 
     }
   }
 
-  return { bouts: best.bouts, formatsUsed: [best.format] };
+  return { bouts: scrubPhpWarningLeak(best.bouts), formatsUsed: [best.format] };
 }
 
 // ── 4. 勝敗判定 ──────────────────────────────────────────────────────────
