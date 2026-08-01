@@ -5,11 +5,11 @@
 - アーカイブ総リンク数: 288
 - 候補大会数(開催済・KICK/アマチュア除く): 266
 - 投入大会数: 237
-- bout数: 2335
-- parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 4件
-- resultType=unknown: 34件
-- 選手名未解決(fighterASlug/fighterBSlug null): 3755件
-- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 234件
+- bout数: 2330
+- parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 6件
+- resultType=unknown: 29件
+- 選手名未解決(fighterASlug/fighterBSlug null): 3753件
+- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 233件
 - 除外(アマチュア大会): 9件
 - 除外(抽出0件・F7/F11相当): 29件
 - 除外(DEEP＆PANCRASE共催大会・PANCRASE側を正とする): 5件
@@ -104,7 +104,7 @@
 | DEEP OSAKA IMPACT 2025 2nd ROUND | 2025-06-29 | 16 | F1 | 0 | 0 | 28 | 0 |
 | DEEP TOKYO IMPACT 2025 3rd ROUND | 2025-05-25 | 10 | group2_no_heading | 0 | 0 | 15 | 2 |
 | DEEP JEWELS 49 | 2025-05-25 | 5 | F1 | 0 | 0 | 10 | 3 |
-| DEEP 125 IMPACT | 2025-05-05 | 10 | F1 | 0 | 5 | 4 | 2 |
+| DEEP 125 IMPACT | 2025-05-05 | 5 | F1 | 2 | 0 | 2 | 1 |
 | DEEP HAMAMATSU IMPACT 2025 1st ROUND | 2025-04-27 | 9 | F1 | 1 | 0 | 17 | 9 |
 | DEEP NAGOYA IMPACT 2025 1st ROUND | 2025-04-20 | 13 | F1 | 0 | 0 | 26 | 6 |
 | DEEP TOKYO IMPACT 2025 2nd ROUND | 2025-04-13 | 10 | F1 | 0 | 0 | 15 | 3 |
