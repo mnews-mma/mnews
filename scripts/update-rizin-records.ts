@@ -79,7 +79,7 @@ function buildEventBouts(eventName: string, date: string, html: string): { bouts
   const total = successful.length;
   const parsed: RizinRecordsBout[] = successful.map(({ raw }, idx) => {
     const ruleInfo = parseRuleInfo(raw.ruleLineRaw);
-    const method = parseMethod(raw.methodRaw, raw.markerA);
+    const method = parseMethod(raw.methodRaw, raw.markerA, raw.headingText);
     const winnerName = resolveWinnerName(raw.fighterAName, raw.fighterBName, raw.markerA, raw.markerB);
     const fighterASlug = findFighterSlugByName(raw.fighterAName);
     const fighterBSlug = findFighterSlugByName(raw.fighterBName);
