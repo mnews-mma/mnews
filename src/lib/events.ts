@@ -797,6 +797,115 @@ export const EVENTS: MEvent[] = [
       },
     ],
   },
+  {
+    slug: "deep-hamamatsu-impact-2026-2nd-round",
+    org: "deep",
+    status: "upcoming",
+    eventName: "DEEP HAMAMATSU IMPACT 2026 2nd ROUND",
+    date: "2026-10-12",
+    openTime: "13:30",
+    startTime: "14:00",
+    venue: "アクトシティ浜松展示イベントホール",
+    sourceUrl: "https://www.deep2001.com/deep-hamamatsu-impact-2026-2nd-round/",
+    bouts: [
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "加藤健二",
+        fighterB: "日比野えび中純也",
+      },
+      {
+        weightClass: "DEEPストロー級（52.2kg）",
+        fighterA: "中務修良",
+        fighterB: "鶴斗",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "内山拓真",
+        fighterB: "三嶋康貴",
+      },
+      {
+        weightClass: "DEEPライト級（70.3kg）",
+        fighterA: "Street♡★Bob洸助",
+        fighterB: "ベンジャミン",
+      },
+      {
+        weightClass: "DEEPフェザー級（65.8kg）",
+        fighterA: "拓MAX",
+        fighterB: "中村雄一",
+      },
+      {
+        weightClass: "DEEP 73kg以下",
+        fighterA: "川島悠汰",
+        fighterB: "胸毛ウナギニキ",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "AKIYOSHI",
+        fighterB: "時任流架",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "一輝",
+        fighterB: "ルーク中村",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "石田拓己",
+        fighterB: "倉本拓也",
+      },
+      {
+        weightClass: "DEEPバンタム級（61.2kg）",
+        fighterA: "椿馨",
+        fighterB: "城聖也",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "青田剛",
+        fighterB: "古市陸",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "佐藤聖優",
+        fighterB: "前田游",
+      },
+      {
+        weightClass: "DEEPフライ級（56.7kg）",
+        fighterA: "能坂陸哉",
+        fighterB: "廣瀬裕斗",
+      },
+      {
+        weightClass: "DEEPストロー級",
+        rule: "アマチュアSルール 3分2R",
+        fighterA: "加藤翔奏",
+        fighterB: "ショウキ",
+      },
+      {
+        weightClass: "DEEPストロー級",
+        rule: "アマチュアSルール 3分2R",
+        fighterA: "菊池創太",
+        fighterB: "Michael",
+      },
+      {
+        weightClass: "DEEPストロー級",
+        rule: "アマチュアSルール 3分2R",
+        fighterA: "安田優希",
+        fighterB: "小関琥大朗",
+      },
+      {
+        weightClass: "DEEPフライ級",
+        rule: "アマチュアSルール 3分2R",
+        fighterA: "阿出川凌真",
+        fighterB: "RYUA",
+      },
+      {
+        weightClass: "DEEPバンタム級",
+        rule: "アマチュアSルール 3分2R",
+        fighterA: "高橋典斗",
+        fighterB: "永井ルカス",
+        note: "オープニングファイト",
+      },
+    ],
+  },
   // PROFESSIONAL SHOOTO 2026 Vol.5(2026-07-20)は開催済み → EVENT_RESULTS(shooto-2026-vol5)へ移動。
   {
     slug: "shooto-2026-vol6",
