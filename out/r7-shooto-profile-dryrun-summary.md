@@ -76,15 +76,35 @@
 
 プロフィールページの生HTMLは、大会が既存archiveにある場合、日付セルが`<a href="/result/?id=NNN">`というリンクになっており、**日付からの推測は不要で大会idを直接取得できる**(101名・884bout中、matched773件全てで確認)。ただし新規②-b(54件)はリンク自体が無い、またはリンク先の大会がshootoRecords.jsonに存在しない。この54件はeventName補完不能。
 
-### 新規①・新規②-bでeventNameが取れない場合の投入設計(型・表示・ソート実測)
+### ★訂正(2026-08-02追記): 新規①・新規②-bの投入先は`FIGHTERS.history`ではない
 
-- **型**: `FightRecord.event`(`src/lib/fighters.ts`)、`ShootoRecordsEvent.eventName`(`src/lib/mnewsRating/shootoScraper.ts`)はいずれも`string`必須(nullable/optional非対応)。
-- **`ShootoRecordsEvent`構造は不適合**: 1要素=1大会というグルーピング構造のため、「大会不明」のbout単体を格納する箱を作ろうとすると、`eventName`に何かを入れねばならず、実在しない大会名を捏造することになる。この経路には向かない。
-- **`FIGHTERS[slug].history: FightRecord[]`は適合**: 選手単位・bout単位の配列であり、大会名不明のboutを`event: ""`(空文字)として個別に追加できる。
-  - **型**: 空文字は`string`型として問題なくコンパイルが通る。
-  - **表示**: `src/app/fighters/[slug]/page.tsx`の`findEventSlug(eventName)`は`target = norm(eventName)`が空文字の場合、`target.includes(en)`(空文字.includes(実在の大会名))が常にfalseになるため確実に`null`を返す。テーブル描画側(`{eventSlug ? <a>...</a> : h.event}`)はnullの場合`h.event`(空文字)をそのまま出すため、**空セルとして安全に描画される(クラッシュ・誤リンクなし)ことをNode実行で実測確認済み**。
-  - **ソート**: `shootoRecordsAggregate.ts`の`computeFighterShootoRecord()`の並び替えは`bouts.sort((a, b) => (a.date < b.date ? -1 : 1))`で**日付のみに依存**しており、`event`の値には一切影響されない。空文字が混在してもソート順は乱れないことを実測確認済み(サンプル配列で実行し、日付昇順を確認)。
-- **結論**: 新規①・新規②-bを投入する場合の設計は、`data/shootoRecords.json`(`ShootoRecordsEvent`配列)ではなく`FIGHTERS[slug].history`(`FightRecord`配列、`event: ""`)を投入先とするのが型・表示・ソートいずれの観点からも適合する。
+前回版の本セクションは「`FIGHTERS[slug].history`(1行目相当)に`event: ""`で入れれば型・表示・ソートいずれも問題ない」という結論で終えていたが、これは**このトラックの出発点である「山上幹臣の2行目(RIZIN・DEEP・パンクラス・修斗通算)が3-1-0のまま」という問題を解決しない**。`src/lib/mnewsRating/multiOrgRecord.ts:5-8`のコメントに明記されている通り、2行目を計算する`computeMultiOrgRecord`/`computeMultiOrgBoutTable`は**`data/rizinRecords.json`・`data/shootoRecords.json`・`data/pancraseRecords.json`・`data/deepRecords.json`の4ファイルのみを入力とし、`fighters.ts`の`wins/losses/history`は一切参照しない**(`src/app/fighters/[slug]/page.tsx:315-317`の呼び出しコメントでも同旨を確認、実データの読み込みは`src/lib/multiOrgRecordsData.ts`の`fetchShootoRecords()`で、本番はGitHub raw経由・プレビュー/開発時はローカル`data/shootoRecords.json`にフォールバックする実装)。
+
+つまり`history`に投入しても直るのは(SHOW_MULTI_ORG_RECORDと`noRecordData`の組み合わせ次第で表示されることのある)1行目相当の対戦テーブルだけで、**2行目自体(冒頭の勝敗数値)は`data/shootoRecords.json`(または`computeMultiOrgRecord`が読む何らかのソース)を経由しない限り変わらない**。前回のこの結論は誤りとして訂正する。
+
+#### 設計オプション(実装はしていない、案の提示のみ)
+
+`ShootoRecordsEvent`は「1大会=1要素、大会単位で`date`/`eventName`を持つ」構造だが、`computeFighterShootoRecord()`/`computeMultiOrgRecord()`自体は`ShootoRecordsEvent[]`を総なめしてbout単位に展開するだけの汎用ロジックであり、**「1大会=1bout」の疑似イベントを1件ずつ作って配列に混ぜても、集計ロジック自体には手を入れずに済む**ことをコードから確認した(`shootoRecordsAggregate.ts`のループはeventの中身の実在性を検証していない)。この前提で2案:
+
+- **案A(疑似イベント方式)**: 新規①・新規②-bの97件(43+54)それぞれについて、1bout=1件の疑似`ShootoRecordsEvent`を作る。
+  - `eventName`: `"大会名不明（修斗公式プロフィール由来）"`のような、事実に忠実な(捏造ではない)固定文言にする。実在しない大会名を作らない。
+  - `date`: プロフィールページから実際に取れた正確な日付をそのまま使う(疑似イベント化しても日付の精度は落ちない)。
+  - `sourceUrl`: 大会結果ページのURLではなく、実際の取得元である選手プロフィールページのURL(`https://www.shooto-mma.com/fighters/?id=<id>`)を入れる。これ自体が正直な出典表示になる。
+  - `shootoEventId`: 実在id(現状1〜281程度)と衝突しない範囲の負数等をsentinelとして使う。
+  - 格納先は`data/shootoRecords.json`に混在させるのではなく、**別ファイル(例: `data/shootoProfileBouts.json`、スキーマは`ShootoRecordsEvent[]`と同一)に分離**し、`fetchShootoRecords()`(または`multiOrgRecord.ts`の呼び出し元)を「2ファイルを取得してconcatする」よう小さく拡張する。ファイル自体が出所を語るため、案Bのフィールド追加と両方やるのが望ましい(下記参照)。
+- **案B(専用フィールド追加方式)**: `ShootoRecordsBout`に`sourceType?: "archive" | "profile"`のような追加的(optional・既存データは省略のままで動く)フィールドを設け、疑似イベントかどうかをbout単位で明示する。案Aの別ファイル分離と併用すれば、ファイル単位・bout単位の二重の出所管理になり頑健。
+
+いずれも本セッションでは実装していない(投入設計の選択肢の提示のみ)。
+
+### 出所(provenance)タグ付けの必要性
+
+97件(新規①43+新規②-b54)を`FIGHTERS[slug].history`(1行目)・上記の疑似イベント(2行目)いずれに入れる場合も、**Wikipedia由来・大会アーカイブ由来の既存データと見分けが付く印を明示的なフィールドとして持たせる**べきである(出所をテキストパターンや値の範囲だけで暗黙的に判別する設計は、将来の監査で見落とされるリスクがある)。
+
+- `FightRecord`(`history`用)に`source?: "shooto-profile"`のような任意フィールドを追加する(既存のWikipedia由来エントリは省略のままで良い=後方互換)。
+- `ShootoRecordsBout`(2行目用、案A/B)にも同様に`sourceType`を持たせる(上記案B)。
+- 別ファイル化(案A)自体も、ファイルの存在そのものが一次的な出所マーカーとして機能する。
+
+これらのフィールド追加自体は本セッションでは実装していない(次の投入設計フェーズで検討する)。
 
 ## 実装上の教訓(本dry-run自体で発見した2つの不具合)
 
