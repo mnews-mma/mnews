@@ -20,10 +20,10 @@ export default function MethodologyRecordsPage() {
   ];
 
   const coverage = [
-    { org: "RIZIN", period: "2016年〜" },
-    { org: "DEEP", period: "2002年〜" },
-    { org: "パンクラス", period: "1993年〜" },
-    { org: "修斗", period: "2012年〜" },
+    { org: "RIZIN", period: "2015年12月〜", note: "旗揚げ興行(2015年12月・さいたま3DAYS)を含む" },
+    { org: "DEEP", period: "2007年〜", note: "2012年以前は収録大会数が少なく薄く、特に2009年はほぼ収録がありません" },
+    { org: "パンクラス", period: "1993年〜", note: "" },
+    { org: "修斗", period: "2012年〜", note: "一部選手は公式プロフィールページ経由でそれ以前の試合も収録しています" },
   ];
 
   return (
@@ -69,12 +69,19 @@ export default function MethodologyRecordsPage() {
           アマチュア大会は含みません。また、公式サイトに結果が掲載されていない大会など、期間内でも一部収録
           できていない大会があります。
         </p>
+        <p style={{ marginBottom: 16 }}>
+          収録期間内であっても、団体・年代によって収録できている大会数には差があります。特に古い年代は、
+          公式サイトのアーカイブ自体が薄い、または現在のページ構成と異なるために取得できていない大会が
+          あります。古い時期に主に活動していた選手は、4団体通算が実際の戦績より少なく表示されることが
+          あります。
+        </p>
         <div style={{ border: "1px solid var(--border)", borderRadius: 8, overflow: "hidden" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
             <thead>
               <tr style={{ background: "var(--s2)" }}>
                 <th style={{ textAlign: "left", padding: "10px 16px", fontWeight: 600 }}>団体</th>
                 <th style={{ textAlign: "left", padding: "10px 16px", fontWeight: 600 }}>収録期間</th>
+                <th style={{ textAlign: "left", padding: "10px 16px", fontWeight: 600 }}>備考</th>
               </tr>
             </thead>
             <tbody>
@@ -82,6 +89,7 @@ export default function MethodologyRecordsPage() {
                 <tr key={row.org} style={{ borderTop: "1px solid var(--border)", background: i % 2 === 1 ? "var(--s2)" : undefined }}>
                   <td style={{ padding: "10px 16px", color: "var(--muted)" }}>{row.org}</td>
                   <td style={{ padding: "10px 16px", color: "var(--muted)" }}>{row.period}</td>
+                  <td style={{ padding: "10px 16px", color: "var(--muted)" }}>{row.note || "—"}</td>
                 </tr>
               ))}
             </tbody>
