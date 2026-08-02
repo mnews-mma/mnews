@@ -1,0 +1,222 @@
+[
+  {
+    "slug": "koike-kleber",
+    "name": "クレベル・コイケ",
+    "history_index": "45",
+    "date": "2008-08-28",
+    "event": "Club DEEP 浜松",
+    "opponent": "和田まさき",
+    "result": "win",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "rena",
+    "name": "RENA",
+    "history_index": "20",
+    "date": "2015-12-31",
+    "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
+    "opponent": "イリアーナ・ヴァレンティーノ",
+    "result": "win",
+    "org": "RIZIN",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "motoya-yuki",
+    "name": "元谷 友貴",
+    "history_index": "35",
+    "date": "2015-12-29",
+    "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
+    "opponent": "フェリペ・エフライン",
+    "result": "nc",
+    "org": "RIZIN",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "goto-joji",
+    "name": "後藤 丈治",
+    "history_index": "5",
+    "date": "2024-12-08",
+    "event": "DEEP 122 IMPACT",
+    "opponent": "マンド・グティエレス",
+    "result": "loss",
+    "org": "DEEP",
+    "events_on_that_date": "DEEP 123 IMPACT; DEEP TOKYO IMPACT 2024 6th ROUND"
+  },
+  {
+    "slug": "yamamoto-arsen",
+    "name": "山本 アーセン",
+    "history_index": "14",
+    "date": "2015-12-31",
+    "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
+    "opponent": "クロン・グレイシー",
+    "result": "loss",
+    "org": "RIZIN",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "tokoro-hideo",
+    "name": "所 英男",
+    "history_index": "9",
+    "date": "2015-12-29",
+    "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
+    "opponent": "才賀紀左衛門",
+    "result": "win",
+    "org": "RIZIN",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "nakamura-daisuke",
+    "name": "中村大介",
+    "history_index": "47",
+    "date": "2006-02-05",
+    "event": "DEEP 23 IMPACT 5周年大会",
+    "opponent": "藤沼弘秀",
+    "result": "win",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "nakamura-daisuke",
+    "name": "中村大介",
+    "history_index": "60",
+    "date": "2002-12-08",
+    "event": "DEEP2001 7th IMPACT in DIFFER ARIAKE 【フューチャーキングトーナメント 82kg以下級 2回戦】",
+    "opponent": "森山大",
+    "result": "loss",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "kozaki-ren",
+    "name": "小崎連",
+    "history_index": "7",
+    "date": "2023-08-06",
+    "event": "DEEP NAGOYA IMPACT 2023 KOBUDO FIGHT 3RD ROUND",
+    "opponent": "切嶋龍輝",
+    "result": "win",
+    "org": "DEEP",
+    "events_on_that_date": "DEEP NAGOYA IMPACT 2023 公武堂ファイト 3rd ROUND/4th ROUND"
+  },
+  {
+    "slug": "nakamura-yusaku",
+    "name": "中村優作",
+    "history_index": "29",
+    "date": "2010-06-06",
+    "event": "DEEP CAGE IMPACT 2010 in OSAKA",
+    "opponent": "裕希斗",
+    "result": "win",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "gustavo-luis",
+    "name": "ルイス・グスタボ",
+    "history_index": "15",
+    "date": "2016-07-23",
+    "event": "Imortal FC 5 - Road to Pancrase",
+    "opponent": "ディエゴ・シルベリオ",
+    "result": "win",
+    "org": "PANCRASE",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "kitakata-daichi",
+    "name": "北方大地",
+    "history_index": "21",
+    "date": "2014-10-19",
+    "event": "DEEP CAGE IMPACT in OSAKA 2014",
+    "opponent": "佐藤寛太",
+    "result": "win",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "kaito",
+    "name": "海飛",
+    "history_index": "14",
+    "date": "2021-06-18",
+    "event": "DEEP TOKYO IMPACT 1st ROUND",
+    "opponent": "山口コウタ",
+    "result": "win",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "shirakawa-rikuto",
+    "name": "白川ダーク陸斗",
+    "history_index": "20",
+    "date": "2016-10-07",
+    "event": "DEEP CAGE IMPACT 2016 in OSAKA",
+    "opponent": "石井逸人",
+    "result": "loss",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "kitaoka-satoru",
+    "name": "北岡悟",
+    "history_index": "15",
+    "date": "2018-10-27",
+    "event": "DEEP 86 IMPACT 【DEEPライト級タイトルマッチ】",
+    "opponent": "武田光司",
+    "result": "loss",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "shinya-aoki",
+    "name": "青木真也",
+    "history_index": "16",
+    "date": "2015-12-29",
+    "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
+    "opponent": "桜庭和志",
+    "result": "win",
+    "org": "RIZIN",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "shinya-aoki",
+    "name": "青木真也",
+    "history_index": "58",
+    "date": "2004-10-30",
+    "event": "DEEP 16th IMPACT 【ウェルター級トーナメント 準決勝】",
+    "opponent": "中尾受太郎",
+    "result": "loss",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "koya-kanda",
+    "name": "神田コウヤ",
+    "history_index": "15",
+    "date": "2020-11-02",
+    "event": "DEEP 99 IMPACT",
+    "opponent": "鬼山斑猫",
+    "result": "win",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "kim-soochul",
+    "name": "キム・スーチョル",
+    "history_index": "17",
+    "date": "2015-12-31",
+    "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 IZAの舞",
+    "opponent": "マイケ・リニャーレス",
+    "result": "win",
+    "org": "RIZIN",
+    "events_on_that_date": "(none)"
+  },
+  {
+    "slug": "ishizuka-koichi",
+    "name": "石司晃一",
+    "history_index": "25",
+    "date": "2012-07-21",
+    "event": "DEEP TOKYO IMPACT 2012",
+    "opponent": "須崎ジオング康文",
+    "result": "win",
+    "org": "DEEP",
+    "events_on_that_date": "(none)"
+  }
+]
