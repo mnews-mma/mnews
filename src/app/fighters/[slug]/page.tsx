@@ -21,7 +21,16 @@ import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions"
 import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
 import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } from "@/lib/seoTemplates";
 import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords, fetchDeepRecords } from "@/lib/multiOrgRecordsData";
-import { computeMultiOrgRecord, computeMultiOrgBoutTable, computeMultiOrgRates, MULTI_ORG_RECORD_LABEL } from "@/lib/mnewsRating/multiOrgRecord";
+import {
+  computeMultiOrgRecord,
+  computeMultiOrgBoutTable,
+  computeMultiOrgRates,
+  MULTI_ORG_RECORD_LABEL,
+  shouldPreferMultiOrgRecord,
+  resolveDisplayRecord,
+  withMultiOrgRecord,
+  type MultiOrgSourceData,
+} from "@/lib/mnewsRating/multiOrgRecord";
 import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
 import { normalizeDecisionScorePerspective } from "@/lib/decisionScorePerspective";
 
@@ -42,6 +51,19 @@ const TAG_LINK: Record<OrgTagKey, string | null> = {
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
+
+// 4団体公式データ(RIZIN・修斗・パンクラス・DEEP)のfetchをgenerateMetadata・
+// FighterPage本体の両方から使う(Next.jsのfetchキャッシュにより同一リクエスト内で
+// 重複fetchにはならない。呼び出し元を1つに集約して差異が生まれないようにする)。
+async function fetchMultiOrgSourceData(): Promise<MultiOrgSourceData> {
+  const [rizinEvents, shootoEvents, pancraseEvents, deepEvents] = await Promise.all([
+    fetchRizinRecords(),
+    fetchShootoRecords(),
+    fetchPancraseRecords(),
+    fetchDeepRecords(),
+  ]);
+  return { rizinEvents, shootoEvents, pancraseEvents, deepEvents };
+}
 
 export async function generateMetadata({
   params,
@@ -64,17 +86,23 @@ export async function generateMetadata({
   // 同じhidden除外を共有する。findRankingLinkはgetDisplayRank(表示ランクヘルパー)
   // 経由=ハードコード禁止・16位以下は非表示)。
   const rankingLink = seed.hidden ? null : await findRankingLink(slug);
+  // 本文のsuppressNoRecordRow(下のFighterPage本体)と同じ判定をmetaにも適用する。
+  // 1行目が抑制対象の選手は、meta descriptionも4団体合算(2行目)の数値を使う
+  // (shouldPreferMultiOrgRecord/resolveDisplayRecord参照)。
+  const metaFighter = SHOW_MULTI_ORG_RECORD
+    ? resolveDisplayRecord(fighter, await fetchMultiOrgSourceData())
+    : fighter;
   const metaInput = {
     nameJa: fighter.nameJa,
     nameEn: fighter.nameEn,
     orgLabel,
-    noRecordData: !!fighter.noRecordData,
-    wins: fighter.wins,
-    losses: fighter.losses,
-    draws: fighter.draws,
-    historyLength: fighter.history.length,
-    latestDate: fighter.history[0]?.date ?? null,
-    latestEvent: fighter.history[0]?.event ?? null,
+    noRecordData: !!metaFighter.noRecordData,
+    wins: metaFighter.wins,
+    losses: metaFighter.losses,
+    draws: metaFighter.draws,
+    historyLength: metaFighter.history.length,
+    latestDate: metaFighter.history[0]?.date ?? null,
+    latestEvent: metaFighter.history[0]?.event ?? null,
     rank: rankingLink ? { divisionName: rankingLink.divisionName, label: rankingLink.label } : null,
   };
   const meta = pageMetadata({
@@ -315,13 +343,7 @@ export default async function FighterPage({
   // 戦績スタットカード2行目用: RIZIN+修斗+パンクラス+DEEPの4団体公式データを
   // 毎回合算する(fighters.tsのwins/losses/historyは参照しない。詳細は
   // src/lib/mnewsRating/multiOrgRecord.tsのコメント参照)。
-  const [rizinEvents, shootoEvents, pancraseEvents, deepEvents] = await Promise.all([
-    fetchRizinRecords(),
-    fetchShootoRecords(),
-    fetchPancraseRecords(),
-    fetchDeepRecords(),
-  ]);
-  const multiOrgData = { rizinEvents, shootoEvents, pancraseEvents, deepEvents };
+  const multiOrgData = await fetchMultiOrgSourceData();
   const multiOrgRecord = computeMultiOrgRecord(fighter.slug, multiOrgData);
   const hasMultiOrgRecord =
     multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0;
@@ -336,14 +358,20 @@ export default async function FighterPage({
   //
   // 指示書R-2(2026-08-01): 1行目にデータはあるが単一ソース由来で限定的な選手
   // (needsReview/recordFromResults。詳細は指示書R-1bの調査参照)は、2行目(4団体
-  // 合算)の総試合数が1行目を上回る場合に限り1行目を出さない。判定は
-  // needsReview/recordFromResultsフラグのみで行い、超過幅などのヒューリスティックは
-  // 使わない(真正Wikipedia選手を誤って対象にしないため)。
-  const limitedSourceRow1Exceeded =
-    (fighter.needsReview || fighter.recordFromResults) &&
-    multiOrgRecord.wins + multiOrgRecord.losses + multiOrgRecord.draws > wins + losses + draws;
+  // 合算)の総試合数が1行目を上回る場合に限り1行目を出さない。判定ロジックは
+  // src/lib/mnewsRating/multiOrgRecord.tsのshouldPreferMultiOrgRecordに集約している
+  // (次戦カード・同階級選手カード・meta descriptionもこの1関数を経由する)。
+  const limitedSourceRow1Exceeded = shouldPreferMultiOrgRecord(fighter, wins, losses, draws, multiOrgRecord);
   const suppressNoRecordRow =
     (noRecordData || limitedSourceRow1Exceeded) && SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord;
+  // 次戦カード(NextFightCardV2/NextFightCompare)の自分側データ。上のsuppressNoRecordRow
+  // (=1行目を出さず2行目のみ表示)と矛盾しないよう、抑制対象の選手は次戦カードの
+  // 「自分」側も2行目(4団体合算)の値・historyに差し替える(同じ判定・同じ集計結果を
+  // 再利用、新規の数値生成はしない)。
+  const nextFightSelf =
+    suppressNoRecordRow && multiOrgRates
+      ? withMultiOrgRecord(fighter, multiOrgRecord, multiOrgRates, multiOrgBoutRows)
+      : fighter;
 
   // 対戦テーブル: ヘッダー(通算戦績スタットカード)と同じ判定基準
   // (suppressNoRecordRow)で参照元を選ぶ。suppressNoRecordRow中は2行目
@@ -396,12 +424,15 @@ export default async function FighterPage({
   const sameClassSeeds = FIGHTERS.filter(
     (f) => f.slug !== slug && f.weightClass === fighter.weightClass && !f.hidden
   );
+  // 表示直前にshouldPreferMultiOrgRecord判定を適用し、1行目が限定的な選手
+  // (needsReview/recordFromResults超過)のカードも自分のページと矛盾しない
+  // 数値(4団体合算)にする(次戦カードと同じ判定・同じmultiOrgDataを再利用)。
   const sameWeightClass = (await resolveFightersCached(sameClassSeeds))
     .filter((f) => !f.noRecordData)
     .map((f) => ({ f, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .slice(0, 4)
-    .map(({ f }) => f);
+    .map(({ f }) => (SHOW_MULTI_ORG_RECORD ? resolveDisplayRecord(f, multiOrgData) : f));
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },
@@ -529,7 +560,7 @@ export default async function FighterPage({
         {nextFight && nextOpp && isV2 && !noRecordData && nextOpp.slug && nextOpp.entry ? (
           <NextFightCardV2
             selfName={fighter.nameJa}
-            self={fighter}
+            self={nextFightSelf}
             eventSlug={nextFight.event.slug}
             eventDate={nextFight.event.date}
             eventName={nextFight.event.eventName}
@@ -561,7 +592,7 @@ export default async function FighterPage({
               {!noRecordData && nextOpp.slug && nextOpp.entry && (
                 <NextFightCompare
                   selfName={fighter.nameJa}
-                  self={fighter}
+                  self={nextFightSelf}
                   opponentName={nextOpp.name}
                   opponentSlug={nextOpp.slug}
                   opponent={nextOpp.entry}

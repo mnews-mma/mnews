@@ -51,7 +51,10 @@ export interface Fighter {
   // resolveFighter が EVENT_RESULTS を選手軸に組み替えて注入する。
   recordFromResults?: boolean;
   // ローマ字表記が単一ソース由来などで最終確認が必要な選手。人間の裏取り待ち。
-  // 表示・戦績には影響しない(hidden 前提のメタ情報)。
+  // recordFromResultsと同様、単一ソース由来で限定的な1行目戦績とみなされ、
+  // 4団体合算(2行目)の方が試合数で上回る場合は1行目の表示が差し替えられる
+  // (src/lib/mnewsRating/multiOrgRecord.tsのshouldPreferMultiOrgRecord参照。
+  // 指示書R-2、2026-08-01)。
   needsReview?: boolean;
   // 対戦カード・戦績テーブル上で別表記されることがある選手向けの別名リスト。
   // findFighterSlugByName の突合にのみ使う(表示名はnameJaのまま変えない)。

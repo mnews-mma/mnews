@@ -324,28 +324,32 @@ export default function FighterFilterGrid({
               </div>
               <div className="fighter-name">{f.nameJa}</div>
               {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
-              {f.noRecordData ? (
-                f.multiOrgRecord ? (
-                  <>
-                    <div className="fighter-record">
-                      {f.multiOrgRecord.wins}-{f.multiOrgRecord.losses}-{f.multiOrgRecord.draws}
-                    </div>
-                    <div className="fighter-breakdown">
-                      KO {f.multiOrgRecord.ko} / 一本 {f.multiOrgRecord.sub} / 判定 {f.multiOrgRecord.decision}
-                    </div>
-                    <div className="fighter-rates">
-                      {f.multiOrgRecord.winRate !== null && <span>勝率 {f.multiOrgRecord.winRate}%</span>}
-                      {f.multiOrgRecord.finishRate !== null && <span>フィニッシュ率 {f.multiOrgRecord.finishRate}%</span>}
-                    </div>
-                    <div className="fighter-rates">
-                      <span>{MULTI_ORG_RECORD_LABEL}</span>
-                    </div>
-                  </>
-                ) : (
-                  <div className="fighter-record" style={{ fontSize: 14, color: "var(--muted)" }}>
-                    データなし
+              {/* f.multiOrgRecordは「1行目(Wikipedia通算)を信頼できない選手」
+                  (noRecordData、またはneedsReview/recordFromResultsで1行目が
+                  4団体合算を下回る選手)にのみ付与される(visibleFighters.ts
+                  getVisibleFighters参照)。noRecordData自体で分岐せず、まず
+                  multiOrgRecordの有無で分岐することで、/fighters/[slug]の
+                  suppressNoRecordRowと矛盾しない表示にする。 */}
+              {f.multiOrgRecord ? (
+                <>
+                  <div className="fighter-record">
+                    {f.multiOrgRecord.wins}-{f.multiOrgRecord.losses}-{f.multiOrgRecord.draws}
                   </div>
-                )
+                  <div className="fighter-breakdown">
+                    KO {f.multiOrgRecord.ko} / 一本 {f.multiOrgRecord.sub} / 判定 {f.multiOrgRecord.decision}
+                  </div>
+                  <div className="fighter-rates">
+                    {f.multiOrgRecord.winRate !== null && <span>勝率 {f.multiOrgRecord.winRate}%</span>}
+                    {f.multiOrgRecord.finishRate !== null && <span>フィニッシュ率 {f.multiOrgRecord.finishRate}%</span>}
+                  </div>
+                  <div className="fighter-rates">
+                    <span>{MULTI_ORG_RECORD_LABEL}</span>
+                  </div>
+                </>
+              ) : f.noRecordData ? (
+                <div className="fighter-record" style={{ fontSize: 14, color: "var(--muted)" }}>
+                  データなし
+                </div>
               ) : (
                 <>
                   <div className="fighter-record">
