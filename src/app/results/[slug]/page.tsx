@@ -36,12 +36,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!event) return { title: "大会が見つかりません | Mニュース", robots: { index: false, follow: false } };
   const summary = buildEventSummary(event);
   const ogImage = eventResultOgImageUrl(event.slug, event.fights.length > 0);
-  return pageMetadata({
+  const meta = pageMetadata({
     title: `${event.eventName} 全試合結果 | Mニュース`,
     description: summary || `${event.eventName}（${event.date}${event.venue ? " ／ " + event.venue : ""}）全${event.fights.length}試合の勝敗・決着方法を掲載。`,
     path: `/results/${event.slug}`,
     image: { url: ogImage, width: 1200, height: 675, alt: `${event.eventName} 全試合結果` },
   });
+  // unlisted: true(薄い内容のため/results一覧・sitemapから除外)は個別ページを
+  // 200で残しつつnoindex,followにする(選手ページ等からの内部リンクは切らない)
+  if (event.unlisted) meta.robots = { index: false, follow: true };
+  return meta;
 }
 
 export default async function EventResultPage({ params }: { params: Promise<{ slug: string }> }) {
