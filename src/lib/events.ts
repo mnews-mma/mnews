@@ -972,6 +972,38 @@ export const EVENTS: MEvent[] = [
       },
     ],
   },
+  {
+    slug: "lemino-shooto-8",
+    org: "shooto",
+    status: "upcoming",
+    eventName: "【NTT DOCOMO presents】プロフェッショナル修斗公式戦『Lemino修斗.8』",
+    date: "2026-09-24",
+    venue: "後楽園ホール（東京都文京区）",
+    sourceUrl: "https://j-shooto.com/2026/08/02/post-51394/",
+    // 主催: dドリームスポーツ&マネジメント／FIGHT FARM／THE BLACKBELT JAPAN
+    // 2026-08-02時点で決定分3試合(対戦カード①)。追加カードが今後発表される見込みのため、
+    // カード確定扱いにはしない(発表され次第、本配列に追記する)。
+    bouts: [
+      {
+        weightClass: "フェザー級",
+        fighterA: "飯野雄斗",
+        fighterB: "エルデム・タハ・ディンチェル",
+        note: "5分3R",
+      },
+      {
+        weightClass: "フェザー級",
+        fighterA: "河名マスト",
+        fighterB: "ティル・タン",
+        note: "5分3R",
+      },
+      {
+        weightClass: "バンタム級",
+        fighterA: "永井奏多",
+        fighterB: "ニコラ・リー・キンギ",
+        note: "5分3R",
+      },
+    ],
+  },
 ];
 
 // Web側(オンページ)の選手名フォントサイズ。サイト全体で「常にこの1つの値」を
