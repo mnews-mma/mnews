@@ -1,12 +1,12 @@
 # RIZIN選手slug再解決バックフィル結果
 
-生成日時: 2026-08-02T01:01:00.113Z
+生成日時: 2026-08-02T01:04:27.917Z
 
 正規化ロジックはscripts/lib/fighterNameBackfill.ts(backfill-shooto-pancrase-slugs.tsと共通)を使用。
 fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場合のみ解決。既存の解決済みslugは上書きしない。
 
-- bout×コーナー総数: 2014
-- 既に解決済みだった件数: 925
+- bout×コーナー総数: 2018
+- 既に解決済みだった件数: 929
 - 今回新規解決(コーナー単位): 0
 - 今回新規解決(ユニークbout件数): 0
 - 依然未解決(延べ): 1089
