@@ -345,13 +345,25 @@ export default async function FighterPage({
   const suppressNoRecordRow =
     (noRecordData || limitedSourceRow1Exceeded) && SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord;
 
-  // 対戦テーブル: Wikipedia由来のhistoryがあればそれを使い、無い選手
-  // (noRecordData。修斗・パンクラス・DEEPのみで戦っておりWikipedia記事が無い選手が
-  // 該当)はdata/の4団体bout(2行目と同じcomputeMultiOrgBoutTable、cancelled/unknown
-  // 除外済み)からテーブルを組み立てる。表示項目は既存テーブル(日付/対戦相手/結果/
-  // 決着/大会名)に揃え、新しい項目は増やさない。
-  const displayHistory: DisplayBoutRow[] =
-    history.length > 0
+  // 対戦テーブル: ヘッダー(通算戦績スタットカード)と同じ判定基準
+  // (suppressNoRecordRow)で参照元を選ぶ。suppressNoRecordRow中は2行目
+  // (4団体合算)がヘッダーの正であり、テーブルも同じmultiOrgBoutRowsを使う
+  // (指示書R-9: ヘッダーとテーブルが別ソースを見ていた食い違いの解消。
+  // out/header-table-row-mismatch-summary.md参照)。それ以外(通常の
+  // Wikipedia選手)はhistoryを使い、historyも無い選手(noRecordData)は
+  // 従来どおり4団体boutにフォールバックする。
+  const toDisplayFromMultiOrg = (): DisplayBoutRow[] =>
+    multiOrgBoutRows.map((b) => ({
+      date: b.date,
+      opponentName: b.opponentName,
+      opponentSlug: resolveLinkableOpponentSlug(b.opponentSlug),
+      result: b.result,
+      method: b.method,
+      event: b.event,
+    }));
+  const displayHistory: DisplayBoutRow[] = suppressNoRecordRow
+    ? toDisplayFromMultiOrg()
+    : history.length > 0
       ? history.map((h) => ({
           date: h.date,
           opponentName: h.opponent,
@@ -361,14 +373,7 @@ export default async function FighterPage({
           event: h.event,
         }))
       : SHOW_MULTI_ORG_RECORD
-        ? multiOrgBoutRows.map((b) => ({
-            date: b.date,
-            opponentName: b.opponentName,
-            opponentSlug: resolveLinkableOpponentSlug(b.opponentSlug),
-            result: b.result,
-            method: b.method,
-            event: b.event,
-          }))
+        ? toDisplayFromMultiOrg()
         : [];
 
   // 次戦の対戦相手情報(次戦プレビュー用)。相手がDB外/戦績データなしの場合は
