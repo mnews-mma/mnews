@@ -1218,6 +1218,11 @@ export const FIGHTERS: Fighter[] = [
   { slug: "matsuda-arisa", nameJa: "松田亜莉紗", nameEn: "Arisa Matsuda", org: "deep", weightClass: "女子ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "松田亜莉紗" },
   { slug: "ashida-takahiro", nameJa: "芦田崇宏", nameEn: "Takahiro Ashida", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "fujita-yamato", nameJa: "藤田大和", nameEn: "Yamato Fujita", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "藤田大和" },
+  // 2026-08-02追加。ja-wiki単独記事(通算18勝11敗1分)で確認済み。RIZIN参戦歴あり
+  // (RIZIN.22/27/37/43/47、LANDMARK vol.3)だが直近所属はDEEP(SONIC SQUAD)のため
+  // org=deep。デフォルトタイトル推測(nameJaのスペース除去)で記事名と一致するが、
+  // 明示指定しておく。
+  { slug: "seki-tetsuya", nameJa: "関鉄矢", nameEn: "Tetsuya Seki", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "関鉄矢" },
   // ===========================================================================
   // 第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者(2026-07-05スナップショット)
   // hidden=true / recordFromResults=true。読み不確定は needsReview=true。
