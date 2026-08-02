@@ -358,7 +358,18 @@ function judgeMajority(noteRaw: string): "A" | "B" | "tie" | null {
     // トーナメント勝ち点であってジャッジ採点ではない)、これを実装当初は
     // ジャッジ票として誤集計しており、オラクルCSVとの照合で発見・修正した。
     if (/^[［＊※]/.test(line)) continue;
-    const m = line.match(/(\d{1,2})\s*-\s*(\d{1,2})/);
+    // 「N-M」の直後に丸括弧+ラウンド内訳(例:「（1R 10-9／2R 9-10）」)が続く行
+    // のみを1judgeぶんの集計スコアとして扱う。ジャッジ採点行は必ずこの
+    // ラウンド内訳を伴う(このファイル中で確認した全実例で一致)。
+    //
+    // 経緯(2026-08-02、指示書R-7で発見): ［＊※で始まらない注記文
+    // (例:「優勢ポイント1-2で飯田選手がトーナメント準決勝進出」、たてお×SASUKE
+    // 2016-07-17の実例。トーナメント勝ち上がりに関する注記で、飯田選手という
+    // 本bout の当事者ではない選手名を含む=別カードの注記が誤って紐付いている
+    // 疑いがある)も「N-M」形式の数字を偶然含み、上記スキップに掛からず
+    // ジャッジ票として誤集計され、決着の勝者を逆転させる事故があった。
+    // ラウンド内訳の有無で本物のジャッジ採点行と区別する。
+    const m = line.match(/(\d{1,2})\s*-\s*(\d{1,2})\s*[（(]\s*\d+R/);
     if (m) tallies.push([Number(m[1]), Number(m[2])]);
   }
   if (tallies.length === 0) return null;
@@ -368,16 +379,31 @@ function judgeMajority(noteRaw: string): "A" | "B" | "tie" | null {
     if (a > b) favorsA++;
     else if (a < b) favorsB++;
   }
-  // 単純な相対比較(favorsA vs favorsB)を使う。実際のMMA/ボクシングの採点慣習
-  // (例:3人中1人だけが支持し残り2人がタイなら「majority draw」)とは異なるが、
-  // オラクルCSV(PR#247)を照合オラクルとして使う実装方針上、CSVの実際の判定
-  // ロジックがこの単純な相対比較であることを確認した(例: event id=241
-  // bout=4354はfavors1=0,favors2=1,ties=2でF1_LOSS_F2_WIN=決着と判定されており、
-  // 教科書的な「majority draw」ルールではdrawになるはずだが実際はそうなっていない)。
-  // 一度「過半数が必要」ルールに変更してみたが逆にオラクルとの不一致が増えた
-  // ため、単純な相対比較に戻した。
-  if (favorsA === favorsB) return "tie";
-  return favorsA > favorsB ? "A" : "B";
+  // 過半数(tallies.length中、favorsA/Bが半数超)を取った側のみ決着とする。
+  // 同点(a===b)のジャッジは favorsA/favorsB どちらにも数えないため、
+  // 「3人中1人だけが支持し残り2人が同点」は favorsA=1,favorsB=0 のように
+  // 一見「相対的に多い」ように見えるが、決着に必要な過半数(3人中2人)に
+  // 達していないため引き分け(majority draw)として扱う。
+  //
+  // 経緯(2026-08-02、指示書R-7で発見): 単純な相対比較(favorsA>favorsB
+  // だけで決着とする)を使っていたため、上記のような「majority draw」を
+  // 決着勝ちと誤判定していた(実例5件、亮我×山口峻・高岡宏気×3名・
+  // 青井太一×たてお)。いずれも修斗公式サイト側は明示的な「draw」バッジを
+  // 出しており、resultTypeClass側の最優先判定(このファイル上部のコメント
+  // 参照)で救われるケースとは別に、バッジが無くノート欄の採点表記のみで
+  // 判定するケースでこのバグが露見していた。
+  //
+  // 過去に一度「過半数が必要」ルールに変更してオラクルCSV(PR#247)との
+  // 不一致が増えたため単純な相対比較に戻した、という経緯が上部にあったが、
+  // オラクルCSV自身がこの同じ単純多数決バグを持っていることは上部の
+  // resultTypeClass="draw"優先化の際に既に判明している(オラクルと
+  // 一致すること自体がmajority drawケースでの正しさの根拠にならない)。
+  // 実例5件を公式サイトの表示(draw バッジ)で個別に裏取りした上で、
+  // 過半数ルールへ再度修正する。
+  const majority = Math.floor(tallies.length / 2) + 1;
+  if (favorsA >= majority) return "A";
+  if (favorsB >= majority) return "B";
+  return "tie";
 }
 
 // ノートに実質的な理由(ノーコンテスト・欠場等)が書かれているケースは、
@@ -456,9 +482,25 @@ export function resolveOutcome(raw: ShootoRawBout, eventName: string = ""): Shoo
   if (scoreMatch) {
     const a = Number(scoreMatch[1]);
     const b = Number(scoreMatch[2]);
-    if (a === b) scoreTie = true;
-    else winner = a > b ? "A" : "B";
-    resolvedByScore = true;
+    if (a === b) {
+      // 両者とも同数(例:「判定0-0」「判定1-1」)は、票が足りていてもいなくても
+      // どちらの側にも過半数が無い点は変わらないため常にtie。
+      scoreTie = true;
+      resolvedByScore = true;
+    } else if (a >= 2 || b >= 2) {
+      // 3人ジャッジ制の過半数(2票)に達している場合のみ決着とする。
+      winner = a > b ? "A" : "B";
+      resolvedByScore = true;
+    }
+    // else: 「判定1-0」のように一方が1票、他方が0票のケースは、この表記だけでは
+    // 残り(通常1〜2票)が同点(隠れたtie)かどうか分からず、過半数判定ができない。
+    // 経緯(2026-08-02、指示書R-7で発見): この「判定N-M」自体が修斗公式サイト側の
+    // 表示で、実際には below の judgeMajority() と同じ「同点票を無視した単純比較」
+    // で作られている(実例: 亮我×山口峻 2022-08-21はノート欄の生ジャッジ採点が
+    // 19-19/18-20/19-19〈2人同点・1人だけ亮我を支持〉なのに、このresultTypeTextは
+    // 「判定0-1」〈亮我1票〉となっており、隠れた2つの同点票の情報が失われている)。
+    // resolvedByScoreをfalseのままにしてopacity→ノート欄の実採点(judgeMajority)
+    // にフォールバックすることで、隠れた同点票を考慮した正しい過半数判定に委ねる。
   }
 
   // 2. opacity(dimmed)判定: スコアで解決しなかった場合のみ。片方だけが
