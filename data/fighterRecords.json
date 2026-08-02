@@ -12227,15 +12227,143 @@
     "noRecordData": true
   },
   "hibino-junya": {
-    "wins": 0,
-    "losses": 0,
+    "wins": 8,
+    "losses": 8,
     "draws": 0,
-    "ko": 0,
-    "sub": 0,
-    "decision": 0,
-    "history": [],
-    "live": false,
-    "noRecordData": true
+    "ko": 3,
+    "sub": 1,
+    "decision": 3,
+    "history": [
+      {
+        "date": "2026-05-24",
+        "opponent": "中島太一",
+        "result": "loss",
+        "method": "2R 0:34 TKO（右ストレート→パウンド）",
+        "event": "DEEP TOKYO IMPACT 2026 3rd ROUND",
+        "round": "R2"
+      },
+      {
+        "date": "2026-03-20",
+        "opponent": "山本有人",
+        "result": "loss",
+        "method": "1R 0:20 失格（反則の顔面への蹴り）",
+        "event": "DEEP 130 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2025-06-29",
+        "opponent": "MG眞介",
+        "result": "win",
+        "method": "2R 0:59 失格（反則の顔面への蹴り）",
+        "event": "DEEP OSAKA IMPACT 2nd round",
+        "round": "R2"
+      },
+      {
+        "date": "2025-03-15",
+        "opponent": "雅駿介",
+        "result": "loss",
+        "method": "1R 0:52 KO（顔面への膝蹴り）",
+        "event": "DEEP 124 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2024-11-17",
+        "opponent": "窪田泰斗",
+        "result": "loss",
+        "method": "2R 0:26 TKO（右フック→パウンド）",
+        "event": "RIZIN LANDMARK 10",
+        "round": "R2"
+      },
+      {
+        "date": "2024-08-31",
+        "opponent": "窪田泰斗",
+        "result": "loss",
+        "method": "2R 3:59 ツイスター",
+        "event": "DEEP SUMMER FESTIVAL 2024",
+        "round": "R2"
+      },
+      {
+        "date": "2024-05-03",
+        "opponent": "木下尚祐",
+        "result": "win",
+        "method": "1R 0:27 リアネイキッドチョーク",
+        "event": "DEEP 119 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2023-10-01",
+        "opponent": "後藤丈治",
+        "result": "loss",
+        "method": "2R 2:00 ツイスター",
+        "event": "RIZIN LANDMARK 6",
+        "round": "R2"
+      },
+      {
+        "date": "2023-07-02",
+        "opponent": "鹿志村仁之介",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP 114 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2022-11-16",
+        "opponent": "吉田陸",
+        "result": "win",
+        "method": "2R 3:00 TKO（グラウンドパンチ）",
+        "event": "RIZIN LANDMARK 4",
+        "round": "R2"
+      },
+      {
+        "date": "2022-09-25",
+        "opponent": "内山拓也",
+        "result": "win",
+        "method": "1R 3:35 TKO（グラウンドパンチ）",
+        "event": "DEEP HAMAMATSU IMPACT 2022",
+        "round": "R1"
+      },
+      {
+        "date": "2022-03-12",
+        "opponent": "RYOGA",
+        "result": "win",
+        "method": "5分2R終了 判定2-1",
+        "event": "DEEP TOKYO IMPACT 2022",
+        "round": "R2"
+      },
+      {
+        "date": "2021-12-12",
+        "opponent": "ヒロヤ",
+        "result": "loss",
+        "method": "5分2R終了 判定0-3",
+        "event": "DEEP 105 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2021-09-23",
+        "opponent": "力也",
+        "result": "win",
+        "method": "1R 2:50 TKO（グラウンドパンチ）",
+        "event": "DEEP 103 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2020-11-01",
+        "opponent": "平松翔",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP 99 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2020-09-20",
+        "opponent": "原虎徹",
+        "result": "loss",
+        "method": "5分2R終了 判定0-3",
+        "event": "DEEP 97 IMPACT",
+        "round": "R2"
+      }
+    ],
+    "live": true
   },
   "kenshiro": {
     "wins": 0,
@@ -16425,6 +16553,879 @@
     "live": true,
     "birthPlace": "愛媛県",
     "age": 39
+  },
+  "matsuda-arisa": {
+    "wins": 8,
+    "losses": 1,
+    "draws": 0,
+    "ko": 3,
+    "sub": 1,
+    "decision": 4,
+    "history": [
+      {
+        "date": "2026-05-28",
+        "opponent": "メン・ボー",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "Road to UFC Season 5 【女子ストロー級トーナメント1回戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2026-02-07",
+        "opponent": "アヤン・トゥルサン",
+        "result": "win",
+        "method": "1R 3:59 腕ひしぎ十字固め",
+        "event": "CFFC 150: Zhumagul vs. Morrison 【CFFC女子ストロー級王座決定戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2025-05-22",
+        "opponent": "フォン・シャオツァン",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
+        "event": "Road to UFC Season 4",
+        "round": "R3"
+      },
+      {
+        "date": "2024-12-22",
+        "opponent": "エリザベス",
+        "result": "win",
+        "method": "1R 2:09 TKO（パウンド）",
+        "event": "DEEP OSAKA IMPACT 2024 5th Round",
+        "round": "R1"
+      },
+      {
+        "date": "2024-03-17",
+        "opponent": "マドンナ",
+        "result": "win",
+        "method": "1R 2:28 TKO（パウンド）",
+        "event": "DEEP OSAKA IMPACT 2024 1st Round",
+        "round": "R1"
+      },
+      {
+        "date": "2023-11-23",
+        "opponent": "万智",
+        "result": "win",
+        "method": "5分3R終了 判定3-2",
+        "event": "DEEP JEWELS 43 【DEEP JEWELSストロー級暫定王座決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-04-02",
+        "opponent": "純玲",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP OSAKA IMPACT 2023 1nd Round",
+        "round": "R2"
+      },
+      {
+        "date": "2022-11-23",
+        "opponent": "長野美香",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP JEWELS 37",
+        "round": "R2"
+      },
+      {
+        "date": "2022-08-28",
+        "opponent": "和田千聖",
+        "result": "win",
+        "method": "1R 1:51 TKO（パウンド）",
+        "event": "DEEP OSAKA IMPACT 2022 2nd Round",
+        "round": "R1"
+      }
+    ],
+    "live": true
+  },
+  "ashida-takahiro": {
+    "wins": 26,
+    "losses": 17,
+    "draws": 2,
+    "ko": 8,
+    "sub": 4,
+    "decision": 14,
+    "history": [
+      {
+        "date": "2025-11-24",
+        "opponent": "イモト・ボルケーノ",
+        "result": "win",
+        "method": "1R 0:31 KO（左フック）",
+        "event": "～SHOOT BOXING 40th Anniversary～S-cup×GZT 2025",
+        "round": "R1"
+      },
+      {
+        "date": "2025-07-27",
+        "opponent": "直樹",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "超RIZIN.4 真夏の喧嘩祭り",
+        "round": "R3",
+        "weightClass": "68.0kg契約 喧嘩三番勝負"
+      },
+      {
+        "date": "2025-03-15",
+        "opponent": "水野新太",
+        "result": "loss",
+        "method": "1R 4:20 TKO（パウンド）",
+        "event": "DEEP 124 IMPACT 【DEEPフェザー級グランプリ1回戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2024-12-08",
+        "opponent": "青井人",
+        "result": "loss",
+        "method": "2R 2:26 TKO（サッカーボールキック→パウンド）",
+        "event": "DEEP 123 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2024-07-27",
+        "opponent": "ロベルト・ロメロ",
+        "result": "loss",
+        "method": "1R 4:45 リアネイキドチョーク",
+        "event": "Combate Global Mexico vs. Japan 2",
+        "round": "R1"
+      },
+      {
+        "date": "2024-02-24",
+        "opponent": "鈴木博昭",
+        "result": "loss",
+        "method": "1R 4:29 TKO（グラウンドパンチ）",
+        "event": "RIZIN LANDMARK 8",
+        "round": "R1"
+      },
+      {
+        "date": "2023-05-06",
+        "opponent": "摩嶋一整",
+        "result": "loss",
+        "method": "1R 4:43 ヴォンフルーチョーク",
+        "event": "RIZIN.42",
+        "round": "R1"
+      },
+      {
+        "date": "2022-10-23",
+        "opponent": "中田大貴",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN.39",
+        "round": "R3"
+      },
+      {
+        "date": "2022-08-21",
+        "opponent": "今成正和",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "DEEP 109 IMPACT",
+        "round": "R3"
+      },
+      {
+        "date": "2022-04-17",
+        "opponent": "カイル・アグォン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN.35",
+        "round": "R3"
+      },
+      {
+        "date": "2021-10-24",
+        "opponent": "金原正徳",
+        "result": "loss",
+        "method": "2R 1:18 TKO（右ストレート→パウンド）",
+        "event": "RIZIN.31",
+        "round": "R2"
+      },
+      {
+        "date": "2020-09-27",
+        "opponent": "萩原京平",
+        "result": "win",
+        "method": "1R 4:25 オモプラッタ",
+        "event": "RIZIN.24",
+        "round": "R1"
+      },
+      {
+        "date": "2019-10-22",
+        "opponent": "長倉立尚",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "DEEP 92 IMPACT",
+        "round": "R3"
+      },
+      {
+        "date": "2019-03-10",
+        "opponent": "崎山勲",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "GRACHAN / BRAVE GRACHAN 39 / BRAVE FIGHT 18",
+        "round": "R2"
+      },
+      {
+        "date": "2018-10-27",
+        "opponent": "弥益ドミネーター聡志",
+        "result": "loss",
+        "method": "5分3R終了 判定0-5",
+        "event": "DEEP 86 IMPACT 【DEEPフェザー級タイトルマッチ】",
+        "round": "R3"
+      },
+      {
+        "date": "2018-06-30",
+        "opponent": "弥益ドミネーター聡志",
+        "result": "loss",
+        "method": "1R 1:35 アームロック",
+        "event": "DEEP 84 IMPACT ～DIFFER ARIAKE FINAL DAY～",
+        "round": "R1"
+      },
+      {
+        "date": "2017-12-23",
+        "opponent": "上迫博仁",
+        "result": "win",
+        "method": "5分3R終了 判定4-1",
+        "event": "DEEP 81 IMPACT 【DEEPフェザー級タイトルマッチ】",
+        "round": "R3"
+      },
+      {
+        "date": "2017-09-16",
+        "opponent": "DJ.taiki",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
+        "event": "DEEP 79 IMPACT",
+        "round": "R3"
+      },
+      {
+        "date": "2017-05-13",
+        "opponent": "オーロラ☆ユーキ",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP CAGE IMPACT 2017",
+        "round": "R2"
+      },
+      {
+        "date": "2017-03-25",
+        "opponent": "J.J.アンブローズ",
+        "result": "loss",
+        "method": "4R ギロチンチョーク",
+        "event": "PXC 56 PACIFIC XTREME COMBAT 56",
+        "round": "R4"
+      },
+      {
+        "date": "2017-02-10",
+        "opponent": "ブラディスラフ・バルブチェンコ",
+        "result": "loss",
+        "method": "3R 3:20 リアネイキドチョーク",
+        "event": "AFGC ARZALET FIGHTING GLOBE CHAMPIONSHIP 1",
+        "round": "R3"
+      },
+      {
+        "date": "2016-12-11",
+        "opponent": "渡慶次幸平",
+        "result": "win",
+        "method": "2R 1:59 三角絞め",
+        "event": "RINGS／THE OUTSIDER ～SPECIAL～",
+        "round": "R2"
+      },
+      {
+        "date": "2016-06-12",
+        "opponent": "ヌルベルゲン・シャリポフ",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "REAL.5 REAL FIGHT CHAMPIONSHIP 5",
+        "round": "R2"
+      },
+      {
+        "date": "2016-03-12",
+        "opponent": "モウサ・シセ",
+        "result": "win",
+        "method": "1R 2:41 三角絞め",
+        "event": "REAL.4 REAL FIGHT CHAMPIONSHIP 4",
+        "round": "R1"
+      },
+      {
+        "date": "2016-02-28",
+        "opponent": "大迫元喜",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "GRACHAN 22 × BRAVE FIGHT 12",
+        "round": "R2"
+      },
+      {
+        "date": "2015-11-22",
+        "opponent": "川村謙",
+        "result": "win",
+        "method": "2R 3:07 TKO",
+        "event": "ZST.49 －旗揚げ13周年記念大会－",
+        "round": "R2"
+      },
+      {
+        "date": "2015-06-27",
+        "opponent": "クレベル・コイケ",
+        "result": "loss",
+        "method": "1R 3:06 三角絞め",
+        "event": "REBEL FC 3 THE PROMISED ONES",
+        "round": "R1"
+      },
+      {
+        "date": "2015-05-02",
+        "opponent": "マラッド・エナセリ",
+        "result": "loss",
+        "method": "5分2R終了 判定0-3",
+        "event": "RFC REAL FIGHT CHAMPIONSHIP 2",
+        "round": "R2"
+      },
+      {
+        "date": "2015-02-08",
+        "opponent": "安藤達也",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "GRANDSLAM 2 ～way of the cage～",
+        "round": "R3"
+      },
+      {
+        "date": "2014-08-01",
+        "opponent": "ミゲール・トーレス",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "REBEL FC 2 BATTLE ROYALE",
+        "round": "R3"
+      },
+      {
+        "date": "2014-06-08",
+        "opponent": "岡田孔明",
+        "result": "win",
+        "method": "1R TKO（パンチ）",
+        "event": "BRAVE FIGHT 6",
+        "round": "R1"
+      },
+      {
+        "date": "2014-03-22",
+        "opponent": "原田ヨシキ",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP 65 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2014-02-16",
+        "opponent": "なおKING",
+        "result": "win",
+        "method": "1R 3:18 TKO",
+        "event": "DEEP TOKYO IMPACT wave 7",
+        "round": "R1"
+      },
+      {
+        "date": "2013-11-04",
+        "opponent": "工藤修久",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "BRAVE FIGHT 5",
+        "round": "R2"
+      },
+      {
+        "date": "2013-08-25",
+        "opponent": "津田勝憲",
+        "result": "loss",
+        "method": "2R 3:35 腕ひしぎ十字固め",
+        "event": "DEEP 63 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2013-07-13",
+        "opponent": "ケンヤ",
+        "result": "win",
+        "method": "5分2R終了 判定2-0",
+        "event": "BRAVE FIGHT 4",
+        "round": "R2"
+      },
+      {
+        "date": "2013-04-07",
+        "opponent": "野村克也",
+        "result": "win",
+        "method": "1R 2:30 TKO（スタンドパンチ連打）",
+        "event": "BRAVE FIGHT 3",
+        "round": "R1"
+      },
+      {
+        "date": "2013-03-10",
+        "opponent": "伊藤尚司",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP TOKYO IMPACT～DEEPライト級GP2013～開幕戦",
+        "round": "R2"
+      },
+      {
+        "date": "2013-01-27",
+        "opponent": "奥津フォード",
+        "result": "win",
+        "method": "2R チョークスリーパー",
+        "event": "BRAVE FIGHT 2",
+        "round": "R2"
+      },
+      {
+        "date": "2012-12-08",
+        "opponent": "チャップリン木山",
+        "result": "win",
+        "method": "2R 0:25 TKO（パンチ）",
+        "event": "DEEP CAGE IMPACT 2012 in TOKYO 1st ROUND",
+        "round": "R2"
+      },
+      {
+        "date": "2012-08-26",
+        "opponent": "藤澤優作",
+        "result": "win",
+        "method": "1R 0:10（左ハイキック）",
+        "event": "BRAVE FIGHT 1",
+        "round": "R1"
+      },
+      {
+        "date": "2012-07-21",
+        "opponent": "青山祐大",
+        "result": "draw",
+        "method": "5分2R終了 判定1-0",
+        "event": "DEEP TOKYO IMPACT 2012 in DIFFER ARIAKE",
+        "round": "R2"
+      },
+      {
+        "date": "2012-01-28",
+        "opponent": "増田良太",
+        "result": "draw",
+        "method": "5分2R終了 判定0-0",
+        "event": "PANCRASE PROGRESS TOUR 1",
+        "round": "R2"
+      },
+      {
+        "date": "2011-08-21",
+        "opponent": "佐々木渉",
+        "result": "loss",
+        "method": "1R 2:37 アームロック",
+        "event": "DEEP CLUB DEEP in DIANA 2",
+        "round": "R1"
+      },
+      {
+        "date": "2011-02-27",
+        "opponent": "有村脩也",
+        "result": "win",
+        "method": "1R 0:37 TKO（パンチ）",
+        "event": "DEEP TOKYO IMPACT",
+        "round": "R1"
+      }
+    ],
+    "live": true,
+    "birthPlace": "埼玉県越谷市",
+    "age": 36
+  },
+  "fujita-yamato": {
+    "wins": 14,
+    "losses": 7,
+    "draws": 0,
+    "ko": 4,
+    "sub": 5,
+    "decision": 5,
+    "history": [
+      {
+        "date": "2026-03-30",
+        "opponent": "ホーキ・コンセイソン",
+        "result": "loss",
+        "method": "1R 4:10 TKO（右肘打ち→パウンド）",
+        "event": "Lemino修斗.4",
+        "round": "R1"
+      },
+      {
+        "date": "2025-11-15",
+        "opponent": "リース・マクラーレン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "UAE Warriors 65",
+        "round": "R3"
+      },
+      {
+        "date": "2025-07-24",
+        "opponent": "メイサラ・モハメド",
+        "result": "win",
+        "method": "2R 4:18 リアネイキッドチョーク",
+        "event": "UAE Warriors 62",
+        "round": "R2"
+      },
+      {
+        "date": "2025-01-17",
+        "opponent": "フアン・プエルタ",
+        "result": "win",
+        "method": "1R 1:54 ギロチンチョーク",
+        "event": "UAE Warriors 57",
+        "round": "R1"
+      },
+      {
+        "date": "2024-09-28",
+        "opponent": "バトゥカン・バイスエフ",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
+        "event": "UAE Warriors 54",
+        "round": "R3"
+      },
+      {
+        "date": "2024-05-18",
+        "opponent": "イアゴ・リベイゴ",
+        "result": "loss",
+        "method": "3R 2:22 TKO（グラウンドパンチ）",
+        "event": "UAE Warriors 50 【UAEフライ級王座決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2023-10-17",
+        "opponent": "サンスハル・アディロフ",
+        "result": "win",
+        "method": "1R 4:43 ギロチンチョーク",
+        "event": "UAE Warriors 45",
+        "round": "R1"
+      },
+      {
+        "date": "2023-08-26",
+        "opponent": "フィルカドベク・ヤクボフ",
+        "result": "win",
+        "method": "2R 3:38 ギロチンチョーク",
+        "event": "UAE Warriors 44",
+        "round": "R2"
+      },
+      {
+        "date": "2022-07-02",
+        "opponent": "曹竜也",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN.36",
+        "round": "R3"
+      },
+      {
+        "date": "2022-05-08",
+        "opponent": "神龍誠",
+        "result": "loss",
+        "method": "3R 0:53 ニンジャチョーク",
+        "event": "DEEP 107 IMPACT 【DEEPフライ級王座統一戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2021-09-23",
+        "opponent": "伊藤裕樹",
+        "result": "win",
+        "method": "5分3R終了 判定3-2",
+        "event": "DEEP 103 IMPACT 【DEEPフライ級暫定タイトルマッチ】",
+        "round": "R3"
+      },
+      {
+        "date": "2021-07-04",
+        "opponent": "山本聖悟",
+        "result": "win",
+        "method": "3R 2:43 TKO（右ハイキック→パウンド）",
+        "event": "DEEP 102 IMPACT",
+        "round": "R3"
+      },
+      {
+        "date": "2021-02-21",
+        "opponent": "渋谷カズキ",
+        "result": "win",
+        "method": "3R 1:38 TKO（サッカーボールキック）",
+        "event": "DEEP 100 IMPACT～20th Anniversary～ 【DEEPフライ級暫定王者決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2020-09-20",
+        "opponent": "ランボー宏輔",
+        "result": "win",
+        "method": "2R 0:36 KO（左フック）",
+        "event": "DEEP 97 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2020-03-01",
+        "opponent": "島袋チカラ",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP 94 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2019-12-15",
+        "opponent": "松丸息吹",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "DEEP 93 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2019-09-08",
+        "opponent": "伊藤裕樹",
+        "result": "loss",
+        "method": "1R 4:24 リアネイキドチョーク",
+        "event": "DEEP 91 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2019-05-12",
+        "opponent": "森脇公三",
+        "result": "win",
+        "method": "2R 0:09 TKO（右フック）",
+        "event": "DEEP 89 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2019-03-09",
+        "opponent": "鮎田直人",
+        "result": "loss",
+        "method": "5分2R終了 判定0-3",
+        "event": "DEEP 88 IMPACT",
+        "round": "R2"
+      },
+      {
+        "date": "2018-12-22",
+        "opponent": "曽我英将",
+        "result": "win",
+        "method": "1R 1:52 リアネイキドチョーク",
+        "event": "DEEP 87 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2017-10-15",
+        "opponent": "那須川天心",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -秋の陣-",
+        "round": "R3"
+      }
+    ],
+    "live": true
+  },
+  "seki-tetsuya": {
+    "wins": 18,
+    "losses": 11,
+    "draws": 1,
+    "ko": 9,
+    "sub": 3,
+    "decision": 6,
+    "history": [
+      {
+        "date": "2026-02-23",
+        "opponent": "海飛",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "DEEP TOKYO IMPACT 2026 1st ROUND",
+        "round": "R3"
+      },
+      {
+        "date": "2025-09-15",
+        "opponent": "五明宏人",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "DEEP 127 IMPACT",
+        "round": "R3"
+      },
+      {
+        "date": "2024-06-09",
+        "opponent": "カルシャガ・ダウトベック",
+        "result": "loss",
+        "method": "1R 3:11 KO（左ボディブロー）",
+        "event": "RIZIN.47",
+        "round": "R1"
+      },
+      {
+        "date": "2023-06-24",
+        "opponent": "遠藤来生",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN.43",
+        "round": "R3"
+      },
+      {
+        "date": "2022-07-31",
+        "opponent": "中原由貴",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN.37",
+        "round": "R3"
+      },
+      {
+        "date": "2022-05-05",
+        "opponent": "原口央",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN LANDMARK vol.3",
+        "round": "R3"
+      },
+      {
+        "date": "2021-12-12",
+        "opponent": "山本歩夢",
+        "result": "win",
+        "method": "1R 2:50 腕ひしぎ三角固め",
+        "event": "DEEP 105 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2021-09-23",
+        "opponent": "DJ.taiki",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "DEEP 103 IMPACT",
+        "round": "R3"
+      },
+      {
+        "date": "2021-03-21",
+        "opponent": "堀江圭功",
+        "result": "loss",
+        "method": "3R 1:16 TKO（右ストレート→パウンド）",
+        "event": "RIZIN.27",
+        "round": "R3"
+      },
+      {
+        "date": "2020-08-09",
+        "opponent": "神田コウヤ",
+        "result": "win",
+        "method": "2R 3:47 TKO（右ストレート）",
+        "event": "RIZIN.22 - STARTING OVER -",
+        "round": "R2"
+      },
+      {
+        "date": "2019-08-13",
+        "opponent": "浜松ヤマト",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "ZST.66",
+        "round": "R2"
+      },
+      {
+        "date": "2019-01-27",
+        "opponent": "鈴木琢仁",
+        "result": "win",
+        "method": "3R 2:05 TKO（パウンド）",
+        "event": "ZST.63",
+        "round": "R3"
+      },
+      {
+        "date": "2018-08-13",
+        "opponent": "カラム・ルイス",
+        "result": "draw",
+        "method": "5分2R終了 判定1-0",
+        "event": "ZST.61",
+        "round": "R2"
+      },
+      {
+        "date": "2018-03-17",
+        "opponent": "樋沼朝光",
+        "result": "win",
+        "method": "5分2R終了 判定3-0",
+        "event": "ZST.59",
+        "round": "R2"
+      },
+      {
+        "date": "2017-11-25",
+        "opponent": "橘川尋貴",
+        "result": "win",
+        "method": "2R 1:56 負傷判定2-1",
+        "event": "ZST.58 ～旗揚げ15周年記念大会～ 【第4代ZSTフェザー級王者決定戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2017-09-10",
+        "opponent": "島村裕",
+        "result": "win",
+        "method": "2R 1:43 TKO（パウンド）",
+        "event": "ZST.57",
+        "round": "R2"
+      },
+      {
+        "date": "2017-04-15",
+        "opponent": "ニコス・レプカ",
+        "result": "win",
+        "method": "3R TKO（パンチ）",
+        "event": "AUSTRALIAN FIGHTING CHAMPIONSHIP 19",
+        "round": "R3"
+      },
+      {
+        "date": "2017-02-24",
+        "opponent": "直斗",
+        "result": "win",
+        "method": "2R 4:07 TKO（パンチ）",
+        "event": "ZST.55",
+        "round": "R2"
+      },
+      {
+        "date": "2016-11-27",
+        "opponent": "橘川尋貴",
+        "result": "win",
+        "method": "2R 3:28 アームバー",
+        "event": "ZST.54 ～旗揚げ14周年記念大会～",
+        "round": "R2"
+      },
+      {
+        "date": "2016-09-19",
+        "opponent": "山本哲也",
+        "result": "loss",
+        "method": "3分3R終了 判定0-3",
+        "event": "VTJ 8th",
+        "round": "R3"
+      },
+      {
+        "date": "2016-08-07",
+        "opponent": "川村謙",
+        "result": "win",
+        "method": "2R 2:24 TKO",
+        "event": "ZST.52",
+        "round": "R2"
+      },
+      {
+        "date": "2016-05-28",
+        "opponent": "ヌーアルティエビィエクー",
+        "result": "loss",
+        "method": "1R 2:30 TKO",
+        "event": "武林籠中対（WLF MMA）4 in 鄭州",
+        "round": "R1"
+      },
+      {
+        "date": "2015-10-18",
+        "opponent": "小笠原均",
+        "result": "loss",
+        "method": "2R 2:53 TKO（ドクターストップ）",
+        "event": "ZST.48",
+        "round": "R2"
+      },
+      {
+        "date": "2015-08-01",
+        "opponent": "金井塚信之",
+        "result": "loss",
+        "method": "2R 0:52 リアネイキッドチョーク",
+        "event": "ZST in YOKOSUKA vol.2",
+        "round": "R2"
+      },
+      {
+        "date": "2015-05-24",
+        "opponent": "真鍋朝行",
+        "result": "win",
+        "method": "1R 2:30 KO（膝蹴り）",
+        "event": "ZST CHALLENGE 141",
+        "round": "R1"
+      },
+      {
+        "date": "2014-11-23",
+        "opponent": "檜山勇斗",
+        "result": "loss",
+        "method": "5分2R終了 判定0-2",
+        "event": "ZST.43－旗揚げ12周年記念大会－",
+        "round": "R2"
+      },
+      {
+        "date": "2014-06-29",
+        "opponent": "鈴木廣二",
+        "result": "win",
+        "method": "2R 4:51 TKO（パンチ）",
+        "event": "ZST in YOKOSUKA vol.1",
+        "round": "R2"
+      },
+      {
+        "date": "2013-12-22",
+        "opponent": "柏崎剛",
+        "result": "loss",
+        "method": "2R 4:19 TKO（タオル投入）",
+        "event": "SWAT!53",
+        "round": "R2"
+      }
+    ],
+    "live": true,
+    "birthPlace": "神奈川県横浜市",
+    "age": 32
   },
   "tanoue-koyuru": {
     "wins": 0,
@@ -35698,12 +36699,20 @@
   },
   "nakajima-riku": {
     "wins": 6,
-    "losses": 0,
+    "losses": 1,
     "draws": 1,
     "ko": 2,
     "sub": 4,
     "decision": 0,
     "history": [
+      {
+        "date": "2026-08-02",
+        "opponent": "齋藤奨司",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "Lemino修斗: poundout 【バンタム級サバイバートーナメント 準決勝】",
+        "round": "R3"
+      },
       {
         "date": "2026-06-01",
         "opponent": "リン・フーシュン",
@@ -42359,699 +43368,5 @@
       }
     ],
     "live": false
-  },
-  "ashida-takahiro": {
-    "wins": 26,
-    "losses": 17,
-    "draws": 2,
-    "ko": 8,
-    "sub": 4,
-    "decision": 14,
-    "history": [
-      {
-        "date": "2025-11-24",
-        "opponent": "イモト・ボルケーノ",
-        "result": "win",
-        "method": "1R 0:31 KO（左フック）",
-        "event": "～SHOOT BOXING 40th Anniversary～S-cup×GZT 2025",
-        "round": "R1"
-      },
-      {
-        "date": "2025-07-27",
-        "opponent": "直樹",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "超RIZIN.4 真夏の喧嘩祭り",
-        "round": "R3",
-        "weightClass": "68.0kg契約 喧嘩三番勝負"
-      },
-      {
-        "date": "2025-03-15",
-        "opponent": "水野新太",
-        "result": "loss",
-        "method": "1R 4:20 TKO（パウンド）",
-        "event": "DEEP 124 IMPACT 【DEEPフェザー級グランプリ1回戦】",
-        "round": "R1"
-      },
-      {
-        "date": "2024-12-08",
-        "opponent": "青井人",
-        "result": "loss",
-        "method": "2R 2:26 TKO（サッカーボールキック→パウンド）",
-        "event": "DEEP 123 IMPACT",
-        "round": "R2"
-      },
-      {
-        "date": "2024-07-27",
-        "opponent": "ロベルト・ロメロ",
-        "result": "loss",
-        "method": "1R 4:45 リアネイキドチョーク",
-        "event": "Combate Global Mexico vs. Japan 2",
-        "round": "R1"
-      },
-      {
-        "date": "2024-02-24",
-        "opponent": "鈴木博昭",
-        "result": "loss",
-        "method": "1R 4:29 TKO（グラウンドパンチ）",
-        "event": "RIZIN LANDMARK 8",
-        "round": "R1"
-      },
-      {
-        "date": "2023-05-06",
-        "opponent": "摩嶋一整",
-        "result": "loss",
-        "method": "1R 4:43 ヴォンフルーチョーク",
-        "event": "RIZIN.42",
-        "round": "R1"
-      },
-      {
-        "date": "2022-10-23",
-        "opponent": "中田大貴",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "RIZIN.39",
-        "round": "R3"
-      },
-      {
-        "date": "2022-08-21",
-        "opponent": "今成正和",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "DEEP 109 IMPACT",
-        "round": "R3"
-      },
-      {
-        "date": "2022-04-17",
-        "opponent": "カイル・アグォン",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "RIZIN.35",
-        "round": "R3"
-      },
-      {
-        "date": "2021-10-24",
-        "opponent": "金原正徳",
-        "result": "loss",
-        "method": "2R 1:18 TKO（右ストレート→パウンド）",
-        "event": "RIZIN.31",
-        "round": "R2"
-      },
-      {
-        "date": "2020-09-27",
-        "opponent": "萩原京平",
-        "result": "win",
-        "method": "1R 4:25 オモプラッタ",
-        "event": "RIZIN.24",
-        "round": "R1"
-      },
-      {
-        "date": "2019-10-22",
-        "opponent": "長倉立尚",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "DEEP 92 IMPACT",
-        "round": "R3"
-      },
-      {
-        "date": "2019-03-10",
-        "opponent": "崎山勲",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "GRACHAN / BRAVE GRACHAN 39 / BRAVE FIGHT 18",
-        "round": "R2"
-      },
-      {
-        "date": "2018-10-27",
-        "opponent": "弥益ドミネーター聡志",
-        "result": "loss",
-        "method": "5分3R終了 判定0-5",
-        "event": "DEEP 86 IMPACT 【DEEPフェザー級タイトルマッチ】",
-        "round": "R3"
-      },
-      {
-        "date": "2018-06-30",
-        "opponent": "弥益ドミネーター聡志",
-        "result": "loss",
-        "method": "1R 1:35 アームロック",
-        "event": "DEEP 84 IMPACT ～DIFFER ARIAKE FINAL DAY～",
-        "round": "R1"
-      },
-      {
-        "date": "2017-12-23",
-        "opponent": "上迫博仁",
-        "result": "win",
-        "method": "5分3R終了 判定4-1",
-        "event": "DEEP 81 IMPACT 【DEEPフェザー級タイトルマッチ】",
-        "round": "R3"
-      },
-      {
-        "date": "2017-09-16",
-        "opponent": "DJ.taiki",
-        "result": "win",
-        "method": "5分3R終了 判定2-1",
-        "event": "DEEP 79 IMPACT",
-        "round": "R3"
-      },
-      {
-        "date": "2017-05-13",
-        "opponent": "オーロラ☆ユーキ",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "DEEP CAGE IMPACT 2017",
-        "round": "R2"
-      },
-      {
-        "date": "2017-03-25",
-        "opponent": "J.J.アンブローズ",
-        "result": "loss",
-        "method": "4R ギロチンチョーク",
-        "event": "PXC 56 PACIFIC XTREME COMBAT 56",
-        "round": "R4"
-      },
-      {
-        "date": "2017-02-10",
-        "opponent": "ブラディスラフ・バルブチェンコ",
-        "result": "loss",
-        "method": "3R 3:20 リアネイキドチョーク",
-        "event": "AFGC ARZALET FIGHTING GLOBE CHAMPIONSHIP 1",
-        "round": "R3"
-      },
-      {
-        "date": "2016-12-11",
-        "opponent": "渡慶次幸平",
-        "result": "win",
-        "method": "2R 1:59 三角絞め",
-        "event": "RINGS／THE OUTSIDER ～SPECIAL～",
-        "round": "R2"
-      },
-      {
-        "date": "2016-06-12",
-        "opponent": "ヌルベルゲン・シャリポフ",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "REAL.5 REAL FIGHT CHAMPIONSHIP 5",
-        "round": "R2"
-      },
-      {
-        "date": "2016-03-12",
-        "opponent": "モウサ・シセ",
-        "result": "win",
-        "method": "1R 2:41 三角絞め",
-        "event": "REAL.4 REAL FIGHT CHAMPIONSHIP 4",
-        "round": "R1"
-      },
-      {
-        "date": "2016-02-28",
-        "opponent": "大迫元喜",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "GRACHAN 22 × BRAVE FIGHT 12",
-        "round": "R2"
-      },
-      {
-        "date": "2015-11-22",
-        "opponent": "川村謙",
-        "result": "win",
-        "method": "2R 3:07 TKO",
-        "event": "ZST.49 －旗揚げ13周年記念大会－",
-        "round": "R2"
-      },
-      {
-        "date": "2015-06-27",
-        "opponent": "クレベル・コイケ",
-        "result": "loss",
-        "method": "1R 3:06 三角絞め",
-        "event": "REBEL FC 3 THE PROMISED ONES",
-        "round": "R1"
-      },
-      {
-        "date": "2015-05-02",
-        "opponent": "マラッド・エナセリ",
-        "result": "loss",
-        "method": "5分2R終了 判定0-3",
-        "event": "RFC REAL FIGHT CHAMPIONSHIP 2",
-        "round": "R2"
-      },
-      {
-        "date": "2015-02-08",
-        "opponent": "安藤達也",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "GRANDSLAM 2 ～way of the cage～",
-        "round": "R3"
-      },
-      {
-        "date": "2014-08-01",
-        "opponent": "ミゲール・トーレス",
-        "result": "loss",
-        "method": "5分3R終了 判定1-2",
-        "event": "REBEL FC 2 BATTLE ROYALE",
-        "round": "R3"
-      },
-      {
-        "date": "2014-06-08",
-        "opponent": "岡田孔明",
-        "result": "win",
-        "method": "1R TKO（パンチ）",
-        "event": "BRAVE FIGHT 6",
-        "round": "R1"
-      },
-      {
-        "date": "2014-03-22",
-        "opponent": "原田ヨシキ",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "DEEP 65 IMPACT",
-        "round": "R2"
-      },
-      {
-        "date": "2014-02-16",
-        "opponent": "なおKING",
-        "result": "win",
-        "method": "1R 3:18 TKO",
-        "event": "DEEP TOKYO IMPACT wave 7",
-        "round": "R1"
-      },
-      {
-        "date": "2013-11-04",
-        "opponent": "工藤修久",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "BRAVE FIGHT 5",
-        "round": "R2"
-      },
-      {
-        "date": "2013-08-25",
-        "opponent": "津田勝憲",
-        "result": "loss",
-        "method": "2R 3:35 腕ひしぎ十字固め",
-        "event": "DEEP 63 IMPACT",
-        "round": "R2"
-      },
-      {
-        "date": "2013-07-13",
-        "opponent": "ケンヤ",
-        "result": "win",
-        "method": "5分2R終了 判定2-0",
-        "event": "BRAVE FIGHT 4",
-        "round": "R2"
-      },
-      {
-        "date": "2013-04-07",
-        "opponent": "野村克也",
-        "result": "win",
-        "method": "1R 2:30 TKO（スタンドパンチ連打）",
-        "event": "BRAVE FIGHT 3",
-        "round": "R1"
-      },
-      {
-        "date": "2013-03-10",
-        "opponent": "伊藤尚司",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "DEEP TOKYO IMPACT～DEEPライト級GP2013～開幕戦",
-        "round": "R2"
-      },
-      {
-        "date": "2013-01-27",
-        "opponent": "奥津フォード",
-        "result": "win",
-        "method": "2R チョークスリーパー",
-        "event": "BRAVE FIGHT 2",
-        "round": "R2"
-      },
-      {
-        "date": "2012-12-08",
-        "opponent": "チャップリン木山",
-        "result": "win",
-        "method": "2R 0:25 TKO（パンチ）",
-        "event": "DEEP CAGE IMPACT 2012 in TOKYO 1st ROUND",
-        "round": "R2"
-      },
-      {
-        "date": "2012-08-26",
-        "opponent": "藤澤優作",
-        "result": "win",
-        "method": "1R 0:10（左ハイキック）",
-        "event": "BRAVE FIGHT 1",
-        "round": "R1"
-      },
-      {
-        "date": "2012-07-21",
-        "opponent": "青山祐大",
-        "result": "draw",
-        "method": "5分2R終了 判定1-0",
-        "event": "DEEP TOKYO IMPACT 2012 in DIFFER ARIAKE",
-        "round": "R2"
-      },
-      {
-        "date": "2012-01-28",
-        "opponent": "増田良太",
-        "result": "draw",
-        "method": "5分2R終了 判定0-0",
-        "event": "PANCRASE PROGRESS TOUR 1",
-        "round": "R2"
-      },
-      {
-        "date": "2011-08-21",
-        "opponent": "佐々木渉",
-        "result": "loss",
-        "method": "1R 2:37 アームロック",
-        "event": "DEEP CLUB DEEP in DIANA 2",
-        "round": "R1"
-      },
-      {
-        "date": "2011-02-27",
-        "opponent": "有村脩也",
-        "result": "win",
-        "method": "1R 0:37 TKO（パンチ）",
-        "event": "DEEP TOKYO IMPACT",
-        "round": "R1"
-      }
-    ],
-    "live": true,
-    "birthPlace": "埼玉県越谷市",
-    "age": 36
-  },
-  "seki-tetsuya": {
-    "wins": 18,
-    "losses": 11,
-    "draws": 1,
-    "ko": 9,
-    "sub": 3,
-    "decision": 6,
-    "history": [
-      {
-        "date": "2026-02-23",
-        "opponent": "海飛",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "DEEP TOKYO IMPACT 2026 1st ROUND",
-        "round": "R3"
-      },
-      {
-        "date": "2025-09-15",
-        "opponent": "五明宏人",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "DEEP 127 IMPACT",
-        "round": "R3"
-      },
-      {
-        "date": "2024-06-09",
-        "opponent": "カルシャガ・ダウトベック",
-        "result": "loss",
-        "method": "1R 3:11 KO（左ボディブロー）",
-        "event": "RIZIN.47",
-        "round": "R1"
-      },
-      {
-        "date": "2023-06-24",
-        "opponent": "遠藤来生",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "RIZIN.43",
-        "round": "R3"
-      },
-      {
-        "date": "2022-07-31",
-        "opponent": "中原由貴",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "RIZIN.37",
-        "round": "R3"
-      },
-      {
-        "date": "2022-05-05",
-        "opponent": "原口央",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "RIZIN LANDMARK vol.3",
-        "round": "R3"
-      },
-      {
-        "date": "2021-12-12",
-        "opponent": "山本歩夢",
-        "result": "win",
-        "method": "1R 2:50 腕ひしぎ三角固め",
-        "event": "DEEP 105 IMPACT",
-        "round": "R1"
-      },
-      {
-        "date": "2021-09-23",
-        "opponent": "DJ.taiki",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "DEEP 103 IMPACT",
-        "round": "R3"
-      },
-      {
-        "date": "2021-03-21",
-        "opponent": "堀江圭功",
-        "result": "loss",
-        "method": "3R 1:16 TKO（右ストレート→パウンド）",
-        "event": "RIZIN.27",
-        "round": "R3"
-      },
-      {
-        "date": "2020-08-09",
-        "opponent": "神田コウヤ",
-        "result": "win",
-        "method": "2R 3:47 TKO（右ストレート）",
-        "event": "RIZIN.22 - STARTING OVER -",
-        "round": "R2"
-      },
-      {
-        "date": "2019-08-13",
-        "opponent": "浜松ヤマト",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "ZST.66",
-        "round": "R2"
-      },
-      {
-        "date": "2019-01-27",
-        "opponent": "鈴木琢仁",
-        "result": "win",
-        "method": "3R 2:05 TKO（パウンド）",
-        "event": "ZST.63",
-        "round": "R3"
-      },
-      {
-        "date": "2018-08-13",
-        "opponent": "カラム・ルイス",
-        "result": "draw",
-        "method": "5分2R終了 判定1-0",
-        "event": "ZST.61",
-        "round": "R2"
-      },
-      {
-        "date": "2018-03-17",
-        "opponent": "樋沼朝光",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "ZST.59",
-        "round": "R2"
-      },
-      {
-        "date": "2017-11-25",
-        "opponent": "橘川尋貴",
-        "result": "win",
-        "method": "2R 1:56 負傷判定2-1",
-        "event": "ZST.58 ～旗揚げ15周年記念大会～ 【第4代ZSTフェザー級王者決定戦】",
-        "round": "R2"
-      },
-      {
-        "date": "2017-09-10",
-        "opponent": "島村裕",
-        "result": "win",
-        "method": "2R 1:43 TKO（パウンド）",
-        "event": "ZST.57",
-        "round": "R2"
-      },
-      {
-        "date": "2017-04-15",
-        "opponent": "ニコス・レプカ",
-        "result": "win",
-        "method": "3R TKO（パンチ）",
-        "event": "AUSTRALIAN FIGHTING CHAMPIONSHIP 19",
-        "round": "R3"
-      },
-      {
-        "date": "2017-02-24",
-        "opponent": "直斗",
-        "result": "win",
-        "method": "2R 4:07 TKO（パンチ）",
-        "event": "ZST.55",
-        "round": "R2"
-      },
-      {
-        "date": "2016-11-27",
-        "opponent": "橘川尋貴",
-        "result": "win",
-        "method": "2R 3:28 アームバー",
-        "event": "ZST.54 ～旗揚げ14周年記念大会～",
-        "round": "R2"
-      },
-      {
-        "date": "2016-09-19",
-        "opponent": "山本哲也",
-        "result": "loss",
-        "method": "3分3R終了 判定0-3",
-        "event": "VTJ 8th",
-        "round": "R3"
-      },
-      {
-        "date": "2016-08-07",
-        "opponent": "川村謙",
-        "result": "win",
-        "method": "2R 2:24 TKO",
-        "event": "ZST.52",
-        "round": "R2"
-      },
-      {
-        "date": "2016-05-28",
-        "opponent": "ヌーアルティエビィエクー",
-        "result": "loss",
-        "method": "1R 2:30 TKO",
-        "event": "武林籠中対（WLF MMA）4 in 鄭州",
-        "round": "R1"
-      },
-      {
-        "date": "2015-10-18",
-        "opponent": "小笠原均",
-        "result": "loss",
-        "method": "2R 2:53 TKO（ドクターストップ）",
-        "event": "ZST.48",
-        "round": "R2"
-      },
-      {
-        "date": "2015-08-01",
-        "opponent": "金井塚信之",
-        "result": "loss",
-        "method": "2R 0:52 リアネイキッドチョーク",
-        "event": "ZST in YOKOSUKA vol.2",
-        "round": "R2"
-      },
-      {
-        "date": "2015-05-24",
-        "opponent": "真鍋朝行",
-        "result": "win",
-        "method": "1R 2:30 KO（膝蹴り）",
-        "event": "ZST CHALLENGE 141",
-        "round": "R1"
-      },
-      {
-        "date": "2014-11-23",
-        "opponent": "檜山勇斗",
-        "result": "loss",
-        "method": "5分2R終了 判定0-2",
-        "event": "ZST.43－旗揚げ12周年記念大会－",
-        "round": "R2"
-      },
-      {
-        "date": "2014-06-29",
-        "opponent": "鈴木廣二",
-        "result": "win",
-        "method": "2R 4:51 TKO（パンチ）",
-        "event": "ZST in YOKOSUKA vol.1",
-        "round": "R2"
-      },
-      {
-        "date": "2013-12-22",
-        "opponent": "柏崎剛",
-        "result": "loss",
-        "method": "2R 4:19 TKO（タオル投入）",
-        "event": "SWAT!53",
-        "round": "R2"
-      }
-    ],
-    "live": true,
-    "birthPlace": "神奈川県横浜市",
-    "age": 32
-  },
-  "matsuda-arisa": {
-    "wins": 8,
-    "losses": 1,
-    "draws": 0,
-    "ko": 3,
-    "sub": 1,
-    "decision": 4,
-    "history": [
-      {
-        "date": "2026-05-28",
-        "opponent": "メン・ボー",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "Road to UFC Season 5 【女子ストロー級トーナメント1回戦】",
-        "round": "R3"
-      },
-      {
-        "date": "2026-02-07",
-        "opponent": "アヤン・トゥルサン",
-        "result": "win",
-        "method": "1R 3:59 腕ひしぎ十字固め",
-        "event": "CFFC 150: Zhumagul vs. Morrison 【CFFC女子ストロー級王座決定戦】",
-        "round": "R1"
-      },
-      {
-        "date": "2025-05-22",
-        "opponent": "フォン・シャオツァン",
-        "result": "win",
-        "method": "5分3R終了 判定2-1",
-        "event": "Road to UFC Season 4",
-        "round": "R3"
-      },
-      {
-        "date": "2024-12-22",
-        "opponent": "エリザベス",
-        "result": "win",
-        "method": "1R 2:09 TKO（パウンド）",
-        "event": "DEEP OSAKA IMPACT 2024 5th Round",
-        "round": "R1"
-      },
-      {
-        "date": "2024-03-17",
-        "opponent": "マドンナ",
-        "result": "win",
-        "method": "1R 2:28 TKO（パウンド）",
-        "event": "DEEP OSAKA IMPACT 2024 1st Round",
-        "round": "R1"
-      },
-      {
-        "date": "2023-11-23",
-        "opponent": "万智",
-        "result": "win",
-        "method": "5分3R終了 判定3-2",
-        "event": "DEEP JEWELS 43 【DEEP JEWELSストロー級暫定王座決定戦】",
-        "round": "R3"
-      },
-      {
-        "date": "2023-04-02",
-        "opponent": "純玲",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "DEEP OSAKA IMPACT 2023 1nd Round",
-        "round": "R2"
-      },
-      {
-        "date": "2022-11-23",
-        "opponent": "長野美香",
-        "result": "win",
-        "method": "5分2R終了 判定3-0",
-        "event": "DEEP JEWELS 37",
-        "round": "R2"
-      },
-      {
-        "date": "2022-08-28",
-        "opponent": "和田千聖",
-        "result": "win",
-        "method": "1R 1:51 TKO（パウンド）",
-        "event": "DEEP OSAKA IMPACT 2022 2nd Round",
-        "round": "R1"
-      }
-    ],
-    "live": true
   }
 }
