@@ -65,6 +65,18 @@ export interface Fighter {
   // 「直近の試合の団体」を引き続き保持する。orgsは表示・将来の複数団体絞り込み用の
   // 加算的メタ情報で、org自体の意味は変えない(未設定=単一団体のみ、で従来通り動く)。
   orgs?: SourceKey[];
+  // 表示専用のリングネーム(指示書B、2026-08)。設定時は各種表示箇所でnameJaより
+  // 優先して使う(fighterDisplayName参照)。nameJa自体は名前解決・ランキング集計の
+  // キーとして不変(findFighterSlugByName等の突合はnameJa/aliasesのまま)。
+  // 例: sekino-taiseiのnameJaは「関野大成」のまま、displayNameJaのみ「大成」。
+  displayNameJa?: string;
+}
+
+// 表示用の選手名(displayNameJaが設定されていればそれを優先、無ければnameJa)。
+// 名前解決(findFighterSlugByName)・検索インデックス・構造化データ(JSON-LD)には
+// 使わない(表示専用)。
+export function fighterDisplayName(f: { nameJa: string; displayNameJa?: string }): string {
+  return f.displayNameJa ?? f.nameJa;
 }
 
 // Seed data. Per mnews-spec.md this is normally synced from the Wikipedia API.
@@ -1414,7 +1426,7 @@ export const FIGHTERS: Fighter[] = [
   // 2026-07-30調査(#277)で人物取り違えと判明: 表示名「大成」の実体は関野大成の
   // DEEPメガトン級戦績。従来wikiTitleJa:"西谷大成"としていたのは別人(フェザー級)。
   // sekino-taiseiへ付け替え、西谷大成本人は下でnishitani-taiseiとして新規追加。
-  { slug: "sekino-taisei", nameJa: "関野大成", nameEn: "Taisei Sekino", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "sekino-taisei", nameJa: "関野大成", displayNameJa: "大成", nameEn: "Taisei Sekino", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nishitani-taisei", nameJa: "西谷大成", nameEn: "Taisei Nishitani", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "shibisai-shoma", nameJa: "シビサイ頌真", nameEn: "Shoma Shibisai", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kitakata-daichi", nameJa: "北方大地", nameEn: "Daichi Kitakata", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },

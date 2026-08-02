@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { calcFighterRates } from "@/lib/fighters";
+import { calcFighterRates, fighterDisplayName } from "@/lib/fighters";
 import { SOURCES } from "@/lib/sources";
 import { ResolvedFighter } from "@/lib/feeds/resolveFighter";
 import type { OrgTag, OrgTagKey } from "@/lib/orgTags";
@@ -322,7 +322,7 @@ export default function FighterFilterGrid({
                   {f.weightClass}
                 </span>
               </div>
-              <div className="fighter-name">{f.nameJa}</div>
+              <div className="fighter-name">{fighterDisplayName(f)}</div>
               {f.nickname && <div className="fighter-card-nickname">「{f.nickname}」</div>}
               {/* f.multiOrgRecordは「1行目(Wikipedia通算)を信頼できない選手」
                   (noRecordData、またはneedsReview/recordFromResultsで1行目が

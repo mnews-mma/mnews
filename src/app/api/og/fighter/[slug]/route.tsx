@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
-import { getFighter, calcFighterRates } from "@/lib/fighters";
+import { getFighter, calcFighterRates, fighterDisplayName } from "@/lib/fighters";
 import { resolveFighterCached } from "@/lib/fighterRecordsCache";
 import {
   fetchRizinRecordsEdge,
@@ -77,7 +77,8 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
     // 空欄なら階級行を出さない。
     const wcLabel = (new URL(req.url).searchParams.get("wc") ?? "").trim();
     const fonts = await loadOgFonts();
-    const nameSize = fitFontSize(fighter.nameJa, NAME_STEPS);
+    const displayName = fighterDisplayName(fighter);
+    const nameSize = fitFontSize(displayName, NAME_STEPS);
 
     const img = new ImageResponse(
       (
@@ -150,7 +151,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
                 color: "#FFFFFF",
               }}
             >
-              {fighter.nameJa}
+              {displayName}
             </div>
             {nickname && (
               <div
