@@ -1,13 +1,8 @@
 import { FIGHTERS } from "./fighters";
 import { ResolvedFighter } from "./feeds/resolveFighter";
 import { fetchFighterRecords, resolveFightersFromRecords } from "./fighterRecordsCache";
-import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords, fetchDeepRecords } from "./multiOrgRecordsData";
-import {
-  computeMultiOrgRecord,
-  computeMultiOrgBoutTable,
-  computeMultiOrgRates,
-  shouldPreferMultiOrgRecord,
-} from "./mnewsRating/multiOrgRecord";
+import { shouldPreferMultiOrgRecord } from "./mnewsRating/multiOrgRecord";
+import { getMultiOrgSummaryCached } from "./mnewsRating/multiOrgRecordCache";
 import { SHOW_MULTI_ORG_RECORD } from "./featureFlags";
 
 // /fighters 一覧・Xカードツールで共通の「公開母集団」を返す。
@@ -26,28 +21,21 @@ export async function getVisibleFighters(): Promise<ResolvedFighter[]> {
   const resolved = resolveFightersFromRecords(FIGHTERS.filter((f) => !f.hidden), records);
   if (!SHOW_MULTI_ORG_RECORD) return resolved.filter((f) => !f.noRecordData);
 
-  const [rizinEvents, shootoEvents, pancraseEvents, deepEvents] = await Promise.all([
-    fetchRizinRecords(),
-    fetchShootoRecords(),
-    fetchPancraseRecords(),
-    fetchDeepRecords(),
-  ]);
-  return resolved
-    .map((f) => {
+  const withMultiOrg = await Promise.all(
+    resolved.map(async (f) => {
       // noRecordData(戦績データ自体が無い)だけでなく、needsReview/recordFromResults
       // (1行目が単一ソース由来で限定的)も対象にする(fighters/[slug]の
       // suppressNoRecordRowと同じ判定。shouldPreferMultiOrgRecord参照)。
       // それ以外(通常のWikipedia選手)は4団体合算の計算自体を省略する(既存の
       // 性能特性を維持)。
       if (!f.noRecordData && !f.needsReview && !f.recordFromResults) return f;
-      const data = { rizinEvents, shootoEvents, pancraseEvents, deepEvents };
-      const mr = computeMultiOrgRecord(f.slug, data);
+      const { record: mr, rates } = await getMultiOrgSummaryCached(f.slug);
       if (!shouldPreferMultiOrgRecord(f, f.wins, f.losses, f.draws, mr)) return f;
       if (mr.wins === 0 && mr.losses === 0 && mr.draws === 0) return f;
-      const rates = computeMultiOrgRates(mr, computeMultiOrgBoutTable(f.slug, data));
       return { ...f, multiOrgRecord: { wins: mr.wins, losses: mr.losses, draws: mr.draws, ...rates } };
     })
-    .filter((f) => !f.noRecordData || !!f.multiOrgRecord);
+  );
+  return withMultiOrg.filter((f) => !f.noRecordData || !!f.multiOrgRecord);
 }
 
 // 上記と同じ可視性判定でslugのSetだけを返す。イベント/戦績ページの対戦相手リンク
