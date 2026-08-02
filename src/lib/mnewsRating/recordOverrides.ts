@@ -645,6 +645,214 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
     fetchedDate: "2026-07-19",
     note: "シビサイ頌真×森川修次(GRACHAN 19、2015-09-19)。ローブローによる無効試合。相手はFIGHTERS未登録のためmirrorなし。",
   },
+  // 2026-08-02(指示書R-5→C型悉皆調査の確定12件+arai-jo追加分・計13件):
+  // data/fighterRecords.json(Wikipedia由来「1行目」)の大会名・日付を、
+  // data/deepRecords.json・data/shootoRecords.json(DEEP/修斗公式アーカイブの
+  // スクレイプ結果)と対戦相手名でクロス突合して裏取りした誤記訂正。
+  // 「DEEP 101 IMPACT」6件はいずれも大会名は正しいが日付がWikipedia側で
+  // 2021-06-20(実際は同日に別の大会=DEEP JEWELS 33が開催されていた)に
+  // ズレていた。DEEP公式サイト(deep2001.com)の当該大会ページで対戦相手・
+  // ラウンド・決着方法が一致することを確認済み。
+  {
+    type: "patch-date",
+    fighterId: "hiroya",
+    date: "2021-06-20",
+    opponent: "関原翔",
+    correctedDate: "2021-05-05",
+    source: "https://www.deep2001.com/deep-101-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 101 IMPACT」大会ページで確認: 開催日は2021-05-05。" +
+      "data/deepRecords.jsonの当該大会にヒロヤ vs 関原翔(勝者:関原翔)のboutが実在し、" +
+      "決着方法もWikipedia戦績表の記載と一致するため同一試合と特定できる。" +
+      "Wikipedia側の日付だけが2021-06-20(同日開催の別大会DEEP JEWELS 33の日付)に" +
+      "誤って引っ張られていた。大会名(DEEP 101 IMPACT)自体は誤りなし。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "ito-yuki",
+    date: "2021-06-20",
+    opponent: "安谷屋智弘",
+    correctedDate: "2021-05-05",
+    source: "https://www.deep2001.com/deep-101-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 101 IMPACT」大会ページで確認: 開催日は2021-05-05。" +
+      "data/deepRecords.jsonの当該大会に安谷屋智弘 vs 伊藤裕樹(勝者:伊藤裕樹、" +
+      "2R リアネイキッドチョーク)のboutが実在し、Wikipedia戦績表の決着方法と一致。" +
+      "上記ヒロヤと同じ大会・同じ日付誤りパターン。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "sekihara-sho",
+    date: "2021-06-20",
+    opponent: "ヒロヤ",
+    correctedDate: "2021-05-05",
+    source: "https://www.deep2001.com/deep-101-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 101 IMPACT」大会ページで確認: 開催日は2021-05-05。" +
+      "data/deepRecords.jsonの当該大会にヒロヤ vs 関原翔(勝者:関原翔)のboutが実在。" +
+      "上記ヒロヤ側と同一試合(相手視点)・同じ日付誤りパターン。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "nishitani-taisei",
+    date: "2021-06-20",
+    opponent: "山本歩夢",
+    correctedDate: "2021-05-05",
+    source: "https://www.deep2001.com/deep-101-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 101 IMPACT」大会ページで確認: 開催日は2021-05-05。" +
+      "data/deepRecords.jsonの当該大会に西谷大成 vs 山本歩夢(勝者:山本歩夢)のbout" +
+      "が実在。上記と同じ大会・同じ日付誤りパターン。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "ishizuka-koichi",
+    date: "2021-06-20",
+    opponent: "CORO",
+    correctedDate: "2021-05-05",
+    source: "https://www.deep2001.com/deep-101-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 101 IMPACT」大会ページで確認: 開催日は2021-05-05。" +
+      "data/deepRecords.jsonの当該大会に石司晃一 vs CORO(勝者:石司晃一)のboutが" +
+      "実在。上記と同じ大会・同じ日付誤りパターン。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "coro",
+    date: "2021-06-20",
+    opponent: "石司晃一",
+    correctedDate: "2021-05-05",
+    source: "https://www.deep2001.com/deep-101-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 101 IMPACT」大会ページで確認: 開催日は2021-05-05。" +
+      "上記石司晃一側と同一試合(相手視点)・同じ日付誤りパターン。",
+  },
+  {
+    // DEEP 93 IMPACTも同種の日付ズレ(1週間)。パク・シウとの対戦は
+    // data/deepRecords.json上で2019-12-15開催の同大会に実在(決着方法・
+    // ラウンドがWikipedia戦績表と一致)。
+    type: "patch-date",
+    fighterId: "aono-hikaru",
+    date: "2019-12-22",
+    opponent: "パク・シウ",
+    correctedDate: "2019-12-15",
+    source: "https://www.deep2001.com/deep-93-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 93 IMPACT」大会ページで確認: 開催日は2019-12-15" +
+      "(Wikipedia戦績表は2019-12-22と1週間誤記)。data/deepRecords.jsonの当該大会に" +
+      "青野ひかる vs パク・シウ(TKO、1R)のboutが実在し決着方法が一致。大会名自体は誤りなし。",
+  },
+  {
+    // DEEP 131 IMPACTも日付ズレ(20日)。data/deepRecords.jsonの正式イベント名は
+    // 「DEEP 131 IMPACT 25th Anniversary」だが、Wikipedia側の「DEEP 131 IMPACT」
+    // は略称としてそのまま扱う(大会名自体の誤りではなく周年サブタイトルの省略のみ)。
+    type: "patch-date",
+    fighterId: "miyabi-shunsuke",
+    date: "2026-05-24",
+    opponent: "瀧澤謙太",
+    correctedDate: "2026-05-04",
+    source: "https://www.deep2001.com/deep-131-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 131 IMPACT 25th Anniversary」大会ページで確認: 開催日は" +
+      "2026-05-04(Wikipedia戦績表は2026-05-24と誤記)。data/deepRecords.jsonの当該大会に" +
+      "瀧澤謙太 vs 雅駿介(勝者:瀧澤謙太、3R TKO)のboutが実在し決着方法が一致。",
+  },
+  {
+    // DEEP JEWELS 31も日付ズレ(約3ヶ月)。大会名自体は正しく、開催日のみ誤り。
+    type: "patch-date",
+    fighterId: "oshima-saori",
+    date: "2020-09-20",
+    opponent: "パク・シウ",
+    correctedDate: "2020-12-19",
+    source: "https://www.deep2001.com/deep-jewels-31/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP JEWELS 31」大会ページで確認: 開催日は2020-12-19" +
+      "(Wikipedia戦績表は2020-09-20と誤記)。data/deepRecords.jsonの当該大会" +
+      "メインイベントに大島沙緒里 vs パク・シウ(勝者:パク・シウ、判定0-3、" +
+      "28-28/28-28/27-28)のboutが実在し、決着方法(5分3R終了 判定0-3)が" +
+      "Wikipedia戦績表の記載と完全一致。",
+  },
+  // DEEP 119/120・DEEP 109/110は日付は正しいが大会番号の誤記(いずれも同日開催の
+  // 実在大会と番号が1違いだった)。
+  {
+    type: "patch-method",
+    fighterId: "kinoshita-karate",
+    date: "2024-07-14",
+    opponent: "神田コウヤ",
+    correctedMethod: "5分3R終了 判定2-1",
+    correctedRound: "R3",
+    correctedEvent: "DEEP 120 IMPACT",
+    source: "https://www.deep2001.com/deep-120-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 120 IMPACT」(2024-07-14開催)で確認: data/deepRecords.json" +
+      "の当該大会に神田コウヤ vs 木下カラテ(勝者:木下カラテ、判定)のboutが実在。" +
+      "Wikipedia戦績表は同日開催の「DEEP 119 IMPACT」(実際は2024-07-14には非開催)と" +
+      "誤記していた。method/roundはWikipedia側の記載を維持(変更なし、event名のみ訂正)。",
+  },
+  {
+    type: "patch-method",
+    fighterId: "coro",
+    date: "2024-07-14",
+    opponent: "瀧澤謙太",
+    correctedMethod: "5分3R終了 判定0-3",
+    correctedRound: "R3",
+    correctedEvent: "DEEP 120 IMPACT",
+    source: "https://www.deep2001.com/deep-120-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "上記木下カラテと同一大会・同カード(相手視点)。DEEP公式サイトの「DEEP 120 IMPACT」" +
+      "(2024-07-14開催)にCORO vs 瀧澤謙太(勝者:瀧澤謙太、判定)のboutが実在。" +
+      "Wikipedia戦績表は「DEEP 119 IMPACT」と誤記していた。method/roundは変更なし。",
+  },
+  {
+    type: "patch-method",
+    fighterId: "enju-kenta",
+    date: "2022-08-21",
+    opponent: "岩見凌",
+    correctedMethod: "1R 0:58 リアネイキッドチョーク",
+    correctedRound: "R1",
+    correctedEvent: "DEEP 109 IMPACT",
+    source: "https://www.deep2001.com/deep-109-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 109 IMPACT」(2022-08-21開催)で確認: data/deepRecords.json" +
+      "の当該大会にKENTA(猿寿健太) vs 岩見凌(勝者:KENTA、1R0分58秒リアネイキッド" +
+      "チョーク)のboutが実在し、Wikipedia戦績表の決着方法と完全一致。Wikipedia側は" +
+      "「DEEP110 IMPACT」(実際は2022-08-21には非開催)と誤記していた。" +
+      "method/roundは変更なし、event名のみ訂正。",
+  },
+  {
+    // 修斗は公式サイト(shooto-mma.com)の選手プロフィールページから該当試合の
+    // /result/?id=NNN(公式大会結果ページ)を直接特定できたため、DEEP勢と異なり
+    // 対戦相手名でのクロス突合ではなく公式ページの正式大会名をそのまま採用する。
+    type: "patch-method",
+    fighterId: "arai-jo",
+    date: "2021-06-26",
+    opponent: "飯野タテオ",
+    correctedMethod: "1R 0:59 KO（パンチ）",
+    correctedRound: "R1",
+    correctedEvent: "SHOOTO GIG TOKYO Vol.30 Supported by ONEchampionship",
+    source: "https://www.shooto-mma.com/result/?id=118",
+    fetchedDate: "2026-08-02",
+    note:
+      "修斗公式サイトの新井丈プロフィールページ(shooto-mma.com/fighters/?id=49)から" +
+      "2021-06-26の対戦相手名リンク先(result/?id=118)を特定し、正式大会名" +
+      "「プロフェッショナル修斗公式戦 SHOOTO GIG TOKYO Vol.30 Supported by " +
+      "ONEchampionship」を確認。data/shootoRecords.jsonの当該大会に飯野タテオ vs " +
+      "新井丈(勝者:新井丈、1R KO)のboutが実在し決着方法が一致。Wikipedia戦績表は" +
+      "「プロフェッショナル修斗2021 Vol.6」(該当日には非開催)と誤記していた。" +
+      "method/roundは変更なし、event名のみ訂正。",
+  },
 ];
 
 export interface WeighInMissRuling {
