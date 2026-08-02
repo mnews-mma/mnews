@@ -3,6 +3,14 @@ import { NextResponse } from "next/server";
 import { getFighter, calcFighterRates } from "@/lib/fighters";
 import { resolveFighterCached } from "@/lib/fighterRecordsCache";
 import {
+  fetchRizinRecordsEdge,
+  fetchShootoRecordsEdge,
+  fetchPancraseRecordsEdge,
+  fetchDeepRecordsEdge,
+} from "@/lib/multiOrgRecordsDataEdge";
+import { resolveDisplayRecord } from "@/lib/mnewsRating/multiOrgRecord";
+import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
+import {
   OG_COLORS as COLORS,
   SITE_URL,
   loadOgFonts,
@@ -40,8 +48,24 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
     if (!seed) return fallbackRedirect();
 
     const fighter = await resolveFighterCached(seed);
-    const { wins, losses, draws, ko, sub, decision, nickname } = fighter;
-    const { winRate, finishRate } = calcFighterRates(fighter);
+    // 選手ページ本体(fighters/[slug]/page.tsx)のsuppressNoRecordRowと同じ判定を
+    // カード画像にも適用する。1行目が抑制対象(needsReview/recordFromResultsで
+    // 単一ソース由来かつ4団体合算がそれを上回る、またはnoRecordData)の選手は、
+    // カードの数値も4団体合算に差し替える(shouldPreferMultiOrgRecord/
+    // resolveDisplayRecord参照。そうしないとSNSシェア画像だけ古い1行目の
+    // 数値のまま焼き込まれ続ける)。
+    let displayFighter = fighter;
+    if (SHOW_MULTI_ORG_RECORD) {
+      const [rizinEvents, shootoEvents, pancraseEvents, deepEvents] = await Promise.all([
+        fetchRizinRecordsEdge(),
+        fetchShootoRecordsEdge(),
+        fetchPancraseRecordsEdge(),
+        fetchDeepRecordsEdge(),
+      ]);
+      displayFighter = resolveDisplayRecord(fighter, { rizinEvents, shootoEvents, pancraseEvents, deepEvents });
+    }
+    const { wins, losses, draws, ko, sub, decision, nickname } = displayFighter;
+    const { winRate, finishRate } = calcFighterRates(displayFighter);
 
     const total = ko + sub + decision || 1;
     const koPct = (ko / total) * 100;
