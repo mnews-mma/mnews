@@ -37,6 +37,9 @@ import { tallyMethods } from "../methodClassify";
 // 表示ラベル用の固定表記(実装済み4団体を列挙。並び順は確定済み:
 // RIZIN・DEEP・パンクラス・修斗、2026-07-30ユーザー指定)。
 export const MULTI_ORG_RECORD_LABEL = "RIZIN・DEEP・パンクラス・修斗 通算";
+// 対戦カード(EventBoutCardV2)のバッジ用短縮表記。カード内は余白が限られるため
+// MULTI_ORG_RECORD_LABELより短い表記を別途持つ(指示書指定の文言)。
+export const MULTI_ORG_RECORD_LABEL_SHORT = "4団体通算";
 
 export interface MultiOrgRecord {
   wins: number;
@@ -45,6 +48,32 @@ export interface MultiOrgRecord {
   // 集計に使った団体のうち、この選手について1件以上boutが見つかった団体
   // (表示には使わず、検証・デバッグ用の内訳として残す)。
   orgsWithBouts: string[];
+}
+
+// 4団体合算で1件でも試合が見つかっているか(wins/losses/draws合計>0)。
+// fighters/[slug]/page.tsxは同等のチェックをインラインで持つ(既存箇所は変更しない
+// 方針のためこの関数への置き換えはしていない)。対戦カード側の新規呼び出し元
+// (EventBoutCardV2)から使う。
+export function hasMultiOrgRecord(record: MultiOrgRecord): boolean {
+  return record.wins > 0 || record.losses > 0 || record.draws > 0;
+}
+
+// EventBoutCardV2が選手片側ぶんの4団体合算データをまとめて受け取るための型
+// (record=勝敗・rates=KO/一本/判定+勝率/フィニッシュ率・rows=対戦テーブル行)。
+export interface MultiOrgSideRecord {
+  record: MultiOrgRecord;
+  rates: MultiOrgRates;
+  rows: MultiOrgBoutRow[];
+}
+
+// computeMultiOrgRecord/computeMultiOrgBoutTableのdata引数と同じ形。
+// 呼び出し側(events/[slug]/page.tsx等)がfetch結果をローカル変数に保持する際の
+// 型注釈用にexportする(関数シグネチャ自体は変更しない)。
+export interface MultiOrgSourceData {
+  rizinEvents: RizinRecordsEvent[];
+  shootoEvents: ShootoRecordsEvent[];
+  pancraseEvents: PancraseRecordsEvent[];
+  deepEvents: DeepRecordsEvent[];
 }
 
 export function computeMultiOrgRecord(
