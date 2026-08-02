@@ -33,6 +33,29 @@ const DATA_DIR = path.join(process.cwd(), "data");
 const OUT_DIR = path.join(process.cwd(), "out");
 const TARGET_FILES = ["shootoRecords.json", "pancraseRecords.json", "deepRecords.json"];
 
+// 指示書R-4(2026-08-01): 名前は本人で一致するが、試合そのものがプロ戦績
+// 集計の対象外(アマチュア/年少者向け特別ルール等)のため、名前解決の
+// 対象から個別に除外するbout。denylist(名前単位で常時ブロック)とは違い、
+// この選手の他のboutの自動解決は妨げない(karenの"華蓮DATE"aliasは
+// PANCRASE 319/311/322の3戦を正しく解決する一方、このDEEP JEWELS 12の
+// 1戦だけは除外する)。
+//
+// - DEEP JEWELS 12(2016-06-05)「華蓮DATE」vs 三阪あゆみ: headingText/
+//   namedDivisionに「※パウンド無し」の注記があり、DEEP JEWELS本戦の
+//   通常ルール(グラウンドパンチ有り)とは異なる特別ルール。本人がこの
+//   興行に出場したこと自体はefight.jpの記事(Team DATE解散報道、
+//   「DEEP JEWELSに12歳で初出場」の記載)と符合するが、パウンド無しの
+//   特別ルール戦をプロ通算成績に算入すると1行目(Wikipedia由来、10-3-0)
+//   を2行目が上回ってしまう(11-3-0)。1行目もこの試合を含めていないため、
+//   本アグリゲータでも除外し1行目と2行目を10-3-0で一致させる。
+const KNOWN_NON_PROFESSIONAL_BOUTS: ReadonlySet<string> = new Set([
+  "deepRecords.json::DEEP JEWELS 12::2016-06-05::1",
+]);
+
+function boutKey(file: string, eventName: string, date: string | null, cardPosition: number): string {
+  return `${file}::${eventName}::${date}::${cardPosition}`;
+}
+
 // ------------------------------------------------------------------
 // ファイル単位のバックフィル処理
 // ------------------------------------------------------------------
@@ -63,6 +86,10 @@ function backfillFile(fileName: string, index: Map<string, string | null>): File
         const name: string = b[nameField];
         if (b[slugField]) {
           alreadyResolved++;
+          continue;
+        }
+        if (KNOWN_NON_PROFESSIONAL_BOUTS.has(boutKey(fileName, ev.eventName, ev.date, b.cardPosition))) {
+          unresolved.set(name, (unresolved.get(name) ?? 0) + 1);
           continue;
         }
         const resolved = resolveSlug(name, index);
