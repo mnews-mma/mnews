@@ -1,44 +1,30 @@
 # RIZIN選手slug再解決バックフィル結果
 
-生成日時: 2026-08-02T00:54:47.043Z
+生成日時: 2026-08-02T01:01:00.113Z
 
 正規化ロジックはscripts/lib/fighterNameBackfill.ts(backfill-shooto-pancrase-slugs.tsと共通)を使用。
 fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場合のみ解決。既存の解決済みslugは上書きしない。
 
 - bout×コーナー総数: 2014
-- 既に解決済みだった件数: 918
-- 今回新規解決(コーナー単位): 7
-- 今回新規解決(ユニークbout件数): 7
+- 既に解決済みだった件数: 925
+- 今回新規解決(コーナー単位): 0
+- 今回新規解決(ユニークbout件数): 0
 - 依然未解決(延べ): 1089
 - 依然未解決(ユニーク生表記数): 609
-- winnerSlug再計算で埋めた件数: 3
+- winnerSlug再計算で埋めた件数: 0
 
 ## 影響を受けた選手一覧(選手名・解決bout数・4団体通算の変化)
 
-| slug | 新規解決bout数 | 4団体通算(変更前) | 4団体通算(変更後) |
-|---|---|---|---|
-| seki-tetsuya | 6 | 2-2-0 | 5-5-0 |
-| hirata-ayane | 1 | 4-2-0 | 4-3-0 |
+(該当なし)
 
 ## 新規解決bout明細
 
 | 大会 | 日付 | コーナー | 生表記 | 解決slug |
 |---|---|---|---|---|
-| RIZIN.22 - STARTING OVER - | 2020-08-09 | A | 関鉄矢 | seki-tetsuya |
-| Yogibo presents RIZIN.27 | 2021-03-21 | A | 関鉄矢 | seki-tetsuya |
-| +WEED presents RIZIN LANDMARK vol.3 | 2022-05-05 | A | 関鉄矢 | seki-tetsuya |
-| 湘南美容クリニック presents RIZIN.37 | 2022-07-31 | A | 関鉄矢 | seki-tetsuya |
-| RIZIN.43 | 2023-06-24 | A | 関鉄矢 | seki-tetsuya |
-| Yogibo presents RIZIN.47 | 2024-06-09 | B | 関鉄矢 | seki-tetsuya |
-| abc presents RIZIN LANDMARK 15 in HIROSHIMA | 2026-07-18 | B | 平田彩音 | hirata-ayane |
 
 ## winnerSlug再計算明細(fighterA/BSlugは解決済みだがwinnerSlugがnullのまま残っていたbout)
 
-| 大会 | 日付 | コーナー | 勝者名 | 解決slug |
-|---|---|---|---|---|
-| RIZIN.22 - STARTING OVER - | 2020-08-09 | A | 関鉄矢 | seki-tetsuya |
-| +WEED presents RIZIN LANDMARK vol.3 | 2022-05-05 | A | 関鉄矢 | seki-tetsuya |
-| RIZIN.43 | 2023-06-24 | A | 関鉄矢 | seki-tetsuya |
+(該当なし)
 
 ## 編集距離1の不一致候補(参考、機械列挙のみ・同一人物判定はしていない)
 
