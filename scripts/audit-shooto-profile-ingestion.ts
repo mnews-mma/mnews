@@ -4,14 +4,24 @@
 // - 1行目(data/fighterRecords.json、Wikipedia由来の実データがある選手のみ)を
 //   2行目が新たに上回るケースが無いか
 // を確認する。
+// 指示書R-8 監査修正版: 当初版はrizin/pancrase/deepを空配列にして計算しており、
+// これら他団体にもboutを持つ選手(実例: lightyear-daikiはRIZINに3戦)の2行目を
+// 過小評価していた(2行目は4団体合算のため、shootoだけでは実際の表示値と
+// 一致しない)。実際に表示される値と同じになるよう、4団体とも実データを読む。
 import fs from "fs";
 import path from "path";
 import { FIGHTERS } from "../src/lib/fighters";
 import { computeMultiOrgRecord } from "../src/lib/mnewsRating/multiOrgRecord";
 import { ShootoRecordsEvent } from "../src/lib/mnewsRating/shootoScraper";
+import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
+import { PancraseRecordsEvent } from "../src/lib/mnewsRating/pancraseRecordsTypes";
+import { DeepRecordsEvent } from "../src/lib/mnewsRating/deepScraper";
 
 const archive: ShootoRecordsEvent[] = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "shootoRecords.json"), "utf8"));
 const profile: ShootoRecordsEvent[] = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "shootoProfileBouts.json"), "utf8"));
+const rizinEvents: RizinRecordsEvent[] = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "rizinRecords.json"), "utf8"));
+const pancraseEvents: PancraseRecordsEvent[] = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "pancraseRecords.json"), "utf8"));
+const deepEvents: DeepRecordsEvent[] = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "deepRecords.json"), "utf8"));
 const fighterRecords: Record<string, { wins: number; losses: number; draws: number }> = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "data", "fighterRecords.json"), "utf8")
 );
@@ -26,7 +36,7 @@ function profileBoutCountFor(slug: string): number {
   return n;
 }
 
-const emptyData = { rizinEvents: [] as any[], pancraseEvents: [] as any[], deepEvents: [] as any[] };
+const commonData = { rizinEvents, pancraseEvents, deepEvents };
 
 let checkedCount = 0;
 let changedCount = 0;
@@ -34,8 +44,8 @@ const violations: any[] = [];
 const changes: any[] = [];
 
 for (const f of FIGHTERS) {
-  const before = computeMultiOrgRecord(f.slug, { ...emptyData, shootoEvents: archive });
-  const after = computeMultiOrgRecord(f.slug, { ...emptyData, shootoEvents: [...archive, ...profile] });
+  const before = computeMultiOrgRecord(f.slug, { ...commonData, shootoEvents: archive });
+  const after = computeMultiOrgRecord(f.slug, { ...commonData, shootoEvents: [...archive, ...profile] });
   checkedCount++;
   const beforeTotal = before.wins + before.losses + before.draws;
   const afterTotal = after.wins + after.losses + after.draws;

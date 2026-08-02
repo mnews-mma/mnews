@@ -6,22 +6,24 @@
       "slug": "saito-yutaka",
       "nameJa": "斎藤 裕",
       "before": {
-        "wins": 7,
-        "losses": 3,
+        "wins": 11,
+        "losses": 8,
         "draws": 0,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 10
+        "total": 19
       },
       "after": {
-        "wins": 8,
-        "losses": 3,
+        "wins": 12,
+        "losses": 8,
         "draws": 0,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 11
+        "total": 20
       },
       "expectedIncrement": 1,
       "actualIncrement": 1,
@@ -306,21 +308,23 @@
       "nameJa": "内藤頌貴",
       "before": {
         "wins": 10,
-        "losses": 6,
+        "losses": 7,
         "draws": 1,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 17
+        "total": 18
       },
       "after": {
         "wins": 12,
-        "losses": 8,
+        "losses": 9,
         "draws": 3,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 23
+        "total": 24
       },
       "expectedIncrement": 6,
       "actualIncrement": 6,
@@ -571,22 +575,24 @@
       "slug": "takaoka-hiroki",
       "nameJa": "高岡宏気",
       "before": {
-        "wins": 12,
+        "wins": 13,
         "losses": 8,
         "draws": 1,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 21
+        "total": 22
       },
       "after": {
-        "wins": 14,
+        "wins": 15,
         "losses": 10,
         "draws": 2,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 26
+        "total": 27
       },
       "expectedIncrement": 5,
       "actualIncrement": 5,
@@ -611,22 +617,26 @@
       "slug": "nose-shohei",
       "nameJa": "野瀬翔平",
       "before": {
-        "wins": 9,
-        "losses": 3,
-        "draws": 1,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 13
-      },
-      "after": {
         "wins": 11,
         "losses": 3,
         "draws": 1,
         "orgsWithBouts": [
+          "RIZIN",
+          "パンクラス",
           "修斗"
         ],
         "total": 15
+      },
+      "after": {
+        "wins": 13,
+        "losses": 3,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 17
       },
       "expectedIncrement": 2,
       "actualIncrement": 2,
@@ -854,21 +864,23 @@
       "nameJa": "SASUKE",
       "before": {
         "wins": 12,
-        "losses": 2,
+        "losses": 3,
         "draws": 0,
         "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 14
-      },
-      "after": {
-        "wins": 13,
-        "losses": 2,
-        "draws": 0,
-        "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
         "total": 15
+      },
+      "after": {
+        "wins": 13,
+        "losses": 3,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 16
       },
       "expectedIncrement": 1,
       "actualIncrement": 1,
@@ -1096,22 +1108,26 @@
       "slug": "goto-ryo",
       "nameJa": "後藤亮",
       "before": {
-        "wins": 3,
-        "losses": 0,
+        "wins": 5,
+        "losses": 3,
         "draws": 0,
         "orgsWithBouts": [
+          "DEEP",
+          "パンクラス",
           "修斗"
         ],
-        "total": 3
+        "total": 8
       },
       "after": {
-        "wins": 4,
-        "losses": 0,
+        "wins": 6,
+        "losses": 3,
         "draws": 0,
         "orgsWithBouts": [
+          "DEEP",
+          "パンクラス",
           "修斗"
         ],
-        "total": 4
+        "total": 9
       },
       "expectedIncrement": 1,
       "actualIncrement": 1,
@@ -1136,22 +1152,28 @@
       "slug": "sumimura-ryuichiro",
       "nameJa": "住村竜市朗",
       "before": {
-        "wins": 3,
-        "losses": 1,
+        "wins": 19,
+        "losses": 6,
         "draws": 0,
         "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "パンクラス",
           "修斗"
         ],
-        "total": 4
+        "total": 25
       },
       "after": {
-        "wins": 3,
-        "losses": 1,
+        "wins": 19,
+        "losses": 6,
         "draws": 1,
         "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "パンクラス",
           "修斗"
         ],
-        "total": 5
+        "total": 26
       },
       "expectedIncrement": 1,
       "actualIncrement": 1,
@@ -1177,22 +1199,24 @@
       "slug": "soki",
       "nameJa": "ソーキ",
       "before": {
-        "wins": 2,
+        "wins": 3,
         "losses": 4,
         "draws": 0,
         "orgsWithBouts": [
+          "DEEP",
           "修斗"
         ],
-        "total": 6
+        "total": 7
       },
       "after": {
-        "wins": 4,
+        "wins": 5,
         "losses": 5,
         "draws": 0,
         "orgsWithBouts": [
+          "DEEP",
           "修斗"
         ],
-        "total": 9
+        "total": 10
       },
       "expectedIncrement": 3,
       "actualIncrement": 3,
@@ -1217,20 +1241,23 @@
       "slug": "kasuya-yusuke",
       "nameJa": "粕谷優介",
       "before": {
-        "wins": 0,
-        "losses": 0,
-        "draws": 0,
-        "orgsWithBouts": [],
-        "total": 0
-      },
-      "after": {
-        "wins": 1,
-        "losses": 0,
+        "wins": 6,
+        "losses": 8,
         "draws": 0,
         "orgsWithBouts": [
+          "パンクラス"
+        ],
+        "total": 14
+      },
+      "after": {
+        "wins": 7,
+        "losses": 8,
+        "draws": 0,
+        "orgsWithBouts": [
+          "パンクラス",
           "修斗"
         ],
-        "total": 1
+        "total": 15
       },
       "expectedIncrement": 1,
       "actualIncrement": 1,
@@ -1985,22 +2012,24 @@
       "slug": "lightyear-daiki",
       "nameJa": "ダイキ ライトイヤー",
       "before": {
-        "wins": 9,
-        "losses": 9,
+        "wins": 11,
+        "losses": 10,
         "draws": 2,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 20
+        "total": 23
       },
       "after": {
-        "wins": 11,
-        "losses": 11,
+        "wins": 13,
+        "losses": 12,
         "draws": 3,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 25
+        "total": 28
       },
       "expectedIncrement": 5,
       "actualIncrement": 5,
@@ -2179,28 +2208,30 @@
       },
       "row1HasRealData": true,
       "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
+      "crossedOverNewly": false
     },
     {
       "slug": "nojiri-yasuyuki",
       "nameJa": "野尻 定由",
       "before": {
-        "wins": 7,
-        "losses": 6,
-        "draws": 2,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 15
-      },
-      "after": {
         "wins": 8,
         "losses": 6,
         "draws": 2,
         "orgsWithBouts": [
+          "パンクラス",
           "修斗"
         ],
         "total": 16
+      },
+      "after": {
+        "wins": 9,
+        "losses": 6,
+        "draws": 2,
+        "orgsWithBouts": [
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 17
       },
       "expectedIncrement": 1,
       "actualIncrement": 1,
@@ -2339,28 +2370,30 @@
       },
       "row1HasRealData": true,
       "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
+      "crossedOverNewly": false
     },
     {
       "slug": "yuki-daiki",
       "nameJa": "結城 大樹",
       "before": {
-        "wins": 6,
-        "losses": 5,
+        "wins": 7,
+        "losses": 6,
         "draws": 2,
         "orgsWithBouts": [
+          "パンクラス",
           "修斗"
         ],
-        "total": 13
+        "total": 15
       },
       "after": {
-        "wins": 9,
-        "losses": 6,
+        "wins": 10,
+        "losses": 7,
         "draws": 4,
         "orgsWithBouts": [
+          "パンクラス",
           "修斗"
         ],
-        "total": 19
+        "total": 21
       },
       "expectedIncrement": 6,
       "actualIncrement": 6,
@@ -2483,28 +2516,30 @@
       },
       "row1HasRealData": true,
       "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
+      "crossedOverNewly": false
     },
     {
       "slug": "tyson-nobumitsu",
       "nameJa": "大尊 伸光",
       "before": {
         "wins": 5,
-        "losses": 3,
+        "losses": 5,
         "draws": 0,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 8
+        "total": 10
       },
       "after": {
         "wins": 13,
-        "losses": 6,
+        "losses": 8,
         "draws": 0,
         "orgsWithBouts": [
+          "RIZIN",
           "修斗"
         ],
-        "total": 19
+        "total": 21
       },
       "expectedIncrement": 11,
       "actualIncrement": 11,
@@ -2587,28 +2622,34 @@
       },
       "row1HasRealData": true,
       "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
+      "crossedOverNewly": false
     },
     {
       "slug": "tamura-hibiki",
       "nameJa": "田村 ヒビキ",
       "before": {
-        "wins": 1,
-        "losses": 0,
-        "draws": 0,
+        "wins": 2,
+        "losses": 6,
+        "draws": 3,
         "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "パンクラス",
           "修斗"
         ],
-        "total": 1
+        "total": 11
       },
       "after": {
-        "wins": 8,
-        "losses": 5,
-        "draws": 2,
+        "wins": 9,
+        "losses": 11,
+        "draws": 5,
         "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "パンクラス",
           "修斗"
         ],
-        "total": 15
+        "total": 25
       },
       "expectedIncrement": 14,
       "actualIncrement": 14,
@@ -2635,665 +2676,8 @@
       },
       "row1HasRealData": true,
       "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
+      "crossedOverNewly": false
     }
   ],
-  "violations": [
-    {
-      "slug": "lightyear-daiki",
-      "nameJa": "ダイキ ライトイヤー",
-      "before": {
-        "wins": 9,
-        "losses": 9,
-        "draws": 2,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 20
-      },
-      "after": {
-        "wins": 11,
-        "losses": 11,
-        "draws": 3,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 25
-      },
-      "expectedIncrement": 5,
-      "actualIncrement": 5,
-      "incrementMatchesExpected": true,
-      "row1": {
-        "wins": 9,
-        "losses": 9,
-        "draws": 2,
-        "ko": 2,
-        "sub": 4,
-        "decision": 3,
-        "history": [
-          {
-            "date": "2026-01-18",
-            "opponent": "川北晏生",
-            "result": "loss",
-            "method": "KO",
-            "event": "【第2部】PROFESSIONAL SHOOTO 2026 Vol.1",
-            "round": "R2 00:07"
-          },
-          {
-            "date": "2025-05-25",
-            "opponent": "永井奏多",
-            "result": "loss",
-            "method": "TKO/レフェリーストップ/グラウンドパンチ",
-            "event": "PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA",
-            "round": "R1 04:52"
-          },
-          {
-            "date": "2024-12-29",
-            "opponent": "野瀬翔平",
-            "result": "win",
-            "method": "判定 1-2",
-            "event": "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA",
-            "round": ""
-          },
-          {
-            "date": "2023-09-17",
-            "opponent": "波平コング",
-            "result": "win",
-            "method": "TS/三角絞め",
-            "event": "FORCE 18",
-            "round": "R1 01:52"
-          },
-          {
-            "date": "2022-07-03",
-            "opponent": "加藤ケンジ",
-            "result": "loss",
-            "method": "KO",
-            "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
-            "round": "R1 03:35"
-          },
-          {
-            "date": "2022-03-21",
-            "opponent": "後藤丈治",
-            "result": "loss",
-            "method": "判定 3-0",
-            "event": "PROFESSIONAL SHOOTO 2022 Vol.2",
-            "round": ""
-          },
-          {
-            "date": "2021-07-04",
-            "opponent": "高岡宏気",
-            "result": "win",
-            "method": "判定 3-0",
-            "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA Supported by ONE Championship 第1部",
-            "round": ""
-          },
-          {
-            "date": "2020-12-20",
-            "opponent": "田丸匠",
-            "result": "loss",
-            "method": "S/フロントスリーパーホールド",
-            "event": "PROFESSIONAL SHOOTO 2020 Vol.8 最終戦 in OSAKA 2部 Supported by ONE Championship",
-            "round": "R2 03:38"
-          },
-          {
-            "date": "2020-03-21",
-            "opponent": "榎本明",
-            "result": "win",
-            "method": "TKO",
-            "event": "MOBSTYLES 20th ANNIVERSARY TOUR FIGHT＆MOSH Vol.2 Supported by ONE Championship",
-            "round": "R1 00:29"
-          },
-          {
-            "date": "2019-12-15",
-            "opponent": "直撃我聞",
-            "result": "win",
-            "method": "S/三角締め",
-            "event": "プロフェッショナル修斗公式戦香川大会「FORCE 12」",
-            "round": "R3 01:15"
-          },
-          {
-            "date": "2019-06-30",
-            "opponent": "南出剛",
-            "result": "win",
-            "method": "判定 0-2",
-            "event": "SHOOTO 30th ANNIVERSARY TOUR 第5戦 Supported by ONE Championship",
-            "round": ""
-          },
-          {
-            "date": "2019-01-20",
-            "opponent": "山城翔",
-            "result": "win",
-            "method": "KO",
-            "event": "BORDER-season11-「The1st」",
-            "round": "R2 04:40"
-          },
-          {
-            "date": "2018-06-17",
-            "opponent": "奇天烈",
-            "result": "loss",
-            "method": "判定 3-0",
-            "event": "プロフェッショナル修斗 in OSAKA 2018",
-            "round": ""
-          },
-          {
-            "date": "2018-03-25",
-            "opponent": "前川大輔",
-            "result": "draw",
-            "method": "判定 19-19",
-            "event": "BORDER-season10-「The1st」",
-            "round": ""
-          },
-          {
-            "date": "2017-06-25",
-            "opponent": "エダ塾長こうすけ",
-            "result": "draw",
-            "method": "",
-            "event": "プロフェッショナル修斗公式戦 in OSAKA",
-            "round": ""
-          },
-          {
-            "date": "2016-12-11",
-            "opponent": "金海裕輝",
-            "result": "loss",
-            "method": "判定 2-0",
-            "event": "BORDER-season8-「The3rd」",
-            "round": "R2"
-          },
-          {
-            "date": "2016-09-19",
-            "opponent": "佐藤将光",
-            "result": "loss",
-            "method": "TKO/グランドパンチ",
-            "event": "VTJ 8th",
-            "round": "R3 01:30"
-          },
-          {
-            "date": "2016-06-19",
-            "opponent": "村田崇",
-            "result": "win",
-            "method": "S/三角絞め",
-            "event": "VTJ in OSAKA",
-            "round": "R1 02:46"
-          },
-          {
-            "date": "2015-12-23",
-            "opponent": "虎刃殺獅",
-            "result": "loss",
-            "method": "S/スリーパーホールド",
-            "event": "BORDER -season7-「The 3rd」",
-            "round": "R1 04:30"
-          },
-          {
-            "date": "2015-06-21",
-            "opponent": "鷹亜希",
-            "result": "win",
-            "method": "S/リアネイキッドチョーク",
-            "event": "VTJ in OSAKA",
-            "round": "R1 02:34"
-          }
-        ],
-        "live": false,
-        "total": 20
-      },
-      "row1HasRealData": true,
-      "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
-    },
-    {
-      "slug": "nojiri-yasuyuki",
-      "nameJa": "野尻 定由",
-      "before": {
-        "wins": 7,
-        "losses": 6,
-        "draws": 2,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 15
-      },
-      "after": {
-        "wins": 8,
-        "losses": 6,
-        "draws": 2,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 16
-      },
-      "expectedIncrement": 1,
-      "actualIncrement": 1,
-      "incrementMatchesExpected": true,
-      "row1": {
-        "wins": 7,
-        "losses": 6,
-        "draws": 2,
-        "ko": 3,
-        "sub": 2,
-        "decision": 2,
-        "history": [
-          {
-            "date": "2026-05-31",
-            "opponent": "奇天烈",
-            "result": "win",
-            "method": "判定 3-0",
-            "event": "PROFESSIONAL SHOOTO 2026 Vol.4 in OSAKA",
-            "round": ""
-          },
-          {
-            "date": "2025-05-11",
-            "opponent": "宮口龍鳳",
-            "result": "loss",
-            "method": "KO",
-            "event": "TORAO35",
-            "round": "R1 04:41"
-          },
-          {
-            "date": "2024-11-17",
-            "opponent": "ジェイクムラタ",
-            "result": "loss",
-            "method": "判定 2-1",
-            "event": "山口・KDDI維新ホール",
-            "round": ""
-          },
-          {
-            "date": "2024-05-26",
-            "opponent": "磯城嶋一真",
-            "result": "win",
-            "method": "S/アームロック",
-            "event": "TORAO32",
-            "round": "R3 03:32"
-          },
-          {
-            "date": "2023-12-03",
-            "opponent": "國頭武",
-            "result": "loss",
-            "method": "判定 3-0",
-            "event": "山口大会「TORAO31」",
-            "round": ""
-          },
-          {
-            "date": "2023-01-15",
-            "opponent": "齋藤奨司",
-            "result": "loss",
-            "method": "KO",
-            "event": "PROFESSIONAL SHOOTO 2023 開幕戦",
-            "round": "R1 04:23"
-          },
-          {
-            "date": "2022-12-04",
-            "opponent": "神田T800周一",
-            "result": "loss",
-            "method": "判定 0-3",
-            "event": "TORAO28",
-            "round": ""
-          },
-          {
-            "date": "2022-07-03",
-            "opponent": "青柳洸志",
-            "result": "win",
-            "method": "TKO/グラウンドパンチ",
-            "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
-            "round": "R3 00:27"
-          },
-          {
-            "date": "2022-05-15",
-            "opponent": "奇天烈",
-            "result": "win",
-            "method": "判定 1-0",
-            "event": "TORAO27",
-            "round": ""
-          },
-          {
-            "date": "2022-01-16",
-            "opponent": "中村倫也",
-            "result": "loss",
-            "method": "TKO/レフェリーストップ",
-            "event": "PROFESSIONAL SHOOTO 2022 開幕戦",
-            "round": "R1 00:25"
-          },
-          {
-            "date": "2021-05-16",
-            "opponent": "石井逸人",
-            "result": "draw",
-            "method": "判定 0-0",
-            "event": "PROFESSIONAL SHOOTO 2021 Vol.3 Supported by ONE Championship",
-            "round": ""
-          },
-          {
-            "date": "2021-03-20",
-            "opponent": "一條貴洋",
-            "result": "win",
-            "method": "S/スリーパーホールド",
-            "event": "PROFESSIONAL SHOOTO 2021 Vol.2 Supported by ONE Championship",
-            "round": "R2 04:37"
-          },
-          {
-            "date": "2021-01-31",
-            "opponent": "小野島恒太",
-            "result": "draw",
-            "method": "判定 1-1",
-            "event": "《第1部》PROFESSIONAL SHOOTO 2021開幕戦 Supported by ONE Championship",
-            "round": ""
-          },
-          {
-            "date": "2019-12-22",
-            "opponent": "林宏仲",
-            "result": "win",
-            "method": "KO",
-            "event": "SHOOTO GIG TOKYO Vol.29 Supported by ONE Championship",
-            "round": "R2 02:43"
-          },
-          {
-            "date": "2019-03-24",
-            "opponent": "奥平季之",
-            "result": "win",
-            "method": "KO",
-            "event": "SHOOTO 30th ANNIVERSARY TOUR 第2戦 Supported by ONE Championship",
-            "round": "R2 01:56"
-          }
-        ],
-        "live": false,
-        "total": 15
-      },
-      "row1HasRealData": true,
-      "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
-    },
-    {
-      "slug": "yuki-daiki",
-      "nameJa": "結城 大樹",
-      "before": {
-        "wins": 6,
-        "losses": 5,
-        "draws": 2,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 13
-      },
-      "after": {
-        "wins": 9,
-        "losses": 6,
-        "draws": 4,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 19
-      },
-      "expectedIncrement": 6,
-      "actualIncrement": 6,
-      "incrementMatchesExpected": true,
-      "row1": {
-        "wins": 7,
-        "losses": 5,
-        "draws": 1,
-        "ko": 0,
-        "sub": 1,
-        "decision": 5,
-        "history": [
-          {
-            "date": "2026-05-17",
-            "opponent": "石原海渡",
-            "result": "win",
-            "method": "TS/リアネイキッドチョーク",
-            "event": "プロフェッショナル修斗公式戦福岡大会TORAO38",
-            "round": "R1 02:01"
-          },
-          {
-            "date": "2025-10-11",
-            "opponent": "後藤亮",
-            "result": "loss",
-            "method": "判定 0-2",
-            "event": "SHOOTO GIG TOKYO Vol.39",
-            "round": ""
-          },
-          {
-            "date": "2025-05-11",
-            "opponent": "安海健人",
-            "result": "win",
-            "method": "判定 1-0",
-            "event": "TORAO35",
-            "round": ""
-          },
-          {
-            "date": "2024-03-23",
-            "opponent": "椿飛鳥",
-            "result": "loss",
-            "method": "判定 0-3",
-            "event": "東京・後楽園ホール",
-            "round": ""
-          },
-          {
-            "date": "2023-12-03",
-            "opponent": "岡田達磨",
-            "result": "win",
-            "method": "判定 2-0",
-            "event": "山口大会「TORAO31」",
-            "round": ""
-          },
-          {
-            "date": "2023-07-23",
-            "opponent": "オーディン",
-            "result": "loss",
-            "method": "判定 0-2",
-            "event": "PROFESSIONAL SHOOTO 2023 Vol.5",
-            "round": ""
-          },
-          {
-            "date": "2023-05-28",
-            "opponent": "TOMA",
-            "result": "win",
-            "method": "判定 3-0",
-            "event": "TORAO29",
-            "round": ""
-          },
-          {
-            "date": "2022-11-06",
-            "opponent": "工藤圭一郎",
-            "result": "win",
-            "method": "判定 3-0",
-            "event": "THE SHOOTO OKINAWA vol.7",
-            "round": ""
-          },
-          {
-            "date": "2022-05-15",
-            "opponent": "田中半蔵",
-            "result": "loss",
-            "method": "判定 0-3",
-            "event": "TORAO27",
-            "round": ""
-          },
-          {
-            "date": "2021-11-06",
-            "opponent": "岩本建汰",
-            "result": "loss",
-            "method": "判定 0-2",
-            "event": "PROFESSIONAL SHOOTO 2021 Vol.7 Supported by ONE Championship",
-            "round": ""
-          },
-          {
-            "date": "2021-07-25",
-            "opponent": "仲山貴志",
-            "result": "win",
-            "method": "",
-            "event": "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship",
-            "round": ""
-          },
-          {
-            "date": "2020-12-13",
-            "opponent": "國頭武",
-            "result": "win",
-            "method": "判定 3-0",
-            "event": "闘裸男×FORCE",
-            "round": ""
-          },
-          {
-            "date": "2018-07-15",
-            "opponent": "高橋孝徳",
-            "result": "draw",
-            "method": "判定 0-0",
-            "event": "プロフェッショナル修斗後楽園ホール大会",
-            "round": ""
-          }
-        ],
-        "live": false,
-        "total": 13
-      },
-      "row1HasRealData": true,
-      "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
-    },
-    {
-      "slug": "tyson-nobumitsu",
-      "nameJa": "大尊 伸光",
-      "before": {
-        "wins": 5,
-        "losses": 3,
-        "draws": 0,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 8
-      },
-      "after": {
-        "wins": 13,
-        "losses": 6,
-        "draws": 0,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 19
-      },
-      "expectedIncrement": 11,
-      "actualIncrement": 11,
-      "incrementMatchesExpected": true,
-      "row1": {
-        "wins": 5,
-        "losses": 3,
-        "draws": 0,
-        "ko": 3,
-        "sub": 1,
-        "decision": 1,
-        "history": [
-          {
-            "date": "2024-07-28",
-            "opponent": "キャプテン☆アフリカ",
-            "result": "loss",
-            "method": "S",
-            "event": "PROFESSIONAL SHOOTO 2024 Vol.6 in OSAKA 第2部",
-            "round": "R1 02:03"
-          },
-          {
-            "date": "2021-05-16",
-            "opponent": "西川大和",
-            "result": "loss",
-            "method": "S/三角絞め",
-            "event": "PROFESSIONAL SHOOTO 2021 Vol.3 Supported by ONE Championship",
-            "round": "R2 04:53"
-          },
-          {
-            "date": "2020-09-19",
-            "opponent": "マックス・ザ・ボディ",
-            "result": "win",
-            "method": "KO",
-            "event": "PROFESSIONAL SHOOTO 2020 Vol.6 Supported by ONE Championship  第1部",
-            "round": "R1 03:07"
-          },
-          {
-            "date": "2018-09-23",
-            "opponent": "田中有",
-            "result": "win",
-            "method": "KO",
-            "event": "プロフェッショナル修斗後楽園ホール大会",
-            "round": "R1 02:20"
-          },
-          {
-            "date": "2018-03-25",
-            "opponent": "AB",
-            "result": "win",
-            "method": "判定 0-3",
-            "event": "プロフェッショナル修斗後楽園ホール大会",
-            "round": ""
-          },
-          {
-            "date": "2017-12-17",
-            "opponent": "田口泰地",
-            "result": "win",
-            "method": "KO",
-            "event": "インフィニティリーグ2017優勝決定戦",
-            "round": "R1 03:22"
-          },
-          {
-            "date": "2017-10-15",
-            "opponent": "松本光史",
-            "result": "loss",
-            "method": "KO",
-            "event": "プロフェッショナル修斗公式戦",
-            "round": "R2 00:53"
-          },
-          {
-            "date": "2017-05-12",
-            "opponent": "木村孔明",
-            "result": "win",
-            "method": "S/ネックロック",
-            "event": "後楽園ホール大会",
-            "round": "R1 01:33"
-          }
-        ],
-        "live": false,
-        "total": 8
-      },
-      "row1HasRealData": true,
-      "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
-    },
-    {
-      "slug": "tamura-hibiki",
-      "nameJa": "田村 ヒビキ",
-      "before": {
-        "wins": 1,
-        "losses": 0,
-        "draws": 0,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 1
-      },
-      "after": {
-        "wins": 8,
-        "losses": 5,
-        "draws": 2,
-        "orgsWithBouts": [
-          "修斗"
-        ],
-        "total": 15
-      },
-      "expectedIncrement": 14,
-      "actualIncrement": 14,
-      "incrementMatchesExpected": true,
-      "row1": {
-        "wins": 1,
-        "losses": 0,
-        "draws": 0,
-        "ko": 1,
-        "sub": 0,
-        "decision": 0,
-        "history": [
-          {
-            "date": "2022-05-15",
-            "opponent": "ソーキ",
-            "result": "win",
-            "method": "KO",
-            "event": "TORAO27",
-            "round": "R2 03:15"
-          }
-        ],
-        "live": false,
-        "total": 1
-      },
-      "row1HasRealData": true,
-      "row2ExceedsRow1After": true,
-      "crossedOverNewly": true
-    }
-  ]
+  "violations": []
 }
