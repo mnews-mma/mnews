@@ -1,21 +1,23 @@
 # RIZIN選手slug再解決バックフィル結果
 
-生成日時: 2026-08-02T01:04:27.917Z
+生成日時: 2026-08-02T01:28:04.442Z
 
 正規化ロジックはscripts/lib/fighterNameBackfill.ts(backfill-shooto-pancrase-slugs.tsと共通)を使用。
 fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場合のみ解決。既存の解決済みslugは上書きしない。
 
 - bout×コーナー総数: 2018
-- 既に解決済みだった件数: 929
+- 既に解決済みだった件数: 933
 - 今回新規解決(コーナー単位): 0
 - 今回新規解決(ユニークbout件数): 0
-- 依然未解決(延べ): 1089
-- 依然未解決(ユニーク生表記数): 609
-- winnerSlug再計算で埋めた件数: 0
+- 依然未解決(延べ): 1085
+- 依然未解決(ユニーク生表記数): 608
+- winnerSlug再計算で埋めた件数: 2
 
 ## 影響を受けた選手一覧(選手名・解決bout数・4団体通算の変化)
 
-(該当なし)
+| slug | 新規解決bout数 | 4団体通算(変更前) | 4団体通算(変更後) |
+|---|---|---|---|
+| fujita-yamato | 0 | 8-3-0 | 9-2-0 |
 
 ## 新規解決bout明細
 
@@ -24,7 +26,10 @@ fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場�
 
 ## winnerSlug再計算明細(fighterA/BSlugは解決済みだがwinnerSlugがnullのまま残っていたbout)
 
-(該当なし)
+| 大会 | 日付 | コーナー | 勝者名 | 解決slug |
+|---|---|---|---|---|
+| RIZIN.9 RIZIN FIGHTING WORLD GRAND-PRIX 2017 バンタム級トーナメント＆女子スーパーアトム級トーナメントFinal ROUND | 2017-12-31 | B | 藤田大和 | fujita-yamato |
+| 湘南美容クリニック presents RIZIN.36 | 2022-07-02 | A | 藤田大和 | fujita-yamato |
 
 ## 編集距離1の不一致候補(参考、機械列挙のみ・同一人物判定はしていない)
 
@@ -80,7 +85,6 @@ fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場�
 - 才賀紀左衛門 (4件)
 - アンディ・ウィン (4件)
 - 政所仁 (4件)
-- 藤田大和 (4件)
 - 大塚隆史 (4件)
 - 五味隆典 (4件)
 - ジェイク・ヒューン (4件)
