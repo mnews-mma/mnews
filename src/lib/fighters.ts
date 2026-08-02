@@ -2843,6 +2843,22 @@ export const FIGHTERS: Fighter[] = [
     slug: "karen",
     nameJa: "KAREN",
     nameEn: "Karen",
+    // 指示書R-4(2026-08-01): 2021-10-17のPANCRASE 324で「華蓮DATE」から
+    // 改名(efight.jp「パンクラス初参戦の華蓮DATEがKARENに改名し」参照)。
+    // それ以前のパンクラスの生データは旧リングネーム「華蓮DATE」(半角
+    // スペース有り無り両表記あり、いずれもfighterNameBackfill.tsの
+    // nfkc_whitespace正規化で吸収される)で記録されているため、alias登録
+    // により旧名義のbout(PANCRASE 322/319/311の3戦)を本人に解決する。
+    // 3戦ともパンクラス公式の同一プロフィールURL(prfl-a/karen.html)に
+    // 紐づくことを確認済み。
+    //
+    // なおDEEP JEWELS 12(2016-06-05、12歳での出場)も同じ旧名義で見つかる
+    // が、「※パウンド無し」の特別ルール戦(1行目=Wikipedia由来にも含まれて
+    // いない)のため、scripts/backfill-shooto-pancrase-slugs.tsの
+    // KNOWN_NON_PROFESSIONAL_BOUTSで個別に自動解決の対象から除外している
+    // (本人であること自体はefight.jpの記事と符合するが、プロ通算戦績には
+    // 含めない)。
+    aliases: ["華蓮DATE"],
     org: "pancrase",
     orgs: ["shooto", "pancrase"],
     weightClass: "女子ストロー級",
