@@ -853,6 +853,43 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "「プロフェッショナル修斗2021 Vol.6」(該当日には非開催)と誤記していた。" +
       "method/roundは変更なし、event名のみ訂正。",
   },
+  {
+    // 2026-08-02(指示書R-5 A型調査): ケイト・ロータスのhistoryにDEEP OKINAWA
+    // IMPACT 2022(2022-10-30)vs にっせー戦が「引き分け」として記録されているが、
+    // Wikipedia本文はこの試合を明確に「エキシビション(非公式)」「判定なし」と
+    // 記載しており、インフォボックスの通算成績(10勝8敗0分、data/fighterRecords.json
+    // のwins/losses/drawsと一致)にも含まれていない。history側にだけプロ戦績外の
+    // 試合が混入していたための集計不一致。
+    //
+    // 【層の違いについて】KNOWN_NON_PROFESSIONAL_BOUTS
+    // (scripts/backfill-shooto-pancrase-slugs.ts)と目的は同種(プロ戦績集計外の
+    // bout除外)だが、対象レイヤーが異なるため統合しない:
+    // KNOWN_NON_PROFESSIONAL_BOUTSはdata/{deep,shooto,pancrase}Records.json
+    // (4団体データ・2行目のソース)側で「まだslug未解決のbout」をバックフィル対象
+    // から外す機構(既にslug解決済みのboutには効かない)。このremoveは
+    // data/fighterRecords.json(Wikipedia由来・1行目のソース)側のhistory配列から
+    // 除外する機構で、ソースファイルも適用タイミングも別。
+    //
+    // 【要フォローアップ・今回は対象外】このケイト・ロータス×にっせー戦は
+    // data/deepRecords.json(DEEP OKINAWA IMPACT 2022)側にも既にslug解決済み
+    // (fighterBSlug: "kate-lotus", resultType: "draw")で存在しており、2行目
+    // (4団体合算)の集計にも同じ「引き分け」が混入している可能性が高い。
+    // KNOWN_NON_PROFESSIONAL_BOUTSは未解決bout用のため、この既解決bout向けの
+    // 除外は別の仕組みが要る。2行目側の除外はPR #336(4団体通算乖離45名の原因
+    // 分類・調査)のスコープであり、このPRでは1行目のみ修正する。
+    type: "remove",
+    fighterId: "kate-lotus",
+    date: "2022-10-30",
+    opponent: "にっせー",
+    source: "https://ja.wikipedia.org/wiki/ケイト・ロータス",
+    fetchedDate: "2026-08-02",
+    note:
+      "Wikipedia本文がこの試合を「エキシビション(非公式)」「判定なし」と明記しており、" +
+      "インフォボックスの通算成績(10勝8敗0分)にも含まれていない。プロ戦績集計外の試合が" +
+      "history配列にのみ混入していたため除外する。data/deepRecords.json側(DEEP OKINAWA " +
+      "IMPACT 2022、2022-10-30、resultType:draw)にも同一boutが存在するが、2行目の除外は" +
+      "別スコープ(PR #336)のため今回は対象外。",
+  },
 ];
 
 export interface WeighInMissRuling {

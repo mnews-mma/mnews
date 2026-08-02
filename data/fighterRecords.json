@@ -3205,7 +3205,7 @@
         "round": "R2"
       },
       {
-        "date": "2021-06-20",
+        "date": "2021-05-05",
         "opponent": "関原翔",
         "result": "loss",
         "method": "5分2R終了 判定0-3",
@@ -5621,14 +5621,6 @@
         "round": "R2"
       },
       {
-        "date": "2022-10-30",
-        "opponent": "にっせー",
-        "result": "draw",
-        "method": "5分1R終了 判定なし",
-        "event": "DEEP OKINAWA IMPACT 2022",
-        "round": "R1"
-      },
-      {
         "date": "2022-09-11",
         "opponent": "竹林愛留",
         "result": "win",
@@ -5909,7 +5901,7 @@
         "round": "R1"
       },
       {
-        "date": "2020-09-20",
+        "date": "2020-12-19",
         "opponent": "パク・シウ",
         "result": "loss",
         "method": "5分3R終了 判定0-3",
@@ -6989,7 +6981,7 @@
         "round": "R3"
       },
       {
-        "date": "2021-06-20",
+        "date": "2021-05-05",
         "opponent": "安谷屋智弘",
         "result": "win",
         "method": "2R 4:51 リアネイキッドチョーク",
@@ -11787,7 +11779,7 @@
         "round": "R2"
       },
       {
-        "date": "2021-06-20",
+        "date": "2021-05-05",
         "opponent": "ヒロヤ",
         "result": "win",
         "method": "5分2R終了 判定3-0",
@@ -14884,7 +14876,7 @@
         "opponent": "神田コウヤ",
         "result": "win",
         "method": "5分3R終了 判定2-1",
-        "event": "DEEP 119 IMPACT",
+        "event": "DEEP 120 IMPACT",
         "round": "R3"
       },
       {
@@ -15575,7 +15567,7 @@
     "decision": 6,
     "history": [
       {
-        "date": "2026-05-24",
+        "date": "2026-05-04",
         "opponent": "瀧澤謙太",
         "result": "loss",
         "method": "3R 2:27 TKO（左フック→パウンド）",
@@ -16954,7 +16946,7 @@
         "opponent": "飯野タテオ",
         "result": "win",
         "method": "1R 0:59 KO（パンチ）",
-        "event": "プロフェッショナル修斗2021 Vol.6",
+        "event": "SHOOTO GIG TOKYO Vol.30 Supported by ONEchampionship",
         "round": "R1"
       },
       {
@@ -24011,7 +24003,7 @@
         "round": "R1"
       },
       {
-        "date": "2021-06-20",
+        "date": "2021-05-05",
         "opponent": "山本歩夢",
         "result": "loss",
         "method": "1R 3:09 TKO（グラウンドパンチ）",
@@ -30244,7 +30236,7 @@
         "opponent": "岩見凌",
         "result": "win",
         "method": "1R 0:58 リアネイキッドチョーク",
-        "event": "DEEP110 IMPACT",
+        "event": "DEEP 109 IMPACT",
         "round": "R1"
       },
       {
@@ -32140,7 +32132,7 @@
         "round": "R3"
       },
       {
-        "date": "2021-06-20",
+        "date": "2021-05-05",
         "opponent": "CORO",
         "result": "win",
         "method": "5分2R終了 判定2-1",
@@ -32925,7 +32917,7 @@
         "opponent": "瀧澤謙太",
         "result": "loss",
         "method": "5分3R終了 判定0-3",
-        "event": "DEEP 119 IMPACT",
+        "event": "DEEP 120 IMPACT",
         "round": "R3"
       },
       {
@@ -32985,7 +32977,7 @@
         "round": "R1"
       },
       {
-        "date": "2021-06-20",
+        "date": "2021-05-05",
         "opponent": "石司晃一",
         "result": "loss",
         "method": "5分2R終了 判定1-2",
@@ -37252,7 +37244,7 @@
         "round": "R1"
       },
       {
-        "date": "2019-12-22",
+        "date": "2019-12-15",
         "opponent": "パク・シウ",
         "result": "loss",
         "method": "1R 3:40 TKO（右ストレート）",
