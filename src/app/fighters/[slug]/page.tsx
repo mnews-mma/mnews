@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
-import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName } from "@/lib/fighters";
+import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName, fighterDisplayName } from "@/lib/fighters";
 import { resolveOpponentSlug } from "@/lib/fighterLinkOverrides";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighterCached, resolveFightersCached, fetchFighterRecords } from "@/lib/fighterRecordsCache";
@@ -69,7 +69,7 @@ export async function generateMetadata({
   // (shouldPreferMultiOrgRecord/resolveDisplayRecord参照)。
   const metaFighter = SHOW_MULTI_ORG_RECORD ? await resolveDisplayRecordCached(fighter) : fighter;
   const metaInput = {
-    nameJa: fighter.nameJa,
+    nameJa: fighterDisplayName(fighter),
     nameEn: fighter.nameEn,
     orgLabel,
     noRecordData: !!metaFighter.noRecordData,
@@ -89,7 +89,7 @@ export async function generateMetadata({
       url: ogImagePath(ogPath),
       width: 1200,
       height: 630,
-      alt: `${fighter.nameJa} 戦績カード`,
+      alt: `${fighterDisplayName(fighter)} 戦績カード`,
     },
   });
   // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)は noindex にする。
@@ -473,7 +473,7 @@ export default async function FighterPage({
         <Breadcrumb items={breadcrumbs} />
 
         {/* 選手名 */}
-        <h1 className="fighter-page-name">{fighter.nameJa}</h1>
+        <h1 className="fighter-page-name">{fighterDisplayName(fighter)}</h1>
         {fighter.nameEn && <div className="fighter-name-en">{fighter.nameEn}</div>}
 
         {/* ニックネーム */}
@@ -540,7 +540,7 @@ export default async function FighterPage({
             フォールバックする(捏造ゼロ・タペを描けない状態で無理に新デザインを出さない)。 */}
         {nextFight && nextOpp && isV2 && !noRecordData && nextOpp.slug && nextOpp.entry ? (
           <NextFightCardV2
-            selfName={fighter.nameJa}
+            selfName={fighterDisplayName(fighter)}
             self={nextFightSelf}
             eventSlug={nextFight.event.slug}
             eventDate={nextFight.event.date}
@@ -572,7 +572,7 @@ export default async function FighterPage({
               </div>
               {!noRecordData && nextOpp.slug && nextOpp.entry && (
                 <NextFightCompare
-                  selfName={fighter.nameJa}
+                  selfName={fighterDisplayName(fighter)}
                   self={nextFightSelf}
                   opponentName={nextOpp.name}
                   opponentSlug={nextOpp.slug}

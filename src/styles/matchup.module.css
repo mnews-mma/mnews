@@ -135,14 +135,6 @@
   color: var(--blue-ink);
 }
 
-/* 戦績スコープの出典バッジ(例: 「4団体通算」)。中止・変更(tagMain)とは
-   意味が異なる(状態バッジではなくデータ出典の注記)ため別クラスにするが、
-   視覚的にはtagMainと同じニュートラル配色に揃える。 */
-.tagSource {
-  background: #f0ede6;
-  color: var(--muted);
-}
-
 .tagLive {
   background: var(--red);
   color: #fff;

@@ -6,20 +6,7 @@ import { SOURCES } from "@/lib/sources";
 import { pageMetadata } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
-import { fetchFighterRecords, hasWikipediaRecord } from "@/lib/fighterRecordsCache";
-import {
-  fetchRizinRecords,
-  fetchShootoRecords,
-  fetchPancraseRecords,
-  fetchDeepRecords,
-} from "@/lib/multiOrgRecordsData";
-import {
-  computeMultiOrgRecord,
-  computeMultiOrgRates,
-  computeMultiOrgBoutTable,
-  type MultiOrgSideRecord,
-  type MultiOrgSourceData,
-} from "@/lib/mnewsRating/multiOrgRecord";
+import { fetchFighterRecords } from "@/lib/fighterRecordsCache";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import BoutCard, { FighterName } from "@/components/BoutCard";
 import EventBoutCardV2 from "@/components/matchup/EventBoutCardV2";
@@ -72,16 +59,6 @@ function formatDateJa(dateStr: string): string {
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;
 }
 
-// 指示書(戦績スコープ出し分け): 選手片側ぶんの4団体合算データをまとめて計算する。
-// computeMultiOrgRecord/Rates/BoutTableは選手個別ページ(fighters/[slug])と
-// 同じ関数をそのまま再利用し、新しい集計ロジックは作らない。
-function buildMultiOrgSide(slug: string, data: MultiOrgSourceData): MultiOrgSideRecord {
-  const record = computeMultiOrgRecord(slug, data);
-  const rows = computeMultiOrgBoutTable(slug, data);
-  const rates = computeMultiOrgRates(record, rows);
-  return { record, rates, rows };
-}
-
 export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const event = getEvent(slug);
@@ -89,21 +66,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const isV2 = isNewMatchupUiEnabledByEnv();
   const visibleSlugs = await getVisibleFighterSlugs();
   const records = await fetchFighterRecords();
-  // 指示書(戦績スコープ出し分け): 4団体合算データは対戦カード表示
-  // (v2・upcoming/live)でのみ使うため、それ以外(completed=テーブル表示・v1)は
-  // 無駄なfetchをしない。
-  const needsMultiOrgData = isV2 && (event.status === "upcoming" || event.status === "live");
-  let multiOrgData: MultiOrgSourceData | null = null;
-  if (needsMultiOrgData) {
-    const [rizinEvents, shootoEvents, pancraseEvents, deepEvents] = await Promise.all([
-      fetchRizinRecords(),
-      fetchShootoRecords(),
-      fetchPancraseRecords(),
-      fetchDeepRecords(),
-    ]);
-    multiOrgData = { rizinEvents, shootoEvents, pancraseEvents, deepEvents };
-  }
-  const isRizinEvent = event.org === "rizin";
 
   const srcColor = SOURCES[event.org].color;
   const srcLabel = SOURCES[event.org].label;
@@ -277,21 +239,12 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                 const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
                 const entryA = slugA ? (records[slugA] ?? null) : null;
                 const entryB = slugB ? (records[slugB] ?? null) : null;
-                // 指示書(戦績スコープ出し分け): 両者ともWikipedia戦績が揃っている
-                // bout(RIZIN原則の対象外)は4団体合算を計算するだけ無駄なので
-                // スキップする。それ以外(mixed・両者ともWikipediaが無い)は
-                // EventBoutCardV2側のuseMultiOrgMode判定に委ねるため計算しておく。
-                const bothWiki = hasWikipediaRecord(entryA) && hasWikipediaRecord(entryB);
-                const multiOrgA =
-                  multiOrgData && !bothWiki && slugA ? buildMultiOrgSide(slugA, multiOrgData) : null;
-                const multiOrgB =
-                  multiOrgData && !bothWiki && slugB ? buildMultiOrgSide(slugB, multiOrgData) : null;
-                return { b, slugA, slugB, entryA, entryB, multiOrgA, multiOrgB };
+                return { b, slugA, slugB, entryA, entryB };
               });
               return (
                 <div className={matchupStyles.mv2}>
                   <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
-                    {resolvedBouts.map(({ b, slugA, slugB, entryA, entryB, multiOrgA, multiOrgB }, i) => (
+                    {resolvedBouts.map(({ b, slugA, slugB, entryA, entryB }, i) => (
                       <EventBoutCardV2
                         key={i}
                         nameA={b.fighterA}
@@ -307,9 +260,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                         note={b.note}
                         result={b.result}
                         isEventLive={event.status === "live"}
-                        isRizin={isRizinEvent}
-                        multiOrgA={multiOrgA}
-                        multiOrgB={multiOrgB}
                       />
                     ))}
                   </div>
