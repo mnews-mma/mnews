@@ -853,6 +853,111 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "「プロフェッショナル修斗2021 Vol.6」(該当日には非開催)と誤記していた。" +
       "method/roundは変更なし、event名のみ訂正。",
   },
+  // 2026-08-02(指示書「C型288件の規模測定」→b)日付誤り群の修正): C型残件の
+  // うち団体データ(deepRecords.json)の通し番号(DEEP NN IMPACT)一致で日付誤りの
+  // 疑いが機械的に検出できた候補を、DEEP公式サイト(deep2001.com)の該当大会
+  // ページで個別のbout単位(対戦相手・決着方法)まで確認できたものだけ訂正する。
+  // 同じDEEP 86 IMPACTグループでも神龍誠(vs中山ハルキ)・酒井リョウ(vs水口清吾)は
+  // 公式ページに完全一致するboutが確認できなかったため訂正せず(後述の「未解決」
+  // のまま残す)。event自体が実在することと、claimされた個々のboutが実在する
+  // ことは別の確認が必要という#353の基準をそのまま踏襲した。
+  {
+    type: "patch-date",
+    fighterId: "motoya-yuki",
+    date: "2018-10-27",
+    opponent: "釜谷真",
+    correctedDate: "2022-10-27",
+    source: "https://www.deep2001.com/deep-86-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 86 IMPACT」大会ページで確認: 開催日は2022-10-27" +
+      "(Wikipedia戦績表は2018-10-27と年が4年誤記)。DEEPバンタム級王座決定戦、" +
+      "元谷友貴 vs 釜谷真(元谷友貴が勝利、TKO 3R4:43リアネイキッドチョーク)が" +
+      "実在し、決着方法がWikipedia戦績表の記載と完全一致するため同一試合と特定できる。" +
+      "大会名(DEEP 86 IMPACT)自体は誤りなし。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "takeda-koji",
+    date: "2018-10-27",
+    opponent: "北岡悟",
+    correctedDate: "2022-10-27",
+    source: "https://www.deep2001.com/deep-86-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 86 IMPACT」大会ページで確認: 開催日は2022-10-27" +
+      "(Wikipedia戦績表は2018-10-27と年が4年誤記)。DEEPライト級タイトルマッチ、" +
+      "武田光司 vs 北岡悟(武田光司が勝利、判定0-5)が実在し、決着方法が" +
+      "Wikipedia戦績表の記載と完全一致。上記と同じ大会・同じ日付誤りパターン。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "kitaoka-satoru",
+    date: "2018-10-27",
+    opponent: "武田光司",
+    correctedDate: "2022-10-27",
+    source: "https://www.deep2001.com/deep-86-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "上記武田光司側と同一試合(相手視点)・同じ大会・同じ日付誤りパターン。" +
+      "DEEP公式サイトの「DEEP 86 IMPACT」大会ページで確認: 開催日は2022-10-27。",
+  },
+  {
+    type: "patch-date",
+    fighterId: "koya-kanda",
+    date: "2020-11-02",
+    opponent: "鬼山斑猫",
+    correctedDate: "2020-11-01",
+    source: "https://www.deep2001.com/deep-99-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 99 IMPACT」大会ページで確認: 開催日は2020-11-01" +
+      "(Wikipedia戦績表は2020-11-02と1日誤記)。第6試合、神田コウヤ vs 鬼山斑猫" +
+      "(神田コウヤが勝利、TKO 2R1:49ドクターストップ)が実在し、決着方法が" +
+      "Wikipedia戦績表の記載と完全一致。大会名(DEEP 99 IMPACT)自体は誤りなし。",
+  },
+  // goto-joji(後藤丈治)のDEEP 122 IMPACT(2024-12-08)は#353で「対象外・団体データ
+  // 側の欠落の可能性」として未解決のまま残されていたが、今回の再調査でDEEP公式
+  // サイトの大会名・日付ともに誤りだったことが判明した。DEEP 122 IMPACT自体は
+  // 2024-11-04に後楽園ホールで開催されており、後藤丈治×マンド・グディエレス戦は
+  // ビザの都合で出場できなかった相手選手のため2024-11-23開催の「DEEP TOKYO
+  // IMPACT 2024 5th ROUND」に延期されていた(DEEP公式サイトのDEEP122 IMPACT
+  // ページに延期の経緯が明記されている)。date/eventの両方を訂正するため
+  // patch-date→patch-methodの2段で適用する(patch-dateで日付を訂正した後、
+  // patch-methodが新しい日付をキーに大会名だけを訂正する)。
+  {
+    type: "patch-date",
+    fighterId: "goto-joji",
+    date: "2024-12-08",
+    opponent: "マンド・グティエレス",
+    correctedDate: "2024-11-23",
+    source: "https://www.deep2001.com/deep-122-impact/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP 122 IMPACT」大会ページに記載: 「マンド・グディエレスが" +
+      "VISAの関係で2024年11月4日(月)のDEEP 122 IMPACTに間に合わないため11月23日に" +
+      "行われるDEEP TOKYO IMPACT 2024 5th ROUNDに延期となりました」。" +
+      "Wikipedia戦績表は延期前の大会名・日付(DEEP 122 IMPACT/2024-12-08、" +
+      "いずれも実際とは異なる)のまま記録されていた。",
+  },
+  {
+    type: "patch-method",
+    fighterId: "goto-joji",
+    date: "2024-11-23",
+    opponent: "マンド・グティエレス",
+    correctedMethod: "5分3R終了 判定1-2",
+    correctedRound: "R3",
+    correctedEvent: "DEEP TOKYO IMPACT 2024 5th ROUND",
+    source: "https://www.deep2001.com/deep-tokyo-impact-2024-5th-round/",
+    fetchedDate: "2026-08-02",
+    note:
+      "DEEP公式サイトの「DEEP TOKYO IMPACT 2024 5th ROUND」(2024-11-23開催)ページで" +
+      "確認: 「●後藤丈治(TRIBE TOKYO MMA)○マンド・グディエレス(Murcielago MMA)" +
+      "判定1-2」。data/deepRecords.jsonの当該大会にも後藤丈治 vs マンド・グディエレス" +
+      "(fighterASlug: goto-joji、winnerName: マンド・グディエレス、判定1-2)のboutが" +
+      "実在し完全一致。method/roundはWikipedia戦績表の記載のまま変更なし、" +
+      "event名のみ訂正。",
+  },
   {
     // 2026-08-02(指示書R-5 A型調査): ケイト・ロータスのhistoryにDEEP OKINAWA
     // IMPACT 2022(2022-10-30)vs にっせー戦が「引き分け」として記録されているが、
