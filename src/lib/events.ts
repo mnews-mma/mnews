@@ -683,11 +683,13 @@ export const EVENTS: MEvent[] = [
     venue: "錦秀会 住吉区民センター大ホール",
     sourceUrl: "https://www.deep2001.com/deep-osaka-impact-2026-4th-round/",
     relatedEventSlugs: ["deep-osaka-impact-2026-5th"],
+    // 2026-08-02 濱口奏琉が練習中の怪我により欠場、本田良介の対戦相手が松井優磨に変更(出典: deep2001.com)。
+    // 同時にアサン・ゲェイデ vs 岡崎サイキ(DEEPライト級)が新規追加。
     bouts: [
       {
         weightClass: "DEEPフライ級（56.7kg）",
         fighterA: "本田良介",
-        fighterB: "濱口奏琉",
+        fighterB: "松井優磨",
       },
       {
         weightClass: "DEEPストロー級（52.2kg）",
@@ -733,6 +735,12 @@ export const EVENTS: MEvent[] = [
         weightClass: "DEEPバンタム級（61.2kg）",
         fighterA: "木下竜馬",
         fighterB: "フェルナンド",
+      },
+      {
+        weightClass: "DEEPライト級",
+        rule: "5分2R",
+        fighterA: "アサン・ゲェイデ",
+        fighterB: "岡崎サイキ",
       },
       {
         weightClass: "DEEPストロー級（52.2kg）",
