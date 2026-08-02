@@ -69,6 +69,8 @@ import {
   extractEventDate,
   stripTags,
   extractDeepBouts,
+  recoverHeadinglessBouts,
+  countStructuralBoutBlocks,
   resolveOutcome,
   DeepRawBout,
   DeepRecordsBout,
@@ -157,6 +159,43 @@ async function fetchHtml(url: string, retries = 3): Promise<string> {
   throw new Error(`[fetch] 取得に失敗しました(${retries + 1}回試行): ${url} (${String(lastError)})`);
 }
 
+// 生HTMLのローカルキャッシュ(2026-08-02、PR #374指示書②cの指示: 見出しなし
+// メインイベント欠落バグの横展開監査・修正で238大会を何度も再走する前提の
+// ため、公式サイトへの再取得を避ける)。out/deep-html-cache/はscripts/
+// investigate-deep-headingless-mainevent.tsが最初に作成したキャッシュと
+// 同じ命名規則(<date>_<URLの末尾セグメント>.html)を使い、既存237件分の
+// キャッシュをそのまま再利用する。out/配下は.gitignore対象のためリポジトリ
+// には含まれない(ローカル専用)。
+//
+// アーカイブ巡回ループはfetch時点でまだ開催日が判明していない(日付は
+// fetchした本文から後で抽出する)ため、キャッシュの検索はdateを使わず
+// URL末尾セグメントのみで行う(既存キャッシュのファイル名末尾と一致するかを
+// 見る)。キャッシュに無いURL(新規追加大会等)のみ通常どおりfetchHtml()で
+// 取得し、日付判明後にキャッシュへ書き足す。
+const HTML_CACHE_DIR = path.join(process.cwd(), "out", "deep-html-cache");
+function slugFor(url: string): string {
+  const slug = url.replace(/\/$/, "").split("/").pop() || "unknown";
+  return slug.replace(/[^a-zA-Z0-9_-]/g, "_");
+}
+function findCachedHtml(url: string): string | null {
+  if (!fs.existsSync(HTML_CACHE_DIR)) return null;
+  const suffix = `_${slugFor(url)}.html`;
+  const match = fs.readdirSync(HTML_CACHE_DIR).find((f) => f.endsWith(suffix));
+  return match ? fs.readFileSync(path.join(HTML_CACHE_DIR, match), "utf-8") : null;
+}
+function saveHtmlToCache(url: string, date: string | null, html: string): void {
+  fs.mkdirSync(HTML_CACHE_DIR, { recursive: true });
+  const name = `${date ?? "unknown-date"}_${slugFor(url)}.html`;
+  fs.writeFileSync(path.join(HTML_CACHE_DIR, name), html);
+}
+async function fetchHtmlCachedBySlug(url: string): Promise<{ html: string; fromCache: boolean }> {
+  const cached = findCachedHtml(url);
+  if (cached !== null) return { html: cached, fromCache: true };
+  await sleep(1200);
+  const html = await fetchHtml(url);
+  return { html, fromCache: false };
+}
+
 interface EventDiag {
   eventName: string;
   date: string;
@@ -166,6 +205,13 @@ interface EventDiag {
   unresolvedNames: number;
   unknownResults: number;
   nonProBoutCount: number;
+  recoveredHeadinglessCount: number;
+  // 見出し表記に依存しない独立検査(countStructuralBoutBlocks)の参考値。
+  // 非プロ/非MMA混入bout・大会概要等の地の文誤検知を含みうるため、
+  // rawBouts.length(見出しなし回収込み)との単純な差分だけでは判断せず、
+  // 大きく乖離した大会を目視確認する用途の参考情報として記録する
+  // (停止条件には使わない)。
+  structuralBoutCount: number;
 }
 
 // rawBout[] → DeepRecordsBout[] の変換(非プロ/非MMA除外・勝敗判定・選手名解決)。
@@ -290,8 +336,7 @@ async function main() {
       continue;
     }
 
-    await sleep(1200);
-    const html = await fetchHtml(link.url);
+    const { html, fromCache } = await fetchHtmlCachedBySlug(link.url);
 
     const clean = stripTags(html);
     const date = extractEventDate(clean);
@@ -299,6 +344,7 @@ async function main() {
       excludedDateUnknown.push({ eventName: link.title, url: link.url });
       continue;
     }
+    if (!fromCache) saveHtmlToCache(link.url, date, html);
     // 未開催(告知のみ・結果データが存在しない)大会は除外する。fetchedDateより
     // 先の日付は「開催予定」であって「結果」ではないため、0boutのまま投入しない。
     if (date > fetchedDate) {
@@ -314,7 +360,18 @@ async function main() {
 
     candidateCount++;
 
-    const { bouts: rawBouts, formatsUsed } = extractDeepBouts(clean);
+    const { bouts: primaryRawBouts, formatsUsed } = extractDeepBouts(clean);
+    // 見出しなしメインイベント/セミファイナルの回収(PR #374、
+    // deepScraper.ts側コメント参照)。extractDeepBouts()自体の選定結果は
+    // 変更せず、そこに無いboutだけを追加する純粋な追加専用パス。
+    const recoveredBouts = recoverHeadinglessBouts(clean, primaryRawBouts);
+    const rawBouts = [...primaryRawBouts, ...recoveredBouts];
+    // 見出し表記に依存しない独立検査(deepScraper.ts参照)。生HTML(stripTags前)の
+    // DOM構造(<p class="wp-block-paragraph">1個=bout1件)を根拠にした参考値で、
+    // 非プロ/非MMA混入bout(この時点では未フィルタ)も含みうるため、最終的な
+    // bouts.lengthと単純一致するとは限らない(diags側で参考情報として記録するのみ、
+    // 停止条件には使わない)。
+    const structuralBoutCount = countStructuralBoutBlocks(html);
 
     if (rawBouts.length === 0) {
       excludedZeroBout.push({ eventName: link.title, date, url: link.url, reason: guessExclusionReason(clean) });
@@ -328,6 +385,8 @@ async function main() {
     // (該当形式では実施しない=検出できないという限界を持つ。unknownResultsとは
     // 別軸の指標)。非プロ/非MMA bout除外(下記)より前に計算する: 除外は
     // 「正しく抽出できた上での内容フィルタ」であり、抽出失敗とは別軸のため。
+    // rawBouts(見出しなし回収込み)基準で計算するため、回収済みboutは
+    // parseFailuresの計算上も「欠落」として扱われない。
     let parseFailures = 0;
     if (formatsUsed[0] === "F1") {
       const headingNumbers = new Set([...clean.matchAll(/第\s*(\d+)試合/g)].map((m) => Number(m[1])));
@@ -368,6 +427,8 @@ async function main() {
       unresolvedNames,
       unknownResults,
       nonProBoutCount,
+      recoveredHeadinglessCount: recoveredBouts.length,
+      structuralBoutCount,
     });
   }
 
@@ -375,10 +436,13 @@ async function main() {
   // 個別記事が現存する大会)。通常のライブクロールとは別ループで処理する
   // (allLinksに含まれないため、ページネーション検出等の対象外)。
   for (const pinned of DEEP_PINNED_MANUAL_SOURCES) {
-    await sleep(1200);
-    const html = await fetchHtml(pinned.url);
+    const { html, fromCache } = await fetchHtmlCachedBySlug(pinned.url);
+    if (!fromCache) saveHtmlToCache(pinned.url, pinned.date, html);
     const clean = stripTags(html);
-    const { bouts: rawBouts, formatsUsed } = extractDeepBouts(clean);
+    const { bouts: primaryRawBouts, formatsUsed } = extractDeepBouts(clean);
+    const recoveredBouts = recoverHeadinglessBouts(clean, primaryRawBouts);
+    const rawBouts = [...primaryRawBouts, ...recoveredBouts];
+    const structuralBoutCount = countStructuralBoutBlocks(html);
 
     if (rawBouts.length === 0) {
       excludedZeroBout.push({ eventName: pinned.title, date: pinned.date, url: pinned.url, reason: `pinned大会だが抽出0件(${pinned.note})` });
@@ -421,6 +485,8 @@ async function main() {
       unresolvedNames,
       unknownResults,
       nonProBoutCount,
+      recoveredHeadinglessCount: recoveredBouts.length,
+      structuralBoutCount,
     });
     candidateCount++;
   }
@@ -432,6 +498,8 @@ async function main() {
   const totalUnresolved = diags.reduce((sum, d) => sum + d.unresolvedNames, 0);
   const totalParseFailures = diags.reduce((sum, d) => sum + d.parseFailures, 0);
   const totalNonProBouts = diags.reduce((sum, d) => sum + d.nonProBoutCount, 0);
+  const totalRecoveredHeadingless = diags.reduce((sum, d) => sum + d.recoveredHeadinglessCount, 0);
+  const structuralGapEvents = diags.filter((d) => d.structuralBoutCount > d.boutCount + d.nonProBoutCount);
 
   console.log(`\n=== 集計結果 ===`);
   console.log(`候補大会数(開催済・KICK/アマチュア除く): ${candidateCount}`);
@@ -445,6 +513,8 @@ async function main() {
   console.log(`bout数: ${totalBouts}`);
   console.log(`除外(bout単位の非プロ/非MMA混入): ${totalNonProBouts}件`);
   console.log(`parseFailures(F1見出し数との差分): ${totalParseFailures}`);
+  console.log(`見出しなしメインイベント/セミファイナル回収bout数: ${totalRecoveredHeadingless}件`);
+  console.log(`構造カウント(独立検査)が最終bout数を上回る大会: ${structuralGapEvents.length}件(参考値、停止条件には使わない)`);
   console.log(`resultType=unknown: ${totalUnknown}`);
   console.log(`選手名未解決: ${totalUnresolved}`);
 
@@ -484,6 +554,8 @@ async function main() {
   reportLines.push(`- 投入大会数: ${events.length}`);
   reportLines.push(`- bout数: ${totalBouts}`);
   reportLines.push(`- parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): ${totalParseFailures}件`);
+  reportLines.push(`- 見出しなしメインイベント/セミファイナル回収bout数(PR #374): ${totalRecoveredHeadingless}件`);
+  reportLines.push(`- 構造カウント(独立検査、countStructuralBoutBlocks)が最終bout数を上回る大会: ${structuralGapEvents.length}件(参考値。非プロ/非MMA混入bout・地の文誤検知を含みうるため停止条件には使わない。乖離が大きい大会は大会別内訳のstructural列で個別確認する)`);
   reportLines.push(`- resultType=unknown: ${totalUnknown}件`);
   reportLines.push(`- 選手名未解決(fighterASlug/fighterBSlug null): ${totalUnresolved}件`);
   reportLines.push(`- 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): ${totalNonProBouts}件`);
@@ -517,10 +589,10 @@ async function main() {
     reportLines.push(``);
   }
   reportLines.push(`## 大会別内訳`);
-  reportLines.push(`| 大会名 | 日付 | bout数 | フォーマット | parseFailures | unknown | 未解決名 | 非プロ除外bout |`);
-  reportLines.push(`|---|---|---|---|---|---|---|---|`);
+  reportLines.push(`| 大会名 | 日付 | bout数 | フォーマット | parseFailures | unknown | 未解決名 | 非プロ除外bout | 見出しなし回収 | 構造カウント |`);
+  reportLines.push(`|---|---|---|---|---|---|---|---|---|---|`);
   for (const d of diags) {
-    reportLines.push(`| ${d.eventName} | ${d.date} | ${d.boutCount} | ${d.formatsUsed.join(",")} | ${d.parseFailures} | ${d.unknownResults} | ${d.unresolvedNames} | ${d.nonProBoutCount} |`);
+    reportLines.push(`| ${d.eventName} | ${d.date} | ${d.boutCount} | ${d.formatsUsed.join(",")} | ${d.parseFailures} | ${d.unknownResults} | ${d.unresolvedNames} | ${d.nonProBoutCount} | ${d.recoveredHeadinglessCount} | ${d.structuralBoutCount} |`);
   }
   fs.writeFileSync(REPORT_OUT, reportLines.join("\n") + "\n");
   console.log(`[OK] ${REPORT_OUT} に書き出しました。`);

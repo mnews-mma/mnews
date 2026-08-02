@@ -518,7 +518,8 @@ export type DeepBoutFormat =
   | "f2_method_middle"
   | "f8_fully_separated"
   | "f10_vs_and_mark"
-  | "f4_detached_mark_label";
+  | "f4_detached_mark_label"
+  | "headingless_recovered";
 
 export interface DeepRawBout {
   format: DeepBoutFormat;
@@ -1052,6 +1053,250 @@ export function extractDeepBouts(rawBodyClean: string): { bouts: DeepRawBout[]; 
   }
 
   return { bouts: scrubPhpWarningLeak(best.bouts), formatsUsed: [best.format] };
+}
+
+// ── 3.5. 見出しなしメインイベント/セミファイナルの回収 ──────────────────
+//
+// 2026-08-02、PR #374(motonomiki 4団体通算過少表示の原因調査)で判明した
+// バグへの対応: DEEP公式ページのメインイベント/セミファイナル/コ・メイン
+// イベントが「第N試合」の番号を伴わずに単独見出しとして現れることがあり、
+// 上記extractDeepBouts()のF1/F1_GLUED/F2/Group4はいずれも「第N試合」を
+// bout開始の必須アンカーにしているため、この番号なし見出しのboutを検出
+// できず丸ごと欠落する(内部の妥当性チェックcountBoutHeadings()も同じ
+// 「第N試合」表記しか数えないため、抽出漏れと検査漏れが同時に起きて
+// 異常として検出できない=検査器が抽出器と同じ手がかりを共有していたこと
+// が真因。全237大会の横展開調査で17大会・21bout確認、out/deep-headingless-
+// mainevent-audit.md参照)。
+//
+// 対応方針: 既存7フォーマットの正規表現定義(BOUT_RE_F1等)は一切変更せず
+// (238大会で実績のある抽出ロジックへの回帰リスクを避けるため)、同じ
+// 本文パターン(MARK_OPT・NOT_METHOD_TEXT・KG_SUFFIX等、共有部品)を流用した
+// 「見出しなし版」を追加のフォーマットとして独立に走らせ、既存の抽出結果に
+// 無いbout(選手名の組で判定)だけを追加する。既存フォーマットの選定ロジック
+// (extractDeepBouts内のF1→Group4→...→Group1優先順位・headingCountとの近さ
+// 比較)には一切関与しない、純粋な追加専用パス。
+//
+// 見出し語は「メインイベント」「コ・メインイベント」(中黒有無どちらも)
+// 「セミファイナル」の3種(out/deep-headingless-mainevent-audit.mdで確認した
+// 表記ゆれの全て)。マッチ開始位置の直前に既に「第N試合」がある場合
+// (例: DEEP JEWELS 31の「第6試合 セミファイナル…」)は、既存フォーマットが
+// 正しく抽出できているケースのため、二重計上を避けて対象外にする。
+const HEADINGLESS_OPENER = "(?:コ・?メインイベント|メインイベント|セミファイナル)";
+const HEADINGLESS_LABEL_SCAN_RE = /(?:コ・?メインイベント|メインイベント|セミファイナル)/g;
+
+// マッチ開始位置の直前(30文字以内)に既に「第N試合」が無いことを確認する
+// (out/deep-headingless-mainevent-audit.mdの判定ロジックと同一の考え方)。
+function isPrecededByNumberedHeading(bodyClean: string, matchIndex: number): boolean {
+  const before = bodyClean.slice(Math.max(0, matchIndex - 30), matchIndex);
+  return /第\s*\d+試合\s*$/.test(before);
+}
+
+// 見出しなし本文パターン(先頭を`^`でその見出し語自身に固定し、ブロック外に
+// マッチが漏れ出さないようにする)。本文部分はBOUT_RE_F1/F1_GLUED/F2/
+// GROUP4と同一(共有部品MARK_OPT等を再利用)。優先順位はF1→F1_GLUED→F2→
+// Group4(既存extractDeepBoutsの優先順位を踏襲: 見出し+method末尾型を
+// 最も厳密な形として先に試す)。
+const HEADINGLESS_PATTERNS: { format: DeepBoutFormat; re: RegExp; build: (m: RegExpExecArray) => DeepRawBout }[] = [
+  {
+    format: "headingless_recovered",
+    re: new RegExp(
+      `^${HEADINGLESS_OPENER}\\s*\\|?\\s*([^|]+?)\\|\\s*${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]${KG_SUFFIX}\\|\\s*${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]${KG_SUFFIX}\\|\\s*([^|]+)`
+    ),
+    build: (m) => ({
+      format: "headingless_recovered",
+      boutNumber: null,
+      weightClassRaw: m[1].trim() || null,
+      fighterAMark: m[2],
+      fighterAName: m[3].trim(),
+      fighterAGym: m[4].trim() || null,
+      fighterBMark: m[5],
+      fighterBName: m[6].trim(),
+      fighterBGym: m[7].trim() || null,
+      methodRaw: m[8].trim(),
+      winnerNameHintRaw: null,
+    }),
+  },
+  {
+    format: "headingless_recovered",
+    re: new RegExp(
+      `^${HEADINGLESS_OPENER}\\s*\\|?\\s*([^|]+?)\\|\\s*${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]${KG_SUFFIX}\\|\\s*${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]\\s*(?:\\|\\s*)?${METHOD_LOOKS_REAL}([^|]*)`
+    ),
+    build: (m) => ({
+      format: "headingless_recovered",
+      boutNumber: null,
+      weightClassRaw: m[1].trim() || null,
+      fighterAMark: m[2],
+      fighterAName: m[3].trim(),
+      fighterAGym: m[4].trim() || null,
+      fighterBMark: m[5],
+      fighterBName: m[6].trim(),
+      fighterBGym: m[7].trim() || null,
+      methodRaw: m[8].trim(),
+      winnerNameHintRaw: null,
+    }),
+  },
+  {
+    format: "headingless_recovered",
+    re: new RegExp(
+      `^${HEADINGLESS_OPENER}\\s*\\|?\\s*([^|]+?)(?:\\|\\s*)+${MARK_OPT}${MARK_CELL_SEP}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)(?:[(（](${GYM_CONTENT})${GYM_CLOSE})?${KG_SUFFIX}(?:\\|\\s*)+([^|]+?)(?:\\|\\s*)+${MARK_OPT}${MARK_CELL_SEP}\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)(?:[(（](${GYM_CONTENT})${GYM_CLOSE})?${KG_SUFFIX}(?:\\||$)`
+    ),
+    build: (m) => ({
+      format: "headingless_recovered",
+      boutNumber: null,
+      weightClassRaw: m[1].trim() || null,
+      fighterAMark: m[2],
+      fighterAName: m[3].trim(),
+      fighterAGym: (m[4] ?? "").trim() || null,
+      methodRaw: m[5].trim(),
+      fighterBMark: m[6],
+      fighterBName: m[7].trim(),
+      fighterBGym: (m[8] ?? "").trim() || null,
+      winnerNameHintRaw: null,
+    }),
+  },
+  {
+    format: "headingless_recovered",
+    re: new RegExp(
+      `^${HEADINGLESS_OPENER}\\s*\\|?\\s*([^|]+?)(?:\\|\\s*)+${MARK_OPT}\\|?\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]${KG_SUFFIX}(?:\\|\\s*)+${MARK_OPT}\\|?\\s*${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*)[(（]([^)）]*)[)）]${KG_SUFFIX}(?:\\|\\s*)+(?!第\\s*\\d+試合)([^|]+)`
+    ),
+    build: (m) => ({
+      format: "headingless_recovered",
+      boutNumber: null,
+      weightClassRaw: m[1].trim() || null,
+      fighterAMark: m[2],
+      fighterAName: m[3].trim(),
+      fighterAGym: m[4].trim() || null,
+      fighterBMark: m[5],
+      fighterBName: m[6].trim(),
+      fighterBGym: m[7].trim() || null,
+      methodRaw: m[8].trim(),
+      winnerNameHintRaw: null,
+    }),
+  },
+];
+
+// 選手名・method欄に見出し文字列やmark単体が紛れ込んでいないかの追加検証
+// (2026-08-02、初回実装でGroup4/F2見出しなし版がページ内の無関係な区画
+// (計量結果再掲・別boutの見出し等)にまで漏れ出し、選手名欄に「第9試合
+// フライ級5分2R」等の見出しテキストが丸ごと混入する事故が実際に発生した。
+// hasGarbledContent()の既存チェックに加え、見出しなし回収パス固有の
+// 追加チェックとして、名前欄がmark単体・見出しの通し番号表記・階級/
+// ラウンド表記そのものになっていないかを見る)。
+const NAME_LOOKS_LIKE_HEADING_RE = /第\s*\d+試合|\d+分\d*R|５分|３Ｒ/;
+function looksLikeGarbledHeadinglessBout(b: DeepRawBout): boolean {
+  if (hasGarbledContent([b])) return true;
+  if (/^[●○〇△◯×⚪⚫]+$/.test(b.fighterAName) || /^[●○〇△◯×⚪⚫]+$/.test(b.fighterBName)) return true;
+  if (NAME_LOOKS_LIKE_HEADING_RE.test(b.fighterAName) || NAME_LOOKS_LIKE_HEADING_RE.test(b.fighterBName)) return true;
+  if (b.fighterAName.length === 0 || b.fighterBName.length === 0) return true;
+  return false;
+}
+
+const HEADINGLESS_LABEL_PLAIN_RE = /(?:コ・?メインイベント|メインイベント|セミファイナル)/;
+const NUMBERED_HEADING_PLAIN_RE = /第\s*\d+試合/;
+
+function extractHeadinglessBouts(bodyClean: string): DeepRawBout[] {
+  const bouts: DeepRawBout[] = [];
+  HEADINGLESS_LABEL_SCAN_RE.lastIndex = 0;
+  let labelMatch: RegExpExecArray | null;
+  while ((labelMatch = HEADINGLESS_LABEL_SCAN_RE.exec(bodyClean))) {
+    const idx = labelMatch.index;
+    const labelEnd = idx + labelMatch[0].length;
+    if (isPrecededByNumberedHeading(bodyClean, idx)) continue;
+
+    // このbout候補の本文範囲を、次の「第N試合」または次の見出しなしラベルの
+    // 直前までに厳密に絞る(既存フォーマットのようにページ全体を対象に
+    // グローバル検索すると、無関係な区画(計量結果再掲・別boutの見出し等)
+    // まで拾ってしまう事故が実際に起きたため、1候補=1ブロックに閉じ込める)。
+    const rest = bodyClean.slice(labelEnd);
+    const nextNumberedRel = rest.search(NUMBERED_HEADING_PLAIN_RE);
+    const nextLabelRel = rest.search(HEADINGLESS_LABEL_PLAIN_RE);
+    const boundaries = [nextNumberedRel, nextLabelRel].filter((v) => v !== -1);
+    const blockEnd = boundaries.length > 0 ? labelEnd + Math.min(...boundaries) : bodyClean.length;
+    const block = bodyClean.slice(idx, blockEnd);
+
+    for (const pattern of HEADINGLESS_PATTERNS) {
+      pattern.re.lastIndex = 0;
+      const m = pattern.re.exec(block);
+      if (!m) continue;
+      const candidate = pattern.build(m);
+      if (looksLikeGarbledHeadinglessBout(candidate)) continue;
+      bouts.push(candidate);
+      break;
+    }
+  }
+
+  return bouts;
+}
+
+// 選手名の組(順不同)が既存bout配列に含まれるかどうか。見出しなし回収bout
+// (recoverHeadinglessBouts)が、extractDeepBouts()側で既に正しく抽出済みの
+// bout(例: DEEP JEWELS 31のように「第N試合 セミファイナル」と番号付きで
+// 正しく抽出できているケース)と重複しないようにするための判定。
+function sameFighterPairExists(existing: { fighterAName: string; fighterBName: string }[], candidate: DeepRawBout): boolean {
+  const key = (a: string, b: string) => [a, b].sort().join(" ");
+  const candidateKey = key(candidate.fighterAName, candidate.fighterBName);
+  return existing.some((b) => key(b.fighterAName, b.fighterBName) === candidateKey);
+}
+
+// extractDeepBouts()の結果に、見出しなしメインイベント/セミファイナルの
+// boutを追加専用で回収してマージする。extractDeepBouts()自体の選定ロジックは
+// 一切変更しない(既存238大会の抽出結果への影響ゼロを保証するため、この
+// 関数を呼ばなければextractDeepBouts()単体の挙動は従来と完全に同一)。
+export function recoverHeadinglessBouts(
+  rawBodyClean: string,
+  existingBouts: { fighterAName: string; fighterBName: string }[]
+): DeepRawBout[] {
+  const bodyClean = scopeToResultsSection(rawBodyClean);
+  const candidates = extractHeadinglessBouts(bodyClean);
+  return candidates.filter((c) => !sameFighterPairExists(existingBouts, c));
+}
+
+// ── 3.6. 見出し表記に依存しない独立検査器(構造ベースの件数根拠) ──────────
+//
+// countBoutHeadings()(第\s*(\d+)試合の出現回数)は、bout抽出の正規表現群と
+// 全く同じ「第N試合」という見出し表記を手がかりにしている。そのため、
+// 見出し表記そのものが想定外(メインイベント/セミファイナル等、番号なし)の
+// ページでは、抽出漏れとcountBoutHeadings()の過小評価が「同じ理由」で
+// 同時に起こり、件数が(本来は足りていないのに)一致してしまい異常を検出
+// できない(2026-08-02、PR #374で判明)。見出しの文言が今後さらに別の表記
+// ゆれ(例:「オープニングマッチ」等)に広がった場合も、countBoutHeadings()
+// 系の指標だけでは同じ理由で再び気づけなくなる。
+//
+// この関数は見出し文言を一切参照せず、DEEP公式サイト(WordPress生成)の
+// DOM構造そのもの(1boutが1つの<p class="wp-block-paragraph">...</p>要素に
+// 対応する、というテンプレート上の構造的事実)を根拠に「本文中に存在する
+// bout情報を持つ段落の数」を数える。生HTML(stripTags前)を直接受け取る点が
+// 既存のcountBoutHeadings()(stripTags後のパイプ区切りテキストが入力)との
+// 決定的な違いで、見出しの文言がどう変わってもこの関数の判定基準
+// (段落の中に「ジム括弧」+「決着手がかり(mark文字またはVS)」があるか)は
+// 影響を受けない。
+//
+// build-deep-records.ts側でこの値と最終的な抽出bout数(見出しなし回収を
+// 含む)を突合し、乖離があれば新しい停止条件/警告として扱う想定
+// (この関数自体はカウントのみを行い、停止条件の閾値判断は呼び出し側が持つ)。
+const RESULT_PARAGRAPH_RE = /<p[^>]*class="[^"]*wp-block-paragraph[^"]*"[^>]*>([\s\S]*?)<\/p>/g;
+const HAS_GYM_PAREN_RE = /[(（][^)）]{0,40}[)）]/;
+const HAS_RESULT_MARK_RE = /[●○〇△◯×⚪⚫]|(?:^|[^A-Za-z])VS(?:[^A-Za-z]|$)/;
+// ページの装飾・告知文等、bout本体ではない段落が誤って混入しないよう、
+// 実在するbout1件ぶんの本文として不自然に長い段落は対象外にする(既存の
+// MAX_PLAUSIBLE_METHOD_LEN(200文字、method欄1つの上限)とは別軸で、
+// 段落全体(見出し+2選手+method+付記)の上限として実測から500文字とする)。
+const MAX_PLAUSIBLE_PARAGRAPH_LEN = 500;
+
+export function countStructuralBoutBlocks(rawHtml: string): number {
+  let count = 0;
+  let m: RegExpExecArray | null;
+  RESULT_PARAGRAPH_RE.lastIndex = 0;
+  while ((m = RESULT_PARAGRAPH_RE.exec(rawHtml))) {
+    const inner = m[1];
+    if (inner.length > MAX_PLAUSIBLE_PARAGRAPH_LEN) continue;
+    // タグを除去して純テキストで判定する(<strong>等の内部タグに惑わされない)。
+    const innerText = inner.replace(/<[^>]+>/g, "");
+    if (!HAS_GYM_PAREN_RE.test(innerText)) continue;
+    if (!HAS_RESULT_MARK_RE.test(innerText)) continue;
+    count++;
+  }
+  return count;
 }
 
 // ── 4. 勝敗判定 ──────────────────────────────────────────────────────────
