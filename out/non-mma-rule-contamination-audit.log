@@ -1,0 +1,82 @@
+=== ステップ1: headingText/namedDivisionのキーワード抽出(全件) ===
+
+rizinRecords.json: 総ヒット4件 / うちslug解決済み(選手記録への影響あり得る)2件
+  [RIZIN.21 / 2020-02-22 / #8] ホベルト・サトシ・ソウザ(souza-roberto-satoshi) vs チーム中井(-) ruleType=グラップリング
+    headingText: 第5試合／柔術エキシビジョンイリミネーションマッチ
+  [The Battle Cats presents 超RIZIN / 湘南美容クリニック presents RIZIN.38 / 2022-09-25 / #11] フロイド・メイウェザー(-) vs 朝倉未来(asakura-mikuru) ruleType=スタンディングバウト
+    headingText: 第4試合 スペシャルエキシビジョンマッチ／フロイド・メイウェザー vs. 朝倉未来
+
+pancraseRecords.json: 総ヒット28件 / うちslug解決済み(選手記録への影響あり得る)4件
+  [前田吉朗引退興行 / 2022-04-10 / #9] 前田吉朗(-) vs 北方大地(kitakata-daichi) ruleType=グラップリング
+    headingText: メインイベント前田吉朗引退エキシビジョンマッチⅡ 2分1ラウンド グラップリングルール
+  [前田吉朗引退興行 / 2022-04-10 / #8] 前田吉朗(-) vs 砂辺光久(unconfirmed-shooto-1875) ruleType=キックボクシング
+    headingText: メインイベント前田吉朗引退エキシビジョンマッチⅠ 2分1ラウンド キックボクシングルール
+  [DEEP ＆ PANCRASE 大阪大会 / 2020-11-29 / #11] さくら(-) vs 伊澤星花(izawa-seika) ruleType=グラップリング
+    headingText: 第4試合 DEEP JEWELSグラップリングルール 52kg以下 4分2ラウンド
+  [PANCRASE Z / 2005-09-03 / #9] 近藤有己(-) vs 北岡悟(kitaoka-satoru) ruleType=エキシビジョン
+    headingText: セミファイナル エキシビジョンマッチ 3分1ラウンド
+
+shootoRecords.json: 総ヒット63件 / うちslug解決済み(選手記録への影響あり得る)9件
+  [THE SHOOTO OKINAWA vol.7 / 2022-11-06 / #2] 黒部 三奈(kurobe-mina) vs 小生 由紀(-) ruleType=unknown
+    headingText: スペシャルエキシビジョンマッチ 3分1R
+  [Colors（カラーズ） / 2023-05-21 / #1] 井上 愛羅(-) vs NOEL(noel) ruleType=unknown
+    headingText: オープニングファイト COLORSグラップリングルール 49kg契約 グラップリング 5分1R
+  [東京・後楽園ホール / 2024-03-23 / #7] 上原 平(uehara-taira) vs リオン 武(-) ruleType=unknown
+    headingText: 上原平 エキシビションマッチ 第5試合 5分2R
+  [COLORS Produce by SHOOTO Vol.3 / 2024-08-03 / #6] 黒部 三奈(kurobe-mina) vs 杉内 由紀(-) ruleType=unknown
+    headingText: グラップリング 第6試合 女子ストロー級 8分1R
+  [COLORS Produce by SHOOTO Vol.4 / 2024-12-15 / #5] 藤野 恵実(fujino-emi) vs 前澤 智(-) ruleType=unknown
+    headingText: 54kg契約グラップリングルール 第5試合 8分1R
+  [THE SHOOTO OKINAWA vol.12 / 2025-04-20 / #9] 黒部 三奈(kurobe-mina) vs 小生 由紀(-) ruleType=unknown
+    headingText: 第6試合 グラップリング 5分1R
+  [COLORS Produce by SHOOTO Vol.5 / 2025-06-14 / #3] 平田 彩音(hirata-ayane) vs 井上 智子(-) ruleType=unknown
+    headingText: 第3試合 グラップリング 8分1R
+  [BORDER2025「The2nd」 / 2025-09-07 / #7] ムテカツ(-) vs 中島 陸(nakajima-riku) ruleType=unknown
+    headingText: ムテカツ引退スペシャルエキシビジョンマッチ 第7試合 3分2R
+  [【第1部】COLORS Produce by SHOOTO Vol.6 / 2026-01-18 / #9] 前澤 智(-) vs 村上 彩(aya-murakami) ruleType=unknown
+    headingText: グラップリングマッチ女子49kg契約 第9試合 グラップリング 8分1R
+
+deepRecords.json: 総ヒット41件 / うちslug解決済み(選手記録への影響あり得る)7件
+  [DEEP JEWELS 2 / 2013-11-04 / #1] 三浦彩佳(ayaka-miura) vs 小寺麻美(-) ruleType=unknown
+    headingText: DEEP JEWELSライト級 4分2R グラップリングルール
+  [DEEP JEWELS 5 / 2014-08-09 / #2] SARAMI(sarami) vs 三浦彩佳(ayaka-miura) ruleType=unknown
+    headingText: DEEP JEWELSフェザー級 4分2R グラップリングルール
+  [DEEP JEWELS 9 / 2015-08-29 / #1] 向奈都美(-) vs 杉本 恵(sugimoto-megumi) ruleType=unknown
+    headingText: DEEP JEWELS52kg以下 グラップリングマッチ 4分2R
+  [DEEP JEWELS 11 / 2016-03-06 / #3] 梅尾メイ(-) vs SARAMI(sarami) ruleType=unknown
+    headingText: DEEP JEWELS キックルール 50kg以下 3分3R
+  [DEEP JEWELS 32 / 2021-03-07 / #4] 伊澤星花(izawa-seika) vs 杉本恵(sugimoto-megumi) ruleType=unknown
+    headingText: DEEP JEWELS 54kg以下 5分1R グラップリングルール
+  [DEEP HAMAMATSU IMPACT 2023 / 2023-09-24 / #8] TKCウィンチェスター(-) vs タンク内藤(naito-tank) ruleType=unknown
+    headingText: DEEP 90kg以下 キックルール 3分3R
+  [DEEP JEWELS 45 / 2024-05-26 / #1] 鈴木”BOSS”遥(-) vs 青野ひかる(aono-hikaru) ruleType=unknown
+    headingText: DEEP JEWELS 59kg以下5分1R グラップリングルール
+
+=== ステップ2: 実際に選手戦績集計(computeFighter*Record)に算入されているかの実測 ===
+
+--- DEEP: 対象6名(computeFighterDeepRecordはruleTypeでの絞り込みを一切行わない設計のため、原則そのまま算入される) ---
+  ayaka-miura: DEEP単体 wins=3 losses=2 draws=0 excluded=0 / 4団体通算 wins=7 losses=3 draws=0
+  sarami: DEEP単体 wins=6 losses=9 draws=0 excluded=0 / 4団体通算 wins=13 losses=11 draws=0
+  sugimoto-megumi: DEEP単体 wins=0 losses=3 draws=0 excluded=0 / 4団体通算 wins=11 losses=8 draws=3
+  izawa-seika: DEEP単体 wins=5 losses=0 draws=0 excluded=0 / 4団体通算 wins=17 losses=0 draws=0
+  naito-tank: DEEP単体 wins=2 losses=0 draws=0 excluded=0 / 4団体通算 wins=2 losses=0 draws=0
+  aono-hikaru: DEEP単体 wins=13 losses=6 draws=0 excluded=0 / 4団体通算 wins=15 losses=7 draws=0
+
+--- 修斗: 対象7名(computeFighterShootoRecordはruleTypeでの絞り込みを一切行わない設計のため、原則そのまま算入される) ---
+  kurobe-mina: 修斗単体 wins=6 losses=4 draws=0 excluded=0 / 4団体通算 wins=18 losses=8 draws=0
+  noel: 修斗単体 wins=4 losses=1 draws=1 excluded=0 / 4団体通算 wins=6 losses=2 draws=1
+  uehara-taira: 修斗単体 wins=7 losses=3 draws=3 excluded=0 / 4団体通算 wins=7 losses=3 draws=3
+  fujino-emi: 修斗単体 wins=5 losses=0 draws=2 excluded=0 / 4団体通算 wins=15 losses=8 draws=2
+  hirata-ayane: 修斗単体 wins=4 losses=2 draws=0 excluded=0 / 4団体通算 wins=4 losses=3 draws=0
+  nakajima-riku: 修斗単体 wins=8 losses=0 draws=1 excluded=0 / 4団体通算 wins=8 losses=0 draws=1
+  aya-murakami: 修斗単体 wins=2 losses=3 draws=0 excluded=0 / 4団体通算 wins=11 losses=4 draws=0
+
+--- パンクラス: 対象4名(computeFighterPancraseRecordはMMA_RULE_TYPES=new Set(["MMA"])で絞り込む設計のため、正しくexcluded側に入るはず) ---
+  kitakata-daichi: パンクラス単体 wins=17 losses=9 draws=1 excluded=1
+    excluded: 前田吉朗引退興行 vs 前田吉朗 (ルール種別がMMA以外(グラップリング))
+  unconfirmed-shooto-1875: パンクラス単体 wins=24 losses=10 draws=4 excluded=1
+    excluded: 前田吉朗引退興行 vs 前田吉朗 (ルール種別がMMA以外(キックボクシング))
+  izawa-seika: パンクラス単体 wins=0 losses=0 draws=0 excluded=1
+    excluded: DEEP ＆ PANCRASE 大阪大会 vs さくら (ルール種別がMMA以外(グラップリング))
+  kitaoka-satoru: パンクラス単体 wins=25 losses=9 draws=8 excluded=1
+    excluded: PANCRASE Z vs 近藤有己 (ルール種別がMMA以外(エキシビジョン))
