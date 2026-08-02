@@ -2,7 +2,11 @@ name: Archive articles
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    # 1日12回(2時間ごと)。Vercelの本番デプロイ回数クォータを消費する
+    # mainへのpush頻度を抑えるための間隔(旧: */30 = 1日48回)。
+    # archive.jsonはrevalidate:300のraw fetchで読まれ、firstSeenAt(速報
+    # 24h判定の起点)への遅延影響は最大2時間程度に収まる想定。
+    - cron: "0 */2 * * *"
   workflow_dispatch: {}
 
 permissions:

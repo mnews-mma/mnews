@@ -20,7 +20,10 @@ async function main() {
 
   const seen = new Set(existing.map((a) => a.url));
   // 初回検知時刻を「今このスクリプトが新規として拾った時刻」で刻む。
-  // BREAKINGの失効判定（検知から4時間）はこの firstSeenAt を起点にする。
+  // 速報(BREAKING)の失効判定（検知から24時間、newsClassify.tsの
+  // FLASH_WINDOW_MS）はこの firstSeenAt を起点にする。このスクリプトの
+  // 実行間隔(cronスケジュール)が空くほど、真の検知時刻からのズレが
+  // 大きくなる点に注意(最大でスケジュール間隔分、失効が遅れる)。
   const now = new Date().toISOString();
   const newOnes = articles
     .filter((a) => !seen.has(a.url))
