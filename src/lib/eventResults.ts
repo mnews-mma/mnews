@@ -18,6 +18,11 @@ export interface EventResult {
   sourceUrl?: string;
   // 大会の概要文（省略時は自動生成: メインイベントの勝者・決着方法から）
   summary?: string;
+  // true の場合、/results一覧・sitemapから除外する（表示フラグのみ）。
+  // EVENT_RESULTS配列からのエントリ削除は禁止 — ランキングのイベント突合・
+  // 再戦バッジ・共通対戦相手の判定がこの配列を参照するため。
+  // 個別ページ(/results/[slug])は200のままnoindex,followで残す。
+  unlisted?: boolean;
   // 重要: fights は「メインイベントを先頭、オープニングファイトを末尾」の
   // 順で入力すること（RIZIN公式・DEEP公式・PANCRASE公式・修斗公式の結果
   // ページは例外なくこの順で試合を掲載しているため、各サイトの記載順を
@@ -2206,6 +2211,8 @@ export const EVENT_RESULTS: EventResult[] = [
     org: "rizin",
     eventName: "RIZIN.48",
     date: "2024-09-29",
+    // メインの試合しかデータが無い(thin content)ため/results一覧から非表示(2026-08-02)
+    unlisted: true,
     fights: [
       {
         weightClass: "フライ級",
@@ -2222,6 +2229,8 @@ export const EVENT_RESULTS: EventResult[] = [
     org: "rizin",
     eventName: "RIZIN.49",
     date: "2024-12-31",
+    // メインの試合しかデータが無い(thin content)ため/results一覧から非表示(2026-08-02)
+    unlisted: true,
     fights: [
       {
         weightClass: "RIZINフライ級タイトルマッチ",
@@ -2242,6 +2251,8 @@ export const EVENT_RESULTS: EventResult[] = [
     org: "rizin",
     eventName: "RIZIN.35",
     date: "2022-04-17",
+    // メインの試合しかデータが無い(thin content)ため/results一覧から非表示(2026-08-02)
+    unlisted: true,
     fights: [
       {
         weightClass: "フェザー級",
@@ -2258,6 +2269,8 @@ export const EVENT_RESULTS: EventResult[] = [
     org: "rizin",
     eventName: "RIZIN.46 【日韓対抗戦】",
     date: "2024-04-29",
+    // メインの試合しかデータが無い(thin content)ため/results一覧から非表示(2026-08-02)
+    unlisted: true,
     fights: [
       {
         weightClass: "61.0kg契約",
@@ -2279,6 +2292,8 @@ export const EVENT_RESULTS: EventResult[] = [
     eventName: "RIZIN.44",
     date: "2023-09-24",
     sourceUrl: "https://jp.rizinff.com/_ct/17656533",
+    // メインの試合しかデータが無い(thin content)ため/results一覧から非表示(2026-08-02)
+    unlisted: true,
     fights: [
       {
         weightClass: "61.0kg契約",
