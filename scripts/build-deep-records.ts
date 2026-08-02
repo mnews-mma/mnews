@@ -70,6 +70,7 @@ import {
   stripTags,
   extractDeepBouts,
   resolveOutcome,
+  DeepRawBout,
   DeepRecordsBout,
   DeepRecordsEvent,
 } from "../src/lib/mnewsRating/deepScraper";
@@ -167,6 +168,88 @@ interface EventDiag {
   nonProBoutCount: number;
 }
 
+// rawBout[] → DeepRecordsBout[] の変換(非プロ/非MMA除外・勝敗判定・選手名解決)。
+// 通常のライブクロール大会とpinned大会(下記DEEP_PINNED_MANUAL_SOURCES)の
+// 両方から呼ぶ共通処理として切り出した(2026-08-02)。
+function processRawBouts(
+  rawBouts: DeepRawBout[],
+  eventTitle: string
+): { bouts: DeepRecordsBout[]; nonProBoutCount: number; unresolvedNames: number; unknownResults: number } {
+  const excludedNonProCount = rawBouts.length;
+  const proRawBouts = rawBouts.filter(
+    (raw) =>
+      !isExcludedNonProBout({
+        headingText: raw.weightClassRaw,
+        namedDivision: raw.weightClassRaw,
+        eventName: eventTitle,
+      })
+  );
+  const nonProBoutCount = excludedNonProCount - proRawBouts.length;
+
+  let unresolvedNames = 0;
+  let unknownResults = 0;
+  const bouts: DeepRecordsBout[] = proRawBouts.map((raw, idx) => {
+    const outcome = resolveOutcome(raw);
+    if (outcome.resultType === "unknown") unknownResults++;
+    const fighterASlug =
+      findFighterSlugByName(raw.fighterAName) ?? resolveBareNameWithWeightClass(raw.fighterAName, raw.weightClassRaw);
+    const fighterBSlug =
+      findFighterSlugByName(raw.fighterBName) ?? resolveBareNameWithWeightClass(raw.fighterBName, raw.weightClassRaw);
+    if (!fighterASlug) unresolvedNames++;
+    if (!fighterBSlug) unresolvedNames++;
+    const winnerName = outcome.winner === "A" ? raw.fighterAName : outcome.winner === "B" ? raw.fighterBName : null;
+    const winnerSlug = outcome.winner === "A" ? fighterASlug : outcome.winner === "B" ? fighterBSlug : null;
+
+    return {
+      cardPosition: proRawBouts.length - idx,
+      isOpeningFight: idx === proRawBouts.length - 1,
+      headingText: raw.weightClassRaw ?? "",
+      fighterAName: raw.fighterAName,
+      fighterBName: raw.fighterBName,
+      fighterASlug,
+      fighterBSlug,
+      ruleType: "unknown", // DEEPページに明示のルール種別表記が無いため捏造しない
+      weightKg: null,
+      namedDivision: raw.weightClassRaw,
+      resultType: outcome.resultType,
+      winnerName,
+      winnerSlug,
+      round: null, // methodRawに含まれるためround/time単独では切り出さない(捏造しない)
+      time: null,
+      methodRaw: raw.methodRaw,
+      isWeighInMiss: false,
+      format: raw.format,
+      boutNumber: raw.boutNumber,
+    };
+  });
+
+  return { bouts, nonProBoutCount, unresolvedNames, unknownResults };
+}
+
+// DEEP公式サイトの現行/result/一覧からは発見できない(=ページ自体がアーカイブ
+// から失われている)が、Wayback Machineに個別の結果記事が現存する大会。
+// 指示書「構造的カバレッジ不足71件」(out/c-type-deep-numbered-mainline-
+// wayback-check.md)で、DEEP 45 IMPACTのみ既存フォーマット(F9/
+// group2_no_heading)で正しく抽出できることを確認済み。
+//
+// dateは自動抽出(extractEventDate)を使わず固定値を直接指定する:
+// このページ本文には(a)Geeklog CMSのサイトカレンダーウィジェットが
+// クロール時点の日付(「2011年8月25日(木)」=Wayback取得時のクロール日)を
+// 表示している、(b)記事投稿日時「2010年1月25日(月)」が大会翌日の投稿である、
+// という2種類の紛らわしい日付が本文中に含まれており、どちらも
+// extractEventDate()が誤って拾ってしまう(実際に検証済み)。true の開催日は
+// 記事タイトル「1.24 大阪大会　結果」で確認できる2010-01-24。
+const DEEP_PINNED_MANUAL_SOURCES: { title: string; date: string; url: string; note: string }[] = [
+  {
+    title: "DEEP 45 IMPACT",
+    date: "2010-01-24",
+    // Wayback Machineの"id_"修飾子でアーカイブ閲覧バナー(日付誤認の原因)を
+    // 除いた生のページ本文を取得する。
+    url: "https://web.archive.org/web/20110824232529id_/http://www.deep2001.com/article.php/20100125001956962",
+    note: "現行deep2001.com/result/には掲載されていない(2026-08-02確認)。Wayback Machine上の「結果速報」記事(1.24 大阪大会 結果)から17bout取得。",
+  },
+];
+
 async function main() {
   fs.mkdirSync(path.dirname(REPORT_OUT), { recursive: true });
   const fetchedDate = toJstDateStr();
@@ -254,18 +337,9 @@ async function main() {
     // bout単位の非プロ/非MMA混入除外(PR #265の共有判定器、ファイル冒頭コメント参照)。
     // DEEPフューチャーキングトーナメントはキーワードが大会名にしか現れないため
     // eventName(link.title)も判定器に渡す(nonProBoutFilter.ts冒頭コメント参照)。
-    const excludedNonProCount = rawBouts.length;
-    const proRawBouts = rawBouts.filter(
-      (raw) =>
-        !isExcludedNonProBout({
-          headingText: raw.weightClassRaw,
-          namedDivision: raw.weightClassRaw,
-          eventName: link.title,
-        })
-    );
-    const nonProBoutCount = excludedNonProCount - proRawBouts.length;
+    const { bouts, nonProBoutCount, unresolvedNames, unknownResults } = processRawBouts(rawBouts, link.title);
 
-    if (proRawBouts.length === 0) {
+    if (bouts.length === 0) {
       excludedZeroBout.push({
         eventName: link.title,
         date,
@@ -274,43 +348,6 @@ async function main() {
       });
       continue;
     }
-
-    let unresolvedNames = 0;
-    let unknownResults = 0;
-    const bouts: DeepRecordsBout[] = proRawBouts.map((raw, idx) => {
-      const outcome = resolveOutcome(raw);
-      if (outcome.resultType === "unknown") unknownResults++;
-      const fighterASlug =
-        findFighterSlugByName(raw.fighterAName) ?? resolveBareNameWithWeightClass(raw.fighterAName, raw.weightClassRaw);
-      const fighterBSlug =
-        findFighterSlugByName(raw.fighterBName) ?? resolveBareNameWithWeightClass(raw.fighterBName, raw.weightClassRaw);
-      if (!fighterASlug) unresolvedNames++;
-      if (!fighterBSlug) unresolvedNames++;
-      const winnerName = outcome.winner === "A" ? raw.fighterAName : outcome.winner === "B" ? raw.fighterBName : null;
-      const winnerSlug = outcome.winner === "A" ? fighterASlug : outcome.winner === "B" ? fighterBSlug : null;
-
-      return {
-        cardPosition: proRawBouts.length - idx,
-        isOpeningFight: idx === proRawBouts.length - 1,
-        headingText: raw.weightClassRaw ?? "",
-        fighterAName: raw.fighterAName,
-        fighterBName: raw.fighterBName,
-        fighterASlug,
-        fighterBSlug,
-        ruleType: "unknown", // DEEPページに明示のルール種別表記が無いため捏造しない
-        weightKg: null,
-        namedDivision: raw.weightClassRaw,
-        resultType: outcome.resultType,
-        winnerName,
-        winnerSlug,
-        round: null, // methodRawに含まれるためround/time単独では切り出さない(捏造しない)
-        time: null,
-        methodRaw: raw.methodRaw,
-        isWeighInMiss: false,
-        format: raw.format,
-        boutNumber: raw.boutNumber,
-      };
-    });
 
     events.push({
       eventName: link.title,
@@ -332,6 +369,60 @@ async function main() {
       unknownResults,
       nonProBoutCount,
     });
+  }
+
+  // DEEP_PINNED_MANUAL_SOURCES(現行/result/一覧には無いがWayback Machineに
+  // 個別記事が現存する大会)。通常のライブクロールとは別ループで処理する
+  // (allLinksに含まれないため、ページネーション検出等の対象外)。
+  for (const pinned of DEEP_PINNED_MANUAL_SOURCES) {
+    await sleep(1200);
+    const html = await fetchHtml(pinned.url);
+    const clean = stripTags(html);
+    const { bouts: rawBouts, formatsUsed } = extractDeepBouts(clean);
+
+    if (rawBouts.length === 0) {
+      excludedZeroBout.push({ eventName: pinned.title, date: pinned.date, url: pinned.url, reason: `pinned大会だが抽出0件(${pinned.note})` });
+      continue;
+    }
+
+    let parseFailures = 0;
+    if (formatsUsed[0] === "F1") {
+      const headingNumbers = new Set([...clean.matchAll(/第\s*(\d+)試合/g)].map((m) => Number(m[1])));
+      parseFailures = Math.max(0, headingNumbers.size - rawBouts.length);
+    }
+
+    const { bouts, nonProBoutCount, unresolvedNames, unknownResults } = processRawBouts(rawBouts, pinned.title);
+
+    if (bouts.length === 0) {
+      excludedZeroBout.push({
+        eventName: pinned.title,
+        date: pinned.date,
+        url: pinned.url,
+        reason: `pinned大会・全bout(${rawBouts.length}件)が非プロ/非MMA混入判定により除外`,
+      });
+      continue;
+    }
+
+    events.push({
+      eventName: pinned.title,
+      date: pinned.date,
+      sourceUrl: pinned.url,
+      fetchedDate,
+      bouts,
+      parseFailures,
+      venue: null,
+    });
+    diags.push({
+      eventName: pinned.title,
+      date: pinned.date,
+      boutCount: bouts.length,
+      formatsUsed,
+      parseFailures,
+      unresolvedNames,
+      unknownResults,
+      nonProBoutCount,
+    });
+    candidateCount++;
   }
 
   events.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));

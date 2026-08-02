@@ -25,6 +25,12 @@ const decodeHtmlEntities = (text: string): string => {
     .replace(/&#x([0-9a-fA-F]+);/g, (_, hex: string) => String.fromCodePoint(parseInt(hex, 16)))
     .replace(/&quot;/g, '"')
     .replace(/&apos;/g, "'")
+    // &times;(×)が生デコードされずに残っていた(2026-08-02、DEEP 45 IMPACT
+    // Wayback Machine版ページで判明)。このページは○を素のUnicode文字で
+    // 埋め込む一方、負けマークの×だけを名前付き実体参照&times;で書いており、
+    // 未デコードのままだと敗者名フィールドの先頭に文字列として紛れ込み
+    // markToResult()が空欄扱いになる。
+    .replace(/&times;/g, "×")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&amp;/g, "&");
