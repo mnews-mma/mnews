@@ -519,7 +519,8 @@ export type DeepBoutFormat =
   | "f8_fully_separated"
   | "f10_vs_and_mark"
   | "f4_detached_mark_label"
-  | "headingless_recovered";
+  | "headingless_recovered"
+  | "structural_paragraph";
 
 export interface DeepRawBout {
   format: DeepBoutFormat;
@@ -1183,10 +1184,20 @@ const HEADINGLESS_PATTERNS: { format: DeepBoutFormat; re: RegExp; build: (m: Reg
 // 追加チェックとして、名前欄がmark単体・見出しの通し番号表記・階級/
 // ラウンド表記そのものになっていないかを見る)。
 const NAME_LOOKS_LIKE_HEADING_RE = /第\s*\d+試合|\d+分\d*R|５分|３Ｒ/;
+// 2026-08-02判明: DEEP 100 IMPACT ～20th Anniversary～「〇安谷屋智弘（フリー）
+// 57.05kg|[判定3-0] ※20-18, 19-19×2（マスト安谷屋）|||×松場貴志（パラエストラ
+// 加古川）57.05kg」で、決着スコア文字列「[判定3-0] ※20-18, 19-19×2
+// （マスト安谷屋）」が「[」始まりのためNOT_METHOD_TEXTの否定先読み(判定・KO
+// 等の直接一致のみ判定)をすり抜け、2人目の選手名として誤って取り込まれる
+// (本来の2人目情報が代わりにmethod欄に押し出される)事故が起きた。名前欄が
+// 決着キーワードや「[」「【」等の注記用括弧で始まる/含む場合は選手名として
+// あり得ないため却下する。
+const NAME_LOOKS_LIKE_METHOD_RE = /^[\[【]|判定|反則|ノーコンテスト|棄権|降参|失格|不戦/;
 function looksLikeGarbledHeadinglessBout(b: DeepRawBout): boolean {
   if (hasGarbledContent([b])) return true;
   if (/^[●○〇△◯×⚪⚫]+$/.test(b.fighterAName) || /^[●○〇△◯×⚪⚫]+$/.test(b.fighterBName)) return true;
   if (NAME_LOOKS_LIKE_HEADING_RE.test(b.fighterAName) || NAME_LOOKS_LIKE_HEADING_RE.test(b.fighterBName)) return true;
+  if (NAME_LOOKS_LIKE_METHOD_RE.test(b.fighterAName) || NAME_LOOKS_LIKE_METHOD_RE.test(b.fighterBName)) return true;
   if (b.fighterAName.length === 0 || b.fighterBName.length === 0) return true;
   return false;
 }
@@ -1277,11 +1288,24 @@ export function recoverHeadinglessBouts(
 const RESULT_PARAGRAPH_RE = /<p[^>]*class="[^"]*wp-block-paragraph[^"]*"[^>]*>([\s\S]*?)<\/p>/g;
 const HAS_GYM_PAREN_RE = /[(（][^)）]{0,40}[)）]/;
 const HAS_RESULT_MARK_RE = /[●○〇△◯×⚪⚫]|(?:^|[^A-Za-z])VS(?:[^A-Za-z]|$)/;
+// mark(勝敗記号)もVSも使わない段落が実在する(2026-08-02、DEEP 130 IMPACTの
+// メインイベント: 「王者：大原樹理（KIBAマーシャルアーツクラブ）|倉本大悟
+// （JAPAN TOP TEAM）：挑戦者|1R 1'29" ノーコンテスト」。ノーコンテストは
+// 勝者が存在しないため、DEEP公式サイト側もmarkを付与しない)。決着方法の
+// キーワード(判定・KO・TKO・一本・ノーコンテスト等、既存のMETHOD_LOOKS_REALと
+// 同じ語彙)が段落内に存在することを、mark/VSに次ぐ第3の「これは結果段落だ」
+// という手がかりとして扱う。
+const HAS_METHOD_KEYWORD_RE = /\d+R|判定|KO|TKO|Ｋ．Ｏ|一本|反則|不戦|棄権|降参|エキシビション|ノーコンテスト|試合中止/;
 // ページの装飾・告知文等、bout本体ではない段落が誤って混入しないよう、
 // 実在するbout1件ぶんの本文として不自然に長い段落は対象外にする(既存の
 // MAX_PLAUSIBLE_METHOD_LEN(200文字、method欄1つの上限)とは別軸で、
 // 段落全体(見出し+2選手+method+付記)の上限として実測から500文字とする)。
 const MAX_PLAUSIBLE_PARAGRAPH_LEN = 500;
+
+function isStructuralBoutParagraph(innerText: string): boolean {
+  if (!HAS_GYM_PAREN_RE.test(innerText)) return false;
+  return HAS_RESULT_MARK_RE.test(innerText) || HAS_METHOD_KEYWORD_RE.test(innerText);
+}
 
 export function countStructuralBoutBlocks(rawHtml: string): number {
   let count = 0;
@@ -1292,11 +1316,209 @@ export function countStructuralBoutBlocks(rawHtml: string): number {
     if (inner.length > MAX_PLAUSIBLE_PARAGRAPH_LEN) continue;
     // タグを除去して純テキストで判定する(<strong>等の内部タグに惑わされない)。
     const innerText = inner.replace(/<[^>]+>/g, "");
-    if (!HAS_GYM_PAREN_RE.test(innerText)) continue;
-    if (!HAS_RESULT_MARK_RE.test(innerText)) continue;
+    if (!isStructuralBoutParagraph(innerText)) continue;
     count++;
   }
   return count;
+}
+
+// ── 3.7. 構造段落からのbout回収(見出し表記に依存しない回収パス) ──────────
+//
+// 2026-08-02、PR #374のフォローアップ: 見出しなし回収(recoverHeadinglessBouts、
+// 3.5節)は「メインイベント/セミファイナル/コ・メインイベント」という特定の
+// 見出し語に依存しており、以下2件は見出し語の有無に関わらず異なる理由で
+// 未回収のまま残っていた(out/deep-headingless-recovery-reconciliation.md参照)。
+//   - DEEP OSAKA IMPACT 2022 5th ROUND セミファイナル: VS型(mark無し)カードの
+//     bout境界検出が既存Group1(BOUT_RE_GROUP1)の複雑な先読み境界と噛み合わず、
+//     同一大会内の大半のboutが道連れで欠落する既知の別バグの影響下にあった。
+//   - DEEP 130 IMPACT メインイベント: ノーコンテストのため勝敗markが存在せず、
+//     「王者：/：挑戦者」という肩書き付き表記のみで選手が示される特殊構造。
+//
+// 対応方針(ユーザー指示、2026-08-02): 見出しパターンを追加する方向には戻らず、
+// countStructuralBoutBlocks()と同じ根拠(生HTMLの<p class="wp-block-paragraph">
+// 1個=bout1件というDOM構造+ジム括弧+決着手がかり)で該当する段落を直接パースする。
+// DEEP公式ページは1boutが1つの独立した<p>要素に収まるテンプレートのため、
+// ページ全体を対象にした複雑な境界検出(次のboutとの取り違え防止の先読み等)が
+// 一切不要になり、既存のGroup1(VS型)のような事故のリスクを構造的に避けられる。
+//
+// 見出し語(第N試合/メインイベント等)は一切要求しない(段落の先頭に短い見出しが
+// あってもなくても対応する)。
+const TITLE_PREFIX = "(?:王者[:：]\\s*)?";
+const TITLE_SUFFIX = "(?:\\s*[:：]\\s*(?:挑戦者|王者))?";
+// 名前ブロック: mark(任意)+王者：肩書き(任意)+名前+ジム括弧+：挑戦者肩書き(任意)+kg(任意)。
+// mark・肩書きのどちらも無いプレーンな名前(ジム)にも対応する(共に任意のため)。
+const PARA_NAME_BLOCK = `${MARK_OPT}\\s*${TITLE_PREFIX}${NOT_METHOD_TEXT}([^|(（\\s][^|(（]*?)[(（]([^)）]*)[)）]${TITLE_SUFFIX}${KG_SUFFIX}`;
+// 段落先頭の短い見出し(第N試合・メインイベント等の文言、「DEEP（日本）VS
+// YFU（中国）」のような国際対抗戦の告知文等)は、有っても無くても対応する
+// ため丸ごと任意にする(見出し語を判定条件にはしない)。段落の先頭(^)にのみ
+// 固定する(2026-08-02判明: パイプ区切りなら段落内のどの位置からでも開始
+// できる設計だと、実際の選手ブロックより前にある無関係な短い告知文
+// (「DEEP（日本） VS YFU（中国）」等、括弧付きテキストがたまたま選手ブロックと
+// 同じ形に見える)を選手名として誤って拾ってしまう事故が起きた。段落先頭への
+// 固定と、短い見出しセグメントを複数(最大3個まで)連続して読み飛ばせるように
+// することの両方で対応する)。読み飛ばした見出しセグメント全体を1つの
+// キャプチャグループにまとめて残す(「アマチュアSルール」等の非プロ判定
+// キーワードがここに含まれるため、weightClassRaw/headingTextとして
+// isExcludedNonProBout()に渡す。読み飛ばし自体は捏造しない=見出しの内容を
+// 元にbout本体の解釈を変えたりはしない)。
+const PARA_HEADING_OPT = "^\\s*((?:[^|]{0,80}?\\|\\s*){0,3}?)";
+
+interface ParaBoutPattern {
+  re: RegExp;
+  build: (m: RegExpExecArray) => DeepRawBout;
+}
+
+// method末尾型(名前1|名前2|method)。DEEP 130 IMPACTのノーコンテスト
+// (「王者：大原樹理（…）|倉本大悟（…）：挑戦者|1R 1'29" ノーコンテスト」)は
+// この形。
+const PARA_PATTERN_METHOD_TRAILING: ParaBoutPattern = {
+  // フィールド区切りは1個の「|」固定ではなく(?:\|\s*)+(空セルの連続を許容)に
+  // する(2026-08-02判明、DEEP 100 IMPACT ～20th Anniversary～「〇安谷屋智弘
+  // （フリー）57.05kg|[判定3-0] ※20-18, 19-19×2（マスト安谷屋）|||×松場貴志
+  // （パラエストラ加古川）57.05kg」: HTML側の空セル(タグのみで中身が無い
+  // 要素)が連続する「|||」があると、区切りを1個の「|」固定にしていたため
+  // 2人目の名前ブロックの位置がずれ、method欄の決着スコア文字列を2人目の
+  // 「名前」として、本来の2人目情報を「method」として誤って取り違えていた。
+  // 既存の主要抽出正規表現(MARK_CELL_SEP)と同じ考え方)。
+  re: new RegExp(`${PARA_HEADING_OPT}${PARA_NAME_BLOCK}(?:\\|\\s*)+${PARA_NAME_BLOCK}(?:\\|\\s*)+([^|]+)`),
+  build: (m) => ({
+    format: "structural_paragraph",
+    boutNumber: null,
+    weightClassRaw: (m[1] ?? "").trim() || null,
+    fighterAMark: m[2],
+    fighterAName: m[3].trim(),
+    fighterAGym: m[4].trim() || null,
+    fighterBMark: m[5],
+    fighterBName: m[6].trim(),
+    fighterBGym: m[7].trim() || null,
+    methodRaw: m[8].trim(),
+    winnerNameHintRaw: null,
+  }),
+};
+
+// method中間型(名前1|method|名前2)。DEEP JEWELS系の多くの段落がこの形。
+const PARA_PATTERN_METHOD_MIDDLE: ParaBoutPattern = {
+  // METHOD_TRAILINGと同じ理由でフィールド区切りを空セル許容にする。
+  re: new RegExp(`${PARA_HEADING_OPT}${PARA_NAME_BLOCK}(?:\\|\\s*)+([^|]+?)(?:\\|\\s*)+${PARA_NAME_BLOCK}`),
+  build: (m) => ({
+    format: "structural_paragraph",
+    boutNumber: null,
+    weightClassRaw: (m[1] ?? "").trim() || null,
+    fighterAMark: m[2],
+    fighterAName: m[3].trim(),
+    fighterAGym: m[4].trim() || null,
+    methodRaw: m[5].trim(),
+    fighterBMark: m[6],
+    fighterBName: m[7].trim(),
+    fighterBGym: m[8].trim() || null,
+    winnerNameHintRaw: null,
+  }),
+};
+
+// VS型(mark無し、「N.名前(ジム) VS 名前(ジム) method 勝者：ヒント」)。
+// DEEP OSAKA IMPACT 2022 5th ROUND等、Group1の境界検出が届かないVS型段落を
+// 1段落=1boutの単位で直接パースする(ページ全体を跨ぐ複雑な先読みは不要)。
+// VS型でも両者にmarkが付く亜種がある(2026-08-02判明、DEEP TOKYO IMPACT 2023
+// 2nd ROUND等:「〇DJ.taiki（パンクラスイズム横浜）VS ×鹿志村仁之助
+// （セロ・ロンゴ・ファイトチーム）|判定 3－0|勝者 DJ.taiki」)。mark自体を
+// 名前の一部として飲み込んでしまうと選手名が壊れるだけでなく、勝者ヒントとの
+// 前方一致判定(resolveOutcome)も一致しなくなり二重に壊れるため、
+// PARA_NAME_BLOCKと同様にmarkを明示的に分離して捕捉する。
+const PARA_PATTERN_VS: ParaBoutPattern = {
+  re: new RegExp(
+    `${PARA_HEADING_OPT}(?:\\d+\\.\\s*)?${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（]+?)[(（]([^)）]*)[)）]\\s*(?:\\|\\s*)*VS(?:&nbsp;|\\s)*(?:\\|\\s*)*${MARK_OPT}\\s*${NOT_METHOD_TEXT}([^|(（]+?)[(（]([^)）]*)[)）]\\s*([\\s\\S]*)`
+  ),
+  build: (m) => {
+    const trailingRaw = m[8].replace(/\|/g, " ").replace(/\s+/g, " ").trim();
+    const winnerMatch = trailingRaw.match(WINNER_HINT_RE);
+    let methodRaw: string;
+    if (!winnerMatch) {
+      methodRaw = trailingRaw;
+    } else if (winnerMatch.index === 0) {
+      methodRaw = trailingRaw.slice(winnerMatch.index + winnerMatch[0].length).trim();
+    } else {
+      methodRaw = trailingRaw.slice(0, winnerMatch.index).trim();
+    }
+    return {
+      format: "structural_paragraph",
+      boutNumber: null,
+      weightClassRaw: (m[1] ?? "").trim() || null,
+      fighterAMark: m[2],
+      fighterAName: m[3].trim(),
+      fighterAGym: m[4].trim() || null,
+      fighterBMark: m[5],
+      fighterBName: m[6].trim(),
+      fighterBGym: m[7].trim() || null,
+      methodRaw,
+      winnerNameHintRaw: winnerMatch ? winnerMatch[1] : null,
+    };
+  },
+};
+
+const PARAGRAPH_BOUT_PATTERNS: ParaBoutPattern[] = [
+  PARA_PATTERN_METHOD_TRAILING,
+  PARA_PATTERN_METHOD_MIDDLE,
+  PARA_PATTERN_VS,
+];
+
+// 2026-08-02判明: DEEP TOKYO IMPACT 2025 4th ROUNDで、対抗国名を告知するだけの
+// 単独段落「DEEP（日本） VS YFU（中国）」(決着情報を一切持たない、ページ内の
+// 別ウィジェットに4回重複表示される飾りテキスト)や「4.イトカズ・コウセイ(…)
+// VS マサムネ（…）」のような対戦カード一覧(予告・結果本文とは別の目次的な
+// 再掲、決着情報を持たない)が、PARA_PATTERN_VSの「名前(ジム)VS名前(ジム)」
+// という形にそのまま一致してしまい、method欄が空のまま偽boutとして混入する
+// 事故が起きた。
+//
+// mark(●○等)が付いているbout(PARA_NAME_BLOCKのmark captureが非空)は、mark
+// 自体が「これは実在の決着結果だ」という強い手がかりのため、method欄の
+// キーワード必須チェックは課さない(2026-08-02判明: 「リアネイキッドチョーク」
+// 等、既存のキーワード語彙に無い決まり手表記を持つ正当なmark型boutまで誤って
+// 却下してしまう事故があったため)。mark・勝者ヒントのどちらも無い(=VS型で
+// 決着の手がかりが本文の決まり手キーワードしか無い)候補にだけ、決まり手
+// キーワードの有無というこの安全弁を課す。
+function needsPlausibleMethodCheck(candidate: DeepRawBout): boolean {
+  const hasMark = Boolean(candidate.fighterAMark) || Boolean(candidate.fighterBMark);
+  const hasHint = Boolean(candidate.winnerNameHintRaw);
+  return !hasMark && !hasHint;
+}
+function hasPlausibleMethodText(methodRaw: string): boolean {
+  return methodRaw.trim().length > 0 && HAS_METHOD_KEYWORD_RE.test(methodRaw);
+}
+
+function extractStructuralParagraphBouts(rawHtml: string): DeepRawBout[] {
+  const bouts: DeepRawBout[] = [];
+  RESULT_PARAGRAPH_RE.lastIndex = 0;
+  let m: RegExpExecArray | null;
+  while ((m = RESULT_PARAGRAPH_RE.exec(rawHtml))) {
+    const innerHtml = m[1];
+    if (innerHtml.length > MAX_PLAUSIBLE_PARAGRAPH_LEN) continue;
+    const innerText = innerHtml.replace(/<[^>]+>/g, "");
+    if (!isStructuralBoutParagraph(innerText)) continue;
+
+    const paragraphText = stripTags(innerHtml);
+    for (const pattern of PARAGRAPH_BOUT_PATTERNS) {
+      pattern.re.lastIndex = 0;
+      const pm = pattern.re.exec(paragraphText);
+      if (!pm) continue;
+      const candidate = pattern.build(pm);
+      if (looksLikeGarbledHeadinglessBout(candidate)) continue;
+      if (needsPlausibleMethodCheck(candidate) && !hasPlausibleMethodText(candidate.methodRaw)) continue;
+      bouts.push(candidate);
+      break;
+    }
+  }
+  return bouts;
+}
+
+// extractDeepBouts()・recoverHeadinglessBouts()いずれの結果にも無いboutを
+// 構造段落から追加専用で回収してマージする。既存2パスの選定・見出し依存
+// ロジックには一切関与しない(このパスを呼ばなければ他の関数の挙動は不変)。
+export function recoverStructuralParagraphBouts(
+  rawHtml: string,
+  existingBouts: { fighterAName: string; fighterBName: string }[]
+): DeepRawBout[] {
+  const candidates = extractStructuralParagraphBouts(rawHtml);
+  return candidates.filter((c) => !sameFighterPairExists(existingBouts, c));
 }
 
 // ── 4. 勝敗判定 ──────────────────────────────────────────────────────────
@@ -1320,7 +1542,19 @@ export function resolveOutcome(bout: DeepRawBout): DeepOutcome {
   // キーワードはあくまで「明示シグナルが無い/曖昧な場合」の二次的な手がかりとして
   // 使う。
 
-  if (bout.format === "group1_vs") {
+  // group1_vsに加え、structural_paragraph(3.7節)のVS型パターンも
+  // winnerNameHintRawを設定する(mark無しのVS表記から「勝者：名前」を抽出した
+  // 場合)。ただしstructural_paragraphのVS型はmark(●○等)とヒントの両方を
+  // 同時に持つことがある(2026-08-02判明、DEEP TOKYO IMPACT 2023 2nd ROUND
+  // 「〇DJ.taiki VS ×鹿志村仁之助|判定 3－0|勝者 DJ.taiki」)。markは選手名と
+  // 完全に切り離されたそれ自体で完結する明示シグナルであるのに対し、
+  // ヒントは「選手名の先頭一致」という間接的な照合に依存するため、mark自体が
+  // 存在する場合は常にmarkを優先する(判定基準はフォーマット名ではなく、
+  // markの有無そのもので分岐する)。group1_vs(ページ全体を跨ぐVS抽出、
+  // extractVsBouts)はmarkを一切キャプチャしない設計のため、この優先順位を
+  // 導入してもgroup1_vs側の既存挙動(常にヒント経路)は変化しない。
+  const hasAnyMark = markToResult(bout.fighterAMark ?? "") !== "unknown" || markToResult(bout.fighterBMark ?? "") !== "unknown";
+  if (!hasAnyMark && (bout.format === "group1_vs" || bout.winnerNameHintRaw)) {
     if (bout.winnerNameHintRaw) {
       // 「勝者」直後の名前は姓のみ・フルネームのどちらもあり得るため、
       // 選手名の先頭一致(部分一致)で判定する(完全一致を要求すると姓のみ表記の
