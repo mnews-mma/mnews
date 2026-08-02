@@ -32060,10 +32060,10 @@
     "age": 51
   },
   "ishizuka-koichi": {
-    "wins": 19,
+    "wins": 20,
     "losses": 6,
     "draws": 1,
-    "ko": 6,
+    "ko": 7,
     "sub": 0,
     "decision": 0,
     "history": [
@@ -32178,6 +32178,14 @@
         "method": "5分2R終了 判定3-0",
         "event": "DEEP 86 IMPACT",
         "round": "R2"
+      },
+      {
+        "date": "2018-02-24",
+        "opponent": "城田和秀",
+        "result": "win",
+        "method": "1R 3:19 TKO(右ストレート)",
+        "event": "DEEP 86 IMPACT",
+        "round": "R1"
       },
       {
         "date": "2017-12-23",

@@ -362,8 +362,8 @@ function jaResult(marker: string, methodText: string): "win" | "loss" | "draw" |
 }
 
 function parseJaDate(raw: string): string {
-  // "2026年7月18日" 形式
-  const m = cleanWikiMarkup(raw).match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+  // "2026年7月18日" 形式（"年"や"月"の直後に全角/半角スペースが入る表記ゆれも許容）
+  const m = cleanWikiMarkup(raw).match(/(\d{4})年\s*(\d{1,2})月\s*(\d{1,2})日/);
   if (!m) return "";
   const [, y, mo, d] = m;
   return `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
