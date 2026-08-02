@@ -1,0 +1,342 @@
+[
+  {
+    "slug": "horiguchi-kyoji",
+    "wins": 36,
+    "losses": 6,
+    "draws": 0,
+    "histLen": 43,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "asakura-mikuru",
+    "wins": 19,
+    "losses": 6,
+    "draws": 0,
+    "histLen": 26,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "koike-kleber",
+    "wins": 35,
+    "losses": 9,
+    "draws": 1,
+    "histLen": 46,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "hagiwara-kyohei",
+    "wins": 9,
+    "losses": 12,
+    "draws": 0,
+    "histLen": 22,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "shinryu-makoto",
+    "wins": 23,
+    "losses": 5,
+    "draws": 1,
+    "histLen": 30,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "motoya-yuki",
+    "wins": 39,
+    "losses": 14,
+    "draws": 0,
+    "histLen": 54,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "yachi-yusuke",
+    "wins": 29,
+    "losses": 16,
+    "draws": 0,
+    "histLen": 46,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "sato-shoko",
+    "wins": 38,
+    "losses": 17,
+    "draws": 2,
+    "histLen": 57,
+    "ncRows": 1,
+    "gap": 0,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "suzuki-chihiro",
+    "wins": 13,
+    "losses": 6,
+    "draws": 0,
+    "histLen": 20,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "kubo-yuta",
+    "wins": 5,
+    "losses": 3,
+    "draws": 0,
+    "histLen": 9,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "ohara-juri",
+    "wins": 38,
+    "losses": 21,
+    "draws": 2,
+    "histLen": 64,
+    "ncRows": 3,
+    "gap": 3,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "kuramoto-daigo",
+    "wins": 8,
+    "losses": 3,
+    "draws": 0,
+    "histLen": 12,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "strasser-kiichi",
+    "wins": 21,
+    "losses": 13,
+    "draws": 2,
+    "histLen": 35,
+    "ncRows": 1,
+    "gap": -1,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "miyabi-shunsuke",
+    "wins": 9,
+    "losses": 5,
+    "draws": 0,
+    "histLen": 15,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "akazawa-yukinori",
+    "wins": 8,
+    "losses": 6,
+    "draws": 0,
+    "histLen": 15,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "saito-momoko",
+    "wins": 4,
+    "losses": 2,
+    "draws": 0,
+    "histLen": 7,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "little",
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "histLen": 1,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "case-johnny",
+    "wins": 29,
+    "losses": 10,
+    "draws": 1,
+    "histLen": 41,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "soldatkin-alexander",
+    "wins": 17,
+    "losses": 4,
+    "draws": 0,
+    "histLen": 22,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "karshyga-dautbek",
+    "wins": 19,
+    "losses": 3,
+    "draws": 0,
+    "histLen": 23,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "otsuka-tomoki",
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "histLen": 1,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "shibisai-shoma",
+    "wins": 10,
+    "losses": 4,
+    "draws": 0,
+    "histLen": 15,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "kitakata-daichi",
+    "wins": 20,
+    "losses": 14,
+    "draws": 1,
+    "histLen": 37,
+    "ncRows": 2,
+    "gap": 2,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "hamada-takumi",
+    "wins": 7,
+    "losses": 0,
+    "draws": 0,
+    "histLen": 8,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "cafaro-ryan",
+    "wins": 15,
+    "losses": 6,
+    "draws": 0,
+    "histLen": 22,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "shinya-aoki",
+    "wins": 50,
+    "losses": 12,
+    "draws": 0,
+    "histLen": 63,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "tatsumitsu-wada",
+    "wins": 27,
+    "losses": 14,
+    "draws": 2,
+    "histLen": 44,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "ayaka-miura",
+    "wins": 16,
+    "losses": 7,
+    "draws": 0,
+    "histLen": 24,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "kim-soochul",
+    "wins": 24,
+    "losses": 9,
+    "draws": 1,
+    "histLen": 35,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "yang-jiyong",
+    "wins": 10,
+    "losses": 5,
+    "draws": 0,
+    "histLen": 16,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "ameyama-seiya",
+    "wins": 6,
+    "losses": 4,
+    "draws": 0,
+    "histLen": 11,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "uehara-taira",
+    "wins": 7,
+    "losses": 3,
+    "draws": 3,
+    "histLen": 14,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "sugimoto-megumi",
+    "wins": 11,
+    "losses": 7,
+    "draws": 1,
+    "histLen": 20,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  },
+  {
+    "slug": "fujino-emi",
+    "wins": 31,
+    "losses": 16,
+    "draws": 1,
+    "histLen": 49,
+    "ncRows": 1,
+    "gap": 1,
+    "gapExplainedByNc": true
+  }
+]

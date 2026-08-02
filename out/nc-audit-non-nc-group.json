@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "tokoro-hideo",
+    "wins": 36,
+    "losses": 34,
+    "draws": 1,
+    "histLen": 63,
+    "ncRows": 0,
+    "gap": -8,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "nakamura-daisuke",
+    "wins": 35,
+    "losses": 29,
+    "draws": 1,
+    "histLen": 64,
+    "ncRows": 0,
+    "gap": -1,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "kurobe-kazusa",
+    "wins": 6,
+    "losses": 1,
+    "draws": 1,
+    "histLen": 7,
+    "ncRows": 0,
+    "gap": -1,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "patricky-pitbull",
+    "wins": 25,
+    "losses": 16,
+    "draws": 0,
+    "histLen": 42,
+    "ncRows": 0,
+    "gap": 1,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "kitaoka-satoru",
+    "wins": 45,
+    "losses": 29,
+    "draws": 10,
+    "histLen": 83,
+    "ncRows": 0,
+    "gap": -1,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "lee-kaiwen",
+    "wins": 16,
+    "losses": 8,
+    "draws": 0,
+    "histLen": 23,
+    "ncRows": 0,
+    "gap": -1,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "uno-caol",
+    "wins": 35,
+    "losses": 23,
+    "draws": 5,
+    "histLen": 64,
+    "ncRows": 0,
+    "gap": 1,
+    "gapExplainedByNc": false
+  },
+  {
+    "slug": "sugiyama",
+    "wins": 23,
+    "losses": 8,
+    "draws": 1,
+    "histLen": 33,
+    "ncRows": 0,
+    "gap": 1,
+    "gapExplainedByNc": false
+  }
+]

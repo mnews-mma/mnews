@@ -1,0 +1,261 @@
+slug,name,history_index,date,event,opponent,result,org,matched_event,reason
+asakura-kai,朝倉 海,8,2021-06-13,RIZIN.28 【RIZINバンタム級JAPANグランプリ1回戦】,渡部修斗,win,RIZIN,Yogibo presents RIZIN.28,no_candidate
+tsuruya-rei,鶴屋 怜,11,2021-02-21,DEEP 100 IMPACT～20th Anniversary～,竜己,win,DEEP,DEEP 100 IMPACT ～20th Anniversary～,no_candidate
+asakura-mikuru,朝倉 未来,8,2021-06-13,RIZIN.28,クレベル・コイケ,loss,RIZIN,Yogibo presents RIZIN.28,no_candidate
+koike-kleber,クレベル・コイケ,12,2021-06-13,RIZIN.28,朝倉未来,win,RIZIN,Yogibo presents RIZIN.28,no_candidate
+koike-kleber,クレベル・コイケ,22,2016-04-24,PANCRASE 277,矢地祐介,win,PANCRASE,PANCRASE277,no_candidate
+koike-kleber,クレベル・コイケ,28,2013-11-24,DEEP CAGE IMPACT 2013,門脇英基,win,DEEP,DEEP CAGE IMPACT 2013 in TDC HALL,no_candidate
+akimoto-kyoma,秋元 強真,9,2023-11-11,DEEP 116 IMPACT,田口貴規,win,DEEP,DEEP 116 IMPACT,opponent_name_mismatch(org_bout_opponent=田口貴親)
+akimoto-kyoma,秋元 強真,11,2023-02-11,DEEP 112 IMPACT,高柳京之介,win,DEEP,DEEP 112 IMPACT,no_candidate
+inoue-naoki,井上 直樹,24,2015-05-16,DEEP 72 IMPACT,山中憲次,win,DEEP,DEEP 72 IMPACT,no_candidate
+izawa-seika,伊澤 星花,5,2024-03-24,DEEP JEWELS 44 【DEEP JEWELSアトム級タイトルマッチ】,パク・シユン,win,DEEP,DEEP JEWELS 44,no_candidate
+izawa-seika,伊澤 星花,15,2021-06-20,DEEP JEWELS 33 【DEEP JEWELSストロー級暫定タイトルマッチ】,本野美樹,win,DEEP,DEEP JEWELS 33,no_candidate
+rena,RENA,11,2019-04-21,RIZIN.15,サマンサ・ジャン＝フランソワ,win,RIZIN,RIZIN.15,opponent_name_mismatch(org_bout_opponent=サマンサ・ジャン=フランソワ)
+saito-yutaka,斎藤 裕,9,2019-09-22,修斗 30th ANNIVERSARY TOUR 第7戦,高谷裕之,win,SHOOTO,SHOOTO 30th ANNIVERSARY TOUR 第7戦 Supported by ONE Championship,opponent_name_mismatch(org_bout_opponent=髙谷 裕之)
+hiroya,ヒロヤ,4,2024-11-17,RIZIN LANDMARK 10,"柴田""MONKEY""有哉",win,RIZIN,RIZIN LANDMARK 10 in NAGOYA,opponent_name_mismatch(org_bout_opponent=柴田“MONKEY”有哉)
+hiroya,ヒロヤ,13,2021-12-12,DEEP 105 IMPACT,日比野“エビ中”純也,win,DEEP,DEEP 105 IMPACT,opponent_name_mismatch(org_bout_opponent=日比野”エビ中”純也)
+hiroya,ヒロヤ,19,2020-08-23,DEEP 96 IMPACT,橋本ユウタ,loss,DEEP,DEEP 96 IMPACT,opponent_name_mismatch(org_bout_opponent=橋本優大)
+shinryu-makoto,神龍 誠,15,2022-05-08,DEEP 107 IMPACT 【DEEPフライ級王座統一戦】,藤田大和,win,DEEP,DEEP 107 IMPACT,opponent_name_mismatch(org_bout_opponent=)
+shinryu-makoto,神龍 誠,19,2019-06-29,DEEP 90 IMPACT 【DEEPフライ級暫定王者決定戦】,"柴田""MONKEY""有哉",win,DEEP,DEEP 90 IMPACT,opponent_name_mismatch(org_bout_opponent=柴田“MONKEY”有哉)
+shinryu-makoto,神龍 誠,20,2019-03-09,DEEP 88 IMPACT,島袋力,win,DEEP,DEEP 88 IMPACT,opponent_name_mismatch(org_bout_opponent=島袋チカラ)
+shinryu-makoto,神龍 誠,22,2018-04-28,DEEP 83 IMPACT 【DEEPフライ級タイトルマッチ】,和田竜光,loss,DEEP,DEEP 83 IMPACT,no_candidate
+shinryu-makoto,神龍 誠,23,2018-02-24,DEEP 82 IMPACT,石橋幸太,win,DEEP,DEEP 82 IMPACT,no_candidate
+shinryu-makoto,神龍 誠,25,2017-09-16,DEEP 79 IMPACT,中森祐人,win,DEEP,DEEP 79 IMPACT,no_candidate
+shinryu-makoto,神龍 誠,26,2017-05-13,DEEP CAGE IMPACT,石神保貴,draw,DEEP,DEEP CAGE IMPACT 2017,no_candidate
+shinryu-makoto,神龍 誠,27,2016-12-17,DEEP CAGE IMPACT DEEP VS WSOF-GC,丸岡拓也,win,DEEP,DEEP CAGE IMPACT 2016～DEEP VS WSOF-GC～,no_candidate
+shinryu-makoto,神龍 誠,28,2016-08-27,DEEP 77 IMPACT,曾我英将,win,DEEP,DEEP 77 IMPACT,no_candidate
+shinryu-makoto,神龍 誠,29,2016-04-24,PANCRASE ディファ有明大会,前野辰一,win,PANCRASE,PANCRASE277,no_candidate
+ougikubo-hiromasa,扇久保 博正,20,2017-04-23,修斗,ダニー・マルティネス,win,SHOOTO,舞浜アンフィシアター大会,opponent_name_mismatch(org_bout_opponent=Danny Martinez)
+motoya-yuki,元谷 友貴,20,2020-11-01,DEEP 99 IMPACT,米山千隼,win,DEEP,DEEP 99 IMPACT,no_candidate
+motoya-yuki,元谷 友貴,21,2020-08-10,RIZIN.23 - CALLING OVER -,魚井フルスイング,win,RIZIN,RIZIN.23 - CALLING OVER -,opponent_name_mismatch(org_bout_opponent=魚井フルスイング)
+motoya-yuki,元谷 友貴,23,2019-12-31,RIZIN.20,パッチー・ミックス,loss,RIZIN,RIZIN.20,opponent_name_mismatch(org_bout_opponent=パトリック・ミックス)
+motoya-yuki,元谷 友貴,26,2018-12-31,RIZIN.14,ジャスティン・スコギンズ,win,RIZIN,Cygames presents RIZIN.14,opponent_name_mismatch(org_bout_opponent=ジャスティン・スコッギンス)
+motoya-yuki,元谷 友貴,30,2018-02-24,DEEP 82 IMPACT,ビョン・ジェウン,win,DEEP,DEEP 82 IMPACT,no_candidate
+yachi-yusuke,矢地 祐介,14,2020-09-27,RIZIN.24,大原樹理,loss,RIZIN,Yogibo presents RIZIN.24,opponent_name_mismatch(org_bout_opponent=大原樹里)
+yachi-yusuke,矢地 祐介,26,2016-04-24,PANCRASE 277,クレベル・コイケ,loss,PANCRASE,PANCRASE277,opponent_name_mismatch(org_bout_opponent=クレベル・小池・エルベスト)
+fukuda-ryuya,福田 龍彌,3,2025-05-05,DEEP 125 IMPACT 【DEEPバンタム級タイトルマッチ】,牛久絢太郎,win,DEEP,DEEP 125 IMPACT,no_candidate
+fukuda-ryuya,福田 龍彌,23,2018-04-15,修斗 香川大会「FORCE09」,藤川智史,loss,SHOOTO,FORCE 09,no_candidate
+takagi-ryo,高木 凌,12,2021-12-12,PANCRASE 325,齋藤拓矢,win,PANCRASE,PANCRASE 325,opponent_name_mismatch(org_bout_opponent=斎藤拓矢)
+kate-lotus,ケイト・ロータス,5,2024-11-04,DEEP 122 IMPACT,月井隼南,win,DEEP,DEEP 122 IMPACT,opponent_name_mismatch(org_bout_opponent=月井準南)
+kate-lotus,ケイト・ロータス,7,2024-03-24,DEEP JEWELS 44,桐生祐子,win,DEEP,DEEP JEWELS 44,no_candidate
+kate-lotus,ケイト・ロータス,15,2021-09-04,DEEP JEWELS 34,ミッコ・ニルバーナ,loss,DEEP,DEEP JEWELS 34,no_candidate
+kate-lotus,ケイト・ロータス,17,2020-12-19,DEEP JEWELS 31,熊谷麻理奈,win,DEEP,DEEP JEWELS 31,no_candidate
+oshima-saori,大島 沙緒里,8,2023-09-18,DEEP 115 IMPACT〜DEEP vs BLACK COMBAT〜 【DEEP JEWELS&BLACK COMBATアトム級ダブルタイトルマッチ】,パク・シユン,loss,DEEP,DEEP 115 IMPACT～DEEP VS BLACK COMBAT～,opponent_name_mismatch(org_bout_opponent=パク・シユン)
+oshima-saori,大島 沙緒里,13,2022-05-08,DEEP JEWELS 37 【DEEP JEWELSアトム級タイトルマッチ】,須田萌里,win,DEEP,DEEP JEWELS 37,no_candidate
+oshima-saori,大島 沙緒里,16,2021-06-20,DEEP JEWELS 33 【DEEP JEWELSアトム級グランプリ決勝】,青野ひかる,win,DEEP,DEEP JEWELS 33,opponent_name_mismatch(org_bout_opponent=パク・シウ)
+oshima-saori,大島 沙緒里,20,2020-09-20,DEEP 96 IMPACT 【DEEPミクロ級王座決定戦】,にっせー,win,DEEP,DEEP 97 IMPACT,no_candidate
+kashimura-jinnosuke,鹿志村 仁之介,8,2023-11-11,DEEP 116 IMPACT,橋本ユウタ,win,DEEP,DEEP 116 IMPACT,no_candidate
+kashimura-jinnosuke,鹿志村 仁之介,9,2023-07-02,DEEP 114 IMPACT,"日比野""エビ中""純也",loss,DEEP,DEEP 114 IMPACT,opponent_name_mismatch(org_bout_opponent=日比野“エビ中”純也)
+kashimura-jinnosuke,鹿志村 仁之介,10,2023-03-25,DEEP TOKYO IMPACT 2023 2ND ROUND,DJ.taiki,loss,DEEP,DEEP TOKYO IMPACT 2023 2nd ROUND,no_candidate
+sato-shoko,佐藤 将光,36,2012-01-28,Pancrase Progress Tour 1,斎藤 正臣,win,PANCRASE,PANCRASE 2012 PROGRESS TOUR,opponent_name_mismatch(org_bout_opponent=斉藤正臣)
+sato-shoko,佐藤 将光,37,2011-10-02,PANCRASE IMPRESSIVE TOUR 10,滝田将也,loss,PANCRASE,PANCRASE 2011 IMPRESSIVE TOUR,opponent_name_mismatch(org_bout_opponent=滝田J太郎)
+sato-shoko,佐藤 将光,40,2011-02-06,PANCRASE 2011 IMPRESSIVE TOUR 【バンタム級次期王座挑戦者査定試合】,西内太志朗,loss,PANCRASE,PANCRASE 2011 IMPRESSIVE TOUR,opponent_name_mismatch(org_bout_opponent=赤井太志朗)
+sato-shoko,佐藤 将光,45,2010-04-04,Pancrase Passion Tour 3 【バンタム級 ネオブラッド・トーナメント1回戦】,島崎巧,win,PANCRASE,PANCRASE 2010 PASSION TOUR,opponent_name_mismatch(org_bout_opponent=島崎太郎)
+goto-joji,後藤 丈治,7,2023-10-01,RIZIN LANDMARK 6,"日比野""エビ中""純也",win,RIZIN,For Japan presents RIZIN LANDMARK 6 in NAGOYA,opponent_name_mismatch(org_bout_opponent=日比野“エビ中”純也)
+goto-joji,後藤 丈治,12,2021-09-20,SHOOTO PROFESSIONAL SHOOTO 2021 VOL. 6,石橋圭太,loss,SHOOTO,PROFESSIONAL SHOOTO 2021 Vol.6 Supported by ONE Championship,opponent_name_mismatch(org_bout_opponent=石橋 佳大)
+goto-joji,後藤 丈治,18,2019-09-23,PANCRASE SAPPORO,道端雅志,win,PANCRASE,PANCRASE札幌大会,opponent_name_mismatch(org_bout_opponent=道端正司)
+goto-joji,後藤 丈治,19,2019-07-21,PANCRASE 307,平田淳一,win,PANCRASE,PANCRASE307,opponent_name_mismatch(org_bout_opponent=平田純一)
+goto-joji,後藤 丈治,20,2019-05-26,PANCRASE 305,山田誠央,win,PANCRASE,PANCRASE305,opponent_name_mismatch(org_bout_opponent=聖王DATE)
+goto-joji,後藤 丈治,24,2017-12-10,PANCRASE 292,渡辺達也,win,PANCRASE,PANCRASE292,opponent_name_mismatch(org_bout_opponent=渡辺竜也)
+goto-joji,後藤 丈治,25,2017-10-22,PANCRASE SAPPORO,桑原優,win,PANCRASE,PANCRASE札幌大会,opponent_name_mismatch(org_bout_opponent=桑原悠)
+goto-joji,後藤 丈治,26,2017-05-14,PANCRASE SAPPORO,竹内直哉,win,PANCRASE,PANCRASE札幌大会,opponent_name_mismatch(org_bout_opponent=竹内直矢)
+goto-joji,後藤 丈治,27,2016-10-16,PANCRASE SAPPORO,飯島重喜,loss,PANCRASE,PANCRASE札幌大会,opponent_name_mismatch(org_bout_opponent=飯島重樹)
+nomura-shunta,野村 駿太,2,2024-09-16,DEEP 121 IMPACT 【DEEPライト級タイトルマッチ】,江藤公洋,win,DEEP,DEEP 121 IMPACT,no_candidate
+nomura-shunta,野村 駿太,5,2023-07-02,DEEP 114 IMPACT,江藤公洋,loss,DEEP,DEEP 114 IMPACT,no_candidate
+yamamoto-arsen,山本 アーセン,4,2024-03-23,RIZIN LANDMARK 9,"柴田""MONKEY""有哉",loss,RIZIN,RIZIN LANDMARK 9 in KOBE,opponent_name_mismatch(org_bout_opponent=柴田“MONKEY”有哉)
+ando-tatsuya,安藤 達也,14,2016-11-12,SHOOTO Pacific Rim Double Championship,ケビン・クルーム,win,SHOOTO,環太平洋ダブルチャンピオンシップ,opponent_name_mismatch(org_bout_opponent=KEVIN THE HARD-HITTING HILLBILLY CROOM)
+kintaro,金太郎,27,2013-04-28,DEEP OSAKA IMPACT 2013,西岡一弥,win,DEEP,DEEP OSAKA IMPACT 2013,no_candidate
+suda-moeri,須田 萌里,13,2022-09-11,DEEP JEWELS 38,村上彩,win,DEEP,DEEP JEWELS 38,no_candidate
+suda-moeri,須田 萌里,15,2022-05-08,DEEP JEWELS 37 【DEEP JEWELSアトム級タイトルマッチ】,大島沙緒里,loss,DEEP,DEEP JEWELS 37,no_candidate
+suda-moeri,須田 萌里,21,2020-12-19,DEEP JEWELS 31,ササキモエ,loss,DEEP,DEEP JEWELS 31,opponent_name_mismatch(org_bout_opponent=※19‐19)
+takeda-koji,武田 光司,16,2019-12-15,DEEP 93 IMPACT 【DEEPライト級タイトルマッチ】,大原樹理,win,DEEP,DEEP 93 IMPACT,opponent_name_mismatch(org_bout_opponent=大原樹里)
+takeda-koji,武田 光司,17,2019-10-22,DEEP 92 IMPACT 【DEEPライト級タイトルマッチ】,大原樹理,win,DEEP,DEEP 92 IMPACT,opponent_name_mismatch(org_bout_opponent=大原樹里)
+takeda-koji,武田 光司,20,2018-08-26,DEEP 85 IMPACT,大原樹理,win,DEEP,DEEP 85 IMPACT,opponent_name_mismatch(org_bout_opponent=大原樹里)
+ueda-mikio,上田 幹雄,4,2023-12-31,RIZIN.45,スダリオ剛,win,RIZIN,にゃんこ大戦争 presents RIZIN.45,opponent_name_mismatch(org_bout_opponent=スダリオ剛)
+ueda-mikio,上田 幹雄,7,2022-04-17,RIZIN.35,高阪剛,loss,RIZIN,湘南美容クリニック presents RIZIN.35,opponent_name_mismatch(org_bout_opponent=髙阪剛)
+sudario-tsuyoshi,スダリオ 剛,12,2020-09-27,RIZIN.24,ディラン・ジェイムス,win,RIZIN,Yogibo presents RIZIN.24,opponent_name_mismatch(org_bout_opponent=ディラン・ジェイムス)
+takenshin,貴賢神,5,2023-10-01,RIZIN LANDMARK 6,"荒東""怪獣キラー""英貴",loss,RIZIN,For Japan presents RIZIN LANDMARK 6 in NAGOYA,opponent_name_mismatch(org_bout_opponent=荒東“怪獣キラー”英貴)
+miyagawa-hyuga,宮川 日向,14,2021-11-21,DEEP OSAKA IMPACT 2021 1st ROUND,井上暉也,loss,DEEP,DEEP OSAKA IMPACT 2021,no_candidate
+ohara-juri,大原樹理,1,2026-03-20,DEEP 130 IMPACT 【DEEPライト級タイトルマッチ】,倉本大悟,nc,DEEP,DEEP 130 IMPACT,no_candidate
+ohara-juri,大原樹理,29,2018-06-30,DEEP 84 IMPACT,岸本篤史,win,DEEP,DEEP 84 IMPACT,no_candidate
+ohara-juri,大原樹理,44,2014-08-23,DEEP 68 IMPACT,岸本泰昭,loss,DEEP,DEEP 68 IMPACT,no_candidate
+kuramoto-daigo,倉本大悟,1,2026-03-20,DEEP 130 IMPACT 【DEEPライト級タイトルマッチ】,大原樹理,nc,DEEP,DEEP 130 IMPACT,no_candidate
+kuramoto-daigo,倉本大悟,6,2024-03-09,DEEP 118 IMPACT,川名TENCHO雄生,win,DEEP,DEEP 118 IMPACT,opponent_name_mismatch(org_bout_opponent=川名雄生)
+kuramoto-daigo,倉本大悟,8,2023-09-18,DEEP 115 IMPACT,涌井忍,win,DEEP,DEEP 115 IMPACT～DEEP VS BLACK COMBAT～,no_candidate
+kuramoto-daigo,倉本大悟,9,2023-03-25,DEEP TOKYO IMPACT 2023 2th ROUND,前田啓,win,DEEP,DEEP TOKYO IMPACT 2023 2nd ROUND,opponent_name_mismatch(org_bout_opponent=前田啓伍)
+shimada-ibuki,嶋田伊吹,0,2026-03-20,DEEP 130 IMPACT 【DEEPウェルター級タイトルマッチ】,ストラッサー起一,win,DEEP,DEEP 130 IMPACT,no_candidate
+shimada-ibuki,嶋田伊吹,1,2025-09-21,DEEP OSAKA IMPACT 2025 4th ROUND 【DEEPウェルター級タイトルマッチ】,角野晃平,win,DEEP,DEEP OSAKA IMPACT 2025 4th ROUND,no_candidate
+shimada-ibuki,嶋田伊吹,4,2024-04-13,DEEP TOKYO IMPACT 2024 2nd ROUND,佐藤洋一郎,loss,DEEP,DEEP TOKYO IMPACT 2024 2nd ROUND,no_candidate
+shimada-ibuki,嶋田伊吹,7,2022-11-23,DEEP TOKYO IMPACT 2022 6th ROUND,小牧勇太,win,DEEP,DEEP TOKYO IMPACT 2022 6th ROUND,opponent_name_mismatch(org_bout_opponent=コマネチゆうた)
+shimada-ibuki,嶋田伊吹,9,2022-05-29,DEEP TOKYO IMPACT 2022 3rd ROUND,岩倉優晟,win,DEEP,DEEP TOKYO IMPACT 2022 3rd ROUND,opponent_name_mismatch(org_bout_opponent=マッスル岩倉)
+sakai-ryo,酒井リョウ,1,2026-03-20,DEEP 130 IMPACT,"荒東""怪獣キラー""英貴",win,DEEP,DEEP 130 IMPACT,opponent_name_mismatch(org_bout_opponent=荒東”怪獣キラー”英貴)
+sakai-ryo,酒井リョウ,5,2024-03-09,DEEP 118 IMPACT 【DEEPメガトン級王座統一戦】,ロッキー・マルティネス,loss,DEEP,DEEP 118 IMPACT,no_candidate
+sakai-ryo,酒井リョウ,6,2023-09-18,DEEP 115 IMPACT DEEP VS BLACK COMBAT,ヘジュン・ヤン,loss,DEEP,DEEP 115 IMPACT～DEEP VS BLACK COMBAT～,opponent_name_mismatch(org_bout_opponent=ヤン・へジュン)
+sakai-ryo,酒井リョウ,10,2021-12-12,DEEP 105 IMPACT,中村啓介,win,DEEP,DEEP 105 IMPACT,opponent_name_mismatch(org_bout_opponent=KENNY中村)
+sakai-ryo,酒井リョウ,17,2017-10-21,DEEP 80 IMPACT,ホン・シン,win,DEEP,DEEP 80 IMPACT,opponent_name_mismatch(org_bout_opponent=ダンカン・ヒロ)
+sakai-ryo,酒井リョウ,19,2016-12-17,DEEP CAGE IMPACT 2016 DEEP VS WSOF GC,渋谷将馬,loss,DEEP,DEEP CAGE IMPACT 2016～DEEP VS WSOF-GC～,opponent_name_mismatch(org_bout_opponent=シビサイ頌真)
+sakai-ryo,酒井リョウ,26,2014-03-22,DEEP 65 IMPACT,水口清吾,loss,DEEP,DEEP 65 IMPACT,opponent_name_mismatch(org_bout_opponent=誠悟)
+sakai-ryo,酒井リョウ,27,2013-12-22,DEEP 64 IMPACT,ガブリエル・ゾボ＝ルベイ,win,DEEP,DEEP 64 IMPACT,opponent_name_mismatch(org_bout_opponent=ガブリエル・ゾボ・ラビー)
+sakai-ryo,酒井リョウ,28,2013-06-15,DEEP CAGE IMPACT 2013,関根“シュレック”秀樹,loss,DEEP,DEEP CAGE IMPACT 2013 in KORAKUEN HALL,no_candidate
+rikiya,力也,13,2023-05-07,DEEP 113 IMPACT,CORO,loss,DEEP,DEEP 113 IMPACT,no_candidate
+rikiya,力也,20,2021-06-19,DEEP TOKYO IMPACT 2021 2nd ROUND,井沢和人,win,DEEP,DEEP TOKYO IMPACT 2nd ROUND,no_candidate
+rikiya,力也,24,2020-07-24,PANCRASE 316,山田星音,loss,PANCRASE,PANCRASE316,opponent_name_mismatch(org_bout_opponent=聖王DATE)
+gomyo-hiroto,五明宏人,9,2024-03-09,DEEP 118 IMPACT,木下カラテ,loss,DEEP,DEEP 118 IMPACT,no_candidate
+gomyo-hiroto,五明宏人,14,2022-08-21,DEEP 109 IMPACT,デオ・レバナ,win,DEEP,DEEP 109 IMPACT,opponent_name_mismatch(org_bout_opponent=ゲオ・レバナ)
+ushiku-juntaro,牛久絢太郎,2,2025-05-05,DEEP 125 IMPACT 【DEEPバンタム級タイトルマッチ】,福田龍彌,loss,DEEP,DEEP 125 IMPACT,no_candidate
+ushiku-juntaro,牛久絢太郎,9,2021-12-12,DEEP 105 IMPACT 【DEEPフェザー級タイトルマッチ】,神田コウヤ,win,DEEP,DEEP 105 IMPACT,no_candidate
+ushiku-juntaro,牛久絢太郎,12,2021-02-21,DEEP 100 IMPACT～20th Anniversary～,中村大介,loss,DEEP,DEEP 100 IMPACT ～20th Anniversary～,no_candidate
+ushiku-juntaro,牛久絢太郎,19,2018-08-05,PANCRASE 298,ユータ&ロック,loss,PANCRASE,PANCRASE298,opponent_name_mismatch(org_bout_opponent=ユータ＆ロック)
+hiramatsu-sho,平松翔,2,2025-03-15,DEEP 124 IMPACT,瀧澤謙太,win,DEEP,DEEP 124 IMPACT,no_candidate
+hiramatsu-sho,平松翔,9,2022-08-28,DEEP OSAKA IMPACT 2022 3rd round,松原慎介,win,DEEP,DEEP OSAKA IMPACT 2022 3rd ROUND,opponent_name_mismatch(org_bout_opponent=MG眞介)
+hiramatsu-sho,平松翔,12,2020-11-01,DEEP 99 IMPACT,"日比野""エビ中""純也",loss,DEEP,DEEP 99 IMPACT,no_candidate
+hiramatsu-sho,平松翔,13,2019-12-15,DEEP 93 IMPACT,小林弘幸,loss,DEEP,DEEP 93 IMPACT,opponent_name_mismatch(org_bout_opponent=小林博幸)
+takizawa-kenta,瀧澤謙太,1,2025-03-15,DEEP 124 IMPACT,平松翔,loss,DEEP,DEEP 124 IMPACT,no_candidate
+takizawa-kenta,瀧澤謙太,22,2016-01-31,PANCRASE 275,アラン“ヒロ”ヤマニハ,loss,PANCRASE,PANCRASE275,"opponent_name_mismatch(org_bout_opponent=アラン“ヒロ""ヤマニハ)"
+nakamura-daisuke,中村大介,11,2022-02-26,DEEP 106 IMPACT,小見川道大,win,DEEP,DEEP 106 IMPACT,no_candidate
+nakamura-daisuke,中村大介,14,2021-02-21,DEEP 100 IMPACT～20th Anniversary～,牛久絢太郎,win,DEEP,DEEP 100 IMPACT ～20th Anniversary～,no_candidate
+nakamura-daisuke,中村大介,15,2020-09-20,DEEP 97 IMPACT,長倉立尚,win,DEEP,DEEP 97 IMPACT,no_candidate
+nakamura-daisuke,中村大介,21,2014-10-26,DEEP 69 IMPACT,佐々木信治,draw,DEEP,DEEP 69 IMPACT,no_candidate
+izumi-takeshi,泉武志,9,2022-09-11,DEEP Tokyo Impact 2022 5th Round,THE☆ナマハゲ,win,DEEP,DEEP TOKYO IMPACT 2022 5th ROUND,no_candidate
+kubota-taito,窪田泰斗,3,2024-11-17,RIZIN LANDMARK 10,"日比野""エビ中""純也",win,RIZIN,RIZIN LANDMARK 10 in NAGOYA,opponent_name_mismatch(org_bout_opponent=日比野“エビ中”純也)
+kubota-taito,窪田泰斗,4,2024-08-31,DEEP SUMMER FESTIVAL 2024,"日比野""エビ中""純也",win,DEEP,DEEPサマーフェスティバル2024 inお台場,opponent_name_mismatch(org_bout_opponent=日比野”エビ中”純也)
+kubota-taito,窪田泰斗,5,2024-05-03,DEEP 119 IMPACT,橋本ユウタ,win,DEEP,DEEP 119 IMPACT,opponent_name_mismatch(org_bout_opponent=橋本優大)
+kubota-taito,窪田泰斗,11,2019-03-09,DEEP 88 IMPACT,横山恭介,loss,DEEP,DEEP 88 IMPACT,opponent_name_mismatch(org_bout_opponent=横山恭典)
+kubota-taito,窪田泰斗,13,2018-04-28,DEEP 83 IMPACT,小川晃弘,win,DEEP,DEEP 83 IMPACT,opponent_name_mismatch(org_bout_opponent=小川顕広)
+kubota-taito,窪田泰斗,14,2017-12-23,DEEP 81 IMPACT,北田敏明,loss,DEEP,DEEP 81 IMPACT,opponent_name_mismatch(org_bout_opponent=北田俊亮)
+kubota-taito,窪田泰斗,15,2017-07-15,DEEP CAGE IMPACT 2017,高野由紀,win,DEEP,DEEP CAGE IMPACT 2017,opponent_name_mismatch(org_bout_opponent=高野優樹)
+kubota-taito,窪田泰斗,17,2016-12-17,DEEP CAGE IMPACT 2016,白田和秀,win,DEEP,DEEP CAGE IMPACT 2016～DEEP VS WSOF-GC～,opponent_name_mismatch(org_bout_opponent=城田和秀)
+kubota-taito,窪田泰斗,19,2016-08-27,DEEP 77 IMPACT,山田誠生,win,DEEP,DEEP 77 IMPACT,opponent_name_mismatch(org_bout_opponent=聖王 DATE)
+kubota-taito,窪田泰斗,20,2016-06-26,DEEP 76 IMPACT,中山圭介,win,DEEP,DEEP 76 IMPACT,opponent_name_mismatch(org_bout_opponent=ソムリエ恵介)
+kubota-taito,窪田泰斗,21,2016-04-23,DEEP CAGE IMPACT 2016,金井拓也,win,DEEP,DEEP CAGE IMPACT 2016,opponent_name_mismatch(org_bout_opponent=金井卓也)
+kubota-taito,窪田泰斗,22,2011-02-06,PANCRASE IMPRESSIVE TOUR 1,辻田大輔,loss,PANCRASE,PANCRASE 2011 IMPRESSIVE TOUR,no_candidate
+strasser-kiichi,ストラッサー起一,0,2026-03-20,DEEP 130 IMPACT 【DEEPウェルター級タイトルマッチ】,嶋田伊吹,loss,DEEP,DEEP 130 IMPACT,no_candidate
+strasser-kiichi,ストラッサー起一,34,2007-02-04,PANCRASE 2007 RISING TOUR,鳥生将大,loss,PANCRASE,PANCRASE 2007 RISING TOUR,no_candidate
+kinoshita-karate,木下カラテ,5,2024-03-09,DEEP 118 IMPACT,五明宏人,win,DEEP,DEEP 118 IMPACT,no_candidate
+kinoshita-karate,木下カラテ,12,2021-10-02,SHOOTO GIG TOKYO Vol.31,飯田建夫,loss,SHOOTO,SHOOTO GIG TOKYO Vol.31 Supported by ONE Championship,opponent_name_mismatch(org_bout_opponent=たてお)
+uoi-fullswing,魚井フルスイング,27,2016-03-27,プロフェッショナル修斗公式戦,玉城優介,win,SHOOTO,BORDER -season8-「The 1st」,no_candidate
+miyabi-shunsuke,雅駿介,2,2025-03-15,DEEP 124 IMPACT,"日比野""エビ中""純也",win,DEEP,DEEP 124 IMPACT,no_candidate
+miyabi-shunsuke,雅駿介,13,2021-07-04,DEEP 102 IMPACT,RYUKI,loss,DEEP,DEEP 102 IMPACT,no_candidate
+kadono-kohei,角野晃平,1,2025-09-21,DEEP OSAKA IMPACT 2025 4th ROUND 【DEEPウェルター級タイトルマッチ】,嶋田伊吹,loss,DEEP,DEEP OSAKA IMPACT 2025 4th ROUND,no_candidate
+kadono-kohei,角野晃平,2,2025-05-05,DEEP 125 IMPACT 【DEEPウェルター級タイトルマッチ】,佐藤洋一郎,win,DEEP,DEEP 125 IMPACT,no_candidate
+kadono-kohei,角野晃平,4,2024-09-22,DEEP OSAKA IMPACT 2024 3RD ROUND,中門虎徹,win,DEEP,DEEP OSAKA IMPACT 2024 3rd ROUND,opponent_name_mismatch(org_bout_opponent=中門虎鉄)
+kadono-kohei,角野晃平,5,2024-03-17,DEEP OSAKA IMPACT 2024 1ST ROUND,鈴木琢仁,win,DEEP,DEEP OSAKA IMPACT 2024 1st ROUND,no_candidate
+kadono-kohei,角野晃平,8,2022-12-18,DEEP OSAKA IMPACT 2022 5TH ROUND,森井翼,win,DEEP,DEEP OSAKA IMPACT 2022 5th ROUND,no_candidate
+fukuda-machi,万智,2,2025-09-07,DEEP JEWELS 50 【DEEP JEWELSストロー級タイトルマッチ】,パク・シウ,win,DEEP,DEEP JEWELS 50,no_candidate
+saito-momoko,百湖,1,2024-11-23,DEEP JEWELS 47,ゆりな,win,DEEP,DEEP JEWELS 47,no_candidate
+saito-momoko,百湖,6,2023-09-10,DEEP JEWELS 42,NØRI,loss,DEEP,DEEP JEWELS 42 ~10th Anniversary～,no_candidate
+nakai-rin,中井りん,1,2024-11-23,DEEP JEWELS 47,"鈴木""BOSS""遥",win,DEEP,DEEP JEWELS 47,opponent_name_mismatch(org_bout_opponent=鈴木”BOSS”遥)
+nakai-rin,中井りん,4,2022-05-08,DEEP JEWELS 37 【DEEP JEWELSフライ級グランプリ 決勝】,杉山しずか,win,DEEP,DEEP JEWELS 37,opponent_name_mismatch(org_bout_opponent=Te-a)
+nakai-rin,中井りん,6,2022-03-12,DEEP JEWELS 36 【DEEP JEWELSフライ級グランプリ 1回戦】,藤田翔子,win,DEEP,DEEP JEWELS 36,no_candidate
+arai-jo,新井丈,10,2022-01-16,プロフェッショナル修斗2022 開幕戦,木内 “SKINNY ZONBIE” 崇雅,win,SHOOTO,PROFESSIONAL SHOOTO 2022 開幕戦,opponent_name_mismatch(org_bout_opponent=木内 SKINNY ZOMBIE 崇雅)
+nakamura-yusaku,中村優作,19,2013-11-24,DEEP CAGE IMPACT 2013 in TDC HALL,"中村""アイアン""浩士",win,DEEP,DEEP CAGE IMPACT 2013 in TDC HALL,opponent_name_mismatch(org_bout_opponent=中村“アイアン”浩士)
+nose-shohei,野瀬翔平,19,2019-11-10,SHOOTO TORAO 25,岡田剛史,win,SHOOTO,闘裸男25,no_candidate
+sasuke,SASUKE,3,2024-05-19,PROFESSIONAL SHOOTO 2024 vol.3 【日中対抗戦 大将戦】,ジョングウェン・パン,win,SHOOTO,【第1部】PROFESSIONAL SHOOTO 2024 Vol.4,no_candidate
+sasuke,SASUKE,6,2023-03-19,PROFESSIONAL SHOOTO 2023 Vol.2 【修斗世界フェザー級チャンピオンシップ】,飯田健夫,win,SHOOTO,PROFESSIONAL SHOOTO 2023 Vol.2,opponent_name_mismatch(org_bout_opponent=たてお)
+sasuke,SASUKE,18,2016-07-17,プロフェッショナル修斗公式戦 【2016年度新人王決定トーナメント準々決勝ライト級】,飯田健夫,draw,SHOOTO,プロフェッショナル修斗公式戦,opponent_name_mismatch(org_bout_opponent=たてお)
+efeviga-yushi,エフェヴィガ雄志,8,2024-05-19,PROFESSIONAL SHOOTO 2024 vol.4 【修斗vsYFU 日中7対7 対抗戦 副将戦】,アーイージアコ・アーケンビエコァ,win,SHOOTO,【第1部】PROFESSIONAL SHOOTO 2024 Vol.4,no_candidate
+murayama-akihiro,村山暁洋,8,2020-12-13,PANCRASE 320,菊入正行,win,PANCRASE,PANCRASE 320,no_candidate
+murayama-akihiro,村山暁洋,17,2015-04-26,PANCRASE 266,"ダニエル・""ニンジャ""・ロバーツ",win,PANCRASE,PANCRASE 266,opponent_name_mismatch(org_bout_opponent=ダニエル“ニンジャ”ロバーツ)
+saiga-yanbo-tatsuya,雑賀ヤン坊達也,15,2019-09-29,PANCRASE 308,トム・サントス,win,PANCRASE,PANCRASE308,no_candidate
+hirata-naoki,平田直樹,10,2021-06-19,DEEP TOKYO IMPACT 2021 2nd ROUND,神田コウヤ,loss,DEEP,DEEP TOKYO IMPACT 2nd ROUND,no_candidate
+hirata-naoki,平田直樹,13,2020-11-01,DEEP 98 IMPACT,星野豊,win,DEEP,DEEP 99 IMPACT,no_candidate
+nakajima-taichi,中島太一,0,2026-05-24,DEEP TOKYO IMPACT 2026 3rd ROUND,"日比野""エビ中""純也",win,DEEP,DEEP TOKYO IMPACT 2026 3rd ROUND,opponent_name_mismatch(org_bout_opponent=日比野”エビ中”純也)
+nakajima-taichi,中島太一,13,2019-04-14,PANCRASE 304 【フェザー級キング・オブ・パンクラス次期挑戦者決定戦】,カイル・アグォン,loss,PANCRASE,PANCRASE304,opponent_name_mismatch(org_bout_opponent=カイル・アグオン)
+nakajima-taichi,中島太一,21,2015-11-28,PANCRASE 272,ダン・イゲ,win,PANCRASE,PANCRASE 272,opponent_name_mismatch(org_bout_opponent=DAN IGE)
+case-johnny,ジョニー・ケース,2,2024-06-09,RIZIN.47,"""ブラックパンサー""ベイノア",loss,RIZIN,Yogibo presents RIZIN.47,opponent_name_mismatch(org_bout_opponent=“ブラックパンサー”ベイノア)
+gustavo-luis,ルイス・グスタボ,8,2019-12-31,RIZIN.20 【RIZINライト級トーナメント準決勝】,パトリッキー・ピットブル,loss,RIZIN,RIZIN.20,opponent_name_mismatch(org_bout_opponent=パトリッキー・“ピットブル”・フレイレ)
+tenya,天弥,3,2025-04-27,PANCRASE 353 【ライト級キング・オブ・パンクラスタイトルマッチ】,雑賀“ヤン坊”達也,loss,PANCRASE,PANCRASE 353,opponent_name_mismatch(org_bout_opponent=雑賀 ヤン坊 達也)
+nishitani-taisei,西谷大成,8,2021-12-12,DEEP 105 IMPACT,鬼山斑猫,loss,DEEP,DEEP 105 IMPACT,opponent_name_mismatch(org_bout_opponent=鬼山班猫)
+shibisai-shoma,シビサイ頌真,5,2021-06-13,RIZIN.28,スダリオ剛,win,RIZIN,Yogibo presents RIZIN.28,opponent_name_mismatch(org_bout_opponent=スダリオ剛)
+kitakata-daichi,北方大地,16,2015-12-23,PANCRASE 大阪大会,石網テツオ,win,PANCRASE,PANCRASE 大阪大会,opponent_name_mismatch(org_bout_opponent=石綱テツオ)
+kaito,海飛,5,2024-03-24,DEEP TOKYO IMPACT 2024,TATSUMI,win,DEEP,DEEP TOKYO IMPACT 2024 1st ROUND,no_candidate
+kaito,海飛,13,2021-07-04,DEEP 102 IMPACT ～20th Anniversary～,佐藤拳駿,loss,DEEP,DEEP 102 IMPACT,no_candidate
+mitsui-shunki,三井俊希,7,2024-06-02,DEEP OSAKA IMPACT 2024 2nd ROUND,田中壱希,win,DEEP,DEEP OSAKA IMPACT 2024 2nd ROUND,opponent_name_mismatch(org_bout_opponent=田中壱季)
+shirakawa-rikuto,白川ダーク陸斗,8,2020-11-01,DEEP 99 IMPACT,オーロラ☆ユーキ,win,DEEP,DEEP 99 IMPACT,no_candidate
+shirakawa-rikuto,白川ダーク陸斗,18,2017-07-15,DEEP CAGE IMPACT2017,小川顕広,win,DEEP,DEEP CAGE IMPACT 2017,no_candidate
+kitaoka-satoru,北岡悟,6,2022-11-12,DEEP 110 IMPACT,江藤公洋,loss,DEEP,DEEP 110 IMPACT,opponent_name_mismatch(org_bout_opponent=)
+kitaoka-satoru,北岡悟,9,2021-02-21,DEEP 100 IMPACT～20th Anniversary～,大原樹理,loss,DEEP,DEEP 100 IMPACT ～20th Anniversary～,opponent_name_mismatch(org_bout_opponent=大原樹里)
+kitaoka-satoru,北岡悟,61,2004-07-25,PANCRASE 2004 BRAVE TOUR,カート・ペレグリーノ,win,PANCRASE,PANCRASE 2004 BRAVE TOUR,opponent_name_mismatch(org_bout_opponent=カート・ぺリグリーノ)
+park-siwoo,パク・シウ,2,2025-09-07,DEEP JEWELS 50 【DEEP JEWELSストロー級タイトルマッチ】,万智,loss,DEEP,DEEP JEWELS 50,no_candidate
+miyake-kisa,三宅輝砂,7,2023-11-12,PANCRASE 338,桜井大康,win,PANCRASE,PANCRASE 338,opponent_name_mismatch(org_bout_opponent=櫻井裕康)
+miyake-kisa,三宅輝砂,13,2021-05-30,PANCRASE 321 【ネオブラッド・トーナメント フェザー級 準決勝】,為房光太郎,win,PANCRASE,PANCRASE 321,ambiguous_multiple_bouts
+aoi-jin,青井人,5,2024-03-09,DEEP 118 IMPACT 【DEEPフェザー級タイトルマッチ】,神田コウヤ,win,DEEP,DEEP 118 IMPACT,no_candidate
+hamada-takumi,濱田巧,4,2024-03-31,PANCRASE 341,山﨑聖哉,win,PANCRASE,PANCRASE 341,opponent_name_mismatch(org_bout_opponent=山崎聖哉)
+kim-kyungpyo,キム・ギョンピョ,11,2018-06-17,プロフェッショナル修斗 in OSAKA 2018,出花崇太郎,win,SHOOTO,プロフェッショナル修斗 in OSAKA 2018,opponent_name_mismatch(org_bout_opponent=キャプテン ☆ アフリカ)
+aimoto-kazuki,相本宗輝,3,2024-12-08,DEEP TOKYO IMPACT 2024 6th ROUND,前薗渓,win,DEEP,DEEP TOKYO IMPACT 2024 6th ROUND,opponent_name_mismatch(org_bout_opponent=前園渓)
+aimoto-kazuki,相本宗輝,6,2024-03-24,DEEP TOKYO IMPACT 2024 1st ROUND,牧野滉風,win,DEEP,DEEP TOKYO IMPACT 2024 1st ROUND,no_candidate
+aimoto-kazuki,相本宗輝,7,2023-12-10,DEEP TOKYO IMPACT 2023 7th ROUND,藤岡陸,win,DEEP,DEEP TOKYO IMPACT 2023 7th ROUND,no_candidate
+aimoto-kazuki,相本宗輝,8,2023-09-10,DEEP TOKYO IMPACT 2023 5th ROUND,森俊樹,win,DEEP,DEEP TOKYO IMPACT 2023 5th ROUND,no_candidate
+aimoto-kazuki,相本宗輝,9,2023-05-28,DEEP TOKYO IMPACT 2023 4th ROUND,佐藤勇駿,win,DEEP,DEEP TOKYO IMPACT 2023 4th ROUND,no_candidate
+tatsumitsu-wada,和田竜光,15,2018-04-28,DEEP 83 IMPACT 【DEEPフライ級タイトルマッチ】,神龍誠,win,DEEP,DEEP 83 IMPACT,opponent_name_mismatch(org_bout_opponent=高橋 誠)
+tatsumitsu-wada,和田竜光,17,2016-12-29,RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント 2nd ROUND,カイ・カラ＝フランス,win,RIZIN,RIZIN.3 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 2ND ROUND,opponent_name_mismatch(org_bout_opponent=カイ・カラフランス)
+tatsumitsu-wada,和田竜光,18,2016-06-26,DEEP 76 IMPACT 【DEEPフライ級王座決定戦】,"柴田""MONKEY""有哉",win,DEEP,DEEP 76 IMPACT,opponent_name_mismatch(org_bout_opponent=柴田“MONKEY”有哉)
+tatsumitsu-wada,和田竜光,34,2010-10-24,DEEP 50 IMPACT 〜10年目の奇跡〜,"中村""アイアン""浩士",loss,DEEP,DEEP 50 IMPACT,opponent_name_mismatch(org_bout_opponent=中村“アイアン”浩士)
+ayaka-miura,三浦彩佳,17,2017-10-08,PANCRASE 290,ビビアン・アラウジョ,loss,PANCRASE,PANCRASE290,opponent_name_mismatch(org_bout_opponent=ヴィヴィアニ・アロージョ)
+seiichiro-ito,伊藤盛一郎,1,2024-07-21,PANCRASE 346 【フライ級キング・オブ・パンクラス王座決定戦】,ムハンマド・サロハイディノフ,win,PANCRASE,PANCRASE 346,opponent_name_mismatch(org_bout_opponent=ムハンマド・サロヒディノフ)
+koya-kanda,神田コウヤ,6,2024-03-09,DEEP 118 IMPACT 【DEEPフェザー級タイトルマッチ】,青井人,loss,DEEP,DEEP 118 IMPACT,no_candidate
+koya-kanda,神田コウヤ,12,2021-12-12,DEEP 105 IMPACT 【DEEPフェザー級タイトルマッチ】,牛久絢太郎,loss,DEEP,DEEP 105 IMPACT,no_candidate
+koya-kanda,神田コウヤ,13,2021-06-19,DEEP TOKYO IMPACT 2021 2nd ROUND,平田直樹,win,DEEP,DEEP TOKYO IMPACT 2nd ROUND,no_candidate
+koya-kanda,神田コウヤ,20,2019-05-12,DEEP 89 IMPACT,加藤貴大,loss,DEEP,DEEP 89 IMPACT,no_candidate
+enju-kenta,猿寿健太,3,2025-03-15,DEEP 124 IMPACT,本田良介,win,DEEP,DEEP 124 IMPACT,no_candidate
+enju-kenta,猿寿健太,7,2023-12-10,DEEP 117 IMPACT,安谷屋智弘,win,DEEP,DEEP 117 IMPACT,no_candidate
+nii-suguru,新居すぐる,19,2017-02-05,PANCRASE 284,カイル・アグォン,loss,PANCRASE,PANCRASE284,opponent_name_mismatch(org_bout_opponent=カイル・アグオン)
+nii-suguru,新居すぐる,21,2016-06-12,PANCRASE 278,川那子祐輔,loss,PANCRASE,PANCRASE278,no_candidate
+nii-suguru,新居すぐる,22,2016-03-13,PANCRASE 276,渡慶次幸平,win,PANCRASE,PANCRASE276,no_candidate
+nii-suguru,新居すぐる,23,2015-12-06,PANCRASE札幌大会2015,葛西達,win,PANCRASE,PANCRASE札幌大会2015,no_candidate
+nii-suguru,新居すぐる,24,2015-08-29,DEEP CAGE IMPACT 2015,オーロラ☆ユーキ,loss,DEEP,DEEP CAGE IMPACT 2015,no_candidate
+matsushima-koyomi,松嶋こよみ,12,2017-12-10,PANCRASE 292,カイル・アグォン,win,PANCRASE,PANCRASE292,opponent_name_mismatch(org_bout_opponent=カイル・アグオン)
+ameyama-seiya,飴山聖也,4,2025-03-30,RIZIN.50,高岡宏樹,loss,RIZIN,RIZIN.50,opponent_name_mismatch(org_bout_opponent=高岡宏気)
+uno-caol,宇野薫,2,2023-11-19,PROFESSIONAL SHOOTO 2023 Vol.7,高木オーディン祥多,loss,SHOOTO,PROFESSIONAL SHOOTO 2023 Vol.7,opponent_name_mismatch(org_bout_opponent=オーディン)
+ishizuka-koichi,石司晃一,4,2022-11-12,DEEP 110 IMPACT 【DEEPバンタム級暫定タイトルマッチ】,CORO,win,DEEP,DEEP 110 IMPACT,no_candidate
+ishizuka-koichi,石司晃一,10,2019-06-29,DEEP 90 IMPACT,白川陸斗,loss,DEEP,DEEP 90 IMPACT,opponent_name_mismatch(org_bout_opponent=白川”Dark”陸斗)
+ishizuka-koichi,石司晃一,14,2017-12-23,DEEP 81 IMPACT,ソ・ナクジュン,win,DEEP,DEEP 81 IMPACT,opponent_name_mismatch(org_bout_opponent=ソン・ナクジュン)
+ishizuka-koichi,石司晃一,16,2017-05-13,DEEP CAGE IMPACT 2017 【DEEPバンタム級タイトルマッチ】,大塚隆史,loss,DEEP,DEEP CAGE IMPACT 2017,no_candidate
+sugiyama-kohei,杉山廣平,3,2024-03-24,DEEP TOKYO IMPACT 2024 1st ROUND,風我,win,DEEP,DEEP TOKYO IMPACT 2024 1st ROUND,no_candidate
+sugiyama-kohei,杉山廣平,5,2023-04-16,DEEP NAGOYA IMPACT 2023 公武堂ファイト,原虎徹,win,DEEP,DEEP NAGOYA IMPACT 2023公武堂ファイト2nd ROUND,no_candidate
+sugiyama-kohei,杉山廣平,6,2022-12-18,DEEP OSAKA IMPACT 2022 5th ROUND,"柴田""MONKEY""有哉",loss,DEEP,DEEP OSAKA IMPACT 2022 5th ROUND,opponent_name_mismatch(org_bout_opponent=柴田“MONKEY”有哉)
+sugiyama-kohei,杉山廣平,17,2018-07-01,PANCRASE 297 【第24回ネオブラッドトーナメント準決勝戦】,赤崎清志朗,win,PANCRASE,PANCRASE297,opponent_name_mismatch(org_bout_opponent=赤﨑清志朗)
+isao,ISAO,6,2019-10-20,PANCRASE 309 【フェザー級キング・オブ・パンクラスタイトルマッチ】,カイル・アグォン,win,PANCRASE,PANCRASE309,opponent_name_mismatch(org_bout_opponent=カイル・アグオン)
+isao,ISAO,10,2017-08-20,PANCRASE 289,カイル・アグォン,loss,PANCRASE,PANCRASE289,opponent_name_mismatch(org_bout_opponent=カイル・アグオン)
+isao,ISAO,12,2016-12-18,PANCRASE 283,高谷裕之,win,PANCRASE,PANCRASE283,opponent_name_mismatch(org_bout_opponent=髙谷裕之)
+isao,ISAO,16,2015-08-09,PANCRASE 269,ウィル・チョープ,win,PANCRASE,PANCRASE 269,opponent_name_mismatch(org_bout_opponent=ウィル“THE KILL”チョープ)
+isao,ISAO,21,2013-09-29,PANCRASE 252 【ライト級キング・オブ・パンクラスタイトルマッチ】,"高橋""Bancho""良明",win,PANCRASE,PANCRASE 252,opponent_name_mismatch(org_bout_opponent=高橋“Bancho”良明)
+isao,ISAO,29,2010-11-03,PANCRASE 2010 PASSION TOUR,アルトゥール・ウマハノフ,win,PANCRASE,PANCRASE 2010 PASSION TOUR,opponent_name_mismatch(org_bout_opponent=ウマハノフ・アルトゥール)
+coro,CORO,4,2023-05-07,DEEP 113 IMPACT,力也,win,DEEP,DEEP 113 IMPACT,no_candidate
+coro,CORO,5,2022-11-12,DEEP 110 IMPACT 【DEEPバンタム級暫定タイトルマッチ】,石司晃一,loss,DEEP,DEEP 110 IMPACT,no_candidate
+coro,CORO,6,2022-05-08,DEEP 107 IMPACT 【DEEPバンタム級暫定王座決定戦】,DJ.taiki,win,DEEP,DEEP 107 IMPACT,no_candidate
+coro,CORO,25,2015-11-28,PANCRASE 272,エドワード・トムズ,loss,PANCRASE,PANCRASE 272,opponent_name_mismatch(org_bout_opponent=EDWARD THOMMES)
+takeuchi-ryugo,竹内龍吾,5,2024-09-22,DEEP OSAKA IMPACT 2024 3th Round,KENNY 中村・ザ・天才チンパンジー,win,DEEP,DEEP OSAKA IMPACT 2024 3rd ROUND,no_candidate
+uchida-takeru,内田タケル,2,2023-09-24,プロフェッショナル修斗 2023 vol.6,大竹洋,win,SHOOTO,PROFESSIONAL SHOOTO 2023 Vol.6,opponent_name_mismatch(org_bout_opponent=大竹 陽)
+uchida-takeru,内田タケル,5,2022-03-21,プロフェッショナル修斗 2022 vol.2,佐々木勇人,win,SHOOTO,PROFESSIONAL SHOOTO 2022 Vol.2,opponent_name_mismatch(org_bout_opponent=佐々木 駿友)
+uchida-takeru,内田タケル,6,2021-09-20,プロフェッショナル修斗 2021 vol.6,大竹洋,win,SHOOTO,PROFESSIONAL SHOOTO 2021 Vol.6 Supported by ONE Championship,opponent_name_mismatch(org_bout_opponent=大竹 陽)
+miyaguchi-ryuho,宮口龍鳳,1,2025-11-22,修斗 PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA,石原“夜叉坊”暉仁,win,SHOOTO,PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA,opponent_name_mismatch(org_bout_opponent=石原 夜叉坊)
+honda-ryosuke,本田良介,2,2025-03-15,DEEP 124 IMPACT,KENTA,loss,DEEP,DEEP 124 IMPACT,no_candidate
+unconfirmed-shooto-1875,砂辺 光久,43,2002-11-30,PANCRASE 2002 SPIRIT TOUR,渡辺匡宏,win,PANCRASE,PANCRASE 2002 SPIRIT TOUR,opponent_name_mismatch(org_bout_opponent=渡邊将広)
+okada-arashi,岡田 嵐士,8,2024-03-02,修斗Live!Tokyo,中村悠磨,win,SHOOTO,修斗Live!Tokyo,no_candidate
+nakaike-takehiro,中池 武寛,9,2019-01-27,SHOOTO 30th ANNIVERSARY TOUR 開幕戦,中山陽心,win,SHOOTO,SHOOTO 30th ANNIVERSARY TOUR 開幕戦,no_candidate
+susung,チョウ スソン,5,2021-07-25,PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship,村山大介,loss,SHOOTO,PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship,no_candidate
+nakajima-riku,中島 陸,2,2025-11-22,PROFESSIONAL SHOOTO 2025 vol.10 【2025年度新人王決定トーナメント準決勝戦】,斉藤大樹,win,SHOOTO,PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA,opponent_name_mismatch(org_bout_opponent=齋藤 大樹)
+nakajima-riku,中島 陸,4,2024-12-29,プロフェッショナル修斗 2024 Fainal,青井心二,draw,SHOOTO,PROFESSIONAL SHOOTO 2024 FINAL in OSAKA,opponent_name_mismatch(org_bout_opponent=青井 心ニ)
+iwasaki-taiga,岩﨑 大河,8,2021-11-06,PROFESSIONAL SHOOTO 2021 vol.7,清水博之,win,SHOOTO,PROFESSIONAL SHOOTO 2021 Vol.7 Supported by ONE Championship,opponent_name_mismatch(org_bout_opponent=清水 洸志)
+iwasaki-taiga,岩﨑 大河,9,2021-09-20,PROFESSIONAL SHOOTO 2021 vol.6,今市亮太,win,SHOOTO,PROFESSIONAL SHOOTO 2021 Vol.6 Supported by ONE Championship,opponent_name_mismatch(org_bout_opponent=今市 凌太)
+iwasaki-taiga,岩﨑 大河,11,2020-10-25,PANCRASE 319,川名誠,win,PANCRASE,PANCRASE 319,opponent_name_mismatch(org_bout_opponent=川和真)
+aono-hikaru,青野 ひかる,9,2021-06-20,DEEP JEWELS 33 【DEEP JEWELSアトム級GP 決勝】,大島沙緒里,loss,DEEP,DEEP JEWELS 33,opponent_name_mismatch(org_bout_opponent=にっせー)
+noa-tokumoto,徳本 望愛,4,2024-08-03,COLORS Produce by SHOOTO Vol.3,片山智絵,loss,SHOOTO,COLORS Produce by SHOOTO Vol.3,no_candidate
+noa-tokumoto,徳本 望愛,5,2024-04-14,THE SHOOTO OKINAWA vol.10,高田双葉,win,SHOOTO,THE SHOOTO OKINAWA vol.10,no_candidate
+sugimoto-megumi,杉本 恵,19,2019-01-27,SHOOTO 30th ANNIVERSARY TOUR 開幕戦,木越めぐみ,win,SHOOTO,SHOOTO 30th ANNIVERSARY TOUR 開幕戦,no_candidate
+mio-shiyama,嶋屋 澪,7,2024-08-03,COLORS Produce by SHOOTO Vol.3,植田咲,win,SHOOTO,COLORS Produce by SHOOTO Vol.3,no_candidate
+watanabe-ayaka,渡辺 彩華,6,2020-12-19,Deep Jewels 31,神野あかり,win,DEEP,DEEP JEWELS 31,no_candidate
+aya-murakami,村上 彩,8,2022-12-11,DEEP 111,NISSE にっせー,win,DEEP,DEEP 111 IMPACT,opponent_name_mismatch(org_bout_opponent=にっせー)
+aya-murakami,村上 彩,9,2022-09-11,DEEP JEWELS 38,須田萌里,loss,DEEP,DEEP JEWELS 38,no_candidate
+katayama-tomoe,片山 智絵,3,2024-08-03,COLORS Produce by SHOOTO Vol.3,徳本望愛,win,SHOOTO,COLORS Produce by SHOOTO Vol.3,no_candidate
+kurobe-mina,黒部 三奈,2,2022-01-16,プロフェッショナル修斗 2022 開幕戦,宝珠山桃華,win,SHOOTO,PROFESSIONAL SHOOTO 2022 開幕戦,opponent_name_mismatch(org_bout_opponent=宝珠山 桃花)
+sarami,SARAMI,24,2015-02-21,DEEP JEWELS 7 【DEEP JEWELSフェザー級GP2015 1回戦】,吉田正子,win,DEEP,DEEP JEWELS 7,no_candidate
+sarami,SARAMI,30,2013-08-31,DEEP JEWELS 旗揚げ戦,吉田正子,loss,DEEP,DEEP JEWELS ~旗揚げ戦~,no_candidate
+fujino-emi,藤野 恵実,15,2018-08-05,PANCRASE 298 【ストロー級クィーン・オブ・パンクラス決定戦】,ビビアン・アラウジョ,loss,PANCRASE,PANCRASE298,opponent_name_mismatch(org_bout_opponent=ヴィヴィアニ・アロージョ)
+fujino-emi,藤野 恵実,30,2013-08-31,DEEP JEWELS～旗揚げ戦～,ソン・ヒョギョン,win,DEEP,DEEP JEWELS ~旗揚げ戦~,no_candidate
+salt,ソルト,3,2024-05-19,PROFESSIONAL SHOOTO 2024 vol.4 【修斗vsYFU 日中7対7 対抗戦 三将戦】,ハイライ・ウサモ,loss,SHOOTO,【第1部】PROFESSIONAL SHOOTO 2024 Vol.4,no_candidate
+sugiyama,杉山しずか,4,2022-05-08,DEEP JEWELS 37 【DEEP JEWELSフライ級グランプリ 決勝】,中井りん,loss,DEEP,DEEP JEWELS 37,opponent_name_mismatch(org_bout_opponent=栗山葵)
+sugiyama,杉山しずか,5,2022-03-12,DEEP JEWELS 36 【DEEP JEWELSフライ級グランプリ 1回戦】,ミッコ・ニルバーナ,win,DEEP,DEEP JEWELS 36,no_candidate
+sugiyama,杉山しずか,6,2021-02-21,DEEP 100 IMPACT～20th Anniversary～,栗山葵,win,DEEP,DEEP 100 IMPACT ～20th Anniversary～,opponent_name_mismatch(org_bout_opponent=[1R TKO] ※パウンド)
+sugiyama,杉山しずか,17,2014-05-18,DEEP JEWELS 4 【DEEP JEWELS 初代ミドル級王者決定戦】,端貴代,loss,DEEP,DEEP JEWELS 4,no_candidate
