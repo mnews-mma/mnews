@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "kurobe-kazusa",
+    "wins": 6,
+    "losses": 1,
+    "draws": 1,
+    "histLen": 7,
+    "ncCount": 0,
+    "expectedLen": 8,
+    "diff": -1,
+    "isEmptyHistoryKnownCase": false
+  },
+  {
+    "slug": "lee-kaiwen",
+    "wins": 16,
+    "losses": 8,
+    "draws": 0,
+    "histLen": 23,
+    "ncCount": 0,
+    "expectedLen": 24,
+    "diff": -1,
+    "isEmptyHistoryKnownCase": false
+  },
+  {
+    "slug": "nakamura-daisuke",
+    "wins": 35,
+    "losses": 29,
+    "draws": 1,
+    "histLen": 64,
+    "ncCount": 0,
+    "expectedLen": 65,
+    "diff": -1,
+    "isEmptyHistoryKnownCase": false
+  },
+  {
+    "slug": "patricky-pitbull",
+    "wins": 25,
+    "losses": 16,
+    "draws": 0,
+    "histLen": 42,
+    "ncCount": 0,
+    "expectedLen": 41,
+    "diff": 1,
+    "isEmptyHistoryKnownCase": false
+  },
+  {
+    "slug": "sato-shoko",
+    "wins": 38,
+    "losses": 17,
+    "draws": 2,
+    "histLen": 57,
+    "ncCount": 1,
+    "expectedLen": 58,
+    "diff": -1,
+    "isEmptyHistoryKnownCase": false
+  },
+  {
+    "slug": "strasser-kiichi",
+    "wins": 21,
+    "losses": 13,
+    "draws": 2,
+    "histLen": 35,
+    "ncCount": 1,
+    "expectedLen": 37,
+    "diff": -2,
+    "isEmptyHistoryKnownCase": false
+  },
+  {
+    "slug": "sugiyama",
+    "wins": 23,
+    "losses": 8,
+    "draws": 1,
+    "histLen": 33,
+    "ncCount": 0,
+    "expectedLen": 32,
+    "diff": 1,
+    "isEmptyHistoryKnownCase": false
+  },
+  {
+    "slug": "sumimura-ryuichiro",
+    "wins": 27,
+    "losses": 8,
+    "draws": 1,
+    "histLen": 0,
+    "ncCount": 0,
+    "expectedLen": 36,
+    "diff": -36,
+    "isEmptyHistoryKnownCase": true
+  },
+  {
+    "slug": "tokoro-hideo",
+    "wins": 36,
+    "losses": 34,
+    "draws": 1,
+    "histLen": 63,
+    "ncCount": 0,
+    "expectedLen": 71,
+    "diff": -8,
+    "isEmptyHistoryKnownCase": false
+  },
+  {
+    "slug": "uno-caol",
+    "wins": 35,
+    "losses": 23,
+    "draws": 5,
+    "histLen": 64,
+    "ncCount": 0,
+    "expectedLen": 63,
+    "diff": 1,
+    "isEmptyHistoryKnownCase": false
+  }
+]

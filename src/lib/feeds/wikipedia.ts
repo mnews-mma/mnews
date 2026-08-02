@@ -449,10 +449,16 @@ function extractMmaSection(wikitext: string): string {
 // 丸ごと欠落する)。中括弧の深さを数えながら手前で走査する。
 function extractFightContBlocks(scope: string): string[] {
   const marker = "{{Fight-cont|";
+  // テンプレート名の大文字小文字表記ゆれ({{fight-cont|等)を許容する(北岡悟の記事で
+  // 実例あり: DEEP 124 IMPACT・山本颯志戦の行だけ小文字の{{fight-cont|になっており、
+  // 大文字小文字を区別する検索では抽出漏れになっていた)。marker検索位置だけ
+  // 大小無視で探し、実際のスライスは元のscope(大小そのまま)から行う。
+  const lowerScope = scope.toLowerCase();
+  const lowerMarker = marker.toLowerCase();
   const blocks: string[] = [];
   let searchFrom = 0;
   while (true) {
-    const start = scope.indexOf(marker, searchFrom);
+    const start = lowerScope.indexOf(lowerMarker, searchFrom);
     if (start === -1) break;
     let depth = 1; // marker自体の "{{" ぶん
     let i = start + 2; // "{{" の直後から走査(marker内の"Fight-cont|"はdepthに無関係)
