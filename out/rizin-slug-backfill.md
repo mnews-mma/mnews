@@ -1,44 +1,30 @@
 # RIZIN選手slug再解決バックフィル結果
 
-生成日時: 2026-08-01T13:35:26.937Z
+生成日時: 2026-08-02T00:35:57.623Z
 
 正規化ロジックはscripts/lib/fighterNameBackfill.ts(backfill-shooto-pancrase-slugs.tsと共通)を使用。
 fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場合のみ解決。既存の解決済みslugは上書きしない。
 
 - bout×コーナー総数: 2008
-- 既に解決済みだった件数: 908
-- 今回新規解決(コーナー単位): 8
-- 今回新規解決(ユニークbout件数): 8
-- 依然未解決(延べ): 1092
-- 依然未解決(ユニーク生表記数): 607
-- winnerSlug再計算で埋めた件数: 3
+- 既に解決済みだった件数: 917
+- 今回新規解決(コーナー単位): 0
+- 今回新規解決(ユニークbout件数): 0
+- 依然未解決(延べ): 1091
+- 依然未解決(ユニーク生表記数): 606
+- winnerSlug再計算で埋めた件数: 0
 
 ## 影響を受けた選手一覧(選手名・解決bout数・4団体通算の変化)
 
-| slug | 新規解決bout数 | 4団体通算(変更前) | 4団体通算(変更後) |
-|---|---|---|---|
-| ashida-takahiro | 8 | 8-5-1 | 11-9-1 |
+(該当なし)
 
 ## 新規解決bout明細
 
 | 大会 | 日付 | コーナー | 生表記 | 解決slug |
 |---|---|---|---|---|
-| BELLATOR JAPAN | 2019-12-29 | B | 芦田崇宏 | ashida-takahiro |
-| Yogibo presents RIZIN.24 | 2020-09-27 | A | 芦田崇宏 | ashida-takahiro |
-| Yogibo presents RIZIN.31 | 2021-10-24 | B | 芦田崇宏 | ashida-takahiro |
-| 湘南美容クリニック presents RIZIN.35 | 2022-04-17 | A | 芦田崇宏 | ashida-takahiro |
-| 湘南美容クリニック presents RIZIN.39 | 2022-10-23 | A | 芦田崇宏 | ashida-takahiro |
-| RIZIN.42 | 2023-05-06 | A | 芦田崇宏 | ashida-takahiro |
-| RIZIN LANDMARK 8 in SAGA | 2024-02-24 | A | 芦田崇宏 | ashida-takahiro |
-| 超RIZIN.4 真夏の喧嘩祭り | 2025-07-27 | A | 芦田崇宏 | ashida-takahiro |
 
 ## winnerSlug再計算明細(fighterA/BSlugは解決済みだがwinnerSlugがnullのまま残っていたbout)
 
-| 大会 | 日付 | コーナー | 勝者名 | 解決slug |
-|---|---|---|---|---|
-| Yogibo presents RIZIN.24 | 2020-09-27 | A | 芦田崇宏 | ashida-takahiro |
-| 湘南美容クリニック presents RIZIN.39 | 2022-10-23 | A | 芦田崇宏 | ashida-takahiro |
-| 超RIZIN.4 真夏の喧嘩祭り | 2025-07-27 | A | 芦田崇宏 | ashida-takahiro |
+(該当なし)
 
 ## 編集距離1の不一致候補(参考、機械列挙のみ・同一人物判定はしていない)
 
@@ -386,7 +372,6 @@ fighters.tsの全選手(hidden含む)のnameJa/aliasesと完全一致した場�
 - リンジー・ヴァンザント (1件)
 - C.B.ダラウェイ (1件)
 - シモン・ビヨン (1件)
-- パトリック・ミックス (1件)
 - ダニエル・サラス (1件)
 - 関根"シュレック"秀樹 (1件)
 - ファルコ・ネト (1件)
