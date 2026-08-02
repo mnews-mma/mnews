@@ -436,6 +436,8 @@ export const EVENT_RESULTS: EventResult[] = [
         round: "3R 4:25",
       },
       {
+        // rizinRecords.jsonへは意図的に未追加(PR #352突合)。理由はscripts/
+        // backfill-rizin-slugs.tsのRIZIN_EVENTRESULTS_NON_PROFESSIONAL_BOUTS参照。
         weightClass: "54.5kg契約 キックボクシング",
         fighterA: "芝宏二郎",
         fighterB: "遥心",
@@ -468,6 +470,8 @@ export const EVENT_RESULTS: EventResult[] = [
         round: "2R",
       },
       {
+        // rizinRecords.jsonへは意図的に未追加(PR #352突合)。理由はscripts/
+        // backfill-rizin-slugs.tsのRIZIN_EVENTRESULTS_NON_PROFESSIONAL_BOUTS参照。
         weightClass: "57.0kg契約（アマチュアMMAルール）",
         fighterA: "田中仁",
         fighterB: "健太朗",
