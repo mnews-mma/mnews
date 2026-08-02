@@ -296,3 +296,54 @@ history配列に1件(山本颯志戦)を追加する8行のみ。
 - **`kurobe-kazusa`(黒部和沙)**: Pattern B(38件)には含まれない(Pattern A対象)ため、
   本PRのスコープ外として据え置く。同種の日付タイプミス問題は将来的にPR #360の
   `\s*`対応と組み合わせて別途検討可能。
+
+## 8. 最終reconciliation(#365・#366マージ後、指示書R-9再検証)
+
+`scripts/audit-fighterrecords-tally-vs-history.ts`(本PR#361で追加)と
+`scripts/verify-header-table-row-mismatch-postfix.ts`(#363で追加・#365でNC考慮式に
+修正)は、行1(Wikipedia)のNC考慮チェック(`wins+losses+draws+ncCount` vs
+`history.length`)という点でほぼ重複することが#365で判明した。相違点は対象母集団のみ
+(前者は`data/fighterRecords.json`の全357件を無条件に対象にする一方、後者は
+`FIGHTERS`配列由来359件について実際のページ表示ロジック(`suppressNoRecordRow`)を
+反映する)。後者が上位互換のため、`scripts/audit-fighterrecords-tally-vs-history.ts`は
+削除し(PR #366)、以後のNC考慮チェックは`verify-header-table-row-mismatch-postfix.ts`に
+一本化した([提案コメント](https://github.com/mnews-mma/mnews/pull/361#issuecomment-5156179631))。
+
+### 「9件」と「10件」の食い違いの原因確定
+
+本PR(#361)の結論(上記4-3、5)は「38件中29件がNCで説明・残り9件」。一方#365は当初
+(本PRのkitaoka-satoru修正を取り込む前のmain上のデータで)「残り10件」と報告していた。
+mainに#361・#365・#366が揃った状態で`verify-header-table-row-mismatch-postfix.ts`を
+再実行して突き合わせた結果、**原因は集計元(history配列 vs multiOrgBoutTable)の違いでは
+なく、(1)本PRのkitaoka-satoru修正の反映有無、(2)対象母集団の違い、の2点だった**:
+
+1. `kitaoka-satoru`: 本PRの修正前は両スクリプトとも不一致として検出。修正後はどちらでも
+   解消。#365の「10件」は本PR未マージ(=修正未反映)のmainで計測したため1件多かった。
+2. `sato-shoko`: 本PR冒頭(§0)で「Pattern B(38件)には含まれない」と訂正済みの選手。
+   `verify-header-table-row-mismatch-postfix.ts`は#359のPattern B定義(38件固定リスト)に
+   縛られず母集団を毎回ライブ計算するため、NC考慮式で新たに検出されるようになった
+   (総数が57=57と偶然一致するため旧式では検出不能だった。原因は§6で特定済み・
+   記事infobox側の停滞で修正不要)。
+
+上記2点が相殺し(kitaoka-satoru解消: -1、sato-shoko新規検出: +1)、mainマージ後に
+`verify-header-table-row-mismatch-postfix.ts`を再実行すると**9件**になる(本PRの
+「9件」という数字と一致するが、中身は本PRの分類9件から`kitaoka-satoru`を除いた8件+
+`sato-shoko`1件で、偶然の一致であって同一集合ではない)。
+
+### 確定した残件リスト(9件、いずれも要対応なし)
+
+| slug | 状態 |
+|---|---|
+| sumimura-ryuichiro | 既知の正常状態(集計値のみで記事に対戦表自体が無い)。修正不要 |
+| tokoro-hideo | 既存トラック対象(`src/lib/fighterRecordIntegrity.ts`のコメントに佐藤将光と並ぶ保留中ケースと明記済み)。本PRスコープ外 |
+| patricky-pitbull | 既存トラック対象(PR #306で個別調査済み)。本PRスコープ外 |
+| nakamura-daisuke | data/deepRecords.json側の方が新しい。記事側が未反映なだけ。修正不要 |
+| strasser-kiichi | 一次ソースで欠落試合を特定できず。保留 |
+| lee-kaiwen | 一次ソースで欠落試合を特定できず。保留 |
+| uno-caol | 記事infobox側が更新遅れ。data/fighterRecords.json側が正しい。修正不要 |
+| sugiyama | 記事infobox側が更新遅れ。data/fighterRecords.json側が正しい。修正不要 |
+| sato-shoko | 記事infobox側のwinsがNC再判定後も更新されず1多いまま(§6で特定済み)。修正不要 |
+
+9件全件、原因特定済みかつ「修正不要」または「既存の別トラックでスコープ外」に分類済みで、
+新規の未解決課題は無い。`kurobe-kazusa`はPattern A(4団体合算側で表示されるため本チェックの
+対象外)の既知の別問題として引き続き対象外(§6参照)。
