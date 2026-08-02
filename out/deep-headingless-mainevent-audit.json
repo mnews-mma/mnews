@@ -1,0 +1,2349 @@
+{
+  "findings": [
+    {
+      "eventName": "DEEP PROTECT IMPACT 2007 in OSAKA",
+      "date": "2007-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-protect-impact-in-osaka/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 日本対韓国対抗戦3対3 65.3Kg契約 5分3R|△前田吉朗（パンクラス稲垣組/パンクラス初代フェザー級王者）|ドロー 判定0-0|△キム・ジョンマン（韓国/CMA KOREA）| |▼セミファイナル 日本対韓国対抗戦3対3 76Kg契約 5分3R|○池本誠知（総合格闘技スタジオSTYLE）|一本 1R2分56秒 ※ヒールホールド|●ソ・ドゥウォン（韓国/CMA KOREA）| ",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP PROTECT IMPACT 2007 in OSAKA",
+      "date": "2007-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-protect-impact-in-osaka/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 日本対韓国対抗戦3対3 76Kg契約 5分3R|○池本誠知（総合格闘技スタジオSTYLE）|一本 1R2分56秒 ※ヒールホールド|●ソ・ドゥウォン（韓国/CMA KOREA）| |▼第11試合 日本対韓国対抗戦3対3 83Kg契約 5分3R|○村田龍一（吉田道場）|一本 1R3分38秒 ※腕ひしぎ十字固め|●キム・ホジン（韓国/gumi jung sim guan）| |▼第12",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 50 IMPACT",
+      "date": "2010-10-24",
+      "sourceUrl": "https://www.deep2001.com/deep-50-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第14試合） DEEPライト級タイトルマッチ 70.3kg以下契約 5分3R|○菊野克紀（ALLIANCE/王者）|判定4-1|●帯谷信弘（木口道場/挑戦者）|※菊野が初防衛に成功。| |▼セミファイナル（第13試合） DEEPウェルター級タイトルマッチ 77.1kg以下契約 5分3R |○白井祐矢（Team M.A.D./王者）|判定5-0|●岩瀬茂俊（T-BLOOD/挑戦者）|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 50 IMPACT",
+      "date": "2010-10-24",
+      "sourceUrl": "https://www.deep2001.com/deep-50-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第13試合） DEEPウェルター級タイトルマッチ 77.1kg以下契約 5分3R |○白井祐矢（Team M.A.D./王者）|判定5-0|●岩瀬茂俊（T-BLOOD/挑戦者）|※白井が初防衛に成功。| |▼第12試合 62kg以下契約 5分3R|○今成正和（Team-ROKEN/DEEPバンタム級王者）|判定2-0|●DJ.taiki（フリー）| |▼第11試合 70.3kg以下",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 52 IMPACT",
+      "date": "2011-02-25",
+      "sourceUrl": "https://www.deep2001.com/deep-52-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第11試合） DEEPメガトン級（無差別）王者決定戦 5分3R|○田澤和久（THUG LIFE香和）|一本 2R54秒 ※チョークスリーパー|●桜木裕司（掣圏会館）|※田澤が第2代王座に就く| |▼セミファイナル（第10試合） 83.9kg以下 5分3R|○桜井隆多（R-BLOOD）|一本 3R3分48秒 ※腕ひしぎ十字固め|●中西良行（Team M.A.D./DEEPライトヘビー",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 52 IMPACT",
+      "date": "2011-02-25",
+      "sourceUrl": "https://www.deep2001.com/deep-52-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第10試合） 83.9kg以下 5分3R|○桜井隆多（R-BLOOD）|一本 3R3分48秒 ※腕ひしぎ十字固め|●中西良行（Team M.A.D./DEEPライトヘビー級王者）| |▼第9試合 62kg以下 5分3R|○中村“アイアン”浩士（東京イエローマンズ）|判定3－0|●今成正和（Team-ROKEN/DEEPバンタム級王者）| |▼第8試合 65.8kg以下 5分2R|○",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 53 IMPACT",
+      "date": "2011-04-22",
+      "sourceUrl": "https://www.deep2001.com/deep-53-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第9試合） 小路晃引退試合 83.9kg以下契約 5分3R|○三崎和雄（フリー）|TKO 2R1分13秒 ※パウンド|●小路 晃（小路道場）| |▼セミファイナル（第8試合） 70.3kg以下契約 5分3R|○北岡 悟（LOTUS/初代戦極ライト級王者）|判定3-0|●中尾受太郎（フリー/初代DEEPウェルター級王者）| |▼第7試合 70.3kg以下契約 5分3R|○光岡映二（フ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 53 IMPACT",
+      "date": "2011-04-22",
+      "sourceUrl": "https://www.deep2001.com/deep-53-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第8試合） 70.3kg以下契約 5分3R|○北岡 悟（LOTUS/初代戦極ライト級王者）|判定3-0|●中尾受太郎（フリー/初代DEEPウェルター級王者）| |▼第7試合 70.3kg以下契約 5分3R|○光岡映二（フリー）|TKO 1R3分50秒 ※パウンド|●イ・ジュンギョン（韓国/CMA KOREA/永登浦争心館）| |▼第6試合 62kg以下契約 5分2R|○和田竜光（吉",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 54 IMPACT",
+      "date": "2011-06-24",
+      "sourceUrl": "https://www.deep2001.com/deep-54-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第13試合） ライトヘビー級タイトルマッチ 5分3R|○中西良行（Team M.A.D/王者）|KO 1R1分7秒 ※左ハイキック|●ベルナール・アッカ（コートジボワール/フリー/挑戦者）|※中西が初防衛に成功。| |▼セミファイナル（第12試合） 第2代バンタム級王者決定戦 5分3R|○大塚隆史（AACC/第3代DEEPフェザー級王者）|判定5-0|●中村“アイアン”浩士（東京イ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 54 IMPACT",
+      "date": "2011-06-24",
+      "sourceUrl": "https://www.deep2001.com/deep-54-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第12試合） 第2代バンタム級王者決定戦 5分3R|○大塚隆史（AACC/第3代DEEPフェザー級王者）|判定5-0|●中村“アイアン”浩士（東京イエローマンズ）|※大塚が第2代王座に就く。| |▼第11試合 フェザー級 5分3R|○横田一則（GRABAKA/第3代DEEPライト級王者）|判定3-0|●昇侍（KIBAマーシャルアーツクラブ/初代ライト級キング・オブ・パンクラシスト）",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 55 IMPACT",
+      "date": "2011-08-26",
+      "sourceUrl": "https://www.deep2001.com/deep-55-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第10試合） DEEPライト級（70.3kg以下）タイトルマッチ 5分3R|○廣田瑞人（CAVE/第2代SRCライト級王者/挑戦者）|判定5－0|●菊野克紀（ALLIANCE/王者）|※廣田が第6代王座に就く。菊野は2度目の防衛に失敗。| |▼セミファイナル（第9試合） DEEPフェザー級（65.8kg以下）タイトルマッチ 5分3R|○松本晃市郎（今田道場/王者）|TKO 2R2分",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 55 IMPACT",
+      "date": "2011-08-26",
+      "sourceUrl": "https://www.deep2001.com/deep-55-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第9試合） DEEPフェザー級（65.8kg以下）タイトルマッチ 5分3R|○松本晃市郎（今田道場/王者）|TKO 2R2分48秒 ※セコンドからのタオル投入|●長倉立尚（吉田道場/挑戦者）|※松本が初防衛に成功。| |▼第8試合 DEEPメガトン（無差別級）タイトルマッチ 5分3R|○どすこい羅頭魔勢（＝らずまぜ/フリー/挑戦者）|一本 1R1分29秒 ※アームロック|●田澤和久",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 56 IMPACT",
+      "date": "2011-12-16",
+      "sourceUrl": "https://www.deep2001.com/deep-56-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第10試合） DEEPウェルター級タイトルマッチ 5分3R|○白井祐矢（Team M.A.D/王者）|判定5－0|●奥野“轟天”泰舗（おくの“ごうてん”たいすけ/CAVE/挑戦者）|※白井が2度目の防衛に成功。| |▼セミファイナル（第9試合）フェザー級 5分3R|○チェ・ドゥホ（韓国/CMA KOREA）|TKO 1R1分33秒 ※レフェリーストップ|●石田光洋（T-BLOOD）",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 56 IMPACT",
+      "date": "2011-12-16",
+      "sourceUrl": "https://www.deep2001.com/deep-56-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第9試合）フェザー級 5分3R|○チェ・ドゥホ（韓国/CMA KOREA）|TKO 1R1分33秒 ※レフェリーストップ|●石田光洋（T-BLOOD）| |▼第8試合 バンタム級 5分2R|○中村“アイアン”浩士（東京イエローマンズ）|判定3－0|●赤尾セイジ（NEX）| |▼第7試合 バンタム級 5分2R|○中村優作（総合格闘技スタジオSTYLE）|判定3－0|●原田ヨシキ（マッ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 57 IMPACT",
+      "date": "2012-02-18",
+      "sourceUrl": "https://www.deep2001.com/deep-57-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第14試合） DEEPライト級タイトルマッチ 5分3R|○廣田瑞人（CAVE/王者）|判定5－0|●池本誠知（総合格闘技スタジオSTYLE/挑戦者）|※廣田が初防衛に成功。| |▼セミファイナル（第13試合） DEEPメガトン（無差別）級タイトルマッチ 5分3R|○レヴァン・ラズマゼ（グルジア/フリー/王者）※どすこい羅頭魔勢から改名|一本 1R3分16秒 ※腕ひしぎ十字固め|●野",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 57 IMPACT",
+      "date": "2012-02-18",
+      "sourceUrl": "https://www.deep2001.com/deep-57-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第13試合） DEEPメガトン（無差別）級タイトルマッチ 5分3R|○レヴァン・ラズマゼ（グルジア/フリー/王者）※どすこい羅頭魔勢から改名|一本 1R3分16秒 ※腕ひしぎ十字固め|●野地竜太（TEAM GARO/CMA KPWヘビー級王者/挑戦者）|※ラズマゼが初防衛に成功。| |▼第12試合 DEEPフェザー級王座決定戦 5分3R|○横田一則（フリー）|判定5－0|●門脇英基",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 58 IMPACT",
+      "date": "2012-06-15",
+      "sourceUrl": "https://www.deep2001.com/deep-58-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第11試合） DEEPライト級 5分3R|○北岡 悟（LOTUS/初代戦極ライト級王者）|判定3－0 |●菊野克紀（ALLIANCE/第5代DEEPライト級王者）| |▼セミファイナル（第10試合） 第7代DEEPライト級王者決定戦 5分3R|○中村大介（U-FILE CAMP）|判定5－0 |●岸本泰昭（総合格闘技道場コブラ会）|※中村が第7代王者に| |▼第9試合 DEEPフェ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 58 IMPACT",
+      "date": "2012-06-15",
+      "sourceUrl": "https://www.deep2001.com/deep-58-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第10試合） 第7代DEEPライト級王者決定戦 5分3R|○中村大介（U-FILE CAMP）|判定5－0 |●岸本泰昭（総合格闘技道場コブラ会）|※中村が第7代王者に| |▼第9試合 DEEPフェザー級 5分3R|○長倉立尚（吉田道場/フューチャーキングトーナメント2008ライト級優勝）|TKO 1R3分32秒 ※レフェリーストップ |●門脇英基（和術慧舟會東京本部/第7代修斗世",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 59 IMPACT",
+      "date": "2012-08-18",
+      "sourceUrl": "https://www.deep2001.com/deep-59-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第11試合） DEEPバンタム級タイトルマッチ 5分3R|○前田吉朗（パンクラス稲垣組/王者）|一本 3R2分32秒 ※チョークスリーパー|●和田竜光（吉田道場/挑戦者）|※前田が初防衛に成功。| |▼セミファイナル（第10試合） DEEPバンタム級 5分3R|○今成正和（Team-ROKEN/初代同級王者）|一本 1R1分1秒 ※アンクルホールド|●大石真丈（木口道場MMA/第2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 59 IMPACT",
+      "date": "2012-08-18",
+      "sourceUrl": "https://www.deep2001.com/deep-59-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第10試合） DEEPバンタム級 5分3R|○今成正和（Team-ROKEN/初代同級王者）|一本 1R1分1秒 ※アンクルホールド|●大石真丈（木口道場MMA/第2代修斗世界フェザー級王者）| |▼第9試合 DEEPバンタム級 5分3R|○DJ.taiki（フリー）|KO 1R3分20秒 ※左フック|●赤尾セイジ（NEX）| |▼第8試合 DEEPバンタム級 5分2R|○中村優作",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HALEO IMPACT ～三崎和雄引退セレモニー～",
+      "date": "2012-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-haleo-impact-%ef%bd%9e%e4%b8%89%e5%b4%8e%e5%92%8c%e9%9b%84%e5%bc%95%e9%80%80%e3%82%bb%e3%83%ac%e3%83%a2%e3%83%8b%e3%83%bc%ef%bd%9e/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第5試合） フェザー級（65.8kg以下） 5分2R|○宮田和幸（BRAVE）|一本 1R2分46秒 ※フロントチョーク|●キム・ジェウン（韓国/CMA KOREA/EXTREEM COMBAT）| |▼セミファイナル（第4試合） バンタム級（62kg以下） ヒジあり特別ルール 5分3R|○金原正徳（パラエストラ八王子） |TKO 1R2分45秒 ※パンチ|●トム・マッケンナ（アメ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HALEO IMPACT ～三崎和雄引退セレモニー～",
+      "date": "2012-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-haleo-impact-%ef%bd%9e%e4%b8%89%e5%b4%8e%e5%92%8c%e9%9b%84%e5%bc%95%e9%80%80%e3%82%bb%e3%83%ac%e3%83%a2%e3%83%8b%e3%83%bc%ef%bd%9e/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第4試合） バンタム級（62kg以下） ヒジあり特別ルール 5分3R|○金原正徳（パラエストラ八王子） |TKO 1R2分45秒 ※パンチ|●トム・マッケンナ（アメリカ/ルイスビルMMA）| |▼第3試合 ミドル級（83.9kg以下） 5分3R|○桜井隆多（R-BLOOD/元DEEPミドル級王者）|一本 3R46秒 ※肩固め|●金原弘光（U.K.R.金原道場）| |▼第2試合 ライ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 61 IMPACT",
+      "date": "2013-02-16",
+      "sourceUrl": "https://www.deep2001.com/deep-61-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第10試合） DEEPフェザー級タイトルマッチ 5分3R|○横田一則（フリー/王者）|判定5－0 |●昇侍（KIBAマーシャルアーツクラブ/挑戦者）|※横田が初防衛に成功 | |▼セミファイナル（第9試合） 第6代DEEPミドル級王者決定戦 5分3R |○中村和裕(吉田道場）|判定5－0|●RYO（ランズエンド・ZERO-ONE MAX）|※中村が第6代DEEPミドル級王者に | ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 61 IMPACT",
+      "date": "2013-02-16",
+      "sourceUrl": "https://www.deep2001.com/deep-61-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第9試合） 第6代DEEPミドル級王者決定戦 5分3R |○中村和裕(吉田道場）|判定5－0|●RYO（ランズエンド・ZERO-ONE MAX）|※中村が第6代DEEPミドル級王者に | |▼第8試合 第4代DEEPメガトン級（無差別）王者決定戦 5分2R|○長谷川 賢（キングダム・エルガイツ）|判定5－0|●誠悟（TEAM東京CLUTCH）|※長谷川が第4代DEEPメガトン級王者",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 62 IMPACT",
+      "date": "2013-04-26",
+      "sourceUrl": "https://www.deep2001.com/deep-62-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第12試合） DEEPライト級タイトルマッチ 5分3R|○北岡 悟（LOTUS/挑戦者）|判定5－0|●中村大介（U-FILE CAMP/DEEPライト級王者）|※北岡が第8代王座に就く。中村は初防衛に失敗。| |▼セミファイナル（第11試合） DEEPバンタム級（62kg以下）タイトルマッチ|○DJ.taiki（フリー/挑戦者）|TKO 2R1分41秒 ※左フック|●前田吉朗（パ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 62 IMPACT",
+      "date": "2013-04-26",
+      "sourceUrl": "https://www.deep2001.com/deep-62-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第11試合） DEEPバンタム級（62kg以下）タイトルマッチ|○DJ.taiki（フリー/挑戦者）|TKO 2R1分41秒 ※左フック|●前田吉朗（パンクラス稲垣組/王者）|※DJが第4代王座に就く。前田は2度目の防衛に失敗。| |▼第10試合 DEEPウェルター級（77.1kg以下）タイトルマッチ 5分3R|○ダン・ホーンバックル（アメリカ/ATT/挑戦者）|判定5－0|●白井",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2013",
+      "date": "2013-04-28",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2013/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第11試合） 池本誠知引退試合 75.0kg以下契約 5分3R ※ヒジありルール|○長南 亮（TRIBE TOKYO MMA/元DEEPミドル級王者）|判定3－0|●池本誠知（総合格闘技スタジオSTYLE/元DEEPウェルター級王者）| |▼セミファイナル（第10試合） ウェルター級 5分3R|○田村ヒビキ(パラエストラ大阪)|判定2－0|●住村竜市朗（トリニティーサンズ）| |▼",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2013",
+      "date": "2013-04-28",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2013/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第10試合） ウェルター級 5分3R|○田村ヒビキ(パラエストラ大阪)|判定2－0|●住村竜市朗（トリニティーサンズ）| |▼第9試合 フライ級 5分3R|○柴田“MONKEY”有哉（総合格闘技スタジオSTYLE）|一本 1R3分25秒 ※三角絞め|●加藤直之（SPLASH）| |▼第8試合 フェザー級 5分3R|○鍵山雄介（総合格闘技道場コブラ会）|TKO 3R3分25秒|●ジプ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2013 in KORAKUEN HALL",
+      "date": "2013-06-15",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2013-in-korakuen-hall/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第12試合） フェザー級 5分3R|○チェ・ドゥホ（韓国/CMA KOREA）|TKO 2R2分33秒 ※レフェリーストップ|●昇侍（KIBAマーシャルアーツクラブ）| |▼セミファイナル（第11試合） ミドル級 5分3R|○桜井隆多（R-BLOOD）|TKO 1R1分4秒 ※レフェリーストップ|●桜木裕司（掣圏会館）| |▼第10試合 ライト級 5分3R|○菊野克紀（ALLIAN",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2013 in KORAKUEN HALL",
+      "date": "2013-06-15",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2013-in-korakuen-hall/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第11試合） ミドル級 5分3R|○桜井隆多（R-BLOOD）|TKO 1R1分4秒 ※レフェリーストップ|●桜木裕司（掣圏会館）| |▼第10試合 ライト級 5分3R|○菊野克紀（ALLIANCE）|KO 1R1分7秒 ※左フック→踏みつけ|●中尾受太郎（フリー）| |▼第9試合 フェザー級 5分3R|○横田一則（フリー/第5代DEEPフェザー級王者）|一本 1R4分2秒 ※アー",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 63 IMPACT",
+      "date": "2013-08-25",
+      "sourceUrl": "https://www.deep2001.com/deep-63-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第11試合） 戦闘竜引退試合 無差別級 5分2R|○中村和裕（チームカズ/DEEPミドル級王者）|KO 1R4分42秒 ※スタンドのパンチ|●戦闘竜（ファイティング・ドラゴン）| |▼セミファイナル（第10試合） DEEPフライ級タイトルマッチ 5分3R|○和田竜光（吉田道場/挑戦者）|判定4－1|●元谷友貴（CBインパクト/王者）|※和田が第2代王座に就く。元谷は初防衛に失敗。|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 63 IMPACT",
+      "date": "2013-08-25",
+      "sourceUrl": "https://www.deep2001.com/deep-63-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第10試合） DEEPフライ級タイトルマッチ 5分3R|○和田竜光（吉田道場/挑戦者）|判定4－1|●元谷友貴（CBインパクト/王者）|※和田が第2代王座に就く。元谷は初防衛に失敗。| |▼第9試合 DEEPメガトン級タイトルマッチ 5分3R|○長谷川賢（キングダムエルガイツ/王者）|TKO 1R4分20秒 ※レフェリーストップ|●藤沼弘秀（NEXUSENSE/挑戦者）|※長谷川が",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS ~旗揚げ戦~",
+      "date": "2013-08-31",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-%e6%97%97%e6%8f%9a%e3%81%92%e6%88%a6/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSライト級 5分2R|○藤野恵実（和術慧舟會GODS）|一本 2R3分34秒 ※チョークスリーパー|●ソン・ヒョギョン（韓国/ROAD FC）| |▼第11試合 DEEP JWEWLS57.5kg以下 3分3R キックルール|○AZUMA（y-park/NJKF BONITA BOXEOフェザー級王者）|判定2-0 ※30-29、30-30、30-29|●キム・",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "TRIBE TOKYO FIGHT～長南亮引退興行～",
+      "date": "2013-10-20",
+      "sourceUrl": "https://www.deep2001.com/tribe-tokyo-fight%ef%bd%9e%e9%95%b7%e5%8d%97%e4%ba%ae%e5%bc%95%e9%80%80%e8%88%88%e8%a1%8c%ef%bd%9e/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第9試合） DEEPウェルター級タイトルマッチ 5分3R|○長南 亮（TRIBE TOKYO M.M.A./挑戦者）|判定5－0|●ダン・ホーンバックル（アメリカ/アメリカン・トップチーム/王者）|※長南が第6代王座に就く、ダンは初防衛に失敗| |▼セミファイナル TTFルール（ヒジあり） フライ級 5分3R|△前田吉郎（パンクラス稲垣組/第3代DEEPバンタム級王者、初代フェザー",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "TRIBE TOKYO FIGHT～長南亮引退興行～",
+      "date": "2013-10-20",
+      "sourceUrl": "https://www.deep2001.com/tribe-tokyo-fight%ef%bd%9e%e9%95%b7%e5%8d%97%e4%ba%ae%e5%bc%95%e9%80%80%e8%88%88%e8%a1%8c%ef%bd%9e/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル TTFルール（ヒジあり） フライ級 5分3R|△前田吉郎（パンクラス稲垣組/第3代DEEPバンタム級王者、初代フェザー級キング・オブ・パンクラス王者）|ドロー 判定1－0 ※29－28、28－28、28－28|△マモル（シューティングジム横浜/初代修斗世界フェザー＆バンタム級王者、初代KOTC世界ジュニアフライ級王者）| |▼第7試合 TTFルール（ヒジあり） フライ級（56.7k",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP JEWELS 2",
+      "date": "2013-11-04",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-2/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第2代DEEP JEWELSライト級王座決定GP1回戦 5分2R|○富松恵美（パラエストラ松戸）|判定3－0|●長野美香（CORE）|※富松が決勝戦に進出| |▼第7試合 第2代DEEP JEWELSライト級王座決定GP1回戦 5分2R|○魅津希（空手道白心会）|判定3－0|●藤野恵実（和術慧舟會GODS）|※魅津希が決勝戦に進出| |▼第6試合 DEEP JEWELSフェザー級タ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2013 in TDC HALL",
+      "date": "2013-11-24",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2013-in-tdc-hall/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフェザー級次期王座挑戦者決定戦 5分3R|○津田勝憲（総合格闘技津田沼道場）|KO 1R19秒 ※右フック|●長倉立尚（吉田道場）|※津田が次期挑戦権を獲得。| |▼セミファイナル 88kg以下契約 5分3R|○中村和裕（チームカズ/DEEPミドル級王者）|一本 3R2分49秒 ※肩固め|●桜木裕司（掣圏会館）| |▼第12試合 バンタム級 5分3R|○大塚隆史（AACC）",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2013 in TDC HALL",
+      "date": "2013-11-24",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2013-in-tdc-hall/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 88kg以下契約 5分3R|○中村和裕（チームカズ/DEEPミドル級王者）|一本 3R2分49秒 ※肩固め|●桜木裕司（掣圏会館）| |▼第12試合 バンタム級 5分3R|○大塚隆史（AACC）|判定3－0|●北田俊亮（パラエストラ千葉）| |▼第11試合 フェザー級 5分3R|○横田一則（フリー/DEEPフェザー級王者）|TKO 2R4分 ※レフェリーストップ|●ソン・ドゥリ（韓",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 64 IMPACT",
+      "date": "2013-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-64-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第16試合） フライ級 5分3R|○和田竜光（吉田道場/DEEPフライ級王者）|判定3－0|●越智晴雄（パラエストラ愛媛/修斗世界バンタム級5位）| |▼セミファイナル（第15試合） フライ級 5分3R|○元谷友貴（CBインパクト/前DEEPフライ級王者）|判定3－0|●清水清隆（TRIBE TOKYO MMA/スーパーフライ級キング・オブ・パンクラス）| |▼第14試合 ライト級",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 64 IMPACT",
+      "date": "2013-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-64-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第15試合） フライ級 5分3R|○元谷友貴（CBインパクト/前DEEPフライ級王者）|判定3－0|●清水清隆（TRIBE TOKYO MMA/スーパーフライ級キング・オブ・パンクラス）| |▼第14試合 ライト級 5分3R|ー中村K太郎（和術慧舟會K太郎道場）|ノーコンテスト|ーイ・グァンヒ（CMA KOREA）| |▼第13試合 76kg以下契約 5分2R|○濱村 健（Hone",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 3",
+      "date": "2014-02-16",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-3/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELS特別ルール 5分3R|○富松恵美（パラエストラ松戸/DEEP JEWELSライト級暫定王者）|反則勝ち|●魅津希（みずき/空手道白心会）| |▼第5試合 DEEP JEWELS無差別級 5分2R|○杉山しずか（禅道会）|TKO 1R1分15秒 ※ドクターストップ|●佐藤瑞穂（頂柔術）| |▼第4試合 DEEP JEWELSフェザー級 5分2R|○スギロック（和",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 65 IMPACT",
+      "date": "2014-03-22",
+      "sourceUrl": "https://www.deep2001.com/deep-65-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第18試合） DEEPメガトン級（無差別）タイトルマッチ 5分3R|○長谷川賢（キングダムエルガイツ/DEEPメガトン級王者）|判定4－1|●中村和裕（チームカズ/DEEPミドル級王者/挑戦者）|※長谷川が2度目の防衛に成功。| |▼セミファイナル（第17試合） フライ級 5分3R|○元谷友貴（CBインパクト/DEEPフライ級王者）|判定3－0|●今成正和（Team-ROKEN/元",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 65 IMPACT",
+      "date": "2014-03-22",
+      "sourceUrl": "https://www.deep2001.com/deep-65-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第17試合） フライ級 5分3R|○元谷友貴（CBインパクト/DEEPフライ級王者）|判定3－0|●今成正和（Team-ROKEN/元DEEPフェザー＆バンタム級王者）| |▼第16試合 DEEPライト級 5分3R|○吉田善行（Team Curran）|判定3－0|●岩瀬茂俊（T-BLOOD）| |▼第15試合 DEEPバンタム級 5分3R|○中村“アイアン”浩士（カルペディエムブ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 66 IMPACT",
+      "date": "2014-04-29",
+      "sourceUrl": "https://www.deep2001.com/deep-66-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第10試合） DEEPライト級タイトルマッチ 5分3R|○北岡 悟（LOTUS/IMPACT GYM/王者）|判定5－0|●宮崎直人（総合格闘技津田沼道場/挑戦者）|※北岡が初防衛に成功。| |▼セミファイナル（第9試合） DEEPフェザー級タイトルマッチ 5分3R|○横田一則（フリー/王者）|判定5－0|●津田勝憲（総合格闘技津田沼道場/挑戦者）|※横田が2度目の防衛に成功。| ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 66 IMPACT",
+      "date": "2014-04-29",
+      "sourceUrl": "https://www.deep2001.com/deep-66-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第9試合） DEEPフェザー級タイトルマッチ 5分3R|○横田一則（フリー/王者）|判定5－0|●津田勝憲（総合格闘技津田沼道場/挑戦者）|※横田が2度目の防衛に成功。| |▼第8試合 DEEPライトヘビー級タイトルマッチ 5分3R|○中西良行（TRIBE TOKYO M.M.A/王者）|TKO 2R58秒 ※レフェリーストップ|●井上俊介（シュクラン/挑戦者）|※中西が3度目の防",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 4",
+      "date": "2014-05-18",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-4/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELS初代ミドル級王者決定戦 5分3R|○端 貴代（和術慧舟會AKZA/第3代スマックガール・ミドル級王者）|TKO 3R4分20秒 ※レフェリーストップ|●杉山しずか（禅道会）|※端が初代王座に就く。| |▼第8試合 DEEP JEWELSフェザー級 5分2R|○石岡沙織（禅道会）|一本 1R4分44秒 ※腕ひしぎ十字固め|●SARAMI（クラブバーバリアン）| ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 67 IMPACT",
+      "date": "2014-06-22",
+      "sourceUrl": "https://www.deep2001.com/deep-67-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第8試合） フライ級 5分3R|○元谷友貴（CB IMPACT/初代DEEPフライ級王者）|一本 1R4分59秒 ※腕ひしぎ十字固め|●前田吉朗（パンクラス大阪稲垣組/第3代DEEPバンタム級王者、初代パンクラス・フェザー級王者）| |▼セミファイナル（第7試合） フライ級 5分3R|○越智晴雄（パラエストラ愛媛/修斗世界バンタム級4位）|TKO 2R51秒 ※ドクターストップ|●",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 67 IMPACT",
+      "date": "2014-06-22",
+      "sourceUrl": "https://www.deep2001.com/deep-67-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第7試合） フライ級 5分3R|○越智晴雄（パラエストラ愛媛/修斗世界バンタム級4位）|TKO 2R51秒 ※ドクターストップ|●今成正和（Team-ROKEN/初代DEEPバンタム＆フェザー級王者）| |▼第6試合 ウェルター級 5分3R|○中村K太郎（K太郎道場/初代修斗環太平洋ミドル級王者）|TKO 1R4分13秒 ※マウントパンチ|●KEI山宮（GRABAKA/初代パンクラ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2014",
+      "date": "2014-07-21",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2014%ef%bd%9e%e3%83%9f%e3%82%b9%e3%82%bf%e3%83%bc%e3%83%a1%e3%82%ac%e3%83%88%e3%83%b3%e8%aa%a0%e6%82%9f%e5%bc%95%e9%80%80%e8%88%88%e8%a1%8c%ef%bd%9e/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第13試合） 誠悟引退試合 無差別級 5分3R|○中村和裕（チームカズ/DEEPミドル級王者）|TKO 2R3分25秒 ※セコンドからのタオル投入|●誠悟（TEAM 東京 CLUTCH）| |▼セミファイナル（第12試合） DEEPウェルター級王座次期挑戦者決定戦 5分3R|○白井祐矢（TRIBE TOKYO M.M.A）|判定2－1|●岡野裕城（マッハ道場）| |▼第11試合 ラ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2014",
+      "date": "2014-07-21",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2014%ef%bd%9e%e3%83%9f%e3%82%b9%e3%82%bf%e3%83%bc%e3%83%a1%e3%82%ac%e3%83%88%e3%83%b3%e8%aa%a0%e6%82%9f%e5%bc%95%e9%80%80%e8%88%88%e8%a1%8c%ef%bd%9e/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第12試合） DEEPウェルター級王座次期挑戦者決定戦 5分3R|○白井祐矢（TRIBE TOKYO M.M.A）|判定2－1|●岡野裕城（マッハ道場）| |▼第11試合 ライトヘビー級 5分3R|○井上俊介（フリー）|TKO 1R1分45秒 ※レフェリーストップ|●アン･チャンリュル（韓国/CMA KOREA/釜山スパルタ）| |▼第10試合 バンタム級 5分2R|○石司晃一 （",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 5",
+      "date": "2014-08-09",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-5/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSライト級タイトルマッチ 5分3R|○魅津希（空手道白心会/挑戦者）|一本 3R1分33秒 ※腕ひしぎ十字固め|●富松恵美（パラエストラ松戸/暫定王者）|※魅津希が第2代王座に就く。富松は初防衛に失敗。| |▼第7試合 DEEP JEWELSフェザー級 5分2R|○浜崎朱加（AACC/元JEWELSライト級王者）|TKO 1R4分1秒 ※レフェリーストップ|●ス",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 68 IMPACT",
+      "date": "2014-08-23",
+      "sourceUrl": "https://www.deep2001.com/deep-68-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第11試合） DEEPフライ級タイトルマッチ 5分3R|○元谷友貴（CB IMPACT/挑戦者）|一本 2R4分15秒 ※チョークスリーパー|●和田竜光（吉田道場/第2代DEEPフライ級王者）|※元谷が第3代王座に就く。和田は初防衛に失敗。| |▼セミファイナル（第10試合） DEEPフェザー級 5分3R|○横田一則（フリー/DEEPフェザー級王者）|一本 1R2分38秒 ※アーム",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 68 IMPACT",
+      "date": "2014-08-23",
+      "sourceUrl": "https://www.deep2001.com/deep-68-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第10試合） DEEPフェザー級 5分3R|○横田一則（フリー/DEEPフェザー級王者）|一本 1R2分38秒 ※アームロック|●鍵山雄介（総合格闘技道場コブラ会）| |▼第9試合 DEEPフェザー級 5分3R|○小見川道大（吉田道場/戦極フェザー級グランプリ準優勝、S-cup2013 65kg日本トーナメント準優勝）|一本 1R1分02秒 ※アームバー|●ピーター・シペタ（アメリ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 6",
+      "date": "2014-11-03",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-6/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSフェザー級タイトルマッチ 5分3R|○ハム・ソヒ（韓国/CMA KOREA/DEEP JEWELSフェザー級王者）|一本 2R2分43秒 ※アームバー|●石岡沙織（禅道会/挑戦者）|※ソヒが2度目の防衛に成功。| |▼第6試合 DEEP JEWELSライト級 5分2R|○藤野恵実（和術慧舟會GODS）|判定3－0|●三浦彩佳（TRIBE TOKYO M.M.A",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 12",
+      "date": "2016-06-05",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-12/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第4代DEEP JEWELSアトム級王者決定戦 5分3R※肘あり|○スギロック（和術慧舟會AKZA/元DEEP JEWELSフェザー級王者）|判定3－0|●富松恵美（パラエストラ松戸/元DEEP JEWELSライト級暫定王者）|※スギロックが新王座に就く。| |▼第7試合 DEEP JEWELSアトム級 5分3R※肘あり|○石岡沙織（禅道会）|一本 1R 4分39秒 ※腕ひしぎ十字",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2017",
+      "date": "2017-05-13",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2017-2/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級（61.2kg以下）タイトルマッチ 5分3R |〇大塚隆史（T-grip Tokyo/王者） |判定3－2|●石司晃一 (フリー/挑戦者）|※大塚が2度目の防衛に成功。| |▼セミファイナル DEEPストロー級（52.2kg以下）5分3R|〇越智晴雄（パラエストラ愛媛） |判定3－0|●ランボー宏輔（パラエストラ松戸）| |▼第12試合 DEEPミドル級（83.9",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2017",
+      "date": "2017-05-13",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2017-2/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPストロー級（52.2kg以下）5分3R|〇越智晴雄（パラエストラ愛媛） |判定3－0|●ランボー宏輔（パラエストラ松戸）| |▼第12試合 DEEPミドル級（83.9kg以下） 5分3R |〇水野竜也（フリー）|一本 2R 1分55秒 ※チョークスリーパー|●パク・ジョンギョ（BLACK BEAR CAMP）| |▼第11試合 DEEPバンタム級（61.2kg以下） 5分2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 81 IMPACT",
+      "date": "2017-12-23",
+      "sourceUrl": "https://www.deep2001.com/deep-81-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル ライト級 5分3R|◯横田一則（K-Clann） |TO 2R 4’20” アームロック |●ユン・ダウォン（韓国／MMA STORY GYM） | |▼第13試合 バンタム級 5分3R|◯北田俊亮（パンクラスイズム横浜） |判定3-0 |●窪田泰斗（D’s Box’n Fit） | |▼第12試合 バンタム級 5分3R |◯石司晃一（フリー） |TO 1R 1’26” チョークス",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 82 IMPACT",
+      "date": "2018-02-24",
+      "sourceUrl": "https://www.deep2001.com/deep-82-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPミドル級タイトルマッチ王座決定戦 5分3R|●奥野泰舗（CAVE）|TO 3R 4’34” チョークスリーパー|○水野竜也（フリー）| |▼セミファイナル バンタム級 5分3R|○元谷友貴（フリー）|判定3-0|●ビョン・ジェウン（CMA KOREA）| |▼第9試合 ミドル級 5分3R|○長谷川賢（フリー）|TO 1R 3’09” 肩固め|●林源平（和術慧舟會IGGY H",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 82 IMPACT",
+      "date": "2018-02-24",
+      "sourceUrl": "https://www.deep2001.com/deep-82-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル バンタム級 5分3R|○元谷友貴（フリー）|判定3-0|●ビョン・ジェウン（CMA KOREA）| |▼第9試合 ミドル級 5分3R|○長谷川賢（フリー）|TO 1R 3’09” 肩固め|●林源平（和術慧舟會IGGY HAND’S GYM）| |▼第8試合 女子フライ級 5分3R |○中井りん（修斗道場四国）|TKO 1R 4’37” レフェリーストップ：グラウンドのヒジ|●キム・",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 83 IMPACT",
+      "date": "2018-04-28",
+      "sourceUrl": "https://www.deep2001.com/deep-83-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第13試合） DEEPウェルター級タイトルマッチ 5分3R|○住村竜市朗（王者／フリー）|判定5-0|●佐藤洋一郎（挑戦者／カタナジム）| |▼セミファイナル（第12試合） DEEPフライ級タイトルマッチ 5分3R|○和田竜光（王者／フリー）|判定5-0|●高橋 誠（挑戦者／パラエストラ松戸）| |▼第11試合 DEEPバンタム級タイトルマッチ王座決定戦 5分3R|●北田俊亮（パン",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 83 IMPACT",
+      "date": "2018-04-28",
+      "sourceUrl": "https://www.deep2001.com/deep-83-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第12試合） DEEPフライ級タイトルマッチ 5分3R|○和田竜光（王者／フリー）|判定5-0|●高橋 誠（挑戦者／パラエストラ松戸）| |▼第11試合 DEEPバンタム級タイトルマッチ王座決定戦 5分3R|●北田俊亮（パンクラスイズム横浜）|TKO 2R 2’39” レフェリーストップ：スタンドパンチ|○ソン・ジンス（韓国／コリアンゾンビMMA／本宮塾）| |▼第10試合 キック",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 84 IMPACT",
+      "date": "2018-06-30",
+      "sourceUrl": "https://www.deep2001.com/deep-84-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第18試合）73kg契約 5分3R|×横田一則（K-Clann）|判定1-2|○石川英司（GRABAKA）| |▼セミファイナル（第17試合）バンタム級 5分3R|○元谷友貴（フリー）|TKO 2R 4’23” レフェリーストップ：グラウンドパンチ|×ムン・ジェフン（韓国／オクタゴンジム）| |▼第16試合 フェザー級 5分3R|●芦田崇宏（BRAVE）|TO 1R 1’35” ア",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 84 IMPACT",
+      "date": "2018-06-30",
+      "sourceUrl": "https://www.deep2001.com/deep-84-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第17試合）バンタム級 5分3R|○元谷友貴（フリー）|TKO 2R 4’23” レフェリーストップ：グラウンドパンチ|×ムン・ジェフン（韓国／オクタゴンジム）| |▼第16試合 フェザー級 5分3R|●芦田崇宏（BRAVE）|TO 1R 1’35” アームロック|○弥益ドミネーター聡志（team SOS）| |▼第15試合 ウェルター級 5分3R|●悠太（ALLIANCE）|判定",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 87 IMPACT",
+      "date": "2018-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-87-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第9試合） ミドル級 5分3R|◯水野竜也（フリー）|TO 2R 2’53” リアネイキッドチョーク|●桜井隆多（R-BLOOD）| |▼セミファイナル(第8試合) バンタム級 5分3R |◯大塚隆史（T GRIP TOKYO）|判定3-0|●赤尾セイジ（パラエストラ東大阪）| |▼第7試合 63.00kg契約 5分3R|◯DJ.taiki（パンクラスイズム横浜）|判定3-0|●石",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 87 IMPACT",
+      "date": "2018-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-87-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル(第8試合) バンタム級 5分3R |◯大塚隆史（T GRIP TOKYO）|判定3-0|●赤尾セイジ（パラエストラ東大阪）| |▼第7試合 63.00kg契約 5分3R|◯DJ.taiki（パンクラスイズム横浜）|判定3-0|●石司晃一（フリー）| |▼第6試合 ライト級 5分3R|●長倉立尚（吉田道場）|TKO 1R 2’02” レフェリーストップ：負傷|◯大原樹里（KIBAマー",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2019",
+      "date": "2019-03-16",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2019-2/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第11試合） メガトン級 5分2R| |○誠吾（AACC／120.50kg）| |TO 1R 1’23” 袈裟固め| |×侍マーク・ハント（Martial Artrs Fighter team侍／110.00kg）| |レフェリー：松宮智生| |■セミファイナル（第10試合） ライト級 5分2R| |○LUIZ（禅道会／70.75kg）| |TO 1R 2’53” フロントチョーク",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2019",
+      "date": "2019-03-16",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2019-2/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第10試合） ライト級 5分2R| |○LUIZ（禅道会／70.75kg）| |TO 1R 2’53” フロントチョーク| |×高塩竜司（KIBAマーシャルアーツクラブ／70.30kg）| |レフェリー：高本裕和| |■第9試合 女子ストロー級 5分2R| |○ジェットイズミ（フリー／52.20kg）| |判定3-0| |×MAO（フリー／52.25kg）| |レフェリー：田澤康宏",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 90 IMPACT",
+      "date": "2019-06-29",
+      "sourceUrl": "https://www.deep2001.com/deep-90-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント （第12試合）フライ級タイトルマッチ暫定王者決定戦 5分3R|⚪神龍 誠（フリー）|判定0-5（27-27・27-27・27-27・27-27・27-27）|⚫柴田“MONKEY”有哉（Kids MMA Team KIZUNA～絆～）| |🔻セミファイナル （第11試合）DEEPミドル級 5分3R|⚪水野竜也（フリー）| S 1R 4分58秒（タップアウト：肩固め）|⚫中井光義（",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 90 IMPACT",
+      "date": "2019-06-29",
+      "sourceUrl": "https://www.deep2001.com/deep-90-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル （第11試合）DEEPミドル級 5分3R|⚪水野竜也（フリー）| S 1R 4分58秒（タップアウト：肩固め）|⚫中井光義（フリー）| |🔻第10試合 DEEPフェザー級 5分3R|⚪小見川道大（NEO JUDO ACADEMY）|S 2R 2’03” (タップアウト：肩固め)|⚫オーロラ☆ユーキ（KIBAマーシャルアーツクラブ）| |🔻第9試合 DEEPウェルター級 5分3R",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2019",
+      "date": "2019-09-01",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2019/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第11試合） フェザー級 5分2R| |×高塩竜司（KIBAマーシャルアーツクラブ／61.00kg）| |判定1-2| |○星野 豊（和術慧舟會HEARTS／65.85kg）| | |■セミファイナル（第10試合） ウェルター級 5分2R| |×ハーレー・ビーハン（NEO JUDO ACADEMY／76.80kg）| |S 1R 2’43” タップアウト：リアネイキッドチョーク| ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2019",
+      "date": "2019-09-01",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2019/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第10試合） ウェルター級 5分2R| |×ハーレー・ビーハン（NEO JUDO ACADEMY／76.80kg）| |S 1R 2’43” タップアウト：リアネイキッドチョーク| |○佐々木大（トライフォース赤坂／76.65kg）| | |■第9試合 バンタム級 5分2R| |×松丸息吹（パラエストラ千葉／61.00kg）| |TKO 1R 2’43” レフェリーストップ：グラウ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 91 IMPACT",
+      "date": "2019-09-08",
+      "sourceUrl": "https://www.deep2001.com/deep-91-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント （第14試合）DEEPバンタム級 5分3R|⚪大塚隆史（T GRIP TOKYO）|S 1R 0分26秒 （バーバルタップアウト：右肩負傷）|⚫白川“Dark”陸斗（志道場）| |🔻セミファイナル （第13試合）DEEPフェザー級 5分3R|⚪牛久絢太郎（K-Clann）|判定3-0 （29-28・29-28・30-27）|⚫横山恭典（KRAZY BEE）| |🔻第12試合 D",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 91 IMPACT",
+      "date": "2019-09-08",
+      "sourceUrl": "https://www.deep2001.com/deep-91-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル （第13試合）DEEPフェザー級 5分3R|⚪牛久絢太郎（K-Clann）|判定3-0 （29-28・29-28・30-27）|⚫横山恭典（KRAZY BEE）| |🔻第12試合 DEEPウェルター級 5分3R|⚪安西信昌（TEAM CLIMB）|判定0-2 (19-19・18-20・19-20) ※2R 0’39”時点|⚫佐藤洋一郎（KATANA GYM）| |🔻第11試合 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 92 IMPACT",
+      "date": "2019-10-22",
+      "sourceUrl": "https://www.deep2001.com/deep-92-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント （第10試合）DEEPライト級タイトルマッチ 5分3R|⚪武田光司（王者／BRAVE）|判定3-0 （20-18・20-18・19-19・19-19・20-18）※2R 2’07”時点 |⚫大原樹里（挑戦者KIBAマーシャルアーツクラブ）| |🔻セミファイナル （第9試合）DEEPフェザー級 5分3R|⚪芦田崇宏（BRAVE）|判定3-0 （29-28・29-28・29-28）※",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 92 IMPACT",
+      "date": "2019-10-22",
+      "sourceUrl": "https://www.deep2001.com/deep-92-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル （第9試合）DEEPフェザー級 5分3R|⚪芦田崇宏（BRAVE）|判定3-0 （29-28・29-28・29-28）※2R 2’07”時点 |⚫長倉立尚（フリー）| |🔻第８試合 DEEPフェザー級 5分3R|⚪小見川道大（NEO JUDO ACADEMY）|TKO 3R 1分49秒（レフェリーストップ：スタンドパンチ）|⚫毛利昭彦（毛利道場）| |🔻第7試合 DEEPライト",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 93 IMPACT",
+      "date": "2019-12-15",
+      "sourceUrl": "https://www.deep2001.com/deep-93-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第24試合）メガトン級タイトルマッチ 5分3R|⚪ロッキー・マルティネス（王者／グアム／SPIKE 22）|TKO 2R 2分09秒 (レフェリーストップ：スタンドパンチ) |※マルティネスがタイトル防衛|⚫誠悟（挑戦者／AACC)| |🔻セミファイナル（第23試合）DEEPライト級タイトルマッチ 5分3R|⚪武田光司（王者／BRAVE）|3R 4分40秒 (タップアウト：アーム",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 93 IMPACT",
+      "date": "2019-12-15",
+      "sourceUrl": "https://www.deep2001.com/deep-93-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第23試合）DEEPライト級タイトルマッチ 5分3R|⚪武田光司（王者／BRAVE）|3R 4分40秒 (タップアウト：アームロック)|⚫大原樹里（挑戦者／KIBAマーシャルアーツクラブ)| |🔻第22試合 DEEPバンタム級 5分3R|⚪井上直樹（セラ・ロンゴ・ファイトチーム）|1R 2分41秒 (タップアウト：チョークスリーパー)|⚫北田俊亮（パンクラスイズム横浜)| |🔻",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 94 IMPACT",
+      "date": "2020-03-01",
+      "sourceUrl": "https://www.deep2001.com/deep-94-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第10試合）DEEPバンタム級 5分3R|⚪元谷友貴（フリー）|判定3-0 (30-27・30-27・30-27)|⚫|大塚隆史（T GRIP TOKYO）| |🔻セミファイナル（第9試合）DEEPウェルター級タイトルマッチ 5分3R|⚪住村竜市朗（TEAM ONE）|判定5-0 (29-28・29-28・29-28・29-28・29-28)|⚫悠太（ALLIANCE)| |🔻",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 94 IMPACT",
+      "date": "2020-03-01",
+      "sourceUrl": "https://www.deep2001.com/deep-94-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第9試合）DEEPウェルター級タイトルマッチ 5分3R|⚪住村竜市朗（TEAM ONE）|判定5-0 (29-28・29-28・29-28・29-28・29-28)|⚫悠太（ALLIANCE)| |🔻第8試合 DEEPフェザー級 5分3R|⚪横山恭典 (KRAZY BEE）|3R 3分30秒 (テクニカルサブミッション：肩固め)|⚫巽 大佑（NEX)| |🔻第7試合 DEEPバ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 95 IMPACT",
+      "date": "2020-08-23",
+      "sourceUrl": "https://www.deep2001.com/deep-96-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第9試合）DEEPウェルター級 5分3R|⚪阿部大治（フリー）|判定1-2 (28-29・29-28・28-29)|⚫佐藤洋一郎（KATANA GYM)| |🔻セミファイナル（第8試合）DEEPメガトン級 5分3R|⚪酒井リョウ（レンジャージム）|TKO 2R 4分55秒 (レフェリーストップ：グラウンドパンチ)|⚫関根“シュレック”秀樹（ボンサイ柔術)| |🔻第7試合 DEE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 95 IMPACT",
+      "date": "2020-08-23",
+      "sourceUrl": "https://www.deep2001.com/deep-96-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第8試合）DEEPメガトン級 5分3R|⚪酒井リョウ（レンジャージム）|TKO 2R 4分55秒 (レフェリーストップ：グラウンドパンチ)|⚫関根“シュレック”秀樹（ボンサイ柔術)| |🔻第7試合 DEEPキックボクシングルール女子 3分3R|⚪KINGレイナ（K-Clann）|判定2-1 (29-28・29-28・28-29)|⚫熊谷麻理奈（ウィラサクレック・フェアテックス札幌",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 97 IMPACT",
+      "date": "2020-09-20",
+      "sourceUrl": "https://www.deep2001.com/deep-97-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第7試合）DEEPフェザー級 5分3R|⚪牛久絢太郎 （K-Clann/挑戦者）|判定4-1 (28-29・28-29・28-29・28-28)|⚫弥益ドミネーター聡志| |🔻セミファイナル（第６試合）DEEP女子ミクロ級王者決定戦 5分3R|⚪大島沙緒里|TKO 1R 2分09秒 (パウンド)|⚫にっせー| |🔻第５試合 DEEPフライ級 5分3R|⚪中村大介|KO 2R 2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 97 IMPACT",
+      "date": "2020-09-20",
+      "sourceUrl": "https://www.deep2001.com/deep-97-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第６試合）DEEP女子ミクロ級王者決定戦 5分3R|⚪大島沙緒里|TKO 1R 2分09秒 (パウンド)|⚫にっせー| |🔻第５試合 DEEPフライ級 5分3R|⚪中村大介|KO 2R 2分09秒 (右ストレート)|⚫長倉立尚| |🔻第4試合 DEEPJEWELS KICKルール 63kg以下 3分3R|⚪熊谷麻理奈|判定3-0 (26-30・26-30・26-30)|⚫KIN",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP 99 IMPACT",
+      "date": "2020-11-01",
+      "sourceUrl": "https://www.deep2001.com/deep-99-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第９試合）DEEPバンタム級 5分3R|⚪元谷 友貴 (フリー)|アームバー 1R ４分58秒 |⚫米山千隼 (マルワジム横浜)| |🔻セミファイナル（第８試合）DEEPフェザー級 5分3R|⚪白川“Dark”陸斗 (志道場)|TKO 1R 2分18秒 （パンチ） |⚫オーロラ☆ユーキ (KIBAマーシャルアーツクラブ)| |🔻第７試合 DEEPバンタム級 5分2R|⚪東 修平",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP 99 IMPACT",
+      "date": "2020-11-01",
+      "sourceUrl": "https://www.deep2001.com/deep-99-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第８試合）DEEPフェザー級 5分3R|⚪白川“Dark”陸斗 (志道場)|TKO 1R 2分18秒 （パンチ） |⚫オーロラ☆ユーキ (KIBAマーシャルアーツクラブ)| |🔻第７試合 DEEPバンタム級 5分2R|⚪東 修平 (AACC)|1R 1分52秒 （チョークスリーパー） |⚫和田教良 (ガイオジム)| |🔻第６試合 DEEPフェザー級 5分2R|⚪神田コウヤ (パ",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP 98 IMPACT",
+      "date": "2020-11-01",
+      "sourceUrl": "https://www.deep2001.com/deep-98-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第7試合）DEEPウェルター級 5分3R|⚪阿部大治 (フリー)|TKO 1R ４分17秒 (レフェリーストップ：グラウンドパンチ)|⚫悠太 (ALLIANCE)| |🔻セミファイナル（第６試合）DEEPミドル級 5分3R|⚪ジョアンオ・バティスタ・吉村［ジョン・バチスタ・ヨシムラ］(TOP 1 FITNESS GYM)|TKO 2R ４分44秒 (レフェリーストップ：グラウンド",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 98 IMPACT",
+      "date": "2020-11-01",
+      "sourceUrl": "https://www.deep2001.com/deep-98-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第６試合）DEEPミドル級 5分3R|⚪ジョアンオ・バティスタ・吉村［ジョン・バチスタ・ヨシムラ］(TOP 1 FITNESS GYM)|TKO 2R ４分44秒 (レフェリーストップ：グラウンドパンチ)|⚫水野竜也 (フリー)| |🔻第５試合 DEEPフェザー級 5分2R|⚪平田直樹 (K-Clann)|2R 3分59秒 (テクニカルサブミッション：アームバー)|⚫星野 豊 (",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2020",
+      "date": "2020-12-19",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2020/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第9試合）DEEPフェザー級 5分2R|○平田直樹（K-Clann）|判定3-0 ※三者とも20-18|●畠山祐輔（トライフォース赤坂）| |▼セミファイナル（第8試合）DEEPバンタム級 5分2R|○原虎徹（CAVE）|判定3-0 ※三者とも20-18|●ヒロヤ（トライフォース赤坂）| |▼第7試合 DEEPフェザー級 5分2R|○高塩竜司（KIBAマーシャルアーツクラブ）|判定",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2020",
+      "date": "2020-12-19",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2020/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第8試合）DEEPバンタム級 5分2R|○原虎徹（CAVE）|判定3-0 ※三者とも20-18|●ヒロヤ（トライフォース赤坂）| |▼第7試合 DEEPフェザー級 5分2R|○高塩竜司（KIBAマーシャルアーツクラブ）|判定3-0 ※三者とも20-17|●西谷大成（トライフォース赤坂）|※西谷は2Rにローブローで減点1| |▼第6試合 DEEPライト級 5分2R|●Street♡★",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2021",
+      "date": "2021-03-13",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2021-2/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第10試合）DEEPフェザー級5分3R|●横山京亮（フリー）|TKO 3R 3分50秒 ※パウンド|〇平田直樹（K-Clann）| |▼セミファイナル（第9試合）DEEPライト級5分2R|●鈴木琢仁（Bonsai Jiu-Jitsu）|判定1-2 ※20-18、19-19（マスト判定：大木）、18-20|〇大木良太（KRAZY BEE）| |▼第8試合 DEEPフライ級 5分2R|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2021",
+      "date": "2021-03-13",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2021-2/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第9試合）DEEPライト級5分2R|●鈴木琢仁（Bonsai Jiu-Jitsu）|判定1-2 ※20-18、19-19（マスト判定：大木）、18-20|〇大木良太（KRAZY BEE）| |▼第8試合 DEEPフライ級 5分2R|●加藤瑠偉（KRAZY BEE）|判定0-3 ※三者とも18-20|〇本田良介（CAVE）| |▼第7試合 DEEPライト級 5分2R|〇石塚雄馬（AA",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 33",
+      "date": "2021-06-20",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-33/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSアトム級GP決勝 5分2R|●青野ひかる（ストライプル新百合ヶ丘）|判定5-0 ※20-17×2、20-18×3|〇大島沙緒里（AACC）|※大島がアトム級GP優勝| |セミファイナル DEEP JEWELSストロー級タイトルマッチ 5分3R |●本野美樹（AACC/王者）|一本 1R 3分32秒 ※腕十字|〇伊澤星花（高本道場/挑戦者）|※伊澤が新王者に| ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 33",
+      "date": "2021-06-20",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-33/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELSストロー級タイトルマッチ 5分3R |●本野美樹（AACC/王者）|一本 1R 3分32秒 ※腕十字|〇伊澤星花（高本道場/挑戦者）|※伊澤が新王者に| |第6試合 DEEP JEWELS フライ級 5分2R|〇奈部ゆかり（リバーサルジム新宿Me,We）|判定3-0 ※三者とも20-18|●ARAMI（フリー）| |第5試合 DEEP JEWELSストロー級 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 102 IMPACT",
+      "date": "2021-07-04",
+      "sourceUrl": "https://www.deep2001.com/deep-102-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフェザー級タイトルマッチ5分3R|○牛久絢太郎（K-Clann／王者）|×中村大介（夕月堂本舗／挑戦者、元ライト級王者）|判定4-1 (29-28/28-29/29-28/29-28/29-28)|※牛久が初防衛| |セミファイナル DEEPミドル級タイトルマッチ 5分3R|×水野竜也（フリー／王者）※初防衛戦|○ジョアンオ・バティスタ・吉村［ジョン・バチスタ・ヨシムラ］（",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 102 IMPACT",
+      "date": "2021-07-04",
+      "sourceUrl": "https://www.deep2001.com/deep-102-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPミドル級タイトルマッチ 5分3R|×水野竜也（フリー／王者）※初防衛戦|○ジョアンオ・バティスタ・吉村［ジョン・バチスタ・ヨシムラ］（ブラジル／TOP 1 FITNESS GYM／挑戦者）|2R 0’32” TKO (レフェリーストップ：左フック→グラウンドパンチ)|※吉村が王者に| |DEEPライト級暫定王者決定戦 5分3R|○大原樹里（KIBAマーシャルアーツクラブ）|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2021",
+      "date": "2021-07-18",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2021-2/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級 5分3R|9.赤尾セイジ（パラエストラ天満）VS 笹晋久（パラエストラ柏）|1R3:44 TKO 勝者：笹晋久| |セミファイナル DEEPバンタム級 5分2R|8.MG眞介（パラエストラ東大阪）VS谷岡祐樹（パラエストラ加古川）|1R3:51 TKO 勝者：MG眞介| |DEEP JEWELSフライ級 5分2R|7.栗山葵（SMOKER GYM）VS加賀谷花野",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2021",
+      "date": "2021-07-18",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2021-2/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPバンタム級 5分2R|8.MG眞介（パラエストラ東大阪）VS谷岡祐樹（パラエストラ加古川）|1R3:51 TKO 勝者：MG眞介| |DEEP JEWELSフライ級 5分2R|7.栗山葵（SMOKER GYM）VS加賀谷花野（柔術&MMAアカデミーG-face）|1R3:43フロントチョーク 勝者：加賀谷花野| |DEEP JEWELS49㎏級 5分2R|6.須田萌里（SC",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 34",
+      "date": "2021-09-04",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-34/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSアトム級 5分2R|〇にっせー（フリー）|TKO 2R 4分13秒 ※レフェリーストップ|●古瀬美月（K-PLACE）| | | | |セミファイナル DEEP JEWELS フライ級 5分2R|〇ミッコ・ニルバーナ（AACC）|判定3-0 ※20-18、19-19（マスト判定：ミッコ）、20-18|●ケイト・ロータス（KING GYM KOBE）| | | ",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP JEWELS 34",
+      "date": "2021-09-04",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-34/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS フライ級 5分2R|〇ミッコ・ニルバーナ（AACC）|判定3-0 ※20-18、19-19（マスト判定：ミッコ）、20-18|●ケイト・ロータス（KING GYM KOBE）| | | | |第4試合 DEEP JEWELSグラップリングタッグマッチ 無差別10分3本勝負|〇青野ひかる（ストライプル新百合ヶ丘）伊澤星花（フリー）|二本先取 ※伊澤が長野、富松",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2021 2nd ROUND",
+      "date": "2021-10-17",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2021-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第8試合） DEEPバンタム級 5分2R |○平松翔（パラエストラ松戸）|TKO 1R 1分03秒 ※右ストレート|●海飛（和術慧舟會HEARTS）| |▼セミファイナル（第7試合） DEEP JEWELS49kg以下 5分2R|●竹林愛留（18＝総斗會三村道場）|判定0-3 ※18-20×2、19-19（マスト判定古賀）|○古賀愛蘭（19＝TEAM FAUST）| |▼第6試合 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2021 2nd ROUND",
+      "date": "2021-10-17",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2021-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第7試合） DEEP JEWELS49kg以下 5分2R|●竹林愛留（18＝総斗會三村道場）|判定0-3 ※18-20×2、19-19（マスト判定古賀）|○古賀愛蘭（19＝TEAM FAUST）| |▼第6試合 DEEPバンタム級 5分2R|○宮島夢都希（KRAZY BEE）|判定3-0 ※20-18、20-17×2|●山本有人（リバーサルジム東京スタンドアウト）| |▼第5試合 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2021 1st ROUND",
+      "date": "2021-10-17",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2021-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント（第7試合） DEEP 58kg以下 5分2R|〇ヒロヤ（トライフォース赤坂）|判定3-0|●RYOGA（KRAZY BEE）| |▼セミファイナル（第6試合） DEEPフェザー級 5分2R|〇西谷大成（トライフォース赤坂）|一本 1R 32秒 ※バックチョーク|●山口コウタ（パラエストラ八王子）| |▼第5試合 DEEP JEWELS 49kg以下 5分2R|●音波（AACC）|判",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2021 1st ROUND",
+      "date": "2021-10-17",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2021-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル（第6試合） DEEPフェザー級 5分2R|〇西谷大成（トライフォース赤坂）|一本 1R 32秒 ※バックチョーク|●山口コウタ（パラエストラ八王子）| |▼第5試合 DEEP JEWELS 49kg以下 5分2R|●音波（AACC）|判定0-3 ※17-20×2、18-20|〇須田萌里（SCORPION GYM）| |▼第4試合 DEEPフライ級 5分2R|●松丸息吹（パラエストラ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 35",
+      "date": "2021-12-11",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-35/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSストロー級 5分2R|○本野美樹（AACC）|判定3-0 ※三者ともに20-18|●HIME（毛利道場)| | | | | |セミファイナル DEEP JEWELSフェザー級 5分2R |○KINGレイナ（フリー）|一本 1R4分55秒 ※アームバー|●Te-a（AACC）| | | | |第9試合 DEEP JEWELSミクロ級 5分2R|●古瀬美月(K-P",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 35",
+      "date": "2021-12-11",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-35/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELSフェザー級 5分2R |○KINGレイナ（フリー）|一本 1R4分55秒 ※アームバー|●Te-a（AACC）| | | | |第9試合 DEEP JEWELSミクロ級 5分2R|●古瀬美月(K-PLACE）|一本 1R4分58秒 ※アームバー|○村上彩（フリー）| | | | |第8試合 DEEP JEWELS フライ級 5分2R|●栗山葵（SMOKER G",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2021",
+      "date": "2021-12-12",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2021/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級 5分2R|●高野優樹（フリー）|判定2-1 ※20-18、19-19×2（高野と橋本をそれぞれ支持）|○橋本優大（CAVE）| |▼セミファイナル DEEPライト級 5分2R|○大山釼呑助（INFIGHT JAPAN）|判定3-0 ※三者ともに20-18|●Street♡★Bob”洸助（LEGION TOP TEAM）| |▼第9試合 DEEPフライ級 5分2R",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2021",
+      "date": "2021-12-12",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2021/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPライト級 5分2R|○大山釼呑助（INFIGHT JAPAN）|判定3-0 ※三者ともに20-18|●Street♡★Bob”洸助（LEGION TOP TEAM）| |▼第9試合 DEEPフライ級 5分2R|○島袋チカラ（CORE）|判定2-1 ※20-18、19-19×2（島袋と力也をそれぞれ支持）|●力也（フリー）| |▼第8試合 DEEP 55.5kg以下 5分2R",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 105 IMPACT",
+      "date": "2021-12-12",
+      "sourceUrl": "https://www.deep2001.com/deep-105-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフェザー級タイトルマッチ5分3R|○牛久絢太郎（K-Clann/王者）|判定4-1 ※30-27×2、29-28×2、28-29|●神田コウヤ（パラエストラ柏/挑戦者）|※牛久が2度目の防衛に成功| |▼セミファイナル DEEPメガトン級 5分3R 特別ルール|○水野竜也（フリー）|KO 1R1分15秒 ※左ストレート→サッカーボールキック|●誠悟（AACC）| |▼第9試",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP 105 IMPACT",
+      "date": "2021-12-12",
+      "sourceUrl": "https://www.deep2001.com/deep-105-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPメガトン級 5分3R 特別ルール|○水野竜也（フリー）|KO 1R1分15秒 ※左ストレート→サッカーボールキック|●誠悟（AACC）| |▼第9試合 DEEPライト級 5分3R|×悠太（ALLIANCE）|判定1-2 ※28-29×2, 29-28|〇小金 翔（フリー）| |▼第8試合 DEEPバンタム級 5分3R|〇石司晃一（フリー）|[3R 1分46秒 三角絞め]|×",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 36",
+      "date": "2022-03-12",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-36/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSフライ級GP一回戦 5分2R|○中井りん（修斗道場四国）|TKO 2R4分38秒 ※パウンド連打|●藤田翔子（リバーサルジム新宿Me,We）| | | | |セミファイナル DEEP JEWELSフライ級GP一回戦 5分2R |○杉山しずか（リバーサルジム新宿Me,We）|判定3-2|●ミッコ・ニルバーナ（AACC）| | | | |第5試合 DEEP JEW",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP JEWELS 36",
+      "date": "2022-03-12",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-36/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELSフライ級GP一回戦 5分2R |○杉山しずか（リバーサルジム新宿Me,We）|判定3-2|●ミッコ・ニルバーナ（AACC）| | | | |第5試合 DEEP JEWELS 49kg 以下 5分2R|●大島沙緒里（AACC）|判定0-3 |〇HIME（毛利道場）| | | |第4試合 DEEP JEWELS 49kg 以下 5分2R|〇本野美樹（AACC）|一",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2022 1st ROUND",
+      "date": "2022-03-12",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2022-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント|▼第9試合 DEEPバンタム級 5分3R|〇石司晃一（フリー）61.45kg|[1R 2分23秒 KO]|×三村 亘（パンクラス大阪稲垣組）61.55kg| |セミファイナル|▼第8試合 DEEPバンタム級 5分2R|〇海飛（和術慧舟會HEARTS）61.60kg|[2R TKO]|×牧野滉風（柔術＆MMAアカデミーG-face）61.65kg| |▼第7試合 DEEPフェザー級 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2022 1st ROUND",
+      "date": "2022-03-12",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2022-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル|▼第8試合 DEEPバンタム級 5分2R|〇海飛（和術慧舟會HEARTS）61.60kg|[2R TKO]|×牧野滉風（柔術＆MMAアカデミーG-face）61.65kg| |▼第7試合 DEEPフェザー級 5分2R|〇鬼山班猫（KRAZY BEE）66.25kg|[判定2-1] ※20-18×2, 19-20|×星野 豊（和術慧舟會HEARTS）66.05kg| |▼第6試合 D",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2022 2nd ROUND",
+      "date": "2022-03-13",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2022-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント|▼第9試合 DEEPウェルター級 5分3R|×佐藤洋一郎（KATANA GYM）77.40kg|[1R 1分19秒 TKO]|〇レバナ・エゼキエル（BRAVE）77.55kg| |セミファイナル|▼第8試合 DEEPメガトン級 5分2R|〇酒井リョウ（レンジャージム）106.85kg|[判定3-0] ※19-19×2マスト酒井, 19-18|×大成（フリー）102.10kg| |▼",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2022 2nd ROUND",
+      "date": "2022-03-13",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2022-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル|▼第8試合 DEEPメガトン級 5分2R|〇酒井リョウ（レンジャージム）106.85kg|[判定3-0] ※19-19×2マスト酒井, 19-18|×大成（フリー）102.10kg| |▼第7試合 DEEPフェザー級 5分2R|〇高野優樹（フリー）66.05kg|[判定3-0] ※20-18, 19-19マスト高野|×高塩竜司（KIBAマーシャルアーツクラブ）66.25kg| |▼",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT IN OSAKA 2022",
+      "date": "2022-04-10",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-in-osaka-2022/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフライ級5分3R|7.柴田“MONKEY”有哉(Team KIZUNA) VS渋谷カズキ(高本道場)|勝者：柴田 3R1:10三角締め| |セミファイナル DEEP JEWELS 49kg以下 5分3R |6.パク・シウ(KRAZY BEE) VS古賀愛蘭(フリー)|勝者：パク 判定3-0| |DEEPバンタム級5分3R|5.中本龍平(BLOWS) VS 雅駿介(CAVE)",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT IN OSAKA 2022",
+      "date": "2022-04-10",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-in-osaka-2022/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS 49kg以下 5分3R |6.パク・シウ(KRAZY BEE) VS古賀愛蘭(フリー)|勝者：パク 判定3-0| |DEEPバンタム級5分3R|5.中本龍平(BLOWS) VS 雅駿介(CAVE)|勝者：雅 判定0-3| |DEEPバンタム級5分2R|4.谷岡祐樹(パラエストラ加古川) VS上荷大夢(TEAM AGENT)|勝者：谷岡 判定3-0| |DEE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 37",
+      "date": "2022-05-08",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-37/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 宗明建設presents DEEP JEWELSフライ級GP 2022 決勝 5分2R|〇中井りん（修斗道場四国）|一本 1R 4分53秒 ※腕十字|●杉山しずか（リバーサルジム新宿 Me,We）|※中井がDEEP JEWELSフライ級GP 2022 を制覇| | | | | | |セミファイナル DEEP JEWELSアトム級タイトルマッチ 5分3R|〇大島沙緒里（AACC/王者",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 37",
+      "date": "2022-05-08",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-37/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELSアトム級タイトルマッチ 5分3R|〇大島沙緒里（AACC/王者）|一本 1R 2分58秒 ※アームロック|●須田萌里（SCORPION GYM/挑戦者）|※大島が王座防衛に成功| | | | |第5試合 DEEP JEWELSフェザー級王者決定戦 5分3R|〇東よう子（リバーサルジム新宿 Me,We）|判定5-0 ※29-28、30-26×3、30-27|●K",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2022公武堂ファイト",
+      "date": "2022-07-24",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2022%e5%85%ac%e6%ad%a6%e5%a0%82%e3%83%95%e3%82%a1%e3%82%a4%e3%83%88/",
+      "label": "メインイベント",
+      "snippet": "メインイベント バンタム級 5分2R|〇吉田陸（スプラッシュ）|×井上皓平（ポゴナクラブジム/FightingNexus） 2R 4分1秒 TKO（ハイキック）| |第9試合 フライ級 5分2R|〇岡本秀義 （翼鍛錬所）|×廣瀬裕斗 （マーシャルアーツクラブ中津川） 1R 2分20秒 TKO（ハイキック）| |第8試合 女子ミクロ級 5分2R|×玉田育子（AACC）|〇古林礼名 （GSB多治見 ）",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2022 3rd ROUND",
+      "date": "2022-08-28",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2022-3rd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級 5分3R|8.MG眞介(reversal gym osaka anne) VS 平松翔(パラエストラ松戸)|1R3:09 TKO 勝者：平松| |セミファイナル DEEPライト級 5分2R|7.太田裕稀(パンクラス大阪稲垣組) VS 颯志(トライフォース赤坂)|判定0-3 勝者：颯志| |DEEPライト級 5分2R|6.木村俊也(BLOWS) VS 大野“虎眼”",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2022 3rd ROUND",
+      "date": "2022-08-28",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2022-3rd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPライト級 5分2R|7.太田裕稀(パンクラス大阪稲垣組) VS 颯志(トライフォース赤坂)|判定0-3 勝者：颯志| |DEEPライト級 5分2R|6.木村俊也(BLOWS) VS 大野“虎眼”賢良(キングジム神戸)|判定3-0 勝者：木村| |DEEPバンタム級 5分2R|5.谷岡祐樹(パラエストラ加古川) VS 山﨑鼓大(BLOWS)|2R3:37 TKO 勝者：谷岡|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2022 2nd ROUND",
+      "date": "2022-08-28",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2022-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級 5分3R|8.中本龍平(BLOWS) VS 八尋大輝(ニコニコファイトクラブ)|判定2-1 勝者：中本| |セミファイナル DEEP JEWELS 49.5kg 5分2R 特別ルール 肘あり|7.富松恵美(パラエストラ松戸) VS サダエ☆マヌーフ(総合格闘技道場コブラ会)|判定0-3 勝者：サダエ| |DEEPフェザー級 5分2R|6.堂園悠(修和館) VS ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2022 2nd ROUND",
+      "date": "2022-08-28",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2022-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS 49.5kg 5分2R 特別ルール 肘あり|7.富松恵美(パラエストラ松戸) VS サダエ☆マヌーフ(総合格闘技道場コブラ会)|判定0-3 勝者：サダエ| |DEEPフェザー級 5分2R|6.堂園悠(修和館) VS チハヤフル・ズッキーニョス(MIBURO)|2R4:24 TKO 勝者：チハヤフル| |DEEPウェルター級 5分2R|5.森井翼(パラエストラ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 38",
+      "date": "2022-09-11",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-38/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第7試合 DEEP アトム級 5分3R|●村上彩（フリー）|判定0-|3|○須田萌里（SCORPION GYM）| | | | |セミファイナル 第6試合 DEEP JEWELS 49kg以下 5分2R |●桐生祐子（フリー）|TKO 1R37秒 ※パンチ連打|○HIME（毛利道場）| | | | |第5試合 DEEP JEWELS ミクロ級 5分2R|○古瀬美月（K-PLACE）",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 38",
+      "date": "2022-09-11",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-38/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第6試合 DEEP JEWELS 49kg以下 5分2R |●桐生祐子（フリー）|TKO 1R37秒 ※パンチ連打|○HIME（毛利道場）| | | | |第5試合 DEEP JEWELS ミクロ級 5分2R|○古瀬美月（K-PLACE）|判定3-0 |●山崎桃子（坂口道場一族）| | | | |第4試合 DEEP JEWELS 50kg以下 5分2R|○ケイト・ロータス|判定2-",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 86 IMPACT",
+      "date": "2022-10-27",
+      "sourceUrl": "https://www.deep2001.com/deep-86-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPライト級タイトルマッチ 5分3R|●北岡 悟（王者／パンクラスイズム横浜）|判定0-5|〇武田光司（挑戦者／BRAVE）| |▼セミファイナル DEEPバンタム級タイトルマッチ王座決定戦 5分3R|〇元谷友貴（フリー）|TO 3R 4’43” リアネイキッドチョーク|●釜谷 真（ハニートラップ/Tri.H STUDIO）| |▼第14試合 DEEPフェザー級タイトルマッチ ",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP 86 IMPACT",
+      "date": "2022-10-27",
+      "sourceUrl": "https://www.deep2001.com/deep-86-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPバンタム級タイトルマッチ王座決定戦 5分3R|〇元谷友貴（フリー）|TO 3R 4’43” リアネイキッドチョーク|●釜谷 真（ハニートラップ/Tri.H STUDIO）| |▼第14試合 DEEPフェザー級タイトルマッチ 5分3R|●芦田崇宏（王者／BRAVE）|判定0-5|〇弥益ドミネーター聡志（挑戦者／team SOS）| |▼第13試合 DEEPメガトン級タイトル挑",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2022 6th ROUND",
+      "date": "2022-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-6th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント|▼第9試合 DEEP バンタム級 5分2R|〇力也（KING OF LIBLTY）61.55kg|[1R 2分39秒 アームバー]|×海飛（和術慧舟會 HEARTS）61.65kg| |セミファイナル|▼第8試合 DEEP -60kg 5分2R|×濱口奏琉（パラエストラ和泉）59.65kg|[1R 3分50秒 腕十字]|〇RYOGA（KRAZY BEE）59.85kg| |▼第7試",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2022 6th ROUND",
+      "date": "2022-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-6th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル|▼第8試合 DEEP -60kg 5分2R|×濱口奏琉（パラエストラ和泉）59.65kg|[1R 3分50秒 腕十字]|〇RYOGA（KRAZY BEE）59.85kg| |▼第7試合 DEEP ライト級 5分2R|〇泉 武志（FIGHTER’S FLOW）70.80kg|[判定3-0] ※20-17, 20-18×2|×前田啓伍（Tristar Gym）69.90kg| |▼第6",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2022 5th ROUND",
+      "date": "2022-12-18",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2022-5th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフライ級5分3R|8.柴田“MONKEY”有哉（Team KIZUNA)|VS 杉山廣平(SPLASH)|2R3:24 三角締め 勝者：柴田| |セミファイナルDEEPバンタム級5分3R|7.中本龍平(BLOWS)|VS 牧野滉風（柔術＆MMAアカデミーG-face） 2R2:52 TKO 勝者：牧野| |DEEPライト級5分2R|6.大野“虎眼”賢良(キングジム神戸)|V",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2022 5th ROUND",
+      "date": "2022-12-18",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2022-5th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナルDEEPバンタム級5分3R|7.中本龍平(BLOWS)|VS 牧野滉風（柔術＆MMAアカデミーG-face） 2R2:52 TKO 勝者：牧野| |DEEPライト級5分2R|6.大野“虎眼”賢良(キングジム神戸)|VS ディーシー”オーバーマン”クラー(BLOWS) 判定0-3 勝者：ディーシー| |DEEPウェルター級5分2R|5.森井翼(パラエストラ天満)|VS 角野晃平(TEA",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2022 4th ROUND",
+      "date": "2022-12-18",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2022-4th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP 68kg以下 5分3R|7.中村大介（夕月堂本舗）|VS 岩本達彦（BLOWS）|2R2:57 ヒールホールド 勝者：中村| |セミファイナルDEEPバンタム級5分3R|6.増田拓真(総合格闘技道場reliable)|VS 上田直毅 (パラエストラ東京／ファイティスジムMSC)|1R3:34 腕十字 勝者：上田| |DEEPバンタム級5分2R|5.谷岡祐樹(パラエストラ加",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2022 4th ROUND",
+      "date": "2022-12-18",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2022-4th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナルDEEPバンタム級5分3R|6.増田拓真(総合格闘技道場reliable)|VS 上田直毅 (パラエストラ東京／ファイティスジムMSC)|1R3:34 腕十字 勝者：上田| |DEEPバンタム級5分2R|5.谷岡祐樹(パラエストラ加古川)|VS 八尋大輝(ニコニコファイトクラブ)|1R1:41 TKO 勝者：谷岡| |DEEPフェザー級5分2R|4.瀧口脩生(総合格闘技スタジオSTY",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 40",
+      "date": "2023-02-18",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-40/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第9試合 DEEP JEWELS フライ級 5分3R|〇中井りん（修斗道場四国）|一本 2R4分31秒 ※リアネイキッド・チョーク|●栗山葵（SMOKER GYM）| | | | | |セミファイナル 第8試合 DEEP JEWELS ストロー級 5分2R|●HIME（毛利道場）|一本 1R4分55秒 ※リアネイキッド・チョーク|〇万智（スポーツジム 67’s）| | | | | ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 40",
+      "date": "2023-02-18",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-40/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第8試合 DEEP JEWELS ストロー級 5分2R|●HIME（毛利道場）|一本 1R4分55秒 ※リアネイキッド・チョーク|〇万智（スポーツジム 67’s）| | | | | |第7試合 DEEP JEWELS 49kg 以下 5分2R|〇青野ひかる（ストライプル新百合ヶ丘）|判定3-0 ※20-18×2、19-19（マスト判定青野）|●ケイト・ロータス（KING GYM K",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2023 1st ROUND",
+      "date": "2023-04-02",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2023-1st/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級5分3R|〇平松翔(パラエストラ松戸) VS ×谷岡祐樹(パラエストラ加古川)|１ROUND 4：13 TKO|勝者 平松翔| |第13試合 DEEPフェザー級5分3R|×岩本達彦(BLOWS) VS 〇古根川充(修斗ジムASH）|2ROUND 2：46 TKO|勝者 古根川充| |第12試合 DEEPバンタム級5分3R|〇中本龍平(BLOWS) VS ×上荷大夢",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 41",
+      "date": "2023-05-28",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-41/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第8試合 DEEP JEWELS 49kg 以下 5分3R|〇伊澤星花（フリー/DEEP JEWELSストロー級王者）|一本 1R 3分31秒 ※三角絞め|●アム・ザ・ロケット（フリー/タイ/DEEP JEWELSミクロ級王者）| | | | |セミファイナル 第7試合 DEEP JEWELS 49kg 以下 5分3R|●須田萌里（SCORPION GYM）|TKO 1R 4分27",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 41",
+      "date": "2023-05-28",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-41/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第7試合 DEEP JEWELS 49kg 以下 5分3R|●須田萌里（SCORPION GYM）|TKO 1R 4分27秒 ※右カウンター→パウンド連打|〇パク・ジョンウン（Team Strong Wolf）| | | |第6試合 DEEP JEWELS ストロー級 5分3R|〇万智（スポーツジム 67’s）|一本 1R2分24秒 ※アームロック|●キム・ユジョン（TEAM GE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 42 ~10th Anniversary～",
+      "date": "2023-09-10",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-42-10th-anniversary%ef%bd%9e/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第11試合 DEEP JEWELS ミクロ級タイトルマッチ 5 分 3R|●アム・ザ・ロケット（フリー/王者）|判定0-5 ※5名ともに28-29|〇村上彩（フリー/挑戦者）|※村上が新王者に、アムは初防衛に失敗| | | | | | |▼セミファイナル第10試合 DEEP JEWELS 49kg 以下 5 分 3R|〇パク・シウ（KRAZY BEE）|判定3-0 ※三者共に30-2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 42 ~10th Anniversary～",
+      "date": "2023-09-10",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-42-10th-anniversary%ef%bd%9e/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第10試合 DEEP JEWELS 49kg 以下 5 分 3R|〇パク・シウ（KRAZY BEE）|判定3-0 ※三者共に30-27|●HIME（毛利道場）| | | | | | |▼第9試合 DEEP JEWELS 49kg 以下 5 分 2R|〇須田萌里（SCORPION GYM）|判定3-0 ※20-18×2、19-19（マスト判定須田）|●ケイト・ロータス（KING GYM",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2023 5th ROUND",
+      "date": "2023-09-10",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2023-5th-round-2/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第14試合 DEEP バンタム級 5 分 3R|〇DJ.taiki（パンクラスイズム横浜）|判定3-0 ※30-27、29-28、29-28|●上田直毅（パラエストラ東京/インプルーブ株式会社）| | | | | | |▼セミファイナル第13試合 DEEP フェザー級 5 分 2R|〇五明宏人（トラフォース赤坂）|TKO 1R 4分59秒 ※パンチ連打|●劉獅（KIBA マーシャルア",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2023 5th ROUND",
+      "date": "2023-09-10",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2023-5th-round-2/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第13試合 DEEP フェザー級 5 分 2R|〇五明宏人（トラフォース赤坂）|TKO 1R 4分59秒 ※パンチ連打|●劉獅（KIBA マーシャルアーツクラブ）| | | | | | |▼第12試合 DEEP フェザー級 5 分 2R|〇ユータ&ロック（秋本道場 jungle junction）|判定3-0|●TATSUMI（ネックス）| | | | | | |▼第11試合 DEE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HAMAMATSU IMPACT 2023",
+      "date": "2023-09-24",
+      "sourceUrl": "https://www.deep2001.com/deep-hamamatsu-2023/",
+      "label": "メインイベント",
+      "snippet": "メインイベントDEEP 58kg以下 3分3R キックルール |○|竹内賢一（TenCloverGym)|●としや(廣島ブルドッグ)|2R 1’56” TKO| | | |▼セミファイナルDEEPバンタム級 5分2R MMAルール|●|内山拓真（ボンサイ柔術）|○諏訪部哲平(IGGY HAND’S GYM)|1R 4’02″ TKO| | | |▼第22試合DEEPメガトン級 5分2R MMAルー",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP HAMAMATSU IMPACT 2023",
+      "date": "2023-09-24",
+      "sourceUrl": "https://www.deep2001.com/deep-hamamatsu-2023/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナルDEEPバンタム級 5分2R MMAルール|●|内山拓真（ボンサイ柔術）|○諏訪部哲平(IGGY HAND’S GYM)|1R 4’02″ TKO| | | |▼第22試合DEEPメガトン級 5分2R MMAルール|●|KENNY 中村・ザ・天才チンパンジー（MAXI GYM)|○稲田将（ISHITSUNA MMA)|1R 3’11″ TKO| | | |▼第21試合DEEP 55k",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 43",
+      "date": "2023-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-43/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS 49kg以下5分2R|○須田萌里(SCORPION GYM)|●|彩綺（フリー）|1R 0’49” 腕十字 | | | | | | | |▼DEEP JEWELSフライ級 5分2R|○栗山葵（SMOKER GYM）|●斎藤百湖（EX FIGHT）|1R 2’51” TKO| | | | | | |▼DEEP JEWELSバンタム級 5分2R|○熊谷麻理奈（T",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2023 6th ROUND",
+      "date": "2023-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2023-6th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPメガトン級 5分3R|○水野竜也（フリー）|●|SAINT（Y＆K MMA ACADEMY）|2R 0’17” TKO| | | | | | | |▼セミファイナル DEEPメガトン級 5分3R|○赤沢幸典（Tristar Gym日本館/Team Cloud）|●|ハリー・KIMURA（KICK PUNCH SUBMIT）|2R 2’17” TKO| | | | | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2023 6th ROUND",
+      "date": "2023-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2023-6th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPメガトン級 5分3R|○赤沢幸典（Tristar Gym日本館/Team Cloud）|●|ハリー・KIMURA（KICK PUNCH SUBMIT）|2R 2’17” TKO| | | | | | |▼DEEPメガトン級 5分2R|○稲田将(ISHITSUNA MMA)|●|トーマス（Y＆K ACADEMY)|1R 0’37” アームロック| | | | | | |▼DE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+      "date": "2023-11-26",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2023-3rd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフェザー級 5分3R|○|三村亘(パンクラス大阪稲垣組) |●|古根川充(修斗ジムASH）|1R0’23” KO スタンドパンチ| | | | | | |▼セミファイナル DEEPバンタム級 5分2R|○MG眞介(reversal gym osaka anne)|●|山﨑鼓大(BLOWS)|2R 3’34 リアネイキッドチョーク| | | | | | |▼DEEPフェザー級",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2023 3rd ROUND",
+      "date": "2023-11-26",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2023-3rd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPバンタム級 5分2R|○MG眞介(reversal gym osaka anne)|●|山﨑鼓大(BLOWS)|2R 3’34 リアネイキッドチョーク| | | | | | |▼DEEPフェザー級 5分2R|○瀧口脩生(総合格闘技スタジオSTYLE)|●|牧野滉風(柔術＆MMAアカデミーG-face)|判定3-0| | | | | | |▼DEEPフェザー級 5分2R|○|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2023 7th ROUND",
+      "date": "2023-12-10",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2023-7th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP 60kg以下 5分2R|○|風我（フリー）|●| 切嶋龍輝（マーシャルアーツクラブ中津川）|判定3-0| | | | | | |▼セミファイナル DEEPフライ級 5分2R|○|原虎徹（CAVE)|●三ツ塚勇介（Evermove）|1R 4’26″TKO| | | | | | |▼DEEPバンタム級 5分2R|●諏訪部哲平（IGGY HAND’S GYM）|○中務太陽（B",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2023 7th ROUND",
+      "date": "2023-12-10",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2023-7th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフライ級 5分2R|○|原虎徹（CAVE)|●三ツ塚勇介（Evermove）|1R 4’26″TKO| | | | | | |▼DEEPバンタム級 5分2R|●諏訪部哲平（IGGY HAND’S GYM）|○中務太陽（BLOWS）|判定0-3| | | | | | |▼DEEPライト級 5分2R|○倉本大悟（JAPAN TOP TEAM）|●|井上竜旗（AACC）|1R 0",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 118 IMPACT",
+      "date": "2024-03-09",
+      "sourceUrl": "https://www.deep2001.com/skyticket-presents-deep-118-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベントDEEPメガトン級王座統一戦 5分3R|○ロッキー・マルティネス（RM Sports/Spike 22）|●酒井リョウ(レンジャージム）|判定5-0|※ロッキー・マルティネスが王座防衛| | | | | | | |セミファイナル DEEPフェザー級タイトルマッチ 5分3R|●神田コウヤ(パラエストラ柏）|○青井人（BLOWS）|判定2-3|※青井人が新王者に| | | | | | |",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP 118 IMPACT",
+      "date": "2024-03-09",
+      "sourceUrl": "https://www.deep2001.com/skyticket-presents-deep-118-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフェザー級タイトルマッチ 5分3R|●神田コウヤ(パラエストラ柏）|○青井人（BLOWS）|判定2-3|※青井人が新王者に| | | | | | | |第7試合 DEEPライト級タイトルマッチ 5分3R|●イ·ソンハ（サビMMA）|○江藤公洋（和術慧舟會HEARTS）|2R 2’07” リアネイキッドチョーク|※江藤公洋が新王者に| | | | | | | |第6試合 DE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 1st ROUND",
+      "date": "2024-03-17",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELS ストロー級 5分3R|○松田亜莉紗(BLOWS)|●マドンナ（フリー）|1R 1’28” TKO| | | | | | | |セミファイナル DEEP JEWELS 59kg以下 5分2R|○栗山葵（SMOKER GYM）|●MANA (blooM)|1R 1’28” TKO| | | | | | | |第7試合 DEEPフェザー級 5分2R|●瀧口脩生(総",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 1st ROUND",
+      "date": "2024-03-17",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS 59kg以下 5分2R|○栗山葵（SMOKER GYM）|●MANA (blooM)|1R 1’28” TKO| | | | | | | |第7試合 DEEPフェザー級 5分2R|●瀧口脩生(総合格闘技スタジオSTYLE)|○銀グラップリングシュートボクサーズGSB）|判定1-2| | | |第6試合 DEEPウェルター級 5分2R|●鈴木琢仁（Bonsai",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 1st ROUND",
+      "date": "2024-03-17",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELS ストロー級 5分3R| |9.|松田亜莉紗|(BLOWS) VS |マドンナ（フリー）| | |セミファイナル DEEP JEWELS 59kg以下 5分2R| |8.|栗山葵|（SMOKER GYM）|VS MANA (blooM)| | |DEEPフェザー級 5分2R| |7.|瀧口脩生(総合格闘技スタジオSTYLE) VS 銀グラップリングシュートボク",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 1st ROUND",
+      "date": "2024-03-17",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS 59kg以下 5分2R| |8.|栗山葵|（SMOKER GYM）|VS MANA (blooM)| | |DEEPフェザー級 5分2R| |7.|瀧口脩生(総合格闘技スタジオSTYLE) VS 銀グラップリングシュートボクサーズGSB）| | |DEEPウェルター級 5分2R| |6.|鈴木琢仁（Bonsai Jiu-Jitsu）|VS| |角野晃平(TE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 44",
+      "date": "2024-03-24",
+      "sourceUrl": "https://www.deep2001.com/skyticket-presents-deep-jewels-44/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSアトム級タイトルマッチ|●パク·シユン（ザ·ジムラップ）|○伊澤星花（Roys GYM/JAPAN TOP TEAM）|2R 0’58” フロントチョーク|※伊澤星花が新王者に| | | | | | | | |セミファイナル DEEP JEWELS 49kg以下 5分3R|●桐生祐子（FourRhombus）|○ケイト・ロータス（フリー）|1R 1’28” T",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP JEWELS 44",
+      "date": "2024-03-24",
+      "sourceUrl": "https://www.deep2001.com/skyticket-presents-deep-jewels-44/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS 49kg以下 5分3R|●桐生祐子（FourRhombus）|○ケイト・ロータス（フリー）|1R 1’28” TKO| | | | | | |第7試合 DEEP JEWELS 49kg以下5分2R|●古瀬美月（フリー）|○彩綺（フリー）|1R 0’36” KO| | | | | | |第6試合 DEEP JEWELSフライ級 5分2R|奥富夕夏（リバーサルジ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 44",
+      "date": "2024-03-24",
+      "sourceUrl": "https://www.deep2001.com/skyticket-presents-deep-jewels-44/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSアトム級タイトルマッチ| |9.|王者：パク·シユン（ザ·ジムラップ） VS 伊澤星花（Roys GYM/JAPAN TOP TEAM）：挑戦者| | |パク・シユン| |所属：ザ·ジムラップ| |出身：ソウル| |身長・体重：157cm・48kg| |生年月日：1998年2月4日| |主なタイトル：第8代DEEP JEWELSアトム級現王者| |BLACK ",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP JEWELS 44",
+      "date": "2024-03-24",
+      "sourceUrl": "https://www.deep2001.com/skyticket-presents-deep-jewels-44/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS 49kg以下 5分3R| |8.|桐生祐子（FourRhombus）VS ケイト・ロータス（フリー）| | |DEEP JEWELSで活躍し、ONE Warriorで2勝1敗の戦績を残している桐生祐子。3年振りに凱旋した2022年12月のDEEP JEWELS 35で井上智子を破り、その後もサダエ・マヌーフ、富松恵美を破り3連勝を飾った。そんな中、2022年",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 1st ROUND",
+      "date": "2024-03-24",
+      "sourceUrl": "https://www.deep2001.com/%e5%ae%97%e6%98%8e%e5%bb%ba%e8%a8%adpresents-deep-tokyo-impact-2024-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフライ級 5分3R|○杉山廣平（パラエストラ柏）|●風我 (フリー）|判定3−０| | | | | | | |セミファイナル DEEPフェザー級 5分2R|○海飛（和術慧舟會HEARTS）|●TATSUMI（NEX）|判定2-1| | | | | | |第11試合 DEEP 68kg以下級 5分2R|太田将吾（NEX）|立成洋太（パラエストラ松戸）|判定3-0| | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 1st ROUND",
+      "date": "2024-03-24",
+      "sourceUrl": "https://www.deep2001.com/%e5%ae%97%e6%98%8e%e5%bb%ba%e8%a8%adpresents-deep-tokyo-impact-2024-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフェザー級 5分2R|○海飛（和術慧舟會HEARTS）|●TATSUMI（NEX）|判定2-1| | | | | | |第11試合 DEEP 68kg以下級 5分2R|太田将吾（NEX）|立成洋太（パラエストラ松戸）|判定3-0| | | | | | |第10試合 DEEPバンタム級 5分2R|●山本有人（リバーサルジム東京スタンドアウト）|○ハルク大城（ボスジム）|判定0",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 1st ROUND",
+      "date": "2024-03-24",
+      "sourceUrl": "https://www.deep2001.com/%e5%ae%97%e6%98%8e%e5%bb%ba%e8%a8%adpresents-deep-tokyo-impact-2024-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフライ級 5分3R| |13.|杉山廣平（パラエストラ柏） |VS |風我 (フリー）| | |杉山康平| |所属：パラエストラ柏| |出身地：愛知県| |身長・体重：165cm・57kg | |生年月日：1995年11月21日| |2015年6月のDEEP名古屋大会でプロデビュー。その後、パンクラスを主戦場に戦うが2021年9月のDEEP103で駒杵嵩大相手に5年振りのD",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 1st ROUND",
+      "date": "2024-03-24",
+      "sourceUrl": "https://www.deep2001.com/%e5%ae%97%e6%98%8e%e5%bb%ba%e8%a8%adpresents-deep-tokyo-impact-2024-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフェザー級 5分2R| |12.|海飛（和術慧舟會HEARTS）|VS TATSUMI|（NEX）| | |海飛| |和術慧舟會HEARTS| |出身：山口県| |身長・体重：177cm・66kg| |生年月日：1999年3月27日| |主なタイトル：DEEPフューチャーキングトーナメント2020フェザー級優勝| |極真空手で高校生時代に日本一に輝き、2021年3月のフュー",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2024 1st/2nd ROUND",
+      "date": "2024-04-07",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2024-1st-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフライ級 5分2R| |8.中西哲生（エキポセロ）VS |松岡疾人|（NEXSPORTS） | |判定1-2 勝者：松岡| | | | |セミファイナル DEEPストロー級 5分2R| |7.多湖力翔（NEXSPORTS）VS 鶴斗（SPLASH） | |2R 1:56 チョークスリーパー 勝者：多胡 | | | | |DEEP 75kg以下 5分2R| |6.小林ゆたか（",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2024 1st/2nd ROUND",
+      "date": "2024-04-07",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2024-1st-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPストロー級 5分2R| |7.多湖力翔（NEXSPORTS）VS 鶴斗（SPLASH） | |2R 1:56 チョークスリーパー 勝者：多胡 | | | | |DEEP 75kg以下 5分2R| |6.小林ゆたか（夕月堂本舗）VS 岡田充広（CBIMPACT）| |判定2-1 勝者：小林| | | | |DEEPフェザー級 5分2R| |5.宜野座ケビン（SPLASH）VS",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2024 1st/2nd ROUND",
+      "date": "2024-04-07",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2024-1st-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級 5分2R| |7.吉田陸（SPLASH）VS 切嶋龍輝（マーシャルアーツクラブ中津川）| |1R 2:11 TKO 勝者：切嶋| | |セミファイナル DEEP JEWEL 51kg以下 5分2R| |6.富松恵美（パラエストラ松戸）| |VS|マユミ・グラップリングシュートボクサーズジム（グラップリングシュートボクサーズ） | |判定2-1 勝者：富松 | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2024 1st/2nd ROUND",
+      "date": "2024-04-07",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2024-1st-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWEL 51kg以下 5分2R| |6.富松恵美（パラエストラ松戸）| |VS|マユミ・グラップリングシュートボクサーズジム（グラップリングシュートボクサーズ） | |判定2-1 勝者：富松 | | | | | | |DEEPライト級 5分2R| |5.今村滉（CBIMPACT）VS 河添幹斗（GSB多治見）| |1R 4:48 腕十時 勝者：河添| | |DEEPフ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 2nd ROUND",
+      "date": "2024-04-13",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPウェルター級5分3R|○佐藤洋一郎（KATANA GYM）|●嶋田伊吹（FIGHT HOLIC）|1R 0’52” チョークスリーパー| | | | | | |セミファイナル DEEPフェザー級 5分2R|●高野優樹（フリー）|○鬼山斑猫 (KRAZYBEE)|判定0-3| | | | | | |第8試合 DEEPフライ級 5分2R|●島袋チカラ（CORE）|○渋谷カズキ(",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 2nd ROUND",
+      "date": "2024-04-13",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフェザー級 5分2R|●高野優樹（フリー）|○鬼山斑猫 (KRAZYBEE)|判定0-3| | | | | | |第8試合 DEEPフライ級 5分2R|●島袋チカラ（CORE）|○渋谷カズキ(高本道場)|判定0-3| | | | | | |第7試合 DEEPバンタム級 5分2R|○朝比奈龍希（JAPAN TOP TEAM）|●八須拳太郎（FIGHTER’S FLOW）|2R",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 119 IMPACT",
+      "date": "2024-05-03",
+      "sourceUrl": "https://www.deep2001.com/deep-119-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第8試合 DEEP64kg以下 5分3R|○元谷友貴（アメリカン・トップチーム）|●平松翔（BLACK BELT JAPAN|2R 1’44” チョークスリーパー| | | | | | | | |セミファイナル第7試合 DEEPメガトン級 5分3R|○水野竜也（フリー）|●ANIMAL☆KOJI（HI ROLLERS ENTERTAINMENT)|判定3-0| | | | | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 119 IMPACT",
+      "date": "2024-05-03",
+      "sourceUrl": "https://www.deep2001.com/deep-119-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第7試合 DEEPメガトン級 5分3R|○水野竜也（フリー）|●ANIMAL☆KOJI（HI ROLLERS ENTERTAINMENT)|判定3-0| | | | | | |第6試合 DEEPライト級 5分3R|●北岡悟（パンクラスイズム横浜）|○倉本大悟（JAPAN TOP TEAM）|1R 4’55” TKO| | | | | | |第5試合 DEEPフライ級 5分3R|○村元",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 119 IMPACT",
+      "date": "2024-05-03",
+      "sourceUrl": "https://www.deep2001.com/deep-119-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP 64kg以下 5分3R| |8.|元谷友貴|（アメリカン・トップチーム）63.95kg| |VS |平松翔（BLACK BELT JAPAN）63.85kg| | | | | |セミファイナル DEEPメガトン級 5分 3R| |7.|水野竜也（フリー）106.40kg| |VS ANIMAL|☆KOJI（HI ROLLERS ENTERTAINMENT) 93.70kg",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 119 IMPACT",
+      "date": "2024-05-03",
+      "sourceUrl": "https://www.deep2001.com/deep-119-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPメガトン級 5分 3R| |7.|水野竜也（フリー）106.40kg| |VS ANIMAL|☆KOJI（HI ROLLERS ENTERTAINMENT) 93.70kg| | | |DEEPライト級 5分3R| |6.|北岡悟（パンクラスイズム横浜）70.65kg| |VS |倉本大悟|（JAPAN TOP TEAM）70.75kg| | | | |DEEPフライ級 5",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2024 in HAMAMATSU",
+      "date": "2024-05-12",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2024-in-hamamatsu/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第12試合 DEEPバンタム級 5分2R| |●加藤ケンジ（NeighborHood）|○諏訪部哲平(IGGY HAND’S GYM)|判定0-3| | | | | | | |セミファイナル 第11試合 DEEPフェザー級 5分2R| |●|拓MAX（TEAM HAMBOLT.KCC）|○橘川ヒロキ（IGGY HAND’S GYM)|判定0-3| | | | | | | |第10試",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP CAGE IMPACT 2024 in HAMAMATSU",
+      "date": "2024-05-12",
+      "sourceUrl": "https://www.deep2001.com/deep-cage-impact-2024-in-hamamatsu/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第11試合 DEEPフェザー級 5分2R| |●|拓MAX（TEAM HAMBOLT.KCC）|○橘川ヒロキ（IGGY HAND’S GYM)|判定0-3| | | | | | | |第10試合 DEEPフェザー級 5分2R| |○|畠山祐輔（ボンサイ柔術）|●杉原慎（スマイル柔術)|1R 0’50” リアネイキッドチョーク| | | | | | | |第9試合 DEEPフライ級 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 3rd ROUND",
+      "date": "2024-05-26",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-3rd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第12試合 DEEPストロー級統一戦 5分3R|●川原波輝（Team Alpha Male）|○越智晴雄（Little Giant Gym）|1R 1’59” フロントチョーク| | | | | | |セミファイナル第11試合 DEEP 63kg以下 5分3R|○石司晃一 (フリー)|●原口央（BRAVE）|判定2-1| | | | | | |第10試合 DEEPフェザー級 5分3R",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 3rd ROUND",
+      "date": "2024-05-26",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-3rd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第11試合 DEEP 63kg以下 5分3R|○石司晃一 (フリー)|●原口央（BRAVE）|判定2-1| | | | | | |第10試合 DEEPフェザー級 5分3R|○五明宏人（JAPAN TOP TEAM）|●瀧口脩生(総合格闘技スタジオSTYLE)|判定3-0| | | | | | | |第9試合 DEEPバンタム級 5分2R|○力也(FIGHT FARM)|●山本有人（リ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 2nd ROUND",
+      "date": "2024-06-02",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP 60kg以下契約 5分3R|10.安谷屋智弘（氷ヲ刻メ／池田道場)59.75kg| | | |VS 濱口奏琉(パラエストラ和泉) 49.85kg | |判定3-0 勝者：安谷屋| | | | | | | | |セミファイナル DEEPフェザー級 5分2R|9.|前薗渓(格闘技吉田道場) 66.10kg| | |VS ペレイラ ユウジ ラファエル（Bonsai Jiu-Ji",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 2nd ROUND",
+      "date": "2024-06-02",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフェザー級 5分2R|9.|前薗渓(格闘技吉田道場) 66.10kg| | |VS ペレイラ ユウジ ラファエル（Bonsai Jiu-Jitsu shiga）65.35kg| |判定3-0 勝者：前園| | | | | | | |DEEPバンタム級 5分2R |8.|谷岡祐樹(パラエストラ加古川) 61.50kg| | |VS |切嶋龍輝|（マーシャルアーツクラブ中津川）",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 120 IMPACT",
+      "date": "2024-07-14",
+      "sourceUrl": "https://www.deep2001.com/deep-120-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第10試合 DEEPウェルター級タイトルマッチ5分3R|●鈴木槙吾（Mil gracias）|○佐藤洋一郎（KATANA GYM）|1R 2’03” TKO| | | | | | | |セミファイナル第9試合 DEEPバンタム級 5分3R|●CORO（ROYS GYM / JAPAN TOP TEAM）|○瀧澤謙太（Fired Up Gym）|判定0-3| | | | | | |第8",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 120 IMPACT",
+      "date": "2024-07-14",
+      "sourceUrl": "https://www.deep2001.com/deep-120-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第9試合 DEEPバンタム級 5分3R|●CORO（ROYS GYM / JAPAN TOP TEAM）|○瀧澤謙太（Fired Up Gym）|判定0-3| | | | | | |第8試合 DEEPフェザー級 5分3R|●中村大介（夕月堂本舗）|○白川ダーク陸斗（JAPAN TOP TEAM）|判定1-2| | | | | | |第7試合 DEEPウェルター級 5分3R|●阿部大治",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 120 IMPACT",
+      "date": "2024-07-14",
+      "sourceUrl": "https://www.deep2001.com/deep-120-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPウェルター級タイトルマッチ5分3R| |10.|王者：鈴木槙吾（Mil gracias）VS 佐藤洋一郎（KATANA GYM）：挑戦者| | | | | |セミファイナル DEEPバンタム級 5分3R| |9.CORO（ROYS GYM / JAPAN TOP TEAM）VS 瀧澤謙太（Fired Up Gym）| | | | | |DEEPフェザー級 5分3R| |8.",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 120 IMPACT",
+      "date": "2024-07-14",
+      "sourceUrl": "https://www.deep2001.com/deep-120-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPバンタム級 5分3R| |9.CORO（ROYS GYM / JAPAN TOP TEAM）VS 瀧澤謙太（Fired Up Gym）| | | | | |DEEPフェザー級 5分3R| |8.|中村大介（夕月堂本舗）VS 白川ダーク陸斗（JAPAN TOP TEAM）| | |DEEPウェルター級 5分3R| |7.|阿部大治（フリー） VS |嶋田伊吹（FIGHT HO",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEPサマーフェスティバル2024 inお台場",
+      "date": "2024-08-31",
+      "sourceUrl": "https://www.deep2001.com/deep%e3%82%b5%e3%83%9e%e3%83%bc%e3%83%95%e3%82%a7%e3%82%b9%e3%83%86%e3%82%a3%e3%83%90%e3%83%ab2024-in%e3%81%8a%e5%8f%b0%e5%a0%b4/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第8試合 DEEPメガトン級 5分 3R|○長谷川賢（フリー）|●SAINT（Y＆K MMA ACADEMY）|判定3-0| | | | | | |セミファイナル 第7試合 DEEPフェザー級 5分3R|●西谷大成（JAPAN TOP TEAM）|○海飛（和術慧舟會HEARTS）|2R 1’50” フロントチョーク| | | | | | |第6試合 DEEPバンタム級 5分2R|○窪",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEPサマーフェスティバル2024 inお台場",
+      "date": "2024-08-31",
+      "sourceUrl": "https://www.deep2001.com/deep%e3%82%b5%e3%83%9e%e3%83%bc%e3%83%95%e3%82%a7%e3%82%b9%e3%83%86%e3%82%a3%e3%83%90%e3%83%ab2024-in%e3%81%8a%e5%8f%b0%e5%a0%b4/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第7試合 DEEPフェザー級 5分3R|●西谷大成（JAPAN TOP TEAM）|○海飛（和術慧舟會HEARTS）|2R 1’50” フロントチョーク| | | | | | |第6試合 DEEPバンタム級 5分2R|○窪田泰斗（FourRhombus）|●日比野”エビ中”純也 (ISHITSUNA MMA)|2R 3’59” ツイスター| | | | | |第5試合 DEEPフェ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 46",
+      "date": "2024-09-08",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-46/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第9試合 DEEP JEWELSストロー級 5分3R|○万智（フリー）|●スーリ・マンフレディ（Rage Fight Team）|2R 2’43” 肩固め| | | | | | |セミファイナル 第8試合 DEEP JEWELS 49kg以下 5分3R|○HIME（毛利道場）|●彩綺（フリー）|判定3-0| | | | | | |第7試合 DEEP JEWELSアトム級5分3R|○",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 46",
+      "date": "2024-09-08",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-46/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第8試合 DEEP JEWELS 49kg以下 5分3R|○HIME（毛利道場）|●彩綺（フリー）|判定3-0| | | | | | |第7試合 DEEP JEWELSアトム級5分3R|○村上彩（フリー）|●桐生祐子（FourRhombus）|2R 4’49” 腕十時| | | | | | |第6試合 DEEP JEWELSミクロ級 5分2R|●山崎桃子（坂口道場一族）|○知名眞陽",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 4th ROUND",
+      "date": "2024-09-08",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-4th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第12試合 DEEPバンタム級 5分3R|○魚井フルスイング(和術慧舟會HEARTS)|●梶本保希（パラエストラ八王子）|判定3-0| | | | | | |セミファイナル第11試合 DEEPフライ級 5分3R|●渋谷カズキ(高本道場/FIGHTER’S FLOW)|○原虎徹（CAVE)|1R 2’29” KO| | | | | | |第10試合 DEEＰフライ級 5分2R|●マサト",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 4th ROUND",
+      "date": "2024-09-08",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-4th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第11試合 DEEPフライ級 5分3R|●渋谷カズキ(高本道場/FIGHTER’S FLOW)|○原虎徹（CAVE)|1R 2’29” KO| | | | | | |第10試合 DEEＰフライ級 5分2R|●マサト・ナカムラ(レンジャージム）|○濱口奏琉（パラエストラ和泉）|判定0-3| | | | | | |第9試合 DEEPフライ級 5分2R|○松岡疾人（NEX SPORTS）|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 4th ROUND",
+      "date": "2024-09-08",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-4th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級 5分3R| |12.|魚井フルスイング(和術慧舟會HEARTS)| VS |梶本保希（パラエストラ八王子）| | |セミファイナル DEEPフライ級 5分3R| |11.|渋谷カズキ(高本道場/FIGHTER’S FLOW) VS |原虎徹|（CAVE)| | |DEEＰフライ級 5分2R| |10.|マサト・ナカムラ(レンジャージム）VS |濱口奏琉（パラエス",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 4th ROUND",
+      "date": "2024-09-08",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-4th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフライ級 5分3R| |11.|渋谷カズキ(高本道場/FIGHTER’S FLOW) VS |原虎徹|（CAVE)| | |DEEＰフライ級 5分2R| |10.|マサト・ナカムラ(レンジャージム）VS |濱口奏琉（パラエストラ和泉）| | |DEEPフライ級 5分2R| |9.|松岡疾人（NEX SPORTS）|VS |安永吏成（フリー）| | |DEEPフライ級 5分2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 121 IMPACT",
+      "date": "2024-09-16",
+      "sourceUrl": "https://www.deep2001.com/deep-121-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第9試合 DEEPバンタム級王座決定戦 5分3R|○福田龍彌（MIBURO）|●瀧澤謙太（Fired Up Gym）|1R 4’19” KO| | | | | | |セミファイナル第8試合 DEEPライト級タイトルマッチ 5分3R|●江藤公洋（和術慧舟會HEARTS）|○野村駿太（BRAVE）：挑戦者|判定0-5| | | | | | | |第7試合 DEEPメガトン級 5分3R|●",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 121 IMPACT",
+      "date": "2024-09-16",
+      "sourceUrl": "https://www.deep2001.com/deep-121-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第8試合 DEEPライト級タイトルマッチ 5分3R|●江藤公洋（和術慧舟會HEARTS）|○野村駿太（BRAVE）：挑戦者|判定0-5| | | | | | | |第7試合 DEEPメガトン級 5分3R|●水野竜也（フリー）|○大成（フリー）|1R 3’13” TKO| | | | | | |第8試合 DEEPフライ級 5分2R|○KENTA（K-Clann）|●渡部修斗（FIGHT",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 3rd ROUND",
+      "date": "2024-09-22",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-3rd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELS 49kg以下 5分3R| |9.|須田萌里(SCORPION GYM) VSイ・イェジ(韓国/team aom)| |1R3分17秒 アームバー 勝者 須田| | | | | | |セミファイナル DEEPフェザー級 5分3R| |8.|三村亘(パンクラス大阪稲垣組) VS鬼山斑猫|(KRAZY BEE)| |判定2-1 勝者 三村| | | | | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 3rd ROUND",
+      "date": "2024-09-22",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-3rd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフェザー級 5分3R| |8.|三村亘(パンクラス大阪稲垣組) VS鬼山斑猫|(KRAZY BEE)| |判定2-1 勝者 三村| | | | | | |DEEPフェザー級 5分2R| |7.|古根川充(修斗ジムASH)VS牧野滉風(柔術＆MMAアカデミーG-face)| |1R0分44秒 TKO 勝者 牧野| | | | | | |DEEPウェルター級 5分2R| |6.",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 122 IMPACT",
+      "date": "2024-11-04",
+      "sourceUrl": "https://www.deep2001.com/deep-122-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第8試合 DEEPフライ級5分3R|○神龍誠（神龍ワールドジム）|●KENTA（K-Clann）|判定2-1| | | | | | |セミファイナル 第7試合 DEEPメガトン級 5分3R|●長谷川賢（HASEGAWAサーカス団)|○酒井リョウ（レンジャージム）|2R 3′ 12″ 判定0-2| | | | | |第6試合 DEEP JEWELS 50kg以下5分3R|○ケイト・ロ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 122 IMPACT",
+      "date": "2024-11-04",
+      "sourceUrl": "https://www.deep2001.com/deep-122-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第7試合 DEEPメガトン級 5分3R|●長谷川賢（HASEGAWAサーカス団)|○酒井リョウ（レンジャージム）|2R 3′ 12″ 判定0-2| | | | | |第6試合 DEEP JEWELS 50kg以下5分3R|○ケイト・ロータス（フリー）|●月井準南（FIGHTER’S FLOW）|2R 4’01” リアネイキッドチョーク| | | | | | |第5試合 DEEPライ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 47",
+      "date": "2024-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-47/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第8試合 DEEP JEWELS 58kg以下 5分3R|○中井りん（修斗道場四国）|●鈴木”BOSS”遥（SAI-GYM）|1R 3’32” TKO| | | | | | |セミファイナル 第7試合 DEEP JEWELS ストロー級 5分3R|○万智（フリー）|●アム・ザ・ロケット（フリー）|2R 2’27” ヒールホールド| | | | | |第6試合 DEEP JEWELS",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 47",
+      "date": "2024-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-47/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第7試合 DEEP JEWELS ストロー級 5分3R|○万智（フリー）|●アム・ザ・ロケット（フリー）|2R 2’27” ヒールホールド| | | | | |第6試合 DEEP JEWELSバンタム級 5分2R|●熊谷麻理奈（Trister Gym）|○MANA (blooM)|1R 1’08” アームロック| | | | | |第5試合 DEEP JEWELS バンタム級 5分",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 47",
+      "date": "2024-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-47/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS ストロー級 5分3R| |7.|万智（フリー）52.60kg| |VS |アム・ザ・ロケット（フリー）52.30kg| | |DEEP JEWELSバンタム級 5分2R| |6.|熊谷麻理奈（Trister Gym）61.55kg| |VS MANA (blooM) 61.10kg| | |DEEP JEWELS バンタム級 5分2R| |5.|百湖（リバー",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 5th ROUND",
+      "date": "2024-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-5th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第11試合 DEEPフェザー級 5分3R|○五明宏人（JAPAN TOP TEAM）|●ミヨン・ジェウク（Team MAD）|判定3-0| | | | | | | |セミファイナル 第10試合 DEEPバンタム級 5分3R|●後藤丈治（TRIBE TOKYO MMA）|○マンド・グディエレス（Murcielago MMA）|判定1-2| | | | | | |第9試合 DEEPバン",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 5th ROUND",
+      "date": "2024-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-5th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第10試合 DEEPバンタム級 5分3R|●後藤丈治（TRIBE TOKYO MMA）|○マンド・グディエレス（Murcielago MMA）|判定1-2| | | | | | |第9試合 DEEPバンタム級 5分2R|○力也(FIGHT FARM)|●吉田陸（Splash）|1R 2’47” 肩固め| | | | | | |第8試合 DEEPバンタム級 5分2R|●諏訪部哲平（I",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 5th ROUND",
+      "date": "2024-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-5th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフェザー級 5分3R| |11.|五明宏人|（JAPAN TOP TEAM）66.30kg| |VS| |ミヨン・ジェウク（Team MAD）66.15kg| | | | |セミファイナル DEEPバンタム級 5分3R| |10.|後藤丈治（TRIBE TOKYO MMA）61.55kg| |VS|マンド・グディエレス（Murcielago MMA）61.50kg| | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2024 5th ROUND",
+      "date": "2024-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2024-5th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPバンタム級 5分3R| |10.|後藤丈治（TRIBE TOKYO MMA）61.55kg| |VS|マンド・グディエレス（Murcielago MMA）61.50kg| | | | | | |DEEPバンタム級 5分2R| |9.|力也(FIGHT FARM) 61.60kg| |VS |吉田陸（Splash）61.65kg| | | |DEEPバンタム級 5分2R| |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 5th ROUND",
+      "date": "2024-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-5th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSストロー級 5分2R| |7.松田亜莉紗(BLOWS) VS エリザベス(チームエース)| |1R2分09秒 TKO 勝者 松田| | | | | | |セミファイナル DEEPウェルター級 5分3R| |6.角野晃平(TEAM FAUST) VS 阿部光太(TRIBE TOKYO M.M.A)| |2R3分51秒 TKO 勝者 角野| | | | | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 5th ROUND",
+      "date": "2024-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-5th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPウェルター級 5分3R| |6.角野晃平(TEAM FAUST) VS 阿部光太(TRIBE TOKYO M.M.A)| |2R3分51秒 TKO 勝者 角野| | | | | | | |DEEPバンタム級 5分2R| |5.谷岡祐樹(パラエストラ加古川) VS 堂園悠(修和館)| |1R4分27秒 TKO 勝者 堂園悠| | | | | |DEEPフェザー級 5分2R| ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 4th ROUND",
+      "date": "2024-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-4th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELSアトム級 5分3R| |8.須田萌里(SCORPION GYM) VS上瀬あかり (毛利道場)| |2R2分07秒 アームバー 勝者 須田| | | | | | |セミファイナル DEEPバンタム級 5分3R| |7.鹿志村仁之介(Battle-Box) VS RYUKI(フリー)| |1R1分25秒 リアネイキットチョーク 勝者 鹿志村| | | | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2024 4th ROUND",
+      "date": "2024-12-22",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2024-4th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPバンタム級 5分3R| |7.鹿志村仁之介(Battle-Box) VS RYUKI(フリー)| |1R1分25秒 リアネイキットチョーク 勝者 鹿志村| | | | | | |DEEPフェザー級 5分2R| |6.三村亘(パンクラス大阪稲垣組) VS 劉獅(KIBAマーシャルアーツクラブ)| |1R1分21秒 TKO 勝者 三村| | | | | |DEEPフライ級 5分",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 124 IMPACT",
+      "date": "2025-03-15",
+      "sourceUrl": "https://www.deep2001.com/deep-124-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第10試合 宗明建設Presents DEEPフェザー級GP2025一回戦 5分3R|●中村大介（夕月堂本舗）|○五明宏人（JAPAN TOP TEAM）|判定0-5| | | | | | |セミファイナル 第9試合 宗明建設Presents DEEPフェザー級GP2025一回戦 5分3R|●芦田崇宏（BRAVEGYM）|○水野新太（フリー）|1R 4’21” TKO| | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 124 IMPACT",
+      "date": "2025-03-15",
+      "sourceUrl": "https://www.deep2001.com/deep-124-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第9試合 宗明建設Presents DEEPフェザー級GP2025一回戦 5分3R|●芦田崇宏（BRAVEGYM）|○水野新太（フリー）|1R 4’21” TKO| | | | | | |第8試合 宗明建設Presents DEEPフェザー級GP2025一回戦 5分3R|●奥山貴大（NEX SPORTS）|○海飛（和術慧舟會HEARTS）|判定0-5| | | | | | |第７試",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 1st ROUND",
+      "date": "2025-03-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第9試合 DEEPライト級5分3R| |○倉本大悟（JAPAN TOP TEAM）|●トミー渡部（KATANA GYM）|3R 2’10” TKO| | | | | | |セミファイナル 第8試合 DEEP 58kg以下 5分3R|○力也(FIGHT FARM)|●原虎徹（CAVE)|1R 0’14” KO| | | | | | |第7試合 DEEPバンタム級5分3R|○杉山廣平(",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 1st ROUND",
+      "date": "2025-03-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第8試合 DEEP 58kg以下 5分3R|○力也(FIGHT FARM)|●原虎徹（CAVE)|1R 0’14” KO| | | | | | |第7試合 DEEPバンタム級5分3R|○杉山廣平(THE BLACK BELT JAPAN）|●濱口奏琉（パラエストラ和泉）|判定2-1| | | | | | |第6試合 DEEPフェザー級GP一回戦リザーブマッチ5分3R|●畠山祐輔（ボ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 48",
+      "date": "2025-03-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-48/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第11試合 DEEP JEWELS 49kg以下 5分3R|●浜崎朱加(AACC)|○須田萌里(SCORPION GYM)|1R 2’28” リアネイキッドチョーク| | | | | | | |セミファイナル 第10試合 DEEP JEWELSバンタム級 5分3R|○東よう子（リバーサルジム新宿Me,We)|●MANA (blooM)|2R 3’48” TKO| | | | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 48",
+      "date": "2025-03-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-48/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第10試合 DEEP JEWELSバンタム級 5分3R|○東よう子（リバーサルジム新宿Me,We)|●MANA (blooM)|2R 3’48” TKO| | | | | | |第9試合 DEEP JEWELS 49kg以下5分2R|○青野ひかる（FIGHT LYNX）|●彩綺（和術慧舟會HEARTS）4|判定3-0| | | | | | |第8試合 DEEP JEWELSミクロ級",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 1st ROUND",
+      "date": "2025-04-06",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第9試合 DEEP JEWELS 60kg以下 5分3R|○栗山葵(SMOKER GYM) 59.40kg|●鈴木”BOSS”遥 (SAI-GYM) 59.45kg|判定3-0| | | | | | |第8試合 セミファイナル DEEPフェザー級GP一回戦リザーブマッチ5分3R|●三村亘（パンクラス大阪稲垣）65.75kg|○延命そら(TEAM FAUST) 66.20kg|1R ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 2nd ROUND",
+      "date": "2025-04-13",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第11試合 DEEPバンタム級 5分3R|○中島太一（ロータス世田谷）|●ハルク大城（ボスジム）|2R 3’19” TKO| | | | | | |セミファイナル第10試合 DEEPフライ級 5分2R|●神酒龍一（HERMIT CLUB）|○斎藤璃貴（Fight Holic）|判定1-2| | | | | | |第9試合 DEEPストロー級 5分2R|●多湖力翔（NEX SPORTS",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 2nd ROUND",
+      "date": "2025-04-13",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第10試合 DEEPフライ級 5分2R|●神酒龍一（HERMIT CLUB）|○斎藤璃貴（Fight Holic）|判定1-2| | | | | | |第9試合 DEEPストロー級 5分2R|●多湖力翔（NEX SPORTS）|○杉山空(THE BLACK BELT JAPAN）|1R 3’21” TKO| | | | | | |第8試合 DEEPウェルター級 5分2R|○佐々木大（",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2025 1st ROUND",
+      "date": "2025-04-20",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第19試合 DEEP フライ級 5 分 2R|●松岡疾人（NEX SPORTS）|○八尋大輝（ニコニコファイトクラブ）|1R 1’10” TKO| | | | | | |セミファイナル第18試合 DEEP バンタム級 5 分 2R|●吉田陸（SPLASH）|○草野ガブリエル（草野道場）|判定0-3| | | | | | |第17試合 DEEP JEWELS 50kg 以下 5 分 2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2025 1st ROUND",
+      "date": "2025-04-20",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第18試合 DEEP バンタム級 5 分 2R|●吉田陸（SPLASH）|○草野ガブリエル（草野道場）|判定0-3| | | | | | |第17試合 DEEP JEWELS 50kg 以下 5 分 2R|ののか (FIGHTER’S FLOW)|マユミ GSB（GSB 大須 MACS）|ノーコンテスト| | | | |第16試合 DEEP フライ級 5 分 2R|○中西哲夫（エキポ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2025 1st ROUND",
+      "date": "2025-04-20",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP フライ級 5 分 2R| |19.松岡疾人（NEX SPORTS） VS 八尋大輝（ニコニコファイトクラブ）| | |セミファイナル DEEP バンタム級 5 分 2R| |18.吉田陸（SPLASH） VS 草野ガブリエル（草野道場）| | |DEEP JEWELS 50kg 以下 5 分 2R| |17.ののか (FIGHTER’S FLOW) VS マユミ GSB（",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2025 1st ROUND",
+      "date": "2025-04-20",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2025-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP バンタム級 5 分 2R| |18.吉田陸（SPLASH） VS 草野ガブリエル（草野道場）| | |DEEP JEWELS 50kg 以下 5 分 2R| |17.ののか (FIGHTER’S FLOW) VS マユミ GSB（GSB 大須 MACS）| | |ののか (FIGHTER’S FLOW)が 900g オーバーのため減点 2 からスタートします。ただし、マユ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HAMAMATSU IMPACT 2025 1st ROUND",
+      "date": "2025-04-27",
+      "sourceUrl": "https://www.deep2001.com/deep-hamamatsu-impact-2025-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第19試合 DEEP 64kg以下 3分3R KICKルール |○基山幹太（BELLWOOD FIGHTTEAM）|●竹市一樹（二刀会）|1R 1’12” TKO(タオル投入)| | | | | | |セミファイナル 第18試合 DEEPライト級 5分2R|ストリートBOB♡洸助（BOND GYM）VS|岡田充広(CB IMPACT)|ノーコンテスト(バッティング)| | | | ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HAMAMATSU IMPACT 2025 1st ROUND",
+      "date": "2025-04-27",
+      "sourceUrl": "https://www.deep2001.com/deep-hamamatsu-impact-2025-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第18試合 DEEPライト級 5分2R|ストリートBOB♡洸助（BOND GYM）VS|岡田充広(CB IMPACT)|ノーコンテスト(バッティング)| | | | |第17試合 DEEP 58kg以下 3分3R KICKルール|●大澤匡弘（STRIKEｓ GYM）|○荒川ルシファー大夢（NJKF心將塾）|判定0-3| | | | | |第16試合 DEEPバンタム級 5分2R|○",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HAMAMATSU IMPACT 2025 1st ROUND",
+      "date": "2025-04-27",
+      "sourceUrl": "https://www.deep2001.com/deep-hamamatsu-impact-2025-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP 64kg以下 3分3R KICKルール | |19.|基山幹太（BELLWOOD FIGHTTEAM） VS 竹市一樹（二刀会）| | |セミファイナル DEEPライト級 5分2R| |18.|ストリートBOB♡洸助（BOND GYM）VS 岡田充広(CB IMPACT)| | |DEEP 58kg以下 3分3R KICKルール| |17.|大澤匡弘（STRIKEｓ GY",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HAMAMATSU IMPACT 2025 1st ROUND",
+      "date": "2025-04-27",
+      "sourceUrl": "https://www.deep2001.com/deep-hamamatsu-impact-2025-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPライト級 5分2R| |18.|ストリートBOB♡洸助（BOND GYM）VS 岡田充広(CB IMPACT)| | |DEEP 58kg以下 3分3R KICKルール| |17.|大澤匡弘（STRIKEｓ GYM）VS 荒川ルシファー大夢（NJKF心將塾）| | |DEEPバンタム級 5分2R| |16.|諏訪部哲平(IGGY HNAD GYM) VS ふくやーまん(FI",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 125 IMPACT",
+      "date": "2025-05-05",
+      "sourceUrl": "https://www.deep2001.com/deep-125-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第8試合 DEEPバンタム級タイトルマッチ 5分3R|○王者：福田龍彌（MIBURO）|●牛久絢太郎（アメリカン・トップチーム/K-Clann）:挑戦者|判定5-0|※福田龍彌がタイトルを防衛| | | | | | | |セミファイナル 第7試合 DEEPフェザー級GP準決勝 5分3R|●海飛（和術慧舟會HEARTS）|○水野新太（フリー）|判定0-5| | | | | | |第6",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 125 IMPACT",
+      "date": "2025-05-05",
+      "sourceUrl": "https://www.deep2001.com/deep-125-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第7試合 DEEPフェザー級GP準決勝 5分3R|●海飛（和術慧舟會HEARTS）|○水野新太（フリー）|判定0-5| | | | | | |第6試合 DEEPフェザー級GP準決勝 5分3R|●五明宏人（JAPAN TOP TEAM）|○高橋遼伍（KRAZY BEE）|判定0-5| | | | | | |第5試合 DEEPウェルター級タイトルマッチ 5分3R|●王者：佐藤洋一郎（K",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 125 IMPACT",
+      "date": "2025-05-05",
+      "sourceUrl": "https://www.deep2001.com/deep-125-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第8試合 DEEPバンタム級タイトルマッチ 5分3R|王者：福田龍彌（MIBURO） 61.15kg|牛久絢太郎（アメリカン・トップチーム/K-Clann）:挑戦者 60.95kg| | | | | |セミファイナル 第7試合 DEEPフェザー級GP準決勝 5分3R|海飛（和術慧舟會HEARTS） 66.20kg|水野新太（フリー） 66.15kg| | | | | |第6試合 D",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 125 IMPACT",
+      "date": "2025-05-05",
+      "sourceUrl": "https://www.deep2001.com/deep-125-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第7試合 DEEPフェザー級GP準決勝 5分3R|海飛（和術慧舟會HEARTS） 66.20kg|水野新太（フリー） 66.15kg| | | | | |第6試合 DEEPフェザー級GP準決勝 5分3R|五明宏人（JAPAN TOP TEAM）66.25kg|高橋遼伍（KRAZY BEE）66.25kg| | | | | |第5試合 DEEPウェルター級タイトルマッチ 5分3R|王",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 125 IMPACT",
+      "date": "2025-05-05",
+      "sourceUrl": "https://www.deep2001.com/deep-125-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級タイトルマッチ 5分3R| |8.王者：福田龍彌（MIBURO） | | |VS 牛久絢太郎（アメリカン・トップチーム/K-Clann）:挑戦者 | | |セミファイナル DEEPフェザー級GP準決勝 5分3R| |7.海飛（和術慧舟會HEARTS）| | |VS 水野新太（フリー）| | |DEEPフェザー級GP準決勝 5分3R| |6.|五明宏人（JAPAN ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 125 IMPACT",
+      "date": "2025-05-05",
+      "sourceUrl": "https://www.deep2001.com/deep-125-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPフェザー級GP準決勝 5分3R| |7.海飛（和術慧舟會HEARTS）| | |VS 水野新太（フリー）| | |DEEPフェザー級GP準決勝 5分3R| |6.|五明宏人（JAPAN TOP TEAM）VS 高橋遼伍（KRAZY BEE）| | |DEEPウェルター級タイトルマッチ 5分3R| |5.王者：佐藤洋一郎（KATANA GYM）| | |VS 角野晃平(TEA",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 3rd ROUND",
+      "date": "2025-05-25",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-3rd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第10試合 DEEPバンタム級5分3R|○雅駿介（CAVE）|●窪田泰斗（FourRhombus）|2R 1’18” KO| | | | | | |セミファイナル第9試合 DEEP VS BREAKING DOWN|DEEP 60kg以下5分3R|○RYOGA（フリー）|●咲季（七福人）|3R 0’28″|咲季選手グランド状態で頭部への膝蹴りにより失格| | | | | | |第8",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 3rd ROUND",
+      "date": "2025-05-25",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-3rd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第9試合 DEEP VS BREAKING DOWN|DEEP 60kg以下5分3R|○RYOGA（フリー）|●咲季（七福人）|3R 0’28″|咲季選手グランド状態で頭部への膝蹴りにより失格| | | | | | |第8試合 DEEP VS BREAKING DOWN|DEEP 68kg以下 5分2R|○太田将吾（NEX SPORTS）|●カンジ（和術慧舟會HEARTS）|判定3-",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 3rd ROUND",
+      "date": "2025-05-25",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-3rd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPバンタム級5分3R| |10.|雅駿介（CAVE） VS 窪田泰斗（FourRhombus）| | |DEEP VS BREAKING DOWN| |DEEP 60kg以下5分2R| |9.RYOGA|（フリー） VS 咲季（七福人）| |※RYOGAが初回計量の規定時間に遅れたためDEEP公式ルールに従いイエローカード1枚の減点1からのスタートとなりました。| | |DE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 49",
+      "date": "2025-05-25",
+      "sourceUrl": "https://www.deep2001.com/deepjewels49-20250512/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第8試合 DEEP JEWELS 49kg以下 5分3R|○HIME（毛利道場）|●重田ホノカ（THE BLACK BELT JAPAN）|2R 3’00” 腕ひしぎ三角固め| | | | | |セミファイナル第7試合 DEEP JEWELS 58kg以下 5分3R|●栗山葵（SMOKER GYM）|○奥富夕夏（リバーサルジム新宿ME,WE）|判定0-3| | | | | | |第6",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 49",
+      "date": "2025-05-25",
+      "sourceUrl": "https://www.deep2001.com/deepjewels49-20250512/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第7試合 DEEP JEWELS 58kg以下 5分3R|●栗山葵（SMOKER GYM）|○奥富夕夏（リバーサルジム新宿ME,WE）|判定0-3| | | | | | |第6試合DEEP JEWELS 49kg以下 5分2R|○彩綺（和術慧舟會HEARTS）|●SAAYA(VICTORY GYM)|判定2-1| | | | | | |第5試合 DEEP JEWELS 54kg以下 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 49",
+      "date": "2025-05-25",
+      "sourceUrl": "https://www.deep2001.com/deepjewels49-20250512/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELS 49kg以下 5分3R| |8.HIME（毛利道場）VS 重田ホノカ（THE BLACK BELT JAPAN）| |※重田ホノカが最終計量で1.75kgのオーバーのためDEEP公式ルールに従った実施する事となりました。重田ホノカ選手には減点3からのスタートとなりHIME選手が勝利した時のみ公式記録となります。重田ホノカ選手が勝利した場合はノーコンテストとな",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 49",
+      "date": "2025-05-25",
+      "sourceUrl": "https://www.deep2001.com/deepjewels49-20250512/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELS 58kg以下 5分3R| |7.栗山葵（SMOKER GYM）VS 奥富夕夏（リバーサルジム新宿ME,WE）| | |DEEP JEWELS 49kg以下 5分2R| |6.彩綺（和術慧舟會HEARTS）VS SAAYA(VICTORY GYM)| | |DEEP JEWELS 54kg以下 5分2R| |5.横瀬友愛（BELVA）VS 成本優良（POLAR",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 2nd ROUND",
+      "date": "2025-06-29",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第9試合 DEEPフライ級 5分3R|●神酒龍一（HERMIT CLUB）|○濱口奏琉（パラエストラ和泉）|3R 4’02” TKO| | | | | | |セミファイナル 第８試合 DEEPメガトン級 5分3R|○稲田将(BOND GYM)|●ステファン“スマッシュ”(フリー）|1R 2’32” アームバー| | | | | | |第7試合 DEEPフライ級5分2R|●安谷屋智弘",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 2nd ROUND",
+      "date": "2025-06-29",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第８試合 DEEPメガトン級 5分3R|○稲田将(BOND GYM)|●ステファン“スマッシュ”(フリー）|1R 2’32” アームバー| | | | | | |第7試合 DEEPフライ級5分2R|●安谷屋智弘（氷ヲ刻メ／池田道場）|○飴山聖也 (ENCOUNTER)|1R 5’00” TKO| | | | | | |第6試合 DEEPバンタム級 5分2R|○日比野“エビ中”純也（",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 2nd ROUND",
+      "date": "2025-06-29",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフライ級 5分3R| |9.|神酒龍一（HERMIT CLUB）VS 濱口奏琉（パラエストラ和泉）| | |セミファイナル DEEPメガトン級 5分3R| |8.|稲田将(BOND GYM) VSステファン“スマッシュ”(フリー）| | |DEEPフライ級 5分2R| |7.|安谷屋智弘（氷ヲ刻メ／池田道場）VS 飴山聖也 (ENCOUNTER)| | |DEEPバンタム級",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 2nd ROUND",
+      "date": "2025-06-29",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPメガトン級 5分3R| |8.|稲田将(BOND GYM) VSステファン“スマッシュ”(フリー）| | |DEEPフライ級 5分2R| |7.|安谷屋智弘（氷ヲ刻メ／池田道場）VS 飴山聖也 (ENCOUNTER)| | |DEEPバンタム級 5分2R| |6.|日比野“エビ中”純也（フリー）VS MG眞介 (reversal gym osaka anne)| | |DE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 4th ROUND",
+      "date": "2025-09-07",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第11試合 DEEP（日本） VS YFU（中国）|DEEPバンタム級5分3R|○鹿志村仁之介（Battle-Box）|●マジシャン（郭強フィトネスクラブ）|1R 3’36” リアネイキッドチョーク| | | | | | |セミファイナル第10試合 DEEP（日本） VS YFU（中国）|DEEPフェザー級 5分3R|○海飛（和術慧舟會HEARTS）|●ジャッキー狂（中山拓武）|1R",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 4th ROUND",
+      "date": "2025-09-07",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-4th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第10試合 DEEP（日本） VS YFU（中国）|DEEPフェザー級 5分3R|○海飛（和術慧舟會HEARTS）|●ジャッキー狂（中山拓武）|1R 2’00” TKO| | | | | | |第9試合 DEEP（日本） VS YFU（中国）|DEEPフライ級 5分3R|○杉山廣平(THE BLACK BELT JAPAN）|●ラスカル（郭強フィトネスクラブ）|2R 1’52” 三角",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 127 IMPACT",
+      "date": "2025-09-15",
+      "sourceUrl": "https://www.deep2001.com/deep-127-impact-2/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第10試合 DEEPウェルター級 5分3R|●佐藤洋一郎（KATANA GYM）|○ストラッサー起一（総合格闘技道場コブラ会）|判定 3-0| | | | | | |セミファイナル第9試合 DEEPフェザー級 5分3R|●木下カラテ(和術慧舟會HEARTS)|○相本宗輝（ROOM）|1R 0’14” TKO| | | | | | |第8試合 DEEPフェザー級 5分3R|●五明宏人（",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 127 IMPACT",
+      "date": "2025-09-15",
+      "sourceUrl": "https://www.deep2001.com/deep-127-impact-2/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第9試合 DEEPフェザー級 5分3R|●木下カラテ(和術慧舟會HEARTS)|○相本宗輝（ROOM）|1R 0’14” TKO| | | | | | |第8試合 DEEPフェザー級 5分3R|●五明宏人（JAPAN TOP TEAM）|○関鉄矢（SONIC SQUAD）|判定0-3| | | | | | |第7試合 DEEP JEWELS アトム級 5分3R|○大島沙緒里（リバーサ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 4th ROUND",
+      "date": "2025-09-21",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-4th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第8試合 DEEPウェルター級タイトルマッチ5分3R|●王者：角野晃平 (TEAM FAUST)|○嶋田伊吹（FIGHT HOLIC）：挑戦者|判定5-0| | | | | | |セミファイナル第7試合 DEEPバンタム級 5分3R|○小崎連（リバーサルジム久喜WINGS）|●前園渓 (吉田道場)|判定3-0| | | | | | |大阪VS名古屋対抗戦|第6試合 DEEP フェザー",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 4th ROUND",
+      "date": "2025-09-21",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-4th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第7試合 DEEPバンタム級 5分3R|○小崎連（リバーサルジム久喜WINGS）|●前園渓 (吉田道場)|判定3-0| | | | | | |大阪VS名古屋対抗戦|第6試合 DEEP フェザー級 5 分 2R|●GINJI（BLOWS）|○鈴木琢仁（ボンサイ柔術）|1R 1’22” TKO| | | | | | |大阪VS名古屋対抗戦|第5試合 DEEP ウェルター級 5 分 2R|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 3rd ROUND",
+      "date": "2025-09-21",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第10試合 DEEP フェザー級 5分3R|○青井人 (BLOWS）|●チェ・ソンヒョク (TEAM HAN CLUB)|判定3-0| | | | | | | |セミファイナル 第9試合 DEEP JEWELS バンタム級 5分3R|●栗山葵（SMOKER GYM）|○樹季 (フリー)|1R 0’55” アームロック| | | | | | |第8試合 DEEPバンタム級 5分2R|",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 3rd ROUND",
+      "date": "2025-09-21",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-3rd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第9試合 DEEP JEWELS バンタム級 5分3R|●栗山葵（SMOKER GYM）|○樹季 (フリー)|1R 0’55” アームロック| | | | | | |第8試合 DEEPバンタム級 5分2R|●山﨑鼓大 (BLOWS)|○矢野武蔵（パラエストラ愛媛）|判定1-2| | | | | | |第7試合 DEEP フェザー級 5 分 2R|●瀧口脩生(総合格闘技スタジオSTY",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 51",
+      "date": "2025-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-51/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第10試合 DEEP JEWELS 49kg以下 5分3R|○浜崎朱加(フリー)|●イ・イェジ(TEAM aom)|判定3-0| | | | | | |セミファイナル第9試合 DEEP JEWELS 49kg以下 5分3R|○パク・シウ（HAVAS）|●彩綺（和術慧舟會HEARTS）|2R 3’22” TKO| | | | | | |第8試合 DEEP JEWELS 49kg以下 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 51",
+      "date": "2025-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-51/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第9試合 DEEP JEWELS 49kg以下 5分3R|○パク・シウ（HAVAS）|●彩綺（和術慧舟會HEARTS）|2R 3’22” TKO| | | | | | |第8試合 DEEP JEWELS 49kg以下 5分2R|○竹林エル（伊澤星花チャレンジ）|●サラ（fightbase都立大）|判定3-0| | | | | | |第7試合 DEEP JEWELS ストロー級 5分2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 5th ROUND",
+      "date": "2025-11-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-5th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第10試合 DEEPメガトン級 5分3R|○赤沢幸典（フリー）|●Guts（リバーサルジム立川ALPHA）|1R 3’11” リアネイキッドチョーク| | | | | | |第9試合 セミファイナル DEEPウェルター級 5分3R|○阿部大治 (TITAN GYM)|●小林ゆたか (夕月堂本舗)|1R 1’06” 三角絞め| | | | | | |第8試合 DEEPフライ級 5分2R",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 5th ROUND",
+      "date": "2025-12-07",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-5th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第10試合 DEEPフェザー級 5分3R|○延命そら(TEAM FAUST)|●牧野滉風（柔術&MMAアカデミーG-face）|2R 1’37” リアネイキッドチョーク| | | | | | |セミファイナル第9試合 DEEPフェザー級 5分2R|●三村亘 (パンクラス大阪稲垣組)|○鈴木琢仁（ボンサイ柔術）|1R 3’05” KO| | | | | | |第8試合 DEEPフライ級",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2025 5th ROUND",
+      "date": "2025-12-07",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2025-5th-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第9試合 DEEPフェザー級 5分2R|●三村亘 (パンクラス大阪稲垣組)|○鈴木琢仁（ボンサイ柔術）|1R 3’05” KO| | | | | | |第8試合 DEEPフライ級 5分2R|飴山聖也 (ENCOUNTER)|砂田華杜（TEAM AGENT）|ノーコンテスト| | | | |第7試合 DEEP JEWELSバンタム級 5分2R|○樹季 (KING GYM KOBE)|●",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2025 6th ROUND",
+      "date": "2025-12-14",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2025-6th-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第11試合 DEEPストロー級タイトルマッチ 5分3R|●越智晴雄（Little Giant Gym）|○杉山空 (THE BLACK BELT JAPAN）|判定0-5| | | | | | | | |第10試合 セミファイナル DEEPバンタム級 5分3R|●小崎連（リバーサルジム久喜WINGS）|○中務太陽（BLOWS）|2R 0’24” リアネイキッドチョーク| | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 129 IMPACT",
+      "date": "2025-12-14",
+      "sourceUrl": "https://www.deep2001.com/deep-129-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第10試合 DEEPフェザー級タイトルマッチ5分3R| |○青井人（BLOWS）|●水野新太（フリー）|判定4-1| | | | | | |セミファイナル 第9試合 DEEPフェザー級 5分3R|●高橋遼伍（KRAZY BEE）|○相本宗輝（ROOM）|1R 3’28” TKO| | | | | | |第8試合 DEEPフェザー級 5分3R|○武田光司（TRIBE TOKYO MM",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 129 IMPACT",
+      "date": "2025-12-14",
+      "sourceUrl": "https://www.deep2001.com/deep-129-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第9試合 DEEPフェザー級 5分3R|●高橋遼伍（KRAZY BEE）|○相本宗輝（ROOM）|1R 3’28” TKO| | | | | | |第8試合 DEEPフェザー級 5分3R|○武田光司（TRIBE TOKYO MMA）|●奥山貴大（NEX SPORTS）|1R 4’01” リアネイキッドチョーク| | | | | | |第7試合 DEEPバンタム級 5分3R|○石司晃",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP FIGHT CHALLENGE 2026 1st ROUND",
+      "date": "2026-01-23",
+      "sourceUrl": "https://www.deep2001.com/deep-fight-challenge-2026-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第7試合 DEEPフェザー級 5分2R|●佐々木耀（k-clann）|○ダイヤ（FIRED UP GYM）|2R 1’03” 腕十字| | | | | | |セミファイナル 第6試合 DEEPライト級 5分2R|○トミー渡辺（KATANA GYM）|●アニンタ・アリ（FIRED UP GYM）|2R 2’13” リアネイキッドチョーク| | | | | | |第5試合 DEEPメガ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP FIGHT CHALLENGE 2026 1st ROUND",
+      "date": "2026-01-23",
+      "sourceUrl": "https://www.deep2001.com/deep-fight-challenge-2026-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第6試合 DEEPライト級 5分2R|○トミー渡辺（KATANA GYM）|●アニンタ・アリ（FIRED UP GYM）|2R 2’13” リアネイキッドチョーク| | | | | | |第5試合 DEEPメガトン級 5分2R|●ブラックタイガー (BOND GYM)|○ホワイトベア (レンジャージム新宿)|判定0-3| | | | | | |第4試合 DEEPフェザー級 3分2R",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 52",
+      "date": "2026-02-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-52/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第11試合 DEEP JEWELSバンタム級王者決定戦 5分3R|○百湖（リバーサルジム横浜グランドスラム）|●樹季(KING GYM KOBE)|2R 3’13” TKO| | | | | | |セミファイナル 第10試合 DEEP JEWELSストロー級 5分3R|○万智（フリー）|●キム・ダンビ（Red Hook MMA）|1R 0’58” フロントチョーク| | | | | ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 52",
+      "date": "2026-02-23",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-52/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第10試合 DEEP JEWELSストロー級 5分3R|○万智（フリー）|●キム・ダンビ（Red Hook MMA）|1R 0’58” フロントチョーク| | | | | | |第9試合 DEEP JEWELS 49kg以下 5分2R|○竹林エル（伊澤星花チャレンジ）|●海咲イルカ（リバーサルジム立川ALPHA）|2R 1′ 08″ TKO| | | | | | |第8試合 DEE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2026 1st ROUND",
+      "date": "2026-02-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第11試合 DEEPフェザー級 5分3R|○海飛（和術慧舟會HEARTS）|●関鉄矢（SONIC SQUAD）|判定3-0| | | | | | |セミファイナル第10試合 DEEPライト 5分3R|●神田コウヤ（THE BLACK BELT JAPAN）|○山田聖真（JAPAN TOP TEAM）|判定1-2| | | | | | | |第9試合 DEEPフェザー級 5分3R|○三",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2026 1st ROUND",
+      "date": "2026-02-23",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2026-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第10試合 DEEPライト 5分3R|●神田コウヤ（THE BLACK BELT JAPAN）|○山田聖真（JAPAN TOP TEAM）|判定1-2| | | | | | | |第9試合 DEEPフェザー級 5分3R|○三井俊希（reversal gym osaka anne）|●黒井海成（BRAVE GYM）|1R 2’23” TKO| | | | | | | |第8試合 DEE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2026 2nd ROUND",
+      "date": "2026-03-08",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第11試合 DEEPフライ級 5分3R|○濱口奏琉 (フリー)|●松井優磨（KATANA GYM）|1R 3’44” TKO| | | | | | |セミファイナル 第10試合 DEEP JEWELSフライ級 5分2R|○栗山葵（SMOKER GYM）|●鈴木 “QP” まい (寒天ファイトスピリット)|1R 0’27” TKO| | | | | | |第9試合 DEEPライト級 5",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2026 2nd ROUND",
+      "date": "2026-03-08",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第10試合 DEEP JEWELSフライ級 5分2R|○栗山葵（SMOKER GYM）|●鈴木 “QP” まい (寒天ファイトスピリット)|1R 0’27” TKO| | | | | | |第9試合 DEEPライト級 5分2R|○大澤将司 (BLOWS）|●冨田昂志 (JAPAN TOP TEAM）7|2R 3’18” TKO| | | | | | |第8試合 DEEPフライ級 5",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2026 2nd ROUND",
+      "date": "2026-03-08",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEPフライ級 5分3R| |11.濱口奏琉 (フリー) | |57.10kg|VS|松井優磨（KATANA GYM）57.10kg| | | | | |セミファイナル DEEP JEWELSフライ級 5分2R| |10.栗山葵（SMOKER GYM）56.75kg|VS |鈴木 “QP” まい (寒天ファイトスピリット)| |57.10kg| | | | | |DEEPライト級",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2026 2nd ROUND",
+      "date": "2026-03-08",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2026-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEP JEWELSフライ級 5分2R| |10.栗山葵（SMOKER GYM）56.75kg|VS |鈴木 “QP” まい (寒天ファイトスピリット)| |57.10kg| | | | | |DEEPライト級 5分2R| |9.大澤将司 (BLOWS） 70.40kg|VS |冨田昂志 (JAPAN TOP TEAM）70.65kg| | | | | |DEEPフライ級 5分2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2026 1st ROUND",
+      "date": "2026-03-08",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2026-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第12試合 DEEP JEWELS 49kg以下 5分3R|○須田萌里 (SCORPION GYM)|●HIME（毛利道場）|判定3-0| | | | | | |第11試合セミファイナル DEEPストロー級 5分2R|○知名昴海（フリー）|●武蔵 (All My Homies)|1R 4’43” 三角締め| | | | | |第10試合 DEEPフライ級 5分2R|○飴山聖也 (EN",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2026 1st ROUND",
+      "date": "2026-03-08",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2026-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント DEEP JEWELS 49kg以下 5分3R| |12.須田萌里 (SCORPION GYM) 48.55kg|VS |HIME（毛利道場）48.85kg| | | | | |セミファイナル DEEPストロー級 5分2R| |11.知名昴海（フリー）52.4kg| |VS | |武蔵 (All My Homies)| |52.65kg| | | | | |DEEPフライ級 5分2",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP OSAKA IMPACT 2026 1st ROUND",
+      "date": "2026-03-08",
+      "sourceUrl": "https://www.deep2001.com/deep-osaka-impact-2026-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル DEEPストロー級 5分2R| |11.知名昴海（フリー）52.4kg| |VS | |武蔵 (All My Homies)| |52.65kg| | | | | |DEEPフライ級 5分2R| |10.飴山聖也 (ENCOUNTER) 56.85kg|VS |太一（blooM）56.95kg| | | | | | |DEEPライト級 5分2R| |9.今村豊（POLAR GYM ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 130 IMPACT",
+      "date": "2026-03-20",
+      "sourceUrl": "https://www.deep2001.com/deep-130-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第10試合 DEEPライト級タイトルマッチ 5分3R|王者：大原樹理（KIBAマーシャルアーツクラブ）|倉本大悟（JAPAN TOP TEAM）：挑戦者|1R 1’29” ノーコンテスト|大原選手ローブローにより試合続行不可能| | | | | | |セミファイナル 第9試合 DEEPウェルター級タイトルマッチ 5分3R|○王者：嶋田伊吹（FIGHT HOLIC）|●ストラッサー起一",
+      "matchedInExtracted": false
+    },
+    {
+      "eventName": "DEEP 130 IMPACT",
+      "date": "2026-03-20",
+      "sourceUrl": "https://www.deep2001.com/deep-130-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第9試合 DEEPウェルター級タイトルマッチ 5分3R|○王者：嶋田伊吹（FIGHT HOLIC）|●ストラッサー起一（総合格闘技道場コブラ会）:挑戦者|1’3’44” リアネイキッドチョーク| | | | | | | |第8試合 DEEPメガトン級 5分3R|○酒井リョウ（レンジャージム)|●荒東”怪獣キラー”英貴（パンクラス大阪稲垣組）|1R 3’26” TKO| | | | ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2026 2nd ROUND",
+      "date": "2026-04-19",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第11試合 DEEPフェザー級 5分3R|○安井飛馬（JAPAN TOP TEAM）|●森俊樹（FIGHTER’S FLOW）|※判定後にレフェリー陣営と映像を確認し協議した結果、森選手が反則による失格となりました。| | | | |セミファイナル 第10試合 DEEPフェザー級 5分2R|○太田将吾（NEX SPORTS）|●中村雄一（パラエストラ八戸）|判定3-0| | | |",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2026 2nd ROUND",
+      "date": "2026-04-19",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2026-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第10試合 DEEPフェザー級 5分2R|○太田将吾（NEX SPORTS）|●中村雄一（パラエストラ八戸）|判定3-0| | | | | | |第9試合 DEEPバンタム級 5分2R|○堂園悠 (修和館)|●唐沢タツヤ（GRABAKA）|1R 3’03” TKO| | | | | | |第8試合 DEEPフライ級 5分2R|○橋本優大（CAVE）|●横内三旺（Battle-Box",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 131 IMPACT 25th Anniversary",
+      "date": "2026-05-04",
+      "sourceUrl": "https://www.deep2001.com/deep-131-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第15試合DEEPフェザー級暫定王者決定戦 5分3R|●牛久絢太郎（アメリカン・トップチーム）|○水野新太（フリー）|判定0-5| | | | | | |セミファイナル 第14試合 DEEPライト級タイトルマッチ 5分3R|○大原樹理（KIBAマーシャルアーツクラブ）|●倉本大悟（JAPAN TOP TEAM）|1R 2’19” TKO| | | | | | |第13試合 DEEP",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 131 IMPACT 25th Anniversary",
+      "date": "2026-05-04",
+      "sourceUrl": "https://www.deep2001.com/deep-131-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第14試合 DEEPライト級タイトルマッチ 5分3R|○大原樹理（KIBAマーシャルアーツクラブ）|●倉本大悟（JAPAN TOP TEAM）|1R 2’19” TKO| | | | | | |第13試合 DEEPフライ級タイトルマッチ 5分3R|○村元友太郎（ALIVE）|●力也(FIGHT FARM)|2R 4’48” 膝十字| | | | | | |第12試合 DEEPバンタ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 53",
+      "date": "2026-05-24",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-52-2/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第12試合 DEEP JEWELSフライ級タイトルマッチ 5分3R|○中井りん（修斗道場四国）|●奥富夕夏（リバーサルジム新宿ME,WE）|判定5-0| | /* 横スクロールで画像をスライドさせる */ .image-horizontal-scroll{ overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP JEWELS 53",
+      "date": "2026-05-24",
+      "sourceUrl": "https://www.deep2001.com/deep-jewels-52-2/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第11試合 DEEP JEWELS 49kg以下 5分3R|●竹林 エル（伊澤星花チャレンジ）|○イ・イェジ(team aom)|判定1-2| | /* 横スクロールで画像をスライドさせる */ .image-horizontal-scroll{ overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2026 3rd ROUND",
+      "date": "2026-05-24",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第10試合 DEEPフェザー級 5分3R|●高橋遼伍（KRAZY BEE）|○三井俊希（reversal gym osaka anne）|1R 2’59” TKO| | | | | | |セミファイナル第9試合 DEEPバンタム級 5分3R|○中島太一（JAPAN TOP TEAM）|●日比野”エビ中”純也 (フリー)|2R 2’59” TKO| | | | | | |第8試合 DE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP TOKYO IMPACT 2026 3rd ROUND",
+      "date": "2026-05-24",
+      "sourceUrl": "https://www.deep2001.com/deep-tokyo-impact-2026-3rd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第9試合 DEEPバンタム級 5分3R|○中島太一（JAPAN TOP TEAM）|●日比野”エビ中”純也 (フリー)|2R 2’59” TKO| | | | | | |第8試合 DEEPメガトン級 5分3R|○長谷川賢（フリー）|●ブラックタイガー (BOND GYM)|1R 0’49” TKO| | | | | | | |第7試合 DEEPフェザー級 5分2R|●カンジ（和術慧舟",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HAMAMATSU IMPACT 2026 1ST ROUND",
+      "date": "2026-05-31",
+      "sourceUrl": "https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第21試合 DEEPバンタム級 5分2R|●内山拓真 （ボンサイ柔術）|○MG眞介 (reversal gym osaka anne)|1R 4’59” TKO| | | | | | | | | | | | | | | | |セミファイナル第20試合 DEEPメガトン級 5分2R|●奥野充貴（BOND GYM）|○木之下喧壱（NEX SPORTS）|1R 4’22” 反則| |第19",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP HAMAMATSU IMPACT 2026 1ST ROUND",
+      "date": "2026-05-31",
+      "sourceUrl": "https://www.deep2001.com/deep-hamamatsu-impact-2026-1st-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第20試合 DEEPメガトン級 5分2R|●奥野充貴（BOND GYM）|○木之下喧壱（NEX SPORTS）|1R 4’22” 反則| |第19試合 DEEPライト級 5分2R|拓MAX（TEAM HAMBOLT/VIPER GYM）|胸毛ウナギニキ(FIGHER’S FLOW)|1R 1’53” TKO| | | | | | | | | | | | | | | | |第18試合 ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2026 2nd ROUND",
+      "date": "2026-06-14",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第19試合 DEEPフェザー級 5分2R|●TATSUMI（NEXSPORTS）|〇加藤綾真（CLUBF3）|判定0-3| | | | | | | | | | | | | | | | | | | | | | | | | | | | |セミファイナル第18試合 DEEPウェルター級 5分2R|〇浅野功暉（REBOOT）|●カーン・ソガズ（フリー）|判定3-0| | | | | | | ",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP NAGOYA IMPACT 2026 2nd ROUND",
+      "date": "2026-06-14",
+      "sourceUrl": "https://www.deep2001.com/deep-nagoya-impact-2026-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル第18試合 DEEPウェルター級 5分2R|〇浅野功暉（REBOOT）|●カーン・ソガズ（フリー）|判定3-0| | | | | | | | | | | | | | | | | | | |第17試合 DEEPバンタム級 5分2R|〇時任流架（SPLASH）|●鈴木幹也（戦ジム）|1R4’32” 腕十字| | | | | | | | | | | | | | | | | | | |第16",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 132 IMPACT",
+      "date": "2026-07-05",
+      "sourceUrl": "https://www.deep2001.com/deep-132-impact/",
+      "label": "メインイベント",
+      "snippet": "メインイベント 第11試合 DEEPライト5分3R|○相本宗輝（ROOM）|●山田聖真（JAPAN TOP TEAM）|3R 1’55” TKO| | | | | | | |セミファイナル 第10試合 DEEP 58kg以下 5分3R|●猿寿健太（K-Clann）|○火の鳥（BRAVE GYM）|1R 0’31” TKO| | | | | | |第9試合 DEEPフェザー級 5分3R|○五明宏人（",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP 132 IMPACT",
+      "date": "2026-07-05",
+      "sourceUrl": "https://www.deep2001.com/deep-132-impact/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第10試合 DEEP 58kg以下 5分3R|●猿寿健太（K-Clann）|○火の鳥（BRAVE GYM）|1R 0’31” TKO| | | | | | |第9試合 DEEPフェザー級 5分3R|○五明宏人（JAPAN TOP TEAM）|●太田将吾（NEX SPORTS）|1R 2’37” リアネイキッドチョーク| | | | | | |第8試合 DEEPライト5分3R|●神田",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP FIGHT CHALLENGE 2026 2nd ROUND",
+      "date": "2026-07-24",
+      "sourceUrl": "https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/",
+      "label": "メインイベント",
+      "snippet": "メインイベント第8試合 DEEPバンタム級 5分2R|○坂野周平 (サツキジム横浜)|●井上セナ (K-Clann)|1R 3’26” フロントチョーク| | | | | | |セミファイナル 第7試合 DEEPフェザー級 5分2R|○マイティ・saw (T・GRIP TOKYO)|●中尾響 (JAPAN TOP TEAM)|1R 4’45” ダースチョーク| | | | | | |第6試合 DE",
+      "matchedInExtracted": true
+    },
+    {
+      "eventName": "DEEP FIGHT CHALLENGE 2026 2nd ROUND",
+      "date": "2026-07-24",
+      "sourceUrl": "https://www.deep2001.com/deep-fight-challenge-2026-2nd-round/",
+      "label": "セミファイナル",
+      "snippet": "セミファイナル 第7試合 DEEPフェザー級 5分2R|○マイティ・saw (T・GRIP TOKYO)|●中尾響 (JAPAN TOP TEAM)|1R 4’45” ダースチョーク| | | | | | |第6試合 DEEPバンタム級 5分2R|○朝比奈龍希 (JAPAN TOP TEAM)|●川口海翔 (ALLIANCE)|判定3-0| | | | | | |第5試合 DEEPフライ級 5分2",
+      "matchedInExtracted": true
+    }
+  ],
+  "errors": []
+}
