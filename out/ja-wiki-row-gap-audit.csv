@@ -1,0 +1,275 @@
+slug,nameJa,jaTitle,articleFound,qualifyingSections,sectionRowCount,otherSectionsRowCount,parserKeptNow,dbHistoryLen,parserDropCount,pipelineDiff,dropReasons,note
+taira-tatsuro,平良 達郎,平良達郎,true,1,20,0,20,20,0,0,,
+nakamura-rinya,中村 倫也,中村倫也 (格闘家),true,2,11,0,11,11,0,0,,
+horiguchi-kyoji,堀口 恭司,堀口恭司,true,2,43,1,43,43,0,0,,複数節にFight-cont行が分散(採用節=1件目、他節に1行埋没)
+asakura-kai,朝倉 海,朝倉海,true,1,29,0,28,28,1,0,marker-blank-future:1,
+tsuruya-rei,鶴屋 怜,鶴屋怜,true,1,13,0,12,12,1,0,marker-blank-future:1,
+hiramoto-ren,平本 蓮,平本蓮,true,3,8,0,7,7,1,0,marker-blank-future:1,
+asakura-mikuru,朝倉 未来,朝倉未来,true,1,27,0,26,26,1,0,marker-blank-future:1,
+koike-kleber,クレベル・コイケ,クレベル・コイケ,true,2,47,0,46,46,1,0,marker-blank-future:1,
+akimoto-kyoma,秋元 強真,秋元強真,true,1,14,0,13,13,1,0,marker-blank-future:1,
+inoue-naoki,井上 直樹,井上直樹 (格闘家),true,1,26,0,26,26,0,0,,
+izawa-seika,伊澤 星花,伊澤星花,true,2,18,0,18,18,0,0,,
+rena,RENA,RENA (格闘家),true,2,22,0,21,21,1,0,marker-blank-future:1,
+saito-yutaka,斎藤 裕,斎藤裕 (格闘家),true,1,33,0,32,32,1,0,marker-blank-future:1,
+ya-man,YA-MAN,YA-MAN,true,2,5,0,4,5,1,-1,marker-blank-future:1,
+hagiwara-kyohei,萩原 京平,萩原京平,true,1,22,0,22,22,0,0,,
+majima-kazumasa,摩嶋 一整,摩嶋一整,true,1,26,0,25,25,1,0,marker-blank-future:1,
+hiroya,ヒロヤ,ヒロヤ,true,1,28,0,28,28,0,0,,
+shinryu-makoto,神龍 誠,神龍誠,true,0,0,0,30,30,-30,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+ougikubo-hiromasa,扇久保 博正,扇久保博正,true,2,41,6,41,41,0,0,,複数節にFight-cont行が分散(採用節=1件目、他節に6行埋没)
+motoya-yuki,元谷 友貴,元谷友貴,true,1,54,0,54,54,0,0,,
+yachi-yusuke,矢地 祐介,矢地祐介,true,0,0,0,46,46,-46,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+shinotsuka-tatsuki,篠塚 辰樹,篠塚辰樹,true,2,2,0,2,2,0,0,,
+tomizawa-daichi,冨澤 大智,冨澤大智,true,1,6,0,5,5,1,0,marker-blank-future:1,
+ashizawa-ryusei,芦澤 竜誠,芦澤竜誠,true,1,6,0,6,6,0,0,,
+jolly,ジョリー,ジョリー (格闘家),true,1,5,0,4,4,1,0,marker-blank-future:1,
+fukuda-ryuya,福田 龍彌,福田龍彌,true,2,37,0,37,37,0,0,,
+takagi-ryo,高木 凌,高木凌,true,1,15,0,14,14,1,0,marker-blank-future:1,
+ota-shinobu,太田 忍,太田忍,true,2,14,0,14,14,0,0,,
+kate-lotus,ケイト・ロータス,ケイト・ロータス,true,0,0,0,19,19,-19,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+hiramoto-jo,平本 丈,平本丈,true,1,6,0,5,5,1,0,marker-blank-future:1,
+oshima-saori,大島 沙緒里,大島沙緒里,true,2,24,0,24,24,0,0,,
+kashimura-jinnosuke,鹿志村 仁之介,鹿志村仁之介,true,2,18,0,18,18,0,0,,
+sato-shoko,佐藤 将光,佐藤将光,true,1,58,0,57,57,1,0,marker-blank-future:1,
+goto-joji,後藤 丈治,後藤丈治,true,1,29,0,28,28,1,0,marker-blank-future:1,
+ito-yuki,伊藤 裕樹,伊藤裕樹 (格闘家),true,1,28,0,27,27,1,0,marker-blank-future:1,
+suzuki-chihiro,鈴木 千裕,鈴木千裕,true,1,20,0,20,20,0,0,,
+soya-takaki,征矢 貴,征矢貴,true,1,22,0,22,22,0,0,,
+noel,NOEL,NOEL (格闘家),true,1,7,0,6,6,1,0,marker-blank-future:1,
+nomura-shunta,野村 駿太,野村駿太,true,0,0,0,12,12,-12,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+yamamoto-arsen,山本 アーセン,山本アーセン,true,2,15,0,15,15,0,0,,
+horie-yoshinori,堀江 圭功,堀江圭功,true,0,0,0,21,21,-21,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+souza-roberto-satoshi,ホベルト・サトシ・ソウザ,ホベルト・サトシ・ソウザ,true,3,25,0,24,24,1,0,marker-blank-future:1,
+ando-tatsuya,安藤 達也,安藤達也,true,1,22,0,22,22,0,0,,
+sakuraba-taisei,桜庭 大世,桜庭大世,true,1,4,0,4,4,0,0,,
+usami-sho-patrick,宇佐美正パトリック,宇佐美正パトリック,true,2,14,0,14,14,0,0,,
+umeno-genji,梅野 源治,梅野源治,true,1,4,0,4,4,0,0,,
+kintaro,金太郎,金太郎 (格闘家),true,1,34,0,34,34,0,0,,
+suda-moeri,須田 萌里,須田萌里,true,1,23,0,23,23,0,0,,
+kubo-yuta,久保 優太,久保優太,true,3,9,1,9,9,0,0,,複数節にFight-cont行が分散(採用節=1件目、他節に1行埋没)
+takeda-koji,武田 光司,武田光司,true,2,28,0,27,27,1,0,marker-blank-future:1,
+tokoro-hideo,所 英男,所英男,true,1,63,0,63,63,0,0,,
+edpolo-king,エドポロキング,エドポロキング,true,1,4,0,3,3,1,0,marker-blank-future:1,
+ueda-mikio,上田 幹雄,上田幹雄,true,2,9,0,8,8,1,0,marker-blank-future:1,
+sudario-tsuyoshi,スダリオ 剛,スダリオ剛,true,1,14,0,13,13,1,0,marker-blank-future:1,
+takenshin,貴賢神,貴賢神,true,1,8,0,8,8,0,0,,
+kouzi,皇治,皇治,true,1,2,0,2,2,0,0,,
+suzuki-hiroaki,鈴木 博昭,鈴木博昭 (格闘家),true,2,12,0,12,13,0,-1,,
+miyagawa-hyuga,宮川 日向,宮川日向,true,1,15,0,15,15,0,0,,
+naoki,直樹,直樹,true,2,6,0,5,5,1,0,marker-blank-future:1,
+mizuno-shinta,水野 新太,水野新太,true,1,11,0,10,10,1,0,marker-blank-future:1,
+ohara-juri,大原樹理,大原樹理,true,1,64,0,64,64,0,0,,
+kuramoto-daigo,倉本大悟,倉本大悟,true,1,12,0,12,12,0,0,,
+shimada-ibuki,嶋田伊吹,嶋田伊吹,true,1,20,0,20,20,0,0,,
+sakai-ryo,酒井リョウ,酒井リョウ,true,1,31,0,30,30,1,0,marker-blank-future:1,
+sekihara-sho,関原翔,関原翔,true,1,19,0,19,19,0,0,,
+rikiya,力也,力也 (格闘家),true,1,27,0,27,27,0,0,,
+gomyo-hiroto,五明宏人,五明宏人,true,1,16,0,16,16,0,0,,
+ushiku-juntaro,牛久絢太郎,牛久絢太郎,true,1,34,0,34,34,0,0,,
+muramoto-yutaro,村元友太郎,村元友太郎,true,0,0,0,26,26,-26,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+hiramatsu-sho,平松翔,平松翔,true,1,15,0,15,15,0,0,,
+sugiyama-sora,杉山空,杉山空,true,1,4,0,4,4,0,0,,
+abe-daiji,阿部大治,阿部大治,true,2,25,0,25,25,0,0,,
+takizawa-kenta,瀧澤謙太,瀧澤謙太,true,1,29,0,28,28,1,0,marker-blank-future:1,
+nakamura-daisuke,中村大介,中村大介 (プロレスラー),true,1,65,0,64,64,1,0,marker-blank-future:1,
+izumi-takeshi,泉武志,泉武志,true,1,12,0,12,12,0,0,,
+kindaichi-kosuke,金田一孝介,金田一孝介,true,1,17,0,17,17,0,0,,
+kubota-taito,窪田泰斗,窪田泰斗,true,1,24,0,23,23,1,0,marker-blank-future:1,
+kozaki-ren,小崎連,小崎連,true,1,12,0,12,12,0,0,,
+strasser-kiichi,ストラッサー起一,ストラッサー起一,true,1,35,0,35,35,0,0,,
+kinoshita-karate,木下カラテ,木下カラテ,true,1,22,0,21,21,1,0,marker-blank-future:1,
+uoi-fullswing,魚井フルスイング,魚井フルスイング,true,1,47,0,47,47,0,0,,
+arato-hidetaka,荒東英貴,"荒東""怪獣キラー""英貴",true,1,15,0,15,15,0,0,,
+miyabi-shunsuke,雅駿介,雅駿介,true,2,16,0,15,15,1,0,marker-blank-future:1,
+kadono-kohei,角野晃平,角野晃平,true,1,9,0,9,9,0,0,,
+akazawa-yukinori,赤沢幸典,赤沢幸典,true,1,15,0,15,15,0,0,,
+fukuda-machi,万智,万智,true,0,0,0,13,13,-13,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+saito-momoko,百湖,百湖,true,1,7,0,7,7,0,0,,
+nakai-rin,中井りん,中井りん,true,1,32,0,32,32,0,0,,
+kurobe-kazusa,黒部和沙,黒部和沙,true,0,0,0,7,7,-7,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+yamagami-mikihito,山上幹臣,山上幹臣,true,1,18,0,18,18,0,0,,
+ryoga,亮我,亮我,true,1,14,0,14,14,0,0,,
+arai-jo,新井丈,新井丈,true,0,0,0,28,28,-28,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+nakamura-yusaku,中村優作,中村優作,true,1,31,0,31,31,0,0,,
+nose-shohei,野瀬翔平,野瀬翔平,true,1,25,0,25,25,0,0,,
+sasuke,SASUKE,SASUKE (格闘家),true,1,20,0,20,20,0,0,,
+efeviga-yushi,エフェヴィガ雄志,エフェヴィガ雄志,true,0,0,0,16,16,-16,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+yamauchi-goiti,ゴイチ・ヤマウチ,ゴイチ・ヤマウチ,true,1,0,0,38,38,-38,0,,節はあるがFight-cont行が0件
+murayama-akihiro,村山暁洋,村山暁洋,true,1,49,0,49,49,0,0,,
+saiga-yanbo-tatsuya,雑賀ヤン坊達也,雑賀“ヤン坊”達也,true,0,0,0,22,22,-22,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+beinoa,ブラックパンサーベイノア,“ブラックパンサー”ベイノア,true,2,10,0,10,10,0,0,,
+yanagawa-yuito,栁川唯人,栁川唯人,true,1,10,0,10,10,0,0,,
+kanru,敢流,敢流,true,1,10,0,9,9,1,0,marker-blank-future:1,
+hirata-naoki,平田直樹,平田直樹,true,1,14,0,14,14,0,0,,
+yamaguchi-satoshi,山口怜臣,山口怜臣,true,1,7,0,7,7,0,0,,
+little,リトル,リトル,true,0,0,0,0,1,0,-1,,「総合格闘技」節が見つからず(en版由来の可能性)
+kenmin,賢民,賢民,true,1,3,0,3,3,0,0,,
+patchy-mix,パッチー・ミックス,パッチー・ミックス,true,2,25,0,24,24,1,0,marker-blank-future:1,
+sabatello-danny,ダニー・サバテロ,ダニー・サバテロ,true,2,24,0,24,24,0,0,,
+patricky-pitbull,パトリッキー・ピットブル,パトリッキー・ピットブル,true,0,0,0,42,42,-42,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+dodson-john,ジョン・ドッドソン,ジョン・ドッドソン,true,2,39,3,39,39,0,0,,複数節にFight-cont行が分散(採用節=1件目、他節に3行埋没)
+zulu-nkazimulo,エンカジムーロ・ズールー,エンカジムーロ・ズールー,true,2,26,1,26,26,0,0,,複数節にFight-cont行が分散(採用節=1件目、他節に1行埋没)
+gallagher-james,ジェームズ・ギャラガー,ジェームズ・ギャラガー,true,1,17,0,17,17,0,0,,
+nakajima-taichi,中島太一,中島太一,true,1,33,0,33,33,0,0,,
+case-johnny,ジョニー・ケース,ジョニー・ケース,true,1,41,0,41,41,0,0,,
+torres-jose,ホセ・トーレス,ホセ・トーレス (格闘家),true,1,20,0,20,20,0,0,,
+gustavo-luis,ルイス・グスタボ,ルイス・グスタボ,true,0,0,0,20,20,-20,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+soldatkin-alexander,アレクサンダー・ソルダトキン,アレクサンダー・ソルダトキン,true,1,22,0,22,22,0,0,,
+karshyga-dautbek,カルシャガ・ダウトベック,カルシャガ・ダウトベック,true,1,0,0,23,23,-23,0,,節はあるがFight-cont行が0件
+sheydullaev-rajabali,ラジャブアリ・シェイドゥラエフ,ラジャブアリ・シェイドゥラエフ,true,2,20,0,19,19,1,0,marker-blank-future:1,
+karamov-vugar,ヴガール・ケラモフ,ヴガール・ケラモフ,true,1,29,0,28,28,1,0,marker-blank-future:1,
+nozimov-ilkhom,イルホム・ノジモフ,イルホム・ノジモフ,true,1,17,0,17,17,0,0,,
+zhumagazy-nurkhan,ヌルハン・ズマガジー,ヌルハン・ズマガジー,true,1,12,0,12,12,0,0,,
+temirov-azizbek,アジズベク・テミロフ,アジズベク・テミロフ,true,1,9,0,8,8,1,0,marker-blank-future:1,
+gadzhamatov-alibeg,アリベク・ガジャマトフ,アリベク・ガジャマトフ,true,1,8,0,7,7,1,0,marker-blank-future:1,
+mckee-aj,AJ・マッキー,AJ・マッキー,true,0,0,0,27,27,-27,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+otsuka-tomoki,大塚智貴,大塚智貴,false,0,0,0,0,1,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+tenya,天弥,天弥,true,1,9,0,9,9,0,0,,
+nishitani-taisei,西谷大成,西谷大成,true,1,15,0,15,15,0,0,,
+shibisai-shoma,シビサイ頌真,シビサイ頌真,true,1,16,0,15,15,1,0,marker-blank-future:1,
+kitakata-daichi,北方大地,北方大地,true,1,38,0,37,37,1,0,marker-blank-future:1,
+kaito,海飛,海飛,true,1,17,0,16,16,1,0,marker-blank-future:1,
+mitsui-shunki,三井俊希,三井俊希,true,1,9,0,8,8,1,0,marker-blank-future:1,
+shirakawa-rikuto,白川ダーク陸斗,白川陸斗,true,1,25,0,24,24,1,0,marker-blank-future:1,
+kitaoka-satoru,北岡悟,北岡悟,true,1,84,0,83,83,1,0,marker-blank-future:1,
+park-siwoo,パク・シウ,パク・シウ,true,1,20,0,20,20,0,0,,
+lee-yeji,イ・イェジ,イ・イェジ,true,1,16,0,16,16,0,0,,
+miyake-kisa,三宅輝砂,三宅輝砂,true,1,19,0,19,19,0,0,,
+aoi-jin,青井人,青井人,true,0,0,0,24,24,-24,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+hamada-takumi,濱田巧,濱田巧,true,1,8,0,8,8,0,0,,
+laramie-tony,トニー・ララミー,トニー・ララミー,true,1,16,0,16,16,0,0,,
+kolesnik-viktor,ビクター・コレスニック,ビクター・コレスニック,true,1,34,0,34,34,0,0,,
+kim-kyungpyo,キム・ギョンピョ,キム・ギョンピョ,true,1,20,0,20,20,0,0,,
+kimura-shuya,木村柊也,木村柊也,true,2,8,0,8,8,0,0,,
+lee-kaiwen,リー・カイウェン,リー・カイウェン,true,1,24,0,23,23,1,0,marker-blank-future:1,
+kuzyutina-natasha,ナターシャ・クジュティナ,ナタリア・クジュティナ,true,3,12,0,11,11,1,0,marker-blank-future:1,
+cafaro-ryan,ライアン・カファロ,ライアン・カファロ,true,1,22,0,22,22,0,0,,
+haga-bilalkai,芳賀ビラル海,芳賀ビラル海,true,1,13,0,13,13,0,0,,
+aimoto-kazuki,相本宗輝,相本宗輝,true,0,0,0,10,10,-10,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+yuya-wakamatsu,若松佑弥,若松佑弥,true,0,0,0,27,27,-27,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+shinya-aoki,青木真也,青木真也,true,1,64,0,63,63,1,0,marker-blank-future:1,
+hiroyuki-tetsuka,手塚裕之,手塚裕之 (総合格闘家),true,1,22,0,22,22,0,0,,
+tatsumitsu-wada,和田竜光,和田竜光,true,1,44,0,44,44,0,0,,
+ayaka-miura,三浦彩佳,三浦彩佳,true,0,0,0,24,24,-24,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+chihiro-sawada,澤田千優,澤田千優,true,0,0,0,14,14,-14,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+itsuki-hirata,平田樹,平田樹,true,1,13,0,13,13,0,0,,
+seiichiro-ito,伊藤盛一郎,伊藤盛一郎,true,1,25,0,25,25,0,0,,
+keito-yamakita,山北渓人,山北渓人,true,1,14,0,13,13,1,0,marker-blank-future:1,
+koya-kanda,神田コウヤ,神田コウヤ,true,1,24,0,24,24,0,0,,
+hinotori,火の鳥,火の鳥 (格闘家),true,1,7,0,7,7,0,0,,
+enju-kenta,猿寿健太,KENTA (格闘家),true,1,15,0,15,15,0,0,,
+kim-soochul,キム・スーチョル,キム・スーチョル,true,1,35,0,35,35,0,0,,
+yang-jiyong,ヤン・ジヨン,ヤン・ジヨン,true,1,16,0,16,16,0,0,,
+lee-junghyun,イ・ジョンヒョン,イ・ジョンヒョン (格闘家),true,1,11,0,11,11,0,0,,
+yrysbek-tilenov,イリスベク・ティレノフ,イリスベク・ティレノフ,true,1,9,0,9,9,0,0,,
+nii-suguru,新居すぐる,新居すぐる,true,1,31,0,31,31,0,0,,
+inoue-seiya,井上聖矢,井上聖矢,true,1,2,0,2,2,0,0,,
+matsushima-koyomi,松嶋こよみ,松嶋こよみ,true,1,23,0,23,23,0,0,,
+ameyama-seiya,飴山聖也,飴山聖也,true,1,12,0,11,11,1,0,marker-blank-future:1,
+yasui-hyuma,安井飛馬,安井飛馬,true,1,5,0,5,5,0,0,,
+uno-caol,宇野薫,宇野薫,true,1,64,0,64,64,0,0,,
+ishizuka-koichi,石司晃一,石司晃一,true,1,27,0,26,26,1,0,date-empty:1,
+sasaki-hiro,佐々木大,佐々木大,true,1,8,0,8,8,0,0,,
+sugiyama-kohei,杉山廣平,杉山廣平,true,0,0,0,25,25,-25,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+isao,ISAO,ISAO (格闘家),true,1,38,0,38,38,0,0,,
+coro,CORO,CORO,true,1,44,0,44,44,0,0,,
+takeuchi-ryugo,竹内龍吾,竹内龍吾,true,1,8,0,8,8,0,0,,
+uchida-takeru,内田タケル,内田タケル,true,1,12,0,11,11,1,0,marker-blank-future:1,
+suzuki-takaya,鈴木崇矢,鈴木崇矢,true,1,10,0,9,9,1,0,marker-blank-future:1,
+miyaguchi-ryuho,宮口龍鳳,宮口龍鳳,true,1,8,0,8,8,0,0,,
+mizoguchi-tsukasa,溝口司,溝口司,true,1,4,0,4,4,0,0,,
+minowa-hiroba,箕輪ひろば,箕輪ひろば,true,0,0,0,20,20,-20,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+honda-ryosuke,本田良介,本田良介,true,0,0,0,23,23,-23,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+asahina-ken,旭那 拳,旭那拳,false,0,0,0,0,17,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+taguchi-keita,田口 恵大,田口恵大,false,0,0,0,0,6,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+tomori-rui,友利 琉偉,友利琉偉,false,0,0,0,0,7,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+tomori-kota,友利 幸汰,友利幸汰,false,0,0,0,0,5,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+umeki-yutoku,梅木 勇徳,梅木勇徳,false,0,0,0,0,11,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+sugimoto-seiya,杉本 静弥,杉本静弥,false,0,0,0,0,7,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+unconfirmed-shooto-1875,砂辺 光久,砂辺光久,true,1,47,0,47,47,0,0,,
+baikin-dokuichiro,梅筋 毒一郎,梅筋毒一郎,false,0,0,0,0,3,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+yamauchi-wataru,山内 渉,山内渉,false,0,0,0,0,8,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+okada-arashi,岡田 嵐士,岡田嵐士,false,0,0,0,0,9,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+nakaike-takehiro,中池 武寛,中池武寛,false,0,0,0,0,10,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+suzuki-takeru,鈴木 尊,鈴木尊,false,0,0,0,0,5,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+kawakita-haruki,川北 晏生,川北晏生,false,0,0,0,0,10,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+susung,チョウ スソン,チョウスソン,false,0,0,0,0,6,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+fujii-nobuki,藤井 伸樹,藤井伸樹,false,0,0,0,0,16,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+lightyear-daiki,ダイキ ライトイヤー,ダイキライトイヤー,false,0,0,0,0,20,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+nakajima-riku,中島 陸,中島陸,true,1,8,0,7,7,1,0,marker-blank-future:1,
+nojiri-yasuyuki,野尻 定由,野尻定由,false,0,0,0,0,15,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+park-jongjun,パク ジョンジュン,パクジョンジュン,false,0,0,0,0,1,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+saito-tsubasa,齋藤 翼,齋藤翼,false,0,0,0,0,23,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+uehara-taira,上原 平,上原平,true,0,0,0,0,14,0,-14,,「総合格闘技」節が見つからず(en版由来の可能性)
+shikijima-kazuma,磯城嶋 一真,磯城嶋一真,false,0,0,0,0,9,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+iino-yuto,飯野 雄斗,飯野雄斗,false,0,0,0,0,5,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+dinesh-nain,ネイン デイネッシュ,ネインデイネッシュ,false,0,0,0,0,9,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+yuki-daiki,結城 大樹,結城大樹,false,0,0,0,0,13,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+azumi-kento,安海 健人,安海健人,false,0,0,0,0,5,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+body-maxthe,マックス・ザ・ボディ,マックス・ザ・ボディ,false,0,0,0,0,9,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+tyson-nobumitsu,大尊 伸光,大尊伸光,false,0,0,0,0,8,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+tanaka-yu,田中 有,田中有,false,0,0,0,0,8,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+valenzuela-victor,ヴィクター バレンズエラ,ヴィクターバレンズエラ,false,0,0,0,0,1,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+tamura-hibiki,田村 ヒビキ,田村ヒビキ,false,0,0,0,0,1,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+waki-grappler,グラップラー脇,グラップラー脇,false,0,0,0,0,3,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+iwasaki-taiga,岩﨑 大河,岩﨑大河,true,1,13,0,13,13,0,0,,
+yuji-arai,荒井 勇ニ,荒井勇ニ,false,0,0,0,0,2,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+unconfirmed-shooto-1849,沙門,沙門,true,0,0,0,0,2,0,-2,,「総合格闘技」節が見つからず(en版由来の可能性)
+henry,HENRY,HENRY,false,0,0,0,0,1,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+young-kim,キム ジェヨン,キムジェヨン,false,0,0,0,0,2,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+aono-hikaru,青野 ひかる,青野ひかる,true,1,22,0,22,22,0,0,,
+noa-tokumoto,徳本 望愛,徳本望愛,false,0,0,0,0,6,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+nakamura-miku,中村 未来,中村未来,true,0,0,0,0,15,0,-15,,「総合格闘技」節が見つからず(en版由来の可能性)
+sugimoto-megumi,杉本 恵,杉本恵,false,0,0,0,0,20,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+hirata-ayane,平田 彩音,平田彩音,false,0,0,0,0,6,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+young-parkseo,パク ソヨン,パクソヨン,false,0,0,0,0,6,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+huang-jenny,ジェニー ファン,ジェニーファン,false,0,0,0,0,2,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+mio-shiyama,嶋屋 澪,嶋屋澪,false,0,0,0,0,8,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+watanabe-ayaka,渡辺 彩華,渡辺彩華,true,0,0,0,7,7,-7,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+takamoto-chiyo,高本 千代,高本千代,false,0,0,0,0,8,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+erika,erika,erika,true,0,0,0,0,4,0,-4,,「総合格闘技」節が見つからず(en版由来の可能性)
+aya-murakami,村上 彩,村上彩,true,1,14,0,14,14,0,0,,
+katayama-tomoe,片山 智絵,片山智絵,false,0,0,0,0,4,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+kurobe-mina,黒部 三奈,黒部三奈,true,1,25,0,25,25,0,0,,
+sarami,SARAMI,SARAMI,true,1,35,0,34,34,1,0,marker-blank-future:1,
+fujino-emi,藤野 恵実,藤野恵実,true,1,49,0,49,49,0,0,,
+hoshuyama-momoka,宝珠山 桃花,宝珠山桃花,false,0,0,0,0,15,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+park-bohyun,パク ボヒョン,パクボヒョン,false,0,0,0,0,3,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+hailaiwusamo,ハイライ ウーシャアモー,ハイライウーシャアモー,false,0,0,0,0,1,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+salt,ソルト,ソルト (格闘家),true,1,11,0,11,11,0,0,,
+karen,KAREN,KAREN (格闘家),true,1,13,0,13,13,0,0,,
+takada-atsuhi,高田 暖妃,高田暖妃,false,0,0,0,0,4,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+satoshogo,佐藤生虎,佐藤生虎,false,0,0,0,0,6,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+taira,平信一,平信一,false,0,0,0,0,14,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+zhangyuta,張豊,張豊,true,0,0,0,0,3,0,-3,,「総合格闘技」節が見つからず(en版由来の可能性)
+suzukiyuto,鈴木悠斗,鈴木悠斗,false,0,0,0,0,7,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+tou-hoiin,透暉鷹,透暉鷹,false,0,0,0,0,10,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+okadatakuma,岡田拓真,岡田拓真,false,0,0,0,0,7,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+ryoa,Ryo,Ryo,true,0,0,0,0,12,0,-12,,「総合格闘技」節が見つからず(en版由来の可能性)
+endoraiki,遠藤来生,遠藤来生,false,0,0,0,0,11,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+nada,名田英平,名田英平,false,0,0,0,0,21,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+sekisena,関翔渚,関翔渚,false,0,0,0,0,4,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+itokawayoshito,糸川義人,糸川義人,false,0,0,0,0,11,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+ishidarikuya,石田陸也,石田陸也,false,0,0,0,0,8,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+aratadaiki,荒田大輝,荒田大輝,false,0,0,0,0,7,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+satoyujibonsai,佐藤ゆうじ,佐藤ゆうじ,false,0,0,0,0,7,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+asadulloev,バラカトゥロ・アサドゥラエフ,バラカトゥロ・アサドゥラエフ,false,0,0,0,0,1,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+yamakimahiro,山木麻弥,山木麻弥,true,0,0,0,6,6,-6,0,,「総合格闘技」節が見つからず(en版由来の可能性)
+maedakohei,前田浩平,前田浩平,false,0,0,0,0,18,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+gojima-daiki,合島大樹,合島大樹,false,0,0,0,0,18,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+shiraijoji,白井誠司,白井誠司,false,0,0,0,0,5,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+satoru,猿飛流,猿飛流,false,0,0,0,0,14,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+rafaelribeiro,ラファエル・リベイロ,ラファエル・リベイロ,false,0,0,0,0,3,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+masudataiga,増田大河,増田大河,false,0,0,0,0,7,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+hamamoto,浜本キャット雄大,浜本キャット雄大,false,0,0,0,0,4,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+uematsuyoshiki,植松洋貴,植松洋貴,false,0,0,0,0,10,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+kobayashiryohei,小林了平,小林了平,false,0,0,0,0,5,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+kanayumu,菅歩夢,菅歩夢,false,0,0,0,0,8,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+yamasakisora,山崎蒼空,山崎蒼空,false,0,0,0,0,6,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+motokawaharuaki,本川ハルアキ,本川ハルアキ,false,0,0,0,0,3,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+teraokatakuei,寺岡拓永,寺岡拓永,false,0,0,0,0,9,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+sugiyama,杉山しずか,杉山しずか,true,1,33,0,33,33,0,0,,
+wadaayane,和田綾音,和田綾音,false,0,0,0,0,3,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
+raika,ライカ,ライカ,true,0,0,0,0,15,0,-15,,「総合格闘技」節が見つからず(en版由来の可能性)
+motonomiki,本野美樹,本野美樹,false,0,0,0,0,2,0,0,,ja.wikipedia記事が取得できず(en版由来の可能性、または記事名不一致)
