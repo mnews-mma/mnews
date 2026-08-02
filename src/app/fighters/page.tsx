@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FighterFilterGrid from "@/components/FighterFilterGrid";
@@ -11,7 +12,13 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "選手戦績一覧" }];
 
-export const dynamic = "force-dynamic";
+// force-dynamicだった(2026-07-30〜)。中身(4団体合算戦績)はGitHub raw fetchの
+// revalidate:3600に律速されており日次バッチ以外では変わらないため、ISR化して
+// リクエスト毎のフルルート再レンダリングを避ける(Fluid Active CPU増加対策)。
+// searchParamsは使っていないため、force-dynamicを外してもrevalidateが素直に効く
+// (/fighters/[slug]は?wc=等のsearchParams参照がありforce-dynamicを外しても
+// 動的レンダリングのままなので対象外。next buildの出力(ƒのまま)で実測確認済み)。
+export const revalidate = 3600;
 
 export const metadata = pageMetadata({
   title: "MMA戦績データベース｜日本人選手の戦績・勝率・フィニッシュ率 - Mニュース",
@@ -67,7 +74,13 @@ export default async function FightersPage() {
         </a>
         <DataFreshness generatedAt={generatedAt} />
       </div>
-      <FighterFilterGrid fighters={fighters} tagsBySlug={tagsBySlug} />
+      {/* FighterFilterGridはuseSearchParams()を使うクライアントコンポーネントで、
+          ISR(revalidate)化した静的生成時にはSuspense境界が無いとビルドが失敗する
+          (force-dynamicの間はこの制約に引っかかっていなかった)。fallbackは実質
+          表示されない(SSR結果に含まれるため)ため見た目上の変化はない。 */}
+      <Suspense fallback={null}>
+        <FighterFilterGrid fighters={fighters} tagsBySlug={tagsBySlug} />
+      </Suspense>
       <Footer />
     </>
   );

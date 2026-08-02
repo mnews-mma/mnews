@@ -20,17 +20,8 @@ import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { PUBLISHED_DIVISIONS, DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 import { getDisplayRank } from "@/lib/mnewsRating/divisionRankingView";
 import { buildFighterTitle as buildFighterMetaTitle, buildFighterDescription } from "@/lib/seoTemplates";
-import { fetchRizinRecords, fetchShootoRecords, fetchPancraseRecords, fetchDeepRecords } from "@/lib/multiOrgRecordsData";
-import {
-  computeMultiOrgRecord,
-  computeMultiOrgBoutTable,
-  computeMultiOrgRates,
-  MULTI_ORG_RECORD_LABEL,
-  shouldPreferMultiOrgRecord,
-  resolveDisplayRecord,
-  withMultiOrgRecord,
-  type MultiOrgSourceData,
-} from "@/lib/mnewsRating/multiOrgRecord";
+import { MULTI_ORG_RECORD_LABEL, shouldPreferMultiOrgRecord, withMultiOrgRecord } from "@/lib/mnewsRating/multiOrgRecord";
+import { getMultiOrgSummaryCached, resolveDisplayRecordCached } from "@/lib/mnewsRating/multiOrgRecordCache";
 import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
 import { normalizeDecisionScorePerspective } from "@/lib/decisionScorePerspective";
 
@@ -51,19 +42,6 @@ const TAG_LINK: Record<OrgTagKey, string | null> = {
 
 // Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
 export const dynamic = "force-dynamic";
-
-// 4団体公式データ(RIZIN・修斗・パンクラス・DEEP)のfetchをgenerateMetadata・
-// FighterPage本体の両方から使う(Next.jsのfetchキャッシュにより同一リクエスト内で
-// 重複fetchにはならない。呼び出し元を1つに集約して差異が生まれないようにする)。
-async function fetchMultiOrgSourceData(): Promise<MultiOrgSourceData> {
-  const [rizinEvents, shootoEvents, pancraseEvents, deepEvents] = await Promise.all([
-    fetchRizinRecords(),
-    fetchShootoRecords(),
-    fetchPancraseRecords(),
-    fetchDeepRecords(),
-  ]);
-  return { rizinEvents, shootoEvents, pancraseEvents, deepEvents };
-}
 
 export async function generateMetadata({
   params,
@@ -89,9 +67,7 @@ export async function generateMetadata({
   // 本文のsuppressNoRecordRow(下のFighterPage本体)と同じ判定をmetaにも適用する。
   // 1行目が抑制対象の選手は、meta descriptionも4団体合算(2行目)の数値を使う
   // (shouldPreferMultiOrgRecord/resolveDisplayRecord参照)。
-  const metaFighter = SHOW_MULTI_ORG_RECORD
-    ? resolveDisplayRecord(fighter, await fetchMultiOrgSourceData())
-    : fighter;
+  const metaFighter = SHOW_MULTI_ORG_RECORD ? await resolveDisplayRecordCached(fighter) : fighter;
   const metaInput = {
     nameJa: fighter.nameJa,
     nameEn: fighter.nameEn,
@@ -343,15 +319,15 @@ export default async function FighterPage({
   // 戦績スタットカード2行目用: RIZIN+修斗+パンクラス+DEEPの4団体公式データを
   // 毎回合算する(fighters.tsのwins/losses/historyは参照しない。詳細は
   // src/lib/mnewsRating/multiOrgRecord.tsのコメント参照)。
-  const multiOrgData = await fetchMultiOrgSourceData();
-  const multiOrgRecord = computeMultiOrgRecord(fighter.slug, multiOrgData);
+  const multiOrgSummary = await getMultiOrgSummaryCached(fighter.slug);
+  const multiOrgRecord = multiOrgSummary.record;
   const hasMultiOrgRecord =
     multiOrgRecord.wins > 0 || multiOrgRecord.losses > 0 || multiOrgRecord.draws > 0;
   // 指示書A(2026-08-01): 2行目(4団体集計)にも1行目(Wikipedia通算)と同じ
   // KO/一本/判定の内訳・勝率・フィニッシュ率を出す(出典で情報量が割れるのを防ぐ)。
   // bout table自体はdisplayHistory(下)とも共有し、二重に計算しない。
-  const multiOrgBoutRows = SHOW_MULTI_ORG_RECORD ? computeMultiOrgBoutTable(fighter.slug, multiOrgData) : [];
-  const multiOrgRates = hasMultiOrgRecord ? computeMultiOrgRates(multiOrgRecord, multiOrgBoutRows) : null;
+  const multiOrgBoutRows = SHOW_MULTI_ORG_RECORD ? multiOrgSummary.rows : [];
+  const multiOrgRates = hasMultiOrgRecord ? multiOrgSummary.rates : null;
   // Wikipedia通算が無い(noRecordData)が4団体合算(2行目)は取れている選手
   // (Wikiを持たない修斗・パンクラス・DEEP選手が該当)は、「通算戦績 データなし」を
   // 出さず2行目のみを表示する。両方無い場合のみ従来どおり「データなし」。
@@ -426,13 +402,18 @@ export default async function FighterPage({
   );
   // 表示直前にshouldPreferMultiOrgRecord判定を適用し、1行目が限定的な選手
   // (needsReview/recordFromResults超過)のカードも自分のページと矛盾しない
-  // 数値(4団体合算)にする(次戦カードと同じ判定・同じmultiOrgDataを再利用)。
-  const sameWeightClass = (await resolveFightersCached(sameClassSeeds))
+  // 数値(4団体合算)にする(次戦カードと同じ判定・選手ごとにキャッシュされた
+  // 集計結果を再利用する)。ランダム抽出(slice(0,4))は解決前に確定させ、
+  // 選ばれた4名分だけ計算する(既存の挙動を維持)。
+  const sameWeightClassCandidates = (await resolveFightersCached(sameClassSeeds))
     .filter((f) => !f.noRecordData)
     .map((f) => ({ f, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .slice(0, 4)
-    .map(({ f }) => (SHOW_MULTI_ORG_RECORD ? resolveDisplayRecord(f, multiOrgData) : f));
+    .map(({ f }) => f);
+  const sameWeightClass = SHOW_MULTI_ORG_RECORD
+    ? await Promise.all(sameWeightClassCandidates.map((f) => resolveDisplayRecordCached(f)))
+    : sameWeightClassCandidates;
 
   const breadcrumbs = [
     { label: "トップ", href: "/" },
