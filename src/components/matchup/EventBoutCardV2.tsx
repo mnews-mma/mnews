@@ -1,11 +1,16 @@
 import { hasWikipediaRecord, type FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { GLOBAL_FIGHTER_NAME_SIZE, type BoutResult } from "@/lib/events";
 import { computeCommonOpponents, computeHeadToHead } from "@/lib/articleGenerator";
+import {
+  hasMultiOrgRecord,
+  MULTI_ORG_RECORD_LABEL_SHORT,
+  type MultiOrgSideRecord,
+} from "@/lib/mnewsRating/multiOrgRecord";
 import styles from "@/styles/matchup.module.css";
 import MatchupTape, { FighterNameText } from "./MatchupTape";
 import { CommonOpponentsToggle } from "./CommonOpponentsList";
 import HeadToHeadBanner from "./HeadToHeadBanner";
-import { buildTapeData, buildNoDataTapeData, type TapeFighterData } from "./matchupData";
+import { buildTapeData, buildNoDataTapeData, buildMultiOrgTapeData, type TapeFighterData } from "./matchupData";
 
 export interface EventBoutCardV2Props {
   nameA: string;
@@ -24,6 +29,16 @@ export interface EventBoutCardV2Props {
   // 大会全体が現在開催中(event.status==="live")かどうか。resultが無くこれがtrueの
   // 場合のみ「進行中(結果待ち)」インジケータを出す。
   isEventLive?: boolean;
+  // 指示書(戦績スコープ出し分け): 大会がRIZINかどうか(event.org==="rizin")。
+  // RIZIN大会は出自が混在するため4団体通算の意味が薄く、片方のみWikipedia
+  // (mixed)の場合は4団体通算へのフォールバックをしない(既存のNo data表示のまま)。
+  // 両者ともWikipediaが無い場合(org問わず)はRIZIN大会でも4団体通算にフォール
+  // バックする(下のuseMultiOrgMode参照)。
+  isRizin?: boolean;
+  // 4団体合算データ(片側ぶん)。Wikipedia戦績が無い/片方しかない場合の
+  // フォールバック描画にのみ使う。null/undefinedは「4団体データも無い」扱い。
+  multiOrgA?: MultiOrgSideRecord | null;
+  multiOrgB?: MultiOrgSideRecord | null;
 }
 
 const normSpace = (s: string) => s.replace(/[\s　]/g, "");
@@ -62,6 +77,9 @@ export default function EventBoutCardV2({
   note,
   result,
   isEventLive,
+  isRizin,
+  multiOrgA,
+  multiOrgB,
 }: EventBoutCardV2Props) {
   // 選手ごとに戦績データの有無を独立して判定する。
   // - 収録済みの側は他カードと同様に戦績/勝率/フィニッシュ率/直近5戦を出す。
@@ -71,11 +89,28 @@ export default function EventBoutCardV2({
   const hasDataA = hasWikipediaRecord(entryA);
   const hasDataB = hasWikipediaRecord(entryB);
   const anyData = hasDataA || hasDataB;
-  // 直接対決(再戦バッジ)・共通対戦相手は両者の履歴が揃っている時のみ算出可能。
+  // 直接対決(再戦バッジ)・共通対戦相手は両者の履歴が揃っている(=Wikipedia戦績が
+  // 両方ある)時のみ算出可能。4団体通算フォールバック(useMultiOrgMode)側には
+  // 相当する実装が無いため、この判定は意図的にWikipedia限定のまま(指示書:
+  // 4団体通算モードではH2H・共通対戦相手を出さない)。
   const bothRegistered = hasDataA && hasDataB;
   const headToHead = bothRegistered ? computeHeadToHead(entryA!, nameB) : [];
   const commons = bothRegistered ? computeCommonOpponents(entryA!, entryB!).slice(0, 8) : [];
   const isPendingLive = !cancelled && !result && !!isEventLive;
+
+  // 指示書(戦績スコープ出し分け): 両者ともWikipedia戦績が揃っている場合(bothRegistered)
+  // は常に現状どおりWikipedia表示。それ以外で、RIZIN大会かつ片方だけWikipedia
+  // (mixed)の場合は4団体通算にフォールバックしない(既存のNo data表示のまま)。
+  // 上記以外(非RIZIN大会のmixed、または大会問わず両者ともWikipediaが無いケース)
+  // で、両者とも4団体通算データ(Wikipedia or 4団体合算のいずれか)が揃っていれば
+  // 4団体通算表示に切り替える。
+  const hasMultiOrgA = !!multiOrgA && hasMultiOrgRecord(multiOrgA.record);
+  const hasMultiOrgB = !!multiOrgB && hasMultiOrgRecord(multiOrgB.record);
+  const displayableA = hasDataA || hasMultiOrgA;
+  const displayableB = hasDataB || hasMultiOrgB;
+  const neitherWiki = !hasDataA && !hasDataB;
+  const useMultiOrgMode =
+    !bothRegistered && displayableA && displayableB && (!isRizin || neitherWiki);
   // 両者ともデータ無しの簡易表示用。MatchupTapeと同じ全サイト単一サイズを使う
   // (この分岐だけ別サイズになる回帰が過去に発生している)。
   const sharedFallbackNameSize = GLOBAL_FIGHTER_NAME_SIZE;
@@ -92,10 +127,10 @@ export default function EventBoutCardV2({
 
   return (
     <article className={`${styles.card}${isTitleMatch ? ` ${styles.cardTitle}` : ""}`}>
-      {(weightClass || tag || note || isPendingLive) && (
+      {(weightClass || tag || note || isPendingLive || useMultiOrgMode) && (
         <div className={styles.meta}>
           {weightClass && <span className={styles.weight}>{weightClass}</span>}
-          {(tag || isPendingLive) && (
+          {(tag || isPendingLive || useMultiOrgMode) && (
             <span className={styles.tagGroup}>
               {isPendingLive && (
                 <span className={`${styles.tag} ${styles.tagLive}`}>
@@ -104,11 +139,35 @@ export default function EventBoutCardV2({
                 </span>
               )}
               {tag && <span className={`${styles.tag} ${tag.cls}`}>{tag.label}</span>}
+              {useMultiOrgMode && (
+                <span className={`${styles.tag} ${styles.tagSource}`}>{MULTI_ORG_RECORD_LABEL_SHORT}</span>
+              )}
             </span>
           )}
         </div>
       )}
-      {anyData ? (
+      {useMultiOrgMode ? (
+        <MatchupTape
+          left={
+            hasMultiOrgA
+              ? buildMultiOrgTapeData(nameA, slugA, multiOrgA!.record, multiOrgA!.rates, multiOrgA!.rows, {
+                  withLast5: true,
+                  withMethodCounts: true,
+                  resultMark: resultMarkFor(nameA, result),
+                })
+              : buildNoDataTapeData(nameA, slugA, { resultMark: resultMarkFor(nameA, result) })
+          }
+          right={
+            hasMultiOrgB
+              ? buildMultiOrgTapeData(nameB, slugB, multiOrgB!.record, multiOrgB!.rates, multiOrgB!.rows, {
+                  withLast5: true,
+                  withMethodCounts: true,
+                  resultMark: resultMarkFor(nameB, result),
+                })
+              : buildNoDataTapeData(nameB, slugB, { resultMark: resultMarkFor(nameB, result) })
+          }
+        />
+      ) : anyData ? (
         <MatchupTape
           left={
             hasDataA

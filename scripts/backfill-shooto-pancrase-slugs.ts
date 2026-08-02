@@ -33,6 +33,45 @@ const DATA_DIR = path.join(process.cwd(), "data");
 const OUT_DIR = path.join(process.cwd(), "out");
 const TARGET_FILES = ["shootoRecords.json", "pancraseRecords.json", "deepRecords.json"];
 
+// 指示書R-4(2026-08-01): 名前は本人で一致するが、試合そのものがプロ戦績
+// 集計の対象外(アマチュア/年少者向け特別ルール等)のため、名前解決の
+// 対象から個別に除外するbout。denylist(名前単位で常時ブロック)とは違い、
+// この選手の他のboutの自動解決は妨げない(karenの"華蓮DATE"aliasは
+// PANCRASE 319/311/322の3戦を正しく解決する一方、このDEEP JEWELS 12の
+// 1戦だけは除外する)。
+//
+// scripts/lib/nonProBoutFilter.tsとの使い分け: あちらはheadingText等の
+// キーワード一致による横断的なヒューリスティック除外(同じキーワードを持つ
+// 全選手・全boutに機械的に適用)。ここは逆に、個別に人力確認済みの1件だけを
+// 名指しで除外する明示リスト(キーワードでの横断適用はしない)。
+//
+// 登録基準(この2条件を両方満たす場合のみ追加する。片方だけでは追加しない):
+//   (1) 当該団体の公式ページ自体に、通常のプロ戦とは異なるルール・区分で
+//       あることを示す明示的な記載がある(例: 「※パウンド無し」「アマチュア」
+//       「エキシビション」等。本人が実際に出場したことの否定ではない)。
+//   (2) fighterRecords.json側(1行目)にも元々この試合が含まれていない。
+//   「1行目に無いから」(2)単独を根拠に追加することは禁止する。1行目は
+//   常に正しいとは限らず、単なる1行目の網羅漏れ(=本来2行目で正しく
+//   拾うべきケース)まで(2)だけで機械的に除外すると、都合の悪いboutを
+//   1行目との不一致を理由に隠す抜け道になってしまうため、(1)の一次資料
+//   (団体公式ページ)による裏付けを必須とする。
+//
+// - DEEP JEWELS 12(2016-06-05)「華蓮DATE」vs 三阪あゆみ: headingText/
+//   namedDivisionに「※パウンド無し」の注記があり、DEEP JEWELS本戦の
+//   通常ルール(グラウンドパンチ有り)とは異なる特別ルール(条件1)。本人が
+//   この興行に出場したこと自体はefight.jpの記事(Team DATE解散報道、
+//   「DEEP JEWELSに12歳で初出場」の記載)と符合するが、パウンド無しの
+//   特別ルール戦をプロ通算成績に算入すると1行目(Wikipedia由来、10-3-0)
+//   を2行目が上回ってしまう。1行目もこの試合を含めていない(条件2)ため、
+//   本アグリゲータでも除外し1行目と2行目を10-3-0で一致させる。
+const KNOWN_NON_PROFESSIONAL_BOUTS: ReadonlySet<string> = new Set([
+  "deepRecords.json::DEEP JEWELS 12::2016-06-05::1",
+]);
+
+function boutKey(file: string, eventName: string, date: string | null, cardPosition: number): string {
+  return `${file}::${eventName}::${date}::${cardPosition}`;
+}
+
 // ------------------------------------------------------------------
 // ファイル単位のバックフィル処理
 // ------------------------------------------------------------------
@@ -63,6 +102,10 @@ function backfillFile(fileName: string, index: Map<string, string | null>): File
         const name: string = b[nameField];
         if (b[slugField]) {
           alreadyResolved++;
+          continue;
+        }
+        if (KNOWN_NON_PROFESSIONAL_BOUTS.has(boutKey(fileName, ev.eventName, ev.date, b.cardPosition))) {
+          unresolved.set(name, (unresolved.get(name) ?? 0) + 1);
           continue;
         }
         const resolved = resolveSlug(name, index);

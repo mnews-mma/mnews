@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
 const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "大会結果一覧" }];
 
 export default function ResultsIndexPage() {
-  const events = [...EVENT_RESULTS].sort((a, b) => (a.date < b.date ? 1 : -1));
+  const events = EVENT_RESULTS.filter((e) => !e.unlisted).sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
     <>

@@ -1,5 +1,6 @@
 import type { FighterRecordEntry } from "@/lib/fighterRecordsCache";
 import { computeFighterStripStats, computeWinRate } from "@/lib/fighterStrip";
+import type { MultiOrgRecord, MultiOrgRates, MultiOrgBoutRow } from "@/lib/mnewsRating/multiOrgRecord";
 
 export type Result = FighterRecordEntry["history"][number]["result"];
 
@@ -64,6 +65,36 @@ export function buildNoDataTapeData(
     winRate: null,
     finishRate: null,
     last5: [],
+    resultMark: opts?.resultMark,
+  };
+}
+
+// 4団体合算(RIZIN・DEEP・パンクラス・修斗、multiOrgRecord.ts)から表示用データを
+// 組み立てる。buildTapeDataのWikipedia版と同じ形(TapeFighterData)に揃えるだけで、
+// 新規の数値生成はしない(computeMultiOrgRecord/Rates/BoutTableの結果をそのまま使う)。
+// last5はrows(日付降順、computeMultiOrgBoutTable側で整列済み)からnc(無効試合)を
+// 除いて先頭5件を取る(fighterStrip.computeFighterStripStatsのlast5と同じ方針)。
+export function buildMultiOrgTapeData(
+  name: string,
+  slug: string | null | undefined,
+  record: MultiOrgRecord,
+  rates: MultiOrgRates,
+  rows: MultiOrgBoutRow[],
+  opts?: {
+    withLast5?: boolean;
+    withMethodCounts?: boolean;
+    resultMark?: TapeFighterData["resultMark"];
+  }
+): TapeFighterData {
+  const last5 = rows.filter((r) => r.result !== "nc").slice(0, 5).map((r) => r.result);
+  return {
+    slug,
+    name,
+    record: `${record.wins}-${record.losses}-${record.draws}`,
+    winRate: rates.winRate,
+    finishRate: rates.finishRate,
+    last5: opts?.withLast5 ? last5 : undefined,
+    methodCounts: opts?.withMethodCounts ? { ko: rates.ko, sub: rates.sub, decision: rates.decision } : undefined,
     resultMark: opts?.resultMark,
   };
 }

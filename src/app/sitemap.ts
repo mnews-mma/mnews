@@ -62,7 +62,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // 結果ページの lastModified は大会日（掲載確定の基準日）
-  const resultRoutes: MetadataRoute.Sitemap = EVENT_RESULTS.map((e) => ({
+  // unlisted: true(薄い内容のため/results一覧から除外)の大会はsitemapにも載せない
+  const resultRoutes: MetadataRoute.Sitemap = EVENT_RESULTS.filter((e) => !e.unlisted).map((e) => ({
     url: `${BASE_URL}/results/${e.slug}`,
     changeFrequency: "weekly",
     priority: 0.6,

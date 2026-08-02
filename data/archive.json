@@ -1,5 +1,68 @@
 [
   {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【PFC41】捲土重来、北のMMAでキャリア再構築の一歩。クリス・キルシュ「僕のムエタイを見せたい」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/234718",
+    "publishedAt": "2026-08-02T01:31:42.000Z",
+    "firstSeenAt": "2026-08-02T04:05:17.192Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "水野新太、亡き母に捧げるデビュー戦「絶対に見守っている」 登場曲『翼をください』に込めた思い",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1040896/",
+    "publishedAt": "2026-08-02T01:30:00.000Z",
+    "firstSeenAt": "2026-08-02T04:05:17.192Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.12：白井誠司選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood12/interview_shirai.html",
+    "publishedAt": "2026-08-02T00:00:00.000Z",
+    "firstSeenAt": "2026-08-02T04:05:17.192Z"
+  },
+  {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【UFN283】ムサエフ、クラインに右を当て。強烈な右&左のフックから、右を打ち抜きUFC初のKO勝ち",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/234706",
+    "publishedAt": "2026-08-01T17:00:24.000Z",
+    "firstSeenAt": "2026-08-01T17:36:42.361Z"
+  },
+  {
+    "id": "mmaplanet-2",
+    "source": "other",
+    "title": "【UFN283】DWCS出身のオリヴェイラが衝撃のUFCデビュー！エリオットを殴り倒してTKO勝ち",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/234692",
+    "publishedAt": "2026-08-01T16:40:19.000Z",
+    "firstSeenAt": "2026-08-01T17:36:42.361Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【UFC】連勝目指すトフィック・ムサエフ「過去なき者に未来はない」、ともに前戦でFOTN受賞のルドビト・クラインと激突。メインは3連続1R KOの地元メディチvs.3連勝ロドリゲス、地元セルビアのミロシェヴィッチ＆レカがボディ攻めで連続TKO勝ち＝速報中",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24478",
+    "publishedAt": "2026-08-01T14:06:23.000Z",
+    "firstSeenAt": "2026-08-01T15:05:50.773Z"
+  },
+  {
+    "id": "gonkaku-2",
+    "source": "other",
+    "title": "【Lemino修斗】サバイバートーナメント準決勝・齋藤奨司「しっかりメイン務める」×中島陸「絶対優勝する」、山内渉「フィニッシュする」×ジョーンズ「準備できている」、石橋佳大vs.内藤太尊、徳弘拓馬vs.新井拓巳、MAX THE BODY vs.岩倉優輝も＝本戦9試合＋OP4試合全選手計量クリア！",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24475",
+    "publishedAt": "2026-08-01T13:18:46.000Z",
+    "firstSeenAt": "2026-08-01T15:05:50.773Z"
+  },
+  {
     "id": "gonkaku-2",
     "source": "other",
     "title": "【UFC】連勝目指すトフィック・ムサエフ「過去なき者に未来はない」、ともに前戦でFOTN受賞のルドビト・クラインと激突。メインは3連続1R KOの地元メディチvs.3連勝ロドリゲス＝8月1日（土）22時から",
@@ -16,6 +79,24 @@
     "url": "https://gonkaku.jp/articles/24471",
     "publishedAt": "2026-08-01T07:58:17.000Z",
     "firstSeenAt": "2026-08-01T10:04:30.130Z"
+  },
+  {
+    "id": "shooto-0",
+    "source": "shooto",
+    "title": "2026年ライセンス保持者・未登録者一覧（～2026年12月31日）",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/08/01/post-46250/",
+    "publishedAt": "2026-08-01T07:48:38.000Z",
+    "firstSeenAt": "2026-08-01T17:36:42.361Z"
+  },
+  {
+    "id": "shooto-1",
+    "source": "shooto",
+    "title": "2026年JSAライセンス登録のお願い",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/08/01/post-45701/",
+    "publishedAt": "2026-08-01T07:00:30.000Z",
+    "firstSeenAt": "2026-08-01T17:36:42.361Z"
   },
   {
     "id": "encount-0",

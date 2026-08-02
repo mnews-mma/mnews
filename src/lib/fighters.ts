@@ -1142,7 +1142,11 @@ export const FIGHTERS: Fighter[] = [
   { slug: "rikiya", nameJa: "力也", nameEn: "Rikiya", org: "deep", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "力也 (格闘家)" },
   { slug: "gomyo-hiroto", nameJa: "五明宏人", nameEn: "Hiroto Gomyo", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "tsubaki-asuka", nameJa: "椿飛鳥", nameEn: "Asuka Tsubaki", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "hibino-junya", nameJa: "日比野純也", nameEn: "Junya Hibino", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // wikiTitleJa明示指定(2026-08-01): デフォルトタイトル推測(nameJaのスペース除去=
+  // "日比野純也")では記事が見つからず、常時noRecordDataになっていた。実際のja-wiki
+  // 記事タイトルは引用符付きニックネーム入りの「日比野"エビ中"純也」(実測で戦績
+  // 8勝8敗・history16件を確認済み)。
+  { slug: "hibino-junya", nameJa: "日比野純也", nameEn: "Junya Hibino", org: "deep", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: '日比野"エビ中"純也' },
   { slug: "kenshiro", nameJa: "ケンシロウ", nameEn: "Kenshiro", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nakatani-yuga", nameJa: "中谷優我", nameEn: "Yuga Nakatani", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "suzuki-taisei", nameJa: "鈴木大晟", nameEn: "Taisei Suzuki", org: "deep", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
@@ -1202,6 +1206,23 @@ export const FIGHTERS: Fighter[] = [
   { slug: "saito-momoko", nameJa: "百湖", nameEn: "Momoko Saito", org: "deep", weightClass: "女子バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["斎藤百湖", "斉藤百湖", "齊藤百湖"] },
   { slug: "higashi-yoko", nameJa: "東ようこ", nameEn: "Yoko Higashi", org: "deep", weightClass: "女子フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["東よう子"] },
   { slug: "nakai-rin", nameJa: "中井りん", nameEn: "Rin Nakai", org: "deep", weightClass: "女子フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // --- 指示書S(2026-08-01)追加の3名。読み・階級・現役状況をja-wikipedia単独記事
+  // +各団体公式(DEEP公式サイト/修斗公認サイト)の複数ソースで確認済み。
+  // 松田亜莉紗・藤田大和はEVENT_RESULTS(自社結果データ)側にDEEP JEWELS/Lemino修斗の
+  // 対戦相手として未収録のため、resolveFighter()の同名別人ガード(recordFromResults
+  // 選手はEVENT_RESULTS由来の対戦相手名とWikipedia戦績表の重なりが無いと同名別人
+  // 扱いで戦績を棄却する)がデフォルトタイトル推測では通らない。wikiTitleJaを
+  // 明示指定(値自体はnameJaのスペース除去と同じ)してガードを回避する(実測で
+  // 松田亜莉紗8勝1敗・藤田大和14勝7敗を確認済み)。芦田崇宏はRIZIN経由の対戦相手
+  // 名がEVENT_RESULTS側に既にあり自然にガードを通過するため明示指定は不要。
+  { slug: "matsuda-arisa", nameJa: "松田亜莉紗", nameEn: "Arisa Matsuda", org: "deep", weightClass: "女子ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "松田亜莉紗" },
+  { slug: "ashida-takahiro", nameJa: "芦田崇宏", nameEn: "Takahiro Ashida", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "fujita-yamato", nameJa: "藤田大和", nameEn: "Yamato Fujita", org: "shooto", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "藤田大和" },
+  // 2026-08-02追加。ja-wiki単独記事(通算18勝11敗1分)で確認済み。RIZIN参戦歴あり
+  // (RIZIN.22/27/37/43/47、LANDMARK vol.3)だが直近所属はDEEP(SONIC SQUAD)のため
+  // org=deep。デフォルトタイトル推測(nameJaのスペース除去)で記事名と一致するが、
+  // 明示指定しておく。
+  { slug: "seki-tetsuya", nameJa: "関鉄矢", nameEn: "Tetsuya Seki", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "関鉄矢" },
   // ===========================================================================
   // 第2チャンク: 修斗/パンクラス現ランカー・NEXUS現王者(2026-07-05スナップショット)
   // hidden=true / recordFromResults=true。読み不確定は needsReview=true。
@@ -2843,6 +2864,22 @@ export const FIGHTERS: Fighter[] = [
     slug: "karen",
     nameJa: "KAREN",
     nameEn: "Karen",
+    // 指示書R-4(2026-08-01): 2021-10-17のPANCRASE 324で「華蓮DATE」から
+    // 改名(efight.jp「パンクラス初参戦の華蓮DATEがKARENに改名し」参照)。
+    // それ以前のパンクラスの生データは旧リングネーム「華蓮DATE」(半角
+    // スペース有り無り両表記あり、いずれもfighterNameBackfill.tsの
+    // nfkc_whitespace正規化で吸収される)で記録されているため、alias登録
+    // により旧名義のbout(PANCRASE 322/319/311の3戦)を本人に解決する。
+    // 3戦ともパンクラス公式の同一プロフィールURL(prfl-a/karen.html)に
+    // 紐づくことを確認済み。
+    //
+    // なおDEEP JEWELS 12(2016-06-05、12歳での出場)も同じ旧名義で見つかる
+    // が、「※パウンド無し」の特別ルール戦(1行目=Wikipedia由来にも含まれて
+    // いない)のため、scripts/backfill-shooto-pancrase-slugs.tsの
+    // KNOWN_NON_PROFESSIONAL_BOUTSで個別に自動解決の対象から除外している
+    // (本人であること自体はefight.jpの記事と符合するが、プロ通算戦績には
+    // 含めない)。
+    aliases: ["華蓮DATE"],
     org: "pancrase",
     orgs: ["shooto", "pancrase"],
     weightClass: "女子ストロー級",
