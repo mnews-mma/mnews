@@ -40,7 +40,7 @@ const TARGET_FILES = ["shootoRecords.json", "pancraseRecords.json", "deepRecords
 // PANCRASE 319/311/322の3戦を正しく解決する一方、このDEEP JEWELS 12の
 // 1戦だけは除外する)。
 //
-// scripts/lib/nonProBoutFilter.tsとの使い分け: あちらはheadingText等の
+// src/lib/mnewsRating/nonProBoutFilter.tsとの使い分け: あちらはheadingText等の
 // キーワード一致による横断的なヒューリスティック除外(同じキーワードを持つ
 // 全選手・全boutに機械的に適用)。ここは逆に、個別に人力確認済みの1件だけを
 // 名指しで除外する明示リスト(キーワードでの横断適用はしない)。

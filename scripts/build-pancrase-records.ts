@@ -23,6 +23,7 @@ import path from "path";
 import { findFighterSlugByName } from "../src/lib/fighters";
 import { toJstDateStr } from "../src/lib/eventCountdown";
 import { assertAllowedByRobots } from "./lib/robotsGate";
+import { classifyMmaRuleType } from "../src/lib/mnewsRating/nonProBoutFilter";
 
 const OUT = path.join(process.cwd(), "data", "pancraseRecords.json");
 const UA = "Mozilla/5.0 (compatible; MNewsBot/1.0; +https://www.mnews.jp)";
@@ -338,20 +339,17 @@ function extractBoutTables(html: string): string[] {
 // parseRuleInfo/parseMethodと同じ「明示語のみで判定・推測しない」方針)
 // ------------------------------------------------------------------
 
-// 非MMAと積極的に判定できる語(見出しテキストに実在した表記のみ、実測ベース)。
-// 決着方法テキスト側は「グラウンドのキック」等MMAの決着描写にも"キック"を含む
-// ため対象にしない(見出し側のみで判定する)。
-const NON_MMA_PATTERNS: { pattern: RegExp; label: string }[] = [
-  { pattern: /キックボクシング|キック(ルール|戦)/, label: "キックボクシング" },
-  { pattern: /シュートボクシング/, label: "シュートボクシング" },
-  { pattern: /プロレスルール/, label: "プロレスルール" },
-  { pattern: /グラップリング/, label: "グラップリング" },
-  { pattern: /エキシビ|エキジビ/, label: "エキシビジョン" },
-];
-
+// 非MMA判定はsrc/lib/mnewsRating/nonProBoutFilter.tsのclassifyMmaRuleType()に
+// 一本化した(PR #369。旧ローカルパターンにISKAが無く、ISKAオリエンタル・
+// ルールがMMAに誤分類される事故があった)。決着方法テキスト側は「グラウンドの
+// キック」等MMAの決着描写にも"キック"を含むため対象にせず、見出しテキストのみで
+// 判定する(既存方針を維持)。
+// なお実際の集計(pancraseRecordsAggregate.computeFighterPancraseRecord)は、
+// ここで保存したruleTypeを信用せずheadingText/namedDivisionから毎回判定し直す
+// ため、このresolveRuleType()の呼び出し結果はデータの参考値としてのみ保存される
+// (パターン更新時に再スクレイプしなくても集計結果には即座に反映される)。
 function resolveRuleType(headingText: string): string {
-  const hit = NON_MMA_PATTERNS.find((p) => p.pattern.test(headingText));
-  return hit ? hit.label : "MMA";
+  return classifyMmaRuleType(headingText);
 }
 
 // 階級名候補(長い/具体的な表記を先に判定する。「ライトヘビー級」を

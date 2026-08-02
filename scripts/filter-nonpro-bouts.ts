@@ -1,7 +1,7 @@
 // out/amateur-contamination-audit.md(2026-07-30監査)で確定した除外基準を
 // data/shootoRecords.json・data/pancraseRecords.json に適用する。
 //
-// 除外対象(scripts/lib/nonProBoutFilter.ts参照):
+// 除外対象(src/lib/mnewsRating/nonProBoutFilter.ts参照):
 //   - non_mma_karate / non_mma_kids_shooto / non_mma_submission_only (MMAではない)
 //   - not_pro_amateur / not_pro_tryout (プロ試合ではない)
 // 除外しない(ユーザー確定事項): 新人王決定トーナメント(修斗)・NEO BLOOD!(パンクラス)
@@ -15,7 +15,7 @@
 // 実行方法: npx tsx scripts/filter-nonpro-bouts.ts [--dry-run]
 import fs from "fs";
 import path from "path";
-import { classifyNonProBout, NonProBoutCategory } from "./lib/nonProBoutFilter";
+import { classifyNonProBout, NonProBoutCategory } from "../src/lib/mnewsRating/nonProBoutFilter";
 import { ShootoRecordsEvent, ShootoRecordsBout } from "../src/lib/mnewsRating/shootoScraper";
 import { PancraseRecordsEvent, PancraseRecordsBout } from "../src/lib/mnewsRating/pancraseRecordsTypes";
 import { computeFighterShootoRecord } from "../src/lib/mnewsRating/shootoRecordsAggregate";
@@ -65,7 +65,7 @@ function filterEvents<E extends { eventName: string; date: string | null; bouts:
     not_pro_amateur: 0,
     not_pro_tryout: 0,
     not_pro_cage_gate: 0,
-    not_pro_futureking: 0, // 修斗/パンクラスの呼び出しはeventNameを渡さないため常に0(scripts/lib/nonProBoutFilter.ts参照)
+    not_pro_futureking: 0, // 修斗/パンクラスの呼び出しはeventNameを渡さないため常に0(src/lib/mnewsRating/nonProBoutFilter.ts参照)
   };
   let totalBoutsBefore = 0;
   let totalBoutsAfter = 0;
