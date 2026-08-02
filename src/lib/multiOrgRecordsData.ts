@@ -1,8 +1,8 @@
 // data/rizinRecords.json・data/shootoRecords.json・data/pancraseRecords.json・
-// data/deepRecords.jsonの読み出し。orgRankingsData.ts/mnewsRatingData.tsと
-// 同じ思想: 本番はGitHub rawを取得日つきで参照し、更新があれば再デプロイ無しで
-// 反映される(revalidate)。取得失敗時やプレビュー(未マージ)時はリポジトリ
-// 同梱のローカルファイルにフォールバックする。
+// data/deepRecords.json・data/shootoProfileBouts.json(指示書R-8)の読み出し。
+// orgRankingsData.ts/mnewsRatingData.tsと同じ思想: 本番はGitHub rawを取得日
+// つきで参照し、更新があれば再デプロイ無しで反映される(revalidate)。取得失敗時
+// やプレビュー(未マージ)時はリポジトリ同梱のローカルファイルにフォールバックする。
 //
 // デプロイ毎に変わるコミットSHAをクエリに付け、Vercel Data Cache
 // (revalidate:3600)をデプロイ単位でバスターする(mnewsRatingData.ts等と
@@ -40,8 +40,19 @@ export async function fetchRizinRecords(): Promise<RizinRecordsEvent[]> {
   return fetchJsonArrayWithLocalFallback<RizinRecordsEvent>("rizinRecords.json");
 }
 
+// data/shootoProfileBouts.json(指示書R-8): 修斗公式サイトの選手プロフィール
+// ページ(/fighters/?id=NNN)経由で発見した、大会アーカイブ(/result/)には
+// 出てこないbout(2012-12-24より前の試合・大会自体がアーカイブに無い試合)を
+// 1bout=1件の疑似ShootoRecordsEvent互換オブジェクトとして格納したファイル。
+// 既存のdata/shootoRecords.jsonとは完全に分離しており(出所の切り分けを保つため
+// 混在させない)、ここで単純にconcatして返す。呼び出し元(multiOrgRecord.ts等)は
+// 変更不要(返り値の配列が長くなるだけ)。
 export async function fetchShootoRecords(): Promise<ShootoRecordsEvent[]> {
-  return fetchJsonArrayWithLocalFallback<ShootoRecordsEvent>("shootoRecords.json");
+  const [archive, profile] = await Promise.all([
+    fetchJsonArrayWithLocalFallback<ShootoRecordsEvent>("shootoRecords.json"),
+    fetchJsonArrayWithLocalFallback<ShootoRecordsEvent>("shootoProfileBouts.json"),
+  ]);
+  return [...archive, ...profile];
 }
 
 export async function fetchPancraseRecords(): Promise<PancraseRecordsEvent[]> {

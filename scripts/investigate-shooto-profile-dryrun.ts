@@ -372,6 +372,9 @@ interface RowResult {
 
   // 出力
   const outDir = path.join(process.cwd(), "out");
+  // 指示書R-8向け: CSVはJSON.stringify方式のエスケープでCSVの""方式と食い違うため、
+  // 投入対象抽出は汎用CSVパーサに頼らずこちらの生JSON配列から行う。
+  fs.writeFileSync(path.join(outDir, "r7-shooto-profile-dryrun-allrows.json"), JSON.stringify(allRows, null, 2) + "\n");
   const csvPath = path.join(outDir, "r7-shooto-profile-dryrun.csv");
   const csvHeader =
     "slug,nameJa,shootoId,date,section,symbol,result,opponentRaw,opponentShootoId,methodRaw,linkedResultId,category,note,mismatchPattern,existingNoteRaw";
