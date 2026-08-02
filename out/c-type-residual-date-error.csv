@@ -1,0 +1,6 @@
+slug,name,history_index,date,event,opponent,result,org,events_on_that_date,_detail
+motoya-yuki,元谷 友貴,27,2018-10-27,DEEP 86 IMPACT 【DEEPバンタム級王座決定戦】,釜谷真,win,DEEP,(none),"確定・修正済み(recordOverrides.ts patch-date, correctedDate=2022-10-27)"
+goto-joji,後藤 丈治,5,2024-12-08,DEEP 122 IMPACT,マンド・グティエレス,loss,DEEP,DEEP 123 IMPACT; DEEP TOKYO IMPACT 2024 6th ROUND,"確定・修正済み(recordOverrides.ts patch-date, correctedDate=2024-11-23)"
+takeda-koji,武田 光司,19,2018-10-27,DEEP 86 IMPACT 【DEEPライト級タイトルマッチ】,北岡悟,win,DEEP,(none),"確定・修正済み(recordOverrides.ts patch-date, correctedDate=2022-10-27)"
+kitaoka-satoru,北岡悟,15,2018-10-27,DEEP 86 IMPACT 【DEEPライト級タイトルマッチ】,武田光司,loss,DEEP,(none),"確定・修正済み(recordOverrides.ts patch-date, correctedDate=2022-10-27)"
+koya-kanda,神田コウヤ,15,2020-11-02,DEEP 99 IMPACT,鬼山斑猫,win,DEEP,(none),"確定・修正済み(recordOverrides.ts patch-date, correctedDate=2020-11-01)"
