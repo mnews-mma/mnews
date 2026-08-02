@@ -37,6 +37,47 @@ const DATA_DIR = path.join(process.cwd(), "data");
 const OUT_DIR = path.join(process.cwd(), "out");
 const TARGET_FILE = "rizinRecords.json";
 
+// PR #352(eventResults.tsとrizinRecords.jsonの全18大会突合)で判明した、
+// eventResults.ts側にのみ存在しrizinRecords.jsonへ意図的に追加しなかったbout。
+// 対戦相手が本人であることは確実だが、試合自体がRIZIN公式によりプロMMA戦績の
+// 対象外(別ルール)と明記されているため除外した。この一覧は現状どのロジックからも
+// 参照されない「記録のみ」の一覧である(次に同種の突合をやる人が同じ調査を
+// やり直さずに済むための備忘。eventResults.ts側の該当bout定義にも参照コメントを
+// 置いている)。
+//
+// scripts/backfill-shooto-pancrase-slugs.tsのKNOWN_NON_PROFESSIONAL_BOUTSと
+// 同じ考え方(本人だがプロ戦績集計の対象外のboutを個別列挙で除外する)を踏襲した
+// 命名だが、あちら(scripts/lib/nonProBoutFilter.tsも含む)は修斗/パンクラス/DEEPの
+// 公式アーカイブ悉皆スクレイピングで生成されるheadingText/strapTitle等のフィールドへ
+// キーワード一致を機械適用する仕組みで、RIZINのデータ生成フロー(rizinRecords.json・
+// eventResults.tsともに手動キュレーション)にはそもそも該当フィールドも自動分類の
+// 呼び出し口も存在しないため転用できず、ここに個別のRIZIN用リストとして持つ。
+export const RIZIN_EVENTRESULTS_NON_PROFESSIONAL_BOUTS: ReadonlyArray<{
+  eventName: string; // eventResults.ts側のeventName表記
+  date: string;
+  fighterA: string;
+  fighterB: string;
+  reason: string;
+  source: string; // RIZIN公式(jp.rizinff.com)の当該大会結果ページ
+}> = [
+  {
+    eventName: "RIZIN LANDMARK 15 in HIROSHIMA",
+    date: "2026-07-18",
+    fighterA: "芝宏二郎",
+    fighterB: "遥心",
+    reason: "RIZIN公式が階級表記を「54.5kg契約 キックボクシング」と明記(MMAルールではない)。",
+    source: "https://jp.rizinff.com/_ct/17853329",
+  },
+  {
+    eventName: "RIZIN LANDMARK 15 in HIROSHIMA",
+    date: "2026-07-18",
+    fighterA: "田中仁",
+    fighterB: "健太朗",
+    reason: "RIZIN公式が階級表記を「57.0kg契約（アマチュアMMAルール）」と明記(プロ戦績集計の対象外)。",
+    source: "https://jp.rizinff.com/_ct/17853329",
+  },
+];
+
 function loadJson<T>(file: string): T {
   return JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), "utf8")) as T;
 }
