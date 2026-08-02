@@ -52,7 +52,7 @@ export const EVENT_RESULTS: EventResult[] = [
   {
     slug: "shooto-pound-out-2026",
     org: "shooto",
-    eventName: "【NTT DOCOMO presents】プロフェッショナル修斗公式戦『Lemino修斗~POUND OUT~』",
+    eventName: "プロフェッショナル修斗公式戦『Lemino修斗~POUND OUT~』",
     date: "2026-08-02",
     venue: "TKPガーデンシティ千葉３F シンフォニア",
     sourceUrl: "https://j-shooto.com/2026/08/02/post-51402/",
