@@ -158,6 +158,10 @@ GitHub Actions・Vercel Cron以外の外部トリガー(webhook等)は無い。
 - サイズが小さすぎる/大きすぎると感じた場合、**単一サイズの仕組み自体を壊すのではなく、まず計算式のバグを疑う**。実際の事故は `fighterNameSize()`(サイズ計算)が `renderWrappableName()`(実描画の折り返し挙動)とズレていたことが真因で、単一サイズ設計自体は正しかった。
 - 全カード・全ページを1つの値(`GLOBAL_FIGHTER_NAME_SIZE`)で揃える設計は、**構造上「最も厳しい1件」に全体が引きずられる**(1名の表記・1件のバグでサイト全体が縮む)。この設計を採る場合、下限ガードと原因(選手名+大会slug)をビルド時に表示する仕組みは必須(`scripts/check-event-namesize-override.ts` の `GLOBAL_NAME_SIZE_FLOOR` 参照)。
 
+## 選手追加PRのルール
+
+- 選手追加PRには `data/fighterRecords.json` の該当エントリを同PRに含める(`fighters.ts`への追加だけでは戦績が「データなし」のままデプロイされるため)。
+
 ## 「数字で見る対戦カード」記事の公開手順
 
 1. `/admin/drafts` タブ③で大会・対象試合を選び、「プレビュー」で内容を確認する。
