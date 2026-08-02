@@ -32,6 +32,32 @@ export interface RizinEventIndexEntry {
 
 export const RIZIN_EVENT_INDEX: RizinEventIndexEntry[] = [
   {
+    // SARABAの宴・IZAの舞(RIZIN旗揚げ興行、告知名「さいたま3DAYS」)は「大会情報」
+    // タグに正しく含まれるが(PR #237で確認済み)、いずれのindexにもrizinRecordOverrides.ts
+    // にも一切含まれておらずdata/rizinRecords.jsonから丸ごと欠落していた
+    // (2026-08-02に追加)。RIZIN.1よりさらに古いテンプレート(<div id="match-list">
+    // ベース、RIZIN.1/RIZIN.2と同型)のため手動書き起こし(RIZIN_SARABA_BOUTS)。
+    eventName: "SARABAの宴",
+    date: "2015-12-29",
+    infoPageId: "16969713",
+    resultsPageId: "16969713",
+    manualOverride: true,
+    note: "2016年当時よりさらに古い旧テンプレート(<div id=\"match-list\">ベース)のためrizinScraper.tsのパーサーでは0試合になる。rizinRecordOverrides.tsのRIZIN_SARABA_BOUTSに全14試合を手動書き起こし済み。大会情報／試合結果一覧が同一ページ。",
+  },
+  {
+    // IZAの舞は新テンプレート(フォーマットA)でrizinScraper.tsの自動パーサーで
+    // 全13試合パース可能(実機確認済み)だが、parseRuleInfo()に「K-1ルール」
+    // 「SBルール」を非MMAと判定できない既知のギャップがあり、自動パイプラインだと
+    // 誤ってMMA戦績に算入されるため、SARABAの宴と同様に手動書き起こし
+    // (RIZIN_IZA_BOUTS)とする。詳細はrizinRecordOverrides.tsのコメント参照。
+    eventName: "IZAの舞",
+    date: "2015-12-31",
+    infoPageId: "16969509",
+    resultsPageId: "16969509",
+    manualOverride: true,
+    note: "フォーマットA(新テンプレート)で自動パース自体は可能だが、parseRuleInfo()がK-1ルール/SBルールを非MMAと判定できない既知のギャップを避けるためrizinRecordOverrides.tsのRIZIN_IZA_BOUTSに全13試合を手動書き起こし済み。大会情報／試合結果一覧が同一ページ。",
+  },
+  {
     eventName: "RIZIN.2 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 開幕戦",
     date: "2016-09-25",
     infoPageId: "16978368",

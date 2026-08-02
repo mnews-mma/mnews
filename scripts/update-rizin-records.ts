@@ -7,7 +7,17 @@
 import fs from "fs";
 import path from "path";
 import { RIZIN_EVENT_INDEX } from "../src/lib/mnewsRating/rizinEventIndex";
-import { RIZIN_1_BOUTS, RIZIN_1_SOURCE, RIZIN_2_BOUTS, RIZIN_2_SOURCE } from "../src/lib/mnewsRating/rizinRecordOverrides";
+import {
+  RizinRawBoutManual,
+  RIZIN_SARABA_BOUTS,
+  RIZIN_SARABA_SOURCE,
+  RIZIN_IZA_BOUTS,
+  RIZIN_IZA_SOURCE,
+  RIZIN_1_BOUTS,
+  RIZIN_1_SOURCE,
+  RIZIN_2_BOUTS,
+  RIZIN_2_SOURCE,
+} from "../src/lib/mnewsRating/rizinRecordOverrides";
 import {
   splitIntoBoutChunks,
   parseBoutChunk,
@@ -120,51 +130,10 @@ function buildEventBouts(eventName: string, date: string, html: string): { bouts
   return { bouts: parsed, parseFailures };
 }
 
-async function main() {
-  const out: RizinRecordsFile = [];
-  let totalBouts = 0;
-  let totalParseFailures = 0;
-  let totalUnresolvedNames = 0;
-  const unresolvedNameSamples: string[] = [];
-
-  // RIZIN.1(旧テンプレート・手動書き起こし分)を先頭に格納する。
-  const rizin1Bouts: RizinRecordsBout[] = RIZIN_1_BOUTS.map((b) => {
-    const fighterASlug = findFighterSlugByName(b.fighterAName);
-    const fighterBSlug = findFighterSlugByName(b.fighterBName);
-    const winnerSlug = b.winnerName === b.fighterAName ? fighterASlug : b.winnerName === b.fighterBName ? fighterBSlug : null;
-    return {
-      cardPosition: b.cardPosition,
-      isOpeningFight: b.cardPosition === 1,
-      headingText: `第${b.cardPosition}試合`,
-      fighterAName: b.fighterAName,
-      fighterBName: b.fighterBName,
-      fighterASlug,
-      fighterBSlug,
-      ruleType: b.ruleType,
-      weightKg: b.weightKg,
-      namedDivision: b.namedDivision,
-      resultType: b.resultType,
-      winnerName: b.winnerName,
-      winnerSlug,
-      round: null,
-      time: null,
-      methodRaw: b.methodRaw,
-      isWeighInMiss: false,
-    };
-  });
-  out.push({
-    eventName: RIZIN_1_SOURCE.eventName,
-    date: RIZIN_1_SOURCE.date,
-    sourceUrl: RIZIN_1_SOURCE.sourceUrl,
-    fetchedDate: RIZIN_1_SOURCE.fetchedDate,
-    bouts: rizin1Bouts,
-    parseFailures: 0,
-  });
-  totalBouts += rizin1Bouts.length;
-
-  // RIZIN.2(旧テンプレート・手動書き起こし分)。RIZIN_EVENT_INDEX内の該当エントリは
-  // manualOverride:trueが立っているため、下記ループでは自動fetchされない(二重計上防止)。
-  const rizin2Bouts: RizinRecordsBout[] = RIZIN_2_BOUTS.map((b) => {
+// 旧テンプレート大会(RIZIN_EVENT_INDEXでmanualOverride:trueのエントリ)を
+// 手動書き起こし配列からRizinRecordsBout[]へ変換する共通処理。
+function buildManualOverrideBouts(manual: RizinRawBoutManual[]): RizinRecordsBout[] {
+  return manual.map((b) => {
     const fighterASlug = findFighterSlugByName(b.fighterAName);
     const fighterBSlug = findFighterSlugByName(b.fighterBName);
     const winnerSlug = b.winnerName === b.fighterAName ? fighterASlug : b.winnerName === b.fighterBName ? fighterBSlug : null;
@@ -188,15 +157,36 @@ async function main() {
       isWeighInMiss: false,
     };
   });
-  out.push({
-    eventName: RIZIN_2_SOURCE.eventName,
-    date: RIZIN_2_SOURCE.date,
-    sourceUrl: RIZIN_2_SOURCE.sourceUrl,
-    fetchedDate: RIZIN_2_SOURCE.fetchedDate,
-    bouts: rizin2Bouts,
-    parseFailures: 0,
-  });
-  totalBouts += rizin2Bouts.length;
+}
+
+async function main() {
+  const out: RizinRecordsFile = [];
+  let totalBouts = 0;
+  let totalParseFailures = 0;
+  let totalUnresolvedNames = 0;
+  const unresolvedNameSamples: string[] = [];
+
+  // 旧テンプレート大会(手動書き起こし分)を時系列順(古い順)に先頭へ格納する。
+  // RIZIN_EVENT_INDEX内の該当エントリはmanualOverride:trueが立っているため、
+  // 後続の自動fetchループではスキップされる(二重計上防止)。
+  const manualEvents = [
+    { bouts: RIZIN_SARABA_BOUTS, source: RIZIN_SARABA_SOURCE },
+    { bouts: RIZIN_IZA_BOUTS, source: RIZIN_IZA_SOURCE },
+    { bouts: RIZIN_1_BOUTS, source: RIZIN_1_SOURCE },
+    { bouts: RIZIN_2_BOUTS, source: RIZIN_2_SOURCE },
+  ];
+  for (const { bouts: manualBouts, source } of manualEvents) {
+    const bouts = buildManualOverrideBouts(manualBouts);
+    out.push({
+      eventName: source.eventName,
+      date: source.date,
+      sourceUrl: source.sourceUrl,
+      fetchedDate: source.fetchedDate,
+      bouts,
+      parseFailures: 0,
+    });
+    totalBouts += bouts.length;
+  }
 
   for (const entry of RIZIN_EVENT_INDEX) {
     if (entry.manualOverride) {

@@ -10,7 +10,10 @@ export interface RizinRawBoutManual {
   fighterAName: string;
   fighterBName: string;
   winnerName: string | null; // nullは引き分け・中止
-  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "女子MMA" | "グラップリング";
+  // "MIXルール"はSARABAの宴(2015-12-29)追加時に、rizinScraper.tsの
+  // NON_MMA_RULE_TYPE_LABELSと同じ既存カテゴリとして追加した(新しい概念の
+  // 導入ではない。2026-08-02)。
+  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "女子MMA" | "グラップリング" | "MIXルール";
   weightKg: number | null; // 無差別契約等は null
   namedDivision: string | null;
   resultType: "decisive" | "draw" | "nc" | "cancelled";
@@ -20,6 +23,84 @@ export interface RizinRawBoutManual {
   // ページ側に明確な「NR」表記があるため分離する(RIZIN.1側の既存値は変更しない)。
   time?: string | null; // 同上。判定等、時間の記載が無い決着は null のまま(捏造しない)。
 }
+
+// SARABAの宴(2015-12-29)・IZAの舞(2015-12-31)はRIZIN旗揚げ興行(告知時の名称は
+// 「RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS」。3日間興行として発表
+// されたが初日(12/28)が中止となり、実施は2日間のみ)。「大会情報」タグには
+// 正しく含まれる(PR #237の読み取り専用調査で確認済み)が、いずれのRIZIN_EVENT_INDEX
+// エントリにもrizinRecordOverrides.tsにも一切含まれておらず、data/rizinRecords.json
+// から丸ごと欠落していた(2026-08-02に追加)。
+//
+// SARABAの宴は2016年当時よりさらに古い最古期のテンプレート(<div id="match-list">
+// ベース、<p class="match_info">「第N試合」形式)で、RIZIN.1/RIZIN.2と同型のため
+// 手動書き起こしとする。
+// 出典: https://jp.rizinff.com/_ct/16969713(SARABAの宴 試合結果一覧)
+// 取得日: 2026-08-02
+export const RIZIN_SARABA_BOUTS: RizinRawBoutManual[] = [
+  { cardPosition: 1, fighterAName: "髙阪剛", fighterBName: "ジェームス・トンプソン", winnerName: "髙阪剛", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "2R 1:58 レフェリーストップ" },
+  { cardPosition: 2, fighterAName: "カルロス・トヨタ", fighterBName: "キリル・シデルニコフ", winnerName: "キリル・シデルニコフ", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 2:23 TKO(レフェリーストップ)" },
+  { cardPosition: 3, fighterAName: "元谷友貴", fighterBName: "フェリペ・エフライン", winnerName: null, ruleType: "MMA", weightKg: 56.7, namedDivision: null, resultType: "nc", methodRaw: "1R 5:46 ノーコンテスト" },
+  { cardPosition: 4, fighterAName: "HIROYA", fighterBName: "西浦“ウィッキー”聡生", winnerName: "HIROYA", ruleType: "キックボクシング", weightKg: 65.0, namedDivision: null, resultType: "decisive", methodRaw: "3R 1:20 KO" },
+  { cardPosition: 5, fighterAName: "宮田和幸", fighterBName: "日菜太", winnerName: "日菜太", ruleType: "MIXルール", weightKg: 70.0, namedDivision: null, resultType: "decisive", methodRaw: "1R 2:14 TKO（3ダウン）" },
+  { cardPosition: 6, fighterAName: "A.J.マシューズ", fighterBName: "アナトリー・トコフ", winnerName: "アナトリー・トコフ", ruleType: "MMA", weightKg: 84.0, namedDivision: null, resultType: "decisive", methodRaw: "1R 0:55 KO" },
+  { cardPosition: 7, fighterAName: "所英男", fighterBName: "才賀紀左衛門", winnerName: "所英男", ruleType: "MMA", weightKg: 62, namedDivision: null, resultType: "decisive", methodRaw: "1R 5:16 アームバー" },
+  { cardPosition: 8, fighterAName: "髙谷裕之", fighterBName: "DJ.taiki", winnerName: "髙谷裕之", ruleType: "MMA", weightKg: 65, namedDivision: null, resultType: "decisive", methodRaw: "3R判定 3-0" },
+  { cardPosition: 9, fighterAName: "内田雄大", fighterBName: "ワレンティン・モルダフスキー", winnerName: "ワレンティン・モルダフスキー", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 2:20 リアネイキッドチョーク" },
+  { cardPosition: 10, fighterAName: "キング・モー", fighterBName: "ブレット・マクダーミット", winnerName: "キング・モー", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 2:58 TKO" },
+  { cardPosition: 11, fighterAName: "テオドラス・オークストリス", fighterBName: "ブルーノ・カッペローザ", winnerName: "テオドラス・オークストリス", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 2:58 TKO" },
+  { cardPosition: 12, fighterAName: "ゴラン・レリッジ", fighterBName: "ワジム・ネムコフ", winnerName: "ワジム・ネムコフ", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 2:58 TKO" },
+  { cardPosition: 13, fighterAName: "石井慧", fighterBName: "イリー・プロハースカ", winnerName: "イリー・プロハースカ", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 1:36 KO" },
+  { cardPosition: 14, fighterAName: "桜庭和志", fighterBName: "青木真也", winnerName: "青木真也", ruleType: "MMA", weightKg: 78, namedDivision: null, resultType: "decisive", methodRaw: "1R 5:56 TKO（セコンドのタオル投入）" },
+];
+
+export const RIZIN_SARABA_SOURCE = {
+  eventName: "SARABAの宴",
+  date: "2015-12-29",
+  sourceUrl: "https://jp.rizinff.com/_ct/16969713",
+  fetchedDate: "2026-08-02",
+};
+
+// IZAの舞(2015-12-31、さいたま3DAYS2日目)は2018年以降と同じ新テンプレート
+// (<h2 class="article-heading">+<div class="raw-html">、フォーマットA)であり
+// rizinScraper.tsの自動パーサーでも0件の失敗なく全13試合を解析できることを
+// 実機確認済み(scripts/test-rizin-scraper.ts相当の検証)。ただし
+// parseRuleInfo()には次の2件の既知の分類ギャップがあり、自動パイプラインを
+// 通すとどちらも誤って"MMA"に分類されてしまう(NON_MMA_RULE_PATTERNSに
+// 該当語が無いため):
+// - 「K-1ルール」(武尊 vs ヤン・ミン): キックボクシング関連ルールだが
+//   NON_MMA_RULE_PATTERNSの/キックボクシ|Kickboxing|ISKA/iに一致しない
+// - 「SBルール」(曙太郎 vs ボブ・サップ、SB=シュートボクシングの略記): 同様に
+//   /シュートボクシング/に一致しない
+// この2件をmnewsレーティングのMMA戦績集計(computeFighterMmaRecord、
+// MMA_RULE_TYPES==={"MMA"}のみ)に誤って算入させないため、SARABAの宴と
+// 同様にこちらも手動書き起こしとする(rizinScraper.ts本体の分類ロジック修正は
+// スコープ外。他の既存78大会への影響を避けるため)。女子MMA(RENA vs
+// イリアーナ・ヴァレンティーノ、ギャビ・ガルシア vs レイディー・タパ)は
+// RIZIN_1_BOUTS/RIZIN_2_BOUTSの既存慣例に合わせ"女子MMA"ラベルとする。
+// 出典: https://jp.rizinff.com/_ct/16969509(IZAの舞 試合結果一覧)
+// 取得日: 2026-08-02
+export const RIZIN_IZA_BOUTS: RizinRawBoutManual[] = [
+  { cardPosition: 1, fighterAName: "RENA", fighterBName: "イリアーナ・ヴァレンティーノ", winnerName: "RENA", ruleType: "女子MMA", weightKg: 51.0, namedDivision: null, resultType: "decisive", methodRaw: "2R 3分31秒 S（アームバー）" },
+  { cardPosition: 2, fighterAName: "キング・モー", fighterBName: "テオドラス・オークストリス", winnerName: "キング・モー", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "2R 判定（5-0）" },
+  { cardPosition: 3, fighterAName: "ワジム・ネムコフ", fighterBName: "イリー・プロハースカ", winnerName: "イリー・プロハースカ", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 10分 TKO（戦意喪失による）" },
+  { cardPosition: 4, fighterAName: "長谷川賢", fighterBName: "ブレナン・ワード", winnerName: "ブレナン・ワード", ruleType: "MMA", weightKg: 81.0, namedDivision: null, resultType: "decisive", methodRaw: "2R 1分54秒 S（リアネイキッドチョーク）" },
+  { cardPosition: 5, fighterAName: "キム・スーチョル", fighterBName: "マイケ・リニャーレス", winnerName: "キム・スーチョル", ruleType: "MMA", weightKg: 61.3, namedDivision: null, resultType: "decisive", methodRaw: "判定（3-0）" },
+  { cardPosition: 6, fighterAName: "武尊", fighterBName: "ヤン・ミン", winnerName: "武尊", ruleType: "キックボクシング", weightKg: 57.0, namedDivision: null, resultType: "decisive", methodRaw: "2R 3分00秒 KO" },
+  { cardPosition: 7, fighterAName: "ギャビ・ガルシア", fighterBName: "レイディー・タパ", winnerName: "ギャビ・ガルシア", ruleType: "女子MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 2分36秒 TKO（レフェリーストップ）" },
+  { cardPosition: 8, fighterAName: "曙太郎", fighterBName: "ボブ・サップ", winnerName: "ボブ・サップ", ruleType: "シュートボクシング", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "2R 0分47秒 終了判定（3-0）" },
+  { cardPosition: 9, fighterAName: "ピーター・アーツ", fighterBName: "バルト", winnerName: "バルト", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "3R 判定（3-0）" },
+  { cardPosition: 10, fighterAName: "アンディ・サワー", fighterBName: "長島☆自演乙☆雄一郎", winnerName: "アンディ・サワー", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 5分29秒 KO" },
+  { cardPosition: 11, fighterAName: "クロン・グレイシー", fighterBName: "山本アーセン", winnerName: "クロン・グレイシー", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 4分57秒 S（三角絞め）" },
+  { cardPosition: 12, fighterAName: "エメリヤーエンコ・ヒョードル", fighterBName: "シング・心・ジャディブ", winnerName: "エメリヤーエンコ・ヒョードル", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 3分03秒 TKO（レフェリーストップ）" },
+  { cardPosition: 13, fighterAName: "キング・モー", fighterBName: "イリー・プロハースカ", winnerName: "キング・モー", ruleType: "MMA", weightKg: null, namedDivision: null, resultType: "decisive", methodRaw: "1R 5分09秒 KO" },
+];
+
+export const RIZIN_IZA_SOURCE = {
+  eventName: "IZAの舞",
+  date: "2015-12-31",
+  sourceUrl: "https://jp.rizinff.com/_ct/16969509",
+  fetchedDate: "2026-08-02",
+};
 
 export const RIZIN_1_BOUTS: RizinRawBoutManual[] = [
   { cardPosition: 1, fighterAName: "悠矢", fighterBName: "祐毅", winnerName: "悠矢", ruleType: "キックボクシング", weightKg: 60, namedDivision: null, resultType: "decisive", methodRaw: "1R 1:06 TKO（3ノックダウン）" },
