@@ -195,9 +195,13 @@ export function computeMultiOrgBoutTable(
 // limitedSourceRow1Exceeded、指示書R-2)と同一条件をここに集約し、単一の戦績数値を
 // 出す他の消費箇所(次戦カード・一覧カード等)からも同じ判定を使えるようにする。
 // - noRecordData: 1行目の戦績データ自体が無い(常に差し替え対象)。
-// - needsReview/recordFromResults: 1行目が単一ソース由来で限定的な選手。
-//   4団体合算の総試合数が1行目を上回る場合に限り差し替える(超過幅などの
-//   ヒューリスティックは使わない。真正Wikipedia選手を誤って対象にしないため)。
+// - needsReview: 1行目はfighters.tsへの直書き(PR #252等)で、未レビューの暫定値。
+//   4団体合算に1件でも試合があれば常に差し替える(「多いほうを採る」ヒューリスティックは
+//   使わない。直書き側の試合数が多いという理由だけで、除外基準の変更やパーサ修正が
+//   永遠に反映されない状態になっていたため=杉本恵の事例、指示書「直書き選手横断監査」
+//   2026-08-02)。
+// - recordFromResults: 1行目は常に0(EVENT_RESULTSから動的生成する設計のスタブ)なので、
+//   従来通り総試合数比較でも実質的に同じ結果になる。変更不要。
 export function shouldPreferMultiOrgRecord(
   fighter: { needsReview?: boolean; recordFromResults?: boolean; noRecordData?: boolean },
   rowOneWins: number,
@@ -206,7 +210,8 @@ export function shouldPreferMultiOrgRecord(
   record: MultiOrgRecord
 ): boolean {
   if (fighter.noRecordData) return true;
-  if (!fighter.needsReview && !fighter.recordFromResults) return false;
+  if (fighter.needsReview) return record.wins + record.losses + record.draws > 0;
+  if (!fighter.recordFromResults) return false;
   return record.wins + record.losses + record.draws > rowOneWins + rowOneLosses + rowOneDraws;
 }
 
