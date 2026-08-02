@@ -8,6 +8,15 @@
 // history優先(無ければ4団体boutにフォールバック)。B型(38件、Wikipedia側の
 // NC由来カウント差)はこの分岐を通らないため無変更のはず。
 //
+// 2026-08-02(指示書R-9再検証): 検出式がNC(無効試合)を考慮していなかった。
+// ヘッダーのwins/losses/draws集計はNCを算入しない一方、テーブル(history配列
+// またはmultiOrgBoutTable)はNC行を「無効」として1行出す仕様(#361・#361の
+// scripts/audit-fighterrecords-tally-vs-history.tsで確定済み)。この仕様差が
+// そのままheaderTotal!==tableTotalの誤検知になっていた(旧A型7件+C型5件の
+// 計12件は全件、対応するテーブル側のNC件数(=1件)とちょうど一致することを
+// 個別に確認済み)。#361方式に合わせ、headerTotal側にテーブルと同じ集計元の
+// NC件数を足してから比較する(wins+losses+draws+ncCount === tableTotal)。
+//
 // 実行: npx tsx scripts/verify-header-table-row-mismatch-postfix.ts
 import fs from "fs";
 import path from "path";
@@ -53,6 +62,8 @@ async function main() {
     row1Total: number;
     multiOrgTotal: number;
     suppressNoRecordRow: boolean;
+    headerTotalRaw: number;
+    ncCount: number;
     headerTotal: number;
     headerSource: "row1(wikipedia)" | "row2(multiOrg)";
     historyLen: number;
@@ -81,12 +92,13 @@ async function main() {
     // 4団体合算も0件)の選手は比較対象外としてスキップする。
     if (noRecordData && !hasMultiOrgRecord) continue;
 
-    const headerTotal = suppressNoRecordRow ? multiOrgTotal : row1Total;
+    const headerTotalRaw = suppressNoRecordRow ? multiOrgTotal : row1Total;
     const headerSource: Row["headerSource"] = suppressNoRecordRow ? "row2(multiOrg)" : "row1(wikipedia)";
 
     // 修正後のpage.tsx displayHistory分岐を再現(指示書R-9): suppressNoRecordRow中は
     // ヘッダーと同じmultiOrgBoutRowsをテーブルにも使う。
-    const multiOrgBoutLen = SHOW_MULTI_ORG_RECORD ? computeMultiOrgBoutTable(seed.slug, multiOrgData).length : 0;
+    const multiOrgBoutRows = SHOW_MULTI_ORG_RECORD ? computeMultiOrgBoutTable(seed.slug, multiOrgData) : [];
+    const multiOrgBoutLen = multiOrgBoutRows.length;
     const tableTotal = suppressNoRecordRow
       ? multiOrgBoutLen
       : history.length > 0
@@ -102,6 +114,20 @@ async function main() {
           ? "multiOrgBoutTable"
           : "empty";
 
+    // NC(無効試合)はwins/losses/draws集計には算入されないが、テーブル(history
+    // 配列・multiOrgBoutTableとも)には「無効」の1行として出る(#361確定仕様)。
+    // headerTotal(集計値)とtableTotal(テーブル行数)を素で比較すると、NC保有
+    // 選手は仕様通りでも必ず不一致扱いになる。#361方式(wins+losses+draws+
+    // ncCount === テーブル行数)に合わせ、tableSourceと同じ集計元のNC件数を
+    // headerTotalに足してから比較する。
+    const ncCount =
+      tableSource === "history(wikipedia)"
+        ? history.filter((h) => h.result === "nc").length
+        : tableSource === "multiOrgBoutTable"
+          ? multiOrgBoutRows.filter((r) => r.result === "nc").length
+          : 0;
+    const headerTotal = headerTotalRaw + ncCount;
+
     rows.push({
       slug: seed.slug,
       nameJa: seed.nameJa,
@@ -112,6 +138,8 @@ async function main() {
       row1Total,
       multiOrgTotal,
       suppressNoRecordRow,
+      headerTotalRaw,
+      ncCount,
       headerTotal,
       headerSource,
       historyLen: history.length,
@@ -157,6 +185,8 @@ async function main() {
     "needsReview",
     "recordFromResults",
     "headerSource",
+    "headerTotalRaw",
+    "ncCount",
     "headerTotal",
     "tableSource",
     "tableTotal",
@@ -178,6 +208,8 @@ async function main() {
         r.needsReview,
         r.recordFromResults,
         r.headerSource,
+        r.headerTotalRaw,
+        r.ncCount,
         r.headerTotal,
         r.tableSource,
         r.tableTotal,

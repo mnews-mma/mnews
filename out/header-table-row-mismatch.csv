@@ -1,51 +1,11 @@
-slug,nameJa,hidden,needsReview,recordFromResults,headerSource,headerTotal,tableSource,tableTotal,row1Total(wikipedia),multiOrgTotal,historyLen,multiOrgBoutLen,pattern
-sumimura-ryuichiro,"住村竜市朗",false,false,true,row1(wikipedia),36,multiOrgBoutTable,26,36,26,0,26,B
-tokoro-hideo,"所 英男",false,false,false,row1(wikipedia),71,history(wikipedia),63,71,13,63,13,B
-nakamura-daisuke,"中村大介",false,false,true,row1(wikipedia),65,history(wikipedia),64,65,20,64,20,B
-strasser-kiichi,"ストラッサー起一",false,false,true,row1(wikipedia),36,history(wikipedia),35,36,17,35,18,B
-kitaoka-satoru,"北岡悟",false,false,true,row1(wikipedia),84,history(wikipedia),83,84,67,83,67,B
-lee-kaiwen,"リー・カイウェン",false,false,true,row1(wikipedia),24,history(wikipedia),23,24,1,23,1,B
-horiguchi-kyoji,"堀口 恭司",false,false,false,row1(wikipedia),42,history(wikipedia),43,42,17,43,18,B
-asakura-mikuru,"朝倉 未来",false,false,false,row1(wikipedia),25,history(wikipedia),26,25,18,26,18,B
-koike-kleber,"クレベル・コイケ",false,false,false,row1(wikipedia),45,history(wikipedia),46,45,14,46,15,B
-hagiwara-kyohei,"萩原 京平",false,false,false,row1(wikipedia),21,history(wikipedia),22,21,18,22,19,B
-shinryu-makoto,"神龍 誠",false,false,false,row1(wikipedia),29,history(wikipedia),30,29,19,30,20,B
-motoya-yuki,"元谷 友貴",false,false,false,row1(wikipedia),53,history(wikipedia),54,53,40,54,40,B
-yachi-yusuke,"矢地 祐介",false,false,false,row1(wikipedia),45,history(wikipedia),46,45,26,46,26,B
-suzuki-chihiro,"鈴木 千裕",false,false,false,row1(wikipedia),19,history(wikipedia),20,19,19,20,20,B
-kubo-yuta,"久保 優太",false,false,false,row1(wikipedia),8,history(wikipedia),9,8,9,9,10,B
-kuramoto-daigo,"倉本大悟",false,false,true,row1(wikipedia),11,history(wikipedia),12,11,10,12,10,B
-miyabi-shunsuke,"雅駿介",false,false,true,row1(wikipedia),14,history(wikipedia),15,14,11,15,11,B
-akazawa-yukinori,"赤沢幸典",false,true,true,row1(wikipedia),14,history(wikipedia),15,14,10,15,11,B
-saito-momoko,"百湖",false,false,true,row1(wikipedia),6,history(wikipedia),7,6,4,7,5,B
-matsuda-arisa,"松田亜莉紗",false,false,true,row2(multiOrg),6,multiOrgBoutTable,7,0,6,0,7,C
-ryoga,"亮我",false,false,true,row2(multiOrg),23,multiOrgBoutTable,24,14,23,14,24,A
-nishio-shinsuke,"西尾真輔",false,false,true,row2(multiOrg),9,multiOrgBoutTable,10,0,9,0,10,C
-sumiyoshi-ryota,"墨吉涼太",false,false,true,row2(multiOrg),4,multiOrgBoutTable,5,0,4,0,5,C
-saijo-hidenari,"西條英成",false,false,true,row2(multiOrg),8,multiOrgBoutTable,9,0,8,0,9,C
-kamiya-daichi,"神谷大智",false,false,true,row2(multiOrg),7,multiOrgBoutTable,8,0,7,0,8,C
-little,"リトル",false,false,true,row2(multiOrg),17,multiOrgBoutTable,18,0,17,1,18,A
-patricky-pitbull,"パトリッキー・ピットブル",false,false,true,row1(wikipedia),41,history(wikipedia),42,41,6,42,6,B
-case-johnny,"ジョニー・ケース",false,false,true,row1(wikipedia),40,history(wikipedia),41,40,9,41,10,B
-soldatkin-alexander,"アレクサンダー・ソルダトキン",false,false,true,row1(wikipedia),21,history(wikipedia),22,21,3,22,3,B
-karshyga-dautbek,"カルシャガ・ダウトベック",false,false,true,row1(wikipedia),22,history(wikipedia),23,22,6,23,7,B
-otsuka-tomoki,"大塚智貴",false,false,true,row2(multiOrg),15,multiOrgBoutTable,16,0,15,1,16,A
-shibisai-shoma,"シビサイ頌真",false,false,true,row1(wikipedia),14,history(wikipedia),15,14,10,15,10,B
-hamada-takumi,"濱田巧",false,false,true,row1(wikipedia),7,history(wikipedia),8,7,7,8,8,B
-cafaro-ryan,"ライアン・カファロ",false,false,true,row1(wikipedia),21,history(wikipedia),22,21,1,22,1,B
-shinya-aoki,"青木真也",false,false,true,row1(wikipedia),62,history(wikipedia),63,62,1,63,1,B
-tatsumitsu-wada,"和田竜光",false,false,true,row1(wikipedia),43,history(wikipedia),44,43,19,44,19,B
-ayaka-miura,"三浦彩佳",false,false,true,row1(wikipedia),23,history(wikipedia),24,23,10,24,11,B
-kim-soochul,"キム・スーチョル",false,false,true,row1(wikipedia),34,history(wikipedia),35,34,5,35,5,B
-yang-jiyong,"ヤン・ジヨン",false,false,true,row1(wikipedia),15,history(wikipedia),16,15,5,16,5,B
-ameyama-seiya,"飴山聖也",false,false,false,row1(wikipedia),10,history(wikipedia),11,10,10,11,11,B
-uno-caol,"宇野薫",false,false,false,row1(wikipedia),63,history(wikipedia),64,63,32,64,32,B
-kawakita-haruki,"川北 晏生",false,true,false,row2(multiOrg),18,multiOrgBoutTable,19,10,18,10,19,A
-lightyear-daiki,"ダイキ ライトイヤー",false,true,false,row2(multiOrg),28,multiOrgBoutTable,29,20,28,20,29,A
-uehara-taira,"上原 平",false,true,false,row1(wikipedia),13,history(wikipedia),14,13,13,14,14,B
-sugimoto-megumi,"杉本 恵",false,true,false,row2(multiOrg),21,multiOrgBoutTable,22,19,21,20,22,A
-kurobe-mina,"黒部 三奈",false,true,false,row2(multiOrg),26,multiOrgBoutTable,27,25,26,25,27,A
-fujino-emi,"藤野 恵実",false,true,false,row1(wikipedia),48,history(wikipedia),49,48,25,49,25,B
-sugiyama,"杉山しずか",false,true,false,row1(wikipedia),32,history(wikipedia),33,32,16,33,16,B
-kitakata-daichi,"北方大地",false,false,true,row1(wikipedia),35,history(wikipedia),37,35,32,37,34,B
-ohara-juri,"大原樹理",false,false,true,row1(wikipedia),61,history(wikipedia),64,61,40,64,42,B
+slug,nameJa,hidden,needsReview,recordFromResults,headerSource,headerTotalRaw,ncCount,headerTotal,tableSource,tableTotal,row1Total(wikipedia),multiOrgTotal,historyLen,multiOrgBoutLen,pattern
+sumimura-ryuichiro,"住村竜市朗",false,false,true,row1(wikipedia),36,0,36,multiOrgBoutTable,26,36,26,0,26,B
+tokoro-hideo,"所 英男",false,false,false,row1(wikipedia),71,0,71,history(wikipedia),63,71,13,63,13,B
+strasser-kiichi,"ストラッサー起一",false,false,true,row1(wikipedia),36,1,37,history(wikipedia),35,36,17,35,18,B
+sato-shoko,"佐藤 将光",false,false,false,row1(wikipedia),57,1,58,history(wikipedia),57,57,41,57,41,B
+nakamura-daisuke,"中村大介",false,false,true,row1(wikipedia),65,0,65,history(wikipedia),64,65,20,64,20,B
+kitaoka-satoru,"北岡悟",false,false,true,row1(wikipedia),84,0,84,history(wikipedia),83,84,67,83,67,B
+lee-kaiwen,"リー・カイウェン",false,false,true,row1(wikipedia),24,0,24,history(wikipedia),23,24,1,23,1,B
+patricky-pitbull,"パトリッキー・ピットブル",false,false,true,row1(wikipedia),41,0,41,history(wikipedia),42,41,6,42,6,B
+uno-caol,"宇野薫",false,false,false,row1(wikipedia),63,0,63,history(wikipedia),64,63,33,64,33,B
+sugiyama,"杉山しずか",false,true,false,row1(wikipedia),32,0,32,history(wikipedia),33,32,16,33,16,B
