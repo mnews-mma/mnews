@@ -219,4 +219,80 @@ historyから欠落している。infobox(`wins=6, losses=1, draws=1, total=8`)�
 
 **対応**: これは`kitaoka-satoru`のテンプレート名タイプミスと同種の「Wikipedia記事側の
 表記ゆれにパーサが対応しきれていない」既知の限界。PR #360(`fix/wiki-jadate-space`、
-「年」直後のスペース表記対応)と同じ問題クラス。本セッションでは修正しない。
+「年」直後のスペース表記対応)と同じ問題クラス。Pattern B(38件)対象外のため、本PRでの
+修正は見送る(kurobe-kazusaはPattern Aの管轄)。
+
+## 7. 修正の実施(指示書R-10、read-only解除)
+
+上記4-3(`kitaoka-satoru`)の原因(テンプレート名の大文字小文字ゆれ)をパーサ側の汎用修正で
+解消した。特定記事のハードコードではなく、`{{fight-cont|`のような表記ゆれ全般を吸収する形
+(PR #360の`parseJaDate()`の`\s*`対応と同じ考え方)。
+
+### 修正内容
+
+`src/lib/feeds/wikipedia.ts`の`extractFightContBlocks()`(Fight-contブロックの切り出し)を、
+マーカー検索だけ大文字小文字を無視するように変更した。実際のブロック内容のスライスは
+元の大小そのままの文字列から行うため、抽出結果自体は変わらない。
+
+```diff
+ function extractFightContBlocks(scope: string): string[] {
+   const marker = "{{Fight-cont|";
++  const lowerScope = scope.toLowerCase();
++  const lowerMarker = marker.toLowerCase();
+   const blocks: string[] = [];
+   let searchFrom = 0;
+   while (true) {
+-    const start = scope.indexOf(marker, searchFrom);
++    const start = lowerScope.indexOf(lowerMarker, searchFrom);
+     if (start === -1) break;
+```
+
+### 検証: 全361選手を再走し、不一致件数が増えないことを確認
+
+修正前後で `scripts/audit-fighterrecords-tally-vs-history.ts`(NC考慮版)を実行し比較した。
+
+1. 修正前のdata/fighterRecords.jsonをバックアップ(`/tmp/fighterRecords-before-fix.json`)、
+   NC考慮版監査を実行 → **357選手中11件不一致**。
+2. パーサ修正後、`npx tsx scripts/update-fighter-records.ts`(スラッグ指定なし、全選手を
+   Wikipediaから再取得)をバックグラウンドで実行(全361選手、逐次実行のため約20分)。
+3. 再度NC考慮版監査を実行 → **361選手中11件不一致**(母集団が357→361に増えたのは、
+   直近マージされた新規選手(`seki-tetsuya`(関鉄矢)含む4名)がこの実行で初めて
+   Wikipedia解決されたためで、本修正とは無関係)。
+4. 差分を突合: `kitaoka-satoru`が不一致リストから消え、代わりに`seki-tetsuya`(初回解決の
+   新規選手、既存の別課題)が加わった。**それ以外の選手には一切変化なし**
+   (=他の記事でのテンプレート名表記ゆれによる過剰マッチ・誤爆は発生していないことを確認)。
+5. `kitaoka-satoru`個別確認: `history`に2025-03-15 vs 山本颯志(敗北、DEEP 124 IMPACT)が
+   正しく追加され、`wins-losses-draws`(45-29-10)と`history.length`(84)が一致した。
+
+### コミットするデータ差分は`--slug`指定で最小化
+
+上記の全選手再取得(検証目的)はWikipedia側の最新反映(無関係な新規bout多数)を大量に含む
+ため、そのままコミットせず`data/fighterRecords.json`・`data/fighterRecordsMeta.json`を
+一旦元に戻し、`npx tsx scripts/update-fighter-records.ts --slug=kitaoka-satoru`で
+北岡悟1人だけを再生成した(blast radiusを1人に限定。`update-fighter-records.ts`の
+`--slug`モードの設計思想どおり)。結果、`data/fighterRecords.json`の差分は北岡悟の
+history配列に1件(山本颯志戦)を追加する8行のみ。
+
+### 最終検証
+
+- `./node_modules/.bin/tsc --noEmit`: エラーなし
+- `npm run build`: 成功
+- `npm run test:mnews-rating`: 220件成功 / 0件失敗
+- `data/rankings.json`: 無変更(バイト単位で一致)
+- `scripts/check-fighter-records-integrity.ts`: fatal 0件 / warning 12件
+  (13件→12件。`kitaoka-satoru`が解消された分)
+- `npx tsx scripts/audit-fighterrecords-tally-vs-history.ts`: 357選手中10件不一致
+  (11件→10件)
+
+### 修正しなかった項目の記録(指示どおり)
+
+- **`uno-caol`(宇野薫)・`sugiyama`(杉山しずか)・`nakamura-daisuke`(中村大介)**:
+  記事(ja.wikipedia)のinfobox側が更新遅れなだけで、`data/fighterRecords.json`側の
+  データの方が正しい(宇野薫・杉山しずかは表側が先行更新済みで最新の試合を正しく反映、
+  中村大介は自社`data/deepRecords.json`で存在確認済みの試合がまだ記事の表に未掲載)。
+  **修正しない。**
+- **`lee-kaiwen`(リー・カイウェン)・`strasser-kiichi`(ストラッサー起一)**: 一次ソースで
+  具体的な欠落試合を特定できなかった。**深追いせず保留として記録に留める。**
+- **`kurobe-kazusa`(黒部和沙)**: Pattern B(38件)には含まれない(Pattern A対象)ため、
+  本PRのスコープ外として据え置く。同種の日付タイプミス問題は将来的にPR #360の
+  `\s*`対応と組み合わせて別途検討可能。

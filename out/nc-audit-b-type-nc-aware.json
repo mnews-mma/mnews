@@ -1,16 +1,5 @@
 [
   {
-    "slug": "kitaoka-satoru",
-    "wins": 45,
-    "losses": 29,
-    "draws": 10,
-    "histLen": 83,
-    "ncCount": 0,
-    "expectedLen": 84,
-    "diff": -1,
-    "isEmptyHistoryKnownCase": false
-  },
-  {
     "slug": "kurobe-kazusa",
     "wins": 6,
     "losses": 1,
