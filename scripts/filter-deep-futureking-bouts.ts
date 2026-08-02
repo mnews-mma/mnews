@@ -3,7 +3,7 @@
 // 同じ「既存jsonにbout単位フィルタを事後適用する」方式を踏襲する(DEEP公式サイトの
 // 再スクレイピングは行わない=無関係な新規大会が紛れ込むリスクを避ける)。
 //
-// 判定はscripts/lib/nonProBoutFilter.tsの共有判定器(not_pro_futureking)に
+// 判定はsrc/lib/mnewsRating/nonProBoutFilter.tsの共有判定器(not_pro_futureking)に
 // eventNameを渡して行う。キーワードが大会名にしか現れないため(bout単位の
 // headingText/namedDivisionには現れない)、この団体だけeventNameを渡す。
 //
@@ -12,7 +12,7 @@
 // 実行方法: npx tsx scripts/filter-deep-futureking-bouts.ts [--dry-run]
 import fs from "fs";
 import path from "path";
-import { classifyNonProBout, NonProBoutCategory } from "./lib/nonProBoutFilter";
+import { classifyNonProBout, NonProBoutCategory } from "../src/lib/mnewsRating/nonProBoutFilter";
 import { DeepRecordsEvent } from "../src/lib/mnewsRating/deepScraper";
 import { computeFighterDeepRecord } from "../src/lib/mnewsRating/deepRecordsAggregate";
 import { computeFighterShootoRecord } from "../src/lib/mnewsRating/shootoRecordsAggregate";

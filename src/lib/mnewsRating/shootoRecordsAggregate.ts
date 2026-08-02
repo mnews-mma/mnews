@@ -4,18 +4,25 @@
 // 削除ではなく理由つきでexcludedとして返す=捏造ゼロ)。突合はslug完全一致の
 // みで行う(名前によるフォールバック突合は行わない)。
 //
-// ruleTypeによる絞り込みについて: shootoScraper.ts側のコメントの通り、
-// 修斗公式ページにはbout単位の明示的なルール種別表記が無く、ruleTypeは
-// 全件"unknown"で入る(実測: data/shootoRecords.json 2145件中2145件が
-// "unknown"、確認済み)。修斗はキックボクシング等の異種目カードを持たない
-// 純MMA団体であり、"unknown"を全て除外するとMMA戦まで丸ごと消えてしまう
-// (rizinRecordsAggregate.ts/pancraseRecordsAggregate.tsとは事情が異なる)ため、
-// ruleTypeによる絞り込みは行わない。
+// ruleTypeによる絞り込みについて: shootoScraper.ts側のコメントの通り、修斗公式
+// ページにはbout単位の明示的なルール種別表記フィールドが無く、スクレイプ時に
+// 保存されるruleTypeは全件"unknown"で入る。
+//
+// 訂正(PR #369): 「修斗はキックボクシング等の異種目カードを持たない純MMA団体」
+// という以前のこのコメントの前提は誤りだった。実際には新空手道連盟/CKC提供の
+// キックボクシングトーナメント・COLORSブランドのグラップリングマッチ・
+// 引退興行のエキシビジョンマッチ等が本戦カードに混在しており(悉皆調査で65件
+// 確認)、ruleTypeでの絞り込みが無かったため無条件でMMA戦績に算入されていた
+// (影響選手7名、out/non-mma-rule-contamination-audit.md参照)。headingText/
+// namedDivisionにはルール原文が残っているため、下記computeFighterShootoRecord()
+// で毎回classifyMmaRuleType()に通して判定する。ただし"unknown"(headingTextが
+// 空)は除外しない(実測1件のみで影響なし。pancraseRecordsAggregate.ts参照)。
 //
 // slug解決について: data/shootoRecords.jsonのfighterASlug/fighterBSlugは、
 // scripts/backfill-shooto-pancrase-slugs.tsによるバックフィル(hidden選手も
 // 含めた完全一致解決)を経た値を前提とする。
 import { ShootoRecordsBout, ShootoRecordsEvent } from "./shootoScraper";
+import { classifyMmaRuleType, buildRuleTypeHaystack, nonMmaRuleExcludedReason } from "./nonProBoutFilter";
 
 export interface ShootoFighterBout {
   event: string;
@@ -61,7 +68,17 @@ export function computeFighterShootoRecord(events: ShootoRecordsEvent[], slug: s
       const opponentName = isA ? b.fighterBName : b.fighterAName;
       const opponentSlug = isA ? b.fighterBSlug : b.fighterASlug;
 
-      // ruleTypeによる絞り込みは行わない(ファイル冒頭コメント参照)。excluded対象は無し。
+      // "unknown"(headingTextが空)は除外しない(ファイル冒頭コメント参照)。
+      const ruleType = classifyMmaRuleType(buildRuleTypeHaystack(b));
+      if (ruleType !== "MMA" && ruleType !== "unknown") {
+        excluded.push({
+          event: ev.eventName,
+          date: ev.date,
+          opponentName,
+          reason: nonMmaRuleExcludedReason(ruleType),
+        });
+        continue;
+      }
 
       const isWin = (isA && b.winnerName === b.fighterAName) || (isB && b.winnerName === b.fighterBName);
 

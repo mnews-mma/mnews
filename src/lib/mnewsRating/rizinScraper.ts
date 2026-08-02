@@ -8,6 +8,8 @@
 // 抽出方針: 公式サイトの表記をそのまま保持し、推測・補完は一切行わない。
 // 解決できない項目(選手名寄せ・階級名など)はnullのまま返し、呼び出し側で
 // 「欠落」として集計・報告する。
+import { classifyMmaRuleType, NON_MMA_RULE_TYPE_LABELS as SHARED_NON_MMA_RULE_TYPE_LABELS } from "./nonProBoutFilter";
+export { NON_MMA_RULE_PATTERNS } from "./nonProBoutFilter";
 
 export interface RizinRawBout {
   headingText: string; // h2見出しの生テキスト(例:「第12試合／秋元強真 vs. パッチー・ミックス」)
@@ -298,78 +300,38 @@ export function extractCardNumber(headingText: string): number | null {
 // 書き起こし(rizinRecordOverrides.ts)側が明示的に「非MMAだが具体的な分類語を
 // 割り当てたくない」と判断した場合にのみ使う想定(現状そのような使用例は無い)。
 export interface ParsedRuleInfo {
-  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "グラップリング" | "ベアナックル" | "スタンディングバウト" | "エキシビジョン" | "MIXルール" | "チャレンジルール" | "その他" | "unknown";
+  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "グラップリング" | "ベアナックル" | "スタンディングバウト" | "エキシビジョン" | "MIXルール" | "チャレンジルール" | "プロレスルール" | "その他" | "unknown";
   weightKg: number | null;
   namedDivision: string | null; // 例:「フェザー級」「バンタム級」。明示が無ければnull
 }
 
-// 非MMAと積極的に判定できる語のパターン。PR #246の実測(44件悉皆監査)で確認済みの
-// 表記のみを列挙している(推測で追加した語は無い):
-// - キックボクシング: 「RIZINキックボクシグルール」(誤字表記も実在)・「RIZIN
-//   Kickboxingルール」(英語表記)・「IISKAユニファイドルール」(ISKAはキック
-//   ボクシング系サンクショニングボディ。"ユニファイドルール"という文字列を
-//   含むが、ISKAが前置される場合は非MMAと判定する必要があるためキックボクシング
-//   パターンで先に捕捉する)
-// - シュートボクシング: 既存キーワードのまま
-// - グラップリング: 既存キーワードに加え「柔術」(「柔術エキシビジョン
-//   イリミネーションマッチ」)も対象
-// - ベアナックル: 「ベアナックルルール」(グローブ無しの別競技)
-// - スタンディングバウト: 「RIZINスタンディングバウト(特別)ルール」(寝技無しの
-//   立ち技のみ特別ルール。9件確認)
-// - エキシビジョン: 「柔術エキシビジョン」「スペシャルエキシビジョン」(フロイド・
-//   メイウェザー vs. 那須川天心のボクシングエキシビジョン等、確認できた2件は
-//   いずれも非MMA)
-// - MIXルール: 那須川天心の異種格闘技クロスオーバー戦で使われる表記。PR #246で
-//   人間判断が必要と報告した既存試合(那須川天心 vs 才賀紀左衛門)の分類を
-//   今回変更しない(現状維持)ためのキーワード
-// - チャレンジルール: 同じくPR #246で人間判断が必要と報告した既存試合(あい vs
-//   川村虹花)の分類を今回変更しない(現状維持)ためのキーワード
-export const NON_MMA_RULE_PATTERNS: { pattern: RegExp; label: Exclude<ParsedRuleInfo["ruleType"], "MMA" | "その他" | "unknown"> }[] = [
-  // 「キックボクシ」で止め、末尾の「ング」を必須にしない(「RIZINキックボクシグ
-  // ルール」という誤字表記が実在するため。PR #250実装時にこの誤字により
-  // 憂也×田中STRIKE雄基戦(RIZIN.16)がMMAへ誤分類される事故を実装中に発見・修正)。
-  { pattern: /キックボクシ|Kickboxing|ISKA/i, label: "キックボクシング" },
-  { pattern: /シュートボクシング/, label: "シュートボクシング" },
-  { pattern: /グラップリング|柔術/, label: "グラップリング" },
-  { pattern: /ベアナックル/, label: "ベアナックル" },
-  { pattern: /スタンディングバウト/, label: "スタンディングバウト" },
-  { pattern: /エキシビジョン/, label: "エキシビジョン" },
-  { pattern: /MIXルール/i, label: "MIXルール" },
-  // 「RIZIN チャレンジ ルール」のように「チャレンジ」と「ルール」の間に全角/半角
-  // スペースが入る表記が実在するため(あい×川村虹花戦、RIZIN平成最後のやれんのか！
-  // 2018-12-31)、間の空白の有無を許容する。空白無しを前提にした初回実装では
-  // この表記を拾えず、意図せずMMAへ分類される事故を実装中に発見・修正した。
-  { pattern: /チャレンジ\s*ルール/, label: "チャレンジルール" },
-];
+// 非MMAと積極的に判定できる語のパターン本体(各ラベルのキーワード根拠・PR #246の
+// 44件悉皆監査の経緯)はnonProBoutFilter.NON_MMA_RULE_PATTERNSに一本化した
+// (PR #369の悉皆調査で、パンクラス側(build-pancrase-records.ts)に同じ非MMA
+// キーワードリストが独立して存在し、「ISKA」パターンがRIZIN側にしか無く抜けていた
+// 事故が発覚したため。DEEP・修斗はこの軸の判定自体が無かった)。RIZINは
+// ruleLineRaw(ルール原文)がdata/rizinRecords.jsonに保存されないため、
+// スクレイプ時にこの関数(parseRuleInfo)で一度だけ判定してruleTypeとして保存する
+// (パンクラス・DEEP・修斗はheadingTextが保存されるため、各*RecordsAggregate.ts
+// が集計時に毎回nonProBoutFilter.tsを直接呼んで判定する)。
 
 // applyRizinRecordsToHistory()の除外判定(rizinRecordsOverride.ts)と共有する、
-// 「確定的に非MMA」なruleTypeラベルの集合(判定を1箇所に集約するため。PR #250)。
-// NON_MMA_RULE_PATTERNSのlabel全てに加え、手動書き起こし側が明示的に使う
-// 可能性のある"その他"を含む。"MMA"・"unknown"、および手動書き起こし側が
-// 使う"女子MMA"のような値はここに含まれないため、除外対象にならない。
-export const NON_MMA_RULE_TYPE_LABELS = new Set<string>([...NON_MMA_RULE_PATTERNS.map((p) => p.label), "その他"]);
+// 「確定的に非MMA」なruleTypeラベルの集合(判定を1箇所に集約するため。PR #250、
+// PR #369でnonProBoutFilter.tsへ移設)。nonProBoutFilter.NON_MMA_RULE_TYPE_LABELSに
+// 加え、手動書き起こし側が明示的に使う可能性のある"その他"を含む。"MMA"・
+// "unknown"、および手動書き起こし側が使う"女子MMA"のような値はここに含まれない
+// ため、除外対象にならない。
+export const NON_MMA_RULE_TYPE_LABELS = new Set<string>([...SHARED_NON_MMA_RULE_TYPE_LABELS, "その他"]);
 
 const NAMED_DIVISION_RE = /(フライ級|バンタム級|フェザー級|ライト級|ウェルター級|ミドル級|ライトヘビー級|ヘビー級|ストロー級|アトム級)/;
 
 export function parseRuleInfo(ruleLineRaw: string): ParsedRuleInfo {
-  let ruleType: ParsedRuleInfo["ruleType"];
-  if (ruleLineRaw.trim() === "") {
-    // ルール行テキスト自体が無い場合はMMAとも非MMAとも決めつけない(#240から変更なし)。
-    ruleType = "unknown";
-  } else if (/MMA/i.test(ruleLineRaw)) {
-    // "MMA"という文字列が明示されている場合は常にMMA(旧ロジックと同じ最優先判定)。
-    // 「RIZIN MMAチャレンジルール」(RIZIN.33、三浦孝太×YUSHI)のように、非MMA語
-    // (「チャレンジルール」)と"MMA"の両方を含む表記が実在するため、この明示的な
-    // "MMA"の有無チェックを非MMA語チェックより先に行う(実装中に発見。反転前は
-    // このケースが正しくMMAと判定できていたため、反転後も同じ結果を保つ必要が
-    // あった)。
-    ruleType = "MMA";
-  } else {
-    const nonMma = NON_MMA_RULE_PATTERNS.find((p) => p.pattern.test(ruleLineRaw));
-    // 非MMA語に一致せず、かつ空でもない場合はMMAとして扱う(反転後のデフォルト。
-    // RIZINはMMA団体で非MMAが例外であるため)。
-    ruleType = nonMma ? nonMma.label : "MMA";
-  }
+  // 非MMA判定の実体(空文字→unknown・"MMA"明示は最優先でMMA・非MMA語パターン
+  // マッチ)はnonProBoutFilter.classifyMmaRuleType()に一本化済み(PR #369)。
+  // ここでの型はParsedRuleInfo["ruleType"]と完全一致するため変換不要
+  // ("その他"はclassifyMmaRuleTypeが返すことは無いが、手動書き起こし側だけが
+  // 使う値でありスクレイプ結果としては生成されない=既存挙動のまま)。
+  const ruleType: ParsedRuleInfo["ruleType"] = classifyMmaRuleType(ruleLineRaw);
 
   const weightMatch = ruleLineRaw.match(/(\d+(?:\.\d+)?)\s*kg/);
   const weightKg = weightMatch ? Number(weightMatch[1]) : null;

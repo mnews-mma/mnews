@@ -8,6 +8,7 @@
 // scripts/backfill-shooto-pancrase-slugs.tsによるバックフィル(hidden選手も
 // 含めた完全一致解決)を経た値を前提とする。
 import { PancraseRecordsBout, PancraseRecordsEvent } from "./pancraseRecordsTypes";
+import { classifyMmaRuleType, buildRuleTypeHaystack, nonMmaRuleExcludedReason } from "./nonProBoutFilter";
 
 export interface PancraseFighterBout {
   event: string;
@@ -38,9 +39,15 @@ export interface PancraseFighterRecord {
 
 // 集計対象に含めるルール種別。パンクラスもMMA以外(エキシビジョン・
 // キックボクシング・プロレスルール・グラップリング・シュートボクシング)の
-// 特別試合が実在する(実測: 4877試合中27試合)ため、rizinRecordsAggregate.ts
+// 特別試合が実在する(実測: 4877試合中27〜28件)ため、rizinRecordsAggregate.ts
 // と同じくMMAのみを「パンクラス(MMA)戦績」として数える。
-const MMA_RULE_TYPES = new Set(["MMA"]);
+//
+// b.ruleType(スクレイプ時にbuild-pancrase-records.tsのresolveRuleType()が
+// 計算し保存した値)は信用せず、headingText/namedDivisionから毎回
+// classifyMmaRuleType()で判定し直す(PR #369)。パンクラスはheadingTextが
+// data/pancraseRecords.jsonに保存されているため、ruleType判定パターンが
+// 将来更新されても再スクレイプ不要でその場で反映される(RIZINはruleLineRaw
+// 自体が保存されないため、この方式は取れない)。
 
 export function computeFighterPancraseRecord(events: PancraseRecordsEvent[], slug: string): PancraseFighterRecord {
   const bouts: PancraseFighterBout[] = [];
@@ -59,12 +66,18 @@ export function computeFighterPancraseRecord(events: PancraseRecordsEvent[], slu
       const opponentName = isA ? b.fighterBName : b.fighterAName;
       const opponentSlug = isA ? b.fighterBSlug : b.fighterASlug;
 
-      if (!MMA_RULE_TYPES.has(b.ruleType)) {
+      // "unknown"(headingTextが空)は除外しない。実測(パンクラスは0件・修斗は
+      // 1件・DEEPは295件)で、DEEPには単にヘッダー抽出ができていないだけの
+      // 正当なMMA戦(slug解決済み112件)が多数含まれることを確認済みのため、
+      // 「ルール情報が無い」ことを「非MMA」の根拠にはしない(捏造ゼロの原則。
+      // deepRecordsAggregate.ts・shootoRecordsAggregate.tsも同じ判定式)。
+      const ruleType = classifyMmaRuleType(buildRuleTypeHaystack(b));
+      if (ruleType !== "MMA" && ruleType !== "unknown") {
         excluded.push({
           event: ev.eventName,
           date: ev.date,
           opponentName,
-          reason: `ルール種別がMMA以外(${b.ruleType})`,
+          reason: nonMmaRuleExcludedReason(ruleType),
         });
         continue;
       }

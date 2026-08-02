@@ -3,13 +3,21 @@
 // shootoRecordsAggregate.ts(computeFighterShootoRecord)に揃える(resultType別
 // 振り分け、突合はslug完全一致のみ=捏造ゼロ)。
 //
-// ruleTypeによる絞り込みについて: shootoScraper.ts側と同じ事情で、DEEP公式
-// ページにもbout単位の明示的なルール種別表記が無く、ruleTypeは全件"unknown"で
-// 入る。DEEPにはグラップリングルール限定の undercard(例: 「DEEP JEWELS 56kg
-// 以下 グラップリングルール」)が実在するが、ruleTypeで判別できないため
-// 除外できない(shootoと同じ精度上の既知の限界。KICK冠のイベント単位除外は
-// scripts/build-deep-records.ts側のisKickEventで行っている)。
+// ruleTypeによる絞り込みについて: DEEP公式ページにはbout単位の明示的なルール
+// 種別表記フィールドが無く、スクレイプ時に保存されるruleTypeは全件"unknown"で
+// 入る。ただしheadingText/namedDivisionにはルール原文がそのまま残っているため
+// (例:「DEEP JEWELS 56kg以下 グラップリングルール」「DEEP 90kg以下
+// キックルール 3分3R」)、下記computeFighterDeepRecord()で毎回
+// classifyMmaRuleType()に通して判定する(PR #369)。
+//
+// イベントタイトル単位の"KICK"冠除外(scripts/build-deep-records.tsの
+// isKickEvent)は、全カードがキックボクシングの大会をそもそもスクレイプ対象
+// から外す別の仕組みで、この関数のbout単位フィルタとは独立している。
+// isKickEventだけでは「大会タイトルはMMA本戦だが一部undercardのみ非MMAルール」
+// という混在カードを捕捉できない(実例: DEEP HAMAMATSU IMPACT 2023、全15試合中
+// 9試合がキックボクシングundercard)。
 import { DeepRecordsBout, DeepRecordsEvent } from "./deepScraper";
+import { classifyMmaRuleType, buildRuleTypeHaystack, nonMmaRuleExcludedReason } from "./nonProBoutFilter";
 
 export interface DeepFighterBout {
   event: string;
@@ -54,6 +62,17 @@ export function computeFighterDeepRecord(events: DeepRecordsEvent[], slug: strin
 
       const opponentName = isA ? b.fighterBName : b.fighterAName;
       const opponentSlug = isA ? b.fighterBSlug : b.fighterASlug;
+
+      const ruleType = classifyMmaRuleType(buildRuleTypeHaystack(b));
+      if (ruleType !== "MMA" && ruleType !== "unknown") {
+        excluded.push({
+          event: ev.eventName,
+          date: ev.date,
+          opponentName,
+          reason: nonMmaRuleExcludedReason(ruleType),
+        });
+        continue;
+      }
 
       const isWin = (isA && b.winnerName === b.fighterAName) || (isB && b.winnerName === b.fighterBName);
 

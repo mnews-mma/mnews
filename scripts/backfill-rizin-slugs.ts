@@ -47,7 +47,7 @@ const TARGET_FILE = "rizinRecords.json";
 //
 // scripts/backfill-shooto-pancrase-slugs.tsのKNOWN_NON_PROFESSIONAL_BOUTSと
 // 同じ考え方(本人だがプロ戦績集計の対象外のboutを個別列挙で除外する)を踏襲した
-// 命名だが、あちら(scripts/lib/nonProBoutFilter.tsも含む)は修斗/パンクラス/DEEPの
+// 命名だが、あちら(src/lib/mnewsRating/nonProBoutFilter.tsも含む)は修斗/パンクラス/DEEPの
 // 公式アーカイブ悉皆スクレイピングで生成されるheadingText/strapTitle等のフィールドへ
 // キーワード一致を機械適用する仕組みで、RIZINのデータ生成フロー(rizinRecords.json・
 // eventResults.tsともに手動キュレーション)にはそもそも該当フィールドも自動分類の

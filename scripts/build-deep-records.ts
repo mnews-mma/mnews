@@ -27,7 +27,7 @@
 // パターンと同型で、DEEP側でも実例を確認済み: 例 DEEP TOKYO IMPACT 2019の
 // 「アマチュアグラップリングBルール」「アマチュアSPルール」等のundercard)。
 // この判定はPR #265(修斗/パンクラスのアマチュア混入監査)が抽出した共有
-// 判定器 scripts/lib/nonProBoutFilter.ts をそのまま流用する(新規キーワード
+// 判定器 src/lib/mnewsRating/nonProBoutFilter.ts をそのまま流用する(新規キーワード
 // 一覧は作らない)。判定対象はheadingText/namedDivisionのみ(DEEPの生データ
 // スキーマにはstrapTitle/noteRaw相当のフィールドが無いため)。
 //
@@ -60,7 +60,7 @@ function resolveBareNameWithWeightClass(name: string, weightClassRaw: string | n
 import fs from "fs";
 import path from "path";
 import { toJstDateStr } from "../src/lib/eventCountdown";
-import { isExcludedNonProBout } from "./lib/nonProBoutFilter";
+import { isExcludedNonProBout } from "../src/lib/mnewsRating/nonProBoutFilter";
 import {
   extractArchiveLinks,
   detectPagination,
