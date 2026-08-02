@@ -33,6 +33,7 @@ import { DeepRecordsEvent } from "./deepScraper";
 import { computeFighterDeepRecord } from "./deepRecordsAggregate";
 import { normalizeFinishText } from "../finishTextNormalize";
 import { tallyMethods } from "../methodClassify";
+import { FighterRecordEntry } from "../fighterRecordsCache";
 
 // 表示ラベル用の固定表記(実装済み4団体を列挙。並び順は確定済み:
 // RIZIN・DEEP・パンクラス・修斗、2026-07-30ユーザー指定)。
@@ -187,4 +188,76 @@ export function computeMultiOrgBoutTable(
 
   rows.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
   return rows;
+}
+
+// 1行目(Wikipedia/静的シード由来)の戦績を信頼せず、4団体合算に差し替えるべきか
+// の判定。fighters/[slug]/page.tsxのスタットカード2行目抑制(suppressNoRecordRow・
+// limitedSourceRow1Exceeded、指示書R-2)と同一条件をここに集約し、単一の戦績数値を
+// 出す他の消費箇所(次戦カード・一覧カード等)からも同じ判定を使えるようにする。
+// - noRecordData: 1行目の戦績データ自体が無い(常に差し替え対象)。
+// - needsReview/recordFromResults: 1行目が単一ソース由来で限定的な選手。
+//   4団体合算の総試合数が1行目を上回る場合に限り差し替える(超過幅などの
+//   ヒューリスティックは使わない。真正Wikipedia選手を誤って対象にしないため)。
+export function shouldPreferMultiOrgRecord(
+  fighter: { needsReview?: boolean; recordFromResults?: boolean; noRecordData?: boolean },
+  rowOneWins: number,
+  rowOneLosses: number,
+  rowOneDraws: number,
+  record: MultiOrgRecord
+): boolean {
+  if (fighter.noRecordData) return true;
+  if (!fighter.needsReview && !fighter.recordFromResults) return false;
+  return record.wins + record.losses + record.draws > rowOneWins + rowOneLosses + rowOneDraws;
+}
+
+// fighter(FighterRecordEntry互換)のwins/losses/draws/ko/sub/decision/historyを
+// 4団体合算(record/rates/rows)で置き換えたオブジェクトを返す。新規の数値生成は
+// しない(computeMultiOrgRecord/Rates/BoutTableの結果をそのまま転記するのみ)。
+// historyの各行はMultiOrgBoutRow(opponentName)をFightRecord互換(opponent)に
+// 詰め替えるだけで、roundは4団体合算側に個別フィールドが無いため空文字にする
+// (round表示箇所は無いため実害なし)。
+export function withMultiOrgRecord<T extends FighterRecordEntry>(
+  fighter: T,
+  record: MultiOrgRecord,
+  rates: MultiOrgRates,
+  rows: MultiOrgBoutRow[]
+): T {
+  return {
+    ...fighter,
+    wins: record.wins,
+    losses: record.losses,
+    draws: record.draws,
+    ko: rates.ko,
+    sub: rates.sub,
+    decision: rates.decision,
+    history: rows.map((r) => ({
+      date: r.date,
+      opponent: r.opponentName,
+      result: r.result,
+      method: r.method,
+      event: r.event,
+      round: "",
+    })),
+    // 差し替え後は実際の数値がある状態なので「データなし」扱いを解除する
+    // (noRecordData由来の差し替えでも、needsReview/recordFromResults由来の
+    // 差し替えでも同じ)。
+    noRecordData: false,
+  };
+}
+
+// shouldPreferMultiOrgRecord + withMultiOrgRecordをまとめたヘルパー。呼び出し側が
+// 4団体ソースデータ(rizin/shooto/pancrase/deep)を既に取得済みの場合に使う
+// (次戦カード・同階級選手カード・/fighters一覧などcomputeMultiOrgRecord呼び出し元が
+// 複数箇所に分散しないようにする)。差し替え不要、または差し替え先も0件
+// (合算データ自体が無い。捏造しない)の場合は元のfighterをそのまま返す。
+export function resolveDisplayRecord<T extends FighterRecordEntry & { slug: string }>(
+  fighter: T,
+  data: MultiOrgSourceData
+): T {
+  const record = computeMultiOrgRecord(fighter.slug, data);
+  if (!shouldPreferMultiOrgRecord(fighter, fighter.wins, fighter.losses, fighter.draws, record)) return fighter;
+  if (record.wins === 0 && record.losses === 0 && record.draws === 0) return fighter;
+  const rows = computeMultiOrgBoutTable(fighter.slug, data);
+  const rates = computeMultiOrgRates(record, rows);
+  return withMultiOrgRecord(fighter, record, rates, rows);
 }
