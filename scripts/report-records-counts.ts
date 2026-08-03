@@ -6,7 +6,12 @@
 // 同じロジックで対応する)。
 //
 // 実行: npx tsx scripts/report-records-counts.ts <label> <path1> [<path2> ...]
-// 出力: 1ファイルにつき1行、タブ区切りで `label\tfile\tevents\tbouts\tunresolvedSlugs`
+// 出力: 2種類の行をタブ区切りで出す(呼び出し側はプレフィックスでgrep分離する)。
+//   COUNT\tlabel\tfile\tevents\tbouts\tunresolvedSlugs   … 1ファイルにつき1行
+//   ZEROBOUT\tlabel\tfile\teventName\tdate                … bout数0の大会1件につき1行
+// bout数0はスタブ化(公式ページはあるが個別bout抽出が構造的に不可能等)の
+// 正常な状態でもあるため、このスクリプト自体は異常終了しない(検出して
+// 一覧化するのみ。判断は呼び出し側/人間に委ねる)。
 import fs from "fs";
 
 interface RecordsBout {
@@ -14,6 +19,8 @@ interface RecordsBout {
   fighterBSlug: string | null;
 }
 interface RecordsEvent {
+  eventName?: string;
+  date?: string;
   bouts?: RecordsBout[];
 }
 
@@ -26,7 +33,7 @@ function main() {
 
   for (const filePath of filePaths) {
     if (!fs.existsSync(filePath)) {
-      console.log(`${label}\t${filePath}\t0\t0\t0`);
+      console.log(`COUNT\t${label}\t${filePath}\t0\t0\t0`);
       continue;
     }
     const raw = fs.readFileSync(filePath, "utf-8");
@@ -40,8 +47,11 @@ function main() {
       for (const b of evBouts) {
         if (!b.fighterASlug || !b.fighterBSlug) unresolved++;
       }
+      if (evBouts.length === 0) {
+        console.log(`ZEROBOUT\t${label}\t${filePath}\t${ev.eventName ?? "(不明)"}\t${ev.date ?? "(不明)"}`);
+      }
     }
-    console.log(`${label}\t${filePath}\t${events.length}\t${bouts}\t${unresolved}`);
+    console.log(`COUNT\t${label}\t${filePath}\t${events.length}\t${bouts}\t${unresolved}`);
   }
 }
 

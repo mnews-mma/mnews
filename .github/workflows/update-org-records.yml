@@ -66,7 +66,7 @@ jobs:
         run: |
           npx tsx scripts/report-records-counts.ts before \
             data/rizinRecords.json data/shootoRecords.json data/pancraseRecords.json data/deepRecords.json \
-            | tee /tmp/counts-before.tsv
+            | tee /tmp/report-before.tsv | grep '^COUNT' | cut -f2- > /tmp/counts-before.tsv
 
       - name: Fetch RIZIN records
         run: npx tsx scripts/update-rizin-records.ts
@@ -90,7 +90,7 @@ jobs:
         run: |
           npx tsx scripts/report-records-counts.ts after \
             data/rizinRecords.json data/shootoRecords.json data/pancraseRecords.json data/deepRecords.json \
-            | tee /tmp/counts-after.tsv
+            | tee /tmp/report-after.tsv | grep '^COUNT' | cut -f2- > /tmp/counts-after.tsv
 
           echo "## 4団体戦績data 差分" >> "$GITHUB_STEP_SUMMARY"
           echo "| 団体 | 大会数(前→後) | bout数(前→後) | slug未解決数(後) |" >> "$GITHUB_STEP_SUMMARY"
@@ -104,6 +104,22 @@ jobs:
               touch /tmp/bout-regression
             fi
           done
+
+          # bout数0の大会(スタブ化。正常な状態でもありうるため異常終了はさせない、
+          # 一覧化のみ)。新規bout数・未解決slug数と同じジョブサマリーに追記する。
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "## bout数0で取得された大会" >> "$GITHUB_STEP_SUMMARY"
+          zero_bouts=$(grep '^ZEROBOUT' /tmp/report-after.tsv || true)
+          if [ -z "$zero_bouts" ]; then
+            echo "該当なし" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "| 団体data | 大会名 | 日付 |" >> "$GITHUB_STEP_SUMMARY"
+            echo "|---|---|---|" >> "$GITHUB_STEP_SUMMARY"
+            echo "$zero_bouts" | while IFS=$'\t' read -r _ _label file eventName date; do
+              echo "bout数0: ${file} / ${eventName} (${date})"
+              echo "| ${file} | ${eventName} | ${date} |" >> "$GITHUB_STEP_SUMMARY"
+            done
+          fi
 
           if [ -f /tmp/bout-regression ]; then
             echo "bout数の減少を検出したため異常終了する(データは破棄していません。ワークフロー実行ログとdata/の作業ツリーの差分を確認してください)。"
