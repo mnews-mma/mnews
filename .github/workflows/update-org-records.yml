@@ -86,22 +86,44 @@ jobs:
       - name: Backfill RIZIN slugs
         run: npx tsx scripts/backfill-rizin-slugs.ts
 
-      - name: Report bout counts after fetch + reject regressions
+      - name: Report bout counts after fetch + build per-org commit plan
         run: |
+          # 団体ごとのbout数減少ガードは団体単位で独立させる(2026-08-03変更)。
+          # ある団体で減少を検知してもジョブ全体を異常終了させず、その団体だけ
+          # commit対象から外し、他の団体は正常にcommit&pushする。見逃し防止のため
+          # ジョブ自体は最後(下のfail-if-any-skippedステップ)で非ゼロ終了する。
+          org_label() {
+            case "$1" in
+              data/rizinRecords.json) echo "RIZIN" ;;
+              data/shootoRecords.json) echo "修斗" ;;
+              data/pancraseRecords.json) echo "パンクラス" ;;
+              data/deepRecords.json) echo "DEEP" ;;
+              *) echo "$1" ;;
+            esac
+          }
+
           npx tsx scripts/report-records-counts.ts after \
             data/rizinRecords.json data/shootoRecords.json data/pancraseRecords.json data/deepRecords.json \
             | tee /tmp/report-after.tsv | grep '^COUNT' | cut -f2- > /tmp/counts-after.tsv
 
           echo "## 4団体戦績data 差分" >> "$GITHUB_STEP_SUMMARY"
-          echo "| 団体 | 大会数(前→後) | bout数(前→後) | slug未解決数(後) |" >> "$GITHUB_STEP_SUMMARY"
-          echo "|---|---|---|---|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| 団体 | 大会数(前→後) | bout数(前→後) | slug未解決数(後) | 判定 |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|---|---|---|---|---|" >> "$GITHUB_STEP_SUMMARY"
+
+          : > /tmp/commit-files.txt
+          : > /tmp/skipped-orgs.tsv
 
           paste /tmp/counts-before.tsv /tmp/counts-after.tsv | while IFS=$'\t' read -r _ file be bb _bu _label2 _file2 ae ab au; do
-            echo "$file: events ${be}→${ae}, bouts ${bb}→${ab}, unresolvedSlugs(after)=${au}"
-            echo "| ${file} | ${be} → ${ae} | ${bb} → ${ab} | ${au} |" >> "$GITHUB_STEP_SUMMARY"
+            label=$(org_label "$file")
             if [ "$ab" -lt "$bb" ]; then
-              echo "::error::${file} のbout数が減少した(${bb} → ${ab})。取得タイミングの非決定性(DEEPのニュース欄混入等、実測で確認済み)による欠落の疑いがあるためcommitしない。"
-              touch /tmp/bout-regression
+              decrease=$((bb - ab))
+              echo "::warning::${label}(${file})のbout数が減少した(${bb} → ${ab}、-${decrease})。この団体だけcommit対象から除外する(他団体は継続)。"
+              echo "| ${label} | ${be} → ${ae} | ${bb} → ${ab} | ${au} | **スキップ(-${decrease})** |" >> "$GITHUB_STEP_SUMMARY"
+              printf '%s\t%s\t%s\n' "$label" "$file" "$decrease" >> /tmp/skipped-orgs.tsv
+            else
+              echo "${label}: events ${be}→${ae}, bouts ${bb}→${ab}, unresolvedSlugs(after)=${au}"
+              echo "| ${label} | ${be} → ${ae} | ${bb} → ${ab} | ${au} | commit対象 |" >> "$GITHUB_STEP_SUMMARY"
+              echo "$file" >> /tmp/commit-files.txt
             fi
           done
 
@@ -121,19 +143,28 @@ jobs:
             done
           fi
 
-          if [ -f /tmp/bout-regression ]; then
-            echo "bout数の減少を検出したため異常終了する(データは破棄していません。ワークフロー実行ログとdata/の作業ツリーの差分を確認してください)。"
-            exit 1
-          fi
-
-      - name: Commit and push if changed
-        if: ${{ github.event.inputs.dry_run != 'true' }}
+      - name: Commit and push per-org (skips orgs with a bout-count regression)
         run: |
           git config user.name "mnews-bot"
           git config user.email "actions@users.noreply.github.com"
-          if ! git diff --quiet -- data/rizinRecords.json data/shootoRecords.json data/pancraseRecords.json data/deepRecords.json; then
-            git add data/rizinRecords.json data/shootoRecords.json data/pancraseRecords.json data/deepRecords.json
-            git commit -m "chore: update org records (RIZIN/Shooto/Pancrase/DEEP) [skip ci]"
+
+          if [ ! -s /tmp/commit-files.txt ]; then
+            echo "commit対象の団体が0件(全団体が減少検知でスキップ)。commitしない。"
+            exit 0
+          fi
+
+          files=$(tr '\n' ' ' < /tmp/commit-files.txt)
+
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "dry_run=true のためcommit/pushはスキップした。commit対象(スキップされなかった団体)は以下:"
+            cat /tmp/commit-files.txt
+            git diff --stat -- $files
+            exit 0
+          fi
+
+          if ! git diff --quiet -- $files; then
+            git add $files
+            git commit -m "chore: update org records ($(tr '\n' ',' < /tmp/commit-files.txt | sed 's/,$//')) [skip ci]"
 
             # archive-articles.yml等とのpush競合(non-fast-forward)対策。
             # #325と同じ方式: rebaseで統合してリトライ、rebase自体が競合したら
@@ -158,8 +189,13 @@ jobs:
             echo "No changes to commit."
           fi
 
-      - name: Dry-run summary (no commit)
-        if: ${{ github.event.inputs.dry_run == 'true' }}
+      - name: Fail if any org was skipped (bout-count regression)
         run: |
-          echo "dry_run=true のためcommit/pushはスキップした。差分件数は上記ジョブサマリーを参照。"
-          git diff --stat -- data/rizinRecords.json data/shootoRecords.json data/pancraseRecords.json data/deepRecords.json
+          if [ -s /tmp/skipped-orgs.tsv ]; then
+            echo "::error::以下の団体でbout数減少を検知しcommitをスキップした(見逃し防止のためジョブを失敗として終了する):"
+            cat /tmp/skipped-orgs.tsv | while IFS=$'\t' read -r label file decrease; do
+              echo "  - ${label}(${file}): -${decrease}"
+            done
+            exit 1
+          fi
+          echo "スキップ0件。全団体正常。"
