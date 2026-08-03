@@ -138,6 +138,14 @@ for (const e of EVENTS) {
 //   水野新太 … RIZIN.54(2026-08-11 vsリー・カイウェン)出場が現時点で1戦のみ
 //     (2試合基準未達・適用前チェックで確認済み)。RIZIN露出優先で暫定付与。次の
 //     RIZIN出場で2戦目条件を満たし次第この例外は削除する。
+//   西谷大成(nishitani-taisei) / 芦田崇宏(ashida-takahiro) … 2026-08、指示書
+//     「選手の団体タグ整備」による手動付与。2025-2026のRIZIN出場は各1戦のみ
+//     (2試合基準未達)だが、ルール条件に合致しなくてよい手動上書きとして付与する。
+//   ベイノア(beinoa) / AJ・マッキー(mckee-aj) … 2026-08、同指示書のS2-3(団体
+//     タグが無い選手への「直近3試合最頻団体」自動付与)で追加。直近3試合の団体を
+//     data/rizinRecords.jsonから実測した結果、両者ともRIZINが最頻(beinoaは3/3、
+//     mckee-ajは既知1試合のみでRIZIN)だったため付与。isRizinRecentの2試合基準
+//     とは別ルート。
 const RIZIN_TAG_EXCEPTIONS = new Set<string>([
   "hiramoto-ren",
   "yrysbek-tilenov",
@@ -152,6 +160,10 @@ const RIZIN_TAG_EXCEPTIONS = new Set<string>([
   "dodson-john",
   "kim-kyungpyo",
   "mizuno-shinta",
+  "nishitani-taisei",
+  "ashida-takahiro",
+  "beinoa",
+  "mckee-aj",
 ]);
 
 // 修斗タグの明示例外(slug指定)。公式ランキング対象4階級(フライ/バンタム/
@@ -160,6 +172,51 @@ const RIZIN_TAG_EXCEPTIONS = new Set<string>([
 //   住村竜市朗 … 現修斗世界ウェルター級王者(ウェルター級は対象4階級外のため
 //                orgRankings.jsonに掲載されずランカー判定に乗らない)。
 const SHOOTO_TAG_EXCEPTIONS = new Set<string>(["sumimura-ryuichiro"]);
+
+// 団体タグが無い選手(computeFighterTagsのいずれの条件にも合致しない選手)向けの
+// 「直近3試合の最頻団体」による手動付与(2026-08、指示書「選手の団体タグ整備」
+// S2-3)。修斗・パンクラスは"現ランカーのみ"がタグ条件のため、非ランカーで直近の
+// 出場実態が明確な選手を拾う。RIZINは既存のRIZIN_TAG_EXCEPTIONSに寄せてあるため
+// ここでは扱わない。SHOOTO_TAG_EXCEPTIONS/後述PANCRASE_TAG_EXCEPTIONSと違い
+// 「rank: 王者」を付けない(ランカーではないため)。
+//
+// data/{rizin,deep,shooto,pancrase}Records.jsonを一度だけオフラインで突合し
+// (直近3試合、同数タイは最新1試合を優先)、結果をこのリストに焼き込む方式。
+// isRizinRecent等と同様、リクエスト都度の集計は行わない。対象は適用直前の実測
+// (2026-08、orgRankings.jsonは日次バッチで内容が動くため、着手時点の下調べで
+// 見つけた13名だけでなく実装直前に選手全員を再走査し直した結果、ランキング表
+// から外れていたnojiri-yasuyuki・fujino-emiの2名も追加で対象になった。計15名)。
+//   中桐涼輔(nakagiri-ryosuke) … 修斗2/2(2022-04-03, 2019-12-22)。
+//   藤田大和(fujita-yamato) … 直近3試合が修斗/RIZIN/DEEP各1戦の同数タイ。
+//     最新1試合(2026-03-30 Lemino修斗.4)を優先し修斗と判定。
+//   雷斗レンジャーズ(taito-rangers) … 修斗3/3。
+//   宇野嘉生(uno-caol) … 修斗3/3。
+//   内田健(uchida-takeru) … 修斗3/3。
+//   鈴木貴也(suzuki-takaya) … 既知1試合のみで修斗。
+//   野尻定由(nojiri-yasuyuki) … 修斗3/3(指示書の実測確認例)。
+//   藤野笑美(fujino-emi) … 直近3試合が修斗2/パンクラス1で修斗が最頻。
+// なお 千春(chiharu)・けんみん(kenmin) は4団体いずれのデータにも試合が見つから
+// ず(Fighting NEXUS等の対象外団体のみで活動と見られる)、判定不能のためタグ
+// なしのまま維持する。
+const SHOOTO_MAJORITY_TAG_OVERRIDES = new Set<string>([
+  "nakagiri-ryosuke",
+  "fujita-yamato",
+  "taito-rangers",
+  "uno-caol",
+  "uchida-takeru",
+  "suzuki-takaya",
+  "nojiri-yasuyuki",
+  "fujino-emi",
+]);
+
+// パンクラスタグの明示例外(slug指定)。SHOOTO_TAG_EXCEPTIONSと同じ「対象外だが
+// 現ランカーと同格に扱うべき」用途に加え、下のSHOOTO_MAJORITY_TAG_OVERRIDESと同じ
+// 「直近3試合最頻団体」用途にも使う(2026-08、指示書「選手の団体タグ整備」)。
+// 「rank: 王者」は付けない。
+//   守屋昴(mori-subaru) … 既知1試合のみでパンクラス。
+//   イサオ(isao) … 直近3試合中パンクラス2/3(RIZIN1/3)。
+//   ライカ(raika) … パンクラス3/3。
+const PANCRASE_TAG_EXCEPTIONS = new Set<string>(["mori-subaru", "isao", "raika"]);
 
 // RIZIN戦とみなすイベント名(ja-wiki戦績のevent文字列)。
 const RIZIN_EVENT_RE = /RIZIN|ライジン/i;
@@ -241,6 +298,7 @@ export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsF
   }
   // パンクラス/修斗 = 現ランカー(公式ランキングに slug 一致で載っている)
   let shootoTagged = false;
+  let pancraseTagged = false;
   for (const key of ["pancrase", "shooto"] as const) {
     const data = orgRankings[key];
     if (!data) continue;
@@ -249,6 +307,7 @@ export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsF
       if (hit) {
         tags.push({ key, label: ORG_TAG_LABEL[key], weightClass: c.weightClass, rank: hit.rank });
         if (key === "shooto") shootoTagged = true;
+        if (key === "pancrase") pancraseTagged = true;
         break;
       }
     }
@@ -256,6 +315,17 @@ export function computeFighterTags(f: TaggableFighter, orgRankings: OrgRankingsF
   // 修斗の明示例外(対象4階級外の王者)。ランキング一致で既に付いていれば二重に付けない。
   if (!shootoTagged && SHOOTO_TAG_EXCEPTIONS.has(f.slug)) {
     tags.push({ key: "shooto", label: ORG_TAG_LABEL.shooto, weightClass: f.weightClass, rank: "王者" });
+    shootoTagged = true;
+  }
+  // パンクラスの明示例外(対象外だが現ランカーと同格に扱うべき選手)。
+  if (!pancraseTagged && PANCRASE_TAG_EXCEPTIONS.has(f.slug)) {
+    tags.push({ key: "pancrase", label: ORG_TAG_LABEL.pancrase, weightClass: f.weightClass });
+    pancraseTagged = true;
+  }
+  // 団体タグが無い選手向けの「直近3試合最頻団体」手動付与(ランカーではないため
+  // rankは付けない)。ランキング一致・既存例外で既に付いていれば二重に付けない。
+  if (!shootoTagged && SHOOTO_MAJORITY_TAG_OVERRIDES.has(f.slug)) {
+    tags.push({ key: "shooto", label: ORG_TAG_LABEL.shooto, weightClass: f.weightClass });
   }
 
   return tags;

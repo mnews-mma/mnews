@@ -71,6 +71,12 @@ export interface Fighter {
   // キーとして不変(findFighterSlugByName等の突合はnameJa/aliasesのまま)。
   // 例: sekino-taiseiのnameJaは「関野大成」のまま、displayNameJaのみ「大成」。
   displayNameJa?: string;
+  // /fighters一覧・Xカードツールの公開母集団(getVisibleFighters)から恒久的に除外する
+  // ためのフラグ。hiddenとは意味が異なる(hidden=新規投入バッチの公開審査待ちで
+  // いずれ解除される想定、2026-07-25 ①-bで確定済み)。delistedは「掲載不要」という
+  // 恒久判断に使う。データ自体は保持し、選手ページ(/fighters/[slug])やsitemapには
+  // 影響しない(一覧掲載可否のみを制御する)。
+  delisted?: boolean;
 }
 
 // 表示用の選手名(displayNameJaが設定されていればそれを優先、無ければnameJa)。
@@ -1362,7 +1368,7 @@ export const FIGHTERS: Fighter[] = [
   { slug: "funada-denchi", nameJa: "船田電池", nameEn: "Denchi Funada", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["船田侃志"] },
   { slug: "little", nameJa: "リトル", nameEn: "Little", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "ujihara-kaisei", nameJa: "氏原魁星", nameEn: "Kaisei Ujihara", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "nakagiri-ryosuke", nameJa: "中桐涼輔", nameEn: "Ryosuke Nakagiri", org: "nexus", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  { slug: "nakagiri-ryosuke", nameJa: "中桐涼輔", nameEn: "Ryosuke Nakagiri", org: "nexus", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, delisted: true },
   { slug: "chiharu", nameJa: "千春", nameEn: "Chiharu", org: "nexus", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kenmin", nameJa: "賢民", nameEn: "Kenmin", org: "nexus", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "賢民" },
   { slug: "mori-subaru", nameJa: "森昴星", nameEn: "Subaru Mori", org: "nexus", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
