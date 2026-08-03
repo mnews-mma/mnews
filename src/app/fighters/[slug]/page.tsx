@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
-import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName, fighterDisplayName } from "@/lib/fighters";
+import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName, fighterDisplayName, FightRecord } from "@/lib/fighters";
 import { resolveOpponentSlug } from "@/lib/fighterLinkOverrides";
 import { SOURCES } from "@/lib/sources";
 import { resolveFighterCached, resolveFightersCached, fetchFighterRecords } from "@/lib/fighterRecordsCache";
@@ -379,6 +379,19 @@ export default async function FighterPage({
       : SHOW_MULTI_ORG_RECORD
         ? toDisplayFromMultiOrg()
         : [];
+  // 勝ち方/負け方バタフライ図(MethodButterfly)用。ヘッダー・対戦テーブルと
+  // 同じdisplayHistory(suppressNoRecordRow基準で1行目/4団体合算のどちらかに
+  // 揃え済み)をFightRecord互換の形に詰め替えるだけで、新規の集計呼び出しは
+  // 増やさない(指示書R-9のヘッダー/テーブル食い違い解消と同じ考え方をここにも
+  // 適用。out/hoshuyama-card-bar-mismatch-summary.md参照)。
+  const methodButterflyHistory: FightRecord[] = displayHistory.map((h) => ({
+    date: h.date,
+    opponent: h.opponentName,
+    result: h.result,
+    method: h.method,
+    event: h.event,
+    round: "",
+  }));
 
   // 次戦の対戦相手情報(次戦プレビュー用)。相手がDB外/戦績データなしの場合は
   // entry=null になり、バナーのみ表示(比較・共通対戦相手は出さない=捏造ゼロ)。
@@ -671,9 +684,10 @@ export default async function FighterPage({
           </>
         )}
 
-        {/* 勝ち方と負け方(バタフライ・CSSのみ)。historyのraw method再解析、
+        {/* 勝ち方と負け方(バタフライ・CSSのみ)。ヘッダー・対戦テーブルと同じ
+            displayHistory由来(methodButterflyHistory)のmethod再解析、
             noRecordData/履歴なしは非表示。 */}
-        {!noRecordData && <MethodButterfly history={history} />}
+        {!noRecordData && <MethodButterfly history={methodButterflyHistory} />}
 
         {/* X投稿カードボタン(/tools/fighter-card廃止・/dreamへ統合、2026-07-17) */}
         <a href={`/dream?a=${fighter.slug}`} className="fighter-card-btn">
