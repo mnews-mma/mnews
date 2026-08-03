@@ -10,6 +10,7 @@ import {
 } from "./tweetDigest";
 import { normalizeVsSlugs } from "./vsPairing";
 import { tallyMethods, type MethodClassifiable } from "./methodClassify";
+import { historyReconciles } from "./fighterRecordIntegrity";
 
 // ─────────────────────────────────────────────
 // X投稿の組み立て設定（リンク戦略・上限）。
@@ -444,12 +445,16 @@ function winRatePercent(f: MatchupFighterInput): number | null {
 // historyの各勝利のmethodテキストをtallyMethodsで再分類した値を使う
 // (fighterStrip.ts の computeFighterStripStats / fighters.ts の calcFighterRates
 // と同じ考え方。2026-07-20修正: このタブだけ再分類前のinfobox値を使っていたため、
-// 公開ページ側の表示と数値が食い違っていた)。historyが空(集計値のみ持つ選手)は
-// f.ko/f.subにフォールバックする。
+// 公開ページ側の表示と数値が食い違っていた)。ただしhistoryReconciles(f)===false
+// (history欠損・Wikipedia記事側の内部不整合。historyが空(集計値のみ持つ選手)も
+// 含む)はf.ko/f.subにフォールバックする(指示書①(2026-08-03): 分子=history
+// 再集計・分母=infobox値のハイブリッドを避け、公開ページ側と同じ判定基準に揃える)。
 function finishRatePercent(f: MatchupFighterInput): number | null {
   if (f.wins <= 0) return null;
-  if (!f.history || f.history.length === 0) return Math.round(((f.ko + f.sub) / f.wins) * 100);
-  const wins = f.history.filter((h) => h.result === "win");
+  if (!historyReconciles({ wins: f.wins, losses: f.losses, draws: f.draws, history: f.history ?? [] })) {
+    return Math.round(((f.ko + f.sub) / f.wins) * 100);
+  }
+  const wins = (f.history ?? []).filter((h) => h.result === "win");
   const { ko, sub } = tallyMethods(wins);
   return Math.round(((ko + sub) / f.wins) * 100);
 }

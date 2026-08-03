@@ -24,6 +24,7 @@ import { MULTI_ORG_RECORD_LABEL, shouldPreferMultiOrgRecord, withMultiOrgRecord 
 import { getMultiOrgSummaryCached, resolveDisplayRecordCached } from "@/lib/mnewsRating/multiOrgRecordCache";
 import { SHOW_MULTI_ORG_RECORD } from "@/lib/featureFlags";
 import { normalizeDecisionScorePerspective } from "@/lib/decisionScorePerspective";
+import { historyReconciles } from "@/lib/fighterRecordIntegrity";
 
 // 選手DBとイベントデータで全角/半角スペースの有無が揺れることがある
 // (例: "太田 忍" vs "太田忍")ため、次戦の「自分/相手」判定は正規化して比較する
@@ -392,6 +393,15 @@ export default async function FighterPage({
     event: h.event,
     round: "",
   }));
+  // チャートの見出し(N勝/N敗)は直上のカード(1行目/2行目のどちらが表示中か
+  // =suppressNoRecordRowで判定)と必ず同じ集計値を使う。historyReconciles=false
+  // (history再集計の件数がその集計値と食い違う。Wikipedia記事側の内部不整合等)の
+  // 場合はチャート自体を非表示にする(指示書①、2026-08-03: 内訳を推測で
+  // 埋め合わせる=捏造になるため、揃わない選手は出さない一択)。
+  const chartTotals = suppressNoRecordRow
+    ? { wins: multiOrgRecord.wins, losses: multiOrgRecord.losses, draws: multiOrgRecord.draws }
+    : { wins, losses, draws };
+  const chartReliable = historyReconciles({ ...chartTotals, history: methodButterflyHistory });
 
   // 次戦の対戦相手情報(次戦プレビュー用)。相手がDB外/戦績データなしの場合は
   // entry=null になり、バナーのみ表示(比較・共通対戦相手は出さない=捏造ゼロ)。
@@ -686,8 +696,11 @@ export default async function FighterPage({
 
         {/* 勝ち方と負け方(バタフライ・CSSのみ)。ヘッダー・対戦テーブルと同じ
             displayHistory由来(methodButterflyHistory)のmethod再解析、
-            noRecordData/履歴なしは非表示。 */}
-        {!noRecordData && <MethodButterfly history={methodButterflyHistory} />}
+            noRecordData/履歴なし/chartReliable=false(直上カードの集計値と
+            history再集計が食い違う)は非表示。 */}
+        {!noRecordData && chartReliable && (
+          <MethodButterfly history={methodButterflyHistory} winsTotal={chartTotals.wins} lossesTotal={chartTotals.losses} />
+        )}
 
         {/* X投稿カードボタン(/tools/fighter-card廃止・/dreamへ統合、2026-07-17) */}
         <a href={`/dream?a=${fighter.slug}`} className="fighter-card-btn">

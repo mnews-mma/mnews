@@ -1,5 +1,6 @@
 import type { FighterRecordEntry } from "./fighterRecordsCache";
 import { MethodCounts, tallyMethods } from "./methodClassify";
+import { historyReconciles } from "./fighterRecordIntegrity";
 
 // 戦績ストリップ(events/[slug]・results/[slug]で共用)のデータ算出ロジック。
 // fighterRecords.json のみをソースとし、算出不能な項目はnullで返す(呼び出し側が非表示にする)。
@@ -29,9 +30,14 @@ export const LAST5_SYMBOL: Record<FighterRecordEntry["history"][number]["result"
 
 export function computeFighterStripStats(entry: FighterRecordEntry): FighterStripStats {
   const record = `${entry.wins}-${entry.losses}-${entry.draws}`;
-  // historyが空(集計値のみ持つ記事。例: 住村竜市朗)はentry.ko/entry.subにフォールバックする。
-  const winMethods = tallyMethods(entry.history.filter((h) => h.result === "win"));
-  const finishCount = entry.history.length > 0 ? winMethods.ko + winMethods.sub : entry.ko + entry.sub;
+  // historyReconciles(entry)===false(history欠損・Wikipedia記事側の内部不整合で
+  // 件数/内訳がwins/losses/drawsと食い違う。historyが空の選手も含む)は
+  // entry.ko/entry.subにフォールバックする(指示書①(2026-08-03): fighters.tsの
+  // calcFighterRatesと同じ判定基準に揃え、分子=history再集計・分母=infobox値の
+  // ハイブリッドを避ける)。
+  const reliable = historyReconciles(entry);
+  const winMethods = reliable ? tallyMethods(entry.history.filter((h) => h.result === "win")) : null;
+  const finishCount = winMethods ? winMethods.ko + winMethods.sub : entry.ko + entry.sub;
   const finishRate = entry.wins > 0 ? Math.round((finishCount / entry.wins) * 100) : null;
   // NC(無効試合)は勝敗ストリークとして意味を持たないため除外し、繰り上げて直近5戦を埋める。
   const last5 = [...entry.history]
