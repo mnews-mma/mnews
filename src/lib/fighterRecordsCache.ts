@@ -46,7 +46,7 @@ export async function fetchFighterRecords(): Promise<FighterRecordsFile> {
 }
 
 // data/fighterRecordsMeta.json(バッチ実行時刻)を読む。ファイルが未生成(初回デプロイ直後
-// でバッチがまだ一度も回っていない等)・取得失敗時はnullを返し、呼び出し側は「データ最終更新」
+// でバッチがまだ一度も回っていない等)・取得失敗時はnullを返し、呼び出し側は「データ最終取得」
 // 表示自体を出さない(日付をハードコード・捏造しない)。
 export async function fetchFighterRecordsGeneratedAt(): Promise<string | null> {
   try {

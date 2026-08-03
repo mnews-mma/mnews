@@ -18,7 +18,7 @@ import { toJstDateStr } from "../src/lib/eventCountdown";
 
 const OUT = path.join(process.cwd(), "data", "fighterRecords.json");
 // fighterRecords.json自体には生成時刻を焼き込まない(選手データと運用メタ情報を
-// 分離するため)。表示側の「データ最終更新」用に、このバッチの実行時刻だけを
+// 分離するため)。表示側の「データ最終取得」用に、このバッチの実行時刻だけを
 // 別ファイルに記録する(サイト側はこのファイルの有無をハードコードせず参照する)。
 const META_OUT = path.join(process.cwd(), "data", "fighterRecordsMeta.json");
 
