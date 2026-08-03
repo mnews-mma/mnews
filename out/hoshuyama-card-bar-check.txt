@@ -1,0 +1,60 @@
+=== card (record) ===
+{
+  "wins": 7,
+  "losses": 7,
+  "draws": 2,
+  "orgsWithBouts": [
+    "パンクラス",
+    "修斗"
+  ]
+}
+=== breakdown bar (rates) ===
+{
+  "ko": 0,
+  "sub": 3,
+  "decision": 4,
+  "winRate": 50,
+  "finishRate": 43
+}
+card wins: 7  breakdown ko+sub+decision: 7
+winRows.length: 7
+
+=== per-org aggregate ===
+-- rizin -- wins: 0 losses: 0 draws: 0 bouts.length: 0 excluded.length: 0
+-- shooto -- wins: 7 losses: 6 draws: 2 bouts.length: 15 excluded.length: 0
+{"event":"PROFESSIONAL SHOOTO 2021 Vol.3 Supported by ONE Championship","date":"2021-05-16","opponentName":"柳 仙香","opponentSlug":null,"resultType":"decisive","isWin":false,"methodRaw":"TKO レフェリーストップ","namedDivision":"女子ストロー級"}
+{"event":"闘裸男26","date":"2021-12-05","opponentName":"和田 千聖","opponentSlug":null,"resultType":"decisive","isWin":true,"methodRaw":"判定 3-0","namedDivision":null}
+{"event":"PROFESSIONAL SHOOTO 2022 開幕戦","date":"2022-01-16","opponentName":"黒部 三奈","opponentSlug":"kurobe-mina","resultType":"decisive","isWin":false,"methodRaw":"判定 3-0","namedDivision":"女子スーパーアトム級"}
+{"event":"TORAO GIG04","date":"2022-05-15","opponentName":"ヒヤマ NFC","opponentSlug":null,"resultType":"decisive","isWin":true,"methodRaw":"S スリーパーホールド","namedDivision":"女子ストロー級"}
+{"event":"PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA","date":"2022-07-03","opponentName":"Fukky","opponentSlug":null,"resultType":"decisive","isWin":false,"methodRaw":"判定 0-2","namedDivision":"女子ストロー級"}
+{"event":"TORAO28","date":"2022-12-04","opponentName":"古賀 愛蘭","opponentSlug":null,"resultType":"draw","isWin":false,"methodRaw":"判定 0-1","namedDivision":"女子"}
+{"event":"Colors（カラーズ）","date":"2023-05-21","opponentName":"エンゼル ☆ 志穂","opponentSlug":null,"resultType":"decisive","isWin":true,"methodRaw":"S スリーパーホールド","namedDivision":"女子ストロー級"}
+{"event":"PROFESSIONAL SHOOTO 2023 Vol.5","date":"2023-07-23","opponentName":"吉成 はるか","opponentSlug":null,"resultType":"decisive","isWin":true,"methodRaw":"判定 2-0","namedDivision":"女子ストロー級"}
+{"event":"PROFESSIONAL SHOOTO 2023 Vol.6","date":"2023-09-24","opponentName":"藤野 恵実","opponentSlug":"fujino-emi","resultType":"decisive","isWin":false,"methodRaw":"判定 0-2","namedDivision":"女子ストロー級"}
+{"event":"PROFESSIONAL SHOOTO 2024 Vol.1 - 2部","date":"2024-01-28","opponentName":"杉本 恵","opponentSlug":"sugimoto-megumi","resultType":"decisive","isWin":false,"methodRaw":"判定 0-3","namedDivision":"女子ストロー級"}
+{"event":"TORAO32","date":"2024-05-26","opponentName":"吉成 はるか","opponentSlug":null,"resultType":"decisive","isWin":true,"methodRaw":"判定 3-0","namedDivision":"女子ストロー級"}
+{"event":"COLORS Produce by SHOOTO Vol.3","date":"2024-08-03","opponentName":"高本 千代","opponentSlug":"takamoto-chiyo","resultType":"draw","isWin":false,"methodRaw":"判定 1-0","namedDivision":"女子ストロー級"}
+{"event":"COLORS Produce by SHOOTO Vol.5","date":"2025-06-14","opponentName":"高田 暖妃","opponentSlug":"takada-atsuhi","resultType":"decisive","isWin":true,"methodRaw":"判定 3-0","namedDivision":"女子ストロー級"}
+{"event":"PROFESSIONAL SHOOTO 2025 Vol.6","date":"2025-07-21","opponentName":"パク ボヒョン","opponentSlug":"park-bohyun","resultType":"decisive","isWin":false,"methodRaw":"TKO レフェリーストップ/グラウンドパンチ","namedDivision":"女子ストロー級"}
+{"event":"プロフェッショナル修斗公式戦福岡大会TORAO38","date":"2026-05-17","opponentName":"杉本 恵","opponentSlug":"sugimoto-megumi","resultType":"decisive","isWin":true,"methodRaw":"TS リアネイキッドチョーク","namedDivision":null}
+-- pancrase -- wins: 0 losses: 1 draws: 0 bouts.length: 1 excluded.length: 0
+{"event":"PANCRASE 329","date":"2022-09-11","opponentName":"KAREN","opponentSlug":"karen","resultType":"decisive","isWin":false,"methodRaw":"3R 5:00、判定/3-0","namedDivision":"ストロー級"}
+-- deep -- wins: 0 losses: 0 draws: 0 bouts.length: 0 excluded.length: 0
+
+=== bout rows (used for breakdown) ===
+{"date":"2026-05-17","opponentName":"杉本 恵","opponentSlug":"sugimoto-megumi","result":"win","method":"TS リアネイキッドチョーク","event":"プロフェッショナル修斗公式戦福岡大会TORAO38"}
+{"date":"2025-07-21","opponentName":"パク ボヒョン","opponentSlug":"park-bohyun","result":"loss","method":"TKO レフェリーストップ/グラウンドパンチ","event":"PROFESSIONAL SHOOTO 2025 Vol.6"}
+{"date":"2025-06-14","opponentName":"高田 暖妃","opponentSlug":"takada-atsuhi","result":"win","method":"判定3-0","event":"COLORS Produce by SHOOTO Vol.5"}
+{"date":"2024-08-03","opponentName":"高本 千代","opponentSlug":"takamoto-chiyo","result":"draw","method":"判定1-0","event":"COLORS Produce by SHOOTO Vol.3"}
+{"date":"2024-05-26","opponentName":"吉成 はるか","opponentSlug":null,"result":"win","method":"判定3-0","event":"TORAO32"}
+{"date":"2024-01-28","opponentName":"杉本 恵","opponentSlug":"sugimoto-megumi","result":"loss","method":"判定0-3","event":"PROFESSIONAL SHOOTO 2024 Vol.1 - 2部"}
+{"date":"2023-09-24","opponentName":"藤野 恵実","opponentSlug":"fujino-emi","result":"loss","method":"判定0-2","event":"PROFESSIONAL SHOOTO 2023 Vol.6"}
+{"date":"2023-07-23","opponentName":"吉成 はるか","opponentSlug":null,"result":"win","method":"判定2-0","event":"PROFESSIONAL SHOOTO 2023 Vol.5"}
+{"date":"2023-05-21","opponentName":"エンゼル ☆ 志穂","opponentSlug":null,"result":"win","method":"S スリーパーホールド","event":"Colors（カラーズ）"}
+{"date":"2022-12-04","opponentName":"古賀 愛蘭","opponentSlug":null,"result":"draw","method":"判定0-1","event":"TORAO28"}
+{"date":"2022-09-11","opponentName":"KAREN","opponentSlug":"karen","result":"loss","method":"3R 5:00、判定/3-0","event":"PANCRASE 329"}
+{"date":"2022-07-03","opponentName":"Fukky","opponentSlug":null,"result":"loss","method":"判定0-2","event":"PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA"}
+{"date":"2022-05-15","opponentName":"ヒヤマ NFC","opponentSlug":null,"result":"win","method":"S スリーパーホールド","event":"TORAO GIG04"}
+{"date":"2022-01-16","opponentName":"黒部 三奈","opponentSlug":"kurobe-mina","result":"loss","method":"判定3-0","event":"PROFESSIONAL SHOOTO 2022 開幕戦"}
+{"date":"2021-12-05","opponentName":"和田 千聖","opponentSlug":null,"result":"win","method":"判定3-0","event":"闘裸男26"}
+{"date":"2021-05-16","opponentName":"柳 仙香","opponentSlug":null,"result":"loss","method":"TKO レフェリーストップ","event":"PROFESSIONAL SHOOTO 2021 Vol.3 Supported by ONE Championship"}
