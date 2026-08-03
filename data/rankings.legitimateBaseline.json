@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-08-02T18:40:59.843Z",
+    "updatedAt": "2026-08-03T09:33:11.771Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -282,7 +282,7 @@
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-08-02T18:40:59.843Z",
+    "updatedAt": "2026-08-03T09:33:11.771Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -584,7 +584,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-08-02T18:40:59.843Z",
+    "updatedAt": "2026-08-03T09:33:11.771Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -632,7 +632,7 @@
         "rank": 3,
         "rating": 1570,
         "rawRating": 1567.0651698185134,
-        "delta": 7,
+        "delta": 0,
         "record": {
           "wins": 5,
           "losses": 1,
@@ -770,7 +770,7 @@
         "rank": 12,
         "rating": 1500,
         "rawRating": 1504.2241486184719,
-        "delta": -3,
+        "delta": 0,
         "record": {
           "wins": 7,
           "losses": 6,
@@ -779,8 +779,8 @@
         "lastFight": "2026-07-18",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -848,7 +848,7 @@
         "rank": 17,
         "rating": 1450,
         "rawRating": 1447.5493084923983,
-        "delta": 15,
+        "delta": 0,
         "record": {
           "wins": 8,
           "losses": 10,
@@ -880,7 +880,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-08-02T18:40:59.843Z",
+    "updatedAt": "2026-08-03T09:33:11.771Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -1128,7 +1128,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-08-02T18:40:59.843Z",
+    "updatedAt": "2026-08-03T09:33:11.771Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [

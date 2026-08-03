@@ -927,7 +927,7 @@
         "opponent": "猿飛流",
         "result": "win",
         "method": "2R 1:03 リアネイキッドチョーク",
-        "event": "PANCRASE 330 【フライ級キング・オブ・パンクラス タイトルマッチ】",
+        "event": "PANCRASE 330 【PANCRASEフライ級タイトルマッチ】",
         "round": "R2"
       },
       {
@@ -3497,7 +3497,7 @@
         "round": "R3"
       },
       {
-        "date": "2018-10-27",
+        "date": "2022-10-27",
         "opponent": "中山ハルキ",
         "result": "win",
         "method": "5分3R終了 判定3-0",
@@ -11557,7 +11557,7 @@
         "round": "R1"
       },
       {
-        "date": "2018-10-27",
+        "date": "2022-10-27",
         "opponent": "水口清吾",
         "result": "win",
         "method": "5分3R終了 判定3-0",
@@ -19160,6 +19160,17 @@
     "live": false,
     "noRecordData": true
   },
+  "tezuka-haruki": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
   "sato-ryutaro": {
     "wins": 0,
     "losses": 0,
@@ -19509,6 +19520,17 @@
     "noRecordData": true
   },
   "musha-kotaro": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
+  "levan-gabriel": {
     "wins": 0,
     "losses": 0,
     "draws": 0,
@@ -37877,6 +37899,28 @@
     ],
     "live": false
   },
+  "perpetuo-hernani": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
+  "murata-jake": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
   "tamura-hibiki": {
     "wins": 1,
     "losses": 0,
@@ -43368,49 +43412,5 @@
       }
     ],
     "live": false
-  },
-  "tezuka-haruki": {
-    "wins": 0,
-    "losses": 0,
-    "draws": 0,
-    "ko": 0,
-    "sub": 0,
-    "decision": 0,
-    "history": [],
-    "live": false,
-    "noRecordData": true
-  },
-  "levan-gabriel": {
-    "wins": 0,
-    "losses": 0,
-    "draws": 0,
-    "ko": 0,
-    "sub": 0,
-    "decision": 0,
-    "history": [],
-    "live": false,
-    "noRecordData": true
-  },
-  "perpetuo-hernani": {
-    "wins": 0,
-    "losses": 0,
-    "draws": 0,
-    "ko": 0,
-    "sub": 0,
-    "decision": 0,
-    "history": [],
-    "live": false,
-    "noRecordData": true
-  },
-  "murata-jake": {
-    "wins": 0,
-    "losses": 0,
-    "draws": 0,
-    "ko": 0,
-    "sub": 0,
-    "decision": 0,
-    "history": [],
-    "live": false,
-    "noRecordData": true
   }
 }
