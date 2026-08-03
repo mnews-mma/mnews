@@ -259,7 +259,22 @@ export function EventCommonOpponents({
 // 勝ち方 と 負け方: 決着方法を行にした左右対比(バタフライ)。
 // 1行=1決着方法なので「KOで4回勝ち1回負け」が同じ物差しで読める。
 // すべてhistoryのraw method再解析(勝ち負け同一ロジック・捏造ゼロ)。
-export function MethodButterfly({ history }: { history: FighterRecordEntry["history"] }) {
+//
+// winsTotal/lossesTotal(指示書①、2026-08-03追加): 直上の通算戦績カードと同じ
+// 集計値をそのまま渡す(bar合計から逆算しない)。tallyMethodsはisUnknownMethod
+// (決着方法テキストが実質空)の試合を分類から除外するため、bar合計が
+// winsTotal/lossesTotalより少なくなることがある(佐藤将光型)。この差分は
+// 「不明」行として明示し、直上のカードと見出しの数字が必ず一致するようにする
+// (捏造はしない=どのバーにも計上せず、不明であることだけを示す)。
+export function MethodButterfly({
+  history,
+  winsTotal,
+  lossesTotal,
+}: {
+  history: FighterRecordEntry["history"];
+  winsTotal: number;
+  lossesTotal: number;
+}) {
   const { win, loss } = computeMethodSplit({ history } as FighterRecordEntry);
   if (!win && !loss) return null;
   const w = win ?? { ko: 0, sub: 0, decision: 0, other: 0 };
@@ -270,9 +285,14 @@ export function MethodButterfly({ history }: { history: FighterRecordEntry["hist
     { label: "判定", w: w.decision, l: l.decision },
   ];
   if (w.other + l.other > 0) rows.push({ label: "その他", w: w.other, l: l.other });
+  const classifiedWin = w.ko + w.sub + w.decision + w.other;
+  const classifiedLoss = l.ko + l.sub + l.decision + l.other;
+  const unknownWin = Math.max(winsTotal - classifiedWin, 0);
+  const unknownLoss = Math.max(lossesTotal - classifiedLoss, 0);
+  if (unknownWin + unknownLoss > 0) rows.push({ label: "不明", w: unknownWin, l: unknownLoss });
   const max = Math.max(1, ...rows.map((r) => Math.max(r.w, r.l)));
-  const winTotal = w.ko + w.sub + w.decision + w.other;
-  const lossTotal = l.ko + l.sub + l.decision + l.other;
+  const winTotal = winsTotal;
+  const lossTotal = lossesTotal;
 
   // 見出しは付けない。直上の通算戦績(例 11-15-1)と同じ数字を「11勝/15敗」として
   // 左右の柱に置くことで、バーが「その数字の内訳」であることが言葉なしで伝わる。

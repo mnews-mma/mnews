@@ -1,5 +1,6 @@
 import { SourceKey } from "./sources";
 import { tallyMethods } from "./methodClassify";
+import { historyReconciles } from "./fighterRecordIntegrity";
 
 export interface FightRecord {
   date: string;
@@ -3794,9 +3795,15 @@ export function calcFighterRates(
   // フィニッシュ内訳はf.ko/f.sub(Wikipedia infobox由来、取りこぼしあり)を信頼せず、
   // historyの各試合methodテキストをtallyMethodsで再分類した値を使う
   // (fighterStrip.tsのcomputeFighterStripStatsと同じ考え方。2026-07-20修正)。
-  // historyが空(未取得・シード段階)の選手はf.ko/f.subにフォールバックする。
-  const winMethods = tallyMethods(f.history.filter((h) => h.result === "win"));
-  const finishCount = f.history.length > 0 ? winMethods.ko + winMethods.sub : f.ko + f.sub;
+  // ただし historyReconciles(f)===false(historyの件数/内訳がwins/losses/draws
+  // と食い違う。history欠損・Wikipedia記事側の内部不整合)の選手はhistory再集計を
+  // 使わずf.ko/f.subにフォールバックする。指示書①(2026-08-03): 分子=history再集計・
+  // 分母=infobox値というハイブリッドを避け、1行目(通算戦績)・チャートと必ず同じ
+  // データセットから算出する(historyが空(未取得・シード段階)の選手も同じ
+  // フォールバックに含まれる)。
+  const reliable = historyReconciles(f);
+  const winMethods = reliable ? tallyMethods(f.history.filter((h) => h.result === "win")) : null;
+  const finishCount = winMethods ? winMethods.ko + winMethods.sub : f.ko + f.sub;
   const finishRate = f.wins > 0 ? Math.round((finishCount / f.wins) * 100) : null;
   return { winRate, finishRate };
 }

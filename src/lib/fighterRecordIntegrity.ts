@@ -29,6 +29,26 @@ export interface IntegrityIssue {
   message: string;
 }
 
+// history再集計(勝ち/負け/引き分けの件数)が集計値(wins/losses/draws)と
+// 完全一致するか。一致する場合のみ、history由来の内訳(決まり手チャート等)を
+// 集計値と同じ総数として安全に表示できる(指示書①: 選手ページの1行目/勝率/
+// フィニッシュ率/チャートを同一データセットに揃える判定基準。checkFighterRecordIntegrity
+// のwarning判定と同じ基準をここに集約し、二重定義しない)。historyが空の選手
+// (住村竜市朗等、集計値のみ持つ既知の正常パターン)は「再集計不能」であり
+// 「一致」ではないためfalseを返す。
+export function historyReconciles(entry: {
+  wins: number;
+  losses: number;
+  draws: number;
+  history: { result: string }[];
+}): boolean {
+  if (entry.history.length === 0) return false;
+  const hw = entry.history.filter((h) => h.result === "win").length;
+  const hl = entry.history.filter((h) => h.result === "loss").length;
+  const hd = entry.history.filter((h) => h.result === "draw").length;
+  return hw === entry.wins && hl === entry.losses && hd === entry.draws;
+}
+
 export function checkFighterRecordIntegrity(
   slug: string,
   nameJa: string,
@@ -79,7 +99,7 @@ export function checkFighterRecordIntegrity(
     return { slug, nameJa, severity: "fatal", message: "history内訳が負数(データ破損)" };
   }
 
-  if (hw === entry.wins && hl === entry.losses && hd === entry.draws) return null;
+  if (historyReconciles(entry)) return null;
 
   return {
     slug,
