@@ -186,3 +186,99 @@ LANDMARK15を除く全81大会をコミット済みファイルと突合し、**
 | `tsc --noEmit` | ✅ エラー0件 |
 | `npm run build` | ✅ exit 0 |
 | `npm run test:mnews-rating` | ✅ 220件成功/0件失敗 |
+
+---
+
+## 追記2(LANDMARK15登録・非MMA/アマチュア除外の実測確認)
+
+判断(2026-08-03、Kaina): LANDMARK15を登録する。他のRIZIN大会が非MMA試合(既存155件のキックボクシングbout等)も同様に格納している以上、この大会だけ除くほうが不整合。ただし「芝宏二郎 vs. 遥心」がMMA戦績に誤算入されないことを実測で確認してから、という条件付き。
+
+### 1. `RIZIN_EVENT_INDEX`への登録・手動投入ブロックの解除
+
+`rizinEventIndex.ts`に`abc presents RIZIN LANDMARK 15 in HIROSHIMA`(date: 2026-07-18、
+infoPageId: 17825995、resultsPageId: 17853329)を追加した(`manualOverride`無し、
+通常のauto-fetch対象)。手動投入されていた旧14boutブロックは、自動生成した15boutの
+ブロックへ置き換えた(`data/rizinRecords.json`の該当イベント丸ごと置換、他81大会は
+バイト単位で不変)。
+
+### 2. 「芝宏二郎 vs. 遥心」が非MMAとして除外されることの実測確認
+
+両選手とも`fighters.ts`に**未登録**(`findFighterSlugByName`が両者ともnullを返す)。
+指示に従い、居ない場合のフォールバックとして分類結果を報告する:
+
+- `ruleLineRaw`: `"RIZIN キックボクシングルール：3分 3R（54.5kg）"`
+- `classifyMmaRuleType()`の判定結果: `"キックボクシング"`(この文字列には`"MMA"`という
+  部分文字列が含まれないため、優先判定に引っかからず`NON_MMA_RULE_PATTERNS`の
+  `キックボクシ`パターンに正しくマッチする)
+- `rizinRecordsAggregate.ts`の`MMA_RULE_TYPES`(ホワイトリスト、`Set(["MMA"])`のみ)に
+  `"キックボクシング"`は含まれない
+
+**追加の実測**: `findFighterSlugByName`が未登録を返すため通常の集計では素通りしてしまい
+確認にならない。将来登録された場合でも安全であることを直接証明するため、この1boutにだけ
+仮のslugを付与した合成データを作り、実際の`computeFighterMmaRecord()`関数(本番と同じ
+関数)に通した:
+
+```
+bouts(MMA集計対象)件数: 0
+excluded(除外)件数: 1
+excluded内訳: [{ "reason": "ルール種別がMMA以外(キックボクシング)" }]
+```
+
+MMA集計には一切算入されず、`excluded`に理由付きで正しく分離されることを確認した。
+
+### 3. アマチュア1件(田中仁 vs. 健太朗)の除外確認、および実装上の訂正
+
+**当初の想定と異なる事実が判明**: `nonProBoutFilter.ts`はRIZIN側のパイプライン
+(`update-rizin-records.ts`・`rizinRecordsAggregate.ts`・`rizinRecordsOverride.ts`)に
+**一切配線されていなかった**(修斗/パンクラス/DEEPは呼び出しているが、RIZINは未接続)。
+過去のLANDMARK15手動投入(PR #348)時にこのboutが除外されていたのは、フィルタ機構では
+なく単に「手動書き起こし時に人間が含めない判断をした」結果であり、自動化された仕組みでは
+なかった。
+
+さらに、`classifyNonProBout()`が受け付ける`headingText`フィールドには「アマチュアルール」
+という表記自体が現れない(この表記は`ruleLineRaw`側にのみ存在し、`headingText`は
+「OPENING FIGHT 第1試合／田中仁 vs. 健太朗」のように対戦カード表記のみ)。このため、
+今回`update-rizin-records.ts`の`buildEventBouts()`に`isExcludedNonProBout()`呼び出しを
+新規に配線し、`ruleLineRaw`を`noteRaw`として渡すようにした。
+
+**実装時に発見した事故(修正済み)**: 当初`headingText`も一緒に渡していたところ、
+既存77大会の全数チェックで**RIZIN.40「スダリオ剛 vs. ジュニア・タファ」が誤って
+除外される**ことが判明した(対戦相手の実名「ジュニア・タファ」の「ジュニア」が
+`non_mma_kids_shooto`カテゴリの「ジュニア」キーワードに偶然一致)。これは通常の
+プロMMA戦であり除外は誤り。`headingText`を渡すのをやめ`ruleLineRaw`のみに絞ることで
+解消し、既存77大会+LANDMARK15の全チャンクを再走査して他に誤爆が無いことを再確認した
+(ヒット1件のみ、田中仁 vs. 健太朗のみ)。
+
+結果: LANDMARK15は自動抽出16件(非bout見出し1件を除く)→非プロ除外1件(田中仁 vs.
+健太朗)→**15bout**で確定。
+
+### 4. dry-run再実行、RIZINのbout数減少0件の確認
+
+修正後コードで2回連続新規生成しSHA256完全一致。LANDMARK15を除く既存81大会は
+bout数・全フィールドともコミット済みファイルと完全一致(スラッグのみ、
+`backfill-rizin-slugs.ts`由来の既知の差分が23件あるが、これは元々の検証手法の
+限界であり本修正の影響ではない。件数自体は全て不変)。
+
+### 副産物: LANDMARK15手動投入データの転記ミスを1件訂正
+
+自動抽出とコミット済み14boutを選手ペア単位で突合したところ、A/B順序の違いを除くと
+実質的な差分は1件のみだった: 「イリスベク・ティレノフ vs. 太田忍」の決着技が、
+手動投入データでは「グラウンドでの膝打撃」だったが、公式サイト原文は
+「グラウンドパンチ」。同じ「グラウンドでの膝打撃」という文言が隣接する別の2試合
+(鈴木博昭 vs. 宮川日向・林RICE陽太 vs. 佐々木信治、原文で実際に確認済み)にも
+正しく使われており、この1件だけ転記時に隣接行の文言を誤って流用したコピペミスと
+判断できる。自動取得への切り替えでこの誤りも同時に修正される。
+
+### 検証結果サマリ(追記2分)
+
+| 項目 | 結果 |
+|---|---|
+| LANDMARK 15を`RIZIN_EVENT_INDEX`へ登録、自動取得で15bout | ✅ |
+| 「芝宏二郎 vs. 遥心」が非MMAとしてMMA集計から除外(実測) | ✅(`computeFighterMmaRecord`実行結果で確認) |
+| 「田中仁 vs. 健太朗」がアマチュアとして除外 | ✅(`nonProBoutFilter`をRIZINパイプラインへ新規配線、`ruleLineRaw`ベース) |
+| 既存77大会+LANDMARK15への誤爆(RIZIN.40の偽陽性)を検出・修正 | ✅ |
+| LANDMARK15を除く他81大会不変 | ✅ |
+| 2回連続実行でSHA256一致 | ✅ |
+| `tsc --noEmit` | ✅ エラー0件 |
+| `npm run build` | ✅ exit 0 |
+| `npm run test:mnews-rating` | ✅ 220件成功/0件失敗 |

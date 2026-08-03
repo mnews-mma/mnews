@@ -163,4 +163,18 @@ export const RIZIN_EVENT_INDEX: RizinEventIndexEntry[] = [
   { eventName: "大和開発 presents RIZIN LANDMARK 13 in FUKUOKA", date: "2026-04-12", infoPageId: "17813447", resultsPageId: "17833713" },
   { eventName: "RIZIN.53", date: "2026-05-10", infoPageId: "17821353", resultsPageId: "17838643" },
   { eventName: "RIZIN LANDMARK 14 in SENDAI", date: "2026-06-06", infoPageId: "17825993", resultsPageId: "17843850" },
+  {
+    eventName: "abc presents RIZIN LANDMARK 15 in HIROSHIMA",
+    date: "2026-07-18",
+    infoPageId: "17825995",
+    resultsPageId: "17853329",
+    note:
+      "2026-08-03追加(指示書1フォローアップ)。commit 32c0924で本戦11戦のみ" +
+      "手動投入され、本戦第1試合(芝宏二郎 vs. 遥心、キックボクシングルール)" +
+      "が丸ごと欠落していた。WebSearch+WebFetchでresultsPageIdを特定し" +
+      "<title>「abc presents RIZIN LANDMARK 15 in HIROSHIMA 試合結果一覧」" +
+      "であることを確認済み。自動パースで16bout成功(非bout見出し「大会情報／" +
+      "チケット」1件のみ正しく除外)、うちOPENING FIGHT第1試合(田中仁 vs. " +
+      "健太朗、アマチュアルール)をnonProBoutFilterで除外し15boutで確定。",
+  },
 ];

@@ -28,6 +28,7 @@ import {
   RizinRecordsEvent,
 } from "../src/lib/mnewsRating/rizinScraper";
 import { findFighterSlugByName } from "../src/lib/fighters";
+import { isExcludedNonProBout } from "../src/lib/mnewsRating/nonProBoutFilter";
 import { assertAllowedByRobots } from "./lib/robotsGate";
 
 const OUT = path.join(process.cwd(), "data", "rizinRecords.json");
@@ -90,6 +91,23 @@ function buildEventBouts(eventName: string, date: string, html: string): { bouts
     const raw = parseBoutChunk(chunk);
     if (!raw) {
       parseFailures++;
+      continue;
+    }
+    // アマチュア戦等の非プロ試合を除外する(RIZIN LANDMARK 15「OPENING FIGHT
+    // 第1試合／田中仁 vs. 健太朗」で発見、2026-08-03)。「アマチュアルール」の
+    // 表記はheadingTextには出ずruleLineRaw側にのみ現れる(例:「OPENING FIGHT
+    // RIZIN MMAアマチュアルール：3分 2R（57.0kg）」)。classifyMmaRuleType()は
+    // "MMA"という文字列を先に見つけて即MMA判定するため、この表記だけでは
+    // 非MMAとしても弾けない(アマ/プロの軸とMMA/非MMAの軸は別)。
+    // ruleLineRawのみをnoteRawとして渡す(headingTextは渡さない)。headingText
+    // には選手の実名が含まれ、RIZIN.40「スダリオ剛 vs. ジュニア・タファ」で
+    // 対戦相手名の「ジュニア」がnon_mma_kids_shootoカテゴリの「ジュニア」
+    // キーワードに誤って一致し、通常のプロMMA戦を除外してしまう事故が実測で
+    // 発覚したため(2026-08-03)。ruleLineRawのみに絞れば選手名を巻き込まない。
+    // 全77大会の既存ruleLineRawを走査し「アマ」等の非プロキーワードを含む
+    // 成功パースboutが他に無いことを確認済み、この判定を追加しても既存大会
+    // には影響しない。
+    if (isExcludedNonProBout({ noteRaw: raw.ruleLineRaw })) {
       continue;
     }
     successful.push({ raw });
