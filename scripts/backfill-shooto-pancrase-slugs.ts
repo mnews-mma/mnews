@@ -64,8 +64,21 @@ const TARGET_FILES = ["shootoRecords.json", "pancraseRecords.json", "deepRecords
 //   特別ルール戦をプロ通算成績に算入すると1行目(Wikipedia由来、10-3-0)
 //   を2行目が上回ってしまう。1行目もこの試合を含めていない(条件2)ため、
 //   本アグリゲータでも除外し1行目と2行目を10-3-0で一致させる。
+//
+// 【cardPositionキーの脆弱性に関する注記(2026-08-03判明、PR #393)】:
+// このキーはbout配列内の位置(cardPosition)に依存するため、同一大会の
+// bout抽出件数が変わる(見出しなし回収・構造段落回収等の新規回収パス追加、
+// 既存パースの精緻化等)たびにズレて保護が効かなくなる。実際にPR #393
+// (recoverStructuralParagraphBouts()の配線)でこのDEEP JEWELS 12に構造段落
+// 回収bout1件が追加され、この試合のcardPositionが1→2にズレて
+// denylistが機能しなくなり、build-deep-records.tsの通常抽出パス側の
+// slug解決(SLUG_RESOLUTION_SUPPRESSED、fighters.tsの"華蓮DATE"alias追加で
+// 直接一致するようになったため)がここで再度上書きされる事故が起きかけた
+// (computeMultiOrgRecordの前後突合で検知)。cardPositionは大会のbout抽出
+// ロジックが変わるたびに再確認・更新が必要(このコメントの下の値は
+// PR #393時点のもの)。
 const KNOWN_NON_PROFESSIONAL_BOUTS: ReadonlySet<string> = new Set([
-  "deepRecords.json::DEEP JEWELS 12::2016-06-05::1",
+  "deepRecords.json::DEEP JEWELS 12::2016-06-05::2",
 ]);
 
 function boutKey(file: string, eventName: string, date: string | null, cardPosition: number): string {

@@ -70,6 +70,7 @@ import {
   stripTags,
   extractDeepBouts,
   recoverHeadinglessBouts,
+  recoverStructuralParagraphBouts,
   countStructuralBoutBlocks,
   resolveOutcome,
   DeepRawBout,
@@ -125,6 +126,25 @@ const CO_HOSTED_PANCRASE_EXCLUSIONS: { title: string; date: string; pancraseUrl:
 ];
 function isCoHostedPancraseDuplicate(title: string, date: string): boolean {
   return CO_HOSTED_PANCRASE_EXCLUSIONS.some((e) => e.title === title && e.date === date);
+}
+
+// slug解決を個別に抑止するbout(2026-08-03、指示書「computeMultiOrgRecord前後
+// 突合」)。scripts/backfill-shooto-pancrase-slugs.tsのKNOWN_NON_PROFESSIONAL_
+// BOUTS(該当コメント参照)と同一の1件を、こちらの通常抽出パス側でも明示的に
+// 除外する。「華蓮DATE」はfighters.tsにalias登録済みのため、build-deep-records.ts
+// 側の通常のfindFighterSlugByName()呼び出し(バックフィルスクリプトを経由しない)
+// でもこの1件だけは直接一致してしまい、バックフィル側の
+// KNOWN_NON_PROFESSIONAL_BOUTSによる保護が効かない(あちらは「未解決のbout」
+// にのみ新規解決を試みる設計で、既に解決済みのslugを取り消す機能を持たない)。
+// このDEEP JEWELS 12の試合は「※パウンド無し」の特別ルール(12歳での初出場)で
+// あり、1行目(Wikipedia由来、10-3-0)にも含まれていないため、2行目
+// (4団体通算)にも算入しない(bout自体の表示・出典は変更せず、slug解決のみ
+// 抑止する=試合結果ページからは消えない)。
+const SLUG_RESOLUTION_SUPPRESSED: { eventTitle: string; fighterName: string }[] = [
+  { eventTitle: "DEEP JEWELS 12", fighterName: "華蓮DATE" },
+];
+function isSlugResolutionSuppressed(eventTitle: string, fighterName: string): boolean {
+  return SLUG_RESOLUTION_SUPPRESSED.some((e) => e.eventTitle === eventTitle && e.fighterName === fighterName);
 }
 
 async function sleep(ms: number) {
@@ -206,6 +226,10 @@ interface EventDiag {
   unknownResults: number;
   nonProBoutCount: number;
   recoveredHeadinglessCount: number;
+  // 構造段落回収(recoverStructuralParagraphBouts、PR #381)の回収bout数。
+  // extractDeepBouts()・recoverHeadinglessBouts()いずれの結果にも無いboutを
+  // 追加専用で回収した件数(重複は除外済み)。
+  recoveredStructuralCount: number;
   // 見出し表記に依存しない独立検査(countStructuralBoutBlocks)の参考値。
   // 非プロ/非MMA混入bout・大会概要等の地の文誤検知を含みうるため、
   // rawBouts.length(見出しなし回収込み)との単純な差分だけでは判断せず、
@@ -237,10 +261,12 @@ function processRawBouts(
   const bouts: DeepRecordsBout[] = proRawBouts.map((raw, idx) => {
     const outcome = resolveOutcome(raw);
     if (outcome.resultType === "unknown") unknownResults++;
-    const fighterASlug =
-      findFighterSlugByName(raw.fighterAName) ?? resolveBareNameWithWeightClass(raw.fighterAName, raw.weightClassRaw);
-    const fighterBSlug =
-      findFighterSlugByName(raw.fighterBName) ?? resolveBareNameWithWeightClass(raw.fighterBName, raw.weightClassRaw);
+    const fighterASlug = isSlugResolutionSuppressed(eventTitle, raw.fighterAName)
+      ? null
+      : findFighterSlugByName(raw.fighterAName) ?? resolveBareNameWithWeightClass(raw.fighterAName, raw.weightClassRaw);
+    const fighterBSlug = isSlugResolutionSuppressed(eventTitle, raw.fighterBName)
+      ? null
+      : findFighterSlugByName(raw.fighterBName) ?? resolveBareNameWithWeightClass(raw.fighterBName, raw.weightClassRaw);
     if (!fighterASlug) unresolvedNames++;
     if (!fighterBSlug) unresolvedNames++;
     const winnerName = outcome.winner === "A" ? raw.fighterAName : outcome.winner === "B" ? raw.fighterBName : null;
@@ -365,7 +391,13 @@ async function main() {
     // deepScraper.ts側コメント参照)。extractDeepBouts()自体の選定結果は
     // 変更せず、そこに無いboutだけを追加する純粋な追加専用パス。
     const recoveredBouts = recoverHeadinglessBouts(clean, primaryRawBouts);
-    const rawBouts = [...primaryRawBouts, ...recoveredBouts];
+    // 構造段落回収(PR #381、deepScraper.ts 3.7節参照)。extractDeepBouts()・
+    // recoverHeadinglessBouts()いずれの結果にも無いboutだけを追加専用で回収する
+    // (既存2パスの選定ロジックには一切関与しない)。段落境界の判定に
+    // <p class="wp-block-paragraph">タグが必要なため、stripTags後のcleanでは
+    // なく生HTML(html)を渡す。
+    const structuralRecoveredBouts = recoverStructuralParagraphBouts(html, [...primaryRawBouts, ...recoveredBouts]);
+    const rawBouts = [...primaryRawBouts, ...recoveredBouts, ...structuralRecoveredBouts];
     // 見出し表記に依存しない独立検査(deepScraper.ts参照)。生HTML(stripTags前)の
     // DOM構造(<p class="wp-block-paragraph">1個=bout1件)を根拠にした参考値で、
     // 非プロ/非MMA混入bout(この時点では未フィルタ)も含みうるため、最終的な
@@ -428,6 +460,7 @@ async function main() {
       unknownResults,
       nonProBoutCount,
       recoveredHeadinglessCount: recoveredBouts.length,
+      recoveredStructuralCount: structuralRecoveredBouts.length,
       structuralBoutCount,
     });
   }
@@ -441,7 +474,8 @@ async function main() {
     const clean = stripTags(html);
     const { bouts: primaryRawBouts, formatsUsed } = extractDeepBouts(clean);
     const recoveredBouts = recoverHeadinglessBouts(clean, primaryRawBouts);
-    const rawBouts = [...primaryRawBouts, ...recoveredBouts];
+    const structuralRecoveredBouts = recoverStructuralParagraphBouts(html, [...primaryRawBouts, ...recoveredBouts]);
+    const rawBouts = [...primaryRawBouts, ...recoveredBouts, ...structuralRecoveredBouts];
     const structuralBoutCount = countStructuralBoutBlocks(html);
 
     if (rawBouts.length === 0) {
@@ -486,6 +520,7 @@ async function main() {
       unknownResults,
       nonProBoutCount,
       recoveredHeadinglessCount: recoveredBouts.length,
+      recoveredStructuralCount: structuralRecoveredBouts.length,
       structuralBoutCount,
     });
     candidateCount++;
@@ -499,6 +534,7 @@ async function main() {
   const totalParseFailures = diags.reduce((sum, d) => sum + d.parseFailures, 0);
   const totalNonProBouts = diags.reduce((sum, d) => sum + d.nonProBoutCount, 0);
   const totalRecoveredHeadingless = diags.reduce((sum, d) => sum + d.recoveredHeadinglessCount, 0);
+  const totalRecoveredStructural = diags.reduce((sum, d) => sum + d.recoveredStructuralCount, 0);
   const structuralGapEvents = diags.filter((d) => d.structuralBoutCount > d.boutCount + d.nonProBoutCount);
 
   console.log(`\n=== 集計結果 ===`);
@@ -514,6 +550,7 @@ async function main() {
   console.log(`除外(bout単位の非プロ/非MMA混入): ${totalNonProBouts}件`);
   console.log(`parseFailures(F1見出し数との差分): ${totalParseFailures}`);
   console.log(`見出しなしメインイベント/セミファイナル回収bout数: ${totalRecoveredHeadingless}件`);
+  console.log(`構造段落回収bout数(PR #381): ${totalRecoveredStructural}件`);
   console.log(`構造カウント(独立検査)が最終bout数を上回る大会: ${structuralGapEvents.length}件(参考値、停止条件には使わない)`);
   console.log(`resultType=unknown: ${totalUnknown}`);
   console.log(`選手名未解決: ${totalUnresolved}`);
@@ -555,6 +592,7 @@ async function main() {
   reportLines.push(`- bout数: ${totalBouts}`);
   reportLines.push(`- parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): ${totalParseFailures}件`);
   reportLines.push(`- 見出しなしメインイベント/セミファイナル回収bout数(PR #374): ${totalRecoveredHeadingless}件`);
+  reportLines.push(`- 構造段落回収bout数(PR #381、recoverStructuralParagraphBouts): ${totalRecoveredStructural}件`);
   reportLines.push(`- 構造カウント(独立検査、countStructuralBoutBlocks)が最終bout数を上回る大会: ${structuralGapEvents.length}件(参考値。非プロ/非MMA混入bout・地の文誤検知を含みうるため停止条件には使わない。乖離が大きい大会は大会別内訳のstructural列で個別確認する)`);
   reportLines.push(`- resultType=unknown: ${totalUnknown}件`);
   reportLines.push(`- 選手名未解決(fighterASlug/fighterBSlug null): ${totalUnresolved}件`);
@@ -589,10 +627,10 @@ async function main() {
     reportLines.push(``);
   }
   reportLines.push(`## 大会別内訳`);
-  reportLines.push(`| 大会名 | 日付 | bout数 | フォーマット | parseFailures | unknown | 未解決名 | 非プロ除外bout | 見出しなし回収 | 構造カウント |`);
-  reportLines.push(`|---|---|---|---|---|---|---|---|---|---|`);
+  reportLines.push(`| 大会名 | 日付 | bout数 | フォーマット | parseFailures | unknown | 未解決名 | 非プロ除外bout | 見出しなし回収 | 構造段落回収 | 構造カウント |`);
+  reportLines.push(`|---|---|---|---|---|---|---|---|---|---|---|`);
   for (const d of diags) {
-    reportLines.push(`| ${d.eventName} | ${d.date} | ${d.boutCount} | ${d.formatsUsed.join(",")} | ${d.parseFailures} | ${d.unknownResults} | ${d.unresolvedNames} | ${d.nonProBoutCount} | ${d.recoveredHeadinglessCount} | ${d.structuralBoutCount} |`);
+    reportLines.push(`| ${d.eventName} | ${d.date} | ${d.boutCount} | ${d.formatsUsed.join(",")} | ${d.parseFailures} | ${d.unknownResults} | ${d.unresolvedNames} | ${d.nonProBoutCount} | ${d.recoveredHeadinglessCount} | ${d.recoveredStructuralCount} | ${d.structuralBoutCount} |`);
   }
   fs.writeFileSync(REPORT_OUT, reportLines.join("\n") + "\n");
   console.log(`[OK] ${REPORT_OUT} に書き出しました。`);
