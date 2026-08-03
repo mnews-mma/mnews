@@ -27,7 +27,7 @@
           {
             "rank": "3",
             "officialName": "手塚晴希",
-            "slug": null
+            "slug": "tezuka-haruki"
           },
           {
             "rank": "4",
@@ -62,7 +62,7 @@
           {
             "rank": "3",
             "officialName": "ガブリエル・レーベン",
-            "slug": null
+            "slug": "levan-gabriel"
           },
           {
             "rank": "4",
@@ -448,7 +448,7 @@
     "source": "修斗公式ランキング",
     "sourceUrl": "https://www.shooto-mma.com/ranking/",
     "fetchedDate": "2026-08-03",
-    "rankingLabel": "7月1日付け",
+    "rankingLabel": "8月1日付け",
     "classes": [
       {
         "weightClass": "ストロー級",
@@ -530,13 +530,13 @@
           },
           {
             "rank": "3",
-            "officialName": "シモン スズキ",
-            "slug": "suzuki-simon"
+            "officialName": "関口 祐冬",
+            "slug": "sekiguchi-yuto"
           },
           {
             "rank": "4",
-            "officialName": "関口 祐冬",
-            "slug": "sekiguchi-yuto"
+            "officialName": "シモン スズキ",
+            "slug": "suzuki-simon"
           },
           {
             "rank": "5",
@@ -620,33 +620,33 @@
           },
           {
             "rank": "7",
+            "officialName": "ジェイク ムラタ",
+            "slug": "murata-jake"
+          },
+          {
+            "rank": "8",
             "officialName": "チョウ スソン",
             "slug": "susung"
           },
           {
-            "rank": "8",
+            "rank": "9",
             "officialName": "藤井 伸樹",
             "slug": "fujii-nobuki"
           },
           {
-            "rank": "9",
+            "rank": "10",
             "officialName": "ダイキ ライトイヤー",
             "slug": "lightyear-daiki"
           },
           {
-            "rank": "10",
+            "rank": "11",
             "officialName": "宮口 龍鳳",
             "slug": "miyaguchi-ryuho"
           },
           {
-            "rank": "11",
+            "rank": "12",
             "officialName": "中島 陸",
             "slug": "nakajima-riku"
-          },
-          {
-            "rank": "12",
-            "officialName": "野尻 定由",
-            "slug": "nojiri-yasuyuki"
           }
         ]
       },
@@ -779,11 +779,6 @@
         "weightClass": "ウェルター級",
         "entries": [
           {
-            "rank": "王者",
-            "officialName": "住村 竜市朗",
-            "slug": "sumimura-ryuichiro"
-          },
-          {
             "rank": "1",
             "officialName": "デソウザ マルセル",
             "slug": "desouza-marcel"
@@ -816,7 +811,7 @@
           {
             "rank": "7",
             "officialName": "エルナニ ペルペトゥオ",
-            "slug": null
+            "slug": "perpetuo-hernani"
           },
           {
             "rank": "8",
@@ -834,9 +829,14 @@
         "weightClass": "ミドル級",
         "entries": [
           {
-            "rank": "1",
+            "rank": "王者",
             "officialName": "岩﨑 大河",
             "slug": "iwasaki-taiga"
+          },
+          {
+            "rank": "1",
+            "officialName": "沙門",
+            "slug": "unconfirmed-shooto-1849"
           },
           {
             "rank": "2",
@@ -845,16 +845,11 @@
           },
           {
             "rank": "3",
-            "officialName": "沙門",
-            "slug": "unconfirmed-shooto-1849"
-          },
-          {
-            "rank": "4",
             "officialName": "HENRY",
             "slug": "henry"
           },
           {
-            "rank": "5",
+            "rank": "4",
             "officialName": "キム ジェヨン",
             "slug": "young-kim"
           }
@@ -870,13 +865,13 @@
           },
           {
             "rank": "1",
-            "officialName": "徳本 望愛",
-            "slug": "noa-tokumoto"
+            "officialName": "中村 未来",
+            "slug": "nakamura-miku"
           },
           {
             "rank": "2",
-            "officialName": "中村 未来",
-            "slug": "nakamura-miku"
+            "officialName": "徳本 望愛",
+            "slug": "noa-tokumoto"
           },
           {
             "rank": "3",
@@ -920,18 +915,18 @@
           },
           {
             "rank": "1",
-            "officialName": "高本 千代",
-            "slug": "takamoto-chiyo"
-          },
-          {
-            "rank": "2",
             "officialName": "erika",
             "slug": "erika"
           },
           {
-            "rank": "3",
+            "rank": "2",
             "officialName": "村上 彩",
             "slug": "aya-murakami"
+          },
+          {
+            "rank": "3",
+            "officialName": "高本 千代",
+            "slug": "takamoto-chiyo"
           },
           {
             "rank": "4",
@@ -953,11 +948,6 @@
       {
         "weightClass": "女子ストロー級",
         "entries": [
-          {
-            "rank": "王者",
-            "officialName": "藤野 恵実",
-            "slug": "fujino-emi"
-          },
           {
             "rank": "1",
             "officialName": "宝珠山 桃花",
