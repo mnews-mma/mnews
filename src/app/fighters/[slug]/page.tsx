@@ -5,7 +5,7 @@ import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { FIGHTERS, getFighter, calcFighterRates, findFighterSlugByName, fighterDisplayName, FightRecord } from "@/lib/fighters";
 import { resolveOpponentSlug } from "@/lib/fighterLinkOverrides";
 import { SOURCES } from "@/lib/sources";
-import { resolveFighterCached, resolveFightersCached, fetchFighterRecords } from "@/lib/fighterRecordsCache";
+import { resolveFighterCached, resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
@@ -405,16 +405,26 @@ export default async function FighterPage({
 
   // 次戦の対戦相手情報(次戦プレビュー用)。相手がDB外/戦績データなしの場合は
   // entry=null になり、バナーのみ表示(比較・共通対戦相手は出さない=捏造ゼロ)。
-  const records = await fetchFighterRecords();
+  // 指示書(2026-08-03、対戦カード相手側ソース混在バグ): 自分側(nextFightSelf)は
+  // resolveDisplayRecordCached相当の補正(shouldPreferMultiOrgRecord判定→
+  // 4団体合算への差し替え)を経由するのに対し、相手側だけfetchFighterRecords()の
+  // 生値を直接引いていたため、同一選手でもページによって戦績が食い違っていた
+  // (例: sarami/motonomikiで相手として参照される数字がヘッダーと不一致)。
+  // sameWeightClass(下)と同じ経路(getFighter→resolveFighterCached→
+  // resolveDisplayRecordCached)に揃え、自分側と同じ判定・同じ集計結果を使う。
   const nextOpp = nextFight
-    ? (() => {
+    ? await (async () => {
         const name =
           normSpace(nextFight.bout.fighterA) === normSpace(fighter.nameJa)
             ? nextFight.bout.fighterB
             : nextFight.bout.fighterA;
         const oppSlug = findFighterSlugByName(name, slug, visibleSlugs);
-        const entry = oppSlug ? records[oppSlug] : undefined;
-        return { name, slug: oppSlug, entry: entry && !entry.noRecordData ? entry : null };
+        const oppSeed = oppSlug ? getFighter(oppSlug) : undefined;
+        if (!oppSeed) return { name, slug: oppSlug, entry: null };
+        const oppFighter = await resolveFighterCached(oppSeed);
+        if (oppFighter.noRecordData) return { name, slug: oppSlug, entry: null };
+        const entry = SHOW_MULTI_ORG_RECORD ? await resolveDisplayRecordCached(oppFighter) : oppFighter;
+        return { name, slug: oppSlug, entry };
       })()
     : null;
 
