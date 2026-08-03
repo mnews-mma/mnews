@@ -7543,7 +7543,26 @@
     "fetchedDate": "2026-07-18",
     "bouts": [
       {
-        "cardPosition": 7,
+        "cardPosition": 9,
+        "isOpeningFight": false,
+        "headingText": "第10試合／スペシャルワンマッチ 朝倉未来 vs. クレベル・コイケ",
+        "fighterAName": "朝倉未来",
+        "fighterBName": "クレベル・コイケ",
+        "fighterASlug": "asakura-mikuru",
+        "fighterBSlug": "koike-kleber",
+        "ruleType": "MMA",
+        "weightKg": 66,
+        "namedDivision": null,
+        "resultType": "decisive",
+        "winnerName": "クレベル・コイケ",
+        "winnerSlug": "koike-kleber",
+        "round": "2R",
+        "time": "1分51秒",
+        "methodRaw": "2R 1分51秒 S（テクニカルサブミッション：三角絞め）",
+        "isWeighInMiss": false
+      },
+      {
+        "cardPosition": 8,
         "isOpeningFight": false,
         "headingText": "第8試合／ライト級タイトルマッチ トフィック・ムサエフ vs. ホベルト・サトシ・ソウザ",
         "fighterAName": "トフィック・ムサエフ",
@@ -7559,6 +7578,25 @@
         "round": "1R",
         "time": "1分12秒",
         "methodRaw": "1R 1分12秒 S（タップアウト：三角絞め）",
+        "isWeighInMiss": false
+      },
+      {
+        "cardPosition": 7,
+        "isOpeningFight": false,
+        "headingText": "第7試合／バンタム級トーナメント 1回戦 朝倉海 vs. 渡部修斗",
+        "fighterAName": "朝倉海",
+        "fighterBName": "渡部修斗",
+        "fighterASlug": "asakura-kai",
+        "fighterBSlug": null,
+        "ruleType": "MMA",
+        "weightKg": 61,
+        "namedDivision": null,
+        "resultType": "decisive",
+        "winnerName": "朝倉海",
+        "winnerSlug": "asakura-kai",
+        "round": "1R",
+        "time": "3分22秒",
+        "methodRaw": "1R 3分22秒 TKO（レフェリーストップ：グラウンドパンチ）",
         "isWeighInMiss": false
       },
       {
@@ -7676,7 +7714,7 @@
         "isWeighInMiss": false
       }
     ],
-    "parseFailures": 6
+    "parseFailures": 4
   },
   {
     "eventName": "Yogibo presents RIZIN.29",
