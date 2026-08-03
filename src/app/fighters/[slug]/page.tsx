@@ -12,6 +12,7 @@ import { ogImagePath } from "@/lib/ogShared";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
+import { fetchOrgTagOverrides } from "@/lib/orgTagOverridesData";
 import { computeFighterTags, OrgTagKey } from "@/lib/orgTags";
 import { MethodButterfly, NextFightCompare } from "@/components/FighterVisuals";
 import NextFightCardV2 from "@/components/matchup/NextFightCardV2";
@@ -309,8 +310,8 @@ export default async function FighterPage({
   // 戦績テーブルの対戦相手名リンク用(no-data/hiddenの選手はテキスト表示にする)。
   const visibleSlugs = await getVisibleFighterSlugs();
   // 団体タグ(導出・新規公開昇格分のみ)。既存公開選手は空。
-  const orgRankings = await fetchOrgRankings();
-  const orgTags = computeFighterTags(fighter, orgRankings);
+  const [orgRankings, orgTagOverrides] = await Promise.all([fetchOrgRankings(), fetchOrgTagOverrides()]);
+  const orgTags = computeFighterTags(fighter, orgRankings, orgTagOverrides);
   // AI RIZINランキング掲載中なら該当階級ページへ内部リンク(回遊性向上)。
   const rankingLink = seed.hidden ? null : await findRankingLink(slug);
   const appearance = findNextAppearance(fighter.nameJa);
