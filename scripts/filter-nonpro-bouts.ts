@@ -4,10 +4,13 @@
 // 除外対象(src/lib/mnewsRating/nonProBoutFilter.ts参照):
 //   - non_mma_karate / non_mma_kids_shooto / non_mma_submission_only (MMAではない)
 //   - not_pro_amateur / not_pro_tryout (プロ試合ではない)
+//   - not_pro_cage_gate (PANCRASE CAGE GATE。Bayside FIGHT限定・37bout・PR #269で追加)
+//   - not_pro_pancrase_gate (パンクラスゲート系、表記ゆれ4種・262bout・指示書④で追加。
+//     2026-07-30時点は「除外しない」判断だったが2026-08-03に上書き)
 // 除外しない(ユーザー確定事項): 新人王決定トーナメント(修斗)・NEO BLOOD!(パンクラス)
 //   は団体公式のプロ登竜門トーナメントのため対象外(キーワード自体を定義していない)。
-// 保留(今回は変更しない): パンクラスゲート・Bayside FIGHT・地方主催大会は
-//   追加調査待ちのため、このスクリプトでは一切除外しない。
+// 保留(今回は変更しない): Bayside FIGHT・地方主催大会は追加調査待ちのため、
+//   このスクリプトでは一切除外しない。
 //
 // 大会(event)自体は削除しない。bouts配列だけを絞り込む(既存データにも
 // bouts:0件のイベントが実在しており、その形式を踏襲する)。
@@ -65,6 +68,7 @@ function filterEvents<E extends { eventName: string; date: string | null; bouts:
     not_pro_amateur: 0,
     not_pro_tryout: 0,
     not_pro_cage_gate: 0,
+    not_pro_pancrase_gate: 0,
     not_pro_futureking: 0, // 修斗/パンクラスの呼び出しはeventNameを渡さないため常に0(src/lib/mnewsRating/nonProBoutFilter.ts参照)
   };
   let totalBoutsBefore = 0;

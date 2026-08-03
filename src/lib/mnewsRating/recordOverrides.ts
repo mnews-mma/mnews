@@ -1048,6 +1048,117 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "IMPACT 2022、2022-10-30、resultType:draw)にも同一boutが存在するが、2行目の除外は" +
       "別スコープ(PR #336)のため今回は対象外。",
   },
+  // 2026-08-03(指示書③: infobox/表本体不一致13名の一次ソース照合): 13名のうち
+  // 4名で確定できた訂正。残りは一次情報未到達または現行override機構(bout単位の
+  // add/remove/patch)では対応できない構造的ギャップのため未解決のまま残す
+  // (詳細はPR #404 説明およびout/配下のレポート参照)。
+  {
+    // 中村大介: DEEP公式サイトで確認。infobox(35勝29敗1分)は既にこの一戦を
+    // 反映済みだが、Wikipedia戦績表({{Fight-cont}})にだけ欠落していた
+    // (鈴木博昭・suzuki-hiroakiと同型のサマリー先行更新パターン)。
+    type: "add",
+    fighterId: "nakamura-daisuke",
+    date: "2026-05-04",
+    opponent: "狩野優",
+    result: "loss",
+    method: "5分3R終了 判定0-3",
+    event: "DEEP 131 IMPACT 25th Anniversary",
+    round: "R3",
+    totalsAlreadyReflected: true,
+    source: "https://www.deep2001.com/deep-131-impact/",
+    fetchedDate: "2026-08-03",
+    note:
+      "DEEP公式サイトの「DEEP 131 IMPACT 25th Anniversary」(2026-05-04・横浜BUNTAI)大会" +
+      "ページで確認: 第7試合DEEPフェザー級、●中村大介(夕月堂本舗)○狩野優(TRIBE TOKYO " +
+      "MMA)、判定0-3。data/deepRecords.jsonの当該大会にも同一boutが実在し完全一致。" +
+      "Wikipedia戦績表にはこの一戦だけ記載が丸ごと欠落していたが、インフォボックスの" +
+      "通算成績(35-29-1)は既にこの敗戦を反映済みのためtotalsAlreadyReflected:trueとする。",
+  },
+  {
+    // ストラッサー起一: 改名前の本名「国本起一」名義でPANCRASE公式サイトを検索し
+    // 発見した2006年の2試合。Wikipedia戦績表には改名(2007年)以降の「ストラッサー
+    // 起一」名義の試合しか収録されておらず、本名時代の試合が欠落していた。
+    type: "add",
+    fighterId: "strasser-kiichi",
+    date: "2006-03-19",
+    opponent: "鳥生将大",
+    result: "loss",
+    method: "1R 0:05 KO（ハイキック）",
+    event: "PANCRASE 2006 BLOW TOUR",
+    round: "R1",
+    totalsAlreadyReflected: true,
+    source: "https://www.pancrase.co.jp/data/result/2006/0319.html",
+    fetchedDate: "2026-08-03",
+    note:
+      "PANCRASE公式サイトの試合結果ページで確認(本名「国本起一」名義、P's LAB大阪 vs " +
+      "コブラ会対抗戦・大将戦)。Wikipedia戦績表は改名(2007年9月30日の試合よりリング" +
+      "ネームを「ストラッサー起一」に変更、と本文に明記)以前の本名時代の試合を収録して" +
+      "おらず欠落していた。インフォボックスの通算成績(21-13-2)は既にこの敗戦を反映済み" +
+      "のためtotalsAlreadyReflected:trueとする。",
+  },
+  {
+    type: "add",
+    fighterId: "strasser-kiichi",
+    date: "2006-10-01",
+    opponent: "青山晃剛",
+    result: "win",
+    method: "2R 2:58 ギブアップ（肩固め）",
+    event: "PANCRASE 2006 BLOW TOUR",
+    round: "R2",
+    totalsAlreadyReflected: true,
+    source: "https://www.pancrase.co.jp/data/result/2006/1001.html",
+    fetchedDate: "2026-08-03",
+    note:
+      "上記と同一大会シリーズ(本名「国本起一」名義)。PANCRASE公式サイトの試合結果ページで" +
+      "確認。インフォボックスの通算成績(21-13-2)は既にこの勝利を反映済みのため" +
+      "totalsAlreadyReflected:trueとする。",
+  },
+  {
+    // 黒部和沙: Wikipedia本文の日付表記タイポ(「2024年4月7月」=「日」を「月」と誤記)
+    // により、parseJaDate()が日付を抽出できず該当行が丸ごと欠落していた
+    // (parseJaFightHistory()は日付未取得の行を無音でスキップする仕様のため)。
+    type: "add",
+    fighterId: "kurobe-kazusa",
+    date: "2024-04-07",
+    opponent: "澤田龍人",
+    result: "win",
+    method: "1R 3:38 ネックストレッチ",
+    event: "SHOOTO GIG TOKYO Vol.36",
+    round: "R1",
+    totalsAlreadyReflected: true,
+    source: "https://www.shooto-mma.com/result/?id=181",
+    fetchedDate: "2026-08-03",
+    note:
+      "修斗公式サイトの試合結果ページ(メインイベント・第9試合、ストロー級)で確認: " +
+      "○黒部和沙(TRIBE TOKYO MMA) vs ×澤田龍人(AACC×剛毅會)、1R3:38ネックストレッチ。" +
+      "data/shootoRecords.jsonの当該大会にも同一boutが実在し完全一致。Wikipedia戦績表側の" +
+      "日付表記が「2024年4月7月」という単純なタイポ(本来「日」の箇所)になっており、" +
+      "mnewsの日付パーサ(parseJaDate())が日付を抽出できずこの1行を丸ごと欠落させていた。" +
+      "インフォボックスの通算成績(6-1-1)は既にこの勝利を反映済みのため" +
+      "totalsAlreadyReflected:trueとする。",
+  },
+  {
+    // パトリッキー・ピットブル: Wikipedia記事の「== 戦績 ==」節はMMA戦績表とは別に
+    // 「=== グラップリング ===」という独立節を持つが、mnewsのextractMmaSection()が
+    // この記事の見出し(「総合格闘技」という文言を含まない)にマッチせず記事全文を
+    // フォールバック対象にしてしまい、グラップリング節の1行がMMA historyに混入した。
+    // ケイト・ロータスの「エキシビション混入」除外(本ファイル上部)と同型のバグ。
+    type: "remove",
+    fighterId: "patricky-pitbull",
+    date: "2025-05-31",
+    opponent: "アルマン・ツァルキヤン",
+    source: "https://ja.wikipedia.org/wiki/パトリッキー・ピットブル",
+    fetchedDate: "2026-08-03",
+    note:
+      "Wikipedia記事本文の「=== グラップリング ===」節(サブミッションのみのADXC 10、" +
+      "2025年5月31日、5Rリアネイキドチョークで敗戦)がMMA戦績表({{MMA recordbox}}: " +
+      "25勝16敗0分、計41戦)とは別枠の記録であるにもかかわらず、mnews側のパーサが" +
+      "MMA節・グラップリング節を区別できず両方から{{Fight-cont}}行を拾ってしまい、" +
+      "historyに紛れ込んでいた(indexの見出しが「総合格闘技」という文言を含まないため" +
+      "extractMmaSection()のフォールバックが記事全文を対象にしたことが根本原因)。" +
+      "インフォボックス(25-16-0)と、記事本文のMMA戦績表本体(グラップリング節を除く41行、" +
+      "同じく25-16-0)は元々一致しており、除外対象はグラップリングの1行のみ。",
+  },
 ];
 
 export interface WeighInMissRuling {

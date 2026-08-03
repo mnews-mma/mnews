@@ -45,6 +45,7 @@ function filterDeepEvents(events: DeepRecordsEvent[]): { filtered: DeepRecordsEv
     not_pro_amateur: 0,
     not_pro_tryout: 0,
     not_pro_cage_gate: 0,
+    not_pro_pancrase_gate: 0,
     not_pro_futureking: 0,
   };
   let totalBoutsBefore = 0;

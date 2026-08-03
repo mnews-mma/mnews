@@ -1,5 +1,6 @@
 import { SourceKey } from "./sources";
 import { tallyMethods } from "./methodClassify";
+import { historyReconciles } from "./fighterRecordIntegrity";
 
 export interface FightRecord {
   date: string;
@@ -2136,9 +2137,9 @@ export const FIGHTERS: Fighter[] = [
     nameEn: "Daiki Yuki",
     org: "shooto",
     weightClass: "ライト級",
-    wins: 7,
+    wins: 6,
     losses: 5,
-    draws: 1,
+    draws: 2,
     ko: 0,
     sub: 1,
     decision: 5,
@@ -2153,7 +2154,7 @@ export const FIGHTERS: Fighter[] = [
       { date: "2022-11-06", opponent: "工藤圭一郎", result: "win", method: "判定 3-0", event: "THE SHOOTO OKINAWA vol.7", round: "" },
       { date: "2022-05-15", opponent: "田中半蔵", result: "loss", method: "判定 0-3", event: "TORAO27", round: "" },
       { date: "2021-11-06", opponent: "岩本建汰", result: "loss", method: "判定 0-2", event: "PROFESSIONAL SHOOTO 2021 Vol.7 Supported by ONE Championship", round: "" },
-      { date: "2021-07-25", opponent: "仲山貴志", result: "win", method: "", event: "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship", round: "" },
+      { date: "2021-07-25", opponent: "仲山貴志", result: "draw", method: "", event: "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship", round: "" },
       { date: "2020-12-13", opponent: "國頭武", result: "win", method: "判定 3-0", event: "闘裸男×FORCE", round: "" },
       { date: "2018-07-15", opponent: "高橋孝徳", result: "draw", method: "判定 0-0", event: "プロフェッショナル修斗後楽園ホール大会", round: "" },
     ],
@@ -2615,8 +2616,8 @@ export const FIGHTERS: Fighter[] = [
     org: "shooto",
     weightClass: "女子アトム級",
     wins: 2,
-    losses: 5,
-    draws: 1,
+    losses: 4,
+    draws: 2,
     ko: 1,
     sub: 0,
     decision: 1,
@@ -2625,7 +2626,7 @@ export const FIGHTERS: Fighter[] = [
       { date: "2026-05-31", opponent: "深井志保", result: "win", method: "判定 1-0", event: "PROFESSIONAL SHOOTO 2026 Vol.4 in OSAKA", round: "" },
       { date: "2025-11-22", opponent: "片山智絵", result: "loss", method: "判定 0-3", event: "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA", round: "" },
       { date: "2025-09-21", opponent: "村上彩", result: "loss", method: "判定 3-0", event: "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7", round: "" },
-      { date: "2025-07-21", opponent: "erika", result: "loss", method: "", event: "PROFESSIONAL SHOOTO 2025 Vol.6", round: "" },
+      { date: "2025-07-21", opponent: "erika", result: "draw", method: "", event: "PROFESSIONAL SHOOTO 2025 Vol.6", round: "" },
       { date: "2025-06-14", opponent: "高本千代", result: "loss", method: "判定 3-0", event: "COLORS Produce by SHOOTO Vol.5", round: "" },
       { date: "2024-12-29", opponent: "Fukky", result: "draw", method: "", event: "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA", round: "" },
       { date: "2024-08-03", opponent: "植田咲", result: "win", method: "TKO", event: "COLORS Produce by SHOOTO Vol.3", round: "R2 01:28" },
@@ -2659,8 +2660,8 @@ export const FIGHTERS: Fighter[] = [
     org: "shooto",
     weightClass: "女子スーパーアトム級",
     wins: 3,
-    losses: 4,
-    draws: 1,
+    losses: 3,
+    draws: 2,
     ko: 1,
     sub: 0,
     decision: 2,
@@ -2668,7 +2669,7 @@ export const FIGHTERS: Fighter[] = [
       { date: "2026-07-20", opponent: "渡辺彩華", result: "loss", method: "TS/リアネイキッドチョーク", event: "PROFESSIONAL SHOOTO 2026 Vol.5", round: "R3 02:41" },
       { date: "2026-03-29", opponent: "村上彩", result: "win", method: "判定 2-0", event: "PROFESSIONAL SHOOTO 2026 Vol.2", round: "" },
       { date: "2026-01-18", opponent: "erika", result: "win", method: "KO", event: "【第1部】COLORS Produce by SHOOTO Vol.6", round: "R2 00:32" },
-      { date: "2025-09-21", opponent: "片山智絵", result: "loss", method: "", event: "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7", round: "" },
+      { date: "2025-09-21", opponent: "片山智絵", result: "draw", method: "", event: "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7", round: "" },
       { date: "2025-06-14", opponent: "嶋屋澪", result: "win", method: "判定 3-0", event: "COLORS Produce by SHOOTO Vol.5", round: "" },
       { date: "2024-12-15", opponent: "杉本恵", result: "draw", method: "", event: "COLORS Produce by SHOOTO Vol.4", round: "" },
       { date: "2024-08-03", opponent: "宝珠山桃花", result: "loss", method: "判定 1-0", event: "COLORS Produce by SHOOTO Vol.3", round: "" },
@@ -2682,15 +2683,15 @@ export const FIGHTERS: Fighter[] = [
     nameEn: "Erika",
     org: "shooto",
     weightClass: "女子スーパーアトム級",
-    wins: 3,
+    wins: 2,
     losses: 1,
-    draws: 0,
+    draws: 1,
     ko: 0,
     sub: 0,
     decision: 2,
     history: [
       { date: "2026-01-18", opponent: "高本千代", result: "loss", method: "KO", event: "【第1部】COLORS Produce by SHOOTO Vol.6", round: "R2 00:32" },
-      { date: "2025-07-21", opponent: "嶋屋澪", result: "win", method: "", event: "PROFESSIONAL SHOOTO 2025 Vol.6", round: "" },
+      { date: "2025-07-21", opponent: "嶋屋澪", result: "draw", method: "", event: "PROFESSIONAL SHOOTO 2025 Vol.6", round: "" },
       { date: "2025-05-18", opponent: "村上彩", result: "win", method: "判定 0-2", event: "【第2部】PROFESSIONAL SHOOTO 2025 Vol.4", round: "" },
       { date: "2024-12-15", opponent: "吉成はるか", result: "win", method: "判定 0-3", event: "COLORS Produce by SHOOTO Vol.4", round: "" },
     ],
@@ -2723,15 +2724,15 @@ export const FIGHTERS: Fighter[] = [
     nameEn: "Tomoe Katayama",
     org: "shooto",
     weightClass: "女子スーパーアトム級",
-    wins: 3,
+    wins: 2,
     losses: 1,
-    draws: 0,
+    draws: 1,
     ko: 0,
     sub: 0,
     decision: 2,
     history: [
       { date: "2025-11-22", opponent: "嶋屋澪", result: "win", method: "判定 0-3", event: "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA", round: "" },
-      { date: "2025-09-21", opponent: "高本千代", result: "win", method: "", event: "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7", round: "" },
+      { date: "2025-09-21", opponent: "高本千代", result: "draw", method: "", event: "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7", round: "" },
       { date: "2025-07-21", opponent: "村上彩", result: "loss", method: "S/腕十字固め", event: "PROFESSIONAL SHOOTO 2025 Vol.6", round: "R2 04:49" },
       { date: "2024-08-03", opponent: "徳本望愛", result: "win", method: "判定 0-1", event: "COLORS Produce by SHOOTO Vol.3", round: "" },
     ],
@@ -2964,16 +2965,16 @@ export const FIGHTERS: Fighter[] = [
     nameEn: "Atsuhi Takada",
     org: "shooto",
     weightClass: "女子ストロー級",
-    wins: 3,
+    wins: 2,
     losses: 1,
-    draws: 0,
+    draws: 1,
     ko: 1,
     sub: 0,
     decision: 1,
     history: [
       { date: "2026-05-17", opponent: "吉成はるか", result: "win", method: "TKO", event: "【第2部】PROFESSIONAL SHOOTO 2026 Vol.3", round: "R2 02:05" },
       { date: "2025-06-14", opponent: "宝珠山桃花", result: "loss", method: "判定 3-0", event: "COLORS Produce by SHOOTO Vol.5", round: "" },
-      { date: "2024-12-15", opponent: "チョンチャヒョン", result: "win", method: "", event: "COLORS Produce by SHOOTO Vol.4", round: "" },
+      { date: "2024-12-15", opponent: "チョンチャヒョン", result: "draw", method: "", event: "COLORS Produce by SHOOTO Vol.4", round: "" },
       { date: "2022-06-05", opponent: "山内絵里", result: "win", method: "判定 0-2", event: "北海道大会", round: "" },
     ],
     needsReview: true,
@@ -3794,9 +3795,15 @@ export function calcFighterRates(
   // フィニッシュ内訳はf.ko/f.sub(Wikipedia infobox由来、取りこぼしあり)を信頼せず、
   // historyの各試合methodテキストをtallyMethodsで再分類した値を使う
   // (fighterStrip.tsのcomputeFighterStripStatsと同じ考え方。2026-07-20修正)。
-  // historyが空(未取得・シード段階)の選手はf.ko/f.subにフォールバックする。
-  const winMethods = tallyMethods(f.history.filter((h) => h.result === "win"));
-  const finishCount = f.history.length > 0 ? winMethods.ko + winMethods.sub : f.ko + f.sub;
+  // ただし historyReconciles(f)===false(historyの件数/内訳がwins/losses/draws
+  // と食い違う。history欠損・Wikipedia記事側の内部不整合)の選手はhistory再集計を
+  // 使わずf.ko/f.subにフォールバックする。指示書①(2026-08-03): 分子=history再集計・
+  // 分母=infobox値というハイブリッドを避け、1行目(通算戦績)・チャートと必ず同じ
+  // データセットから算出する(historyが空(未取得・シード段階)の選手も同じ
+  // フォールバックに含まれる)。
+  const reliable = historyReconciles(f);
+  const winMethods = reliable ? tallyMethods(f.history.filter((h) => h.result === "win")) : null;
+  const finishCount = winMethods ? winMethods.ko + winMethods.sub : f.ko + f.sub;
   const finishRate = f.wins > 0 ? Math.round((finishCount / f.wins) * 100) : null;
   return { winRate, finishRate };
 }

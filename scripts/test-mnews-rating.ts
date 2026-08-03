@@ -1289,15 +1289,20 @@ function makeResolver(map: Record<string, string>) {
 }
 
 // ── 26. 戦績訂正オーバーライド: patch-weight-class(既存boutのweightClassのみ補完) ──
+// nakamura-daisukeはpatch-weight-class 2件に加え、指示書③(#404)でadd型
+// override(2026-05-04 狩野優戦)も確定反映済みのため、applyRecordOverrides呼び出しは
+// 常にそのadd分も追加してくる。以下は対象bout(2022-03-20 山本空良戦)をdate/opponentで
+// 個別に探して検証する(配列長やindex 0固定の比較はadd件数の変化に脆いため避ける)。
 {
   const historyMissingWeightClass = [
     { date: "2022-03-20", opponent: "山本空良", result: "loss" as const, method: "5分3R終了 判定1-2", event: "RIZIN.34", round: "R3" },
   ];
   const patched = applyRecordOverrides("nakamura-daisuke", historyMissingWeightClass);
-  check(patched.length === 1, "patch-weight-class: bout件数は変わらない(追加でも削除でもない)");
-  check((patched[0] as { weightClass?: string }).weightClass === "68.0kg契約", "patch-weight-class: weightClassのみ補完される");
+  const target = patched.find((h) => h.date === "2022-03-20" && h.opponent === "山本空良");
+  check(target !== undefined, "patch-weight-class: 対象boutは除去されない");
+  check((target as { weightClass?: string } | undefined)?.weightClass === "68.0kg契約", "patch-weight-class: weightClassのみ補完される");
   check(
-    patched[0].date === "2022-03-20" && patched[0].opponent === "山本空良" && patched[0].result === "loss" && patched[0].method === "5分3R終了 判定1-2",
+    target?.date === "2022-03-20" && target?.opponent === "山本空良" && target?.result === "loss" && target?.method === "5分3R終了 判定1-2",
     "patch-weight-class: date/opponent/result/methodは一切変更されない"
   );
 
@@ -1310,8 +1315,9 @@ function makeResolver(map: Record<string, string>) {
   const unrelated = applyRecordOverrides("nakamura-daisuke", [
     { date: "2099-01-01", opponent: "別の誰か", result: "win" as const, method: "判定", event: "RIZIN.99", round: "R1" },
   ]);
+  const unrelatedTarget = unrelated.find((h) => h.date === "2099-01-01" && h.opponent === "別の誰か");
   check(
-    (unrelated[0] as { weightClass?: string }).weightClass === undefined,
+    (unrelatedTarget as { weightClass?: string } | undefined)?.weightClass === undefined,
     "patch-weight-class: date/opponentが一致しないboutには影響しない"
   );
 }

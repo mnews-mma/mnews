@@ -13539,6 +13539,14 @@
     "decision": 8,
     "history": [
       {
+        "date": "2026-05-04",
+        "opponent": "狩野優",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "DEEP 131 IMPACT 25th Anniversary",
+        "round": "R3"
+      },
+      {
         "date": "2025-05-04",
         "opponent": "桜庭大世",
         "result": "win",
@@ -14953,6 +14961,22 @@
         "method": "5分2R終了 判定0-2",
         "event": "PANCRASE 2007 RISING TOUR",
         "round": "R2"
+      },
+      {
+        "date": "2006-10-01",
+        "opponent": "青山晃剛",
+        "result": "win",
+        "method": "2R 2:58 ギブアップ（肩固め）",
+        "event": "PANCRASE 2006 BLOW TOUR",
+        "round": "R2"
+      },
+      {
+        "date": "2006-03-19",
+        "opponent": "鳥生将大",
+        "result": "loss",
+        "method": "1R 0:05 KO（ハイキック）",
+        "event": "PANCRASE 2006 BLOW TOUR",
+        "round": "R1"
       }
     ],
     "live": true,
@@ -17517,6 +17541,14 @@
         "result": "loss",
         "method": "1R 2:16 スリーパーホールド",
         "event": "PROFESSIONAL SHOOTO 2024 Vol.7",
+        "round": "R1"
+      },
+      {
+        "date": "2024-04-07",
+        "opponent": "澤田龍人",
+        "result": "win",
+        "method": "1R 3:38 ネックストレッチ",
+        "event": "SHOOTO GIG TOKYO Vol.36",
         "round": "R1"
       },
       {
@@ -21347,14 +21379,6 @@
         "event": "超RIZIN.4 真夏の喧嘩祭り",
         "round": "R3",
         "weightClass": "71.0kg契約"
-      },
-      {
-        "date": "2025-05-31",
-        "opponent": "アルマン・ツァルキヤン",
-        "result": "loss",
-        "method": "5R リアネイキドチョーク",
-        "event": "ADXC 10",
-        "round": "R5"
       },
       {
         "date": "2024-06-21",
@@ -37482,9 +37506,9 @@
     "live": false
   },
   "yuki-daiki": {
-    "wins": 7,
+    "wins": 6,
     "losses": 5,
-    "draws": 1,
+    "draws": 2,
     "ko": 0,
     "sub": 1,
     "decision": 5,
@@ -37572,7 +37596,7 @@
       {
         "date": "2021-07-25",
         "opponent": "仲山貴志",
-        "result": "win",
+        "result": "draw",
         "method": "",
         "event": "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship",
         "round": ""
@@ -38889,8 +38913,8 @@
   },
   "mio-shiyama": {
     "wins": 2,
-    "losses": 5,
-    "draws": 1,
+    "losses": 4,
+    "draws": 2,
     "ko": 1,
     "sub": 0,
     "decision": 1,
@@ -38930,7 +38954,7 @@
       {
         "date": "2025-07-21",
         "opponent": "erika",
-        "result": "loss",
+        "result": "draw",
         "method": "",
         "event": "PROFESSIONAL SHOOTO 2025 Vol.6",
         "round": ""
@@ -39031,8 +39055,8 @@
   },
   "takamoto-chiyo": {
     "wins": 3,
-    "losses": 4,
-    "draws": 1,
+    "losses": 3,
+    "draws": 2,
     "ko": 1,
     "sub": 0,
     "decision": 2,
@@ -39064,7 +39088,7 @@
       {
         "date": "2025-09-21",
         "opponent": "片山智絵",
-        "result": "loss",
+        "result": "draw",
         "method": "",
         "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7",
         "round": ""
@@ -39105,9 +39129,9 @@
     "live": false
   },
   "erika": {
-    "wins": 3,
+    "wins": 2,
     "losses": 1,
-    "draws": 0,
+    "draws": 1,
     "ko": 0,
     "sub": 0,
     "decision": 2,
@@ -39123,7 +39147,7 @@
       {
         "date": "2025-07-21",
         "opponent": "嶋屋澪",
-        "result": "win",
+        "result": "draw",
         "method": "",
         "event": "PROFESSIONAL SHOOTO 2025 Vol.6",
         "round": ""
@@ -39271,9 +39295,9 @@
     "live": true
   },
   "katayama-tomoe": {
-    "wins": 3,
+    "wins": 2,
     "losses": 1,
-    "draws": 0,
+    "draws": 1,
     "ko": 0,
     "sub": 0,
     "decision": 2,
@@ -39289,7 +39313,7 @@
       {
         "date": "2025-09-21",
         "opponent": "高本千代",
-        "result": "win",
+        "result": "draw",
         "method": "",
         "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7",
         "round": ""
@@ -40621,9 +40645,9 @@
     "age": 22
   },
   "takada-atsuhi": {
-    "wins": 3,
+    "wins": 2,
     "losses": 1,
-    "draws": 0,
+    "draws": 1,
     "ko": 1,
     "sub": 0,
     "decision": 1,
@@ -40647,7 +40671,7 @@
       {
         "date": "2024-12-15",
         "opponent": "チョンチャヒョン",
-        "result": "win",
+        "result": "draw",
         "method": "",
         "event": "COLORS Produce by SHOOTO Vol.4",
         "round": ""

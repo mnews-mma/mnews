@@ -1,0 +1,194 @@
+[
+  {
+    "slug": "sato-shoko",
+    "source": "seed",
+    "headerWins": 38,
+    "headerLosses": 17,
+    "rowWins": 37,
+    "rowLosses": 17,
+    "chartWins": 37,
+    "chartLosses": 17,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "tokoro-hideo",
+    "source": "seed",
+    "headerWins": 36,
+    "headerLosses": 34,
+    "rowWins": 33,
+    "rowLosses": 29,
+    "chartWins": 33,
+    "chartLosses": 29,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "ohara-juri",
+    "source": "seed",
+    "headerWins": 38,
+    "headerLosses": 21,
+    "rowWins": 39,
+    "rowLosses": 20,
+    "chartWins": 39,
+    "chartLosses": 20,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "nakamura-daisuke",
+    "source": "seed",
+    "headerWins": 35,
+    "headerLosses": 29,
+    "rowWins": 35,
+    "rowLosses": 28,
+    "chartWins": 35,
+    "chartLosses": 28,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "strasser-kiichi",
+    "source": "seed",
+    "headerWins": 21,
+    "headerLosses": 13,
+    "rowWins": 20,
+    "rowLosses": 12,
+    "chartWins": 20,
+    "chartLosses": 12,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "uoi-fullswing",
+    "source": "seed",
+    "headerWins": 27,
+    "headerLosses": 16,
+    "rowWins": 26,
+    "rowLosses": 17,
+    "chartWins": 26,
+    "chartLosses": 17,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "seki-tetsuya",
+    "source": "seed",
+    "headerWins": 18,
+    "headerLosses": 11,
+    "rowWins": 16,
+    "rowLosses": 11,
+    "chartWins": 16,
+    "chartLosses": 11,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "patricky-pitbull",
+    "source": "seed",
+    "headerWins": 25,
+    "headerLosses": 16,
+    "rowWins": 25,
+    "rowLosses": 17,
+    "chartWins": 25,
+    "chartLosses": 17,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "karamov-vugar",
+    "source": "seed",
+    "headerWins": 21,
+    "headerLosses": 7,
+    "rowWins": 21,
+    "rowLosses": 7,
+    "chartWins": 20,
+    "chartLosses": 7,
+    "reason": "method-text-missing",
+    "unknownRows": [
+      {
+        "date": "2016-12-31",
+        "opponent": "ジャマル・バリ",
+        "event": "Azerbaijan MMA Federation Azerbaijan vs. Iran",
+        "result": "win",
+        "method": "1R 0:00 N/A"
+      }
+    ]
+  },
+  {
+    "slug": "miyake-kisa",
+    "source": "seed",
+    "headerWins": 14,
+    "headerLosses": 5,
+    "rowWins": 13,
+    "rowLosses": 6,
+    "chartWins": 13,
+    "chartLosses": 6,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "lee-kaiwen",
+    "source": "seed",
+    "headerWins": 16,
+    "headerLosses": 8,
+    "rowWins": 15,
+    "rowLosses": 8,
+    "chartWins": 15,
+    "chartLosses": 8,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "uno-caol",
+    "source": "seed",
+    "headerWins": 35,
+    "headerLosses": 23,
+    "rowWins": 35,
+    "rowLosses": 24,
+    "chartWins": 35,
+    "chartLosses": 24,
+    "reason": "row-count-mismatch",
+    "unknownRows": []
+  },
+  {
+    "slug": "uehara-taira",
+    "source": "multiOrg",
+    "headerWins": 7,
+    "headerLosses": 3,
+    "rowWins": 7,
+    "rowLosses": 3,
+    "chartWins": 6,
+    "chartLosses": 3,
+    "reason": "method-text-missing",
+    "unknownRows": [
+      {
+        "date": "2023-07-23",
+        "opponent": "CHAN 龍",
+        "event": "PROFESSIONAL SHOOTO 2023 Vol.5",
+        "result": "win",
+        "method": ""
+      }
+    ]
+  },
+  {
+    "slug": "iwasaki-taiga",
+    "source": "multiOrg",
+    "headerWins": 8,
+    "headerLosses": 1,
+    "rowWins": 8,
+    "rowLosses": 1,
+    "chartWins": 8,
+    "chartLosses": 0,
+    "reason": "method-text-missing",
+    "unknownRows": [
+      {
+        "date": "2025-05-18",
+        "opponent": "アレクシス カンポス",
+        "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.3",
+        "result": "loss",
+        "method": ""
+      }
+    ]
+  }
+]

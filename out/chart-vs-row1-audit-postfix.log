@@ -1,0 +1,29 @@
+対象(history>0)選手数: 279
+チャート≠1行目 の選手数: 15
+  infobox-table-mismatch: 13名
+  method-text-missing: 2名
+
+=== method-text-missing 該当者 ===
+karamov-vugar	header 21-7	chart 20-7	unknown行:
+    2016-12-31 vs ジャマル・バリ (Azerbaijan MMA Federation Azerbaijan vs. Iran) result=win method="1R 0:00 N/A"
+uehara-taira	header 7-3	chart 6-3	unknown行:
+    2023-07-23 vs CHAN龍 (PROFESSIONAL SHOOTO 2023 Vol.5) result=win method=""
+
+=== infobox-table-mismatch 該当者(参考) ===
+sato-shoko	header 38-17	hist 37-17	chart 37-17
+tokoro-hideo	header 36-34	hist 33-29	chart 33-29
+ohara-juri	header 38-21	hist 39-20	chart 39-20
+nakamura-daisuke	header 35-29	hist 35-28	chart 35-28
+strasser-kiichi	header 21-13	hist 20-12	chart 20-12
+uoi-fullswing	header 27-16	hist 26-17	chart 26-17
+seki-tetsuya	header 18-11	hist 16-11	chart 16-11
+kurobe-kazusa	header 6-1	hist 5-1	chart 5-1
+patricky-pitbull	header 25-16	hist 25-17	chart 25-17
+miyake-kisa	header 14-5	hist 13-6	chart 13-6
+lee-kaiwen	header 16-8	hist 15-8	chart 15-8
+uno-caol	header 35-23	hist 35-24	chart 35-24
+sugiyama	header 23-8	hist 24-8	chart 24-8
+
+=== other 該当者(参考) ===
+
+15件を out/chart-vs-row1-audit.json に出力
