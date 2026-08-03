@@ -1,7 +1,395 @@
 {
-  "checkedCount": 357,
-  "changedCount": 19,
+  "checkedCount": 365,
+  "changedCount": 36,
   "changes": [
+    {
+      "slug": "horiguchi-kyoji",
+      "nameJa": "堀口 恭司",
+      "before": {
+        "wins": 16,
+        "losses": 1,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 17
+      },
+      "after": {
+        "wins": 26,
+        "losses": 2,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 28
+      },
+      "expectedIncrement": 11,
+      "actualIncrement": 11,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 36,
+        "losses": 6,
+        "draws": 0,
+        "ko": 15,
+        "sub": 6,
+        "decision": 15,
+        "history": [
+          {
+            "date": "2026-06-20",
+            "opponent": "マネル・ケイプ",
+            "result": "loss",
+            "method": "3R 2:42 TKO（右フック→パウンド）",
+            "event": "UFC Fight Night: Kape vs. Horiguchi",
+            "round": "R3"
+          },
+          {
+            "date": "2026-02-07",
+            "opponent": "アミル・アルバジ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "UFC Fight Night: Bautista vs. Oliveira",
+            "round": "R3"
+          },
+          {
+            "date": "2025-11-22",
+            "opponent": "タギル・ウランベコフ",
+            "result": "win",
+            "method": "3R 2:18 リアネイキッドチョーク",
+            "event": "UFC Fight Night: Tsarukyan vs. Hooker",
+            "round": "R3"
+          },
+          {
+            "date": "2024-12-31",
+            "opponent": "エンカジムーロ・ズールー",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.49 【RIZINフライ級タイトルマッチ】",
+            "round": "R3",
+            "weightClass": "RIZINフライ級タイトルマッチ"
+          },
+          {
+            "date": "2024-06-09",
+            "opponent": "セルジオ・ペティス",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.47",
+            "round": "R3"
+          },
+          {
+            "date": "2023-12-31",
+            "opponent": "神龍誠",
+            "result": "win",
+            "method": "2R 3:44 リアネイキッドチョーク",
+            "event": "RIZIN.45 【RIZINフライ級王座決定戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2023-07-30",
+            "opponent": "神龍誠",
+            "result": "nc",
+            "method": "1R 0:25 ノーコンテスト（偶発的なサミング）",
+            "event": "超RIZIN.2 【Bellator世界フライ級王座決定戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2022-12-31",
+            "opponent": "扇久保博正",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.40 【RIZIN × BELLATOR全面対抗戦 中堅戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-09-25",
+            "opponent": "金太郎",
+            "result": "win",
+            "method": "2R 2:59 肩固め",
+            "event": "RIZIN.38",
+            "round": "R2"
+          },
+          {
+            "date": "2022-04-23",
+            "opponent": "パッチー・ミックス",
+            "result": "loss",
+            "method": "5分5R終了 判定0-3",
+            "event": "Bellator 279: Cyborg vs. Blencowe 2 【Bellatorバンタム級ワールドグランプリ1回戦】",
+            "round": "R5"
+          },
+          {
+            "date": "2021-12-03",
+            "opponent": "セルジオ・ペティス",
+            "result": "loss",
+            "method": "4R 3:24 KO（左バックハンドブロー）",
+            "event": "Bellator 272: Pettis vs. Horiguchi 【Bellator世界バンタム級タイトルマッチ】",
+            "round": "R4"
+          },
+          {
+            "date": "2020-12-31",
+            "opponent": "朝倉海",
+            "result": "win",
+            "method": "1R 2:48 TKO（右フック→パウンド）",
+            "event": "RIZIN.26 【RIZINバンタム級タイトルマッチ】",
+            "round": "R1"
+          },
+          {
+            "date": "2019-08-18",
+            "opponent": "朝倉海",
+            "result": "loss",
+            "method": "1R 1:08 KO（右ストレート）",
+            "event": "RIZIN.18",
+            "round": "R1"
+          },
+          {
+            "date": "2019-06-14",
+            "opponent": "ダリオン・コールドウェル",
+            "result": "win",
+            "method": "5分5R終了 判定3-0",
+            "event": "Bellator 222: Machida vs. Sonnen 【Bellator世界バンタム級タイトルマッチ】",
+            "round": "R5"
+          },
+          {
+            "date": "2019-04-21",
+            "opponent": "ベン・ウィン",
+            "result": "win",
+            "method": "1R 2:53 KO（スタンドパンチ連打）",
+            "event": "RIZIN.15",
+            "round": "R1"
+          },
+          {
+            "date": "2018-12-31",
+            "opponent": "ダリオン・コールドウェル",
+            "result": "win",
+            "method": "3R 1:13 フロントチョーク",
+            "event": "RIZIN.14 【RIZIN初代バンタム級王座決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2018-07-29",
+            "opponent": "扇久保博正",
+            "result": "win",
+            "method": "2R（10分/5分）終了 判定3-0",
+            "event": "RIZIN.11",
+            "round": "R2"
+          },
+          {
+            "date": "2018-05-06",
+            "opponent": "イアン・マッコール",
+            "result": "win",
+            "method": "1R 0:09 KO（左フック）",
+            "event": "RIZIN.10",
+            "round": "R1"
+          },
+          {
+            "date": "2017-12-31",
+            "opponent": "石渡伸太郎",
+            "result": "win",
+            "method": "2R 0:11 KO（右フック）",
+            "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 Final ROUND 【バンタム級トーナメント 決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2017-12-31",
+            "opponent": "マネル・ケイプ",
+            "result": "win",
+            "method": "3R 4:27 肩固め",
+            "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 Final ROUND 【バンタム級トーナメント 準決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2017-12-29",
+            "opponent": "ガブリエル・オリベイラ",
+            "result": "win",
+            "method": "1R 4:13 TKO（左フック）",
+            "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 2nd ROUND 【バンタム級トーナメント 2回戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2017-07-30",
+            "opponent": "所英男",
+            "result": "win",
+            "method": "1R 1:41 KO（右フック→パウンド）",
+            "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -夏の陣- 【バンタム級トーナメント 1回戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2017-04-16",
+            "opponent": "元谷友貴",
+            "result": "win",
+            "method": "2R（10分/5分）終了 判定3-0",
+            "event": "RIZIN 2017 in YOKOHAMA -SAKURA-",
+            "round": "R2"
+          },
+          {
+            "date": "2016-11-19",
+            "opponent": "アリ・バガウティノフ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "UFC Fight Night: Mousasi vs. Hall 2",
+            "round": "R3"
+          },
+          {
+            "date": "2016-05-08",
+            "opponent": "ニール・シーリー",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "UFC Fight Night: Overeem vs. Arlovski",
+            "round": "R3"
+          },
+          {
+            "date": "2015-09-27",
+            "opponent": "チコ・ケイミュス",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "UFC Fight Night: Barnett vs. Nelson",
+            "round": "R3"
+          },
+          {
+            "date": "2015-04-25",
+            "opponent": "デメトリアス・ジョンソン",
+            "result": "loss",
+            "method": "5R 4:59 腕ひしぎ十字固め",
+            "event": "UFC 186: Johnson vs. Horiguchi 【UFC世界フライ級タイトルマッチ】",
+            "round": "R5"
+          },
+          {
+            "date": "2015-01-03",
+            "opponent": "ルイス・ゴーディノ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "UFC 182: Jones vs. Cormier",
+            "round": "R3"
+          },
+          {
+            "date": "2014-09-20",
+            "opponent": "ジョン・デロス・レイエス",
+            "result": "win",
+            "method": "1R 3:48 TKO（パウンド）",
+            "event": "UFC Fight Night: Hunt vs. Nelson",
+            "round": "R1"
+          },
+          {
+            "date": "2014-05-10",
+            "opponent": "ダレル・モンタギュー",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "UFC Fight Night: Brown vs. Silva",
+            "round": "R3"
+          },
+          {
+            "date": "2013-10-19",
+            "opponent": "ダスティン・ペイグ",
+            "result": "win",
+            "method": "2R 3:51 TKO（パウンド）",
+            "event": "UFC 166: Velasquez vs. dos Santos 3",
+            "round": "R2"
+          },
+          {
+            "date": "2013-06-22",
+            "opponent": "石渡伸太郎",
+            "result": "win",
+            "method": "5R 0:41 KO（スタンドパンチ連打）",
+            "event": "VTJ 2nd",
+            "round": "R5"
+          },
+          {
+            "date": "2013-03-16",
+            "opponent": "扇久保博正",
+            "result": "win",
+            "method": "2R 1:35 スリーパーホールド",
+            "event": "修斗 2013年第2戦 【修斗世界フェザー級チャンピオンシップ】",
+            "round": "R2"
+          },
+          {
+            "date": "2012-12-24",
+            "opponent": "イアン・ラブランド",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "VTJ 1st",
+            "round": "R3"
+          },
+          {
+            "date": "2012-07-16",
+            "opponent": "井上学",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗",
+            "round": "R3"
+          },
+          {
+            "date": "2012-03-10",
+            "opponent": "徹肌ィ郎",
+            "result": "win",
+            "method": "1R 2:06 KO（パウンド）",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2012-01-08",
+            "opponent": "上田将勝",
+            "result": "loss",
+            "method": "5分3R終了 判定0-2",
+            "event": "修斗 サバイバートーナメント決勝",
+            "round": "R3"
+          },
+          {
+            "date": "2011-09-23",
+            "opponent": "直撃我聞",
+            "result": "win",
+            "method": "2R 3:26 TKO（右ストレート→パウンド）",
+            "event": "修斗 SHOOTOR'S LEGACY 04",
+            "round": "R2"
+          },
+          {
+            "date": "2011-07-18",
+            "opponent": "根津優太",
+            "result": "win",
+            "method": "1R 3:17 KO（右ストレート）",
+            "event": "修斗 SHOOTOR'S LEGACY 03",
+            "round": "R1"
+          },
+          {
+            "date": "2011-04-29",
+            "opponent": "細井鷹飛呂",
+            "result": "win",
+            "method": "1R 1:06 KO（右フック）",
+            "event": "修斗伝承 2011",
+            "round": "R1"
+          },
+          {
+            "date": "2010-12-18",
+            "opponent": "赤尾セイジ",
+            "result": "win",
+            "method": "2R 0:43 KO（スタンドパンチ連打）",
+            "event": "修斗 THE ROOKIE TOURNAMENT 10 FINAL 【新人王決定トーナメント フェザー級 決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2010-08-07",
+            "opponent": "石橋佳大",
+            "result": "win",
+            "method": "1R 2:23 TKO（レフェリーストップ）",
+            "event": "修斗 SHOOTO GIG TOKYO Vol.5 【新人王決定トーナメント フェザー級準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2010-05-09",
+            "opponent": "川名蘭輝",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 龍争虎闘 Vol.3 【新人王決定トーナメント フェザー級2回戦】",
+            "round": "R2"
+          }
+        ],
+        "live": true,
+        "nickname": "KARATE KID",
+        "total": 42
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
     {
       "slug": "saito-yutaka",
       "nameJa": "斎藤 裕",
@@ -304,6 +692,2955 @@
       "crossedOverNewly": false
     },
     {
+      "slug": "majima-kazumasa",
+      "nameJa": "摩嶋 一整",
+      "before": {
+        "wins": 11,
+        "losses": 6,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 17
+      },
+      "after": {
+        "wins": 14,
+        "losses": 6,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 20
+      },
+      "expectedIncrement": 3,
+      "actualIncrement": 3,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 19,
+        "losses": 6,
+        "draws": 0,
+        "ko": 1,
+        "sub": 16,
+        "decision": 2,
+        "history": [
+          {
+            "date": "2026-04-12",
+            "opponent": "ジェームズ・ギャラガー",
+            "result": "win",
+            "method": "3R 2:35 肩固め",
+            "event": "RIZIN LANDMARK 13",
+            "round": "R3",
+            "weightClass": "66.0kg契約"
+          },
+          {
+            "date": "2025-11-03",
+            "opponent": "木村柊也",
+            "result": "win",
+            "method": "2R 2:54 リアネイキッドチョーク",
+            "event": "RIZIN LANDMARK 12",
+            "round": "R2",
+            "weightClass": "66.0kg契約"
+          },
+          {
+            "date": "2024-11-17",
+            "opponent": "ヴガール・ケラモフ",
+            "result": "loss",
+            "method": "1R 0:28 TKO（右フック→グラウンドでの肘打ち）",
+            "event": "RIZIN LANDMARK 10",
+            "round": "R1"
+          },
+          {
+            "date": "2024-07-28",
+            "opponent": "新居すぐる",
+            "result": "win",
+            "method": "2R 3:11 リアネイキッドチョーク",
+            "event": "超RIZIN.3",
+            "round": "R2"
+          },
+          {
+            "date": "2024-02-24",
+            "opponent": "今成正和",
+            "result": "loss",
+            "method": "2R 1:37 腕ひしぎ十字固め",
+            "event": "RIZIN LANDMARK 8",
+            "round": "R2"
+          },
+          {
+            "date": "2023-09-24",
+            "opponent": "横山武司",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.44",
+            "round": "R3"
+          },
+          {
+            "date": "2023-05-06",
+            "opponent": "芦田崇宏",
+            "result": "win",
+            "method": "1R 4:43 ヴォンフルーチョーク",
+            "event": "RIZIN.42",
+            "round": "R1"
+          },
+          {
+            "date": "2022-04-16",
+            "opponent": "金原正徳",
+            "result": "loss",
+            "method": "3R 3:37 TKO（パウンド）",
+            "event": "RIZIN TRIGGER 3rd",
+            "round": "R3"
+          },
+          {
+            "date": "2021-03-21",
+            "opponent": "クレベル・コイケ",
+            "result": "loss",
+            "method": "2R 3:02 三角絞め",
+            "event": "RIZIN.27",
+            "round": "R2"
+          },
+          {
+            "date": "2020-08-10",
+            "opponent": "斎藤裕",
+            "result": "loss",
+            "method": "2R 0:24 TKO（グラウンドでの膝蹴り）",
+            "event": "RIZIN.23 - CALLING OVER -",
+            "round": "R2"
+          },
+          {
+            "date": "2019-05-26",
+            "opponent": "田村一聖",
+            "result": "win",
+            "method": "3R 3:41 肩固め",
+            "event": "PANCRASE 305",
+            "round": "R3"
+          },
+          {
+            "date": "2018-07-01",
+            "opponent": "天草ストロンガー四郎",
+            "result": "win",
+            "method": "1R 3:03 リアネイキッドチョーク",
+            "event": "修斗 闘裸男22 ～DIRECTION OF THE CAGE 2～",
+            "round": "R1"
+          },
+          {
+            "date": "2018-04-29",
+            "opponent": "ホドルフォ・マルケス",
+            "result": "win",
+            "method": "2R 2:10 リアネイキッドチョーク",
+            "event": "Rebel FC 7: Fight for Honour 【Rebel FCフェザー級タイトルマッチ】",
+            "round": "R2"
+          },
+          {
+            "date": "2017-10-28",
+            "opponent": "ルーク・ジョーンズ",
+            "result": "win",
+            "method": "1R 2:26 リアネイキッドチョーク",
+            "event": "Kunlun Fight MMA 16",
+            "round": "R1"
+          },
+          {
+            "date": "2017-07-23",
+            "opponent": "星野勇二",
+            "result": "win",
+            "method": "2R 0:12 KO（右フック）",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2016-12-11",
+            "opponent": "TOMA",
+            "result": "win",
+            "method": "2R 2:07 スリーパーホールド",
+            "event": "修斗 BORDER -season8- The 3rd",
+            "round": "R2"
+          },
+          {
+            "date": "2016-09-04",
+            "opponent": "田中半蔵",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 闘裸男19",
+            "round": "R3"
+          },
+          {
+            "date": "2016-06-12",
+            "opponent": "大野“虎眼”賢良",
+            "result": "win",
+            "method": "1R 3:13 スリーパーホールド",
+            "event": "修斗 闘裸男18",
+            "round": "R1"
+          },
+          {
+            "date": "2015-12-20",
+            "opponent": "湯川和弥",
+            "result": "win",
+            "method": "1R 3:59 腕ひしぎ十字固め",
+            "event": "修斗 インフィニティリーグ2015 フェザー級最終戦 【修斗新人王決定トーナメント ライト級 決勝戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2015-06-21",
+            "opponent": "岩本達彦",
+            "result": "win",
+            "method": "2R 1:23 キムラロック",
+            "event": "修斗 闘裸男15 ～DIRECTION OF THE CAGE～ 【修斗新人王決定トーナメント ライト級 1回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2014-12-21",
+            "opponent": "川端和哉",
+            "result": "win",
+            "method": "1R 0:44 ギロチンチョーク",
+            "event": "PANCRASE 大阪大会",
+            "round": "R1"
+          },
+          {
+            "date": "2014-08-31",
+            "opponent": "大道翔貴",
+            "result": "win",
+            "method": "2R 2:47 スリーパーホールド",
+            "event": "GLADIATOR 74",
+            "round": "R2"
+          },
+          {
+            "date": "2014-06-28",
+            "opponent": "ジャックナイフツネオ",
+            "result": "loss",
+            "method": "3分3R終了 判定1-2",
+            "event": "VTJ 5th in OSAKA",
+            "round": "R3"
+          },
+          {
+            "date": "2013-11-24",
+            "opponent": "玉木壽成",
+            "result": "win",
+            "method": "2R 2:21 腕ひしぎ十字固め",
+            "event": "DEMOLITION 18",
+            "round": "R2"
+          },
+          {
+            "date": "2013-03-03",
+            "opponent": "ウィリアム・ダ・シルバ",
+            "result": "win",
+            "method": "1R 1:05 肩固め",
+            "event": "DEMOLITION 16",
+            "round": "R1"
+          }
+        ],
+        "live": true,
+        "nickname": "町工場のグラップラー",
+        "birthPlace": "山口県周南市",
+        "age": 34,
+        "total": 25
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "ougikubo-hiromasa",
+      "nameJa": "扇久保 博正",
+      "before": {
+        "wins": 19,
+        "losses": 6,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 25
+      },
+      "after": {
+        "wins": 30,
+        "losses": 10,
+        "draws": 2,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 42
+      },
+      "expectedIncrement": 17,
+      "actualIncrement": 17,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 30,
+        "losses": 9,
+        "draws": 2,
+        "ko": 1,
+        "sub": 6,
+        "decision": 23,
+        "history": [
+          {
+            "date": "2026-06-06",
+            "opponent": "神龍誠",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN LANDMARK 14 【RIZINフライ級タイトルマッチ】",
+            "round": "R3",
+            "weightClass": "RIZINフライ級タイトルマッチ"
+          },
+          {
+            "date": "2025-12-31",
+            "opponent": "元谷友貴",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN 師走の超強者祭り 【RIZINフライ級王座決定戦/RIZINフライ級ワールドグランプリ決勝】",
+            "round": "R3",
+            "weightClass": "RIZINフライ級タイトルマッチ"
+          },
+          {
+            "date": "2025-09-28",
+            "opponent": "アリベク・ガジャマトフ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.51 【RIZINフライ級ワールドグランプリ準決勝】",
+            "round": "R3",
+            "weightClass": "57.0kg契約 フライ級トーナメント2回戦"
+          },
+          {
+            "date": "2025-07-27",
+            "opponent": "ホセ・トーレス",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINフライ級ワールドグランプリ1回戦】",
+            "round": "R3",
+            "weightClass": "57.0kg契約"
+          },
+          {
+            "date": "2024-07-28",
+            "opponent": "神龍誠",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "超RIZIN.3",
+            "round": "R3"
+          },
+          {
+            "date": "2023-12-31",
+            "opponent": "ジョン・ドッドソン",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.45",
+            "round": "R3"
+          },
+          {
+            "date": "2023-07-30",
+            "opponent": "フアン・アーチュレッタ",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "超RIZIN.2 【RIZINバンタム級王座決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-12-31",
+            "opponent": "堀口恭司",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN.40 【RIZIN × BELLATOR全面対抗戦 中堅戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-09-25",
+            "opponent": "キム・スーチョル",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN.38",
+            "round": "R3"
+          },
+          {
+            "date": "2021-12-31",
+            "opponent": "朝倉海",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.33 【RIZINバンタム級JAPANグランプリ 決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2021-12-31",
+            "opponent": "井上直樹",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.33 【RIZINバンタム級JAPANグランプリ 準決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2021-09-19",
+            "opponent": "大塚隆史",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.30 【RIZINバンタム級JAPANグランプリ 2回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2021-06-13",
+            "opponent": "春日井“寒天”たけし",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.28 【RIZINバンタム級JAPANグランプリ 1回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2020-11-21",
+            "opponent": "瀧澤謙太",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.25",
+            "round": "R3"
+          },
+          {
+            "date": "2020-08-10",
+            "opponent": "朝倉海",
+            "result": "loss",
+            "method": "1R 4:31 TKO（サッカーボールキック）",
+            "event": "RIZIN.23 - CALLING OVER - 【RIZINバンタム級王座決定戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2019-12-31",
+            "opponent": "石渡伸太郎",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "RIZIN.20 【RIZINバンタム級挑戦者決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2019-07-28",
+            "opponent": "元谷友貴",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "RIZIN.17",
+            "round": "R3"
+          },
+          {
+            "date": "2019-05-06",
+            "opponent": "清水清隆",
+            "result": "win",
+            "method": "4R 0:40 テクニカル判定3-0",
+            "event": "修斗 【修斗世界フライ級チャンピオンシップ】",
+            "round": "R4"
+          },
+          {
+            "date": "2018-07-29",
+            "opponent": "堀口恭司",
+            "result": "loss",
+            "method": "2R（10分/5分）終了 判定0-3",
+            "event": "RIZIN.11",
+            "round": "R2"
+          },
+          {
+            "date": "2017-10-15",
+            "opponent": "オニボウズ",
+            "result": "win",
+            "method": "1R 4:26 スリーパーホールド",
+            "event": "修斗 【修斗世界フライ級チャンピオンシップ】",
+            "round": "R1"
+          },
+          {
+            "date": "2017-04-23",
+            "opponent": "ダニー・マルティネス",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗",
+            "round": "R3"
+          },
+          {
+            "date": "2016-04-23",
+            "opponent": "菅原雅顕",
+            "result": "win",
+            "method": "5R 4:48 フロントスリーパーホールド",
+            "event": "修斗 FIGHT & MOSH 【修斗世界バンタム級チャンピオンシップ】",
+            "round": "R5"
+          },
+          {
+            "date": "2015-11-29",
+            "opponent": "猿田洋祐",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗",
+            "round": "R3"
+          },
+          {
+            "date": "2014-10-04",
+            "opponent": "シーザー・スクラヴォス",
+            "result": "win",
+            "method": "5分5R終了 判定3-0",
+            "event": "VTJ 6th 【フライ級トーナメント 決勝】",
+            "round": "R5"
+          },
+          {
+            "date": "2014-06-28",
+            "opponent": "カナ・ハヤット",
+            "result": "win",
+            "method": "1R 1:20 リアネイキドチョーク",
+            "event": "VTJ 5th in OSAKA 【フライ級トーナメント 準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2014-02-23",
+            "opponent": "春日井健士",
+            "result": "win",
+            "method": "5分3R終了 判定2-0",
+            "event": "VTJ 4th 【フライ級トーナメント 1回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2013-03-16",
+            "opponent": "堀口恭司",
+            "result": "loss",
+            "method": "2R 1:35 スリーパーホールド",
+            "event": "修斗 2013年第2戦 【修斗世界フェザー級チャンピオンシップ】",
+            "round": "R2"
+          },
+          {
+            "date": "2012-05-18",
+            "opponent": "岡嵜康悦",
+            "result": "win",
+            "method": "3R 3:32 スリーパーホールド",
+            "event": "修斗 【修斗世界フェザー級チャンピオンシップ】",
+            "round": "R3"
+          },
+          {
+            "date": "2012-01-08",
+            "opponent": "徹肌ィ郎",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 ISAMI presents サバイバートーナメント決勝戦 【修斗環太平洋フェザー級チャンピオンシップ】",
+            "round": "R3"
+          },
+          {
+            "date": "2011-04-03",
+            "opponent": "松本輝之",
+            "result": "win",
+            "method": "5分3R終了 判定2-0",
+            "event": "修斗 BORDER -season 3- 「春雷」 【修斗環太平洋フェザー級チャンピオン決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2010-09-23",
+            "opponent": "田澤聡",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 The Way of SHOOTO 05 〜Like a Tiger, Like a Dragon〜",
+            "round": "R3"
+          },
+          {
+            "date": "2010-05-30",
+            "opponent": "エドゥアルド・ダンタス",
+            "result": "loss",
+            "method": "3R 1:21 スリーパーホールド",
+            "event": "修斗 The Way of SHOOTO 03 〜Like a Tiger, Like a Dragon〜",
+            "round": "R3"
+          },
+          {
+            "date": "2009-10-18",
+            "opponent": "岡嵜康悦",
+            "result": "loss",
+            "method": "2R 2:08 KO（右フック→パウンド）<!--修斗公式記録-->",
+            "event": "修斗 SHOOTO GIG TOKYO 3 【修斗環太平洋フェザー級チャンピオン決定戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2009-03-20",
+            "opponent": "徹肌ィ郎",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "\"修斗伝承 06\" ROAD TO 20th ANNIVERSARY",
+            "round": "R3"
+          },
+          {
+            "date": "2008-11-29",
+            "opponent": "田澤聡",
+            "result": "draw",
+            "method": "5分3R終了 判定0-1",
+            "event": "\"修斗伝承 04\" ROAD TO 20th ANNIVERSARY",
+            "round": "R3"
+          },
+          {
+            "date": "2008-07-18",
+            "opponent": "田中ヒロユキ",
+            "result": "win",
+            "method": "1R 1:35 TKO（パウンド）",
+            "event": "\"修斗伝承 02\" ROAD TO 20th ANNIVERSARY",
+            "round": "R1"
+          },
+          {
+            "date": "2007-12-08",
+            "opponent": "金山康宏",
+            "result": "win",
+            "method": "2R 3:35 スリーパーホールド",
+            "event": "修斗 【新人王決定トーナメント フェザー級 決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2007-09-22",
+            "opponent": "田村和也",
+            "result": "win",
+            "method": "1R 3:43 スリーパーホールド",
+            "event": "修斗 BACK TO OUR ROOTS 05 【新人王決定トーナメント フェザー級 準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2007-06-30",
+            "opponent": "太田悟",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 【新人王決定トーナメント フェザー級 2回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2007-03-04",
+            "opponent": "矢作尚紀",
+            "result": "draw",
+            "method": "5分2R終了 判定1-0",
+            "event": "修斗 下北沢修斗劇場 第17弾 〜男はつよいよ〜",
+            "round": "R2"
+          },
+          {
+            "date": "2006-10-01",
+            "opponent": "マイク・ハヤカワ",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 下北沢修斗劇場 第16弾 〜燃えろいい男〜",
+            "round": "R2"
+          }
+        ],
+        "live": true,
+        "nickname": "打・投・極・根性",
+        "birthPlace": "岩手県久慈市",
+        "age": 39,
+        "total": 41
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": true,
+      "crossedOverNewly": true
+    },
+    {
+      "slug": "yachi-yusuke",
+      "nameJa": "矢地 祐介",
+      "before": {
+        "wins": 16,
+        "losses": 10,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 26
+      },
+      "after": {
+        "wins": 25,
+        "losses": 12,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 37
+      },
+      "expectedIncrement": 11,
+      "actualIncrement": 11,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 29,
+        "losses": 16,
+        "draws": 0,
+        "ko": 6,
+        "sub": 5,
+        "decision": 18,
+        "history": [
+          {
+            "date": "2026-06-06",
+            "opponent": "ISAO",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN LANDMARK 14",
+            "round": "R3",
+            "weightClass": "71.0kg契約"
+          },
+          {
+            "date": "2026-03-07",
+            "opponent": "キム・ギョンピョ",
+            "result": "loss",
+            "method": "2R 4:25 TKO（ドクターストップ：カットでの出血）",
+            "event": "RIZIN.52",
+            "round": "R2",
+            "weightClass": "71.0kg契約"
+          },
+          {
+            "date": "2025-09-28",
+            "opponent": "芳賀ビラル海",
+            "result": "win",
+            "method": "2R 2:10 リアネイキッドチョーク",
+            "event": "RIZIN.51",
+            "round": "R2",
+            "weightClass": "71.0kg契約"
+          },
+          {
+            "date": "2024-12-31",
+            "opponent": "桜庭大世",
+            "result": "loss",
+            "method": "1R 0:26 TKO（左フック→パウンド）",
+            "event": "RIZIN.49",
+            "round": "R1"
+          },
+          {
+            "date": "2024-09-29",
+            "opponent": "宇佐美正パトリック",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.48",
+            "round": "R3"
+          },
+          {
+            "date": "2024-05-17",
+            "opponent": "マンスール・ベルナウイ",
+            "result": "loss",
+            "method": "1R 4:08 ダースチョーク",
+            "event": "Bellator Champions Series 2: Mix vs. Magomedov 2",
+            "round": "R1"
+          },
+          {
+            "date": "2024-02-24",
+            "opponent": "白川陸斗",
+            "result": "win",
+            "method": "2R 5:00 リアネイキッドチョーク",
+            "event": "RIZIN LANDMARK 8",
+            "round": "R2"
+          },
+          {
+            "date": "2023-06-24",
+            "opponent": "ザック・ゼイン",
+            "result": "win",
+            "method": "1R 2:50 リアネイキッドチョーク",
+            "event": "RIZIN.43",
+            "round": "R1"
+          },
+          {
+            "date": "2022-12-28",
+            "opponent": "木村ミノル",
+            "result": "nc",
+            "method": "無効試合（木村による他団体の薬物検査失格）",
+            "event": "INOKI BOM-BA-YE × 巌流島 in 両国",
+            "round": "—"
+          },
+          {
+            "date": "2022-10-23",
+            "opponent": "ボイド・アレン",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.39",
+            "round": "R3"
+          },
+          {
+            "date": "2022-04-16",
+            "opponent": "ルイス・グスタボ",
+            "result": "loss",
+            "method": "2R 3:14 TKO（右フック→パウンド）",
+            "event": "RIZIN TRIGGER 3rd",
+            "round": "R2"
+          },
+          {
+            "date": "2021-12-31",
+            "opponent": "ホベルト・サトシ・ソウザ",
+            "result": "loss",
+            "method": "2R 3:30 腕ひしぎ三角固め",
+            "event": "RIZIN.33 【RIZINライト級タイトルマッチ】",
+            "round": "R2"
+          },
+          {
+            "date": "2021-09-19",
+            "opponent": "武田光司",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.30",
+            "round": "R3"
+          },
+          {
+            "date": "2021-06-27",
+            "opponent": "川名TENCHO雄生",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.29",
+            "round": "R3"
+          },
+          {
+            "date": "2020-09-27",
+            "opponent": "大原樹理",
+            "result": "loss",
+            "method": "5分3R終了 判定1-2",
+            "event": "RIZIN.24",
+            "round": "R3"
+          },
+          {
+            "date": "2020-08-09",
+            "opponent": "ホベルト・サトシ・ソウザ",
+            "result": "loss",
+            "method": "1R 1:52 TKO（パウンド）",
+            "event": "RIZIN.22 - STARTING OVER -",
+            "round": "R1"
+          },
+          {
+            "date": "2019-12-29",
+            "opponent": "上迫博仁",
+            "result": "win",
+            "method": "3R 4:33 TKO（サッカーボールキック）",
+            "event": "BELLATOR JAPAN",
+            "round": "R3"
+          },
+          {
+            "date": "2019-07-28",
+            "opponent": "朝倉未来",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN.17",
+            "round": "R3"
+          },
+          {
+            "date": "2018-12-31",
+            "opponent": "ジョニー・ケース",
+            "result": "loss",
+            "method": "2R 4:47 TKO（ドクターストップ：カットでの出血）",
+            "event": "RIZIN.14",
+            "round": "R2"
+          },
+          {
+            "date": "2018-08-12",
+            "opponent": "ルイス・グスタボ",
+            "result": "loss",
+            "method": "2R 2:32 KO（右フック）",
+            "event": "RIZIN.12",
+            "round": "R2"
+          },
+          {
+            "date": "2018-05-06",
+            "opponent": "ディエゴ・ヌネス",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "RIZIN.10",
+            "round": "R3"
+          },
+          {
+            "date": "2017-12-31",
+            "opponent": "五味隆典",
+            "result": "win",
+            "method": "1R 2:36 三角絞め",
+            "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 Final ROUND",
+            "round": "R1"
+          },
+          {
+            "date": "2017-07-30",
+            "opponent": "北岡悟",
+            "result": "win",
+            "method": "2R 4:48 TKO（スタンドパンチ連打）",
+            "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -夏の陣-",
+            "round": "R2"
+          },
+          {
+            "date": "2017-04-16",
+            "opponent": "ダロン・クルックシャンク",
+            "result": "win",
+            "method": "1R 5:12 KO（右フック）",
+            "event": "RIZIN 2017 in YOKOHAMA -SAKURA-",
+            "round": "R1"
+          },
+          {
+            "date": "2016-12-29",
+            "opponent": "マリオ・シスムンド",
+            "result": "win",
+            "method": "1R 0:19 KO（左跳び膝蹴り→パウンド）<!--RIZIN公式記録-->",
+            "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント 2nd ROUND",
+            "round": "R1"
+          },
+          {
+            "date": "2016-09-11",
+            "opponent": "山﨑悠輝",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "PANCRASE 280",
+            "round": "R3"
+          },
+          {
+            "date": "2016-04-24",
+            "opponent": "クレベル・コイケ",
+            "result": "loss",
+            "method": "3R 0:37 リアネイキッドチョーク",
+            "event": "PANCRASE 277",
+            "round": "R3"
+          },
+          {
+            "date": "2016-01-31",
+            "opponent": "ロドルフォ・ルビオ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 275",
+            "round": "R3"
+          },
+          {
+            "date": "2015-12-04",
+            "opponent": "アレクサンダー・ヴォルカノフスキー",
+            "result": "loss",
+            "method": "4R 3:43 三角絞め",
+            "event": "PXC 50 【PXCフェザー級タイトルマッチ】",
+            "round": "R4"
+          },
+          {
+            "date": "2015-03-13",
+            "opponent": "キム・ジャンヨン",
+            "result": "win",
+            "method": "3R 1:43 TKO（スタンドパンチ連打）",
+            "event": "PXC 47 【PXCフェザー級タイトルマッチ】",
+            "round": "R3"
+          },
+          {
+            "date": "2014-06-28",
+            "opponent": "ライアン・マルヴィヒル",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PXC 44",
+            "round": "R3"
+          },
+          {
+            "date": "2014-02-28",
+            "opponent": "カイル・レジェス",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PXC 42",
+            "round": "R3"
+          },
+          {
+            "date": "2013-10-05",
+            "opponent": "リオン武",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "VTJ 3rd",
+            "round": "R3"
+          },
+          {
+            "date": "2013-08-09",
+            "opponent": "トビー・ミセッチ",
+            "result": "loss",
+            "method": "2R 1:18 KO（左ストレート）",
+            "event": "PXC 38",
+            "round": "R2"
+          },
+          {
+            "date": "2013-03-16",
+            "opponent": "星野勇二",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 2013年第2戦 【修斗環太平洋ライト級チャンピオンシップ】",
+            "round": "R3"
+          },
+          {
+            "date": "2012-11-11",
+            "opponent": "美木航",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 【修斗環太平洋ライト級チャンピオン決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2012-07-16",
+            "opponent": "田村彰敏",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗",
+            "round": "R3"
+          },
+          {
+            "date": "2012-03-10",
+            "opponent": "大澤茂樹",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗",
+            "round": "R3"
+          },
+          {
+            "date": "2011-12-18",
+            "opponent": "ジャングル伊藤",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 THE ROOKIE TOURNAMENT 2011 FINAL",
+            "round": "R2"
+          },
+          {
+            "date": "2011-05-18",
+            "opponent": "ガイ・デルモ",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "修斗 SHOOTO GIG TOKYO Vol.6",
+            "round": "R2"
+          },
+          {
+            "date": "2010-12-18",
+            "opponent": "門脇英基",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "修斗 THE ROOKIE TOURNAMENT 10 FINAL",
+            "round": "R2"
+          },
+          {
+            "date": "2010-09-23",
+            "opponent": "キム・ジンヒョン",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 The Way of SHOOTO 05",
+            "round": "R2"
+          },
+          {
+            "date": "2010-03-22",
+            "opponent": "戸井田カツヤ",
+            "result": "loss",
+            "method": "1R 3:45 反則（蹴り上げ）",
+            "event": "修斗 The Way of SHOOTO 02",
+            "round": "R1"
+          },
+          {
+            "date": "2009-12-13",
+            "opponent": "ジャックナイフツネオ",
+            "result": "win",
+            "method": "2R 2:21 チキンウィングアームロック",
+            "event": "修斗 THE ROOKIE TOURNAMENT 09 FINAL 【新人王決定トーナメント ライト級 決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2009-09-22",
+            "opponent": "小林ミツル",
+            "result": "win",
+            "method": "1R 1:21 KO（ハイキック→パウンド）",
+            "event": "修斗 REVOLUTIONARY EXCHANGES 2 【新人王決定トーナメント ライト級 準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2009-04-10",
+            "opponent": "丸井憲一郎",
+            "result": "win",
+            "method": "5分2R終了 判定2-0",
+            "event": "修斗 SHOOTING DISCO 8 【新人王決定トーナメント ライト級 1回戦】",
+            "round": "R2"
+          }
+        ],
+        "live": true,
+        "nickname": "お祭り漢",
+        "birthPlace": "東京都文京区",
+        "age": 36,
+        "total": 45
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "fukuda-ryuya",
+      "nameJa": "福田 龍彌",
+      "before": {
+        "wins": 18,
+        "losses": 6,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "修斗"
+        ],
+        "total": 25
+      },
+      "after": {
+        "wins": 24,
+        "losses": 8,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "修斗"
+        ],
+        "total": 33
+      },
+      "expectedIncrement": 8,
+      "actualIncrement": 8,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 26,
+        "losses": 10,
+        "draws": 1,
+        "ko": 13,
+        "sub": 1,
+        "decision": 12,
+        "history": [
+          {
+            "date": "2026-04-12",
+            "opponent": "アジズベク・テミロフ",
+            "result": "loss",
+            "method": "2R 1:40 KO（右フック）",
+            "event": "RIZIN LANDMARK 13",
+            "round": "R2",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2025-12-31",
+            "opponent": "安藤達也",
+            "result": "win",
+            "method": "2R 3:02 TKO（右フック→パウンド）",
+            "event": "RIZIN 師走の超強者祭り",
+            "round": "R2",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2025-07-27",
+            "opponent": "井上直樹",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINバンタム級タイトルマッチ】",
+            "round": "R3",
+            "weightClass": "RIZINバンタム級タイトルマッチ"
+          },
+          {
+            "date": "2025-05-05",
+            "opponent": "牛久絢太郎",
+            "result": "win",
+            "method": "5分3R終了 判定5-0",
+            "event": "DEEP 125 IMPACT 【DEEPバンタム級タイトルマッチ】",
+            "round": "R3"
+          },
+          {
+            "date": "2024-12-31",
+            "opponent": "芦澤竜誠",
+            "result": "win",
+            "method": "1R 0:54 KO（左フック→パウンド）",
+            "event": "RIZIN.49",
+            "round": "R1"
+          },
+          {
+            "date": "2024-09-16",
+            "opponent": "瀧澤謙太",
+            "result": "win",
+            "method": "1R 4:19 KO（右フック）",
+            "event": "DEEP 121 IMPACT 【DEEPバンタム級王座決定戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2024-03-09",
+            "opponent": "雅駿介",
+            "result": "win",
+            "method": "1R 1:59 TKO（パウンド）",
+            "event": "DEEP 118 IMPACT",
+            "round": "R1"
+          },
+          {
+            "date": "2023-12-06",
+            "opponent": "ディアス・エレンガイポフ",
+            "result": "loss",
+            "method": "5分5R終了 判定0-3",
+            "event": "Naiza FC 55: Erengaipov vs. Fukuda 【Naiza FCフライ級タイトルマッチ】",
+            "round": "R5"
+          },
+          {
+            "date": "2023-09-24",
+            "opponent": "山本アーセン",
+            "result": "win",
+            "method": "3R 1:36 TKO（カットによるドクターストップ）",
+            "event": "RIZIN.44",
+            "round": "R3"
+          },
+          {
+            "date": "2023-05-07",
+            "opponent": "本田良介",
+            "result": "win",
+            "method": "5分3R終了 判定5-0",
+            "event": "DEEP 113 IMPACT 【DEEPフライ級グランプリ決勝/DEEPフライ級暫定王者決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2023-02-11",
+            "opponent": "宇田悠斗",
+            "result": "win",
+            "method": "5分3R終了 判定5-0",
+            "event": "DEEP 112 IMPACT 【DEEPフライ級グランプリ準決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-12-11",
+            "opponent": "安谷屋智弘",
+            "result": "win",
+            "method": "5分3R終了 判定4-1",
+            "event": "DEEP 111 IMPACT 【DEEPフライ級グランプリ2回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-09-11",
+            "opponent": "杉山廣平",
+            "result": "win",
+            "method": "5分3R終了 判定5-0",
+            "event": "DEEP TOKYO IMPACT 2022 5th ROUND 【DEEPフライ級グランプリ1回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-05-08",
+            "opponent": "ビョン・ジェウン",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "DEEP 107 IMPACT",
+            "round": "R3"
+          },
+          {
+            "date": "2022-03-20",
+            "opponent": "NavE",
+            "result": "win",
+            "method": "1R 0:54 KO（右フック）",
+            "event": "RIZIN.34",
+            "round": "R1"
+          },
+          {
+            "date": "2022-02-26",
+            "opponent": "伊藤裕樹",
+            "result": "win",
+            "method": "2R 0:35 TKO（左ストレート→パウンド)",
+            "event": "DEEP 106 IMPACT",
+            "round": "R2"
+          },
+          {
+            "date": "2021-10-23",
+            "opponent": "神龍誠",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "DEEP 104 IMPACT",
+            "round": "R3"
+          },
+          {
+            "date": "2021-07-04",
+            "opponent": "平良達郎",
+            "result": "loss",
+            "method": "1R 4:31 三角絞め",
+            "event": "修斗 PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA 【修斗世界フライ級タイトルマッチ】",
+            "round": "R1"
+          },
+          {
+            "date": "2020-07-12",
+            "opponent": "前田吉朗",
+            "result": "win",
+            "method": "3R 4:57 TKO（スタンドパンチ連打→パウンド）",
+            "event": "修斗 PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA 【修斗世界フライ級暫定王者決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2019-09-22",
+            "opponent": "渡辺健太郎",
+            "result": "win",
+            "method": "1R 1:20 TKO（レフェリーストップ：カットでの出血）",
+            "event": "修斗 BORDER-season11-「The3rd」",
+            "round": "R1"
+          },
+          {
+            "date": "2019-06-30",
+            "opponent": "亀島聖児",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 SHOOTO 30th ANNIVERSARY TOUR 第5戦",
+            "round": "R3"
+          },
+          {
+            "date": "2019-04-28",
+            "opponent": "安谷屋智弘",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "DEEP CAGE IMPACT 2019 in OSAKA",
+            "round": "R3"
+          },
+          {
+            "date": "2018-11-25",
+            "opponent": "仲宗根武蔵",
+            "result": "draw",
+            "method": "5分3R終了 判定1-1",
+            "event": "修斗 THE SHOOTO OKINAWA vol.1",
+            "round": "R3"
+          },
+          {
+            "date": "2018-04-15",
+            "opponent": "藤川智史",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "修斗 香川大会「FORCE09」",
+            "round": "R3"
+          },
+          {
+            "date": "2017-06-25",
+            "opponent": "萩原幸太郎",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 in OSAKA",
+            "round": "R3"
+          },
+          {
+            "date": "2017-04-09",
+            "opponent": "パク・ミンゼ",
+            "result": "win",
+            "method": "1R 4:26 KO（左ストレート→パウンド）",
+            "event": "修斗 香川大会『FORCE07』",
+            "round": "R1"
+          },
+          {
+            "date": "2016-07-03",
+            "opponent": "木村ケンイチ",
+            "result": "win",
+            "method": "1R 0:28 KO（パウンド）",
+            "event": "修斗 SHOOTO GIG WEST Vol.18",
+            "round": "R1"
+          },
+          {
+            "date": "2014-10-04",
+            "opponent": "鈴木隼人",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "VTJ 6th",
+            "round": "R3"
+          },
+          {
+            "date": "2014-07-06",
+            "opponent": "オニボウズ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 SHOOTO GIG WEST 16",
+            "round": "R3"
+          },
+          {
+            "date": "2014-04-27",
+            "opponent": "呑谷尚平",
+            "result": "win",
+            "method": "5分2R終了 判定2-0",
+            "event": "修斗 BORDER-season6-「The 2nd」",
+            "round": "R2"
+          },
+          {
+            "date": "2013-12-15",
+            "opponent": "征矢貴",
+            "result": "loss",
+            "method": "1R 5:00 KO（パウンド）",
+            "event": "修斗 THE ROOKIE TOURNAMENT FINAL 2013 【2013年度新人王決定トーナメント決勝戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2013-09-01",
+            "opponent": "タンク",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 BORDER-season5-「The 2nd」 【2013年度新人王決定トーナメント準決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2013-04-07",
+            "opponent": "有本侑紀",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 BORDER-season5-「The first」",
+            "round": "R2"
+          },
+          {
+            "date": "2012-12-09",
+            "opponent": "いっきゅうさん",
+            "result": "win",
+            "method": "1R 1:03 ギロチンチョーク",
+            "event": "修斗 BORDER-SEASON4-3rd 【2013年度新人王決定トーナメント1回戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2012-07-15",
+            "opponent": "吉田朋彦",
+            "result": "loss",
+            "method": "5分2R終了 判定0-2",
+            "event": "GLADIATOR 38",
+            "round": "R2"
+          },
+          {
+            "date": "2011-08-06",
+            "opponent": "水川将馬",
+            "result": "win",
+            "method": "2R 4:59 TKO（パンチ）",
+            "event": "GLADIATOR 21",
+            "round": "R2"
+          },
+          {
+            "date": "2011-06-05",
+            "opponent": "川口智弘",
+            "result": "win",
+            "method": "1R 1:35 KO（パンチ）",
+            "event": "SOUL FIGHT Vol.5",
+            "round": "R1"
+          }
+        ],
+        "live": true,
+        "nickname": "壬生の大蛇",
+        "total": 37
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "sato-shoko",
+      "nameJa": "佐藤 将光",
+      "before": {
+        "wins": 24,
+        "losses": 11,
+        "draws": 2,
+        "orgsWithBouts": [
+          "RIZIN",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 37
+      },
+      "after": {
+        "wins": 26,
+        "losses": 12,
+        "draws": 2,
+        "orgsWithBouts": [
+          "RIZIN",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 40
+      },
+      "expectedIncrement": 3,
+      "actualIncrement": 3,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 38,
+        "losses": 17,
+        "draws": 2,
+        "ko": 20,
+        "sub": 4,
+        "decision": 14,
+        "history": [
+          {
+            "date": "2026-03-07",
+            "opponent": "ジョン・スウィーニー",
+            "result": "win",
+            "method": "1R 4:49 三角絞め",
+            "event": "RIZIN.52",
+            "round": "R1",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2025-09-28",
+            "opponent": "ダニー・サバテロ",
+            "result": "loss",
+            "method": "5分3R終了 判定1-2",
+            "event": "RIZIN.51",
+            "round": "R3",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2025-05-31",
+            "opponent": "キム・スーチョル",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN WORLD SERIES in KOREA",
+            "round": "R3",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2024-09-29",
+            "opponent": "牛久絢太郎",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.48",
+            "round": "R3"
+          },
+          {
+            "date": "2024-03-23",
+            "opponent": "井上直樹",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN LANDMARK 9",
+            "round": "R3"
+          },
+          {
+            "date": "2023-10-01",
+            "opponent": "太田忍",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "RIZIN LANDMARK 6",
+            "round": "R3"
+          },
+          {
+            "date": "2023-01-14",
+            "opponent": "キム・ジェウォン",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "ONE Fight Night6: SUPERBON vs. ALLAZOV",
+            "round": "R3"
+          },
+          {
+            "date": "2022-03-26",
+            "opponent": "マーク・ステファン・ロマン",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "ONE Championship: ONE X",
+            "round": "R3"
+          },
+          {
+            "date": "2021-11-06",
+            "opponent": "河村泰博",
+            "result": "win",
+            "method": "1R 2:38 TKO（グラウンドパンチ）",
+            "event": "VTJ 2021",
+            "round": "R1"
+          },
+          {
+            "date": "2021-02-05",
+            "opponent": "ファブリシオ・アンドラージ",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "ONE Championship: UNBREAKABLE III",
+            "round": "R3"
+          },
+          {
+            "date": "2020-01-31",
+            "opponent": "クォン・ウォンイル",
+            "result": "win",
+            "method": "1R 4:05 リアネイキッドチョーク",
+            "event": "ONE Championship: FIRE & FURY",
+            "round": "R1"
+          },
+          {
+            "date": "2019-10-13",
+            "opponent": "ハファエル・シウバ",
+            "result": "win",
+            "method": "2R 4:30 TKO（スタンドパンチ連打)",
+            "event": "ONE Championship: CENTURY PART II",
+            "round": "R2"
+          },
+          {
+            "date": "2019-07-15",
+            "opponent": "ファンチャンファン",
+            "result": "win",
+            "method": "1R 4:23 TKO（パウンド）",
+            "event": "修斗 30th Anniversary Tour 6th Round",
+            "round": "R1"
+          },
+          {
+            "date": "2019-05-10",
+            "opponent": "マーク・アベラルド",
+            "result": "win",
+            "method": "2R 1:58 TKO (パウンド）",
+            "event": "ONE Championship: Warriors of Light",
+            "round": "R2"
+          },
+          {
+            "date": "2018-11-17",
+            "opponent": "齊藤曜",
+            "result": "win",
+            "method": "4R 3:26 TKO（パウンド）",
+            "event": "修斗 後楽園ホール大会 【修斗世界バンタム級チャンピオンシップ",
+            "round": "R4"
+          },
+          {
+            "date": "2018-07-15",
+            "opponent": "トリスタン・グリムズリー",
+            "result": "win",
+            "method": "1R 4:20 KO（スタンドパンチ連打）",
+            "event": "修斗 後楽園ホール大会 【修斗世界バンタム級チャンピオンシップ",
+            "round": "R1"
+          },
+          {
+            "date": "2018-01-28",
+            "opponent": "齊藤曜",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "修斗 後楽園ホール大会",
+            "round": "R3"
+          },
+          {
+            "date": "2017-10-15",
+            "opponent": "石橋佳大",
+            "result": "win",
+            "method": "5分5R終了 判定3-0",
+            "event": "修斗 千葉・舞浜アンフィシアター大会 【修斗世界バンタム級王座決定戦】",
+            "round": "R5"
+          },
+          {
+            "date": "2017-07-23",
+            "opponent": "ルーベンデュラン",
+            "result": "win",
+            "method": "1R 4:58 KO (右ストレート→パウンド)",
+            "event": "修斗 後楽園ホール大会",
+            "round": "R1"
+          },
+          {
+            "date": "2017-03-24",
+            "opponent": "石橋佳大",
+            "result": "draw",
+            "method": "5分5R終了 判定1-0",
+            "event": "修斗 後楽園ホール大会",
+            "round": "R5"
+          },
+          {
+            "date": "2017-01-29",
+            "opponent": "祖根寿麻",
+            "result": "win",
+            "method": "2R 0:02 TKO (タオル投入)",
+            "event": "修斗 後楽園ホール大会",
+            "round": "R2"
+          },
+          {
+            "date": "2016-09-19",
+            "opponent": "ダイキライトイヤー",
+            "result": "win",
+            "method": "3R 1:30 TKO（スタンドパンチ連打）",
+            "event": "VTJ 8th",
+            "round": "R3"
+          },
+          {
+            "date": "2016-05-28",
+            "opponent": "スーパー均くん",
+            "result": "win",
+            "method": "3R 3:59 スリーパーホールド",
+            "event": "修斗 GIG TOKYO 21",
+            "round": "R3"
+          },
+          {
+            "date": "2015-11-29",
+            "opponent": "竹中大地",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "修斗 後楽園ホール大会",
+            "round": "R3"
+          },
+          {
+            "date": "2015-09-13",
+            "opponent": "安藤達也",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "VTJ 7th",
+            "round": "R3"
+          },
+          {
+            "date": "2015-07-25",
+            "opponent": "キム・ミンウ",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "Road FC 24: Road Fighting Championship 24",
+            "round": "R2"
+          },
+          {
+            "date": "2015-05-03",
+            "opponent": "土屋大喜",
+            "result": "win",
+            "method": "1R 1:40 KO（右ストレート）",
+            "event": "修斗 MOBSTYLES 15th Anniversary TOUR FIGHT & MOSH",
+            "round": "R1"
+          },
+          {
+            "date": "2015-01-25",
+            "opponent": "藤中淳司",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 2015年第1戦",
+            "round": "R2"
+          },
+          {
+            "date": "2014-10-04",
+            "opponent": "小野島恒太",
+            "result": "win",
+            "method": "1R 3:05 KO（グラウンドパンチ）",
+            "event": "VTJ 6th",
+            "round": "R1"
+          },
+          {
+            "date": "2014-06-29",
+            "opponent": "山内慎人",
+            "result": "win",
+            "method": "3分3R終了 判定3-0",
+            "event": "PANCRASE 259",
+            "round": "R3"
+          },
+          {
+            "date": "2013-11-03",
+            "opponent": "藤井伸樹",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "PANCRASE 253",
+            "round": "R2"
+          },
+          {
+            "date": "2013-04-13",
+            "opponent": "ムン・ジェフン",
+            "result": "loss",
+            "method": "5分3R終了 判定2-1",
+            "event": "Road FC 11",
+            "round": "R3"
+          },
+          {
+            "date": "2013-02-03",
+            "opponent": "中島太一",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "PANCRASE 245",
+            "round": "R3"
+          },
+          {
+            "date": "2012-06-16",
+            "opponent": "キム・スーチョル",
+            "result": "loss",
+            "method": "4R (延長1R) 1:27 TKO（カットによる出血）",
+            "event": "Road FC 8 :Bitter Rivals",
+            "round": "R4"
+          },
+          {
+            "date": "2012-04-28",
+            "opponent": "村田卓実",
+            "result": "win",
+            "method": "1R 4:14 TKO（サッカーボールキック）",
+            "event": "Pancrase : Progress Tour 5",
+            "round": "R1"
+          },
+          {
+            "date": "2012-03-24",
+            "opponent": "カン・ギョンホ",
+            "result": "loss",
+            "method": "2R 2:38 腕ひしぎ十字固め",
+            "event": "ROAD FC 7: Recharged 【バンタム級王座決定トーナメント 1回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2012-01-28",
+            "opponent": "斎藤 正臣",
+            "result": "win",
+            "method": "1R 1:04 TKO（サッカーボールキック）",
+            "event": "Pancrase Progress Tour 1",
+            "round": "R1"
+          },
+          {
+            "date": "2011-10-02",
+            "opponent": "滝田将也",
+            "result": "loss",
+            "method": "2R 3:00 チョークスリーパー",
+            "event": "PANCRASE IMPRESSIVE TOUR 10",
+            "round": "R2"
+          },
+          {
+            "date": "2011-08-07",
+            "opponent": "曹竜也",
+            "result": "draw",
+            "method": "5分2R終了 判定1-0",
+            "event": "Pancrase Impressive Tour 8",
+            "round": "R2"
+          },
+          {
+            "date": "2011-04-16",
+            "opponent": "キル・ヨンボク",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "Road FC 2 Alive",
+            "round": "R3"
+          },
+          {
+            "date": "2011-02-06",
+            "opponent": "西内太志朗",
+            "result": "loss",
+            "method": "5分2R終了 判定0-2",
+            "event": "PANCRASE 2011 IMPRESSIVE TOUR 【バンタム級次期王座挑戦者査定試合】",
+            "round": "R2"
+          },
+          {
+            "date": "2010-10-30",
+            "opponent": "田村彰敏",
+            "result": "loss",
+            "method": "5分2R終了 判定1-2",
+            "event": "SRC15 【バンタム級ASIAトーナメント2010 準々決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2010-08-22",
+            "opponent": "江泉卓哉",
+            "result": "win",
+            "method": "2R 1:38 TKO（ドクターストップ）",
+            "event": "SRC14 【バンタム級ASIAトーナメント2010 2回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2010-07-04",
+            "opponent": "岡本飛竜",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "SRC ASIA vol.1 【バンタム級ASIAトーナメント2010 1回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2010-06-05",
+            "opponent": "上嶋佑紀",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "Pancrase Passion Tour 5 【バンタム級 ネオブラッド・トーナメント準決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2010-04-04",
+            "opponent": "島崎巧",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "Pancrase Passion Tour 3 【バンタム級 ネオブラッド・トーナメント1回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2009-12-06",
+            "opponent": "沼倉雄太",
+            "result": "win",
+            "method": "1R 0:20 KO（パンチ）",
+            "event": "Pancrase Changing Tour 8",
+            "round": "R1"
+          },
+          {
+            "date": "2009-11-03",
+            "opponent": "ナム・ジン・チョ",
+            "result": "win",
+            "method": "5分2R終了 判定2-1",
+            "event": "GLADIATOR 5",
+            "round": "R2"
+          },
+          {
+            "date": "2009-10-17",
+            "opponent": "遠藤大翼",
+            "result": "loss",
+            "method": "5分2R終了 判定0-2",
+            "event": "PANCRASE 2009 CHANGING TOUR 5",
+            "round": "R2"
+          },
+          {
+            "date": "2009-08-08",
+            "opponent": "斉藤良",
+            "result": "win",
+            "method": "1R 1:40 TKO（サッカーボールキック)",
+            "event": "PANCRASE 2009 CHANGING TOUR 4",
+            "round": "R1"
+          },
+          {
+            "date": "2009-04-05",
+            "opponent": "佐々木亮太",
+            "result": "loss",
+            "method": "5分2R終了 判定2-1",
+            "event": "PANCRASE 2009 CHANGING TOUR 2",
+            "round": "R2"
+          },
+          {
+            "date": "2008-12-20",
+            "opponent": "石田雄三",
+            "result": "win",
+            "method": "1R 0:33 TKO（ドクターストップ）",
+            "event": "Tribelate vol. 21 【TRIBELATEフェザー級タイトルマッチ】",
+            "round": "R1"
+          },
+          {
+            "date": "2008-12-06",
+            "opponent": "西村広和",
+            "result": "nc",
+            "method": "無効試合（レフリングミス）",
+            "event": "Cage Force 9",
+            "round": "—"
+          },
+          {
+            "date": "2008-10-13",
+            "opponent": "天地零",
+            "result": "win",
+            "method": "1R 0:07 KO（パンチ）",
+            "event": "Tribelate vol. 20",
+            "round": "R1"
+          },
+          {
+            "date": "2008-08-23",
+            "opponent": "石田雄三",
+            "result": "win",
+            "method": "1R 2:32 TKO（スタンドパンチ連打)",
+            "event": "Tribelate vol. 19",
+            "round": "R1"
+          },
+          {
+            "date": "2008-06-28",
+            "opponent": "土田達也",
+            "result": "win",
+            "method": "1R 1:46 腕ひしぎ十字固め",
+            "event": "Tribelate vol. 18",
+            "round": "R1"
+          },
+          {
+            "date": "2008-04-26",
+            "opponent": "名城拓",
+            "result": "win",
+            "method": "5分2R終了 判定2-1",
+            "event": "Tribelate vol. 17",
+            "round": "R2"
+          }
+        ],
+        "live": true,
+        "nickname": "ミスターいぶし銀",
+        "birthPlace": "東京都目黒区",
+        "age": 38,
+        "total": 57
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "soya-takaki",
+      "nameJa": "征矢 貴",
+      "before": {
+        "wins": 6,
+        "losses": 7,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 13
+      },
+      "after": {
+        "wins": 7,
+        "losses": 7,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 14
+      },
+      "expectedIncrement": 1,
+      "actualIncrement": 1,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 13,
+        "losses": 8,
+        "draws": 1,
+        "ko": 9,
+        "sub": 0,
+        "decision": 4,
+        "history": [
+          {
+            "date": "2026-03-07",
+            "opponent": "トニー・ララミー",
+            "result": "loss",
+            "method": "3R 2:00 TKO（右フック→パウンド）",
+            "event": "RIZIN.52",
+            "round": "R3",
+            "weightClass": "57.0kg契約"
+          },
+          {
+            "date": "2025-07-27",
+            "opponent": "アリベク・ガジャマトフ",
+            "result": "loss",
+            "method": "3R 2:40 KO（左フック→パウンド）",
+            "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINフライ級ワールドグランプリ1回戦】",
+            "round": "R3",
+            "weightClass": "57.0kg契約"
+          },
+          {
+            "date": "2025-05-04",
+            "opponent": "ジョン・ドッドソン",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN男祭り",
+            "round": "R3",
+            "weightClass": "57.0kg契約"
+          },
+          {
+            "date": "2023-09-24",
+            "opponent": "ラマザン・テミロフ",
+            "result": "loss",
+            "method": "1R 3:15 TKO（スタンドパンチ）",
+            "event": "RIZIN.44",
+            "round": "R1"
+          },
+          {
+            "date": "2022-11-06",
+            "opponent": "中村優作",
+            "result": "loss",
+            "method": "5分3R終了 判定1-2",
+            "event": "RIZIN LANDMARK 4",
+            "round": "R3"
+          },
+          {
+            "date": "2022-04-16",
+            "opponent": "中務修良",
+            "result": "win",
+            "method": "2R 3:29 TKO（グラウンドパンチ）",
+            "event": "RIZIN TRIGGER 3rd",
+            "round": "R2"
+          },
+          {
+            "date": "2019-08-18",
+            "opponent": "村元友太郎",
+            "result": "win",
+            "method": "2R 1:28 TKO（スタンドパンチ）",
+            "event": "RIZIN.18",
+            "round": "R2"
+          },
+          {
+            "date": "2019-06-02",
+            "opponent": "川原波輝",
+            "result": "win",
+            "method": "1R 4:05 KO（右ストレート）",
+            "event": "RIZIN.16",
+            "round": "R1"
+          },
+          {
+            "date": "2017-05-12",
+            "opponent": "清水清隆",
+            "result": "loss",
+            "method": "3R 0:32 KO（右フック）",
+            "event": "修斗 後楽園ホール大会",
+            "round": "R3"
+          },
+          {
+            "date": "2016-12-18",
+            "opponent": "藤田ケオン寿大",
+            "result": "win",
+            "method": "5分2R終了 判定2-0",
+            "event": "修斗 インフィニティリーグ2016 優勝決定戦",
+            "round": "R2"
+          },
+          {
+            "date": "2016-07-17",
+            "opponent": "梶川卓",
+            "result": "win",
+            "method": "1R 1:29 KO（右フック→パウンド）",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2016-05-28",
+            "opponent": "北原史寛",
+            "result": "draw",
+            "method": "5分2R終了 判定0-1",
+            "event": "修斗 SHOOTO GIG TOKYO Vol.21",
+            "round": "R2"
+          },
+          {
+            "date": "2016-02-27",
+            "opponent": "オニボウズ",
+            "result": "loss",
+            "method": "5分2R終了 判定0-2",
+            "event": "修斗 SHOOTO GIG TOKYO Vol.20",
+            "round": "R2"
+          },
+          {
+            "date": "2015-09-13",
+            "opponent": "前田吉朗",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "VTJ 7th",
+            "round": "R3"
+          },
+          {
+            "date": "2015-01-25",
+            "opponent": "梶川卓",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 2015年開幕戦",
+            "round": "R3"
+          },
+          {
+            "date": "2014-09-27",
+            "opponent": "菅原雅顕",
+            "result": "loss",
+            "method": "1R 3:19 KO（右フック）",
+            "event": "修斗 2014年第7戦",
+            "round": "R1"
+          },
+          {
+            "date": "2014-05-05",
+            "opponent": "ズ・ギョンズン",
+            "result": "win",
+            "method": "1R 3:01 KO（右フック）",
+            "event": "修斗 25周年記念大会",
+            "round": "R1"
+          },
+          {
+            "date": "2013-12-15",
+            "opponent": "福田龍彌",
+            "result": "win",
+            "method": "1R 5:00 KO（パウンド）",
+            "event": "修斗 THE ROOKIE TOURNAMENT FINAL 2013 【2013年度新人王決定トーナメント決勝戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2013-09-01",
+            "opponent": "亀島聖児",
+            "result": "win",
+            "method": "1R 2:02 TKO",
+            "event": "修斗 BORDER -season5- The 2nd 【2013年度新人王決定トーナメント準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2013-06-08",
+            "opponent": "鳥越顕",
+            "result": "win",
+            "method": "1R 3:52 KO（パウンド）",
+            "event": "修斗 SHOOTING DISCO 21 catch the moment ～今でしょ！～ 【2013年度新人王決定トーナメント2回戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2012-10-27",
+            "opponent": "中山ハルキ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "GRABAKA Live!2",
+            "round": "R3"
+          },
+          {
+            "date": "2012-07-21",
+            "opponent": "伊藤貴昭",
+            "result": "win",
+            "method": "1R 0:46 KO（右フック）",
+            "event": "DEEP TOKYO IMPACT 2012 in DIFFER ARIAKE",
+            "round": "R1"
+          }
+        ],
+        "live": true,
+        "nickname": "松戸の不死鳥",
+        "birthPlace": "千葉県松戸市",
+        "age": 31,
+        "total": 22
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "ando-tatsuya",
+      "nameJa": "安藤 達也",
+      "before": {
+        "wins": 11,
+        "losses": 4,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 16
+      },
+      "after": {
+        "wins": 12,
+        "losses": 4,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 17
+      },
+      "expectedIncrement": 1,
+      "actualIncrement": 1,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 16,
+        "losses": 5,
+        "draws": 1,
+        "ko": 7,
+        "sub": 6,
+        "decision": 3,
+        "history": [
+          {
+            "date": "2025-12-31",
+            "opponent": "福田龍彌",
+            "result": "loss",
+            "method": "2R 3:02 TKO（右フック→パウンド）",
+            "event": "RIZIN 師走の超強者祭り",
+            "round": "R2",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2025-07-27",
+            "opponent": "ヤン・ジヨン",
+            "result": "win",
+            "method": "2R 3:52 リアネイキッドチョーク",
+            "event": "超RIZIN.4 真夏の喧嘩祭り",
+            "round": "R2",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2025-06-14",
+            "opponent": "マゲラム・ガサンザデ",
+            "result": "win",
+            "method": "1R 3:33 リアネイキッドチョーク",
+            "event": "RIZIN LANDMARK 11",
+            "round": "R1",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2024-05-18",
+            "opponent": "チュウ・カンチエ",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "Road to UFC: Shanghai Episode 1 【フェザー級トーナメント一回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2023-03-31",
+            "opponent": "アリ・モタメド",
+            "result": "win",
+            "method": "2R 1:38 TKO (パウンド)",
+            "event": "One Friday Fights 11",
+            "round": "R2"
+          },
+          {
+            "date": "2022-03-21",
+            "opponent": "岡田遼",
+            "result": "win",
+            "method": "2R 0:53 TKO（右フック→パウンド）",
+            "event": "PROFESSIONAL SHOOTO 2022 Vol.2 【修斗世界バンタム級チャンピオンシップ】",
+            "round": "R2"
+          },
+          {
+            "date": "2021-09-20",
+            "opponent": "石井逸人",
+            "result": "win",
+            "method": "2R 4:39 肩固め",
+            "event": "PROFESSIONAL SHOOTO 2021 Vol.6 【修斗環太平洋バンタム級チャンピオンシップ】",
+            "round": "R2"
+          },
+          {
+            "date": "2020-11-23",
+            "opponent": "大塚隆史",
+            "result": "loss",
+            "method": "1R 2:12 TKO（足首の負傷）",
+            "event": "PROFESSIONAL SHOOTO 2020 Vol.7 Supported by ONE Championship",
+            "round": "R1"
+          },
+          {
+            "date": "2020-08-01",
+            "opponent": "田丸匠",
+            "result": "win",
+            "method": "1R 3:23 TKO (パウンド)",
+            "event": "PROFESSIONAL SHOOTO 2020 Vol.5 【修斗環太平洋バンタム級王座決定戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2019-09-22",
+            "opponent": "岡田遼",
+            "result": "draw",
+            "method": "5分3R終了 判定1-1",
+            "event": "SHOOTO 30th ANNIVERSARY TOUR 第7戦 【修斗環太平洋バンタム級チャンピオンシップ】",
+            "round": "R3"
+          },
+          {
+            "date": "2019-03-24",
+            "opponent": "平川智也",
+            "result": "win",
+            "method": "2R 2:55 リアネイキッドチョーク",
+            "event": "SHOOTO 30th ANNIVERSARY TOUR 第2戦",
+            "round": "R2"
+          },
+          {
+            "date": "2018-11-17",
+            "opponent": "南出剛",
+            "result": "win",
+            "method": "1R 4:15 リアネイキッドチョーク",
+            "event": "修斗 後楽園ホール大会",
+            "round": "R1"
+          },
+          {
+            "date": "2018-08-03",
+            "opponent": "金物屋の秀",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗: This Is Shooto 2",
+            "round": "R3"
+          },
+          {
+            "date": "2018-01-28",
+            "opponent": "土屋大喜",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 後楽園ホール大会",
+            "round": "R3"
+          },
+          {
+            "date": "2016-11-12",
+            "opponent": "ケビン・クルーム",
+            "result": "win",
+            "method": "2R 3:13 リアネイキッドチョーク",
+            "event": "SHOOTO Pacific Rim Double Championship",
+            "round": "R2"
+          },
+          {
+            "date": "2016-07-17",
+            "opponent": "石橋佳大",
+            "result": "loss",
+            "method": "2R 2:04 リアネイキッドチョーク",
+            "event": "SHOOTO-Professional Shooto 7/17",
+            "round": "R2"
+          },
+          {
+            "date": "2016-03-21",
+            "opponent": "海老原洋輔",
+            "result": "win",
+            "method": "1R 1:07 TKO (パウンド)",
+            "event": "SHOOTO-Professional Shooto 3/21",
+            "round": "R1"
+          },
+          {
+            "date": "2015-11-29",
+            "opponent": "服部謙一",
+            "result": "win",
+            "method": "1R 3:06 KO (パンチ)",
+            "event": "SHOOTO the Comic vol. 1",
+            "round": "R1"
+          },
+          {
+            "date": "2015-09-13",
+            "opponent": "佐藤将光",
+            "result": "loss",
+            "method": "5分3R終了 判定1-2",
+            "event": "VTJ 7th",
+            "round": "R3"
+          },
+          {
+            "date": "2015-02-08",
+            "opponent": "芦田崇宏",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "GRANDSLAM 2 ～way of the cage～",
+            "round": "R3"
+          },
+          {
+            "date": "2014-11-02",
+            "opponent": "高橋祐樹",
+            "result": "win",
+            "method": "1R 2:06 KO (パンチ)",
+            "event": "TTF CHALLENGE 03",
+            "round": "R1"
+          },
+          {
+            "date": "2014-09-13",
+            "opponent": "渡辺謙明",
+            "result": "win",
+            "method": "1R 4:05 KO",
+            "event": "TTF CHALLENGE 02",
+            "round": "R1"
+          }
+        ],
+        "live": true,
+        "nickname": "遅れてきた\"怪物\"",
+        "birthPlace": "東京都杉並区",
+        "age": 36,
+        "total": 22
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "kindaichi-kosuke",
+      "nameJa": "金田一孝介",
+      "before": {
+        "wins": 5,
+        "losses": 2,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "パンクラス"
+        ],
+        "total": 7
+      },
+      "after": {
+        "wins": 8,
+        "losses": 4,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 13
+      },
+      "expectedIncrement": 6,
+      "actualIncrement": 6,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 11,
+        "losses": 4,
+        "draws": 2,
+        "ko": 4,
+        "sub": 3,
+        "decision": 4,
+        "history": [
+          {
+            "date": "2026-05-04",
+            "opponent": "赤沢幸典",
+            "result": "loss",
+            "method": "1R 4:36 TKO（パウンド）",
+            "event": "DEEP 131 IMPACT",
+            "round": "R1"
+          },
+          {
+            "date": "2025-09-28",
+            "opponent": "チャートゥ・バンビロール",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN.51",
+            "round": "R3",
+            "weightClass": "100.0kg契約"
+          },
+          {
+            "date": "2021-12-12",
+            "opponent": "林源平",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 325",
+            "round": "R3"
+          },
+          {
+            "date": "2020-12-13",
+            "opponent": "冨樫健一郎",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "PANCRASE 320",
+            "round": "R3"
+          },
+          {
+            "date": "2018-11-25",
+            "opponent": "松岡嵩志",
+            "result": "win",
+            "method": "1R 2:59 KO（右フック）",
+            "event": "PANCRASE 301",
+            "round": "R1"
+          },
+          {
+            "date": "2018-09-09",
+            "opponent": "上田厚志",
+            "result": "win",
+            "method": "2R 0:18 TKO（スタンドパンチ連打）",
+            "event": "PANCRASE 299",
+            "round": "R2"
+          },
+          {
+            "date": "2018-07-15",
+            "opponent": "鈴木道場長",
+            "result": "win",
+            "method": "3分3R終了 判定3-0",
+            "event": "PANCRASE OSAKA",
+            "round": "R3"
+          },
+          {
+            "date": "2018-05-13",
+            "opponent": "西方喜代信",
+            "result": "win",
+            "method": "1R リアネイキッドチョーク",
+            "event": "Legion Japan",
+            "round": "R1"
+          },
+          {
+            "date": "2011-09-23",
+            "opponent": "伊藤一宏",
+            "result": "win",
+            "method": "2R 3:00 キムラロック",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2011-07-18",
+            "opponent": "佐々木憂流迦",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "修斗 SHOOTOR’S LEGACY 03",
+            "round": "R2"
+          },
+          {
+            "date": "2011-04-10",
+            "opponent": "門脇英基",
+            "result": "draw",
+            "method": "5分2R終了 判定1-0",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2010-07-04",
+            "opponent": "近野淳平",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2010-06-27",
+            "opponent": "齊藤曜",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "修斗 SPIRIT 2010 Summer 【2010年度新人王決定トーナメント ライト級 2回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2010-02-27",
+            "opponent": "丸井健一郎",
+            "result": "win",
+            "method": "2R 2:35 KO（膝蹴り）",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2009-11-29",
+            "opponent": "大道将輝",
+            "result": "win",
+            "method": "1R 2:49 腕ひしぎ十字固め",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2009-08-09",
+            "opponent": "早坂利昭",
+            "result": "win",
+            "method": "1R 4:49 TKO（パウンド）",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2009-06-06",
+            "opponent": "西野英樹",
+            "result": "draw",
+            "method": "5分2R終了 判定0-0",
+            "event": "修斗",
+            "round": "R2"
+          }
+        ],
+        "live": true,
+        "birthPlace": "愛知県一宮市",
+        "age": 36,
+        "total": 17
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "uoi-fullswing",
+      "nameJa": "魚井フルスイング",
+      "before": {
+        "wins": 12,
+        "losses": 14,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "修斗"
+        ],
+        "total": 27
+      },
+      "after": {
+        "wins": 15,
+        "losses": 15,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "修斗"
+        ],
+        "total": 31
+      },
+      "expectedIncrement": 4,
+      "actualIncrement": 4,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 27,
+        "losses": 16,
+        "draws": 4,
+        "ko": 12,
+        "sub": 2,
+        "decision": 13,
+        "history": [
+          {
+            "date": "2026-03-20",
+            "opponent": "寺崎昇龍",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "Deep 130 IMPACT",
+            "round": "R2"
+          },
+          {
+            "date": "2025-09-15",
+            "opponent": "春日井“寒天”たけし",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "DEEP 127 IMPACT",
+            "round": "R2"
+          },
+          {
+            "date": "2025-03-30",
+            "opponent": "赤田プレイボイ功輝",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "RIZIN.50",
+            "round": "R3",
+            "weightClass": "61.0kg契約"
+          },
+          {
+            "date": "2024-12-08",
+            "opponent": "小崎連",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "DEEP 123 IMPACT",
+            "round": "R3"
+          },
+          {
+            "date": "2024-09-08",
+            "opponent": "梶本保希",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "DEEP TOKYO IMPACT 2024 4th ROUND",
+            "round": "R3"
+          },
+          {
+            "date": "2024-03-09",
+            "opponent": "平松翔",
+            "result": "loss",
+            "method": "2R 0:48 ギロチンチョーク",
+            "event": "DEEP 118 IMPACT",
+            "round": "R2"
+          },
+          {
+            "date": "2022-11-06",
+            "opponent": "ヤン・ジヨン",
+            "result": "loss",
+            "method": "2R 4:13 TKO（左ストレート→パウンド）",
+            "event": "RIZIN LANDMARK 4",
+            "round": "R2"
+          },
+          {
+            "date": "2022-05-05",
+            "opponent": "倉本一真",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN LANDMARK vol.3",
+            "round": "R3"
+          },
+          {
+            "date": "2022-03-06",
+            "opponent": "伊藤空也",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN LANDMARK vol.2",
+            "round": "R3"
+          },
+          {
+            "date": "2021-11-28",
+            "opponent": "獅庵",
+            "result": "win",
+            "method": "1R 4:52 TKO（左フック→サッカーボールキック）",
+            "event": "RIZIN TRIGGER 1st",
+            "round": "R1"
+          },
+          {
+            "date": "2021-03-20",
+            "opponent": "後藤丈治",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R3"
+          },
+          {
+            "date": "2020-08-10",
+            "opponent": "元谷友貴",
+            "result": "loss",
+            "method": "3R 2:19 ギロチンチョーク",
+            "event": "RIZIN.23 - CALLING OVER -",
+            "round": "R3"
+          },
+          {
+            "date": "2020-01-26",
+            "opponent": "手塚基伸",
+            "result": "loss",
+            "method": "2R 0:19 TKO（手首の負傷）",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R2"
+          },
+          {
+            "date": "2019-09-22",
+            "opponent": "田丸匠",
+            "result": "loss",
+            "method": "5分3R終了 判定1-2",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R3"
+          },
+          {
+            "date": "2019-06-02",
+            "opponent": "カナ・ハヤット",
+            "result": "win",
+            "method": "3R 4:32 TKO（スタンドパンチ連打）",
+            "event": "RIZIN.16",
+            "round": "R3"
+          },
+          {
+            "date": "2019-05-06",
+            "opponent": "加藤ケンジ",
+            "result": "win",
+            "method": "2R 0:16 KO（右フック）",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R2"
+          },
+          {
+            "date": "2019-01-27",
+            "opponent": "藤井伸樹",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R3"
+          },
+          {
+            "date": "2018-09-23",
+            "opponent": "土屋大喜",
+            "result": "win",
+            "method": "2R 1:30 KO（パンチ）",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R2"
+          },
+          {
+            "date": "2018-05-13",
+            "opponent": "根津優太",
+            "result": "loss",
+            "method": "5分3R終了 判定1-2",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R3"
+          },
+          {
+            "date": "2018-01-28",
+            "opponent": "祖根寿麻",
+            "result": "loss",
+            "method": "5分3R終了 判定0-2",
+            "event": "プロフェッショナル修斗公式戦 【修斗環太平洋バンタム級王座決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2017-10-15",
+            "opponent": "論田愛空隆",
+            "result": "draw",
+            "method": "5分3R終了 判定1-0",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R3"
+          },
+          {
+            "date": "2017-05-12",
+            "opponent": "加藤惇",
+            "result": "win",
+            "method": "1R 3:42 KO",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R1"
+          },
+          {
+            "date": "2017-03-24",
+            "opponent": "小蒼卓也",
+            "result": "win",
+            "method": "1R 0:18 KO",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R1"
+          },
+          {
+            "date": "2016-12-10",
+            "opponent": "Frank Stablein",
+            "result": "win",
+            "method": "1R 3:34 TKO",
+            "event": "SHOOTO KINGS 5 - Critical Mass",
+            "round": "R1"
+          },
+          {
+            "date": "2016-09-19",
+            "opponent": "神田T800周一",
+            "result": "win",
+            "method": "1R 2:50 KO",
+            "event": "TTF CHALLENGE 06",
+            "round": "R1"
+          },
+          {
+            "date": "2016-07-03",
+            "opponent": "服部賢大",
+            "result": "win",
+            "method": "1R 3:32 KO",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R1"
+          },
+          {
+            "date": "2016-05-28",
+            "opponent": "松下祐介",
+            "result": "win",
+            "method": "5分2R終了 判定2-0",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R2"
+          },
+          {
+            "date": "2016-03-27",
+            "opponent": "玉城優介",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R2"
+          },
+          {
+            "date": "2016-02-27",
+            "opponent": "山田丑伍郎",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R2"
+          },
+          {
+            "date": "2015-12-20",
+            "opponent": "金物屋の秀",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "プロフェッショナル修斗公式戦",
+            "round": "R2"
+          },
+          {
+            "date": "2015-11-15",
+            "opponent": "風間弘太郎",
+            "result": "win",
+            "method": "5分2R+延長R 4:13 チョークスリーパー",
+            "event": "Fighting Nexus vol.4",
+            "round": "R2"
+          },
+          {
+            "date": "2015-03-01",
+            "opponent": "平安孝行",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "DEMOLITION 23",
+            "round": "R3"
+          },
+          {
+            "date": "2014-11-30",
+            "opponent": "海鬼袈侍鬼",
+            "result": "win",
+            "method": "1R 2:50 KO（バスター）",
+            "event": "DEMOLITION 22",
+            "round": "R1"
+          },
+          {
+            "date": "2014-08-17",
+            "opponent": "御剣おかぱー",
+            "result": "win",
+            "method": "2R 4:46 KO（グラウンドパンチ）",
+            "event": "DEMOLITION 21",
+            "round": "R2"
+          },
+          {
+            "date": "2012-11-11",
+            "opponent": "福島秀和",
+            "result": "loss",
+            "method": "5分2R終了 判定0-2",
+            "event": "プロフェッショナル修斗公式戦 【2012年度新人王トーナメント準決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2012-09-23",
+            "opponent": "Dr.takuya",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "プロフェッショナル修斗公式戦 【2012年度新人王トーナメント2回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2012-04-01",
+            "opponent": "金海裕輝",
+            "result": "win",
+            "method": "5分2R終了 判定2-0",
+            "event": "プロフェッショナル修斗公式戦 【2012年度新人王トーナメント1回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2011-10-09",
+            "opponent": "Dr.takuya",
+            "result": "draw",
+            "method": "5分2R終了 判定1-0",
+            "event": "RISING ON 9",
+            "round": "R2"
+          },
+          {
+            "date": "2011-07-31",
+            "opponent": "小野雷也",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "RISING ON 8",
+            "round": "R2"
+          },
+          {
+            "date": "2011-06-05",
+            "opponent": "祖根寿麻",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "HEAT 18",
+            "round": "R3"
+          },
+          {
+            "date": "2010-11-28",
+            "opponent": "杉島大輔",
+            "result": "win",
+            "method": "1R 0:38 KO（左フック）",
+            "event": "CAGE FORCE 20",
+            "round": "R1"
+          },
+          {
+            "date": "2010-06-27",
+            "opponent": "永本泰章",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "DEMOLITION WEST 【CAGE FORCE選抜バンタム級トーナメント決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2010-04-03",
+            "opponent": "川端和哉",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "DEMOLITION WEST 【CAGE FORCE選抜バンタム級トーナメント準決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2009-11-14",
+            "opponent": "森賀陽介",
+            "result": "win",
+            "method": "5分2R終了 判定2-1",
+            "event": "DEMOLITION WEST 【CAGE FORCE選抜バンタム級トーナメント1回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2009-06-07",
+            "opponent": "上嶋佑紀",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "club DEEP",
+            "round": "R2"
+          },
+          {
+            "date": "2009-03-29",
+            "opponent": "春日井健士",
+            "result": "draw",
+            "method": "4分2R終了 判定1-0",
+            "event": "CLUB DOG FIGHT 7",
+            "round": "R2"
+          },
+          {
+            "date": "2008-12-28",
+            "opponent": "神龍",
+            "result": "draw",
+            "method": "4分2R終了 判定1-0",
+            "event": "CLUB DOG FIGHT 6",
+            "round": "R2"
+          }
+        ],
+        "live": true,
+        "birthPlace": "兵庫県神戸市",
+        "age": 41,
+        "total": 47
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
       "slug": "naito-shoki",
       "nameJa": "内藤頌貴",
       "before": {
@@ -575,9 +3912,9 @@
       "slug": "takaoka-hiroki",
       "nameJa": "高岡宏気",
       "before": {
-        "wins": 13,
-        "losses": 8,
-        "draws": 1,
+        "wins": 10,
+        "losses": 7,
+        "draws": 5,
         "orgsWithBouts": [
           "RIZIN",
           "修斗"
@@ -585,9 +3922,9 @@
         "total": 22
       },
       "after": {
-        "wins": 15,
-        "losses": 10,
-        "draws": 2,
+        "wins": 12,
+        "losses": 9,
+        "draws": 6,
         "orgsWithBouts": [
           "RIZIN",
           "修斗"
@@ -864,23 +4201,23 @@
       "nameJa": "SASUKE",
       "before": {
         "wins": 12,
-        "losses": 3,
+        "losses": 2,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 14
+      },
+      "after": {
+        "wins": 13,
+        "losses": 2,
         "draws": 0,
         "orgsWithBouts": [
           "RIZIN",
           "修斗"
         ],
         "total": 15
-      },
-      "after": {
-        "wins": 13,
-        "losses": 3,
-        "draws": 0,
-        "orgsWithBouts": [
-          "RIZIN",
-          "修斗"
-        ],
-        "total": 16
       },
       "expectedIncrement": 1,
       "actualIncrement": 1,
@@ -1238,6 +4575,443 @@
       "crossedOverNewly": false
     },
     {
+      "slug": "murayama-akihiro",
+      "nameJa": "村山暁洋",
+      "before": {
+        "wins": 12,
+        "losses": 10,
+        "draws": 3,
+        "orgsWithBouts": [
+          "DEEP",
+          "パンクラス"
+        ],
+        "total": 25
+      },
+      "after": {
+        "wins": 22,
+        "losses": 13,
+        "draws": 5,
+        "orgsWithBouts": [
+          "DEEP",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 40
+      },
+      "expectedIncrement": 15,
+      "actualIncrement": 15,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 25,
+        "losses": 15,
+        "draws": 9,
+        "ko": 6,
+        "sub": 6,
+        "decision": 13,
+        "history": [
+          {
+            "date": "2025-09-23",
+            "opponent": "スパイク・カーライル",
+            "result": "loss",
+            "method": "1R 2:07 TKO（パウンド）",
+            "event": "PANCRASE 357",
+            "round": "R1"
+          },
+          {
+            "date": "2025-03-09",
+            "opponent": "長岡弘樹",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 352",
+            "round": "R3"
+          },
+          {
+            "date": "2024-11-10",
+            "opponent": "川中孝浩",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 349",
+            "round": "R3"
+          },
+          {
+            "date": "2024-05-25",
+            "opponent": "押忍マン洸太",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "PANCRASE 343",
+            "round": "R3"
+          },
+          {
+            "date": "2023-06-04",
+            "opponent": "林源平",
+            "result": "loss",
+            "method": "5分5R終了 判定0-3",
+            "event": "PANCRASE 334 【ウェルター級王者決定戦】",
+            "round": "R5"
+          },
+          {
+            "date": "2022-12-25",
+            "opponent": "長岡弘樹",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 330",
+            "round": "R3"
+          },
+          {
+            "date": "2022-04-29",
+            "opponent": "木下憂朔",
+            "result": "loss",
+            "method": "1R 1:48 TKO （飛び膝蹴り）",
+            "event": "PANCRASE 327",
+            "round": "R1"
+          },
+          {
+            "date": "2021-10-17",
+            "opponent": "菊入正行",
+            "result": "loss",
+            "method": "5分5R終了 判定0-3",
+            "event": "PANCRASE 324 【ウェルター級暫定王座決定戦】",
+            "round": "R5"
+          },
+          {
+            "date": "2020-12-13",
+            "opponent": "菊入正行",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 320",
+            "round": "R3"
+          },
+          {
+            "date": "2020-02-16",
+            "opponent": "近藤有己",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 312",
+            "round": "R3"
+          },
+          {
+            "date": "2019-06-30",
+            "opponent": "J.J.アンブローズ",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "PANCRASE 306",
+            "round": "R3"
+          },
+          {
+            "date": "2018-12-09",
+            "opponent": "手塚裕之",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "PANCRASE 302",
+            "round": "R3"
+          },
+          {
+            "date": "2018-05-20",
+            "opponent": "奈良貴明",
+            "result": "win",
+            "method": "1R 0:48 TKO（チョークスリーパー）",
+            "event": "PANCRASE 296",
+            "round": "R1"
+          },
+          {
+            "date": "2017-12-10",
+            "opponent": "佐藤天",
+            "result": "loss",
+            "method": "1R 4:15 TKO（グラウンドパンチ）",
+            "event": "PANCRASE 292",
+            "round": "R1"
+          },
+          {
+            "date": "2016-10-02",
+            "opponent": "三浦広光",
+            "result": "loss",
+            "method": "5分5R終了 判定0-3",
+            "event": "PANCRASE 281 【ウェルター級キング・オブ・パンクラス タイトルマッチ】",
+            "round": "R5"
+          },
+          {
+            "date": "2016-03-13",
+            "opponent": "鈴木槙吾",
+            "result": "win",
+            "method": "4R 3:33 TKO（パウンド）",
+            "event": "PANCRASE 276 【ウェルター級キング・オブ・パンクラス タイトルマッチ】",
+            "round": "R4"
+          },
+          {
+            "date": "2015-10-04",
+            "opponent": "窪田幸生",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 270",
+            "round": "R3"
+          },
+          {
+            "date": "2015-04-26",
+            "opponent": "ダニエル・\"ニンジャ\"・ロバーツ",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "PANCRASE 266",
+            "round": "R3"
+          },
+          {
+            "date": "2014-12-06",
+            "opponent": "鈴木槙吾",
+            "result": "win",
+            "method": "3R 0:27 TKO（右フック→パウンド）",
+            "event": "PANCRASE 263",
+            "round": "R3"
+          },
+          {
+            "date": "2014-08-10",
+            "opponent": "レッツ豪太",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "PANCRASE 260 【ウェルター級キング・オブ・パンクラス決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2014-03-30",
+            "opponent": "チアゴ・ジャンボ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 257",
+            "round": "R3"
+          },
+          {
+            "date": "2013-10-20",
+            "opponent": "白井祐矢",
+            "result": "draw",
+            "method": "5分3R終了 判定1-0",
+            "event": "TRIBE TOKYO FIGHT 〜長南亮引退興行〜",
+            "round": "R3"
+          },
+          {
+            "date": "2013-06-30",
+            "opponent": "近藤有己",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 248",
+            "round": "R3"
+          },
+          {
+            "date": "2013-03-17",
+            "opponent": "佐藤豪則",
+            "result": "draw",
+            "method": "5分3R終了 判定0-0",
+            "event": "PANCRASE 246",
+            "round": "R3"
+          },
+          {
+            "date": "2013-02-03",
+            "opponent": "中村勇太",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "PANCRASE 245",
+            "round": "R2"
+          },
+          {
+            "date": "2012-08-05",
+            "opponent": "大類宗次朗",
+            "result": "draw",
+            "method": "5分3R終了 判定1-0",
+            "event": "PANCRASE 2012 PROGRESS TOUR",
+            "round": "R3"
+          },
+          {
+            "date": "2011-09-23",
+            "opponent": "中村K太郎",
+            "result": "win",
+            "method": "1R 2:30 スリーパーホールド",
+            "event": "修斗 SHOOTOR'S LEGACY 04",
+            "round": "R1"
+          },
+          {
+            "date": "2011-06-11",
+            "opponent": "佐藤洋一郎",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 SHOOTING DISCO 15 〜がんばろう! 日本〜 【修斗環太平洋ミドル級タイトルマッチ】",
+            "round": "R3"
+          },
+          {
+            "date": "2011-02-26",
+            "opponent": "佐藤洋一郎",
+            "result": "draw",
+            "method": "5分3R終了 判定1-1",
+            "event": "修斗 SHOOTING DISCO 14 〜365歩のマーチ〜 【修斗環太平洋ミドル級タイトルマッチ】",
+            "round": "R3"
+          },
+          {
+            "date": "2010-08-07",
+            "opponent": "カン・ジョンミン",
+            "result": "win",
+            "method": "3R 3:31 スリーパーホールド",
+            "event": "修斗 SHOOTO GIG TOKYO Vol.5",
+            "round": "R3"
+          },
+          {
+            "date": "2010-04-11",
+            "opponent": "高木健太",
+            "result": "loss",
+            "method": "1R 0:48 KO（右肘打ち）",
+            "event": "CAGE FORCE",
+            "round": "R1"
+          },
+          {
+            "date": "2009-06-06",
+            "opponent": "佐藤洋一郎",
+            "result": "loss",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 SHOOTING DISCO 9 〜スーパーマン〜",
+            "round": "R2"
+          },
+          {
+            "date": "2009-04-25",
+            "opponent": "一慶",
+            "result": "draw",
+            "method": "3分3R終了 判定0-0",
+            "event": "CAGE FORCE 10",
+            "round": "R3"
+          },
+          {
+            "date": "2008-06-22",
+            "opponent": "藤井陸平",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "CAGE FORCE 07",
+            "round": "R3"
+          },
+          {
+            "date": "2008-02-23",
+            "opponent": "洋樹",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 SHOOTING DISCO 4 〜ボーン イン ザ ☆ ファイティング〜",
+            "round": "R3"
+          },
+          {
+            "date": "2007-10-20",
+            "opponent": "チョモランマ1/2",
+            "result": "win",
+            "method": "1R 3:32 TKO（パウンド）",
+            "event": "修斗 SHOOTING DISCO 3 〜エブリバディー ファイト ナウ〜",
+            "round": "R1"
+          },
+          {
+            "date": "2007-08-05",
+            "opponent": "安達明彦",
+            "result": "win",
+            "method": "2R 2:29 腕ひしぎ十字固め",
+            "event": "修斗 SHOOTING DISCO 2 〜今夜はヒートアップ〜",
+            "round": "R2"
+          },
+          {
+            "date": "2007-03-04",
+            "opponent": "古川\"ジュウザ\"誠史",
+            "result": "win",
+            "method": "1R 0:39 V1アームロック",
+            "event": "修斗 下北沢修斗劇場 第17弾 〜男はつよいよ〜",
+            "round": "R1"
+          },
+          {
+            "date": "2006-10-01",
+            "opponent": "安達明彦",
+            "result": "draw",
+            "method": "5分2R終了 判定1-0",
+            "event": "修斗 下北沢修斗劇場 第16弾 〜燃えろいい男〜",
+            "round": "R2"
+          },
+          {
+            "date": "2006-06-11",
+            "opponent": "渋谷修身",
+            "result": "draw",
+            "method": "5分2R終了 判定0-1",
+            "event": "D.O.G VI",
+            "round": "R2"
+          },
+          {
+            "date": "2005-10-28",
+            "opponent": "余膳正志",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 下北沢修斗劇場 第13弾 〜Soulful Fight〜",
+            "round": "R2"
+          },
+          {
+            "date": "2005-07-14",
+            "opponent": "芦川祥教",
+            "result": "win",
+            "method": "1R 0:25 TKO（パウンド）",
+            "event": "修斗 下北沢修斗劇場 第12弾 〜Shootor's Summer〜",
+            "round": "R1"
+          },
+          {
+            "date": "2005-06-03",
+            "opponent": "島川敦行",
+            "result": "win",
+            "method": "1R 2:16 TKO（パウンド）",
+            "event": "修斗 下北沢修斗劇場 第11弾 〜後楽園へ行こう!〜",
+            "round": "R1"
+          },
+          {
+            "date": "2004-11-20",
+            "opponent": "ペトラス・モリカビュチス",
+            "result": "loss",
+            "method": "5分2R終了 判定",
+            "event": "Shooto Lithuania: Bushido",
+            "round": "R2"
+          },
+          {
+            "date": "2004-09-19",
+            "opponent": "高橋渉",
+            "result": "draw",
+            "method": "5分2R終了 判定1-0",
+            "event": "DEMOLITION 040919",
+            "round": "R2"
+          },
+          {
+            "date": "2004-07-11",
+            "opponent": "森山大",
+            "result": "win",
+            "method": "2R 1:56 TKO（タオル投入）",
+            "event": "DEMOLITION 040711",
+            "round": "R2"
+          },
+          {
+            "date": "2004-04-16",
+            "opponent": "佐藤隆平",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "修斗 下北沢修斗劇場 第9弾 〜熱中時代・稽古編〜",
+            "round": "R2"
+          },
+          {
+            "date": "2003-12-27",
+            "opponent": "外山慎平",
+            "result": "draw",
+            "method": "5分2R終了 判定0-0",
+            "event": "DEMOLITION 031227",
+            "round": "R2"
+          },
+          {
+            "date": "2003-10-25",
+            "opponent": "長井憲治",
+            "result": "win",
+            "method": "1R 4:42 腕ひしぎ十字固め",
+            "event": "DEMOLITION 031025",
+            "round": "R1"
+          }
+        ],
+        "live": true,
+        "birthPlace": "長野県松本市",
+        "age": 46,
+        "total": 49
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
       "slug": "kasuya-yusuke",
       "nameJa": "粕谷優介",
       "before": {
@@ -1250,17 +5024,17 @@
         "total": 14
       },
       "after": {
-        "wins": 7,
+        "wins": 10,
         "losses": 8,
-        "draws": 0,
+        "draws": 2,
         "orgsWithBouts": [
           "パンクラス",
           "修斗"
         ],
-        "total": 15
+        "total": 20
       },
-      "expectedIncrement": 1,
-      "actualIncrement": 1,
+      "expectedIncrement": 6,
+      "actualIncrement": 6,
       "incrementMatchesExpected": true,
       "row1": {
         "wins": 0,
@@ -1275,6 +5049,789 @@
         "total": 0
       },
       "row1HasRealData": false,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "shinya-aoki",
+      "nameJa": "青木真也",
+      "before": {
+        "wins": 2,
+        "losses": 0,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP"
+        ],
+        "total": 2
+      },
+      "after": {
+        "wins": 6,
+        "losses": 1,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "修斗"
+        ],
+        "total": 7
+      },
+      "expectedIncrement": 5,
+      "actualIncrement": 5,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 50,
+        "losses": 12,
+        "draws": 0,
+        "ko": 4,
+        "sub": 32,
+        "decision": 11,
+        "history": [
+          {
+            "date": "2025-11-16",
+            "opponent": "手塚裕之",
+            "result": "loss",
+            "method": "2R 0:28 TKO（パウンド）",
+            "event": "ONE 173: Superbon vs. Noiri",
+            "round": "R2"
+          },
+          {
+            "date": "2025-03-23",
+            "opponent": "エドゥアルド・フォラヤン",
+            "result": "win",
+            "method": "1R 0:53 腕ひしぎ十字固め",
+            "event": "ONE 172: Takeru vs. Rodtang",
+            "round": "R1"
+          },
+          {
+            "date": "2024-01-28",
+            "opponent": "ジョン・リネカー",
+            "result": "win",
+            "method": "1R 2:01 リアネイキドチョーク",
+            "event": "ONE 165: Superlek vs. Takeru",
+            "round": "R1"
+          },
+          {
+            "date": "2022-11-19",
+            "opponent": "サイード・イザガクマエフ",
+            "result": "loss",
+            "method": "1R 1:26 TKO（パウンド）",
+            "event": "ONE 163: Akimoto vs. Petchtanong",
+            "round": "R1"
+          },
+          {
+            "date": "2022-03-26",
+            "opponent": "秋山成勲",
+            "result": "loss",
+            "method": "2R 1:50 TKO（パウンド）",
+            "event": "ONE Championship: ONE X",
+            "round": "R2"
+          },
+          {
+            "date": "2021-04-28",
+            "opponent": "エドゥアルド・フォラヤン",
+            "result": "win",
+            "method": "1R 4:20 腕ひしぎ十字固め",
+            "event": "ONE Championship: ONE on TNT 4",
+            "round": "R1"
+          },
+          {
+            "date": "2021-01-22",
+            "opponent": "ジェームズ・ナカシマ",
+            "result": "win",
+            "method": "1R 2:42 リアネイキドチョーク",
+            "event": "ONE Championship 126: Unbreakable",
+            "round": "R1"
+          },
+          {
+            "date": "2020-09-11",
+            "opponent": "江藤公洋",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "Road to ONE 3rd Tokyo Fight Night",
+            "round": "R3"
+          },
+          {
+            "date": "2019-10-13",
+            "opponent": "ホノリオ・バナリオ",
+            "result": "win",
+            "method": "1R 0:54 ダースチョーク",
+            "event": "ONE Championship: Century Part 2",
+            "round": "R1"
+          },
+          {
+            "date": "2019-05-17",
+            "opponent": "クリスチャン・リー",
+            "result": "loss",
+            "method": "2R 0:51 TKO（パンチ連打）",
+            "event": "ONE Championship 96: Enter the Dragon 【ONE世界ライト級タイトルマッチ】",
+            "round": "R2"
+          },
+          {
+            "date": "2019-03-31",
+            "opponent": "エドゥアルド・フォラヤン",
+            "result": "win",
+            "method": "1R 2:13 肩固め",
+            "event": "ONE Championship :A NEW ERA 【ONE世界ライト級タイトルマッチ】",
+            "round": "R1"
+          },
+          {
+            "date": "2018-10-06",
+            "opponent": "イブ・タン",
+            "result": "win",
+            "method": "1R 0:57 肩固め",
+            "event": "ONE Championship 80: Kingdom of Heroes",
+            "round": "R1"
+          },
+          {
+            "date": "2018-07-27",
+            "opponent": "シャノン・ウィラチャイ",
+            "result": "win",
+            "method": "1R 2:16 TKO（ドクターストップ）",
+            "event": "ONE Championship : REIGN OF KINGS",
+            "round": "R1"
+          },
+          {
+            "date": "2018-05-18",
+            "opponent": "ラスール・ヤキャエフ",
+            "result": "win",
+            "method": "1R 3:15 トライアングルチョーク",
+            "event": "ONE Championship 73: Unstoppable Dreams",
+            "round": "R1"
+          },
+          {
+            "date": "2017-11-24",
+            "opponent": "ベン・アスクレン",
+            "result": "loss",
+            "method": "1R 0:57 TKO（パウンド）",
+            "event": "ONE Championship 65: Immoral Pursuit 【ONE世界ウェルター級タイトルマッチ】",
+            "round": "R1"
+          },
+          {
+            "date": "2016-11-11",
+            "opponent": "エドゥアルド・フォラヤン",
+            "result": "loss",
+            "method": "3R 0:41 TKO（右跳び膝蹴り→パウンド）",
+            "event": "ONE Championship 49: Defending Honor 【ONE世界ライト級タイトルマッチ】",
+            "round": "R3"
+          },
+          {
+            "date": "2015-12-29",
+            "opponent": "桜庭和志",
+            "result": "win",
+            "method": "1R 5:56 TKO（タオル投入）",
+            "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
+            "round": "R1"
+          },
+          {
+            "date": "2015-05-22",
+            "opponent": "安藤晃司",
+            "result": "win",
+            "method": "5分5R終了 判定3-0",
+            "event": "ONE Championship 27: Warrior's Quest 【ONE世界ライト級タイトルマッチ】",
+            "round": "R5"
+          },
+          {
+            "date": "2014-12-31",
+            "opponent": "山本勇気",
+            "result": "win",
+            "method": "1R 1:21 ツイスター",
+            "event": "INOKI BOM-BA-YE 2014",
+            "round": "R1"
+          },
+          {
+            "date": "2014-08-29",
+            "opponent": "カマル・シャロルス",
+            "result": "win",
+            "method": "1R 2:15 リアネイキドチョーク",
+            "event": "ONE FC 19: Reign of Champions 【ONE FC世界ライト級タイトルマッチ】",
+            "round": "R1"
+          },
+          {
+            "date": "2013-12-31",
+            "opponent": "TOSHI",
+            "result": "win",
+            "method": "1R 0:49 腕ひしぎ三角固め",
+            "event": "INOKI BOM-BA-YE 2013",
+            "round": "R1"
+          },
+          {
+            "date": "2013-10-18",
+            "opponent": "コディ・スティーブンス",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "ONE FC 11: Total Domination",
+            "round": "R3"
+          },
+          {
+            "date": "2013-04-05",
+            "opponent": "朴光哲",
+            "result": "win",
+            "method": "2R 2:01 リアネイキドチョーク",
+            "event": "ONE FC 8: Kings and Champions 【ONE FC世界ライト級タイトルマッチ】",
+            "round": "R2"
+          },
+          {
+            "date": "2012-12-31",
+            "opponent": "アントニオ・マッキー",
+            "result": "win",
+            "method": "2R 0:24 TKO（ギブアップ）",
+            "event": "DREAM.18 & GLORY 4 〜大晦日 SPECIAL 2012〜",
+            "round": "R2"
+          },
+          {
+            "date": "2012-10-06",
+            "opponent": "アルナウド・ルポン",
+            "result": "win",
+            "method": "1R 1:25 三角絞め",
+            "event": "ONE FC 6: Rise of Kings",
+            "round": "R1"
+          },
+          {
+            "date": "2012-04-20",
+            "opponent": "エディ・アルバレス",
+            "result": "loss",
+            "method": "1R 2:14 TKO（右アッパー→パウンド）",
+            "event": "Bellator 66",
+            "round": "R1"
+          },
+          {
+            "date": "2011-12-31",
+            "opponent": "北岡悟",
+            "result": "win",
+            "method": "5分5R終了 判定3-0",
+            "event": "元気ですか!! 大晦日!! 2011 【DREAMライト級タイトルマッチ】",
+            "round": "R5"
+          },
+          {
+            "date": "2011-09-24",
+            "opponent": "ロブ・マックロー",
+            "result": "win",
+            "method": "1R 4:57 裸絞め<!--DREAM公式記録-->",
+            "event": "DREAM.17",
+            "round": "R1"
+          },
+          {
+            "date": "2011-05-29",
+            "opponent": "リッチ・クレメンティ",
+            "result": "win",
+            "method": "2R 2:17 フェイスロック",
+            "event": "DREAM JAPAN GP -2011バンタム級日本トーナメント-",
+            "round": "R2"
+          },
+          {
+            "date": "2011-04-09",
+            "opponent": "ライル・ビアボーム",
+            "result": "win",
+            "method": "1R 1:33 ネッククランク",
+            "event": "Strikeforce: Diaz vs. Daley",
+            "round": "R1"
+          },
+          {
+            "date": "2010-10-25",
+            "opponent": "ヨックタイ・シスオー",
+            "result": "win",
+            "method": "1R 1:00 アームロック",
+            "event": "DEEP 50 IMPACT 〜10年目の奇跡〜",
+            "round": "R1"
+          },
+          {
+            "date": "2010-09-25",
+            "opponent": "マーカス・アウレリオ",
+            "result": "win",
+            "method": "2R（10分/5分）終了 判定3-0",
+            "event": "DREAM.16",
+            "round": "R2"
+          },
+          {
+            "date": "2010-07-10",
+            "opponent": "川尻達也",
+            "result": "win",
+            "method": "1R 1:53 アキレス腱固め",
+            "event": "DREAM.15 【DREAMライト級タイトルマッチ】",
+            "round": "R1"
+          },
+          {
+            "date": "2010-04-17",
+            "opponent": "ギルバート・メレンデス",
+            "result": "loss",
+            "method": "5分5R終了 判定0-3",
+            "event": "Strikeforce: Nashville 【Strikeforce世界ライト級タイトルマッチ】",
+            "round": "R5"
+          },
+          {
+            "date": "2009-12-31",
+            "opponent": "廣田瑞人",
+            "result": "win",
+            "method": "1R 2:17 ハンマーロック",
+            "event": "Dynamite!! 〜勇気のチカラ2009〜",
+            "round": "R1"
+          },
+          {
+            "date": "2009-10-06",
+            "opponent": "ヨアキム・ハンセン",
+            "result": "win",
+            "method": "2R 4:56 腕ひしぎ十字固め",
+            "event": "DREAM.11 フェザー級グランプリ2009 決勝戦 【DREAMライト級タイトルマッチ】",
+            "round": "R2"
+          },
+          {
+            "date": "2009-07-20",
+            "opponent": "ビトー・\"シャオリン\"・ヒベイロ",
+            "result": "win",
+            "method": "2R（10分/5分）終了 判定3-0",
+            "event": "DREAM.10 ウェルター級グランプリ2009 決勝戦",
+            "round": "R2"
+          },
+          {
+            "date": "2009-04-05",
+            "opponent": "桜井\"マッハ\"速人",
+            "result": "loss",
+            "method": "1R 0:27 KO（パウンド）<!--DREAM公式記録-->",
+            "event": "DREAM.8 ウェルター級グランプリ2009 開幕戦 【ウェルター級グランプリ 1回戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2009-03-08",
+            "opponent": "デイビッド・ガードナー",
+            "result": "win",
+            "method": "1R 5:58 チョークスリーパー",
+            "event": "DREAM.7 フェザー級グランプリ2009 開幕戦",
+            "round": "R1"
+          },
+          {
+            "date": "2008-12-31",
+            "opponent": "エディ・アルバレス",
+            "result": "win",
+            "method": "1R 1:32 ヒールホールド",
+            "event": "Dynamite!! 〜勇気のチカラ2008〜",
+            "round": "R1"
+          },
+          {
+            "date": "2008-09-23",
+            "opponent": "トッド・ムーア",
+            "result": "win",
+            "method": "1R 1:10 裸絞め",
+            "event": "DREAM.6 ミドル級グランプリ2008 決勝戦",
+            "round": "R1"
+          },
+          {
+            "date": "2008-07-21",
+            "opponent": "ヨアキム・ハンセン",
+            "result": "loss",
+            "method": "1R 4:19 TKO（パウンド）",
+            "event": "DREAM.5 ライト級グランプリ2008 決勝戦 【ライト級グランプリ 決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2008-07-21",
+            "opponent": "宇野薫",
+            "result": "win",
+            "method": "2R（10分/5分）終了 判定3-0",
+            "event": "DREAM.5 ライト級グランプリ2008 決勝戦 【ライト級グランプリ 準決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2008-06-15",
+            "opponent": "永田克彦",
+            "result": "win",
+            "method": "1R 5:12 フットチョーク",
+            "event": "DREAM.4 ミドル級グランプリ2008 2nd ROUND 【ライト級グランプリ 2回戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2008-04-29",
+            "opponent": "J.Z.カルバン",
+            "result": "win",
+            "method": "2R（10分/5分）終了 判定3-0",
+            "event": "DREAM.2 ミドル級グランプリ2008 開幕戦 【ライト級グランプリ 1回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2008-03-15",
+            "opponent": "J.Z.カルバン",
+            "result": "nc",
+            "method": "1R 3:46 ノーコンテスト（偶発的な反則）",
+            "event": "DREAM.1 ライト級グランプリ2008 開幕戦 【ライト級グランプリ 1回戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2007-12-31",
+            "opponent": "チョン・ブギョン",
+            "result": "win",
+            "method": "2R（10分/5分）終了 判定3-0",
+            "event": "やれんのか! 大晦日! 2007",
+            "round": "R2"
+          },
+          {
+            "date": "2007-04-08",
+            "opponent": "ブライアン・ローアンユー",
+            "result": "win",
+            "method": "1R 1:33 腕ひしぎ十字固め",
+            "event": "PRIDE.34",
+            "round": "R1"
+          },
+          {
+            "date": "2007-02-17",
+            "opponent": "菊地昭",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "修斗 BACK TO OUR ROOTS 01 【修斗世界ミドル級チャンピオンシップ】",
+            "round": "R3"
+          },
+          {
+            "date": "2006-12-31",
+            "opponent": "ヨアキム・ハンセン",
+            "result": "win",
+            "method": "1R 2:04 フットチョーク",
+            "event": "PRIDE 男祭り 2006 -FUMETSU-",
+            "round": "R1"
+          },
+          {
+            "date": "2006-11-05",
+            "opponent": "クレイ・フレンチ",
+            "result": "win",
+            "method": "1R 3:57 三角絞め",
+            "event": "PRIDE 武士道 -其の十三-",
+            "round": "R1"
+          },
+          {
+            "date": "2006-10-14",
+            "opponent": "ジョージ・ソテロポロス",
+            "result": "win",
+            "method": "2R 0:05 反則失格（ローブロー）",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2006-08-26",
+            "opponent": "ジェイソン・ブラック",
+            "result": "win",
+            "method": "1R 1:58 三角絞め",
+            "event": "PRIDE 武士道 -其の十二-",
+            "round": "R1"
+          },
+          {
+            "date": "2006-02-17",
+            "opponent": "菊地昭",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 SHOOTO The Victory of The Truth 【修斗世界ミドル級チャンピオンシップ】",
+            "round": "R3"
+          },
+          {
+            "date": "2005-11-06",
+            "opponent": "弘中邦佳",
+            "result": "win",
+            "method": "1R 2:10 TKO（左眉のカット）",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2005-08-20",
+            "opponent": "桜井\"マッハ\"速人",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "修斗 ALIVE ROAD",
+            "round": "R3"
+          },
+          {
+            "date": "2005-07-30",
+            "opponent": "岩瀬茂俊",
+            "result": "win",
+            "method": "1R 0:35 反則失格（ローブロー）",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2005-01-29",
+            "opponent": "キース・ウィスニエフスキー",
+            "result": "win",
+            "method": "1R 2:22 腕ひしぎ腋固め",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2004-10-30",
+            "opponent": "中尾受太郎",
+            "result": "loss",
+            "method": "1R 4:29 KO（左ストレート）",
+            "event": "DEEP 16th IMPACT 【ウェルター級トーナメント 準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2004-07-03",
+            "opponent": "池本誠知",
+            "result": "win",
+            "method": "2R 0:52 腕ひしぎ十字固め",
+            "event": "DEEP 15th IMPACT 【ウェルター級トーナメント 1回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2003-11-24",
+            "opponent": "佐藤隆平",
+            "result": "win",
+            "method": "不戦勝（棄権）",
+            "event": "club DEEP 4th in 西調布格闘技アリーナ 【フューチャーキングトーナメント 82 kg以下級 決勝】",
+            "round": "—"
+          },
+          {
+            "date": "2003-11-24",
+            "opponent": "龍保利",
+            "result": "win",
+            "method": "1R 0:51 腕ひしぎ十字固め",
+            "event": "club DEEP 4th in 西調布格闘技アリーナ 【フューチャーキングトーナメント 82 kg以下級 準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2003-11-24",
+            "opponent": "沖村大",
+            "result": "win",
+            "method": "1R 3:14 腕ひしぎ十字固め",
+            "event": "club DEEP 4th in 西調布格闘技アリーナ 【フューチャーキングトーナメント 82 kg以下級 1回戦】",
+            "round": "R1"
+          }
+        ],
+        "live": true,
+        "birthPlace": "静岡県静岡市",
+        "age": 43,
+        "total": 62
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "matsushima-koyomi",
+      "nameJa": "松嶋こよみ",
+      "before": {
+        "wins": 6,
+        "losses": 3,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 9
+      },
+      "after": {
+        "wins": 8,
+        "losses": 3,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 11
+      },
+      "expectedIncrement": 2,
+      "actualIncrement": 2,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 15,
+        "losses": 8,
+        "draws": 0,
+        "ko": 9,
+        "sub": 1,
+        "decision": 5,
+        "history": [
+          {
+            "date": "2026-05-10",
+            "opponent": "ライアン・カファロ",
+            "result": "loss",
+            "method": "3R 2:23 ドラゴンスリーパー",
+            "event": "RIZIN.53",
+            "round": "R3",
+            "weightClass": "66.0kg契約"
+          },
+          {
+            "date": "2024-07-12",
+            "opponent": "ソドノムドルジ・プレブドルジ",
+            "result": "win",
+            "method": "2R 2:47 KO（ボディへの膝蹴り）",
+            "event": "GLADIATOR CHALLENGER SERIES02「Matsushima vs Sodnomdorj」",
+            "round": "R2"
+          },
+          {
+            "date": "2024-01-21",
+            "opponent": "カルシャガ・ダウトベック",
+            "result": "loss",
+            "method": "1R 4:41 TKO（左ストレート→パウンド）",
+            "event": "TOP BRIGHTS.1",
+            "round": "R1"
+          },
+          {
+            "date": "2023-07-02",
+            "opponent": "劉獅",
+            "result": "win",
+            "method": "1R 1:54 TKO（右フック→サッカーボールキック）",
+            "event": "DEEP 114 IMPACT",
+            "round": "R1"
+          },
+          {
+            "date": "2022-10-23",
+            "opponent": "イー・ジャー",
+            "result": "loss",
+            "method": "5分3R終了 判定1-2",
+            "event": "Road to UFC: Singapore 【トーナメント 準決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-06-09",
+            "opponent": "ホン・ジュンヨン",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "Road to UFC: Singapore 【トーナメント 1回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2020-12-04",
+            "opponent": "ゲイリー・トノン",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "One Championship: Big Bang",
+            "round": "R3"
+          },
+          {
+            "date": "2020-02-07",
+            "opponent": "キム・ジェウォン",
+            "result": "win",
+            "method": "3R 0:24 TKO（パウンド）",
+            "event": "ONE Championship: Warrior's Code",
+            "round": "R3"
+          },
+          {
+            "date": "2019-08-02",
+            "opponent": "マーティン・ニューイェン",
+            "result": "loss",
+            "method": "2R 4:40 TKO（パウンド）",
+            "event": "ONE Championship: Dawn of Heroes 【ONE世界フェザー級タイトルマッチ】",
+            "round": "R2"
+          },
+          {
+            "date": "2019-06-15",
+            "opponent": "クォン・ウォンイル",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "ONE Championship: Legendary Quest",
+            "round": "R3"
+          },
+          {
+            "date": "2018-09-22",
+            "opponent": "マラット・ガフロフ",
+            "result": "win",
+            "method": "1R 2:41 TKO（右フック→パウンド）",
+            "event": "ONE Championship: Conquest of Heroes",
+            "round": "R1"
+          },
+          {
+            "date": "2018-04-15",
+            "opponent": "ISAO",
+            "result": "loss",
+            "method": "1R 4:34 反則（グラウンドでの顔面膝蹴り）",
+            "event": "PANCRASE 295 【パンクラスフェザー級暫定王座決定戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2017-12-10",
+            "opponent": "カイル・アグォン",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 292",
+            "round": "R3"
+          },
+          {
+            "date": "2017-08-20",
+            "opponent": "粕谷優介",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "PANCRASE 289",
+            "round": "R3"
+          },
+          {
+            "date": "2017-04-23",
+            "opponent": "内村洋次郎",
+            "result": "win",
+            "method": "3分3R終了 判定3-0",
+            "event": "PANCRASE 286",
+            "round": "R3"
+          },
+          {
+            "date": "2016-12-18",
+            "opponent": "マルロン・サンドロ",
+            "result": "loss",
+            "method": "1R 2:51 TKO（肘打ち連打→パウンド）",
+            "event": "PANCRASE 283",
+            "round": "R1"
+          },
+          {
+            "date": "2016-09-11",
+            "opponent": "牛久絢太郎",
+            "result": "win",
+            "method": "3R 3:11 キムラロック",
+            "event": "PANCRASE 280",
+            "round": "R3"
+          },
+          {
+            "date": "2016-04-08",
+            "opponent": "ロランド・ディ",
+            "result": "loss",
+            "method": "1R 0:23 KO（左フック）",
+            "event": "PXC 53",
+            "round": "R1"
+          },
+          {
+            "date": "2015-12-20",
+            "opponent": "荒川大輔",
+            "result": "win",
+            "method": "1R 0:16 KO（右アッパー）",
+            "event": "修斗 インフィニティリーグ2015 フェザー級最終戦 【修斗新人王決定トーナメント ウェルター級 決勝戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2015-09-21",
+            "opponent": "藤石義和",
+            "result": "win",
+            "method": "2R 0:43 KO（左ハイキック）",
+            "event": "修斗 闘裸男16 TORAO/TOKYO",
+            "round": "R2"
+          },
+          {
+            "date": "2015-08-07",
+            "opponent": "エリック・ガトマン",
+            "result": "win",
+            "method": "1R 3:06 KO（バスター）",
+            "event": "PXC 49",
+            "round": "R1"
+          },
+          {
+            "date": "2015-05-02",
+            "opponent": "デーブ・レダック",
+            "result": "win",
+            "method": "1R 0:19 TKO（パンチ連打）",
+            "event": "Hybrid Pro Series 3",
+            "round": "R1"
+          },
+          {
+            "date": "2015-02-11",
+            "opponent": "高橋圭典",
+            "result": "win",
+            "method": "1R 0:10 KO（右ストレート→パウンド）",
+            "event": "修斗 SHOOTO GIG TOKYO Vol.18",
+            "round": "R1"
+          }
+        ],
+        "live": true,
+        "nickname": "非RIZIN流 決意の出陣",
+        "birthPlace": "神奈川県横浜市",
+        "age": 33,
+        "total": 23
+      },
+      "row1HasRealData": true,
       "row2ExceedsRow1After": false,
       "crossedOverNewly": false
     },
@@ -1833,6 +6390,437 @@
       "crossedOverNewly": false
     },
     {
+      "slug": "minowa-hiroba",
+      "nameJa": "箕輪ひろば",
+      "before": {
+        "wins": 10,
+        "losses": 2,
+        "draws": 0,
+        "orgsWithBouts": [
+          "修斗"
+        ],
+        "total": 12
+      },
+      "after": {
+        "wins": 11,
+        "losses": 2,
+        "draws": 0,
+        "orgsWithBouts": [
+          "修斗"
+        ],
+        "total": 13
+      },
+      "expectedIncrement": 1,
+      "actualIncrement": 1,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 14,
+        "losses": 6,
+        "draws": 0,
+        "ko": 3,
+        "sub": 8,
+        "decision": 3,
+        "history": [
+          {
+            "date": "2025-07-18",
+            "opponent": "イ・スンチョル",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "ONE Friday Fights 116: Adam vs. Mohammed",
+            "round": "R3"
+          },
+          {
+            "date": "2024-07-05",
+            "opponent": "ジェレミー・ミアド",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "ONE Fight Night 23: Ok vs. Rasulov",
+            "round": "R3"
+          },
+          {
+            "date": "2024-01-28",
+            "opponent": "グスタボ・バラート",
+            "result": "loss",
+            "method": "5分3R終了 判定1-2",
+            "event": "ONE 165: Superlek vs. Takeru",
+            "round": "R3"
+          },
+          {
+            "date": "2023-04-22",
+            "opponent": "ボカン・マスンヤネ",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "One FightNight9",
+            "round": "R3"
+          },
+          {
+            "date": "2022-01-28",
+            "opponent": "ジャレッド・ブルックス",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "One Championship: ONLY THE BRAVE",
+            "round": "R3"
+          },
+          {
+            "date": "2021-02-26",
+            "opponent": "アレックス・シウバ",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "One Championship: FISTS OF FURY 3",
+            "round": "R3"
+          },
+          {
+            "date": "2020-10-30",
+            "opponent": "リト・アディワン",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "One Championship: Inside the Matrix 3",
+            "round": "R3"
+          },
+          {
+            "date": "2020-01-26",
+            "opponent": "小巻洋平",
+            "result": "win",
+            "method": "2R 4:53 スリーパーホールド",
+            "event": "修斗 【修斗世界ストロー級王座決定戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2019-05-06",
+            "opponent": "ジャレッド ライアン アルマザン",
+            "result": "win",
+            "method": "3R 2:22 スリーパーホールド",
+            "event": "修斗 30th ANNIVERSARY TOUR 30周年記念大会",
+            "round": "R3"
+          },
+          {
+            "date": "2018-12-15",
+            "opponent": "ニシダ☆ショー",
+            "result": "win",
+            "method": "2R 4:29 スリーパーホールド",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2018-09-23",
+            "opponent": "小巻洋平",
+            "result": "win",
+            "method": "1R 4:36 KO",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2018-05-13",
+            "opponent": "楳沢智治",
+            "result": "loss",
+            "method": "5分2R終了 判定0-2",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2018-03-25",
+            "opponent": "新井丈",
+            "result": "win",
+            "method": "2R 4:05 スリーパーホールド",
+            "event": "プロフェッショナル修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2017-10-15",
+            "opponent": "ふじい ☆ ペリー",
+            "result": "win",
+            "method": "1R 4:36 TKO",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2017-04-23",
+            "opponent": "猿田洋祐",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "修斗",
+            "round": "R3"
+          },
+          {
+            "date": "2016-12-18",
+            "opponent": "大西ヒロト",
+            "result": "win",
+            "method": "1R 3:25 スリーパーホールド",
+            "event": "修斗",
+            "round": "R1"
+          },
+          {
+            "date": "2016-10-16",
+            "opponent": "小巻洋平",
+            "result": "win",
+            "method": "2R 3:48 V1アームロック",
+            "event": "修斗 GIG TOKYO Vol.22",
+            "round": "R2"
+          },
+          {
+            "date": "2016-05-28",
+            "opponent": "ZONO",
+            "result": "win",
+            "method": "1R 4:04 スリーパーホールド",
+            "event": "修斗 GIG TOKYO Vol.21",
+            "round": "R1"
+          },
+          {
+            "date": "2016-01-11",
+            "opponent": "牧ヶ谷篤",
+            "result": "win",
+            "method": "2R 1:15 KO",
+            "event": "修斗",
+            "round": "R2"
+          },
+          {
+            "date": "2015-11-08",
+            "opponent": "ふじい☆ペリー",
+            "result": "win",
+            "method": "1R 4:43 フロントスリーパーホールド",
+            "event": "修斗",
+            "round": "R1"
+          }
+        ],
+        "live": true,
+        "birthPlace": "埼玉県所沢市",
+        "age": 28,
+        "total": 20
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
+      "slug": "honda-ryosuke",
+      "nameJa": "本田良介",
+      "before": {
+        "wins": 10,
+        "losses": 6,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "修斗"
+        ],
+        "total": 17
+      },
+      "after": {
+        "wins": 12,
+        "losses": 6,
+        "draws": 1,
+        "orgsWithBouts": [
+          "RIZIN",
+          "DEEP",
+          "修斗"
+        ],
+        "total": 19
+      },
+      "expectedIncrement": 2,
+      "actualIncrement": 2,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 14,
+        "losses": 8,
+        "draws": 1,
+        "ko": 2,
+        "sub": 3,
+        "decision": 9,
+        "history": [
+          {
+            "date": "2026-04-12",
+            "opponent": "火の鳥",
+            "result": "loss",
+            "method": "1R 4:59 TKO（右ストレート→パウンド）",
+            "event": "RIZIN LANDMARK 13",
+            "round": "R1",
+            "weightClass": "57.0kg契約"
+          },
+          {
+            "date": "2025-08-17",
+            "opponent": "力也",
+            "result": "win",
+            "method": "1R 4:51 リアネイキッドチョーク",
+            "event": "DEEP 126 IMPACT",
+            "round": "R1"
+          },
+          {
+            "date": "2025-03-15",
+            "opponent": "KENTA",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "DEEP 124 IMPACT",
+            "round": "R3"
+          },
+          {
+            "date": "2024-12-08",
+            "opponent": "関原翔",
+            "result": "loss",
+            "method": "1R 5:00 失格（グラウンドでの膝蹴り）",
+            "event": "DEEP 123 IMPACT",
+            "round": "R1"
+          },
+          {
+            "date": "2024-08-16",
+            "opponent": "トレプチ・ドガク",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "ONE Friday Fights 75",
+            "round": "R3"
+          },
+          {
+            "date": "2024-05-31",
+            "opponent": "野田遼介",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "ONE Friday Fights 65",
+            "round": "R3"
+          },
+          {
+            "date": "2024-03-08",
+            "opponent": "サンジャル・ザキロフ",
+            "result": "loss",
+            "method": "2R 3:35 TKO",
+            "event": "ONE Friday Fights 54",
+            "round": "R2"
+          },
+          {
+            "date": "2023-12-01",
+            "opponent": "デイブ・バンギギ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "ONE Friday Fights 43",
+            "round": "R3"
+          },
+          {
+            "date": "2023-05-07",
+            "opponent": "福田龍彌",
+            "result": "loss",
+            "method": "5分3R終了 判定0-5",
+            "event": "DEEP 113 IMPACT 【DEEPフライ級グランプリ決勝/DEEPフライ級暫定王者決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2023-02-11",
+            "opponent": "伊藤裕樹",
+            "result": "win",
+            "method": "5分3R終了 判定5-0",
+            "event": "DEEP 112 IMPACT 【DEEPフライ級グランプリ準決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-12-11",
+            "opponent": "松場貴志",
+            "result": "win",
+            "method": "5分3R終了 判定5-0",
+            "event": "DEEP 111 IMPACT 【DEEPフライ級グランプリ2回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-08-21",
+            "opponent": "越智晴雄",
+            "result": "win",
+            "method": "5分3R終了 判定4-1",
+            "event": "DEEP 109 IMPACT 【DEEPフライ級グランプリ1回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-07-10",
+            "opponent": "杉山廣平",
+            "result": "loss",
+            "method": "5分2R終了 判定0-3",
+            "event": "DEEP 108 IMPACT",
+            "round": "R2"
+          },
+          {
+            "date": "2021-12-12",
+            "opponent": "駒杵嵩大",
+            "result": "win",
+            "method": "2R 3:27 TKO",
+            "event": "DEEP 105 IMPACT",
+            "round": "R2"
+          },
+          {
+            "date": "2021-03-13",
+            "opponent": "加藤瑠偉",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "DEEP TOKYO IMPACT 2021",
+            "round": "R2"
+          },
+          {
+            "date": "2020-07-12",
+            "opponent": "小巻洋平",
+            "result": "win",
+            "method": "1R 4:51 スリーパーホールド",
+            "event": "修斗 PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA",
+            "round": "R1"
+          },
+          {
+            "date": "2019-09-22",
+            "opponent": "黒澤亮平",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "修斗 SHOOTO 30th ANNIVERSARY TOUR 第7戦",
+            "round": "R3"
+          },
+          {
+            "date": "2019-06-16",
+            "opponent": "安芸柊斗",
+            "result": "win",
+            "method": "2R 3:32 スリーパーホールド",
+            "event": "修斗 プロフェッショナル修斗公式戦福岡大会",
+            "round": "R2"
+          },
+          {
+            "date": "2018-11-17",
+            "opponent": "猿丸ジュンジ",
+            "result": "loss",
+            "method": "2R 0:17 テクニカル判定0-3",
+            "event": "修斗 プロフェッショナル修斗後楽園ホール大会",
+            "round": "R2"
+          },
+          {
+            "date": "2018-07-15",
+            "opponent": "木内 SKINNY ZOMBIE 崇雅",
+            "result": "win",
+            "method": "5分2R終了 判定2-0",
+            "event": "修斗 プロフェッショナル修斗後楽園ホール大会",
+            "round": "R2"
+          },
+          {
+            "date": "2017-12-17",
+            "opponent": "MC たわし",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 インフィニティリーグ2017優勝決定戦 【新人王決定トーナメント2017決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2017-09-10",
+            "opponent": "堀川 55 滉介",
+            "result": "win",
+            "method": "1R 4:24 KO",
+            "event": "修斗 プロフェッショナル修斗公式戦",
+            "round": "R1"
+          },
+          {
+            "date": "2017-05-12",
+            "opponent": "関口祐冬",
+            "result": "draw",
+            "method": "5分2R終了 判定0-0",
+            "event": "修斗 プロフェッショナル修斗公式戦後楽園ホール大会",
+            "round": "R2"
+          }
+        ],
+        "live": true,
+        "total": 23
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
       "slug": "asahina-ken",
       "nameJa": "旭那 拳",
       "before": {
@@ -2214,9 +7202,9 @@
       "slug": "nojiri-yasuyuki",
       "nameJa": "野尻 定由",
       "before": {
-        "wins": 8,
+        "wins": 7,
         "losses": 6,
-        "draws": 2,
+        "draws": 3,
         "orgsWithBouts": [
           "パンクラス",
           "修斗"
@@ -2224,9 +7212,9 @@
         "total": 16
       },
       "after": {
-        "wins": 9,
+        "wins": 8,
         "losses": 6,
-        "draws": 2,
+        "draws": 3,
         "orgsWithBouts": [
           "パンクラス",
           "修斗"
@@ -2376,9 +7364,9 @@
       "slug": "yuki-daiki",
       "nameJa": "結城 大樹",
       "before": {
-        "wins": 7,
+        "wins": 6,
         "losses": 6,
-        "draws": 2,
+        "draws": 3,
         "orgsWithBouts": [
           "パンクラス",
           "修斗"
@@ -2386,9 +7374,9 @@
         "total": 15
       },
       "after": {
-        "wins": 10,
+        "wins": 9,
         "losses": 7,
-        "draws": 4,
+        "draws": 5,
         "orgsWithBouts": [
           "パンクラス",
           "修斗"
@@ -2399,9 +7387,9 @@
       "actualIncrement": 6,
       "incrementMatchesExpected": true,
       "row1": {
-        "wins": 7,
+        "wins": 6,
         "losses": 5,
-        "draws": 1,
+        "draws": 2,
         "ko": 0,
         "sub": 1,
         "decision": 5,
@@ -2489,7 +7477,7 @@
           {
             "date": "2021-07-25",
             "opponent": "仲山貴志",
-            "result": "win",
+            "result": "draw",
             "method": "",
             "event": "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship",
             "round": ""
@@ -2625,6 +7613,44 @@
       "crossedOverNewly": false
     },
     {
+      "slug": "perpetuo-hernani",
+      "nameJa": "エルナニ ペルペトゥオ",
+      "before": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0,
+        "orgsWithBouts": [],
+        "total": 0
+      },
+      "after": {
+        "wins": 8,
+        "losses": 3,
+        "draws": 1,
+        "orgsWithBouts": [
+          "修斗"
+        ],
+        "total": 12
+      },
+      "expectedIncrement": 12,
+      "actualIncrement": 12,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 0,
+        "ko": 0,
+        "sub": 0,
+        "decision": 0,
+        "history": [],
+        "live": false,
+        "noRecordData": true,
+        "total": 0
+      },
+      "row1HasRealData": false,
+      "row2ExceedsRow1After": false,
+      "crossedOverNewly": false
+    },
+    {
       "slug": "tamura-hibiki",
       "nameJa": "田村 ヒビキ",
       "before": {
@@ -2677,7 +7703,755 @@
       "row1HasRealData": true,
       "row2ExceedsRow1After": true,
       "crossedOverNewly": false
+    },
+    {
+      "slug": "gojima-daiki",
+      "nameJa": "合島大樹",
+      "before": {
+        "wins": 8,
+        "losses": 9,
+        "draws": 1,
+        "orgsWithBouts": [
+          "パンクラス"
+        ],
+        "total": 18
+      },
+      "after": {
+        "wins": 12,
+        "losses": 11,
+        "draws": 2,
+        "orgsWithBouts": [
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 25
+      },
+      "expectedIncrement": 7,
+      "actualIncrement": 7,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 8,
+        "losses": 9,
+        "draws": 1,
+        "ko": 3,
+        "sub": 1,
+        "decision": 4,
+        "history": [
+          {
+            "date": "2025-11-09",
+            "opponent": "神部篤坊",
+            "result": "loss",
+            "method": "TKO/グラウンドのパンチ",
+            "event": "PANCRASE 358",
+            "round": "R1 0:59"
+          },
+          {
+            "date": "2025-03-09",
+            "opponent": "後藤丈治",
+            "result": "loss",
+            "method": "TKO/スタンドのパンチ",
+            "event": "PANCRASE 352",
+            "round": "R1 4:12"
+          },
+          {
+            "date": "2024-12-15",
+            "opponent": "安藤武尊",
+            "result": "win",
+            "method": "判定/3-0",
+            "event": "PANCRASE 351",
+            "round": "R3 5:00"
+          },
+          {
+            "date": "2024-05-25",
+            "opponent": "小原統哉",
+            "result": "win",
+            "method": "TKO/スタンドのパンチ",
+            "event": "PANCRASE 343",
+            "round": "R2 3:31"
+          },
+          {
+            "date": "2018-11-25",
+            "opponent": "原田惟紘",
+            "result": "win",
+            "method": "TKO/グラウンドのパンチ",
+            "event": "PANCRASE301",
+            "round": "R3 1:24"
+          },
+          {
+            "date": "2018-07-15",
+            "opponent": "金太郎",
+            "result": "loss",
+            "method": "判定/0-3",
+            "event": "PANCRASE 大阪大会",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2018-02-04",
+            "opponent": "河村泰博",
+            "result": "loss",
+            "method": "TKO(レフェリーストップ)/三角絞め",
+            "event": "PANCRASE293",
+            "round": "R2 2:25"
+          },
+          {
+            "date": "2017-10-08",
+            "opponent": "清水俊一",
+            "result": "loss",
+            "method": "判定/2-1",
+            "event": "PANCRASE290",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2017-03-12",
+            "opponent": "TSUNE",
+            "result": "loss",
+            "method": "判定/3-0",
+            "event": "PANCRASE285",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2016-12-18",
+            "opponent": "坂本瑞氣",
+            "result": "win",
+            "method": "TKO/グラウンドのパンチ",
+            "event": "PANCRASE283",
+            "round": "R3 2:09"
+          },
+          {
+            "date": "2016-03-13",
+            "opponent": "福島秀和",
+            "result": "loss",
+            "method": "判定/3-0",
+            "event": "PANCRASE276",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2015-11-01",
+            "opponent": "アラン“ヒロ”ヤマニハ",
+            "result": "loss",
+            "method": "判定/1-2",
+            "event": "PANCRASE 271",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2015-07-05",
+            "opponent": "小野“名人\"浩",
+            "result": "win",
+            "method": "ギブアップ/腕ひしぎ十字固め",
+            "event": "PANCRASE 268",
+            "round": "R1 2:38"
+          },
+          {
+            "date": "2015-05-31",
+            "opponent": "滝田J太郎",
+            "result": "win",
+            "method": "判定/0-3",
+            "event": "PANCRASE 267",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2015-02-01",
+            "opponent": "井関遼",
+            "result": "win",
+            "method": "判定/3-0",
+            "event": "PANCRASE 264",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2014-10-05",
+            "opponent": "藤井伸樹",
+            "result": "loss",
+            "method": "ギブアップ/チョークスリーパー",
+            "event": "PANCRASE 261",
+            "round": "R3 1:01"
+          },
+          {
+            "date": "2014-06-29",
+            "opponent": "CORO",
+            "result": "win",
+            "method": "判定/1-2",
+            "event": "PANCRASE 259",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2014-02-02",
+            "opponent": "富田浩司",
+            "result": "draw",
+            "method": "判定/0-0",
+            "event": "PANCRASE 256",
+            "round": "R2 5:00"
+          }
+        ],
+        "live": false,
+        "total": 18
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": true,
+      "crossedOverNewly": true
     }
   ],
-  "violations": []
+  "violations": [
+    {
+      "slug": "ougikubo-hiromasa",
+      "nameJa": "扇久保 博正",
+      "before": {
+        "wins": 19,
+        "losses": 6,
+        "draws": 0,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 25
+      },
+      "after": {
+        "wins": 30,
+        "losses": 10,
+        "draws": 2,
+        "orgsWithBouts": [
+          "RIZIN",
+          "修斗"
+        ],
+        "total": 42
+      },
+      "expectedIncrement": 17,
+      "actualIncrement": 17,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 30,
+        "losses": 9,
+        "draws": 2,
+        "ko": 1,
+        "sub": 6,
+        "decision": 23,
+        "history": [
+          {
+            "date": "2026-06-06",
+            "opponent": "神龍誠",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN LANDMARK 14 【RIZINフライ級タイトルマッチ】",
+            "round": "R3",
+            "weightClass": "RIZINフライ級タイトルマッチ"
+          },
+          {
+            "date": "2025-12-31",
+            "opponent": "元谷友貴",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN 師走の超強者祭り 【RIZINフライ級王座決定戦/RIZINフライ級ワールドグランプリ決勝】",
+            "round": "R3",
+            "weightClass": "RIZINフライ級タイトルマッチ"
+          },
+          {
+            "date": "2025-09-28",
+            "opponent": "アリベク・ガジャマトフ",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.51 【RIZINフライ級ワールドグランプリ準決勝】",
+            "round": "R3",
+            "weightClass": "57.0kg契約 フライ級トーナメント2回戦"
+          },
+          {
+            "date": "2025-07-27",
+            "opponent": "ホセ・トーレス",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINフライ級ワールドグランプリ1回戦】",
+            "round": "R3",
+            "weightClass": "57.0kg契約"
+          },
+          {
+            "date": "2024-07-28",
+            "opponent": "神龍誠",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "超RIZIN.3",
+            "round": "R3"
+          },
+          {
+            "date": "2023-12-31",
+            "opponent": "ジョン・ドッドソン",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.45",
+            "round": "R3"
+          },
+          {
+            "date": "2023-07-30",
+            "opponent": "フアン・アーチュレッタ",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "超RIZIN.2 【RIZINバンタム級王座決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-12-31",
+            "opponent": "堀口恭司",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN.40 【RIZIN × BELLATOR全面対抗戦 中堅戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2022-09-25",
+            "opponent": "キム・スーチョル",
+            "result": "loss",
+            "method": "5分3R終了 判定0-3",
+            "event": "RIZIN.38",
+            "round": "R3"
+          },
+          {
+            "date": "2021-12-31",
+            "opponent": "朝倉海",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.33 【RIZINバンタム級JAPANグランプリ 決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2021-12-31",
+            "opponent": "井上直樹",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.33 【RIZINバンタム級JAPANグランプリ 準決勝】",
+            "round": "R3"
+          },
+          {
+            "date": "2021-09-19",
+            "opponent": "大塚隆史",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.30 【RIZINバンタム級JAPANグランプリ 2回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2021-06-13",
+            "opponent": "春日井“寒天”たけし",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.28 【RIZINバンタム級JAPANグランプリ 1回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2020-11-21",
+            "opponent": "瀧澤謙太",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "RIZIN.25",
+            "round": "R3"
+          },
+          {
+            "date": "2020-08-10",
+            "opponent": "朝倉海",
+            "result": "loss",
+            "method": "1R 4:31 TKO（サッカーボールキック）",
+            "event": "RIZIN.23 - CALLING OVER - 【RIZINバンタム級王座決定戦】",
+            "round": "R1"
+          },
+          {
+            "date": "2019-12-31",
+            "opponent": "石渡伸太郎",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "RIZIN.20 【RIZINバンタム級挑戦者決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2019-07-28",
+            "opponent": "元谷友貴",
+            "result": "win",
+            "method": "5分3R終了 判定2-1",
+            "event": "RIZIN.17",
+            "round": "R3"
+          },
+          {
+            "date": "2019-05-06",
+            "opponent": "清水清隆",
+            "result": "win",
+            "method": "4R 0:40 テクニカル判定3-0",
+            "event": "修斗 【修斗世界フライ級チャンピオンシップ】",
+            "round": "R4"
+          },
+          {
+            "date": "2018-07-29",
+            "opponent": "堀口恭司",
+            "result": "loss",
+            "method": "2R（10分/5分）終了 判定0-3",
+            "event": "RIZIN.11",
+            "round": "R2"
+          },
+          {
+            "date": "2017-10-15",
+            "opponent": "オニボウズ",
+            "result": "win",
+            "method": "1R 4:26 スリーパーホールド",
+            "event": "修斗 【修斗世界フライ級チャンピオンシップ】",
+            "round": "R1"
+          },
+          {
+            "date": "2017-04-23",
+            "opponent": "ダニー・マルティネス",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗",
+            "round": "R3"
+          },
+          {
+            "date": "2016-04-23",
+            "opponent": "菅原雅顕",
+            "result": "win",
+            "method": "5R 4:48 フロントスリーパーホールド",
+            "event": "修斗 FIGHT & MOSH 【修斗世界バンタム級チャンピオンシップ】",
+            "round": "R5"
+          },
+          {
+            "date": "2015-11-29",
+            "opponent": "猿田洋祐",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗",
+            "round": "R3"
+          },
+          {
+            "date": "2014-10-04",
+            "opponent": "シーザー・スクラヴォス",
+            "result": "win",
+            "method": "5分5R終了 判定3-0",
+            "event": "VTJ 6th 【フライ級トーナメント 決勝】",
+            "round": "R5"
+          },
+          {
+            "date": "2014-06-28",
+            "opponent": "カナ・ハヤット",
+            "result": "win",
+            "method": "1R 1:20 リアネイキドチョーク",
+            "event": "VTJ 5th in OSAKA 【フライ級トーナメント 準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2014-02-23",
+            "opponent": "春日井健士",
+            "result": "win",
+            "method": "5分3R終了 判定2-0",
+            "event": "VTJ 4th 【フライ級トーナメント 1回戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2013-03-16",
+            "opponent": "堀口恭司",
+            "result": "loss",
+            "method": "2R 1:35 スリーパーホールド",
+            "event": "修斗 2013年第2戦 【修斗世界フェザー級チャンピオンシップ】",
+            "round": "R2"
+          },
+          {
+            "date": "2012-05-18",
+            "opponent": "岡嵜康悦",
+            "result": "win",
+            "method": "3R 3:32 スリーパーホールド",
+            "event": "修斗 【修斗世界フェザー級チャンピオンシップ】",
+            "round": "R3"
+          },
+          {
+            "date": "2012-01-08",
+            "opponent": "徹肌ィ郎",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 ISAMI presents サバイバートーナメント決勝戦 【修斗環太平洋フェザー級チャンピオンシップ】",
+            "round": "R3"
+          },
+          {
+            "date": "2011-04-03",
+            "opponent": "松本輝之",
+            "result": "win",
+            "method": "5分3R終了 判定2-0",
+            "event": "修斗 BORDER -season 3- 「春雷」 【修斗環太平洋フェザー級チャンピオン決定戦】",
+            "round": "R3"
+          },
+          {
+            "date": "2010-09-23",
+            "opponent": "田澤聡",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "修斗 The Way of SHOOTO 05 〜Like a Tiger, Like a Dragon〜",
+            "round": "R3"
+          },
+          {
+            "date": "2010-05-30",
+            "opponent": "エドゥアルド・ダンタス",
+            "result": "loss",
+            "method": "3R 1:21 スリーパーホールド",
+            "event": "修斗 The Way of SHOOTO 03 〜Like a Tiger, Like a Dragon〜",
+            "round": "R3"
+          },
+          {
+            "date": "2009-10-18",
+            "opponent": "岡嵜康悦",
+            "result": "loss",
+            "method": "2R 2:08 KO（右フック→パウンド）<!--修斗公式記録-->",
+            "event": "修斗 SHOOTO GIG TOKYO 3 【修斗環太平洋フェザー級チャンピオン決定戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2009-03-20",
+            "opponent": "徹肌ィ郎",
+            "result": "win",
+            "method": "5分3R終了 判定3-0",
+            "event": "\"修斗伝承 06\" ROAD TO 20th ANNIVERSARY",
+            "round": "R3"
+          },
+          {
+            "date": "2008-11-29",
+            "opponent": "田澤聡",
+            "result": "draw",
+            "method": "5分3R終了 判定0-1",
+            "event": "\"修斗伝承 04\" ROAD TO 20th ANNIVERSARY",
+            "round": "R3"
+          },
+          {
+            "date": "2008-07-18",
+            "opponent": "田中ヒロユキ",
+            "result": "win",
+            "method": "1R 1:35 TKO（パウンド）",
+            "event": "\"修斗伝承 02\" ROAD TO 20th ANNIVERSARY",
+            "round": "R1"
+          },
+          {
+            "date": "2007-12-08",
+            "opponent": "金山康宏",
+            "result": "win",
+            "method": "2R 3:35 スリーパーホールド",
+            "event": "修斗 【新人王決定トーナメント フェザー級 決勝】",
+            "round": "R2"
+          },
+          {
+            "date": "2007-09-22",
+            "opponent": "田村和也",
+            "result": "win",
+            "method": "1R 3:43 スリーパーホールド",
+            "event": "修斗 BACK TO OUR ROOTS 05 【新人王決定トーナメント フェザー級 準決勝】",
+            "round": "R1"
+          },
+          {
+            "date": "2007-06-30",
+            "opponent": "太田悟",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 【新人王決定トーナメント フェザー級 2回戦】",
+            "round": "R2"
+          },
+          {
+            "date": "2007-03-04",
+            "opponent": "矢作尚紀",
+            "result": "draw",
+            "method": "5分2R終了 判定1-0",
+            "event": "修斗 下北沢修斗劇場 第17弾 〜男はつよいよ〜",
+            "round": "R2"
+          },
+          {
+            "date": "2006-10-01",
+            "opponent": "マイク・ハヤカワ",
+            "result": "win",
+            "method": "5分2R終了 判定3-0",
+            "event": "修斗 下北沢修斗劇場 第16弾 〜燃えろいい男〜",
+            "round": "R2"
+          }
+        ],
+        "live": true,
+        "nickname": "打・投・極・根性",
+        "birthPlace": "岩手県久慈市",
+        "age": 39,
+        "total": 41
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": true,
+      "crossedOverNewly": true
+    },
+    {
+      "slug": "gojima-daiki",
+      "nameJa": "合島大樹",
+      "before": {
+        "wins": 8,
+        "losses": 9,
+        "draws": 1,
+        "orgsWithBouts": [
+          "パンクラス"
+        ],
+        "total": 18
+      },
+      "after": {
+        "wins": 12,
+        "losses": 11,
+        "draws": 2,
+        "orgsWithBouts": [
+          "パンクラス",
+          "修斗"
+        ],
+        "total": 25
+      },
+      "expectedIncrement": 7,
+      "actualIncrement": 7,
+      "incrementMatchesExpected": true,
+      "row1": {
+        "wins": 8,
+        "losses": 9,
+        "draws": 1,
+        "ko": 3,
+        "sub": 1,
+        "decision": 4,
+        "history": [
+          {
+            "date": "2025-11-09",
+            "opponent": "神部篤坊",
+            "result": "loss",
+            "method": "TKO/グラウンドのパンチ",
+            "event": "PANCRASE 358",
+            "round": "R1 0:59"
+          },
+          {
+            "date": "2025-03-09",
+            "opponent": "後藤丈治",
+            "result": "loss",
+            "method": "TKO/スタンドのパンチ",
+            "event": "PANCRASE 352",
+            "round": "R1 4:12"
+          },
+          {
+            "date": "2024-12-15",
+            "opponent": "安藤武尊",
+            "result": "win",
+            "method": "判定/3-0",
+            "event": "PANCRASE 351",
+            "round": "R3 5:00"
+          },
+          {
+            "date": "2024-05-25",
+            "opponent": "小原統哉",
+            "result": "win",
+            "method": "TKO/スタンドのパンチ",
+            "event": "PANCRASE 343",
+            "round": "R2 3:31"
+          },
+          {
+            "date": "2018-11-25",
+            "opponent": "原田惟紘",
+            "result": "win",
+            "method": "TKO/グラウンドのパンチ",
+            "event": "PANCRASE301",
+            "round": "R3 1:24"
+          },
+          {
+            "date": "2018-07-15",
+            "opponent": "金太郎",
+            "result": "loss",
+            "method": "判定/0-3",
+            "event": "PANCRASE 大阪大会",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2018-02-04",
+            "opponent": "河村泰博",
+            "result": "loss",
+            "method": "TKO(レフェリーストップ)/三角絞め",
+            "event": "PANCRASE293",
+            "round": "R2 2:25"
+          },
+          {
+            "date": "2017-10-08",
+            "opponent": "清水俊一",
+            "result": "loss",
+            "method": "判定/2-1",
+            "event": "PANCRASE290",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2017-03-12",
+            "opponent": "TSUNE",
+            "result": "loss",
+            "method": "判定/3-0",
+            "event": "PANCRASE285",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2016-12-18",
+            "opponent": "坂本瑞氣",
+            "result": "win",
+            "method": "TKO/グラウンドのパンチ",
+            "event": "PANCRASE283",
+            "round": "R3 2:09"
+          },
+          {
+            "date": "2016-03-13",
+            "opponent": "福島秀和",
+            "result": "loss",
+            "method": "判定/3-0",
+            "event": "PANCRASE276",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2015-11-01",
+            "opponent": "アラン“ヒロ”ヤマニハ",
+            "result": "loss",
+            "method": "判定/1-2",
+            "event": "PANCRASE 271",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2015-07-05",
+            "opponent": "小野“名人\"浩",
+            "result": "win",
+            "method": "ギブアップ/腕ひしぎ十字固め",
+            "event": "PANCRASE 268",
+            "round": "R1 2:38"
+          },
+          {
+            "date": "2015-05-31",
+            "opponent": "滝田J太郎",
+            "result": "win",
+            "method": "判定/0-3",
+            "event": "PANCRASE 267",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2015-02-01",
+            "opponent": "井関遼",
+            "result": "win",
+            "method": "判定/3-0",
+            "event": "PANCRASE 264",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2014-10-05",
+            "opponent": "藤井伸樹",
+            "result": "loss",
+            "method": "ギブアップ/チョークスリーパー",
+            "event": "PANCRASE 261",
+            "round": "R3 1:01"
+          },
+          {
+            "date": "2014-06-29",
+            "opponent": "CORO",
+            "result": "win",
+            "method": "判定/1-2",
+            "event": "PANCRASE 259",
+            "round": "R3 3:00"
+          },
+          {
+            "date": "2014-02-02",
+            "opponent": "富田浩司",
+            "result": "draw",
+            "method": "判定/0-0",
+            "event": "PANCRASE 256",
+            "round": "R2 5:00"
+          }
+        ],
+        "live": false,
+        "total": 18
+      },
+      "row1HasRealData": true,
+      "row2ExceedsRow1After": true,
+      "crossedOverNewly": true
+    }
+  ]
 }
