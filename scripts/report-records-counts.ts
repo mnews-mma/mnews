@@ -37,8 +37,7 @@ function main() {
       continue;
     }
     const raw = fs.readFileSync(filePath, "utf-8");
-    const data = JSON.parse(raw) as RecordsEvent[];
-    const events = Array.isArray(data) ? data : Object.values(data);
+    const events = JSON.parse(raw) as RecordsEvent[];
     let bouts = 0;
     let unresolved = 0;
     for (const ev of events) {
