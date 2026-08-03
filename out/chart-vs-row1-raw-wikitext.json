@@ -1,0 +1,39 @@
+{
+  "karamov-vugar": {
+    "title": "ヴガール・ケラモフ",
+    "totalBlocks": 29,
+    "matchedBlocks": [
+      "{{Fight-cont|○|ジャマル・バリ|1R 0:00 [[N/A]]|Azerbaijan MMA Federation Azerbaijan vs. Iran|2016年12月31日}}"
+    ]
+  },
+  "uehara-taira": {
+    "title": "上原平",
+    "totalBlocks": 0,
+    "matchedBlocks": []
+  },
+  "yuki-daiki": {
+    "title": "結城大樹",
+    "error": "fetch failed"
+  },
+  "mio-shiyama": {
+    "title": "嶋屋澪",
+    "error": "fetch failed"
+  },
+  "takamoto-chiyo": {
+    "title": "高本千代",
+    "error": "fetch failed"
+  },
+  "erika": {
+    "title": "erika",
+    "totalBlocks": 0,
+    "matchedBlocks": []
+  },
+  "katayama-tomoe": {
+    "title": "片山智絵",
+    "error": "fetch failed"
+  },
+  "takada-atsuhi": {
+    "title": "高田暖妃",
+    "error": "fetch failed"
+  }
+}

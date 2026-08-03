@@ -37484,9 +37484,9 @@
     "live": false
   },
   "yuki-daiki": {
-    "wins": 7,
+    "wins": 6,
     "losses": 5,
-    "draws": 1,
+    "draws": 2,
     "ko": 0,
     "sub": 1,
     "decision": 5,
@@ -37574,7 +37574,7 @@
       {
         "date": "2021-07-25",
         "opponent": "仲山貴志",
-        "result": "win",
+        "result": "draw",
         "method": "",
         "event": "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship",
         "round": ""
@@ -38869,8 +38869,8 @@
   },
   "mio-shiyama": {
     "wins": 2,
-    "losses": 5,
-    "draws": 1,
+    "losses": 4,
+    "draws": 2,
     "ko": 1,
     "sub": 0,
     "decision": 1,
@@ -38910,7 +38910,7 @@
       {
         "date": "2025-07-21",
         "opponent": "erika",
-        "result": "loss",
+        "result": "draw",
         "method": "",
         "event": "PROFESSIONAL SHOOTO 2025 Vol.6",
         "round": ""
@@ -39011,8 +39011,8 @@
   },
   "takamoto-chiyo": {
     "wins": 3,
-    "losses": 4,
-    "draws": 1,
+    "losses": 3,
+    "draws": 2,
     "ko": 1,
     "sub": 0,
     "decision": 2,
@@ -39044,7 +39044,7 @@
       {
         "date": "2025-09-21",
         "opponent": "片山智絵",
-        "result": "loss",
+        "result": "draw",
         "method": "",
         "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7",
         "round": ""
@@ -39085,9 +39085,9 @@
     "live": false
   },
   "erika": {
-    "wins": 3,
+    "wins": 2,
     "losses": 1,
-    "draws": 0,
+    "draws": 1,
     "ko": 0,
     "sub": 0,
     "decision": 2,
@@ -39103,7 +39103,7 @@
       {
         "date": "2025-07-21",
         "opponent": "嶋屋澪",
-        "result": "win",
+        "result": "draw",
         "method": "",
         "event": "PROFESSIONAL SHOOTO 2025 Vol.6",
         "round": ""
@@ -39251,9 +39251,9 @@
     "live": true
   },
   "katayama-tomoe": {
-    "wins": 3,
+    "wins": 2,
     "losses": 1,
-    "draws": 0,
+    "draws": 1,
     "ko": 0,
     "sub": 0,
     "decision": 2,
@@ -39269,7 +39269,7 @@
       {
         "date": "2025-09-21",
         "opponent": "高本千代",
-        "result": "win",
+        "result": "draw",
         "method": "",
         "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7",
         "round": ""
@@ -40601,9 +40601,9 @@
     "age": 22
   },
   "takada-atsuhi": {
-    "wins": 3,
+    "wins": 2,
     "losses": 1,
-    "draws": 0,
+    "draws": 1,
     "ko": 1,
     "sub": 0,
     "decision": 1,
@@ -40627,7 +40627,7 @@
       {
         "date": "2024-12-15",
         "opponent": "チョンチャヒョン",
-        "result": "win",
+        "result": "draw",
         "method": "",
         "event": "COLORS Produce by SHOOTO Vol.4",
         "round": ""

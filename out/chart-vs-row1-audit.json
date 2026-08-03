@@ -1,0 +1,185 @@
+[
+  {
+    "slug": "sato-shoko",
+    "headerWins": 38,
+    "headerLosses": 17,
+    "histWins": 37,
+    "histLosses": 17,
+    "chartWins": 37,
+    "chartLosses": 17,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "tokoro-hideo",
+    "headerWins": 36,
+    "headerLosses": 34,
+    "histWins": 33,
+    "histLosses": 29,
+    "chartWins": 33,
+    "chartLosses": 29,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "ohara-juri",
+    "headerWins": 38,
+    "headerLosses": 21,
+    "histWins": 39,
+    "histLosses": 20,
+    "chartWins": 39,
+    "chartLosses": 20,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "nakamura-daisuke",
+    "headerWins": 35,
+    "headerLosses": 29,
+    "histWins": 35,
+    "histLosses": 28,
+    "chartWins": 35,
+    "chartLosses": 28,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "strasser-kiichi",
+    "headerWins": 21,
+    "headerLosses": 13,
+    "histWins": 20,
+    "histLosses": 12,
+    "chartWins": 20,
+    "chartLosses": 12,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "uoi-fullswing",
+    "headerWins": 27,
+    "headerLosses": 16,
+    "histWins": 26,
+    "histLosses": 17,
+    "chartWins": 26,
+    "chartLosses": 17,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "seki-tetsuya",
+    "headerWins": 18,
+    "headerLosses": 11,
+    "histWins": 16,
+    "histLosses": 11,
+    "chartWins": 16,
+    "chartLosses": 11,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "kurobe-kazusa",
+    "headerWins": 6,
+    "headerLosses": 1,
+    "histWins": 5,
+    "histLosses": 1,
+    "chartWins": 5,
+    "chartLosses": 1,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "patricky-pitbull",
+    "headerWins": 25,
+    "headerLosses": 16,
+    "histWins": 25,
+    "histLosses": 17,
+    "chartWins": 25,
+    "chartLosses": 17,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "karamov-vugar",
+    "headerWins": 21,
+    "headerLosses": 7,
+    "histWins": 21,
+    "histLosses": 7,
+    "chartWins": 20,
+    "chartLosses": 7,
+    "reason": "method-text-missing",
+    "unknownMethodRows": [
+      {
+        "date": "2016-12-31",
+        "opponent": "ジャマル・バリ",
+        "result": "win",
+        "method": "1R 0:00 N/A",
+        "event": "Azerbaijan MMA Federation Azerbaijan vs. Iran",
+        "round": "R1"
+      }
+    ]
+  },
+  {
+    "slug": "miyake-kisa",
+    "headerWins": 14,
+    "headerLosses": 5,
+    "histWins": 13,
+    "histLosses": 6,
+    "chartWins": 13,
+    "chartLosses": 6,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "lee-kaiwen",
+    "headerWins": 16,
+    "headerLosses": 8,
+    "histWins": 15,
+    "histLosses": 8,
+    "chartWins": 15,
+    "chartLosses": 8,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "uno-caol",
+    "headerWins": 35,
+    "headerLosses": 23,
+    "histWins": 35,
+    "histLosses": 24,
+    "chartWins": 35,
+    "chartLosses": 24,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  },
+  {
+    "slug": "uehara-taira",
+    "headerWins": 7,
+    "headerLosses": 3,
+    "histWins": 7,
+    "histLosses": 3,
+    "chartWins": 6,
+    "chartLosses": 3,
+    "reason": "method-text-missing",
+    "unknownMethodRows": [
+      {
+        "date": "2023-07-23",
+        "opponent": "CHAN龍",
+        "result": "win",
+        "method": "",
+        "event": "PROFESSIONAL SHOOTO 2023 Vol.5",
+        "round": ""
+      }
+    ]
+  },
+  {
+    "slug": "sugiyama",
+    "headerWins": 23,
+    "headerLosses": 8,
+    "histWins": 24,
+    "histLosses": 8,
+    "chartWins": 24,
+    "chartLosses": 8,
+    "reason": "infobox-table-mismatch",
+    "unknownMethodRows": []
+  }
+]
