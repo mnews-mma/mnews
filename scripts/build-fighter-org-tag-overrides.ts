@@ -126,8 +126,14 @@ function main() {
     overrides[f.slug] = org;
   }
 
+  // キーをslugのアルファベット順にソートしてから書き出す(FIGHTERS配列の並び順
+  // に依存すると、overridesの中身が変わっていなくてもfighters.tsへの無関係な
+  // 選手追加でJSONのキー順だけが変わり、無駄なgit diff/commitが発生するため)。
+  const sortedOverrides: Record<string, OrgKey> = {};
+  for (const slug of Object.keys(overrides).sort()) sortedOverrides[slug] = overrides[slug];
+
   const outPath = path.join(ROOT, "data", "fighterOrgTagOverrides.json");
-  fs.writeFileSync(outPath, JSON.stringify(overrides, null, 2) + "\n");
+  fs.writeFileSync(outPath, JSON.stringify(sortedOverrides, null, 2) + "\n");
 
   console.log(`対象選手(既存ルールでタグ0件): ${zeroTagCount}`);
   console.log(`タグ付与: ${Object.keys(overrides).length}件`, overrides);
