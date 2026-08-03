@@ -1,0 +1,847 @@
+[
+  {
+    "slug": "taira-tatsuro",
+    "nameJa": "平良 達郎",
+    "org": "ufc",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1144",
+    "profileTotalHeader": null,
+    "profileBoutCount": 10,
+    "existingBoutCount": 10,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 10
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "nakamura-rinya",
+    "nameJa": "中村 倫也",
+    "org": "ufc",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1347",
+    "profileTotalHeader": null,
+    "profileBoutCount": 2,
+    "existingBoutCount": 2,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "horiguchi-kyoji",
+    "nameJa": "堀口 恭司",
+    "org": "ufc",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "185",
+    "profileTotalHeader": {
+      "total": 12,
+      "win": 11,
+      "lose": 1,
+      "draw": 0
+    },
+    "profileBoutCount": 12,
+    "existingBoutCount": 2,
+    "gapCount": 10,
+    "gapCategoryCounts": {
+      "new2b_event_missing": 1,
+      "new1_precutoff": 9,
+      "matched": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "tsuruya-rei",
+    "nameJa": "鶴屋 怜",
+    "org": "ufc",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "1072",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 0,
+    "gapCount": 1,
+    "gapCategoryCounts": {
+      "new2a_bout_missing_in_existing_event": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "saito-yutaka",
+    "nameJa": "斎藤 裕",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "5",
+    "profileTotalHeader": {
+      "total": 23,
+      "win": 17,
+      "lose": 4,
+      "draw": 2
+    },
+    "profileBoutCount": 23,
+    "existingBoutCount": 11,
+    "gapCount": 12,
+    "gapCategoryCounts": {
+      "matched": 11,
+      "new2b_event_missing": 8,
+      "new1_precutoff": 4
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "majima-kazumasa",
+    "nameJa": "摩嶋 一整",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "309",
+    "profileTotalHeader": {
+      "total": 9,
+      "win": 8,
+      "lose": 1,
+      "draw": 0
+    },
+    "profileBoutCount": 9,
+    "existingBoutCount": 6,
+    "gapCount": 3,
+    "gapCategoryCounts": {
+      "matched": 6,
+      "new2b_event_missing": 3
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "ougikubo-hiromasa",
+    "nameJa": "扇久保 博正",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "2",
+    "profileTotalHeader": {
+      "total": 23,
+      "win": 18,
+      "lose": 3,
+      "draw": 2
+    },
+    "profileBoutCount": 21,
+    "existingBoutCount": 5,
+    "gapCount": 16,
+    "gapCategoryCounts": {
+      "matched": 5,
+      "new2b_event_missing": 2,
+      "new1_precutoff": 14
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "yachi-yusuke",
+    "nameJa": "矢地 祐介",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "263",
+    "profileTotalHeader": {
+      "total": 13,
+      "win": 10,
+      "lose": 3,
+      "draw": 0
+    },
+    "profileBoutCount": 12,
+    "existingBoutCount": 1,
+    "gapCount": 11,
+    "gapCategoryCounts": {
+      "new2b_event_missing": 1,
+      "new1_precutoff": 10,
+      "matched": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "fukuda-ryuya",
+    "nameJa": "福田 龍彌",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "149",
+    "profileTotalHeader": {
+      "total": 16,
+      "win": 11,
+      "lose": 4,
+      "draw": 0
+    },
+    "profileBoutCount": 16,
+    "existingBoutCount": 8,
+    "gapCount": 8,
+    "gapCategoryCounts": {
+      "matched": 8,
+      "new2b_event_missing": 7,
+      "new1_precutoff": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "oshima-saori",
+    "nameJa": "大島 沙緒里",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1238",
+    "profileTotalHeader": {
+      "total": 2,
+      "win": 1,
+      "lose": 1,
+      "draw": 0
+    },
+    "profileBoutCount": 2,
+    "existingBoutCount": 2,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "sato-shoko",
+    "nameJa": "佐藤 将光",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "176",
+    "profileTotalHeader": {
+      "total": 16,
+      "win": 13,
+      "lose": 2,
+      "draw": 0
+    },
+    "profileBoutCount": 16,
+    "existingBoutCount": 13,
+    "gapCount": 3,
+    "gapCategoryCounts": {
+      "matched": 13,
+      "new2b_event_missing": 3
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "goto-joji",
+    "nameJa": "後藤 丈治",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1294",
+    "profileTotalHeader": {
+      "total": 7,
+      "win": 4,
+      "lose": 3,
+      "draw": 0
+    },
+    "profileBoutCount": 7,
+    "existingBoutCount": 7,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 7
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "soya-takaki",
+    "nameJa": "征矢 貴",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "102",
+    "profileTotalHeader": {
+      "total": 12,
+      "win": 7,
+      "lose": 4,
+      "draw": 0
+    },
+    "profileBoutCount": 12,
+    "existingBoutCount": 6,
+    "gapCount": 6,
+    "gapCategoryCounts": {
+      "matched": 6,
+      "new2b_event_missing": 6
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "noel",
+    "nameJa": "NOEL",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1554",
+    "profileTotalHeader": {
+      "total": 6,
+      "win": 4,
+      "lose": 1,
+      "draw": 1
+    },
+    "profileBoutCount": 5,
+    "existingBoutCount": 3,
+    "gapCount": 2,
+    "gapCategoryCounts": {
+      "matched": 3,
+      "new2a_bout_missing_in_existing_event": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "nomura-shunta",
+    "nameJa": "野村 駿太",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1374",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 0,
+    "gapCount": 1,
+    "gapCategoryCounts": {
+      "mismatch": 1
+    },
+    "mismatchCount": 1
+  },
+  {
+    "slug": "ando-tatsuya",
+    "nameJa": "安藤 達也",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "195",
+    "profileTotalHeader": {
+      "total": 14,
+      "win": 10,
+      "lose": 3,
+      "draw": 0
+    },
+    "profileBoutCount": 14,
+    "existingBoutCount": 13,
+    "gapCount": 1,
+    "gapCategoryCounts": {
+      "matched": 13,
+      "new2b_event_missing": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "usami-sho-patrick",
+    "nameJa": "宇佐美正パトリック",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1366",
+    "profileTotalHeader": null,
+    "profileBoutCount": 3,
+    "existingBoutCount": 2,
+    "gapCount": 1,
+    "gapCategoryCounts": {
+      "matched": 2,
+      "mismatch": 1
+    },
+    "mismatchCount": 1
+  },
+  {
+    "slug": "tokoro-hideo",
+    "nameJa": "所 英男",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "992",
+    "profileTotalHeader": {
+      "total": 3,
+      "win": 2,
+      "lose": 1,
+      "draw": 0
+    },
+    "profileBoutCount": 3,
+    "existingBoutCount": 3,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 3
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "kouzi",
+    "nameJa": "皇治",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "1829",
+    "profileTotalHeader": null,
+    "profileBoutCount": 0,
+    "existingBoutCount": 0,
+    "gapCount": 0,
+    "gapCategoryCounts": {},
+    "mismatchCount": 0
+  },
+  {
+    "slug": "ohara-juri",
+    "nameJa": "大原樹理",
+    "org": "deep",
+    "matchAxis": "alias",
+    "highCollisionRisk": false,
+    "shootoId": "976",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 1,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "tsubaki-asuka",
+    "nameJa": "椿飛鳥",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "1296",
+    "profileTotalHeader": {
+      "total": 9,
+      "win": 5,
+      "lose": 4,
+      "draw": 0
+    },
+    "profileBoutCount": 9,
+    "existingBoutCount": 9,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 9
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "nakamura-daisuke",
+    "nameJa": "中村大介",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "939",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 1,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "kindaichi-kosuke",
+    "nameJa": "金田一孝介",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "282",
+    "profileTotalHeader": {
+      "total": 6,
+      "win": 3,
+      "lose": 2,
+      "draw": 1
+    },
+    "profileBoutCount": 6,
+    "existingBoutCount": 0,
+    "gapCount": 6,
+    "gapCategoryCounts": {
+      "new1_precutoff": 6
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "kinoshita-karate",
+    "nameJa": "木下カラテ",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1183",
+    "profileTotalHeader": {
+      "total": 12,
+      "win": 5,
+      "lose": 6,
+      "draw": 0
+    },
+    "profileBoutCount": 11,
+    "existingBoutCount": 11,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 11
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "uoi-fullswing",
+    "nameJa": "魚井フルスイング",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "198",
+    "profileTotalHeader": {
+      "total": 19,
+      "win": 11,
+      "lose": 7,
+      "draw": 0
+    },
+    "profileBoutCount": 19,
+    "existingBoutCount": 15,
+    "gapCount": 4,
+    "gapCategoryCounts": {
+      "matched": 15,
+      "new2b_event_missing": 1,
+      "new1_precutoff": 3
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "murayama-akihiro",
+    "nameJa": "村山暁洋",
+    "org": "pancrase",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "379",
+    "profileTotalHeader": {
+      "total": 15,
+      "win": 10,
+      "lose": 3,
+      "draw": 2
+    },
+    "profileBoutCount": 15,
+    "existingBoutCount": 0,
+    "gapCount": 15,
+    "gapCategoryCounts": {
+      "new1_precutoff": 15
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "kasuya-yusuke",
+    "nameJa": "粕谷優介",
+    "org": "pancrase",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "323",
+    "profileTotalHeader": null,
+    "profileBoutCount": 5,
+    "existingBoutCount": 5,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 5
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "sasaki-shunma",
+    "nameJa": "佐々木瞬真",
+    "org": "pancrase",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1247",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 0,
+    "gapCount": 1,
+    "gapCategoryCounts": {
+      "new2a_bout_missing_in_existing_event": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "nakagiri-ryosuke",
+    "nameJa": "中桐涼輔",
+    "org": "nexus",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1254",
+    "profileTotalHeader": null,
+    "profileBoutCount": 2,
+    "existingBoutCount": 2,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "lee-yeji",
+    "nameJa": "イ・イェジ",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1207",
+    "profileTotalHeader": {
+      "total": 2,
+      "win": 1,
+      "lose": 1,
+      "draw": 0
+    },
+    "profileBoutCount": 2,
+    "existingBoutCount": 2,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "aoi-jin",
+    "nameJa": "青井人",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "267",
+    "profileTotalHeader": {
+      "total": 11,
+      "win": 7,
+      "lose": 3,
+      "draw": 1
+    },
+    "profileBoutCount": 11,
+    "existingBoutCount": 8,
+    "gapCount": 3,
+    "gapCategoryCounts": {
+      "matched": 8,
+      "new2b_event_missing": 3
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "kim-kyungpyo",
+    "nameJa": "キム・ギョンピョ",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1142",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 1,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "yuya-wakamatsu",
+    "nameJa": "若松佑弥",
+    "org": "one",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "958",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 1,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "shinya-aoki",
+    "nameJa": "青木真也",
+    "org": "one",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "366",
+    "profileTotalHeader": {
+      "total": 7,
+      "win": 6,
+      "lose": 1,
+      "draw": 0
+    },
+    "profileBoutCount": 5,
+    "existingBoutCount": 0,
+    "gapCount": 5,
+    "gapCategoryCounts": {
+      "new1_precutoff": 5
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "chihiro-sawada",
+    "nameJa": "澤田千優",
+    "org": "one",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1327",
+    "profileTotalHeader": null,
+    "profileBoutCount": 5,
+    "existingBoutCount": 5,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 5
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "seiichiro-ito",
+    "nameJa": "伊藤盛一郎",
+    "org": "one",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "995",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 1,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "matsushima-koyomi",
+    "nameJa": "松嶋こよみ",
+    "org": "rizin",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "364",
+    "profileTotalHeader": null,
+    "profileBoutCount": 3,
+    "existingBoutCount": 1,
+    "gapCount": 2,
+    "gapCategoryCounts": {
+      "matched": 1,
+      "new2b_event_missing": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "isao",
+    "nameJa": "ISAO",
+    "org": "pancrase",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "965",
+    "profileTotalHeader": null,
+    "profileBoutCount": 2,
+    "existingBoutCount": 2,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "coro",
+    "nameJa": "CORO",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "13",
+    "profileTotalHeader": null,
+    "profileBoutCount": 1,
+    "existingBoutCount": 1,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "minowa-hiroba",
+    "nameJa": "箕輪ひろば",
+    "org": "one",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "84",
+    "profileTotalHeader": {
+      "total": 13,
+      "win": 11,
+      "lose": 2,
+      "draw": 0
+    },
+    "profileBoutCount": 12,
+    "existingBoutCount": 11,
+    "gapCount": 1,
+    "gapCategoryCounts": {
+      "matched": 11,
+      "new2b_event_missing": 1
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "honda-ryosuke",
+    "nameJa": "本田良介",
+    "org": "deep",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "1049",
+    "profileTotalHeader": {
+      "total": 8,
+      "win": 6,
+      "lose": 1,
+      "draw": 0
+    },
+    "profileBoutCount": 7,
+    "existingBoutCount": 5,
+    "gapCount": 2,
+    "gapCategoryCounts": {
+      "matched": 5,
+      "new2b_event_missing": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "tou-hoiin",
+    "nameJa": "透暉鷹",
+    "org": "pancrase",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "1260",
+    "profileTotalHeader": null,
+    "profileBoutCount": 2,
+    "existingBoutCount": 2,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 2
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "gojima-daiki",
+    "nameJa": "合島大樹",
+    "org": "pancrase",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": false,
+    "shootoId": "609",
+    "profileTotalHeader": {
+      "total": 7,
+      "win": 4,
+      "lose": 2,
+      "draw": 1
+    },
+    "profileBoutCount": 7,
+    "existingBoutCount": 0,
+    "gapCount": 7,
+    "gapCategoryCounts": {
+      "new2b_event_missing": 3,
+      "new1_precutoff": 4
+    },
+    "mismatchCount": 0
+  },
+  {
+    "slug": "raika",
+    "nameJa": "ライカ",
+    "org": "pancrase",
+    "matchAxis": "nameJa",
+    "highCollisionRisk": true,
+    "shootoId": "1481",
+    "profileTotalHeader": null,
+    "profileBoutCount": 2,
+    "existingBoutCount": 2,
+    "gapCount": 0,
+    "gapCategoryCounts": {
+      "matched": 2
+    },
+    "mismatchCount": 0
+  }
+]
