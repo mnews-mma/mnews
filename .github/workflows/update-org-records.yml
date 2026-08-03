@@ -175,6 +175,18 @@ jobs:
             # archive-articles.yml等とのpush競合(non-fast-forward)対策。
             # #325と同じ方式: rebaseで統合してリトライ、rebase自体が競合したら
             # 異常終了させる(黙って上書き・破棄しない)。
+            #
+            # --autostash(2026-08-03追加): build-deep-records.ts・
+            # backfill-rizin-slugs.ts・backfill-shooto-pancrase-slugs.tsが
+            # commit対象外のout/*.md(tracked)へ毎回書き込むため、この時点で
+            # 作業ツリーには未ステージの変更が残っている。素の`git rebase`は
+            # 未ステージの変更があると内容の衝突が無くても即座に失敗するため、
+            # 実行のたびに毎回rebaseが失敗する状態になっていた(実測、
+            # 2026-08-03のworkflow_dispatch実行で発生)。--autostashで
+            # rebase前後にこれらの変更を自動的にstash/popし、実際の内容衝突
+            # だけを検出できるようにする。out/*.md自体をcommit対象に含めるか
+            # gitignoreするかは別途判断が必要なため未着手(このコミットの
+            # スコープ外)。
             max_attempts=5
             attempt=1
             until git push; do
@@ -184,7 +196,7 @@ jobs:
               fi
               echo "push失敗(試行${attempt}/${max_attempts})。origin/mainを取り込んでrebaseし再試行します。"
               git fetch origin main
-              if ! git rebase origin/main; then
+              if ! git rebase --autostash origin/main; then
                 echo "::error::git rebase が競合しました。手動確認が必要です(黙って上書きしません)。"
                 git rebase --abort
                 exit 1
