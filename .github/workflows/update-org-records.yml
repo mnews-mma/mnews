@@ -9,6 +9,15 @@ name: Update org records (4団体戦績data)
 # 3.27時間ずれる=時刻での回避は成立しない、CLAUDE.md記載)がこのジョブの出力
 # ファイルを入力として読むため、実行中に重ならないようGitHub Actions APIで
 # 実行中run自体を照会してから開始する(時刻ベースの回避はしない)。
+#
+# 非プロ/非MMA bout除外について(指示書⑤・2026-08-03): 生スクレイパー
+# (build-shooto-records.ts・build-pancrase-records.ts)は取得したboutを
+# 一切絞り込まないため、フィルタ工程を挟まずにcommitすると
+# scripts/filter-nonpro-bouts.ts(#265/#268/#269)による過去の除外が
+# 日次実行のたびに巻き戻る。取得後・commit前に同スクリプトを実行し、
+# 直後にscripts/check-nonpro-bout-gate.tsで除外漏れが無いことを検証する。
+# RIZIN/DEEPはそれぞれのスクレイパー内でinline除外済みのため対象外
+# (詳細はcheck-nonpro-bout-gate.ts冒頭コメント参照)。
 on:
   schedule:
     - cron: "0 14 * * *" # 毎日 JST 23:00(暫定。他ジョブと時刻的な排他は保証しない前提)
@@ -85,6 +94,12 @@ jobs:
 
       - name: Backfill RIZIN slugs
         run: npx tsx scripts/backfill-rizin-slugs.ts
+
+      - name: Filter non-pro/non-MMA bouts (Shooto/Pancrase)
+        run: npx tsx scripts/filter-nonpro-bouts.ts
+
+      - name: Check non-pro bout exclusion gate
+        run: npx tsx scripts/check-nonpro-bout-gate.ts
 
       - name: Report bout counts after fetch + build per-org commit plan
         run: |
