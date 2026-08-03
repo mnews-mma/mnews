@@ -43401,5 +43401,16 @@
     "history": [],
     "live": false,
     "noRecordData": true
+  },
+  "murata-jake": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
   }
 }
