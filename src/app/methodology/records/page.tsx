@@ -19,13 +19,6 @@ export default function MethodologyRecordsPage() {
     { label: "戦績の集計方法について" },
   ];
 
-  const coverage = [
-    { org: "RIZIN", period: "2015年12月〜", note: "旗揚げ興行(2015年12月・さいたま3DAYS)を含む" },
-    { org: "DEEP", period: "2007年〜", note: "2012年以前は収録大会数が少なく薄く、特に2009年はほぼ収録がありません" },
-    { org: "パンクラス", period: "1993年〜", note: "" },
-    { org: "修斗", period: "2012年〜", note: "一部選手は公式プロフィールページ経由でそれ以前の試合も収録しています" },
-  ];
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)) }} />
@@ -54,8 +47,8 @@ export default function MethodologyRecordsPage() {
         </p>
 
         <p>
-          2つは対象とする範囲が違うため、数字は一致しません。たとえば堀口恭司選手は通算36勝6敗に対し、
-          4団体通算は16勝1敗です。差にあたる試合は、UFCやBellatorなど集計対象外の団体で行われたものです。
+          2つは対象とする範囲が違うため、数字は一致しないことがあります。差にあたる試合は、
+          UFCやBellatorなど集計対象外の団体で行われたものです。
         </p>
 
         <p>
@@ -63,40 +56,10 @@ export default function MethodologyRecordsPage() {
           数多くいるためです。各団体の公式記録は残っているので、そこから積み上げれば戦績を示すことができます。
         </p>
 
-        <h2>収録範囲</h2>
-        <p style={{ marginBottom: 16 }}>
-          収録期間は、各団体の公式サイトに結果アーカイブが残っており、継続的に取得できる範囲で定めています。
-          アマチュア大会は含みません。また、公式サイトに結果が掲載されていない大会など、期間内でも一部収録
-          できていない大会があります。
+        <p>
+          一部を除き4団体の大会データを集計しています。各団体の公式サイトで公開されている試合結果を
+          出典としています。
         </p>
-        <p style={{ marginBottom: 16 }}>
-          収録期間内であっても、団体・年代によって収録できている大会数には差があります。特に古い年代は、
-          公式サイトのアーカイブ自体が薄い、または現在のページ構成と異なるために取得できていない大会が
-          あります。古い時期に主に活動していた選手は、4団体通算が実際の戦績より少なく表示されることが
-          あります。
-        </p>
-        <div style={{ border: "1px solid var(--border)", borderRadius: 8, overflow: "hidden" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
-            <thead>
-              <tr style={{ background: "var(--s2)" }}>
-                <th style={{ textAlign: "left", padding: "10px 16px", fontWeight: 600 }}>団体</th>
-                <th style={{ textAlign: "left", padding: "10px 16px", fontWeight: 600 }}>収録期間</th>
-                <th style={{ textAlign: "left", padding: "10px 16px", fontWeight: 600 }}>備考</th>
-              </tr>
-            </thead>
-            <tbody>
-              {coverage.map((row, i) => (
-                <tr key={row.org} style={{ borderTop: "1px solid var(--border)", background: i % 2 === 1 ? "var(--s2)" : undefined }}>
-                  <td style={{ padding: "10px 16px", color: "var(--muted)" }}>{row.org}</td>
-                  <td style={{ padding: "10px 16px", color: "var(--muted)" }}>{row.period}</td>
-                  <td style={{ padding: "10px 16px", color: "var(--muted)" }}>{row.note || "—"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <p>各団体の公式サイトで公開されている試合結果を出典としています。</p>
 
         <p className="prose-updated">mnews.jp独自集計。</p>
       </div>

@@ -125,15 +125,16 @@ export default function FighterCardGrid({
                   <div className="fighter-record">
                     {f.multiOrgRecord.wins}-{f.multiOrgRecord.losses}-{f.multiOrgRecord.draws}
                   </div>
+                  {/* 指示書I(2026-08-03): ソース表記(集計元ラベル)を数字の直下に置く。
+                      旧配置(breakdown/rates行より下)だとカードの一番下に来て
+                      数字との対応が視覚的に分かりにくかった。 */}
+                  <div className="fighter-record-source">{MULTI_ORG_RECORD_LABEL}</div>
                   <div className="fighter-breakdown">
                     KO {f.multiOrgRecord.ko} / 一本 {f.multiOrgRecord.sub} / 判定 {f.multiOrgRecord.decision}
                   </div>
                   <div className="fighter-rates">
                     {f.multiOrgRecord.winRate !== null && <span>勝率 {f.multiOrgRecord.winRate}%</span>}
                     {f.multiOrgRecord.finishRate !== null && <span>フィニッシュ率 {f.multiOrgRecord.finishRate}%</span>}
-                  </div>
-                  <div className="fighter-rates">
-                    <span>{MULTI_ORG_RECORD_LABEL}</span>
                   </div>
                 </>
               ) : f.noRecordData ? (

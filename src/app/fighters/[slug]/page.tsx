@@ -654,21 +654,19 @@ export default async function FighterPage({
             場合はブロックごと非表示にする。指示書A(2026-08-01): 出典によって
             情報量が割れないよう、1行目と同じ内訳(KO/一本/判定)・勝率・
             フィニッシュ率をこちらにも出す(classifyMethodJa経由、
-            computeMultiOrgRates参照)。 */}
-        {SHOW_MULTI_ORG_RECORD && hasMultiOrgRecord && multiOrgRates && (
+            computeMultiOrgRates参照)。
+            指示書I(2026-08-03): suppressNoRecordRowを条件に追加し1行目と
+            完全排他にする。旧条件はhasMultiOrgRecordさえ真なら常に表示して
+            いたため、Wikipedia通算(1行目)と4団体合算(2行目)の両方を持つ
+            選手で両方の行が同時表示されるバグがあった(1選手1ソース違反)。 */}
+        {SHOW_MULTI_ORG_RECORD && suppressNoRecordRow && hasMultiOrgRecord && multiOrgRates && (
           <>
             <div className="fighter-stats-grid">
               <div className="fighter-stat-card">
                 <div className="fighter-stat-num">
                   {multiOrgRecord.wins}-{multiOrgRecord.losses}-{multiOrgRecord.draws}
                 </div>
-                <div className="fighter-stat-label">
-                  {MULTI_ORG_RECORD_LABEL}
-                  {" "}
-                  <a href="/methodology/records" style={{ color: "var(--muted)", textDecoration: "underline" }}>
-                    集計について
-                  </a>
-                </div>
+                <div className="fighter-stat-label">{MULTI_ORG_RECORD_LABEL}</div>
               </div>
               {multiOrgRates.winRate !== null && (
                 <div className="fighter-stat-card">
@@ -683,14 +681,16 @@ export default async function FighterPage({
                 </div>
               )}
             </div>
-            {/* 指示書(2026-08-01): 1行目(通算戦績)が無く2行目(4団体通算)のみの
-                選手向けの注記。suppressNoRecordRowは既存の判定(1行目データなし
-                かつ2行目が取れている)をそのまま再利用する。 */}
-            {suppressNoRecordRow && (
-              <p style={{ fontSize: 12, color: "var(--muted)", marginTop: 4 }}>
-                他団体・海外での試合は含みません
-              </p>
-            )}
+            {/* 指示書I(2026-08-03): 「集計について」リンクは.fighter-stat-card
+                (flex:1の狭いセル・font-size:9px)の中に置くと折り返して崩れて
+                いたため枠の外に出す。1行目(通算戦績)が無く2行目のみの選手向けの
+                注記(旧:2026-08-01追加)と1行にまとめ、数字のすぐ下・Xボタンより
+                前に表示する(常時suppressNoRecordRow=trueなのでこのブロック内では
+                無条件表示でよい)。 */}
+            <p className="fighter-stat-note">
+              他団体・海外での試合は含みません ／{" "}
+              <a href="/methodology/records">集計について</a>
+            </p>
           </>
         )}
 
