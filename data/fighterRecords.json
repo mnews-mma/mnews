@@ -43368,5 +43368,38 @@
       }
     ],
     "live": false
+  },
+  "tezuka-haruki": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
+  "levan-gabriel": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
+  },
+  "perpetuo-hernani": {
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "ko": 0,
+    "sub": 0,
+    "decision": 0,
+    "history": [],
+    "live": false,
+    "noRecordData": true
   }
 }
