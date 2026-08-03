@@ -1,0 +1,98 @@
+[
+  {
+    "shootoEventId": 8,
+    "eventName": "プロフェッショナル修斗公式戦",
+    "date": "2016-03-21",
+    "fighterAName": "北原 史寛",
+    "fighterBName": "梶川 卓",
+    "before": {
+      "winnerName": "梶川 卓",
+      "winnerSlug": null
+    },
+    "after": {
+      "winnerName": "北原 史寛",
+      "winnerSlug": null
+    },
+    "note": "北原史寛(id=96)○/梶川卓(id=121)×で一致(2016-03-21)"
+  },
+  {
+    "shootoEventId": 70,
+    "eventName": "THE SHOOTO OKINAWA vol.1",
+    "date": "2018-11-25",
+    "fighterAName": "エダ 塾長 こうすけ",
+    "fighterBName": "玉城 優介",
+    "before": {
+      "winnerName": "エダ 塾長 こうすけ",
+      "winnerSlug": null
+    },
+    "after": {
+      "winnerName": "玉城 優介",
+      "winnerSlug": null
+    },
+    "note": "エダ塾長こうすけ(id=200)×/玉城優介(id=219)○で一致(2018-11-25)"
+  },
+  {
+    "shootoEventId": 79,
+    "eventName": "BORDER-season11-「The1st」",
+    "date": "2019-01-20",
+    "fighterAName": "ハンセン 玲雄",
+    "fighterBName": "ガッツ Takato",
+    "before": {
+      "winnerName": "ハンセン 玲雄",
+      "winnerSlug": null
+    },
+    "after": {
+      "winnerName": "ガッツ Takato",
+      "winnerSlug": null
+    },
+    "note": "ハンセン玲雄(id=1037)×/ガッツTakato(id=1110)○で一致(2019-01-20)"
+  },
+  {
+    "shootoEventId": 116,
+    "eventName": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA Supported by ONE Championship 第2部",
+    "date": "2021-07-04",
+    "fighterAName": "ムテカツ",
+    "fighterBName": "神武羅☆ ヒカル",
+    "before": {
+      "winnerName": "ムテカツ",
+      "winnerSlug": null
+    },
+    "after": {
+      "winnerName": "神武羅☆ ヒカル",
+      "winnerSlug": null
+    },
+    "note": "ムテカツ(id=1120)×/神武羅☆ヒカル(id=1335)○で一致(2021-07-04)"
+  },
+  {
+    "shootoEventId": 122,
+    "eventName": "VTJ 2021",
+    "date": "2021-11-06",
+    "fighterAName": "宇佐美 正 パトリック",
+    "fighterBName": "野村 駿太",
+    "before": {
+      "winnerName": "野村 駿太",
+      "winnerSlug": "nomura-shunta"
+    },
+    "after": {
+      "winnerName": "宇佐美 正 パトリック",
+      "winnerSlug": "usami-sho-patrick"
+    },
+    "note": "宇佐美正パトリック(id=1366)○/野村駿太(id=1374)×で一致(2021-11-06、#423で発見済み)"
+  },
+  {
+    "shootoEventId": 191,
+    "eventName": "香川・高松シンボルタワー展示場",
+    "date": "2024-09-08",
+    "fighterAName": "シン ・ ケンザン",
+    "fighterBName": "高橋 佑太",
+    "before": {
+      "winnerName": "シン ・ ケンザン",
+      "winnerSlug": null
+    },
+    "after": {
+      "winnerName": "高橋 佑太",
+      "winnerSlug": null
+    },
+    "note": "シン・ケンザン(id=1740)×/高橋佑太(id=1570)○で一致(2024-09-08)"
+  }
+]

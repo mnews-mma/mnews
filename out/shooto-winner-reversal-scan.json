@@ -1,0 +1,74 @@
+{
+  "eventsTotal": 231,
+  "fetchedCount": 231,
+  "unreachable": [],
+  "decisiveWithOpacitySignal": 1895,
+  "candidates": [
+    {
+      "shootoEventId": 8,
+      "eventName": "プロフェッショナル修斗公式戦",
+      "date": "2016-03-21",
+      "boutId": 657,
+      "fighterAName": "北原 史寛",
+      "fighterBName": "梶川 卓",
+      "resultTypeText": "判定 0-3",
+      "scoreDerivedWinner": "B",
+      "opacityDerivedWinner": "A"
+    },
+    {
+      "shootoEventId": 70,
+      "eventName": "THE SHOOTO OKINAWA vol.1",
+      "date": "2018-11-25",
+      "boutId": 2888,
+      "fighterAName": "エダ 塾長 こうすけ",
+      "fighterBName": "玉城 優介",
+      "resultTypeText": "判定 3-0",
+      "scoreDerivedWinner": "A",
+      "opacityDerivedWinner": "B"
+    },
+    {
+      "shootoEventId": 79,
+      "eventName": "BORDER-season11-「The1st」",
+      "date": "2019-01-20",
+      "boutId": 2879,
+      "fighterAName": "ハンセン 玲雄",
+      "fighterBName": "ガッツ Takato",
+      "resultTypeText": "判定 2-0",
+      "scoreDerivedWinner": "A",
+      "opacityDerivedWinner": "B"
+    },
+    {
+      "shootoEventId": 116,
+      "eventName": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA Supported by ONE Championship 第2部",
+      "date": "2021-07-04",
+      "boutId": 3287,
+      "fighterAName": "ムテカツ",
+      "fighterBName": "神武羅☆ ヒカル",
+      "resultTypeText": "判定 2-0",
+      "scoreDerivedWinner": "A",
+      "opacityDerivedWinner": "B"
+    },
+    {
+      "shootoEventId": 122,
+      "eventName": "VTJ 2021",
+      "date": "2021-11-06",
+      "boutId": 3342,
+      "fighterAName": "宇佐美 正 パトリック",
+      "fighterBName": "野村 駿太",
+      "resultTypeText": "判定 0-3",
+      "scoreDerivedWinner": "B",
+      "opacityDerivedWinner": "A"
+    },
+    {
+      "shootoEventId": 191,
+      "eventName": "香川・高松シンボルタワー展示場",
+      "date": "2024-09-08",
+      "boutId": 4069,
+      "fighterAName": "シン ・ ケンザン",
+      "fighterBName": "高橋 佑太",
+      "resultTypeText": "判定 3-0",
+      "scoreDerivedWinner": "A",
+      "opacityDerivedWinner": "B"
+    }
+  ]
+}
