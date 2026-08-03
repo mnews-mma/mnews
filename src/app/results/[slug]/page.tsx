@@ -76,6 +76,7 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
       summary ||
       `${event.eventName}（${event.date}${event.venue ? "・" + event.venue : ""}）全${event.fights.length}試合の勝敗・決着方法を掲載。`,
     imageUrl: eventResultOgImageUrl(event.slug, event.fights.length > 0),
+    visibleSlugs,
   });
 
   return (

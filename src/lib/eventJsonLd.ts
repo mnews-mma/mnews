@@ -22,6 +22,9 @@ export interface SportsEventLdInput {
   imageUrl: string; // OGP画像(絶対URL)
   ticketUrl?: string; // upcomingのみ offers として出力
   soldOut?: boolean;
+  // getVisibleFighterSlugs() 由来(非hidden かつ 非delisted かつ 戦績あり)。
+  // 渡さない場合は hidden のみで判定(findFighterSlugByNameの既定挙動)。
+  visibleSlugs?: Set<string>;
 }
 
 export function buildSportsEventLd(input: SportsEventLdInput): object {
@@ -34,7 +37,7 @@ export function buildSportsEventLd(input: SportsEventLdInput): object {
   const performer = Array.from(new Set(input.fighters))
     .filter((n) => n && n !== "未定")
     .map((name) => {
-      const slug = findFighterSlugByName(name);
+      const slug = findFighterSlugByName(name, undefined, input.visibleSlugs);
       return {
         "@type": "Person",
         name,

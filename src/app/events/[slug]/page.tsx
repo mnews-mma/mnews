@@ -106,6 +106,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       : `${event.eventName}（${event.date}${event.venue ? "・" + event.venue : ""}）の対戦カード・開催情報`,
     imageUrl: eventOgImageUrl(event.slug, event.bouts.length > 0),
     ticketUrl: event.ticketUrl,
+    visibleSlugs,
   });
 
   // エキシビ/特別マッチは試合番号を持たないため、末尾送りせず主催掲載に合わせ
