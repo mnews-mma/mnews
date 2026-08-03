@@ -112,11 +112,13 @@ export const EVENTS: MEvent[] = [
     status: "upcoming",
     eventName: "RIZIN.54",
     date: "2026-08-11",
-    openTime: "12:00",
+    openTime: "12:30",
     startTime: "14:00",
     venue: "TOYOTA ARENA TOKYO",
     broadcast: ["RIZIN LIVE（U-NEXT PPV）", "フジテレビ（地上波・一部試合）"],
     sourceUrl: "https://jp.rizinff.com/_ct/17846026",
+    // 2026-08-03、榊原CEOが試合順を確定発表。ケイト・ロータス vs NOEL(女子スーパー
+    // アトム級)はケイトの怪我により延期、10月長崎大会(rizin-landmark-16)へスライド。
     bouts: [
       {
         weightClass: "フェザー級（66.0kg）",
@@ -127,6 +129,23 @@ export const EVENTS: MEvent[] = [
         weightClass: "バンタム級（61.0kg）",
         fighterA: "佐藤将光",
         fighterB: "パッチー・ミックス",
+      },
+      {
+        weightClass: "フライ級（57.0kg）",
+        fighterA: "伊藤裕樹",
+        fighterB: "アリベク・ガジャマトフ",
+      },
+      {
+        weightClass: "ヘビー級（120.0kg）",
+        fighterA: "上田幹雄",
+        fighterB: "エドポロキング",
+        note: "RIZIN JAPAN GP 2026 ヘビー級トーナメント",
+      },
+      {
+        weightClass: "ヘビー級（120.0kg）",
+        fighterA: "スダリオ剛",
+        fighterB: "酒井リョウ",
+        note: "RIZIN JAPAN GP 2026 ヘビー級トーナメント",
       },
       {
         weightClass: "フェザー級（66.0kg）",
@@ -140,38 +159,18 @@ export const EVENTS: MEvent[] = [
       },
       {
         weightClass: "フライ級（57.0kg）",
-        fighterA: "伊藤裕樹",
-        fighterB: "アリベク・ガジャマトフ",
-      },
-      {
-        weightClass: "ヘビー級（120.0kg）",
-        fighterA: "スダリオ剛",
-        fighterB: "酒井リョウ",
-      },
-      {
-        weightClass: "ヘビー級（120.0kg）",
-        fighterA: "上田幹雄",
-        fighterB: "エドポロキング",
-      },
-      {
-        weightClass: "フライ級（57.0kg）",
         fighterA: "平本丈",
         fighterB: "ジョリー",
-      },
-      {
-        weightClass: "女子スーパーアトム級（49.0kg）",
-        fighterA: "ケイト・ロータス",
-        fighterB: "NOEL",
-      },
-      {
-        weightClass: "フェザー級（66.0kg）",
-        fighterA: "水野新太",
-        fighterB: "リー・カイウェン",
       },
       {
         weightClass: "69.0kg契約",
         fighterA: "直樹",
         fighterB: "細川一颯",
+      },
+      {
+        weightClass: "フェザー級（66.0kg）",
+        fighterA: "水野新太",
+        fighterB: "リー・カイウェン",
       },
     ],
   },
@@ -385,7 +384,14 @@ export const EVENTS: MEvent[] = [
     date: "2026-10-03",
     venue: "長崎スタジアムシティ HAPPINESS ARENA",
     sourceUrl: "https://jp.rizinff.com/_ct/17852438",
-    bouts: [],
+    // 2026-08-03、榊原CEOがRIZIN.54(rizin-54)からのスライドを発表(ケイトの怪我による延期)。
+    bouts: [
+      {
+        weightClass: "女子スーパーアトム級（49.0kg）",
+        fighterA: "ケイト・ロータス",
+        fighterB: "NOEL",
+      },
+    ],
   },
   {
     slug: "rizin-landmark-17",
