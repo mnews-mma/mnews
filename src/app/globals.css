@@ -801,6 +801,12 @@ footer {
 .fighter-card:hover {
   background: var(--s2);
 }
+/* /fighters一覧のクライアント側フィルタ(FighterFilterGrid.tsx)がdata属性を見て
+   トグルする非表示クラス。カード自体はFighterCardGrid.tsx(Server Component)が
+   常に全件を静的HTMLへ出力し、これはJS実行後の絞り込み表示のみに使う。 */
+.fighter-card.is-filtered-out {
+  display: none;
+}
 .fighter-org {
   font-family: var(--mono);
   font-size: 9px;

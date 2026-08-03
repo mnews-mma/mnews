@@ -2,12 +2,14 @@ import { Suspense } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FighterFilterGrid from "@/components/FighterFilterGrid";
+import FighterCardGrid from "@/components/FighterCardGrid";
 import DataFreshness from "@/components/DataFreshness";
 import { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { computeFighterTags, OrgTag } from "@/lib/orgTags";
 import { fetchFighterRecordsGeneratedAt } from "@/lib/fighterRecordsCache";
+import { weightSortKey } from "@/lib/weightClasses";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "選手戦績一覧" }];
@@ -42,6 +44,13 @@ export default async function FightersPage() {
 
   const generatedAt = await fetchFighterRecordsGeneratedAt();
 
+  // 階級フィルタの選択肢は実際にDBへ存在する階級だけを、共有の体重ソートキーで
+  // 並べて出す(配列順・追加順に依存しない。後から階級を足しても正しい位置に入る)。
+  // 階級が未確定(空/"不明")の選手は選択肢に出さない(選手自体は「すべて」表示に残る)。
+  const weightOptions = Array.from(new Set(fighters.map((f) => f.weightClass).filter((w) => w && w !== "不明"))).sort(
+    (a, b) => weightSortKey(a) - weightSortKey(b)
+  );
+
   // ItemList: 一覧に表示される選手をPersonとして列挙(position=表示順)。
   const itemListLd = {
     "@context": "https://schema.org",
@@ -74,13 +83,19 @@ export default async function FightersPage() {
         </a>
         <DataFreshness generatedAt={generatedAt} />
       </div>
-      {/* FighterFilterGridはuseSearchParams()を使うクライアントコンポーネントで、
-          ISR(revalidate)化した静的生成時にはSuspense境界が無いとビルドが失敗する
-          (force-dynamicの間はこの制約に引っかかっていなかった)。fallbackは実質
-          表示されない(SSR結果に含まれるため)ため見た目上の変化はない。 */}
+      {/* FighterFilterGridはuseSearchParams()を使うクライアントコンポーネント
+          (検索入力・階級/団体チップのUIとフィルタ状態管理のみ)。ISR(revalidate)化
+          した静的生成時にはSuspense境界が無いとビルドが失敗するため引き続き
+          Suspenseで包む。フォールバック(null)は静的HTMLに焼き込まれ、フィルタバー
+          自体はハイドレーション後にのみ表示される(この挙動はSSR化前と同じ・
+          変更なし)。
+          カードグリッドの実描画はFighterCardGrid(Server Component)に分離し、
+          Suspenseの外に置くことで、useSearchParams()の制約を受けず全件が
+          静的HTMLに出力されるようにしている(out/fighters-index-ssr-feasibility.md)。 */}
       <Suspense fallback={null}>
-        <FighterFilterGrid fighters={fighters} tagsBySlug={tagsBySlug} />
+        <FighterFilterGrid weightOptions={weightOptions} />
       </Suspense>
+      <FighterCardGrid fighters={fighters} tagsBySlug={tagsBySlug} />
       <Footer />
     </>
   );
