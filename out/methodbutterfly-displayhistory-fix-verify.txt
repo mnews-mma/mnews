@@ -1,0 +1,3 @@
+Scanned (suppressNoRecordRow===true) fighters: 96
+Mismatch count: 1
+uehara-taira: card(multiOrg).wins=7 vs bar(displayHistory-based).winTotal=6 (rows=13, raw-history-len=14)
