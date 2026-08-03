@@ -282,3 +282,57 @@ bout数・全フィールドともコミット済みファイルと完全一致(
 | `tsc --noEmit` | ✅ エラー0件 |
 | `npm run build` | ✅ exit 0 |
 | `npm run test:mnews-rating` | ✅ 220件成功/0件失敗 |
+
+---
+
+## 追記3(マージ前レビュー対応: `nonProBoutFilter`新規配線の全数影響調査)
+
+指摘: `nonProBoutFilter.ts`はRIZIN側に元々配線されておらず(追記2参照)、今回`ruleLineRaw`
+ベースで新規に配線した。これはスクレイプ時点(`update-rizin-records.ts`の
+`buildEventBouts()`)での除外であり、`data/rizinRecords.json`に一切書き込まれない形の
+除外になる(集計層でexcludedとして分離されるのではなく、そもそもJSONに現れない)。
+LANDMARK15のアマ1件だけの影響か、既存82大会(自動取得78大会+手動書き起こし4大会)にも
+及ぶかは推測ではなく実測が必要という指摘を受けて再調査した。
+
+### 全数調査の方法
+
+`RIZIN_EVENT_INDEX`の`manualOverride`でない全78大会(SARABA/IZA/RIZIN.1/RIZIN.2の
+手動書き起こし4大会はそもそも`ruleLineRaw`を持たずこの新規フィルタの対象外)について、
+キャッシュ済みHTMLを現行コード(本PRのformatA修正込み)の`parseBoutChunk()`にそのまま
+通し、成功パースできた全boutの`ruleLineRaw`に対して`classifyNonProBout({ noteRaw })`
+(=`update-rizin-records.ts`の新規呼び出しと完全に同じ条件)を適用して該当有無を判定した。
+
+### 結果: 新規除外は1件のみ、影響選手は0名
+
+```
+走査した成功パースbout総数(全78大会): 984
+新規除外に該当するbout数: 1
+
+[not_pro_amateur] 2026-07-18 abc presents RIZIN LANDMARK 15 in HIROSHIMA
+  見出し: OPENING FIGHT 第1試合／田中仁 vs. 健太朗
+  ruleLineRaw: OPENING FIGHT RIZIN MMAアマチュアルール：3分 2R（57.0kg）
+  fighterA: 田中仁 (slug=未登録)
+  fighterB: 健太朗 (slug=未登録)
+```
+
+**整合性検証**: 走査母数984件が実データと整合するかも確認した。
+`984(走査母数) - 1(今回除外) + 2(LANDMARK12・RIZIN師走の中止試合bout単位マージ分、
+raw-html構造を持たないため通常の走査では捕捉できない) = 985`。これは現在
+コミット済みの`data/rizinRecords.json`における自動取得78大会分のbout数合計
+(985件、手動書き起こし4大会を除く)と完全一致し、全数調査に漏れが無いことを確認した。
+
+### 指摘事項への回答
+
+1. **除外bout全件列挙**: 上記の1件のみ(他81大会には一切影響しない)。
+2. **4団体通算(2行目)が変わる選手**: **0名**。田中仁・健太朗のいずれも`fighters.ts`に
+   未登録(`findFighterSlugByName`が両者ともnull)であり、そもそも4団体通算という
+   概念が存在しない(表示対象外)。将来登録された場合に備えた安全性は追記2で
+   `computeFighterMmaRecord()`実測により別途確認済み。
+3. **除外が意図どおりか(1件のみなので個別確認)**: `ruleLineRaw`原文に
+   「RIZIN MMAアマチュアルール」と公式サイト自身が明記しており、プロ戦の
+   誤除外ではない。RIZIN.40「スダリオ剛 vs. ジュニア・タファ」のような偽陽性
+   (追記2で発見・修正済み)は、`headingText`を判定対象から外した現行実装では
+   全数走査でも再発しないことを確認した。
+
+**結論: 新規配線による影響はLANDMARK15のアマ1件のみで、他82大会・登録済み選手への
+影響は実測でゼロと確認できた。**
