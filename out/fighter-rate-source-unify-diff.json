@@ -3,33 +3,20 @@
     "sato-shoko",
     "tokoro-hideo",
     "ohara-juri",
-    "nakamura-daisuke",
-    "strasser-kiichi",
     "uoi-fullswing",
     "seki-tetsuya",
-    "kurobe-kazusa",
-    "patricky-pitbull",
     "karamov-vugar",
     "miyake-kisa",
     "lee-kaiwen",
     "uno-caol",
     "uehara-taira",
-    "yuki-daiki",
-    "mio-shiyama",
-    "takamoto-chiyo",
-    "erika",
-    "katayama-tomoe",
-    "takada-atsuhi",
     "sugiyama"
   ],
   "typeBSlugs": [
     "kate-lotus",
-    "sato-shoko",
-    "goto-joji",
     "ohara-juri",
     "ushiku-juntaro",
     "nakajima-taichi",
-    "isao",
     "fujii-nobuki",
     "lightyear-daiki",
     "nojiri-yasuyuki",
@@ -39,53 +26,39 @@
     "azumi-kento",
     "tamura-hibiki",
     "waki-grappler",
-    "noa-tokumoto",
     "sugimoto-megumi",
     "mio-shiyama",
     "takamoto-chiyo",
-    "erika",
-    "katayama-tomoe",
     "hoshuyama-momoka",
-    "takada-atsuhi",
     "raika"
   ],
   "union": [
     "sato-shoko",
     "tokoro-hideo",
     "ohara-juri",
-    "nakamura-daisuke",
-    "strasser-kiichi",
     "uoi-fullswing",
     "seki-tetsuya",
-    "kurobe-kazusa",
-    "patricky-pitbull",
     "karamov-vugar",
     "miyake-kisa",
     "lee-kaiwen",
     "uno-caol",
     "uehara-taira",
-    "yuki-daiki",
-    "mio-shiyama",
-    "takamoto-chiyo",
-    "erika",
-    "katayama-tomoe",
-    "takada-atsuhi",
     "sugiyama",
     "kate-lotus",
-    "goto-joji",
     "ushiku-juntaro",
     "nakajima-taichi",
-    "isao",
     "fujii-nobuki",
     "lightyear-daiki",
     "nojiri-yasuyuki",
     "saito-tsubasa",
     "shikijima-kazuma",
+    "yuki-daiki",
     "azumi-kento",
     "tamura-hibiki",
     "waki-grappler",
-    "noa-tokumoto",
     "sugimoto-megumi",
+    "mio-shiyama",
+    "takamoto-chiyo",
     "hoshuyama-momoka",
     "raika"
   ],
@@ -104,29 +77,6 @@
       },
       "after": {
         "finishRate": 33,
-        "winRate": 75,
-        "chartReliable": true,
-        "chart": {
-          "winTotal": 3,
-          "lossTotal": 1,
-          "note": "不明行あり得(捏造なし)"
-        }
-      }
-    },
-    {
-      "slug": "erika",
-      "nameJa": "erika",
-      "type": "A+B",
-      "before": {
-        "finishRate": 0,
-        "winRate": 75,
-        "chart": {
-          "winTotal": 2,
-          "lossTotal": 1
-        }
-      },
-      "after": {
-        "finishRate": 0,
         "winRate": 75,
         "chartReliable": true,
         "chart": {
@@ -160,29 +110,6 @@
       }
     },
     {
-      "slug": "goto-joji",
-      "nameJa": "後藤 丈治",
-      "type": "B",
-      "before": {
-        "finishRate": 68,
-        "winRate": 68,
-        "chart": {
-          "winTotal": 19,
-          "lossTotal": 9
-        }
-      },
-      "after": {
-        "finishRate": 68,
-        "winRate": 68,
-        "chartReliable": true,
-        "chart": {
-          "winTotal": 19,
-          "lossTotal": 9,
-          "note": "不明行あり得(捏造なし)"
-        }
-      }
-    },
-    {
       "slug": "hoshuyama-momoka",
       "nameJa": "宝珠山 桃花",
       "type": "B",
@@ -201,29 +128,6 @@
         "chart": {
           "winTotal": 8,
           "lossTotal": 7,
-          "note": "不明行あり得(捏造なし)"
-        }
-      }
-    },
-    {
-      "slug": "isao",
-      "nameJa": "ISAO",
-      "type": "B",
-      "before": {
-        "finishRate": 41,
-        "winRate": 75,
-        "chart": {
-          "winTotal": 27,
-          "lossTotal": 9
-        }
-      },
-      "after": {
-        "finishRate": 41,
-        "winRate": 75,
-        "chartReliable": true,
-        "chart": {
-          "winTotal": 27,
-          "lossTotal": 9,
           "note": "不明行あり得(捏造なし)"
         }
       }
@@ -252,29 +156,6 @@
       }
     },
     {
-      "slug": "katayama-tomoe",
-      "nameJa": "片山 智絵",
-      "type": "A+B",
-      "before": {
-        "finishRate": 0,
-        "winRate": 75,
-        "chart": {
-          "winTotal": 2,
-          "lossTotal": 1
-        }
-      },
-      "after": {
-        "finishRate": 0,
-        "winRate": 75,
-        "chartReliable": true,
-        "chart": {
-          "winTotal": 3,
-          "lossTotal": 1,
-          "note": "不明行あり得(捏造なし)"
-        }
-      }
-    },
-    {
       "slug": "kate-lotus",
       "nameJa": "ケイト・ロータス",
       "type": "B",
@@ -295,25 +176,6 @@
           "lossTotal": 8,
           "note": "不明行あり得(捏造なし)"
         }
-      }
-    },
-    {
-      "slug": "kurobe-kazusa",
-      "nameJa": "黒部和沙",
-      "type": "A",
-      "before": {
-        "finishRate": 67,
-        "winRate": 86,
-        "chart": {
-          "winTotal": 5,
-          "lossTotal": 1
-        }
-      },
-      "after": {
-        "finishRate": 83,
-        "winRate": 86,
-        "chartReliable": false,
-        "chart": "非表示(history不完全のため)"
       }
     },
     {
@@ -361,10 +223,10 @@
     {
       "slug": "mio-shiyama",
       "nameJa": "嶋屋 澪",
-      "type": "A+B",
+      "type": "B",
       "before": {
         "finishRate": 50,
-        "winRate": 29,
+        "winRate": 33,
         "chart": {
           "winTotal": 2,
           "lossTotal": 4
@@ -372,11 +234,11 @@
       },
       "after": {
         "finishRate": 50,
-        "winRate": 29,
+        "winRate": 33,
         "chartReliable": true,
         "chart": {
           "winTotal": 2,
-          "lossTotal": 5,
+          "lossTotal": 4,
           "note": "不明行あり得(捏造なし)"
         }
       }
@@ -424,48 +286,6 @@
       }
     },
     {
-      "slug": "nakamura-daisuke",
-      "nameJa": "中村大介",
-      "type": "A",
-      "before": {
-        "finishRate": 77,
-        "winRate": 55,
-        "chart": {
-          "winTotal": 35,
-          "lossTotal": 28
-        }
-      },
-      "after": {
-        "finishRate": 77,
-        "winRate": 55,
-        "chartReliable": false,
-        "chart": "非表示(history不完全のため)"
-      }
-    },
-    {
-      "slug": "noa-tokumoto",
-      "nameJa": "徳本 望愛",
-      "type": "B",
-      "before": {
-        "finishRate": 40,
-        "winRate": 83,
-        "chart": {
-          "winTotal": 5,
-          "lossTotal": 1
-        }
-      },
-      "after": {
-        "finishRate": 40,
-        "winRate": 83,
-        "chartReliable": true,
-        "chart": {
-          "winTotal": 5,
-          "lossTotal": 1,
-          "note": "不明行あり得(捏造なし)"
-        }
-      }
-    },
-    {
       "slug": "nojiri-yasuyuki",
       "nameJa": "野尻 定由",
       "type": "B",
@@ -503,25 +323,6 @@
       "after": {
         "finishRate": 61,
         "winRate": 64,
-        "chartReliable": false,
-        "chart": "非表示(history不完全のため)"
-      }
-    },
-    {
-      "slug": "patricky-pitbull",
-      "nameJa": "パトリッキー・ピットブル",
-      "type": "A",
-      "before": {
-        "finishRate": 72,
-        "winRate": 61,
-        "chart": {
-          "winTotal": 25,
-          "lossTotal": 17
-        }
-      },
-      "after": {
-        "finishRate": 72,
-        "winRate": 61,
         "chartReliable": false,
         "chart": "非表示(history不完全のため)"
       }
@@ -575,7 +376,7 @@
     {
       "slug": "sato-shoko",
       "nameJa": "佐藤 将光",
-      "type": "A+B",
+      "type": "A",
       "before": {
         "finishRate": 61,
         "winRate": 69,
@@ -634,25 +435,6 @@
       }
     },
     {
-      "slug": "strasser-kiichi",
-      "nameJa": "ストラッサー起一",
-      "type": "A",
-      "before": {
-        "finishRate": 57,
-        "winRate": 62,
-        "chart": {
-          "winTotal": 20,
-          "lossTotal": 12
-        }
-      },
-      "after": {
-        "finishRate": 57,
-        "winRate": 62,
-        "chartReliable": false,
-        "chart": "非表示(history不完全のため)"
-      }
-    },
-    {
       "slug": "sugimoto-megumi",
       "nameJa": "杉本 恵",
       "type": "B",
@@ -695,35 +477,12 @@
       }
     },
     {
-      "slug": "takada-atsuhi",
-      "nameJa": "高田 暖妃",
-      "type": "A+B",
-      "before": {
-        "finishRate": 33,
-        "winRate": 75,
-        "chart": {
-          "winTotal": 2,
-          "lossTotal": 1
-        }
-      },
-      "after": {
-        "finishRate": 33,
-        "winRate": 75,
-        "chartReliable": true,
-        "chart": {
-          "winTotal": 3,
-          "lossTotal": 1,
-          "note": "不明行あり得(捏造なし)"
-        }
-      }
-    },
-    {
       "slug": "takamoto-chiyo",
       "nameJa": "高本 千代",
-      "type": "A+B",
+      "type": "B",
       "before": {
         "finishRate": 33,
-        "winRate": 43,
+        "winRate": 50,
         "chart": {
           "winTotal": 3,
           "lossTotal": 3
@@ -731,11 +490,11 @@
       },
       "after": {
         "finishRate": 33,
-        "winRate": 43,
+        "winRate": 50,
         "chartReliable": true,
         "chart": {
           "winTotal": 3,
-          "lossTotal": 4,
+          "lossTotal": 3,
           "note": "不明行あり得(捏造なし)"
         }
       }
@@ -892,21 +651,21 @@
     {
       "slug": "yuki-daiki",
       "nameJa": "結城 大樹",
-      "type": "A+B",
+      "type": "B",
       "before": {
-        "finishRate": 14,
-        "winRate": 58,
+        "finishRate": 17,
+        "winRate": 55,
         "chart": {
           "winTotal": 6,
           "lossTotal": 5
         }
       },
       "after": {
-        "finishRate": 14,
-        "winRate": 58,
+        "finishRate": 17,
+        "winRate": 55,
         "chartReliable": true,
         "chart": {
-          "winTotal": 7,
+          "winTotal": 6,
           "lossTotal": 5,
           "note": "不明行あり得(捏造なし)"
         }
