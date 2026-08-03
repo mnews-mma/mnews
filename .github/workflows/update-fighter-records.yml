@@ -37,8 +37,16 @@ jobs:
           # たびに書き捨てられていた(2026-07-20 19:28以降凍結)。baselineが前進しない
           # と、後日--mode=data-correctionを実行した際のripple検出(auditRankingsRipple)
           # が古い基準と比較し続け、無関係な選手のdeltaまで誤ってゼロに抑制する。
-          if ! git diff --quiet -- data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json; then
-            git add data/fighterRecords.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json
+          #
+          # data/fighterRecordsMeta.json(2026-08-03追加): update-fighter-records.tsが
+          # 毎回generatedAtを書き出すが、このファイルもgit add対象に含まれていなかった。
+          # #401(update-org-records.yml)と同型の穴で、pushが競合してrebaseリトライに
+          # 入ると、このファイルの変更が未ステージのまま残り「cannot rebase: You have
+          # unstaged changes」でジョブが異常終了しうる(このファイルはfighters.ts側の
+          # 「データ最終更新」表示に使われる実データのため、out/*.mdの運用ログとは違い
+          # commit対象に含めるのが妥当と判断)。
+          if ! git diff --quiet -- data/fighterRecords.json data/fighterRecordsMeta.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json; then
+            git add data/fighterRecords.json data/fighterRecordsMeta.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json
             git commit -m "chore: update fighter records + mnews rating [skip ci]"
 
             # archive-articles.yml(30分毎にmainへpush)とこのジョブ(所要8.5〜13.8分)の
@@ -46,6 +54,12 @@ jobs:
             # 失われる事故が実際に発生した(2026-07-19・2026-07-31、過去27回中2回)。
             # 対象ファイルが競合しない前提でfetch+rebaseしてリトライする。rebase自体が
             # 競合した場合は異常終了させる(黙って上書き・破棄しない)。
+            #
+            # --autostash(2026-08-03追加、#401と同じ方針): 上記のfighterRecordsMeta.json
+            # 漏れは今回の変更で解消したが、将来同種の書き漏れが再発した場合でも
+            # rebase自体が「未ステージの変更がある」というだけで即失敗しないよう、
+            # 念のため#401と同じ防御を入れておく。実内容の衝突検出自体は妨げない
+            # (衝突時は従来どおりrebase失敗→abort→異常終了する)。
             max_attempts=5
             attempt=1
             until git push; do
@@ -55,7 +69,7 @@ jobs:
               fi
               echo "push失敗(試行${attempt}/${max_attempts})。origin/mainを取り込んでrebaseし再試行します。"
               git fetch origin main
-              if ! git rebase origin/main; then
+              if ! git rebase --autostash origin/main; then
                 echo "::error::git rebase が競合しました。手動確認が必要です(黙って上書きしません)。"
                 git rebase --abort
                 exit 1
