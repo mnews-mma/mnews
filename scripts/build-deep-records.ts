@@ -128,6 +128,25 @@ function isCoHostedPancraseDuplicate(title: string, date: string): boolean {
   return CO_HOSTED_PANCRASE_EXCLUSIONS.some((e) => e.title === title && e.date === date);
 }
 
+// slug解決を個別に抑止するbout(2026-08-03、指示書「computeMultiOrgRecord前後
+// 突合」)。scripts/backfill-shooto-pancrase-slugs.tsのKNOWN_NON_PROFESSIONAL_
+// BOUTS(該当コメント参照)と同一の1件を、こちらの通常抽出パス側でも明示的に
+// 除外する。「華蓮DATE」はfighters.tsにalias登録済みのため、build-deep-records.ts
+// 側の通常のfindFighterSlugByName()呼び出し(バックフィルスクリプトを経由しない)
+// でもこの1件だけは直接一致してしまい、バックフィル側の
+// KNOWN_NON_PROFESSIONAL_BOUTSによる保護が効かない(あちらは「未解決のbout」
+// にのみ新規解決を試みる設計で、既に解決済みのslugを取り消す機能を持たない)。
+// このDEEP JEWELS 12の試合は「※パウンド無し」の特別ルール(12歳での初出場)で
+// あり、1行目(Wikipedia由来、10-3-0)にも含まれていないため、2行目
+// (4団体通算)にも算入しない(bout自体の表示・出典は変更せず、slug解決のみ
+// 抑止する=試合結果ページからは消えない)。
+const SLUG_RESOLUTION_SUPPRESSED: { eventTitle: string; fighterName: string }[] = [
+  { eventTitle: "DEEP JEWELS 12", fighterName: "華蓮DATE" },
+];
+function isSlugResolutionSuppressed(eventTitle: string, fighterName: string): boolean {
+  return SLUG_RESOLUTION_SUPPRESSED.some((e) => e.eventTitle === eventTitle && e.fighterName === fighterName);
+}
+
 async function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -242,10 +261,12 @@ function processRawBouts(
   const bouts: DeepRecordsBout[] = proRawBouts.map((raw, idx) => {
     const outcome = resolveOutcome(raw);
     if (outcome.resultType === "unknown") unknownResults++;
-    const fighterASlug =
-      findFighterSlugByName(raw.fighterAName) ?? resolveBareNameWithWeightClass(raw.fighterAName, raw.weightClassRaw);
-    const fighterBSlug =
-      findFighterSlugByName(raw.fighterBName) ?? resolveBareNameWithWeightClass(raw.fighterBName, raw.weightClassRaw);
+    const fighterASlug = isSlugResolutionSuppressed(eventTitle, raw.fighterAName)
+      ? null
+      : findFighterSlugByName(raw.fighterAName) ?? resolveBareNameWithWeightClass(raw.fighterAName, raw.weightClassRaw);
+    const fighterBSlug = isSlugResolutionSuppressed(eventTitle, raw.fighterBName)
+      ? null
+      : findFighterSlugByName(raw.fighterBName) ?? resolveBareNameWithWeightClass(raw.fighterBName, raw.weightClassRaw);
     if (!fighterASlug) unresolvedNames++;
     if (!fighterBSlug) unresolvedNames++;
     const winnerName = outcome.winner === "A" ? raw.fighterAName : outcome.winner === "B" ? raw.fighterBName : null;
