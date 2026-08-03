@@ -13,6 +13,7 @@ import fs from "fs";
 import path from "path";
 import { parsePancrase, parseShooto, OrgRankingData } from "../src/lib/orgRankings";
 import { deepRankingData } from "../src/lib/champions";
+import { toJstDateStr } from "../src/lib/eventCountdown";
 
 const OUT = path.join(process.cwd(), "data", "orgRankings.json");
 const OUT_PREV = path.join(process.cwd(), "data", "orgRankings-prev.json");
@@ -32,6 +33,34 @@ interface OrgRankingsFile {
   pancrase?: OrgRankingData;
   shooto?: OrgRankingData;
   deep?: OrgRankingData;
+}
+
+const OUT_UNMATCHED = path.join(process.cwd(), "data", "orgRankingsUnmatched.json");
+
+interface UnmatchedEntry {
+  weightClass: string;
+  rank: string;
+  officialName: string;
+}
+interface OrgRankingsUnmatchedFile {
+  generatedDate: string; // JST YYYY-MM-DD
+  pancrase: UnmatchedEntry[];
+  shooto: UnmatchedEntry[];
+}
+
+// FIGHTERSに名前が一致せずslug:nullのまま出力されたランカーを記録する(指示書B-2)。
+// DEEPはchampions.tsの手動スナップショットで「空位」も明示的にslug:nullを取るため
+// 対象外(matchSlugを通らない=このファイルの目的である「自動照合の未一致」ではない)。
+// 検知のみで、fighters.tsへの登録はscripts/build-org-ranking-candidates.ts(手動実行)側で行う。
+function collectUnmatched(data: OrgRankingData | undefined): UnmatchedEntry[] {
+  if (!data) return [];
+  const list: UnmatchedEntry[] = [];
+  for (const c of data.classes) {
+    for (const e of c.entries) {
+      if (e.slug === null) list.push({ weightClass: c.weightClass, rank: e.rank, officialName: e.officialName });
+    }
+  }
+  return list;
 }
 
 // 既存JSONの読み込み。破損している場合でも{}にフォールバックして続行する
@@ -97,13 +126,21 @@ async function main() {
   if (shoOk) nextPrevSnapshot.shooto = prev.shooto;
   if (JSON.stringify(prev.deep) !== JSON.stringify(deep)) nextPrevSnapshot.deep = prev.deep;
 
+  const unmatched: OrgRankingsUnmatchedFile = {
+    generatedDate: toJstDateStr(),
+    pancrase: collectUnmatched(out.pancrase),
+    shooto: collectUnmatched(out.shooto),
+  };
+
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n");
   fs.writeFileSync(OUT_PREV, JSON.stringify(nextPrevSnapshot, null, 2) + "\n");
+  fs.writeFileSync(OUT_UNMATCHED, JSON.stringify(unmatched, null, 2) + "\n");
 
   const sum = (d?: OrgRankingData) =>
     d ? `${d.classes.length}区分/${d.classes.reduce((s, c) => s + c.entries.length, 0)}人(${d.rankingLabel})` : "なし";
   console.log(`pancrase: ${sum(out.pancrase)}  shooto: ${sum(out.shooto)}  deep: ${sum(out.deep)}`);
+  console.log(`未一致(未リンク): pancrase ${unmatched.pancrase.length}人  shooto ${unmatched.shooto.length}人`);
   if (fails.length) console.log("取得失敗:", fails.join(", "));
 }
 

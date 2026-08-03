@@ -26,7 +26,9 @@ export interface OrgRankingData {
   classes: RankedClass[];
 }
 
-const norm = (s: string) => s.replace(/[\s　・☆]/g, "").replace(/（.*?）|\(.*?\)/g, "");
+// scripts/build-org-ranking-candidates.ts(未一致ランカーの候補生成)でも同じ
+// 正規化基準で名前を突合する必要があるため export する(挙動自体は変更しない)。
+export const norm = (s: string) => s.replace(/[\s　・☆]/g, "").replace(/（.*?）|\(.*?\)/g, "");
 const stripTags = (s: string) => s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 
 // 全FIGHTERS(hidden含む)から名前一致で slug を引く。findFighterSlugByName は hidden を
