@@ -1,0 +1,207 @@
+name: Update org records (4団体戦績data)
+
+# RIZIN/修斗/パンクラス/DEEPの4団体公式サイトを機械取得し、選手戦績data
+# (data/rizinRecords.json・data/shootoRecords.json・data/pancraseRecords.json・
+# data/deepRecords.json)を最新化するバッチ。取得後にslug再解決(fighters.tsへの
+# 新規選手追加を反映)を行い、差分があればcommit&pushする。
+#
+# 衝突回避について: update-fighter-records.yml(nominal 2:30JST、実起動は中央値
+# 3.27時間ずれる=時刻での回避は成立しない、CLAUDE.md記載)がこのジョブの出力
+# ファイルを入力として読むため、実行中に重ならないようGitHub Actions APIで
+# 実行中run自体を照会してから開始する(時刻ベースの回避はしない)。
+on:
+  schedule:
+    - cron: "0 14 * * *" # 毎日 JST 23:00(暫定。他ジョブと時刻的な排他は保証しない前提)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "true: 取得・差分計算のみ行いcommit/pushしない"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Wait for conflicting data-writing workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # update-fighter-records.yml・update-org-rankings.ymlはこのジョブの
+          # 出力(data/rizinRecords.json等)を後続で読む/別ファイルに書くため、
+          # 実行中に重なるとpushの競合(rebaseで解消可能)や中途半端な入力の
+          # 読み込みが起きうる。時刻では避けられないため実行中run自体を照会する。
+          max_checks=20
+          check=1
+          while [ "$check" -le "$max_checks" ]; do
+            running=$(gh run list --workflow=update-fighter-records.yml --limit 5 --json status \
+              -q '[.[] | select(.status=="in_progress" or .status=="queued")] | length')
+            running2=$(gh run list --workflow=update-org-rankings.yml --limit 5 --json status \
+              -q '[.[] | select(.status=="in_progress" or .status=="queued")] | length')
+            if [ "$running" = "0" ] && [ "$running2" = "0" ]; then
+              echo "衝突しうるジョブは実行中でない。続行する。"
+              break
+            fi
+            echo "衝突しうるジョブが実行中(update-fighter-records=${running}件, update-org-rankings=${running2}件)。2分待って再確認する(${check}/${max_checks})。"
+            sleep 120
+            check=$((check + 1))
+          done
+          if [ "$check" -gt "$max_checks" ]; then
+            echo "待機上限(40分)に達した。実行中のまま続行する(push時のrebaseリトライで最終的な競合には対応する)。"
+          fi
+
+      - name: Snapshot bout counts before fetch
+        run: |
+          npx tsx scripts/report-records-counts.ts before \
+            data/rizinRecords.json data/shootoRecords.json data/pancraseRecords.json data/deepRecords.json \
+            | tee /tmp/report-before.tsv | grep '^COUNT' | cut -f2- > /tmp/counts-before.tsv
+
+      - name: Fetch RIZIN records
+        run: npx tsx scripts/update-rizin-records.ts
+
+      - name: Fetch Shooto records
+        run: npx tsx scripts/build-shooto-records.ts
+
+      - name: Fetch Pancrase records
+        run: npx tsx scripts/build-pancrase-records.ts
+
+      - name: Fetch DEEP records
+        run: npx tsx scripts/build-deep-records.ts
+
+      - name: Backfill Shooto/Pancrase slugs
+        run: npx tsx scripts/backfill-shooto-pancrase-slugs.ts
+
+      - name: Backfill RIZIN slugs
+        run: npx tsx scripts/backfill-rizin-slugs.ts
+
+      - name: Report bout counts after fetch + build per-org commit plan
+        run: |
+          # 団体ごとのbout数減少ガードは団体単位で独立させる(2026-08-03変更)。
+          # ある団体で減少を検知してもジョブ全体を異常終了させず、その団体だけ
+          # commit対象から外し、他の団体は正常にcommit&pushする。見逃し防止のため
+          # ジョブ自体は最後(下のfail-if-any-skippedステップ)で非ゼロ終了する。
+          org_label() {
+            case "$1" in
+              data/rizinRecords.json) echo "RIZIN" ;;
+              data/shootoRecords.json) echo "修斗" ;;
+              data/pancraseRecords.json) echo "パンクラス" ;;
+              data/deepRecords.json) echo "DEEP" ;;
+              *) echo "$1" ;;
+            esac
+          }
+
+          npx tsx scripts/report-records-counts.ts after \
+            data/rizinRecords.json data/shootoRecords.json data/pancraseRecords.json data/deepRecords.json \
+            | tee /tmp/report-after.tsv | grep '^COUNT' | cut -f2- > /tmp/counts-after.tsv
+
+          {
+            echo "## 4団体戦績data 差分"
+            echo "| 団体 | 大会数(前→後) | bout数(前→後) | slug未解決数(後) | 判定 |"
+            echo "|---|---|---|---|---|"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          : > /tmp/commit-files.txt
+          : > /tmp/skipped-orgs.tsv
+
+          paste /tmp/counts-before.tsv /tmp/counts-after.tsv | while IFS=$'\t' read -r _ file be bb _bu _label2 _file2 ae ab au; do
+            label=$(org_label "$file")
+            if [ "$ab" -lt "$bb" ]; then
+              decrease=$((bb - ab))
+              echo "::warning::${label}(${file})のbout数が減少した(${bb} → ${ab}、-${decrease})。この団体だけcommit対象から除外する(他団体は継続)。"
+              echo "| ${label} | ${be} → ${ae} | ${bb} → ${ab} | ${au} | **スキップ(-${decrease})** |" >> "$GITHUB_STEP_SUMMARY"
+              printf '%s\t%s\t%s\n' "$label" "$file" "$decrease" >> /tmp/skipped-orgs.tsv
+            else
+              echo "${label}: events ${be}→${ae}, bouts ${bb}→${ab}, unresolvedSlugs(after)=${au}"
+              echo "| ${label} | ${be} → ${ae} | ${bb} → ${ab} | ${au} | commit対象 |" >> "$GITHUB_STEP_SUMMARY"
+              echo "$file" >> /tmp/commit-files.txt
+            fi
+          done
+
+          # bout数0の大会(スタブ化。正常な状態でもありうるため異常終了はさせない、
+          # 一覧化のみ)。新規bout数・未解決slug数と同じジョブサマリーに追記する。
+          {
+            echo ""
+            echo "## bout数0で取得された大会"
+          } >> "$GITHUB_STEP_SUMMARY"
+          zero_bouts=$(grep '^ZEROBOUT' /tmp/report-after.tsv || true)
+          if [ -z "$zero_bouts" ]; then
+            echo "該当なし" >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "| 団体data | 大会名 | 日付 |"
+              echo "|---|---|---|"
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "$zero_bouts" | while IFS=$'\t' read -r _ _label file eventName date; do
+              echo "bout数0: ${file} / ${eventName} (${date})"
+              echo "| ${file} | ${eventName} | ${date} |" >> "$GITHUB_STEP_SUMMARY"
+            done
+          fi
+
+      - name: Commit and push per-org (skips orgs with a bout-count regression)
+        run: |
+          git config user.name "mnews-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          if [ ! -s /tmp/commit-files.txt ]; then
+            echo "commit対象の団体が0件(全団体が減少検知でスキップ)。commitしない。"
+            exit 0
+          fi
+
+          mapfile -t files < /tmp/commit-files.txt
+
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "dry_run=true のためcommit/pushはスキップした。commit対象(スキップされなかった団体)は以下:"
+            cat /tmp/commit-files.txt
+            git diff --stat -- "${files[@]}"
+            exit 0
+          fi
+
+          if ! git diff --quiet -- "${files[@]}"; then
+            git add "${files[@]}"
+            git commit -m "chore: update org records ($(tr '\n' ',' < /tmp/commit-files.txt | sed 's/,$//')) [skip ci]"
+
+            # archive-articles.yml等とのpush競合(non-fast-forward)対策。
+            # #325と同じ方式: rebaseで統合してリトライ、rebase自体が競合したら
+            # 異常終了させる(黙って上書き・破棄しない)。
+            max_attempts=5
+            attempt=1
+            until git push; do
+              if [ "$attempt" -ge "$max_attempts" ]; then
+                echo "::error::push が ${max_attempts} 回連続で失敗しました。競合を解消できないため異常終了します(データは破棄していません。ローカルコミットを確認してください)。"
+                exit 1
+              fi
+              echo "push失敗(試行${attempt}/${max_attempts})。origin/mainを取り込んでrebaseし再試行します。"
+              git fetch origin main
+              if ! git rebase origin/main; then
+                echo "::error::git rebase が競合しました。手動確認が必要です(黙って上書きしません)。"
+                git rebase --abort
+                exit 1
+              fi
+              attempt=$((attempt + 1))
+            done
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Fail if any org was skipped (bout-count regression)
+        run: |
+          if [ -s /tmp/skipped-orgs.tsv ]; then
+            echo "::error::以下の団体でbout数減少を検知しcommitをスキップした(見逃し防止のためジョブを失敗として終了する):"
+            while IFS=$'\t' read -r label file decrease; do
+              echo "  - ${label}(${file}): -${decrease}"
+            done < /tmp/skipped-orgs.tsv
+            exit 1
+          fi
+          echo "スキップ0件。全団体正常。"
