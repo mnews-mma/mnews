@@ -1353,7 +1353,13 @@ export const FIGHTERS: Fighter[] = [
   { slug: "tanimura-taika", nameJa: "谷村泰嘉", nameEn: "Taiga Tanimura", org: "pancrase", weightClass: "フライ級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "miyazawa-yuta", nameJa: "宮澤雄大", nameEn: "Yuta Miyazawa", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "sasaki-shunma", nameJa: "佐々木瞬真", nameEn: "Shunma Sasaki", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "funada-denchi", nameJa: "船田電池", nameEn: "Denchi Funada", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // aliases: パンクラス公式戦績表は本名「船田侃志」(プロフィールURL stem
+  // funadakanji.html)で3戦(2024-02-25/2024-05-25/2024-09-29)記録されており、
+  // リングネーム「船田電池」とは別表記のためfindFighterSlugByName()が
+  // 解決できていなかった(この3戦はpancraseRecords.json側でfighterSlugが
+  // nullのまま残存)。将来のdata/pancraseRecords.json再生成時に自動解決
+  // されるようaliasを登録する。
+  { slug: "funada-denchi", nameJa: "船田電池", nameEn: "Denchi Funada", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["船田侃志"] },
   { slug: "little", nameJa: "リトル", nameEn: "Little", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "ujihara-kaisei", nameJa: "氏原魁星", nameEn: "Kaisei Ujihara", org: "pancrase", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nakagiri-ryosuke", nameJa: "中桐涼輔", nameEn: "Ryosuke Nakagiri", org: "nexus", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
