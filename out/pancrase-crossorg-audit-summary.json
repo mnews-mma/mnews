@@ -1,0 +1,36 @@
+{
+  "fightersTotal": 365,
+  "matchedCount": 136,
+  "matchedNonPancraseOrgCount": 57,
+  "aliasAxisMatchCount": 1,
+  "aliasAxisMatches": [
+    {
+      "slug": "ohara-juri",
+      "nameJa": "大原樹理",
+      "matchedRaw": "大原樹里",
+      "href": "ohara.html"
+    }
+  ],
+  "unmatchedCount": 228,
+  "ambiguousCount": 1,
+  "ambiguous": [
+    {
+      "slug": "taito-rangers",
+      "nameJa": "泰斗",
+      "ambiguousHrefs": [
+        "taito.html",
+        "taitosc.html"
+      ]
+    }
+  ],
+  "fetchedCount": 136,
+  "unreachableCount": 0,
+  "unreachable": [],
+  "highCollisionRiskMatchedCount": 27,
+  "totalProfileBouts": 1099,
+  "totalReflected": 1083,
+  "totalSlugUnresolved": 5,
+  "totalMissing": 11,
+  "fightersWithSlugUnresolvedCount": 2,
+  "fightersWithMissingCount": 10
+}
