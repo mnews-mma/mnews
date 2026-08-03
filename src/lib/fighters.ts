@@ -1500,7 +1500,7 @@ export const FIGHTERS: Fighter[] = [
   // ハードコードしない。3名ともWikipediaページ実在・表示名一致を確認済み。
   // 新居すぐる: 元パンクラス王者だが2024/8王座返上・現ランカー外のためパンクラスタグは付けない
   // (団体タグはRIZINのみ)。aliasesは旧名(コンバ王子)・略称(スグル)の対戦相手名リンク解決用。
-  { slug: "nii-suguru", nameJa: "新居すぐる", nameEn: "Suguru Nii", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "新居すぐる", nickname: "グラップリング・バウンサー", aliases: ["コンバ王子", "スグル"] },
+  { slug: "nii-suguru", nameJa: "新居すぐる", nameEn: "Suguru Nii", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "新居すぐる", nickname: "グラップリング・バウンサー", aliases: ["コンバ王子", "スグル", "新居卓"] },
   { slug: "inoue-seiya", nameJa: "井上聖矢", nameEn: "Seiya Inoue", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "井上聖矢", nickname: "火の国のKOボーイ" },
   // 松嶋こよみ: RIZIN出場は2025-11 RIZIN LANDMARK 12が初(手動でRIZINタグ扱い)。
   { slug: "matsushima-koyomi", nameJa: "松嶋こよみ", nameEn: "Koyomi Matsushima", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "松嶋こよみ", nickname: "非RIZIN流 決意の出陣" },
@@ -2315,6 +2315,7 @@ export const FIGHTERS: Fighter[] = [
     decision: 0,
     history: [],
     recordFromResults: true,
+    aliases: ["村田康大"],
   },
   {
     slug: "tamura-hibiki",
