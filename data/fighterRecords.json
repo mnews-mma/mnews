@@ -13539,6 +13539,14 @@
     "decision": 8,
     "history": [
       {
+        "date": "2026-05-04",
+        "opponent": "狩野優",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "DEEP 131 IMPACT 25th Anniversary",
+        "round": "R3"
+      },
+      {
         "date": "2025-05-04",
         "opponent": "桜庭大世",
         "result": "win",
@@ -14953,6 +14961,22 @@
         "method": "5分2R終了 判定0-2",
         "event": "PANCRASE 2007 RISING TOUR",
         "round": "R2"
+      },
+      {
+        "date": "2006-10-01",
+        "opponent": "青山晃剛",
+        "result": "win",
+        "method": "2R 2:58 ギブアップ（肩固め）",
+        "event": "PANCRASE 2006 BLOW TOUR",
+        "round": "R2"
+      },
+      {
+        "date": "2006-03-19",
+        "opponent": "鳥生将大",
+        "result": "loss",
+        "method": "1R 0:05 KO（ハイキック）",
+        "event": "PANCRASE 2006 BLOW TOUR",
+        "round": "R1"
       }
     ],
     "live": true,
@@ -17517,6 +17541,14 @@
         "result": "loss",
         "method": "1R 2:16 スリーパーホールド",
         "event": "PROFESSIONAL SHOOTO 2024 Vol.7",
+        "round": "R1"
+      },
+      {
+        "date": "2024-04-07",
+        "opponent": "澤田龍人",
+        "result": "win",
+        "method": "1R 3:38 ネックストレッチ",
+        "event": "SHOOTO GIG TOKYO Vol.36",
         "round": "R1"
       },
       {
@@ -21325,14 +21357,6 @@
         "event": "超RIZIN.4 真夏の喧嘩祭り",
         "round": "R3",
         "weightClass": "71.0kg契約"
-      },
-      {
-        "date": "2025-05-31",
-        "opponent": "アルマン・ツァルキヤン",
-        "result": "loss",
-        "method": "5R リアネイキドチョーク",
-        "event": "ADXC 10",
-        "round": "R5"
       },
       {
         "date": "2024-06-21",
