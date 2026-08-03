@@ -1,0 +1,139 @@
+name: Weekly org ranking candidates report
+
+on:
+  schedule:
+    # JST Monday 09:00 (UTC Monday 00:00). Chosen with buffer past the two
+    # daily data-writing jobs' nominal times AND their observed real-world
+    # delays (see CLAUDE.md cron table): update-org-rankings.yml nominal
+    # JST 0:17, update-fighter-records.yml nominal JST 2:30 with up to
+    # +5.25h observed delay (worst case ~JST 7:45 start, ~14min runtime).
+    # This job only reads data/ (never writes/commits), so there is no
+    # write-write conflict risk regardless of timing, but the buffer keeps
+    # the read close to a freshly-generated data/orgRankingsUnmatched.json.
+    - cron: "0 0 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build org ranking candidates (read-only, out/ is gitignored)
+        run: npx tsx scripts/build-org-ranking-candidates.ts
+
+      - name: Post or update summary issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            const unmatched = JSON.parse(fs.readFileSync('data/orgRankingsUnmatched.json', 'utf8'));
+            const candidates = JSON.parse(fs.readFileSync('out/org-ranking-candidates/candidates.json', 'utf8'));
+
+            // resolved-bucket entries don't carry `rank` (see ResolvedCandidate
+            // in scripts/build-org-ranking-candidates.ts) — re-join it from the
+            // raw unmatched file by (org, officialName == nameJa). 1:1 safe
+            // because candidates.json's nameJa is copied verbatim from officialName.
+            const rankByKey = new Map();
+            for (const org of ['pancrase', 'shooto']) {
+              for (const e of unmatched[org] || []) {
+                rankByKey.set(`${org}::${e.officialName}`, e.rank);
+              }
+            }
+
+            const rows = [];
+            for (const bucket of ['denylist', 'noLocalData', 'ambiguous', 'noStableId']) {
+              for (const e of candidates[bucket] || []) {
+                rows.push({ org: e.org, weightClass: e.weightClass, rank: e.rank, name: e.nameJa, bucket });
+              }
+            }
+            for (const c of candidates.resolved || []) {
+              const rank = rankByKey.get(`${c.org}::${c.nameJa}`) ?? '?';
+              rows.push({ org: c.org, weightClass: c.weightClass, rank, name: c.nameJa, bucket: 'resolved' });
+            }
+
+            const total = rows.length;
+            console.log(`Total unmatched entries across all buckets: ${total}`);
+
+            const title = '未一致ランカー候補レポート';
+
+            if (total === 0) {
+              console.log('No unmatched candidates this run. Not creating or touching any issue.');
+              return;
+            }
+
+            rows.sort((a, b) => {
+              if (a.org !== b.org) return a.org < b.org ? -1 : 1;
+              if (a.weightClass !== b.weightClass) return a.weightClass < b.weightClass ? -1 : 1;
+              const ra = parseInt(a.rank, 10);
+              const rb = parseInt(b.rank, 10);
+              if (!Number.isNaN(ra) && !Number.isNaN(rb) && ra !== rb) return ra - rb;
+              return String(a.rank).localeCompare(String(b.rank));
+            });
+
+            const tableHeader = '| 団体 | 階級 | 順位 | 名前 | バケット |\n|---|---|---|---|---|';
+            const tableBody = rows.map((r) => `| ${r.org} | ${r.weightClass} | ${r.rank} | ${r.name} | ${r.bucket} |`).join('\n');
+            const table = `${tableHeader}\n${tableBody}`;
+
+            let reportMd = '(out/org-ranking-candidates/report.md not found)';
+            try {
+              reportMd = fs.readFileSync('out/org-ranking-candidates/report.md', 'utf8');
+            } catch (err) {
+              console.log('report.md missing, continuing with placeholder text');
+            }
+
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              '## 未一致ランカー候補サマリー(自動生成)',
+              '',
+              `検出日時(UTC): ${new Date().toISOString()}`,
+              `合計 ${total} 件`,
+              '',
+              table,
+              '',
+              '<details><summary>詳細レポート(scripts/build-org-ranking-candidates.ts の出力)</summary>',
+              '',
+              reportMd,
+              '',
+              '</details>',
+              '',
+              `_このIssueは [ワークフロー実行](${runUrl}) により自動生成/更新されました。データ変更は行っていません。_`,
+            ].join('\n');
+
+            const openIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = openIssues.data.find((i) => i.title === title && !i.pull_request);
+
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body,
+              });
+              console.log(`Updated existing issue #${existing.number}`);
+            } else {
+              const created = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+              });
+              console.log(`Created new issue #${created.data.number}`);
+            }
