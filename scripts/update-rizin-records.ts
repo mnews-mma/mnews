@@ -17,6 +17,7 @@ import {
   RIZIN_1_SOURCE,
   RIZIN_2_BOUTS,
   RIZIN_2_SOURCE,
+  RIZIN_SUPPLEMENTAL_BOUTS_BY_EVENT,
 } from "../src/lib/mnewsRating/rizinRecordOverrides";
 import {
   splitIntoBoutChunks,
@@ -27,6 +28,7 @@ import {
   RizinRecordsEvent,
 } from "../src/lib/mnewsRating/rizinScraper";
 import { findFighterSlugByName } from "../src/lib/fighters";
+import { isExcludedNonProBout } from "../src/lib/mnewsRating/nonProBoutFilter";
 import { assertAllowedByRobots } from "./lib/robotsGate";
 
 const OUT = path.join(process.cwd(), "data", "rizinRecords.json");
@@ -89,6 +91,23 @@ function buildEventBouts(eventName: string, date: string, html: string): { bouts
     const raw = parseBoutChunk(chunk);
     if (!raw) {
       parseFailures++;
+      continue;
+    }
+    // アマチュア戦等の非プロ試合を除外する(RIZIN LANDMARK 15「OPENING FIGHT
+    // 第1試合／田中仁 vs. 健太朗」で発見、2026-08-03)。「アマチュアルール」の
+    // 表記はheadingTextには出ずruleLineRaw側にのみ現れる(例:「OPENING FIGHT
+    // RIZIN MMAアマチュアルール：3分 2R（57.0kg）」)。classifyMmaRuleType()は
+    // "MMA"という文字列を先に見つけて即MMA判定するため、この表記だけでは
+    // 非MMAとしても弾けない(アマ/プロの軸とMMA/非MMAの軸は別)。
+    // ruleLineRawのみをnoteRawとして渡す(headingTextは渡さない)。headingText
+    // には選手の実名が含まれ、RIZIN.40「スダリオ剛 vs. ジュニア・タファ」で
+    // 対戦相手名の「ジュニア」がnon_mma_kids_shootoカテゴリの「ジュニア」
+    // キーワードに誤って一致し、通常のプロMMA戦を除外してしまう事故が実測で
+    // 発覚したため(2026-08-03)。ruleLineRawのみに絞れば選手名を巻き込まない。
+    // 全77大会の既存ruleLineRawを走査し「アマ」等の非プロキーワードを含む
+    // 成功パースboutが他に無いことを確認済み、この判定を追加しても既存大会
+    // には影響しない。
+    if (isExcludedNonProBout({ noteRaw: raw.ruleLineRaw })) {
       continue;
     }
     successful.push({ raw });
@@ -159,6 +178,44 @@ function buildManualOverrideBouts(manual: RizinRawBoutManual[]): RizinRecordsBou
   });
 }
 
+// 「試合中止」お知らせ記事構造(rizinRecordOverrides.tsのRizinSupplementalBout参照)は
+// rizinScraper.tsのどのフォーマットパーサーでもパース不可能なため、bout単位の
+// 確定値をイベント名キーで自動抽出結果へマージする。cardPositionは小数値
+// (前後の自動採番の間)で登録済みのため、結合後にcardPosition降順で
+// 再ソートするだけで正しい表示順になる(自動採番されたbout側のcardPositionは
+// 変更しない)。
+function mergeSupplementalBouts(eventName: string, bouts: RizinRecordsBout[]): RizinRecordsBout[] {
+  const supplemental = RIZIN_SUPPLEMENTAL_BOUTS_BY_EVENT[eventName];
+  if (!supplemental || supplemental.length === 0) return bouts;
+
+  const supplementalBouts: RizinRecordsBout[] = supplemental.map((b) => {
+    const fighterASlug = findFighterSlugByName(b.fighterAName);
+    const fighterBSlug = findFighterSlugByName(b.fighterBName);
+    const winnerSlug = b.winnerName === b.fighterAName ? fighterASlug : b.winnerName === b.fighterBName ? fighterBSlug : null;
+    return {
+      cardPosition: b.cardPosition,
+      isOpeningFight: false, // 小数cardPositionは定義上オープナー(=1)になり得ない
+      headingText: b.headingText,
+      fighterAName: b.fighterAName,
+      fighterBName: b.fighterBName,
+      fighterASlug,
+      fighterBSlug,
+      ruleType: b.ruleType,
+      weightKg: b.weightKg,
+      namedDivision: b.namedDivision,
+      resultType: b.resultType,
+      winnerName: b.winnerName,
+      winnerSlug,
+      round: b.round,
+      time: b.time,
+      methodRaw: b.methodRaw,
+      isWeighInMiss: false,
+    };
+  });
+
+  return [...bouts, ...supplementalBouts].sort((a, b) => b.cardPosition - a.cardPosition);
+}
+
 async function main() {
   const out: RizinRecordsFile = [];
   let totalBouts = 0;
@@ -196,7 +253,8 @@ async function main() {
     }
     const url = `https://jp.rizinff.com/_ct/${entry.resultsPageId}`;
     const html = await fetchHtml(url);
-    const { bouts, parseFailures } = buildEventBouts(entry.eventName, entry.date, html);
+    const { bouts: autoBouts, parseFailures } = buildEventBouts(entry.eventName, entry.date, html);
+    const bouts = mergeSupplementalBouts(entry.eventName, autoBouts);
     out.push({
       eventName: entry.eventName,
       date: entry.date,

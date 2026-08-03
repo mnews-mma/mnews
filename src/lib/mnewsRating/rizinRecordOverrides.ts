@@ -158,3 +158,87 @@ export const RIZIN_2_SOURCE = {
   sourceUrl: "https://jp.rizinff.com/_ct/16997624",
   fetchedDate: "2026-07-27",
 };
+
+// 「試合中止」bout単位の補完(指示書①フォローアップ、2026-08-03に発見)。
+//
+// RIZIN公式サイトの中止試合には2パターンある。(1)通常の<div class="raw-html">
+// 構造を保ったまま勝敗マーカーだけが欠け、見出しテキスト側に「※試合中止」が
+// 含まれる形式(RIZIN.29「中村優作 vs. 北方大地」等)は、rizinScraper.tsの
+// 通常パーサー+parseMethod()のheadingText判定で自動的にcancelled扱いできる。
+// (2) 見出しに【試合中止】プレフィックスが付き、中身が<div class="raw-html">
+// を一切持たない「お知らせ記事」構造(<div class="block-lbox">...)に丸ごと
+// 置き換わる形式(RIZIN LANDMARK 12「ヴガール・ケラモフ vs. 松嶋こよみ」・
+// RIZIN師走の超強者祭り「斎藤裕 vs. YA-MAN」)は、選手名リンクも勝敗マーカーも
+// 存在しないため、rizinScraper.tsのどのフォーマットパーサー(A/B/C/D)でも
+// 原理的にパース不可能(お知らせ記事構造を専用パーサーで追いかける案は、
+// 記事本文の書式が大会ごとに揺れるため不採用)。
+//
+// この(2)のパターンは、コミット済みのdata/rizinRecords.jsonには手動で
+// cardPosition小数値(前後の自動採番の間)を割り振って個別に格納済みだが、
+// update-rizin-records.tsを素直に再実行すると再現されず消えてしまう
+// (feedback_scraper_verification_traps.mdのLANDMARK15と同型の地雷)。
+// お知らせ記事構造自体をパースしにいくのではなく、bout単位の確定値として
+// ここに列挙し、update-rizin-records.ts側でイベント名をキーに自動抽出結果へ
+// マージする(cardPosition降順で再結合するだけで、前後の自動採番には触れない)。
+export interface RizinSupplementalBout {
+  cardPosition: number; // 前後の自動採番bout(整数)の間に挿入する小数値
+  headingText: string; // 公式サイトの見出しテキストそのまま(【試合中止】プレフィックスは除く)
+  fighterAName: string;
+  fighterBName: string;
+  ruleType: "MMA" | "キックボクシング" | "シュートボクシング" | "女子MMA" | "グラップリング" | "MIXルール";
+  weightKg: number | null;
+  namedDivision: string | null;
+  resultType: "decisive" | "draw" | "nc" | "cancelled";
+  winnerName: string | null;
+  round: string | null;
+  time: string | null;
+  methodRaw: string;
+}
+
+// 出典: https://jp.rizinff.com/_ct/17800428(RIZIN LANDMARK 12 in KOBE 試合結果一覧)
+// 「【試合中止】第12試合／ヴガール・ケラモフ vs. 松嶋こよみ」
+// ケラモフがウィルス性胃腸炎でドクターストップとなり試合中止。
+export const RIZIN_LANDMARK12_SUPPLEMENTAL_BOUTS: RizinSupplementalBout[] = [
+  {
+    cardPosition: 16.5,
+    headingText: "第12試合／ヴガール・ケラモフ vs. 松嶋こよみ",
+    fighterAName: "ヴガール・ケラモフ",
+    fighterBName: "松嶋こよみ",
+    ruleType: "MMA",
+    weightKg: null,
+    namedDivision: null,
+    resultType: "cancelled",
+    winnerName: null,
+    round: null,
+    time: null,
+    methodRaw: "試合中止（ケラモフがウィルス性胃腸炎でドクターストップ）",
+  },
+];
+
+// 出典: https://jp.rizinff.com/_ct/17813426(Yogibo presents RIZIN師走の超強者祭り 試合結果一覧)
+// 「【試合中止】第9試合／斎藤裕 vs. YA-MAN」
+// YA-MANが眼窩底骨折で欠場となり試合中止。
+export const RIZIN_TOSHIKOSO_SUPPLEMENTAL_BOUTS: RizinSupplementalBout[] = [
+  {
+    cardPosition: 9.5,
+    headingText: "第9試合／斎藤裕 vs. YA-MAN",
+    fighterAName: "斎藤裕",
+    fighterBName: "YA-MAN",
+    ruleType: "MMA",
+    weightKg: null,
+    namedDivision: null,
+    resultType: "cancelled",
+    winnerName: null,
+    round: null,
+    time: null,
+    methodRaw: "試合中止（YA-MANが眼窩底骨折で欠場）",
+  },
+];
+
+// eventName(RIZIN_EVENT_INDEXのeventNameと完全一致)をキーに、update-rizin-records.ts側で
+// 自動抽出結果へマージする。新しい中止試合(お知らせ記事構造)が発生した場合は
+// ここへ追記していく(自動検出の仕組みは無い。運用上の既知の制約)。
+export const RIZIN_SUPPLEMENTAL_BOUTS_BY_EVENT: Record<string, RizinSupplementalBout[]> = {
+  "RIZIN LANDMARK 12 in KOBE": RIZIN_LANDMARK12_SUPPLEMENTAL_BOUTS,
+  "Yogibo presents RIZIN師走の超強者祭り": RIZIN_TOSHIKOSO_SUPPLEMENTAL_BOUTS,
+};

@@ -114,14 +114,33 @@ function parseBoutChunkFormatA(chunk: string, headingText: string): RizinRawBout
   if (!rawHtmlMatch) return null;
   const rawHtml = rawHtmlMatch[1];
 
-  const pMatch = rawHtml.match(/<p style="text-align:center;">([\s\S]*?)<\/p>/);
-  if (!pMatch) return null;
-  const pContent = pMatch[1];
+  // 「喧嘩道スペシャルマッチ」のような企画名だけのサブタイトル段落が、本来の
+  // ルール情報+選手情報の段落より先に独立した<p style="text-align:center;">
+  // として入っているケースがある(RIZIN.28で発見、指示書①の監査で特定)。
+  // 従来は最初の1個だけを非貪欲マッチで拾っていたため、このサブタイトル段落を
+  // 誤って掴んでしまい、実際の選手・勝敗情報を含む段落を見ないまま
+  // (anchorMatches.length=0で)パース失敗していた。候補となる
+  // <p style="text-align:center;">を全て走査し、その中から実際に選手2名分の
+  // <a>を含むfont-weight:boldのspanを持つものを選ぶ(サブタイトル段落は
+  // <span>はあってもリンク化された選手名を持たないため誤選択しない)。
+  const pCandidates = [...rawHtml.matchAll(/<p style="text-align:center;">([\s\S]*?)<\/p>/g)];
+  if (pCandidates.length === 0) return null;
 
-  // font-weight:bold(スペースなし)とfont-weight: bold(スペースあり)の両方を
-  // 許容する(RIZIN.10で後者の表記が使われていたためPR #239で特定)。
-  const spanMatch = pContent.match(/<span style="font-weight:\s*bold">([\s\S]*?)<\/span>/);
-  if (!spanMatch) return null;
+  let pContent: string | null = null;
+  let spanMatch: RegExpMatchArray | null = null;
+  for (const candidate of pCandidates) {
+    // font-weight:bold(スペースなし)とfont-weight: bold(スペースあり)の両方を
+    // 許容する(RIZIN.10で後者の表記が使われていたためPR #239で特定)。
+    const sm = candidate[1].match(/<span style="font-weight:\s*bold">([\s\S]*?)<\/span>/);
+    if (!sm) continue;
+    const anchorCount = [...sm[1].matchAll(/<a[^>]*>([^<]+)<\/a>/g)].length;
+    if (anchorCount === 2) {
+      pContent = candidate[1];
+      spanMatch = sm;
+      break;
+    }
+  }
+  if (!pContent || !spanMatch) return null;
   const spanContent = spanMatch[1];
 
   const preSpan = stripTags(pContent.slice(0, pContent.indexOf(spanMatch[0])));
