@@ -17,6 +17,7 @@ import {
   RIZIN_1_SOURCE,
   RIZIN_2_BOUTS,
   RIZIN_2_SOURCE,
+  RIZIN_SUPPLEMENTAL_BOUTS_BY_EVENT,
 } from "../src/lib/mnewsRating/rizinRecordOverrides";
 import {
   splitIntoBoutChunks,
@@ -159,6 +160,44 @@ function buildManualOverrideBouts(manual: RizinRawBoutManual[]): RizinRecordsBou
   });
 }
 
+// 「試合中止」お知らせ記事構造(rizinRecordOverrides.tsのRizinSupplementalBout参照)は
+// rizinScraper.tsのどのフォーマットパーサーでもパース不可能なため、bout単位の
+// 確定値をイベント名キーで自動抽出結果へマージする。cardPositionは小数値
+// (前後の自動採番の間)で登録済みのため、結合後にcardPosition降順で
+// 再ソートするだけで正しい表示順になる(自動採番されたbout側のcardPositionは
+// 変更しない)。
+function mergeSupplementalBouts(eventName: string, bouts: RizinRecordsBout[]): RizinRecordsBout[] {
+  const supplemental = RIZIN_SUPPLEMENTAL_BOUTS_BY_EVENT[eventName];
+  if (!supplemental || supplemental.length === 0) return bouts;
+
+  const supplementalBouts: RizinRecordsBout[] = supplemental.map((b) => {
+    const fighterASlug = findFighterSlugByName(b.fighterAName);
+    const fighterBSlug = findFighterSlugByName(b.fighterBName);
+    const winnerSlug = b.winnerName === b.fighterAName ? fighterASlug : b.winnerName === b.fighterBName ? fighterBSlug : null;
+    return {
+      cardPosition: b.cardPosition,
+      isOpeningFight: false, // 小数cardPositionは定義上オープナー(=1)になり得ない
+      headingText: b.headingText,
+      fighterAName: b.fighterAName,
+      fighterBName: b.fighterBName,
+      fighterASlug,
+      fighterBSlug,
+      ruleType: b.ruleType,
+      weightKg: b.weightKg,
+      namedDivision: b.namedDivision,
+      resultType: b.resultType,
+      winnerName: b.winnerName,
+      winnerSlug,
+      round: b.round,
+      time: b.time,
+      methodRaw: b.methodRaw,
+      isWeighInMiss: false,
+    };
+  });
+
+  return [...bouts, ...supplementalBouts].sort((a, b) => b.cardPosition - a.cardPosition);
+}
+
 async function main() {
   const out: RizinRecordsFile = [];
   let totalBouts = 0;
@@ -196,7 +235,8 @@ async function main() {
     }
     const url = `https://jp.rizinff.com/_ct/${entry.resultsPageId}`;
     const html = await fetchHtml(url);
-    const { bouts, parseFailures } = buildEventBouts(entry.eventName, entry.date, html);
+    const { bouts: autoBouts, parseFailures } = buildEventBouts(entry.eventName, entry.date, html);
+    const bouts = mergeSupplementalBouts(entry.eventName, autoBouts);
     out.push({
       eventName: entry.eventName,
       date: entry.date,

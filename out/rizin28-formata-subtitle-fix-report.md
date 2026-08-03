@@ -107,5 +107,82 @@ mnewsレーティングエンジンは`fighterRecords.json`のみを入力にし
 - RIZIN.13/RIZIN LANDMARK vol.3/RIZIN.28(那須川天心vs3人)の多人数・団体戦マッチ対応
   (`RizinRawBout`型の2名固定という設計自体の変更が必要)
 - RIZIN.3/RIZIN.4のera制約、オープナーの詳細リンク省略という独立検査手法自体の限界
-- LANDMARK 12 in KOBE・RIZIN師走の超強者祭りの「committed=新規fetch+1bout」ドリフトの原因調査
 - axis (b)(「大会情報」タグ一覧との悉皆突合)の仕組み化
+
+---
+
+## 追記(指示書1フォローアップ・日次差分ゼロ化)
+
+### task 2: パターン2の中止試合2件をbout単位でマージ可能にする
+
+**原因確定**: LANDMARK 12 in KOBE(ヴガール・ケラモフ vs. 松嶋こよみ)・RIZIN師走の超強者祭り
+(斎藤裕 vs. YA-MAN)の中止試合は、公式サイト上で見出しが`【試合中止】`プレフィックス付きに
+変わり、中身も選手名リンク・勝敗マーカーを一切持たない「お知らせ記事」構造
+(`<div class="block-lbox">...`)に丸ごと置き換わる。`<div class="raw-html">`自体が
+存在しないため、`rizinScraper.ts`のどのフォーマットパーサー(A/B/C/D)でも原理的に
+パース不可能(お知らせ記事の本文をパースしにいく案は、大会ごとに書式が揺れるため不採用)。
+コミット済みファイルにはcardPosition小数値(16.5・9.5)で個別に手動投入されていたが、
+`update-rizin-records.ts`を素直に再実行すると再現されずLANDMARK15と同型の地雷になっていた
+(**方向は「日々の再生成で消える」側**であり、日次自動化の減少ガードに直撃する)。
+
+**対応**: `rizinRecordOverrides.ts`に`RizinSupplementalBout`型と
+`RIZIN_SUPPLEMENTAL_BOUTS_BY_EVENT`(イベント名キー)を新設し、該当2件を確定値として登録。
+`update-rizin-records.ts`に`mergeSupplementalBouts()`を追加し、自動抽出結果へ
+cardPosition降順で再結合するようにした(自動採番されたbout側のcardPositionには一切触れない)。
+
+**検証**: キャッシュ済みHTML(#388流用)から2回連続で新規生成しSHA256一致を確認。
+LANDMARK15を除く全81大会をコミット済みファイルと突合し、**全フィールド完全一致**
+(RIZIN.28は#391の修正どおり+2、LANDMARK 12・RIZIN師走は補完bout込みで完全一致、
+他78大会は無変更)。`data/rizinRecords.json`自体への追加変更は不要(既存のcommitted値と
+今回の生成ロジックが一致することを確認しただけで、値そのものは元々正しかった)。
+
+### task 1: RIZIN LANDMARK 15の自動取得移行は保留(内容不一致のため)
+
+**resultsPageId特定**: `17853329`(WebSearch→WebFetchでtitleが
+「abc presents RIZIN LANDMARK 15 in HIROSHIMA 試合結果一覧」と完全一致することを確認)。
+
+**内容一致確認の結果: 不一致だったため手動投入ブロックは外していない。**
+
+現行スクレイパー(#391の修正込み)でこのページを自動パースすると、17チャンク中16件が
+成功(非bout見出し「大会情報／チケット」1件のみ正しくFAIL)。うち:
+- 本戦第1〜12試合(12件)+ OPENING FIGHT第2〜4試合(3件) = 15件がコミット済み14boutの
+  上位互換(既存14boutは全て自動取得結果に含まれる)
+- OPENING FIGHT第1試合(田中仁 vs. 健太朗、`RIZIN MMAアマチュアルール`)は既知
+  (PR #348で意図的に除外済み、`ruleType="MMA"`だがアマチュアのため対象外)
+- **本戦第1試合(芝宏二郎 vs. 遥心、`RIZIN キックボクシングルール`)がコミット済み14boutに
+  含まれていない。新規発見。** `ruleType="キックボクシング"`(非MMA)で、
+  `data/rizinRecords.json`は他の大会でも非MMA試合を通常どおり格納する仕様
+  (`data/rizinRecords.json`全体で155件の既存キックボクシングboutを確認済み)。
+  32c0924での手動投入時にこの1試合(OPENING FIGHTではなく本戦の第1試合)が
+  抜けていた可能性が高い。
+
+つまり「アマチュア1件を除いた自動取得結果」は**15bout**であり、コミット済みの14boutとは
+一致しない(指示書の「自動取得で14bout」という想定とも異なる)。「減るなら外さず報告」の
+条件そのものではない(増える方向)が、「内容一致することを確認してから外す」の条件を
+満たさないため、**`RIZIN_EVENT_INDEX`への登録・手動投入ブロックの解除は行っていない**。
+
+判断が必要な点:
+1. 「芝宏二郎 vs. 遥心」(キックボクシング)を`data/rizinRecords.json`に追加するか
+   (他大会の非MMA試合と同じ扱いに揃えるなら追加が一貫的)。
+2. 追加する場合、LANDMARK15を`RIZIN_EVENT_INDEX`へ正式登録し手動投入ブロックを解除する
+   (自動取得で15bout、アマチュア1件を除く運用ルールをどこかに明文化する必要がある)か、
+   現状の手動投入(14bout)のまま「芝宏二郎 vs. 遥心」だけをtask 2と同じ
+   bout単位マージ機構で追加するか。
+
+### task 3: RIZINのbout数減少0件を再確認
+
+上記task2適用後の再生成(#391修正込み・LANDMARK15除く81大会)で、コミット済みファイルとの
+差分は**0件**(全81大会・全フィールド一致)。LANDMARK15は今回未着手のため対象外
+(現状どおり手動投入14boutのまま、`RIZIN_EVENT_INDEX`外)。
+
+### 検証結果サマリ(追記分)
+
+| 項目 | 結果 |
+|---|---|
+| LANDMARK 12・RIZIN師走の中止試合2件がbout単位マージで再現 | ✅(全フィールド一致) |
+| LANDMARK15除く81大会、再生成でコミット済みと差分0件 | ✅ |
+| 2回連続実行でSHA256一致 | ✅ |
+| LANDMARK15の自動取得移行 | ⏸ 保留(内容不一致・要判断) |
+| `tsc --noEmit` | ✅ エラー0件 |
+| `npm run build` | ✅ exit 0 |
+| `npm run test:mnews-rating` | ✅ 220件成功/0件失敗 |
