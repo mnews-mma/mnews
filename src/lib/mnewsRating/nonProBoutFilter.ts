@@ -10,20 +10,25 @@
 // トーナメントとして団体が公式戦績扱いしており、このフィルタでは除外しない
 // (=対応するキーワードをこのファイルに含めない)。
 //
-// 「パンクラスゲート」(2002-2021、262bout、通常のPANCRASE本戦/大阪大会/札幌大会等の
-// undercard)は除外しない。結果ページ本文にアマチュア表記が無く通常の対戦カードと
-// 同一形式であり、除外する根拠が無いため(2026-07-30追加調査で確定)。
+// 「パンクラスゲート」/「パンクラス・ゲート」/「パンクラス ゲート」/「PANCRASEゲート」
+// (表記ゆれ4種、2002-2021、262bout、通常のPANCRASE本戦/大阪大会/札幌大会等の
+// undercard)は除外する(2026-08-03、指示書④で2026-07-30の「除外しない」判断を上書き。
+// out/pancrase-gate-exclusion-measurement.md参照)。/fighters/sato-shoko戦績調査
+// (2026-08-03)で、ja.wikipediaが「パンクラスゲート」表記の試合を独立した
+// 「アマチュア総合格闘技」節(プロ集計対象外)に分類している実例が見つかったこと
+// (sato-shoko 4件・tokoro-hideo 1件で確認)が根拠。
 // 「PANCRASE CAGE GATE」/「CAGE GATE」/「CAGEGATE」(2013-2014のみ・Bayside FIGHT
 // 1〜3限定・37bout)はパンクラス代表が公式リリースで明示的に「アマチュア専用試合」と
 // 説明しており、かつ年代・大会の両面で「パンクラスゲート」とは完全に別シリーズである
-// ことを確認した(大会名・出現年が一切重複しない)ため除外する。両者を同じ「ゲート」
-// 系として一括で扱わないこと。
+// ことを確認した(大会名・出現年が一切重複しない)ため除外する。両者は名称が似ている
+// だけの別カテゴリだが、いずれも除外対象になったため扱いの区別は実質的に無くなった。
 //
-// 例外(1件確認済み): Bayside FIGHT.3(2014-04-20)の「CAGE GATE 第1試合 第20回
-// ネオブラッド・トーナメント フライ級一回戦」は、CAGE GATE表記を含みつつも実体は
+// 例外(パンクラスゲート・CAGE GATEともに1件ずつ確認済み): Bayside FIGHT.3
+// (2014-04-20、CAGE GATE)と PANCRASE 2005 SPIRAL TOUR(2005-05-01、パンクラス
+// ゲート)は、それぞれ「ネオブラッド・トーナメント」表記を同一bout内に含みつつ実体は
 // NEO BLOOD!トーナメントの公式戦であり、含める対象(NEO BLOOD!)と除外対象
-// (CAGE GATE)の両方に該当する。この場合はNEO BLOOD!を含める判断を優先する
-// (=除外しない)。isNeoBloodBout()でCAGE GATE判定より先にガードする。
+// (CAGE GATE/パンクラスゲート)の両方に該当する。この場合はNEO BLOOD!を含める判断を
+// 優先する(=除外しない)。isNeoBloodBout()でカテゴリ判定より先にガードする。
 //
 // DEEP等の他団体データに同じ基準を適用する場合、bout側に headingText/strapTitle/
 // noteRaw/namedDivision 相当のフィールドがあれば isExcludedBout() をそのまま
@@ -46,6 +51,7 @@ export type NonProBoutCategory =
   | "not_pro_amateur" // 明確な「アマチュア」表記(IMMAF/JMMAF含む)
   | "not_pro_tryout" // トライアウト(トライアウトルール/トライアウトマッチ)
   | "not_pro_cage_gate" // PANCRASE CAGE GATE/CAGE GATE/CAGEGATE(Bayside FIGHT限定、公式にアマチュア専用と明言)
+  | "not_pro_pancrase_gate" // パンクラスゲート系(表記ゆれ4種、通常PANCRASE本戦等のundercard。ja.wikipediaがアマチュア節に分類する実例あり)
   | "not_pro_futureking"; // DEEPフューチャーキングトーナメント(アマチュア大会。eventNameでのみ判定)
 
 // 判定順は無関係(複数カテゴリに同時該当してもいずれか1つ返せば除外対象と分かる)。
@@ -57,6 +63,7 @@ const CATEGORY_KEYWORDS: Record<NonProBoutCategory, string[]> = {
   not_pro_amateur: ["アマ", "IMMAF", "JMMAF"],
   not_pro_tryout: ["トライアウト"],
   not_pro_cage_gate: ["CAGE GATE", "CAGEGATE"],
+  not_pro_pancrase_gate: ["パンクラスゲート", "パンクラス・ゲート", "パンクラス ゲート", "パンクラス　ゲート", "PANCRASEゲート"],
   not_pro_futureking: ["フューチャーキング"],
 };
 
@@ -67,6 +74,7 @@ const CATEGORY_ORDER: NonProBoutCategory[] = [
   "not_pro_amateur",
   "not_pro_tryout",
   "not_pro_cage_gate",
+  "not_pro_pancrase_gate",
   "not_pro_futureking",
 ];
 
