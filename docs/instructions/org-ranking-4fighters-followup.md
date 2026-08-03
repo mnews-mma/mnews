@@ -1,6 +1,6 @@
 # 公式ランキング4名 未リンク解消フォローアップ(指示書F続き)
 
-> **status: active(2026-08-03)** — cronの完了待ち。次のセッションはここから再開する。
+> **status: active(2026-08-03)** — cronの完了待ち。次のセッションはここから再開する。手順5(`/fighters/perpetuo-hernani`)は2026-08-03 07:21 UTC時点で反映確認済み(下記「追記」参照)。残るは手順1〜4(cron完了後のランキングリンク化確認)のみ。
 
 ## 背景
 
@@ -63,12 +63,14 @@ grep -n 'ガブリエル・レーベン\|手塚晴希\|エルナニ ペルペト
 - ジェイク ムラタのように`data/orgRankings.json`にエントリ自体が無い場合は、公式ランキングページ(修斗: https://www.shooto-mma.com/ranking/ 、パンクラス: https://www.pancrase.co.jp/rls/ranking.html )を直接WebFetchし、本人が現時点で掲載されているか確認する。掲載されていなければ「まだ公式ランキングに未掲載」が原因(matchSlugとは無関係)。掲載されているのに`orgRankings.json`に出てこなければスクレイパー側の取りこぼしの疑いがあり、別途調査が必要。
 - `src/lib/orgRankings.ts`のmatchSlug経路にdenylistは無いことは確認済みだが、念のため`grep -rn denylist src/lib`で他に除外機構が無いか一応確認してよい。
 
-### 5. `/fighters/perpetuo-hernani`の戦績反映確認(cronと独立、先に確認可)
-`data/shootoProfileBouts.json`(#399で12戦追加)はGitHub raw経由revalidate:3600(最大1時間)で取得されるため、Vercelの新規デプロイの成否とは無関係に反映される設計。ブラウザで確認し、「戦績データがありません」の文言が消えて対戦相手名・戦績が表示されているか確認する。
+### 5. `/fighters/perpetuo-hernani`の戦績反映確認(cronと独立、先に確認可) — ✅確認済み(2026-08-03 07:21 UTC)
+`data/shootoProfileBouts.json`(#399で12戦追加)はGitHub raw経由revalidate:3600(最大1時間)で取得されるため、Vercelの新規デプロイの成否とは無関係に反映される設計。
+
+2026-08-03 07:21 UTC、#409マージによる新規本番デプロイ(`651cbcd`)成功後にブラウザで実測: タイトルが「エルナニ ペルペトゥオ 戦績8勝3敗1分｜全12戦の結果」に変わり、通算8-3-1・全12戦の対戦相手/決着方法が全件正しく表示されていることを確認済み。**次のセッションでこの手順を再実施する必要はない。**
 
 ## 参考: Vercelビルド枠について(このセッションで判明・現在進行中の別件)
 
-2026-08-03朝、Vercelのビルドが`retry in 24 hours`のレート制限に断続的に引っかかっている(`vercel ls`で`www.mnews.jp`エイリアスの向き先を都度確認可能)。07:16 UTC時点で本番は`dpl_C3TXgVEdTxoL8Lh72NQZWGkcUjxe`(コミット`addfc86`=#401)のまま。別セッションが#408で「retrigger deploy」コミットを試みているが、07:16 UTC時点ではまだ新しい本番デプロイには切り替わっていない。
+2026-08-03朝、Vercelのビルドが`retry in 24 hours`のレート制限に断続的に引っかかっている(`vercel ls`で`www.mnews.jp`エイリアスの向き先を都度確認可能)。07:16 UTC時点で本番は`dpl_C3TXgVEdTxoL8Lh72NQZWGkcUjxe`(コミット`addfc86`=#401)のままだったが、07:21 UTCには`651cbcd`(#409まで含む)への新規デプロイが成功して切り替わった。ただしその直後の07:28 UTC、別セッションの#410「retrigger deploy round 2」は再び`retry in 24 hours`で失敗しており、**枠は不安定なまま**(成功と失敗が数分単位で入れ替わる)。次セッションで確認する際は都度`vercel inspect https://www.mnews.jp`で現在のデプロイ先を実測すること(記憶に基づく「回復済み/枯渇中」の決めつけは禁物)。
 
 **この件と本メモの4名リンク化確認は独立**: `data/orgRankings.json`・`data/shootoProfileBouts.json`の反映はいずれもGitHub raw参照+ISR revalidateの仕組みで、新規Vercelデプロイの成否に左右されない。ビルド枠の状況を待つ必要はない。
 
