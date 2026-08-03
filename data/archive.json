@@ -1,5 +1,32 @@
 [
   {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】平本丈「ウザいジョリーを一方的にぶん殴って倒す」フライ級トップ戦線浮上へ強さ見せる【インタビュー】",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2471649/",
+    "publishedAt": "2026-08-03T09:00:00.000Z",
+    "firstSeenAt": "2026-08-03T09:25:49.315Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "RIZIN女子高生ファイターNOEL、試合延期に本音「連絡が来た時は泣きました」 ケイトが全治2か月のケガ",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1042582/",
+    "publishedAt": "2026-08-03T08:34:28.000Z",
+    "firstSeenAt": "2026-08-03T09:25:49.315Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【DEEP】濱口奏琉が怪我で欠場、本田良介の相手が松井優磨に変更。セネガルのアサン・ゲェイデが岡崎サイキと対戦！＝9月20日（日）『DEEP OSAKA IMPACT 2026 4th ROUND』",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24492",
+    "publishedAt": "2026-08-03T06:55:01.000Z",
+    "firstSeenAt": "2026-08-03T09:25:49.315Z"
+  },
+  {
     "id": "gonkaku-1",
     "source": "other",
     "title": "【Lemino修斗】修斗世界王者・永井奏多が参戦！ ユン・チーKOのニコラ・リー・キンギと激突。河名マストが初参戦でTTF勝利のティル・タンと対戦。5連勝・飯野雄斗がONEムエタイからMMA転向の“教授”と対戦＝9月24日（木）『Lemino修斗.8』後楽園",
