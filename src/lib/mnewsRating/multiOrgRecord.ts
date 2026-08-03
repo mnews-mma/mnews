@@ -199,18 +199,25 @@ export function computeMultiOrgBoutTable(
 //   4団体合算に1件でも試合があれば常に差し替える(「多いほうを採る」ヒューリスティックは
 //   使わない。直書き側の試合数が多いという理由だけで、除外基準の変更やパーサ修正が
 //   永遠に反映されない状態になっていたため=杉本恵の事例、指示書「直書き選手横断監査」
-//   2026-08-02)。
+//   2026-08-02)。ただし live===true(Wikipedia解決成功)の場合はこの限りではない
+//   (指示書「SARAMI Wikipedia戦績抑制」2026-08-03): mergeFighterRecord()は
+//   fighters.ts直書きのneedsReviewフラグをクリアせずWikipedia側の値で
+//   wins/losses/historyだけを上書きするため、1行目が既に信頼できるWikipedia値に
+//   更新された後もneedsReviewだけが古いまま残るケースがある(SARAMI等14名で実測)。
+//   liveフラグ自体がWikipedia解決成功の一次情報(hasWikipediaRecord参照)なので、
+//   これが立っていればneedsReviewの「直書き値だから信頼しない」という前提が
+//   もはや成立しない。
 // - recordFromResults: 1行目は常に0(EVENT_RESULTSから動的生成する設計のスタブ)なので、
 //   従来通り総試合数比較でも実質的に同じ結果になる。変更不要。
 export function shouldPreferMultiOrgRecord(
-  fighter: { needsReview?: boolean; recordFromResults?: boolean; noRecordData?: boolean },
+  fighter: { needsReview?: boolean; recordFromResults?: boolean; noRecordData?: boolean; live?: boolean },
   rowOneWins: number,
   rowOneLosses: number,
   rowOneDraws: number,
   record: MultiOrgRecord
 ): boolean {
   if (fighter.noRecordData) return true;
-  if (fighter.needsReview) return record.wins + record.losses + record.draws > 0;
+  if (fighter.needsReview && !fighter.live) return record.wins + record.losses + record.draws > 0;
   if (!fighter.recordFromResults) return false;
   return record.wins + record.losses + record.draws > rowOneWins + rowOneLosses + rowOneDraws;
 }
