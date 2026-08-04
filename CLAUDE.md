@@ -39,6 +39,7 @@
 - **同一ブランチへのforce-pushは禁止**(既存ルールの再掲)。リモートが進んでいたら `git rebase` で統合してからpushする。
 - **git worktreeからデプロイする場合**: worktree直下には`.vercel/`が無く、そのまま`vercel deploy`すると誤って新規プロジェクトが作成される(2026-07-11に`mnews-worktree-fontfix`を誤作成→削除した実例あり)。プレビュー確認前に必ず本体の`.vercel/project.json`(`projectId: prj_BOiZsdSXZ5tEVMQ0DV8WmOl0c6pg`, `projectName: mnews`)をworktreeにコピーするか`vercel link`で本番プロジェクトを明示指定してから実行する
 - **deployはISRキャッシュを自動パージしない**(2026-07-17判明)。`data/rankings.json`等のデータはGitHub raw経由でrevalidate:3600(最大1時間)のfetchキャッシュに乗っており、「mainにマージしただけで新規デプロイをしていない」場合は最大1時間古い値が残る。新規デプロイ自体もURLに埋め込まれたcommit SHAが変わるため次回アクセスで自動的に最新を取るが、即時反映させたい場合は`POST /api/revalidate-rankings`(`Authorization: Bearer <REVALIDATE_TOKEN>`、Vercel環境変数に別途設定が必要)を呼ぶ。**データ更新を伴うdeploy後はrevalidate必須**。反映確認は全公開階級(`/rankings/[division]`)でJSON-LDを取得し、最終更新日付が全ページ一致していることを見る。
+- **`/fighters/[slug]`は日次バッチ完了から画面反映まで最悪約1時間15分**(2026-08-04、ISR化)。fetchのrevalidate(最大1時間) + ページのISR(900秒)が積み上がるため。日次バッチのコミットは`[skip ci]`でデプロイを起こさない(=fetchのキャッシュキーに使うcommit SHAが変わらない)ので、この遅延は毎回発生する。即時反映が必要な場合は再デプロイするとSHAが変わり両方のキャッシュが切れる。
 
 ## 定期実行ジョブ一覧
 出典は`.github/workflows/*.yml`と`vercel.json`の実ファイルのみ(2026-07-25調査時点)。個別のcron時刻をコード外の記憶で補わない。

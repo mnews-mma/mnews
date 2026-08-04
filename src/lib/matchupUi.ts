@@ -38,10 +38,15 @@ export function isNewMatchupUiEnabled(
   return value === "new";
 }
 
-// fighters/[slug]用: このページは(v2実装と無関係な理由=Wikipedia戦績の
-// リクエスト時取得のため)既にforce-dynamicなので、SSG崩壊の心配は無い。
-// 環境変数がデフォルトON(明示OFFでない)であればそのままtrueを返し、
-// 明示OFF時のみ本番以外(プレビュー/ローカル)で ?ui=new による一時確認を許可する。
+// fighters/[slug]用。環境変数がデフォルトON(明示OFFでない)であればそのまま
+// trueを返し、明示OFF時のみ本番以外(プレビュー/ローカル)で ?ui=new による
+// 一時確認を許可する。
+//
+// 注意(2026-08-04): fighters/[slug]はforce-dynamicをやめISR+generateStaticParams
+// になった。上2つの早期returnのどちらかに必ず入る限りsearchParamsをawaitしない
+// のでprerenderは崩れないが、NEXT_PUBLIC_NEW_MATCHUP_UI="0" かつ本番以外では
+// awaitに到達し、その環境ではprerenderが動的レンダリングに落ちる
+// (本番はVERCEL_ENV判定で必ず早期returnするため影響しない)。
 export async function resolveMatchupUiV2ForDynamicPage(
   searchParams: Promise<Record<string, string | string[] | undefined>>
 ): Promise<boolean> {
