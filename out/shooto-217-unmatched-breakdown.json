@@ -1,0 +1,1746 @@
+{
+  "counts": {
+    "C_not_found_anywhere": 214,
+    "E_romaji_hit": 3
+  },
+  "highRiskInB": 0,
+  "highRiskInA": 0,
+  "results": [
+    {
+      "slug": "asakura-kai",
+      "nameJa": "朝倉 海",
+      "org": "ufc",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hiramoto-ren",
+      "nameJa": "平本 蓮",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "asakura-mikuru",
+      "nameJa": "朝倉 未来",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "koike-kleber",
+      "nameJa": "クレベル・コイケ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "akimoto-kyoma",
+      "nameJa": "秋元 強真",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "inoue-naoki",
+      "nameJa": "井上 直樹",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "izawa-seika",
+      "nameJa": "伊澤 星花",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "rena",
+      "nameJa": "RENA",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ya-man",
+      "nameJa": "YA-MAN",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hagiwara-kyohei",
+      "nameJa": "萩原 京平",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hiroya",
+      "nameJa": "ヒロヤ",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "shinryu-makoto",
+      "nameJa": "神龍 誠",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "motoya-yuki",
+      "nameJa": "元谷 友貴",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "shinotsuka-tatsuki",
+      "nameJa": "篠塚 辰樹",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "tomizawa-daichi",
+      "nameJa": "冨澤 大智",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ashizawa-ryusei",
+      "nameJa": "芦澤 竜誠",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "jolly",
+      "nameJa": "ジョリー",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "takagi-ryo",
+      "nameJa": "高木 凌",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ota-shinobu",
+      "nameJa": "太田 忍",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kate-lotus",
+      "nameJa": "ケイト・ロータス",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hiramoto-jo",
+      "nameJa": "平本 丈",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kashimura-jinnosuke",
+      "nameJa": "鹿志村 仁之介",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ito-yuki",
+      "nameJa": "伊藤 裕樹",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "suzuki-chihiro",
+      "nameJa": "鈴木 千裕",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yamamoto-arsen",
+      "nameJa": "山本 アーセン",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "horie-yoshinori",
+      "nameJa": "堀江 圭功",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "souza-roberto-satoshi",
+      "nameJa": "ホベルト・サトシ・ソウザ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sakuraba-taisei",
+      "nameJa": "桜庭 大世",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "umeno-genji",
+      "nameJa": "梅野 源治",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kintaro",
+      "nameJa": "金太郎",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "E_romaji_hit",
+      "detail": "nameEn「Kintaro」が一覧の「Kintaro」(金太郎, id=423)に一致"
+    },
+    {
+      "slug": "suda-moeri",
+      "nameJa": "須田 萌里",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kubo-yuta",
+      "nameJa": "久保 優太",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "takeda-koji",
+      "nameJa": "武田 光司",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "edpolo-king",
+      "nameJa": "エドポロキング",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ueda-mikio",
+      "nameJa": "上田 幹雄",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sudario-tsuyoshi",
+      "nameJa": "スダリオ 剛",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "takenshin",
+      "nameJa": "貴賢神",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "suzuki-hiroaki",
+      "nameJa": "鈴木 博昭",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "miyagawa-hyuga",
+      "nameJa": "宮川 日向",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "naoki",
+      "nameJa": "直樹",
+      "org": "rizin",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "mizuno-shinta",
+      "nameJa": "水野 新太",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kuramoto-daigo",
+      "nameJa": "倉本大悟",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "shimada-ibuki",
+      "nameJa": "嶋田伊吹",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sakai-ryo",
+      "nameJa": "酒井リョウ",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sekihara-sho",
+      "nameJa": "関原翔",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "rikiya",
+      "nameJa": "力也",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "gomyo-hiroto",
+      "nameJa": "五明宏人",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hibino-junya",
+      "nameJa": "日比野純也",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kenshiro",
+      "nameJa": "ケンシロウ",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "nakatani-yuga",
+      "nameJa": "中谷優我",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "suzuki-taisei",
+      "nameJa": "鈴木大晟",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ushiku-juntaro",
+      "nameJa": "牛久絢太郎",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "muramoto-yutaro",
+      "nameJa": "村元友太郎",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hiramatsu-sho",
+      "nameJa": "平松翔",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sugiyama-sora",
+      "nameJa": "杉山空",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "abe-daiji",
+      "nameJa": "阿部大治",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "takizawa-kenta",
+      "nameJa": "瀧澤謙太",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "izumi-takeshi",
+      "nameJa": "泉武志",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kubota-taito",
+      "nameJa": "窪田泰斗",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kozaki-ren",
+      "nameJa": "小崎連",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "seigo",
+      "nameJa": "誠悟",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "E_romaji_hit",
+      "detail": "nameEn「Seigo」が一覧の「Seigo」(聖剛, id=1066)に一致"
+    },
+    {
+      "slug": "suwabe-teppei",
+      "nameJa": "諏訪部哲平",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sugino-aren",
+      "nameJa": "杉野亜蓮",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "daiya",
+      "nameJa": "ダイヤ",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "strasser-kiichi",
+      "nameJa": "ストラッサー起一",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "naito-tank",
+      "nameJa": "タンク内藤",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "arato-hidetaka",
+      "nameJa": "荒東英貴",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "terasaki-shoryu",
+      "nameJa": "寺崎昇龍",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "miyabi-shunsuke",
+      "nameJa": "雅駿介",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "karino-yu",
+      "nameJa": "狩野優",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yamamoto-soushi",
+      "nameJa": "山本颯志",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kadono-kohei",
+      "nameJa": "角野晃平",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yamamoto-arihito",
+      "nameJa": "山本有人",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "akazawa-yukinori",
+      "nameJa": "赤沢幸典",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ishizaka-kushi",
+      "nameJa": "石坂空志",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "fukuda-machi",
+      "nameJa": "万智",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "saito-momoko",
+      "nameJa": "百湖",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "higashi-yoko",
+      "nameJa": "東ようこ",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "nakai-rin",
+      "nameJa": "中井りん",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "matsuda-arisa",
+      "nameJa": "松田亜莉紗",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ashida-takahiro",
+      "nameJa": "芦田崇宏",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "seki-tetsuya",
+      "nameJa": "関鉄矢",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "E_romaji_hit",
+      "detail": "nameEn「Tetsuya Seki」が一覧の「Tetsuya Seki」(関  鉄也, id=1027)に一致"
+    },
+    {
+      "slug": "sardorov-koshim",
+      "nameJa": "コシム・サルドロフ",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hayashi-genpei",
+      "nameJa": "林源平",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hirata-akira",
+      "nameJa": "平田旭",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "tezuka-haruki",
+      "nameJa": "手塚晴希",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sato-ryutaro",
+      "nameJa": "佐藤龍汰朗",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "okamura-toshiki",
+      "nameJa": "岡村寿紀",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yamauchi-goiti",
+      "nameJa": "ゴイチ・ヤマウチ",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "naito-yura",
+      "nameJa": "内藤由良",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "musha-kotaro",
+      "nameJa": "武者孝大郎",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "levan-gabriel",
+      "nameJa": "ガブリエル・レーベン",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "barboza-rafael",
+      "nameJa": "ラファエル・バルボーザ",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kamiya-daichi",
+      "nameJa": "神谷大智",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "saiga-yanbo-tatsuya",
+      "nameJa": "雑賀ヤン坊達也",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "beinoa",
+      "nameJa": "ブラックパンサーベイノア",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "suzuki-chikaya",
+      "nameJa": "鈴木慈也",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yanagawa-yuito",
+      "nameJa": "栁川唯人",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "rajabov-otabek",
+      "nameJa": "オタベク・ラジャボフ",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "arzykul-kalybek",
+      "nameJa": "カリベク・アルジクルウール",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kanru",
+      "nameJa": "敢流",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kinoshita-naosuke",
+      "nameJa": "木下尚祐",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hirata-naoki",
+      "nameJa": "平田直樹",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "tajima-ryo",
+      "nameJa": "田嶋椋",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "miyagi-naraho",
+      "nameJa": "宮城成歩滝",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "takashiro-mitsuhiro",
+      "nameJa": "高城光弘",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yamaguchi-satoshi",
+      "nameJa": "山口怜臣",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "matsui-ryo",
+      "nameJa": "松井涼",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "imura-rui",
+      "nameJa": "井村塁",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "tokida-takashige",
+      "nameJa": "時田隆成",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kishida-hiroto",
+      "nameJa": "岸田宙大",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "shindo-genta",
+      "nameJa": "眞藤源太",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "tanimura-taika",
+      "nameJa": "谷村泰嘉",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "miyazawa-yuta",
+      "nameJa": "宮澤雄大",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "funada-denchi",
+      "nameJa": "船田電池",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "little",
+      "nameJa": "リトル",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ujihara-kaisei",
+      "nameJa": "氏原魁星",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "chiharu",
+      "nameJa": "千春",
+      "org": "nexus",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kenmin",
+      "nameJa": "賢民",
+      "org": "nexus",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "mori-subaru",
+      "nameJa": "森昴星",
+      "org": "nexus",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "patchy-mix",
+      "nameJa": "パッチー・ミックス",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sabatello-danny",
+      "nameJa": "ダニー・サバテロ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "patricky-pitbull",
+      "nameJa": "パトリッキー・ピットブル",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "dodson-john",
+      "nameJa": "ジョン・ドッドソン",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "zulu-nkazimulo",
+      "nameJa": "エンカジムーロ・ズールー",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "gallagher-james",
+      "nameJa": "ジェームズ・ギャラガー",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "nakajima-taichi",
+      "nameJa": "中島太一",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "case-johnny",
+      "nameJa": "ジョニー・ケース",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "torres-jose",
+      "nameJa": "ホセ・トーレス",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "gustavo-luis",
+      "nameJa": "ルイス・グスタボ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "soldatkin-alexander",
+      "nameJa": "アレクサンダー・ソルダトキン",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "karshyga-dautbek",
+      "nameJa": "カルシャガ・ダウトベック",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sheydullaev-rajabali",
+      "nameJa": "ラジャブアリ・シェイドゥラエフ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "karamov-vugar",
+      "nameJa": "ヴガール・ケラモフ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "nozimov-ilkhom",
+      "nameJa": "イルホム・ノジモフ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "zhumagazy-nurkhan",
+      "nameJa": "ヌルハン・ズマガジー",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "temirov-azizbek",
+      "nameJa": "アジズベク・テミロフ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "gadzhamatov-alibeg",
+      "nameJa": "アリベク・ガジャマトフ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "mckee-aj",
+      "nameJa": "AJ・マッキー",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "shimizu-hiroto",
+      "nameJa": "清水博人",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "otsuka-tomoki",
+      "nameJa": "大塚智貴",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "tenya",
+      "nameJa": "天弥",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kanbe-atsubo",
+      "nameJa": "神部篤坊",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sekino-taisei",
+      "nameJa": "関野大成",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "nishitani-taisei",
+      "nameJa": "西谷大成",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "shibisai-shoma",
+      "nameJa": "シビサイ頌真",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kitakata-daichi",
+      "nameJa": "北方大地",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kaito",
+      "nameJa": "海飛",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "mitsui-shunki",
+      "nameJa": "三井俊希",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "shirakawa-rikuto",
+      "nameJa": "白川ダーク陸斗",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kitaoka-satoru",
+      "nameJa": "北岡悟",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yamasaki-yajuro",
+      "nameJa": "山崎弥十朗",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "nakatsukasa-taiyo",
+      "nameJa": "中務太陽",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "max-yoshida",
+      "nameJa": "MAX吉田",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "okumura-airu",
+      "nameJa": "奥村アイル",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "park-siwoo",
+      "nameJa": "パク・シウ",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "miyake-kisa",
+      "nameJa": "三宅輝砂",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hamada-takumi",
+      "nameJa": "濱田巧",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "laramie-tony",
+      "nameJa": "トニー・ララミー",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kolesnik-viktor",
+      "nameJa": "ビクター・コレスニック",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kimura-shuya",
+      "nameJa": "木村柊也",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "lee-kaiwen",
+      "nameJa": "リー・カイウェン",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kuzyutina-natasha",
+      "nameJa": "ナターシャ・クジュティナ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "cafaro-ryan",
+      "nameJa": "ライアン・カファロ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "haga-bilalkai",
+      "nameJa": "芳賀ビラル海",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "aimoto-kazuki",
+      "nameJa": "相本宗輝",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hiroyuki-tetsuka",
+      "nameJa": "手塚裕之",
+      "org": "one",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "tatsumitsu-wada",
+      "nameJa": "和田竜光",
+      "org": "one",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ayaka-miura",
+      "nameJa": "三浦彩佳",
+      "org": "one",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "itsuki-hirata",
+      "nameJa": "平田樹",
+      "org": "one",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "keito-yamakita",
+      "nameJa": "山北渓人",
+      "org": "one",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "koya-kanda",
+      "nameJa": "神田コウヤ",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hinotori",
+      "nameJa": "火の鳥",
+      "org": "deep",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "enju-kenta",
+      "nameJa": "猿寿健太",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kim-soochul",
+      "nameJa": "キム・スーチョル",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yang-jiyong",
+      "nameJa": "ヤン・ジヨン",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "lee-junghyun",
+      "nameJa": "イ・ジョンヒョン",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yrysbek-tilenov",
+      "nameJa": "イリスベク・ティレノフ",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "nii-suguru",
+      "nameJa": "新居すぐる",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "inoue-seiya",
+      "nameJa": "井上聖矢",
+      "org": "rizin",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ameyama-seiya",
+      "nameJa": "飴山聖也",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yasui-hyuma",
+      "nameJa": "安井飛馬",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ishizuka-koichi",
+      "nameJa": "石司晃一",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sasaki-hiro",
+      "nameJa": "佐々木大",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sugiyama-kohei",
+      "nameJa": "杉山廣平",
+      "org": "deep",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "takeuchi-ryugo",
+      "nameJa": "竹内龍吾",
+      "org": "one",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "mizoguchi-tsukasa",
+      "nameJa": "溝口司",
+      "org": "one",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "satoshogo",
+      "nameJa": "佐藤生虎",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "taira",
+      "nameJa": "平信一",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "zhangyuta",
+      "nameJa": "張豊",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "suzukiyuto",
+      "nameJa": "鈴木悠斗",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "okadatakuma",
+      "nameJa": "岡田拓真",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ryoa",
+      "nameJa": "Ryo",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "endoraiki",
+      "nameJa": "遠藤来生",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "nada",
+      "nameJa": "名田英平",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sekisena",
+      "nameJa": "関翔渚",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "itokawayoshito",
+      "nameJa": "糸川義人",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "ishidarikuya",
+      "nameJa": "石田陸也",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "aratadaiki",
+      "nameJa": "荒田大輝",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "satoyujibonsai",
+      "nameJa": "佐藤ゆうじ",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "asadulloev",
+      "nameJa": "バラカトゥロ・アサドゥラエフ",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yamakimahiro",
+      "nameJa": "山木麻弥",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "maedakohei",
+      "nameJa": "前田浩平",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "shiraijoji",
+      "nameJa": "白井誠司",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "satoru",
+      "nameJa": "猿飛流",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "rafaelribeiro",
+      "nameJa": "ラファエル・リベイロ",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "masudataiga",
+      "nameJa": "増田大河",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "hamamoto",
+      "nameJa": "浜本キャット雄大",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "uematsuyoshiki",
+      "nameJa": "植松洋貴",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kobayashiryohei",
+      "nameJa": "小林了平",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "kanayumu",
+      "nameJa": "菅歩夢",
+      "org": "pancrase",
+      "highCollisionRisk": true,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "yamasakisora",
+      "nameJa": "山崎蒼空",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "motokawaharuaki",
+      "nameJa": "本川ハルアキ",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "teraokatakuei",
+      "nameJa": "寺岡拓永",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "sugiyama",
+      "nameJa": "杉山しずか",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "wadaayane",
+      "nameJa": "和田綾音",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    },
+    {
+      "slug": "motonomiki",
+      "nameJa": "本野美樹",
+      "org": "pancrase",
+      "highCollisionRisk": false,
+      "category": "C_not_found_anywhere",
+      "detail": "一覧・大会結果ページのいずれにも見当たらない"
+    }
+  ]
+}
