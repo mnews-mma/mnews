@@ -980,7 +980,7 @@ function dedupeBoutsByFighterPair(bouts: DeepRawBout[]): DeepRawBout[] {
   const indexByPairKey = new Map<string, number>();
   const result: DeepRawBout[] = [];
   for (const b of bouts) {
-    const key = [b.fighterAName, b.fighterBName].sort().join(" ");
+    const key = [b.fighterAName, b.fighterBName].sort().join("\u0000");
     const existingIdx = indexByPairKey.get(key);
     if (existingIdx === undefined) {
       indexByPairKey.set(key, result.length);
@@ -1244,7 +1244,7 @@ function extractHeadinglessBouts(bodyClean: string): DeepRawBout[] {
 // bout(例: DEEP JEWELS 31のように「第N試合 セミファイナル」と番号付きで
 // 正しく抽出できているケース)と重複しないようにするための判定。
 function sameFighterPairExists(existing: { fighterAName: string; fighterBName: string }[], candidate: DeepRawBout): boolean {
-  const key = (a: string, b: string) => [a, b].sort().join(" ");
+  const key = (a: string, b: string) => [a, b].sort().join("\u0000");
   const candidateKey = key(candidate.fighterAName, candidate.fighterBName);
   return existing.some((b) => key(b.fighterAName, b.fighterBName) === candidateKey);
 }
