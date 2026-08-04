@@ -1,0 +1,367 @@
+{
+  "toInject": [
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2015-05-03",
+      "symbol": "○",
+      "opponentNameRaw": "中村  ジュニア",
+      "opponentShootoId": 257,
+      "methodRaw": "3R  判定 3-0"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2014-12-21",
+      "symbol": "○",
+      "opponentNameRaw": "藤田  ブロディ",
+      "opponentShootoId": 307,
+      "methodRaw": "1R 00:36 S  スリーパーホールド"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2014-09-27",
+      "symbol": "○",
+      "opponentNameRaw": "太田  拓己",
+      "opponentShootoId": 272,
+      "methodRaw": "2R  判定 3-0"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2014-03-16",
+      "symbol": "△",
+      "opponentNameRaw": "城田  和秀",
+      "opponentShootoId": 215,
+      "methodRaw": "2R  判定 0-0"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2013-11-09",
+      "symbol": "○",
+      "opponentNameRaw": "村津  孝徳",
+      "opponentShootoId": 866,
+      "methodRaw": "2R  判定 0-3"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2013-09-22",
+      "symbol": "○",
+      "opponentNameRaw": "独眼竜  刺牙",
+      "opponentShootoId": 286,
+      "methodRaw": "2R  判定 3-0"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2013-06-08",
+      "symbol": "○",
+      "opponentNameRaw": "鷹島  大樹",
+      "opponentShootoId": 563,
+      "methodRaw": "2R  判定 3-0"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2013-02-23",
+      "symbol": "△",
+      "opponentNameRaw": "河野  啓太",
+      "opponentShootoId": 520,
+      "methodRaw": "2R  判定 0-1"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2012-10-21",
+      "symbol": "○",
+      "opponentNameRaw": "吉田  真也",
+      "opponentShootoId": 584,
+      "methodRaw": "2R 03:45 KO"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2012-09-30",
+      "symbol": "×",
+      "opponentNameRaw": "ユータ＆ロック",
+      "opponentShootoId": 583,
+      "methodRaw": "2R  判定 0-3"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2012-06-30",
+      "symbol": "○",
+      "opponentNameRaw": "地浜  敏郎",
+      "opponentShootoId": 559,
+      "methodRaw": "2R  判定 3-0"
+    },
+    {
+      "slug": "saito-yutaka",
+      "fighterAName": "斎藤  裕",
+      "fighterAShootoId": 5,
+      "date": "2011-11-27",
+      "symbol": "○",
+      "opponentNameRaw": "佐々木  郁矢",
+      "opponentShootoId": 287,
+      "methodRaw": "2R  判定 3-0"
+    },
+    {
+      "slug": "soya-takaki",
+      "fighterAName": "征矢  貴",
+      "fighterAShootoId": 102,
+      "date": "2015-01-25",
+      "symbol": "○",
+      "opponentNameRaw": "梶川  卓",
+      "opponentShootoId": 121,
+      "methodRaw": "3R  判定 3-0"
+    },
+    {
+      "slug": "soya-takaki",
+      "fighterAName": "征矢  貴",
+      "fighterAShootoId": 102,
+      "date": "2014-09-27",
+      "symbol": "×",
+      "opponentNameRaw": "菅原  雅顕",
+      "opponentShootoId": 1,
+      "methodRaw": "1R 03:19 KO"
+    },
+    {
+      "slug": "soya-takaki",
+      "fighterAName": "征矢  貴",
+      "fighterAShootoId": 102,
+      "date": "2014-05-05",
+      "symbol": "○",
+      "opponentNameRaw": "ズ  ギョンズン",
+      "opponentShootoId": 528,
+      "methodRaw": "1R 03:01 KO"
+    },
+    {
+      "slug": "soya-takaki",
+      "fighterAName": "征矢  貴",
+      "fighterAShootoId": 102,
+      "date": "2013-09-01",
+      "symbol": "○",
+      "opponentNameRaw": "亀島  聖児",
+      "opponentShootoId": 124,
+      "methodRaw": "1R 02:02 KO"
+    },
+    {
+      "slug": "soya-takaki",
+      "fighterAName": "征矢  貴",
+      "fighterAShootoId": 102,
+      "date": "2013-06-08",
+      "symbol": "○",
+      "opponentNameRaw": "鳥越  顕",
+      "opponentShootoId": 449,
+      "methodRaw": "1R 03:52 KO"
+    },
+    {
+      "slug": "aoi-jin",
+      "fighterAName": "青井  人",
+      "fighterAShootoId": 267,
+      "date": "2016-11-13",
+      "symbol": "○",
+      "opponentNameRaw": "前口  緑一色",
+      "opponentShootoId": 308,
+      "methodRaw": "判定 0-2"
+    },
+    {
+      "slug": "aoi-jin",
+      "fighterAName": "青井  人",
+      "fighterAShootoId": 267,
+      "date": "2015-09-21",
+      "symbol": "○",
+      "opponentNameRaw": "小川  将貴",
+      "opponentShootoId": 275,
+      "methodRaw": "2R  判定 3-0"
+    },
+    {
+      "slug": "aoi-jin",
+      "fighterAName": "青井  人",
+      "fighterAShootoId": 267,
+      "date": "2015-06-21",
+      "symbol": "○",
+      "opponentNameRaw": "大森  カヲル",
+      "opponentShootoId": 274,
+      "methodRaw": "1R 04:06 S  腕ひしぎ十字固め"
+    }
+  ],
+  "archiveGapReport": [
+    {
+      "slug": "seki-tetsuya",
+      "date": "2016-09-19",
+      "opponent": "山本  哲也",
+      "linkedResultId": "19"
+    }
+  ],
+  "mismatchReport": [],
+  "alreadyReflected": [
+    {
+      "slug": "saito-yutaka",
+      "date": "2019-09-22",
+      "opponent": "髙谷  裕之"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2019-05-06",
+      "opponent": "アギー  サルダリ"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2019-01-27",
+      "opponent": "マーカス  ヘルド"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2018-05-13",
+      "opponent": "リオン  武"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2018-03-25",
+      "opponent": "ドレックス  ザンボアンガ"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2017-04-23",
+      "opponent": "宇野  薫"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2017-01-29",
+      "opponent": "マイク  グランディ"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2016-04-23",
+      "opponent": "キム  ミンジェ"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2016-01-11",
+      "opponent": "中村  ジュニア"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2014-07-19",
+      "opponent": "TOMA"
+    },
+    {
+      "slug": "saito-yutaka",
+      "date": "2016-09-19",
+      "opponent": "ISAO"
+    },
+    {
+      "slug": "soya-takaki",
+      "date": "2017-05-12",
+      "opponent": "清水  清隆"
+    },
+    {
+      "slug": "soya-takaki",
+      "date": "2016-12-18",
+      "opponent": "藤田 ケオン 寿大"
+    },
+    {
+      "slug": "soya-takaki",
+      "date": "2016-07-17",
+      "opponent": "梶川  卓"
+    },
+    {
+      "slug": "soya-takaki",
+      "date": "2016-05-28",
+      "opponent": "北原  史寛"
+    },
+    {
+      "slug": "soya-takaki",
+      "date": "2016-02-27",
+      "opponent": "オニボウズ"
+    },
+    {
+      "slug": "soya-takaki",
+      "date": "2013-12-15",
+      "opponent": "福田  龍彌"
+    },
+    {
+      "slug": "soya-takaki",
+      "date": "2015-09-13",
+      "opponent": "前田  吉朗"
+    },
+    {
+      "slug": "aoi-jin",
+      "date": "2020-02-16",
+      "opponent": "久保村  ヨシTERU"
+    },
+    {
+      "slug": "aoi-jin",
+      "date": "2019-07-15",
+      "opponent": "内藤  太尊"
+    },
+    {
+      "slug": "aoi-jin",
+      "date": "2019-01-27",
+      "opponent": "仲山  貴志"
+    },
+    {
+      "slug": "aoi-jin",
+      "date": "2017-10-15",
+      "opponent": "高橋  遼伍"
+    },
+    {
+      "slug": "aoi-jin",
+      "date": "2017-06-25",
+      "opponent": "タクミ"
+    },
+    {
+      "slug": "aoi-jin",
+      "date": "2017-01-29",
+      "opponent": "児山  佳宏"
+    },
+    {
+      "slug": "aoi-jin",
+      "date": "2016-04-23",
+      "opponent": "美木  航"
+    },
+    {
+      "slug": "aoi-jin",
+      "date": "2016-06-19",
+      "opponent": "ファン  チョンホ"
+    }
+  ],
+  "unresolvedOpponents": [
+    "saito-yutaka:中村  ジュニア",
+    "saito-yutaka:藤田  ブロディ",
+    "saito-yutaka:太田  拓己",
+    "saito-yutaka:城田  和秀",
+    "saito-yutaka:村津  孝徳",
+    "saito-yutaka:独眼竜  刺牙",
+    "saito-yutaka:鷹島  大樹",
+    "saito-yutaka:河野  啓太",
+    "saito-yutaka:吉田  真也",
+    "saito-yutaka:ユータ＆ロック",
+    "saito-yutaka:地浜  敏郎",
+    "saito-yutaka:佐々木  郁矢",
+    "soya-takaki:梶川  卓",
+    "soya-takaki:菅原  雅顕",
+    "soya-takaki:ズ  ギョンズン",
+    "soya-takaki:亀島  聖児",
+    "soya-takaki:鳥越  顕",
+    "aoi-jin:前口  緑一色",
+    "aoi-jin:小川  将貴",
+    "aoi-jin:大森  カヲル"
+  ]
+}
