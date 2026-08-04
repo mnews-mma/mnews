@@ -275,6 +275,42 @@ export const EVENTS: MEvent[] = [
         isTitleMatch: true,
         note: "クイーン オブ パンクラス チャンピオンシップ。SARAMIが2階級制覇を懸けて挑戦",
       },
+      {
+        weightClass: "ライト級",
+        fighterA: "鈴木慈也",
+        fighterB: "藤村健悟",
+      },
+      // プレリミナリー
+      {
+        weightClass: "フライ級",
+        fighterA: "齋藤楼貴",
+        fighterB: "嶋田大輝",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "フライ級",
+        fighterA: "嶺大基",
+        fighterB: "伊藤勇輝",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "バンタム級",
+        fighterA: "谷村泰和",
+        fighterB: "増田怜央",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "バンタム級",
+        fighterA: "小山敬司",
+        fighterB: "前田壮吉",
+        note: "プレリミナリー",
+      },
+      {
+        weightClass: "ライト級",
+        fighterA: "畑大晴",
+        fighterB: "濱地虎男",
+        note: "プレリミナリー",
+      },
     ],
   },
   {
