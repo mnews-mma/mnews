@@ -1,0 +1,9 @@
+{
+  "batchStart": 200,
+  "batchEnd": 400,
+  "eventsTotal": 200,
+  "fetchedCount": 200,
+  "unreachable": [],
+  "totalIdTagged": 0,
+  "results": []
+}

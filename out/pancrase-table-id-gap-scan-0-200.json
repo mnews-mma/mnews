@@ -1,0 +1,125 @@
+{
+  "batchStart": 0,
+  "batchEnd": 200,
+  "eventsTotal": 200,
+  "fetchedCount": 200,
+  "unreachable": [],
+  "totalIdTagged": 7,
+  "results": [
+    {
+      "eventName": "PANCRASE 329",
+      "date": "2022-09-11",
+      "sourceUrl": "https://www.pancrase.co.jp/data/result/2022/0911.html",
+      "existingBoutCount": 12,
+      "idTaggedBoutCount": 1,
+      "idTaggedHeadings": [
+        "第1試合　アトム級　5分3ラウンド"
+      ],
+      "idTaggedBouts": [
+        {
+          "id": "card1",
+          "headingText": "第1試合　アトム級　5分3ラウンド",
+          "fighterAName": "沙弥子",
+          "fighterBName": "原田よき"
+        }
+      ]
+    },
+    {
+      "eventName": "PANCRASE316",
+      "date": "2020-07-24",
+      "sourceUrl": "https://www.pancrase.co.jp/data/result/2020/0724.html",
+      "existingBoutCount": 18,
+      "idTaggedBoutCount": 2,
+      "idTaggedHeadings": [
+        "②2020年・第26回ネオブラッドトーナメント・フライ級1回戦　5分3ラウンド",
+        "①2020年・第26回ネオブラッドトーナメント・フライ級1回戦　5分3ラウンド"
+      ],
+      "idTaggedBouts": [
+        {
+          "id": "neo1",
+          "headingText": "②2020年・第26回ネオブラッドトーナメント・フライ級1回戦　5分3ラウンド",
+          "fighterAName": "田代悠生",
+          "fighterBName": "坪内一将"
+        },
+        {
+          "id": "neo5",
+          "headingText": "①2020年・第26回ネオブラッドトーナメント・フライ級1回戦　5分3ラウンド",
+          "fighterAName": "西村大輝",
+          "fighterBName": "梅川毒一郎"
+        }
+      ]
+    },
+    {
+      "eventName": "PANCRASE312",
+      "date": "2020-02-16",
+      "sourceUrl": "https://www.pancrase.co.jp/data/result/2020/0216.html",
+      "existingBoutCount": 23,
+      "idTaggedBoutCount": 1,
+      "idTaggedHeadings": [
+        "第1試合　ストロー級　5分3ラウンド"
+      ],
+      "idTaggedBouts": [
+        {
+          "id": "maincard",
+          "headingText": "第1試合　ストロー級　5分3ラウンド",
+          "fighterAName": "八田亮",
+          "fighterBName": "永井美自戒"
+        }
+      ]
+    },
+    {
+      "eventName": "PANCRASE308",
+      "date": "2019-09-29",
+      "sourceUrl": "https://www.pancrase.co.jp/data/result/2019/0929.html",
+      "existingBoutCount": 17,
+      "idTaggedBoutCount": 1,
+      "idTaggedHeadings": [
+        "第7試合　女子ストロー級 暫定王者決定4人トーナメント1回戦　ストロー級　5分3ラウンド"
+      ],
+      "idTaggedBouts": [
+        {
+          "id": "card7",
+          "headingText": "第7試合　女子ストロー級 暫定王者決定4人トーナメント1回戦　ストロー級　5分3ラウンド",
+          "fighterAName": "法 DATE",
+          "fighterBName": "チャン・ヒョンジ"
+        }
+      ]
+    },
+    {
+      "eventName": "PANCRASE302",
+      "date": "2018-12-09",
+      "sourceUrl": "https://www.pancrase.co.jp/data/result/2018/1209.html",
+      "existingBoutCount": 21,
+      "idTaggedBoutCount": 1,
+      "idTaggedHeadings": [
+        "第8試合　フライ級　5分3ラウンド"
+      ],
+      "idTaggedBouts": [
+        {
+          "id": "card8",
+          "headingText": "第8試合　フライ級　5分3ラウンド",
+          "fighterAName": "中村龍之",
+          "fighterBName": "鈴木千裕"
+        }
+      ]
+    },
+    {
+      "eventName": "PANCRASE286",
+      "date": "2017-04-23",
+      "sourceUrl": "https://www.pancrase.co.jp/data/result/2017/0423.html",
+      "existingBoutCount": 14,
+      "idTaggedBoutCount": 1,
+      "idTaggedHeadings": [
+        "第5試合　ライト級　3分3ラウンド"
+      ],
+      "idTaggedBouts": [
+        {
+          "id": "fight5",
+          "headingText": "第5試合　ライト級　3分3ラウンド",
+          "fighterAName": "楳原嵩",
+          "fighterBName": "井上雄策"
+        }
+      ]
+    }
+  ]
+}
