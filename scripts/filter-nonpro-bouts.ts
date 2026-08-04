@@ -69,7 +69,10 @@ function filterEvents<E extends { eventName: string; date: string | null; bouts:
     not_pro_tryout: 0,
     not_pro_cage_gate: 0,
     not_pro_pancrase_gate: 0,
-    not_pro_futureking: 0, // 修斗/パンクラスの呼び出しはeventNameを渡さないため常に0(src/lib/mnewsRating/nonProBoutFilter.ts参照)
+    // not_pro_futureking(DEEP)はこのスクリプトの対象外(修斗/パンクラスのみ)のため常に0。
+    // eventNameキーワード自体を持たないため該当なし(src/lib/mnewsRating/nonProBoutFilter.ts参照)。
+    not_pro_futureking: 0,
+    not_pro_promotion_tournament: 0,
   };
   let totalBoutsBefore = 0;
   let totalBoutsAfter = 0;
@@ -79,7 +82,11 @@ function filterEvents<E extends { eventName: string; date: string | null; bouts:
     totalBoutsBefore += ev.bouts.length;
     const hadBouts = ev.bouts.length > 0;
     const keptBouts = ev.bouts.filter((b) => {
-      const category = classifyNonProBout(b as any);
+      // eventNameはbout側でなくevent側にしか無いフィールドのため明示的に渡す
+      // (指示書「ushiku-juntaro 1行目非表示調査」2026-08-05で発覚: 大会名自体が
+      // 「パンクラスゲート」等の登録済みキーワードを含む場合でも、この呼び出しに
+      // eventNameが渡っていなかったため素通りしていた=パンクラスゲート2009、45bout)。
+      const category = classifyNonProBout({ ...(b as any), eventName: ev.eventName });
       if (category) {
         removedByCategory[category]++;
         return false;

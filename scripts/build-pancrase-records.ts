@@ -40,7 +40,7 @@ async function sleep(ms: number) {
 // リトライを使い切った場合のみ例外で落とす。
 const FETCH_TIMEOUT_MS = 30_000;
 
-async function fetchText(url: string, retries = 3): Promise<string | null> {
+export async function fetchText(url: string, retries = 3): Promise<string | null> {
   await assertAllowedByRobots(url, UA);
   let lastError: unknown;
   for (let attempt = 0; attempt <= retries; attempt++) {
@@ -158,7 +158,7 @@ function parseVenueDateParts(venueRaw: string): { y: string; mo: string; d: stri
   return { y, mo: moMatch[0], d: dMatch[0] };
 }
 
-function extractEventMeta(html: string, year: string, file: string): EventMeta {
+export function extractEventMeta(html: string, year: string, file: string): EventMeta {
   const h1ToH4 = html.match(/<h1>([\s\S]*?)<h4/);
   const eventName = h1ToH4 ? stripTags(h1ToH4[1]) || null : null;
 
@@ -244,9 +244,10 @@ interface RawBout {
   decisionRaw: string;
   weightLeftRaw: string | null;
   weightRightRaw: string | null;
+  sectionHeading: string | null;
 }
 
-function parseBoutTable(tableHtml: string): RawBout | null {
+function parseBoutTable(tableHtml: string, sectionHeading: string | null): RawBout | null {
   const headingMatch = tableHtml.match(/<td colspan="5" class="rdcube">([\s\S]*?)<\/td>/);
   const headingText = headingMatch ? stripTags(headingMatch[1]) : "";
 
@@ -326,7 +327,7 @@ function parseBoutTable(tableHtml: string): RawBout | null {
     else if (!weightRightRaw) weightRightRaw = w;
   }
 
-  return { headingText, left, right, decisionRaw, weightLeftRaw, weightRightRaw };
+  return { headingText, left, right, decisionRaw, weightLeftRaw, weightRightRaw, sectionHeading };
 }
 
 // 指示書H(2026-08-04)で発見: メインイベント・一部特殊カード(NEO BLOOD等)は
@@ -335,9 +336,30 @@ function parseBoutTable(tableHtml: string): RawBout | null {
 // (#428で3件、指示書Hの全418大会走査で新たに7件発見・計10件が該当)。
 // id属性の有無を問わずマッチするよう修正(bout表かどうかの判定基準
 // class="crdl"は従来通り)。
-function extractBoutTables(html: string): string[] {
-  const tables = [...html.matchAll(/<table(?: id="[^"]*")?>([\s\S]*?)<\/table>/g)].map((m) => m[0]);
-  return tables.filter((t) => t.includes('class="crdl"'));
+//
+// 指示書「ushiku-juntaro 1行目非表示調査」(2026-08-05)で追加: 一部大会は
+// メイン/セミ〜本戦カードの後に<h3>見出し(「パンクラスゲート」「プロ昇格
+// トーナメント決勝戦」等)区切りで別ブラケット(アマチュア/プロ未昇格戦)を
+// 同一ページに掲載する。この見出しは個々のbout表(rdcube)には現れず<h3>にしか
+// 無いため、従来の実装ではbout単位の非プロ判定(nonProBoutFilter.ts)から
+// 見えなかった(牛久絢太郎PANCRASE247/251等で実測)。ページ出現順に沿って
+// <h3>と<table>を1回のスキャンで拾い、直近に出現した<h3>のテキストを
+// そのセクション内の各bout表に紐付けて返す(推測ではなく機械的な直近紐付け)。
+function extractBoutTables(html: string): { tableHtml: string; sectionHeading: string | null }[] {
+  const combined = /<h3[^>]*>([\s\S]*?)<\/h3>|<table(?: id="[^"]*")?>[\s\S]*?<\/table>/g;
+  let currentSection: string | null = null;
+  const results: { tableHtml: string; sectionHeading: string | null }[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = combined.exec(html))) {
+    if (m[0].startsWith("<h3")) {
+      currentSection = stripTags(m[1]).trim() || null;
+      continue;
+    }
+    if (m[0].includes('class="crdl"')) {
+      results.push({ tableHtml: m[0], sectionHeading: currentSection });
+    }
+  }
+  return results;
 }
 
 // ------------------------------------------------------------------
@@ -521,6 +543,7 @@ interface PancraseRecordsBout {
   weightLeftRaw: string | null; // 左コーナー選手の計量後体重(生テキスト、例:"65.9kg")
   weightRightRaw: string | null; // 右コーナー選手の計量後体重(生テキスト)
   note: string | null; // 抽出時の注記(マーカー推定・マーカー欠落等)
+  sectionHeading: string | null; // このboutが属する<h3>セクション見出し(例:「パンクラスゲート」)。無ければnull
 }
 
 interface PancraseRecordsEvent {
@@ -549,13 +572,13 @@ function resolveWinner(
   return null;
 }
 
-function buildEventBouts(html: string): { bouts: PancraseRecordsBout[]; parseFailures: number } {
+export function buildEventBouts(html: string): { bouts: PancraseRecordsBout[]; parseFailures: number } {
   const tableHtmls = extractBoutTables(html);
   let parseFailures = 0;
 
   const successful: RawBout[] = [];
   for (const t of tableHtmls) {
-    const raw = parseBoutTable(t);
+    const raw = parseBoutTable(t.tableHtml, t.sectionHeading);
     if (!raw) {
       parseFailures++;
       continue;
@@ -603,6 +626,7 @@ function buildEventBouts(html: string): { bouts: PancraseRecordsBout[]; parseFai
       weightLeftRaw: raw.weightLeftRaw,
       weightRightRaw: raw.weightRightRaw,
       note,
+      sectionHeading: raw.sectionHeading,
     };
   });
 
@@ -716,7 +740,14 @@ async function main() {
   }
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+// fetchText/extractEventMeta/buildEventBoutsをrefetch-pancrase-events.ts等から
+// importして使う際に、このファイル自体の全大会再取得(main())が副作用として
+// 走ってしまわないようにするガード(指示書「ushiku-juntaro 1行目非表示調査」
+// 2026-08-05、実際にimportだけのつもりが全件再取得・data/pancraseRecords.json
+// の誤上書きが発生した実測を踏まえて追加)。
+if (require.main === module) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
