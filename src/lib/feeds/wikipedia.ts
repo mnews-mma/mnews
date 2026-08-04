@@ -561,6 +561,16 @@ function jaField(wikitext: string, ...names: string[]): number | null {
 // infoboxにキャリア全体（MMA以外を含む）の戦績が、さらに「総合格闘技」節に
 // MMA限定のrecordboxが別途置かれていることがある。extractMmaSection で
 // 「総合格闘技」節に絞ってから検索することで、冒頭の誤った値を避ける。
+//
+// 2026-08-04(指示書M): infobox自体が編集ミスでhistory表と食い違う選手が
+// 複数確認されたが、その訂正はここではなく生成側の後段
+// (recordOverrides.applyRecordOverridesToTotals、recordOverrides適用後の
+// 補正済みhistoryに対して行う)で行う。ここで生のhistory(recordOverridesの
+// add/remove適用前)に対してtally()を使うと、(1)tally()の決着方法分類が
+// 英語表記専用で日本語のhistoryでは大半がother扱いになりko/sub/decisionが
+// 崩れる、(2)remove型overrideで「表には出さないが集計はinfobox通り」という
+// 既存の補正(例: ケイト・ロータスのエキシビション戦除外)の前提と二重に
+// ズレる、という2つの問題があるため採用しない。
 function parseJaRecordTotals(
   wikitext: string
 ): Omit<WikiFighterData, "history" | "infobox"> | null {

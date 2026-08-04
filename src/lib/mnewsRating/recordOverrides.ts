@@ -1384,5 +1384,21 @@ export function applyRecordOverridesToTotals(fighterId: string, rawHistory: Figh
       t.draws++;
     }
   }
+
+  // 2026-08-04(指示書M): 上記まで(infobox/シード値ベースのtotals + add型の
+  // 加算)で得たtとは別に、historyの実カウント(補正適用後)でも集計してみて、
+  // 勝敗分の内訳(wins/losses/draws)が食い違う場合だけ実カウント側を採用する。
+  // Wikipedia infobox自体が編集ミスで対戦履歴表と食い違う選手が複数確認された
+  // (指示書L #436・指示書M)。365名中356名(=9名以外全員)は両者が一致することを
+  // 実測済みのため、この置き換えで挙動が変わるのは対象の9名のみ。
+  // 一致している356名についてはtをそのまま返すため、add型のtotalsAlreadyReflected・
+  // isNc(計量オーバー裁定)等の既存ガードは無効化されない。
+  const correctedHistory = applyRecordOverrides(fighterId, rawHistory);
+  if (correctedHistory.length > 0) {
+    const derived = deriveTotalsFromHistory(correctedHistory);
+    if (derived.wins !== t.wins || derived.losses !== t.losses || derived.draws !== t.draws) {
+      return derived;
+    }
+  }
   return t;
 }
