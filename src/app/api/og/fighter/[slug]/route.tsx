@@ -41,7 +41,7 @@ const NAME_STEPS = [
   { maxLen: 20, size: 68 },
 ];
 
-export async function GET(req: Request, { params }: { params: Promise<{ slug: string }> }) {
+export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
     const seed = getFighter(slug);
@@ -72,10 +72,15 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
     const subPct = (sub / total) * 100;
     const decPct = (decision / total) * 100;
 
-    // カードに乗せる階級は選手DB属性ではなく手指定ラベル(?wc=)で決める。
-    // 団体表示・選手DB階級の自動表示はしない(夢のカード/団体またぎで邪魔になるため)。
-    // 空欄なら階級行を出さない。
-    const wcLabel = (new URL(req.url).searchParams.get("wc") ?? "").trim();
+    // カードに乗せる階級は選手DBの値のみを使う(2026-08-04)。
+    // 以前は手指定ラベル(?wc=)を受け取っていたが、公開・非認証のこのAPIで
+    // 誰でも実在選手の公式風カードに任意の階級文字列を焼き込める穴になって
+    // いたため廃止した(/vs/[slugA]/[slugB]で?wc=/?ev=を廃止したのと同じ理由。
+    // 当該ページのコメント参照)。任意の階級・大会名を出したい場合は管理画面
+    // 限定の/api/og/vs-compareを使うこと。
+    // 「夢のカード/団体またぎで階級表記が邪魔になる」という当初の懸念は
+    // 対戦カード(vs/dream)側の話で、単一選手カードのこのルートでは当たらない。
+    const wcLabel = fighter.weightClass.trim();
     const fonts = await loadOgFonts();
     const displayName = fighterDisplayName(fighter);
     const nameSize = fitFontSize(displayName, NAME_STEPS);
@@ -93,7 +98,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
             position: "relative",
           }}
         >
-          {/* 上部帯: 手指定の階級ラベル(空欄なら非表示) + EN名 */}
+          {/* 上部帯: 選手DBの階級 + EN名 */}
           <div
             style={{
               display: "flex",

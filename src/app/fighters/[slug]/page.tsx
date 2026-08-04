@@ -43,23 +43,36 @@ const TAG_LINK: Record<OrgTagKey, string | null> = {
   one: null,
 };
 
-// Wikipediaから戦績テーブルを取得するためビルド時ではなくリクエスト時に取得する。
-export const dynamic = "force-dynamic";
+// ISR(2026-08-04)。force-dynamicだった当初の理由「Wikipediaから戦績テーブルを
+// リクエスト時に取得する」は既に成立していない — 戦績は日次バッチが焼き込んだ
+// data/fighterRecords.jsonをGitHub raw経由で読むだけで、リクエスト時に
+// Wikipediaへは一切fetchしない(fighterRecordsCache.tsの設計コメント参照)。
+// 残っていた動的化要因は generateMetadata の ?wc= 参照だけで、これは同PRで
+// 廃止した(公開・非認証で任意の階級ラベルをOGP画像に焼き込める穴だったため。
+// /vs/[slugA]/[slugB]が?wc=/?ev=を廃止したのと同じ理由)。
+//
+// 宣言値は900だが、これは実効値に合わせたもの。Next.jsは入れ子fetchの
+// revalidateの最小値を採るため、fetchDivisionRankings(RANKINGS_REVALIDATE=900)
+// に律速され3600と書いても900に丸められる(next buildの出力が15m表示になる)。
+//
+// 【反映遅延】日次バッチのコミットは[skip ci]でデプロイを起こさない(=fetchの
+// キャッシュキーに使うVERCEL_GIT_COMMIT_SHAが変わらない)ため、バッチ完了から
+// 画面反映までは最悪 fetchのrevalidate(3600s) + このISR(900s) = 約1時間15分
+// かかる。force-dynamic時代は約1時間だったので、追加の遅延は最大15分。
+// 即時反映が必要な場合は再デプロイするとSHAが変わり両方のキャッシュが切れる。
+export const revalidate = 900;
 
-export async function generateMetadata({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
+export async function generateStaticParams() {
+  return FIGHTERS.map((f) => ({ slug: f.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const seed = getFighter(slug);
   if (!seed) return { title: "選手が見つかりません | Mニュース", robots: { index: false, follow: false } };
-  // Xカードツールの手指定階級ラベル(?wc=)を og:image に反映(空欄なら付けない)。
-  const wcRaw = (await searchParams).wc;
-  const wc = (Array.isArray(wcRaw) ? wcRaw[0] : wcRaw ?? "").trim();
-  const ogPath = `/api/og/fighter/${slug}${wc ? `?wc=${encodeURIComponent(wc)}` : ""}`;
+  // OGP画像は選手slugのみで決まる(?wc=による手指定は2026-08-04に廃止。
+  // 階級は/api/og/fighter側が選手DBの値を使う)。
+  const ogPath = `/api/og/fighter/${slug}`;
   // Wikipedia から取得した実際の戦績を meta にも反映（seed と乖離させない）
   const fighter = await resolveFighterCached(seed);
   const orgLabel = SOURCES[fighter.org].label;
@@ -137,9 +150,9 @@ function resolveLinkableOpponentSlug(oppSlug: string | null): string | null {
 
 // 対戦テーブルの/resultsリンクの大会突合。掲載中の大会側の正規化(スペース除去・
 // 大会番号の抽出)はモジュールスコープで1回だけ行い、リクエストごとに作り直さない。
-// /fighters/[slug] は force-dynamic(リクエスト毎にSSR)で、1ページあたり
-// bout行数ぶん突合が走るため、ここで毎回全大会を正規化し直すと
-// CPU時間がページビューに比例して増える。
+// 1ページあたりbout行数ぶん突合が走るため、ここで毎回全大会を正規化し直すと
+// レンダリング回数に比例してCPU時間が増える(ISR化後もrevalidateごとに
+// 365ページぶん再レンダリングされるので、この最適化は引き続き効く)。
 interface EventIndexEntry {
   slug: string;
   date: string;
@@ -215,8 +228,8 @@ function resolveEventSlug(eventName: string, boutDate?: string): string | null {
   // 候補が1件に絞れない場合はリンクしない(fail-closed)。同じ日に紛らわしい
   // 大会名が2つ以上ある(修斗の昼夜開催、DEEPとDEEP JEWELSの同日開催など)と
   // 部分一致+日付だけでは特定できず、先頭を採ると誤リンクになる。このページは
-  // force-dynamicでリクエスト時にdata/を取りに行くため、ビルド時ゲートが見て
-  // いないデータでも同じ判断が要る。
+  // revalidate時にGitHub raw経由で最新のdata/を取りに行くため、ビルド時ゲートが
+  // 見ていないデータでも同じ判断が要る。
   if (candidates.length !== 1) return null;
   return candidates[0].slug;
 }

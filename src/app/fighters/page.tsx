@@ -18,9 +18,8 @@ const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "選手戦績�
 // force-dynamicだった(2026-07-30〜)。中身(4団体合算戦績)はGitHub raw fetchの
 // revalidate:3600に律速されており日次バッチ以外では変わらないため、ISR化して
 // リクエスト毎のフルルート再レンダリングを避ける(Fluid Active CPU増加対策)。
-// searchParamsは使っていないため、force-dynamicを外してもrevalidateが素直に効く
-// (/fighters/[slug]は?wc=等のsearchParams参照がありforce-dynamicを外しても
-// 動的レンダリングのままなので対象外。next buildの出力(ƒのまま)で実測確認済み)。
+// searchParamsは使っていないため、force-dynamicを外してもrevalidateが素直に効く。
+// (/fighters/[slug]も2026-08-04に?wc=を廃止してISR化済み。当該ファイル冒頭参照)
 export const revalidate = 3600;
 
 export const metadata = pageMetadata({
