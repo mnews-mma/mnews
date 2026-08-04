@@ -19,14 +19,10 @@ import path from "path";
 import { FIGHTERS } from "../src/lib/fighters";
 import { computeFighterTags, TaggableFighter } from "../src/lib/orgTags";
 import type { OrgRankingsFile } from "../src/lib/orgRankingsData";
+import { daysUntilEventJst } from "../src/lib/eventCountdown";
 
 const ROOT = path.join(__dirname, "..");
 const CUTOFF_YEARS = 2;
-
-// scripts/tmp-verify-org-tags.ts 等で使ってきた「今日」の扱いと同じく、
-// バッチ実行時点のシステム時刻を使う(この結果はJSONへ焼き込まれ、次回
-// バッチ実行まで固定される。リクエスト時点の計算ではない)。
-const TODAY = new Date();
 
 type OrgKey = "rizin" | "deep" | "shooto" | "pancrase";
 const ORG_FILES: { file: string; org: OrgKey }[] = [
@@ -60,10 +56,13 @@ function loadBoutsBySlug(): Map<string, BoutRef[]> {
   return bySlug;
 }
 
+// JST基準の日付演算はeventCountdown.tsの唯一の実装(daysUntilEventJst)経由に
+// 統一する(check:jst-date-bypassゲート対応。独自のsplit("-")+new Date()での
+// 日付分解を新規コードで書かない)。daysUntilEventJstは0=本日/負数=経過済みを
+// 返すため、経過年数は符号反転して換算する。
 function ageInYears(dateStr: string): number {
-  const [y, m, d] = dateStr.split("-").map(Number);
-  const bout = new Date(y, m - 1, d);
-  return (TODAY.getTime() - bout.getTime()) / (365.25 * 24 * 3600 * 1000);
+  const daysAgo = -daysUntilEventJst(dateStr);
+  return daysAgo / 365.25;
 }
 
 // 直近3試合(日付降順で最大3件)の多数決。同数タイは最新1件の団体を優先。
