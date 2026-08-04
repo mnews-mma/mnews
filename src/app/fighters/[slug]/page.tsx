@@ -478,6 +478,17 @@ export default async function FighterPage({
       : SHOW_MULTI_ORG_RECORD
         ? toDisplayFromMultiOrg()
         : [];
+  // 指示書N(2026-08-04): ヘッダーは1行目(Wikipedia等の通算戦績)由来なのに、
+  // その選手自身のhistoryが空でテーブルだけ4団体合算にフォールバックしている
+  // 状態を検出する(住村竜市朗が該当。Wikipedia記事にinfobox集計値はあるが
+  // {{Fight-cont}}の個別試合節が無く、historyが空のまま)。この場合ヘッダーの
+  // 総数(1行目)とテーブルの行数(4団体分のみ)が一致しないのは「ヘッダーが
+  // 誤り」ではなく「テーブルがRIZIN/DEEP/パンクラス/修斗の試合しか
+  // 持っていない」ことの表れなので、対応方針はヘッダー/テーブルの数値を
+  // 揃えることではなく、テーブル側にその旨を注記することにした
+  // (shouldPreferMultiOrgRecordは変更しない・対象選手を名指ししない一般条件)。
+  const tableIsMultiOrgFallbackUnderRowOneHeader =
+    !suppressNoRecordRow && history.length === 0 && SHOW_MULTI_ORG_RECORD && displayHistory.length > 0;
   // 勝ち方/負け方バタフライ図(MethodButterfly)用。ヘッダー・対戦テーブルと
   // 同じdisplayHistory(suppressNoRecordRow基準で1行目/4団体合算のどちらかに
   // 揃え済み)をFightRecord互換の形に詰め替えるだけで、新規の集計呼び出しは
@@ -828,6 +839,12 @@ export default async function FighterPage({
         <h2 style={{ fontSize: 14, fontWeight: 700, marginBottom: 16, color: "var(--fg)" }}>
           {fighter.nameJa}の最新試合結果・戦績
         </h2>
+        {tableIsMultiOrgFallbackUnderRowOneHeader && (
+          <p className="fighter-stat-note">
+            対戦表はRIZIN・DEEP・パンクラス・修斗の試合のみ表示しています ／{" "}
+            <a href="/methodology/records">集計について</a>
+          </p>
+        )}
         {displayHistory.length === 0 ? (
           <p style={{ color: "var(--muted)", fontSize: 13, padding: "24px 0" }}>
             {noRecordData
