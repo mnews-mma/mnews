@@ -6109,10 +6109,10 @@
     "age": 24
   },
   "sato-shoko": {
-    "wins": 38,
+    "wins": 37,
     "losses": 17,
     "draws": 2,
-    "ko": 20,
+    "ko": 19,
     "sub": 4,
     "decision": 14,
     "history": [
@@ -9352,11 +9352,11 @@
     "age": 30
   },
   "tokoro-hideo": {
-    "wins": 36,
-    "losses": 34,
+    "wins": 33,
+    "losses": 29,
     "draws": 1,
-    "ko": 6,
-    "sub": 21,
+    "ko": 5,
+    "sub": 19,
     "decision": 9,
     "history": [
       {
@@ -10619,12 +10619,12 @@
     "age": 23
   },
   "ohara-juri": {
-    "wins": 38,
-    "losses": 21,
+    "wins": 39,
+    "losses": 20,
     "draws": 2,
     "ko": 21,
-    "sub": 2,
-    "decision": 12,
+    "sub": 5,
+    "decision": 13,
     "history": [
       {
         "date": "2026-05-04",
@@ -15176,11 +15176,11 @@
     "noRecordData": true
   },
   "uoi-fullswing": {
-    "wins": 27,
-    "losses": 16,
+    "wins": 26,
+    "losses": 17,
     "draws": 4,
     "ko": 12,
-    "sub": 2,
+    "sub": 1,
     "decision": 13,
     "history": [
       {
@@ -17215,11 +17215,11 @@
     "live": true
   },
   "seki-tetsuya": {
-    "wins": 18,
+    "wins": 16,
     "losses": 11,
     "draws": 1,
-    "ko": 9,
-    "sub": 3,
+    "ko": 8,
+    "sub": 2,
     "decision": 6,
     "history": [
       {
@@ -27003,12 +27003,12 @@
     "live": true
   },
   "miyake-kisa": {
-    "wins": 14,
-    "losses": 5,
+    "wins": 13,
+    "losses": 6,
     "draws": 0,
     "ko": 6,
     "sub": 3,
-    "decision": 5,
+    "decision": 4,
     "history": [
       {
         "date": "2026-07-26",
@@ -28140,10 +28140,10 @@
     "age": 26
   },
   "lee-kaiwen": {
-    "wins": 16,
+    "wins": 15,
     "losses": 8,
     "draws": 0,
-    "ko": 9,
+    "ko": 8,
     "sub": 1,
     "decision": 6,
     "history": [
@@ -32591,10 +32591,10 @@
   },
   "uno-caol": {
     "wins": 35,
-    "losses": 23,
+    "losses": 24,
     "draws": 5,
-    "ko": 3,
-    "sub": 18,
+    "ko": 2,
+    "sub": 19,
     "decision": 14,
     "history": [
       {
@@ -42968,12 +42968,12 @@
     "live": false
   },
   "sugiyama": {
-    "wins": 23,
+    "wins": 24,
     "losses": 8,
     "draws": 1,
     "ko": 6,
     "sub": 6,
-    "decision": 11,
+    "decision": 12,
     "history": [
       {
         "date": "2026-03-14",
