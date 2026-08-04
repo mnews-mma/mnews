@@ -1,5 +1,14 @@
 [
   {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "【参加者募集】RIZIN.54 ファンクラブイベント開催決定！！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17855746",
+    "publishedAt": "2026-08-04T02:00:00.000Z",
+    "firstSeenAt": "2026-08-04T04:55:45.028Z"
+  },
+  {
     "id": "gonkaku-0",
     "source": "other",
     "title": "【訃報】RIZINにも参戦、UFCフライ級のアラン・ナシメントが34歳で死去",
@@ -16,6 +25,15 @@
     "url": "https://encount.press/archives/1042804/",
     "publishedAt": "2026-08-04T01:25:34.000Z",
     "firstSeenAt": "2026-08-04T01:44:50.001Z"
+  },
+  {
+    "id": "pancrase-1",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.12：大鹿烈毅選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood12/interview_oshika.html",
+    "publishedAt": "2026-08-04T00:00:00.000Z",
+    "firstSeenAt": "2026-08-04T04:55:45.028Z"
   },
   {
     "id": "gonkaku-1",
@@ -331,6 +349,15 @@
     "url": "https://j-shooto.com/2026/08/01/post-46250/",
     "publishedAt": "2026-08-01T07:48:38.000Z",
     "firstSeenAt": "2026-08-01T17:36:42.361Z"
+  },
+  {
+    "id": "shooto-3",
+    "source": "shooto",
+    "title": "2026年JSA選手ライセンス未登録者（2026年1月以降試合をされた選手）",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/08/01/post-51443/",
+    "publishedAt": "2026-08-01T07:30:47.000Z",
+    "firstSeenAt": "2026-08-04T04:55:45.028Z"
   },
   {
     "id": "shooto-1",
