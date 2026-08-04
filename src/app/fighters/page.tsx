@@ -7,6 +7,7 @@ import DataFreshness from "@/components/DataFreshness";
 import { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { getVisibleFighters } from "@/lib/visibleFighters";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
+import { fetchOrgTagOverrides } from "@/lib/orgTagOverridesData";
 import { computeFighterTags, OrgTag } from "@/lib/orgTags";
 import { fetchFighterRecordsGeneratedAt } from "@/lib/fighterRecordsCache";
 import { weightSortKey } from "@/lib/weightClasses";
@@ -35,10 +36,10 @@ export default async function FightersPage() {
 
   // 団体タグは導出(選手データは書き換えない)。全公開選手に一律ルールで付与
   // (UFC=org / RIZIN=2026出場 / DEEP=2026本戦orgdeep / パンクラス・修斗=現ランカー)。
-  const orgRankings = await fetchOrgRankings();
+  const [orgRankings, orgTagOverrides] = await Promise.all([fetchOrgRankings(), fetchOrgTagOverrides()]);
   const tagsBySlug: Record<string, OrgTag[]> = {};
   for (const f of fighters) {
-    const tags = computeFighterTags(f, orgRankings);
+    const tags = computeFighterTags(f, orgRankings, orgTagOverrides);
     if (tags.length) tagsBySlug[f.slug] = tags;
   }
 

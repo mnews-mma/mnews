@@ -9,6 +9,7 @@ import { FIGHTERS, calcFighterRates } from "@/lib/fighters";
 import { fetchAllArticles } from "@/lib/feeds/aggregate";
 import { resolveFightersCached } from "@/lib/fighterRecordsCache";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
+import { fetchOrgTagOverrides } from "@/lib/orgTagOverridesData";
 import { fetchDivisionRankings, fetchP4PRankings } from "@/lib/mnewsRatingData";
 import {
   getPublishedDivisionRankingView,
@@ -92,6 +93,7 @@ export default async function HomePage() {
     videos,
     firstSeenMap,
     orgRankings,
+    orgTagOverrides,
     visibleFighterSlugs,
     flyweightRankings,
     bantamweightRankings,
@@ -104,6 +106,7 @@ export default async function HomePage() {
     fetchLatestOfficialVideos().catch(() => []),
     fetchFirstSeenMap().catch(() => new Map<string, string>()),
     fetchOrgRankings().catch(() => ({})),
+    fetchOrgTagOverrides().catch(() => ({})),
     getVisibleFighterSlugs(),
     fetchDivisionRankings("flyweight").catch(() => null),
     fetchDivisionRankings("bantamweight").catch(() => null),
@@ -172,7 +175,7 @@ export default async function HomePage() {
   // 団体タグを導出(/fighters と同じチップ体裁で出すため)。
   const tagsBySlug: Record<string, OrgTag[]> = {};
   for (const f of fighters) {
-    const tags = computeFighterTags(f, orgRankings);
+    const tags = computeFighterTags(f, orgRankings, orgTagOverrides);
     if (tags.length) tagsBySlug[f.slug] = tags;
   }
   if (articlesResult && articlesResult.articles.length >= 6) {

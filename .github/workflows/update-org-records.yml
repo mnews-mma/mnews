@@ -102,6 +102,7 @@ jobs:
         run: npx tsx scripts/check-nonpro-bout-gate.ts
 
       - name: Report bout counts after fetch + build per-org commit plan
+        id: report_counts
         run: |
           # 団体ごとのbout数減少ガードは団体単位で独立させる(2026-08-03変更)。
           # ある団体で減少を検知してもジョブ全体を異常終了させず、その団体だけ
@@ -163,6 +164,22 @@ jobs:
               echo "| ${file} | ${eventName} | ${date} |" >> "$GITHUB_STEP_SUMMARY"
             done
           fi
+
+          if [ -s /tmp/skipped-orgs.tsv ]; then
+            echo "any_skipped=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "any_skipped=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build fighter org tag overrides (直近3試合最頻団体、指示書ステップ3)
+        # 4団体戦績dataのいずれかでbout数減少(取得異常の疑い)を検知した回は、
+        # 壊れたデータから団体タグを機械導出してcommitしてしまわないよう、この
+        # ステップ自体をスキップする(ジョブは後段のfail-if-any-skippedでどの道
+        # 失敗するため、次回の正常な取得を待てば良い)。
+        if: steps.report_counts.outputs.any_skipped == 'false'
+        run: |
+          npx tsx scripts/build-fighter-org-tag-overrides.ts
+          echo "data/fighterOrgTagOverrides.json" >> /tmp/commit-files.txt
 
       - name: Commit and push per-org (skips orgs with a bout-count regression)
         run: |
