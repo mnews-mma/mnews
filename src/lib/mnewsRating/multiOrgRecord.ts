@@ -207,12 +207,8 @@ export function computeMultiOrgBoutTable(
 //   liveフラグ自体がWikipedia解決成功の一次情報(hasWikipediaRecord参照)なので、
 //   これが立っていればneedsReviewの「直書き値だから信頼しない」という前提が
 //   もはや成立しない。
-// - recordFromResults: 1行目はEVENT_RESULTSから動的生成する設計のスタブで、通常は
-//   常に0。ただしresolveFighter()はrecordFromResults選手でも既定タイトルでja-wikiを
-//   試行する仕様に拡張済み(同名別人ガード通過時)のため、1行目がライブでWikipedia
-//   解決に成功する(live===true)ケースがある(牛久絢太郎ほか、指示書「ushiku-juntaro
-//   1行目非表示調査」2026-08-04で3名実測)。この場合はneedsReview分岐と同じ理由
-//   (直上のコメント参照)で総試合数比較をせず1行目を優先する。
+// - recordFromResults: 1行目は常に0(EVENT_RESULTSから動的生成する設計のスタブ)なので、
+//   従来通り総試合数比較でも実質的に同じ結果になる。変更不要。
 export function shouldPreferMultiOrgRecord(
   fighter: { needsReview?: boolean; recordFromResults?: boolean; noRecordData?: boolean; live?: boolean },
   rowOneWins: number,
@@ -222,8 +218,8 @@ export function shouldPreferMultiOrgRecord(
 ): boolean {
   if (fighter.noRecordData) return true;
   if (fighter.needsReview && !fighter.live) return record.wins + record.losses + record.draws > 0;
-  if (fighter.recordFromResults && !fighter.live) return record.wins + record.losses + record.draws > rowOneWins + rowOneLosses + rowOneDraws;
-  return false;
+  if (!fighter.recordFromResults) return false;
+  return record.wins + record.losses + record.draws > rowOneWins + rowOneLosses + rowOneDraws;
 }
 
 // fighter(FighterRecordEntry互換)のwins/losses/draws/ko/sub/decision/historyを
