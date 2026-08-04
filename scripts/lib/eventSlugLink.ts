@@ -7,7 +7,7 @@
  * 明示 / 開催日±1日」を満たすかを独立に検査する。page.tsx側を変えたら
  * こちらも同期すること。
  */
-import { EVENT_RESULTS } from "../../src/lib/eventResults";
+import { EVENT_RESULTS, LISTED_EVENT_RESULTS } from "../../src/lib/eventResults";
 import { shiftDateStr } from "../../src/lib/eventCountdown";
 
 export const normEventName = (s: string) => s.replace(/\s/g, "");
@@ -17,19 +17,18 @@ const eventDigitRuns = (s: string) => (s.match(/[0-9０-９]+/g) ?? []).join(","
 interface EventIndexEntry {
   slug: string;
   date: string;
-  unlisted: boolean;
   normName: string;
   digitRuns: string;
   headIsDigit: boolean;
   tailIsDigit: boolean;
 }
 
-const EVENT_INDEX: EventIndexEntry[] = EVENT_RESULTS.map((e) => {
+// page.tsx と同じく LISTED_EVENT_RESULTS(unlisted除外済み)から索引を作る。
+const EVENT_INDEX: EventIndexEntry[] = LISTED_EVENT_RESULTS.map((e) => {
   const normName = normEventName(e.eventName);
   return {
     slug: e.slug,
     date: e.date,
-    unlisted: !!e.unlisted,
     normName,
     digitRuns: eventDigitRuns(normName),
     headIsDigit: isDigitChar(normName[0]),

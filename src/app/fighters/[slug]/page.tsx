@@ -9,7 +9,7 @@ import { resolveFighterCached, resolveFightersCached } from "@/lib/fighterRecord
 import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
-import { EVENT_RESULTS } from "@/lib/eventResults";
+import { LISTED_EVENT_RESULTS } from "@/lib/eventResults";
 import { shiftDateStr } from "@/lib/eventCountdown";
 import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
@@ -135,15 +135,14 @@ function resolveLinkableOpponentSlug(oppSlug: string | null): string | null {
   return opponent && !opponent.hidden ? oppSlug : null;
 }
 
-// 対戦テーブルの/resultsリンクの大会突合。EVENT_RESULTS側の正規化(スペース除去・
+// 対戦テーブルの/resultsリンクの大会突合。掲載中の大会側の正規化(スペース除去・
 // 大会番号の抽出)はモジュールスコープで1回だけ行い、リクエストごとに作り直さない。
 // /fighters/[slug] は force-dynamic(リクエスト毎にSSR)で、1ページあたり
-// bout行数ぶん突合が走るため、ここで毎回 EVENT_RESULTS を正規化し直すと
+// bout行数ぶん突合が走るため、ここで毎回全大会を正規化し直すと
 // CPU時間がページビューに比例して増える。
 interface EventIndexEntry {
   slug: string;
   date: string;
-  unlisted: boolean;
   /** スペース除去済みの大会名。Wikipedia側は "RIZIN 師走の超強者祭り" のように
    *  スペースが入ることがあり、こちらのデータ(スペース無し)と食い違うため。 */
   normName: string;
@@ -158,12 +157,15 @@ const normEventName = (s: string) => s.replace(/\s/g, "");
 const isDigitChar = (c: string | undefined) => !!c && /[0-9０-９]/.test(c);
 const eventDigitRuns = (s: string) => (s.match(/[0-9０-９]+/g) ?? []).join(",");
 
-const EVENT_INDEX: EventIndexEntry[] = EVENT_RESULTS.map((e) => {
+// 索引はLISTED_EVENT_RESULTS(unlisted除外済み)から作る。unlisted大会は
+// /results一覧・sitemapから除外され個別ページもnoindexであり、選手ページから
+// リンクを張らない。除外判定はeventResults.tsのisListedEvent()に集約しており、
+// ここで条件式を書き直さない。
+const EVENT_INDEX: EventIndexEntry[] = LISTED_EVENT_RESULTS.map((e) => {
   const normName = normEventName(e.eventName);
   return {
     slug: e.slug,
     date: e.date,
-    unlisted: !!e.unlisted,
     normName,
     digitRuns: eventDigitRuns(normName),
     headIsDigit: isDigitChar(normName[0]),
@@ -171,7 +173,7 @@ const EVENT_INDEX: EventIndexEntry[] = EVENT_RESULTS.map((e) => {
   };
 });
 
-// 正規化後の大会名が完全一致する場合の高速経路(658リンク中437件が該当)。
+// 正規化後の大会名が完全一致する場合の高速経路(リンクの大半がこちら)。
 const EVENT_BY_NORM_NAME = new Map<string, EventIndexEntry[]>();
 for (const e of EVENT_INDEX) {
   const list = EVENT_BY_NORM_NAME.get(e.normName);

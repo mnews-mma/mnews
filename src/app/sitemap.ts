@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { EVENT_RESULTS } from "@/lib/eventResults";
+import { LISTED_EVENT_RESULTS } from "@/lib/eventResults";
 import { EVENTS } from "@/lib/events";
 import { ORIGINAL_ARTICLES } from "@/lib/originalArticles";
 import { fetchRankings } from "@/lib/mnewsRatingData";
@@ -69,7 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // 結果ページの lastModified は大会日（掲載確定の基準日）
   // unlisted: true(薄い内容のため/results一覧から除外)の大会はsitemapにも載せない
-  const resultRoutes: MetadataRoute.Sitemap = EVENT_RESULTS.filter((e) => !e.unlisted).map((e) => ({
+  const resultRoutes: MetadataRoute.Sitemap = LISTED_EVENT_RESULTS.map((e) => ({
     url: `${BASE_URL}/results/${e.slug}`,
     changeFrequency: "weekly",
     priority: 0.6,

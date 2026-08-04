@@ -11,7 +11,7 @@
  *
  * 出力: out/event-slug-link-audit.md
  */
-import { EVENT_RESULTS } from "../src/lib/eventResults";
+import { EVENT_RESULTS, isListedEvent } from "../src/lib/eventResults";
 import { collectBoutRows, findEventNameMatches, findEventSlug, findEventSlugLegacy, normEventName } from "./lib/eventSlugLink";
 import fighterRecords from "../data/fighterRecords.json";
 import rizinRecords from "../data/rizinRecords.json";
@@ -34,12 +34,20 @@ const evaluated = rows.map((r) => ({
 }));
 const changed = evaluated.filter((r) => r.old !== r.next);
 
-// バケット分け: 旧リンク先の大会名が(正規化後に)表示名と一致していれば
-// 「正しい大会を指していたのに日付ガードで落ちた」= 巻き添え。
+// バケット分け。判定順序に意味がある:
+//   C. リンク先がunlisted大会 → 方針としてリンクを張らないもの(残件2)
+//   B. 大会名は(正規化後に)一致するのに日付ガードで落ちた = 巻き添え
+//   A. 残り = 別大会を指していた誤リンク
+const isUnlistedRemoval = (r: (typeof changed)[number]) =>
+  r.old !== null && r.next === null && !isListedEvent(eventBySlug.get(r.old)!);
 const isCollateral = (r: (typeof changed)[number]) =>
-  r.old !== null && r.next === null && normEventName(eventBySlug.get(r.old)!.eventName) === normEventName(r.event);
-const wrongLinks = changed.filter((r) => !isCollateral(r));
+  !isUnlistedRemoval(r) &&
+  r.old !== null &&
+  r.next === null &&
+  normEventName(eventBySlug.get(r.old)!.eventName) === normEventName(r.event);
+const unlistedRemoval = changed.filter(isUnlistedRemoval);
 const collateral = changed.filter(isCollateral);
+const wrongLinks = changed.filter((r) => !isUnlistedRemoval(r) && !isCollateral(r));
 
 const linkedOld = evaluated.filter((r) => r.old).length;
 const linkedNew = evaluated.filter((r) => r.next).length;
@@ -51,6 +59,7 @@ p(`- リンクが張られるbout: 旧 ${linkedOld}件 → 新 ${linkedNew}件`)
 p(`- 判定が変わったbout: ${changed.length}件`);
 p(`  - **A. 誤リンクの除去: ${wrongLinks.length}件**(別大会を指していた)`);
 p(`  - **B. 巻き添えで落ちたリンク: ${collateral.length}件**(大会名は正しく一致。上流データの試合日が誤っている)`);
+p(`  - **C. unlisted大会へのリンク除去: ${unlistedRemoval.length}件**(方針としてリンクを張らない)`);
 p();
 
 const groupByEvent = (list: typeof changed) => {
@@ -93,25 +102,31 @@ for (const r of [...collateral].sort((a, b) => a.date.localeCompare(b.date))) {
 }
 p();
 
-p("## 参考: unlisted(非公開)大会へのリンク");
+p("## C. unlisted(非公開)大会へのリンク除去");
 p();
-p("`unlisted: true` の大会は /results 一覧・sitemapから除外され個別ページもnoindexだが、");
-p("選手ページの対戦テーブルからは現状リンクが張られている(残件2として別PRで除去予定)。");
+p("`unlisted: true` の大会は /results 一覧・sitemapから除外され個別ページもnoindexである。");
+p("選手ページの対戦テーブルからも同様にリンクを張らない(個別ページ自体は200のまま残るため、");
+p("直リンクでは引き続き閲覧できる=情報は失われない)。判定は eventResults.ts の");
+p("`isListedEvent()` に集約し、呼び出し側で条件式を書き直さない。");
 p();
-const unlisted = new Map<string, number>();
-for (const r of evaluated) {
-  if (!r.next) continue;
-  if (!eventBySlug.get(r.next)!.unlisted) continue;
-  unlisted.set(r.next, (unlisted.get(r.next) ?? 0) + 1);
+const unlistedByEvent = new Map<string, number>();
+for (const r of unlistedRemoval) {
+  const k = `${r.old} ${r.event}`;
+  unlistedByEvent.set(k, (unlistedByEvent.get(k) ?? 0) + 1);
 }
-p("| 大会 | 開催日 | リンク元bout数 |");
-p("|---|---|---|");
-for (const [slug, n] of [...unlisted].sort()) {
+p("| リンクを外した大会 | 開催日 | 表示される大会名 | bout数 |");
+p("|---|---|---|---|");
+for (const [k, n] of [...unlistedByEvent].sort()) {
+  const [slug, ...rest] = k.split(" ");
   const ev = eventBySlug.get(slug)!;
-  p(`| ${slug} (${ev.eventName}) | ${ev.date} | ${n} |`);
+  p(`| ${slug} (${ev.eventName}) | ${ev.date} | ${rest.join(" ")} | ${n} |`);
 }
 p();
-p(`合計 ${[...unlisted.values()].reduce((a, b) => a + b, 0)}bout`);
+p(`合計 ${unlistedRemoval.length}bout`);
+p();
+// 現在リンクが張られている中にunlistedが残っていないことの確認。
+const residual = evaluated.filter((r) => r.next && !isListedEvent(eventBySlug.get(r.next)!)).length;
+p(`リンクが残っているunlisted大会: **${residual}bout**(0でなければゲートが落ちる)`);
 p();
 
 p("## 参考: 部分一致でリンクしている大会名(alias表の中身)");
