@@ -30,6 +30,7 @@ export interface PancraseRecordsBout {
   weightLeftRaw: string | null;
   weightRightRaw: string | null;
   note: string | null;
+  sectionHeading: string | null; // このboutが属する<h3>セクション見出し(例:「パンクラスゲート」)。無ければnull
 }
 
 export interface PancraseRecordsEvent {

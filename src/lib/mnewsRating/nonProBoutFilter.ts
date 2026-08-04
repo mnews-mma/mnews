@@ -52,7 +52,13 @@ export type NonProBoutCategory =
   | "not_pro_tryout" // トライアウト(トライアウトルール/トライアウトマッチ)
   | "not_pro_cage_gate" // PANCRASE CAGE GATE/CAGE GATE/CAGEGATE(Bayside FIGHT限定、公式にアマチュア専用と明言)
   | "not_pro_pancrase_gate" // パンクラスゲート系(表記ゆれ4種、通常PANCRASE本戦等のundercard。ja.wikipediaがアマチュア節に分類する実例あり)
-  | "not_pro_futureking"; // DEEPフューチャーキングトーナメント(アマチュア大会。eventNameでのみ判定)
+  | "not_pro_futureking" // DEEPフューチャーキングトーナメント(アマチュア大会。eventNameでのみ判定)
+  | "not_pro_promotion_tournament"; // パンクラス「プロ昇格トーナメント」系(表記ゆれ複数。プロ未昇格の選考戦。
+  // 牛久絢太郎(ushiku-juntaro)の2013年戦績調査(指示書、2026-08-05)で発覚。パンクラス公式
+  // プロフィールページ(data/prfl2)の戦績表がこの種のbout開始前から始まっており、かつ
+  // 「◯年プロ昇格トーナメント優勝」という卒業を示すプロフィール文言がある選手が複数確認できたため、
+  // 公式に非プロ扱いと確定した。「プロ昇格」という語幹だけで表記ゆれ(トーナメント/試合/
+  // 1DAYトーナメント等)をまとめて拾う。
 
 // 判定順は無関係(複数カテゴリに同時該当してもいずれか1つ返せば除外対象と分かる)。
 // ただし呼び出し側でカテゴリ別集計をする場合は先勝ちになる点に注意。
@@ -65,6 +71,7 @@ const CATEGORY_KEYWORDS: Record<NonProBoutCategory, string[]> = {
   not_pro_cage_gate: ["CAGE GATE", "CAGEGATE"],
   not_pro_pancrase_gate: ["パンクラスゲート", "パンクラス・ゲート", "パンクラス ゲート", "パンクラス　ゲート", "PANCRASEゲート"],
   not_pro_futureking: ["フューチャーキング"],
+  not_pro_promotion_tournament: ["プロ昇格"],
 };
 
 const CATEGORY_ORDER: NonProBoutCategory[] = [
@@ -76,6 +83,7 @@ const CATEGORY_ORDER: NonProBoutCategory[] = [
   "not_pro_cage_gate",
   "not_pro_pancrase_gate",
   "not_pro_futureking",
+  "not_pro_promotion_tournament",
 ];
 
 export interface NonProBoutFilterInput {
@@ -84,10 +92,15 @@ export interface NonProBoutFilterInput {
   noteRaw?: string | null;
   namedDivision?: string | null;
   eventName?: string | null;
+  // bout単位の見出し(headingText)より上位の<h3>等セクション見出し(例:「パンクラスゲート」
+  // 「プロ昇格トーナメント決勝戦」)。公式サイトによってはこのセクション見出しにしか
+  // 非プロ/アマチュアの表記が現れず、個々のboutのheadingTextには現れないことがある
+  // (牛久絢太郎調査、2026-08-05)。パンクラスのみ現状セットされる(build-pancrase-records.ts)。
+  sectionHeading?: string | null;
 }
 
 function toHaystack(bout: NonProBoutFilterInput): string {
-  return [bout.headingText, bout.strapTitle, bout.noteRaw, bout.namedDivision, bout.eventName]
+  return [bout.headingText, bout.strapTitle, bout.noteRaw, bout.namedDivision, bout.eventName, bout.sectionHeading]
     .filter((v): v is string => !!v)
     .join(" ");
 }
