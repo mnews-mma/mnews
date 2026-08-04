@@ -203,12 +203,20 @@ function resolveEventSlug(eventName: string, boutDate?: string): string | null {
     EVENT_BY_NORM_NAME.get(target) ?? EVENT_INDEX.filter((e) => matchesEventName(target, e));
   if (nameMatches.length === 0) return null;
 
-  // bout日付が無い場合のみ、従来どおり名前一致の先頭を採用する。
-  if (!boutDate) return nameMatches[0].slug;
   // 2部制・日跨ぎ表記のブレを吸収するため前後1日まで許容する。
-  const allowed = [boutDate, shiftDateStr(boutDate, 1), shiftDateStr(boutDate, -1)];
-  const sameDay = nameMatches.find((e) => allowed.includes(e.date));
-  return sameDay ? sameDay.slug : null;
+  const candidates = boutDate
+    ? nameMatches.filter((e) =>
+        [boutDate, shiftDateStr(boutDate, 1), shiftDateStr(boutDate, -1)].includes(e.date),
+      )
+    : nameMatches;
+
+  // 候補が1件に絞れない場合はリンクしない(fail-closed)。同じ日に紛らわしい
+  // 大会名が2つ以上ある(修斗の昼夜開催、DEEPとDEEP JEWELSの同日開催など)と
+  // 部分一致+日付だけでは特定できず、先頭を採ると誤リンクになる。このページは
+  // force-dynamicでリクエスト時にdata/を取りに行くため、ビルド時ゲートが見て
+  // いないデータでも同じ判断が要る。
+  if (candidates.length !== 1) return null;
+  return candidates[0].slug;
 }
 
 function matchesEventName(target: string, e: EventIndexEntry): boolean {

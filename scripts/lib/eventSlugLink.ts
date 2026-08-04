@@ -65,13 +65,20 @@ export function findEventNameMatches(eventName: string): EventIndexEntry[] {
   return EVENT_BY_NORM_NAME.get(target) ?? EVENT_INDEX.filter((e) => matchesEventName(target, e));
 }
 
-export function findEventSlug(eventName: string, boutDate?: string): string | null {
+/** 名前+日付の両方を通った候補。2件以上なら大会を特定できていない。 */
+export function findEventCandidates(eventName: string, boutDate?: string): EventIndexEntry[] {
   const nameMatches = findEventNameMatches(eventName);
-  if (nameMatches.length === 0) return null;
-  if (!boutDate) return nameMatches[0].slug;
+  if (nameMatches.length === 0 || !boutDate) return nameMatches;
   const allowed = [boutDate, shiftDateStr(boutDate, 1), shiftDateStr(boutDate, -1)];
-  const sameDay = nameMatches.find((e) => allowed.includes(e.date));
-  return sameDay ? sameDay.slug : null;
+  return nameMatches.filter((e) => allowed.includes(e.date));
+}
+
+export function findEventSlug(eventName: string, boutDate?: string): string | null {
+  const candidates = findEventCandidates(eventName, boutDate);
+  // 候補が2件以上残る場合(同日開催の紛らわしい大会名など)は先頭を採らず
+  // リンクしない。誤リンクを出すよりリンク無しのほうが害が小さい。
+  if (candidates.length !== 1) return null;
+  return candidates[0].slug;
 }
 
 /** 修正前の実装(素朴な双方向部分一致)。監査での旧新比較にのみ使う。 */
