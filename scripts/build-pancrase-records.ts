@@ -329,8 +329,14 @@ function parseBoutTable(tableHtml: string): RawBout | null {
   return { headingText, left, right, decisionRaw, weightLeftRaw, weightRightRaw };
 }
 
+// 指示書H(2026-08-04)で発見: メインイベント・一部特殊カード(NEO BLOOD等)は
+// `<table id="maincard">`のようにid属性を持つが、旧実装は`<table>`(属性なし)
+// のみにマッチしておりこれらのbout表を構造的に取りこぼしていた
+// (#428で3件、指示書Hの全418大会走査で新たに7件発見・計10件が該当)。
+// id属性の有無を問わずマッチするよう修正(bout表かどうかの判定基準
+// class="crdl"は従来通り)。
 function extractBoutTables(html: string): string[] {
-  const tables = [...html.matchAll(/<table>([\s\S]*?)<\/table>/g)].map((m) => m[0]);
+  const tables = [...html.matchAll(/<table(?: id="[^"]*")?>([\s\S]*?)<\/table>/g)].map((m) => m[0]);
   return tables.filter((t) => t.includes('class="crdl"'));
 }
 
