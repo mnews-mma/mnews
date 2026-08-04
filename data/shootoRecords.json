@@ -3,7 +3,7 @@
     "eventName": "VTJ 1st",
     "date": "2012-12-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=26",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -230,7 +230,7 @@
     "eventName": "VTJ 2nd",
     "date": "2013-06-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=25",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -538,7 +538,7 @@
     "eventName": "VTJ 3rd",
     "date": "2013-10-05",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=24",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -873,7 +873,7 @@
     "eventName": "VTJ 4th",
     "date": "2014-02-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=23",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -1235,7 +1235,7 @@
     "eventName": "VTJ 5th",
     "date": "2014-06-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=22",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -1462,7 +1462,7 @@
     "eventName": "VTJ 6th",
     "date": "2014-10-04",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=21",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -1824,7 +1824,7 @@
     "eventName": "VTJ in OSAKA",
     "date": "2015-06-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=18",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -2132,7 +2132,7 @@
     "eventName": "VTJ 7th",
     "date": "2015-09-13",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=16",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -2440,7 +2440,7 @@
     "eventName": "VTJ in OKINAWA",
     "date": "2015-10-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=17",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -2694,7 +2694,7 @@
     "eventName": "インフィニティリーグ2015フェザー級最終戦",
     "date": "2015-12-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=31",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -2975,7 +2975,7 @@
     "eventName": "BORDER -season7-「The 3rd」",
     "date": "2015-12-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=33",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -3256,7 +3256,7 @@
     "eventName": "プロフェッショナル修斗公式戦",
     "date": "2016-01-11",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=29",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -3456,7 +3456,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.20",
     "date": "2016-02-27",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=28",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -3710,7 +3710,7 @@
     "eventName": "プロフェッショナル修斗公式戦",
     "date": "2016-03-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=8",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -3886,7 +3886,7 @@
         "weightKg": null,
         "namedDivision": "フライ級 2回戦",
         "resultType": "decisive",
-        "winnerName": "北原 史寛",
+        "winnerName": "梶川 卓",
         "winnerSlug": null,
         "round": "2R",
         "time": null,
@@ -4018,7 +4018,7 @@
     "eventName": "BORDER -season8-「The 1st」",
     "date": "2016-03-27",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=4",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -4218,7 +4218,7 @@
     "eventName": "FIGHT & MOSH",
     "date": "2016-04-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=1",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -4472,7 +4472,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.21",
     "date": "2016-05-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=3",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -4780,7 +4780,7 @@
     "eventName": "VTJ in OSAKA",
     "date": "2016-06-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=5",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -5034,7 +5034,7 @@
     "eventName": "SHOOTO GIG WEST Vol.18",
     "date": "2016-07-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=6",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -5342,7 +5342,7 @@
     "eventName": "プロフェッショナル修斗公式戦",
     "date": "2016-07-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=7",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -5650,7 +5650,7 @@
     "eventName": "BORDER-season8-「The2nd」",
     "date": "2016-09-04",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=27",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -5904,7 +5904,7 @@
     "eventName": "VTJ 8th",
     "date": "2016-09-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=19",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -6212,7 +6212,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.22",
     "date": "2016-10-16",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=10",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -6574,7 +6574,7 @@
     "eventName": "SHOOTO GRANZ 2016",
     "date": "2016-11-06",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=35",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -6774,7 +6774,7 @@
     "eventName": "環太平洋ダブルチャンピオンシップ",
     "date": "2016-11-12",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=11",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -7001,7 +7001,7 @@
     "eventName": "BORDER-season8-「The3rd」",
     "date": "2016-12-11",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=37",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -7228,7 +7228,7 @@
     "eventName": "インフィニティリーグ2016優勝決定戦",
     "date": "2016-12-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=12",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -7509,7 +7509,7 @@
     "eventName": "後楽園ホール大会",
     "date": "2017-01-29",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=36",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -7709,7 +7709,7 @@
     "eventName": "THIS is SHOOTO Vol.1",
     "date": "2017-02-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=38",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -7936,7 +7936,7 @@
     "eventName": "BORDER-season9-「The1st」",
     "date": "2017-03-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=40",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -8163,7 +8163,7 @@
     "eventName": "後楽園ホール大会",
     "date": "2017-03-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=39",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -8417,7 +8417,7 @@
     "eventName": "舞浜アンフィシアター大会",
     "date": "2017-04-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=41",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -8698,7 +8698,7 @@
     "eventName": "後楽園ホール大会",
     "date": "2017-05-12",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=42",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -8979,7 +8979,7 @@
     "eventName": "プロフェッショナル修斗公式戦 in OSAKA",
     "date": "2017-06-25",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=43",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -9314,7 +9314,7 @@
     "eventName": "後楽園大会",
     "date": "2017-07-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=44",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -9568,7 +9568,7 @@
     "eventName": "RUN & FIGHT & MOSH Vol.1",
     "date": "2017-09-02",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=45",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 4,
@@ -9687,7 +9687,7 @@
     "eventName": "BORDER-season9-「The2nd」",
     "date": "2017-09-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=50",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -9887,7 +9887,7 @@
     "eventName": "プロフェッショナル修斗公式戦",
     "date": "2017-10-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=46",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -10249,7 +10249,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.23",
     "date": "2017-11-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=47",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -10557,7 +10557,7 @@
     "eventName": "インフィニティリーグ2017優勝決定戦",
     "date": "2017-12-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=48",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -10865,7 +10865,7 @@
     "eventName": "BORDER-season9-「The3rd」",
     "date": "2017-12-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=62",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -11092,7 +11092,7 @@
     "eventName": "プロフェッショナル修斗 2018開幕戦",
     "date": "2018-01-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=51",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -11319,7 +11319,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.24",
     "date": "2018-02-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=52",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -11600,7 +11600,7 @@
     "eventName": "プロフェッショナル修斗後楽園ホール大会",
     "date": "2018-03-25",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=54",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -11854,7 +11854,7 @@
     "eventName": "BORDER-season10-「The1st」",
     "date": "2018-03-25",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=63",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -12081,7 +12081,7 @@
     "eventName": "FORCE 09",
     "date": "2018-04-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=80",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 1,
@@ -12119,7 +12119,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.25",
     "date": "2018-04-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=55",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -12373,7 +12373,7 @@
     "eventName": "プロフェッショナル修斗川崎大会",
     "date": "2018-05-13",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=56",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -12654,7 +12654,7 @@
     "eventName": "プロフェッショナル修斗 in OSAKA 2018",
     "date": "2018-06-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=57",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -12935,7 +12935,7 @@
     "eventName": "闘裸男22 Direction of the Cage2",
     "date": "2018-07-01",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=150",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -13162,7 +13162,7 @@
     "eventName": "プロフェッショナル修斗後楽園ホール大会",
     "date": "2018-07-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=58",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -13416,7 +13416,7 @@
     "eventName": "This is SHOOTO Vol.2",
     "date": "2018-08-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=65",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -13616,7 +13616,7 @@
     "eventName": "プロフェッショナル修斗後楽園ホール大会",
     "date": "2018-09-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=59",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -13897,7 +13897,7 @@
     "eventName": "BORDER-season10-「The2nd」",
     "date": "2018-09-30",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=66",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [],
     "parseFailures": 0,
     "venue": "大阪市平野区／平野区民ホール",
@@ -13907,7 +13907,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.26",
     "date": "2018-10-26",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=64",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -14161,7 +14161,7 @@
     "eventName": "プロフェッショナル修斗後楽園ホール大会",
     "date": "2018-11-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=60",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -14442,7 +14442,7 @@
     "eventName": "プロフェッショナル修斗公式戦「越後風神祭り6」",
     "date": "2018-11-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=69",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -14615,7 +14615,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.1",
     "date": "2018-11-25",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=70",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -14683,7 +14683,7 @@
         "weightKg": null,
         "namedDivision": "バンタム級",
         "resultType": "decisive",
-        "winnerName": "玉城 優介",
+        "winnerName": "エダ 塾長 こうすけ",
         "winnerSlug": null,
         "round": null,
         "time": null,
@@ -14842,7 +14842,7 @@
     "eventName": "MOBSTYLES presents インフィニティリーグ2018優勝決定戦",
     "date": "2018-12-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=61",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -15123,7 +15123,7 @@
     "eventName": "BORDER-season11-「The1st」",
     "date": "2019-01-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=79",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -15191,7 +15191,7 @@
         "weightKg": null,
         "namedDivision": "バンタム級",
         "resultType": "decisive",
-        "winnerName": "ガッツ Takato",
+        "winnerName": "ハンセン 玲雄",
         "winnerSlug": null,
         "round": null,
         "time": null,
@@ -15377,7 +15377,7 @@
     "eventName": "SHOOTO 30th ANNIVERSARY TOUR 開幕戦",
     "date": "2019-01-27",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=68",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -15685,7 +15685,7 @@
     "eventName": "SHOOTO 30th ANNIVERSARY TOUR 第2戦 Supported by ONE Championship",
     "date": "2019-03-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=71",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 17,
@@ -16128,7 +16128,7 @@
     "eventName": "FORCE 11",
     "date": "2019-04-07",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=149",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -16355,7 +16355,7 @@
     "eventName": "SHOOTO 30th ANNIVERSARY TOUR 30周年記念大会 第1部 Supported by ONE Championship",
     "date": "2019-05-06",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=72",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -16609,7 +16609,7 @@
     "eventName": "SHOOTO 30th ANNIVERSARY TOUR 30周年記念大会 第2部 Supported by ONE Championship",
     "date": "2019-05-06",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=81",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -16809,7 +16809,7 @@
     "eventName": "BORDER-season11-「The2nd」",
     "date": "2019-05-12",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=83",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -17036,7 +17036,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.27 Supported by ONE Championship",
     "date": "2019-06-08",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=73",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -17344,7 +17344,7 @@
     "eventName": "SHOOTO 30th ANNIVERSARY TOUR 第5戦 Supported by ONE Championship",
     "date": "2019-06-30",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=82",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -17679,7 +17679,7 @@
     "eventName": "SHOOTO 30th ANNIVERSARY TOUR 第6戦 Supported by ONE Championship",
     "date": "2019-07-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=74",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -18041,7 +18041,7 @@
     "eventName": "SHOOTO 30th ANNIVERSARY TOUR 第7戦 Supported by ONE Championship",
     "date": "2019-09-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=75",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -18295,7 +18295,7 @@
     "eventName": "BORDER-season11-「The3rd」",
     "date": "2019-09-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=84",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -18495,7 +18495,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.28 Supported by ONE Championship",
     "date": "2019-10-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=76",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -18776,7 +18776,7 @@
     "eventName": "沖縄大会 THE SHOOTO OKINAWA vol.２",
     "date": "2019-11-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=85",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -19111,7 +19111,7 @@
     "eventName": "闘裸男25",
     "date": "2019-11-10",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=104",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 1,
@@ -19149,7 +19149,7 @@
     "eventName": "SHOOTO 30th ANNIVERSARY TOUR FINAL Supported by ONE Championship",
     "date": "2019-11-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=77",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -19484,7 +19484,7 @@
     "eventName": "越後風神祭り７",
     "date": "2019-11-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=87",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -19630,7 +19630,7 @@
     "eventName": "プロフェッショナル修斗公式戦香川大会「FORCE 12」",
     "date": "2019-12-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=97",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -19857,7 +19857,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.29 Supported by ONE Championship",
     "date": "2019-12-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=78",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -20192,7 +20192,7 @@
     "eventName": "BORDER-season12-「The1st」",
     "date": "2020-01-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=98",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -20500,7 +20500,7 @@
     "eventName": "PROFESSONAL SHOOTO 2020 Supported by ONE Championship",
     "date": "2020-01-26",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=86",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -20754,7 +20754,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2020 Vol.2 Supported by ONE Championship",
     "date": "2020-02-16",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=89",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -20954,7 +20954,7 @@
     "eventName": "MOBSTYLES 20th ANNIVERSARY TOUR FIGHT＆MOSH Vol.2 Supported by ONE Championship",
     "date": "2020-03-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=99",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -21127,7 +21127,7 @@
     "eventName": "【中止】PROFESSIONAL SHOOTO 2020 Supported by ONE Championship",
     "date": "2020-03-29",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=90",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -21327,7 +21327,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2020 Vol.3 ABEMAテレビマッチ Supported by ONE Championship",
     "date": "2020-05-31",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=92",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -21554,7 +21554,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA Supported by ONE Championship",
     "date": "2020-07-12",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=100",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -21781,7 +21781,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2020 Vol.5 Supported by ONE Championship",
     "date": "2020-08-01",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=93",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -21927,7 +21927,7 @@
     "eventName": "ROAD to ONE 3rd TOKYO FIGHT NIGHT",
     "date": "2020-09-10",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=101",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [],
     "parseFailures": 0,
     "venue": "東京/渋谷TSUTAYA O-EAST ※JR山手線「渋谷」駅より徒歩7分 ※京王井の頭線「渋谷」駅より徒歩3分",
@@ -21937,7 +21937,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2020 Vol.6 Supported by ONE Championship  第1部",
     "date": "2020-09-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=94",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -22083,7 +22083,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2020 Vol.6 Supported by ONE Championship 第2部",
     "date": "2020-09-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=102",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -22202,7 +22202,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2020 Vol.7 Supported by ONE Championship",
     "date": "2020-11-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=96",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -22402,7 +22402,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.３",
     "date": "2020-11-29",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=105",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -22602,7 +22602,7 @@
     "eventName": "闘裸男×FORCE",
     "date": "2020-12-13",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=106",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -22775,7 +22775,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2020 Vol.8 最終戦 in OSAKA 2部 Supported by ONE Championship",
     "date": "2020-12-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=103",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -22921,7 +22921,7 @@
     "eventName": "TTF CHALLENGE 09",
     "date": "2020-12-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=115",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 3,
@@ -23013,7 +23013,7 @@
     "eventName": "《第1部》PROFESSIONAL SHOOTO 2021開幕戦 Supported by ONE Championship",
     "date": "2021-01-31",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=107",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -23240,7 +23240,7 @@
     "eventName": "《第2部》PROFESSIONAL SHOOTO 2021開幕戦 Supported by ONE Championship",
     "date": "2021-01-31",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=108",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -23386,7 +23386,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2021 Vol.2 Supported by ONE Championship",
     "date": "2021-03-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=109",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -23586,7 +23586,7 @@
     "eventName": "沖縄大会【THE SHOOTO OKINAWA vol.４】",
     "date": "2021-04-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=117",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -23813,7 +23813,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2021 Vol.3 Supported by ONE Championship",
     "date": "2021-05-16",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=110",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -24094,7 +24094,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.30 Supported by ONEchampionship",
     "date": "2021-06-26",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=118",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -24267,7 +24267,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA Supported by ONE Championship 第1部",
     "date": "2021-07-04",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=111",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -24494,7 +24494,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA Supported by ONE Championship 第2部",
     "date": "2021-07-04",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=116",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -24589,7 +24589,7 @@
         "weightKg": null,
         "namedDivision": "フェザー級",
         "resultType": "decisive",
-        "winnerName": "神武羅☆ ヒカル",
+        "winnerName": "ムテカツ",
         "winnerSlug": null,
         "round": null,
         "time": null,
@@ -24640,7 +24640,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2021 Vol.5 Supported by ONE Championship",
     "date": "2021-07-25",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=112",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -24840,7 +24840,7 @@
     "eventName": "『越後風神祭り８』",
     "date": "2021-08-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=120",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -24959,7 +24959,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2021 Vol.6 Supported by ONE Championship",
     "date": "2021-09-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=113",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -25186,7 +25186,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.31 Supported by ONE Championship",
     "date": "2021-10-02",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=119",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -25386,7 +25386,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2021 Vol.7 Supported by ONE Championship",
     "date": "2021-11-06",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=121",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -25559,7 +25559,7 @@
     "eventName": "VTJ 2021",
     "date": "2021-11-06",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=122",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -25708,8 +25708,8 @@
         "weightKg": null,
         "namedDivision": null,
         "resultType": "decisive",
-        "winnerName": "宇佐美 正 パトリック",
-        "winnerSlug": "usami-sho-patrick",
+        "winnerName": "野村 駿太",
+        "winnerSlug": "nomura-shunta",
         "round": null,
         "time": null,
         "methodRaw": "判定 0-3",
@@ -25732,7 +25732,7 @@
     "eventName": "FORCE GIG 01",
     "date": "2021-11-07",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=124",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -25905,7 +25905,7 @@
     "eventName": "FORCE 14",
     "date": "2021-11-07",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=125",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -26051,7 +26051,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.５",
     "date": "2021-11-14",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=126",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -26278,7 +26278,7 @@
     "eventName": "闘裸男26",
     "date": "2021-12-05",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=127",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -26424,7 +26424,7 @@
     "eventName": "闘裸男GIG03",
     "date": "2021-12-05",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=128",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -26570,7 +26570,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA Supported by ONE Championship",
     "date": "2021-12-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=123",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -26770,7 +26770,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2022 開幕戦",
     "date": "2022-01-16",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=129",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -27051,7 +27051,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2022 Vol.2",
     "date": "2022-03-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=130",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -27332,7 +27332,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.32",
     "date": "2022-04-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=135",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -27694,7 +27694,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.6",
     "date": "2022-04-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=139",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -27894,7 +27894,7 @@
     "eventName": "FORCE GIG 02",
     "date": "2022-04-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=140",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -28040,7 +28040,7 @@
     "eventName": "FORCE 15",
     "date": "2022-04-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=142",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -28213,7 +28213,7 @@
     "eventName": "TORAO27",
     "date": "2022-05-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=143",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -28386,7 +28386,7 @@
     "eventName": "TORAO GIG04",
     "date": "2022-05-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=144",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -28532,7 +28532,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2022 Vol.3",
     "date": "2022-05-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=131",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -28786,7 +28786,7 @@
     "eventName": "北海道大会",
     "date": "2022-06-05",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=141",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -29094,7 +29094,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
     "date": "2022-07-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=136",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 28,
@@ -29456,7 +29456,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2022 Vol.5",
     "date": "2022-07-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=132",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -29710,7 +29710,7 @@
     "eventName": "越後風神祭り9",
     "date": "2022-08-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=147",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -29910,7 +29910,7 @@
     "eventName": "FORCE 16",
     "date": "2022-09-11",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=146",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -30191,7 +30191,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2022 Vol.6",
     "date": "2022-09-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=133",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -30472,7 +30472,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.33",
     "date": "2022-10-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=138",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -30834,7 +30834,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.7",
     "date": "2022-11-06",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=148",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -31088,7 +31088,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2022 Vol.7",
     "date": "2022-11-27",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=134",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -31369,7 +31369,7 @@
     "eventName": "TORAO28",
     "date": "2022-12-04",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=172",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -31596,7 +31596,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA",
     "date": "2022-12-11",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=145",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 18,
@@ -31904,7 +31904,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2023 開幕戦",
     "date": "2023-01-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=151",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -32185,7 +32185,7 @@
     "eventName": "BORDER2023「The1st」",
     "date": "2023-03-05",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=154",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -32385,7 +32385,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2023 Vol.2",
     "date": "2023-03-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=153",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -32612,7 +32612,7 @@
     "eventName": "越後風神祭り10",
     "date": "2023-03-26",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=174",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -32812,7 +32812,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.34",
     "date": "2023-04-09",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=157",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -33039,7 +33039,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.8",
     "date": "2023-04-16",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=156",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -33320,7 +33320,7 @@
     "eventName": "FORCE 17",
     "date": "2023-04-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=158",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -33601,7 +33601,7 @@
     "eventName": "Colors（カラーズ）",
     "date": "2023-05-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=159",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -33828,7 +33828,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2023 Vol.3",
     "date": "2023-05-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=173",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -34109,7 +34109,7 @@
     "eventName": "TORAO29",
     "date": "2023-05-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=160",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -34417,7 +34417,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
     "date": "2023-06-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=161",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 21,
@@ -34671,7 +34671,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2023 Vol.5",
     "date": "2023-07-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=162",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -35006,7 +35006,7 @@
     "eventName": "広島大会「TORAO30」",
     "date": "2023-08-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=163",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -35179,7 +35179,7 @@
     "eventName": "広島大会「TORAO | colors」",
     "date": "2023-08-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=175",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -35298,7 +35298,7 @@
     "eventName": "越後風神祭り11",
     "date": "2023-09-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=164",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -35579,7 +35579,7 @@
     "eventName": "FORCE 18",
     "date": "2023-09-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=165",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -35806,7 +35806,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2023 Vol.6",
     "date": "2023-09-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=166",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -36087,7 +36087,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.35",
     "date": "2023-10-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=167",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -36395,7 +36395,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.9",
     "date": "2023-11-12",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=168",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -36757,7 +36757,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2023 Vol.7",
     "date": "2023-11-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=169",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -37065,7 +37065,7 @@
     "eventName": "FIGHT&MOSH",
     "date": "2023-12-02",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=171",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -37265,7 +37265,7 @@
     "eventName": "COLORS Produce by SHOOTO Vol.2 “FIGHT&MOSH”",
     "date": "2023-12-02",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=176",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -37465,7 +37465,7 @@
     "eventName": "山口大会「TORAO31」",
     "date": "2023-12-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=170",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -37800,7 +37800,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2023 Vol.9 in OSAKA",
     "date": "2023-12-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=177",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -37919,7 +37919,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2024 Vol.1 - 2部",
     "date": "2024-01-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=178",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -38119,7 +38119,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2024 Vol.1 - 1部",
     "date": "2024-01-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=199",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -38400,7 +38400,7 @@
     "eventName": "修斗Live!Tokyo",
     "date": "2024-03-02",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=200",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -38519,7 +38519,7 @@
     "eventName": "東京・後楽園ホール",
     "date": "2024-03-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=179",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -38746,7 +38746,7 @@
     "eventName": "FORCE 19",
     "date": "2024-03-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=180",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -38946,7 +38946,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.36",
     "date": "2024-04-07",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=181",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -39200,7 +39200,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.10",
     "date": "2024-04-14",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=182",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -39454,7 +39454,7 @@
     "eventName": "新潟・新潟LOT",
     "date": "2024-04-29",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=183",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -39735,7 +39735,7 @@
     "eventName": "【第1部】PROFESSIONAL SHOOTO 2024 Vol.4",
     "date": "2024-05-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=184",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -39935,7 +39935,7 @@
     "eventName": "【第2部】修斗×YFU 7対7 日中対抗戦",
     "date": "2024-05-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=204",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -40135,7 +40135,7 @@
     "eventName": "TORAO32",
     "date": "2024-05-26",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=185",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -40524,7 +40524,7 @@
     "eventName": "TORAO33",
     "date": "2024-07-14",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=207",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -40724,7 +40724,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2024 Vol.5",
     "date": "2024-07-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=188",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -41032,7 +41032,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2024 Vol.6 in OSAKA 第1部",
     "date": "2024-07-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=202",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -41151,7 +41151,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2024 Vol.6 in OSAKA 第2部",
     "date": "2024-07-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=206",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -41270,7 +41270,7 @@
     "eventName": "COLORS Produce by SHOOTO Vol.3",
     "date": "2024-08-03",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=205",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -41470,7 +41470,7 @@
     "eventName": "越後風神祭り13",
     "date": "2024-09-01",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=211",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -41670,7 +41670,7 @@
     "eventName": "香川・高松シンボルタワー展示場",
     "date": "2024-09-08",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=191",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -41846,7 +41846,7 @@
         "weightKg": null,
         "namedDivision": "ストロー級",
         "resultType": "decisive",
-        "winnerName": "高橋 佑太",
+        "winnerName": "シン ・ ケンザン",
         "winnerSlug": null,
         "round": null,
         "time": null,
@@ -41870,7 +41870,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2024 Vol.7",
     "date": "2024-09-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=192",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -42178,7 +42178,7 @@
     "eventName": "BORDER2024「The1st」",
     "date": "2024-09-29",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=213",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -42405,7 +42405,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.37",
     "date": "2024-10-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=193",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -42713,7 +42713,7 @@
     "eventName": "沖縄・コザミュージックタウン音市場",
     "date": "2024-11-10",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=194",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -42994,7 +42994,7 @@
     "eventName": "山口・KDDI維新ホール",
     "date": "2024-11-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=215",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -43329,7 +43329,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2024 Vol.8",
     "date": "2024-11-30",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=212",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -43502,7 +43502,7 @@
     "eventName": "COLORS Produce by SHOOTO Vol.4",
     "date": "2024-12-15",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=203",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -43783,7 +43783,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA",
     "date": "2024-12-29",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=214",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -44037,7 +44037,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2025 開幕戦",
     "date": "2025-01-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=216",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -44426,7 +44426,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2025 Vol.2",
     "date": "2025-03-16",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=217",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -44680,7 +44680,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.38",
     "date": "2025-03-23",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=218",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -44988,7 +44988,7 @@
     "eventName": "BORDER2025「The1st」",
     "date": "2025-04-13",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=230",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -45242,7 +45242,7 @@
     "eventName": "THE SHOOTO OKINAWA vol.12",
     "date": "2025-04-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=233",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -45496,7 +45496,7 @@
     "eventName": "越後風神祭り14",
     "date": "2025-04-27",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=234",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -45642,7 +45642,7 @@
     "eventName": "TORAO35",
     "date": "2025-05-11",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=235",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -46031,7 +46031,7 @@
     "eventName": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.3",
     "date": "2025-05-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=219",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -46258,7 +46258,7 @@
     "eventName": "【第2部】PROFESSIONAL SHOOTO 2025 Vol.4",
     "date": "2025-05-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=229",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 6,
@@ -46431,7 +46431,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA",
     "date": "2025-05-25",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=228",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -46604,7 +46604,7 @@
     "eventName": "COLORS Produce by SHOOTO Vol.5",
     "date": "2025-06-14",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=220",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -46750,7 +46750,7 @@
     "eventName": "高松大会",
     "date": "2025-06-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=236",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -46977,7 +46977,7 @@
     "eventName": "広島大会",
     "date": "2025-07-13",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=237",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -47258,7 +47258,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2025 Vol.6",
     "date": "2025-07-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=221",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -47539,7 +47539,7 @@
     "eventName": "越後風神祭り15",
     "date": "2025-08-31",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=240",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -47847,7 +47847,7 @@
     "eventName": "Lemino修斗１",
     "date": "2025-09-02",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=242",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -48074,7 +48074,7 @@
     "eventName": "BORDER2025「The2nd」",
     "date": "2025-09-07",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=241",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -48328,7 +48328,7 @@
     "eventName": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7",
     "date": "2025-09-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=222",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -48555,7 +48555,7 @@
     "eventName": "【第2部】PROFESSIONAL SHOOTO 2025 Vol.8",
     "date": "2025-09-21",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=239",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -48755,7 +48755,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.39",
     "date": "2025-10-11",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=223",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -49036,7 +49036,7 @@
     "eventName": "Lemino修斗.2",
     "date": "2025-10-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=243",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -49317,7 +49317,7 @@
     "eventName": "FORCE 22",
     "date": "2025-10-26",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=244",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -49517,7 +49517,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2025 Vol.9",
     "date": "2025-11-16",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=224",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -49798,7 +49798,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
     "date": "2025-11-22",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=238",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -50052,7 +50052,7 @@
     "eventName": "株式会社大熊警備隊presentsプロフェッショナル修斗公式戦山口大会「TORAO37」",
     "date": "2025-12-07",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=248",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -50333,7 +50333,7 @@
     "eventName": "【第1部】COLORS Produce by SHOOTO Vol.6",
     "date": "2026-01-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=247",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -50560,7 +50560,7 @@
     "eventName": "【第2部】PROFESSIONAL SHOOTO 2026 Vol.1",
     "date": "2026-01-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=249",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -50895,7 +50895,7 @@
     "eventName": "Lemino修斗.3",
     "date": "2026-02-18",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=260",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -51068,7 +51068,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.40",
     "date": "2026-02-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=250",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -51349,7 +51349,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2026 Vol.2",
     "date": "2026-03-29",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=251",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -51657,7 +51657,7 @@
     "eventName": "Lemino修斗.4",
     "date": "2026-03-30",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=262",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -51884,7 +51884,7 @@
     "eventName": "越後風神祭り16【第1部】",
     "date": "2026-04-05",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=263",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 3,
@@ -51976,7 +51976,7 @@
     "eventName": "越後風神祭り16【第2部】",
     "date": "2026-04-05",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=282",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -52203,7 +52203,7 @@
     "eventName": "SHOOTO GIG TOKYO Vol.41",
     "date": "2026-04-11",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=252",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -52376,7 +52376,7 @@
     "eventName": "Lemino修斗.5",
     "date": "2026-04-19",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=264",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -52657,7 +52657,7 @@
     "eventName": "BORDER2026「The1st」",
     "date": "2026-04-26",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=265",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -52884,7 +52884,7 @@
     "eventName": "【第1部】PROFESSIONAL SHOOTO 2026 Vol.3",
     "date": "2026-05-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=253",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -53111,7 +53111,7 @@
     "eventName": "プロフェッショナル修斗公式戦福岡大会TORAO38",
     "date": "2026-05-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=266",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -53446,7 +53446,7 @@
     "eventName": "【第2部】PROFESSIONAL SHOOTO 2026 Vol.3",
     "date": "2026-05-17",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=283",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -53700,7 +53700,7 @@
     "eventName": "プロフェッショナル修斗公式戦『FORCE 23』",
     "date": "2026-05-24",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=267",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -53900,7 +53900,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2026 Vol.4 in OSAKA",
     "date": "2026-05-31",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=281",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -54100,7 +54100,7 @@
     "eventName": "プロフェッショナル修斗公式戦後楽園大会　『Lemino修斗.6』",
     "date": "2026-06-01",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=284",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -54327,7 +54327,7 @@
     "eventName": "プロフェッショナル修斗公式戦福岡大会「Lemino修斗TORAO」",
     "date": "2026-06-28",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=299",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -54608,7 +54608,7 @@
     "eventName": "プロフェッショナル修斗公式戦広島大会『TORAO39』",
     "date": "2026-07-12",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=268",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -54808,7 +54808,7 @@
     "eventName": "プロフェッショナル修斗公式戦後楽園大会　『Lemino修斗.7』",
     "date": "2026-07-13",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=285",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -55089,7 +55089,7 @@
     "eventName": "PROFESSIONAL SHOOTO 2026 Vol.5",
     "date": "2026-07-20",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=254",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -55343,7 +55343,7 @@
     "eventName": "プロフェッショナル修斗公式戦『Lemino修斗~POUND OUT~』",
     "date": "2026-08-02",
     "sourceUrl": "https://www.shooto-mma.com/result/?id=286",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
