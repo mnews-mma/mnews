@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
-import { EVENT_RESULTS, getEventResult, buildEventSummary } from "@/lib/eventResults";
+import { EVENT_RESULTS, getEventResult, buildEventSummary, isListedEvent } from "@/lib/eventResults";
 import { SOURCES } from "@/lib/sources";
 import { pageMetadata, isoDate } from "@/lib/seo";
 import { findFighterSlugByName } from "@/lib/fighters";
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
   // unlisted: true(薄い内容のため/results一覧・sitemapから除外)は個別ページを
   // 200で残しつつnoindex,followにする(選手ページ等からの内部リンクは切らない)
-  if (event.unlisted) meta.robots = { index: false, follow: true };
+  if (!isListedEvent(event)) meta.robots = { index: false, follow: true };
   return meta;
 }
 

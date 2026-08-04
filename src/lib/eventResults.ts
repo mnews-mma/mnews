@@ -34,6 +34,23 @@ export interface EventResult {
   fights: FightResult[];
 }
 
+/**
+ * 大会を「掲載中」として扱ってよいか(unlisted判定の唯一の実装)。
+ *
+ * unlisted: true の大会は /results 一覧・sitemap から除外し、個別ページは
+ * 200のまま noindex,follow で残す。同じ理屈で、選手ページの対戦テーブルからの
+ * 内部リンクも張らない — 一覧・sitemap・noindexまで揃えたのにリンクだけ生きて
+ * いるのは中途半端で、非公開の意図と食い違うため(個別ページ自体は残るので
+ * 直リンクでは引き続き閲覧でき、情報は失われない)。
+ *
+ * この判定は必ずここを呼ぶこと。呼び出し側で `!e.unlisted` を書き直さない
+ * (#286 でランキングのリンク可否判定を getVisibleFighters() に一本化したのと
+ * 同じ方針。条件が増えたときに一部の箇所だけ取り残されるのを防ぐ)。
+ */
+export function isListedEvent(event: Pick<EventResult, "unlisted">): boolean {
+  return !event.unlisted;
+}
+
 /** メインイベントから自動生成したサマリー文。手動の summary フィールドで上書き可能 */
 export function buildEventSummary(event: EventResult): string {
   if (event.summary) return event.summary;
@@ -3889,3 +3906,10 @@ EVENT_RESULTS.push(
 export function getEventResult(slug: string): EventResult | undefined {
   return EVENT_RESULTS.find((e) => e.slug === slug);
 }
+
+/**
+ * 掲載中(unlistedでない)の大会のみ。/results一覧・sitemap・選手ページの
+ * 内部リンク解決はこれを使う。判定は isListedEvent() に集約している。
+ * (EVENT_RESULTS の初期化後に評価する必要があるためファイル末尾に置く)
+ */
+export const LISTED_EVENT_RESULTS: EventResult[] = EVENT_RESULTS.filter(isListedEvent);

@@ -1,10 +1,11 @@
 # /fighters対戦テーブル → /results 誤リンク監査
 
 - 検査対象bout: 4849件(大会名ユニーク 2664件)
-- リンクが張られるbout: 旧 697件 → 新 658件
-- 判定が変わったbout: 39件
+- リンクが張られるbout: 旧 697件 → 新 577件
+- 判定が変わったbout: 120件
   - **A. 誤リンクの除去: 38件**(別大会を指していた)
   - **B. 巻き添えで落ちたリンク: 1件**(大会名は正しく一致。上流データの試合日が誤っている)
+  - **C. unlisted大会へのリンク除去: 81件**(方針としてリンクを張らない)
 
 ## A. 誤リンクの除去
 
@@ -87,24 +88,37 @@
 |---|---|---|---|
 | uchida-takeru | 2026-02-28 | Lemino修斗.3 | lemino-shooto-3 (2026-02-18 Lemino修斗.3) |
 
-## 参考: unlisted(非公開)大会へのリンク
+## C. unlisted(非公開)大会へのリンク除去
 
-`unlisted: true` の大会は /results 一覧・sitemapから除外され個別ページもnoindexだが、
-選手ページの対戦テーブルからは現状リンクが張られている(残件2として別PRで除去予定)。
+`unlisted: true` の大会は /results 一覧・sitemapから除外され個別ページもnoindexである。
+選手ページの対戦テーブルからも同様にリンクを張らない(個別ページ自体は200のまま残るため、
+直リンクでは引き続き閲覧できる=情報は失われない)。判定は eventResults.ts の
+`isListedEvent()` に集約し、呼び出し側で条件式を書き直さない。
 
-| 大会 | 開催日 | リンク元bout数 |
-|---|---|---|
-| rizin-2023-0924-nakajima-okada (RIZIN.44) | 2023-09-24 | 11 |
-| rizin-35 (RIZIN.35) | 2022-04-17 | 13 |
-| rizin-46 (RIZIN.46 【日韓対抗戦】) | 2024-04-29 | 12 |
-| rizin-48 (RIZIN.48) | 2024-09-29 | 20 |
-| rizin-49 (RIZIN.49) | 2024-12-31 | 25 |
+| リンクを外した大会 | 開催日 | 表示される大会名 | bout数 |
+|---|---|---|---|
+| rizin-2023-0924-nakajima-okada (RIZIN.44) | 2023-09-24 | RIZIN.44 | 11 |
+| rizin-35 (RIZIN.35) | 2022-04-17 | RIZIN.35 【RIZINフェザー級タイトルマッチ】 | 2 |
+| rizin-35 (RIZIN.35) | 2022-04-17 | RIZIN.35 【RIZINライト級タイトルマッチ】 | 2 |
+| rizin-35 (RIZIN.35) | 2022-04-17 | RIZIN.35 【RIZIN女子スーパーアトム級タイトルマッチ】 | 1 |
+| rizin-35 (RIZIN.35) | 2022-04-17 | RIZIN.35 | 8 |
+| rizin-46 (RIZIN.46 【日韓対抗戦】) | 2024-04-29 | RIZIN.46 【日韓対抗戦】 | 5 |
+| rizin-46 (RIZIN.46 【日韓対抗戦】) | 2024-04-29 | RIZIN.46 | 7 |
+| rizin-48 (RIZIN.48) | 2024-09-29 | RIZIN.48 【RIZINバンタム級王座決定戦】 | 2 |
+| rizin-48 (RIZIN.48) | 2024-09-29 | RIZIN.48 【RIZINライト級タイトルマッチ】 | 2 |
+| rizin-48 (RIZIN.48) | 2024-09-29 | RIZIN.48 | 16 |
+| rizin-49 (RIZIN.49) | 2024-12-31 | RIZIN.49 【RIZINフェザー級タイトルマッチ】 | 2 |
+| rizin-49 (RIZIN.49) | 2024-12-31 | RIZIN.49 【RIZINフライ級タイトルマッチ】 | 2 |
+| rizin-49 (RIZIN.49) | 2024-12-31 | RIZIN.49 【RIZINライト級タイトルマッチ】 | 2 |
+| rizin-49 (RIZIN.49) | 2024-12-31 | RIZIN.49 | 19 |
 
 合計 81bout
 
+リンクが残っているunlisted大会: **0bout**(0でなければゲートが落ちる)
+
 ## 参考: 部分一致でリンクしている大会名(alias表の中身)
 
-正規化後に完全一致しないリンク: 221bout / 大会名85件。
+正規化後に完全一致しないリンク: 199bout / 大会名76件。
 件数が多く(85件)、新規大会ごとに【階級タイトルマッチ】等の派生表記が増え続けるため、
 部分一致そのものを捨ててalias表だけで運用することはできない。代わりに
 `scripts/event-slug-alias-baseline.json` にレビュー済みの対応表として固定し、
@@ -117,7 +131,6 @@
 | RIZIN LANDMARK 11 | rizin-landmark-11 | 16 |
 | 超RIZIN.4 真夏の喧嘩祭り 【RIZINフライ級ワールドグランプリ1回戦】 | super-rizin-4 | 10 |
 | 【第2部】PROFESSIONAL SHOOTO 2026 Vol.1 | shooto-2026-vol1 | 8 |
-| RIZIN.46 | rizin-46 | 7 |
 | 【第1部】PROFESSIONAL SHOOTO 2025 Vol.3 | shooto-2025-vol3 | 6 |
 | DEEP 124 IMPACT 【DEEPフェザー級グランプリ1回戦】 | deep-124-impact | 5 |
 | 【第2部】PROFESSIONAL SHOOTO 2025 Vol.8 | shooto-2025-vol8 | 5 |
@@ -127,16 +140,12 @@
 | RIZIN男祭り 【RIZINヘビー級WORLDグランプリ1回戦】 | rizin-otoko-matsuri-2025 | 3 |
 | DEEP 125 IMPACT 【DEEPフェザー級グランプリ準決勝】 | deep-125-impact | 3 |
 | プロフェッショナル修斗公式戦後楽園大会　『Lemino修斗.6』 | lemino-shooto-6 | 3 |
-| RIZIN.49 【RIZINフライ級タイトルマッチ】 | rizin-49 | 2 |
 | RIZIN 師走の超強者祭り 【RIZINフェザー級タイトルマッチ】 | rizin-shiwasu-2025 | 2 |
 | RIZIN男祭り 【RIZINフェザー級タイトルマッチ】 | rizin-otoko-matsuri-2025 | 2 |
-| RIZIN.49 【RIZINフェザー級タイトルマッチ】 | rizin-49 | 2 |
 | RIZIN 師走の超強者祭り 【RIZINバンタム級タイトルマッチ】 | rizin-shiwasu-2025 | 2 |
 | 超RIZIN.4 真夏の喧嘩祭り 【RIZINバンタム級タイトルマッチ】 | super-rizin-4 | 2 |
 | RIZIN.50 【RIZINバンタム級タイトルマッチ】 | rizin-50 | 2 |
-| RIZIN.48 【RIZINバンタム級王座決定戦】 | rizin-48 | 2 |
 | RIZIN 師走の超強者祭り 【RIZIN女子スーパーアトム級タイトルマッチ】 | rizin-shiwasu-2025 | 2 |
-| RIZIN.35 【RIZINフェザー級タイトルマッチ】 | rizin-35 | 2 |
 | RIZIN LANDMARK 14 【RIZINフライ級タイトルマッチ】 | rizin-landmark-14 | 2 |
 | RIZIN 師走の超強者祭り 【RIZINフライ級王座決定戦/RIZINフライ級ワールドグランプリ決勝】 | rizin-shiwasu-2025 | 2 |
 | DEEP 125 IMPACT 【DEEPバンタム級タイトルマッチ】 | deep-125-impact | 2 |
@@ -145,9 +154,6 @@
 | RIZIN.51 【RIZINフライ級ワールドグランプリ・リザーブマッチ】 | rizin-51 | 2 |
 | RIZIN.51 【RIZINライト級タイトルマッチ】 | rizin-51 | 2 |
 | RIZIN 師走の超強者祭り 【RIZINライト級タイトルマッチ】 | rizin-shiwasu-2025 | 2 |
-| RIZIN.49 【RIZINライト級タイトルマッチ】 | rizin-49 | 2 |
-| RIZIN.48 【RIZINライト級タイトルマッチ】 | rizin-48 | 2 |
-| RIZIN.35 【RIZINライト級タイトルマッチ】 | rizin-35 | 2 |
 | RIZIN LANDMARK 13 【RIZINフェザー級タイトルマッチ】 | rizin-landmark-13 | 2 |
 | 超RIZIN.4 真夏の喧嘩祭り 【RIZINヘビー級WORLDグランプリ準決勝】 | super-rizin-4 | 2 |
 | DEEP 131 IMPACT 【DEEPフェザー級暫定王者決定戦】 | deep-131-impact | 2 |
@@ -165,7 +171,6 @@
 | PANCRASE 355 【フライ級キング・オブ・パンクラス王者決定戦】 | pancrase-355 | 2 |
 | プロフェッショナル修斗公式戦福岡大会「Lemino修斗TORAO」 | shooto-torao-2026 | 2 |
 | 【第2部】PROFESSIONAL SHOOTO 2025 Vol.4 | shooto-2025-vol4 | 2 |
-| RIZIN.35 【RIZIN女子スーパーアトム級タイトルマッチ】 | rizin-35 | 1 |
 | DEEP 126 IMPACT 【DEEPフェザー級グランプリ決勝】 | deep-126-impact | 1 |
 | DEEP 126 IMPACT 【DEEPメガトン級王座決定戦】 | deep-126-impact | 1 |
 | DEEP 131 IMPACT 【DEEPストロー級タイトルマッチ】 | deep-131-impact | 1 |
