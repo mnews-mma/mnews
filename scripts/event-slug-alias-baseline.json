@@ -1,0 +1,344 @@
+{
+  "aliases": [
+    {
+      "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.3",
+      "slug": "shooto-2025-vol3"
+    },
+    {
+      "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.3【インフィニティリーグ2025】",
+      "slug": "shooto-2025-vol3"
+    },
+    {
+      "event": "【第1部】PROFESSIONAL SHOOTO 2025 Vol.7",
+      "slug": "shooto-2025-vol7"
+    },
+    {
+      "event": "【第1部】PROFESSIONAL SHOOTO 2026 Vol.3",
+      "slug": "shooto-2026-vol3"
+    },
+    {
+      "event": "【第2部】PROFESSIONAL SHOOTO 2025 Vol.4",
+      "slug": "shooto-2025-vol4"
+    },
+    {
+      "event": "【第2部】PROFESSIONAL SHOOTO 2025 Vol.8",
+      "slug": "shooto-2025-vol8"
+    },
+    {
+      "event": "【第2部】PROFESSIONAL SHOOTO 2026 Vol.1",
+      "slug": "shooto-2026-vol1"
+    },
+    {
+      "event": "【第2部】PROFESSIONAL SHOOTO 2026 Vol.3",
+      "slug": "shooto-2026-vol3"
+    },
+    {
+      "event": "DEEP 124 IMPACT 【DEEPフェザー級グランプリ1回戦】",
+      "slug": "deep-124-impact"
+    },
+    {
+      "event": "DEEP 125 IMPACT 【DEEPウェルター級タイトルマッチ】",
+      "slug": "deep-125-impact"
+    },
+    {
+      "event": "DEEP 125 IMPACT 【DEEPバンタム級タイトルマッチ】",
+      "slug": "deep-125-impact"
+    },
+    {
+      "event": "DEEP 125 IMPACT 【DEEPフェザー級グランプリ準決勝】",
+      "slug": "deep-125-impact"
+    },
+    {
+      "event": "DEEP 126 IMPACT 【DEEPフェザー級グランプリ決勝】",
+      "slug": "deep-126-impact"
+    },
+    {
+      "event": "DEEP 126 IMPACT 【DEEPフライ級王座決定戦】",
+      "slug": "deep-126-impact"
+    },
+    {
+      "event": "DEEP 126 IMPACT 【DEEPメガトン級王座決定戦】",
+      "slug": "deep-126-impact"
+    },
+    {
+      "event": "DEEP 128 IMPACT 【DEEPライト級暫定王座決定戦】",
+      "slug": "deep-128-impact"
+    },
+    {
+      "event": "DEEP 129 IMPACT 【DEEPフェザー級タイトルマッチ】",
+      "slug": "deep-129-impact"
+    },
+    {
+      "event": "DEEP 130 IMPACT 【DEEPウェルター級タイトルマッチ】",
+      "slug": "deep-130-impact"
+    },
+    {
+      "event": "DEEP 130 IMPACT 【DEEPライト級タイトルマッチ】",
+      "slug": "deep-130-impact"
+    },
+    {
+      "event": "DEEP 131 IMPACT 【DEEPストロー級タイトルマッチ】",
+      "slug": "deep-131-impact"
+    },
+    {
+      "event": "DEEP 131 IMPACT 【DEEPバンタム級暫定王者決定戦】",
+      "slug": "deep-131-impact"
+    },
+    {
+      "event": "DEEP 131 IMPACT 【DEEPフェザー級暫定王者決定戦】",
+      "slug": "deep-131-impact"
+    },
+    {
+      "event": "DEEP 131 IMPACT 【DEEPフライ級タイトルマッチ】",
+      "slug": "deep-131-impact"
+    },
+    {
+      "event": "DEEP 131 IMPACT 【DEEPライト級暫定タイトルマッチ】",
+      "slug": "deep-131-impact"
+    },
+    {
+      "event": "DEEP 131 IMPACT 25th Anniversary",
+      "slug": "deep-131-impact"
+    },
+    {
+      "event": "DEEP JEWELS 50 【DEEP JEWELSストロー級タイトルマッチ】",
+      "slug": "deep-jewels-50"
+    },
+    {
+      "event": "DEEP JEWELS 52 【DEEP JEWELS バンタム級王座決定戦】",
+      "slug": "deep-jewels-52"
+    },
+    {
+      "event": "DEEP JEWELS 53 【DEEP JEWELSフライ級タイトルマッチ】",
+      "slug": "deep-jewels-53"
+    },
+    {
+      "event": "L Lemino修斗TORAO【サイバートーナメント リバイバル2026 準決勝】",
+      "slug": "shooto-torao-2026"
+    },
+    {
+      "event": "Lemino修斗.3 【サイバートーナメント リバイバル2026 1回戦】",
+      "slug": "lemino-shooto-3"
+    },
+    {
+      "event": "PANCRASE 352 【フライ級クィーン・オブ・パンクラス・チャンピオンシップ】",
+      "slug": "pancrase-352"
+    },
+    {
+      "event": "PANCRASE 353 【ライト級キング・オブ・パンクラスタイトルマッチ】",
+      "slug": "pancrase-353"
+    },
+    {
+      "event": "PANCRASE 354 【フェザー級キング・オブ・パンクラスタイトルマッチ】",
+      "slug": "pancrase-354"
+    },
+    {
+      "event": "PANCRASE 355 【フライ級キング・オブ・パンクラス王者決定戦】",
+      "slug": "pancrase-355"
+    },
+    {
+      "event": "PANCRASE 358 【フライ級キング・オブ・パンクラス王者決定戦】",
+      "slug": "pancrase-358"
+    },
+    {
+      "event": "PANCRASE 360 【ウェルター級キング・オブ・パンクラス・チャンピオンシップ】",
+      "slug": "pancrase-360"
+    },
+    {
+      "event": "PANCRASE 360 【ストロー級クイーン・オブ・パンクラス・チャンピオンシップ】",
+      "slug": "pancrase-360"
+    },
+    {
+      "event": "PANCRASE 360 【フェザー級キング・オブ・パンクラス王者決定戦】",
+      "slug": "pancrase-360"
+    },
+    {
+      "event": "PANCRASE 361 【フライ級クィーン・オブ・パンクラス・チャンピオンシップ】",
+      "slug": "pancrase-361"
+    },
+    {
+      "event": "PANCRASE 361 【ライト級キング・オブ・パンクラスタイトルマッチ】",
+      "slug": "pancrase-361"
+    },
+    {
+      "event": "PANCRASE 362 【バンタム級キング・オブ・パンクラス暫定王座決定戦】",
+      "slug": "pancrase-362"
+    },
+    {
+      "event": "PROFESSIONAL SHOOTO 2025 Vol.2 【修斗世界フェザー級チャンピオンシップ】",
+      "slug": "shooto-2025-vol2"
+    },
+    {
+      "event": "PROFESSIONAL SHOOTO 2025 Vol.6【インフィニティリーグ2025】",
+      "slug": "shooto-2025-vol6"
+    },
+    {
+      "event": "PROFESSIONAL SHOOTO 2025 Vol.9【インフィニティリーグ2025】",
+      "slug": "shooto-2025-vol9"
+    },
+    {
+      "event": "PROFESSIONAL SHOOTO 2026 Vol.2 【修斗世界ミドル級チャンピオン決定トーナメント 1st ROUND】",
+      "slug": "shooto-2026-vol2"
+    },
+    {
+      "event": "PROFESSIONAL SHOOTO 2026 Vol.2 【修斗世界女子アトム級王座決定戦】",
+      "slug": "shooto-2026-vol2"
+    },
+    {
+      "event": "RIZIN LANDMARK 11",
+      "slug": "rizin-landmark-11"
+    },
+    {
+      "event": "RIZIN LANDMARK 12",
+      "slug": "rizin-landmark-12"
+    },
+    {
+      "event": "RIZIN LANDMARK 13 【RIZINバンタム級タイトルマッチ】",
+      "slug": "rizin-landmark-13"
+    },
+    {
+      "event": "RIZIN LANDMARK 13 【RIZINフェザー級タイトルマッチ】",
+      "slug": "rizin-landmark-13"
+    },
+    {
+      "event": "RIZIN LANDMARK 14 【RIZINフライ級タイトルマッチ】",
+      "slug": "rizin-landmark-14"
+    },
+    {
+      "event": "RIZIN LANDMARK 15",
+      "slug": "rizin-landmark-15"
+    },
+    {
+      "event": "RIZIN 師走の超強者祭り 【RIZINバンタム級タイトルマッチ】",
+      "slug": "rizin-shiwasu-2025"
+    },
+    {
+      "event": "RIZIN 師走の超強者祭り 【RIZINフェザー級タイトルマッチ】",
+      "slug": "rizin-shiwasu-2025"
+    },
+    {
+      "event": "RIZIN 師走の超強者祭り 【RIZINフライ級王座決定戦/RIZINフライ級ワールドグランプリ決勝】",
+      "slug": "rizin-shiwasu-2025"
+    },
+    {
+      "event": "RIZIN 師走の超強者祭り 【RIZINライト級タイトルマッチ】",
+      "slug": "rizin-shiwasu-2025"
+    },
+    {
+      "event": "RIZIN 師走の超強者祭り 【RIZIN女子スーパーアトム級タイトルマッチ】",
+      "slug": "rizin-shiwasu-2025"
+    },
+    {
+      "event": "RIZIN.35 【RIZINフェザー級タイトルマッチ】",
+      "slug": "rizin-35"
+    },
+    {
+      "event": "RIZIN.35 【RIZINライト級タイトルマッチ】",
+      "slug": "rizin-35"
+    },
+    {
+      "event": "RIZIN.35 【RIZIN女子スーパーアトム級タイトルマッチ】",
+      "slug": "rizin-35"
+    },
+    {
+      "event": "RIZIN.46",
+      "slug": "rizin-46"
+    },
+    {
+      "event": "RIZIN.48 【RIZINバンタム級王座決定戦】",
+      "slug": "rizin-48"
+    },
+    {
+      "event": "RIZIN.48 【RIZINライト級タイトルマッチ】",
+      "slug": "rizin-48"
+    },
+    {
+      "event": "RIZIN.49 【RIZINフェザー級タイトルマッチ】",
+      "slug": "rizin-49"
+    },
+    {
+      "event": "RIZIN.49 【RIZINフライ級タイトルマッチ】",
+      "slug": "rizin-49"
+    },
+    {
+      "event": "RIZIN.49 【RIZINライト級タイトルマッチ】",
+      "slug": "rizin-49"
+    },
+    {
+      "event": "RIZIN.50 【RIZINバンタム級タイトルマッチ】",
+      "slug": "rizin-50"
+    },
+    {
+      "event": "RIZIN.51 【RIZINフェザー級タイトルマッチ】",
+      "slug": "rizin-51"
+    },
+    {
+      "event": "RIZIN.51 【RIZINフライ級ワールドグランプリ・リザーブマッチ】",
+      "slug": "rizin-51"
+    },
+    {
+      "event": "RIZIN.51 【RIZINフライ級ワールドグランプリ準決勝】",
+      "slug": "rizin-51"
+    },
+    {
+      "event": "RIZIN.51 【RIZINヘビー級WORLDグランプリ決勝】",
+      "slug": "rizin-51"
+    },
+    {
+      "event": "RIZIN.51 【RIZINライト級タイトルマッチ】",
+      "slug": "rizin-51"
+    },
+    {
+      "event": "RIZIN.53 【RIZINライト級タイトルマッチ】",
+      "slug": "rizin-53"
+    },
+    {
+      "event": "RIZIN男祭り 【RIZINフェザー級タイトルマッチ】",
+      "slug": "rizin-otoko-matsuri-2025"
+    },
+    {
+      "event": "RIZIN男祭り 【RIZINヘビー級WORLDグランプリ1回戦】",
+      "slug": "rizin-otoko-matsuri-2025"
+    },
+    {
+      "event": "プロフェッショナル修斗TORAO37",
+      "slug": "shooto-torao-37"
+    },
+    {
+      "event": "プロフェッショナル修斗公式戦後楽園大会　『Lemino修斗.6』",
+      "slug": "lemino-shooto-6"
+    },
+    {
+      "event": "プロフェッショナル修斗公式戦福岡大会「Lemino修斗TORAO」",
+      "slug": "shooto-torao-2026"
+    },
+    {
+      "event": "修斗 BORDER2025「The 1st」",
+      "slug": "shooto-border-2025-1st"
+    },
+    {
+      "event": "修斗 PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
+      "slug": "shooto-2025-vol10-osaka"
+    },
+    {
+      "event": "修斗 PROFESSIONAL SHOOTO 2025 Vol.9 【修斗世界フライ級チャンピオンシップ】",
+      "slug": "shooto-2025-vol9"
+    },
+    {
+      "event": "株式会社大熊警備隊presentsプロフェッショナル修斗公式戦山口大会「TORAO37」",
+      "slug": "shooto-torao-37"
+    },
+    {
+      "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINバンタム級タイトルマッチ】",
+      "slug": "super-rizin-4"
+    },
+    {
+      "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINフライ級ワールドグランプリ1回戦】",
+      "slug": "super-rizin-4"
+    },
+    {
+      "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINヘビー級WORLDグランプリ準決勝】",
+      "slug": "super-rizin-4"
+    }
+  ]
+}

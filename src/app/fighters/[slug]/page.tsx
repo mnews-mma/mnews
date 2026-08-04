@@ -10,6 +10,7 @@ import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
 import { EVENT_RESULTS } from "@/lib/eventResults";
+import { shiftDateStr } from "@/lib/eventCountdown";
 import { findNextAppearance } from "@/lib/events";
 import { fetchOrgRankings } from "@/lib/orgRankingsData";
 import { fetchOrgTagOverrides } from "@/lib/orgTagOverridesData";
@@ -134,73 +135,109 @@ function resolveLinkableOpponentSlug(oppSlug: string | null): string | null {
   return opponent && !opponent.hidden ? oppSlug : null;
 }
 
-// 対戦テーブルの/resultsリンクで、boutの試合日と結果ページの開催日が
-// どれだけズレていたら別大会とみなすか(日)。2部制・日跨ぎ表記のブレを吸収する。
-const EVENT_LINK_DATE_TOLERANCE_DAYS = 1;
-
-function parseYmd(s: string): number | null {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return null;
-  const t = Date.parse(`${s}T00:00:00Z`);
-  return Number.isNaN(t) ? null : t;
+// 対戦テーブルの/resultsリンクの大会突合。EVENT_RESULTS側の正規化(スペース除去・
+// 大会番号の抽出)はモジュールスコープで1回だけ行い、リクエストごとに作り直さない。
+// /fighters/[slug] は force-dynamic(リクエスト毎にSSR)で、1ページあたり
+// bout行数ぶん突合が走るため、ここで毎回 EVENT_RESULTS を正規化し直すと
+// CPU時間がページビューに比例して増える。
+interface EventIndexEntry {
+  slug: string;
+  date: string;
+  unlisted: boolean;
+  /** スペース除去済みの大会名。Wikipedia側は "RIZIN 師走の超強者祭り" のように
+   *  スペースが入ることがあり、こちらのデータ(スペース無し)と食い違うため。 */
+  normName: string;
+  /** 大会番号(数字列)の並び。"DEEP JEWELS 4" と "DEEP JEWELS 48" のように
+   *  数字の途中で切れた部分一致を、別大会として弾くための識別子。 */
+  digitRuns: string;
+  headIsDigit: boolean;
+  tailIsDigit: boolean;
 }
 
+const normEventName = (s: string) => s.replace(/\s/g, "");
+const isDigitChar = (c: string | undefined) => !!c && /[0-9０-９]/.test(c);
+const eventDigitRuns = (s: string) => (s.match(/[0-9０-９]+/g) ?? []).join(",");
+
+const EVENT_INDEX: EventIndexEntry[] = EVENT_RESULTS.map((e) => {
+  const normName = normEventName(e.eventName);
+  return {
+    slug: e.slug,
+    date: e.date,
+    unlisted: !!e.unlisted,
+    normName,
+    digitRuns: eventDigitRuns(normName),
+    headIsDigit: isDigitChar(normName[0]),
+    tailIsDigit: isDigitChar(normName[normName.length - 1]),
+  };
+});
+
+// 正規化後の大会名が完全一致する場合の高速経路(658リンク中437件が該当)。
+const EVENT_BY_NORM_NAME = new Map<string, EventIndexEntry[]>();
+for (const e of EVENT_INDEX) {
+  const list = EVENT_BY_NORM_NAME.get(e.normName);
+  if (list) list.push(e);
+  else EVENT_BY_NORM_NAME.set(e.normName, [e]);
+}
+
+// (大会名, 試合日) → slug の解決結果メモ。組み合わせはdata/由来で有限
+// (約2,700通り)なので、同じ選手ページが繰り返しSSRされても再計算しない。
+const eventSlugMemo = new Map<string, string | null>();
+
 // 大会名（RIZIN.52など）からMニュース掲載の結果ページを探す。
-// 表記揺れ（全角/半角・サブタイトル付き等）があるため、双方向の部分一致で見る。
-// boutDateを渡すと、名前が一致しても開催日が離れている大会にはリンクしない
-// (文字列一致だけでは別大会を掴みうるため、日付を最終的な同一性の判定に使う)。
+// 表記揺れ（全角/半角・サブタイトル付き等）があるため双方向の部分一致で見るが、
+// 文字列一致だけでは別大会を掴みうる("DEEP JEWELS 4"→"DEEP JEWELS 48")ため、
+// 最後に開催日で同一性を確認する。日付比較はeventCountdown.tsのshiftDateStr
+// (純粋な暦日算術)経由で行い、この場で日付文字列をパースしない。
 function findEventSlug(eventName: string, boutDate?: string): string | null {
-  // Wikipedia側の表記は "RIZIN 師走の超強者祭り" のようにスペースが
-  // 入ることがあり、こちらのデータ（スペース無し）と食い違うため、
-  // 比較時はスペースを除去して揃える。
-  const norm = (s: string) => s.replace(/\s/g, "");
-  const isDigit = (c: string | undefined) => !!c && /[0-9０-９]/.test(c);
-  // 大会番号(数字列)の並び。"DEEP JEWELS 4" と "DEEP JEWELS 48" のように
-  // 数字の途中で切れた部分一致を、別大会として弾くための識別子に使う。
-  const digitRuns = (s: string) => (s.match(/[0-9０-９]+/g) ?? []).join(",");
-  const target = norm(eventName);
-  const nameMatches = EVENT_RESULTS.filter((e) => {
-    const en = norm(e.eventName);
-    if (en === target) return true;
+  const memoKey = `${eventName}\u0000${boutDate ?? ""}`;
+  const memo = eventSlugMemo.get(memoKey);
+  if (memo !== undefined) return memo;
+  const resolved = resolveEventSlug(eventName, boutDate);
+  eventSlugMemo.set(memoKey, resolved);
+  return resolved;
+}
 
-    // (A) 表示名のほうが長いケース(掲載大会名 + 【階級タイトルマッチ】等の装飾)。
-    //     掲載大会名がそのまま含まれていればよいが、"RIZIN.5" が
-    //     "RIZIN.51【…】" にマッチするような、大会番号の途中で切れた一致は除く
-    //     (掲載大会名の端が数字で、その続きも数字になっている場合のみ弾く。
-    //      "DEEP 131 IMPACT" + "25th Anniversary" のように数字列が分断されて
-    //      いないケースは通す)。
-    const headCut = isDigit(en[0]);
-    const tailCut = isDigit(en[en.length - 1]);
-    for (let i = target.indexOf(en); i !== -1; i = target.indexOf(en, i + 1)) {
-      if (headCut && isDigit(target[i - 1])) continue;
-      if (tailCut && isDigit(target[i + en.length])) continue;
-      return true;
-    }
-
-    // (B) 掲載大会名のほうが長いケース(会場名・サブタイトル付き)。
-    //     "DEEP JEWELS 4"→"DEEP JEWELS 48"、"DEEP OSAKA IMPACT"→
-    //     "DEEP OSAKA IMPACT 2026 3rd ROUND" のような別大会への誤リンクを防ぐ
-    //     ため、大会番号(数字列)が両者で完全一致する場合のみ許可する。
-    //     大会番号を持たない表示名("プロフェッショナル修斗公式戦"等)は
-    //     大会を特定できないため、この方向ではリンクしない。
-    if (target.length >= 8 && en.includes(target)) {
-      const runs = digitRuns(target);
-      if (runs !== "" && runs === digitRuns(en)) return true;
-    }
-    return false;
-  });
+function resolveEventSlug(eventName: string, boutDate?: string): string | null {
+  const target = normEventName(eventName);
+  const nameMatches =
+    EVENT_BY_NORM_NAME.get(target) ?? EVENT_INDEX.filter((e) => matchesEventName(target, e));
   if (nameMatches.length === 0) return null;
 
-  // 大会名は表記揺れを吸収するぶん取り違えが起きうるので、最後に開催日で
-  // 同一性を確認する。bout日付が取れない/日付未設定の大会しか無い場合のみ
-  // 従来どおり名前一致の先頭を採用する。
-  const boutAt = boutDate ? parseYmd(boutDate) : null;
-  if (boutAt === null) return nameMatches[0].slug;
-  const sameDay = nameMatches.find((e) => {
-    const eventAt = parseYmd(String(e.date ?? ""));
-    if (eventAt === null) return false;
-    return Math.abs(boutAt - eventAt) <= EVENT_LINK_DATE_TOLERANCE_DAYS * 86400000;
-  });
+  // bout日付が無い場合のみ、従来どおり名前一致の先頭を採用する。
+  if (!boutDate) return nameMatches[0].slug;
+  // 2部制・日跨ぎ表記のブレを吸収するため前後1日まで許容する。
+  const allowed = [boutDate, shiftDateStr(boutDate, 1), shiftDateStr(boutDate, -1)];
+  const sameDay = nameMatches.find((e) => allowed.includes(e.date));
   return sameDay ? sameDay.slug : null;
+}
+
+function matchesEventName(target: string, e: EventIndexEntry): boolean {
+  const en = e.normName;
+  if (en === target) return true;
+
+  // (A) 表示名のほうが長いケース(掲載大会名 + 【階級タイトルマッチ】等の装飾)。
+  //     掲載大会名がそのまま含まれていればよいが、"RIZIN.5" が
+  //     "RIZIN.51【…】" にマッチするような、大会番号の途中で切れた一致は除く
+  //     (掲載大会名の端が数字で、その続きも数字になっている場合のみ弾く。
+  //      "DEEP 131 IMPACT" + "25th Anniversary" のように数字列が分断されて
+  //      いないケースは通す)。
+  for (let i = target.indexOf(en); i !== -1; i = target.indexOf(en, i + 1)) {
+    if (e.headIsDigit && isDigitChar(target[i - 1])) continue;
+    if (e.tailIsDigit && isDigitChar(target[i + en.length])) continue;
+    return true;
+  }
+
+  // (B) 掲載大会名のほうが長いケース(会場名・サブタイトル付き)。
+  //     "DEEP JEWELS 4"→"DEEP JEWELS 48"、"DEEP OSAKA IMPACT"→
+  //     "DEEP OSAKA IMPACT 2026 3rd ROUND" のような別大会への誤リンクを防ぐ
+  //     ため、大会番号(数字列)が両者で完全一致する場合のみ許可する。
+  //     大会番号を持たない表示名("プロフェッショナル修斗公式戦"等)は
+  //     大会を特定できないため、この方向ではリンクしない。
+  if (target.length >= 8 && en.includes(target)) {
+    const runs = eventDigitRuns(target);
+    if (runs !== "" && runs === e.digitRuns) return true;
+  }
+  return false;
 }
 
 // 選手が公開中のAI RIZINランキングに掲載されているか(王者/表示ランク内の

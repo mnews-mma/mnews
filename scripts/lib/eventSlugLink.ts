@@ -1,62 +1,84 @@
 /**
  * src/app/fighters/[slug]/page.tsx の findEventSlug() と同一ロジック。
- * 監査スクリプト(audit-event-slug-links.ts)・ゲート(check-event-slug-links.ts)
- * から参照する。page.tsx側を変更したらこちらも同期すること
- * (check-event-slug-links.ts が両者の出力一致を検査する)。
+ * 監査(audit-event-slug-links.ts)・ゲート(check-event-slug-links.ts)から参照する。
+ *
+ * 注意: ゲート(check-event-slug-links.ts)は findEventSlug の内部条件を再検査
+ * するのではなく、その出力が「slug実在 / 正規化後の名前完全一致 or alias表に
+ * 明示 / 開催日±1日」を満たすかを独立に検査する。page.tsx側を変えたら
+ * こちらも同期すること。
  */
 import { EVENT_RESULTS } from "../../src/lib/eventResults";
+import { shiftDateStr } from "../../src/lib/eventCountdown";
 
-export const EVENT_LINK_DATE_TOLERANCE_DAYS = 1;
+export const normEventName = (s: string) => s.replace(/\s/g, "");
+const isDigitChar = (c: string | undefined) => !!c && /[0-9０-９]/.test(c);
+const eventDigitRuns = (s: string) => (s.match(/[0-9０-９]+/g) ?? []).join(",");
 
-export function parseYmd(s: string): number | null {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return null;
-  const t = Date.parse(`${s}T00:00:00Z`);
-  return Number.isNaN(t) ? null : t;
+interface EventIndexEntry {
+  slug: string;
+  date: string;
+  unlisted: boolean;
+  normName: string;
+  digitRuns: string;
+  headIsDigit: boolean;
+  tailIsDigit: boolean;
+}
+
+const EVENT_INDEX: EventIndexEntry[] = EVENT_RESULTS.map((e) => {
+  const normName = normEventName(e.eventName);
+  return {
+    slug: e.slug,
+    date: e.date,
+    unlisted: !!e.unlisted,
+    normName,
+    digitRuns: eventDigitRuns(normName),
+    headIsDigit: isDigitChar(normName[0]),
+    tailIsDigit: isDigitChar(normName[normName.length - 1]),
+  };
+});
+
+const EVENT_BY_NORM_NAME = new Map<string, EventIndexEntry[]>();
+for (const e of EVENT_INDEX) {
+  const list = EVENT_BY_NORM_NAME.get(e.normName);
+  if (list) list.push(e);
+  else EVENT_BY_NORM_NAME.set(e.normName, [e]);
+}
+
+function matchesEventName(target: string, e: EventIndexEntry): boolean {
+  const en = e.normName;
+  if (en === target) return true;
+  for (let i = target.indexOf(en); i !== -1; i = target.indexOf(en, i + 1)) {
+    if (e.headIsDigit && isDigitChar(target[i - 1])) continue;
+    if (e.tailIsDigit && isDigitChar(target[i + en.length])) continue;
+    return true;
+  }
+  if (target.length >= 8 && en.includes(target)) {
+    const runs = eventDigitRuns(target);
+    if (runs !== "" && runs === e.digitRuns) return true;
+  }
+  return false;
 }
 
 /** 大会名だけで一致する候補(日付判定の前段)。 */
-export function findEventNameMatches(eventName: string) {
-  const norm = (s: string) => s.replace(/\s/g, "");
-  const isDigit = (c: string | undefined) => !!c && /[0-9０-９]/.test(c);
-  const digitRuns = (s: string) => (s.match(/[0-9０-９]+/g) ?? []).join(",");
-  const target = norm(eventName);
-  return EVENT_RESULTS.filter((e) => {
-    const en = norm(e.eventName);
-    if (en === target) return true;
-    const headCut = isDigit(en[0]);
-    const tailCut = isDigit(en[en.length - 1]);
-    for (let i = target.indexOf(en); i !== -1; i = target.indexOf(en, i + 1)) {
-      if (headCut && isDigit(target[i - 1])) continue;
-      if (tailCut && isDigit(target[i + en.length])) continue;
-      return true;
-    }
-    if (target.length >= 8 && en.includes(target)) {
-      const runs = digitRuns(target);
-      if (runs !== "" && runs === digitRuns(en)) return true;
-    }
-    return false;
-  });
+export function findEventNameMatches(eventName: string): EventIndexEntry[] {
+  const target = normEventName(eventName);
+  return EVENT_BY_NORM_NAME.get(target) ?? EVENT_INDEX.filter((e) => matchesEventName(target, e));
 }
 
 export function findEventSlug(eventName: string, boutDate?: string): string | null {
   const nameMatches = findEventNameMatches(eventName);
   if (nameMatches.length === 0) return null;
-  const boutAt = boutDate ? parseYmd(boutDate) : null;
-  if (boutAt === null) return nameMatches[0].slug;
-  const sameDay = nameMatches.find((e) => {
-    const eventAt = parseYmd(String(e.date ?? ""));
-    if (eventAt === null) return false;
-    return Math.abs(boutAt - eventAt) <= EVENT_LINK_DATE_TOLERANCE_DAYS * 86400000;
-  });
+  if (!boutDate) return nameMatches[0].slug;
+  const allowed = [boutDate, shiftDateStr(boutDate, 1), shiftDateStr(boutDate, -1)];
+  const sameDay = nameMatches.find((e) => allowed.includes(e.date));
   return sameDay ? sameDay.slug : null;
 }
 
 /** 修正前の実装(素朴な双方向部分一致)。監査での旧新比較にのみ使う。 */
 export function findEventSlugLegacy(eventName: string): string | null {
-  const norm = (s: string) => s.replace(/\s/g, "");
-  const target = norm(eventName);
+  const target = normEventName(eventName);
   const match = EVENT_RESULTS.find((e) => {
-    const en = norm(e.eventName);
+    const en = normEventName(e.eventName);
     if (en === target || target.includes(en)) return true;
     if (target.length >= 8 && en.includes(target)) return true;
     return false;
@@ -96,3 +118,11 @@ export function collectBoutRows(sources: Record<string, unknown>): BoutRow[] {
   }
   return rows;
 }
+
+export const ALL_RECORD_SOURCES = [
+  "fighterRecords",
+  "rizinRecords",
+  "shootoRecords",
+  "pancraseRecords",
+  "deepRecords",
+] as const;
