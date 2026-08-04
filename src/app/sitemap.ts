@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
-import { FIGHTERS } from "@/lib/fighters";
 import { EVENT_RESULTS } from "@/lib/eventResults";
 import { EVENTS } from "@/lib/events";
 import { ORIGINAL_ARTICLES } from "@/lib/originalArticles";
 import { fetchRankings } from "@/lib/mnewsRatingData";
 import { DIVISION_SLUG, PUBLISHED_DIVISIONS } from "@/lib/mnewsRating/divisions";
-import { getVisibleFighters } from "@/lib/visibleFighters";
+import { getVisibleFighters, getFightersExcludingHiddenAndDelisted } from "@/lib/visibleFighters";
 import { isVsPairIndexable, normalizeVsSlugs } from "@/lib/vsPairing";
 import { toJstDateStr } from "@/lib/eventCountdown";
 
@@ -53,8 +52,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  // hidden 選手(Mレーティングが乗るまで伏せる新規投入ぶん)はサイトマップに載せない。
-  const fighterRoutes: MetadataRoute.Sitemap = FIGHTERS.filter((f) => !f.hidden).map((f) => ({
+  // 選手ルートは hidden/delisted のみで判定する(以前は独自に!f.hiddenだけで
+  // 判定しておりdelisted選手が漏れて残る別経路になっていたため、2026-08-04に
+  // getFightersExcludingHiddenAndDelisted()経由へ修正)。getVisibleFighters()の
+  // 「表示できる戦績が何かある」までは適用しない — noRecordDataの選手には
+  // サイト内リンクが無くGoogle Search Console実測で流入があるページが含まれ、
+  // sitemapが唯一の発見経路になっているため、掲載を維持する(chiharu/okumura-airu
+  // 等。2026-08-04確認)。判定ロジック自体はvisibleFighters.tsの共有関数を
+  // そのまま使い、ここでは再実装しない。
+  const fighterRoutes: MetadataRoute.Sitemap = getFightersExcludingHiddenAndDelisted().map((f) => ({
     url: `${BASE_URL}/fighters/${f.slug}`,
     changeFrequency: "daily",
     priority: 0.6,
@@ -87,7 +93,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // /vs/{a}/{b} は組み合わせが選手数の二乗のオーダーで発生する(spec §4)ため、
   // 索引許可条件(過去対戦・共通対戦相手・同一団体同一階級のいずれか)を満たす
   // ペアのみ載せる。判定ロジックはgenerateMetadataのrobots判定と同一関数
-  // (isVsPairIndexable)を共有し、二重実装しない。
+  // (isVsPairIndexable)を共有し、二重実装しない。こちらは上のfighterRoutesとは
+  // 別に「表示できる戦績が何かある」まで満たす母集団(getVisibleFighters())が
+  // 必要なため、別途取得する(戦績が無いとVSページ自体が成立しないため)。
   const visibleFighters = await getVisibleFighters();
   const vsRoutes: MetadataRoute.Sitemap = [];
   for (let i = 0; i < visibleFighters.length; i++) {

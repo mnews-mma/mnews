@@ -1,4 +1,4 @@
-import { FIGHTERS } from "./fighters";
+import { FIGHTERS, Fighter } from "./fighters";
 import { ResolvedFighter } from "./feeds/resolveFighter";
 import { fetchFighterRecords, resolveFightersFromRecords } from "./fighterRecordsCache";
 import { shouldPreferMultiOrgRecord } from "./mnewsRating/multiOrgRecord";
@@ -19,9 +19,22 @@ import { SHOW_MULTI_ORG_RECORD } from "./featureFlags";
 // 戦績データはリクエスト時にWikipediaへライブfetchせず、バッチ(update-fighter-records.ts)が
 // 焼き込んだ data/fighterRecords.json を読むだけにする(可視選手数がリクエストごとに
 // 変動する問題の恒久対策)。
+// hidden/delisted の2条件だけを除いたFIGHTERS(戦績の有無は問わない)。
+// getVisibleFighters()より緩い母集団が要る場所向けの共有ヘルパー。
+// 例: sitemap.tsの選手ルート — noRecordDataの選手(戦績データが無いだけで
+// hidden/delistedではない)は、内部リンクからは到達できなくてもGoogle Search
+// Console実測で外部検索からの流入がある「サイト内で孤立しているが検索エンジン
+// 経由では発見される」ページが存在するため、getVisibleFighters()の「戦績あり」
+// 条件をそのまま適用すると発見経路を失わせてしまう(2026-08確認)。
+// hidden/delistedの除外条件自体はgetVisibleFighters()と同じ1行を共有し、
+// sitemap.ts側で判定ロジックを再実装しない(#286の重複実装一本化を踏襲)。
+export function getFightersExcludingHiddenAndDelisted(): Fighter[] {
+  return FIGHTERS.filter((f) => !f.hidden && !f.delisted);
+}
+
 export async function getVisibleFighters(): Promise<ResolvedFighter[]> {
   const records = await fetchFighterRecords();
-  const resolved = resolveFightersFromRecords(FIGHTERS.filter((f) => !f.hidden && !f.delisted), records);
+  const resolved = resolveFightersFromRecords(getFightersExcludingHiddenAndDelisted(), records);
   if (!SHOW_MULTI_ORG_RECORD) return resolved.filter((f) => !f.noRecordData);
 
   const withMultiOrg = await Promise.all(
