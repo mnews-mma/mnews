@@ -134,23 +134,73 @@ function resolveLinkableOpponentSlug(oppSlug: string | null): string | null {
   return opponent && !opponent.hidden ? oppSlug : null;
 }
 
+// 対戦テーブルの/resultsリンクで、boutの試合日と結果ページの開催日が
+// どれだけズレていたら別大会とみなすか(日)。2部制・日跨ぎ表記のブレを吸収する。
+const EVENT_LINK_DATE_TOLERANCE_DAYS = 1;
+
+function parseYmd(s: string): number | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return null;
+  const t = Date.parse(`${s}T00:00:00Z`);
+  return Number.isNaN(t) ? null : t;
+}
+
 // 大会名（RIZIN.52など）からMニュース掲載の結果ページを探す。
 // 表記揺れ（全角/半角・サブタイトル付き等）があるため、双方向の部分一致で見る。
-function findEventSlug(eventName: string): string | null {
+// boutDateを渡すと、名前が一致しても開催日が離れている大会にはリンクしない
+// (文字列一致だけでは別大会を掴みうるため、日付を最終的な同一性の判定に使う)。
+function findEventSlug(eventName: string, boutDate?: string): string | null {
   // Wikipedia側の表記は "RIZIN 師走の超強者祭り" のようにスペースが
   // 入ることがあり、こちらのデータ（スペース無し）と食い違うため、
   // 比較時はスペースを除去して揃える。
   const norm = (s: string) => s.replace(/\s/g, "");
+  const isDigit = (c: string | undefined) => !!c && /[0-9０-９]/.test(c);
+  // 大会番号(数字列)の並び。"DEEP JEWELS 4" と "DEEP JEWELS 48" のように
+  // 数字の途中で切れた部分一致を、別大会として弾くための識別子に使う。
+  const digitRuns = (s: string) => (s.match(/[0-9０-９]+/g) ?? []).join(",");
   const target = norm(eventName);
-  // en.includes(target) は target が短い場合に誤マッチ（"修斗"→Lemino修斗TORAOなど）
-  // が起きるため、8文字未満の target は完全一致・こちらを含む場合のみ許可する。
-  const match = EVENT_RESULTS.find((e) => {
+  const nameMatches = EVENT_RESULTS.filter((e) => {
     const en = norm(e.eventName);
-    if (en === target || target.includes(en)) return true;
-    if (target.length >= 8 && en.includes(target)) return true;
+    if (en === target) return true;
+
+    // (A) 表示名のほうが長いケース(掲載大会名 + 【階級タイトルマッチ】等の装飾)。
+    //     掲載大会名がそのまま含まれていればよいが、"RIZIN.5" が
+    //     "RIZIN.51【…】" にマッチするような、大会番号の途中で切れた一致は除く
+    //     (掲載大会名の端が数字で、その続きも数字になっている場合のみ弾く。
+    //      "DEEP 131 IMPACT" + "25th Anniversary" のように数字列が分断されて
+    //      いないケースは通す)。
+    const headCut = isDigit(en[0]);
+    const tailCut = isDigit(en[en.length - 1]);
+    for (let i = target.indexOf(en); i !== -1; i = target.indexOf(en, i + 1)) {
+      if (headCut && isDigit(target[i - 1])) continue;
+      if (tailCut && isDigit(target[i + en.length])) continue;
+      return true;
+    }
+
+    // (B) 掲載大会名のほうが長いケース(会場名・サブタイトル付き)。
+    //     "DEEP JEWELS 4"→"DEEP JEWELS 48"、"DEEP OSAKA IMPACT"→
+    //     "DEEP OSAKA IMPACT 2026 3rd ROUND" のような別大会への誤リンクを防ぐ
+    //     ため、大会番号(数字列)が両者で完全一致する場合のみ許可する。
+    //     大会番号を持たない表示名("プロフェッショナル修斗公式戦"等)は
+    //     大会を特定できないため、この方向ではリンクしない。
+    if (target.length >= 8 && en.includes(target)) {
+      const runs = digitRuns(target);
+      if (runs !== "" && runs === digitRuns(en)) return true;
+    }
     return false;
   });
-  return match ? match.slug : null;
+  if (nameMatches.length === 0) return null;
+
+  // 大会名は表記揺れを吸収するぶん取り違えが起きうるので、最後に開催日で
+  // 同一性を確認する。bout日付が取れない/日付未設定の大会しか無い場合のみ
+  // 従来どおり名前一致の先頭を採用する。
+  const boutAt = boutDate ? parseYmd(boutDate) : null;
+  if (boutAt === null) return nameMatches[0].slug;
+  const sameDay = nameMatches.find((e) => {
+    const eventAt = parseYmd(String(e.date ?? ""));
+    if (eventAt === null) return false;
+    return Math.abs(boutAt - eventAt) <= EVENT_LINK_DATE_TOLERANCE_DAYS * 86400000;
+  });
+  return sameDay ? sameDay.slug : null;
 }
 
 // 選手が公開中のAI RIZINランキングに掲載されているか(王者/表示ランク内の
@@ -752,7 +802,7 @@ export default async function FighterPage({
               </thead>
               <tbody>
                 {displayHistory.map((h, i) => {
-                  const eventSlug = findEventSlug(h.event);
+                  const eventSlug = findEventSlug(h.event, h.date);
                   return (
                     <tr key={i}>
                       <td>{h.date}</td>
