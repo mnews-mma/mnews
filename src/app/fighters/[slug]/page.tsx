@@ -560,6 +560,12 @@ export default async function FighterPage({
   // 数値(4団体合算)にする(次戦カードと同じ判定・選手ごとにキャッシュされた
   // 集計結果を再利用する)。ランダム抽出(slice(0,4))は解決前に確定させ、
   // 選ばれた4名分だけ計算する(既存の挙動を維持)。
+  //
+  // 【挙動の変化・2026-08-04】force-dynamic時代はリクエストごとにMath.random()が
+  // 走り毎回違う4名が出ていたが、ISR化(revalidate=900)によりレンダリングが
+  // revalidate単位になったため、900秒のあいだは全訪問者に同じ4名が出る。
+  // 不具合ではない(内部リンクが15分安定するぶんSEO上はむしろ有利)が、
+  // 「ランダムのはずが固定されている」と見えるのはこの理由。
   const sameWeightClassCandidates = (await resolveFightersCached(sameClassSeeds))
     .filter((f) => !f.noRecordData)
     .map((f) => ({ f, sort: Math.random() }))
