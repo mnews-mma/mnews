@@ -52,7 +52,11 @@ export function classifyMethod(method: string): "ko" | "sub" | "decision" | null
 }
 
 // 指定選手(日本語名)の戦績を EVENT_RESULTS から新しい順に組み立てる。
-export function deriveHistoryFromEventResults(nameJa: string): FightRecord[] {
+// ownSlug: 呼び出し元選手自身のslug。FightResult.fighterASlug/fighterBSlugが
+// 明示されている行は、そのタグがownSlugと一致する場合のみ一致とみなす
+// (タグ省略時=従来通り名前一致のみ。2026-08-05追加、詳細はeventResults.ts
+// のFightResultコメント参照)。
+export function deriveHistoryFromEventResults(nameJa: string, ownSlug: string): FightRecord[] {
   const target = norm(nameJa);
   const records: FightRecord[] = [];
 
@@ -60,8 +64,8 @@ export function deriveHistoryFromEventResults(nameJa: string): FightRecord[] {
     for (const fight of event.fights) {
       const a = norm(fight.fighterA);
       const b = norm(fight.fighterB);
-      const isA = a === target;
-      const isB = b === target;
+      const isA = a === target && (fight.fighterASlug === undefined || fight.fighterASlug === ownSlug);
+      const isB = b === target && (fight.fighterBSlug === undefined || fight.fighterBSlug === ownSlug);
       if (!isA && !isB) continue;
 
       const opponent = isA ? fight.fighterB : fight.fighterA;

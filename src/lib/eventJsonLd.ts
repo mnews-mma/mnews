@@ -25,6 +25,10 @@ export interface SportsEventLdInput {
   // getVisibleFighterSlugs() 由来(非hidden かつ 非delisted かつ 戦績あり)。
   // 渡さない場合は hidden のみで判定(findFighterSlugByNameの既定挙動)。
   visibleSlugs?: Set<string>;
+  // findFighterSlugByNameが同名別人に誤って一致する既知の表記(FightResultの
+  // fighterASlug/fighterBSlug:nullでタグ済みの名前)。指定された名前はurlを
+  // 付けない(2026-08-05追加)。
+  noLinkNames?: Set<string>;
 }
 
 export function buildSportsEventLd(input: SportsEventLdInput): object {
@@ -37,7 +41,7 @@ export function buildSportsEventLd(input: SportsEventLdInput): object {
   const performer = Array.from(new Set(input.fighters))
     .filter((n) => n && n !== "未定")
     .map((name) => {
-      const slug = findFighterSlugByName(name, undefined, input.visibleSlugs);
+      const slug = input.noLinkNames?.has(name) ? null : findFighterSlugByName(name, undefined, input.visibleSlugs);
       return {
         "@type": "Person",
         name,

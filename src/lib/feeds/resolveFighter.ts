@@ -63,7 +63,7 @@ export async function resolveFighter(fighter: Fighter): Promise<ResolvedFighter>
   // recordFromResults 選手は、wiki戦績が自社EVENT_RESULTS履歴と相手名で重なる時だけ採用。
   // 重ならない曖昧記事は安全側で棄却(→no data)。ja/en 両方に同じ検証を適用。
   const derivedForGuard = fighter.recordFromResults
-    ? deriveHistoryFromEventResults(fighter.nameJa)
+    ? deriveHistoryFromEventResults(fighter.nameJa, fighter.slug)
     : [];
   let jaWiki = jaWikiRaw;
   if (fighter.recordFromResults && !fighter.wikiTitleJa && jaWikiRaw && !historiesOverlap(jaWikiRaw.history, derivedForGuard)) {

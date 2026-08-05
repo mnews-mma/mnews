@@ -466,11 +466,11 @@ export const EVENTS: MEvent[] = [
     bouts: [
       {
         weightClass: "DEEPメガトン級",
-        // 公式表記は「大成」だが、shooto-2025-vol10-osakaの55kg契約戦にも
-        // 別人と思われる同名「大成」が存在し、名前解決がorg非スコープの
-        // グローバル一致のため裸表記のままだと誤リンクの温床になる。
-        // fighters.ts上の表記(関野大成)に揃えて既存の名前解決に乗せる。
-        fighterA: "関野大成",
+        // 2026-08-05: fighters.ts(sekino-taisei)のnameJaを「大成」に直したため
+        // 公式表記(大成)と一致させた。shooto-2025-vol10-osakaの55kg契約戦の
+        // 別人「大成」は eventResults.ts の fighterBSlug: null タグで
+        // deriveHistoryFromEventResults からもリンク解決からも明示的に切り離し済み。
+        fighterA: "大成",
         fighterB: "シビサイ頌真",
         isTitleMatch: true,
         note: "DEEPメガトン級タイトルマッチ（メインイベント）",

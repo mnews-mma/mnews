@@ -15,8 +15,19 @@ import { buildSportsEventLd, eventResultOgImageUrl } from "@/lib/eventJsonLd";
 // のfullバリアントを使っており、ここには影響しない)。
 // 戦績データが無い(no-data)/hiddenの選手はリンクにせずテキスト表示にする
 // (getVisibleFighters()由来のvisibleSlugsで判定・判定ロジックの二重定義はしない)。
-function FighterCardName({ name, visibleSlugs }: { name: string; visibleSlugs: Set<string> }) {
-  const slug = findFighterSlugByName(name, undefined, visibleSlugs);
+// taggedSlug: FightResult.fighterASlug/fighterBSlugの値。undefined(タグ省略)
+// なら従来通り名前一致で解決する。null等の明示タグがあれば、それを優先して
+// 使う(同名別人の衝突を名前一致より前に確定させるため。2026-08-05追加)。
+function FighterCardName({
+  name,
+  visibleSlugs,
+  taggedSlug,
+}: {
+  name: string;
+  visibleSlugs: Set<string>;
+  taggedSlug?: string | null;
+}) {
+  const slug = taggedSlug !== undefined ? taggedSlug : findFighterSlugByName(name, undefined, visibleSlugs);
   return slug ? (
     <a href={`/fighters/${slug}`} className="opponent-link">
       {name}
@@ -63,6 +74,15 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
     { label: event.eventName },
   ];
 
+  // fighterASlug/fighterBSlugがnull(明示的に非リンク)の表記はJSON-LDのPerson.url
+  // にも誤って注入されないよう除外する(2026-08-05追加。名前だけの一覧では
+  // どのbout由来か分からないため、イベント単位でnameの集合として渡す)。
+  const noLinkNames = new Set<string>();
+  for (const f of event.fights) {
+    if (f.fighterASlug === null) noLinkNames.add(f.fighterA);
+    if (f.fighterBSlug === null) noLinkNames.add(f.fighterB);
+  }
+
   const sportsEventLd = buildSportsEventLd({
     name: event.eventName,
     date: event.date,
@@ -71,6 +91,7 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
     path: `/results/${event.slug}`,
     status: "completed",
     fighters: event.fights.flatMap((f) => [f.fighterA, f.fighterB]),
+    noLinkNames,
     // 結果ページは要約(summary)を description に流用
     description:
       summary ||
@@ -138,9 +159,9 @@ export default async function EventResultPage({ params }: { params: Promise<{ sl
                         {kg && <span className="col-weight-kg">{kg}</span>}
                       </td>
                       <td className="col-matchup">
-                        <span className="matchup-name"><FighterCardName name={f.fighterA} visibleSlugs={visibleSlugs} /></span>
+                        <span className="matchup-name"><FighterCardName name={f.fighterA} visibleSlugs={visibleSlugs} taggedSlug={f.fighterASlug} /></span>
                         <span className="matchup-vs">vs</span>
-                        <span className="matchup-name"><FighterCardName name={f.fighterB} visibleSlugs={visibleSlugs} /></span>
+                        <span className="matchup-name"><FighterCardName name={f.fighterB} visibleSlugs={visibleSlugs} taggedSlug={f.fighterBSlug} /></span>
                       </td>
                       <td className="col-winner">
                         {f.winner ? (
