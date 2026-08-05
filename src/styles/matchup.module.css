@@ -337,7 +337,7 @@
 .tugValA,
 .tugValB {
   font-weight: 800;
-  font-size: 14px;
+  font-size: 16px;
   min-width: 0;
   overflow-wrap: anywhere;
 }
@@ -356,7 +356,7 @@
 
 .tugLabel {
   justify-self: center;
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--muted);
   white-space: nowrap;
