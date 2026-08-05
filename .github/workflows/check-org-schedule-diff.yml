@@ -47,9 +47,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: TMP debug 403 investigation (will be removed)
-        run: npx tsx scripts/tmp-debug-403.ts
-
       - name: Run schedule diff check (read-only, data/・src/は変更しない)
         id: diff
         run: |
