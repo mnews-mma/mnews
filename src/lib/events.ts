@@ -512,7 +512,7 @@ export const EVENTS: MEvent[] = [
       },
       {
         weightClass: "DEEPフェザー級（65.8kg）",
-        fighterA: "鬼山班猫",
+        fighterA: "鬼山斑猫",
         fighterB: "奥村アイル",
       },
       {
@@ -567,7 +567,7 @@ export const EVENTS: MEvent[] = [
       {
         weightClass: "DEEPストロー級（52.2kg）",
         fighterA: "豪瑠",
-        fighterB: "高橋俊哉",
+        fighterB: "高島俊哉",
       },
       {
         weightClass: "DEEPバンタム級（61.2kg）",
@@ -807,11 +807,12 @@ export const EVENTS: MEvent[] = [
     // 「※抽選で組み合わせ決定」と明記されており、対戦カード未確定。
     // 架空の組み合わせを作らず expectedFighters に留める(bouts確定後に移す)。
     expectedFighters: ["MG眞介", "前薗渓", "切嶋龍輝", "大空斗"],
+    // 2026-08-05 公式サイトに「※ブリザードからユウ・チュチュに名前が変更になりました。」と明記(出典: sourceUrl)。
     bouts: [
       {
         weightClass: "DEEP JEWELSフライ級",
         fighterA: "栗山葵",
-        fighterB: "ブリザード",
+        fighterB: "ユウ・チュチュ",
       },
       {
         weightClass: "DEEPライト級（70.3kg）",
@@ -843,6 +844,13 @@ export const EVENTS: MEvent[] = [
         rule: "アマチュアルール 3分2R",
         fighterA: "居谷匠真",
         fighterB: "髙松大空",
+        note: "オープニングファイト",
+      },
+      {
+        weightClass: "DEEP JEWELS 50kg以下",
+        rule: "アマチュアSルール 3分2R",
+        fighterA: "横溝千月",
+        fighterB: "Mari",
         note: "オープニングファイト",
       },
     ],
@@ -931,6 +939,12 @@ export const EVENTS: MEvent[] = [
       },
       {
         weightClass: "DEEPストロー級",
+        rule: "アマチュアキック 2分3R",
+        fighterA: "土木ネキ",
+        fighterB: "ナナミ",
+      },
+      {
+        weightClass: "DEEPストロー級",
         rule: "アマチュアSルール 3分2R",
         fighterA: "菊池創太",
         fighterB: "Michael",
@@ -953,6 +967,12 @@ export const EVENTS: MEvent[] = [
         fighterA: "高橋典斗",
         fighterB: "永井ルカス",
         note: "オープニングファイト",
+      },
+      {
+        weightClass: "DEEPメガトン級",
+        rule: "アマチュアキック 1分30秒2R",
+        fighterA: "ドリーム☆キミ",
+        fighterB: "木之下喧壱",
       },
     ],
   },
