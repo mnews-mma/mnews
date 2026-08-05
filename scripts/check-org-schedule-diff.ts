@@ -170,8 +170,31 @@ function stripAnnotation(raw: string): string {
     .trim();
 }
 
+// events.tsと公式サイトで、抽出崩れではなく選手名の表記そのものが違う
+// (装飾記号の有無・英字/カタカナ等)と個別に確認済みのケースのみを登録する
+// 許容リスト。ここに入れて良いのは「公式サイトの生テキストを直接確認し、
+// 抽出ロジック(パース処理)のバグではないと確認済み」の場合のみ。抽出崩れ
+// (パースの取りこぼし・残骸混入)はここではなく元のパーサー側を直すこと。
+const KNOWN_NAME_VARIANTS: [string, string][] = [
+  // events.ts「Street♡★Bob洸助」⇔ 公式「ストリートBob洸助」
+  // (DEEP HAMAMATSU IMPACT 2026 2nd ROUND, Issue #446)。
+  // DEEP公式ページ(https://www.deep2001.com/deep-hamamatsu-impact-2026-2nd-round/)
+  // の生テキストを直接確認し、公式側の表記自体が「ストリートBob洸助」であって
+  // パースの取りこぼしではないことを確認済み(2026-08-05)。英字"Street"+
+  // 装飾記号(♡★)とカタカナ"ストリート"のスタイル違いのみで、"Bob洸助"部分は
+  // 完全一致するため同一選手と判断。
+  ["Street♡★Bob洸助", "ストリートBob洸助"],
+];
+
+function canonicalizeKnownVariant(raw: string): string {
+  for (const [a, b] of KNOWN_NAME_VARIANTS) {
+    if (raw === a || raw === b) return a;
+  }
+  return raw;
+}
+
 function normName(raw: string): string {
-  return normalize(stripAnnotation(raw));
+  return normalize(stripAnnotation(canonicalizeKnownVariant(raw)));
 }
 
 function isGymLine(l: string): boolean {
@@ -364,7 +387,15 @@ function parsePancraseCard(text: string): OfficialBout[] {
 // 両対応する。
 const DEEP_HEADER_CORE = "DEEP\\s*(?:JEWELS\\s*)?(?:\\S*?級(?:タイトルマッチ)?|\\d+(?:\\.\\d+)?kg以下)";
 const DEEP_SPLIT_RE = new RegExp(`(?=${DEEP_HEADER_CORE})`);
-const DEEP_HEADER_RE = new RegExp(`^(${DEEP_HEADER_CORE})\\s*\\d*分?\\d*R?`);
+// ラウンド形式は「5分2R」の他に「1分30秒2R」のような秒差し込み表記がある
+// (2026-08-05実測、DEEP HAMAMATSU IMPACT 2026 2nd ROUND)。旧パターン
+// (\d*分?\d*R?)は"分"の直後で止まれてしまい(例:「1分30」で打ち切り)、
+// 残った「秒2R」が次の選手名の前に混入する抽出崩れを起こしていた。
+// 「N分(NN秒)?NR」を1つの塊として消費することで部分一致を防ぐ。未知の
+// 形式(このパターンに一致しない場合)はゼロ幅にフォールバックし、旧来どおり
+// 見出し直後から後続処理(NOISE_PHRASES除去・行頭の「・」トリム)に委ねる。
+const DEEP_ROUND_FORMAT = "\\d+分(?:\\d+秒)?\\d+R";
+const DEEP_HEADER_RE = new RegExp(`^(${DEEP_HEADER_CORE})\\s*(?:${DEEP_ROUND_FORMAT})?`);
 // カード本文中に混じる非選手名のセクション見出し(パース対象外の語句)。
 const DEEP_NOISE_PHRASES = [
   "オープニングファイト",
