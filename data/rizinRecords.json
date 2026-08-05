@@ -1065,7 +1065,7 @@
     "eventName": "RIZIN.3 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 2ND ROUND",
     "date": "2016-12-29",
     "sourceUrl": "https://jp.rizinff.com/_ct/17026316",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -1321,7 +1321,7 @@
     "eventName": "RIZIN.4 Cygames presents RIZIN FIGHTING WORLD GRAND-PRIX 2016 FINAL ROUND",
     "date": "2016-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17026860",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -1539,7 +1539,7 @@
     "eventName": "RIZIN.5 RIZIN 2017 in YOKOHAMA -SAKURA-",
     "date": "2017-04-16",
     "sourceUrl": "https://jp.rizinff.com/_ct/17065978",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -1757,7 +1757,7 @@
     "eventName": "RIZIN.6 RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -夏の陣-",
     "date": "2017-07-30",
     "sourceUrl": "https://jp.rizinff.com/_ct/17105213",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -1975,7 +1975,7 @@
     "eventName": "RIZIN.7 RIZIN FIGHTING WORLD GRAND-PRIX 2017 バンタム級トーナメント＆女子スーパーアトム級トーナメント1st ROUND -秋の陣-",
     "date": "2017-10-15",
     "sourceUrl": "https://jp.rizinff.com/_ct/17125046",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 16,
@@ -2288,7 +2288,7 @@
     "eventName": "RIZIN.8 RIZIN FIGHTING WORLD GRAND-PRIX 2017 バンタム級トーナメント2nd ROUND",
     "date": "2017-12-29",
     "sourceUrl": "https://jp.rizinff.com/_ct/17369261",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -2525,7 +2525,7 @@
     "eventName": "RIZIN.9 RIZIN FIGHTING WORLD GRAND-PRIX 2017 バンタム級トーナメント＆女子スーパーアトム級トーナメントFinal ROUND",
     "date": "2017-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17369262",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -2762,7 +2762,7 @@
     "eventName": "RIZIN.10",
     "date": "2018-05-06",
     "sourceUrl": "https://jp.rizinff.com/_ct/17164316",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -2999,7 +2999,7 @@
     "eventName": "RIZIN.11",
     "date": "2018-07-29",
     "sourceUrl": "https://jp.rizinff.com/_ct/17188889",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -3198,7 +3198,7 @@
     "eventName": "RWEDDINGS presents RIZIN.12",
     "date": "2018-08-12",
     "sourceUrl": "https://jp.rizinff.com/_ct/17196408",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -3435,7 +3435,7 @@
     "eventName": "RIZIN.13",
     "date": "2018-09-30",
     "sourceUrl": "https://jp.rizinff.com/_ct/17210031",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -3672,7 +3672,7 @@
     "eventName": "Cygames presents RIZIN.14",
     "date": "2018-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17240378",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -3947,7 +3947,7 @@
     "eventName": "Cygames presents RIZIN 平成最後のやれんのか！",
     "date": "2018-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17240269",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -4089,7 +4089,7 @@
     "eventName": "RIZIN.15",
     "date": "2019-04-21",
     "sourceUrl": "https://jp.rizinff.com/_ct/17265699",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -4326,7 +4326,7 @@
     "eventName": "RIZIN.16",
     "date": "2019-06-02",
     "sourceUrl": "https://jp.rizinff.com/_ct/17268641",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -4601,7 +4601,7 @@
     "eventName": "RIZIN.17",
     "date": "2019-07-28",
     "sourceUrl": "https://jp.rizinff.com/_ct/17274221",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -4838,7 +4838,7 @@
     "eventName": "GOOD SPEED presents RIZIN.18",
     "date": "2019-08-18",
     "sourceUrl": "https://jp.rizinff.com/_ct/17292041",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -5094,7 +5094,7 @@
     "eventName": "RIZIN.19",
     "date": "2019-10-12",
     "sourceUrl": "https://jp.rizinff.com/_ct/17301435",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -5350,7 +5350,7 @@
     "eventName": "BELLATOR JAPAN",
     "date": "2019-12-29",
     "sourceUrl": "https://jp.rizinff.com/_ct/17328412",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -5625,7 +5625,7 @@
     "eventName": "RIZIN.20",
     "date": "2019-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17328443",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 15,
@@ -5919,7 +5919,7 @@
     "eventName": "RIZIN.21",
     "date": "2020-02-22",
     "sourceUrl": "https://jp.rizinff.com/_ct/17340654",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -6175,7 +6175,7 @@
     "eventName": "RIZIN.22 - STARTING OVER -",
     "date": "2020-08-09",
     "sourceUrl": "https://jp.rizinff.com/_ct/17382986",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -6355,7 +6355,7 @@
     "eventName": "RIZIN.23 - CALLING OVER -",
     "date": "2020-08-10",
     "sourceUrl": "https://jp.rizinff.com/_ct/17382996",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -6535,7 +6535,7 @@
     "eventName": "Yogibo presents RIZIN.24",
     "date": "2020-09-27",
     "sourceUrl": "https://jp.rizinff.com/_ct/17395729",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -6753,7 +6753,7 @@
     "eventName": "Yogibo presents RIZIN.25",
     "date": "2020-11-21",
     "sourceUrl": "https://jp.rizinff.com/_ct/17410665",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -6952,7 +6952,7 @@
     "eventName": "Yogibo presents RIZIN.26",
     "date": "2020-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17421764",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 16,
@@ -7265,7 +7265,7 @@
     "eventName": "Yogibo presents RIZIN.27",
     "date": "2021-03-21",
     "sourceUrl": "https://jp.rizinff.com/_ct/17433429",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -7540,7 +7540,7 @@
     "eventName": "Yogibo presents RIZIN.28",
     "date": "2021-06-13",
     "sourceUrl": "https://jp.rizinff.com/_ct/17459632",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -7720,7 +7720,7 @@
     "eventName": "Yogibo presents RIZIN.29",
     "date": "2021-06-27",
     "sourceUrl": "https://jp.rizinff.com/_ct/17462946",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -7976,7 +7976,7 @@
     "eventName": "Yogibo presents RIZIN.30",
     "date": "2021-09-19",
     "sourceUrl": "https://jp.rizinff.com/_ct/17481499",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -8175,7 +8175,7 @@
     "eventName": "+WEED presents RIZIN LANDMARK vol.1",
     "date": "2021-10-02",
     "sourceUrl": "https://jp.rizinff.com/_ct/17485193",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 4,
@@ -8260,7 +8260,7 @@
     "eventName": "Yogibo presents RIZIN.31",
     "date": "2021-10-24",
     "sourceUrl": "https://jp.rizinff.com/_ct/17489769",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -8478,7 +8478,7 @@
     "eventName": "Yogibo presents RIZIN.32",
     "date": "2021-11-20",
     "sourceUrl": "https://jp.rizinff.com/_ct/17497524",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -8734,7 +8734,7 @@
     "eventName": "RIZIN TRIGGER 1st",
     "date": "2021-11-28",
     "sourceUrl": "https://jp.rizinff.com/_ct/17498791",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -9009,7 +9009,7 @@
     "eventName": "Yogibo presents RIZIN.33",
     "date": "2021-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17508021",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 16,
@@ -9322,7 +9322,7 @@
     "eventName": "SPASHAN HPS presents RIZIN TRIGGER 2nd",
     "date": "2022-02-23",
     "sourceUrl": "https://jp.rizinff.com/_ct/17520846",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -9578,7 +9578,7 @@
     "eventName": "+WEED presents RIZIN LANDMARK vol.2",
     "date": "2022-03-06",
     "sourceUrl": "https://jp.rizinff.com/_ct/17522386",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 5,
@@ -9682,7 +9682,7 @@
     "eventName": "湘南美容クリニック presents RIZIN.34",
     "date": "2022-03-20",
     "sourceUrl": "https://jp.rizinff.com/_ct/17525892",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 17,
@@ -10014,7 +10014,7 @@
     "eventName": "SPASHAN presents RIZIN TRIGGER 3rd",
     "date": "2022-04-16",
     "sourceUrl": "https://jp.rizinff.com/_ct/17534076",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 8,
@@ -10175,7 +10175,7 @@
     "eventName": "湘南美容クリニック presents RIZIN.35",
     "date": "2022-04-17",
     "sourceUrl": "https://jp.rizinff.com/_ct/17534237",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -10374,7 +10374,7 @@
     "eventName": "+WEED presents RIZIN LANDMARK vol.3",
     "date": "2022-05-05",
     "sourceUrl": "https://jp.rizinff.com/_ct/17538454",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 4,
@@ -10459,7 +10459,7 @@
     "eventName": "湘南美容クリニック presents RIZIN.36",
     "date": "2022-07-02",
     "sourceUrl": "https://jp.rizinff.com/_ct/17552126",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -10715,7 +10715,7 @@
     "eventName": "湘南美容クリニック presents RIZIN.37",
     "date": "2022-07-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17559478",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -10990,7 +10990,7 @@
     "eventName": "The Battle Cats presents 超RIZIN / 湘南美容クリニック presents RIZIN.38",
     "date": "2022-09-25",
     "sourceUrl": "https://jp.rizinff.com/_ct/17573018",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -11208,7 +11208,7 @@
     "eventName": "湘南美容クリニック presents RIZIN.39",
     "date": "2022-10-23",
     "sourceUrl": "https://jp.rizinff.com/_ct/17579359",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -11445,7 +11445,7 @@
     "eventName": "ANGEL CHAMPAGNE presents RIZIN LANDMARK 4 in NAGOYA",
     "date": "2022-11-06",
     "sourceUrl": "https://jp.rizinff.com/_ct/17582838",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -11720,7 +11720,7 @@
     "eventName": "湘南美容クリニック presents RIZIN.40",
     "date": "2022-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17597167",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 15,
@@ -12014,7 +12014,7 @@
     "eventName": "RIZIN.41",
     "date": "2023-04-01",
     "sourceUrl": "https://jp.rizinff.com/_ct/17618497",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -12251,7 +12251,7 @@
     "eventName": "FEDELTA presents RIZIN LANDMARK 5 in YOYOGI",
     "date": "2023-04-29",
     "sourceUrl": "https://jp.rizinff.com/_ct/17625256",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -12431,7 +12431,7 @@
     "eventName": "RIZIN.42",
     "date": "2023-05-06",
     "sourceUrl": "https://jp.rizinff.com/_ct/17626748",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -12687,7 +12687,7 @@
     "eventName": "RIZIN.43",
     "date": "2023-06-24",
     "sourceUrl": "https://jp.rizinff.com/_ct/17637537",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 17,
@@ -13019,7 +13019,7 @@
     "eventName": "のむシリカ presents 超RIZIN.2 powered by U-NEXT",
     "date": "2023-07-30",
     "sourceUrl": "https://jp.rizinff.com/_ct/17645070",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 13,
@@ -13275,7 +13275,7 @@
     "eventName": "RIZIN.44",
     "date": "2023-09-24",
     "sourceUrl": "https://jp.rizinff.com/_ct/17656548",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -13474,7 +13474,7 @@
     "eventName": "For Japan presents RIZIN LANDMARK 6 in NAGOYA",
     "date": "2023-10-01",
     "sourceUrl": "https://jp.rizinff.com/_ct/17658629",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 16,
@@ -13787,7 +13787,7 @@
     "eventName": "RIZIN LANDMARK 7 in Azerbaijan",
     "date": "2023-11-04",
     "sourceUrl": "https://jp.rizinff.com/_ct/17664842",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -13986,7 +13986,7 @@
     "eventName": "にゃんこ大戦争 presents RIZIN.45",
     "date": "2023-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17676735",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 17,
@@ -14318,7 +14318,7 @@
     "eventName": "RIZIN LANDMARK 8 in SAGA",
     "date": "2024-02-24",
     "sourceUrl": "https://jp.rizinff.com/_ct/17685725",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -14593,7 +14593,7 @@
     "eventName": "RIZIN LANDMARK 9 in KOBE",
     "date": "2024-03-23",
     "sourceUrl": "https://jp.rizinff.com/_ct/17690948",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 14,
@@ -14868,7 +14868,7 @@
     "eventName": "Yogibo presents RIZIN.46",
     "date": "2024-04-29",
     "sourceUrl": "https://jp.rizinff.com/_ct/17697063",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 10,
@@ -15067,7 +15067,7 @@
     "eventName": "Yogibo presents RIZIN.47",
     "date": "2024-06-09",
     "sourceUrl": "https://jp.rizinff.com/_ct/17704393",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 9,
@@ -15247,7 +15247,7 @@
     "eventName": "Yogibo presents 超RIZIN.3",
     "date": "2024-07-28",
     "sourceUrl": "https://jp.rizinff.com/_ct/17713060",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -15465,7 +15465,7 @@
     "eventName": "Yogibo presents RIZIN.48",
     "date": "2024-09-29",
     "sourceUrl": "https://jp.rizinff.com/_ct/17723239",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -15683,7 +15683,7 @@
     "eventName": "RIZIN LANDMARK 10 in NAGOYA",
     "date": "2024-11-17",
     "sourceUrl": "https://jp.rizinff.com/_ct/17733287",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 16,
@@ -15996,7 +15996,7 @@
     "eventName": "RIZIN DECADE / Yogibo presents RIZIN.49",
     "date": "2024-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17741895",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 15,
@@ -16290,7 +16290,7 @@
     "eventName": "RIZIN DECADE 雷神番外地",
     "date": "2024-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17741870",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 7,
@@ -16432,7 +16432,7 @@
     "eventName": "RIZIN.50",
     "date": "2025-03-30",
     "sourceUrl": "https://jp.rizinff.com/_ct/17757793",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 17,
@@ -16764,7 +16764,7 @@
     "eventName": "RIZIN男祭り",
     "date": "2025-05-04",
     "sourceUrl": "https://jp.rizinff.com/_ct/17764390",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 19,
@@ -17134,7 +17134,7 @@
     "eventName": "RIZIN WORLD SERIES in KOREA",
     "date": "2025-05-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17769437",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 11,
@@ -17352,7 +17352,7 @@
     "eventName": "RIZIN LANDMARK 11 in SAPPORO",
     "date": "2025-06-14",
     "sourceUrl": "https://jp.rizinff.com/_ct/17772202",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 19,
@@ -17722,7 +17722,7 @@
     "eventName": "超RIZIN.4 真夏の喧嘩祭り",
     "date": "2025-07-27",
     "sourceUrl": "https://jp.rizinff.com/_ct/17780689",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 18,
@@ -18073,7 +18073,7 @@
     "eventName": "RIZIN.51",
     "date": "2025-09-28",
     "sourceUrl": "https://jp.rizinff.com/_ct/17793158",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 18,
@@ -18424,7 +18424,7 @@
     "eventName": "RIZIN LANDMARK 12 in KOBE",
     "date": "2025-11-03",
     "sourceUrl": "https://jp.rizinff.com/_ct/17800428",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 18,
@@ -18794,7 +18794,7 @@
     "eventName": "Yogibo presents RIZIN師走の超強者祭り",
     "date": "2025-12-31",
     "sourceUrl": "https://jp.rizinff.com/_ct/17813426",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 15,
@@ -19107,7 +19107,7 @@
     "eventName": "RIZIN.52",
     "date": "2026-03-07",
     "sourceUrl": "https://jp.rizinff.com/_ct/17825885",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -19344,7 +19344,7 @@
     "eventName": "大和開発 presents RIZIN LANDMARK 13 in FUKUOKA",
     "date": "2026-04-12",
     "sourceUrl": "https://jp.rizinff.com/_ct/17833713",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 16,
@@ -19657,7 +19657,7 @@
     "eventName": "RIZIN.53",
     "date": "2026-05-10",
     "sourceUrl": "https://jp.rizinff.com/_ct/17838643",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 15,
@@ -19951,7 +19951,7 @@
     "eventName": "RIZIN LANDMARK 14 in SENDAI",
     "date": "2026-06-06",
     "sourceUrl": "https://jp.rizinff.com/_ct/17843850",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 12,
@@ -20188,7 +20188,7 @@
     "eventName": "abc presents RIZIN LANDMARK 15 in HIROSHIMA",
     "date": "2026-07-18",
     "sourceUrl": "https://jp.rizinff.com/_ct/17853329",
-    "fetchedDate": "2026-08-04",
+    "fetchedDate": "2026-08-05",
     "bouts": [
       {
         "cardPosition": 15,
