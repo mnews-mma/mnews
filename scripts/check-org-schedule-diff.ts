@@ -533,26 +533,51 @@ async function fetchShootoOfficialEvents(): Promise<OfficialEvent[]> {
   return events;
 }
 
+// j-shooto.com個別記事(検索結果アンカーの遷移先)の一覧発見に使う。検索結果
+// ページの実HTMLは`<a href="URL"<dt>YYYY年MM月DD日</dt>\n<dd>タイトル<br>...`
+// という(閉じ`>`が欠落した)壊れたマークアップだが、2026-08-05実測でXSERVER側
+// からも安定して返る形なのでそのまま正規表現でパースする。
+const LEMINO_SEARCH_RESULT_RE =
+  /<a href="([^"]+)"<dt>\d{4}年\d{1,2}月\d{1,2}日<\/dt>\s*<dd>([^<]+)<br>/g;
+
+// fetchLeminoShootoOfficialEvents内の個別記事取得失敗(fetchText例外)は関数内で
+// catchして続行するため、main()側のresult.length===0判定にも例外にも乗らず、
+// 異常が握りつぶされる穴になっていた(2026-08-05指摘)。main()から参照して
+// fetchAnomalyCountに合算するための一時バッファ(1回の実行=1プロセスなので
+// モジュールスコープの可変状態で問題ない)。
+const auxFetchAnomalies: string[] = [];
+
 async function fetchLeminoShootoOfficialEvents(): Promise<OfficialEvent[]> {
   // カテゴリで絞ると取りこぼす(実測: 開催告知は category=16 「開催情報」だが、
   // 対戦カード発表は同じ大会でも category=287 のような別カテゴリに乗ることがあり、
   // 大会ごとに一貫しない)。カテゴリ絞り込みはせず、直近の投稿をタイトルの
   // 正規表現(Lemino修斗を含むか)だけで判定する。
-  const apiUrl = "https://j-shooto.com/wp-json/wp/v2/posts?per_page=50&_fields=id,date,link,title";
-  const json = await fetchText(apiUrl);
-  let posts: { id: number; date: string; link: string; title: { rendered: string } }[];
-  try {
-    posts = JSON.parse(json);
-  } catch (err) {
-    process.stderr.write(`[lemino-shooto] JSON解析失敗: ${String(err)}\n`);
-    return [];
+  //
+  // 2026-08-05判明: https://j-shooto.com/wp-json/ 配下はXSERVER側の設定により
+  // GitHub Actions等データセンターIPからのアクセスが403で拒否される(User-Agentを
+  // 変えても回避不可、Actions上で実測確認済み)。一方で同サイトの通常ページ
+  // (この検索結果ページを含む)は同じIPから200が返ることを実測済みのため、
+  // 投稿一覧の発見はWordPress標準検索(`?s=`)のHTML結果から行う。
+  //
+  // ページングは不要(2026-08-05実測、Actions上で確認): `?s=Lemino修斗`は
+  // パラメータ無しで該当57件全件(2025-07-19〜2026-08-05)を1ページで返す
+  // (`検索結果 : 57件`の表示件数とHTML内の実マッチ数が一致)。`&paged=2`は
+  // 404(2ページ目が存在しない=そもそも1ページに収まっている)、
+  // `&posts_per_page=50`を付けても件数は変化しない(テーマ側がこのパラメータを
+  // 無視しており、既定で全件表示という挙動そのもの)。
+  const searchUrl = `https://j-shooto.com/?s=${encodeURIComponent("Lemino修斗")}`;
+  const html = await fetchText(searchUrl);
+  const posts: { link: string; title: string }[] = [];
+  let sm: RegExpExecArray | null;
+  while ((sm = LEMINO_SEARCH_RESULT_RE.exec(html))) {
+    posts.push({ link: sm[1], title: decodeEntities(sm[2]).trim() });
   }
 
   // 同一大会について複数回(対戦カード①②等)投稿されるため、抽出したシリーズ番号で
   // グルーピングしてbout一覧を合算(和集合)する。
   const groups = new Map<string, { link: string; title: string }[]>();
   for (const p of posts) {
-    const title = decodeEntities(p.title.rendered);
+    const title = p.title;
     if (!/Lemino\s*修斗/i.test(title)) continue;
     const seriesMatch = title.match(/Lemino\s*修斗\.?\s*(\d+)/i);
     const key = seriesMatch ? `lemino.${seriesMatch[1]}` : `untitled::${p.link}`;
@@ -587,7 +612,9 @@ async function fetchLeminoShootoOfficialEvents(): Promise<OfficialEvent[]> {
           if (!boutMap.has(dedupeKey)) boutMap.set(dedupeKey, { ...b, order: order++ });
         }
       } catch (err) {
-        process.stderr.write(`[lemino-shooto] 記事取得失敗(${p.link}): ${String(err)}\n`);
+        const msg = `[lemino-shooto] 記事取得失敗(${p.link}): ${String(err)}`;
+        process.stderr.write(`${msg}\n`);
+        auxFetchAnomalies.push(msg); // main()側でfetchAnomalyCountに合算する(2026-08-05指摘)
       }
     }
     events.push({
@@ -595,7 +622,7 @@ async function fetchLeminoShootoOfficialEvents(): Promise<OfficialEvent[]> {
       eventName,
       date,
       venue,
-      sourceUrl: posts_[posts_.length - 1].link, // 最新(最古のAPI順=配列先頭が新しい)の投稿を代表URLとする
+      sourceUrl: posts_[0].link, // 最新(検索結果順=配列先頭が新しい)の投稿を代表URLとする
       bouts: boutMap.size > 0 ? [...boutMap.values()] : null,
       boutsConfidence: "medium",
       bodyText: bodyTextCombined,
@@ -852,15 +879,31 @@ async function main() {
   // このカウンタが1以上ならワークフロー側でIssue化する(差分0件でも異常は握り
   // つぶさない)。
   let fetchAnomalyCount = 0;
+  // ある団体に複数fetcherがあり(例: 修斗=サステイン+Lemino修斗)、片方だけが
+  // 失敗した場合でもofficialByOrg[org]は他方の取得分で非空になる。この状態で
+  // onlyLocal(events.tsにあるが突合できなかった大会)を一律「公式で確認できず」
+  // と報告すると、取得失敗が原因の欠落を「公式に無い」と誤読させてしまう
+  // (2026-08-05指摘)。団体単位でこのフラグを見て文言を出し分ける。
+  const orgHadFetchFailure = new Set<Org>();
 
   for (const f of orgFetchers) {
     try {
       const result = await f.run();
+      // fetcher自体は例外を投げず0件にもならないが、内部で個別記事の取得に
+      // 部分的に失敗しているケース(例: fetchLeminoShootoOfficialEvents内の
+      // 記事別fetchText失敗)をauxFetchAnomaliesから回収する(2026-08-05指摘)。
+      if (auxFetchAnomalies.length > 0) {
+        fetchErrors.push(...auxFetchAnomalies);
+        fetchAnomalyCount += auxFetchAnomalies.length;
+        orgHadFetchFailure.add(f.org);
+        auxFetchAnomalies.length = 0;
+      }
       if (result.length === 0) {
         const msg = `[${f.label}] 取得0件(パース失敗の疑い、異常としてカウント)`;
         process.stderr.write(`${msg}\n`);
         fetchErrors.push(msg);
         fetchAnomalyCount++;
+        orgHadFetchFailure.add(f.org);
       }
       // 過去大会・日付未確定の投稿(告知記事の再送/配信情報更新等)は「未掲載」
       // 誤検知の原因になるため、ここで一律に今日(JST)以降のものだけへ絞る。
@@ -876,6 +919,12 @@ async function main() {
       process.stderr.write(`${msg}\n`);
       fetchErrors.push(msg);
       fetchAnomalyCount++;
+      orgHadFetchFailure.add(f.org);
+      if (auxFetchAnomalies.length > 0) {
+        fetchErrors.push(...auxFetchAnomalies);
+        fetchAnomalyCount += auxFetchAnomalies.length;
+        auxFetchAnomalies.length = 0;
+      }
     }
   }
 
@@ -905,10 +954,17 @@ async function main() {
     for (const l of onlyLocal) {
       const hasCancelMention =
         hasCancelKeyword && seriesSearchTokens(org, l.eventName).some((t) => combinedBodyText.includes(t));
+      // この団体で今回いずれかのfetcherが失敗している場合、「公式で確認できず」
+      // (=公式サイトを見た上で見つからなかった、と読める表現)は誤りになる
+      // (取得できていないだけの可能性が高い)。文言を明確に取得失敗由来と分ける
+      // (2026-08-05指摘、受入条件「A区分のノイズ」対応)。
+      const label = orgHadFetchFailure.has(org) ? "取得失敗のため未確認" : "公式で確認できず";
       const note = hasCancelMention
         ? "公式の他記事に「延期」または「中止」の言及あり、要確認"
-        : "延期/名称変更/取得漏れの可能性、断定はしない";
-      aLines.push(`- 公式で確認できず: ${l.eventName}(${l.date}, events.ts: \`${l.slug}\`) — ${note}`);
+        : orgHadFetchFailure.has(org)
+          ? "この団体は今回取得元の一部でエラーが発生しており、公式に無いと断定できない"
+          : "延期/名称変更/取得漏れの可能性、断定はしない";
+      aLines.push(`- ${label}: ${l.eventName}(${l.date}, events.ts: \`${l.slug}\`) — ${note}`);
       if (hasCancelMention) diffCount++;
     }
     for (const { official, local } of matched) {
