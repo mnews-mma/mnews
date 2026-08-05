@@ -57,6 +57,23 @@ async function main() {
   console.log(
     `[search] status=${searchRes.status} len=${searchText.length} hasLeminoMention=${/Lemino\s*修斗/i.test(searchText)}`
   );
+  // 検索結果一覧のHTML構造を実測するため、記事リンク(post-\d+/またはslug/)を
+  // 含む<a>タグの前後300文字を、最初の5件だけダンプする。
+  const articleAnchors = [
+    ...searchText.matchAll(/<a[^>]+href="(https:\/\/j-shooto\.com\/\d{4}\/\d{2}\/\d{2}\/[^"]+)"[^>]*>/g),
+  ];
+  console.log(`[search] articleAnchorCount=${articleAnchors.length}`);
+  const seenUrls = new Set<string>();
+  let dumped = 0;
+  for (const m of articleAnchors) {
+    if (seenUrls.has(m[1])) continue;
+    seenUrls.add(m[1]);
+    if (dumped >= 6) break;
+    dumped++;
+    const start = Math.max(0, m.index! - 100);
+    console.log(`[search] anchor#${dumped} url=${m[1]}`);
+    console.log(`[search] anchor#${dumped} context=${JSON.stringify(searchText.slice(start, m.index! + 500))}`);
+  }
 }
 
 main().catch((err) => {
