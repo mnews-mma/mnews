@@ -37,6 +37,26 @@ async function main() {
     const idx = scheduleText.search(/Lemino\s*修斗/i);
     console.log(`[shooto-mma schedule] context=${JSON.stringify(scheduleText.slice(Math.max(0, idx - 200), idx + 200))}`);
   }
+
+  // ラウンド2: wp-json以外の経路でLemino修斗の投稿一覧を発見できないか
+  const homeRes = await fetch(homeUrl, { headers: { "User-Agent": DEFAULT_UA } });
+  const homeText = await homeRes.text();
+  console.log(`[home content] hasLeminoMention=${/Lemino\s*修斗/i.test(homeText)}`);
+  const hrefs = [...homeText.matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+  const catLinks = hrefs.filter((h) => /\/category\//i.test(h));
+  console.log(`[home links] categoryLinks(sample)=${JSON.stringify([...new Set(catLinks)].slice(0, 10))}`);
+  const postLinks = hrefs.filter((h) => /^https:\/\/j-shooto\.com\/\d{4}\//.test(h));
+  console.log(`[home links] postLinks(sample)=${JSON.stringify([...new Set(postLinks)].slice(0, 10))}`);
+
+  await check("wp-sitemap.xml", "https://j-shooto.com/wp-sitemap.xml", { "User-Agent": DEFAULT_UA });
+  await check("wp-sitemap-posts-post-1.xml", "https://j-shooto.com/wp-sitemap-posts-post-1.xml", { "User-Agent": DEFAULT_UA });
+
+  const searchUrl = `https://j-shooto.com/?s=${encodeURIComponent("Lemino修斗")}`;
+  const searchRes = await fetch(searchUrl, { headers: { "User-Agent": DEFAULT_UA } });
+  const searchText = await searchRes.text();
+  console.log(
+    `[search] status=${searchRes.status} len=${searchText.length} hasLeminoMention=${/Lemino\s*修斗/i.test(searchText)}`
+  );
 }
 
 main().catch((err) => {
