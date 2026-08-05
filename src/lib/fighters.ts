@@ -69,7 +69,8 @@ export interface Fighter {
   // 表示専用のリングネーム(指示書B、2026-08)。設定時は各種表示箇所でnameJaより
   // 優先して使う(fighterDisplayName参照)。nameJa自体は名前解決・ランキング集計の
   // キーとして不変(findFighterSlugByName等の突合はnameJa/aliasesのまま)。
-  // 例: sekino-taiseiのnameJaは「関野大成」のまま、displayNameJaのみ「大成」。
+  // 2026-08-05時点、この値を使っている選手は無し(旧sekino-taiseiの
+  // displayNameJa:"大成"はnameJa自体を「大成」に直したため撤去済み)。
   displayNameJa?: string;
   // /fighters一覧・Xカードツールの公開母集団(getVisibleFighters)から恒久的に除外する
   // ためのフラグ。hiddenとは意味が異なる(hidden=新規投入バッチの公開審査待ちで
@@ -1441,7 +1442,14 @@ export const FIGHTERS: Fighter[] = [
   // 2026-07-30調査(#277)で人物取り違えと判明: 表示名「大成」の実体は関野大成の
   // DEEPメガトン級戦績。従来wikiTitleJa:"西谷大成"としていたのは別人(フェザー級)。
   // sekino-taiseiへ付け替え、西谷大成本人は下でnishitani-taiseiとして新規追加。
-  { slug: "sekino-taisei", nameJa: "関野大成", displayNameJa: "大成", nameEn: "Taisei Sekino", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // 2026-08-05: 本名は関野大成だが実際に使われている表記は「大成」(DEEP公式
+  // ロースターのアンカーテキストも「大成」)と確定したため、nameJa自体を「大成」に
+  // 直した(旧nameJa「関野大成」はfindFighterSlugByName/deriveHistoryFromEventResults
+  // のいずれにも一致しない値で、displayNameJaによる表示上書きが必要だった)。
+  // shooto-2025-vol10-osakaの55kg契約戦にも別人「大成」が存在するため、
+  // eventResults.tsのfighterBSlug:nullタグでその一戦を明示的に切り離してある
+  // (src/lib/fighterRecordFromResults.tsのderiveHistoryFromEventResults参照)。
+  { slug: "sekino-taisei", nameJa: "大成", nameEn: "Taisei Sekino", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nishitani-taisei", nameJa: "西谷大成", nameEn: "Taisei Nishitani", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "shibisai-shoma", nameJa: "シビサイ頌真", nameEn: "Shoma Shibisai", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kitakata-daichi", nameJa: "北方大地", nameEn: "Daichi Kitakata", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },

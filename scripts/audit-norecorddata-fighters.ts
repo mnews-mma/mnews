@@ -44,7 +44,7 @@ async function main() {
       enTitle ? fetchWikiFighterRecord(enTitle).catch(() => null) : Promise.resolve(null),
     ]);
 
-    const derived = deriveHistoryFromEventResults(fighter.nameJa);
+    const derived = deriveHistoryFromEventResults(fighter.nameJa, fighter.slug);
 
     let jaWiki = jaWikiRaw;
     if (jaWikiRaw && !fighter.wikiTitleJa && !historiesOverlap(jaWikiRaw.history, derived)) {

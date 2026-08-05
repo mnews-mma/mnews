@@ -25,7 +25,7 @@ async function main() {
     console.log(`  jaWiki totals: ${jaWiki.wins}-${jaWiki.losses}-${jaWiki.draws} / history件数=${jaWiki.history.length}`);
     console.log(`  jaWiki history opponents (先頭5件): ${jaWiki.history.slice(0, 5).map((h) => h.opponent).join(", ")}`);
 
-    const derived = deriveHistoryFromEventResults(fighter.nameJa);
+    const derived = deriveHistoryFromEventResults(fighter.nameJa, fighter.slug);
     console.log(`  derived(EVENT_RESULTS由来) 件数=${derived.length}`);
     console.log(`  derived opponents: ${derived.map((h) => h.opponent).join(", ")}`);
 

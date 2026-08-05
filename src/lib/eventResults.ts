@@ -4,6 +4,13 @@ export interface FightResult {
   weightClass: string;
   fighterA: string;
   fighterB: string;
+  // 同名別人の衝突がある行だけに設定する明示タグ(省略時=従来通り名前一致で
+  // 解決)。null =「この表記は特定のfighters.tsエントリに紐付けない」という
+  // 明示的な非リンク指定(2026-08-05追加。fighterRecordFromResults.tsの
+  // deriveHistoryFromEventResults・src/app/results/[slug]/page.tsx・
+  // src/lib/eventJsonLd.tsの3箇所がこのタグを参照する)。
+  fighterASlug?: string | null;
+  fighterBSlug?: string | null;
   winner: string | null; // null = 未定/不明、"引き分け"/"中止"/"NC" = 該当結果
   method: string;
   round?: string;
@@ -3660,7 +3667,12 @@ EVENT_RESULTS.push(
       { weightClass: "バンタム級", fighterA: "中島陸", fighterB: "齋藤大樹", winner: "中島陸", method: "TKO", round: "1R 4:58" },
       { weightClass: "フライ級", fighterA: "三浦颯太", fighterB: "柴山海音", winner: "柴山海音", method: "サブミッション", round: "1R 1:36" },
       { weightClass: "フェザー級", fighterA: "グ・ジユン", fighterB: "稲葉祥真", winner: "稲葉祥真", method: "サブミッション", round: "1R 3:54" },
-      { weightClass: "55kg契約", fighterA: "正木翔夢", fighterB: "大成", winner: "正木翔夢", method: "TKO", round: "1R 1:07" },
+      // fighterBSlug:null — この「大成」はDEEPメガトン級のsekino-taisei(関野大成)とは
+      // 別人(55kg契約=体重が全く合わない)。bareの「大成」は名前解決がorg非スコープの
+      // グローバル一致のため、タグ無しだとsekino-taiseiの戦績・内部リンクに誤って
+      // 混入する(2026-08-05判明)。data/shootoRecords.jsonでも既にfighterBSlug:null
+      // (解決不能な別人)として扱われている。
+      { weightClass: "55kg契約", fighterA: "正木翔夢", fighterB: "大成", fighterBSlug: null, winner: "正木翔夢", method: "TKO", round: "1R 1:07" },
       { weightClass: "CKC-67.5kg一回戦", fighterA: "森本現暉", fighterB: "有馬伶弍", winner: "森本現暉", method: "KO", round: "3R 1:48" },
       { weightClass: "CKC-67.5kg一回戦", fighterA: "惺也", fighterB: "狂介", winner: "惺也", method: "判定（3-0）" },
     ],
