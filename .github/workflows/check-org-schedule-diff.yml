@@ -47,6 +47,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: TMP debug pagination investigation (will be removed)
+        run: npx tsx scripts/tmp-debug-pagination.ts
+
       - name: Run schedule diff check (read-only, data/・src/は変更しない)
         id: diff
         run: |
