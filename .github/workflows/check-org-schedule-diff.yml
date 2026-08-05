@@ -5,7 +5,7 @@ name: Check org schedule diff (RIZIN/修斗/パンクラス/DEEP)
 # scripts/check-org-schedule-diff.tsを参照。
 #
 # このジョブは data/・src/ のいずれも書き換えず、commit/pushも一切行わない
-# (Issueの作成/更新のみ)。そのため他の日次バッチ(update-org-records.yml等、
+# (Issueの作成/更新/クローズのみ)。そのため他の日次バッチ(update-org-records.yml等、
 # CLAUDE.md「定期実行ジョブ一覧」参照)との書き込み競合は発生しない。cron時刻は
 # 単に既存ジョブと重ならない枠を選んでいるだけで、時間帯的な排他を保証する
 # 目的ではない。
@@ -18,9 +18,19 @@ permissions:
   contents: read
   issues: write
 
+# workflow_dispatchとcronが重なった場合に同時実行させず、Issueの二重作成/
+# 更新競合を避ける(2026-08-05指摘)。cancel-in-progressはfalseにして、後発の
+# 実行を打ち切らずキューさせる(手動実行を意図せず潰さないため)。
+concurrency:
+  group: check-org-schedule-diff
+  cancel-in-progress: false
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    # 実測(2026-08-05、ローカルで1回)は約32秒。ネットワーク不調でリトライが
+    # 積み重なる最悪ケースを見込んで実測値の約28倍(15分)を上限にする。
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -34,33 +44,79 @@ jobs:
       - name: Run schedule diff check (read-only, data/・src/は変更しない)
         id: diff
         run: |
+          # GitHub Actionsのbash run:は既定で-eのみでpipefireは入らないため、
+          # `tsx ... | tee` はtsx側が例外で落ちてもteeの終了コード(0)で上書き
+          # され、ジョブが緑のまま気付かれない事故になる(2026-08-05指摘)。
+          # pipefailを明示し、スクリプト側の異常終了をジョブの失敗に伝播させる。
+          set -o pipefail
           npx tsx scripts/check-org-schedule-diff.ts | tee /tmp/diff-report.md
-          count=$(grep '^DIFF_COUNT=' /tmp/diff-report.md | tail -1 | cut -d= -f2)
-          echo "count=${count:-0}" >> "$GITHUB_OUTPUT"
+          diff_count=$(grep '^DIFF_COUNT=' /tmp/diff-report.md | tail -1 | cut -d= -f2)
+          fetch_error_count=$(grep '^FETCH_ERROR_COUNT=' /tmp/diff-report.md | tail -1 | cut -d= -f2)
+          echo "diff_count=${diff_count:-0}" >> "$GITHUB_OUTPUT"
+          echo "fetch_error_count=${fetch_error_count:-0}" >> "$GITHUB_OUTPUT"
 
-      - name: Post or update summary issue
-        if: steps.diff.outputs.count != '0'
+      - name: Post/update/close summary issue
         uses: actions/github-script@v7
+        env:
+          DIFF_COUNT: ${{ steps.diff.outputs.diff_count }}
+          FETCH_ERROR_COUNT: ${{ steps.diff.outputs.fetch_error_count }}
         with:
           script: |
             const fs = require('fs');
-            const body = fs.readFileSync('/tmp/diff-report.md', 'utf8');
             const title = '団体別開催予定 差分レポート(自動)';
+            const label = 'schedule-diff';
+            const diffCount = Number(process.env.DIFF_COUNT || '0');
+            const fetchErrorCount = Number(process.env.FETCH_ERROR_COUNT || '0');
 
-            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const fullBody = [
-              body,
-              '',
-              `_このIssueは [ワークフロー実行](${runUrl}) により自動生成/更新されました。data/・src/への変更は一切行っていません。_`,
-            ].join('\n');
-
+            // 30本のオープンPRと同じ配列に返る(issues.listForRepoはPRも含む)ため、
+            // タイトル一致でのフィルタだけに頼らずラベルで絞り込む
+            // (2026-08-05指摘。PR/Issue総数が増えてもper_page:100で拾いきれる)。
             const openIssues = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
+              labels: label,
               per_page: 100,
             });
             const existing = openIssues.data.find((i) => i.title === title && !i.pull_request);
+
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+            if (diffCount === 0 && fetchErrorCount === 0) {
+              // 差分・取得異常のいずれも無い。古いIssueが残っていれば解消コメントを
+              // 付けてcloseする(2026-08-05指摘「必須4」)。存在しなければ何もしない。
+              if (existing) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existing.number,
+                  body: `差分なし(解消)。 [ワークフロー実行](${runUrl})`,
+                });
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existing.number,
+                  state: 'closed',
+                });
+                console.log(`Closed resolved issue #${existing.number}`);
+              } else {
+                console.log('No diff, no fetch anomaly, no existing issue. Nothing to do.');
+              }
+              return;
+            }
+
+            let body = fs.readFileSync('/tmp/diff-report.md', 'utf8');
+            const footer = [
+              '',
+              `_このIssueは [ワークフロー実行](${runUrl}) により自動生成/更新されました。data/・src/への変更は一切行っていません。_`,
+            ].join('\n');
+            // Issue本文の上限(65536文字)を超える場合は末尾を落として明記する
+            // (2026-08-05指摘)。
+            const maxBodyLen = 65536 - footer.length - 200;
+            if (body.length > maxBodyLen) {
+              body = `${body.slice(0, maxBodyLen)}\n\n...(文字数上限のため以下省略)`;
+            }
+            const fullBody = `${body}${footer}`;
 
             if (existing) {
               await github.rest.issues.update({
@@ -76,6 +132,7 @@ jobs:
                 repo: context.repo.repo,
                 title,
                 body: fullBody,
+                labels: [label],
               });
               console.log(`Created new issue #${created.data.number}`);
             }

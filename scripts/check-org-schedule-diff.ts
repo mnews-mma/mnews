@@ -180,6 +180,33 @@ function extractSeriesKey(org: Org, name: string): string | null {
   return null;
 }
 
+// 「公式で確認できず」(A区分)の大会について、公式サイト側の別記事本文に
+// 「延期」「中止」の言及とセットで名前が出ていないか探すための検索トークン。
+// extractSeriesKey()と同じ正規表現群からシリーズ表記の実文字列(例:
+// "LANDMARK 16")を取り出す(スペース有無どちらの表記でも拾えるよう両方試す)。
+// 完全一致ではなくベストエフォートの手がかり(断定はしない)。
+function seriesSearchTokens(org: Org, name: string): string[] {
+  const tokens = [name];
+  const patterns: RegExp[] =
+    org === "rizin"
+      ? [/RIZIN\.\d+/, /超RIZIN\.?\d+/, /LANDMARK\s*\d+/i]
+      : org === "shooto"
+        ? [/Vol\.?\s*\d+/i, /Lemino\s*修斗\.?\s*\d+/i]
+        : org === "pancrase"
+          ? [/PANCRASE\s*\d+/i]
+          : org === "deep"
+            ? [/DEEP\s*\d+\s*IMPACT/i, /JEWELS\s*\d+/i, /TOKYO IMPACT\s*\d{4}\s*\d+/i]
+            : [];
+  for (const p of patterns) {
+    const m = name.match(p);
+    if (m) {
+      tokens.push(m[0]);
+      tokens.push(m[0].replace(/\s+/g, ""));
+    }
+  }
+  return tokens;
+}
+
 // ─────────────────────────────────────────────
 // 団体別カードパーサ
 // ─────────────────────────────────────────────
@@ -820,10 +847,21 @@ async function main() {
 
   const officialByOrg: Record<Org, OfficialEvent[]> = { rizin: [], shooto: [], pancrase: [], deep: [] };
   const fetchErrors: string[] = [];
+  // 例外を投げずに0件を返す(=公式サイトのHTML構造変更でパースが静かに空振りする)
+  // 経路があるため、例外catchだけでなく0件そのものも異常としてカウントする。
+  // このカウンタが1以上ならワークフロー側でIssue化する(差分0件でも異常は握り
+  // つぶさない)。
+  let fetchAnomalyCount = 0;
 
   for (const f of orgFetchers) {
     try {
       const result = await f.run();
+      if (result.length === 0) {
+        const msg = `[${f.label}] 取得0件(パース失敗の疑い、異常としてカウント)`;
+        process.stderr.write(`${msg}\n`);
+        fetchErrors.push(msg);
+        fetchAnomalyCount++;
+      }
       // 過去大会・日付未確定の投稿(告知記事の再送/配信情報更新等)は「未掲載」
       // 誤検知の原因になるため、ここで一律に今日(JST)以降のものだけへ絞る。
       const upcomingOnly = result.filter((e) => e.date !== null && e.date >= TODAY_JST);
@@ -837,6 +875,7 @@ async function main() {
       const msg = `[${f.label}] 取得失敗、この団体をスキップして続行: ${String(err)}`;
       process.stderr.write(`${msg}\n`);
       fetchErrors.push(msg);
+      fetchAnomalyCount++;
     }
   }
 
@@ -857,8 +896,20 @@ async function main() {
       aLines.push(`- **未掲載**: ${o.eventName}(${o.date ?? "日付不明"}, ${o.venue ?? "会場不明"}) — ${o.sourceUrl}`);
       diffCount++;
     }
+    // 「公式で確認できず」の大会が、公式の他記事(このorgで取得できた全ページ)で
+    // 「延期」「中止」と一緒に言及されていないか確認する。単なる取得漏れとの
+    // 誤通知を避けるため、全件を通知対象にはせず、この言及がある場合だけ
+    // diffCountに加える(受入条件「必須3」)。
+    const combinedBodyText = officialList.map((e) => e.bodyText ?? "").join("\n");
+    const hasCancelKeyword = combinedBodyText.includes("延期") || combinedBodyText.includes("中止");
     for (const l of onlyLocal) {
-      aLines.push(`- 公式で確認できず: ${l.eventName}(${l.date}, events.ts: \`${l.slug}\`) — 延期/名称変更/取得漏れの可能性、断定はしない`);
+      const hasCancelMention =
+        hasCancelKeyword && seriesSearchTokens(org, l.eventName).some((t) => combinedBodyText.includes(t));
+      const note = hasCancelMention
+        ? "公式の他記事に「延期」または「中止」の言及あり、要確認"
+        : "延期/名称変更/取得漏れの可能性、断定はしない";
+      aLines.push(`- 公式で確認できず: ${l.eventName}(${l.date}, events.ts: \`${l.slug}\`) — ${note}`);
+      if (hasCancelMention) diffCount++;
     }
     for (const { official, local } of matched) {
       if (official.date && official.date !== local.date) {
@@ -883,12 +934,13 @@ async function main() {
         diffCount++;
       }
       for (const b of diff.missingOnOfficial) {
-        const cancelHint =
-          official.bodyText && (official.bodyText.includes("延期") || official.bodyText.includes("中止")) &&
-          (official.bodyText.includes(b.fighterA) || official.bodyText.includes(b.fighterB))
-            ? "(本文に「延期」または「中止」の言及あり、要確認)"
-            : "";
+        const isCancelMention =
+          !!official.bodyText &&
+          (official.bodyText.includes("延期") || official.bodyText.includes("中止")) &&
+          (official.bodyText.includes(b.fighterA) || official.bodyText.includes(b.fighterB));
+        const cancelHint = isCancelMention ? "(本文に「延期」または「中止」の言及あり、要確認)" : "";
         lines.push(`- 公式カードで確認できず: ${local.eventName}(\`${local.slug}\`) ${b.weightClass} ${b.fighterA} vs ${b.fighterB} ${cancelHint}`);
+        if (isCancelMention) diffCount++; // 中止/延期の可能性は単独でもIssue化対象(受入条件「必須3」)
       }
       for (const c of diff.opponentChangeSuspect) {
         lines.push(
@@ -929,6 +981,7 @@ async function main() {
   const report = parts.join("\n");
   console.log(report);
   console.log(`\nDIFF_COUNT=${diffCount}`);
+  console.log(`FETCH_ERROR_COUNT=${fetchAnomalyCount}`);
 
   if (process.env.GITHUB_STEP_SUMMARY) {
     const fs = await import("fs");
