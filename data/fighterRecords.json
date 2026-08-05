@@ -38407,8 +38407,8 @@
   },
   "noa-tokumoto": {
     "wins": 5,
-    "losses": 1,
-    "draws": 0,
+    "losses": 0,
+    "draws": 1,
     "ko": 1,
     "sub": 1,
     "decision": 3,
@@ -38448,7 +38448,7 @@
       {
         "date": "2024-08-03",
         "opponent": "片山智絵",
-        "result": "loss",
+        "result": "draw",
         "method": "判定 0-1",
         "event": "COLORS Produce by SHOOTO Vol.3",
         "round": ""
@@ -39295,12 +39295,12 @@
     "live": true
   },
   "katayama-tomoe": {
-    "wins": 2,
+    "wins": 1,
     "losses": 1,
-    "draws": 1,
+    "draws": 2,
     "ko": 0,
     "sub": 0,
-    "decision": 2,
+    "decision": 1,
     "history": [
       {
         "date": "2025-11-22",
@@ -39329,7 +39329,7 @@
       {
         "date": "2024-08-03",
         "opponent": "徳本望愛",
-        "result": "win",
+        "result": "draw",
         "method": "判定 0-1",
         "event": "COLORS Produce by SHOOTO Vol.3",
         "round": ""
