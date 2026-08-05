@@ -1,12 +1,21 @@
 // RIZIN/修斗(サステイン+Lemino修斗)/パンクラス/DEEPの4団体公式サイトと
-// src/lib/events.ts の upcoming エントリを突き合わせ、差分を3区分でレポートする
-// read-onlyジョブ。data/・src/ は一切書き換えない。
+// src/lib/events.ts の upcoming エントリを突き合わせ、差分をレポートする
+// read-onlyジョブ。data/・src/ は一切書き換えない(D-1はdata/*Records.jsonと
+// src/lib/eventResults.tsを読むだけで、どちらも変更しない)。
 //
 // 区分:
 //   A: 大会単位(未掲載の大会／日付・会場の変更疑い)
 //   B: カード単位(未掲載のbout／対戦相手変更疑い／中止・延期の可能性)
 //   C: バウトオーダー(Bで名前ペアが完全一致した大会のみを対象にした順序差分。
 //      暫定順で登録している大会があり順序差分は通知ノイズになりやすいため、A/Bとは別出しにする)
+//   D-1: 大会結果(/results = src/lib/eventResults.ts)の掲載漏れ検知。
+//      A/B/Cが「開催予定(events.ts) vs 公式サイト」なのに対し、D-1は
+//      「日次バッチ生成済みのdata/*Records.json vs /resultsページ」という
+//      別ソース同士の突合(公式サイトへの再fetchはしない)。
+//      D-1a(新規発生分、DIFF_COUNTに計上)とD-1b(既知の掲載漏れ、
+//      results-coverage-baseline.jsonに登録済み・参考情報としては毎回出す
+//      がDIFF_COUNTには計上しない)に分ける。詳細はresults-coverage-baseline.json
+//      冒頭の_readme参照。
 //
 // 団体ごとの機械可読性には大きな差があるため(2026-08-05実測)、対戦カード(B)の
 // 抽出結果には信頼度(confidence)を付ける。特に修斗(shooto-mma.com)は個別ページの
@@ -14,9 +23,15 @@
 //
 // 実行: npx tsx scripts/check-org-schedule-diff.ts
 import { EVENTS, type MEvent } from "../src/lib/events";
-import { toJstDateStr } from "../src/lib/eventCountdown";
+import { toJstDateStr, shiftDateStr } from "../src/lib/eventCountdown";
 import { normalize } from "./lib/fighterNameBackfill";
 import { assertAllowedByRobots } from "./lib/robotsGate";
+import { findEventCandidates } from "./lib/eventSlugLink";
+import rizinRecordsData from "../data/rizinRecords.json";
+import shootoRecordsData from "../data/shootoRecords.json";
+import pancraseRecordsData from "../data/pancraseRecords.json";
+import deepRecordsData from "../data/deepRecords.json";
+import resultsCoverageBaseline from "./results-coverage-baseline.json";
 
 const TODAY_JST = toJstDateStr();
 
@@ -97,6 +112,14 @@ interface JsonBSection extends JsonEventRef {
   items: JsonBoutItem[];
 }
 
+interface JsonResultsGapEntry {
+  org: Org;
+  orgLabel: string;
+  eventName: string;
+  date: string;
+  sourceUrl: string | null;
+}
+
 interface ScheduleDiffJson {
   detectedAtUtc: string;
   diffCount: number;
@@ -105,6 +128,8 @@ interface ScheduleDiffJson {
   a: JsonASection[];
   b: JsonBSection[];
   c: JsonEventRef[];
+  d1a: JsonResultsGapEntry[];
+  d1b: JsonResultsGapEntry[];
 }
 
 async function sleep(ms: number): Promise<void> {
@@ -959,6 +984,83 @@ function diffOrder(local: LocalEvent, official: OfficialBout[]): boolean {
 // ─────────────────────────────────────────────
 const ORG_LABEL: Record<Org, string> = { rizin: "RIZIN", shooto: "修斗", pancrase: "パンクラス", deep: "DEEP" };
 
+// ─────────────────────────────────────────────
+// D-1: 大会結果(/results)掲載漏れ検知
+// ─────────────────────────────────────────────
+
+// 大会開催直後は*Records.jsonへの反映(日次バッチ)やeventResults.tsへの
+// 人力追記が間に合わない可能性があるため、直近RESULTS_GAP_GRACE_DAYS日は
+// 判定対象外にする(2026-08-06実測: この時点では4団体とも直近の開催済み
+// 大会は*Records.jsonに反映済みで、実際の反映遅延は観測できなかった。
+// つまりこの日数は実測に基づく確定値ではなく、保守的な仮置きの値)。
+const RESULTS_GAP_GRACE_DAYS = 7;
+
+// 判定対象とする期間(この日数より前のdata/*Records.json大会は見ない、
+// ローリングウィンドウ)。2026-08-06時点でeventResults.tsへの掲載漏れを
+// 実測した際の調査対象(既知の掲載漏れ33件、最古が2025-03-23)がちょうど
+// 収まる550日(約18ヶ月、余裕を見て501日ぴったりより広め)に設定している
+// (指示書では「直近180日」と伝えていたが、これは報告時の日数計算の誤りで、
+// 実際に33件を洗い出した調査ウィンドウは約18ヶ月分だった)。これを広げると、
+// eventResults.ts整備前の古い大会(2015年〜等、そもそも/results個別掲載の
+// 対象外だった時期)まで巻き込み、baselineで管理しきれない規模になるため
+// 意図的に絞っている。
+const RESULTS_GAP_WINDOW_DAYS = 550;
+
+interface RecordEvent {
+  eventName: string;
+  date: string;
+  sourceUrl?: string;
+}
+
+const RESULTS_ORG_FILES: Record<Org, RecordEvent[]> = {
+  rizin: rizinRecordsData as RecordEvent[],
+  shooto: shootoRecordsData as RecordEvent[],
+  pancrase: pancraseRecordsData as RecordEvent[],
+  deep: deepRecordsData as RecordEvent[],
+};
+
+interface ResultsCoverageBaselineEntry {
+  org: Org;
+  eventName: string;
+  date: string;
+}
+
+// 大会名にnbsp( )等の空白類が紛れることがある(2026-08-06実測、
+// 「DEEP HAMAMATSU IMPACT 2026 1ST ROUND」)。\sはJSの正規表現では
+// nbspも含むため、空白類を単一の半角スペースへ畳んでからキー化する。
+function baselineKey(org: Org, eventName: string, date: string): string {
+  return `${org}::${eventName.replace(/\s+/g, " ").trim()}::${date}`;
+}
+
+function checkResultsCoverage(): { d1a: JsonResultsGapEntry[]; d1b: JsonResultsGapEntry[] } {
+  const windowStart = shiftDateStr(TODAY_JST, -RESULTS_GAP_WINDOW_DAYS);
+  const graceStart = shiftDateStr(TODAY_JST, -RESULTS_GAP_GRACE_DAYS);
+  const baselineSet = new Set(
+    (resultsCoverageBaseline.entries as ResultsCoverageBaselineEntry[]).map((e) => baselineKey(e.org, e.eventName, e.date))
+  );
+
+  const d1a: JsonResultsGapEntry[] = [];
+  const d1b: JsonResultsGapEntry[] = [];
+
+  for (const org of ["rizin", "shooto", "pancrase", "deep"] as Org[]) {
+    for (const rec of RESULTS_ORG_FILES[org]) {
+      if (!rec.date || rec.date < windowStart || rec.date >= graceStart) continue;
+      const candidates = findEventCandidates(rec.eventName, rec.date);
+      if (candidates.length !== 0) continue; // 1件一致=掲載済み。2件以上(名寄せ不能)もここでは「未掲載」扱いにしない
+      const entry: JsonResultsGapEntry = {
+        org,
+        orgLabel: ORG_LABEL[org],
+        eventName: rec.eventName,
+        date: rec.date,
+        sourceUrl: rec.sourceUrl ?? null,
+      };
+      if (baselineSet.has(baselineKey(org, rec.eventName, rec.date))) d1b.push(entry);
+      else d1a.push(entry);
+    }
+  }
+  return { d1a, d1b };
+}
+
 async function main() {
   const orgFetchers: { org: Org; label: string; run: () => Promise<OfficialEvent[]> }[] = [
     { org: "rizin", label: "RIZIN", run: fetchRizinOfficialEvents },
@@ -1220,6 +1322,21 @@ async function main() {
   );
   parts.push(`\n## C: バウトオーダー(対戦相手ペアは一致、順序のみ差分。暫定順で登録している大会があるため参考情報)\n${sectionsC.length > 0 ? sectionsC.join("\n\n") : "差分なし"}`);
 
+  // D-1: /results(eventResults.ts)の掲載漏れ検知。A/B/Cとは違うソース同士の
+  // 突合(公式サイトへの再fetchはしない)なので、diffCountへの計上もD-1aのみ
+  // (D-1bは既知の掲載漏れの一覧を毎回出し続けるが、これだけでIssueがopenに
+  // なり続けないようDIFF_COUNTには含めない)。
+  const { d1a, d1b } = checkResultsCoverage();
+  diffCount += d1a.length;
+  const formatGapEntry = (e: JsonResultsGapEntry) => `- **${e.orgLabel}** ${e.date} ${e.eventName}${e.sourceUrl ? ` — ${e.sourceUrl}` : ""}`;
+  parts.push(
+    `\n## D-1: 大会結果(/results)掲載漏れ\n### D-1a: 新規の掲載漏れ(要対応)\n${
+      d1a.length > 0 ? d1a.map(formatGapEntry).join("\n") : "差分なし"
+    }\n\n### D-1b: 既知の掲載漏れ(baseline登録済み、参考情報。DIFF_COUNTには含めない)\n${
+      d1b.length > 0 ? `${d1b.length}件\n${d1b.map(formatGapEntry).join("\n")}` : "差分なし"
+    }`
+  );
+
   // /admin/schedule-diff がMarkdownを再パースせずに済むよう、同じ内容を構造化
   // データとして本文末尾にHTMLコメントで埋め込む(GitHub上のMarkdown表示には
   // 影響しない)。ワークフロー側(check-org-schedule-diff.yml)がこの文字列を
@@ -1232,6 +1349,8 @@ async function main() {
     a: jsonA,
     b: jsonB,
     c: jsonC,
+    d1a,
+    d1b,
   };
   parts.push(`\n<!-- SCHEDULE_DIFF_JSON: ${JSON.stringify(jsonPayload)} -->`);
 
