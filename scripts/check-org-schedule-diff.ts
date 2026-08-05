@@ -173,6 +173,8 @@ function extractSeriesKey(org: Org, name: string): string | null {
     if (m) return `deep.${m[1]}`;
     m = name.match(/JEWELS\s*(\d+)/i);
     if (m) return `jewels.${m[1]}`;
+    // \d{4}はシリーズ年(例:2026)であり暦日ではない。Dateを構築しないため
+    // JST日付バイパス検査(パターン3)は誤検出。
     m = name.match(/TOKYO IMPACT\s*(\d{4})\s*(\d+)/i);
     if (m) return `tokyo-impact.${m[1]}.${m[2]}`;
     return null;
@@ -404,6 +406,9 @@ async function fetchRizinOfficialEvents(): Promise<OfficialEvent[]> {
     const nameMatch = block.match(/【\d{1,2}月】(.+)/);
     if (!nameMatch) continue;
     const eventName = nameMatch[1].trim();
+    // 抽出した年/月/日はJST基準で書かれた公式サイト本文の文字列をpadStartで
+    // 連結するだけで、Date()を構築しない(以降はYYYY-MM-DD文字列同士の
+    // ===/>=比較のみ。JST日付バイパス検査(パターン3)は誤検出)。
     const dateMatch = block.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
     if (!dateMatch) continue; // 開催済み(試合結果一覧のみ)は日付ブロックが無く自然に除外される
     const [, y, mo, d] = dateMatch;
@@ -512,6 +517,9 @@ async function fetchShootoOfficialEvents(): Promise<OfficialEvent[]> {
     try {
       const detailHtml = await fetchText(detailUrl);
       bodyText = stripTags(detailHtml);
+      // \d{4}年...日は「会場」欄を探すためのアンカー(目印)であり、日付自体は
+      // キャプチャ・使用しない(venueMatch[1]は会場名のみ)。Dateを構築しない
+      // ためJST日付バイパス検査(パターン3)は誤検出。
       const venueMatch = bodyText.match(/開催日\s*\n\s*\d{4}年\d{1,2}月\d{1,2}日[^\n]*\n\s*会場\s*\n\s*([^\n]+)/);
       venue = venueMatch ? venueMatch[1].trim() : null;
       bouts = parseShootoProseCard(bodyText);
@@ -601,6 +609,9 @@ async function fetchLeminoShootoOfficialEvents(): Promise<OfficialEvent[]> {
         bodyTextCombined += `\n${text}`;
         const nameMatch = text.match(/［大会名］\s*\n?([\s\S]*?)［日時］/);
         if (nameMatch) eventName = nameMatch[1].replace(/\s+/g, "").trim() || eventName;
+        // 抽出した年/月/日はJST基準で書かれた公式サイト本文の文字列をpadStartで
+        // 連結するだけで、Date()を構築しない(JST日付バイパス検査(パターン3)は
+        // 誤検出)。
         const dateMatch = text.match(/［日時］\s*\n?\s*(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
         if (dateMatch && !date) {
           date = `${dateMatch[1]}-${dateMatch[2].padStart(2, "0")}-${dateMatch[3].padStart(2, "0")}`;
@@ -694,6 +705,9 @@ async function fetchDeepOfficialEvents(): Promise<OfficialEvent[]> {
     try {
       const detailHtml = await fetchText(c.url);
       const text = stripTags(detailHtml);
+      // 抽出した年/月/日はJST基準で書かれた公式サイト本文の文字列をpadStartで
+      // 連結するだけで、Date()を構築しない(JST日付バイパス検査(パターン3)は
+      // 誤検出)。
       const dateMatch = text.match(/●日時：\s*(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
       const date = dateMatch ? `${dateMatch[1]}-${dateMatch[2].padStart(2, "0")}-${dateMatch[3].padStart(2, "0")}` : null;
       const venueMatch = text.match(/●会場：\s*([^\n●]+)/);
