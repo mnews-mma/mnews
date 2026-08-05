@@ -69,6 +69,12 @@ export interface OriginalArticle {
   fights: OriginalArticleFight[]; // 選択した試合ごとに1セクション(通常1件、複数可)。プロース記事では空配列
   body?: string[]; // 自由記述段落(ランキング更新告知等、対戦カード比較に当てはまらない記事用)
   rankingSnapshots?: RankingDivisionSnapshot[]; // ランキング更新告知の階級別スナップショット表示
+  // 編集中の記事を本番で一時的に到達不能にするフラグ(Fighter.hiddenと同じ命名規約)。
+  // true時: 記事ページ本体はnotFound()、generateStaticParamsで静的生成対象から除外、
+  // サイトマップ・トップ/archiveの新着フィード・大会ページの関連記事リンクからも除外する
+  // (findArticlesForEventの時点でフィルタするため呼び出し側は変更不要)。slugは変えず、
+  // リダイレクトも張らない。編集完了後にこのフラグを外せば同じURLで再公開される。
+  hidden?: boolean;
 }
 
 export const ORIGINAL_ARTICLES: OriginalArticle[] = [
@@ -172,6 +178,9 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
     eventSlug: "rizin-54",
     publishedAt: "2026-08-03",
     publishedAtTime: "23:30",
+    // 2026-08-06、記事本文・デザインの改修中のため一時非公開。改修完了後に
+    // このフラグを外して同じURLで再公開する。
+    hidden: true,
     body: [
       "8月11日(火・祝)、TOYOTA ARENA TOKYOでRIZIN.54が開催されます。",
       "全10試合について、AI RIZINランキングのレートから期待勝率を機械算出し、勝敗を予想しました。",
@@ -336,7 +345,7 @@ export function getOriginalArticle(slug: string): OriginalArticle | undefined {
 // 大会ページ(/events/[slug]・/results/[slug])から該当記事を逆引きする
 // (「記事が存在する大会のみ」リンクを出すため)。
 export function findArticlesForEvent(eventSlug: string): OriginalArticle[] {
-  return ORIGINAL_ARTICLES.filter((a) => a.eventSlug === eventSlug);
+  return ORIGINAL_ARTICLES.filter((a) => a.eventSlug === eventSlug && !a.hidden);
 }
 
 // トップフィードに混在させるための FeedArticle 変換。url は外部リンクではなく

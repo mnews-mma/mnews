@@ -75,7 +75,7 @@ export default async function ArchivePage({
   // オリジナル記事(数字で見る対戦カード等)もトップと同じ変換関数でマージし、
   // 「オリジナル」タブとして絞り込めるようにする(役割: 過去のニュース=全アーカイブ、
   // 重複表示は容認)。
-  const originalArticles = ORIGINAL_ARTICLES.map(originalArticleToFeedArticle);
+  const originalArticles = ORIGINAL_ARTICLES.filter((a) => !a.hidden).map(originalArticleToFeedArticle);
   const articles = [...rssArticles, ...originalArticles].sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );

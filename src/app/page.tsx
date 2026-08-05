@@ -188,7 +188,7 @@ export default async function HomePage() {
   // 母集団(feedUniverse)にまとめ、タブごとにその部分集合をbuildFeed()に通す。
   // 窓(48h)・フォールバック(5件)・上限(15件)は全タブ共通のbuildFeed任せにし、
   // タブ固有の分岐ロジックはページ側に持たない(メディアのみソフト上限10件)。
-  const originalFeedArticles = ORIGINAL_ARTICLES.map(originalArticleToFeedArticle);
+  const originalFeedArticles = ORIGINAL_ARTICLES.filter((a) => !a.hidden).map(originalArticleToFeedArticle);
   const feedUniverse = [...toFeedArticles(enrichFirstSeen(articles, firstSeenMap)), ...originalFeedArticles];
   // 残り日数の基準(JST 0:00)は src/lib/eventCountdown.ts に一本化。
   const startOfTodayJstMs = computeStartOfTodayJstMs();

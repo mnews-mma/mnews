@@ -17,7 +17,7 @@ import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import matchupStyles from "@/styles/matchup.module.css";
 
 export function generateStaticParams() {
-  return ORIGINAL_ARTICLES.map((a) => ({ slug: a.slug }));
+  return ORIGINAL_ARTICLES.filter((a) => !a.hidden).map((a) => ({ slug: a.slug }));
 }
 
 // eventSlugは開催予定(events.ts)/結果(eventResults.ts)のどちらも指しうるため両方探す。
@@ -36,7 +36,7 @@ function resolveEventLink(eventSlug: string) {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = getOriginalArticle(slug);
-  if (!article) return { title: "記事が見つかりません | Mニュース", robots: { index: false, follow: false } };
+  if (!article || article.hidden) return { title: "記事が見つかりません | Mニュース", robots: { index: false, follow: false } };
   const firstFight = article.fights[0];
   const description = firstFight
     ? `${firstFight.fighterA.nameJa} vs ${firstFight.fighterB.nameJa}の戦績・フィニッシュ率・直近5戦を数字で比較。${article.title}`
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = getOriginalArticle(slug);
-  if (!article) notFound();
+  if (!article || article.hidden) notFound();
   const records = await fetchFighterRecords();
   const visibleSlugs = await getVisibleFighterSlugs();
   const eventLink = resolveEventLink(article.eventSlug);
