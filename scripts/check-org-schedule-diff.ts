@@ -59,6 +59,54 @@ interface LocalEvent {
   bouts: { fighterA: string; fighterB: string; weightClass: string; cancelled?: boolean }[];
 }
 
+// ─────────────────────────────────────────────
+// Issue本文に埋め込む構造化データ(<!-- SCHEDULE_DIFF_JSON: ... -->)の型。
+// /admin/schedule-diff がMarkdownを再パースせずに済むよう、レポート組み立てと
+// 同時にこのJSONも組み立てる(Markdown表示自体は変えない、末尾に追記するのみ)。
+// ─────────────────────────────────────────────
+interface JsonEventRef {
+  org: Org;
+  orgLabel: string;
+  eventName: string;
+  slug: string | null; // events.tsに存在する場合のみ(/events/[slug]リンク用)
+  date: string | null;
+  venue: string | null;
+  sourceUrl: string | null;
+}
+
+type JsonASection =
+  | ({ kind: "event_missing" } & JsonEventRef)
+  | ({ kind: "event_unconfirmed"; fetchFailure: boolean; cancelMention: boolean } & JsonEventRef)
+  | ({ kind: "date_change"; localDate: string; officialDate: string } & JsonEventRef)
+  | ({ kind: "venue_change"; localVenue: string | null; officialVenue: string | null } & JsonEventRef);
+
+interface JsonBoutItem {
+  kind: "missing_on_local" | "missing_on_official" | "opponent_change";
+  weightClass?: string | null;
+  fighterA?: string;
+  fighterB?: string;
+  localFighterA?: string;
+  localFighterB?: string;
+  officialFighterA?: string;
+  officialFighterB?: string;
+  cancelMention?: boolean;
+}
+
+interface JsonBSection extends JsonEventRef {
+  confidence: Confidence;
+  items: JsonBoutItem[];
+}
+
+interface ScheduleDiffJson {
+  detectedAtUtc: string;
+  diffCount: number;
+  fetchErrorCount: number;
+  fetchErrors: string[];
+  a: JsonASection[];
+  b: JsonBSection[];
+  c: JsonEventRef[];
+}
+
 async function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -948,6 +996,10 @@ async function main() {
   const sectionsC: string[] = [];
   let diffCount = 0;
 
+  const jsonA: JsonASection[] = [];
+  const jsonB: JsonBSection[] = [];
+  const jsonC: JsonEventRef[] = [];
+
   for (const org of ["rizin", "shooto", "pancrase", "deep"] as Org[]) {
     const localList = loadLocalEvents(org);
     const officialList = officialByOrg[org];
@@ -958,6 +1010,16 @@ async function main() {
     for (const o of onlyOfficial) {
       aLines.push(`- **未掲載**: ${o.eventName}(${o.date ?? "日付不明"}, ${o.venue ?? "会場不明"}) — ${o.sourceUrl}`);
       diffCount++;
+      jsonA.push({
+        kind: "event_missing",
+        org,
+        orgLabel: ORG_LABEL[org],
+        eventName: o.eventName,
+        slug: null,
+        date: o.date,
+        venue: o.venue,
+        sourceUrl: o.sourceUrl,
+      });
     }
     // 「公式で確認できず」の大会が、公式の他記事(このorgで取得できた全ページ)で
     // 「延期」「中止」と一緒に言及されていないか確認する。単なる取得漏れとの
@@ -980,15 +1042,51 @@ async function main() {
           : "延期/名称変更/取得漏れの可能性、断定はしない";
       aLines.push(`- ${label}: ${l.eventName}(${l.date}, events.ts: \`${l.slug}\`) — ${note}`);
       if (hasCancelMention) diffCount++;
+      jsonA.push({
+        kind: "event_unconfirmed",
+        org,
+        orgLabel: ORG_LABEL[org],
+        eventName: l.eventName,
+        slug: l.slug,
+        date: l.date,
+        venue: l.venue,
+        sourceUrl: null,
+        fetchFailure: orgHadFetchFailure.has(org),
+        cancelMention: hasCancelMention,
+      });
     }
     for (const { official, local } of matched) {
       if (official.date && official.date !== local.date) {
         aLines.push(`- **変更疑い(日付)**: ${local.eventName}(\`${local.slug}\`) events.ts=${local.date} ⇔ 公式=${official.date}`);
         diffCount++;
+        jsonA.push({
+          kind: "date_change",
+          org,
+          orgLabel: ORG_LABEL[org],
+          eventName: local.eventName,
+          slug: local.slug,
+          date: local.date,
+          venue: local.venue,
+          sourceUrl: official.sourceUrl,
+          localDate: local.date,
+          officialDate: official.date,
+        });
       }
       if (!venueRoughlyMatches(official.venue, local.venue)) {
         aLines.push(`- **変更疑い(会場)**: ${local.eventName}(\`${local.slug}\`) events.ts=${local.venue ?? "未設定"} ⇔ 公式=${official.venue ?? "不明"}`);
         diffCount++;
+        jsonA.push({
+          kind: "venue_change",
+          org,
+          orgLabel: ORG_LABEL[org],
+          eventName: local.eventName,
+          slug: local.slug,
+          date: local.date,
+          venue: local.venue,
+          sourceUrl: official.sourceUrl,
+          localVenue: local.venue,
+          officialVenue: official.venue,
+        });
       }
     }
     if (aLines.length > 0) sectionsA.push(`### ${ORG_LABEL[org]}\n${aLines.join("\n")}`);
@@ -999,9 +1097,11 @@ async function main() {
       if (!official.bouts) continue;
       const diff = diffBouts(local, official.bouts);
       const lines: string[] = [];
+      const jsonItems: JsonBoutItem[] = [];
       for (const b of diff.missingOnLocal) {
         lines.push(`- **未掲載**: ${local.eventName}(\`${local.slug}\`) ${b.weightClass ?? ""} ${b.fighterA} vs ${b.fighterB}`);
         diffCount++;
+        jsonItems.push({ kind: "missing_on_local", weightClass: b.weightClass, fighterA: b.fighterA, fighterB: b.fighterB });
       }
       for (const b of diff.missingOnOfficial) {
         const isCancelMention =
@@ -1011,17 +1111,53 @@ async function main() {
         const cancelHint = isCancelMention ? "(本文に「延期」または「中止」の言及あり、要確認)" : "";
         lines.push(`- 公式カードで確認できず: ${local.eventName}(\`${local.slug}\`) ${b.weightClass} ${b.fighterA} vs ${b.fighterB} ${cancelHint}`);
         if (isCancelMention) diffCount++; // 中止/延期の可能性は単独でもIssue化対象(受入条件「必須3」)
+        jsonItems.push({
+          kind: "missing_on_official",
+          weightClass: b.weightClass,
+          fighterA: b.fighterA,
+          fighterB: b.fighterB,
+          cancelMention: isCancelMention,
+        });
       }
       for (const c of diff.opponentChangeSuspect) {
         lines.push(
           `- **対戦相手変更疑い**: ${local.eventName}(\`${local.slug}\`) events.ts「${c.local.fighterA} vs ${c.local.fighterB}」⇔ 公式「${c.official.fighterA} vs ${c.official.fighterB}」`
         );
         diffCount++;
+        jsonItems.push({
+          kind: "opponent_change",
+          localFighterA: c.local.fighterA,
+          localFighterB: c.local.fighterB,
+          officialFighterA: c.official.fighterA,
+          officialFighterB: c.official.fighterB,
+        });
       }
-      if (lines.length > 0) bLinesByConfidence[official.boutsConfidence].push(`**${local.eventName}** (\`${local.slug}\`, ${official.sourceUrl})\n${lines.join("\n")}`);
+      if (lines.length > 0) {
+        bLinesByConfidence[official.boutsConfidence].push(`**${local.eventName}** (\`${local.slug}\`, ${official.sourceUrl})\n${lines.join("\n")}`);
+        jsonB.push({
+          org,
+          orgLabel: ORG_LABEL[org],
+          eventName: local.eventName,
+          slug: local.slug,
+          date: local.date,
+          venue: local.venue,
+          sourceUrl: official.sourceUrl,
+          confidence: official.boutsConfidence,
+          items: jsonItems,
+        });
+      }
 
       if (diffOrder(local, official.bouts)) {
         cLines.push(`- ${local.eventName}(\`${local.slug}\`): 対戦カードの並び順が公式と異なる(対戦相手ペア自体は一致)`);
+        jsonC.push({
+          org,
+          orgLabel: ORG_LABEL[org],
+          eventName: local.eventName,
+          slug: local.slug,
+          date: local.date,
+          venue: local.venue,
+          sourceUrl: official.sourceUrl,
+        });
       }
     }
     if (bLinesByConfidence.high.length + bLinesByConfidence.medium.length > 0) {
@@ -1033,9 +1169,11 @@ async function main() {
     if (cLines.length > 0) sectionsC.push(`### ${ORG_LABEL[org]}\n${cLines.join("\n")}`);
   }
 
+  const detectedAtUtc = new Date().toISOString();
+
   const parts: string[] = [];
   parts.push("# 団体別開催予定 差分レポート");
-  parts.push(`検出日時(UTC): ${new Date().toISOString()}`);
+  parts.push(`検出日時(UTC): ${detectedAtUtc}`);
   if (fetchErrors.length > 0) {
     parts.push(`\n## 取得エラー(該当団体はスキップして続行)\n${fetchErrors.map((e) => `- ${e}`).join("\n")}`);
   }
@@ -1047,6 +1185,21 @@ async function main() {
     }`
   );
   parts.push(`\n## C: バウトオーダー(対戦相手ペアは一致、順序のみ差分。暫定順で登録している大会があるため参考情報)\n${sectionsC.length > 0 ? sectionsC.join("\n\n") : "差分なし"}`);
+
+  // /admin/schedule-diff がMarkdownを再パースせずに済むよう、同じ内容を構造化
+  // データとして本文末尾にHTMLコメントで埋め込む(GitHub上のMarkdown表示には
+  // 影響しない)。ワークフロー側(check-org-schedule-diff.yml)がこの文字列を
+  // そのままIssue本文の先頭部分として使い、末尾に別途フッターを追記する。
+  const jsonPayload: ScheduleDiffJson = {
+    detectedAtUtc,
+    diffCount,
+    fetchErrorCount: fetchAnomalyCount,
+    fetchErrors,
+    a: jsonA,
+    b: jsonB,
+    c: jsonC,
+  };
+  parts.push(`\n<!-- SCHEDULE_DIFF_JSON: ${JSON.stringify(jsonPayload)} -->`);
 
   const report = parts.join("\n");
   console.log(report);
