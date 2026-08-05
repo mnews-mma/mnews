@@ -11,10 +11,21 @@ import { pageMetadata } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
 import MatchupTape, { FighterNameText } from "@/components/matchup/MatchupTape";
 import { buildTapeData, buildNoDataTapeData } from "@/components/matchup/matchupData";
-import { CommonOpponentsInline } from "@/components/matchup/CommonOpponentsList";
 import { GLOBAL_FIGHTER_NAME_SIZE } from "@/lib/events";
-import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import matchupStyles from "@/styles/matchup.module.css";
+
+const RESULT_SYMBOL: Record<"win" | "loss" | "draw" | "nc", string> = {
+  win: "○",
+  loss: "●",
+  draw: "△",
+  nc: "△",
+};
+const RESULT_COLOR: Record<"win" | "loss" | "draw" | "nc", string> = {
+  win: "#1f9e4d",
+  loss: "#9a968c",
+  draw: "#9a968c",
+  nc: "#9a968c",
+};
 
 export function generateStaticParams() {
   return ORIGINAL_ARTICLES.filter((a) => !a.hidden).map((a) => ({ slug: a.slug }));
@@ -60,7 +71,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const article = getOriginalArticle(slug);
   if (!article || article.hidden) notFound();
   const records = await fetchFighterRecords();
-  const visibleSlugs = await getVisibleFighterSlugs();
   const eventLink = resolveEventLink(article.eventSlug);
 
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: article.title }];
@@ -120,13 +130,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                       borderTop: i === 0 ? "none" : "1px solid var(--line-soft, #eee)",
                     }}
                   >
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 12, color: "var(--muted, #8b887e)" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 13, color: "var(--muted, #8b887e)" }}>
                       <span>{boutNo}</span>
                       <span>
-                        AI予想 <strong style={{ color: "var(--accent)" }}>{fight.confidencePct}%</strong>
+                        AI予想 <strong style={{ fontSize: 16, color: "var(--accent)" }}>{fight.confidencePct}%</strong>
                       </span>
                     </div>
-                    <div style={{ marginTop: 4, fontSize: 15, lineHeight: 1.5 }}>
+                    <div style={{ marginTop: 4, fontSize: 18, lineHeight: 1.5 }}>
                       {loser.nameJa} vs <strong style={{ color: "var(--accent)" }}>{winner.nameJa}</strong>
                     </div>
                   </div>
@@ -179,59 +189,72 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </h2>
 
               {(() => {
-                // /events/[slug]と同じMatchupTape(綱引きバー)を再利用する
-                // (2026-08-05、記事独自のcmp-card表形式より読みやすいとの
-                // フィードバックを受けて統一)。データの有無判定・組み立ても
-                // EventBoutCardV2と同じ関数(hasWikipediaRecord/buildTapeData/
-                // buildNoDataTapeData)を使い、片方のみデータ有りの場合も
-                // 表示できる(cmp-cardは両者揃わないと丸ごと非表示だった)。
+                // /events/[slug]と同じMatchupTape(綱引きバー)を再利用する。
+                // 共通対戦相手は独立した表(別枠)にせず、同じ.cardブロック内に
+                // 「相手名／左の結果／右の結果」の行として続ける(2026-08-06、
+                // カードが分割された表の寄せ集めに見えるとの指摘を受けて統合)。
                 const hasDataA = hasWikipediaRecord(entryA);
                 const hasDataB = hasWikipediaRecord(entryB);
-                if (!hasDataA && !hasDataB) {
-                  return (
-                    <div className={matchupStyles.card}>
-                      <div className={matchupStyles.tape}>
-                        <div className={`${matchupStyles.na} ${matchupStyles.cornerRed}`}>
-                          <FighterNameText name={fight.fighterA.nameJa} fontSize={GLOBAL_FIGHTER_NAME_SIZE} />
-                        </div>
-                        <div className={matchupStyles.vs}>VS</div>
-                        <div className={`${matchupStyles.nb} ${matchupStyles.cornerBlue}`}>
-                          <FighterNameText name={fight.fighterB.nameJa} fontSize={GLOBAL_FIGHTER_NAME_SIZE} />
-                        </div>
-                      </div>
-                      <div className={matchupStyles.emptyCommons}>戦績データ準備中</div>
-                    </div>
-                  );
-                }
+                const anyData = hasDataA || hasDataB;
                 return (
                   <div className={matchupStyles.card}>
-                    <MatchupTape
-                      left={
-                        hasDataA
-                          ? buildTapeData(fight.fighterA.nameJa, fight.fighterA.slug, entryA!, { withLast5: true })
-                          : buildNoDataTapeData(fight.fighterA.nameJa, fight.fighterA.slug)
-                      }
-                      right={
-                        hasDataB
-                          ? buildTapeData(fight.fighterB.nameJa, fight.fighterB.slug, entryB!, { withLast5: true })
-                          : buildNoDataTapeData(fight.fighterB.nameJa, fight.fighterB.slug)
-                      }
-                    />
+                    {anyData ? (
+                      <MatchupTape
+                        left={
+                          hasDataA
+                            ? buildTapeData(fight.fighterA.nameJa, fight.fighterA.slug, entryA!, { withLast5: true })
+                            : buildNoDataTapeData(fight.fighterA.nameJa, fight.fighterA.slug)
+                        }
+                        right={
+                          hasDataB
+                            ? buildTapeData(fight.fighterB.nameJa, fight.fighterB.slug, entryB!, { withLast5: true })
+                            : buildNoDataTapeData(fight.fighterB.nameJa, fight.fighterB.slug)
+                        }
+                      />
+                    ) : (
+                      <>
+                        <div className={matchupStyles.tape}>
+                          <div className={`${matchupStyles.na} ${matchupStyles.cornerRed}`}>
+                            <FighterNameText name={fight.fighterA.nameJa} fontSize={GLOBAL_FIGHTER_NAME_SIZE} />
+                          </div>
+                          <div className={matchupStyles.vs}>VS</div>
+                          <div className={`${matchupStyles.nb} ${matchupStyles.cornerBlue}`}>
+                            <FighterNameText name={fight.fighterB.nameJa} fontSize={GLOBAL_FIGHTER_NAME_SIZE} />
+                          </div>
+                        </div>
+                        <div className={matchupStyles.emptyCommons}>戦績データ準備中</div>
+                      </>
+                    )}
+
+                    {fight.commonOpponents && fight.commonOpponents.length > 0 && (
+                      <div style={{ borderTop: "1px solid var(--line-soft, #eee)", padding: "12px 16px" }}>
+                        <div style={{ fontSize: 13, color: "var(--muted, #8b887e)", marginBottom: 6 }}>共通対戦相手</div>
+                        {fight.commonOpponents.map((o, j) => (
+                          <div
+                            key={j}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 10,
+                              padding: "6px 0",
+                              fontSize: 17,
+                              borderTop: j === 0 ? "none" : "1px solid var(--line-soft, #f2f0e8)",
+                            }}
+                          >
+                            <span style={{ minWidth: 20, fontWeight: 700, color: RESULT_COLOR[o.resultA ?? "nc"] }}>
+                              {o.resultA ? RESULT_SYMBOL[o.resultA] : "-"}
+                            </span>
+                            <span style={{ flex: 1, textAlign: "center" }}>{o.name}</span>
+                            <span style={{ minWidth: 20, textAlign: "right", fontWeight: 700, color: RESULT_COLOR[o.resultB ?? "nc"] }}>
+                              {o.resultB ? RESULT_SYMBOL[o.resultB] : "-"}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
               })()}
-
-              {fight.commonOpponents && fight.commonOpponents.length > 0 && (
-                <div className="article-subsection">
-                  <div className="event-section-label" style={{ fontSize: 12, marginBottom: 8 }}>共通対戦相手</div>
-                  <CommonOpponentsInline
-                    leftName={fight.fighterA.nameJa}
-                    rightName={fight.fighterB.nameJa}
-                    commons={fight.commonOpponents}
-                    visibleSlugs={visibleSlugs}
-                  />
-                </div>
-              )}
 
               {fight.notablePoints && fight.notablePoints.length > 0 && (
                 <div className="article-subsection">
