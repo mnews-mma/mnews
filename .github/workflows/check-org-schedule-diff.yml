@@ -1,0 +1,81 @@
+name: Check org schedule diff (RIZIN/修斗/パンクラス/DEEP)
+
+# 4団体公式サイトの開催予定・対戦カードとsrc/lib/events.tsを突き合わせ、
+# 差分をジョブサマリー+Issueで通知する読み取り専用ジョブ。
+# scripts/check-org-schedule-diff.tsを参照。
+#
+# このジョブは data/・src/ のいずれも書き換えず、commit/pushも一切行わない
+# (Issueの作成/更新のみ)。そのため他の日次バッチ(update-org-records.yml等、
+# CLAUDE.md「定期実行ジョブ一覧」参照)との書き込み競合は発生しない。cron時刻は
+# 単に既存ジョブと重ならない枠を選んでいるだけで、時間帯的な排他を保証する
+# 目的ではない。
+on:
+  schedule:
+    - cron: "0 21 * * *" # 毎日 JST 6:00
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run schedule diff check (read-only, data/・src/は変更しない)
+        id: diff
+        run: |
+          npx tsx scripts/check-org-schedule-diff.ts | tee /tmp/diff-report.md
+          count=$(grep '^DIFF_COUNT=' /tmp/diff-report.md | tail -1 | cut -d= -f2)
+          echo "count=${count:-0}" >> "$GITHUB_OUTPUT"
+
+      - name: Post or update summary issue
+        if: steps.diff.outputs.count != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('/tmp/diff-report.md', 'utf8');
+            const title = '団体別開催予定 差分レポート(自動)';
+
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const fullBody = [
+              body,
+              '',
+              `_このIssueは [ワークフロー実行](${runUrl}) により自動生成/更新されました。data/・src/への変更は一切行っていません。_`,
+            ].join('\n');
+
+            const openIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = openIssues.data.find((i) => i.title === title && !i.pull_request);
+
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: fullBody,
+              });
+              console.log(`Updated existing issue #${existing.number}`);
+            } else {
+              const created = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body: fullBody,
+              });
+              console.log(`Created new issue #${created.data.number}`);
+            }
