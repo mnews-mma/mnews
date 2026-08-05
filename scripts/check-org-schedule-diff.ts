@@ -540,6 +540,13 @@ async function fetchShootoOfficialEvents(): Promise<OfficialEvent[]> {
 const LEMINO_SEARCH_RESULT_RE =
   /<a href="([^"]+)"<dt>\d{4}年\d{1,2}月\d{1,2}日<\/dt>\s*<dd>([^<]+)<br>/g;
 
+// fetchLeminoShootoOfficialEvents内の個別記事取得失敗(fetchText例外)は関数内で
+// catchして続行するため、main()側のresult.length===0判定にも例外にも乗らず、
+// 異常が握りつぶされる穴になっていた(2026-08-05指摘)。main()から参照して
+// fetchAnomalyCountに合算するための一時バッファ(1回の実行=1プロセスなので
+// モジュールスコープの可変状態で問題ない)。
+const auxFetchAnomalies: string[] = [];
+
 async function fetchLeminoShootoOfficialEvents(): Promise<OfficialEvent[]> {
   // カテゴリで絞ると取りこぼす(実測: 開催告知は category=16 「開催情報」だが、
   // 対戦カード発表は同じ大会でも category=287 のような別カテゴリに乗ることがあり、
@@ -551,6 +558,13 @@ async function fetchLeminoShootoOfficialEvents(): Promise<OfficialEvent[]> {
   // 変えても回避不可、Actions上で実測確認済み)。一方で同サイトの通常ページ
   // (この検索結果ページを含む)は同じIPから200が返ることを実測済みのため、
   // 投稿一覧の発見はWordPress標準検索(`?s=`)のHTML結果から行う。
+  //
+  // ページングは不要(2026-08-05実測、Actions上で確認): `?s=Lemino修斗`は
+  // パラメータ無しで該当57件全件(2025-07-19〜2026-08-05)を1ページで返す
+  // (`検索結果 : 57件`の表示件数とHTML内の実マッチ数が一致)。`&paged=2`は
+  // 404(2ページ目が存在しない=そもそも1ページに収まっている)、
+  // `&posts_per_page=50`を付けても件数は変化しない(テーマ側がこのパラメータを
+  // 無視しており、既定で全件表示という挙動そのもの)。
   const searchUrl = `https://j-shooto.com/?s=${encodeURIComponent("Lemino修斗")}`;
   const html = await fetchText(searchUrl);
   const posts: { link: string; title: string }[] = [];
@@ -598,7 +612,9 @@ async function fetchLeminoShootoOfficialEvents(): Promise<OfficialEvent[]> {
           if (!boutMap.has(dedupeKey)) boutMap.set(dedupeKey, { ...b, order: order++ });
         }
       } catch (err) {
-        process.stderr.write(`[lemino-shooto] 記事取得失敗(${p.link}): ${String(err)}\n`);
+        const msg = `[lemino-shooto] 記事取得失敗(${p.link}): ${String(err)}`;
+        process.stderr.write(`${msg}\n`);
+        auxFetchAnomalies.push(msg); // main()側でfetchAnomalyCountに合算する(2026-08-05指摘)
       }
     }
     events.push({
@@ -606,7 +622,7 @@ async function fetchLeminoShootoOfficialEvents(): Promise<OfficialEvent[]> {
       eventName,
       date,
       venue,
-      sourceUrl: posts_[posts_.length - 1].link, // 最新(検索結果順=配列先頭が新しい)の投稿を代表URLとする
+      sourceUrl: posts_[0].link, // 最新(検索結果順=配列先頭が新しい)の投稿を代表URLとする
       bouts: boutMap.size > 0 ? [...boutMap.values()] : null,
       boutsConfidence: "medium",
       bodyText: bodyTextCombined,
@@ -873,6 +889,15 @@ async function main() {
   for (const f of orgFetchers) {
     try {
       const result = await f.run();
+      // fetcher自体は例外を投げず0件にもならないが、内部で個別記事の取得に
+      // 部分的に失敗しているケース(例: fetchLeminoShootoOfficialEvents内の
+      // 記事別fetchText失敗)をauxFetchAnomaliesから回収する(2026-08-05指摘)。
+      if (auxFetchAnomalies.length > 0) {
+        fetchErrors.push(...auxFetchAnomalies);
+        fetchAnomalyCount += auxFetchAnomalies.length;
+        orgHadFetchFailure.add(f.org);
+        auxFetchAnomalies.length = 0;
+      }
       if (result.length === 0) {
         const msg = `[${f.label}] 取得0件(パース失敗の疑い、異常としてカウント)`;
         process.stderr.write(`${msg}\n`);
@@ -895,6 +920,11 @@ async function main() {
       fetchErrors.push(msg);
       fetchAnomalyCount++;
       orgHadFetchFailure.add(f.org);
+      if (auxFetchAnomalies.length > 0) {
+        fetchErrors.push(...auxFetchAnomalies);
+        fetchAnomalyCount += auxFetchAnomalies.length;
+        auxFetchAnomalies.length = 0;
+      }
     }
   }
 
