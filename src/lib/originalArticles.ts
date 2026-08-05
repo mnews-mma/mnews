@@ -34,6 +34,15 @@ export interface OriginalArticleFight {
   commonOpponents?: CommonOpponent[];
   // 注目点セクション(スナップショット)。閾値未達で0件なら配列自体を省略。
   notablePoints?: string[];
+  // 冒頭サマリー表(全試合予想一覧)用。予想勝者がfighterA/fighterBのどちら側か。
+  // confidencePctはAI RIZINランキングの内部レート(rawRating、σ補正込み)から
+  // expectedScore(rSelf,rOpp)=1/(1+10^((rOpp-rSelf)/D))で機械算出した期待勝率
+  // (2026-08-05、RIZIN過去576試合からD≈152.4に較正済み。旧D=400ではなくこちらを
+  // 使う)。RIZIN未参戦選手が絡む試合は、過去のRIZIN初参戦選手233人の初戦結果から
+  // 統計的に求めた初期値(1408.82)を代わりに使う。全10試合とも同一式・同一データから
+  // 再現可能な値で、質的判断は一切介在しない。
+  predictedWinner?: "A" | "B";
+  confidencePct?: number;
 }
 
 // ランキング更新告知など、対戦カード比較以外のプロース記事1件分のスナップショット。
@@ -147,6 +156,175 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
       "フェザー級はクレベル・コイケ(9位)、カルシャガ・ダウトベック(11位)、秋元強真(12位)、ヴガール・ケラモフ(13位)と、上位15傑に4名を送り込む最激戦区になっています。",
       "P4Pランキングでは王者も番号付きの順位に含まれ、戦績は階級を問わないRIZIN通算で表示されます。",
       "順位は今後の大会結果を受けて随時更新されます。",
+    ],
+  },
+  {
+    // RIZIN.54 全10試合の勝敗予想。試合順・出場選手は2026-08-03時点の公式発表
+    // (jp.rizinff.com/_ct/17846026)に準拠。当初発表のケイト・ロータス vs NOEL
+    // (女子スーパーアトム級)はケイトの負傷欠場のため対象外(events.tsのコメント参照)。
+    // weightClassには公式の試合番号を併記する(表示は既存のbout-weightバッジ)。
+    // fights[0]はOG画像に使われるため、メインイベント(第10試合)を先頭に置く。
+    // 各fightのnotablePointsは生成時点のスナップショット。数字は本文と記事ページの
+    // 比較カード(fighterRecords.json由来のライブ表示)が一致するよう、
+    // computeFighterStripStats/computeWinMethodBreakdownの実出力に合わせている。
+    slug: "rizin-54-full-card-predictions",
+    title: "RIZIN.54 全10試合を数字で予想する",
+    eventSlug: "rizin-54",
+    publishedAt: "2026-08-03",
+    publishedAtTime: "23:30",
+    body: [
+      "8月11日(火・祝)、TOYOTA ARENA TOKYOでRIZIN.54が開催されます。",
+      "全10試合について、AI RIZINランキングのレートから期待勝率を機械算出し、勝敗を予想しました。",
+      "当初発表されていた女子スーパーアトム級のケイト・ロータス vs NOELは、ケイトの負傷により今大会では実施されません。",
+      "予想は、AI RIZINランキングの内部レート差から期待勝率を機械算出したものです(Elo方式のexpected score。確率変換の分母はRIZIN過去576試合の実際の勝敗と突き合わせて較正済みで、レート更新自体の計算式は従来どおりです)。RIZIN初参戦の選手が絡む試合は、過去の初参戦選手233人の初戦結果から求めた初期値を使っています。この予想は2026年8月5日時点のレートで確定したもので、結果が出るまで【予想】欄は編集しません。",
+    ],
+    fights: [
+      {
+        fighterA: { slug: "koike-kleber", nameJa: "クレベル・コイケ" },
+        fighterB: { slug: "akimoto-kyoma", nameJa: "秋元強真" },
+        weightClass: "第10試合／フェザー級（66.0kg）",
+        predictedWinner: "A",
+        confidencePct: 62,
+        // 共通対戦相手: 萩原京平(クレベルは2022-05-05に一本勝ち、秋元は2025-11-03に
+        // TKO勝ち)。data/fighterRecords.json の両者history照合で検出。
+        commonOpponents: [{ name: "萩原京平", resultA: "win", resultB: "win" }],
+        notablePoints: [
+          "【予想】クレベル・コイケ。期待勝率62.2%",
+          "クレベル・コイケは35勝のうち29が一本勝ち(一本率83%)。一方で9敗の中身は判定7・KO1・一本1で、「極まらない・倒れない、だがポイントで負ける」という極端な形",
+          "秋元強真は5連勝中で、唯一の黒星は元谷友貴との判定のみ。まだ一度もフィニッシュされていない",
+          "反証材料もある。クレベルの勝ち筋は明確で、秋元が一度でも寝技に付き合えば一本の危険がある(秋元は元谷戦でグラウンドを支配され失点)",
+        ],
+      },
+      {
+        fighterA: { slug: "sato-shoko", nameJa: "佐藤将光" },
+        fighterB: { slug: "patchy-mix", nameJa: "パッチー・ミックス" },
+        weightClass: "第9試合／バンタム級（61.0kg）",
+        predictedWinner: "A",
+        confidencePct: 70,
+        notablePoints: [
+          "【予想】佐藤将光。期待勝率70.2%で、第6試合と並んで10試合の中でもっとも差がついた一戦",
+          "佐藤将光は通算37勝17敗2分。17敗のうち14が判定で、極められて負けたのは2度だけ",
+          "パッチー・ミックスは20勝のうち13が一本勝ち(一本率65%)。元Bellator世界バンタム級王者だが現在3連敗中",
+          "今回は本来の階級であるバンタム級に戻る一戦。佐藤も3月に三角絞めで一本勝ちしており、寝技勝負に出れば決着の目はある",
+        ],
+      },
+      {
+        fighterA: { slug: "ito-yuki", nameJa: "伊藤裕樹" },
+        fighterB: { slug: "gadzhamatov-alibeg", nameJa: "アリベク・ガジャマトフ" },
+        weightClass: "第8試合／フライ級（57.0kg）",
+        predictedWinner: "A",
+        confidencePct: 51,
+        notablePoints: [
+          "【予想】伊藤裕樹。期待勝率51.1%で、10試合の中でもっとも際どい一戦(ほぼ完全な五分)",
+          "アリベク・ガジャマトフは7戦6勝、6勝すべてフィニッシュ。判定までいった勝ち試合が1つもない",
+          "唯一の黒星は2025年9月の扇久保博正戦の判定0-3。時間を使われると弱いという弱点が出た試合",
+          "伊藤はまさにその「時間を使わせる」側。ただし7敗のうち6が判定で、上位相手に競り負けるパターンも続いている",
+        ],
+      },
+      {
+        fighterA: { slug: "ueda-mikio", nameJa: "上田幹雄" },
+        fighterB: { slug: "edpolo-king", nameJa: "エドポロキング" },
+        weightClass: "第7試合／ヘビー級（120.0kg）",
+        predictedWinner: "A",
+        confidencePct: 69,
+        notablePoints: [
+          "【予想】上田幹雄。期待勝率69.0%",
+          "両者とも勝ち方が全部フィニッシュ。上田は5勝すべてKO、エドポロキングは3勝すべてKO。判定までもつれた勝ち試合が2人合わせて1つもない",
+          "上田は判定負けもゼロで8戦すべてが決着。エドポロキングも酒井リョウ・貴賢神をKOで下した実績があり、破壊力は実証済み",
+          "上田は約12か月半、エドポロキングは約16か月半のブランク明け。コンディション差が結果を左右する",
+        ],
+      },
+      {
+        fighterA: { slug: "sudario-tsuyoshi", nameJa: "スダリオ剛" },
+        fighterB: { slug: "sakai-ryo", nameJa: "酒井リョウ" },
+        weightClass: "第6試合／ヘビー級（120.0kg）",
+        predictedWinner: "A",
+        confidencePct: 70,
+        // 共通対戦相手: ロッキー・マルティネス(酒井は2度対戦)・関根“シュレック”秀樹
+        // (酒井は2度対戦)・SAINT。1行=1対戦の原則に従い、片方しか戦っていない回は
+        // resultAをnullにしている。
+        commonOpponents: [
+          { name: "ロッキー・マルティネス", resultA: "win", resultB: "loss" },
+          { name: "ロッキー・マルティネス", resultA: null, resultB: "loss" },
+          { name: "関根“シュレック”秀樹", resultA: "win", resultB: "win" },
+          { name: "関根“シュレック”秀樹", resultA: null, resultB: "loss" },
+          { name: "SAINT", resultA: "win", resultB: "loss" },
+        ],
+        notablePoints: [
+          "【予想】スダリオ剛。期待勝率69.7%で、第9試合と並んで10試合の中でもっとも差がついた一戦",
+          "スダリオ剛は9勝のうち8がKO(KO率89%)",
+          "酒井リョウは通算15勝15敗で、15敗のうち8が打撃によるKO/TKO負け。直近も貴賢神に1R TKO負け",
+          "共通対戦相手にも差(スダリオが下した相手に酒井は敗れている)。不安要素はスダリオの約15か月のブランク",
+        ],
+      },
+      {
+        fighterA: { slug: "majima-kazumasa", nameJa: "摩嶋一整" },
+        fighterB: { slug: "takeda-koji", nameJa: "武田光司" },
+        weightClass: "第5試合／フェザー級（66.0kg）",
+        predictedWinner: "A",
+        confidencePct: 55,
+        // 共通対戦相手: 新居すぐる(摩嶋は2024-07-28に一本勝ち、武田は2024-12-31に
+        // テクニカル判定勝ち)。
+        commonOpponents: [{ name: "新居すぐる", resultA: "win", resultB: "win" }],
+        notablePoints: [
+          "【予想】摩嶋一整。期待勝率54.5%",
+          "摩嶋一整は19勝のうち16が一本勝ち(一本率84%)、2連勝中",
+          "武田光司は19勝のうち11が判定(判定率58%)で、KOで勝ったのは2度だけ。レスリングで組み伏せる形が持ち味",
+          "摩嶋の6敗はKO3・一本2・判定1。打撃には弱いが、KO勝ちが2度しかない武田にその崩し方は期待しにくい",
+        ],
+      },
+      {
+        fighterA: { slug: "goto-joji", nameJa: "後藤丈治" },
+        fighterB: { slug: "temirov-azizbek", nameJa: "アジズベク・テミロフ" },
+        weightClass: "第4試合／バンタム級（61.0kg）",
+        predictedWinner: "A",
+        confidencePct: 63,
+        notablePoints: [
+          "【予想】後藤丈治。期待勝率62.8%",
+          "アジズベク・テミロフは6勝すべてKO/TKO。判定勝ちが無く、2敗はどちらも判定負け",
+          "後藤丈治は9敗しているが、打撃で倒されたことは一度もない",
+          "「打撃でしか勝ったことがない選手」と「打撃で倒されたことがない選手」の対決。ただしテミロフの1Rの一発は常に警戒が必要",
+        ],
+      },
+      {
+        fighterA: { slug: "hiramoto-jo", nameJa: "平本丈" },
+        fighterB: { slug: "jolly", nameJa: "ジョリー" },
+        weightClass: "第3試合／フライ級（57.0kg）",
+        predictedWinner: "B",
+        confidencePct: 53,
+        notablePoints: [
+          "【予想】ジョリー。期待勝率52.5%とほぼ五分で、番狂わせもあり得る一戦",
+          "ジョリーは4戦4勝で全部フィニッシュ。直近2戦はどちらも1Rの腕ひしぎ十字固め",
+          "ただし相手は打撃系中心で、7年のブランクを経て復帰した経歴。MMAの総合力はまだ読めない",
+          "平本丈は極める形への対応を勝ち負け両方で経験している。対抗は平本の判定持ち込み",
+        ],
+      },
+      {
+        fighterA: { slug: "naoki", nameJa: "直樹" },
+        fighterB: { slug: "hosokawa-issou", nameJa: "細川一颯" },
+        weightClass: "第2試合／69.0kg契約",
+        predictedWinner: "A",
+        confidencePct: 65,
+        notablePoints: [
+          "【予想】直樹。期待勝率65.2%",
+          "細川一颯はRIZIN初参戦のため、過去の初参戦選手233人の初戦結果から求めた初期値を使用",
+          "直樹は3勝すべてフィニッシュ、直近2戦とも1R決着。細川一颯はBreakingDown出身で、確認できるのはキックボクシング1試合(TKO負け)のみ",
+          "唯一の警戒点は直樹の被弾。2025年11月に三井俊希へ1R KO負けしており、一発をもらうと終わる可能性は残る",
+        ],
+      },
+      {
+        fighterA: { slug: "mizuno-shinta", nameJa: "水野新太" },
+        fighterB: { slug: "lee-kaiwen", nameJa: "リー・カイウェン" },
+        weightClass: "第1試合／フェザー級（66.0kg）",
+        predictedWinner: "B",
+        confidencePct: 64,
+        notablePoints: [
+          "【予想】リー・カイウェン。期待勝率64.1%",
+          "水野新太はRIZIN初参戦のため、過去の初参戦選手233人の初戦結果から求めた初期値を使用",
+          "リー・カイウェンの内部レート1447.1は初期値を上回る。根拠は参戦前の22戦15勝7敗による初期レート1513.3",
+          "水野新太は9勝1敗で無傷。リー・カイウェンは15勝8敗だが現在2連敗中(高木凌にTKO負け、中村京一郎に判定負け)",
+        ],
+      },
     ],
   },
 ];

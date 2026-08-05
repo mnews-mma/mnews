@@ -2282,13 +2282,18 @@ a.cmp-name:hover {
 .article-subsection {
   margin-top: 16px;
 }
-.article-common-opponents,
 .article-notable-points {
   margin: 0;
   padding-left: 18px;
   font-size: 13px;
   line-height: 1.8;
   color: var(--text);
+}
+.article-notable-points li {
+  margin-bottom: 10px;
+}
+.article-notable-points li:last-child {
+  margin-bottom: 0;
 }
 
 /* Related events */
