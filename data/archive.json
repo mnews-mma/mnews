@@ -1,5 +1,23 @@
 [
   {
+    "id": "shooto-0",
+    "source": "shooto",
+    "title": "プロ修斗9月24日後楽園大会『Lemino修斗.8』対戦カード②",
+    "origin": "日本修斗協会公式",
+    "url": "https://j-shooto.com/2026/08/05/post-51473/",
+    "publishedAt": "2026-08-05T03:12:03.000Z",
+    "firstSeenAt": "2026-08-05T04:57:41.381Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【JMMAF TOKYO IFM】日本強化策。画期的=アマMMAで国際戦大会実現。世界5カ国から9選手が来日",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/234945",
+    "publishedAt": "2026-08-05T03:02:50.000Z",
+    "firstSeenAt": "2026-08-05T04:57:41.381Z"
+  },
+  {
     "id": "encount-0",
     "source": "other",
     "title": "204cmエドポロキング、1年半の空白期間を独白 食費月50万で肉体改造…米国修行で「全てが変わった」",
@@ -7,6 +25,15 @@
     "url": "https://encount.press/archives/1043000/",
     "publishedAt": "2026-08-05T01:30:00.000Z",
     "firstSeenAt": "2026-08-05T01:46:39.924Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.12：山口 丈選手インタビュー",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood12/interview_yamaguchi.html",
+    "publishedAt": "2026-08-05T00:00:00.000Z",
+    "firstSeenAt": "2026-08-05T04:57:41.381Z"
   },
   {
     "id": "gonkaku-0",
