@@ -647,6 +647,7 @@ export const EVENTS: MEvent[] = [
         fighterA: "百湖",
         fighterB: "キューティ",
         note: "5分3R",
+        cancelled: true,
       },
       {
         weightClass: "DEEP JEWELS 49kg以下",
