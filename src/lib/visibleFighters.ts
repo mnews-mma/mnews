@@ -32,7 +32,7 @@ export function getFightersExcludingHiddenAndDelisted(): Fighter[] {
   return FIGHTERS.filter((f) => !f.hidden && !f.delisted);
 }
 
-export async function getVisibleFighters(): Promise<ResolvedFighter[]> {
+async function computeVisibleFighters(): Promise<ResolvedFighter[]> {
   const records = await fetchFighterRecords();
   const resolved = resolveFightersFromRecords(getFightersExcludingHiddenAndDelisted(), records);
   if (!SHOW_MULTI_ORG_RECORD) return resolved.filter((f) => !f.noRecordData);
@@ -52,6 +52,54 @@ export async function getVisibleFighters(): Promise<ResolvedFighter[]> {
     })
   );
   return withMultiOrg.filter((f) => !f.noRecordData || !!f.multiOrgRecord);
+}
+
+// 公開母集団の算出結果をプロセス内で1時間キャッシュする(2026-08-07)。
+//
+// computeVisibleFighters()はメモ化を持たず、呼ばれるたびに約360選手ぶんの
+// resolveFightersFromRecords()を回していた。/dreamはgenerateMetadataと本体の
+// 両方からresolveDreamSlugs()経由で呼ぶため1リクエストで2回、/vsも本体で1回
+// 実行しており、両ルートがキャッシュの効かない動的レンダリングであることと
+// あいまってFluid Active CPUの二大消費源になっていた(2026-08-07の本番停止時、
+// Vercel Observabilityのルート別実測で/dream 6分/日・/vs 6分/日=全47ルート中の
+// 上位2件)。
+//
+// 実装方針はmultiOrgRecordsData.ts(データ取得層の1時間キャッシュ)と
+// multiOrgRecordCache.ts(計算層のスナップショット連動キャッシュ)で確立済みの
+// 既存イディオムを踏襲する。unstable_cache等の新規APIは使わない。
+// in-flightのPromiseを共有するため、同時に何箇所から呼ばれても実計算は1回に
+// 収束する。空配列(元データ取得失敗時)はキャッシュしない(一時障害を1時間
+// 固定化しない。multiOrgRecordsData.tsの同方針に合わせる)。
+//
+// 許容する古さ: 最大1時間。fetchFighterRecords()自体がrevalidate:3600の
+// Data Cache経由であり、日次バッチ(update-fighter-records.yml)の反映が最大1時間
+// 遅れることは2026-08-02の同種修正(3dc1eaa)で既に許容済みの範囲。この
+// キャッシュとData Cacheの期限がずれた場合、公開母集団の反映は最大2時間遅れ
+// うるが、遅れるのは「選手が一覧・選択候補に現れるタイミング」だけで誤った
+// 戦績が出るわけではないため許容する。
+const VISIBLE_FIGHTERS_REVALIDATE = 3600;
+
+let inFlightVisible: Promise<ResolvedFighter[]> | null = null;
+let resolvedVisible: { data: ResolvedFighter[]; expiresAt: number } | null = null;
+
+export function getVisibleFighters(): Promise<ResolvedFighter[]> {
+  const now = Date.now();
+  if (resolvedVisible && resolvedVisible.expiresAt > now) return Promise.resolve(resolvedVisible.data);
+  if (inFlightVisible) return inFlightVisible;
+
+  inFlightVisible = computeVisibleFighters()
+    .then((data) => {
+      if (data.length > 0) {
+        resolvedVisible = { data, expiresAt: Date.now() + VISIBLE_FIGHTERS_REVALIDATE * 1000 };
+      }
+      inFlightVisible = null;
+      return data;
+    })
+    .catch((err) => {
+      inFlightVisible = null;
+      throw err;
+    });
+  return inFlightVisible;
 }
 
 // 上記と同じ可視性判定でslugのSetだけを返す。イベント/戦績ページの対戦相手リンク

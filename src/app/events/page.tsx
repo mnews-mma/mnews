@@ -5,8 +5,16 @@ import EventsFilterList from "@/components/EventsFilterList";
 import { getUpcomingEvents } from "@/lib/events";
 import { pageMetadata } from "@/lib/seo";
 
-// 開催日までの残り日数(あと◯日)を都度算出するため動的レンダリング。
-export const dynamic = "force-dynamic";
+// 残り日数(あと◯日)の算出は、実際にはこのページではなくクライアント
+// コンポーネント側(EventsFilterList、"use client")のレンダリング中に
+// daysUntilEventJst()で行われるため、hydration時にブラウザ側で再計算される。
+// つまり「都度算出のためforce-dynamicが必要」という当初の前提は成り立って
+// おらず(2026-08-07確認)、ISR化してもクライアントで正しい日数に落ち着く
+// (SSGはサーバーinitial値+client再計算、というeventCountdown.tsの方針どおり)。
+// ただしサーバー生成HTMLに焼かれる初期値と開催予定の絞り込み
+// (getUpcomingEvents)はキャッシュ期間ぶん古くなりうるため、JST日付境界を
+// またぐ窓を小さく保つ目的でrevalidateは短め(10分)にしている。
+export const revalidate = 600;
 
 export const metadata = pageMetadata({
   title: "開催予定の大会一覧 | Mニュース",

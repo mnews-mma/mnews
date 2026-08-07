@@ -7,8 +7,13 @@ import { SOURCES } from "@/lib/sources";
 import { isDeep2026, toFiveClass, FIVE_CLASSES, NEW_TAGGED_SLUGS } from "@/lib/orgTags";
 import { pageMetadata } from "@/lib/seo";
 
-// no-data(戦績なし)選手はDEEPの面に出さないため、戦績解決が要る=動的レンダ。
-export const dynamic = "force-dynamic";
+// no-data(戦績なし)選手はDEEPの面に出さないため戦績解決が要るが、それは
+// 「動的レンダリングが必要」という意味ではない(2026-08-07修正)。戦績データは
+// バッチが焼き込んだJSONを読むだけで、リクエストごとに変わる入力ではないため、
+// ISRの生成時に解決すれば足りる。同じ戦績解決を行う/fightersはrevalidate=3600の
+// ISRで動作している(2026-08-02の3dc1eaa)。ここが同型のまま残っていたことが
+// 2026-08-07のFluid Active CPU超過調査で判明したため揃える。
+export const revalidate = 3600;
 
 export const metadata = pageMetadata({
   title: "DEEP 2026 出場選手一覧（階級別）| Mニュース",
