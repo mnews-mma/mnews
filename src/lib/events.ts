@@ -646,7 +646,7 @@ export const EVENTS: MEvent[] = [
         weightClass: "DEEP JEWELSバンタム級",
         fighterA: "百湖",
         fighterB: "キューティ",
-        note: "5分3R",
+        note: "キューティ(Kangaroo MMA)がVISA(査証)の問題により来日できず中止",
         cancelled: true,
       },
       {
