@@ -88,10 +88,10 @@ export default function EventBoutCardV2({
   // (この分岐だけ別サイズになる回帰が過去に発生している)。
   const sharedFallbackNameSize = GLOBAL_FIGHTER_NAME_SIZE;
 
-  // 情報価値のあるバッジ(中止・変更/TITLE/再戦)のみ出す。「注目カード」は廃止。
+  // 情報価値のあるバッジ(中止/TITLE/再戦)のみ出す。「注目カード」は廃止。
   let tag: { label: string; cls: string } | null = null;
   if (cancelled) {
-    tag = { label: "中止・変更", cls: styles.tagMain };
+    tag = { label: "中止", cls: styles.tagMain };
   } else if (isTitleMatch) {
     tag = { label: "TITLE", cls: styles.tagTitle };
   } else if (headToHead.length > 0) {
@@ -160,7 +160,7 @@ export default function EventBoutCardV2({
       )}
       {result && !cancelled && <ResultBanner result={result} />}
       {!cancelled && <HeadToHeadBanner nameA={displayNameA} nameB={displayNameB} matches={headToHead} />}
-      {note && !isTitleMatch && !cancelled && <div className={styles.emptyCommons}>{note}</div>}
+      {note && !isTitleMatch && <div className={styles.emptyCommons}>{note}</div>}
       {bothRegistered && (
         <CommonOpponentsToggle leftName={displayNameA} rightName={displayNameB} commons={commons} visibleSlugs={visibleSlugs} />
       )}

@@ -83,8 +83,8 @@ export default function BoutCard({
           {weightClass && <span className="bout-weight">{weightClass}</span>}
           {rule && <span className="bout-rule">{rule}</span>}
           {isTitleMatch && <span className="bout-title-badge">TITLE</span>}
-          {cancelled && <span className="bout-cancelled-badge">中止・変更</span>}
-          {note && !isTitleMatch && !cancelled && <span className="bout-note">{note}</span>}
+          {cancelled && <span className="bout-cancelled-badge">中止</span>}
+          {note && !isTitleMatch && <span className="bout-note">{note}</span>}
         </div>
       )}
       <div className="bout-pair">
