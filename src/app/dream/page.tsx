@@ -1,3 +1,4 @@
+import { cache } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import BoutCard from "@/components/BoutCard";
@@ -42,11 +43,26 @@ function readWeightParam(sp: Record<string, string | string[] | undefined>): str
   return raw ? weightCodeToClass(raw) : "";
 }
 
-// 選択候補・a/bの解決はgenerateMetadata/ページ本体の両方で必要なため共通化する。
-async function resolveDreamSlugs(sp: Record<string, string | string[] | undefined>) {
+// 選択候補リスト(URLパラメータに依存しない部分)をリクエストスコープで
+// 重複排除する(2026-08-07)。resolveDreamSlugs自体はgenerateMetadataと
+// ページ本体の両方から呼ばれるため、1リクエストでgetVisibleFighters()由来の
+// 約360選手ぶんの整形が2度走っていた。このルートはsearchParams(a/b/e/w)参照の
+// force-dynamicでキャッシュに救われないため、そのぶんが毎リクエスト積み上がって
+// Fluid Active CPUの最大消費源になっていた(2026-08-07の本番停止時の実測で
+// 6分/日・全47ルート中1位)。
+//
+// cache()はsearchParamsを引数に取らない関数に掛ける。React cache()のキーは
+// 引数の参照同一性であり、`await searchParams`が呼び出しごとに別オブジェクトを
+// 返す場合は引数付きだと重複排除が効かないため(引数なしなら常に1回に収束する)。
+const loadDreamFighterOptions = cache(async () => {
   const visible = await getVisibleFighters();
   const fighters = visible.map((f) => ({ slug: f.slug, nameJa: f.nameJa, weightClass: f.weightClass }));
-  const visibleSlugs = new Set(fighters.map((f) => f.slug));
+  return { fighters, visibleSlugs: new Set(fighters.map((f) => f.slug)) };
+});
+
+// 選択候補・a/bの解決はgenerateMetadata/ページ本体の両方で必要なため共通化する。
+async function resolveDreamSlugs(sp: Record<string, string | string[] | undefined>) {
+  const { fighters, visibleSlugs } = await loadDreamFighterOptions();
   const reqA = param(sp, "a");
   const reqB = param(sp, "b");
   const slugA = visibleSlugs.has(reqA) ? reqA : (fighters[0]?.slug ?? "");

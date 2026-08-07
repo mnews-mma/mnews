@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { notFound, permanentRedirect } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -31,6 +32,22 @@ function emptyEntry(): FighterRecordEntry {
   return { wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], live: false, noRecordData: true };
 }
 
+// generateMetadataとページ本体はどちらも同じ2選手の戦績エントリを必要とし、
+// 以前は両方が独立にfetchFighterRecordsStrict()を呼んでいた(1リクエストで
+// 2回・全選手ぶんのJSONを都度パース)。このルートは?red=参照のため常に動的
+// レンダリングであり、キャッシュに救われず毎リクエストその2回ぶんが積み上がって
+// いた(2026-08-07のFluid Active CPU超過による本番停止の主要因の一方)。
+// React cache()でリクエストスコープの重複排除を行い1回に収束させる。
+// 返す値・判定条件は変更していないため表示は不変。
+const loadVsEntries = cache(async (slugA: string, slugB: string) => {
+  const recordsResult = await fetchFighterRecordsStrict();
+  return {
+    ok: recordsResult.ok,
+    entryA: recordsResult.ok ? (recordsResult.records[slugA] ?? emptyEntry()) : emptyEntry(),
+    entryB: recordsResult.ok ? (recordsResult.records[slugB] ?? emptyEntry()) : emptyEntry(),
+  };
+});
+
 // ?red={slug}: 赤コーナーに置く選手をnorm.b側に指定する(2026-07-20)。
 // norm.a/norm.bのいずれとも一致しない場合(未指定・不正値含む)はnorm.a
 // (スラッグ辞書順で先)をデフォルトの赤とする(organic/SEO訪問への影響ゼロ)。
@@ -60,9 +77,8 @@ export async function generateMetadata({
   const matchup = findMatchupEvent(fighterA.nameJa, fighterB.nameJa);
   const title = buildVsTitle(fighterA.nameJa, fighterB.nameJa, matchup?.event.eventName ?? null);
 
-  const recordsResult = await fetchFighterRecordsStrict();
-  const entryA = recordsResult.ok ? (recordsResult.records[norm.a] ?? emptyEntry()) : emptyEntry();
-  const entryB = recordsResult.ok ? (recordsResult.records[norm.b] ?? emptyEntry()) : emptyEntry();
+  const recordsResult = await loadVsEntries(norm.a, norm.b);
+  const { entryA, entryB } = recordsResult;
   const indexable = recordsResult.ok && isVsPairIndexable(fighterA, fighterB, entryA, entryB);
 
   const commonCount =
@@ -125,9 +141,7 @@ export default async function VsPage({
   const fighterB = getFighter(norm.b);
   if (!fighterA || !fighterB) notFound();
 
-  const recordsResult = await fetchFighterRecordsStrict();
-  const entryA = recordsResult.ok ? (recordsResult.records[norm.a] ?? emptyEntry()) : emptyEntry();
-  const entryB = recordsResult.ok ? (recordsResult.records[norm.b] ?? emptyEntry()) : emptyEntry();
+  const { entryA, entryB } = await loadVsEntries(norm.a, norm.b);
   const bothRegistered = hasWikipediaRecord(entryA) && hasWikipediaRecord(entryB);
 
   const visible = await getVisibleFighters();

@@ -14,7 +14,11 @@ const breadcrumbs = [{ label: "トップ", href: "/" }, { label: "無敗の日�
 // プロ戦績としてカウントする最低試合数(敗北0とあわせて「無敗」の対象条件)。
 const MIN_FIGHTS = 3;
 
-export const dynamic = "force-dynamic";
+// 依存データはfetchFighterRecords()(バッチが焼き込んだJSON、revalidate:3600の
+// Data Cache経由)のみで、リクエストごとに変わる入力は無いためISRで足りる
+// (2026-08-07修正。force-dynamicだった理由は記録されておらず、日次バッチ更新の
+// 反映が最大1時間遅れることは元データのData Cacheの時点で既にそうなっている)。
+export const revalidate = 3600;
 
 export const metadata = pageMetadata({
   title: "無敗の日本人MMA格闘家一覧｜戦績・所属団体つき - Mニュース",
