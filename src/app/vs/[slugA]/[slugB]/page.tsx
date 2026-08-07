@@ -15,6 +15,16 @@ import { buildVsTitle } from "@/lib/seoTemplates";
 
 const SITE_URL = "https://www.mnews.jp";
 
+// このページは?red=(赤コーナー入替)をsearchParamsで参照するため、宣言の有無に
+// かかわらずNext.jsが動的レンダリングにする。以前は宣言が無く、force-dynamicを
+// grepしても引っかからないまま毎リクエスト再計算されていた(2026-08-07の
+// Fluid Active CPU超過による本番停止で、実測消費2位のルート)。
+// 現状を宣言として明示しておく(挙動は従来と同一)。?red=をクライアント側へ
+// 寄せてISR化する案は効果測定後に判断する(フェーズ2)。
+// この宣言はscripts/check-route-rendering-mode.tsのALLOW_FORCE_DYNAMICに
+// 理由つきで登録されている。ISR化する際は両方を同時に外すこと。
+export const dynamic = "force-dynamic";
+
 // 以前はここで?wc=/?ev=のクエリを受け取りOG画像へ手指定の階級・大会名を
 // 反映していたが、公開・非認証のこのページ経由で誰でも実在選手の公式風
 // 偽カード画像を作れる穴になっていたため廃止した。大会名は/api/og/vs側の
