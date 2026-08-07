@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import { ORIGINAL_ARTICLES, getOriginalArticle } from "@/lib/originalArticles";
 import { fetchFighterRecords, hasWikipediaRecord } from "@/lib/fighterRecordsCache";
+import { getVisibleFighterSlugs } from "@/lib/visibleFighters";
 import { getEvent } from "@/lib/events";
 import { getEventResult } from "@/lib/eventResults";
 import { SOURCES } from "@/lib/sources";
@@ -11,21 +12,30 @@ import { pageMetadata } from "@/lib/seo";
 import { ogImagePath } from "@/lib/ogShared";
 import MatchupTape, { FighterNameText } from "@/components/matchup/MatchupTape";
 import { buildTapeData, buildNoDataTapeData } from "@/components/matchup/matchupData";
+import { CommonOpponentsInline } from "@/components/matchup/CommonOpponentsList";
 import { GLOBAL_FIGHTER_NAME_SIZE } from "@/lib/events";
 import matchupStyles from "@/styles/matchup.module.css";
 
-const RESULT_SYMBOL: Record<"win" | "loss" | "draw" | "nc", string> = {
-  win: "○",
-  loss: "●",
-  draw: "△",
-  nc: "△",
-};
-const RESULT_COLOR: Record<"win" | "loss" | "draw" | "nc", string> = {
-  win: "#1f9e4d",
-  loss: "#9a968c",
-  draw: "#9a968c",
-  nc: "#9a968c",
-};
+// 予想勝者のバッジ(ひと目表・各カード見出しの両方で使う共通の見た目)。
+function WinnerBadge({ label }: { label: string }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 4,
+        fontWeight: 700,
+        color: "var(--accent)",
+        background: "rgba(232, 0, 45, 0.1)",
+        padding: "3px 10px",
+        borderRadius: 999,
+      }}
+    >
+      <span aria-hidden="true">▶</span>
+      {label}
+    </span>
+  );
+}
 
 export function generateStaticParams() {
   return ORIGINAL_ARTICLES.filter((a) => !a.hidden).map((a) => ({ slug: a.slug }));
@@ -54,10 +64,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     : article.body?.[0] ?? article.title;
   // 全カード予想(fights.length>1)はOG画像がbuildFullCardImage()の縦長レイアウトに
   // なるため、meta上のwidth/heightもそれに合わせる(route.tsxの
-  // headerHeight(170)/ROW_HEIGHT(100)/footerHeight(60)と同じ計算式を維持すること)。
+  // headerHeight(170)+TOP_GAP(26)+COLUMN_HEADER_HEIGHT(30)+ROW_HEIGHT(100)*N+
+  // BOTTOM_GAP(32)+footerHeight(60)と同じ計算式を維持すること)。
   const isFullCard = article.fights.length > 1;
   const imageWidth = 1200;
-  const imageHeight = isFullCard ? 170 + article.fights.length * 100 + 60 : 630;
+  const imageHeight = isFullCard ? 318 + article.fights.length * 100 : 630;
   return pageMetadata({
     title: `${article.title} | Mニュース`,
     description,
@@ -70,7 +81,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const article = getOriginalArticle(slug);
   if (!article || article.hidden) notFound();
-  const records = await fetchFighterRecords();
+  const [records, visibleSlugs] = await Promise.all([fetchFighterRecords(), getVisibleFighterSlugs()]);
   const eventLink = resolveEventLink(article.eventSlug);
 
   const breadcrumbs = [{ label: "トップ", href: "/" }, { label: article.title }];
@@ -109,40 +120,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 {p}
               </p>
             ))}
-          </div>
-        )}
-
-        {article.fights.length > 1 && article.fights.every((f) => f.predictedWinner && typeof f.confidencePct === "number") && (
-          <div className="article-subsection" style={{ marginBottom: 28 }}>
-            <div className="event-section-label" style={{ fontSize: 12, marginBottom: 10 }}>
-              全{article.fights.length}試合 AI予想ひと目表
-            </div>
-            <div style={{ border: "1px solid var(--line, #e5e0d5)", borderRadius: 10, overflow: "hidden" }}>
-              {article.fights.map((fight, i) => {
-                const winner = fight.predictedWinner === "B" ? fight.fighterB : fight.fighterA;
-                const loser = fight.predictedWinner === "B" ? fight.fighterA : fight.fighterB;
-                const boutNo = fight.weightClass?.split("／")[0] ?? "";
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      padding: "12px 14px",
-                      borderTop: i === 0 ? "none" : "1px solid var(--line-soft, #eee)",
-                    }}
-                  >
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 13, color: "var(--muted, #8b887e)" }}>
-                      <span>{boutNo}</span>
-                      <span>
-                        AI予想 <strong style={{ fontSize: 16, color: "var(--accent)" }}>{fight.confidencePct}%</strong>
-                      </span>
-                    </div>
-                    <div style={{ marginTop: 4, fontSize: 18, lineHeight: 1.5 }}>
-                      {loser.nameJa} vs <strong style={{ color: "var(--accent)" }}>{winner.nameJa}</strong>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            {article.fights.length > 1 && (
+              <p style={{ fontSize: 13 }}>
+                <a href="/rankings" style={{ color: "var(--accent)" }}>
+                  → AI RIZINランキングを見る
+                </a>
+              </p>
+            )}
           </div>
         )}
 
@@ -180,19 +164,26 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {article.fights.map((fight, i) => {
           const entryA = records[fight.fighterA.slug];
           const entryB = records[fight.fighterB.slug];
+          const cardWinner = fight.predictedWinner === "B" ? fight.fighterB : fight.fighterA;
           return (
             <section key={i} className="article-fight-section">
-              <h2 className="event-section-label" style={{ marginBottom: 16 }}>
+              <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text, #0a0a0a)", marginBottom: 10, lineHeight: 1.4 }}>
                 {fight.fighterA.nameJa} vs {fight.fighterB.nameJa}
-                {fight.weightClass && <span className="bout-weight" style={{ marginLeft: 10 }}>{fight.weightClass}</span>}
-                {fight.isTitleMatch && <span className="bout-title-badge" style={{ marginLeft: 10 }}>TITLE</span>}
               </h2>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
+                {fight.weightClass && <span className="bout-weight">{fight.weightClass}</span>}
+                {fight.isTitleMatch && <span className="bout-title-badge">TITLE</span>}
+                {fight.predictedWinner && typeof fight.confidencePct === "number" && (
+                  <WinnerBadge label={`AI予想 ${cardWinner.nameJa} ${fight.confidencePct}%`} />
+                )}
+              </div>
 
               {(() => {
-                // /events/[slug]と同じMatchupTape(綱引きバー)を再利用する。
+                // /events/[slug]と同じMatchupTape(綱引きバー)・共通対戦相手UI
+                // (CommonOpponentsInline、夢のカードと同じ意匠)を再利用する。
                 // 共通対戦相手は独立した表(別枠)にせず、同じ.cardブロック内に
-                // 「相手名／左の結果／右の結果」の行として続ける(2026-08-06、
-                // カードが分割された表の寄せ集めに見えるとの指摘を受けて統合)。
+                // 続ける(2026-08-06、カードが分割された表の寄せ集めに見える・
+                // 独自実装のデザインが既存意匠と不統一との指摘を受けて統合)。
                 const hasDataA = hasWikipediaRecord(entryA);
                 const hasDataB = hasWikipediaRecord(entryB);
                 const anyData = hasDataA || hasDataB;
@@ -227,29 +218,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     )}
 
                     {fight.commonOpponents && fight.commonOpponents.length > 0 && (
-                      <div style={{ borderTop: "1px solid var(--line-soft, #eee)", padding: "12px 16px" }}>
-                        <div style={{ fontSize: 13, color: "var(--muted, #8b887e)", marginBottom: 6 }}>共通対戦相手</div>
-                        {fight.commonOpponents.map((o, j) => (
-                          <div
-                            key={j}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 10,
-                              padding: "6px 0",
-                              fontSize: 17,
-                              borderTop: j === 0 ? "none" : "1px solid var(--line-soft, #f2f0e8)",
-                            }}
-                          >
-                            <span style={{ minWidth: 20, fontWeight: 700, color: RESULT_COLOR[o.resultA ?? "nc"] }}>
-                              {o.resultA ? RESULT_SYMBOL[o.resultA] : "-"}
-                            </span>
-                            <span style={{ flex: 1, textAlign: "center" }}>{o.name}</span>
-                            <span style={{ minWidth: 20, textAlign: "right", fontWeight: 700, color: RESULT_COLOR[o.resultB ?? "nc"] }}>
-                              {o.resultB ? RESULT_SYMBOL[o.resultB] : "-"}
-                            </span>
-                          </div>
-                        ))}
+                      <div className={matchupStyles.commonsHead} style={{ borderTop: "1px solid var(--line-soft, #eee)" }}>
+                        <h4>共通対戦相手</h4>
+                        <CommonOpponentsInline
+                          leftName={fight.fighterA.nameJa}
+                          rightName={fight.fighterB.nameJa}
+                          commons={fight.commonOpponents}
+                          visibleSlugs={visibleSlugs}
+                        />
                       </div>
                     )}
                   </div>
@@ -270,6 +246,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           );
         })}
         </div>
+
+        {article.closingNote && (
+          <div className="article-body" style={{ marginTop: 24 }}>
+            {article.closingNote.map((p, i) => (
+              <p key={i} style={{ marginBottom: 10, lineHeight: 1.8, fontSize: 13, color: "var(--muted, #8b887e)" }}>
+                {p}
+              </p>
+            ))}
+          </div>
+        )}
 
         {eventLink && (
           <p style={{ marginTop: 24, fontSize: 13 }}>

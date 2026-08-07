@@ -35,12 +35,11 @@ export interface OriginalArticleFight {
   // 注目点セクション(スナップショット)。閾値未達で0件なら配列自体を省略。
   notablePoints?: string[];
   // 冒頭サマリー表(全試合予想一覧)用。予想勝者がfighterA/fighterBのどちら側か。
-  // confidencePctはAI RIZINランキングの内部レート(rawRating、σ補正込み)から
-  // expectedScore(rSelf,rOpp)=1/(1+10^((rOpp-rSelf)/D))で機械算出した期待勝率
-  // (2026-08-05、RIZIN過去576試合からD≈152.4に較正済み。旧D=400ではなくこちらを
-  // 使う)。RIZIN未参戦選手が絡む試合は、過去のRIZIN初参戦選手233人の初戦結果から
-  // 統計的に求めた初期値(1408.82)を代わりに使う。全10試合とも同一式・同一データから
-  // 再現可能な値で、質的判断は一切介在しない。
+  // confidencePctは「AI予想の確度(%)」の表示値。導出方法は記事ごとに異なりうる
+  // (レートのexpectedScoreで機械算出する場合と、戦績・試合内容を踏まえた質的判断の
+  // 場合の両方がある)。どちらの方法を使ったかはbody/closingNoteの説明文に合わせること。
+  // 2026-08-06、rizin-54-full-card-predictionsは機械算出(D≈152.4較正)から質的判断に
+  // 戻した(ユーザー指示: 一番最初の予想の勝者・確度を復元)。
   predictedWinner?: "A" | "B";
   confidencePct?: number;
 }
@@ -68,6 +67,9 @@ export interface OriginalArticle {
   publishedAtTime: string;
   fights: OriginalArticleFight[]; // 選択した試合ごとに1セクション(通常1件、複数可)。プロース記事では空配列
   body?: string[]; // 自由記述段落(ランキング更新告知等、対戦カード比較に当てはまらない記事用)
+  // 記事末尾の方法論(任意)。専門用語なしで3行以内を想定。bodyが冒頭の短い前文
+  // 専用なのに対し、closingNoteは全試合セクションの後(関連大会リンクの手前)に出る。
+  closingNote?: string[];
   rankingSnapshots?: RankingDivisionSnapshot[]; // ランキング更新告知の階級別スナップショット表示
   // 編集中の記事を本番で一時的に到達不能にするフラグ(Fighter.hiddenと同じ命名規約)。
   // true時: 記事ページ本体はnotFound()、generateStaticParamsで静的生成対象から除外、
@@ -176,31 +178,29 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
     slug: "rizin-54-full-card-predictions",
     title: "RIZIN.54 全10試合を数字で予想する",
     eventSlug: "rizin-54",
-    publishedAt: "2026-08-03",
-    publishedAtTime: "23:30",
-    // 2026-08-06、記事本文・デザインの改修中のため一時非公開。改修完了後に
-    // このフラグを外して同じURLで再公開する。
-    hidden: true,
+    publishedAt: "2026-08-07",
+    publishedAtTime: "15:10",
     body: [
       "8月11日(火・祝)、TOYOTA ARENA TOKYOでRIZIN.54が開催されます。",
-      "全10試合について、AI RIZINランキングのレートをもとに勝敗を予想しました。",
-      "予想は、mnews.jpが独自算出しているAI RIZINランキングの選手レートをもとに、数値で機械的に判定したものです。",
-      "RIZIN初参戦の選手は、まだ実績が無いため推定の数値を使っています。",
+      "全10試合について、各選手の戦績や試合内容、AI RIZINランキングの順位もふまえて勝敗を予想しました。",
+    ],
+    closingNote: [
+      "予想は、各選手の戦績・フィニッシュ率・直近の試合内容を踏まえてmnews編集部が判定したものです。",
     ],
     fights: [
       {
         fighterA: { slug: "koike-kleber", nameJa: "クレベル・コイケ" },
         fighterB: { slug: "akimoto-kyoma", nameJa: "秋元強真" },
         weightClass: "第10試合／フェザー級（66.0kg）",
-        predictedWinner: "A",
-        confidencePct: 62,
+        predictedWinner: "B",
+        confidencePct: 55,
         // 共通対戦相手: 萩原京平(クレベルは2022-05-05に一本勝ち、秋元は2025-11-03に
         // TKO勝ち)。data/fighterRecords.json の両者history照合で検出。
         commonOpponents: [{ name: "萩原京平", resultA: "win", resultB: "win" }],
         notablePoints: [
           "クレベル・コイケは35勝のうち29が一本勝ち(一本率83%)。一方で9敗の中身は判定7・KO1・一本1で、「極まらない・倒れない、だがポイントで負ける」という極端な形",
           "秋元強真は5連勝中で、唯一の黒星は元谷友貴との判定のみ。まだ一度もフィニッシュされていない",
-          "反証材料もある。クレベルの勝ち筋は明確で、秋元が一度でも寝技に付き合えば一本の危険がある(秋元は元谷戦でグラウンドを支配され失点)",
+          "秋元が寝技に深く付き合えばクレベルの一本の危険は残る(元谷戦ではグラウンドを支配され失点した経験がある)。決着は判定、または終盤の運動量勝負でのTKOを想定",
           "AI RIZINランキングではクレベルがフェザー級2位、秋元が4位",
         ],
       },
@@ -208,12 +208,12 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterA: { slug: "sato-shoko", nameJa: "佐藤将光" },
         fighterB: { slug: "patchy-mix", nameJa: "パッチー・ミックス" },
         weightClass: "第9試合／バンタム級（61.0kg）",
-        predictedWinner: "A",
-        confidencePct: 70,
+        predictedWinner: "B",
+        confidencePct: 60,
         notablePoints: [
           "佐藤将光は通算37勝17敗2分。17敗のうち14が判定で、極められて負けたのは2度だけ",
           "パッチー・ミックスは20勝のうち13が一本勝ち(一本率65%)。元Bellator世界バンタム級王者だが現在3連敗中",
-          "今回は本来の階級であるバンタム級に戻る一戦。佐藤も3月に三角絞めで一本勝ちしており、寝技勝負に出れば決着の目はある",
+          "本来の階級であるバンタム級への復帰でミックス本来の力が出せれば、3連敗を脱する材料になる。ただし佐藤の一本の圧はミックスにとって最大の警戒点で、決着は判定を想定",
           "AI RIZINランキングでは佐藤がバンタム級2位",
         ],
       },
@@ -222,11 +222,11 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterB: { slug: "gadzhamatov-alibeg", nameJa: "アリベク・ガジャマトフ" },
         weightClass: "第8試合／フライ級（57.0kg）",
         predictedWinner: "A",
-        confidencePct: 51,
+        confidencePct: 55,
         notablePoints: [
           "アリベク・ガジャマトフは7戦6勝、6勝すべてフィニッシュ。判定までいった勝ち試合が1つもない",
           "唯一の黒星は2025年9月の扇久保博正戦の判定0-3。時間を使われると弱いという弱点が出た試合",
-          "伊藤はまさにその「時間を使わせる」側。ただし7敗のうち6が判定で、上位相手に競り負けるパターンも続いている",
+          "伊藤自身も7敗中6が判定というタフな戦績で、簡単には終わらない相手。決着は判定を想定。ただし上位相手に競り負けるパターンも続いている点は懸念材料",
           "AI RIZINランキングでは伊藤がフライ級5位、ガジャマトフが6位",
         ],
       },
@@ -235,11 +235,12 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterB: { slug: "edpolo-king", nameJa: "エドポロキング" },
         weightClass: "第7試合／ヘビー級（120.0kg）",
         predictedWinner: "A",
-        confidencePct: 69,
+        confidencePct: 57,
         notablePoints: [
           "両者とも勝ち方が全部フィニッシュ。上田は5勝すべてKO、エドポロキングは3勝すべてKO。判定までもつれた勝ち試合が2人合わせて1つもない",
           "上田は判定負けもゼロで8戦すべてが決着。エドポロキングも酒井リョウ・貴賢神をKOで下した実績があり、破壊力は実証済み",
           "上田は約12か月半、エドポロキングは約16か月半のブランク明け。コンディション差が結果を左右する",
+          "ブランクの短い上田がやや優勢で、決着は序盤〜中盤のKO/TKOを想定",
         ],
       },
       {
@@ -247,7 +248,7 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterB: { slug: "sakai-ryo", nameJa: "酒井リョウ" },
         weightClass: "第6試合／ヘビー級（120.0kg）",
         predictedWinner: "A",
-        confidencePct: 70,
+        confidencePct: 73,
         // 共通対戦相手: ロッキー・マルティネス(酒井は2度対戦)・関根“シュレック”秀樹
         // (酒井は2度対戦)・SAINT。1行=1対戦の原則に従い、片方しか戦っていない回は
         // resultAをnullにしている。
@@ -262,6 +263,7 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
           "スダリオ剛は9勝のうち8がKO(KO率89%)",
           "酒井リョウは通算15勝15敗で、15敗のうち8が打撃によるKO/TKO負け。直近も貴賢神に1R TKO負け",
           "共通対戦相手にも差(スダリオが下した相手に酒井は敗れている)。不安要素はスダリオの約15か月のブランク",
+          "打撃の圧はスダリオが明確に上で、決着は早いラウンドでのKO/TKOを想定。ブランク明けの立ち上がりだけが波乱の芽",
         ],
       },
       {
@@ -269,14 +271,14 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterB: { slug: "takeda-koji", nameJa: "武田光司" },
         weightClass: "第5試合／フェザー級（66.0kg）",
         predictedWinner: "A",
-        confidencePct: 55,
+        confidencePct: 57,
         // 共通対戦相手: 新居すぐる(摩嶋は2024-07-28に一本勝ち、武田は2024-12-31に
         // テクニカル判定勝ち)。
         commonOpponents: [{ name: "新居すぐる", resultA: "win", resultB: "win" }],
         notablePoints: [
           "摩嶋一整は19勝のうち16が一本勝ち(一本率84%)、2連勝中",
           "武田光司は19勝のうち11が判定(判定率58%)で、KOで勝ったのは2度だけ。レスリングで組み伏せる形が持ち味",
-          "摩嶋の6敗はKO3・一本2・判定1。打撃には弱いが、KO勝ちが2度しかない武田にその崩し方は期待しにくい",
+          "摩嶋の6敗はKO3・一本2・判定1。打撃には弱いが、KO勝ちが2度しかない武田にその崩し方は期待しにくく、決着は摩嶋の一本を想定",
           "AI RIZINランキングでは摩嶋がフェザー級7位、武田が10位",
         ],
       },
@@ -285,11 +287,11 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterB: { slug: "temirov-azizbek", nameJa: "アジズベク・テミロフ" },
         weightClass: "第4試合／バンタム級（61.0kg）",
         predictedWinner: "A",
-        confidencePct: 63,
+        confidencePct: 60,
         notablePoints: [
           "アジズベク・テミロフは6勝すべてKO/TKO。判定勝ちが無く、2敗はどちらも判定負け",
           "後藤丈治は9敗しているが、打撃で倒されたことは一度もない",
-          "「打撃でしか勝ったことがない選手」と「打撃で倒されたことがない選手」の対決。ただしテミロフの1Rの一発は常に警戒が必要",
+          "「打撃でしか勝ったことがない選手」と「打撃で倒されたことがない選手」の対決。テミロフの1Rの一発には要警戒だが、そこを耐えれば後藤が判定に持ち込むと想定",
           "AI RIZINランキングでは後藤がバンタム級3位、テミロフが4位",
         ],
       },
@@ -297,13 +299,12 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterA: { slug: "hiramoto-jo", nameJa: "平本丈" },
         fighterB: { slug: "jolly", nameJa: "ジョリー" },
         weightClass: "第3試合／フライ級（57.0kg）",
-        predictedWinner: "B",
-        confidencePct: 53,
+        predictedWinner: "A",
+        confidencePct: 55,
         notablePoints: [
           "ジョリーは4戦4勝で全部フィニッシュ。直近2戦はどちらも1Rの腕ひしぎ十字固め",
           "ただし相手は打撃系中心で、7年のブランクを経て復帰した経歴。MMAの総合力はまだ読めない",
           "平本丈は極める形への対応を勝ち負け両方で経験している。対抗は平本の判定持ち込み",
-          "AI RIZINランキングでは平本がフライ級14位、ジョリーはバンタム級12位",
         ],
       },
       {
@@ -311,10 +312,10 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterB: { slug: "hosokawa-issou", nameJa: "細川一颯" },
         weightClass: "第2試合／69.0kg契約",
         predictedWinner: "A",
-        confidencePct: 65,
+        confidencePct: 78,
         notablePoints: [
-          "細川一颯はRIZIN初参戦のため、過去の初参戦選手233人の初戦結果から求めた初期値を使用",
-          "直樹は3勝すべてフィニッシュ、直近2戦とも1R決着。細川一颯はBreakingDown出身で、確認できるのはキックボクシング1試合(TKO負け)のみ",
+          "直樹は3勝すべてフィニッシュ、直近2戦とも1R決着。細川一颯はBreakingDown出身で、RIZINで確認できるのはキックボクシング1試合(TKO負け)のみ",
+          "MMAでの実戦経験がほぼ無い細川に対し、直樹が主導権を握れば早期決着が濃厚。決着は1RのTKOか一本を想定",
           "唯一の警戒点は直樹の被弾。2025年11月に三井俊希へ1R KO負けしており、一発をもらうと終わる可能性は残る",
           "AI RIZINランキングでは直樹がフェザー級15位",
         ],
@@ -323,11 +324,12 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
         fighterA: { slug: "mizuno-shinta", nameJa: "水野新太" },
         fighterB: { slug: "lee-kaiwen", nameJa: "リー・カイウェン" },
         weightClass: "第1試合／フェザー級（66.0kg）",
-        predictedWinner: "B",
-        confidencePct: 64,
+        predictedWinner: "A",
+        confidencePct: 68,
         notablePoints: [
-          "水野新太はRIZIN初参戦のため、過去の初参戦選手233人の初戦結果から求めた初期値を使用",
-          "水野新太は9勝1敗で無傷。リー・カイウェンは15勝8敗だが現在2連敗中(高木凌にTKO負け、中村京一郎に判定負け)",
+          "水野新太は9勝1敗で、唯一の敗戦も判定(フィニッシュされたことは一度もない)。その1敗の直後、2026年5月にDEEPフェザー級暫定王座決定戦を判定5-0で制しており、勢いは戻っている",
+          "リー・カイウェンは15勝8敗ながら現在2連敗中。2025年8月の中村京一郎戦は判定0-3の接戦負けだったが、直近2026年5月の高木凌戦は1R 1:38のTKO負けと、より早い時間で崩されている",
+          "リーの連敗、特に直近の早期TKO負けが一時的な不振か地力の低下かが焦点。大きく崩れなければ水野が試合を組み立てて判定に持ち込む展開を想定",
         ],
       },
     ],
