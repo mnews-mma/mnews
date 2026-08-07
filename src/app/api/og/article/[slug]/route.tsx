@@ -48,13 +48,30 @@ function boutNumberLabel(weightClass: string | undefined): string {
 // 2026-08-05の経緯: 当初の色帯(赤vsグレー、バー幅が%に比例)は参考画像
 // [U-NEXT×RIZIN公式「私のガチ勝敗予想」形式]に寄りすぎているとの指摘で廃止し、
 // 矢印(▶)+数字のみのオッズボード形式に変更した。その後の指示で「カードとして
-// 見づらい」ため色帯自体は復活させるが、今回はバー幅を%に比例させない
-// (全行同一幅の固定50/50分割)。勝者側だけを赤で塗り、%は数字で入れる
-// (バーの長さで大小を表現しない)。
+// 見づらい」ため色帯自体は復活させるが、バー幅は%に比例させない
+// (全行同一幅の固定50/50分割)。勝者側だけを赤で塗る(バーの長さで大小を表現しない)。
+// 2026-08-06、選手の左右は公式カード表記どおり(fighterA=左/fighterB=右で固定、
+// 勝者側で並べ替えない)に戻した。%列を赤にすると「勝者名(赤)+敗者(暗)+%(赤)」で
+// 赤が敗者を挟むサンドイッチに見える指摘があったため、%列は赤ではなく背景と同じ
+// 濃いグレー(COLORS.sumi)にして中立化。数字は白のまま。これで赤は各行の勝者側
+// ブロックのみに出て分断されず、%は独立した固定列として全行同じ位置に立つ。
 const ROW_HEIGHT = 100;
 const GUTTER_WIDTH = 90;
 const VS_CHIP_WIDTH = 64;
-const LOSER_HALF_COLOR = "#2E2A26";
+const PCT_WIDTH = 110;
+const NAME_WIDTH = (1200 - GUTTER_WIDTH - PCT_WIDTH - VS_CHIP_WIDTH) / 2;
+// 列見出し「AI予想」用の行(全行の先頭に1回だけ出す。凡例行を削除した代わり)。
+const COLUMN_HEADER_HEIGHT = 30;
+// ヘッダー/フッターと本体の間の余白(2026-08-06、上下端が詰まって見える指摘への対応。
+// 14/16pxでは1200px幅・行高100pxのスケール感に対して視認できないほど小さかった
+// ため、はっきり分かる値に引き上げた)。
+const TOP_GAP = 26;
+const BOTTOM_GAP = 32;
+// 敗者側ブロックの背景色。背景(COLORS.sumi #131210)に対して十分な明度差を持たせ、
+// 1行=1つの箱として輪郭が分かるようにする(旧#2E2A26は背景と近すぎて溶けていた)。
+const LOSER_HALF_COLOR = "#3E3830";
+// 行間の区切り線。敗者側背景(#3E3830)より明るくし、行の輪郭として視認できるようにする。
+const ROW_DIVIDER_COLOR = "#524B42";
 
 async function buildFullCardImage(
   article: NonNullable<ReturnType<typeof getOriginalArticle>>,
@@ -63,9 +80,16 @@ async function buildFullCardImage(
   const fights = article.fights;
   const headerHeight = 170;
   const footerHeight = 60;
-  const totalHeight = headerHeight + fights.length * ROW_HEIGHT + footerHeight;
+  // 画像高さの式。generateMetadata()側のimageHeight計算と必ず値を同期させること。
+  const totalHeight =
+    headerHeight + TOP_GAP + COLUMN_HEADER_HEIGHT + fights.length * ROW_HEIGHT + BOTTOM_GAP + footerHeight;
   const fonts = await loadOgFonts();
 
+  // 2026-08-06、装飾用のcornerVignette/stripeTextureは外枠全体ではなくヘッダー
+  // ブロックにのみ付ける。外枠全体に付けていた際、各行の勝者/敗者/%セルの
+  // 不透明backgroundColorが下の縞模様を完全に覆いきれず、行ごとに明度が
+  // ばらついて見える(縞が透ける)不具合があったため。行リスト側はこの外枠の
+  // 単色backgroundColorだけを背景にする(重ね合わせ自体を発生させない)。
   const img = new ImageResponse(
     (
       <div
@@ -75,7 +99,6 @@ async function buildFullCardImage(
           display: "flex",
           flexDirection: "column",
           backgroundColor: COLORS.sumi,
-          backgroundImage: `${cornerVignette()}, ${stripeTexture()}`,
         }}
       >
         <div
@@ -86,44 +109,62 @@ async function buildFullCardImage(
             justifyContent: "center",
             gap: "8px",
             height: `${headerHeight}px`,
+            backgroundImage: `${cornerVignette()}, ${stripeTexture()}`,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "Noto Sans JP",
-              fontWeight: 900,
-              fontSize: "32px",
-              color: COLORS.gold,
-              letterSpacing: "2px",
-            }}
-          >
-            全{fights.length}試合 AI予想
-          </div>
-          {eventName && (
+          {eventName ? (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Noto Sans JP",
+                  fontWeight: 900,
+                  fontSize: "44px",
+                  color: COLORS.gold,
+                  letterSpacing: "2px",
+                }}
+              >
+                {eventName}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Noto Sans JP",
+                  fontWeight: 700,
+                  fontSize: "20px",
+                  color: COLORS.washi,
+                }}
+              >
+                全{fights.length}試合 AI予想
+              </div>
+            </div>
+          ) : (
             <div
               style={{
                 display: "flex",
                 fontFamily: "Noto Sans JP",
                 fontWeight: 900,
-                fontSize: "20px",
-                color: "#FFFFFF",
+                fontSize: "32px",
+                color: COLORS.gold,
+                letterSpacing: "2px",
               }}
             >
-              {eventName}
+              全{fights.length}試合 AI予想
             </div>
           )}
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "Noto Sans JP",
-              fontWeight: 700,
-              fontSize: "14px",
-              color: COLORS.ash,
-              marginTop: "2px",
-            }}
-          >
-            赤い側が予想勝者・数字はAIの予想確度(期待勝率)
+        </div>
+
+        <div style={{ display: "flex", width: "1200px", height: `${TOP_GAP}px`, backgroundColor: COLORS.sumi }} />
+
+        <div style={{ display: "flex", width: "1200px", height: `${COLUMN_HEADER_HEIGHT}px`, alignItems: "center" }}>
+          <div style={{ display: "flex", width: `${GUTTER_WIDTH}px`, flexShrink: 0 }} />
+          <div style={{ display: "flex", width: `${NAME_WIDTH}px`, flexShrink: 0 }} />
+          <div style={{ display: "flex", width: `${VS_CHIP_WIDTH}px`, flexShrink: 0 }} />
+          <div style={{ display: "flex", width: `${NAME_WIDTH}px`, flexShrink: 0 }} />
+          <div style={{ display: "flex", width: `${PCT_WIDTH}px`, flexShrink: 0, alignItems: "center", justifyContent: "center" }}>
+            <span style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 700, fontSize: "14px", color: COLORS.washi, letterSpacing: "1px" }}>
+              AI予想
+            </span>
           </div>
         </div>
 
@@ -138,7 +179,8 @@ async function buildFullCardImage(
                   display: "flex",
                   height: `${ROW_HEIGHT}px`,
                   width: "1200px",
-                  borderTop: i === 0 ? "none" : "1px solid #2A2724",
+                  overflow: "hidden",
+                  borderTop: i === 0 ? "none" : `1px solid ${ROW_DIVIDER_COLOR}`,
                 }}
               >
                 <div
@@ -152,7 +194,7 @@ async function buildFullCardImage(
                     fontFamily: "Noto Sans JP",
                     fontWeight: 700,
                     fontSize: "15px",
-                    color: COLORS.ash,
+                    color: COLORS.washi,
                     textAlign: "center",
                   }}
                 >
@@ -161,22 +203,17 @@ async function buildFullCardImage(
                 <div
                   style={{
                     display: "flex",
-                    flex: 1,
+                    width: `${NAME_WIDTH}px`,
+                    flexShrink: 0,
                     backgroundColor: aColor,
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: "14px",
                     padding: "0 16px",
                   }}
                 >
                   <span style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "26px", color: COLORS.washi }}>
                     {f.fighterA.nameJa}
                   </span>
-                  {f.predictedWinner === "A" && typeof f.confidencePct === "number" && (
-                    <span style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "34px", color: "#FFFFFF" }}>
-                      {f.confidencePct}%
-                    </span>
-                  )}
                 </div>
                 <div
                   style={{
@@ -193,27 +230,40 @@ async function buildFullCardImage(
                 <div
                   style={{
                     display: "flex",
-                    flex: 1,
+                    width: `${NAME_WIDTH}px`,
+                    flexShrink: 0,
                     backgroundColor: bColor,
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: "14px",
                     padding: "0 16px",
                   }}
                 >
-                  {f.predictedWinner === "B" && typeof f.confidencePct === "number" && (
-                    <span style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "34px", color: "#FFFFFF" }}>
-                      {f.confidencePct}%
-                    </span>
-                  )}
                   <span style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "26px", color: COLORS.washi }}>
                     {f.fighterB.nameJa}
                   </span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    width: `${PCT_WIDTH}px`,
+                    flexShrink: 0,
+                    backgroundColor: COLORS.sumi,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {typeof f.confidencePct === "number" && (
+                    <span style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "38px", color: "#FFFFFF" }}>
+                      {f.confidencePct}%
+                    </span>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
+
+        <div style={{ display: "flex", width: "1200px", height: `${BOTTOM_GAP}px`, backgroundColor: COLORS.sumi }} />
 
         <div
           style={{
@@ -225,7 +275,7 @@ async function buildFullCardImage(
             padding: "0 56px",
           }}
         >
-          <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "20px", color: COLORS.ash, letterSpacing: "1px" }}>
+          <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "24px", color: COLORS.washi, letterSpacing: "1px" }}>
             MNEWS.JP
           </div>
         </div>
