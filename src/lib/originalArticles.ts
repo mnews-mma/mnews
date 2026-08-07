@@ -183,6 +183,7 @@ export const ORIGINAL_ARTICLES: OriginalArticle[] = [
     body: [
       "8月11日(火・祝)、TOYOTA ARENA TOKYOでRIZIN.54が開催されます。",
       "全10試合について、各選手の戦績や試合内容、AI RIZINランキングの順位もふまえて勝敗を予想しました。",
+      "特定の選手を勝たせるための恣意的な操作はしていません。",
     ],
     closingNote: [
       "予想は、各選手の戦績・フィニッシュ率・直近の試合内容を踏まえてmnews編集部が判定したものです。",
