@@ -1,0 +1,38 @@
+name: Verify production robots.txt after deploy
+
+# Vercelの本番デプロイが成功した直後に、実際に配信されているrobots.txtが
+# SHARE_UNFURL_BOTS(src/lib/robotsShareBots.ts)と一致しているかを検証する。
+# warm-routes.ymlと同じくdeployment_status(environment=Production, state=success)
+# をトリガーにする(昇格前・プレビューURLの検証は無意味なため)。
+#
+# 本番URLへの外部fetchを伴うため、npm run build(ローカルソース状態のみを
+# 検証する既存のcheck:*群)には組み込んでいない
+# (scripts/check-production-robots-txt.tsのコメント参照)。
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      (github.event.deployment_status.environment == 'Production' || github.event.deployment_status.environment == 'production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Log trigger (fired, not silently skipped)
+        run: |
+          echo "check-production-robots fired - deployment=${{ github.event.deployment.id }} sha=${{ github.event.deployment.sha }} environment=${{ github.event.deployment_status.environment }}"
+
+      - name: Verify production robots.txt matches SHARE_UNFURL_BOTS
+        run: npm run check:production-robots
