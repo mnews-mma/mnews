@@ -520,7 +520,13 @@ export type DeepBoutFormat =
   | "f10_vs_and_mark"
   | "f4_detached_mark_label"
   | "headingless_recovered"
-  | "structural_paragraph";
+  | "structural_paragraph"
+  // DEEP公式ページ自体がカードの一部しか掲載していない大会の欠落boutを、別の
+  // 一次資料から手入力で補完したもの(data/deepManualBouts.json、
+  // scripts/build-deep-records.tsのapplyManualBoutSupplements()参照)。
+  // HTMLからの抽出フォーマットではないため、このファイル内のパーサは
+  // 一切この値を生成しない(出所の区別を残すためだけの識別子)。
+  | "manual_supplement";
 
 export interface DeepRawBout {
   format: DeepBoutFormat;

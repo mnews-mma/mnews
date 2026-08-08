@@ -322,6 +322,133 @@ const DEEP_PINNED_MANUAL_SOURCES: { title: string; date: string; url: string; no
   },
 ];
 
+// 手入力boutの補完(data/deepManualBouts.json、2026-08-08)。
+//
+// DEEP公式の結果ページ自体がカードの一部しか載せていない大会がある(実例:
+// DEEP TOKYO IMPACT 1st ROUND 2021-06-19。全12試合のうち第1・第8試合の
+// 2件しか掲載されておらず、「第N試合」見出しがそもそも2つしか存在しない)。
+// これは抽出フォーマットの問題ではなく取得元の欠落であり、スクレイパー側を
+// どう直しても回収できない。該当boutだけを別の一次資料(この大会では日本MMA
+// 審判機構JMOCの公式結果)から手入力し、ここでマージする。
+//
+// 設計上の約束:
+//   - data/deepRecords.json(生成物)への直書きはしない。生成物を手で書き換えると
+//     再生成で黙って消える(RIZIN LANDMARK 15をrizinEventIndexの外から手動
+//     パッチで入れて同じ事故を起こした前例がある)。宣言はdata/配下の入力
+//     ファイルに置き、毎回の生成でここを通す。
+//   - 追加専用。既存boutの上書き・削除は行わない。
+//   - 重複判定は「大会名+開催日で大会を特定 → 選手ペア(順不同・空白正規化)」で
+//     行う。公式ページが後日拡充されて同じboutが正規経路から取れるように
+//     なった場合、手入力側が黙ってスキップされる(二重計上しない)。
+//   - 非プロ/非MMA除外・勝敗判定・slug解決は通常経路と同じprocessRawBouts()に
+//     通す(手入力側で判定結果を決め打ちしない)。上記大会の第1試合
+//     「DEEP JEWELSアマチュアSPルール」は既存のisExcludedNonProBout()が落とす。
+//   - 対象大会がevents内に見つからない場合は黙って握りつぶさず停止する
+//     (大会名の改称等で補完が効かなくなったことに気づけるようにするため)。
+const MANUAL_BOUTS_PATH = path.join(process.cwd(), "data", "deepManualBouts.json");
+
+interface ManualBoutDecl {
+  boutNumber: number;
+  weightClassRaw: string;
+  fighterAMark: string;
+  fighterAName: string;
+  fighterAGym: string | null;
+  fighterBMark: string;
+  fighterBName: string;
+  fighterBGym: string | null;
+  methodRaw: string;
+}
+interface ManualEventDecl {
+  eventName: string;
+  date: string;
+  supplementSourceUrl: string;
+  reason: string;
+  bouts: ManualBoutDecl[];
+}
+
+function normNameKey(s: string): string {
+  return s.replace(/[\s　]/g, "");
+}
+function boutPairKey(a: string, b: string): string {
+  return [normNameKey(a), normNameKey(b)].sort().join("|");
+}
+
+interface ManualSupplementDiag {
+  eventName: string;
+  date: string;
+  sourceUrl: string;
+  addedBouts: number;
+  skippedDuplicate: number;
+  skippedNonPro: number;
+  // 補完boutのうちslug未解決だった選手名の数。crawlループのdiagsとは別配列の
+  // ため、レポートの合計値(totalUnresolved)にはここから明示的に足す
+  // (足し忘れると「補完で増えたnull-slug」がレポート上だけ見えなくなる)。
+  unresolvedNames: number;
+  boutCountBefore: number;
+  boutCountAfter: number;
+}
+
+function applyManualBoutSupplements(events: DeepRecordsEvent[]): ManualSupplementDiag[] {
+  if (!fs.existsSync(MANUAL_BOUTS_PATH)) return [];
+  const decl = JSON.parse(fs.readFileSync(MANUAL_BOUTS_PATH, "utf-8")) as { events: ManualEventDecl[] };
+  const diags: ManualSupplementDiag[] = [];
+
+  for (const manual of decl.events ?? []) {
+    const target = events.find((e) => e.eventName === manual.eventName && e.date === manual.date);
+    if (!target) {
+      throw new Error(
+        `[STOP] data/deepManualBouts.jsonの補完対象大会が見つかりません: ${manual.eventName}(${manual.date})。` +
+          `大会名の改称・公式ページの削除等が起きた可能性があるため、黙って補完を落とさずに停止します。`
+      );
+    }
+
+    const existingPairs = new Set(target.bouts.map((b) => boutPairKey(b.fighterAName, b.fighterBName)));
+    const fresh = manual.bouts.filter((b) => !existingPairs.has(boutPairKey(b.fighterAName, b.fighterBName)));
+    const skippedDuplicate = manual.bouts.length - fresh.length;
+
+    const rawBouts: DeepRawBout[] = fresh.map((b) => ({
+      format: "manual_supplement",
+      boutNumber: b.boutNumber,
+      weightClassRaw: b.weightClassRaw,
+      fighterAMark: b.fighterAMark,
+      fighterAName: b.fighterAName,
+      fighterAGym: b.fighterAGym,
+      fighterBMark: b.fighterBMark,
+      fighterBName: b.fighterBName,
+      fighterBGym: b.fighterBGym,
+      methodRaw: b.methodRaw,
+      winnerNameHintRaw: null,
+    }));
+
+    const { bouts: manualBouts, nonProBoutCount, unresolvedNames } = processRawBouts(rawBouts, manual.eventName);
+    const boutCountBefore = target.bouts.length;
+
+    // 既存bout+補完boutをboutNumber降順(DEEP公式ページと同じ並び=メイン
+    // イベントが先頭)に並べ直し、cardPosition/isOpeningFightを全件で振り直す。
+    // boutNumberがnullのbout(番号見出しを持たない大会)は末尾に回す。
+    const merged = [...target.bouts, ...manualBouts].sort((x, y) => (y.boutNumber ?? -1) - (x.boutNumber ?? -1));
+    target.bouts = merged.map((b, idx) => ({
+      ...b,
+      cardPosition: merged.length - idx,
+      isOpeningFight: idx === merged.length - 1,
+    }));
+
+    diags.push({
+      eventName: manual.eventName,
+      date: manual.date,
+      sourceUrl: manual.supplementSourceUrl,
+      addedBouts: manualBouts.length,
+      skippedDuplicate,
+      skippedNonPro: nonProBoutCount,
+      unresolvedNames,
+      boutCountBefore,
+      boutCountAfter: target.bouts.length,
+    });
+  }
+
+  return diags;
+}
+
 async function main() {
   fs.mkdirSync(path.dirname(REPORT_OUT), { recursive: true });
   const fetchedDate = toJstDateStr();
@@ -526,11 +653,17 @@ async function main() {
     candidateCount++;
   }
 
+  // 手入力boutの補完(applyManualBoutSupplements()のコメント参照)。
+  // 通常クロール・pinned大会の投入がすべて終わった後に、追加専用でマージする。
+  const manualSupplementDiags = applyManualBoutSupplements(events);
+
   events.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
 
   const totalBouts = events.reduce((sum, e) => sum + e.bouts.length, 0);
   const totalUnknown = diags.reduce((sum, d) => sum + d.unknownResults, 0);
-  const totalUnresolved = diags.reduce((sum, d) => sum + d.unresolvedNames, 0);
+  const totalUnresolved =
+    diags.reduce((sum, d) => sum + d.unresolvedNames, 0) +
+    manualSupplementDiags.reduce((sum, m) => sum + m.unresolvedNames, 0);
   const totalParseFailures = diags.reduce((sum, d) => sum + d.parseFailures, 0);
   const totalNonProBouts = diags.reduce((sum, d) => sum + d.nonProBoutCount, 0);
   const totalRecoveredHeadingless = diags.reduce((sum, d) => sum + d.recoveredHeadinglessCount, 0);
@@ -554,6 +687,12 @@ async function main() {
   console.log(`構造カウント(独立検査)が最終bout数を上回る大会: ${structuralGapEvents.length}件(参考値、停止条件には使わない)`);
   console.log(`resultType=unknown: ${totalUnknown}`);
   console.log(`選手名未解決: ${totalUnresolved}`);
+  for (const m of manualSupplementDiags) {
+    console.log(
+      `手入力bout補完: ${m.eventName}(${m.date}) ${m.boutCountBefore}bout → ${m.boutCountAfter}bout` +
+        `(追加${m.addedBouts}件 / 既存と重複でスキップ${m.skippedDuplicate}件 / 非プロ・非MMA除外${m.skippedNonPro}件)`
+    );
+  }
 
   const extraZeroBout = excludedZeroBout.length - KNOWN_EXCLUSION_COUNT;
   if (extraZeroBout > STOP_EXTRA_ZERO_BOUT_THRESHOLD) {
@@ -601,6 +740,19 @@ async function main() {
   reportLines.push(`- 除外(抽出0件・F7/F11相当): ${excludedZeroBout.length}件`);
   reportLines.push(`- 除外(DEEP＆PANCRASE共催大会・PANCRASE側を正とする): ${excludedCoHostedPancrase.length}件`);
   reportLines.push(`- 除外(開催日不明): ${excludedDateUnknown.length}件`);
+  reportLines.push(``);
+  reportLines.push(`## 手入力boutの補完(data/deepManualBouts.json)`);
+  if (manualSupplementDiags.length === 0) {
+    reportLines.push(`(該当なし)`);
+  } else {
+    reportLines.push(`| 大会名 | 日付 | 補完出典 | bout数(前→後) | 追加 | 重複スキップ | 非プロ/非MMA除外 | slug未解決 |`);
+    reportLines.push(`|---|---|---|---|---|---|---|---|`);
+    for (const m of manualSupplementDiags) {
+      reportLines.push(
+        `| ${m.eventName} | ${m.date} | ${m.sourceUrl} | ${m.boutCountBefore} → ${m.boutCountAfter} | ${m.addedBouts} | ${m.skippedDuplicate} | ${m.skippedNonPro} | ${m.unresolvedNames} |`
+      );
+    }
+  }
   reportLines.push(``);
   reportLines.push(`## 除外(アマチュア大会。大会名に「アマチュア」を含むもの)`);
   for (const title of excludedAmateur) {

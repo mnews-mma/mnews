@@ -1452,7 +1452,15 @@ export const FIGHTERS: Fighter[] = [
   // shooto-2025-vol10-osakaの55kg契約戦にも別人「大成」が存在するため、
   // eventResults.tsのfighterBSlug:nullタグでその一戦を明示的に切り離してある
   // (src/lib/fighterRecordFromResults.tsのderiveHistoryFromEventResults参照)。
-  { slug: "sekino-taisei", nameJa: "大成", nameEn: "Taisei Sekino", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // 2026-08-08: DEEP公式は同一選手を大会によって「大成」(裸表記)と「関野大成」
+  // (本名フルネーム)で書き分けており、nameJaを「大成」に統一した結果、
+  // フルネーム表記の1戦(2021-03-13 DEEP TOKYO IMPACT 2021 DEEPライトヘビー級
+  // vs Garry)がfindFighterSlugByName()で解決できず4団体通算から欠落していた。
+  // build-deep-records.tsのBARE_NAME_WEIGHT_CLASS_OVERRIDESは「裸表記+メガトン級」
+  // 専用のフォールバックで、フルネーム表記かつライトヘビー級のこの1戦には
+  // 当たらない。aliasは完全一致で突合されるため、同姓同名の西谷大成
+  // (nishitani-taisei、フェザー級)には波及しない。
+  { slug: "sekino-taisei", nameJa: "大成", nameEn: "Taisei Sekino", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, aliases: ["関野大成"] },
   { slug: "nishitani-taisei", nameJa: "西谷大成", nameEn: "Taisei Nishitani", org: "deep", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "shibisai-shoma", nameJa: "シビサイ頌真", nameEn: "Shoma Shibisai", org: "deep", weightClass: "ヘビー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "kitakata-daichi", nameJa: "北方大地", nameEn: "Daichi Kitakata", org: "deep", weightClass: "ストロー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
