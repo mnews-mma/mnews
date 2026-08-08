@@ -1,0 +1,145 @@
+{
+  "note": "DEEP公式サイト(deep2001.com)の結果ページ自体がカードの一部しか掲載しておらず、スクレイプでは構造的に取得できないboutを、別の一次資料から手入力で補完するための宣言ファイル。scripts/build-deep-records.ts が生成の最後に読み込んでマージする(生成物 data/deepRecords.json への直書きはしない: 再生成で消える手動パッチを作らないため)。マージは追加専用で、大会名+開催日で対象大会を特定し、選手ペア(順不同・空白正規化)が既存boutと重複するものはスキップする(公式ページが後日拡充された場合に二重計上しないため)。boutはDeepRawBout相当の生の形で持ち、非プロ/非MMA除外・勝敗判定・slug解決は通常のスクレイプ経路とまったく同じ processRawBouts() を通す(手入力側で判定結果を決め打ちしない)。methodRaw・weightClassRawは出典の表記をそのまま写す。ただし時刻表記の約物(0’43”)だけはDEEP公式データ側の表記(0分43秒)に合わせて機械的に置換している(情報の増減は無い)。出典に無い情報(ジャッジのスコア内訳等、読み取りに解釈が要るもの)は補わない。",
+  "events": [
+    {
+      "eventName": "DEEP TOKYO IMPACT 1st ROUND",
+      "date": "2021-06-19",
+      "supplementSourceUrl": "https://www.mmaofficials.jp/20210619_deep1/",
+      "reason": "DEEP公式の結果ページ(https://www.deep2001.com/deep-tokyo-impact-1st-round/)は全12試合のうち第1試合・第8試合の2件しか掲載していない(2026-08-08にHTMLを取得して確認。「第N試合」見出しがこの2つしか存在しない)。抽出フォーマットの問題ではなく取得元の欠落であり、公式/result/一覧にもこの大会のページは1本しか無く代替ページも存在しない。全12試合の結果は日本MMA審判機構(JMOC)の公式試合結果ページに掲載されているため、そちらを出典として補完する。",
+      "bouts": [
+        {
+          "boutNumber": 12,
+          "weightClassRaw": "DEEPルール メガトン級 5分2R",
+          "fighterAMark": "×",
+          "fighterAName": "酒井リョウ",
+          "fighterAGym": "レンジャージム",
+          "fighterBMark": "○",
+          "fighterBName": "SAINT",
+          "fighterBGym": "Y&K ACADEMY",
+          "methodRaw": "KO 1R 0分43秒 スタンドパンチ"
+        },
+        {
+          "boutNumber": 11,
+          "weightClassRaw": "DEEPルール ライト級 5分2R",
+          "fighterAMark": "○",
+          "fighterAName": "鈴木琢仁",
+          "fighterAGym": "ボンサイ柔術",
+          "fighterBMark": "×",
+          "fighterBName": "石塚雄馬",
+          "fighterBGym": "AACC",
+          "methodRaw": "判定3-0"
+        },
+        {
+          "boutNumber": 10,
+          "weightClassRaw": "DEEPルール フライ級 5分2R",
+          "fighterAMark": "○",
+          "fighterAName": "鮎田直人",
+          "fighterAGym": "CAVE",
+          "fighterBMark": "×",
+          "fighterBName": "加藤瑠偉",
+          "fighterBGym": "KRAZY BEE",
+          "methodRaw": "失格 2R 4分51秒 ※2R、青・加藤がグラウンド状態の相手選手に対する頭部顔面へのキック攻撃により失格"
+        },
+        {
+          "boutNumber": 9,
+          "weightClassRaw": "DEEPルール ウェルター級 5分2R",
+          "fighterAMark": "○",
+          "fighterAName": "グラント・ボグダノフ",
+          "fighterAGym": "米国／KUSSANO TEAM",
+          "fighterBMark": "×",
+          "fighterBName": "田中一矢",
+          "fighterBGym": "Tri.H studio成増",
+          "methodRaw": "Sub 1R 2分05秒 テクニカルサブミッション：リアネイキッドチョーク"
+        },
+        {
+          "boutNumber": 8,
+          "weightClassRaw": "DEEP JEWELSルール ミクロ級 5分2R",
+          "fighterAMark": "×",
+          "fighterAName": "KYOKA",
+          "fighterAGym": "SAI-GYM",
+          "fighterBMark": "○",
+          "fighterBName": "古林礼名",
+          "fighterBGym": "GSB多治見",
+          "methodRaw": "判定0-3"
+        },
+        {
+          "boutNumber": 7,
+          "weightClassRaw": "DEEPルール メガトン級 5分2R",
+          "fighterAMark": "○",
+          "fighterAName": "KENNY中村",
+          "fighterAGym": "MAXI GYM",
+          "fighterBMark": "×",
+          "fighterBName": "関野大成",
+          "fighterBGym": "三河幕府",
+          "methodRaw": "判定3-0"
+        },
+        {
+          "boutNumber": 6,
+          "weightClassRaw": "DEEPルール フェザー級 5分2R",
+          "fighterAMark": "○",
+          "fighterAName": "吉村海飛",
+          "fighterAGym": "和術慧舟會HEARTS",
+          "fighterBMark": "×",
+          "fighterBName": "山口コウタ",
+          "fighterBGym": "パラエストラ八王子",
+          "methodRaw": "Sub 2R 2分02秒 タップアウト：フロントチョーク"
+        },
+        {
+          "boutNumber": 5,
+          "weightClassRaw": "DEEPルール ライト級 5分2R",
+          "fighterAMark": "×",
+          "fighterAName": "Street♡★Bob”洸助",
+          "fighterAGym": "LEGION TOP TEAM /ISHITSUNA MMA",
+          "fighterBMark": "○",
+          "fighterBName": "拳太郎",
+          "fighterBGym": "KRAZY BEE",
+          "methodRaw": "判定0-3"
+        },
+        {
+          "boutNumber": 4,
+          "weightClassRaw": "DEEPルール ストロー級 5分2R",
+          "fighterAMark": "○",
+          "fighterAName": "林　豊",
+          "fighterAGym": "パラエストラ柏",
+          "fighterBMark": "×",
+          "fighterBName": "中村真人",
+          "fighterBGym": "レンジャージム",
+          "methodRaw": "TKO 1R 1分14秒 レフェリーストップ：グラウンドパンチ"
+        },
+        {
+          "boutNumber": 3,
+          "weightClassRaw": "DEEPルール ストロー級 5分2R",
+          "fighterAMark": "×",
+          "fighterAName": "多胡力翔",
+          "fighterAGym": "ネックスイチムエ",
+          "fighterBMark": "○",
+          "fighterBName": "根本元太",
+          "fighterBGym": "パラエストラ柏",
+          "methodRaw": "判定0-3"
+        },
+        {
+          "boutNumber": 2,
+          "weightClassRaw": "DEEPルール フェザー級 5分2R",
+          "fighterAMark": "×",
+          "fighterAName": "渡辺　純",
+          "fighterAGym": "リバーサルジム立川ALPHA",
+          "fighterBMark": "○",
+          "fighterBName": "高橋辰也",
+          "fighterBGym": "和術慧舟會HERATS",
+          "methodRaw": "Sub 2R 3分22秒 タップアウト：リアネイキッドチョーク"
+        },
+        {
+          "boutNumber": 1,
+          "weightClassRaw": "DEEP JEWELSアマチュアSPルール ストロー級 3分2R",
+          "fighterAMark": "○",
+          "fighterAName": "高本千代",
+          "fighterAGym": "高本道場",
+          "fighterBMark": "×",
+          "fighterBName": "愛温",
+          "fighterBGym": "CAVE",
+          "methodRaw": "Sub 2R 0分48秒 テクニカルサブミッション：アームバー"
+        }
+      ]
+    }
+  ]
+}

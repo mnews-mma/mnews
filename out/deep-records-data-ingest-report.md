@@ -1,22 +1,27 @@
 # deep-records-data-ingest-report
 
-生成日時(JST): 2026-08-03
+生成日時(JST): 2026-08-08
 
 - アーカイブ総リンク数: 288
 - 候補大会数(開催済・KICK/アマチュア除く): 267
 - 投入大会数: 239
-- bout数: 2470
+- bout数: 2480
 - parseFailures(F1見出し数との差分。第N試合見出しはあるが抽出できなかった件数): 1件
 - 見出しなしメインイベント/セミファイナル回収bout数(PR #374): 49件
 - 構造段落回収bout数(PR #381、recoverStructuralParagraphBouts): 82件
 - 構造カウント(独立検査、countStructuralBoutBlocks)が最終bout数を上回る大会: 105件(参考値。非プロ/非MMA混入bout・地の文誤検知を含みうるため停止条件には使わない。乖離が大きい大会は大会別内訳のstructural列で個別確認する)
 - resultType=unknown: 23件
-- 選手名未解決(fighterASlug/fighterBSlug null): 3925件
+- 選手名未解決(fighterASlug/fighterBSlug null): 3941件
 - 除外(bout単位の非プロ/非MMA混入。PR #265の共有判定器を流用): 250件
 - 除外(アマチュア大会): 9件
 - 除外(抽出0件・F7/F11相当): 28件
 - 除外(DEEP＆PANCRASE共催大会・PANCRASE側を正とする): 5件
 - 除外(開催日不明): 1件
+
+## 手入力boutの補完(data/deepManualBouts.json)
+| 大会名 | 日付 | 補完出典 | bout数(前→後) | 追加 | 重複スキップ | 非プロ/非MMA除外 | slug未解決 |
+|---|---|---|---|---|---|---|---|
+| DEEP TOKYO IMPACT 1st ROUND | 2021-06-19 | https://www.mmaofficials.jp/20210619_deep1/ | 1 → 11 | 10 | 1 | 1 | 18 |
 
 ## 除外(アマチュア大会。大会名に「アマチュア」を含むもの)
 - DEEP JEWELSアマチュア
@@ -270,7 +275,7 @@
 | DEEP JEWELS 10 | 2015-11-23 | 6 | f2_method_middle | 0 | 0 | 9 | 1 | 0 | 0 | 7 |
 | DEEP 73 IMPACT | 2015-10-17 | 12 | f2_method_middle | 0 | 0 | 22 | 0 | 0 | 1 | 12 |
 | DEEP JEWELS 9 | 2015-08-29 | 4 | f2_method_middle | 0 | 0 | 6 | 0 | 0 | 0 | 5 |
-| DEEP CAGE IMPACT 2015 | 2015-08-29 | 12 | f2_method_middle | 0 | 0 | 22 | 0 | 0 | 2 | 12 |
+| DEEP CAGE IMPACT 2015 | 2015-08-29 | 12 | f2_method_middle | 0 | 0 | 21 | 0 | 0 | 2 | 12 |
 | DEEP JEWELS 8 | 2015-05-31 | 5 | f2_method_middle | 0 | 0 | 7 | 0 | 0 | 0 | 6 |
 | DEEP 72 IMPACT | 2015-05-16 | 10 | f2_method_middle | 0 | 0 | 17 | 0 | 0 | 0 | 10 |
 | FUNABASHI BOM-BA-YE | 2015-05-09 | 5 | f2_method_middle | 0 | 1 | 9 | 0 | 0 | 0 | 5 |
@@ -280,7 +285,7 @@
 | DEEP 70 IMPACT | 2014-12-21 | 15 | f2_method_middle | 0 | 0 | 26 | 0 | 0 | 1 | 16 |
 | DEEP JEWELS 6 | 2014-11-03 | 7 | f2_method_middle | 0 | 1 | 9 | 0 | 1 | 0 | 7 |
 | DEEP 69 IMPACT | 2014-10-26 | 15 | f2_method_middle | 0 | 0 | 29 | 0 | 0 | 2 | 16 |
-| DEEP 68 IMPACT | 2014-08-23 | 11 | f2_method_middle | 0 | 0 | 19 | 0 | 0 | 0 | 12 |
+| DEEP 68 IMPACT | 2014-08-23 | 11 | f2_method_middle | 0 | 0 | 18 | 0 | 0 | 0 | 12 |
 | DEEP JEWELS 5 | 2014-08-09 | 8 | f2_method_middle | 0 | 0 | 13 | 0 | 1 | 0 | 8 |
 | DEEP CAGE IMPACT 2014 | 2014-07-21 | 15 | f2_method_middle | 0 | 0 | 28 | 0 | 0 | 0 | 15 |
 | DEEP 67 IMPACT | 2014-06-22 | 11 | f2_method_middle | 0 | 0 | 20 | 0 | 0 | 0 | 11 |
