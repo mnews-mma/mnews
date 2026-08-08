@@ -98,6 +98,11 @@ export const DEEP_RANKING_CLASSES: { weightClass: string; entries: { rank: strin
   { weightClass: "ライトヘビー級", entries: [{ rank: "空位", name: "空位", slug: null }] },
   { weightClass: "ヘビー級", entries: [{ rank: "王者", name: "大成", slug: "sekino-taisei" }] }, // メガトン級から統合表示
   // DEEP JEWELS(女子)
+  // 女子ミクロ級: DEEP公式champページには「DEEP JEWELS 女子ミクロ級(44kg以下)」と
+  // 旧DEEP系統の「女子ミクロ級(44kg以下)」の2セクションが併存し、大島沙緒里は前者で
+  // 第3代・後者で第2代と代数が異なる。ここは既存の女子5階級がすべてDEEP JEWELS系統の
+  // ため、DEEP JEWELS側(第3代)を採用する。旧DEEP系統は掲載しない。
+  { weightClass: "女子ミクロ級", entries: [{ rank: "王者", name: "大島沙緒里", slug: "oshima-saori" }] },
   { weightClass: "女子アトム級", entries: [{ rank: "王者", name: "伊澤星花", slug: "izawa-seika" }] },
   { weightClass: "女子ストロー級", entries: [{ rank: "王者", name: "万智", slug: "fukuda-machi" }] },
   { weightClass: "女子フライ級", entries: [{ rank: "王者", name: "中井りん", slug: "nakai-rin" }] },
