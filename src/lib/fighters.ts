@@ -1302,7 +1302,10 @@ export const FIGHTERS: Fighter[] = [
   { slug: "efeviga-yushi", nameJa: "エフェヴィガ雄志", nameEn: "Yushi Efeviga", org: "shooto", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "im-kwangwoo", nameJa: "イムクァンウ", nameEn: "Gwan Woo Lim", org: "shooto", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "goto-ryo", nameJa: "後藤亮", nameEn: "Ryo Goto", org: "shooto", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
-  { slug: "captain-africa", nameJa: "キャプテン☆アフリカ", nameEn: "Captain Africa", org: "shooto", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
+  // リングネーム「キャプテン☆アフリカ」ではja-wikiに記事もリダイレクトも無く
+  // (MediaWiki APIで missing 実測)、既定タイトル推測が空振りして通算戦績が
+  // 出せていなかった。本名記事「出花崇太郎」を明示する。
+  { slug: "captain-africa", nameJa: "キャプテン☆アフリカ", nameEn: "Captain Africa", org: "shooto", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "出花崇太郎" },
   { slug: "shivaev", nameJa: "シヴァエフ", nameEn: "Shivaev", org: "shooto", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "nishio-shinsuke", nameJa: "西尾真輔", nameEn: "Shinsuke Nishio", org: "shooto", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true },
   { slug: "sumimura-ryuichiro", nameJa: "住村竜市朗", nameEn: "Ryuichiro Sumimura", org: "shooto", weightClass: "ウェルター級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "住村竜市朗" },
