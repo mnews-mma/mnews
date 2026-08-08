@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { headers } from "next/headers";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import BoutCard from "@/components/BoutCard";
@@ -121,6 +122,14 @@ export default async function DreamPage({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  // 一時計装(2026-08-08、/dreamのFluid Active CPU調査用。分析後に削除する):
+  // /dreamの180秒/日がクローラー由来か人間由来かを切り分けるため、標準的な
+  // Webサーバーのアクセスログと同等の情報(User-Agent)のみを出力する。
+  // 個人を特定する情報は含まない。ログはVercel Runtime Logsで
+  // "[dream-ua-audit]"を検索して回収する。
+  const ua = (await headers()).get("user-agent") ?? "(none)";
+  console.log(`[dream-ua-audit] ua="${ua}"`);
+
   const sp = await searchParams;
   const isV2 = isNewMatchupUiEnabled(sp);
 
