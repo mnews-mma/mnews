@@ -3,6 +3,11 @@
 // 後から階級を足しても常に正しい位置(軽い→重い、男子→女子)へ入るようにする。
 // メガトン級・スーパーヘビー級はヘビー級と同じキー(統合表示)。
 // 女子階級は+1000のオフセットを付けて男子より必ず後ろに来るようにする。
+//
+// WEIGHT_KG と下の WEIGHT_CODE はキー集合が完全に一致していること。片方だけに
+// 階級を足すと、プルダウン(Object.keys(WEIGHT_KG)由来)には出るのに
+// weightClassToCode()がコード化できず生の日本語ラベルがURLに載る、という
+// 食い違いが起きる(表示は壊れないがシェアURL短縮の意味が無くなる)。
 const FEMALE_OFFSET = 1000;
 
 export const WEIGHT_KG: Record<string, number> = {
@@ -17,6 +22,7 @@ export const WEIGHT_KG: Record<string, number> = {
   "ヘビー級": 120.2,
   "メガトン級": 120.2,
   "スーパーヘビー級": 120.2,
+  "女子ミクロ級": FEMALE_OFFSET + 44.0, // DEEP JEWELS 44kg以下(女子アトム級より軽い)
   "女子アトム級": FEMALE_OFFSET + 47.6,
   "女子スーパーアトム級": FEMALE_OFFSET + 50.0,
   "女子ストロー級": FEMALE_OFFSET + 52.2,
@@ -46,6 +52,7 @@ export const WEIGHT_CODE: Record<string, string> = {
   "ヘビー級": "heavy",
   "メガトン級": "megaton",
   "スーパーヘビー級": "sheavy",
+  "女子ミクロ級": "wmicro",
   "女子アトム級": "watom",
   "女子スーパーアトム級": "wsatom",
   "女子ストロー級": "wstraw",
