@@ -1,5 +1,14 @@
 [
   {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【RIZIN54】RIZIN初陣で、リー・カイウェンと戦う水野新太「よりフィニッシュにこだわって練習してきた」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/235162",
+    "publishedAt": "2026-08-08T08:45:27.000Z",
+    "firstSeenAt": "2026-08-08T10:22:24.991Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【RIZIN54】秋元強真戦へ、クレベル・コイケ「古い時代と新しい時代の戦いかもしれませんが、私は今でも」",
@@ -70,6 +79,15 @@
     "url": "https://gonkaku.jp/articles/24531",
     "publishedAt": "2026-08-08T01:22:56.000Z",
     "firstSeenAt": "2026-08-08T03:17:24.085Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.12：8.9品川 第4試合がキャッチウェイト戦へ変更",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/tour/2026/pancraseblood12/index.html#preliminary",
+    "publishedAt": "2026-08-08T00:00:00.000Z",
+    "firstSeenAt": "2026-08-08T10:22:24.991Z"
   },
   {
     "id": "oricon-0",
