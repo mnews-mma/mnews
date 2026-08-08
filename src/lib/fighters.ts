@@ -2326,6 +2326,27 @@ export const FIGHTERS: Fighter[] = [
     aliases: ["村田康大"],
   },
   {
+    // Lemino修斗.8(2026-09-24)で修斗初参戦。過去の試合はGLADIATOR・Fighting NEXUS・
+    // Road to UFC等で4団体(RIZIN/修斗/パンクラス/DEEP)には無いため、戦績はja.wikipedia
+    // から取得する(recordFromResultsでは0-0-0になる)。記事名は本名の「河名真寿斗」で、
+    // nameJa(リングネーム)からの既定推測では引けないためwikiTitleJaを明示する。
+    slug: "kawana-masuto",
+    nameJa: "河名マスト",
+    nameEn: "Masuto Kawana",
+    org: "shooto",
+    weightClass: "フェザー級",
+    wins: 10,
+    losses: 5,
+    draws: 0,
+    ko: 3,
+    sub: 1,
+    decision: 6,
+    history: [],
+    wikiTitleJa: "河名真寿斗",
+    aliases: ["河名真寿斗"],
+    noNickname: true,
+  },
+  {
     slug: "tamura-hibiki",
     nameJa: "田村 ヒビキ",
     nameEn: "Hibiki Tamura",

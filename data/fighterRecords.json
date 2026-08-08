@@ -43436,5 +43436,136 @@
       }
     ],
     "live": false
+  },
+  "kawana-masuto": {
+    "wins": 10,
+    "losses": 5,
+    "draws": 0,
+    "ko": 3,
+    "sub": 1,
+    "decision": 6,
+    "history": [
+      {
+        "date": "2024-12-14",
+        "opponent": "ユ・ジュサン",
+        "result": "loss",
+        "method": "1R 1:15 TKO (右ストレート→パウンド)",
+        "event": "Z-FIGHT NIGHT 02",
+        "round": "R1"
+      },
+      {
+        "date": "2024-08-24",
+        "opponent": "シエ・ビン",
+        "result": "loss",
+        "method": "1R 4:17 KO (右フック)",
+        "event": "Road to UFC season 3 【フェザー級トーナメント準決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2024-05-18",
+        "opponent": "ソン・ヨンジェ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "Road to UFC season 3 【フェザー級トーナメント一回戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2024-02-16",
+        "opponent": "パン・ジェヒョク",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "GLADIATOR CHALLENGER SERIES01「BANG vs KAWANA II」",
+        "round": "R3"
+      },
+      {
+        "date": "2023-12-08",
+        "opponent": "チハヤフル・ズッキーニョス",
+        "result": "win",
+        "method": "1R 2:53 TKO",
+        "event": "GLADIATOR 024 in OSAKA",
+        "round": "R1"
+      },
+      {
+        "date": "2023-09-29",
+        "opponent": "ユン・ダウォン",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "GLADIATOR 023 in OSAKA",
+        "round": "R3"
+      },
+      {
+        "date": "2023-06-11",
+        "opponent": "パン・ジェヒョク",
+        "result": "loss",
+        "method": "5分3R終了 判定1-2",
+        "event": "GLADIATOR 022 in OSAKA",
+        "round": "R3"
+      },
+      {
+        "date": "2022-11-07",
+        "opponent": "寿希也",
+        "result": "win",
+        "method": "5分2R終了時TKO",
+        "event": "Fighting NEXUS vol.29",
+        "round": "R2"
+      },
+      {
+        "date": "2022-08-05",
+        "opponent": "アライジャ・ジョンズ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "LFA 138",
+        "round": "R3"
+      },
+      {
+        "date": "2022-04-24",
+        "opponent": "山本健斗デリカット",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "POUND STORM",
+        "round": "R3"
+      },
+      {
+        "date": "2022-02-28",
+        "opponent": "狩野優",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "EXFIGHT-4",
+        "round": "R3"
+      },
+      {
+        "date": "2022-01-23",
+        "opponent": "鬼神光司",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "石渡伸太郎引退興行 漢塾～継承～",
+        "round": "R3"
+      },
+      {
+        "date": "2021-12-19",
+        "opponent": "森崇純",
+        "result": "win",
+        "method": "1R 2:41 TKO（パウンド）",
+        "event": "Fighting NEXUS vol.24",
+        "round": "R1"
+      },
+      {
+        "date": "2021-10-05",
+        "opponent": "新関猛起",
+        "result": "win",
+        "method": "3R 2:56 リアネイキッドチョーク",
+        "event": "Road to ONE: 5th Sexyama Edition",
+        "round": "R3"
+      },
+      {
+        "date": "2021-07-25",
+        "opponent": "ジェイク・ウィルキンス",
+        "result": "loss",
+        "method": "延長R 0:46 TKO（ドクターストップ：有効打によるカット）",
+        "event": "Fighting NEXUS vol.23",
+        "round": "—"
+      }
+    ],
+    "live": true
   }
 }
