@@ -956,6 +956,26 @@ export const RECORD_OVERRIDES: RecordOverride[] = [
       "パターン。",
   },
   {
+    // 2026-08-08: sekino-taisei(大成)のDEEP戦績調査(PR #475)で、DEEP公式の
+    // 結果ページが第1・第8試合の2件しか掲載していない大会だと判明した際に
+    // 副次的に見つかった。SAINT戦(DEEPメガトン級・酒井リョウの敗戦)はこの
+    // 大会の第12試合(メインイベント)。
+    type: "patch-date",
+    fighterId: "sakai-ryo",
+    date: "2021-06-18",
+    opponent: "SAINT",
+    correctedDate: "2021-06-19",
+    source: "https://www.mmaofficials.jp/20210619_deep1/",
+    fetchedDate: "2026-08-08",
+    note:
+      "Wikipedia戦績表は「DEEP TOKYO IMPACT 2021 1ST ROUND」のSAINT戦を" +
+      "2021-06-18表記していたが、日本MMA審判機構(JMOC)の公式試合結果ページ" +
+      "(第12試合 DEEPルール メガトン級、○SAINT vs ×酒井リョウ、KO 1R0分43秒)" +
+      "では開催日2021-06-19。DEEP公式サイト(deep2001.com)の当該大会結果ページは" +
+      "全12試合中2件しか掲載しておらずこの一戦の開催日を裏取りできないため、" +
+      "上記JMOC公式結果ページを出典とする。",
+  },
+  {
     type: "patch-date",
     fighterId: "koya-kanda",
     date: "2020-11-02",
