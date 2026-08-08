@@ -82,11 +82,36 @@ const VISIBLE_FIGHTERS_REVALIDATE = 3600;
 let inFlightVisible: Promise<ResolvedFighter[]> | null = null;
 let resolvedVisible: { data: ResolvedFighter[]; expiresAt: number } | null = null;
 
+// 一時計装(2026-08-08、Fluid Active CPU調査用。分析後に削除する):
+// このキャッシュが実際にヒットしているか(=同一インスタンスが複数リクエストを
+// 処理し続けているか、それとも毎回新規インスタンスでコールドになっているか)を
+// 実測するため、呼び出しごとにHIT/MISSを記録する。instanceIdはモジュール
+// ロード時(=インスタンス起動時)に1回だけ発行するランダム値で、同じ
+// instanceIdでhitCountが増えていればプロセス内キャッシュが有効に機能して
+// いる証拠になる。ログはVercel Runtime Logsで"[visible-fighters-cache-audit]"
+// を検索して回収する。
+const instanceId = Math.random().toString(36).slice(2, 8);
+let hitCount = 0;
+let missCount = 0;
+
 export function getVisibleFighters(): Promise<ResolvedFighter[]> {
   const now = Date.now();
-  if (resolvedVisible && resolvedVisible.expiresAt > now) return Promise.resolve(resolvedVisible.data);
-  if (inFlightVisible) return inFlightVisible;
+  if (resolvedVisible && resolvedVisible.expiresAt > now) {
+    hitCount++;
+    console.log(
+      `[visible-fighters-cache-audit] HIT instance=${instanceId} hitCount=${hitCount} missCount=${missCount}`
+    );
+    return Promise.resolve(resolvedVisible.data);
+  }
+  if (inFlightVisible) {
+    console.log(`[visible-fighters-cache-audit] IN-FLIGHT instance=${instanceId} (同時呼び出しの相乗り)`);
+    return inFlightVisible;
+  }
 
+  missCount++;
+  console.log(
+    `[visible-fighters-cache-audit] MISS instance=${instanceId} hitCount=${hitCount} missCount=${missCount}`
+  );
   inFlightVisible = computeVisibleFighters()
     .then((data) => {
       if (data.length > 0) {
