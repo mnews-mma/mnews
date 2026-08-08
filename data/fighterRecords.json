@@ -19060,15 +19060,170 @@
     "noRecordData": true
   },
   "captain-africa": {
-    "wins": 0,
-    "losses": 0,
+    "wins": 11,
+    "losses": 8,
     "draws": 0,
-    "ko": 0,
-    "sub": 0,
-    "decision": 0,
-    "history": [],
-    "live": false,
-    "noRecordData": true
+    "ko": 1,
+    "sub": 7,
+    "decision": 3,
+    "history": [
+      {
+        "date": "2026-03-29",
+        "opponent": "エフェヴィガ雄志",
+        "result": "loss",
+        "method": "2R 2:45 TKO（パウンド）",
+        "event": "PROFESSIONAL SHOOTO 2026 vol.2 【修斗世界ライト級チャンピオンシップ】",
+        "round": "R2"
+      },
+      {
+        "date": "2025-11-03",
+        "opponent": "キ・ウォンビン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN LANDMARK 12",
+        "round": "R3",
+        "weightClass": "71.0kg契約"
+      },
+      {
+        "date": "2024-08-31",
+        "opponent": "パク・シウォン",
+        "result": "loss",
+        "method": "1R 4:50 TKO（パウンド）",
+        "event": "ROAD FC 069 【ROAD FC 70kgグローバルトーナメント 1回戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2024-07-28",
+        "opponent": "大尊伸光",
+        "result": "win",
+        "method": "1R 2:03 スカーフホールドアームバー",
+        "event": "PROFESSIONAL SHOOTO 2024 Vol.6 in OSAKA 第2部 【修斗世界ライト級チャンピオン決定戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2024-04-13",
+        "opponent": "ハン・サングォン",
+        "result": "win",
+        "method": "2R 3:47 腕ひしぎ十字固め",
+        "event": "ROAD FC 068",
+        "round": "R2"
+      },
+      {
+        "date": "2023-08-26",
+        "opponent": "ムングンツォージ・ナンディンエルデン",
+        "result": "loss",
+        "method": "1R 4:33 TKO（パウンド）",
+        "event": "ROAD FC 065 【ROAD FC 70kgグローバルトーナメント 準決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2023-06-24",
+        "opponent": "パク・ヘジン",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 064 【ROAD FC 70kgグローバルトーナメント 1回戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2022-07-03",
+        "opponent": "長田拓也",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+        "round": "R3"
+      },
+      {
+        "date": "2021-12-19",
+        "opponent": "マックス・ザ・ボディ",
+        "result": "win",
+        "method": "1R 2:46 ギロチンチョーク",
+        "event": "PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA 【修斗環太平洋ライト級チャンピオンシップ】",
+        "round": "R1"
+      },
+      {
+        "date": "2021-07-04",
+        "opponent": "マックス・ザ・ボディ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+        "round": "R3"
+      },
+      {
+        "date": "2020-12-20",
+        "opponent": "田中有",
+        "result": "win",
+        "method": "2R 0:51 Vクロスアームバー",
+        "event": "PROFESSIONAL SHOOTO 2020 Vol.8 最終戦 in OSAKA 2部 【修斗環太平洋ライト級王座決定戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2020-07-12",
+        "opponent": "川名雄生",
+        "result": "loss",
+        "method": "1R 3:48 KO",
+        "event": "PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA 【修斗世界ライト級王座決定戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2019-11-24",
+        "opponent": "AB",
+        "result": "win",
+        "method": "2R 1:10 TKO",
+        "event": "SHOOTO 30th ANNIVERSARY TOUR FINAL",
+        "round": "R2"
+      },
+      {
+        "date": "2019-06-30",
+        "opponent": "ウエタユウ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "SHOOTO 30th ANNIVERSARY TOUR 第5戦",
+        "round": "R3"
+      },
+      {
+        "date": "2018-11-17",
+        "opponent": "小谷直之",
+        "result": "loss",
+        "method": "2R 0:51 スリーパーホールド",
+        "event": "プロフェッショナル修斗後楽園ホール大会",
+        "round": "R2"
+      },
+      {
+        "date": "2018-06-17",
+        "opponent": "キム・ギョンピョ",
+        "result": "loss",
+        "method": "1R 1:50 KO",
+        "event": "プロフェッショナル修斗 in OSAKA 2018",
+        "round": "R1"
+      },
+      {
+        "date": "2018-03-25",
+        "opponent": "鈴木槙吾",
+        "result": "win",
+        "method": "1R 1:25 アームバー",
+        "event": "プロフェッショナル修斗",
+        "round": "R1"
+      },
+      {
+        "date": "2017-12-23",
+        "opponent": "Ju-sei Aquila",
+        "result": "win",
+        "method": "1R 1:28 腕ひしぎ十字固め",
+        "event": "Shooto BORDER -season9-「The2nd」 【新人王決定トーナメント 決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2017-09-03",
+        "opponent": "興梠弘樹",
+        "result": "win",
+        "method": "1R 0:50 腕ひしぎ十字固め",
+        "event": "Shooto BORDER -season9-「The2nd」 【新人王決定トーナメント 準決勝】",
+        "round": "R1"
+      }
+    ],
+    "live": true,
+    "birthPlace": "大阪府",
+    "age": 41
   },
   "shivaev": {
     "wins": 0,
