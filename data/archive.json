@@ -1,5 +1,59 @@
 [
   {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN54】武田光司がフェザー級上位進出をかけて摩嶋一整と対戦「玄人好みかつ盛り上がる試合をする」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/235346",
+    "publishedAt": "2026-08-09T12:01:26.000Z",
+    "firstSeenAt": "2026-08-09T12:32:01.622Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】摩嶋一整“超RIZINのような仕事期間”を終えて武田光司戦へ「フィニッシュ率とか極める力は僕の方が上なのかなと思う」「しのいで自分が極めたい」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24547",
+    "publishedAt": "2026-08-09T11:28:18.000Z",
+    "firstSeenAt": "2026-08-09T12:32:01.622Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】クレベル、秋元強真は「まだ自分と同じだけ強いレベルで戦ったことがない」「私が彼を止めることによって、彼はもっと頑張れるかもしれない」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24546",
+    "publishedAt": "2026-08-09T10:50:45.000Z",
+    "firstSeenAt": "2026-08-09T12:32:01.622Z"
+  },
+  {
+    "id": "deep-0",
+    "source": "deep",
+    "title": "DEEP JEWELS 54の大会トレーラーが完成!",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/deep-jewels-54%e3%81%ae%e5%a4%a7%e4%bc%9a%e3%83%88%e3%83%ac%e3%83%bc%e3%83%a9%e3%83%bc%e3%81%8c%e5%ae%8c%e6%88%90/",
+    "publishedAt": "2026-08-09T10:41:05.000Z",
+    "firstSeenAt": "2026-08-09T12:32:01.622Z"
+  },
+  {
+    "id": "deep-1",
+    "source": "deep",
+    "title": "DEEP TOKYO IMPACT 2026 4th ROUNDの大会トレーラーが完成!",
+    "origin": "DEEP公式",
+    "url": "https://www.deep2001.com/deep-tokyo-impact-2026-4th-round%e3%81%ae%e5%a4%a7%e4%bc%9a%e3%83%88%e3%83%ac%e3%83%bc%e3%83%a9%e3%83%bc%e3%81%8c%e5%ae%8c%e6%88%90/",
+    "publishedAt": "2026-08-09T10:36:11.000Z",
+    "firstSeenAt": "2026-08-09T12:32:01.622Z"
+  },
+  {
+    "id": "gonkaku-2",
+    "source": "other",
+    "title": "【RIZIN】伊藤裕樹、ガジャマトフとは「本当にバチバチすぎてみんな熱中症になっちゃいそうな」「TOYOTA ARENAで一番面白い試合をすると思う」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24545",
+    "publishedAt": "2026-08-09T10:34:51.000Z",
+    "firstSeenAt": "2026-08-09T12:32:01.622Z"
+  },
+  {
     "id": "gonkaku-0",
     "source": "other",
     "title": "【RIZIN】ガジャマトフ「もし伊藤裕樹がスタンドだけで戦いたいのであれば受けて立つ。私の打撃の技術の方が高いので私が勝つ」6年間ヘルニアに苦しんでいた",
@@ -196,6 +250,15 @@
     "url": "https://encount.press/archives/1045392/",
     "publishedAt": "2026-08-09T00:30:00.000Z",
     "firstSeenAt": "2026-08-09T01:01:56.048Z"
+  },
+  {
+    "id": "pancrase-0",
+    "source": "pancrase",
+    "title": "PANCRASE BLOOD.12：8.9品川大会結果",
+    "origin": "パンクラス公式",
+    "url": "https://www.pancrase.co.jp/data/result/2026/0809.html",
+    "publishedAt": "2026-08-09T00:00:00.000Z",
+    "firstSeenAt": "2026-08-09T12:32:01.622Z"
   },
   {
     "id": "mmaplanet-0",
