@@ -1,5 +1,59 @@
 [
   {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】伊藤裕樹「麺ZIN食いてぇ…」過酷な減量の末期に本音がポロリ 打撃戦には自信あり",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2473003/",
+    "publishedAt": "2026-08-09T08:14:00.000Z",
+    "firstSeenAt": "2026-08-09T08:31:45.547Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【JMMAF】国際戦をアマチュアから！『JMMAF東京国際ワンマッチ交流試合』『アマチュアPANCRASE東京国際ワンマッチ』＝速報中",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24539",
+    "publishedAt": "2026-08-09T08:07:59.000Z",
+    "firstSeenAt": "2026-08-09T08:31:45.547Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "【RIZIN】ジョリー、会見でまさかの階級変更示唆「平本蓮倒すためにフェザー行くかも」 “エンタメ枠”脱出へ自信",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1045572/",
+    "publishedAt": "2026-08-09T08:05:18.000Z",
+    "firstSeenAt": "2026-08-09T08:31:45.547Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】パッチー・ミックス大いに語る「佐藤将光は自分の良さを引き出してくれるような相手」「RIZINでの新生パッチーという部分を見せたい」ダニー・サバテロには猛批判「口ばっかり動かして試合では何もやらない」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24543",
+    "publishedAt": "2026-08-09T08:04:23.000Z",
+    "firstSeenAt": "2026-08-09T08:31:45.547Z"
+  },
+  {
+    "id": "oricon-1",
+    "source": "other",
+    "title": "【RIZIN】細川一颯と対戦の直樹「BreakingDownファイターにRIZINは甘くないよと見せつける」駆け引きにもダメ出し",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2472992/",
+    "publishedAt": "2026-08-09T06:57:00.000Z",
+    "firstSeenAt": "2026-08-09T08:31:45.547Z"
+  },
+  {
+    "id": "encount-1",
+    "source": "other",
+    "title": "【RIZIN】“大物”パッチー・ミックス、王者サバテロに暴言連発「非常に幼稚、品が無い」 早期タイトル戦希望「イージーマネーだ」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1045568/",
+    "publishedAt": "2026-08-09T06:43:00.000Z",
+    "firstSeenAt": "2026-08-09T08:31:45.547Z"
+  },
+  {
     "id": "gonkaku-0",
     "source": "other",
     "title": "【RIZIN】秋元強真「実際僕と対面しないと分からない僕の圧がある。本当に一回も触らせず早い段階でKOしたい」青木真也とは「1週間前に最後に聞きたかったことを全部聞いた」",
