@@ -2,6 +2,60 @@
   {
     "id": "rizin-0",
     "source": "rizin",
+    "title": "RIZIN.54 来場のご案内",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17855748",
+    "publishedAt": "2026-08-09T04:48:36.000Z",
+    "firstSeenAt": "2026-08-09T04:56:17.283Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】細川一颯「直樹に勝って9月のBreakingDownにも出ます」朝倉未来の言葉を胸にMMA初戦へ",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2472953/",
+    "publishedAt": "2026-08-09T04:02:00.000Z",
+    "firstSeenAt": "2026-08-09T04:56:17.283Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】佐藤将光「やっぱり『セミの男だな。俺は』って感じがするかな」セコンドには格闘IQが高い選手と英語が分かる選手、ミックスの「気持ちを一番警戒している」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24541",
+    "publishedAt": "2026-08-09T03:56:56.000Z",
+    "firstSeenAt": "2026-08-09T04:56:17.283Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "【RIZIN】元十両・スダリオ剛、再起戦へ「スラム街に行ってみた」 南米で単独武者修行…弟・貴賢神とは「連絡取ってない」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1045587/",
+    "publishedAt": "2026-08-09T03:51:45.000Z",
+    "firstSeenAt": "2026-08-09T04:56:17.283Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【PANCRASE】バンタム級石田陸也vs.白井誠司、フライ級小林了平vs.大野友哉、フェザー級再戦の沢木純也vs.ギレルメ・ナカガワ、山口丈が織部修也をTKO、ネオブラ準決勝も＝速報中",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24538",
+    "publishedAt": "2026-08-09T03:33:57.000Z",
+    "firstSeenAt": "2026-08-09T04:56:17.283Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN54】大晦日出場に向け、ガジャマトフと激突。伊藤裕樹「好きな人のことは真似したくなる現象」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/235326",
+    "publishedAt": "2026-08-09T03:33:20.000Z",
+    "firstSeenAt": "2026-08-09T04:56:17.283Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
     "title": "「POWER TO KUMAMOTO ～令和8年熊本地震災害義援金募金活動～」実施のお知らせ",
     "origin": "RIZIN公式",
     "url": "https://jp.rizinff.com/_ct/17857331",
