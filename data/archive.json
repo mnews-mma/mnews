@@ -1,5 +1,59 @@
 [
   {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN54】計量終了。2.85キロオーバーのミックスに対し、佐藤将光は「明日はしっかり試合で説教する」",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/235518",
+    "publishedAt": "2026-08-10T07:09:46.000Z",
+    "firstSeenAt": "2026-08-10T07:13:18.154Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "【RIZIN】パッチー・ミックス、まさかの2.85kg計量オーバー “異例”大幅超過に会場悲鳴…対戦相手は公開説教「ディスリスペクトだ」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046081/",
+    "publishedAt": "2026-08-10T06:58:45.000Z",
+    "firstSeenAt": "2026-08-10T07:13:18.154Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】2.85kgオーバーのミックスに佐藤将光が静かな怒り メインのクレベルvs.秋元強真はクリア",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2473177/",
+    "publishedAt": "2026-08-10T06:42:00.000Z",
+    "firstSeenAt": "2026-08-10T07:13:18.154Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】秋元強真とクレベル・コイケが計量パスで白熱のフェイスオフ「15000人フル満員の会場をしっかり勝って爆発させる」（秋元）、「明日は絶対にいい試合を見せる」（クレベル）",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24555",
+    "publishedAt": "2026-08-10T06:40:55.000Z",
+    "firstSeenAt": "2026-08-10T07:13:18.154Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "『FULLCAST presents RIZINガール オブ・ザ・イヤー2026』開催決定！！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17856961",
+    "publishedAt": "2026-08-10T06:33:10.000Z",
+    "firstSeenAt": "2026-08-10T07:13:18.154Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】パッチー・ミックスが2.85kgの大幅体重オーバー、佐藤将光は「リスペクトがない。明日は試合でしっかり説教したい」、伊藤裕樹と対戦のガジャマトフも1.75kg超過",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24554",
+    "publishedAt": "2026-08-10T06:22:23.000Z",
+    "firstSeenAt": "2026-08-10T07:13:18.154Z"
+  },
+  {
     "id": "gonkaku-1",
     "source": "other",
     "title": "【RIZIN】佐藤将光、パッチ―・ミックスに「“最強のお前で来いよ”」「ちゃんと勝負するところを見せたい」＝8月11日（火・祝）『RIZIN.54』",
