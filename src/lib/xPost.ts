@@ -301,7 +301,7 @@ export function buildCountdownPost(event: {
 //   ...
 //
 //   ❌ 計量失敗            ※失敗者がいる場合のみ
-//   {選手}（+{超過}kg）
+//   {選手}（+{超過}kgVS{パスした相手}✅）
 // ─────────────────────────────────────────────
 
 export interface WeighInBoutInput {
@@ -332,12 +332,12 @@ export function buildWeighInPost(opts: {
       // が本文だけで分かるようにするため)。両者失敗の場合は相手も失敗のため
       // 併記しない(超過幅のみ表示)。
       if (b.resultA === "fail") {
-        const parts = [b.resultB === "pass" ? `VS${b.fighterB}✅` : "", b.weightA ?? ""].filter(Boolean);
-        failedEntries.push(`${b.fighterA}${parts.length ? `（${parts.join("・")}）` : ""}`);
+        const parts = [b.weightA ?? "", b.resultB === "pass" ? `VS${b.fighterB}✅` : ""].filter(Boolean);
+        failedEntries.push(`${b.fighterA}${parts.length ? `（${parts.join("")}）` : ""}`);
       }
       if (b.resultB === "fail") {
-        const parts = [b.resultA === "pass" ? `VS${b.fighterA}✅` : "", b.weightB ?? ""].filter(Boolean);
-        failedEntries.push(`${b.fighterB}${parts.length ? `（${parts.join("・")}）` : ""}`);
+        const parts = [b.weightB ?? "", b.resultA === "pass" ? `VS${b.fighterA}✅` : ""].filter(Boolean);
+        failedEntries.push(`${b.fighterB}${parts.length ? `（${parts.join("")}）` : ""}`);
       }
     }
   }
