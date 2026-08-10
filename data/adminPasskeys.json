@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "SgAVBUwgMmNyrD-iqHswug",
+    "publicKey": "pQECAyYgASFYICImQ8mMA_9i21v8YJMO1FO7_NV7ET1bPDCHbjSlGxwhIlggEM-utWe24X8bptHml2k_b-VschvRO0cr6gCjYOq8N-U",
+    "counter": 0,
+    "transports": [
+      "hybrid",
+      "internal"
+    ],
+    "label": "mac",
+    "addedAt": "2026-08-10"
+  }
+]
