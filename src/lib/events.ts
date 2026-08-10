@@ -119,6 +119,9 @@ export const EVENTS: MEvent[] = [
     sourceUrl: "https://jp.rizinff.com/_ct/17846026",
     // 2026-08-03、榊原CEOが試合順を確定発表。ケイト・ロータス vs NOEL(女子スーパー
     // アトム級)はケイトの怪我により延期、10月長崎大会(rizin-landmark-16)へスライド。
+    // 2026-08-10、計量で選手2名が体重超過したため榊原CEOが試合順を急遽再変更。
+    // 伊藤vs.ガジャマトフを休憩前の第6試合に、ヘビー級トーナメント2試合を休憩明けの
+    // 第7・8試合に変更(公式X: @nobu_sakakibara)。
     bouts: [
       {
         weightClass: "フェザー級（66.0kg）",
@@ -131,11 +134,6 @@ export const EVENTS: MEvent[] = [
         fighterB: "パッチー・ミックス",
       },
       {
-        weightClass: "フライ級（57.0kg）",
-        fighterA: "伊藤裕樹",
-        fighterB: "アリベク・ガジャマトフ",
-      },
-      {
         weightClass: "ヘビー級（120.0kg）",
         fighterA: "上田幹雄",
         fighterB: "エドポロキング",
@@ -146,6 +144,11 @@ export const EVENTS: MEvent[] = [
         fighterA: "スダリオ剛",
         fighterB: "酒井リョウ",
         note: "RIZIN JAPAN GP 2026 ヘビー級トーナメント",
+      },
+      {
+        weightClass: "フライ級（57.0kg）",
+        fighterA: "伊藤裕樹",
+        fighterB: "アリベク・ガジャマトフ",
       },
       {
         weightClass: "フェザー級（66.0kg）",
