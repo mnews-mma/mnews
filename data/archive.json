@@ -1,5 +1,59 @@
 [
   {
+    "id": "encount-0",
+    "source": "other",
+    "title": "【RIZIN】元Bellator王者らが続々計量オーバー、クレベル―秋元は両者クリア…8月大会は前日から波乱 全選手計量結果一覧",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046327/",
+    "publishedAt": "2026-08-10T09:04:05.000Z",
+    "firstSeenAt": "2026-08-10T09:08:42.410Z"
+  },
+  {
+    "id": "encount-1",
+    "source": "other",
+    "title": "【RIZIN】“体脂肪率4.7％”告白ジョリー、フライ級初戦で意地の計量パス 「なんで落とせんねん笑」「海外勢は見習え」の声",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046317/",
+    "publishedAt": "2026-08-10T08:35:12.000Z",
+    "firstSeenAt": "2026-08-10T09:08:42.410Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "RIZIN.54 計量結果／フェイスオフ、身長差、リーチ差も掲載中",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17855755",
+    "publishedAt": "2026-08-10T08:20:18.000Z",
+    "firstSeenAt": "2026-08-10T09:08:42.410Z"
+  },
+  {
+    "id": "encount-2",
+    "source": "other",
+    "title": "【RIZIN】204cmエドポロキング、復帰戦前日ボディーが「規格外すぎる」ネット騒然…116キロで計量パス",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046085/",
+    "publishedAt": "2026-08-10T08:02:19.000Z",
+    "firstSeenAt": "2026-08-10T09:08:42.410Z"
+  },
+  {
+    "id": "encount-3",
+    "source": "other",
+    "title": "【RIZIN】20歳・秋元強真、バキバキ新ボディーで計量クリア クレベル討ちへ18秒緊迫フェイスオフ「勝って会場を爆発させる」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046083/",
+    "publishedAt": "2026-08-10T07:39:25.000Z",
+    "firstSeenAt": "2026-08-10T09:08:42.410Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】ヘビー級トーナメント最重量はスダリオ剛の118.25kg。上田幹雄、エドポロキング、酒井リョウ4選手の合計は455.5kg",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24556",
+    "publishedAt": "2026-08-10T07:25:41.000Z",
+    "firstSeenAt": "2026-08-10T09:08:42.410Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【RIZIN54】計量終了。2.85キロオーバーのミックスに対し、佐藤将光は「明日はしっかり試合で説教する」",
