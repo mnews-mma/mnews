@@ -9,5 +9,16 @@
     ],
     "label": "mac",
     "addedAt": "2026-08-10"
+  },
+  {
+    "id": "mNGWHjo2czj3M2tHxJhswGrZmDQ",
+    "publicKey": "pQECAyYgASFYIBYI_6C1cbliA4jZy-9HR0C8MWFb0HotvTB724a2tfm3Ilgg2uiIwJlNTkUCcQcAO0-0WmmBuNAHGpC5D43er5raepg",
+    "counter": 0,
+    "transports": [
+      "hybrid",
+      "internal"
+    ],
+    "label": "登録端末",
+    "addedAt": "2026-08-10"
   }
 ]
