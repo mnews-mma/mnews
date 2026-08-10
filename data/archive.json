@@ -1,5 +1,41 @@
 [
   {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "大会当日から8/15（土）まで！RIZIN.54 コラボオークション開催！",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17855751",
+    "publishedAt": "2026-08-10T14:07:44.000Z",
+    "firstSeenAt": "2026-08-10T14:51:27.495Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】エドポロキング、上田幹雄との1回戦は「組みの展開もないことはない。全て使って勝ちたいですね」組みの展開にも自信は「あります」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24561",
+    "publishedAt": "2026-08-10T13:49:34.000Z",
+    "firstSeenAt": "2026-08-10T14:51:27.495Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN54】計量失敗を受けて伊藤×ガジャマトフが降格。体重管理、より厳格化?! そしてNCマッチの是非…",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/235546",
+    "publishedAt": "2026-08-10T13:48:58.000Z",
+    "firstSeenAt": "2026-08-10T14:51:27.495Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】計量ミスで試合順変更！ メイン第10試合のクレベルvs.秋元強真がクリアも、パッチーとガジャマトフが計量ミス、ヘビー級ジャパンGP4選手に第7、第8試合を託す。摩嶋vs.武田、後藤vs.テミロフも＝8月11日（火・祝）『RIZIN.54』",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24557",
+    "publishedAt": "2026-08-10T12:51:54.000Z",
+    "firstSeenAt": "2026-08-10T14:51:27.495Z"
+  },
+  {
     "id": "encount-0",
     "source": "other",
     "title": "【RIZIN】元Bellator王者らが続々計量オーバー、クレベル―秋元は両者クリア…8月大会は前日から波乱 全選手計量結果一覧",
