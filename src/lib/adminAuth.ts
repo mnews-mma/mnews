@@ -57,6 +57,40 @@ export async function isValidSession(cookieValue: string | undefined | null): Pr
   }
 }
 
+/**
+ * ADMIN_TOKEN を鍵にした署名。パスキー認証のチャレンジのように「短命だが
+ * 改竄されては困る値」を、書き込み可能なストレージ無し（署名付きCookie）で
+ * 持ち回るために使う。
+ */
+export async function signPayload(payload: string): Promise<string> {
+  return hmacSha256Hex(getAdminToken(), payload);
+}
+
+/** signPayload() が付けた署名を定数時間比較で照合する */
+export async function verifyPayloadSignature(
+  payload: string,
+  signature: string
+): Promise<boolean> {
+  try {
+    return timingSafeEqual(await signPayload(payload), signature);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * セッションCookieの共通属性。middleware（トークンURL経由のログイン・
+ * スライディング延長）とパスキー認証の双方が同じ属性で発行するよう、
+ * ここを唯一の情報源にする。
+ */
+export const ADMIN_SESSION_COOKIE_OPTIONS = {
+  httpOnly: true,
+  secure: true,
+  sameSite: "lax",
+  path: "/",
+  maxAge: ADMIN_SESSION_MAX_AGE,
+} as const;
+
 /** ログインフォームで入力されたトークンが ADMIN_TOKEN と一致するか検証する */
 export function isValidToken(input: string | undefined | null): boolean {
   if (!input) return false;

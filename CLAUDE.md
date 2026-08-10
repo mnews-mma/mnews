@@ -77,6 +77,12 @@ GitHub Actions・Vercel Cron以外の外部トリガー(webhook等)は無い。
   - X投稿用カード作成ツール → `/tools/fighter-card`
   - OG/シェア画像生成API → `/api/og/*`
 - `/api/revalidate-rankings`(2026-07-17追加): デプロイスクリプト等の自動実行から呼ぶ想定のため、意図的に`/api/admin/*`(Cookie/ブックマークURL認証)の外に置き、専用トークン`REVALIDATE_TOKEN`(`ADMIN_TOKEN`とは別、Vercel環境変数に別途設定)によるBearer認証のみで守っている。`/api/admin/*`側のmiddleware認証境界には一切手を加えていない(認証境界の変更は必ず事前確認を取ること)。
+- **パスキー(WebAuthn)ログイン(2026-08-10追加)**: 通常運用のログイン手段。`?token=<ADMIN_TOKEN>`方式はパスキーが使えない時の緊急用として残している。両者は同じセッションCookie(`mn_admin_session`)を発行し、middlewareはCookie検証のみを担う(パスキーの検証には関与しない)。
+  - `/mn-login`(ログイン入口)と`/api/passkey/*`(ceremony用API)は**意図的にmiddlewareの保護外**に置いている。`/api/admin/*`配下に置くと未認証時に404が返りログイン自体が不可能になるため。代わりに各ハンドラで自前にチェックする: ログイン系はOrigin検証+チャレンジ署名検証、登録系(`/api/passkey/register/*`)は`isValidSession()`で**ログイン済みであることを必須**にしている。この自前チェックを外さないこと
+  - 認証情報は`data/adminPasskeys.json`に置く。保存するのは**公開鍵のみ**で、秘密鍵は端末のSecure Enclaveから出ないため、公開リポジトリ上で読めてもログインには使えない
+  - `/mn-login`のパスは公開リポジトリから読めるため**秘密ではない**。「管理画面の存在を隠す」方針はどこからもリンクしない/noindexまでの効果であり、実際の防御はパスキー自体が担う
+  - RP IDは`mnews.jp`固定(www有無の両方で同じパスキーが使える)。**Vercelプレビュー環境は別ドメインのためパスキーは動作しない** — プレビューでの管理画面確認は`?token=`方式を使う
+  - Vercelの実行時ファイルシステムは書き込み不可のため、パスキー登録の結果はJSONとして画面に表示し、人間が`data/adminPasskeys.json`にコミットする運用(登録はiCloudキーチェーン同期により原則1回のみ)
 
 ## クレデンシャル取り扱い(厳守)
 - **既存の**トークン・APIキー・パスワード等クレデンシャルの生値は、目的を問わず読み出し・出力・ログ表示・エコーを一切禁止する(マスクした値の確認は可)

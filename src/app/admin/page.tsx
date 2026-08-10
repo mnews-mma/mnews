@@ -17,6 +17,7 @@ const LINKS = [
   { href: "/admin/schedule-diff", label: "📅 大会日程 差分チェック" },
   { href: "/admin/email-test", label: "メール送信テスト" },
   { href: "/admin/x-test", label: "🧪 X API 疎通確認(技術テスト)" },
+  { href: "/admin/passkeys", label: "🔑 パスキー登録(ログイン用)" },
 ];
 
 export default async function AdminHomePage() {

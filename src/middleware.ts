@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   ADMIN_SESSION_COOKIE,
-  ADMIN_SESSION_MAX_AGE,
+  ADMIN_SESSION_COOKIE_OPTIONS,
   computeSessionValue,
   isValidSession,
   isValidToken,
@@ -20,6 +20,11 @@ import {
 //     ブックマークしておき、アクセス時に middleware がCookieを発行して
 //     クエリを消したURLへリダイレクトする（以後30日はCookieで認証）
 //   - 管理系APIも未認証は素の404（内部情報を含めない）
+//
+// ログイン手段は2つあり、どちらも同じセッションCookieを発行する:
+//   1. パスキー（通常運用） … /mn-login → /api/passkey/login/*
+//   2. ?token=<ADMIN_TOKEN>  … パスキーが使えない時の緊急用
+// このmiddlewareはCookieの検証だけを担い、パスキーの検証には関与しない。
 
 // /admin, /api/admin はCookieによって内容が変わる認証ページのため、
 // VercelのCDN/ブラウザに一切キャッシュさせない。これを怠ると「未認証者が
@@ -45,13 +50,11 @@ export async function middleware(req: NextRequest) {
       const url = req.nextUrl.clone();
       url.searchParams.delete("token");
       const res = NextResponse.redirect(url);
-      res.cookies.set(ADMIN_SESSION_COOKIE, await computeSessionValue(), {
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        path: "/",
-        maxAge: ADMIN_SESSION_MAX_AGE,
-      });
+      res.cookies.set(
+        ADMIN_SESSION_COOKIE,
+        await computeSessionValue(),
+        ADMIN_SESSION_COOKIE_OPTIONS
+      );
       return noStore(res);
     }
     // 不正トークンも404（正誤のフィードバックを与えない）
@@ -59,8 +62,12 @@ export async function middleware(req: NextRequest) {
   }
 
   const cookie = req.cookies.get(ADMIN_SESSION_COOKIE)?.value;
-  if (await isValidSession(cookie)) {
-    return noStore(NextResponse.next());
+  if (cookie && (await isValidSession(cookie))) {
+    // スライディングセッション: アクセスのたびに有効期限を30日先へ引き直す。
+    // 使い続けている限り再ログインは発生しない（放置30日で切れる挙動は維持）。
+    const res = NextResponse.next();
+    res.cookies.set(ADMIN_SESSION_COOKIE, cookie, ADMIN_SESSION_COOKIE_OPTIONS);
+    return noStore(res);
   }
 
   // 未認証: APIは素の404 JSON、ページは404ページに偽装
