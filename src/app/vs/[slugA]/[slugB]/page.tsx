@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { headers } from "next/headers";
 import { notFound, permanentRedirect } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -135,6 +136,16 @@ export default async function VsPage({
   const { slugA, slugB } = await params;
   const norm = normalizeVsSlugs(slugA, slugB);
   const sp = await searchParams;
+
+  // 一時計装(2026-08-09、/vsのFluid Active CPU調査用。分析後に削除する):
+  // #471(/dream?のクロール拒否)反映直後に/vsのActive CPUが39秒/日→240秒/日
+  // (6倍)に増えたため、同じクローラーが/dreamから移動してきた可能性と、
+  // 1.7K件がユニークペア何件に相当するか(ISR化の効果を左右する)を実測する。
+  // /dream計装(PR#472)と同じ方式: User-Agentのみ(標準的なアクセスログ相当、
+  // 個人特定情報なし)+ペア(norm.a:norm.b、ユニークペア数の集計に使う)を
+  // 出力する。ログはVercel Runtime Logsで"[vs-ua-audit]"を検索して回収する。
+  const ua = (await headers()).get("user-agent") ?? "(none)";
+  console.log(`[vs-ua-audit] ua="${ua}" pair=${norm.a}:${norm.b}`);
 
   // 非正規順(/vs/b/a)は正規順(/vs/a/b、スラッグ辞書順)へ308恒久リダイレクト(spec §1.2)。
   // ?red=はクエリを含めたリダイレクトでNext.jsが自動的に引き継がない(定番の穴)ため、
