@@ -139,13 +139,25 @@ export default async function VsPage({
 
   // 一時計装(2026-08-09、/vsのFluid Active CPU調査用。分析後に削除する):
   // #471(/dream?のクロール拒否)反映直後に/vsのActive CPUが39秒/日→240秒/日
-  // (6倍)に増えたため、同じクローラーが/dreamから移動してきた可能性と、
-  // 1.7K件がユニークペア何件に相当するか(ISR化の効果を左右する)を実測する。
-  // /dream計装(PR#472)と同じ方式: User-Agentのみ(標準的なアクセスログ相当、
-  // 個人特定情報なし)+ペア(norm.a:norm.b、ユニークペア数の集計に使う)を
-  // 出力する。ログはVercel Runtime Logsで"[vs-ua-audit]"を検索して回収する。
-  const ua = (await headers()).get("user-agent") ?? "(none)";
-  console.log(`[vs-ua-audit] ua="${ua}" pair=${norm.a}:${norm.b}`);
+  // (6倍)に増えたため、判断に必要な3点を1回のデプロイでまとめて実測する。
+  // 1. クローラー由来か人間由来か(User-Agent。既知botパターン、または
+  //    /dreamを叩いていたものと一致するUAかを分析時に判定)
+  // 2. 1.7K件が何ユニークペアに相当するか(pair=norm.a:norm.b。ISR化の
+  //    効果を左右する決定的な数字。少数ペアへの集中ならISRは効くが、
+  //    4,560ペアの空間を舐めるようなアクセスなら全リクエストがコールド
+  //    生成になりISRはほぼ効かない)
+  // 3. 検索流入の実態(Referer。https://www.google.com/ からの参照があれば
+  //    検索結果経由のクリック。GSC実測の代替として、「検索流入が実質ある
+  //    のか・ゼロなのか」の判定に使う。GSCのクリック数と完全一致はしない)
+  // いずれも標準的なアクセスログと同等の情報で、個人を特定する情報は含まない。
+  // Refererは付かないケースが普通にある(直接アクセス・リファラポリシー・
+  // アプリ内ブラウザ)ため、「無し」を「検索流入ではない」と断定せず、生値を
+  // そのまま記録して分析時にgoogle.com / 無し / その他の3分類に振り分ける。
+  // ログはVercel Runtime Logsで"[vs-ua-audit]"を検索して回収する。
+  const reqHeaders = await headers();
+  const ua = reqHeaders.get("user-agent") ?? "(none)";
+  const referer = reqHeaders.get("referer") ?? "(none)";
+  console.log(`[vs-ua-audit] ua="${ua}" pair=${norm.a}:${norm.b} referer="${referer}"`);
 
   // 非正規順(/vs/b/a)は正規順(/vs/a/b、スラッグ辞書順)へ308恒久リダイレクト(spec §1.2)。
   // ?red=はクエリを含めたリダイレクトでNext.jsが自動的に引き継がない(定番の穴)ため、
