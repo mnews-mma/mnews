@@ -114,6 +114,45 @@ if (MODE !== "new-results" && MODE !== "data-correction") {
   throw new Error(`未知の--mode: ${MODE}(new-results | data-correction のみ対応)`);
 }
 
+// ランキング凍結ガード(PR#485): update-fighter-records.yml側は「Update mnews
+// rating rankings」ステップ自体をif条件でスキップして本スクリプトの起動を防ぐが、
+// それはCIのそのジョブ経路にしか効かない。このスクリプトをmode不問(new-results
+// でもdata-correctionでも)で直接叩けば(手動実行・他セッションからの実行を含む)
+// ymlのガードを素通りしてrankings.jsonが書き換わってしまう。凍結は「CIの1経路」
+// ではなく「rankings.json書き込みという操作そのもの」に対して効く必要がある
+// ため、スクリプト自身の入口でも同じフラグを見て拒否する(二重防御)。
+const RANKING_FREEZE_PATH = path.join(process.cwd(), "data", "rankingFreeze.json");
+const FORCE_IGNORE_RANKING_FREEZE = process.argv.includes("--force-ignore-ranking-freeze");
+
+function assertNotFrozen(): void {
+  if (FORCE_IGNORE_RANKING_FREEZE) {
+    console.warn(
+      `[WARN] --force-ignore-ranking-freeze が指定されたため、data/rankingFreeze.json による凍結チェックをスキップします。`
+    );
+    return;
+  }
+  if (!fs.existsSync(RANKING_FREEZE_PATH)) return;
+
+  let config: { frozen?: boolean; reason?: string | null; since?: string | null };
+  try {
+    config = JSON.parse(fs.readFileSync(RANKING_FREEZE_PATH, "utf8"));
+  } catch (e) {
+    throw new Error(
+      `[ランキング凍結ガード] data/rankingFreeze.json の読み込みに失敗しました(JSON破損の疑い)。` +
+        `frozen状態を確認できないため安全側で実行を拒否します(fail-closed)。原因: ${e}`
+    );
+  }
+
+  if (config.frozen === true) {
+    throw new Error(
+      `[ランキング凍結ガード] data/rankingFreeze.json の frozen=true により rankings.json の生成を拒否します(mode=${MODE})。\n` +
+        `理由: ${config.reason ?? "(理由未記載)"}(${config.since ?? "?"}〜)\n` +
+        `解除するには data/rankingFreeze.json の frozen を false に戻してください。` +
+        `意図的に突破する場合のみ --force-ignore-ranking-freeze を明示指定してください(黙って続行しません)。`
+    );
+  }
+}
+
 // data-correction実行時の衝突防止ガード: update-fighter-records.yml(このスクリプトを
 // mode未指定=new-resultsで呼ぶ毎日JST 2:30予定のバッチ)が同じdata/ファイル群
 // (rankings.json/rankings.prev.json/rankings/archive/*/rankings.legitimateBaseline.json)
@@ -652,6 +691,7 @@ function main() {
 // data-correctionモードのみ、main()実行前に衝突防止ガード(GitHub Actions API照会)
 // を通す(mode未指定=new-resultsの通常バッチ自身はガード不要=自分自身を待たない)。
 async function run() {
+  assertNotFrozen();
   if (MODE === "data-correction") {
     await assertNoConflictingScheduledRun();
   }
