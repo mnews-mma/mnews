@@ -115,6 +115,11 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
     ...event.bouts.filter((b) => b.isExhibition),
     ...event.bouts.filter((b) => !b.isExhibition),
   ];
+  // 中止boutは対戦カード一覧(カードUI)からは外し、下部に注記としてまとめて出す。
+  // 戦績・勝率等の比較表示は「試合が行われる/行われた」前提のため、中止boutで
+  // 出すと事実誤認を招く(cancelled=trueの選手同士のスタッツ比較が意味を持たない)。
+  const visibleBouts = orderedBouts.filter((b) => !b.cancelled);
+  const cancelledBouts = orderedBouts.filter((b) => b.cancelled);
 
   return (
     <>
@@ -235,7 +240,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
               // 「左右の長い方が収まるサイズ・天井CEILING_WEB」)に一本化
               // (2026-07-22)。選手個別ページの次戦カードと同一仕様にするため、
               // ページ側からのサイズ上書き(旧GLOBAL_FIGHTER_NAME_SIZE)は廃止。
-              const resolvedBouts = orderedBouts.map((b) => {
+              const resolvedBouts = visibleBouts.map((b) => {
                 const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
                 const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
                 const entryA = slugA ? (records[slugA] ?? null) : null;
@@ -270,7 +275,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           ) : (
             /* upcoming / live: カード表示(旧デザイン) */
             <div className="bout-list">
-              {orderedBouts.map((b, i) => {
+              {visibleBouts.map((b, i) => {
                 const slugA = findFighterSlugByName(b.fighterA, undefined, visibleSlugs);
                 const slugB = findFighterSlugByName(b.fighterB, undefined, visibleSlugs);
                 const entryA = slugA ? (records[slugA] ?? null) : null;
@@ -378,6 +383,18 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
               </div>
             </div>
           )}
+
+        {/* 中止bout注記(カード一覧からは除外し、ここに一言で残す) */}
+        {cancelledBouts.length > 0 && (
+          <div style={{ marginTop: 24, fontSize: 12, color: "var(--muted)" }}>
+            {cancelledBouts.map((b, i) => (
+              <p key={i} style={{ margin: 0 }}>
+                {b.weightClass ? `${b.weightClass} ` : ""}
+                {b.fighterA} vs {b.fighterB}は、{b.note ?? "事情により中止"}。
+              </p>
+            ))}
+          </div>
+        )}
 
         {event.sourceUrl && (
           <p style={{ marginTop: 24, fontSize: 12 }}>
