@@ -21,16 +21,45 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check ranking freeze flag
+        id: freeze_check
+        run: |
+          FROZEN=$(node -e "console.log(require('./data/rankingFreeze.json').frozen === true ? 'true' : 'false')")
+          echo "frozen=${FROZEN}" >> "$GITHUB_OUTPUT"
+          if [ "$FROZEN" = "true" ]; then
+            REASON=$(node -e "const c=require('./data/rankingFreeze.json'); console.log(c.reason ?? '(理由未記載)')")
+            {
+              echo "### ⚠️ AI RIZINランキングの反映は凍結中です"
+              echo "data/rankingFreeze.json の frozen=true により、data/rankings.json 等ランキング4ファイルの再生成・commitをスキップします。"
+              echo "理由: ${REASON}"
+              echo "fighterRecords.json / fighterRecordsMeta.json の取得は通常どおり継続します。"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Update fighter records
         run: npx tsx scripts/update-fighter-records.ts
 
       - name: Update mnews rating rankings
+        if: steps.freeze_check.outputs.frozen != 'true'
         run: npx tsx scripts/update-mnews-rating.ts
 
       - name: Commit and push if changed
+        env:
+          RANKING_FROZEN: ${{ steps.freeze_check.outputs.frozen }}
         run: |
           git config user.name "mnews-bot"
           git config user.email "actions@users.noreply.github.com"
+
+          # data/rankingFreeze.json(frozen=true)の間は、ランキング4ファイル
+          # (rankings.json/rankings.prev.json/rankings/archive/rankings.legitimateBaseline.json)
+          # の再生成自体を上のステップでスキップしているが、念のためcommit対象からも
+          # 明示的に外す(二重の安全網)。fighterRecords.json/fighterRecordsMeta.jsonの
+          # 取得・commitはfrozenの影響を受けず常に継続する。
+          if [ "$RANKING_FROZEN" = "true" ]; then
+            COMMIT_PATHS=(data/fighterRecords.json data/fighterRecordsMeta.json)
+          else
+            COMMIT_PATHS=(data/fighterRecords.json data/fighterRecordsMeta.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json)
+          fi
           # data/rankings.legitimateBaseline.json: update-mnews-rating.tsのnew-results
           # モード(このジョブの既定実行)は毎回このファイルを前進させて書き出すが、
           # 従来ここのgit add対象に含まれていなかったためコミットされず、CI実行の
@@ -45,8 +74,8 @@ jobs:
           # unstaged changes」でジョブが異常終了しうる(このファイルはfighters.ts側の
           # 「データ最終更新」表示に使われる実データのため、out/*.mdの運用ログとは違い
           # commit対象に含めるのが妥当と判断)。
-          if ! git diff --quiet -- data/fighterRecords.json data/fighterRecordsMeta.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json; then
-            git add data/fighterRecords.json data/fighterRecordsMeta.json data/rankings.json data/rankings.prev.json data/rankings/archive data/rankings.legitimateBaseline.json
+          if ! git diff --quiet -- "${COMMIT_PATHS[@]}"; then
+            git add "${COMMIT_PATHS[@]}"
             git commit -m "chore: update fighter records + mnews rating [skip ci]"
 
             # archive-articles.yml(30分毎にmainへpush)とこのジョブ(所要8.5〜13.8分)の
