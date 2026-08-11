@@ -1,5 +1,41 @@
 [
   {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】榊原CEO「秋元強真は大みそか参戦は無理させず。大事に彼のキャリアを作りたい」",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2473354/",
+    "publishedAt": "2026-08-11T12:10:00.000Z",
+    "firstSeenAt": "2026-08-11T12:43:19.133Z"
+  },
+  {
+    "id": "oricon-1",
+    "source": "other",
+    "title": "【RIZIN】クレベル撃破の秋元強真、左拳を骨折 大みそかは慎重に判断「勢いでいける相手じゃない」",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2473333/",
+    "publishedAt": "2026-08-11T11:44:00.000Z",
+    "firstSeenAt": "2026-08-11T12:43:19.133Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
+    "title": "【RIZIN】クレベル・コイケ「こんなに怪我をしたのは覚えてません」秋元強真の強味は「打撃が上手い、距離の取り方が上手、そしてスピードも速い」そのうえで「自分がミスをした」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24566",
+    "publishedAt": "2026-08-11T11:38:50.000Z",
+    "firstSeenAt": "2026-08-11T12:43:19.133Z"
+  },
+  {
+    "id": "encount-0",
+    "source": "other",
+    "title": "【RIZIN】左手負傷の秋元強真「1週間前に脱臼した」直前練習でアクシデント 榊原CEOも早期タイトル戦に慎重「無理してやらせない」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046934/",
+    "publishedAt": "2026-08-11T11:31:15.000Z",
+    "firstSeenAt": "2026-08-11T12:43:19.133Z"
+  },
+  {
     "id": "encount-0",
     "source": "other",
     "title": "【RIZIN】秋元強真「折れちゃったっぽい」 元王者クレベル完封も左手骨折か、会場どよめき…早期タイトル挑戦に暗雲",
