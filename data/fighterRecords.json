@@ -1268,12 +1268,20 @@
   },
   "koike-kleber": {
     "wins": 35,
-    "losses": 9,
+    "losses": 10,
     "draws": 1,
     "ko": 2,
     "sub": 29,
     "decision": 4,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "秋元強真",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN.54",
+        "round": "R3"
+      },
       {
         "date": "2025-12-31",
         "opponent": "ヴガール・ケラモフ",
@@ -1650,13 +1658,21 @@
     "nickname": "柔術界の鬼神"
   },
   "akimoto-kyoma": {
-    "wins": 12,
+    "wins": 13,
     "losses": 1,
     "draws": 0,
     "ko": 7,
     "sub": 2,
-    "decision": 3,
+    "decision": 4,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "クレベル・コイケ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN.54",
+        "round": "R3"
+      },
       {
         "date": "2026-03-07",
         "opponent": "パッチー・ミックス",
@@ -2858,12 +2874,20 @@
   },
   "majima-kazumasa": {
     "wins": 19,
-    "losses": 6,
+    "losses": 7,
     "draws": 0,
     "ko": 1,
     "sub": 16,
     "decision": 2,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "武田光司",
+        "result": "loss",
+        "method": "1R 4:58 腕ひしぎ三角固め",
+        "event": "RIZIN.54",
+        "round": "R1"
+      },
       {
         "date": "2026-04-12",
         "opponent": "ジェームズ・ギャラガー",
@@ -4906,12 +4930,20 @@
   },
   "jolly": {
     "wins": 4,
-    "losses": 0,
+    "losses": 1,
     "draws": 0,
     "ko": 2,
     "sub": 2,
     "decision": 0,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "平本丈",
+        "result": "loss",
+        "method": "1R 1:36 KO（右フック）",
+        "event": "RIZIN.54",
+        "round": "R1"
+      },
       {
         "date": "2026-05-10",
         "opponent": "児玉兼慎",
@@ -5681,13 +5713,21 @@
     "nickname": "不屈の睡蓮"
   },
   "hiramoto-jo": {
-    "wins": 3,
+    "wins": 4,
     "losses": 2,
     "draws": 0,
-    "ko": 0,
+    "ko": 1,
     "sub": 1,
     "decision": 2,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "ジョリー",
+        "result": "win",
+        "method": "1R 1:36 KO（右フック）",
+        "event": "RIZIN.54",
+        "round": "R1"
+      },
       {
         "date": "2026-05-10",
         "opponent": "飴山聖也",
@@ -6106,16 +6146,24 @@
     "live": true,
     "nickname": "黒帯のリベリオン",
     "birthPlace": "茨城県",
-    "age": 24
+    "age": 25
   },
   "sato-shoko": {
-    "wins": 37,
+    "wins": 38,
     "losses": 17,
     "draws": 2,
     "ko": 19,
     "sub": 4,
-    "decision": 14,
+    "decision": 15,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "パッチー・ミックス",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN.54",
+        "round": "R3"
+      },
       {
         "date": "2026-03-07",
         "opponent": "ジョン・スウィーニー",
@@ -6582,13 +6630,21 @@
     "age": 38
   },
   "goto-joji": {
-    "wins": 19,
+    "wins": 20,
     "losses": 9,
     "draws": 0,
     "ko": 9,
-    "sub": 4,
+    "sub": 5,
     "decision": 6,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "アジズベク・テミロフ",
+        "result": "win",
+        "method": "1R 3:41 リアネイキッドチョーク",
+        "event": "RIZIN.54",
+        "round": "R1"
+      },
       {
         "date": "2026-04-12",
         "opponent": "ダニー・サバテロ",
@@ -6629,7 +6685,7 @@
         "date": "2025-03-09",
         "opponent": "合島大樹",
         "result": "win",
-        "method": "1R 4:12 TKO (左フック)",
+        "method": "1R 4:12 TKO（左フック）",
         "event": "PANCRASE 352",
         "round": "R1"
       },
@@ -6824,13 +6880,21 @@
     "age": 30
   },
   "ito-yuki": {
-    "wins": 20,
+    "wins": 21,
     "losses": 7,
     "draws": 0,
-    "ko": 9,
+    "ko": 10,
     "sub": 2,
     "decision": 9,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "アリベク・ガジャマトフ",
+        "result": "win",
+        "method": "2R 3:51 TKO（スタンドパンチ連打）",
+        "event": "RIZIN.54",
+        "round": "R2"
+      },
       {
         "date": "2026-03-07",
         "opponent": "カルロス・モタ",
@@ -9120,13 +9184,21 @@
     "nickname": "微笑みスナイパー"
   },
   "takeda-koji": {
-    "wins": 19,
+    "wins": 20,
     "losses": 8,
     "draws": 0,
     "ko": 2,
-    "sub": 6,
+    "sub": 7,
     "decision": 11,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "摩嶋一整",
+        "result": "win",
+        "method": "1R 4:58 腕ひしぎ三角固め",
+        "event": "RIZIN.54",
+        "round": "R1"
+      },
       {
         "date": "2026-03-07",
         "opponent": "ビクター・コレスニック",
@@ -9871,13 +9943,21 @@
     "age": 48
   },
   "edpolo-king": {
-    "wins": 3,
+    "wins": 4,
     "losses": 0,
     "draws": 0,
-    "ko": 3,
+    "ko": 4,
     "sub": 0,
     "decision": 0,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "上田幹雄",
+        "result": "win",
+        "method": "2R 0:47 KO（顔面への右膝蹴り→パウンド）",
+        "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
+        "round": "R2"
+      },
       {
         "date": "2025-03-30",
         "opponent": "酒井リョウ",
@@ -9909,12 +9989,20 @@
   },
   "ueda-mikio": {
     "wins": 5,
-    "losses": 3,
+    "losses": 4,
     "draws": 0,
     "ko": 5,
     "sub": 0,
     "decision": 0,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "エドポロキング",
+        "result": "loss",
+        "method": "2R 0:47 KO（顔面への右膝蹴り→パウンド）",
+        "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
+        "round": "R2"
+      },
       {
         "date": "2025-07-27",
         "opponent": "アレクサンダー・ソルダトキン",
@@ -9988,13 +10076,21 @@
     "age": 31
   },
   "sudario-tsuyoshi": {
-    "wins": 9,
+    "wins": 10,
     "losses": 4,
     "draws": 0,
-    "ko": 8,
+    "ko": 9,
     "sub": 0,
     "decision": 1,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "酒井リョウ",
+        "result": "win",
+        "method": "1R 4:26 TKO（右ストレート→サッカーボールキック）",
+        "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
+        "round": "R1"
+      },
       {
         "date": "2025-05-04",
         "opponent": "ジョゼ・アウグスト",
@@ -10472,13 +10568,21 @@
     "age": 24
   },
   "naoki": {
-    "wins": 3,
+    "wins": 4,
     "losses": 2,
     "draws": 0,
-    "ko": 2,
+    "ko": 3,
     "sub": 1,
     "decision": 0,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "細川一颯",
+        "result": "win",
+        "method": "2R 3:20 TKO（ドクターストップ：目の腫れ）",
+        "event": "RIZIN.54",
+        "round": "R2"
+      },
       {
         "date": "2026-06-06",
         "opponent": "黒井海成",
@@ -10527,12 +10631,20 @@
   },
   "mizuno-shinta": {
     "wins": 9,
-    "losses": 1,
+    "losses": 2,
     "draws": 0,
     "ko": 2,
     "sub": 1,
     "decision": 6,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "リー・カイウェン",
+        "result": "loss",
+        "method": "1R 4:27 KO（左フック→パウンド）",
+        "event": "RIZIN.54",
+        "round": "R1"
+      },
       {
         "date": "2026-05-04",
         "opponent": "牛久絢太郎",
@@ -11428,12 +11540,20 @@
   },
   "sakai-ryo": {
     "wins": 15,
-    "losses": 15,
+    "losses": 16,
     "draws": 0,
     "ko": 10,
     "sub": 0,
     "decision": 5,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "スダリオ剛",
+        "result": "loss",
+        "method": "1R 4:26 TKO（サッカーボールキック→パウンド）",
+        "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
+        "round": "R1"
+      },
       {
         "date": "2026-06-06",
         "opponent": "貴賢神",
@@ -11544,7 +11664,7 @@
         "date": "2019-10-22",
         "opponent": "水野竜也",
         "result": "loss",
-        "method": "2R 3:41 反則負け（膝蹴り）",
+        "method": "2R 3:41 反則負け（四点膝）",
         "event": "DEEP 92 IMPACT",
         "round": "R2"
       },
@@ -21097,12 +21217,20 @@
   },
   "patchy-mix": {
     "wins": 20,
-    "losses": 4,
+    "losses": 5,
     "draws": 0,
     "ko": 2,
     "sub": 13,
     "decision": 5,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "佐藤将光",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN.54",
+        "round": "R3"
+      },
       {
         "date": "2026-03-07",
         "opponent": "秋元強真",
@@ -24601,12 +24729,20 @@
   },
   "temirov-azizbek": {
     "wins": 6,
-    "losses": 2,
+    "losses": 3,
     "draws": 0,
     "ko": 6,
     "sub": 0,
     "decision": 0,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "後藤丈治",
+        "result": "loss",
+        "method": "1R 3:41 リアネイキッドチョーク",
+        "event": "RIZIN.54",
+        "round": "R1"
+      },
       {
         "date": "2026-04-12",
         "opponent": "福田龍彌",
@@ -24678,12 +24814,20 @@
   },
   "gadzhamatov-alibeg": {
     "wins": 6,
-    "losses": 1,
+    "losses": 2,
     "draws": 0,
     "ko": 5,
     "sub": 1,
     "decision": 0,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "伊藤裕樹",
+        "result": "loss",
+        "method": "2R 3:51 TKO（スタンドパンチ連打）",
+        "event": "RIZIN.54",
+        "round": "R2"
+      },
       {
         "date": "2025-09-28",
         "opponent": "扇久保博正",
@@ -28295,13 +28439,21 @@
     "age": 26
   },
   "lee-kaiwen": {
-    "wins": 15,
+    "wins": 16,
     "losses": 8,
     "draws": 0,
-    "ko": 8,
+    "ko": 9,
     "sub": 1,
     "decision": 6,
     "history": [
+      {
+        "date": "2026-08-11",
+        "opponent": "水野新太",
+        "result": "win",
+        "method": "1R 4:27 KO（左フック→パウンド）",
+        "event": "RIZIN.54",
+        "round": "R1"
+      },
       {
         "date": "2026-05-10",
         "opponent": "高木凌",
