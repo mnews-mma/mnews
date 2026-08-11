@@ -2,6 +2,114 @@
   {
     "id": "gonkaku-0",
     "source": "other",
+    "title": "【RIZIN】佐藤将光「普通に試合で負けたなって感じです」体重超過のミックスに「ファンは好きに言ってもらっていいと思うけれど、僕自身は彼をまだ応援したい」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24568",
+    "publishedAt": "2026-08-11T15:22:07.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-0",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第10試合／クレベル・コイケ vs. 秋元強真",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857779",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-1",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第9試合／佐藤将光 vs. パッチー・ミックス",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857777",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-2",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第8試合／上田幹雄 vs. エドポロキング",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857774",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-3",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第7試合／スダリオ剛 vs. 酒井リョウ",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857769",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-4",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第6試合／伊藤裕樹 vs. アリベク・ガジャマトフ",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857754",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-5",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第5試合／摩嶋一整 vs. 武田光司",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857748",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-6",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第4試合／後藤丈治 vs. アジズベク・テミロフ",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857747",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-7",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第3試合／平本丈 vs. ジョリー",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857745",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-8",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第2試合／直樹 vs. 細川一颯",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857737",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-9",
+    "source": "rizin",
+    "title": "【試合結果】RIZIN.54 第1試合／水野新太 vs. リー・カイウェン",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857736",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "rizin-10",
+    "source": "rizin",
+    "title": "RIZIN.54 試合結果一覧",
+    "origin": "RIZIN公式",
+    "url": "https://jp.rizinff.com/_ct/17857699",
+    "publishedAt": "2026-08-11T15:00:00.000Z",
+    "firstSeenAt": "2026-08-11T16:48:47.405Z"
+  },
+  {
+    "id": "gonkaku-0",
+    "source": "other",
     "title": "【RIZIN】秋元強真、試合1週間前に左拳を脱臼「なので左を使わないっていう選択肢をしただけ」今後は「いろいろな専門の方にお願いして、もっとバケモノになろうかな」＝試合後の全コメント",
     "origin": "ゴング格闘技",
     "url": "https://gonkaku.jp/articles/24567",
