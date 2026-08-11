@@ -1,5 +1,59 @@
 [
   {
+    "id": "encount-0",
+    "source": "other",
+    "title": "【RIZIN】秋元強真「折れちゃったっぽい」 元王者クレベル完封も左手骨折か、会場どよめき…早期タイトル挑戦に暗雲",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046918/",
+    "publishedAt": "2026-08-11T10:08:00.000Z",
+    "firstSeenAt": "2026-08-11T10:42:29.301Z"
+  },
+  {
+    "id": "mmaplanet-0",
+    "source": "other",
+    "title": "【RIZIN54】「左手が折れちゃったぽいので……」秋元が右ジャブ&TD防御でクレベルを削り続けて判定勝ち",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/235582",
+    "publishedAt": "2026-08-11T09:56:36.000Z",
+    "firstSeenAt": "2026-08-11T10:42:29.301Z"
+  },
+  {
+    "id": "encount-1",
+    "source": "other",
+    "title": "【RIZIN】20歳秋元強真、“大量出血”クレベルを完全攻略 判定勝利でタイトル挑戦宣言「マッキーとシェイドゥラエフの勝者、試合やらせてください」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046708/",
+    "publishedAt": "2026-08-11T09:46:10.000Z",
+    "firstSeenAt": "2026-08-11T10:42:29.301Z"
+  },
+  {
+    "id": "mmaplanet-1",
+    "source": "other",
+    "title": "【RIZIN54】体重超過のパッチーにインロー、打撃で攻勢も組みに押し切られ――減点こみの3-0判定勝ち",
+    "origin": "MMAPLANET",
+    "url": "https://mmaplanet.jp/235695",
+    "publishedAt": "2026-08-11T09:22:35.000Z",
+    "firstSeenAt": "2026-08-11T10:42:29.301Z"
+  },
+  {
+    "id": "encount-2",
+    "source": "other",
+    "title": "【RIZIN】大幅計量オーバーのパッチー・ミックス、判定で敗戦 キャリア危機に対戦相手がリングで“異例”マイク「行動で示せば信頼を取り戻せる」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1046884/",
+    "publishedAt": "2026-08-11T09:21:26.000Z",
+    "firstSeenAt": "2026-08-11T10:42:29.301Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】豪快TKO勝利の伊藤裕樹「ノーコンテストより確変！」敬愛する宇多田ヒカルへの思いも告白",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2473324/",
+    "publishedAt": "2026-08-11T09:02:00.000Z",
+    "firstSeenAt": "2026-08-11T10:42:29.301Z"
+  },
+  {
     "id": "mmaplanet-0",
     "source": "other",
     "title": "【RIZIN54】エドポロキングが首相撲からのヒザ蹴りで上田をKO。ヘビー級T決勝でスダリオ剛と対戦",
