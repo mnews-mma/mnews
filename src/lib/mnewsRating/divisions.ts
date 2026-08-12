@@ -187,14 +187,24 @@ export function latestRizinDivision(history: HistoryBoutForDivision[], nominalWe
   if (namedAmongTied.length > 0) {
     return namedAmongTied.sort((a, b) => (a.date < b.date ? 1 : -1))[0].division as MnewsDivision;
   }
-  // (b) 明示された階級名の証拠が無い場合、直近戦(未明示の単発キャッチウェイト)
-  //     自身の階級がタイ候補に含まれていれば採用する。これはothersのみでの
-  //     単純集計がたまたまタイになっただけで、直近戦を含めた全体では明確な
-  //     多数派になっているケースを救う(金太郎: 直近61kg=バンタムがタイ候補
-  //     [フェザー,バンタム]に含まれるためバンタムを採用。全3戦の単純集計でも
-  //     バンタム2:フェザー1で一致する)。
-  if (majority.includes(latest.division)) return latest.division;
-  // (c) それでも決まらない場合は、タイ候補の中で最も新しい試合の階級を採用する
-  //     (従来どおりのフォールバック)。
-  return others.find((o) => majority.includes(o.division as MnewsDivision))!.division as MnewsDivision;
+  // (b) 明示された階級名の証拠が無い場合、タイ候補のうち最も軽い階級を採用する
+  //     (2026-08-12修正)。旧ロジックは「直近戦自身の生kg換算がタイ候補に
+  //     含まれていればそれを採用」だったが、直近戦は元々「未明示の単発
+  //     キャッチウェイト」として生kg換算を信用しない前提でこの分岐に入って
+  //     いるのに、タイ解消の段になると同じ生kg換算に頼って自己参照的に
+  //     決着させてしまう欠陥があった(直樹(naoki): 直近69kg契約=ライト級相当
+  //     が[フェザー66kg,ライト68kg]のタイ候補にたまたま含まれるという理由
+  //     だけでライト級に確定し、フェザー級の資格を失っていた)。
+  //     「キャッチウェイトは通常自階級以上の相手と受けるため、より軽い契約
+  //     体重の方が本来の階級に近い代理指標になる」という、この関数が既に
+  //     採用している原則(others.length===1の特別扱い、上記コメント参照)を
+  //     タイ解消にも一貫して適用する: タイ候補の中で最も軽い階級を採用する。
+  //     階級は軽い順に並んでいるため、この2階級の場合は常に一意に決まる。
+  //     金太郎(直近61kg=バンタムがタイ候補[フェザー,バンタム]に含まれ、
+  //     偶然バンタムが正しかったケース)でも、バンタムはフェザーより軽い
+  //     階級のため、このルールで同じ結論(バンタム)になる。
+  const lightestTied = majority
+    .slice()
+    .sort((a, b) => MNEWS_DIVISIONS.indexOf(a) - MNEWS_DIVISIONS.indexOf(b))[0];
+  return lightestTied;
 }
