@@ -1,5 +1,41 @@
 [
   {
+    "id": "encount-0",
+    "source": "other",
+    "title": "ABEMA×RIZIN「超強者発掘プロジェクト」始動 “本当に強い選手”を発掘・育成",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1047320/",
+    "publishedAt": "2026-08-12T10:30:21.000Z",
+    "firstSeenAt": "2026-08-12T10:52:49.214Z"
+  },
+  {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】9月『超RIZIN.5 浪速の超復活祭り』京セラドーム大阪大会からPPVは、ABEMA独占配信に決定",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24575",
+    "publishedAt": "2026-08-12T10:22:14.000Z",
+    "firstSeenAt": "2026-08-12T10:52:49.214Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】ABEMA「公式メディアパートナー」決定 17日に特番＆“超強者発掘PJ”も始動",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2473528/",
+    "publishedAt": "2026-08-12T10:22:00.000Z",
+    "firstSeenAt": "2026-08-12T10:52:49.214Z"
+  },
+  {
+    "id": "encount-1",
+    "source": "other",
+    "title": "ABEMA、RIZINの公式メディアパートナーに決定 榊原CEO「9月からABEMAさんだけでPPVを配信」",
+    "origin": "ENCOUNT",
+    "url": "https://encount.press/archives/1047259/",
+    "publishedAt": "2026-08-12T10:19:13.000Z",
+    "firstSeenAt": "2026-08-12T10:52:49.214Z"
+  },
+  {
     "id": "gonkaku-0",
     "source": "other",
     "title": "【RIZIN】本日19時から緊急“バラ呼び”決定「配信に関する重大発表」",
