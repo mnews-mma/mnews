@@ -20,7 +20,7 @@ import MnewsRatingSection from "@/components/MnewsRatingSection";
 import HeroFighterSearch from "@/components/HeroFighterSearch";
 import LiveBand from "@/components/LiveBand";
 import { computeLiveBand } from "@/lib/liveBand";
-import { startOfTodayJstMs as computeStartOfTodayJstMs, toJstDateStr } from "@/lib/eventCountdown";
+import { startOfTodayJstMs as computeStartOfTodayJstMs } from "@/lib/eventCountdown";
 import { computeFighterTags, OrgTag, OrgTagKey } from "@/lib/orgTags";
 import { fetchLatestOfficialVideos } from "@/lib/feeds/youtube";
 import { EVENT_RESULTS } from "@/lib/eventResults";
@@ -197,15 +197,6 @@ export default async function HomePage() {
   // (force-dynamicのためリクエスト時に毎回再計算され、クライアント時刻には
   // 依存しない)。
   const liveBandInfo = computeLiveBand(startOfTodayJstMs, upcomingEvents, EVENT_RESULTS);
-  const todayJstDateStr = toJstDateStr();
-  // POST帯の「AIランキング本日更新」文言は、実際に本日分のバッチが反映済みの
-  // 場合のみ出す(未反映なのに更新済みと読める表現は不可、§1.1)。
-  // updatedAtはUTC ISO文字列のため、単純な.slice(0,10)比較だとUTC日付と
-  // JST日付を比較する型違いになりズレる(監査#1)。toJstDateStr()でJST基準に
-  // 正規化してから比較する。
-  const rankingsUpdatedToday = featherweightRankings?.updatedAt
-    ? toJstDateStr(Date.parse(featherweightRankings.updatedAt)) === todayJstDateStr
-    : false;
 
   // 関連選手チップ: サーバー側(リクエスト時レンダリング)でタイトルとfighters.tsを
   // 突合。クライアントにはマッチング結果(name/slug)のみを渡す(ロジック自体は
@@ -274,7 +265,7 @@ export default async function HomePage() {
       <Nav />
       <h1 className="visually-hidden">日本MMAニュース・選手データベース</h1>
 
-      {liveBandInfo && <LiveBand info={liveBandInfo} rankingsUpdatedToday={rankingsUpdatedToday} />}
+      {liveBandInfo && <LiveBand info={liveBandInfo} />}
 
       <div className="home-wrap">
       <div className="home-main">

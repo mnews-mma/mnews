@@ -60,7 +60,7 @@ function faqJsonLd() {
         name: "更新タイミングは？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "RIZIN大会の翌日、日次バッチ処理で自動更新されます。",
+          text: "RIZIN大会の結果確定後に更新します。",
         },
       },
     ],
@@ -129,7 +129,7 @@ export default async function RankingsHubPage() {
             <a href="/rankings/methodology" style={{ color: "var(--accent)" }}>
               ランキングについて
             </a>
-            で公開しています。RIZIN大会の翌日に自動更新されます。
+            で公開しています。RIZIN大会の結果確定後に更新します。
           </p>
         </div>
       </div>

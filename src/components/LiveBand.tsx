@@ -4,7 +4,7 @@ import type { LiveBandInfo } from "@/lib/liveBand";
 // 日数計算はサーバー側(page.tsx)でJST基準・SSR/ISR確定済みのLiveBandInfoを
 // 受け取って表示するだけで、クライアント時刻には一切依存しない。
 // 「速報」「LIVE」「リアルタイム」「即日反映」の文言は使わない。
-export default function LiveBand({ info, rankingsUpdatedToday }: { info: LiveBandInfo; rankingsUpdatedToday: boolean }) {
+export default function LiveBand({ info }: { info: LiveBandInfo }) {
   const showPulse = info.state === "PRE" || info.state === "DAY";
 
   let headline: string;
@@ -24,14 +24,7 @@ export default function LiveBand({ info, rankingsUpdatedToday }: { info: LiveBan
     ctaHref = `/events/${info.slug}`;
   } else {
     headline = `${info.eventName} 結果まとめ公開`;
-    // AIランキングはRIZIN専用のため、告知はorg==="rizin"のときのみ出す。
-    // 団体不明(org未設定)の場合も非RIZIN側に倒し、告知は出さない。
-    subline =
-      info.org === "rizin"
-        ? rankingsUpdatedToday
-          ? "AIランキング本日更新"
-          : "AIランキングは本日中に更新"
-        : null;
+    subline = null;
     ctaLabel = "結果を見る";
     ctaHref = `/results/${info.slug}`;
   }
