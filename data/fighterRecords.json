@@ -1280,7 +1280,8 @@
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN.54",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2025-12-31",
@@ -1671,7 +1672,8 @@
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "RIZIN.54",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2026-03-07",
@@ -2886,7 +2888,8 @@
         "result": "loss",
         "method": "1R 4:58 腕ひしぎ三角固め",
         "event": "RIZIN.54",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2026-04-12",
@@ -4942,7 +4945,8 @@
         "result": "loss",
         "method": "1R 1:36 KO（右フック）",
         "event": "RIZIN.54",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フライ級（57.0kg）"
       },
       {
         "date": "2026-05-10",
@@ -5726,7 +5730,8 @@
         "result": "win",
         "method": "1R 1:36 KO（右フック）",
         "event": "RIZIN.54",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フライ級（57.0kg）"
       },
       {
         "date": "2026-05-10",
@@ -6162,7 +6167,8 @@
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "RIZIN.54",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "バンタム級（61.0kg）"
       },
       {
         "date": "2026-03-07",
@@ -6643,7 +6649,8 @@
         "result": "win",
         "method": "1R 3:41 リアネイキッドチョーク",
         "event": "RIZIN.54",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "バンタム級（61.0kg）"
       },
       {
         "date": "2026-04-12",
@@ -6893,7 +6900,8 @@
         "result": "win",
         "method": "2R 3:51 TKO（スタンドパンチ連打）",
         "event": "RIZIN.54",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "フライ級（57.0kg）"
       },
       {
         "date": "2026-03-07",
@@ -9197,7 +9205,8 @@
         "result": "win",
         "method": "1R 4:58 腕ひしぎ三角固め",
         "event": "RIZIN.54",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2026-03-07",
@@ -9421,7 +9430,7 @@
     "live": true,
     "nickname": "漆黒のヘラクレス",
     "birthPlace": "埼玉県草加市",
-    "age": 30
+    "age": 31
   },
   "tokoro-hideo": {
     "wins": 33,
@@ -9954,9 +9963,10 @@
         "date": "2026-08-11",
         "opponent": "上田幹雄",
         "result": "win",
-        "method": "2R 0:47 KO（顔面への右膝蹴り→パウンド）",
+        "method": "2R 0:47 KO（顔面への右膝蹴り）",
         "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "ヘビー級（120.0kg）"
       },
       {
         "date": "2025-03-30",
@@ -9999,9 +10009,10 @@
         "date": "2026-08-11",
         "opponent": "エドポロキング",
         "result": "loss",
-        "method": "2R 0:47 KO（顔面への右膝蹴り→パウンド）",
+        "method": "2R 0:47 KO（顔面への右膝蹴り）",
         "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "ヘビー級（120.0kg）"
       },
       {
         "date": "2025-07-27",
@@ -10089,7 +10100,8 @@
         "result": "win",
         "method": "1R 4:26 TKO（右ストレート→サッカーボールキック）",
         "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "ヘビー級（120.0kg）"
       },
       {
         "date": "2025-05-04",
@@ -10579,9 +10591,10 @@
         "date": "2026-08-11",
         "opponent": "細川一颯",
         "result": "win",
-        "method": "2R 3:20 TKO（ドクターストップ：目の腫れ）",
+        "method": "2R 3:20 TKO（ドクターストップ：眼の負傷）",
         "event": "RIZIN.54",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "69.0kg契約"
       },
       {
         "date": "2026-06-06",
@@ -10641,9 +10654,10 @@
         "date": "2026-08-11",
         "opponent": "リー・カイウェン",
         "result": "loss",
-        "method": "1R 4:27 KO（左フック→パウンド）",
+        "method": "1R 4:27 TKO（左フック→パウンド）",
         "event": "RIZIN.54",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2026-05-04",
@@ -11550,9 +11564,10 @@
         "date": "2026-08-11",
         "opponent": "スダリオ剛",
         "result": "loss",
-        "method": "1R 4:26 TKO（サッカーボールキック→パウンド）",
+        "method": "1R 4:26 TKO（右ストレート→サッカーボールキック）",
         "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "ヘビー級（120.0kg）"
       },
       {
         "date": "2026-06-06",
@@ -21229,7 +21244,8 @@
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN.54",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "バンタム級（61.0kg）"
       },
       {
         "date": "2026-03-07",
@@ -24741,7 +24757,8 @@
         "result": "loss",
         "method": "1R 3:41 リアネイキッドチョーク",
         "event": "RIZIN.54",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "バンタム級（61.0kg）"
       },
       {
         "date": "2026-04-12",
@@ -24826,7 +24843,8 @@
         "result": "loss",
         "method": "2R 3:51 TKO（スタンドパンチ連打）",
         "event": "RIZIN.54",
-        "round": "R2"
+        "round": "R2",
+        "weightClass": "フライ級（57.0kg）"
       },
       {
         "date": "2025-09-28",
@@ -28450,9 +28468,10 @@
         "date": "2026-08-11",
         "opponent": "水野新太",
         "result": "win",
-        "method": "1R 4:27 KO（左フック→パウンド）",
+        "method": "1R 4:27 TKO（左フック→パウンド）",
         "event": "RIZIN.54",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "フェザー級（66.0kg）"
       },
       {
         "date": "2026-05-10",
