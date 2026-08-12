@@ -143,10 +143,7 @@ function formatEligibilityExplanation(e: EligibilityExplanation): string {
       ? `直近ルート達成(直近年${e.recentFights}戦)`
       : `通算ルート達成(通算${e.fights}戦)`
     : `未達成(通算${e.fights}戦・直近年${e.recentFights}戦)`;
-  const winPart = e.qualifiesViaRecent
-    ? `勝利${e.wins}(直近ルートのため免除・実効${e.effectiveWins})`
-    : `勝利${e.wins}(実効${e.effectiveWins})`;
-  return `試合数要件: ${fightRoute} / ${winPart} / オープニングファイト除外${e.totalExcludedByOpeningFight}件 / 判定=${e.eligible ? "資格あり" : "資格なし"}`;
+  return `試合数要件: ${fightRoute} / 勝利${e.wins} / オープニングファイト除外${e.totalExcludedByOpeningFight}件 / 判定=${e.eligible ? "資格あり" : "資格なし"}`;
 }
 
 // out/rank-attribution.mdを書き出す。書き込み失敗(out/作成不可等)はレポート

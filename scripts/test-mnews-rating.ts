@@ -732,16 +732,17 @@ function makeResolver(map: Record<string, string>) {
   }
 
   // 18-4. isStandardEligible: 階級変更後の1勝要件。
-  // 2026-07-22分割: 443d74c(直近2戦ルートの勝利要件免除、2026-07-19)以降、
-  // この論点は「どちらのルートで資格を得ようとしているか」で答えが分かれる。
-  // 元は1本のテストだったが、免除の導入で片方の期待値が反転したため2本に分けた。
-  // 1本のまま期待値を反転させると、18-4aが守っていたガード(通算3戦ルートでは
-  // 1勝要件を維持する)が黙って失われるため、必ず両方を残すこと。
+  // 2026-08-12: 443d74c(直近2戦ルートの勝利要件免除、2026-07-19)を撤回した。
+  // パッチー・ミックスがRIZIN 0勝2敗のまま直近2戦ルートの免除だけでバンタム級
+  // ランキング中位に掲載される事例が生じ、0勝選手を掲載する状態を許容しない
+  // 方針としたため。ELIGIBILITY_MIN_WINSは通算3戦ルート・直近2戦ルートいずれで
+  // 試合数要件を満たした選手にも一律に適用する(=どちらのルートでも0勝は非掲載)。
+  // 2026-07-22分割時の2本構成(通算ルート/直近ルートで期待値が分かれていた)は
+  // そのまま残し、18-4bの期待値のみ免除撤回に合わせて反転させた。
 
-  // 18-4a. 通算3戦ルートのみで資格を得ようとする0勝の選手は、従来どおり非掲載。
-  // 443d74c以前からのガードで、免除の導入後も維持されている性質(免除される
-  // のは直近2戦ルートだけ)。直近(ELIGIBILITY_RECENT_YEAR_START年以降)の対象戦を
-  // 1戦に抑えることでqualifiesViaRecentを不成立にし、通算3戦ルート単独の判定にしている。
+  // 18-4a. 通算3戦ルートのみで資格を得ようとする0勝の選手は非掲載。
+  // 直近(ELIGIBILITY_RECENT_YEAR_START年以降)の対象戦を1戦に抑えることで
+  // qualifiesViaRecentを不成立にし、通算3戦ルート単独の判定にしている。
   {
     const summaries: FighterBoutSummary[] = [
       { date: "2025-03-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-a" }, // 2025年以降はこの1戦のみ
@@ -757,10 +758,8 @@ function makeResolver(map: Record<string, string>) {
   }
 
   // 18-4b. 直近2戦ルート(ELIGIBILITY_RECENT_YEAR_START年以降に
-  // ELIGIBILITY_RECENT_MIN_FIGHTS戦以上)を満たす選手は、階級変更後0勝でも掲載する。
-  // 443d74c(2026-07-19)で導入。公開methodologyは勝利要件を明記せず「一定以上の
-  // 試合数+直近でも活動している選手」を基準とするため、現役ロースター選手を
-  // 勝ち星の有無で弾かない。本番該当例: 天弥・芳賀ビラル海(いずれも2025年以降2戦0勝)。
+  // ELIGIBILITY_RECENT_MIN_FIGHTS戦以上)を満たしていても、1勝もしていなければ
+  // 非掲載(443d74cの免除撤回・パッチー・ミックス=2025年以降2戦0勝の事例)。
   {
     const summaries: FighterBoutSummary[] = [
       { date: "2026-05-01", weightClass: "66.0kg契約", isWin: false, opponentNode: "opp-a" },
@@ -770,8 +769,8 @@ function makeResolver(map: Record<string, string>) {
     ];
     const asOf = new Date("2026-06-01");
     check(
-      isStandardEligible(summaries, "フェザー級", "2026-05-01", asOf) === true,
-      "B-2: 直近2戦ルートを満たせば階級変更後0勝でもランカーにする(443d74cの勝利要件免除)"
+      isStandardEligible(summaries, "フェザー級", "2026-05-01", asOf) === false,
+      "B-2: 直近2戦ルートを満たしていても0勝ならランカーにしない(免除撤回)"
     );
   }
 }
