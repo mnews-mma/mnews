@@ -103,12 +103,11 @@ export default function DigestPicker({
     return { text: body, count: Math.ceil(fullWidthLength(body)) };
   }, [chosen, dayLabel]);
 
-  // リンクに日付キャッシュバスタ(?d=YYYY-MM-DD)を付ける。Xは投稿リンクのURL単位で
-  // OGPをキャッシュするため、毎回同じ https://mnews.jp を貼るとホームOGPを更新しても
-  // Xが古いカードを出し続ける(Xは現在パブリックなCard Validatorを廃止済み)。
-  // 日付でURLを日替わりにし、Xに毎回新規URLとして再取得させて現行の赤OGPを確実に
-  // 表示させる。?d はNext側で未使用のクエリのため表示・挙動には影響しない。
-  const replyText = `全件はこちら👇\nhttps://mnews.jp/?d=${dayIso}`;
+  // リンク先はその日のニュースだけを一覧表示する専用ページ(/archive/[date]、
+  // xPost.tsのbuildDigestPostと同じ参照先)。日付ごとにURLが自然に異なるため、
+  // Xの投稿リンク単位OGPキャッシュも常に新規URLとして扱われ、その日のダイジェスト
+  // 用OGP(canonical/og:title/og:image共に日付固有)が表示される。
+  const replyText = `全件はこちら👇\nhttps://mnews.jp/archive/${dayIso}`;
 
   return (
     <div>
