@@ -10,6 +10,23 @@
 // このリストは上記の仕組みと完全に独立して、gapの大小・recency窓の内外を
 // 問わず「勝者は敗者より順位が上でなければならない」ことを機械的に強制する。
 // 追加・削除は必ず実データ(fighterRecords.json)のboutDateを確認した上で行う。
+//
+// 撤去条件(2026-08-12・テミロフ>福田の撤去時に明文化):
+// このリストはgap・recency窓を無視して無期限に順序を固定する強い制約である。
+// しかし既存のH2H補正(checkRecentH2HInvariant等)には「新しい結果が古い直接
+// 対決を上書きしてよい」という設計思想が既にある(182日のrecency窓)。エントリの
+// 勝者側が、そのboutDateより新しい試合で敗れ、その新しい敗戦の結果として現在の
+// 実順位が本エントリの主張と矛盾する状態になった場合、この矛盾はデータの誤りでは
+// なく「新しい結果が古い直接対決の優先権を上書きした」だけであり、無期限に順序を
+// 強制し続けるのは上記の設計思想と逆行する。以下の条件をすべて満たす場合、
+// エントリを撤去してよい:
+//   1. 勝者(winnerSlug)が、本エントリのboutDateより新しい日付で敗れた実データが
+//      一次データ(fighterRecords.json/rizinRecords.json等)に存在する
+//   2. その新しい敗戦により、checkRequiredInvariants()が本エントリを違反
+//      (reason: "order")として検出する状態になっている
+// 撤去時は配列から削除するだけで終わらせず、直下に撤去理由(新しい敗戦の日付・
+// 相手・大会)と撤去日を必ずコメントで残す(検証として何を撤去したかの記録が
+// 失われると、同種の判断を後から検証できなくなるため)。
 import { MnewsDivision } from "../mnewsRating/divisions";
 import type { P4PFile } from "../mnewsRating/p4pFile";
 
@@ -21,6 +38,11 @@ export interface RequiredInvariantEntry {
   note: string;
 }
 
+// 撤去済みエントリの記録(上記「撤去条件」参照。配列には含めない):
+// - バンタム級 temirov-azizbek > fukuda-ryuya(2026-04-12 RIZIN LANDMARK 13)
+//   2026-08-12撤去。テミロフがRIZIN.54(2026-08-11)で後藤丈治に一本負けし、
+//   本エントリのboutDateより新しい敗戦により実順位(福田4位・テミロフ11位・
+//   gap=7 > MONOTONICITY_MAX_RANK_GAP_V9=3)と矛盾する状態になったため。
 export const REQUIRED_RANKING_INVARIANTS: RequiredInvariantEntry[] = [
   {
     division: "フライ級",
@@ -28,13 +50,6 @@ export const REQUIRED_RANKING_INVARIANTS: RequiredInvariantEntry[] = [
     loserSlug: "motoya-yuki",
     boutDate: "2026-06-06",
     note: "RIZIN LANDMARK 14 直接対決",
-  },
-  {
-    division: "バンタム級",
-    winnerSlug: "temirov-azizbek",
-    loserSlug: "fukuda-ryuya",
-    boutDate: "2026-04-12",
-    note: "RIZIN LANDMARK 13 直接対決(gap拡大でsilent breakした実例あり)",
   },
   {
     division: "バンタム級",
