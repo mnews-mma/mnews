@@ -85,13 +85,13 @@ export default async function XPreviewPage() {
     .filter((a) => new Date(a.publishedAt).getTime() >= cutoff)
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
-  // 候補(初期チェック): digestScore>=1 の上位4件
+  // 候補(初期チェック): digestScore>=1 の上位3件(既定値。4件以上は手動で追加選択可)
   const suggestedIds = new Set(
     recent
       .map((a) => ({ a, ds: digestScore(a) }))
       .filter((x) => x.ds >= 1)
       .sort((x, y) => y.ds - x.ds)
-      .slice(0, 4)
+      .slice(0, 3)
       .map((x) => x.a.id)
   );
 

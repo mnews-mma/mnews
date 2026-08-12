@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { condenseTopic, fullWidthLength } from "@/lib/tweetDigest";
+import { fullWidthLength, stripLeadingLabel } from "@/lib/tweetDigest";
 import { toJstDateStr, shiftDateStr } from "@/lib/eventCountdown";
 import CopyButton from "@/components/CopyButton";
 
@@ -29,10 +29,6 @@ export interface PickerArticle {
   timeJa: string; // "3時間前"
   suggested: boolean; // digestScore上位=候補(初期チェック)
 }
-
-// 1行の要約枠(全角)。全文そのまま掲載は長すぎるため、ここまでは原文を
-// 活かして収める(文字数制限由来の強い圧縮はしない)。
-const LINE_MAX = 50;
 
 export default function DigestPicker({
   articles,
@@ -89,25 +85,44 @@ export default function DigestPicker({
     [order, articles]
   );
 
-  const { text, count } = useMemo(() => {
-    if (chosen.length === 0) return { text: "", count: 0 };
-    const lines = chosen.map((a) => {
-      const prefix = a.tag ? `【${a.tag}】` : "";
-      return `・${prefix}${condenseTopic(a.title, LINE_MAX - fullWidthLength(prefix))}`;
-    });
-    // ハッシュタグ: 選択記事の団体タグを重複排除で最大3つ(#MMAは付けない)
-    const tags = [...new Set(chosen.map((a) => a.orgHashtag).filter(Boolean))].slice(0, 3);
-    const parts = [`🥊 昨日のMMAニュースまとめ(${dayLabel})`, ...lines];
-    if (tags.length > 0) parts.push(tags.join(" "));
-    const body = parts.join("\n");
-    return { text: body, count: Math.ceil(fullWidthLength(body)) };
-  }, [chosen, dayLabel]);
+  // 各行の本文(編集可能)。初期値はタイトルから先頭【】ラベルを除いたもの
+  // (ラベルはa.tagとして別途・行頭に固定表示するため、二重表示を避ける)。
+  // 未編集の行はここに持たず、表示側でstripLeadingLabel(a.title)にフォール
+  // バックする(記事一覧が差し替わってもキー不整合で古い文言が残らない)。
+  const [lineText, setLineText] = useState<Record<string, string>>({});
+  function lineTextFor(a: PickerArticle): string {
+    return lineText[a.id] ?? stripLeadingLabel(a.title);
+  }
+
+  // 本文末尾に添える自前データ1行(任意)。空なら出力しない。
+  const [dataLine, setDataLine] = useState("");
 
   // リンク先はその日のニュースだけを一覧表示する専用ページ(/archive/[date]、
   // xPost.tsのbuildDigestPostと同じ参照先)。日付ごとにURLが自然に異なるため、
   // Xの投稿リンク単位OGPキャッシュも常に新規URLとして扱われ、その日のダイジェスト
   // 用OGP(canonical/og:title/og:image共に日付固有)が表示される。
-  const replyText = `全件はこちら👇\nhttps://mnews.jp/archive/${dayIso}`;
+  const digestLink = `https://mnews.jp/archive/${dayIso}`;
+
+  // 並び順は固定: 見出し / 箇条書き / データ1行 / ハッシュタグ / URL。
+  // ハッシュタグをURLより前に置く(URLの直後だとフラグメント扱いで吸われるため、
+  // 別トークンとして分離する)。
+  const { text, count } = useMemo(() => {
+    if (chosen.length === 0) return { text: "", count: 0 };
+    const lines = chosen.map((a) => {
+      const prefix = a.tag ? `【${a.tag}】` : "";
+      const body = lineText[a.id] ?? stripLeadingLabel(a.title);
+      return `・${prefix}${body}`;
+    });
+    // ハッシュタグ: 選択記事の団体タグを重複排除で最大3つ(#MMAは付けない)
+    const tags = [...new Set(chosen.map((a) => a.orgHashtag).filter(Boolean))].slice(0, 3);
+    const parts = [`🥊 昨日のMMAニュースまとめ(${dayLabel})`, ...lines];
+    const trimmedDataLine = dataLine.trim();
+    if (trimmedDataLine) parts.push(trimmedDataLine);
+    if (tags.length > 0) parts.push(tags.join(" "));
+    parts.push(digestLink);
+    const body = parts.join("\n");
+    return { text: body, count: Math.ceil(fullWidthLength(body)) };
+  }, [chosen, lineText, dataLine, dayLabel, digestLink]);
 
   return (
     <div>
@@ -168,22 +183,40 @@ export default function DigestPicker({
         })}
       </div>
 
-      {/* 投稿順の並び替え(選択済みのみ) */}
+      {/* 投稿順の並び替え+行本文の編集(選択済みのみ) */}
       {chosen.length > 0 && (
         <div style={{ border: "1px solid var(--border)", borderRadius: 8, padding: "10px 12px", marginBottom: 16 }}>
           <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 8 }}>
-            投稿順(↑↓で入れ替え)
+            投稿順(↑↓で入れ替え・本文は編集可)
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {chosen.map((a, i) => (
               <div key={a.id} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--muted)", width: 16 }}>
                   {i + 1}.
                 </span>
-                <span style={{ flex: 1, fontSize: 12, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {a.tag ? `【${a.tag}】` : ""}
-                  {a.title}
-                </span>
+                {a.tag && (
+                  <span style={{ fontSize: 12, color: "var(--muted)", whiteSpace: "nowrap" }}>
+                    【{a.tag}】
+                  </span>
+                )}
+                <input
+                  type="text"
+                  value={lineTextFor(a)}
+                  onChange={(e) =>
+                    setLineText((prev) => ({ ...prev, [a.id]: e.target.value }))
+                  }
+                  style={{
+                    flex: 1,
+                    minWidth: 0,
+                    fontSize: 12,
+                    padding: "5px 8px",
+                    border: "1px solid var(--border)",
+                    borderRadius: 6,
+                    background: "var(--s1)",
+                    color: "inherit",
+                  }}
+                />
                 <button
                   onClick={() => move(a.id, -1)}
                   disabled={i === 0}
@@ -203,10 +236,31 @@ export default function DigestPicker({
               </div>
             ))}
           </div>
+          <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
+            <label style={{ fontSize: 11, color: "var(--muted)", whiteSpace: "nowrap" }}>
+              データ1行(任意)
+            </label>
+            <input
+              type="text"
+              value={dataLine}
+              onChange={(e) => setDataLine(e.target.value)}
+              placeholder="例: 秋元はこれで13勝1敗、勝率93%。"
+              style={{
+                flex: 1,
+                minWidth: 0,
+                fontSize: 12,
+                padding: "5px 8px",
+                border: "1px solid var(--border)",
+                borderRadius: 6,
+                background: "var(--s1)",
+                color: "inherit",
+              }}
+            />
+          </div>
         </div>
       )}
 
-      {/* 生成されたX投稿(テキストのみ・画像なし) */}
+      {/* 生成されたX投稿(テキストのみ・画像なし・単一ツイート) */}
       <div style={{ border: "1px solid var(--border)", borderRadius: 8, padding: 16 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
           <span style={{ fontSize: 13, fontWeight: 700 }}>
@@ -215,7 +269,7 @@ export default function DigestPicker({
               全角換算 {count}(プレミアム前提・上限なし)
             </span>
           </span>
-          <CopyButton text={text} label="①本文をコピー" />
+          <CopyButton text={text} label="本文をコピー" />
         </div>
         <pre
           style={{
@@ -230,23 +284,6 @@ export default function DigestPicker({
           }}
         >
           {text || "(記事を選択すると投稿文が生成されます)"}
-        </pre>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "10px 0 4px" }}>
-          <span style={{ fontSize: 11, color: "var(--muted)" }}>② 2通目(①へのセルフリプライ)</span>
-          <CopyButton text={replyText} label="②をコピー" />
-        </div>
-        <pre
-          style={{
-            whiteSpace: "pre-wrap",
-            fontFamily: "var(--mono)",
-            fontSize: 12,
-            background: "var(--s2)",
-            padding: 10,
-            border: "1px dashed var(--border)",
-            margin: 0,
-          }}
-        >
-          {replyText}
         </pre>
       </div>
     </div>
