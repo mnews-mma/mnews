@@ -7,7 +7,7 @@
     "bouts": [
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "髙阪剛",
         "fighterBName": "ジェームス・トンプソン",
@@ -282,7 +282,7 @@
     "bouts": [
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "RENA",
         "fighterBName": "イリアーナ・ヴァレンティーノ",
@@ -538,7 +538,7 @@
     "bouts": [
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "悠矢",
         "fighterBName": "祐毅",
@@ -813,7 +813,7 @@
     "bouts": [
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "デスティニー・ヤーブロー",
         "fighterBName": "ギャビ・ガルシア",
@@ -1297,7 +1297,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第13試合 ミルコ・クロコップ vs. キング・モー",
         "fighterAName": "ミルコ・クロコップ",
         "fighterBName": "キング・モー",
@@ -1515,7 +1515,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第11試合 ミルコ・クロコップ vs. アミール・アリアックバリ",
         "fighterAName": "ミルコ・クロコップ",
         "fighterBName": "アミール・アリアックバリ",
@@ -1733,7 +1733,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第11試合 川尻達也 VS アンソニー・バーチャック",
         "fighterAName": "川尻達也",
         "fighterBName": "アンソニー・バーチャック",
@@ -1951,7 +1951,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第11試合 堀口 恭司 VS. 所 英男",
         "fighterAName": "堀口 恭司",
         "fighterBName": "所 英男",
@@ -2264,7 +2264,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第16試合",
         "fighterAName": "RENA",
         "fighterBName": "アンディ・ウィン",
@@ -2501,7 +2501,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 北岡悟 vs. ストラッサー起一",
         "fighterAName": "北岡悟",
         "fighterBName": "ストラッサー起一",
@@ -2738,7 +2738,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／バンタム級トーナメント 準決勝 マネル・ケイプ vs. 堀口恭司",
         "fighterAName": "マネル・ケイプ",
         "fighterBName": "堀口恭司",
@@ -2975,7 +2975,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "北井智大",
         "fighterBName": "ダルビッシュ黒木",
@@ -3174,7 +3174,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "ダロン・クルックシャンク",
         "fighterBName": "トム・サントス",
@@ -3411,7 +3411,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "瀧谷渉太",
         "fighterBName": "佐藤執斗",
@@ -3648,7 +3648,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "中村優作",
         "fighterBName": "マネル・ケイプ",
@@ -3923,7 +3923,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "RENA",
         "fighterBName": "サマンサ・ジャン=フランソワ",
@@ -4065,7 +4065,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "あい",
         "fighterBName": "川村虹花",
@@ -4302,7 +4302,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "大雅",
         "fighterBName": "タリソン・ゴメス・フェレイラ",
@@ -4577,7 +4577,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ（オープニングマッチ）",
         "fighterAName": "憂也",
         "fighterBName": "田中STRIKE雄基",
@@ -4814,7 +4814,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "渡部太基",
         "fighterBName": "Hideki",
@@ -5070,7 +5070,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "堀尾竜司",
         "fighterBName": "桜井宇宙",
@@ -5326,7 +5326,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合",
         "fighterAName": "植山征紀",
         "fighterBName": "梅井泰成",
@@ -5601,7 +5601,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第14試合／スペシャルワンマッチ",
         "fighterAName": "矢地祐介",
         "fighterBName": "上迫博仁",
@@ -5895,7 +5895,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／ RIZIN FIGHTING WORLD GP 2019 ライト級トーナメント Semi Final",
         "fighterAName": "ジョニー・ケース",
         "fighterBName": "トフィック・ムサエフ",
@@ -6151,7 +6151,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合",
         "fighterAName": "戸塚昌司",
         "fighterBName": "大澤匡弘",
@@ -6331,7 +6331,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 山本アーセン vs. 加藤ケンジ",
         "fighterAName": "山本アーセン",
         "fighterBName": "加藤ケンジ",
@@ -6511,7 +6511,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 松倉信太郎 vs. 森興二",
         "fighterAName": "松倉信太郎",
         "fighterBName": "森興二",
@@ -6729,7 +6729,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 矢地祐介 vs. 大原樹里",
         "fighterAName": "矢地祐介",
         "fighterBName": "大原樹里",
@@ -6928,7 +6928,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 スペシャルワンマッチ／山口侑馬 vs. 麻原将平",
         "fighterAName": "山口侑馬",
         "fighterBName": "麻原将平",
@@ -7241,7 +7241,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "オープニングマッチ／RIZINチャレンジマッチ さくら vs. 竹林エル",
         "fighterAName": "さくら",
         "fighterBName": "竹林エル",
@@ -7516,7 +7516,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 スペシャルワンマッチ／杉⼭廣平 vs. 伊藤裕樹",
         "fighterAName": "杉⼭廣平",
         "fighterBName": "伊藤裕樹",
@@ -7696,7 +7696,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 弥益ドミネーター聡志 vs. “ブラックパンサー”ベイノア",
         "fighterAName": "弥益ドミネーター聡志",
         "fighterBName": "“ブラックパンサー”ベイノア",
@@ -7952,7 +7952,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 山畑雄摩 vs. 髙橋聖人",
         "fighterAName": "山畑雄摩",
         "fighterBName": "髙橋聖人",
@@ -8151,7 +8151,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ ぱんちゃん璃奈 vs. 百花",
         "fighterAName": "ぱんちゃん璃奈",
         "fighterBName": "百花",
@@ -8236,7 +8236,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 渡部修斗 vs. 内藤頌貴",
         "fighterAName": "渡部修斗",
         "fighterBName": "内藤頌貴",
@@ -8454,7 +8454,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 奥脇竜哉 vs. 老沼隆斗",
         "fighterAName": "奥脇竜哉",
         "fighterBName": "老沼隆斗",
@@ -8710,7 +8710,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 寺山遼冴 vs. 弘樹",
         "fighterAName": "寺山遼冴",
         "fighterBName": "弘樹",
@@ -8985,7 +8985,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 森井翼 vs. FUJIMON♡",
         "fighterAName": "森井翼",
         "fighterBName": "FUJIMON♡",
@@ -9298,7 +9298,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 三浦孝太 vs. YUSHI",
         "fighterAName": "三浦孝太",
         "fighterBName": "YUSHI",
@@ -9554,7 +9554,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／スペシャルワンマッチ 伊藤勇大 vs. 桃翔",
         "fighterAName": "伊藤勇大",
         "fighterBName": "桃翔",
@@ -9658,7 +9658,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／ CORO vs. 増田拓真",
         "fighterAName": "CORO",
         "fighterBName": "増田拓真",
@@ -9990,7 +9990,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT／ 佐藤亮 vs. 駿",
         "fighterAName": "佐藤亮",
         "fighterBName": "駿",
@@ -10151,7 +10151,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 ／大谷翔司 vs. 力也",
         "fighterAName": "大谷翔司",
         "fighterBName": "力也",
@@ -10350,7 +10350,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 ／芦田崇宏 vs. カイル・アグォン",
         "fighterAName": "芦田崇宏",
         "fighterBName": "カイル・アグォン",
@@ -10435,7 +10435,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 ／YUSHI vs. ZENKI",
         "fighterAName": "YUSHI",
         "fighterBName": "ZENKI",
@@ -10691,7 +10691,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 ／タナー・ロレンツォ vs. Orihey",
         "fighterAName": "タナー・ロレンツォ",
         "fighterBName": "Orihey",
@@ -10966,7 +10966,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 ／YUSHI vs. 覇留樹",
         "fighterAName": "YUSHI",
         "fighterBName": "覇留樹",
@@ -11184,7 +11184,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 ／大原樹理 vs. ルイス・グスタボ",
         "fighterAName": "大原樹理",
         "fighterBName": "ルイス・グスタボ",
@@ -11421,7 +11421,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合 ／REITO BRAVELY vs. 関幸一郎",
         "fighterAName": "REITO BRAVELY",
         "fighterBName": "関幸一郎",
@@ -11696,7 +11696,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合 ／佐藤執斗 vs. KAZUNORI",
         "fighterAName": "佐藤執斗",
         "fighterBName": "KAZUNORI",
@@ -11990,7 +11990,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／YUSHI vs. 中澤達也",
         "fighterAName": "YUSHI",
         "fighterBName": "中澤達也",
@@ -12227,7 +12227,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／三輪憂斗 vs. 赤平大治",
         "fighterAName": "三輪憂斗",
         "fighterBName": "赤平大治",
@@ -12407,7 +12407,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／雑賀“ヤン坊”達也 vs. アリ・アブドゥルカリコフ",
         "fighterAName": "雑賀“ヤン坊”達也",
         "fighterBName": "アリ・アブドゥルカリコフ",
@@ -12663,7 +12663,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／城戸康裕 vs. 木村“ケルベロス”颯太",
         "fighterAName": "城戸康裕",
         "fighterBName": "木村“ケルベロス”颯太",
@@ -12995,7 +12995,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／星久保将城 vs. がんばれ！ふるかわくん",
         "fighterAName": "星久保将城",
         "fighterBName": "がんばれ！ふるかわくん",
@@ -13251,7 +13251,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／アンドレイ・コレシュコフ vs. ロレンズ・ラーキン",
         "fighterAName": "アンドレイ・コレシュコフ",
         "fighterBName": "ロレンズ・ラーキン",
@@ -13450,7 +13450,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／征矢貴 vs. ラマザン・テミロフ",
         "fighterAName": "征矢貴",
         "fighterBName": "ラマザン・テミロフ",
@@ -13763,7 +13763,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／切嶋龍輝 vs. MASANARI",
         "fighterAName": "切嶋龍輝",
         "fighterBName": "MASANARI",
@@ -13962,7 +13962,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／ハサン・メジエフ vs. コンスタンティン・メルクロフ",
         "fighterAName": "ハサン・メジエフ",
         "fighterBName": "コンスタンティン・メルクロフ",
@@ -14294,7 +14294,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／YUSHI vs. 平本丈",
         "fighterAName": "YUSHI",
         "fighterBName": "平本丈",
@@ -14569,7 +14569,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／石郷慶人 vs. 片島聡志",
         "fighterAName": "石郷慶人",
         "fighterBName": "片島聡志",
@@ -14844,7 +14844,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／赤平大治 vs. 雄希",
         "fighterAName": "赤平大治",
         "fighterBName": "雄希",
@@ -15043,7 +15043,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／高木凌 vs. 西谷大成",
         "fighterAName": "高木凌",
         "fighterBName": "西谷大成",
@@ -15223,7 +15223,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／徳留一樹 vs. 宇佐美正パトリック",
         "fighterAName": "徳留一樹",
         "fighterBName": "宇佐美正パトリック",
@@ -15441,7 +15441,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／新居すぐる vs. 摩嶋一整",
         "fighterAName": "新居すぐる",
         "fighterBName": "摩嶋一整",
@@ -15659,7 +15659,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／カルシャガ・ダウトベック vs. 木下カラテ",
         "fighterAName": "カルシャガ・ダウトベック",
         "fighterBName": "木下カラテ",
@@ -15972,7 +15972,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT / としぞう vs. JIN",
         "fighterAName": "としぞう",
         "fighterBName": "JIN",
@@ -16266,7 +16266,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第0試合／横内三旺 vs. ⻫藤健心",
         "fighterAName": "横内三旺",
         "fighterBName": "⻫藤健心",
@@ -16408,7 +16408,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／五明宏人 vs. 赤田プレイボイ功輝",
         "fighterAName": "五明宏人",
         "fighterBName": "赤田プレイボイ功輝",
@@ -16740,7 +16740,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／龍生 vs. 香川刻",
         "fighterAName": "龍生",
         "fighterBName": "香川刻",
@@ -17110,7 +17110,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／赤平大治 vs. 橋本楓汰",
         "fighterAName": "赤平大治",
         "fighterBName": "橋本楓汰",
@@ -17328,7 +17328,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／カン・ボムジュン vs. 井上聖矢",
         "fighterAName": "カン・ボムジュン",
         "fighterBName": "井上聖矢",
@@ -17698,7 +17698,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／成田佑希 vs. 能登崇",
         "fighterAName": "成田佑希",
         "fighterBName": "能登崇",
@@ -18049,7 +18049,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "喧嘩三番勝負 第1試合／大雅 vs. 栗秋祥梧",
         "fighterAName": "大雅",
         "fighterBName": "栗秋祥梧",
@@ -18400,7 +18400,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／YUHEI vs. 脇田仁",
         "fighterAName": "YUHEI",
         "fighterBName": "脇田仁",
@@ -18770,7 +18770,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／みいちゃんレンジャージム vs. 伊藤菜の花",
         "fighterAName": "みいちゃんレンジャージム",
         "fighterBName": "伊藤菜の花",
@@ -19083,7 +19083,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第0試合 RIZIN甲子園2025 決勝戦／須田雄律 vs. ヤマザト・エンゾ・マサミ",
         "fighterAName": "須田雄律",
         "fighterBName": "ヤマザト・エンゾ・マサミ",
@@ -19320,7 +19320,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／NOEL vs. イ・ボミ",
         "fighterAName": "NOEL",
         "fighterBName": "イ・ボミ",
@@ -19633,7 +19633,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT第1試合／今村流星 vs. YU-KI",
         "fighterAName": "今村流星",
         "fighterBName": "YU-KI",
@@ -19927,7 +19927,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第1試合／祥汰 vs. 須藤智也",
         "fighterAName": "祥汰",
         "fighterBName": "須藤智也",
@@ -20126,7 +20126,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／水野新太 vs. リー・カイウェン",
         "fighterAName": "水野新太",
         "fighterBName": "リー・カイウェン",
@@ -20363,7 +20363,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "第1試合／岩城悠介 vs. 中泉翔",
         "fighterAName": "岩城悠介",
         "fighterBName": "中泉翔",
@@ -20657,7 +20657,7 @@
       },
       {
         "cardPosition": 1,
-        "isOpeningFight": true,
+        "isOpeningFight": false,
         "headingText": "OPENING FIGHT 第2試合／シヴァエフ vs. ベンジャミン",
         "fighterAName": "シヴァエフ",
         "fighterBName": "ベンジャミン",

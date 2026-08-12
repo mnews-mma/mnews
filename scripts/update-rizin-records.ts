@@ -127,7 +127,13 @@ function buildEventBouts(eventName: string, date: string, html: string): { bouts
 
     return {
       cardPosition: total - idx,
-      isOpeningFight: idx === total - 1,
+      // isOpeningFight自動判定は撤去した(2026-08-12)。カード最下位の1試合を
+      // 機械的に「前座=資格カウント対象外」とみなしていたが、RIZINの通常
+      // 興行では「第1試合」も他の試合と同格の本戦プロMMA戦であり、前座相当
+      // と言えるのは超RIZIN.4「喧嘩三番勝負」のような特殊フォーマットの
+      // 一部に限られる(recordOverrides.ts OPENING_FIGHT_OVERRIDES参照)。
+      // 個別に判明している特殊ケースのみ手動指定で除外する方針に統一する。
+      isOpeningFight: false,
       headingText: raw.headingText,
       fighterAName: raw.fighterAName,
       fighterBName: raw.fighterBName,
@@ -158,7 +164,7 @@ function buildManualOverrideBouts(manual: RizinRawBoutManual[]): RizinRecordsBou
     const winnerSlug = b.winnerName === b.fighterAName ? fighterASlug : b.winnerName === b.fighterBName ? fighterBSlug : null;
     return {
       cardPosition: b.cardPosition,
-      isOpeningFight: b.cardPosition === 1,
+      isOpeningFight: false, // 自動判定は撤去(上記parseBoutsForEvent側と同じ理由)
       headingText: `第${b.cardPosition}試合`,
       fighterAName: b.fighterAName,
       fighterBName: b.fighterBName,
