@@ -24,12 +24,19 @@
 //   ② そのグループのdisallowに/dream?が含まれない
 //   ③ "*"グループのdisallowに/dream?が含まれる
 //   ④ (回帰防止) どのグループもCOMMON_DISALLOW(/admin/)は引き継いでいる
+//
+// 検証項目(SEO_AUDIT_BOTS各UAについて、2026-08-11追加):
+//   ⑤ 専用グループが存在する
+//   ⑥ そのグループがサイト全体(/配下の任意パス)をDisallowしている
+//   ⑦ Googlebot等の一般クローラー("*"グループ)はSEO_AUDIT_BOTSの影響を受けない
+//      (=/vsのindexableペアが引き続きクロール可能)
 import { parseRobotsTxt, pathDisallowed } from "./lib/robotsGate";
-import { COMMON_DISALLOW, SHARE_UNFURL_BOTS } from "../src/lib/robotsShareBots";
+import { COMMON_DISALLOW, SHARE_UNFURL_BOTS, SEO_AUDIT_BOTS } from "../src/lib/robotsShareBots";
 
 const PRODUCTION_ROBOTS_URL = "https://www.mnews.jp/robots.txt";
 const SAMPLE_DREAM_PATH = "/dream?a=sample-fighter-a&b=sample-fighter-b";
 const SAMPLE_ADMIN_PATH = "/admin/sample";
+const SAMPLE_VS_PATH = "/vs/sample-fighter-a/sample-fighter-b";
 // SHARE_UNFURL_BOTSのいずれにも一致しない、架空のUA(実在の一般的な検索エンジン
 // クローラーの代役)。"*"グループの挙動確認に使う。
 const GENERIC_CRAWLER_UA = "Mozilla/5.0 (compatible; SomeGenericCrawler/1.0)";
@@ -79,6 +86,30 @@ async function main() {
     violations.push(`"*"グループ: /admin/配下がDisallowされていない`);
   }
 
+  for (const ua of SEO_AUDIT_BOTS) {
+    const lowerUa = ua.toLowerCase();
+
+    // ⑤ 専用グループが存在する
+    const ownGroup = groups.find((g) => g.agents.length === 1 && g.agents[0] === lowerUa);
+    if (!ownGroup) {
+      violations.push(`${ua}: 専用グループが見つからない(SEO_AUDIT_BOTSに追加したがrobots.tsの生成に反映されていない可能性)`);
+      continue;
+    }
+
+    // ⑥ サイト全体(トップ・/vs配下とも)がDisallowされている
+    const rootCheck = pathDisallowed(groups, ua, "/");
+    const vsCheck = pathDisallowed(groups, ua, SAMPLE_VS_PATH);
+    if (!rootCheck.blocked || !vsCheck.blocked) {
+      violations.push(`${ua}: サイト全体がDisallowされていない(root blocked=${rootCheck.blocked}, /vs blocked=${vsCheck.blocked})`);
+    }
+  }
+
+  // ⑦ Googlebot等の一般クローラーはSEO_AUDIT_BOTSの影響を受けず/vsをクロール可能
+  const genericVsCheck = pathDisallowed(groups, GENERIC_CRAWLER_UA, SAMPLE_VS_PATH);
+  if (genericVsCheck.blocked) {
+    violations.push(`"*"グループ: /vs配下がDisallowされている(SEO_AUDIT_BOTS追加が一般クローラーにも誤って波及した可能性)`);
+  }
+
   if (violations.length) {
     console.error(
       `[本番robots.txt検査] ★${violations.length}件の不整合を検出(${PRODUCTION_ROBOTS_URL}):\n  ` +
@@ -88,7 +119,7 @@ async function main() {
   }
 
   console.log(
-    `[本番robots.txt検査] OK (共有bot ${SHARE_UNFURL_BOTS.length}件すべて専用グループ確認済み、"*"グループの/dream?拒否も確認済み、COMMON_DISALLOW=${JSON.stringify(COMMON_DISALLOW)}の引き継ぎも確認済み)`
+    `[本番robots.txt検査] OK (共有bot ${SHARE_UNFURL_BOTS.length}件・SEO監査bot ${SEO_AUDIT_BOTS.length}件すべて専用グループ確認済み、"*"グループの/dream?拒否・/vs許可も確認済み、COMMON_DISALLOW=${JSON.stringify(COMMON_DISALLOW)}の引き継ぎも確認済み)`
   );
 }
 
