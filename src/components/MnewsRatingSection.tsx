@@ -86,7 +86,7 @@ export default function MnewsRatingSection({
       <div className="hero-ranking-head">
         <div>
           <div className="hero-ranking-title">AI RIZINランキング</div>
-          <div className="hero-ranking-subtitle">独自AIが大会翌日に更新</div>
+          <div className="hero-ranking-subtitle">独自AIが大会結果を反映</div>
         </div>
         <select
           className="hero-ranking-select"
