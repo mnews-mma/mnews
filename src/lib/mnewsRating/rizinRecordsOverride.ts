@@ -85,17 +85,49 @@ function applyRuleTypeOverride(ev: RizinRecordsEvent, b: RizinRecordsBout): Rizi
   return o ? { ...b, ruleType: o.correctedRuleType } : b;
 }
 
-// slug+日付 → その試合のrizinRecords該当エントリ、の索引を1回だけ構築する。
-export function buildRizinRecordsIndex(events: RizinRecordsEvent[]): Map<string, RizinRecordsBout> {
-  const index = new Map<string, RizinRecordsBout>();
+// slug+日付 → その試合のrizinRecords該当エントリ(候補配列)、の索引を1回だけ構築する。
+// 同一選手が同日に複数試合(同一興行内の準決勝→決勝トーナメント等)を行うケースが
+// あるため、slug+日付だけでは1試合に定まらない。ここでは候補をすべて保持し、
+// 一意特定はlookupRizinRecordsMatch()側で対戦相手名を使って行う。
+export function buildRizinRecordsIndex(events: RizinRecordsEvent[]): Map<string, RizinRecordsBout[]> {
+  const index = new Map<string, RizinRecordsBout[]>();
   for (const ev of events) {
     for (const raw of ev.bouts) {
       const b = applyRuleTypeOverride(ev, raw);
-      if (b.fighterASlug) index.set(`${b.fighterASlug}|${ev.date}`, b);
-      if (b.fighterBSlug) index.set(`${b.fighterBSlug}|${ev.date}`, b);
+      if (b.fighterASlug) {
+        const key = `${b.fighterASlug}|${ev.date}`;
+        const list = index.get(key);
+        if (list) list.push(b);
+        else index.set(key, [b]);
+      }
+      if (b.fighterBSlug) {
+        const key = `${b.fighterBSlug}|${ev.date}`;
+        const list = index.get(key);
+        if (list) list.push(b);
+        else index.set(key, [b]);
+      }
     }
   }
   return index;
+}
+
+// slug+日付の候補群から、historyエントリの対戦相手名(opponentName)で1件に
+// 絞り込む。候補が1件ならそのまま採用(通常ケース)。2件以上ある場合(同日複数
+// 試合)は対戦相手名が一意に一致する候補があればそれを採用し、一致がゼロまたは
+// 複数(あいまい)なら特定不能としてundefinedを返す(推測での補完はしない。
+// 特定できない試合は呼び出し側で元のhistoryをそのまま使うフォールバックに回る)。
+function lookupRizinRecordsMatch(
+  slug: string,
+  opponentName: string,
+  candidates: RizinRecordsBout[] | undefined
+): RizinRecordsBout | undefined {
+  if (!candidates || candidates.length === 0) return undefined;
+  if (candidates.length === 1) return candidates[0];
+  const matches = candidates.filter((b) => {
+    const opponent = b.fighterASlug === slug ? b.fighterBName : b.fighterAName;
+    return opponent === opponentName;
+  });
+  return matches.length === 1 ? matches[0] : undefined;
 }
 
 function formatWeightClass(b: RizinRecordsBout): string | undefined {
@@ -117,7 +149,7 @@ export interface RizinOverrideResult {
 export function applyRizinRecordsToHistory(
   slug: string,
   history: HistoryEntryLike[],
-  index: Map<string, RizinRecordsBout>
+  index: Map<string, RizinRecordsBout[]>
 ): RizinOverrideResult {
   let overriddenCount = 0;
   let excludedCount = 0;
@@ -129,9 +161,9 @@ export function applyRizinRecordsToHistory(
       result.push(h);
       continue;
     }
-    const match = index.get(`${slug}|${h.date}`);
+    const match = lookupRizinRecordsMatch(slug, h.opponent, index.get(`${slug}|${h.date}`));
     if (!match) {
-      result.push(h); // 対応するrizinRecordsが無い試合はフォールバック(元のまま)
+      result.push(h); // 対応するrizinRecordsが無い試合・同日複数試合で一意特定できない試合はフォールバック(元のまま)
       continue;
     }
     if (match.ruleType === "unknown") {

@@ -142,5 +142,77 @@ function historyEntry(overrides: Partial<HistoryEntryLike>): HistoryEntryLike {
   check(res.history[1].weightClass === "71kg契約", "weightClass再構成: namedDivisionが無ければ体重kgから再構成する");
 }
 
+// ── 9. 同一選手が同日に複数試合(同一興行内の準決勝→決勝トーナメント等)は
+//     対戦相手名で一意特定し、それぞれ正しい試合に対応する結果/method/
+//     weightClassだけを上書きする(索引がslug|dateのみだと後勝ちで衝突する
+//     バグの再発防止。パトリッキー・ピットブル RIZIN.20 2019-12-31の実例)。
+{
+  const events: RizinRecordsEvent[] = [
+    {
+      eventName: "RIZIN.20",
+      date: "2019-12-31",
+      sourceUrl: "",
+      fetchedDate: "",
+      parseFailures: 0,
+      bouts: [
+        rizinBout({
+          cardPosition: 2,
+          fighterAName: "パトリッキー",
+          fighterBName: "グスタボ",
+          fighterASlug: "patricky",
+          fighterBSlug: "gustavo",
+          winnerName: "パトリッキー",
+          winnerSlug: "patricky",
+          methodRaw: "1R TKO",
+        }),
+        rizinBout({
+          cardPosition: 10,
+          fighterAName: "パトリッキー",
+          fighterBName: "ムサエフ",
+          fighterASlug: "patricky",
+          fighterBSlug: "musaev",
+          winnerName: "ムサエフ",
+          winnerSlug: "musaev",
+          methodRaw: "3R 判定",
+        }),
+      ],
+    },
+  ];
+  const index = buildRizinRecordsIndex(events);
+  const history = [
+    historyEntry({ date: "2019-12-31", opponent: "ムサエフ", result: "loss", method: "旧データ(決勝)" }),
+    historyEntry({ date: "2019-12-31", opponent: "グスタボ", result: "win", method: "旧データ(準決勝)" }),
+  ];
+  const res = applyRizinRecordsToHistory("patricky", history, index);
+  check(res.overriddenCount === 2, "同日複数試合: 対戦相手名で2件とも一意特定して上書きする");
+  check(res.history[0].opponent === "ムサエフ" && res.history[0].result === "loss", "同日複数試合: 決勝(vsムサエフ)はloss(準決勝の勝ちで上書きされない)");
+  check(res.history[0].method === "3R 判定", "同日複数試合: 決勝のmethodは決勝自身のもの");
+  check(res.history[1].opponent === "グスタボ" && res.history[1].result === "win", "同日複数試合: 準決勝(vsグスタボ)はwinのまま");
+  check(res.history[1].method === "1R TKO", "同日複数試合: 準決勝のmethodは準決勝自身のもの");
+}
+
+// ── 10. 同日複数試合で対戦相手名が一致しない(=一意特定できない)場合は
+//      推測せず元のhistoryのままにする ──────────────────────────────────
+{
+  const events: RizinRecordsEvent[] = [
+    {
+      eventName: "E",
+      date: "2021-01-01",
+      sourceUrl: "",
+      fetchedDate: "",
+      parseFailures: 0,
+      bouts: [
+        rizinBout({ cardPosition: 1, fighterBName: "選手C", fighterBSlug: "c-slug", methodRaw: "1R KO" }),
+        rizinBout({ cardPosition: 2, fighterBName: "選手D", fighterBSlug: "d-slug", methodRaw: "2R KO" }),
+      ],
+    },
+  ];
+  const index = buildRizinRecordsIndex(events);
+  const history = [historyEntry({ date: "2021-01-01", opponent: "名前が一致しない選手", method: "元データ" })];
+  const res = applyRizinRecordsToHistory("a-slug", history, index);
+  check(res.overriddenCount === 0, "同日複数試合・特定不能: 対戦相手名が一致しなければ上書きしない");
+  check(res.history[0].method === "元データ", "同日複数試合・特定不能: 元のhistoryのまま使う(推測補完しない)");
+}
+
 console.log(`\n${passes}件成功 / ${failures}件失敗`);
 if (failures > 0) process.exit(1);
