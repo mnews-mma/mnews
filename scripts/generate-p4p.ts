@@ -232,16 +232,15 @@ function runOnce(): P4PFile {
   // (1) rawRatingを算出できた王者が全員entriesに存在すること(位置は問わない)、
   // (2) 非公開階級混入ゼロ、
   // (3) 各階級のP4P順序が [王者→公開1位→公開2位→…] と完全一致すること
-  //     (最優先ルール「階級内順位は絶対」の機械的強制)、
-  // (4) P4Pが直接対決(H2H)の結果と矛盾しないこと。
+  //     (最優先ルール「階級内順位は絶対」の機械的強制)。
+  // これらはP4Pビルダー自体の実装が壊れていることを示す信号であり、生成を
+  // 止めて人間に知らせる必要があるためFATALのまま維持する。
   const expectedChampionSlugs = championRawRatings.map((c) => c.slug);
   const errors = [
     ...checkP4PAllChampionsPresent(withDeltas, expectedChampionSlugs),
     ...checkP4PPublishedDivisionsOnly(withDeltas),
     // 階級内順位は絶対(pull-up補正が効いていることの最終確認)。
     ...checkP4PDivisionOrderInvariant(withDeltas),
-    // P4Pが直接対決(H2H)の結果と矛盾しないこと。
-    ...checkP4PH2HRespect(withDeltas),
     // RIZIN通算戦績が1件でも解決できていない場合は書き込みを中止する。
     // 階級スコープ済み戦績にフォールバックしたまま公開すると、P4P内で
     // 「RIZIN通算の選手」と「その階級だけの選手」が混在し意味が壊れるため。
@@ -251,6 +250,20 @@ function runOnce(): P4PFile {
     console.error("[FATAL] P4P自己検証失敗:");
     for (const e of errors) console.error(`  ${e}`);
     throw new Error("P4P自己検証失敗");
+  }
+
+  // 2026-08-12変更: P4Pが直接対決(H2H)の結果と矛盾しないかのチェック
+  // (REQUIRED_RANKING_INVARIANTS、手で維持している少数のペアのリスト)は、
+  // 上記のFATAL群から切り離した。このリストは階級順位補正が届かない範囲
+  // (rank gap超過・recency窓外)を機械的に強制する保険であり、実データが
+  // 更新されて逆転が生じるたびに(テミロフ>福田の事例のように)P4P生成
+  // パイプライン全体をFATALで止めてしまうのは脆い。違反の検出・人間への
+  // 通知はcheck-h2h-invariant.ts(CI・読み取り専用)側の責務とし、ここでは
+  // warningとして出力するのみでP4P生成自体は継続する。
+  const h2hWarnings = checkP4PH2HRespect(withDeltas);
+  if (h2hWarnings.length > 0) {
+    console.warn("[WARN] P4PがH2H不変条件(REQUIRED_RANKING_INVARIANTS)と矛盾しています(生成は継続。検出・報告はcheck-h2h-invariant.tsの責務):");
+    for (const w of h2hWarnings) console.warn(`  ${w}`);
   }
 
   if (file.defenseDataIssues.length > 0) {
