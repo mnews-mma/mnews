@@ -106,78 +106,7 @@ export const PANCRASE_SHOOTO_WEIGHT_KG: Record<string, number> = {
 
 export const EVENTS: MEvent[] = [
   {
-    // RIZIN LANDMARK 15(2026-07-18)は開催済み → EVENT_RESULTS(rizin-landmark-15)へ移動。
-    slug: "rizin-54",
-    org: "rizin",
-    status: "upcoming",
-    eventName: "RIZIN.54",
-    date: "2026-08-11",
-    openTime: "12:30",
-    startTime: "14:00",
-    venue: "TOYOTA ARENA TOKYO",
-    broadcast: ["RIZIN LIVE（U-NEXT PPV）", "フジテレビ（地上波・一部試合）"],
-    sourceUrl: "https://jp.rizinff.com/_ct/17846026",
-    // 2026-08-03、榊原CEOが試合順を確定発表。ケイト・ロータス vs NOEL(女子スーパー
-    // アトム級)はケイトの怪我により延期、10月長崎大会(rizin-landmark-16)へスライド。
-    // 2026-08-10、計量で選手2名が体重超過したため榊原CEOが試合順を急遽再変更。
-    // 伊藤vs.ガジャマトフを休憩前の第6試合に、ヘビー級トーナメント2試合を休憩明けの
-    // 第7・8試合に変更(公式X: @nobu_sakakibara)。
-    bouts: [
-      {
-        weightClass: "フェザー級（66.0kg）",
-        fighterA: "クレベル・コイケ",
-        fighterB: "秋元強真",
-      },
-      {
-        weightClass: "バンタム級（61.0kg）",
-        fighterA: "佐藤将光",
-        fighterB: "パッチー・ミックス",
-      },
-      {
-        weightClass: "ヘビー級（120.0kg）",
-        fighterA: "上田幹雄",
-        fighterB: "エドポロキング",
-        note: "RIZIN JAPAN GP 2026 ヘビー級トーナメント",
-      },
-      {
-        weightClass: "ヘビー級（120.0kg）",
-        fighterA: "スダリオ剛",
-        fighterB: "酒井リョウ",
-        note: "RIZIN JAPAN GP 2026 ヘビー級トーナメント",
-      },
-      {
-        weightClass: "フライ級（57.0kg）",
-        fighterA: "伊藤裕樹",
-        fighterB: "アリベク・ガジャマトフ",
-      },
-      {
-        weightClass: "フェザー級（66.0kg）",
-        fighterA: "摩嶋一整",
-        fighterB: "武田光司",
-      },
-      {
-        weightClass: "バンタム級（61.0kg）",
-        fighterA: "後藤丈治",
-        fighterB: "アジズベク・テミロフ",
-      },
-      {
-        weightClass: "フライ級（57.0kg）",
-        fighterA: "平本丈",
-        fighterB: "ジョリー",
-      },
-      {
-        weightClass: "69.0kg契約",
-        fighterA: "直樹",
-        fighterB: "細川一颯",
-      },
-      {
-        weightClass: "フェザー級（66.0kg）",
-        fighterA: "水野新太",
-        fighterB: "リー・カイウェン",
-      },
-    ],
-  },
-  {
+    // RIZIN.54(2026-08-11)は開催済み → EVENT_RESULTS(rizin-54)へ移動。
     slug: "pancrase-365",
     org: "pancrase",
     status: "upcoming",
@@ -271,6 +200,12 @@ export const EVENTS: MEvent[] = [
     venue: "立川ステージガーデン",
     sourceUrl: "https://www.pancrase.co.jp/tour/2026/pancrase366/index.html",
     bouts: [
+      {
+        weightClass: "女子54.0kg契約",
+        fighterA: "杉山しずか",
+        fighterB: "藤野恵実",
+        note: "杉山しずかの現役最後の試合",
+      },
       {
         weightClass: "ストロー級",
         fighterA: "本野美樹",
@@ -426,17 +361,37 @@ export const EVENTS: MEvent[] = [
     // 2026-08-03、榊原CEOがRIZIN.54(rizin-54)からのスライドを発表(ケイトの怪我による延期)。
     bouts: [
       {
+        weightClass: "71.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "堀江圭功",
+        fighterB: "宇佐美正パトリック",
+      },
+      {
+        weightClass: "66.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "ビクター・コレスニック",
+        fighterB: "松嶋こよみ",
+      },
+      {
+        weightClass: "61.0kg契約",
+        rule: "RIZIN MMAルール 5分3R",
+        fighterA: "芦澤竜誠",
+        fighterB: "井上聖矢",
+      },
+      {
         weightClass: "女子スーパーアトム級（49.0kg）",
         fighterA: "ケイト・ロータス",
         fighterB: "NOEL",
+        note: "RIZIN.54からの延期試合",
       },
     ],
   },
   {
+    // 2026-08-11、RIZIN公式Xがナンバーシリーズ #RIZIN55 への大会名称変更を発表(旧名: RIZIN LANDMARK 17 in CHIBA)。
     slug: "rizin-landmark-17",
     org: "rizin",
     status: "upcoming",
-    eventName: "RIZIN LANDMARK 17 in CHIBA",
+    eventName: "RIZIN.55",
     date: "2026-11-08",
     venue: "LaLa arena TOKYO-BAY",
     sourceUrl: "https://jp.rizinff.com/_ct/17852466",
@@ -1110,6 +1065,12 @@ export const GLOBAL_FIGHTER_NAME_SIZE = EVENTS.reduce((min, event) => {
 
 // GLOBAL_FIGHTER_NAME_SIZEの許容下限。これを下回る=どこかの名前が異常に
 // 折り返し不能と判定されている疑い(全カードが巻き添えで小さくなる)。
+// 2026-08-12、rizin-landmark-16の「宇佐美正パトリック」(fighters.tsの正式表記通り、
+// 区切り記号無しの9文字)がこの下限を割り込む事故が発生。原因はfighterNameSize()の
+// バグでも下限設定側の問題でもなく、vsMath.tsのNOWRAP_TOKEN_MAX_LENが大きすぎ
+// (旧値10)、9〜10文字の区切り無しトークンを「分割不能な1行」のまま扱っていた
+// ことだった。NOWRAP_TOKEN_MAX_LENを8に修正済み(vsMath.ts参照)なので下限は
+// 13のまま維持する。
 export const GLOBAL_NAME_SIZE_FLOOR = 13;
 
 // 夢のカード/VSカード(/dream・/vs)公開OGP(1200x630)の選手名フォントサイズを

@@ -177,4 +177,5 @@ export const RIZIN_EVENT_INDEX: RizinEventIndexEntry[] = [
       "チケット」1件のみ正しく除外)、うちOPENING FIGHT第1試合(田中仁 vs. " +
       "健太朗、アマチュアルール)をnonProBoutFilterで除外し15boutで確定。",
   },
+  { eventName: "RIZIN.54", date: "2026-08-11", infoPageId: "17833730", resultsPageId: "17857699" },
 ];
