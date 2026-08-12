@@ -192,12 +192,16 @@ export function pickPostLabel(title: string): string | null {
   return null;
 }
 
+// タイトル先頭の【…】ラベルを除去する（ラベルは別途タグとして表示するため、
+// 本文側に残すと二重表示になる）。
+export function stripLeadingLabel(title: string): string {
+  return title.trim().replace(/^【[^】]*】\s*/, "").trim();
+}
+
 // ニュースタイトルを1文に要約する。固有名詞（選手名・大会名）は残し、
 // 先頭の媒体/大会ラベル【…】と末尾の日付・会場（＝以降）などの冗長部を削る。
 export function summarizeTitle(title: string, maxLen = 55): string {
-  let s = title.trim();
-  // 先頭の【媒体/大会】ラベルを除去（ラベル/ハッシュタグで別途表現するため）
-  s = s.replace(/^【[^】]*】\s*/, "");
+  let s = stripLeadingLabel(title);
   // 末尾の「＝日付・会場」等の付帯情報を除去。
   // 全角＝の後ろに日付(〜月〜日)が続く場合のみ削る（本文中の半角=「A=B」等は残す）。
   s = s.replace(/\s*＝[^＝]*\d+月\d+日.*$/, "");
