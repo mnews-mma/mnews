@@ -31,10 +31,35 @@ export const NOWRAP_TOKEN_MAX_LEN = 8;
 export const CEILING_WEB = 20;
 const NAME_SIZE_MIN = 11;
 
+// NOWRAP_TOKEN_MAX_LENを超える区切り無しトークンを、2分割したときの最大半length
+// が最小になる1点でちょうど2つの単位に割る(nowrap span 2つとして描画される)。
+// 1文字ずつに分解して「文字単位ならどこでも折れる」に任せると、実際のCJK
+// 折り返しは(必ずしもバランスの良い位置ではなく)コンテナ幅一杯まで貪欲に
+// 詰めるため、「宇佐美正パトリ／ック」のような末尾1文字だけが孤立する不自然な
+// 位置で折れる事故になる(2026-08-12発見、9文字トークンの実例)。
+// fighterNameSize()とrenderWrappableName()の両方がこの関数を経由することで、
+// 「折り返し可能な唯一の位置」=「フォントサイズ計算が想定した位置」を厳密に
+// 一致させ、それ以外の位置では折れないようにする。
+export function splitLongToken(token: string): string[] {
+  const chars = [...token];
+  if (chars.length <= NOWRAP_TOKEN_MAX_LEN) return [token];
+  let bestIdx = 1;
+  let bestMax = chars.length - 1;
+  for (let i = 2; i < chars.length; i++) {
+    const max = Math.max(i, chars.length - i);
+    if (max < bestMax) {
+      bestMax = max;
+      bestIdx = i;
+    }
+  }
+  return [chars.slice(0, bestIdx).join(""), chars.slice(bestIdx).join("")];
+}
+
 export function fighterNameSize(name: string): number {
   // 折り返し可能な単位: スペース区切り+「・」の直後(・は前の単位末尾に残す)。
-  // さらに、NOWRAP_TOKEN_MAX_LENを超えるトークンはrenderWrappableNameがnowrap化
-  // しない(=文字単位でどこでも折れる)ため、ここでも1文字ずつの単位に分解する。
+  // さらに、NOWRAP_TOKEN_MAX_LENを超えるトークンはsplitLongToken()でちょうど
+  // 2つの単位に割る(全文字バラバラに分解すると任意の文字間で折れてしまい
+  // 不自然な位置での折り返しを許すことになるため。2026-08-12修正)。
   // これを忘れると「区切りの無い長い名前」を折り返し不能とみなして極端に小さい
   // サイズを返し、全カード共通サイズ(GLOBAL_FIGHTER_NAME_SIZE)まで巻き添えで
   // 引き下げてしまう(2026-07-22の11px事故の真因)。
@@ -42,7 +67,7 @@ export function fighterNameSize(name: string): number {
     .split(/\s+/)
     .filter(Boolean)
     .flatMap((w) => w.split(/(?<=・)/))
-    .flatMap((u) => ([...u].length > NOWRAP_TOKEN_MAX_LEN ? [...u] : [u]));
+    .flatMap((u) => splitLongToken(u));
   const lens = units.map((u) => [...u].length);
   const total = lens.reduce((a, b) => a + b, 0);
   if (total === 0) return CEILING_WEB;
