@@ -182,3 +182,15 @@ GitHub Actions・Vercel Cron以外の外部トリガー(webhook等)は無い。
 - 各指示書の冒頭に `status: active` / `status: superseded` / `status: done` のいずれかを明記する
 - `superseded`(実装済みだが内容が古い) / `done`(役目を終えた) の指示書は**実装の根拠として参照しない**。現行実装の正はコードと本CLAUDE.mdであり、指示書はあくまで作成時点の設計意図の記録
 - 実装が指示書の内容から変わった場合、指示書を都度全面書き換えする必要はない。冒頭にstatusと簡単な補足(何が現行と異なるか)を付ければ足りる
+
+## 動的ルート([param])のISR化教訓(2026-08-12、PR #488)
+
+- `export const revalidate = N` を書くだけでは、`generateStaticParams`を持たない動的segment(`[param]`)ページは**実質force-dynamic相当になる**(毎リクエストSSR、レスポンスヘッダも`Cache-Control: private, no-cache, no-store, max-age=0, must-revalidate`)。`next build`のルート一覧で`ƒ`(Dynamic)と出ていても、`export const dynamic = "force-dynamic"`をgrepしても引っかからないため気づきにくい。
+- ISRとして実際に機能させるには`generateStaticParams()`で最低1件以上のパラメータを返す必要がある(`/fighters/[slug]`・`/results/[slug]`と同じパターン)。未列挙のパラメータは`dynamicParams`の既定値(true)によりオンデマンド生成され、初回はキャッシュMISS、2回目以降は`x-nextjs-cache: HIT`でキャッシュされる。
+- これは2026-08-02(`/fighters`系)・2026-08-07(`/vs`・`/dream`)のFluid Active CPU超過(`scripts/check-route-rendering-mode.ts`のコメント参照)と同型の「無自覚な動的化」の別パターン。既存の同スクリプトはforce-dynamicの明示宣言と`searchParams`参照の2点しか検査しておらず、この「`revalidate`はあるが`generateStaticParams`が無い動的segment」は自動検出できない(ゲートの穴として残っている)。
+- **新規に動的ルート(`src/app/**/[param]/page.tsx`)を作るときの必須チェック**: `export const revalidate`を書いただけで安心せず、`npm run build`相当のビルド後に`next start`で実際に対象パスへcurlし、`x-nextjs-cache: HIT`かつ`Cache-Control`に`s-maxage`が付くことを目視確認する。ISRにするなら`generateStaticParams()`を必ず併設すること(空配列や存在しないIDだけを返すのは不可、実在する代表的な値を最低1件返すこと)。
+
+## 日付ページのOGP調査教訓(2026-08-12、PR #488)
+
+- 「`/?d=YYYY-MM-DD`で日付を変えてもOGP/canonicalがトップページと同一」という報告を受けて配線を追ったところ、この`?d=`は独立した「日付ページ」ではなく、Xの投稿リンク単位OGPキャッシュを日替わりで回避するためだけに`src/lib/xPost.ts`・`src/components/DigestPicker.tsx`が付けていた**未使用のダミークエリ**だった(両ファイルのコード内コメントに「Next側では未使用」と明記済みだったが見落とされていた)。実体は常にトップページで、OGPがトップと同一なのはバグではなく設計通りの挙動だった。
+- 教訓: クエリパラメータ名や既存の文言(「日付ページ」等)から「専用ページが既にある」と決めつけず、まず実際のルーティング(サーバー側で消費されているクエリか、独立ルートか、既存ページにクエリを付けているだけか)をコードから確認してから原因と実装方針を判断すること。原因調査を飛ばして実装に着手すると、存在しないページを直そうとして無駄打ちになる。
