@@ -95,6 +95,13 @@ export const SHARE_UNFURL_BOTS = [
 //   クローラー辞典が一致して報告する実UAは
 //   "Mozilla/5.0 (compatible; BLEXBot/1.0; +http://webmeup.com/crawler/)"だが、
 //   一次情報源での確認はできていない。
+// - DotBot: 【要確認】公式(moz.com、Mozのクローラー)ページへの直接アクセスは
+//   2026-08-12時点で確認できなかった(取得ツールがmoz.comドメインへの
+//   フェッチに失敗)。独立した複数の第三者クローラー辞典
+//   (chrisleverseo.com/user-agents/dotbot/、knownagents.com/agents/dotbot)が
+//   一致して報告する実UAは
+//   "Mozilla/5.0 (compatible; DotBot/1.2; +https://opensiteexplorer.org/dotbot; help@moz.com)"。
+//   トークンは"DotBot"(robots.txt記載例も両ソースで一致)。
 //
 // 【重要・意図的に含めない】PetalBotはこのリストに含めない。ユーザー提示の
 // 候補リストにあったが、調査の結果PetalBotはSEO監査ツールではなく
@@ -109,4 +116,5 @@ export const SEO_AUDIT_BOTS = [
   "DataForSeoBot",
   "serpstatbot",
   "BLEXBot",
+  "DotBot",
 ];
