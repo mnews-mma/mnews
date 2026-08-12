@@ -131,7 +131,10 @@ function parseBoutChunkFormatA(chunk: string, headingText: string): RizinRawBout
   for (const candidate of pCandidates) {
     // font-weight:bold(スペースなし)とfont-weight: bold(スペースあり)の両方を
     // 許容する(RIZIN.10で後者の表記が使われていたためPR #239で特定)。
-    const sm = candidate[1].match(/<span style="font-weight:\s*bold">([\s\S]*?)<\/span>/);
+    // 末尾セミコロン(font-weight:bold;)の有無も両対応する(2026-08-12、RIZIN.54の
+    // 8/10試合がこの表記で、同一ページ内の他2試合(セミコロン無し)だけ既存正規表現に
+    // マッチしパース失敗していたことから特定)。
+    const sm = candidate[1].match(/<span style="font-weight:\s*bold;?">([\s\S]*?)<\/span>/);
     if (!sm) continue;
     const anchorCount = [...sm[1].matchAll(/<a[^>]*>([^<]+)<\/a>/g)].length;
     if (anchorCount === 2) {

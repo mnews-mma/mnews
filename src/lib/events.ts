@@ -1066,10 +1066,12 @@ export const GLOBAL_FIGHTER_NAME_SIZE = EVENTS.reduce((min, event) => {
 // GLOBAL_FIGHTER_NAME_SIZEの許容下限。これを下回る=どこかの名前が異常に
 // 折り返し不能と判定されている疑い(全カードが巻き添えで小さくなる)。
 // 2026-08-12、rizin-landmark-16の「宇佐美正パトリック」(fighters.tsの正式表記通り、
-// 区切り記号無しの9文字)がfighterNameSize()の理論下限(NAME_SIZE_MIN=11px)を
-// 要求すると判明。折り返し判定のバグではなく実在の選手名によるもののため、
-// 13→11(NAME_SIZE_MINと同値=理論上これより下がることはない)に更新した。
-export const GLOBAL_NAME_SIZE_FLOOR = 11;
+// 区切り記号無しの9文字)がこの下限を割り込む事故が発生。原因はfighterNameSize()の
+// バグでも下限設定側の問題でもなく、vsMath.tsのNOWRAP_TOKEN_MAX_LENが大きすぎ
+// (旧値10)、9〜10文字の区切り無しトークンを「分割不能な1行」のまま扱っていた
+// ことだった。NOWRAP_TOKEN_MAX_LENを8に修正済み(vsMath.ts参照)なので下限は
+// 13のまま維持する。
+export const GLOBAL_NAME_SIZE_FLOOR = 13;
 
 // 夢のカード/VSカード(/dream・/vs)公開OGP(1200x630)の選手名フォントサイズを
 // 全カード横断で単一値に統一するための天井(2026-07-20)。GLOBAL_FIGHTER_NAME_SIZE
