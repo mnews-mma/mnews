@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankPositionDeltaBadge, { RankPositionDeltaValue } from "@/components/RankPositionDeltaBadge";
+import { SUPPRESS_RANKING_MOVEMENT } from "@/lib/mnewsRating/rankingMovementGate";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchRankings, fetchP4PRankings, getRankingsUpdatedAt } from "@/lib/mnewsRatingData";
 import { getDivisionRankingView, resolveDivisionRankingView } from "@/lib/mnewsRating/divisionRankingView";
@@ -154,7 +155,7 @@ export default async function RankingsHubPage() {
                     <tr>
                       <th style={{ width: 44 }}>順位</th>
                       <th>選手</th>
-                      <th style={{ width: 60 }}>前回比</th>
+                      {!SUPPRESS_RANKING_MOVEMENT && <th style={{ width: 60 }}>前回比</th>}
                     </tr>
                   </thead>
                   <tbody>
@@ -166,9 +167,11 @@ export default async function RankingsHubPage() {
                             {e.nameJa}
                           </a>
                         </td>
-                        <td>
-                          <RankPositionDeltaBadge delta={e.rankPositionDelta} />
-                        </td>
+                        {!SUPPRESS_RANKING_MOVEMENT && (
+                          <td>
+                            <RankPositionDeltaBadge delta={e.rankPositionDelta} />
+                          </td>
+                        )}
                       </tr>
                     ))}
                   </tbody>
@@ -210,7 +213,7 @@ export default async function RankingsHubPage() {
                         <tr>
                           <th style={{ width: 44 }}>順位</th>
                           <th>選手</th>
-                          <th style={{ width: 60 }}>前回比</th>
+                          {!SUPPRESS_RANKING_MOVEMENT && <th style={{ width: 60 }}>前回比</th>}
                         </tr>
                       </thead>
                       <tbody>
@@ -222,7 +225,7 @@ export default async function RankingsHubPage() {
                                 {view.champion.nameJa}
                               </a>
                             </td>
-                            <td>—</td>
+                            {!SUPPRESS_RANKING_MOVEMENT && <td>—</td>}
                           </tr>
                         )}
                         {view.contenders.map((e) => (
@@ -233,9 +236,11 @@ export default async function RankingsHubPage() {
                                 {e.nameJa}
                               </a>
                             </td>
-                            <td>
-                              <RankPositionDeltaBadge delta={e.rankPositionDelta} />
-                            </td>
+                            {!SUPPRESS_RANKING_MOVEMENT && (
+                              <td>
+                                <RankPositionDeltaBadge delta={e.rankPositionDelta} />
+                              </td>
+                            )}
                           </tr>
                         ))}
                       </tbody>
