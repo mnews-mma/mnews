@@ -422,8 +422,7 @@
         "result": "win",
         "method": "1R 0:09 KO（左フック）",
         "event": "RIZIN.10",
-        "round": "R1",
-        "weightClass": "61kg契約"
+        "round": "R1"
       },
       {
         "date": "2017-12-31",
@@ -779,8 +778,7 @@
         "result": "win",
         "method": "5分3R終了 判定2-1",
         "event": "RIZIN.10",
-        "round": "R3",
-        "weightClass": "58.97kg契約"
+        "round": "R3"
       },
       {
         "date": "2017-12-29",
@@ -4577,8 +4575,7 @@
         "result": "win",
         "method": "5分3R終了 判定2-1",
         "event": "RIZIN.10",
-        "round": "R3",
-        "weightClass": "70.0kg契約"
+        "round": "R3"
       },
       {
         "date": "2017-12-31",
@@ -7772,8 +7769,7 @@
         "result": "loss",
         "method": "1R 1:11 TKO（左ハイキック→パウンド）",
         "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -秋の陣- 【バンタム級トーナメント1回戦】",
-        "round": "R1",
-        "weightClass": "61.0kg契約"
+        "round": "R1"
       },
       {
         "date": "2017-06-09",
@@ -7805,8 +7801,7 @@
         "result": "loss",
         "method": "1R 4:58 三角絞め",
         "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
-        "round": "R1",
-        "weightClass": "66kg契約"
+        "round": "R1"
       }
     ],
     "live": true,
@@ -10284,8 +10279,7 @@
         "result": "loss",
         "method": "1R 4:35 TKO（グラウンドパンチ）",
         "event": "RIZIN LANDMARK 4",
-        "round": "R1",
-        "weightClass": "無差別級"
+        "round": "R1"
       },
       {
         "date": "2022-04-16",
@@ -10293,8 +10287,7 @@
         "result": "loss",
         "method": "2R 3:49 TKO（サッカーボールキック）",
         "event": "RIZIN TRIGGER 3rd",
-        "round": "R2",
-        "weightClass": "無差別級"
+        "round": "R2"
       }
     ],
     "live": true,
@@ -12454,8 +12447,7 @@
         "result": "win",
         "method": "2R 3:00 TKO（グラウンドパンチ）",
         "event": "RIZIN LANDMARK 4",
-        "round": "R2",
-        "weightClass": "61.0kg契約"
+        "round": "R2"
       },
       {
         "date": "2022-09-25",
@@ -17352,8 +17344,7 @@
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -秋の陣-",
-        "round": "R3",
-        "weightClass": "57.0kg契約"
+        "round": "R3"
       }
     ],
     "live": true
@@ -25491,8 +25482,7 @@
         "result": "win",
         "method": "1R 1:09 キムラロック",
         "event": "RIZIN.19",
-        "round": "R1",
-        "weightClass": "無差別級"
+        "round": "R1"
       },
       {
         "date": "2018-07-29",
@@ -25500,8 +25490,7 @@
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN.11",
-        "round": "R3",
-        "weightClass": "無差別級"
+        "round": "R3"
       },
       {
         "date": "2016-12-17",
