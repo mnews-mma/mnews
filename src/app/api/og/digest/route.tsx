@@ -1,15 +1,11 @@
 import { ImageResponse } from "next/og";
 import { NextResponse } from "next/server";
-import { SOURCES } from "@/lib/sources";
-import { buildDigestTopics } from "@/lib/tweetDigest";
 import { fetchArticlesForJstDay } from "@/lib/archiveDayFeed";
-import {
-  OG_COLORS as COLORS,
-  SITE_URL,
-  loadOgFonts,
-  OG_FONT_FAMILIES,
-  stripeTexture,
-} from "@/lib/ogShared";
+import { SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
+
+// ブランドカード(public/og-default.png)と同じ赤。ダイジェストカードは
+// この静的カードの意匠を踏襲する
+const BRAND_RED = "#E8002D";
 
 export const runtime = "edge";
 
@@ -26,7 +22,10 @@ function fallbackRedirect() {
 }
 
 // 朝の「昨日のまとめ」ポスト用カード(1200×675)。
-// 上部帯「DAILY DIGEST | {日付}」+ ニュース見出し最大4件(1件1行・20字要約)。
+// 静的ブランドカード(og-default.png)の意匠に「DAILY DIGEST / 日付 / 件数」
+// だけを足したもの。個別ニュースの見出し・団体タグは載せない(どの記事が
+// 選ばれたかで絵柄が変わらないようにするため)。
+// 下端左はX側がタイトルのオーバーレイを重ねるため、情報を置かない。
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -35,20 +34,6 @@ export async function GET(req: Request) {
 
     const articles = await fetchArticlesForJstDay(dateStr);
     if (articles.length === 0) return fallbackRedirect();
-    // 要約済みトピック(1項目=1トピック・35字以内・低価値除外・同一大会圧縮)。
-    // 5件以上ある日は重要度スコア上位4件のみ
-    const topics = buildDigestTopics(articles, 4);
-    if (topics.length === 0) return fallbackRedirect();
-    // 最長トピックが使用可能幅(約930px)に収まるサイズを計算し、全行同じ
-    // サイズで1件1行を維持する。Noto Sans JPの欧文グリフは半角0.5emより
-    // 広いため0.62em換算で見積もる
-    const estWidth = (s: string) => {
-      let w = 0;
-      for (const ch of s) w += ch.charCodeAt(0) <= 0xff ? 0.62 : 1;
-      return w;
-    };
-    const maxW = Math.max(...topics.map((t) => estWidth(t.text)), 1);
-    const rowSize = Math.min(36, Math.floor(930 / maxW));
 
     const d = new Date(dateStr);
     const dateLabel = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
@@ -62,110 +47,84 @@ export async function GET(req: Request) {
             height: "675px",
             display: "flex",
             flexDirection: "column",
-            backgroundColor: COLORS.sumi,
-            backgroundImage: stripeTexture(),
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: BRAND_RED,
           }}
         >
-          {/* 上部帯 */}
+          {/* DAILY DIGEST | 日付(ブランドカードのタグライン位置) */}
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
               alignItems: "center",
-              backgroundColor: COLORS.washi,
-              padding: "22px 56px",
+              gap: "22px",
+              marginBottom: "34px",
             }}
           >
             <div
               style={{
                 display: "flex",
                 fontFamily: "Bebas Neue",
-                fontSize: "40px",
-                color: COLORS.sumi,
-                letterSpacing: "4px",
+                fontSize: "38px",
+                color: "#FFFFFF",
+                letterSpacing: "8px",
               }}
             >
               DAILY DIGEST
             </div>
+            <div style={{ display: "flex", width: "2px", height: "30px", backgroundColor: "rgba(255,255,255,0.55)" }} />
             <div
               style={{
                 display: "flex",
                 fontFamily: "Bebas Neue",
-                fontSize: "36px",
-                color: COLORS.shu,
-                letterSpacing: "2px",
+                fontSize: "38px",
+                color: "#FFFFFF",
+                letterSpacing: "3px",
               }}
             >
               {dateLabel}
             </div>
           </div>
 
-          {/* 見出しリスト(最大4件) */}
+          {/* ブランドロゴ(og-default.pngと同じ構成) */}
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              flex: 1,
-              justifyContent: "center",
-              gap: "30px",
-              padding: "0 56px",
+              fontFamily: "Noto Sans JP",
+              fontWeight: 900,
+              fontSize: "108px",
+              color: "#FFFFFF",
+              borderBottom: "9px solid #FFFFFF",
+              paddingBottom: "18px",
             }}
           >
-            {topics.map((t, i) => {
-              // 団体タグの配色: 公式団体はブランド色、なければ金
-              const color =
-                t.org !== "other" && SOURCES[t.org]
-                  ? SOURCES[t.org].color
-                  : COLORS.gold;
-              return (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: "18px" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      fontFamily: "Noto Sans JP",
-                      fontWeight: 900,
-                      fontSize: "17px",
-                      color: "#FFFFFF",
-                      backgroundColor: color,
-                      padding: "5px 12px",
-                      minWidth: "110px",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {t.tag || "MMA"}
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      fontFamily: "Noto Sans JP",
-                      fontWeight: 900,
-                      fontSize: `${rowSize}px`,
-                      color: "#FFFFFF",
-                    }}
-                  >
-                    {t.text}
-                  </div>
-                </div>
-              );
-            })}
+            Mニュース
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "Noto Sans JP",
+              fontWeight: 900,
+              fontSize: "42px",
+              color: "#FFFFFF",
+              marginTop: "20px",
+            }}
+          >
+            RIZIN / DEEP / パンクラス / 修斗
           </div>
 
-          {/* フッター */}
+          {/* 件数(どの記事が選ばれたかには依存しない) */}
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              backgroundColor: COLORS.foot,
-              padding: "18px 56px",
+              fontFamily: "Noto Sans JP",
+              fontWeight: 900,
+              fontSize: "32px",
+              color: "rgba(255,255,255,0.92)",
+              marginTop: "44px",
             }}
           >
-            <div style={{ display: "flex", fontFamily: "Noto Sans JP", fontWeight: 900, fontSize: "18px", color: COLORS.ash }}>
-              昨日のMMAニュースまとめ（全{articles.length}件）
-            </div>
-            <div style={{ display: "flex", fontFamily: "Bebas Neue", fontSize: "22px", color: COLORS.ash, letterSpacing: "1px" }}>
-              MNEWS.JP
-            </div>
+            昨日のMMAニュースまとめ（全{articles.length}件）
           </div>
         </div>
       ),
