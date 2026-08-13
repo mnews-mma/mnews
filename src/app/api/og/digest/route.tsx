@@ -7,7 +7,15 @@ import { SITE_URL, loadOgFonts, OG_FONT_FAMILIES } from "@/lib/ogShared";
 // この静的カードの意匠を踏襲する
 const BRAND_RED = "#E8002D";
 
-export const runtime = "edge";
+// 他のOGルートと違いedgeではなくnodejsで動かす。このルートだけが
+// archive.json(30分ごとに更新されるバッチ出力)を読むためで、Edge runtime側の
+// fetch層は`next: { revalidate: 300 }`を指定しても古いコピーが固定されたままに
+// なる実測がある(2026-08-13: 同じ`fetchArticlesForJstDay()`・同じURL・同じ
+// revalidateで、Node/ISRの/archive/[date]が8/12=29件を返す一方、edgeだった
+// このルートは22件=約19時間前のコピーを返し続けた。キャッシュバスターを
+// 付けてx-vercel-cache: MISSにしても変わらなかった)。当日分の記事が
+// 見えずフォールバック307になるため、鮮度が実証されているNode側に寄せる。
+export const runtime = "nodejs";
 
 // fetch(archive.json)失敗・データ不備時のフォールバック。成功時の長期
 // キャッシュと違い、no-storeを明示しないとCDN/Xのクローラーが307自体を
