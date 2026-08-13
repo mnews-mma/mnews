@@ -326,8 +326,25 @@ function applyTransitiveOrder(rankedSlugs: string[], pairs: ResolvedPair[], rank
 // 数学的に両立可能な組み合わせであり、玉突きではない)。
 function applyLocalSwapOrder(startOrder: string[], pairs: ResolvedPair[], rankedSet: Set<string>, maxRankGap?: number): string[] {
   const order = [...startOrder];
-  let remainingPairs = pairs.filter(({ winner, loser }) => rankedSet.has(winner) && rankedSet.has(loser));
   const effectiveMaxGap = maxRankGap ?? Infinity;
+  // 2026-08-13: gapの対象可否(=射程内かどうか)はスワップ前の並び(startOrder)
+  // に対して1回だけ判定し、以後のスワップで再判定しない(処理順依存の解消)。
+  // 旧実装は毎周期"現在の並び"でgapを再計算していたため、無関係などの共通
+  // 選手も持たない別ペアが先に処理されて配列上の位置がずれただけで、本来
+  // 射程内だったペアが「自己抑制」の名目で対象外になってしまうことがあった
+  // (実例: ライト級でholie-yoshinori>patricky-pitbullが先に処理された
+  // だけで、無関係なnozimov-ilkhom>souza-roberto-satoshiのgapが3→4に
+  // 広がり補正されなくなっていた)。「既に矛盾が解消しているか」の判定は
+  // 引き続き現在の並びを見る(他ペアの補正で自然に解消したものは再適用
+  // しない、という既存の挙動は変えない)。
+  const startIndexOf = new Map(startOrder.map((slug, i) => [slug, i]));
+  let remainingPairs = pairs.filter(({ winner, loser }) => {
+    if (!rankedSet.has(winner) || !rankedSet.has(loser)) return false;
+    const winnerIdx = startIndexOf.get(winner)!;
+    const loserIdx = startIndexOf.get(loser)!;
+    if (winnerIdx <= loserIdx) return false; // 元々矛盾していない
+    return winnerIdx - loserIdx <= effectiveMaxGap; // スワップ前のgapで射程内かを判定
+  });
   const MAX_ITERATIONS = remainingPairs.length + 1;
   let iterations = 0;
 
@@ -338,14 +355,12 @@ function applyLocalSwapOrder(startOrder: string[], pairs: ResolvedPair[], ranked
     for (const pair of remainingPairs) {
       const winnerIdx = indexOf.get(pair.winner)!;
       const loserIdx = indexOf.get(pair.loser)!;
-      if (winnerIdx <= loserIdx) continue; // 既に矛盾していない
-      const gap = winnerIdx - loserIdx;
-      if (gap > effectiveMaxGap) continue; // 現時点の順位差が対象範囲外(自己抑制)
+      if (winnerIdx <= loserIdx) continue; // 既に矛盾していない(他ペアの補正で自然解消)
       if (bestPair === null || pair.date > bestPair.date) {
         bestPair = pair;
       }
     }
-    if (bestPair === null) break; // 残りは全て解消済みか対象範囲外
+    if (bestPair === null) break; // 残りは全て解消済み
 
     const { winner, loser } = bestPair;
     const winnerIdx = order.indexOf(winner);

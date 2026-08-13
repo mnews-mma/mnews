@@ -33,6 +33,7 @@ import {
   INITIAL_RATING_BOOST_PARAMS_V6,
   SIGMA_DISCOUNT_COEFFICIENT_V7,
   MONOTONICITY_H2H_RECENCY_MONTHS,
+  MONOTONICITY_MAX_RANK_GAP_V9,
 } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
@@ -146,12 +147,28 @@ function main() {
     const champion = championOverlayFor(division, display);
     const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
     const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs, h2hRecencyCutoff);
-    const result = buildDivisionRankings(division, eligibleEntries, asOf, undefined, champion, "overlay", SIGMA_DISCOUNT_COEFFICIENT_V7, {
-      h2hWins,
-    });
+    let preCorrectionOrder: string[] = [];
+    const result = buildDivisionRankings(
+      division,
+      eligibleEntries,
+      asOf,
+      undefined,
+      champion,
+      "overlay",
+      SIGMA_DISCOUNT_COEFFICIENT_V7,
+      { h2hWins, maxRankGap: MONOTONICITY_MAX_RANK_GAP_V9 },
+      (slugs) => {
+        preCorrectionOrder = slugs;
+      }
+    );
     const finalRankedSlugs = result.entries.map((e) => e.fighterId);
     finalRankedSlugsByDivision.set(division, finalRankedSlugs);
-    const violations = checkH2HInvariant(finalRankedSlugs, h2hWins);
+    // 2026-08-13修正(既存バグ): maxRankGap/preCorrectionOrderを渡していなかった
+    // ため、canonical再計算(checkH2HInvariant内部)が構築時と異なる条件
+    // (gap無制限・構築後の並びを起点)で行われ、実際には正しい結果を偽の違反
+    // として検出していた(18ヶ月recency窓化でgapの大きいペアが増えて表面化)。
+    // 構築時と同じ条件(maxRankGap・preCorrectionOrder)を渡すよう修正。
+    const violations = checkH2HInvariant(finalRankedSlugs, h2hWins, MONOTONICITY_MAX_RANK_GAP_V9, preCorrectionOrder);
 
     console.log(`${division}: H2Hペア${h2hWins.length}件中、違反${violations.length}件(循環除外)`);
     for (const v of violations) {
@@ -162,7 +179,7 @@ function main() {
     // 非対称ガード(2026-07-17・(b)案): 循環内リオーダーは最も古い辺だけを
     // 諦める設計のため、直近半年以内の対戦は循環の有無を問わず違反ゼロで
     // なければならない。
-    const recentViolations = checkRecentH2HInvariant(finalRankedSlugs, h2hWins, asOf);
+    const recentViolations = checkRecentH2HInvariant(finalRankedSlugs, h2hWins, asOf, undefined, MONOTONICITY_MAX_RANK_GAP_V9, preCorrectionOrder);
     console.log(`${division}: 直近半年以内H2H非対称ガード違反${recentViolations.length}件`);
     for (const v of recentViolations) {
       console.log(`  NG(直近半年): ${v.winner}(${v.winnerRank}位) が ${v.loser}(${v.loserRank}位) に直近半年以内の直接対決で勝っているのに下位のまま`);
