@@ -28,4 +28,18 @@
 //
 // 2026-08-13復帰: RIZIN.54(2026-08-11、純粋な結果のみの大会)反映・凍結解除に
 // 合わせてfalseに戻した。出場者スコープのロジック(上記)がそのまま正しい▲▼を出す。
-export const SUPPRESS_RANKING_MOVEMENT = false;
+//
+// 2026-08-13再抑止(今回の更新にかぎり): 比較先(rankings.prev.jsonは
+// 2026-08-10、p4p.jsonの前回比較値は7/25)の時点は、buildRizinRecordsIndexの
+// 索引キー衝突(PR #494で修正)・勝利要件免除(PR #495で撤回)・当時は
+// まだ退役していなかったH2Hエッジ(PR #507のH2Hエッジ退役ルール導入前)が
+// 残っていた状態であり、そこからの差分(▲▼/NEW)は「成績変動」ではなく
+// これらのロジック修正の影響を表示してしまう。今回の更新1回にかぎり
+// 一律「—」に抑止する。
+//
+// 復帰手順: 次回の「純粋な結果のみ」の更新サイクルで、この定数を false に
+// 戻す(algorithm的な変更は不要。この1行を戻すだけで従来どおりの▲▼/NEW/→
+// 表示に復帰する)。算出ロジック(rankPositionDelta.ts・p4pFile.tsの
+// computeP4PRankPositionDeltas)・rankings.json/p4p.jsonのデータには一切
+// 手を加えていない(表示のみのゲート)。
+export const SUPPRESS_RANKING_MOVEMENT = true;
