@@ -24,6 +24,7 @@ import {
   checkH2HInvariant,
   checkRecentH2HInvariant,
   resolvePairDirections,
+  retireStaleH2HEdges,
   H2HWin,
 } from "../src/lib/mnewsRating/monotonicity";
 import { computeExpiredH2HEdges } from "../src/lib/mnewsRating/rankAttribution";
@@ -1929,50 +1930,87 @@ const KNOWN_INTENTIONAL_MISMATCH_SLUGS = new Set(["hagiwara-kyohei"]);
 }
 
 // ── PR-3: computeExpiredH2HEdges(失効H2Hエッジ検出、rankAttribution.ts) ──────
-// 2026-07-20追加: 実データ(篠塚辰樹エッジ)での再現を試みたところ、当該エッジは
-// LM15サイクルの新規失効ではなく既に07-11時点で失効済みだったため実データでは
-// 検証できなかった(アーカイブがLM14サイクル以前まで遡れないため)。実際の失効
-// 遷移(前回は有効・今回は窓外)は今後いつでも実データで再発しうる経路であり、
-// PR-1のsilent no-op・naokiの未テスト経路と同じ理由で、合成データによる恒久
-// レグレッションガードとして残す。
+// 2026-07-20追加、2026-08-13改訂: 失効判定が「月数窓」から「後の勝利」ベースに
+// 変わったため、退役理由も「敗者がその後に勝利した」ケースで再現する。
 {
   const divisionSlugs = new Set(["synth-a", "synth-b", "synth-c"]);
 
   // 前回時点のbouts: A>B(2024-01-01)のみ。前回のlatestBoutDate=2024-01-01。
+  // この時点ではBに後の勝利が無いため、A>Bエッジは有効。
   const prevBouts = [{ aNode: "synth-a", bNode: "synth-b", scoreA: 1, date: "2024-01-01" }];
-  const prevH2hWins = extractH2HWinsForDivision(prevBouts, divisionSlugs, "2023-01-01");
-  const prevResolvedPairs = resolvePairDirections(prevH2hWins);
+  const prevH2hWins = extractH2HWinsForDivision(prevBouts, divisionSlugs);
+  const { surviving: prevSurvivingWins } = retireStaleH2HEdges(prevH2hWins, prevBouts);
+  const prevResolvedPairs = resolvePairDirections(prevSurvivingWins);
   check(
     prevResolvedPairs.length === 1 && prevResolvedPairs[0].winner === "synth-a" && prevResolvedPairs[0].loser === "synth-b",
-    "computeExpiredH2HEdges前提: 前回cutoff内ではA>Bエッジが有効"
+    "computeExpiredH2HEdges前提: 前回時点ではBに後の勝利が無くA>Bエッジが有効"
   );
 
-  // 今回時点のbouts: 上記に加え、C選手が新しい試合をしてlatestBoutDateが進む
-  // (A>Bのペア自体は変わらないが、他の試合でcutoffだけが1年進み窓外になる)。
+  // 今回時点のbouts: 上記に加え、B>C(2025-06-01、Bがその後勝利)が追加された。
+  // これによりA>Bエッジは退役理由の対象になる(Bが後に勝っているため)。
   const currentBouts = [
     { aNode: "synth-a", bNode: "synth-b", scoreA: 1, date: "2024-01-01" },
-    { aNode: "synth-c", bNode: "synth-a", scoreA: 1, date: "2025-06-01" },
+    { aNode: "synth-b", bNode: "synth-c", scoreA: 1, date: "2025-06-01" },
   ];
-  const currentH2hWins = extractH2HWinsForDivision(currentBouts, divisionSlugs, "2024-06-01");
-  const currentResolvedPairs = resolvePairDirections(currentH2hWins);
+  const currentAllWins = extractH2HWinsForDivision(currentBouts, divisionSlugs);
+  const { surviving: currentSurvivingWins } = retireStaleH2HEdges(currentAllWins, currentBouts);
+  const currentResolvedPairs = resolvePairDirections(currentSurvivingWins);
   check(
-    currentResolvedPairs.length === 1 && currentResolvedPairs[0].winner === "synth-c" && currentResolvedPairs[0].loser === "synth-a",
-    "computeExpiredH2HEdges前提: 今回cutoffではA>Bエッジは窓外・C>Aのみ有効"
+    currentResolvedPairs.length === 1 && currentResolvedPairs[0].winner === "synth-b" && currentResolvedPairs[0].loser === "synth-c",
+    "computeExpiredH2HEdges前提: 今回はBの後の勝利によりA>Bが退役・B>Cのみ有効"
   );
 
-  const expired = computeExpiredH2HEdges(currentBouts, divisionSlugs, "2024-01-01", currentResolvedPairs, 12);
+  const expired = computeExpiredH2HEdges(currentBouts, divisionSlugs, "2024-01-01", currentResolvedPairs);
   check(
     expired.length === 1 && expired[0].winner === "synth-a" && expired[0].loser === "synth-b",
-    "computeExpiredH2HEdges: 前回有効・今回窓外になったA>Bエッジを失効として検出する"
+    "computeExpiredH2HEdges: 前回有効・今回はBの後の勝利で退役したA>Bエッジを失効として検出する"
   );
 
   // 回帰確認: 前回データが無い(prevLatestBoutDate=null)場合は失効判定を行わず空配列。
-  const expiredNoPrev = computeExpiredH2HEdges(currentBouts, divisionSlugs, null, currentResolvedPairs, 12);
+  const expiredNoPrev = computeExpiredH2HEdges(currentBouts, divisionSlugs, null, currentResolvedPairs);
   check(expiredNoPrev.length === 0, "computeExpiredH2HEdges: 前回データが無い場合は失効エッジ無し(空配列)");
 
-  // 回帰確認: 前回・今回でcutoffが変わらない(新規試合が無い)場合は失効なし。
-  const expiredNoChange = computeExpiredH2HEdges(prevBouts, divisionSlugs, "2024-01-01", prevResolvedPairs, 12);
-  check(expiredNoChange.length === 0, "computeExpiredH2HEdges: cutoffが変わらなければ失効エッジ無し");
+  // 回帰確認: 前回・今回でboutsに変化が無ければ失効なし。
+  const expiredNoChange = computeExpiredH2HEdges(prevBouts, divisionSlugs, "2024-01-01", prevResolvedPairs);
+  check(expiredNoChange.length === 0, "computeExpiredH2HEdges: boutsに変化が無ければ失効エッジ無し");
+}
+
+// ── 2026-08-13: retireStaleH2HEdges(H2Hエッジ退役、monotonicity.ts) ───────
+{
+  const allBouts = [
+    // A>B(2025-07-27)。Bはこの後に一度も勝っていない → 生存。
+    { aNode: "synth-a", bNode: "synth-b", scoreA: 1, date: "2025-07-27" },
+    // C>D(2025-07-27、同日の別エッジ)。Dはこの後(2026-08-11)に勝っている → 退役。
+    { aNode: "synth-c", bNode: "synth-d", scoreA: 1, date: "2025-07-27" },
+    { aNode: "synth-d", bNode: "synth-e", scoreA: 1, date: "2026-08-11" },
+  ];
+  const wins = [
+    { winnerSlug: "synth-a", loserSlug: "synth-b", date: "2025-07-27" },
+    { winnerSlug: "synth-c", loserSlug: "synth-d", date: "2025-07-27" },
+  ];
+  const { surviving, retired } = retireStaleH2HEdges(wins, allBouts);
+  check(
+    surviving.length === 1 && surviving[0].winnerSlug === "synth-a" && surviving[0].loserSlug === "synth-b",
+    `retireStaleH2HEdges: 敗者に後の勝利が無いエッジ(A>B)は生存する (got ${JSON.stringify(surviving)})`
+  );
+  check(
+    retired.length === 1 && retired[0].winnerSlug === "synth-c" && retired[0].loserSlug === "synth-d",
+    `retireStaleH2HEdges: 敗者がその後に勝っているエッジ(C>D、Dが2026-08-11に勝利)は退役する (got ${JSON.stringify(retired)})`
+  );
+  check(
+    retired.length === 1 && retired[0].retiredReason.includes("synth-d") && retired[0].retiredReason.includes("2026-08-11"),
+    "retireStaleH2HEdges: 退役理由に敗者スラッグと後の勝利日を含む"
+  );
+
+  // 回帰確認: 上限(何年前でも)を設けていないため、極端に古いエッジでも
+  // 敗者に後の勝利が無ければ生存する。
+  const veryOldBouts = [{ aNode: "synth-x", bNode: "synth-y", scoreA: 1, date: "2015-01-01" }];
+  const veryOldWins = [{ winnerSlug: "synth-x", loserSlug: "synth-y", date: "2015-01-01" }];
+  const veryOldResult = retireStaleH2HEdges(veryOldWins, veryOldBouts);
+  check(
+    veryOldResult.surviving.length === 1,
+    "retireStaleH2HEdges: 上限は設けていないため、極端に古いエッジでも敗者に後の勝利が無ければ生存する"
+  );
 }
 
 console.log(`\n${passes}件成功 / ${failures}件失敗`);

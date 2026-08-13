@@ -54,6 +54,54 @@ export function extractH2HWinsForDivision(bouts: BoutLike[], divisionSlugs: Set<
   return wins;
 }
 
+export interface RetiredH2HEdge extends H2HWin {
+  retiredReason: string;
+}
+
+export interface H2HEdgeRetirementResult {
+  surviving: H2HWin[];
+  retired: RetiredH2HEdge[];
+}
+
+// エッジ(勝者→敗者、対戦日D)の退役判定(2026-08-13・月数窓から「後の勝利」
+// ベースへ変更): 敗者がDより後に(相手・階級を問わず)勝利していれば、その
+// エッジは「もう現在の実力を表していない古い実績」として退役させる。
+// 「経過月数」という機械的な基準ではなく、「その後に本人が勝ったという事実」
+// で判定する(実例: 野村駿太>パトリッキー・ピットブル(2025-07-27)は、
+// パトリッキーがそれ以降1勝もしていないため生存。芦田崇宏>直樹
+// (同じく2025-07-27)は、直樹がRIZIN.54(2026-08-11)で勝っているため退役)。
+// 「後の勝利」は階級を問わず全bouts(cross-division)を対象にする(階級を
+// 跨いでいても「その後勝っている」という事実自体が現在の実力を示すため)。
+// 上限(何年前まで有効とするか)は設けない(2026-08-13実データ確認の結果、
+// 極端に古いエッジが生き残るケースは無かった。scripts/update-mnews-rating.ts
+// の実行時ログ・rank-attributionレポート参照)。
+export function retireStaleH2HEdges(wins: H2HWin[], allBouts: BoutLike[]): H2HEdgeRetirementResult {
+  const winDatesByFighter = new Map<string, string[]>();
+  for (const b of allBouts) {
+    if (b.scoreA === 1) {
+      if (!winDatesByFighter.has(b.aNode)) winDatesByFighter.set(b.aNode, []);
+      winDatesByFighter.get(b.aNode)!.push(b.date);
+    } else if (b.scoreA === 0) {
+      if (!winDatesByFighter.has(b.bNode)) winDatesByFighter.set(b.bNode, []);
+      winDatesByFighter.get(b.bNode)!.push(b.date);
+    }
+  }
+  const surviving: H2HWin[] = [];
+  const retired: RetiredH2HEdge[] = [];
+  for (const w of wins) {
+    const laterWins = (winDatesByFighter.get(w.loserSlug) ?? []).filter((d) => d > w.date).sort();
+    if (laterWins.length > 0) {
+      retired.push({
+        ...w,
+        retiredReason: `敗者(${w.loserSlug})が${w.date}より後の${laterWins[0]}に勝利しているため`,
+      });
+    } else {
+      surviving.push(w);
+    }
+  }
+  return { surviving, retired };
+}
+
 export interface ResolvedPair {
   winner: string;
   loser: string;

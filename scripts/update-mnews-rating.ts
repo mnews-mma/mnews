@@ -76,14 +76,15 @@ import {
   INITIAL_RATING_BOOST_PARAMS_V6,
   SIGMA_DISCOUNT_COEFFICIENT_V7,
   MONOTONICITY_MAX_RANK_GAP_V9,
-  MONOTONICITY_H2H_RECENCY_MONTHS,
 } from "../src/lib/mnewsRating/constants";
 import {
   extractH2HWinsForDivision,
   checkH2HInvariant,
   checkRecentH2HInvariant,
   resolvePairDirections,
+  retireStaleH2HEdges,
   ResolvedPair,
+  RetiredH2HEdge,
 } from "../src/lib/mnewsRating/monotonicity";
 import { computeRankPositionDeltas } from "../src/lib/mnewsRating/rankPositionDelta";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
@@ -421,14 +422,10 @@ function main() {
     currentYearPrefix
   );
 
-  // データ駆動アンカー: 最新bout日 - MONOTONICITY_H2H_RECENCY_MONTHS。壁時計非依存で無風日ドリフト防止。
-  const latestBoutDate = bouts.reduce((m, b) => (b.date > m ? b.date : m), "");
-  const h2hRecencyCutoff = (() => {
-    const base = latestBoutDate || asOf.toISOString().slice(0, 10);
-    const d = new Date(base);
-    d.setMonth(d.getMonth() - MONOTONICITY_H2H_RECENCY_MONTHS);
-    return d.toISOString().slice(0, 10);
-  })();
+  // 2026-08-13: H2Hエッジの退役判定は月数窓ではなく「敗者がその後に勝った
+  // かどうか」で行う(retireStaleH2HEdges参照)。退役エッジは全階級分をここに
+  // 集めて実行時ログに出す(運用者向け・データの正当性を目視確認するため)。
+  const allRetiredH2HEdges: Array<{ division: MnewsDivision } & RetiredH2HEdge> = [];
 
   const out: RankingsFile = {};
   for (const division of MNEWS_DIVISIONS) {
@@ -458,7 +455,9 @@ function main() {
     // gap制限の対象外)。H2Hはこのdivisionの資格保有選手同士の決着済み対戦
     // のみ(捏造ゼロ、boutsは既に構築済みのElo計算用の全対戦から抽出)。
     const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
-    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs, h2hRecencyCutoff);
+    const allH2HWinsForDivision = extractH2HWinsForDivision(bouts, divisionSlugs);
+    const { surviving: h2hWins, retired: retiredH2HEdges } = retireStaleH2HEdges(allH2HWinsForDivision, bouts);
+    for (const edge of retiredH2HEdges) allRetiredH2HEdges.push({ division, ...edge });
     const key = divisionRankingsKey(division);
 
     // PR-3: 資格ステータス変化の収集(読み取り専用)。今回・baseline(前回
@@ -491,13 +490,7 @@ function main() {
       const prevLatestBoutDate = prevDivision
         ? prevDivision.entries.reduce((m, e) => (e.lastFight && e.lastFight > m ? e.lastFight : m), "") || null
         : null;
-      const expiredPairs = computeExpiredH2HEdges(
-        bouts,
-        divisionSlugs,
-        prevLatestBoutDate,
-        resolvedPairs,
-        MONOTONICITY_H2H_RECENCY_MONTHS
-      );
+      const expiredPairs = computeExpiredH2HEdges(bouts, divisionSlugs, prevLatestBoutDate, resolvedPairs);
       attribution.recordDivisionH2H(division, resolvedPairs, expiredPairs);
     }
 
@@ -575,14 +568,11 @@ function main() {
   // 全選手nullに抑制する(データ修正由来の見かけ上の順位入れ替わりを、実際の
   // 順位変動として利用者に見せない)。
   if (MODE === "new-results") {
-    // 2026-07-19: 「直近イベントに出場した選手だけ▲▼を出す」。新規掲載選手の挿入
-    // シフト(下位が1つずつ繰り下がる)やH2H閾値/seed等の再較正に伴う順位ずれは
-    // 「成績変動」ではないため、出場していない選手には▲▼/レート差分を出さない
-    // (=「—」)。lastFightが最新イベント日と一致する選手を出場者とみなす。これで
-    // rankingMovementGateの一律抑止(PR #118)を、出場者スコープの恒久ロジックへ置換。
-    const latestEventDate = Object.values(published)
-      .flatMap((d) => d.entries.map((e) => e.lastFight ?? ""))
-      .reduce((m, d) => (d > m ? d : m), "");
+    // 2026-07-19導入・2026-08-13撤去:「直近イベントに出場した選手だけ▲▼を出す」
+    // 出場者スコープ抑制を撤去した。実際の順位・レート差分をそのまま表示する
+    // (計算済みのe.delta・deltas.get(e.fighterId)をそのまま使う。算出ロジック
+    // 自体(rankPositionDelta.tsのcomputeRankPositionDeltas・rankingsFile.tsの
+    // delta算出)には一切手を加えていない、表示直前のnull/0強制だけを外した)。
     interface MovementOverrideEntry {
       badge: "NR";
       expires: string; // YYYY-MM-DD(JST基準)。この日付のtoday(JST)以降は自動失効しスキップする。
@@ -599,19 +589,17 @@ function main() {
       withPositionDeltas[key] = {
         ...div,
         entries: div.entries.map((e) => {
-          const competedInLatestEvent = (e.lastFight ?? "") === latestEventDate && latestEventDate !== "";
-          // 静的NRオーバーレイ: movementOverrides.jsonで指定された選手は、出場者
-          // スコープ判定・エンジンの自動判定に関わらずrankPositionDeltaを"nr"に
-          // 固定する(表示側でゲートより優先してNRを描画する。レート差分は対象外)。
+          // 静的NRオーバーレイ: movementOverrides.jsonで指定された選手は、
+          // エンジンの自動判定に関わらずrankPositionDeltaを"nr"に固定する
+          // (表示側でゲートより優先してNRを描画する。レート差分は対象外)。
           // today(JST) >= expires になった時点で自動失効(スキップ・手動撤去不要)。
           const override = movementOverrides[e.fighterId];
           if (override && override.badge === "NR" && todayJst < override.expires) {
-            return { ...e, rankPositionDelta: { kind: "nr" as const, positions: 0 }, delta: competedInLatestEvent ? e.delta : 0 };
+            return { ...e, rankPositionDelta: { kind: "nr" as const, positions: 0 } };
           }
           return {
             ...e,
-            rankPositionDelta: competedInLatestEvent ? (deltas.get(e.fighterId) ?? null) : null,
-            delta: competedInLatestEvent ? e.delta : 0,
+            rankPositionDelta: deltas.get(e.fighterId) ?? null,
           };
         }),
       };
@@ -664,6 +652,17 @@ function main() {
     console.log(`  ${division}: ${published[key].entries.length}名掲載`);
   }
   console.log(`除外warning: ${warnings.length}件 / アーカイブ保存: ${changed ? "あり(" + asOf.toISOString().slice(0, 10) + ")" : "なし(変動なし)"}`);
+
+  // 2026-08-13: H2Hエッジの退役判定(月数窓 → 「後の勝利」ベース)。
+  // 退役した全エッジを運用者向けに可視化する(データの正当性を目視確認するため)。
+  if (allRetiredH2HEdges.length) {
+    console.log(`[INFO] H2Hエッジ退役(後の勝利あり): ${allRetiredH2HEdges.length}件`);
+    for (const e of allRetiredH2HEdges) {
+      console.log(`  [${e.division}] ${e.winnerSlug} > ${e.loserSlug} (${e.date}) — ${e.retiredReason}`);
+    }
+  } else {
+    console.log(`[INFO] H2Hエッジ退役: 0件`);
+  }
 
   // C-3: algorithmVersionが前回から変わった日は、係数変更による見かけ上の増減を
   // 「実際の順位変動」と誤認させないため全選手のdeltaを一律nullにする(buildDivisionRankings側で
