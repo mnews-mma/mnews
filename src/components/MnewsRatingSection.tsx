@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import RankPositionDeltaBadge, { RankPositionDeltaValue } from "@/components/RankPositionDeltaBadge";
+import { SUPPRESS_RANKING_MOVEMENT } from "@/lib/mnewsRating/rankingMovementGate";
 import { DIVISION_SLUG } from "@/lib/mnewsRating/divisions";
 
 interface RatingRecord {
@@ -107,14 +108,14 @@ export default function MnewsRatingSection({
             <a href={`/fighters/${view.champion.fighterId}`} className="hero-ranking-row">
               <span className="hero-ranking-rank hero-ranking-rank-champion">王者</span>
               <span className="hero-ranking-name">{view.champion.nameJa}</span>
-              <RankPositionDeltaBadge delta={null} />
+              {!SUPPRESS_RANKING_MOVEMENT && <RankPositionDeltaBadge delta={null} />}
             </a>
           )}
           {top3.map((e) => (
             <a key={e.fighterId} href={`/fighters/${e.fighterId}`} className="hero-ranking-row">
               <span className={`hero-ranking-rank ${e.displayRank <= 3 ? "hero-ranking-rank-top" : ""}`}>{e.displayRank}</span>
               <span className="hero-ranking-name">{e.nameJa}</span>
-              <RankPositionDeltaBadge delta={e.rankPositionDelta ?? null} />
+              {!SUPPRESS_RANKING_MOVEMENT && <RankPositionDeltaBadge delta={e.rankPositionDelta ?? null} />}
             </a>
           ))}
         </div>

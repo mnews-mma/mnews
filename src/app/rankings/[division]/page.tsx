@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
 import RankPositionDeltaBadge from "@/components/RankPositionDeltaBadge";
+import { SUPPRESS_RANKING_MOVEMENT } from "@/lib/mnewsRating/rankingMovementGate";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { getDivisionRankingView, resolveDivisionRankingView, RANKING_DISPLAY_CAP } from "@/lib/mnewsRating/divisionRankingView";
@@ -115,7 +116,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                   <tr>
                     <th style={{ width: 44 }}>順位</th>
                     <th>選手</th>
-                    <th style={{ width: 64 }}>前回比</th>
+                    {!SUPPRESS_RANKING_MOVEMENT && <th style={{ width: 64 }}>前回比</th>}
                     <th style={{ width: 96 }}>戦績</th>
                     <th style={{ width: 100 }}>直近試合</th>
                   </tr>
@@ -129,7 +130,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                           {view.champion.nameJa}
                         </a>
                       </td>
-                      <td>—</td>
+                      {!SUPPRESS_RANKING_MOVEMENT && <td>—</td>}
                       <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>
                         {view.champion.record
                           ? `${view.champion.record.wins}-${view.champion.record.losses}${view.champion.record.draws > 0 ? `-${view.champion.record.draws}` : ""}`
@@ -153,9 +154,11 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                           </span>
                         )}
                       </td>
-                      <td>
-                        <RankPositionDeltaBadge delta={e.rankPositionDelta} />
-                      </td>
+                      {!SUPPRESS_RANKING_MOVEMENT && (
+                        <td>
+                          <RankPositionDeltaBadge delta={e.rankPositionDelta} />
+                        </td>
+                      )}
                       <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>
                         {e.record.wins}-{e.record.losses}
                         {e.record.draws > 0 ? `-${e.record.draws}` : ""}
