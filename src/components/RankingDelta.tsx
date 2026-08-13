@@ -38,16 +38,21 @@ export default function RankingDelta({ delta, nr = false }: { delta: number | nu
       </span>
     );
   }
+  // 2026-08-13: 単位「pt」を付与する。この値はレートポイントの差分であり、
+  // 順位番号の移動数(RankPositionDeltaBadge、P4Pページで使用)とは別概念。
+  // 単位なしの数字だけだと、掲載人数が少ない階級(13〜15名)で「▼18」のような
+  // 値が「ありえない順位変動」に見えてしまい、閲覧者に誤読される
+  // (実際は順位ではなくレート点数の変動)。
   if (delta > 0) {
     return (
-      <span style={{ color: "#1a7a3c", fontWeight: 700 }} title={`前回比 +${delta}`}>
-        ▲{delta}
+      <span style={{ color: "#1a7a3c", fontWeight: 700 }} title={`前回比 +${delta}pt`}>
+        ▲{delta}pt
       </span>
     );
   }
   return (
-    <span style={{ color: "#1a5fb4", fontWeight: 700 }} title={`前回比 ${delta}`}>
-      ▼{Math.abs(delta)}
+    <span style={{ color: "#1a5fb4", fontWeight: 700 }} title={`前回比 ${delta}pt`}>
+      ▼{Math.abs(delta)}pt
     </span>
   );
 }
