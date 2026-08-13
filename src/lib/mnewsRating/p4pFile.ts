@@ -64,6 +64,7 @@
 // (P4P専用ロジックはこのファイルとscripts/generate-p4p.tsのみに閉じる)。
 import { MnewsDivision, PUBLISHED_DIVISIONS } from "./divisions";
 import { RankingsFile, RankingEntryRecord, divisionRankingsKey } from "./rankingsFile";
+import { RANKING_DISPLAY_CAP } from "./divisionRankingView";
 import { ChampionDefenseEntry } from "../championDefenses";
 import type { TitleAchievement } from "./titleAchievements";
 
@@ -265,7 +266,10 @@ export function computeP4PRankPositionDeltas(
   const prevRankByFighter = new Map(prev.entries.map((e) => [e.fighterId, e.p4pRank]));
   for (const e of currentEntries) {
     const prevRank = prevRankByFighter.get(e.fighterId);
-    if (prevRank === undefined) {
+    // 2026-08-13追加: 前回時点でRANKING_DISPLAY_CAP(P4P公開順位の上限)より
+    // 下だった場合もNEW扱いにする(rankPositionDelta.tsのcomputeRankPositionDeltas
+    // と同じ理由。読者は前回、非公開の順位番号を見ていないため)。
+    if (prevRank === undefined || prevRank > RANKING_DISPLAY_CAP) {
       out.set(e.fighterId, { kind: "new", positions: 0 });
       continue;
     }
