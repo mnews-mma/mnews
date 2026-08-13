@@ -214,28 +214,20 @@ function runOnce(): P4PFile {
     algorithmVersion,
   });
 
-  // ▲▼semantics(2026-07-22指示書#5 §5、提案ベース・レビュー対象): 既存の
-  // 階級別ランキング(update-mnews-rating.ts)は「出場者スコープ」で▲▼を出す
-  // — その選手自身がlastFight=直近イベント日と一致する場合のみ、というルール
-  // (他選手の挿入シフトや無関係な再較正による見かけの順位変動を「成績変動」と
-  // 誤読させないため)。P4Pは階級横断のため、この考え方をそのまま適用すると
-  // むしろ相性が良い: 2026-07-21試算PR #172のD-1診断で「公開rank不変の階級でも
-  // 他階級の実際の変動につられてP4Pグローバル順位が動くケース」が確認されて
-  // おり(全て他階級の実変動由来=legit、純粋ノイズは0件)、出場者スコープで
-  // 絞ればこの「自分は試合していないのに順位表示だけ動く」ケースを構造的に
-  // 排除できる。よって、この選手自身のlastFightが全エントリ中の最新イベント日
-  // と一致する場合のみ▲▼/NEWを出し、それ以外は「—」に固定する。
-  const latestEventDate = file.entries.reduce((m, e) => (e.lastFight && e.lastFight > m ? e.lastFight : m), "");
+  // ▲▼semantics(2026-07-22指示書#5 §5導入・2026-08-13撤去): 「出場者スコープ」
+  // (その選手自身のlastFightが全エントリ中の最新イベント日と一致する場合のみ
+  // ▲▼/NEWを出し、それ以外は「—」に固定する)ゲートを撤去する。階級別ランキング
+  // (update-mnews-rating.ts)側の同種のゲートはPR #501で既に撤去済みだったが、
+  // このスクリプトには反映されておらず、P4Pページで順位変動が一件も表示され
+  // ない不具合の原因になっていた(全エントリが強制的に"same"になっていた)。
+  // 実際の順位差分をそのまま表示する。
   const deltas = computeP4PRankPositionDeltas(file.entries, prev);
   const withDeltas: P4PFile = {
     ...file,
-    entries: file.entries.map((e) => {
-      const competedInLatestEvent = e.lastFight === latestEventDate && latestEventDate !== "";
-      return {
-        ...e,
-        rankPositionDelta: competedInLatestEvent ? deltas.get(e.fighterId) ?? { kind: "same" as const, positions: 0 } : { kind: "same" as const, positions: 0 },
-      };
-    }),
+    entries: file.entries.map((e) => ({
+      ...e,
+      rankPositionDelta: deltas.get(e.fighterId) ?? { kind: "same" as const, positions: 0 },
+    })),
   };
 
   // 自己検証: 破れたら書き込み自体を止める(既存パイプラインのH2H不変条件
