@@ -21,7 +21,12 @@ import { buildOpponentResolver, buildKnownNamesLookup } from "../src/lib/mnewsRa
 import { MNEWS_DIVISIONS, MnewsDivision, latestRizinDivision } from "../src/lib/mnewsRating/divisions";
 import { findRankerWinExemptions, isStandardEligible, summarizeBoutsForFighter } from "../src/lib/mnewsRating/eligibilityRules";
 import { buildDivisionRankings, ChampionOverlay, FighterMeta } from "../src/lib/mnewsRating/rankingsFile";
-import { extractH2HWinsForDivision, checkH2HInvariant, checkRecentH2HInvariant } from "../src/lib/mnewsRating/monotonicity";
+import {
+  extractH2HWinsForDivision,
+  checkH2HInvariant,
+  checkRecentH2HInvariant,
+  retireStaleH2HEdges,
+} from "../src/lib/mnewsRating/monotonicity";
 import { checkRequiredInvariants } from "../src/lib/rankings/requiredInvariants";
 import { RIZIN_CHAMPIONS } from "../src/lib/champions";
 import { FIGHTERS } from "../src/lib/fighters";
@@ -32,7 +37,6 @@ import {
   DECAY_PARAMS_V6,
   INITIAL_RATING_BOOST_PARAMS_V6,
   SIGMA_DISCOUNT_COEFFICIENT_V7,
-  MONOTONICITY_H2H_RECENCY_MONTHS,
   MONOTONICITY_MAX_RANK_GAP_V9,
 } from "../src/lib/mnewsRating/constants";
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
@@ -115,15 +119,6 @@ function main() {
   const currentYearPrefix = `${asOf.getFullYear()}-`;
   const rankerWinExemptions = findRankerWinExemptions(boutSummariesBySlug, divisionBySlug, baseRankersByDivision, currentYearPrefix);
 
-  // データ駆動アンカー: update-mnews-rating.tsと同じ算出(最新bout日 - MONOTONICITY_H2H_RECENCY_MONTHS)。
-  const latestBoutDate = bouts.reduce((m, b) => (b.date > m ? b.date : m), "");
-  const h2hRecencyCutoff = (() => {
-    const base = latestBoutDate || asOf.toISOString().slice(0, 10);
-    const d = new Date(base);
-    d.setMonth(d.getMonth() - MONOTONICITY_H2H_RECENCY_MONTHS);
-    return d.toISOString().slice(0, 10);
-  })();
-
   let totalViolations = 0;
   console.log("=== H2H不変条件 機械チェック(全階級) ===");
   console.log("読み取り専用・書き込みなし。違反0件であることを確認する。\n");
@@ -146,7 +141,8 @@ function main() {
 
     const champion = championOverlayFor(division, display);
     const divisionSlugs = new Set(eligibleEntries.map((e) => e.meta.slug));
-    const h2hWins = extractH2HWinsForDivision(bouts, divisionSlugs, h2hRecencyCutoff);
+    const allH2HWinsForDivision = extractH2HWinsForDivision(bouts, divisionSlugs);
+    const { surviving: h2hWins } = retireStaleH2HEdges(allH2HWinsForDivision, bouts);
     let preCorrectionOrder: string[] = [];
     const result = buildDivisionRankings(
       division,

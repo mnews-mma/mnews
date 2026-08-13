@@ -19,7 +19,7 @@
 import fs from "fs";
 import path from "path";
 import { Bout, computeSigmaDiscountedRating } from "./engine";
-import { extractH2HWinsForDivision, resolvePairDirections, ResolvedPair } from "./monotonicity";
+import { extractH2HWinsForDivision, resolvePairDirections, retireStaleH2HEdges, ResolvedPair } from "./monotonicity";
 import { RankingsFile, divisionRankingsKey } from "./rankingsFile";
 import { MNEWS_DIVISIONS, MnewsDivision } from "./divisions";
 import { computeRankPositionDeltas, formatRankPositionDelta } from "./rankPositionDelta";
@@ -47,28 +47,28 @@ interface EligibilityRecord {
   explanation: EligibilityExplanation; // 現在の資格判定内訳(explainStandardEligibility)
 }
 
-// PR-3: 失効したH2Hエッジ(前回は有効・今回は窓外)を検出する純関数。
+// PR-3: 失効したH2Hエッジ(前回は有効・今回は退役)を検出する純関数。
 // bouts: 全期間の対戦(Elo計算用、階級横断)。divisionSlugsは今回時点の
 // 資格保有選手集合(前回時点のdivisionSlugsは保存されていないため近似として
 // 流用する。boutsはbuildBoutsが毎回全期間をフル再計算するため大きくは
 // ズレない)。prevLatestBoutDateは前回実行時点の当該階級のlatestBoutDate
 // (近似。rankings.jsonのentries.lastFight最大値から呼び出し側が算出する)。
 // nullなら(前回データなし)失効判定は行わず空配列を返す。
+// 2026-08-13: 失効判定を「月数窓」から、本体と同じretireStaleH2HEdges
+// (敗者がその後に勝ったかどうか)ベースへ変更。「前回時点」を再現するため、
+// prevLatestBoutDateより後のboutsを除いた集合でretireStaleH2HEdgesを実行する
+// (=前回実行時点で見えていたはずの「後の勝利」だけで退役判定する)。
 export function computeExpiredH2HEdges(
   bouts: { aNode: string; bNode: string; scoreA: number; date: string }[],
   divisionSlugs: Set<string>,
   prevLatestBoutDate: string | null,
-  currentResolvedPairs: ResolvedPair[],
-  recencyMonths: number
+  currentResolvedPairs: ResolvedPair[]
 ): ResolvedPair[] {
   if (!prevLatestBoutDate) return [];
-  const prevCutoff = (() => {
-    const d = new Date(prevLatestBoutDate);
-    d.setMonth(d.getMonth() - recencyMonths);
-    return d.toISOString().slice(0, 10);
-  })();
-  const prevH2hWins = extractH2HWinsForDivision(bouts, divisionSlugs, prevCutoff);
-  const prevResolvedPairs = resolvePairDirections(prevH2hWins);
+  const boutsAsOfPrev = bouts.filter((b) => b.date <= prevLatestBoutDate);
+  const prevH2hWins = extractH2HWinsForDivision(boutsAsOfPrev, divisionSlugs);
+  const { surviving: prevSurviving } = retireStaleH2HEdges(prevH2hWins, boutsAsOfPrev);
+  const prevResolvedPairs = resolvePairDirections(prevSurviving);
   const currentKeys = new Set(currentResolvedPairs.map((p) => `${p.winner}|${p.loser}`));
   return prevResolvedPairs.filter((p) => !currentKeys.has(`${p.winner}|${p.loser}`));
 }
