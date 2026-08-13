@@ -25,4 +25,7 @@
 // 一律ゲートを true のまま残して全て「—」で配信する。次の「純粋な結果のみの大会」
 // 反映時に、この定数を false に(または本ファイルごと削除して各コンポーネントの
 // early-returnを撤去)すれば、出場者スコープのロジックがそのまま正しい▲▼を出す。
-export const SUPPRESS_RANKING_MOVEMENT = true;
+//
+// 2026-08-13復帰: RIZIN.54(2026-08-11、純粋な結果のみの大会)反映・凍結解除に
+// 合わせてfalseに戻した。出場者スコープのロジック(上記)がそのまま正しい▲▼を出す。
+export const SUPPRESS_RANKING_MOVEMENT = false;

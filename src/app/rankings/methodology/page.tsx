@@ -59,7 +59,7 @@ export default function MethodologyPage() {
         <ul style={{ color: "var(--muted)", lineHeight: 1.9 }}>
           <li>P4Pでは、王者も番号付きの順位に含めます</li>
           <li>王座戦など、試合の価値を加味します</li>
-          <li>階級を問わないRIZIN通算の戦績をもとにします</li>
+          <li>RIZIN通算の戦績をもとにしつつ、現在の階級での試合数が少ない選手は評価を控えめにします</li>
           <li>直近の実績ほど重く評価します</li>
         </ul>
 

@@ -89,6 +89,7 @@ import { computeRankPositionDeltas } from "../src/lib/mnewsRating/rankPositionDe
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
+import { countDivisionScopedFights } from "../src/lib/mnewsRating/sigmaDivisionScope";
 
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
 const RIZIN_RECORDS_PATH = path.join(process.cwd(), "data", "rizinRecords.json");
@@ -440,10 +441,17 @@ function main() {
           !isExcludedByFact(slug, division) &&
           (rankers.has(slug) || rankerWinExemptions.has(slug))
       )
-      .map(([slug, e]) => ({
-        meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
-        display: applyEligibilityScopeToRecord(slug, e, bouts),
-      }));
+      .map(([slug, e]) => {
+        const scoped = applyEligibilityScopeToRecord(slug, e, bouts);
+        // 2026-08-13: σディスカウントの戦数入力だけを現在の掲載階級のbout数に
+        // 絞り込む(sigmaDivisionScope.ts)。rawRating/displayRatingは無変更。
+        const scopeBouts = (boutSummariesBySlug.get(slug) ?? []).map((s) => ({ date: s.date, weightClass: s.weightClass }));
+        const divisionScopedFights = countDivisionScopedFights(slug, scopeBouts, division);
+        return {
+          meta: { slug, division, weighInMiss: lastRizinMmaWeighInMiss(records, slug) },
+          display: { ...scoped, fights: divisionScopedFights },
+        };
+      });
     // v9(recency撤回・H2H限定復活): σディスカウント(V7=70、維持)+
     // H2H単調性オーバーレイを弱い整合(MONOTONICITY_MAX_RANK_GAP_V9)で復活。
     // 循環は引き続き直近優先で解決((b)ロジック、monotonicity.ts参照・
