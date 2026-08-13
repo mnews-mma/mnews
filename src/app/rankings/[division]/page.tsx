@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
-import RankingDelta from "@/components/RankingDelta";
+import RankPositionDeltaBadge from "@/components/RankPositionDeltaBadge";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchDivisionRankings } from "@/lib/mnewsRatingData";
 import { getDivisionRankingView, resolveDivisionRankingView, RANKING_DISPLAY_CAP } from "@/lib/mnewsRating/divisionRankingView";
@@ -154,7 +154,7 @@ export default async function DivisionRankingPage({ params }: { params: Promise<
                         )}
                       </td>
                       <td>
-                        <RankingDelta delta={e.delta} nr={e.rankPositionDelta?.kind === "nr"} />
+                        <RankPositionDeltaBadge delta={e.rankPositionDelta} />
                       </td>
                       <td style={{ fontFamily: "var(--mono)", fontSize: 12, whiteSpace: "nowrap" }}>
                         {e.record.wins}-{e.record.losses}

@@ -1,7 +1,6 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Breadcrumb, { breadcrumbJsonLd } from "@/components/Breadcrumb";
-import RankingDelta from "@/components/RankingDelta";
 import RankPositionDeltaBadge, { RankPositionDeltaValue } from "@/components/RankPositionDeltaBadge";
 import { FIGHTERS } from "@/lib/fighters";
 import { fetchRankings, fetchP4PRankings, getRankingsUpdatedAt } from "@/lib/mnewsRatingData";
@@ -235,7 +234,7 @@ export default async function RankingsHubPage() {
                               </a>
                             </td>
                             <td>
-                              <RankingDelta delta={e.delta} nr={e.rankPositionDelta?.kind === "nr"} />
+                              <RankPositionDeltaBadge delta={e.rankPositionDelta} />
                             </td>
                           </tr>
                         ))}
