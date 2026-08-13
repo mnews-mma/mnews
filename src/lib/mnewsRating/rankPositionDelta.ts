@@ -8,6 +8,7 @@
 // から、buildDivisionRankings呼び出し・全自己検証(H2H不変条件等)が完了した後の
 // 最終段階でのみ呼び出す(スコア確定前には一切介入しない)。
 import type { DivisionRankings } from "./rankingsFile";
+import { RANKING_DISPLAY_CAP } from "./divisionRankingView";
 
 export type RankPositionDeltaKind = "up" | "down" | "same" | "new" | "nr";
 
@@ -28,8 +29,14 @@ const NEW: RankPositionDelta = { kind: "new", positions: 0 };
 //   "NEW"は「前回の掲載リストに実在しなかった」ことを示す表示のため、
 //   比較対象となる前回リストが無い初回とは意味が異なる)。
 // - prevは存在するが、そのfighterIdがprev.entriesに無い場合は "new"(NEW表示)。
-// - 両方に存在する場合はrankの差(前回rank - 今回rank)で up/down/same を判定する
-//   (rank番号が小さいほど上位のため、前回より小さくなった=上昇)。
+// - prevには存在するが、前回時点でRANKING_DISPLAY_CAP(公開順位の上限)より
+//   下だった場合も"new"扱いにする(2026-08-13追加)。読者は前回、非公開の
+//   順位番号を見ていないため、「▲12」のような差分を出しても比較対象が
+//   存在しない。「公開範囲の外から入ってきた」という点では、prev.entriesに
+//   全く存在しない場合と実質的に同じ状況のため、同じNEW表示に揃える。
+// - 両方に存在し、かつ前回も公開範囲内だった場合はrankの差(前回rank - 今回rank)
+//   で up/down/same を判定する(rank番号が小さいほど上位のため、前回より
+//   小さくなった=上昇)。
 export function computeRankPositionDeltas(
   current: DivisionRankings,
   prev: DivisionRankings | undefined
@@ -42,7 +49,7 @@ export function computeRankPositionDeltas(
   const prevRankByFighter = new Map(prev.entries.map((e) => [e.fighterId, e.rank]));
   for (const e of current.entries) {
     const prevRank = prevRankByFighter.get(e.fighterId);
-    if (prevRank === undefined) {
+    if (prevRank === undefined || prevRank > RANKING_DISPLAY_CAP) {
       out.set(e.fighterId, NEW);
       continue;
     }
