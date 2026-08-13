@@ -29,6 +29,7 @@ import {
   computePreDebutRecords,
   computeInitialRatingOverrides,
   filterPublishableStates,
+  Bout,
   DisplayEntry,
   FighterRecordsInput,
 } from "../src/lib/mnewsRating/engine";
@@ -59,6 +60,7 @@ import {
 import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRating/recordOverrides";
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
+import { countDivisionScopedFights } from "../src/lib/mnewsRating/sigmaDivisionScope";
 
 const RANKINGS_PATH = path.join(process.cwd(), "data", "rankings.json");
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
@@ -100,6 +102,7 @@ function recomputeDisplayMap(): {
   displayMap: Map<string, DisplayEntry>;
   records: FighterRecordsInput;
   latestBoutDate: string;
+  bouts: Bout[];
 } {
   if (!fs.existsSync(RECORDS_PATH)) {
     throw new Error(`[FATAL] data/fighterRecords.json が存在しません: ${RECORDS_PATH}`);
@@ -137,17 +140,21 @@ function recomputeDisplayMap(): {
   // rizinRecordsOverride適用後の同じrecordsを使い、エンジンが見ている戦績と
   // 食い違わないようにする。基準日に実行時の壁時計ではなくデータ内の最新試合日を
   // 使うことで、同じコミットなら常に同じ出力になる(決定性)。
-  return { displayMap: buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6), records, latestBoutDate };
+  return { displayMap: buildDisplayEntries(publishable, asOf, DECAY_PARAMS_V6), records, latestBoutDate, bouts };
 }
 
-function effectiveRatingOf(display: DisplayEntry): number {
-  return computeSigmaDiscountedRating(display.displayRating, display.fights, SIGMA_DISCOUNT_COEFFICIENT_V7);
+function effectiveRatingOf(display: DisplayEntry, divisionScopedFights: number): number {
+  return computeSigmaDiscountedRating(display.displayRating, divisionScopedFights, SIGMA_DISCOUNT_COEFFICIENT_V7);
 }
 
 // 公開4階級の現王者(champions.ts)について、エンジン再計算からσディスカウント
 // 後rawRatingを取得する。取得できなかった王者(display未算出等)は王者ティア
 // から除外し、理由をコンソールに警告として残す(捏造禁止・生成は継続する)。
-function resolveChampionRawRatings(displayMap: Map<string, DisplayEntry>): ChampionRawRatingInput[] {
+// 2026-08-13: σディスカウントの戦数入力はupdate-mnews-rating.tsと同じく
+// 現在の掲載階級のbout数に絞り込む(sigmaDivisionScope.ts)。王者だけ
+// 通算(階級横断)の戦数を使うと、複数階級にまたがる王者(例: shinryu-makoto)
+// についてチャレンジャー側と評価基準が食い違うため。
+function resolveChampionRawRatings(displayMap: Map<string, DisplayEntry>, bouts: Bout[]): ChampionRawRatingInput[] {
   const out: ChampionRawRatingInput[] = [];
   for (const division of PUBLISHED_DIVISIONS) {
     const champ = RIZIN_CHAMPIONS.find((c) => c.org === "rizin" && c.weightClass === division);
@@ -160,7 +167,11 @@ function resolveChampionRawRatings(displayMap: Map<string, DisplayEntry>): Champ
       console.warn(`[WARN] ${division}: 王者「${champ.name}」(${champ.slug})のdisplay entryがエンジン再計算で見つからず。P4P王者ティアから除外`);
       continue;
     }
-    out.push({ slug: champ.slug, division, rawRating: effectiveRatingOf(display) });
+    const scopeBouts = bouts
+      .filter((b) => b.aNode === champ.slug || b.bNode === champ.slug)
+      .map((b) => ({ date: b.date, weightClass: b.weightClass }));
+    const divisionScopedFights = countDivisionScopedFights(champ.slug, scopeBouts, division);
+    out.push({ slug: champ.slug, division, rawRating: effectiveRatingOf(display, divisionScopedFights) });
   }
   return out;
 }
@@ -168,8 +179,8 @@ function resolveChampionRawRatings(displayMap: Map<string, DisplayEntry>): Champ
 function runOnce(): P4PFile {
   const rankings = loadRankings();
   const prev = loadP4PFile();
-  const { displayMap, records, latestBoutDate } = recomputeDisplayMap();
-  const championRawRatings = resolveChampionRawRatings(displayMap);
+  const { displayMap, records, latestBoutDate, bouts } = recomputeDisplayMap();
+  const championRawRatings = resolveChampionRawRatings(displayMap, bouts);
   // 王座実績(戴冠+防衛): 手書きの元王者リストではなく戦績データから機械的に導出し、
   // データ内最新試合日を基準に鮮度減衰(半減期2年)をかける。
   if (!latestBoutDate) {

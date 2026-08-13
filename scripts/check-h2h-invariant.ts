@@ -38,6 +38,7 @@ import { lookupWeighInMiss, isOpeningFightOverride } from "../src/lib/mnewsRatin
 import { buildRizinRecordsIndex, applyRizinRecordsToHistory } from "../src/lib/mnewsRating/rizinRecordsOverride";
 import { RizinRecordsEvent } from "../src/lib/mnewsRating/rizinScraper";
 import { DisplayEntry } from "../src/lib/mnewsRating/engine";
+import { countDivisionScopedFights } from "../src/lib/mnewsRating/sigmaDivisionScope";
 
 const RECORDS_PATH = path.join(process.cwd(), "data", "fighterRecords.json");
 const RIZIN_RECORDS_PATH = path.join(process.cwd(), "data", "rizinRecords.json");
@@ -135,7 +136,11 @@ function main() {
         ([slug]) =>
           divisionBySlug.get(slug) === division && !isExcludedByFact(slug) && (rankers.has(slug) || rankerWinExemptions.has(slug))
       )
-      .map(([slug, e]) => ({ meta: { slug, division, weighInMiss: false } as FighterMeta, display: e }));
+      .map(([slug, e]) => {
+        const scopeBouts = (boutSummariesBySlug.get(slug) ?? []).map((s) => ({ date: s.date, weightClass: s.weightClass }));
+        const divisionScopedFights = countDivisionScopedFights(slug, scopeBouts, division);
+        return { meta: { slug, division, weighInMiss: false } as FighterMeta, display: { ...e, fights: divisionScopedFights } };
+      });
     if (eligibleEntries.length === 0) continue;
 
     const champion = championOverlayFor(division, display);
