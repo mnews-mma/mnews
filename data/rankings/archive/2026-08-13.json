@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-08-13T04:11:07.972Z",
+    "updatedAt": "2026-08-13T05:05:06.733Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -34,7 +34,7 @@
         "rank": 2,
         "rating": 1550,
         "rawRating": 1554.322613176651,
-        "delta": 39,
+        "delta": 0,
         "record": {
           "wins": 11,
           "losses": 3,
@@ -43,8 +43,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "up",
-          "positions": 3
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -82,7 +82,7 @@
         "rank": 5,
         "rating": 1500,
         "rawRating": 1496.2111331168505,
-        "delta": -16,
+        "delta": 0,
         "record": {
           "wins": 2,
           "losses": 2,
@@ -91,8 +91,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "up",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -130,7 +130,7 @@
         "rank": 8,
         "rating": 1480,
         "rawRating": 1482.9064789263552,
-        "delta": 19,
+        "delta": 0,
         "record": {
           "wins": 4,
           "losses": 1,
@@ -139,8 +139,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "up",
-          "positions": 6
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -204,8 +204,23 @@
         "rankPositionDelta": null
       },
       {
-        "fighterId": "shinotsuka-tatsuki",
+        "fighterId": "hiroya",
         "rank": 13,
+        "rating": 1440,
+        "rawRating": 1435.5206126893383,
+        "delta": 0,
+        "record": {
+          "wins": 3,
+          "losses": 6,
+          "draws": 0
+        },
+        "lastFight": "2026-07-18",
+        "weighInMiss": false,
+        "rankPositionDelta": null
+      },
+      {
+        "fighterId": "shinotsuka-tatsuki",
+        "rank": 14,
         "rating": 1470,
         "rawRating": 1465.0637919342641,
         "delta": 0,
@@ -220,7 +235,7 @@
       },
       {
         "fighterId": "tomizawa-daichi",
-        "rank": 14,
+        "rank": 15,
         "rating": 1460,
         "rawRating": 1457.687410472155,
         "delta": 0,
@@ -235,7 +250,7 @@
       },
       {
         "fighterId": "lee-junghyun",
-        "rank": 15,
+        "rank": 16,
         "rating": 1450,
         "rawRating": 1447.3352554896167,
         "delta": 0,
@@ -247,27 +262,12 @@
         "lastFight": "2026-03-07",
         "weighInMiss": false,
         "rankPositionDelta": null
-      },
-      {
-        "fighterId": "hiroya",
-        "rank": 16,
-        "rating": 1440,
-        "rawRating": 1435.5206126893383,
-        "delta": 0,
-        "record": {
-          "wins": 3,
-          "losses": 6,
-          "draws": 0
-        },
-        "lastFight": "2026-07-18",
-        "weighInMiss": false,
-        "rankPositionDelta": null
       }
     ]
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-08-13T04:11:07.972Z",
+    "updatedAt": "2026-08-13T05:05:06.733Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -300,7 +300,7 @@
         "rank": 2,
         "rating": 1560,
         "rawRating": 1560.9987854419874,
-        "delta": 10,
+        "delta": 0,
         "record": {
           "wins": 5,
           "losses": 2,
@@ -318,7 +318,7 @@
         "rank": 3,
         "rating": 1540,
         "rawRating": 1543.1284374978804,
-        "delta": 11,
+        "delta": 0,
         "record": {
           "wins": 6,
           "losses": 1,
@@ -426,7 +426,7 @@
         "rank": 10,
         "rating": 1480,
         "rawRating": 1483.2736703260093,
-        "delta": -14,
+        "delta": 0,
         "record": {
           "wins": 1,
           "losses": 1,
@@ -435,8 +435,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 6
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -474,7 +474,7 @@
         "rank": 13,
         "rating": 1450,
         "rawRating": 1447.1470737997645,
-        "delta": -23,
+        "delta": 0,
         "record": {
           "wins": 2,
           "losses": 1,
@@ -483,8 +483,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -566,7 +566,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-08-13T04:11:07.972Z",
+    "updatedAt": "2026-08-13T05:05:06.733Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -599,7 +599,7 @@
         "rank": 2,
         "rating": 1590,
         "rawRating": 1590.1768417897397,
-        "delta": 30,
+        "delta": 0,
         "record": {
           "wins": 7,
           "losses": 0,
@@ -608,8 +608,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "up",
-          "positions": 2
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -617,7 +617,7 @@
         "rank": 3,
         "rating": 1570,
         "rawRating": 1574.8638387978262,
-        "delta": -18,
+        "delta": 0,
         "record": {
           "wins": 10,
           "losses": 5,
@@ -626,8 +626,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -665,7 +665,7 @@
         "rank": 6,
         "rating": 1540,
         "rawRating": 1540.5667251717093,
-        "delta": 25,
+        "delta": 0,
         "record": {
           "wins": 4,
           "losses": 2,
@@ -674,8 +674,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "up",
-          "positions": 4
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -728,7 +728,7 @@
         "rank": 10,
         "rating": 1510,
         "rawRating": 1506.6890501047303,
-        "delta": -21,
+        "delta": 0,
         "record": {
           "wins": 5,
           "losses": 6,
@@ -737,8 +737,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 3
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -787,44 +787,8 @@
         "rankPositionDelta": null
       },
       {
-        "fighterId": "naoki",
-        "rank": 14,
-        "rating": 1480,
-        "rawRating": 1477.551050022996,
-        "delta": 27,
-        "record": {
-          "wins": 2,
-          "losses": 1,
-          "draws": 0
-        },
-        "lastFight": "2026-08-11",
-        "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "up",
-          "positions": 1
-        }
-      },
-      {
-        "fighterId": "lee-kaiwen",
-        "rank": 15,
-        "rating": 1470,
-        "rawRating": 1474.5600815220992,
-        "delta": null,
-        "record": {
-          "wins": 1,
-          "losses": 1,
-          "draws": 0
-        },
-        "lastFight": "2026-08-11",
-        "weighInMiss": false,
-        "rankPositionDelta": {
-          "kind": "new",
-          "positions": 0
-        }
-      },
-      {
         "fighterId": "ashida-takahiro",
-        "rank": 16,
+        "rank": 14,
         "rating": 1460,
         "rawRating": 1460.9970322183708,
         "delta": 0,
@@ -836,6 +800,42 @@
         "lastFight": "2025-07-27",
         "weighInMiss": false,
         "rankPositionDelta": null
+      },
+      {
+        "fighterId": "naoki",
+        "rank": 15,
+        "rating": 1480,
+        "rawRating": 1477.551050022996,
+        "delta": 0,
+        "record": {
+          "wins": 2,
+          "losses": 1,
+          "draws": 0
+        },
+        "lastFight": "2026-08-11",
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "down",
+          "positions": 1
+        }
+      },
+      {
+        "fighterId": "lee-kaiwen",
+        "rank": 16,
+        "rating": 1470,
+        "rawRating": 1474.5600815220992,
+        "delta": 0,
+        "record": {
+          "wins": 1,
+          "losses": 1,
+          "draws": 0
+        },
+        "lastFight": "2026-08-11",
+        "weighInMiss": false,
+        "rankPositionDelta": {
+          "kind": "down",
+          "positions": 1
+        }
       },
       {
         "fighterId": "nii-suguru",
@@ -886,7 +886,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-08-13T04:11:07.972Z",
+    "updatedAt": "2026-08-13T05:05:06.733Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -900,8 +900,23 @@
     },
     "entries": [
       {
-        "fighterId": "souza-roberto-satoshi",
+        "fighterId": "nozimov-ilkhom",
         "rank": 1,
+        "rating": 1530,
+        "rawRating": 1530.6824216925888,
+        "delta": 0,
+        "record": {
+          "wins": 1,
+          "losses": 1,
+          "draws": 0
+        },
+        "lastFight": "2026-05-10",
+        "weighInMiss": false,
+        "rankPositionDelta": null
+      },
+      {
+        "fighterId": "souza-roberto-satoshi",
+        "rank": 2,
         "rating": 1600,
         "rawRating": 1596.1091935339928,
         "delta": 0,
@@ -916,28 +931,13 @@
       },
       {
         "fighterId": "horie-yoshinori",
-        "rank": 2,
+        "rank": 3,
         "rating": 1530,
         "rawRating": 1526.4555407818639,
         "delta": 0,
         "record": {
           "wins": 3,
           "losses": 2,
-          "draws": 0
-        },
-        "lastFight": "2026-04-12",
-        "weighInMiss": false,
-        "rankPositionDelta": null
-      },
-      {
-        "fighterId": "patricky-pitbull",
-        "rank": 3,
-        "rating": 1540,
-        "rawRating": 1537.4319354819816,
-        "delta": 0,
-        "record": {
-          "wins": 3,
-          "losses": 3,
           "draws": 0
         },
         "lastFight": "2026-04-12",
@@ -960,17 +960,17 @@
         "rankPositionDelta": null
       },
       {
-        "fighterId": "nozimov-ilkhom",
+        "fighterId": "patricky-pitbull",
         "rank": 5,
-        "rating": 1530,
-        "rawRating": 1530.6824216925888,
+        "rating": 1540,
+        "rawRating": 1537.4319354819816,
         "delta": 0,
         "record": {
-          "wins": 1,
-          "losses": 1,
+          "wins": 3,
+          "losses": 3,
           "draws": 0
         },
-        "lastFight": "2026-05-10",
+        "lastFight": "2026-04-12",
         "weighInMiss": false,
         "rankPositionDelta": null
       },
@@ -1098,7 +1098,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-08-13T04:11:07.972Z",
+    "updatedAt": "2026-08-13T05:05:06.733Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [
@@ -1122,7 +1122,7 @@
         "rank": 2,
         "rating": 1520,
         "rawRating": 1518.2705769710642,
-        "delta": null,
+        "delta": 0,
         "record": {
           "wins": 3,
           "losses": 0,
@@ -1131,7 +1131,7 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "new",
+          "kind": "same",
           "positions": 0
         }
       },
@@ -1140,7 +1140,7 @@
         "rank": 3,
         "rating": 1500,
         "rawRating": 1500.7549394427476,
-        "delta": -22,
+        "delta": 0,
         "record": {
           "wins": 4,
           "losses": 4,
@@ -1149,8 +1149,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -1173,7 +1173,7 @@
         "rank": 5,
         "rating": 1480,
         "rawRating": 1483.261079248293,
-        "delta": 7,
+        "delta": 0,
         "record": {
           "wins": 10,
           "losses": 4,
@@ -1182,8 +1182,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {

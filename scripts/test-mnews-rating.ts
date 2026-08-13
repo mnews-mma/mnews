@@ -1813,6 +1813,57 @@ function makeResolver(map: Record<string, string>) {
   );
 }
 
+// 2026-08-13のテスト: applyLocalSwapOrderの処理順依存(自己抑制)を解消。
+// 実データ再現: ライト級でholie-yoshinori>patricky-pitbull(新しい対戦)が
+// 先に処理されただけで、無関係な(共通選手を持たない)nozimov-ilkhom>
+// souza-roberto-satoshiの補正前gapが3(射程内)だったにもかかわらず、
+// horieの挿入で配列上の位置がずれてgapが4まで広がり、旧実装では「自己抑制」
+// として補正が適用されなくなっていた。
+{
+  const startOrder = ["souza", "patricky", "nomura", "nozimov", "horie"];
+  const wins: H2HWin[] = [
+    { winnerSlug: "horie", loserSlug: "patricky", date: "2026-04-12" }, // より新しい・無関係な別ペア
+    { winnerSlug: "nozimov", loserSlug: "souza", date: "2025-12-31" }, // より古い・共通選手を持たない独立ペア
+  ];
+  const result = applyHeadToHeadMonotonicity(startOrder, wins, 3);
+  check(
+    result.indexOf("horie") < result.indexOf("patricky"),
+    `処理順非依存化: horie>patricky(新しい方)は補正される (got ${JSON.stringify(result)})`
+  );
+  check(
+    result.indexOf("nozimov") < result.indexOf("souza"),
+    `処理順非依存化: 無関係なnozimov>souza(補正前gap=3で射程内)が、horieの挿入で配列上の位置が` +
+      `ずれても自己抑制されず正しく補正される(実データ再現、修正前は失敗していた) (got ${JSON.stringify(result)})`
+  );
+}
+
+// 2026-08-13のテスト(回帰確認): 共通選手を介して繋がる連鎖(伊藤裕樹>ラミー>
+// 元谷のパターンと同型)は、gap制約を入れても矛盾なく両立すること(処理順
+// 非依存化によって新たに壊れていないことの確認)。
+{
+  const startOrder = ["shinryu", "ito", "laramie", "motoya"];
+  const wins: H2HWin[] = [
+    { winnerSlug: "laramie", loserSlug: "motoya", date: "2026-06-06" }, // 新しい
+    { winnerSlug: "ito", loserSlug: "laramie", date: "2025-03-30" }, // 古い・laramieを共通選手として連鎖
+  ];
+  const result = applyHeadToHeadMonotonicity(startOrder, wins, 3);
+  check(
+    result.indexOf("laramie") < result.indexOf("motoya"),
+    `連鎖の回帰確認: laramie>motoya(直接対決)が満たされる (got ${JSON.stringify(result)})`
+  );
+  check(
+    result.indexOf("ito") < result.indexOf("laramie"),
+    `連鎖の回帰確認: ito>laramie(直接対決)も満たされる (got ${JSON.stringify(result)})`
+  );
+  // itoとmotoyaは直接対戦していないが、2つの正当な直接対決の連鎖として
+  // ito>laramie>motoyaという順序になること自体は矛盾ではない(既存コメント
+  // 「数学的に両立可能」を踏襲)。
+  check(
+    result.indexOf("ito") < result.indexOf("motoya"),
+    `連鎖の回帰確認: 2つの直接対決の連鎖の結果としてito>motoyaの順序になる(非対戦だが矛盾ではない) (got ${JSON.stringify(result)})`
+  );
+}
+
 // P1(2026-07-17)のテスト: n=1へのディスカウント上限(σ(n)=C/√max(n,2))。
 {
   const coefficient = 70;
