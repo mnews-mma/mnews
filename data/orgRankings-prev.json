@@ -3,8 +3,8 @@
     "org": "pancrase",
     "source": "パンクラス公式ランキング",
     "sourceUrl": "https://www.pancrase.co.jp/rls/ranking.html",
-    "fetchedDate": "2026-08-13",
-    "rankingLabel": "7月30日発表",
+    "fetchedDate": "2026-08-14",
+    "rankingLabel": "8月13日発表",
     "classes": [
       {
         "weightClass": "ミドル級",
@@ -31,13 +31,13 @@
           },
           {
             "rank": "4",
-            "officialName": "佐藤龍汰朗",
-            "slug": "sato-ryutaro"
+            "officialName": "岡村寿紀",
+            "slug": "okamura-toshiki"
           },
           {
             "rank": "5",
-            "officialName": "岡村寿紀",
-            "slug": "okamura-toshiki"
+            "officialName": "佐藤龍汰朗",
+            "slug": "sato-ryutaro"
           }
         ]
       },
@@ -118,11 +118,6 @@
             "rank": "7",
             "officialName": "張豊",
             "slug": "zhangyuta"
-          },
-          {
-            "rank": "8",
-            "officialName": "鈴木悠斗",
-            "slug": "suzukiyuto"
           }
         ]
       },
@@ -191,23 +186,18 @@
           },
           {
             "rank": "11",
-            "officialName": "Ryo",
-            "slug": "ryoa"
+            "officialName": "名田英平",
+            "slug": "nada"
           },
           {
             "rank": "12",
-            "officialName": "名田英平",
-            "slug": "nada"
+            "officialName": "Ryo",
+            "slug": "ryoa"
           },
           {
             "rank": "13",
             "officialName": "糸川義人",
             "slug": "itokawayoshito"
-          },
-          {
-            "rank": "14",
-            "officialName": "石田陸也",
-            "slug": "ishidarikuya"
           }
         ]
       },
@@ -236,28 +226,28 @@
           },
           {
             "rank": "3",
-            "officialName": "松井 涼",
-            "slug": "matsui-ryo"
-          },
-          {
-            "rank": "4",
             "officialName": "荒田大輝",
             "slug": "aratadaiki"
           },
           {
+            "rank": "4",
+            "officialName": "松井 涼",
+            "slug": "matsui-ryo"
+          },
+          {
             "rank": "5",
+            "officialName": "佐藤ゆうじ",
+            "slug": "satoyujibonsai"
+          },
+          {
+            "rank": "6",
             "officialName": "井村塁",
             "slug": "imura-rui"
           },
           {
-            "rank": "6",
+            "rank": "7",
             "officialName": "神部篤坊",
             "slug": "kanbe-atsubo"
-          },
-          {
-            "rank": "7",
-            "officialName": "佐藤ゆうじ",
-            "slug": "satoyujibonsai"
           },
           {
             "rank": "8",
@@ -276,13 +266,13 @@
           },
           {
             "rank": "11",
-            "officialName": "合島大樹",
-            "slug": "gojima-daiki"
+            "officialName": "白井誠司",
+            "slug": "shiraijoji"
           },
           {
             "rank": "12",
-            "officialName": "白井誠司",
-            "slug": "shiraijoji"
+            "officialName": "合島大樹",
+            "slug": "gojima-daiki"
           }
         ]
       },
@@ -331,13 +321,13 @@
           },
           {
             "rank": "8",
-            "officialName": "ラファエル・リベイロ",
-            "slug": "rafaelribeiro"
+            "officialName": "濱田 巧",
+            "slug": "hamada-takumi"
           },
           {
             "rank": "9",
-            "officialName": "浜本キャット雄大",
-            "slug": "hamamoto"
+            "officialName": "小林了平",
+            "slug": "kobayashiryohei"
           },
           {
             "rank": "10",
@@ -346,13 +336,13 @@
           },
           {
             "rank": "11",
-            "officialName": "濱田 巧",
-            "slug": "hamada-takumi"
+            "officialName": "ラファエル・リベイロ",
+            "slug": "rafaelribeiro"
           },
           {
             "rank": "12",
-            "officialName": "小林了平",
-            "slug": "kobayashiryohei"
+            "officialName": "浜本キャット雄大",
+            "slug": "hamamoto"
           },
           {
             "rank": "13",
@@ -447,7 +437,7 @@
     "org": "shooto",
     "source": "修斗公式ランキング",
     "sourceUrl": "https://www.shooto-mma.com/ranking/",
-    "fetchedDate": "2026-08-13",
+    "fetchedDate": "2026-08-14",
     "rankingLabel": "8月1日付け",
     "classes": [
       {
