@@ -1,5 +1,32 @@
 [
   {
+    "id": "gonkaku-1",
+    "source": "other",
+    "title": "【RIZIN】ギャラガーと対戦予定だった武田光司が摩嶋一整に一本勝ち「フェザー級にアジャストできてきた」×摩嶋「腕がパンパンで凌げなかった」",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24584",
+    "publishedAt": "2026-08-14T04:22:48.000Z",
+    "firstSeenAt": "2026-08-14T05:36:45.533Z"
+  },
+  {
+    "id": "gonkaku-2",
+    "source": "other",
+    "title": "【PFL】スーパーレック、秋元皓貴に勝利した元ONEキックボクシング世界王者イリアス・エナッシがMMAに転向、PFLと契約",
+    "origin": "ゴング格闘技",
+    "url": "https://gonkaku.jp/articles/24583",
+    "publishedAt": "2026-08-14T04:17:19.000Z",
+    "firstSeenAt": "2026-08-14T05:36:45.533Z"
+  },
+  {
+    "id": "oricon-0",
+    "source": "other",
+    "title": "【RIZIN】大会まで残り4週間『超RIZIN.5』チケット完売席種が続出 平日開催も“連続完売”なるか",
+    "origin": "ORICON",
+    "url": "https://www.oricon.co.jp/news/2473894/",
+    "publishedAt": "2026-08-14T04:09:00.000Z",
+    "firstSeenAt": "2026-08-14T05:36:45.533Z"
+  },
+  {
     "id": "rizin-0",
     "source": "rizin",
     "title": "【クレベル・コイケ／秋元強真】RIZIN.54 試合後インタビューVol4",
