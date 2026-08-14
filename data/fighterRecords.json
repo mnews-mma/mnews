@@ -10654,7 +10654,7 @@
         "date": "2026-08-11",
         "opponent": "リー・カイウェン",
         "result": "loss",
-        "method": "1R 4:27 TKO（左フック→パウンド）",
+        "method": "1R 4:27 KO（左フック→パウンド）",
         "event": "RIZIN.54",
         "round": "R1",
         "weightClass": "フェザー級（66.0kg）"
@@ -25289,7 +25289,7 @@
         "date": "2025-05-04",
         "opponent": "萩原京平",
         "result": "loss",
-        "method": "1R KO（右ストレート）",
+        "method": "1R 3:36 KO（左フック）",
         "event": "RIZIN男祭り",
         "round": "R1",
         "weightClass": "66.0kg契約"
@@ -28413,7 +28413,7 @@
         "date": "2025-03-30",
         "opponent": "横山武司",
         "result": "win",
-        "method": "1R 0:54 TKO（右フック→パウンド）",
+        "method": "1R 0:55 TKO（右フック→パウンド）",
         "event": "RIZIN.50",
         "round": "R1",
         "weightClass": "66.0kg契約"
@@ -28457,10 +28457,10 @@
     "age": 26
   },
   "lee-kaiwen": {
-    "wins": 16,
+    "wins": 17,
     "losses": 8,
     "draws": 0,
-    "ko": 9,
+    "ko": 10,
     "sub": 1,
     "decision": 6,
     "history": [
@@ -28468,7 +28468,7 @@
         "date": "2026-08-11",
         "opponent": "水野新太",
         "result": "win",
-        "method": "1R 4:27 TKO（左フック→パウンド）",
+        "method": "1R 4:27 KO（左フック→パウンド）",
         "event": "RIZIN.54",
         "round": "R1",
         "weightClass": "フェザー級（66.0kg）"
@@ -28481,6 +28481,14 @@
         "event": "RIZIN.53",
         "round": "R1",
         "weightClass": "66.0kg契約"
+      },
+      {
+        "date": "2025-12-21",
+        "opponent": "友實たつや",
+        "result": "win",
+        "method": "1R 3:47 TKO（パンチとエルボー）",
+        "event": "KM龍三格闘MMA World Championship",
+        "round": "R1"
       },
       {
         "date": "2025-08-22",
@@ -28604,7 +28612,7 @@
       },
       {
         "date": "2016-01-23",
-        "opponent": "セン・ヤン",
+        "opponent": "楊森",
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "ONE Championship 37: Dynasty of Champions 5",
@@ -28620,7 +28628,7 @@
       },
       {
         "date": "2014-12-19",
-        "opponent": "ヤウェイ・ワン",
+        "opponent": "王亞威",
         "result": "win",
         "method": "5分2R終了 判定3-0",
         "event": "One FC 24",
@@ -28628,7 +28636,7 @@
       },
       {
         "date": "2014-12-19",
-        "opponent": "ナンナン・ヘ",
+        "opponent": "賀楠楠",
         "result": "win",
         "method": "1R 2:19 TKO（パンチ）",
         "event": "One FC 24",
@@ -28636,7 +28644,7 @@
       },
       {
         "date": "2014-10-21",
-        "opponent": "ルチャオ・サン",
+        "opponent": "孫若超",
         "result": "loss",
         "method": "1R 3:00 TKO（ギブアップ）",
         "event": "CKFC",
