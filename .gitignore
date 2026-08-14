@@ -33,3 +33,6 @@ next-env.d.ts
 # git管理する(閾値・選手名等の内部数値は書かず、再現手順のみを書くこと)。
 /docs/*
 !/docs/instructions/
+
+# /kick のビルド生成物(scripts/build-kick-data.tsが data/kick/*.json から毎ビルド再生成する)
+data/kick/generated/
