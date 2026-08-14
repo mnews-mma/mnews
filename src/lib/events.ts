@@ -288,10 +288,14 @@ export const EVENTS: MEvent[] = [
     startTime: "17:00",
     scheduleNote: "開場・開演時間は予定です（変更の可能性あり）",
     venue: "京セラドーム大阪",
-    broadcast: ["未定（決定次第更新）"],
+    broadcast: ["ABEMA PPV（全試合生中継）"],
     sourceUrl: "https://jp.rizinff.com/_ct/17853585",
     // 2026-07-20 会見でカード決定(出典: RIZIN公式X @rizin_PR 投稿7本)。
     // 2026-07-21 公式サイト(https://jp.rizinff.com/_ct/17853585)でFIGHT ORDER(試合順)確定を確認、並びを反映。
+    // 2026-08-12 ABEMAがRIZIN公式メディアパートナーに決定し、本大会からPPVをABEMAへ一本化(出典:
+    // https://www.cyberagent.co.jp/news/detail/id=33710 、
+    // https://prtimes.jp/main/html/rd/p/000003771.000064643.html 。
+    // 視聴チケットは2026-08-17 販売開始)。地上波放送は現時点で未発表のため記載しない。
     // 鈴木千裕は欠場(左脇腹肋軟骨骨折)。
     bouts: [
       {
