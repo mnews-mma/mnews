@@ -24,6 +24,7 @@
   "ruleset": null,
   "note": null,
   "is_debut": false,
+  "title_type": null,
   "pair_key": null,
   "source_url": "https://www.onefc.com/athletes/akito-nakashima/"
  },
@@ -52,6 +53,7 @@
   "ruleset": null,
   "note": null,
   "is_debut": false,
+  "title_type": null,
   "pair_key": null,
   "source_url": "https://www.onefc.com/athletes/fuga-tokoro/"
  }
