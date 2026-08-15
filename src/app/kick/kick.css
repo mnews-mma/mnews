@@ -387,6 +387,12 @@
 .kick-meta dd {
   overflow-wrap: anywhere;
 }
+.kick-src-note {
+  display: block;
+  font-size: 10.5px;
+  color: var(--kick-muted);
+  margin-top: 2px;
+}
 .kick-tag {
   display: inline-block;
   background: var(--kick-accent-soft);

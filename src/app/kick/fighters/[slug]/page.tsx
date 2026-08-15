@@ -11,6 +11,7 @@ import {
   TITLE_TYPE_LABEL,
 } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
+import { formatDateJa, toJstDateStr } from "@/lib/eventCountdown";
 
 /** 名簿全員分をビルド時に静的生成する(リクエスト時の処理をゼロにする)。 */
 export function generateStaticParams() {
@@ -65,6 +66,8 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
   if (!f) notFound();
 
   const converted = f.kanaSource?.type === "from_romaji";
+  const { sourceUpdatedAt } = getKickIndex();
+  const updatedAtJa = formatDateJa(toJstDateStr(Date.parse(sourceUpdatedAt)));
 
   return (
     <>
@@ -99,7 +102,12 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
             </>
           )}
           <dt>所属</dt>
-          <dd>{f.gym ?? <span className="kick-empty">—</span>}</dd>
+          <dd>
+            {f.gym ?? <span className="kick-empty">—</span>}
+            {f.gym && (
+              <span className="kick-src-note">(データ取得時点：{updatedAtJa}。移籍等で現在と異なる場合があります)</span>
+            )}
+          </dd>
           <dt>掲載団体</dt>
           <dd>
             {f.orgs.length ? (

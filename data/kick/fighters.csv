@@ -620,7 +620,7 @@ KING剛,キング タケシ,KING Takeshi,published_kana,ROYAL KINGS,Krush|Krush-
 クラマック・チャンラッチ,クラマック・チャンラッチ,,published_kana,カンボジア,KNOCK OUT,https://knockoutkb.com/fighters/koramak_chanrach_624
 倉持 厳,クラモチ,Kuramochi,published_kana,,K-1,https://www.k-1.co.jp/fighter/555
 倉持 心一夢,クラモチ シマ,Kuramochi Shima,published_kana,,K-1,https://www.k-1.co.jp/fighter/409
-栗秋 祥梧,クリアキ ショウゴ,Kuriaki Shogo,published_kana,クロスポイント吉祥寺,K-1,https://www.k-1.co.jp/fighter/937
+栗秋 祥梧,クリアキ ショウゴ,Kuriaki Shogo,published_kana,クロスポイント吉祥寺,K-1,https://www.k-1.co.jp/fighter/937|https://knockoutkb.com/fighters/kuriaki_shogo
 クリスチャン・スペトゥク,クリスチャン・スペトゥク,,published_kana,,K-1,https://www.k-1.co.jp/fighter/739
 クリスティーナ・モラレス,クリスティーナ・モラレス,,published_kana,Team Jesus Cabello,K-1,https://www.k-1.co.jp/fighter/1023
 クリストス・ミハルツォス,クリストス・ミハルツォス,,published_kana,BULLS FIGHT ACADEMY,K-1 WORLD GP,https://www.k-1.co.jp/fighter/1742
@@ -1617,7 +1617,7 @@ HAYATO,ハヤト,,published_kana,CRAZY WOLF,Krush|Krush-EX|RISE,https://www.k-1.
 秀亮,ヒデアキ,Hideaki,published_kana,Martial Arts Fighter team侍,K-1,https://www.k-1.co.jp/fighter/801
 秀樹,ヒデキ,Hideki,converted,新宿レフティージム,RISE,https://rise-rc.com/fighter/hideki/
 秀虎,ヒデトラ,Hidetora,published_kana,,K-1,https://www.k-1.co.jp/fighter/470
-日菜太,ヒナタ,,published_kana,,,https://ja.wikipedia.org/wiki/日菜太|https://www.k-1.co.jp/fighter/740
+日菜太,ヒナタ,,published_kana,,,https://ja.wikipedia.org/wiki/日菜太|https://www.k-1.co.jp/fighter/740|https://knockoutkb.com/fighters/hinata_222
 日畑 達也,ヒバタ タツヤ,Hibata Tatsuya,published_kana,,K-1,https://www.k-1.co.jp/fighter/148
 飛馬拳二,ヒマ ケンジ,,published_kana,,,https://ja.wikipedia.org/wiki/飛馬拳二
 平尾 大智,ヒラオ,Hirao,published_kana,,K-1,https://www.k-1.co.jp/fighter/577
@@ -2325,8 +2325,7 @@ REONA,レオナ,,published_kana,RIOT GYM,K-1,https://www.k-1.co.jp/fighter/1134
 渡辺健司,ワタナベ ケンジ,,published_kana,,,https://ja.wikipedia.org/wiki/渡辺健司
 渡部 瞬弥,ワタナベ シュンヤ,Watanabe Shunya,published_kana,エスジム,K-1,https://www.k-1.co.jp/fighter/914
 渡邉卓也,ワタナベ タクヤ,,published_kana,,,https://ja.wikipedia.org/wiki/渡邉卓也_(シュートボクサー)
-渡辺 武,ワタナベ タケシ,Watanabe Takeshi,published_kana,,K-1,https://www.k-1.co.jp/fighter/263
-渡邉武,ワタナベ タケシ,,published_kana,,,https://ja.wikipedia.org/wiki/渡邉武
+渡辺 武,ワタナベ タケシ,Watanabe Takeshi,published_kana,,K-1,https://www.k-1.co.jp/fighter/263|https://ja.wikipedia.org/wiki/渡邉武
 渡邊 俊樹,ワタナベ トシキ,Watanabe Toshiki,published_kana,優弥道場,K-1,https://www.k-1.co.jp/fighter/796
 渡辺久江,ワタナベ ヒサエ,,published_kana,,,https://ja.wikipedia.org/wiki/渡辺久江
 渡辺 雅和,ワタナベ マサカズ,Watanabe Masakazu,published_kana,,K-1,https://www.k-1.co.jp/fighter/384
@@ -2525,7 +2524,7 @@ YU斗,,Yuto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/yu
 ロッキー藤丸,,,none,,,https://ja.wikipedia.org/wiki/ロッキー藤丸
 ロムイーサン・TIGER REON,,,none,REON Fighting Sports Gym,KNOCK OUT,https://knockoutkb.com/fighters/lom_ieesan_tiger_reon_303
 一仁,,Kazuhito,romaji_only,真樹ジムAICHI,RISE,https://rise-rc.com/fighter/kazuhito/|https://www.k-1.co.jp/fighter/120
-一輝,,KAZUKI,romaji_only,MtF MUGEN GYM,RISE,https://rise-rc.com/fighter/kazuki/
+一輝,,KAZUKI,romaji_only,MtF MUGEN GYM,RISE,https://rise-rc.com/fighter/kazuki/|https://knockoutkb.com/fighters/kazuki_398
 一輝,,KAZUKI,romaji_only,若獅子会館,KNOCK OUT,https://knockoutkb.com/fighters/kazuki_594
 丈太,,JOTA,romaji_only,KNOCK OUT クロスポイント吉祥寺,KNOCK OUT,https://knockoutkb.com/fighters/jota_588
 三上ヘンリー大智,,MIKAMI HENRY Daichi,romaji_only,格闘ドリーマーズ,KNOCK OUT,https://knockoutkb.com/fighters/mikami_henry_daichi_112
@@ -2540,7 +2539,7 @@ YU斗,,Yuto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/yu
 上野 仁弘,,UENO Masahiro,romaji_only,KNOCK OUT クロスポイント渋谷,KNOCK OUT,https://knockoutkb.com/fighters/ueno_masahiro_248
 下地 奏人,,SHIMOJI Kanato,romaji_only,フリー,KNOCK OUT,https://knockoutkb.com/fighters/shimoji_kanato
 下田 蓮,,SHIMODA Ren,romaji_only,Battle-Box,KNOCK OUT,https://knockoutkb.com/fighters/shimoda_ren_605
-与座優貴,,Yuki Yoza,romaji_only,K-1 GYM SAGAMI-ONO KREST,RISE,https://rise-rc.com/fighter/yoza_yuki/
+与座優貴,,Yuki Yoza,romaji_only,K-1 GYM SAGAMI-ONO KREST,RISE,https://rise-rc.com/fighter/yoza_yuki/|https://www.k-1.co.jp/fighter/1202
 世莉JSK,,Seri JSK,romaji_only,治政館,RISE,https://rise-rc.com/fighter/seri_jsk/
 中元優成,,Yusei Nakamoto,romaji_only,team Bonds,RISE,https://rise-rc.com/fighter/nakamoto_yusei/
 中原裕貴,,Yuki Nakahara,romaji_only,UPLIFT,RISE,https://rise-rc.com/fighter/nakahara_yuki/
@@ -2792,7 +2791,7 @@ YU斗,,Yuto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/yu
 山口侑馬,,Yuma Yamaguchi,romaji_only,道化俱楽部,RISE,https://rise-rc.com/fighter/yamaguchi_yuma/
 山口 恵,,Megumi Yamaguchi,romaji_only,RICHキックボクシングジム,RISE,https://rise-rc.com/fighter/yamaguchi-megumi/
 山口 悠真,,YAMAGUCHI Yuma,romaji_only,ジムファイターズ,KNOCK OUT,https://knockoutkb.com/fighters/yamaguchi_yuma
-山口裕人,,Hiroto Yamaguchi,romaji_only,道化俱楽部,RISE,https://rise-rc.com/fighter/yamaguchi_hiroto/
+山口裕人,,Hiroto Yamaguchi,romaji_only,道化俱楽部,RISE,https://rise-rc.com/fighter/yamaguchi_hiroto/|https://www.k-1.co.jp/fighter/321
 山岡 由忠,,YAMAOKA Yoshitada,romaji_only,KNOCK OUT クロスポイント大泉,KNOCK OUT,https://knockoutkb.com/fighters/yamaoka_yoshitada_226
 山崎 尚英,,Shoei Yamazaki,romaji_only,スタートゲートジム,KNOCK OUT,https://knockoutkb.com/fighters/shoei_yamazaki_214
 山崎 滉太,,YAMAZAKI Kota,romaji_only,誠真会館所沢道場,KNOCK OUT,https://knockoutkb.com/fighters/yamazaki_kota
@@ -2936,7 +2935,7 @@ YU斗,,Yuto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/yu
 松下竜之助,,Ryunosuke Matsushita,romaji_only,Team +1,RISE,https://rise-rc.com/fighter/matsushita_ryunosuke/
 松下隆義,,,none,,,https://ja.wikipedia.org/wiki/松下隆義
 松井大樹,,Taiki Matsui,romaji_only,MEIBUKAI,RISE,https://rise-rc.com/fighter/matsui_taiki/
-松倉 信太郎,,MATSUKURA Shintaro,romaji_only,TRY HARD GYM,KNOCK OUT,https://knockoutkb.com/fighters/matsukura_shintaro_242
+松倉 信太郎,,MATSUKURA Shintaro,romaji_only,TRY HARD GYM,KNOCK OUT,https://knockoutkb.com/fighters/matsukura_shintaro_242|https://www.k-1.co.jp/fighter/21
 松尾康弘,,Yasuhiro Matsuo,romaji_only,達磨ジム,RISE,https://rise-rc.com/fighter/matsuo_yasuhiro/
 松山和弘,,Kazuhiro Matsuyama,romaji_only,ReBORN経堂,RISE,https://rise-rc.com/fighter/matsuyama_kazuhiro/
 松山 瞬,,Shun Matsuyama,romaji_only,TEAM TEPPEN,RISE,https://rise-rc.com/fighter/matsuyama_shun/
@@ -3070,7 +3069,7 @@ YU斗,,Yuto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/yu
 狂狼,,Kyowlow,romaji_only,TKBA/TMMA,RISE,https://rise-rc.com/fighter/kyowlow/
 狂猫Yokko,,Crazycat yokko,romaji_only,BRING IT ONパラエストラAKK,RISE,https://rise-rc.com/fighter/crazycat_yokko/
 王希,,Oki,romaji_only,EX ARES,RISE,https://rise-rc.com/fighter/oki/
-玖村将史,,Masashi Kumura,romaji_only,999,RISE,https://rise-rc.com/fighter/kumura-masashi/
+玖村将史,,Masashi Kumura,romaji_only,999,RISE,https://rise-rc.com/fighter/kumura-masashi/|https://www.k-1.co.jp/fighter/843
 玲翔,,Ryoto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/ryoto/
 珅太郎,,Shintaro,romaji_only,KRAZY BEE,RISE,https://rise-rc.com/fighter/shintaro/
 珠璃,,SHURI,romaji_only,闘神塾,KNOCK OUT,https://knockoutkb.com/fighters/shuri_448
@@ -3156,6 +3155,7 @@ YU斗,,Yuto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/yu
 美斬帝,,Mikity,romaji_only,テツジム,RISE,https://rise-rc.com/fighter/mikity/
 義斗,,YOSHITO,romaji_only,fplus team quest,KNOCK OUT,https://knockoutkb.com/fighters/yoshito_490
 羽村 りょうたろう,,HAMURA Ryotaro,romaji_only,CANDY GYM,KNOCK OUT,https://knockoutkb.com/fighters/hamura_ryotaro_404
+羽黒 慈夢,,HAGURO Jimu,romaji_only,KNOCK OUT クロスポイント大泉,KNOCK OUT,https://knockoutkb.com/fighters/haguro_jimu
 翔,,Kakeru,romaji_only,REVOLT,RISE,https://rise-rc.com/fighter/kakeru/
 翔真,,Shoma,romaji_only,SEED GYM,RISE,https://rise-rc.com/fighter/shoma-1/
 翔磨,,SHOMA,romaji_only,TEAM-ANOTHER,RISE|KNOCK OUT,https://rise-rc.com/fighter/shoma/|https://knockoutkb.com/fighters/shoma_615
@@ -3242,7 +3242,7 @@ YU斗,,Yuto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/yu
 鈴木宙樹,,Hiroki Suzuki,romaji_only,RIKIX,RISE,https://rise-rc.com/fighter/suzuki_hiroki/
 鈴木 悠斗,,SUZUKI Yuto,romaji_only,パラエストラ八王子,KNOCK OUT,https://knockoutkb.com/fighters/suzuki_yuto_626
 鈴木清照,,KIyoteru Suzuki,romaji_only,ドージョー☆シャカリキ,RISE,https://rise-rc.com/fighter/suzuki_kiyoteru/
-鈴木真彦,,Masahiko Suzuki,romaji_only,TEAM 寿,RISE,https://rise-rc.com/fighter/suzuki_masahiko/
+鈴木真彦,,Masahiko Suzuki,romaji_only,TEAM 寿,RISE,https://rise-rc.com/fighter/suzuki_masahiko/|https://www.k-1.co.jp/fighter/1253
 鈴木 萌,,SUZUKI Moe,romaji_only,KNOCK OUT クロスポイント吉祥寺,KNOCK OUT,https://knockoutkb.com/fighters/suzuki_moe_198
 鈴木 貫太,,SUZUKI Kanta,romaji_only,ONE`S GOAL,KNOCK OUT,https://knockoutkb.com/fighters/suzuki_kanta
 鈴木 颯,,,none,TEAM FOREST,SHOOT BOXING,https://shootboxing.org/fighter/suzuki_sou/
@@ -3279,11 +3279,10 @@ YU斗,,Yuto,romaji_only,Vigor Kickboxing Gym,RISE,https://rise-rc.com/fighter/yu
 駒形 賢太,,KOMAGATA Kenta,romaji_only,レンジャージム,KNOCK OUT,https://knockoutkb.com/fighters/komagata_kenta_240
 高塩 竜司,,TAKASHIO Ryuji,romaji_only,KIBAマーシャルアーツクラブ,KNOCK OUT,https://knockoutkb.com/fighters/takashio_ryuji_351
 高尾海音,,Kaito Takao,romaji_only,BLOWS OITA LIFE,RISE,https://rise-rc.com/fighter/takao-kaito/
-高山 敦,,,none,ストライキングジムAres,SHOOT BOXING,https://shootboxing.org/fighter/takayama_atsushi/
 高梨 玲次郎,,TAKANASHI Reijiro,romaji_only,和術慧舟會 HEARTS,KNOCK OUT,https://knockoutkb.com/fighters/takanashi_reijiro_571
 高橋 幸光,,TAKAHASHI Yukimitsu,romaji_only,飯伏プロレス研究所,KNOCK OUT,https://knockoutkb.com/fighters/takahashi_yukimitsu_297
 高橋 秀駿,,TAKAHASHI Shuto,romaji_only,リバーサルジム立川ALPHA,KNOCK OUT,https://knockoutkb.com/fighters/takahashi_shuto_402
-髙山 敦,,TAKAYAMA Atsushi,romaji_only,Striking Gym Ares,KNOCK OUT,https://knockoutkb.com/fighters/takayama_atsushi_458
+髙山 敦,,TAKAYAMA Atsushi,romaji_only,Striking Gym Ares,SHOOT BOXING|KNOCK OUT,https://knockoutkb.com/fighters/takayama_atsushi_458|https://shootboxing.org/fighter/takayama_atsushi/
 髙岩 拓,,Taku Takaiwa,romaji_only,TRY HARD GYM,RISE,https://rise-rc.com/fighter/takaiwa-taku/
 髙木覚清,,Kakushi Takagi,romaji_only,RIKIX,RISE,https://rise-rc.com/fighter/takagi_kakushi/
 髙木 逞,,TAKAGI Takuma,romaji_only,和術慧舟會 HEARTS,KNOCK OUT,https://knockoutkb.com/fighters/takagi_takuma_581
