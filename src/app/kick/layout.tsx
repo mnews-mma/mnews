@@ -28,12 +28,17 @@ export default function KickLayout({ children }: { children: React.ReactNode }) 
       </nav>
       <main className="kick-main">{children}</main>
       <footer className="kick-foot">
-        立ち技名鑑は、各団体公式サイトとWikipediaの公開情報から機械的に収集した選手名簿・戦績データです。
-        すべてのレコードに取得元URLを併記しています。誤りを見つけた場合は{" "}
-        <a href="https://x.com/mnews_mma" target="_blank" rel="noopener noreferrer">
-          𝕏 @mnews_mma
-        </a>{" "}
-        のDMへご連絡ください。
+        <p>
+          立ち技名鑑は、各団体公式サイトとWikipediaの公開情報から機械的に収集した選手名簿・戦績データです。
+          すべてのレコードに取得元URLを併記しています。
+        </p>
+        <p>
+          誤りを見つけた場合は
+          <a href="https://x.com/mnews_mma" target="_blank" rel="noopener noreferrer">
+            𝕏 @mnews_mma
+          </a>
+          のDMへご連絡ください。
+        </p>
       </footer>
     </div>
   );

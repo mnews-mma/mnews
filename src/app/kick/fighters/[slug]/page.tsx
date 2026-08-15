@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getKickFighter, getKickIndex, KickBout, RESULT_LABEL } from "@/lib/kick/data";
+import { getKickFighter, getKickIndex, KickBout, PROMOTION_SHORT, RESULT_LABEL } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
 
 /** 2,484人分をビルド時に静的生成する(リクエスト時の処理をゼロにする)。 */
@@ -173,8 +173,8 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                     <ResultCell b={b} />
                   </td>
                   <td className="kick-src">
-                    <a href={b.sourceUrl} target="_blank" rel="noopener noreferrer">
-                      {b.promotion}
+                    <a href={b.sourceUrl} target="_blank" rel="noopener noreferrer" title={b.promotion}>
+                      {PROMOTION_SHORT[b.promotion] ?? b.promotion}
                     </a>
                     {b.alsoFrom.map((u) => (
                       <div key={u}>

@@ -105,6 +105,15 @@ export const KICK_ROSTER_SOURCES = [
   "KNOCK OUT 公式",
 ];
 
+/** 戦績表の「出典」列に出す短縮名。団体名をそのまま出すと列幅に対して長く、
+ *  「K-1 / Krush / Krush-EX」がスラッシュ区切りの複数リンクに見えるため。 */
+export const PROMOTION_SHORT: Record<string, string> = {
+  "SHOOT BOXING": "SB公式",
+  RISE: "RISE公式",
+  "KNOCK OUT": "KO公式",
+  "K-1 / Krush / Krush-EX": "K-1公式",
+};
+
 export const RESULT_LABEL: Record<KickBout["result"], string> = {
   win: "勝",
   loss: "敗",
