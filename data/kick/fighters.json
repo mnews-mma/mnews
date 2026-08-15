@@ -269,31 +269,20 @@
   {
     "name": "AKIRA Jr.",
     "kana": "アキラ ジュニア",
-    "aliases": [],
+    "aliases": [
+      "AKIRA Jr"
+    ],
     "gym": "Team Aj",
     "orgs": [
       "K-1 WORLD GP"
     ],
     "sources": [
-      "https://www.k-1.co.jp/fighter/1295"
-    ],
-    "kana_source": {
-      "type": "published",
-      "url": "https://www.k-1.co.jp/fighter/1295"
-    }
-  },
-  {
-    "name": "AKIRA Jr",
-    "kana": "アキラ ジュニアー",
-    "aliases": [],
-    "gym": null,
-    "orgs": [],
-    "sources": [
+      "https://www.k-1.co.jp/fighter/1295",
       "https://ja.wikipedia.org/wiki/AKIRA_Jr"
     ],
     "kana_source": {
       "type": "published",
-      "url": "https://ja.wikipedia.org/wiki/AKIRA_Jr"
+      "url": "https://www.k-1.co.jp/fighter/1295"
     }
   },
   {
@@ -8916,7 +8905,9 @@
   {
     "name": "SAHO",
     "kana": "サホ",
-    "aliases": [],
+    "aliases": [
+      "☆SAHO☆"
+    ],
     "gym": "闘神塾",
     "orgs": [
       "K-1 WORLD GP",
@@ -8924,25 +8915,12 @@
       "Krush-EX"
     ],
     "sources": [
-      "https://www.k-1.co.jp/fighter/1209"
-    ],
-    "kana_source": {
-      "type": "published",
-      "url": "https://www.k-1.co.jp/fighter/1209"
-    }
-  },
-  {
-    "name": "☆SAHO☆",
-    "kana": "サホ",
-    "aliases": [],
-    "gym": null,
-    "orgs": [],
-    "sources": [
+      "https://www.k-1.co.jp/fighter/1209",
       "https://ja.wikipedia.org/wiki/☆SAHO☆"
     ],
     "kana_source": {
       "type": "published",
-      "url": "https://ja.wikipedia.org/wiki/☆SAHO☆"
+      "url": "https://www.k-1.co.jp/fighter/1209"
     }
   },
   {
