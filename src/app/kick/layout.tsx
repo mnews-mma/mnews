@@ -15,9 +15,6 @@ export default function KickLayout({ children }: { children: React.ReactNode }) 
             立ち技名鑑
             <span>KICKBOXING DATABASE</span>
           </Link>
-          <div className="kick-masthead__note">
-            <a href="/">Mニュース</a>（MMA）とは別セクションです
-          </div>
         </div>
       </header>
       <nav className="kick-nav" aria-label="立ち技名鑑">
