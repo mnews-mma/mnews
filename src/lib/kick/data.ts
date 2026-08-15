@@ -43,6 +43,7 @@ export interface KickBout {
   ruleset: string | null;
   note: string | null;
   isDebut: boolean;
+  titleType: "title_match" | "vacant_title_match" | "challenger_decision" | null;
   sourceUrl: string;
   alsoFrom: string[];
 }
@@ -111,6 +112,11 @@ export const KICK_PROMOTIONS = [
   { label: "NJKF", url: "https://www.njkf.info/" },
   { label: "HoostCup", url: "https://www.hoostcup.com/" },
   { label: "NKB", url: "https://www.nkb-r.com/" },
+  { label: "Bigbang", url: "https://bigbang-kick.com/" },
+  { label: "Stand up", url: "https://standup-kick.com/" },
+  { label: "KROSS×OVER", url: "https://krossover.jp/" },
+  { label: "新日本キックボクシング協会(SNKA)", url: "https://ameblo.jp/skb-blog/" },
+  { label: "JKA", url: "https://jka-japan-kickboxing-association.jp/" },
 ];
 
 /** 名簿の取得元(6ソース)。戦績6団体のうちWikipedia以外4団体 + Wikipedia男女2一覧。 */
@@ -136,6 +142,11 @@ export const PROMOTION_SHORT: Record<string, string> = {
   NJKF: "NJKF公式",
   HoostCup: "HoostCup公式",
   NKB: "NKB公式",
+  Bigbang: "Bigbang公式",
+  "Stand up": "Stand up公式",
+  "KROSS×OVER": "KROSS×OVER公式",
+  "新日本キックボクシング協会(SNKA)": "SNKA公式",
+  JKA: "JKA公式",
 };
 
 /**
@@ -165,4 +176,11 @@ export const RESULT_LABEL: Record<KickBout["result"], string> = {
   cancelled: "中止",
   scheduled: "予定",
   unknown: "不明",
+};
+
+/** タイトル種別バッジ。nullは対象外(何も出さない)。 */
+export const TITLE_TYPE_LABEL: Record<Exclude<KickBout["titleType"], null>, string> = {
+  title_match: "タイトルマッチ",
+  vacant_title_match: "王座決定戦",
+  challenger_decision: "挑戦者決定戦",
 };

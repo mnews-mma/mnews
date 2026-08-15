@@ -8,6 +8,7 @@ import {
   methodLabel,
   PROMOTION_SHORT,
   RESULT_LABEL,
+  TITLE_TYPE_LABEL,
 } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
 
@@ -168,6 +169,7 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                     {b.note && <div className="kick-table__aff">{b.note}</div>}
                     {b.isDebut && <span className="kick-badge">デビュー戦</span>}
                     {b.ruleset && <span className="kick-badge">{b.ruleset.toUpperCase()}</span>}
+                    {b.titleType && <span className="kick-badge kick-badge--title">{TITLE_TYPE_LABEL[b.titleType]}</span>}
                   </td>
                   <td className="kick-table__opp">
                     <OpponentCell b={b} />

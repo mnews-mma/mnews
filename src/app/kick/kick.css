@@ -479,6 +479,11 @@
   margin-left: 5px;
   vertical-align: middle;
 }
+.kick-badge--title {
+  border-color: var(--kick-accent);
+  color: var(--kick-accent);
+  font-weight: 700;
+}
 
 @media (max-width: 720px) {
   .kick-row {

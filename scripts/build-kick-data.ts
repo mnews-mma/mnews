@@ -85,6 +85,7 @@ interface Bout {
   ruleset: string | null;
   note: string | null;
   is_debut: boolean;
+  title_type: "title_match" | "vacant_title_match" | "challenger_decision" | null;
   pair_key: string | null;
   source_url: string;
 }
@@ -107,6 +108,11 @@ const boutFiles: { tag: string; label: string; file: string; matchBy: "sourceUrl
   { tag: "njkf", label: "NJKF", file: "bouts_njkf.json", matchBy: "identity" },
   { tag: "hoostcup", label: "HoostCup", file: "bouts_hoostcup.json", matchBy: "identity" },
   { tag: "nkb", label: "NKB", file: "bouts_nkb.json", matchBy: "identity" },
+  { tag: "bigbang", label: "Bigbang", file: "bouts_bigbang.json", matchBy: "identity" },
+  { tag: "standup", label: "Stand up", file: "bouts_standup.json", matchBy: "identity" },
+  { tag: "krossover", label: "KROSS×OVER", file: "bouts_krossover.json", matchBy: "identity" },
+  { tag: "snka", label: "新日本キックボクシング協会(SNKA)", file: "bouts_snka.json", matchBy: "identity" },
+  { tag: "jka", label: "JKA", file: "bouts_jka.json", matchBy: "identity" },
 ];
 const allBouts: (Bout & { promotion: string; matchBy: "sourceUrl" | "identity" })[] = [];
 for (const b of boutFiles) {
@@ -265,6 +271,9 @@ function dedupe(bouts: (Bout & { promotion: string })[]) {
     if (hit) {
       // 同じ試合が別団体のページにも載っている。行は1本にまとめ、出典は両方残す。
       if (!hit.alsoFrom.includes(b.source_url)) hit.alsoFrom.push(b.source_url);
+      // title_typeは最初に見つかった団体側が空欄でも、統合先の別団体が持っていれば採用する
+      // (同じ試合なのに掲載順の都合でタイトル情報が欠落するのを防ぐ)。
+      if (!hit.title_type && b.title_type) hit.title_type = b.title_type;
       mergedRows++;
       continue;
     }
@@ -383,6 +392,7 @@ for (const f of fighters) {
       ruleset: b.ruleset,
       note: b.note,
       isDebut: b.is_debut,
+      titleType: b.title_type,
       sourceUrl: b.source_url,
       alsoFrom: b.alsoFrom,
     })),
