@@ -62,6 +62,11 @@ export default function KickTopPage() {
         {nf(stats.boutRows)} 件を掲載しています。うち {stats.boutRowsScheduled} 件は開催前の予定試合のため、
         「戦績（実施済み）」の {nf(stats.boutRowsCompleted)} 件には含めていません。
       </p>
+      <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
+        <strong>K-1 / Krush / Krush-EX</strong>のみ、現在の選手一覧ページに掲載されていない過去の出場選手も、
+        個別の選手ページから直接収録しています。他{KICK_ROSTER_SOURCES.length - 1}ソース（Wikipedia男子/女子一覧・
+        RISE・SHOOT BOXING・KNOCK OUT）は、各サイトに現行掲載されている選手のみが対象です。
+      </p>
       <ul className="kick-list">
         {KICK_ROSTER_SOURCES.map((s) => (
           <li key={s}>{s}</li>
