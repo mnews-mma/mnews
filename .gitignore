@@ -36,3 +36,4 @@ next-env.d.ts
 
 # /kick のビルド生成物(scripts/build-kick-data.tsが data/kick/*.json から毎ビルド再生成する)
 data/kick/generated/
+public/kick/search-index.json

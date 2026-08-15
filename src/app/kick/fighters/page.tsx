@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getKickIndex, KickIndexEntry } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
+import FighterSearch from "./FighterSearch";
 
 export const metadata = pageMetadata({
   title: "キックボクシング選手一覧（五十音順）｜立ち技名鑑 - Mニュース",
@@ -30,6 +31,8 @@ export default function KickFightersPage() {
         五十音順（{stats.fighters.toLocaleString("ja-JP")}人）。読みが取得できなかった{stats.kanaMissing.toLocaleString("ja-JP")}人は
         <strong>空欄のまま末尾</strong>にまとめています（推測で読みを補わないため）。
       </p>
+
+      <FighterSearch />
 
       <nav className="kick-jump" aria-label="行で絞り込む">
         {rows.map((b) => (

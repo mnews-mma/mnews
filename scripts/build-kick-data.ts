@@ -8,7 +8,9 @@
  *   (データが更新されてもURLが変わらないようにするため。新規選手のみ採番)。
  * - 読み・勝敗の品質情報(未取得/ambiguous/未解決)は落とさずそのまま渡す。
  *
- * 出力: data/kick/generated/index.json, data/kick/generated/fighters/<slug>.json
+ * 出力: data/kick/generated/index.json, data/kick/generated/fighters/<slug>.json,
+ *       public/kick/search-index.json (/kick/fighters のクライアント検索用。
+ *       静的アセットとして配信するだけなのでリクエスト時の処理は増えない)。
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -16,6 +18,7 @@ import path from "node:path";
 const ROOT = path.join(__dirname, "..");
 const SRC = path.join(ROOT, "data/kick");
 const OUT = path.join(SRC, "generated");
+const PUBLIC_OUT = path.join(ROOT, "public/kick");
 const SLUG_MAP_PATH = path.join(SRC, "slugs.json");
 
 interface Fighter {
@@ -347,5 +350,13 @@ const stats = {
 
 fs.writeFileSync(path.join(OUT, "index.json"), JSON.stringify({ stats, fighters: index }));
 fs.writeFileSync(SLUG_MAP_PATH, JSON.stringify(slugMap, null, 1));
+
+// ---------- 検索インデックス(クライアント側の絞り込み専用、最小フィールドのみ) ----------
+// 表記名・かな・ローマ字・所属の部分一致検索に使う。集計値(戦績数等)は含めずサイズを絞る。
+const searchIndex = (index as { slug: string; name: string; kana: string | null; romaji: string | null; gym: string | null }[]).map(
+  (f) => ({ slug: f.slug, name: f.name, kana: f.kana, romaji: f.romaji, gym: f.gym })
+);
+fs.mkdirSync(PUBLIC_OUT, { recursive: true });
+fs.writeFileSync(path.join(PUBLIC_OUT, "search-index.json"), JSON.stringify(searchIndex));
 
 console.log("[kick] generated", JSON.stringify(stats, null, 1));
