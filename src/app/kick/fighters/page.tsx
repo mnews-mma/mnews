@@ -3,12 +3,16 @@ import { getKickIndex, KickIndexEntry } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
 import FighterSearch from "./FighterSearch";
 
-export const metadata = pageMetadata({
-  title: "キックボクシング選手一覧（五十音順）｜立ち技名鑑 - Mニュース",
-  description:
-    "K-1・Krush・RISE・SHOOT BOXING・KNOCK OUT公式とWikipediaから収集したキックボクシング選手2,484人を五十音順に掲載。読みが未取得の選手は空欄のまま表示しています。",
-  path: "/kick/fighters",
-});
+export function generateMetadata() {
+  const { stats } = getKickIndex();
+  return pageMetadata({
+    title: "キックボクシング選手一覧（五十音順）｜立ち技名鑑 - Mニュース",
+    description: `K-1・Krush・RISE・SHOOT BOXING・KNOCK OUT公式とWikipediaから収集したキックボクシング選手${stats.fighters.toLocaleString(
+      "ja-JP",
+    )}人を五十音順に掲載。読みが未取得の選手は空欄のまま表示しています。`,
+    path: "/kick/fighters",
+  });
+}
 
 const BUCKET_ORDER = ["ア", "カ", "サ", "タ", "ナ", "ハ", "マ", "ヤ", "ラ", "ワ", "―"];
 const BUCKET_LABEL: Record<string, string> = { "―": "読み未取得" };
@@ -29,7 +33,7 @@ export default function KickFightersPage() {
       <h1 className="kick-h1">選手一覧</h1>
       <p className="kick-lead">
         五十音順（{stats.fighters.toLocaleString("ja-JP")}人）。読みが取得できなかった{stats.kanaMissing.toLocaleString("ja-JP")}人は
-        <strong>空欄のまま末尾</strong>にまとめています（推測で読みを補わないため）。
+        <strong>空欄のまま末尾</strong>にまとめています（推測で読みを補わないため）。表記名・かな・ローマ字・所属で検索できます。
       </p>
 
       <FighterSearch />

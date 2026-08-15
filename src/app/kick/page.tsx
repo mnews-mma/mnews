@@ -3,12 +3,16 @@ import { getKickIndex, KICK_PROMOTIONS, KICK_ROSTER_SOURCES } from "@/lib/kick/d
 import { pageMetadata } from "@/lib/seo";
 import { formatDateJa, toJstDateStr } from "@/lib/eventCountdown";
 
-export const metadata = pageMetadata({
-  title: "立ち技名鑑｜キックボクシング選手データベース - Mニュース",
-  description:
-    "K-1・Krush・RISE・SHOOT BOXING・KNOCK OUTの公式サイトとWikipediaから収集したキックボクシング選手2,484人の名簿と戦績データベース。全レコードに取得元URLを併記。",
-  path: "/kick",
-});
+export function generateMetadata() {
+  const { stats } = getKickIndex();
+  return pageMetadata({
+    title: "立ち技名鑑｜キックボクシング選手データベース - Mニュース",
+    description: `K-1・Krush・RISE・SHOOT BOXING・KNOCK OUTの公式サイトとWikipediaから収集したキックボクシング選手${stats.fighters.toLocaleString(
+      "ja-JP",
+    )}人の名簿と戦績データベース。全レコードに取得元URLを併記。`,
+    path: "/kick",
+  });
+}
 
 export default function KickTopPage() {
   const { stats, sourceUpdatedAt } = getKickIndex();
@@ -94,13 +98,23 @@ export default function KickTopPage() {
           決着の表記（「3R 判定」「3R判定」など）は出典サイトごとに揺れがあります。<strong>元データは原文のまま保持</strong>し、
           表示のみ決着方法に揃えています（ラウンドは「R」列に分離）。各行にカーソルを合わせると原文を確認できます。
         </li>
+        <li>
+          タイトルマッチ・王座決定戦・挑戦者決定戦は、出典に<strong>明記されている場合のみ</strong>バッジ表示しています（
+          {nf(stats.titleTypeCount)}件）。書かれていない試合には付けていません。
+        </li>
+        <li>
+          出典側に勝敗の記載がない試合は「不明」として掲載し、<strong>勝敗としては数えていません</strong>（
+          {nf(stats.resultUnknownCount)}件）。
+        </li>
       </ul>
 
       <h2 className="kick-section-title">収録していないもの</h2>
       <ul className="kick-list">
-        <li>勝率・KO率などの算出指標（第1版では出していません）</li>
-        <li>選手の検索・ランキング</li>
-        <li>上記{KICK_PROMOTIONS.length}団体以外の戦績（MA日本・ジャパンキック等）</li>
+        <li>勝率・KO率などの算出指標</li>
+        <li>選手のランキング</li>
+        <li>J-NETWORK（公式サイトにデータが現存しないため）</li>
+        <li>MA日本（公式に勝敗記録が存在しないため）</li>
+        <li>各団体の2000年代以前の戦績の大半（ネット上に公開されていないため）</li>
       </ul>
     </>
   );
