@@ -19,16 +19,21 @@ interface SearchEntry {
   kana: string | null;
   romaji: string | null;
   gym: string | null;
+  /** ja.wikipedia|realname=由来の本名。一致キーとしてのみ使い、画面には出さない。 */
+  realname?: string;
 }
 
 const MAX_RESULTS = 30;
 
 function normalize(s: string): string {
   // ひらがな→カタカナに寄せてから比較する(索引側のかなは全てカタカナのため、
-  // ひらがな入力でも「かな」検索がヒットするようにする)。
+  // ひらがな入力でも「かな」検索がヒットするようにする)。姓名間のスペース(半角/全角)は
+  // 索引側の値(「愛鷹 亮」「後藤 亮」等、姓名間にスペースが入る)と入力側の有無が揃わない
+  // ことが多いため除去して比較する(「愛鷹亮」でも「愛鷹 亮」でもヒットするようにする)。
   return s
     .normalize("NFKC")
     .replace(/[ぁ-ゖ]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0x60))
+    .replace(/[\s　]/g, "")
     .toLowerCase();
 }
 
@@ -70,7 +75,8 @@ export default function FighterSearch() {
         normalize(f.name).includes(q) ||
         (f.kana && normalize(f.kana).includes(q)) ||
         (f.romaji && normalize(f.romaji).includes(q)) ||
-        (f.gym && normalize(f.gym).includes(q))
+        (f.gym && normalize(f.gym).includes(q)) ||
+        (f.realname && normalize(f.realname).includes(q))
       ) {
         hits.push(f);
         if (hits.length >= MAX_RESULTS) break;
@@ -88,7 +94,8 @@ export default function FighterSearch() {
         normalize(f.name).includes(q) ||
         (f.kana && normalize(f.kana).includes(q)) ||
         (f.romaji && normalize(f.romaji).includes(q)) ||
-        (f.gym && normalize(f.gym).includes(q))
+        (f.gym && normalize(f.gym).includes(q)) ||
+        (f.realname && normalize(f.realname).includes(q))
       ) {
         n++;
       }

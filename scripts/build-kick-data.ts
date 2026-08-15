@@ -286,6 +286,38 @@ for (const f of fighters) {
   byNameGym.set(`${f.name}|${f.gym ?? ""}`, slugByIdentity.get(identity(f))!);
 }
 
+// ---------- 本名(検索の一致キー専用。画面には一切表示しない) ----------
+// data/kick/realnames.json: ja.wikipedia個別記事の|realname=欄が表記名と異なるもの(158件)。
+// source_url(出典)はこのファイル自体(リポジトリにコミット)が保持先であり、
+// クライアントに配信する検索インデックスには含めない(画面にもネットワーク越しにも出さない)。
+interface RealnameEntry {
+  name: string;
+  realname: string;
+  realname_raw_field: string;
+  source_url: string;
+}
+const realnames = fs.existsSync(path.join(SRC, "realnames.json"))
+  ? read<RealnameEntry[]>("realnames.json")
+  : [];
+const fightersByName = new Map<string, Fighter[]>();
+for (const f of fighters) {
+  const arr = fightersByName.get(f.name) ?? [];
+  arr.push(f);
+  fightersByName.set(f.name, arr);
+}
+const realnameBySlug = new Map<string, string>();
+let realnameUnresolved = 0;
+for (const r of realnames) {
+  const candidates = fightersByName.get(r.name) ?? [];
+  // 同姓同名(例: "武蔵"が3人)は出典URLがその選手自身のsourcesに含まれるかで一意化する。
+  const f = candidates.length === 1 ? candidates[0] : candidates.find((c) => c.sources.includes(r.source_url));
+  if (!f) {
+    realnameUnresolved++;
+    continue;
+  }
+  realnameBySlug.set(slugByIdentity.get(identity(f))!, r.realname);
+}
+
 const KANA_ROWS = "アカサタナハマヤラワ";
 function kanaBucket(kana: string | null): string {
   if (!kana) return "―";
@@ -394,6 +426,7 @@ const sourceUpdatedAt = updateSourceMeta([
   "data/kick/fighters.json",
   "data/kick/fighters.csv",
   ...boutFiles.map((b) => `data/kick/${b.file}`),
+  ...(fs.existsSync(path.join(SRC, "realnames.json")) ? ["data/kick/realnames.json"] : []),
 ]);
 
 fs.writeFileSync(
@@ -403,11 +436,19 @@ fs.writeFileSync(
 fs.writeFileSync(SLUG_MAP_PATH, JSON.stringify(slugMap, null, 1));
 
 // ---------- 検索インデックス(クライアント側の絞り込み専用、最小フィールドのみ) ----------
-// 表記名・かな・ローマ字・所属の部分一致検索に使う。集計値(戦績数等)は含めずサイズを絞る。
+// 表記名・かな・ローマ字・所属・本名(一致キーのみ)の部分一致検索に使う。
+// 集計値(戦績数等)は含めずサイズを絞る。realnameは該当者のみキーを持たせる
+// (2,482件分nullを並べてサイズを膨らませない)。
 const searchIndex = (index as { slug: string; name: string; kana: string | null; romaji: string | null; gym: string | null }[]).map(
-  (f) => ({ slug: f.slug, name: f.name, kana: f.kana, romaji: f.romaji, gym: f.gym })
+  (f) => {
+    const realname = realnameBySlug.get(f.slug);
+    return { slug: f.slug, name: f.name, kana: f.kana, romaji: f.romaji, gym: f.gym, ...(realname ? { realname } : {}) };
+  },
 );
 fs.mkdirSync(PUBLIC_OUT, { recursive: true });
 fs.writeFileSync(path.join(PUBLIC_OUT, "search-index.json"), JSON.stringify(searchIndex));
 
 console.log("[kick] generated", JSON.stringify(stats, null, 1));
+console.log(
+  `[kick] realnames: 解決${realnameBySlug.size}件 / 未解決${realnameUnresolved}件(計${realnames.length}件)`,
+);
