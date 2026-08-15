@@ -97,8 +97,9 @@ export function getKickFighter(slug: string): KickFighter | null {
 }
 
 /** 掲載団体(戦績の取得元)。/kick の収録範囲表示に使う。
- *  RIZIN・ONE Championshipは名簿の掲載元ではなく、名簿に載っている選手の戦績を
- *  追加で収録した戦績専用ソース(RIZINはmnews既存資産・ONEは公式サイトの直接クロール)。 */
+ *  RIZIN・ONE Championship・DEEP☆KICK・NJKF・HoostCup・NKBは名簿の掲載元ではなく、
+ *  名簿に載っている選手の戦績を追加で収録した戦績専用ソース
+ *  (RIZINはmnews既存資産・他は各公式サイトの直接クロール)。 */
 export const KICK_PROMOTIONS = [
   { label: "SHOOT BOXING", url: "https://shootboxing.org/" },
   { label: "RISE", url: "https://rise-rc.com/" },
@@ -106,6 +107,10 @@ export const KICK_PROMOTIONS = [
   { label: "K-1 / Krush / Krush-EX", url: "https://www.k-1.co.jp/" },
   { label: "RIZIN", url: "https://jp.rizinff.com/fighters" },
   { label: "ONE Championship", url: "https://www.onefc.com" },
+  { label: "DEEP☆KICK", url: "https://www.deep-kick.com/" },
+  { label: "NJKF", url: "https://www.njkf.info/" },
+  { label: "HoostCup", url: "https://www.hoostcup.com/" },
+  { label: "NKB", url: "https://www.nkb-r.com/" },
 ];
 
 /** 名簿の取得元(6ソース)。戦績6団体のうちWikipedia以外4団体 + Wikipedia男女2一覧。 */
@@ -127,6 +132,10 @@ export const PROMOTION_SHORT: Record<string, string> = {
   "K-1 / Krush / Krush-EX": "K-1公式",
   RIZIN: "RIZIN公式",
   "ONE Championship": "ONE公式",
+  "DEEP☆KICK": "DEEP☆KICK公式",
+  NJKF: "NJKF公式",
+  HoostCup: "HoostCup公式",
+  NKB: "NKB公式",
 };
 
 /**
