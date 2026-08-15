@@ -511,3 +511,27 @@ for _tag,_label,_mod in EXTRA_ORGS:
     print('  result             :',dict(collections.Counter(x['result'] for x in _b)))
     print('  title_type(全件null):',all(x.get('title_type') is None for x in _b))
     print('  gaps: date',sum(1 for x in _b if not x['date']))
+
+# ================= bouts_*.json (旧・別実行が必要だった5団体、恒久統合) =================
+# 2026-08-15判明: この5団体はEXTRA_ORGSと同じ「fighters.jsonのbyname解決」に依存する構造でありながら
+# build.pyのオーケストレーションに含まれておらず、`python3 ingest_X.py`を個別に実行しない限り
+# 名簿拡大(fighters.json増加)が反映されなかった。Bigbang/JKA/KROSS×OVER(旧レグ)、
+# DEEP☆KICK/HoostCup/NJKF/NKB/RIZIN(本件)と3回同種の取りこぼしが発生したため、
+# 「build.pyを一発実行すれば全15団体が再生成される」ことを構造的に保証するべく本ループへ統合する。
+# unresolved_opponents.json の集計対象(_all)には含めない(EXTRA_ORGSと同じ理由・既存の集計を変えない)。
+import ingest_deepkick, ingest_hoostcup, ingest_njkf, ingest_nkb, ingest_rizin
+
+FORMERLY_STANDALONE_ORGS=[('deepkick','DEEP☆KICK',ingest_deepkick),('hoostcup','HoostCup',ingest_hoostcup),
+            ('njkf','NJKF',ingest_njkf),('nkb','NKB',ingest_nkb),('rizin','RIZIN(キックボクシングのみ)',ingest_rizin)]
+for _tag,_label,_mod in FORMERLY_STANDALONE_ORGS:
+    _b,_stats=_mod.build()
+    json.dump(_b,open(f'bouts_{_tag}.json','w'),ensure_ascii=False,indent=1)
+    _r=sum(1 for x in _b if x['opponent_resolved'])
+    _u=[x for x in _b if not x['opponent_resolved'] and not x['opponent_ambiguous']]
+    print(f'\n===== bouts_{_tag}.json ({_label}) =====')
+    print('  total bouts        :',len(_b))
+    print(f'  opponent resolved  : {_r}/{len(_b)} = {_r/len(_b)*100:.1f}%' if _b else '  (no bouts)')
+    print(f'  opponent unresolved: {len(_u)}  (distinct {len({x["opponent_name"] for x in _u})})')
+    print('  opponent ambiguous :',sum(1 for x in _b if x['opponent_ambiguous']))
+    print('  result             :',dict(collections.Counter(x['result'] for x in _b)))
+    print('  gaps: date',sum(1 for x in _b if not x['date']))

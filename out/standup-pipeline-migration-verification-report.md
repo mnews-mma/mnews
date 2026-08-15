@@ -53,3 +53,49 @@
 
 5団体の増分は名簿拡大による正当な解決型増加であり、サンプル照合でも誤検出はゼロ。
 `build.py`の2回連続実行一致も確認済みのため、受入条件を満たしている。
+
+## 4. `/kick`側データへの反映と内訳確認
+
+`/kick`は`scripts/standup-pipeline/`の出力を直接参照せず、`data/kick/`という別コピーを
+`scripts/build-kick-data.ts`(`npm run kick:data`)がソースとして読んでいる。
+`data/kick/bouts_{deepkick,hoostcup,njkf,nkb,rizin}.json`の5ファイルのみが今回の対象団体と
+一致してズレていた(他10団体・`fighters.json`は既に一致していたことを確認済み)ため、
+この5ファイルを`scripts/standup-pipeline/`の新しい出力で上書きした。
+
+`npm run kick:data`実行結果(反映前 → 反映後):
+
+| 指標 | 反映前 | 反映後 | 差分 |
+|---|---:|---:|---:|
+| `boutRowsRaw`(生bout、両視点計上) | 21,763 | 22,374 | +611 |
+| `unmatchedBouts`(名簿未紐づけで破棄) | 12 | 12 | ±0 |
+| `mergedDuplicateRows`(複数団体掲載の重複統合) | 1,450 | 1,463 | +13 |
+| `boutRowsScheduled`(未実施の予定戦) | 63 | 63 | ±0 |
+| **`boutRowsCompleted`(戦績確定値)** | **20,238** | **20,836** | **+598** |
+
+内訳の残余確認: `22,374(生) − 63(scheduled) − 12(名簿未紐づけ) − 1,463(重複統合) = 20,836` で
+`boutRowsCompleted`と完全一致(残余ゼロ)。
+
+生bout増分+611がそのまま戦績増分にならなかった理由は、増分の一部(13件)が既存の他団体掲載
+(K-1・RISE・KNOCK OUT等)と同一試合として`date|正規化した相手名`キーで重複統合されたため
+(`mergedDuplicateRows`が1,450→1,463で+13)。611−13=598で完全に説明がつく。
+
+`npm run build`(本番相当のフルビルド、`kick:data`含む)は成功。ローカルで`npm start`し、
+新規解決bout(林 眞平 vs 元氣、RIZIN LANDMARK 12 in KOBE)が`/kick/fighters/hayashi-shinpei`に
+実際に描画されることを確認した。トップ・選手一覧・イベント・結果・rankings・`/kick`関連ページも
+全て200を確認済み。
+
+## 5. 恒久対策(`build.py`部分実行の解消)
+
+Bigbang/JKA/KROSS×OVER(旧レグ)・DEEP☆KICK/HoostCup/NJKF/NKB/RIZIN(本件)と3回同種の
+取りこぼしが発生した真因は、`build.py`が15団体中9団体しかオーケストレーションしておらず、
+残り(旧EXTRA_ORGS外の6団体のうち5団体)は`ingest_X.py`を個別実行しない限り再生成されない
+構造だったこと。
+
+DEEP☆KICK/HoostCup/NJKF/NKBは既に`build()`関数を持っていたが未接続、RIZINのみ
+モジュールトップレベル直書きだったため同じ`build()`形に抽出し直し(ロジック不変、リファクタ
+前後でバイト単位一致を確認済み)、`build.py`に新ループ`FORMERLY_STANDALONE_ORGS`として
+接続した。これにより15団体中14団体は`build.py`単独実行で再生成されるようになった
+(残る1団体ONE Championshipは`fighters.json`によるopponent解決を行わない設計かつ
+現行スクリプト群のどこからも呼ばれていない静的成果物のため、今回の「名簿拡大で取りこぼす」
+バグの対象外と判断し、意図的にスコープ外とした)。詳細はSOURCES.md「build.py部分実行による
+取りこぼしの恒久対策」節を参照。
