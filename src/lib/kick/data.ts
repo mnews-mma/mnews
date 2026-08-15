@@ -74,6 +74,8 @@ export interface KickStats {
   kanaFilled: number;
   kanaMissing: number;
   kanaConverted: number;
+  titleTypeCount: number;
+  resultUnknownCount: number;
   promotions: string[];
 }
 
@@ -119,7 +121,8 @@ export const KICK_PROMOTIONS = [
   { label: "JKA", url: "https://jka-japan-kickboxing-association.jp/" },
 ];
 
-/** 名簿の取得元(6ソース)。戦績6団体のうちWikipedia以外4団体 + Wikipedia男女2一覧。 */
+/** 名簿の取得元(6ソース)。KICK_PROMOTIONSの一部(K-1/RISE/SB/KNOCK OUT) + Wikipedia男女2一覧。
+ *  戦績のみのソース(RIZIN/ONE等)は名簿には掲載していないため、ここには含まれない。 */
 export const KICK_ROSTER_SOURCES = [
   "ja.wikipedia「男子キックボクサー一覧」",
   "ja.wikipedia「女子キックボクサー一覧」",

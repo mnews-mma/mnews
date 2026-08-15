@@ -12,7 +12,7 @@ import {
 } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
 
-/** 2,484人分をビルド時に静的生成する(リクエスト時の処理をゼロにする)。 */
+/** 名簿全員分をビルド時に静的生成する(リクエスト時の処理をゼロにする)。 */
 export function generateStaticParams() {
   return getKickIndex().fighters.map((f) => ({ slug: f.slug }));
 }

@@ -348,6 +348,8 @@ const index: unknown[] = [];
 let withBouts = 0;
 let totalBoutRows = 0;
 let scheduledRows = 0;
+let titleTypeRows = 0;
+let resultUnknownRows = 0;
 
 for (const f of fighters) {
   const key = identity(f);
@@ -357,6 +359,8 @@ for (const f of fighters) {
   if (bouts.length) withBouts++;
   totalBoutRows += bouts.length;
   scheduledRows += bouts.filter((b) => b.result === "scheduled").length;
+  titleTypeRows += bouts.filter((b) => b.title_type).length;
+  resultUnknownRows += bouts.filter((b) => b.result === "unknown").length;
 
   const detail = {
     slug,
@@ -433,6 +437,8 @@ const stats = {
   kanaFilled: fighters.filter((f) => f.kana).length,
   kanaMissing: fighters.filter((f) => !f.kana).length,
   kanaConverted: fighters.filter((f) => f.kana_source?.type === "from_romaji").length,
+  titleTypeCount: titleTypeRows,
+  resultUnknownCount: resultUnknownRows,
   promotions: boutFiles.map((b) => b.label),
 };
 
