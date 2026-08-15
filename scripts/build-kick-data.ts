@@ -257,6 +257,7 @@ function kanaBucket(kana: string | null): string {
 const index: unknown[] = [];
 let withBouts = 0;
 let totalBoutRows = 0;
+let scheduledRows = 0;
 
 for (const f of fighters) {
   const key = identity(f);
@@ -265,6 +266,7 @@ for (const f of fighters) {
   const bouts = dedupe(raw).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
   if (bouts.length) withBouts++;
   totalBoutRows += bouts.length;
+  scheduledRows += bouts.filter((b) => b.result === "scheduled").length;
 
   const detail = {
     slug,
@@ -331,6 +333,9 @@ const stats = {
   fighters: fighters.length,
   fightersWithBouts: withBouts,
   boutRows: totalBoutRows,
+  // 「戦績」として数えるのは実施済みのみ。scheduled(K-1の未実施の予定試合)は別建てにする。
+  boutRowsCompleted: totalBoutRows - scheduledRows,
+  boutRowsScheduled: scheduledRows,
   boutRowsRaw: allBouts.length,
   mergedDuplicateRows: mergedRows,
   unmatchedBouts,

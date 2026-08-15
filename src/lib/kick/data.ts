@@ -65,6 +65,8 @@ export interface KickStats {
   fighters: number;
   fightersWithBouts: number;
   boutRows: number;
+  boutRowsCompleted: number;
+  boutRowsScheduled: number;
   boutRowsRaw: number;
   mergedDuplicateRows: number;
   unmatchedBouts: number;
@@ -113,6 +115,25 @@ export const PROMOTION_SHORT: Record<string, string> = {
   "KNOCK OUT": "KO公式",
   "K-1 / Krush / Krush-EX": "K-1公式",
 };
+
+/**
+ * 戦績表の「決着」列に出す表示用テキスト。**生データ(method_raw)は変更しない。**
+ *
+ * 出典サイトの原文は `3R 判定` / `3R判定` / `1R KO` / `1RKO` / `KO 1R` のように
+ * 表記が揺れており、かつラウンドは専用のR列があるため重複している。
+ * 表示ではラウンド・延長・ルール注記を取り除いた「決着方法だけ」に揃える
+ * (ラウンドはR列、延長とルールはバッジで別に出している)。
+ * 原文は title 属性で確認できるようにする。
+ */
+export function methodLabel(raw: string): string {
+  let s = (raw ?? "").normalize("NFKC").trim();
+  if (!s) return "—";
+  s = s.replace(/※.*$/, "");                 // ※MMA / ※OFGマッチ → ruleset バッジで表示済み
+  s = s.replace(/延長\s*R?/g, "");            // 延長 → is_extension バッジで表示済み
+  s = s.replace(/\d+\s*R(?:終了時)?/g, " ");  // 3R / 1R / 3R終了時 → R列で表示済み
+  s = s.replace(/\s+/g, " ").trim();
+  return s || "—";
+}
 
 export const RESULT_LABEL: Record<KickBout["result"], string> = {
   win: "勝",

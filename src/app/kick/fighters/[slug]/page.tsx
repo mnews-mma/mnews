@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getKickFighter, getKickIndex, KickBout, PROMOTION_SHORT, RESULT_LABEL } from "@/lib/kick/data";
+import { getKickFighter, getKickIndex, KickBout, methodLabel, PROMOTION_SHORT, RESULT_LABEL } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
 
 /** 2,484人分をビルド時に静的生成する(リクエスト時の処理をゼロにする)。 */
@@ -165,7 +165,9 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                     <OpponentCell b={b} />
                   </td>
                   <td>
-                    {b.methodRaw || <span className="kick-empty">—</span>}
+                    <span title={b.methodRaw ? `出典の原文: ${b.methodRaw}` : undefined}>
+                      {methodLabel(b.methodRaw)}
+                    </span>
                     {b.isExtension && <span className="kick-badge">延長</span>}
                   </td>
                   <td className="kick-table__date">{b.round ?? "—"}</td>

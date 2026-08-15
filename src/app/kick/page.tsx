@@ -27,8 +27,8 @@ export default function KickTopPage() {
           <div className="kick-stat__l">収録選手</div>
         </div>
         <div className="kick-stat">
-          <div className="kick-stat__n">{nf(stats.boutRows)}</div>
-          <div className="kick-stat__l">戦績（bout）</div>
+          <div className="kick-stat__n">{nf(stats.boutRowsCompleted)}</div>
+          <div className="kick-stat__l">戦績（実施済み）</div>
         </div>
         <div className="kick-stat">
           <div className="kick-stat__n">{nf(stats.kanaFilled)}</div>
@@ -47,7 +47,13 @@ export default function KickTopPage() {
       <h2 className="kick-section-title">収録範囲</h2>
       <p className="kick-lead">
         名簿は次の6ソースから作成しました。戦績は下記4団体の公式サイトに掲載されているものを収録しています
-        （{nf(stats.fightersWithBouts)}人分・{nf(stats.boutRows)}bout）。
+        （{nf(stats.fightersWithBouts)}人分）。
+      </p>
+      <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
+        件数の内訳：各団体の公式サイトから取得した {nf(stats.boutRowsRaw)} 件のうち、複数団体に重複掲載されていた{" "}
+        {nf(stats.mergedDuplicateRows)} 件を1行に統合し、名簿に該当者がいない {stats.unmatchedBouts} 件を除いた{" "}
+        {nf(stats.boutRows)} 件を掲載しています。うち {stats.boutRowsScheduled} 件は開催前の予定試合のため、
+        「戦績（実施済み）」の {nf(stats.boutRowsCompleted)} 件には含めていません。
       </p>
       <ul className="kick-list">
         {KICK_ROSTER_SOURCES.map((s) => (
@@ -80,6 +86,10 @@ export default function KickTopPage() {
         <li>名簿に収録がない対戦相手も、表記名をそのまま掲載しています。</li>
         <li>
           複数団体の公式サイトに同じ試合が載っている場合は1行にまとめ、出典は両方を残しています（{nf(stats.mergedDuplicateRows)}件）。
+        </li>
+        <li>
+          決着の表記（「3R 判定」「3R判定」など）は出典サイトごとに揺れがあります。<strong>元データは原文のまま保持</strong>し、
+          表示のみ決着方法に揃えています（ラウンドは「R」列に分離）。各行にカーソルを合わせると原文を確認できます。
         </li>
       </ul>
 
