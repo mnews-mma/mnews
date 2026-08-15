@@ -76,9 +76,16 @@ export interface KickStats {
   promotions: string[];
 }
 
-let cached: { stats: KickStats; fighters: KickIndexEntry[] } | null = null;
+interface KickIndex {
+  stats: KickStats;
+  fighters: KickIndexEntry[];
+  /** 選手名簿・戦績データを最後に取得し直した日時(ISO8601)。data/kick/sourceMeta.json由来。 */
+  sourceUpdatedAt: string;
+}
 
-export function getKickIndex(): { stats: KickStats; fighters: KickIndexEntry[] } {
+let cached: KickIndex | null = null;
+
+export function getKickIndex(): KickIndex {
   if (!cached) cached = JSON.parse(fs.readFileSync(path.join(GEN, "index.json"), "utf8"));
   return cached!;
 }
@@ -89,15 +96,19 @@ export function getKickFighter(slug: string): KickFighter | null {
   return JSON.parse(fs.readFileSync(f, "utf8"));
 }
 
-/** 掲載団体(戦績の取得元)。/kick の収録範囲表示に使う。 */
+/** 掲載団体(戦績の取得元)。/kick の収録範囲表示に使う。
+ *  RIZIN・ONE Championshipは名簿の掲載元ではなく、名簿に載っている選手の戦績を
+ *  追加で収録した戦績専用ソース(RIZINはmnews既存資産・ONEは公式サイトの直接クロール)。 */
 export const KICK_PROMOTIONS = [
   { label: "SHOOT BOXING", url: "https://shootboxing.org/" },
   { label: "RISE", url: "https://rise-rc.com/" },
   { label: "KNOCK OUT", url: "https://knockoutkb.com/" },
   { label: "K-1 / Krush / Krush-EX", url: "https://www.k-1.co.jp/" },
+  { label: "RIZIN", url: "https://jp.rizinff.com/fighters" },
+  { label: "ONE Championship", url: "https://www.onefc.com" },
 ];
 
-/** 名簿の取得元(6ソース)。戦績4団体 + Wikipedia男女2一覧。 */
+/** 名簿の取得元(6ソース)。戦績6団体のうちWikipedia以外4団体 + Wikipedia男女2一覧。 */
 export const KICK_ROSTER_SOURCES = [
   "ja.wikipedia「男子キックボクサー一覧」",
   "ja.wikipedia「女子キックボクサー一覧」",
@@ -114,6 +125,8 @@ export const PROMOTION_SHORT: Record<string, string> = {
   RISE: "RISE公式",
   "KNOCK OUT": "KO公式",
   "K-1 / Krush / Krush-EX": "K-1公式",
+  RIZIN: "RIZIN公式",
+  "ONE Championship": "ONE公式",
 };
 
 /**

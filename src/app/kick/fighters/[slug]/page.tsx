@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getKickFighter, getKickIndex, KickBout, methodLabel, PROMOTION_SHORT, RESULT_LABEL } from "@/lib/kick/data";
+import {
+  getKickFighter,
+  getKickIndex,
+  KICK_PROMOTIONS,
+  KickBout,
+  methodLabel,
+  PROMOTION_SHORT,
+  RESULT_LABEL,
+} from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
 
 /** 2,484人分をビルド時に静的生成する(リクエスト時の処理をゼロにする)。 */
@@ -133,7 +141,7 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
 
       {f.bouts.length === 0 ? (
         <p className="kick-lead">
-          収録対象4団体（SHOOT BOXING／RISE／KNOCK OUT／K-1グループ）の公式サイトに、この選手の戦績掲載が見つかりませんでした。
+          収録対象{KICK_PROMOTIONS.length}団体（{KICK_PROMOTIONS.map((p) => p.label).join("／")}）の公式サイトに、この選手の戦績掲載が見つかりませんでした。
           名簿には収録されていますが、戦績データはありません。
         </p>
       ) : (
