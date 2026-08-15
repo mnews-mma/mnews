@@ -1,0 +1,950 @@
+[
+ {
+  "name": "AKIRA Jr.",
+  "realname": "梅村 アキラジュニア",
+  "realname_raw_field": "梅村 アキラジュニア（うめむら アキラジュニア）",
+  "source_url": "https://ja.wikipedia.org/wiki/AKIRA_Jr"
+ },
+ {
+  "name": "DAVID",
+  "realname": "デイビッド・アーチュリータ",
+  "realname_raw_field": "デイビッド・アーチュリータ",
+  "source_url": "https://ja.wikipedia.org/wiki/DAVID_(キックボクサー)"
+ },
+ {
+  "name": "Dyki",
+  "realname": "宮城 大樹",
+  "realname_raw_field": "宮城 大樹",
+  "source_url": "https://ja.wikipedia.org/wiki/Dyki"
+ },
+ {
+  "name": "HAYATO",
+  "realname": "蓑田 隼斗",
+  "realname_raw_field": "蓑田 隼斗（みのだ はやと）",
+  "source_url": "https://ja.wikipedia.org/wiki/HAYATO"
+ },
+ {
+  "name": "HIROYA",
+  "realname": "河部 弘也",
+  "realname_raw_field": "河部 弘也（かわべ ひろや）",
+  "source_url": "https://ja.wikipedia.org/wiki/HIROYA"
+ },
+ {
+  "name": "Little Tiger",
+  "realname": "宮内 彩香",
+  "realname_raw_field": "宮内 彩香",
+  "source_url": "https://ja.wikipedia.org/wiki/Little_Tiger"
+ },
+ {
+  "name": "MOE",
+  "realname": "髙橋 萌",
+  "realname_raw_field": "髙橋 萌（たかはし もえ）",
+  "source_url": "https://ja.wikipedia.org/wiki/高橋萌"
+ },
+ {
+  "name": "MasakIラジャサクレック",
+  "realname": "花井 奨規",
+  "realname_raw_field": "花井 奨規",
+  "source_url": "https://ja.wikipedia.org/wiki/MasakIラジャサクレック"
+ },
+ {
+  "name": "NIIZUMAX!",
+  "realname": "新妻 耕平",
+  "realname_raw_field": "新妻 耕平",
+  "source_url": "https://ja.wikipedia.org/wiki/NIIZUMAX!"
+ },
+ {
+  "name": "NORIKO",
+  "realname": "野木 紀子",
+  "realname_raw_field": "野木 紀子",
+  "source_url": "https://ja.wikipedia.org/wiki/角田紀子"
+ },
+ {
+  "name": "T-98",
+  "realname": "今村卓也",
+  "realname_raw_field": "今村卓也",
+  "source_url": "https://ja.wikipedia.org/wiki/T-98"
+ },
+ {
+  "name": "TATSUJI",
+  "realname": "高江 達二",
+  "realname_raw_field": "高江 達二（たかえ たつじ）",
+  "source_url": "https://ja.wikipedia.org/wiki/TATSUJI"
+ },
+ {
+  "name": "TOMO",
+  "realname": "森 知行",
+  "realname_raw_field": "森 知行",
+  "source_url": "https://ja.wikipedia.org/wiki/TOMO_(格闘家)"
+ },
+ {
+  "name": "TURBΦ",
+  "realname": "長塚 崇",
+  "realname_raw_field": "長塚 崇（ながつか たかし）",
+  "source_url": "https://ja.wikipedia.org/wiki/TURBΦ_(キックボクサー)"
+ },
+ {
+  "name": "Uver∞miyU",
+  "realname": "高橋 美結",
+  "realname_raw_field": "高橋 美結",
+  "source_url": "https://ja.wikipedia.org/wiki/Uver∞miyU"
+ },
+ {
+  "name": "“狂拳”竹内 裕二",
+  "realname": "竹内 裕二",
+  "realname_raw_field": "竹内 裕二 （たけうち ゆうじ）",
+  "source_url": "https://ja.wikipedia.org/wiki/\"狂拳\"竹内裕二"
+ },
+ {
+  "name": "☆MIKA☆",
+  "realname": "長井 未果",
+  "realname_raw_field": "長井 未果",
+  "source_url": "https://ja.wikipedia.org/wiki/☆MIKA☆"
+ },
+ {
+  "name": "いつか",
+  "realname": "横瀬 いつか",
+  "realname_raw_field": "横瀬 いつか",
+  "source_url": "https://ja.wikipedia.org/wiki/横瀬いつか"
+ },
+ {
+  "name": "せり",
+  "realname": "斎藤 せり",
+  "realname_raw_field": "斎藤 せり",
+  "source_url": "https://ja.wikipedia.org/wiki/せり_(格闘家)"
+ },
+ {
+  "name": "ちはる",
+  "realname": "森川 ちはる",
+  "realname_raw_field": "森川 ちはる",
+  "source_url": "https://ja.wikipedia.org/wiki/ちはる_(キックボクサー)"
+ },
+ {
+  "name": "ぱんちゃん璃奈",
+  "realname": "岡本 璃奈",
+  "realname_raw_field": "岡本 璃奈",
+  "source_url": "https://ja.wikipedia.org/wiki/ぱんちゃん璃奈"
+ },
+ {
+  "name": "アヌワット・ゲーオサムリット",
+  "realname": "アピサック・ロンピチャイ",
+  "realname_raw_field": "アピサック・ロンピチャイ",
+  "source_url": "https://ja.wikipedia.org/wiki/アヌワット・ゲーオサムリット"
+ },
+ {
+  "name": "アマラ忍",
+  "realname": "ツグト・アマラバヤサガラン",
+  "realname_raw_field": "ツグト・アマラバヤサガラン",
+  "source_url": "https://ja.wikipedia.org/wiki/アマラ忍"
+ },
+ {
+  "name": "アレキサンダー・ピチュクノフ",
+  "realname": "アレクサンドル・ピテュクノフ",
+  "realname_raw_field": "アレクサンドル・ピテュクノフ",
+  "source_url": "https://ja.wikipedia.org/wiki/アレキサンダー・ピチュクノフ"
+ },
+ {
+  "name": "アレックス・ゴング",
+  "realname": "アレクサンダー・ジェームズ・ゴング",
+  "realname_raw_field": "アレクサンダー・ジェームズ・ゴング",
+  "source_url": "https://ja.wikipedia.org/wiki/アレックス・ゴング"
+ },
+ {
+  "name": "アレックス・ロバーツ",
+  "realname": "アレキサンダー・リチャード・ロバーツ",
+  "realname_raw_field": "アレキサンダー・リチャード・ロバーツ",
+  "source_url": "https://ja.wikipedia.org/wiki/アレックス・ロバーツ"
+ },
+ {
+  "name": "アンダーソン・ブラドック・シルバ",
+  "realname": "アンデルソン・シウバ",
+  "realname_raw_field": "アンデルソン・シウバ",
+  "source_url": "https://ja.wikipedia.org/wiki/アンダーソン・ブラドック・シルバ"
+ },
+ {
+  "name": "アンディ・サワー",
+  "realname": "Andreas Souwer",
+  "realname_raw_field": "Andreas Souwer",
+  "source_url": "https://ja.wikipedia.org/wiki/アンディ・サワー"
+ },
+ {
+  "name": "アンディ・フグ",
+  "realname": "アンドレーアス・フーク",
+  "realname_raw_field": "アンドレーアス・フーク",
+  "source_url": "https://ja.wikipedia.org/wiki/アンディ・フグ"
+ },
+ {
+  "name": "アントニー・ハードンク",
+  "realname": "アントニ・バレンド・ハードンク",
+  "realname_raw_field": "アントニ・バレンド・ハードンク",
+  "source_url": "https://ja.wikipedia.org/wiki/アントニー・ハードンク"
+ },
+ {
+  "name": "アーネスト・ホースト",
+  "realname": "アーネスト・フリッツ・ホースト",
+  "realname_raw_field": "アーネスト・フリッツ・ホースト",
+  "source_url": "https://ja.wikipedia.org/wiki/アーネスト・ホースト"
+ },
+ {
+  "name": "イアン・シャファー",
+  "realname": "イアン・ジェームス・シャファー",
+  "realname_raw_field": "イアン・ジェームス・シャファー",
+  "source_url": "https://ja.wikipedia.org/wiki/イアン・シャファー"
+ },
+ {
+  "name": "イ・チンジン",
+  "realname": "池 仁珍",
+  "realname_raw_field": "池 仁珍",
+  "source_url": "https://ja.wikipedia.org/wiki/池仁珍"
+ },
+ {
+  "name": "エヴジェニー・オルロフ",
+  "realname": "エフゲニー・オルロフ",
+  "realname_raw_field": "エフゲニー・オルロフ",
+  "source_url": "https://ja.wikipedia.org/wiki/エヴジェニー・オルロフ"
+ },
+ {
+  "name": "オーレ・ローセン",
+  "realname": "オーレ・バギオ・ローセン",
+  "realname_raw_field": "オーレ・バギオ・ローセン",
+  "source_url": "https://ja.wikipedia.org/wiki/オーレ・ローセン"
+ },
+ {
+  "name": "カク・ユンソブ",
+  "realname": "クァク・ユンソプ",
+  "realname_raw_field": "クァク・ユンソプ",
+  "source_url": "https://ja.wikipedia.org/wiki/カク・ユンソブ"
+ },
+ {
+  "name": "カーター・ウィリアムス",
+  "realname": "カーター・リー・ウイリアムス",
+  "realname_raw_field": "カーター・リー・ウイリアムス",
+  "source_url": "https://ja.wikipedia.org/wiki/カーター・ウィリアムス"
+ },
+ {
+  "name": "ガオグライ・ゲーンノラシン",
+  "realname": "アーティッド・ダムカム",
+  "realname_raw_field": "アーティッド・ダムカム",
+  "source_url": "https://ja.wikipedia.org/wiki/ガオグライ・ゲーンノラシン"
+ },
+ {
+  "name": "キム・ギョンソック",
+  "realname": "金慶拓",
+  "realname_raw_field": "金慶拓",
+  "source_url": "https://ja.wikipedia.org/wiki/キム・ギョンソック"
+ },
+ {
+  "name": "キム・ドンウック",
+  "realname": "金東郁",
+  "realname_raw_field": "金東郁",
+  "source_url": "https://ja.wikipedia.org/wiki/キム・ドンウック_(格闘家)"
+ },
+ {
+  "name": "キム・ミンス",
+  "realname": "金 岷秀",
+  "realname_raw_field": "金 岷秀",
+  "source_url": "https://ja.wikipedia.org/wiki/キム・ミンス"
+ },
+ {
+  "name": "キム・ヨンヒョン",
+  "realname": "金永賢",
+  "realname_raw_field": "金永賢",
+  "source_url": "https://ja.wikipedia.org/wiki/キム・ヨンヒョン"
+ },
+ {
+  "name": "ギンティ・ブレーダ",
+  "realname": "Ginty Owen Vrede",
+  "realname_raw_field": "Ginty Owen Vrede",
+  "source_url": "https://ja.wikipedia.org/wiki/ギンティ・ブレーダ"
+ },
+ {
+  "name": "サトルヴァシコバ",
+  "realname": "小林 悟",
+  "realname_raw_field": "小林 悟（こばやし さとる）",
+  "source_url": "https://ja.wikipedia.org/wiki/サトルヴァシコバ"
+ },
+ {
+  "name": "サム・グレコ",
+  "realname": "サルバトーレ・グレコ",
+  "realname_raw_field": "サルバトーレ・グレコ（Salvatore Greco）",
+  "source_url": "https://ja.wikipedia.org/wiki/サム・グレコ"
+ },
+ {
+  "name": "サーマート・パヤクァルン",
+  "realname": "Samart Tiptarmai",
+  "realname_raw_field": "Samart Tiptarmai",
+  "source_url": "https://ja.wikipedia.org/wiki/サーマート・パヤクァルン"
+ },
+ {
+  "name": "シリモンコル・シンワッサ",
+  "realname": "シリモンコン・ランチュオム",
+  "realname_raw_field": "シリモンコン・ランチュオム",
+  "source_url": "https://ja.wikipedia.org/wiki/シリモンコン・シンワンチャー"
+ },
+ {
+  "name": "シング・心・ジャディブ",
+  "realname": "シング・ジャディブ",
+  "realname_raw_field": "シング・ジャディブ",
+  "source_url": "https://ja.wikipedia.org/wiki/シング・心・ジャディブ"
+ },
+ {
+  "name": "ジェット・イズミ",
+  "realname": "野口 泉",
+  "realname_raw_field": "野口 泉",
+  "source_url": "https://ja.wikipedia.org/wiki/ジェット・イズミ"
+ },
+ {
+  "name": "ジョン・ウェイン・パー",
+  "realname": "ウェイン・グレゴリー・パー",
+  "realname_raw_field": "ウェイン・グレゴリー・パー",
+  "source_url": "https://ja.wikipedia.org/wiki/ジョン・ウェイン・パー"
+ },
+ {
+  "name": "スタン・ザ・マン",
+  "realname": "スタン・ロンギニディス",
+  "realname_raw_field": "スタン・ロンギニディス",
+  "source_url": "https://ja.wikipedia.org/wiki/スタン・ザ・マン_(キックボクサー)"
+ },
+ {
+  "name": "セルゲイ・ラシェンコ",
+  "realname": "セルヒー・ラシチェンコ",
+  "realname_raw_field": "セルヒー・ラシチェンコ",
+  "source_url": "https://ja.wikipedia.org/wiki/セルゲイ・ラシェンコ"
+ },
+ {
+  "name": "ソルデティグレ・ヨースケ",
+  "realname": "佐藤 要介",
+  "realname_raw_field": "佐藤 要介",
+  "source_url": "https://ja.wikipedia.org/wiki/ソルデティグレ・ヨースケ"
+ },
+ {
+  "name": "タケル",
+  "realname": "森 史郎",
+  "realname_raw_field": "森 史郎",
+  "source_url": "https://ja.wikipedia.org/wiki/タケル_(格闘家)"
+ },
+ {
+  "name": "ダグ・ヴィニー",
+  "realname": "Douglas Ma'afu Hawke",
+  "realname_raw_field": "Douglas Ma'afu Hawke",
+  "source_url": "https://ja.wikipedia.org/wiki/ダグ・ヴィニー"
+ },
+ {
+  "name": "チェ・ヨンス",
+  "realname": "崔龍洙",
+  "realname_raw_field": "崔龍洙",
+  "source_url": "https://ja.wikipedia.org/wiki/崔龍洙_(ボクサー)"
+ },
+ {
+  "name": "チャンプア・ゲッソンリット",
+  "realname": "ソムチャイ・ローブクゥエーン",
+  "realname_raw_field": "ソムチャイ・ローブクゥエーン",
+  "source_url": "https://ja.wikipedia.org/wiki/チャンプア・ゲッソンリット"
+ },
+ {
+  "name": "チョ・ジョンファン",
+  "realname": "チャ・ジョンファン",
+  "realname_raw_field": "チャ・ジョンファン",
+  "source_url": "https://ja.wikipedia.org/wiki/チョ・ジョンファン"
+ },
+ {
+  "name": "チ・インジン",
+  "realname": "池 仁珍",
+  "realname_raw_field": "池 仁珍",
+  "source_url": "https://ja.wikipedia.org/wiki/池仁珍"
+ },
+ {
+  "name": "トスカ・ペトリディス",
+  "realname": "タシス・ペトリディス",
+  "realname_raw_field": "タシス・ペトリディス",
+  "source_url": "https://ja.wikipedia.org/wiki/トスカ・ペトリディス"
+ },
+ {
+  "name": "ドラゴ",
+  "realname": "ガギク・アルチュニャン",
+  "realname_raw_field": "ガギク・アルチュニャン",
+  "source_url": "https://ja.wikipedia.org/wiki/ドラゴ"
+ },
+ {
+  "name": "ドン・ウィルソン",
+  "realname": "ドナルド・グレン・ウィルソン",
+  "realname_raw_field": "ドナルド・グレン・ウィルソン",
+  "source_url": "https://ja.wikipedia.org/wiki/ドン・ウィルソン_(ボクサー)"
+ },
+ {
+  "name": "ナオフォール“アイアン・レッグ”",
+  "realname": "ナオフォール・ベナゾーズ",
+  "realname_raw_field": "ナオフォール・ベナゾーズ",
+  "source_url": "https://ja.wikipedia.org/wiki/ナオフォール“アイアン・レッグ”"
+ },
+ {
+  "name": "ニキー・ホルツケン",
+  "realname": "ニコラス・ホルツケン",
+  "realname_raw_field": "ニコラス・ホルツケン",
+  "source_url": "https://ja.wikipedia.org/wiki/ニキー・ホルツケン"
+ },
+ {
+  "name": "ネイサン・\"カーネッジ\"・コーベット",
+  "realname": "ネイサン・コーベット",
+  "realname_raw_field": "ネイサン・コーベット",
+  "source_url": "https://ja.wikipedia.org/wiki/ネイサン・コーベット"
+ },
+ {
+  "name": "ノブ・ハヤシ",
+  "realname": "林 伸樹",
+  "realname_raw_field": "林 伸樹",
+  "source_url": "https://ja.wikipedia.org/wiki/ノブ・ハヤシ"
+ },
+ {
+  "name": "ハリッド\"ディ・ファウスト\"",
+  "realname": "ハリッド・アラブ",
+  "realname_raw_field": "ハリッド・アラブ",
+  "source_url": "https://ja.wikipedia.org/wiki/ハリッド\"ディ・ファウスト\""
+ },
+ {
+  "name": "バタービーン",
+  "realname": "エリック・スコット・エッシュ",
+  "realname_raw_field": "エリック・スコット・エッシュ",
+  "source_url": "https://ja.wikipedia.org/wiki/バタービーン"
+ },
+ {
+  "name": "パク・ヨンス",
+  "realname": "朴龍洙",
+  "realname_raw_field": "朴龍洙",
+  "source_url": "https://ja.wikipedia.org/wiki/パク・ヨンス"
+ },
+ {
+  "name": "パトリック・バリー",
+  "realname": "パトリック・ジョセフ・バリー",
+  "realname_raw_field": "パトリック・ジョセフ・バリー",
+  "source_url": "https://ja.wikipedia.org/wiki/パトリック・バリー"
+ },
+ {
+  "name": "フランシスコ・フィリォ",
+  "realname": "Francisco Alves Filho",
+  "realname_raw_field": "Francisco Alves Filho",
+  "source_url": "https://ja.wikipedia.org/wiki/フランシスコ・フィリォ"
+ },
+ {
+  "name": "フランソワ・\"ザ・ホワイトバッファロー\"・ボタ",
+  "realname": "フランソワ・ヨハネス・ボタ",
+  "realname_raw_field": "フランソワ・ヨハネス・ボタ",
+  "source_url": "https://ja.wikipedia.org/wiki/フランソワ・ボタ"
+ },
+ {
+  "name": "フレディ・ケマイヨ",
+  "realname": "Frédéric Kemayo",
+  "realname_raw_field": "Frédéric Kemayo",
+  "source_url": "https://ja.wikipedia.org/wiki/フレディ・ケマイヨ"
+ },
+ {
+  "name": "ブアカーオ・ポー.プラムック",
+  "realname": "ソムバット・バンチャーメー",
+  "realname_raw_field": "ソムバット・バンチャーメー",
+  "source_url": "https://ja.wikipedia.org/wiki/ブアカーオ・ポー.プラムック"
+ },
+ {
+  "name": "ブラックマンバ",
+  "realname": "カルター・ギル",
+  "realname_raw_field": "カルター・ギル",
+  "source_url": "https://ja.wikipedia.org/wiki/ブラックマンバ_(格闘家)"
+ },
+ {
+  "name": "ブランコ・シカティック",
+  "realname": "ブラニミル・ツィカティッチ",
+  "realname_raw_field": "ブラニミル・ツィカティッチ",
+  "source_url": "https://ja.wikipedia.org/wiki/ブランコ・シカティック"
+ },
+ {
+  "name": "ボグダン・ストイカ",
+  "realname": "ボグダン・クリスティアン・ストイカ",
+  "realname_raw_field": "ボグダン・クリスティアン・ストイカ",
+  "source_url": "https://ja.wikipedia.org/wiki/ボグダン・ストイカ"
+ },
+ {
+  "name": "ボブ・サップ",
+  "realname": "ロバート・マルコム・サップ",
+  "realname_raw_field": "ロバート・マルコム・サップ",
+  "source_url": "https://ja.wikipedia.org/wiki/ボブ・サップ"
+ },
+ {
+  "name": "ポール・スロウィンスキー",
+  "realname": "Paweł Słowiński",
+  "realname_raw_field": "Paweł Słowiński",
+  "source_url": "https://ja.wikipedia.org/wiki/ポール・スロウィンスキー"
+ },
+ {
+  "name": "マイク・ザンビディス",
+  "realname": "ミカリス・ザンビディス",
+  "realname_raw_field": "ミカリス・ザンビディス",
+  "source_url": "https://ja.wikipedia.org/wiki/マイク・ザンビディス"
+ },
+ {
+  "name": "マイク・ベルナルド",
+  "realname": "マイケル・ショーン・ベルナルド",
+  "realname_raw_field": "マイケル・ショーン・ベルナルド",
+  "source_url": "https://ja.wikipedia.org/wiki/マイク・ベルナルド"
+ },
+ {
+  "name": "マイケル・マクドナルド",
+  "realname": "マイケル・アンソニー・マクドナルド",
+  "realname_raw_field": "マイケル・アンソニー・マクドナルド",
+  "source_url": "https://ja.wikipedia.org/wiki/マイケル・マクドナルド_(格闘家)"
+ },
+ {
+  "name": "マイティ・モー",
+  "realname": "シアラ＝モウ・シリガ",
+  "realname_raw_field": "シアラ＝モウ・シリガ",
+  "source_url": "https://ja.wikipedia.org/wiki/マイティ・モー"
+ },
+ {
+  "name": "マグナム酒井",
+  "realname": "酒井 亮",
+  "realname_raw_field": "酒井 亮（さかい りょう）",
+  "source_url": "https://ja.wikipedia.org/wiki/マグナム酒井"
+ },
+ {
+  "name": "マリウス・ザロムスキー",
+  "realname": "マリウス・ザロムスキス",
+  "realname_raw_field": "マリウス・ザロムスキス",
+  "source_url": "https://ja.wikipedia.org/wiki/マリウス・ザロムスキー"
+ },
+ {
+  "name": "マーティン・ロザルスキー",
+  "realname": "マルチン・ロザルスキ",
+  "realname_raw_field": "マルチン・ロザルスキ",
+  "source_url": "https://ja.wikipedia.org/wiki/マーティン・ロザルスキー"
+ },
+ {
+  "name": "モンターニャ・シウバ",
+  "realname": "Montanha Silva",
+  "realname_raw_field": "Montanha Silva",
+  "source_url": "https://ja.wikipedia.org/wiki/モンターニャ・シウバ"
+ },
+ {
+  "name": "モーリス・スミス",
+  "realname": "モーリス・L・スミス",
+  "realname_raw_field": "モーリス・L・スミス",
+  "source_url": "https://ja.wikipedia.org/wiki/モーリス・スミス"
+ },
+ {
+  "name": "ヤン・ロムルダー",
+  "realname": "ヤン・ティヌス・ロムルダー",
+  "realname_raw_field": "ヤン・ティヌス・ロムルダー",
+  "source_url": "https://ja.wikipedia.org/wiki/ヤン・ロムルダー"
+ },
+ {
+  "name": "ランディ・キム",
+  "realname": "キム・ジェイル",
+  "realname_raw_field": "キム・ジェイル",
+  "source_url": "https://ja.wikipedia.org/wiki/ランディ・キム"
+ },
+ {
+  "name": "ランバー・ソムデートM16",
+  "realname": "ランバー・ソムデート",
+  "realname_raw_field": "ランバー・ソムデート",
+  "source_url": "https://ja.wikipedia.org/wiki/ランバー・ソムデートM16"
+ },
+ {
+  "name": "リョウ・ペガサス",
+  "realname": "小松 諒",
+  "realname_raw_field": "小松 諒",
+  "source_url": "https://ja.wikipedia.org/wiki/リョウ・ペガサス"
+ },
+ {
+  "name": "レイ・スターリン",
+  "realname": "Raymond Starring",
+  "realname_raw_field": "Raymond Starring",
+  "source_url": "https://ja.wikipedia.org/wiki/レイ・スターリン"
+ },
+ {
+  "name": "レオナ・ペタス",
+  "realname": "加藤 玲於奈",
+  "realname_raw_field": "加藤 玲於奈（かとう れおな）",
+  "source_url": "https://ja.wikipedia.org/wiki/レオナ・ペタス"
+ },
+ {
+  "name": "レミー・ボンヤスキー",
+  "realname": "レミー・ケネス・ボンヤスキー",
+  "realname_raw_field": "レミー・ケネス・ボンヤスキー（Remy Kenneth Bonjask）",
+  "source_url": "https://ja.wikipedia.org/wiki/レミー・ボンヤスキー"
+ },
+ {
+  "name": "ワチャラチャイ・ゲーオサムリット",
+  "realname": "ポンサネー・ヌーラック",
+  "realname_raw_field": "ポンサネー・ヌーラック",
+  "source_url": "https://ja.wikipedia.org/wiki/ワチャラチャイ・ゲーオサムリット"
+ },
+ {
+  "name": "ヴィタリ・オフラメンコ",
+  "realname": "ビタリー・アフラメーンカ",
+  "realname_raw_field": "ビタリー・アフラメーンカ",
+  "source_url": "https://ja.wikipedia.org/wiki/ヴィタリ・オフラメンコ"
+ },
+ {
+  "name": "ヴィトー・ミランダ",
+  "realname": "ヴィトール・ブルーノ・ソアレス・ミランダ",
+  "realname_raw_field": "ヴィトール・ブルーノ・ソアレス・ミランダ",
+  "source_url": "https://ja.wikipedia.org/wiki/ヴィトー・ミランダ"
+ },
+ {
+  "name": "三上 大智",
+  "realname": "三上 ヘンリー 大智",
+  "realname_raw_field": "三上 ヘンリー 大智",
+  "source_url": "https://ja.wikipedia.org/wiki/三上ヘンリー大智"
+ },
+ {
+  "name": "中嶋平八",
+  "realname": "中嶋 浩二",
+  "realname_raw_field": "中嶋 浩二",
+  "source_url": "https://ja.wikipedia.org/wiki/中嶋平八"
+ },
+ {
+  "name": "京太郎",
+  "realname": "藤本 京太郎",
+  "realname_raw_field": "藤本 京太郎",
+  "source_url": "https://ja.wikipedia.org/wiki/藤本京太郎"
+ },
+ {
+  "name": "佑典",
+  "realname": "小島 佑典",
+  "realname_raw_field": "小島 佑典（おじま ゆうすけ）",
+  "source_url": "https://ja.wikipedia.org/wiki/佑典"
+ },
+ {
+  "name": "健太",
+  "realname": "山田 健太",
+  "realname_raw_field": "山田 健太（やまだ けんた）",
+  "source_url": "https://ja.wikipedia.org/wiki/健太"
+ },
+ {
+  "name": "内田ノボル",
+  "realname": "松本 昇",
+  "realname_raw_field": "松本 昇",
+  "source_url": "https://ja.wikipedia.org/wiki/内田ノボル"
+ },
+ {
+  "name": "前口太尊",
+  "realname": "前口 泰祐",
+  "realname_raw_field": "前口 泰祐",
+  "source_url": "https://ja.wikipedia.org/wiki/前口太尊"
+ },
+ {
+  "name": "吉鷹弘",
+  "realname": "非公開",
+  "realname_raw_field": "非公開",
+  "source_url": "https://ja.wikipedia.org/wiki/吉鷹弘"
+ },
+ {
+  "name": "国崇",
+  "realname": "藤原 国崇",
+  "realname_raw_field": "藤原 国崇",
+  "source_url": "https://ja.wikipedia.org/wiki/国崇"
+ },
+ {
+  "name": "土井広之",
+  "realname": "土井 博幸",
+  "realname_raw_field": "土井 博幸（どい ひろゆき）",
+  "source_url": "https://ja.wikipedia.org/wiki/土井広之"
+ },
+ {
+  "name": "壮泰",
+  "realname": "山本 壮泰",
+  "realname_raw_field": "山本 壮泰",
+  "source_url": "https://ja.wikipedia.org/wiki/壮泰"
+ },
+ {
+  "name": "大和 哲也",
+  "realname": "岩下 哲也",
+  "realname_raw_field": "岩下 哲也",
+  "source_url": "https://ja.wikipedia.org/wiki/大和哲也"
+ },
+ {
+  "name": "大和侑也",
+  "realname": "松本 侑也",
+  "realname_raw_field": "松本 侑也",
+  "source_url": "https://ja.wikipedia.org/wiki/大和侑也"
+ },
+ {
+  "name": "大月 晴明",
+  "realname": "大西 宏之",
+  "realname_raw_field": "大西 宏之（おおにし ひろゆき）",
+  "source_url": "https://ja.wikipedia.org/wiki/大月晴明"
+ },
+ {
+  "name": "大沢昇",
+  "realname": "藤平 昭雄",
+  "realname_raw_field": "藤平 昭雄（ふじひら あきお）",
+  "source_url": "https://ja.wikipedia.org/wiki/大沢昇"
+ },
+ {
+  "name": "天承山",
+  "realname": "山内 幸夫",
+  "realname_raw_field": "山内 幸夫",
+  "source_url": "https://ja.wikipedia.org/wiki/天承山"
+ },
+ {
+  "name": "天田ヒロミ",
+  "realname": "天田 広美",
+  "realname_raw_field": "天田 広美",
+  "source_url": "https://ja.wikipedia.org/wiki/天田ヒロミ"
+ },
+ {
+  "name": "太刀風",
+  "realname": "高橋 誠一",
+  "realname_raw_field": "高橋 誠一（たかはし せいいち）",
+  "source_url": "https://ja.wikipedia.org/wiki/太刀風_(格闘家)"
+ },
+ {
+  "name": "宮本武勇志",
+  "realname": "宮本 典寛",
+  "realname_raw_field": "宮本 典寛",
+  "source_url": "https://ja.wikipedia.org/wiki/宮本武勇志"
+ },
+ {
+  "name": "小比類巻太信",
+  "realname": "小比類巻 貴之",
+  "realname_raw_field": "小比類巻 貴之",
+  "source_url": "https://ja.wikipedia.org/wiki/小比類巻太信"
+ },
+ {
+  "name": "山内佑太郎",
+  "realname": "山内 裕太郎",
+  "realname_raw_field": "山内 裕太郎",
+  "source_url": "https://ja.wikipedia.org/wiki/山内佑太郎"
+ },
+ {
+  "name": "志朗",
+  "realname": "松本 志朗",
+  "realname_raw_field": "松本 志朗（まつもと しろう）",
+  "source_url": "https://ja.wikipedia.org/wiki/志朗"
+ },
+ {
+  "name": "愛鷹 亮",
+  "realname": "後藤 亮",
+  "realname_raw_field": "後藤 亮",
+  "source_url": "https://ja.wikipedia.org/wiki/愛鷹亮"
+ },
+ {
+  "name": "我龍真吾",
+  "realname": "山本 真吾",
+  "realname_raw_field": "山本 真吾（やまもと しんご）",
+  "source_url": "https://ja.wikipedia.org/wiki/我龍真吾"
+ },
+ {
+  "name": "拳士浪",
+  "realname": "矢野志朗",
+  "realname_raw_field": "矢野志朗",
+  "source_url": "https://ja.wikipedia.org/wiki/拳士浪"
+ },
+ {
+  "name": "撫子",
+  "realname": "柴田 未悠",
+  "realname_raw_field": "柴田 未悠",
+  "source_url": "https://ja.wikipedia.org/wiki/撫子_(キックボクサー)"
+ },
+ {
+  "name": "日菜太",
+  "realname": "渡辺 日菜太",
+  "realname_raw_field": "渡辺 日菜太（わたなべ ひなた）",
+  "source_url": "https://ja.wikipedia.org/wiki/日菜太"
+ },
+ {
+  "name": "木村天鮮",
+  "realname": "木村 敬明",
+  "realname_raw_field": "木村 敬明",
+  "source_url": "https://ja.wikipedia.org/wiki/木村天鮮"
+ },
+ {
+  "name": "村浜武洋",
+  "realname": "村濱 武洋",
+  "realname_raw_field": "村濱 武洋",
+  "source_url": "https://ja.wikipedia.org/wiki/村浜武洋"
+ },
+ {
+  "name": "松下えみ",
+  "realname": "松下 絵美",
+  "realname_raw_field": "松下 絵美",
+  "source_url": "https://ja.wikipedia.org/wiki/松下えみ"
+ },
+ {
+  "name": "栄基",
+  "realname": "桜田 栄基",
+  "realname_raw_field": "桜田 栄基",
+  "source_url": "https://ja.wikipedia.org/wiki/栄基"
+ },
+ {
+  "name": "桃花シンデレラ",
+  "realname": "牧 桃花",
+  "realname_raw_field": "牧 桃花",
+  "source_url": "https://ja.wikipedia.org/wiki/桃花シンデレラ"
+ },
+ {
+  "name": "桜朋梨恵",
+  "realname": "大友 里恵",
+  "realname_raw_field": "大友 里恵",
+  "source_url": "https://ja.wikipedia.org/wiki/桜朋凛"
+ },
+ {
+  "name": "梶原龍児",
+  "realname": "梶原 隆治",
+  "realname_raw_field": "梶原 隆治",
+  "source_url": "https://ja.wikipedia.org/wiki/梶原龍児"
+ },
+ {
+  "name": "榎田洸之",
+  "realname": "榎田 寛之",
+  "realname_raw_field": "榎田 寛之（洸之）",
+  "source_url": "https://ja.wikipedia.org/wiki/榎田洸之"
+ },
+ {
+  "name": "武尊",
+  "realname": "世川 武尊",
+  "realname_raw_field": "世川 武尊",
+  "source_url": "https://ja.wikipedia.org/wiki/武尊"
+ },
+ {
+  "name": "武蔵",
+  "realname": "森 昭生",
+  "realname_raw_field": "森 昭生（もり あきお）",
+  "source_url": "https://ja.wikipedia.org/wiki/武蔵_(格闘家)"
+ },
+ {
+  "name": "沢村忠",
+  "realname": "白羽 秀樹",
+  "realname_raw_field": "白羽 秀樹",
+  "source_url": "https://ja.wikipedia.org/wiki/沢村忠"
+ },
+ {
+  "name": "港太郎",
+  "realname": "田代 義治",
+  "realname_raw_field": "田代 義治",
+  "source_url": "https://ja.wikipedia.org/wiki/港太郎"
+ },
+ {
+  "name": "神村エリカ",
+  "realname": "神村 江里加",
+  "realname_raw_field": "神村 江里加",
+  "source_url": "https://ja.wikipedia.org/wiki/神村エリカ"
+ },
+ {
+  "name": "神風莉央",
+  "realname": "千代森 莉央",
+  "realname_raw_field": "千代森 莉央",
+  "source_url": "https://ja.wikipedia.org/wiki/神風莉央"
+ },
+ {
+  "name": "稲毛忠治",
+  "realname": "松田正",
+  "realname_raw_field": "松田正",
+  "source_url": "https://ja.wikipedia.org/wiki/稲毛忠治"
+ },
+ {
+  "name": "羅紗陀",
+  "realname": "向山 竜一",
+  "realname_raw_field": "向山 竜一",
+  "source_url": "https://ja.wikipedia.org/wiki/羅紗陀"
+ },
+ {
+  "name": "船木鷹虎",
+  "realname": "船木 実",
+  "realname_raw_field": "船木 実（ふなき みのる）",
+  "source_url": "https://ja.wikipedia.org/wiki/船木鷹虎"
+ },
+ {
+  "name": "菊池浩一",
+  "realname": "菊地 浩一",
+  "realname_raw_field": "菊地 浩一",
+  "source_url": "https://ja.wikipedia.org/wiki/菊池浩一"
+ },
+ {
+  "name": "藤原あらし",
+  "realname": "藤原 正起",
+  "realname_raw_field": "藤原 正起",
+  "source_url": "https://ja.wikipedia.org/wiki/藤原あらし"
+ },
+ {
+  "name": "藤鬥嘩裟",
+  "realname": "笠原 司",
+  "realname_raw_field": "笠原 司（かさはら つかさ）",
+  "source_url": "https://ja.wikipedia.org/wiki/藤鬥嘩裟"
+ },
+ {
+  "name": "貴センチャイジム",
+  "realname": "駒村 貴之",
+  "realname_raw_field": "駒村 貴之",
+  "source_url": "https://ja.wikipedia.org/wiki/貴センチャイジム"
+ },
+ {
+  "name": "金泰泳",
+  "realname": "김태영",
+  "realname_raw_field": "김태영（キム・テヨン）",
+  "source_url": "https://ja.wikipedia.org/wiki/金泰泳_(格闘家)"
+ },
+ {
+  "name": "長島☆自演乙☆雄一郎",
+  "realname": "長島 雄一郎",
+  "realname_raw_field": "長島 雄一郎",
+  "source_url": "https://ja.wikipedia.org/wiki/長島☆自演乙☆雄一郎"
+ },
+ {
+  "name": "関ナオト",
+  "realname": "関 直人",
+  "realname_raw_field": "関 直人",
+  "source_url": "https://ja.wikipedia.org/wiki/関ナオト"
+ },
+ {
+  "name": "闘魔",
+  "realname": "當麻 正惟",
+  "realname_raw_field": "當麻 正惟",
+  "source_url": "https://ja.wikipedia.org/wiki/闘魔"
+ },
+ {
+  "name": "隼也ウィラサクレック",
+  "realname": "内野 隼也",
+  "realname_raw_field": "内野 隼也",
+  "source_url": "https://ja.wikipedia.org/wiki/隼也ウィラサクレック"
+ },
+ {
+  "name": "雄大",
+  "realname": "晴山 雄大",
+  "realname_raw_field": "晴山 雄大",
+  "source_url": "https://ja.wikipedia.org/wiki/雄大_(キックボクサー)"
+ },
+ {
+  "name": "風成",
+  "realname": "鈴木 風成",
+  "realname_raw_field": "鈴木 風成",
+  "source_url": "https://ja.wikipedia.org/wiki/風成"
+ },
+ {
+  "name": "飯田なお",
+  "realname": "飯田 菜生",
+  "realname_raw_field": "飯田 菜生",
+  "source_url": "https://ja.wikipedia.org/wiki/飯田なお"
+ },
+ {
+  "name": "駿太",
+  "realname": "伊藤 駿太",
+  "realname_raw_field": "伊藤 駿太（いとう しゅんた）",
+  "source_url": "https://ja.wikipedia.org/wiki/駿太"
+ },
+ {
+  "name": "高萩ツトム",
+  "realname": "高萩 勉",
+  "realname_raw_field": "高萩 勉",
+  "source_url": "https://ja.wikipedia.org/wiki/高萩勉"
+ },
+ {
+  "name": "魔裟斗",
+  "realname": "小林 雅人",
+  "realname_raw_field": "小林 雅人（こばやし まさと）",
+  "source_url": "https://ja.wikipedia.org/wiki/魔裟斗"
+ },
+ {
+  "name": "黒田アキヒロ",
+  "realname": "黒田 哲広",
+  "realname_raw_field": "黒田 哲広",
+  "source_url": "https://ja.wikipedia.org/wiki/黒田アキヒロ"
+ }
+]
