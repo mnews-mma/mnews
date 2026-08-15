@@ -148,10 +148,11 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
       </h2>
 
       {f.bouts.length === 0 ? (
-        <p className="kick-lead">
-          収録対象{KICK_PROMOTIONS.length}団体（{KICK_PROMOTIONS.map((p) => p.label).join("／")}）の公式サイトに、この選手の戦績掲載が見つかりませんでした。
-          名簿には収録されていますが、戦績データはありません。
-        </p>
+        <div className="kick-note">
+          この選手の試合記録は、収録対象の{KICK_PROMOTIONS.length}団体
+          （{KICK_PROMOTIONS.map((p) => p.label).join("／")}）の公式サイトには掲載されていません。
+          名簿は<strong>各団体公式サイトおよびWikipediaの掲載</strong>を根拠に収録しています。
+        </div>
       ) : (
         <div className="kick-table-wrap">
           <table className="kick-table">
