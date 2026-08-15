@@ -103,6 +103,10 @@ const boutFiles: { tag: string; label: string; file: string; matchBy: "sourceUrl
   { tag: "k1", label: "K-1 / Krush / Krush-EX", file: "bouts_k1.json", matchBy: "sourceUrl" },
   { tag: "rizin", label: "RIZIN", file: "bouts_rizin.json", matchBy: "identity" },
   { tag: "one", label: "ONE Championship", file: "bouts_one.json", matchBy: "identity" },
+  { tag: "deepkick", label: "DEEP☆KICK", file: "bouts_deepkick.json", matchBy: "identity" },
+  { tag: "njkf", label: "NJKF", file: "bouts_njkf.json", matchBy: "identity" },
+  { tag: "hoostcup", label: "HoostCup", file: "bouts_hoostcup.json", matchBy: "identity" },
+  { tag: "nkb", label: "NKB", file: "bouts_nkb.json", matchBy: "identity" },
 ];
 const allBouts: (Bout & { promotion: string; matchBy: "sourceUrl" | "identity" })[] = [];
 for (const b of boutFiles) {

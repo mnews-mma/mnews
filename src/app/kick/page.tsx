@@ -100,7 +100,7 @@ export default function KickTopPage() {
       <ul className="kick-list">
         <li>勝率・KO率などの算出指標（第1版では出していません）</li>
         <li>選手の検索・ランキング</li>
-        <li>上記{KICK_PROMOTIONS.length}団体以外の戦績（NJKF・NKB・MA日本・ジャパンキック等）</li>
+        <li>上記{KICK_PROMOTIONS.length}団体以外の戦績（MA日本・ジャパンキック等）</li>
       </ul>
     </>
   );
