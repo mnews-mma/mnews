@@ -204,6 +204,11 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                     <a href={b.sourceUrl} target="_blank" rel="noopener noreferrer" title={b.promotion}>
                       {PROMOTION_SHORT[b.promotion] ?? b.promotion}
                     </a>
+                    {b.sourceType === "wikipedia" && (
+                      <span className="kick-badge" title="この試合の出典は団体公式ではなくWikipediaです">
+                        Wikipedia
+                      </span>
+                    )}
                     {b.alsoFrom.map((u) => (
                       <div key={u}>
                         <a href={u} target="_blank" rel="noopener noreferrer">

@@ -45,6 +45,8 @@ export interface KickBout {
   isDebut: boolean;
   titleType: "title_match" | "vacant_title_match" | "challenger_decision" | null;
   sourceUrl: string;
+  /** Wikipedia由来の行にのみ付く。null(または未定義)は公式一次ソース由来。 */
+  sourceType: "wikipedia" | null;
   alsoFrom: string[];
 }
 

@@ -1,0 +1,5135 @@
+[
+ {
+  "name": "DAVID",
+  "wiki_title": "DAVID (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/DAVID_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/DAVID_(キックボクサー)"
+  ]
+ },
+ {
+  "name": "HAYATO",
+  "wiki_title": "HAYATO",
+  "wiki_url": "https://ja.wikipedia.org/wiki/HAYATO",
+  "wiki_bout_count": 52,
+  "fighters_json_gym": "CRAZY WOLF",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1613",
+   "https://rise-rc.com/fighter/hayato/",
+   "https://ja.wikipedia.org/wiki/HAYATO"
+  ]
+ },
+ {
+  "name": "HIROYA",
+  "wiki_title": "HIROYA",
+  "wiki_url": "https://ja.wikipedia.org/wiki/HIROYA",
+  "wiki_bout_count": 56,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/HIROYA",
+   "https://www.k-1.co.jp/fighter/15"
+  ]
+ },
+ {
+  "name": "AZUMA",
+  "wiki_title": "AZUMA",
+  "wiki_url": "https://ja.wikipedia.org/wiki/AZUMA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/AZUMA"
+  ]
+ },
+ {
+  "name": "\"狂拳\"竹内裕二",
+  "wiki_title": "\"狂拳\"竹内裕二",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%22%E7%8B%82%E6%8B%B3%22%E7%AB%B9%E5%86%85%E8%A3%95%E4%BA%8C",
+  "wiki_bout_count": 43,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "Little Tiger",
+  "wiki_title": "Little Tiger",
+  "wiki_url": "https://ja.wikipedia.org/wiki/Little_Tiger",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/Little_Tiger",
+   "https://www.k-1.co.jp/fighter/675"
+  ]
+ },
+ {
+  "name": "宮城大樹",
+  "wiki_title": "宮城大樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E5%9F%8E%E5%A4%A7%E6%A8%B9",
+  "wiki_bout_count": 21,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "MasakIラジャサクレック",
+  "wiki_title": "MasakIラジャサクレック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/MasakI%E3%83%A9%E3%82%B8%E3%83%A3%E3%82%B5%E3%82%AF%E3%83%AC%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 19,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/MasakIラジャサクレック"
+  ]
+ },
+ {
+  "name": "AKIRA Jr",
+  "wiki_title": "AKIRA Jr",
+  "wiki_url": "https://ja.wikipedia.org/wiki/AKIRA_Jr",
+  "wiki_bout_count": 24,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "TATSUJI",
+  "wiki_title": "TATSUJI",
+  "wiki_url": "https://ja.wikipedia.org/wiki/TATSUJI",
+  "wiki_bout_count": 32,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/TATSUJI",
+   "https://www.k-1.co.jp/fighter/627"
+  ]
+ },
+ {
+  "name": "アジス・カトゥー",
+  "wiki_title": "アジス・カトゥー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B8%E3%82%B9%E3%83%BB%E3%82%AB%E3%83%88%E3%82%A5%E3%83%BC",
+  "wiki_bout_count": 57,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アジス・カトゥー"
+  ]
+ },
+ {
+  "name": "せり",
+  "wiki_title": "せり (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%81%9B%E3%82%8A_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/せり_(格闘家)"
+  ]
+ },
+ {
+  "name": "TOMO",
+  "wiki_title": "TOMO (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/TOMO_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/TOMO_(格闘家)"
+  ]
+ },
+ {
+  "name": "TURBΦ",
+  "wiki_title": "TURBΦ (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/TURB%CE%A6_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": 46,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/TURBΦ_(キックボクサー)",
+   "https://www.k-1.co.jp/fighter/486"
+  ]
+ },
+ {
+  "name": "PIRIKA",
+  "wiki_title": "PIRIKA",
+  "wiki_url": "https://ja.wikipedia.org/wiki/PIRIKA",
+  "wiki_bout_count": 13,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/PIRIKA"
+  ]
+ },
+ {
+  "name": "Yu-kid",
+  "wiki_title": "Yu-kid",
+  "wiki_url": "https://ja.wikipedia.org/wiki/Yu-kid",
+  "wiki_bout_count": 6,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "☆MIKA☆",
+  "wiki_title": "☆MIKA☆",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E2%98%86MIKA%E2%98%86",
+  "wiki_bout_count": 17,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/☆MIKA☆"
+  ]
+ },
+ {
+  "name": "ちはる",
+  "wiki_title": "ちはる (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%81%A1%E3%81%AF%E3%82%8B_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": 17,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ちはる_(キックボクサー)"
+  ]
+ },
+ {
+  "name": "ぱんちゃん璃奈",
+  "wiki_title": "ぱんちゃん璃奈",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%81%B1%E3%82%93%E3%81%A1%E3%82%83%E3%82%93%E7%92%83%E5%A5%88",
+  "wiki_bout_count": 24,
+  "fighters_json_gym": "フリー",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/panchan_rina",
+   "https://ja.wikipedia.org/wiki/ぱんちゃん璃奈",
+   "https://www.k-1.co.jp/fighter/1448"
+  ]
+ },
+ {
+  "name": "“ブラックパンサー”ベイノア",
+  "wiki_title": "“ブラックパンサー”ベイノア",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E2%80%9C%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF%E3%83%91%E3%83%B3%E3%82%B5%E3%83%BC%E2%80%9D%E3%83%99%E3%82%A4%E3%83%8E%E3%82%A2",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": "極真会館",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/beynoah/",
+   "https://ja.wikipedia.org/wiki/“ブラックパンサー”ベイノア",
+   "https://www.k-1.co.jp/fighter/1256"
+  ]
+ },
+ {
+  "name": "YA-MAN",
+  "wiki_title": "YA-MAN",
+  "wiki_url": "https://ja.wikipedia.org/wiki/YA-MAN",
+  "wiki_bout_count": 19,
+  "fighters_json_gym": "TARGET SHIBUYA",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/ya-man/",
+   "https://ja.wikipedia.org/wiki/YA-MAN",
+   "https://www.k-1.co.jp/fighter/1260"
+  ]
+ },
+ {
+  "name": "☆SAHO☆",
+  "wiki_title": "☆SAHO☆",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E2%98%86SAHO%E2%98%86",
+  "wiki_bout_count": 24,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "としぞう",
+  "wiki_title": "としぞう",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%81%A8%E3%81%97%E3%81%9E%E3%81%86",
+  "wiki_bout_count": 2,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/としぞう"
+  ]
+ },
+ {
+  "name": "Uver∞miyU",
+  "wiki_title": "Uver∞miyU",
+  "wiki_url": "https://ja.wikipedia.org/wiki/Uver%E2%88%9EmiyU",
+  "wiki_bout_count": 25,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/Uver∞miyU"
+  ]
+ },
+ {
+  "name": "アルバート・クラウス",
+  "wiki_title": "アルバート・クラウス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%90%E3%83%BC%E3%83%88%E3%83%BB%E3%82%AF%E3%83%A9%E3%82%A6%E3%82%B9",
+  "wiki_bout_count": 121,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アルバート・クラウス"
+  ]
+ },
+ {
+  "name": "アダム・ワット",
+  "wiki_title": "アダム・ワット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%80%E3%83%A0%E3%83%BB%E3%83%AF%E3%83%83%E3%83%88",
+  "wiki_bout_count": 49,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アダム・ワット"
+  ]
+ },
+ {
+  "name": "アレクセイ・イグナショフ",
+  "wiki_title": "アレクセイ・イグナショフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%BB%E3%82%A4%E3%83%BB%E3%82%A4%E3%82%B0%E3%83%8A%E3%82%B7%E3%83%A7%E3%83%95",
+  "wiki_bout_count": 97,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アレクセイ・イグナショフ"
+  ]
+ },
+ {
+  "name": "アマラ忍",
+  "wiki_title": "アマラ忍",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%9E%E3%83%A9%E5%BF%8D",
+  "wiki_bout_count": 43,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アマラ忍"
+  ]
+ },
+ {
+  "name": "アレクサンダー・ウスティノフ",
+  "wiki_title": "アレクサンダー・ウスティノフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B5%E3%83%B3%E3%83%80%E3%83%BC%E3%83%BB%E3%82%A6%E3%82%B9%E3%83%86%E3%82%A3%E3%83%8E%E3%83%95",
+  "wiki_bout_count": 64,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アレクサンダー・ウスティノフ"
+  ]
+ },
+ {
+  "name": "アヌワット・ゲーオサムリット",
+  "wiki_title": "アヌワット・ゲーオサムリット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%8C%E3%83%AF%E3%83%83%E3%83%88%E3%83%BB%E3%82%B2%E3%83%BC%E3%82%AA%E3%82%B5%E3%83%A0%E3%83%AA%E3%83%83%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アヌワット・ゲーオサムリット"
+  ]
+ },
+ {
+  "name": "アゼム・マクスタイ",
+  "wiki_title": "アゼム・マクスタイ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%BC%E3%83%A0%E3%83%BB%E3%83%9E%E3%82%AF%E3%82%B9%E3%82%BF%E3%82%A4",
+  "wiki_bout_count": 77,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アゼム・マクスタイ"
+  ]
+ },
+ {
+  "name": "アルトゥール・キシェンコ",
+  "wiki_title": "アルトゥール・キシェンコ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%88%E3%82%A5%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%AD%E3%82%B7%E3%82%A7%E3%83%B3%E3%82%B3",
+  "wiki_bout_count": 86,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アルトゥール・キシェンコ"
+  ]
+ },
+ {
+  "name": "アレキサンダー・ピチュクノフ",
+  "wiki_title": "アレキサンダー・ピチュクノフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AC%E3%82%AD%E3%82%B5%E3%83%B3%E3%83%80%E3%83%BC%E3%83%BB%E3%83%94%E3%83%81%E3%83%A5%E3%82%AF%E3%83%8E%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アレキサンダー・ピチュクノフ"
+  ]
+ },
+ {
+  "name": "アリ・グンヤー",
+  "wiki_title": "アリ・グンヤー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AA%E3%83%BB%E3%82%B0%E3%83%B3%E3%83%A4%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アリ・グンヤー"
+  ]
+ },
+ {
+  "name": "アティラ・カラチ",
+  "wiki_title": "アティラ・カラチ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%86%E3%82%A3%E3%83%A9%E3%83%BB%E3%82%AB%E3%83%A9%E3%83%81",
+  "wiki_bout_count": 100,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アティラ・カラチ"
+  ]
+ },
+ {
+  "name": "アミール・ゼヤダ",
+  "wiki_title": "アミール・ゼヤダ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%9F%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%BC%E3%83%A4%E3%83%80",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アミール・ゼヤダ"
+  ]
+ },
+ {
+  "name": "アルビアール・リマ",
+  "wiki_title": "アルビアール・リマ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%93%E3%82%A2%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%AA%E3%83%9E",
+  "wiki_bout_count": 74,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アルビアール・リマ"
+  ]
+ },
+ {
+  "name": "アルバン・ガロニア",
+  "wiki_title": "アルバン・ガロニア",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%90%E3%83%B3%E3%83%BB%E3%82%AC%E3%83%AD%E3%83%8B%E3%82%A2",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アルバン・ガロニア"
+  ]
+ },
+ {
+  "name": "アジス・ヤヤ",
+  "wiki_title": "アジス・ヤヤ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B8%E3%82%B9%E3%83%BB%E3%83%A4%E3%83%A4",
+  "wiki_bout_count": 41,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アジス・ヤヤ"
+  ]
+ },
+ {
+  "name": "アレクセイ・クジン",
+  "wiki_title": "アレクセイ・クジン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%BB%E3%82%A4%E3%83%BB%E3%82%AF%E3%82%B8%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アレクセイ・クジン"
+  ]
+ },
+ {
+  "name": "アナトリー・ノスイレフ",
+  "wiki_title": "アナトリー・ノスイレフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%8A%E3%83%88%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%8E%E3%82%B9%E3%82%A4%E3%83%AC%E3%83%95",
+  "wiki_bout_count": 69,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アナトリー・ノスイレフ"
+  ]
+ },
+ {
+  "name": "アリエル・マチャド",
+  "wiki_title": "アリエル・マチャド",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AA%E3%82%A8%E3%83%AB%E3%83%BB%E3%83%9E%E3%83%81%E3%83%A3%E3%83%89",
+  "wiki_bout_count": 77,
+  "fighters_json_gym": "Hemmers Gym/Madison Team",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1403",
+   "https://ja.wikipedia.org/wiki/アリエル・マチャド"
+  ]
+ },
+ {
+  "name": "アーネスト・ホースト",
+  "wiki_title": "アーネスト・ホースト",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%83%8D%E3%82%B9%E3%83%88%E3%83%BB%E3%83%9B%E3%83%BC%E3%82%B9%E3%83%88",
+  "wiki_bout_count": 121,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アーネスト・ホースト"
+  ]
+ },
+ {
+  "name": "アンディ・サワー",
+  "wiki_title": "アンディ・サワー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%87%E3%82%A3%E3%83%BB%E3%82%B5%E3%83%AF%E3%83%BC",
+  "wiki_bout_count": 179,
+  "fighters_json_gym": "TEAM SOUWER",
+  "fighters_json_sources": [
+   "https://shootboxing.org/fighter/andy_sower/",
+   "https://ja.wikipedia.org/wiki/アンディ・サワー"
+  ]
+ },
+ {
+  "name": "イアン・シャファー",
+  "wiki_title": "イアン・シャファー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%A3%E3%83%95%E3%82%A1%E3%83%BC",
+  "wiki_bout_count": 7,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イアン・シャファー"
+  ]
+ },
+ {
+  "name": "アンディ・オロゴン",
+  "wiki_title": "アンディ・オロゴン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%87%E3%82%A3%E3%83%BB%E3%82%AA%E3%83%AD%E3%82%B4%E3%83%B3",
+  "wiki_bout_count": 9,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アンディ・オロゴン"
+  ]
+ },
+ {
+  "name": "アレックス・ゴング",
+  "wiki_title": "アレックス・ゴング",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9%E3%83%BB%E3%82%B4%E3%83%B3%E3%82%B0",
+  "wiki_bout_count": 29,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アレックス・ゴング"
+  ]
+ },
+ {
+  "name": "イム・チビン",
+  "wiki_title": "イム・チビン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%A0%E3%83%BB%E3%83%81%E3%83%93%E3%83%B3",
+  "wiki_bout_count": 33,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イム・チビン"
+  ]
+ },
+ {
+  "name": "アンドリュー・トムソン",
+  "wiki_title": "アンドリュー・トムソン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%89%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%BB%E3%83%88%E3%83%A0%E3%82%BD%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アンドリュー・トムソン"
+  ]
+ },
+ {
+  "name": "イワン・ヒポリット",
+  "wiki_title": "イワン・ヒポリット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%AF%E3%83%B3%E3%83%BB%E3%83%92%E3%83%9D%E3%83%AA%E3%83%83%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イワン・ヒポリット"
+  ]
+ },
+ {
+  "name": "アースラン・マゴメドフ",
+  "wiki_title": "アースラン・マゴメドフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%82%B9%E3%83%A9%E3%83%B3%E3%83%BB%E3%83%9E%E3%82%B4%E3%83%A1%E3%83%89%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アースラン・マゴメドフ"
+  ]
+ },
+ {
+  "name": "アレックス・ロバーツ",
+  "wiki_title": "アレックス・ロバーツ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9%E3%83%BB%E3%83%AD%E3%83%90%E3%83%BC%E3%83%84",
+  "wiki_bout_count": 25,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アレックス・ロバーツ"
+  ]
+ },
+ {
+  "name": "イゴール・ユルコビッチ",
+  "wiki_title": "イゴール・ユルコビッチ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%A6%E3%83%AB%E3%82%B3%E3%83%93%E3%83%83%E3%83%81",
+  "wiki_bout_count": 32,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イゴール・ユルコビッチ"
+  ]
+ },
+ {
+  "name": "イオヌット・イフティモアイエ",
+  "wiki_title": "イオヌット・イフティモアイエ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%82%AA%E3%83%8C%E3%83%83%E3%83%88%E3%83%BB%E3%82%A4%E3%83%95%E3%83%86%E3%82%A3%E3%83%A2%E3%82%A2%E3%82%A4%E3%82%A8",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イオヌット・イフティモアイエ"
+  ]
+ },
+ {
+  "name": "アントニー・ハードンク",
+  "wiki_title": "アントニー・ハードンク",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%88%E3%83%8B%E3%83%BC%E3%83%BB%E3%83%8F%E3%83%BC%E3%83%89%E3%83%B3%E3%82%AF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アントニー・ハードンク"
+  ]
+ },
+ {
+  "name": "イワン・ストルガー",
+  "wiki_title": "イワン・ストルガー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%AF%E3%83%B3%E3%83%BB%E3%82%B9%E3%83%88%E3%83%AB%E3%82%AC%E3%83%BC",
+  "wiki_bout_count": 51,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イワン・ストルガー"
+  ]
+ },
+ {
+  "name": "アーシュイン・バルラック",
+  "wiki_title": "アーシュイン・バルラック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%82%B7%E3%83%A5%E3%82%A4%E3%83%B3%E3%83%BB%E3%83%90%E3%83%AB%E3%83%A9%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 82,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アーシュイン・バルラック"
+  ]
+ },
+ {
+  "name": "アンディ・フグ",
+  "wiki_title": "アンディ・フグ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%87%E3%82%A3%E3%83%BB%E3%83%95%E3%82%B0",
+  "wiki_bout_count": 47,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アンディ・フグ"
+  ]
+ },
+ {
+  "name": "アンダーソン・ブラドック・シルバ",
+  "wiki_title": "アンダーソン・ブラドック・シルバ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%80%E3%83%BC%E3%82%BD%E3%83%B3%E3%83%BB%E3%83%96%E3%83%A9%E3%83%89%E3%83%83%E3%82%AF%E3%83%BB%E3%82%B7%E3%83%AB%E3%83%90",
+  "wiki_bout_count": 42,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/アンダーソン・ブラドック・シルバ"
+  ]
+ },
+ {
+  "name": "イム・スジョン",
+  "wiki_title": "イム・スジョン (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%A0%E3%83%BB%E3%82%B9%E3%82%B8%E3%83%A7%E3%83%B3_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イム・スジョン_(格闘家)"
+  ]
+ },
+ {
+  "name": "オーレ・ローセン",
+  "wiki_title": "オーレ・ローセン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%BC%E3%83%AC%E3%83%BB%E3%83%AD%E3%83%BC%E3%82%BB%E3%83%B3",
+  "wiki_bout_count": 53,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/オーレ・ローセン"
+  ]
+ },
+ {
+  "name": "カーター・ウィリアムス",
+  "wiki_title": "カーター・ウィリアムス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%AA%E3%82%A2%E3%83%A0%E3%82%B9",
+  "wiki_bout_count": 56,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/カーター・ウィリアムス"
+  ]
+ },
+ {
+  "name": "ガオグライ・ゲーンノラシン",
+  "wiki_title": "ガオグライ・ゲーンノラシン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%82%A4%E3%83%BB%E3%82%B2%E3%83%BC%E3%83%B3%E3%83%8E%E3%83%A9%E3%82%B7%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ガオグライ・ゲーンノラシン"
+  ]
+ },
+ {
+  "name": "クァク・ユンソプ",
+  "wiki_title": "クァク・ユンソプ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%A1%E3%82%AF%E3%83%BB%E3%83%A6%E3%83%B3%E3%82%BD%E3%83%97",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "カーチス・シュースター",
+  "wiki_title": "カーチス・シュースター",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%81%E3%82%B9%E3%83%BB%E3%82%B7%E3%83%A5%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/カーチス・シュースター"
+  ]
+ },
+ {
+  "name": "イ・スファン",
+  "wiki_title": "イ・スファン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%BB%E3%82%B9%E3%83%95%E3%82%A1%E3%83%B3",
+  "wiki_bout_count": 31,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イ・スファン"
+  ]
+ },
+ {
+  "name": "エヴェルトン・テイシェイラ",
+  "wiki_title": "エヴェルトン・テイシェイラ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B4%E3%82%A7%E3%83%AB%E3%83%88%E3%83%B3%E3%83%BB%E3%83%86%E3%82%A4%E3%82%B7%E3%82%A7%E3%82%A4%E3%83%A9",
+  "wiki_bout_count": 13,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/エヴェルトン・テイシェイラ"
+  ]
+ },
+ {
+  "name": "ガオラン・カウイチット",
+  "wiki_title": "ガオラン・カウイチット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%AA%E3%83%A9%E3%83%B3%E3%83%BB%E3%82%AB%E3%82%A6%E3%82%A4%E3%83%81%E3%83%83%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ガオラン・カウイチット"
+  ]
+ },
+ {
+  "name": "カタリン・モロサヌ",
+  "wiki_title": "カタリン・モロサヌ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%BF%E3%83%AA%E3%83%B3%E3%83%BB%E3%83%A2%E3%83%AD%E3%82%B5%E3%83%8C",
+  "wiki_bout_count": 27,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/カタリン・モロサヌ"
+  ]
+ },
+ {
+  "name": "エロール・ジマーマン",
+  "wiki_title": "エロール・ジマーマン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%B8%E3%83%9E%E3%83%BC%E3%83%9E%E3%83%B3",
+  "wiki_bout_count": 95,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/エロール・ジマーマン",
+   "https://www.k-1.co.jp/fighter/1537"
+  ]
+ },
+ {
+  "name": "カマル・エル・アムラーニ",
+  "wiki_title": "カマル・エル・アムラーニ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%9E%E3%83%AB%E3%83%BB%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%A2%E3%83%A0%E3%83%A9%E3%83%BC%E3%83%8B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/カマル・エル・アムラーニ"
+  ]
+ },
+ {
+  "name": "ウォーレン・スティーブルマンズ",
+  "wiki_title": "ウォーレン・スティーブルマンズ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AC%E3%83%B3%E3%83%BB%E3%82%B9%E3%83%86%E3%82%A3%E3%83%BC%E3%83%96%E3%83%AB%E3%83%9E%E3%83%B3%E3%82%BA",
+  "wiki_bout_count": 70,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ウォーレン・スティーブルマンズ"
+  ]
+ },
+ {
+  "name": "ウィリアム・ディンダー",
+  "wiki_title": "ウィリアム・ディンダー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A3%E3%83%AA%E3%82%A2%E3%83%A0%E3%83%BB%E3%83%87%E3%82%A3%E3%83%B3%E3%83%80%E3%83%BC",
+  "wiki_bout_count": 89,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ウィリアム・ディンダー"
+  ]
+ },
+ {
+  "name": "カン・リー",
+  "wiki_title": "カン・リー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%B3%E3%83%BB%E3%83%AA%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/カン・リー"
+  ]
+ },
+ {
+  "name": "イワン・ルーデン",
+  "wiki_title": "イワン・ルーデン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%AF%E3%83%B3%E3%83%BB%E3%83%AB%E3%83%BC%E3%83%87%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/イワン・ルーデン"
+  ]
+ },
+ {
+  "name": "エヴジェニー・オルロフ",
+  "wiki_title": "エヴジェニー・オルロフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B4%E3%82%B8%E3%82%A7%E3%83%8B%E3%83%BC%E3%83%BB%E3%82%AA%E3%83%AB%E3%83%AD%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/エヴジェニー・オルロフ"
+  ]
+ },
+ {
+  "name": "カール・グリシンスキー",
+  "wiki_title": "カール・グリシンスキー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%B0%E3%83%AA%E3%82%B7%E3%83%B3%E3%82%B9%E3%82%AD%E3%83%BC",
+  "wiki_bout_count": 46,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/カール・グリシンスキー"
+  ]
+ },
+ {
+  "name": "カノンスック・ウィラサクレック",
+  "wiki_title": "カノンスック・ウィラサクレック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%8E%E3%83%B3%E3%82%B9%E3%83%83%E3%82%AF%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%A9%E3%82%B5%E3%82%AF%E3%83%AC%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 82,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/カノンスック・ウィラサクレック"
+  ]
+ },
+ {
+  "name": "グラウベ・フェイトーザ",
+  "wiki_title": "グラウベ・フェイトーザ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%A9%E3%82%A6%E3%83%99%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A4%E3%83%88%E3%83%BC%E3%82%B6",
+  "wiki_bout_count": 35,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/グラウベ・フェイトーザ"
+  ]
+ },
+ {
+  "name": "ゲーリー・グッドリッジ",
+  "wiki_title": "ゲーリー・グッドリッジ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B2%E3%83%BC%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%B0%E3%83%83%E3%83%89%E3%83%AA%E3%83%83%E3%82%B8",
+  "wiki_bout_count": 38,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ゲーリー・グッドリッジ"
+  ]
+ },
+ {
+  "name": "キモ・レオポルド",
+  "wiki_title": "キモ・レオポルド",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A2%E3%83%BB%E3%83%AC%E3%82%AA%E3%83%9D%E3%83%AB%E3%83%89",
+  "wiki_bout_count": 3,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/キモ・レオポルド"
+  ]
+ },
+ {
+  "name": "キム・ミンス",
+  "wiki_title": "キム・ミンス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A0%E3%83%BB%E3%83%9F%E3%83%B3%E3%82%B9",
+  "wiki_bout_count": 5,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/キム・ミンス"
+  ]
+ },
+ {
+  "name": "グーカン・サキ",
+  "wiki_title": "グーカン・サキ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%BC%E3%82%AB%E3%83%B3%E3%83%BB%E3%82%B5%E3%82%AD",
+  "wiki_bout_count": 98,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/グーカン・サキ"
+  ]
+ },
+ {
+  "name": "グレゴリー・トニー",
+  "wiki_title": "グレゴリー・トニー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%AC%E3%82%B4%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%88%E3%83%8B%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/グレゴリー・トニー"
+  ]
+ },
+ {
+  "name": "コブス・ハイサマン",
+  "wiki_title": "コブス・ハイサマン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%96%E3%82%B9%E3%83%BB%E3%83%8F%E3%82%A4%E3%82%B5%E3%83%9E%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/コブス・ハイサマン"
+  ]
+ },
+ {
+  "name": "キム・ヨンヒョン",
+  "wiki_title": "キム・ヨンヒョン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A0%E3%83%BB%E3%83%A8%E3%83%B3%E3%83%92%E3%83%A7%E3%83%B3",
+  "wiki_bout_count": 4,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/キム・ヨンヒョン"
+  ]
+ },
+ {
+  "name": "ゴルダン・ユキッチ",
+  "wiki_title": "ゴルダン・ユキッチ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B4%E3%83%AB%E3%83%80%E3%83%B3%E3%83%BB%E3%83%A6%E3%82%AD%E3%83%83%E3%83%81",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ゴルダン・ユキッチ"
+  ]
+ },
+ {
+  "name": "キム・ドンウック",
+  "wiki_title": "キム・ドンウック (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A0%E3%83%BB%E3%83%89%E3%83%B3%E3%82%A6%E3%83%83%E3%82%AF_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 3,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/キム・ドンウック_(格闘家)"
+  ]
+ },
+ {
+  "name": "クリス・ファン・ベンローイ",
+  "wiki_title": "クリス・ファン・ベンローイ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%83%BB%E3%83%99%E3%83%B3%E3%83%AD%E3%83%BC%E3%82%A4",
+  "wiki_bout_count": 77,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/クリス・ファン・ベンローイ"
+  ]
+ },
+ {
+  "name": "ギャリー・オニール",
+  "wiki_title": "ギャリー・オニール",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%A3%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%AA%E3%83%8B%E3%83%BC%E3%83%AB",
+  "wiki_bout_count": 1,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ギャリー・オニール"
+  ]
+ },
+ {
+  "name": "キム・ギョンソック",
+  "wiki_title": "キム・ギョンソック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A0%E3%83%BB%E3%82%AE%E3%83%A7%E3%83%B3%E3%82%BD%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 5,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/キム・ギョンソック"
+  ]
+ },
+ {
+  "name": "ギンティ・ブレーダ",
+  "wiki_title": "ギンティ・ブレーダ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%96%E3%83%AC%E3%83%BC%E3%83%80",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ギンティ・ブレーダ"
+  ]
+ },
+ {
+  "name": "ゲンナロン・ウィラサクレック",
+  "wiki_title": "ゲンナロン・ウィラサクレック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B2%E3%83%B3%E3%83%8A%E3%83%AD%E3%83%B3%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%A9%E3%82%B5%E3%82%AF%E3%83%AC%E3%83%83%E3%82%AF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ゲンナロン・ウィラサクレック"
+  ]
+ },
+ {
+  "name": "クンタップ・ウィラサクレック",
+  "wiki_title": "クンタップ・ウィラサクレック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%B3%E3%82%BF%E3%83%83%E3%83%97%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%A9%E3%82%B5%E3%82%AF%E3%83%AC%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 102,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/クンタップ・ウィラサクレック"
+  ]
+ },
+ {
+  "name": "グレイシャア亜紀",
+  "wiki_title": "グレイシャア亜紀",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%AC%E3%82%A4%E3%82%B7%E3%83%A3%E3%82%A2%E4%BA%9C%E7%B4%80",
+  "wiki_bout_count": 30,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/グレイシャア亜紀",
+   "https://www.k-1.co.jp/fighter/391"
+  ]
+ },
+ {
+  "name": "クリストフ・プルボー",
+  "wiki_title": "クリストフ・プルボー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88%E3%83%95%E3%83%BB%E3%83%97%E3%83%AB%E3%83%9C%E3%83%BC",
+  "wiki_bout_count": 18,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/クリストフ・プルボー"
+  ]
+ },
+ {
+  "name": "ゲーオ・フェアテックス",
+  "wiki_title": "ゲーオ・フェアテックス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B2%E3%83%BC%E3%82%AA%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A2%E3%83%86%E3%83%83%E3%82%AF%E3%82%B9",
+  "wiki_bout_count": 185,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ゲーオ・フェアテックス"
+  ]
+ },
+ {
+  "name": "シン・ノッパデッソーン",
+  "wiki_title": "シン・ノッパデッソーン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%B3%E3%83%BB%E3%83%8E%E3%83%83%E3%83%91%E3%83%87%E3%83%83%E3%82%BD%E3%83%BC%E3%83%B3",
+  "wiki_bout_count": 134,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シン・ノッパデッソーン"
+  ]
+ },
+ {
+  "name": "シリル・アビディ",
+  "wiki_title": "シリル・アビディ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%83%AB%E3%83%BB%E3%82%A2%E3%83%93%E3%83%87%E3%82%A3",
+  "wiki_bout_count": 42,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シリル・アビディ"
+  ]
+ },
+ {
+  "name": "サム・グレコ",
+  "wiki_title": "サム・グレコ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%A0%E3%83%BB%E3%82%B0%E3%83%AC%E3%82%B3",
+  "wiki_bout_count": 32,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/サム・グレコ"
+  ]
+ },
+ {
+  "name": "サトルヴァシコバ",
+  "wiki_title": "サトルヴァシコバ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%88%E3%83%AB%E3%83%B4%E3%82%A1%E3%82%B7%E3%82%B3%E3%83%90",
+  "wiki_bout_count": 29,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/サトルヴァシコバ"
+  ]
+ },
+ {
+  "name": "シリモンコル・シンワッサ",
+  "wiki_title": "シリモンコン・シンワンチャー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%83%A2%E3%83%B3%E3%82%B3%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%B3%E3%83%AF%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC",
+  "wiki_bout_count": 3,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シリモンコン・シンワンチャー"
+  ]
+ },
+ {
+  "name": "ジェイソン・サティー",
+  "wiki_title": "ジェイソン・サティー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%82%A4%E3%82%BD%E3%83%B3%E3%83%BB%E3%82%B5%E3%83%86%E3%82%A3%E3%83%BC",
+  "wiki_bout_count": 52,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジェイソン・サティー"
+  ]
+ },
+ {
+  "name": "サミール・ベナゾーズ",
+  "wiki_title": "サミール・ベナゾーズ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%9F%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%99%E3%83%8A%E3%82%BE%E3%83%BC%E3%82%BA",
+  "wiki_bout_count": 11,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/サミール・ベナゾーズ"
+  ]
+ },
+ {
+  "name": "シャミール・ガイダルベコフ",
+  "wiki_title": "シャミール・ガイダルベコフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A3%E3%83%9F%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%AC%E3%82%A4%E3%83%80%E3%83%AB%E3%83%99%E3%82%B3%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シャミール・ガイダルベコフ"
+  ]
+ },
+ {
+  "name": "シーザー武志",
+  "wiki_title": "シーザー武志",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%BC%E3%82%B6%E3%83%BC%E6%AD%A6%E5%BF%97",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シーザー武志"
+  ]
+ },
+ {
+  "name": "ジェット・イズミ",
+  "wiki_title": "ジェット・イズミ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%83%BB%E3%82%A4%E3%82%BA%E3%83%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジェット・イズミ"
+  ]
+ },
+ {
+  "name": "ザビット・サメドフ",
+  "wiki_title": "ザビット・サメドフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B6%E3%83%93%E3%83%83%E3%83%88%E3%83%BB%E3%82%B5%E3%83%A1%E3%83%89%E3%83%95",
+  "wiki_bout_count": 82,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ザビット・サメドフ"
+  ]
+ },
+ {
+  "name": "サムゴー・ギャットモンテープ",
+  "wiki_title": "サムゴー・ギャットモンテープ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%A0%E3%82%B4%E3%83%BC%E3%83%BB%E3%82%AE%E3%83%A3%E3%83%83%E3%83%88%E3%83%A2%E3%83%B3%E3%83%86%E3%83%BC%E3%83%97",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/サムゴー・ギャットモンテープ"
+  ]
+ },
+ {
+  "name": "シェイン・チャップマン",
+  "wiki_title": "シェイン・チャップマン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%A7%E3%82%A4%E3%83%B3%E3%83%BB%E3%83%81%E3%83%A3%E3%83%83%E3%83%97%E3%83%9E%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シェイン・チャップマン"
+  ]
+ },
+ {
+  "name": "シャヒン・ヤクート",
+  "wiki_title": "シャヒン・ヤクート",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A3%E3%83%92%E3%83%B3%E3%83%BB%E3%83%A4%E3%82%AF%E3%83%BC%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シャヒン・ヤクート"
+  ]
+ },
+ {
+  "name": "ゴーラン・ラドニッチ",
+  "wiki_title": "ゴーラン・ラドニッチ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B4%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%BB%E3%83%A9%E3%83%89%E3%83%8B%E3%83%83%E3%83%81",
+  "wiki_bout_count": 53,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ゴーラン・ラドニッチ"
+  ]
+ },
+ {
+  "name": "シャヒッド・オラド・アラフ",
+  "wiki_title": "シャヒッド・オラド・アラフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A3%E3%83%92%E3%83%83%E3%83%89%E3%83%BB%E3%82%AA%E3%83%A9%E3%83%89%E3%83%BB%E3%82%A2%E3%83%A9%E3%83%95",
+  "wiki_bout_count": 54,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シャヒッド・オラド・アラフ"
+  ]
+ },
+ {
+  "name": "シング・心・ジャディブ",
+  "wiki_title": "シング・心・ジャディブ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%B3%E3%82%B0%E3%83%BB%E5%BF%83%E3%83%BB%E3%82%B8%E3%83%A3%E3%83%87%E3%82%A3%E3%83%96",
+  "wiki_bout_count": 50,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シング・心・ジャディブ"
+  ]
+ },
+ {
+  "name": "ジェロム・レ・バンナ",
+  "wiki_title": "ジェロム・レ・バンナ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%83%AD%E3%83%A0%E3%83%BB%E3%83%AC%E3%83%BB%E3%83%90%E3%83%B3%E3%83%8A",
+  "wiki_bout_count": 113,
+  "fighters_json_gym": "Le Banner X tream Team",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1538",
+   "https://ja.wikipedia.org/wiki/ジェロム・レ・バンナ"
+  ]
+ },
+ {
+  "name": "ジェレル・ヴェネチアン",
+  "wiki_title": "ジェレル・ヴェネチアン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%83%AC%E3%83%AB%E3%83%BB%E3%83%B4%E3%82%A7%E3%83%8D%E3%83%81%E3%82%A2%E3%83%B3",
+  "wiki_bout_count": 40,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジェレル・ヴェネチアン"
+  ]
+ },
+ {
+  "name": "ジョン・ウェイン・パー",
+  "wiki_title": "ジョン・ウェイン・パー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%BB%E3%82%A6%E3%82%A7%E3%82%A4%E3%83%B3%E3%83%BB%E3%83%91%E3%83%BC",
+  "wiki_bout_count": 100,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジョン・ウェイン・パー"
+  ]
+ },
+ {
+  "name": "ジャビット・バイラミ",
+  "wiki_title": "ジャビット・バイラミ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%93%E3%83%83%E3%83%88%E3%83%BB%E3%83%90%E3%82%A4%E3%83%A9%E3%83%9F",
+  "wiki_bout_count": 36,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジャビット・バイラミ"
+  ]
+ },
+ {
+  "name": "ジャダンバ・ナラントンガラグ",
+  "wiki_title": "ジャダンバ・ナラントンガラグ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%80%E3%83%B3%E3%83%90%E3%83%BB%E3%83%8A%E3%83%A9%E3%83%B3%E3%83%88%E3%83%B3%E3%82%AC%E3%83%A9%E3%82%B0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジャダンバ・ナラントンガラグ"
+  ]
+ },
+ {
+  "name": "ジェームズ・ワーリング",
+  "wiki_title": "ジェームズ・ワーリング",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%83%BC%E3%83%A0%E3%82%BA%E3%83%BB%E3%83%AF%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジェームズ・ワーリング"
+  ]
+ },
+ {
+  "name": "ジャン＝クロード・リビエール",
+  "wiki_title": "ジャン＝クロード・リビエール",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%B3%EF%BC%9D%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89%E3%83%BB%E3%83%AA%E3%83%93%E3%82%A8%E3%83%BC%E3%83%AB",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジャン＝クロード・リビエール"
+  ]
+ },
+ {
+  "name": "ジョルジオ・ペトロシアン",
+  "wiki_title": "ジョルジオ・ペトロシアン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%AB%E3%82%B8%E3%82%AA%E3%83%BB%E3%83%9A%E3%83%88%E3%83%AD%E3%82%B7%E3%82%A2%E3%83%B3",
+  "wiki_bout_count": 112,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジョルジオ・ペトロシアン"
+  ]
+ },
+ {
+  "name": "ジョージ・アリアス",
+  "wiki_title": "ジョージ・アリアス (ボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B8%E3%83%BB%E3%82%A2%E3%83%AA%E3%82%A2%E3%82%B9_%28%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジョージ・アリアス_(ボクサー)"
+  ]
+ },
+ {
+  "name": "ジョージ・ランドルフ",
+  "wiki_title": "ジョージ・ランドルフ (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B8%E3%83%BB%E3%83%A9%E3%83%B3%E3%83%89%E3%83%AB%E3%83%95_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジョージ・ランドルフ_(格闘家)"
+  ]
+ },
+ {
+  "name": "ジョージ“ザ・アイアンライオン”",
+  "wiki_title": "ジョージ“ザ・アイアンライオン”",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%BC%E3%82%B8%E2%80%9C%E3%82%B6%E3%83%BB%E3%82%A2%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%A9%E3%82%A4%E3%82%AA%E3%83%B3%E2%80%9D",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジョージ“ザ・アイアンライオン”"
+  ]
+ },
+ {
+  "name": "ジェームズ・フィリップス",
+  "wiki_title": "ジェームズ・フィリップス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%83%BC%E3%83%A0%E3%82%BA%E3%83%BB%E3%83%95%E3%82%A3%E3%83%AA%E3%83%83%E3%83%97%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジェームズ・フィリップス"
+  ]
+ },
+ {
+  "name": "ジャバル・アスケロフ",
+  "wiki_title": "ジャバル・アスケロフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%90%E3%83%AB%E3%83%BB%E3%82%A2%E3%82%B9%E3%82%B1%E3%83%AD%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "Team Askerov",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1343",
+   "https://ja.wikipedia.org/wiki/ジャバル・アスケロフ"
+  ]
+ },
+ {
+  "name": "ジャマル・カスモフ",
+  "wiki_title": "ジャマル・カスモフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%9E%E3%83%AB%E3%83%BB%E3%82%AB%E3%82%B9%E3%83%A2%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジャマル・カスモフ"
+  ]
+ },
+ {
+  "name": "ジョムトーン・チュワタナ",
+  "wiki_title": "ジョムトーン・チュワタナ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%A0%E3%83%88%E3%83%BC%E3%83%B3%E3%83%BB%E3%83%81%E3%83%A5%E3%83%AF%E3%82%BF%E3%83%8A",
+  "wiki_bout_count": 263,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジョムトーン・チュワタナ"
+  ]
+ },
+ {
+  "name": "ステファン・レコ",
+  "wiki_title": "ステファン・レコ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%86%E3%83%95%E3%82%A1%E3%83%B3%E3%83%BB%E3%83%AC%E3%82%B3",
+  "wiki_bout_count": 108,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ステファン・レコ"
+  ]
+ },
+ {
+  "name": "セルカン・イルマッツ",
+  "wiki_title": "セルカン・イルマッツ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%82%AB%E3%83%B3%E3%83%BB%E3%82%A4%E3%83%AB%E3%83%9E%E3%83%83%E3%83%84",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/セルカン・イルマッツ"
+  ]
+ },
+ {
+  "name": "スタン・ザ・マン",
+  "wiki_title": "スタン・ザ・マン (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%BB%E3%82%B6%E3%83%BB%E3%83%9E%E3%83%B3_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/スタン・ザ・マン_(キックボクサー)"
+  ]
+ },
+ {
+  "name": "セミー・シュルト",
+  "wiki_title": "セミー・シュルト",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%9F%E3%83%BC%E3%83%BB%E3%82%B7%E3%83%A5%E3%83%AB%E3%83%88",
+  "wiki_bout_count": 50,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/セミー・シュルト"
+  ]
+ },
+ {
+  "name": "セルゲイ・グール",
+  "wiki_title": "セルゲイ・グール",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%82%B2%E3%82%A4%E3%83%BB%E3%82%B0%E3%83%BC%E3%83%AB",
+  "wiki_bout_count": 77,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/セルゲイ・グール"
+  ]
+ },
+ {
+  "name": "タケル",
+  "wiki_title": "タケル (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BF%E3%82%B1%E3%83%AB_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 18,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/タケル_(格闘家)"
+  ]
+ },
+ {
+  "name": "ジョーダン・タイ",
+  "wiki_title": "ジョーダン・タイ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%BC%E3%83%80%E3%83%B3%E3%83%BB%E3%82%BF%E3%82%A4",
+  "wiki_bout_count": 71,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ジョーダン・タイ"
+  ]
+ },
+ {
+  "name": "セルゲイ・イバノビッチ",
+  "wiki_title": "セルゲイ・イバノビッチ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%82%B2%E3%82%A4%E3%83%BB%E3%82%A4%E3%83%90%E3%83%8E%E3%83%93%E3%83%83%E3%83%81",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/セルゲイ・イバノビッチ"
+  ]
+ },
+ {
+  "name": "タイロン・スポーン",
+  "wiki_title": "タイロン・スポーン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BF%E3%82%A4%E3%83%AD%E3%83%B3%E3%83%BB%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%B3",
+  "wiki_bout_count": 116,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/タイロン・スポーン"
+  ]
+ },
+ {
+  "name": "ゼバット・ポーツラック",
+  "wiki_title": "ゼバット・ポーツラック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BC%E3%83%90%E3%83%83%E3%83%88%E3%83%BB%E3%83%9D%E3%83%BC%E3%83%84%E3%83%A9%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 60,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ゼバット・ポーツラック"
+  ]
+ },
+ {
+  "name": "セルゲイ・マトキン",
+  "wiki_title": "セルゲイ・マトキン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%82%B2%E3%82%A4%E3%83%BB%E3%83%9E%E3%83%88%E3%82%AD%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/セルゲイ・マトキン"
+  ]
+ },
+ {
+  "name": "セルゲイ・ラシェンコ",
+  "wiki_title": "セルゲイ・ラシェンコ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%82%B2%E3%82%A4%E3%83%BB%E3%83%A9%E3%82%B7%E3%82%A7%E3%83%B3%E3%82%B3",
+  "wiki_bout_count": 31,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/セルゲイ・ラシェンコ"
+  ]
+ },
+ {
+  "name": "セバスチャン・チオバヌ",
+  "wiki_title": "セバスチャン・チオバヌ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%90%E3%82%B9%E3%83%81%E3%83%A3%E3%83%B3%E3%83%BB%E3%83%81%E3%82%AA%E3%83%90%E3%83%8C",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/セバスチャン・チオバヌ"
+  ]
+ },
+ {
+  "name": "ソルデティグレ・ヨースケ",
+  "wiki_title": "ソルデティグレ・ヨースケ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%AB%E3%83%87%E3%83%86%E3%82%A3%E3%82%B0%E3%83%AC%E3%83%BB%E3%83%A8%E3%83%BC%E3%82%B9%E3%82%B1",
+  "wiki_bout_count": 13,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ソルデティグレ・ヨースケ",
+   "https://www.k-1.co.jp/fighter/558"
+  ]
+ },
+ {
+  "name": "センチャイ・PKセンチャイムエタイジム",
+  "wiki_title": "センチャイ・PKセンチャイムエタイジム",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%83%BBPK%E3%82%BB%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%83%A0%E3%82%A8%E3%82%BF%E3%82%A4%E3%82%B8%E3%83%A0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/センチャイ・PKセンチャイムエタイジム"
+  ]
+ },
+ {
+  "name": "ソフィア・ツォラキドゥ",
+  "wiki_title": "ソフィア・ツォラキドゥ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%82%A3%E3%82%A2%E3%83%BB%E3%83%84%E3%82%A9%E3%83%A9%E3%82%AD%E3%83%89%E3%82%A5",
+  "wiki_bout_count": 4,
+  "fighters_json_gym": "KRITIKOS CAMP",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1657",
+   "https://ja.wikipedia.org/wiki/ソフィア・ツォラキドゥ"
+  ]
+ },
+ {
+  "name": "チャンプア・ゲッソンリット",
+  "wiki_title": "チャンプア・ゲッソンリット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A3%E3%83%B3%E3%83%97%E3%82%A2%E3%83%BB%E3%82%B2%E3%83%83%E3%82%BD%E3%83%B3%E3%83%AA%E3%83%83%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/チャンプア・ゲッソンリット"
+  ]
+ },
+ {
+  "name": "チェ・ホンマン",
+  "wiki_title": "チェ・ホンマン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%82%A7%E3%83%BB%E3%83%9B%E3%83%B3%E3%83%9E%E3%83%B3",
+  "wiki_bout_count": 18,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/チェ・ホンマン"
+  ]
+ },
+ {
+  "name": "チョ・ジョンファン",
+  "wiki_title": "チョ・ジョンファン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A7%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%95%E3%82%A1%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/チョ・ジョンファン"
+  ]
+ },
+ {
+  "name": "ダニエル・ドーソン",
+  "wiki_title": "ダニエル・ドーソン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%80%E3%83%8B%E3%82%A8%E3%83%AB%E3%83%BB%E3%83%89%E3%83%BC%E3%82%BD%E3%83%B3",
+  "wiki_bout_count": 65,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ダニエル・ドーソン"
+  ]
+ },
+ {
+  "name": "ダリウス・スクリアウディス",
+  "wiki_title": "ダリウス・スクリアウディス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%80%E3%83%AA%E3%82%A6%E3%82%B9%E3%83%BB%E3%82%B9%E3%82%AF%E3%83%AA%E3%82%A2%E3%82%A6%E3%83%87%E3%82%A3%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ダリウス・スクリアウディス"
+  ]
+ },
+ {
+  "name": "ダグ・ヴィニー",
+  "wiki_title": "ダグ・ヴィニー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%80%E3%82%B0%E3%83%BB%E3%83%B4%E3%82%A3%E3%83%8B%E3%83%BC",
+  "wiki_bout_count": 27,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ダグ・ヴィニー"
+  ]
+ },
+ {
+  "name": "デニス・シュナイドミラー",
+  "wiki_title": "デニス・シュナイドミラー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%8B%E3%82%B9%E3%83%BB%E3%82%B7%E3%83%A5%E3%83%8A%E3%82%A4%E3%83%89%E3%83%9F%E3%83%A9%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/デニス・シュナイドミラー"
+  ]
+ },
+ {
+  "name": "デミトリー・シャクタ",
+  "wiki_title": "デミトリー・シャクタ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%9F%E3%83%88%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%B7%E3%83%A3%E3%82%AF%E3%82%BF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/デミトリー・シャクタ"
+  ]
+ },
+ {
+  "name": "ダニエル・ギタ",
+  "wiki_title": "ダニエル・ギタ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%80%E3%83%8B%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%AE%E3%82%BF",
+  "wiki_bout_count": 62,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ダニエル・ギタ"
+  ]
+ },
+ {
+  "name": "デビット・ウィルソン",
+  "wiki_title": "デビット・ウィルソン (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%93%E3%83%83%E3%83%88%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%BD%E3%83%B3_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/デビット・ウィルソン_(格闘家)"
+  ]
+ },
+ {
+  "name": "テオドール・サリエフ",
+  "wiki_title": "テオドール・サリエフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%AA%E3%83%89%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%B5%E3%83%AA%E3%82%A8%E3%83%95",
+  "wiki_bout_count": 21,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/テオドール・サリエフ"
+  ]
+ },
+ {
+  "name": "チョン・ジェヒ",
+  "wiki_title": "チョン・ジェヒ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A7%E3%83%B3%E3%83%BB%E3%82%B8%E3%82%A7%E3%83%92",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/チョン・ジェヒ"
+  ]
+ },
+ {
+  "name": "ニコラス・ペタス",
+  "wiki_title": "ニコラス・ペタス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%B3%E3%83%A9%E3%82%B9%E3%83%BB%E3%83%9A%E3%82%BF%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ニコラス・ペタス"
+  ]
+ },
+ {
+  "name": "ドン・ウィルソン",
+  "wiki_title": "ドン・ウィルソン (ボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%B3%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%BD%E3%83%B3_%28%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ドン・ウィルソン_(ボクサー)"
+  ]
+ },
+ {
+  "name": "ナオフォール“アイアン・レッグ”",
+  "wiki_title": "ナオフォール“アイアン・レッグ”",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%82%AA%E3%83%95%E3%82%A9%E3%83%BC%E3%83%AB%E2%80%9C%E3%82%A2%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%BB%E3%83%AC%E3%83%83%E3%82%B0%E2%80%9D",
+  "wiki_bout_count": 16,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ナオフォール“アイアン・レッグ”"
+  ]
+ },
+ {
+  "name": "ドラゴ",
+  "wiki_title": "ドラゴ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%82%B4",
+  "wiki_bout_count": 98,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ドラゴ"
+  ]
+ },
+ {
+  "name": "ドゥエイン・ラドウィック",
+  "wiki_title": "ドゥエイン・ラドウィック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%82%A5%E3%82%A8%E3%82%A4%E3%83%B3%E3%83%BB%E3%83%A9%E3%83%89%E3%82%A6%E3%82%A3%E3%83%83%E3%82%AF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ドゥエイン・ラドウィック"
+  ]
+ },
+ {
+  "name": "ニコラ・ヴェルモン",
+  "wiki_title": "ニコラ・ヴェルモン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%B3%E3%83%A9%E3%83%BB%E3%83%B4%E3%82%A7%E3%83%AB%E3%83%A2%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ニコラ・ヴェルモン"
+  ]
+ },
+ {
+  "name": "トピ・ヘリン",
+  "wiki_title": "トピ・ヘリン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%94%E3%83%BB%E3%83%98%E3%83%AA%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/トピ・ヘリン"
+  ]
+ },
+ {
+  "name": "ドン・中矢・ニールセン",
+  "wiki_title": "ドン・中矢・ニールセン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%B3%E3%83%BB%E4%B8%AD%E7%9F%A2%E3%83%BB%E3%83%8B%E3%83%BC%E3%83%AB%E3%82%BB%E3%83%B3",
+  "wiki_bout_count": 7,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ドン・中矢・ニールセン"
+  ]
+ },
+ {
+  "name": "ニキー・ホルツケン",
+  "wiki_title": "ニキー・ホルツケン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%AD%E3%83%BC%E3%83%BB%E3%83%9B%E3%83%AB%E3%83%84%E3%82%B1%E3%83%B3",
+  "wiki_bout_count": 114,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ニキー・ホルツケン"
+  ]
+ },
+ {
+  "name": "トスカ・ペトリディス",
+  "wiki_title": "トスカ・ペトリディス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%82%B9%E3%82%AB%E3%83%BB%E3%83%9A%E3%83%88%E3%83%AA%E3%83%87%E3%82%A3%E3%82%B9",
+  "wiki_bout_count": 8,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/トスカ・ペトリディス"
+  ]
+ },
+ {
+  "name": "デール・ウェスターマン",
+  "wiki_title": "デール・ウェスターマン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%A6%E3%82%A7%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%9E%E3%83%B3",
+  "wiki_bout_count": 2,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/デール・ウェスターマン"
+  ]
+ },
+ {
+  "name": "トーマス・ラドキー",
+  "wiki_title": "トーマス・ラドキー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%BC%E3%83%9E%E3%82%B9%E3%83%BB%E3%83%A9%E3%83%89%E3%82%AD%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/トーマス・ラドキー"
+  ]
+ },
+ {
+  "name": "トッド・ヘイズ",
+  "wiki_title": "トッド・ヘイズ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%83%E3%83%89%E3%83%BB%E3%83%98%E3%82%A4%E3%82%BA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/トッド・ヘイズ"
+  ]
+ },
+ {
+  "name": "ニコラ・ディムコフスキー",
+  "wiki_title": "ニコラ・ディムコフスキー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%82%B3%E3%83%A9%E3%83%BB%E3%83%87%E3%82%A3%E3%83%A0%E3%82%B3%E3%83%95%E3%82%B9%E3%82%AD%E3%83%BC",
+  "wiki_bout_count": 34,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ニコラ・ディムコフスキー"
+  ]
+ },
+ {
+  "name": "ドラガン・ヨバノビッチ",
+  "wiki_title": "ドラガン・ヨバノビッチ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%82%AC%E3%83%B3%E3%83%BB%E3%83%A8%E3%83%90%E3%83%8E%E3%83%93%E3%83%83%E3%83%81",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ドラガン・ヨバノビッチ"
+  ]
+ },
+ {
+  "name": "ドマジョフ・オスタジック",
+  "wiki_title": "ドマジョフ・オスタジック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%9E%E3%82%B8%E3%83%A7%E3%83%95%E3%83%BB%E3%82%AA%E3%82%B9%E3%82%BF%E3%82%B8%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 50,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ドマジョフ・オスタジック"
+  ]
+ },
+ {
+  "name": "トーマス・ハロン",
+  "wiki_title": "トーマス・ハロン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%BC%E3%83%9E%E3%82%B9%E3%83%BB%E3%83%8F%E3%83%AD%E3%83%B3",
+  "wiki_bout_count": 68,
+  "fighters_json_gym": "生年月日",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1491",
+   "https://ja.wikipedia.org/wiki/トーマス・ハロン"
+  ]
+ },
+ {
+  "name": "ナグラチューン・マーサM16",
+  "wiki_title": "ナグラチューン・マーサM16",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%82%B0%E3%83%A9%E3%83%81%E3%83%A5%E3%83%BC%E3%83%B3%E3%83%BB%E3%83%9E%E3%83%BC%E3%82%B5M16",
+  "wiki_bout_count": 29,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ナグラチューン・マーサM16"
+  ]
+ },
+ {
+  "name": "ピーター・アーツ",
+  "wiki_title": "ピーター・アーツ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%82%A2%E3%83%BC%E3%83%84",
+  "wiki_bout_count": 143,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ピーター・アーツ"
+  ]
+ },
+ {
+  "name": "バダ・ハリ",
+  "wiki_title": "バダ・ハリ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%80%E3%83%BB%E3%83%8F%E3%83%AA",
+  "wiki_bout_count": 126,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/バダ・ハリ"
+  ]
+ },
+ {
+  "name": "パヴェル・マイヤー",
+  "wiki_title": "パヴェル・マイヤー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%B4%E3%82%A7%E3%83%AB%E3%83%BB%E3%83%9E%E3%82%A4%E3%83%A4%E3%83%BC",
+  "wiki_bout_count": 44,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/パヴェル・マイヤー"
+  ]
+ },
+ {
+  "name": "ハリッド\"ディ・ファウスト\"",
+  "wiki_title": "ハリッド\"ディ・ファウスト\"",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%AA%E3%83%83%E3%83%89%22%E3%83%87%E3%82%A3%E3%83%BB%E3%83%95%E3%82%A1%E3%82%A6%E3%82%B9%E3%83%88%22",
+  "wiki_bout_count": 14,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ハリッド\"ディ・ファウスト\""
+  ]
+ },
+ {
+  "name": "ノブ・ハヤシ",
+  "wiki_title": "ノブ・ハヤシ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%96%E3%83%BB%E3%83%8F%E3%83%A4%E3%82%B7",
+  "wiki_bout_count": 44,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ノブ・ハヤシ"
+  ]
+ },
+ {
+  "name": "ビヨン・ブレギー",
+  "wiki_title": "ビヨン・ブレギー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%93%E3%83%A8%E3%83%B3%E3%83%BB%E3%83%96%E3%83%AC%E3%82%AE%E3%83%BC",
+  "wiki_bout_count": 54,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ビヨン・ブレギー"
+  ]
+ },
+ {
+  "name": "バス・ルッテン",
+  "wiki_title": "バス・ルッテン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%B9%E3%83%BB%E3%83%AB%E3%83%83%E3%83%86%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/バス・ルッテン"
+  ]
+ },
+ {
+  "name": "パク・ヨンス",
+  "wiki_title": "パク・ヨンス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%82%AF%E3%83%BB%E3%83%A8%E3%83%B3%E3%82%B9",
+  "wiki_bout_count": 10,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/パク・ヨンス"
+  ]
+ },
+ {
+  "name": "バタービーン",
+  "wiki_title": "バタービーン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%BF%E3%83%BC%E3%83%93%E3%83%BC%E3%83%B3",
+  "wiki_bout_count": 6,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/バタービーン"
+  ]
+ },
+ {
+  "name": "パット・バリー",
+  "wiki_title": "パット・バリー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%83%E3%83%88%E3%83%BB%E3%83%90%E3%83%AA%E3%83%BC",
+  "wiki_bout_count": 26,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "パトリック・スミス",
+  "wiki_title": "パトリック・スミス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E3%83%BB%E3%82%B9%E3%83%9F%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/パトリック・スミス"
+  ]
+ },
+ {
+  "name": "ノ・ジェギル",
+  "wiki_title": "ノ・ジェギル",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%BB%E3%82%B8%E3%82%A7%E3%82%AE%E3%83%AB",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ノ・ジェギル"
+  ]
+ },
+ {
+  "name": "ネイサン・\"カーネッジ\"・コーベット",
+  "wiki_title": "ネイサン・コーベット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8D%E3%82%A4%E3%82%B5%E3%83%B3%E3%83%BB%E3%82%B3%E3%83%BC%E3%83%99%E3%83%83%E3%83%88",
+  "wiki_bout_count": 55,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ネイサン・コーベット"
+  ]
+ },
+ {
+  "name": "パトリス・カルテロン",
+  "wiki_title": "パトリス・カルテロン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%88%E3%83%AA%E3%82%B9%E3%83%BB%E3%82%AB%E3%83%AB%E3%83%86%E3%83%AD%E3%83%B3",
+  "wiki_bout_count": 38,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/パトリス・カルテロン"
+  ]
+ },
+ {
+  "name": "パベル・ズラフリオフ",
+  "wiki_title": "パベル・ズラフリオフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%99%E3%83%AB%E3%83%BB%E3%82%BA%E3%83%A9%E3%83%95%E3%83%AA%E3%82%AA%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/パベル・ズラフリオフ"
+  ]
+ },
+ {
+  "name": "ネイサン・ブリッグス",
+  "wiki_title": "ネイサン・ブリッグス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8D%E3%82%A4%E3%82%B5%E3%83%B3%E3%83%BB%E3%83%96%E3%83%AA%E3%83%83%E3%82%B0%E3%82%B9",
+  "wiki_bout_count": 4,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ネイサン・ブリッグス"
+  ]
+ },
+ {
+  "name": "ブランコ・シカティック",
+  "wiki_title": "ブランコ・シカティック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%83%B3%E3%82%B3%E3%83%BB%E3%82%B7%E3%82%AB%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ブランコ・シカティック"
+  ]
+ },
+ {
+  "name": "フランソワ・\"ザ・ホワイトバッファロー\"・ボタ",
+  "wiki_title": "フランソワ・ボタ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%B3%E3%82%BD%E3%83%AF%E3%83%BB%E3%83%9C%E3%82%BF",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/フランソワ・ボタ"
+  ]
+ },
+ {
+  "name": "フランシスコ・フィリォ",
+  "wiki_title": "フランシスコ・フィリォ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B7%E3%82%B9%E3%82%B3%E3%83%BB%E3%83%95%E3%82%A3%E3%83%AA%E3%82%A9",
+  "wiki_bout_count": 25,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/フランシスコ・フィリォ"
+  ]
+ },
+ {
+  "name": "ブアカーオ・ポー.プラムック",
+  "wiki_title": "ブアカーオ・ポー.プラムック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%82%A2%E3%82%AB%E3%83%BC%E3%82%AA%E3%83%BB%E3%83%9D%E3%83%BC.%E3%83%97%E3%83%A9%E3%83%A0%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 286,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ブアカーオ・ポー.プラムック"
+  ]
+ },
+ {
+  "name": "ファイ・ファラモエ",
+  "wiki_title": "ファイ・ファラモエ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%BB%E3%83%95%E3%82%A1%E3%83%A9%E3%83%A2%E3%82%A8",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ファイ・ファラモエ"
+  ]
+ },
+ {
+  "name": "ピーター・ボンドラチェック",
+  "wiki_title": "ピーター・ボンドラチェック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%83%9C%E3%83%B3%E3%83%89%E3%83%A9%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF",
+  "wiki_bout_count": 75,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ピーター・ボンドラチェック"
+  ]
+ },
+ {
+  "name": "ピーター・グラハム",
+  "wiki_title": "ピーター・グラハム",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%82%B0%E3%83%A9%E3%83%8F%E3%83%A0",
+  "wiki_bout_count": 68,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ピーター・グラハム"
+  ]
+ },
+ {
+  "name": "ブラックマンバ",
+  "wiki_title": "ブラックマンバ (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF%E3%83%9E%E3%83%B3%E3%83%90_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ブラックマンバ_(格闘家)"
+  ]
+ },
+ {
+  "name": "ピーター・マエストロビッチ",
+  "wiki_title": "ピーター・マエストロビッチ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%83%9E%E3%82%A8%E3%82%B9%E3%83%88%E3%83%AD%E3%83%93%E3%83%83%E3%83%81",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ピーター・マエストロビッチ"
+  ]
+ },
+ {
+  "name": "ブリース・ギドン",
+  "wiki_title": "ブリース・ギドン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%BB%E3%82%AE%E3%83%89%E3%83%B3",
+  "wiki_bout_count": 34,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ブリース・ギドン"
+  ]
+ },
+ {
+  "name": "ブレクト・ウォリス",
+  "wiki_title": "ブレクト・ウォリス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AC%E3%82%AF%E3%83%88%E3%83%BB%E3%82%A6%E3%82%A9%E3%83%AA%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ブレクト・ウォリス"
+  ]
+ },
+ {
+  "name": "ピーター・スミット",
+  "wiki_title": "ピーター・スミット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%82%B9%E3%83%9F%E3%83%83%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ピーター・スミット"
+  ]
+ },
+ {
+  "name": "ファディル・シャバリ",
+  "wiki_title": "ファディル・シャバリ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%83%87%E3%82%A3%E3%83%AB%E3%83%BB%E3%82%B7%E3%83%A3%E3%83%90%E3%83%AA",
+  "wiki_bout_count": 81,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ファディル・シャバリ"
+  ]
+ },
+ {
+  "name": "フレディ・ケマイヨ",
+  "wiki_title": "フレディ・ケマイヨ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AC%E3%83%87%E3%82%A3%E3%83%BB%E3%82%B1%E3%83%9E%E3%82%A4%E3%83%A8",
+  "wiki_bout_count": 70,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/フレディ・ケマイヨ"
+  ]
+ },
+ {
+  "name": "ファディ・メルザ",
+  "wiki_title": "ファディ・メルザ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%83%87%E3%82%A3%E3%83%BB%E3%83%A1%E3%83%AB%E3%82%B6",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ファディ・メルザ",
+   "https://www.k-1.co.jp/fighter/375"
+  ]
+ },
+ {
+  "name": "ブライアン・ダウヴィス",
+  "wiki_title": "ブライアン・ダウヴィス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%BB%E3%83%80%E3%82%A6%E3%83%B4%E3%82%A3%E3%82%B9",
+  "wiki_bout_count": 47,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ブライアン・ダウヴィス"
+  ]
+ },
+ {
+  "name": "ヘスディ・ゲルゲス",
+  "wiki_title": "ヘスディ・ゲルゲス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%98%E3%82%B9%E3%83%87%E3%82%A3%E3%83%BB%E3%82%B2%E3%83%AB%E3%82%B2%E3%82%B9",
+  "wiki_bout_count": 57,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "ファイヤー原田",
+  "wiki_title": "ファイヤー原田",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%A4%E3%83%BC%E5%8E%9F%E7%94%B0",
+  "wiki_bout_count": 31,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ファイヤー原田",
+   "https://www.k-1.co.jp/fighter/605"
+  ]
+ },
+ {
+  "name": "ファビアーノ・サイクロン",
+  "wiki_title": "ファビアーノ・サイクロン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%83%93%E3%82%A2%E3%83%BC%E3%83%8E%E3%83%BB%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AD%E3%83%B3",
+  "wiki_bout_count": 33,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ファビアーノ・サイクロン"
+  ]
+ },
+ {
+  "name": "ボブ・サップ",
+  "wiki_title": "ボブ・サップ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%96%E3%83%BB%E3%82%B5%E3%83%83%E3%83%97",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ボブ・サップ"
+  ]
+ },
+ {
+  "name": "マイク・ベルナルド",
+  "wiki_title": "マイク・ベルナルド",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%BB%E3%83%99%E3%83%AB%E3%83%8A%E3%83%AB%E3%83%89",
+  "wiki_bout_count": 77,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マイク・ベルナルド"
+  ]
+ },
+ {
+  "name": "マイケル・マクドナルド",
+  "wiki_title": "マイケル・マクドナルド (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%A4%E3%82%B1%E3%83%AB%E3%83%BB%E3%83%9E%E3%82%AF%E3%83%89%E3%83%8A%E3%83%AB%E3%83%89_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 72,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マイケル・マクドナルド_(格闘家)"
+  ]
+ },
+ {
+  "name": "マイティ・モー",
+  "wiki_title": "マイティ・モー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%A4%E3%83%86%E3%82%A3%E3%83%BB%E3%83%A2%E3%83%BC",
+  "wiki_bout_count": 48,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マイティ・モー"
+  ]
+ },
+ {
+  "name": "マイク・ザンビディス",
+  "wiki_title": "マイク・ザンビディス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%BB%E3%82%B6%E3%83%B3%E3%83%93%E3%83%87%E3%82%A3%E3%82%B9",
+  "wiki_bout_count": 181,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マイク・ザンビディス"
+  ]
+ },
+ {
+  "name": "マイケル・トンプソン",
+  "wiki_title": "マイケル・トンプソン (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%A4%E3%82%B1%E3%83%AB%E3%83%BB%E3%83%88%E3%83%B3%E3%83%97%E3%82%BD%E3%83%B3_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マイケル・トンプソン_(格闘家)"
+  ]
+ },
+ {
+  "name": "ペレ・リード",
+  "wiki_title": "ペレ・リード",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9A%E3%83%AC%E3%83%BB%E3%83%AA%E3%83%BC%E3%83%89",
+  "wiki_bout_count": 4,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ペレ・リード"
+  ]
+ },
+ {
+  "name": "ポール・スロウィンスキー",
+  "wiki_title": "ポール・スロウィンスキー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%B9%E3%83%AD%E3%82%A6%E3%82%A3%E3%83%B3%E3%82%B9%E3%82%AD%E3%83%BC",
+  "wiki_bout_count": 99,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ポール・スロウィンスキー"
+  ]
+ },
+ {
+  "name": "ベルナール・アッカ",
+  "wiki_title": "ベルナール・アッカ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%AB%E3%83%8A%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%A2%E3%83%83%E3%82%AB",
+  "wiki_bout_count": 5,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ベルナール・アッカ"
+  ]
+ },
+ {
+  "name": "マキシム・ネレドバ",
+  "wiki_title": "マキシム・ネレドバ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%AD%E3%82%B7%E3%83%A0%E3%83%BB%E3%83%8D%E3%83%AC%E3%83%89%E3%83%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マキシム・ネレドバ"
+  ]
+ },
+ {
+  "name": "ベニー・ユキーデ",
+  "wiki_title": "ベニー・ユキーデ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%8B%E3%83%BC%E3%83%BB%E3%83%A6%E3%82%AD%E3%83%BC%E3%83%87",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ベニー・ユキーデ"
+  ]
+ },
+ {
+  "name": "ホセ・レイス",
+  "wiki_title": "ホセ・レイス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%BB%E3%83%BB%E3%83%AC%E3%82%A4%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ホセ・レイス"
+  ]
+ },
+ {
+  "name": "マイケル・ハンスグット",
+  "wiki_title": "マイケル・ハンスグット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%A4%E3%82%B1%E3%83%AB%E3%83%BB%E3%83%8F%E3%83%B3%E3%82%B9%E3%82%B0%E3%83%83%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マイケル・ハンスグット"
+  ]
+ },
+ {
+  "name": "ペトロ・ナコネッチニィ",
+  "wiki_title": "ペトロ・ナコネッチニィ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9A%E3%83%88%E3%83%AD%E3%83%BB%E3%83%8A%E3%82%B3%E3%83%8D%E3%83%83%E3%83%81%E3%83%8B%E3%82%A3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ペトロ・ナコネッチニィ"
+  ]
+ },
+ {
+  "name": "ベン・エドワーズ",
+  "wiki_title": "ベン・エドワーズ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%B3%E3%83%BB%E3%82%A8%E3%83%89%E3%83%AF%E3%83%BC%E3%82%BA",
+  "wiki_bout_count": 41,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ベン・エドワーズ"
+  ]
+ },
+ {
+  "name": "ミルコ・クロコップ",
+  "wiki_title": "ミルコ・クロコップ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%AB%E3%82%B3%E3%83%BB%E3%82%AF%E3%83%AD%E3%82%B3%E3%83%83%E3%83%97",
+  "wiki_bout_count": 34,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ミルコ・クロコップ"
+  ]
+ },
+ {
+  "name": "マーク・ハント",
+  "wiki_title": "マーク・ハント",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%BB%E3%83%8F%E3%83%B3%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マーク・ハント"
+  ]
+ },
+ {
+  "name": "マーティン・ホルム",
+  "wiki_title": "マーティン・ホルム",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%83%BB%E3%83%9B%E3%83%AB%E3%83%A0",
+  "wiki_bout_count": 69,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マーティン・ホルム"
+  ]
+ },
+ {
+  "name": "マット・スケルトン",
+  "wiki_title": "マット・スケルトン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%83%E3%83%88%E3%83%BB%E3%82%B9%E3%82%B1%E3%83%AB%E3%83%88%E3%83%B3",
+  "wiki_bout_count": 71,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マット・スケルトン"
+  ]
+ },
+ {
+  "name": "メルヴィン・マヌーフ",
+  "wiki_title": "メルヴィン・マヌーフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%83%B4%E3%82%A3%E3%83%B3%E3%83%BB%E3%83%9E%E3%83%8C%E3%83%BC%E3%83%95",
+  "wiki_bout_count": 52,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/メルヴィン・マヌーフ"
+  ]
+ },
+ {
+  "name": "マゴメド・マゴメドフ",
+  "wiki_title": "マゴメド・マゴメドフ (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%B4%E3%83%A1%E3%83%89%E3%83%BB%E3%83%9E%E3%82%B4%E3%83%A1%E3%83%89%E3%83%95_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マゴメド・マゴメドフ_(キックボクサー)"
+  ]
+ },
+ {
+  "name": "モハメド・アズーイ",
+  "wiki_title": "モハメド・アズーイ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%8F%E3%83%A1%E3%83%89%E3%83%BB%E3%82%A2%E3%82%BA%E3%83%BC%E3%82%A4",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/モハメド・アズーイ"
+  ]
+ },
+ {
+  "name": "マルフィオ・カノレッティ",
+  "wiki_title": "マルフィオ・カノレッティ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AB%E3%83%95%E3%82%A3%E3%82%AA%E3%83%BB%E3%82%AB%E3%83%8E%E3%83%AC%E3%83%83%E3%83%86%E3%82%A3",
+  "wiki_bout_count": 27,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マルフィオ・カノレッティ"
+  ]
+ },
+ {
+  "name": "ムラット・ディレッキー",
+  "wiki_title": "ムラット・ディレッキー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A0%E3%83%A9%E3%83%83%E3%83%88%E3%83%BB%E3%83%87%E3%82%A3%E3%83%AC%E3%83%83%E3%82%AD%E3%83%BC",
+  "wiki_bout_count": 83,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ムラット・ディレッキー"
+  ]
+ },
+ {
+  "name": "マルコ・ピケ",
+  "wiki_title": "マルコ・ピケ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AB%E3%82%B3%E3%83%BB%E3%83%94%E3%82%B1",
+  "wiki_bout_count": 70,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マルコ・ピケ"
+  ]
+ },
+ {
+  "name": "マリオ・プリンチ",
+  "wiki_title": "マリオ・プリンチ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AA%E3%82%AA%E3%83%BB%E3%83%97%E3%83%AA%E3%83%B3%E3%83%81",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マリオ・プリンチ"
+  ]
+ },
+ {
+  "name": "ムハレム・ジョケイ",
+  "wiki_title": "ムハレム・ジョケイ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A0%E3%83%8F%E3%83%AC%E3%83%A0%E3%83%BB%E3%82%B8%E3%83%A7%E3%82%B1%E3%82%A4",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ムハレム・ジョケイ"
+  ]
+ },
+ {
+  "name": "マーティン・ロザルスキー",
+  "wiki_title": "マーティン・ロザルスキー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%83%BB%E3%83%AD%E3%82%B6%E3%83%AB%E3%82%B9%E3%82%AD%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マーティン・ロザルスキー"
+  ]
+ },
+ {
+  "name": "ムラッド・ボウジディ",
+  "wiki_title": "ムラッド・ボウジディ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A0%E3%83%A9%E3%83%83%E3%83%89%E3%83%BB%E3%83%9C%E3%82%A6%E3%82%B8%E3%83%87%E3%82%A3",
+  "wiki_bout_count": 82,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ムラッド・ボウジディ"
+  ]
+ },
+ {
+  "name": "マリウス・ザロムスキー",
+  "wiki_title": "マリウス・ザロムスキー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AA%E3%82%A6%E3%82%B9%E3%83%BB%E3%82%B6%E3%83%AD%E3%83%A0%E3%82%B9%E3%82%AD%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マリウス・ザロムスキー"
+  ]
+ },
+ {
+  "name": "マーカス・エバーグ",
+  "wiki_title": "マーカス・エバーグ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%BC%E3%82%AB%E3%82%B9%E3%83%BB%E3%82%A8%E3%83%90%E3%83%BC%E3%82%B0",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/マーカス・エバーグ"
+  ]
+ },
+ {
+  "name": "モハン・ドラゴン",
+  "wiki_title": "モハン・ドラゴン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%8F%E3%83%B3%E3%83%BB%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3",
+  "wiki_bout_count": 41,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/モハン・ドラゴン",
+   "https://www.k-1.co.jp/fighter/715"
+  ]
+ },
+ {
+  "name": "ヤン・ノルキヤ",
+  "wiki_title": "ヤン・ノルキヤ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A4%E3%83%B3%E3%83%BB%E3%83%8E%E3%83%AB%E3%82%AD%E3%83%A4",
+  "wiki_bout_count": 25,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ヤン・ノルキヤ"
+  ]
+ },
+ {
+  "name": "モーリス・スミス",
+  "wiki_title": "モーリス・スミス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%BC%E3%83%AA%E3%82%B9%E3%83%BB%E3%82%B9%E3%83%9F%E3%82%B9",
+  "wiki_bout_count": 71,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/モーリス・スミス"
+  ]
+ },
+ {
+  "name": "モンターニャ・シウバ",
+  "wiki_title": "モンターニャ・シウバ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8B%E3%83%A3%E3%83%BB%E3%82%B7%E3%82%A6%E3%83%90",
+  "wiki_bout_count": 6,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/モンターニャ・シウバ"
+  ]
+ },
+ {
+  "name": "ユルゲン・クルト",
+  "wiki_title": "ユルゲン・クルト",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%AB%E3%82%B2%E3%83%B3%E3%83%BB%E3%82%AF%E3%83%AB%E3%83%88",
+  "wiki_bout_count": 82,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ユルゲン・クルト"
+  ]
+ },
+ {
+  "name": "リック・ルーファス",
+  "wiki_title": "リック・ルーファス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%83%E3%82%AF%E3%83%BB%E3%83%AB%E3%83%BC%E3%83%95%E3%82%A1%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/リック・ルーファス"
+  ]
+ },
+ {
+  "name": "ヨードセングライ・フェアテックス",
+  "wiki_title": "ヨードセングライ・フェアテックス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A8%E3%83%BC%E3%83%89%E3%82%BB%E3%83%B3%E3%82%B0%E3%83%A9%E3%82%A4%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A2%E3%83%86%E3%83%83%E3%82%AF%E3%82%B9",
+  "wiki_bout_count": 236,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ヨードセングライ・フェアテックス"
+  ]
+ },
+ {
+  "name": "ラモン・デッカー",
+  "wiki_title": "ラモン・デッカー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%A2%E3%83%B3%E3%83%BB%E3%83%87%E3%83%83%E3%82%AB%E3%83%BC",
+  "wiki_bout_count": 206,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ラモン・デッカー"
+  ]
+ },
+ {
+  "name": "ヤン・ロムルダー",
+  "wiki_title": "ヤン・ロムルダー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A4%E3%83%B3%E3%83%BB%E3%83%AD%E3%83%A0%E3%83%AB%E3%83%80%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ヤン・ロムルダー"
+  ]
+ },
+ {
+  "name": "リカルド・ノードストランド",
+  "wiki_title": "リカルド・ノードストランド",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%82%AB%E3%83%AB%E3%83%89%E3%83%BB%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%E3%83%89",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/リカルド・ノードストランド"
+  ]
+ },
+ {
+  "name": "ランディ・キム",
+  "wiki_title": "ランディ・キム",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%87%E3%82%A3%E3%83%BB%E3%82%AD%E3%83%A0",
+  "wiki_bout_count": 8,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ランディ・キム"
+  ]
+ },
+ {
+  "name": "ユーリ・メス",
+  "wiki_title": "ユーリ・メス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%BC%E3%83%AA%E3%83%BB%E3%83%A1%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ユーリ・メス"
+  ]
+ },
+ {
+  "name": "ラリー・リンドウォール",
+  "wiki_title": "ラリー・リンドウォール",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%AA%E3%83%B3%E3%83%89%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ラリー・リンドウォール"
+  ]
+ },
+ {
+  "name": "ライアン・シムソン",
+  "wiki_title": "ライアン・シムソン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%A0%E3%82%BD%E3%83%B3",
+  "wiki_bout_count": 80,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ライアン・シムソン"
+  ]
+ },
+ {
+  "name": "リコ・ヴァーホーベン",
+  "wiki_title": "リコ・ヴァーホーベン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%82%B3%E3%83%BB%E3%83%B4%E3%82%A1%E3%83%BC%E3%83%9B%E3%83%BC%E3%83%99%E3%83%B3",
+  "wiki_bout_count": 76,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/リコ・ヴァーホーベン"
+  ]
+ },
+ {
+  "name": "ランバー・ソムデートM16",
+  "wiki_title": "ランバー・ソムデートM16",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%90%E3%83%BC%E3%83%BB%E3%82%BD%E3%83%A0%E3%83%87%E3%83%BC%E3%83%88M16",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ランバー・ソムデートM16"
+  ]
+ },
+ {
+  "name": "ラウル・カティナス",
+  "wiki_title": "ラウル・カティナス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A6%E3%83%AB%E3%83%BB%E3%82%AB%E3%83%86%E3%82%A3%E3%83%8A%E3%82%B9",
+  "wiki_bout_count": 16,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ラウル・カティナス"
+  ]
+ },
+ {
+  "name": "ラマザン・ラマザノフ",
+  "wiki_title": "ラマザン・ラマザノフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%9E%E3%82%B6%E3%83%B3%E3%83%BB%E3%83%A9%E3%83%9E%E3%82%B6%E3%83%8E%E3%83%95",
+  "wiki_bout_count": 55,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ラマザン・ラマザノフ"
+  ]
+ },
+ {
+  "name": "ヤン・ソウクップ",
+  "wiki_title": "ヤン・ソウクップ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%A4%E3%83%B3%E3%83%BB%E3%82%BD%E3%82%A6%E3%82%AF%E3%83%83%E3%83%97",
+  "wiki_bout_count": 5,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ヤン・ソウクップ"
+  ]
+ },
+ {
+  "name": "レミー・ボンヤスキー",
+  "wiki_title": "レミー・ボンヤスキー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%9F%E3%83%BC%E3%83%BB%E3%83%9C%E3%83%B3%E3%83%A4%E3%82%B9%E3%82%AD%E3%83%BC",
+  "wiki_bout_count": 98,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/レミー・ボンヤスキー"
+  ]
+ },
+ {
+  "name": "レイ・セフォー",
+  "wiki_title": "レイ・セフォー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%A4%E3%83%BB%E3%82%BB%E3%83%95%E3%82%A9%E3%83%BC",
+  "wiki_bout_count": 79,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/レイ・セフォー"
+  ]
+ },
+ {
+  "name": "ルスラン・カラエフ",
+  "wiki_title": "ルスラン・カラエフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%82%B9%E3%83%A9%E3%83%B3%E3%83%BB%E3%82%AB%E3%83%A9%E3%82%A8%E3%83%95",
+  "wiki_bout_count": 22,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ルスラン・カラエフ"
+  ]
+ },
+ {
+  "name": "レミギウス・モリカビュチス",
+  "wiki_title": "レミギウス・モリカビュチス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%9F%E3%82%AE%E3%82%A6%E3%82%B9%E3%83%BB%E3%83%A2%E3%83%AA%E3%82%AB%E3%83%93%E3%83%A5%E3%83%81%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/レミギウス・モリカビュチス"
+  ]
+ },
+ {
+  "name": "ロイド・ヴァン・ダム",
+  "wiki_title": "ロイド・ヴァン・ダム",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%82%A4%E3%83%89%E3%83%BB%E3%83%B4%E3%82%A1%E3%83%B3%E3%83%BB%E3%83%80%E3%83%A0",
+  "wiki_bout_count": 51,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ロイド・ヴァン・ダム"
+  ]
+ },
+ {
+  "name": "ロブ・カーマン",
+  "wiki_title": "ロブ・カーマン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%96%E3%83%BB%E3%82%AB%E3%83%BC%E3%83%9E%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ロブ・カーマン"
+  ]
+ },
+ {
+  "name": "ロニー・セフォー",
+  "wiki_title": "ロニー・セフォー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%8B%E3%83%BC%E3%83%BB%E3%82%BB%E3%83%95%E3%82%A9%E3%83%BC",
+  "wiki_bout_count": 16,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ロニー・セフォー"
+  ]
+ },
+ {
+  "name": "レネ・ローゼ",
+  "wiki_title": "レネ・ローゼ (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%8D%E3%83%BB%E3%83%AD%E3%83%BC%E3%82%BC_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/レネ・ローゼ_(格闘家)"
+  ]
+ },
+ {
+  "name": "ロザリオ・プレスティ",
+  "wiki_title": "ロザリオ・プレスティ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%82%B6%E3%83%AA%E3%82%AA%E3%83%BB%E3%83%97%E3%83%AC%E3%82%B9%E3%83%86%E3%82%A3",
+  "wiki_bout_count": 37,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ロザリオ・プレスティ"
+  ]
+ },
+ {
+  "name": "レイ・スターリン",
+  "wiki_title": "レイ・スターリン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%A4%E3%83%BB%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%AA%E3%83%B3",
+  "wiki_bout_count": 47,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/レイ・スターリン"
+  ]
+ },
+ {
+  "name": "ロベルト・コッコ",
+  "wiki_title": "ロベルト・コッコ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%99%E3%83%AB%E3%83%88%E3%83%BB%E3%82%B3%E3%83%83%E3%82%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ロベルト・コッコ"
+  ]
+ },
+ {
+  "name": "ルイス・レイス",
+  "wiki_title": "ルイス・レイス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%82%A4%E3%82%B9%E3%83%BB%E3%83%AC%E3%82%A4%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ルイス・レイス"
+  ]
+ },
+ {
+  "name": "ロイ・タン",
+  "wiki_title": "ロイ・タン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%82%A4%E3%83%BB%E3%82%BF%E3%83%B3",
+  "wiki_bout_count": 5,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ロイ・タン"
+  ]
+ },
+ {
+  "name": "ルーカス・ヤロス",
+  "wiki_title": "ルーカス・ヤロス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%AB%E3%82%B9%E3%83%BB%E3%83%A4%E3%83%AD%E3%82%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ルーカス・ヤロス"
+  ]
+ },
+ {
+  "name": "ルスラン・アヴァソフ",
+  "wiki_title": "ルスラン・アヴァソフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%82%B9%E3%83%A9%E3%83%B3%E3%83%BB%E3%82%A2%E3%83%B4%E3%82%A1%E3%82%BD%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ルスラン・アヴァソフ"
+  ]
+ },
+ {
+  "name": "リョウ・ペガサス",
+  "wiki_title": "リョウ・ペガサス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%A7%E3%82%A6%E3%83%BB%E3%83%9A%E3%82%AC%E3%82%B5%E3%82%B9",
+  "wiki_bout_count": 31,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/リョウ・ペガサス"
+  ]
+ },
+ {
+  "name": "レオナ・ペタス",
+  "wiki_title": "レオナ・ペタス",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%AA%E3%83%8A%E3%83%BB%E3%83%9A%E3%82%BF%E3%82%B9",
+  "wiki_bout_count": 43,
+  "fighters_json_gym": "THE SPIRIT GYM TEAM TOP ZEROS/LARA TOKYO",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/261",
+   "https://knockoutkb.com/fighters/leona_pettas_584",
+   "https://ja.wikipedia.org/wiki/レオナ・ペタス"
+  ]
+ },
+ {
+  "name": "ヴァージル・カラコダ",
+  "wiki_title": "ヴァージル・カラコダ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A1%E3%83%BC%E3%82%B8%E3%83%AB%E3%83%BB%E3%82%AB%E3%83%A9%E3%82%B3%E3%83%80",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ヴァージル・カラコダ"
+  ]
+ },
+ {
+  "name": "ヴィタリ・オフラメンコ",
+  "wiki_title": "ヴィタリ・オフラメンコ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%82%BF%E3%83%AA%E3%83%BB%E3%82%AA%E3%83%95%E3%83%A9%E3%83%A1%E3%83%B3%E3%82%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ヴィタリ・オフラメンコ"
+  ]
+ },
+ {
+  "name": "ワシリー・シシ",
+  "wiki_title": "ワシリー・シシ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AF%E3%82%B7%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%B7%E3%82%B7",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ワシリー・シシ"
+  ]
+ },
+ {
+  "name": "ヴィトー・ミランダ",
+  "wiki_title": "ヴィトー・ミランダ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%83%88%E3%83%BC%E3%83%BB%E3%83%9F%E3%83%A9%E3%83%B3%E3%83%80",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ヴィトー・ミランダ"
+  ]
+ },
+ {
+  "name": "上松大輔",
+  "wiki_title": "上松大輔",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E6%9D%BE%E5%A4%A7%E8%BC%94",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/上松大輔"
+  ]
+ },
+ {
+  "name": "ワンロップ・ウィラサクレック",
+  "wiki_title": "ワンロップ・ウィラサクレック",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AF%E3%83%B3%E3%83%AD%E3%83%83%E3%83%97%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%A9%E3%82%B5%E3%82%AF%E3%83%AC%E3%83%83%E3%82%AF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ワンロップ・ウィラサクレック"
+  ]
+ },
+ {
+  "name": "ロマン・クレイブル",
+  "wiki_title": "ロマン・クレイブル",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%9E%E3%83%B3%E3%83%BB%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%96%E3%83%AB",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ロマン・クレイブル"
+  ]
+ },
+ {
+  "name": "上原誠",
+  "wiki_title": "上原誠",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E5%8E%9F%E8%AA%A0",
+  "wiki_bout_count": 33,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/上原誠",
+   "https://www.k-1.co.jp/fighter/678"
+  ]
+ },
+ {
+  "name": "中嶋平八",
+  "wiki_title": "中嶋平八",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B6%8B%E5%B9%B3%E5%85%AB",
+  "wiki_bout_count": 13,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/中嶋平八"
+  ]
+ },
+ {
+  "name": "中村高明",
+  "wiki_title": "中村高明",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%9D%91%E9%AB%98%E6%98%8E",
+  "wiki_bout_count": 36,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/中村高明"
+  ]
+ },
+ {
+  "name": "中島弘貴",
+  "wiki_title": "中島弘貴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B3%B6%E5%BC%98%E8%B2%B4",
+  "wiki_bout_count": 21,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "ヴィタリ・ウルコフ",
+  "wiki_title": "ヴィタリ・ウルコフ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%82%BF%E3%83%AA%E3%83%BB%E3%82%A6%E3%83%AB%E3%82%B3%E3%83%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ヴィタリ・ウルコフ"
+  ]
+ },
+ {
+  "name": "三上大智",
+  "wiki_title": "三上ヘンリー大智",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%89%E4%B8%8A%E3%83%98%E3%83%B3%E3%83%AA%E3%83%BC%E5%A4%A7%E6%99%BA",
+  "wiki_bout_count": 4,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "上野空大",
+  "wiki_title": "上野空大",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E7%A9%BA%E5%A4%A7",
+  "wiki_bout_count": 8,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "上野奏貴",
+  "wiki_title": "上野奏貴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E5%A5%8F%E8%B2%B4",
+  "wiki_bout_count": 7,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "佐藤友則",
+  "wiki_title": "佐藤友則",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E5%8F%8B%E5%89%87",
+  "wiki_bout_count": 51,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/佐藤友則"
+  ]
+ },
+ {
+  "name": "中迫剛",
+  "wiki_title": "中迫剛",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%BF%AB%E5%89%9B",
+  "wiki_bout_count": 47,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/中迫剛"
+  ]
+ },
+ {
+  "name": "久保賢司",
+  "wiki_title": "久保賢司",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B9%85%E4%BF%9D%E8%B3%A2%E5%8F%B8",
+  "wiki_bout_count": 31,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/久保賢司",
+   "https://www.k-1.co.jp/fighter/499"
+  ]
+ },
+ {
+  "name": "久保優太",
+  "wiki_title": "久保優太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B9%85%E4%BF%9D%E5%84%AA%E5%A4%AA",
+  "wiki_bout_count": 61,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/久保優太",
+   "https://www.k-1.co.jp/fighter/13"
+  ]
+ },
+ {
+  "name": "井上由久",
+  "wiki_title": "井上由久",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E7%94%B1%E4%B9%85",
+  "wiki_bout_count": 4,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/井上由久"
+  ]
+ },
+ {
+  "name": "佐藤匠",
+  "wiki_title": "佐藤匠 (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E5%8C%A0_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/佐藤匠_(格闘家)"
+  ]
+ },
+ {
+  "name": "今井教行",
+  "wiki_title": "今井教行",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BB%8A%E4%BA%95%E6%95%99%E8%A1%8C",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/今井教行"
+  ]
+ },
+ {
+  "name": "伊藤紗弥",
+  "wiki_title": "伊藤紗弥",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E7%B4%97%E5%BC%A5",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/伊藤紗弥"
+  ]
+ },
+ {
+  "name": "丹羽圭介",
+  "wiki_title": "丹羽圭介 (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%B9%E7%BE%BD%E5%9C%AD%E4%BB%8B_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 32,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "佐竹雅昭",
+  "wiki_title": "佐竹雅昭",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BD%90%E7%AB%B9%E9%9B%85%E6%98%AD",
+  "wiki_bout_count": 40,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/佐竹雅昭"
+  ]
+ },
+ {
+  "name": "佐々木洵樹",
+  "wiki_title": "佐々木洵樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BD%90%E3%80%85%E6%9C%A8%E6%B4%B5%E6%A8%B9",
+  "wiki_bout_count": 8,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/佐々木洵樹",
+   "https://www.k-1.co.jp/fighter/949"
+  ]
+ },
+ {
+  "name": "佐藤嘉洋",
+  "wiki_title": "佐藤嘉洋",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E5%98%89%E6%B4%8B",
+  "wiki_bout_count": 80,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/佐藤嘉洋",
+   "https://www.k-1.co.jp/fighter/362"
+  ]
+ },
+ {
+  "name": "前田宏行",
+  "wiki_title": "前田宏行",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%89%8D%E7%94%B0%E5%AE%8F%E8%A1%8C",
+  "wiki_bout_count": 4,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/前田宏行"
+  ]
+ },
+ {
+  "name": "内田ノボル",
+  "wiki_title": "内田ノボル",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%86%85%E7%94%B0%E3%83%8E%E3%83%9C%E3%83%AB",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/内田ノボル"
+  ]
+ },
+ {
+  "name": "前田憲作",
+  "wiki_title": "前田憲作",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%89%8D%E7%94%B0%E6%86%B2%E4%BD%9C",
+  "wiki_bout_count": 45,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/前田憲作"
+  ]
+ },
+ {
+  "name": "前田尚紀",
+  "wiki_title": "前田尚紀 (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%89%8D%E7%94%B0%E5%B0%9A%E7%B4%80_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 53,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/前田尚紀_(格闘家)",
+   "https://www.k-1.co.jp/fighter/588"
+  ]
+ },
+ {
+  "name": "健太",
+  "wiki_title": "健太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%81%A5%E5%A4%AA",
+  "wiki_bout_count": 49,
+  "fighters_json_gym": "NJKF・E.S.G",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/kenta_107",
+   "https://ja.wikipedia.org/wiki/健太",
+   "https://www.k-1.co.jp/fighter/337"
+  ]
+ },
+ {
+  "name": "内山政人",
+  "wiki_title": "内山政人",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%86%85%E5%B1%B1%E6%94%BF%E4%BA%BA",
+  "wiki_bout_count": 13,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/内山政人",
+   "https://www.k-1.co.jp/fighter/355"
+  ]
+ },
+ {
+  "name": "佐藤堅一",
+  "wiki_title": "佐藤堅一",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E5%A0%85%E4%B8%80",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/佐藤堅一"
+  ]
+ },
+ {
+  "name": "佑典",
+  "wiki_title": "佑典",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BD%91%E5%85%B8",
+  "wiki_bout_count": 27,
+  "fighters_json_gym": "BILLION.WIN.GYM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1140",
+   "https://ja.wikipedia.org/wiki/佑典"
+  ]
+ },
+ {
+  "name": "真優 (キックボクサー)",
+  "wiki_title": "真優 (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9C%9F%E5%84%AA_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": 19,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "切詰大貴",
+  "wiki_title": "切詰大貴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%88%87%E8%A9%B0%E5%A4%A7%E8%B2%B4",
+  "wiki_bout_count": 10,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/切詰大貴"
+  ]
+ },
+ {
+  "name": "吉鷹弘",
+  "wiki_title": "吉鷹弘",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%90%89%E9%B7%B9%E5%BC%98",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/吉鷹弘"
+  ]
+ },
+ {
+  "name": "土井広之",
+  "wiki_title": "土井広之",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%9C%9F%E4%BA%95%E5%BA%83%E4%B9%8B",
+  "wiki_bout_count": 52,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/土井広之"
+  ]
+ },
+ {
+  "name": "坂本奈緒子",
+  "wiki_title": "坂本奈緒子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%9D%82%E6%9C%AC%E5%A5%88%E7%B7%92%E5%AD%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/坂本奈緒子"
+  ]
+ },
+ {
+  "name": "卜部弘嵩",
+  "wiki_title": "卜部弘嵩",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%8D%9C%E9%83%A8%E5%BC%98%E5%B5%A9",
+  "wiki_bout_count": 60,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/卜部弘嵩",
+   "https://www.k-1.co.jp/fighter/7"
+  ]
+ },
+ {
+  "name": "卜部功也",
+  "wiki_title": "卜部功也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%8D%9C%E9%83%A8%E5%8A%9F%E4%B9%9F",
+  "wiki_bout_count": 62,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/卜部功也",
+   "https://www.k-1.co.jp/fighter/5"
+  ]
+ },
+ {
+  "name": "国崇",
+  "wiki_title": "国崇",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%9B%BD%E5%B4%87",
+  "wiki_bout_count": 100,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/国崇",
+   "https://www.k-1.co.jp/fighter/622"
+  ]
+ },
+ {
+  "name": "北山高与志",
+  "wiki_title": "北山高与志",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%8C%97%E5%B1%B1%E9%AB%98%E4%B8%8E%E5%BF%97",
+  "wiki_bout_count": 25,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/北山高与志"
+  ]
+ },
+ {
+  "name": "吉本光志",
+  "wiki_title": "吉本光志",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%90%89%E6%9C%AC%E5%85%89%E5%BF%97",
+  "wiki_bout_count": 50,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/吉本光志",
+   "https://www.k-1.co.jp/fighter/606"
+  ]
+ },
+ {
+  "name": "及川知浩",
+  "wiki_title": "及川知浩",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%8F%8A%E5%B7%9D%E7%9F%A5%E6%B5%A9",
+  "wiki_bout_count": 41,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/及川知浩"
+  ]
+ },
+ {
+  "name": "名城裕司",
+  "wiki_title": "名城裕司",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%90%8D%E5%9F%8E%E8%A3%95%E5%8F%B8",
+  "wiki_bout_count": 14,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/名城裕司",
+   "https://www.k-1.co.jp/fighter/344"
+  ]
+ },
+ {
+  "name": "古田太一",
+  "wiki_title": "古田太一",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%8F%A4%E7%94%B0%E5%A4%AA%E4%B8%80",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/古田太一",
+   "https://www.k-1.co.jp/fighter/817"
+  ]
+ },
+ {
+  "name": "喜多村誠",
+  "wiki_title": "喜多村誠",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%96%9C%E5%A4%9A%E6%9D%91%E8%AA%A0",
+  "wiki_bout_count": 67,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/喜多村誠"
+  ]
+ },
+ {
+  "name": "南原健太",
+  "wiki_title": "南原健太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8E%9F%E5%81%A5%E5%A4%AA",
+  "wiki_bout_count": 13,
+  "fighters_json_gym": "TARGET SHIBUYA",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/nanbara_kenta/",
+   "https://ja.wikipedia.org/wiki/南原健太"
+  ]
+ },
+ {
+  "name": "大月晴明",
+  "wiki_title": "大月晴明",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%9C%88%E6%99%B4%E6%98%8E",
+  "wiki_bout_count": 43,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "堀啓",
+  "wiki_title": "堀啓",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A0%80%E5%95%93",
+  "wiki_bout_count": 26,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/堀啓"
+  ]
+ },
+ {
+  "name": "大宮司進",
+  "wiki_title": "大宮司進",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%AE%AE%E5%8F%B8%E9%80%B2",
+  "wiki_bout_count": 36,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大宮司進"
+  ]
+ },
+ {
+  "name": "大東旭",
+  "wiki_title": "大東旭",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%9D%B1%E6%97%AD",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大東旭"
+  ]
+ },
+ {
+  "name": "大浜芳美",
+  "wiki_title": "大浜芳美",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%B5%9C%E8%8A%B3%E7%BE%8E",
+  "wiki_bout_count": 16,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大浜芳美"
+  ]
+ },
+ {
+  "name": "増田博正",
+  "wiki_title": "増田博正",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A2%97%E7%94%B0%E5%8D%9A%E6%AD%A3",
+  "wiki_bout_count": 47,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/増田博正"
+  ]
+ },
+ {
+  "name": "城戸康裕",
+  "wiki_title": "城戸康裕",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%9F%8E%E6%88%B8%E5%BA%B7%E8%A3%95",
+  "wiki_bout_count": 88,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/城戸康裕",
+   "https://www.k-1.co.jp/fighter/357"
+  ]
+ },
+ {
+  "name": "大渡博之",
+  "wiki_title": "大渡博之",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%B8%A1%E5%8D%9A%E4%B9%8B",
+  "wiki_bout_count": 13,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大渡博之",
+   "https://www.k-1.co.jp/fighter/584"
+  ]
+ },
+ {
+  "name": "大和哲也",
+  "wiki_title": "大和哲也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%92%8C%E5%93%B2%E4%B9%9F",
+  "wiki_bout_count": 69,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "大和侑也",
+  "wiki_title": "大和侑也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%92%8C%E4%BE%91%E4%B9%9F",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大和侑也",
+   "https://www.k-1.co.jp/fighter/319"
+  ]
+ },
+ {
+  "name": "大石駿介",
+  "wiki_title": "大石駿介",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E7%9F%B3%E9%A7%BF%E4%BB%8B",
+  "wiki_bout_count": 24,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大石駿介",
+   "https://www.k-1.co.jp/fighter/530"
+  ]
+ },
+ {
+  "name": "大槻翔太",
+  "wiki_title": "大槻翔太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%A7%BB%E7%BF%94%E5%A4%AA",
+  "wiki_bout_count": 21,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大槻翔太"
+  ]
+ },
+ {
+  "name": "子安慎悟",
+  "wiki_title": "子安慎悟",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AD%90%E5%AE%89%E6%85%8E%E6%82%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/子安慎悟"
+  ]
+ },
+ {
+  "name": "天田ヒロミ",
+  "wiki_title": "天田ヒロミ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E7%94%B0%E3%83%92%E3%83%AD%E3%83%9F",
+  "wiki_bout_count": 77,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/天田ヒロミ"
+  ]
+ },
+ {
+  "name": "安廣一哉",
+  "wiki_title": "安廣一哉",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%89%E5%BB%A3%E4%B8%80%E5%93%89",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/安廣一哉"
+  ]
+ },
+ {
+  "name": "大野崇",
+  "wiki_title": "大野崇",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%87%8E%E5%B4%87",
+  "wiki_bout_count": 41,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大野崇"
+  ]
+ },
+ {
+  "name": "宍戸大樹",
+  "wiki_title": "宍戸大樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%8D%E6%88%B8%E5%A4%A7%E6%A8%B9",
+  "wiki_bout_count": 89,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "宮本正明",
+  "wiki_title": "宮本正明",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E6%9C%AC%E6%AD%A3%E6%98%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/宮本正明"
+  ]
+ },
+ {
+  "name": "大高一郎",
+  "wiki_title": "大高一郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%AB%98%E4%B8%80%E9%83%8E",
+  "wiki_bout_count": 36,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/大高一郎",
+   "https://www.k-1.co.jp/fighter/610"
+  ]
+ },
+ {
+  "name": "安倍基江",
+  "wiki_title": "安倍基江",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%89%E5%80%8D%E5%9F%BA%E6%B1%9F",
+  "wiki_bout_count": 22,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/安倍基江"
+  ]
+ },
+ {
+  "name": "太刀風",
+  "wiki_title": "太刀風 (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%AA%E5%88%80%E9%A2%A8_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 10,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/太刀風_(格闘家)"
+  ]
+ },
+ {
+  "name": "宮元啓介",
+  "wiki_title": "宮元啓介",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E5%85%83%E5%95%93%E4%BB%8B",
+  "wiki_bout_count": 54,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/宮元啓介",
+   "https://www.k-1.co.jp/fighter/157"
+  ]
+ },
+ {
+  "name": "宮本武勇志",
+  "wiki_title": "宮本武勇志",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E6%9C%AC%E6%AD%A6%E5%8B%87%E5%BF%97",
+  "wiki_bout_count": 35,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/宮本武勇志"
+  ]
+ },
+ {
+  "name": "守屋拓郎",
+  "wiki_title": "守屋拓郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%88%E5%B1%8B%E6%8B%93%E9%83%8E",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/守屋拓郎",
+   "https://www.k-1.co.jp/fighter/379"
+  ]
+ },
+ {
+  "name": "安保瑠輝也",
+  "wiki_title": "安保瑠輝也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%89%E4%BF%9D%E7%91%A0%E8%BC%9D%E4%B9%9F",
+  "wiki_bout_count": 37,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/安保瑠輝也",
+   "https://www.k-1.co.jp/fighter/260"
+  ]
+ },
+ {
+  "name": "安保璃紅",
+  "wiki_title": "安保璃紅",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%89%E4%BF%9D%E7%92%83%E7%B4%85",
+  "wiki_bout_count": 14,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "宮本芽依",
+  "wiki_title": "宮本芽依",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E6%9C%AC%E8%8A%BD%E4%BE%9D",
+  "wiki_bout_count": 8,
+  "fighters_json_gym": "KRAZY BEE/POUND FOR POUND",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/miyamoto_mei/",
+   "https://ja.wikipedia.org/wiki/宮本芽依"
+  ]
+ },
+ {
+  "name": "小比類巻貴之",
+  "wiki_title": "小比類巻貴之",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%AF%94%E9%A1%9E%E5%B7%BB%E8%B2%B4%E4%B9%8B",
+  "wiki_bout_count": 62,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "富平辰文",
+  "wiki_title": "富平辰文",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%B9%B3%E8%BE%B0%E6%96%87",
+  "wiki_bout_count": 35,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/富平辰文"
+  ]
+ },
+ {
+  "name": "小次郎",
+  "wiki_title": "小次郎 (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%AC%A1%E9%83%8E_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/小次郎_(格闘家)"
+  ]
+ },
+ {
+  "name": "寒川直喜",
+  "wiki_title": "寒川直喜",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AF%92%E5%B7%9D%E7%9B%B4%E5%96%9C",
+  "wiki_bout_count": 41,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/寒川直喜",
+   "https://www.k-1.co.jp/fighter/424"
+  ]
+ },
+ {
+  "name": "寒川慶一",
+  "wiki_title": "寒川慶一",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AF%92%E5%B7%9D%E6%85%B6%E4%B8%80",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/寒川慶一"
+  ]
+ },
+ {
+  "name": "小宮由紀博",
+  "wiki_title": "小宮由紀博",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AE%AE%E7%94%B1%E7%B4%80%E5%8D%9A",
+  "wiki_bout_count": 40,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/小宮由紀博",
+   "https://www.k-1.co.jp/fighter/628"
+  ]
+ },
+ {
+  "name": "小宮山工介",
+  "wiki_title": "小宮山工介",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AE%AE%E5%B1%B1%E5%B7%A5%E4%BB%8B",
+  "wiki_bout_count": 41,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/小宮山工介",
+   "https://www.k-1.co.jp/fighter/696"
+  ]
+ },
+ {
+  "name": "寺戸伸近",
+  "wiki_title": "寺戸伸近",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AF%BA%E6%88%B8%E4%BC%B8%E8%BF%91",
+  "wiki_bout_count": 52,
+  "fighters_json_gym": "Booch Beat",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/terado_nobuchika/",
+   "https://ja.wikipedia.org/wiki/寺戸伸近",
+   "https://www.k-1.co.jp/fighter/65"
+  ]
+ },
+ {
+  "name": "宮﨑小雪",
+  "wiki_title": "宮﨑小雪",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%EF%A8%91%E5%B0%8F%E9%9B%AA",
+  "wiki_bout_count": 18,
+  "fighters_json_gym": "TRY HARD GYM",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/miyazaki_koyuki/",
+   "https://ja.wikipedia.org/wiki/宮﨑小雪",
+   "https://www.k-1.co.jp/fighter/1438"
+  ]
+ },
+ {
+  "name": "小林愛理奈",
+  "wiki_title": "小林愛理奈",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%9E%97%E6%84%9B%E7%90%86%E5%A5%88",
+  "wiki_bout_count": 21,
+  "fighters_json_gym": "FASCINATE FIGHT TEAM",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/kobayashi_arina/",
+   "https://knockoutkb.com/fighters/kobayashi_arina_545",
+   "https://ja.wikipedia.org/wiki/小林愛理奈"
+  ]
+ },
+ {
+  "name": "岡田敦子",
+  "wiki_title": "岡田敦子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E7%94%B0%E6%95%A6%E5%AD%90",
+  "wiki_bout_count": 24,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/岡田敦子"
+  ]
+ },
+ {
+  "name": "尾崎圭司",
+  "wiki_title": "尾崎圭司",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E5%B4%8E%E5%9C%AD%E5%8F%B8",
+  "wiki_bout_count": 40,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/尾崎圭司",
+   "https://www.k-1.co.jp/fighter/272"
+  ]
+ },
+ {
+  "name": "山本優弥",
+  "wiki_title": "山本優弥",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E5%84%AA%E5%BC%A5",
+  "wiki_bout_count": 57,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/山本優弥",
+   "https://www.k-1.co.jp/fighter/24"
+  ]
+ },
+ {
+  "name": "山本真弘",
+  "wiki_title": "山本真弘",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E7%9C%9F%E5%BC%98",
+  "wiki_bout_count": 72,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "山内佑太郎",
+  "wiki_title": "山内佑太郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%86%85%E4%BD%91%E5%A4%AA%E9%83%8E",
+  "wiki_bout_count": 42,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/山内佑太郎",
+   "https://www.k-1.co.jp/fighter/381"
+  ]
+ },
+ {
+  "name": "山本元気",
+  "wiki_title": "山本元気",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E5%85%83%E6%B0%97",
+  "wiki_bout_count": 38,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/山本元気",
+   "https://www.k-1.co.jp/fighter/587"
+  ]
+ },
+ {
+  "name": "山崎秀晃",
+  "wiki_title": "山崎秀晃",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%B4%8E%E7%A7%80%E6%99%83",
+  "wiki_bout_count": 45,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/山崎秀晃",
+   "https://www.k-1.co.jp/fighter/8"
+  ]
+ },
+ {
+  "name": "山本佑機",
+  "wiki_title": "山本佑機",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E4%BD%91%E6%A9%9F",
+  "wiki_bout_count": 33,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/山本佑機",
+   "https://www.k-1.co.jp/fighter/498"
+  ]
+ },
+ {
+  "name": "山田真子",
+  "wiki_title": "山田真子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E7%94%B0%E7%9C%9F%E5%AD%90",
+  "wiki_bout_count": 19,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "山田洸誓",
+  "wiki_title": "山田洸誓",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E7%94%B0%E6%B4%B8%E8%AA%93",
+  "wiki_bout_count": 18,
+  "fighters_json_gym": "正道会館KCIEL",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/yamada_kosei/",
+   "https://ja.wikipedia.org/wiki/山田洸誓",
+   "https://www.k-1.co.jp/fighter/1284"
+  ]
+ },
+ {
+  "name": "岩永唯伽",
+  "wiki_title": "岩永唯伽",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E6%B0%B8%E5%94%AF%E4%BC%BD",
+  "wiki_bout_count": 7,
+  "fighters_json_gym": "OISHI GYM",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/iwanaga_yuika/",
+   "https://ja.wikipedia.org/wiki/岩永唯伽"
+  ]
+ },
+ {
+  "name": "我龍真吾",
+  "wiki_title": "我龍真吾",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%88%91%E9%BE%8D%E7%9C%9F%E5%90%BE",
+  "wiki_bout_count": 64,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/我龍真吾"
+  ]
+ },
+ {
+  "name": "チェ・ヨンス",
+  "wiki_title": "崔龍洙 (ボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B4%94%E9%BE%8D%E6%B4%99_%28%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": 4,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/崔龍洙_(ボクサー)"
+  ]
+ },
+ {
+  "name": "庵谷鷹志",
+  "wiki_title": "庵谷鷹志",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%BA%B5%E8%B0%B7%E9%B7%B9%E5%BF%97",
+  "wiki_bout_count": 40,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/庵谷鷹志"
+  ]
+ },
+ {
+  "name": "張慶軍",
+  "wiki_title": "張慶軍",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%BC%B5%E6%85%B6%E8%BB%8D",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/張慶軍"
+  ]
+ },
+ {
+  "name": "嶋田翔太",
+  "wiki_title": "嶋田翔太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B6%8B%E7%94%B0%E7%BF%94%E5%A4%AA",
+  "wiki_bout_count": 12,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/嶋田翔太",
+   "https://www.k-1.co.jp/fighter/563"
+  ]
+ },
+ {
+  "name": "川口雄介",
+  "wiki_title": "川口雄介",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%8F%A3%E9%9B%84%E4%BB%8B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/川口雄介"
+  ]
+ },
+ {
+  "name": "廣野祐",
+  "wiki_title": "廣野祐",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%BB%A3%E9%87%8E%E7%A5%90",
+  "wiki_bout_count": 29,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "後川聡之",
+  "wiki_title": "後川聡之",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%BE%8C%E5%B7%9D%E8%81%A1%E4%B9%8B",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/後川聡之"
+  ]
+ },
+ {
+  "name": "志朗",
+  "wiki_title": "志朗",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%BF%97%E6%9C%97",
+  "wiki_bout_count": 47,
+  "fighters_json_gym": "BeWELLキックボクシングジム",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/shiro/",
+   "https://ja.wikipedia.org/wiki/志朗",
+   "https://www.k-1.co.jp/fighter/1254"
+  ]
+ },
+ {
+  "name": "巽宇宙",
+  "wiki_title": "巽宇宙",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B7%BD%E5%AE%87%E5%AE%99",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/巽宇宙"
+  ]
+ },
+ {
+  "name": "平岡琴",
+  "wiki_title": "平岡琴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%B2%A1%E7%90%B4",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "村浜武洋",
+  "wiki_title": "村浜武洋",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%91%E6%B5%9C%E6%AD%A6%E6%B4%8B",
+  "wiki_bout_count": 46,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/村浜武洋"
+  ]
+ },
+ {
+  "name": "新田明臣",
+  "wiki_title": "新田明臣",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E7%94%B0%E6%98%8E%E8%87%A3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/新田明臣"
+  ]
+ },
+ {
+  "name": "才賀紀左衛門",
+  "wiki_title": "才賀紀左衛門",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%89%8D%E8%B3%80%E7%B4%80%E5%B7%A6%E8%A1%9B%E9%96%80",
+  "wiki_bout_count": 32,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/才賀紀左衛門",
+   "https://www.k-1.co.jp/fighter/447"
+  ]
+ },
+ {
+  "name": "日下部竜也",
+  "wiki_title": "日下部竜也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E4%B8%8B%E9%83%A8%E7%AB%9C%E4%B9%9F",
+  "wiki_bout_count": 24,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/日下部竜也",
+   "https://www.k-1.co.jp/fighter/501"
+  ]
+ },
+ {
+  "name": "日菜太",
+  "wiki_title": "日菜太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E8%8F%9C%E5%A4%AA",
+  "wiki_bout_count": 66,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/日菜太",
+   "https://www.k-1.co.jp/fighter/740",
+   "https://knockoutkb.com/fighters/hinata_222"
+  ]
+ },
+ {
+  "name": "木村天鮮",
+  "wiki_title": "木村天鮮",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%9D%91%E5%A4%A9%E9%AE%AE",
+  "wiki_bout_count": 37,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/木村天鮮"
+  ]
+ },
+ {
+  "name": "拳士浪",
+  "wiki_title": "拳士浪",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%8B%B3%E5%A3%AB%E6%B5%AA",
+  "wiki_bout_count": 54,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/拳士浪"
+  ]
+ },
+ {
+  "name": "本田ななか",
+  "wiki_title": "本田ななか",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9C%AC%E7%94%B0%E3%81%AA%E3%81%AA%E3%81%8B",
+  "wiki_bout_count": 6,
+  "fighters_json_gym": "TRY HARD GYM",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/honda_nanaka/",
+   "https://ja.wikipedia.org/wiki/本田ななか"
+  ]
+ },
+ {
+  "name": "撫子",
+  "wiki_title": "撫子 (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%92%AB%E5%AD%90_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": "Grabs Kickboxing Studio",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/nadeshiko/",
+   "https://ja.wikipedia.org/wiki/撫子_(キックボクサー)"
+  ]
+ },
+ {
+  "name": "風神ライカ",
+  "wiki_title": "風神ライカ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%A2%A8%E7%A5%9E%E3%83%A9%E3%82%A4%E3%82%AB",
+  "wiki_bout_count": 2,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "松本哉朗",
+  "wiki_title": "松本哉朗",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%9C%AC%E5%93%89%E6%9C%97",
+  "wiki_bout_count": 53,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/松本哉朗"
+  ]
+ },
+ {
+  "name": "林田昌子",
+  "wiki_title": "林田昌子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9E%97%E7%94%B0%E6%98%8C%E5%AD%90",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/林田昌子"
+  ]
+ },
+ {
+  "name": "松本芳道",
+  "wiki_title": "松本芳道",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%9C%AC%E8%8A%B3%E9%81%93",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/松本芳道"
+  ]
+ },
+ {
+  "name": "板橋寛",
+  "wiki_title": "板橋寛",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BF%E6%A9%8B%E5%AF%9B",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/板橋寛",
+   "https://www.k-1.co.jp/fighter/213"
+  ]
+ },
+ {
+  "name": "松下えみ",
+  "wiki_title": "松下えみ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E4%B8%8B%E3%81%88%E3%81%BF",
+  "wiki_bout_count": 29,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/松下えみ",
+   "https://www.k-1.co.jp/fighter/401"
+  ]
+ },
+ {
+  "name": "松浦知希",
+  "wiki_title": "松浦知希",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%B5%A6%E7%9F%A5%E5%B8%8C",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/松浦知希"
+  ]
+ },
+ {
+  "name": "松谷綺",
+  "wiki_title": "松谷綺",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E8%B0%B7%E7%B6%BA",
+  "wiki_bout_count": 17,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "桜朋梨恵",
+  "wiki_title": "桜朋凛",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A1%9C%E6%9C%8B%E5%87%9B",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/桜朋凛",
+   "https://www.k-1.co.jp/fighter/491"
+  ]
+ },
+ {
+  "name": "正木純子",
+  "wiki_title": "正木純子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E6%9C%A8%E7%B4%94%E5%AD%90",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/正木純子"
+  ]
+ },
+ {
+  "name": "いつか",
+  "wiki_title": "横瀬いつか",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E7%80%AC%E3%81%84%E3%81%A4%E3%81%8B",
+  "wiki_bout_count": 18,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/横瀬いつか"
+  ]
+ },
+ {
+  "name": "桜井洋平",
+  "wiki_title": "桜井洋平",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A1%9C%E4%BA%95%E6%B4%8B%E5%B9%B3",
+  "wiki_bout_count": 40,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/桜井洋平",
+   "https://www.k-1.co.jp/fighter/604"
+  ]
+ },
+ {
+  "name": "榎田洸之",
+  "wiki_title": "榎田洸之",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A6%8E%E7%94%B0%E6%B4%B8%E4%B9%8B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/榎田洸之"
+  ]
+ },
+ {
+  "name": "梶原龍児",
+  "wiki_title": "梶原龍児",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A2%B6%E5%8E%9F%E9%BE%8D%E5%85%90",
+  "wiki_bout_count": 39,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/梶原龍児",
+   "https://www.k-1.co.jp/fighter/274"
+  ]
+ },
+ {
+  "name": "楊東雄",
+  "wiki_title": "楊東雄",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A5%8A%E6%9D%B1%E9%9B%84",
+  "wiki_bout_count": 1,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/楊東雄"
+  ]
+ },
+ {
+  "name": "梅野孝明",
+  "wiki_title": "梅野孝明",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A2%85%E9%87%8E%E5%AD%9D%E6%98%8E",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/梅野孝明"
+  ]
+ },
+ {
+  "name": "横山伸吾",
+  "wiki_title": "横山伸吾",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E5%B1%B1%E4%BC%B8%E5%90%BE",
+  "wiki_bout_count": 8,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/横山伸吾"
+  ]
+ },
+ {
+  "name": "梅野源治",
+  "wiki_title": "梅野源治",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A2%85%E9%87%8E%E6%BA%90%E6%B2%BB",
+  "wiki_bout_count": 74,
+  "fighters_json_gym": "PHOENIX",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/umeno_genji/",
+   "https://knockoutkb.com/fighters/umeno_genji_213",
+   "https://ja.wikipedia.org/wiki/梅野源治"
+  ]
+ },
+ {
+  "name": "MINA",
+  "wiki_title": "櫻井未奈",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%AB%BB%E4%BA%95%E6%9C%AA%E5%A5%88",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/櫻井未奈",
+   "https://www.k-1.co.jp/fighter/514"
+  ]
+ },
+ {
+  "name": "武尊",
+  "wiki_title": "武尊",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E5%B0%8A",
+  "wiki_bout_count": 51,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/武尊",
+   "https://www.k-1.co.jp/fighter/64"
+  ]
+ },
+ {
+  "name": "椿原龍矢",
+  "wiki_title": "椿原龍矢",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A4%BF%E5%8E%9F%E9%BE%8D%E7%9F%A2",
+  "wiki_bout_count": 25,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "橋本楓汰",
+  "wiki_title": "橋本楓汰",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A9%8B%E6%9C%AC%E6%A5%93%E6%B1%B0",
+  "wiki_bout_count": 14,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "橋本雷汰",
+  "wiki_title": "橋本雷汰",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A9%8B%E6%9C%AC%E9%9B%B7%E6%B1%B0",
+  "wiki_bout_count": 14,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "梅井泰成",
+  "wiki_title": "梅井泰成",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A2%85%E4%BA%95%E6%B3%B0%E6%88%90",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": "Mouton",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/umei_taisei/",
+   "https://ja.wikipedia.org/wiki/梅井泰成"
+  ]
+ },
+ {
+  "name": "桃花シンデレラ",
+  "wiki_title": "桃花シンデレラ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A1%83%E8%8A%B1%E3%82%B7%E3%83%B3%E3%83%87%E3%83%AC%E3%83%A9",
+  "wiki_bout_count": 6,
+  "fighters_json_gym": "山口道場",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/momoka-cinderella/",
+   "https://ja.wikipedia.org/wiki/桃花シンデレラ"
+  ]
+ },
+ {
+  "name": "武蔵",
+  "wiki_title": "武蔵 (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E8%94%B5_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 85,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/武蔵_(格闘家)"
+  ]
+ },
+ {
+  "name": "武田幸三",
+  "wiki_title": "武田幸三",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B0%E5%B9%B8%E4%B8%89",
+  "wiki_bout_count": 72,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/武田幸三"
+  ]
+ },
+ {
+  "name": "渡辺久江",
+  "wiki_title": "渡辺久江",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E8%BE%BA%E4%B9%85%E6%B1%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/渡辺久江"
+  ]
+ },
+ {
+  "name": "深津飛成",
+  "wiki_title": "深津飛成",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B7%B1%E6%B4%A5%E9%A3%9B%E6%88%90",
+  "wiki_bout_count": 69,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/深津飛成"
+  ]
+ },
+ {
+  "name": "イ・チンジン",
+  "wiki_title": "池仁珍",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%A0%E4%BB%81%E7%8F%8D",
+  "wiki_bout_count": 2,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/池仁珍"
+  ]
+ },
+ {
+  "name": "チ・インジン",
+  "wiki_title": "池仁珍",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%A0%E4%BB%81%E7%8F%8D",
+  "wiki_bout_count": 2,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/池仁珍"
+  ]
+ },
+ {
+  "name": "水町浩",
+  "wiki_title": "水町浩",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B0%B4%E7%94%BA%E6%B5%A9",
+  "wiki_bout_count": 53,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/水町浩",
+   "https://www.k-1.co.jp/fighter/744"
+  ]
+ },
+ {
+  "name": "江幡睦",
+  "wiki_title": "江幡睦",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%B9%A1%E7%9D%A6",
+  "wiki_bout_count": 49,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "江幡塁",
+  "wiki_title": "江幡塁",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%B9%A1%E5%A1%81",
+  "wiki_bout_count": 51,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "池内紀子",
+  "wiki_title": "池内紀子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%A0%E5%86%85%E7%B4%80%E5%AD%90",
+  "wiki_bout_count": 10,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "白虎",
+  "wiki_title": "白虎 (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E8%99%8E_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": 29,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/白虎_(キックボクサー)",
+   "https://www.k-1.co.jp/fighter/540"
+  ]
+ },
+ {
+  "name": "澤屋敷純一",
+  "wiki_title": "澤屋敷純一",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%BE%A4%E5%B1%8B%E6%95%B7%E7%B4%94%E4%B8%80",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/澤屋敷純一"
+  ]
+ },
+ {
+  "name": "瀧谷渉太",
+  "wiki_title": "瀧谷渉太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%80%A7%E8%B0%B7%E6%B8%89%E5%A4%AA",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/瀧谷渉太",
+   "https://www.k-1.co.jp/fighter/33"
+  ]
+ },
+ {
+  "name": "瀧川リョウ",
+  "wiki_title": "瀧川リョウ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%80%A7%E5%B7%9D%E3%83%AA%E3%83%A7%E3%82%A6",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/瀧川リョウ"
+  ]
+ },
+ {
+  "name": "白須康仁",
+  "wiki_title": "白須康仁",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%A0%88%E5%BA%B7%E4%BB%81",
+  "wiki_bout_count": 36,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "牧野智昭",
+  "wiki_title": "牧野智昭",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%89%A7%E9%87%8E%E6%99%BA%E6%98%AD",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/牧野智昭",
+   "https://www.k-1.co.jp/fighter/691"
+  ]
+ },
+ {
+  "name": "百瀬竜徳",
+  "wiki_title": "百瀬竜徳",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%99%BE%E7%80%AC%E7%AB%9C%E5%BE%B3",
+  "wiki_bout_count": 22,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/百瀬竜徳"
+  ]
+ },
+ {
+  "name": "田嶋はる",
+  "wiki_title": "田嶋はる",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%94%B0%E5%B6%8B%E3%81%AF%E3%82%8B",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/田嶋はる"
+  ]
+ },
+ {
+  "name": "渡邉和則",
+  "wiki_title": "渡邉和則",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E9%82%89%E5%92%8C%E5%89%87",
+  "wiki_bout_count": 7,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/渡邉和則"
+  ]
+ },
+ {
+  "name": "港太郎",
+  "wiki_title": "港太郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B8%AF%E5%A4%AA%E9%83%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/港太郎"
+  ]
+ },
+ {
+  "name": "町田光",
+  "wiki_title": "町田光",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%94%BA%E7%94%B0%E5%85%89",
+  "wiki_bout_count": 42,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "立川隆史",
+  "wiki_title": "立川隆史",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%AB%8B%E5%B7%9D%E9%9A%86%E5%8F%B2",
+  "wiki_bout_count": 6,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/立川隆史"
+  ]
+ },
+ {
+  "name": "立嶋篤史",
+  "wiki_title": "立嶋篤史",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%AB%8B%E5%B6%8B%E7%AF%A4%E5%8F%B2",
+  "wiki_bout_count": 100,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/立嶋篤史"
+  ]
+ },
+ {
+  "name": "石井宏樹",
+  "wiki_title": "石井宏樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E5%AE%8F%E6%A8%B9",
+  "wiki_bout_count": 84,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/石井宏樹"
+  ]
+ },
+ {
+  "name": "石川直生",
+  "wiki_title": "石川直生",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E7%9B%B4%E7%94%9F",
+  "wiki_bout_count": 59,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/石川直生",
+   "https://www.k-1.co.jp/fighter/171"
+  ]
+ },
+ {
+  "name": "石田勝希",
+  "wiki_title": "石田勝希",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%94%B0%E5%8B%9D%E5%B8%8C",
+  "wiki_bout_count": 17,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/石田勝希",
+   "https://www.k-1.co.jp/fighter/746"
+  ]
+ },
+ {
+  "name": "神村エリカ",
+  "wiki_title": "神村エリカ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%A5%9E%E6%9D%91%E3%82%A8%E3%83%AA%E3%82%AB",
+  "wiki_bout_count": 31,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/神村エリカ"
+  ]
+ },
+ {
+  "name": "石井宏和",
+  "wiki_title": "石井宏和",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E5%AE%8F%E5%92%8C",
+  "wiki_bout_count": 8,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/石井宏和"
+  ]
+ },
+ {
+  "name": "石毛慎也",
+  "wiki_title": "石毛慎也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E6%AF%9B%E6%85%8E%E4%B9%9F",
+  "wiki_bout_count": 35,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/石毛慎也"
+  ]
+ },
+ {
+  "name": "石黒竜也",
+  "wiki_title": "石黒竜也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E9%BB%92%E7%AB%9C%E4%B9%9F",
+  "wiki_bout_count": 19,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/石黒竜也",
+   "https://www.k-1.co.jp/fighter/529"
+  ]
+ },
+ {
+  "name": "秋元皓貴",
+  "wiki_title": "秋元皓貴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%A7%8B%E5%85%83%E7%9A%93%E8%B2%B4",
+  "wiki_bout_count": 33,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/秋元皓貴"
+  ]
+ },
+ {
+  "name": "皇治",
+  "wiki_title": "皇治",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9A%87%E6%B2%BB",
+  "wiki_bout_count": 52,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/皇治",
+   "https://www.k-1.co.jp/fighter/184"
+  ]
+ },
+ {
+  "name": "神風莉央",
+  "wiki_title": "神風莉央",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%A5%9E%E9%A2%A8%E8%8E%89%E5%A4%AE",
+  "wiki_bout_count": 10,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/神風莉央"
+  ]
+ },
+ {
+  "name": "相内誠",
+  "wiki_title": "相内誠",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9B%B8%E5%86%85%E8%AA%A0",
+  "wiki_bout_count": 3,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "緒形健一",
+  "wiki_title": "緒形健一",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%B7%92%E5%BD%A2%E5%81%A5%E4%B8%80",
+  "wiki_bout_count": 61,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/緒形健一"
+  ]
+ },
+ {
+  "name": "米田貴志",
+  "wiki_title": "米田貴志",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%B1%B3%E7%94%B0%E8%B2%B4%E5%BF%97",
+  "wiki_bout_count": 34,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/米田貴志"
+  ]
+ },
+ {
+  "name": "草津賢治",
+  "wiki_title": "草津賢治",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%8D%89%E6%B4%A5%E8%B3%A2%E6%B2%BB",
+  "wiki_bout_count": 16,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/草津賢治"
+  ]
+ },
+ {
+  "name": "羅紗陀",
+  "wiki_title": "羅紗陀",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%BE%85%E7%B4%97%E9%99%80",
+  "wiki_bout_count": 21,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/羅紗陀"
+  ]
+ },
+ {
+  "name": "緑川創",
+  "wiki_title": "緑川創",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%B7%91%E5%B7%9D%E5%89%B5",
+  "wiki_bout_count": 85,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "芦澤竜誠",
+  "wiki_title": "芦澤竜誠",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%8A%A6%E6%BE%A4%E7%AB%9C%E8%AA%A0",
+  "wiki_bout_count": 39,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/芦澤竜誠",
+   "https://www.k-1.co.jp/fighter/708"
+  ]
+ },
+ {
+  "name": "聖愛",
+  "wiki_title": "聖愛",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%81%96%E6%84%9B",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": "魁塾",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/seina/",
+   "https://ja.wikipedia.org/wiki/聖愛"
+  ]
+ },
+ {
+  "name": "繁那",
+  "wiki_title": "繁那",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%B9%81%E9%82%A3",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": "R.S-GYM",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/banna_443",
+   "https://ja.wikipedia.org/wiki/繁那"
+  ]
+ },
+ {
+  "name": "菊池浩一",
+  "wiki_title": "菊池浩一",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%8F%8A%E6%B1%A0%E6%B5%A9%E4%B8%80",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/菊池浩一"
+  ]
+ },
+ {
+  "name": "藤本祐介",
+  "wiki_title": "藤本祐介",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E6%9C%AC%E7%A5%90%E4%BB%8B",
+  "wiki_bout_count": 43,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/藤本祐介"
+  ]
+ },
+ {
+  "name": "京太郎",
+  "wiki_title": "藤本京太郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E6%9C%AC%E4%BA%AC%E5%A4%AA%E9%83%8E",
+  "wiki_bout_count": 28,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/藤本京太郎",
+   "https://www.k-1.co.jp/fighter/1128"
+  ]
+ },
+ {
+  "name": "藤鬥嘩裟",
+  "wiki_title": "藤鬥嘩裟",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E9%AC%A5%E5%98%A9%E8%A3%9F",
+  "wiki_bout_count": 16,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/藤鬥嘩裟"
+  ]
+ },
+ {
+  "name": "蜜山剛三",
+  "wiki_title": "蜜山剛三",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%9C%9C%E5%B1%B1%E5%89%9B%E4%B8%89",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/蜜山剛三",
+   "https://www.k-1.co.jp/fighter/601"
+  ]
+ },
+ {
+  "name": "藤原あらし",
+  "wiki_title": "藤原あらし",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E5%8E%9F%E3%81%82%E3%82%89%E3%81%97",
+  "wiki_bout_count": 77,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/藤原あらし"
+  ]
+ },
+ {
+  "name": "西田和嗣",
+  "wiki_title": "西田和嗣",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E7%94%B0%E5%92%8C%E5%97%A3",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/西田和嗣"
+  ]
+ },
+ {
+  "name": "西山誠人",
+  "wiki_title": "西山誠人",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B1%B1%E8%AA%A0%E4%BA%BA",
+  "wiki_bout_count": 38,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/西山誠人",
+   "https://www.k-1.co.jp/fighter/306"
+  ]
+ },
+ {
+  "name": "藤田智也",
+  "wiki_title": "藤田智也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E7%94%B0%E6%99%BA%E4%B9%9F",
+  "wiki_bout_count": 34,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/藤田智也",
+   "https://www.k-1.co.jp/fighter/376"
+  ]
+ },
+ {
+  "name": "裕樹",
+  "wiki_title": "裕樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%A3%95%E6%A8%B9",
+  "wiki_bout_count": 70,
+  "fighters_json_gym": "ANCHOR GYM",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/yuki/",
+   "https://ja.wikipedia.org/wiki/裕樹"
+  ]
+ },
+ {
+  "name": "野地竜太",
+  "wiki_title": "野地竜太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%87%8E%E5%9C%B0%E7%AB%9C%E5%A4%AA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/野地竜太"
+  ]
+ },
+ {
+  "name": "谷本弘行",
+  "wiki_title": "谷本弘行",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%B0%B7%E6%9C%AC%E5%BC%98%E8%A1%8C",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/谷本弘行"
+  ]
+ },
+ {
+  "name": "野杁正明",
+  "wiki_title": "野杁正明",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%87%8E%E6%9D%81%E6%AD%A3%E6%98%8E",
+  "wiki_bout_count": 66,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/野杁正明",
+   "https://www.k-1.co.jp/fighter/41"
+  ]
+ },
+ {
+  "name": "NORIKO",
+  "wiki_title": "角田紀子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%A7%92%E7%94%B0%E7%B4%80%E5%AD%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/角田紀子"
+  ]
+ },
+ {
+  "name": "遠藤智史",
+  "wiki_title": "遠藤智史",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%81%A0%E8%97%A4%E6%99%BA%E5%8F%B2",
+  "wiki_bout_count": 27,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/遠藤智史"
+  ]
+ },
+ {
+  "name": "辻出優翔",
+  "wiki_title": "辻出優翔",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BE%BB%E5%87%BA%E5%84%AA%E7%BF%94",
+  "wiki_bout_count": 30,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/辻出優翔",
+   "https://www.k-1.co.jp/fighter/239"
+  ]
+ },
+ {
+  "name": "酒井秀信",
+  "wiki_title": "酒井秀信",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%85%92%E4%BA%95%E7%A7%80%E4%BF%A1",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/酒井秀信"
+  ]
+ },
+ {
+  "name": "那須川天心",
+  "wiki_title": "那須川天心",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%82%A3%E9%A0%88%E5%B7%9D%E5%A4%A9%E5%BF%83",
+  "wiki_bout_count": 42,
+  "fighters_json_gym": "TARGET/Cygames",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/nasukawa_tenshin/",
+   "https://ja.wikipedia.org/wiki/那須川天心",
+   "https://www.k-1.co.jp/fighter/1251"
+  ]
+ },
+ {
+  "name": "貴センチャイジム",
+  "wiki_title": "貴センチャイジム",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%B2%B4%E3%82%BB%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%82%B8%E3%83%A0",
+  "wiki_bout_count": 42,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/貴センチャイジム"
+  ]
+ },
+ {
+  "name": "近藤魁成",
+  "wiki_title": "近藤魁成",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BF%91%E8%97%A4%E9%AD%81%E6%88%90",
+  "wiki_bout_count": 12,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "近藤拳成",
+  "wiki_title": "近藤拳成",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BF%91%E8%97%A4%E6%8B%B3%E6%88%90",
+  "wiki_bout_count": 10,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "軍司泰斗",
+  "wiki_title": "軍司泰斗",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BB%8D%E5%8F%B8%E6%B3%B0%E6%96%97",
+  "wiki_bout_count": 38,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "辻井和花",
+  "wiki_title": "辻井和花",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BE%BB%E4%BA%95%E5%92%8C%E8%8A%B1",
+  "wiki_bout_count": 10,
+  "fighters_json_gym": "BRING IT ONパラエストラAKK",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/tsujii_honoka/",
+   "https://ja.wikipedia.org/wiki/辻井和花"
+  ]
+ },
+ {
+  "name": "辻井和奏",
+  "wiki_title": "辻井和奏",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BE%BB%E4%BA%95%E5%92%8C%E5%A5%8F",
+  "wiki_bout_count": 11,
+  "fighters_json_gym": "BRING IT ONパラエストラAKK",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/tsujii_wakana/",
+   "https://knockoutkb.com/fighters/tsujii_wakana_501",
+   "https://ja.wikipedia.org/wiki/辻井和奏"
+  ]
+ },
+ {
+  "name": "鈴木悟",
+  "wiki_title": "鈴木悟 (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E6%82%9F_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/鈴木悟_(格闘家)"
+  ]
+ },
+ {
+  "name": "金泰泳",
+  "wiki_title": "金泰泳 (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%B3%B0%E6%B3%B3_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 34,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/金泰泳_(格闘家)"
+  ]
+ },
+ {
+  "name": "雄大",
+  "wiki_title": "雄大 (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%9B%84%E5%A4%A7_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": 12,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/雄大_(キックボクサー)",
+   "https://www.k-1.co.jp/fighter/1143"
+  ]
+ },
+ {
+  "name": "野田貢",
+  "wiki_title": "野田貢",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%87%8E%E7%94%B0%E8%B2%A2",
+  "wiki_bout_count": 12,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/野田貢"
+  ]
+ },
+ {
+  "name": "長島☆自演乙☆雄一郎",
+  "wiki_title": "長島☆自演乙☆雄一郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%B3%B6%E2%98%86%E8%87%AA%E6%BC%94%E4%B9%99%E2%98%86%E9%9B%84%E4%B8%80%E9%83%8E",
+  "wiki_bout_count": 43,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/長島☆自演乙☆雄一郎"
+  ]
+ },
+ {
+  "name": "長崎秀哉",
+  "wiki_title": "長崎秀哉",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%B4%8E%E7%A7%80%E5%93%89",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/長崎秀哉",
+   "https://www.k-1.co.jp/fighter/920"
+  ]
+ },
+ {
+  "name": "闘魔",
+  "wiki_title": "闘魔",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%97%98%E9%AD%94",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/闘魔",
+   "https://www.k-1.co.jp/fighter/145"
+  ]
+ },
+ {
+  "name": "野田蒼",
+  "wiki_title": "野田蒼",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%87%8E%E7%94%B0%E8%92%BC",
+  "wiki_bout_count": 14,
+  "fighters_json_gym": "月心会チーム侍",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/noda_aoi/",
+   "https://ja.wikipedia.org/wiki/野田蒼",
+   "https://www.k-1.co.jp/fighter/984"
+  ]
+ },
+ {
+  "name": "金子晃大",
+  "wiki_title": "金子晃大",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%AD%90%E6%99%83%E5%A4%A7",
+  "wiki_bout_count": 31,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "TETSU (格闘家)",
+  "wiki_title": "TETSU (格闘家)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/TETSU_%28%E6%A0%BC%E9%97%98%E5%AE%B6%29",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "須藤信充",
+  "wiki_title": "須藤信充",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%A0%88%E8%97%A4%E4%BF%A1%E5%85%85",
+  "wiki_bout_count": 38,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/須藤信充"
+  ]
+ },
+ {
+  "name": "魔裟斗",
+  "wiki_title": "魔裟斗",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%AD%94%E8%A3%9F%E6%96%97",
+  "wiki_bout_count": 65,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/魔裟斗"
+  ]
+ },
+ {
+  "name": "高萩ツトム",
+  "wiki_title": "高萩勉",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%AB%98%E8%90%A9%E5%8B%89",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/高萩勉",
+   "https://www.k-1.co.jp/fighter/93"
+  ]
+ },
+ {
+  "name": "駿太",
+  "wiki_title": "駿太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%A7%BF%E5%A4%AA",
+  "wiki_bout_count": 40,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/駿太"
+  ]
+ },
+ {
+  "name": "黒田アキヒロ",
+  "wiki_title": "黒田アキヒロ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E7%94%B0%E3%82%A2%E3%82%AD%E3%83%92%E3%83%AD",
+  "wiki_bout_count": 38,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/黒田アキヒロ",
+   "https://www.k-1.co.jp/fighter/551"
+  ]
+ },
+ {
+  "name": "青津潤平",
+  "wiki_title": "青津潤平",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%9D%92%E6%B4%A5%E6%BD%A4%E5%B9%B3",
+  "wiki_bout_count": 27,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/青津潤平",
+   "https://www.k-1.co.jp/fighter/211"
+  ]
+ },
+ {
+  "name": "飯田なお",
+  "wiki_title": "飯田なお",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%A3%AF%E7%94%B0%E3%81%AA%E3%81%8A",
+  "wiki_bout_count": 2,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/飯田なお"
+  ]
+ },
+ {
+  "name": "麻原将平",
+  "wiki_title": "麻原将平",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%BA%BB%E5%8E%9F%E5%B0%86%E5%B9%B3",
+  "wiki_bout_count": 42,
+  "fighters_json_gym": "パウンドフォーパウンド",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/asahara_syohei/",
+   "https://ja.wikipedia.org/wiki/麻原将平",
+   "https://www.k-1.co.jp/fighter/586"
+  ]
+ },
+ {
+  "name": "鶴谷剛",
+  "wiki_title": "鶴谷剛",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%B6%B4%E8%B0%B7%E5%89%9B",
+  "wiki_bout_count": 15,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/鶴谷剛",
+   "https://www.k-1.co.jp/fighter/547"
+  ]
+ },
+ {
+  "name": "雅駿介",
+  "wiki_title": "雅駿介",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%9B%85%E9%A7%BF%E4%BB%8B",
+  "wiki_bout_count": 20,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/雅駿介"
+  ]
+ },
+ {
+  "name": "MOE (キックボクサー)",
+  "wiki_title": "MOE (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/MOE_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": 12,
+  "fighters_json_gym": null,
+  "fighters_json_sources": null
+ },
+ {
+  "name": "黒田斗真",
+  "wiki_title": "黒田斗真",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%BB%92%E7%94%B0%E6%96%97%E7%9C%9F",
+  "wiki_bout_count": 23,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/黒田斗真",
+   "https://www.k-1.co.jp/fighter/827"
+  ]
+ },
+ {
+  "name": "龍二",
+  "wiki_title": "龍二",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%BE%8D%E4%BA%8C",
+  "wiki_bout_count": 37,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/龍二"
+  ]
+ }
+]
