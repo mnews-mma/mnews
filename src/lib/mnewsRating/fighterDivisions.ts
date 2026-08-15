@@ -255,6 +255,24 @@ export const FIGHTER_DIVISION_OVERLAYS: FighterDivisionOverlayEntry[] = [
       "生涯レートのため、この2試合が実在の対戦である以上レート自体は変更しない。既存の" +
       "設計判断(本ファイル冒頭コメント参照)と同じ扱い)。",
   },
+  {
+    slug: "jolly",
+    name: "ジョリー",
+    division: "バンタム級",
+    recordDisplayExclusions: [{ date: "2026-08-11", opponentSlug: "hiramoto-jo" }],
+    fetchedDate: "2026-08-15",
+    note:
+      "ジョリーのバンタム級表示戦績が2勝1敗になっていた(本番/rankings/bantamweightで確認、" +
+      "2026-08-15)。直近試合の2026-08-11 平本丈戦(RIZIN.54、KO負け)はweightKg=57・" +
+      "namedDivision=null(RIZIN公式ソースに階級名の明示なし)で、latestRizinDivisionは" +
+      "階級名未明示の単発試合として直近2年以内の他の判明済み試合(2026-05-10 児玉兼慎戦" +
+      "=62.0kg契約、2025-12-31 芦澤竜誠戦=61.0kg契約、いずれもバンタム級マッピング)の" +
+      "多数決でバンタム級のまま据え置いている(掲載階級は正しい)。一方でfighterRecords.json" +
+      "側のenrichHistoryWeightClassは57kgをフライ級として付与しており、体重的にはバンタム級" +
+      "選手ジョリーの単発フライ級遠征(前後の試合はいずれもバンタム級)。宮川日向・梅野源治・" +
+      "トーレス・ケラモフと同種のケースとして、この1敗をバンタム級としての表示戦績から除外する。" +
+      "除外後の表示戦績は2勝0敗。順位・レート・掲載資格の判定には一切影響しない(表示戦績のみ)。",
+  },
 ];
 
 export function getDivisionOverlay(
