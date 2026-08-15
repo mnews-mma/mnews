@@ -92,15 +92,21 @@ interface Bout {
 const read = <T,>(f: string): T => JSON.parse(fs.readFileSync(path.join(SRC, f), "utf8"));
 
 const fighters = read<Fighter[]>("fighters.json");
-const boutFiles: { tag: string; label: string; file: string }[] = [
-  { tag: "sb", label: "SHOOT BOXING", file: "bouts_sb.json" },
-  { tag: "rise", label: "RISE", file: "bouts_rise.json" },
-  { tag: "knockout", label: "KNOCK OUT", file: "bouts_knockout.json" },
-  { tag: "k1", label: "K-1 / Krush / Krush-EX", file: "bouts_k1.json" },
+// matchBy: "sourceUrl" は選手の名簿掲載ページ(=bout.source_url)が選手側のsourcesにも
+// 載っている前提で選手を特定する(SB/RISE/KNOCK OUT/K-1の従来ソース)。RIZIN/ONEは名簿の
+// 掲載元と戦績の出典元が別サイトのため、代わりに fighter_slug に選手側と同一の
+// identity(f)文字列("name|gym|sources[0]")を事前計算して埋めてある(データ側取り込み時の規約)。
+const boutFiles: { tag: string; label: string; file: string; matchBy: "sourceUrl" | "identity" }[] = [
+  { tag: "sb", label: "SHOOT BOXING", file: "bouts_sb.json", matchBy: "sourceUrl" },
+  { tag: "rise", label: "RISE", file: "bouts_rise.json", matchBy: "sourceUrl" },
+  { tag: "knockout", label: "KNOCK OUT", file: "bouts_knockout.json", matchBy: "sourceUrl" },
+  { tag: "k1", label: "K-1 / Krush / Krush-EX", file: "bouts_k1.json", matchBy: "sourceUrl" },
+  { tag: "rizin", label: "RIZIN", file: "bouts_rizin.json", matchBy: "identity" },
+  { tag: "one", label: "ONE Championship", file: "bouts_one.json", matchBy: "identity" },
 ];
-const allBouts: (Bout & { promotion: string })[] = [];
+const allBouts: (Bout & { promotion: string; matchBy: "sourceUrl" | "identity" })[] = [];
 for (const b of boutFiles) {
-  for (const x of read<Bout[]>(b.file)) allBouts.push({ ...x, promotion: b.label });
+  for (const x of read<Bout[]>(b.file)) allBouts.push({ ...x, promotion: b.label, matchBy: b.matchBy });
 }
 
 // ---------- slug ----------
@@ -219,17 +225,24 @@ const yomiSourceOf = (f: Fighter) => csvBySources.get(f.sources.join("|"))?.yomi
 // ---------- 出典URL → 選手 の索引 ----------
 const bySourceUrl = new Map<string, Fighter>();
 for (const f of fighters) for (const u of f.sources) bySourceUrl.set(u, f);
+const knownIdentities = new Set<string>(fighters.map((f) => identity(f)));
 
 // ---------- 選手ごとにboutを束ねる ----------
 const boutsByIdentity = new Map<string, (Bout & { promotion: string })[]>();
 let unmatchedBouts = 0;
 for (const b of allBouts) {
-  const f = bySourceUrl.get(b.source_url);
-  if (!f) {
+  let key: string | null = null;
+  if (b.matchBy === "identity") {
+    // RIZIN/ONE: fighter_slug に identity(f) と同一形式の文字列が入っている前提。
+    key = knownIdentities.has(b.fighter_slug) ? b.fighter_slug : null;
+  } else {
+    const f = bySourceUrl.get(b.source_url);
+    key = f ? identity(f) : null;
+  }
+  if (!key) {
     unmatchedBouts++;
     continue;
   }
-  const key = identity(f);
   if (!boutsByIdentity.has(key)) boutsByIdentity.set(key, []);
   boutsByIdentity.get(key)!.push(b);
 }

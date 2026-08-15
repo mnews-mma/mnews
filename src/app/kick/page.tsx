@@ -49,7 +49,7 @@ export default function KickTopPage() {
 
       <h2 className="kick-section-title">収録範囲</h2>
       <p className="kick-lead">
-        名簿は次の6ソースから作成しました。戦績は下記4団体の公式サイトに掲載されているものを収録しています
+        名簿は次の6ソースから作成しました。戦績は下記{KICK_PROMOTIONS.length}団体の公式サイトに掲載されているものを収録しています
         （{nf(stats.fightersWithBouts)}人分）。
       </p>
       <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
@@ -64,7 +64,7 @@ export default function KickTopPage() {
         ))}
       </ul>
 
-      <h2 className="kick-section-title">戦績の取得元（4団体）</h2>
+      <h2 className="kick-section-title">戦績の取得元（{KICK_PROMOTIONS.length}団体）</h2>
       <ul className="kick-list">
         {KICK_PROMOTIONS.map((p) => (
           <li key={p.label}>
@@ -100,7 +100,7 @@ export default function KickTopPage() {
       <ul className="kick-list">
         <li>勝率・KO率などの算出指標（第1版では出していません）</li>
         <li>選手の検索・ランキング</li>
-        <li>上記4団体以外の戦績（NJKF・NKB・MA日本・ジャパンキック等）</li>
+        <li>上記{KICK_PROMOTIONS.length}団体以外の戦績（NJKF・NKB・MA日本・ジャパンキック等）</li>
       </ul>
     </>
   );
