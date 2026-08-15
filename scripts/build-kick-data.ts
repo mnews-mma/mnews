@@ -14,12 +14,41 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 
 const ROOT = path.join(__dirname, "..");
 const SRC = path.join(ROOT, "data/kick");
 const OUT = path.join(SRC, "generated");
 const PUBLIC_OUT = path.join(ROOT, "public/kick");
 const SLUG_MAP_PATH = path.join(SRC, "slugs.json");
+const SOURCE_META_PATH = path.join(SRC, "sourceMeta.json");
+
+// 選手名簿・戦績の実データ(fighters.json/fighters.csv/bouts_*.json)を最後に
+// 取得し直した日時。/kick トップの「データ取得時点」表示に使う。
+//
+// git log は使わない: Vercelのビルドはshallow clone(depth=10程度)のため、
+// このリポジトリのように main への出コミット頻度が高い環境では、対象ファイルの
+// 最終変更コミットがすぐ履歴の外に出て `git log` が空を返す(表示が消える)。
+// 代わりに data/kick/sourceMeta.json (通常のコミット対象ファイル) にハッシュと
+// 日時を持たせ、ソースファイルの内容ハッシュが前回コミット時と一致する限り
+// 日時を据え置き、内容が変わった回だけ現在時刻に更新して書き戻す。
+// この仕組みなら、無関係な変更でのデプロイでは日付が動かず、データを実際に
+// 再取得してコミットした回だけ自動で日付が進む(手で日付を書き換える運用にしない)。
+function updateSourceMeta(sourceFiles: string[]): string {
+  const hash = crypto.createHash("sha256");
+  for (const f of sourceFiles) hash.update(fs.readFileSync(path.join(ROOT, f)));
+  const contentHash = hash.digest("hex");
+
+  const prev: { contentHash?: string; updatedAt?: string } = fs.existsSync(SOURCE_META_PATH)
+    ? JSON.parse(fs.readFileSync(SOURCE_META_PATH, "utf8"))
+    : {};
+
+  if (prev.contentHash === contentHash && prev.updatedAt) return prev.updatedAt;
+
+  const updatedAt = new Date().toISOString();
+  fs.writeFileSync(SOURCE_META_PATH, JSON.stringify({ contentHash, updatedAt }, null, 1) + "\n");
+  return updatedAt;
+}
 
 interface Fighter {
   name: string;
@@ -348,7 +377,16 @@ const stats = {
   promotions: boutFiles.map((b) => b.label),
 };
 
-fs.writeFileSync(path.join(OUT, "index.json"), JSON.stringify({ stats, fighters: index }));
+const sourceUpdatedAt = updateSourceMeta([
+  "data/kick/fighters.json",
+  "data/kick/fighters.csv",
+  ...boutFiles.map((b) => `data/kick/${b.file}`),
+]);
+
+fs.writeFileSync(
+  path.join(OUT, "index.json"),
+  JSON.stringify({ stats, fighters: index, sourceUpdatedAt }),
+);
 fs.writeFileSync(SLUG_MAP_PATH, JSON.stringify(slugMap, null, 1));
 
 // ---------- 検索インデックス(クライアント側の絞り込み専用、最小フィールドのみ) ----------

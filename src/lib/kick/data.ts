@@ -76,9 +76,16 @@ export interface KickStats {
   promotions: string[];
 }
 
-let cached: { stats: KickStats; fighters: KickIndexEntry[] } | null = null;
+interface KickIndex {
+  stats: KickStats;
+  fighters: KickIndexEntry[];
+  /** 選手名簿・戦績データを最後に取得し直した日時(ISO8601)。data/kick/sourceMeta.json由来。 */
+  sourceUpdatedAt: string;
+}
 
-export function getKickIndex(): { stats: KickStats; fighters: KickIndexEntry[] } {
+let cached: KickIndex | null = null;
+
+export function getKickIndex(): KickIndex {
   if (!cached) cached = JSON.parse(fs.readFileSync(path.join(GEN, "index.json"), "utf8"));
   return cached!;
 }

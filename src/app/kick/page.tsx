@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getKickIndex, KICK_PROMOTIONS, KICK_ROSTER_SOURCES } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
+import { formatDateJa, toJstDateStr } from "@/lib/eventCountdown";
 
 export const metadata = pageMetadata({
   title: "立ち技名鑑｜キックボクシング選手データベース - Mニュース",
@@ -10,8 +11,9 @@ export const metadata = pageMetadata({
 });
 
 export default function KickTopPage() {
-  const { stats } = getKickIndex();
+  const { stats, sourceUpdatedAt } = getKickIndex();
   const nf = (n: number) => n.toLocaleString("ja-JP");
+  const updatedAtJa = formatDateJa(toJstDateStr(Date.parse(sourceUpdatedAt)));
 
   return (
     <>
@@ -39,6 +41,7 @@ export default function KickTopPage() {
           <div className="kick-stat__l">読み未取得（空欄で表示）</div>
         </div>
       </div>
+      <p className="kick-updated-at">データ取得時点：{updatedAtJa}</p>
 
       <Link href="/kick/fighters" className="kick-cta">
         選手一覧を見る →
