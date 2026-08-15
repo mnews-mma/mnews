@@ -37,6 +37,7 @@ const MENU_ITEMS: { href: string; label: string; dividerBefore?: boolean }[] = [
   { href: "/archive", label: "ニュース一覧" },
   { href: "/rankings", label: "AI RIZINランキング", dividerBefore: true },
   { href: "/fighters", label: "選手データベース" },
+  { href: "/kick", label: "立ち技名鑑" },
   { href: "/dream", label: "夢のカード" },
   { href: "/events", label: "大会日程", dividerBefore: true },
   { href: "/results", label: "大会結果" },
