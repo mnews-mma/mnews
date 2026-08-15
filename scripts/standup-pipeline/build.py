@@ -535,3 +535,23 @@ for _tag,_label,_mod in FORMERLY_STANDALONE_ORGS:
     print('  opponent ambiguous :',sum(1 for x in _b if x['opponent_ambiguous']))
     print('  result             :',dict(collections.Counter(x['result'] for x in _b)))
     print('  gaps: date',sum(1 for x in _b if not x['date']))
+
+# ================= bouts_wikipedia.json (Wikipedia戦績、母集団509人限定) =================
+# coverage_population.json(509人、ja.wikipedia記事に{{Fight-cont}}戦績表を持つ選手)のみが対象。
+# 名簿拡大は行わない(全団体再生成が必要になり間に合わないため)。重複判定・既存行との突合ロジックは
+# ingest_wikipedia.py内で完結(日付一致→相手名フォールバック→複数候補は保留)。
+# raw/wp_wikitext_509.json(fetch_wikitext_cache.pyで別途一回だけ取得したキャッシュ)を読むのみで、
+# build.py実行時にWikipedia APIへは再アクセスしない(決定的に保つため)。
+import ingest_wikipedia
+_wiki_bouts,_wiki_stats,_wiki_held=ingest_wikipedia.build()
+json.dump(_wiki_bouts,open('bouts_wikipedia.json','w'),ensure_ascii=False,indent=1)
+json.dump(_wiki_held,open('wikipedia_held_ambiguous.json','w'),ensure_ascii=False,indent=1)
+print('\n===== bouts_wikipedia.json (Wikipedia、母集団509人限定) =====')
+print('  Wikipedia側bout総数:',_wiki_stats['total_wiki_bouts'])
+print('  範囲外              :',_wiki_stats['out_of_scope'])
+print('  既存(日付一致)重複  :',_wiki_stats['dup_dated_match'])
+print('  既存(相手名)重複    :',_wiki_stats['dup_fallback_match'])
+print('  複数候補で保留      :',_wiki_stats['held_ambiguous'])
+print('  新規追加            :',_wiki_stats['new_added'])
+_wr=sum(1 for x in _wiki_bouts if x['opponent_resolved'])
+print(f'  opponent resolved   : {_wr}/{len(_wiki_bouts)} = {_wr/len(_wiki_bouts)*100:.1f}%' if _wiki_bouts else '  (no bouts)')

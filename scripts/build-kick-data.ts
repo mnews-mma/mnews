@@ -88,6 +88,8 @@ interface Bout {
   title_type: "title_match" | "vacant_title_match" | "challenger_decision" | null;
   pair_key: string | null;
   source_url: string;
+  // Wikipedia由来の行にのみ付く。無指定(undefined)は従来どおり公式一次ソース由来。
+  source_type?: "wikipedia";
 }
 
 const read = <T,>(f: string): T => JSON.parse(fs.readFileSync(path.join(SRC, f), "utf8"));
@@ -119,6 +121,37 @@ for (const b of boutFiles) {
   for (const x of read<Bout[]>(b.file)) allBouts.push({ ...x, promotion: b.label, matchBy: b.matchBy });
 }
 const tagByLabel = new Map(boutFiles.map((b) => [b.label, b.tag]));
+
+// Wikipedia由来(bouts_wikipedia.json)は独立ファイル。各行の target_org(ingest_wikipedia.pyが
+// 推定した実際の団体名)を対応する既存promotionラベルへマッピングして allBouts に合流させる。
+// promotion(=団体)とsource_type(=出典がWikipediaか公式一次ソースか)は別の軸であり、
+// Wikipedia由来でも「どの団体の試合か」は実際の団体名で扱う(検索の団体タグ付け・表示上の
+// グルーピングを公式ソースの場合と統一するため)。区別はsource_typeバッジのみで行う。
+const orgNameToLabel: Record<string, string> = {
+  "K-1": "K-1 / Krush / Krush-EX",
+  RISE: "RISE",
+  "SHOOT BOXING": "SHOOT BOXING",
+  "KNOCK OUT": "KNOCK OUT",
+  RIZIN: "RIZIN",
+  "ONE Championship": "ONE Championship",
+  "DEEP☆KICK": "DEEP☆KICK",
+  NJKF: "NJKF",
+  HoostCup: "HoostCup",
+  NKB: "NKB",
+  Bigbang: "Bigbang",
+  "Stand up": "Stand up",
+  "KROSS×OVER": "KROSS×OVER",
+  SNKA: "新日本キックボクシング協会(SNKA)",
+  JKA: "JKA",
+};
+if (fs.existsSync(path.join(SRC, "bouts_wikipedia.json"))) {
+  for (const x of read<(Bout & { target_org?: string })[]>("bouts_wikipedia.json")) {
+    const label = orgNameToLabel[x.target_org ?? ""];
+    if (!label) continue; // 未知のtarget_orgは合流させない(想定外データを黙って混ぜない)
+    const { target_org: _drop, ...bout } = x;
+    allBouts.push({ ...bout, promotion: label, matchBy: "identity" });
+  }
+}
 
 // ---------- slug ----------
 const KANA_ROMAJI: [RegExp, string][] = [
@@ -431,6 +464,7 @@ for (const f of fighters) {
       isDebut: b.is_debut,
       titleType: b.title_type,
       sourceUrl: b.source_url,
+      sourceType: b.source_type ?? null,
       alsoFrom: b.alsoFrom,
     })),
   };
@@ -480,6 +514,7 @@ const sourceUpdatedAt = updateSourceMeta([
   "data/kick/fighters.csv",
   ...boutFiles.map((b) => `data/kick/${b.file}`),
   ...(fs.existsSync(path.join(SRC, "realnames.json")) ? ["data/kick/realnames.json"] : []),
+  ...(fs.existsSync(path.join(SRC, "bouts_wikipedia.json")) ? ["data/kick/bouts_wikipedia.json"] : []),
 ]);
 
 fs.writeFileSync(

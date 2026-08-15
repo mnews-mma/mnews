@@ -2183,3 +2183,68 @@ DEEP☆KICK・HoostCup・NJKF・NKBは元々`build()`関数(`EXTRA_ORGS`と同�
 同じ問題が再発しうる)。ただし、既知の15団体については本対応で解消済みであり、新規団体追加時は
 「`build.py`一発実行で全団体ぶんの`bouts_*.json`が生成されること」を各団体追加PRの受入条件に
 含めることを推奨する。
+
+# Wikipedia戦績取り込み実装(2026-08-16)
+
+`out/wikipedia-record-ingestion-feasibility-report.md`(調査フェーズ)の設計に基づく実装。
+**対象は`coverage_population.json`の509人のみ**。名簿(`fighters.json`)の拡大は行わない
+(新規選手を追加すると全団体の再生成が必要になり間に合わないため)。
+
+## パイプライン
+
+1. `fetch_wikitext_cache.py`(一回限り、手動実行): 509人分のja.wikipedia記事本文を取得し
+   `raw/wp_wikitext_509.json`にキャッシュする。`build.py`実行のたびにWikipedia APIへ
+   アクセスすることはない(決定性を保つため、他団体のraw/*.htmlキャッシュと同じ設計)。
+2. `ingest_wikipedia.py`: キャッシュを読み、`{{Fight-cont}}`各行を`guess_org()`(調査フェーズの
+   `measure_coverage.py`と同一ロジック)で15団体のいずれかに割り当て、重複判定を行った上で
+   `bouts_wikipedia.json`を出力する。`build.py`から`FORMERLY_STANDALONE_ORGS`と同様の
+   扱いで呼ばれ、単独実行で全15団体+Wikipediaの計16ファイルが再生成される。
+
+## 重複判定(二重計上を起こさない設計)
+
+選手×推定団体の組ごとに、既存の`bouts_{org}.json`(scheduled除く)を参照して判定する。
+
+1. Wikipedia側boutに日付がある場合、既存bout(日付ありのみ)と`(date, 正規化した相手名)`が
+   一致すれば重複とみなし、新規行を追加しない。
+2. 一致しない場合、その団体の既存bout(日付の有無を問わない)のうち正規化した相手名が
+   一致するものをフォールバックキーとして探す。1件のみ一致→重複とみなし追加しない。
+   0件一致→対戦データが全く無いということなので新規追加。複数件一致(同じ相手と複数回
+   対戦していて日付で区別できない)→自動登録せず保留(`wikipedia_held_ambiguous.json`に
+   出力、5件)。
+3. 本人ページがその団体に無い場合も2と同じロジックで処理される(全件が「対戦データなし」
+   相当のため、基本的に新規追加になる)。
+
+この設計により、日付null 451件(既存資産側)を理由にWikipedia側の同一試合が二重計上される
+ことはない。
+
+## 実測結果
+
+Wikipedia側bout総数14,061件の内訳、残余ゼロで説明できる:
+
+| 区分 | 件数 |
+|---|---:|
+| 範囲外(追跡15団体以外) | 7,662 |
+| 既存(日付一致)で重複 | 818 |
+| 既存(相手名フォールバック)で重複 | 36 |
+| 複数候補で判定不能・保留 | 5 |
+| **新規追加** | **5,540** |
+| 残余 | **0** |
+
+`bouts_wikipedia.json`の`new_added`5,540件のうち、`build-kick-data.ts`側の既存`dedupe()`
+(選手内・団体横断の`date|相手名`統合)がさらに329件を重複として吸収した(Wikipedia側の
+事前フィルタが取りこぼした分を、既存の安全網が正しく捕捉した形。二重計上には至っていない)。
+最終的な戦績確定値への純増は5,540−329=**5,211件**。
+
+## 画面上の出典区別
+
+`bouts_wikipedia.json`の各行は`source_type: "wikipedia"`を持つ。`promotion`(表示上の団体)は
+Wikipedia由来でも実際の団体名(K-1・SHOOT BOXING等)のまま扱う(検索の団体タグ付け・
+表示上のグルーピングを公式ソースの場合と統一するため)。出典列に「Wikipedia」バッジ
+(既存の`kick-badge`パターン)を追加し、公式一次ソース由来と区別できるようにした。
+
+## data/kick/への反映
+
+`scripts/standup-pipeline/`と`data/kick/`は別コピー(2026-08-15判明の既知の構造)。
+`bouts_wikipedia.json`を両方に配置し、`npm run kick:data`を実行して`data/kick/generated/`
+を再生成する。`scripts/standup-pipeline/`側は`build.py`単独実行で、`data/kick/`側は
+`npm run kick:data`(`npm run build`に組み込み済み)で、それぞれ独立に再現できる。
