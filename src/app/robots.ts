@@ -21,6 +21,9 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [...COMMON_DISALLOW, "/dream?"],
       },
     ],
-    sitemap: "https://www.mnews.jp/sitemap.xml",
+    // /kick は既存sitemap.xmlのISR(revalidate:3600)や生成コストに触れないよう
+    // 専用sitemap(/kick/sitemap.xml)に分離している(src/app/kick/sitemap.ts参照)。
+    // 既存の申告は変更せず、配列にして追加するだけにする。
+    sitemap: ["https://www.mnews.jp/sitemap.xml", "https://www.mnews.jp/kick/sitemap.xml"],
   };
 }
