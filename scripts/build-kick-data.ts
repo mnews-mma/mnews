@@ -118,6 +118,7 @@ const allBouts: (Bout & { promotion: string; matchBy: "sourceUrl" | "identity" }
 for (const b of boutFiles) {
   for (const x of read<Bout[]>(b.file)) allBouts.push({ ...x, promotion: b.label, matchBy: b.matchBy });
 }
+const tagByLabel = new Map(boutFiles.map((b) => [b.label, b.tag]));
 
 // ---------- slug ----------
 const KANA_ROMAJI: [RegExp, string][] = [
@@ -350,6 +351,9 @@ let totalBoutRows = 0;
 let scheduledRows = 0;
 let titleTypeRows = 0;
 let resultUnknownRows = 0;
+// 検索インデックス用: 選手が実際にboutを持つ団体(戦績の出典団体)。
+// fighters.json 側の orgs(名簿の掲載元)とは別概念のため、選手ごとの bouts から都度求める。
+const orgTagsBySlug = new Map<string, string[]>();
 
 for (const f of fighters) {
   const key = identity(f);
@@ -362,6 +366,34 @@ for (const f of fighters) {
   titleTypeRows += bouts.filter((b) => b.title_type).length;
   resultUnknownRows += bouts.filter((b) => b.result === "unknown").length;
 
+  const boutOrgTagSet = new Set(bouts.map((b) => tagByLabel.get(b.promotion)!));
+  orgTagsBySlug.set(
+    slug,
+    boutFiles.filter((bf) => boutOrgTagSet.has(bf.tag)).map((bf) => bf.tag),
+  );
+
+  // 選手ページヘッダーの「収録N試合: X勝Y敗Z分」集計。ビルド時に確定させ、
+  // ページ側はこの値をそのまま出す(リクエスト時集計はしない)。
+  // - scheduled(未実施)は数えない
+  // - no_contest / cancelled は勝敗に数えない(試合として成立していない、またはSCHEMA.md定義上「行われていない」扱い)
+  // - walkover(不戦勝/不戦敗、method=walkoverでresultはwin/lossどちらも取りうる)は
+  //   SCHEMA.mdが「集計時に除外できるようにする」ことを明示して設計した項目のため、
+  //   このNには含めない(試合が実際には行われていないため)
+  // - unknown(マーク無しで判定不能)は勝敗には数えず、別枠でカウントする
+  let wins = 0;
+  let losses = 0;
+  let draws = 0;
+  let unknownCount = 0;
+  for (const b of bouts) {
+    if (b.method === "walkover") continue;
+    if (b.result === "scheduled" || b.result === "no_contest" || b.result === "cancelled") continue;
+    if (b.result === "win") wins++;
+    else if (b.result === "loss") losses++;
+    else if (b.result === "draw") draws++;
+    else if (b.result === "unknown") unknownCount++;
+  }
+  const record = { wins, losses, draws, unknownCount, total: wins + losses + draws + unknownCount };
+
   const detail = {
     slug,
     name: f.name,
@@ -373,6 +405,7 @@ for (const f of fighters) {
     gym: f.gym,
     orgs: f.orgs,
     sources: f.sources,
+    record,
     bouts: bouts.map((b) => ({
       date: b.date,
       event: b.event,
@@ -457,12 +490,23 @@ fs.writeFileSync(SLUG_MAP_PATH, JSON.stringify(slugMap, null, 1));
 
 // ---------- 検索インデックス(クライアント側の絞り込み専用、最小フィールドのみ) ----------
 // 表記名・かな・ローマ字・所属・本名(一致キーのみ)の部分一致検索に使う。
-// 集計値(戦績数等)は含めずサイズを絞る。realnameは該当者のみキーを持たせる
-// (2,482件分nullを並べてサイズを膨らませない)。
+// 集計値(戦績数等)は含めずサイズを絞る。realname・orgsは該当者のみキーを持たせる
+// (該当なしの選手分までnull/空配列を並べてサイズを膨らませない)。
+// orgsは戦績の出典団体(15団体、build-kick-data.tsのtag)。データ量を抑えるため
+// フルラベルではなく短縮タグで持たせ、表示側(FighterSearch.tsx)でラベルに変換する。
 const searchIndex = (index as { slug: string; name: string; kana: string | null; romaji: string | null; gym: string | null }[]).map(
   (f) => {
     const realname = realnameBySlug.get(f.slug);
-    return { slug: f.slug, name: f.name, kana: f.kana, romaji: f.romaji, gym: f.gym, ...(realname ? { realname } : {}) };
+    const orgs = orgTagsBySlug.get(f.slug) ?? [];
+    return {
+      slug: f.slug,
+      name: f.name,
+      kana: f.kana,
+      romaji: f.romaji,
+      gym: f.gym,
+      ...(realname ? { realname } : {}),
+      ...(orgs.length ? { orgs } : {}),
+    };
   },
 );
 fs.mkdirSync(PUBLIC_OUT, { recursive: true });

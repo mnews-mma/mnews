@@ -59,7 +59,22 @@ export interface KickFighter {
   gym: string | null;
   orgs: string[];
   sources: string[];
+  record: KickFighterRecord;
   bouts: KickBout[];
+}
+
+/**
+ * 選手ページヘッダーの「収録N試合: X勝Y敗Z分」表示用に、ビルド時(build-kick-data.ts)で
+ * 焼き込み済みの集計。scheduled・no_contest・cancelled・walkover(不戦勝/不戦敗)は
+ * total(N)に含めない(walkoverを除く理由は SCHEMA.md の method=walkover の定義を参照)。
+ * unknownCount は勝敗どちらにも数えず別枠。total = wins + losses + draws + unknownCount。
+ */
+export interface KickFighterRecord {
+  wins: number;
+  losses: number;
+  draws: number;
+  unknownCount: number;
+  total: number;
 }
 
 export interface KickStats {
