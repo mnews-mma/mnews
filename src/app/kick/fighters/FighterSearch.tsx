@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 /**
  * /kick/fighters の検索UI。
@@ -21,9 +21,32 @@ interface SearchEntry {
   gym: string | null;
   /** ja.wikipedia|realname=由来の本名。一致キーとしてのみ使い、画面には出さない。 */
   realname?: string;
+  /** 出場団体(戦績の出典団体、build-kick-data.tsのtag)。未出場の場合はキー自体を持たない。
+   *  名簿の掲載元(6ソース)とは別概念 — 選手が実際にboutを持つ団体の一覧。 */
+  orgs?: string[];
 }
 
 const MAX_RESULTS = 30;
+
+/** 出場団体フィルタの選択肢。scripts/build-kick-data.ts の boutFiles と同じ tag・順序。
+ *  クライアント側にfsを持ち込めないため(@/lib/kick/data.tsはNode専用)、ここで複製する。 */
+const ORG_OPTIONS: { tag: string; label: string }[] = [
+  { tag: "sb", label: "SHOOT BOXING" },
+  { tag: "rise", label: "RISE" },
+  { tag: "knockout", label: "KNOCK OUT" },
+  { tag: "k1", label: "K-1 / Krush / Krush-EX" },
+  { tag: "rizin", label: "RIZIN" },
+  { tag: "one", label: "ONE Championship" },
+  { tag: "deepkick", label: "DEEP☆KICK" },
+  { tag: "njkf", label: "NJKF" },
+  { tag: "hoostcup", label: "HoostCup" },
+  { tag: "nkb", label: "NKB" },
+  { tag: "bigbang", label: "Bigbang" },
+  { tag: "standup", label: "Stand up" },
+  { tag: "krossover", label: "KROSS×OVER" },
+  { tag: "snka", label: "新日本キックボクシング協会(SNKA)" },
+  { tag: "jka", label: "JKA" },
+];
 
 function normalize(s: string): string {
   // ひらがな→カタカナに寄せてから比較する(索引側のかなは全てカタカナのため、
@@ -40,6 +63,7 @@ function normalize(s: string): string {
 export default function FighterSearch() {
   const [index, setIndex] = useState<SearchEntry[] | null>(null);
   const [query, setQuery] = useState("");
+  const [org, setOrg] = useState(""); // "" = 団体指定なし(全団体)
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -66,62 +90,89 @@ export default function FighterSearch() {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
+  // テキスト未入力でも団体だけでの絞り込みを許す(単独フィルタ)。両方指定時はAND。
+  const matches = useCallback(
+    (f: SearchEntry, q: string): boolean => {
+      if (org && !f.orgs?.includes(org)) return false;
+      if (!q) return true;
+      return (
+        normalize(f.name).includes(q) ||
+        (f.kana != null && normalize(f.kana).includes(q)) ||
+        (f.romaji != null && normalize(f.romaji).includes(q)) ||
+        (f.gym != null && normalize(f.gym).includes(q)) ||
+        (f.realname != null && normalize(f.realname).includes(q))
+      );
+    },
+    [org],
+  );
+
   const results = useMemo(() => {
     const q = normalize(query.trim());
-    if (!q || !index) return [];
+    if (!index || (!q && !org)) return [];
     const hits: SearchEntry[] = [];
     for (const f of index) {
-      if (
-        normalize(f.name).includes(q) ||
-        (f.kana && normalize(f.kana).includes(q)) ||
-        (f.romaji && normalize(f.romaji).includes(q)) ||
-        (f.gym && normalize(f.gym).includes(q)) ||
-        (f.realname && normalize(f.realname).includes(q))
-      ) {
+      if (matches(f, q)) {
         hits.push(f);
         if (hits.length >= MAX_RESULTS) break;
       }
     }
     return hits;
-  }, [query, index]);
+  }, [query, org, index, matches]);
 
   const totalCount = useMemo(() => {
-    if (!query.trim() || !index) return 0;
     const q = normalize(query.trim());
+    if (!index || (!q && !org)) return 0;
     let n = 0;
-    for (const f of index) {
-      if (
-        normalize(f.name).includes(q) ||
-        (f.kana && normalize(f.kana).includes(q)) ||
-        (f.romaji && normalize(f.romaji).includes(q)) ||
-        (f.gym && normalize(f.gym).includes(q)) ||
-        (f.realname && normalize(f.realname).includes(q))
-      ) {
-        n++;
-      }
-    }
+    for (const f of index) if (matches(f, q)) n++;
     return n;
-  }, [query, index]);
+  }, [query, org, index, matches]);
+
+  const queryTrimmed = query.trim();
+  const orgLabel = ORG_OPTIONS.find((o) => o.tag === org)?.label ?? "";
+  const emptyMessage = queryTrimmed && org
+    ? `${orgLabel}に出場していて「${queryTrimmed}」に一致する選手が見つかりません。`
+    : queryTrimmed
+      ? `「${queryTrimmed}」に一致する選手が見つかりません。`
+      : `${orgLabel}に出場した選手が見つかりません。`;
 
   return (
     <div className="kick-search" ref={boxRef}>
-      <input
-        type="search"
-        className="kick-search__input"
-        placeholder={index ? "選手名・かな・ローマ字・所属で検索" : "検索を読み込み中…"}
-        value={query}
-        disabled={!index}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          setOpen(true);
-        }}
-        onFocus={() => setOpen(true)}
-        aria-label="選手検索"
-      />
-      {open && query.trim() && (
+      <div className="kick-search__row">
+        <input
+          type="search"
+          className="kick-search__input"
+          placeholder={index ? "選手名・かな・ローマ字・所属で検索" : "検索を読み込み中…"}
+          value={query}
+          disabled={!index}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setOpen(true);
+          }}
+          onFocus={() => setOpen(true)}
+          aria-label="選手検索"
+        />
+        <select
+          className="kick-search__org"
+          value={org}
+          disabled={!index}
+          onChange={(e) => {
+            setOrg(e.target.value);
+            setOpen(true);
+          }}
+          aria-label="出場団体で絞り込み"
+        >
+          <option value="">すべての団体</option>
+          {ORG_OPTIONS.map((o) => (
+            <option key={o.tag} value={o.tag}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      {open && (queryTrimmed || org) && (
         <div className="kick-search__panel">
           {results.length === 0 ? (
-            <p className="kick-search__empty">「{query}」に一致する選手が見つかりません。</p>
+            <p className="kick-search__empty">{emptyMessage}</p>
           ) : (
             <>
               <ul className="kick-search__list">

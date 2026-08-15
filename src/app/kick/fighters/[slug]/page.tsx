@@ -84,6 +84,13 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
           )}
         </div>
 
+        {f.record.total > 0 && (
+          <p className="kick-record-summary">
+            収録{f.record.total}試合: {f.record.wins}勝{f.record.losses}敗{f.record.draws}分
+            {f.record.unknownCount > 0 && `、ほか不明${f.record.unknownCount}件`}
+          </p>
+        )}
+
         <dl className="kick-meta">
           {f.aliases.length > 0 && (
             <>
