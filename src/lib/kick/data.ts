@@ -96,6 +96,10 @@ export interface KickStats {
   /** 自分側では相手が同名複数人で未解決だったが、相手側ページで自分に一意解決されている
    *  ことを手がかりに逆引きで解決できた行数。scripts/build-kick-data.tsのreverseResolveOpponent参照。 */
   reverseResolvedCount: number;
+  /** MMA・エキシビジョン・アマチュア戦・ボクシングルールなど、キックボクシングの
+   *  戦績として掲載すべきでないと判定してdata/kick/manualRuleExclusions.jsonの
+   *  一覧と照合し除外した行数。 */
+  manualExclusionCount: number;
   promotions: string[];
 }
 
