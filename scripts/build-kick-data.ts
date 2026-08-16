@@ -294,25 +294,61 @@ for (const b of allBouts) {
 // ---------- 同一試合の重複除去(複数団体に掲載がある選手) ----------
 const normName = (s: string) =>
   s.normalize("NFKC").replace(/\s+/g, "").replace(/[・･]/g, "").toLowerCase();
+// 大会名は主催者の冠(スポンサー名等)が出典サイトごとに付いたり付かなかったりするため
+// (例: "MAROOMS presents KNOCK OUT.60 ～K.O CLIMAX 2025～" と "KNOCK OUT.60 ～K.O CLIMAX 2025～")、
+// 完全一致ではなく正規化後の包含関係で「同じ大会」とみなす(PR-1.5)。
+const normEvent = (s: string | null) => (s ?? "").normalize("NFKC").replace(/[\s　]+/g, "").toLowerCase();
+const eventCompatible = (a: string | null, b: string | null) => {
+  const na = normEvent(a);
+  const nb = normEvent(b);
+  if (!na || !nb) return false;
+  return na === nb || na.includes(nb) || nb.includes(na);
+};
 
 let mergedRows = 0;
 function dedupe(bouts: (Bout & { promotion: string })[]) {
+  // 同日+相手名一致は従来通りのキー方式(既存挙動を変えない)。
   const seen = new Map<string, (Bout & { promotion: string }) & { alsoFrom: string[] }>();
   const out: ((Bout & { promotion: string }) & { alsoFrom: string[] })[] = [];
+  const merge = (hit: (Bout & { promotion: string }) & { alsoFrom: string[] }, b: Bout & { promotion: string }) => {
+    // 同じ試合が別団体のページにも載っている。行は1本にまとめ、出典は両方残す。
+    if (!hit.alsoFrom.includes(b.source_url)) hit.alsoFrom.push(b.source_url);
+    // title_typeは最初に見つかった団体側が空欄でも、統合先の別団体が持っていれば採用する
+    // (同じ試合なのに掲載順の都合でタイトル情報が欠落するのを防ぐ)。
+    if (!hit.title_type && b.title_type) hit.title_type = b.title_type;
+    mergedRows++;
+  };
   for (const b of bouts) {
-    const key = b.date ? `${b.date}|${normName(b.opponent_name)}` : `id|${b.bout_id}`;
-    const hit = seen.get(key);
-    if (hit) {
-      // 同じ試合が別団体のページにも載っている。行は1本にまとめ、出典は両方残す。
-      if (!hit.alsoFrom.includes(b.source_url)) hit.alsoFrom.push(b.source_url);
-      // title_typeは最初に見つかった団体側が空欄でも、統合先の別団体が持っていれば採用する
-      // (同じ試合なのに掲載順の都合でタイトル情報が欠落するのを防ぐ)。
-      if (!hit.title_type && b.title_type) hit.title_type = b.title_type;
-      mergedRows++;
+    const sameDayKey = b.date ? `${b.date}|${normName(b.opponent_name)}` : `id|${b.bout_id}`;
+    const sameDayHit = seen.get(sameDayKey);
+    if (sameDayHit) {
+      merge(sameDayHit, b);
+      continue;
+    }
+    // 出典サイト間で試合日の記載が±1日ずれるケースがある(例: KNOCK OUT.60が出典サイトごとに
+    // 12/30・12/31に割れていた実例)。相手名一致に加え大会名も互換な場合のみ同一試合とみなす
+    // (誤結合を避けるため日付だけでは判定しない)。
+    let fuzzyHit: ((Bout & { promotion: string }) & { alsoFrom: string[] }) | null = null;
+    if (b.date) {
+      const bt = Date.parse(b.date);
+      if (!Number.isNaN(bt)) {
+        for (const o of out) {
+          if (!o.date) continue;
+          const ot = Date.parse(o.date);
+          if (Number.isNaN(ot) || ot === bt) continue; // 同日は上のsameDayHitで処理済み
+          if (Math.abs(bt - ot) <= 86400000 && normName(o.opponent_name) === normName(b.opponent_name) && eventCompatible(o.event, b.event)) {
+            fuzzyHit = o;
+            break;
+          }
+        }
+      }
+    }
+    if (fuzzyHit) {
+      merge(fuzzyHit, b);
       continue;
     }
     const rec = { ...b, alsoFrom: [] as string[] };
-    seen.set(key, rec);
+    seen.set(sameDayKey, rec);
     out.push(rec);
   }
   return out;
