@@ -481,11 +481,52 @@ let resultUnknownRows = 0;
 // fighters.json 側の orgs(名簿の掲載元)とは別概念のため、選手ごとの bouts から都度求める。
 const orgTagsBySlug = new Map<string, string[]>();
 
+// ---------- ルール除外(PR-2) ----------
+// MMA・エキシビジョン・アマチュア戦・ボクシングルールの試合など、キックボクシングの
+// 戦績として掲載すべきでないboutを、1件ずつ事実確認のうえ除外する。生データ
+// (bouts_*.json)は変更せず、この一覧(data/kick/manualRuleExclusions.json、
+// 選手slug・日付・相手・決着原文・除外理由を保持)とビルド時に照合して除外する。
+// キーワードだけでの機械判定はしない(同じ「一本」でもK-1甲子園はアマ、KROSS×OVERは
+// MMAケージ、といった具合に文脈で意味が異なるため)。
+interface ManualExclusion {
+  slug: string;
+  date: string | null;
+  opponent: string;
+  methodRaw: string;
+  category: "mma" | "exhibition" | "amateur" | "boxing";
+  reason: string;
+}
+const manualExclusions: ManualExclusion[] = fs.existsSync(path.join(SRC, "manualRuleExclusions.json"))
+  ? JSON.parse(fs.readFileSync(path.join(SRC, "manualRuleExclusions.json"), "utf8"))
+  : [];
+const exclusionByKey = new Map<string, ManualExclusion[]>();
+for (const e of manualExclusions) {
+  const k = `${e.slug}|${e.date ?? "null"}|${normName(e.opponent)}`;
+  const arr = exclusionByKey.get(k) ?? [];
+  arr.push(e);
+  exclusionByKey.set(k, arr);
+}
+const exclusionMatchCount = new Map<ManualExclusion, number>();
+function findExclusion(slug: string, b: Bout & { promotion: string }): ManualExclusion | null {
+  const k = `${slug}|${b.date ?? "null"}|${normName(b.opponent_name)}`;
+  const hit = (exclusionByKey.get(k) ?? []).find((e) => e.methodRaw === b.method_raw);
+  if (hit) exclusionMatchCount.set(hit, (exclusionMatchCount.get(hit) ?? 0) + 1);
+  return hit ?? null;
+}
+const excludedRowsLog: (ManualExclusion & { name: string; event: string | null; promotion: string })[] = [];
+
 for (const f of fighters) {
   const key = identity(f);
   const slug = slugByIdentity.get(key)!;
   const raw = boutsByIdentity.get(key) ?? [];
-  const bouts = dedupe(raw).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  const bouts = dedupe(raw)
+    .filter((b) => {
+      const ex = findExclusion(slug, b);
+      if (!ex) return true;
+      excludedRowsLog.push({ ...ex, name: f.name, event: b.event, promotion: b.promotion });
+      return false;
+    })
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
   if (bouts.length) withBouts++;
   totalBoutRows += bouts.length;
   scheduledRows += bouts.filter((b) => b.result === "scheduled").length;
@@ -607,8 +648,27 @@ const stats = {
   titleTypeCount: titleTypeRows,
   resultUnknownCount: resultUnknownRows,
   reverseResolvedCount,
+  manualExclusionCount: excludedRowsLog.length,
   promotions: boutFiles.map((b) => b.label),
 };
+
+// data/kick/manualRuleExclusions.json の各行が実際にちょうど1件のboutと
+// マッチしたかを確認する(0件=データ変化でヒットしなくなった古いエントリ、
+// 2件以上=キーが一意でない)。手動キュレーションした一覧のドリフトを
+// ビルド時に検知するための安全網で、ビルド自体は止めない(警告のみ)。
+for (const e of manualExclusions) {
+  const n = exclusionMatchCount.get(e) ?? 0;
+  if (n !== 1) {
+    console.warn(
+      `[kick] manualRuleExclusions.json: ${e.slug} / ${e.date} / ${e.opponent} が${n}件マッチしました(想定は1件)。データが変化した可能性があります。`,
+    );
+  }
+}
+fs.mkdirSync(path.join(ROOT, "out"), { recursive: true });
+fs.writeFileSync(
+  path.join(ROOT, "out/kick-rule-exclusion-log.json"),
+  JSON.stringify(excludedRowsLog, null, 1),
+);
 
 const sourceUpdatedAt = updateSourceMeta([
   "data/kick/fighters.json",
