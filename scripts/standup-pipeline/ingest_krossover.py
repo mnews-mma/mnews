@@ -105,6 +105,37 @@ def get_body_html(path):
 
 BRAND_X_RE = re.compile(r'(?i)kross\s*×\s*over')
 
+# 一部記事(p=3411, p=3575, p=4122=CAGE.9)は複数試合の見出し「▼(プレリミナリーファイト/
+# ポストリミナリーファイト/オープニングファイト等)第N試合...」が改行(<p>境界)を挟まず
+# 1つの<p>タグ内に連結されている。従来のparse_blocksは「行頭が▼/・で始まる行」だけを
+# ブロック開始として扱うため、行の途中に埋め込まれた見出し(2つ目以降、あるいは決着文の
+# 後ろに続く次の見出し)がまるごと読み飛ばされ、その試合が欠落していた
+# (CAGE.9で13試合中1試合しか抽出できていなかった主因)。
+# 見出しトークン自体は「▼」+20字以内+「第N試合」という形式が全50記事で一貫しているため、
+# 行内のどこにあってもこのトークンの直前で分割し、複数の見出しが1行に連結されている場合も
+# 見出し単位の別行として展開する。見出しが行頭(位置0)のみで1個しか無い行は従来通りそのまま
+# (no-op)。決着文の直後に見出しが読点無しで続くケースも同じ理由でここに含まれる。
+INLINE_HDR_RE = re.compile(r'▼[^▼]{0,20}?第\d+試合')
+
+
+def expand_inline_headers(lines):
+    out = []
+    for l in lines:
+        positions = [m.start() for m in INLINE_HDR_RE.finditer(l)]
+        if len(positions) <= 1 and (not positions or positions[0] == 0):
+            out.append(l)
+            continue
+        bounds = positions + [len(l)]
+        if bounds[0] > 0:
+            prefix = l[:bounds[0]].strip()
+            if prefix:
+                out.append(prefix)
+        for k in range(len(positions)):
+            seg = l[bounds[k]:bounds[k + 1]].strip()
+            if seg:
+                out.append(seg)
+    return out
+
 
 def get_lines(body_html):
     ps = re.findall(r'(?s)<p[^>]*>(.*?)</p>', body_html)
@@ -112,7 +143,8 @@ def get_lines(body_html):
     # 団体名「KROSS×OVER」の「×」がマーク文字(負け)と同一グリフのため、マーク走査の前に
     # ASCIIの'x'へ置換して衝突を避ける(そのまま流すと見出し行の団体名がloss判定として
     # 誤検出され、本物の対戦相手が枠から溢れて欠落する)。
-    return [BRAND_X_RE.sub('KROSSxOVER', l) for l in lines]
+    lines = [BRAND_X_RE.sub('KROSSxOVER', l) for l in lines]
+    return expand_inline_headers(lines)
 
 
 def extract_published(full_html):

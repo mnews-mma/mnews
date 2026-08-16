@@ -153,6 +153,44 @@ if (fs.existsSync(path.join(SRC, "bouts_wikipedia.json"))) {
   }
 }
 
+// 検査C3(相手名への所属連結、306件)の機械分離層。相手名(opponent_name)の末尾に
+// 「ジム/道場/塾/GYM/Team/Club/協会/会館」等の所属らしき語が「・」「(」「（」「半角/全角スペース」
+// のいずれかの区切り文字を挟んで連結している行(例:「サンチャイ・TEPPEN GYM」)を、
+// 人名部分と所属部分に分割する。区切り文字が無く直接連結している行(例:「壱センチャイジム」
+// 「洋センチャイジム」)は人名と所属の境界を機械的に確定できないため対象外とし、そのまま残す
+// (PR-9本文に対象外リストを記録)。
+// 所属欄(opponent_affiliation)が既に値を持つ場合は上書きしない(重複破棄のみ、データは失わない)。
+// 空の場合のみ分離した所属語で埋める(情報を捨てない)。
+// 注意: この分離は「表示直前」(detail.bouts構築時)にのみ適用する。allBoutsの
+// opponent_nameそのものは変更しない — manualRuleExclusions.jsonの照合キー・dedupeキー・
+// fuzzyResolveOpponent()の入力など、opponent_nameを複合キーとして使う既存ロジックが
+// 連結済みの原文字列を前提にしているため、ここを書き換えるとそれらの照合が一斉に外れる
+// (実際に試して確認: 除外リストが3件マッチ落ちした)。
+const GYM_SUFFIX_KEYWORD_RE = /ジム|道場|塾|GYM|Gym|gym|Team|TEAM|team|Club|CLUB|club|協会|会館/g;
+const GYM_SUFFIX_BREAK_CHARS = new Set(["・", "(", "（", " ", "　"]);
+function splitOpponentGymSuffix(name: string): { person: string; gym: string } | null {
+  const matches = [...name.matchAll(GYM_SUFFIX_KEYWORD_RE)];
+  if (matches.length === 0) return null;
+  const last = matches[matches.length - 1];
+  const idx = last.index!;
+  let breakPos = -1;
+  for (let i = idx - 1; i >= 0; i--) {
+    if (GYM_SUFFIX_BREAK_CHARS.has(name[i])) {
+      breakPos = i;
+      break;
+    }
+  }
+  if (breakPos < 0) return null;
+  const person = name.slice(0, breakPos).trim();
+  const gym = name
+    .slice(breakPos)
+    .replace(/^[・(（\s]+/, "")
+    .replace(/[)）\s]+$/, "")
+    .trim();
+  if (!person || !gym) return null;
+  return { person, gym };
+}
+
 // ---------- slug ----------
 const KANA_ROMAJI: [RegExp, string][] = [
   [/キャ/g, "kya"], [/キュ/g, "kyu"], [/キョ/g, "kyo"], [/シャ/g, "sha"], [/シュ/g, "shu"], [/ショ/g, "sho"],
@@ -655,13 +693,14 @@ for (const f of fighters) {
       const opponentSlug = directSlug ?? reverseSlug ?? fuzzySlug;
       if (reverseSlug) reverseResolvedCount++;
       if (fuzzySlug) fuzzyResolvedCount++;
+      const gymSplit = splitOpponentGymSuffix(b.opponent_name);
       return {
         date: b.date,
         event: b.event,
         venue: b.venue,
         promotion: b.promotion,
-        opponentName: b.opponent_name,
-        opponentAffiliation: b.opponent_affiliation,
+        opponentName: gymSplit ? gymSplit.person : b.opponent_name,
+        opponentAffiliation: b.opponent_affiliation || (gymSplit ? gymSplit.gym : b.opponent_affiliation),
         opponentSlug,
         // 逆引きで解決できた行はambiguousバッジを出さない(実リンクが出るため不要)。
         opponentAmbiguous: b.opponent_ambiguous && !opponentSlug,
