@@ -333,6 +333,63 @@ for (const f of fighters) {
   byNameGym.set(`${f.name}|${f.gym ?? ""}`, slugByIdentity.get(identity(f))!);
 }
 
+// PR-1(fix/kick-name-merge-and-reverse-resolution)でkaito-2/kaito-3を統合した際、
+// 統合前の所属表記(SHOOT BOXING／TEAM FOD)は fighters.json から消えたが、他選手の生bout側には
+// その旧表記をopponent_ref_gymとして直接参照している行が残っている(例: シッティチャイ・シッソン
+// ピーノン側のKNOCK OUTデータ)。旧表記でも引けるようエイリアスを張る。今後同種の統合を行う場合は
+// ここに追記する。
+const MERGED_GYM_ALIASES: [name: string, oldGym: string, newGym: string][] = [
+  ["海人", "SHOOT BOXING／TEAM FOD", "TEAM F.O.D"],
+];
+for (const [name, oldGym, newGym] of MERGED_GYM_ALIASES) {
+  const canonicalSlug = byNameGym.get(`${name}|${newGym}`);
+  if (canonicalSlug) byNameGym.set(`${name}|${oldGym}`, canonicalSlug);
+}
+
+// ---------- 逆引き解決 ----------
+// 通常の解決(opponent_resolved && opponent_ref)は「自分側の行が相手を一意に指せているか」
+// だけを見るため、相手が同名複数人(opponent_ambiguous)だと最初からnullになる。
+// しかし候補の中に「相手側の試合記録には自分の名前がほぼ一意に載っている」人がいれば、
+// それを手がかりに解決できることがある(例: 安保瑠輝也×海人 2015-10-03。海人側の記録は
+// 安保へ一意解決済みだが、安保側は「海人」が同名複数人でopponent_resolved:falseのまま)。
+// 候補のうち「相手側ページで自分に一意解決される」者がちょうど1人だけの場合に限り解決する
+// (0人・2人以上は誤リンクの危険があるため何もしない)。
+const fighterBySlug = new Map<string, Fighter>();
+for (const f of fighters) fighterBySlug.set(slugByIdentity.get(identity(f))!, f);
+
+const dateNear = (d1: string | null, d2: string | null, maxDays: number): boolean => {
+  if (!d1 || !d2) return false;
+  const t1 = Date.parse(d1);
+  const t2 = Date.parse(d2);
+  if (Number.isNaN(t1) || Number.isNaN(t2)) return false;
+  return Math.abs(t1 - t2) <= maxDays * 86400000;
+};
+
+function reverseResolveOpponent(bout: Bout, mySlug: string, myName: string): string | null {
+  if (bout.opponent_resolved || !bout.opponent_candidates) return null;
+  const resolved = new Set<string>();
+  for (const cand of bout.opponent_candidates) {
+    const candSlug = byNameGym.get(`${cand.name}|${cand.gym ?? ""}`);
+    if (!candSlug || candSlug === mySlug) continue;
+    const candFighter = fighterBySlug.get(candSlug);
+    if (!candFighter) continue;
+    const candBouts = boutsByIdentity.get(identity(candFighter)) ?? [];
+    const reciprocal = candBouts.some((cb) => {
+      if (normName(cb.opponent_name) !== normName(myName)) return false;
+      if (!dateNear(cb.date, bout.date, 3)) return false;
+      // 相手側のその行自体が自分へ一意に解決されているかを確認する(誤リンク防止)。
+      return (
+        cb.opponent_resolved &&
+        !!cb.opponent_ref &&
+        byNameGym.get(`${cb.opponent_ref}|${cb.opponent_ref_gym ?? ""}`) === mySlug
+      );
+    });
+    if (reciprocal) resolved.add(candSlug);
+  }
+  return resolved.size === 1 ? [...resolved][0] : null;
+}
+let reverseResolvedCount = 0;
+
 // ---------- 本名(検索の一致キー専用。画面には一切表示しない) ----------
 // data/kick/realnames.json: ja.wikipedia個別記事の|realname=欄が表記名と異なるもの(158件)。
 // source_url(出典)はこのファイル自体(リポジトリにコミット)が保持先であり、
@@ -439,34 +496,41 @@ for (const f of fighters) {
     orgs: f.orgs,
     sources: f.sources,
     record,
-    bouts: bouts.map((b) => ({
-      date: b.date,
-      event: b.event,
-      venue: b.venue,
-      promotion: b.promotion,
-      opponentName: b.opponent_name,
-      opponentAffiliation: b.opponent_affiliation,
+    bouts: bouts.map((b) => {
       // リンクしてよいのは「一意に解決できた相手」だけ。
       // ambiguous(同名異人)・未解決は誤リンクを避けテキスト表示にする。
-      opponentSlug:
+      const directSlug =
         b.opponent_resolved && b.opponent_ref
           ? byNameGym.get(`${b.opponent_ref}|${b.opponent_ref_gym ?? ""}`) ?? null
-          : null,
-      opponentAmbiguous: b.opponent_ambiguous,
-      opponentCandidateCount: b.opponent_candidates ? b.opponent_candidates.length : 0,
-      result: b.result,
-      method: b.method,
-      methodRaw: b.method_raw,
-      round: b.round,
-      isExtension: b.is_extension,
-      ruleset: b.ruleset,
-      note: b.note,
-      isDebut: b.is_debut,
-      titleType: b.title_type,
-      sourceUrl: b.source_url,
-      sourceType: b.source_type ?? null,
-      alsoFrom: b.alsoFrom,
-    })),
+          : null;
+      const reverseSlug = directSlug ? null : reverseResolveOpponent(b, slug, f.name);
+      const opponentSlug = directSlug ?? reverseSlug;
+      if (reverseSlug) reverseResolvedCount++;
+      return {
+        date: b.date,
+        event: b.event,
+        venue: b.venue,
+        promotion: b.promotion,
+        opponentName: b.opponent_name,
+        opponentAffiliation: b.opponent_affiliation,
+        opponentSlug,
+        // 逆引きで解決できた行はambiguousバッジを出さない(実リンクが出るため不要)。
+        opponentAmbiguous: b.opponent_ambiguous && !opponentSlug,
+        opponentCandidateCount: b.opponent_candidates ? b.opponent_candidates.length : 0,
+        result: b.result,
+        method: b.method,
+        methodRaw: b.method_raw,
+        round: b.round,
+        isExtension: b.is_extension,
+        ruleset: b.ruleset,
+        note: b.note,
+        isDebut: b.is_debut,
+        titleType: b.title_type,
+        sourceUrl: b.source_url,
+        sourceType: b.source_type ?? null,
+        alsoFrom: b.alsoFrom,
+      };
+    }),
   };
   fs.writeFileSync(path.join(OUT, "fighters", `${slug}.json`), JSON.stringify(detail));
 
@@ -506,6 +570,7 @@ const stats = {
   kanaConverted: fighters.filter((f) => f.kana_source?.type === "from_romaji").length,
   titleTypeCount: titleTypeRows,
   resultUnknownCount: resultUnknownRows,
+  reverseResolvedCount,
   promotions: boutFiles.map((b) => b.label),
 };
 

@@ -49439,24 +49439,12 @@
     "gym": "TEAM F.O.D",
     "orgs": [
       "RISE",
-      "SHOOT BOXING"
-    ],
-    "sources": [
-      "https://rise-rc.com/fighter/kaito/",
-      "https://shootboxing.org/fighter/kaito/"
-    ],
-    "kana_source": null,
-    "birthdate": "1997.8.21"
-  },
-  {
-    "name": "海人",
-    "kana": null,
-    "aliases": [],
-    "gym": "SHOOT BOXING／TEAM FOD",
-    "orgs": [
+      "SHOOT BOXING",
       "KNOCK OUT"
     ],
     "sources": [
+      "https://rise-rc.com/fighter/kaito/",
+      "https://shootboxing.org/fighter/kaito/",
       "https://knockoutkb.com/fighters/kaito_281"
     ],
     "kana_source": null,
