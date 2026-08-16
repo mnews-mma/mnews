@@ -15,7 +15,7 @@ export function generateMetadata() {
 }
 
 const BUCKET_ORDER = ["ア", "カ", "サ", "タ", "ナ", "ハ", "マ", "ヤ", "ラ", "ワ", "―"];
-const BUCKET_LABEL: Record<string, string> = { "―": "読み未取得" };
+const BUCKET_LABEL: Record<string, string> = { "―": "読み未取得・分類不能" };
 
 export default function KickFightersPage() {
   const { fighters, stats } = getKickIndex();
@@ -33,7 +33,15 @@ export default function KickFightersPage() {
       <h1 className="kick-h1">選手一覧</h1>
       <p className="kick-lead">
         五十音順（{stats.fighters.toLocaleString("ja-JP")}人）。読みが取得できなかった{stats.kanaMissing.toLocaleString("ja-JP")}人は
-        <strong>空欄のまま末尾</strong>にまとめています（推測で読みを補わないため）。表記名・かな・ローマ字・所属で検索できます。
+        <strong>空欄のまま末尾</strong>にまとめています（推測で読みを補わないため）。
+        {stats.kanaUnclassified > stats.kanaMissing && (
+          <>
+            読みは取得できているものの、記号始まりの表記やラテン文字表記のため五十音順に分類できない
+            {(stats.kanaUnclassified - stats.kanaMissing).toLocaleString("ja-JP")}人も同じ末尾の欄にまとめているため、
+            この欄には合計{stats.kanaUnclassified.toLocaleString("ja-JP")}人が並びます。
+          </>
+        )}
+        表記名・かな・ローマ字・所属で検索できます。
       </p>
 
       <FighterSearch />

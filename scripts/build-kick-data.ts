@@ -461,9 +461,14 @@ for (const r of realnames) {
 const KANA_ROWS = "アカサタナハマヤラワ";
 function kanaBucket(kana: string | null): string {
   if (!kana) return "―";
-  const c = kana[0];
+  // ニックネームの引用符(“”「」等)で始まるかなは、その記号ではなく後続の実際の
+  // 読みで分類する(例: "“コング” コウセイ" は「”」ではなく「コ」＝カ行)。
+  const stripped = kana.replace(/^[“”"'’「」『』【】〈〉《》〔〕・\s]+/, "");
+  const c = stripped[0];
+  if (!c) return "―";
   const table: [string, string][] = [
-    ["ア", "アイウエオ"], ["カ", "カキクケコガギグゲゴ"], ["サ", "サシスセソザジズゼゾ"],
+    // 「ヴ」は外国人選手名の音写に頻出するため、辞書配列の慣習どおりア行に含める。
+    ["ア", "アイウエオヴ"], ["カ", "カキクケコガギグゲゴ"], ["サ", "サシスセソザジズゼゾ"],
     ["タ", "タチツテトダヂヅデド"], ["ナ", "ナニヌネノ"], ["ハ", "ハヒフヘホバビブベボパピプペポ"],
     ["マ", "マミムメモ"], ["ヤ", "ヤユヨ"], ["ラ", "ラリルレロ"], ["ワ", "ワヲン"],
   ];
@@ -477,6 +482,7 @@ let totalBoutRows = 0;
 let scheduledRows = 0;
 let titleTypeRows = 0;
 let resultUnknownRows = 0;
+let boutRowsWikipedia = 0;
 // 検索インデックス用: 選手が実際にboutを持つ団体(戦績の出典団体)。
 // fighters.json 側の orgs(名簿の掲載元)とは別概念のため、選手ごとの bouts から都度求める。
 const orgTagsBySlug = new Map<string, string[]>();
@@ -532,6 +538,7 @@ for (const f of fighters) {
   scheduledRows += bouts.filter((b) => b.result === "scheduled").length;
   titleTypeRows += bouts.filter((b) => b.title_type).length;
   resultUnknownRows += bouts.filter((b) => b.result === "unknown").length;
+  boutRowsWikipedia += bouts.filter((b) => b.source_type === "wikipedia").length;
 
   const boutOrgTagSet = new Set(bouts.map((b) => tagByLabel.get(b.promotion)!));
   orgTagsBySlug.set(
@@ -632,6 +639,12 @@ index.sort((a: any, b: any) => {
   return a.kana.localeCompare(b.kana, "ja") || a.name.localeCompare(b.name, "ja");
 });
 
+// 「読み未取得」の定義は2つある: (1)kanaMissing = kana自体がnull、(2)五十音順一覧で
+// 「―」バケットに実際に並ぶ人数(kanaはあるが記号始まり・ラテン文字表記等で分類できない選手を含む)。
+// この2つは概念として別物であり、値を揃えるのではなく両方を明示的にstatsへ持たせ、
+// 全画面がこの2つのどちらかを参照するよう一元化する(画面ごとに別の再計算をしない)。
+const kanaUnclassifiedCount = (index as { bucket: string }[]).filter((f) => f.bucket === "―").length;
+
 const stats = {
   fighters: fighters.length,
   fightersWithBouts: withBouts,
@@ -640,10 +653,16 @@ const stats = {
   boutRowsCompleted: totalBoutRows - scheduledRows,
   boutRowsScheduled: scheduledRows,
   boutRowsRaw: allBouts.length,
+  // 戦績の出典内訳(各団体公式サイト由来 / Wikipedia由来)。B.出典説明の内訳表示に使う。
+  boutRowsOfficial: totalBoutRows - boutRowsWikipedia,
+  boutRowsWikipedia,
   mergedDuplicateRows: mergedRows,
   unmatchedBouts,
   kanaFilled: fighters.filter((f) => f.kana).length,
   kanaMissing: fighters.filter((f) => !f.kana).length,
+  // 五十音順一覧の「―」バケットに実際に並ぶ人数。kanaMissingとの差は、かな自体はあるが
+  // 記号始まりのニックネームや表記がラテン文字のみ等で五十音順に分類できない選手。
+  kanaUnclassified: kanaUnclassifiedCount,
   kanaConverted: fighters.filter((f) => f.kana_source?.type === "from_romaji").length,
   titleTypeCount: titleTypeRows,
   resultUnknownCount: resultUnknownRows,
@@ -651,6 +670,34 @@ const stats = {
   manualExclusionCount: excludedRowsLog.length,
   promotions: boutFiles.map((b) => b.label),
 };
+
+// ---------- 集計値の恒等式チェック(A.一元化の再発防止ネット) ----------
+// 画面ごとに別の集計をしてしまうと定義が静かにズレる(PR-6の発端)。
+// ビルド時に成立すべき恒等式を機械的に検証し、崩れたらビルドを失敗させる。
+{
+  const errors: string[] = [];
+  if (stats.fighters !== index.length) {
+    errors.push(`stats.fighters(${stats.fighters}) !== index.length(${index.length})`);
+  }
+  if (stats.boutRows !== stats.boutRowsCompleted + stats.boutRowsScheduled) {
+    errors.push(
+      `boutRows(${stats.boutRows}) !== boutRowsCompleted(${stats.boutRowsCompleted}) + boutRowsScheduled(${stats.boutRowsScheduled})`,
+    );
+  }
+  if (stats.boutRows !== stats.boutRowsOfficial + stats.boutRowsWikipedia) {
+    errors.push(
+      `boutRows(${stats.boutRows}) !== boutRowsOfficial(${stats.boutRowsOfficial}) + boutRowsWikipedia(${stats.boutRowsWikipedia})`,
+    );
+  }
+  if (stats.kanaUnclassified < stats.kanaMissing) {
+    errors.push(
+      `kanaUnclassified(${stats.kanaUnclassified}) はkanaMissing(${stats.kanaMissing})以上のはず(かな無しは必ず―バケットに入る)`,
+    );
+  }
+  if (errors.length) {
+    throw new Error(`[kick] 集計値の恒等式が崩れています:\n${errors.map((e) => `  - ${e}`).join("\n")}`);
+  }
+}
 
 // data/kick/manualRuleExclusions.json の各行が実際にちょうど1件のboutと
 // マッチしたかを確認する(0件=データ変化でヒットしなくなった古いエントリ、
