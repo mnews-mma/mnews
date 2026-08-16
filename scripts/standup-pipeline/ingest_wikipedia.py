@@ -75,7 +75,8 @@ NESTED_TEMPLATE_RE = re.compile(r"\{\{([^{}|]+)((?:\|[^{}]*)*)\}\}")
 
 def find_fight_cont_blocks(wikitext):
     """{{Fight-cont|...}}のネスト対応版抽出。開き"{{Fight-cont|"から対応する閉じ"}}"までを、
-    途中に現れるネストしたテンプレート("{{"の深さ)を数えて正しく特定する。"""
+    途中に現れるネストしたテンプレート("{{"の深さ)を数えて正しく特定する。
+    戻り値は(開始位置, 中身)のタプルのリスト(PR-15でセクション判定に開始位置を使うため)。"""
     blocks = []
     for m in FIGHT_CONT_START_RE.finditer(wikitext):
         depth = 1
@@ -92,8 +93,59 @@ def find_fight_cont_blocks(wikitext):
             else:
                 i += 1
         content_end = i - 2 if depth == 0 else i
-        blocks.append(wikitext[m.end() : content_end])
+        blocks.append((m.start(), wikitext[m.end() : content_end]))
     return blocks
+
+
+# PR-15: Wikipedia記事は戦績を見出し単位で「キックボクシング/ムエタイ」「総合格闘技/
+# ミックスルール」「ボクシング」「空手」「エキシビション」「アマチュア」に分けて記述している
+# (実測: 安保瑠輝也・HIROYA・AZUMA・アンディ・フグ等で確認)。旧来の15団体フィルタ
+# (大会名からguess_orgでヒットしなければ全て除外)は、この記事自身のセクション区分を
+# 無視しており、GLORY・ラジャダムナン・EM Legend等、15団体に含まれない立ち技団体の
+# 試合まで一律に除外していた。
+#
+# 判定はハイブリッド方式(どちらか一方だけでは取りこぼす実例を両方確認したため):
+#   1. {{Kickboxing/Muay Thai/MMA/Boxing recordbox}}テンプレートが直近の見出し配下に
+#      あれば、その種別で確定する(最優先)。チョ・ジョンファン・バス・ルッテン等、
+#      「== 戦績 ==」直下にいきなり{{MMA recordbox}}が来て見出しテキスト自体には
+#      MMAを示す語が一切無い記事があり、見出しテキストだけでは判定できなかった。
+#   2. recordboxが無い区間は見出しテキストをMMA・ボクシング・空手・エキシビション・
+#      アマチュアの否定パターンで判定する。「シュートボクシング」「散打」のような
+#      正当な立ち技の見出しでも通算成績のrecordboxテンプレート自体が無い記事があり
+#      (AZUMA記事で実測)、recordbox必須方式だと取りこぼしていた。
+NON_KICKBOXING_HEADING_RE = re.compile(
+    r"総合格闘技|ミックスルール|MMA|プロレス|空手|異種格闘技|ラウェイ|エキシビション|エキシビジョン|アマチュア|"
+    r"(?<!キック)ボクシング(?!グ)"  # 「キックボクシング」は除外しない。「ボクシング」単独(ボクシング戦績等)のみ除外
+)
+RECORDBOX_RE = re.compile(r"\{\{(Kickboxing recordbox|Muay Thai recordbox|MMA recordbox|Boxing recordbox)\b")
+KICKBOXING_RECORDBOX_TYPES = {"Kickboxing recordbox", "Muay Thai recordbox"}
+HEADING_RE = re.compile(r"^===?([^=\n]+)===?\s*$", re.M)
+
+
+def tag_fight_cont_sections(wikitext):
+    """各Fight-contブロックに、キックボクシング/ムエタイ系かどうかをタグ付けして返す。
+    [(is_kickboxing, content), ...]"""
+    events = []
+    for pos, content in find_fight_cont_blocks(wikitext):
+        events.append((pos, "cont", content))
+    for m in HEADING_RE.finditer(wikitext):
+        events.append((m.start(), "heading", m.group(1)))
+    for m in RECORDBOX_RE.finditer(wikitext):
+        events.append((m.start(), "recordbox", m.group(1)))
+    events.sort(key=lambda x: x[0])
+    heading_excluded = False
+    recordbox_state = None  # None=未確定、True=キックボクシング系recordbox確定、False=MMA/ボクシング系recordbox確定
+    tagged = []
+    for _pos, kind, val in events:
+        if kind == "heading":
+            heading_excluded = bool(NON_KICKBOXING_HEADING_RE.search(val))
+            recordbox_state = None
+        elif kind == "recordbox":
+            recordbox_state = val in KICKBOXING_RECORDBOX_TYPES
+        else:
+            is_kickboxing = recordbox_state if recordbox_state is not None else (not heading_excluded)
+            tagged.append((is_kickboxing, val))
+    return tagged
 
 
 def protect_wikilinks(s):
@@ -113,7 +165,11 @@ def restore_wikilinks(s):
 
 def parse_fight_rows(wikitext):
     rows = []
-    for block in find_fight_cont_blocks(wikitext):
+    for is_kickboxing, block in tag_fight_cont_sections(wikitext):
+        if not is_kickboxing:
+            # recordboxテンプレートまたは見出しテキストがMMA/ボクシング/空手/エキシビション/
+            # アマチュアと判定された区間はここで構造的に除外する。旧15団体フィルタとは独立した判定。
+            continue
         protected = protect_wikilinks(block)
         parts = [restore_wikilinks(p).strip() for p in protected.split("|")]
         while len(parts) < 5:
@@ -137,6 +193,37 @@ def guess_org(event_text):
         if pat.search(event_text or ""):
             return org
     return None
+
+
+# PR-15: 15団体に一致しなくても、著名な海外プロモーションは表示上の団体名として個別に
+# 認識しておく(掲載団体タグとしての正式配線=PR-12は既存15団体のみ対象で本レグでは
+# 拡張しない)。ここに無いものは一律OTHER_ORG_LABELにまとめる。
+SECONDARY_ORG_PATTERNS = [
+    ("GLORY", re.compile(r"\bGLORY\b", re.I)),
+    ("ラジャダムナン", re.compile(r"ラジャダムナン|Rajadamnern", re.I)),
+    ("ルンピニー", re.compile(r"ルンピニー|Lumpinee", re.I)),
+    ("Thai Fight", re.compile(r"Thai ?Fight", re.I)),
+    ("IT'S SHOWTIME", re.compile(r"IT'?S SHOWTIME", re.I)),
+    ("武林風", re.compile(r"武林风|武風林|Wu ?Lin ?Feng", re.I)),
+    ("EM Legend", re.compile(r"EM Legend", re.I)),
+    ("WAKO SuperLeague", re.compile(r"WAKO|SuperLeague", re.I)),
+    ("全日本キックボクシング連盟", re.compile(r"全日本キックボクシング連盟")),
+    ("J-NETWORK", re.compile(r"J-NETWORK", re.I)),
+]
+OTHER_ORG_LABEL = "Wikipedia(その他団体)"
+
+
+def guess_org_or_other(event_text):
+    """15団体に一致しなくても、キックボクシング/ムエタイのセクション内の行である以上
+    ここでは捨てない。著名な海外団体は個別ラベル、それ以外は共通ラベルにまとめて必ず
+    何らかのtarget_orgを返す。"""
+    org = guess_org(event_text)
+    if org:
+        return org
+    for org, pat in SECONDARY_ORG_PATTERNS:
+        if pat.search(event_text or ""):
+            return org
+    return OTHER_ORG_LABEL
 
 
 def nk(s):
@@ -231,11 +318,12 @@ def build():
             continue
 
         for fr in parse_fight_rows(wt):
+            # parse_fight_rows は既にWikipedia記事自身のセクション区分(recordboxの種別)で
+            # キックボクシング/ムエタイの表のみに絞り込み済み(PR-15)。ここでのorgは
+            # 「既存の公式ソースと重複判定するための団体キー」の意味のみで、15団体に
+            # 一致しなくても行を捨てない(旧: 15団体フィルタでここが範囲外扱いされていた)。
             stats["total_wiki_bouts"] += 1
-            org = guess_org(fr["event"])
-            if not org:
-                stats["out_of_scope"] += 1
-                continue
+            org = guess_org_or_other(fr["event"])
             no = norm_opp(fr["opponent"])
             if fr["date"]:
                 dated_set = person_org_dated[identity(rec)][org]

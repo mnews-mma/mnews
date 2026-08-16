@@ -1,60 +1,5 @@
 [
  {
-  "slug": "akimoto-hiroki",
-  "date": "2010-11-20",
-  "opponent": "樫村公治",
-  "methodRaw": "1R 一本勝ち",
-  "category": "amateur",
-  "reason": "K-1甲子園は高校生を対象としたアマチュア/学生トーナメント。「一本勝ち」はK-1甲子園独自の決着表現であり、プロキックボクシング戦績として扱うべきでない。",
-  "name": "秋元皓貴",
-  "event": "K-1甲子園 -KING OF UNDER 18- FINAL",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "akimoto-hiroki",
-  "date": "2010-11-20",
-  "opponent": "栗原勇樹",
-  "methodRaw": "1R 合わせ一本",
-  "category": "amateur",
-  "reason": "同一大会(K-1甲子園 -KING OF UNDER 18- FINAL)。「合わせ一本」もK-1甲子園独自のアマチュア決着表現。",
-  "name": "秋元皓貴",
-  "event": "K-1甲子園 -KING OF UNDER 18- FINAL",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "ashizawa-ryuusei",
-  "date": "2025-12-31",
-  "opponent": "ジョリー",
-  "methodRaw": "1R 0:25 腕ひしぎ十字固め",
-  "category": "mma",
-  "reason": "RIZIN公式サイト・複数報道でバンタム級(61.0kg)MMAバウトと確認。腕ひしぎ十字固めによる一本勝ちもMMAルール下の決着。",
-  "name": "芦澤竜誠",
-  "event": "RIZIN 師走の超強者祭り",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "ashizawa-ryuusei",
-  "date": "2024-12-31",
-  "opponent": "福田龍彌",
-  "methodRaw": "1R 0:54 KO（左フック→パウンド）",
-  "category": "mma",
-  "reason": "RIZIN公式サイトでRIZIN MMAルール(5分3R、61.0kg契約)の一戦と確認。グラウンドパンチによるTKOもMMAルール下の決着。",
-  "name": "芦澤竜誠",
-  "event": "RIZIN.49",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "ashizawa-ryuusei",
-  "date": "2023-12-31",
-  "opponent": "太田忍",
-  "methodRaw": "1R 2:21 KO（グラウンドパンチ）",
-  "category": "mma",
-  "reason": "複数報道でMMAデビュー戦、RIZINバンタム級(-61.0kg)MMAルールと確認。",
-  "name": "芦澤竜誠",
-  "event": "RIZIN.45",
-  "promotion": "RIZIN"
- },
- {
   "slug": "andi-sawa",
   "date": "2017-10-15",
   "opponent": "西浦“ウィッキー”聡生",
@@ -99,50 +44,6 @@
   "promotion": "SHOOT BOXING"
  },
  {
-  "slug": "anpo-rukiya",
-  "date": "2023-12-31",
-  "opponent": "久保優太",
-  "methodRaw": "1R 4:28 リアネイキッドチョーク",
-  "category": "mma",
-  "reason": "複数の一次報道でMMAデビュー戦、RIZIN MMA特別ルール(70.0kg契約)と確認。直前のRIZIN.42では明示的にキックボクシングルールで試合しており対比が明確。",
-  "name": "安保瑠輝也",
-  "event": "RIZIN.45",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "anpo-rukiya",
-  "date": "2024-07-28",
-  "opponent": "マニー・パッキャオ",
-  "methodRaw": "3分3R終了 判定なし",
-  "category": "exhibition",
-  "reason": "「スタンディング特別ルール」でのマッチとRIZIN公式サイト・報道各社が明記。3R終了で正式決着なし(判定なし)。公式記録としては勝敗が付かない特別ルール興行扱い。",
-  "name": "安保瑠輝也",
-  "event": "超RIZIN.3",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "anpo-rukiya",
-  "date": "2020-12-23",
-  "opponent": "涼真&渋谷春",
-  "methodRaw": "2分2R終了 判定なし",
-  "category": "exhibition",
-  "reason": "K-1 DX特別エキシビションマッチ『安保瑠輝也、誰とでも戦います。』の企画内、ホストコンビ2名を相手にした2対1の余興マッチ。正式な公式戦ではない。",
-  "name": "安保瑠輝也",
-  "event": "K-1 DX『安保瑠輝也、誰とでも戦います。』",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "ishida-katsuki",
-  "date": "2010-11-20",
-  "opponent": "石原將伍",
-  "methodRaw": "1R 合わせ一本",
-  "category": "amateur",
-  "reason": "K-1甲子園 KING OF UNDER 18は高校生年代を対象としたアマチュアトーナメント。",
-  "name": "石田勝希",
-  "event": "K-1甲子園 KING OF UNDER 18 〜FINAL",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
   "slug": "imoto-borukeno",
   "date": "2025-11-24",
   "opponent": "芦田 崇宏",
@@ -163,72 +64,6 @@
   "name": "イリアーナ・ヴァレンティーノ",
   "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015さいたま3DAYS IZAの舞",
   "promotion": "SHOOT BOXING"
- },
- {
-  "slug": "umeno-genji",
-  "date": "2026-07-18",
-  "opponent": "昇侍",
-  "methodRaw": "5分3R終了 判定0-3",
-  "category": "mma",
-  "reason": "対戦相手の昇侍はWikipediaで「日本の男性総合格闘家」と明記。大会名は\"RIZIN LANDMARK 15\"(通常キック専用ブランド)だが、この一戦はMMAだった(大会名だけでは競技種別を機械判定できない実例)。",
-  "name": "梅野源治",
-  "event": "RIZIN LANDMARK 15",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "umeno-genji",
-  "date": "2026-05-10",
-  "opponent": "ダイキ・ライトイヤー",
-  "methodRaw": "1R 2:37 三角絞め",
-  "category": "mma",
-  "reason": "RIZIN公式・報道で「RIZIN MMA rules 5分3R 61.0kg」と明記された正式なMMA本戦。組み技の攻防から三角絞めで一本負け。",
-  "name": "梅野源治",
-  "event": "RIZIN.53",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "umeno-genji",
-  "date": "2025-09-28",
-  "opponent": "芦澤竜誠",
-  "methodRaw": "5分3R終了 判定3-0",
-  "category": "mma",
-  "reason": "対戦相手の芦澤竜誠は2023年に総合格闘家へ転向済み(Wikipedia「芦澤竜誠」に明記)。梅野は2024-12-31のMMAデビュー以降、総合格闘技を継続している。",
-  "name": "梅野源治",
-  "event": "RIZIN.51",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "umeno-genji",
-  "date": "2024-12-31",
-  "opponent": "大雅",
-  "methodRaw": "5分3R終了 判定3-0",
-  "category": "mma",
-  "reason": "RIZIN.49で行われた梅野の総合格闘技デビュー戦(Wikipedia「梅野源治」本文に「2024年12月31日、RIZIN DECADEで総合格闘技デビュー戦を行い...大雅と対戦」と明記)。",
-  "name": "梅野源治",
-  "event": "RIZIN.49",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "umeno-genji",
-  "date": "2022-12-31",
-  "opponent": "平本蓮",
-  "methodRaw": "3分2R終了 判定なし",
-  "category": "boxing",
-  "reason": "「3分2R ボクシングルールのエキシビションマッチ」と明記されており、グローブでのパンチのみの特別戦(引き分け・判定なし)。キックボクシングルールの試合ではない。",
-  "name": "梅野源治",
-  "event": "RIZIN.40",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "umeno-genji",
-  "date": "2014-06-01",
-  "opponent": "城戸康裕",
-  "methodRaw": "2分2R終了 判定なし",
-  "category": "exhibition",
-  "reason": "出典のWikipedia戦績表で本試合は「エキシビション」欄に区分掲載されており、判定なしで終了。",
-  "name": "梅野源治",
-  "event": "Big Bang 17",
-  "promotion": "Bigbang"
  },
  {
   "slug": "okahan-bara",
@@ -297,147 +132,15 @@
   "promotion": "Bigbang"
  },
  {
-  "slug": "kimu-donuku",
-  "date": "2006-12-31",
-  "opponent": "内藤征弥",
-  "methodRaw": "3R 1:11 ギブアップ（パウンド）",
+  "slug": "satou-kenichi",
+  "date": "2001-06-15",
+  "opponent": "阿部裕幸",
+  "methodRaw": "2ndStage 1R 1:13 腕ひしぎ十字固め",
   "category": "mma",
-  "reason": "「パウンド」(グラウンド&パウンド)によるタップアウト決着で、これはMMAでのみ用いられる技法。K-1 Dynamite!!興行内のMMAルール試合。",
-  "name": "キム・ドンウック",
-  "event": "K-1 PREMIUM 2006 Dynamite!!",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "kimo-reoporudo",
-  "date": "1996-07-14",
-  "opponent": "桜庭和志",
-  "methodRaw": "1R 4:20 肩固め",
-  "category": "mma",
-  "reason": "Wikipedia「キモ・レオポルド」戦績表に本戦は「シュートボクシング S-cup '96 決勝戦【アルティメット特別マッチ】」と明記されており、通常のシュートボクシングルール(寝技禁止)ではなくMMA的な特別ルールで行われた。",
-  "name": "キモ・レオポルド",
-  "event": "シュートボクシング S-cup '96 決勝戦",
-  "promotion": "SHOOT BOXING"
- },
- {
-  "slug": "kimo-reoporudo",
-  "date": "1994-12-10",
-  "opponent": "パトリック・スミス",
-  "methodRaw": "1R 3:13 TKO（バックマウントパンチ）",
-  "category": "mma",
-  "reason": "Wikipedia本文に「K-1 LEGEND〜乱〜でパトリック・スミスとアルティメット特別ルール(金網マッチ)で対戦」と明記。通常のK-1キックボクシングルールではない。",
-  "name": "キモ・レオポルド",
-  "event": "K-1 LEGEND 〜乱〜",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "kubo-yuuta",
-  "date": "2026-04-12",
-  "opponent": "ラジャブアリ・シェイドゥラエフ",
-  "methodRaw": "1R 4:13 TKO（パウンド）",
-  "category": "mma",
-  "reason": "RIZIN公式戦績でRIZINフェザー級タイトルマッチ(MMAルール)と確認。テイクダウンからマウントを奪いグラウンドパンチでTKO。",
-  "name": "久保優太",
-  "event": "RIZIN LANDMARK 13",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "kubo-yuuta",
-  "date": "2024-12-31",
-  "opponent": "ラジャブアリ・シェイドゥラエフ",
-  "methodRaw": "2R 2:30 TKO（パウンド）",
-  "category": "mma",
-  "reason": "RIZIN公式戦績・報道でRIZIN MMAルール(5分3R、66.0kg)の試合と確認。テイクダウン後マウントからのグラウンドパンチでTKO。",
-  "name": "久保優太",
-  "event": "RIZIN.49",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "kubo-yuuta",
-  "date": "2023-12-31",
-  "opponent": "安保瑠輝也",
-  "methodRaw": "1R 4:28 リアネイキッドチョーク",
-  "category": "mma",
-  "reason": "RIZIN公式サイト・報道でRIZIN MMA特別ルール(5分2R、70.0kg)での試合と確認。安保瑠輝也にとってMMAデビュー戦であり、タックルからマウントを奪いリアネイキッドチョークで一本勝ち。",
-  "name": "久保優太",
-  "event": "RIZIN.45",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "kubo-yuuta",
-  "date": "2022-11-06",
-  "opponent": "奥田啓介",
-  "methodRaw": "1R 4:43 TKO（パウンド）",
-  "category": "mma",
-  "reason": "RIZIN公式サイトでRIZIN MMAルール(5分3R)と確認。グラウンドでの肘打撃によるTKO。",
-  "name": "久保優太",
-  "event": "RIZIN LANDMARK 4",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "kubo-yuuta",
-  "date": "2021-12-31",
-  "opponent": "シバター",
-  "methodRaw": "1R 1:34 腕ひしぎ十字固め",
-  "category": "mma",
-  "reason": "RIZIN MMA特別ルール(3分2R)で行われ、飛びつき腕十字で一本勝ち。正式にMMAルールで実施された公式戦として記録されている。",
-  "name": "久保優太",
-  "event": "RIZIN.33",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "geri-gudoriji",
-  "date": "2001-08-19",
-  "opponent": "ヤン・\"ザ・ジャイアント\"・ノルキヤ",
-  "methodRaw": "1R 1:11 腕ひしぎ十字固め",
-  "category": "mma",
-  "reason": "Wikipediaに「K-1 MMA Official Rules match(3分5R)」と明記されており、総合格闘技ルールで行われた試合。腕ひしぎ十字固めによる一本勝ち。",
-  "name": "ゲーリー・グッドリッジ",
-  "event": "K-1 ANDY MEMORIAL 2001 〜JAPAN GP 決勝戦〜",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "saiga-kizaemon",
-  "date": "2017-12-29",
-  "opponent": "朝倉海",
-  "methodRaw": "2R 2:34 TKO（グラウンドの膝蹴り）",
-  "category": "mma",
-  "reason": "「RIZIN MMA特別ルール(1R10分、2R5分)」の一戦と確認。相手の朝倉海は総合格闘家。",
-  "name": "才賀紀左衛門",
-  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 2nd ROUND",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "saiga-kizaemon",
-  "date": "2016-12-31",
-  "opponent": "ディラン・ウエスト",
-  "methodRaw": "1R 2:03 KO (パウンド)",
-  "category": "mma",
-  "reason": "RIZIN公式試合結果ページで「RIZIN MMA Rules(58.0kg契約)」と明記されている。",
-  "name": "才賀紀左衛門",
-  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント FINAL ROUND",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "saiga-kizaemon",
-  "date": "2015-12-29",
-  "opponent": "所英男",
-  "methodRaw": "1R 5:16 アームバー",
-  "category": "mma",
-  "reason": "PR-12(検査⑥調査)で発見。RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYSの一戦。決着「アームバー」は関節技でキックボクシングルールでは成立しない。",
-  "name": "才賀紀左衛門",
-  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "samu-gureko",
-  "date": "2004-03-14",
-  "opponent": "ステファン・ガムリン",
-  "methodRaw": "1R 0:25 チョークスリーパー",
-  "category": "mma",
-  "reason": "K-1 BEAST 2004新潟大会は、K-1が史上初めて従来の立ち技ルールに加えてMMAルールカードを組み込んだ大会で、本対戦はそのMMAルール枠として実施されたと確認。",
-  "name": "サム・グレコ",
-  "event": "K-1 BEAST 2004 〜新潟初上陸〜",
-  "promotion": "K-1 / Krush / Krush-EX"
+  "reason": "PR-15(Wikipedia15団体フィルタ解除に伴う検査A)で発見。マーシャルアーツ日本キックボクシング連盟の興行だが、大会名に「（サムライルール）」と明記されており通常のキックボクシングルールではない特別ルール(関節技を含む異種格闘技的マッチ)。Wikipedia記事側でも「キックボクシング」セクション内に掲載されているが、決着「腕ひしぎ十字固め」がキックボクシングルールでは成立しないため個別に除外。",
+  "name": "佐藤堅一",
+  "event": "マーシャルアーツ日本キックボクシング連盟「『闘い続ける男たちパート2』」（サムライルール）",
+  "promotion": "Wikipedia(その他団体)"
  },
  {
   "slug": "shinpayaku-hamajimu",
@@ -449,61 +152,6 @@
   "name": "シンパヤック・ハマジム",
   "event": "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA",
   "promotion": "RISE"
- },
- {
-  "slug": "jieromu-re-banna",
-  "date": "2017-10-15",
-  "opponent": "ロッキー・マルティネス",
-  "methodRaw": "1R 2:10 袈裟固め",
-  "category": "mma",
-  "reason": "PR-12(検査⑥調査)で発見。RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -秋の陣-の一戦。決着「袈裟固め」は固技でキックボクシングルールでは成立しない。",
-  "name": "ジェロム・レ・バンナ",
-  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -秋の陣-",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "jadanba-narantongaragu",
-  "date": "2016-11-11",
-  "opponent": "マラット・ガフロフ",
-  "methodRaw": "1R 4:51 リアネイキドチョーク",
-  "category": "mma",
-  "reason": "ONE Championship 49、フェザー級王座再戦。リアネイキドチョークによる一本負け。総合格闘技ルール。",
-  "name": "ジャダンバ・ナラントンガラグ",
-  "event": "ONE Championship 49: Defending Honor",
-  "promotion": "ONE Championship"
- },
- {
-  "slug": "jadanba-narantongaragu",
-  "date": "2016-05-06",
-  "opponent": "朴光哲",
-  "methodRaw": "3R 1:27 ヴォンフルーチョーク",
-  "category": "mma",
-  "reason": "ONE Championship(Ascent to Power)、グラウンドでのテイクダウン応酬を経てヴァンフルーチョーク(絞め技)で一本勝ち。総合格闘技ルール。",
-  "name": "ジャダンバ・ナラントンガラグ",
-  "event": "ONE Championship 42: Ascent to Power",
-  "promotion": "ONE Championship"
- },
- {
-  "slug": "jadanba-narantongaragu",
-  "date": "2015-11-21",
-  "opponent": "マラット・ガフロフ",
-  "methodRaw": "4R 4:39 リアネイキドチョーク",
-  "category": "mma",
-  "reason": "ONE Championship 34、フェザー級世界王座統一戦。当時のONE Championshipは総合格闘技専業プロモーションで、リアネイキドチョークによる一本負け。",
-  "name": "ジャダンバ・ナラントンガラグ",
-  "event": "ONE Championship 34: Dynasty of Champions 4",
-  "promotion": "ONE Championship"
- },
- {
-  "slug": "jadanba-narantongaragu",
-  "date": "2004-10-13",
-  "opponent": "山本\"KID\"徳郁",
-  "methodRaw": "1R 1:55 KO（右ストレート→パウンド）",
-  "category": "mma",
-  "reason": "「K-1 WORLD MAX 2004 世界王者対抗戦」内で組まれた総合格闘技ルールの特別試合(通常のK-1トーナメント本戦ではない)。",
-  "name": "ジャダンバ・ナラントンガラグ",
-  "event": "K-1 WORLD MAX 2004 〜世界王者対抗戦〜",
-  "promotion": "K-1 / Krush / Krush-EX"
  },
  {
   "slug": "seiya-2",
@@ -528,17 +176,6 @@
   "promotion": "RISE"
  },
  {
-  "slug": "serukan-irumatsu",
-  "date": "2005-02-23",
-  "opponent": "宇野薫",
-  "methodRaw": "1R 1:50 腕ひしぎ十字固め",
-  "category": "mma",
-  "reason": "K-1 WORLD MAX 2005大会内の「総合ルール・寝技30秒ルール」を適用したスーパーファイトと確認。相手の宇野薫はPRIDE等で活動した総合格闘家。",
-  "name": "セルカン・イルマッツ",
-  "event": "K-1 WORLD MAX 2005 〜日本代表決定トーナメント〜",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
   "slug": "takagi-kenta",
   "date": "2025-12-14",
   "opponent": "加藤 正憲",
@@ -559,17 +196,6 @@
   "name": "龍翔",
   "event": "PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA",
   "promotion": "RISE"
- },
- {
-  "slug": "chie-honman",
-  "date": "2006-12-31",
-  "opponent": "ボビー・オロゴン",
-  "methodRaw": "1R 0:16 TKO（パウンド）",
-  "category": "mma",
-  "reason": "K-1 PREMIUM 2006 Dynamite!!内のHERO'Sルール(MMA系ルールセット)の試合だったと確認された。",
-  "name": "チェ・ホンマン",
-  "event": "K-1 PREMIUM 2006 Dynamite!!",
-  "promotion": "K-1 / Krush / Krush-EX"
  },
  {
   "slug": "tomo",
@@ -605,83 +231,6 @@
   "promotion": "RISE"
  },
  {
-  "slug": "tenshin-nasukawa",
-  "date": "2022-10-30",
-  "opponent": "寺戸伸近",
-  "methodRaw": "3分1R終了 判定なし",
-  "category": "exhibition",
-  "reason": "RISE162で寺戸伸近の「引退エキシビションマッチ」として公式明記され、判定なしで終了。",
-  "name": "那須川天心",
-  "event": "RISE 162",
-  "promotion": "RISE"
- },
- {
-  "slug": "tenshin-nasukawa",
-  "date": "2021-06-13",
-  "opponent": "大﨑孔稀、HIROYA、所英男",
-  "methodRaw": "3分3R終了 判定なし",
-  "category": "exhibition",
-  "reason": "「那須川天心vs.3人スペシャルマッチ」として1R毎に対戦相手が交代し、膝を含む足技を全面禁止したスタンディングバウトの特別ルール。RIZIN公式も特別ルールと明記した余興的マッチ。",
-  "name": "那須川天心",
-  "event": "RIZIN.28",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "tenshin-nasukawa",
-  "date": "2019-11-10",
-  "opponent": "安斎宙",
-  "methodRaw": "3分1R終了 判定なし",
-  "category": "exhibition",
-  "reason": "RISE初の北海道大会記念のスパーリング形式エキシビションマッチであり、正式な階級戦ではない。",
-  "name": "那須川天心",
-  "event": "RISE NORTH",
-  "promotion": "RISE"
- },
- {
-  "slug": "tenshin-nasukawa",
-  "date": "2017-09-15",
-  "opponent": "野辺広大",
-  "methodRaw": "3分1R終了 判定なし",
-  "category": "exhibition",
-  "reason": "RISE119で「スペシャルエキシビションマッチ」として告知・実施され、勝敗なし(判定なし)で終了。",
-  "name": "那須川天心",
-  "event": "RISE 119",
-  "promotion": "RISE"
- },
- {
-  "slug": "tenshin-nasukawa",
-  "date": "2017-05-10",
-  "opponent": "石井宏樹",
-  "methodRaw": "3分1R終了 判定なし",
-  "category": "exhibition",
-  "reason": "ROAD TO KNOCK OUT.1の「スペシャルエキシビションマッチ」として開催され、演武的要素を含む非公式試合。",
-  "name": "那須川天心",
-  "event": "ROAD TO KNOCK OUT.1",
-  "promotion": "KNOCK OUT"
- },
- {
-  "slug": "tenshin-nasukawa",
-  "date": "2016-07-03",
-  "opponent": "石井一成&裕樹（パートナー：花田元誓）",
-  "methodRaw": "3分2R終了 判定なし",
-  "category": "exhibition",
-  "reason": "「那須川天心&花田元誓 vs 石井一成&裕樹」という2対2の特別エキシビジョンマッチと確認。正式な1対1の勝敗を争う試合ではない。",
-  "name": "那須川天心",
-  "event": "RISE WEST.6",
-  "promotion": "RISE"
- },
- {
-  "slug": "tenshin-nasukawa",
-  "date": "2013-02-24",
-  "opponent": "秋元皓貴",
-  "methodRaw": "2分2R終了 判定なし",
-  "category": "exhibition",
-  "reason": "15歳(那須川)対20歳(秋元)のエキシビジョンマッチと確認。勝敗を争わず「判定なし」で終了する興行内の余興対決だった。",
-  "name": "那須川天心",
-  "event": "ビッグバン〜統一への道〜 其の十二",
-  "promotion": "Bigbang"
- },
- {
   "slug": "hata-fumiya",
   "date": "2022-04-24",
   "opponent": "ハリィ永田",
@@ -715,17 +264,6 @@
   "promotion": "RISE"
  },
  {
-  "slug": "patoriku-sumisu",
-  "date": "1994-12-10",
-  "opponent": "キモ",
-  "methodRaw": "1R 3:13 TKO（バックマウントパンチ）",
-  "category": "mma",
-  "reason": "K-1 LEGEND〜乱〜でのキモ・レオポルドとの一戦。Wikipedia「キモ・レオポルド」本文に「アルティメット特別ルール(金網マッチ)で対戦」と明記。通常のK-1キックボクシングルールではない(同一試合をキモ側視点でも除外登録)。",
-  "name": "パトリック・スミス",
-  "event": "K-1 LEGEND 〜乱〜",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
   "slug": "hiramoto-ren",
   "date": "2019-12-29",
   "opponent": "芦田崇宏",
@@ -734,17 +272,6 @@
   "reason": "大会名「BELLATOR JAPAN」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
   "name": "平本 蓮",
   "event": "BELLATOR JAPAN",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "hiroya",
-  "date": "2020-12-31",
-  "opponent": "シバター",
-  "methodRaw": "2R 0:38 腕ひしぎ十字固め",
-  "category": "mma",
-  "reason": "RIZIN公式のMIXルール特別試合(1Rキックボクシングルール/2R MMAルール)。決着はMMAルールの2Rでの腕ひしぎ十字固め一本。",
-  "name": "HIROYA",
-  "event": "RIZIN.26",
   "promotion": "RIZIN"
  },
  {
@@ -781,17 +308,6 @@
   "promotion": "KROSS×OVER"
  },
  {
-  "slug": "furansowa-za-howaitobafaro-bota",
-  "date": "2004-12-31",
-  "opponent": "秋山成勲",
-  "methodRaw": "1R 1:54 腕ひしぎ十字固め",
-  "category": "mma",
-  "reason": "秋山成勲のプロ総合格闘技デビュー戦であり、腕ひしぎ十字固めによる一本勝ち。K-1 Dynamite!!のような大晦日興行はK-1ルールとMMAルールの試合が混在するのが通例で、本試合はMMAルールで行われたことが確認できる。",
-  "name": "フランソワ・\"ザ・ホワイトバッファロー\"・ボタ",
-  "event": "K-1 PREMIUM 2004 Dynamite!!",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
   "slug": "petoru-morari",
   "date": "2023-02-11",
   "opponent": "Marco Novák",
@@ -803,94 +319,6 @@
   "promotion": "RISE"
  },
  {
-  "slug": "bobu-sapu",
-  "date": "2012-02-11",
-  "opponent": "ホーレス・グレイシー",
-  "methodRaw": "1R 1:18 ギブアップ（パウンド）",
-  "category": "mma",
-  "reason": "ONE FC 2: Battle of HeroesはMMA専業団体だったONE Championshipの興行。相手はグレイシー柔術一族出身の選手で、パウンドによる一本負けもMMAルールの決着。",
-  "name": "ボブ・サップ",
-  "event": "ONE FC 2: Battle of Heroes",
-  "promotion": "ONE Championship"
- },
- {
-  "slug": "bobu-sapu",
-  "date": "2007-12-31",
-  "opponent": "ボビー・オロゴン",
-  "methodRaw": "1R 4:10 KO（マウントパンチ）",
-  "category": "mma",
-  "reason": "K-1 PREMIUM 2007 Dynamite!!の余興的総合格闘技マッチ。決着「マウントパンチ」はグラウンド状態からの攻撃でK-1キックボクシングルールでは成立しない。",
-  "name": "ボブ・サップ",
-  "event": "K-1 PREMIUM 2007 Dynamite!!",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "bobu-sapu",
-  "date": "2003-09-21",
-  "opponent": "ステファン・ガムリン",
-  "methodRaw": "1R 0:52 フロントスリーパー",
-  "category": "mma",
-  "reason": "Wikipedia「ボブ・サップ」戦績表でこの一戦は「総合格闘技」セクションに分類。決着「フロントスリーパー」は組み技系サブミッションでK-1キックボクシングルールでは成立しない。",
-  "name": "ボブ・サップ",
-  "event": "K-1 SURVIVAL 2003 〜JAPAN GP 決勝戦〜",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "maikeru-makudonarudo",
-  "date": "2004-03-14",
-  "opponent": "LYOTO",
-  "methodRaw": "1R 2:30 前腕チョーク",
-  "category": "mma",
-  "reason": "Wikipedia記載でK-1 BEAST 2004において「総合格闘技ルールでの試合」でMMAデビューし、リョート・マチダに前腕チョーク(ギロチンチョーク)で敗れたと確認。",
-  "name": "マイケル・マクドナルド",
-  "event": "K-1 BEAST 2004 〜新潟初上陸〜",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "miruko-kurokopu",
-  "date": "2017-12-31",
-  "opponent": "高阪剛",
-  "methodRaw": "1R 1:02 TKO（パウンド）",
-  "category": "mma",
-  "reason": "同トーナメントのFinal ROUNDもMMAルール。相手はバックを取ってグラウンドで攻め、レフェリーストップとなった試合内容もMMAルールと整合。",
-  "name": "ミルコ・クロコップ",
-  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 Final ROUND",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "miruko-kurokopu",
-  "date": "2016-12-29",
-  "opponent": "キング・モー",
-  "methodRaw": "2R 1:49 TKO（スタンドパンチ連打→パウンド）",
-  "category": "mma",
-  "reason": "RIZIN FIGHTING WORLD GRAND-PRIX 2016無差別級トーナメントはBellator MMAとの提携によるMMAルールのトーナメントと確認。TKO決着もグラウンドパンチによるもの。",
-  "name": "ミルコ・クロコップ",
-  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント 2nd ROUND",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "miruko-kurokopu",
-  "date": "2016-09-25",
-  "opponent": "ミョン・ヒョンマン",
-  "methodRaw": "1R 2:20 肩固め",
-  "category": "mma",
-  "reason": "PR-12(検査⑥調査)で発見。RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント開幕戦の一戦。決着「肩固め」は関節技でキックボクシングルールでは成立しない。",
-  "name": "ミルコ・クロコップ",
-  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント 開幕戦",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "meruvin-manufu",
-  "date": "2007-12-31",
-  "opponent": "西島洋介",
-  "methodRaw": "1R 1:49 KO（マウントパンチ）",
-  "category": "mma",
-  "reason": "K-1 PREMIUM 2007 Dynamite!!の余興的総合格闘技マッチ。決着「マウントパンチ」はグラウンド状態からの攻撃でK-1キックボクシングルールでは成立しない。",
-  "name": "メルヴィン・マヌーフ",
-  "event": "K-1 PREMIUM 2007 Dynamite!!",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
   "slug": "morimoto-naoya",
   "date": "2025-09-28",
   "opponent": "矢代 光",
@@ -900,83 +328,6 @@
   "name": "森本 直哉",
   "event": "KROSS×OVER.32",
   "promotion": "KROSS×OVER"
- },
- {
-  "slug": "yasuhiro-kazuya",
-  "date": "2004-07-07",
-  "opponent": "山本\"KID\"徳郁",
-  "methodRaw": "2R 0:58 腕ひしぎ十字固め",
-  "category": "mma",
-  "reason": "K-1 WORLD MAX 2004で「ラウンドごとにK-1ルールと総合格闘技ルールを交互に採用するミックスルール特別試合」として行われ、総合格闘技ルールのラウンドで腕ひしぎ十字固めにより一本負け。",
-  "name": "安廣一哉",
-  "event": "K-1 WORLD MAX 2004 〜世界一決定トーナメント決勝戦〜",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "yan-norukiya",
-  "date": "2003-12-31",
-  "opponent": "成瀬昌由",
-  "methodRaw": "1R 4:40 チョークスリーパー",
-  "category": "mma",
-  "reason": "K-1 PREMIUM 2003 Dynamite!!の対戦カード表記は「第2試合 K-1 MMAルール 5分3R」であり、チョークスリーパーで一本負け。相手もRINGS出身の総合格闘家。",
-  "name": "ヤン・ノルキヤ",
-  "event": "K-1 PREMIUM 2003 Dynamite!!",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "yan-norukiya",
-  "date": "2001-08-19",
-  "opponent": "ゲーリー・グッドリッジ",
-  "methodRaw": "1R 1:11 腕ひしぎ十字固め",
-  "category": "mma",
-  "reason": "K-1 ANDY MEMORIAL 2001は「猪木軍vsK-1 MMAオフィシャルルール」で行われた総合格闘技ルールの特別試合。腕ひしぎ十字固めで一本負け。",
-  "name": "ヤン・ノルキヤ",
-  "event": "K-1 ANDY MEMORIAL 2001 〜JAPAN GP 決勝戦〜",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "yan-romuruda",
-  "date": "1995-09-03",
-  "opponent": "平直行",
-  "methodRaw": "1R 0:49 チョークスリーパー",
-  "category": "mma",
-  "reason": "K-1 REVENGE IIは「ブラジリアン・バーリトゥードルール、無制限時間」の異種格闘技戦として行われ、タックル→マウントパンチ→チョークスリーパーによるTKO負け。",
-  "name": "ヤン・ロムルダー",
-  "event": "K-1 REVENGE II",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "yaman",
-  "date": "2025-07-27",
-  "opponent": "金原正徳",
-  "methodRaw": "3R 2:51 TKO（右アッパー→パウンド）",
-  "category": "mma",
-  "reason": "超RIZIN.4は「RIZIN MMA rules 5分3R 66.0kg」の正式なMMA本戦。テイクダウン攻防を経てパウンドによるTKO。",
-  "name": "YA-MAN",
-  "event": "超RIZIN.4 真夏の喧嘩祭り",
-  "promotion": "RIZIN"
- },
- {
-  "slug": "yurugen-kuruto",
-  "date": "2009-11-20",
-  "opponent": "ジェイミー・フレッチャー",
-  "methodRaw": "1R 4:25 TKO（パウンド）",
-  "category": "mma",
-  "reason": "同じくクルトの総合格闘技記録として登録されている一戦。K-1 Scandinaviaの当該興行はキックボクシングとMMAが混在する興行であり、パウンドによるTKO勝ちはMMAルールの試合であったことを示す。",
-  "name": "ユルゲン・クルト",
-  "event": "K-1 Scandinavia: Rumble of the Kings 4",
-  "promotion": "K-1 / Krush / Krush-EX"
- },
- {
-  "slug": "yurugen-kuruto",
-  "date": "2009-05-22",
-  "opponent": "タダス・レビッカス",
-  "methodRaw": "1R 0:53 三角絞め",
-  "category": "mma",
-  "reason": "ユルゲン・クルトは主要MMAデータベースに総合格闘家(5戦全勝、全てKO/一本)として登録されており、K-1 Scandinaviaの当該カードもMMA区分の一戦として三角絞めで一本勝ち。",
-  "name": "ユルゲン・クルト",
-  "event": "K-1 Scandinavia: Rumble of the Kings 3",
-  "promotion": "K-1 / Krush / Krush-EX"
  },
  {
   "slug": "miyu-315",
@@ -1263,17 +614,6 @@
   "name": "TAKERU",
   "event": "喝釆シリーズvol.6",
   "promotion": "NKB"
- },
- {
-  "slug": "シング・心・ジャディブ",
-  "date": "2015-12-31",
-  "opponent": "エメリヤーエンコ・ヒョードル",
-  "methodRaw": "1R 3:02 TKO（マウントパンチ）",
-  "category": "mma",
-  "reason": "PR-12(検査⑥調査)で発見。RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYSの一戦。決着「マウントパンチ」はマウントポジションからのパウンドでキックボクシングルールでは成立しない。エメリヤーエンコ・ヒョードルとの対戦は当時のRIZIN無差別級オープントーナメントの一部で総合格闘技ルール。",
-  "name": "シング・心・ジャディブ",
-  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYS",
-  "promotion": "RIZIN"
  },
  {
   "slug": "masashi-nakajima",
