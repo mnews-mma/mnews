@@ -1192,21 +1192,6 @@
   "birthdate": "2003.8.17"
  },
  {
-  "name": "アマラ忍",
-  "kana": "アマラ シノブ",
-  "aliases": [],
-  "gym": null,
-  "orgs": [],
-  "sources": [
-   "https://ja.wikipedia.org/wiki/アマラ忍"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://ja.wikipedia.org/wiki/アマラ忍"
-  },
-  "birthdate": null
- },
- {
   "name": "アマンシオ・パラスキフ",
   "kana": "アマンシオ・パラスキフ",
   "aliases": [],
@@ -12266,7 +12251,9 @@
  {
   "name": "小比類巻太信",
   "kana": "コヒルイマキ タイシン",
-  "aliases": [],
+  "aliases": [
+   "小比類巻貴之"
+  ],
   "gym": null,
   "orgs": [],
   "sources": [
@@ -46861,16 +46848,22 @@
  },
  {
   "name": "忍アマラ―",
-  "kana": null,
-  "aliases": [],
+  "kana": "アマラ シノブ",
+  "aliases": [
+   "アマラ忍"
+  ],
   "gym": "SBモンゴル/SHINOBU fighting gym",
   "orgs": [
    "SHOOT BOXING"
   ],
   "sources": [
-   "https://shootboxing.org/fighter/shinobu_amara/"
+   "https://shootboxing.org/fighter/shinobu_amara/",
+   "https://ja.wikipedia.org/wiki/アマラ忍"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/アマラ忍"
+  },
   "birthdate": "1979.11.20"
  },
  {
