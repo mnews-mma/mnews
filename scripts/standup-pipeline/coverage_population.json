@@ -5201,5 +5201,15 @@
   "fighters_json_sources": [
    "https://ja.wikipedia.org/wiki/来家恵美子"
   ]
+ },
+ {
+  "name": "小比類巻太信",
+  "wiki_title": "小比類巻貴之",
+  "wiki_url": "https://ja.wikipedia.org/wiki/小比類巻貴之",
+  "wiki_bout_count": 62,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/小比類巻太信"
+  ]
  }
 ]
