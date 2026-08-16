@@ -61,12 +61,50 @@ ORG_TAG = {
 }
 MARK2RESULT = {"○": "win", "〇": "win", "◎": "win", "×": "loss", "△": "draw"}
 
-FIGHT_CONT_RE = re.compile(r"\{\{Fight-cont\s*\|(.*?)\}\}", re.S)
+# PR-14: 旧FIGHT_CONT_RE(非貪欲マッチで最初の"}}"を閉じタグとみなす)は、対戦相手欄に
+# {{仮リンク|名前|en|英語名}}のようなネストしたテンプレートがあると、そのテンプレート自身の
+# 閉じ"}}"で打ち切られ、決着・大会名・日付が丸ごと空になっていた(別セッションの計測、
+# out/kana-leg4-report.md: 修正前15,058行中594行が空、修正後81行に減少)。
+# ネストしたテンプレートの深さを数える方式に置き換える(find_fight_cont_blocks)。
+FIGHT_CONT_START_RE = re.compile(r"\{\{Fight-cont\s*\|")
 WIKILINK_RE = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]")
+# {{仮リンク|...}}・{{flagicon|...}}等、[[wikilink]]以外のネストしたテンプレート全般。
+# ネスト1段までを許容する(Fight-cont行内でさらにその中にテンプレートが入ることは無い前提)。
+NESTED_TEMPLATE_RE = re.compile(r"\{\{([^{}|]+)((?:\|[^{}]*)*)\}\}")
+
+
+def find_fight_cont_blocks(wikitext):
+    """{{Fight-cont|...}}のネスト対応版抽出。開き"{{Fight-cont|"から対応する閉じ"}}"までを、
+    途中に現れるネストしたテンプレート("{{"の深さ)を数えて正しく特定する。"""
+    blocks = []
+    for m in FIGHT_CONT_START_RE.finditer(wikitext):
+        depth = 1
+        i = m.end()
+        n = len(wikitext)
+        while i < n and depth > 0:
+            two = wikitext[i : i + 2]
+            if two == "{{":
+                depth += 1
+                i += 2
+            elif two == "}}":
+                depth -= 1
+                i += 2
+            else:
+                i += 1
+        content_end = i - 2 if depth == 0 else i
+        blocks.append(wikitext[m.end() : content_end])
+    return blocks
 
 
 def protect_wikilinks(s):
-    return WIKILINK_RE.sub(lambda mm: "\x00" + (mm.group(2) or mm.group(1)).replace("|", "\x01") + "\x00", s)
+    # [[wikilink]]を先に保護してから{{template}}を保護する(順序はどちらが先でも独立して
+    # 動作するが、[[の中に{{が来るケースは無い一方、{{の引数に[[が来ることはあるため
+    # 内側から処理されるこの順で問題ない)。
+    s = WIKILINK_RE.sub(lambda mm: "\x00" + (mm.group(2) or mm.group(1)).replace("|", "\x01") + "\x00", s)
+    # {{仮リンク|名前|en|英語名}}等のネストしたテンプレートも、内部の"|"がFight-cont行の
+    # フィールド区切りと誤認されないよう保護する(表示名として使えそうな最初の引数を残す)。
+    s = NESTED_TEMPLATE_RE.sub(lambda mm: "\x00" + mm.group(2).lstrip("|").split("|")[0].replace("|", "\x01") + "\x00", s)
+    return s
 
 
 def restore_wikilinks(s):
@@ -75,8 +113,8 @@ def restore_wikilinks(s):
 
 def parse_fight_rows(wikitext):
     rows = []
-    for m in FIGHT_CONT_RE.finditer(wikitext):
-        protected = protect_wikilinks(m.group(1))
+    for block in find_fight_cont_blocks(wikitext):
+        protected = protect_wikilinks(block)
         parts = [restore_wikilinks(p).strip() for p in protected.split("|")]
         while len(parts) < 5:
             parts.append("")
