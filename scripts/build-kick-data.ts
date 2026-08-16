@@ -681,6 +681,7 @@ for (const f of fighters) {
   boutRowsWikipedia += bouts.filter((b) => b.source_type === "wikipedia").length;
 
   const boutOrgTagSet = new Set(bouts.map((b) => tagByLabel.get(b.promotion)!));
+  const boutOrgLabels = boutFiles.filter((bf) => boutOrgTagSet.has(bf.tag)).map((bf) => bf.label);
   orgTagsBySlug.set(
     slug,
     boutFiles.filter((bf) => boutOrgTagSet.has(bf.tag)).map((bf) => bf.tag),
@@ -717,7 +718,12 @@ for (const f of fighters) {
     kanaSource: f.kana_source,
     aliases: f.aliases,
     gym: f.gym,
-    orgs: f.orgs,
+    // PR-12: 従来はf.orgs(名簿の掲載元、fighters.json由来)をそのまま表示していたが、
+    // これは選手ページ登録時のソースタグに過ぎず戦績の実態と食い違うことがあった
+    // (実例: ブアカーオの名簿タグは「K-1 WORLD GP」のみだが、実際の戦績にはK-1に加えて
+    // RIZIN・SHOOT BOXING・SNKAの4団体分が載っている)。実際にboutを持つ団体
+    // (boutOrgLabels、検索インデックスのorgTagsBySlugと同じ計算元)に置き換える。
+    orgs: boutOrgLabels,
     sources: f.sources,
     record,
     bouts: bouts.map((b) => {
@@ -774,7 +780,7 @@ for (const f of fighters) {
     romaji: romajiOf(f),
     kanaType: f.kana_source?.type ?? null,
     gym: f.gym,
-    orgs: f.orgs,
+    orgs: boutOrgLabels, // PR-12: detail.orgsと同じく実bout側算出に統一(名簿ソースタグは使わない)
     boutCount: bouts.length,
     bucket: kanaBucket(f.kana),
   });

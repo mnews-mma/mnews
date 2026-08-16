@@ -131,7 +131,7 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                 </span>
               ))
             ) : (
-              <span className="kick-empty">—（名簿のみ）</span>
+              <span className="kick-empty">—（掲載戦績なし）</span>
             )}
           </dd>
           <dt>出典</dt>

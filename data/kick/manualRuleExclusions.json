@@ -1886,5 +1886,37 @@
   "methodRaw": "1R 3:13 TKO（バックマウントパンチ）",
   "category": "mma",
   "reason": "K-1 LEGEND〜乱〜でのキモ・レオポルドとの一戦。Wikipedia「キモ・レオポルド」本文に「アルティメット特別ルール(金網マッチ)で対戦」と明記。通常のK-1キックボクシングルールではない(同一試合をキモ側視点でも除外登録)。"
+ },
+ {
+  "slug": "シング・心・ジャディブ",
+  "date": "2015-12-31",
+  "opponent": "エメリヤーエンコ・ヒョードル",
+  "methodRaw": "1R 3:02 TKO（マウントパンチ）",
+  "category": "mma",
+  "reason": "PR-12(検査⑥調査)で発見。RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYSの一戦。決着「マウントパンチ」はマウントポジションからのパウンドでキックボクシングルールでは成立しない。エメリヤーエンコ・ヒョードルとの対戦は当時のRIZIN無差別級オープントーナメントの一部で総合格闘技ルール。"
+ },
+ {
+  "slug": "saiga-kizaemon",
+  "date": "2015-12-29",
+  "opponent": "所英男",
+  "methodRaw": "1R 5:16 アームバー",
+  "category": "mma",
+  "reason": "PR-12(検査⑥調査)で発見。RIZIN FIGHTING WORLD GRAND-PRIX 2015 さいたま3DAYSの一戦。決着「アームバー」は関節技でキックボクシングルールでは成立しない。"
+ },
+ {
+  "slug": "miruko-kurokopu",
+  "date": "2016-09-25",
+  "opponent": "ミョン・ヒョンマン",
+  "methodRaw": "1R 2:20 肩固め",
+  "category": "mma",
+  "reason": "PR-12(検査⑥調査)で発見。RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント開幕戦の一戦。決着「肩固め」は関節技でキックボクシングルールでは成立しない。"
+ },
+ {
+  "slug": "jieromu-re-banna",
+  "date": "2017-10-15",
+  "opponent": "ロッキー・マルティネス",
+  "methodRaw": "1R 2:10 袈裟固め",
+  "category": "mma",
+  "reason": "PR-12(検査⑥調査)で発見。RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -秋の陣-の一戦。決着「袈裟固め」は固技でキックボクシングルールでは成立しない。"
  }
 ]
