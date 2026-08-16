@@ -382,6 +382,69 @@ for (const [name, oldGym, newGym] of MERGED_GYM_ALIASES) {
   if (canonicalSlug) byNameGym.set(`${name}|${oldGym}`, canonicalSlug);
 }
 
+// ---------- 対戦相手名の柔軟な名寄せ(PR-8) ----------
+// opponent_ref による厳密解決・逆引き解決でも埋まらない相手のうち、表記ゆれ(ニックネーム挿入・
+// 旧名・スペースの有無)だけが原因で不一致になっているものを追加で解決する。誤リンクを避けるため、
+// 正規化後に「一意の候補」が見つかった場合のみ採用する(複数候補・0候補は何もしない)。
+// 語順入れ替え(姓が失われるケースの信頼度が低い)とローマ字→かな変換は対象外(採用しない方針)。
+const QUOTE_PAIRS: [string, string][] = [
+  ["“", "”"],
+  ['"', '"'],
+  ["'", "'"],
+  ["‘", "’"],
+];
+function stripQuotedNickname(s: string): string {
+  for (const [open, close] of QUOTE_PAIRS) {
+    const oi = s.indexOf(open);
+    if (oi === -1) continue;
+    const ci = s.indexOf(close, oi + open.length);
+    if (ci === -1) continue;
+    return s.slice(0, oi) + s.slice(ci + close.length);
+  }
+  return s;
+}
+function buildUniqueIndex(pairs: [string, string][]): Map<string, string | null> {
+  const m = new Map<string, string | null>();
+  for (const [key, slugValue] of pairs) {
+    if (!key) continue;
+    if (m.has(key)) {
+      if (m.get(key) !== slugValue) m.set(key, null);
+    } else {
+      m.set(key, slugValue);
+    }
+  }
+  return m;
+}
+const byNormNamePlain = buildUniqueIndex(
+  fighters.map((f) => [normName(f.name), slugByIdentity.get(identity(f))!] as [string, string]),
+);
+const byNormNameNicknameStripped = buildUniqueIndex(
+  fighters.map(
+    (f) => [normName(stripQuotedNickname(f.name)), slugByIdentity.get(identity(f))!] as [string, string],
+  ),
+);
+const byAliasNorm = buildUniqueIndex(
+  fighters.flatMap((f) =>
+    (f.aliases ?? []).map((a) => [normName(a), slugByIdentity.get(identity(f))!] as [string, string]),
+  ),
+);
+function fuzzyResolveOpponent(opponentName: string): string | null {
+  const n = normName(opponentName);
+  const aliasHit = byAliasNorm.get(n);
+  if (aliasHit) return aliasHit;
+  const stripped = normName(stripQuotedNickname(opponentName));
+  if (stripped !== n) {
+    const strippedHit = byNormNamePlain.get(stripped);
+    if (strippedHit) return strippedHit;
+  }
+  const plainHit = byNormNamePlain.get(n);
+  if (plainHit) return plainHit;
+  const nickStrippedHit = byNormNameNicknameStripped.get(n);
+  if (nickStrippedHit) return nickStrippedHit;
+  return null;
+}
+let fuzzyResolvedCount = 0;
+
 // ---------- 逆引き解決 ----------
 // 通常の解決(opponent_resolved && opponent_ref)は「自分側の行が相手を一意に指せているか」
 // だけを見るため、相手が同名複数人(opponent_ambiguous)だと最初からnullになる。
@@ -588,8 +651,10 @@ for (const f of fighters) {
           ? byNameGym.get(`${b.opponent_ref}|${b.opponent_ref_gym ?? ""}`) ?? null
           : null;
       const reverseSlug = directSlug ? null : reverseResolveOpponent(b, slug, f.name);
-      const opponentSlug = directSlug ?? reverseSlug;
+      const fuzzySlug = directSlug || reverseSlug ? null : fuzzyResolveOpponent(b.opponent_name);
+      const opponentSlug = directSlug ?? reverseSlug ?? fuzzySlug;
       if (reverseSlug) reverseResolvedCount++;
+      if (fuzzySlug) fuzzyResolvedCount++;
       return {
         date: b.date,
         event: b.event,
@@ -667,6 +732,7 @@ const stats = {
   titleTypeCount: titleTypeRows,
   resultUnknownCount: resultUnknownRows,
   reverseResolvedCount,
+  fuzzyResolvedCount,
   manualExclusionCount: excludedRowsLog.length,
   promotions: boutFiles.map((b) => b.label),
 };

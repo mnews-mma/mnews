@@ -56,6 +56,17 @@
  },
  {
   "slug": "andi-sawa",
+  "date": "2017-10-15",
+  "opponent": "西浦“ウィッキー”聡生",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "アンディ・サワー",
+  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 バンタム級トーナメント＆女子スーパーアトム級トーナメント1st ROUND -秋の陣-",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "andi-sawa",
   "date": "2016-12-29",
   "opponent": "宮田 和幸",
   "methodRaw": "1R 腕ひしぎ十字固め ※MMA",
@@ -74,6 +85,17 @@
   "reason": "RIZIN公式サイトで71.0kg契約のRIZIN MMA特別ルール一戦と確認(相手はUFC参戦歴のあるダロン・クルックシャンク)。methodRawの※MMA注記どおり。サワーのWikipediaでもシュートボクシング(179戦)とは別にMMA通算成績(5戦)が独立集計されている。",
   "name": "アンディ・サワー",
   "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "andi-sawa",
+  "date": "2015-12-31",
+  "opponent": "長島☆自演乙☆雄一郎",
+  "methodRaw": "1R KO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "アンディ・サワー",
+  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2015さいたま3DAYS IZAの舞",
   "promotion": "SHOOT BOXING"
  },
  {
@@ -121,6 +143,17 @@
   "promotion": "K-1 / Krush / Krush-EX"
  },
  {
+  "slug": "imoto-borukeno",
+  "date": "2025-11-24",
+  "opponent": "芦田 崇宏",
+  "methodRaw": "TKO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "イモト・ボルケーノ",
+  "event": "SHOOT BOXING 40th Anniversary S-cup×GZT 2025",
+  "promotion": "SHOOT BOXING"
+ },
+ {
   "slug": "iriana-varentino",
   "date": "2015-12-31",
   "opponent": "RENA",
@@ -133,6 +166,17 @@
  },
  {
   "slug": "umeno-genji",
+  "date": "2026-07-18",
+  "opponent": "昇侍",
+  "methodRaw": "5分3R終了 判定0-3",
+  "category": "mma",
+  "reason": "対戦相手の昇侍はWikipediaで「日本の男性総合格闘家」と明記。大会名は\"RIZIN LANDMARK 15\"(通常キック専用ブランド)だが、この一戦はMMAだった(大会名だけでは競技種別を機械判定できない実例)。",
+  "name": "梅野源治",
+  "event": "RIZIN LANDMARK 15",
+  "promotion": "RIZIN"
+ },
+ {
+  "slug": "umeno-genji",
   "date": "2026-05-10",
   "opponent": "ダイキ・ライトイヤー",
   "methodRaw": "1R 2:37 三角絞め",
@@ -140,6 +184,28 @@
   "reason": "RIZIN公式・報道で「RIZIN MMA rules 5分3R 61.0kg」と明記された正式なMMA本戦。組み技の攻防から三角絞めで一本負け。",
   "name": "梅野源治",
   "event": "RIZIN.53",
+  "promotion": "RIZIN"
+ },
+ {
+  "slug": "umeno-genji",
+  "date": "2025-09-28",
+  "opponent": "芦澤竜誠",
+  "methodRaw": "5分3R終了 判定3-0",
+  "category": "mma",
+  "reason": "対戦相手の芦澤竜誠は2023年に総合格闘家へ転向済み(Wikipedia「芦澤竜誠」に明記)。梅野は2024-12-31のMMAデビュー以降、総合格闘技を継続している。",
+  "name": "梅野源治",
+  "event": "RIZIN.51",
+  "promotion": "RIZIN"
+ },
+ {
+  "slug": "umeno-genji",
+  "date": "2024-12-31",
+  "opponent": "大雅",
+  "methodRaw": "5分3R終了 判定3-0",
+  "category": "mma",
+  "reason": "RIZIN.49で行われた梅野の総合格闘技デビュー戦(Wikipedia「梅野源治」本文に「2024年12月31日、RIZIN DECADEで総合格闘技デビュー戦を行い...大雅と対戦」と明記)。",
+  "name": "梅野源治",
+  "event": "RIZIN.49",
   "promotion": "RIZIN"
  },
  {
@@ -187,6 +253,28 @@
   "promotion": "KROSS×OVER"
  },
  {
+  "slug": "karyu-giburein",
+  "date": "2022-09-25",
+  "opponent": "シビサイ頌真",
+  "methodRaw": "1R タップアウト",
+  "category": "mma",
+  "reason": "RIZIN.38の総合格闘技戦。決着「タップアウト」はMMAの一本決着。",
+  "name": "カリュ・ギブレイン",
+  "event": "湘南美容クリニック presents RIZIN.38",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kanta",
+  "date": "2021-12-19",
+  "opponent": "小只直弥",
+  "methodRaw": "延長R判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "神太",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
   "slug": "kido-yasuhiro",
   "date": "2024-10-19",
   "opponent": "照強",
@@ -217,6 +305,28 @@
   "reason": "「パウンド」(グラウンド&パウンド)によるタップアウト決着で、これはMMAでのみ用いられる技法。K-1 Dynamite!!興行内のMMAルール試合。",
   "name": "キム・ドンウック",
   "event": "K-1 PREMIUM 2006 Dynamite!!",
+  "promotion": "K-1 / Krush / Krush-EX"
+ },
+ {
+  "slug": "kimo-reoporudo",
+  "date": "1996-07-14",
+  "opponent": "桜庭和志",
+  "methodRaw": "1R 4:20 肩固め",
+  "category": "mma",
+  "reason": "Wikipedia「キモ・レオポルド」戦績表に本戦は「シュートボクシング S-cup '96 決勝戦【アルティメット特別マッチ】」と明記されており、通常のシュートボクシングルール(寝技禁止)ではなくMMA的な特別ルールで行われた。",
+  "name": "キモ・レオポルド",
+  "event": "シュートボクシング S-cup '96 決勝戦",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "kimo-reoporudo",
+  "date": "1994-12-10",
+  "opponent": "パトリック・スミス",
+  "methodRaw": "1R 3:13 TKO（バックマウントパンチ）",
+  "category": "mma",
+  "reason": "Wikipedia本文に「K-1 LEGEND〜乱〜でパトリック・スミスとアルティメット特別ルール(金網マッチ)で対戦」と明記。通常のK-1キックボクシングルールではない。",
+  "name": "キモ・レオポルド",
+  "event": "K-1 LEGEND 〜乱〜",
   "promotion": "K-1 / Krush / Krush-EX"
  },
  {
@@ -319,6 +429,17 @@
   "promotion": "K-1 / Krush / Krush-EX"
  },
  {
+  "slug": "shinpayaku-hamajimu",
+  "date": "2024-12-29",
+  "opponent": "荒尾祐太",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 FINAL in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "シンパヤック・ハマジム",
+  "event": "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA",
+  "promotion": "RISE"
+ },
+ {
   "slug": "jadanba-narantongaragu",
   "date": "2016-11-11",
   "opponent": "マラット・ガフロフ",
@@ -363,6 +484,28 @@
   "promotion": "K-1 / Krush / Krush-EX"
  },
  {
+  "slug": "seiya-2",
+  "date": "2025-11-22",
+  "opponent": "森本現暉",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "惺也",
+  "event": "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "seiya-2",
+  "date": "2025-11-22",
+  "opponent": "狂介",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "惺也",
+  "event": "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
   "slug": "serukan-irumatsu",
   "date": "2005-02-23",
   "opponent": "宇野薫",
@@ -383,6 +526,17 @@
   "name": "高木 健太",
   "event": "KROSS×OVER-CAGE.7",
   "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "tatsuto",
+  "date": "2021-12-19",
+  "opponent": "澤谷大樹（HAWK GYM",
+  "methodRaw": "3R判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "龍翔",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA",
+  "promotion": "RISE"
  },
  {
   "slug": "chie-honman",
@@ -517,6 +671,50 @@
   "promotion": "NKB"
  },
  {
+  "slug": "hayato",
+  "date": "2023-06-18",
+  "opponent": "久津輪将充",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "HAYATO",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "hayato",
+  "date": "2023-06-18",
+  "opponent": "FUJIMON♡",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "HAYATO",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "patoriku-sumisu",
+  "date": "1994-12-10",
+  "opponent": "キモ",
+  "methodRaw": "1R 3:13 TKO（バックマウントパンチ）",
+  "category": "mma",
+  "reason": "K-1 LEGEND〜乱〜でのキモ・レオポルドとの一戦。Wikipedia「キモ・レオポルド」本文に「アルティメット特別ルール(金網マッチ)で対戦」と明記。通常のK-1キックボクシングルールではない(同一試合をキモ側視点でも除外登録)。",
+  "name": "パトリック・スミス",
+  "event": "K-1 LEGEND 〜乱〜",
+  "promotion": "K-1 / Krush / Krush-EX"
+ },
+ {
+  "slug": "hiramoto-ren",
+  "date": "2019-12-29",
+  "opponent": "芦田崇宏",
+  "methodRaw": "1R 2分45秒 TKO（3ノックダウン）",
+  "category": "mma",
+  "reason": "大会名「BELLATOR JAPAN」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "平本 蓮",
+  "event": "BELLATOR JAPAN",
+  "promotion": "RIZIN"
+ },
+ {
   "slug": "hiroya",
   "date": "2020-12-31",
   "opponent": "シバター",
@@ -594,6 +792,28 @@
   "promotion": "ONE Championship"
  },
  {
+  "slug": "bobu-sapu",
+  "date": "2007-12-31",
+  "opponent": "ボビー・オロゴン",
+  "methodRaw": "1R 4:10 KO（マウントパンチ）",
+  "category": "mma",
+  "reason": "K-1 PREMIUM 2007 Dynamite!!の余興的総合格闘技マッチ。決着「マウントパンチ」はグラウンド状態からの攻撃でK-1キックボクシングルールでは成立しない。",
+  "name": "ボブ・サップ",
+  "event": "K-1 PREMIUM 2007 Dynamite!!",
+  "promotion": "K-1 / Krush / Krush-EX"
+ },
+ {
+  "slug": "bobu-sapu",
+  "date": "2003-09-21",
+  "opponent": "ステファン・ガムリン",
+  "methodRaw": "1R 0:52 フロントスリーパー",
+  "category": "mma",
+  "reason": "Wikipedia「ボブ・サップ」戦績表でこの一戦は「総合格闘技」セクションに分類。決着「フロントスリーパー」は組み技系サブミッションでK-1キックボクシングルールでは成立しない。",
+  "name": "ボブ・サップ",
+  "event": "K-1 SURVIVAL 2003 〜JAPAN GP 決勝戦〜",
+  "promotion": "K-1 / Krush / Krush-EX"
+ },
+ {
   "slug": "maikeru-makudonarudo",
   "date": "2004-03-14",
   "opponent": "LYOTO",
@@ -625,6 +845,17 @@
   "name": "ミルコ・クロコップ",
   "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント 2nd ROUND",
   "promotion": "RIZIN"
+ },
+ {
+  "slug": "meruvin-manufu",
+  "date": "2007-12-31",
+  "opponent": "西島洋介",
+  "methodRaw": "1R 1:49 KO（マウントパンチ）",
+  "category": "mma",
+  "reason": "K-1 PREMIUM 2007 Dynamite!!の余興的総合格闘技マッチ。決着「マウントパンチ」はグラウンド状態からの攻撃でK-1キックボクシングルールでは成立しない。",
+  "name": "メルヴィン・マヌーフ",
+  "event": "K-1 PREMIUM 2007 Dynamite!!",
+  "promotion": "K-1 / Krush / Krush-EX"
  },
  {
   "slug": "morimoto-naoya",
@@ -715,6 +946,28 @@
   "promotion": "K-1 / Krush / Krush-EX"
  },
  {
+  "slug": "miyu-315",
+  "date": "2023-12-02",
+  "opponent": "平田 彩音",
+  "methodRaw": "TKO 2R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "MIYU",
+  "event": "プロフェッショナル修斗公式戦 COLORS Produce by SHOOTO Vol.2 “FIGHT&MOSH”",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "miyu-315",
+  "date": "2023-07-09",
+  "opponent": "沙弥子",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "MIYU",
+  "event": "PANCRASE 335",
+  "promotion": "SHOOT BOXING"
+ },
+ {
   "slug": "rena",
   "date": "2025-12-31",
   "opponent": "伊澤 星花",
@@ -723,6 +976,28 @@
   "reason": "RIZIN女子スーパーアトム級タイトルマッチ(RIZIN MMAルール、5分3R、49.0kg契約)としてRIZIN公式が発表。methodRawにも※MMA注記あり。",
   "name": "RENA",
   "event": "RIZIN師走の超強者祭り",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2024-07-28",
+  "opponent": "ケイト・ロータス",
+  "methodRaw": "TKO 2R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "超RIZIN.3",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2024-03-23",
+  "opponent": "シン・ユリ",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN LANDMARK 9",
   "promotion": "SHOOT BOXING"
  },
  {
@@ -738,6 +1013,127 @@
  },
  {
   "slug": "rena",
+  "date": "2022-07-31",
+  "opponent": "アナスタシア・スヴェッキスカ",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.37",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2021-12-31",
+  "opponent": "パク・シウ",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.33",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2021-11-20",
+  "opponent": "山本 美憂",
+  "methodRaw": "2R TKO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.32",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2020-09-27",
+  "opponent": "富松 恵美",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.24",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2019-12-31",
+  "opponent": "リンジー・ヴァンザント",
+  "methodRaw": "3R TKO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.20",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2019-10-12",
+  "opponent": "アレキサンドラ・アルヴァーレ",
+  "methodRaw": "1R KO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.19",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2019-06-14",
+  "opponent": "リンジー・ヴァンザント",
+  "methodRaw": "1R スリーパーホールド ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "Bellator 222",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2019-04-21",
+  "opponent": "サマンサ・ジャン＝フランソワ",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.15",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2018-12-31",
+  "opponent": "サマンサ・ジャン=フランソワ",
+  "methodRaw": "不戦敗 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.14",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2018-07-29",
+  "opponent": "浅倉 カンナ",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN.11",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2018-07-06",
+  "opponent": "エレイン“パンテラ”リアル",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "SHOOT BOXING Girls S-cup ～48㎏世界トーナメント2018〜",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
   "date": "2017-12-31",
   "opponent": "浅倉 カンナ",
   "methodRaw": "1R チョークスリーパー ※MMA",
@@ -745,6 +1141,50 @@
   "reason": "RIZIN女子スーパーアトム級トーナメント決勝としてRIZIN MMAルールで開催されたと確認。methodRawにも※MMA注記あり。",
   "name": "RENA",
   "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 男子バンタム級トーナメント＆女子トーナメント2nd ROUND/Final ROUND-",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2017-12-31",
+  "opponent": "アイリーン・リベラ",
+  "methodRaw": "1R TKO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 男子バンタム級トーナメント＆女子トーナメント2nd ROUND/Final ROUND-",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2017-10-15",
+  "opponent": "アンディ・ウィン",
+  "methodRaw": "1R KO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 バンタム級トーナメント＆女子スーパーアトム級トーナメント1st ROUND -秋の陣-",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2017-04-16",
+  "opponent": "ドーラ・ペリエシュ",
+  "methodRaw": "1R KO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN 2017 IN YOKOHAMA －SAKURA－",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "rena",
+  "date": "2016-12-31",
+  "opponent": "ハンナ・タイソン",
+  "methodRaw": "3R KO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "RENA",
+  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2016 無差別級トーナメント Final ROUND",
   "promotion": "SHOOT BOXING"
  },
  {
@@ -770,6 +1210,17 @@
   "promotion": "SHOOT BOXING"
  },
  {
+  "slug": "ryuki",
+  "date": "2020-10-25",
+  "opponent": "河村泰博",
+  "methodRaw": "1R KO",
+  "category": "mma",
+  "reason": "大会名「PANCRASE 319」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "Ryuki",
+  "event": "PANCRASE 319",
+  "promotion": "RISE"
+ },
+ {
   "slug": "takeru-205",
   "date": "2022-10-30",
   "opponent": "KEIGO",
@@ -792,6 +1243,149 @@
   "promotion": "NKB"
  },
  {
+  "slug": "masamitsu-kutsuwa",
+  "date": "2023-06-18",
+  "opponent": "HAYATO",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "久津輪将充",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "masamitsu-kutsuwa",
+  "date": "2023-06-18",
+  "opponent": "朝日彗仁",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "久津輪将充",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kanato-ito",
+  "date": "2025-05-25",
+  "opponent": "小池 翔",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "伊藤叶人",
+  "event": "PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryunosuke-ito",
+  "date": "2024-12-29",
+  "opponent": "木下悦志",
+  "methodRaw": "3R判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 FINAL in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "伊藤琉之助",
+  "event": "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryunosuke-ito",
+  "date": "2024-12-29",
+  "opponent": "山口悠真",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 FINAL in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "伊藤琉之助",
+  "event": "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryunosuke-ito",
+  "date": "2022-12-11",
+  "opponent": "木下悦志",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "伊藤琉之助",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "shuto-sato",
+  "date": "2025-09-28",
+  "opponent": "小林 大介",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "佐藤執斗",
+  "event": "RIZIN.51",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "keito-naito",
+  "date": "2021-07-04",
+  "opponent": "寺山 遼冴",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA Supported by ONE Championship 第1部」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "内藤啓人",
+  "event": "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA Supported by ONE Championship 第1部",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "keito-naito",
+  "date": "2020-12-20",
+  "opponent": "有井 渚海",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA Supported by ONE Championship」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "内藤啓人",
+  "event": "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA Supported by ONE Championship",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "keito-naito",
+  "date": "2020-07-12",
+  "opponent": "匠朗",
+  "methodRaw": "3R KO",
+  "category": "mma",
+  "reason": "大会名「プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "内藤啓人",
+  "event": "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "ryuki-yoshioka",
+  "date": "2024-07-28",
+  "opponent": "山﨑一央",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 Vol.6 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "吉岡龍輝",
+  "event": "PROFESSIONAL SHOOTO 2024 Vol.6 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryuki-yoshioka",
+  "date": "2023-12-17",
+  "opponent": "成尾拓輝",
+  "methodRaw": "2R KO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.9 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "吉岡龍輝",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.9 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryuki-yoshioka",
+  "date": "2023-06-18",
+  "opponent": "奥山雅仁",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "吉岡龍輝",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
   "slug": "sakisaka-junnosuke",
   "date": "2026-03-01",
   "opponent": "松元 仁志+",
@@ -801,6 +1395,50 @@
   "name": "向坂 準之輔",
   "event": "KROSS×OVER -CAGE.8- GENスポーツパレス大会",
   "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "kanta-motoyama",
+  "date": "2021-12-19",
+  "opponent": "井口 翔太",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA Supported by ONE Championship」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "基山幹太",
+  "event": "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA Supported by ONE Championship",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "kanta-motoyama",
+  "date": "2020-12-20",
+  "opponent": "龍翔",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA Supported by ONE Championship」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "基山幹太",
+  "event": "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA Supported by ONE Championship",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "ryunosuke-omori",
+  "date": "2021-07-04",
+  "opponent": "有井渚海",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "大森隆之介",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ono-takashi",
+  "date": "2019-02-17",
+  "opponent": "炎出丸",
+  "methodRaw": "KO",
+  "category": "mma",
+  "reason": "大会名「PANCRASE REBELS RING.1」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "大野 貴志",
+  "event": "PANCRASE REBELS RING.1",
+  "promotion": "Bigbang"
  },
  {
   "slug": "okuyama-takahiro",
@@ -826,6 +1464,28 @@
  },
  {
   "slug": "okuyama-takahiro",
+  "date": "2025-05-05",
+  "opponent": "直樹",
+  "methodRaw": "KO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "奥山 貴大",
+  "event": "DEEP 125 IMPACT～フェザー級GP2025準決勝～",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "okuyama-takahiro",
+  "date": "2025-03-15",
+  "opponent": "海飛",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "奥山 貴大",
+  "event": "DEEP 124 IMPACT",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "okuyama-takahiro",
   "date": "2024-12-26",
   "opponent": "白川 ダーク陸斗",
   "methodRaw": "一本 1R ※アームバー ※MMA",
@@ -833,6 +1493,281 @@
   "reason": "報道で「RIZIN MMAルール、66.0kg」の試合、MMAデビュー戦と確認。相手はMMA23戦(12-11-1)の経験を持つ元DEEP/RIZIN所属選手。",
   "name": "奥山 貴大",
   "event": "-SHOOT BOXING BATTLE SUMMIT-GROUND ZERO TOKYO 2024",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "masahito-okuyama",
+  "date": "2023-06-18",
+  "opponent": "成尾拓輝",
+  "methodRaw": "延長R KO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "奥山雅仁",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "masahito-okuyama",
+  "date": "2023-06-18",
+  "opponent": "吉岡龍輝",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "奥山雅仁",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryoga-terayama",
+  "date": "2021-07-04",
+  "opponent": "有井渚海",
+  "methodRaw": "延長R判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "寺山遼冴",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryoga-terayama",
+  "date": "2021-07-04",
+  "opponent": "田渕神太",
+  "methodRaw": "3R判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "寺山遼冴",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryoga-terayama",
+  "date": "2021-07-04",
+  "opponent": "内藤啓人",
+  "methodRaw": "3R判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "寺山遼冴",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "naoya-otada",
+  "date": "2021-12-19",
+  "opponent": "田渕神太",
+  "methodRaw": "延長R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "小只直弥",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kazuteru-yamazaki",
+  "date": "2024-07-28",
+  "opponent": "陽勇",
+  "methodRaw": "1R KO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 Vol.6」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "山﨑一央",
+  "event": "PROFESSIONAL SHOOTO 2024 Vol.6",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kazuteru-yamazaki",
+  "date": "2024-07-28",
+  "opponent": "吉岡龍輝",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 Vol.6」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "山﨑一央",
+  "event": "PROFESSIONAL SHOOTO 2024 Vol.6",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "aito",
+  "date": "2022-05-22",
+  "opponent": "大野友哉",
+  "methodRaw": "1R TO/RNC",
+  "category": "mma",
+  "reason": "大会名「PANCRASE「NEO BLOOD! 1」」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "愛翔",
+  "event": "PANCRASE「NEO BLOOD! 1」",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "shoa-arii",
+  "date": "2021-07-04",
+  "opponent": "寺山遼冴",
+  "methodRaw": "延長R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "有井渚海",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "shoa-arii",
+  "date": "2021-07-04",
+  "opponent": "匠朗",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "有井渚海",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "shoa-arii",
+  "date": "2021-07-04",
+  "opponent": "大森隆之介",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "有井渚海",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "shoa-arii",
+  "date": "2020-12-20",
+  "opponent": "内藤啓人",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2020 Vol.8 最終戦 in OSAKA Supported by ONE Championship」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "有井渚海",
+  "event": "PROFESSIONAL SHOOTO 2020 Vol.8 最終戦 in OSAKA Supported by ONE Championship",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "shoa-arii",
+  "date": "2020-07-12",
+  "opponent": "紀之定健真",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA Supported by ONE Championship」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "有井渚海",
+  "event": "PROFESSIONAL SHOOTO 2020 Vol.4 in OSAKA Supported by ONE Championship",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "arima-reiji",
+  "date": "2025-11-22",
+  "opponent": "森本 現暉",
+  "methodRaw": "KO 3R",
+  "category": "mma",
+  "reason": "大会名「プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "有馬 伶弐",
+  "event": "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "arima-reiji",
+  "date": "2025-05-25",
+  "opponent": "井原 浩之",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "有馬 伶弐",
+  "event": "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "mikuru-asakura",
+  "date": "2023-07-30",
+  "opponent": "ヴガール・ケラモフ",
+  "methodRaw": "1R",
+  "category": "mma",
+  "reason": "超RIZIN.2のRIZINフェザー級王座決定戦(総合格闘技)。Wikipedia本文に「シングルレックでテイクダウンされ...リアネイキッドチョークをセットされて、タップアウトによる一本負け」と明記。",
+  "name": "朝倉未来",
+  "event": "超RIZIN.2",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "mikuru-asakura",
+  "date": "2021-12-31",
+  "opponent": "斎藤 裕",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "RIZIN.33の総合格闘技戦。Wikipedia「朝倉未来」本文に「前RIZINフェザー級王者の斎藤裕と再戦。2Rに打撃で優勢な...3-0の判定で勝利」と明記。",
+  "name": "朝倉未来",
+  "event": "RIZIN.33",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "mikuru-asakura",
+  "date": "2021-06-13",
+  "opponent": "クレベル・コイケ",
+  "methodRaw": "2R",
+  "category": "mma",
+  "reason": "RIZIN.28の総合格闘技戦。Wikipedia本文に「クレベル・コイケと対戦し、2Rに三角絞めによる失神一本負け」と明記。",
+  "name": "朝倉未来",
+  "event": "RIZIN.28",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "keito-asahi",
+  "date": "2023-06-18",
+  "opponent": "久津輪 将充",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "朝日彗仁",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "keito-asahi",
+  "date": "2022-12-11",
+  "opponent": "白鳥光希",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "朝日彗仁",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "etsushi-kinoshita",
+  "date": "2024-12-29",
+  "opponent": "伊藤琉之助",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 FINAL」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "木下悦志",
+  "event": "PROFESSIONAL SHOOTO 2024 FINAL",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "etsushi-kinoshita",
+  "date": "2024-12-29",
+  "opponent": "酒井柚樹",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 FINAL」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "木下悦志",
+  "event": "PROFESSIONAL SHOOTO 2024 FINAL",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "etsushi-kinoshita",
+  "date": "2022-12-11",
+  "opponent": "伊藤琉之助",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.8」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "木下悦志",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.8",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "mina-2",
+  "date": "2018-07-06",
+  "opponent": "ペットローイエット・ハイランドジム",
+  "methodRaw": "1R TKO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "未奈",
+  "event": "SHOOT BOXING Girls S-cup ～48㎏世界トーナメント2018〜",
   "promotion": "SHOOT BOXING"
  },
  {
@@ -858,6 +1793,336 @@
   "promotion": "RISE"
  },
  {
+  "slug": "taiki-matsui",
+  "date": "2022-07-03",
+  "opponent": "澤谷大樹",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "松井大樹",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kazuhiro-matsuyama",
+  "date": "2022-07-03",
+  "opponent": "澤谷大樹",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "松山和弘",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kazuhiro-matsuyama",
+  "date": "2022-07-03",
+  "opponent": "関口祐冬",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "松山和弘",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kazuhiro-matsuyama",
+  "date": "2022-07-03",
+  "opponent": "都筑海杜",
+  "methodRaw": "1R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "松山和弘",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "mina-hayashi",
+  "date": "2026-01-18",
+  "opponent": "愛結菜",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「COLORS Produce by SHOOTO Vol.6」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "林 美菜",
+  "event": "COLORS Produce by SHOOTO Vol.6",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "mina-hayashi",
+  "date": "2026-01-18",
+  "opponent": "岩永唯伽",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「COLORS Produce by SHOOTO Vol.6」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "林 美菜",
+  "event": "COLORS Produce by SHOOTO Vol.6",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ichiyo-morimoto",
+  "date": "2018-11-25",
+  "opponent": "T-98",
+  "methodRaw": "5R TKO",
+  "category": "mma",
+  "reason": "大会名「PANCRASE301」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "森本一陽",
+  "event": "PANCRASE301",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "genki-morimoto",
+  "date": "2025-11-22",
+  "opponent": "惺也",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "森本現暉",
+  "event": "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "genki-morimoto",
+  "date": "2025-11-22",
+  "opponent": "有馬 伶弍",
+  "methodRaw": "3R KO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "森本現暉",
+  "event": "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2022-12-11",
+  "opponent": "中村 京一郎",
+  "methodRaw": "KO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "EXFIGHT 7",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2022-09-25",
+  "opponent": "橘川 ヒロキ",
+  "methodRaw": "TKO 2R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "DEEP HAMAMATSU IMPACT 2022",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2018-03-17",
+  "opponent": "関 鉄矢",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.59",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2017-05-20",
+  "opponent": "Wusikenbieke Huwannixi",
+  "methodRaw": "TKO 2R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "WLF - W.A.R.S. 14",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2016-06-29",
+  "opponent": "イェスーボーラシェン",
+  "methodRaw": "TKO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "WLF - E.P.I.C.: Elevation Power in Cage 5",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2015-08-01",
+  "opponent": "加藤 惇",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST in YOKOSUKA vol.2",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2015-02-22",
+  "opponent": "太田 洋平",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.44",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2014-11-23",
+  "opponent": "金井塚 信之",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.43－旗揚げ12周年記念大会－",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2014-05-25",
+  "opponent": "森 興二",
+  "methodRaw": "KO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.41",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2014-02-09",
+  "opponent": "高山 洋貴",
+  "methodRaw": "KO 2R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.39",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2013-11-23",
+  "opponent": "雅哉",
+  "methodRaw": "KO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.38～旗揚げ11周年記念大会～",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2013-09-23",
+  "opponent": "岩本 一貴",
+  "methodRaw": "KO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.37",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2013-08-18",
+  "opponent": "金井塚 信之",
+  "methodRaw": "2R 時間切れ ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST SWAT! 51",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2013-07-14",
+  "opponent": "柏崎 剛",
+  "methodRaw": "TKO 2R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.36",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2013-04-07",
+  "opponent": "島村 裕",
+  "methodRaw": "KO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST.35",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2013-02-11",
+  "opponent": "加藤 惇",
+  "methodRaw": "2R 時間切れ ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST SWAT! in FACE vol.12",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2012-12-23",
+  "opponent": "田代 一行",
+  "methodRaw": "反則 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST～ SWAT!49",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2012-10-21",
+  "opponent": "関根 直文",
+  "methodRaw": "2R 時間切れ ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST～ SWAT！48",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2012-09-17",
+  "opponent": "真鍋 朝行",
+  "methodRaw": "2R 時間切れ ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST SWAT! in FACE vol.11",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2012-08-12",
+  "opponent": "林田 一城",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST SWAT! 47 SWAT!トーナメント2012準決勝戦",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "hinuma-asahi",
+  "date": "2012-07-16",
+  "opponent": "鷲山 亨",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "樋沼 朝光",
+  "event": "ZST～ BATTLE HAZARD 06",
+  "promotion": "SHOOT BOXING"
+ },
+ {
   "slug": "tomoko-hida",
   "date": "2021-07-18",
   "opponent": "須田萌里",
@@ -869,6 +2134,391 @@
   "promotion": "RISE"
  },
  {
+  "slug": "shion-masaki",
+  "date": "2025-11-22",
+  "opponent": "大成",
+  "methodRaw": "1R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "正木翔夢",
+  "event": "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "taiki-sawatani",
+  "date": "2022-07-03",
+  "opponent": "松山和弘",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "澤谷大樹",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "taiki-sawatani",
+  "date": "2022-07-03",
+  "opponent": "翔",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "澤谷大樹",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "taiki-sawatani",
+  "date": "2022-07-03",
+  "opponent": "松井大樹",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "澤谷大樹",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "taiki-sawatani",
+  "date": "2021-12-19",
+  "opponent": "龍 翔",
+  "methodRaw": "3R判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "澤谷大樹",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.8 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kumazawa-violence",
+  "date": "2026-06-14",
+  "opponent": "中川内 羽矢斗",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "熊澤 バイオレンス",
+  "event": "DEEP NAGOYA IMPACT 2026 2nd ROUND 公武堂ファイト",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "kyosuke-2",
+  "date": "2025-11-22",
+  "opponent": "惺也",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "狂介",
+  "event": "PROFESSIONAL SHOOTO 2025 Vol.10 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "yuki-tanaka",
+  "date": "2023-06-18",
+  "opponent": "成尾拓輝",
+  "methodRaw": "不戦敗",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "田中佑樹",
+  "event": "PROFESSIONAL SHOOTO 2023 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "koki-shiratori",
+  "date": "2025-05-25",
+  "opponent": "THE ROCK MFC",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "白鳥光希",
+  "event": "PROFESSIONAL SHOOTO 2025 Vol.5 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "koki-shiratori",
+  "date": "2024-12-29",
+  "opponent": "タカヤ･ハーデスワークアウト",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2024 FINAL in OSAKA GORILLA HALE OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "白鳥光希",
+  "event": "PROFESSIONAL SHOOTO 2024 FINAL in OSAKA GORILLA HALE OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "koki-shiratori",
+  "date": "2022-12-11",
+  "opponent": "朝日彗仁",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "白鳥光希",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "tatsuya-inaishi",
+  "date": "2019-02-17",
+  "opponent": "和輝",
+  "methodRaw": "判定",
+  "category": "mma",
+  "reason": "大会名「PANCRASE REBELS RING.1」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "稲石竜弥",
+  "event": "PANCRASE REBELS RING.1",
+  "promotion": "Bigbang"
+ },
+ {
+  "slug": "kakeru",
+  "date": "2022-07-03",
+  "opponent": "澤谷大樹",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "翔",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kakeru",
+  "date": "2022-07-03",
+  "opponent": "室屋宏幸",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "翔",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "arao-yuta",
+  "date": "2024-12-29",
+  "opponent": "シンパヤック・ハマジム",
+  "methodRaw": "3R 判定 ※OFGマッチ",
+  "category": "mma",
+  "reason": "大会名「プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2024 FINAL in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "荒尾 祐太",
+  "event": "プロフェッショナル修斗公式戦 PROFESSIONAL SHOOTO 2024 FINAL in OSAKA",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "kaito-fujii",
+  "date": "2022-12-11",
+  "opponent": "都筑海杜",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "藤井海人",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "taisei-nishitani",
+  "date": "2022-03-12",
+  "opponent": "鷹辰",
+  "methodRaw": "2R SUB",
+  "category": "mma",
+  "reason": "DEEP TOKYO IMPACTでの総合格闘技戦。method=\"submission\"、決着略号「SUB」は寝技一本を示す。",
+  "name": "西谷大成",
+  "event": "DEEP TOKYO IMPACT 2022 1st ROUND",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kaito-tsuzuki",
+  "date": "2022-12-11",
+  "opponent": "藤井海人",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "都筑海杜",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "kaito-tsuzuki",
+  "date": "2022-07-03",
+  "opponent": "松山和弘",
+  "methodRaw": "1R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "都筑海杜",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "yasuyuki-nojiri",
+  "date": "2023-01-15",
+  "opponent": "齋藤奨司",
+  "methodRaw": "1R KO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2023」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "野尻定由",
+  "event": "PROFESSIONAL SHOOTO 2023",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "yasuyuki-nojiri",
+  "date": "2022-07-03",
+  "opponent": "青柳洸志",
+  "methodRaw": "3R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "野尻定由",
+  "event": "PROFESSIONAL SHOOTO 2022 Vol.4 in OSAKA",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "yasuyuki-nojiri",
+  "date": "2022-01-16",
+  "opponent": "中村倫也",
+  "methodRaw": "1R TKO",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2022」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "野尻定由",
+  "event": "PROFESSIONAL SHOOTO 2022",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2026-07-18",
+  "opponent": "宮川 日向",
+  "methodRaw": "KO 2R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN LANDMARK 15 in HIROSHIMA",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2025-09-28",
+  "opponent": "ファン・イェーロウ",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN.51",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2025-06-14",
+  "opponent": "山本 空良",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN LANDMARK 11 in SAPPORO",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2024-12-31",
+  "opponent": "安井 飛馬",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN DECADE 雷神番外地",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2024-11-17",
+  "opponent": "秋元 強真",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN LANDMARK 10 in NAGOYA",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2024-07-28",
+  "opponent": "YA-MAN",
+  "methodRaw": "KO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "超RIZIN.3",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2024-02-24",
+  "opponent": "芦田 崇宏",
+  "methodRaw": "TKO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN LANDMARK 8 in SAGA",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2023-06-24",
+  "opponent": "西谷 大成",
+  "methodRaw": "TKO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN.43",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2022-11-07",
+  "opponent": "青井人",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN LANDMARK 4 in NAGOYA",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2022-07-02",
+  "opponent": "平本 蓮",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN.36",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2022-03-06",
+  "opponent": "昇侍",
+  "methodRaw": "1R TKO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN LANDMARK vol.2",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2021-12-31",
+  "opponent": "萩原 京平",
+  "methodRaw": "3R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN.33",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "date": "2021-10-02",
+  "opponent": "奥田 啓介",
+  "methodRaw": "1R TKO ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "鈴木 博昭",
+  "event": "RIZIN LANDMARK vol.1",
+  "promotion": "SHOOT BOXING"
+ },
+ {
   "slug": "gin-grapplingshootboxersgym",
   "date": "2023-10-01",
   "opponent": "太田 将吾",
@@ -878,5 +2528,71 @@
   "name": "銀・グラップリングシュートボクサーズジム",
   "event": "RIZIN LANDMARK 6 in NAGOYA",
   "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "gin-grapplingshootboxersgym",
+  "date": "2023-04-16",
+  "opponent": "橘川 尋貴",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "銀・グラップリングシュートボクサーズジム",
+  "event": "DEEP NAGOYA IMPACT 2023 公武堂ファイト 1st ROUND",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "gin-grapplingshootboxersgym",
+  "date": "2022-11-20",
+  "opponent": "拓MAX",
+  "methodRaw": "KO 2R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "銀・グラップリングシュートボクサーズジム",
+  "event": "EEP NAGOYA IMPACT 公武堂ファイト",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "gin-grapplingshootboxersgym",
+  "date": "2022-03-06",
+  "opponent": "今村 滉",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "銀・グラップリングシュートボクサーズジム",
+  "event": "DEEP NAGOYA IMPACT 公武堂ファイト",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "gin-grapplingshootboxersgym",
+  "date": "2021-10-24",
+  "opponent": "田口 貴規",
+  "methodRaw": "TKO 1R ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "銀・グラップリングシュートボクサーズジム",
+  "event": "DEEP NAGOYA IMPACT 2021公武堂ファイト",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "gin-grapplingshootboxersgym",
+  "date": "2021-07-25",
+  "opponent": "加藤 優也",
+  "methodRaw": "2R 判定 ※MMA",
+  "category": "mma",
+  "reason": "methodRawに出典由来の「※MMA」注記があり、MMAルールで行われた試合と明記されている。",
+  "name": "銀・グラップリングシュートボクサーズジム",
+  "event": "DEEP NAGOYA IMPACT 公武堂ファイト",
+  "promotion": "SHOOT BOXING"
+ },
+ {
+  "slug": "yosuke",
+  "date": "2021-07-04",
+  "opponent": "田渕神太",
+  "methodRaw": "3R判定",
+  "category": "mma",
+  "reason": "大会名「PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA」がPANCRASE/プロフェッショナル修斗/Bellatorの興行であり、総合格闘技(MMA)の大会。",
+  "name": "鷹介",
+  "event": "PROFESSIONAL SHOOTO 2021 Vol.4 in OSAKA",
+  "promotion": "RISE"
  }
 ]

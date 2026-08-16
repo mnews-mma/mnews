@@ -104,6 +104,9 @@ export interface KickStats {
   /** 自分側では相手が同名複数人で未解決だったが、相手側ページで自分に一意解決されている
    *  ことを手がかりに逆引きで解決できた行数。scripts/build-kick-data.tsのreverseResolveOpponent参照。 */
   reverseResolvedCount: number;
+  /** 表記ゆれ(ニックネーム挿入・旧名・スペース有無)を正規化して一意に解決できた行数。
+   *  scripts/build-kick-data.tsのfuzzyResolveOpponent参照(PR-8)。 */
+  fuzzyResolvedCount: number;
   /** MMA・エキシビジョン・アマチュア戦・ボクシングルールなど、キックボクシングの
    *  戦績として掲載すべきでないと判定してdata/kick/manualRuleExclusions.jsonの
    *  一覧と照合し除外した行数。 */
@@ -185,6 +188,20 @@ export const PROMOTION_SHORT: Record<string, string> = {
 };
 
 /**
+ * methodRawが決着情報ではなく大会レポート記事の一節がそのまま入ってしまっている行(6種、PR-8で確認)。
+ * 「決着方法だけに揃える」という決着列の目的に合わないため、決着欄には出さず「不明」扱いにする。
+ * 原文自体(methodRaw)は変更しない(title属性で確認可能なまま)。
+ */
+const PROSE_METHOD_RAW = new Set([
+  "※荻原がウイルス性の疾患の為欠場となり、DJナックルハンマーYOKKOに変更となる。",
+  "デビュー2戦目にして衝撃の秒殺KO勝ちを収めた横山が、準決勝進出に初名乗りを上げた。",
+  "2R 2’35” ＴKO ※右ボディフック ※1R：森本はボディ連打によりダウンあり。",
+  "1R TK02'42” 平野に1Rダウン2有。3回目でTKO",
+  "互いに倒すか倒されるかの激闘スタイルで勝ち上がってきただけに判定決着なしの大激闘のタイトルマッチが予想される。",
+  "酒井柚樹はトーナメント初戦（HIROKAZU）と準決勝（大久保俊）戦と連続KOで決勝戦に駒を進めた。",
+]);
+
+/**
  * 戦績表の「決着」列に出す表示用テキスト。**生データ(method_raw)は変更しない。**
  *
  * 出典サイトの原文は `3R 判定` / `3R判定` / `1R KO` / `1RKO` / `KO 1R` のように
@@ -194,6 +211,7 @@ export const PROMOTION_SHORT: Record<string, string> = {
  * 原文は title 属性で確認できるようにする。
  */
 export function methodLabel(raw: string): string {
+  if (PROSE_METHOD_RAW.has((raw ?? "").normalize("NFKC").trim())) return "不明";
   let s = (raw ?? "").normalize("NFKC").trim();
   if (!s) return "—";
   s = s.replace(/※.*$/, "");                 // ※MMA / ※OFGマッチ → ruleset バッジで表示済み
@@ -202,6 +220,21 @@ export function methodLabel(raw: string): string {
   s = s.replace(/[【(（]\s*(?:延長\s*)?\d+\s*R(?:終了時)?\s*[】)）]/g, " ");
   s = s.replace(/延長\s*R?/g, "");            // 延長 → is_extension バッジで表示済み
   s = s.replace(/\d+\s*R(?:終了時)?/g, " ");  // 3R / 1R / 3R終了時 → R列で表示済み
+  s = s.replace(/\s+/g, " ").trim();
+  // 「3R+延長R終了」「再延長R終了」のように、通常R+延長Rの連結表記や「再延長」は、
+  // 上記のR除去だけでは「+終了」「再終了」という壊れた表示になる(延長のRに数字が
+  // 付くと「延長」だけが除去されR側は数字R除去に回るため、「+」記号だけが取り残される)。
+  // 「延長した」という情報自体はisExtensionバッジだけでは「再延長」を区別できないため、
+  // 後処理でラベルに復元する。
+  s = s.replace(/\+\s*再\s*終了/g, "再延長R終了");
+  s = s.replace(/再\s*終了/g, "再延長R終了");
+  s = s.replace(/\+\s*終了/g, "延長R終了");
+  // 「終了」を伴わず判定・KO等が直接続く場合(「再延長R 判定」等)は、上と同じ壊れ方が
+  // 「+」や孤立した「再」として現れる。直後が空白/文字列末尾のときだけ復元する
+  // (「再延長」のようにまだ「延長」が続く箇所を誤って触らないため)。
+  s = s.replace(/\+\s*再(?=\s|$)/g, "再延長R");
+  s = s.replace(/(^|\s)再(?=\s|$)/g, "$1再延長R");
+  s = s.replace(/\+(?=\s|$)/g, "延長R");
   s = s.replace(/\s+/g, " ").trim();
   return s || "—";
 }
