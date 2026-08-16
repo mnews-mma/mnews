@@ -8,6 +8,13 @@
 # rest of data/ and all of src/ — always triggers a build. This is an
 # allowlist, not a denylist, so unknown/new paths default to "build".
 #
+# Exception within scripts/: scripts/build-kick-data.ts is not a one-off
+# script — `npm run build` invokes it (via kick:data) and its output
+# (data/kick/generated/) is exactly what /kick pages render at build time.
+# A change to it changes the deployed site and must always trigger a build
+# (bug found 2026-08-16: a scripts/-only change to this file was silently
+# skipped, leaving production on the previous commit's /kick data).
+#
 # Why data/archive.json alone is safe to skip:
 # archive-articles.yml commits to it every 30 minutes (up to 48 builds/day).
 # It's read client-side via a static raw.githubusercontent.com URL with
@@ -50,6 +57,10 @@ if [ "$CHANGED_FILES" = "data/archive.json" ]; then
 fi
 
 NON_SKIPPABLE=$(echo "$CHANGED_FILES" | grep -vE '^(out/|scripts/|docs/)' || true)
+BUILD_PIPELINE_SCRIPT=$(echo "$CHANGED_FILES" | grep -E '^scripts/build-kick-data\.ts$' || true)
+if [ -n "$BUILD_PIPELINE_SCRIPT" ]; then
+  NON_SKIPPABLE=$(printf '%s\n%s' "$NON_SKIPPABLE" "$BUILD_PIPELINE_SCRIPT" | grep -v '^$' || true)
+fi
 
 if [ -n "$NON_SKIPPABLE" ]; then
   echo "Changes outside out/, scripts/, docs/ detected:"
