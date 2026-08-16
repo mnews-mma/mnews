@@ -699,6 +699,27 @@ const stats = {
   }
 }
 
+// ---------- unmatchedBoutsの恒久ガード(ratchet) ----------
+// 選手の統合(名前・所属の変更)でidentity(名前|所属|出典URL)が変わると、bouts_*.jsonに
+// ハードコードされたfighter_slugとの不一致でunmatchedBoutsが静かに増える
+// (PR-6・PR-7で複合キーが原因の同型の副作用を2回連続で踏んだ)。前回ビルド時点の値を
+// 基準(ratchet)にし、増加したらビルドを失敗させる。減少・同値なら基準を更新する。
+{
+  const baselinePath = path.join(SRC, "unmatchedBoutsBaseline.json");
+  const prevBaseline: number = fs.existsSync(baselinePath)
+    ? JSON.parse(fs.readFileSync(baselinePath, "utf8")).unmatchedBouts
+    : stats.unmatchedBouts;
+  if (stats.unmatchedBouts > prevBaseline) {
+    throw new Error(
+      `[kick] unmatchedBouts が前回ビルド時点の基準(${prevBaseline}件)から${stats.unmatchedBouts}件に増加しました。` +
+        `選手の名前・所属を変更した際、その選手のbouts_*.json側のfighter_slug(identity形式)が` +
+        `古い値のまま残っている可能性があります(PR-6・PR-7で発生した罠と同型)。` +
+        `変更した選手のsourcesに該当するbouts_*.jsonのfighter_slugを新しいidentityに更新してください。`,
+    );
+  }
+  fs.writeFileSync(baselinePath, JSON.stringify({ unmatchedBouts: stats.unmatchedBouts }, null, 1) + "\n");
+}
+
 // data/kick/manualRuleExclusions.json の各行が実際にちょうど1件のboutと
 // マッチしたかを確認する(0件=データ変化でヒットしなくなった古いエントリ、
 // 2件以上=キーが一意でない)。手動キュレーションした一覧のドリフトを

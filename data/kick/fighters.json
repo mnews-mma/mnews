@@ -4721,32 +4721,18 @@
   "birthdate": "1996.7.30"
  },
  {
-  "name": "上杉 隼土",
-  "kana": "ウエスギ ハヤト",
-  "aliases": [],
-  "gym": null,
-  "orgs": [
-   "K-1"
-  ],
-  "sources": [
-   "https://www.k-1.co.jp/fighter/488"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://www.k-1.co.jp/fighter/488"
-  },
-  "birthdate": null
- },
- {
   "name": "上杉 隼琉",
   "kana": "ウエスギ ハヤト",
-  "aliases": [],
+  "aliases": [
+   "上杉 隼土"
+  ],
   "gym": null,
   "orgs": [
    "K-1"
   ],
   "sources": [
-   "https://www.k-1.co.jp/fighter/172"
+   "https://www.k-1.co.jp/fighter/172",
+   "https://www.k-1.co.jp/fighter/488"
   ],
   "kana_source": {
    "type": "published",
@@ -10918,30 +10904,18 @@
   "birthdate": "2001.8.20"
  },
  {
-  "name": "クンタップ・ウィラサクレック",
-  "kana": "クンタップ・ウィラサクレック",
-  "aliases": [],
-  "gym": null,
-  "orgs": [],
-  "sources": [
-   "https://ja.wikipedia.org/wiki/クンタップ・ウィラサクレック"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://ja.wikipedia.org/wiki/クンタップ・ウィラサクレック"
-  },
-  "birthdate": null
- },
- {
   "name": "クンタップ・チャロンチャイ",
   "kana": "クンタップ・チャロンチャイ",
-  "aliases": [],
+  "aliases": [
+   "クンタップ・ウィラサクレック"
+  ],
   "gym": "タイ/TEAM KUNTAP",
   "orgs": [
    "KNOCK OUT"
   ],
   "sources": [
-   "https://knockoutkb.com/fighters/kuntap_charoenchai_123"
+   "https://knockoutkb.com/fighters/kuntap_charoenchai_123",
+   "https://ja.wikipedia.org/wiki/クンタップ・ウィラサクレック"
   ],
   "kana_source": {
    "type": "published",
@@ -11553,7 +11527,9 @@
  {
   "name": "ゲーオ・ウィラサクレック",
   "kana": "ゲーオ・ウィラサクレック",
-  "aliases": [],
+  "aliases": [
+   "ゲーオ・フェアテックス"
+  ],
   "gym": "ウィラサクレック・フェアテックスジム",
   "orgs": [
    "K-1 WORLD GP",
@@ -11561,28 +11537,14 @@
    "Krush-EX"
   ],
   "sources": [
-   "https://www.k-1.co.jp/fighter/6"
+   "https://www.k-1.co.jp/fighter/6",
+   "https://ja.wikipedia.org/wiki/ゲーオ・フェアテックス"
   ],
   "kana_source": {
    "type": "published",
    "url": "https://www.k-1.co.jp/fighter/6"
   },
   "birthdate": "1984.9.5"
- },
- {
-  "name": "ゲーオ・フェアテックス",
-  "kana": "ゲーオ・フェアテックス",
-  "aliases": [],
-  "gym": null,
-  "orgs": [],
-  "sources": [
-   "https://ja.wikipedia.org/wiki/ゲーオ・フェアテックス"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://ja.wikipedia.org/wiki/ゲーオ・フェアテックス"
-  },
-  "birthdate": null
  },
  {
   "name": "ゲーリー・グッドリッジ",
@@ -16815,34 +16777,22 @@
  {
   "name": "ジョムトーン・ストライカージム",
   "kana": "ジョムトーン・ストライカージム",
-  "aliases": [],
+  "aliases": [
+   "ジョムトーン・チュワタナ"
+  ],
   "gym": "Striker GYM",
   "orgs": [
    "K-1"
   ],
   "sources": [
-   "https://www.k-1.co.jp/fighter/1307"
+   "https://www.k-1.co.jp/fighter/1307",
+   "https://ja.wikipedia.org/wiki/ジョムトーン・チュワタナ"
   ],
   "kana_source": {
    "type": "published",
    "url": "https://www.k-1.co.jp/fighter/1307"
   },
   "birthdate": "1989.7.28"
- },
- {
-  "name": "ジョムトーン・チュワタナ",
-  "kana": "ジョムトーン・チュワタナ",
-  "aliases": [],
-  "gym": null,
-  "orgs": [],
-  "sources": [
-   "https://ja.wikipedia.org/wiki/ジョムトーン・チュワタナ"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://ja.wikipedia.org/wiki/ジョムトーン・チュワタナ"
-  },
-  "birthdate": null
  },
  {
   "name": "ジョムホート・キアタディサック",
@@ -17305,23 +17255,6 @@
    "url": "https://knockoutkb.com/fighters/sueamanee_kaewsamrit_424"
   },
   "birthdate": "2004.5.28"
- },
- {
-  "name": "スアレック・ルークカムイ",
-  "kana": "スアレック・ルークカムイ",
-  "aliases": [],
-  "gym": null,
-  "orgs": [
-   "K-1"
-  ],
-  "sources": [
-   "https://www.k-1.co.jp/fighter/854"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://www.k-1.co.jp/fighter/854"
-  },
-  "birthdate": "1986.3.16"
  },
  {
   "name": "水津 空良",
@@ -22521,32 +22454,19 @@
   "birthdate": "1982.5.14"
  },
  {
-  "name": "デニス・ウォシク",
-  "kana": "デニス・ウォシク",
-  "aliases": [],
+  "name": "デニス・ウォーシック",
+  "kana": "デニス・ウォーシック",
+  "aliases": [
+   "デニス・ウォシク"
+  ],
   "gym": "Amrani Palace",
   "orgs": [
+   "K-1",
    "RISE"
   ],
   "sources": [
+   "https://www.k-1.co.jp/fighter/858",
    "https://rise-rc.com/fighter/denis-wosik/"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://rise-rc.com/fighter/denis-wosik/"
-  },
-  "birthdate": "1996.11.23"
- },
- {
-  "name": "デニス・ウォーシック",
-  "kana": "デニス・ウォーシック",
-  "aliases": [],
-  "gym": "Amrani Palace",
-  "orgs": [
-   "K-1"
-  ],
-  "sources": [
-   "https://www.k-1.co.jp/fighter/858"
   ],
   "kana_source": {
    "type": "published",
@@ -28907,34 +28827,22 @@
  {
   "name": "ブアカーオ・バンチャメーク",
   "kana": "ブアカーオ・バンチャメーク",
-  "aliases": [],
+  "aliases": [
+   "ブアカーオ・ポー.プラムック"
+  ],
   "gym": "Banchamek Gym",
   "orgs": [
    "K-1 WORLD GP"
   ],
   "sources": [
-   "https://www.k-1.co.jp/fighter/1488"
+   "https://www.k-1.co.jp/fighter/1488",
+   "https://ja.wikipedia.org/wiki/ブアカーオ・ポー.プラムック"
   ],
   "kana_source": {
    "type": "published",
    "url": "https://www.k-1.co.jp/fighter/1488"
   },
   "birthdate": "1982.5.8"
- },
- {
-  "name": "ブアカーオ・ポー.プラムック",
-  "kana": "ブアカーオ・ポー.プラムック",
-  "aliases": [],
-  "gym": null,
-  "orgs": [],
-  "sources": [
-   "https://ja.wikipedia.org/wiki/ブアカーオ・ポー.プラムック"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://ja.wikipedia.org/wiki/ブアカーオ・ポー.プラムック"
-  },
-  "birthdate": null
  },
  {
   "name": "ブハリ亜輝留",
@@ -36992,23 +36900,6 @@
   "birthdate": null
  },
  {
-  "name": "ヨーブアデーン・フェアテックス",
-  "kana": "ヨーブアデーン・フェアテックス",
-  "aliases": [],
-  "gym": "フェアテックス",
-  "orgs": [
-   "K-1"
-  ],
-  "sources": [
-   "https://www.k-1.co.jp/fighter/929"
-  ],
-  "kana_source": {
-   "type": "published",
-   "url": "https://www.k-1.co.jp/fighter/929"
-  },
-  "birthdate": "1995.8.11"
- },
- {
   "name": "Yo-hei",
   "kana": "ヨーヘイ",
   "aliases": [],
@@ -41649,13 +41540,17 @@
  {
   "name": "スアレック・TEPPEN GYM",
   "kana": null,
-  "aliases": [],
+  "aliases": [
+   "スアレック・ルークカムイ"
+  ],
   "gym": "TEAM TEPPEN",
   "orgs": [
-   "RISE"
+   "RISE",
+   "K-1"
   ],
   "sources": [
-   "https://rise-rc.com/fighter/suarek-teppen-gym/"
+   "https://rise-rc.com/fighter/suarek-teppen-gym/",
+   "https://www.k-1.co.jp/fighter/854"
   ],
   "kana_source": null,
   "birthdate": "1986.5.16"
@@ -42146,13 +42041,17 @@
  {
   "name": "ヨーブアデーン・3RDPlace",
   "kana": null,
-  "aliases": [],
+  "aliases": [
+   "ヨーブアデーン・フェアテックス"
+  ],
   "gym": "3RDPlace",
   "orgs": [
-   "RISE"
+   "RISE",
+   "K-1"
   ],
   "sources": [
-   "https://rise-rc.com/fighter/yodbuadang-3rdplace/"
+   "https://rise-rc.com/fighter/yodbuadang-3rdplace/",
+   "https://www.k-1.co.jp/fighter/929"
   ],
   "kana_source": null,
   "birthdate": "1995.8.11"
@@ -42536,7 +42435,7 @@
   "name": "中島 隆徳",
   "kana": null,
   "aliases": [],
-  "gym": "GET OVER 2005年4月",
+  "gym": "GETOVER",
   "orgs": [
    "KNOCK OUT"
   ],
@@ -43824,23 +43723,11 @@
   "aliases": [],
   "gym": "真門ジム",
   "orgs": [
-   "RISE"
-  ],
-  "sources": [
-   "https://rise-rc.com/fighter/yushi/"
-  ],
-  "kana_source": null,
-  "birthdate": "2000.4.28"
- },
- {
-  "name": "勇志",
-  "kana": null,
-  "aliases": [],
-  "gym": "テツジム関西",
-  "orgs": [
+   "RISE",
    "KNOCK OUT"
   ],
   "sources": [
+   "https://rise-rc.com/fighter/yushi/",
    "https://knockoutkb.com/fighters/yushi_627"
   ],
   "kana_source": null,
@@ -49407,7 +49294,7 @@
  },
  {
   "name": "海人",
-  "kana": null,
+  "kana": "カイト",
   "aliases": [],
   "gym": "TEAM F.O.D",
   "orgs": [
@@ -49420,7 +49307,10 @@
    "https://shootboxing.org/fighter/kaito/",
    "https://knockoutkb.com/fighters/kaito_281"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "from_romaji",
+   "url": "https://rise-rc.com/fighter/kaito/"
+  },
   "birthdate": "1997.8.21"
  },
  {
@@ -49970,23 +49860,11 @@
   "aliases": [],
   "gym": "L-REX",
   "orgs": [
-   "RISE"
-  ],
-  "sources": [
-   "https://rise-rc.com/fighter/ruka/"
-  ],
-  "kana_source": null,
-  "birthdate": "1997.7.24"
- },
- {
-  "name": "瑠夏",
-  "kana": null,
-  "aliases": [],
-  "gym": "フリー",
-  "orgs": [
+   "RISE",
    "KNOCK OUT"
   ],
   "sources": [
+   "https://rise-rc.com/fighter/ruka/",
    "https://knockoutkb.com/fighters/ruka_462"
   ],
   "kana_source": null,
@@ -52883,7 +52761,7 @@
  },
  {
   "name": "髙山 敦",
-  "kana": null,
+  "kana": "タカヤマ アツシ",
   "aliases": [
    "高山 敦"
   ],
@@ -52896,7 +52774,10 @@
    "https://knockoutkb.com/fighters/takayama_atsushi_458",
    "https://shootboxing.org/fighter/takayama_atsushi/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "from_romaji",
+   "url": "https://knockoutkb.com/fighters/takayama_atsushi_458"
+  },
   "birthdate": "2008.3.31"
  },
  {
@@ -53146,23 +53027,11 @@
   "aliases": [],
   "gym": "健心塾",
   "orgs": [
-   "RISE"
-  ],
-  "sources": [
-   "https://rise-rc.com/fighter/asataro/"
-  ],
-  "kana_source": null,
-  "birthdate": "2002.2.8"
- },
- {
-  "name": "麻太郎",
-  "kana": null,
-  "aliases": [],
-  "gym": "フリー",
-  "orgs": [
+   "RISE",
    "KNOCK OUT"
   ],
   "sources": [
+   "https://rise-rc.com/fighter/asataro/",
    "https://knockoutkb.com/fighters/asataro_509"
   ],
   "kana_source": null,
