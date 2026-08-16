@@ -84,7 +84,11 @@ def parse_fight_rows(wikitext):
         opponent = re.sub(r"<[^>]+>", "", opponent).strip()
         event_clean = re.sub(r"<br\s*/?>", " ", event, flags=re.I)
         event_clean = re.sub(r"【[^】]*】", "", event_clean).strip()
-        dm = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", date_raw)
+        # PR-10: 「2011年（平成23年）5月15日」のように西暦年の直後に元号年の注記が挟まる
+        # 表記があり、旧正規表現(年月日が連続することを要求)では日付が全く拾えていなかった
+        # (date(null)監査で発見、黒田アキヒロの記事で38行中38行が該当していた)。
+        # 元号注記(全角/半角括弧)を任意で許容する。
+        dm = re.search(r"(\d{4})年(?:[（(][^）)]*[）)])?(\d{1,2})月(\d{1,2})日", date_raw)
         date = f"{dm.group(1)}-{int(dm.group(2)):02d}-{int(dm.group(3)):02d}" if dm else None
         rows.append(dict(mark=mark, opponent=opponent, method=method, event=event_clean, date=date))
     return rows

@@ -77,7 +77,22 @@ DEBUT_LEAD_RE = re.compile(r'^[※＊]\s*デビュー戦\s*')
 DECISION_KW = re.compile(r'判定|不戦勝|ノーコンテスト|ドロー|反則|時間切れ|棄権|中止|失格|無効|TKO|KO|一本|勝敗なし')
 HDR_RE = re.compile(r'^[▼・]')
 DATE_VENUE_RE = re.compile(r'(\d{4})年(\d{1,2})月(\d{1,2})日[（(].[）)]\s*(.*)$')
-DATE_NOYEAR_RE = re.compile(r'^(\d{1,2})[./](\d{1,2})\b')
+# PR-10: 記事冒頭の日付表記に「25.4.6 KROSS×OVER.30...」(2桁年.月.日、曜日カッコ無し)や
+# 「4.19KROSS×OVER.35...」(月.日の直後に空白無しでイベント名が続く)という2つの短縮形式が
+# あり、旧DATE_NOYEAR_REはどちらも取れていなかった(date(null)監査で発見)。
+#   - 前者: `^(\d{1,2})[./](\d{1,2})\b` は "25.4.6" の "25" を月と誤認し(月>12で棄却)、
+#     年の存在自体を考慮していなかった。
+#   - 後者: 末尾の`\b`(語境界)が、日付の数字に空白無しで直接アルファベットの団体名
+#     ("4.19KROSS...")が続く場合に成立しない(数字と英字はどちらも\w扱いのため)。
+# 2桁年.月.日を先に試し、無ければ年無し月.日にフォールバックする(既存仕様どおりpublished
+# から年を補完)。どちらも日付直後が非数字である地点までを日付として扱う(`(?=\D|$)`)。
+DATE_YMD2_RE = re.compile(r'(\d{2})\.(\d{1,2})\.(\d{1,2})(?=\D|$)')
+# 「プロ興業7/5【KROSS×OVER.36】...」「【9.28 KROSS×OVER.32...】」のように、日付が行頭
+# ではなく前置きの直後や【】の中に来る記事もある(date(null)監査で追加発見)。前2形式と違い
+# 行頭固定(^)を外し、行内のどこにあっても拾う(searchに変更)。誤検出対策として、
+# 月/日とも数値範囲チェック(1-12/1-31)を通過した最初の候補のみ採用する
+# (「-65.8kg」等の体重表記は小数点前が2桁を超えるか月として無効な値になるため通常ここでは拾わない)。
+DATE_NOYEAR_RE = re.compile(r'(\d{1,2})[./](\d{1,2})(?=\D|$)')
 BOLD_EVENT_RE = re.compile(r'(?s)<strong>\s*(KROSS[×xX]OVER[^<]{0,40}?)\s*</strong>')
 TITLE_RE = re.compile(r'[「『]\s*(KROSS[×xX]OVER[^」』]{0,40}?)\s*[」』]')
 H1_RE = re.compile(r'(?s)<h1[^>]*class="entry-title"[^>]*>(.*?)</h1>')
@@ -152,7 +167,7 @@ def extract_published(full_html):
     return m.group(1) if m else None
 
 
-def extract_date_venue(lines, published):
+def extract_date_venue(lines, published, h1_title=None):
     for l in lines[:8]:
         m = DATE_VENUE_RE.search(l)
         if m:
@@ -161,10 +176,19 @@ def extract_date_venue(lines, published):
             venue = re.split(r'にて', venue)[0].strip()
             venue = venue if venue and len(venue) < 40 else None
             return date, venue
+    # 本文冒頭(段落テキスト)の候補に加え、記事タイトル(h1)も同じ形式の日付候補として試す
+    # (本文に日付表記が無くタイトルにのみ書かれている記事があるため)。
+    candidates = list(lines[:5]) + ([h1_title] if h1_title else [])
+    for l in candidates:
+        m = DATE_YMD2_RE.search(l)
+        if m:
+            yy, mo, da = int(m.group(1)), int(m.group(2)), int(m.group(3))
+            if 1 <= mo <= 12 and 1 <= da <= 31:
+                return '%s-%02d-%02d' % (2000 + yy, mo, da), None
     if published:
         py, pm = int(published[:4]), int(published[5:7])
-        for l in lines[:5]:
-            m = DATE_NOYEAR_RE.match(l)
+        for l in candidates:
+            m = DATE_NOYEAR_RE.search(l)
             if m:
                 mo, da = int(m.group(1)), int(m.group(2))
                 if 1 <= mo <= 12 and 1 <= da <= 31:
@@ -281,9 +305,12 @@ def build():
         full_html, body_html = get_body_html(path)
         lines = get_lines(body_html)
         published = extract_published(full_html)
-        date, venue = extract_date_venue(lines, published)
         h1m = H1_RE.search(full_html)
         h1_title = U(h1m.group(1)) if h1m else None
+        # PR-10: 本文冒頭(lines)に日付表記が無く、記事タイトル(h1)にのみ日付がある記事が
+        # あった(例: p=2414「4.21『KROSS×OVER.25』第1・2・3部 公式結果」)。h1_titleも
+        # lines同様の候補として渡し、本文になければタイトルから拾う。
+        date, venue = extract_date_venue(lines, published, h1_title)
         event = extract_event(body_html, lines, h1_title)
         blks = parse_blocks(lines)
         stats['blocks'] += len(blks)

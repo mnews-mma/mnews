@@ -115,7 +115,7 @@ def get_lines(path):
     return [U(p) for p in ps if U(p)]
 
 
-def extract_date_venue(lines, published):
+def extract_date_venue(lines, published, source_url=None):
     for l in lines[:6]:
         m = DATE_VENUE_RE.search(l)
         if m:
@@ -133,6 +133,14 @@ def extract_date_venue(lines, published):
             year = py - 1 if mo > pm + 1 else py
             venue = m.group(3).strip() or None
             return '%s-%02d-%02d' % (year, mo, da), venue
+    # PR-10: 本文が複数日程(1回戦は7/24と9/18の2大会に分けて実施、等)を並記しているために
+    # 上記どちらの形式にも一致しない記事があった。standup-kick.comのURLは
+    # /pronews/result/YYYY/MM/DD/ID/ の形式で記事自身の公開日(=通常イベント当日または
+    # 翌日)を含んでおり、本文からの日付抽出が全て失敗した場合の最終フォールバックとして使う。
+    if source_url:
+        um = re.search(r'/result/(\d{4})/(\d{2})/(\d{2})/', source_url)
+        if um:
+            return '%s-%s-%s' % (um.group(1), um.group(2), um.group(3)), None
     return None, None
 
 
@@ -219,7 +227,7 @@ def build():
         stats['articles'] += 1
         path = f'raw/standup_pro_results/{h}.html'
         lines = get_lines(path)
-        date, venue = extract_date_venue(lines, info['date'])
+        date, venue = extract_date_venue(lines, info['date'], info.get('url'))
         event = extract_event(lines, extract_h2_title(path) or f'Stand up記事{h}')
         blks = parse_blocks(lines)
         stats['blocks'] += len(blks)
