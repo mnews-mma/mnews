@@ -144,10 +144,21 @@ const orgNameToLabel: Record<string, string> = {
   SNKA: "新日本キックボクシング協会(SNKA)",
   JKA: "JKA",
 };
+// PR-15: 15団体フィルタを撤廃し、Wikipedia側で推定した実際の団体名をそのまま採用する。
+// 既存15団体に該当する場合は公式一次ソースと同じラベルに正規化して合流させる(同一団体の
+// 試合として束ねる・重複排除するため)。該当しない団体(GLORY・ルンピニー・WAKO
+// SuperLeague等の副次団体、および見出しから団体名を特定できなかった「その他団体」)は、
+// target_orgの文字列をそのままpromotionラベルとして採用する(黙って捨てない)。
+// tagByLabelにこれら新規ラベルの持つtagが存在しないと、後段のboutOrgTagSet/
+// orgTagsBySlug計算で選手ページの団体タグ(orgs)から欠落するため、tag=label自身として
+// 動的に登録する(boutFiles自体には追加しない — boutFilesは実ファイルのロードにも
+// 使われるため、対応するbouts_*.jsonファイルを持たないこの種のラベルを混ぜると壊れる)。
 if (fs.existsSync(path.join(SRC, "bouts_wikipedia.json"))) {
   for (const x of read<(Bout & { target_org?: string })[]>("bouts_wikipedia.json")) {
-    const label = orgNameToLabel[x.target_org ?? ""];
-    if (!label) continue; // 未知のtarget_orgは合流させない(想定外データを黙って混ぜない)
+    const rawOrg = x.target_org ?? "";
+    if (!rawOrg) continue; // target_org自体が空のデータは想定外として合流させない
+    const label = orgNameToLabel[rawOrg] ?? rawOrg;
+    if (!tagByLabel.has(label)) tagByLabel.set(label, label);
     const { target_org: _drop, ...bout } = x;
     allBouts.push({ ...bout, promotion: label, matchBy: "identity" });
   }
@@ -680,12 +691,17 @@ for (const f of fighters) {
   resultUnknownRows += bouts.filter((b) => b.result === "unknown").length;
   boutRowsWikipedia += bouts.filter((b) => b.source_type === "wikipedia").length;
 
+  // PR-15: 既存15団体はboutFiles宣言順を維持(既存の並び順・出力を変えない)。
+  // それ以外(Wikipedia由来の新規団体)はboutFilesに項目が無いため、選手ごとの
+  // bouts配列(日付降順)に現れた順で末尾に追加する。
   const boutOrgTagSet = new Set(bouts.map((b) => tagByLabel.get(b.promotion)!));
-  const boutOrgLabels = boutFiles.filter((bf) => boutOrgTagSet.has(bf.tag)).map((bf) => bf.label);
-  orgTagsBySlug.set(
-    slug,
-    boutFiles.filter((bf) => boutOrgTagSet.has(bf.tag)).map((bf) => bf.tag),
-  );
+  const knownOrgTagSet = new Set(boutFiles.map((bf) => bf.tag));
+  const extraOrgTags = [...boutOrgTagSet].filter((t) => !knownOrgTagSet.has(t));
+  const boutOrgLabels = [
+    ...boutFiles.filter((bf) => boutOrgTagSet.has(bf.tag)).map((bf) => bf.label),
+    ...extraOrgTags,
+  ];
+  orgTagsBySlug.set(slug, [...boutFiles.filter((bf) => boutOrgTagSet.has(bf.tag)).map((bf) => bf.tag), ...extraOrgTags]);
 
   // 選手ページヘッダーの「収録N試合: X勝Y敗Z分」集計。ビルド時に確定させ、
   // ページ側はこの値をそのまま出す(リクエスト時集計はしない)。

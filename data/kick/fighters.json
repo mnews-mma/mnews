@@ -36056,7 +36056,7 @@
  },
  {
   "name": "悠斗",
-  "kana": "ユウト",
+  "kana": "ゆうと",
   "aliases": [],
   "gym": "HUNGRY GYM",
   "orgs": [
@@ -36068,7 +36068,7 @@
   ],
   "kana_source": {
    "type": "published",
-   "url": "https://www.k-1.co.jp/fighter/1393"
+   "url": "https://ja.wikipedia.org/wiki/悠斗"
   },
   "birthdate": "1993.2.24"
  },
@@ -40847,7 +40847,7 @@
  },
  {
   "name": "SAIGO",
-  "kana": null,
+  "kana": "サイゴウ",
   "aliases": [],
   "gym": "TARGET SHIBUYA",
   "orgs": [
@@ -40856,7 +40856,10 @@
   "sources": [
    "https://rise-rc.com/fighter/saigo/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/SAIGO"
+  },
   "birthdate": "1997.3.6"
  },
  {
@@ -41128,7 +41131,7 @@
  },
  {
   "name": "YURA",
-  "kana": null,
+  "kana": "ユーラ",
   "aliases": [],
   "gym": "DIATIGER GYM",
   "orgs": [
@@ -41137,7 +41140,10 @@
   "sources": [
    "https://rise-rc.com/fighter/yura/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/YURA"
+  },
   "birthdate": "2003.8.18"
  },
  {
@@ -41318,7 +41324,7 @@
  },
  {
   "name": "ウザ強ヨシヤ",
-  "kana": null,
+  "kana": "ウザツヨ ヨシヤ",
   "aliases": [],
   "gym": "FIGHT CLUB 428",
   "orgs": [
@@ -41327,7 +41333,10 @@
   "sources": [
    "https://rise-rc.com/fighter/uzatsuyo_yoshiya/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/ウザ強ヨシヤ"
+  },
   "birthdate": "1996.10.15"
  },
  {
@@ -42141,7 +42150,7 @@
  },
  {
   "name": "三上ヘンリー大智",
-  "kana": null,
+  "kana": "みかみ ヘンリー だいち",
   "aliases": [],
   "gym": "格闘ドリーマーズ",
   "orgs": [
@@ -42150,7 +42159,10 @@
   "sources": [
    "https://knockoutkb.com/fighters/mikami_henry_daichi_112"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/三上ヘンリー大智"
+  },
   "birthdate": "1996.4.6"
  },
  {
@@ -42309,7 +42321,7 @@
  },
  {
   "name": "与座優貴",
-  "kana": null,
+  "kana": "よざ ゆうき",
   "aliases": [],
   "gym": "K-1 GYM SAGAMI-ONO KREST",
   "orgs": [
@@ -42319,7 +42331,10 @@
    "https://rise-rc.com/fighter/yoza_yuki/",
    "https://www.k-1.co.jp/fighter/1202"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/与座優貴"
+  },
   "birthdate": "1997.12.20"
  },
  {
@@ -42859,7 +42874,7 @@
  },
  {
   "name": "京谷祐希",
-  "kana": null,
+  "kana": "きょうたに ゆうき",
   "aliases": [],
   "gym": "TEAM TEPPEN",
   "orgs": [
@@ -42868,7 +42883,10 @@
   "sources": [
    "https://rise-rc.com/fighter/kyotani_yuki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/京谷祐希"
+  },
   "birthdate": "1988.7.21"
  },
  {
@@ -43736,7 +43754,7 @@
  },
  {
   "name": "勝次",
-  "kana": null,
+  "kana": "かつじ",
   "aliases": [],
   "gym": "TEAM TEPPEN",
   "orgs": [
@@ -43745,7 +43763,10 @@
   "sources": [
    "https://rise-rc.com/fighter/katsuji/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/勝次"
+  },
   "birthdate": "1987.3.1"
  },
  {
@@ -43907,7 +43928,7 @@
  },
  {
   "name": "原口健飛",
-  "kana": null,
+  "kana": "はらぐち けんと",
   "aliases": [],
   "gym": "FASCINATE FIGHT TEAM",
   "orgs": [
@@ -43917,7 +43938,10 @@
    "https://rise-rc.com/fighter/haraguchi_kento/",
    "https://www.k-1.co.jp/fighter/1259"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/原口健飛"
+  },
   "birthdate": "1998.4.9"
  },
  {
@@ -44088,7 +44112,7 @@
  },
  {
   "name": "吉田実代",
-  "kana": null,
+  "kana": "よしだ みよ",
   "aliases": [],
   "gym": "Bread winner NYC",
   "orgs": [
@@ -44097,7 +44121,10 @@
   "sources": [
    "https://rise-rc.com/fighter/yoshida_miyo/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/吉田実代"
+  },
   "birthdate": "1988.4.12"
  },
  {
@@ -44285,7 +44312,7 @@
  },
  {
   "name": "國枝悠太",
-  "kana": null,
+  "kana": "くにえだ ゆうた",
   "aliases": [],
   "gym": "Never mind/9+nine plus lab",
   "orgs": [
@@ -44295,7 +44322,10 @@
    "https://rise-rc.com/fighter/kunieda_yuta/",
    "https://www.k-1.co.jp/fighter/1133"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/國枝悠太"
+  },
   "birthdate": "1992.10.23"
  },
  {
@@ -44356,7 +44386,7 @@
  },
  {
   "name": "坂本優起",
-  "kana": null,
+  "kana": "さかもと ゆうき",
   "aliases": [],
   "gym": "シーザージム",
   "orgs": [
@@ -44367,7 +44397,10 @@
    "https://rise-rc.com/fighter/sakamoto_yuki/",
    "https://shootboxing.org/fighter/sakamoto_yuki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/坂本優起"
+  },
   "birthdate": "1984.7.14"
  },
  {
@@ -44586,7 +44619,7 @@
  },
  {
   "name": "塩川琉斗",
-  "kana": null,
+  "kana": "しおかわ りゅうと",
   "aliases": [],
   "gym": "TOP STAR GYM",
   "orgs": [
@@ -44595,7 +44628,10 @@
   "sources": [
    "https://rise-rc.com/fighter/shiokawa_ryuto/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/塩川琉斗"
+  },
   "birthdate": "2002.5.4"
  },
  {
@@ -44614,7 +44650,7 @@
  },
  {
   "name": "壱・センチャイジム",
-  "kana": null,
+  "kana": "イッセイ・センチャイジム",
   "aliases": [],
   "gym": "センチャイムエタイジム",
   "orgs": [
@@ -44623,7 +44659,10 @@
   "sources": [
    "https://knockoutkb.com/fighters/issei_saenchaigym"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/壱・センチャイジム"
+  },
   "birthdate": "1997.8.15"
  },
  {
@@ -44844,7 +44883,7 @@
  },
  {
   "name": "大﨑一貴",
-  "kana": null,
+  "kana": "おおさき かずき",
   "aliases": [],
   "gym": "OISHI GYM",
   "orgs": [
@@ -44853,12 +44892,15 @@
   "sources": [
    "https://rise-rc.com/fighter/osaki_kazuki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/大﨑一貴"
+  },
   "birthdate": "1996.8.28"
  },
  {
   "name": "大﨑孔稀",
-  "kana": null,
+  "kana": "おおさき こうき",
   "aliases": [],
   "gym": "OISHI GYM",
   "orgs": [
@@ -44867,7 +44909,10 @@
   "sources": [
    "https://rise-rc.com/fighter/osaki_koki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/大﨑孔稀"
+  },
   "birthdate": "1999.10.5"
  },
  {
@@ -45082,7 +45127,7 @@
  },
  {
   "name": "安本晴翔",
-  "kana": null,
+  "kana": "やすもと はると",
   "aliases": [],
   "gym": "橋本道場",
   "orgs": [
@@ -45092,7 +45137,10 @@
    "https://rise-rc.com/fighter/yasumoto_haruto/",
    "https://www.k-1.co.jp/fighter/1347"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/安本晴翔"
+  },
   "birthdate": "2000.5.27"
  },
  {
@@ -45352,7 +45400,7 @@
  },
  {
   "name": "寺山日葵",
-  "kana": null,
+  "kana": "てらやま ひなた",
   "aliases": [],
   "gym": "TEAM TEPPEN",
   "orgs": [
@@ -45361,7 +45409,10 @@
   "sources": [
    "https://rise-rc.com/fighter/terayama_hinata/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/寺山日葵"
+  },
   "birthdate": "2001.1.19"
  },
  {
@@ -45858,7 +45909,7 @@
  },
  {
   "name": "山口裕人",
-  "kana": null,
+  "kana": "やまぐち ひろと",
   "aliases": [],
   "gym": "道化俱楽部",
   "orgs": [
@@ -45868,7 +45919,10 @@
    "https://rise-rc.com/fighter/yamaguchi_hiroto/",
    "https://www.k-1.co.jp/fighter/321"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/山口裕人"
+  },
   "birthdate": "1992.5.20"
  },
  {
@@ -46319,7 +46373,7 @@
  },
  {
   "name": "島田知佳",
-  "kana": null,
+  "kana": "しまだ はるか",
   "aliases": [],
   "gym": "team VASILEUS",
   "orgs": [
@@ -46328,7 +46382,10 @@
   "sources": [
    "https://rise-rc.com/fighter/shimada_haruka/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/島田知佳"
+  },
   "birthdate": "1996.10.21"
  },
  {
@@ -46452,7 +46509,7 @@
  },
  {
   "name": "工藤“red”玲央",
-  "kana": null,
+  "kana": "くどう れっど れお",
   "aliases": [],
   "gym": "TEAM TEPPEN",
   "orgs": [
@@ -46461,7 +46518,10 @@
   "sources": [
    "https://knockoutkb.com/fighters/kudo_red_reo_84"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/工藤“red”玲央"
+  },
   "birthdate": "1987.5.8"
  },
  {
@@ -46550,7 +46610,7 @@
  },
  {
   "name": "常陸飛雄馬",
-  "kana": null,
+  "kana": "ひたち ひゅうま",
   "aliases": [],
   "gym": "TARGET SHIBUYA",
   "orgs": [
@@ -46560,7 +46620,10 @@
    "https://rise-rc.com/fighter/hitachi_hyuma/",
    "https://www.k-1.co.jp/fighter/1440"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/常陸飛雄馬"
+  },
   "birthdate": "1998.2.16"
  },
  {
@@ -46766,7 +46829,7 @@
  },
  {
   "name": "弘・センチャイジム",
-  "kana": null,
+  "kana": "コウタ・センチャイジム",
   "aliases": [],
   "gym": "センチャイムエタイジム",
   "orgs": [
@@ -46775,7 +46838,10 @@
   "sources": [
    "https://knockoutkb.com/fighters/kota_saenchaigym_499"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/弘・センチャイジム"
+  },
   "birthdate": "2001.11.14"
  },
  {
@@ -46910,7 +46976,7 @@
  },
  {
   "name": "悠斗",
-  "kana": null,
+  "kana": "ゆうと",
   "aliases": [],
   "gym": "東京町田金子ジム",
   "orgs": [
@@ -46919,7 +46985,10 @@
   "sources": [
    "https://knockoutkb.com/fighters/yuto_268"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/悠斗"
+  },
   "birthdate": "1993.2.24"
  },
  {
@@ -47499,7 +47568,7 @@
  },
  {
   "name": "朝倉未来",
-  "kana": null,
+  "kana": "あさくら みくる",
   "aliases": [],
   "gym": "JAPAN TOP TEAM",
   "orgs": [
@@ -47508,7 +47577,10 @@
   "sources": [
    "https://rise-rc.com/fighter/asakura_mikuru/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/朝倉未来"
+  },
   "birthdate": "1992.7.15"
  },
  {
@@ -47569,7 +47641,7 @@
  },
  {
   "name": "木村“ケルベロス”颯太",
-  "kana": null,
+  "kana": "きむら ケルベロス そうた",
   "aliases": [],
   "gym": "心将塾",
   "orgs": [
@@ -47578,7 +47650,10 @@
   "sources": [
    "https://rise-rc.com/fighter/kimura_cerberus_sota/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/木村“ケルベロス”颯太"
+  },
   "birthdate": "2000.10.20"
  },
  {
@@ -47625,7 +47700,7 @@
  },
  {
   "name": "未奈",
-  "kana": null,
+  "kana": "さくらい みな",
   "aliases": [],
   "gym": "秀晃道場",
   "orgs": [
@@ -47634,7 +47709,10 @@
   "sources": [
    "https://shootboxing.org/fighter/mina/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/未奈"
+  },
   "birthdate": "1989.6.9"
  },
  {
@@ -48041,7 +48119,7 @@
  },
  {
   "name": "松本天志",
-  "kana": null,
+  "kana": "まつもと てんし",
   "aliases": [],
   "gym": "TARGET SHIBUYA",
   "orgs": [
@@ -48050,7 +48128,10 @@
   "sources": [
    "https://rise-rc.com/fighter/matsumoto_tenshi/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/松本天志"
+  },
   "birthdate": "2004.4.24"
  },
  {
@@ -48543,7 +48624,7 @@
  },
  {
   "name": "森田崇文",
-  "kana": null,
+  "kana": "もりた たかふみ",
   "aliases": [],
   "gym": "team NEWALONE",
   "orgs": [
@@ -48552,7 +48633,10 @@
   "sources": [
    "https://rise-rc.com/fighter/morita_takafumi/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/森田崇文"
+  },
   "birthdate": "1987.10.27"
  },
  {
@@ -48585,7 +48669,7 @@
  },
  {
   "name": "植山征紀",
-  "kana": null,
+  "kana": "うえやま せいき",
   "aliases": [],
   "gym": "龍生塾ファントム道場",
   "orgs": [
@@ -48596,7 +48680,10 @@
    "https://rise-rc.com/fighter/ueyama_seiki/",
    "https://shootboxing.org/fighter/ueyama_seiki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/植山征紀"
+  },
   "birthdate": "1996.3.22"
  },
  {
@@ -49598,7 +49685,7 @@
  },
  {
   "name": "澤谷大樹",
-  "kana": null,
+  "kana": "さわたに たいき",
   "aliases": [],
   "gym": "HAWK GYM",
   "orgs": [
@@ -49607,7 +49694,10 @@
   "sources": [
    "https://rise-rc.com/fighter/sawatani_taiki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/澤谷大樹"
+  },
   "birthdate": "1999.6.11"
  },
  {
@@ -49764,7 +49854,7 @@
  },
  {
   "name": "玖村将史",
-  "kana": null,
+  "kana": "くむら まさし",
   "aliases": [],
   "gym": "999",
   "orgs": [
@@ -49774,7 +49864,10 @@
    "https://rise-rc.com/fighter/kumura-masashi/",
    "https://www.k-1.co.jp/fighter/843"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/玖村将史"
+  },
   "birthdate": "1999.1.8"
  },
  {
@@ -49821,7 +49914,7 @@
  },
  {
   "name": "琉樺",
-  "kana": null,
+  "kana": "るか",
   "aliases": [],
   "gym": "Tiger Muay Thai/LA GYM",
   "orgs": [
@@ -49830,7 +49923,10 @@
   "sources": [
    "https://rise-rc.com/fighter/ruka-3/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/琉樺"
+  },
   "birthdate": "2009.3.9"
  },
  {
@@ -50047,7 +50143,7 @@
  },
  {
   "name": "白鳥大珠",
-  "kana": null,
+  "kana": "しらとり たいじゅ",
   "aliases": [],
   "gym": "TEAM TEPPEN",
   "orgs": [
@@ -50057,7 +50153,10 @@
    "https://rise-rc.com/fighter/shiratori_taiju/",
    "https://www.k-1.co.jp/fighter/1258"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/白鳥大珠"
+  },
   "birthdate": "1996.2.2"
  },
  {
@@ -50118,7 +50217,7 @@
  },
  {
   "name": "直樹",
-  "kana": null,
+  "kana": "なおき",
   "aliases": [],
   "gym": "フリー",
   "orgs": [
@@ -50127,7 +50226,10 @@
   "sources": [
    "https://rise-rc.com/fighter/naoki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/直樹"
+  },
   "birthdate": "1992.6.24"
  },
  {
@@ -50754,7 +50856,7 @@
  },
  {
   "name": "笠原友希",
-  "kana": null,
+  "kana": "かさはら ゆうき",
   "aliases": [],
   "gym": "シーザージム",
   "orgs": [
@@ -50766,12 +50868,15 @@
    "https://shootboxing.org/fighter/kasahara_yuuki/",
    "https://www.k-1.co.jp/fighter/1277"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/笠原友希"
+  },
   "birthdate": "2001.6.3"
  },
  {
   "name": "笠原弘希",
-  "kana": null,
+  "kana": "かさはら ひろき",
   "aliases": [],
   "gym": "シーザージム",
   "orgs": [
@@ -50782,12 +50887,15 @@
    "https://rise-rc.com/fighter/kasahara_hiroki/",
    "https://shootboxing.org/fighter/kasahara_hiroki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/笠原弘希"
+  },
   "birthdate": "1999.8.10"
  },
  {
   "name": "笠原直希",
-  "kana": null,
+  "kana": "かさはら なおき",
   "aliases": [],
   "gym": "シーザージム",
   "orgs": [
@@ -50798,7 +50906,10 @@
    "https://rise-rc.com/fighter/kasahara_naoki/",
    "https://shootboxing.org/fighter/kasahara_naoki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/笠原直希"
+  },
   "birthdate": "2006.4.14"
  },
  {
@@ -51450,7 +51561,7 @@
  },
  {
   "name": "西岡蓮太",
-  "kana": null,
+  "kana": "にしおか れんた",
   "aliases": [],
   "gym": "龍生塾",
   "orgs": [
@@ -51461,7 +51572,10 @@
    "https://rise-rc.com/fighter/nishioka_renta/",
    "https://shootboxing.org/fighter/nishioka_renta/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/西岡蓮太"
+  },
   "birthdate": "1999.4.11"
  },
  {
@@ -51550,7 +51664,7 @@
  },
  {
   "name": "西谷大成",
-  "kana": null,
+  "kana": "にしたに たいせい",
   "aliases": [],
   "gym": "JAPAN TOP TEAM",
   "orgs": [
@@ -51559,7 +51673,10 @@
   "sources": [
    "https://rise-rc.com/fighter/nishitani_taisei/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/西谷大成"
+  },
   "birthdate": "1996.10.26"
  },
  {
@@ -51865,7 +51982,7 @@
  },
  {
   "name": "那須川龍心",
-  "kana": null,
+  "kana": "なすかわ りゅうじん",
   "aliases": [],
   "gym": "TEAM TEPPEN",
   "orgs": [
@@ -51875,7 +51992,10 @@
    "https://rise-rc.com/fighter/nasukawa_ryujin/",
    "https://www.k-1.co.jp/fighter/1286"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/那須川龍心"
+  },
   "birthdate": "2006.5.16"
  },
  {
@@ -52153,7 +52273,7 @@
  },
  {
   "name": "鈴木宙樹",
-  "kana": null,
+  "kana": "すずき ひろき",
   "aliases": [],
   "gym": "RIKIX",
   "orgs": [
@@ -52162,7 +52282,10 @@
   "sources": [
    "https://rise-rc.com/fighter/suzuki_hiroki/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/鈴木宙樹"
+  },
   "birthdate": "1996.11.20"
  },
  {
@@ -52195,7 +52318,7 @@
  },
  {
   "name": "鈴木真彦",
-  "kana": null,
+  "kana": "すずき まさひこ",
   "aliases": [],
   "gym": "TEAM 寿",
   "orgs": [
@@ -52205,7 +52328,10 @@
    "https://rise-rc.com/fighter/suzuki_masahiko/",
    "https://www.k-1.co.jp/fighter/1253"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/鈴木真彦"
+  },
   "birthdate": "1997.2.21"
  },
  {
@@ -52364,7 +52490,7 @@
  },
  {
   "name": "門口佳佑",
-  "kana": null,
+  "kana": "もんぐち けいすけ",
   "aliases": [],
   "gym": "EX ARES",
   "orgs": [
@@ -52374,7 +52500,10 @@
    "https://rise-rc.com/fighter/monguchi_keisuke/",
    "https://www.k-1.co.jp/fighter/1439"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/門口佳佑"
+  },
   "birthdate": "1995.5.25"
  },
  {
@@ -52555,7 +52684,7 @@
  },
  {
   "name": "鞠谷貴大",
-  "kana": null,
+  "kana": "きくたに たかひろ",
   "aliases": [],
   "gym": "魁塾",
   "orgs": [
@@ -52564,7 +52693,10 @@
   "sources": [
    "https://rise-rc.com/fighter/kikutani_takahiro/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/鞠谷貴大"
+  },
   "birthdate": "1995.6.21"
  },
  {
@@ -53032,7 +53164,7 @@
  },
  {
   "name": "麻火佑太郎",
-  "kana": null,
+  "kana": "あさひ ゆうたろう",
   "aliases": [],
   "gym": "PHOENIX",
   "orgs": [
@@ -53041,7 +53173,10 @@
   "sources": [
    "https://rise-rc.com/fighter/asahi_yutaro/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/麻火佑太郎"
+  },
   "birthdate": "1999.8.20"
  },
  {
@@ -53187,7 +53322,7 @@
  },
  {
   "name": "龍聖",
-  "kana": null,
+  "kana": "りゅうせい",
   "aliases": [],
   "gym": "BRAID/TEAM SUERTE",
   "orgs": [
@@ -53196,7 +53331,10 @@
   "sources": [
    "https://knockoutkb.com/fighters/ryusei"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/龍聖"
+  },
   "birthdate": "2001.4.11"
  }
 ]

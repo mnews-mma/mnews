@@ -53,7 +53,7 @@ export default function KickTopPage() {
 
       <h2 className="kick-section-title">収録範囲</h2>
       <p className="kick-lead">
-        名簿は次の6ソースから作成しました。戦績は下記{KICK_PROMOTIONS.length}団体分を、各団体の公式サイトに加えWikipediaの個別選手記事からも収集して収録しています
+        名簿は次の6ソースから作成しました。戦績は下記{KICK_PROMOTIONS.length}団体の公式サイトに加え、Wikipediaの個別選手記事からは団体を問わず収集して収録しています
         （{nf(stats.fightersWithBouts)}人分）。
       </p>
       <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
@@ -74,9 +74,11 @@ export default function KickTopPage() {
         ))}
       </ul>
 
-      <h2 className="kick-section-title">戦績の取得元（対象{KICK_PROMOTIONS.length}団体＋Wikipedia）</h2>
+      <h2 className="kick-section-title">戦績の取得元（対象{KICK_PROMOTIONS.length}団体の公式サイト＋Wikipedia全団体）</h2>
       <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
-        下記{KICK_PROMOTIONS.length}団体それぞれについて、公式サイトの選手ページに加え、Wikipediaの個別選手記事に掲載されている戦績も収集対象にしています。
+        下記{KICK_PROMOTIONS.length}団体それぞれについて、公式サイトの選手ページから戦績を収集しています。
+        Wikipediaの個別選手記事は、これら{KICK_PROMOTIONS.length}団体に限らず、キックボクシング・ムエタイの戦績であれば団体を問わず収集対象にしています
+        （GLORY・ルンピニー・ラジャダムナン・WAKO SuperLeague・J-NETWORK・全日本キックボクシング連盟など、公式サイト側の対象外団体を含む）。
       </p>
       <ul className="kick-list">
         {KICK_PROMOTIONS.map((p) => (
@@ -87,7 +89,7 @@ export default function KickTopPage() {
           </li>
         ))}
         <li>
-          Wikipedia（各選手の個別記事。上記{KICK_PROMOTIONS.length}団体いずれかの試合で、公式サイトに掲載がない戦績を補完）
+          Wikipedia（各選手の個別記事。総合格闘技・ボクシング・エキシビションマッチ等の非キックボクシング戦績は除外して収集）
         </li>
       </ul>
 
@@ -124,9 +126,11 @@ export default function KickTopPage() {
       <ul className="kick-list">
         <li>勝率・KO率などの算出指標</li>
         <li>選手のランキング</li>
-        <li>J-NETWORK（公式サイトにデータが現存しないため）</li>
+        <li>
+          J-NETWORK・GLORY・ルンピニー等の非対象{KICK_PROMOTIONS.length}団体は、当該団体の公式サイトを直接の取得元とはしていません（Wikipediaに掲載がある分のみ収録）
+        </li>
         <li>MA日本（公式に勝敗記録が存在しないため）</li>
-        <li>各団体の2000年代以前の戦績の大半（公式サイト・Wikipediaいずれにも掲載がないため）</li>
+        <li>各団体の2000年代以前の戦績の一部（公式サイト・Wikipediaいずれにも掲載がないため）</li>
       </ul>
     </>
   );

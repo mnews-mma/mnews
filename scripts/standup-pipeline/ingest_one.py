@@ -13,8 +13,8 @@ def parse_page(path, fighter_name_hint=None):
     for i, row in enumerate(rows):
         sport = re.search(r'<td class="sport[^"]*">\s*([A-Za-z ]+?)\s*</td>', row)
         sport = sport.group(1).strip() if sport else None
-        if sport != 'Kickboxing':
-            continue  # ONE内でのMMA/Muay Thai/Submission Grappling等は対象外(推測で混ぜない)
+        if sport not in ('Kickboxing', 'Muay Thai'):
+            continue  # PR-15: 立ち技(キックボクシング/ムエタイ)のみ対象。ONE内でのMMA/Submission Grappling等は対象外(推測で混ぜない)
         result = re.search(r'<div class="is-distinct is-(positive|negative|neutral)">([A-Z]+)</div>', row)
         rtag, rlabel = (result.group(1), result.group(2)) if result else (None, None)
         RESULT = {'positive': 'win', 'negative': 'loss', 'neutral': 'draw'}
