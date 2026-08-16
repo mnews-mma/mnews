@@ -93,6 +93,9 @@ export interface KickStats {
   kanaConverted: number;
   titleTypeCount: number;
   resultUnknownCount: number;
+  /** 自分側では相手が同名複数人で未解決だったが、相手側ページで自分に一意解決されている
+   *  ことを手がかりに逆引きで解決できた行数。scripts/build-kick-data.tsのreverseResolveOpponent参照。 */
+  reverseResolvedCount: number;
   promotions: string[];
 }
 
