@@ -86,10 +86,18 @@ export interface KickStats {
   boutRowsCompleted: number;
   boutRowsScheduled: number;
   boutRowsRaw: number;
+  /** 戦績の出典内訳。boutRows = boutRowsOfficial + boutRowsWikipedia(ビルド時に恒等式を検証)。 */
+  boutRowsOfficial: number;
+  boutRowsWikipedia: number;
   mergedDuplicateRows: number;
   unmatchedBouts: number;
   kanaFilled: number;
+  /** かな自体がnullの人数。「読みを推測で埋めていない」の文脈ではこちらを使う。 */
   kanaMissing: number;
+  /** 五十音順一覧の「―」バケットに実際に並ぶ人数(kanaMissing以上、常にkanaMissing以上になる
+   *  ことをビルド時に検証済み)。かなはあるが記号始まり・ラテン文字表記等で分類できない
+   *  選手を含むため、kanaMissingとは別概念。一覧ページの見出しはこちらを使う。 */
+  kanaUnclassified: number;
   kanaConverted: number;
   titleTypeCount: number;
   resultUnknownCount: number;

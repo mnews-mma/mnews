@@ -53,14 +53,15 @@ export default function KickTopPage() {
 
       <h2 className="kick-section-title">収録範囲</h2>
       <p className="kick-lead">
-        名簿は次の6ソースから作成しました。戦績は下記{KICK_PROMOTIONS.length}団体の公式サイトに掲載されているものを収録しています
+        名簿は次の6ソースから作成しました。戦績は下記{KICK_PROMOTIONS.length}団体分を、各団体の公式サイトに加えWikipediaの個別選手記事からも収集して収録しています
         （{nf(stats.fightersWithBouts)}人分）。
       </p>
       <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
-        件数の内訳：各団体の公式サイトから取得した {nf(stats.boutRowsRaw)} 件のうち、複数団体に重複掲載されていた{" "}
+        件数の内訳：各団体の公式サイトおよびWikipediaから取得した {nf(stats.boutRowsRaw)} 件のうち、複数団体に重複掲載されていた{" "}
         {nf(stats.mergedDuplicateRows)} 件を1行に統合し、名簿に該当者がいない {stats.unmatchedBouts} 件を除いた{" "}
         {nf(stats.boutRows)} 件を掲載しています。うち {stats.boutRowsScheduled} 件は開催前の予定試合のため、
         「戦績（実施済み）」の {nf(stats.boutRowsCompleted)} 件には含めていません。
+        取得元の内訳は公式サイト {nf(stats.boutRowsOfficial)} 件・Wikipedia {nf(stats.boutRowsWikipedia)} 件です。
       </p>
       <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
         <strong>K-1 / Krush / Krush-EX</strong>のみ、現在の選手一覧ページに掲載されていない過去の出場選手も、
@@ -73,7 +74,10 @@ export default function KickTopPage() {
         ))}
       </ul>
 
-      <h2 className="kick-section-title">戦績の取得元（{KICK_PROMOTIONS.length}団体）</h2>
+      <h2 className="kick-section-title">戦績の取得元（対象{KICK_PROMOTIONS.length}団体＋Wikipedia）</h2>
+      <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
+        下記{KICK_PROMOTIONS.length}団体それぞれについて、公式サイトの選手ページに加え、Wikipediaの個別選手記事に掲載されている戦績も収集対象にしています。
+      </p>
       <ul className="kick-list">
         {KICK_PROMOTIONS.map((p) => (
           <li key={p.label}>
@@ -82,6 +86,9 @@ export default function KickTopPage() {
             </a>
           </li>
         ))}
+        <li>
+          Wikipedia（各選手の個別記事。上記{KICK_PROMOTIONS.length}団体いずれかの試合で、公式サイトに掲載がない戦績を補完）
+        </li>
       </ul>
 
       <h2 className="kick-section-title">データの扱いについて</h2>
@@ -119,7 +126,7 @@ export default function KickTopPage() {
         <li>選手のランキング</li>
         <li>J-NETWORK（公式サイトにデータが現存しないため）</li>
         <li>MA日本（公式に勝敗記録が存在しないため）</li>
-        <li>各団体の2000年代以前の戦績の大半（ネット上に公開されていないため）</li>
+        <li>各団体の2000年代以前の戦績の大半（公式サイト・Wikipediaいずれにも掲載がないため）</li>
       </ul>
     </>
   );
