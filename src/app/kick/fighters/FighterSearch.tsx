@@ -65,6 +65,10 @@ export default function FighterSearch() {
   const [query, setQuery] = useState("");
   const [org, setOrg] = useState(""); // "" = 団体指定なし(全団体)
   const [open, setOpen] = useState(false);
+  // 候補パネルに表示する件数の上限。「もっと見る」で30件ずつ広げる(検索条件を変えたら
+  // MAX_RESULTSへ戻す)。団体のみでの絞り込み(例: RIZIN 111人)でも、クリックを重ねれば
+  // 全員に到達できるようにするため、totalCountで頭打ちにはしない。
+  const [visibleCount, setVisibleCount] = useState(MAX_RESULTS);
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -113,11 +117,11 @@ export default function FighterSearch() {
     for (const f of index) {
       if (matches(f, q)) {
         hits.push(f);
-        if (hits.length >= MAX_RESULTS) break;
+        if (hits.length >= visibleCount) break;
       }
     }
     return hits;
-  }, [query, org, index, matches]);
+  }, [query, org, index, matches, visibleCount]);
 
   const totalCount = useMemo(() => {
     const q = normalize(query.trim());
@@ -146,6 +150,7 @@ export default function FighterSearch() {
           disabled={!index}
           onChange={(e) => {
             setQuery(e.target.value);
+            setVisibleCount(MAX_RESULTS);
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
@@ -157,6 +162,7 @@ export default function FighterSearch() {
           disabled={!index}
           onChange={(e) => {
             setOrg(e.target.value);
+            setVisibleCount(MAX_RESULTS);
             setOpen(true);
           }}
           aria-label="出場団体で絞り込み"
@@ -187,9 +193,13 @@ export default function FighterSearch() {
                 ))}
               </ul>
               {totalCount > results.length && (
-                <p className="kick-search__more">
-                  ほか{(totalCount - results.length).toLocaleString("ja-JP")}件。絞り込みを続けてください。
-                </p>
+                <button
+                  type="button"
+                  className="kick-search__more"
+                  onClick={() => setVisibleCount((n) => n + MAX_RESULTS)}
+                >
+                  もっと見る(あと{(totalCount - results.length).toLocaleString("ja-JP")}件)
+                </button>
               )}
             </>
           )}

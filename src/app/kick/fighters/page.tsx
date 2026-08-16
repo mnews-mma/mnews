@@ -38,6 +38,11 @@ export default function KickFightersPage() {
 
       <FighterSearch />
 
+      <h2 className="kick-section-title">
+        全選手一覧(五十音順・{stats.fighters.toLocaleString("ja-JP")}人)
+        <span className="kick-fulllist-note">検索窓・団体フィルタの結果は上のパネルに出ます。この下は常に全員分です。</span>
+      </h2>
+
       <nav className="kick-jump" aria-label="行で絞り込む">
         {rows.map((b) => (
           <a key={b} href={`#row-${b}`}>

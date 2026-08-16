@@ -96,6 +96,13 @@
   padding-left: 9px;
   border-left: 3px solid var(--kick-accent);
 }
+.kick-fulllist-note {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--kick-muted);
+  margin-top: 3px;
+}
 .kick-foot {
   max-width: 1080px;
   margin: 0 auto;
@@ -256,10 +263,21 @@
   margin-left: auto;
 }
 .kick-search__more {
-  padding: 9px 12px;
-  font-size: 11.5px;
-  color: var(--kick-muted);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--kick-accent);
+  background: #fff;
+  border: none;
   border-top: 1px solid var(--kick-line);
+  cursor: pointer;
+  text-align: center;
+}
+.kick-search__more:hover {
+  background: var(--kick-accent-soft);
 }
 
 /* --- index (五十音) --- */
