@@ -61,20 +61,47 @@ def txt(pattern, s, flags=re.S):
     return U(m.group(1)) if m else None
 
 
-DECISION_KW = re.compile(r'判定|不戦勝|ノーコンテスト|ドロー|引き分け|反則|時間切れ|棄権|中止|失格|無効|TKO|KO')
+# (?<!\d) で「10戦9勝1敗4KO」のようなプロフィール文中のKO数(戦績統計)を除外する。
+# 決着文言のKO/TKOは数字に直接続かない(「1R KO」「3R終了時TKO」等、間に空白かR表記が入る)ため、
+# この除外でも正規の決着文言は取りこぼさない。
+DECISION_KW = re.compile(r'判定|不戦勝|ノーコンテスト|ドロー|引き分け|反則|時間切れ|棄権|中止|失格|無効|(?<!\d)TKO|(?<!\d)KO')
 
 
 def labeled_paragraphs(s):
     """class名が数字違いでも(f11/f21/let11/let21等)構わず、単一classの<p>の中身を出現順に返す。
-       写真<p class="p11 win">のような複数class・<img>のみのpタグは自然に除外される。"""
+       写真<p class="p11 win">のような複数class・<img>のみのpタグは自然に除外される。
+       戻り値は(生HTML片, U()整形済みテキスト)のタプル。生HTML片は決着文の<br/>分割に使う
+       (同一<p>内に決着文とダウン詳細が<br/>区切りで同居する回があり、U()はそのまま
+       スペースへ変換してしまい1行の決着として連結されてしまうため)。"""
     out = []
     for cls, val in re.findall(r'<p class="([a-z]+\d*)">(.*?)</p>', s, re.S):
         if cls == 'clear':
             continue
         v = U(val)
         if v:
-            out.append(v)
+            out.append((val, v))
     return out
+
+
+def split_decision(raw):
+    """決着<p>の生HTML片から、実際の決着文(1行目)と補足(2行目以降、<br/>区切り)を分離する。
+       あわせて「※」以降(補足注記)も決着文から切り出す(先頭が「※」の場合は表記上の記号と
+       みなし、2つ目の「※」を区切りに使う)。"""
+    lines = [U(x) for x in re.split(r'<br\s*/?>', raw)]
+    lines = [x for x in lines if x]
+    if not lines:
+        return None, None
+    first, rest = lines[0], lines[1:]
+    star_positions = [m.start() for m in re.finditer('※', first)]
+    star_positions = [p for p in star_positions if p > 0]
+    if star_positions:
+        cut = star_positions[0]
+        rest = [first[cut + 1:].strip()] + rest
+        first = first[:cut].strip()
+    # <br/>で別行になった注記(2行目以降)も先頭が「※」で始まる回があるため、行ごとに除去する。
+    rest = [re.sub(r'^※', '', x).strip() for x in rest]
+    detail = '、'.join(x for x in rest if x) or None
+    return first or None, detail
 
 
 def norm_loose(s):
@@ -139,20 +166,25 @@ def parse_page(html_text):
         p1 = labeled_paragraphs(side1)
         if len(p1) < 2:
             continue
-        n1, g1 = p1[0], p1[1]
+        n1, g1 = p1[0][1], p1[1][1]
         p2_all = labeled_paragraphs(rest)
         # restには「相手の名前/所属/戦績等」に続けて決着文・大会レポート文も混在するため、
-        # 決着キーワードを含む最初の段落を decision として切り出し、それより前を相手情報として使う
-        decision_idx = next((i2 for i2, v in enumerate(p2_all) if DECISION_KW.search(v)), None)
-        win2 = 'win' in rest[:rest.find(p2_all[decision_idx]) if decision_idx is not None else len(rest)]
+        # 決着キーワードを含む最初の段落を decision として切り出し、それより前を相手情報として使う。
+        # プロフィール文(生年月日・戦績等)の「N戦N勝N敗nKO」のような戦績統計はDECISION_KWの
+        # 除外対象(数字直後のKO)なので、このマッチは実際の決着文のみを拾う。
+        decision_idx = next((i2 for i2, (raw, v) in enumerate(p2_all) if DECISION_KW.search(v)), None)
+        win2 = 'win' in rest[:rest.find(p2_all[decision_idx][0]) if decision_idx is not None else len(rest)]
         info2 = p2_all[:decision_idx] if decision_idx is not None else p2_all
         if len(info2) < 2:
             continue
-        n2, g2 = info2[0], info2[1]
-        decision = p2_all[decision_idx] if decision_idx is not None else None
+        n2, g2 = info2[0][1], info2[1][1]
+        # 決着<p>は<br/>区切りで「決着文」「ダウン詳細」等の複数行を1つのタグに収めている回が
+        # あるため、1行目だけを決着文として使い、2行目以降はextra_detailとして分離する。
+        decision_raw = p2_all[decision_idx][0] if decision_idx is not None else None
+        decision, extra_detail = split_decision(decision_raw) if decision_raw is not None else (None, None)
         if not n1 or not n2:
             continue
-        bouts.append(dict(f1=(n1, g1, win1), f2=(n2, g2, win2), decision=decision, label=header_text))
+        bouts.append(dict(f1=(n1, g1, win1), f2=(n2, g2, win2), decision=decision, label=header_text, extra_detail=extra_detail))
     return bouts
 
 
@@ -200,13 +232,20 @@ def build():
                     result = 'loss'
                 else:
                     result = 'unknown'
+                # 「※」以降(補足注記)は決着文言そのものではないため、method_raw自体から
+                # 切り離してnoteへ回す(以前はnoteへ抽出するだけでmethod_rawには残したまま
+                # だったため、決着欄に長大な注記が同居したまま残る不具合があった)。
+                # parse_page経由の行はsplit_decisionで既に「※」除去済みだが、parse_vs_style
+                # (2022年10月以降のテンプレート)経由の行はここで初めて処理する。
+                note = pb.get('extra_detail')
+                if decision and '※' in decision:
+                    star_note = decision.split('※', 1)[1].strip() or None
+                    decision = decision.split('※', 1)[0].strip() or None
+                    note = f'{note}、{star_note}' if note and star_note else (note or star_note)
                 if decision:
                     meth, rnd, ext, rs = _bouts.parse_method(decision)
                 else:
                     meth, rnd, ext, rs = None, None, False, None
-                note = None
-                if decision and '※' in decision:
-                    note = decision.split('※', 1)[1].strip() or None
                 oref, oamb, ocands = resolve(opp_name, opp_aff)
                 ident = f"{rec['name']}|{rec['gym'] or ''}|{rec['sources'][0] if rec['sources'] else ''}"
                 idx = bout_seq[ident]

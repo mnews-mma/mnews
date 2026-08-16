@@ -189,6 +189,9 @@ export function methodLabel(raw: string): string {
   let s = (raw ?? "").normalize("NFKC").trim();
   if (!s) return "—";
   s = s.replace(/※.*$/, "");                 // ※MMA / ※OFGマッチ → ruleset バッジで表示済み
+  // 【1R】/ (3R) のように丸ごと括弧で囲われたラウンド表記は、括弧ごと除去する
+  // (中身のR表記だけを消すと空の括弧【 】( )が残ってしまうため)。
+  s = s.replace(/[【(（]\s*(?:延長\s*)?\d+\s*R(?:終了時)?\s*[】)）]/g, " ");
   s = s.replace(/延長\s*R?/g, "");            // 延長 → is_extension バッジで表示済み
   s = s.replace(/\d+\s*R(?:終了時)?/g, " ");  // 3R / 1R / 3R終了時 → R列で表示済み
   s = s.replace(/\s+/g, " ").trim();

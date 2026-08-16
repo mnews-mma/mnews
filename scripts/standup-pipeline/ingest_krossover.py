@@ -66,7 +66,11 @@ def resolve(name, aff):
 
 # ================= イベント記事のパース =================
 
-MARK_SEG_RE = re.compile(r'([○〇◎△●]|×(?!\d))\s*([^○〇×◎△●]*)')
+# 「✖」(U+2716 HEAVY MULTIPLICATION X)は「×」(U+00D7)と見た目が似ているが別のUnicode文字。
+# KROSSxOVER-CAGE.9記事(p=4122)がこの文字で敗者側マークを表記しており、以前は検出漏れで
+# 敗者側が捕まらないまま次の実マークまで決着文・レポート散文を延々と取り込んでいた
+# (ブハリ亜輝留×藤虎戦が、無関係な杏志×YANG DANIEL戦と誤結合される原因になっていた)。
+MARK_SEG_RE = re.compile(r'([○〇◎△●]|[×✖](?!\d))\s*([^○〇×✖◎△●]*)')
 NAME_TAIL_RE = re.compile(r'^(.*?[）)])(.*)$')
 PAREN_END = re.compile(r'[（(]([^）(]*)[）)]\s*$')
 DEBUT_LEAD_RE = re.compile(r'^[※＊]\s*デビュー戦\s*')
@@ -153,7 +157,32 @@ def extract_event(full_html, lines, h1_title):
     return t.strip() or h1_title
 
 
-def scan_line(l, fighters, decision):
+def cut_decision(tail, known_names):
+    """決着文言を、文末記号(。！？)・「※」注記の手前で切り、後続のレポート散文(地の文)を
+       decisionへ混入させない。「※」が文頭(表記上の記号)の場合は無視し次の「※」を区切りに使う。
+       句読点も「※」も無いまま地の文へ続く回(例: 「...KO 左フック Krushミドル級王者にも
+       輝いたブハリ亜輝留がKROSSxOVERに電撃参戦！...」のように決着文の直後に読点なしで
+       選手紹介文が続くケース)は、既知の選手名(自分・相手いずれか)が再登場する位置でも切る。
+       戻り値: (decision, note)。"""
+    seg = re.split(r'[。！？]', tail, 1)[0]
+    note = None
+    star_positions = [m.start() for m in re.finditer('※', seg)]
+    star_positions = [p for p in star_positions if p > 0]
+    if star_positions:
+        cut = star_positions[0]
+        note = seg[cut:].strip() or None
+        seg = seg[:cut].strip()
+    if len(seg) > 60:
+        for nm in known_names:
+            if nm and len(nm) >= 2:
+                idx = seg.find(nm)
+                if idx > 0:
+                    seg = seg[:idx].strip()
+                    break
+    return seg.strip() or None, note
+
+
+def scan_line(l, fighters, decision, note):
     """1行からマーク区間を全て拾う(Stand upと同じロジック)。"""
     segs = MARK_SEG_RE.findall(l)
     if segs:
@@ -171,15 +200,15 @@ def scan_line(l, fighters, decision):
             if dm:
                 debut = True
                 tail = tail[dm.end():].strip()
+            known_names = [f[1] for f in fighters]
             fighters.append((mark, name_part, debut))
-            # 決着文言のtailが次の地の文(レポート本文)と同じ<p>に連結される回があるため、
-            # 文末の句点で切ってから判定する(句点以降は決着注記ではなくレポート散文)。
-            dtail = tail.split('。')[0].strip()
-            if decision is None and dtail and DECISION_KW.search(dtail) and len(dtail) < 200:
-                decision = dtail
+            if decision is None and tail and DECISION_KW.search(tail):
+                cand, cand_note = cut_decision(tail, known_names)
+                if cand and len(cand) < 200:
+                    decision, note = cand, cand_note
     elif decision is None and DECISION_KW.search(l) and len(l) < 60:
         decision = l
-    return fighters, decision
+    return fighters, decision, note
 
 
 def parse_blocks(lines):
@@ -189,8 +218,8 @@ def parse_blocks(lines):
         if not HDR_RE.match(lines[i]):
             i += 1
             continue
-        fighters, decision = [], None
-        fighters, decision = scan_line(lines[i], fighters, decision)
+        fighters, decision, note = [], None, None
+        fighters, decision, note = scan_line(lines[i], fighters, decision, note)
         j = i + 1
         while j < n:
             l = lines[j]
@@ -198,15 +227,15 @@ def parse_blocks(lines):
                 break
             if len(fighters) >= 2 and decision is not None:
                 break
-            fighters, decision = scan_line(l, fighters, decision)
+            fighters, decision, note = scan_line(l, fighters, decision, note)
             j += 1
         if len(fighters) == 2:
-            blocks.append(dict(fighters=fighters, decision=decision))
+            blocks.append(dict(fighters=fighters, decision=decision, note=note))
         i = j if j > i else i + 1
     return blocks
 
 
-MARK2RESULT = {'○': 'win', '〇': 'win', '◎': 'win', '×': 'loss', '●': 'loss', '△': 'draw'}
+MARK2RESULT = {'○': 'win', '〇': 'win', '◎': 'win', '×': 'loss', '✖': 'loss', '●': 'loss', '△': 'draw'}
 bout_seq = collections.Counter()
 
 
@@ -234,6 +263,7 @@ def build():
                 stats['block_fail_sides'] += 1
                 continue
             decision = b['decision']
+            note = b.get('note')
             if decision:
                 meth, rnd, ext, rs = _bouts.parse_method(decision)
             else:
@@ -261,7 +291,7 @@ def build():
                     opponent_resolved=oref is not None,
                     opponent_ambiguous=oamb, opponent_candidates=ocands,
                     result=result, result_mark=my_mark, method=meth, method_raw=decision or '',
-                    round=rnd, is_extension=ext, ruleset=rs, note=None,
+                    round=rnd, is_extension=ext, ruleset=rs, note=note,
                     is_debut=my_debut,
                     title_type=None,  # 5団体分は種別抽出の対象外(スコープ外指示)。型整合のためnullで統一
                     pair_key=None,
