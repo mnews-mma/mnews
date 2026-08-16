@@ -64,9 +64,9 @@ export default function KickTopPage() {
         取得元の内訳は公式サイト {nf(stats.boutRowsOfficial)} 件・Wikipedia {nf(stats.boutRowsWikipedia)} 件です。
       </p>
       <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
-        <strong>K-1 / Krush / Krush-EX</strong>のみ、現在の選手一覧ページに掲載されていない過去の出場選手も、
-        個別の選手ページから直接収録しています。他{KICK_ROSTER_SOURCES.length - 1}ソース（Wikipedia男子/女子一覧・
-        RISE・SHOOT BOXING・KNOCK OUT）は、各サイトに現行掲載されている選手のみが対象です。
+        <strong>K-1 / Krush / Krush-EXとKNOCK OUT</strong>は、現在の選手一覧ページに掲載されていない過去の出場選手も、
+        個別の選手ページ(K-1はfighter ID空間の走査、KNOCK OUTは大会結果ページの収集による)から収録しています。
+        他{KICK_ROSTER_SOURCES.length - 2}ソース（Wikipedia男子/女子一覧・RISE・SHOOT BOXING）は、各サイトに現行掲載されている選手のみが対象です。
       </p>
       <ul className="kick-list">
         {KICK_ROSTER_SOURCES.map((s) => (
