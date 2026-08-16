@@ -188,6 +188,17 @@
  },
  {
   "slug": "kido-yasuhiro",
+  "date": "2024-10-19",
+  "opponent": "照強",
+  "methodRaw": "一本",
+  "category": "mma",
+  "reason": "打撃と相撲の混合ルール(巌流島ルール)。照強は元幕内力士(2024年3月引退、最高位西前頭3枚目、日本相撲協会公式が引退を発表)。当該試合は「JAPAN MARTIAL ARTS EXPO PROLOGUE」内の巌流島ルール(押し出し・投げ・組み合いを認める)戦として開催され、照強が押し出しによる3回のダウンを奪い「合わせ一本」勝ちした(ゴング格闘技・TOKYO HEADLINE等の報道で確認)。押し出しは相撲の決まり手であり、キックボクシングの戦績として掲載すべきでない。",
+  "name": "城戸康裕",
+  "event": "JAPAN MARTIAL ARTS EXPO PROLOGUE～日本格闘技界、夢の懸け橋～",
+  "promotion": "Bigbang"
+ },
+ {
+  "slug": "kido-yasuhiro",
   "date": "2023-07-23",
   "opponent": "平山 迅",
   "methodRaw": "一本",
