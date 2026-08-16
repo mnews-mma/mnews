@@ -466,6 +466,45 @@ const byAliasNorm = buildUniqueIndex(
     (f.aliases ?? []).map((a) => [normName(a), slugByIdentity.get(identity(f))!] as [string, string]),
   ),
 );
+// PR-11(名寄せ第3弾): 姓が失われる語順入れ替え(下の名前だけの一致)とローマ字→かな一致は、
+// PR-8時点では「信頼度が低いため対象外」の方針だった(上のコメント参照)。今回、機械マッチング
+// 不能だった4,973件のうち語順入れ替え低信頼度3件(浜本"キャット"雄大/関根"シュレック"秀樹/
+// 和泉"マチェッター"遼)とローマ字→かな32件を個別に実機確認(候補選手自身の戦績に同日・同大会の
+// 対応する一致行があるかを突合)した。結果、語順入れ替え3件は候補側の戦績に対応する行が
+// 一切見つからず不採用(未確証のまま)。ローマ字→かな32件のうち3件(KAZUMU/YUTO/HIROKI)は
+// 候補側の戦績に日付・大会・相手名まで完全に一致する行が見つかり確証が取れた。
+// ただしKAZUMU以外(YUTO/HIROKI)は同じ表記が他選手の他の試合でも複数回使われており
+// (例: 「HIROKI」は5回出現するが確証が取れたのは内藤凌太戦の1件のみ)、opponent_name文字列
+// だけをキーにした汎用置換だと未確証の残り4件まで誤って同一人物と結び付けてしまう
+// (実際に試して確認: fuzzyResolveOpponentの文字列マッチにすると+9件解決され、確証を
+// 取っていない4件が誤リンクされていた)。そのためbout単位(自分のslug+日付+相手表記)で
+// 一致した場合のみ適用する行レベルの上書きとし、opponent_nameだけの汎用ルールにはしない。
+const VERIFIED_OPPONENT_BOUT_OVERRIDES: Record<string, string> = {
+  // key: `${自分のslug}|${date}|${opponent_name}` -> 相手のslug。相手側(和夢/YU斗/弘樹)の
+  // 戦績にも同日・同大会・同じ相手名で対応する行があることを個別に確認済み。
+  "shota-2|2017-05-28|KAZUMU": "kazumu", // 和夢 vs 翔太、Krush.76
+  "masumoto-shoya|2017-03-18|KAZUMU": "kazumu", // 和夢 vs 桝本翔也(自称"翔也")、KHAOS.1
+  "yamamoto-naoki|2015-04-12|KAZUMU": "kazumu", // 和夢 vs 山本直樹、Krush.53
+  "inoue-yamato|2022-06-12|YUTO": "yuto-2", // YU斗 vs 井上大和、DEEP☆KICK 62
+  "naito-ryota|2021-03-21|HIROKI": "hiroki-2", // 弘樹 vs 内藤凌太、RIZIN.27
+  // 「足利 和正」(姓名の並びが入れ替わった表記)。名簿には「足利 正和」で登録されている。
+  // 4件中3件で足利正和自身の戦績と日付・大会・相手名が一致(残り1件は対応なし、未確証のまま除外)
+  "miwa-yuki|2018-03-10|足利 和正": "ashikaga-masakazu", // Krush.86
+  "saito-yuto|2019-01-26|足利 和正": "ashikaga-masakazu", // Krush.97
+  "fujita-yoshifumi|2019-09-16|足利 和正": "ashikaga-masakazu", // Krush.105
+  // 「京谷祐希」は名簿に完全一致する選手が存在するが、この1行(2021-11-14)だけ未解決だった。
+  // 原因はopponent_name原文に所属+決着注記が連結していたため(「京谷祐希（山口道場）※偶然の
+  // バッティングにより3R 1分02秒までの途中判定」)。表示名は正しく「京谷祐希」に整形されているが
+  // fuzzyResolveOpponent()は整形前の原文で判定するため一致しなかった。同一試合の相手側
+  // (京谷祐希本人のページ)には対応する行(vs 植山征紀、同日同大会)が実在する。
+  "seiki-ueyama|2021-11-14|京谷祐希（山口道場）※偶然のバッティングにより3R 1分02秒までの途中判定":
+    "yuki-kyotani", // Cygames presents RISE WORLD SERIES 2021 OSAKA2
+  // 「昇也」も名簿に完全一致する選手がおり、bouts_bigbang.json経由の行は正しく解決しているが、
+  // 同じ試合を別途収録しているbouts_rise.json側は開き括弧が閉じないまま(「昇也（士魂村上塾」)
+  // 相手名に残っており不一致だった(セル崩れ)。
+  "tatsuya-inaishi|2020-11-08|昇也（士魂村上塾": "shoya", // スーパービッグバン2020
+};
+
 function fuzzyResolveOpponent(opponentName: string): string | null {
   const n = normName(opponentName);
   const aliasHit = byAliasNorm.get(n);
@@ -689,9 +728,15 @@ for (const f of fighters) {
           ? byNameGym.get(`${b.opponent_ref}|${b.opponent_ref_gym ?? ""}`) ?? null
           : null;
       const reverseSlug = directSlug ? null : reverseResolveOpponent(b, slug, f.name);
-      const fuzzySlug = directSlug || reverseSlug ? null : fuzzyResolveOpponent(b.opponent_name);
-      const opponentSlug = directSlug ?? reverseSlug ?? fuzzySlug;
+      const verifiedOverride =
+        directSlug || reverseSlug
+          ? null
+          : (VERIFIED_OPPONENT_BOUT_OVERRIDES[`${slug}|${b.date}|${b.opponent_name}`] ?? null);
+      const fuzzySlug =
+        directSlug || reverseSlug || verifiedOverride ? null : fuzzyResolveOpponent(b.opponent_name);
+      const opponentSlug = directSlug ?? reverseSlug ?? verifiedOverride ?? fuzzySlug;
       if (reverseSlug) reverseResolvedCount++;
+      if (verifiedOverride) fuzzyResolvedCount++;
       if (fuzzySlug) fuzzyResolvedCount++;
       const gymSplit = splitOpponentGymSuffix(b.opponent_name);
       return {
