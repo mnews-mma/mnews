@@ -51,8 +51,11 @@ function OpponentCell({ b }: { b: KickBout }) {
         <span>{b.opponentName}</span>
       )}
       {b.opponentAmbiguous && (
-        <span className="kick-badge" title={`同名の選手が${b.opponentCandidateCount}人いるため特定できません`}>
-          同名{b.opponentCandidateCount}人・特定不可
+        <span
+          className="kick-badge"
+          title={`「${b.opponentName}」という名前の選手が${b.opponentCandidateCount}人おり、どちらの選手か区別できないため選手ページへのリンクを付けていません`}
+        >
+          同姓同名のため未リンク
         </span>
       )}
       {b.opponentAffiliation && <div className="kick-table__aff">{b.opponentAffiliation}</div>}
@@ -87,10 +90,21 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
           )}
         </div>
 
-        {f.record.total > 0 && (
+        {f.bouts.length > 0 && (
           <p className="kick-record-summary">
-            収録{f.record.total}試合: {f.record.wins}勝{f.record.losses}敗{f.record.draws}分
-            {f.record.unknownCount > 0 && `、ほか不明${f.record.unknownCount}件`}
+            収録{f.bouts.length}試合
+            {f.record.total > 0 &&
+              (f.record.total === f.bouts.length ? (
+                <>
+                  ：{f.record.wins}勝{f.record.losses}敗{f.record.draws}分
+                  {f.record.unknownCount > 0 && `、ほか不明${f.record.unknownCount}件`}
+                </>
+              ) : (
+                <>
+                  (うち集計対象{f.record.total}：{f.record.wins}勝{f.record.losses}敗{f.record.draws}分
+                  {f.record.unknownCount > 0 && `、ほか不明${f.record.unknownCount}件`})
+                </>
+              ))}
           </p>
         )}
 
@@ -201,14 +215,14 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                     <ResultCell b={b} />
                   </td>
                   <td className="kick-src">
-                    <a href={b.sourceUrl} target="_blank" rel="noopener noreferrer" title={b.promotion}>
-                      {PROMOTION_SHORT[b.promotion] ?? b.promotion}
+                    <a
+                      href={b.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={b.sourceType === "wikipedia" ? `${b.promotion}(出典: Wikipedia)` : b.promotion}
+                    >
+                      {b.sourceType === "wikipedia" ? "Wikipedia" : PROMOTION_SHORT[b.promotion] ?? b.promotion}
                     </a>
-                    {b.sourceType === "wikipedia" && (
-                      <span className="kick-badge" title="この試合の出典は団体公式ではなくWikipediaです">
-                        Wikipedia
-                      </span>
-                    )}
                     {b.alsoFrom.map((u) => (
                       <div key={u}>
                         <a href={u} target="_blank" rel="noopener noreferrer">
