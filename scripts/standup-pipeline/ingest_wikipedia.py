@@ -212,6 +212,21 @@ def restore_wikilinks(s):
     return s.replace("\x00", "").replace("\x01", "|")
 
 
+# PR-22(公開前の全件検品): <ref>...</ref>形式の出典citationタグ(自己終了形<ref .../>を含む)と
+# <!--...-->形式のHTMLコメントが、決着(method)欄に丸ごと本文つきで残存していた実例を発見
+# (例: ブアカーオ・バンチャメーク「1R終了 無効試合（ヤンロンの試合拒否）<ref>[https://efight.jp/...
+# 突然試合をボイコット...]eFight（イーファイト） 2023年9月26日</ref>」)。旧実装はopponent欄のみ
+# 汎用タグ除去(<[^>]+>)を適用しており、method・event欄には一切適用していなかったため、
+# <ref>タグの開始・終了タグは消えても中身の引用文が残る、という中途半端な結果になっていた。
+# 全フィールド共通でref/コメントを中身ごと除去してから、残った汎用タグを除去する。
+def strip_wiki_annotations(s):
+    s = re.sub(r"<ref[^>]*/>", "", s)  # 自己終了形 <ref name="x" />
+    s = re.sub(r"<ref[^>]*>.*?</ref>", "", s, flags=re.S)  # <ref>...</ref>(中身ごと)
+    s = re.sub(r"<!--.*?-->", "", s, flags=re.S)  # HTMLコメント(中身ごと)
+    s = re.sub(r"<[^>]+>", "", s)  # 残った汎用タグ(<br>等)
+    return s.strip()
+
+
 def parse_fight_rows(wikitext):
     rows = []
     for is_kickboxing, block in tag_fight_cont_sections(wikitext):
@@ -220,7 +235,7 @@ def parse_fight_rows(wikitext):
             # アマチュアと判定された区間はここで構造的に除外する。旧15団体フィルタとは独立した判定。
             continue
         protected = protect_wikilinks(block)
-        parts = [restore_wikilinks(p).strip() for p in protected.split("|")]
+        parts = [strip_wiki_annotations(restore_wikilinks(p)) for p in protected.split("|")]
         parts = _strip_cell_attrs(parts)
         while len(parts) < 5:
             parts.append("")
