@@ -23,6 +23,10 @@ export interface Bout {
   // 引退エキシビ等の特別マッチ。試合番号を持たないため、詳細ページでは
   // 主催掲載に合わせメインイベントの直上に表示する(末尾送りにしない)。
   isExhibition?: boolean;
+  // ルールが異なる等の理由で戦績数値を出したくないbout向け。trueの場合、
+  // 収録済みでもEventBoutCardV2側で両者ともNo data表示に強制する
+  // (選手ページへのリンクは維持、戦績数値のみ非表示)。
+  hideRecord?: boolean;
 }
 
 export interface MEvent {
@@ -351,6 +355,16 @@ export const EVENTS: MEvent[] = [
         rule: "RIZIN MMAルール 5分3R",
         fighterA: "冨澤大智",
         fighterB: "ドンマイ川端",
+      },
+      // 2026-08-17 追加(出典: https://jp.rizinff.com/_ct/17853585)。
+      // バウトオーダー未確定のため末尾に暫定配置。
+      {
+        weightClass: "71.0kg契約",
+        rule: "RIZIN オープンフィンガーグローブ キックボクシングルール 3分3R",
+        fighterA: "ブラックパンサーベイノア",
+        fighterB: "宇佐美秀メイソン",
+        note: "スペシャルワンマッチ",
+        hideRecord: true,
       },
     ],
   },

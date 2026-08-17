@@ -266,6 +266,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                         note={b.note}
                         result={b.result}
                         isEventLive={event.status === "live"}
+                        hideRecord={b.hideRecord}
                       />
                     ))}
                   </div>
