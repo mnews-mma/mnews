@@ -10443,17 +10443,17 @@
     "nickname": "怪物くん"
   },
   "miyagawa-hyuga": {
-    "wins": 7,
-    "losses": 8,
+    "wins": 14,
+    "losses": 1,
     "draws": 0,
-    "ko": 4,
-    "sub": 0,
-    "decision": 3,
+    "ko": 6,
+    "sub": 1,
+    "decision": 7,
     "history": [
       {
         "date": "2026-07-18",
         "opponent": "鈴木博昭",
-        "result": "loss",
+        "result": "win",
         "method": "2R 3:29 TKO（グラウンド状態での膝蹴り）",
         "event": "RIZIN LANDMARK 15",
         "round": "R2",
@@ -10488,7 +10488,7 @@
       {
         "date": "2025-06-08",
         "opponent": "ルキヤ",
-        "result": "loss",
+        "result": "win",
         "method": "2R 0:54 TKO（右フック→パウンド）",
         "event": "GLADIATOR 031",
         "round": "R2"
@@ -10496,7 +10496,7 @@
       {
         "date": "2025-04-06",
         "opponent": "永留惇平",
-        "result": "loss",
+        "result": "win",
         "method": "5分2R終了 判定0-3",
         "event": "GLADIATOR 030",
         "round": "R2"
@@ -10512,7 +10512,7 @@
       {
         "date": "2024-10-06",
         "opponent": "今井健斗",
-        "result": "loss",
+        "result": "win",
         "method": "5分2R終了 判定0-3",
         "event": "GLADIATOR 028",
         "round": "R2"
@@ -10542,17 +10542,17 @@
         "round": "R2"
       },
       {
-        "date": "2023-09-30",
-        "opponent": "ジョビン",
-        "result": "loss",
-        "method": "2R 2:03 対応の悪さにより無効試合",
-        "event": "DEEP伝説のネタ物祭り",
-        "round": "R2"
+        "date": "2023-03-21",
+        "opponent": "リローン・マーフィー",
+        "result": "win",
+        "method": "5分5R終了 判定2-0",
+        "event": "UFC Fight Night: Evloev vs. Murphy",
+        "round": "R5"
       },
       {
         "date": "2023-01-22",
         "opponent": "中西テツオ",
-        "result": "loss",
+        "result": "win",
         "method": "1R 2:43 リアネイキッドチョーク",
         "event": "GLADIATOR 021",
         "round": "R1"
@@ -10568,7 +10568,7 @@
       {
         "date": "2021-11-21",
         "opponent": "井上暉也",
-        "result": "loss",
+        "result": "win",
         "method": "5分2R終了 判定1-2",
         "event": "DEEP OSAKA IMPACT 2021 1st ROUND",
         "round": "R2"
@@ -32777,6 +32777,453 @@
     "birthPlace": "神奈川県横浜市",
     "age": 33
   },
+  "ki-wonbin": {
+    "wins": 19,
+    "losses": 10,
+    "draws": 0,
+    "ko": 12,
+    "sub": 3,
+    "decision": 4,
+    "history": [
+      {
+        "date": "2025-11-03",
+        "opponent": "キャプテン☆アフリカ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "RIZIN LANDMARK 12",
+        "round": "R3",
+        "weightClass": "71.0kg契約"
+      },
+      {
+        "date": "2025-05-31",
+        "opponent": "ホベルト・サトシ・ソウザ",
+        "result": "loss",
+        "method": "1R 0:50 リアネイキッドチョーク",
+        "event": "RIZIN WORLD SERIES in KOREA",
+        "round": "R1",
+        "weightClass": "71.0kg契約"
+      },
+      {
+        "date": "2024-05-19",
+        "opponent": "雑賀“ヤン坊”達也",
+        "result": "win",
+        "method": "2R 0:51 TKO（パウンド）",
+        "event": "Road to UFC Season 3: Shanghai",
+        "round": "R2"
+      },
+      {
+        "date": "2023-05-28",
+        "opponent": "バテボラティ・バハテボラ",
+        "result": "loss",
+        "method": "2R 2:22 反則（後頭部へのパンチ）",
+        "event": "Road to UFC Season 2: Shanghai Quarterfinals 4 【ライト級トーナメント1回戦】",
+        "round": "R2"
+      },
+      {
+        "date": "2023-01-22",
+        "opponent": "グスタヴォ・ヴルリッツァー",
+        "result": "win",
+        "method": "2R 4:58 TKO（パウンドと肘打ち連打）",
+        "event": "GLADIATOR 020 IN OSAKA 【GLADIATORライト級タイトルマッチ】",
+        "round": "R2"
+      },
+      {
+        "date": "2022-10-23",
+        "opponent": "ジェカ・サラギ",
+        "result": "loss",
+        "method": "1R 2:41 KO（パンチ）",
+        "event": "UFC ROAD TO UFC ABU DHABI SEMIFINALS 1 【ライト級トーナメント準決勝】",
+        "round": "R1"
+      },
+      {
+        "date": "2022-06-09",
+        "opponent": "鹿志村仁之介",
+        "result": "win",
+        "method": "1R 4:45 TKO（肘）",
+        "event": "UFC ROAD TO UFC SINGAPORE QUARTERFINALS 1 【ライト級トーナメント1回戦】",
+        "round": "R1"
+      },
+      {
+        "date": "2021-06-05",
+        "opponent": "キム・ソンクォン",
+        "result": "win",
+        "method": "3R 0:57 TKO（パウンド）",
+        "event": "DOUBLE G FC 7 【Double G ライト級王座決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2020-11-28",
+        "opponent": "オク・レユン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "DOUBLE G FC 5",
+        "round": "R3"
+      },
+      {
+        "date": "2020-07-25",
+        "opponent": "ケビン・パク",
+        "result": "win",
+        "method": "1R 1:52 TKO（パウンド）",
+        "event": "DOUBLE G FC 4",
+        "round": "R1"
+      },
+      {
+        "date": "2019-12-15",
+        "opponent": "岸本篤史",
+        "result": "loss",
+        "method": "1R 0:44 KO（パンチ）",
+        "event": "DEEP 93 IMPACT",
+        "round": "R1"
+      },
+      {
+        "date": "2019-07-07",
+        "opponent": "ヴィトー・トファネリ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "GLADIATOR 010 IN OSAKA 【GLADIATORライト級王座決定戦】",
+        "round": "R3"
+      },
+      {
+        "date": "2019-05-06",
+        "opponent": "ジョナサン・バジェス",
+        "result": "win",
+        "method": "1R 3:53 KO（パンチ）",
+        "event": "SHOOTO 30TH ANNIVERSARY TOUR 3RD AND 4TH ROUND",
+        "round": "R1"
+      },
+      {
+        "date": "2018-11-17",
+        "opponent": "星野大介",
+        "result": "win",
+        "method": "1R 2:50 腕ひしぎ十字固め",
+        "event": "SHOOTO PROFESSIONAL SHOOTO 11/17",
+        "round": "R1"
+      },
+      {
+        "date": "2018-05-12",
+        "opponent": "ティラユット・カオラット",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "ROAD FC 47 2018 OPENWEIGHT GRAND PRIX OPENING ROUND",
+        "round": "R3"
+      },
+      {
+        "date": "2017-12-23",
+        "opponent": "岩田圭佑",
+        "result": "win",
+        "method": "1R 2:09 リアネイキッドチョーク",
+        "event": "ROAD FC 45",
+        "round": "R1"
+      },
+      {
+        "date": "2017-08-12",
+        "opponent": "ブルーノ・ミランダ",
+        "result": "loss",
+        "method": "1R 4:36 TKO（パウンド）",
+        "event": "ROAD FC 41",
+        "round": "R1"
+      },
+      {
+        "date": "2017-04-15",
+        "opponent": "マンスール・ベルナウイ",
+        "result": "loss",
+        "method": "1R 4:46 リアネイキッドチョーク",
+        "event": "ROAD FC 38",
+        "round": "R1"
+      },
+      {
+        "date": "2017-02-11",
+        "opponent": "チョン・ジェイル",
+        "result": "win",
+        "method": "1R 0:58 KO（パンチ）",
+        "event": "ROAD FC 36",
+        "round": "R1"
+      },
+      {
+        "date": "2016-11-23",
+        "opponent": "岸本泰昭",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "GLADIATOR 002 IN OSAKA",
+        "round": "R3"
+      },
+      {
+        "date": "2016-09-24",
+        "opponent": "ムングンツォージ・ナンディンエルデン",
+        "result": "loss",
+        "method": "1R 1:17 TKO（スタンドパンチ連打）",
+        "event": "ROAD FC 33",
+        "round": "R1"
+      },
+      {
+        "date": "2016-05-14",
+        "opponent": "イム・ビョンハ",
+        "result": "win",
+        "method": "1R 3:07 TKO（パウンド）",
+        "event": "ROAD FC 31",
+        "round": "R1"
+      },
+      {
+        "date": "2015-12-13",
+        "opponent": "伊澤寿人",
+        "result": "win",
+        "method": "1R 3:05 TKO（パウンド）",
+        "event": "RINGS THE OUTSIDER 38 OTA CITY GENERAL GYMNASIUM SPECIAL",
+        "round": "R1"
+      },
+      {
+        "date": "2015-08-22",
+        "opponent": "パク・チュンイル",
+        "result": "win",
+        "method": "1R 1:18 TKO（パウンド）",
+        "event": "ROAD FC 25",
+        "round": "R1"
+      },
+      {
+        "date": "2015-04-25",
+        "opponent": "キム・セヨン",
+        "result": "win",
+        "method": "1R 3:49 TKO（パウンド）",
+        "event": "ROAD FC CENTRAL LEAGUE PRO TOURNAMENT",
+        "round": "R1"
+      },
+      {
+        "date": "2015-04-25",
+        "opponent": "イ・フソン",
+        "result": "win",
+        "method": "2R 3:41 リアネイキッドチョーク",
+        "event": "ROAD FC CENTRAL LEAGUE PRO TOURNAMENT",
+        "round": "R2"
+      },
+      {
+        "date": "2014-12-14",
+        "opponent": "イ・サンヒョン",
+        "result": "loss",
+        "method": "2R 4:14 TKO（パウンド）",
+        "event": "ROAD FC 20",
+        "round": "R2"
+      },
+      {
+        "date": "2014-09-20",
+        "opponent": "東芝裕二",
+        "result": "win",
+        "method": "2R 5:00終了 判定3-0",
+        "event": "GLADIATOR 75",
+        "round": "R2"
+      },
+      {
+        "date": "2014-03-30",
+        "opponent": "ソン・ドゥリ",
+        "result": "win",
+        "method": "2R 3:50 TKO（パウンド）",
+        "event": "KAMA KOREAN ALL MMA ASSOCIATION 7",
+        "round": "R2"
+      }
+    ],
+    "live": true,
+    "nickname": "コリアン・グラディエーター",
+    "birthPlace": "ソウル市",
+    "age": 35
+  },
+  "carlyle-spike": {
+    "wins": 16,
+    "losses": 7,
+    "draws": 0,
+    "ko": 7,
+    "sub": 8,
+    "decision": 1,
+    "history": [
+      {
+        "date": "2025-09-23",
+        "opponent": "村山暁洋",
+        "result": "win",
+        "method": "1R 2:07 TKO（パウンド）",
+        "event": "PANCRASE 357",
+        "round": "R1"
+      },
+      {
+        "date": "2025-03-30",
+        "opponent": "泉武志",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN.50",
+        "round": "R3",
+        "weightClass": "71.0kg契約"
+      },
+      {
+        "date": "2024-06-09",
+        "opponent": "キム・ギョンピョ",
+        "result": "win",
+        "method": "3R 1:11 リアネイキッドチョーク",
+        "event": "RIZIN.47",
+        "round": "R3"
+      },
+      {
+        "date": "2023-09-24",
+        "opponent": "堀江圭功",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN.44",
+        "round": "R3"
+      },
+      {
+        "date": "2023-05-06",
+        "opponent": "ホベルト・サトシ・ソウザ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "RIZIN.42",
+        "round": "R3"
+      },
+      {
+        "date": "2022-10-01",
+        "opponent": "AJ・マッキー",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "Bellator 286: Pitbull vs. Borics",
+        "round": "R3"
+      },
+      {
+        "date": "2022-04-17",
+        "opponent": "武田光司",
+        "result": "win",
+        "method": "2R 1:35 フロントチョーク",
+        "event": "RIZIN.35",
+        "round": "R2"
+      },
+      {
+        "date": "2021-12-03",
+        "opponent": "ダン・モレット",
+        "result": "win",
+        "method": "3R 2:58 リアネイキッドチョーク",
+        "event": "Bellator 272: Pettis vs. Horiguchi",
+        "round": "R3"
+      },
+      {
+        "date": "2021-10-17",
+        "opponent": "JJ・アンブローズ",
+        "result": "win",
+        "method": "2R 1:19 KO（右フック）",
+        "event": "Cage Warriors 130",
+        "round": "R2"
+      },
+      {
+        "date": "2021-06-09",
+        "opponent": "ジル・グアルダード",
+        "result": "win",
+        "method": "1R 4:58 アームバー",
+        "event": "Ballys Fight Night",
+        "round": "R1"
+      },
+      {
+        "date": "2021-03-26",
+        "opponent": "バットスムベレル・ダグワドルジ",
+        "result": "win",
+        "method": "1R 4:58 リアネイキッドチョーク",
+        "event": "LFA 103",
+        "round": "R1"
+      },
+      {
+        "date": "2020-11-28",
+        "opponent": "ビル・アルジオ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "UFC on ESPN: Smith vs. Clark",
+        "round": "R3"
+      },
+      {
+        "date": "2020-05-30",
+        "opponent": "ビリー・クアランティーロ",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "UFC on ESPN: Woodley vs. Burns",
+        "round": "R3"
+      },
+      {
+        "date": "2020-02-29",
+        "opponent": "アーロン・クルーズ",
+        "result": "win",
+        "method": "1R 1:25 TKO（パウンド）",
+        "event": "UFC Fight Night: Benavidez vs. Figueiredo",
+        "round": "R1"
+      },
+      {
+        "date": "2019-11-15",
+        "opponent": "ジャン＝ポール・レボスノヤニ",
+        "result": "win",
+        "method": "1R 1:50 KO（パンチ）",
+        "event": "LXF 4",
+        "round": "R1"
+      },
+      {
+        "date": "2019-08-30",
+        "opponent": "マシュー・コルクホーン",
+        "result": "win",
+        "method": "1R 3:58 KO（右バックハンドブロー）",
+        "event": "LFA 74",
+        "round": "R1"
+      },
+      {
+        "date": "2019-03-09",
+        "opponent": "フェルナンド・パディーラ",
+        "result": "win",
+        "method": "5分3R終了 判定3-0",
+        "event": "CXF 17",
+        "round": "R3"
+      },
+      {
+        "date": "2018-08-28",
+        "opponent": "ブリアン・デル・ロサリオ",
+        "result": "win",
+        "method": "2R 2:41 リアネイキッドチョーク",
+        "event": "Combate Americas: Road to Copa Combate",
+        "round": "R2"
+      },
+      {
+        "date": "2018-04-21",
+        "opponent": "セローブ・ミナシヤン",
+        "result": "loss",
+        "method": "5分3R終了 判定0-3",
+        "event": "CXF 12",
+        "round": "R3"
+      },
+      {
+        "date": "2018-03-04",
+        "opponent": "ジョセフ・ロドリゲス",
+        "result": "win",
+        "method": "1R 2:02 リアネイキッドチョーク",
+        "event": "California Cage Wars 4",
+        "round": "R1"
+      },
+      {
+        "date": "2017-11-12",
+        "opponent": "ラジーム・ウェルズ",
+        "result": "win",
+        "method": "1R 0:55 TKO（パウンド）",
+        "event": "California Cage Wars 2: Cuero vs. Cannon",
+        "round": "R1"
+      },
+      {
+        "date": "2017-10-07",
+        "opponent": "ライメル・デイヴィス",
+        "result": "win",
+        "method": "1R 0:05 KO（パンチ）",
+        "event": "Gladiator Challenge: Fight Club",
+        "round": "R1"
+      },
+      {
+        "date": "2017-09-03",
+        "opponent": "カルム・ハイランド",
+        "result": "win",
+        "method": "1R 1:52 アームバー",
+        "event": "California Cage Wars: Peralta vs. Smith",
+        "round": "R1"
+      }
+    ],
+    "live": true,
+    "nickname": "赤毛のバーサーカー",
+    "birthPlace": "カリフォルニア州サンディエゴ",
+    "age": 33
+  },
   "ameyama-seiya": {
     "wins": 6,
     "losses": 4,
@@ -43909,452 +44356,5 @@
       }
     ],
     "live": false
-  },
-  "ki-wonbin": {
-    "wins": 19,
-    "losses": 10,
-    "draws": 0,
-    "ko": 12,
-    "sub": 3,
-    "decision": 4,
-    "history": [
-      {
-        "date": "2025-11-03",
-        "opponent": "キャプテン☆アフリカ",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "RIZIN LANDMARK 12",
-        "round": "R3",
-        "weightClass": "71.0kg契約"
-      },
-      {
-        "date": "2025-05-31",
-        "opponent": "ホベルト・サトシ・ソウザ",
-        "result": "loss",
-        "method": "1R 0:50 リアネイキッドチョーク",
-        "event": "RIZIN WORLD SERIES in KOREA",
-        "round": "R1",
-        "weightClass": "71.0kg契約"
-      },
-      {
-        "date": "2024-05-19",
-        "opponent": "雑賀“ヤン坊”達也",
-        "result": "win",
-        "method": "2R 0:51 TKO（パウンド）",
-        "event": "Road to UFC Season 3: Shanghai",
-        "round": "R2"
-      },
-      {
-        "date": "2023-05-28",
-        "opponent": "バテボラティ・バハテボラ",
-        "result": "loss",
-        "method": "2R 2:22 反則（後頭部へのパンチ）",
-        "event": "Road to UFC Season 2: Shanghai Quarterfinals 4 【ライト級トーナメント1回戦】",
-        "round": "R2"
-      },
-      {
-        "date": "2023-01-22",
-        "opponent": "グスタヴォ・ヴルリッツァー",
-        "result": "win",
-        "method": "2R 4:58 TKO（パウンドと肘打ち連打）",
-        "event": "GLADIATOR 020 IN OSAKA 【GLADIATORライト級タイトルマッチ】",
-        "round": "R2"
-      },
-      {
-        "date": "2022-10-23",
-        "opponent": "ジェカ・サラギ",
-        "result": "loss",
-        "method": "1R 2:41 KO（パンチ）",
-        "event": "UFC ROAD TO UFC ABU DHABI SEMIFINALS 1 【ライト級トーナメント準決勝】",
-        "round": "R1"
-      },
-      {
-        "date": "2022-06-09",
-        "opponent": "鹿志村仁之介",
-        "result": "win",
-        "method": "1R 4:45 TKO（肘）",
-        "event": "UFC ROAD TO UFC SINGAPORE QUARTERFINALS 1 【ライト級トーナメント1回戦】",
-        "round": "R1"
-      },
-      {
-        "date": "2021-06-05",
-        "opponent": "キム・ソンクォン",
-        "result": "win",
-        "method": "3R 0:57 TKO（パウンド）",
-        "event": "DOUBLE G FC 7 【Double G ライト級王座決定戦】",
-        "round": "R3"
-      },
-      {
-        "date": "2020-11-28",
-        "opponent": "オク・レユン",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "DOUBLE G FC 5",
-        "round": "R3"
-      },
-      {
-        "date": "2020-07-25",
-        "opponent": "ケビン・パク",
-        "result": "win",
-        "method": "1R 1:52 TKO（パウンド）",
-        "event": "DOUBLE G FC 4",
-        "round": "R1"
-      },
-      {
-        "date": "2019-12-15",
-        "opponent": "岸本篤史",
-        "result": "loss",
-        "method": "1R 0:44 KO（パンチ）",
-        "event": "DEEP 93 IMPACT",
-        "round": "R1"
-      },
-      {
-        "date": "2019-07-07",
-        "opponent": "ヴィトー・トファネリ",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "GLADIATOR 010 IN OSAKA 【GLADIATORライト級王座決定戦】",
-        "round": "R3"
-      },
-      {
-        "date": "2019-05-06",
-        "opponent": "ジョナサン・バジェス",
-        "result": "win",
-        "method": "1R 3:53 KO（パンチ）",
-        "event": "SHOOTO 30TH ANNIVERSARY TOUR 3RD AND 4TH ROUND",
-        "round": "R1"
-      },
-      {
-        "date": "2018-11-17",
-        "opponent": "星野大介",
-        "result": "win",
-        "method": "1R 2:50 腕ひしぎ十字固め",
-        "event": "SHOOTO PROFESSIONAL SHOOTO 11/17",
-        "round": "R1"
-      },
-      {
-        "date": "2018-05-12",
-        "opponent": "ティラユット・カオラット",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "ROAD FC 47 2018 OPENWEIGHT GRAND PRIX OPENING ROUND",
-        "round": "R3"
-      },
-      {
-        "date": "2017-12-23",
-        "opponent": "岩田圭佑",
-        "result": "win",
-        "method": "1R 2:09 リアネイキッドチョーク",
-        "event": "ROAD FC 45",
-        "round": "R1"
-      },
-      {
-        "date": "2017-08-12",
-        "opponent": "ブルーノ・ミランダ",
-        "result": "loss",
-        "method": "1R 4:36 TKO（パウンド）",
-        "event": "ROAD FC 41",
-        "round": "R1"
-      },
-      {
-        "date": "2017-04-15",
-        "opponent": "マンスール・ベルナウイ",
-        "result": "loss",
-        "method": "1R 4:46 リアネイキッドチョーク",
-        "event": "ROAD FC 38",
-        "round": "R1"
-      },
-      {
-        "date": "2017-02-11",
-        "opponent": "チョン・ジェイル",
-        "result": "win",
-        "method": "1R 0:58 KO（パンチ）",
-        "event": "ROAD FC 36",
-        "round": "R1"
-      },
-      {
-        "date": "2016-11-23",
-        "opponent": "岸本泰昭",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "GLADIATOR 002 IN OSAKA",
-        "round": "R3"
-      },
-      {
-        "date": "2016-09-24",
-        "opponent": "ムングンツォージ・ナンディンエルデン",
-        "result": "loss",
-        "method": "1R 1:17 TKO（スタンドパンチ連打）",
-        "event": "ROAD FC 33",
-        "round": "R1"
-      },
-      {
-        "date": "2016-05-14",
-        "opponent": "イム・ビョンハ",
-        "result": "win",
-        "method": "1R 3:07 TKO（パウンド）",
-        "event": "ROAD FC 31",
-        "round": "R1"
-      },
-      {
-        "date": "2015-12-13",
-        "opponent": "伊澤寿人",
-        "result": "win",
-        "method": "1R 3:05 TKO（パウンド）",
-        "event": "RINGS THE OUTSIDER 38 OTA CITY GENERAL GYMNASIUM SPECIAL",
-        "round": "R1"
-      },
-      {
-        "date": "2015-08-22",
-        "opponent": "パク・チュンイル",
-        "result": "win",
-        "method": "1R 1:18 TKO（パウンド）",
-        "event": "ROAD FC 25",
-        "round": "R1"
-      },
-      {
-        "date": "2015-04-25",
-        "opponent": "キム・セヨン",
-        "result": "win",
-        "method": "1R 3:49 TKO（パウンド）",
-        "event": "ROAD FC CENTRAL LEAGUE PRO TOURNAMENT",
-        "round": "R1"
-      },
-      {
-        "date": "2015-04-25",
-        "opponent": "イ・フソン",
-        "result": "win",
-        "method": "2R 3:41 リアネイキッドチョーク",
-        "event": "ROAD FC CENTRAL LEAGUE PRO TOURNAMENT",
-        "round": "R2"
-      },
-      {
-        "date": "2014-12-14",
-        "opponent": "イ・サンヒョン",
-        "result": "loss",
-        "method": "2R 4:14 TKO（パウンド）",
-        "event": "ROAD FC 20",
-        "round": "R2"
-      },
-      {
-        "date": "2014-09-20",
-        "opponent": "東芝裕二",
-        "result": "win",
-        "method": "2R 5:00終了 判定3-0",
-        "event": "GLADIATOR 75",
-        "round": "R2"
-      },
-      {
-        "date": "2014-03-30",
-        "opponent": "ソン・ドゥリ",
-        "result": "win",
-        "method": "2R 3:50 TKO（パウンド）",
-        "event": "KAMA KOREAN ALL MMA ASSOCIATION 7",
-        "round": "R2"
-      }
-    ],
-    "live": true,
-    "nickname": "コリアン・グラディエーター",
-    "birthPlace": "ソウル市",
-    "age": 35
-  },
-  "carlyle-spike": {
-    "wins": 16,
-    "losses": 7,
-    "draws": 0,
-    "ko": 7,
-    "sub": 8,
-    "decision": 1,
-    "history": [
-      {
-        "date": "2025-09-23",
-        "opponent": "村山暁洋",
-        "result": "win",
-        "method": "1R 2:07 TKO（パウンド）",
-        "event": "PANCRASE 357",
-        "round": "R1"
-      },
-      {
-        "date": "2025-03-30",
-        "opponent": "泉武志",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "RIZIN.50",
-        "round": "R3",
-        "weightClass": "71.0kg契約"
-      },
-      {
-        "date": "2024-06-09",
-        "opponent": "キム・ギョンピョ",
-        "result": "win",
-        "method": "3R 1:11 リアネイキッドチョーク",
-        "event": "RIZIN.47",
-        "round": "R3"
-      },
-      {
-        "date": "2023-09-24",
-        "opponent": "堀江圭功",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "RIZIN.44",
-        "round": "R3"
-      },
-      {
-        "date": "2023-05-06",
-        "opponent": "ホベルト・サトシ・ソウザ",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "RIZIN.42",
-        "round": "R3"
-      },
-      {
-        "date": "2022-10-01",
-        "opponent": "AJ・マッキー",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "Bellator 286: Pitbull vs. Borics",
-        "round": "R3"
-      },
-      {
-        "date": "2022-04-17",
-        "opponent": "武田光司",
-        "result": "win",
-        "method": "2R 1:35 フロントチョーク",
-        "event": "RIZIN.35",
-        "round": "R2"
-      },
-      {
-        "date": "2021-12-03",
-        "opponent": "ダン・モレット",
-        "result": "win",
-        "method": "3R 2:58 リアネイキッドチョーク",
-        "event": "Bellator 272: Pettis vs. Horiguchi",
-        "round": "R3"
-      },
-      {
-        "date": "2021-10-17",
-        "opponent": "JJ・アンブローズ",
-        "result": "win",
-        "method": "2R 1:19 KO（右フック）",
-        "event": "Cage Warriors 130",
-        "round": "R2"
-      },
-      {
-        "date": "2021-06-09",
-        "opponent": "ジル・グアルダード",
-        "result": "win",
-        "method": "1R 4:58 アームバー",
-        "event": "Ballys Fight Night",
-        "round": "R1"
-      },
-      {
-        "date": "2021-03-26",
-        "opponent": "バットスムベレル・ダグワドルジ",
-        "result": "win",
-        "method": "1R 4:58 リアネイキッドチョーク",
-        "event": "LFA 103",
-        "round": "R1"
-      },
-      {
-        "date": "2020-11-28",
-        "opponent": "ビル・アルジオ",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "UFC on ESPN: Smith vs. Clark",
-        "round": "R3"
-      },
-      {
-        "date": "2020-05-30",
-        "opponent": "ビリー・クアランティーロ",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "UFC on ESPN: Woodley vs. Burns",
-        "round": "R3"
-      },
-      {
-        "date": "2020-02-29",
-        "opponent": "アーロン・クルーズ",
-        "result": "win",
-        "method": "1R 1:25 TKO（パウンド）",
-        "event": "UFC Fight Night: Benavidez vs. Figueiredo",
-        "round": "R1"
-      },
-      {
-        "date": "2019-11-15",
-        "opponent": "ジャン＝ポール・レボスノヤニ",
-        "result": "win",
-        "method": "1R 1:50 KO（パンチ）",
-        "event": "LXF 4",
-        "round": "R1"
-      },
-      {
-        "date": "2019-08-30",
-        "opponent": "マシュー・コルクホーン",
-        "result": "win",
-        "method": "1R 3:58 KO（右バックハンドブロー）",
-        "event": "LFA 74",
-        "round": "R1"
-      },
-      {
-        "date": "2019-03-09",
-        "opponent": "フェルナンド・パディーラ",
-        "result": "win",
-        "method": "5分3R終了 判定3-0",
-        "event": "CXF 17",
-        "round": "R3"
-      },
-      {
-        "date": "2018-08-28",
-        "opponent": "ブリアン・デル・ロサリオ",
-        "result": "win",
-        "method": "2R 2:41 リアネイキッドチョーク",
-        "event": "Combate Americas: Road to Copa Combate",
-        "round": "R2"
-      },
-      {
-        "date": "2018-04-21",
-        "opponent": "セローブ・ミナシヤン",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
-        "event": "CXF 12",
-        "round": "R3"
-      },
-      {
-        "date": "2018-03-04",
-        "opponent": "ジョセフ・ロドリゲス",
-        "result": "win",
-        "method": "1R 2:02 リアネイキッドチョーク",
-        "event": "California Cage Wars 4",
-        "round": "R1"
-      },
-      {
-        "date": "2017-11-12",
-        "opponent": "ラジーム・ウェルズ",
-        "result": "win",
-        "method": "1R 0:55 TKO（パウンド）",
-        "event": "California Cage Wars 2: Cuero vs. Cannon",
-        "round": "R1"
-      },
-      {
-        "date": "2017-10-07",
-        "opponent": "ライメル・デイヴィス",
-        "result": "win",
-        "method": "1R 0:05 KO（パンチ）",
-        "event": "Gladiator Challenge: Fight Club",
-        "round": "R1"
-      },
-      {
-        "date": "2017-09-03",
-        "opponent": "カルム・ハイランド",
-        "result": "win",
-        "method": "1R 1:52 アームバー",
-        "event": "California Cage Wars: Peralta vs. Smith",
-        "round": "R1"
-      }
-    ],
-    "live": true,
-    "nickname": "赤毛のバーサーカー",
-    "birthPlace": "カリフォルニア州サンディエゴ",
-    "age": 33
   }
 }
