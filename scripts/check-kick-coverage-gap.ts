@@ -63,6 +63,21 @@ for (const f of fighters) {
 
 const snapshotDoc: { fighters: SnapshotRow[] } = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, "utf8"));
 
+// スナップショット(kana-leg4、#563の改名反映前に採取)には、PR-18(#554)→#563で
+// 恒久化された改名5件(manualOverrides.jsonの renamedFighterWikipediaIdentity)が
+// 旧名義のまま残っている。旧名義では現在のfighters.json(新名義)と正規化一致せず
+// 「候補0件」で名前解決不能に落ちてしまうため、解決時のみ新名義へ読み替える
+// (表示・レポートには元のスナップショット表記名をそのまま使う)。
+const manualOverridesPath = path.join(SRC, "manualOverrides.json");
+const nameResolveOverrides = new Map<string, string>();
+if (fs.existsSync(manualOverridesPath)) {
+  const overrides: { renamedFighterWikipediaIdentity?: { oldFighterName: string; newFighterName: string }[] } =
+    JSON.parse(fs.readFileSync(manualOverridesPath, "utf8"));
+  for (const r of overrides.renamedFighterWikipediaIdentity ?? []) {
+    nameResolveOverrides.set(normalizeKickName(r.oldFighterName), r.newFighterName);
+  }
+}
+
 const index = JSON.parse(fs.readFileSync(path.join(GEN, "index.json"), "utf8"));
 const boutCountBySlug = new Map<string, number>(
   (index.fighters as { slug: string; boutCount: number }[]).map((f) => [f.slug, f.boutCount]),
@@ -86,7 +101,8 @@ for (const row of snapshotDoc.fighters) {
     noTableCount++;
     continue;
   }
-  const candidates = candidatesByNormName.get(normalizeKickName(row.fighterName)) ?? [];
+  const resolveName = nameResolveOverrides.get(normalizeKickName(row.fighterName)) ?? row.fighterName;
+  const candidates = candidatesByNormName.get(normalizeKickName(resolveName)) ?? [];
   if (candidates.length !== 1) {
     nameUnresolvedCount++;
     if (unresolvedSamples.length < 20) {
