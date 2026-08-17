@@ -341,8 +341,30 @@ for (const b of allBouts) {
 }
 
 // ---------- 同一試合の重複除去(複数団体に掲載がある選手) ----------
+// ニックネーム引用符の除去(PR-8のstripQuotedNicknameと同じロジック。重複除去の同定にも
+// 使うため、定義をここに前出しする)。和島大海の「木村"フィリップ"ミノル」(K-1公式)と
+// 「木村ミノル」(Wikipedia側、ニックネーム抜き)が同一試合として統合されず二重計上されていた
+// バグの修正(2026-08、和島大海欠落調査)。
+const QUOTE_PAIRS: [string, string][] = [
+  ["“", "”"],
+  ['"', '"'],
+  ["'", "'"],
+  ["‘", "’"],
+];
+function stripQuotedNickname(s: string): string {
+  for (const [open, close] of QUOTE_PAIRS) {
+    const oi = s.indexOf(open);
+    if (oi === -1) continue;
+    const ci = s.indexOf(close, oi + open.length);
+    if (ci === -1) continue;
+    return s.slice(0, oi) + s.slice(ci + close.length);
+  }
+  return s;
+}
 const normName = (s: string) =>
   s.normalize("NFKC").replace(/\s+/g, "").replace(/[・･]/g, "").toLowerCase();
+// 重複除去の同一試合判定専用: ニックネーム引用符の有無だけの表記ゆれを吸収する。
+const normNameForDedupe = (s: string) => normName(stripQuotedNickname(s));
 // 大会名は主催者の冠(スポンサー名等)が出典サイトごとに付いたり付かなかったりするため
 // (例: "MAROOMS presents KNOCK OUT.60 ～K.O CLIMAX 2025～" と "KNOCK OUT.60 ～K.O CLIMAX 2025～")、
 // 完全一致ではなく正規化後の包含関係で「同じ大会」とみなす(PR-1.5)。
@@ -368,7 +390,7 @@ function dedupe(bouts: (Bout & { promotion: string })[]) {
     mergedRows++;
   };
   for (const b of bouts) {
-    const sameDayKey = b.date ? `${b.date}|${normName(b.opponent_name)}` : `id|${b.bout_id}`;
+    const sameDayKey = b.date ? `${b.date}|${normNameForDedupe(b.opponent_name)}` : `id|${b.bout_id}`;
     const sameDayHit = seen.get(sameDayKey);
     if (sameDayHit) {
       merge(sameDayHit, b);
@@ -385,7 +407,7 @@ function dedupe(bouts: (Bout & { promotion: string })[]) {
           if (!o.date) continue;
           const ot = Date.parse(o.date);
           if (Number.isNaN(ot) || ot === bt) continue; // 同日は上のsameDayHitで処理済み
-          if (Math.abs(bt - ot) <= 86400000 && normName(o.opponent_name) === normName(b.opponent_name) && eventCompatible(o.event, b.event)) {
+          if (Math.abs(bt - ot) <= 86400000 && normNameForDedupe(o.opponent_name) === normNameForDedupe(b.opponent_name) && eventCompatible(o.event, b.event)) {
             fuzzyHit = o;
             break;
           }
@@ -436,22 +458,6 @@ for (const [name, oldGym, newGym] of MERGED_GYM_ALIASES) {
 // 旧名・スペースの有無)だけが原因で不一致になっているものを追加で解決する。誤リンクを避けるため、
 // 正規化後に「一意の候補」が見つかった場合のみ採用する(複数候補・0候補は何もしない)。
 // 語順入れ替え(姓が失われるケースの信頼度が低い)とローマ字→かな変換は対象外(採用しない方針)。
-const QUOTE_PAIRS: [string, string][] = [
-  ["“", "”"],
-  ['"', '"'],
-  ["'", "'"],
-  ["‘", "’"],
-];
-function stripQuotedNickname(s: string): string {
-  for (const [open, close] of QUOTE_PAIRS) {
-    const oi = s.indexOf(open);
-    if (oi === -1) continue;
-    const ci = s.indexOf(close, oi + open.length);
-    if (ci === -1) continue;
-    return s.slice(0, oi) + s.slice(ci + close.length);
-  }
-  return s;
-}
 function buildUniqueIndex(pairs: [string, string][]): Map<string, string | null> {
   const m = new Map<string, string | null>();
   for (const [key, slugValue] of pairs) {

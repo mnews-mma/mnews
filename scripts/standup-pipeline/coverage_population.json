@@ -206,14 +206,12 @@
   ]
  },
  {
-  "name": "忍アマラ―",
+  "name": "アマラ忍",
   "wiki_title": "アマラ忍",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%9E%E3%83%A9%E5%BF%8D",
   "wiki_bout_count": null,
   "fighters_json_gym": null,
-  "fighters_json_sources": [
-   "https://ja.wikipedia.org/wiki/アマラ忍"
-  ]
+  "fighters_json_sources": null
  },
  {
   "name": "アミール・ゼヤダ",
@@ -1616,7 +1614,8 @@
   "wiki_bout_count": null,
   "fighters_json_gym": "team Authentic",
   "fighters_json_sources": [
-   "https://www.k-1.co.jp/fighter/1293"
+   "https://www.k-1.co.jp/fighter/1293",
+   "https://knockoutkb.com/fighters/ginji_243"
   ]
  },
  {
@@ -1786,14 +1785,12 @@
   ]
  },
  {
-  "name": "クンタップ・チャロンチャイ",
+  "name": "クンタップ・ウィラサクレック",
   "wiki_title": "クンタップ・ウィラサクレック",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%B3%E3%82%BF%E3%83%83%E3%83%97%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%A9%E3%82%B5%E3%82%AF%E3%83%AC%E3%83%83%E3%82%AF",
   "wiki_bout_count": null,
   "fighters_json_gym": null,
-  "fighters_json_sources": [
-   "https://ja.wikipedia.org/wiki/クンタップ・ウィラサクレック"
-  ]
+  "fighters_json_sources": null
  },
  {
   "name": "グァニー・バラッジ",
@@ -1889,14 +1886,12 @@
   ]
  },
  {
-  "name": "ゲーオ・ウィラサクレック",
+  "name": "ゲーオ・フェアテックス",
   "wiki_title": "ゲーオ・フェアテックス",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B2%E3%83%BC%E3%82%AA%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A2%E3%83%86%E3%83%83%E3%82%AF%E3%82%B9",
   "wiki_bout_count": null,
   "fighters_json_gym": null,
-  "fighters_json_sources": [
-   "https://ja.wikipedia.org/wiki/ゲーオ・フェアテックス"
-  ]
+  "fighters_json_sources": null
  },
  {
   "name": "ゲーリー・グッドリッジ",
@@ -2707,14 +2702,12 @@
   ]
  },
  {
-  "name": "ジョムトーン・ストライカージム",
+  "name": "ジョムトーン・チュワタナ",
   "wiki_title": "ジョムトーン・チュワタナ",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%A0%E3%83%88%E3%83%BC%E3%83%B3%E3%83%BB%E3%83%81%E3%83%A5%E3%83%AF%E3%82%BF%E3%83%8A",
   "wiki_bout_count": null,
   "fighters_json_gym": null,
-  "fighters_json_sources": [
-   "https://ja.wikipedia.org/wiki/ジョムトーン・チュワタナ"
-  ]
+  "fighters_json_sources": null
  },
  {
   "name": "ジョムホート・キアタディサック",
@@ -3735,7 +3728,7 @@
   "wiki_title": "トーマス・ハロン",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%BC%E3%83%9E%E3%82%B9%E3%83%BB%E3%83%8F%E3%83%AD%E3%83%B3",
   "wiki_bout_count": null,
-  "fighters_json_gym": "生年月日",
+  "fighters_json_gym": null,
   "fighters_json_sources": [
    "https://www.k-1.co.jp/fighter/1491",
    "https://ja.wikipedia.org/wiki/トーマス・ハロン"
@@ -4605,14 +4598,12 @@
   ]
  },
  {
-  "name": "ブアカーオ・バンチャメーク",
+  "name": "ブアカーオ・ポー.プラムック",
   "wiki_title": "ブアカーオ・ポー.プラムック",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%82%A2%E3%82%AB%E3%83%BC%E3%82%AA%E3%83%BB%E3%83%9D%E3%83%BC.%E3%83%97%E3%83%A9%E3%83%A0%E3%83%83%E3%82%AF",
   "wiki_bout_count": null,
   "fighters_json_gym": null,
-  "fighters_json_sources": [
-   "https://ja.wikipedia.org/wiki/ブアカーオ・ポー.プラムック"
-  ]
+  "fighters_json_sources": null
  },
  {
   "name": "ブバッカ・エル・バクーリ",
@@ -7103,7 +7094,8 @@
   "fighters_json_gym": "TEAM F.O.D",
   "fighters_json_sources": [
    "https://rise-rc.com/fighter/kaito/",
-   "https://shootboxing.org/fighter/kaito/"
+   "https://shootboxing.org/fighter/kaito/",
+   "https://knockoutkb.com/fighters/kaito_281"
   ]
  },
  {
@@ -7344,6 +7336,1045 @@
   "fighters_json_gym": "BRAID/TEAM SUERTE",
   "fighters_json_sources": [
    "https://knockoutkb.com/fighters/ryusei"
+  ]
+ },
+ {
+  "name": "相内 誠",
+  "wiki_title": "相内誠",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9B%B8%E5%86%85%E8%AA%A0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K26",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/aiuchi_makoto/",
+   "https://ja.wikipedia.org/wiki/相内誠"
+  ]
+ },
+ {
+  "name": "赤田 功輝",
+  "wiki_title": "赤田功輝",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%94%B0%E5%8A%9F%E8%BC%9D",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "RAIGHT",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1112"
+  ]
+ },
+ {
+  "name": "朝久 泰央",
+  "wiki_title": "朝久泰央",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9C%9D%E4%B9%85%E6%B3%B0%E5%A4%AE",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "朝久道場",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/104"
+  ]
+ },
+ {
+  "name": "朝久 裕貴",
+  "wiki_title": "朝久裕貴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9C%9D%E4%B9%85%E8%A3%95%E8%B2%B4",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "朝久道場",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/168"
+  ]
+ },
+ {
+  "name": "安保 璃紅",
+  "wiki_title": "安保璃紅",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%89%E4%BF%9D%E7%92%83%E7%B4%85",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "team ALL-WIN",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/724",
+   "https://ja.wikipedia.org/wiki/安保璃紅"
+  ]
+ },
+ {
+  "name": "池内 紀子",
+  "wiki_title": "池内紀子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%A0%E5%86%85%E7%B4%80%E5%AD%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "POWER OF DREAM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1151",
+   "https://ja.wikipedia.org/wiki/池内紀子"
+  ]
+ },
+ {
+  "name": "石井 慧",
+  "wiki_title": "石井慧",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E6%85%A7",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "チーム・クロコップ",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1190"
+  ]
+ },
+ {
+  "name": "稲垣 柊",
+  "wiki_title": "稲垣柊",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%A8%B2%E5%9E%A3%E6%9F%8A",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム大宮チームレオン",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/995"
+  ]
+ },
+ {
+  "name": "上田 幹雄",
+  "wiki_title": "上田幹雄",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%94%B0%E5%B9%B9%E9%9B%84",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "BRAVE",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1409"
+  ]
+ },
+ {
+  "name": "上野 奏貴",
+  "wiki_title": "上野奏貴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E5%A5%8F%E8%B2%B4",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "kickboxing gym  SHINYUUKI＋",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1485",
+   "https://ja.wikipedia.org/wiki/上野奏貴"
+  ]
+ },
+ {
+  "name": "上野 空大",
+  "wiki_title": "上野空大",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%87%8E%E7%A9%BA%E5%A4%A7",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "kickboxing gym  SHINYUUKI＋",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1348",
+   "https://ja.wikipedia.org/wiki/上野空大"
+  ]
+ },
+ {
+  "name": "宇佐美 秀 メイソン",
+  "wiki_title": "宇佐美秀メイソン",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%87%E4%BD%90%E7%BE%8E%E7%A7%80%E3%83%A1%E3%82%A4%E3%82%BD%E3%83%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "Battle-Box",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1421",
+   "https://rise-rc.com/fighter/usami_hide_meison/",
+   "https://knockoutkb.com/fighters/usami_hide_meison_134"
+  ]
+ },
+ {
+  "name": "江川 優生",
+  "wiki_title": "江川優生",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%B7%9D%E5%84%AA%E7%94%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "POWER OF DREAM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/114"
+  ]
+ },
+ {
+  "name": "江幡 睦",
+  "wiki_title": "江幡睦",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%B9%A1%E7%9D%A6",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "伊原道場",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/ebata_mutsuki/",
+   "https://ja.wikipedia.org/wiki/江幡睦",
+   "https://www.k-1.co.jp/fighter/1278"
+  ]
+ },
+ {
+  "name": "江幡 塁",
+  "wiki_title": "江幡塁",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%B9%A1%E5%A1%81",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "伊原道場",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/ebata_rui/",
+   "https://ja.wikipedia.org/wiki/江幡塁"
+  ]
+ },
+ {
+  "name": "遠藤 大翼",
+  "wiki_title": "遠藤大翼",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%81%A0%E8%97%A4%E5%A4%A7%E7%BF%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/455"
+  ]
+ },
+ {
+  "name": "大岩 龍矢",
+  "wiki_title": "大岩龍矢",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B2%A9%E9%BE%8D%E7%9F%A2",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "team VASILEUS",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/177"
+  ]
+ },
+ {
+  "name": "大久保 世璃",
+  "wiki_title": "大久保世璃",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E4%B9%85%E4%BF%9D%E4%B8%96%E7%92%83",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム・ウルフ TEAM ASTER",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1576"
+  ]
+ },
+ {
+  "name": "大久保 琉唯",
+  "wiki_title": "大久保琉唯",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E4%B9%85%E4%BF%9D%E7%90%89%E5%94%AF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム・ウルフ TEAM ASTER",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1224"
+  ]
+ },
+ {
+  "name": "大月 晴明",
+  "wiki_title": "大月晴明",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%9C%88%E6%99%B4%E6%98%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "NEXT LEVEL渋谷",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/218",
+   "https://ja.wikipedia.org/wiki/大月晴明"
+  ]
+ },
+ {
+  "name": "小澤 海斗",
+  "wiki_title": "小澤海斗",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%BE%A4%E6%B5%B7%E6%96%97",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "Team KK",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/176"
+  ]
+ },
+ {
+  "name": "乙津 陸",
+  "wiki_title": "乙津陸",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B9%99%E6%B4%A5%E9%99%B8",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "KNOCK OUTクロスポイント大泉",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1436",
+   "https://knockoutkb.com/fighters/otsu_riku_124"
+  ]
+ },
+ {
+  "name": "加藤 久輝",
+  "wiki_title": "加藤久輝",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%8A%A0%E8%97%A4%E4%B9%85%E8%BC%9D",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "West A / ALIVE",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/865"
+  ]
+ },
+ {
+  "name": "金子 晃大",
+  "wiki_title": "金子晃大",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%AD%90%E6%99%83%E5%A4%A7",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム自由ヶ丘/FROG GYM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/716",
+   "https://rise-rc.com/fighter/kaneko_akihiro/",
+   "https://ja.wikipedia.org/wiki/金子晃大"
+  ]
+ },
+ {
+  "name": "川原 誠也",
+  "wiki_title": "川原誠也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%8E%9F%E8%AA%A0%E4%B9%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "パンクラスイズム横浜",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1029"
+  ]
+ },
+ {
+  "name": "玖村 修平",
+  "wiki_title": "玖村修平",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%8E%96%E6%9D%91%E4%BF%AE%E5%B9%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "シューティングスター",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/879",
+   "https://knockoutkb.com/fighters/kumura_shuhei_135"
+  ]
+ },
+ {
+  "name": "軍司 泰斗",
+  "wiki_title": "軍司泰斗",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BB%8D%E5%8F%B8%E6%B3%B0%E6%96%97",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "TEAM SUERTE",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/gunji_taito_381",
+   "https://ja.wikipedia.org/wiki/軍司泰斗",
+   "https://www.k-1.co.jp/fighter/125"
+  ]
+ },
+ {
+  "name": "小浦 翼",
+  "wiki_title": "小浦翼",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B5%A6%E7%BF%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1 GYM横浜infinity",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1431"
+  ]
+ },
+ {
+  "name": "児玉 兼慎",
+  "wiki_title": "児玉兼慎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%85%90%E7%8E%89%E5%85%BC%E6%85%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1102"
+  ]
+ },
+ {
+  "name": "近藤 魁成",
+  "wiki_title": "近藤魁成",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BF%91%E8%97%A4%E9%AD%81%E6%88%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "TEAM3K",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/853",
+   "https://ja.wikipedia.org/wiki/近藤魁成"
+  ]
+ },
+ {
+  "name": "近藤 拳成",
+  "wiki_title": "近藤拳成",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%BF%91%E8%97%A4%E6%8B%B3%E6%88%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "TEAM3K",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/663",
+   "https://ja.wikipedia.org/wiki/近藤拳成"
+  ]
+ },
+ {
+  "name": "郷州 征宜",
+  "wiki_title": "郷州征宜",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%83%B7%E5%B7%9E%E5%BE%81%E5%AE%9C",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム総本部チームペガサス",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/694"
+  ]
+ },
+ {
+  "name": "郷野 聡寛",
+  "wiki_title": "郷野聡寛",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%83%B7%E9%87%8E%E8%81%A1%E5%AF%9B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/503"
+  ]
+ },
+ {
+  "name": "西京 春馬",
+  "wiki_title": "西京春馬",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E4%BA%AC%E6%98%A5%E9%A6%AC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1 GYM SAGAMI-ONO KREST",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/55"
+  ]
+ },
+ {
+  "name": "佐々木 大蔵",
+  "wiki_title": "佐々木大蔵",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BD%90%E3%80%85%E6%9C%A8%E5%A4%A7%E8%94%B5",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "DyR studio",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/280",
+   "https://rise-rc.com/fighter/sasaki_daizo/"
+  ]
+ },
+ {
+  "name": "宍戸 大樹",
+  "wiki_title": "宍戸大樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%8D%E6%88%B8%E5%A4%A7%E6%A8%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "シーザージム",
+  "fighters_json_sources": [
+   "https://shootboxing.org/fighter/shishido_hiroki/",
+   "https://ja.wikipedia.org/wiki/宍戸大樹"
+  ]
+ },
+ {
+  "name": "篠塚 辰樹",
+  "wiki_title": "篠塚辰樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%AF%A0%E5%A1%9A%E8%BE%B0%E6%A8%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "MASTER BRIDGE SOUND",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1149"
+  ]
+ },
+ {
+  "name": "篠原 悠人",
+  "wiki_title": "篠原悠人",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%AF%A0%E5%8E%9F%E6%82%A0%E4%BA%BA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "DURGA",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/662"
+  ]
+ },
+ {
+  "name": "シビサイ 頌真",
+  "wiki_title": "シビサイ頌真",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%93%E3%82%B5%E3%82%A4%E9%A0%8C%E7%9C%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/483"
+  ]
+ },
+ {
+  "name": "白須 康仁",
+  "wiki_title": "白須康仁",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%A0%88%E5%BA%B7%E4%BB%81",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "PROTAGONIST",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1328",
+   "https://ja.wikipedia.org/wiki/白須康仁"
+  ]
+ },
+ {
+  "name": "菅原 美優",
+  "wiki_title": "菅原美優",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%8F%85%E5%8E%9F%E7%BE%8E%E5%84%AA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/945"
+  ]
+ },
+ {
+  "name": "左右田 泰臣",
+  "wiki_title": "左右田泰臣",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B7%A6%E5%8F%B3%E7%94%B0%E6%B3%B0%E8%87%A3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/16"
+  ]
+ },
+ {
+  "name": "高木 健太",
+  "wiki_title": "高木健太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9C%A8%E5%81%A5%E5%A4%AA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "リバーサルジム川口REDIPS",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/881"
+  ]
+ },
+ {
+  "name": "髙橋 直輝",
+  "wiki_title": "髙橋直輝",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%AB%99%E6%A9%8B%E7%9B%B4%E8%BC%9D",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "若獅子会館",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/975"
+  ]
+ },
+ {
+  "name": "武居 由樹",
+  "wiki_title": "武居由樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E5%B1%85%E7%94%B1%E6%A8%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "POWER OF DREAM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/56"
+  ]
+ },
+ {
+  "name": "竹野 蓮",
+  "wiki_title": "竹野蓮",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%AB%B9%E9%87%8E%E8%93%AE",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/369"
+  ]
+ },
+ {
+  "name": "谷山 俊樹",
+  "wiki_title": "谷山俊樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%B0%B7%E5%B1%B1%E4%BF%8A%E6%A8%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "谷山ジム",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/293"
+  ]
+ },
+ {
+  "name": "椿原 龍矢",
+  "wiki_title": "椿原龍矢",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A4%BF%E5%8E%9F%E9%BE%8D%E7%9F%A2",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "月心会チーム侍",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/661",
+   "https://ja.wikipedia.org/wiki/椿原龍矢"
+  ]
+ },
+ {
+  "name": "冨樫 健一郎",
+  "wiki_title": "冨樫健一郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%86%A8%E6%A8%AB%E5%81%A5%E4%B8%80%E9%83%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/343"
+  ]
+ },
+ {
+  "name": "冨澤 大智",
+  "wiki_title": "冨澤大智",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%86%A8%E6%BE%A4%E5%A4%A7%E6%99%BA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム総本部チームペガサス",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1189"
+  ]
+ },
+ {
+  "name": "中澤 純",
+  "wiki_title": "中澤純",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%BE%A4%E7%B4%94",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/328"
+  ]
+ },
+ {
+  "name": "中島 弘貴",
+  "wiki_title": "中島弘貴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B3%B6%E5%BC%98%E8%B2%B4",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "NEXT LEVEL渋谷",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/nakajima_hiroki_104",
+   "https://ja.wikipedia.org/wiki/中島弘貴",
+   "https://www.k-1.co.jp/fighter/11"
+  ]
+ },
+ {
+  "name": "中島 玲",
+  "wiki_title": "中島玲",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B3%B6%E7%8E%B2",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "KNOCK OUT クロスポイント渋谷/ハイブリッドアカデミー",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1455",
+   "https://knockoutkb.com/fighters/nakajima_rei"
+  ]
+ },
+ {
+  "name": "永坂 吏羅",
+  "wiki_title": "永坂吏羅",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B0%B8%E5%9D%82%E5%90%8F%E7%BE%85",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1 GYM SAGAMI-ONO KREST",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/934"
+  ]
+ },
+ {
+  "name": "新美 貴士",
+  "wiki_title": "新美貴士",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E7%BE%8E%E8%B2%B4%E5%A3%AB",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "名古屋JKファクトリー",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/899",
+   "https://rise-rc.com/fighter/niimi_takahito/"
+  ]
+ },
+ {
+  "name": "橋本 楓汰",
+  "wiki_title": "橋本楓汰",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A9%8B%E6%9C%AC%E6%A5%93%E6%B1%B0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "POWER OF DREAM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1337",
+   "https://ja.wikipedia.org/wiki/橋本楓汰"
+  ]
+ },
+ {
+  "name": "橋本 雷汰",
+  "wiki_title": "橋本雷汰",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A9%8B%E6%9C%AC%E9%9B%B7%E6%B1%B0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "ALONZA ABLAZE",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1332",
+   "https://ja.wikipedia.org/wiki/橋本雷汰"
+  ]
+ },
+ {
+  "name": "林 健太",
+  "wiki_title": "林健太",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9E%97%E5%81%A5%E5%A4%AA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1 GYM SAGAMI-ONO KREST",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/199"
+  ]
+ },
+ {
+  "name": "平岡 琴",
+  "wiki_title": "平岡琴",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%B2%A1%E7%90%B4",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "TRY HARD GYM",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/hiraoka_koto/",
+   "https://knockoutkb.com/fighters/hiraoka_koto_567",
+   "https://ja.wikipedia.org/wiki/平岡琴",
+   "https://www.k-1.co.jp/fighter/637"
+  ]
+ },
+ {
+  "name": "平本 蓮",
+  "wiki_title": "平本蓮",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%9C%AC%E8%93%AE",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム総本部チームペガサス",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/22"
+  ]
+ },
+ {
+  "name": "廣野 祐",
+  "wiki_title": "廣野祐",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%BB%A3%E9%87%8E%E7%A5%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "フリー",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/hirono_yu/",
+   "https://ja.wikipedia.org/wiki/廣野祐",
+   "https://www.k-1.co.jp/fighter/445"
+  ]
+ },
+ {
+  "name": "星 龍之介",
+  "wiki_title": "星龍之介",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%98%9F%E9%BE%8D%E4%B9%8B%E4%BB%8B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "POWER OF DREAM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1248"
+  ]
+ },
+ {
+  "name": "町田 光",
+  "wiki_title": "町田光",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%94%BA%E7%94%B0%E5%85%89",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "飯伏プロレス研究所",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1432",
+   "https://knockoutkb.com/fighters/machida_hikaru_399",
+   "https://ja.wikipedia.org/wiki/町田光"
+  ]
+ },
+ {
+  "name": "松谷 綺",
+  "wiki_title": "松谷綺",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E8%B0%B7%E7%B6%BA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "ALONZA ABLAZE",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1180",
+   "https://ja.wikipedia.org/wiki/松谷綺"
+  ]
+ },
+ {
+  "name": "松本 涼雅",
+  "wiki_title": "松本涼雅",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%9C%AC%E6%B6%BC%E9%9B%85",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "月心会チーム侍",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/986"
+  ]
+ },
+ {
+  "name": "松山 勇汰",
+  "wiki_title": "松山勇汰",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E5%B1%B1%E5%8B%87%E6%B1%B0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "ALONZA ABLAZE",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1125"
+  ]
+ },
+ {
+  "name": "緑川 創",
+  "wiki_title": "緑川創",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%B7%91%E5%B7%9D%E5%89%B5",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "RIKIX",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/midorikawa_tsukuru/",
+   "https://ja.wikipedia.org/wiki/緑川創"
+  ]
+ },
+ {
+  "name": "峯 大樹",
+  "wiki_title": "峯大樹",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B3%AF%E5%A4%A7%E6%A8%B9",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "若獅子会館",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1030"
+  ]
+ },
+ {
+  "name": "宮崎 直人",
+  "wiki_title": "宮崎直人",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E5%B4%8E%E7%9B%B4%E4%BA%BA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/506"
+  ]
+ },
+ {
+  "name": "宮下 トモヤ",
+  "wiki_title": "宮下トモヤ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E4%B8%8B%E3%83%88%E3%83%A2%E3%83%A4",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "POWER OF DREAM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/603"
+  ]
+ },
+ {
+  "name": "村越 優汰",
+  "wiki_title": "村越優汰",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%91%E8%B6%8A%E5%84%AA%E6%B1%B0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "湘南格闘クラブ/M‘S GYM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/841"
+  ]
+ },
+ {
+  "name": "本村 康博",
+  "wiki_title": "本村康博",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9C%AC%E6%9D%91%E5%BA%B7%E5%8D%9A",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/315"
+  ]
+ },
+ {
+  "name": "森井 洋介",
+  "wiki_title": "森井洋介",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A3%AE%E4%BA%95%E6%B4%8B%E4%BB%8B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/594"
+  ]
+ },
+ {
+  "name": "山口 翔大",
+  "wiki_title": "山口翔大",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%8F%A3%E7%BF%94%E5%A4%A7",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "GENESIS/TEAM3K",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1309"
+  ]
+ },
+ {
+  "name": "山田 真子",
+  "wiki_title": "山田真子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E7%94%B0%E7%9C%9F%E5%AD%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "KINGS",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1016",
+   "https://knockoutkb.com/fighters/yamada_mako_327",
+   "https://ja.wikipedia.org/wiki/山田真子"
+  ]
+ },
+ {
+  "name": "大和 哲也",
+  "wiki_title": "大和哲也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%92%8C%E5%93%B2%E4%B9%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "大和ジム",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/318",
+   "https://ja.wikipedia.org/wiki/大和哲也"
+  ]
+ },
+ {
+  "name": "山本 真弘",
+  "wiki_title": "山本真弘",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E7%9C%9F%E5%BC%98",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "N.F.T.T.",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/76",
+   "https://ja.wikipedia.org/wiki/山本真弘"
+  ]
+ },
+ {
+  "name": "横田 一則",
+  "wiki_title": "横田一則",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E7%94%B0%E4%B8%80%E5%89%87",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "月心会チーム侍",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/611"
+  ]
+ },
+ {
+  "name": "横山 朋哉",
+  "wiki_title": "横山朋哉",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E5%B1%B1%E6%9C%8B%E5%93%89",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "リーブルロア",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/869"
+  ]
+ },
+ {
+  "name": "和島 大海",
+  "wiki_title": "和島大海",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%92%8C%E5%B3%B6%E5%A4%A7%E6%B5%B7",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "SHIKA GYM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/703"
+  ]
+ },
+ {
+  "name": "中村 優作",
+  "wiki_title": "中村優作",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%9D%91%E5%84%AA%E4%BD%9C",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "TEAM FAUST",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/nakamura_yusaku"
+  ]
+ },
+ {
+  "name": "久井 大夢",
+  "wiki_title": "久井大夢",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B9%85%E4%BA%95%E5%A4%A7%E5%A4%A2",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "TEAM TAIMU",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/hisai_taimu",
+   "https://www.k-1.co.jp/fighter/1387"
+  ]
+ },
+ {
+  "name": "五味 隆典",
+  "wiki_title": "五味隆典",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%BA%94%E5%91%B3%E9%9A%86%E5%85%B8",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "東林間ラスカルジム",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/gomi_takanori"
+  ]
+ },
+ {
+  "name": "倉本 一真",
+  "wiki_title": "倉本一真",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%80%89%E6%9C%AC%E4%B8%80%E7%9C%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "リバーサルジム新宿MeWe/MAJESTIC",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/kuramoto_kazuma_321"
+  ]
+ },
+ {
+  "name": "大沢 文也",
+  "wiki_title": "大沢文也",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%B2%A2%E6%96%87%E4%B9%9F",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "ザウルスプロモーション",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/osawa_fumiya_322",
+   "https://www.k-1.co.jp/fighter/216"
+  ]
+ },
+ {
+  "name": "安谷屋 智弘",
+  "wiki_title": "安谷屋智弘",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%89%E8%B0%B7%E5%B1%8B%E6%99%BA%E5%BC%98",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "氷ヲ刻メ／池田道場",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/adaniya_tomohiro_537"
+  ]
+ },
+ {
+  "name": "宮越 慶二郎",
+  "wiki_title": "宮越慶二郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E8%B6%8A%E6%85%B6%E4%BA%8C%E9%83%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "拳粋会宮越道場",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/miyakoshi_keijiro_262"
+  ]
+ },
+ {
+  "name": "寺田 匠",
+  "wiki_title": "寺田匠",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%AF%BA%E7%94%B0%E5%8C%A0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "team VASILEUS",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/terada-takumi/",
+   "https://www.k-1.co.jp/fighter/1063"
+  ]
+ },
+ {
+  "name": "小笠原 瑛作",
+  "wiki_title": "小笠原瑛作",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E7%AC%A0%E5%8E%9F%E7%91%9B%E4%BD%9C",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "KNOCK OUT クロスポイント吉祥寺",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/ogasawara_eisaku"
+  ]
+ },
+ {
+  "name": "木下 カラテ",
+  "wiki_title": "木下タケアキ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9C%A8%E4%B8%8B%E3%82%BF%E3%82%B1%E3%82%A2%E3%82%AD",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "和術慧⾈會 HEARTS",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/kinoshita_karate_387"
+  ]
+ },
+ {
+  "name": "村田 聖明",
+  "wiki_title": "村田聖明",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%91%E7%94%B0%E8%81%96%E6%98%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "シーザージム",
+  "fighters_json_sources": [
+   "https://shootboxing.org/fighter/murata_kiyoaki/"
+  ]
+ },
+ {
+  "name": "松倉 信太郎",
+  "wiki_title": "松倉信太郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E5%80%89%E4%BF%A1%E5%A4%AA%E9%83%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "TRY HARD GYM",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/matsukura_shintaro_242",
+   "https://www.k-1.co.jp/fighter/21"
+  ]
+ },
+ {
+  "name": "松岡 力",
+  "wiki_title": "松岡力",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E5%B2%A1%E5%8A%9B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "K-1ジム五反田チームキングス",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/matsuoka_riki_568",
+   "https://www.k-1.co.jp/fighter/842"
+  ]
+ },
+ {
+  "name": "松嶋 こよみ",
+  "wiki_title": "松嶋こよみ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E5%B6%8B%E3%81%93%E3%82%88%E3%81%BF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "IDEA ASAKUSA",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/matsushima_koyomi_418"
+  ]
+ },
+ {
+  "name": "渡慶次 幸平",
+  "wiki_title": "渡慶次幸平",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B8%A1%E6%85%B6%E6%AC%A1%E5%B9%B8%E5%B9%B3",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "KNOCK OUT クロスポイント吉祥寺",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/tokeshi_kohei_167"
+  ]
+ },
+ {
+  "name": "濱田 巧",
+  "wiki_title": "濱田巧",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%BF%B1%E7%94%B0%E5%B7%A7",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "team AKATSUKI",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/hamada_takumi_244"
+  ]
+ },
+ {
+  "name": "田丸 辰",
+  "wiki_title": "田丸辰",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%B8%E8%BE%B0",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "TRY HARD GYM",
+  "fighters_json_sources": [
+   "https://rise-rc.com/fighter/tamaru_toki/"
+  ]
+ },
+ {
+  "name": "祖根 寿麻",
+  "wiki_title": "祖根寿麻",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%A5%96%E6%A0%B9%E5%AF%BF%E9%BA%BB",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "ZOOMER",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/sone_kazuma_388",
+   "https://www.k-1.co.jp/fighter/791"
+  ]
+ },
+ {
+  "name": "鈴木 千裕",
+  "wiki_title": "鈴木千裕",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%88%B4%E6%9C%A8%E5%8D%83%E8%A3%95",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "KNOCK OUT クロスポイント吉祥寺",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/suzuki_chihiro",
+   "https://ja.wikipedia.org/wiki/男子キックボクサー一覧"
   ]
  }
 ]
