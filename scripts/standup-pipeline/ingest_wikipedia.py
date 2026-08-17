@@ -376,6 +376,37 @@ def build():
     out = []
     held = []
 
+    # PR-濱田巧調査(2026-08): 「フォールバック2」(同一選手・同一団体・同一日付の公式bout
+    # がちょうど1件のときのみ表記違いとみなす)は、公式側の同日件数だけを見ており、
+    # Wikipedia側が同日に複数試合(トーナメント等のダブルヘッダー)を記録している場合を
+    # 考慮していなかった。濱田巧2021-09-25で実測: Wikipedia記事は同日に「花岡竜」(敗)・
+    # 「心直」(勝)の2試合を記録しているが、公式KNOCK OUTには「心直」1件のみ掲載。
+    # 「花岡竜」戦がこの1件と誤って同一試合とみなされ(表記違いと誤認)、静かに消えていた。
+    # Wikipedia側でも同一選手・同一団体・同一日付の行数を事前に数え、こちらもちょうど1件の
+    # ときのみフォールバック2を適用する(両側とも1件同士でなければ、どちらが対応するか
+    # 判別できないため安全に倒して適用しない)。
+    wiki_org_date_count = collections.defaultdict(lambda: collections.defaultdict(collections.Counter))
+    for p in population:
+        wt = wikitexts.get(p["wiki_title"])
+        if not wt:
+            continue
+        cands = by_name.get(p["name"], [])
+        rec = None
+        srcs = p.get("fighters_json_sources") or []
+        for c in cands:
+            if srcs and any(u == srcs[0] for u in c["sources"]):
+                rec = c
+                break
+        if not rec and cands:
+            rec = cands[0]
+        if not rec:
+            continue
+        for fr in parse_fight_rows(wt):
+            if not fr["date"]:
+                continue
+            org = guess_org_or_other(fr["event"])
+            wiki_org_date_count[identity(rec)][org][fr["date"]] += 1
+
     for p in population:
         wt = wikitexts.get(p["wiki_title"])
         if not wt:
@@ -427,7 +458,14 @@ def build():
                     continue
             # フォールバック2: 同一選手・同一団体・同一日付の公式boutがちょうど1件のときのみ
             # 「相手名の表記違い(カタカナ⇔英語表記等)による同一試合」とみなす(PR-16)。
-            if fr["date"] and person_org_date_count[identity(rec)][org].get(fr["date"]) == 1:
+            # 濱田巧調査(2026-08)で追加: Wikipedia側も同日に複数試合(ダブルヘッダー)が
+            # 無いことを確認してからのみ適用する(公式側1件だけを見ると、Wikipedia側が
+            # 同日2試合を記録している場合に誤って統合してしまう)。
+            if (
+                fr["date"]
+                and person_org_date_count[identity(rec)][org].get(fr["date"]) == 1
+                and wiki_org_date_count[identity(rec)][org].get(fr["date"]) == 1
+            ):
                 stats["dup_dateonly_match"] += 1
                 continue
             if not fr["opponent"]:

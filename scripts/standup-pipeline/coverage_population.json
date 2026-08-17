@@ -206,12 +206,15 @@
   ]
  },
  {
-  "name": "アマラ忍",
+  "name": "忍アマラ―",
   "wiki_title": "アマラ忍",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%9E%E3%83%A9%E5%BF%8D",
   "wiki_bout_count": null,
-  "fighters_json_gym": null,
-  "fighters_json_sources": null
+  "fighters_json_gym": "SBモンゴル/SHINOBU fighting gym",
+  "fighters_json_sources": [
+   "https://shootboxing.org/fighter/shinobu_amara/",
+   "https://ja.wikipedia.org/wiki/アマラ忍"
+  ]
  },
  {
   "name": "アミール・ゼヤダ",
@@ -1785,12 +1788,15 @@
   ]
  },
  {
-  "name": "クンタップ・ウィラサクレック",
+  "name": "クンタップ・チャロンチャイ",
   "wiki_title": "クンタップ・ウィラサクレック",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%B3%E3%82%BF%E3%83%83%E3%83%97%E3%83%BB%E3%82%A6%E3%82%A3%E3%83%A9%E3%82%B5%E3%82%AF%E3%83%AC%E3%83%83%E3%82%AF",
   "wiki_bout_count": null,
-  "fighters_json_gym": null,
-  "fighters_json_sources": null
+  "fighters_json_gym": "タイ/TEAM KUNTAP",
+  "fighters_json_sources": [
+   "https://knockoutkb.com/fighters/kuntap_charoenchai_123",
+   "https://ja.wikipedia.org/wiki/クンタップ・ウィラサクレック"
+  ]
  },
  {
   "name": "グァニー・バラッジ",
@@ -1886,12 +1892,15 @@
   ]
  },
  {
-  "name": "ゲーオ・フェアテックス",
+  "name": "ゲーオ・ウィラサクレック",
   "wiki_title": "ゲーオ・フェアテックス",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B2%E3%83%BC%E3%82%AA%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A2%E3%83%86%E3%83%83%E3%82%AF%E3%82%B9",
   "wiki_bout_count": null,
-  "fighters_json_gym": null,
-  "fighters_json_sources": null
+  "fighters_json_gym": "ウィラサクレック・フェアテックスジム",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/6",
+   "https://ja.wikipedia.org/wiki/ゲーオ・フェアテックス"
+  ]
  },
  {
   "name": "ゲーリー・グッドリッジ",
@@ -2702,12 +2711,15 @@
   ]
  },
  {
-  "name": "ジョムトーン・チュワタナ",
+  "name": "ジョムトーン・ストライカージム",
   "wiki_title": "ジョムトーン・チュワタナ",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%A0%E3%83%88%E3%83%BC%E3%83%B3%E3%83%BB%E3%83%81%E3%83%A5%E3%83%AF%E3%82%BF%E3%83%8A",
   "wiki_bout_count": null,
-  "fighters_json_gym": null,
-  "fighters_json_sources": null
+  "fighters_json_gym": "Striker GYM",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1307",
+   "https://ja.wikipedia.org/wiki/ジョムトーン・チュワタナ"
+  ]
  },
  {
   "name": "ジョムホート・キアタディサック",
@@ -4598,12 +4610,15 @@
   ]
  },
  {
-  "name": "ブアカーオ・ポー.プラムック",
+  "name": "ブアカーオ・バンチャメーク",
   "wiki_title": "ブアカーオ・ポー.プラムック",
   "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%82%A2%E3%82%AB%E3%83%BC%E3%82%AA%E3%83%BB%E3%83%9D%E3%83%BC.%E3%83%97%E3%83%A9%E3%83%A0%E3%83%83%E3%82%AF",
   "wiki_bout_count": null,
-  "fighters_json_gym": null,
-  "fighters_json_sources": null
+  "fighters_json_gym": "Banchamek Gym",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1488",
+   "https://ja.wikipedia.org/wiki/ブアカーオ・ポー.プラムック"
+  ]
  },
  {
   "name": "ブバッカ・エル・バクーリ",
@@ -8375,6 +8390,174 @@
   "fighters_json_sources": [
    "https://knockoutkb.com/fighters/suzuki_chihiro",
    "https://ja.wikipedia.org/wiki/男子キックボクサー一覧"
+  ]
+ },
+ {
+  "name": "AKIRA Jr.",
+  "wiki_title": "AKIRA Jr",
+  "wiki_url": "https://ja.wikipedia.org/wiki/AKIRA_Jr",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "Team Aj",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1295",
+   "https://ja.wikipedia.org/wiki/AKIRA_Jr"
+  ]
+ },
+ {
+  "name": "いつか",
+  "wiki_title": "横瀬いつか",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E7%80%AC%E3%81%84%E3%81%A4%E3%81%8B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/横瀬いつか"
+  ]
+ },
+ {
+  "name": "イ・チンジン",
+  "wiki_title": "池仁珍",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%A0%E4%BB%81%E7%8F%8D",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/池仁珍"
+  ]
+ },
+ {
+  "name": "桜朋梨恵",
+  "wiki_title": "桜朋凛",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%A1%9C%E6%9C%8B%E5%87%9B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/桜朋凛",
+   "https://www.k-1.co.jp/fighter/491"
+  ]
+ },
+ {
+  "name": "京太郎",
+  "wiki_title": "藤本京太郎",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E6%9C%AC%E4%BA%AC%E5%A4%AA%E9%83%8E",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/藤本京太郎",
+   "https://www.k-1.co.jp/fighter/1128"
+  ]
+ },
+ {
+  "name": "小比類巻太信",
+  "wiki_title": "小比類巻貴之",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%AF%94%E9%A1%9E%E5%B7%BB%E8%B2%B4%E4%B9%8B",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/小比類巻太信"
+  ]
+ },
+ {
+  "name": "SAHO",
+  "wiki_title": "☆SAHO☆",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E2%98%86SAHO%E2%98%86",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "闘神塾",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/1209",
+   "https://ja.wikipedia.org/wiki/☆SAHO☆"
+  ]
+ },
+ {
+  "name": "シリモンコル・シンワッサ",
+  "wiki_title": "シリモンコン・シンワンチャー",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%83%A2%E3%83%B3%E3%82%B3%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%B3%E3%83%AF%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/シリモンコン・シンワンチャー"
+  ]
+ },
+ {
+  "name": "高萩ツトム",
+  "wiki_title": "高萩勉",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E9%AB%98%E8%90%A9%E5%8B%89",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/高萩勉",
+   "https://www.k-1.co.jp/fighter/93"
+  ]
+ },
+ {
+  "name": "チ・インジン",
+  "wiki_title": "池仁珍",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E6%B1%A0%E4%BB%81%E7%8F%8D",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/池仁珍"
+  ]
+ },
+ {
+  "name": "ネイサン・\"カーネッジ\"・コーベット",
+  "wiki_title": "ネイサン・コーベット",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%8D%E3%82%A4%E3%82%B5%E3%83%B3%E3%83%BB%E3%82%B3%E3%83%BC%E3%83%99%E3%83%83%E3%83%88",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/ネイサン・コーベット"
+  ]
+ },
+ {
+  "name": "NORIKO",
+  "wiki_title": "角田紀子",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E8%A7%92%E7%94%B0%E7%B4%80%E5%AD%90",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/角田紀子"
+  ]
+ },
+ {
+  "name": "フランソワ・\"ザ・ホワイトバッファロー\"・ボタ",
+  "wiki_title": "フランソワ・ボタ",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%B3%E3%82%BD%E3%83%AF%E3%83%BB%E3%83%9C%E3%82%BF",
+  "wiki_bout_count": null,
+  "fighters_json_gym": null,
+  "fighters_json_sources": [
+   "https://ja.wikipedia.org/wiki/フランソワ・ボタ"
+  ]
+ },
+ {
+  "name": "真優",
+  "wiki_title": "真優 (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E7%9C%9F%E5%84%AA_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "月心会チーム侍",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/829",
+   "https://ja.wikipedia.org/wiki/前薗真優"
+  ]
+ },
+ {
+  "name": "三上 大智",
+  "wiki_title": "三上ヘンリー大智",
+  "wiki_url": "https://ja.wikipedia.org/wiki/%E4%B8%89%E4%B8%8A%E3%83%98%E3%83%B3%E3%83%AA%E3%83%BC%E5%A4%A7%E6%99%BA",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "ボスジムジャパン",
+  "fighters_json_sources": [
+   "https://shootboxing.org/fighter/mikami_daichi/",
+   "https://ja.wikipedia.org/wiki/三上ヘンリー大智"
+  ]
+ },
+ {
+  "name": "MOE",
+  "wiki_title": "MOE (キックボクサー)",
+  "wiki_url": "https://ja.wikipedia.org/wiki/MOE_%28%E3%82%AD%E3%83%83%E3%82%AF%E3%83%9C%E3%82%AF%E3%82%B5%E3%83%BC%29",
+  "wiki_bout_count": null,
+  "fighters_json_gym": "若獅子会館",
+  "fighters_json_sources": [
+   "https://www.k-1.co.jp/fighter/940",
+   "https://ja.wikipedia.org/wiki/高橋萌"
   ]
  }
 ]

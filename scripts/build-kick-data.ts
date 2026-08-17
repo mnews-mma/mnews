@@ -365,6 +365,13 @@ const normName = (s: string) =>
   s.normalize("NFKC").replace(/\s+/g, "").replace(/[・･]/g, "").toLowerCase();
 // 重複除去の同一試合判定専用: ニックネーム引用符の有無だけの表記ゆれを吸収する。
 const normNameForDedupe = (s: string) => normName(stripQuotedNickname(s));
+// 対戦相手名が「不明」等のプレースホルダーの場合、同日に複数試合(トーナメント等)があると
+// 全く別の相手なのに同じ文字列になり、date+相手名キーでは誤って同一試合とみなされ
+// 一方が消えてしまう(安保瑠輝也2011-12-04のZIHAD cup STIR KING 2011で実測: 準決勝・
+// 1回戦の相手がともに「不明」表記で、準決勝の勝利が黙って統合され消えていた)。
+// プレースホルダー名はdate+相手名キーでの同一試合判定に使わない(常に別試合として扱う)。
+const PLACEHOLDER_OPPONENT_NAMES = new Set(["不明", "未定", "tba", "unknown"]);
+const isPlaceholderOpponentName = (s: string) => PLACEHOLDER_OPPONENT_NAMES.has(normName(s));
 // 大会名は主催者の冠(スポンサー名等)が出典サイトごとに付いたり付かなかったりするため
 // (例: "MAROOMS presents KNOCK OUT.60 ～K.O CLIMAX 2025～" と "KNOCK OUT.60 ～K.O CLIMAX 2025～")、
 // 完全一致ではなく正規化後の包含関係で「同じ大会」とみなす(PR-1.5)。
@@ -390,7 +397,10 @@ function dedupe(bouts: (Bout & { promotion: string })[]) {
     mergedRows++;
   };
   for (const b of bouts) {
-    const sameDayKey = b.date ? `${b.date}|${normNameForDedupe(b.opponent_name)}` : `id|${b.bout_id}`;
+    const sameDayKey =
+      b.date && !isPlaceholderOpponentName(b.opponent_name)
+        ? `${b.date}|${normNameForDedupe(b.opponent_name)}`
+        : `id|${b.bout_id}`;
     const sameDayHit = seen.get(sameDayKey);
     if (sameDayHit) {
       merge(sameDayHit, b);
@@ -407,7 +417,12 @@ function dedupe(bouts: (Bout & { promotion: string })[]) {
           if (!o.date) continue;
           const ot = Date.parse(o.date);
           if (Number.isNaN(ot) || ot === bt) continue; // 同日は上のsameDayHitで処理済み
-          if (Math.abs(bt - ot) <= 86400000 && normNameForDedupe(o.opponent_name) === normNameForDedupe(b.opponent_name) && eventCompatible(o.event, b.event)) {
+          if (
+            Math.abs(bt - ot) <= 86400000 &&
+            !isPlaceholderOpponentName(b.opponent_name) &&
+            normNameForDedupe(o.opponent_name) === normNameForDedupe(b.opponent_name) &&
+            eventCompatible(o.event, b.event)
+          ) {
             fuzzyHit = o;
             break;
           }

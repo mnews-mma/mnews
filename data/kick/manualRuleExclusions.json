@@ -1934,5 +1934,21 @@
   "methodRaw": "一本",
   "category": "mma",
   "reason": "PR-18(記録のみで残した検査A5件の一括処理)で発見。bigbang-kick.comの城戸康裕選手解説ページは、Bigbang主催の興行だけでなく他団体(MMA)を含む全キャリアの戦績を1ページにまとめて掲載しており、「BREAK THROUGH-11〜突破口〜」(2009年)はBigbangのキックボクシング興行ではなくMMA系の異種格闘技イベントと判断される(同ページ内の他の「一本」「勝敗なし」表記の対戦相手にもRIZIN・NARIAGARI等MMA関連の大会が多数含まれる)。個別に除外。"
+ },
+ {
+  "slug": "buakao-banchameku",
+  "date": "2005-04-01",
+  "opponent": "キエラン・ケッドル",
+  "methodRaw": "4R終了 判定",
+  "category": "amateur",
+  "reason": "和島大海欠落調査(2026-08、母集団拡張の検査A)で発見。大会名に「THAILAND BOXING SPORT BOARD \"MUAYTHAI CULTURAL FESTIVAL 2005\"アマチュアムエタイルール」と明記されており、アマチュアムエタイの大会。プロキックボクシング戦績として扱うべきでない。"
+ },
+ {
+  "slug": "noriko",
+  "date": "2000-01-24",
+  "opponent": "RYU GYOKULI",
+  "methodRaw": "3R終了 判定0-2",
+  "category": "mma",
+  "reason": "和島大海欠落調査(2026-08、母集団拡張の検査A)で発見。大会名「SHOOTBOXING INVADE 立技総合格闘技・大侵略活劇」に「総合格闘技」と明記されており、SHOOT BOXING主催ながら総合格闘技ルールの興行と判断される。"
  }
 ]
