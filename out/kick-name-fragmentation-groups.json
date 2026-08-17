@@ -1,0 +1,330 @@
+[
+ {
+  "name": "空龍",
+  "record_count": 2,
+  "verdict": "別人と判断",
+  "reason": "生年月日が2種類に分かれる(2001.3.2/2004.9.10)",
+  "in_wikipedia_population": false,
+  "records": [
+   {
+    "kana": "アロン",
+    "gym": "ホライズンキックボクシングジム",
+    "birthdate": "2001.3.2",
+    "orgs": [
+     "Krush",
+     "Krush-EX",
+     "RISE"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1724",
+     "https://rise-rc.com/fighter/aron/"
+    ]
+   },
+   {
+    "kana": null,
+    "gym": "空修会館",
+    "birthdate": "2004.9.10",
+    "orgs": [
+     "KNOCK OUT"
+    ],
+    "sources": [
+     "https://knockoutkb.com/fighters/kuryu_245"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "KAI",
+  "record_count": 2,
+  "verdict": "統合してよい",
+  "reason": "全レコードの生年月日が1983.4.19で一致",
+  "in_wikipedia_population": false,
+  "records": [
+   {
+    "kana": "カイ",
+    "gym": "ARROWS GYM",
+    "birthdate": "1983.4.19",
+    "orgs": [
+     "K-1 WORLD GP",
+     "Krush",
+     "Krush-EX"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1187"
+    ]
+   },
+   {
+    "kana": null,
+    "gym": "フリー",
+    "birthdate": "1983.4.19",
+    "orgs": [
+     "KNOCK OUT"
+    ],
+    "sources": [
+     "https://knockoutkb.com/fighters/kai_80"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "龍翔",
+  "record_count": 4,
+  "verdict": "別人と判断",
+  "reason": "生年月日が4種類に分かれる(2001.6.27/2006.4.4/2000.8.26/2010.10.30)",
+  "in_wikipedia_population": false,
+  "records": [
+   {
+    "kana": "タツト",
+    "gym": "BLACK☆Jr",
+    "birthdate": "2001.6.27",
+    "orgs": [
+     "Krush",
+     "Krush-EX",
+     "RISE"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1601",
+     "https://rise-rc.com/fighter/tatsuto/"
+    ]
+   },
+   {
+    "kana": "リュウショウ",
+    "gym": "EX ARES",
+    "birthdate": "2006.4.4",
+    "orgs": [
+     "K-1 WORLD GP",
+     "Krush",
+     "Krush-EX"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1433"
+    ]
+   },
+   {
+    "kana": null,
+    "gym": "OU-BU GYM",
+    "birthdate": "2000.8.26",
+    "orgs": [
+     "RISE"
+    ],
+    "sources": [
+     "https://rise-rc.com/fighter/ryuto/"
+    ]
+   },
+   {
+    "kana": null,
+    "gym": "TRASH",
+    "birthdate": "2010.10.30",
+    "orgs": [
+     "KNOCK OUT"
+    ],
+    "sources": [
+     "https://knockoutkb.com/fighters/ryuga_560"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "大輝",
+  "record_count": 2,
+  "verdict": "別人と判断",
+  "reason": "生年月日が2種類に分かれる(2002.7.16/1999.7.26)",
+  "in_wikipedia_population": false,
+  "records": [
+   {
+    "kana": "ダイキ",
+    "gym": "DK9",
+    "birthdate": "2002.7.16",
+    "orgs": [
+     "Krush",
+     "Krush-EX"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1600"
+    ]
+   },
+   {
+    "kana": "ダイキ",
+    "gym": "ハリケーンジム/チーム男鹿キック",
+    "birthdate": "1999.7.26",
+    "orgs": [
+     "Krush",
+     "Krush-EX"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1415"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "武蔵",
+  "record_count": 3,
+  "verdict": "別人と判断",
+  "reason": "生年月日が2種類に分かれる(1999.8.13/2005.4.19)",
+  "in_wikipedia_population": false,
+  "records": [
+   {
+    "kana": "ムサシ",
+    "gym": null,
+    "birthdate": null,
+    "orgs": [],
+    "sources": [
+     "https://ja.wikipedia.org/wiki/武蔵_(格闘家)"
+    ]
+   },
+   {
+    "kana": "ムサシ",
+    "gym": "デビルジム",
+    "birthdate": "1999.8.13",
+    "orgs": [
+     "K-1 WORLD GP",
+     "Krush",
+     "Krush-EX"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1507"
+    ]
+   },
+   {
+    "kana": null,
+    "gym": "WIVERN",
+    "birthdate": "2005.4.19",
+    "orgs": [
+     "KNOCK OUT"
+    ],
+    "sources": [
+     "https://knockoutkb.com/fighters/musashi_155"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "悠斗",
+  "record_count": 2,
+  "verdict": "統合してよい",
+  "reason": "全レコードの生年月日が1993.2.24で一致",
+  "in_wikipedia_population": false,
+  "records": [
+   {
+    "kana": "ゆうと",
+    "gym": "HUNGRY GYM",
+    "birthdate": "1993.2.24",
+    "orgs": [
+     "Krush",
+     "Krush-EX"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1393"
+    ]
+   },
+   {
+    "kana": "ゆうと",
+    "gym": "東京町田金子ジム",
+    "birthdate": "1993.2.24",
+    "orgs": [
+     "KNOCK OUT"
+    ],
+    "sources": [
+     "https://knockoutkb.com/fighters/yuto_268"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "璃久",
+  "record_count": 2,
+  "verdict": "統合してよい",
+  "reason": "全レコードの生年月日が1999.2.1で一致",
+  "in_wikipedia_population": false,
+  "records": [
+   {
+    "kana": "リク",
+    "gym": "シカGYM",
+    "birthdate": "1999.2.1",
+    "orgs": [
+     "K-1 WORLD GP",
+     "Krush",
+     "Krush-EX"
+    ],
+    "sources": [
+     "https://www.k-1.co.jp/fighter/1388"
+    ]
+   },
+   {
+    "kana": null,
+    "gym": "フリー",
+    "birthdate": "1999.2.1",
+    "orgs": [
+     "SHOOT BOXING"
+    ],
+    "sources": [
+     "https://shootboxing.org/fighter/ruku/"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "一輝",
+  "record_count": 2,
+  "verdict": "判定不能",
+  "reason": "生年月日が一部のレコードにしかない、または全レコード無し(比較材料不足)",
+  "in_wikipedia_population": false,
+  "records": [
+   {
+    "kana": null,
+    "gym": "MtF MUGEN GYM",
+    "birthdate": "2003.4.15",
+    "orgs": [
+     "RISE"
+    ],
+    "sources": [
+     "https://rise-rc.com/fighter/kazuki/",
+     "https://knockoutkb.com/fighters/kazuki_398"
+    ]
+   },
+   {
+    "kana": null,
+    "gym": "若獅子会館",
+    "birthdate": null,
+    "orgs": [
+     "KNOCK OUT"
+    ],
+    "sources": [
+     "https://knockoutkb.com/fighters/kazuki_594"
+    ]
+   }
+  ]
+ },
+ {
+  "name": "龍聖",
+  "record_count": 2,
+  "verdict": "別人と判断",
+  "reason": "生年月日が2種類に分かれる(2000.8.23/2001.4.11)",
+  "in_wikipedia_population": true,
+  "records": [
+   {
+    "kana": null,
+    "gym": "TEAM TEPPEN",
+    "birthdate": "2000.8.23",
+    "orgs": [
+     "RISE"
+    ],
+    "sources": [
+     "https://rise-rc.com/fighter/ryusei/"
+    ]
+   },
+   {
+    "kana": "りゅうせい",
+    "gym": "BRAID/TEAM SUERTE",
+    "birthdate": "2001.4.11",
+    "orgs": [
+     "KNOCK OUT"
+    ],
+    "sources": [
+     "https://knockoutkb.com/fighters/ryusei"
+    ]
+   }
+  ]
+ }
+]
