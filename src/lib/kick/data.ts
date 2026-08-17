@@ -94,6 +94,9 @@ export interface KickStats {
   kanaFilled: number;
   /** かな自体がnullの人数。「読みを推測で埋めていない」の文脈ではこちらを使う。 */
   kanaMissing: number;
+  /** kanaMissingのうち、公式ローマ字表記は取得できている人数(選手一覧のローマ字表記行)。
+   *  読み欄が「かな」「ローマ字のみ」「値なし」の3状態のうち、ローマ字のみの人数。 */
+  kanaMissingButHasRomaji: number;
   /** 五十音順一覧の「―」バケットに実際に並ぶ人数(kanaMissing以上、常にkanaMissing以上になる
    *  ことをビルド時に検証済み)。かなはあるが記号始まり・ラテン文字表記等で分類できない
    *  選手を含むため、kanaMissingとは別概念。一覧ページの見出しはこちらを使う。 */

@@ -9,7 +9,7 @@ export function generateMetadata() {
     title: "キックボクシング選手一覧（五十音順）｜立ち技名鑑 - Mニュース",
     description: `対象${KICK_PROMOTIONS.length}団体の公式サイトとWikipedia全団体から収集したキックボクシング選手${stats.fighters.toLocaleString(
       "ja-JP",
-    )}人を五十音順に掲載。読みが未取得の選手は空欄のまま表示しています。`,
+    )}人を五十音順に掲載。読み(かな)が未取得の選手はローマ字表記または空欄のまま表示しています。`,
     path: "/kick/fighters",
   });
 }
@@ -32,15 +32,11 @@ export default function KickFightersPage() {
     <>
       <h1 className="kick-h1">選手一覧</h1>
       <p className="kick-lead">
-        五十音順（{stats.fighters.toLocaleString("ja-JP")}人）。読みが取得できなかった{stats.kanaMissing.toLocaleString("ja-JP")}人は
-        <strong>空欄のまま末尾</strong>にまとめています（推測で読みを補わないため）。
-        {stats.kanaUnclassified > stats.kanaMissing && (
-          <>
-            読みは取得できているものの、記号始まりの表記やラテン文字表記のため五十音順に分類できない
-            {(stats.kanaUnclassified - stats.kanaMissing).toLocaleString("ja-JP")}人も同じ末尾の欄にまとめているため、
-            この欄には合計{stats.kanaUnclassified.toLocaleString("ja-JP")}人が並びます。
-          </>
-        )}
+        五十音順（{stats.fighters.toLocaleString("ja-JP")}人）。読み(かな)が無い{stats.kanaMissing.toLocaleString("ja-JP")}人のうち、
+        公式のローマ字表記のみ判明している{stats.kanaMissingButHasRomaji.toLocaleString("ja-JP")}人は<strong>ローマ字を代わりに表示</strong>し、
+        ローマ字も無い{(stats.kanaMissing - stats.kanaMissingButHasRomaji).toLocaleString("ja-JP")}人は<strong>空欄のまま</strong>にしています（推測で読みを補わないため）。
+        これらはいずれも五十音順に分類できないため、末尾の「{BUCKET_LABEL["―"]}」欄（{stats.kanaUnclassified.toLocaleString("ja-JP")}人。
+        上記に加え、かな自体はあるが記号始まり・ラテン文字表記等で分類できない{(stats.kanaUnclassified - stats.kanaMissing).toLocaleString("ja-JP")}人を含む）にまとめて掲載しています。
         表記名・かな・ローマ字・所属で検索できます。
       </p>
 
@@ -88,7 +84,13 @@ export default function KickFightersPage() {
                       ) : null}
                     </>
                   ) : f.romaji ? (
-                    <span className="kick-row__gym">{f.romaji}</span>
+                    <>
+                      <span className="kick-row__gym">{f.romaji}</span>
+                      <span className="kick-empty" style={{ fontSize: 11 }}>
+                        {" "}
+                        （ローマ字のみ、読み未取得）
+                      </span>
+                    </>
                   ) : (
                     <span className="kick-empty">（読み未取得）</span>
                   )}
