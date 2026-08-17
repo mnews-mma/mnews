@@ -17,15 +17,35 @@
 // このゲートは「ゼロ件」を要求しない。新しいジム名の連結パターンが増えたら気づける
 // ようにするための検知網(ratchet、増加でビルド失敗)。
 //
+// サンチャイ・TEPPENGYM対戦相手誤分割監査(2026-08)での更新: 「サンチャイ・TEPPENGYM」
+// (TEAM TEPPEN)のように、GYM/ジム等の語を含む文字列そのものが**選手本人の実在の
+// 登録リングネーム**であるケースが多数(46選手・全DBで216行)見つかり、
+// scripts/build-kick-data.tsでこれらは意図的に分割しないよう修正した。そのため、
+// このゲートの対象からも「名簿に実在する選手の登録名と完全一致する(区切り記号除去後)」
+// 行を除外する(=もはや「未分離」ではなく「正しく分離しなかった」行のため)。
+// 名簿に実在しない文字列(未知のジム名連結・別人の名前の一部として偶然GYM/ジムを含む語等)
+// のみを引き続きこのゲートで追跡する。
+// このゲートと scripts/check-kick-opponent-name-mismatch-gate.ts(同監査で新設、
+// 逆方向=解決済み選手の登録名と表示名が食い違う「誤って分割された」行を検知)は
+// 重複しない設計(前者=名簿に無い残存連結、後者=名簿にある選手名の誤分割)。
+//
 // 実行方法: npx tsx scripts/check-kick-opponent-gym-suffix-gate.ts
 import fs from "fs";
 import path from "path";
 
 const ROOT = path.join(__dirname, "..");
-const GEN = path.join(ROOT, "data/kick/generated");
-const BASELINE_PATH = path.join(ROOT, "data/kick/kickOpponentGymSuffixBaseline.json");
+const SRC = path.join(ROOT, "data/kick");
+const GEN = path.join(SRC, "generated");
+const BASELINE_PATH = path.join(SRC, "kickOpponentGymSuffixBaseline.json");
 
 const GYM_SUFFIX_KEYWORD_RE = /ジム|道場|塾|GYM|Gym|gym|Team|TEAM|team|Club|CLUB|club|協会|会館/g;
+
+interface Fighter {
+  name: string;
+}
+const fighters: Fighter[] = JSON.parse(fs.readFileSync(path.join(SRC, "fighters.json"), "utf8"));
+const stripNameSeparators = (s: string) => s.replace(/[\s　・･·•]/g, "");
+const KNOWN_FIGHTER_NAMES = new Set(fighters.map((f) => stripNameSeparators(f.name)));
 
 interface Hit {
   slug: string;
@@ -40,10 +60,10 @@ for (const file of fighterFiles) {
   const f = JSON.parse(fs.readFileSync(path.join(GEN, "fighters", file), "utf8"));
   for (const b of f.bouts as any[]) {
     const n: string = b.opponentName ?? "";
-    if (GYM_SUFFIX_KEYWORD_RE.test(n)) {
-      GYM_SUFFIX_KEYWORD_RE.lastIndex = 0;
-      hits.push({ slug: f.slug, date: b.date, opponentName: n });
-    }
+    if (!GYM_SUFFIX_KEYWORD_RE.test(n)) continue;
+    GYM_SUFFIX_KEYWORD_RE.lastIndex = 0;
+    if (KNOWN_FIGHTER_NAMES.has(stripNameSeparators(n))) continue; // 名簿に実在する登録名はスキップ
+    hits.push({ slug: f.slug, date: b.date, opponentName: n });
   }
 }
 

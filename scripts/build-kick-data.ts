@@ -96,6 +96,19 @@ interface Bout {
 const read = <T,>(f: string): T => JSON.parse(fs.readFileSync(path.join(SRC, f), "utf8"));
 
 const fighters = read<Fighter[]>("fighters.json");
+// サンチャイ・TEPPENGYM誤分割監査(2026-08): 対戦相手欄に所属欄(opponent_affiliation)が
+// 無く、かつ相手名の文字列そのものにジム/GYM等の語を含む行(例:「サンチャイ・TEPPENGYM」)は、
+// splitOpponentGymSuffix()が「人名+所属の連結」と誤認して分割してしまう。しかし
+// 「サンチャイ・TEPPENGYM」は名簿(fighters.json)に**1語のリングネームとしてそのまま
+// 登録されている実在の選手名**であり、分割すべきではない。相手名(空白除去後)が
+// 名簿に実在する選手の表記名(同じく空白除去後)と完全一致する場合は、分割を試みる前に
+// 除外する(既存選手の一部を切り取って別の所属を捏造しない)。
+// 空白に加え中黒類(・･·•)も除去して比較する。Wikipedia由来の行は出典側の表記慣習で
+// 「洋・センチャイジム」のように登録名(「洋センチャイジム」、区切り無し)には無い中黒を
+// 挟んで書かれることがあり、空白除去だけでは同一名と判定できなかった(実測: NJKF
+// MuayThaiOpen 23の洋センチャイジム戦2件で発覚)。
+const stripNameSeparators = (s: string) => s.replace(/[\s　・･·•]/g, "");
+const KNOWN_FIGHTER_NAMES = new Set(fighters.map((f) => stripNameSeparators(f.name)));
 // matchBy: "sourceUrl" は選手の名簿掲載ページ(=bout.source_url)が選手側のsourcesにも
 // 載っている前提で選手を特定する(SB/RISE/KNOCK OUT/K-1の従来ソース)。RIZIN/ONEは名簿の
 // 掲載元と戦績の出典元が別サイトのため、代わりに fighter_slug に選手側と同一の
@@ -813,7 +826,19 @@ for (const f of fighters) {
       if (reverseSlug) reverseResolvedCount++;
       if (verifiedOverride) fuzzyResolvedCount++;
       if (fuzzySlug) fuzzyResolvedCount++;
-      const gymSplit = splitOpponentGymSuffix(b.opponent_name);
+      // サンチャイ・TEPPENGYM誤分割監査(2026-08)で発見した2つの誤分割条件を、
+      // splitOpponentGymSuffix()の適用前にどちらも除外する。
+      // (1) 出典側が既に所属を別フィールド(opponent_affiliation)として持っている行にも
+      //     無条件で適用されており、所属欄が既知にもかかわらず名前側だけ切り詰められていた。
+      //     splitOpponentGymSuffix()は「所属欄が無いため名前と所属が連結されたまま出典に
+      //     載っている」行を救済するためのものであり、所属欄が既にある行では適用しない。
+      // (2) 所属欄が無い場合でも、相手名そのものが名簿に実在する1語のリングネーム
+      //     (例:「サンチャイ・TEPPENGYM」)と完全一致する場合は、実在の選手名の一部を
+      //     切り取って別の所属を捏造することになるため適用しない。
+      const gymSplit =
+        b.opponent_affiliation || KNOWN_FIGHTER_NAMES.has(stripNameSeparators(b.opponent_name))
+          ? null
+          : splitOpponentGymSuffix(b.opponent_name);
       return {
         date: b.date,
         event: b.event,
