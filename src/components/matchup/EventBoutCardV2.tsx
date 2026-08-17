@@ -25,6 +25,8 @@ export interface EventBoutCardV2Props {
   // 大会全体が現在開催中(event.status==="live")かどうか。resultが無くこれがtrueの
   // 場合のみ「進行中(結果待ち)」インジケータを出す。
   isEventLive?: boolean;
+  // true時は収録済みでも両者ともNo data表示に強制する(Bout.hideRecord参照)。
+  hideRecord?: boolean;
 }
 
 const normSpace = (s: string) => s.replace(/[\s　]/g, "");
@@ -63,15 +65,18 @@ export default function EventBoutCardV2({
   note,
   result,
   isEventLive,
+  hideRecord,
 }: EventBoutCardV2Props) {
   // 選手ごとに戦績データの有無を独立して判定する。
   // - 収録済みの側は他カードと同様に戦績/勝率/フィニッシュ率/直近5戦を出す。
   // - 未収録の側(デビュー戦など)は「データなし」表示にする。
   // 片方でもデータがあれば比較テープ(MatchupTape)を出し、両者とも無い場合のみ
   // 名前だけの簡易表示に倒す。
-  const hasDataA = hasWikipediaRecord(entryA);
-  const hasDataB = hasWikipediaRecord(entryB);
-  const anyData = hasDataA || hasDataB;
+  // hideRecordがtrueの場合は収録済みでも両者を未収録扱いにし、既存の
+  // 「片方(または両方)No data」表示(buildNoDataTapeData)にそのまま倒す。
+  const hasDataA = !hideRecord && hasWikipediaRecord(entryA);
+  const hasDataB = !hideRecord && hasWikipediaRecord(entryB);
+  const anyData = hideRecord ? true : hasDataA || hasDataB;
   // 表示専用のリングネーム(displayNameJa)差し替え。nameA/nameBそのものは大会側の
   // 突合キー(結果の勝者判定・再戦/共通対戦相手の履歴突合)に使うため変更しない
   // (指示書B-1)。カード上の描画にのみ使う名前をここで解決する。
