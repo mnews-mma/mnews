@@ -43,6 +43,21 @@ DISAMBIGUATION_OVERRIDES = {
     "龍聖": {"gym": "BRAID/TEAM SUERTE", "sources": ["https://knockoutkb.com/fighters/ryusei"]},
 }
 
+# PR-18: fighters.json統合(表記名の正規化・改名)で、leg3のCSVが参照している旧表記名が
+# fighters.json側から消えた5件。当時はcoverage_population.jsonをスクリプト実行結果ではなく
+# 直接JSON編集で修正したため、このスクリプト自体には反映されておらず、再実行するたびに
+# (2026-08の和島大海欠落調査でのスペース正規化フォールバック追加時に実測)同じ5件が
+# 「fighters.jsonに一致するレコードが無い」(no_roster_match、ingest_wikipedia.py側)扱いに
+# サイレントに巻き戻っていた。再現可能にするため、このスクリプト側にリネーム表として
+# 組み込む(leg3 CSVの名前 -> 現在のfighters.json側の正しい表記名)。
+LEG3_NAME_RENAMES = {
+    "アマラ忍": "忍アマラ―",
+    "クンタップ・ウィラサクレック": "クンタップ・チャロンチャイ",
+    "ゲーオ・フェアテックス": "ゲーオ・ウィラサクレック",
+    "ジョムトーン・チュワタナ": "ジョムトーン・ストライカージム",
+    "ブアカーオ・ポー.プラムック": "ブアカーオ・バンチャメーク",
+}
+
 
 def _api_query(params, retries=5):
     url = WIKI_API + "?" + urllib.parse.urlencode(params)
@@ -120,6 +135,53 @@ def find_nospace_recoveries(missing_rows, already_seen_names):
     return verified
 
 
+def find_alias_recoveries(missing_rows, already_seen_names, fighters):
+    """レグ③でmissing判定だった選手のうち、fighters.json側にaliases(改名前の旧名・
+    別表記)が登録されている場合、そのaliasをWikipediaタイトル候補として再検索する
+    (項目3の「別名/リダイレクト」に相当)。存在確認はnospace版と同じFight-cont確認を行う。
+    戻り値: [(fighters.json名, aliasタイトル), ...]
+    """
+    by_name = {}
+    for f in fighters:
+        by_name.setdefault(f["name"], []).append(f)
+
+    candidates = []
+    for r in missing_rows:
+        name = r["name"]
+        if name in already_seen_names:
+            continue
+        for f in by_name.get(name, []):
+            for alias in f.get("aliases") or []:
+                candidates.append((name, alias))
+
+    exists_found = []
+    BATCH = 40
+    for i in range(0, len(candidates), BATCH):
+        chunk = candidates[i : i + BATCH]
+        titles = [c[1] for c in chunk]
+        data = _api_query({
+            "action": "query", "titles": "|".join(titles), "format": "json", "redirects": "1",
+        })
+        pages = data.get("query", {}).get("pages", {})
+        redirects = {r["from"]: r["to"] for r in data.get("query", {}).get("redirects", [])}
+        normalized = {n["from"]: n["to"] for n in data.get("query", {}).get("normalized", [])}
+        exists_titles = {p["title"] for pid, p in pages.items() if pid != "-1" and "missing" not in p}
+        for orig_name, alias in chunk:
+            t = redirects.get(normalized.get(alias, alias), normalized.get(alias, alias))
+            if t in exists_titles:
+                exists_found.append((orig_name, t))
+        time.sleep(0.4)
+
+    verified = []
+    for orig_name, title in exists_found:
+        wt = _fetch_wikitext(title)
+        if wt and "Fight-cont" in wt:
+            verified.append((orig_name, title))
+        time.sleep(0.4)
+
+    return verified
+
+
 def main():
     fighters = json.load(open("fighters.json"))
     by_name = {}
@@ -133,7 +195,7 @@ def main():
     seen_names = set()
     population = []
     for r in exists:
-        name = r["name"]
+        name = LEG3_NAME_RENAMES.get(r["name"], r["name"])
         if name in seen_names:
             continue
         seen_names.add(name)
@@ -175,6 +237,46 @@ def main():
     recovered = find_nospace_recoveries(missing, seen_names)
     print(f"スペース除去フォールバックで回収: {len(recovered)}人")
     for name, title in recovered:
+        if name in seen_names:
+            continue
+        seen_names.add(name)
+        match_records = by_name.get(name, [])
+        rec = None
+        for rr in match_records:
+            if any(
+                "ja.wikipedia.org/wiki/" in u
+                and urllib.parse.unquote(u.split("/wiki/")[-1]).replace("_", " ") == title
+                for u in rr["sources"]
+            ):
+                rec = rr
+                break
+        if not rec and match_records:
+            rec = match_records[0]
+        override = DISAMBIGUATION_OVERRIDES.get(name)
+        if override:
+            population.append({
+                "name": name, "wiki_title": title,
+                "wiki_url": "https://ja.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_")),
+                "wiki_bout_count": None,
+                "fighters_json_gym": override["gym"],
+                "fighters_json_sources": override["sources"],
+            })
+            continue
+        population.append({
+            "name": name,
+            "wiki_title": title,
+            "wiki_url": "https://ja.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_")),
+            "wiki_bout_count": None,
+            "fighters_json_gym": rec.get("gym") if rec else None,
+            "fighters_json_sources": rec.get("sources") if rec else None,
+        })
+
+    # 項目3(2026-08、Wikipedia到達母集団の打ち止め確定調査): alias(改名前の旧名・別表記)
+    # 経由の回収。fighters.jsonのaliasesフィールドに登録されている選手のうち、本表記名では
+    # Wikipedia記事が見つからないがalias表記でなら見つかる17人を追加する。
+    alias_recovered = find_alias_recoveries(missing, seen_names, fighters)
+    print(f"aliasフォールバックで回収: {len(alias_recovered)}人")
+    for name, title in alias_recovered:
         if name in seen_names:
             continue
         seen_names.add(name)

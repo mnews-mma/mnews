@@ -242,6 +242,17 @@
   "promotion": "RISE"
  },
  {
+  "slug": "noriko",
+  "date": "2000-01-24",
+  "opponent": "RYU GYOKULI",
+  "methodRaw": "3R終了 判定0-2",
+  "category": "mma",
+  "reason": "和島大海欠落調査(2026-08、母集団拡張の検査A)で発見。大会名「SHOOTBOXING INVADE 立技総合格闘技・大侵略活劇」に「総合格闘技」と明記されており、SHOOT BOXING主催ながら総合格闘技ルールの興行と判断される。",
+  "name": "NORIKO",
+  "event": "SHOOTBOXING INVADE 立技総合格闘技・大侵略活劇",
+  "promotion": "SHOOT BOXING"
+ },
+ {
   "slug": "hata-fumiya",
   "date": "2022-04-24",
   "opponent": "ハリィ永田",
@@ -317,6 +328,17 @@
   "name": "藤本新",
   "event": "KROSS×OVER 20 ５周年記念-BATTLE OF THE NEW ERA-",
   "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "buakao-banchameku",
+  "date": "2005-04-01",
+  "opponent": "キエラン・ケッドル",
+  "methodRaw": "4R終了 判定",
+  "category": "amateur",
+  "reason": "和島大海欠落調査(2026-08、母集団拡張の検査A)で発見。大会名に「THAILAND BOXING SPORT BOARD \"MUAYTHAI CULTURAL FESTIVAL 2005\"アマチュアムエタイルール」と明記されており、アマチュアムエタイの大会。プロキックボクシング戦績として扱うべきでない。",
+  "name": "ブアカーオ・バンチャメーク",
+  "event": "THAILAND BOXING SPORT BOARD \"MUAYTHAI CULTURAL FESTIVAL 2005\"アマチュアムエタイルール",
+  "promotion": "Wikipedia(その他団体)"
  },
  {
   "slug": "petoru-morari",
