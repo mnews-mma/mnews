@@ -19,12 +19,20 @@
 // (プレースホルダ OR whitelistに一致)のいずれかでなければならない。これは
 // methodLabel()の実装そのものが保証すべき不変条件であり、1件でも破れていたら
 // 実装のバグ(whitelist判定の書き換え忘れ等)なのでビルドを止める。
+//
+// PR #571追記: 上記の不変条件チェックとは別に、「不明」化した件数(fuMeiCount)自体を
+// ratchetベースラインとして監視する。whitelist方式は「一致しない入力は静かに『不明』に
+// 逃がす」設計であるため、新しい混入パターン(旧denylistが個別追記していたような欠陥)が
+// 増えても、このゲート単体(不変条件チェックのみ)ではビルドは落ちない――「不明」が
+// 増えるだけで、それ自体は不変条件違反ではないため。件数の増加を別途ratchetで検知し、
+// 人間が「新規パターンとしてwhitelistへ追加すべきか」「新しい混入か」を判断する契機にする。
 import fs from "fs";
 import path from "path";
 import { methodLabel, isMethodLabelWhitelisted } from "../src/lib/kick/data";
 
 const ROOT = path.join(__dirname, "..");
 const GEN = path.join(ROOT, "data/kick/generated");
+const FUMEI_BASELINE_PATH = path.join(ROOT, "data/kick/kickMethodFumeiBaseline.json");
 
 interface Violation {
   slug: string;
@@ -69,3 +77,23 @@ if (violations.length > 0) {
 }
 
 console.log("[kick-method-label-whitelist] OK(全行がプレースホルダまたはwhitelistのいずれかに一致)");
+
+const prevFumeiBaseline: number = fs.existsSync(FUMEI_BASELINE_PATH)
+  ? JSON.parse(fs.readFileSync(FUMEI_BASELINE_PATH, "utf8")).fuMeiCount
+  : fuMeiCount;
+
+if (fuMeiCount > prevFumeiBaseline) {
+  console.error(
+    `[kick-method-fumei-ratchet] ★決着欄が「不明」になった件数が前回ビルド時点の基準` +
+      `(${prevFumeiBaseline}件)から${fuMeiCount}件に増加しました。デプロイをブロックします。\n` +
+      `  対処法: 新しく「不明」になった行のmethodRawを確認し、正当な決着表記の新パターンで` +
+      `あればsrc/lib/kick/data.tsのwhitelist正規表現に追加してください。逆に大会レポート散文等の` +
+      `混入であれば、whitelistに追加せず「不明」のままでよく、この基準自体を更新して問題ありません。`,
+  );
+  process.exit(1);
+}
+
+fs.writeFileSync(FUMEI_BASELINE_PATH, JSON.stringify({ fuMeiCount }, null, 1) + "\n");
+console.log(
+  `[kick-method-fumei-ratchet] OK(「不明」化${fuMeiCount}件、基準${prevFumeiBaseline}件以下)`,
+);
