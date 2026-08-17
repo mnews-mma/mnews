@@ -12,6 +12,7 @@ import {
   RESULT_LABEL,
   TITLE_TYPE_LABEL,
 } from "@/lib/kick/data";
+import { normalizeKickDecisionScorePerspective } from "@/lib/kick/decisionScorePerspective";
 import { pageMetadata } from "@/lib/seo";
 import { formatDateJa, toJstDateStr } from "@/lib/eventCountdown";
 
@@ -240,7 +241,7 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                   </td>
                   <td>
                     <span title={b.methodRaw ? `出典の原文: ${b.methodRaw}` : undefined}>
-                      {methodLabel(b.methodRaw)}
+                      {normalizeKickDecisionScorePerspective(methodLabel(b.methodRaw), b.result).text}
                     </span>
                     {b.isExtension && (
                       <>

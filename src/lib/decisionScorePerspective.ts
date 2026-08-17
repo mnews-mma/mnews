@@ -11,6 +11,14 @@
 // data/配下のmethodRaw原文は書き換えない(将来の検証のため保持)。この関数は
 // 表示直前に呼ぶ変換のみを行う。呼び出し箇所は選手ページの対戦テーブル
 // (fighters/[slug]/page.tsx)の1箇所に限定し、判定ロジックを重複させない。
+//
+// 2数の大小関係から「並べ替えが必要か」を判定する部分は、/kick側
+// (src/lib/kick/decisionScorePerspective.ts、2026-08-17追加)でも全く同じ判定が
+// 必要になったため、isDecisionScoreOrderCorrect()として共有関数に切り出し済み
+// (src/lib/decisionScoreDirection.ts)。この関数自体の正規表現パース部分は
+// MMA側の「判定X-Y」単純1組専用のままで変更していない。
+import { isDecisionScoreOrderCorrect } from "./decisionScoreDirection";
+
 const DECISION_SCORE_DASH = "[-−‐－ｰ]";
 const DECISION_SCORE_RE = new RegExp(`(判定)([^0-9]{0,6})(\\d+)\\s*${DECISION_SCORE_DASH}\\s*(\\d+)`);
 
@@ -29,14 +37,13 @@ export function normalizeDecisionScorePerspective(
   const [full, keyword, between, aStr, bStr] = m;
   const a = Number(aStr);
   const b = Number(bStr);
-  if (a === b) return method; // 数字が同じなら並べ替える意味が無い
 
-  // 既に仕様どおりの並び(勝者視点なら大きい数が先、敗者視点なら小さい数が先)
-  // なら原文に一切触れない(区切り文字の表記ゆれ(－/−/ｰ等)を正規化してしまうと
-  // 「並べ替えていないのに変わった」ことになり、変換対象を数字の並びだけに
-  // 限定した仕様から外れるため)。
-  const alreadyCorrect = result === "win" ? a >= b : a <= b;
-  if (alreadyCorrect) return method;
+  // 既に仕様どおりの並び(勝者視点なら大きい数が先、敗者視点なら小さい数が先。
+  // 数字が同じ場合は並べ替える意味が無いためこちらもtrue扱い)なら原文に一切
+  // 触れない(区切り文字の表記ゆれ(－/−/ｰ等)を正規化してしまうと「並べ替えて
+  // いないのに変わった」ことになり、変換対象を数字の並びだけに限定した仕様から
+  // 外れるため)。
+  if (isDecisionScoreOrderCorrect(a, b, result)) return method;
 
   const replacement = `${keyword}${between}${bStr}-${aStr}`;
   return method.slice(0, m.index) + replacement + method.slice(m.index + full.length);
