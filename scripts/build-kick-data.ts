@@ -631,11 +631,20 @@ for (const r of realnames) {
 }
 
 const KANA_ROWS = "アカサタナハマヤラワ";
+// 選手一覧(/kick/fighters)の3件修正調査(2026-08)で発見: kanaフィールドはK-1由来は
+// カタカナだが、他ソース(RISE等)はひらがなで格納されている選手が42人いた(例:
+// 朝倉未来「あさくら みくる」)。下のtableはカタカナの文字範囲でしか判定しておらず、
+// ひらがなの先頭文字は一致せずすべて「―」(読み未取得・分類不能)行きになっていた
+// (実際には読みを取得できているのに、五十音グルーピングの対象外として末尾に落ちる
+// 表示バグ)。判定前にひらがな→カタカナ変換を行うことで解消する。
+function hiraganaToKatakana(s: string): string {
+  return s.replace(/[ぁ-ゖ]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0x60));
+}
 function kanaBucket(kana: string | null): string {
   if (!kana) return "―";
   // ニックネームの引用符(“”「」等)で始まるかなは、その記号ではなく後続の実際の
   // 読みで分類する(例: "“コング” コウセイ" は「”」ではなく「コ」＝カ行)。
-  const stripped = kana.replace(/^[“”"'’「」『』【】〈〉《》〔〕・\s]+/, "");
+  const stripped = hiraganaToKatakana(kana.replace(/^[“”"'’「」『』【】〈〉《》〔〕・\s]+/, ""));
   const c = stripped[0];
   if (!c) return "―";
   const table: [string, string][] = [
@@ -852,6 +861,10 @@ const stats = {
   unmatchedBouts,
   kanaFilled: fighters.filter((f) => f.kana).length,
   kanaMissing: fighters.filter((f) => !f.kana).length,
+  // kanaMissing(かな自体が無い899人)のうち、公式ローマ字は取得できている人数。
+  // 選手一覧の3件修正調査(2026-08)で、読み欄にローマ字が表示される行が「読み未取得」の
+  // 見出し配下に一律で混ざり、かな・ローマ字・値なしの3状態が区別できなかった問題への対応。
+  kanaMissingButHasRomaji: fighters.filter((f) => !f.kana && romajiOf(f)).length,
   // 五十音順一覧の「―」バケットに実際に並ぶ人数。kanaMissingとの差は、かな自体はあるが
   // 記号始まりのニックネームや表記がラテン文字のみ等で五十音順に分類できない選手。
   kanaUnclassified: kanaUnclassifiedCount,
