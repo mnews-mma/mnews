@@ -126,8 +126,14 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
           <dt>掲載団体</dt>
           <dd>
             {f.orgs.length ? (
-              f.orgs.map((o) => (
-                <span className="kick-tag" key={o}>
+              // PR-21.5検証時の指摘: keyに内部団体ラベル(o)の生値をそのまま使うと、
+              // RSC(React Server Components)のハイドレーション用ペイロードに
+              // "Wikipedia(その他団体)"という内部ラベル文字列がそのまま(表示テキストとは別に)
+              // 埋め込まれ、生HTMLへの単純な文字列検索で誤って「未修正」と誤検知されうる
+              // (実害は無い=ユーザーの目に見えるテキストは常にdisplayOrgLabel(o)の結果)。
+              // 紛らわしさを避けるため、keyには生ラベルではなくインデックスを使う。
+              f.orgs.map((o, i) => (
+                <span className="kick-tag" key={`org-${i}`}>
                   {displayOrgLabel(o)}
                 </span>
               ))
