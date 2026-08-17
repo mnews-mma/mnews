@@ -187,6 +187,17 @@ export const PROMOTION_SHORT: Record<string, string> = {
   JKA: "JKA公式",
 };
 
+/** 「掲載団体」欄・団体フィルタ表示用のラベル置換。build-kick-data.tsが内部的に使う
+ *  団体名(bouts_wikipedia.jsonのtarget_org値)をそのまま出すと、"Wikipedia(その他団体)"が
+ *  内部処理用のラベルのように見えてしまう(PR-21.5で指摘)。データ側の値(フィルタの照合キー・
+ *  orgTagsBySlug等)は変更せず、表示テキストのみここで読み替える。 */
+export const ORG_DISPLAY_LABEL: Record<string, string> = {
+  "Wikipedia(その他団体)": "Wikipedia掲載(対象15団体・大手団体以外)",
+};
+export function displayOrgLabel(org: string): string {
+  return ORG_DISPLAY_LABEL[org] ?? org;
+}
+
 /**
  * methodRawが決着情報ではなく大会レポート記事の一節がそのまま入ってしまっている行(6種、PR-8で確認)。
  * 「決着方法だけに揃える」という決着列の目的に合わないため、決着欄には出さず「不明」扱いにする。

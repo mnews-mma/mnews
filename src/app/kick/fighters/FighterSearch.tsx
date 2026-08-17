@@ -60,7 +60,9 @@ const ORG_OPTIONS: { tag: string; label: string }[] = [
   { tag: "WAKO SuperLeague", label: "WAKO SuperLeague" },
   { tag: "全日本キックボクシング連盟", label: "全日本キックボクシング連盟" },
   { tag: "J-NETWORK", label: "J-NETWORK" },
-  { tag: "Wikipedia(その他団体)", label: "Wikipedia(その他団体)" },
+  // PR-21.5: 内部の照合キー(tag)は変更せず、表示ラベル(label)のみ利用者向けに
+  // 読み替える(src/lib/kick/data.tsのORG_DISPLAY_LABELと同じ表記に揃える)。
+  { tag: "Wikipedia(その他団体)", label: "Wikipedia掲載(対象15団体・大手団体以外)" },
 ];
 
 function normalize(s: string): string {

@@ -169,6 +169,18 @@ def tag_fight_cont_sections(wikitext):
     return tagged
 
 
+def _nested_template_repl(mm):
+    # PR-21.5: {{flagicon|NLD}}は実際のWikipedia表示では国旗アイコン(画像)であり、
+    # 「NLD」という文字列そのものは人間可読な表示名ではない。旧実装は{{仮リンク}}等と
+    # 同じ「最初の引数を表示名として残す」処理を無条件適用しており、国コードが
+    # そのまま対戦相手名に混入していた(アダム・ワット選手で実測: 「NLD ロブ・カーマン」)。
+    # flagiconは表示名を持たないテンプレートとして空文字に置換する。
+    tname = mm.group(1).strip().lower()
+    if tname == "flagicon":
+        return ""
+    return "\x00" + mm.group(2).lstrip("|").split("|")[0].replace("|", "\x01") + "\x00"
+
+
 def protect_wikilinks(s):
     # [[wikilink]]を先に保護してから{{template}}を保護する(順序はどちらが先でも独立して
     # 動作するが、[[の中に{{が来るケースは無い一方、{{の引数に[[が来ることはあるため
@@ -176,8 +188,24 @@ def protect_wikilinks(s):
     s = WIKILINK_RE.sub(lambda mm: "\x00" + (mm.group(2) or mm.group(1)).replace("|", "\x01") + "\x00", s)
     # {{仮リンク|名前|en|英語名}}等のネストしたテンプレートも、内部の"|"がFight-cont行の
     # フィールド区切りと誤認されないよう保護する(表示名として使えそうな最初の引数を残す)。
-    s = NESTED_TEMPLATE_RE.sub(lambda mm: "\x00" + mm.group(2).lstrip("|").split("|")[0].replace("|", "\x01") + "\x00", s)
+    s = NESTED_TEMPLATE_RE.sub(_nested_template_repl, s)
     return s
+
+
+# PR-21.5: wikitableのセル属性(align=left・style=...・colspan=N等)がFight-cont行の
+# 引数として紛れ込んでいるケースがあり(アダム・ワット選手で実測: {{Fight-cont|×|align=left|
+# {{flagicon|NLD}} [[ロブ・カーマン]]|2R 2:18 KO|...}})、これを通常の引数として数えると
+# 以降の全フィールドが1つずつ後ろにずれる(対戦相手欄に本来は相手名が入るべきところに
+# セル属性文字列が入り、決着欄が相手名、大会名が決着、日付が大会名になる)。
+# 属性らしき部分文字列(key=valueの形でkeyが既知のHTML/wikitableセル属性名)は、位置引数に
+# 数える前に取り除く。
+_CELL_ATTR_RE = re.compile(
+    r"^(align|style|colspan|rowspan|valign|class|width|bgcolor|cellpadding|cellspacing)\s*=", re.I
+)
+
+
+def _strip_cell_attrs(parts):
+    return [p for p in parts if not _CELL_ATTR_RE.match(p.strip())]
 
 
 def restore_wikilinks(s):
@@ -193,6 +221,7 @@ def parse_fight_rows(wikitext):
             continue
         protected = protect_wikilinks(block)
         parts = [restore_wikilinks(p).strip() for p in protected.split("|")]
+        parts = _strip_cell_attrs(parts)
         while len(parts) < 5:
             parts.append("")
         mark, opponent, method, event, date_raw = parts[:5]
