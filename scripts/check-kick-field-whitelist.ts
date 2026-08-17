@@ -53,6 +53,9 @@ const KNOWN_METHODS = new Set<string | null>([
 // `|`はテンプレートの引数区切りの残骸を示す。
 const WIKITEXT_RESIDUE_RE = /\{\{|<ref\b|<\/ref>|<!--|-->/;
 const OPPONENT_MARKUP_RE = /[=<]|\{\{|\|/;
+// PR #575: 対戦相手名の先頭に出典サイトの勝敗マーク記号(○×△等)がそのまま残っている
+// 実例(⚪️佐々木勝海・●藤野 伸哉等、NJKF/NKB公式、我如古優貴の頁で発見)。
+const OPPONENT_LEADING_MARK_RE = /^[⚪️○×△◎●▲✕✖️✗✘]/u;
 
 // ---------- 読み(kana)のホワイトリスト ----------
 // ひらがな・カタカナ(半角含む)・長音符・中黒・空白のみを許可する。
@@ -108,6 +111,25 @@ for (const file of fighterFiles) {
         detail: `opponentName="${b.opponentName}" sourceUrl=${b.sourceUrl}`,
       });
     }
+    // 対戦相手名: 先頭に残った勝敗マーク記号(⚪️○×△等)。
+    if (b.opponentName && OPPONENT_LEADING_MARK_RE.test(b.opponentName)) {
+      violations.push({
+        category: "opponentName_leading_mark_residue",
+        slug: f.slug,
+        detail: `opponentName="${b.opponentName}" sourceUrl=${b.sourceUrl}`,
+      });
+    }
+    // 大会名: 空文字列("")はnullと区別されてしまい、page.tsx側の`b.event ?? <不明バッジ>`が
+    // 効かず「不明」表示すら出ない完全な空欄になる(PR #575、robu-kamanで発見)。
+    // build-kick-data.ts側で""はnullに正規化される設計のため、ここに空文字列が残っていたら
+    // 正規化漏れの回帰とみなす。
+    if (b.event === "") {
+      violations.push({
+        category: "event_empty_string",
+        slug: f.slug,
+        detail: `date=${b.date ?? "null"} opponentName="${b.opponentName}" sourceUrl=${b.sourceUrl}`,
+      });
+    }
   }
 }
 
@@ -128,6 +150,8 @@ const CATEGORIES = [
   "method",
   "methodRaw_wikitext_residue",
   "opponentName_markup_residue",
+  "opponentName_leading_mark_residue",
+  "event_empty_string",
   "kana_non_kana_chars",
 ];
 for (const c of CATEGORIES) if (!(c in counts)) counts[c] = 0;

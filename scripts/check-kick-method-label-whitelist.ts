@@ -42,6 +42,12 @@ interface Violation {
 }
 
 const violations: Violation[] = [];
+// PR #575: methodLabel()は「勝者:江幡 KO 2:36」のような勝者名の前置きを表示上は取り除く
+// (対戦相手欄・勝敗欄で既に判別できるため冗長、50人検品2周目#572のishii-tatsuyaで発見、
+// 実測14行)。whitelist自体は(出典の生テキストをそのまま受理できるよう)「勝者」前置きの
+// 形も許可パターンに含めているため、上の不変条件チェックだけでは前置き除去の回帰を検知
+// できない。除去処理そのものが機能しているかを別途ゼロ件で確認する。
+const winnerPrefixViolations: Violation[] = [];
 let total = 0;
 let fuMeiCount = 0;
 
@@ -54,6 +60,9 @@ for (const file of fighterFiles) {
     if (output === "不明") fuMeiCount++;
     if (!isMethodLabelWhitelisted(output)) {
       violations.push({ slug: f.slug, date: b.date, methodRaw: b.methodRaw, output });
+    }
+    if (/^勝者/.test(output)) {
+      winnerPrefixViolations.push({ slug: f.slug, date: b.date, methodRaw: b.methodRaw, output });
     }
   }
 }
@@ -77,6 +86,21 @@ if (violations.length > 0) {
 }
 
 console.log("[kick-method-label-whitelist] OK(全行がプレースホルダまたはwhitelistのいずれかに一致)");
+
+if (winnerPrefixViolations.length > 0) {
+  console.error(
+    `[kick-method-label-winner-prefix] ★決着欄の出力が「勝者」で始まる行が` +
+      `${winnerPrefixViolations.length}件見つかりました。methodLabel()の勝者名前置き除去処理が` +
+      `回帰している可能性があります。デプロイをブロックします:\n` +
+      winnerPrefixViolations
+        .slice(0, 20)
+        .map((v) => `  - ${v.slug} (${v.date ?? "date null"}): methodRaw="${v.methodRaw}" → output="${v.output}"`)
+        .join("\n"),
+  );
+  process.exit(1);
+}
+
+console.log("[kick-method-label-winner-prefix] OK(決着欄への勝者名前置き残存0件)");
 
 const prevFumeiBaseline: number = fs.existsSync(FUMEI_BASELINE_PATH)
   ? JSON.parse(fs.readFileSync(FUMEI_BASELINE_PATH, "utf8")).fuMeiCount
