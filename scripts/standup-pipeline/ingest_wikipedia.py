@@ -31,7 +31,14 @@ ORG_PATTERNS = [
     ("SHOOT BOXING", re.compile(r"SHOOT ?BOXING|シュートボクシング")),
     ("KNOCK OUT", re.compile(r"KNOCK ?OUT")),
     ("RIZIN", re.compile(r"RIZIN")),
-    ("ONE Championship", re.compile(r"\bONE\b.*(Champ|FC)|ONE\d")),
+    # PR-16: 旧regex(\bONE\b.*(Champ|FC)|ONE\d)は"ONE Friday Fights N"・"ONE SAMURAI N"・
+    # "ONE N: 副題"等、2023年以降ONEが多用する「Championship」を省いた大会名表記に
+    # 一致せず、これらがWikipedia(その他団体)に誤分類されてbouts_one.json(PR-15で取得済み)
+    # との重複排除が効かなくなっていた(与座優貴で実測: 二重計上の原因)。
+    # 大文字「ONE」が文頭にある場合のみ一致させる(大文字小文字を区別しない\bONE\bだと
+    # "One Night in Bangkok"のような無関係な大会名も拾ってしまうため、大文字限定+文頭固定で
+    # 実測59件中誤検知0件を確認)。
+    ("ONE Championship", re.compile(r"\bONE\b.*(Champ|FC)|ONE\d|^ONE\b")),
     ("DEEP☆KICK", re.compile(r"DEEP.?KICK")),
     ("NJKF", re.compile(r"NJKF|ニュージャパンキックボクシング連盟")),
     ("HoostCup", re.compile(r"HOOST ?CUP", re.I)),
@@ -52,6 +59,19 @@ BOUT_FILES = {
     "DEEP☆KICK": "bouts_deepkick.json", "NJKF": "bouts_njkf.json", "HoostCup": "bouts_hoostcup.json",
     "NKB": "bouts_nkb.json", "Bigbang": "bouts_bigbang.json", "Stand up": "bouts_standup.json",
     "KROSS×OVER": "bouts_krossover.json", "SNKA": "bouts_snka.json", "JKA": "bouts_jka.json",
+}
+# PR-16: build-kick-data.ts の boutFiles[].matchBy と同じ区分。sourceUrl系4団体は
+# bout行のsource_urlがそのままfighters.jsonのsources[]に載っている前提が成り立つが、
+# identity系11団体はbout行のfighter_slugが既にidentity(name|gym|sources[0])形式で
+# 格納されており、source_urlは単なる出典記事URL(sources[]には無いことが多い)。
+# 旧実装はこの区別をせず全団体をsource_url経由でfighters.jsonに逆引きしていたため、
+# identity系11団体のbout行がperson_org_dated等のインデックスに一切乗らず、
+# Wikipedia側の重複判定が機能していなかった(ONE Championshipで実測: 二重計上の原因)。
+MATCH_BY = {
+    "K-1": "sourceUrl", "RISE": "sourceUrl", "SHOOT BOXING": "sourceUrl", "KNOCK OUT": "sourceUrl",
+    "RIZIN": "identity", "ONE Championship": "identity", "DEEP☆KICK": "identity", "NJKF": "identity",
+    "HoostCup": "identity", "NKB": "identity", "Bigbang": "identity", "Stand up": "identity",
+    "KROSS×OVER": "identity", "SNKA": "identity", "JKA": "identity",
 }
 ORG_TAG = {
     "K-1": "k1", "RISE": "rise", "SHOOT BOXING": "sb", "KNOCK OUT": "knockout", "RIZIN": "rizin",
@@ -115,6 +135,7 @@ def find_fight_cont_blocks(wikitext):
 #      (AZUMA記事で実測)、recordbox必須方式だと取りこぼしていた。
 NON_KICKBOXING_HEADING_RE = re.compile(
     r"総合格闘技|ミックスルール|MMA|プロレス|空手|異種格闘技|ラウェイ|エキシビション|エキシビジョン|アマチュア|"
+    r"グラップリング|柔術|レスリング|サンボ|カスタムルール|"  # PR-16: MIKU(グラップリング)・スパイク・カーライル(カスタムルール=KNOCK OUT-UNLIMITED)で実測
     r"(?<!キック)ボクシング(?!グ)"  # 「キックボクシング」は除外しない。「ボクシング」単独(ボクシング戦績等)のみ除外
 )
 RECORDBOX_RE = re.compile(r"\{\{(Kickboxing recordbox|Muay Thai recordbox|MMA recordbox|Boxing recordbox)\b")
@@ -242,7 +263,7 @@ def norm_opp(s):
 def build():
     population = json.load(open("coverage_population.json"))
     fighters = json.load(open("fighters.json"))
-    wikitexts = json.load(open("raw/wp_wikitext_509.json"))
+    wikitexts = json.load(open("raw/wp_wikitext_v2.json"))
 
     def identity(f):
         return f"{f['name']}|{f['gym'] or ''}|{f['sources'][0] if f['sources'] else ''}"
@@ -254,22 +275,34 @@ def build():
     for f in fighters:
         for u in f["sources"]:
             by_source_url[u] = f
+    known_identities = {identity(f): f for f in fighters}
 
     # 選手×団体 -> (date, norm_opp)集合(日付ありのみ)/ norm_opp集合(日付有無問わず、フォールバック用)
     person_org_dated = collections.defaultdict(lambda: collections.defaultdict(set))
     person_org_opp_all = collections.defaultdict(lambda: collections.defaultdict(list))  # org -> [(norm_opp, date)]
     person_org_has_page = collections.defaultdict(dict)
+    # PR-16: 日付のみ一致(相手名は問わない)のフォールバック。ONE Championship等、
+    # Wikipedia側は対戦相手をカタカナ表記、公式サイト側は英語表記のことがあり、
+    # norm_opp()では一致しない(与座優貴で実測: 二重計上の原因)。同一選手・同一団体・
+    # 同一日付の公式bout件数をここで数え、ちょうど1件のときのみ「同じ試合」とみなす
+    # 安全弁とする(複数件ある日=ダブルヘッダーの可能性があるため、その場合は適用しない)。
+    person_org_date_count = collections.defaultdict(lambda: collections.defaultdict(collections.Counter))
     for org, fn in BOUT_FILES.items():
         rows = json.load(open(fn))
         for b in rows:
             if b["result"] == "scheduled":
                 continue
-            f = by_source_url.get(b["source_url"])
+            if MATCH_BY.get(org) == "identity":
+                f = known_identities.get(b.get("fighter_slug"))
+            else:
+                f = by_source_url.get(b["source_url"])
             if not f:
                 continue
             ident = identity(f)
             no = norm_opp(b["opponent_name"])
             person_org_opp_all[ident][org].append((no, b["date"]))
+            if b["date"]:
+                person_org_date_count[ident][org][b["date"]] += 1
             if b["date"]:
                 person_org_dated[ident][org].add((b["date"], no))
             person_org_has_page[ident][org] = True
@@ -341,6 +374,11 @@ def build():
                 held.append(dict(fighter=rec["name"], org=org, opponent=fr["opponent"],
                                   wiki_url=p["wiki_url"], candidates=len(matches)))
                 continue
+            # フォールバック2: 同一選手・同一団体・同一日付の公式boutがちょうど1件のときのみ
+            # 「相手名の表記違い(カタカナ⇔英語表記等)による同一試合」とみなす(PR-16)。
+            if fr["date"] and person_org_date_count[identity(rec)][org].get(fr["date"]) == 1:
+                stats["dup_dateonly_match"] += 1
+                continue
             if not fr["opponent"]:
                 stats["skipped_no_opponent"] += 1
                 continue
@@ -380,17 +418,19 @@ if __name__ == "__main__":
     json.dump(bouts, open("bouts_wikipedia.json", "w"), ensure_ascii=False, indent=1)
     json.dump(held, open("wikipedia_held_ambiguous.json", "w"), ensure_ascii=False, indent=1)
     print("===== bouts_wikipedia.json =====")
-    print("対象母集団:", 509, "人 / wikitext取得成功:", 509 - stats["wikitext_missing"])
+    _pop_size = len(json.load(open("coverage_population.json")))
+    print("対象母集団:", _pop_size, "人 / wikitext取得成功:", _pop_size - stats["wikitext_missing"])
     print("名簿未一致(スキップ):", stats["no_roster_match"])
     print("Wikipedia側bout総数:", stats["total_wiki_bouts"])
     print("  範囲外(15団体以外):", stats["out_of_scope"])
     print("  相手名欠落でスキップ:", stats["skipped_no_opponent"])
     print("  既存(日付一致)で重複:", stats["dup_dated_match"])
     print("  既存(相手名フォールバック)で重複:", stats["dup_fallback_match"])
+    print("  既存(同日付のみ、表記違い許容)で重複:", stats["dup_dateonly_match"])
     print("  複数候補で判定不能・保留:", stats["held_ambiguous"])
     print("  新規追加:", stats["new_added"])
     residual = (stats["total_wiki_bouts"] - stats["out_of_scope"] - stats["skipped_no_opponent"]
-                - stats["dup_dated_match"] - stats["dup_fallback_match"] - stats["held_ambiguous"]
+                - stats["dup_dated_match"] - stats["dup_fallback_match"] - stats["dup_dateonly_match"] - stats["held_ambiguous"]
                 - stats["new_added"])
     print("残余(0であるべき):", residual)
     r = sum(1 for x in bouts if x["opponent_resolved"])
