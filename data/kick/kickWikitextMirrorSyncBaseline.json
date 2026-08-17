@@ -1,0 +1,10 @@
+{
+ "find_fight_cont_blocks": {
+  "hash": "54fb61809036efcae9b614483c2aef0552a35a6b78b3679b20659fd095a7b6f8",
+  "text": "def find_fight_cont_blocks(wikitext):\n    \"\"\"{{Fight-cont|...}}のネスト対応版抽出。開き\"{{Fight-cont|\"から対応する閉じ\"}}\"までを、\n    途中に現れるネストしたテンプレート(\"{{\"の深さ)を数えて正しく特定する。\n    戻り値は(開始位置, 中身)のタプルのリスト(PR-15でセクション判定に開始位置を使うため)。\"\"\"\n    blocks = []\n    for m in FIGHT_CONT_START_RE.finditer(wikitext):\n        depth = 1\n        i = m.end()\n        n = len(wikitext)\n        while i < n and depth > 0:\n            two = wikitext[i : i + 2]\n            if two == \"{{\":\n                depth += 1\n                i += 2\n            elif two == \"}}\":\n                depth -= 1\n                i += 2\n            else:\n                i += 1\n        content_end = i - 2 if depth == 0 else i\n        blocks.append((m.start(), wikitext[m.end() : content_end]))\n    return blocks"
+ },
+ "_strip_cell_attrs": {
+  "hash": "8caca138271a17381630fb39d02fa551e137e50daca112a6d21a679efc310798",
+  "text": "def _strip_cell_attrs(parts):\n    return [p for p in parts if not _CELL_ATTR_RE.match(p.strip())]"
+ }
+}

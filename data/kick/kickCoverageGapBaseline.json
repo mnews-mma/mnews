@@ -1,3 +1,10 @@
 {
- "gapCount": 6
+ "gapCount": 159,
+ "_diagnostics": {
+  "snapshotFighters": 718,
+  "noTableCount": 216,
+  "nameUnresolvedCount": 6,
+  "okCount": 337,
+  "note": "gapCountのみがゲート判定(ratchet)に使われる。他のフィールドは直近実行時点の参考値。"
+ }
 }

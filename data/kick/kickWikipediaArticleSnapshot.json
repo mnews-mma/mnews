@@ -1,0 +1,5044 @@
+{
+ "_meta": {
+  "description": "ja.wikipedia記事の戦績表({{Fight-cont}}等)から、/kickの取り込みパイプライン(ingest_wikipedia.py)を経由せず独立に再抽出した選手ごとの試合数スナップショット。取り込み漏れ検知(scripts/check-kick-coverage-gap.ts)の外部基準として使う。取り込み側と同じロジックを共有すると取り込み漏れが基準側にも反映され差分が出ない(旧basisの欠陥)ため、意図的に別実装(out/kana-leg4-report.md記載の再抽出、Fight-contネストテンプレートのバグを自前で修正した独立実装)の結果を使う。",
+  "sourceReport": "out/kana-leg4-report.md (メインworktree, 2026-08-16作成)",
+  "sourceCsv": "out/kana-leg4-per-fighter.csv (719行=ヘッダ+718選手)",
+  "population": "対象718人はout/kana-leg3-wiki-existence.csvの「記事あり(完全一致)」母集団(#563で拡張された833人母集団とは別の、より狭い718人時点のスナップショット)",
+  "fields": {
+   "fighterName": "Wikipedia記事のタイトル(選手の表記名)",
+   "total": "その記事のFight-cont等戦績表に実在する行数(スポーツ種別を問わず全て。取り込みパイプラインのキックボクシング判定フィルタを経由していない独立の生の値)",
+   "covered": "/kickの既存bouts_*.json/bouts_wikipedia.jsonで日付+正規化相手名一致により既に代表されていると判定された行数(参考値、判定ロジックはout/kana-leg4-report.md参照)",
+   "missing": "total-covered(参考値)",
+   "noTableReason": "戦績表が見つからなかった場合の理由(null以外の場合、totalは0)"
+  },
+  "importedAt": "2026-08-17"
+ },
+ "fighters": [
+  {
+   "fighterName": "“ブラックパンサー”ベイノア",
+   "total": 34,
+   "covered": 24,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "青津潤平",
+   "total": 27,
+   "covered": 11,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "秋元皓貴",
+   "total": 39,
+   "covered": 16,
+   "missing": 23,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "麻原将平",
+   "total": 18,
+   "covered": 15,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "芦澤竜誠",
+   "total": 47,
+   "covered": 25,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アジス・カトゥー",
+   "total": 10,
+   "covered": 9,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アジス・ヤヤ",
+   "total": 17,
+   "covered": 1,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "AZUMA",
+   "total": 36,
+   "covered": 10,
+   "missing": 26,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アゼム・マクスタイ",
+   "total": 21,
+   "covered": 19,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アダム・ワット",
+   "total": 27,
+   "covered": 0,
+   "missing": 27,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アティラ・カラチ",
+   "total": 24,
+   "covered": 14,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "後川聡之",
+   "total": 23,
+   "covered": 10,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アナトリー・ノスイレフ",
+   "total": 9,
+   "covered": 0,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "寧仁太・アリ",
+   "total": 13,
+   "covered": 9,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アヌワット・ゲーオサムリット",
+   "total": 8,
+   "covered": 5,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "安倍基江",
+   "total": 22,
+   "covered": 0,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "天田ヒロミ",
+   "total": 79,
+   "covered": 56,
+   "missing": 23,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アマラ忍",
+   "total": 43,
+   "covered": 7,
+   "missing": 36,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アミール・ゼヤダ",
+   "total": 9,
+   "covered": 0,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アリエル・マチャド",
+   "total": 29,
+   "covered": 11,
+   "missing": 18,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アリ・グンヤー",
+   "total": 18,
+   "covered": 4,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アルトゥール・キシェンコ",
+   "total": 77,
+   "covered": 29,
+   "missing": 48,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アルバン・ガロニア",
+   "total": 3,
+   "covered": 1,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アルバート・クラウス",
+   "total": 93,
+   "covered": 45,
+   "missing": 48,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アルビアール・リマ",
+   "total": 31,
+   "covered": 3,
+   "missing": 28,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アレキサンダー・ピチュクノフ",
+   "total": 17,
+   "covered": 13,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アレクサンダー・ウスティノフ",
+   "total": 74,
+   "covered": 25,
+   "missing": 49,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アレクサンダー・プリリップ",
+   "total": 2,
+   "covered": 2,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アレクセイ・イグナショフ",
+   "total": 68,
+   "covered": 43,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アレクセイ・クジン",
+   "total": 54,
+   "covered": 1,
+   "missing": 53,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アレックス・ゴング",
+   "total": 2,
+   "covered": 2,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アレックス・ロバーツ",
+   "total": 29,
+   "covered": 12,
+   "missing": 17,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アンダーソン・ブラドック・シルバ",
+   "total": 21,
+   "covered": 1,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アンディ・オロゴン",
+   "total": 13,
+   "covered": 10,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アンディ・サワー",
+   "total": 106,
+   "covered": 65,
+   "missing": 41,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アンディ・フグ",
+   "total": 70,
+   "covered": 0,
+   "missing": 70,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アントニー・ハードンク",
+   "total": 17,
+   "covered": 1,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アンドリュー・トムソン",
+   "total": 11,
+   "covered": 11,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "安保瑠輝也",
+   "total": 50,
+   "covered": 31,
+   "missing": 19,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アーシュイン・バルラック",
+   "total": 19,
+   "covered": 7,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アースラン・マゴメドフ",
+   "total": 6,
+   "covered": 5,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "アーネスト・ホースト",
+   "total": 120,
+   "covered": 71,
+   "missing": 49,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "イアン・シャファー",
+   "total": 24,
+   "covered": 6,
+   "missing": 18,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "飯田なお",
+   "total": 4,
+   "covered": 0,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "庵谷鷹志",
+   "total": 36,
+   "covered": 9,
+   "missing": 27,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "イオヌット・イフティモアイエ",
+   "total": 19,
+   "covered": 6,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "イゴール・ユルコビッチ",
+   "total": 14,
+   "covered": 3,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "石井宏和",
+   "total": 7,
+   "covered": 2,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "石井宏樹",
+   "total": 84,
+   "covered": 78,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "石川直生",
+   "total": 59,
+   "covered": 17,
+   "missing": 42,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "石黒竜也",
+   "total": 19,
+   "covered": 16,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "石毛慎也",
+   "total": 35,
+   "covered": 20,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "石田勝希",
+   "total": 24,
+   "covered": 9,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "板橋寛",
+   "total": 28,
+   "covered": 21,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "伊藤紗弥",
+   "total": 55,
+   "covered": 3,
+   "missing": 52,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "井上由久",
+   "total": 4,
+   "covered": 1,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "今井教行",
+   "total": 28,
+   "covered": 25,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "イム・チビン",
+   "total": 34,
+   "covered": 25,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "岩永唯伽",
+   "total": 7,
+   "covered": 5,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "イワン・ストルガー",
+   "total": 8,
+   "covered": 0,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "イワン・ヒポリット",
+   "total": 12,
+   "covered": 5,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "イワン・ルーデン",
+   "total": 1,
+   "covered": 0,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "イ・スファン",
+   "total": 31,
+   "covered": 24,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ウィリアム・ディンダー",
+   "total": 27,
+   "covered": 6,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ウェイ・ルイ",
+   "total": 57,
+   "covered": 5,
+   "missing": 52,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "上原誠",
+   "total": 33,
+   "covered": 26,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "上松大輔",
+   "total": 23,
+   "covered": 16,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ウエンツ☆修一",
+   "total": 22,
+   "covered": 0,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ウォーレン・スティーブルマンズ",
+   "total": 25,
+   "covered": 9,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "内田ノボル",
+   "total": 47,
+   "covered": 27,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "内山政人",
+   "total": 12,
+   "covered": 3,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "梅井泰成",
+   "total": 28,
+   "covered": 24,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "梅野源治",
+   "total": 82,
+   "covered": 31,
+   "missing": 51,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "梅野孝明",
+   "total": 15,
+   "covered": 15,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "卜部功也",
+   "total": 72,
+   "covered": 66,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "卜部弘嵩",
+   "total": 60,
+   "covered": 53,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "Uver∞miyU",
+   "total": 25,
+   "covered": 6,
+   "missing": 19,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "榎田洸之",
+   "total": 1,
+   "covered": 1,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "エロール・ジマーマン",
+   "total": 57,
+   "covered": 25,
+   "missing": 32,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "遠藤智史",
+   "total": 27,
+   "covered": 2,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "エヴェルトン・テイシェイラ",
+   "total": 19,
+   "covered": 12,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "エヴジェニー・オルロフ",
+   "total": 14,
+   "covered": 10,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "及川知浩",
+   "total": 42,
+   "covered": 28,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大石駿介",
+   "total": 28,
+   "covered": 9,
+   "missing": 19,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大高一郎",
+   "total": 36,
+   "covered": 3,
+   "missing": 33,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大槻翔太",
+   "total": 21,
+   "covered": 21,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大野崇",
+   "total": 44,
+   "covered": 32,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大浜芳美",
+   "total": 16,
+   "covered": 9,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大東旭",
+   "total": 3,
+   "covered": 3,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大渡博之",
+   "total": 13,
+   "covered": 12,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "岡田敦子",
+   "total": 31,
+   "covered": 9,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "緒形健一",
+   "total": 39,
+   "covered": 37,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "尾崎圭司",
+   "total": 41,
+   "covered": 36,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "オーレ・ローセン",
+   "total": 29,
+   "covered": 11,
+   "missing": 18,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "梶原龍児",
+   "total": 61,
+   "covered": 22,
+   "missing": 39,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カタリン・モロサヌ",
+   "total": 19,
+   "covered": 11,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カノンスック・ウィラサクレック",
+   "total": 26,
+   "covered": 7,
+   "missing": 19,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カマル・エル・アムラーニ",
+   "total": 16,
+   "covered": 1,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "神風莉央",
+   "total": 10,
+   "covered": 4,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "神村エリカ",
+   "total": 37,
+   "covered": 13,
+   "missing": 24,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カリム・ベノーイ",
+   "total": 12,
+   "covered": 0,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カルロス・モタ",
+   "total": 15,
+   "covered": 3,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "川口雄介",
+   "total": 19,
+   "covered": 1,
+   "missing": 18,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カン・リー",
+   "total": 16,
+   "covered": 4,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カーター・ウィリアムス",
+   "total": 38,
+   "covered": 23,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カーチス・シュースター",
+   "total": 5,
+   "covered": 5,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "カール・グリシンスキー",
+   "total": 22,
+   "covered": 3,
+   "missing": 19,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ガオグライ・ゲーンノラシン",
+   "total": 42,
+   "covered": 21,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ガオラン・カウイチット",
+   "total": 7,
+   "covered": 4,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "我龍真吾",
+   "total": 66,
+   "covered": 27,
+   "missing": 39,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "菊池浩一",
+   "total": 28,
+   "covered": 27,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "喜多村誠",
+   "total": 67,
+   "covered": 51,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "北山高与志",
+   "total": 25,
+   "covered": 9,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "城戸康裕",
+   "total": 105,
+   "covered": 76,
+   "missing": 29,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "木村天鮮",
+   "total": 34,
+   "covered": 2,
+   "missing": 32,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "キム・ギョンソック",
+   "total": 5,
+   "covered": 5,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "キム・ミンス",
+   "total": 16,
+   "covered": 5,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "キム・ヨンヒョン",
+   "total": 4,
+   "covered": 4,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "キモ・レオポルド",
+   "total": 21,
+   "covered": 5,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "切詰大貴",
+   "total": 10,
+   "covered": 3,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ギャリー・オニール",
+   "total": 1,
+   "covered": 0,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ギンティ・ブレーダ",
+   "total": 18,
+   "covered": 1,
+   "missing": 17,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "日下部竜也",
+   "total": 34,
+   "covered": 19,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "草津賢治",
+   "total": 16,
+   "covered": 14,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "国崇",
+   "total": 18,
+   "covered": 11,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "久保賢司",
+   "total": 31,
+   "covered": 21,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "久保優太",
+   "total": 72,
+   "covered": 57,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "クリストフ・プルボー",
+   "total": 18,
+   "covered": 2,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "クリス・ファン・ベンローイ",
+   "total": 18,
+   "covered": 4,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "黒田アキヒロ",
+   "total": 38,
+   "covered": 9,
+   "missing": 29,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "黒田斗真",
+   "total": 23,
+   "covered": 15,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "クンタップ・ウィラサクレック",
+   "total": 33,
+   "covered": 8,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "グラウベ・フェイトーザ",
+   "total": 35,
+   "covered": 32,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "グレイシャア亜紀",
+   "total": 30,
+   "covered": 0,
+   "missing": 30,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "グレゴリー・トニー",
+   "total": 32,
+   "covered": 20,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "グーカン・サキ",
+   "total": 58,
+   "covered": 21,
+   "missing": 37,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "拳士浪",
+   "total": 54,
+   "covered": 48,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "健太",
+   "total": 40,
+   "covered": 35,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ゲンナロン・ウィラサクレック",
+   "total": 1,
+   "covered": 0,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ゲーオ・フェアテックス",
+   "total": 76,
+   "covered": 21,
+   "missing": 55,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ゲーリー・グッドリッジ",
+   "total": 84,
+   "covered": 34,
+   "missing": 50,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "皇治",
+   "total": 53,
+   "covered": 32,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "小林愛理奈",
+   "total": 21,
+   "covered": 21,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "コブス・ハイサマン",
+   "total": 5,
+   "covered": 0,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "小宮由紀博",
+   "total": 37,
+   "covered": 16,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "小宮山工介",
+   "total": 45,
+   "covered": 36,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "子安慎悟",
+   "total": 19,
+   "covered": 12,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ゴルダン・ユキッチ",
+   "total": 3,
+   "covered": 2,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ゴーラン・ラドニッチ",
+   "total": 7,
+   "covered": 0,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "才賀紀左衛門",
+   "total": 42,
+   "covered": 30,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "酒井秀信",
+   "total": 26,
+   "covered": 0,
+   "missing": 26,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "坂本奈緒子",
+   "total": 9,
+   "covered": 1,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "桜井洋平",
+   "total": 41,
+   "covered": 39,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "佐々木洵樹",
+   "total": 8,
+   "covered": 8,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "佐竹雅昭",
+   "total": 132,
+   "covered": 0,
+   "missing": 132,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "佐藤堅一",
+   "total": 10,
+   "covered": 0,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "佐藤友則",
+   "total": 51,
+   "covered": 18,
+   "missing": 33,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "佐藤嘉洋",
+   "total": 80,
+   "covered": 51,
+   "missing": 29,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "サトルヴァシコバ",
+   "total": 29,
+   "covered": 4,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "サミール・ベナゾーズ",
+   "total": 16,
+   "covered": 11,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "寒川慶一",
+   "total": 4,
+   "covered": 2,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "寒川直喜",
+   "total": 48,
+   "covered": 13,
+   "missing": 35,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "サムゴー・ギャットモンテープ",
+   "total": 10,
+   "covered": 1,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "サム・グレコ",
+   "total": 34,
+   "covered": 26,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "澤屋敷純一",
+   "total": 23,
+   "covered": 21,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ザカリア・ゾウガリー",
+   "total": 16,
+   "covered": 13,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ザビット・サメドフ",
+   "total": 62,
+   "covered": 28,
+   "missing": 34,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シェイン・チャップマン",
+   "total": 20,
+   "covered": 12,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シナ・カリミアン",
+   "total": 23,
+   "covered": 15,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "嶋田翔太",
+   "total": 13,
+   "covered": 10,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シャヒッド・オラド・アラフ",
+   "total": 26,
+   "covered": 2,
+   "missing": 24,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シャヒン・ヤクート",
+   "total": 25,
+   "covered": 2,
+   "missing": 23,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シャミール・ガイダルベコフ",
+   "total": 1,
+   "covered": 0,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "駿太",
+   "total": 39,
+   "covered": 12,
+   "missing": 27,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "翔栄",
+   "total": 9,
+   "covered": 1,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シリル・アビディ",
+   "total": 42,
+   "covered": 31,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "志朗",
+   "total": 82,
+   "covered": 43,
+   "missing": 39,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シン・ノッパデッソーン",
+   "total": 13,
+   "covered": 11,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シーザー武志",
+   "total": 17,
+   "covered": 0,
+   "missing": 17,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジェイソン・サティー",
+   "total": 31,
+   "covered": 19,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジェット・イズミ",
+   "total": 47,
+   "covered": 3,
+   "missing": 44,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジェニファー・マイア",
+   "total": 32,
+   "covered": 0,
+   "missing": 32,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジェレル・ヴェネチアン",
+   "total": 19,
+   "covered": 9,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジェロム・レ・バンナ",
+   "total": 115,
+   "covered": 63,
+   "missing": 52,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジェームズ・フィリップス",
+   "total": 22,
+   "covered": 12,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジェームズ・ワーリング",
+   "total": 5,
+   "covered": 1,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジャダンバ・ナラントンガラグ",
+   "total": 29,
+   "covered": 13,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジャバル・アスケロフ",
+   "total": 24,
+   "covered": 13,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジャビット・バイラミ",
+   "total": 39,
+   "covered": 27,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジャマル・カスモフ",
+   "total": 16,
+   "covered": 4,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジャン＝クロード・リビエール",
+   "total": 13,
+   "covered": 11,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジャン・ウェイリー",
+   "total": 31,
+   "covered": 1,
+   "missing": 30,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "張慶軍",
+   "total": 3,
+   "covered": 2,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジョムトーン・チュワタナ",
+   "total": 105,
+   "covered": 5,
+   "missing": 100,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジョルジオ・ペトロシアン",
+   "total": 89,
+   "covered": 20,
+   "missing": 69,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジョン・ウェイン・パー",
+   "total": 38,
+   "covered": 17,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジョージ“ザ・アイアンライオン”",
+   "total": 1,
+   "covered": 1,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジョーダン・タイ",
+   "total": 13,
+   "covered": 7,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ジョーダン・ピケオー",
+   "total": 31,
+   "covered": 17,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ステファン・レコ",
+   "total": 74,
+   "covered": 49,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ストーヤン・コプリヴレンスキー",
+   "total": 35,
+   "covered": 10,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "須藤信充",
+   "total": 10,
+   "covered": 4,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "スパイク・カーライル",
+   "total": 39,
+   "covered": 0,
+   "missing": 39,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "聖愛",
+   "total": 20,
+   "covered": 15,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "セバスチャン・チオバヌ",
+   "total": 23,
+   "covered": 10,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "セミー・シュルト",
+   "total": 91,
+   "covered": 40,
+   "missing": 51,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "セルカン・イルマッツ",
+   "total": 10,
+   "covered": 10,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "セルゲイ・イバノビッチ",
+   "total": 10,
+   "covered": 10,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "セルゲイ・グール",
+   "total": 52,
+   "covered": 32,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "セルゲイ・マトキン",
+   "total": 9,
+   "covered": 3,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "セルゲイ・ラシェンコ",
+   "total": 18,
+   "covered": 9,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ゼバット・ポーツラック",
+   "total": 32,
+   "covered": 21,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ソフィア・ツォラキドゥ",
+   "total": 4,
+   "covered": 2,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ソルデティグレ・ヨースケ",
+   "total": 13,
+   "covered": 4,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大雅",
+   "total": 51,
+   "covered": 30,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "タイロン・スポーン",
+   "total": 68,
+   "covered": 7,
+   "missing": 61,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "貴センチャイジム",
+   "total": 42,
+   "covered": 14,
+   "missing": 28,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "瀧川リョウ",
+   "total": 35,
+   "covered": 14,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "瀧谷渉太",
+   "total": 28,
+   "covered": 19,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "武田幸三",
+   "total": 75,
+   "covered": 71,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "武尊",
+   "total": 59,
+   "covered": 47,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "田嶋はる",
+   "total": 20,
+   "covered": 0,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "立川隆史",
+   "total": 7,
+   "covered": 6,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "TATSUJI",
+   "total": 33,
+   "covered": 29,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "巽宇宙",
+   "total": 15,
+   "covered": 0,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "立嶋篤史",
+   "total": 100,
+   "covered": 12,
+   "missing": 88,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "谷本弘行",
+   "total": 2,
+   "covered": 1,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大宮司進",
+   "total": 33,
+   "covered": 8,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ダグ・ヴィニー",
+   "total": 19,
+   "covered": 16,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ダニエル・ギタ",
+   "total": 47,
+   "covered": 11,
+   "missing": 36,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ダニエル・ドーソン",
+   "total": 20,
+   "covered": 8,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ダニエル・ピュータス",
+   "total": 10,
+   "covered": 1,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ダリウス・スクリアウディス",
+   "total": 11,
+   "covered": 3,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "チェ・ホンマン",
+   "total": 27,
+   "covered": 19,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "チャド・コリンズ",
+   "total": 40,
+   "covered": 9,
+   "missing": 31,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "チャンプア・ゲッソンリット",
+   "total": 29,
+   "covered": 0,
+   "missing": 29,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "チョン・ジェヒ",
+   "total": 6,
+   "covered": 5,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "チョ・ジョンファン",
+   "total": 17,
+   "covered": 1,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "チンギス・アラゾフ",
+   "total": 26,
+   "covered": 4,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "辻井和花",
+   "total": 10,
+   "covered": 10,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "辻井和奏",
+   "total": 11,
+   "covered": 2,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "辻出優翔",
+   "total": 30,
+   "covered": 22,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "鶴谷剛",
+   "total": 15,
+   "covered": 6,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "テオドール・サリエフ",
+   "total": 7,
+   "covered": 2,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "寺戸伸近",
+   "total": 57,
+   "covered": 27,
+   "missing": 30,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "デニス・シュナイドミラー",
+   "total": 21,
+   "covered": 9,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "デニス・ピューリック",
+   "total": 10,
+   "covered": 1,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "デミトリー・シャクタ",
+   "total": 22,
+   "covered": 1,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "デール・ウェスターマン",
+   "total": 2,
+   "covered": 2,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "闘魔",
+   "total": 15,
+   "covered": 1,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "としぞう",
+   "total": 15,
+   "covered": 2,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "トスカ・ペトリディス",
+   "total": 8,
+   "covered": 3,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "トッド・ヘイズ",
+   "total": 2,
+   "covered": 1,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "トピ・ヘリン",
+   "total": 16,
+   "covered": 3,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "富平辰文",
+   "total": 37,
+   "covered": 30,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "トーマス・ハロン",
+   "total": 27,
+   "covered": 4,
+   "missing": 23,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "トーマス・ラドキー",
+   "total": 9,
+   "covered": 0,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "土井広之",
+   "total": 26,
+   "covered": 22,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ドゥエイン・ラドウィック",
+   "total": 50,
+   "covered": 14,
+   "missing": 36,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ドマジョフ・オスタジック",
+   "total": 18,
+   "covered": 2,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ドラガン・ヨバノビッチ",
+   "total": 7,
+   "covered": 2,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ドラゴ",
+   "total": 70,
+   "covered": 20,
+   "missing": 50,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ナオフォール“アイアン・レッグ”",
+   "total": 8,
+   "covered": 6,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "中迫剛",
+   "total": 48,
+   "covered": 47,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "中嶋平八",
+   "total": 13,
+   "covered": 10,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "中村高明",
+   "total": 37,
+   "covered": 0,
+   "missing": 37,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "長崎秀哉",
+   "total": 16,
+   "covered": 2,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "長島☆自演乙☆雄一郎",
+   "total": 41,
+   "covered": 19,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "名城裕司",
+   "total": 14,
+   "covered": 13,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "那須川天心",
+   "total": 55,
+   "covered": 42,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "南原健太",
+   "total": 13,
+   "covered": 13,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ニキー・ホルツケン",
+   "total": 67,
+   "covered": 9,
+   "missing": 58,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ニコラス・ペタス",
+   "total": 21,
+   "covered": 15,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ニコラ・ディムコフスキー",
+   "total": 16,
+   "covered": 2,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ニコラ・ヴェルモン",
+   "total": 3,
+   "covered": 2,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "西田和嗣",
+   "total": 15,
+   "covered": 1,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "西山誠人",
+   "total": 38,
+   "covered": 7,
+   "missing": 31,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "新田明臣",
+   "total": 38,
+   "covered": 15,
+   "missing": 23,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ネイサン・ブリッグス",
+   "total": 4,
+   "covered": 4,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "野杁正明",
+   "total": 78,
+   "covered": 54,
+   "missing": 24,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "野地竜太",
+   "total": 48,
+   "covered": 3,
+   "missing": 45,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "野田貢",
+   "total": 12,
+   "covered": 11,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "野田蒼",
+   "total": 33,
+   "covered": 24,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ノブ・ハヤシ",
+   "total": 44,
+   "covered": 33,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ノ・ジェギル",
+   "total": 16,
+   "covered": 10,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "林田昌子",
+   "total": 29,
+   "covered": 3,
+   "missing": 26,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "HAYATO",
+   "total": 51,
+   "covered": 22,
+   "missing": 29,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ハリッド\"ディ・ファウスト\"",
+   "total": 24,
+   "covered": 14,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "バス・ルッテン",
+   "total": 33,
+   "covered": 0,
+   "missing": 33,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "バタービーン",
+   "total": 27,
+   "covered": 7,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "バダ・ハリ",
+   "total": 61,
+   "covered": 25,
+   "missing": 36,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "繁那",
+   "total": 20,
+   "covered": 10,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "パク・ヨンス",
+   "total": 10,
+   "covered": 9,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "パトリス・カルテロン",
+   "total": 30,
+   "covered": 3,
+   "missing": 27,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "パトリック・スミス",
+   "total": 44,
+   "covered": 7,
+   "missing": 37,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "パベル・ズラフリオフ",
+   "total": 33,
+   "covered": 1,
+   "missing": 32,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ぱんちゃん璃奈",
+   "total": 27,
+   "covered": 16,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "パヴェル・マイヤー",
+   "total": 22,
+   "covered": 18,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "日菜太",
+   "total": 68,
+   "covered": 36,
+   "missing": 32,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "HIROYA",
+   "total": 61,
+   "covered": 48,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ビヨン・ブレギー",
+   "total": 45,
+   "covered": 26,
+   "missing": 19,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "PIRIKA",
+   "total": 10,
+   "covered": 1,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ピーター・アーツ",
+   "total": 131,
+   "covered": 93,
+   "missing": 38,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ピーター・グラハム",
+   "total": 56,
+   "covered": 24,
+   "missing": 32,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ピーター・スミット",
+   "total": 6,
+   "covered": 0,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ピーター・ボンドラチェック",
+   "total": 29,
+   "covered": 18,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ピーター・マエストロビッチ",
+   "total": 33,
+   "covered": 28,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ファイヤー原田",
+   "total": 31,
+   "covered": 10,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ファイ・ファラモエ",
+   "total": 2,
+   "covered": 0,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ファディル・シャバリ",
+   "total": 32,
+   "covered": 7,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ファディ・メルザ",
+   "total": 18,
+   "covered": 0,
+   "missing": 18,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ファビアーノ・サイクロン",
+   "total": 35,
+   "covered": 18,
+   "missing": 17,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "不可思",
+   "total": 68,
+   "covered": 16,
+   "missing": 52,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "深津飛成",
+   "total": 14,
+   "covered": 13,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "藤鬥嘩裟",
+   "total": 23,
+   "covered": 9,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "藤田智也",
+   "total": 34,
+   "covered": 14,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "藤原あらし",
+   "total": 78,
+   "covered": 6,
+   "missing": 72,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "藤本祐介",
+   "total": 47,
+   "covered": 45,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "フランシスコ・フィリォ",
+   "total": 25,
+   "covered": 24,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "古田太一",
+   "total": 13,
+   "covered": 3,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "フレディ・ケマイヨ",
+   "total": 49,
+   "covered": 29,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ブアカーオ・ポー.プラムック",
+   "total": 138,
+   "covered": 43,
+   "missing": 95,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ブライアン・ダウヴィス",
+   "total": 37,
+   "covered": 6,
+   "missing": 31,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ブランコ・シカティック",
+   "total": 28,
+   "covered": 11,
+   "missing": 17,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ブリース・ギドン",
+   "total": 29,
+   "covered": 8,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ブレクト・ウォリス",
+   "total": 16,
+   "covered": 11,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ベニー・ユキーデ",
+   "total": 5,
+   "covered": 0,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ベルナール・アッカ",
+   "total": 16,
+   "covered": 3,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ベン・エドワーズ",
+   "total": 19,
+   "covered": 8,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ペットパノムルン・キャットムーカオ",
+   "total": 24,
+   "covered": 10,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ペトロ・ナコネッチニィ",
+   "total": 10,
+   "covered": 5,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ペレ・リード",
+   "total": 4,
+   "covered": 4,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ホセ・レイス",
+   "total": 14,
+   "covered": 0,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "堀啓",
+   "total": 26,
+   "covered": 26,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "本田ななか",
+   "total": 6,
+   "covered": 6,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ボブ・サップ",
+   "total": 57,
+   "covered": 24,
+   "missing": 33,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ポール・スロウィンスキー",
+   "total": 76,
+   "covered": 30,
+   "missing": 46,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マイク・ザンビディス",
+   "total": 68,
+   "covered": 29,
+   "missing": 39,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マイク・ベルナルド",
+   "total": 56,
+   "covered": 53,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マイケル・ハンスグット",
+   "total": 6,
+   "covered": 0,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マイティ・モー",
+   "total": 53,
+   "covered": 29,
+   "missing": 24,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "前田憲作",
+   "total": 22,
+   "covered": 11,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "前田宏行",
+   "total": 21,
+   "covered": 4,
+   "missing": 17,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マキシム・ネレドバ",
+   "total": 17,
+   "covered": 8,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "牧野智昭",
+   "total": 15,
+   "covered": 1,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "正木純子",
+   "total": 13,
+   "covered": 1,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "MasakIラジャサクレック",
+   "total": 19,
+   "covered": 0,
+   "missing": 19,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "魔裟斗",
+   "total": 66,
+   "covered": 42,
+   "missing": 24,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "増田博正",
+   "total": 49,
+   "covered": 0,
+   "missing": 49,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マット・スケルトン",
+   "total": 20,
+   "covered": 17,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "松浦知希",
+   "total": 28,
+   "covered": 8,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "松下えみ",
+   "total": 33,
+   "covered": 9,
+   "missing": 24,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "松本哉朗",
+   "total": 57,
+   "covered": 39,
+   "missing": 18,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "松本芳道",
+   "total": 20,
+   "covered": 19,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マラット・グレゴリアン",
+   "total": 22,
+   "covered": 2,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マリウス・ザロムスキー",
+   "total": 28,
+   "covered": 0,
+   "missing": 28,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マリオ・プリンチ",
+   "total": 4,
+   "covered": 0,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マルコ・ピケ",
+   "total": 55,
+   "covered": 10,
+   "missing": 45,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マルフィオ・カノレッティ",
+   "total": 15,
+   "covered": 13,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マーカス・エバーグ",
+   "total": 10,
+   "covered": 5,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マーク・ハント",
+   "total": 53,
+   "covered": 22,
+   "missing": 31,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マーティン・ホルム",
+   "total": 9,
+   "covered": 9,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "マーティン・ロザルスキー",
+   "total": 21,
+   "covered": 11,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "☆MIKA☆",
+   "total": 17,
+   "covered": 4,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ミゲール・トリンダーデ",
+   "total": 12,
+   "covered": 7,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "水町浩",
+   "total": 35,
+   "covered": 2,
+   "missing": 33,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "蜜山剛三",
+   "total": 8,
+   "covered": 5,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "港太郎",
+   "total": 30,
+   "covered": 4,
+   "missing": 26,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "宮﨑小雪",
+   "total": 18,
+   "covered": 18,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "雅駿介",
+   "total": 36,
+   "covered": 3,
+   "missing": 33,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "宮元啓介",
+   "total": 57,
+   "covered": 18,
+   "missing": 39,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "宮本正明",
+   "total": 10,
+   "covered": 9,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "宮本武勇志",
+   "total": 25,
+   "covered": 22,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "宮本芽依",
+   "total": 8,
+   "covered": 8,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ミルコ・クロコップ",
+   "total": 86,
+   "covered": 35,
+   "missing": 51,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "美伶",
+   "total": 5,
+   "covered": 5,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ムハレム・ジョケイ",
+   "total": 1,
+   "covered": 1,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ムラット・ディレッキー",
+   "total": 20,
+   "covered": 5,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ムラッド・ボウジディ",
+   "total": 26,
+   "covered": 4,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "村浜武洋",
+   "total": 55,
+   "covered": 39,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "メルヴィン・マヌーフ",
+   "total": 77,
+   "covered": 13,
+   "missing": 64,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "モハメド・アズーイ",
+   "total": 3,
+   "covered": 3,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "モハン・ドラゴン",
+   "total": 28,
+   "covered": 14,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "桃花シンデレラ",
+   "total": 6,
+   "covered": 6,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "百瀬竜徳",
+   "total": 23,
+   "covered": 18,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "守屋拓郎",
+   "total": 23,
+   "covered": 14,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "モンターニャ・シウバ",
+   "total": 6,
+   "covered": 6,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "モーリス・スミス",
+   "total": 83,
+   "covered": 1,
+   "missing": 82,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "安廣一哉",
+   "total": 23,
+   "covered": 19,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "山内佑太郎",
+   "total": 46,
+   "covered": 13,
+   "missing": 33,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "山崎秀晃",
+   "total": 45,
+   "covered": 42,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "山田洸誓",
+   "total": 18,
+   "covered": 17,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "大和侑也",
+   "total": 24,
+   "covered": 13,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "山本元気",
+   "total": 38,
+   "covered": 6,
+   "missing": 32,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "山本佑機",
+   "total": 28,
+   "covered": 3,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "山本優弥",
+   "total": 57,
+   "covered": 27,
+   "missing": 30,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ヤン・ソウクップ",
+   "total": 5,
+   "covered": 3,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "楊東雄",
+   "total": 1,
+   "covered": 1,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ヤン・ノルキヤ",
+   "total": 33,
+   "covered": 25,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ヤン・ロムルダー",
+   "total": 5,
+   "covered": 1,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "YA-MAN",
+   "total": 24,
+   "covered": 21,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "裕樹",
+   "total": 57,
+   "covered": 48,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "佑典",
+   "total": 23,
+   "covered": 11,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ユルゲン・クルト",
+   "total": 34,
+   "covered": 28,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ユーリ・メス",
+   "total": 18,
+   "covered": 6,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "横山伸吾",
+   "total": 9,
+   "covered": 1,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "吉鷹弘",
+   "total": 19,
+   "covered": 1,
+   "missing": 18,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "斐也",
+   "total": 1,
+   "covered": 0,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "吉本光志",
+   "total": 57,
+   "covered": 12,
+   "missing": 45,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "米田貴志",
+   "total": 34,
+   "covered": 28,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ヨードセングライ・フェアテックス",
+   "total": 60,
+   "covered": 2,
+   "missing": 58,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ライアン・シムソン",
+   "total": 22,
+   "covered": 7,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "紗依茄",
+   "total": 18,
+   "covered": 7,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ラウル・カティナス",
+   "total": 17,
+   "covered": 8,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "羅紗陀",
+   "total": 18,
+   "covered": 15,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ラマザン・ラマザノフ",
+   "total": 7,
+   "covered": 1,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ラモン・デッカー",
+   "total": 15,
+   "covered": 5,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ラリー・リンドウォール",
+   "total": 9,
+   "covered": 9,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ランディ・キム",
+   "total": 8,
+   "covered": 8,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "リカルド・ノードストランド",
+   "total": 22,
+   "covered": 16,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "リコ・ヴァーホーベン",
+   "total": 68,
+   "covered": 5,
+   "missing": 63,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "リック・ルーファス",
+   "total": 10,
+   "covered": 0,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "Little Tiger",
+   "total": 56,
+   "covered": 2,
+   "missing": 54,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "龍二",
+   "total": 24,
+   "covered": 23,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "リョウ・ペガサス",
+   "total": 31,
+   "covered": 7,
+   "missing": 24,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ルイス・レイス",
+   "total": 8,
+   "covered": 2,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ルシア・アプデルガリム",
+   "total": 14,
+   "covered": 0,
+   "missing": 14,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ルスラン・アヴァソフ",
+   "total": 16,
+   "covered": 3,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ルスラン・カラエフ",
+   "total": 22,
+   "covered": 21,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ルーカス・ヤロス",
+   "total": 11,
+   "covered": 4,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "レイ・スターリン",
+   "total": 9,
+   "covered": 3,
+   "missing": 6,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "レイ・セフォー",
+   "total": 66,
+   "covered": 54,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "レオナ・ペタス",
+   "total": 43,
+   "covered": 38,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "レミギウス・モリカビュチス",
+   "total": 29,
+   "covered": 8,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "レミー・ボンヤスキー",
+   "total": 72,
+   "covered": 50,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ロイド・ヴァン・ダム",
+   "total": 34,
+   "covered": 14,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ロイ・タン",
+   "total": 3,
+   "covered": 2,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ロエル・マナート",
+   "total": 22,
+   "covered": 6,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ロザリオ・プレスティ",
+   "total": 2,
+   "covered": 2,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ロニー・セフォー",
+   "total": 16,
+   "covered": 11,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ロブ・カーマン",
+   "total": 24,
+   "covered": 0,
+   "missing": 24,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ロベルト・コッコ",
+   "total": 11,
+   "covered": 1,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ロマン・クレイブル",
+   "total": 19,
+   "covered": 17,
+   "missing": 2,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ワシリー・シシ",
+   "total": 13,
+   "covered": 2,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "渡邉和則",
+   "total": 7,
+   "covered": 3,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "渡辺久江",
+   "total": 53,
+   "covered": 3,
+   "missing": 50,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ワンロップ・ウィラサクレック",
+   "total": 26,
+   "covered": 6,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ワン・ジュングァン",
+   "total": 19,
+   "covered": 2,
+   "missing": 17,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ヴァージル・カラコダ",
+   "total": 20,
+   "covered": 17,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ヴィタリ・ウルコフ",
+   "total": 5,
+   "covered": 4,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ヴィタリ・オフラメンコ",
+   "total": 39,
+   "covered": 11,
+   "missing": 28,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ヴィトー・ミランダ",
+   "total": 41,
+   "covered": 15,
+   "missing": 26,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "MIKU",
+   "total": 36,
+   "covered": 0,
+   "missing": 36,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "SAIGO",
+   "total": 12,
+   "covered": 2,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "YURA",
+   "total": 36,
+   "covered": 7,
+   "missing": 29,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ウザ強ヨシヤ",
+   "total": 9,
+   "covered": 1,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "シング・心・ジャディブ",
+   "total": 28,
+   "covered": 12,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "センチャイ・PKセンチャイムエタイジム",
+   "total": 175,
+   "covered": 7,
+   "missing": 168,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ドン・中矢・ニールセン",
+   "total": 12,
+   "covered": 0,
+   "missing": 12,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ナグラチューン・マーサM16",
+   "total": 31,
+   "covered": 28,
+   "missing": 3,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "ランバー・ソムデートM16",
+   "total": 23,
+   "covered": 2,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "三上ヘンリー大智",
+   "total": 22,
+   "covered": 1,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "与座優貴",
+   "total": 26,
+   "covered": 10,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "京谷祐希",
+   "total": 32,
+   "covered": 12,
+   "missing": 20,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "原口健飛",
+   "total": 39,
+   "covered": 26,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "吉田実代",
+   "total": 17,
+   "covered": 1,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "國枝悠太",
+   "total": 26,
+   "covered": 11,
+   "missing": 15,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "坂本優起",
+   "total": 46,
+   "covered": 38,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "塩川琉斗",
+   "total": 13,
+   "covered": 9,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "壱・センチャイジム",
+   "total": 49,
+   "covered": 17,
+   "missing": 32,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "安彦考真",
+   "total": 12,
+   "covered": 4,
+   "missing": 8,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "宮原華音",
+   "total": 1,
+   "covered": 1,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "寺山日葵",
+   "total": 23,
+   "covered": 12,
+   "missing": 11,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "山口裕人",
+   "total": 39,
+   "covered": 13,
+   "missing": 26,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "島田知佳",
+   "total": 7,
+   "covered": 6,
+   "missing": 1,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "工藤“red”玲央",
+   "total": 27,
+   "covered": 1,
+   "missing": 26,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "常陸飛雄馬",
+   "total": 22,
+   "covered": 18,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "弘・センチャイジム",
+   "total": 17,
+   "covered": 1,
+   "missing": 16,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "朝倉未来",
+   "total": 41,
+   "covered": 0,
+   "missing": 41,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "木村“ケルベロス”颯太",
+   "total": 28,
+   "covered": 10,
+   "missing": 18,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "朱里",
+   "total": 23,
+   "covered": 0,
+   "missing": 23,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "森田崇文",
+   "total": 13,
+   "covered": 0,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "植山征紀",
+   "total": 44,
+   "covered": 31,
+   "missing": 13,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "玖村将史",
+   "total": 33,
+   "covered": 23,
+   "missing": 10,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "琉樺",
+   "total": 3,
+   "covered": 3,
+   "missing": 0,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "白川陸斗",
+   "total": 33,
+   "covered": 0,
+   "missing": 33,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "白鳥大珠",
+   "total": 49,
+   "covered": 22,
+   "missing": 27,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "直樹",
+   "total": 34,
+   "covered": 17,
+   "missing": 17,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "笠原友希",
+   "total": 40,
+   "covered": 33,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "笠原弘希",
+   "total": 50,
+   "covered": 45,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "笠原直希",
+   "total": 21,
+   "covered": 16,
+   "missing": 5,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "蒔・センチャイジム",
+   "total": 12,
+   "covered": 5,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "西岡蓮太",
+   "total": 26,
+   "covered": 17,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "西谷大成",
+   "total": 25,
+   "covered": 0,
+   "missing": 25,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "那須川龍心",
+   "total": 24,
+   "covered": 20,
+   "missing": 4,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "鈴木宙樹",
+   "total": 23,
+   "covered": 1,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "鈴木真彦",
+   "total": 48,
+   "covered": 26,
+   "missing": 22,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "門口佳佑",
+   "total": 23,
+   "covered": 14,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "陽勇",
+   "total": 14,
+   "covered": 5,
+   "missing": 9,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "麻火佑太郎",
+   "total": 34,
+   "covered": 13,
+   "missing": 21,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "龍聖",
+   "total": 26,
+   "covered": 0,
+   "missing": 26,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "島野浩太朗",
+   "total": 16,
+   "covered": 9,
+   "missing": 7,
+   "noTableReason": null
+  },
+  {
+   "fighterName": "愛来",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "アクラム・ハミディ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "アトム山田",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "アントニオ・ゴメス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "アントニオ・プラチバット",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "安東辰也",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "アンドレ・マルティンス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "アーロン・クラーク",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "猪狩元秀",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "石井達也",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "イスマエル・ロント",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "板倉直人",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ISSEI",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "稲毛忠治",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "イブラヒム・エル・ボウニ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "イリアス・ブライド",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "岩下雅大",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "イワン・チテンコフ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "内田雅之",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "栄基",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "エダー・ロープス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "エリアス・マムーディ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "大石亨",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "大江慎",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "大沢昇",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "大前力也",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "岡田清治",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "風間健",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "一真",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "片岡亮",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "加藤督朗",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "金沢久幸",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "兼子ただし",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "神風杏子",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "木浪利幸",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "基流・ザ・ビャー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "金太郎",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "銀次",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "熊谷直子",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "クラウディオ・イストラテ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "クリス・マセーリ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "CRAZY884",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "蔵人",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "黒田英雄",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "グァニー・バラッジ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "慧",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "越川大樹",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "小鉄",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "壽美",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "小林聡",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "コムパヤック・ウィラサクレック",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "小雪",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "後藤龍治",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "西城正三",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ダイヤモンド酒井理絵",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "笹谷淳",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "佐藤孝也",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "聖",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "SATORU成合",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "サム・ヒル",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "沢村忠",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "サーマート・パヤクァルン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "SHIGERU",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "柴田早千予",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "清水隆広",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "新藤栄作",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ジェイミー・ウィーラン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ジャン・イヴ・テリオー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "隼也ウィラサクレック",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ジョシュ・トナー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ジョナス・サルシチャ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ジョムホート・キアタディサック",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ジョージ・アリアス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ジョージ・ランドルフ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "仁",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "スタニスラブ・レニタ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "関ナオト",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "宗一郎",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "壮泰",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "孫悟空丸山",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "武士",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "T-98",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "竹山晴友",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "田中義人",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "代常亮",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ダニエル・ウィリアムス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ダビッド・キリア",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ちはる",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "チャッキー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "チャンプアック・チョー・シープラーサート",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "チャン・ウヒョク",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "チャールズ・ボンジョバーニ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "チューチャイ・ルークパンチャマ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "チュートン・ウィラサクレック",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "チョン・ユジョン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "土屋ジョー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "飛翔",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ティアン・ターザン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ティボール・ナギー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "テッサ・デ・コム",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "テヨン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "寺尾新",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "出貝泰佑",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "デューウィー・クーパー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "デル・クック",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "デング・シルバ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "戸井田大輝",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "鴇稔之",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "トモコSP",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "中沢夏美",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "那須川梨々",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "NIIZUMAX!",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "忍者",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "乃亜",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "NOZOMI",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ハキム・ハメッシュ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "白虎",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "羽田真宏",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ハビエル・エルナンデス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "林恭平",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "パク・ヒョンソン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "パリンヤー・ジャルーンポン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ビクトー・サラビア",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "風成",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "藤本勲",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "藤原敏男",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "船木鷹虎",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ブアカーオ・ウィラサクレック",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ブバッカ・エル・バクーリ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ブラックドラゴン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ブラックマンバ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ベジム・カバシ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ベロニカ・ロドリゲス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ペッディージャー・オーミークン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ホクト",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "細田由里子",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ボグダン・ストイカ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ポール・ブリッグス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "マイク・アラモス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "前口太尊",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "マグナム酒井",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "マサロ・グランダー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "松浦信次",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "松下武蔵",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "松田利彦",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "松田玲奈",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "真奈",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "マーセル・アデイエミ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "MINA",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "宮﨑若菜",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ミラン・ペイルス",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "武藤孝行",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ムラッド・サリ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "モイセス・バプティスタ・デ・ソウザ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "紅絹",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "MOMOKA",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "八神剣太",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "安岡力也",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "山口元気",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "山崎照朝",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "山田紗暉",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "山本アキラ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "YU-KI",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ユン・チー",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "yu-kid",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_wikitext"
+  },
+  {
+   "fighterName": "YOSHI",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "443",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "寄本哲平",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ラズ・セルキシアン",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ラビット関",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "乱暴",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "龍華",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "龍啓",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "遼",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ルイ・ボテーリョ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ルーカス・アハテルバーグ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "レネ・ローゼ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "レミー・パラ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "渡辺健司",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "渡辺理想",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ワチャラチャイ・ゲーオサムリット",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ヴィンセント・フォシアーニ",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "HARU",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "Hotaru",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "J",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "NANA",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "SHINGO",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "TAKERU",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "TAKU",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "TAKUYA",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "YU-YA",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "YUYA",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "ストロング小林",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "井上竜太",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "伊東龍也",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "勝次",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "土佐丸",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "大﨑一貴",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "大﨑孔稀",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "天承山",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "太陽",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "女神",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "安本晴翔",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "帝王",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "康輝",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "愛斗",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "拳剛",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "新井雄大",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "末國龍汰",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "松本天志",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "海人",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "澤谷大樹",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "真琴",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "翼",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "鞠谷貴大",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  },
+  {
+   "fighterName": "鳩",
+   "total": 0,
+   "covered": 0,
+   "missing": 0,
+   "noTableReason": "no_structured_table"
+  }
+ ]
+}

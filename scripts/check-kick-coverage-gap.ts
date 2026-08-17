@@ -1,62 +1,67 @@
-// PR-G(2026-08-17): 選手ごとに「外部基準の試合数」と「/kickの掲載数」を突き合わせ、
-// 差が大きい(掲載数が外部基準を下回る)選手をビルド時に検知するゲート。
+// PR-G(2026-08-17、修正1): 選手ごとに「外部基準の試合数」と「/kickの掲載数」を突き合わせ、
+// 掲載数が外部基準を下回る選手をビルド時に検知するゲート。
 //
-// 外部基準として data/kick/bouts_wikipedia.json を採用する理由:
-// - 対象509人(ja.wikipedia個別記事に{{Fight-cont}}戦績表を持つ選手、
-//   scripts/standup-pipeline/ingest_wikipedia.py の coverage_population.json)は、
-//   選手本人のWikipedia記事が「本人自身の戦績」として明示的に列挙した行数である
-//   (target_orgの推定を問わず、その選手の記事に載っている試合の総数)。
-// - RIZIN/ONE等の他公式データは名簿の掲載元ではなく戦績専用ソースであり、
-//   全選手を横断する「この選手が本来何試合しているか」の独立基準にはならない
-//   (名簿に載っている選手の一部にしか戦績が無い)。Wikipediaは選手本人の記事という
-//   単位で「この人物の試合数」を明示的に述べている点で、掲載数と直接比較できる。
+// ★外部基準の定義変更の経緯: 初版は外部基準として data/kick/bouts_wikipedia.json
+// (=/kickの取り込みパイプライン ingest_wikipedia.py が生成した「取り込み済み」行数)を
+// 使っていた。これは自分の取り込み結果を自分の掲載結果と比べているだけで、**取り込み漏れ
+// そのものを検知できない**(取り込みが漏れていれば基準側も一緒に減るため差分が出ない)。
+// 実際、取り込みパイプラインを経由しない独立の再抽出調査(out/kana-leg4-report.md、
+// メインworktree)では、Wikipedia記事のある718人で欠落8,375行という、初版ゲートの
+// 「差分あり6人」とは全く乖離した規模の欠落が見つかっている。
 //
-// 判定方法:
-// - bouts_wikipedia.json の各行の fighter_slug(identity形式)ごとに行数を数え、
-//   fighters.jsonのidentityと一致するもの(=名簿に実在する選手)だけを対象にする
-//   (これがその選手の「外部基準の試合数」)。
-// - slugs.jsonでidentity→slugへ変換し、data/kick/generated/index.jsonのboutCount
-//   (掲載数、build-kick-data.tsが計算した最終値)と比較する。
-// - 外部基準の試合数 > 掲載数 の選手を「差分あり」としてカウントする
-//   (逆に掲載数の方が多いのは、公式一次ソース側にWikipediaが拾っていない試合が
-//   別途あるという正常な状態であり、差分としては数えない)。
-// - Wikipedia行が1件も無い選手(外部基準そのものが存在しない)は「基準なし」として
-//   別集計にし、違反件数には含めない。
+// そのため外部基準を data/kick/kickWikipediaArticleSnapshot.json
+// (ja.wikipedia記事の戦績表から、取り込みパイプラインを一切経由せず独立に再抽出した
+// 選手ごとの試合数。out/kana-leg4-report.md参照。スナップショットの取り込み経緯は
+// 同JSONの `_meta` フィールドに記載)に差し替える。取り込みパイプラインと基準側が
+// 完全に独立した実装であるため、取り込み漏れがあれば基準側はそれに引きずられず
+// 差分として表面化する。
 //
-// ベースラインはこのスクリプトが自動でratchet(前回ビルド時点の値を基準にし、増加したら
-// 失敗・減少/同値なら基準を更新)する。data/kick/unmatchedBoutsBaseline.jsonと同じ方式。
+// この定義変更により「差分あり」件数は初版より大幅に増える(むしろ増えて当然、という
+// 前提でベースラインを取り直す。ゼロ件を目指すゲートではない)。
+//
+// 選手名→slugの対応付けは src/lib/kick/nameNormalize.ts の normalizeKickName() で
+// 正規化した表記名の完全一致(同名異人が複数いる場合は一意に絞れないため解決しない)で行う。
+// 解決できなかった行は「基準なし」とは別に「名前解決不能」として集計し、違反件数には
+// 含めない(下記ログ参照)。
 import fs from "fs";
 import path from "path";
+import { normalizeKickName } from "../src/lib/kick/nameNormalize";
 
 const ROOT = path.join(__dirname, "..");
 const SRC = path.join(ROOT, "data/kick");
 const GEN = path.join(SRC, "generated");
 const BASELINE_PATH = path.join(SRC, "kickCoverageGapBaseline.json");
+const SNAPSHOT_PATH = path.join(SRC, "kickWikipediaArticleSnapshot.json");
 
 interface Fighter {
   name: string;
   gym: string | null;
   sources: string[];
 }
-interface WikiBout {
-  fighter_slug: string;
+interface SnapshotRow {
+  fighterName: string;
+  total: number;
+  covered: number;
+  missing: number;
+  noTableReason: string | null;
 }
 
 const fighters: Fighter[] = JSON.parse(fs.readFileSync(path.join(SRC, "fighters.json"), "utf8"));
 const identity = (f: Fighter) => `${f.name}|${f.gym ?? ""}|${f.sources[0] ?? ""}`;
-const knownIdentities = new Set(fighters.map(identity));
 
 const slugMap: Record<string, string> = JSON.parse(fs.readFileSync(path.join(SRC, "slugs.json"), "utf8"));
 
-const wikiBouts: WikiBout[] = fs.existsSync(path.join(SRC, "bouts_wikipedia.json"))
-  ? JSON.parse(fs.readFileSync(path.join(SRC, "bouts_wikipedia.json"), "utf8"))
-  : [];
-
-const externalCount = new Map<string, number>();
-for (const b of wikiBouts) {
-  if (!knownIdentities.has(b.fighter_slug)) continue; // 名簿に実在しない(=この選手自身の記事ではない)行は対象外
-  externalCount.set(b.fighter_slug, (externalCount.get(b.fighter_slug) ?? 0) + 1);
+// 表記名(正規化後)ごとの候補一覧。1件だけならその選手に確定、2件以上(同名異人)は
+// 解決不能として扱う(誤リンクと同種の誤結合を避けるため、このゲートでも安全側に倒す)。
+const candidatesByNormName = new Map<string, Fighter[]>();
+for (const f of fighters) {
+  const key = normalizeKickName(f.name);
+  const arr = candidatesByNormName.get(key) ?? [];
+  arr.push(f);
+  candidatesByNormName.set(key, arr);
 }
+
+const snapshotDoc: { fighters: SnapshotRow[] } = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, "utf8"));
 
 const index = JSON.parse(fs.readFileSync(path.join(GEN, "index.json"), "utf8"));
 const boutCountBySlug = new Map<string, number>(
@@ -65,29 +70,52 @@ const boutCountBySlug = new Map<string, number>(
 
 interface Gap {
   slug: string;
-  externalCount: number;
+  fighterName: string;
+  externalTotal: number;
   mnewsCount: number;
 }
 const gaps: Gap[] = [];
-let noBaselineCount = 0;
 let okCount = 0;
+let noTableCount = 0; // total===0(記事に戦績表そのものが無い、比較対象外)
+let nameUnresolvedCount = 0; // 表記名が0件または2件以上ヒット(同名異人含む)し、slugを一意に決められなかった行
 
-for (const [ident, ext] of externalCount) {
-  const slug = slugMap[ident];
-  if (!slug) continue; // slugが採番されていない(理論上起きない)場合はスキップ
+const unresolvedSamples: string[] = [];
+
+for (const row of snapshotDoc.fighters) {
+  if (row.total === 0) {
+    noTableCount++;
+    continue;
+  }
+  const candidates = candidatesByNormName.get(normalizeKickName(row.fighterName)) ?? [];
+  if (candidates.length !== 1) {
+    nameUnresolvedCount++;
+    if (unresolvedSamples.length < 20) {
+      unresolvedSamples.push(`${row.fighterName}(候補${candidates.length}件)`);
+    }
+    continue;
+  }
+  const slug = slugMap[identity(candidates[0])];
+  if (!slug) {
+    nameUnresolvedCount++;
+    if (unresolvedSamples.length < 20) unresolvedSamples.push(`${row.fighterName}(slug未採番)`);
+    continue;
+  }
   const mnews = boutCountBySlug.get(slug) ?? 0;
-  if (ext > mnews) {
-    gaps.push({ slug, externalCount: ext, mnewsCount: mnews });
+  if (row.total > mnews) {
+    gaps.push({ slug, fighterName: row.fighterName, externalTotal: row.total, mnewsCount: mnews });
   } else {
     okCount++;
   }
 }
-// 「基準なし」= fighters.json全選手のうちWikipedia行を持たない人数(参考値、違反には含めない)。
-noBaselineCount = fighters.length - externalCount.size;
 
 console.log(
-  `[kick-coverage-gap] 外部基準あり${externalCount.size}人(うち一致${okCount}人・差分あり${gaps.length}人) / 基準なし${noBaselineCount}人`,
+  `[kick-coverage-gap] 外部基準スナップショット${snapshotDoc.fighters.length}人中: ` +
+    `戦績表なし${noTableCount}人(比較対象外) / 名前解決不能${nameUnresolvedCount}人(比較対象外) / ` +
+    `比較実施${okCount + gaps.length}人(一致${okCount}人・差分あり${gaps.length}人)`,
 );
+if (unresolvedSamples.length) {
+  console.log(`[kick-coverage-gap] 名前解決不能の例: ${unresolvedSamples.join(", ")}`);
+}
 
 const prevBaseline: number = fs.existsSync(BASELINE_PATH)
   ? JSON.parse(fs.readFileSync(BASELINE_PATH, "utf8")).gapCount
@@ -95,15 +123,32 @@ const prevBaseline: number = fs.existsSync(BASELINE_PATH)
 
 if (gaps.length > prevBaseline) {
   console.error(
-    `[kick-coverage-gap] ★掲載数が外部基準(Wikipedia本人記事の戦績表)を下回る選手が` +
-      `前回ビルド時点の基準(${prevBaseline}人)から${gaps.length}人に増加しました。デプロイをブロックします:\n` +
+    `[kick-coverage-gap] ★掲載数が外部基準(ja.wikipedia記事の戦績表、取り込みパイプライン非経由の` +
+      `独立再抽出)を下回る選手が前回ビルド時点の基準(${prevBaseline}人)から${gaps.length}人に` +
+      `増加しました。デプロイをブロックします:\n` +
       gaps
         .slice(0, 30)
-        .map((g) => `  - ${g.slug}: 外部基準${g.externalCount}試合 > 掲載${g.mnewsCount}試合`)
+        .map((g) => `  - ${g.slug}(${g.fighterName}): 外部基準${g.externalTotal}試合 > 掲載${g.mnewsCount}試合`)
         .join("\n"),
   );
   process.exit(1);
 }
 
-fs.writeFileSync(BASELINE_PATH, JSON.stringify({ gapCount: gaps.length }, null, 1) + "\n");
+fs.writeFileSync(
+  BASELINE_PATH,
+  JSON.stringify(
+    {
+      gapCount: gaps.length,
+      _diagnostics: {
+        snapshotFighters: snapshotDoc.fighters.length,
+        noTableCount,
+        nameUnresolvedCount,
+        okCount,
+        note: "gapCountのみがゲート判定(ratchet)に使われる。他のフィールドは直近実行時点の参考値。",
+      },
+    },
+    null,
+    1,
+  ) + "\n",
+);
 console.log(`[kick-coverage-gap] OK(差分あり${gaps.length}人、基準${prevBaseline}人以下)`);
