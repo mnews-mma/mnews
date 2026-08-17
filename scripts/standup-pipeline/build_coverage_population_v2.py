@@ -15,6 +15,18 @@ import urllib.parse
 
 LEG3_CSV = "/Users/kainakishiyoshi/Desktop/mnews/out/kana-leg3-wiki-existence.csv"
 
+# PR-17: 表記名がfighters.json内で複数レコードに一致する場合(同姓同名の別人が
+# 別団体に存在するケース)、下のフォールバックはfighters.json内の並び順で先頭の
+# レコードを機械的に選ぶため、Wikipedia記事の本人と異なるレコードに紐づく事故が
+# 起きうる(実例: 「龍聖」はfighters.json順でRISE所属レコードが先頭だが、
+# Wikipedia記事の本人はKNOCK OUT所属「BRAID/TEAM SUERTE」の方だった。記事の
+# インフォボックス|team=フィールドと一致させて判定した)。718人中この種の
+# 曖昧な名前は3件(銀次・海人・龍聖)のみ確認しており、うち機械的に解決できたのは
+# 龍聖のみ(他2件はインフォボックスにteam欄が無く、現時点では未解決)。
+DISAMBIGUATION_OVERRIDES = {
+    "龍聖": {"gym": "BRAID/TEAM SUERTE", "sources": ["https://knockoutkb.com/fighters/ryusei"]},
+}
+
 
 def main():
     fighters = json.load(open("fighters.json"))
@@ -45,6 +57,16 @@ def main():
                 break
         if not rec and match_records:
             rec = match_records[0]
+        override = DISAMBIGUATION_OVERRIDES.get(name)
+        if override:
+            population.append({
+                "name": name, "wiki_title": title,
+                "wiki_url": "https://ja.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_")),
+                "wiki_bout_count": None,
+                "fighters_json_gym": override["gym"],
+                "fighters_json_sources": override["sources"],
+            })
+            continue
         population.append({
             "name": name,
             "wiki_title": title,
