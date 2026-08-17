@@ -11,9 +11,13 @@ def parse_page(path, fighter_name_hint=None):
     out = []
     rows = re.findall(r'(?s)<tr class="is-data-row">(.*?)</tr>', h)
     for i, row in enumerate(rows):
-        sport = re.search(r'<td class="sport[^"]*">\s*([A-Za-z ]+?)\s*</td>', row)
+        # PR-16: 日本語ロケール(/jp/athletes/)は対戦相手名がカタカナ表記で取得できる
+        # (英語版は英語表記のみで、Wikipedia側のカタカナ表記との名寄せが効かなかった=
+        # 相手名解決率2.2%の原因)。sport列も「Kickboxing」ではなく「キックボクシング」に
+        # なるため、英語・日本語どちらの値でも判定できるようにする。
+        sport = re.search(r'<td class="sport[^"]*">\s*([^<]+?)\s*</td>', row)
         sport = sport.group(1).strip() if sport else None
-        if sport not in ('Kickboxing', 'Muay Thai'):
+        if sport not in ('Kickboxing', 'Muay Thai', 'キックボクシング', 'ムエタイ'):
             continue  # PR-15: 立ち技(キックボクシング/ムエタイ)のみ対象。ONE内でのMMA/Submission Grappling等は対象外(推測で混ぜない)
         result = re.search(r'<div class="is-distinct is-(positive|negative|neutral)">([A-Z]+)</div>', row)
         rtag, rlabel = (result.group(1), result.group(2)) if result else (None, None)
@@ -29,14 +33,14 @@ def parse_page(path, fighter_name_hint=None):
         rm = re.search(r'R(\d+)', round_raw)
         round_num = int(rm.group(1)) if rm else None
 
-        opp = re.search(r'(?s)<td class="opponent">.*?href="(https://www\.onefc\.com/athletes/([a-z0-9-]+)/)".*?<h5[^>]*>\s*([^<]+?)\s*</h5>', row)
+        opp = re.search(r'(?s)<td class="opponent">.*?href="(https://www\.onefc\.com/(?:jp/)?athletes/([a-z0-9-]+)/)".*?<h5[^>]*>\s*([^<]+?)\s*</h5>', row)
         opp_url, opp_slug, opp_name = (opp.group(1), opp.group(2), U(opp.group(3))) if opp else (None, None, None)
         country = re.search(r'<div class="opponent-country[^"]*">([^<]*)</div>', row)
         opp_country = U(country.group(1)) if country else None
 
-        ev = re.search(r'(?s)<td class="event[^"]*">.*?href="(https://www\.onefc\.com/events/[a-z0-9-]+/)".*?<h5[^>]*>\s*([^<]+?)\s*</h5>.*?data-timestamp="(\d+)"', row)
+        ev = re.search(r'(?s)<td class="event[^"]*">.*?href="(https://www\.onefc\.com/(?:jp/)?events/[a-z0-9-]+/)".*?<h5[^>]*>\s*([^<]+?)\s*</h5>.*?data-timestamp="(\d+)"', row)
         if not ev:
-            ev = re.search(r'(?s)opponent-event-and-date.*?href="(https://www\.onefc\.com/events/[a-z0-9-]+/)".*?<h5[^>]*>\s*([^<]+?)\s*</h5>.*?data-timestamp="(\d+)"', row)
+            ev = re.search(r'(?s)opponent-event-and-date.*?href="(https://www\.onefc\.com/(?:jp/)?events/[a-z0-9-]+/)".*?<h5[^>]*>\s*([^<]+?)\s*</h5>.*?data-timestamp="(\d+)"', row)
         if ev:
             event_url, event_name, ts = ev.group(1), U(ev.group(2)), int(ev.group(3))
             date = datetime.datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d')
@@ -53,6 +57,6 @@ def parse_page(path, fighter_name_hint=None):
             result=result_val, result_mark=f'one:{rlabel}', method=None, method_raw=method_raw,
             round=round_num, is_extension=False, ruleset=None, note=None, is_debut=False,
             title_type=None,  # ONE: event名(event_name)にタイトル語彙の記載なし(実測確認済み)
-            pair_key=None, source_url=f'https://www.onefc.com/athletes/{slug}/',
+            pair_key=None, source_url=f'https://www.onefc.com/jp/athletes/{slug}/',
         ))
     return out
