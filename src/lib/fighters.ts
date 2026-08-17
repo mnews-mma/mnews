@@ -1523,6 +1523,12 @@ export const FIGHTERS: Fighter[] = [
   { slug: "inoue-seiya", nameJa: "井上聖矢", nameEn: "Seiya Inoue", org: "rizin", weightClass: "バンタム級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "井上聖矢", nickname: "火の国のKOボーイ" },
   // 松嶋こよみ: RIZIN出場は2025-11 RIZIN LANDMARK 12が初(手動でRIZINタグ扱い)。
   { slug: "matsushima-koyomi", nameJa: "松嶋こよみ", nameEn: "Koyomi Matsushima", org: "rizin", weightClass: "フェザー級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "松嶋こよみ", nickname: "非RIZIN流 決意の出陣" },
+  // キ・ウォンビン: RIZIN出場は2025-05-31 RIZIN WORLD SERIES in KOREA(vs ソウザ)が初、
+  // 2025-11-03 RIZIN LANDMARK 12でキャプテン☆アフリカに判定勝利。手動でRIZINタグ扱い。
+  { slug: "ki-wonbin", nameJa: "キ・ウォンビン", nameEn: "Won Bin Ki", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "キ・ウォンビン", nickname: "コリアン・グラディエーター" },
+  // スパイク・カーライル: RIZIN出場はRIZIN.35(2022-04-17)〜RIZIN.50(2025-03-30)まで5戦。
+  // 手動でRIZINタグ扱い。
+  { slug: "carlyle-spike", nameJa: "スパイク・カーライル", nameEn: "Spike Carlyle", org: "rizin", weightClass: "ライト級", wins: 0, losses: 0, draws: 0, ko: 0, sub: 0, decision: 0, history: [], recordFromResults: true, wikiTitleJa: "スパイク・カーライル", nickname: "赤毛のバーサーカー" },
 
   // DEEP/パンクラス/修斗 未掲載選手 追加分(2026-07 ja.Wikipedia監査由来)。
   // wikiTitleJa設定によりupdate-fighter-records.tsのWikipedia同期対象になる。
