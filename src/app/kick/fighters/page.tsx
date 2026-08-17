@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getKickIndex, KickIndexEntry } from "@/lib/kick/data";
+import { getKickIndex, KickIndexEntry, KICK_PROMOTIONS } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
 import FighterSearch from "./FighterSearch";
 
@@ -7,7 +7,7 @@ export function generateMetadata() {
   const { stats } = getKickIndex();
   return pageMetadata({
     title: "キックボクシング選手一覧（五十音順）｜立ち技名鑑 - Mニュース",
-    description: `K-1・Krush・RISE・SHOOT BOXING・KNOCK OUT公式とWikipediaから収集したキックボクシング選手${stats.fighters.toLocaleString(
+    description: `対象${KICK_PROMOTIONS.length}団体の公式サイトとWikipedia全団体から収集したキックボクシング選手${stats.fighters.toLocaleString(
       "ja-JP",
     )}人を五十音順に掲載。読みが未取得の選手は空欄のまま表示しています。`,
     path: "/kick/fighters",
