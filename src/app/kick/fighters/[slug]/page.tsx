@@ -45,6 +45,14 @@ function ResultCell({ b }: { b: KickBout }) {
 function OpponentCell({ b }: { b: KickBout }) {
   // リンクしてよいのは一意に解決できた相手だけ。
   // ambiguous(同名異人)・未解決は誤って別人へ飛ばさないためテキスト表示にする。
+  //
+  // 表示層混入監査(2026-08、3度目の指摘): 選手名の<span>とバッジの<span>が直接
+  // 隣接しており、CSS(パディング等)がある通常のブラウザ表示では視覚的に区切られて
+  // 見えるが、テキスト抽出(スクリーンリーダー・自動テキスト監査・アクセシビリティ
+  // ツリー等、CSSを介さずDOMのテキストノードをそのまま連結する経路)では
+  // 「一輝同姓同名のため未リンク」のように選手名とバッジ内部ラベルが空白無しで
+  // 連結して読まれてしまう。バッジの直前に明示的な空白テキストノードを1つ挿入し、
+  // どの読み上げ・抽出経路でも語の境界が保たれるようにする。
   return (
     <>
       {b.opponentSlug ? (
@@ -53,12 +61,15 @@ function OpponentCell({ b }: { b: KickBout }) {
         <span>{b.opponentName}</span>
       )}
       {b.opponentAmbiguous && (
-        <span
-          className="kick-badge"
-          title={`「${b.opponentName}」という名前の選手が${b.opponentCandidateCount}人おり、どちらの選手か区別できないため選手ページへのリンクを付けていません`}
-        >
-          同姓同名のため未リンク
-        </span>
+        <>
+          {" "}
+          <span
+            className="kick-badge"
+            title={`「${b.opponentName}」という名前の選手が${b.opponentCandidateCount}人おり、どちらの選手か区別できないため選手ページへのリンクを付けていません`}
+          >
+            同姓同名のため未リンク
+          </span>
+        </>
       )}
       {b.opponentAffiliation && <div className="kick-table__aff">{b.opponentAffiliation}</div>}
     </>
@@ -205,9 +216,24 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                     {b.event ?? <span className="kick-empty">不明</span>}
                     {b.venue && <div className="kick-table__aff">{b.venue}</div>}
                     {b.note && <div className="kick-table__aff">{b.note}</div>}
-                    {b.isDebut && <span className="kick-badge">デビュー戦</span>}
-                    {b.ruleset && <span className="kick-badge">{b.ruleset.toUpperCase()}</span>}
-                    {b.titleType && <span className="kick-badge kick-badge--title">{TITLE_TYPE_LABEL[b.titleType]}</span>}
+                    {b.isDebut && (
+                      <>
+                        {" "}
+                        <span className="kick-badge">デビュー戦</span>
+                      </>
+                    )}
+                    {b.ruleset && (
+                      <>
+                        {" "}
+                        <span className="kick-badge">{b.ruleset.toUpperCase()}</span>
+                      </>
+                    )}
+                    {b.titleType && (
+                      <>
+                        {" "}
+                        <span className="kick-badge kick-badge--title">{TITLE_TYPE_LABEL[b.titleType]}</span>
+                      </>
+                    )}
                   </td>
                   <td className="kick-table__opp">
                     <OpponentCell b={b} />
@@ -216,7 +242,12 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                     <span title={b.methodRaw ? `出典の原文: ${b.methodRaw}` : undefined}>
                       {methodLabel(b.methodRaw)}
                     </span>
-                    {b.isExtension && <span className="kick-badge">延長</span>}
+                    {b.isExtension && (
+                      <>
+                        {" "}
+                        <span className="kick-badge">延長</span>
+                      </>
+                    )}
                   </td>
                   <td className="kick-table__date">{b.round ?? "—"}</td>
                   <td>

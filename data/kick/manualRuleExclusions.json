@@ -1950,5 +1950,61 @@
   "methodRaw": "3R終了 判定0-2",
   "category": "mma",
   "reason": "和島大海欠落調査(2026-08、母集団拡張の検査A)で発見。大会名「SHOOTBOXING INVADE 立技総合格闘技・大侵略活劇」に「総合格闘技」と明記されており、SHOOT BOXING主催ながら総合格闘技ルールの興行と判断される。"
+ },
+ {
+  "slug": "taito",
+  "date": "2026-03-01",
+  "opponent": "小材 貴",
+  "methodRaw": "判定3-0(20：18×3)",
+  "category": "mma",
+  "reason": "泰斗×MMA混入監査(2026-08)で発見。krossover.jp本文(?p=3929)で「▼第8試合KROSS×OVER PRO-MMA -73kg FIGHT」と明記されており、テイクダウン・パウンド・腕十字等のグラウンド攻防を含むMMAルールの試合。加えて対戦相手欄の所属は「高本道場」(krossover.jp本文で確認)であり、K-1公式の泰斗(LEOPARD GYM)とは別人の可能性が高い(識別子はfighter_name一致のみで自動結合されていた。詳細はout/kick-taito-misidentification-audit.md参照)。"
+ },
+ {
+  "slug": "taito",
+  "date": "2026-06-21",
+  "opponent": "岸本 篤史",
+  "methodRaw": "※69.95kg 3R 2′42″KO 左ストレート",
+  "category": "mma",
+  "reason": "泰斗×MMA混入監査(2026-08)で発見。krossover.jp本文(?p=4122)で「第15試合 MMA PART メインイベントKROSS×OVER PRO-MMA LIGHTWEIGHT(-70.3kg)初代王座決定戦」と明記されており、note欄「※岸本がKROSSxOVER MMA 初代ライト級(-70.3kg)王座を獲得」からもMMAタイトルマッチであることが確認できる。対戦相手欄の所属は「高本道場」であり上記2026-03-01のboutと同一人物(K-1公式の泰斗=LEOPARD GYMとは別人の可能性が高い)。詳細はout/kick-taito-misidentification-audit.md参照。"
+ },
+ {
+  "slug": "sakamoto-juki",
+  "date": "2025-07-13",
+  "opponent": "森本 直哉",
+  "methodRaw": "判定1-1",
+  "category": "mma",
+  "reason": "モノニム/MMA混入監査(2026-08)で発見。krossover.jp本文(?p=3529)で「▼第5試合KROSS×OVER MMA Sクラス -56.7kg FIGHT」と明記されているMMAルールの試合(同カード内の他の試合はKICK PARTだが、この試合はMMA PART側)。"
+ },
+ {
+  "slug": "morimoto-naoya",
+  "date": "2025-07-13",
+  "opponent": "坂本 寿希",
+  "methodRaw": "判定1-1",
+  "category": "mma",
+  "reason": "モノニム/MMA混入監査(2026-08)で発見。krossover.jp本文(?p=3529)で「▼第5試合KROSS×OVER MMA Sクラス -56.7kg FIGHT」と明記されているMMAルールの試合(同一カード内の森本直哉の他の試合(2025-03-09 vs 朝日彗仁等)はKICK PARTのため対象外)。"
+ },
+ {
+  "slug": "kikuchi-minori",
+  "date": "2022-12-14",
+  "opponent": "福田茉耶",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "MMA混入全DB監査(2026-08)で発見。大会名「GLEAT MMA Ver.0」に「MMA」と明記されている総合格闘技イベント。"
+ },
+ {
+  "slug": "i-sufan",
+  "date": "2011-04-30",
+  "opponent": "XUE GUO BIN",
+  "methodRaw": "1R TKO",
+  "category": "mma",
+  "reason": "MMA混入全DB監査(2026-08)で発見。大会名「KF-1 MMA WORLD COMPETITION」に「MMA」と明記されている総合格闘技イベント(Wikipedia記事側のセクション判定(tag_fight_cont_sections)を回避してキックボクシング区分に取り込まれていた)。"
+ },
+ {
+  "slug": "remigiusu-morikabyuchisu",
+  "date": "2008-11-08",
+  "opponent": "レオ・ボニンゲール",
+  "methodRaw": "3R終了 判定3-0",
+  "category": "mma",
+  "reason": "MMA混入全DB監査(2026-08)で発見。大会名「MMA BUSHIDO HERO'S 2008」の「HERO'S」は総合格闘技団体であり、大会名にも「MMA」と明記されている。"
  }
 ]

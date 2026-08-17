@@ -171,15 +171,22 @@ if (fs.existsSync(path.join(SRC, "bouts_wikipedia.json"))) {
 // 人名部分と所属部分に分割する。区切り文字が無く直接連結している行(例:「壱センチャイジム」
 // 「洋センチャイジム」)は人名と所属の境界を機械的に確定できないため対象外とし、そのまま残す
 // (PR-9本文に対象外リストを記録)。
-// 所属欄(opponent_affiliation)が既に値を持つ場合は上書きしない(重複破棄のみ、データは失わない)。
-// 空の場合のみ分離した所属語で埋める(情報を捨てない)。
-// 注意: この分離は「表示直前」(detail.bouts構築時)にのみ適用する。allBoutsの
-// opponent_nameそのものは変更しない — manualRuleExclusions.jsonの照合キー・dedupeキー・
-// fuzzyResolveOpponent()の入力など、opponent_nameを複合キーとして使う既存ロジックが
-// 連結済みの原文字列を前提にしているため、ここを書き換えるとそれらの照合が一斉に外れる
-// (実際に試して確認: 除外リストが3件マッチ落ちした)。
+//
+// モノニム/MMA混入監査(2026-08)の追補: PR-9時点の対象外47件を再調査した結果、2種類の
+// 追加パターンが見つかった。
+// 1. 区切り文字自体はあるが、GYM_SUFFIX_BREAK_CHARSに含まれていなかった異体字
+//    (半角中点"･"U+FF65・中黒"·"U+00B7・ビュレット"•"U+2022。全角中黒"・"U+30FBとは別の
+//    Unicode文字で、出典サイトによって使い分けられている)。この3文字を追加する。
+// 2. 区切り文字が全く無く直接連結しているが、末尾がタイの有名なムエタイジムの表記として
+//    高頻度に出現する固定語(「センチャイジム」「センチャジム」(表記ゆれ)「ヨックタイジム」
+//    「K.T.ジム」「KTジム」)であるため、辞書的にこの語を境界として確定できるもの
+//    (例:「洋センチャイジム」→人名「洋」+所属「センチャイジム」)。この語より前が空になる
+//    場合(語自体が単独で出現)は対象外のまま。
 const GYM_SUFFIX_KEYWORD_RE = /ジム|道場|塾|GYM|Gym|gym|Team|TEAM|team|Club|CLUB|club|協会|会館/g;
-const GYM_SUFFIX_BREAK_CHARS = new Set(["・", "(", "（", " ", "　"]);
+const GYM_SUFFIX_BREAK_CHARS = new Set(["・", "･", "·", "•", "(", "（", " ", "　"]);
+// 区切り文字が無い直接連結でも、末尾がこれらの既知の固定語(実データ調査で確認済み)と
+// 完全一致する場合のみ境界として認める。未知の語を推測で境界にはしない。
+const KNOWN_GYM_SUFFIX_TOKENS = ["センチャイジム", "センチャジム", "ヨックタイジム", "K.T.ジム", "KTジム"];
 export function splitOpponentGymSuffix(name: string): { person: string; gym: string } | null {
   const matches = [...name.matchAll(GYM_SUFFIX_KEYWORD_RE)];
   if (matches.length === 0) return null;
@@ -192,15 +199,22 @@ export function splitOpponentGymSuffix(name: string): { person: string; gym: str
       break;
     }
   }
-  if (breakPos < 0) return null;
-  const person = name.slice(0, breakPos).trim();
-  const gym = name
-    .slice(breakPos)
-    .replace(/^[・(（\s]+/, "")
-    .replace(/[)）\s]+$/, "")
-    .trim();
-  if (!person || !gym) return null;
-  return { person, gym };
+  if (breakPos >= 0) {
+    const person = name.slice(0, breakPos).trim();
+    const gym = name
+      .slice(breakPos)
+      .replace(/^[・･·•(（\s]+/, "")
+      .replace(/[)）\s]+$/, "")
+      .trim();
+    if (person && gym) return { person, gym };
+  }
+  for (const token of KNOWN_GYM_SUFFIX_TOKENS) {
+    if (name.endsWith(token) && name.length > token.length) {
+      const person = name.slice(0, name.length - token.length).trim();
+      if (person) return { person, gym: token };
+    }
+  }
+  return null;
 }
 
 // ---------- slug ----------
