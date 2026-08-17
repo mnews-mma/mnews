@@ -130,9 +130,61 @@ const boutFiles: { tag: string; label: string; file: string; matchBy: "sourceUrl
   { tag: "snka", label: "新日本キックボクシング協会(SNKA)", file: "bouts_snka.json", matchBy: "identity" },
   { tag: "jka", label: "JKA", file: "bouts_jka.json", matchBy: "identity" },
 ];
+// PR #575: 大会名文字列に埋め込まれた年(西暦4桁)と日付フィールドの年が食い違う行を
+// 検出・補正する。実例: NJKF公式サイトのURL自体に古い年が紛れ込んだページ
+// (https://www.njkf.info/result/njkf2012_west_kyoto_result.html。ページ本文の
+// 「日時：2021年12月5日」で裏取り済み、実際の開催は2021年)があり、
+// scripts/standup-pipeline/ingest_njkf.pyの日付抽出フォールバック(本文に完全な
+// 「YYYY年M月D日」表記が無い場合、URL中の西暦4桁+タイトル中の「N月N日」を組み合わせる)が
+// URL側の誤った年(2012)を採用してしまっていた。この1ページだけで6行が影響を受け、うち
+// 2行(山川敏弘×鈴木力登、エミNFC×AYA)は正しい日付(2021-12-05)の行が別ソース
+// (RISE公式)にも存在するため、日付が食い違ったまま二重計上されていた。
+// 大会名(イベント名)自体に「NJKF2021」のように年が埋め込まれており、かつ大会名中の
+// 「N月N日」がdateの月日と一致する場合は、大会名側の年をより信頼できる値とみなし
+// dateの年を補正する(誤補正を避けるため、大会名に埋め込まれた年が複数種類ある場合は
+// 判断がつかないとみなし補正しない)。
+function correctEventEmbeddedYearMismatch(date: string | null, event: string | null): string | null {
+  if (!date || !event) return date;
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!m) return date;
+  const [, dateYear, dateMonth, dateDay] = m;
+  const eventYears = [...event.matchAll(/(?:19|20)\d{2}/g)].map((x) => x[0]);
+  if (eventYears.length === 0 || eventYears.includes(dateYear)) return date;
+  const uniqueYears = new Set(eventYears);
+  if (uniqueYears.size !== 1) return date;
+  const md = /(\d{1,2})月(\d{1,2})日/.exec(event);
+  if (!md || Number(md[1]) !== Number(dateMonth) || Number(md[2]) !== Number(dateDay)) return date;
+  return `${eventYears[0]}-${dateMonth}-${dateDay}`;
+}
+
+// PR #575: methodRaw(決着原文)に明示的なノーコンテスト系のキーワードが含まれる
+// (取り込みスクリプトscripts/standup-pipeline/bouts.py line46がmethod=no_contest判定に
+// 使っている語"ノーコンテスト"・"無効"と揃える)のに、構造化されたresultがdraw/win/lossに
+// なっている行を補正する。実例: KNOCK OUT公式サイトの試合結果ページで、勝敗を表す
+// CSSクラス(fight-log--draw)がノーコンテストの試合にもそのまま使われており(選手本人の
+// プロフィールページの通算成績欄には「1NC」と別枠で明記されているにもかかわらず)、
+// クラス名ベースで判定するresultだけが「draw」になっていた(ミル・ブン・ティエン、
+// 50人検品2周目#572で発覚)。method(テキストベースの判定、こちらは正しく
+// no_contestになっている)を正とし、resultを上書きする。
+function correctNoContestResultMismatch(method: string | null, methodRaw: string, result: string): string {
+  const isNcText = /ノーコンテスト|無効/.test(methodRaw ?? "");
+  if (method === "no_contest" && isNcText && (result === "draw" || result === "win" || result === "loss")) {
+    return "no_contest";
+  }
+  return result;
+}
+
 const allBouts: (Bout & { promotion: string; matchBy: "sourceUrl" | "identity" })[] = [];
 for (const b of boutFiles) {
-  for (const x of read<Bout[]>(b.file)) allBouts.push({ ...x, promotion: b.label, matchBy: b.matchBy });
+  for (const x of read<Bout[]>(b.file)) {
+    allBouts.push({
+      ...x,
+      date: correctEventEmbeddedYearMismatch(x.date, x.event),
+      result: correctNoContestResultMismatch(x.method, x.method_raw, x.result),
+      promotion: b.label,
+      matchBy: b.matchBy,
+    });
+  }
 }
 const tagByLabel = new Map(boutFiles.map((b) => [b.label, b.tag]));
 
@@ -174,7 +226,13 @@ if (fs.existsSync(path.join(SRC, "bouts_wikipedia.json"))) {
     const label = orgNameToLabel[rawOrg] ?? rawOrg;
     if (!tagByLabel.has(label)) tagByLabel.set(label, label);
     const { target_org: _drop, ...bout } = x;
-    allBouts.push({ ...bout, promotion: label, matchBy: "identity" });
+    allBouts.push({
+      ...bout,
+      date: correctEventEmbeddedYearMismatch(bout.date, bout.event),
+      result: correctNoContestResultMismatch(bout.method, bout.method_raw, bout.result),
+      promotion: label,
+      matchBy: "identity",
+    });
   }
 }
 
@@ -425,6 +483,11 @@ const isJunkVenue = (v: string | null) => !!v && v.includes("…") && v.includes
 // - 末尾の全角読点「、」: 選手名欄が実際に「吉宗、」のように読点付きで登録されている実例
 //   (data/kick/fighters.json、出典: KNOCK OUT公式)がある(PR #570)。
 const stripTrailingKickPunct = (s: string) => s.replace(/[、,]+$/u, "").trim();
+// - 先頭に残った勝敗マーク記号(⚪️・●等): 出典サイトの勝敗マーク(○×△等の記号)が対戦相手名
+//   欄の先頭にそのまま残っている実例(PR #575、"⚪️佐々木勝海"・"●藤野 伸哉"等、NJKF/NKB
+//   公式で実測7行、我如古優貴の頁で発見)。結果は別途resultフィールドで正しく持っているため
+//   名前欄の記号は冗長。
+const stripLeadingKickMark = (s: string) => s.replace(/^[⚪️○×△◎●▲✕✖️✗✘\s]+/u, "").trim();
 // - 対応する開き括弧(『)の無い孤立した閉じ括弧(』): krossoverスクレイパーが大会名を
 //   誤って範囲取得した実例(PR #570、"KROSS×OVER -CAGE-』GENスポーツパレス大会")。
 //   『』のバランスが取れている通常の大会名(合致無し)は一切変更しない。
@@ -945,13 +1008,17 @@ for (const f of fighters) {
         b.opponent_affiliation || KNOWN_FIGHTER_NAMES.has(stripNameSeparators(b.opponent_name))
           ? null
           : splitOpponentGymSuffix(b.opponent_name);
-      const cleanedEvent = isPlaceholderEventName(b.event) ? null : b.event ? stripUnmatchedCornerBracket(b.event) : b.event;
+      // event===""(空文字列)はnullとは区別されてしまい、page.tsx側の`b.event ?? <不明バッジ>`
+      // ではnullish coalescingが働かず「不明」表示すら出ない完全な空欄になっていた
+      // (PR #575、robu-kaman・50人検品2周目#572で発見、実測69行)。空文字列もnull同様に
+      // 扱い、既存の「不明」バッジ表示に統一する。
+      const cleanedEvent = !b.event || isPlaceholderEventName(b.event) ? null : stripUnmatchedCornerBracket(b.event);
       return {
         date: b.date,
         event: cleanedEvent,
         venue: isJunkVenue(b.venue) ? null : b.venue,
         promotion: b.promotion,
-        opponentName: stripTrailingKickPunct(gymSplit ? gymSplit.person : b.opponent_name),
+        opponentName: stripLeadingKickMark(stripTrailingKickPunct(gymSplit ? gymSplit.person : b.opponent_name)),
         opponentAffiliation: b.opponent_affiliation || (gymSplit ? gymSplit.gym : b.opponent_affiliation),
         opponentSlug,
         // 逆引きで解決できた行はambiguousバッジを出さない(実リンクが出るため不要)。

@@ -3,5 +3,7 @@
  "date": 2,
  "kana_non_kana_chars": 33,
  "method": 0,
- "opponentName_markup_residue": 0
+ "opponentName_markup_residue": 0,
+ "opponentName_leading_mark_residue": 0,
+ "event_empty_string": 0
 }
