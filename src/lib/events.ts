@@ -363,7 +363,7 @@ export const EVENTS: MEvent[] = [
         rule: "RIZIN オープンフィンガーグローブ キックボクシングルール 3分3R",
         fighterA: "ブラックパンサーベイノア",
         fighterB: "宇佐美秀メイソン",
-        note: "スペシャルワンマッチ",
+        note: "スペシャルワンマッチ／RIZIN オープンフィンガーグローブ キックボクシングルール：3分3R",
         hideRecord: true,
       },
     ],
