@@ -1,0 +1,65 @@
+{
+  "seed": 20260901,
+  "categories": {
+    "A_wikipedia_article": [
+      "maeda-kensaku",
+      "mikami-henri-daichi",
+      "vinsento-foshiani",
+      "muharemu-jokei",
+      "ishii-tatsuya",
+      "シング・心・ジャディブ",
+      "robu-kaman",
+      "saikyo-haruma",
+      "shirasu-yasuhito",
+      "ozaki-keiji"
+    ],
+    "B_no_wikipedia": [
+      "nemoto-keigo",
+      "yamakawa-toshihiro",
+      "tomasu-adamandopourosu",
+      "saibogu-warasu",
+      "uesugi-hayato-2",
+      "gonnapa-uirasakureku",
+      "sasha-tadayoni",
+      "takemi-koshiro",
+      "andoryu-ken-buryusuta",
+      "saito-fumina"
+    ],
+    "C_mononym": [
+      "yura-3",
+      "eiki",
+      "kakeru",
+      "rikuto",
+      "kanta",
+      "akihiro",
+      "kenta-3",
+      "tsubasa-3",
+      "taiga-2",
+      "shuma"
+    ],
+    "D_foreign": [
+      "ryuju-136",
+      "matiasu-garushia",
+      "arubion-morina",
+      "mitsuru",
+      "denisu-demirukapu",
+      "buraian-mikugurasu",
+      "geri-gudoriji",
+      "jamaru-kasumofu",
+      "sanchai-teppengym",
+      "zebato-potsuraku"
+    ],
+    "E_low_boutcount": [
+      "takahashi-kyosuke",
+      "miru-bun-tien",
+      "masuda-katsuumi",
+      "pekadei-kunkumeru",
+      "ganeko-yuki",
+      "ofuchi-tsubasa",
+      "osukaru-borukesu",
+      "chan-uhyoku",
+      "jochi-mikito",
+      "yousuke"
+    ]
+  }
+}
