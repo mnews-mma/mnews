@@ -401,8 +401,39 @@ const normNameForDedupe = (s: string) => normName(stripQuotedNickname(s));
 // 一方が消えてしまう(安保瑠輝也2011-12-04のZIHAD cup STIR KING 2011で実測: 準決勝・
 // 1回戦の相手がともに「不明」表記で、準決勝の勝利が黙って統合され消えていた)。
 // プレースホルダー名はdate+相手名キーでの同一試合判定に使わない(常に別試合として扱う)。
-const PLACEHOLDER_OPPONENT_NAMES = new Set(["不明", "未定", "tba", "unknown"]);
+// PR #570(横断確認): このSetは元々素のリテラル文字列だった。normName()側の入力だけを
+// 正規化してSet側は正規化しないまま.has()で照合する構造は、src/lib/kick/data.tsの旧
+// PROSE_METHOD_RAW denylist(全角/半角括弧の差で一致漏れした実例)と同じ「片側だけ正規化」
+// パターンであり、たまたま現在の4値(不明・未定・tba・unknown)はNFKC正規化しても変化しない
+// 表記のため実害が出ていなかっただけで、将来ここに全角文字等を含む値を追加すると同種の
+// 一致漏れが再発しうる。値自体もnormName()に通し、恒久的に対称にしておく。
+const PLACEHOLDER_OPPONENT_NAMES = new Set(["不明", "未定", "tba", "unknown"].map(normName));
 const isPlaceholderOpponentName = (s: string) => PLACEHOLDER_OPPONENT_NAMES.has(normName(s));
+// 大会名がWikipedia由来の「?」(未取得・不明を表すプレースホルダー)のみの場合、そのまま
+// 表示すると「?」という文字化けのように見えるバグと区別が付かない(PR #570、実測9行)。
+// nullにして「不明」バッジ表示(既存のb.event ?? "不明"バッジ)に統一する。
+const PLACEHOLDER_EVENT_NAMES = new Set(["?", "？"].map((s) => s.normalize("NFKC")));
+const isPlaceholderEventName = (s: string | null) => !!s && PLACEHOLDER_EVENT_NAMES.has(s.normalize("NFKC"));
+// SNKA(新日本キックボクシング協会)のameblo.jpブログ記事の meta description(要約文)が
+// 会場欄に誤って取り込まれ、末尾が「…」で切れたまま表示されていた(PR #570、実測40行、
+// 出典: data/kick/bouts_krossover.json)。実際の会場名ではなくブログ要約の断片のため、
+// 既知のパターンに一致する場合はvenueそのものを無効(null)として扱う
+// (実在しない会場名を捏造するのではなく、単に非表示にする)。
+const isJunkVenue = (v: string | null) => !!v && v.includes("…") && v.includes("ameblo.jp");
+// スクレイプ元の名前欄・大会名欄に紛れ込んだ孤立した記号の除去。生データ自体は変更しない
+// (突合・スラグ生成には元の値を使い続ける。表示専用のクリーンアップ)。
+// - 末尾の全角読点「、」: 選手名欄が実際に「吉宗、」のように読点付きで登録されている実例
+//   (data/kick/fighters.json、出典: KNOCK OUT公式)がある(PR #570)。
+const stripTrailingKickPunct = (s: string) => s.replace(/[、,]+$/u, "").trim();
+// - 対応する開き括弧(『)の無い孤立した閉じ括弧(』): krossoverスクレイパーが大会名を
+//   誤って範囲取得した実例(PR #570、"KROSS×OVER -CAGE-』GENスポーツパレス大会")。
+//   『』のバランスが取れている通常の大会名(合致無し)は一切変更しない。
+const stripUnmatchedCornerBracket = (s: string): string => {
+  const openCount = (s.match(/『/g) ?? []).length;
+  const closeCount = (s.match(/』/g) ?? []).length;
+  if (openCount === closeCount) return s;
+  return s.replace(/』/g, " ").replace(/\s+/g, " ").trim();
+};
 // 大会名は主催者の冠(スポンサー名等)が出典サイトごとに付いたり付かなかったりするため
 // (例: "MAROOMS presents KNOCK OUT.60 ～K.O CLIMAX 2025～" と "KNOCK OUT.60 ～K.O CLIMAX 2025～")、
 // 完全一致ではなく正規化後の包含関係で「同じ大会」とみなす(PR-1.5)。
@@ -415,6 +446,7 @@ const eventCompatible = (a: string | null, b: string | null) => {
 };
 
 let mergedRows = 0;
+let mergedRows_debug_slug = "";
 function dedupe(bouts: (Bout & { promotion: string })[]) {
   // 同日+相手名一致は従来通りのキー方式(既存挙動を変えない)。
   const seen = new Map<string, (Bout & { promotion: string }) & { alsoFrom: string[] }>();
@@ -462,6 +494,75 @@ function dedupe(bouts: (Bout & { promotion: string })[]) {
     }
     if (fuzzyHit) {
       merge(fuzzyHit, b);
+      continue;
+    }
+    // 日付が未取得(date===null)の行は、sameDayKeyが`id|${b.bout_id}`にフォールバックし
+    // 常にユニーク扱いになるため、上のsameDayHit・fuzzyHit(どちらも`if (b.date)`の中でしか
+    // 動かない)のどちらにも一切照合されず、常に別試合として残ってしまっていた
+    // (PR #570で発見: hayashi-kentaの「林 京平」戦がK-1公式(日付null、boutFiles宣言順で
+    // Bigbangより先に処理される)とBigbang公式(日付あり)の2ソースにまたがって
+    // 二重計上されていた実例)。
+    // 既存行(o)側も日付がnullの場合は、日付という手がかりが両側とも無いまま大会名の
+    // 部分一致(eventCompatible)だけで同一試合と断定することになり、誤結合のリスクが
+    // 高い(実測で発見: 宮越慶二郎の「Kunlun Fight」ウェイ・ニンヒュイ戦が、
+    // 「Kunlun Fight」と「Kunlun Fight 4」という別大会・かつ判定スコアが0-3と3-0で
+    // 正反対という別試合の可能性が高いペアを、部分一致だけで誤って同一試合とマージ
+    // しかけた)。日付が無い側同士のマージは行わず、**片方だけが実日付を持つ場合のみ**
+    // 同一試合とみなす。boutFilesの宣言順によってどちらが先に処理されるかは団体の並び順
+    // 次第で変わる(hayashi-kentaはnullの行が先、他の実例は日付ありの行が先)ため、
+    // 両方向(b側がnull/o側がnull)を見る。
+    let nullDateHit: ((Bout & { promotion: string }) & { alsoFrom: string[] }) | null = null;
+    if (!b.date && !isPlaceholderOpponentName(b.opponent_name)) {
+      for (const o of out) {
+        if (
+          o.date &&
+          normNameForDedupe(o.opponent_name) === normNameForDedupe(b.opponent_name) &&
+          eventCompatible(o.event, b.event)
+        ) {
+          nullDateHit = o;
+          break;
+        }
+      }
+    }
+    if (nullDateHit) {
+      if (process.env.KICK_DEBUG_DEDUPE) console.error(`[dedupe-null-date] slug=${mergedRows_debug_slug} opponent=${b.opponent_name} event=${b.event} matched_against_date=${nullDateHit.date}`);
+      merge(nullDateHit, b);
+      continue;
+    }
+    // 逆方向: bの方が実日付を持ち、既にoutに入っている行(o)がdate:nullの場合
+    // (hayashi-kentaはこちら: K-1公式(date:null)が先にoutへ積まれ、後から処理される
+    // Bigbang公式(date:あり)がそれに気付けなかった)。この場合は情報量の少ないo側では
+    // なくb側を正としたいため、oのフィールドをbの内容で上書きしてから両者のalsoFrom/
+    // 出典URLを両方残す。
+    let dateUpgradeHit: ((Bout & { promotion: string }) & { alsoFrom: string[] }) | null = null;
+    if (b.date && !isPlaceholderOpponentName(b.opponent_name)) {
+      for (const o of out) {
+        if (
+          !o.date &&
+          normNameForDedupe(o.opponent_name) === normNameForDedupe(b.opponent_name) &&
+          eventCompatible(o.event, b.event)
+        ) {
+          dateUpgradeHit = o;
+          break;
+        }
+      }
+    }
+    if (dateUpgradeHit) {
+      if (process.env.KICK_DEBUG_DEDUPE) console.error(`[dedupe-date-upgrade] slug=${mergedRows_debug_slug} opponent=${b.opponent_name} event=${b.event} upgrading_from_null_date, incoming_date=${b.date}`);
+      const priorAlsoFrom = dateUpgradeHit.alsoFrom;
+      const priorSourceUrl = dateUpgradeHit.source_url;
+      const priorTitleType = dateUpgradeHit.title_type;
+      Object.assign(dateUpgradeHit, b, { alsoFrom: priorAlsoFrom });
+      if (!dateUpgradeHit.title_type && priorTitleType) dateUpgradeHit.title_type = priorTitleType;
+      if (!dateUpgradeHit.alsoFrom.includes(priorSourceUrl)) dateUpgradeHit.alsoFrom.push(priorSourceUrl);
+      if (!dateUpgradeHit.alsoFrom.includes(b.source_url)) dateUpgradeHit.alsoFrom.push(b.source_url);
+      // dateUpgradeHitはoutの要素を直接書き換えるだけで、seenマップのキーは元の
+      // (date:null時点の)`id|${bout_id}`キーのままになる。この後に3件目以降の重複行
+      // (bと同じ日付+相手名)が来た場合、sameDayKeyの照合先が更新後のこの行のはずなのに
+      // seenに新しいキーが登録されていないと見つからず、素通りして別行として残ってしまう
+      // (3ソース以上にまたがる重複で発見)。更新後の日付+相手名でsameDayKeyを登録し直す。
+      seen.set(`${dateUpgradeHit.date}|${normNameForDedupe(dateUpgradeHit.opponent_name)}`, dateUpgradeHit);
+      mergedRows++;
       continue;
     }
     const rec = { ...b, alsoFrom: [] as string[] };
@@ -742,6 +843,7 @@ for (const f of fighters) {
   const key = identity(f);
   const slug = slugByIdentity.get(key)!;
   const raw = boutsByIdentity.get(key) ?? [];
+  if (process.env.KICK_DEBUG_DEDUPE) mergedRows_debug_slug = slug;
   const bouts = dedupe(raw)
     .filter((b) => {
       const ex = findExclusion(slug, b);
@@ -791,9 +893,13 @@ for (const f of fighters) {
   }
   const record = { wins, losses, draws, unknownCount, total: wins + losses + draws + unknownCount };
 
+  // 表示専用のクリーンアップ(f.name自体は変更しない。identity()・スラグ生成・突合は
+  // 元のf.nameを使い続ける。PR #570、stripTrailingKickPunctのコメント参照)。
+  const displayName = stripTrailingKickPunct(f.name);
+
   const detail = {
     slug,
-    name: f.name,
+    name: displayName,
     kana: f.kana,
     romaji: romajiOf(f),
     yomiSource: yomiSourceOf(f),
@@ -839,12 +945,13 @@ for (const f of fighters) {
         b.opponent_affiliation || KNOWN_FIGHTER_NAMES.has(stripNameSeparators(b.opponent_name))
           ? null
           : splitOpponentGymSuffix(b.opponent_name);
+      const cleanedEvent = isPlaceholderEventName(b.event) ? null : b.event ? stripUnmatchedCornerBracket(b.event) : b.event;
       return {
         date: b.date,
-        event: b.event,
-        venue: b.venue,
+        event: cleanedEvent,
+        venue: isJunkVenue(b.venue) ? null : b.venue,
         promotion: b.promotion,
-        opponentName: gymSplit ? gymSplit.person : b.opponent_name,
+        opponentName: stripTrailingKickPunct(gymSplit ? gymSplit.person : b.opponent_name),
         opponentAffiliation: b.opponent_affiliation || (gymSplit ? gymSplit.gym : b.opponent_affiliation),
         opponentSlug,
         // 逆引きで解決できた行はambiguousバッジを出さない(実リンクが出るため不要)。
@@ -869,7 +976,7 @@ for (const f of fighters) {
 
   index.push({
     slug,
-    name: f.name,
+    name: displayName,
     kana: f.kana,
     romaji: romajiOf(f),
     kanaType: f.kana_source?.type ?? null,

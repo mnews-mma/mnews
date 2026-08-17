@@ -217,18 +217,77 @@ export function displayOrgLabel(org: string): string {
 }
 
 /**
- * methodRawが決着情報ではなく大会レポート記事の一節がそのまま入ってしまっている行(6種、PR-8で確認)。
- * 「決着方法だけに揃える」という決着列の目的に合わないため、決着欄には出さず「不明」扱いにする。
- * 原文自体(methodRaw)は変更しない(title属性で確認可能なまま)。
+ * 決着(methodLabel()の出力)のwhitelist。**旧denylist方式は廃止した(PR #570)。**
+ *
+ * 旧方式(PROSE_METHOD_RAW、PR-8で確認した大会レポート散文6件の完全一致denylist)は、
+ * `.normalize("NFKC")`を入力側にだけ適用しdenylistのSetリテラル側には適用していなかったため、
+ * 全角/半角括弧の表記差だけで一致漏れが起きた(50人検品調査で発覚。平原陸の
+ * 「酒井柚樹はトーナメント初戦（HIROKAZU）...」の行が、生データ側が半角括弧だったために
+ * denylist(全角括弧で登録)に一致せず素通りしていた)。denylist方式は「新しい混入パターンが
+ * 出るたびに個別追記が必要」という構造的な弱点もある。
+ *
+ * whitelist方式では、全32,609bout行(2026-08-17時点)の実際の出力パターンを集計し、
+ * 許容する形式を正規表現で確定した(KO/TKO/判定/ドロー/不戦勝敗/ノーコンテスト等の決着語 +
+ * ラウンド時間・延長・スコア内訳・括弧付き理由注記の付随パターン)。どのパターンにも
+ * 一致しない出力は「不明」にする(**元のmethodRawは変更しない**。title属性で確認可能)。
+ * 一致しない値が増えること自体は許容する(「不明」になるだけでデータは壊れない)。
+ *
+ * scripts/check-kick-method-label-whitelist.ts が、この関数の出力が実際に
+ * (whitelistに一致 OR 既知のプレースホルダ)のいずれかであることをビルド時に再検証する
+ * (将来この関数からwhitelist判定が誤って外れる回帰を防ぐ多重防御)。
  */
-const PROSE_METHOD_RAW = new Set([
-  "※荻原がウイルス性の疾患の為欠場となり、DJナックルハンマーYOKKOに変更となる。",
-  "デビュー2戦目にして衝撃の秒殺KO勝ちを収めた横山が、準決勝進出に初名乗りを上げた。",
-  "2R 2’35” ＴKO ※右ボディフック ※1R：森本はボディ連打によりダウンあり。",
-  "1R TK02'42” 平野に1Rダウン2有。3回目でTKO",
-  "互いに倒すか倒されるかの激闘スタイルで勝ち上がってきただけに判定決着なしの大激闘のタイトルマッチが予想される。",
-  "酒井柚樹はトーナメント初戦（HIROKAZU）と準決勝（大久保俊）戦と連続KOで決勝戦に駒を進めた。",
-]);
+const TIME_RE = String.raw`(?:\d{1,2}[:’'′]\d{2}(?:[”"′]{1,2})?|\d{1,2}分\d{1,2}秒|\d{1,2}分|\d{1,3}秒|\d{1,2}['’′]\d{2}["”′]{0,2})`;
+const SEP_RE = String.raw`[-－ー、,/・:：‐−]`; // 全角マイナス(U+2212)含む
+const NUM_RE = String.raw`\d{1,3}(?:[.,]\d{1,2})?`;
+const SCORE_PAIR_RE = String.raw`${NUM_RE}\s*${SEP_RE}\s*${NUM_RE}`;
+const JUDGE_NAME_RE = String.raw`[^\s()（）:：]{1,10}`;
+const ONE_SCORE_RE = String.raw`(?:${JUDGE_NAME_RE}\s*[:：]\s*)?\(?${SCORE_PAIR_RE}\)?`;
+const SCORE_LIST_RE = String.raw`(?:${ONE_SCORE_RE})(?:\s*[、,\/・]?\s*(?:${ONE_SCORE_RE}))*`;
+const PAREN_SCORES_RE = String.raw`[\(（【]\s*(?:三者とも\s*)?${SCORE_LIST_RE}\s*[\)）】]`;
+const REASON_RE = String.raw`[\(（【][^()（）【】]{0,60}[\)）】]`;
+// 括弧を伴わない決着理由の付記(「TKO 2分51秒 レフェリーストップ」等)は、任意の自由文を
+// 許すとプロース混入を検知できなくなるため、実データで確認できた語のみの閉じた候補集合にする。
+const BARE_REASON_RE = [
+  "レフェリーストップ", "ドクターストップ", "セコンドタオル投入", "タオル投入",
+  "額のカット", "出血", "棄権", "スリーノックダウン", "10カウント", "3ノックダウン",
+  "左膝蹴", "右膝蹴",
+].join("|");
+const METHOD_WORD_RE = [
+  "KO", "TKO", "ノックアウト", "判定", "ユナニマス判定", "マジョリティ判定", "テクニカル判定",
+  "スプリット判定", "判定ドロー", "判定負け", "判定勝ち", "反則負け", "反則勝ち", "反則失格", "反則",
+  "ドロー", "引分", "引き分け", "不戦勝", "不戦敗", "ノーコンテスト", "NC", "無効試合", "無効",
+  "負傷判定", "時間切れ", "棄権", "失格", "運用ルール外",
+].join("|");
+// 前置き: 「1:50 KO」のような単純な経過時間つきKO/TKO、「2分 終了 判定」「延長R終了 判定」
+// 「2分 延長R終了 判定」「再延長R 1:15 KO」のような(再)延長R・終了を伴う表記、
+// 「勝者:江幡 KO」のような勝者名の前置き、「本戦判定」「1回 判定」のような本戦/回数表記、
+// 「終了後 TKO」を、いずれも独立に省略可能な組み合わせで許可する。
+const WINNER_PREFIX_RE = String.raw`(?:勝者\s*[:：]?\s*[^\s()（）]{1,10}\s+)?`;
+const END_MARKER_RE =
+  WINNER_PREFIX_RE +
+  String.raw`(?:${TIME_RE}\s*)?` +
+  String.raw`(?:(?:再?延長R\s*)?終了(?:後)?\s*)?` +
+  String.raw`(?:再?延長R\s*)?` +
+  String.raw`(?:本戦\s*)?` +
+  String.raw`(?:\d\s*回\s*)?` +
+  String.raw`(?:ドロー\s*)?`;
+// [end-marker] METHOD_WORD [勝ち/負け/勝利] (score/paren-scores/reason/bare-reason/time、任意順で反復)
+// [ドロー] [延長R終了 判定 反復]
+const METHOD_LABEL_WHITELIST_RE = new RegExp(
+  String.raw`^${END_MARKER_RE}` +
+  String.raw`(?:${METHOD_WORD_RE})` +
+  String.raw`(?:\s*(?:勝ち|負け|勝利))?` +
+  String.raw`(?:\s*(?:${SCORE_PAIR_RE}|${PAREN_SCORES_RE}|${REASON_RE}|${BARE_REASON_RE}|${TIME_RE}))*` +
+  String.raw`(?:\s*ドロー)?` +
+  String.raw`(?:\s*(?:再?延長R終了)(?:\s*判定)?(?:\s*(?:${SCORE_PAIR_RE}|${PAREN_SCORES_RE}))?)*` +
+  String.raw`\s*$`,
+);
+/** 決着欄の内容によらず常に許可するプレースホルダ(データそのものが「未定/なし」を表す値)。 */
+const METHOD_LABEL_PLACEHOLDERS = new Set(["—", "不明", "試合前", "勝敗無し", "なし"]);
+
+export function isMethodLabelWhitelisted(label: string): boolean {
+  return METHOD_LABEL_PLACEHOLDERS.has(label) || METHOD_LABEL_WHITELIST_RE.test(label);
+}
 
 /**
  * 戦績表の「決着」列に出す表示用テキスト。**生データ(method_raw)は変更しない。**
@@ -240,13 +299,23 @@ const PROSE_METHOD_RAW = new Set([
  * 原文は title 属性で確認できるようにする。
  */
 export function methodLabel(raw: string): string {
-  if (PROSE_METHOD_RAW.has((raw ?? "").normalize("NFKC").trim())) return "不明";
   let s = (raw ?? "").normalize("NFKC").trim();
   if (!s) return "—";
-  s = s.replace(/※.*$/, "");                 // ※MMA / ※OFGマッチ → ruleset バッジで表示済み
+  // 「※3R 1'24" TKO ※左フックにてダウン×2」のように、決着そのものが※で始まる行がある
+  // (PR #570で発見、実測79行)。旧実装は`s.replace(/※.*$/, "")`で「最初の※以降を
+  // すべて除去」しており、これだと先頭の※で決着情報そのものが丸ごと消えてしまっていた
+  // (「※MMA」のように末尾の注記だけを想定した実装だったため)。先頭の※記号だけを
+  // まず取り除き、2つ目以降(=本来の末尾注記)からを従来通り除去する。
+  s = s.replace(/^※\s*/, "");
+  s = s.replace(/※.*$/, "");                 // ※MMA / ※OFGマッチ / ※左フックにて...(末尾注記)
   // 【1R】/ (3R) のように丸ごと括弧で囲われたラウンド表記は、括弧ごと除去する
   // (中身のR表記だけを消すと空の括弧【 】( )が残ってしまうため)。
   s = s.replace(/[【(（]\s*(?:延長\s*)?\d+\s*R(?:終了時)?\s*[】)）]/g, " ");
+  // 「2分3R終了」のように、1ラウンドの時間(2分)がラウンド数(3R)に直接連結している場合、
+  // ラウンド数だけ除去すると時間の数字(「2分」)だけが取り残されて残存ノイズになる
+  // (PR #570、shimada-shouta/tanimoto-hiroyuki等520行で発見)。ラウンド表記の直前にある
+  // 「N分」はラウンドの持ち時間の注記であり決着情報ではないため、ラウンド表記と一緒に除去する。
+  s = s.replace(/\d+分(?=\d+\s*R(?:終了時)?)/g, "");
   s = s.replace(/延長\s*R?/g, "");            // 延長 → is_extension バッジで表示済み
   s = s.replace(/\d+\s*R(?:終了時)?/g, " ");  // 3R / 1R / 3R終了時 → R列で表示済み
   s = s.replace(/\s+/g, " ").trim();
@@ -265,7 +334,9 @@ export function methodLabel(raw: string): string {
   s = s.replace(/(^|\s)再(?=\s|$)/g, "$1再延長R");
   s = s.replace(/\+(?=\s|$)/g, "延長R");
   s = s.replace(/\s+/g, " ").trim();
-  return s || "—";
+  const result = s || "—";
+  if (result === "—") return result;
+  return isMethodLabelWhitelisted(result) ? result : "不明";
 }
 
 export const RESULT_LABEL: Record<KickBout["result"], string> = {
