@@ -1,0 +1,39 @@
+{
+ "_meta": {
+  "description": "「再生成で無言に巻き戻りうる手動編集値」の既知レジストリ(PR-G追加ゲート、2026-08-17)。data/kick/manualRuleExclusions.jsonと同じ発想: 手動で修正した値をここに登録し、scripts/check-kick-manual-edit-drift.tsがビルド時に『登録した修正が今も反映されているか』を検証する。",
+  "background": "PR-18(#554)は data/kick/bouts_wikipedia.json(scripts/standup-pipeline/ingest_wikipedia.pyが生成するファイル、build-kick-data.tsの入力でもある)を直接手動編集し、5人の改名選手(旧名で書かれたfighter_slugが誰にも解決しない状態)のfighter_slug/fighter_nameを正しい値へ書き換えた。しかしこの修正はingest_wikipedia.py/build_coverage_population_v2.pyのロジックには反映されておらず、後日(#563)これらのスクリプトを再実行してbouts_wikipedia.jsonを再生成した際、5人分の修正が無言で巻き戻っていたことが判明した(#563の調査で発覚・修正)。#563はscripts/standup-pipeline/build_coverage_population_v2.pyにLEG3_NAME_RENAMESという恒久的なリネーム表を追加し、再生成しても巻き戻らないよう根治した。このレジストリは、その根治が将来また外れて同じ巻き戻りが再発した場合に検知するための回帰防止用。",
+  "checkedFile": "data/kick/bouts_wikipedia.json"
+ },
+ "renamedFighterWikipediaIdentity": [
+  {
+   "oldFighterName": "アマラ忍",
+   "newFighterName": "忍アマラ―",
+   "reason": "PR-18(#554)で手動修正、#563のLEG3_NAME_RENAMESで恒久化",
+   "fixedInCommit": "9b127cf (#563)"
+  },
+  {
+   "oldFighterName": "クンタップ・ウィラサクレック",
+   "newFighterName": "クンタップ・チャロンチャイ",
+   "reason": "PR-18(#554)で手動修正、#563のLEG3_NAME_RENAMESで恒久化",
+   "fixedInCommit": "9b127cf (#563)"
+  },
+  {
+   "oldFighterName": "ゲーオ・フェアテックス",
+   "newFighterName": "ゲーオ・ウィラサクレック",
+   "reason": "PR-18(#554)で手動修正、#563のLEG3_NAME_RENAMESで恒久化",
+   "fixedInCommit": "9b127cf (#563)"
+  },
+  {
+   "oldFighterName": "ジョムトーン・チュワタナ",
+   "newFighterName": "ジョムトーン・ストライカージム",
+   "reason": "PR-18(#554)で手動修正、#563のLEG3_NAME_RENAMESで恒久化",
+   "fixedInCommit": "9b127cf (#563)"
+  },
+  {
+   "oldFighterName": "ブアカーオ・ポー.プラムック",
+   "newFighterName": "ブアカーオ・バンチャメーク",
+   "reason": "PR-18(#554)で手動修正、#563のLEG3_NAME_RENAMESで恒久化",
+   "fixedInCommit": "9b127cf (#563)"
+  }
+ ]
+}

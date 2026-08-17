@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   displayOrgLabel,
+  getFighterBoutCount,
   getKickFighter,
   getKickIndex,
   KICK_PROMOTIONS,
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return pageMetadata({
     title: `${f.name}${yomi}の戦績・プロフィール｜立ち技名鑑 - Mニュース`,
     description: `${f.name}${yomi}${f.gym ? `／${f.gym}` : ""}の戦績${
-      f.bouts.length ? `${f.bouts.length}試合` : ""
+      getFighterBoutCount(f) ? `${getFighterBoutCount(f)}試合` : ""
     }を掲載。日付・大会名・対戦相手・決着・勝敗を取得元URL付きで確認できます。`,
     path: `/kick/fighters/${encodeURIComponent(f.slug)}`,
   });
@@ -91,11 +92,11 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
           )}
         </div>
 
-        {f.bouts.length > 0 && (
+        {getFighterBoutCount(f) > 0 && (
           <p className="kick-record-summary">
-            収録{f.bouts.length}試合
+            収録{getFighterBoutCount(f)}試合
             {f.record.total > 0 &&
-              (f.record.total === f.bouts.length ? (
+              (f.record.total === getFighterBoutCount(f) ? (
                 <>
                   ：{f.record.wins}勝{f.record.losses}敗{f.record.draws}分
                   {f.record.unknownCount > 0 && `、ほか不明${f.record.unknownCount}件`}
@@ -173,10 +174,10 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
       </div>
 
       <h2 className="kick-section-title">
-        戦績{f.bouts.length > 0 && <span style={{ fontWeight: 400, fontSize: 12 }}>（{f.bouts.length}試合）</span>}
+        戦績{getFighterBoutCount(f) > 0 && <span style={{ fontWeight: 400, fontSize: 12 }}>（{getFighterBoutCount(f)}試合）</span>}
       </h2>
 
-      {f.bouts.length === 0 ? (
+      {getFighterBoutCount(f) === 0 ? (
         <div className="kick-note">
           この選手の試合記録は、収録対象の{KICK_PROMOTIONS.length}団体
           （{KICK_PROMOTIONS.map((p) => p.label).join("／")}）の公式サイトには掲載されていません。
