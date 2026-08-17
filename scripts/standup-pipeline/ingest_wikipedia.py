@@ -363,17 +363,24 @@ def build():
                 if (fr["date"], no) in dated_set:
                     stats["dup_dated_match"] += 1
                     continue
-            # フォールバック: 相手名一致(日付問わず)
-            all_opps = person_org_opp_all[identity(rec)][org]
-            matches = [x for x in all_opps if x[0] == no]
-            if len(matches) == 1:
-                stats["dup_fallback_match"] += 1
-                continue
-            if len(matches) > 1:
-                stats["held_ambiguous"] += 1
-                held.append(dict(fighter=rec["name"], org=org, opponent=fr["opponent"],
-                                  wiki_url=p["wiki_url"], candidates=len(matches)))
-                continue
+            # フォールバック: 相手名一致(日付問わず)。
+            # PR-17修正: fr["date"]が有る行にも無条件で適用していたため、同じ相手と複数回
+            # 対戦している選手(再戦)で、公式ソース側に載っている試合(例: 2016年)と
+            # Wikipedia側にしか載っていない別の対戦(例: 2010年)を同一試合と誤認し、
+            # 後者を「重複」として静かに捨てていた(上原誠 vs 高萩ツトムで実測: 2010年の
+            # 敗戦が2016年の勝利と誤って同一視され消失)。日付が無い行(元々日付で
+            # 比較できない)のときのみ、この日付無視フォールバックを適用する。
+            if not fr["date"]:
+                all_opps = person_org_opp_all[identity(rec)][org]
+                matches = [x for x in all_opps if x[0] == no]
+                if len(matches) == 1:
+                    stats["dup_fallback_match"] += 1
+                    continue
+                if len(matches) > 1:
+                    stats["held_ambiguous"] += 1
+                    held.append(dict(fighter=rec["name"], org=org, opponent=fr["opponent"],
+                                      wiki_url=p["wiki_url"], candidates=len(matches)))
+                    continue
             # フォールバック2: 同一選手・同一団体・同一日付の公式boutがちょうど1件のときのみ
             # 「相手名の表記違い(カタカナ⇔英語表記等)による同一試合」とみなす(PR-16)。
             if fr["date"] and person_org_date_count[identity(rec)][org].get(fr["date"]) == 1:
