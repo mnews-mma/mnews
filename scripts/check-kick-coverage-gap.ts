@@ -108,6 +108,26 @@ for (const row of snapshotDoc.fighters) {
   }
 }
 
+// 診断用(ゲート判定には使わない): #563がWikipedia到達母集団を718→833人へ拡張したため、
+// 現行の外部基準スナップショット(leg3/leg4方式、718人固定)がカバーしていない人数を
+// 参考表示する。この+115人前後は「独立再抽出(kana-leg4方式)がまだ行われていない」層で
+// あり、スナップショットに含める場合はbouts_wikipedia.json(パイプライン自身の出力)を
+// 使うしかなく、それは修正1で排除した循環参照を再導入することになるため、本ゲートでは
+// 意図的に対象外のままにしている(詳細はout/kick-silent-failure-gates-report.md参照)。
+{
+  const popPath = path.join(ROOT, "scripts/standup-pipeline/coverage_population.json");
+  if (fs.existsSync(popPath)) {
+    const pop: { name: string }[] = JSON.parse(fs.readFileSync(popPath, "utf8"));
+    const snapNames = new Set(snapshotDoc.fighters.map((f) => f.fighterName));
+    const notInSnapshot = pop.filter((p) => !snapNames.has(p.name)).length;
+    console.log(
+      `[kick-coverage-gap] 参考(ゲート対象外): coverage_population.json(#563時点${pop.length}人)のうち` +
+        `外部基準スナップショット(${snapshotDoc.fighters.length}人)に含まれない人数 = ${notInSnapshot}人` +
+        `(独立再抽出が未実施の層、次PRへの申し送り)`,
+    );
+  }
+}
+
 console.log(
   `[kick-coverage-gap] 外部基準スナップショット${snapshotDoc.fighters.length}人中: ` +
     `戦績表なし${noTableCount}人(比較対象外) / 名前解決不能${nameUnresolvedCount}人(比較対象外) / ` +
