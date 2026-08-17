@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  displayOrgLabel,
   getKickFighter,
   getKickIndex,
   KICK_PROMOTIONS,
@@ -127,7 +128,7 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
             {f.orgs.length ? (
               f.orgs.map((o) => (
                 <span className="kick-tag" key={o}>
-                  {o}
+                  {displayOrgLabel(o)}
                 </span>
               ))
             ) : (
@@ -219,7 +220,7 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
                       href={b.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      title={b.sourceType === "wikipedia" ? `${b.promotion}(出典: Wikipedia)` : b.promotion}
+                      title={b.sourceType === "wikipedia" ? `${displayOrgLabel(b.promotion)}(出典: Wikipedia)` : b.promotion}
                     >
                       {b.sourceType === "wikipedia" ? "Wikipedia" : PROMOTION_SHORT[b.promotion] ?? b.promotion}
                     </a>
