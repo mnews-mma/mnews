@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getKickIndex, KickIndexEntry, KICK_PROMOTIONS } from "@/lib/kick/data";
+import { getFighterBoutCount, getKickIndex, KickIndexEntry, KICK_PROMOTIONS } from "@/lib/kick/data";
 import { pageMetadata } from "@/lib/seo";
 import FighterSearch from "./FighterSearch";
 
@@ -96,7 +96,7 @@ export default function KickFightersPage() {
                   )}
                 </div>
                 <div className="kick-row__gym">{f.gym ?? <span className="kick-empty">—</span>}</div>
-                <div className="kick-row__n">{f.boutCount ? `${f.boutCount}戦` : "—"}</div>
+                <div className="kick-row__n">{getFighterBoutCount(f) ? `${getFighterBoutCount(f)}戦` : "—"}</div>
               </div>
             ))}
           </div>

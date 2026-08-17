@@ -15,6 +15,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { normalizeKickName } from "../src/lib/kick/nameNormalize";
 
 const ROOT = path.join(__dirname, "..");
 const SRC = path.join(ROOT, "data/kick");
@@ -179,7 +180,7 @@ if (fs.existsSync(path.join(SRC, "bouts_wikipedia.json"))) {
 // (実際に試して確認: 除外リストが3件マッチ落ちした)。
 const GYM_SUFFIX_KEYWORD_RE = /ジム|道場|塾|GYM|Gym|gym|Team|TEAM|team|Club|CLUB|club|協会|会館/g;
 const GYM_SUFFIX_BREAK_CHARS = new Set(["・", "(", "（", " ", "　"]);
-function splitOpponentGymSuffix(name: string): { person: string; gym: string } | null {
+export function splitOpponentGymSuffix(name: string): { person: string; gym: string } | null {
   const matches = [...name.matchAll(GYM_SUFFIX_KEYWORD_RE)];
   if (matches.length === 0) return null;
   const last = matches[matches.length - 1];
@@ -351,7 +352,7 @@ const QUOTE_PAIRS: [string, string][] = [
   ["'", "'"],
   ["‘", "’"],
 ];
-function stripQuotedNickname(s: string): string {
+export function stripQuotedNickname(s: string): string {
   for (const [open, close] of QUOTE_PAIRS) {
     const oi = s.indexOf(open);
     if (oi === -1) continue;
@@ -361,8 +362,11 @@ function stripQuotedNickname(s: string): string {
   }
   return s;
 }
-const normName = (s: string) =>
-  s.normalize("NFKC").replace(/\s+/g, "").replace(/[・･]/g, "").toLowerCase();
+// PR-G(2026-08-17): 名前突合の正規化は src/lib/kick/nameNormalize.ts の
+// normalizeKickName() に一本化。以前はここ独自のNFKC+空白除去+中黒除去のみだったが、
+// 引用符類・旧字体異体字・字形類似字の統一を含む共通関数に差し替えた
+// (詳細は同ファイルのコメント参照)。
+const normName = normalizeKickName;
 // 重複除去の同一試合判定専用: ニックネーム引用符の有無だけの表記ゆれを吸収する。
 const normNameForDedupe = (s: string) => normName(stripQuotedNickname(s));
 // 対戦相手名が「不明」等のプレースホルダーの場合、同日に複数試合(トーナメント等)があると
@@ -611,16 +615,21 @@ interface RealnameEntry {
 const realnames = fs.existsSync(path.join(SRC, "realnames.json"))
   ? read<RealnameEntry[]>("realnames.json")
   : [];
-const fightersByName = new Map<string, Fighter[]>();
+// PR-G(2026-08-17): 「Wikipedia記事(realnames.json)↔選手(fighters.json)の結合」は
+// 従来 f.name への完全一致のみ(正規化なし)だった。空白・引用符・旧字体等の表記ゆれが
+// あると結合そのものが失敗する(相手名寄せ側のnormNameとは異なる基準だった)。
+// normalizeKickName()による正規化キーへ統一する(同名異人の一意化ロジックは変更しない)。
+const fightersByNormName = new Map<string, Fighter[]>();
 for (const f of fighters) {
-  const arr = fightersByName.get(f.name) ?? [];
+  const key = normName(f.name);
+  const arr = fightersByNormName.get(key) ?? [];
   arr.push(f);
-  fightersByName.set(f.name, arr);
+  fightersByNormName.set(key, arr);
 }
 const realnameBySlug = new Map<string, string>();
 let realnameUnresolved = 0;
 for (const r of realnames) {
-  const candidates = fightersByName.get(r.name) ?? [];
+  const candidates = fightersByNormName.get(normName(r.name)) ?? [];
   // 同姓同名(例: "武蔵"が3人)は出典URLがその選手自身のsourcesに含まれるかで一意化する。
   const f = candidates.length === 1 ? candidates[0] : candidates.find((c) => c.sources.includes(r.source_url));
   if (!f) {

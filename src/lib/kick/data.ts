@@ -137,6 +137,21 @@ export function getKickFighter(slug: string): KickFighter | null {
   return JSON.parse(fs.readFileSync(f, "utf8"));
 }
 
+/**
+ * 「戦績数」表示の単一の正。/kick/fighters(一覧、KickIndexEntry.boutCount)と
+ * /kick/fighters/[slug](詳細、KickFighter.bouts.length)は、どちらもbuild-kick-data.tsの
+ * 同じ`bouts`配列から一度だけ計算された値を参照する(build-kick-data.ts側で
+ * `boutCount: bouts.length`をindexへ、同じ配列をdetail.boutsへ書き出している)。
+ * ページ側がそれぞれの生フィールドに直接触れると、将来どちらか一方だけを書き換えて
+ * 静かに乖離する恐れがあるため、両ページはこの関数だけを経由する
+ * (scripts/check-kick-bout-count-consistency.tsがビルド時に両者の一致を独立検証する)。
+ */
+export function getFighterBoutCount(f: Pick<KickIndexEntry, "boutCount">): number;
+export function getFighterBoutCount(f: Pick<KickFighter, "bouts">): number;
+export function getFighterBoutCount(f: { boutCount: number } | { bouts: unknown[] }): number {
+  return "boutCount" in f ? f.boutCount : f.bouts.length;
+}
+
 /** 掲載団体(戦績の取得元)。/kick の収録範囲表示に使う。
  *  RIZIN・ONE Championship・DEEP☆KICK・NJKF・HoostCup・NKBは名簿の掲載元ではなく、
  *  名簿に載っている選手の戦績を追加で収録した戦績専用ソース
