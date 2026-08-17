@@ -962,8 +962,7 @@ export const EVENTS: MEvent[] = [
     date: "2026-09-27",
     venue: "ニューピアホール",
     sourceUrl: "https://www.shooto-mma.com/schedule/?id=255",
-    // 2026-07-30時点で決定分7試合。追加カードが今後発表される見込みのため、
-    // カード確定扱いにはしない(発表され次第、本配列に追記する)。
+    // 2026-08-17時点で決定分15試合(全15カード確定)。
     bouts: [
       {
         weightClass: "女子アトム級（47.6kg）",
@@ -1008,6 +1007,54 @@ export const EVENTS: MEvent[] = [
         fighterA: "菊西拓馬",
         fighterB: "福田侑飛",
         note: "5分2R",
+      },
+      {
+        weightClass: "女子ストロー級 世界チャンピオン決定トーナメント1stラウンド",
+        fighterA: "宝珠山桃花",
+        fighterB: "erika",
+        note: "5分3R",
+      },
+      {
+        weightClass: "女子ストロー級 世界チャンピオン決定トーナメント1stラウンド",
+        fighterA: "高田暖妃",
+        fighterB: "高本千代",
+        note: "5分3R",
+      },
+      {
+        weightClass: "ライト級",
+        fighterA: "安海健人",
+        fighterB: "岩倉優輝",
+        note: "5分3R",
+      },
+      {
+        weightClass: "フライ級",
+        fighterA: "伊藤琥大郎",
+        fighterB: "アヂル・シェルフィ",
+        note: "5分2R",
+      },
+      {
+        weightClass: "ストロー級",
+        fighterA: "緑真作",
+        fighterB: "加藤皓己",
+        note: "5分2R",
+      },
+      {
+        weightClass: "フェザー級",
+        fighterA: "島村裕",
+        fighterB: "吉越博司",
+        note: "5分2R",
+      },
+      {
+        weightClass: "トライアウト フェザー級",
+        fighterA: "加藤岡善",
+        fighterB: "佐藤哉羽",
+        note: "3分2R",
+      },
+      {
+        weightClass: "トライアウト フライ級",
+        fighterA: "伊藤瑛大郎",
+        fighterB: "斉藤冬翔",
+        note: "3分2R",
       },
     ],
   },
