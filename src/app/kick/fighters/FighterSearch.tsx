@@ -46,6 +46,21 @@ const ORG_OPTIONS: { tag: string; label: string }[] = [
   { tag: "krossover", label: "KROSS×OVER" },
   { tag: "snka", label: "新日本キックボクシング協会(SNKA)" },
   { tag: "jka", label: "JKA" },
+  // PR-18: PR-15(Wikipedia15団体フィルタ解除)で新たに収集対象になった団体。
+  // これらはbuild-kick-data.tsのorgTagsBySlug計算でtag=labelとして動的に
+  // 割り当てられており(対応するbouts_*.jsonファイルを持たないため)、
+  // ここでも同じ文字列をtagとして使う。
+  { tag: "GLORY", label: "GLORY" },
+  { tag: "ルンピニー", label: "ルンピニー" },
+  { tag: "ラジャダムナン", label: "ラジャダムナン" },
+  { tag: "Thai Fight", label: "Thai Fight" },
+  { tag: "IT'S SHOWTIME", label: "IT'S SHOWTIME" },
+  { tag: "武林風", label: "武林風" },
+  { tag: "EM Legend", label: "EM Legend" },
+  { tag: "WAKO SuperLeague", label: "WAKO SuperLeague" },
+  { tag: "全日本キックボクシング連盟", label: "全日本キックボクシング連盟" },
+  { tag: "J-NETWORK", label: "J-NETWORK" },
+  { tag: "Wikipedia(その他団体)", label: "Wikipedia(その他団体)" },
 ];
 
 function normalize(s: string): string {
