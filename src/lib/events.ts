@@ -667,7 +667,14 @@ export const EVENTS: MEvent[] = [
         fighterB: "JUICY",
         note: "5分2R",
       },
-      // アマチュアSルール(公式リスト末尾3試合。オープニングファイト表記は既存の掲載順に準拠)
+      // アマチュアSルール(公式リスト末尾4試合。オープニングファイト表記は既存の掲載順に準拠)
+      {
+        weightClass: "DEEP JEWELS 54kg以下",
+        rule: "アマチュアSルール 3分2R",
+        fighterA: "村松美直",
+        fighterB: "斎藤乃愛",
+        note: "オープニングファイト",
+      },
       {
         weightClass: "DEEP JEWELS 50kg以下",
         rule: "アマチュアSルール 3分2R",
