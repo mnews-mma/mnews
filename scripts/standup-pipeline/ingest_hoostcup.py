@@ -218,8 +218,31 @@ def build():
             (n1, g1, w1), (n2, g2, w2) = pb['f1'], pb['f2']
             decision = pb['decision']
             is_draw = bool(decision and ('ドロー' in decision or '引き分け' in decision))
-            for (my_name, my_aff, my_win), (opp_name, opp_aff, opp_win) in [
-                    ((n1, g1, w1), (n2, g2, w2)), ((n2, g2, w2), (n1, g1, w1))]:
+            is_no_contest = bool(decision and '無効試合' in decision)
+            # 判定スコアの数値比較によるフォールバック(2026-08実装): 写真の"win"クラスが
+            # 両サイドとも検出できない(w1==w2==False)ケースの一部は、決着文に
+            # 「判定N-M」(何人の審判がどちらを支持したかの集計値、生の採点(30-29等)とは別)が
+            # そのまま書かれており、機械的に勝敗を導出できる。方向性は実測で較正済み:
+            # 「判定N-M」のNは常にside1(f1、ページ上で先に登場する側)の支持数、Mはside2(f2)の
+            # 支持数(2013-06-16のHoostCup KINGS実測: 佐藤嘉洋=side1=勝者=N側 で確認)。
+            # N==Mは技術上の引き分け(3者ともドローと採点)であり、明示的な「ドロー」の
+            # 文言が無くても引き分けとして扱ってよい。
+            # 該当しない場合(判定N-Mの形式に一致しない、または既にwin1/win2で判定済み)は
+            # 一切上書きしない(推測で埋めない既存方針を維持)。
+            score_win1 = score_win2 = None
+            if not w1 and not w2 and not is_draw and not is_no_contest and decision:
+                sm = re.search(r'判定\s*[（(]?\s*(\d)\s*-\s*(\d)', decision)
+                if sm:
+                    s_n, s_m = int(sm.group(1)), int(sm.group(2))
+                    if s_n > s_m:
+                        score_win1, score_win2 = True, False
+                    elif s_n < s_m:
+                        score_win1, score_win2 = False, True
+                    else:
+                        is_draw = True
+            for (my_name, my_aff, my_win, my_score_win), (opp_name, opp_aff, opp_win, opp_score_win) in [
+                    ((n1, g1, w1, score_win1), (n2, g2, w2, score_win2)),
+                    ((n2, g2, w2, score_win2), (n1, g1, w1, score_win1))]:
                 rec, amb, cands = resolve(my_name, my_aff)
                 if amb or not rec:
                     self_unresolved += 1
@@ -229,6 +252,12 @@ def build():
                 elif my_win:
                     result = 'win'
                 elif opp_win:
+                    result = 'loss'
+                elif is_no_contest:
+                    result = 'no_contest'
+                elif my_score_win is True:
+                    result = 'win'
+                elif my_score_win is False and opp_score_win is True:
                     result = 'loss'
                 else:
                     result = 'unknown'
