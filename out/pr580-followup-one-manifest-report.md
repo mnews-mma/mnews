@@ -79,7 +79,7 @@ ONE公式プロフィール(`https://www.onefc.com/jp/athletes/rukiya-anpo/`)の
 ## ⑤: 「公式ソースが取得対象に含まれているのにWikipedia出典」の指標化
 
 ②のゲート検査Bとして実装(上記参照)。現状21件、内訳(代表例):
-- �538秋元皓貴(7件): ONE公式戦績表が2022年11月以降しか表示しない構造的制約
+- 秋元皓貴(7件): ONE公式戦績表が2022年11月以降しか表示しない構造的制約
 - マラット・グレゴリアン(10件、安保瑠輝也の対戦相手としても登場): 同じくプロフィール
   表示の切り詰め
 - 安保瑠輝也の2026-10-17予定試合(1件): 未開催のため公式側未反映(構造的、正当)
@@ -130,3 +130,84 @@ HoostCup/NKB/Bigbang/Stand up/KROSS×OVER/SNKA/JKA)は取得スクリプトが r
   厳密照合であり、旧KROSS×OVER問題(名前一致のみで結合)と異なり誤統合リスクは低いと判断し、
   基準値を52へ更新した
 - PR#580の回帰ゲート(`check-kick-one-official-source-precedence.ts`)は引き続きOK
+
+## マージ前レビュー対応(2026-08-18追記)
+
+### 新規66人・147レコード 全フィールド・全ユニーク値の監査(サンプリングなし)
+
+`out/pr580-followup-new66-raw-records.json` に147件全レコードを保存。全27フィールドを
+enumerate した結果:
+
+- 低カーディナリティ項目(venue/opponent_ref/opponent_resolved/method/round/ruleset/note/
+  is_debut/title_type/pair_key等)は全件が想定通りの固定値(None/False)。
+- `result`: win 80 / loss 67 の2値のみ(draw/no_contestは0件、キックボクシング/ムエタイ
+  フィルタと整合)。`result_mark`との不整合0件。
+- `method_raw`: ユナニマス判定68・ノックアウト43・TKO20・スプリット判定14・
+  マジョリティ判定2の5種類のみ、いずれも正当な決着方法。
+- `date`: 形式異常0件、null 0件。年別分布は2018〜2026年で2026年が57件と最多(新規発見
+  分の多くが直近1〜2年の活動選手であることと整合)。
+- `bout_id`: 重複0件、形式異常0件。
+- `fighter_slug`: 66人全員が`fighters.json`のidentity(name|gym|source)と完全一致。
+  不一致0件。
+- `source_url`: 全件`https://www.onefc.com/jp/athletes/{slug}/`形式、異常0件。
+- `(fighter_slug, date, opponent_name)`の重複(二重計上検知): 0件。
+- `opponent_site_slug`: 形式異常0件、欠落(取得失敗)0件。
+- `fighter_name`: 引用符ニックネーム残存0件(全件正しく除去済み)。
+- `event`: 短い値2件(`ONE 171`・`ONE 173`)は大会名として正当。`&`を含む7件
+  (`ONE Friday Fights 163 & The Inner Circle`等)はチェックスクリプトの誤検知
+  (実在の大会名にアンパサンドが含まれるだけで異常ではない)。
+- `opponent_affiliation`: 44種類のうち2件が要調査だったため個別に検証:
+  - `'Taipei, China'`(1件、平山裕翔の対戦相手): ONE公式サイト自体が該当選手の国籍欄に
+    英語表記のままこの値を出しており(実測でHTML確認済み、`<div class="opponent-country">
+    Taipei, China</div>`)、パーサー側の不具合ではない。
+  - 空文字(2件、政所仁・奥村将真の対戦相手): ONE公式サイト自体が該当選手の国籍欄を
+    空欄のまま公開しており(実測でHTML確認済み、`<div class="opponent-country"></div>`)、
+    パーサー側の不具合ではない。
+- **結論: 147件・27フィールド全数監査で、パイプライン起因の異常は0件。上記2件は
+  いずれもONE公式サイト自身のデータ品質(未入力・英語ラベル残存)であり、忠実に
+  反映されている。**
+
+### ⑤の定義・スコープの明確化
+- 21件の定義は「**公式に行が存在する選手(=manifest登録済み)において、個別の試合単位で
+  なおWikipedia出典のままの行数**」(検査B)。「公式に行が無い」は別の指標(検査A、4人)。
+- スコープは**ONE Championshipのみ**。全16ソース対象ではない(ゲートの実装が
+  `promotion === "ONE Championship"` でフィルタしているため)。
+- 参考値: サイト全体でのONE Championship×Wikipedia出典行は63件(2026-08-18時点)。
+  内訳: manifest登録選手分21件(このゲートの監視対象)+manifest未登録選手分42件
+  (監視対象外、下記参照)。
+
+### ②のゲート発火条件の明確化(重要な限界の明記)
+`check-kick-one-manifest-coverage.ts`は`one_official_manifest.json`に**既に登録済みの
+選手だけ**を走査する(`for (const entry of manifest)`)。「manifestに登録されていないが
+実際にはONE公式プロフィールを持つ選手がいる」ケースを検知するロジックは実装していない。
+
+**したがって、和島大海・安保瑠輝也を生んだ当初の欠陥(ONE公式プロフィールが実在するのに
+取得母集団に含まれておらずWikipedia出典のままになる)と全く同じクラスの欠陥は、
+このPR導入後も依然として無検知のままである。** ①で実測した通りcountry=jpタグ自体が
+非網羅(髙橋聖人等)なため、今後新たにONEデビューする日本人選手がこのタグの対象にも
+ならなかった場合、その選手の欠落を機械的に検知する手段は現状存在しない。この穴を
+塞ぐには「Wikipedia側でtarget_org=ONE Championshipの選手全員」対「manifest登録選手」の
+突合ロジックが別途必要だが、本PRのスコープ外として実装していない(スクリプトの
+コメントにも明記した)。
+
+### ⑥の13ソース: 再生成不可能なソース名とbout供給件数(修正不要、一覧のみ)
+
+| ソース | ファイル | bout件数 |
+|---|---|---:|
+| K-1/Krush/Krush-EX | bouts_k1.json | 7,972 |
+| RISE | bouts_rise.json | 5,422 |
+| SHOOT BOXING | bouts_sb.json | 2,153 |
+| Bigbang | bouts_bigbang.json | 1,526 |
+| KNOCK OUT | bouts_knockout.json | 1,305 |
+| NJKF | bouts_njkf.json | 1,257 |
+| DEEP☆KICK | bouts_deepkick.json | 931 |
+| HoostCup | bouts_hoostcup.json | 637 |
+| KROSS×OVER | bouts_krossover.json | 568 |
+| NKB | bouts_nkb.json | 180 |
+| JKA | bouts_jka.json | 72 |
+| Stand up | bouts_standup.json | 89 |
+| SNKA | bouts_snka.json | 32 |
+| **合計** | | **22,144** |
+
+(参考: 上記13ソース合計22,144件に対し、再生成可能なONE(272件)・Wikipedia(11,812件)・
+間接的に再生成可能なRIZIN(210件)を含めた全16ソースの合計は`boutRowsRaw`=35,207件)
