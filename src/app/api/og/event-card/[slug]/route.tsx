@@ -31,11 +31,19 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
     const event = getEvent(slug);
     if (!event || event.bouts.length === 0) return fallbackRedirect();
 
-    const bouts = event.bouts.filter((b) => !b.cancelled).slice(0, 12);
+    // 表示上限は13行(deep-jewels-54の13試合が丁度収まる実測値)。
+    // 超過分は末尾を「ほかN試合」の省略行に置き換え、行数自体は常に13以下に保つ
+    // (件数が青天井の大会でもフォントサイズ計算・レイアウトが破綻しないようにするため)。
+    const MAX_ROWS = 13;
+    const allBouts = event.bouts.filter((b) => !b.cancelled);
+    const hasOverflow = allBouts.length > MAX_ROWS;
+    const bouts = hasOverflow ? allBouts.slice(0, MAX_ROWS - 1) : allBouts;
+    const hiddenCount = allBouts.length - bouts.length;
+    const rowCount = bouts.length + (hasOverflow ? 1 : 0);
     const d = new Date(event.date);
     const dateLabel = `${d.getMonth() + 1}/${d.getDate()}${event.startTime ? ` ${event.startTime}〜` : ""}`;
-    // 件数に応じて行の文字サイズを自動調整(縮小時の判読性優先で3段階のみ)
-    const rowSize = bouts.length <= 6 ? 34 : bouts.length <= 9 ? 28 : 23;
+    // 件数に応じて行の文字サイズを自動調整(縮小時の判読性優先で4段階のみ)
+    const rowSize = rowCount <= 6 ? 34 : rowCount <= 9 ? 28 : rowCount <= 12 ? 23 : 20;
     const fonts = await loadOgFonts();
 
     const img = new ImageResponse(
@@ -91,7 +99,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
               flexDirection: "column",
               flex: 1,
               justifyContent: "center",
-              gap: `${Math.max(8, 20 - bouts.length)}px`,
+              gap: `${Math.max(8, 20 - rowCount)}px`,
               padding: "16px 56px",
             }}
           >
@@ -147,6 +155,22 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
                 </div>
               </div>
             ))}
+            {hasOverflow && (
+              <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                <div style={{ display: "flex", minWidth: "190px" }} />
+                <div
+                  style={{
+                    display: "flex",
+                    fontFamily: "Noto Sans JP",
+                    fontWeight: 900,
+                    fontSize: `${rowSize}px`,
+                    color: COLORS.ash,
+                  }}
+                >
+                  ほか{hiddenCount}試合
+                </div>
+              </div>
+            )}
           </div>
 
           {/* フッター */}
