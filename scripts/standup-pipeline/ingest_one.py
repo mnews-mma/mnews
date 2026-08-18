@@ -6,6 +6,13 @@ U = lambda s: re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s))).str
 def parse_page(path, fighter_name_hint=None):
     h = open(path, encoding='utf-8', errors='replace').read()
     slug = path.split('/')[-1][:-5]
+    return parse_html(h, slug, fighter_name_hint)
+
+
+def parse_html(h, slug, fighter_name_hint=None):
+    # PR#580: fetch_one_manifest_pages.py が取得済みHTML文字列を直接渡すための経路
+    # (parse_pageはファイルパス前提だが、manifestドライバはネットワーク取得したHTMLを
+    # そのまま解析したいため分離した)。ロジック本体は元のparse_pageと同一。
     nm = re.search(r'<h1[^>]*>(.*?)</h1>', h, re.S)
     fname = U(nm.group(1)) if nm else (fighter_name_hint or slug)
     out = []
