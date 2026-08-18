@@ -38920,13 +38920,21 @@
     "live": false
   },
   "iwasaki-taiga": {
-    "wins": 11,
+    "wins": 12,
     "losses": 2,
     "draws": 0,
-    "ko": 4,
+    "ko": 5,
     "sub": 4,
     "decision": 3,
     "history": [
+      {
+        "date": "2026-07-20",
+        "opponent": "荒井勇二",
+        "result": "win",
+        "method": "2R 0:28 TKO （右ストレート→パウンド）",
+        "event": "PROFESSIONAL SHOOTO 2026 Vol.5 【修斗世界ミドル級チャンピオン決定戦】",
+        "round": "R2"
+      },
       {
         "date": "2026-03-29",
         "opponent": "HENRY",

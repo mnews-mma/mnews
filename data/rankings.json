@@ -1,7 +1,7 @@
 {
   "flyweight": {
     "division": "フライ級",
-    "updatedAt": "2026-08-17T18:05:46.369Z",
+    "updatedAt": "2026-08-18T18:05:47.984Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "shinryu-makoto",
@@ -306,7 +306,7 @@
   },
   "bantamweight": {
     "division": "バンタム級",
-    "updatedAt": "2026-08-17T18:05:46.369Z",
+    "updatedAt": "2026-08-18T18:05:47.984Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sabatello-danny",
@@ -504,7 +504,7 @@
         "rank": 11,
         "rating": 1470,
         "rawRating": 1467.6243257226904,
-        "delta": 24,
+        "delta": 0,
         "record": {
           "wins": 2,
           "losses": 0,
@@ -513,8 +513,8 @@
         "lastFight": "2026-07-18",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "up",
-          "positions": 3
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -531,8 +531,8 @@
         "lastFight": "2025-07-27",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -549,8 +549,8 @@
         "lastFight": "2025-11-03",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -567,8 +567,8 @@
         "lastFight": "2026-08-11",
         "weighInMiss": false,
         "rankPositionDelta": {
-          "kind": "down",
-          "positions": 1
+          "kind": "same",
+          "positions": 0
         }
       },
       {
@@ -576,7 +576,7 @@
         "rank": 15,
         "rating": 1440,
         "rawRating": 1444.5553033194358,
-        "delta": 1,
+        "delta": 0,
         "record": {
           "wins": 1,
           "losses": 1,
@@ -647,7 +647,7 @@
   },
   "featherweight": {
     "division": "フェザー級",
-    "updatedAt": "2026-08-17T18:05:46.369Z",
+    "updatedAt": "2026-08-18T18:05:47.984Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "sheydullaev-rajabali",
@@ -845,7 +845,7 @@
         "rank": 11,
         "rating": 1500,
         "rawRating": 1504.7711546911405,
-        "delta": 1,
+        "delta": 0,
         "record": {
           "wins": 7,
           "losses": 6,
@@ -1006,7 +1006,7 @@
   },
   "lightweight": {
     "division": "ライト級",
-    "updatedAt": "2026-08-17T18:05:46.369Z",
+    "updatedAt": "2026-08-18T18:05:47.984Z",
     "algorithmVersion": 9,
     "champion": {
       "fighterId": "gustavo-luis",
@@ -1293,7 +1293,7 @@
   },
   "heavyweight": {
     "division": "ヘビー級",
-    "updatedAt": "2026-08-17T18:05:46.369Z",
+    "updatedAt": "2026-08-18T18:05:47.984Z",
     "algorithmVersion": 9,
     "champion": null,
     "entries": [
