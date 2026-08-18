@@ -1,5 +1,7 @@
 # `raw/`キャッシュについて
 
+**★重要(将来のセッションへ): このtar.gzは「これさえあれば現行データを完全に復元できるバックアップ」ではない。** 単体から`python3 build.py`を実行すると、13ソース中8ソース+RIZINは現行`data/kick/`とバイト単位で一致するが、**残り5ソース(RISE・Bigbang・NKB・NJKF・DEEP☆KICK)は合計57行が現行データと食い違う**(詳細は「既知の限界」節)。原因はraw版差(退避時点のrawが、現行データを生成した時点のrawより古い/一部欠けている)であり、**現行データを実際に生成した時点のraw自体はもう存在しない可能性が高い**(このマシン上のどのworktreeにも、今回退避した版より新しいrawは見つかっていない)。「このtar.gzを展開してbuild.pyを回せば元通りになる」と思い込んで無条件に上書きしないこと。57行の食い違いを許容できるかは都度判断する。
+
 このディレクトリ(`scripts/standup-pipeline/`)配下の`ingest_*.py`・`build.py`はいずれも、公式サイトから取得した生HTML/生JSONをローカルの`raw/`ディレクトリから読み込む**パーサ**であり、ネットワークへのフェッチ処理(`requests.get`・`urllib.request.urlopen`等)は含んでいない(唯一の例外は`fetch_wikitext_cache.py`、MediaWiki APIを叩く一回限りのフェッチスクリプト)。
 
 `raw/`は`.gitignore`(`scripts/standup-pipeline/raw/`)で意図的に除外されており、**このリポジトリには一度もコミットされたことがない**。
