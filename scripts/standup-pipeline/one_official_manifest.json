@@ -24,6 +24,12 @@
   "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
  },
  {
+  "one_slug": "banna-hayashi",
+  "fighter_identity": "繁那|R.S-GYM|https://knockoutkb.com/fighters/banna_443",
+  "discovery": "unregistered_backfill_verified",
+  "note": "PR#584(⑦): country=jpフィルタの233人候補には含まれていたが、ONE公式<h1>「林繁那」(姓+リングネーム)がfighters.json側の「繁那」(リングネームのみ)と完全一致せず自動マッチから漏れていた。年齢表示(22歳)がfighters.json生年月日(2004.1.28)と一致することで本人確認済み。"
+ },
+ {
   "one_slug": "blackshisha-sotaro",
   "fighter_identity": "ブラックシーサー颯太朗|TEAM TEPPEN|https://rise-rc.com/fighter/blackshisa_sotaro/",
   "discovery": "country_jp_filter",
@@ -78,6 +84,12 @@
   "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
  },
  {
+  "one_slug": "denis-puric",
+  "fighter_identity": "デニス・ピューリック||https://www.k-1.co.jp/fighter/32",
+  "discovery": "unregistered_backfill_verified",
+  "note": "PR#584(⑦): 対戦相手のopponent_site_slugから実在確認。ONE公式プロフィール実在。"
+ },
+ {
   "one_slug": "deniz-demirkapu",
   "fighter_identity": "デニス・デミルカプ|Elite Training Center/Team Elite|https://www.k-1.co.jp/fighter/982",
   "discovery": "legacy_verified",
@@ -118,6 +130,12 @@
   "fighter_identity": "風羽|龍生塾ファントム道場|https://rise-rc.com/fighter/fuu/",
   "discovery": "country_jp_filter",
   "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「風羽」と一致"
+ },
+ {
+  "one_slug": "giorgio-petrosyan",
+  "fighter_identity": "ジョルジオ・ペトロシアン||https://ja.wikipedia.org/wiki/ジョルジオ・ペトロシアン",
+  "discovery": "unregistered_backfill_verified",
+  "note": "PR#584(⑦): 対戦相手のopponent_site_slugから実在確認。ONE公式プロフィール実在。"
  },
  {
   "one_slug": "gump",
@@ -258,6 +276,12 @@
   "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「山﨑一央」と一致"
  },
  {
+  "one_slug": "keisuke-monguchi",
+  "fighter_identity": "門口佳佑|EX ARES|https://rise-rc.com/fighter/monguchi_keisuke/",
+  "discovery": "unregistered_backfill_verified",
+  "note": "PR#584(⑦): slug推測(ローマ字表記)で発見。ONE公式<h1>は「佳佑門口」(漢字の並び順違い、同一の4文字)。実在確認済み。"
+ },
+ {
   "one_slug": "kojiro-shiba",
   "fighter_identity": "芝 宏二郎|Striker GYM|https://www.k-1.co.jp/fighter/1726",
   "discovery": "country_jp_filter",
@@ -298,6 +322,12 @@
   "fighter_identity": "黒田直也|ハーデスワークアウトジム|https://rise-rc.com/fighter/kuroda_naoya/",
   "discovery": "country_jp_filter",
   "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「黒田直也」と一致"
+ },
+ {
+  "one_slug": "marat-grigorian",
+  "fighter_identity": "マラット・グレゴリアン||https://www.k-1.co.jp/fighter/45",
+  "discovery": "unregistered_backfill_verified",
+  "note": "PR#584(⑦): 対戦相手のopponent_site_slugから実在確認。ONE公式プロフィール実在。"
  },
  {
   "one_slug": "masaaki-noiri",
@@ -598,6 +628,12 @@
   "fighter_identity": "翼|TARGET|https://rise-rc.com/fighter/tsubasa/",
   "discovery": "country_jp_filter",
   "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「翼」と一致"
+ },
+ {
+  "one_slug": "wang-junguang",
+  "fighter_identity": "ワン・ジュングァン|天津阿福ファイトクラブ/CFP|https://www.k-1.co.jp/fighter/782",
+  "discovery": "unregistered_backfill_verified",
+  "note": "PR#584(⑦): 対戦相手のopponent_site_slugから実在確認。ONE公式プロフィール実在。"
  },
  {
   "one_slug": "wei-rui",

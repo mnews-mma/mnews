@@ -1,0 +1,48 @@
+{
+ "_meta": {
+  "description": "scripts/check-kick-one-manifest-coverage.tsの検査C(manifest未登録なのにONE Championship行を持つ選手をゼロで要求するゲート)における唯一の例外登録先。このファイルに載っていない限り、manifest未登録の選手がONE Championship行を持つと即ビルド失敗する。",
+  "warning": "★重要: このファイルは検査Cの唯一の抜け道である。ここに安易にエントリを追加すると、和島大海・安保瑠輝也を生んだ当初の欠陥(ONE公式プロフィールが実在するのに取得母集団から漏れる)を再び機械検知できなくする。エントリを追加する際は必ず以下を満たすこと: (1) reasonは'no_official_page_found'(ONE公式プロフィールを合理的な範囲で探索したが見つからない。試したURL・slugパターンをdetailに列挙)・'official_page_exists_but_no_data_rows'(プロフィールは実在するが戦績表が空。確認したURLをdetailに記載)・'ambiguous_same_name_in_roster'(fighters.json側に同名複数候補があり機械的に一意特定不可)のいずれかに限定する。(2) detailに調査の根拠(確認したURL・試行したslugパターン・404/実測結果等)を必ず具体的に記載する。理由の伴わない追加(単に検査を通すためだけの登録)は禁止。"
+ },
+ "knownExceptions": [
+  {
+   "fighterIdentity": "辻井和奏|BRING IT ONパラエストラAKK|https://rise-rc.com/fighter/tsujii_wakana/",
+   "reason": "official_page_exists_but_no_data_rows",
+   "detail": "PR#584(⑦調査): ONE公式プロフィール(https://www.onefc.com/jp/athletes/wakana-tsujii/)は実在し<h1>も「辻井和奏」で完全一致するが、戦績表(is-data-row)が0行(2026-08-18時点)。該当試合が公式サイト側にまだ反映されていない可能性が高い。manifestには追加せず(追加してもbout行が0件で無意味なため)、次回この選手を再調査する際はこのURLから再確認すること。"
+  },
+  {
+   "fighterIdentity": "弘・センチャイジム|センチャイムエタイジム|https://knockoutkb.com/fighters/kota_saenchaigym_499",
+   "reason": "no_official_page_found",
+   "detail": "PR#584(⑦調査): ローマ字表記の複数パターン(kota-saenchaigym/kouta-saenchaigym/kota-saenchai/kouta-saenchai)でONE公式プロフィールを探索したが全て404。ONE公式のサイト内検索・REST APIは未ログイン時アクセス不可のため、これ以上の機械的な探索手段が無い。"
+  },
+  {
+   "fighterIdentity": "貴センチャイジム||https://ja.wikipedia.org/wiki/貴センチャイジム",
+   "reason": "no_official_page_found",
+   "detail": "PR#584(⑦調査): ローマ字表記の複数パターン(takayuki-saenchaigym/takayuki-saenchai)でONE公式プロフィールを探索したが全て404。"
+  },
+  {
+   "fighterIdentity": "壱・センチャイジム|センチャイムエタイジム|https://knockoutkb.com/fighters/issei_saenchaigym",
+   "reason": "no_official_page_found",
+   "detail": "PR#584(⑦調査): ローマ字表記の複数パターン(issei-saenchaigym/issei-saenchai)でONE公式プロフィールを探索したが全て404。"
+  },
+  {
+   "fighterIdentity": "Little Tiger||https://ja.wikipedia.org/wiki/Little_Tiger",
+   "reason": "no_official_page_found",
+   "detail": "PR#584(⑦調査): 英語リングネームの複数パターン(little-tiger/littletiger)でONE公式プロフィールを探索したが全て404。"
+  },
+  {
+   "fighterIdentity": "龍聖|TEAM TEPPEN|https://rise-rc.com/fighter/ryusei/",
+   "reason": "ambiguous_same_name_in_roster",
+   "detail": "PR#584(⑦調査): fighters.jsonに「龍聖」という同名選手が2人存在する(RISE所属版とKNOCK OUT所属版)。ONE公式プロフィール側でどちらの本人か機械的に一意特定できないため、推測でのマッチを避け対象外とした。人力で本人特定できれば追加検討可能。"
+  },
+  {
+   "fighterIdentity": "龍聖|BRAID/TEAM SUERTE|https://knockoutkb.com/fighters/ryusei",
+   "reason": "ambiguous_same_name_in_roster",
+   "detail": "PR#584(⑦調査): 同上(RISE所属版と対になるKNOCK OUT所属版)。"
+  },
+  {
+   "fighterIdentity": "工藤“red”玲央|TEAM TEPPEN|https://knockoutkb.com/fighters/kudo_red_reo_84",
+   "reason": "no_official_page_found",
+   "detail": "PR#584(⑦調査): ローマ字表記の複数パターン(reo-kudo/kudo-reo/reo-kudou)でONE公式プロフィールを探索したが404、または探索中にレート制限(429)を受けた。過度な連続アクセスを避けるためこれ以上の探索は打ち切り。"
+  }
+ ]
+}

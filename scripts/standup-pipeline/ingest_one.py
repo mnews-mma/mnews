@@ -27,12 +27,29 @@ def parse_html(h, slug, fighter_name_hint=None):
         if sport not in ('Kickboxing', 'Muay Thai', 'キックボクシング', 'ムエタイ'):
             continue  # PR-15: 立ち技(キックボクシング/ムエタイ)のみ対象。ONE内でのMMA/Submission Grappling等は対象外(推測で混ぜない)
         result = re.search(r'<div class="is-distinct is-(positive|negative|neutral)">([A-Z]+)</div>', row)
-        rtag, rlabel = (result.group(1), result.group(2)) if result else (None, None)
         RESULT = {'positive': 'win', 'negative': 'loss', 'neutral': 'draw'}
-        if rlabel == 'NC' or (rlabel and 'NO CONTEST' in rlabel):
-            result_val = 'no_contest'
+        if result:
+            rtag, rlabel = result.group(1), result.group(2)
+            if rlabel == 'NC' or 'NO CONTEST' in rlabel:
+                result_val = 'no_contest'
+            else:
+                result_val = RESULT.get(rtag, 'unknown')
         else:
-            result_val = RESULT.get(rtag, 'unknown')
+            # PR#584(⑩監査で発見): is-positive/negative/neutral以外に、英語の大文字
+            # ラベルを持たない is-muted バリエーションがある(実例2件確認: デニス・
+            # ピューリック×エリアス・マムーディ戦、ジョルジオ・ペトロシアン戦、いずれも
+            # 中身が「ノーコンテスト」)。推測で決め打ちせず、実際のテキストを見て
+            # 「ノーコンテスト」の場合のみno_contestとする。それ以外は従来通りunknownに
+            # 落とす(未知のバリエーションを勝手にno_contest扱いしない)。
+            muted = re.search(r'(?s)<div class="is-distinct is-muted[^"]*">(.*?)</div>', row)
+            muted_text = U(muted.group(1)) if muted else ''
+            rtag = None
+            if 'ノーコンテスト' in muted_text or 'NO CONTEST' in muted_text.upper():
+                rlabel = 'NC'
+                result_val = 'no_contest'
+            else:
+                rlabel = None
+                result_val = 'unknown'
         meth = re.search(r'<td class="method[^"]*">\s*([^<]+?)\s*(?:<div|</td>)', row)
         method_raw = U(meth.group(1)) if meth else ''
         rnd = re.search(r'<td class="round[^"]*">\s*([^<]+?)\s*</td>', row)
