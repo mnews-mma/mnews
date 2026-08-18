@@ -1,12 +1,662 @@
 [
  {
+  "one_slug": "akito-nakashima",
+  "fighter_identity": "中嶋愛樹斗|OISHI GYM|https://rise-rc.com/fighter/nakashima-akito/",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "akram-hamidi",
+  "fighter_identity": "アクラム・ハミディ|Team Valente|https://www.k-1.co.jp/fighter/893",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "antonio-orden",
+  "fighter_identity": "アントニオ・オルデン|El Origen Thaimartin/Orden Team|https://www.k-1.co.jp/fighter/754",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "aslanbek-zikreev",
+  "fighter_identity": "アスランベック・ジクレーブ|Kuzbass Muay Thai|https://www.k-1.co.jp/fighter/1553",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "blackshisha-sotaro",
+  "fighter_identity": "ブラックシーサー颯太朗|TEAM TEPPEN|https://rise-rc.com/fighter/blackshisa_sotaro/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「ブラックシーサー颯太朗」と一致"
+ },
+ {
+  "one_slug": "bogdan-stoica",
+  "fighter_identity": "ボグダン・ストイカ|Stoica Brothers Fight Academy|https://www.k-1.co.jp/fighter/1695",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "brice-delval",
+  "fighter_identity": "ブリース・デルバール||https://www.k-1.co.jp/fighter/742",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "chingiz-allazov",
+  "fighter_identity": "チンギス・アラゾフ||https://www.k-1.co.jp/fighter/762",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "cho-kyeong-jae",
+  "fighter_identity": "チョ・ギョンジェ|JUNG WOO GYM|https://rise-rc.com/fighter/cho-kyeong-jae/",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "cristina-morales",
+  "fighter_identity": "クリスティーナ・モラレス|Team Jesus Cabello|https://www.k-1.co.jp/fighter/1023",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "danial-williams",
+  "fighter_identity": "ダニエル・ウィリアムス||https://www.k-1.co.jp/fighter/37",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "daniel-puertas",
+  "fighter_identity": "ダニエル・プエルタス|Ultimatum Fight School|https://rise-rc.com/fighter/daniel_puertas/",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "davit-kiria",
+  "fighter_identity": "ダビッド・キリア|Team Kiria|https://www.k-1.co.jp/fighter/1453",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "deniz-demirkapu",
+  "fighter_identity": "デニス・デミルカプ|Elite Training Center/Team Elite|https://www.k-1.co.jp/fighter/982",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "donking-yotharakmuaythai",
+  "fighter_identity": "ドンキング・ヨータラックムエタイ|タイ|https://knockoutkb.com/fighters/donking_yotharak_muaythai_413",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "egor-bikrev",
+  "fighter_identity": "イゴール・ベクレフ|Kuzbass Muay Thai|https://www.k-1.co.jp/fighter/1591",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "eisaku-ogasawara",
+  "fighter_identity": "小笠原 瑛作|KNOCK OUT クロスポイント吉祥寺|https://knockoutkb.com/fighters/ogasawara_eisaku",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「小笠原 瑛作」と一致"
+ },
+ {
+  "one_slug": "elias-mahmoudi",
+  "fighter_identity": "エリアス・マムーディ||https://www.k-1.co.jp/fighter/680",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "fuga-tokoro",
+  "fighter_identity": "所 風雅|Refre'K|https://rise-rc.com/fighter/tokoro_fuga/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「所 風雅」と一致"
+ },
+ {
+  "one_slug": "fuu",
+  "fighter_identity": "風羽|龍生塾ファントム道場|https://rise-rc.com/fighter/fuu/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「風羽」と一致"
+ },
+ {
+  "one_slug": "gump",
+  "fighter_identity": "GUMP|TEAM TEPPEN|https://rise-rc.com/fighter/gump/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「GUMP」と一致"
+ },
+ {
+  "one_slug": "haruto-yasumoto",
+  "fighter_identity": "安本晴翔|橋本道場|https://rise-rc.com/fighter/yasumoto_haruto/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「安本晴翔」と一致"
+ },
+ {
+  "one_slug": "haruyuki-tanitsu",
+  "fighter_identity": "谷津 晴之|新興ムエタイジム|https://knockoutkb.com/fighters/tanitsu_haruyuki_590",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「谷津 晴之」と一致"
+ },
+ {
+  "one_slug": "hikaru-furumura",
+  "fighter_identity": "古村 光|FURUMURA-GYM|https://knockoutkb.com/fighters/furumura_hikaru_68",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「古村 光」と一致"
+ },
+ {
+  "one_slug": "hiroki-akimoto",
+  "fighter_identity": "秋元皓貴||https://ja.wikipedia.org/wiki/秋元皓貴",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「秋元皓貴」と一致"
+ },
+ {
+  "one_slug": "hiroki-kasahara",
+  "fighter_identity": "笠原弘希|シーザージム|https://rise-rc.com/fighter/kasahara_hiroki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「笠原弘希」と一致"
+ },
+ {
+  "one_slug": "hiroki-naruo",
+  "fighter_identity": "成尾 拓輝|究道会館|https://knockoutkb.com/fighters/naruo_hiroki_478",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「成尾 拓輝」と一致"
+ },
+ {
+  "one_slug": "hiroki-suzuki",
+  "fighter_identity": "鈴木宙樹|RIKIX|https://rise-rc.com/fighter/suzuki_hiroki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「鈴木宙樹」と一致"
+ },
+ {
   "one_slug": "hiromi-wajima",
   "fighter_identity": "和島 大海|SHIKA GYM|https://www.k-1.co.jp/fighter/703",
-  "note": "PR#580: ONE公式選手プロフィールページ(https://www.onefc.com/jp/athletes/hiromi-wajima/)確認済み。fighters.jsonの和島大海に対応。"
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「和島 大海」と一致"
+ },
+ {
+  "one_slug": "hiroto-sameshima",
+  "fighter_identity": "鮫島 大翔|WSRフェアテックス荒川|https://knockoutkb.com/fighters/sameshima_hiroto_153",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「鮫島 大翔」と一致"
+ },
+ {
+  "one_slug": "hiroyuki",
+  "fighter_identity": "HIROYUKI|RIKIX|https://rise-rc.com/fighter/hiroyuki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「HIROYUKI」と一致"
+ },
+ {
+  "one_slug": "hiroyuki-ihara",
+  "fighter_identity": "井原 浩之|ハーデスワークアウトジム|https://knockoutkb.com/fighters/ihara_hiroyuki_585",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「井原 浩之」と一致"
+ },
+ {
+  "one_slug": "hyu",
+  "fighter_identity": "陽勇|TEAM3K|https://rise-rc.com/fighter/hyuu/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「陽勇」と一致"
+ },
+ {
+  "one_slug": "hyuga",
+  "fighter_identity": "彪司|TEAM TEPPEN|https://rise-rc.com/fighter/hyuga/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「彪司」と一致"
+ },
+ {
+  "one_slug": "hyuma-hitachi",
+  "fighter_identity": "常陸飛雄馬|TARGET SHIBUYA|https://rise-rc.com/fighter/hitachi_hyuma/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「常陸飛雄馬」と一致"
+ },
+ {
+  "one_slug": "ikko-ota",
+  "fighter_identity": "大田 一航|新興ムエタイジム|https://www.k-1.co.jp/fighter/1233",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「大田 一航」と一致"
+ },
+ {
+  "one_slug": "jin-mandokoro",
+  "fighter_identity": "政所 仁|魁塾|https://rise-rc.com/fighter/mandokoro_jin/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「政所 仁」と一致"
+ },
+ {
+  "one_slug": "kaito-ono",
+  "fighter_identity": "海人|TEAM F.O.D|https://rise-rc.com/fighter/kaito/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「海人」と一致"
+ },
+ {
+  "one_slug": "kakeru",
+  "fighter_identity": "翔|REVOLT|https://rise-rc.com/fighter/kakeru/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「翔」と一致"
+ },
+ {
+  "one_slug": "kana",
+  "fighter_identity": "KANA|Bombo Freely|https://knockoutkb.com/fighters/kana_484",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「KANA」と一致"
+ },
+ {
+  "one_slug": "kanta-motoyama",
+  "fighter_identity": "基山幹太|BELLWOOD FIGHT TEAM|https://rise-rc.com/fighter/motoyama_kanta/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「基山幹太」と一致"
+ },
+ {
+  "one_slug": "katsuki-kitano",
+  "fighter_identity": "北野克樹|誠至会|https://rise-rc.com/fighter/kitano_katsuki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「北野克樹」と一致"
+ },
+ {
+  "one_slug": "kazuteru-yamazaki",
+  "fighter_identity": "山﨑一央|TEAM TEPPEN|https://rise-rc.com/fighter/yamazaki_kazuteru/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「山﨑一央」と一致"
+ },
+ {
+  "one_slug": "kojiro-shiba",
+  "fighter_identity": "芝 宏二郎|Striker GYM|https://www.k-1.co.jp/fighter/1726",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「芝 宏二郎」と一致"
+ },
+ {
+  "one_slug": "koki-osaki",
+  "fighter_identity": "大﨑孔稀|OISHI GYM|https://rise-rc.com/fighter/osaki_koki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「大﨑孔稀」と一致"
+ },
+ {
+  "one_slug": "koki-saito",
+  "fighter_identity": "バズーカ巧樹|菅原道場/BRAID|https://knockoutkb.com/fighters/bazooka_koki",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「バズーカ巧樹」と一致"
+ },
+ {
+  "one_slug": "kokoz",
+  "fighter_identity": "KOKOZ|TRY HARD GYM|https://rise-rc.com/fighter/kokoz/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「KOKOZ」と一致"
+ },
+ {
+  "one_slug": "kosei-yoshida",
+  "fighter_identity": "吉田晄成|TEAM TEPPEN|https://rise-rc.com/fighter/yoshida_kosei/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「吉田晄成」と一致"
+ },
+ {
+  "one_slug": "kosuke-takagi",
+  "fighter_identity": "都木航佑|キャピタルレイズ fighting GlaNz|https://rise-rc.com/fighter/takagi_kosuke/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「都木航佑」と一致"
+ },
+ {
+  "one_slug": "kuroda-naoya",
+  "fighter_identity": "黒田直也|ハーデスワークアウトジム|https://rise-rc.com/fighter/kuroda_naoya/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「黒田直也」と一致"
+ },
+ {
+  "one_slug": "masaaki-noiri",
+  "fighter_identity": "野杁正明||https://ja.wikipedia.org/wiki/野杁正明",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「野杁正明」と一致"
+ },
+ {
+  "one_slug": "masahito-okuyama",
+  "fighter_identity": "奥山雅仁|OISHI GYM|https://rise-rc.com/fighter/okuyama_masahito/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「奥山雅仁」と一致"
+ },
+ {
+  "one_slug": "masaya-katsuno",
+  "fighter_identity": "勝野雅也|TRY HARD GYM|https://rise-rc.com/fighter/masaya_katsuno/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「勝野雅也」と一致"
+ },
+ {
+  "one_slug": "misaki",
+  "fighter_identity": "MISAKI|TEAM FOREST|https://rise-rc.com/fighter/misaki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「MISAKI」と一致"
+ },
+ {
+  "one_slug": "niclas-larsen",
+  "fighter_identity": "ニコラス・ラーセン|Team Larsen|https://www.k-1.co.jp/fighter/1048",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "nieky-holzken",
+  "fighter_identity": "ニキー・ホルツケン||https://ja.wikipedia.org/wiki/ニキー・ホルツケン",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "petdam-petkiatpet",
+  "fighter_identity": "ペッダム・ペットギャットペット|ペットギャットペットジム|https://www.k-1.co.jp/fighter/1070",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "petsaenkom-sor-sommai",
+  "fighter_identity": "ペットサンコム・ソー・ソンマイ|ソー・ソンマイ|https://rise-rc.com/fighter/petchsaenkom_sorsommai/",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "qiu-jianliang",
+  "fighter_identity": "チュー・ジェンリャン||https://www.k-1.co.jp/fighter/779",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "raize",
+  "fighter_identity": "羅司|TEAM TEPPEN|https://rise-rc.com/fighter/raize/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「羅司」と一致"
+ },
+ {
+  "one_slug": "ranma",
+  "fighter_identity": "嵐舞|TEAM TEPPEN|https://rise-rc.com/fighter/ranma/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「嵐舞」と一致"
+ },
+ {
+  "one_slug": "reiji-takaki",
+  "fighter_identity": "礼司|楠誠会館|https://rise-rc.com/fighter/reiji/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「礼司」と一致"
+ },
+ {
+  "one_slug": "retsu-sashida",
+  "fighter_identity": "指田 烈|TEAM TEPPEN|https://rise-rc.com/fighter/sashida_retsu/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「指田 烈」と一致"
+ },
+ {
+  "one_slug": "rikito",
+  "fighter_identity": "力斗|TEAM PREPARED|https://knockoutkb.com/fighters/rikito_75",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「力斗」と一致"
+ },
+ {
+  "one_slug": "rui-kakizaki",
+  "fighter_identity": "柿﨑 瑠|KNOCK OUTクロスポイント大泉|https://www.k-1.co.jp/fighter/1592",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「柿﨑 瑠」と一致"
  },
  {
   "one_slug": "rukiya-anpo",
   "fighter_identity": "安保瑠輝也||https://ja.wikipedia.org/wiki/安保瑠輝也",
-  "note": "PR#580: ONE公式選手プロフィールページ(https://www.onefc.com/jp/athletes/rukiya-anpo/)確認済み。fighters.jsonの安保瑠輝也に対応。"
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「安保瑠輝也」と一致"
+ },
+ {
+  "one_slug": "ryoga-terayama",
+  "fighter_identity": "寺山遼冴|ARK FIGHT GYM|https://rise-rc.com/fighter/terayama_ryoga/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「寺山遼冴」と一致"
+ },
+ {
+  "one_slug": "ryota-hashimoto",
+  "fighter_identity": "橋本 亮汰|NEXT LEVEL渋谷|https://www.k-1.co.jp/fighter/787",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「橋本 亮汰」と一致"
+ },
+ {
+  "one_slug": "ryujin-nasukawa-2",
+  "fighter_identity": "那須川龍心|TEAM TEPPEN|https://rise-rc.com/fighter/nasukawa_ryujin/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「那須川龍心」と一致"
+ },
+ {
+  "one_slug": "ryuki-kawano",
+  "fighter_identity": "川野 龍輝|KNOCK OUT クロスポイント吉祥寺|https://knockoutkb.com/fighters/kawano_ryuki",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「川野 龍輝」と一致"
+ },
+ {
+  "one_slug": "ryuki-yoshioka",
+  "fighter_identity": "吉岡龍輝|及川道場|https://rise-rc.com/fighter/yoshioka_ryuki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「吉岡龍輝」と一致"
+ },
+ {
+  "one_slug": "ryunosuke-omori",
+  "fighter_identity": "大森隆之介|EX ARES|https://rise-rc.com/fighter/omori_ryunosuke/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「大森隆之介」と一致"
+ },
+ {
+  "one_slug": "ryuto-oinuma",
+  "fighter_identity": "老沼 隆斗|STRUGGLE|https://knockoutkb.com/fighters/oinuma_ryuto_184",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「老沼 隆斗」と一致"
+ },
+ {
+  "one_slug": "ryuto-shiokawa",
+  "fighter_identity": "塩川琉斗|TOP STAR GYM|https://rise-rc.com/fighter/shiokawa_ryuto/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「塩川琉斗」と一致"
+ },
+ {
+  "one_slug": "satoshi-katashima",
+  "fighter_identity": "片島 聡志|Kick Life|https://knockoutkb.com/fighters/katashima_satoshi_122",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「片島 聡志」と一致"
+ },
+ {
+  "one_slug": "saya-ito",
+  "fighter_identity": "伊藤紗弥||https://ja.wikipedia.org/wiki/伊藤紗弥",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「伊藤紗弥」と一致"
+ },
+ {
+  "one_slug": "shingo-shibata",
+  "fighter_identity": "柴田 真吾|フリー|https://knockoutkb.com/fighters/shibata_shingo_85",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「柴田 真吾」と一致"
+ },
+ {
+  "one_slug": "shinji-suzuki",
+  "fighter_identity": "鈴木真治||https://ja.wikipedia.org/wiki/鈴木真治_(キックボクサー)",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「鈴木真治」と一致"
+ },
+ {
+  "one_slug": "sho-ogawa",
+  "fighter_identity": "小川翔|OISHI GYM|https://rise-rc.com/fighter/ogawa_sho/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「小川翔」と一致"
+ },
+ {
+  "one_slug": "shoa-arii",
+  "fighter_identity": "有井渚海|team VASILEUS|https://rise-rc.com/fighter/arii_shoa/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「有井渚海」と一致"
+ },
+ {
+  "one_slug": "shogo-kuriaki",
+  "fighter_identity": "栗秋 祥梧|クロスポイント吉祥寺|https://www.k-1.co.jp/fighter/937",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「栗秋 祥梧」と一致"
+ },
+ {
+  "one_slug": "shoma",
+  "fighter_identity": "翔真|SEED GYM|https://rise-rc.com/fighter/shoma-1/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「翔真」と一致"
+ },
+ {
+  "one_slug": "shoma-okumura",
+  "fighter_identity": "奥村将真|TEAM TEPPEN|https://rise-rc.com/fighter/okumura_shoma/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「奥村将真」と一致"
+ },
+ {
+  "one_slug": "shota",
+  "fighter_identity": "将太|KSS健生館|https://rise-rc.com/fighter/shota/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「将太」と一致"
+ },
+ {
+  "one_slug": "shota-takezoe",
+  "fighter_identity": "竹添 翔太|インスパイヤードモーション|https://www.k-1.co.jp/fighter/1598",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「竹添 翔太」と一致"
+ },
+ {
+  "one_slug": "shota-tezuka",
+  "fighter_identity": "手塚翔太|Sublime guys・GONG-GYM坂戸|https://rise-rc.com/fighter/tezuka_shota/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「手塚翔太」と一致"
+ },
+ {
+  "one_slug": "shuri-sakayori",
+  "fighter_identity": "酒寄珠璃|XAP|https://rise-rc.com/fighter/sakayori_syuri/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「酒寄珠璃」と一致"
+ },
+ {
+  "one_slug": "sora-tanazawa",
+  "fighter_identity": "棚澤大空|TEAM TEPPEN|https://rise-rc.com/fighter/tanazawa-sora/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「棚澤大空」と一致"
+ },
+ {
+  "one_slug": "super-yay-chan",
+  "fighter_identity": "スーパー・ヤイ・チャン|ミャンマー|https://knockoutkb.com/fighters/super_yay_chan_547",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "taiki-naito",
+  "fighter_identity": "内藤 大樹|BELLWOOD FIGHT TEAM|https://shootboxing.org/fighter/naito_taiki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「内藤 大樹」と一致"
+ },
+ {
+  "one_slug": "taimu-hisai",
+  "fighter_identity": "久井 大夢|TEAM TAIMU|https://knockoutkb.com/fighters/hisai_taimu",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「久井 大夢」と一致"
+ },
+ {
+  "one_slug": "takahashi-kiyoto",
+  "fighter_identity": "髙橋聖人|TRIANGLE|https://rise-rc.com/fighter/takahashi_kiyoto/",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "takeru",
+  "fighter_identity": "武尊||https://ja.wikipedia.org/wiki/武尊",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「武尊」と一致"
+ },
+ {
+  "one_slug": "taku",
+  "fighter_identity": "TAKU|TARGET|https://rise-rc.com/fighter/taku/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「TAKU」と一致"
+ },
+ {
+  "one_slug": "takuma-ota",
+  "fighter_identity": "大田 拓真|新興ムエタイジム|https://knockoutkb.com/fighters/ota_takuma_224",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「大田 拓真」と一致"
+ },
+ {
+  "one_slug": "tasuku-yonekawa",
+  "fighter_identity": "米川 たすく|米川道場|https://knockoutkb.com/fighters/yonekawa_tasuku_618",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「米川 たすく」と一致"
+ },
+ {
+  "one_slug": "tessa-de-kom",
+  "fighter_identity": "テッサ・デ・コム|Fightteam Vlaardingen|https://rise-rc.com/fighter/tessa_de_kom/",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "toki-tamaru",
+  "fighter_identity": "田丸 辰|TRY HARD GYM|https://rise-rc.com/fighter/tamaru_toki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「田丸 辰」と一致"
+ },
+ {
+  "one_slug": "toma-kuroda",
+  "fighter_identity": "黒田斗真||https://ja.wikipedia.org/wiki/黒田斗真",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「黒田斗真」と一致"
+ },
+ {
+  "one_slug": "tsubasa",
+  "fighter_identity": "翼|TARGET|https://rise-rc.com/fighter/tsubasa/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「翼」と一致"
+ },
+ {
+  "one_slug": "wei-rui",
+  "fighter_identity": "ウェイ・ルイ||https://www.k-1.co.jp/fighter/738",
+  "discovery": "legacy_verified",
+  "note": "PR#580以前のセッションで個別に取得・fighters.jsonとの一致を確認済み。ONE公式のcountry=jpタグには含まれない(タグ側の非網羅性、髙橋聖人のような明らかな日本人名でも非該当例あり)。"
+ },
+ {
+  "one_slug": "yota-shigemori",
+  "fighter_identity": "重森 陽太|KNOCK OUT クロスポイント吉祥寺|https://knockoutkb.com/fighters/shigemori_yota",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「重森 陽太」と一致"
+ },
+ {
+  "one_slug": "yugo-kato",
+  "fighter_identity": "加藤有吾|RIKIX|https://rise-rc.com/fighter/kato_yugo/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「加藤有吾」と一致"
+ },
+ {
+  "one_slug": "yuki-kasahara",
+  "fighter_identity": "笠原友希|シーザージム|https://rise-rc.com/fighter/kasahara_yuki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「笠原友希」と一致"
+ },
+ {
+  "one_slug": "yuki-morioka",
+  "fighter_identity": "森岡 悠樹|北流会君津ジム|https://knockoutkb.com/fighters/morioka_yuki_111",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「森岡 悠樹」と一致"
+ },
+ {
+  "one_slug": "yuki-yoza",
+  "fighter_identity": "与座優貴|K-1 GYM SAGAMI-ONO KREST|https://rise-rc.com/fighter/yoza_yuki/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「与座優貴」と一致"
+ },
+ {
+  "one_slug": "yukinori-ogasawara",
+  "fighter_identity": "小笠原 裕典|KNOCK OUT クロスポイント吉祥寺|https://knockoutkb.com/fighters/ogasawara_yukinori_204",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「小笠原 裕典」と一致"
+ },
+ {
+  "one_slug": "yutaro-asahi",
+  "fighter_identity": "麻火佑太郎|PHOENIX|https://rise-rc.com/fighter/asahi_yutaro/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「麻火佑太郎」と一致"
+ },
+ {
+  "one_slug": "yuto-hirayama",
+  "fighter_identity": "平山裕翔|TEAM TEPPEN|https://rise-rc.com/fighter/hirayama_yuto/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「平山裕翔」と一致"
+ },
+ {
+  "one_slug": "yuya-shibata",
+  "fighter_identity": "憂也|魁塾|https://rise-rc.com/fighter/yuya/",
+  "discovery": "country_jp_filter",
+  "note": "ONE公式国籍フィルタ(country=jp)で発見、fighters.json「憂也」と一致"
  }
 ]
