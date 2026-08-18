@@ -1,4 +1,8 @@
 {
+ "_meta": {
+  "description": "scripts/check-kick-one-manifest-coverage.tsの検査C(manifest未登録なのにONE Championship行を持つ選手をゼロで要求するゲート)における唯一の例外登録先。このファイルに載っていない限り、manifest未登録の選手がONE Championship行を持つと即ビルド失敗する。",
+  "warning": "★重要: このファイルは検査Cの唯一の抜け道である。ここに安易にエントリを追加すると、和島大海・安保瑠輝也を生んだ当初の欠陥(ONE公式プロフィールが実在するのに取得母集団から漏れる)を再び機械検知できなくする。エントリを追加する際は必ず以下を満たすこと: (1) reasonは'no_official_page_found'(ONE公式プロフィールを合理的な範囲で探索したが見つからない。試したURL・slugパターンをdetailに列挙)・'official_page_exists_but_no_data_rows'(プロフィールは実在するが戦績表が空。確認したURLをdetailに記載)・'ambiguous_same_name_in_roster'(fighters.json側に同名複数候補があり機械的に一意特定不可)のいずれかに限定する。(2) detailに調査の根拠(確認したURL・試行したslugパターン・404/実測結果等)を必ず具体的に記載する。理由の伴わない追加(単に検査を通すためだけの登録)は禁止。"
+ },
  "knownExceptions": [
   {
    "fighterIdentity": "辻井和奏|BRING IT ONパラエストラAKK|https://rise-rc.com/fighter/tsujii_wakana/",
