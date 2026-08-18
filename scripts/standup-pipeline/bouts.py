@@ -3,6 +3,15 @@
 import re,glob,html,json,unicodedata,collections
 
 U=lambda s: re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',s))).strip()
+
+# 選手名寄せの正規化(2026-08、T-4追加): 旧字体/異体字のうち読み・字義が完全に同一と
+# 確認できるペアのみを対象にした変換表。ingest_*.py群(9ファイル)のnk()と同一の表を
+# 使う(意図的に同期させている)。「たまたま漢字が似ている別人」まで巻き込まないよう、
+# 厳密に確認できたペアのみに絞っている(拡張時は個別に典拠を確認すること。詳細は
+# out/kick-name-resolution-split-report.md参照)。
+_KANJI_VARIANT_TABLE = str.maketrans({
+    '﨑': '崎', '髙': '高', '國': '国', '實': '実', '弍': '弐', '凜': '凛', '齋': '斎', '龍': '竜', '―': 'ー',
+})
 SBFIX={'朱里グラップリングシュートボクサーズジム':'朱里'}   # SB側の入力ゆれ（名前に所属が連結）
 # SB公式の日付欄がandy_sowerの3行のみ解析不能だったため、外部照合済みの日付で個別に補完
 # (build.py再実行のたびにraw HTMLから再生成されても消えないよう、パース後の恒久パッチとして持つ)
@@ -171,7 +180,7 @@ def build(fighters_path='fighters.json',src='raw/sb_bouts/*.html',
     def nk(s):
         s=unicodedata.normalize('NFKC',s or '')
         for c in '“”"\'’‘`「」『』': s=s.replace(c,'')
-        return re.sub(r'\s+','',s).replace('・','').replace('=','').lower()
+        return re.sub(r'\s+','',s).replace('・','').replace('=','').lower().translate(_KANJI_VARIANT_TABLE)
     def gk(x):
         if not x: return None
         x=unicodedata.normalize('NFKC',x).lower()
