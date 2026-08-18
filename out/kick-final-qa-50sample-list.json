@@ -1,0 +1,10 @@
+{
+  "seed": 20260817,
+  "categories": {
+    "A_wikipedia_article": ["yoshimi", "miran-peirusu", "iburahimu-eru-bouni", "uiriamu-dinda", "ishiguro-tatsuya", "kohiruimaki-taishin", "hayashi-kenta", "shimada-shouta", "ryo-3", "tanimoto-hiroyuki"],
+    "B_no_wikipedia": ["ashurafu-ashira", "fawado-sediki", "ichiyo-morimoto", "hirahara-riku", "katashima-satoshi", "nagai-takumi", "mizukami-haruki", "haseflyskygym", "paburosu-kokuryariosu", "shotaro"],
+    "C_mononym": ["makoto-2", "shishimaru", "kuroudo", "koya", "yushin", "tsubasa-2", "yan-donshun", "daiki-2", "kensuke", "tatsuto-2"],
+    "D_foreign": ["marushio-de-jiezusu", "jabito-bairami", "tien-shin", "asa-meiya", "mohamedo-isuramu", "novo", "hamuza-hazaru", "arekusei-kujin", "heruman-tabuenka", "jien-junfen"],
+    "E_low_boutcount": ["mafia-petomonkondi", "hakuto", "din-nin", "kimo-reoporudo", "panato-kunkumeru", "kurisutosu-miharutsuosu", "ren-tiger-reon-563", "lion-osafune", "yamaguchi-ryusei", "ran-shanten"]
+  }
+}
