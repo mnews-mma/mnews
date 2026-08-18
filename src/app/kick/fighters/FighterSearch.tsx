@@ -204,7 +204,6 @@ export default function FighterSearch() {
                     <Link href={`/kick/fighters/${encodeURIComponent(f.slug)}`} onClick={() => setOpen(false)}>
                       <span className="kick-search__name">{f.name}</span>
                       {f.kana && <span className="kick-search__kana">{f.kana}</span>}
-                      {f.gym && <span className="kick-search__gym">{f.gym}</span>}
                     </Link>
                   </li>
                 ))}

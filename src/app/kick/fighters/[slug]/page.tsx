@@ -14,7 +14,6 @@ import {
 } from "@/lib/kick/data";
 import { normalizeKickDecisionScorePerspective } from "@/lib/kick/decisionScorePerspective";
 import { pageMetadata } from "@/lib/seo";
-import { formatDateJa, toJstDateStr } from "@/lib/eventCountdown";
 
 /** 名簿全員分をビルド時に静的生成する(リクエスト時の処理をゼロにする)。 */
 export function generateStaticParams() {
@@ -28,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const yomi = f.kana ? `（${f.kana}）` : "";
   return pageMetadata({
     title: `${f.name}${yomi}の戦績・プロフィール｜立ち技名鑑 - Mニュース`,
-    description: `${f.name}${yomi}${f.gym ? `／${f.gym}` : ""}の戦績${
+    description: `${f.name}${yomi}の戦績${
       getFighterBoutCount(f) ? `${getFighterBoutCount(f)}試合` : ""
     }を掲載。日付・大会名・対戦相手・決着・勝敗を取得元URL付きで確認できます。`,
     path: `/kick/fighters/${encodeURIComponent(f.slug)}`,
@@ -83,8 +82,6 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
   if (!f) notFound();
 
   const converted = f.kanaSource?.type === "from_romaji";
-  const { sourceUpdatedAt } = getKickIndex();
-  const updatedAtJa = formatDateJa(toJstDateStr(Date.parse(sourceUpdatedAt)));
 
   return (
     <>
@@ -129,13 +126,6 @@ export default async function KickFighterPage({ params }: { params: Promise<{ sl
               <dd>{f.aliases.join("、")}</dd>
             </>
           )}
-          <dt>所属</dt>
-          <dd>
-            {f.gym ?? <span className="kick-empty">—</span>}
-            {f.gym && (
-              <span className="kick-src-note">(データ取得時点：{updatedAtJa}。移籍等で現在と異なる場合があります)</span>
-            )}
-          </dd>
           <dt>掲載団体</dt>
           <dd>
             {f.orgs.length ? (

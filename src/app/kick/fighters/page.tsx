@@ -67,7 +67,6 @@ export default function KickFightersPage() {
             <div className="kick-row kick-row--head" aria-hidden="true">
               <div>表記名</div>
               <div>読み</div>
-              <div>所属</div>
               <div style={{ textAlign: "right" }}>戦績</div>
             </div>
             {buckets.get(b)!.map((f) => (
@@ -95,7 +94,6 @@ export default function KickFightersPage() {
                     <span className="kick-empty">（読み未取得）</span>
                   )}
                 </div>
-                <div className="kick-row__gym">{f.gym ?? <span className="kick-empty">—</span>}</div>
                 <div className="kick-row__n">{getFighterBoutCount(f) ? `${getFighterBoutCount(f)}戦` : "—"}</div>
               </div>
             ))}
