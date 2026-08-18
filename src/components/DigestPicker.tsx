@@ -103,9 +103,8 @@ export default function DigestPicker({
   // 用OGP(canonical/og:title/og:image共に日付固有)が表示される。
   const digestLink = `https://mnews.jp/archive/${dayIso}`;
 
-  // 並び順は固定: 見出し / 箇条書き / データ1行 / ハッシュタグ / URL。
-  // ハッシュタグをURLより前に置く(URLの直後だとフラグメント扱いで吸われるため、
-  // 別トークンとして分離する)。
+  // 並び順は固定: 見出し / 箇条書き / データ1行 / ハッシュタグ。
+  // URLは本文に含めない(セルフリプライ側にのみ載せる。②の投稿手順参照)。
   const { text, count } = useMemo(() => {
     if (chosen.length === 0) return { text: "", count: 0 };
     const lines = chosen.map((a) => {
@@ -119,10 +118,14 @@ export default function DigestPicker({
     const trimmedDataLine = dataLine.trim();
     if (trimmedDataLine) parts.push(trimmedDataLine);
     if (tags.length > 0) parts.push(tags.join(" "));
-    parts.push(digestLink);
     const body = parts.join("\n");
     return { text: body, count: Math.ceil(fullWidthLength(body)) };
-  }, [chosen, lineText, dataLine, dayLabel, digestLink]);
+  }, [chosen, lineText, dataLine, dayLabel]);
+
+  // セルフリプライ用(①へのリプ)。全件数はOGPカード(/api/og/digest)と同じ
+  // articles.length(その日のニュース全件、選択件数=chosen.lengthではない)を
+  // 参照する。新たに数え直さない。
+  const replyText = `${dayLabel}のMMAニュースまとめ、全${articles.length}件はこちら👇\n${digestLink}`;
 
   return (
     <div>
@@ -284,6 +287,25 @@ export default function DigestPicker({
           }}
         >
           {text || "(記事を選択すると投稿文が生成されます)"}
+        </pre>
+
+        {/* ①へのセルフリプライ用(URLはこちらにのみ載せる) */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "12px 0 6px" }}>
+          <span style={{ fontSize: 12, fontWeight: 700, color: "var(--muted)" }}>リプライ用</span>
+          <CopyButton text={replyText} label="リプライ用をコピー" />
+        </div>
+        <pre
+          style={{
+            whiteSpace: "pre-wrap",
+            fontFamily: "var(--mono)",
+            fontSize: 13,
+            background: "var(--s2)",
+            padding: 12,
+            border: "1px dashed var(--border)",
+            margin: 0,
+          }}
+        >
+          {replyText}
         </pre>
       </div>
     </div>
