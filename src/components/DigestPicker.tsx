@@ -33,9 +33,15 @@ export interface PickerArticle {
 export default function DigestPicker({
   articles,
   dateIso,
+  archiveCount,
 }: {
   articles: PickerArticle[];
   dateIso: string; // サーバ算出の「昨日(JST)」YYYY-MM-DD(唯一の元。M/D表記はここから導出する)
+  // OGPカード(/api/og/digest)と同じarchive.json・JST暦日ベースの件数。
+  // articles(このコンポーネントの選択候補一覧)はライブRSS直取得の直近24時間
+  // ローリング窓で、集計元も窓も別物のため件数が一致しない(実測: 5件 vs 13件)。
+  // リプ用テキストの「全N件」はarticles.lengthではなくこちらを使う。
+  archiveCount: number;
 }) {
   // 「昨日(JST)」はブラウザ側でも算出し直す。サーバレンダのキャッシュや
   // 開きっぱなしタブ/bfcache復帰で日付が前日のまま固定されるのを防ぎ、
@@ -122,10 +128,9 @@ export default function DigestPicker({
     return { text: body, count: Math.ceil(fullWidthLength(body)) };
   }, [chosen, lineText, dataLine, dayLabel]);
 
-  // セルフリプライ用(①へのリプ)。全件数はOGPカード(/api/og/digest)と同じ
-  // articles.length(その日のニュース全件、選択件数=chosen.lengthではない)を
-  // 参照する。新たに数え直さない。
-  const replyText = `${dayLabel}のMMAニュースまとめ、全${articles.length}件はこちら👇\n${digestLink}`;
+  // セルフリプライ用(①へのリプ)。全件数はOGPカードと同じarchiveCount
+  // (選択件数=chosen.lengthでも、このコンポーネントのarticles.lengthでもない)。
+  const replyText = `${dayLabel}のMMAニュースまとめ、全${archiveCount}件はこちら👇\n${digestLink}`;
 
   return (
     <div>
