@@ -122,8 +122,21 @@ def parse_new_site(posts):
             if not f1 or not f2:
                 continue
             (n1, g1, m1), (n2, g2, m2) = f1, f2
+            # ○/×/△のマークが無い(mymarkがNone)場合のフォールバック(2026-08実装):
+            # 決着文言に「試合中止」があれば選手の欠場等でそもそも試合が成立しなかった
+            # ケース(cancelled)、「エキシビションマッ(チ)」があればエキシビションへの
+            # 変更等で公式な勝敗を付けない試合(no_contest)と判定できる(実例4件+1件、
+            # いずれも決着文言に明記されておりマークが無いのは構造的にそのため)。
+            # どちらにも該当しない場合は従来どおり推測せずunknownのまま残す。
             for (my, opp, mymark) in [((n1, g1), (n2, g2), m1), ((n2, g2), (n1, g1), m2)]:
-                result = MARK2RESULT.get(mymark, 'unknown')
+                result = MARK2RESULT.get(mymark)
+                if result is None:
+                    if decision and '試合中止' in decision:
+                        result = 'cancelled'
+                    elif decision and 'エキシビションマッ' in decision:
+                        result = 'no_contest'
+                    else:
+                        result = 'unknown'
                 emit(bouts, my, opp, result, decision, url, date, event, venue, mymark, label=U(header))
     return bouts
 
