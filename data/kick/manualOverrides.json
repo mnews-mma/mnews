@@ -1,8 +1,8 @@
 {
  "_meta": {
-  "description": "「再生成で無言に巻き戻りうる手動編集値」の既知レジストリ(PR-G追加ゲート、2026-08-17)。data/kick/manualRuleExclusions.jsonと同じ発想: 手動で修正した値をここに登録し、scripts/check-kick-manual-edit-drift.tsがビルド時に『登録した修正が今も反映されているか』を検証する。",
+  "description": "「再生成で無言に巻き戻りうる手動編集値」の既知レジストリ(PR-G追加ゲート、2026-08-17)。data/kick/manualRuleExclusions.jsonと同じ発想: 手動で修正した値をここに登録し、scripts/check-kick-manual-edit-drift.tsがビルド時に『登録した修正が今も反映されているか』を検証する。当初はbouts_wikipedia.jsonの選手identity(fighter_slug/fighter_name)の巻き戻り検知のみだったが、2026-08-19にbouts_*.json全般の任意フィールド(result等)の巻き戻り検知へ拡張した(correctedBoutResults、T-1のraw/キャッシュ退避検証〈PR#588〉で見つかったRISE 1件が最初の登録例)。",
   "background": "PR-18(#554)は data/kick/bouts_wikipedia.json(scripts/standup-pipeline/ingest_wikipedia.pyが生成するファイル、build-kick-data.tsの入力でもある)を直接手動編集し、5人の改名選手(旧名で書かれたfighter_slugが誰にも解決しない状態)のfighter_slug/fighter_nameを正しい値へ書き換えた。しかしこの修正はingest_wikipedia.py/build_coverage_population_v2.pyのロジックには反映されておらず、後日(#563)これらのスクリプトを再実行してbouts_wikipedia.jsonを再生成した際、5人分の修正が無言で巻き戻っていたことが判明した(#563の調査で発覚・修正)。#563はscripts/standup-pipeline/build_coverage_population_v2.pyにLEG3_NAME_RENAMESという恒久的なリネーム表を追加し、再生成しても巻き戻らないよう根治した。このレジストリは、その根治が将来また外れて同じ巻き戻りが再発した場合に検知するための回帰防止用。",
-  "checkedFile": "data/kick/bouts_wikipedia.json"
+  "checkedFile": "renamedFighterWikipediaIdentityはdata/kick/bouts_wikipedia.jsonのみを対象。correctedBoutResultsは各エントリのsourceFileで個別に対象ファイルを指定する。"
  },
  "renamedFighterWikipediaIdentity": [
   {
@@ -34,6 +34,17 @@
    "newFighterName": "ブアカーオ・バンチャメーク",
    "reason": "PR-18(#554)で手動修正、#563のLEG3_NAME_RENAMESで恒久化",
    "fixedInCommit": "9b127cf (#563)"
+  }
+ ],
+ "correctedBoutResults": [
+  {
+   "sourceFile": "bouts_rise.json",
+   "boutId": "rise:changsuek-petchyindee-academy:0",
+   "correctedField": "result",
+   "originalValue": "win",
+   "correctedValue": "loss",
+   "reason": "チャーンスック・ペッティンディーアカデミー vs 麻火佑太郎(2026-06-06、RISE)。RISE公式サイト自体が対戦相手双方の個人ページに「勝利」と表示する矛盾があり、より上位の一次資料である大会結果ページ(rise-rc.com/result/rise_ws2026_tokyo_result/)で麻火佑太郎の勝利・チャーンスックの敗北を確認して手動修正した。raw HTMLそのものが誤っているため、パーサ側の修正では対応できない(T-1、kick-13source-regen-and-defect-audit-report.md参照)。",
+   "fixedInCommit": "768f108 (PR-13、#549)"
   }
  ]
 }

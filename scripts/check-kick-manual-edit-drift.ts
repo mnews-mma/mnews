@@ -53,6 +53,15 @@ interface RenameEntry {
   reason: string;
   fixedInCommit: string;
 }
+interface CorrectedBoutResultEntry {
+  sourceFile: string;
+  boutId: string;
+  correctedField: string;
+  originalValue: string;
+  correctedValue: string;
+  reason: string;
+  fixedInCommit: string;
+}
 
 const fighters: Fighter[] = JSON.parse(fs.readFileSync(path.join(SRC, "fighters.json"), "utf8"));
 const identity = (f: Fighter) => `${f.name}|${f.gym ?? ""}|${f.sources[0] ?? ""}`;
@@ -63,9 +72,10 @@ const wikiBouts: WikiBout[] = fs.existsSync(path.join(SRC, "bouts_wikipedia.json
   ? JSON.parse(fs.readFileSync(path.join(SRC, "bouts_wikipedia.json"), "utf8"))
   : [];
 
-const registry: { renamedFighterWikipediaIdentity: RenameEntry[] } = JSON.parse(
-  fs.readFileSync(REGISTRY_PATH, "utf8"),
-);
+const registry: {
+  renamedFighterWikipediaIdentity: RenameEntry[];
+  correctedBoutResults?: CorrectedBoutResultEntry[];
+} = JSON.parse(fs.readFileSync(REGISTRY_PATH, "utf8"));
 
 // ---------- 検査1: レジストリ済みの手動修正が今も反映されているか(ゼロ件ゲート) ----------
 const reverted: string[] = [];
@@ -135,4 +145,53 @@ if (unmatchedButNameKnown > prevDiagBaseline) {
 }
 
 fs.writeFileSync(DIAG_BASELINE_PATH, JSON.stringify({ count: unmatchedButNameKnown }, null, 1) + "\n");
-console.log(`[kick-manual-edit-drift] OK(検査1: 巻き戻り0件 / 検査2: ${unmatchedButNameKnown}件、基準以下)`);
+
+// ---------- 検査3: correctedBoutResults(bouts_*.json全般のフィールド単位の手動修正)の巻き戻り検知(ゼロ件ゲート) ----------
+// renamedFighterWikipediaIdentity(検査1)は選手identity専用・bouts_wikipedia.json専用だが、
+// こちらは「特定の1試合(boutId)の特定の1フィールドが、公式サイト自体の誤り等を理由に
+// 手動で上書きされている」ケースを対象にした汎用版。sourceFileはエントリごとに指定する
+// (T-1のraw/キャッシュ退避検証で見つかったRISE 1件〈PR#588〉が最初の登録例)。
+const correctedBoutResults = registry.correctedBoutResults ?? [];
+const boutResultReverted: string[] = [];
+const boutFileCache = new Map<string, Record<string, unknown>[]>();
+for (const entry of correctedBoutResults) {
+  const filePath = path.join(SRC, entry.sourceFile);
+  if (!boutFileCache.has(entry.sourceFile)) {
+    boutFileCache.set(
+      entry.sourceFile,
+      fs.existsSync(filePath) ? JSON.parse(fs.readFileSync(filePath, "utf8")) : [],
+    );
+  }
+  const bouts = boutFileCache.get(entry.sourceFile)!;
+  const bout = bouts.find((b) => b.bout_id === entry.boutId);
+  if (!bout) {
+    boutResultReverted.push(
+      `${entry.sourceFile}: bout_id="${entry.boutId}" が見つかりません(行ごと消失した可能性。${entry.fixedInCommit}参照)`,
+    );
+    continue;
+  }
+  const current = bout[entry.correctedField];
+  if (current !== entry.correctedValue) {
+    boutResultReverted.push(
+      `${entry.sourceFile}: bout_id="${entry.boutId}" の${entry.correctedField}が` +
+        `"${entry.correctedValue}"(登録済みの修正値)ではなく"${String(current)}"になっています` +
+        `(巻き戻り。${entry.fixedInCommit}参照)`,
+    );
+  }
+}
+
+if (boutResultReverted.length) {
+  console.error(
+    `[kick-manual-edit-drift] ★data/kick/manualOverrides.json の correctedBoutResults に` +
+      `登録済みの手動修正が巻き戻っています。デプロイをブロックします:\n` +
+      boutResultReverted.map((r) => `  - ${r}`).join("\n") +
+      `\n  対処法: 対象sourceFileを再生成した際にこの修正が反映されているか確認してください` +
+      `(raw HTML自体が誤っている場合はパーサ側では直せません。手動修正を再適用してください)。`,
+  );
+  process.exit(1);
+}
+
+console.log(
+  `[kick-manual-edit-drift] OK(検査1: 巻き戻り0件 / 検査2: ${unmatchedButNameKnown}件、基準以下 / ` +
+    `検査3: 登録${correctedBoutResults.length}件、巻き戻りなし)`,
+);
