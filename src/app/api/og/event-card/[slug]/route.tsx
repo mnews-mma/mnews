@@ -44,6 +44,11 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
     const dateLabel = `${d.getMonth() + 1}/${d.getDate()}${event.startTime ? ` ${event.startTime}〜` : ""}`;
     // 件数に応じて行の文字サイズを自動調整(縮小時の判読性優先で4段階のみ)
     const rowSize = rowCount <= 6 ? 34 : rowCount <= 9 ? 28 : rowCount <= 12 ? 23 : 20;
+    // 階級ラベル列の幅はpx固定ではなくem基準(ラベル自身のフォントサイズ比例)にする。
+    // 1画像内は全行同じフォントサイズなのでpx換算幅は行内で一定=アラインメントは崩れない。
+    // 17.5emは標準階級名の最長18文字(例: "DEEP JEWELS 49kg以下"・"女子スーパーアトム級（49.0kg）")が
+    // 最小フォントサイズ(13行ティア)を含む全ティアで省略されずに収まる実測値。
+    const LABEL_WIDTH_EM = 17.5;
     const fonts = await loadOgFonts();
 
     const img = new ImageResponse(
@@ -112,7 +117,13 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
                     fontWeight: 900,
                     fontSize: `${Math.round(rowSize * 0.55)}px`,
                     color: COLORS.ash,
-                    minWidth: "190px",
+                    width: `${LABEL_WIDTH_EM}em`,
+                    minWidth: `${LABEL_WIDTH_EM}em`,
+                    maxWidth: `${LABEL_WIDTH_EM}em`,
+                    flexShrink: 0,
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    textOverflow: "ellipsis",
                   }}
                 >
                   {b.weightClass}
@@ -157,7 +168,16 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
             ))}
             {hasOverflow && (
               <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                <div style={{ display: "flex", minWidth: "190px" }} />
+                <div
+                  style={{
+                    display: "flex",
+                    width: `${LABEL_WIDTH_EM}em`,
+                    minWidth: `${LABEL_WIDTH_EM}em`,
+                    maxWidth: `${LABEL_WIDTH_EM}em`,
+                    fontSize: `${Math.round(rowSize * 0.55)}px`,
+                    flexShrink: 0,
+                  }}
+                />
                 <div
                   style={{
                     display: "flex",
