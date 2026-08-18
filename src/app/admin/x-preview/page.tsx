@@ -1,6 +1,7 @@
 import { getUpcomingEvents } from "@/lib/events";
 import { buildCountdownPost } from "@/lib/xPost";
 import { fetchRawArticles } from "@/lib/feeds/aggregate";
+import { fetchArticlesForJstDay } from "@/lib/archiveDayFeed";
 import { detectEventTag, digestScore } from "@/lib/tweetDigest";
 import { relativeTimeJa } from "@/lib/articles";
 import { SOURCES } from "@/lib/sources";
@@ -119,6 +120,11 @@ export default async function XPreviewPage() {
   // 一本化し、サーバー・クライアントで同じdateIso文字列を唯一の元にする。
   const yesterdayJstIso = shiftDateStr(toJstDateStr(), -1);
 
+  // リプ用テキストの「全N件」用。recent(ライブRSS直取得・直近24時間ローリング窓)
+  // とはデータソースも窓も異なるため使い回さず、OGPカード(/api/og/digest)と
+  // 同じarchive.json・JST暦日ベースの件数を別途取得する。
+  const archiveCount = (await fetchArticlesForJstDay(yesterdayJstIso)).length;
+
   // 直近のupcomingイベントのカウントダウンポスト下書き
   const nextEvent = getUpcomingEvents()[0] ?? null;
   const countdown = nextEvent ? buildCountdownPost(nextEvent) : null;
@@ -142,7 +148,7 @@ export default async function XPreviewPage() {
         (選手名をテキストで載せて検索・エゴサに引っかける方針)。
         「候補」は自動スコアの参考表示で、最終判断は手動。
       </p>
-      <DigestPicker articles={pickerArticles} dateIso={yesterdayJstIso} />
+      <DigestPicker articles={pickerArticles} dateIso={yesterdayJstIso} archiveCount={archiveCount} />
 
       <h2 style={{ fontSize: 15, fontWeight: 700, margin: "32px 0 16px" }}>
         大会前日カウントダウン(直近イベント)

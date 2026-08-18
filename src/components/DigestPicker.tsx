@@ -33,9 +33,15 @@ export interface PickerArticle {
 export default function DigestPicker({
   articles,
   dateIso,
+  archiveCount,
 }: {
   articles: PickerArticle[];
   dateIso: string; // サーバ算出の「昨日(JST)」YYYY-MM-DD(唯一の元。M/D表記はここから導出する)
+  // OGPカード(/api/og/digest)と同じarchive.json・JST暦日ベースの件数。
+  // articles(このコンポーネントの選択候補一覧)はライブRSS直取得の直近24時間
+  // ローリング窓で、集計元も窓も別物のため件数が一致しない(実測: 5件 vs 13件)。
+  // リプ用テキストの「全N件」はarticles.lengthではなくこちらを使う。
+  archiveCount: number;
 }) {
   // 「昨日(JST)」はブラウザ側でも算出し直す。サーバレンダのキャッシュや
   // 開きっぱなしタブ/bfcache復帰で日付が前日のまま固定されるのを防ぎ、
@@ -103,9 +109,8 @@ export default function DigestPicker({
   // 用OGP(canonical/og:title/og:image共に日付固有)が表示される。
   const digestLink = `https://mnews.jp/archive/${dayIso}`;
 
-  // 並び順は固定: 見出し / 箇条書き / データ1行 / ハッシュタグ / URL。
-  // ハッシュタグをURLより前に置く(URLの直後だとフラグメント扱いで吸われるため、
-  // 別トークンとして分離する)。
+  // 並び順は固定: 見出し / 箇条書き / データ1行 / ハッシュタグ。
+  // URLは本文に含めない(セルフリプライ側にのみ載せる。②の投稿手順参照)。
   const { text, count } = useMemo(() => {
     if (chosen.length === 0) return { text: "", count: 0 };
     const lines = chosen.map((a) => {
@@ -119,10 +124,13 @@ export default function DigestPicker({
     const trimmedDataLine = dataLine.trim();
     if (trimmedDataLine) parts.push(trimmedDataLine);
     if (tags.length > 0) parts.push(tags.join(" "));
-    parts.push(digestLink);
     const body = parts.join("\n");
     return { text: body, count: Math.ceil(fullWidthLength(body)) };
-  }, [chosen, lineText, dataLine, dayLabel, digestLink]);
+  }, [chosen, lineText, dataLine, dayLabel]);
+
+  // セルフリプライ用(①へのリプ)。全件数はOGPカードと同じarchiveCount
+  // (選択件数=chosen.lengthでも、このコンポーネントのarticles.lengthでもない)。
+  const replyText = `${dayLabel}のMMAニュースまとめ、全${archiveCount}件はこちら👇\n${digestLink}`;
 
   return (
     <div>
@@ -284,6 +292,25 @@ export default function DigestPicker({
           }}
         >
           {text || "(記事を選択すると投稿文が生成されます)"}
+        </pre>
+
+        {/* ①へのセルフリプライ用(URLはこちらにのみ載せる) */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "12px 0 6px" }}>
+          <span style={{ fontSize: 12, fontWeight: 700, color: "var(--muted)" }}>リプライ用</span>
+          <CopyButton text={replyText} label="リプライ用をコピー" />
+        </div>
+        <pre
+          style={{
+            whiteSpace: "pre-wrap",
+            fontFamily: "var(--mono)",
+            fontSize: 13,
+            background: "var(--s2)",
+            padding: 12,
+            border: "1px dashed var(--border)",
+            margin: 0,
+          }}
+        >
+          {replyText}
         </pre>
       </div>
     </div>
