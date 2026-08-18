@@ -1,0 +1,12 @@
+[
+ {
+  "one_slug": "hiromi-wajima",
+  "fighter_identity": "和島 大海|SHIKA GYM|https://www.k-1.co.jp/fighter/703",
+  "note": "PR#580: ONE公式選手プロフィールページ(https://www.onefc.com/jp/athletes/hiromi-wajima/)確認済み。fighters.jsonの和島大海に対応。"
+ },
+ {
+  "one_slug": "rukiya-anpo",
+  "fighter_identity": "安保瑠輝也||https://ja.wikipedia.org/wiki/安保瑠輝也",
+  "note": "PR#580: ONE公式選手プロフィールページ(https://www.onefc.com/jp/athletes/rukiya-anpo/)確認済み。fighters.jsonの安保瑠輝也に対応。"
+ }
+]

@@ -1,0 +1,25 @@
+{
+ "knownOfficialBouts": [
+  {
+   "fighterSlug": "wajima-hiromi",
+   "date": "2026-04-29",
+   "opponentName": "リカルド・ブラボ",
+   "reason": "PR#580: ONE公式選手プロフィールページ(https://www.onefc.com/jp/athletes/hiromi-wajima/)に戦績表あり。Wikipedia出典表示になっていた不具合を修正。",
+   "fixedInCommit": "PR#580"
+  },
+  {
+   "fighterSlug": "wajima-hiromi",
+   "date": "2025-11-16",
+   "opponentName": "ナビル・アナン",
+   "reason": "PR#580: ONE公式選手プロフィールページ(https://www.onefc.com/jp/athletes/hiromi-wajima/)に戦績表あり。Wikipedia出典表示になっていた不具合を修正。",
+   "fixedInCommit": "PR#580"
+  },
+  {
+   "fighterSlug": "anpo-rukiya",
+   "date": "2025-11-16",
+   "opponentName": "マラット・グレゴリアン",
+   "reason": "PR#580: ONE公式選手プロフィールページ(https://www.onefc.com/jp/athletes/rukiya-anpo/)に戦績表あり。Wikipedia出典表示になっていた不具合を修正。",
+   "fixedInCommit": "PR#580"
+  }
+ ]
+}
