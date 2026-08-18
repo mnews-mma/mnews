@@ -1,0 +1,23 @@
+{
+ "candidateCount": 233,
+ "matchedCount": 85,
+ "ambiguousCount": 1,
+ "unmatchedCount": 146,
+ "errorCount": 1,
+ "ambiguous": [
+  {
+   "one_slug": "ryusei",
+   "one_profile_name": "龍聖",
+   "candidates": [
+    "龍聖",
+    "龍聖"
+   ]
+  }
+ ],
+ "errors": [
+  {
+   "one_slug": "yuri-tanaka",
+   "error": "HTTP Error 404: Not Found"
+  }
+ ]
+}
