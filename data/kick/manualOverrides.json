@@ -54,6 +54,87 @@
    "correctedValue": "2025-06-29",
    "reason": "Bigbang公式ページ側の日付欄が「202年月日」という壊れたプレースホルダのまま(実測確認)。相手選手側の対戦相手(森本現暉)のRISE公式データで同一試合が2025-06-29と記録されており、独立ソースでの裏取りにより正しいと確認済み(U-1、2026-08-19)。",
    "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_rise.json",
+   "boutId": "rise:masashi:2",
+   "correctedField": "opponent_resolved",
+   "originalValue": false,
+   "correctedValue": true,
+   "reason": "窪山 昴(リアルディール) → 窪山 昂(リアルディール)。表記は「昴」と「昂」で異なるが、所属ジム(リアルディール)が完全一致し、生年月日(1995.8.2)もRISE188(2025-05-31)時点で29歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
+  },
+  {
+   "sourceFile": "bouts_rise.json",
+   "boutId": "rise:masashi:2",
+   "correctedField": "opponent_ref",
+   "originalValue": null,
+   "correctedValue": "窪山 昂",
+   "reason": "窪山 昴(リアルディール) → 窪山 昂(リアルディール)。表記は「昴」と「昂」で異なるが、所属ジム(リアルディール)が完全一致し、生年月日(1995.8.2)もRISE188(2025-05-31)時点で29歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
+  },
+  {
+   "sourceFile": "bouts_rise.json",
+   "boutId": "rise:masashi:2",
+   "correctedField": "opponent_ref_gym",
+   "originalValue": null,
+   "correctedValue": "リアルディール",
+   "reason": "窪山 昴(リアルディール) → 窪山 昂(リアルディール)。表記は「昴」と「昂」で異なるが、所属ジム(リアルディール)が完全一致し、生年月日(1995.8.2)もRISE188(2025-05-31)時点で29歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
+  },
+  {
+   "sourceFile": "bouts_sb.json",
+   "boutId": "sb:arima_reiji:15",
+   "correctedField": "opponent_resolved",
+   "originalValue": false,
+   "correctedValue": true,
+   "reason": "櫻井 心(Team FIST) → 櫻井 芯(team FIST)。表記は「心」と「芯」で異なるが、所属ジム(Team FIST)が完全一致し、生年月日(1999.12.13)もDEEP☆KICK54(2021-07-04)時点で21歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
+  },
+  {
+   "sourceFile": "bouts_sb.json",
+   "boutId": "sb:arima_reiji:15",
+   "correctedField": "opponent_ref",
+   "originalValue": null,
+   "correctedValue": "櫻井 芯",
+   "reason": "櫻井 心(Team FIST) → 櫻井 芯(team FIST)。表記は「心」と「芯」で異なるが、所属ジム(Team FIST)が完全一致し、生年月日(1999.12.13)もDEEP☆KICK54(2021-07-04)時点で21歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
+  },
+  {
+   "sourceFile": "bouts_sb.json",
+   "boutId": "sb:arima_reiji:15",
+   "correctedField": "opponent_ref_gym",
+   "originalValue": null,
+   "correctedValue": "team FIST",
+   "reason": "櫻井 心(Team FIST) → 櫻井 芯(team FIST)。表記は「心」と「芯」で異なるが、所属ジム(Team FIST)が完全一致し、生年月日(1999.12.13)もDEEP☆KICK54(2021-07-04)時点で21歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
+  },
+  {
+   "sourceFile": "bouts_sb.json",
+   "boutId": "sb:hasegawa_daisuke:5",
+   "correctedField": "opponent_resolved",
+   "originalValue": false,
+   "correctedValue": true,
+   "reason": "新井 昴弥(TenCloverGym) → 新井 昂弥(Ten Clover Gym)。表記は「昴」と「昂」で異なるが、所属ジム(Ten Clover Gym、表記ゆれのみ)が一致し、生年月日(1996.5.20)もDEEP HAMAMATSU IMPACT 2023(2023-09-24)時点で27歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
+  },
+  {
+   "sourceFile": "bouts_sb.json",
+   "boutId": "sb:hasegawa_daisuke:5",
+   "correctedField": "opponent_ref",
+   "originalValue": null,
+   "correctedValue": "新井 昂弥",
+   "reason": "新井 昴弥(TenCloverGym) → 新井 昂弥(Ten Clover Gym)。表記は「昴」と「昂」で異なるが、所属ジム(Ten Clover Gym、表記ゆれのみ)が一致し、生年月日(1996.5.20)もDEEP HAMAMATSU IMPACT 2023(2023-09-24)時点で27歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
+  },
+  {
+   "sourceFile": "bouts_sb.json",
+   "boutId": "sb:hasegawa_daisuke:5",
+   "correctedField": "opponent_ref_gym",
+   "originalValue": null,
+   "correctedValue": "Ten Clover Gym",
+   "reason": "新井 昴弥(TenCloverGym) → 新井 昂弥(Ten Clover Gym)。表記は「昴」と「昂」で異なるが、所属ジム(Ten Clover Gym、表記ゆれのみ)が一致し、生年月日(1996.5.20)もDEEP HAMAMATSU IMPACT 2023(2023-09-24)時点で27歳と自然な年齢のため同一人物と判断。U-3(2026-08-19、名前解決失敗の編集距離2以上のゆれ測定)で発見・個別確認済み。対戦相手欄の表記が名簿の別表記(異体字またはラテン/カナ表記違い)と一致するが、resolve()の標準照合(かな完全一致・aliases一致等)では拾えなかったため未解決のまま残っていた。所属欄(ジム名)の一致で裏取りし、生年月日と大会日付の整合性も確認済み。",
+   "fixedInCommit": "U-3(2026-08-19、当PR)"
   }
  ]
 }
