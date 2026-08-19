@@ -56,7 +56,13 @@ export async function GET(req: Request) {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            // コンテンツ全体を下端から180px(要件160px+余裕)離して配置する。
+            // justifyContent:centerのままpaddingBottomを足すと中央寄せの
+            // 計算に取り込まれ空白帯を保証できないため、flex-endで
+            // コンテンツ下端をpaddingBottomの内側に固定し、実測フォント高さに
+            // 依存せず下端の空白帯を確定させる
+            justifyContent: "flex-end",
+            paddingBottom: "180px",
             backgroundColor: BRAND_RED,
           }}
         >
