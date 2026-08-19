@@ -1,0 +1,74 @@
+[
+ {
+  "stored_eid": "20170205",
+  "true_eid": "20170205",
+  "url": "http://www.nkb-r.com/Fight/2017/20170205.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20170415",
+  "true_eid": "20170415",
+  "url": "http://www.nkb-r.com/Fight/2017/20170415.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20170625",
+  "true_eid": "20170625",
+  "url": "http://www.nkb-r.com/Fight/2017/20170625.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20170923",
+  "true_eid": "20170923",
+  "url": "http://www.nkb-r.com/Fight/2017/20170923.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20171029",
+  "true_eid": "20171029",
+  "url": "http://www.nkb-r.com/Fight/2017/20171029.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20171216",
+  "true_eid": "20171216",
+  "url": "http://www.nkb-r.com/Fight/2017/20171216.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20180217",
+  "true_eid": "20180217",
+  "url": "http://www.nkb-r.com/Fight/2018/20180217.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20180421",
+  "true_eid": "20180421",
+  "url": "http://www.nkb-r.com/Fight/2018/20180421.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20180429",
+  "true_eid": "20180429",
+  "url": "http://www.nkb-r.com/Fight/2018/20180429.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20180616",
+  "true_eid": "20180616",
+  "url": "http://www.nkb-r.com/Fight/2018/20180616.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20181013",
+  "true_eid": "20181013",
+  "url": "http://www.nkb-r.com/Fight/2018/20181013.html",
+  "error": "HTTP 404"
+ },
+ {
+  "stored_eid": "20181208",
+  "true_eid": "20181208",
+  "url": "http://www.nkb-r.com/Fight/2018/20181208.html",
+  "error": "HTTP 404"
+ }
+]
