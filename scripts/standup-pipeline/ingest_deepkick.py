@@ -96,9 +96,55 @@ def get_lines(html_path):
     h = open(html_path, encoding='utf-8', errors='replace').read()
     m = re.search(r'(?s)<div class="blog-article__content">(.*?)<div class="blog-article__footer">', h)
     body = m.group(1) if m else h
-    ps = re.findall(r'(?s)<p[^>]*>(.*?)</p>', body)
-    lines = [U(p) for p in ps]
+    # U-4(2026-08、合同記事「第N部」対応): 通常は<p>タグのみで十分だが、2大会分を1記事に
+    # まとめた合同速報記事(例: DEEP☆KICK46・47)では、大会の切れ目を示す「第N部 大会名」の
+    # 見出しが<h1>タグで挿入される(<p>タグでは無い)。<p>だけを見ると見出しが消えて2大会分の
+    # bout行が地続きになり、build()が1つの大会名しか割り当てられなくなるため、<h1>も
+    # document order通りに拾う。既存の単独大会記事(117件、サンプル17件で確認済み)は本文中に
+    # <h1>を含まないため、この変更は既存の抽出結果に影響しない。
+    tags = re.findall(r'(?s)<(?:h1|p)[^>]*>(.*?)</(?:h1|p)>', body)
+    lines = [U(t) for t in tags]
     return [l for l in lines if l]
+
+
+_FOOTER_DATE_RE = re.compile(r'([^◎\n]+?)(\d{4}年\s*\d{1,2}月\d{1,2}日|同日開催|同日)')
+
+
+def _norm_footer_name(s):
+    return s.strip('◎( )株式会社　 ').strip()
+
+
+def extract_section_dates(html_path):
+    """U-4(2026-08、合同記事の日付対応): 合同速報記事では日付が本文<p>/<h1>ではなく、
+       末尾の<div class="blog-body__text">内の素の<br>区切りテキスト(大会名+日付が
+       連続して1つのテキストノードになっている)にのみ現れる。get_lines()は<p>/<h1>のみを
+       拾うためこの日付欄を取得できない。この関数はraw HTMLを直接読み、「大会名」+
+       「YYYY年M月D日」または「同日開催/同日」のペアを本文全体から機械的に拾い、
+       {大会名(先頭の◎・社名接頭辞等を除いた正規化形): date文字列} の辞書を返す
+       (通常の単独大会記事にはこのパターンが無いため空辞書になり、既存の抽出には
+       影響しない)。呼び出し側もキーを同じ正規化関数で揃えてから突き合わせること。"""
+    h = open(html_path, encoding='utf-8', errors='replace').read()
+    m = re.search(r'(?s)<div class="blog-article__content">(.*?)<div class="blog-article__footer">', h)
+    body = m.group(1) if m else h
+    texts = re.findall(r'(?s)<div class="blog-body__text[^"]*"[^>]*>(.*?)</div>', body)
+    if not texts:
+        return {}
+    plain = re.sub(r'<br\s*/?>', '\n', texts[-1])
+    plain = U(plain)
+    pairs = _FOOTER_DATE_RE.findall(plain)
+    result = {}
+    last_date = None
+    for name, date_or_same in pairs:
+        name = _norm_footer_name(name)
+        if date_or_same.startswith('同日'):
+            date = last_date
+        else:
+            dm = re.match(r'(\d{4})年\s*(\d{1,2})月(\d{1,2})日', date_or_same)
+            date = '%s-%02d-%02d' % (int(dm.group(1)), int(dm.group(2)), int(dm.group(3)))
+            last_date = date
+        if name and date:
+            result[name] = date
+    return result
 
 
 def extract_date(lines, title, published):
@@ -150,9 +196,49 @@ def extract_event_name(lines, title):
         m = re.search(r'『(.+?)』', l)
         if m and '。' not in m.group(1):
             return m.group(1)
-    t = re.sub(r'\s*(試合)?結果\s*$', '', title)
+    # U-4(2026-08): 「○○結果速報」(速報記事)というタイトル末尾パターンにも対応。
+    # 既存の「○○結果」「○○試合結果」は変更せず、追加のalternativeとして扱う。
+    t = re.sub(r'\s*(試合)?結果速報\s*$|\s*(試合)?結果\s*$', '', title)
     t = re.sub(r'^\d{1,2}\.\d{1,2}\s+\S+\s+', '', t)
     return t.strip() or title
+
+
+SECTION_RE = re.compile(r'^第(\d+)部\s*(.+)$')
+# U-4(2026-08、合同記事対応の副作用修正): 「第N部」は本文の地の文でも普通に使われる表現
+# (例: 「第1部『DEEP☆KICK ZERO 14』に続き、...」という試合レポートの書き出し)。
+# 真の見出しは短い固有名詞のみ(句読点を含まない)で構成されるため、読点・句点を含む、
+# または一定の長さを超える行は地の文とみなして見出し扱いしない(全124件のうち
+# 地の文で誤爆したのは4件〈ZERO15・17・23・25〉、この判定でいずれも除外できることを確認済み)。
+_SECTION_MAX_LEN = 30
+
+
+def split_sections(lines):
+    """U-4(2026-08、合同記事対応): 「第N部 大会名」の<h1>見出し(get_lines()でp/h1混在のまま
+       document order通りに拾われている)を境に、(大会名, その区間のlines)の一覧へ分割する。
+       見出しが無ければ従来通り全体を1区間として返す(大会名はNoneとし、呼び出し側で
+       extract_event_name()を使わせる)。"""
+    marks = []
+    for i, l in enumerate(lines):
+        m = SECTION_RE.match(l)
+        if not m:
+            continue
+        name = m.group(2).strip('◎ 　').strip()
+        if len(l) > _SECTION_MAX_LEN or '、' in name or '。' in name:
+            continue
+        # 「◎株式会社WAON presents」のように協賛社名で行が終わり、実際の大会名(DEEP☆KICK
+        # ZERO 1等)が次のp/h1行に続くケースがある(実例: ZERO1・2合同記事)。「presents」で
+        # 終わる場合のみ次行を連結する(協賛クレジット表記の慣用パターンとして機械的に判定、
+        # それ以外の見出しを誤って連結しないよう限定的な条件にしている)。
+        if name.lower().endswith('presents') and i + 1 < len(lines):
+            name = f'{name} {lines[i + 1].strip()}'
+        marks.append((i, name))
+    if not marks:
+        return [(None, lines)]
+    segments = []
+    for idx, (pos, name) in enumerate(marks):
+        end = marks[idx + 1][0] if idx + 1 < len(marks) else len(lines)
+        segments.append((name, lines[pos + 1:end]))
+    return segments
 
 
 def parse_bout_blocks(lines):
@@ -220,77 +306,84 @@ def build():
         meta = IDX[eid]
         path = f'raw/deepkick_events/{eid}.html'
         lines = get_lines(path)
-        date = extract_date(lines, meta['title'], meta['published'])
+        page_date = extract_date(lines, meta['title'], meta['published'])
         venue = extract_venue(lines)
-        event = extract_event_name(lines, meta['title'])
         url = f'https://www.deep-kick.com/posts/{eid}?categoryIds=1233394'
         if any(CANCEL_RE.search(l) for l in lines[:6]):
             per_event_bouts[eid] = 0
             continue  # 大会自体が中止 -> 対戦カード告知のみで実施された試合ではないため対象外
-        blocks = parse_bout_blocks(lines)
-        block_total += len(blocks)
-        for b in blocks:
-            (m1, raw1), (m2, raw2) = b['fighters']
-            n1, a1 = split_name_aff(raw1)
-            n2, a2 = split_name_aff(raw2)
-            if not n1 or not n2:
-                block_fail += 1
-                continue
-            decision = b['decision']
-            notes = b['notes']
-            inline_note = None
-            if decision and '※' in decision:
-                decision, inline_note = decision.split('※', 1)
-                decision = decision.strip()
-                inline_note = inline_note.strip()
-            all_notes = notes + ([inline_note] if inline_note else [])
-            note_text = ' / '.join(all_notes) if all_notes else None
-            if decision:
-                meth, rnd, ext, rs = _bouts.parse_method(decision)
-            else:
-                meth, rnd, ext, rs = None, None, False, None
-            if not decision and any('不戦勝' in nt for nt in all_notes):
-                meth = 'walkover'
-            if decision and '勝敗なし' in decision:
-                meth = None
-            for (my_mark, my_name, my_aff), (opp_mark, opp_name, opp_aff) in [
-                ((m1, n1, a1), (m2, n2, a2)), ((m2, n2, a2), (m1, n1, a1))]:
-                rec, amb, cands = resolve(my_name, my_aff)
-                if amb or not rec:
-                    if not rec and not amb:
-                        pass
-                    self_unresolved += 1
+        # U-4(2026-08、合同記事の日付対応): 合同速報記事の日付は本文<p>/<h1>には無く、
+        # 末尾の<div class="blog-body__text">にのみ現れる。extract_date()(lines[:8]限定)
+        # では見つからないため、区間ごとに別途footer_datesを引く。単独大会記事は
+        # footer_datesが空になり従来通りpage_dateを使う。
+        footer_dates = extract_section_dates(path)
+        for section_name, section_lines in split_sections(lines):
+            event = section_name if section_name else extract_event_name(lines, meta['title'])
+            date = page_date or footer_dates.get(_norm_footer_name(event))
+            blocks = parse_bout_blocks(section_lines)
+            block_total += len(blocks)
+            for b in blocks:
+                (m1, raw1), (m2, raw2) = b['fighters']
+                n1, a1 = split_name_aff(raw1)
+                n2, a2 = split_name_aff(raw2)
+                if not n1 or not n2:
+                    block_fail += 1
                     continue
-                if my_mark:
-                    result = MARK2RESULT.get(my_mark, 'unknown')
-                elif decision and '勝敗なし' in decision:
-                    result = 'no_contest'
+                decision = b['decision']
+                notes = b['notes']
+                inline_note = None
+                if decision and '※' in decision:
+                    decision, inline_note = decision.split('※', 1)
+                    decision = decision.strip()
+                    inline_note = inline_note.strip()
+                all_notes = notes + ([inline_note] if inline_note else [])
+                note_text = ' / '.join(all_notes) if all_notes else None
+                if decision:
+                    meth, rnd, ext, rs = _bouts.parse_method(decision)
                 else:
-                    result = 'unknown'
-                if meth == 'walkover' and my_mark in ('×',):
-                    pass  # 不戦敗側もresultはmarkのまま(loss)。method だけwalkoverで揃える
-                oref, oamb, ocands = resolve(opp_name, opp_aff)
-                ident = f"{rec['name']}|{rec['gym'] or ''}|{rec['sources'][0] if rec['sources'] else ''}"
-                idx = bout_seq[ident]
-                bout_seq[ident] += 1
-                bouts.append(dict(
-                    bout_id=f'deepkick:{ident}:{idx}',
-                    date=date, event=event, venue=venue,
-                    fighter_slug=ident, fighter_name=rec['name'],
-                    opponent_raw=raw2 if my_name == n1 else raw1,
-                    opponent_name=opp_name, opponent_affiliation=opp_aff,
-                    opponent_site_slug=None,
-                    opponent_ref=oref['name'] if oref else None,
-                    opponent_ref_gym=oref['gym'] if oref else None,
-                    opponent_resolved=oref is not None,
-                    opponent_ambiguous=oamb, opponent_candidates=ocands,
-                    result=result, result_mark=my_mark, method=meth, method_raw=decision or '',
-                    round=rnd, is_extension=ext, ruleset=rs, note=note_text, is_debut=False,
-                    title_type=_bouts.classify_title_type(b['label']),
-                    pair_key=None,
-                    source_url=url,
-                ))
-                per_event_bouts[eid] += 1
+                    meth, rnd, ext, rs = None, None, False, None
+                if not decision and any('不戦勝' in nt for nt in all_notes):
+                    meth = 'walkover'
+                if decision and '勝敗なし' in decision:
+                    meth = None
+                for (my_mark, my_name, my_aff), (opp_mark, opp_name, opp_aff) in [
+                        ((m1, n1, a1), (m2, n2, a2)), ((m2, n2, a2), (m1, n1, a1))]:
+                    rec, amb, cands = resolve(my_name, my_aff)
+                    if amb or not rec:
+                        if not rec and not amb:
+                            pass
+                        self_unresolved += 1
+                        continue
+                    if my_mark:
+                        result = MARK2RESULT.get(my_mark, 'unknown')
+                    elif decision and '勝敗なし' in decision:
+                        result = 'no_contest'
+                    else:
+                        result = 'unknown'
+                    if meth == 'walkover' and my_mark in ('×',):
+                        pass  # 不戦敗側もresultはmarkのまま(loss)。method だけwalkoverで揃える
+                    oref, oamb, ocands = resolve(opp_name, opp_aff)
+                    ident = f"{rec['name']}|{rec['gym'] or ''}|{rec['sources'][0] if rec['sources'] else ''}"
+                    idx = bout_seq[ident]
+                    bout_seq[ident] += 1
+                    bouts.append(dict(
+                        bout_id=f'deepkick:{ident}:{idx}',
+                        date=date, event=event, venue=venue,
+                        fighter_slug=ident, fighter_name=rec['name'],
+                        opponent_raw=raw2 if my_name == n1 else raw1,
+                        opponent_name=opp_name, opponent_affiliation=opp_aff,
+                        opponent_site_slug=None,
+                        opponent_ref=oref['name'] if oref else None,
+                        opponent_ref_gym=oref['gym'] if oref else None,
+                        opponent_resolved=oref is not None,
+                        opponent_ambiguous=oamb, opponent_candidates=ocands,
+                        result=result, result_mark=my_mark, method=meth, method_raw=decision or '',
+                        round=rnd, is_extension=ext, ruleset=rs, note=note_text, is_debut=False,
+                        title_type=_bouts.classify_title_type(b['label']),
+                        pair_key=None,
+                        source_url=url,
+                    ))
+                    per_event_bouts[eid] += 1
     return bouts, dict(block_total=block_total, block_fail=block_fail, self_unresolved=self_unresolved,
                         events=len(ids), per_event_bouts=per_event_bouts)
 
