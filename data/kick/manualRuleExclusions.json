@@ -2158,5 +2158,53 @@
   "methodRaw": "3R 0:52 TKO",
   "category": "mma",
   "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。パンクラス旗揚げ2戦目「YES, WE ARE HYBRID WRESTLERS」(1993-11-08)の一戦。data/pancraseRecords.jsonのheadingTextに「異種格闘技戦」と明記(パンクラス旗揚げ当時の投げ・関節技を含むハイブリッドルール)。純粋なキックボクシングルールではない。"
+ },
+ {
+  "slug": "yasuyuki-nojiri",
+  "date": "2022-05-15",
+  "opponent": "奇天烈",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "他競技混入母集団取り直し監査(2026-08)で発見。data/shootoRecords.jsonに同一bout(TORAO27、2022-05-15)が収録されており、Web一次資料(MMAPLANET等)で「TORAO NATION STATE主催・修斗コミッション認定のプロフェッショナル修斗公式戦福岡大会」と確認。純粋なキックボクシングではなく総合格闘技(MMA)。"
+ },
+ {
+  "slug": "yasuyuki-nojiri",
+  "date": "2022-12-04",
+  "opponent": "神田T800周一",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "他競技混入母集団取り直し監査(2026-08)で発見。data/shootoRecords.jsonに同一bout(TORAO28、2022-12-04)が収録されており、Web一次資料(ゴング格闘技等)で「TORAO NATION STATE主催・国際修斗コミッション認定のプロフェッショナル修斗公式戦山口大会」と確認。純粋なキックボクシングではなく総合格闘技(MMA)。"
+ },
+ {
+  "slug": "taisei-nishitani",
+  "date": "2022-05-29",
+  "opponent": "星野 豊",
+  "methodRaw": "2R 判定",
+  "category": "mma",
+  "reason": "他競技混入母集団取り直し監査(2026-08)で発見。「DEEP TOKYO IMPACT 2022 4th ROUND」の一戦。data/deepRecords.jsonのheadingTextに「DEEPフェザー級」とのみ記載され、同シリーズの他行にある「キックルール/KICKルール」の明記がない。西谷大成は「DEEPを主戦場に戦う総合格闘家」(Wikipedia)であり、RIZIN.43戦(#597で除外済み)と同様の総合格闘技(MMA)。"
+ },
+ {
+  "slug": "taisei-nishitani",
+  "date": "2022-09-11",
+  "opponent": "TATSUMI",
+  "methodRaw": "2R 判定",
+  "category": "mma",
+  "reason": "他競技混入母集団取り直し監査(2026-08)で発見。「DEEP TOKYO IMPACT 2022 5th ROUND」の一戦。data/deepRecords.jsonのheadingTextに「DEEP フェザー級 5分2R」とのみ記載され、キックルール表記がない。西谷大成は「DEEPを主戦場に戦う総合格闘家」(Wikipedia)であり、総合格闘技(MMA)。"
+ },
+ {
+  "slug": "taisei-nishitani",
+  "date": "2023-05-07",
+  "opponent": "高野優樹",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "他競技混入母集団取り直し監査(2026-08)で発見。「DEEP 113 IMPACT」の一戦。data/deepRecords.jsonのheadingTextが空欄でキックルール表記がなく、Web一次資料(efight等)で「DEEPフェザー級戦」と明記。西谷大成は「DEEPを主戦場に戦う総合格闘家」(Wikipedia)であり、総合格闘技(MMA)。"
+ },
+ {
+  "slug": "koki-asano",
+  "date": "2024-08-25",
+  "opponent": "河村嘉展",
+  "methodRaw": "2R 判定",
+  "category": "mma",
+  "reason": "他競技混入母集団取り直し監査(2026-08)で発見。「DEEP NAGOYA IMPACT 2024 4th ROUND」の一戦。data/deepRecords.jsonのheadingTextが空欄でキックルール表記がなく、Web一次資料で「DEEP Flyweight amateur rules match」と確認。純粋なキックボクシングではなく総合格闘技(MMA、アマチュアルール)。"
  }
 ]
