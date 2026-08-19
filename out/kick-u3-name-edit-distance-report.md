@@ -3,30 +3,43 @@
 - 実施日: 2026-08-19
 - worktree: `mnews-worktrees/kick-u3-name-edit-distance`(branch `fix/kick-u3-name-edit-distance`、origin/main〈#599マージ後〉から分岐)
 
-## 0. 前提の再測定(#590時点の5,957件との差分)
+## 0. 前提の再測定(#590時点の5,957件との差分、完全解明済み)
 
-着手前に現状の`opponent_resolved:false`件数を測り直したところ、13ソース(`data/kick/bouts_{source}.json`自体、`promotion`表示ラベルではなく)で**5,791件**だった。
+マージ前のレビュー指摘を受け、着手時点の-166の内訳を`git show <commit>:data/kick/bouts_*.json`で当時の状態を直接復元して追跡し、**残差ゼロで完全に説明できることを確認した**。結論: 実データの不可解な変動は無かった。原因は(a)PR#590自身が持ち込んだ正味の修正67件、(b)測定式の定義の違い(ambiguous行の扱い)99件、の2つのみ。
 
-| ソース | #590時点 | 今回実測 | 差分 |
-|---|---:|---:|---:|
-| RISE | 1,601 | 1,574 | -27 |
-| SHOOT BOXING | 1,041 | 1,025 | -16 |
-| NJKF | 835 | 823 | -12 |
-| Bigbang | 600 | 584 | -16 |
-| DEEP☆KICK | 497 | 492 | -5 |
-| K-1 | 387 | 319 | -68 |
-| HoostCup | 385 | 365 | -20 |
-| KROSS×OVER | 342 | 341 | -1 |
-| NKB | 148 | 148 | 0 |
-| JKA | 58 | 58 | 0 |
-| Stand up | 35 | 34 | -1 |
-| SNKA | 22 | 22 | 0 |
-| KNOCK OUT | 6 | 6 | 0 |
-| **合計** | **5,957** | **5,791** | **-166** |
+### 内訳表(13ソース全件、`git show`で当時のコミットから直接復元して算出)
 
-いずれも減少方向(数日間の通常のデータ変動・別セッションの並行修正の反映と見られる)で、大きな異常は無い。この実測値(5,791件)を今回の測定基準とした。
+| ソース | 基準値(5,957の内訳、PR#590のベースコミット`3d41f41`時点、`!opponent_resolved`のみ) | PR#590自身の修正 | post-#590(`!opponent_resolved`のみ) | うちambiguous | 今回の報告値(post-#590、`!opponent_resolved && !opponent_ambiguous`) |
+|---|---:|---:|---:|---:|---:|
+| RISE | 1,601 | -12 | 1,589 | 15 | 1,574 |
+| SHOOT BOXING | 1,041 | -12 | 1,029 | 4 | 1,025 |
+| NJKF | 835 | -2 | 833 | 10 | 823 |
+| Bigbang | 600 | -7 | 593 | 9 | 584 |
+| DEEP☆KICK | 497 | -3 | 494 | 2 | 492 |
+| K-1 | 387 | -12 | 375 | 56 | 319 |
+| HoostCup | 385 | -17 | 368 | 3 | 365 |
+| KROSS×OVER | 342 | -1 | 341 | 0 | 341 |
+| NKB | 148 | 0 | 148 | 0 | 148 |
+| JKA | 58 | 0 | 58 | 0 | 58 |
+| Stand up | 35 | -1 | 34 | 0 | 34 |
+| SNKA | 22 | 0 | 22 | 0 | 22 |
+| KNOCK OUT | 6 | 0 | 6 | 0 | 6 |
+| **合計** | **5,957** | **-67** | **5,890** | **99** | **5,791** |
 
-**測定手法の訂正(重要)**: 当初`data/kick/generated/fighters/*.json`の`promotion`表示ラベルで絞り込んだところ7,395件になったが、これは誤りだった。`promotion`ラベルは大会名から推定した表示用の値であり、`bouts_wikipedia.json`由来の行でも「K-1」等のラベルを持つことがあるため、Wikipedia経由の行(このタスクの対象外)を誤って含めてしまう。正しくは各ソースの生成元ファイル(`bouts_rise.json`等)自体で絞り込む必要があり、この訂正により軸3で最初に見つかった候補(武蔵・シュー・イェン等、いずれもWikipedia由来と判明)は対象外として除外した。
+### 検証手順と根拠
+
+1. **基準値5,957の測定式を特定した**: `git show 3d41f41:data/kick/bouts_{source}.json`(PR#590のベースコミット、PR#590の修正が入る直前の状態)で`count(!opponent_resolved)`(ambiguous行を除外しない)を測ったところ、**13ソース全件で0件の誤差なくユーザー提示の5,957件の内訳と完全一致した**。つまり基準値は「ambiguous行を含む単純な未解決カウント」であり、これがこのタスクの測定基準の定義そのものだったと確定した。
+2. **PR#590自身の修正(-67件)**: `git show 434f69b:...`(PR#590のマージコミット)で同じ式を測ると5,890件になり、5,957からちょうど-67件減っている。これはPR#590の背景説明にある「編集距離1の候補512件を全件個別確認し、旧字体/異体字ペア67件のみを正規化ルール修正で解決」と正確に一致する(該当bout行数として67件、と読み替えて矛盾がない)。K-1だけで-12件と、この67件のうち相当数がK-1に集中していたことも確認した。
+3. **#590マージ後〜着手時点までの他コミットの有無**: `git diff 434f69b origin/main -- data/kick/bouts_*.json`(全13ファイル)を確認したところ、**#599(このPRの前段、HoostCupのコメント漏れ修正)以外に、どの13ファイルにも一切変更が無かった**。#599はHoostCupの5行のmethod_raw/result等を修正したが、いずれの行も`opponent_resolved`は変更していない(修正前後とも`false`のまま)ため、`!opponent_resolved`件数には影響していない(HoostCupは368件で不変)。
+4. **残りの-99件(5,890→5,791)は測定式の違いによるもの**: 今回自分の測定スクリプトは`!opponent_resolved && !opponent_ambiguous`(候補が複数あって一意に決められない行=ambiguousを除外する式)を使っていた。これはユーザー提示の基準値の式(ambiguous込み)とは異なる、より狭い定義。post-#590状態でのambiguous行の総数を数えたところ**ちょうど99件**(K-1だけで56件)で、5,890-99=5,791と完全に一致した。K-1の-68(387→319)は、この2つの要因(590の修正-12、ambiguous除外-56)の合算で、残差なく説明できる。
+
+### 結論
+
+- 実データの不可解な変動・欠落は無かった。5,957→5,791の差は「PR#590自身が予定通り修正した67件」+「測定式の違いで生じた99件」の合算(67+99=166)で、残差はゼロ。
+- 説明の付かない行は無い。
+- 今回の報告値(5,791、後述の測定は全てこの値を基準)は「ambiguous行を除いた、一意に絞り込めない候補が0件の行」のみを対象にしている。ambiguous行(99件、複数候補があり自動では決められない行)は編集距離の測定対象そのものが異なる(既に複数候補まで絞れているが一意化できていない、という別種の問題)ため、今回はスコープに含めていない。
+
+**測定手法の訂正(重要、着手直後に自分で発見・修正済み)**: 当初`data/kick/generated/fighters/*.json`の`promotion`表示ラベルで絞り込んだところ7,395件になったが、これは誤りだった。`promotion`ラベルは大会名から推定した表示用の値であり、`bouts_wikipedia.json`由来の行でも「K-1」等のラベルを持つことがあるため、Wikipedia経由の行(このタスクの対象外)を誤って含めてしまう。正しくは各ソースの生成元ファイル(`bouts_rise.json`等)自体で絞り込む必要があり、この訂正により軸3で最初に見つかった候補(武蔵・シュー・イェン等、いずれもWikipedia由来と判明)は対象外として除外した。
 
 ## 1. 4軸での候補生成
 
@@ -99,7 +112,33 @@
 
 **採用しなかった理由の補足**: 個別の漢字が視覚的に似ている(昴/昂、心/芯)というだけでは`_KANJI_VARIANT_TABLE`のような汎用の恒久変換ルールには追加しなかった。この2文字ペアは髙/高・﨑/崎のような真の異体字関係ではなく、単に字形が似ているだけの別の漢字であり、汎用ルール化すると「たまたま似た漢字を使う別人」まで巻き込む危険がある(このセッションの既存メモリ「異体字/同形字は一致、読みが変わる別人は未解決のまま」と同じ判断基準)。そのため、今回確認できた3件の**この特定のbout行のみ**を個別に修正し、レジストリで巻き戻りを監視する方式にとどめた。
 
-## 5. 増減内訳(build-kick-data.tsの集計値、修正前後)
+## 5. `VERIFIED_OPPONENT_BOUT_OVERRIDES`(build-kick-data.ts)全件との重複・矛盾確認
+
+`scripts/build-kick-data.ts`には、今回と同じ発想の既存の解決済みリスト`VERIFIED_OPPONENT_BOUT_OVERRIDES`がある(4節でYUTO/YU斗を通じて発見)。今回は統合せず、記録のみ行う。
+
+### 全件一覧(10件、キー形式: `${自分のslug}|${date}|${opponent_name}` → 相手のslug)
+
+| キー | 解決先slug | 備考 |
+|---|---|---|
+| `shota-2\|2017-05-28\|KAZUMU` | `kazumu` | 和夢 vs 翔太、Krush.76 |
+| `masumoto-shoya\|2017-03-18\|KAZUMU` | `kazumu` | 和夢 vs 桝本翔也、KHAOS.1 |
+| `yamamoto-naoki\|2015-04-12\|KAZUMU` | `kazumu` | 和夢 vs 山本直樹、Krush.53 |
+| `inoue-yamato\|2022-06-12\|YUTO` | `yuto-2` | YU斗 vs 井上大和、DEEP☆KICK 62(今回U-3の軸4で独立に再発見した候補と完全一致) |
+| `naito-ryota\|2021-03-21\|HIROKI` | `hiroki-2` | 弘樹 vs 内藤凌太、RIZIN.27 |
+| `miwa-yuki\|2018-03-10\|足利 和正` | `ashikaga-masakazu` | Krush.86 |
+| `saito-yuto\|2019-01-26\|足利 和正` | `ashikaga-masakazu` | Krush.97 |
+| `fujita-yoshifumi\|2019-09-16\|足利 和正` | `ashikaga-masakazu` | Krush.105 |
+| `seiki-ueyama\|2021-11-14\|京谷祐希（山口道場）※偶然のバッティングにより3R 1分02秒までの途中判定` | `yuki-kyotani` | Cygames presents RISE WORLD SERIES 2021 OSAKA2 |
+| `tatsuya-inaishi\|2020-11-08\|昇也（士魂村上塾` | `shoya` | スーパービッグバン2020 |
+
+### 重複・矛盾の確認結果
+
+- **重複**: 今回`manualOverrides.json`に新規登録した3行(`rise:masashi:2`・`sb:arima_reiji:15`・`sb:hasegawa_daisuke:5`)のキー(fighter_slug|date|opponent_name)は、上記10件のいずれとも一致しない。重複無し。
+- **見送った1件(YUTO/YU斗)との関係**: `inoue-yamato|2022-06-12|YUTO`が既にリストに存在しており、これが4節で「重複のため見送った」理由そのもの。今回の軸4測定で独立に発見した候補と、既存のこの1件は完全に一致しており、測定手法の妥当性を裏付ける追加の傍証にもなっている。
+- **矛盾**: 上記10件と今回の`correctedBoutResults`(11件、対戦相手解決3行+従来の2件)のキー・対象bout_idはいずれも重複しないため、値が食い違う(矛盾する)ケースは存在しない。
+- **統合について**: 2つの仕組みは対象データ(`VERIFIED_OPPONENT_BOUT_OVERRIDES`はbuild時のTypeScriptコード内定数、`correctedBoutResults`は`data/kick/manualOverrides.json`のデータファイル)も検証方法(前者はbuild-kick-data.ts実行時に無条件適用、後者はcheck-kick-manual-edit-drift.tsが巻き戻りを検知)も異なる。指示どおり今回は統合しない。
+
+## 6. 増減内訳(build-kick-data.tsの集計値、修正前後)
 
 | 指標 | 修正前 | 修正後 | 差分 |
 |---|---:|---:|---:|
@@ -114,7 +153,7 @@
 
 opponent_resolved件数自体は3件改善(bouts_rise.json 1件、bouts_sb.json 2件)したが、上記の集計指標(行数・重複マージ数等)には現れない(既存行のフィールド値変化のみで、行の追加・削除は無いため)。
 
-## 6. `check-kick-identity-merge-risk`の前後比較(波及確認)
+## 7. `check-kick-identity-merge-risk`の前後比較(波及確認)
 
 | | 修正前 | 修正後 |
 |---|---:|---:|
@@ -122,9 +161,9 @@ opponent_resolved件数自体は3件改善(bouts_rise.json 1件、bouts_sb.json 
 
 変化なし。今回の修正は名寄せの正規化ルール(`_KANJI_VARIANT_TABLE`等)を一切変更しておらず、個別の行の`opponent_ref`のみを直接上書きしたため、既存の解決済み行が誤って別人に付け替わるリスクは発生していないことを確認した。
 
-## 7. 破壊テスト
+## 8. 破壊テスト
 
-`manualOverrides.json`に新規登録した11件のうち代表として`rise:masashi:2`の`opponent_resolved`をfalseに書き戻し、`check-kick-manual-edit-drift.ts`(検査3)が正しく検知することを確認した:
+`manualOverrides.json`の`correctedBoutResults`は今回9件新規登録した(解決した3行 × フィールド3つ〈opponent_resolved・opponent_ref・opponent_ref_gym〉)。既存2件(RISE result 1件・Bigbang date 1件)と合わせ、レジストリ全体は11件になった。この9件のうち代表として`rise:masashi:2`の`opponent_resolved`をfalseに書き戻し、`check-kick-manual-edit-drift.ts`(検査3)が正しく検知することを確認した:
 
 ```
 ★data/kick/manualOverrides.json の correctedBoutResults に登録済みの手動修正が巻き戻っています。
@@ -133,25 +172,25 @@ opponent_resolved件数自体は3件改善(bouts_rise.json 1件、bouts_sb.json 
 
 値を復元し、`git diff`がクリーンに戻ること・ゲートが再び成功することを確認した。
 
-`表記ゆれクラスの件数を0でratchetするゲート`について: 今回は汎用の正規化ルールを追加しなかった(5節参照)ため、新規の恒久ゲートは追加していない。個別に修正した3行の巻き戻り防止は、上記の通り既存の`check-kick-manual-edit-drift.ts`(検査3、汎用のcorrectedBoutResults機構)がそのままゼロ件ゲートとして機能する。
+`表記ゆれクラスの件数を0でratchetするゲート`について: **このゲートは原理的に成立しないと判断し、追加していない。** 3節の実測が示す通り(軸2: 13ペア中10件、軸4: 28件中27件)、「表記ゆれ(同一人物の異表記)」と「別人(同姓・同ジムだが異なる人物)」は、機械的な特徴(漢字の字形類似度・かな一致・所属欄一致等)だけでは原理的に区別できない。両者は同じ特徴量(同姓・同ジム・似た字形)を共有しており、区別には「生年月日が試合日と矛盾しないか」「かな読みが実際に一致するか」といった個別の外部情報の確認が不可欠で、これは定義上、機械的なゼロ件ゲートにできない(ゲート自体が「別人」を「ゆれ」と誤検知するか、逆に本物のゆれを見逃すかのどちらかになる)。個別に修正した3行の巻き戻り防止だけは、上記の通り既存の`check-kick-manual-edit-drift.ts`(検査3、汎用のcorrectedBoutResults機構)がそのままゼロ件ゲートとして機能しており、これで十分と判断した。
 
-## 8. 結論と申し送り
+## 9. 結論と申し送り
 
 - 5,791件のうち、個別確認まで到達できた高確度候補は**3件(0.05%)**のみ。指示どおり「大半が別人」という前提が実測でも裏付けられた。
 - 軸2raw(姓一致のみ、625件)・軸4の残り33件・軸1の未確認2件は、所属欄等の裏取り材料が無いか、あっても不一致で却下されたものが大半であり、**今回はこれ以上の個別確認をせず、ここで打ち止めとする**(指示の停止条件どおり、全件消化を追わず件数と精度を報告)。
 - cross-validation(候補自身の戦績での相互裏取り)は構造的にほぼ機能しないことが判明した。今後同種の測定を行う場合、所属欄一致・生年月日整合性を主軸に据えるべきで、cross-validationは補助的な位置づけにとどめるべき。
 - `VERIFIED_OPPONENT_BOUT_OVERRIDES`(build-kick-data.ts)という、今回と同じ発想の既存の解決済みリストが既にあることを1件のケース(YUTO/YU斗)を通じて発見した。今後同種の作業に着手する際は、着手前にこのリストも確認することを推奨する。
 
-## 9. 変更ファイル
+## 10. 変更ファイル
 
 - `data/kick/bouts_rise.json` / `scripts/standup-pipeline/bouts_rise.json`(1行、opponent_ref/opponent_ref_gym/opponent_resolvedを修正)
 - `data/kick/bouts_sb.json` / `scripts/standup-pipeline/bouts_sb.json`(2行、同上)
-- `data/kick/manualOverrides.json`(6件追加、_meta更新なし)
+- `data/kick/manualOverrides.json`(correctedBoutResultsに9件追加〈解決した3行×3フィールド〉、既存2件と合わせ計11件。_meta更新なし)
 - `data/kick/sourceMeta.json`(データ変更に伴うcontentHash/updatedAt再生成)
 - `scripts/standup-pipeline/kana_romaji.py`(新規、カタカナ→ヘボン式ローマ字の簡易変換テーブル、軸4測定用)
 - `scripts/standup-pipeline/u3_measure_axes.py`(新規、4軸の候補生成+cross-validation試行ハーネス、調査用)
 
-## 10. 検証
+## 11. 検証
 
 - `npx tsx scripts/build-kick-data.ts`: 成功
 - 全20本のcheck:kick-*ゲート: 全件OK
