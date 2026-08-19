@@ -406,6 +406,45 @@ const bySourceUrl = new Map<string, Fighter>();
 for (const f of fighters) for (const u of f.sources) bySourceUrl.set(u, f);
 const knownIdentities = new Set<string>(fighters.map((f) => identity(f)));
 
+// ---------- ルール除外(PR-2、U-5でチーム対抗戦除外のため前出し) ----------
+// MMA・エキシビジョン・アマチュア戦・ボクシングルールの試合など、キックボクシングの
+// 戦績として掲載すべきでないboutを、1件ずつ事実確認のうえ除外する。生データ
+// (bouts_*.json)は変更せず、この一覧(data/kick/manualRuleExclusions.json、
+// 選手slug・日付・相手・決着原文・除外理由を保持)とビルド時に照合して除外する。
+// キーワードだけでの機械判定はしない(同じ「一本」でもK-1甲子園はアマ、KROSS×OVERは
+// MMAケージ、といった具合に文脈で意味が異なるため)。
+//
+// U-5(2026-08)でcategory="team_battle"を追加。以前はfighters/選手ごとにboutを束ねた
+// 後段(旧: この下にあった「選手ごとにboutを束ねる」ループの後)でのみ照合していたが、
+// team_battleはそもそも選手identityに束ねられる前(＝下のunmatchedBoutsカウント段階)に
+// 弾く必要があるため、この除外機構全体を選手ごとの束ね処理より前に前出しした。
+interface ManualExclusion {
+  slug: string;
+  date: string | null;
+  opponent: string;
+  methodRaw: string;
+  category: "mma" | "exhibition" | "amateur" | "boxing" | "team_battle";
+  reason: string;
+}
+const manualExclusions: ManualExclusion[] = fs.existsSync(path.join(SRC, "manualRuleExclusions.json"))
+  ? JSON.parse(fs.readFileSync(path.join(SRC, "manualRuleExclusions.json"), "utf8"))
+  : [];
+const exclusionByKey = new Map<string, ManualExclusion[]>();
+for (const e of manualExclusions) {
+  const k = `${e.slug}|${e.date ?? "null"}|${normalizeKickName(e.opponent)}`;
+  const arr = exclusionByKey.get(k) ?? [];
+  arr.push(e);
+  exclusionByKey.set(k, arr);
+}
+const exclusionMatchCount = new Map<ManualExclusion, number>();
+function findExclusion(slug: string, b: Bout & { promotion: string }): ManualExclusion | null {
+  const k = `${slug}|${b.date ?? "null"}|${normalizeKickName(b.opponent_name)}`;
+  const hit = (exclusionByKey.get(k) ?? []).find((e) => e.methodRaw === b.method_raw);
+  if (hit) exclusionMatchCount.set(hit, (exclusionMatchCount.get(hit) ?? 0) + 1);
+  return hit ?? null;
+}
+const excludedRowsLog: (ManualExclusion & { name: string; event: string | null; promotion: string })[] = [];
+
 // ---------- 選手ごとにboutを束ねる ----------
 const boutsByIdentity = new Map<string, (Bout & { promotion: string })[]>();
 let unmatchedBouts = 0;
@@ -419,6 +458,20 @@ for (const b of allBouts) {
     key = f ? identity(f) : null;
   }
   if (!key) {
+    // U-5(2026-08): KNOCK OUT「U-NEXT presents THE KNOCK OUT FIGHTER.7」
+    // (2026-04-04)の6行は、選手個人ではなくチーム/クルー単位の対抗戦(fighter_name/
+    // opponent_rawがコーチ名付きのチーム名で、個人選手名簿と本質的に紐付かない構造の
+    // 入力)。物理データ(bouts_knockout.json)は変更せず、manualRuleExclusions.jsonに
+    // category="team_battle"として登録した4件(=slugは解決前の生fighter_slug)を
+    // ここで照合し、unmatchedBoutsのカウントから分離する(「名簿への掲載漏れ」である
+    // RISEミツダマン・K-1ウィナー等の残り6件とは別クラスのため、一緒くたに監視しない)。
+    // 全16ソースをコーチ・監督・代表・GYM等のパターンで機械走査した結果、この6行
+    // (KNOCK OUT 1大会のみ)以外に同型入力は無いことを確認済み(U-5調査、2026-08)。
+    const ex = findExclusion(b.fighter_slug, b);
+    if (ex) {
+      excludedRowsLog.push({ ...ex, name: b.fighter_name, event: b.event, promotion: b.promotion });
+      continue;
+    }
     unmatchedBouts++;
     continue;
   }
@@ -868,39 +921,8 @@ let boutRowsWikipedia = 0;
 // fighters.json 側の orgs(名簿の掲載元)とは別概念のため、選手ごとの bouts から都度求める。
 const orgTagsBySlug = new Map<string, string[]>();
 
-// ---------- ルール除外(PR-2) ----------
-// MMA・エキシビジョン・アマチュア戦・ボクシングルールの試合など、キックボクシングの
-// 戦績として掲載すべきでないboutを、1件ずつ事実確認のうえ除外する。生データ
-// (bouts_*.json)は変更せず、この一覧(data/kick/manualRuleExclusions.json、
-// 選手slug・日付・相手・決着原文・除外理由を保持)とビルド時に照合して除外する。
-// キーワードだけでの機械判定はしない(同じ「一本」でもK-1甲子園はアマ、KROSS×OVERは
-// MMAケージ、といった具合に文脈で意味が異なるため)。
-interface ManualExclusion {
-  slug: string;
-  date: string | null;
-  opponent: string;
-  methodRaw: string;
-  category: "mma" | "exhibition" | "amateur" | "boxing";
-  reason: string;
-}
-const manualExclusions: ManualExclusion[] = fs.existsSync(path.join(SRC, "manualRuleExclusions.json"))
-  ? JSON.parse(fs.readFileSync(path.join(SRC, "manualRuleExclusions.json"), "utf8"))
-  : [];
-const exclusionByKey = new Map<string, ManualExclusion[]>();
-for (const e of manualExclusions) {
-  const k = `${e.slug}|${e.date ?? "null"}|${normName(e.opponent)}`;
-  const arr = exclusionByKey.get(k) ?? [];
-  arr.push(e);
-  exclusionByKey.set(k, arr);
-}
-const exclusionMatchCount = new Map<ManualExclusion, number>();
-function findExclusion(slug: string, b: Bout & { promotion: string }): ManualExclusion | null {
-  const k = `${slug}|${b.date ?? "null"}|${normName(b.opponent_name)}`;
-  const hit = (exclusionByKey.get(k) ?? []).find((e) => e.methodRaw === b.method_raw);
-  if (hit) exclusionMatchCount.set(hit, (exclusionMatchCount.get(hit) ?? 0) + 1);
-  return hit ?? null;
-}
-const excludedRowsLog: (ManualExclusion & { name: string; event: string | null; promotion: string })[] = [];
+// ルール除外(PR-2)の定義本体は、選手ごとの束ね処理より前(bySourceUrl/knownIdentities
+// の直後)に移設済み(U-5、team_battleを選手identity解決前に弾く必要があるため)。
 
 for (const f of fighters) {
   const key = identity(f);
