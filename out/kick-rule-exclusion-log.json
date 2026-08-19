@@ -1,5 +1,49 @@
 [
  {
+  "slug": "burakupansa-beinoa",
+  "date": "2022-12-31",
+  "opponent": "宇佐美正パトリック",
+  "methodRaw": "1R KO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「湘南美容クリニック presents RIZIN.40」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記。",
+  "name": "“ブラックパンサー”ベイノア",
+  "event": "湘南美容クリニック presents RIZIN.40",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "burakupansa-beinoa",
+  "date": "2021-12-31",
+  "opponent": "武田光司",
+  "methodRaw": "2RKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「Yogibo presents RIZIN.33」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"、決着も「アームバー」でのタップアウトとMMA固有のサブミッション決着。",
+  "name": "“ブラックパンサー”ベイノア",
+  "event": "Yogibo presents RIZIN.33",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "burakupansa-beinoa",
+  "date": "2021-11-20",
+  "opponent": "ロクク・ダリ",
+  "methodRaw": "3RKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「Yogibo presents RIZIN.32」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記。",
+  "name": "“ブラックパンサー”ベイノア",
+  "event": "Yogibo presents RIZIN.32",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "burakupansa-beinoa",
+  "date": "2021-06-13",
+  "opponent": "弥益ドミネーター聡志",
+  "methodRaw": "3R判定",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「Yogibo presents RIZIN.28」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記。",
+  "name": "“ブラックパンサー”ベイノア",
+  "event": "Yogibo presents RIZIN.28",
+  "promotion": "RISE"
+ },
+ {
   "slug": "andi-sawa",
   "date": "2017-10-15",
   "opponent": "西浦“ウィッキー”聡生",
@@ -187,6 +231,17 @@
   "promotion": "RISE"
  },
  {
+  "slug": "shin-jonmin",
+  "date": "2023-12-31",
+  "opponent": "那須川龍心",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「にゃんこ大戦争 presents RIZIN.45」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"、決着も「グラウンドパンチ」とMMA特有のグラウンド打撃技。対戦相手那須川龍心側(slug:ryujin-nasukawa)にも同一bout除外を追加済み。",
+  "name": "シン・ジョンミン",
+  "event": "にゃんこ大戦争 presents RIZIN.45",
+  "promotion": "RISE"
+ },
+ {
   "slug": "seiya-2",
   "date": "2025-11-22",
   "opponent": "森本現暉",
@@ -262,6 +317,28 @@
   "name": "TOMO",
   "event": "KROSS×OVER 19",
   "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "tenshin-nasukawa",
+  "date": "2017-07-30",
+  "opponent": "才賀紀左衛門",
+  "methodRaw": "1R KO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「RIZIN.6 RIZIN FIGHTING WORLD GRAND-PRIX 2017 1st ROUND -夏の陣-」の一戦。data/rizinRecords.jsonの構造化データでruleType:\"MIXルール\"と明記(純粋なキックボクシングルールではない特別ルール)。",
+  "name": "那須川天心",
+  "event": "RIZIN FIGHTING WORLD GRAND-PRIX 2017 バンタム級トーナメント 1st ROUND -夏の陣-",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "tenshin-nasukawa",
+  "date": "2017-04-16",
+  "opponent": "フランチェスコ・ギリオッティ",
+  "methodRaw": "1R KO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「RIZIN.5 RIZIN 2017 in YOKOHAMA -SAKURA-」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記。",
+  "name": "那須川天心",
+  "event": "RIZIN 2017 in YOKOHAMA - SAKURA -",
+  "promotion": "RISE"
  },
  {
   "slug": "tenshin-nasukawa",
@@ -416,6 +493,50 @@
   "name": "森本 直哉",
   "event": "KROSS×OVER.32",
   "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "morisu-sumisu",
+  "date": "1993-11-08",
+  "opponent": "鈴木みのる",
+  "methodRaw": "3R 0:52 TKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。パンクラス旗揚げ2戦目「YES, WE ARE HYBRID WRESTLERS」(1993-11-08)の一戦。data/pancraseRecords.jsonのheadingTextに「異種格闘技戦」と明記(パンクラス旗揚げ当時の投げ・関節技を含むハイブリッドルール)。純粋なキックボクシングルールではない。",
+  "name": "モーリス・スミス",
+  "event": "パンクラス 1993 YES, WE ARE HYBRID WRESTLERS",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "yaman",
+  "date": "2024-07-28",
+  "opponent": "鈴木博昭",
+  "methodRaw": "1R KO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「Yogibo presents 超RIZIN.3」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"、決着も「スタンドパンチ」表記だがRIZIN側の分類はMMA。",
+  "name": "YA-MAN",
+  "event": "Yogibo presents 超RIZIN.3",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "yaman",
+  "date": "2023-12-31",
+  "opponent": "平本蓮",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「にゃんこ大戦争 presents RIZIN.45」の総合格闘技戦(平本蓮は総合格闘家)。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記。",
+  "name": "YA-MAN",
+  "event": "にゃんこ大戦争 presents RIZIN.45",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "yaman",
+  "date": "2023-05-06",
+  "opponent": "三浦孝太",
+  "methodRaw": "1R TKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「RIZIN.42」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"、決着も「グラウンドパンチ」とMMA特有のグラウンド打撃技。",
+  "name": "YA-MAN",
+  "event": "RIZIN.42",
+  "promotion": "RISE"
  },
  {
   "slug": "remigiusu-morikabyuchisu",
@@ -1167,6 +1288,17 @@
  },
  {
   "slug": "mikuru-asakura",
+  "date": "2023-04-29",
+  "opponent": "牛久絢太郎",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「FEDELTA presents RIZIN LANDMARK 5 in YOYOGI」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記(牛久絢太郎 vs 朝倉未来、3R 判定 0-3)。大会名「RIZIN LANDMARK」はRIZINのキックボクシングブランドだが、この一戦はMMAだった(LANDMARK15昇侍戦と同型の「大会名だけでは競技種別を機械判定できない」実例)。",
+  "name": "朝倉未来",
+  "event": "RIZIN LANDMARK 5",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "mikuru-asakura",
   "date": "2021-12-31",
   "opponent": "斎藤 裕",
   "methodRaw": "3R 判定",
@@ -1174,6 +1306,17 @@
   "reason": "RIZIN.33の総合格闘技戦。Wikipedia「朝倉未来」本文に「前RIZINフェザー級王者の斎藤裕と再戦。2Rに打撃で優勢な...3-0の判定で勝利」と明記。",
   "name": "朝倉未来",
   "event": "RIZIN.33",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "mikuru-asakura",
+  "date": "2021-10-02",
+  "opponent": "萩原京平",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「+WEED presents RIZIN LANDMARK vol.1」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記(朝倉未来 vs 萩原京平、3R 判定 3-0)。",
+  "name": "朝倉未来",
+  "event": "RIZIN LANDMARK vol.1",
   "promotion": "RISE"
  },
  {
@@ -1705,6 +1848,50 @@
   "promotion": "RISE"
  },
  {
+  "slug": "rikuto-shirakawa",
+  "date": "2023-09-24",
+  "opponent": "中原由貴",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「RIZIN.44」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記。",
+  "name": "白川陸斗",
+  "event": "RIZIN.44",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "rikuto-shirakawa",
+  "date": "2021-10-24",
+  "opponent": "山本琢也",
+  "methodRaw": "1R TKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「Yogibo presents RIZIN.31」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"、決着も「グラウンドキック」とMMA特有のグラウンド打撃技。",
+  "name": "白川陸斗",
+  "event": "RIZIN.31",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "rikuto-shirakawa",
+  "date": "2021-06-27",
+  "opponent": "青井 人",
+  "methodRaw": "3R 判定",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「Yogibo presents RIZIN.29」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"と明記。",
+  "name": "白川陸斗",
+  "event": "RIZIN.29",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "rikuto-shirakawa",
+  "date": "2020-11-21",
+  "opponent": "朴 光哲",
+  "methodRaw": "3R TKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「Yogibo presents RIZIN.25」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"、決着も「サッカーボールキック」とMMA特有のグラウンド打撃技。",
+  "name": "白川陸斗",
+  "event": "RIZIN.25",
+  "promotion": "RISE"
+ },
+ {
   "slug": "koki-shiratori",
   "date": "2025-05-25",
   "opponent": "THE ROCK MFC",
@@ -1805,6 +1992,17 @@
  },
  {
   "slug": "taisei-nishitani",
+  "date": "2023-06-24",
+  "opponent": "鈴木博昭",
+  "methodRaw": "1R TKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「RIZIN.43」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"、決着も「グラウンドパンチ」とMMA特有のグラウンド打撃技。",
+  "name": "西谷大成",
+  "event": "RIZIN.43",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "taisei-nishitani",
   "date": "2022-03-12",
   "opponent": "鷹辰",
   "methodRaw": "2R SUB",
@@ -1812,6 +2010,17 @@
   "reason": "DEEP TOKYO IMPACTでの総合格闘技戦。method=\"submission\"、決着略号「SUB」は寝技一本を示す。",
   "name": "西谷大成",
   "event": "DEEP TOKYO IMPACT 2022 1st ROUND",
+  "promotion": "RISE"
+ },
+ {
+  "slug": "ryujin-nasukawa",
+  "date": "2023-12-31",
+  "opponent": "シン・ジョンミン",
+  "methodRaw": "2R TKO",
+  "category": "mma",
+  "reason": "RIZIN/DEEP系大会での他競技混入監査(2026-08)で発見。「にゃんこ大戦争 presents RIZIN.45」の総合格闘技戦。data/rizinRecords.jsonの構造化データでruleType:\"MMA\"、決着も「グラウンドパンチ」とMMA特有のグラウンド打撃技。対戦相手シン・ジョンミン側(slug:shin-jonmin)にも同一bout除外を追加済み。",
+  "name": "那須川龍心",
+  "event": "にゃんこ大戦争 presents RIZIN.45",
   "promotion": "RISE"
  },
  {
