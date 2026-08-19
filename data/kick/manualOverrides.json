@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "description": "「再生成で無言に巻き戻りうる手動編集値」の既知レジストリ(PR-G追加ゲート、2026-08-17)。data/kick/manualRuleExclusions.jsonと同じ発想: 手動で修正した値をここに登録し、scripts/check-kick-manual-edit-drift.tsがビルド時に『登録した修正が今も反映されているか』を検証する。当初はbouts_wikipedia.jsonの選手identity(fighter_slug/fighter_name)の巻き戻り検知のみだったが、2026-08-19にbouts_*.json全般の任意フィールド(result等)の巻き戻り検知へ拡張した(correctedBoutResults、T-1のraw/キャッシュ退避検証〈PR#588〉で見つかったRISE 1件が最初の登録例)。",
+  "description": "「再生成で無言に巻き戻りうる手動編集値」の既知レジストリ(PR-G追加ゲート、2026-08-17)。data/kick/manualRuleExclusions.jsonと同じ発想: 手動で修正した値をここに登録し、scripts/check-kick-manual-edit-drift.tsがビルド時に『登録した修正が今も反映されているか』を検証する。当初はbouts_wikipedia.jsonの選手identity(fighter_slug/fighter_name)の巻き戻り検知のみだったが、2026-08-19にbouts_*.json全般の任意フィールド(result等)の巻き戻り検知へ拡張した(correctedBoutResults、T-1のraw/キャッシュ退避検証〈PR#588〉で見つかったRISE 1件が最初の登録例)。同日、U-1(13ソースのフェッチャ実装+突合)で見つかった、退避rawからもライブ再取得からも再現しない35件(DEEP☆KICK 27の大会名10件・NJKF日付23件・Bigbang日付2件)を追加登録した。原因(パーサのバグかsource側のデータ不備か)は未特定のまま、値の正しさのみ個別に裏取りして登録している。",
   "background": "PR-18(#554)は data/kick/bouts_wikipedia.json(scripts/standup-pipeline/ingest_wikipedia.pyが生成するファイル、build-kick-data.tsの入力でもある)を直接手動編集し、5人の改名選手(旧名で書かれたfighter_slugが誰にも解決しない状態)のfighter_slug/fighter_nameを正しい値へ書き換えた。しかしこの修正はingest_wikipedia.py/build_coverage_population_v2.pyのロジックには反映されておらず、後日(#563)これらのスクリプトを再実行してbouts_wikipedia.jsonを再生成した際、5人分の修正が無言で巻き戻っていたことが判明した(#563の調査で発覚・修正)。#563はscripts/standup-pipeline/build_coverage_population_v2.pyにLEG3_NAME_RENAMESという恒久的なリネーム表を追加し、再生成しても巻き戻らないよう根治した。このレジストリは、その根治が将来また外れて同じ巻き戻りが再発した場合に検知するための回帰防止用。",
   "checkedFile": "renamedFighterWikipediaIdentityはdata/kick/bouts_wikipedia.jsonのみを対象。correctedBoutResultsは各エントリのsourceFileで個別に対象ファイルを指定する。"
  },
@@ -45,6 +45,321 @@
    "correctedValue": "loss",
    "reason": "チャーンスック・ペッティンディーアカデミー vs 麻火佑太郎(2026-06-06、RISE)。RISE公式サイト自体が対戦相手双方の個人ページに「勝利」と表示する矛盾があり、より上位の一次資料である大会結果ページ(rise-rc.com/result/rise_ws2026_tokyo_result/)で麻火佑太郎の勝利・チャーンスックの敗北を確認して手動修正した。raw HTMLそのものが誤っているため、パーサ側の修正では対応できない(T-1、kick-13source-regen-and-defect-audit-report.md参照)。",
    "fixedInCommit": "768f108 (PR-13、#549)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:東本 央貴|白仙会|https://www.k-1.co.jp/fighter/311:2",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:百花|魁塾|https://rise-rc.com/fighter/momoka/:6",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:吉川 諒|VAINQUEUR GYM|https://www.k-1.co.jp/fighter/1020:0",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:内藤凌太|BELLWOOD FIGHT TEAM|https://rise-rc.com/fighter/naito_ryota/:2",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:伊奈 良太||https://www.k-1.co.jp/fighter/109:3",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:西元 也史|K-1 GYM SAGAMI-ONO KREST|https://www.k-1.co.jp/fighter/998:1",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:キラッ☆Chihiro||https://www.k-1.co.jp/fighter/390:2",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:山下 和希|K-1 GYM SAGAMI-ONO KREST|https://www.k-1.co.jp/fighter/713:0",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:風音|TEAM TEPPEN|https://rise-rc.com/fighter/kazane/:2",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_deepkick.json",
+   "boutId": "deepkick:基山幹太|BELLWOOD FIGHT TEAM|https://rise-rc.com/fighter/motoyama_kanta/:0",
+   "correctedField": "event",
+   "originalValue": "いつでもやってやる。でも今日の試合内容では、次も俺の1ラウンドKO勝ち",
+   "correctedValue": "DEEP☆KICK 27",
+   "reason": "DEEP☆KICK 27(2015-09-21、大阪市生野区民センター大ホール)のページ本文に埋め込まれた選手コメント文をイベント名として誤抽出するingest_deepkick.pyのバグ。実ページのtitle/h3見出し/前後投稿(DEEP☆KICK 26/28)で「DEEP☆KICK 27」が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:堀田 優月|闘神塾|https://knockoutkb.com/fighters/horita_yuzuki_310:4",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:真美|Team ImmortaL|https://www.k-1.co.jp/fighter/1077:5",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2025-11-30",
+   "reason": "イベント「11月30日(日) Challnger11 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2025-11-30が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:紗耶香|格闘技スタジオBLOOM|https://rise-rc.com/fighter/sayaka/:1",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:AIKO|AX GYM|https://www.k-1.co.jp/fighter/1098:4",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:吉田 凜汰朗|VERTEX|https://knockoutkb.com/fighters/yoshida_rintaro_591:10",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2025-11-30",
+   "reason": "イベント「11月30日(日) Challnger11 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2025-11-30が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:井原 浩之|ハーデスワークアウトジム|https://knockoutkb.com/fighters/ihara_hiroyuki_585:0",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2025-11-30",
+   "reason": "イベント「11月30日(日) Challnger11 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2025-11-30が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:aimi-|DANGER GYM|https://www.k-1.co.jp/fighter/1478:1",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:MIKU|K CRONY|https://knockoutkb.com/fighters/miku_144:1",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:珠璃|闘神塾|https://knockoutkb.com/fighters/shuri_448:0",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:浅井春香|Kick Box|https://rise-rc.com/fighter/asai_haruka/:3",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:切詰大貴||https://ja.wikipedia.org/wiki/切詰大貴:0",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2025-11-30",
+   "reason": "イベント「11月30日(日) Challnger11 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2025-11-30が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:高橋 幸光|飯伏プロレス研究所|https://knockoutkb.com/fighters/takahashi_yukimitsu_297:5",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2025-11-30",
+   "reason": "イベント「11月30日(日) Challnger11 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2025-11-30が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:服部 華鈴|キング・ムエ|https://www.k-1.co.jp/fighter/1704:0",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:健太|NJKF・E.S.G|https://knockoutkb.com/fighters/kenta_107:27",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2025-11-30",
+   "reason": "イベント「11月30日(日) Challnger11 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2025-11-30が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:上真|ROAD MMA GYM|https://rise-rc.com/fighter/joma/:4",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:梅沢 遼太郎|白山道場|https://knockoutkb.com/fighters/umezwa_ryotaro_99:0",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2024-05-26",
+   "reason": "イベント「5月26日 DUEL.30 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2024-05-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:小倉 えりか|MWS|https://knockoutkb.com/fighters/ogura_erika_293:2",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:斎藤 千種|白山道場|https://knockoutkb.com/fighters/saito_chigusa_253:2",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:山川敏弘|Maynish KickBoxingGym|https://rise-rc.com/fighter/yamakawa_toshihiro/:3",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2025-11-30",
+   "reason": "イベント「11月30日(日) Challnger11 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2025-11-30が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:ねこ太|とらの子レスリングクラブ|https://rise-rc.com/fighter/nekota/:1",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:Nao|AXGYM|https://knockoutkb.com/fighters/nao_373:1",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:風成||https://ja.wikipedia.org/wiki/風成:1",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2024-05-26",
+   "reason": "イベント「5月26日 DUEL.30 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2024-05-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_njkf.json",
+   "boutId": "njkf:世莉JSK|治政館|https://rise-rc.com/fighter/seri_jsk/:2",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2023-03-26",
+   "reason": "イベント「3月26日 GODDESS OF VICTORY 試合結果」のページ見出しには月日のみで年が無く、ingest_njkf.pyのsibling日付推定でも埋まらない。ページ本文中の別セクション(計量結果等)またはdatePublishedメタデータから年を裏取りし、2023-03-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_bigbang.json",
+   "boutId": "bigbang:野村太一|K’Bスポーツジム|https://rise-rc.com/fighter/nomura_taichi/:1",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2025-06-29",
+   "reason": "Bigbang公式ページ側の日付欄が「202年月日」という壊れたプレースホルダのまま(実測確認)。相手選手側の対戦相手(森本現暉)のRISE公式データで同一試合が2025-06-29と記録されており、独立ソースでの裏取りにより正しいと確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
+  },
+  {
+   "sourceFile": "bouts_bigbang.json",
+   "boutId": "bigbang:増井 侑輝|真樹ジムAICHI|https://www.k-1.co.jp/fighter/1201:11",
+   "correctedField": "date",
+   "originalValue": null,
+   "correctedValue": "2019-05-26",
+   "reason": "Bigbang公式ページ側の日付表記が「2019年5月26」(「日」の脱字)という不完全な表記のまま(実測確認)。年月日の数値自体は読み取れ、2019-05-26が正しいことを確認済み(U-1、2026-08-19)。",
+   "fixedInCommit": "U-1調査で発見、原因未特定のまま既存データに反映済み(コミット不明)"
   }
  ]
 }
