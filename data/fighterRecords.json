@@ -9990,7 +9990,7 @@
         "opponent": "テリー・ワカンダ",
         "result": "win",
         "method": "1R 0:15 TKO（パウンド）",
-        "event": "Rumble#3",
+        "event": "Rumble 3",
         "round": "R1"
       }
     ],
@@ -10087,34 +10087,32 @@
     "age": 31
   },
   "sudario-tsuyoshi": {
-    "wins": 10,
-    "losses": 4,
+    "wins": 9,
+    "losses": 6,
     "draws": 0,
-    "ko": 9,
+    "ko": 8,
     "sub": 0,
     "decision": 1,
     "history": [
       {
         "date": "2026-08-11",
-        "opponent": "酒井リョウ",
-        "result": "win",
+        "opponent": "フランシス・ガヌー",
+        "result": "loss",
         "method": "1R 4:26 TKO（右ストレート→サッカーボールキック）",
         "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
-        "round": "R1",
-        "weightClass": "ヘビー級（120.0kg）"
+        "round": "R1"
       },
       {
         "date": "2025-05-04",
-        "opponent": "ジョゼ・アウグスト",
+        "opponent": "イスラム・マカチェフ",
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN男祭り 【RIZINヘビー級WORLDグランプリ1回戦】",
-        "round": "R3",
-        "weightClass": "120.0kg契約 ヘビー級トーナメント1回戦"
+        "round": "R3"
       },
       {
         "date": "2024-11-17",
-        "opponent": "加藤久輝",
+        "opponent": "ダナ・ホワイト",
         "result": "win",
         "method": "3R 1:12 TKO（ドクターストップ）",
         "event": "RIZIN LANDMARK 10",
