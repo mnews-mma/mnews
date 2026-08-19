@@ -182,6 +182,31 @@ def extract_meta(html_text, eid_hint=''):
         dm2 = re.search(r'(\d{1,2})月(\d{1,2})日', head_text) or re.search(r'(\d{1,2})月(\d{1,2})日', title)
         if ym and dm2:
             date = '%s-%02d-%02d' % (int(ym.group(1)), int(dm2.group(1)), int(dm2.group(2)))
+    if not date:
+        # U-2(2026-08、日付抽出バグ修正): 見出し・本文冒頭(head_text)には月日のみで年が
+        # 無いイベントがある(実例: GODDESS OF VICTORY・DUEL.30)。本文の別セクション
+        # (公式計量結果等)に年月日が明記されていることが多いため、まず月日を見出し/
+        # タイトルから確定し、その月日と完全一致する「YYYY年M月D日」を本文全体
+        # (head_textでは無くbody_text全体)から探す。誕生日等の無関係な日付との
+        # 誤検出を避けるため、月日を固定した上でのみ本文全体を検索する
+        # (無条件にbody_text全体を検索すると個人成績カードの生年月日を大会日と
+        # 誤認する既知の問題があるため、head_text優先の既存方針は変えない)。
+        dm3 = re.search(r'(\d{1,2})月(\d{1,2})日', head_text) or re.search(r'(\d{1,2})月(\d{1,2})日', title)
+        if dm3:
+            mo, da = int(dm3.group(1)), int(dm3.group(2))
+            ym2 = re.search(r'(\d{4})年%d月%02d日' % (mo, da), body_text) or \
+                re.search(r'(\d{4})年%d月%d日' % (mo, da), body_text)
+            if ym2:
+                date = '%s-%02d-%02d' % (int(ym2.group(1)), mo, da)
+    if not date:
+        # 本文のどこにも年月日の記載が無いケース(実例: Challnger11)の最終救済。
+        # 記事のdatePublished(公開日時)は開催告知記事なら開催日の少し前であることが
+        # 多く、少なくとも年は信頼できる(実測: Challnger11は開催12日前に公開)。
+        # 月日は見出し/タイトルから確定済みのものを使う。
+        dm4 = re.search(r'(\d{1,2})月(\d{1,2})日', head_text) or re.search(r'(\d{1,2})月(\d{1,2})日', title)
+        pub = re.search(r'"datePublished"\s*:\s*"(\d{4})-\d{2}-\d{2}', html_text)
+        if dm4 and pub:
+            date = '%s-%02d-%02d' % (int(pub.group(1)), int(dm4.group(1)), int(dm4.group(2)))
     event = None
     h2 = re.search(r'<h2>(.*?)</h2>', body, re.S)
     if h2:

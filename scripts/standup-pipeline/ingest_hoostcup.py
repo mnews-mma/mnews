@@ -117,9 +117,17 @@ def norm_loose(s):
     return re.sub(r'[\s・]', '', unicodedata.normalize('NFKC', s or '')).lower()
 
 
+_VS_MARK2WIN = {'○': True, '●': True, '◯': True, '×': False}
+
+
 def parse_vs_style(block):
     """2022年10月以降のテンプレート: 所属情報なし、<p class="t12">Name1<br/>VS<br/>Name2</p>の後に
-       <p class="f31">【勝者:WinnerName】決着文</p>(部分一致の短縮名で書かれることがある)。"""
+       <p class="f31">【勝者:WinnerName】決着文</p>(部分一致の短縮名で書かれることがある)。
+       まれに名前の先頭に写真マークと同じ意味の○/×が直接付き(【勝者】表記が無い回、
+       実例: 2022-07-10 KINGS NAGOYA11の実方宏介×/MAMUTI○)、この場合は【勝者】表記を
+       待たずマーク自体で勝敗を確定できる(旧テンプレのclass="win"判定と同じ情報源)。
+       マークを剥がさずnameに含めると選手名解決(resolve)がマーク付き文字列で失敗するため、
+       判定に使った後は必ずnameから除去する。"""
     m = re.search(r'<p class="t12[^"]*">(.*?)</p>', block, re.S)
     if not m:
         return None
@@ -127,7 +135,11 @@ def parse_vs_style(block):
     names = [p for p in parts if p and p.strip().upper() != 'VS']
     if len(names) != 2:
         return None
-    n1, n2 = names
+    raw1, raw2 = names
+    mark1 = raw1[0] if raw1[:1] in '△×○●◯' else None
+    mark2 = raw2[0] if raw2[:1] in '△×○●◯' else None
+    n1 = raw1[1:].strip() if mark1 else raw1
+    n2 = raw2[1:].strip() if mark2 else raw2
     tail = block[m.end():]
     dm = re.search(r'<p class="[a-z]+\d*">(.*?)</p>', tail, re.S)
     if not dm:
@@ -143,7 +155,11 @@ def parse_vs_style(block):
     elif re.match(r'【(ドロー|引き分け)】', decision_raw):
         w1 = w2 = False
         decision = decision_raw
+    elif mark1 in _VS_MARK2WIN and mark2 in _VS_MARK2WIN and _VS_MARK2WIN[mark1] != _VS_MARK2WIN[mark2]:
+        w1, w2 = _VS_MARK2WIN[mark1], _VS_MARK2WIN[mark2]
+        decision = decision_raw
     else:
+        # △等、勝敗を一意に確定できないマークの組み合わせは推測しない(既存方針を維持)
         return None
     return dict(f1=(n1, None, w1), f2=(n2, None, w2), decision=decision)
 
@@ -219,6 +235,15 @@ def build():
     for path in files:
         raw = open(path, 'rb').read()
         h = raw.decode('shift_jis', errors='replace')
+        # U-2(2026-08、コメント内残骸の誤解析修正): テンプレート移行時にコメントアウトされた
+        # 旧テンプレートの<h4>ブロックがそのままページに残っており、削除せずに<!-- -->で
+        # 囲っただけになっている(実例: 2022-07-10のKINGS NAGOYA11、実方宏介戦・
+        # 女子Sライト級タイトルマッチが該当)。parse_page()は<h4>を単純に全件走査して
+        # ブロック境界を決めるため、コメント内の重複<h4>を実在の試合として数えてしまい、
+        # ブロック境界が1件分ズレて隣接する試合の決着文が入れ替わる(剛王/康輝戦・
+        # 清水大輝/田中恒星戦で実測)。ライブページの表示内容のみを対象にするのが本来の
+        # 仕様であるため、以降の全抽出処理より前でコメントを除去する。
+        h = re.sub(r'(?s)<!--.*?-->', '', h)
         eid = path.split('/')[-1][:-5]
         title, date, event, venue, = extract_event_meta(h, eid)
         url = f'https://www.hoostcup.com/13fight/{eid}.html'

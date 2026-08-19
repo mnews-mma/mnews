@@ -26,21 +26,16 @@ import type { KickBout } from "../src/lib/kick/data";
 const ROOT = path.join(__dirname, "..");
 const GEN = path.join(ROOT, "data/kick/generated");
 
-// 既知の例外(2026-08、T-3検品で発見・未修正): parse_page()(ingest_hoostcup.py)は
-// <h4>で区切ったブロック内を素朴な文字列検索(block.find('d12'/'box12'))で走査しており、
-// HTMLコメント(<!-- ... -->)を除去していない。KINGS NAGOYA11(2022-07-10)のページには
-// テンプレート移行時の残骸(コメントアウトされた旧形式の対戦カード)が残っており、
-// このコメント内の「判定0-3 (48-50/48-49/47-50)」という文字列が、無関係な3選手
+// 旧・既知の例外(2026-08、T-3検品で発見。U-2〈2026-08-19〉でparse_page()自体を修正し解消済み):
+// parse_page()(ingest_hoostcup.py)がHTMLコメント(<!-- ... -->)を除去せずに<h4>区切りの
+// ブロックを走査していたため、KINGS NAGOYA11(2022-07-10)のページに残る
+// テンプレート移行時の残骸(コメントアウトされた旧形式の対戦カード)内の
+// 「判定0-3 (48-50/48-49/47-50)」という文字列が、無関係な3選手
 // (剛王・康輝・実方宏介、いずれも実際の決着は別のvs_style形式ブロックか「試合中止」)の
-// 行に誤って紐付いている。このバグ自体はparse_page()全体に影響しうる既知の別問題
-// (HTMLコメントを剥がさずに正規表現で走査している)であり、このスコアフォールバック
-// 機能固有の不具合ではないため、この場では修正しない(コメント除去は影響範囲が広く、
-// 既存の637行全体の再検証が必要になるため別タスク)。3件とも安全側のunknownのまま
-// 据え置く。詳細はout/kick-unknown-result-parser-report.mdを参照。
-const KNOWN_COMMENT_LEAKAGE_EXEMPTIONS = new Set([
-  "HoostCup|2022-07-10|判定0-3 (48-50/48-49/47-50)",
-]);
-let exemptedHits = 0;
+// 行に誤って紐付いていた。U-2でingest_hoostcup.py側にコメント除去を追加した結果、
+// 3件とも正しい値(剛王・康輝は空欄=試合中止でmethodRaw自体が無い、実方宏介は
+// 「1R 2'28" TKO (右フック)」)に修正され、この例外は不要になった。詳細は
+// out/kick-unknown-result-parser-report.md、out/kick-u2-comment-leak-report.mdを参照。
 
 interface Violation {
   slug: string;
@@ -64,11 +59,6 @@ for (const file of fighterFiles) {
     const methodRaw: string = b.methodRaw ?? "";
     const result: string = b.result;
     if (result !== "unknown") continue;
-
-    if (KNOWN_COMMENT_LEAKAGE_EXEMPTIONS.has(`${b.promotion}|${b.date}|${methodRaw}`)) {
-      exemptedHits++;
-      continue;
-    }
 
     if (b.promotion === "HoostCup") {
       if (methodRaw.includes("無効試合")) {
@@ -101,16 +91,6 @@ if (violations.length > 0) {
   process.exit(1);
 }
 
-if (exemptedHits === 0) {
-  console.error(
-    "[kick-unknown-result-fallback] ★KNOWN_COMMENT_LEAKAGE_EXEMPTIONSに登録された既知例外が" +
-      "1件もヒットしませんでした。バグが別途修正され不要になった可能性があるため、" +
-      "このexemptionエントリを削除してください。",
-  );
-  process.exit(1);
-}
-
 console.log(
-  `[kick-unknown-result-fallback] OK(HoostCup判定スコア・NKBエキシビション/試合中止のフォールバック漏れ0件、` +
-    `既知例外${exemptedHits}件は除外)`,
+  "[kick-unknown-result-fallback] OK(HoostCup判定スコア・NKBエキシビション/試合中止のフォールバック漏れ0件)",
 );
