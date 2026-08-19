@@ -117,7 +117,11 @@ ROW_RE = re.compile(
     r'<td[^>]*>(.*?)</td>\s*<td[^>]*data-align="center"[^>]*>(.*?)</td>\s*</tr>')
 NAME_ROW_RE = re.compile(r'(?s)<tr>\s*<td>名前</td>\s*<td>(.*?)</td>\s*</tr>')
 GYM_ROW_RE = re.compile(r'(?s)<tr>\s*<td>所属ジム</td>\s*<td>(.*?)</td>\s*</tr>')
-DATE_RE = re.compile(r'(\d{4})年(\d{1,2})月(\d{1,2})日')
+# U-2(2026-08、日付抽出バグ修正): 「日」が脱字のまま公開されている行が実在する
+# (実例: 増井侑輝「2019年5月26 / HOOST CUP KINGS NAGOYA6」)。年月日の数値自体は
+# 揃っているため、末尾の「日」を必須にせず任意にする(数値4桁+年+数値+月+数値のみで
+# 十分に一意なパターンであり、誤検出リスクは低い)。
+DATE_RE = re.compile(r'(\d{4})年(\d{1,2})月(\d{1,2})日?')
 MARK2RESULT = {'◎': 'win', '○': 'win', '×': 'loss', '△': 'draw'}
 
 
