@@ -45257,7 +45257,7 @@
  },
  {
   "name": "宮原華音",
-  "kana": null,
+  "kana": "みやはら かのん",
   "aliases": [],
   "gym": "TARGET SHIBUYA/FIRSTORDER AGENT",
   "orgs": [
@@ -45266,7 +45266,10 @@
   "sources": [
    "https://rise-rc.com/fighter/miyahara_kanon/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/宮原華音"
+  },
   "birthdate": "1996.4.8"
  },
  {
@@ -50087,7 +50090,7 @@
  },
  {
   "name": "白川陸斗",
-  "kana": null,
+  "kana": "しらかわ りくと",
   "aliases": [],
   "gym": "JAPAN TOP TEAM",
   "orgs": [
@@ -50096,7 +50099,10 @@
   "sources": [
    "https://rise-rc.com/fighter/shirakawa_rikuto/"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/白川陸斗"
+  },
   "birthdate": "1991.7.18"
  },
  {
@@ -51367,7 +51373,7 @@
  },
  {
   "name": "蒔・センチャイジム",
-  "kana": null,
+  "kana": "マクト センチャイジム",
   "aliases": [],
   "gym": "センチャイムエタイジム",
   "orgs": [
@@ -51376,7 +51382,10 @@
   "sources": [
    "https://knockoutkb.com/fighters/macto_saenchaigym"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/蒔・センチャイジム"
+  },
   "birthdate": "2003.7.8"
  },
  {
@@ -52747,7 +52756,7 @@
  },
  {
   "name": "風音",
-  "kana": null,
+  "kana": "かざね",
   "aliases": [],
   "gym": "TEAM TEPPEN",
   "orgs": [
@@ -52757,7 +52766,10 @@
    "https://rise-rc.com/fighter/kazane/",
    "https://www.k-1.co.jp/fighter/1255"
   ],
-  "kana_source": null,
+  "kana_source": {
+   "type": "published",
+   "url": "https://ja.wikipedia.org/wiki/風音_(キックボクサー)"
+  },
   "birthdate": "1998.10.27"
  },
  {
