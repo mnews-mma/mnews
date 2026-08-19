@@ -30,6 +30,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   update:
@@ -100,6 +101,111 @@ jobs:
 
       - name: Check non-pro bout exclusion gate
         run: npx tsx scripts/check-nonpro-bout-gate.ts
+
+      # push前ゲート(2026-08-19、実測6インシデント中2件がこの型): check-nonpro-bout-gate.ts
+      # と同じ型で、npm run build側でも検査しているcheck-event-slug-links.ts
+      # (alias未登録)・check-rizin-weightclass-null.ts(直近12ヶ月のRIZIN本戦
+      # weightClass欠落)をcommit前に検証する。ゲート判定そのものは変えない
+      # (alias表への自動書き込み等はしない)。全団体共通の入力(fighterRecords.json
+      # 含む)を横断して見るゲートのため、check-nonpro-bout-gate.tsと同じく
+      # per-org skip(下のReport bout counts...ステップ)より前に置き、失敗時は
+      # 特定の団体だけでなくジョブ全体を止める。
+      #
+      # この「commit/pushしない」停止はdeployment_statusを発生させない(新しい
+      # commitが無い=Vercelが新規デプロイを試みないため)ので、
+      # notify-deploy-failure.ymlでは検知できない。次のstepでこのジョブ自身が
+      # Issueを立てて通知する(update-fighter-records.ymlと同じ型)。
+      - name: Predeploy gate (event-slug-links / rizin-weightclass; does not touch the gate logic itself)
+        id: predeploy_gate
+        run: |
+          set -o pipefail
+          { npx tsx scripts/check-event-slug-links.ts && npx tsx scripts/check-rizin-weightclass-null.ts; } 2>&1 | tee /tmp/predeploy-gate.log
+
+      - name: Report predeploy gate result (open/close tracking issue)
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          GATE_OUTCOME: ${{ steps.predeploy_gate.outcome }}
+        with:
+          script: |
+            const fs = require('fs');
+            const title = '日次バッチ停止中: update-org-records.yml のpredeployゲート';
+            const label = 'batch-gate-blocked';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const outcome = process.env.GATE_OUTCOME;
+
+            if (outcome !== 'success' && outcome !== 'failure') {
+              console.log(`predeploy_gate step did not run to completion (outcome=${outcome}); skipping issue tracking (out of scope for this tracker).`);
+              return;
+            }
+
+            const openIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: label,
+              per_page: 100,
+            });
+            const existing = openIssues.data.find((i) => i.title === title && !i.pull_request);
+
+            if (outcome === 'success') {
+              if (existing) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existing.number,
+                  body: `ゲートを再実行し成功。バッチのcommit/pushを再開しました。 [ワークフロー実行](${runUrl})`,
+                });
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existing.number,
+                  state: 'closed',
+                });
+                console.log(`Closed resolved issue #${existing.number}`);
+              } else {
+                console.log('Gate passed, no existing issue. Nothing to do.');
+              }
+              return;
+            }
+
+            let body = '';
+            try {
+              body = fs.readFileSync('/tmp/predeploy-gate.log', 'utf8');
+            } catch (e) {
+              body = `(ログ取得失敗: ${e.message})`;
+            }
+            const footer = [
+              '',
+              'このジョブはpredeployゲートの失敗によりcommit/pushをスキップしました。前回の(ビルドが通っている)データが本番に残っています。',
+              'alias未登録なら中身を確認のうえ `npx tsx scripts/check-event-slug-links.ts --write-aliases`、weightClass欠落なら一次資料でdata/rizinRecords.jsonに正しい階級を補完してください。',
+              '',
+              `_このIssueは [ワークフロー実行](${runUrl}) により自動生成/更新されました。_`,
+            ].join('\n');
+            const maxBodyLen = 65536 - footer.length - 200;
+            if (body.length > maxBodyLen) {
+              body = `${body.slice(0, maxBodyLen)}\n\n...(文字数上限のため以下省略)`;
+            }
+            const fullBody = `\`\`\`\n${body}\n\`\`\`${footer}`;
+
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: fullBody,
+              });
+              console.log(`Updated existing issue #${existing.number}`);
+            } else {
+              const created = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body: fullBody,
+                labels: [label],
+              });
+              console.log(`Created new issue #${created.data.number}`);
+            }
 
       - name: Report bout counts after fetch + build per-org commit plan
         id: report_counts

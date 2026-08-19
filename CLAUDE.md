@@ -50,17 +50,27 @@ data/配下を触るPRをマージする前に、この表のジョブが実行�
 |---|---|---|---|---|---|
 | `archive-articles.yml` | GHA schedule | `*/30 * * * *` | 常時(30分ごと) | `data/archive.json` | |
 | `update-org-rankings.yml` | GHA schedule | `17 15 * * *` | 0:17 | `data/orgRankings.json`, `data/orgRankings-prev.json` | |
-| `update-fighter-records.yml` | GHA schedule | `30 17 * * *` | 2:30 | `data/fighterRecords.json`, `data/rankings.json`, `data/rankings.prev.json`, `data/rankings/archive/*`, `data/rankings.legitimateBaseline.json` | 同一ジョブ内で`update-mnews-rating.ts`(mode未指定=new-results)も実行 |
+| `update-fighter-records.yml` | GHA schedule | `30 17 * * *` | 2:30 | `data/fighterRecords.json`, `data/rankings.json`, `data/rankings.prev.json`, `data/rankings/archive/*`, `data/rankings.legitimateBaseline.json` | 同一ジョブ内で`update-mnews-rating.ts`(mode未指定=new-results)も実行。2026-08-19からcommit前に`check-event-slug-links.ts`・`check-rizin-weightclass-null.ts`を実行し、失敗時はcommit/pushせず停止する(push前ゲート・下記参照) |
+| `update-org-records.yml` | GHA schedule | `0 14 * * *` | 23:00(暫定。他ジョブとの時刻的排他は保証しない前提) | `data/rizinRecords.json`, `data/shootoRecords.json`, `data/pancraseRecords.json`, `data/deepRecords.json`, `data/fighterOrgTagOverrides.json` | RIZIN/修斗/パンクラス/DEEP4団体公式サイトの機械取得。非プロ/非MMA bout除外(`filter-nonpro-bouts.ts`)・団体ごとのbout数減少ガード(減少団体のみcommit対象から除外)を実施。2026-08-19からcommit前に`check-event-slug-links.ts`・`check-rizin-weightclass-null.ts`を実行し、失敗時はcommit/pushせず停止する(push前ゲート・下記参照) |
 | `/api/cron/countdown-post` | Vercel Cron | `0 11 * * *` | 20:00 | `data/postedCountdowns.json`(GitHub Contents API経由の書き込み) | X投稿の冪等性フラグ |
 | `/api/cron/daily-digest` | Vercel Cron | `0 23 * * *` | 8:00 | 書き込みなし(`sendDigestEmail()`によるメール送信のみ) | |
 | `daily-digest.yml` | GHA(無効) | schedule無し(`workflow_dispatch`のみ) | — | 書き込みなし(echoのみ) | メール送信はVercel Cronの`/api/cron/daily-digest`に移行済み。ワークフロー自体は無効化済みの記録として残置 |
+| `check-org-schedule-diff.yml` | GHA schedule | `0 21 * * *` | 6:00 | 書き込みなし(Issueの作成/更新/クローズのみ) | RIZIN/修斗/パンクラス/DEEP4団体公式サイトの開催予定・対戦カードと`src/lib/events.ts`の差分を検知しIssueで通知。読み取り専用でdata/・src/は変更しない |
+| `org-ranking-candidates-weekly-report.yml` | GHA schedule | `0 0 * * 1` | 月曜9:00 | 書き込みなし(読み取り専用) | 公式ランキング未登録選手の検知・候補生成レポート。data/を書く2本の日次バッチの実測遅延を踏まえた時刻に設定(CLAUDE.md本節参照) |
 | `warm-routes.yml` | GHA(`deployment_status`トリガー) | schedule無し | — | 書き込みなし(本番ルートへのGETのみ) | Production環境のdeployment_statusがsuccessの時のみ発火 |
+| `notify-deploy-failure.yml` | GHA(`deployment_status`トリガー) | schedule無し | — | 書き込みなし(Issueの作成/更新/クローズのみ) | 2026-08-19追加。Production環境のdeployment_statusがfailure/errorの時にIssueを作成、successで解消しclose。新規デプロイが実際に試行されて失敗した場合のみ検知できる(下記push前ゲートでcommit/push自体がブロックされたケースは対象外、各ジョブ自身のIssue通知でカバー) |
 | `actionlint.yml` | GHA(`pull_request`トリガー) | schedule無し | — | 書き込みなし(lintのみ) | `.github/workflows/**`変更時のみ |
 
 **上表のJST列はcron式の宣言値(nominal)であり、実際の起動時刻ではない。** GitHub Actionsのscheduled実行はキュー混雑で遅延することがあり、`update-fighter-records.yml`の直近18回分の実行履歴(2026-07-07〜2026-07-24、`gh run list --workflow=update-fighter-records.yml`で取得)では、nominal cron時刻(UTC 17:30=JST 2:30)に対する実起動の遅延が**中央値3.27時間・最大5.25時間・最小2.68時間**だった(全18件が2〜5時間台の遅延で、定刻どおりに起動した回は無い)。**したがって「この時間帯を避ければ安全」という時刻ベースの回避は成立しない。** data/を書くジョブとの衝突回避は、時刻ではなく実行中run自体をGitHub Actions APIで照会する方式で行う(PR-G, #210)。
 なお実行時間(起動後の所要時間)自体は安定しており、同じ18件の実測で中央値8.5分・最大13.8分・最小8.0分だった。
 
 GitHub Actions・Vercel Cron以外の外部トリガー(webhook等)は無い。
+
+**日次バッチが持ち込むデータでmainの本番ビルドが落ちる件(2026-08-19調査・対処)**:
+- 実測(2026-07-31〜2026-08-19の19日間、GitHub Deployments APIで300件のProductionデプロイ全件を照会): 失敗18回・6インシデント。うち2件(RIZIN.54のweightClass欠落・2026-08-12、SHOOTO Vol.5のalias未登録・2026-08-19)が`update-fighter-records.yml`の自動コミット自身が原因。残り4件(最長2時間41分)は人間のPRマージが`check-jst-date-bypass`等のbaseline未同期を踏んだケースで、原因カテゴリが異なる。
+- 共通する構造: バッチは`[skip ci]`付きでも実際にはVercel本番デプロイを毎回起こしており(`vercel.json`の`ignoreCommand`は`data/fighterRecords.json`等を意図的に対象外にしている)、その場で失敗しているのに`deployment_status`のfailureを拾うworkflowが無かったため誰も気づかず、後から無関係なPRをマージした人が原因調査を負わされていた。
+- 対処(このセクションの2つの新規ジョブ): `update-fighter-records.yml`・`update-org-records.yml`にcommit前ゲート(`check-event-slug-links.ts`・`check-rizin-weightclass-null.ts`、npm run buildと同じ判定を先取りするだけでゲート自体は変更しない)を追加し、失敗時はcommit/pushせず前回データのまま維持。ゲート失敗自体は新規デプロイを起こさないため`deployment_status`では検知できず、各ジョブが自分でIssue(label: `batch-gate-blocked`)を立てる。それとは別に`notify-deploy-failure.yml`が実際のデプロイ失敗全般(label: `deploy-failure`)を拾う。
+- **未対応のまま残っている範囲**: 上記4件(人間PRのマージがbaseline未同期を踏むケース)はこの対処のスコープ外。`notify-deploy-failure.yml`により気づくのは早くなるが、baseline未同期そのものは解消していない。
 
 **スケジュール未設定だが手動運用されているスクリプト(data/配下に書き込みうるもの)**:
 - `scripts/update-mnews-rating.ts --mode=data-correction`: `data/rankings.json`, `data/rankings.prev.json`, `data/rankings/archive/*`, `data/rankings.legitimateBaseline.json`(条件付き)。同スクリプトはmode未指定(new-results)で上記2:30バッチからも呼ばれるため、手動実行のタイミング次第でバッチと競合しうる
