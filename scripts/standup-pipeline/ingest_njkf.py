@@ -3,7 +3,22 @@
    選手ページはあるが通算成績のみでbout詳細が無いため(レグ③実測)、大会結果ページのみを使う。
    1<p>=1boutが基本だが、17年分でテンプレートが複数回変化しており(VS行の有無、決着とfighter2が
    同一行に同居する回、マーク欠落1件など)、行順序に頼らずマーク文字の出現位置を軸にテキストを
-   分割する方式にした。両サイドを走査し名簿に解決できる側だけをbout化する(レグ④と同じ方針)。"""
+   分割する方式にした。両サイドを走査し名簿に解決できる側だけをbout化する(レグ④と同じ方針)。
+
+   V-2(2026-08、見送り確定・4件): 以下は1件ごとに別テンプレートで、再利用の効かない
+   一点物のパースロジックが必要なため実装を見送る(推測で埋めない方針も含め詳細は
+   out/kick-njkf-nkb-standup-deferred-templates.md参照)。
+   - result/20210808_njkf-west-3rd_result.html(NJKF 2021 west 3rd): マーク文字(○×)が
+     一切無く、勝敗は「0-3判定」等のスコア表記と地の文からしか読み取れない。判定戦のみ
+     スコアから機械的に読めるが、TKO/KO戦は地の文推測になるため対象外。同一大会内で
+     一部の決着方式だけ拾うと不完全な大会になるため、判定戦のみの部分実装も行わない。
+   - result/20241110.html(NJKF CHALLENGER 6)・result2013/1201.html(Muay Thai Open 25):
+     `<p>`タグに包まれない生の`<br>`区切りブロック(▼第N試合見出しで区切り)。
+     `<p>`境界に依存する現行の抽出方式では発見不能。Muay Thai Open 25はさらに2013年当時の
+     別サイト構造(WordPress移行前、`<article class="gridWrapper">`)で二重に非対応。
+   - result/west-5th_result.html(NJKF 2021 west 5th): `<ul class="wp-block-list"><li>`
+     単位で選手1名ずつ分割される構造(1boutが2つの`<li>`に分かれる)。現行の1`<p>`=1bout
+     前提と根本的に異なる。"""
 import re, glob, html, json, unicodedata, collections, sys
 
 sys.path.insert(0, '.')
