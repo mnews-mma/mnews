@@ -605,6 +605,17 @@
   "promotion": "Wikipedia(その他団体)"
  },
  {
+  "slug": "buranko-shikatiku",
+  "date": "1997-10-11",
+  "opponent": "ラルフ・ホワイト",
+  "methodRaw": "1R 1:52 ノーコンテスト（反則）",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)、Wikipedia(その他団体)母集団からの無作為100行サンプル調査で発見。ja.wikipedia「ブランコ・シカティック」本文に「PRIDE.1でラルフ・ホワイトと対戦。グラウンド状態のホワイトにシカティックのキックが当たり、ノーコンテストとなった」と明記。ダウンした相手への蹴りが反則となるのはMMAルール特有の規定(キックボクシングにグラウンド状態は存在しない)であり、PRIDE.1自体も総合格闘技イベント。総合格闘技(MMA)。",
+  "name": "ブランコ・シカティック",
+  "event": "PRIDE.1",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
   "slug": "petoru-morari",
   "date": "2023-02-11",
   "opponent": "Marco Novák",
