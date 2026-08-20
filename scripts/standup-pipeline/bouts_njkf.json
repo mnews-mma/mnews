@@ -19748,27 +19748,11 @@
   "opponent_name": "海人",
   "opponent_affiliation": "E.S.G",
   "opponent_site_slug": null,
-  "opponent_ref": null,
-  "opponent_ref_gym": null,
-  "opponent_resolved": false,
-  "opponent_ambiguous": true,
-  "opponent_candidates": [
-   {
-    "name": "海人",
-    "gym": "TEAM F.O.D",
-    "orgs": [
-     "RISE",
-     "SHOOT BOXING"
-    ]
-   },
-   {
-    "name": "海人",
-    "gym": "SHOOT BOXING／TEAM FOD",
-    "orgs": [
-     "KNOCK OUT"
-    ]
-   }
-  ],
+  "opponent_ref": "海人",
+  "opponent_ref_gym": "TEAM F.O.D",
+  "opponent_resolved": true,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
   "result": "win",
   "result_mark": "○",
   "method": "decision",
@@ -21446,27 +21430,11 @@
   "opponent_name": "海人",
   "opponent_affiliation": "E.S.G",
   "opponent_site_slug": null,
-  "opponent_ref": null,
-  "opponent_ref_gym": null,
-  "opponent_resolved": false,
-  "opponent_ambiguous": true,
-  "opponent_candidates": [
-   {
-    "name": "海人",
-    "gym": "TEAM F.O.D",
-    "orgs": [
-     "RISE",
-     "SHOOT BOXING"
-    ]
-   },
-   {
-    "name": "海人",
-    "gym": "SHOOT BOXING／TEAM FOD",
-    "orgs": [
-     "KNOCK OUT"
-    ]
-   }
-  ],
+  "opponent_ref": "海人",
+  "opponent_ref_gym": "TEAM F.O.D",
+  "opponent_resolved": true,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
   "result": "loss",
   "result_mark": "×",
   "method": "decision",
@@ -30497,7 +30465,7 @@
   "opponent_affiliation": "GET OVER",
   "opponent_site_slug": null,
   "opponent_ref": "中島 隆徳",
-  "opponent_ref_gym": "GET OVER 2005年4月",
+  "opponent_ref_gym": "GETOVER",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,

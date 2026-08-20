@@ -213,27 +213,11 @@
   "opponent_name": "海人",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": null,
-  "opponent_ref_gym": null,
-  "opponent_resolved": false,
-  "opponent_ambiguous": true,
-  "opponent_candidates": [
-   {
-    "name": "海人",
-    "gym": "TEAM F.O.D",
-    "orgs": [
-     "RISE",
-     "SHOOT BOXING"
-    ]
-   },
-   {
-    "name": "海人",
-    "gym": "SHOOT BOXING／TEAM FOD",
-    "orgs": [
-     "KNOCK OUT"
-    ]
-   }
-  ],
+  "opponent_ref": "海人",
+  "opponent_ref_gym": "TEAM F.O.D",
+  "opponent_resolved": true,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
   "result": "loss",
   "result_mark": "rizin:decisive",
   "method": "ko",
@@ -316,27 +300,11 @@
   "opponent_name": "海人",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": null,
-  "opponent_ref_gym": null,
-  "opponent_resolved": false,
-  "opponent_ambiguous": true,
-  "opponent_candidates": [
-   {
-    "name": "海人",
-    "gym": "TEAM F.O.D",
-    "orgs": [
-     "RISE",
-     "SHOOT BOXING"
-    ]
-   },
-   {
-    "name": "海人",
-    "gym": "SHOOT BOXING／TEAM FOD",
-    "orgs": [
-     "KNOCK OUT"
-    ]
-   }
-  ],
+  "opponent_ref": "海人",
+  "opponent_ref_gym": "TEAM F.O.D",
+  "opponent_resolved": true,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
   "result": "loss",
   "result_mark": "rizin:decisive",
   "method": "decision",
@@ -4320,26 +4288,11 @@
   "opponent_name": "麻太郎",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": null,
-  "opponent_ref_gym": null,
-  "opponent_resolved": false,
-  "opponent_ambiguous": true,
-  "opponent_candidates": [
-   {
-    "name": "麻太郎",
-    "gym": "健心塾",
-    "orgs": [
-     "RISE"
-    ]
-   },
-   {
-    "name": "麻太郎",
-    "gym": "フリー",
-    "orgs": [
-     "KNOCK OUT"
-    ]
-   }
-  ],
+  "opponent_ref": "麻太郎",
+  "opponent_ref_gym": "健心塾",
+  "opponent_resolved": true,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
   "result": "loss",
   "result_mark": "rizin:decisive",
   "method": "decision",

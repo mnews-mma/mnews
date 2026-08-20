@@ -1953,8 +1953,8 @@
   "opponent_name": "ブアカーオ・ポー.プラムック",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": "ブアカーオ・ポー.プラムック",
-  "opponent_ref_gym": null,
+  "opponent_ref": "ブアカーオ・バンチャメーク",
+  "opponent_ref_gym": "Banchamek Gym",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,
@@ -2533,8 +2533,8 @@
   "opponent_name": "ブアカーオ・ポー．プラムック",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": "ブアカーオ・ポー.プラムック",
-  "opponent_ref_gym": null,
+  "opponent_ref": "ブアカーオ・バンチャメーク",
+  "opponent_ref_gym": "Banchamek Gym",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,
@@ -2736,8 +2736,8 @@
   "opponent_name": "ブアカーオ・ポー.プラムック",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": "ブアカーオ・ポー.プラムック",
-  "opponent_ref_gym": null,
+  "opponent_ref": "ブアカーオ・バンチャメーク",
+  "opponent_ref_gym": "Banchamek Gym",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,
@@ -5897,8 +5897,8 @@
   "opponent_name": "スアレック・ルークカムイ",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": "スアレック・ルークカムイ",
-  "opponent_ref_gym": null,
+  "opponent_ref": "スアレック・TEPPEN GYM",
+  "opponent_ref_gym": "TEAM TEPPEN",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,
@@ -19328,8 +19328,8 @@
   "opponent_name": "スアレック・ルークカムイ",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": "スアレック・ルークカムイ",
-  "opponent_ref_gym": null,
+  "opponent_ref": "スアレック・TEPPEN GYM",
+  "opponent_ref_gym": "TEAM TEPPEN",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,
@@ -47386,8 +47386,8 @@
   "opponent_name": "ブアカーオ・ポー.プラムック",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": "ブアカーオ・ポー.プラムック",
-  "opponent_ref_gym": null,
+  "opponent_ref": "ブアカーオ・バンチャメーク",
+  "opponent_ref_gym": "Banchamek Gym",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,
@@ -49097,8 +49097,8 @@
   "opponent_name": "ブアカーオ・ポー.プラムック",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": "ブアカーオ・ポー.プラムック",
-  "opponent_ref_gym": null,
+  "opponent_ref": "ブアカーオ・バンチャメーク",
+  "opponent_ref_gym": "Banchamek Gym",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,
@@ -49764,8 +49764,8 @@
   "opponent_name": "ブアカーオ・ポー.プラムック",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": "ブアカーオ・ポー.プラムック",
-  "opponent_ref_gym": null,
+  "opponent_ref": "ブアカーオ・バンチャメーク",
+  "opponent_ref_gym": "Banchamek Gym",
   "opponent_resolved": true,
   "opponent_ambiguous": false,
   "opponent_candidates": null,
@@ -51765,27 +51765,11 @@
   "opponent_name": "海人",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": null,
-  "opponent_ref_gym": null,
-  "opponent_resolved": false,
-  "opponent_ambiguous": true,
-  "opponent_candidates": [
-   {
-    "name": "海人",
-    "gym": "TEAM F.O.D",
-    "orgs": [
-     "RISE",
-     "SHOOT BOXING"
-    ]
-   },
-   {
-    "name": "海人",
-    "gym": "SHOOT BOXING／TEAM FOD",
-    "orgs": [
-     "KNOCK OUT"
-    ]
-   }
-  ],
+  "opponent_ref": "海人",
+  "opponent_ref_gym": "TEAM F.O.D",
+  "opponent_resolved": true,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
   "result": "loss",
   "result_mark": "mark-lose",
   "method": "tko",
@@ -61641,27 +61625,11 @@
   "opponent_name": "海人",
   "opponent_affiliation": null,
   "opponent_site_slug": null,
-  "opponent_ref": null,
-  "opponent_ref_gym": null,
-  "opponent_resolved": false,
-  "opponent_ambiguous": true,
-  "opponent_candidates": [
-   {
-    "name": "海人",
-    "gym": "TEAM F.O.D",
-    "orgs": [
-     "RISE",
-     "SHOOT BOXING"
-    ]
-   },
-   {
-    "name": "海人",
-    "gym": "SHOOT BOXING／TEAM FOD",
-    "orgs": [
-     "KNOCK OUT"
-    ]
-   }
-  ],
+  "opponent_ref": "海人",
+  "opponent_ref_gym": "TEAM F.O.D",
+  "opponent_resolved": true,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
   "result": "no_contest",
   "result_mark": "mark-nocon",
   "method": "no_contest",
