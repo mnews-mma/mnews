@@ -6633,7 +6633,7 @@
     "live": true,
     "nickname": "ミスターいぶし銀",
     "birthPlace": "東京都目黒区",
-    "age": 38
+    "age": 39
   },
   "goto-joji": {
     "wins": 20,
@@ -10087,26 +10087,26 @@
     "age": 31
   },
   "sudario-tsuyoshi": {
-    "wins": 9,
-    "losses": 6,
+    "wins": 11,
+    "losses": 2,
     "draws": 0,
-    "ko": 8,
+    "ko": 9,
     "sub": 0,
-    "decision": 1,
+    "decision": 2,
     "history": [
       {
         "date": "2026-08-11",
-        "opponent": "フランシス・ガヌー",
-        "result": "loss",
-        "method": "1R 4:26 TKO（右ストレート→サッカーボールキック）",
+        "opponent": "スティーペ・ミオシッチ",
+        "result": "win",
+        "method": "1R 0:26 TKO（脚の負傷）",
         "event": "RIZIN.54 【RIZINヘビー級JAPANグランプリ1回戦】",
         "round": "R1"
       },
       {
         "date": "2025-05-04",
-        "opponent": "イスラム・マカチェフ",
-        "result": "loss",
-        "method": "5分3R終了 判定0-3",
+        "opponent": "マウリシオ・ショーグン",
+        "result": "win",
+        "method": "5分3R終了 判定2-1",
         "event": "RIZIN男祭り 【RIZINヘビー級WORLDグランプリ1回戦】",
         "round": "R3"
       },
@@ -10117,14 +10117,6 @@
         "method": "3R 1:12 TKO（ドクターストップ）",
         "event": "RIZIN LANDMARK 10",
         "round": "R3"
-      },
-      {
-        "date": "2023-12-31",
-        "opponent": "上田幹雄",
-        "result": "loss",
-        "method": "2R 0:55 TKO（膝蹴り→パウンド）",
-        "event": "RIZIN.45",
-        "round": "R2"
       },
       {
         "date": "2023-10-01",
@@ -29403,7 +29395,7 @@
     "losses": 12,
     "draws": 0,
     "ko": 4,
-    "sub": 32,
+    "sub": 35,
     "decision": 11,
     "history": [
       {
