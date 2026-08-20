@@ -1,0 +1,364 @@
+batch	event	date	fighter	opponent	verdict	evidence_note
+0	ONE 157: PETCHMORAKOT VS VIENOT	2022-05-20	ダビッド・キリア	モハメド・ブタザ	NOT_MMA	onefc.com/tapology: featherweight Kickboxing bout, unanimous decision
+0	ONE 167: Tawanchai vs. Nattawut 2	2024-06-08	野杁正明	シッティチャイ	NOT_MMA	onefc.com: featherweight Kickboxing bout, Sitthichai won unanimous decision
+0	ONE Championship 94: Enter the Dragon	2019-05-17	ジョルジオ・ペトロシアン	ペットモラコット	NOT_MMA	ONE Featherweight Kickboxing World GP quarterfinal, overturned to No Contest
+0	ONE Championship: Winter Warriors	2021-12-03	秋元皓貴	邱建良	NOT_MMA	onefc.com/sportskeeda: bantamweight Kickboxing bout, decision
+0	ONE Fight Night 16: Haggerty vs. Andrade	2023-11-03	クリスティーナ・モラレス	アンナ・ジャルーンサック	NOT_MMA	Sportskeeda/onefc: Kickboxing bout, 1st-round TKO
+0	ONE Fight Night 35	2025-09-06	陽勇	ジョーダン・エストゥピニャン	NOT_MMA	onefc.com: Flyweight Kickboxing, TKO R3
+0	ONE Fights Night 21	2024-04-06	内藤大樹	デッドゥアンレック	NOT_MMA	combatpress/sportskeeda: 136lb catchweight Kickboxing bout
+0	ONE Friday Fights 109	2025-05-23	与座優貴	エルブルース・オスマノフ	NOT_MMA	onefc.com: bantamweight Kickboxing bout, UD
+0	ONE Friday Fights 109	2025-05-23	ブリース・デルバール	ヨッドIQ・オー・ピモンシー	NOT_MMA	onefc.com: bantamweight Muay Thai bout, UD
+0	ONE Friday Fights 122	2025-08-29	力斗	チェン・チャオビン	NOT_MMA	Sportskeeda: bantamweight Kickboxing bout, split decision
+0	ONE Friday Fights 134	2025-11-21	彪司	ワン・ユハン	NOT_MMA	onefc.com/tapology: flyweight Kickboxing bout, KO R1
+0	ONE Friday Fights 145	2026-03-06	吉岡龍輝	アーサー・クロップ	NOT_MMA	Sportskeeda: bantamweight Kickboxing bout, UD
+0	ONE Friday Fights 145	2026-03-06	黒田斗真	バンルーロック	NOT_MMA	Sportskeeda: atomweight Kickboxing bout, UD (dup)
+0	ONE Friday Fights 145	2026-03-06	黒田斗真	バンルーロック・シットワチャラチャイ	NOT_MMA	same bout, atomweight Kickboxing (dup)
+0	ONE Friday Fights 156 & Superfan Fights	2026-05-29	平山裕翔	イェ・リージー	NOT_MMA	tapology/sportskeeda: atomweight Kickboxing, TKO R1
+0	ONE Friday Fights 156 & Superfan Fights	2026-05-29	吉田晄成	ホアン・ザ・ダイ	NOT_MMA	Sportskeeda: Kickboxing bout, KO R3
+0	ONE Friday Fights 17	2023-05-19	デニス・ピューリック	ヨードレックペット・オー・アトチャリア	NOT_MMA	onefc.com: 138lb catchweight Muay Thai bout, TKO R3
+0	ONE Friday Fights 37	2023-10-20	内藤大樹	ゴントラニー・ソーソンマイ	NOT_MMA	Sportskeeda: flyweight Muay Thai bout, UD
+0	ONE Friday Fights 56	2024-03-22	井原浩之	フルカン・カラバフ	NOT_MMA	onefc.com: 152 LBS Muay Thai, TKO
+0	ONE Friday Fights 56	2024-03-22	勝野雅也	ソンラック	NOT_MMA	onefc.com: Flyweight Muay Thai, KO
+0	ONE Friday Fights 56	2024-03-22	老沼隆斗	カンレック・ソー・チョーミーチャイ	NOT_MMA	onefc.com: 118 LBS Muay Thai, KO
+0	ONE Friday Fights 56	2024-03-22	佐藤執斗	ラック・エラワン	NOT_MMA	onefc.com: 116 LBS Muay Thai, KO R2
+0	ONE Friday Fights 69	2024-07-05	大田一航	BM・フェアテックス	NOT_MMA	tapology/sportskeeda: Muay Thai bout, KO R2
+0	ONE Friday Fights 84	2024-10-25	ペットサンコム・ソー・ソンマイ	サンデー・ブーンデクシアン	NOT_MMA	onefc.com: 118 LBS Muay Thai, majority decision
+0	ONE Friday Fights 84	2024-10-25	笠原友希	ソンラック・シット・ポー・ジョ・ーウォー	NOT_MMA	onefc.com: 134 LBS Muay Thai (dup)
+0	ONE Friday Fights 84	2024-10-25	笠原友希	ソンラック	NOT_MMA	same bout, 134 LBS Muay Thai (dup)
+0	ONE Friday Fights 84	2024-10-25	笠原友希	ソンラック・フェアテックス	NOT_MMA	same bout, Muay Thai (dup)
+0	ONE Friday Fights 96	2025-02-07	陽勇	LeandroMiranda	NOT_MMA	Sportskeeda: flyweight Kickboxing bout, TKO
+0	ONE Friday Fights 96	2025-02-07	ドンキング・ヨータラックムエタイ	デンパヤック・デペッシートン	NOT_MMA	tapology/sportskeeda: flyweight Muay Thai bout, KO R1
+0	ONE Friday Fights 96	2025-02-07	川野龍輝	ワン・ユハン	NOT_MMA	tapology/sportskeeda: 122lb catchweight Kickboxing bout, UD
+0	ONE FridayFights 146	2026-03-13	MISAKI	プリヤワン	NOT_MMA	beyondkick/search: atomweight Kickboxing bout, split decision
+0	ONE on TNT I	2021-04-08	チンギス・アラゾフ	エンリコ・ケール	NOT_MMA	tapology/sportskeeda: featherweight Kickboxing bout, split decision
+0	ONE: REVOLUTION	2021-09-24	内藤大樹	ペッダム・ペッティンディーアカデミー	NOT_MMA	onefc.com/sportskeeda: Muay Thai bout, split decision
+0	ROAD to ONE 3rd：TOKYO FIGHT NIGHT	2020-09-10	有井渚海	黒田直也	NOT_MMA	shooto-mma.com: explicitly キックボクシング match, strawweight
+1	ONE 157: Petchmorakot vs. Vienot	2022-05-20	デニス・ピューリック	シャーゾット・カブトフ	NOT_MMA	Wikipedia: Flyweight Muay Thai GP alt bout
+1	ONE 157: Petchmorakot vs. Vienot	2022-05-20	内藤大樹	スーパーレック・キアトモー9	NOT_MMA	Wikipedia: Flyweight Muay Thai QF
+1	ONE 167: Tawanchai vs. Nattawut II	2024-06-07	デニス・ピューリック	ロッタン・ジットムアンノン	NOT_MMA	Wikipedia card table: Kickboxing, Flyweight
+1	ONE 167: Tawanchai vs. Nattawut II	2024-06-07	野杁正明	シッティチャイ・シッソンピーノン	NOT_MMA	Wikipedia card table: Kickboxing, Featherweight
+1	ONE Championship 96: Masters of Destiny	2019-07-12	ジョルジオ・ペトロシアン	ペットモラコット・ペッティンディーアカデミー	NOT_MMA	Featherweight Kickboxing World GP QF, UD
+1	ONE FIGHT NIGHT 6: SUPERBON VS. ALLAZOV	2023-01-14	チンギス・アラゾフ	スーパーボン	NOT_MMA	onefc.com/wiki: Kickboxing Featherweight title, KO
+1	ONE FIGHT NIGHT 6: SUPERBON VS. ALLAZOV	2023-01-14	ダニエル・プエルタス	スーパーレック	NOT_MMA	onefc.com/wiki: Kickboxing Flyweight title, UD
+1	ONE Fight Night 17: Kryklia vs. Roberts	2023-12-08	デニス・ピューリック	ニューイェン・トラン・デュイ・ニャット	NOT_MMA	Wikipedia: Muay Thai Flyweight, KO
+1	ONE Fight Night 17: Kryklia vs. Roberts	2023-12-08	デニス・ピューリック	ニューイェン・トラン・ドュイ・ニャット	NOT_MMA	same bout (dup)
+1	ONE Fight Night 37	2025-11-08	内藤大樹	ナックロップ・フェアテックス	NOT_MMA	Wikipedia: Muay Thai Flyweight, KO R1
+1	ONE Friday Fights 10	2023-03-24	柴田真吾	ペットクランナー・シップーヤイニラン	NOT_MMA	Wikipedia: Bantamweight Muay Thai, split decision
+1	ONE Friday Fights 110	2025-05-30	スーパー・ヤイ・チャン	瀬戸睦雅	NOT_MMA	onefc.com: Muay Thai, 138 lbs
+1	ONE Friday Fights 110	2025-05-30	川野龍輝	フー・イエ	NOT_MMA	onefc.com: Kickboxing, Strawweight
+1	ONE Friday Fights 123	2025-09-05	ドンキング・ヨータラックムエタイ	ルスタム・ユヌソフ	NOT_MMA	onefc.com: Muay Thai, Flyweight
+1	ONE Friday Fights 123	2025-09-05	小笠原瑛作	サニット	NOT_MMA	onefc.com: Muay Thai, 129 lbs
+1	ONE Friday Fights 123	2025-09-05	久井大夢	チャン・チンタオ	NOT_MMA	onefc.com: Muay Thai, 140 lbs
+1	ONE Friday Fights 135	2025-11-28	芝宏二郎	シラチャイ・ソー・ジョー・ダンラヨン	NOT_MMA	onefc.com: Kickboxing, Strawweight
+1	ONE Friday Fights 146	2026-03-13	所風雅	シェン・イージョウ	NOT_MMA	onefc.com: Kickboxing, Strawweight, UD
+1	ONE Friday Fights 157 & The Inner Circle Fights	2026-06-05	大田拓真	ジェイコブ・トンプソン	NOT_MMA	onefc.com: Muay Thai, Flyweight
+1	ONE Friday Fights 21	2023-06-16	小川翔	トンサヤーム・ゲッソンリット	NOT_MMA	JP press: 140lb Muay Thai, decision loss
+1	ONE Friday Fights 21	2023-06-16	小川翔	トンサヤーム・ルッカオポーロントン	NOT_MMA	onefc.com: Muay Thai, 140 lbs (dup)
+1	ONE Friday Fights 38	2023-10-27	北野克樹	ハリル・キュトゥクチュ	NOT_MMA	onefc.com: Muay Thai, Featherweight
+1	ONE Friday Fights 58: Superbon vs. Grigorian II	2024-04-05	マラット・グレゴリアン	スーパーボン	NOT_MMA	onefc.com/wiki: Kickboxing, interim featherweight title
+1	ONE Friday Fights 58: Superbon vs. Grigorian II	2024-04-05	麻火佑太郎	セクサン・オー・クワンムアン	NOT_MMA	onefc.com: Muay Thai, 142 lbs
+1	ONE Friday Fights 58: Superbon vs. Grigorian II	2024-04-05	片島聡志	石井寿来	NOT_MMA	onefc.com: Muay Thai, 122 lbs
+1	ONE Friday Fights 72	2024-07-26	安本晴翔	アキフ・グルザダ	NOT_MMA	onefc.com: Kickboxing, 128 lbs
+1	ONE Friday Fights 85	2024-11-01	大田拓真	ウェイ・ジーチン	NOT_MMA	onefc.com: Muay Thai, 126 lbs
+1	ONE Friday Fights 99	2025-03-07	谷津晴之	ThetPaing Aung	NOT_MMA	onefc.com: Muay Thai, 117 lbs
+1	ONE Friday Fights 99	2025-03-07	大田一航	ペットパタヤ・シルクムエタイ	NOT_MMA	onefc.com: Muay Thai, 122 lbs
+1	ONE SAMURAI 1	2026-04-29	陽勇	内藤大樹	NOT_MMA	onefc.com: Flyweight Kickboxing
+1	ONE SAMURAI 1	2026-04-29	マラット・グレゴリアン	海人	NOT_MMA	onefc.com: Featherweight Kickboxing
+1	ONE SAMURAI 1	2026-04-29	海人	マラット・グレゴリアン	NOT_MMA	same bout (dup)
+1	ONE SAMURAI 1	2026-04-29	久井大夢	秋元皓貴	NOT_MMA	onefc.com: Bantamweight Kickboxing
+1	ONE SAMURAI 1	2026-04-24	久井大夢	秋元皓貴	NOT_MMA	same bout, date variant (dup)
+1	ONE SAMURAI 1	2026-04-29	秋元皓貴	久井大夢	NOT_MMA	same bout (dup)
+1	ONE SAMURAI 1	2026-04-29	内藤大樹	陽勇	NOT_MMA	same bout (dup)
+1	ONE SAMURAI 1	2026-04-29	与座優貴	ジョナサン・ハガティー	NOT_MMA	onefc.com: Bantamweight Kickboxing world title
+1	ONE SAMURAI 1	2026-04-29	黒田斗真	田丸辰	NOT_MMA	onefc.com: Strawweight Kickboxing
+1	ONE SAMURAI 1	2026-04-29	武尊	ロッタン・ジットムアンノン	NOT_MMA	onefc.com: Interim Flyweight Kickboxing world title
+1	ONE SAMURAI 1	2026-04-29	和島大海	リカルド・ブラボ	NOT_MMA	onefc.com: Featherweight Kickboxing
+1	ONE SAMURAI 1	2026-04-29	田丸辰	黒田斗真	NOT_MMA	same bout (dup)
+1	ONE on TNT III	2021-04-22	ニキー・ホルツケン	ジョン・ウェイン・パー	NOT_MMA	Press: Muay Thai bout, KO R2 head kick
+1	ONE: WARRIOR'S CODE	2020-02-07	内藤大樹	サバス・マイケル	NOT_MMA	Tapology: Muay Thai Flyweight, ONE Super Series, UD
+1	Road to ONE 2nd	2020-04-17	緑川創	西川大和	NOT_MMA	JP press: explicit ムエタイ match, 72.5kg
+3	ONE 159: DE RIDDER VS. BIGDASH	2022-07-22	アスランベック・ジクレーブ	ジャン・ペイメン	NOT_MMA	Wikipedia: Strawweight Kickboxing
+3	ONE 171	2025-02-20	ウェイ・ルイ	ジョナサン・ハガティー	NOT_MMA	Wikipedia: Bantamweight Kickboxing, main event
+3	ONE 171	2025-02-20	鈴木真治	ジェイク・ピーコック	NOT_MMA	Wikipedia: Bantamweight Muay Thai
+3	ONE Championship: A New Era	2019-03-31	秋元皓貴	ジョゼフ・ラシリ	NOT_MMA	Tapology+news: ONE Super Series kickboxing bout
+3	ONE FRIDAY FIGHTS 98	2025-02-28	壱・センチャイジム	ルー・イーフー	NOT_MMA	onefc.com: 122lbs Muay Thai
+3	ONE Fight Night 21: Eersel vs. Nicolas	2024-04-05	デニス・ピューリック	ジェイコブ・スミス	NOT_MMA	Wikipedia: Flyweight Muay Thai
+3	ONE Fight Night 21: Eersel vs. Nicolas	2024-04-05	内藤大樹	デッドゥアンレック	NOT_MMA	Wikipedia: Flyweight Kickboxing
+3	ONE Fight Night 3：De Ridder vs. Abdulaev	2022-10-22	内藤大樹	アミール・ナセリ	NOT_MMA	Wikipedia lead card: Muay Thai
+3	ONE Friday Fights 101	2025-03-21	柿﨑瑠	エンゾ・クラリス	NOT_MMA	onefc.com: 122lbs Kickboxing
+3	ONE Friday Fights 112	2025-06-13	成尾拓輝	チャン・ハイヤン	NOT_MMA	onefc.com: 139lbs Kickboxing
+3	ONE Friday Fights 126	2025-09-26	黒田斗真	アダム	NOT_MMA	onefc.com: Atomweight Kickboxing
+3	ONE Friday Fights 126	2025-09-26	黒田斗真	アダム・ソー.デチャパン	NOT_MMA	same bout (dup)
+3	ONE Friday Fights 138	2026-01-16	チョ・ギョンジェ	将太	NOT_MMA	onefc.com: Bantamweight Kickboxing
+3	ONE Friday Fights 138	2026-01-16	将太	チョ・ギョンジェ	NOT_MMA	same bout (dup)
+3	ONE Friday Fights 138	2026-01-16	白石舜	アヌアール・シスネロス	NOT_MMA	onefc.com: Flyweight Kickboxing
+3	ONE Friday Fights 138	2026-01-16	山﨑一央	ディオゴ・ミゲル・シルバ	NOT_MMA	onefc.com: Flyweight Kickboxing
+3	ONE Friday Fights 138	2026-01-16	奥村将真	シェン・イーハン	NOT_MMA	onefc.com: Strawweight Kickboxing
+3	ONE Friday Fights 148	2026-03-27	嵐舞	ヴェリハン・パリット	NOT_MMA	onefc.com: Bantamweight Kickboxing
+3	ONE Friday Fights 148	2026-03-27	竹添翔太	イーヤン・シェン	NOT_MMA	onefc.com: Strawweight Kickboxing
+3	ONE Friday Fights 148	2026-03-27	奥村将真	アドハム・ルジエフ	NOT_MMA	onefc.com: Strawweight Kickboxing
+3	ONE Friday Fights 159	2026-06-19	翔	ワリード・サクラジ	NOT_MMA	onefc.com: Flyweight Kickboxing
+3	ONE Friday Fights 26	2023-07-21	ペッダム・ペットギャットペット	サクチャイノーイ・MUデン	NOT_MMA	onefc.com: 134lbs Muay Thai
+3	ONE Friday Fights 26	2023-07-21	内藤大樹	デッドゥアンレック・ティーデ99	NOT_MMA	onefc.com: Flyweight Muay Thai
+3	ONE Friday Fights 41	2023-11-17	アスランベック・ジクレーブ	ビュー・ペットコーソル	NOT_MMA	onefc.com: 126lbs Kickboxing
+3	ONE Friday Fights 6	2023-02-24	柴田真吾	ハーキュリス・ウォー・チャクラウット	NOT_MMA	onefc.com: Bantamweight Muay Thai
+3	ONE Friday Fights 74	2024-08-09	HIROYUKI	シンサンパー・ルークブンミー	NOT_MMA	onefc.com: Muay Thai 122lbs
+3	ONE Friday Fights 74	2024-08-09	繁那	センチャイ・ナーヨックウィットトゥンソン	NOT_MMA	onefc.com: Muay Thai 126lbs
+3	ONE Friday Fights 87	2024-11-15	芝宏二郎	ジャマーク・クーパー	NOT_MMA	onefc.com: 120lbs Kickboxing
+3	ONE Friday Fights123	2025-09-05	吉田晄成	トヴァン・ノピアン	NOT_MMA	onefc.com: 131lbs Kickboxing
+3	ONE SAMURAI 4	2026-10-17	安保瑠輝也	ボグダン・シュマロフ	NOT_MMA	onefc.com news: booked as lightweight kickboxing (future bout)
+3	ONE: Big Bang	2020-12-04	マラット・グレゴリアン	イヴァン・コンドラチョフ	NOT_MMA	onefc.com/news: ONE Super Series featherweight kickboxing
+3	ONE:IMMORTAL TRIUMPH	2019-09-06	工藤政英	パンパヤック・ジットムアンノン	NOT_MMA	News: Flyweight Kickboxing
+3	Road to ONE:4th Young Guns	2021-02-22	有井渚海	平松侑	NOT_MMA	Tapology/Knockdown News: kickboxing bout
+4	ONE 162: ZHANG VS. DI BELLA	2022-10-21	ニコラス・ラーセン	ジミー・ビエノ	NOT_MMA	Wikipedia: Featherweight Muay Thai
+4	ONE 172: Takeru vs. Rodtang	2025-03-23	龍聖	スリヤンレック・ポー・イェンイン	NOT_MMA	Wikipedia: catchweight Kickboxing, UD
+4	ONE Championship: Fists Of Fury	2021-02-26	秋元皓貴	ジャン・チェンロン	NOT_MMA	bantamweight kickboxing affair
+4	ONE FRIDAY FIGHTS119	2025-08-08	奥山雅仁	ジェンギズ・ラーレ	NOT_MMA	onefc.com/YouTube: kickboxing bantamweight, TKO R3
+4	ONE Fight Night 22: Sundell vs. Diachkova	2024-05-03	ウェイ・ルイ	秋元皓貴	NOT_MMA	Wikipedia: Bantamweight Kickboxing
+4	ONE Fight Night 41: シンサムット vs. ジャービス	2026-03-14	陽勇	スーブラック・トー・プラン49	NOT_MMA	onefc.com: flyweight kickboxing, TKO R1
+4	ONE Friday Fights 103	2025-04-04	小桐冬華	ロー・チーチェン	NOT_MMA	Tapology: Kickboxing atomweight, UD
+4	ONE Friday Fights 113	2025-06-20	ドンキング・ヨータラックムエタイ	ヨードレックペット・オー・アトチャリア	NOT_MMA	Tapology: Muay Thai, KO R1
+4	ONE Friday Fights 128	2025-10-10	山﨑一央	アブデルハミッド・タルビ	NOT_MMA	onefc.com: kickboxing flyweight, UD
+4	ONE Friday Fights 139	2026-01-23	鈴木宙樹	ガブリエル・ペレイラ	NOT_MMA	Tapology: Kickboxing, majority decision
+4	ONE Friday Fights 139	2026-01-23	門口佳佑	ジャオ・ジェンドン	NOT_MMA	onefc.com: strawweight kickboxing, TKO R3
+4	ONE Friday Fights 149	2026-04-03	指田烈	イザヤ・バダト	NOT_MMA	Kickboxing Flyweight, KO R1
+4	ONE Friday Fights 149	2026-04-03	ブラックシーサー颯太朗	デルファン・ドゥイ・サトリオ	NOT_MMA	kickboxing atomweight, UD
+4	ONE Friday Fights 149	2026-04-03	大田一航	パヤクルト	NOT_MMA	Tapology: Muay Thai strawweight, KO R3
+4	ONE Friday Fights 162 & The Inner Circle	2026-07-17	大森隆之介	アリ・アル＝キナニ	NOT_MMA	Tapology: Muay Thai strawweight, UD
+4	ONE Friday Fights 162 & The Inner Circle	2026-07-17	与座優貴	ベン・ウーリス	NOT_MMA	onefc.com: kickboxing bout, UD
+4	ONE Friday Fights 30	2023-08-25	リカルド・ブラボ	デンパノム・プラン26	NOT_MMA	Tapology: Muay Thai catchweight, KO R2
+4	ONE Friday Fights 30	2023-08-25	小笠原瑛作	ヨッドウィッタヤ・ペッチョンプー	NOT_MMA	Muay Thai catchweight, KO R1
+4	ONE Friday Fights 30	2023-08-25	小川翔	ペットガーフィールド・ジットムアンノン	NOT_MMA	onefc.com: Muay Thai Classic, UD
+4	ONE Friday Fights 30	2023-08-25	小川翔	ペットガーフィールド	NOT_MMA	same bout (dup)
+4	ONE Friday Fights 46: Tawanchai vs. Superbon	2023-12-22	小笠原瑛作	チョーファー・トー・センティアンノーイ	NOT_MMA	Tapology: Muay Thai catchweight, KO R2
+4	ONE Friday Fights 60	2024-04-26	小笠原瑛作	ソーンスックノーイ	NOT_MMA	Tapology: Muay Thai, majority decision
+4	ONE Friday Fights 60	2024-04-26	デニス・デミルカプ	スアキム	NOT_MMA	Tapology: Muay Thai catchweight, KO R2
+4	ONE Friday Fights 75	2024-08-16	大田拓真	ブラジル	NOT_MMA	Tapology: Muay Thai catchweight, split decision
+4	ONE Friday Fights 89	2024-11-29	辻井和奏	タンタン	NOT_MMA	Tapology: Muay Thai atomweight, UD
+4	ONE Friday Fights143	2026-02-20	翔真	マイケル・バラノフ	NOT_MMA	featherweight kickboxing, KO R3
+4	ONE SUPER SERIES	2019-09-01	廣野祐	内村洋二郎	NOT_MMA	mmaplanet.jp: featherweight kickboxing, KO R2
+4	ONE: CONQUEST OF CHAMPIONS	2018-11-23	鈴木博昭	デイヴィダス・ダニラ	NOT_MMA	onefc.com/search: bantamweight kickboxing, UD
+4	ONE:MASTERS OF DESTINY	2019-07-12	森本"狂犬"義久	ジョシュ・トナー	NOT_MMA	Tapology: Kickboxing, UD
+4	Road to ONE:CENTURY	2019-09-01	廣野祐	内村洋次郎	NOT_MMA	same bout as ONE SUPER SERIES row (dup, event name variant)
+4	Road to ONE:CENTURY	2019-09-01	内藤大樹	渡辺優太	NOT_MMA	Tapology/mmaplanet.jp: Muay Thai flyweight, KO R1
+5	ONE 162: Zhang vs. Di Bella	2022-10-21	デニス・ピューリック	タギール・カリロフ	NOT_MMA	onefc.com/tapology: Muay Thai bout, UD
+5	ONE 172: 武尊 VS ロッタン	2025-03-23	陽勇	ザカリア・ジャマリ	NOT_MMA	Tapology: Kickboxing Bout, KO by knee R1
+5	ONE 172: 武尊 VS ロッタン	2025-03-23	KANA	ペッディージャー	NOT_MMA	Kickboxing title bout vs Phetjeeja, UD
+5	ONE 172: 武尊 VS ロッタン	2025-03-23	秋元皓貴	ジョン・リネカー	NOT_MMA	bantamweight kickboxing, split decision
+5	ONE 172: 武尊 VS ロッタン	2025-03-23	武尊	ロッタン・ジットムアンノン	NOT_MMA	main event flyweight kickboxing, KO
+5	ONE 172: 武尊 VS ロッタン	2025-03-23	野杁正明	タワンチャイ・PK・センチャイ	NOT_MMA	interim featherweight kickboxing title, TKO
+5	ONE Championship: Hero's Ascent	2019-01-25	秋元皓貴	ジョシュ・トナー	NOT_MMA	flyweight kickboxing bout, UD
+5	ONE FRIDAY FIGHTS64	2024-05-24	弘・センチャイジム	ジョハン・エストゥピニャン	NOT_MMA	Tapology: Muay Thai Bout, KO
+5	ONE Fight Night 24: Brooks vs. Balart	2024-08-02	エリアス・マムーディ	内藤大樹	NOT_MMA	Tapology: Kickboxing Bout, KO spinning backfist
+5	ONE Fight Night 24: Brooks vs. Balart	2024-08-02	内藤大樹	エリアス・マムーディ	NOT_MMA	same bout (dup)
+5	ONE Fight Night 44	2026-06-27	鈴木真治	フェラーリ・フェアテックス	NOT_MMA	Tapology: Muay Thai Bout, UD
+5	ONE Friday Fights 104	2025-04-11	成尾拓輝	アルベウ・ダ・シウバ	NOT_MMA	kickboxing catchweight, TKO R1
+5	ONE Friday Fights 116	2025-07-18	谷津晴之	アイザック・モハメッド	NOT_MMA	Tapology: Muay Thai Bout, KO R1
+5	ONE Friday Fights 116	2025-07-18	与座優貴	ペッタノン・ペットファーガス	NOT_MMA	onefc.com: kickboxing, UD
+5	ONE Friday Fights 129	2025-10-17	谷津晴之	ハー・リン・オム	NOT_MMA	Tapology: Muay Thai Bout, UD
+5	ONE Friday Fights 140	2026-01-30	嵐舞	チャラムカオ	NOT_MMA	bantamweight kickboxing, KO R3
+5	ONE Friday Fights 140	2026-01-30	成尾拓輝	チェン・ジャーイー	NOT_MMA	Tapology: Kickboxing Bout, KO R3
+5	ONE Friday Fights 140	2026-01-30	指田烈	ダニラ・バシリヒン	NOT_MMA	boutreview.com: flyweight kickboxing, KO R2
+5	ONE Friday Fights 150	2026-04-10	吉田晄成	ホアン・ジェンバン	NOT_MMA	Tapology: Kickboxing Bout, UD
+5	ONE Friday Fights 150	2026-04-10	山﨑一央	ホン・チェンジー	NOT_MMA	Tapology: Kickboxing Bout, KO R1
+5	ONE Friday Fights 163	2026-07-24	那須川龍心	トンプーン・PK・センチャイ	NOT_MMA	Kickboxing Bout, TKO R2
+5	ONE Friday Fights 32	2023-09-08	大田拓真	ジェルテ・ブロマート	NOT_MMA	Muay Thai catchweight bout, UD
+5	ONE Friday Fights 32	2023-09-08	鈴木真治	スーブラック・トー・プラン49	NOT_MMA	Tapology: Muay Thai Bout, KO R2
+5	ONE Friday Fights 47	2024-01-12	小川翔	ヌンパンニャー・イーグルムエタイ	NOT_MMA	Tapology: Muay Thai 140lb, TKO R2 elbow
+5	ONE Friday Fights 62	2024-05-10	安本晴翔	テミルラン・ベクムルザエフ	NOT_MMA	gonkaku.jp: explicit キックボクシング flyweight, decision 3-0
+5	ONE Friday Fights 62	2024-05-10	森岡悠樹	ペイマン・ゾルファガリ	NOT_MMA	boutreview/gonkaku: Muay Thai, KO R1
+5	ONE Friday Fights 77	2024-08-30	スーパー・ヤイ・チャン	スーティン・リンムエタイ	NOT_MMA	Tapology: Muay Thai Bout, split decision
+5	ONE Friday Fights 91	2024-12-13	HIROYUKI	パデッスク	NOT_MMA	Tapology: Muay Thai 122lb catchweight
+5	ONE Friday Fights１１０	2025-05-30	スーパー・ヤイ・チャン	睦雅	NOT_MMA	Tapology: Muay Thai Bout, UD
+5	ONE WARRIOR SERIES	2019-10-05	有井渚海	レイ	NOT_MMA	efight/boutreview: 55kg kickboxing 8oz gloves, TKO R3
+5	ONE WARRIOR SERIES	2019-10-05	Little Tiger	サンドラ・ゴドヴィク	NOT_MMA	Tapology: Muay Thai Bout, decision
+5	ONE: FULL BLAST II	2021-06-11	内藤大樹	ワン・ウェンフェン	NOT_MMA	shootboxing.org: ONE kickboxing rules, decision
+5	ONE：DAWN OF VALOR	2019-10-25	内藤大樹	アレクシ・セレピソス	NOT_MMA	onefc.com/efight: ムエタイフライ級, TKO R3
+5	Road to ONE：2nd sponsored by ABEMA	2020-04-17	HIROYUKI	ポン	NOT_MMA	boutreview: Muay Thai strawweight, TKO R2
+6	ONE 163 Akimoto vs. Petchtanong	2022-11-19	秋元皓貴	ペッタノン・ペットフォーガス	NOT_MMA	onefc.com: Bantamweight Kickboxing world title, split decision
+6	ONE 173	2025-11-16	ウェイ・ルイ	秋元皓貴	NOT_MMA	Wikipedia: Bantamweight Kickboxing
+6	ONE 173	2025-11-16	KANA	スタンプ	NOT_MMA	Wikipedia: Women's Atomweight Kickboxing
+6	ONE 173	2025-11-16	マラット・グレゴリアン	安保瑠輝也	NOT_MMA	Wikipedia: Featherweight Kickboxing
+6	ONE 173	2025-11-16	安保瑠輝也	マラット・グレゴリアン	NOT_MMA	same bout (dup)
+6	ONE 173	2025-11-16	デニス・ピューリック	武尊	NOT_MMA	Wikipedia: Flyweight Kickboxing, TKO
+6	ONE 173	2025-11-16	秋元皓貴	ウェイ・ルイ	NOT_MMA	same bout (dup)
+6	ONE 173	2025-11-16	与座優貴	スーパーレック	NOT_MMA	Wikipedia: Bantamweight Kickboxing
+6	ONE 173	2025-11-16	武尊	デニス・ピューリック	NOT_MMA	same bout (dup)
+6	ONE 173	2025-11-16	野杁正明	スーパーボン	NOT_MMA	Wikipedia: Featherweight Kickboxing unification
+6	ONE 173	2025-11-16	和島大海	ナビル・アナン	NOT_MMA	Wikipedia: Featherweight Kickboxing
+6	ONE Championship: Mark Of Greatness	2019-12-09	ワン・ジュングァン	サムエー・ガイヤーンハーダオ	NOT_MMA	onefc.com: ONE Strawweight Kickboxing world title
+6	ONE Fight Fight 26	None	デニス・ピューリック	エリアス・マムーディ	NOT_MMA	actual ONE Fight Night 26, catchweight Muay Thai, NC after doping
+6	ONE Fight Night 25: Brooks vs. Balart	2024-08-03	内藤大樹	エリアス・マムーディ	NOT_MMA	flyweight kickboxing (event mislabeled, actually FN24)
+6	ONE Fight Night 46	2026-08-15	KANA	ユー・ヨウ・プイ	NOT_MMA	onefc.com: atomweight kickboxing, UD
+6	ONE Friday Fights 105	2025-04-18	手塚翔太	アリズワン・ノルシャーニー	NOT_MMA	onefc.com: 137 LBS Muay Thai
+6	ONE Friday Fights 117	2025-07-25	髙橋聖人	ウザイル・イスモイルジャノフ	NOT_MMA	onefc.com: Bantamweight Kickboxing
+6	ONE Friday Fights 13	2023-04-21	アスランベック・ジクレーブ	ハーキュリス・ウォー・チャクラウット	NOT_MMA	onefc.com: Bantamweight Muay Thai
+6	ONE Friday Fights 141	2026-02-06	谷津晴之	リン・テット・アウン	NOT_MMA	onefc.com: Strawweight Muay Thai
+6	ONE Friday Fights 141	2026-02-06	ダニエル・プエルタス	ラムナムーンレック	NOT_MMA	onefc.com: Bantamweight Kickboxing
+6	ONE Friday Fights 151	2026-04-24	ドンキング・ヨータラックムエタイ	チェン・ジャーイー	NOT_MMA	onefc.com: Flyweight Kickboxing
+6	ONE Friday Fights 151	2026-04-24	川野龍輝	リカルド・サンチェス	NOT_MMA	onefc.com: Strawweight Kickboxing
+6	ONE Friday Fights 151	2026-04-24	テッサ・デ・コム	ジョルジア・ピエロパン	NOT_MMA	onefc.com: Atomweight Kickboxing
+6	ONE Friday Fights 151	2026-04-24	礼司	シェン・イーハン	NOT_MMA	onefc.com: Strawweight Kickboxing
+6	ONE Friday Fights 163 & The Inner Circle	2026-07-24	吉田晄成	リュー・ジュンチャオ	NOT_MMA	onefc.com: Flyweight Kickboxing
+6	ONE Friday Fights 163 & The Inner Circle	2026-07-24	那須川龍心	トンプーン	NOT_MMA	onefc.com: Strawweight Kickboxing, TKO
+6	ONE Friday Fights 33	2023-09-15	柴田真吾	オトップ・オー・クワンムアン	NOT_MMA	onefc.com: 143 LBS Muay Thai
+6	ONE Friday Fights 50	2024-02-02	ペッダム・ペットギャットペット	ペットセンチャイ・MUデン・コンマイバオウィー	NOT_MMA	onefc.com: 134 LBS Muay Thai
+6	ONE Friday Fights 50	2024-02-02	栗秋祥梧	ペットパランチャイ・ポー・ジャロンペット	NOT_MMA	onefc.com: 132 LBS Muay Thai
+6	ONE Friday Fights 64	2024-05-24	片島聡志	チャン・ルーミン	NOT_MMA	onefc.com: 126 LBS Muay Thai
+6	ONE Friday Fights 64	2024-05-24	佐藤執斗	ティーヤイ・PK・センチャイ	NOT_MMA	onefc.com: 120 LBS Muay Thai
+6	ONE Friday Fights 78	2024-09-06	重森陽太	シン・ドンヒョン	NOT_MMA	onefc.com: 140 LBS Muay Thai
+6	ONE Friday Fights 78	2024-09-06	黒田直也	ジョニー・ド・ルー	NOT_MMA	onefc.com: 119 LBS Kickboxing
+6	ONE Friday Fights 92	2024-12-20	KANA	アニッサ・メクセン	NOT_MMA	onefc.com: Atomweight Kickboxing
+6	ONE Friday Fights 92	2024-12-20	マラット・グレゴリアン	アブデラリ・ザヒディ	NOT_MMA	onefc.com: 159 LBS Kickboxing
+6	ONE Friday Fights 92	2024-12-20	野杁正明	リウ・メンヤン	NOT_MMA	onefc.com: Featherweight Kickboxing
+6	ONE Friday Fights 92	2024-12-20	イゴール・ベクレフ	パンパヤック	NOT_MMA	onefc.com: Flyweight Muay Thai
+6	ONE Friday Night 96: Komawut vs. Panrit	2025-02-06	陽勇	レアンドロ・ミランダ	NOT_MMA	onefc.com: flyweight kickboxing, TKO R2
+6	ONE WARRIOR SERIES 10	2020-02-19	基山幹太	マイケル・ウォーカー	NOT_MMA	Tapology/onefc: Kickboxing Flyweight, UD
+6	ONE: First Strike	2021-10-15	マラット・グレゴリアン	アンディ・サワー	NOT_MMA	onefc.com: Featherweight Kickboxing World GP QF
+6	ONE：HERO'S ASCENT	2019-01-25	鈴木博昭	モハマド・ビン・マフムード	NOT_MMA	Tapology/onefc: ONE Super Series Muay Thai bantamweight
+8	ONE 165: Superlek vs. Takeru	2024-01-28	マラット・グレゴリアン	シッティチャイ・シッソンピーノン	NOT_MMA	Wikipedia: catchweight Kickboxing, KO R3
+8	ONE 165: Superlek vs. Takeru	2024-01-28	武尊	スーパーレック	NOT_MMA	Wikipedia: Flyweight Kickboxing title bout
+8	ONE Championship 83: Heart Of Lion	2018-11-09	ジョルジオ・ペトロシアン	ソーグラー・ペッティンディーアカデミー	NOT_MMA	onefc.com: ONE Super Series Kickboxing bout
+8	ONE Championship: ONE X	2022-03-26	秋元皓貴	カピタン・ペッティンディーアカデミー	NOT_MMA	Wikipedia: Bantamweight Kickboxing title
+8	ONE Fight Night 13: Allazov vs. Grigorian	2023-08-04	マラット・グレゴリアン	チンギス・アラゾフ	NOT_MMA	Wikipedia: Featherweight Kickboxing
+8	ONE Fight Night 13: Allazov vs. Grigorian	2023-08-04	ダビッド・キリア	タワンチャイ・PK・センチャイ	NOT_MMA	Wikipedia: Featherweight Kickboxing
+8	ONE Fight Night 13: Allazov vs. Grigorian	2023-08-04	チンギス・アラゾフ	マラット・グレゴリアン	NOT_MMA	same bout (dup)
+8	ONE Fight Night 13: Allazov vs. Grigorian	2023-08-04	エリアス・マムーディ	エドガー・タバレス	NOT_MMA	Wikipedia: Muay Thai
+8	ONE Fight Night 29	2025-03-08	北野克樹	ステファン・コロディ	NOT_MMA	Wikipedia: catchweight Muay Thai
+8	ONE Fight Night 81: Superbon vs. Nattawut	2024-09-28	陽勇	ユセフ・サード	NOT_MMA	cagesidepress: Kickboxing (mislabeled, actually FF81)
+8	ONE Friday Fights 107	2025-05-09	古村光	カイス・モハメッド	NOT_MMA	onefc.com: 128lbs Muay Thai
+8	ONE Friday Fights 119	2025-08-08	水野夢斗	ルオ・チェンハオ	NOT_MMA	onefc.com: 117lbs Kickboxing
+8	ONE Friday Fights 131	2025-10-31	TAKU	ガブリエル・ペレイラ	NOT_MMA	onefc.com: Bantamweight Kickboxing
+8	ONE Friday Fights 143	2026-02-20	吉田晄成	ファクリディン・ハサノフ	NOT_MMA	onefc.com: Flyweight Kickboxing
+8	ONE Friday Fights 154	2026-05-15	鈴木宙樹	デニス・ドツェンコ	NOT_MMA	onefc.com: Bantamweight Kickboxing
+8	ONE Friday Fights 154	2026-05-15	KOKOZ	ミア・トレヴォロウ	NOT_MMA	onefc.com: Atomweight Muay Thai (Inner Circle)
+8	ONE Friday Fights 165 & The Inner Circle	2026-08-07	マラット・グレゴリアン	マムカ・ウスビャン	NOT_MMA	onefc.com: Featherweight Kickboxing (Inner Circle)
+8	ONE Friday Fights 165 & The Inner Circle	2026-08-07	翼	ポン・ズーハオ	NOT_MMA	onefc.com: Strawweight Kickboxing
+8	ONE Friday Fights 34: Rodtang vs. Superlek	2023-09-22	アクラム・ハミディ	プラジャンチャイ・PK・センチャイ	NOT_MMA	onefc.com: Strawweight Kickboxing
+8	ONE Friday Fights 54	2024-03-08	バズーカ巧樹	ノンタキット・トー・モースィー	NOT_MMA	onefc.com: 143lbs Muay Thai
+8	ONE Friday Fights 54	2024-03-08	鮫島大翔	ペットランプン	NOT_MMA	onefc.com: 128lbs Muay Thai
+8	ONE Friday Fights 67	2024-06-14	谷津晴之	グエン・バン・タイン	NOT_MMA	onefc.com: 116lbs Muay Thai
+8	ONE Friday Fights 67	2024-06-14	KOKOZ	サワラート・シットクルジャ	NOT_MMA	onefc.com: 117lbs Muay Thai
+8	ONE Friday Fights 81: Superbon vs. Nattawut	2024-09-27	陽勇	ユセフ・サード	NOT_MMA	cagesidepress: Kickboxing bout
+8	ONE Friday Fights 81: Superbon vs. Nattawut	2024-09-27	アクラム・ハミディ	サムエー	NOT_MMA	cagesidepress: Muay Thai bout
+8	ONE Friday Fights 81: Superbon vs. Nattawut	2024-09-27	小笠原瑛作	リッティデット・ソー・ソンマイ	NOT_MMA	cagesidepress: Muay Thai bout
+8	ONE Friday Fights 81: Superbon vs. Nattawut	2024-09-27	秋元皓貴	イリアス・エナッシ	NOT_MMA	Bantamweight Kickboxing showdown
+8	ONE Friday Fights 81: Superbon vs. Nattawut	2024-09-27	武尊	タン・ジン	NOT_MMA	Flyweight Kickboxing co-main event
+8	ONE Friday Fights 94	2025-01-17	繁那	アヤド・アルバドル	NOT_MMA	onefc.com: Strawweight Muay Thai
+8	ONE FridayFights 109	2025-05-23	海人	モハメド・シアサラニ	NOT_MMA	onefc.com: Featherweight Kickboxing
+8	ONE X	2022-03-25	マラット・グレゴリアン	スーパーボン	NOT_MMA	Wikipedia: Featherweight Kickboxing title defense
+8	ONE X	2022-03-26	ニキー・ホルツケン	シンサムット・クリンミー	NOT_MMA	Wikipedia: Lightweight Muay Thai
+8	ONE X	2022-05-28	チンギス・アラゾフ	シッティチャイ・シッソンピーノン	NOT_MMA	Wikipedia: Featherweight Kickboxing GP final (date variant, dup)
+8	ONE X	2022-03-26	チンギス・アラゾフ	シッティチャイ・シッソンピーノン	NOT_MMA	same bout (dup)
+8	ONE: MARK OF GREATNESS	2019-12-06	内藤大樹	ルイ・ボテーリョ	NOT_MMA	Muay Thai bout, decision win
+8	ONE：WARRIORS OF LIGHT	2019-05-10	鈴木博昭	ノンオー・ガイヤーンハーダオ	NOT_MMA	Bantamweight Muay Thai title bout
+9	ONE 166: Qatar	2024-03-01	鈴木真治	ハン・ズーハオ	NOT_MMA	ONE166 official card: Bantamweight Muay Thai
+9	ONE Championship 84: Warrior's Dream	2018-11-17	ニキー・ホルツケン	コスモ・アレキサンドラ	NOT_MMA	multi-source: catchweight kickboxing bout
+9	ONE Championship: Reign of Dynasties 2	2020-10-09	秋元皓貴	ジャン・チェンロン	NOT_MMA	ONE Super Series kickboxing bantamweight, split decision
+9	ONE Fight Night 15: Le vs. Freymanov	2023-10-06	ダニエル・ウィリアムス	ジョナサン・ディベラ	NOT_MMA	kickboxing title bout, UD
+9	ONE Fight Night 32: Nakrob vs. Jaosuayai	2025-06-07	内藤大樹	ジョハン・エストゥピニャン	NOT_MMA	flyweight Muay Thai bout
+9	ONE Fight Night 8: Superlek vs. Williams	2023-03-25	アスランベック・ジクレーブ	ルイ・ボテーリョ	NOT_MMA	catchweight(128lb) Muay Thai
+9	ONE Fight Night 8: Superlek vs. Williams	2023-03-25	ダニエル・ウィリアムス	スーパーレック	NOT_MMA	flyweight kickboxing world title bout
+9	ONE Fight Night 8: Superlek vs. Williams	2023-03-25	ニコラス・ラーセン	エディ・アバソロ	NOT_MMA	featherweight Muay Thai (bonus bout)
+9	ONE Friday Fights 108	2025-05-15	中嶋愛樹斗	リュー・ジュンチャオ	NOT_MMA	strawweight kickboxing, split decision
+9	ONE Friday Fights 120	2025-08-15	ブリース・デルバール	メルト・アスラン	NOT_MMA	onefc.com: Muay Thai(148lb)
+9	ONE Friday Fights 133	2025-11-14	黒田斗真	キリル・チジク	NOT_MMA	kickboxing bout, UD
+9	ONE Friday Fights 144	2026-02-27	憂也	モハメド・ハディディ	NOT_MMA	onefc.com: Featherweight Kickboxing
+9	ONE Friday Fights 144	2026-02-27	北野克樹	レニー・ブラジ	NOT_MMA	onefc.com: Bantamweight Muay Thai
+9	ONE Friday Fights 144	2026-02-27	政所仁	エドゥアルド・マルカリアン	NOT_MMA	onefc.com: Strawweight Kickboxing, KO
+9	ONE Friday Fights 144	2026-02-27	TAKU	サンガルティット	NOT_MMA	onefc.com: Bantamweight Kickboxing
+9	ONE Friday Fights 155	2026-05-22	嵐舞	イー・ヌオ	NOT_MMA	onefc.com: Bantamweight Kickboxing
+9	ONE Friday Fights 155	2026-05-22	KANA	ベロ・ニカ	NOT_MMA	onefc.com: Atomweight Kickboxing
+9	ONE Friday Fights 155	2026-05-22	奥村将真	シェン・イージョウ	NOT_MMA	onefc.com: Strawweight Kickboxing
+9	ONE Friday Fights 166 & The Inner Circle	2026-08-14	伊藤紗弥	ノンヌック	NOT_MMA	onefc.com: Atomweight Muay Thai
+9	ONE Friday Fights 36	2023-10-06	ペッダム・ペットギャットペット	ペットパランチャイ・ポー・ジャロンペット	NOT_MMA	Tapology: Muay Thai bout
+9	ONE Friday Fights 36	2023-10-06	アントニオ・オルデン	ポンシリ・スージーバミーキアオ	NOT_MMA	strawweight Muay Thai, split decision
+9	ONE Friday Fights 55	2024-03-15	内藤大樹	シャーゾット・カブトフ	NOT_MMA	flyweight kickboxing, UD
+9	ONE Friday Fights 68	2024-06-28	魁斗	ラン・シャンテン	NOT_MMA	gonkaku.jp: Catchweight Kickboxing
+9	ONE Friday Fights 68	2024-06-28	橋本亮汰	上野優翔	NOT_MMA	gonkaku.jp/Tapology: Catchweight Muay Thai, KO R1
+9	ONE Friday Fights 68	2024-06-28	テレカ∞	上野優翔	NOT_MMA	inferred same bout as 橋本亮汰 row (same date/opponent/method)
+9	ONE Friday Fights 82	2024-10-04	ドンキング・ヨータラックムエタイ	セクサン・フェアテックス	NOT_MMA	Muay Thai bout, UD
+9	ONE Friday Fights 82	2024-10-04	柿﨑瑠	ルー・イーフー	NOT_MMA	Tapology: Kickboxing bout, UD
+9	ONE Friday Fights 82	2024-10-04	HIROYUKI	プラカイペット・エミネントエアー	NOT_MMA	Tapology: Muay Thai bout, UD
+9	ONE Friday Fights 95	2025-01-31	KANA	モア・カールソン	NOT_MMA	Atomweight Kickboxing, UD
+9	ONE Friday Fights 95	2025-01-31	スーパー・ヤイ・チャン	JaroenpornTaiKubon	NOT_MMA	catchweight(140lb) Muay Thai KO
+9	ONE FridayFights 111	2025-06-06	MISAKI	ラン・ロンシュー	NOT_MMA	onefc.com: 100lb Kickboxing, UD
+9	ONE on Prime Video 2: Xiong vs. Lee 3	2022-10-01	マラット・グレゴリアン	タイフン・オズカン	NOT_MMA	kickboxing bout, UD
+9	ONE: NO SURRENDER III	2020-08-21	Little Tiger	マリー・ルーメット	NOT_MMA	atomweight Muay Thai contest, UD
+9	ROAD TO ONE JAPAN	2023-04-09	チョ・ギョンジェ	高橋幸光	NOT_MMA	YouTube: -66.68kg契約 kickboxing
+2	ONE Friday Fights 4	2023-02-10	鈴木宙樹	ファリヤ・アミニプール	NOT_MMA	Wikipedia: Bantamweight Kickboxing, split decision loss
+2	ONE Friday Fights 22	2023-06-23	アクラム・ハミディ	ジョムホート・オート・ムエタイ	NOT_MMA	Wikipedia: Catchweight Muay Thai, KO round 2
+2	ONE Friday Fights 59	2024-04-19	大田拓真	コプター・ソー・ソンマイ	NOT_MMA	126lb Muay Thai bout, R2 KO; Tapology tags Muay Thai Bout
+2	ONE Friday Fights 59	2024-04-19	笠原友希	ペットシーモック・PKセンチャイムエタイジム	NOT_MMA	132lb Muay Thai bout, R1 KO
+2	ONE Friday Fights 59	2024-04-19	笠原友希	ペットシーモック・PK・センチャイ	NOT_MMA	same bout (dup)
+2	ONE Friday Fights 59	2024-04-19	笠原友希	ペッシーモク	NOT_MMA	same bout again (dup)
+2	ONE Friday Fights 59	2024-04-19	大田一航	ペットナムコン	NOT_MMA	122lb Muay Thai bout, UD
+2	ONE Friday Fights 73	2024-08-02	ペットマイ・MC.スーパーレックムエタイ	Sungprab lookpichit	NOT_MMA	catchweight Muay Thai bout, R2 KO liver kick
+2	ONE Friday Fights 73	2024-08-02	黒田直也	ファジャラット・ソー・デチャパン	NOT_MMA	119lb catchweight kickboxing bout, R3 KO
+2	ONE Friday Fights 73	2024-08-02	米川たすく	イラシェフ・ドストンベック	NOT_MMA	bantamweight kickboxing bout, R3 KO
+2	ONE Friday Fights 86	2024-11-08	大﨑孔稀	フオ・シャオロン	NOT_MMA	onefc.com card: Strawweight Kickboxing bout
+2	ONE Friday Fights 86	2024-11-08	風羽	イスライ・エリカ・ポモガオ	NOT_MMA	onefc.com card: 100 LBS Muay Thai bout
+2	ONE Friday Fights 86	2024-11-08	風羽	イスライ・エリカ・ボモガオ	NOT_MMA	same bout (dup)
+2	ONE Friday Fights 86	2024-11-08	イゴール・ベクレフ	ギンサンレック	NOT_MMA	onefc.com card: Flyweight Muay Thai, TKO R1
+2	ONE Friday Fights 100	2025-03-14	重森陽太	アリ・コユンジュ	NOT_MMA	onefc.com card: 140 LBS Muay Thai bout
+2	ONE Friday Fights 100	2025-03-14	スーパー・ヤイ・チャン	サンガルティット	NOT_MMA	onefc.com card: 140 LBS Kickboxing bout
+2	ONE Friday Fights 100	2025-03-14	ニキー・ホルツケン	シンサムット・クリンミー	NOT_MMA	onefc.com card: 175 LBS Kickboxing, KO R1
+2	ONE Friday Fights 100	2025-03-14	デニス・ピューリック	ジャオスアヤイ・モー・クルンテープトンブリー	NOT_MMA	onefc.com card: Flyweight Muay Thai, KO R2
+2	ONE Friday Fights 111	2025-06-06	ラニャゲーオ・トー・シラポン	アンドレイ・メゼンツェフ	NOT_MMA	onefc.com card: 118 LBS Muay Thai, split decision
+2	ONE Friday Fights 111	2025-06-06	MISAKI	RanLongshu	NOT_MMA	onefc.com card: 100 LBS Kickboxing bout
+2	ONE Friday Fights120	2025-08-15	GUMP	チャン・ハイヤン	NOT_MMA	onefc.com card: 138 LBS Kickboxing bout
+2	ONE Friday Fights 124	2025-09-12	古村光	ソンサイ・ラオラネサン	NOT_MMA	onefc.com card: 128 LBS Muay Thai
+2	ONE Friday Fights 136	2025-12-12	大田拓真	イズラエル・ドス・サントス	NOT_MMA	onefc.com card: Flyweight Muay Thai
+2	ONE Friday Fights 136	2025-12-12	HIROYUKI	ペッダム・シテラワン	NOT_MMA	onefc.com card: Strawweight Muay Thai
+2	ONE Friday Fights 147	2026-03-20	寺山遼冴	ナレク・ハチキヤン	NOT_MMA	WebSearch: Kickboxing bantamweight
+2	ONE Friday Fights 147	2026-03-20	古村光	アダム・メサウディ	NOT_MMA	WebSearch: flyweight Muay Thai, split decision
+2	ONE Friday Fights 158	2026-06-12	山﨑一央	チェン・ジャーイー	NOT_MMA	WebSearch: Kickboxing flyweight, majority decision
+2	ONE Friday Fights 158	2026-06-12	棚澤大空	アドハム・ルジエフ	NOT_MMA	WebSearch: strawweight kickboxing, split decision
+2	ONE SAMURAI 2	2026-08-08	嵐舞	北野克樹	NOT_MMA	onefc.com results: Bantamweight Kickboxing KO
+2	ONE SAMURAI 2	2026-08-08	北野克樹	嵐舞	NOT_MMA	same bout (dup)
+2	ONE SAMURAI 2	2026-08-08	海人	モハメド・シアサラニ	NOT_MMA	onefc.com results: Featherweight Kickboxing KO
+2	ONE SAMURAI 2	2026-08-08	都木航佑	ルオ・チャオ	NOT_MMA	onefc.com results: Featherweight Kickboxing decision
+2	ONE SAMURAI 2	2026-08-08	笠原弘希	塩川琉斗	NOT_MMA	onefc.com results: Featherweight Kickboxing split decision
+2	ONE SAMURAI 2	2026-08-08	奥村将真	礼司	NOT_MMA	onefc.com results: Strawweight Kickboxing UD
+2	ONE SAMURAI 2	2026-08-08	野杁正明	リウ・メンヤン	NOT_MMA	onefc.com/combatpress: Featherweight Kickboxing KO
+2	ONE SAMURAI 2	2026-08-08	塩川琉斗	笠原弘希	NOT_MMA	same bout (dup)
+2	ONE SAMURAI 2	2026-08-08	礼司	奥村将真	NOT_MMA	same bout (dup)
+2	ONE 158: TAWANCHAI VS. LARSEN	2022-06-03	ニコラス・ラーセン	タワンチャイ・PK・センチャイ	NOT_MMA	Wikipedia table: Featherweight Muay Thai, KO round 2
+2	ONE 170	2025-01-24	野杁正明	シャーキル・タクレティ	NOT_MMA	Wikipedia table: Featherweight Kickboxing, KO leg kick R2
+2	ONE Championship Friday Fight	2024-03-22	勝野雅也	ソンラック	NOT_MMA	onefc.com identified as ONE Friday Fights 56: Flyweight Muay Thai, KO
+2	ONE FRIDAY FIGHTS 51	2024-02-09	奥山雅仁	テミルラン・ベクムルザエフ	NOT_MMA	gonkaku/boutreview: 138lb catchweight kickboxing match
+2	ONE Fight Night 20: Todd vs. Phetjeeja	2024-03-08	クリスティーナ・モラレス	アリシア・ヘレン・ロドリゲス	NOT_MMA	Wikipedia table: Atomweight Muay Thai title bout, UD
+2	ONE Fight Night 38	2025-12-06	鈴木真治	ドミトリー・コフトゥン	NOT_MMA	Wikipedia table: Bantamweight Muay Thai, UD
+2	ONE:CALL TO GREATNESS	2019-02-22	工藤政英	ペッダム・ペッティンディーアカデミー	NOT_MMA	Combat Press: night's kickboxing action
+2	ONE: BIG BANG II	2020-12-04	内藤大樹	ジョナサン・ハガティー	NOT_MMA	Multiple reports: muay thai flyweight, UD
+2	Road to ONE Japan ＆ BOM 37	2022-12-11	末國龍汰	名高・エイワスポーツジム	NOT_MMA	boutreview.com main event: Muay Thai bout, 5R decision
+7	ONE 163: Akimoto vs. Petchtanong	2022-11-19	秋元皓貴	ペッタノン・ペットファーガス	NOT_MMA	onefc.com: Bantamweight Kickboxing world title, split decision
+7	ONE Championship 71: Heroes of Honor	2018-04-20	ジョルジオ・ペトロシアン	ジョー・ナタウット	NOT_MMA	onefc.com: ONE Super Series Kickboxing (71.2kg)
+7	ONE Championship: Masters Of Destiny	2019-07-12	秋元皓貴	ケニー・ズィー	NOT_MMA	onefc.com: Flyweight Kickboxing
+7	ONE Fight Night 11: Eersel vs. Menshikov	2023-06-09	ニキー・ホルツケン	アドリアン・サディコビッチ	NOT_MMA	Wikipedia: Catchweight(176lb) Kickboxing, decision
+7	ONE Fight Night 26	2024-12-07	エリアス・マムーディ	デニス・ピューリック	NOT_MMA	Wikipedia: Flyweight Muay Thai; later NC (meldonium)
+7	ONE Fight Night 26	2024-12-07	デニス・ピューリック	エリアス・マムーディ	NOT_MMA	same bout (dup)
+7	ONE Fight Night 26	2024-12-07	ダニエル・ウィリアムス	トンプーン	NOT_MMA	Wikipedia: Strawweight Muay Thai, TKO R2
+7	ONE Fight Night 6	2024-01-13	ダニエル・プエルタス	Superlek Kiatmoo9	NOT_MMA	Wikipedia: Flyweight Kickboxing, UD R5
+7	ONE Friday Fights 106	2025-05-02	酒寄珠璃	イーヤン・シェン	NOT_MMA	onefc.com card: 118 lbs Kickboxing bout
+7	ONE Friday Fights 118	2025-08-01	成尾拓輝	チャン・チンタオ	NOT_MMA	onefc.com card: 139 lbs Kickboxing bout
+7	ONE Friday Fights 118	2025-08-01	芝宏二郎	モン・ヨッダザイ	NOT_MMA	onefc.com card: 119 lbs Kickboxing bout
+7	ONE Friday Fights 130	2025-10-24	奥村将真	アルフィー・リンチ	NOT_MMA	onefc.com card: Strawweight Kickboxing bout
+7	ONE Friday Fights 142	2026-02-13	ドンキング・ヨータラックムエタイ	グレゴール・トム	NOT_MMA	onefc.com card: Flyweight Muay Thai bout
+7	ONE Friday Fights 152 & Superfan Fights	2026-05-01	チョ・ギョンジェ	ジャミール・オスマノフ	NOT_MMA	Tapology: Kickboxing bout, KO via body kick
+7	ONE Friday Fights 164 & The Inner Circle	2026-07-31	アクラム・ハミディ	ワッチャラフォン・PK・センチャイ	NOT_MMA	beIN Sports: strawweight Muay Thai main event
+7	ONE Friday Fights 34	2023-09-22	ミゲール・トリンダーデ	シブムン・シッチェブンタン	NOT_MMA	onefc.com card: 147 lbs Muay Thai bout
+7	ONE Friday Fights 53	2024-02-23	笠原弘希	ワラポン・ソー.デッチャパン	NOT_MMA	Wikipedia/search: 142lbs Muay Thai bout
+7	ONE Friday Fights 53	2024-02-23	笠原弘希	ワラポン	NOT_MMA	same bout (dup, spelling variant)
+7	ONE Friday Fights 53	2024-02-23	笠原弘希	ウォラポン・ソー・デチャパン	NOT_MMA	same bout (dup, spelling variant)
+7	ONE Friday Fights 53	2023-04-23	笠原弘希	ワラポン・ソー.デッチャパン	NOT_MMA	same underlying bout, DB date error(real date 2024-02-23), Muay Thai
+7	ONE Friday Fights 53	2024-02-23	デニス・デミルカプ	ブアキャオ・ポー・パオイン	NOT_MMA	138lbs Muay Thai bout per Wikipedia card
+7	ONE Friday Fights 66	2024-06-07	柴田真吾	ミャオ・アオチー	NOT_MMA	Bantamweight Muay Thai; Aoqi won TKO R2
+7	ONE Friday Fights 66	2024-06-07	アクラム・ハミディ	ゴンチャイ	NOT_MMA	Strawweight Muay Thai headliner, TKO R1
+7	ONE Friday Fights 80	2024-09-20	KOKOZ	エミリー・チョン	NOT_MMA	onefc.com公式カード: Muay Thai 117lbs, UD
+7	ONE Friday Fights 80	2024-09-20	デニス・デミルカプ	コンクライ	NOT_MMA	onefc.com公式カード: Muay Thai 142.6lbs, KO
+7	ONE Friday Fights 93	2025-01-10	谷津晴之	タイランレック・ソー・ルンサック	NOT_MMA	Wikipedia: Muay Thai catchweight120lbs, KO(body punch)R1
+7	ONE Friday Nights 71	2024-07-19	壱・センチャイジム	ティムール・チュイコフ	NOT_MMA	複数報道: Muay Thai catchweight124lbs, decision (actually FF71)
+7	ONE Warrior Series 8.日本VS世界	2019-10-05	基山幹太	チェプ・ホリック	NOT_MMA	boutreview.com: Kickboxing strawweight56.7kg
+7	ONE: KINGDOM OF HEROES	2018-10-06	工藤政英	シントンノーイ・ポー・テラクン	NOT_MMA	ゴング格闘技+英語記事: Kickboxing, decision loss
+7	ONE：MASTERS OF FATE	2019-11-08	鈴木博昭	トゥカートン・ペットパタヤイ	NOT_MMA	onefc.com公式記事: Muay Thai bantamweight契約

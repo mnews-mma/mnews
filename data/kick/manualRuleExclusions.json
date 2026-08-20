@@ -2254,5 +2254,69 @@
   "methodRaw": "判定",
   "category": "team_battle",
   "reason": "U-5(2026-08)。同上(「U-NEXT presents THE KNOCK OUT FIGHTER.7」チーム対抗戦)。"
+ },
+ {
+  "slug": "sakamoto-juki",
+  "date": "2025-12-14",
+  "opponent": "坂本 誠弥",
+  "methodRaw": "判定3-0 ※坂本寿希はロープ掴みにより減点1あり",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。KROSS×OVERは埼玉県拠点でキックボクシング/ムエタイ/MMAを混在開催する団体。「KROSSxOVER-CAGE.8」大会の公式結果ページ(krossover.jp)に「KROSS×OVER MMA Sクラス-56.7kg」と明記されており、同一カードの他試合(KICK PART/PRO-KICK表記)とは区別される総合格闘技(MMA)の一戦。"
+ },
+ {
+  "slug": "tomo",
+  "date": "2023-06-11",
+  "opponent": "貫井 義規",
+  "methodRaw": "",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER -CAGE- GENスポーツパレス大会」公式結果ページ(krossover.jp/?p=767)第3試合が「MMA FEATHERWEIGHT」と明記(1R肩固め一本)。純粋なキックボクシングではなく総合格闘技(MMA)。"
+ },
+ {
+  "slug": "fujimoto-arata",
+  "date": "2023-06-11",
+  "opponent": "中井 光義",
+  "methodRaw": "※藤本の棄権により、中井の不戦勝となる",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER -CAGE- GENスポーツパレス大会」公式結果ページ(krossover.jp/?p=767)第7試合がMMA部門と明記(藤本棄権により中井不戦勝)。総合格闘技(MMA)。"
+ },
+ {
+  "slug": "sakamoto-juki",
+  "date": "2026-03-01",
+  "opponent": "原 拓海",
+  "methodRaw": "判定3-0",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER -CAGE.8- GENスポーツパレス大会」公式結果ページ(krossover.jp)の見出しに「KROSS×OVER MMA Sクラス-55kg」と明記されており、同一カードの他8試合(KICK PART表記)とは区別される総合格闘技(MMA)の一戦。大会名の「CAGE」表記だけでなく個別bout見出しで確認済み。"
+ },
+ {
+  "slug": "fujimoto-arata",
+  "date": "2021-12-05",
+  "opponent": "Gravedigger",
+  "methodRaw": "1R 1’24” TKO",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER 15」大会のBOUTREVIEW対戦カードに「MMA Welterweight -77.1kg」(5分×2R)と明記。総合格闘技(MMA)。"
+ },
+ {
+  "slug": "fujimoto-arata",
+  "date": "2022-07-31",
+  "opponent": "GUNTHER KALUNDA",
+  "methodRaw": "1R 1’47” KO",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER 18」公式記録(第1・2部)に「MMA -82kg」と明記。総合格闘技(MMA)。"
+ },
+ {
+  "slug": "fujimoto-arata",
+  "date": "2019-02-24",
+  "opponent": "中野 謙",
+  "methodRaw": "判定0-1(太田19-19 鶴和18-20 小池19-19)",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER 5」大会のBOUTREVIEW対戦カードでMMA部門(ヒジ有り)に掲載。総合格闘技(MMA)。"
+ },
+ {
+  "slug": "fukui-tatsuro",
+  "date": "2023-11-26",
+  "opponent": "太田 翔一郎",
+  "methodRaw": "判定3-0(20：18)",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER-CAGE.2-」大会の公式結果ページ(krossover.jp)第12試合が「MMA -62kg (Elbows Allowed)」と明記。総合格闘技(MMA)。"
  }
 ]
