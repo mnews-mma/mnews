@@ -4,9 +4,9 @@
  "_diagnostics": {
   "snapshotFighters": 2500,
   "nameUnresolvedCount": 17,
-  "matchCount": 347,
-  "surplusCount": 690,
-  "surplusSum": -3480,
+  "matchCount": 346,
+  "surplusCount": 691,
+  "surplusSum": -3482,
   "note": "deficitCount/deficitSumのみがゲート判定(ratchet)に使われる。他のフィールドは直近実行時点の参考値。このゲートは真の欠落ゼロを目指すものではなく、現状値からの悪化検知が目的(詳細はファイル冒頭コメント参照)。"
  }
 }

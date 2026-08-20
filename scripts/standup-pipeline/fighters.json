@@ -6198,10 +6198,12 @@
   "orgs": [
    "K-1 WORLD GP",
    "Krush",
-   "Krush-EX"
+   "Krush-EX",
+   "RISE"
   ],
   "sources": [
-   "https://www.k-1.co.jp/fighter/1331"
+   "https://www.k-1.co.jp/fighter/1331",
+   "https://rise-rc.com/fighter/oshika-toki/"
   ],
   "kana_source": {
    "type": "published",
@@ -23896,7 +23898,8 @@
    "K-1"
   ],
   "sources": [
-   "https://www.k-1.co.jp/fighter/1041"
+   "https://www.k-1.co.jp/fighter/1041",
+   "https://krossover.jp/?p=662"
   ],
   "kana_source": {
    "type": "published",
@@ -32580,10 +32583,12 @@
   "gym": "ナックルズGYM",
   "orgs": [
    "Krush",
-   "Krush-EX"
+   "Krush-EX",
+   "RISE"
   ],
   "sources": [
-   "https://www.k-1.co.jp/fighter/1746"
+   "https://www.k-1.co.jp/fighter/1746",
+   "https://rise-rc.com/fighter/mitsudaman/"
   ],
   "kana_source": {
    "type": "published",
@@ -43052,6 +43057,7 @@
   ],
   "sources": [
    "https://rise-rc.com/fighter/sasaki_kose/",
+   "https://rise-rc.com/fighter/sasaki-kosei/",
    "https://knockoutkb.com/fighters/sasaki_kosei_457"
   ],
   "kana_source": null,
@@ -53348,5 +53354,71 @@
    "url": "https://ja.wikipedia.org/wiki/龍聖"
   },
   "birthdate": "2001.4.11"
+ },
+ {
+  "name": "飯田陸斗",
+  "kana": null,
+  "aliases": [],
+  "gym": "team YU-TO",
+  "orgs": [
+   "RISE"
+  ],
+  "sources": [
+   "https://rise-rc.com/fighter/iida-rikuto/"
+  ],
+  "kana_source": null,
+  "birthdate": "2001.6.3"
+ },
+ {
+  "name": "石川龍之介",
+  "kana": null,
+  "aliases": [],
+  "gym": "TSK japan",
+  "orgs": [
+   "RISE"
+  ],
+  "sources": [
+   "https://rise-rc.com/fighter/ishikawa-ryunosuke/"
+  ],
+  "kana_source": null,
+  "birthdate": "2001.5.28"
+ },
+ {
+  "name": "北野ヒナタ",
+  "kana": null,
+  "aliases": [],
+  "gym": "楠誠会館",
+  "orgs": [
+   "RISE"
+  ],
+  "sources": [
+   "https://rise-rc.com/fighter/kitano-hinata/"
+  ],
+  "kana_source": null,
+  "birthdate": "2010.6.7"
+ },
+ {
+  "name": "斉藤遼太",
+  "kana": null,
+  "aliases": [],
+  "gym": "L-REX",
+  "orgs": [],
+  "sources": [
+   "https://krossover.jp/?p=635"
+  ],
+  "kana_source": null,
+  "birthdate": null
+ },
+ {
+  "name": "益田拓摩",
+  "kana": null,
+  "aliases": [],
+  "gym": "ALLIANCE",
+  "orgs": [],
+  "sources": [
+   "https://krossover.jp/?p=635"
+  ],
+  "kana_source": null,
+  "birthdate": null
  }
 ]
