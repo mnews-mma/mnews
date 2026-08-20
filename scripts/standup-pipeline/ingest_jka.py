@@ -74,10 +74,19 @@ def resolve(name, aff):
 
 
 PAREN_END = re.compile(r'[（(]([^）(]*)[）)]\s*$')
-HDR_RE = re.compile(r'^第\d+試合|^オープニングファイト')
-MARK_LEAD_RE = re.compile(r'^([○×△●])\s*(.+)$')
+# V-2(2026-08): 見出し行が全角山括弧で括られる回(＜第N試合...＞)、および▼で始まる回
+# (スック-ペッティンディー・one-friday-fights９５等)が別テンプレートとして存在する。
+# 他ソース(krossover/standup)も▼始まりの見出しを持つため、同じ許容を追加した。
+# 見出し行の中身自体は構造化データに使っていない(event/venue/dateは別divから取得)ため、
+# 先頭の▼／＜を許容するだけで安全(誤ってbout行を見出しと誤認する副作用は無い)。
+HDR_RE = re.compile(r'^[▼＜]?\s*(第\d+試合|オープニングファイト)')
+# ○の異体字(◯U+25EF・〇U+3007)と◎(タイトル戦等での勝者表記、他ソースで既にwin扱い)を
+# 追加。他9ソース中6ソース(njkf/nkb/standup/krossover/deepkick/bigbang)は既にこの4文字を
+# 勝ちマークとして扱っており、JKAだけがこの変換表から漏れていた(実測: ◯44件・◎31件が
+# 70記事中に出現、○×△●のみの前提では従来ここが軒並み未解決になっていた)。
+MARK_LEAD_RE = re.compile(r'^([○◯〇◎×△▲●])\s*(.+)$')
 DECISION_KW = re.compile(r'判定|不戦勝|ノーコンテスト|ドロー|反則|時間切れ|棄権|中止|失格|無効|TKO|KO|一本|勝敗なし')
-MARK2RESULT = {'○': 'win', '×': 'loss', '△': 'draw', '●': 'loss'}
+MARK2RESULT = {'○': 'win', '◯': 'win', '〇': 'win', '◎': 'win', '×': 'loss', '●': 'loss', '△': 'draw', '▲': 'draw'}
 DATE_RE = re.compile(r'(\d{4})年(\d{1,2})月(\d{1,2})日')
 VENUE_RE = re.compile(r'[（(].[）)]\s*(.*)$')
 
