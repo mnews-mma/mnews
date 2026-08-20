@@ -275,6 +275,28 @@
   "promotion": "KROSS×OVER"
  },
  {
+  "slug": "sakamoto-juki",
+  "date": "2025-12-14",
+  "opponent": "坂本 誠弥",
+  "methodRaw": "判定3-0 ※坂本寿希はロープ掴みにより減点1あり",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。KROSS×OVERは埼玉県拠点でキックボクシング/ムエタイ/MMAを混在開催する団体。「KROSSxOVER-CAGE.8」大会の公式結果ページ(krossover.jp)に「KROSS×OVER MMA Sクラス-56.7kg」と明記されており、同一カードの他試合(KICK PART/PRO-KICK表記)とは区別される総合格闘技(MMA)の一戦。",
+  "name": "坂本 寿希",
+  "event": "KROSSxOVER-CAGE.8",
+  "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "sakamoto-juki",
+  "date": "2026-03-01",
+  "opponent": "原 拓海",
+  "methodRaw": "判定3-0",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER -CAGE.8- GENスポーツパレス大会」公式結果ページ(krossover.jp)の見出しに「KROSS×OVER MMA Sクラス-55kg」と明記されており、同一カードの他8試合(KICK PART表記)とは区別される総合格闘技(MMA)の一戦。大会名の「CAGE」表記だけでなく個別bout見出しで確認済み。",
+  "name": "坂本 寿希",
+  "event": "KROSS×OVER -CAGE.8- GENスポーツパレス大会",
+  "promotion": "KROSS×OVER"
+ },
+ {
   "slug": "satou-kenichi",
   "date": "2001-06-15",
   "opponent": "阿部裕幸",
@@ -382,6 +404,17 @@
   "reason": "KROSS×OVER 19の対戦カード表に「PRO-MMA FEATHERWEIGHT」の第5試合と明記されており、キックボクシングルールではない。",
   "name": "TOMO",
   "event": "KROSS×OVER 19",
+  "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "tomo",
+  "date": "2023-06-11",
+  "opponent": "貫井 義規",
+  "methodRaw": "",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER -CAGE- GENスポーツパレス大会」公式結果ページ(krossover.jp/?p=767)第3試合が「MMA FEATHERWEIGHT」と明記(1R肩固め一本)。純粋なキックボクシングではなく総合格闘技(MMA)。",
+  "name": "TOMO",
+  "event": "KROSS×OVER -CAGE-』GENスポーツパレス大会",
   "promotion": "KROSS×OVER"
  },
  {
@@ -496,6 +529,17 @@
  },
  {
   "slug": "fujimoto-arata",
+  "date": "2019-02-24",
+  "opponent": "中野 謙",
+  "methodRaw": "判定0-1(太田19-19 鶴和18-20 小池19-19)",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER 5」大会のBOUTREVIEW対戦カードでMMA部門(ヒジ有り)に掲載。総合格闘技(MMA)。",
+  "name": "藤本新",
+  "event": "KROSS×OVER 5",
+  "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "fujimoto-arata",
   "date": "2018-10-20",
   "opponent": "山市 雄太",
   "methodRaw": "1R34秒TKO",
@@ -503,6 +547,28 @@
   "reason": "一次情報でKROSS×OVER 4の当該カードは「アマチュアMMA -77.1kg」戦(5分1R)と明記されている。",
   "name": "藤本新",
   "event": "KROSS×OVER 4",
+  "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "fujimoto-arata",
+  "date": "2021-12-05",
+  "opponent": "Gravedigger",
+  "methodRaw": "1R 1’24” TKO",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER 15」大会のBOUTREVIEW対戦カードに「MMA Welterweight -77.1kg」(5分×2R)と明記。総合格闘技(MMA)。",
+  "name": "藤本新",
+  "event": "KROSS×OVER 15",
+  "promotion": "KROSS×OVER"
+ },
+ {
+  "slug": "fujimoto-arata",
+  "date": "2022-07-31",
+  "opponent": "GUNTHER KALUNDA",
+  "methodRaw": "1R 1’47” KO",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER 18」公式記録(第1・2部)に「MMA -82kg」と明記。総合格闘技(MMA)。",
+  "name": "藤本新",
+  "event": "KROSS×OVER 18",
   "promotion": "KROSS×OVER"
  },
  {
@@ -517,6 +583,17 @@
   "promotion": "KROSS×OVER"
  },
  {
+  "slug": "fujimoto-arata",
+  "date": "2023-06-11",
+  "opponent": "中井 光義",
+  "methodRaw": "※藤本の棄権により、中井の不戦勝となる",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER -CAGE- GENスポーツパレス大会」公式結果ページ(krossover.jp/?p=767)第7試合がMMA部門と明記(藤本棄権により中井不戦勝)。総合格闘技(MMA)。",
+  "name": "藤本新",
+  "event": "KROSS×OVER -CAGE-』GENスポーツパレス大会",
+  "promotion": "KROSS×OVER"
+ },
+ {
   "slug": "buakao-banchameku",
   "date": "2005-04-01",
   "opponent": "キエラン・ケッドル",
@@ -525,6 +602,17 @@
   "reason": "和島大海欠落調査(2026-08、母集団拡張の検査A)で発見。大会名に「THAILAND BOXING SPORT BOARD \"MUAYTHAI CULTURAL FESTIVAL 2005\"アマチュアムエタイルール」と明記されており、アマチュアムエタイの大会。プロキックボクシング戦績として扱うべきでない。",
   "name": "ブアカーオ・バンチャメーク",
   "event": "THAILAND BOXING SPORT BOARD \"MUAYTHAI CULTURAL FESTIVAL 2005\"アマチュアムエタイルール",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "buranko-shikatiku",
+  "date": "1997-10-11",
+  "opponent": "ラルフ・ホワイト",
+  "methodRaw": "1R 1:52 ノーコンテスト（反則）",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)、Wikipedia(その他団体)母集団からの無作為100行サンプル調査で発見。ja.wikipedia「ブランコ・シカティック」本文に「PRIDE.1でラルフ・ホワイトと対戦。グラウンド状態のホワイトにシカティックのキックが当たり、ノーコンテストとなった」と明記。ダウンした相手への蹴りが反則となるのはMMAルール特有の規定(キックボクシングにグラウンド状態は存在しない)であり、PRIDE.1自体も総合格闘技イベント。総合格闘技(MMA)。",
+  "name": "ブランコ・シカティック",
+  "event": "PRIDE.1",
   "promotion": "Wikipedia(その他団体)"
  },
  {
@@ -2000,6 +2088,17 @@
   "name": "白鳥光希",
   "event": "PROFESSIONAL SHOOTO 2022 Vol.8 in OSAKA",
   "promotion": "RISE"
+ },
+ {
+  "slug": "fukui-tatsuro",
+  "date": "2023-11-26",
+  "opponent": "太田 翔一郎",
+  "methodRaw": "判定3-0(20：18)",
+  "category": "mma",
+  "reason": "他競技混入打ち切り監査(2026-08)で発見。「KROSS×OVER-CAGE.2-」大会の公式結果ページ(krossover.jp)第12試合が「MMA -62kg (Elbows Allowed)」と明記。総合格闘技(MMA)。",
+  "name": "福井 達郎",
+  "event": "KROSS×OVER-CAGE.2-",
+  "promotion": "KROSS×OVER"
  },
  {
   "slug": "tatsuya-inaishi",

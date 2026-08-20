@@ -1,0 +1,487 @@
+{
+ "新日本キックボクシング協会「Take One」": [
+  {
+   "slug": "takeda-kouzou",
+   "name": "武田幸三",
+   "date": "2001-09-16",
+   "opponent": "チャーンビット・ギャットトーボーウボン",
+   "method": "3R終了時 TKO（眉間カット）"
+  }
+ ],
+ "MAキック「DRAGON.3 ～THE ONE AND ONLY～ 門戸開放」": [
+  {
+   "slug": "arekusu-robatsu",
+   "name": "アレックス・ロバーツ",
+   "date": "2013-11-04",
+   "opponent": "林武重",
+   "method": "3R 1:04\" KO（パンチ連打）"
+  }
+ ],
+ "One Night in Bangkok": [
+  {
+   "slug": "tairon-supon",
+   "name": "タイロン・スポーン",
+   "date": "2007-10-27",
+   "opponent": "エミール・ゾーライ",
+   "method": "TKO"
+  },
+  {
+   "slug": "uoren-sutiburumanzu",
+   "name": "ウォーレン・スティーブルマンズ",
+   "date": "2006-10-27",
+   "opponent": "ケネス・ヴァン・イエスヴェルド",
+   "method": "3R終了 判定"
+  }
+ ],
+ "SPACE ONE×BOM": [
+  {
+   "slug": "hiroki-zaitsu",
+   "name": "財津大樹",
+   "date": "2025-05-11",
+   "opponent": "佐藤大稀",
+   "method": "3R判定"
+  }
+ ],
+ "M-ONE 2018 FINAL": [
+  {
+   "slug": "takeuchi-masaki",
+   "name": "竹内 将生",
+   "date": "2018-10-21",
+   "opponent": "KOUMA",
+   "method": "KO"
+  },
+  {
+   "slug": "naoya-otada",
+   "name": "小只直弥",
+   "date": "2018-10-21",
+   "opponent": "MITSURU",
+   "method": "3R 判定"
+  },
+  {
+   "slug": "ritorutaiga",
+   "name": "Little Tiger",
+   "date": "2018-10-21",
+   "opponent": "COMACHI",
+   "method": "3R 判定0-3"
+  }
+ ],
+ "シュートボクシング「GROUND ONE TOKYO」": [
+  {
+   "slug": "masato",
+   "name": "魔裟斗",
+   "date": "1998-12-27",
+   "opponent": "アレキサンダー・フォカロルス",
+   "method": "5R終了 判定3-0"
+  }
+ ],
+ "BRIDGE one match challenge 24th": [
+  {
+   "slug": "masui-yuki",
+   "name": "増井 侑輝",
+   "date": "2013-03-17",
+   "opponent": "坂本 和樹",
+   "method": "KO"
+  }
+ ],
+ "One Songchai Tsunami Show, Rajamangala Stadium": [
+  {
+   "slug": "pk",
+   "name": "センチャイ・PKセンチャイムエタイジム",
+   "date": "2005-02-12",
+   "opponent": "ケム・シッソーンピーノーン",
+   "method": "4R 0:34 KO"
+  }
+ ],
+ "T-one Muay Thai 2015": [
+  {
+   "slug": "buakao-banchameku",
+   "name": "ブアカーオ・バンチャメーク",
+   "date": "2015-07-01",
+   "opponent": "Artem Pashporin",
+   "method": "3R終了 判定3-0"
+  }
+ ],
+ "MA日本キック DRAGON.5 ～THE ONE AND ONLY～ 門戸開放": [
+  {
+   "slug": "komiyama-kousuke",
+   "name": "小宮山工介",
+   "date": "2014-04-13",
+   "opponent": "マキ・ピンサヤーム",
+   "method": "5R終了 判定0-2"
+  }
+ ],
+ "M-ONE GRAND MUAY THAI": [
+  {
+   "slug": "yamato-tetsuya",
+   "name": "大和 哲也",
+   "date": "2013-05-16",
+   "opponent": "サゲッダーオ・ペットパヤタイ",
+   "method": "4R TKO（肘打ち）"
+  }
+ ],
+ "M-One \"Team Thailand vs. Team America\"": [
+  {
+   "slug": "gaogurai-gennorashin",
+   "name": "ガオグライ・ゲーンノラシン",
+   "date": "2011-10-21",
+   "opponent": "ジョー・シリング",
+   "method": "1R2:43　TKO（レフェリーストップ）"
+  }
+ ],
+ "BOMプロモーション「ROAD TO ONE JAPAN & Shimizu presents BOM 37」　BOMミドル級（72.57kg）3分5R": [
+  {
+   "slug": "kitamura-makoto",
+   "name": "喜多村誠",
+   "date": "2022-12-11",
+   "opponent": "松島勲也",
+   "method": "４R 1:03 TKO（レフェリーストップ）"
+  }
+ ],
+ "全日本キックボクシング連盟「One Truth 5th」": [
+  {
+   "slug": "maeda-kensaku",
+   "name": "前田憲作",
+   "date": "1992-07-18",
+   "opponent": "立嶋篤史",
+   "method": "5R終了 判定2-0"
+  },
+  {
+   "slug": "tateshima-atsushi",
+   "name": "立嶋篤史",
+   "date": "1992-07-18",
+   "opponent": "前田憲作",
+   "method": "5R終了 判定0-2"
+  }
+ ],
+ "全日本キックボクシング連盟「One Truth」": [
+  {
+   "slug": "maeda-kensaku",
+   "name": "前田憲作",
+   "date": "1992-01-25",
+   "opponent": "斉藤直弘",
+   "method": "2R 2:27 KO"
+  }
+ ],
+ "MT ONE": [
+  {
+   "slug": "arekusei-igunashofu",
+   "name": "アレクセイ・イグナショフ",
+   "date": "2004-04-11",
+   "opponent": "シリル・ディアバテ",
+   "method": "5R終了 判定"
+  }
+ ],
+ "DRAGON ROAD ONE AND ONLY TAKE１": [
+  {
+   "slug": "ono-takashi",
+   "name": "大野 貴志",
+   "date": "2013-04-14",
+   "opponent": "ジョムペット・チューワッタナ",
+   "method": "判定"
+  },
+  {
+   "slug": "kyoshiro",
+   "name": "恭士郎",
+   "date": "2013-04-14",
+   "opponent": "カズ☆ソーンパヤック",
+   "method": "判定"
+  }
+ ],
+ "One Shot World Series": [
+  {
+   "slug": "niki-horutsuken",
+   "name": "ニキー・ホルツケン",
+   "date": "2014-12-25",
+   "opponent": "Yusuf Karakaya",
+   "method": "1R 2:05 TKO"
+  }
+ ],
+ "Slamm 4 One Night in Bangkok": [
+  {
+   "slug": "niki-horutsuken",
+   "name": "ニキー・ホルツケン",
+   "date": "2007-10-27",
+   "opponent": "ラムソンクラーム・チューワッタナ",
+   "method": "3R終了 判定3-0"
+  }
+ ],
+ "M-ONE 4.1": [
+  {
+   "slug": "issei-saenchai-gym",
+   "name": "壱・センチャイジム",
+   "date": "2018-04-01",
+   "opponent": "村井雄誠",
+   "method": "判定 3-0"
+  }
+ ],
+ "SPACE ONE × BOM": [
+  {
+   "slug": "kido-yasuhiro",
+   "name": "城戸康裕",
+   "date": "2025-05-11",
+   "opponent": "ワン・カイフェン",
+   "method": "判定"
+  }
+ ],
+ "Space One Champions": [
+  {
+   "slug": "kido-yasuhiro",
+   "name": "城戸康裕",
+   "date": "2024-11-16",
+   "opponent": "ワン・カイフェン",
+   "method": "KO"
+  }
+ ],
+ "Space One Champions 2024": [
+  {
+   "slug": "kido-yasuhiro",
+   "name": "城戸康裕",
+   "date": "2024-05-07",
+   "opponent": "イー・ロン",
+   "method": "KO"
+  }
+ ],
+ "DRAGON ROAD THE ONE AND ONLY TAKE6": [
+  {
+   "slug": "kyoshiro",
+   "name": "恭士郎",
+   "date": "2014-09-14",
+   "opponent": "白神 喜弘",
+   "method": "判定"
+  }
+ ],
+ "DRAGON.3 ～THE ONE AND ONLY～ 門戸開放": [
+  {
+   "slug": "kyoshiro",
+   "name": "恭士郎",
+   "date": "2013-11-04",
+   "opponent": "涼平",
+   "method": "判定"
+  }
+ ],
+ "DRAGON ROAD ～ONE AND ONLY TAKE2～": [
+  {
+   "slug": "kyoshiro",
+   "name": "恭士郎",
+   "date": "2013-06-30",
+   "opponent": "和真",
+   "method": "引分"
+  }
+ ],
+ "X FORCE ONE": [
+  {
+   "slug": "yura",
+   "name": "YURA",
+   "date": "2023-01-15",
+   "opponent": "畑中健太",
+   "method": "3R終了 判定3-0"
+  }
+ ],
+ "DRAGON.5 - THE ONE AND ONLY 門戸開放": [
+  {
+   "slug": "mohan-doragon",
+   "name": "モハン・ドラゴン",
+   "date": "2014-04-13",
+   "opponent": "大石 駿介",
+   "method": "KO"
+  }
+ ],
+ "DRAGON ROAD - ONE AND ONLY TAKE 2": [
+  {
+   "slug": "mohan-doragon",
+   "name": "モハン・ドラゴン",
+   "date": "2013-06-30",
+   "opponent": "力也",
+   "method": "KO"
+  }
+ ],
+ "Stand up vol.2 -sponsored by ONE Championship-": [
+  {
+   "slug": "masaaki-ono",
+   "name": "小野幹晃",
+   "date": "2021-06-13",
+   "opponent": "庄司啓馬",
+   "method": "3R判定"
+  }
+ ],
+ "TAIWAN TOP ONE 2025 WARRIORS JOURNEY": [
+  {
+   "slug": "teppei-wada",
+   "name": "和田哲平",
+   "date": "2025-05-17",
+   "opponent": "謝傑丞",
+   "method": "3R 判定"
+  }
+ ],
+ "MA日本キック「DRAGON ROAD ONE AND ONLY TAKE１」": [
+  {
+   "slug": "akimoto-hiroki",
+   "name": "秋元皓貴",
+   "date": "2013-04-14",
+   "opponent": "スラチャイ・シースリヤンヨーティン",
+   "method": "5R終了 判定3-0"
+  }
+ ],
+ "BRIDGE　one match challenge 6th": [
+  {
+   "slug": "akimoto-hiroki",
+   "name": "秋元皓貴",
+   "date": "2007-10-28",
+   "opponent": "森平雄治",
+   "method": "2R終了 判定3-0"
+  }
+ ],
+ "M-ONE 2017 FINAL": [
+  {
+   "slug": "ritorutaiga",
+   "name": "Little Tiger",
+   "date": "2017-11-26",
+   "opponent": "パヤーフォン・ローンリエンギィラーコラート",
+   "method": "3R 判定0-1"
+  }
+ ],
+ "M-ONE 2017 2nd": [
+  {
+   "slug": "ritorutaiga",
+   "name": "Little Tiger",
+   "date": "2017-09-18",
+   "opponent": "ヨーディン・シットヨーディン",
+   "method": "2R 1分09秒 TKO"
+  }
+ ],
+ "M-ONE 2017 1st": [
+  {
+   "slug": "ritorutaiga",
+   "name": "Little Tiger",
+   "date": "2017-03-20",
+   "opponent": "サーオマンコン・ポーラマイパカッ",
+   "method": "3R 判定3-0"
+  }
+ ],
+ "M-ONE 2016 FINAL": [
+  {
+   "slug": "ritorutaiga",
+   "name": "Little Tiger",
+   "date": "2016-11-23",
+   "opponent": "アンアン・シットチャンシーン",
+   "method": "1R 1分35秒 TKO"
+  }
+ ],
+ "M-ONE 2016 3rd": [
+  {
+   "slug": "ritorutaiga",
+   "name": "Little Tiger",
+   "date": "2016-09-25",
+   "opponent": "COMACHI",
+   "method": "3R 判定3-0"
+  }
+ ],
+ "M-ONE 2016 vol.2": [
+  {
+   "slug": "ritorutaiga",
+   "name": "Little Tiger",
+   "date": "2016-06-19",
+   "opponent": "MARI",
+   "method": "3R 判定3-0"
+  }
+ ],
+ "M-ONE": [
+  {
+   "slug": "ritorutaiga",
+   "name": "Little Tiger",
+   "date": "2016-03-21",
+   "opponent": "伊藤紗弥",
+   "method": "5R 判定0-2"
+  }
+ ],
+ "新日本キックボクシング協会「Take One」（防衛2）": [
+  {
+   "slug": "ishii-hiroki",
+   "name": "石井宏樹",
+   "date": "2001-09-16",
+   "opponent": "マサル",
+   "method": "5R終了 判定2-0"
+  }
+ ],
+ "Space ONE Japan x BOM": [
+  {
+   "slug": "kuroda-touma",
+   "name": "黒田斗真",
+   "date": "2025-05-11",
+   "opponent": "シワラット・ウォー リンティダ",
+   "method": "1R 0:55 KO（左膝蹴り）"
+  }
+ ],
+ "MA日本キック DRAGON.3 ～THE ONE AND ONLY～ 門戸開放": [
+  {
+   "slug": "fushimi-kazuyuki",
+   "name": "伏見 和之",
+   "date": "2013-11-04",
+   "opponent": "渡部 ヒロシ",
+   "method": "2R TKO"
+  }
+ ],
+ "全日本キックボクシング連盟「One Truth 8th」": [
+  {
+   "slug": "tateshima-atsushi",
+   "name": "立嶋篤史",
+   "date": "1992-11-21",
+   "opponent": "ピーマイ・オー・ユッタナゴン",
+   "method": "5R終了 判定"
+  }
+ ],
+ "全日本キックボクシング連盟「One Truth 6th」": [
+  {
+   "slug": "tateshima-atsushi",
+   "name": "立嶋篤史",
+   "date": "1992-09-26",
+   "opponent": "カチュンカイ・サーハイシン",
+   "method": "5R 2:08 KO"
+  }
+ ],
+ "全日本キックボクシング連盟「One Truth 3rd」": [
+  {
+   "slug": "tateshima-atsushi",
+   "name": "立嶋篤史",
+   "date": "1992-05-30",
+   "opponent": "山崎路晃",
+   "method": "5R終了 判定2-0"
+  }
+ ],
+ "全日本キックボクシング連盟「One Truth 2nd」": [
+  {
+   "slug": "tateshima-atsushi",
+   "name": "立嶋篤史",
+   "date": "1992-03-28",
+   "opponent": "清水隆広",
+   "method": "3R 0:55 KO"
+  }
+ ],
+ "全日本キックボクシング連盟「One Truth “一つの真実”」": [
+  {
+   "slug": "tateshima-atsushi",
+   "name": "立嶋篤史",
+   "date": "1992-01-25",
+   "opponent": "ダルーン・アユタナコーン",
+   "method": "5R終了 判定"
+  }
+ ],
+ "BRIDGE one match challenge 6th": [
+  {
+   "slug": "fukashi",
+   "name": "不可思",
+   "date": "2007-10-28",
+   "opponent": "田原 大嗣",
+   "method": ""
+  }
+ ],
+ "マーシャルアーツ日本キックボクシング連盟RKS「大阪大会～THE ONE AND ONLY～ 門戸開放」": [
+  {
+   "slug": "ishida-katsuki",
+   "name": "石田勝希",
+   "date": "2016-10-02",
+   "opponent": "加藤剛士",
+   "method": "3分3R終了 判定3-0"
+  }
+ ]
+}
