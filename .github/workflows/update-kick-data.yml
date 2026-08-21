@@ -28,6 +28,26 @@ name: Update kick data (13ソース週次)
 # 同一ホストへの並列アクセスはしない(fetch_common.pyが単一プロセス・単一
 # スレッドで順次実行、ホストごとにスリープを挟む設計。このワークフローも
 # 13ソースを1つずつ順番に実行する)。
+#
+# 既知の制約(2026-08-21、main merge後の初回workflow_dispatch実走で判明、記録のみ・
+# 対応は別途):
+# - Bigbang(bigbang-kick.com)・Stand up(standup-kick.com)のREST APIは、GitHub
+#   Actionsのrunner環境からアクセスするとHTTP 403を返す(ローカル回線からは200 OK、
+#   WAF等がクラウド事業者のIP帯域を弾く典型パターンと見られる)。fetch_bigbang.py・
+#   fetch_standup.py自体はexit=0で正常終了するため、promote_to_data_kick.pyの
+#   bout数急減ガード(下記)が無いと気づかずに実データを削除するところだった。
+#   ガードを入れた現在は実害は無いが、**この2ソースはガードで保護されるだけで
+#   毎週更新されないまま**になる。回避策(User-Agent変更・別経路での取得等)は
+#   このコミットのスコープ外、別途対応する。
+# - 初回実走(全13ソース逐次取得)の所要時間は1時間13分3秒(うち取得ステップ単体で
+#   約72分)。timeout-minutes: 180に対し実測は半分強、想定内。
+#
+# bout数急減ガード(2026-08-21追加、上記403で発見): promote_to_data_kick.pyが、
+# 1ソースのbout数が前回コミット時点から50%以上(または0件)減った場合、そのソース
+# だけ昇格をスキップし前回コミット値を維持する(update-org-records.ymlの団体別
+# bout数減少ガードと同型)。黙ってスキップしないよう、PR本文・失敗Issue本文の
+# 両方に必ずスキップ理由(ソース名・前回/今回件数)を出す
+# (scripts/standup-pipeline/render_promote_skip_summary.py参照)。
 
 on:
   # cronは意図的に無効化した状態でマージする(2026-08-21)。実走テスト・破壊テストが
@@ -102,6 +122,15 @@ jobs:
       - name: Promote pipeline output to data/kick/ (NKB旧サイト分は前回コミットから引き継ぎ)
         working-directory: scripts/standup-pipeline
         run: python3 promote_to_data_kick.py | tee /tmp/kick-promote-report.json
+
+      - name: Extract promote skip summary (bout数急減ガードの警告、あれば)
+        if: always()
+        working-directory: scripts/standup-pipeline
+        run: |
+          python3 render_promote_skip_summary.py /tmp/kick-promote-report.json > /tmp/kick-skip-summary.md || true
+          if [ -s /tmp/kick-skip-summary.md ]; then
+            cat /tmp/kick-skip-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Build kick derived data (build-kick-data.ts)
         run: npm run kick:data 2>&1 | tee /tmp/kick-stats-after.log
@@ -179,15 +208,22 @@ jobs:
             }
             let body = '';
             try { body = fs.readFileSync('/tmp/kick-gate.log', 'utf8'); } catch (e) { body = `(ログ取得失敗: ${e.message})`; }
+            // bout数急減ガード(promote_to_data_kick.py)の警告は、ゲート失敗の有無に
+            // かかわらず必ず人間の目に触れる必要がある(黙って前回値を使い続けると
+            // 誰も気づけないため)。ゲートが落ちてPRが作られない回は、このIssueだけが
+            // 唯一の通知経路になる。
+            let skipSummary = '';
+            try { skipSummary = fs.readFileSync('/tmp/kick-skip-summary.md', 'utf8').trim(); } catch (e) { /* 該当なし */ }
             const footer = [
               '',
               'このジョブはkickゲートの失敗によりPRを作成しませんでした。data/kick/への変更はワークツリー上に残っていますが、コミットもプッシュもしていません。',
               '',
               `_このIssueは [ワークフロー実行](${runUrl}) により自動生成/更新されました。_`,
             ].join('\n');
-            const maxBodyLen = 65536 - footer.length - 200;
+            const maxBodyLen = 65536 - footer.length - skipSummary.length - 200;
             if (body.length > maxBodyLen) body = `${body.slice(0, maxBodyLen)}\n\n...(文字数上限のため以下省略)`;
-            const fullBody = `\`\`\`\n${body}\n\`\`\`${footer}`;
+            const skipSection = skipSummary ? `${skipSummary}\n\n---\n\n` : '';
+            const fullBody = `${skipSection}\`\`\`\n${body}\n\`\`\`${footer}`;
             if (existing) {
               await github.rest.issues.update({
                 owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, body: fullBody,

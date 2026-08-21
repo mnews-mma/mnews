@@ -42,6 +42,15 @@ SOURCES = [
 
 NKB_OLD_SITE_PREFIX = "http://www.nkb-r.com/"
 
+# bout数急減ガード(2026-08-21追加): 週次自動更新ジョブの実走テストで、Bigbang・
+# Stand upのREST APIがGitHub Actionsのrunner環境からHTTP 403を返し(WAF等が
+# クラウド事業者のIP帯域を弾く典型パターン、ローカル回線では再現しない)、
+# fetch_*.pyが0件取得のまま正常終了(exit=0)した。ガードが無いと、このスクリプトが
+# 0件を「新しいデータ」としてそのまま昇格させ、前回コミット済みの実データを
+# 静かに空配列で上書きするところだった(Bigbang 1,526件・Stand up 89件、実測)。
+# update-org-records.ymlの団体別bout数減少ガードと同型の安全弁をここに追加する。
+REGRESSION_RATIO_THRESHOLD = 0.5  # 前回からこの割合以上減ったら異常とみなす(50%)
+
 
 def bout_key(b):
     return (
@@ -87,6 +96,32 @@ def main():
             carried = [b for b in old_site_prev if bout_key(b) not in fresh_keys_pre]
             fresh = fresh + carried
             note = f"NKB旧サイト(凍結対象、raw/nkb_old_events/未取得)分{len(carried)}件を前回コミットから引き継いだ"
+
+        if prev and len(fresh) <= len(prev) * (1 - REGRESSION_RATIO_THRESHOLD):
+            # 昇格自体をスキップする。dst_path(data/kick/、本番の入力)は一切触らず
+            # 前回コミット値をそのまま残す。src_path(scripts/standup-pipeline/、
+            # build.pyが今回の実行で既に壊れた内容を書き込み済み)だけは、prevの内容で
+            # 上書きして両ディレクトリを同期させる(check-kick-pipeline-mirror-sync.tsが
+            # 両者のbout_id不一致をゼロ件ゲートで検査するため、放置すると昇格スキップとは
+            # 別の理由でゲートが落ち、Issue本文にこの理由が載らなくなる)。
+            with open(src_path, "w", encoding="utf-8") as f:
+                json.dump(prev, f, ensure_ascii=False, indent=1)
+                f.write("\n")
+            # 「静かにスキップしない」ため、prev_count/fresh_countを明示したreasonを
+            # 必ず残す(呼び出し元のワークフローがPR本文・Issue本文の両方で
+            # この理由付きレポートをそのまま使う)。
+            report[tag] = {
+                "status": "skipped_regression",
+                "prev_count": len(prev),
+                "fresh_count": len(fresh),
+                "reason": (
+                    f"bout数が前回コミット時点({len(prev)}件)から{len(fresh)}件に急減"
+                    f"(50%以上の減少)。取得失敗(WAF/ネットワーク等、fetch_*.py自体は"
+                    f"exit=0で正常終了しているため気づきにくい)の疑いがあるため、"
+                    f"このソースの昇格をスキップし前回コミット値をそのまま維持した。"
+                ),
+            }
+            continue
 
         prev_keys = {bout_key(b) for b in prev}
         fresh_keys = {bout_key(b) for b in fresh}

@@ -21,12 +21,7 @@ import re
 import subprocess
 import sys
 
-SOURCE_LABELS = {
-    "bigbang": "Bigbang", "standup": "Stand up", "krossover": "KROSS×OVER",
-    "snka": "SNKA", "jka": "JKA", "hoostcup": "HoostCup", "deepkick": "DEEP☆KICK",
-    "njkf": "NJKF", "nkb": "NKB", "k1": "K-1/Krush/Krush-EX", "rise": "RISE",
-    "sb": "SHOOT BOXING", "knockout": "KNOCK OUT",
-}
+from render_promote_skip_summary import SOURCE_LABELS, build_skip_summary
 
 
 def extract_stats(log_text):
@@ -106,6 +101,10 @@ def main():
     if not failures and not page_failures:
         lines.append("なし(13ソースすべて全ページ取得成功)")
     lines.append("")
+
+    skip_summary = build_skip_summary(report)
+    if skip_summary:
+        lines.append(skip_summary)
 
     lines.append("### ソース別 増減内訳")
     lines.append("| ソース | 大会数(前→後) | bout数(前→後) | 新規行のopponent_resolved失敗 | 既存行の変化 |")
