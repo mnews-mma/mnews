@@ -50,10 +50,24 @@ PROMOS=[('sb','SHOOT BOXING','raw/sb_bouts/*.html','https://shootboxing.org/figh
 _all={}
 for _tag,_label,_src,_tpl,_host,_parser in PROMOS:
     _b=_bouts.build('fighters.json',_src,_tag,_tpl,_host,_parser)
-    if not _b:
-        print(f'\n===== bouts_{_tag}.json ===== SKIPPED (no raw pages under {_src})'); continue
+    # 2026-08-22修正: 従来は_bが空の場合(raw/配下にページが1件も無い=名簿発見元
+    # ページ自体の取得に失敗した等)、bouts_{tag}.jsonへの書き込み自体をスキップして
+    # いた。GHAの新規runnerでは前回コミット済みの内容がそのままcheckoutされているため、
+    # 「書かない」ことは「前回コミット値をそのまま黙って使う」ことと同義になり、
+    # promote_to_data_kick.pyのbout数急減ガード(fresh_countとprev_countの比較)が
+    # fresh_count(=前回値そのもの)とprev_count(=同じ前回値)を比較することになって
+    # 常に一致してしまい、取得失敗を一切検知できなかった(2026-08-21の実走6回目、
+    # RISE公式のsitemap取得がタイムアウトし0件になったにもかかわらず、この回避経路で
+    # 前回コミット値がそのまま「変化なし」として素通りした実例で発覚)。EXTRA_ORGS・
+    # FORMERLY_STANDALONE_ORGSは元から無条件でjson.dumpしており、この種の全滅は
+    # 正しく空配列として書き出されbout数急減ガードで捕捉できていた。PROMOSループだけが
+    # この経路を持っていたため、他ループと同じく常に書き込む形に統一する。
     json.dump(_b,open(f'bouts_{_tag}.json','w'),ensure_ascii=False,indent=1)
     _all[_tag]=_b
+    if not _b:
+        print(f'\n===== bouts_{_tag}.json ({_label}) ===== 0件(raw/配下にページが1件も無い。'
+              f'取得失敗の疑い。bout数急減ガードで捕捉される想定)')
+        continue
     _r=sum(1 for x in _b if x['opponent_resolved'])
     _u=[x for x in _b if not x['opponent_resolved']]
     print(f'\n===== bouts_{_tag}.json ({_label}) =====')
