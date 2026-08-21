@@ -17,7 +17,7 @@ SOURCE_LABELS = {
     "bigbang": "Bigbang", "standup": "Stand up", "krossover": "KROSS×OVER",
     "snka": "SNKA", "jka": "JKA", "hoostcup": "HoostCup", "deepkick": "DEEP☆KICK",
     "njkf": "NJKF", "nkb": "NKB", "k1": "K-1/Krush/Krush-EX", "rise": "RISE",
-    "sb": "SHOOT BOXING", "knockout": "KNOCK OUT",
+    "sb": "SHOOT BOXING", "knockout": "KNOCK OUT", "one": "ONE Championship",
 }
 
 

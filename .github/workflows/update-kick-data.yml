@@ -1,8 +1,11 @@
-name: Update kick data (13ソース週次)
+name: Update kick data (14ソース週次)
 
-# 立ち技(/kick)の13ソース(K-1/Krush/Krush-EX・RISE・SHOOT BOXING・KNOCK OUT・
-# Bigbang・Stand up・KROSS×OVER・SNKA・JKA・HoostCup・NJKF・NKB・DEEP☆KICK)を
-# 週次で取得し、build.py → build-kick-data.ts → 全kickゲートを実行する。
+# 立ち技(/kick)の14ソース(K-1/Krush/Krush-EX・RISE・SHOOT BOXING・KNOCK OUT・
+# Bigbang・Stand up・KROSS×OVER・SNKA・JKA・HoostCup・NJKF・NKB・DEEP☆KICK・
+# ONE Championship)を週次で取得し、build.py → build-kick-data.ts → 全kickゲートを実行する。
+# ONE Championship(2026-08-22追加)は選手名簿(one_official_manifest.json、116人固定)を
+# 拡張しない点が他13ソースと異なる(fetch_one.py・build.py参照)。名簿自体の更新は
+# build_one_manifest.py等を人間が個別に実行して判断する、別作業。
 # ゲートが通った場合のみPRを作成する(自動マージはしない)。差分ゼロならPRを
 # 作らず終了する。ゲートが落ちた場合はPRを作らず、update-fighter-records.ymlの
 # predeployゲートと同型の「失敗Issue」を立てて終了する(label: kick-batch-gate-blocked)。
@@ -27,7 +30,7 @@ name: Update kick data (13ソース週次)
 #
 # 同一ホストへの並列アクセスはしない(fetch_common.pyが単一プロセス・単一
 # スレッドで順次実行、ホストごとにスリープを挟む設計。このワークフローも
-# 13ソースを1つずつ順番に実行する)。
+# 14ソースを1つずつ順番に実行する)。
 #
 # 既知の制約(2026-08-21、main merge後の初回workflow_dispatch実走で判明、記録のみ・
 # 対応は別途):
@@ -98,12 +101,12 @@ jobs:
       - name: Snapshot kick stats before fetch (現状のdata/kick/に対して実行)
         run: npm run kick:data 2>&1 | tee /tmp/kick-stats-before.log
 
-      - name: Fetch 13 sources sequentially (同一ホスト並列なし、失敗しても次のソースへ進む)
+      - name: Fetch 14 sources sequentially (同一ホスト並列なし、失敗しても次のソースへ進む)
         working-directory: scripts/standup-pipeline
         run: |
           mkdir -p raw
           : > /tmp/kick-fetch-failures.txt
-          for s in bigbang standup krossover snka jka hoostcup deepkick njkf nkb k1 rise sb knockout; do
+          for s in bigbang standup krossover snka jka hoostcup deepkick njkf nkb k1 rise sb knockout one; do
             echo "===== FETCH START: $s $(date -u +%H:%M:%S)UTC ====="
             if ! python3 "fetch_${s}.py"; then
               echo "$s: fetch_${s}.py が異常終了した" >> /tmp/kick-fetch-failures.txt

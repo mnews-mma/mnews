@@ -85,7 +85,7 @@ def main():
     lines = []
     lines.append("## /kick 週次自動更新")
     lines.append("")
-    lines.append("13ソースを順次取得し、build.py → build-kick-data.ts → 全kickゲートを実行した結果です。")
+    lines.append("14ソースを順次取得し、build.py → build-kick-data.ts → 全kickゲートを実行した結果です。")
     lines.append("RIZIN・Wikipediaはこのジョブの対象外(凍結)。NKB旧サイト分(2012〜2018年)も凍結、前回コミットの値をそのまま引き継いでいます。")
     lines.append("")
 
@@ -99,7 +99,7 @@ def main():
         for pf in page_failures:
             lines.append(f"- {pf}")
     if not failures and not page_failures:
-        lines.append("なし(13ソースすべて全ページ取得成功)")
+        lines.append("なし(14ソースすべて全ページ取得成功)")
     lines.append("")
 
     skip_summary = build_skip_summary(report)

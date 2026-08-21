@@ -57,8 +57,8 @@ ratchetに引っかかって毎回止まり、そのたびに人間の判断を�
 | `check:kick-decision-score-perspective` | 実害型 | 判定スコアの視点(誰から見たスコアか)の正しさ、1件でも誤表示 |
 | `check:kick-event-date-year-mismatch` | 実害型 | 大会名に埋め込まれた年とdateフィールドの年の食い違い検出、1件でも誤った日付表示 |
 | `check:kick-nocontest-result-mismatch` | 実害型 | ノーコンテストの構造化resultとmethod_rawの食い違い検出、1件でも誤った勝敗表示 |
-| `check:kick-one-official-source-precedence` | 実害型 | ONE公式データの優先順位に関する既知3件のゼロ件ゲート、対象がONE(週次ジョブの13ソース外)のためこのジョブでは変化しない |
-| `check:kick-one-manifest-coverage` | 実害型 | ONE公式選手の欠落検出(ゼロ件ゲート、登録例外を除く)、対象がONE(週次ジョブの13ソース外)のためこのジョブでは変化しない |
+| `check:kick-one-official-source-precedence` | 実害型 | ONE公式データの優先順位に関する既知3件のゼロ件ゲート。2026-08-22、ONEを週次ジョブの対象に編入したため以後は毎週この3件を再検証する |
+| `check:kick-one-manifest-coverage` | 実害型 | ONE公式選手の欠落検出(検査A/Bはratchet、検査Cはゼロ件、登録例外を除く)。2026-08-22、ONEを週次ジョブの対象に編入したため以後は毎週この3検査を再実行する。名簿(one_official_manifest.json)自体は週次ジョブでは拡張しないため、検査Cが週次実行のたびに誤発火することは無い(manifestの集合が変わらない限り、未登録選手の集合も変わらない) |
 | `check:kick-unknown-result-fallback` | 実害型 | resultが解決不能でunknownにフォールバックする件数、パース品質の指標で1件ずつ個別確認が要る |
 | `check:kick-kanji-variant-resolution` | 実害型 | 旧字体/異体字の名寄せテーブルに関する検証、1件でも誤った統合・未統合につながる |
 | `check:kick-fighters-frozen` | 実害型 | 2026-08-21新設。名簿(fighters.json/fighters.csv)がHEADコミット時点から1バイトでも変化したら失敗する構造不変条件(週次ジョブは名簿を凍結対象にしたため、変化=想定外の巻き戻り) |

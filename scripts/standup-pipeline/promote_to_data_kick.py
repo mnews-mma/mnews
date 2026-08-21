@@ -3,11 +3,17 @@
 (scripts/standup-pipeline/bouts_*.json・fighters.json・fighters.csv)を
 data/kick/ 配下へ昇格させる。
 
-対象は13ソース(bigbang/standup/krossover/snka/jka/hoostcup/deepkick/njkf/nkb/
-k1/rise/sb/knockout)のみ。RIZIN・Wikipediaはbuild.py側でKICK_SKIP_FROZEN_SOURCES=1
+対象は14ソース(bigbang/standup/krossover/snka/jka/hoostcup/deepkick/njkf/nkb/
+k1/rise/sb/knockout/one)。RIZIN・Wikipediaはbuild.py側でKICK_SKIP_FROZEN_SOURCES=1
 により今回のジョブでは一切出力されない(scripts/standup-pipeline/bouts_rizin.json・
 bouts_wikipedia.jsonがそもそも書かれない)ため、このスクリプトも対象に含めていない。
 data/kick/側の該当ファイルは触らずそのまま残る。これが「凍結」の実体。
+
+ONE Championship(2026-08-22追加): 他13ソースと同じ「毎週フルに再取得・再生成する」
+対象に含めた。ただしONE公式選手名簿(one_official_manifest.json、116人)自体は
+固定であり、この週次ジョブでは一切拡張しない(build_one_manifest.pyを呼ばない、
+build.py・fetch_one.py参照)。取得しているのはその固定116人分のプロフィールページの
+中身(戦績)のみ。
 
 NKB旧サイト分の凍結(2026-08-21): ingest_nkb.pyは新サイト(ライブ再取得)と
 旧サイト(2012〜2018年、raw/nkb_old_events/*.html、生成手段が無く週次ジョブでは
@@ -53,7 +59,7 @@ DATA_KICK = os.path.join(REPO_ROOT, "data", "kick")
 
 SOURCES = [
     "bigbang", "standup", "krossover", "snka", "jka", "hoostcup",
-    "deepkick", "njkf", "nkb", "k1", "rise", "sb", "knockout",
+    "deepkick", "njkf", "nkb", "k1", "rise", "sb", "knockout", "one",
 ]
 
 NKB_OLD_SITE_PREFIX = "http://www.nkb-r.com/"

@@ -6,7 +6,7 @@
   "nameUnresolvedCount": 17,
   "matchCount": 347,
   "surplusCount": 689,
-  "surplusSum": -3484,
+  "surplusSum": -3487,
   "note": "deficitCount/deficitSumのみがゲート判定(ratchet)に使われる。他のフィールドは直近実行時点の参考値。このゲートは真の欠落ゼロを目指すものではなく、現状値からの悪化検知が目的(詳細はファイル冒頭コメント参照)。"
  }
 }

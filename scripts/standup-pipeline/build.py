@@ -154,10 +154,16 @@ for _tag,_label,_mod in EXTRA_ORGS:
 # DEEP☆KICK/HoostCup/NJKF/NKB/RIZIN(本件)と3回同種の取りこぼしが発生したため、
 # 「build.pyを一発実行すれば全15団体が再生成される」ことを構造的に保証するべく本ループへ統合する。
 # unresolved_opponents.json の集計対象(_all)には含めない(EXTRA_ORGSと同じ理由・既存の集計を変えない)。
-import ingest_deepkick, ingest_hoostcup, ingest_njkf, ingest_nkb
+import ingest_deepkick, ingest_hoostcup, ingest_njkf, ingest_nkb, ingest_one
 
+# ONE Championshipは2026-08-22に週次自動更新ジョブへ編入した(RIZIN・Wikipediaとは違い
+# 凍結しない)。ただし名簿(one_official_manifest.json、116人固定)自体は
+# build_one_manifest.py(?country=jpタグの非網羅性の影響を受ける)を呼ばず一切拡張しない。
+# ここで再生成するのは、その固定名簿メンバーのプロフィールページの中身(戦績)だけ
+# (fetch_one.py/ingest_one.build()参照)。「名簿の自動拡張はしない」という他ソース共通の
+# 既存方針をONEにもそのまま適用しただけで、ONE固有の特別扱いではない。
 FORMERLY_STANDALONE_ORGS=[('deepkick','DEEP☆KICK',ingest_deepkick),('hoostcup','HoostCup',ingest_hoostcup),
-            ('njkf','NJKF',ingest_njkf),('nkb','NKB',ingest_nkb)]
+            ('njkf','NJKF',ingest_njkf),('nkb','NKB',ingest_nkb),('one','ONE Championship',ingest_one)]
 if SKIP_FROZEN_SOURCES:
     # RIZINは週次自動更新ジョブの対象13ソースに含まれない(凍結、上記CACHE_DIRの
     # コメント参照)。`import ingest_rizin`自体がモジュールレベルで
