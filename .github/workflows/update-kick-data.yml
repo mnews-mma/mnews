@@ -255,6 +255,7 @@ jobs:
             scripts/standup-pipeline "$(pwd)" > /tmp/kick-pr-body.md
 
       - name: Open PR
+        id: open_pr
         if: steps.gates.outcome == 'success' && steps.diff.outputs.has_diff == 'true' && github.event.inputs.dry_run != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -262,6 +263,7 @@ jobs:
           git config user.name "mnews-bot"
           git config user.email "actions@users.noreply.github.com"
           BRANCH="chore/kick-weekly-update-$(date -u +%Y%m%d-%H%M)"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
           git checkout -b "$BRANCH"
           git add data/kick/ scripts/standup-pipeline/bouts_*.json scripts/standup-pipeline/fighters.json scripts/standup-pipeline/fighters.csv
           git commit -m "chore(kick): weekly data update ($(date -u +%Y-%m-%d))"
@@ -273,3 +275,48 @@ jobs:
       - name: Dry-run summary (PRを作らなかった場合)
         if: steps.gates.outcome == 'success' && steps.diff.outputs.has_diff == 'false'
         run: echo "差分ゼロ。PRは作成しません。"
+
+      # 2026-08-22追加: 実走テストで、gh pr create自体の失敗(リポジトリ設定でActionsに
+      # よるPR作成が禁止されている等)がnotify-deploy-failure.ymlの監視対象外(あちらは
+      # デプロイのみを見ている)であり、黙って落ちることが判明した。ゲート失敗時のみ
+      # Issue通知していたが、ゲートを通過したのにPR作成そのものが失敗するケースは
+      # 別の失敗モードとして扱い、専用のIssueで必ず人間に届くようにする。この場合、
+      # ブランチのpush自体は成功していることが多いため(実測済み)、その旨とブランチ名を
+      # 本文に含める。
+      - name: Report PR-open failure (open tracking issue)
+        if: always() && steps.open_pr.outcome == 'failure'
+        uses: actions/github-script@v7
+        env:
+          PR_BRANCH: ${{ steps.open_pr.outputs.branch }}
+        with:
+          script: |
+            const title = '/kick 週次自動更新ジョブ停止中: PR作成失敗';
+            const label = 'kick-batch-pr-blocked';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const branch = process.env.PR_BRANCH || '(不明、ログ参照)';
+            const openIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: label, per_page: 100,
+            });
+            const existing = openIssues.data.find((i) => i.title === title && !i.pull_request);
+            const body = [
+              `\`gh pr create\` がゲート成功後の最終ステップで失敗しました。`,
+              `[ワークフロー実行](${runUrl}) のログを確認してください` +
+                `(典型的な原因: リポジトリのSettings→Actions→General→Workflow permissionsで` +
+                `「Allow GitHub Actions to create and approve pull requests」が無効)。`,
+              '',
+              `git push まではおそらく成功しています。ブランチ \`${branch}\` が残っている場合、` +
+                `そこから手動でPRを開けます(データ自体は正当な差分の可能性が高い)。`,
+              '',
+              `_このIssueは [ワークフロー実行](${runUrl}) により自動生成/更新されました。_`,
+            ].join('\n');
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, body,
+              });
+              console.log(`Updated existing issue #${existing.number}`);
+            } else {
+              const created = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo, title, body, labels: [label],
+              });
+              console.log(`Created new issue #${created.data.number}`);
+            }
