@@ -7,6 +7,7 @@
 """
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -17,6 +18,9 @@ from fetch_common import fetch
 
 API_BASE = "https://bigbang-kick.com/wp-json/wp/v2/pages"
 OUT_DIR = "raw/bigbang_fighters"
+# 2026-08-21追加: GitHub Actionsの新規runnerはraw/が空(サブディレクトリも無い)ため、
+# 書き込み前に作る(ローカルの使い回しraw/では暗黙に存在していた)。
+os.makedirs(OUT_DIR, exist_ok=True)
 MANIFEST_PATH = f"{OUT_DIR}/_manifest.json"
 
 

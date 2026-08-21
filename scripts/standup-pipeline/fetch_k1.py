@@ -9,8 +9,8 @@
    「既知一覧の再検証」方針)。新規の退所選手・新規デビュー選手の発見はできていない。
    実行方法: cd scripts/standup-pipeline && python3 fetch_k1.py
 """
-import glob
 import json
+import os
 import sys
 import time
 
@@ -18,13 +18,31 @@ sys.path.insert(0, ".")
 from fetch_common import fetch
 
 OUT_DIR = "raw/k1_bouts"
+# 2026-08-21追加: GitHub Actionsの新規runnerはraw/が空(サブディレクトリも無い)ため、
+# 書き込み前に作る(ローカルの使い回しraw/では暗黙に存在していた)。
+os.makedirs(OUT_DIR, exist_ok=True)
 URL_TPL = "https://www.k-1.co.jp/fighter/{}"
 
 
 def main():
     t0 = time.time()
-    known_ids = sorted((p.split("/")[-1][:-5] for p in glob.glob(f"{OUT_DIR}/*.html")), key=lambda x: (len(x), x))
-    print(f"既知ID(既存raw/k1_bouts/のファイル名から復元): {len(known_ids)}件(新規発見は今回未実施)")
+    # 2026-08-21変更: 従来はglob.glob(f"{OUT_DIR}/*.html")で「既存raw/のファイル名」
+    # から既知IDを復元していたが、週次自動更新ジョブはraw/が毎回空の状態から始まる
+    # (.gitignore対象、CI runnerに前回状態が残らない)ため、この方式では0件になり
+    # 何も取得できなくなる。cache/k1_parsed.json(コミット済み、名簿キャッシュ)の
+    # id一覧を正とする(既存raw/が残っている場合の実行結果は変わらない)。
+    #
+    # cache/k1_delisted_merges.jsonのk1_idも合わせて対象にする(2026-08-21、ローカル
+    # 実測で発見): 退所選手はk1_parsed.json(名簿)には別レコードとして載らず、既存の
+    # RISE/KNOCK OUT等のレコードへ統合される(build.py参照)ため、k1_parsed.jsonの
+    # idだけを使うと退所選手151人分の戦績ページ(raw/k1_bouts/)が丸ごと欠落し、
+    # bouts_k1.jsonが1,595件→1,443件(-152件、-9.5%)まで減少する回帰を確認した。
+    known_ids = {r["id"] for r in json.load(open("cache/k1_parsed.json"))}
+    if os.path.exists("cache/k1_delisted_merges.json"):
+        delisted = json.load(open("cache/k1_delisted_merges.json"))
+        known_ids |= {m["k1_id"] for m in delisted}
+    known_ids = sorted(known_ids, key=lambda x: (len(x), x))
+    print(f"既知ID(cache/k1_parsed.json + k1_delisted_merges.jsonの名簿由来): {len(known_ids)}件(新規発見は今回未実施)")
 
     failed = []
     n_ok = 0

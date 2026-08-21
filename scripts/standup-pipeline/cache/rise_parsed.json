@@ -1,0 +1,4951 @@
+[
+ {
+  "slug": "abdallah_ezbiri",
+  "name": "アブデラ・エズビリ",
+  "en": "Abdallah Ezbiri",
+  "gym": "Team EZBIRI",
+  "url": "https://rise-rc.com/fighter/abdallah_ezbiri/"
+ },
+ {
+  "slug": "abiko_takamasa",
+  "name": "安彦考真",
+  "en": "Takamasa Abiko",
+  "gym": "Yogibo DATSURIKI GYM/Y.S.C.C.横浜キックボクシング",
+  "url": "https://rise-rc.com/fighter/abiko_takamasa/"
+ },
+ {
+  "slug": "abiru_junya",
+  "name": "阿比留惇也",
+  "en": "Junya Abiru",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/abiru_junya/"
+ },
+ {
+  "slug": "abraham-vidales",
+  "name": "エイブラハム・ヴィダレス",
+  "en": "Abraham Vidales",
+  "gym": "Living legacy",
+  "url": "https://rise-rc.com/fighter/abraham-vidales/"
+ },
+ {
+  "slug": "achi",
+  "name": "ACHI",
+  "en": "Achi",
+  "gym": "ONE LINK/TARGET",
+  "url": "https://rise-rc.com/fighter/achi/"
+ },
+ {
+  "slug": "achraf-aasila",
+  "name": "アシュラフ・アーシラ",
+  "en": "Achraf Aasila",
+  "gym": "Hammer crew 69/ Empire Fight gym",
+  "url": "https://rise-rc.com/fighter/achraf-aasila/"
+ },
+ {
+  "slug": "ahmed-akoudad",
+  "name": "アフマド・アコーダッド",
+  "en": "Ahmed Akoudad",
+  "gym": "Brutal Gym",
+  "url": "https://rise-rc.com/fighter/ahmed-akoudad/"
+ },
+ {
+  "slug": "ahn_jess",
+  "name": "安ジェス",
+  "en": "Ahn Jess",
+  "gym": "LION GYM",
+  "url": "https://rise-rc.com/fighter/ahn_jess/"
+ },
+ {
+  "slug": "aida-ryuzo",
+  "name": "相田竜三",
+  "en": "Ryuzo Aida",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/aida-ryuzo/"
+ },
+ {
+  "slug": "aiman-lahmar",
+  "name": "アイマン・ラマー",
+  "en": "Aiman Lahmar",
+  "gym": "URBAN MULTI BOXING",
+  "url": "https://rise-rc.com/fighter/aiman-lahmar/"
+ },
+ {
+  "slug": "aimi_rika",
+  "name": "相見梨夏",
+  "en": "Rika Aimi",
+  "gym": "サクシードジム team EXCEED",
+  "url": "https://rise-rc.com/fighter/aimi_rika/"
+ },
+ {
+  "slug": "aira",
+  "name": "AIRA",
+  "en": "Aira",
+  "gym": "DIATIGER GYM",
+  "url": "https://rise-rc.com/fighter/aira/"
+ },
+ {
+  "slug": "aitaka_ryo",
+  "name": "愛鷹 亮",
+  "en": "Ryo Aitaka",
+  "gym": "力道場静岡",
+  "url": "https://rise-rc.com/fighter/aitaka_ryo/"
+ },
+ {
+  "slug": "aito",
+  "name": "愛翔",
+  "en": "Aito",
+  "gym": "Kickboxing Academy Sapporo",
+  "url": "https://rise-rc.com/fighter/aito/"
+ },
+ {
+  "slug": "aitor-currito",
+  "name": "アイトール･クリート",
+  "en": "Aitor Currito",
+  "gym": "Elite jt taldea",
+  "url": "https://rise-rc.com/fighter/aitor-currito/"
+ },
+ {
+  "slug": "aiuchi_makoto",
+  "name": "相内 誠",
+  "en": "Makoto Aiuchi",
+  "gym": "K26",
+  "url": "https://rise-rc.com/fighter/aiuchi_makoto/"
+ },
+ {
+  "slug": "aizawa_jo",
+  "name": "相沢 晟",
+  "en": "Jo Aizawa",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/aizawa_jo/"
+ },
+ {
+  "slug": "akari",
+  "name": "AKARI",
+  "en": "Akari",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/akari/"
+ },
+ {
+  "slug": "albert_campos",
+  "name": "アルベルト・カンポス",
+  "en": "Albert Campos",
+  "gym": "Phuket fight club",
+  "url": "https://rise-rc.com/fighter/albert_campos/"
+ },
+ {
+  "slug": "alester_tagure",
+  "name": "アレスター・タグレ",
+  "en": "Alester Tagure",
+  "gym": "WCCS Philippines TRIBU BANWAR",
+  "url": "https://rise-rc.com/fighter/alester_tagure/"
+ },
+ {
+  "slug": "alisher-karmenov",
+  "name": "アリシェル・カルメノフ",
+  "en": "Alisher Karmenov",
+  "gym": "Nural sports school",
+  "url": "https://rise-rc.com/fighter/alisher-karmenov/"
+ },
+ {
+  "slug": "ami",
+  "name": "愛弥",
+  "en": "Ami",
+  "gym": "NEXT LEVEL 渋谷",
+  "url": "https://rise-rc.com/fighter/ami/"
+ },
+ {
+  "slug": "andy-turland",
+  "name": "アンディ・ターランド",
+  "en": "Andy Turland",
+  "gym": "Tornado gym",
+  "url": "https://rise-rc.com/fighter/andy-turland/"
+ },
+ {
+  "slug": "anvar-boynazarov",
+  "name": "アンバー・ボイナザロフ",
+  "en": "Anvar Boynazarov",
+  "gym": "Anvar Muaythai",
+  "url": "https://rise-rc.com/fighter/anvar-boynazarov/"
+ },
+ {
+  "slug": "aoki_yosuke",
+  "name": "青木洋輔",
+  "en": "Yosuke Aoki",
+  "gym": "大和ジム",
+  "url": "https://rise-rc.com/fighter/aoki_yosuke/"
+ },
+ {
+  "slug": "arai_yudai",
+  "name": "新井雄大",
+  "en": "Yudai Arai",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/arai_yudai/"
+ },
+ {
+  "slug": "arao_sho",
+  "name": "荒尾 彰",
+  "en": "Sho Arao",
+  "gym": "リアルディール",
+  "url": "https://rise-rc.com/fighter/arao_sho/"
+ },
+ {
+  "slug": "arii_shoa",
+  "name": "有井渚海",
+  "en": "Shoa Arii",
+  "gym": "team VASILEUS",
+  "url": "https://rise-rc.com/fighter/arii_shoa/"
+ },
+ {
+  "slug": "arimatsu_tomo",
+  "name": "有松 朝",
+  "en": "Tomo Arimatsu",
+  "gym": "SBHキックボクシングジム",
+  "url": "https://rise-rc.com/fighter/arimatsu_tomo/"
+ },
+ {
+  "slug": "aron",
+  "name": "空龍",
+  "en": "Aron",
+  "gym": "ホライズンキックボクシングジム",
+  "url": "https://rise-rc.com/fighter/aron/"
+ },
+ {
+  "slug": "artty_fellowgym",
+  "name": "アティ・フェロージム",
+  "en": "Artty Fellowgym",
+  "gym": "FELLOWGYM",
+  "url": "https://rise-rc.com/fighter/artty_fellowgym/"
+ },
+ {
+  "slug": "asahara_syohei",
+  "name": "麻原将平",
+  "en": "Shohei Asahara",
+  "gym": "パウンドフォーパウンド",
+  "url": "https://rise-rc.com/fighter/asahara_syohei/"
+ },
+ {
+  "slug": "asahi_keito",
+  "name": "朝日彗仁",
+  "en": "Keito Asahi",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/asahi_keito/"
+ },
+ {
+  "slug": "asahi_yutaro",
+  "name": "麻火佑太郎",
+  "en": "Yutaro Asahi",
+  "gym": "PHOENIX",
+  "url": "https://rise-rc.com/fighter/asahi_yutaro/"
+ },
+ {
+  "slug": "asai_haruka",
+  "name": "浅井春香",
+  "en": "Haruka Asai",
+  "gym": "Kick Box",
+  "url": "https://rise-rc.com/fighter/asai_haruka/"
+ },
+ {
+  "slug": "asakura_mikuru",
+  "name": "朝倉未来",
+  "en": "Mikuru Asakura",
+  "gym": "JAPAN TOP TEAM",
+  "url": "https://rise-rc.com/fighter/asakura_mikuru/"
+ },
+ {
+  "slug": "asano-yuga",
+  "name": "浅野裕雅",
+  "en": "Yuga Asano",
+  "gym": "Y'ZD GYM",
+  "url": "https://rise-rc.com/fighter/asano-yuga/"
+ },
+ {
+  "slug": "asano_koki",
+  "name": "浅野功暉",
+  "en": "Koki Asano",
+  "gym": "REBOOT",
+  "url": "https://rise-rc.com/fighter/asano_koki/"
+ },
+ {
+  "slug": "asataro",
+  "name": "麻太郎",
+  "en": "Asataro",
+  "gym": "健心塾",
+  "url": "https://rise-rc.com/fighter/asataro/"
+ },
+ {
+  "slug": "ashikaga_yamato",
+  "name": "足利也真登",
+  "en": "Yamato Ashikaga",
+  "gym": "Fight Club Rush.",
+  "url": "https://rise-rc.com/fighter/ashikaga_yamato/"
+ },
+ {
+  "slug": "atsuki",
+  "name": "純樹",
+  "en": "Atsuki",
+  "gym": "KSR GYM",
+  "url": "https://rise-rc.com/fighter/atsuki/"
+ },
+ {
+  "slug": "atsumu",
+  "name": "鳩",
+  "en": "Atsumu",
+  "gym": "TSK Japan",
+  "url": "https://rise-rc.com/fighter/atsumu/"
+ },
+ {
+  "slug": "auto-nor-naksin",
+  "name": "オートー・ONE LINK",
+  "en": "Auto One Link",
+  "gym": "ONE LINK",
+  "url": "https://rise-rc.com/fighter/auto-nor-naksin/"
+ },
+ {
+  "slug": "ayaka",
+  "name": "Ayaka",
+  "en": "Ayaka",
+  "gym": "健心塾",
+  "url": "https://rise-rc.com/fighter/ayaka/"
+ },
+ {
+  "slug": "ayame",
+  "name": "綾芽",
+  "en": "Ayame",
+  "gym": "楠誠会館",
+  "url": "https://rise-rc.com/fighter/ayame/"
+ },
+ {
+  "slug": "ayoub-bourass",
+  "name": "アユーブ･ブーラス",
+  "en": "Ayoub Bourass",
+  "gym": "Sb gym",
+  "url": "https://rise-rc.com/fighter/ayoub-bourass/"
+ },
+ {
+  "slug": "ayuki",
+  "name": "AYUKI",
+  "en": "Ayuki",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/ayuki/"
+ },
+ {
+  "slug": "ayuna",
+  "name": "愛結菜",
+  "en": "Ayuna",
+  "gym": "東北AVANTI",
+  "url": "https://rise-rc.com/fighter/ayuna/"
+ },
+ {
+  "slug": "ayuto",
+  "name": "歩結翔",
+  "en": "Ayuto",
+  "gym": "PRINCE KC",
+  "url": "https://rise-rc.com/fighter/ayuto/"
+ },
+ {
+  "slug": "bashi_kani_ebi",
+  "name": "バシ・カニ・エビ",
+  "en": "Bashi Kani Ebi",
+  "gym": "FJ KICK ASS",
+  "url": "https://rise-rc.com/fighter/bashi_kani_ebi/"
+ },
+ {
+  "slug": "berjan_peposhi",
+  "name": "ベルジャン・ペポシ",
+  "en": "Berjan Peposhi",
+  "gym": "Valon team",
+  "url": "https://rise-rc.com/fighter/berjan_peposhi/"
+ },
+ {
+  "slug": "beynoah",
+  "name": "“ブラックパンサー”ベイノア",
+  "en": "“BlackPanther”Beynoah",
+  "gym": "極真会館",
+  "url": "https://rise-rc.com/fighter/beynoah/"
+ },
+ {
+  "slug": "blackbear_yukijin",
+  "name": "ブラックベア悠鬼神",
+  "en": "Blackbear Yukijin",
+  "gym": "心将塾",
+  "url": "https://rise-rc.com/fighter/blackbear_yukijin/"
+ },
+ {
+  "slug": "blackshisa_sotaro",
+  "name": "ブラックシーサー颯太朗",
+  "en": "Blackshisa Sotaro",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/blackshisa_sotaro/"
+ },
+ {
+  "slug": "bobo-sacko",
+  "name": "ボボ･サッコ",
+  "en": "Bobo Sacko",
+  "gym": "Teambilos Muaythaï Gym 77",
+  "url": "https://rise-rc.com/fighter/bobo-sacko/"
+ },
+ {
+  "slug": "boonlhong-petchyindeeacademy",
+  "name": "ブンロン・ペッティンディーアカデミー",
+  "en": "Boonlhong PetchyindeeAcademy",
+  "gym": "ペッティンディーアカデミー",
+  "url": "https://rise-rc.com/fighter/boonlhong-petchyindeeacademy/"
+ },
+ {
+  "slug": "brian",
+  "name": "武来安",
+  "en": "Brian",
+  "gym": "上州松井ジム",
+  "url": "https://rise-rc.com/fighter/brian/"
+ },
+ {
+  "slug": "byun-bo-kyeong",
+  "name": "ビョン・ボギョン",
+  "en": "BYUN Bo-kyeong",
+  "gym": "MUYEMARU",
+  "url": "https://rise-rc.com/fighter/byun-bo-kyeong/"
+ },
+ {
+  "slug": "callyu_gibrainn",
+  "name": "カリュ・ギブレイン",
+  "en": "Callyu Gibrainn",
+  "gym": "ブラジル/ブラジリアン・タイ",
+  "url": "https://rise-rc.com/fighter/callyu_gibrainn/"
+ },
+ {
+  "slug": "capitan-petchyindee-academy",
+  "name": "カピタン・ペッティンディーアカデミー",
+  "en": "Capitan Petchyindee Academy",
+  "gym": "Petchyindee Academy",
+  "url": "https://rise-rc.com/fighter/capitan-petchyindee-academy/"
+ },
+ {
+  "slug": "carlos_budiao",
+  "name": "カルロス・ブディオ",
+  "en": "Carlos Budiao",
+  "gym": "ブラジリアン・タイ",
+  "url": "https://rise-rc.com/fighter/carlos_budiao/"
+ },
+ {
+  "slug": "cha_minju",
+  "name": "チャ・ミンジュ",
+  "en": "Cha Minju",
+  "gym": "大邱玄風ソルボンジム",
+  "url": "https://rise-rc.com/fighter/cha_minju/"
+ },
+ {
+  "slug": "chadd_collins",
+  "name": "チャド・コリンズ",
+  "en": "Chadd Collins",
+  "gym": "Strikeforce",
+  "url": "https://rise-rc.com/fighter/chadd_collins/"
+ },
+ {
+  "slug": "chainsaw-man-sakara",
+  "name": "チェンソーマン坂田",
+  "en": "Chainsaw man Sakara",
+  "gym": "KING EXCEED",
+  "url": "https://rise-rc.com/fighter/chainsaw-man-sakara/"
+ },
+ {
+  "slug": "chan",
+  "name": "チャン",
+  "en": "Chan",
+  "gym": "MONSTAR GYM",
+  "url": "https://rise-rc.com/fighter/chan/"
+ },
+ {
+  "slug": "changsuek-petchyindee-academy",
+  "name": "チャーンスック・ペッティンディーアカデミー",
+  "en": "Changsuek Petchyindee Academy",
+  "gym": "Petchyindee Academy",
+  "url": "https://rise-rc.com/fighter/changsuek-petchyindee-academy/"
+ },
+ {
+  "slug": "chanhyeong-lee",
+  "name": "チャンヒョン・リー",
+  "en": "Chanhyeong Lee",
+  "gym": "RAON",
+  "url": "https://rise-rc.com/fighter/chanhyeong-lee/"
+ },
+ {
+  "slug": "chappy_yoshinuma",
+  "name": "チャッピー吉沼",
+  "en": "Chappy Yoshinuma",
+  "gym": "TANG TANG FIGHT CLUB",
+  "url": "https://rise-rc.com/fighter/chappy_yoshinuma/"
+ },
+ {
+  "slug": "chibana_david",
+  "name": "知花デビット",
+  "en": "Chibana David",
+  "gym": "エイワスポーツジム/Aimhigh",
+  "url": "https://rise-rc.com/fighter/chibana_david/"
+ },
+ {
+  "slug": "cho-kyeong-jae",
+  "name": "チョ・ギョンジェ",
+  "en": "CHO KYEONG JAE",
+  "gym": "JUNG WOO GYM",
+  "url": "https://rise-rc.com/fighter/cho-kyeong-jae/"
+ },
+ {
+  "slug": "cho_sanhae",
+  "name": "ジョ・サンヘ",
+  "en": "Sanhae Cho",
+  "gym": "JINHAE-JUNG EUI HOI KWAN",
+  "url": "https://rise-rc.com/fighter/cho_sanhae/"
+ },
+ {
+  "slug": "corey-nicholson",
+  "name": "コーリー・ニコルソン",
+  "en": "Corey Nicholson",
+  "gym": "Ironfist Gym",
+  "url": "https://rise-rc.com/fighter/corey-nicholson/"
+ },
+ {
+  "slug": "crazy_husky_shogo",
+  "name": "クレイジーハスキー尚吾",
+  "en": "Crazy Husky Shogo",
+  "gym": "REVOLT",
+  "url": "https://rise-rc.com/fighter/crazy_husky_shogo/"
+ },
+ {
+  "slug": "crazycat_yokko",
+  "name": "狂猫Yokko",
+  "en": "Crazycat yokko",
+  "gym": "BRING IT ONパラエストラAKK",
+  "url": "https://rise-rc.com/fighter/crazycat_yokko/"
+ },
+ {
+  "slug": "dangan_futa",
+  "name": "弾丸風太",
+  "en": "Danganfuta",
+  "gym": "TEAM KAZE",
+  "url": "https://rise-rc.com/fighter/dangan_futa/"
+ },
+ {
+  "slug": "daniel_puertas",
+  "name": "ダニエル・プエルタス",
+  "en": "Daniel Puertas",
+  "gym": "Ultimatum Fight School",
+  "url": "https://rise-rc.com/fighter/daniel_puertas/"
+ },
+ {
+  "slug": "delgermuru拳信王",
+  "name": "Delgermuru拳信王",
+  "en": "Derigerumurun Kenshinhan",
+  "gym": "FLAT UP",
+  "url": "https://rise-rc.com/fighter/delgermuru拳信王/"
+ },
+ {
+  "slug": "denis-wosik",
+  "name": "デニス・ウォシク",
+  "en": "Denis Wosik",
+  "gym": "Amrani Palace",
+  "url": "https://rise-rc.com/fighter/denis-wosik/"
+ },
+ {
+  "slug": "diesellek-wor-wanchai",
+  "name": "ディーゼルレック・ウォーワンチャイ",
+  "en": "Diesellek Wor.Wanchai",
+  "gym": "ペッティンディームエタイアカデミー",
+  "url": "https://rise-rc.com/fighter/diesellek-wor-wanchai/"
+ },
+ {
+  "slug": "djillali-kharroubi",
+  "name": "ジラリー・キャルービー",
+  "en": "Djillali Kharroubi",
+  "gym": "CARCHARIAS GYM",
+  "url": "https://rise-rc.com/fighter/djillali-kharroubi/"
+ },
+ {
+  "slug": "dokyeou_lee",
+  "name": "イ・ドギョン",
+  "en": "Dokyeoug Lee",
+  "gym": "チームサイコピットブルス",
+  "url": "https://rise-rc.com/fighter/dokyeou_lee/"
+ },
+ {
+  "slug": "dwelbert_manuel",
+  "name": "ドゥエルバート・マヌエル",
+  "en": "Dwelbert Manuel",
+  "gym": "Team wisse/Kickboxing fearless",
+  "url": "https://rise-rc.com/fighter/dwelbert_manuel/"
+ },
+ {
+  "slug": "ebata_mutsuki",
+  "name": "江幡 睦",
+  "en": "Mutsuki Ebata",
+  "gym": "伊原道場",
+  "url": "https://rise-rc.com/fighter/ebata_mutsuki/"
+ },
+ {
+  "slug": "ebata_rui",
+  "name": "江幡 塁",
+  "en": "Rui Ebata",
+  "gym": "伊原道場",
+  "url": "https://rise-rc.com/fighter/ebata_rui/"
+ },
+ {
+  "slug": "eduardo-catalin",
+  "name": "エドゥアルド・カタリン",
+  "en": "Eduardo Catalin",
+  "gym": "Moi Rui & Susi Team",
+  "url": "https://rise-rc.com/fighter/eduardo-catalin/"
+ },
+ {
+  "slug": "eminfc",
+  "name": "エミNFC",
+  "en": "Emi NFC",
+  "gym": "ナゴヤファイトクラブ",
+  "url": "https://rise-rc.com/fighter/eminfc/"
+ },
+ {
+  "slug": "endo-taku",
+  "name": "遠藤 拓",
+  "en": "Taku Endo",
+  "gym": "TAKU GYM",
+  "url": "https://rise-rc.com/fighter/endo-taku/"
+ },
+ {
+  "slug": "erika",
+  "name": "erika♡",
+  "en": "erika",
+  "gym": "SHINE沖縄",
+  "url": "https://rise-rc.com/fighter/erika/"
+ },
+ {
+  "slug": "eriko",
+  "name": "ERIKO",
+  "en": "Eriko",
+  "gym": "TKDJ市川式",
+  "url": "https://rise-rc.com/fighter/eriko/"
+ },
+ {
+  "slug": "facundo-gramajo",
+  "name": "ファクンド・グラマチョウ",
+  "en": "Facundo Gramajo",
+  "gym": "サムライジム",
+  "url": "https://rise-rc.com/fighter/facundo-gramajo/"
+ },
+ {
+  "slug": "farphayap_grabs",
+  "name": "ファーパヤップ・GRABS",
+  "en": "Farphayap Grabs",
+  "gym": "GRABS",
+  "url": "https://rise-rc.com/fighter/farphayap_grabs/"
+ },
+ {
+  "slug": "fernando-almeida",
+  "name": "フェルナンド・アルメイダ",
+  "en": "Fernando Almeida",
+  "gym": "ブラジリアン・タイ",
+  "url": "https://rise-rc.com/fighter/fernando-almeida/"
+ },
+ {
+  "slug": "franck-chan",
+  "name": "フランクちゃん",
+  "en": "Franck chan",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/franck-chan/"
+ },
+ {
+  "slug": "frangis_goma",
+  "name": "フランジス・ゴマ",
+  "en": "Frangis GOMA",
+  "gym": "COC PERFORMANCE",
+  "url": "https://rise-rc.com/fighter/frangis_goma/"
+ },
+ {
+  "slug": "fred_cordeiro",
+  "name": "フレッド“The Joker”コルデイロ",
+  "en": "Fred “The Joker” Cordeiro",
+  "gym": "Dynamite Team",
+  "url": "https://rise-rc.com/fighter/fred_cordeiro/"
+ },
+ {
+  "slug": "fujihashi_hikaru",
+  "name": "藤橋 光",
+  "en": "Hikaru Fujihashi",
+  "gym": "TEAM LIBERTAD/KTT",
+  "url": "https://rise-rc.com/fighter/fujihashi_hikaru/"
+ },
+ {
+  "slug": "fujii_kaito",
+  "name": "藤井海人",
+  "en": "Kaito Fujii",
+  "gym": "EX ARES",
+  "url": "https://rise-rc.com/fighter/fujii_kaito/"
+ },
+ {
+  "slug": "fujii_shigeki",
+  "name": "藤井重綺",
+  "en": "Shigeki Fujii",
+  "gym": "Team +1",
+  "url": "https://rise-rc.com/fighter/fujii_shigeki/"
+ },
+ {
+  "slug": "fujisawa-toshiki",
+  "name": "藤澤敏来",
+  "en": "Toshiki Fujisawa",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/fujisawa-toshiki/"
+ },
+ {
+  "slug": "fukui_tomoya",
+  "name": "福井萌矢",
+  "en": "Tomoya Fukui",
+  "gym": "建武館",
+  "url": "https://rise-rc.com/fighter/fukui_tomoya/"
+ },
+ {
+  "slug": "fukushima_sota",
+  "name": "福島草太",
+  "en": "Sota Fukushima",
+  "gym": "MASTER JAPAN",
+  "url": "https://rise-rc.com/fighter/fukushima_sota/"
+ },
+ {
+  "slug": "fuu",
+  "name": "風羽",
+  "en": "Fuu",
+  "gym": "龍生塾ファントム道場",
+  "url": "https://rise-rc.com/fighter/fuu/"
+ },
+ {
+  "slug": "g-rex",
+  "name": "G-REX",
+  "en": "G-REX",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/g-rex/"
+ },
+ {
+  "slug": "ginji",
+  "name": "銀二",
+  "en": "Ginji",
+  "gym": "SBHキックボクシングジム",
+  "url": "https://rise-rc.com/fighter/ginji/"
+ },
+ {
+  "slug": "gump",
+  "name": "GUMP",
+  "en": "GUMP",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/gump/"
+ },
+ {
+  "slug": "gunther_kalunda",
+  "name": "グンター・カルンダ",
+  "en": "Gunther Kalunda",
+  "gym": "ReBORN経堂",
+  "url": "https://rise-rc.com/fighter/gunther_kalunda/"
+ },
+ {
+  "slug": "hagimoto_shoji",
+  "name": "萩本将次",
+  "en": "Shoji Hagimoto",
+  "gym": "FUTAMI FIGHTCLUB",
+  "url": "https://rise-rc.com/fighter/hagimoto_shoji/"
+ },
+ {
+  "slug": "hamada-azmani",
+  "name": "ハマダ・アズマニ",
+  "en": "Hamada Azmani",
+  "gym": "アルティメットファイトスクール",
+  "url": "https://rise-rc.com/fighter/hamada-azmani/"
+ },
+ {
+  "slug": "hamza_hazzar",
+  "name": "ハムザ・ハッザール",
+  "en": "Hamza Hazzar",
+  "gym": "FIGHT MASTERS",
+  "url": "https://rise-rc.com/fighter/hamza_hazzar/"
+ },
+ {
+  "slug": "hanada_mai",
+  "name": "花田麻衣",
+  "en": "Mai Hanada",
+  "gym": "GROUND CORE",
+  "url": "https://rise-rc.com/fighter/hanada_mai/"
+ },
+ {
+  "slug": "hanaoka_ryu",
+  "name": "花岡 竜",
+  "en": "Ryu Hanaoka",
+  "gym": "橋本道場",
+  "url": "https://rise-rc.com/fighter/hanaoka_ryu/"
+ },
+ {
+  "slug": "haraguchi_andrei",
+  "name": "原口アンドレイ",
+  "en": "Andrei Haraguchi",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/haraguchi_andrei/"
+ },
+ {
+  "slug": "haraguchi_kento",
+  "name": "原口健飛",
+  "en": "Kento Haraguchi",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/haraguchi_kento/"
+ },
+ {
+  "slug": "harigaya_koh",
+  "name": "針谷 耕",
+  "en": "Koh Harigaya",
+  "gym": "GOLDEN BROTHER'S",
+  "url": "https://rise-rc.com/fighter/harigaya_koh/"
+ },
+ {
+  "slug": "haru-miyanoiri",
+  "name": "ハル・ミヤノイリ",
+  "en": "Haru Miyanoiri",
+  "gym": "ウエスレイ team BRTHAI",
+  "url": "https://rise-rc.com/fighter/haru-miyanoiri/"
+ },
+ {
+  "slug": "hasegawa_eito",
+  "name": "長谷川英翔",
+  "en": "Eito Hasegawa",
+  "gym": "誠剛館",
+  "url": "https://rise-rc.com/fighter/hasegawa_eito/"
+ },
+ {
+  "slug": "hasegawa_kaito",
+  "name": "長谷川海翔",
+  "en": "Kaito Hasegawa",
+  "gym": "誠剛館",
+  "url": "https://rise-rc.com/fighter/hasegawa_kaito/"
+ },
+ {
+  "slug": "hayashi-mina",
+  "name": "林 美菜",
+  "en": "Mina Hayashi",
+  "gym": "FORWARD GYM",
+  "url": "https://rise-rc.com/fighter/hayashi-mina/"
+ },
+ {
+  "slug": "hayashi_kotaro",
+  "name": "林 功太郎",
+  "en": "Kotaro Hayashi",
+  "gym": "山口道場",
+  "url": "https://rise-rc.com/fighter/hayashi_kotaro/"
+ },
+ {
+  "slug": "hayato",
+  "name": "HAYATO",
+  "en": "Hayato",
+  "gym": "CRAZY WOLF",
+  "url": "https://rise-rc.com/fighter/hayato/"
+ },
+ {
+  "slug": "henmi_9",
+  "name": "HENMI 9",
+  "en": "HENMI 9",
+  "gym": "東北AVANTI",
+  "url": "https://rise-rc.com/fighter/henmi_9/"
+ },
+ {
+  "slug": "hibata_natsumi",
+  "name": "日畑夏美",
+  "en": "Natsumi Hibata",
+  "gym": "FKD Fighting Sports Gym",
+  "url": "https://rise-rc.com/fighter/hibata_natsumi/"
+ },
+ {
+  "slug": "hida_tomoko",
+  "name": "樋田智子",
+  "en": "Tomoko Hida",
+  "gym": "リアルディール",
+  "url": "https://rise-rc.com/fighter/hida_tomoko/"
+ },
+ {
+  "slug": "hideki",
+  "name": "秀樹",
+  "en": "Hideki",
+  "gym": "新宿レフティージム",
+  "url": "https://rise-rc.com/fighter/hideki/"
+ },
+ {
+  "slug": "higashi_shuhei",
+  "name": "東 修平",
+  "en": "Shuhei Higashi",
+  "gym": "AACC",
+  "url": "https://rise-rc.com/fighter/higashi_shuhei/"
+ },
+ {
+  "slug": "higashi_soma",
+  "name": "東 蒼馬",
+  "en": "Soma Higashi",
+  "gym": "MONSTAR GYM",
+  "url": "https://rise-rc.com/fighter/higashi_soma/"
+ },
+ {
+  "slug": "higuchi_chiharu",
+  "name": "樋口知春",
+  "en": "Chiharu Higuchi",
+  "gym": "極真会館",
+  "url": "https://rise-rc.com/fighter/higuchi_chiharu/"
+ },
+ {
+  "slug": "hirahara_riku",
+  "name": "平原 陸",
+  "en": "Riku Hirahara",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/hirahara_riku/"
+ },
+ {
+  "slug": "hirano_ryoga",
+  "name": "平野凌我",
+  "en": "Ryoga Hirano",
+  "gym": "MTS",
+  "url": "https://rise-rc.com/fighter/hirano_ryoga/"
+ },
+ {
+  "slug": "hiraoka_koto",
+  "name": "平岡 琴",
+  "en": "Koto Hiraoka",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/hiraoka_koto/"
+ },
+ {
+  "slug": "hiratsuka_taishi",
+  "name": "平塚大士",
+  "en": "Taishi Hiratsuka",
+  "gym": "チームドラゴン",
+  "url": "https://rise-rc.com/fighter/hiratsuka_taishi/"
+ },
+ {
+  "slug": "hirayama_ryoma",
+  "name": "平山龍馬",
+  "en": "Ryoma Hirayama",
+  "gym": "サクシードジム team EXCEED",
+  "url": "https://rise-rc.com/fighter/hirayama_ryoma/"
+ },
+ {
+  "slug": "hirayama_yuto",
+  "name": "平山裕翔",
+  "en": "Yuto Hirayama",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/hirayama_yuto/"
+ },
+ {
+  "slug": "hirono_yu",
+  "name": "廣野 祐",
+  "en": "Yu Hirono",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/hirono_yu/"
+ },
+ {
+  "slug": "hiroto",
+  "name": "寛人",
+  "en": "Hiroto",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/hiroto/"
+ },
+ {
+  "slug": "hiroyuki",
+  "name": "HIROYUKI",
+  "en": "Hiroyuki",
+  "gym": "RIKIX",
+  "url": "https://rise-rc.com/fighter/hiroyuki/"
+ },
+ {
+  "slug": "hitachi_hyuma",
+  "name": "常陸飛雄馬",
+  "en": "Hyuma Hitachi",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/hitachi_hyuma/"
+ },
+ {
+  "slug": "hiyori",
+  "name": "HIYORI",
+  "en": "Hiyori",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/hiyori/"
+ },
+ {
+  "slug": "honda_nanaka",
+  "name": "本田ななか",
+  "en": "Nanaka Honda",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/honda_nanaka/"
+ },
+ {
+  "slug": "hori_yutaro",
+  "name": "堀 佑太郎",
+  "en": "Yutaro Hori",
+  "gym": "IDEAL GYM",
+  "url": "https://rise-rc.com/fighter/hori_yutaro/"
+ },
+ {
+  "slug": "horimoto_yusei",
+  "name": "堀本祐惺",
+  "en": "Yusei Horimoto",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/horimoto_yusei/"
+ },
+ {
+  "slug": "hoshi_takumi",
+  "name": "星 拓海",
+  "en": "Takumi Hoshi",
+  "gym": "IDEAL GYM",
+  "url": "https://rise-rc.com/fighter/hoshi_takumi/"
+ },
+ {
+  "slug": "hoshi_yuga",
+  "name": "星 憂雅",
+  "en": "Yuga Hoshi",
+  "gym": "IDEAL GYM",
+  "url": "https://rise-rc.com/fighter/hoshi_yuga/"
+ },
+ {
+  "slug": "hoshikubo_shoki",
+  "name": "星久保将城",
+  "en": "Shoki Hoshikubo",
+  "gym": "S-ROUND",
+  "url": "https://rise-rc.com/fighter/hoshikubo_shoki/"
+ },
+ {
+  "slug": "hoshino_takamasa",
+  "name": "星野孝允",
+  "en": "Takamasa Hoshino",
+  "gym": "益荒男APACHE",
+  "url": "https://rise-rc.com/fighter/hoshino_takamasa/"
+ },
+ {
+  "slug": "hosokoshi_ryunosuke",
+  "name": "細越竜之介",
+  "en": "Ryunosuke Hosokoshi",
+  "gym": "team AKATSUKI",
+  "url": "https://rise-rc.com/fighter/hosokoshi_ryunosuke/"
+ },
+ {
+  "slug": "hosono_takahiro",
+  "name": "細野登弘",
+  "en": "Takahiro Hosono",
+  "gym": "新潟誠道館",
+  "url": "https://rise-rc.com/fighter/hosono_takahiro/"
+ },
+ {
+  "slug": "hotaru",
+  "name": "Hotaru",
+  "en": "Hotaru",
+  "gym": "Continue",
+  "url": "https://rise-rc.com/fighter/hotaru/"
+ },
+ {
+  "slug": "hyuga",
+  "name": "彪司",
+  "en": "Hyuga",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/hyuga/"
+ },
+ {
+  "slug": "hyuu",
+  "name": "陽勇",
+  "en": "Hyuu",
+  "gym": "TEAM3K",
+  "url": "https://rise-rc.com/fighter/hyuu/"
+ },
+ {
+  "slug": "ibata_tokiya",
+  "name": "井端刻也",
+  "en": "Tokiya Ibata",
+  "gym": "健心塾",
+  "url": "https://rise-rc.com/fighter/ibata_tokiya/"
+ },
+ {
+  "slug": "ikeda_koji",
+  "name": "池田幸司",
+  "en": "Koji Ikeda",
+  "gym": "ReBORN経堂",
+  "url": "https://rise-rc.com/fighter/ikeda_koji/"
+ },
+ {
+  "slug": "ilias-bannis",
+  "name": "イリアス・バニス",
+  "en": "Ilias Bannis",
+  "gym": "Vos Gym/Fearless",
+  "url": "https://rise-rc.com/fighter/ilias-bannis/"
+ },
+ {
+  "slug": "imad-salhi",
+  "name": "イマッド・サヒ",
+  "en": "Imad Salhi",
+  "gym": "Voodoo Fight-gym",
+  "url": "https://rise-rc.com/fighter/imad-salhi/"
+ },
+ {
+  "slug": "inai_ryoya",
+  "name": "稲井良弥",
+  "en": "Ryoya Inai",
+  "gym": "TARGET大森",
+  "url": "https://rise-rc.com/fighter/inai_ryoya/"
+ },
+ {
+  "slug": "inaishi_tatsuya",
+  "name": "稲石竜弥",
+  "en": "Tatsuya Inaishi",
+  "gym": "Team OJ",
+  "url": "https://rise-rc.com/fighter/inaishi_tatsuya/"
+ },
+ {
+  "slug": "inoue-renji",
+  "name": "井上蓮治",
+  "en": "Renji Inoue",
+  "gym": "RAUSU GYM",
+  "url": "https://rise-rc.com/fighter/inoue-renji/"
+ },
+ {
+  "slug": "inoue_ryuta",
+  "name": "井上竜太",
+  "en": "Ryuta Inoue",
+  "gym": "習志野ジム",
+  "url": "https://rise-rc.com/fighter/inoue_ryuta/"
+ },
+ {
+  "slug": "irie_naoyuki",
+  "name": "入江直幸",
+  "en": "Naoyuki Irie",
+  "gym": "SOLID FIST",
+  "url": "https://rise-rc.com/fighter/irie_naoyuki/"
+ },
+ {
+  "slug": "irita_kazuki",
+  "name": "入田和樹",
+  "en": "Kazuki Irita",
+  "gym": "TEAM日高",
+  "url": "https://rise-rc.com/fighter/irita_kazuki/"
+ },
+ {
+  "slug": "ishida_jin",
+  "name": "石田 迅",
+  "en": "Jin Ishida",
+  "gym": "LEGEND GYM",
+  "url": "https://rise-rc.com/fighter/ishida_jin/"
+ },
+ {
+  "slug": "ishii_issei",
+  "name": "石井一成",
+  "en": "Issei Ishii",
+  "gym": "ウォー・ワンチャイプロモーション",
+  "url": "https://rise-rc.com/fighter/ishii_issei/"
+ },
+ {
+  "slug": "ishikawa_taichi",
+  "name": "石川泰市",
+  "en": "Taichi Ishikawa",
+  "gym": "Ten Clover Gym",
+  "url": "https://rise-rc.com/fighter/ishikawa_taichi/"
+ },
+ {
+  "slug": "ishizuki_yusaku",
+  "name": "石月祐作",
+  "en": "Yusaku Ishizuki",
+  "gym": "KAGAYAKI",
+  "url": "https://rise-rc.com/fighter/ishizuki_yusaku/"
+ },
+ {
+  "slug": "ito_kanato",
+  "name": "伊藤叶人",
+  "en": "Kanato Ito",
+  "gym": "吉塚道場",
+  "url": "https://rise-rc.com/fighter/ito_kanato/"
+ },
+ {
+  "slug": "ito_ryoya",
+  "name": "伊東龍也",
+  "en": "Ryoya Ito",
+  "gym": "HAYATO GYM",
+  "url": "https://rise-rc.com/fighter/ito_ryoya/"
+ },
+ {
+  "slug": "ito_ryunosuke",
+  "name": "伊藤琉之助",
+  "en": "Ryunosuke Ito",
+  "gym": "EX ARES",
+  "url": "https://rise-rc.com/fighter/ito_ryunosuke/"
+ },
+ {
+  "slug": "ito_sumiya",
+  "name": "伊藤澄哉",
+  "en": "Sumiya Ito",
+  "gym": "戦ジム",
+  "url": "https://rise-rc.com/fighter/ito_sumiya/"
+ },
+ {
+  "slug": "ito_yusuke",
+  "name": "伊藤勇輔",
+  "en": "Yusuke Ito",
+  "gym": "HAYATO GYM",
+  "url": "https://rise-rc.com/fighter/ito_yusuke/"
+ },
+ {
+  "slug": "iwaduru_joichiro",
+  "name": "岩鶴城一楼",
+  "en": "Joichiro Iwaduru",
+  "gym": "KOGスポーツジム",
+  "url": "https://rise-rc.com/fighter/iwaduru_joichiro/"
+ },
+ {
+  "slug": "iwago_taisei",
+  "name": "岩郷泰成",
+  "en": "Taisei Iwago",
+  "gym": "EX ARES",
+  "url": "https://rise-rc.com/fighter/iwago_taisei/"
+ },
+ {
+  "slug": "iwaki_yusuke",
+  "name": "岩城悠介",
+  "en": "Yusuke Iwaki",
+  "gym": "RIKIX",
+  "url": "https://rise-rc.com/fighter/iwaki_yusuke/"
+ },
+ {
+  "slug": "iwaking",
+  "name": "岩KING",
+  "en": "Iwa KING",
+  "gym": "心将塾",
+  "url": "https://rise-rc.com/fighter/iwaking/"
+ },
+ {
+  "slug": "iwamasa_taiki",
+  "name": "岩政泰樹",
+  "en": "Taiki Iwamasa",
+  "gym": "リアルディール",
+  "url": "https://rise-rc.com/fighter/iwamasa_taiki/"
+ },
+ {
+  "slug": "iwanaga_shosuke",
+  "name": "岩永勝亮",
+  "en": "Shosuke Iwanaga",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/iwanaga_shosuke/"
+ },
+ {
+  "slug": "iwanaga_yuika",
+  "name": "岩永唯伽",
+  "en": "Yuika Iwanaga",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/iwanaga_yuika/"
+ },
+ {
+  "slug": "j",
+  "name": "J",
+  "en": "J",
+  "gym": "TSK japan",
+  "url": "https://rise-rc.com/fighter/j/"
+ },
+ {
+  "slug": "jaki_masaya",
+  "name": "蛇鬼将矢",
+  "en": "Masaya Jaki",
+  "gym": "チーム天野鰹節店",
+  "url": "https://rise-rc.com/fighter/jaki_masaya/"
+ },
+ {
+  "slug": "james-conde",
+  "name": "ジェームズ・コンデ",
+  "en": "James Condé",
+  "gym": "SBC sarcelles",
+  "url": "https://rise-rc.com/fighter/james-conde/"
+ },
+ {
+  "slug": "jan-jan_c_labuayan",
+  "name": "ジャンジャン・シー・ラバヤン",
+  "en": "Jan-Jan C.Labuayan",
+  "gym": "Yaw-Yan Pasay",
+  "url": "https://rise-rc.com/fighter/jan-jan_c_labuayan/"
+ },
+ {
+  "slug": "jan_kaffa",
+  "name": "ヤン・カッファ",
+  "en": "Jan Kaffa",
+  "gym": "ARJ GYM",
+  "url": "https://rise-rc.com/fighter/jan_kaffa/"
+ },
+ {
+  "slug": "jarernsuk-boonlannamuaythai",
+  "name": "ジャルンスック・ブーンラナームエタイ",
+  "en": "Jarernsuk Boon Lanna muaythai",
+  "gym": "ブーンラナームエタイジム",
+  "url": "https://rise-rc.com/fighter/jarernsuk-boonlannamuaythai/"
+ },
+ {
+  "slug": "jaroenchai_liongym",
+  "name": "ジャルンチャイ・ライオンジム",
+  "en": "Jaroenchai Liongym",
+  "gym": "LION GYM",
+  "url": "https://rise-rc.com/fighter/jaroenchai_liongym/"
+ },
+ {
+  "slug": "javier-cecilio",
+  "name": "ハビエル・セシーリオ",
+  "en": "Javier Cecilio",
+  "gym": "ELITE GYM",
+  "url": "https://rise-rc.com/fighter/javier-cecilio/"
+ },
+ {
+  "slug": "jay_snoddon",
+  "name": "ジェイ・スノーデン",
+  "en": "Jay Snoddon",
+  "gym": "Prokick Gym",
+  "url": "https://rise-rc.com/fighter/jay_snoddon/"
+ },
+ {
+  "slug": "jeong-seong-jik",
+  "name": "ジョン・ソンジク",
+  "en": "Seong Jik Jeong",
+  "gym": "PT365",
+  "url": "https://rise-rc.com/fighter/jeong-seong-jik/"
+ },
+ {
+  "slug": "jerald_villarde",
+  "name": "ジェラルド・ヴィーラーデ",
+  "en": "Jerald Villarde",
+  "gym": "WCCS Philippines TRIBU BANWAR",
+  "url": "https://rise-rc.com/fighter/jerald_villarde/"
+ },
+ {
+  "slug": "jeremy-monteiro",
+  "name": "ジェレミー・モンテーリョ",
+  "en": "Jeremy Monteiro",
+  "gym": "Kona team",
+  "url": "https://rise-rc.com/fighter/jeremy-monteiro/"
+ },
+ {
+  "slug": "jesse_astill",
+  "name": "ジェシー・アスティル",
+  "en": "Jesse Astill",
+  "gym": "Strikeforce",
+  "url": "https://rise-rc.com/fighter/jesse_astill/"
+ },
+ {
+  "slug": "jet_meibukai",
+  "name": "ジェット・MEIBUKAI",
+  "en": "JET MEIBUKAI",
+  "gym": "MEIBUKAI",
+  "url": "https://rise-rc.com/fighter/jet_meibukai/"
+ },
+ {
+  "slug": "jhaymie_gayman",
+  "name": "ジェイミー・ゲイマン",
+  "en": "Jhaymie Gayman",
+  "gym": "WCCS Philippines",
+  "url": "https://rise-rc.com/fighter/jhaymie_gayman/"
+ },
+ {
+  "slug": "jin-2",
+  "name": "仁",
+  "en": "Jin",
+  "gym": "LEGEND GYM",
+  "url": "https://rise-rc.com/fighter/jin-2/"
+ },
+ {
+  "slug": "jin",
+  "name": "JIN",
+  "en": "Jin",
+  "gym": "楠誠会館",
+  "url": "https://rise-rc.com/fighter/jin/"
+ },
+ {
+  "slug": "joemar-gallaza",
+  "name": "ジョマール・ガラザ",
+  "en": "Joemar Gallaza",
+  "gym": "Team Silent Philippines/Excalibur FT",
+  "url": "https://rise-rc.com/fighter/joemar-gallaza/"
+ },
+ {
+  "slug": "joma",
+  "name": "上真",
+  "en": "Joma",
+  "gym": "ROAD MMA GYM",
+  "url": "https://rise-rc.com/fighter/joma/"
+ },
+ {
+  "slug": "jumliat-suratthani-rajabhat",
+  "name": "ジュムリアット・スラーターニー・ラーチャパッド",
+  "en": "Jumliat Suratthani Rajabhat",
+  "gym": "PETCHSEEMUEN",
+  "url": "https://rise-rc.com/fighter/jumliat-suratthani-rajabhat/"
+ },
+ {
+  "slug": "jung-yujung",
+  "name": "チョン・ユジョン",
+  "en": "Jung Yujung",
+  "gym": "BAEBANG TAO GYM",
+  "url": "https://rise-rc.com/fighter/jung-yujung/"
+ },
+ {
+  "slug": "jung_hyeonwoo",
+  "name": "ジョン・ヒョヌ",
+  "en": "Hyeonwoo Jung",
+  "gym": "Baekryeon Chaigym",
+  "url": "https://rise-rc.com/fighter/jung_hyeonwoo/"
+ },
+ {
+  "slug": "juri",
+  "name": "樹里",
+  "en": "Juri",
+  "gym": "HAYATO GYM",
+  "url": "https://rise-rc.com/fighter/juri/"
+ },
+ {
+  "slug": "jyosei",
+  "name": "Jyosei",
+  "en": "Jyosei",
+  "gym": "誠至会",
+  "url": "https://rise-rc.com/fighter/jyosei/"
+ },
+ {
+  "slug": "kabuto",
+  "name": "嘉武士",
+  "en": "Kabuto",
+  "gym": "健心塾",
+  "url": "https://rise-rc.com/fighter/kabuto/"
+ },
+ {
+  "slug": "kadowaki_aoi",
+  "name": "門脇碧泉",
+  "en": "Aoi Kadowaki",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/kadowaki_aoi/"
+ },
+ {
+  "slug": "kai_gentaro",
+  "name": "甲斐元太郎",
+  "en": "Gentaro Kai",
+  "gym": "理心塾",
+  "url": "https://rise-rc.com/fighter/kai_gentaro/"
+ },
+ {
+  "slug": "kaipa-wor-sangprapai",
+  "name": "ガイパー･ウォーサンプラパイ",
+  "en": "Kaipa Wor. Sangprapai",
+  "gym": "Petchyindee Academy",
+  "url": "https://rise-rc.com/fighter/kaipa-wor-sangprapai/"
+ },
+ {
+  "slug": "kaito-1",
+  "name": "魁斗",
+  "en": "Kaito",
+  "gym": "立志會館",
+  "url": "https://rise-rc.com/fighter/kaito-1/"
+ },
+ {
+  "slug": "kaito",
+  "name": "海人",
+  "en": "Kaito",
+  "gym": "TEAM F.O.D",
+  "url": "https://rise-rc.com/fighter/kaito/"
+ },
+ {
+  "slug": "kakamu-sosuke",
+  "name": "各務壮祐",
+  "en": "Sosuke Kakamu",
+  "gym": "XAP",
+  "url": "https://rise-rc.com/fighter/kakamu-sosuke/"
+ },
+ {
+  "slug": "kakeru",
+  "name": "翔",
+  "en": "Kakeru",
+  "gym": "REVOLT",
+  "url": "https://rise-rc.com/fighter/kakeru/"
+ },
+ {
+  "slug": "kako_rinto",
+  "name": "加古稟虎",
+  "en": "Rinto Kako",
+  "gym": "team Bonds",
+  "url": "https://rise-rc.com/fighter/kako_rinto/"
+ },
+ {
+  "slug": "kako_taisei",
+  "name": "加古大晴",
+  "en": "Taisei Kako",
+  "gym": "team Bonds",
+  "url": "https://rise-rc.com/fighter/kako_taisei/"
+ },
+ {
+  "slug": "kamiya_yura",
+  "name": "神谷優良",
+  "en": "Yura Kamiya",
+  "gym": "KKC",
+  "url": "https://rise-rc.com/fighter/kamiya_yura/"
+ },
+ {
+  "slug": "kanade",
+  "name": "雅奏",
+  "en": "Kanade",
+  "gym": "JACK GYM",
+  "url": "https://rise-rc.com/fighter/kanade/"
+ },
+ {
+  "slug": "kanayama-keito",
+  "name": "金山恵人",
+  "en": "Keito Kanayama",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/kanayama-keito/"
+ },
+ {
+  "slug": "kanazawa-gorichu-mitsuki",
+  "name": "金沢ごりちゅう光輝",
+  "en": "Kanazawa Gorichu Mitsuki",
+  "gym": "AXGYM",
+  "url": "https://rise-rc.com/fighter/kanazawa-gorichu-mitsuki/"
+ },
+ {
+  "slug": "kaneko_akihiro",
+  "name": "金子晃大",
+  "en": "Akihiro Kaneko",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "url": "https://rise-rc.com/fighter/kaneko_akihiro/"
+ },
+ {
+  "slug": "kaneko_azusa",
+  "name": "金子 梓",
+  "en": "Azusa Kaneko",
+  "gym": "新宿レフティージム",
+  "url": "https://rise-rc.com/fighter/kaneko_azusa/"
+ },
+ {
+  "slug": "kaneko_kumiko",
+  "name": "金子久美子",
+  "en": "Kumiko Kaneko",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/kaneko_kumiko/"
+ },
+ {
+  "slug": "kanta",
+  "name": "神太",
+  "en": "Kanta",
+  "gym": "楠誠会館",
+  "url": "https://rise-rc.com/fighter/kanta/"
+ },
+ {
+  "slug": "kasahara_hiroki",
+  "name": "笠原弘希",
+  "en": "Hiroki Kasahara",
+  "gym": "シーザージム",
+  "url": "https://rise-rc.com/fighter/kasahara_hiroki/"
+ },
+ {
+  "slug": "kasahara_naoki",
+  "name": "笠原直希",
+  "en": "Naoki Kasahara",
+  "gym": "シーザージム",
+  "url": "https://rise-rc.com/fighter/kasahara_naoki/"
+ },
+ {
+  "slug": "kasahara_yuki",
+  "name": "笠原友希",
+  "en": "Yuki Kasahara",
+  "gym": "シーザージム",
+  "url": "https://rise-rc.com/fighter/kasahara_yuki/"
+ },
+ {
+  "slug": "kato_nonoka",
+  "name": "加藤乃々夏",
+  "en": "Nonoka Kato",
+  "gym": "全真会館",
+  "url": "https://rise-rc.com/fighter/kato_nonoka/"
+ },
+ {
+  "slug": "kato_yugo",
+  "name": "加藤有吾",
+  "en": "Yugo Kato",
+  "gym": "RIKIX",
+  "url": "https://rise-rc.com/fighter/kato_yugo/"
+ },
+ {
+  "slug": "katsuji",
+  "name": "勝次",
+  "en": "Katsuji",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/katsuji/"
+ },
+ {
+  "slug": "kawakami_kyo",
+  "name": "川上 叶",
+  "en": "Kyo Kawakami",
+  "gym": "龍生塾",
+  "url": "https://rise-rc.com/fighter/kawakami_kyo/"
+ },
+ {
+  "slug": "kawano-rento",
+  "name": "川野蓮斗",
+  "en": "Rento Kawano",
+  "gym": "DIATIGER GYM",
+  "url": "https://rise-rc.com/fighter/kawano-rento/"
+ },
+ {
+  "slug": "kawauchi_mihoshi",
+  "name": "川内参星",
+  "en": "Mihoshi Kawauchi",
+  "gym": "JACK GYM",
+  "url": "https://rise-rc.com/fighter/kawauchi_mihoshi/"
+ },
+ {
+  "slug": "kazama_daiki",
+  "name": "風間大輝",
+  "en": "Daiki Kazama",
+  "gym": "橋本道場",
+  "url": "https://rise-rc.com/fighter/kazama_daiki/"
+ },
+ {
+  "slug": "kazane",
+  "name": "風音",
+  "en": "Kazane",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/kazane/"
+ },
+ {
+  "slug": "kazuhito",
+  "name": "一仁",
+  "en": "Kazuhito",
+  "gym": "真樹ジムAICHI",
+  "url": "https://rise-rc.com/fighter/kazuhito/"
+ },
+ {
+  "slug": "kazuki",
+  "name": "一輝",
+  "en": "Kazuki",
+  "gym": "MtF MUGEN GYM",
+  "url": "https://rise-rc.com/fighter/kazuki/"
+ },
+ {
+  "slug": "kazuma-1",
+  "name": "一馬",
+  "en": "Kazuma",
+  "gym": "MONSTAR GYM",
+  "url": "https://rise-rc.com/fighter/kazuma-1/"
+ },
+ {
+  "slug": "kazushima_nanami",
+  "name": "数島七海",
+  "en": "Nanami Kazushima",
+  "gym": "及川道場",
+  "url": "https://rise-rc.com/fighter/kazushima_nanami/"
+ },
+ {
+  "slug": "kazushima_riku",
+  "name": "数島大陸",
+  "en": "Riku Kazushima",
+  "gym": "及川道場",
+  "url": "https://rise-rc.com/fighter/kazushima_riku/"
+ },
+ {
+  "slug": "kazuto",
+  "name": "和斗",
+  "en": "Kazuto",
+  "gym": "大和ジム",
+  "url": "https://rise-rc.com/fighter/kazuto/"
+ },
+ {
+  "slug": "kazuyayanenkedo",
+  "name": "かずややねんけど",
+  "en": "Kazuyayanenkedo",
+  "gym": "猛者連本部",
+  "url": "https://rise-rc.com/fighter/kazuyayanenkedo/"
+ },
+ {
+  "slug": "ke-suke",
+  "name": "ケースケ",
+  "en": "KE-SUKE",
+  "gym": "HIDE’S KICK",
+  "url": "https://rise-rc.com/fighter/ke-suke/"
+ },
+ {
+  "slug": "kengo-2",
+  "name": "KENGO",
+  "en": "KENGO",
+  "gym": "リアルディール",
+  "url": "https://rise-rc.com/fighter/kengo-2/"
+ },
+ {
+  "slug": "kengo",
+  "name": "拳剛",
+  "en": "Kengo",
+  "gym": "誠剛館",
+  "url": "https://rise-rc.com/fighter/kengo/"
+ },
+ {
+  "slug": "kenshi",
+  "name": "拳志",
+  "en": "Kenshi",
+  "gym": "DFC博多",
+  "url": "https://rise-rc.com/fighter/kenshi/"
+ },
+ {
+  "slug": "kenta",
+  "name": "KENTA",
+  "en": "Kenta",
+  "gym": "HAYATO GYM",
+  "url": "https://rise-rc.com/fighter/kenta/"
+ },
+ {
+  "slug": "khunsuknoy-boomdeksean",
+  "name": "クンスックノーイ・ブームデックシーン",
+  "en": "Khunsuknoy Boomdeksean",
+  "gym": "Boomdeksean",
+  "url": "https://rise-rc.com/fighter/khunsuknoy-boomdeksean/"
+ },
+ {
+  "slug": "kiana",
+  "name": "Kiana",
+  "en": "Kiana",
+  "gym": "Team Michiyo",
+  "url": "https://rise-rc.com/fighter/kiana/"
+ },
+ {
+  "slug": "kikuchi_minori",
+  "name": "菊地美乃里",
+  "en": "Minori Kikuchi",
+  "gym": "GONG-GYM坂戸",
+  "url": "https://rise-rc.com/fighter/kikuchi_minori/"
+ },
+ {
+  "slug": "kikutani_takahiro",
+  "name": "鞠谷貴大",
+  "en": "Takahiro Kikutani",
+  "gym": "魁塾",
+  "url": "https://rise-rc.com/fighter/kikutani_takahiro/"
+ },
+ {
+  "slug": "kimluay-wankhongohm",
+  "name": "キムルアイ・ワンコンオーム",
+  "en": "Kimluay Wankhongohm",
+  "gym": "Wankhongohm Muay Thai Camp",
+  "url": "https://rise-rc.com/fighter/kimluay-wankhongohm/"
+ },
+ {
+  "slug": "kimura_cerberus_sota",
+  "name": "木村“ケルベロス”颯太",
+  "en": "Sota“Cerberus”Kimura",
+  "gym": "心将塾",
+  "url": "https://rise-rc.com/fighter/kimura_cerberus_sota/"
+ },
+ {
+  "slug": "kimura_shoki",
+  "name": "木村翔稀",
+  "en": "Shoki Kimura",
+  "gym": "ANCHOR GYM",
+  "url": "https://rise-rc.com/fighter/kimura_shoki/"
+ },
+ {
+  "slug": "kinchan",
+  "name": "金ちゃん",
+  "en": "Kinchan",
+  "gym": "KICK-BOXING K style",
+  "url": "https://rise-rc.com/fighter/kinchan/"
+ },
+ {
+  "slug": "king-ryuzo",
+  "name": "KING龍蔵",
+  "en": "KING Ryuzo",
+  "gym": "ROYAL KINGS",
+  "url": "https://rise-rc.com/fighter/king-ryuzo/"
+ },
+ {
+  "slug": "king-tsubasa",
+  "name": "KING TSUBASA",
+  "en": "King Tsubasa",
+  "gym": "ROYAL KINGS",
+  "url": "https://rise-rc.com/fighter/king-tsubasa/"
+ },
+ {
+  "slug": "king_rikuto",
+  "name": "KING陸斗",
+  "en": "KING Rikuto",
+  "gym": "ROYAL KINGS",
+  "url": "https://rise-rc.com/fighter/king_rikuto/"
+ },
+ {
+  "slug": "king_takeshi",
+  "name": "KING剛",
+  "en": "King Takeshi",
+  "gym": "ROYAL KINGS",
+  "url": "https://rise-rc.com/fighter/king_takeshi/"
+ },
+ {
+  "slug": "kinoshita-akito",
+  "name": "木下亜輝斗",
+  "en": "Akito Kinoshita",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/kinoshita-akito/"
+ },
+ {
+  "slug": "kinoshita-etsushi",
+  "name": "木下悦志",
+  "en": "Etsushi Kinoshita",
+  "gym": "KICK LAB",
+  "url": "https://rise-rc.com/fighter/kinoshita-etsushi/"
+ },
+ {
+  "slug": "kira",
+  "name": "紀空",
+  "en": "Kira",
+  "gym": "Croire",
+  "url": "https://rise-rc.com/fighter/kira/"
+ },
+ {
+  "slug": "kitahama_seietsu",
+  "name": "北濱精悦",
+  "en": "Seietsu Kitahama",
+  "gym": "Kickboxing Academy Sapporo",
+  "url": "https://rise-rc.com/fighter/kitahama_seietsu/"
+ },
+ {
+  "slug": "kitai_tomohiro",
+  "name": "北井智大",
+  "en": "Tomohiro Kitai",
+  "gym": "チームドラゴン",
+  "url": "https://rise-rc.com/fighter/kitai_tomohiro/"
+ },
+ {
+  "slug": "kitano_katsuki",
+  "name": "北野克樹",
+  "en": "Katsuki Kitano",
+  "gym": "誠至会",
+  "url": "https://rise-rc.com/fighter/kitano_katsuki/"
+ },
+ {
+  "slug": "kitariko",
+  "name": "きたりこ",
+  "en": "Kitariko",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/kitariko/"
+ },
+ {
+  "slug": "ko-ta-bravely",
+  "name": "KO-TA BRAVELY",
+  "en": "KO-TA BRAVELY",
+  "gym": "BRAVELY GYM",
+  "url": "https://rise-rc.com/fighter/ko-ta-bravely/"
+ },
+ {
+  "slug": "ko_yuna",
+  "name": "コ・ユナ",
+  "en": "Ko Yuna",
+  "gym": "BodyKick GYM",
+  "url": "https://rise-rc.com/fighter/ko_yuna/"
+ },
+ {
+  "slug": "kobayashi_arina",
+  "name": "小林愛理奈",
+  "en": "Arina Kobayashi",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/kobayashi_arina/"
+ },
+ {
+  "slug": "kobayashi_honoka",
+  "name": "小林穂夏",
+  "en": "Honoka Kobayashi",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/kobayashi_honoka/"
+ },
+ {
+  "slug": "kobayashi_manazo",
+  "name": "小林愛三",
+  "en": "Manazo Kobayashi",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/kobayashi_manazo/"
+ },
+ {
+  "slug": "koda_juna",
+  "name": "上田樹那",
+  "en": "Juna Koda",
+  "gym": "山口道場",
+  "url": "https://rise-rc.com/fighter/koda_juna/"
+ },
+ {
+  "slug": "kodai",
+  "name": "滉大",
+  "en": "Kodai",
+  "gym": "及川道場",
+  "url": "https://rise-rc.com/fighter/kodai/"
+ },
+ {
+  "slug": "kodama_yushin",
+  "name": "児玉侑慎",
+  "en": "Yushin Kodama",
+  "gym": "正道会館KCIEL",
+  "url": "https://rise-rc.com/fighter/kodama_yushin/"
+ },
+ {
+  "slug": "kohagura_nobuhito",
+  "name": "古波蔵信人",
+  "en": "Nobuhito Kohagura",
+  "gym": "赤雲會",
+  "url": "https://rise-rc.com/fighter/kohagura_nobuhito/"
+ },
+ {
+  "slug": "koide_ryuya",
+  "name": "小出龍哉",
+  "en": "Ryuya Koide",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/koide_ryuya/"
+ },
+ {
+  "slug": "koike_sora",
+  "name": "小池 空",
+  "en": "Sora Koike",
+  "gym": "IDEAL GYM",
+  "url": "https://rise-rc.com/fighter/koike_sora/"
+ },
+ {
+  "slug": "koishi_atsuhiro",
+  "name": "小石淳裕",
+  "en": "Atsuhiro Koishi",
+  "gym": "REVOLT",
+  "url": "https://rise-rc.com/fighter/koishi_atsuhiro/"
+ },
+ {
+  "slug": "koki-2",
+  "name": "光希",
+  "en": "Koki",
+  "gym": "TEAM ONE",
+  "url": "https://rise-rc.com/fighter/koki-2/"
+ },
+ {
+  "slug": "koki-fujino",
+  "name": "藤野 聖",
+  "en": "Koki Fujino",
+  "gym": "EGOISM/TJA",
+  "url": "https://rise-rc.com/fighter/koki-fujino/"
+ },
+ {
+  "slug": "koki",
+  "name": "康輝",
+  "en": "Koki",
+  "gym": "キング・ムエ",
+  "url": "https://rise-rc.com/fighter/koki/"
+ },
+ {
+  "slug": "kokoz",
+  "name": "KOKOZ",
+  "en": "Kokoz",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/kokoz/"
+ },
+ {
+  "slug": "kondo_taisei",
+  "name": "近藤大晟",
+  "en": "Taisei Kondo",
+  "gym": "及川道場",
+  "url": "https://rise-rc.com/fighter/kondo_taisei/"
+ },
+ {
+  "slug": "kong-dexiang",
+  "name": "コン・デシャン",
+  "en": "Dexiang Kong",
+  "gym": "象王格闘倶楽部",
+  "url": "https://rise-rc.com/fighter/kong-dexiang/"
+ },
+ {
+  "slug": "konishi_emiko",
+  "name": "小西江美香",
+  "en": "Emiko Konishi",
+  "gym": "CYCLONE GYM",
+  "url": "https://rise-rc.com/fighter/konishi_emiko/"
+ },
+ {
+  "slug": "konno-kirato",
+  "name": "紺野煌人",
+  "en": "Kirato Konno",
+  "gym": "神龍ワールドジム",
+  "url": "https://rise-rc.com/fighter/konno-kirato/"
+ },
+ {
+  "slug": "kontualai-jm-boxinggym",
+  "name": "コントゥアラーイ・JMボクシングジム",
+  "en": "Kontualai JM boxinggym",
+  "gym": "JM Boxinggym",
+  "url": "https://rise-rc.com/fighter/kontualai-jm-boxinggym/"
+ },
+ {
+  "slug": "koujiro",
+  "name": "KOUJIRO",
+  "en": "Koujiro",
+  "gym": "ジムファイターズ",
+  "url": "https://rise-rc.com/fighter/koujiro/"
+ },
+ {
+  "slug": "koutaro",
+  "name": "KOUTARO",
+  "en": "Koutaro",
+  "gym": "RICE GATE",
+  "url": "https://rise-rc.com/fighter/koutaro/"
+ },
+ {
+  "slug": "kubota_yuya",
+  "name": "久保田有哉",
+  "en": "Yuya Kubota",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/kubota_yuya/"
+ },
+ {
+  "slug": "kuboyama_noboru",
+  "name": "窪山 昂",
+  "en": "Noboru Kuboyama",
+  "gym": "リアルディール",
+  "url": "https://rise-rc.com/fighter/kuboyama_noboru/"
+ },
+ {
+  "slug": "kudo_masahide",
+  "name": "工藤政英",
+  "en": "Masahide Kudo",
+  "gym": "新宿レフティージム",
+  "url": "https://rise-rc.com/fighter/kudo_masahide/"
+ },
+ {
+  "slug": "kugo-toru",
+  "name": "久郷トオル",
+  "en": "Toru Kugo",
+  "gym": "team EDEN",
+  "url": "https://rise-rc.com/fighter/kugo-toru/"
+ },
+ {
+  "slug": "kukikawa_ren",
+  "name": "菊川 蓮",
+  "en": "Ren Kikukawa",
+  "gym": "MMA IKUSU",
+  "url": "https://rise-rc.com/fighter/kukikawa_ren/"
+ },
+ {
+  "slug": "kumandoi-petchyindeeacademy",
+  "name": "クマンドーイ・ペッティンディーアカデミー",
+  "en": "Kumandoi PetchyindeeAcademy",
+  "gym": "ペッティンディーアカデミー",
+  "url": "https://rise-rc.com/fighter/kumandoi-petchyindeeacademy/"
+ },
+ {
+  "slug": "kumisaka-hayate",
+  "name": "組坂 颯",
+  "en": "Hayate Kumisaka",
+  "gym": "KSS健生館",
+  "url": "https://rise-rc.com/fighter/kumisaka-hayate/"
+ },
+ {
+  "slug": "kumura-masashi",
+  "name": "玖村将史",
+  "en": "Masashi Kumura",
+  "gym": "999",
+  "url": "https://rise-rc.com/fighter/kumura-masashi/"
+ },
+ {
+  "slug": "kunieda_yuta",
+  "name": "國枝悠太",
+  "en": "Yuta Kunieda",
+  "gym": "Never mind/9+nine plus lab",
+  "url": "https://rise-rc.com/fighter/kunieda_yuta/"
+ },
+ {
+  "slug": "kunsuk_petchyindeeacademy",
+  "name": "クンスック・ペッティンディーアカデミー",
+  "en": "Kunsuk PetchyindeeAcademy",
+  "gym": "ペッティンディーアカデミー",
+  "url": "https://rise-rc.com/fighter/kunsuk_petchyindeeacademy/"
+ },
+ {
+  "slug": "kuroda_naoya",
+  "name": "黒田直也",
+  "en": "Naoya Kuroda",
+  "gym": "ハーデスワークアウトジム",
+  "url": "https://rise-rc.com/fighter/kuroda_naoya/"
+ },
+ {
+  "slug": "kutsuwa_masamitsu",
+  "name": "久津輪将充",
+  "en": "Masamitsu Kutsuwa",
+  "gym": "RMC/9+ nine plus lab.",
+  "url": "https://rise-rc.com/fighter/kutsuwa_masamitsu/"
+ },
+ {
+  "slug": "kyosuke-2",
+  "name": "狂介",
+  "en": "Kyosuke",
+  "gym": "道化倶楽部",
+  "url": "https://rise-rc.com/fighter/kyosuke-2/"
+ },
+ {
+  "slug": "kyosuke",
+  "name": "京介",
+  "en": "Kyosuke",
+  "gym": "サイガジム",
+  "url": "https://rise-rc.com/fighter/kyosuke/"
+ },
+ {
+  "slug": "kyotani_yuki",
+  "name": "京谷祐希",
+  "en": "Yuki Kyotani",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/kyotani_yuki/"
+ },
+ {
+  "slug": "kyowlow",
+  "name": "狂狼",
+  "en": "Kyowlow",
+  "gym": "TKBA/TMMA",
+  "url": "https://rise-rc.com/fighter/kyowlow/"
+ },
+ {
+  "slug": "lanyakaew-tor-silapon",
+  "name": "ラニャゲーオ・トー・シラポン",
+  "en": "Lanyakaew Tor Silapon",
+  "gym": "JACKY GYM",
+  "url": "https://rise-rc.com/fighter/lanyakaew-tor-silapon/"
+ },
+ {
+  "slug": "lee_sunghyun",
+  "name": "イ・ソンヒョン",
+  "en": "Sunghyun Lee",
+  "gym": "RAON",
+  "url": "https://rise-rc.com/fighter/lee_sunghyun/"
+ },
+ {
+  "slug": "lompetch",
+  "name": "LOMPETCH",
+  "en": "LOMPETCH",
+  "gym": "W-BEAST GYM",
+  "url": "https://rise-rc.com/fighter/lompetch/"
+ },
+ {
+  "slug": "lounis-saing",
+  "name": "ルーニス・セイング",
+  "en": "Lounis Saing",
+  "gym": "Naito Gym Brussel",
+  "url": "https://rise-rc.com/fighter/lounis-saing/"
+ },
+ {
+  "slug": "maeguchi_tyson",
+  "name": "前口太尊",
+  "en": "Tyson Maeguchi",
+  "gym": "飯伏プロレス研究所",
+  "url": "https://rise-rc.com/fighter/maeguchi_tyson/"
+ },
+ {
+  "slug": "makino_knight",
+  "name": "牧野騎士",
+  "en": "knight Makino",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/makino_knight/"
+ },
+ {
+  "slug": "manaka",
+  "name": "MANAKA",
+  "en": "MANAKA",
+  "gym": "GRABAKA",
+  "url": "https://rise-rc.com/fighter/manaka/"
+ },
+ {
+  "slug": "mandokoro_jin",
+  "name": "政所 仁",
+  "en": "Jin Mandokoro",
+  "gym": "魁塾",
+  "url": "https://rise-rc.com/fighter/mandokoro_jin/"
+ },
+ {
+  "slug": "mangkon-boomdeksean",
+  "name": "ムァンコーン・ブームデックシーン",
+  "en": "Mangkon Boomdeksean",
+  "gym": "Boomdeksean",
+  "url": "https://rise-rc.com/fighter/mangkon-boomdeksean/"
+ },
+ {
+  "slug": "marimo",
+  "name": "まりも",
+  "en": "Marimo",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/marimo/"
+ },
+ {
+  "slug": "marina",
+  "name": "毬那",
+  "en": "Marina",
+  "gym": "Y'ZD豊見城GYM",
+  "url": "https://rise-rc.com/fighter/marina/"
+ },
+ {
+  "slug": "maruyama_seji",
+  "name": "丸山誠司",
+  "en": "Seji Maruyama",
+  "gym": "RYUJI GYM",
+  "url": "https://rise-rc.com/fighter/maruyama_seji/"
+ },
+ {
+  "slug": "masa_sato",
+  "name": "マサ佐藤",
+  "en": "Masa Sato",
+  "gym": "WSRフェアテックス",
+  "url": "https://rise-rc.com/fighter/masa_sato/"
+ },
+ {
+  "slug": "masaki_shion",
+  "name": "正木翔夢",
+  "en": "Shion Masaki",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/masaki_shion/"
+ },
+ {
+  "slug": "masashi",
+  "name": "雅志",
+  "en": "Masashi",
+  "gym": "RIKIX",
+  "url": "https://rise-rc.com/fighter/masashi/"
+ },
+ {
+  "slug": "masashi_yamato",
+  "name": "匡志YAMATO",
+  "en": "Masashi Yamato",
+  "gym": "大和ジム",
+  "url": "https://rise-rc.com/fighter/masashi_yamato/"
+ },
+ {
+  "slug": "masaya",
+  "name": "昌也",
+  "en": "Masaya",
+  "gym": "有永道場Team Resolve",
+  "url": "https://rise-rc.com/fighter/masaya/"
+ },
+ {
+  "slug": "masaya_katsuno",
+  "name": "勝野雅也",
+  "en": "Masaya Katsuno",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/masaya_katsuno/"
+ },
+ {
+  "slug": "matsuda_toranosuke",
+  "name": "松田虎之介",
+  "en": "Toranosuke Matsuda",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/matsuda_toranosuke/"
+ },
+ {
+  "slug": "matsui_taiki",
+  "name": "松井大樹",
+  "en": "Taiki Matsui",
+  "gym": "MEIBUKAI",
+  "url": "https://rise-rc.com/fighter/matsui_taiki/"
+ },
+ {
+  "slug": "matsumoto-yuki",
+  "name": "松本悠希",
+  "en": "Yuki Matsumoto",
+  "gym": "K'growth",
+  "url": "https://rise-rc.com/fighter/matsumoto-yuki/"
+ },
+ {
+  "slug": "matsumoto_jolyne",
+  "name": "松本徐倫",
+  "en": "Jolyne Matsumoto",
+  "gym": "ボスジム",
+  "url": "https://rise-rc.com/fighter/matsumoto_jolyne/"
+ },
+ {
+  "slug": "matsumoto_keiji",
+  "name": "松本慶二",
+  "en": "Keiji Matsumoto",
+  "gym": "TEPPEN GYM",
+  "url": "https://rise-rc.com/fighter/matsumoto_keiji/"
+ },
+ {
+  "slug": "matsumoto_tenshi",
+  "name": "松本天志",
+  "en": "Tenshi Matsumoto",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/matsumoto_tenshi/"
+ },
+ {
+  "slug": "matsunaga_ryu",
+  "name": "松永 隆",
+  "en": "Ryu Matsunaga",
+  "gym": "新宿レフティージム",
+  "url": "https://rise-rc.com/fighter/matsunaga_ryu/"
+ },
+ {
+  "slug": "matsuo_yasuhiro",
+  "name": "松尾康弘",
+  "en": "Yasuhiro Matsuo",
+  "gym": "達磨ジム",
+  "url": "https://rise-rc.com/fighter/matsuo_yasuhiro/"
+ },
+ {
+  "slug": "matsuoka-sanji",
+  "name": "松岡賛侍",
+  "en": "Sanji Matsuoka",
+  "gym": "ネイバーズキックボクシングジム",
+  "url": "https://rise-rc.com/fighter/matsuoka-sanji/"
+ },
+ {
+  "slug": "matsuoka_hiroki",
+  "name": "松岡宏宜",
+  "en": "Hiroki Matsuoka",
+  "gym": "H・K・A gym",
+  "url": "https://rise-rc.com/fighter/matsuoka_hiroki/"
+ },
+ {
+  "slug": "matsushita_musashi",
+  "name": "松下武蔵",
+  "en": "Musashi Matsushita",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/matsushita_musashi/"
+ },
+ {
+  "slug": "matsushita_ryunosuke",
+  "name": "松下竜之助",
+  "en": "Ryunosuke Matsushita",
+  "gym": "Team +1",
+  "url": "https://rise-rc.com/fighter/matsushita_ryunosuke/"
+ },
+ {
+  "slug": "matsuyama_kazuhiro",
+  "name": "松山和弘",
+  "en": "Kazuhiro Matsuyama",
+  "gym": "ReBORN経堂",
+  "url": "https://rise-rc.com/fighter/matsuyama_kazuhiro/"
+ },
+ {
+  "slug": "matsuyama_shun",
+  "name": "松山 瞬",
+  "en": "Shun Matsuyama",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/matsuyama_shun/"
+ },
+ {
+  "slug": "max_yoshida",
+  "name": "MAX吉田",
+  "en": "Max Yoshida",
+  "gym": "TEAM岡見",
+  "url": "https://rise-rc.com/fighter/max_yoshida/"
+ },
+ {
+  "slug": "mehrdad_sayyadi",
+  "name": "メールダード・サヤディ",
+  "en": "Mehrdad Sayyadi",
+  "gym": "TEAMOTA/ICF",
+  "url": "https://rise-rc.com/fighter/mehrdad_sayyadi/"
+ },
+ {
+  "slug": "melty_kira",
+  "name": "Melty輝",
+  "en": "Melty Kira",
+  "gym": "team AKATSUKI",
+  "url": "https://rise-rc.com/fighter/melty_kira/"
+ },
+ {
+  "slug": "midorikawa_tsukuru",
+  "name": "緑川 創",
+  "en": "Tsukuru Midorikawa",
+  "gym": "RIKIX",
+  "url": "https://rise-rc.com/fighter/midorikawa_tsukuru/"
+ },
+ {
+  "slug": "miguel-trinidade",
+  "name": "ミゲール・トリンダーデ",
+  "en": "Miguel Trindade",
+  "gym": "Mamba Fight Club",
+  "url": "https://rise-rc.com/fighter/miguel-trinidade/"
+ },
+ {
+  "slug": "mikity",
+  "name": "美斬帝",
+  "en": "Mikity",
+  "gym": "テツジム",
+  "url": "https://rise-rc.com/fighter/mikity/"
+ },
+ {
+  "slug": "minamihara_shiryu",
+  "name": "南原士龍",
+  "en": "Shiryu Minamihara",
+  "gym": "龍士會",
+  "url": "https://rise-rc.com/fighter/minamihara_shiryu/"
+ },
+ {
+  "slug": "misaki",
+  "name": "MISAKI",
+  "en": "MISAKI",
+  "gym": "TEAM FOREST",
+  "url": "https://rise-rc.com/fighter/misaki/"
+ },
+ {
+  "slug": "miyagi_hirokatsu",
+  "name": "宮城寛克",
+  "en": "Hirokatsu Miyagi",
+  "gym": "赤雲會",
+  "url": "https://rise-rc.com/fighter/miyagi_hirokatsu/"
+ },
+ {
+  "slug": "miyagin",
+  "name": "ミヤギン",
+  "en": "Miyagin",
+  "gym": "team Bonds",
+  "url": "https://rise-rc.com/fighter/miyagin/"
+ },
+ {
+  "slug": "miyahara_kanon",
+  "name": "宮原華音",
+  "en": "Kanon Miyahara",
+  "gym": "TARGET SHIBUYA/FIRSTORDER AGENT",
+  "url": "https://rise-rc.com/fighter/miyahara_kanon/"
+ },
+ {
+  "slug": "miyamoto-haruya",
+  "name": "宮本晴弥",
+  "en": "Haruya Miyamoto",
+  "gym": "RIKIX",
+  "url": "https://rise-rc.com/fighter/miyamoto-haruya/"
+ },
+ {
+  "slug": "miyamoto-makoto",
+  "name": "宮元 誠",
+  "en": "Makoto Miyamoto",
+  "gym": "KICK BOXING GYM BLAST",
+  "url": "https://rise-rc.com/fighter/miyamoto-makoto/"
+ },
+ {
+  "slug": "miyamoto_masahiro",
+  "name": "宮本雅大",
+  "en": "Masahiro Miyamoto",
+  "gym": "ハーデスワークアウトジム",
+  "url": "https://rise-rc.com/fighter/miyamoto_masahiro/"
+ },
+ {
+  "slug": "miyamoto_mei",
+  "name": "宮本芽依",
+  "en": "Mei Miyamoto",
+  "gym": "KRAZY BEE/POUND FOR POUND",
+  "url": "https://rise-rc.com/fighter/miyamoto_mei/"
+ },
+ {
+  "slug": "miyazaki_koyuki",
+  "name": "宮﨑小雪",
+  "en": "Koyuki Miyazaki",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/miyazaki_koyuki/"
+ },
+ {
+  "slug": "miyazaki_shuto",
+  "name": "宮崎就斗",
+  "en": "Shuto Miyazaki",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/miyazaki_shuto/"
+ },
+ {
+  "slug": "miyazaki_wakana",
+  "name": "宮﨑若菜",
+  "en": "Wakana Miyazaki",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/miyazaki_wakana/"
+ },
+ {
+  "slug": "mizuno_yumeto",
+  "name": "水野夢斗",
+  "en": "Yumeto Mizuno",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/mizuno_yumeto/"
+ },
+ {
+  "slug": "mizuochi_yosuke",
+  "name": "水落洋祐",
+  "en": "Yosuke Mizuochi",
+  "gym": "エイワスポーツジム",
+  "url": "https://rise-rc.com/fighter/mizuochi_yosuke/"
+ },
+ {
+  "slug": "mohamed-kloua",
+  "name": "モハメッド・カルーア",
+  "en": "Mohamed Kloua",
+  "gym": "DCボクシングジム",
+  "url": "https://rise-rc.com/fighter/mohamed-kloua/"
+ },
+ {
+  "slug": "mohammed-jaraya",
+  "name": "モハメド・ジャラヤ",
+  "en": "Mohammed Jaraya",
+  "gym": "‘T Oude Westen Gym",
+  "url": "https://rise-rc.com/fighter/mohammed-jaraya/"
+ },
+ {
+  "slug": "momi",
+  "name": "紅絹",
+  "en": "Momi",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/momi/"
+ },
+ {
+  "slug": "momoka-cinderella",
+  "name": "桃花シンデレラ",
+  "en": "Momoka Cinderella",
+  "gym": "山口道場",
+  "url": "https://rise-rc.com/fighter/momoka-cinderella/"
+ },
+ {
+  "slug": "momoka",
+  "name": "百花",
+  "en": "Momoka",
+  "gym": "魁塾",
+  "url": "https://rise-rc.com/fighter/momoka/"
+ },
+ {
+  "slug": "momotaro",
+  "name": "MOMOTARO",
+  "en": "MOMOTARO",
+  "gym": "OGUNI-GYM",
+  "url": "https://rise-rc.com/fighter/momotaro/"
+ },
+ {
+  "slug": "mongkutpech-khaolakmuaythai",
+  "name": "モンクットペット・カオラックムエタイ",
+  "en": "Mongkutpech Khaolak muaythai",
+  "gym": "カオラックムエタイ",
+  "url": "https://rise-rc.com/fighter/mongkutpech-khaolakmuaythai/"
+ },
+ {
+  "slug": "monguchi_keisuke",
+  "name": "門口佳佑",
+  "en": "Keisuke Monguchi",
+  "gym": "EX ARES",
+  "url": "https://rise-rc.com/fighter/monguchi_keisuke/"
+ },
+ {
+  "slug": "montana-aerts",
+  "name": "モンタナ・アーツ",
+  "en": "Montana Aerts",
+  "gym": "Team Aerts",
+  "url": "https://rise-rc.com/fighter/montana-aerts/"
+ },
+ {
+  "slug": "mori-kenta",
+  "name": "森 謙太",
+  "en": "Kenta Mori",
+  "gym": "秀心塾",
+  "url": "https://rise-rc.com/fighter/mori-kenta/"
+ },
+ {
+  "slug": "mori_kazuma",
+  "name": "森 香津眞",
+  "en": "Kazuma Mori",
+  "gym": "チームドラゴン",
+  "url": "https://rise-rc.com/fighter/mori_kazuma/"
+ },
+ {
+  "slug": "mori_kotaro",
+  "name": "森孝太郎",
+  "en": "Kotaro Mori",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/mori_kotaro/"
+ },
+ {
+  "slug": "mori_takumi",
+  "name": "巧光",
+  "en": "Takumi",
+  "gym": "REVOLT",
+  "url": "https://rise-rc.com/fighter/mori_takumi/"
+ },
+ {
+  "slug": "morimoto_genki",
+  "name": "森本現暉",
+  "en": "Genki Morimoto",
+  "gym": "猛者連精華支部華一門",
+  "url": "https://rise-rc.com/fighter/morimoto_genki/"
+ },
+ {
+  "slug": "morimoto_ichiyo",
+  "name": "森本一陽",
+  "en": "Ichiyo Morimoto",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/morimoto_ichiyo/"
+ },
+ {
+  "slug": "morimoto_kyoken_yoshihisa",
+  "name": "森本“狂犬”義久",
+  "en": "Yoshihisa Kyoken Morimoto",
+  "gym": "BRING IT ONパラエストラAKK",
+  "url": "https://rise-rc.com/fighter/morimoto_kyoken_yoshihisa/"
+ },
+ {
+  "slug": "morishita_yuki",
+  "name": "森下祐樹",
+  "en": "Yuki Morishita",
+  "gym": "SUNNY GYM",
+  "url": "https://rise-rc.com/fighter/morishita_yuki/"
+ },
+ {
+  "slug": "morita_takafumi",
+  "name": "森田崇文",
+  "en": "Takafumi Morita",
+  "gym": "team NEWALONE",
+  "url": "https://rise-rc.com/fighter/morita_takafumi/"
+ },
+ {
+  "slug": "moromura-haruto",
+  "name": "森村晴豊",
+  "en": "Haruto Moromura",
+  "gym": "UPLIFT",
+  "url": "https://rise-rc.com/fighter/moromura-haruto/"
+ },
+ {
+  "slug": "motoki",
+  "name": "元氣",
+  "en": "Motoki",
+  "gym": "楠誠会館",
+  "url": "https://rise-rc.com/fighter/motoki/"
+ },
+ {
+  "slug": "motono_yuya",
+  "name": "本野有哉",
+  "en": "Yuya Motono",
+  "gym": "照道会",
+  "url": "https://rise-rc.com/fighter/motono_yuya/"
+ },
+ {
+  "slug": "motoyama_kanta",
+  "name": "基山幹太",
+  "en": "Kanta Motoyama",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/motoyama_kanta/"
+ },
+ {
+  "slug": "motoyasu",
+  "name": "基康",
+  "en": "Motoyasu",
+  "gym": "TAKEDA GYM",
+  "url": "https://rise-rc.com/fighter/motoyasu/"
+ },
+ {
+  "slug": "muhammed-mikail-ghazali",
+  "name": "モハメド・ミカイリ・ガザリ",
+  "en": "Muhammed Mikail Ghazali",
+  "gym": "Rentap Muay Thai",
+  "url": "https://rise-rc.com/fighter/muhammed-mikail-ghazali/"
+ },
+ {
+  "slug": "murakami_yuka",
+  "name": "村上悠佳",
+  "en": "Yuka Murakami",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/murakami_yuka/"
+ },
+ {
+  "slug": "nadeshiko",
+  "name": "撫子",
+  "en": "Nadeshiko",
+  "gym": "Grabs Kickboxing Studio",
+  "url": "https://rise-rc.com/fighter/nadeshiko/"
+ },
+ {
+  "slug": "nagamatsu_shinnosuke",
+  "name": "永松進之介",
+  "en": "Shinnosuke Nagamatsu",
+  "gym": "FJ KICK ASS",
+  "url": "https://rise-rc.com/fighter/nagamatsu_shinnosuke/"
+ },
+ {
+  "slug": "nagamine_reito",
+  "name": "永峯麗人",
+  "en": "Reito Nagamine",
+  "gym": "インタージム谷山",
+  "url": "https://rise-rc.com/fighter/nagamine_reito/"
+ },
+ {
+  "slug": "nagao_kazuhisa",
+  "name": "永尾和久",
+  "en": "Kazuhisa Nagao",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/nagao_kazuhisa/"
+ },
+ {
+  "slug": "nagao_otoha",
+  "name": "永尾音波",
+  "en": "Otoha Nagao",
+  "gym": "AACC",
+  "url": "https://rise-rc.com/fighter/nagao_otoha/"
+ },
+ {
+  "slug": "naito_keito",
+  "name": "内藤啓人",
+  "en": "Keito Naito",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/naito_keito/"
+ },
+ {
+  "slug": "naito_ryota",
+  "name": "内藤凌太",
+  "en": "Ryota Naito",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/naito_ryota/"
+ },
+ {
+  "slug": "nakahara_yuki",
+  "name": "中原裕貴",
+  "en": "Yuki Nakahara",
+  "gym": "UPLIFT",
+  "url": "https://rise-rc.com/fighter/nakahara_yuki/"
+ },
+ {
+  "slug": "nakajima_masashi",
+  "name": "中島将志",
+  "en": "Masashi Nakajima",
+  "gym": "新潟誠道館",
+  "url": "https://rise-rc.com/fighter/nakajima_masashi/"
+ },
+ {
+  "slug": "nakamoto_yusei",
+  "name": "中元優成",
+  "en": "Yusei Nakamoto",
+  "gym": "team Bonds",
+  "url": "https://rise-rc.com/fighter/nakamoto_yusei/"
+ },
+ {
+  "slug": "nakamura_kan",
+  "name": "中村 寛",
+  "en": "Kan Nakamura",
+  "gym": "BK GYM",
+  "url": "https://rise-rc.com/fighter/nakamura_kan/"
+ },
+ {
+  "slug": "nakamura_ryu",
+  "name": "中村 龍",
+  "en": "Ryu Nakamura",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/nakamura_ryu/"
+ },
+ {
+  "slug": "nakamura_yushi",
+  "name": "中村優志",
+  "en": "Yushi Nakamura",
+  "gym": "STRIDE GYM",
+  "url": "https://rise-rc.com/fighter/nakamura_yushi/"
+ },
+ {
+  "slug": "nakano_ryota",
+  "name": "中野椋太",
+  "en": "Ryota Nakano",
+  "gym": "誠至会",
+  "url": "https://rise-rc.com/fighter/nakano_ryota/"
+ },
+ {
+  "slug": "nakashima-akito",
+  "name": "中嶋愛樹斗",
+  "en": "Akito Nakashima",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/nakashima-akito/"
+ },
+ {
+  "slug": "nakata-fumito",
+  "name": "中田史斗",
+  "en": "Fumito Nakata",
+  "gym": "究道会館",
+  "url": "https://rise-rc.com/fighter/nakata-fumito/"
+ },
+ {
+  "slug": "nakazawa-fuki",
+  "name": "中澤風希",
+  "en": "Fuki Nakazawa",
+  "gym": "戦ジム",
+  "url": "https://rise-rc.com/fighter/nakazawa-fuki/"
+ },
+ {
+  "slug": "namwan-sor-kongkrapan",
+  "name": "ナムワーン・ソーコンクラパン",
+  "en": "Namwan Sor. Kongkrapan",
+  "gym": "ソーコンクラパン",
+  "url": "https://rise-rc.com/fighter/namwan-sor-kongkrapan/"
+ },
+ {
+  "slug": "nanbara_kenta",
+  "name": "南原健太",
+  "en": "Kenta Nanbara",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/nanbara_kenta/"
+ },
+ {
+  "slug": "naofumi_yamashina",
+  "name": "山科直史",
+  "en": "Naofumi Yamashina",
+  "gym": "極真会館",
+  "url": "https://rise-rc.com/fighter/naofumi_yamashina/"
+ },
+ {
+  "slug": "naoki-2",
+  "name": "直希",
+  "en": "Naoki",
+  "gym": "REVOLT",
+  "url": "https://rise-rc.com/fighter/naoki-2/"
+ },
+ {
+  "slug": "naoki",
+  "name": "直樹",
+  "en": "Naoki",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/naoki/"
+ },
+ {
+  "slug": "nasukawa_ryujin",
+  "name": "那須川龍心",
+  "en": "Ryujin Nasukawa",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/nasukawa_ryujin/"
+ },
+ {
+  "slug": "nasukawa_tenshin",
+  "name": "那須川天心",
+  "en": "Tenshin Nasukawa",
+  "gym": "TARGET/Cygames",
+  "url": "https://rise-rc.com/fighter/nasukawa_tenshin/"
+ },
+ {
+  "slug": "natsuki",
+  "name": "NATSUKI",
+  "en": "Natsuki",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/natsuki/"
+ },
+ {
+  "slug": "natsume_ryuga",
+  "name": "夏目竜雅",
+  "en": "Ryuga Natsume",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/natsume_ryuga/"
+ },
+ {
+  "slug": "negimajin",
+  "name": "ねぎ魔神",
+  "en": "Negi Majin",
+  "gym": "ネイバーズキックボクシングジム",
+  "url": "https://rise-rc.com/fighter/negimajin/"
+ },
+ {
+  "slug": "nekota",
+  "name": "ねこ太",
+  "en": "Nekota",
+  "gym": "とらの子レスリングクラブ",
+  "url": "https://rise-rc.com/fighter/nekota/"
+ },
+ {
+  "slug": "nemoto-hyuga",
+  "name": "根本日向",
+  "en": "Hyuga Nemoto",
+  "gym": "team LIGHT",
+  "url": "https://rise-rc.com/fighter/nemoto-hyuga/"
+ },
+ {
+  "slug": "nicolas-rivas",
+  "name": "“Weedy”ニコラス・リヴァース",
+  "en": "“Weedy”Nicolas Rivas",
+  "gym": "Fight Center one",
+  "url": "https://rise-rc.com/fighter/nicolas-rivas/"
+ },
+ {
+  "slug": "niimi_takahito",
+  "name": "新美貴士",
+  "en": "Takahito Niimi",
+  "gym": "名古屋JKファクトリー",
+  "url": "https://rise-rc.com/fighter/niimi_takahito/"
+ },
+ {
+  "slug": "nio_haruto",
+  "name": "鳰 陽斗",
+  "en": "Haruto Nio",
+  "gym": "KSR GYM",
+  "url": "https://rise-rc.com/fighter/nio_haruto/"
+ },
+ {
+  "slug": "nio_tsubasa",
+  "name": "鳰 翼",
+  "en": "Tsubasa Nio",
+  "gym": "KSR GYM",
+  "url": "https://rise-rc.com/fighter/nio_tsubasa/"
+ },
+ {
+  "slug": "nishida_sho",
+  "name": "西田祥",
+  "en": "Sho Nishida",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/nishida_sho/"
+ },
+ {
+  "slug": "nishihara_ayaka",
+  "name": "西原朱花",
+  "en": "Ayaka Nishihara",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/nishihara_ayaka/"
+ },
+ {
+  "slug": "nishijima-kyohei",
+  "name": "西島恭平",
+  "en": "Kyohei Nishijima",
+  "gym": "ELEVEN",
+  "url": "https://rise-rc.com/fighter/nishijima-kyohei/"
+ },
+ {
+  "slug": "nishikata-daichi",
+  "name": "西方大智",
+  "en": "Daichi Nishikata",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/nishikata-daichi/"
+ },
+ {
+  "slug": "nishioka_renta",
+  "name": "西岡蓮太",
+  "en": "Renta Nishioka",
+  "gym": "龍生塾",
+  "url": "https://rise-rc.com/fighter/nishioka_renta/"
+ },
+ {
+  "slug": "nishitani_taisei",
+  "name": "西谷大成",
+  "en": "Taisei Nishitani",
+  "gym": "JAPAN TOP TEAM",
+  "url": "https://rise-rc.com/fighter/nishitani_taisei/"
+ },
+ {
+  "slug": "no-ri",
+  "name": "No-Ri-",
+  "en": "No-Ri-",
+  "gym": "赤雲會  中村道場",
+  "url": "https://rise-rc.com/fighter/no-ri/"
+ },
+ {
+  "slug": "noda_aoi",
+  "name": "野田蒼",
+  "en": "Aoi Noda",
+  "gym": "月心会チーム侍",
+  "url": "https://rise-rc.com/fighter/noda_aoi/"
+ },
+ {
+  "slug": "noguchi_hiroshi",
+  "name": "野口紘志",
+  "en": "Hiroshi Noguchi",
+  "gym": "橋本プレボ",
+  "url": "https://rise-rc.com/fighter/noguchi_hiroshi/"
+ },
+ {
+  "slug": "nojiri_yasuyuki",
+  "name": "野尻定由",
+  "en": "Yasuyuki Nojiri",
+  "gym": "マスタージャパン福岡",
+  "url": "https://rise-rc.com/fighter/nojiri_yasuyuki/"
+ },
+ {
+  "slug": "nomura_taichi",
+  "name": "野村太一",
+  "en": "Taichi Nomura",
+  "gym": "K’Bスポーツジム",
+  "url": "https://rise-rc.com/fighter/nomura_taichi/"
+ },
+ {
+  "slug": "nomura_yuto",
+  "name": "野村勇人",
+  "en": "Yuto Nomura",
+  "gym": "GONG-GYM坂戸",
+  "url": "https://rise-rc.com/fighter/nomura_yuto/"
+ },
+ {
+  "slug": "norasin_specialegym",
+  "name": "ノラシン・スペチアーレジム",
+  "en": "Norasin・Speciale gym",
+  "gym": "Speciale gym",
+  "url": "https://rise-rc.com/fighter/norasin_specialegym/"
+ },
+ {
+  "slug": "novo",
+  "name": "Novo",
+  "en": "Novo",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/novo/"
+ },
+ {
+  "slug": "nuenglanlek_jitmuangnon",
+  "name": "ヌンラーンレック・ジットムアンノン",
+  "en": "Nunglanlek Jitmungnon",
+  "gym": "ジットムアンノンジム",
+  "url": "https://rise-rc.com/fighter/nuenglanlek_jitmuangnon/"
+ },
+ {
+  "slug": "ogawa_sami",
+  "name": "小川紗南",
+  "en": "Sami Ogawa",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/ogawa_sami/"
+ },
+ {
+  "slug": "ogawa_sho",
+  "name": "小川翔",
+  "en": "Sho Ogawa",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/ogawa_sho/"
+ },
+ {
+  "slug": "ogawa_yuta",
+  "name": "小川悠太",
+  "en": "Yuta Ogawa",
+  "gym": "誠真会館 所沢支部",
+  "url": "https://rise-rc.com/fighter/ogawa_yuta/"
+ },
+ {
+  "slug": "oishi_kensaku",
+  "name": "大石健作",
+  "en": "Kensaku Oishi",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/oishi_kensaku/"
+ },
+ {
+  "slug": "okazaki_koji",
+  "name": "岡﨑晃志",
+  "en": "Koji Okazaki",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/okazaki_koji/"
+ },
+ {
+  "slug": "oki",
+  "name": "王希",
+  "en": "Oki",
+  "gym": "EX ARES",
+  "url": "https://rise-rc.com/fighter/oki/"
+ },
+ {
+  "slug": "okka-san",
+  "name": "オッカーサン",
+  "en": "Okka-san",
+  "gym": "インタージム",
+  "url": "https://rise-rc.com/fighter/okka-san/"
+ },
+ {
+  "slug": "okudaira_shota",
+  "name": "奥平将太",
+  "en": "Shota Okudaira",
+  "gym": "KSR GYM",
+  "url": "https://rise-rc.com/fighter/okudaira_shota/"
+ },
+ {
+  "slug": "okumura_runa",
+  "name": "奥村琉奈",
+  "en": "Runa Okumura",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/okumura_runa/"
+ },
+ {
+  "slug": "okumura_shoma",
+  "name": "奥村将真",
+  "en": "Shoma Okumura",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/okumura_shoma/"
+ },
+ {
+  "slug": "okura_moe",
+  "name": "大倉 萌",
+  "en": "Moe Okura",
+  "gym": "大道塾 吉祥寺支部",
+  "url": "https://rise-rc.com/fighter/okura_moe/"
+ },
+ {
+  "slug": "okuwaki_kazuya",
+  "name": "奥脇一哉",
+  "en": "Kazuya Okuwaki",
+  "gym": "エイワスポーツジム",
+  "url": "https://rise-rc.com/fighter/okuwaki_kazuya/"
+ },
+ {
+  "slug": "okuyama_masahito",
+  "name": "奥山雅仁",
+  "en": "Masahito Okuyama",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/okuyama_masahito/"
+ },
+ {
+  "slug": "omori_ryunosuke",
+  "name": "大森隆之介",
+  "en": "Ryunosuke Omori",
+  "gym": "EX ARES",
+  "url": "https://rise-rc.com/fighter/omori_ryunosuke/"
+ },
+ {
+  "slug": "ono-kodai",
+  "name": "小野琥大",
+  "en": "Kodai Ono",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/ono-kodai/"
+ },
+ {
+  "slug": "ono_masaaki",
+  "name": "小野幹晃",
+  "en": "Masaaki Ono",
+  "gym": "IGGY HANDS GYM",
+  "url": "https://rise-rc.com/fighter/ono_masaaki/"
+ },
+ {
+  "slug": "ono_shohei",
+  "name": "小野祥平",
+  "en": "Shohei Ono",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/ono_shohei/"
+ },
+ {
+  "slug": "osafune_lion",
+  "name": "長舩☆ライオン",
+  "en": "Lion Osafune",
+  "gym": "心将塾",
+  "url": "https://rise-rc.com/fighter/osafune_lion/"
+ },
+ {
+  "slug": "osaki_kazuki",
+  "name": "大﨑一貴",
+  "en": "Kazuki Osaki",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/osaki_kazuki/"
+ },
+ {
+  "slug": "osaki_koki",
+  "name": "大﨑孔稀",
+  "en": "Koki Osaki",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/osaki_koki/"
+ },
+ {
+  "slug": "oshima_hiroya",
+  "name": "大島広也",
+  "en": "Hiroya Oshima",
+  "gym": "TANG TANG FIGHT CLUB",
+  "url": "https://rise-rc.com/fighter/oshima_hiroya/"
+ },
+ {
+  "slug": "otada_naoya",
+  "name": "小只直弥",
+  "en": "Naoya Otada",
+  "gym": "TBF/ 9+ nine plus lab.",
+  "url": "https://rise-rc.com/fighter/otada_naoya/"
+ },
+ {
+  "slug": "oyacchi",
+  "name": "おやっち",
+  "en": "Oyacchi",
+  "gym": "BRAVE FIGHT CLUB",
+  "url": "https://rise-rc.com/fighter/oyacchi/"
+ },
+ {
+  "slug": "ozaki_yoshinobu",
+  "name": "小﨑貴誠",
+  "en": "Yoshinobu Ozaki",
+  "gym": "GREED GYM",
+  "url": "https://rise-rc.com/fighter/ozaki_yoshinobu/"
+ },
+ {
+  "slug": "pancak-sor-kongkrapan",
+  "name": "パンケック・ソー・コンクラパン",
+  "en": "Pancak Sor.kongkrapan",
+  "gym": "Sor.kongkrapan",
+  "url": "https://rise-rc.com/fighter/pancak-sor-kongkrapan/"
+ },
+ {
+  "slug": "panuwat_tgt",
+  "name": "パヌワット・TGT",
+  "en": "Panuwat TGT",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/panuwat_tgt/"
+ },
+ {
+  "slug": "park-sungjoo",
+  "name": "パク・ソンジュ",
+  "en": "Park Sungjoo",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/park-sungjoo/"
+ },
+ {
+  "slug": "pedro_gomes",
+  "name": "ペドロ・ゴメス",
+  "en": "Pedro Gomes",
+  "gym": "Santa Fe BRTHAITeam",
+  "url": "https://rise-rc.com/fighter/pedro_gomes/"
+ },
+ {
+  "slug": "peemai-por-kobkuea",
+  "name": "ピーマイ・ポー・ゴップクー",
+  "en": "Peemai Por. Kobkuea",
+  "gym": "Por.Kobkuea",
+  "url": "https://rise-rc.com/fighter/peemai-por-kobkuea/"
+ },
+ {
+  "slug": "petchpanomrung_kiatmookao",
+  "name": "ペットパノムルン・キャットムーカオ",
+  "en": "Petchpanomrung Kiatmookao",
+  "gym": "Kiatmoo9",
+  "url": "https://rise-rc.com/fighter/petchpanomrung_kiatmookao/"
+ },
+ {
+  "slug": "petchsaenkom_sorsommai",
+  "name": "ペットサンコム・ソー・ソンマイ",
+  "en": "Petchsaenkom Sor.sommai",
+  "gym": "ソー・ソンマイ",
+  "url": "https://rise-rc.com/fighter/petchsaenkom_sorsommai/"
+ },
+ {
+  "slug": "petchsila-wor-auracha",
+  "name": "ペッシラー・ウォー・ウラチャー",
+  "en": "Petchsila Wor.Auracha",
+  "gym": "Wor.Auracha",
+  "url": "https://rise-rc.com/fighter/petchsila-wor-auracha/"
+ },
+ {
+  "slug": "petlookaon-sarigym",
+  "name": "ペットルークオン・サーリージム",
+  "en": "Petlookaon  sarigym",
+  "gym": "sarigym",
+  "url": "https://rise-rc.com/fighter/petlookaon-sarigym/"
+ },
+ {
+  "slug": "petmai_mc_superlekmuaythai",
+  "name": "ペットマイ・MC.スーパーレックムエタイ",
+  "en": "Petmai MC.Superlekmuaythai",
+  "gym": "スーパーレックムエタイ",
+  "url": "https://rise-rc.com/fighter/petmai_mc_superlekmuaythai/"
+ },
+ {
+  "slug": "petru-morari",
+  "name": "ペトル・モラリ",
+  "en": "Petru Morari",
+  "gym": "Kickboxing fearless",
+  "url": "https://rise-rc.com/fighter/petru-morari/"
+ },
+ {
+  "slug": "phakchi_okuda",
+  "name": "パクチー奥田",
+  "en": "Phakchi Okuda",
+  "gym": "TEAM BEYOND",
+  "url": "https://rise-rc.com/fighter/phakchi_okuda/"
+ },
+ {
+  "slug": "phayahong-banchamek",
+  "name": "パヤーフォン・バンチャメーク",
+  "en": "Phayahong Banchamek",
+  "gym": "Banchamek Gym",
+  "url": "https://rise-rc.com/fighter/phayahong-banchamek/"
+ },
+ {
+  "slug": "phet-a-cheer",
+  "name": "ペットエジア・バンセーンファイトクラブ",
+  "en": "Phet A-Cheer Bangsaen Fight Club",
+  "gym": "Bangsaen Fight Club",
+  "url": "https://rise-rc.com/fighter/phet-a-cheer/"
+ },
+ {
+  "slug": "prandam-bravely",
+  "name": "PRANDAM BRAVELY",
+  "en": "PRANDAM BRAVELY",
+  "gym": "BRAVELY GYM",
+  "url": "https://rise-rc.com/fighter/prandam-bravely/"
+ },
+ {
+  "slug": "raiki",
+  "name": "羅粋",
+  "en": "Raiki",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/raiki/"
+ },
+ {
+  "slug": "raize",
+  "name": "羅司",
+  "en": "Raize",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/raize/"
+ },
+ {
+  "slug": "ranma",
+  "name": "嵐舞",
+  "en": "Ranma",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/ranma/"
+ },
+ {
+  "slug": "rannosuke",
+  "name": "藍之輔",
+  "en": "Rannosuke",
+  "gym": "STRIFE",
+  "url": "https://rise-rc.com/fighter/rannosuke/"
+ },
+ {
+  "slug": "rantaro",
+  "name": "乱太郎",
+  "en": "Rantaro",
+  "gym": "猛者連愛媛支部OGRE",
+  "url": "https://rise-rc.com/fighter/rantaro/"
+ },
+ {
+  "slug": "rasta",
+  "name": "良星",
+  "en": "Rasta",
+  "gym": "KSR GYM",
+  "url": "https://rise-rc.com/fighter/rasta/"
+ },
+ {
+  "slug": "reiji",
+  "name": "礼司",
+  "en": "Reiji",
+  "gym": "楠誠会館",
+  "url": "https://rise-rc.com/fighter/reiji/"
+ },
+ {
+  "slug": "reiya",
+  "name": "麗也",
+  "en": "Reiya",
+  "gym": "team AKATSUKI",
+  "url": "https://rise-rc.com/fighter/reiya/"
+ },
+ {
+  "slug": "ricardo_bravo",
+  "name": "リカルド・ブラボ",
+  "en": "Ricardo Bravo",
+  "gym": "WSRフェアテックス",
+  "url": "https://rise-rc.com/fighter/ricardo_bravo/"
+ },
+ {
+  "slug": "rida_bellahcen",
+  "name": "レダ・ベラーセン",
+  "en": "Rida Bellahcen",
+  "gym": "fight team Ringer",
+  "url": "https://rise-rc.com/fighter/rida_bellahcen/"
+ },
+ {
+  "slug": "rikiya",
+  "name": "力哉",
+  "en": "Rikiya",
+  "gym": "BK GYM",
+  "url": "https://rise-rc.com/fighter/rikiya/"
+ },
+ {
+  "slug": "rikuto",
+  "name": "陸刃",
+  "en": "Rikuto",
+  "gym": "楠誠会館",
+  "url": "https://rise-rc.com/fighter/rikuto/"
+ },
+ {
+  "slug": "rina",
+  "name": "RINA",
+  "en": "RINA",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/rina/"
+ },
+ {
+  "slug": "ruben-seoane",
+  "name": "ルベン・セオアネ",
+  "en": "Ruben Seoane",
+  "gym": "Muay Sapein",
+  "url": "https://rise-rc.com/fighter/ruben-seoane/"
+ },
+ {
+  "slug": "ruka-2",
+  "name": "瑠華",
+  "en": "Ruka",
+  "gym": "team未来",
+  "url": "https://rise-rc.com/fighter/ruka-2/"
+ },
+ {
+  "slug": "ruka-3",
+  "name": "琉樺",
+  "en": "Ruka",
+  "gym": "Tiger Muay Thai/LA GYM",
+  "url": "https://rise-rc.com/fighter/ruka-3/"
+ },
+ {
+  "slug": "ruka",
+  "name": "瑠夏",
+  "en": "Ruka",
+  "gym": "L-REX",
+  "url": "https://rise-rc.com/fighter/ruka/"
+ },
+ {
+  "slug": "ryo",
+  "name": "涼",
+  "en": "Ryo",
+  "gym": "ハーデスワークアウトジム",
+  "url": "https://rise-rc.com/fighter/ryo/"
+ },
+ {
+  "slug": "ryogo",
+  "name": "怜虎",
+  "en": "Ryogo",
+  "gym": "PITBULL/KSR GYM",
+  "url": "https://rise-rc.com/fighter/ryogo/"
+ },
+ {
+  "slug": "ryotaro-2",
+  "name": "陵太郎",
+  "en": "Ryotaro",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/ryotaro-2/"
+ },
+ {
+  "slug": "ryotaro",
+  "name": "RYOTARO",
+  "en": "Ryotaro",
+  "gym": "龍生塾",
+  "url": "https://rise-rc.com/fighter/ryotaro/"
+ },
+ {
+  "slug": "ryoto",
+  "name": "玲翔",
+  "en": "Ryoto",
+  "gym": "Vigor Kickboxing Gym",
+  "url": "https://rise-rc.com/fighter/ryoto/"
+ },
+ {
+  "slug": "ryuichi",
+  "name": "龍威地",
+  "en": "Ryuichi",
+  "gym": "ARENA",
+  "url": "https://rise-rc.com/fighter/ryuichi/"
+ },
+ {
+  "slug": "ryuka",
+  "name": "龍華",
+  "en": "Ryuka",
+  "gym": "ザウルスプロモーション",
+  "url": "https://rise-rc.com/fighter/ryuka/"
+ },
+ {
+  "slug": "ryuki",
+  "name": "Ryuki",
+  "en": "Ryuki",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/ryuki/"
+ },
+ {
+  "slug": "ryusei",
+  "name": "龍聖",
+  "en": "Ryusei",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/ryusei/"
+ },
+ {
+  "slug": "ryutaro",
+  "name": "龍太郎",
+  "en": "Ryutaro",
+  "gym": "VALIENTE",
+  "url": "https://rise-rc.com/fighter/ryutaro/"
+ },
+ {
+  "slug": "ryuto-2",
+  "name": "龍斗",
+  "en": "Ryuto",
+  "gym": "RAUSU GYM",
+  "url": "https://rise-rc.com/fighter/ryuto-2/"
+ },
+ {
+  "slug": "ryuto",
+  "name": "龍翔",
+  "en": "Ryuto",
+  "gym": "OU-BU GYM",
+  "url": "https://rise-rc.com/fighter/ryuto/"
+ },
+ {
+  "slug": "saaya",
+  "name": "紗彩",
+  "en": "Saaya",
+  "gym": "ドージョー☆シャカリキ",
+  "url": "https://rise-rc.com/fighter/saaya/"
+ },
+ {
+  "slug": "sagara_kazushi",
+  "name": "相良一志",
+  "en": "Kazushi Sagara",
+  "gym": "究道会館",
+  "url": "https://rise-rc.com/fighter/sagara_kazushi/"
+ },
+ {
+  "slug": "saigo",
+  "name": "SAIGO",
+  "en": "SAIGO",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/saigo/"
+ },
+ {
+  "slug": "saito_koya",
+  "name": "齋藤紘也",
+  "en": "Koya Saito",
+  "gym": "WSRフェアテックス三ノ輪",
+  "url": "https://rise-rc.com/fighter/saito_koya/"
+ },
+ {
+  "slug": "sakabe_aira",
+  "name": "阪部愛来",
+  "en": "Aira Sakabe",
+  "gym": "DOBUITA",
+  "url": "https://rise-rc.com/fighter/sakabe_aira/"
+ },
+ {
+  "slug": "sakai_yuzuki",
+  "name": "酒井柚樹",
+  "en": "Yuzuki Sakai",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/sakai_yuzuki/"
+ },
+ {
+  "slug": "sakajiri_momone",
+  "name": "坂尻桃音",
+  "en": "Momone Sakajiri",
+  "gym": "Crazy Gorilla Gym",
+  "url": "https://rise-rc.com/fighter/sakajiri_momone/"
+ },
+ {
+  "slug": "sakamoto_naoki",
+  "name": "坂本直樹",
+  "en": "Naoki Sakamoto",
+  "gym": "道場373",
+  "url": "https://rise-rc.com/fighter/sakamoto_naoki/"
+ },
+ {
+  "slug": "sakamoto_yuki",
+  "name": "坂本優起",
+  "en": "Yuki Sakamoto",
+  "gym": "シーザージム",
+  "url": "https://rise-rc.com/fighter/sakamoto_yuki/"
+ },
+ {
+  "slug": "sakata_miyu",
+  "name": "坂田実優",
+  "en": "Miyuu Sakata",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/sakata_miyu/"
+ },
+ {
+  "slug": "sakayori_syuri",
+  "name": "酒寄珠璃",
+  "en": "Shuri Sakayori",
+  "gym": "XAP",
+  "url": "https://rise-rc.com/fighter/sakayori_syuri/"
+ },
+ {
+  "slug": "sakura_yuga",
+  "name": "咲良優牙",
+  "en": "Yuga Sakura",
+  "gym": "PHOENIX",
+  "url": "https://rise-rc.com/fighter/sakura_yuga/"
+ },
+ {
+  "slug": "sakurai_shin",
+  "name": "櫻井 芯",
+  "en": "Shin Sakurai",
+  "gym": "team FIST",
+  "url": "https://rise-rc.com/fighter/sakurai_shin/"
+ },
+ {
+  "slug": "samo_petje",
+  "name": "サモ・ペティ",
+  "en": "Samo Petje",
+  "gym": "Nak muay team",
+  "url": "https://rise-rc.com/fighter/samo_petje/"
+ },
+ {
+  "slug": "samvel_babayan",
+  "name": "サンベル・ババヤン",
+  "en": "Samvel Babayan",
+  "gym": "Team Babayan",
+  "url": "https://rise-rc.com/fighter/samvel_babayan/"
+ },
+ {
+  "slug": "sanchai_teppengym",
+  "name": "サンチャイ・TEPPENGYM",
+  "en": "Sanchai Teppengym",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/sanchai_teppengym/"
+ },
+ {
+  "slug": "sanekata_takumi",
+  "name": "實方拓海",
+  "en": "Takumi Sanekata",
+  "gym": "TSK japan",
+  "url": "https://rise-rc.com/fighter/sanekata_takumi/"
+ },
+ {
+  "slug": "sasaki_daizo",
+  "name": "佐々木大蔵",
+  "en": "Daizo Sasaki",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "url": "https://rise-rc.com/fighter/sasaki_daizo/"
+ },
+ {
+  "slug": "sasaki_kose",
+  "name": "佐々木昊生",
+  "en": "Kose Sasaki",
+  "gym": "B.F.A-SEED",
+  "url": "https://rise-rc.com/fighter/sasaki_kose/"
+ },
+ {
+  "slug": "sasha-tadayoni",
+  "name": "サーシャ・タダヨニ",
+  "en": "Sasha Tadayoni",
+  "gym": "TEAM OTA",
+  "url": "https://rise-rc.com/fighter/sasha-tadayoni/"
+ },
+ {
+  "slug": "sashida_retsu",
+  "name": "指田 烈",
+  "en": "Retsu Sashida",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/sashida_retsu/"
+ },
+ {
+  "slug": "sato_guriko",
+  "name": "佐藤九里虎",
+  "en": "Guriko Sato",
+  "gym": "FAITH",
+  "url": "https://rise-rc.com/fighter/sato_guriko/"
+ },
+ {
+  "slug": "sato_shuto",
+  "name": "佐藤執斗",
+  "en": "Shuto Sato",
+  "gym": "グラップリングシュートボクサーズ",
+  "url": "https://rise-rc.com/fighter/sato_shuto/"
+ },
+ {
+  "slug": "sawatani_taiki",
+  "name": "澤谷大樹",
+  "en": "Taiki Sawatani",
+  "gym": "HAWK GYM",
+  "url": "https://rise-rc.com/fighter/sawatani_taiki/"
+ },
+ {
+  "slug": "sayaka-2",
+  "name": "彩花",
+  "en": "Sayaka",
+  "gym": "KING EXCEED",
+  "url": "https://rise-rc.com/fighter/sayaka-2/"
+ },
+ {
+  "slug": "sayaka",
+  "name": "紗耶香",
+  "en": "Sayaka",
+  "gym": "格闘技スタジオBLOOM",
+  "url": "https://rise-rc.com/fighter/sayaka/"
+ },
+ {
+  "slug": "sea",
+  "name": "世愛",
+  "en": "Sea",
+  "gym": "TEAM KAZE",
+  "url": "https://rise-rc.com/fighter/sea/"
+ },
+ {
+  "slug": "seido",
+  "name": "SEIDO",
+  "en": "Seido",
+  "gym": "LARA TOKYO",
+  "url": "https://rise-rc.com/fighter/seido/"
+ },
+ {
+  "slug": "seina",
+  "name": "聖愛",
+  "en": "Seina",
+  "gym": "魁塾",
+  "url": "https://rise-rc.com/fighter/seina/"
+ },
+ {
+  "slug": "seiya",
+  "name": "惺也",
+  "en": "Seiya",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/seiya/"
+ },
+ {
+  "slug": "senba_masaki",
+  "name": "仙波昌希",
+  "en": "Masaki Senba",
+  "gym": "FLAT UP",
+  "url": "https://rise-rc.com/fighter/senba_masaki/"
+ },
+ {
+  "slug": "serhii-adamchuk",
+  "name": "セルゲイ・アダムチャック",
+  "en": "Serhii Adamchuk",
+  "gym": "Mike's Gym",
+  "url": "https://rise-rc.com/fighter/serhii-adamchuk/"
+ },
+ {
+  "slug": "seri_jsk",
+  "name": "世莉JSK",
+  "en": "Seri JSK",
+  "gym": "治政館",
+  "url": "https://rise-rc.com/fighter/seri_jsk/"
+ },
+ {
+  "slug": "shakhriyor_juraev",
+  "name": "シャクリヨール･ユラエフ",
+  "en": "Shakhriyor JURAEV",
+  "gym": "Temur Kurbanov team",
+  "url": "https://rise-rc.com/fighter/shakhriyor_juraev/"
+ },
+ {
+  "slug": "shibayama_ran",
+  "name": "柴山 藍",
+  "en": "Ran Shibayama",
+  "gym": "柔術&MMAアカデミーG-face",
+  "url": "https://rise-rc.com/fighter/shibayama_ran/"
+ },
+ {
+  "slug": "shibuya-akane",
+  "name": "渋谷 茜",
+  "en": "Akane  Shibuya",
+  "gym": "INHERIT ONENESS × 剛毅會",
+  "url": "https://rise-rc.com/fighter/shibuya-akane/"
+ },
+ {
+  "slug": "shimada_haruka",
+  "name": "島田知佳",
+  "en": "Haruka Shimada",
+  "gym": "team VASILEUS",
+  "url": "https://rise-rc.com/fighter/shimada_haruka/"
+ },
+ {
+  "slug": "shimada_masanori",
+  "name": "嶋田将典",
+  "en": "Masanori Shimada",
+  "gym": "Stay Gold",
+  "url": "https://rise-rc.com/fighter/shimada_masanori/"
+ },
+ {
+  "slug": "shimada_misaki",
+  "name": "島田美咲",
+  "en": "Misaki Shimada",
+  "gym": "SQUARE-UP KICKBOXING道場",
+  "url": "https://rise-rc.com/fighter/shimada_misaki/"
+ },
+ {
+  "slug": "shimizu-hidehito",
+  "name": "清水秀仁",
+  "en": "Hidehito Shimizu",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/shimizu-hidehito/"
+ },
+ {
+  "slug": "shimizu_kaoru",
+  "name": "志水 薫",
+  "en": "Kaoru Shimizu",
+  "gym": "マスタージム",
+  "url": "https://rise-rc.com/fighter/shimizu_kaoru/"
+ },
+ {
+  "slug": "shimizu_toshitaka",
+  "name": "清水俊貴",
+  "en": "Toshitaka Shimizu",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/shimizu_toshitaka/"
+ },
+ {
+  "slug": "shin_jongmin",
+  "name": "シン・ジョンミン",
+  "en": "Jongmin Shin",
+  "gym": "オーサムマルチジム",
+  "url": "https://rise-rc.com/fighter/shin_jongmin/"
+ },
+ {
+  "slug": "shingekinoyuki",
+  "name": "進撃の祐基",
+  "en": "ShingekinoYuki",
+  "gym": "亀岡キックボクシングジム",
+  "url": "https://rise-rc.com/fighter/shingekinoyuki/"
+ },
+ {
+  "slug": "shintaro",
+  "name": "珅太郎",
+  "en": "Shintaro",
+  "gym": "KRAZY BEE",
+  "url": "https://rise-rc.com/fighter/shintaro/"
+ },
+ {
+  "slug": "shiokawa_ryuto",
+  "name": "塩川琉斗",
+  "en": "Ryuto Shiokawa",
+  "gym": "TOP STAR GYM",
+  "url": "https://rise-rc.com/fighter/shiokawa_ryuto/"
+ },
+ {
+  "slug": "shiozaki_hikaru",
+  "name": "塩﨑 光",
+  "en": "Hikaru Shiozaki",
+  "gym": "JACK GYM",
+  "url": "https://rise-rc.com/fighter/shiozaki_hikaru/"
+ },
+ {
+  "slug": "shiraishi_shun",
+  "name": "白石 舜",
+  "en": "Shun Shiraishi",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/shiraishi_shun/"
+ },
+ {
+  "slug": "shirakawa_rikuto",
+  "name": "白川陸斗",
+  "en": "Rikuto Shirakawa",
+  "gym": "JAPAN TOP TEAM",
+  "url": "https://rise-rc.com/fighter/shirakawa_rikuto/"
+ },
+ {
+  "slug": "shiratori_koki",
+  "name": "白鳥光希",
+  "en": "Koki Shiratori",
+  "gym": "正道会館KCIEL",
+  "url": "https://rise-rc.com/fighter/shiratori_koki/"
+ },
+ {
+  "slug": "shiratori_taiju",
+  "name": "白鳥大珠",
+  "en": "Taiju Shiratori",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/shiratori_taiju/"
+ },
+ {
+  "slug": "shiro",
+  "name": "志朗",
+  "en": "Shiro",
+  "gym": "BeWELLキックボクシングジム",
+  "url": "https://rise-rc.com/fighter/shiro/"
+ },
+ {
+  "slug": "shogo",
+  "name": "SHOGO",
+  "en": "Shogo",
+  "gym": "A☆R KICK!",
+  "url": "https://rise-rc.com/fighter/shogo/"
+ },
+ {
+  "slug": "shoji-masaya",
+  "name": "小路督也",
+  "en": "Masaya Shoji",
+  "gym": "BLOW GYM",
+  "url": "https://rise-rc.com/fighter/shoji-masaya/"
+ },
+ {
+  "slug": "shokojsk",
+  "name": "祥子JSK",
+  "en": "Shoko JSK",
+  "gym": "治政館",
+  "url": "https://rise-rc.com/fighter/shokojsk/"
+ },
+ {
+  "slug": "shoma-1",
+  "name": "翔真",
+  "en": "Shoma",
+  "gym": "SEED GYM",
+  "url": "https://rise-rc.com/fighter/shoma-1/"
+ },
+ {
+  "slug": "shoma",
+  "name": "翔磨",
+  "en": "Shoma",
+  "gym": "TEAM-ANOTHER",
+  "url": "https://rise-rc.com/fighter/shoma/"
+ },
+ {
+  "slug": "shota",
+  "name": "将太",
+  "en": "Shota",
+  "gym": "KSS健生館",
+  "url": "https://rise-rc.com/fighter/shota/"
+ },
+ {
+  "slug": "shuha",
+  "name": "周葉",
+  "en": "Shuha",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/shuha/"
+ },
+ {
+  "slug": "shuma",
+  "name": "柊真",
+  "en": "Shuma",
+  "gym": "新潟誠道館",
+  "url": "https://rise-rc.com/fighter/shuma/"
+ },
+ {
+  "slug": "shun",
+  "name": "俊",
+  "en": "Shun",
+  "gym": "GREED GYM",
+  "url": "https://rise-rc.com/fighter/shun/"
+ },
+ {
+  "slug": "shunnosuke",
+  "name": "旬ノ介",
+  "en": "Shunnosuke",
+  "gym": "K-LIFE",
+  "url": "https://rise-rc.com/fighter/shunnosuke/"
+ },
+ {
+  "slug": "singphayak_hamagym",
+  "name": "シンパヤック・ハマジム",
+  "en": "Singphayak hamagym",
+  "gym": "HAMA・GYM",
+  "url": "https://rise-rc.com/fighter/singphayak_hamagym/"
+ },
+ {
+  "slug": "somsan_c2m_muaythai_fitness",
+  "name": "サムサン・C2M MUAYTHAI&FITNESS",
+  "en": "Somsan・C2M MUAYTHAI&FITNESS",
+  "gym": "C2M MUAYTHAI",
+  "url": "https://rise-rc.com/fighter/somsan_c2m_muaythai_fitness/"
+ },
+ {
+  "slug": "sota",
+  "name": "蒼太",
+  "en": "Sota",
+  "gym": "UPLIFT",
+  "url": "https://rise-rc.com/fighter/sota/"
+ },
+ {
+  "slug": "stoyan-koprivlenski",
+  "name": "ストーヤン・コプリヴレンスキー",
+  "en": "Stoyan Koprivlenski",
+  "gym": "Mike's Gym",
+  "url": "https://rise-rc.com/fighter/stoyan-koprivlenski/"
+ },
+ {
+  "slug": "strong_kobayashi",
+  "name": "ストロング小林",
+  "en": "Strong Kobayashi",
+  "gym": "契明ジム",
+  "url": "https://rise-rc.com/fighter/strong_kobayashi/"
+ },
+ {
+  "slug": "suarek-teppen-gym",
+  "name": "スアレック・TEPPEN GYM",
+  "en": "Suarek・TEPPEN GYM",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/suarek-teppen-gym/"
+ },
+ {
+  "slug": "sudlor_sor_jor_tong_prachin",
+  "name": "スドロー・ソージョートンプラシン",
+  "en": "Sudlor Sor Jor Tong Prachin",
+  "gym": "ソージョートンプラシン",
+  "url": "https://rise-rc.com/fighter/sudlor_sor_jor_tong_prachin/"
+ },
+ {
+  "slug": "suekuni_ryuta",
+  "name": "末國龍汰",
+  "en": "Ryuta Suekuni",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/suekuni_ryuta/"
+ },
+ {
+  "slug": "suenaga-aito",
+  "name": "末永愛士",
+  "en": "Aito Suenaga",
+  "gym": "Kickboxing Academy Sapporo",
+  "url": "https://rise-rc.com/fighter/suenaga-aito/"
+ },
+ {
+  "slug": "sugimoto_sho",
+  "name": "杉本 祥",
+  "en": "Sho Sugimoto",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/sugimoto_sho/"
+ },
+ {
+  "slug": "sugiyama_goki",
+  "name": "杉山豪基",
+  "en": "Goki Sugiyama",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/sugiyama_goki/"
+ },
+ {
+  "slug": "suhon",
+  "name": "スホン",
+  "en": "Suhon",
+  "gym": "ESPERANZA",
+  "url": "https://rise-rc.com/fighter/suhon/"
+ },
+ {
+  "slug": "suzuki_hiroki",
+  "name": "鈴木宙樹",
+  "en": "Hiroki Suzuki",
+  "gym": "RIKIX",
+  "url": "https://rise-rc.com/fighter/suzuki_hiroki/"
+ },
+ {
+  "slug": "suzuki_kiyoteru",
+  "name": "鈴木清照",
+  "en": "KIyoteru Suzuki",
+  "gym": "ドージョー☆シャカリキ",
+  "url": "https://rise-rc.com/fighter/suzuki_kiyoteru/"
+ },
+ {
+  "slug": "suzuki_masahiko",
+  "name": "鈴木真彦",
+  "en": "Masahiko Suzuki",
+  "gym": "TEAM 寿",
+  "url": "https://rise-rc.com/fighter/suzuki_masahiko/"
+ },
+ {
+  "slug": "t-98",
+  "name": "T-98",
+  "en": "T-98",
+  "gym": "MUAYGORI GYM",
+  "url": "https://rise-rc.com/fighter/t-98/"
+ },
+ {
+  "slug": "tabuchi_suzuka",
+  "name": "田渕涼香",
+  "en": "Suzuka Tabuchi",
+  "gym": "拳聖塾",
+  "url": "https://rise-rc.com/fighter/tabuchi_suzuka/"
+ },
+ {
+  "slug": "tachibanna_taiju",
+  "name": "橘 汰珠",
+  "en": "Taiju Tachibana",
+  "gym": "リアルディール",
+  "url": "https://rise-rc.com/fighter/tachibanna_taiju/"
+ },
+ {
+  "slug": "tago-ryota",
+  "name": "たご りょうた",
+  "en": "Ryota Tago",
+  "gym": "FJ KICK ASS",
+  "url": "https://rise-rc.com/fighter/tago-ryota/"
+ },
+ {
+  "slug": "taiga",
+  "name": "大雅",
+  "en": "Taiga",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/taiga/"
+ },
+ {
+  "slug": "taira_takuya",
+  "name": "泰良拓也",
+  "en": "Takuya Taira",
+  "gym": "パウンドフォーパウンド",
+  "url": "https://rise-rc.com/fighter/taira_takuya/"
+ },
+ {
+  "slug": "taiyo",
+  "name": "太陽",
+  "en": "Taiyo",
+  "gym": "K'Bスポーツジム",
+  "url": "https://rise-rc.com/fighter/taiyo/"
+ },
+ {
+  "slug": "takagi_kakushi",
+  "name": "髙木覚清",
+  "en": "Kakushi Takagi",
+  "gym": "RIKIX",
+  "url": "https://rise-rc.com/fighter/takagi_kakushi/"
+ },
+ {
+  "slug": "takagi_kosuke",
+  "name": "都木航佑",
+  "en": "Kosuke Takagi",
+  "gym": "キャピタルレイズ fighting GlaNz",
+  "url": "https://rise-rc.com/fighter/takagi_kosuke/"
+ },
+ {
+  "slug": "takahashi_kazuma",
+  "name": "髙橋一眞",
+  "en": "Kazuma Takahashi",
+  "gym": "TRIANGLE",
+  "url": "https://rise-rc.com/fighter/takahashi_kazuma/"
+ },
+ {
+  "slug": "takahashi_kiyoto",
+  "name": "髙橋聖人",
+  "en": "Kiyoto Takahashi",
+  "gym": "TRIANGLE",
+  "url": "https://rise-rc.com/fighter/takahashi_kiyoto/"
+ },
+ {
+  "slug": "takahashi_ryo",
+  "name": "髙橋 亮",
+  "en": "Ryo Takahashi",
+  "gym": "TRIANGLE",
+  "url": "https://rise-rc.com/fighter/takahashi_ryo/"
+ },
+ {
+  "slug": "takaiwa-taku",
+  "name": "髙岩 拓",
+  "en": "Taku Takaiwa",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/takaiwa-taku/"
+ },
+ {
+  "slug": "takao-kaito",
+  "name": "高尾海音",
+  "en": "Kaito Takao",
+  "gym": "BLOWS OITA LIFE",
+  "url": "https://rise-rc.com/fighter/takao-kaito/"
+ },
+ {
+  "slug": "take_yuta",
+  "name": "武 裕太",
+  "en": "Yuta Take",
+  "gym": "誠真会館所沢道場",
+  "url": "https://rise-rc.com/fighter/take_yuta/"
+ },
+ {
+  "slug": "takeda-ryouto",
+  "name": "武田崚登",
+  "en": "Ryouto Takeda",
+  "gym": "OISHI GYM",
+  "url": "https://rise-rc.com/fighter/takeda-ryouto/"
+ },
+ {
+  "slug": "takeichi_kazuki",
+  "name": "竹市一樹",
+  "en": "Kazuki Takeichi",
+  "gym": "二刃会",
+  "url": "https://rise-rc.com/fighter/takeichi_kazuki/"
+ },
+ {
+  "slug": "takenaka_hidetake",
+  "name": "武中秀武",
+  "en": "Hidetake Takenaka",
+  "gym": "魁塾 中川道場",
+  "url": "https://rise-rc.com/fighter/takenaka_hidetake/"
+ },
+ {
+  "slug": "takeno_tenki",
+  "name": "竹野展生",
+  "en": "Tenki Takeno",
+  "gym": "風吹ジム",
+  "url": "https://rise-rc.com/fighter/takeno_tenki/"
+ },
+ {
+  "slug": "takeuchi_kenichi",
+  "name": "竹内賢一",
+  "en": "Kenichi Takeuchi",
+  "gym": "Ten Clover Gym世田谷",
+  "url": "https://rise-rc.com/fighter/takeuchi_kenichi/"
+ },
+ {
+  "slug": "takeuchi_koki",
+  "name": "竹内皇貴",
+  "en": "Koki Takeuchi",
+  "gym": "チームドラゴン",
+  "url": "https://rise-rc.com/fighter/takeuchi_koki/"
+ },
+ {
+  "slug": "takeuchi_ryoma",
+  "name": "竹内龍馬",
+  "en": "Ryoma Takeuchi",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/takeuchi_ryoma/"
+ },
+ {
+  "slug": "taki",
+  "name": "瀧",
+  "en": "Taki",
+  "gym": "魁塾",
+  "url": "https://rise-rc.com/fighter/taki/"
+ },
+ {
+  "slug": "takigami_shota",
+  "name": "滝上正太",
+  "en": "Shota Takigami",
+  "gym": "聖空会館",
+  "url": "https://rise-rc.com/fighter/takigami_shota/"
+ },
+ {
+  "slug": "taku",
+  "name": "TAKU",
+  "en": "TAKU",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/taku/"
+ },
+ {
+  "slug": "takuma",
+  "name": "琢磨",
+  "en": "Takuma",
+  "gym": "OFA",
+  "url": "https://rise-rc.com/fighter/takuma/"
+ },
+ {
+  "slug": "takuya",
+  "name": "拓也",
+  "en": "Takuya",
+  "gym": "S-ROUND",
+  "url": "https://rise-rc.com/fighter/takuya/"
+ },
+ {
+  "slug": "takuya_sakamoto",
+  "name": "坂本拓矢",
+  "en": "Takuya Sakamoto",
+  "gym": "UPLIFT",
+  "url": "https://rise-rc.com/fighter/takuya_sakamoto/"
+ },
+ {
+  "slug": "tamaru_toki",
+  "name": "田丸 辰",
+  "en": "Toki Tamaru",
+  "gym": "TRY HARD GYM",
+  "url": "https://rise-rc.com/fighter/tamaru_toki/"
+ },
+ {
+  "slug": "tameda_soma",
+  "name": "溜田蒼馬",
+  "en": "Soma Tameda",
+  "gym": "FUTAMI FIGHTCLUB",
+  "url": "https://rise-rc.com/fighter/tameda_soma/"
+ },
+ {
+  "slug": "tanaka_kosei",
+  "name": "田中恒星",
+  "en": "Kosei Tanaka",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/tanaka_kosei/"
+ },
+ {
+  "slug": "tanaka_rikuto",
+  "name": "田中陸登",
+  "en": "Rikuto Tanaka",
+  "gym": "拳狼会",
+  "url": "https://rise-rc.com/fighter/tanaka_rikuto/"
+ },
+ {
+  "slug": "tanaka_yuki",
+  "name": "田中佑樹",
+  "en": "Yuki Tanaka",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/tanaka_yuki/"
+ },
+ {
+  "slug": "tanazawa-sora",
+  "name": "棚澤大空",
+  "en": "Sora Tanazawa",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/tanazawa-sora/"
+ },
+ {
+  "slug": "tane_yoshiki",
+  "name": "タネ♡ヨシキ",
+  "en": "Tane Yoshiki",
+  "gym": "直心会",
+  "url": "https://rise-rc.com/fighter/tane_yoshiki/"
+ },
+ {
+  "slug": "tani-shota",
+  "name": "谷 将太",
+  "en": "Shota Tani",
+  "gym": "All-out",
+  "url": "https://rise-rc.com/fighter/tani-shota/"
+ },
+ {
+  "slug": "tanigawa-soya",
+  "name": "谷川蒼哉",
+  "en": "Soya Tanigawa",
+  "gym": "極真会館",
+  "url": "https://rise-rc.com/fighter/tanigawa-soya/"
+ },
+ {
+  "slug": "tanoue_kenta",
+  "name": "田上健太",
+  "en": "Kenta Tanoue",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/tanoue_kenta/"
+ },
+ {
+  "slug": "tanxuanyun",
+  "name": "タン・スアン・ユン",
+  "en": "Tan Xuan Yun",
+  "gym": "Eminent muay thai Gym",
+  "url": "https://rise-rc.com/fighter/tanxuanyun/"
+ },
+ {
+  "slug": "tapruwan-hadesworkout",
+  "name": "タップロン・ハーデスワークアウト",
+  "en": "Tapruwan Hadesworkout",
+  "gym": "ハーデスワークアウトジム",
+  "url": "https://rise-rc.com/fighter/tapruwan-hadesworkout/"
+ },
+ {
+  "slug": "tasuku-okubo",
+  "name": "大久保 祐",
+  "en": "Tasuku Okubo",
+  "gym": "修徳会",
+  "url": "https://rise-rc.com/fighter/tasuku-okubo/"
+ },
+ {
+  "slug": "tatsuma",
+  "name": "健真",
+  "en": "Tatsuma",
+  "gym": "BLACK☆Jr",
+  "url": "https://rise-rc.com/fighter/tatsuma/"
+ },
+ {
+  "slug": "tatsuto",
+  "name": "龍翔",
+  "en": "Tatsuto",
+  "gym": "BLACK☆Jr",
+  "url": "https://rise-rc.com/fighter/tatsuto/"
+ },
+ {
+  "slug": "teio",
+  "name": "帝王",
+  "en": "Teio",
+  "gym": "D-BLAZE",
+  "url": "https://rise-rc.com/fighter/teio/"
+ },
+ {
+  "slug": "telecainfinity",
+  "name": "テレカ∞",
+  "en": "TELECA∞",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/telecainfinity/"
+ },
+ {
+  "slug": "tepparith_joegym",
+  "name": "テーパリット・ジョウジム",
+  "en": "Tepparith Joegym",
+  "gym": "JOE GYM",
+  "url": "https://rise-rc.com/fighter/tepparith_joegym/"
+ },
+ {
+  "slug": "terada-takumi",
+  "name": "寺田 匠",
+  "en": "Takumi Terada",
+  "gym": "team VASILEUS",
+  "url": "https://rise-rc.com/fighter/terada-takumi/"
+ },
+ {
+  "slug": "terada-yuka",
+  "name": "寺田佑佳",
+  "en": "Yuka Terada",
+  "gym": "GRABジム",
+  "url": "https://rise-rc.com/fighter/terada-yuka/"
+ },
+ {
+  "slug": "terado_nobuchika",
+  "name": "寺戸伸近",
+  "en": "Nobuchika Terado",
+  "gym": "Booch Beat",
+  "url": "https://rise-rc.com/fighter/terado_nobuchika/"
+ },
+ {
+  "slug": "terayama_hinata",
+  "name": "寺山日葵",
+  "en": "HInata Terayama",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/terayama_hinata/"
+ },
+ {
+  "slug": "terayama_ryoga",
+  "name": "寺山遼冴",
+  "en": "Ryoga Terayama",
+  "gym": "ARK FIGHT GYM",
+  "url": "https://rise-rc.com/fighter/terayama_ryoga/"
+ },
+ {
+  "slug": "tessa_de_kom",
+  "name": "テッサ・デ・コム",
+  "en": "Tessa De Kom",
+  "gym": "Fightteam Vlaardingen",
+  "url": "https://rise-rc.com/fighter/tessa_de_kom/"
+ },
+ {
+  "slug": "tetsu",
+  "name": "TETSU",
+  "en": "TETSU",
+  "gym": "月心会チーム侍",
+  "url": "https://rise-rc.com/fighter/tetsu/"
+ },
+ {
+  "slug": "tezuka_shota",
+  "name": "手塚翔太",
+  "en": "Shota Tezuka",
+  "gym": "Sublime guys・GONG-GYM坂戸",
+  "url": "https://rise-rc.com/fighter/tezuka_shota/"
+ },
+ {
+  "slug": "thalisson-crazy-cyclone",
+  "name": "タリソン“Crazy Cyclone”フェレイラ",
+  "en": "Thalisson“Crazy Cyclone”Ferreira",
+  "gym": "Champions Factory",
+  "url": "https://rise-rc.com/fighter/thalisson-crazy-cyclone/"
+ },
+ {
+  "slug": "the-jewel-christian-manzo",
+  "name": "“The Jewel” クリスティアン・マンゾ",
+  "en": "The Jewel Christian Manzo",
+  "gym": "Demonios Team Argentina",
+  "url": "https://rise-rc.com/fighter/the-jewel-christian-manzo/"
+ },
+ {
+  "slug": "toda_ryusho",
+  "name": "戸田龍将",
+  "en": "Ryusho Toda",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/toda_ryusho/"
+ },
+ {
+  "slug": "toita_daiki",
+  "name": "戸井田大輝",
+  "en": "Daiki Toita",
+  "gym": "TOP LEAD GYM",
+  "url": "https://rise-rc.com/fighter/toita_daiki/"
+ },
+ {
+  "slug": "tokoro_fuga",
+  "name": "所 風雅",
+  "en": "Fuga Tokoro",
+  "gym": "Refre'K",
+  "url": "https://rise-rc.com/fighter/tokoro_fuga/"
+ },
+ {
+  "slug": "tominaga_takekiyo",
+  "name": "冨永武聖",
+  "en": "Takekiyo Tominaga",
+  "gym": "REVOLT",
+  "url": "https://rise-rc.com/fighter/tominaga_takekiyo/"
+ },
+ {
+  "slug": "toshiki",
+  "name": "俊樹",
+  "en": "Toshiki",
+  "gym": "Allout",
+  "url": "https://rise-rc.com/fighter/toshiki/"
+ },
+ {
+  "slug": "toshima_yun",
+  "name": "登島優音",
+  "en": "Yun Toshima",
+  "gym": "NEXT LEVEL渋谷",
+  "url": "https://rise-rc.com/fighter/toshima_yun/"
+ },
+ {
+  "slug": "towa",
+  "name": "叶和",
+  "en": "Towa",
+  "gym": "チームドラゴン",
+  "url": "https://rise-rc.com/fighter/towa/"
+ },
+ {
+  "slug": "toyama_shota",
+  "name": "遠山翔太",
+  "en": "Shota Toyama",
+  "gym": "MONSTAR GYM",
+  "url": "https://rise-rc.com/fighter/toyama_shota/"
+ },
+ {
+  "slug": "tsubasa",
+  "name": "翼",
+  "en": "Tsubasa",
+  "gym": "TARGET",
+  "url": "https://rise-rc.com/fighter/tsubasa/"
+ },
+ {
+  "slug": "tsujii_honoka",
+  "name": "辻井和花",
+  "en": "Honoka Tsujii",
+  "gym": "BRING IT ONパラエストラAKK",
+  "url": "https://rise-rc.com/fighter/tsujii_honoka/"
+ },
+ {
+  "slug": "tsujii_wakana",
+  "name": "辻井和奏",
+  "en": "Wakana Tsujii",
+  "gym": "BRING IT ONパラエストラAKK",
+  "url": "https://rise-rc.com/fighter/tsujii_wakana/"
+ },
+ {
+  "slug": "tsukamoto_momu",
+  "name": "塚本望夢",
+  "en": "Momu Tsukamoto",
+  "gym": "team Bonds",
+  "url": "https://rise-rc.com/fighter/tsukamoto_momu/"
+ },
+ {
+  "slug": "tsuru_junpei",
+  "name": "津留純平",
+  "en": "Junpei Tsuru",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/tsuru_junpei/"
+ },
+ {
+  "slug": "tsuruzoe_shota",
+  "name": "水流添正太",
+  "en": "Shota Tsuruzoe",
+  "gym": "道場373",
+  "url": "https://rise-rc.com/fighter/tsuruzoe_shota/"
+ },
+ {
+  "slug": "tsuzuki_kaito",
+  "name": "都筑海杜",
+  "en": "Kaito Tsuzuki",
+  "gym": "TEAM3K",
+  "url": "https://rise-rc.com/fighter/tsuzuki_kaito/"
+ },
+ {
+  "slug": "uchida_sena",
+  "name": "内田聖那",
+  "en": "Sena Uchida",
+  "gym": "新宿レフティージム",
+  "url": "https://rise-rc.com/fighter/uchida_sena/"
+ },
+ {
+  "slug": "uchida_yuta",
+  "name": "内田雄大",
+  "en": "Yuta Uchida",
+  "gym": "フリー",
+  "url": "https://rise-rc.com/fighter/uchida_yuta/"
+ },
+ {
+  "slug": "uchimoto_kizuku",
+  "name": "内本 築",
+  "en": "Kizuku Uchimoto",
+  "gym": "team Bonds",
+  "url": "https://rise-rc.com/fighter/uchimoto_kizuku/"
+ },
+ {
+  "slug": "uchiyama-tomoki",
+  "name": "内山朋紀",
+  "en": "Tomoki Uchiyama",
+  "gym": "TEAM＋1",
+  "url": "https://rise-rc.com/fighter/uchiyama-tomoki/"
+ },
+ {
+  "slug": "uemura_yuto",
+  "name": "上村雄音",
+  "en": "Yuto Uemura",
+  "gym": "BK GYM",
+  "url": "https://rise-rc.com/fighter/uemura_yuto/"
+ },
+ {
+  "slug": "ueno_koki",
+  "name": "上野コウキ",
+  "en": "Koki Ueno",
+  "gym": "直心会",
+  "url": "https://rise-rc.com/fighter/ueno_koki/"
+ },
+ {
+  "slug": "ueyama_seiki",
+  "name": "植山征紀",
+  "en": "Seiki Ueyama",
+  "gym": "龍生塾ファントム道場",
+  "url": "https://rise-rc.com/fighter/ueyama_seiki/"
+ },
+ {
+  "slug": "umei_taisei",
+  "name": "梅井泰成",
+  "en": "Taisei Umei",
+  "gym": "Mouton",
+  "url": "https://rise-rc.com/fighter/umei_taisei/"
+ },
+ {
+  "slug": "umeno_genji",
+  "name": "梅野源治",
+  "en": "Genji Umeno",
+  "gym": "PHOENIX",
+  "url": "https://rise-rc.com/fighter/umeno_genji/"
+ },
+ {
+  "slug": "usami_hide_meison",
+  "name": "宇佐美 秀 メイソン",
+  "en": "Usami Hide Meison",
+  "gym": "team VASILEUS",
+  "url": "https://rise-rc.com/fighter/usami_hide_meison/"
+ },
+ {
+  "slug": "uzatsuyo_yoshiya",
+  "name": "ウザ強ヨシヤ",
+  "en": "Uzatsuyo Yoshiya",
+  "gym": "FIGHT CLUB 428",
+  "url": "https://rise-rc.com/fighter/uzatsuyo_yoshiya/"
+ },
+ {
+  "slug": "victor-de-koning",
+  "name": "ビクター・デ・コニング",
+  "en": "Victor De Koning",
+  "gym": "Kickboxing fearless",
+  "url": "https://rise-rc.com/fighter/victor-de-koning/"
+ },
+ {
+  "slug": "wada_teppei",
+  "name": "和田哲平",
+  "en": "Teppei Wada",
+  "gym": "FASCINATE FIGHT TEAM",
+  "url": "https://rise-rc.com/fighter/wada_teppei/"
+ },
+ {
+  "slug": "wakahara_tsubasa",
+  "name": "若原 聖",
+  "en": "Tsubasa Wakahara",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/wakahara_tsubasa/"
+ },
+ {
+  "slug": "wang-chin-long",
+  "name": "ワン・チンロン",
+  "en": "Wang Chin long",
+  "gym": null,
+  "url": "https://rise-rc.com/fighter/wang-chin-long/"
+ },
+ {
+  "slug": "wang_xianjing",
+  "name": "ワン・シャンチン",
+  "en": "Xianjing Wang",
+  "gym": "仏山温拿拳館",
+  "url": "https://rise-rc.com/fighter/wang_xianjing/"
+ },
+ {
+  "slug": "warm",
+  "name": "ウォーム",
+  "en": "Warm",
+  "gym": "ONE LINK",
+  "url": "https://rise-rc.com/fighter/warm/"
+ },
+ {
+  "slug": "watanabe_hikaru",
+  "name": "渡邉 光",
+  "en": "Hikaru Watanabe",
+  "gym": "NEXT STEP GYM",
+  "url": "https://rise-rc.com/fighter/watanabe_hikaru/"
+ },
+ {
+  "slug": "witthikorn_saunnamtankiri",
+  "name": "ウィッティコーン・ソンナムタンキリ",
+  "en": "Witthikorn Saunnamtankiri",
+  "gym": "ソンナムタンキリ",
+  "url": "https://rise-rc.com/fighter/witthikorn_saunnamtankiri/"
+ },
+ {
+  "slug": "ya-man",
+  "name": "YA-MAN",
+  "en": "YA-MAN",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/ya-man/"
+ },
+ {
+  "slug": "yamada_atsuki",
+  "name": "山田貴紀",
+  "en": "Atsuki Yamada",
+  "gym": "山口道場",
+  "url": "https://rise-rc.com/fighter/yamada_atsuki/"
+ },
+ {
+  "slug": "yamada_kosei",
+  "name": "山田洸誓",
+  "en": "Kosei Yamada",
+  "gym": "正道会館KCIEL",
+  "url": "https://rise-rc.com/fighter/yamada_kosei/"
+ },
+ {
+  "slug": "yamada_kotaro",
+  "name": "山田彪太朗",
+  "en": "Kotaro Yamada",
+  "gym": "シーザージム",
+  "url": "https://rise-rc.com/fighter/yamada_kotaro/"
+ },
+ {
+  "slug": "yamada_koyata",
+  "name": "山田虎矢太",
+  "en": "Koyata Yamada",
+  "gym": "シーザージム",
+  "url": "https://rise-rc.com/fighter/yamada_koyata/"
+ },
+ {
+  "slug": "yamaguchi-megumi",
+  "name": "山口 恵",
+  "en": "Megumi Yamaguchi",
+  "gym": "RICHキックボクシングジム",
+  "url": "https://rise-rc.com/fighter/yamaguchi-megumi/"
+ },
+ {
+  "slug": "yamaguchi_hiroto",
+  "name": "山口裕人",
+  "en": "Hiroto Yamaguchi",
+  "gym": "道化俱楽部",
+  "url": "https://rise-rc.com/fighter/yamaguchi_hiroto/"
+ },
+ {
+  "slug": "yamaguchi_yuma",
+  "name": "山口侑馬",
+  "en": "Yuma Yamaguchi",
+  "gym": "道化俱楽部",
+  "url": "https://rise-rc.com/fighter/yamaguchi_yuma/"
+ },
+ {
+  "slug": "yamahata_yuma",
+  "name": "山畑雄摩",
+  "en": "Yuma Yamahata",
+  "gym": "心将塾",
+  "url": "https://rise-rc.com/fighter/yamahata_yuma/"
+ },
+ {
+  "slug": "yamakawa_kensei",
+  "name": "山川賢誠",
+  "en": "Kensei Yamakawa",
+  "gym": "Kickboxing Academy Sapporo",
+  "url": "https://rise-rc.com/fighter/yamakawa_kensei/"
+ },
+ {
+  "slug": "yamakawa_toshihiro",
+  "name": "山川敏弘",
+  "en": "Toshihiro Yamakawa",
+  "gym": "Maynish KickBoxingGym",
+  "url": "https://rise-rc.com/fighter/yamakawa_toshihiro/"
+ },
+ {
+  "slug": "yamamoto-ryoya",
+  "name": "山本涼也",
+  "en": "Ryoya Yamamoto",
+  "gym": "MMA RANGERS GYM",
+  "url": "https://rise-rc.com/fighter/yamamoto-ryoya/"
+ },
+ {
+  "slug": "yamamoto_kenshin",
+  "name": "山元剣心",
+  "en": "Kenshin Yamamoto",
+  "gym": "PHOENIX",
+  "url": "https://rise-rc.com/fighter/yamamoto_kenshin/"
+ },
+ {
+  "slug": "yamamoto_keyaki",
+  "name": "山本 槻",
+  "en": "Keyaki Yamamoto",
+  "gym": "TOP GUN GYM",
+  "url": "https://rise-rc.com/fighter/yamamoto_keyaki/"
+ },
+ {
+  "slug": "yamamoto_tomomi",
+  "name": "山本“魂武羅”知美",
+  "en": "Tomomi“Cobra”Yamamoto",
+  "gym": "FAITH",
+  "url": "https://rise-rc.com/fighter/yamamoto_tomomi/"
+ },
+ {
+  "slug": "yamamoto_yuki",
+  "name": "山本裕規",
+  "en": "Yuki Yamamoto",
+  "gym": "team YAMATO",
+  "url": "https://rise-rc.com/fighter/yamamoto_yuki/"
+ },
+ {
+  "slug": "yamasaki_amiru",
+  "name": "山﨑愛琉",
+  "en": "Amiru Yamasaki",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/yamasaki_amiru/"
+ },
+ {
+  "slug": "yamasaki_tensuke",
+  "name": "山﨑天輔",
+  "en": "Tensuke Yamasaki",
+  "gym": "VALIENTE",
+  "url": "https://rise-rc.com/fighter/yamasaki_tensuke/"
+ },
+ {
+  "slug": "yamazaki_kazuteru",
+  "name": "山﨑一央",
+  "en": "Kazuteru Yamazaki",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/yamazaki_kazuteru/"
+ },
+ {
+  "slug": "yana_joichi",
+  "name": "簗 丈一",
+  "en": "Joichi Yana",
+  "gym": "TEAM Aimhigh",
+  "url": "https://rise-rc.com/fighter/yana_joichi/"
+ },
+ {
+  "slug": "yasu-bravely",
+  "name": "YASU BRAVELY",
+  "en": "YASU BRAVELY",
+  "gym": "BRAVELY GYM",
+  "url": "https://rise-rc.com/fighter/yasu-bravely/"
+ },
+ {
+  "slug": "yasumoto_haruto",
+  "name": "安本晴翔",
+  "en": "Haruto Yasumoto",
+  "gym": "橋本道場",
+  "url": "https://rise-rc.com/fighter/yasumoto_haruto/"
+ },
+ {
+  "slug": "yatagai-kairi",
+  "name": "谷田貝海吏",
+  "en": "Kairi Yatagai",
+  "gym": "CYCLONE GYM",
+  "url": "https://rise-rc.com/fighter/yatagai-kairi/"
+ },
+ {
+  "slug": "yaya",
+  "name": "YAYAウィラサクレック",
+  "en": "Yaya Weerasakreck",
+  "gym": "WSRフェアテックス幕張",
+  "url": "https://rise-rc.com/fighter/yaya/"
+ },
+ {
+  "slug": "yo-ueda",
+  "name": "YO UEDA",
+  "en": "Yo Ueda",
+  "gym": "TARGET SHIBUYA",
+  "url": "https://rise-rc.com/fighter/yo-ueda/"
+ },
+ {
+  "slug": "yodbuadang-3rdplace",
+  "name": "ヨーブアデーン・3RDPlace",
+  "en": "Yodbuadang 3RDPlace",
+  "gym": "3RDPlace",
+  "url": "https://rise-rc.com/fighter/yodbuadang-3rdplace/"
+ },
+ {
+  "slug": "yokoyama-hiroto",
+  "name": "横山大翔",
+  "en": "Hiroto Yokoyama",
+  "gym": "拳心會館",
+  "url": "https://rise-rc.com/fighter/yokoyama-hiroto/"
+ },
+ {
+  "slug": "yokoyama_norio",
+  "name": "横山典雄",
+  "en": "Norio Yokoyama",
+  "gym": "不死鳥道場",
+  "url": "https://rise-rc.com/fighter/yokoyama_norio/"
+ },
+ {
+  "slug": "yoon_deokjae",
+  "name": "ユン･ドクジェ",
+  "en": "Deokjae Yoon",
+  "gym": "RAON",
+  "url": "https://rise-rc.com/fighter/yoon_deokjae/"
+ },
+ {
+  "slug": "yoshida_kosei",
+  "name": "吉田晄成",
+  "en": "Kosei Yoshida",
+  "gym": "TEAM TEPPEN",
+  "url": "https://rise-rc.com/fighter/yoshida_kosei/"
+ },
+ {
+  "slug": "yoshida_miyo",
+  "name": "吉田実代",
+  "en": "Miyo Yoshida",
+  "gym": "Bread winner NYC",
+  "url": "https://rise-rc.com/fighter/yoshida_miyo/"
+ },
+ {
+  "slug": "yoshida_ryotaro",
+  "name": "吉田亮汰朗",
+  "en": "Ryotaro Yoshida",
+  "gym": "BK GYM",
+  "url": "https://rise-rc.com/fighter/yoshida_ryotaro/"
+ },
+ {
+  "slug": "yoshiki",
+  "name": "祐輝",
+  "en": "Yoshiki",
+  "gym": "OU-BU GYM",
+  "url": "https://rise-rc.com/fighter/yoshiki/"
+ },
+ {
+  "slug": "yoshioka_ryuki",
+  "name": "吉岡龍輝",
+  "en": "Ryuki Yoshioka",
+  "gym": "及川道場",
+  "url": "https://rise-rc.com/fighter/yoshioka_ryuki/"
+ },
+ {
+  "slug": "yosuke",
+  "name": "鷹介",
+  "en": "Yosuke",
+  "gym": "魁塾",
+  "url": "https://rise-rc.com/fighter/yosuke/"
+ },
+ {
+  "slug": "yoza_yuki",
+  "name": "与座優貴",
+  "en": "Yuki Yoza",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "url": "https://rise-rc.com/fighter/yoza_yuki/"
+ },
+ {
+  "slug": "yua",
+  "name": "優空",
+  "en": "Yua",
+  "gym": "和術慧舟會AKZA",
+  "url": "https://rise-rc.com/fighter/yua/"
+ },
+ {
+  "slug": "yuan_pengjie",
+  "name": "エン・ペンジェー",
+  "en": "Pengjie Yuan",
+  "gym": "仏山温拿拳館",
+  "url": "https://rise-rc.com/fighter/yuan_pengjie/"
+ },
+ {
+  "slug": "yuki",
+  "name": "裕樹",
+  "en": "Yuki",
+  "gym": "ANCHOR GYM",
+  "url": "https://rise-rc.com/fighter/yuki/"
+ },
+ {
+  "slug": "yura-2",
+  "name": "夢空",
+  "en": "Yura",
+  "gym": "Croire",
+  "url": "https://rise-rc.com/fighter/yura-2/"
+ },
+ {
+  "slug": "yura",
+  "name": "YURA",
+  "en": "Yura",
+  "gym": "DIATIGER GYM",
+  "url": "https://rise-rc.com/fighter/yura/"
+ },
+ {
+  "slug": "yushi",
+  "name": "勇志",
+  "en": "Yushi",
+  "gym": "真門ジム",
+  "url": "https://rise-rc.com/fighter/yushi/"
+ },
+ {
+  "slug": "yuto",
+  "name": "YU斗",
+  "en": "Yuto",
+  "gym": "Vigor Kickboxing Gym",
+  "url": "https://rise-rc.com/fighter/yuto/"
+ },
+ {
+  "slug": "yuya-1",
+  "name": "YU-YA",
+  "en": "Yu-ya",
+  "gym": "魁塾",
+  "url": "https://rise-rc.com/fighter/yuya-1/"
+ },
+ {
+  "slug": "yuya",
+  "name": "憂也",
+  "en": "Yuya",
+  "gym": "魁塾",
+  "url": "https://rise-rc.com/fighter/yuya/"
+ },
+ {
+  "slug": "zaitsu_hiroki",
+  "name": "財津大樹",
+  "en": "Hiroki Zaitsu",
+  "gym": "TEAM BEYOND",
+  "url": "https://rise-rc.com/fighter/zaitsu_hiroki/"
+ },
+ {
+  "slug": "zakaria_zouggary",
+  "name": "ザカリア・ゾウガリー",
+  "en": "Zakaria Zouggary",
+  "gym": "‘T Oude Westen Gym",
+  "url": "https://rise-rc.com/fighter/zakaria_zouggary/"
+ },
+ {
+  "slug": "ze-waliuo",
+  "name": "ゼ・ワリロ",
+  "en": "Ze Waliuo",
+  "gym": "White Shark Fight Gym",
+  "url": "https://rise-rc.com/fighter/ze-waliuo/"
+ }
+]

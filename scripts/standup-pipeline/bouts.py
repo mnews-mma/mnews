@@ -1,8 +1,42 @@
 # -*- coding: utf-8 -*-
 """SHOOT BOXING 公式の選手ページから bout を抽出する。SCHEMA.md に準拠。"""
-import re,glob,html,json,unicodedata,collections
+import re,glob,html,json,unicodedata,collections,calendar
 
 U=lambda s: re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',s))).strip()
+
+# ---- 暦上存在しない日付の検証・救済(2026-08-21) ----
+# 特定ソースのテンプレート対応ではなく全ソース共通のデータ検証のため、ここに1箇所だけ置く
+# (ingest_*.py各所に個別実装しない)。実例: NJKF公式サイトの記事タイトル自体が
+# 「11月31日 DUEL.22 試合結果」のように誤記(11月は30日まで)になっていたケース、
+# Wikipediaの戦績表に「2025年2月29日」(2025年はうるう年ではない)のように誤記された
+# ケース。既存の各ソースの日付抽出ロジック(タイトル・見出し優先)は正しい前提のまま
+# 変えず、その結果が暦上あり得ない日付になった場合だけこの関数で救済する。
+def is_valid_calendar_date(date_str):
+    m=re.match(r'^(\d{4})-(\d{2})-(\d{2})$',date_str or '')
+    if not m: return False
+    y,mo,d=int(m.group(1)),int(m.group(2)),int(m.group(3))
+    if not (1<=mo<=12): return False
+    return 1<=d<=calendar.monthrange(y,mo)[1]
+
+def resolve_invalid_calendar_date(date_str,html_text):
+    """date_strが暦上存在しない場合のみ救済を試みる(有効な日付・Noneはそのまま返す)。
+       1) html_text全体から、元の(誤った)月日に縛られず別の有効な「YYYY年M月D日」を
+          探し、最初に見つかった有効な値を採用する(本文・告知に正しい日付が
+          書かれている可能性が高いという前提、タイトルの誤記1箇所だけを疑う)。
+       2) 見つからなければJSON-LDのdatePublished(年月日)を採用する
+          (開催告知記事なら開催日に近いという既存の他フォールバックと同じ前提)。
+       3) それでも救済できなければNoneを返す(推測で埋めない)。"""
+    if date_str is None or is_valid_calendar_date(date_str):
+        return date_str
+    if html_text:
+        for ym,mm,dd in re.findall(r'(\d{4})年(\d{1,2})月(\d{1,2})日',html_text):
+            cand='%s-%02d-%02d'%(int(ym),int(mm),int(dd))
+            if is_valid_calendar_date(cand):
+                return cand
+        pub=re.search(r'"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})',html_text)
+        if pub and is_valid_calendar_date(pub.group(1)):
+            return pub.group(1)
+    return None
 
 # 選手名寄せの正規化(2026-08、T-4追加): 旧字体/異体字のうち読み・字義が完全に同一と
 # 確認できるペアのみを対象にした変換表。ingest_*.py群(9ファイル)のnk()と同一の表を

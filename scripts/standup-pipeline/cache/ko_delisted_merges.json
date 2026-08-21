@@ -1,0 +1,37 @@
+[
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/日菜太",
+   "https://www.k-1.co.jp/fighter/740"
+  ],
+  "existing_name": "日菜太",
+  "new_url": "https://knockoutkb.com/fighters/hinata_222",
+  "new_slug": "hinata_222",
+  "grounds": [
+   "所属ジム一致(クロスポイント吉祥寺/KNOCK OUT クロスポイント吉祥寺)",
+   "生年月日一致(1986.8.26、K-1側dobと一致)"
+  ]
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/kazuki/"
+  ],
+  "existing_name": "一輝",
+  "new_url": "https://knockoutkb.com/fighters/kazuki_398",
+  "new_slug": "kazuki_398",
+  "grounds": [
+   "所属ジム一致(MtF MUGEN GYM/MtFMUGENGYM)"
+  ]
+ },
+ {
+  "existing_sources": [
+   "https://www.k-1.co.jp/fighter/937"
+  ],
+  "existing_name": "栗秋 祥梧",
+  "new_url": "https://knockoutkb.com/fighters/kuriaki_shogo",
+  "new_slug": "kuriaki_shogo",
+  "grounds": [
+   "所属ジム一致(クロスポイント吉祥寺/KNOCK OUT クロスポイント吉祥寺)"
+  ]
+ }
+]

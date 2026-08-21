@@ -5,6 +5,7 @@
    実行方法: cd scripts/standup-pipeline && python3 fetch_hoostcup.py
 """
 import json
+import os
 import re
 import sys
 import time
@@ -14,6 +15,9 @@ from fetch_common import fetch, fetch_bytes
 
 INDEX_URL = "https://www.hoostcup.com/13fight/index.html"
 OUT_DIR = "raw/hoostcup_events"
+# 2026-08-21追加: GitHub Actionsの新規runnerはraw/が空(サブディレクトリも無い)ため、
+# 書き込み前に作る(ローカルの使い回しraw/では暗黙に存在していた)。
+os.makedirs(OUT_DIR, exist_ok=True)
 
 
 def main():

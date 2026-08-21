@@ -1,0 +1,614 @@
+[
+ {
+  "slug": "akarigsb",
+  "name": "朱里グラップリングシュートボクサーズジム",
+  "gym": "グラップリングシュートボクサーズ名古屋",
+  "url": "https://shootboxing.org/fighter/akarigsb/"
+ },
+ {
+  "slug": "andy_sower",
+  "name": "アンディ・サワー",
+  "gym": "TEAM SOUWER",
+  "url": "https://shootboxing.org/fighter/andy_sower/"
+ },
+ {
+  "slug": "aoshi",
+  "name": "蒼士",
+  "gym": "TEAM F.O.D",
+  "url": "https://shootboxing.org/fighter/aoshi/"
+ },
+ {
+  "slug": "arao_yuta",
+  "name": "荒尾 祐太",
+  "gym": "チーム吉鷹",
+  "url": "https://shootboxing.org/fighter/arao_yuta/"
+ },
+ {
+  "slug": "arima_reiji",
+  "name": "有馬 伶弐",
+  "gym": "龍生塾",
+  "url": "https://shootboxing.org/fighter/arima_reiji/"
+ },
+ {
+  "slug": "boldbaatar",
+  "name": "ボルドバートル・アルタンドルグーン",
+  "gym": "SBモンゴル支部/MANDAL FIGHTING GYM",
+  "url": "https://shootboxing.org/fighter/boldbaatar/"
+ },
+ {
+  "slug": "doi_kinoka",
+  "name": "土井 乙花",
+  "gym": "GSBグラップリングシュートボクサーズ多治見",
+  "url": "https://shootboxing.org/fighter/doi_kinoka/"
+ },
+ {
+  "slug": "doi_ryoga",
+  "name": "土井 涼雅",
+  "gym": "GSBグラップリングシュートボクサーズ多治見",
+  "url": "https://shootboxing.org/fighter/doi_ryoga/"
+ },
+ {
+  "slug": "endo_ryomu",
+  "name": "遠藤 凌夢",
+  "gym": "龍生塾ファントム道場",
+  "url": "https://shootboxing.org/fighter/endo_ryomu/"
+ },
+ {
+  "slug": "ezawa_yuri",
+  "name": "江澤 悠里",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/ezawa_yuri/"
+ },
+ {
+  "slug": "fukada-kazuki",
+  "name": "深田 一樹",
+  "gym": "龍生塾ファントム道場",
+  "url": "https://shootboxing.org/fighter/fukada-kazuki/"
+ },
+ {
+  "slug": "fushimi_kazuyuki",
+  "name": "伏見 和之",
+  "gym": "RIKI GYM",
+  "url": "https://shootboxing.org/fighter/fushimi_kazuyuki/"
+ },
+ {
+  "slug": "fuu",
+  "name": "風羽",
+  "gym": "龍生塾ファントム道場",
+  "url": "https://shootboxing.org/fighter/fuu/"
+ },
+ {
+  "slug": "genki",
+  "name": "元貴",
+  "gym": "DAB",
+  "url": "https://shootboxing.org/fighter/genki/"
+ },
+ {
+  "slug": "gin_grapplingshootboxersgym",
+  "name": "銀・グラップリングシュートボクサーズジム",
+  "gym": "GSB大須MACS（マーシャルアーツコミュニケーションスタジオ）",
+  "url": "https://shootboxing.org/fighter/gin_grapplingshootboxersgym/"
+ },
+ {
+  "slug": "hamada_una",
+  "name": "濱田 海",
+  "gym": "TIA辻道場",
+  "url": "https://shootboxing.org/fighter/hamada_una/"
+ },
+ {
+  "slug": "hasegawa_daisuke",
+  "name": "長谷川 大祐",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/hasegawa_daisuke/"
+ },
+ {
+  "slug": "hasegawa_heizou",
+  "name": "長谷川 平蔵",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/hasegawa_heizou/"
+ },
+ {
+  "slug": "hasegawa_yuya",
+  "name": "長谷川 祐也",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/hasegawa_yuya/"
+ },
+ {
+  "slug": "heyden_heung_tzehei",
+  "name": "向籽羲（ヒュン・ツェイ・ヘイデン）",
+  "gym": "榮拳館",
+  "url": "https://shootboxing.org/fighter/heyden_heung_tzehei/"
+ },
+ {
+  "slug": "hinuma_asahi",
+  "name": "樋沼 朝光",
+  "gym": "RIKI GYM",
+  "url": "https://shootboxing.org/fighter/hinuma_asahi/"
+ },
+ {
+  "slug": "hisadome_takuma",
+  "name": "久留 拓磨",
+  "gym": "ZERO ONE GYM",
+  "url": "https://shootboxing.org/fighter/hisadome_takuma/"
+ },
+ {
+  "slug": "hokuto_kentaro",
+  "name": "北斗 拳太郎",
+  "gym": "ボスジムジャパン",
+  "url": "https://shootboxing.org/fighter/hokuto_kentaro/"
+ },
+ {
+  "slug": "imoto_volcano",
+  "name": "イモト・ボルケーノ",
+  "gym": "FIGHT SCIENCE",
+  "url": "https://shootboxing.org/fighter/imoto_volcano/"
+ },
+ {
+  "slug": "ishii_takuya",
+  "name": "石井 拓也",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/ishii_takuya/"
+ },
+ {
+  "slug": "ito_kaname",
+  "name": "伊藤 要",
+  "gym": "シーザージム新小岩",
+  "url": "https://shootboxing.org/fighter/ito_kaname/"
+ },
+ {
+  "slug": "jieana_valentino",
+  "name": "イリアーナ・ヴァレンティーノ",
+  "gym": "Kick And Punch/Gracie Fighter Dojo",
+  "url": "https://shootboxing.org/fighter/jieana_valentino/"
+ },
+ {
+  "slug": "kaito",
+  "name": "海人",
+  "gym": "TEAM F.O.D",
+  "url": "https://shootboxing.org/fighter/kaito/"
+ },
+ {
+  "slug": "kaito_risshikaikan",
+  "name": "魁斗",
+  "gym": "立志會館",
+  "url": "https://shootboxing.org/fighter/kaito_risshikaikan/"
+ },
+ {
+  "slug": "kaneko_tetsuya",
+  "name": "金子 徹哉",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://shootboxing.org/fighter/kaneko_tetsuya/"
+ },
+ {
+  "slug": "kanta_motoyama",
+  "name": "基山 幹太",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://shootboxing.org/fighter/kanta_motoyama/"
+ },
+ {
+  "slug": "kasahara_hiroki",
+  "name": "笠原 弘希",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/kasahara_hiroki/"
+ },
+ {
+  "slug": "kasahara_naoki",
+  "name": "笠原 直希",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/kasahara_naoki/"
+ },
+ {
+  "slug": "kasahara_yuuki",
+  "name": "笠原 友希",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/kasahara_yuuki/"
+ },
+ {
+  "slug": "katayama_kai",
+  "name": "片山 魁",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/katayama_kai/"
+ },
+ {
+  "slug": "kawakami_kyo",
+  "name": "川上 叶",
+  "gym": "龍生塾",
+  "url": "https://shootboxing.org/fighter/kawakami_kyo/"
+ },
+ {
+  "slug": "kazama_daiki",
+  "name": "風間 大輝",
+  "gym": "橋本道場",
+  "url": "https://shootboxing.org/fighter/kazama_daiki/"
+ },
+ {
+  "slug": "kikuchi_minori",
+  "name": "菊地 美乃里",
+  "gym": "Sublime guys・GONG-GYM坂戸",
+  "url": "https://shootboxing.org/fighter/kikuchi_minori/"
+ },
+ {
+  "slug": "kitagawa_yuki",
+  "name": "北川 裕紀",
+  "gym": "ZERO ONE GYM",
+  "url": "https://shootboxing.org/fighter/kitagawa_yuki/"
+ },
+ {
+  "slug": "kobayashi_daiki",
+  "name": "小林 大樹",
+  "gym": "龍生塾",
+  "url": "https://shootboxing.org/fighter/kobayashi_daiki/"
+ },
+ {
+  "slug": "kotaro-yamada",
+  "name": "山田 彪太朗",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/kotaro-yamada/"
+ },
+ {
+  "slug": "koyata_yamada",
+  "name": "山田 虎矢太",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/koyata_yamada/"
+ },
+ {
+  "slug": "kudo_yuya",
+  "name": "工藤 悠矢",
+  "gym": "秀晃道場",
+  "url": "https://shootboxing.org/fighter/kudo_yuya/"
+ },
+ {
+  "slug": "kumazawa_violence",
+  "name": "熊澤 バイオレンス",
+  "gym": "グラップリングシュートボクサーズ名古屋",
+  "url": "https://shootboxing.org/fighter/kumazawa_violence/"
+ },
+ {
+  "slug": "megami",
+  "name": "女神",
+  "gym": "TIA辻道場",
+  "url": "https://shootboxing.org/fighter/megami/"
+ },
+ {
+  "slug": "mikami_daichi",
+  "name": "三上 大智",
+  "gym": "ボスジムジャパン",
+  "url": "https://shootboxing.org/fighter/mikami_daichi/"
+ },
+ {
+  "slug": "mina",
+  "name": "未奈",
+  "gym": "秀晃道場",
+  "url": "https://shootboxing.org/fighter/mina/"
+ },
+ {
+  "slug": "minoki",
+  "name": "魅乃麒",
+  "gym": "ストライキングジムAres",
+  "url": "https://shootboxing.org/fighter/minoki/"
+ },
+ {
+  "slug": "misaki",
+  "name": "MISAKI",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/misaki/"
+ },
+ {
+  "slug": "miyu",
+  "name": "MIYU",
+  "gym": "Sublime guys・GONG-GYM坂戸",
+  "url": "https://shootboxing.org/fighter/miyu/"
+ },
+ {
+  "slug": "morizono_naoki",
+  "name": "森園 直樹",
+  "gym": "TIA辻道場",
+  "url": "https://shootboxing.org/fighter/morizono_naoki/"
+ },
+ {
+  "slug": "murata_kiyoaki",
+  "name": "村田 聖明",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/murata_kiyoaki/"
+ },
+ {
+  "slug": "naito-ryouta",
+  "name": "内藤 凌太",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://shootboxing.org/fighter/naito-ryouta/"
+ },
+ {
+  "slug": "naito_keito",
+  "name": "内藤 啓人",
+  "gym": "GSB大須MACS",
+  "url": "https://shootboxing.org/fighter/naito_keito/"
+ },
+ {
+  "slug": "naito_taiki",
+  "name": "内藤 大樹",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://shootboxing.org/fighter/naito_taiki/"
+ },
+ {
+  "slug": "negi_tetsuya",
+  "name": "根木 哲也",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/negi_tetsuya/"
+ },
+ {
+  "slug": "nishikawa_souta",
+  "name": "西川 創太",
+  "gym": "志真会館",
+  "url": "https://shootboxing.org/fighter/nishikawa_souta/"
+ },
+ {
+  "slug": "nishioka_renta",
+  "name": "西岡 蓮太",
+  "gym": "龍生塾",
+  "url": "https://shootboxing.org/fighter/nishioka_renta/"
+ },
+ {
+  "slug": "nitamizu_toshiyuki",
+  "name": "二田水 敏幸",
+  "gym": "NEX SPORTS",
+  "url": "https://shootboxing.org/fighter/nitamizu_toshiyuki/"
+ },
+ {
+  "slug": "noguchi_takahiro",
+  "name": "野口 貴大",
+  "gym": "シーザージム新小岩",
+  "url": "https://shootboxing.org/fighter/noguchi_takahiro/"
+ },
+ {
+  "slug": "nomoto_kiyoshi",
+  "name": "野元 清史",
+  "gym": "龍生塾",
+  "url": "https://shootboxing.org/fighter/nomoto_kiyoshi/"
+ },
+ {
+  "slug": "nomura_yuto",
+  "name": "野村 勇人",
+  "gym": "GONG-GYM坂戸",
+  "url": "https://shootboxing.org/fighter/nomura_yuto/"
+ },
+ {
+  "slug": "ogiri_fuyuka",
+  "name": "小桐 冬華",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/ogiri_fuyuka/"
+ },
+ {
+  "slug": "okamoto_shogo",
+  "name": "岡本 翔悟",
+  "gym": "風吹ジム",
+  "url": "https://shootboxing.org/fighter/okamoto_shogo/"
+ },
+ {
+  "slug": "okuyama_takahiro",
+  "name": "奥山 貴大",
+  "gym": "NEX SPORTS",
+  "url": "https://shootboxing.org/fighter/okuyama_takahiro/"
+ },
+ {
+  "slug": "ookuwa_hiroaki",
+  "name": "大桑 宏章",
+  "gym": "シーザージム渋谷",
+  "url": "https://shootboxing.org/fighter/ookuwa_hiroaki/"
+ },
+ {
+  "slug": "possiblek",
+  "name": "ポッシブルK",
+  "gym": "K'GROWTH",
+  "url": "https://shootboxing.org/fighter/possiblek/"
+ },
+ {
+  "slug": "rena",
+  "name": "RENA",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/rena/"
+ },
+ {
+  "slug": "rika_sakamoto",
+  "name": "坂本 梨香",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://shootboxing.org/fighter/rika_sakamoto/"
+ },
+ {
+  "slug": "ruku",
+  "name": "璃久",
+  "gym": "フリー",
+  "url": "https://shootboxing.org/fighter/ruku/"
+ },
+ {
+  "slug": "ryotaro",
+  "name": "RYOTARO",
+  "gym": "龍生塾",
+  "url": "https://shootboxing.org/fighter/ryotaro/"
+ },
+ {
+  "slug": "sakamoto_yuki",
+  "name": "坂本 優起",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/sakamoto_yuki/"
+ },
+ {
+  "slug": "sasaki_miyu",
+  "name": "佐々木 未夢",
+  "gym": "Sublime guys・GONG-GYM坂戸",
+  "url": "https://shootboxing.org/fighter/sasaki_miyu/"
+ },
+ {
+  "slug": "satachi_jun",
+  "name": "佐達 淳",
+  "gym": "シーザージム新小岩",
+  "url": "https://shootboxing.org/fighter/satachi_jun/"
+ },
+ {
+  "slug": "satou-syuto",
+  "name": "佐藤 執斗",
+  "gym": "フリー",
+  "url": "https://shootboxing.org/fighter/satou-syuto/"
+ },
+ {
+  "slug": "shimizu_satoru",
+  "name": "清水 悟",
+  "gym": "シーザージム新小岩",
+  "url": "https://shootboxing.org/fighter/shimizu_satoru/"
+ },
+ {
+  "slug": "shingo",
+  "name": "SHINGO",
+  "gym": "LEOジム",
+  "url": "https://shootboxing.org/fighter/shingo/"
+ },
+ {
+  "slug": "shinobu_amara",
+  "name": "忍アマラ―",
+  "gym": "SBモンゴル/SHINOBU fighting gym",
+  "url": "https://shootboxing.org/fighter/shinobu_amara/"
+ },
+ {
+  "slug": "shishido_hiroki",
+  "name": "宍戸 大樹",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/shishido_hiroki/"
+ },
+ {
+  "slug": "sugimoto_takeru",
+  "name": "杉本 健",
+  "gym": "龍生塾ファントム道場",
+  "url": "https://shootboxing.org/fighter/sugimoto_takeru/"
+ },
+ {
+  "slug": "suzuki-hiroaki",
+  "name": "鈴木 博昭",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "url": "https://shootboxing.org/fighter/suzuki-hiroaki/"
+ },
+ {
+  "slug": "suzuki_sou",
+  "name": "鈴木 颯",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/suzuki_sou/"
+ },
+ {
+  "slug": "takagi_kosuke",
+  "name": "都木 航佑",
+  "gym": "キャピタルレイズ fighting GlaNz",
+  "url": "https://shootboxing.org/fighter/takagi_kosuke/"
+ },
+ {
+  "slug": "takayama_atsushi",
+  "name": "高山 敦",
+  "gym": "ストライキングジムAres",
+  "url": "https://shootboxing.org/fighter/takayama_atsushi/"
+ },
+ {
+  "slug": "takeno_genki",
+  "name": "竹野 元稀",
+  "gym": "風吹ジム",
+  "url": "https://shootboxing.org/fighter/takeno_genki/"
+ },
+ {
+  "slug": "takeno_tenki",
+  "name": "竹野 展生",
+  "gym": "風吹ジム",
+  "url": "https://shootboxing.org/fighter/takeno_tenki/"
+ },
+ {
+  "slug": "tatsuya",
+  "name": "竜也",
+  "gym": "CRISS-CROSS",
+  "url": "https://shootboxing.org/fighter/tatsuya/"
+ },
+ {
+  "slug": "tezuka_shota",
+  "name": "手塚 翔太",
+  "gym": "Sublime guys・GONG-GYM坂戸",
+  "url": "https://shootboxing.org/fighter/tezuka_shota/"
+ },
+ {
+  "slug": "tingunshinkoiwa",
+  "name": "チングン新小岩ジム",
+  "gym": "シーザージム新小岩",
+  "url": "https://shootboxing.org/fighter/tingunshinkoiwa/"
+ },
+ {
+  "slug": "tomomi",
+  "name": "TOMOMI",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/tomomi/"
+ },
+ {
+  "slug": "tosamaru",
+  "name": "土佐丸",
+  "gym": "SB摂津富田ジム",
+  "url": "https://shootboxing.org/fighter/tosamaru/"
+ },
+ {
+  "slug": "tsutomu",
+  "name": "TSUTOMU",
+  "gym": "TIA辻道場",
+  "url": "https://shootboxing.org/fighter/tsutomu/"
+ },
+ {
+  "slug": "ueda_kazuya",
+  "name": "上田 一哉",
+  "gym": "シーザージム新小岩",
+  "url": "https://shootboxing.org/fighter/ueda_kazuya/"
+ },
+ {
+  "slug": "ueyama_seiki",
+  "name": "植山 征紀",
+  "gym": "ONE LIFE",
+  "url": "https://shootboxing.org/fighter/ueyama_seiki/"
+ },
+ {
+  "slug": "uno_airi",
+  "name": "宇野 あいり",
+  "gym": "立志會館",
+  "url": "https://shootboxing.org/fighter/uno_airi/"
+ },
+ {
+  "slug": "wada_syuto",
+  "name": "和田 修虎",
+  "gym": "橋本道場",
+  "url": "https://shootboxing.org/fighter/wada_syuto/"
+ },
+ {
+  "slug": "yoshida_kenshin",
+  "name": "吉田 謙伸",
+  "gym": "グラップリングシュートボクサーズ名古屋",
+  "url": "https://shootboxing.org/fighter/yoshida_kenshin/"
+ },
+ {
+  "slug": "yoshimitsu_murata",
+  "name": "村田 義光",
+  "gym": "シーザージム",
+  "url": "https://shootboxing.org/fighter/yoshimitsu_murata/"
+ },
+ {
+  "slug": "yurika",
+  "name": "ユリカ・グラップリングシュートボクサーズ",
+  "gym": "グラップリングシュートボクサーズ名古屋",
+  "url": "https://shootboxing.org/fighter/yurika/"
+ },
+ {
+  "slug": "yushi",
+  "name": "YUSHI",
+  "gym": "TEAM FOREST",
+  "url": "https://shootboxing.org/fighter/yushi/"
+ },
+ {
+  "slug": "zakariazouggary",
+  "name": "ザカリア・ゾウガリー",
+  "gym": "メルヴィン・ファイト＆フィットネス",
+  "url": "https://shootboxing.org/fighter/zakariazouggary/"
+ },
+ {
+  "slug": "髙橋-陸斗",
+  "name": "髙橋 陸斗",
+  "gym": "FIGHT SCIENCE",
+  "url": "https://shootboxing.org/fighter/髙橋-陸斗/"
+ }
+]

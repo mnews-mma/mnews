@@ -1,0 +1,48 @@
+# /kick 全ゲートの分類(週次自動更新ジョブ向け、2026-08-21)
+
+`.github/workflows/update-kick-data.yml`(週次自動更新)が実行する全kickゲートを、
+以下の2区分に分類する。これが無いと、週次実行のたびに「自然増型」のゲートが
+ratchetに引っかかって毎回止まり、そのたびに人間の判断を仰ぐことになる
+(実際に2026-08-21のローカル検証で`check:kick-official-profile-coverage`が
+これで引っかかった)。
+
+- **自然増型**: データ量(bout数・選手数)に比例して分子・分母とも自然に増える指標。
+  週次ジョブが自動でベースラインを更新してよい(ただし1回の増分に上限を設け、
+  上限を超えたら通常どおりゲート失敗+Issue)。
+- **実害型**: 1件の混入・欠落・巻き戻りがそのまま画面上の誤り(誤った選手名・誤った
+  決着・誤った日付・誤ったリンク等)になる指標。自動更新の対象にしない。ゲートが
+  落ちたら人間が中身を確認する(従来どおり)。
+
+現時点で自動更新の実装まで入れたのは`check:kick-official-profile-coverage`の1本のみ
+(2026-08-21実測で+4人の増加を検知、実害ではなく自然増と判断)。他の自然増型ゲート
+(`check:kick-coverage-gap`)は今回は分類のみでコード変更していない(必要になった
+時点で同じ形の許容増分を追加する)。
+
+## 分類一覧
+
+| ゲート | 区分 | 根拠(1行) |
+|---|---|---|
+| `check:kick-field-whitelist` | 実害型 | 検出しているのはwikitext残骸・暦上不正な日付・非かな文字混入等の**パース欠陥**そのもので、データ量が増えても「正しく増える」性質のものではない |
+| `check:kick-bout-count-consistency` | 実害型 | 一覧ページと詳細ページの試合数表示が食い違う=そのまま画面上の表示バグ、データ量に依存しない構造不変条件 |
+| `check:kick-coverage-gap` | 自然増型 | Wikipedia独立再抽出との突合で、公式側の掲載数が伸びれば我々の掲載数とのギャップも自然に増える(official-profile-coverageと同種の外部基準比較) |
+| `check:kick-official-profile-coverage` | 自然増型 | 団体公式サイトの生涯通算成績と掲載bout数の差分。2026-08-17の30人サンプル調査で真の欠落(パイプライン側の取りこぼし)は0件、大半が公式サイト側の構造的な乖離と判明済み。2026-08-21、+50/回の許容増分付きで自動更新化した |
+| `check:kick-identity-merge-risk` | 実害型 | 表記名一致だけの誤統合(別人を同一選手として結合)を検出するゲート、1件でも実際の誤表示に直結する |
+| `check:kick-opponent-resolution-staleness` | 実害型 | 保存済みのopponent_resolvedがfighters.jsonから再計算した値と食い違う=リンク先が古いまま、データ量とは無関係の整合性チェック |
+| `check:kick-mma-contamination` | 実害型 | MMAルールの試合が誤って立ち技として掲載される混入の検出、1件でも誤分類 |
+| `check:kick-event-title-prose` | 実害型 | 大会名フィールドに地の文(散文)が混入する既知バグクラスの検出、パース欠陥 |
+| `check:kick-opponent-gym-suffix` | 実害型 | 対戦相手欄の所属語未分離=表示上そのまま残る、パース欠陥 |
+| `check:kick-opponent-name-mismatch` | 実害型 | 表示名と解決先選手の登録名が食い違う=誤った選手にリンクしているのと同義 |
+| `check:kick-wikitext-mirror-sync` | 実害型 | Python実装とTS移植の同期チェック、コードの一致検証でありデータ量と無関係 |
+| `check:kick-pipeline-mirror-sync` | 実害型 | data/kickとscripts/standup-pipelineの内容一致検証、常にゼロ件が正常な構造不変条件 |
+| `check:kick-manual-edit-drift` | 実害型 | 人間が個別に検証・登録した修正が巻き戻っていないかの検証、1件でも既知の誤りが復活する実害 |
+| `check:kick-method-label-whitelist` | 実害型 | 決着表示(methodLabel)がwhitelist外の値になる=画面に大会レポートの散文がそのまま出る表示バグ |
+| `check:kick-decision-score-perspective` | 実害型 | 判定スコアの視点(誰から見たスコアか)の正しさ、1件でも誤表示 |
+| `check:kick-event-date-year-mismatch` | 実害型 | 大会名に埋め込まれた年とdateフィールドの年の食い違い検出、1件でも誤った日付表示 |
+| `check:kick-nocontest-result-mismatch` | 実害型 | ノーコンテストの構造化resultとmethod_rawの食い違い検出、1件でも誤った勝敗表示 |
+| `check:kick-one-official-source-precedence` | 実害型 | ONE公式データの優先順位に関する既知3件のゼロ件ゲート、対象がONE(週次ジョブの13ソース外)のためこのジョブでは変化しない |
+| `check:kick-one-manifest-coverage` | 実害型 | ONE公式選手の欠落検出(ゼロ件ゲート、登録例外を除く)、対象がONE(週次ジョブの13ソース外)のためこのジョブでは変化しない |
+| `check:kick-unknown-result-fallback` | 実害型 | resultが解決不能でunknownにフォールバックする件数、パース品質の指標で1件ずつ個別確認が要る |
+| `check:kick-kanji-variant-resolution` | 実害型 | 旧字体/異体字の名寄せテーブルに関する検証、1件でも誤った統合・未統合につながる |
+| `check:kick-fighters-frozen` | 実害型 | 2026-08-21新設。名簿(fighters.json/fighters.csv)がHEADコミット時点から1バイトでも変化したら失敗する構造不変条件(週次ジョブは名簿を凍結対象にしたため、変化=想定外の巻き戻り) |
+| `check:kick-label-text-leak` | 実害型 | 内部処理用ラベル文字列が表示テキストへ連結漏れする既知バグクラスの検出、1件でも実際の表示バグ |
+| `test:kick-*`(5本) | 対象外 | 固定フィクスチャによるユニットテストで、データ量に依存せず常に同じ結果になる(自然増型/実害型どちらの軸にも当てはまらない) |

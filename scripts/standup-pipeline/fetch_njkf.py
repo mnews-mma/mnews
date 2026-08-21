@@ -5,6 +5,7 @@
    実行方法: cd scripts/standup-pipeline && python3 fetch_njkf.py
 """
 import json
+import os
 import re
 import sys
 import time
@@ -13,7 +14,12 @@ sys.path.insert(0, ".")
 from fetch_common import fetch
 
 OUT_DIR = "raw/njkf_events"
-INDEX_PATH = "raw/njkf_index/event_urls.json"
+# 2026-08-21追加: GitHub Actionsの新規runnerはraw/が空(サブディレクトリも無い)ため、
+# 書き込み前に作る(ローカルの使い回しraw/では暗黙に存在していた)。
+os.makedirs(OUT_DIR, exist_ok=True)
+# cache/(コミット済み、raw/の外)から読む。discover()のライブ発見と和集合を取る
+# ための既知一覧(2026-08-21、build.pyのCACHE_DIRコメント参照)。
+INDEX_PATH = "cache/njkf_index/event_urls.json"
 
 
 def discover():

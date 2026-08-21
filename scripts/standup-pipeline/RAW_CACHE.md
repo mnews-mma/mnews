@@ -1,5 +1,77 @@
 # `raw/`キャッシュについて
 
+## 2026-08-21追記: 週次自動更新ジョブ新設に伴う設計変更(このセクションが最新の運用)
+
+`.github/workflows/update-kick-data.yml`(週次自動更新)を新設するにあたり、`build.py`が
+無条件で要求していた以下11ファイルの生成手段がリポジトリのどこにも存在しないことが
+判明した(空の`raw/`から`python3 build.py`を実行すると13ソース中1つも完走できない、
+という致命的な事実。詳細調査結果はこのセッションの会話ログ参照):
+
+`wp_kana.json`・`kana_from_romaji.json`・`wp_parsed.json`・`k1_parsed.json`・
+`rise_parsed.json`・`sb_parsed.json`・`ko_parsed.json`・`k1_brands.json`・
+`rise_dob.json`・`sb_dob.json`・`ko_dob.json`・`k1_delisted_merges.json`・
+`ko_delisted_merges.json`(計13ファイル)、および`deepkick_index/index.json`・
+`njkf_index/event_urls.json`(既知イベント一覧、これも生成手段が無い)。
+
+これらは全て**生HTMLではなく小さな派生JSON**(名前・かな・所属・生年月日等の構造化
+済みレコード、合計約824KB)だったため、**`raw/`の外(`scripts/standup-pipeline/cache/`、
+`.gitignore`対象外)へ退避してコミットした**。`build.py`・`ingest_deepkick.py`・
+`ingest_njkf.py`・`fetch_deepkick.py`・`fetch_njkf.py`の参照先もそちらに変更済み。
+612MBの生HTML本体(tar.gz)はコミットしていない(各団体公式サイトの生データであり、
+publicリポジトリでの公開はリスクが見合わないとユーザー判断済み)。
+
+この変更により、**`raw/`自体はこのジョブでは一切永続化しない**(`actions/cache`も
+GitHub Releaseも使わない)。週次ジョブは毎回`raw/`をゼロから作り、13ソースの
+`fetch_*.py`をライブ実行し、ジョブ終了とともに`raw/`を破棄する。`fetch_k1.py`・
+`fetch_knockout.py`は従来「既存`raw/`のファイル名(glob)」から再取得対象を復元する
+設計だったため、空の`raw/`では0件しか取得できなかった(2026-08-21修正: `cache/`内の
+名簿(`k1_parsed.json`・`ko_parsed.json`)のURLから既知ID/slugを導出する方式に変更)。
+また全13本の`fetch_*.py`は`OUT_DIR`が存在しない前提で`os.makedirs`が無く、ローカルの
+使い回し`raw/`では暗黙に動いていたが、真に空の`raw/`(GitHub Actionsの新規runner)では
+全て`FileNotFoundError`で落ちることも判明し、全13本に`os.makedirs(OUT_DIR, exist_ok=True)`
+を追加済み(ローカルでのdry-run実測で発見・修正)。
+
+**したがって、以下の「2026-08-18時点」の記述(tar.gzが唯一の復元手段、という結論)は
+週次自動更新ジョブのスコープでは既に過去のものである。** ただし以下の点は今も有効:
+- `cache/`配下13ファイルそのものの生成手段は依然として存在しない(このコミットは
+  "起動可能にする"だけで、生成スクリプトの再構築はしていない、今回は明示的に
+  別タスクとする判断)。`cache/`の内容を将来更新する必要が生じた場合、今のところ
+  人力で更新するしかない。
+- DEEP☆KICK(`cache/deepkick_index/index.json`、既知118件)は一覧ページがJS描画のため
+  ライブでの新規発見手段が無く、この既知件数が事実上の恒久的な母集団上限になる
+  (名簿自動拡張は今回のジョブのスコープ外という判断と整合)。
+- K-1のID空間走査(1,196件個別プローブによる退所選手の悉皆回収)・KNOCK OUTの大会一覧
+  発見・NKB旧サイト(2012〜2018年、35ページ)は、いずれも現在のフェッチャでは再現
+  できない(前者2つは「既知の名簿の範囲でのみ再取得」に限定、NKB旧サイトは
+  完全凍結)。この意味で、tar.gz(`~/mnews-data-archive/`)は依然としてこれらの
+  "初回発見"作業の記録として歴史的価値を持つ。
+
+## 2026-08-21追記その2: fighters.json/fighters.csvも凍結対象(cache/名簿スナップショットの86件ずれ)
+
+`cache/`の名簿スナップショット(2026-08-18時点)は、コミット済み`data/kick/fighters.json`
+と**86件ずれている**(2026-08-21実測、`data/kick/kickRosterCacheDriftAudit.json`に全件
+記録済み)。内訳: kana(読み仮名)消失50・sources(統合有無)13・aliases(別名統合)10・
+orgs 5・gym 1、選手レコードの分裂5、コミット済み側のみに存在6、cache/側再生成のみに
+存在11。これは`raw/`の57行の版差と同じ「退避したスナップショットが、現行コミット済み
+データを生成した時点の入力と完全には一致しない」という既知の限界の一種で、cache/名簿の
+生成手段が無い以上、解消手段も無い。
+
+**将来cache/配下の名簿ファイルを更新する場合、無条件で上書きしてはいけない。** 86件の
+差分を個別に確認し、コミット済み側が正しい場合はcache/側を個別に修正すること。
+
+このため、週次自動更新ジョブ(`.github/workflows/update-kick-data.yml`)は
+`fighters.json`/`fighters.csv`も凍結対象にした(RIZIN・Wikipedia・NKB旧サイトと
+同じ扱い)。`scripts/standup-pipeline/build.py`は`KICK_SKIP_FROZEN_SOURCES=1`の間、
+名簿生成ロジック(`generate_roster.py`、旧・build.py本体にあった約380行)自体を
+importしない。「名簿の自動拡張はしない」がこのジョブのスコープ外事項であるため、
+そもそも名簿を再生成する必要が無いという判断による。恒久ゲート
+(`check-kick-fighters-frozen-gate.ts`)がHEADコミット時点と1バイトでも異なれば
+ビルドを失敗させる。
+
+以下、2026-08-18時点の元の記述(tar.gz退避の経緯・既知の限界):
+
+---
+
 **★重要(将来のセッションへ): このtar.gzは「これさえあれば現行データを完全に復元できるバックアップ」ではない。** 単体から`python3 build.py`を実行すると、13ソース中8ソース+RIZINは現行`data/kick/`とバイト単位で一致するが、**残り5ソース(RISE・Bigbang・NKB・NJKF・DEEP☆KICK)は合計57行が現行データと食い違う**(詳細は「既知の限界」節)。原因はraw版差(退避時点のrawが、現行データを生成した時点のrawより古い/一部欠けている)であり、**現行データを実際に生成した時点のraw自体はもう存在しない可能性が高い**(このマシン上のどのworktreeにも、今回退避した版より新しいrawは見つかっていない)。「このtar.gzを展開してbuild.pyを回せば元通りになる」と思い込んで無条件に上書きしないこと。57行の食い違いを許容できるかは都度判断する。
 
 このディレクトリ(`scripts/standup-pipeline/`)配下の`ingest_*.py`・`build.py`はいずれも、公式サイトから取得した生HTML/生JSONをローカルの`raw/`ディレクトリから読み込む**パーサ**であり、ネットワークへのフェッチ処理(`requests.get`・`urllib.request.urlopen`等)は含んでいない(唯一の例外は`fetch_wikitext_cache.py`、MediaWiki APIを叩く一回限りのフェッチスクリプト)。

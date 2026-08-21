@@ -10,7 +10,11 @@ import bouts as _bouts
 
 U = lambda s: re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s))).strip()
 
-IDX = json.load(open('raw/deepkick_index/index.json'))
+# raw/deepkick_index/index.json(既知118件)を生成する手段が無い(2026-08-21調査、
+# CACHE_DIRコメント参照 build.py 冒頭)。cache/deepkick_index/index.json(コミット済み)
+# から読む。DEEP☆KICKは一覧ページがクライアントサイドレンダリングのため、この118件から
+# 母集団を広げる自動手段が無く、恒久的にこの既知件数が上限になる(名簿自動拡張は対象外)。
+IDX = json.load(open('cache/deepkick_index/index.json'))
 F = json.load(open('fighters.json'))
 
 

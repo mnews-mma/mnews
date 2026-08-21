@@ -1,0 +1,235 @@
+name: Update kick data (13ソース週次)
+
+# 立ち技(/kick)の13ソース(K-1/Krush/Krush-EX・RISE・SHOOT BOXING・KNOCK OUT・
+# Bigbang・Stand up・KROSS×OVER・SNKA・JKA・HoostCup・NJKF・NKB・DEEP☆KICK)を
+# 週次で取得し、build.py → build-kick-data.ts → 全kickゲートを実行する。
+# ゲートが通った場合のみPRを作成する(自動マージはしない)。差分ゼロならPRを
+# 作らず終了する。ゲートが落ちた場合はPRを作らず、update-fighter-records.ymlの
+# predeployゲートと同型の「失敗Issue」を立てて終了する(label: kick-batch-gate-blocked)。
+#
+# RIZIN・Wikipediaはこのジョブの対象外(凍結)。scripts/standup-pipeline/build.pyの
+# KICK_SKIP_FROZEN_SOURCES=1により、この2ソースの再生成自体を行わない
+# (data/kick/bouts_rizin.json・bouts_wikipedia.jsonは前回コミットのまま一切変更しない)。
+# NKB旧サイト分(2012〜2018年、生成手段が無い)も同様に凍結し、
+# scripts/standup-pipeline/promote_to_data_kick.pyが前回コミットから引き継ぐ。
+#
+# raw/の扱い(2026-08-21決定、scripts/standup-pipeline/RAW_CACHE.md参照): actions/cache
+# もGitHub Releaseも使わない。scripts/standup-pipeline/raw/(.gitignore対象)は
+# このジョブの実行中にゼロから取得し、ジョブ終了とともに破棄する。これが成立する
+# 理由は、build.pyが無条件で要求していた名簿系派生JSON(生成スクリプトが無く
+# 実体はこのリポジトリのraw/にしか無かった)を scripts/standup-pipeline/cache/
+# (コミット済み、.gitignore対象外)へ退避し、build.pyの参照先をそちらへ変更した
+# ため。各fetch_*.pyもraw/の前回状態(既知ID一覧の復元にglobを使う設計)に
+# 依存しないよう改修済み(cache/内の名簿からID一覧を導出する、またはライブ
+# 一覧発見に切り替える)。唯一DEEP☆KICKのみ、cache/deepkick_index/index.json
+# (既知118件)が事実上の母集団上限になる(一覧ページがJS描画のため新規発見
+# 手段が無い。名簿自動拡張はこのジョブの対象外)。
+#
+# 同一ホストへの並列アクセスはしない(fetch_common.pyが単一プロセス・単一
+# スレッドで順次実行、ホストごとにスリープを挟む設計。このワークフローも
+# 13ソースを1つずつ順番に実行する)。
+
+on:
+  schedule:
+    # 毎週木曜 JST 4:00 (UTC水曜19:00)。既存の日次バッチ(23:00 update-org-records・
+    # 2:30 update-fighter-records・0:17 update-org-rankings・6:00
+    # check-org-schedule-diff、いずれもJST)、既存の週次バッチ
+    # (org-ranking-candidates-weekly-report.yml、月曜9:00 JST)のいずれとも
+    # 時刻が重ならない枠として選んだ。このジョブは自身の作業ブランチにのみ
+    # push しmainを直接触らないため、他バッチとのpush競合リスクは無く、
+    # update-org-records.ymlのような「実行中run照会」待機ステップは不要。
+    - cron: "0 19 * * 3"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "true: 取得・ゲートまで実行しPRを作らない(検証用)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: update-kick-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    # 実測(2026-08-21、ローカル13ソース逐次取得+build+ゲート)を参考に、
+    # ネットワーク不調によるリトライ積み重ねの最悪ケースを見込んで余裕を持たせる。
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Snapshot kick stats before fetch (現状のdata/kick/に対して実行)
+        run: npm run kick:data 2>&1 | tee /tmp/kick-stats-before.log
+
+      - name: Fetch 13 sources sequentially (同一ホスト並列なし、失敗しても次のソースへ進む)
+        working-directory: scripts/standup-pipeline
+        run: |
+          mkdir -p raw
+          : > /tmp/kick-fetch-failures.txt
+          for s in bigbang standup krossover snka jka hoostcup deepkick njkf nkb k1 rise sb knockout; do
+            echo "===== FETCH START: $s $(date -u +%H:%M:%S)UTC ====="
+            if ! python3 "fetch_${s}.py"; then
+              echo "$s: fetch_${s}.py が異常終了した" >> /tmp/kick-fetch-failures.txt
+            fi
+            echo "===== FETCH END: $s $(date -u +%H:%M:%S)UTC ====="
+          done
+          echo "----- 取得失敗一覧 -----"
+          cat /tmp/kick-fetch-failures.txt || echo "(なし)"
+
+      - name: Run build.py (RIZIN/Wikipediaは凍結・対象外、KICK_SKIP_FROZEN_SOURCES=1)
+        working-directory: scripts/standup-pipeline
+        env:
+          KICK_SKIP_FROZEN_SOURCES: "1"
+        run: python3 build.py
+
+      - name: Promote pipeline output to data/kick/ (NKB旧サイト分は前回コミットから引き継ぎ)
+        working-directory: scripts/standup-pipeline
+        run: python3 promote_to_data_kick.py | tee /tmp/kick-promote-report.json
+
+      - name: Build kick derived data (build-kick-data.ts)
+        run: npm run kick:data 2>&1 | tee /tmp/kick-stats-after.log
+
+      - name: Run all kick gates
+        id: gates
+        run: |
+          set -o pipefail
+          {
+            npm run check:kick-field-whitelist &&
+            npm run check:kick-bout-count-consistency &&
+            npm run check:kick-coverage-gap &&
+            npm run check:kick-official-profile-coverage &&
+            npm run check:kick-identity-merge-risk &&
+            npm run check:kick-opponent-resolution-staleness &&
+            npm run check:kick-mma-contamination &&
+            npm run check:kick-event-title-prose &&
+            npm run check:kick-opponent-gym-suffix &&
+            npm run check:kick-opponent-name-mismatch &&
+            npm run check:kick-wikitext-mirror-sync &&
+            npm run check:kick-pipeline-mirror-sync &&
+            npm run check:kick-manual-edit-drift &&
+            npm run check:kick-method-label-whitelist &&
+            npm run check:kick-decision-score-perspective &&
+            npm run check:kick-event-date-year-mismatch &&
+            npm run check:kick-nocontest-result-mismatch &&
+            npm run check:kick-one-official-source-precedence &&
+            npm run check:kick-one-manifest-coverage &&
+            npm run check:kick-unknown-result-fallback &&
+            npm run check:kick-kanji-variant-resolution &&
+            npm run check:kick-fighters-frozen &&
+            npm run test:kick-name-normalize &&
+            npm run test:kick-gym-suffix-split &&
+            npm run test:kick-nickname-dedupe &&
+            npm run test:kick-wikitext-nested-template &&
+            npm run test:kick-wikitable-cell-attrs &&
+            next build &&
+            npm run check:kick-label-text-leak
+          } 2>&1 | tee /tmp/kick-gate.log
+
+      - name: Report gate result (open/close tracking issue)
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          GATE_OUTCOME: ${{ steps.gates.outcome }}
+        with:
+          script: |
+            const fs = require('fs');
+            const title = '/kick 週次自動更新ジョブ停止中: ゲート失敗';
+            const label = 'kick-batch-gate-blocked';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const outcome = process.env.GATE_OUTCOME;
+            if (outcome !== 'success' && outcome !== 'failure') {
+              console.log(`gates step did not run to completion (outcome=${outcome}); skipping issue tracking.`);
+              return;
+            }
+            const openIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: label, per_page: 100,
+            });
+            const existing = openIssues.data.find((i) => i.title === title && !i.pull_request);
+            if (outcome === 'success') {
+              if (existing) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number,
+                  body: `ゲートを再実行し成功。 [ワークフロー実行](${runUrl})`,
+                });
+                await github.rest.issues.update({
+                  owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, state: 'closed',
+                });
+                console.log(`Closed resolved issue #${existing.number}`);
+              } else {
+                console.log('Gate passed, no existing issue. Nothing to do.');
+              }
+              return;
+            }
+            let body = '';
+            try { body = fs.readFileSync('/tmp/kick-gate.log', 'utf8'); } catch (e) { body = `(ログ取得失敗: ${e.message})`; }
+            const footer = [
+              '',
+              'このジョブはkickゲートの失敗によりPRを作成しませんでした。data/kick/への変更はワークツリー上に残っていますが、コミットもプッシュもしていません。',
+              '',
+              `_このIssueは [ワークフロー実行](${runUrl}) により自動生成/更新されました。_`,
+            ].join('\n');
+            const maxBodyLen = 65536 - footer.length - 200;
+            if (body.length > maxBodyLen) body = `${body.slice(0, maxBodyLen)}\n\n...(文字数上限のため以下省略)`;
+            const fullBody = `\`\`\`\n${body}\n\`\`\`${footer}`;
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, body: fullBody,
+              });
+              console.log(`Updated existing issue #${existing.number}`);
+            } else {
+              const created = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo, title, body: fullBody, labels: [label],
+              });
+              console.log(`Created new issue #${created.data.number}`);
+            }
+
+      - name: Check for diff
+        if: steps.gates.outcome == 'success'
+        id: diff
+        run: |
+          if git diff --quiet -- data/kick/ scripts/standup-pipeline/bouts_*.json scripts/standup-pipeline/fighters.json scripts/standup-pipeline/fighters.csv; then
+            echo "has_diff=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_diff=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Render PR body
+        if: steps.gates.outcome == 'success' && steps.diff.outputs.has_diff == 'true'
+        run: |
+          python3 scripts/standup-pipeline/render_weekly_pr_body.py \
+            /tmp/kick-promote-report.json /tmp/kick-fetch-failures.txt \
+            /tmp/kick-stats-before.log /tmp/kick-stats-after.log \
+            scripts/standup-pipeline "$(pwd)" > /tmp/kick-pr-body.md
+
+      - name: Open PR
+        if: steps.gates.outcome == 'success' && steps.diff.outputs.has_diff == 'true' && github.event.inputs.dry_run != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "mnews-bot"
+          git config user.email "actions@users.noreply.github.com"
+          BRANCH="chore/kick-weekly-update-$(date -u +%Y%m%d-%H%M)"
+          git checkout -b "$BRANCH"
+          git add data/kick/ scripts/standup-pipeline/bouts_*.json scripts/standup-pipeline/fighters.json scripts/standup-pipeline/fighters.csv
+          git commit -m "chore(kick): weekly data update ($(date -u +%Y-%m-%d))"
+          git push -u origin "$BRANCH"
+          gh pr create --title "chore(kick): 週次データ更新 $(date -u +%Y-%m-%d)" \
+            --body-file /tmp/kick-pr-body.md \
+            --label "kick-weekly-update"
+
+      - name: Dry-run summary (PRを作らなかった場合)
+        if: steps.gates.outcome == 'success' && steps.diff.outputs.has_diff == 'false'
+        run: echo "差分ゼロ。PRは作成しません。"

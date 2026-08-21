@@ -1,0 +1,314 @@
+{
+ "世愛": {
+  "name": "世愛",
+  "kana": "セア",
+  "kana_source": "https://rise-rc.com/fighter/sea/",
+  "romaji": "Sea"
+ },
+ "乱牙": {
+  "name": "乱牙",
+  "kana": "ランガ",
+  "kana_source": "https://knockoutkb.com/fighters/ranga_441",
+  "romaji": "RANGA"
+ },
+ "仁": {
+  "name": "仁",
+  "kana": "ジン",
+  "kana_source": "https://rise-rc.com/fighter/jin-2/",
+  "romaji": "Jin"
+ },
+ "仙波昌希": {
+  "name": "仙波昌希",
+  "kana": "センバ マサキ",
+  "kana_source": "https://rise-rc.com/fighter/senba_masaki/",
+  "romaji": "Masaki Senba"
+ },
+ "力也": {
+  "name": "力也",
+  "kana": "リキヤ",
+  "kana_source": "https://knockoutkb.com/fighters/rikiya",
+  "romaji": "RIKIYA"
+ },
+ "力哉": {
+  "name": "力哉",
+  "kana": "リキヤ",
+  "kana_source": "https://rise-rc.com/fighter/rikiya/",
+  "romaji": "Rikiya"
+ },
+ "和田哲平": {
+  "name": "和田哲平",
+  "kana": "ワダ テッペイ",
+  "kana_source": "https://rise-rc.com/fighter/wada_teppei/",
+  "romaji": "Teppei Wada"
+ },
+ "大雅": {
+  "name": "大雅",
+  "kana": "タイガ",
+  "kana_source": "https://rise-rc.com/fighter/taiga/",
+  "romaji": "Taiga"
+ },
+ "山崎希恵": {
+  "name": "山崎 希恵",
+  "kana": "ヤマザキ キエ",
+  "kana_source": "https://knockoutkb.com/fighters/yamazaki_kie_487",
+  "romaji": "YAMAZAKI Kie"
+ },
+ "山川賢誠": {
+  "name": "山川賢誠",
+  "kana": "ヤマカワ ケンセイ",
+  "kana_source": "https://rise-rc.com/fighter/yamakawa_kensei/",
+  "romaji": "Kensei Yamakawa"
+ },
+ "岩政泰樹": {
+  "name": "岩政泰樹",
+  "kana": "イワマサ タイキ",
+  "kana_source": "https://rise-rc.com/fighter/iwamasa_taiki/",
+  "romaji": "Taiki Iwamasa"
+ },
+ "島田美咲": {
+  "name": "島田美咲",
+  "kana": "シマダ ミサキ",
+  "kana_source": "https://rise-rc.com/fighter/shimada_misaki/",
+  "romaji": "Misaki Shimada"
+ },
+ "嵐舞": {
+  "name": "嵐舞",
+  "kana": "ランマ",
+  "kana_source": "https://rise-rc.com/fighter/ranma/",
+  "romaji": "Ranma"
+ },
+ "川島えりさ": {
+  "name": "川島 えりさ",
+  "kana": "カワシマ エリサ",
+  "kana_source": "https://knockoutkb.com/fighters/kawashima_erisa_269",
+  "romaji": "KAWASHIMA Erisa"
+ },
+ "希羅": {
+  "name": "希羅",
+  "kana": "キラ",
+  "kana_source": "https://knockoutkb.com/fighters/kira_73",
+  "romaji": "KIRA"
+ },
+ "彩花": {
+  "name": "彩花",
+  "kana": "サヤカ",
+  "kana_source": "https://rise-rc.com/fighter/sayaka-2/",
+  "romaji": "Sayaka"
+ },
+ "惺也": {
+  "name": "惺也",
+  "kana": "セイヤ",
+  "kana_source": "https://rise-rc.com/fighter/seiya/",
+  "romaji": "Seiya"
+ },
+ "愛弥": {
+  "name": "愛弥",
+  "kana": "アミ",
+  "kana_source": "https://rise-rc.com/fighter/ami/",
+  "romaji": "Ami"
+ },
+ "愛来": {
+  "name": "愛来",
+  "kana": "アイラ",
+  "kana_source": "https://knockoutkb.com/fighters/aira_419",
+  "romaji": "AIRA"
+ },
+ "慧": {
+  "name": "慧",
+  "kana": "ケイ",
+  "kana_source": "https://knockoutkb.com/fighters/kei_517",
+  "romaji": "KEI"
+ },
+ "拳志": {
+  "name": "拳志",
+  "kana": "ケンシ",
+  "kana_source": "https://rise-rc.com/fighter/kenshi/",
+  "romaji": "Kenshi"
+ },
+ "新井昂弥": {
+  "name": "新井 昂弥",
+  "kana": "アライ タカヤ",
+  "kana_source": "https://knockoutkb.com/fighters/arai_takaya_179",
+  "romaji": "ARAI Takaya"
+ },
+ "昌也": {
+  "name": "昌也",
+  "kana": "マサヤ",
+  "kana_source": "https://rise-rc.com/fighter/masaya/",
+  "romaji": "Masaya"
+ },
+ "林さん": {
+  "name": "林さん",
+  "kana": "ハヤシサン",
+  "kana_source": "https://knockoutkb.com/fighters/hayashisan_306",
+  "romaji": "HAYASHISAN"
+ },
+ "柴山藍": {
+  "name": "柴山 藍",
+  "kana": "シバヤマ ラン",
+  "kana_source": "https://rise-rc.com/fighter/shibayama_ran/",
+  "romaji": "Ran Shibayama"
+ },
+ "河崎鎧輝": {
+  "name": "河崎 鎧輝",
+  "kana": "カワサキ カイキ",
+  "kana_source": "https://knockoutkb.com/fighters/kawasaki_kaiki_83",
+  "romaji": "KAWASAKI Kaiki"
+ },
+ "渡部太基": {
+  "name": "渡部 太基",
+  "kana": "ワタベ ダイキ",
+  "kana_source": "https://knockoutkb.com/fighters/watabe_daiki",
+  "romaji": "WATABE Daiki"
+ },
+ "相見梨夏": {
+  "name": "相見梨夏",
+  "kana": "アイミ リカ",
+  "kana_source": "https://rise-rc.com/fighter/aimi_rika/",
+  "romaji": "Rika Aimi"
+ },
+ "石原海星": {
+  "name": "石原 海星",
+  "kana": "イシハラ カイセイ",
+  "kana_source": "https://knockoutkb.com/fighters/ishihara_kaisei_603",
+  "romaji": "ISHIHARA Kaisei"
+ },
+ "石川泰市": {
+  "name": "石川泰市",
+  "kana": "イシカワ タイチ",
+  "kana_source": "https://rise-rc.com/fighter/ishikawa_taichi/",
+  "romaji": "Taichi Ishikawa"
+ },
+ "石田迅": {
+  "name": "石田 迅",
+  "kana": "イシダ ジン",
+  "kana_source": "https://rise-rc.com/fighter/ishida_jin/",
+  "romaji": "Jin Ishida"
+ },
+ "礼司": {
+  "name": "礼司",
+  "kana": "レイジ",
+  "kana_source": "https://rise-rc.com/fighter/reiji/",
+  "romaji": "Reiji"
+ },
+ "神太": {
+  "name": "神太",
+  "kana": "カンタ",
+  "kana_source": "https://rise-rc.com/fighter/kanta/",
+  "romaji": "Kanta"
+ },
+ "秀樹": {
+  "name": "秀樹",
+  "kana": "ヒデキ",
+  "kana_source": "https://rise-rc.com/fighter/hideki/",
+  "romaji": "Hideki"
+ },
+ "竹田哲紳": {
+  "name": "竹田 哲紳",
+  "kana": "タケダ テッシン",
+  "kana_source": "https://knockoutkb.com/fighters/takeda_tesshin_151",
+  "romaji": "TAKEDA Tesshin"
+ },
+ "紀空": {
+  "name": "紀空",
+  "kana": "キラ",
+  "kana_source": "https://rise-rc.com/fighter/kira/",
+  "romaji": "Kira"
+ },
+ "紗彩": {
+  "name": "紗彩",
+  "kana": "サアヤ",
+  "kana_source": "https://rise-rc.com/fighter/saaya/",
+  "romaji": "Saaya"
+ },
+ "紗耶香": {
+  "name": "紗耶香",
+  "kana": "サヤカ",
+  "kana_source": "https://rise-rc.com/fighter/sayaka/",
+  "romaji": "Sayaka"
+ },
+ "綾芽": {
+  "name": "綾芽",
+  "kana": "アヤメ",
+  "kana_source": "https://rise-rc.com/fighter/ayame/",
+  "romaji": "Ayame"
+ },
+ "羅司": {
+  "name": "羅司",
+  "kana": "ライゼ",
+  "kana_source": "https://rise-rc.com/fighter/raize/",
+  "romaji": "Raize"
+ },
+ "羅粋": {
+  "name": "羅粋",
+  "kana": "ライキ",
+  "kana_source": "https://rise-rc.com/fighter/raiki/",
+  "romaji": "Raiki"
+ },
+ "蛇鬼将矢": {
+  "name": "蛇鬼将矢",
+  "kana": "ジャキ マサヤ",
+  "kana_source": "https://rise-rc.com/fighter/jaki_masaya/",
+  "romaji": "Masaya Jaki"
+ },
+ "谷田貝海吏": {
+  "name": "谷田貝海吏",
+  "kana": "ヤタガイ カイリ",
+  "kana_source": "https://rise-rc.com/fighter/yatagai-kairi/",
+  "romaji": "Kairi Yatagai"
+ },
+ "金ちゃん": {
+  "name": "金ちゃん",
+  "kana": "キンチャン",
+  "kana_source": "https://rise-rc.com/fighter/kinchan/",
+  "romaji": "Kinchan"
+ },
+ "銀二": {
+  "name": "銀二",
+  "kana": "ギンジ",
+  "kana_source": "https://rise-rc.com/fighter/ginji/",
+  "romaji": "Ginji"
+ },
+ "銀次": {
+  "name": "銀次",
+  "kana": "ギンジ",
+  "kana_source": "https://knockoutkb.com/fighters/ginji_243",
+  "romaji": "GINJI"
+ },
+ "阪部愛来": {
+  "name": "阪部愛来",
+  "kana": "サカベ アイラ",
+  "kana_source": "https://rise-rc.com/fighter/sakabe_aira/",
+  "romaji": "Aira Sakabe"
+ },
+ "雅志": {
+  "name": "雅志",
+  "kana": "マサシ",
+  "kana_source": "https://rise-rc.com/fighter/masashi/",
+  "romaji": "Masashi"
+ },
+ "雅治": {
+  "name": "雅治",
+  "kana": "マサジ",
+  "kana_source": "https://knockoutkb.com/fighters/masaji",
+  "romaji": "MASAJI"
+ },
+ "風間大輝": {
+  "name": "風間大輝",
+  "kana": "カザマ ダイキ",
+  "kana_source": "https://rise-rc.com/fighter/kazama_daiki/",
+  "romaji": "Daiki Kazama"
+ },
+ "高木晟至": {
+  "name": "高木 晟至",
+  "kana": "タカギ セイジ",
+  "kana_source": "https://knockoutkb.com/fighters/takagi_seiji_364",
+  "romaji": "TAKAGI Seiji"
+ },
+ "麗也": {
+  "name": "麗也",
+  "kana": "レイヤ",
+  "kana_source": "https://rise-rc.com/fighter/reiya/",
+  "romaji": "Reiya"
+ }
+}

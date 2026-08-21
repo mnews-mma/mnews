@@ -222,6 +222,9 @@ def extract_meta(html_text, eid_hint=''):
         pub = re.search(r'"datePublished"\s*:\s*"(\d{4})-\d{2}-\d{2}', html_text)
         if dm4 and pub:
             date = '%s-%02d-%02d' % (int(pub.group(1)), int(dm4.group(1)), int(dm4.group(2)))
+    # 2026-08-21追加: 上記いずれかの経路で構成された日付が暦上存在しない場合の救済
+    # (実例: 記事タイトル自体の誤記「11月31日 DUEL.22 試合結果」)。_bouts.py参照。
+    date = _bouts.resolve_invalid_calendar_date(date, html_text)
     event = None
     h2 = re.search(r'<h2>(.*?)</h2>', body, re.S)
     if h2:
@@ -302,8 +305,12 @@ def build():
                         events=len(files), per_event_bouts=per_event_bouts)
 
 
+# raw/njkf_index/event_urls.json(既知一覧)を生成する手段が無い(2026-08-21調査、
+# CACHE_DIRコメント参照 build.py 冒頭)。cache/njkf_index/event_urls.json(コミット済み)
+# から読む。fetch_njkf.pyのdiscover()はライブサイトから全量発見できるため、この
+# 既知一覧は主に和集合の一部として使われるだけで、母集団拡大自体はブロックされない。
 URLMAP = {}
-for _u in json.load(open('raw/njkf_index/event_urls.json')):
+for _u in json.load(open('cache/njkf_index/event_urls.json')):
     _id = re.sub(r'^https://www\.njkf\.info/result\d{0,4}/', '', _u)[:-5]
     URLMAP[_id] = _u
 
