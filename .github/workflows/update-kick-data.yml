@@ -167,7 +167,7 @@ jobs:
             npm run test:kick-nickname-dedupe &&
             npm run test:kick-wikitext-nested-template &&
             npm run test:kick-wikitable-cell-attrs &&
-            next build &&
+            npx next build &&
             npm run check:kick-label-text-leak
           } 2>&1 | tee /tmp/kick-gate.log
 
