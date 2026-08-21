@@ -222,6 +222,16 @@ export const EVENTS: MEvent[] = [
         fighterA: "鈴木慈也",
         fighterB: "藤村健悟",
       },
+      {
+        weightClass: "女子ストロー級",
+        fighterA: "KAREN",
+        fighterB: "キアラ・ペンコ",
+      },
+      {
+        weightClass: "バンタム級",
+        fighterA: "神部篤坊",
+        fighterB: "ジョン・ダウン",
+      },
       // プレリミナリー
       {
         weightClass: "フライ級",
