@@ -1,0 +1,11546 @@
+[
+ {
+  "id": "1725",
+  "name": "Melty輝",
+  "kana": "メルティー キラ",
+  "en": "Melty Kira",
+  "gym": "FLAT UP GYM",
+  "dob": "1992.1.12"
+ },
+ {
+  "id": "1230",
+  "name": "鈴木 翔大",
+  "kana": "スズキ ショウタ",
+  "en": "Suzuki Shota",
+  "gym": "澁谷会/TEAM KAITO",
+  "dob": "2003.5.25"
+ },
+ {
+  "id": "1660",
+  "name": "アイメリック・ラジジ",
+  "kana": "",
+  "en": "Aymeric Lazizi",
+  "gym": "MARSEILLE BOXE PIEDS POINGS",
+  "dob": "1998.11.20"
+ },
+ {
+  "id": "1119",
+  "name": "夜叉猿",
+  "kana": "ヤシャザル",
+  "en": "Yashazaru",
+  "gym": "力道場静岡",
+  "dob": "1995.5.29"
+ },
+ {
+  "id": "1288",
+  "name": "白幡 太陽",
+  "kana": "シラハタ タイヨウ",
+  "en": "Shirahata Taiyo",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "2000.11.22"
+ },
+ {
+  "id": "1772",
+  "name": "スタニスラフ・カザンツェフ",
+  "kana": "",
+  "en": "Stanislav Kazantsev",
+  "gym": "Mike's Gym",
+  "dob": "1990.7.25"
+ },
+ {
+  "id": "1322",
+  "name": "大利 賢佑",
+  "kana": "オオリ ケンスケ",
+  "en": "Ori Kensuke",
+  "gym": "team ALL-WIN",
+  "dob": "2002.11.30"
+ },
+ {
+  "id": "1637",
+  "name": "フェルナンド・ミネイロ",
+  "kana": "",
+  "en": "Fernando Mineiro",
+  "gym": "Team Krull",
+  "dob": "1994.10.23"
+ },
+ {
+  "id": "1267",
+  "name": "長野 龍生",
+  "kana": "ナガノ リュウキ",
+  "en": "Nagano Ryuki",
+  "gym": "ALONZA ABLAZE",
+  "dob": "2000.11.6"
+ },
+ {
+  "id": "878",
+  "name": "橋本 裕也",
+  "kana": "ハシモト ユウヤ",
+  "en": "Hashimoto Yuya",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1999.9.17"
+ },
+ {
+  "id": "1334",
+  "name": "白幡 裕星",
+  "kana": "シラハタ ユウセイ",
+  "en": "Shirahata Yusei",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2002.8.11"
+ },
+ {
+  "id": "1764",
+  "name": "宮﨑 頼悟",
+  "kana": "ミヤザキ ライゴ",
+  "en": "Miyazaki Raigo",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2003.8.25"
+ },
+ {
+  "id": "751",
+  "name": "YOHAN",
+  "kana": "ヨハン",
+  "en": "YOHAN",
+  "gym": "T.K.F",
+  "dob": "1996.9.2"
+ },
+ {
+  "id": "1271",
+  "name": "スーリ・マンフレディ",
+  "kana": "スーリ・マンフレディ",
+  "en": "Souris Manfredi",
+  "gym": "LOOKYAMO TRAINING CAMP",
+  "dob": "1988.5.25"
+ },
+ {
+  "id": "1621",
+  "name": "原田 ゆうな",
+  "kana": "ハラダ ユウナ",
+  "en": "Harada Yuna",
+  "gym": "SHINE沖縄",
+  "dob": "1996.3.29"
+ },
+ {
+  "id": "1508",
+  "name": "恵音",
+  "kana": "アヤネ",
+  "en": "Ayane",
+  "gym": "NEXT LEVEL渋谷",
+  "dob": "1998.7.19"
+ },
+ {
+  "id": "1733",
+  "name": "マレク・ペルシス",
+  "kana": "",
+  "en": "Marek Pelcis",
+  "gym": "The Combat Academy",
+  "dob": "1998.10.7"
+ },
+ {
+  "id": "1699",
+  "name": "KOTARO",
+  "kana": "コウタロウ",
+  "en": "KOTARO",
+  "gym": "RICE GATE",
+  "dob": "2002.3.18"
+ },
+ {
+  "id": "1363",
+  "name": "渡邉 陸",
+  "kana": "ワタナベ リク",
+  "en": "Watanabe Riku",
+  "gym": "POWER OF DREAM",
+  "dob": "2000.10.24"
+ },
+ {
+  "id": "1676",
+  "name": "モデスティノ・ロドリゲス",
+  "kana": "",
+  "en": "Modestino Rodrigues",
+  "gym": "RBT/Winner Combat Team",
+  "dob": "2003.10.9"
+ },
+ {
+  "id": "643",
+  "name": "SEIYA",
+  "kana": "セイヤ",
+  "en": "Seiya",
+  "gym": "POWER OF DREAM",
+  "dob": "1996.10.31"
+ },
+ {
+  "id": "1226",
+  "name": "夏気",
+  "kana": "ナツキ",
+  "en": "Natsuki",
+  "gym": "VRK GYM",
+  "dob": "1994.8.23"
+ },
+ {
+  "id": "268",
+  "name": "岩﨑 悠斗",
+  "kana": "イワサキ ヒロト",
+  "en": "Iwasaki Hiroto",
+  "gym": "サイガジム",
+  "dob": "1994.1.18"
+ },
+ {
+  "id": "1748",
+  "name": "金太郎",
+  "kana": "キンタロウ",
+  "en": "Kintaro",
+  "gym": "team Bonds",
+  "dob": "2008.12.20"
+ },
+ {
+  "id": "1174",
+  "name": "大夢",
+  "kana": "ダイナ",
+  "en": "Daina",
+  "gym": "WIZARDキックボクシングジム",
+  "dob": "2002.10.19"
+ },
+ {
+  "id": "1436",
+  "name": "乙津 陸",
+  "kana": "オツ リク",
+  "en": "Otsu Riku",
+  "gym": "KNOCK OUTクロスポイント大泉",
+  "dob": "2004.6.14"
+ },
+ {
+  "id": "1123",
+  "name": "稲津 航大",
+  "kana": "イナツ コウダイ",
+  "en": "Inatsu Kodai",
+  "gym": "K-1ジム琉球チーム琉神",
+  "dob": "1994.10.5"
+ },
+ {
+  "id": "1709",
+  "name": "松本 愛斗",
+  "kana": "マツモト ナルト",
+  "en": "Matsumoto Naruto",
+  "gym": "月心会チーム侍",
+  "dob": "2005.6.6"
+ },
+ {
+  "id": "1359",
+  "name": "小寺 雄太",
+  "kana": "コテラ ユウタ",
+  "en": "Kotera Yuta",
+  "gym": "谷山ジム",
+  "dob": "1995.5.12"
+ },
+ {
+  "id": "1420",
+  "name": "YU-KI",
+  "kana": "ユウキ",
+  "en": "Yuki",
+  "gym": "隆真ジム",
+  "dob": "1997.12.22"
+ },
+ {
+  "id": "1477",
+  "name": "大西 日和",
+  "kana": "オオニシ ヒヨリ",
+  "en": "Onishi Hiyori",
+  "gym": "SHINE SPORTS CLUB",
+  "dob": "2004.2.12"
+ },
+ {
+  "id": "1027",
+  "name": "石橋 健太朗",
+  "kana": "イシバシ ケンタロウ",
+  "en": "Ishibashi Kentaro",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1984.7.27"
+ },
+ {
+  "id": "1532",
+  "name": "こすず",
+  "kana": "コスズ",
+  "en": "Kosuzu",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "2001.10.31"
+ },
+ {
+  "id": "1498",
+  "name": "マラン・コンタ",
+  "kana": "",
+  "en": "Malang Konta",
+  "gym": "Hammer Boxing Gym",
+  "dob": "1994.9.1"
+ },
+ {
+  "id": "1115",
+  "name": "ドニー・ドラゴン",
+  "kana": "ドニー・ドラゴン",
+  "en": "Donnie Dragon",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1995.8.18"
+ },
+ {
+  "id": "1545",
+  "name": "大脇 武",
+  "kana": "オオワキ タケル",
+  "en": "Owaki Takeru",
+  "gym": "BOND GYM",
+  "dob": "1999.4.20"
+ },
+ {
+  "id": "989",
+  "name": "橋本 実生",
+  "kana": "ハシモト マオ",
+  "en": "Hashimoto Mao",
+  "gym": "KRAFT GYM",
+  "dob": "1999.10.5"
+ },
+ {
+  "id": "1400",
+  "name": "チャン・ウヒョク",
+  "kana": "",
+  "en": "Jang Woohyuk",
+  "gym": "Seongnam Seolbong/KTK",
+  "dob": "2000.12.20"
+ },
+ {
+  "id": "1729",
+  "name": "カリン・ペトリショル",
+  "kana": "",
+  "en": "Calin Petrisor",
+  "gym": "Respect Gym Gaesti / Steaua Bucharest",
+  "dob": "1998.6.24"
+ },
+ {
+  "id": "1683",
+  "name": "ウー・ユートン",
+  "kana": "",
+  "en": "Wu Yutong",
+  "gym": "ティエ・インホァGYM/CFP",
+  "dob": "2000.8.17"
+ },
+ {
+  "id": "1379",
+  "name": "ダウサヤーム・ウォーワンチャイ",
+  "kana": "",
+  "en": "Daawsyaam",
+  "gym": "ウォーワンチャイプロモーション",
+  "dob": "1996.11.5"
+ },
+ {
+  "id": "1396",
+  "name": "藤倉 悠",
+  "kana": "フジクラ ユウ",
+  "en": "Fujikura Yu",
+  "gym": "ポゴナ・クラブジム",
+  "dob": "1996.1.27"
+ },
+ {
+  "id": "1512",
+  "name": "グート・イノセンテ",
+  "kana": "",
+  "en": "Guto Inocente",
+  "gym": null,
+  "dob": "1986.5.29"
+ },
+ {
+  "id": "177",
+  "name": "大岩 龍矢",
+  "kana": "オオイワ タツヤ",
+  "en": "Oiwa Tatsuya",
+  "gym": "team VASILEUS",
+  "dob": "1992.1.20"
+ },
+ {
+  "id": "1457",
+  "name": "蘭丸",
+  "kana": "ランマル",
+  "en": "Ranmaru",
+  "gym": "team AKATSUKI",
+  "dob": "1991.8.29"
+ },
+ {
+  "id": "931",
+  "name": "藤田 和希",
+  "kana": "フジタ カズキ",
+  "en": "Fujita Kazuki",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1998.2.12"
+ },
+ {
+  "id": "1791",
+  "name": "マキシム・バクラノフ",
+  "kana": "",
+  "en": "Maxim Baklanov",
+  "gym": "Archangel Michael",
+  "dob": "2002.5.15"
+ },
+ {
+  "id": "1011",
+  "name": "MIO",
+  "kana": "ミオ",
+  "en": "MIO",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1995.4.14"
+ },
+ {
+  "id": "1292",
+  "name": "石井 一成",
+  "kana": "イシイ イッセイ",
+  "en": "Ishii Issei",
+  "gym": "ウォーワンチャイプロモーション",
+  "dob": "1998.9.15"
+ },
+ {
+  "id": "1768",
+  "name": "セミ・ケスキン",
+  "kana": "",
+  "en": "Semih Kezkin",
+  "gym": "All Fit Gym",
+  "dob": "2001.8.13"
+ },
+ {
+  "id": "1338",
+  "name": "小田 尋久",
+  "kana": "オダ ジンク",
+  "en": "Oda Jinku",
+  "gym": "TEAM3K",
+  "dob": "2002.5.20"
+ },
+ {
+  "id": "1787",
+  "name": "テル・エンリケ",
+  "kana": "",
+  "en": "Thel Henrique",
+  "gym": "Uniao ABC",
+  "dob": "1995.12.9"
+ },
+ {
+  "id": "1800",
+  "name": "ニキータ・ココシュ",
+  "kana": "",
+  "en": "Nikita Kokosh",
+  "gym": "Chinuk Gym",
+  "dob": "2004.9.3"
+ },
+ {
+  "id": "1553",
+  "name": "アスランベック・ジクレーブ",
+  "kana": "",
+  "en": "Aslanbek Zikreev",
+  "gym": "Kuzbass Muay Thai",
+  "dob": "1995.9.15"
+ },
+ {
+  "id": "1416",
+  "name": "モハメド・イスラム",
+  "kana": "",
+  "en": "Mohamed Islam",
+  "gym": "Naito Gym",
+  "dob": "2003.5.20"
+ },
+ {
+  "id": "1695",
+  "name": "ボグダン・ストイカ",
+  "kana": "",
+  "en": "Bogdan Stoica",
+  "gym": "Stoica Brothers Fight Academy",
+  "dob": "1990.1.28"
+ },
+ {
+  "id": "1380",
+  "name": "村田 健悟",
+  "kana": "ムラタ ケンゴ",
+  "en": "Murata Kengo",
+  "gym": "ALONZA ABLAZE",
+  "dob": "2003.10.21"
+ },
+ {
+  "id": "1178",
+  "name": "丸山 公豊",
+  "kana": "マルヤマ ナオト",
+  "en": "Maruyama Naoto",
+  "gym": "宮田ジム",
+  "dob": "1995.2.25"
+ },
+ {
+  "id": "1601",
+  "name": "龍翔",
+  "kana": "タツト",
+  "en": "Tatsuto",
+  "gym": "BLACK☆Jr",
+  "dob": "2001.6.27"
+ },
+ {
+  "id": "1314",
+  "name": "呼良",
+  "kana": "クラ",
+  "en": "Kura",
+  "gym": "SHINE SPORTS CLUB",
+  "dob": "2002.3.18"
+ },
+ {
+  "id": "1744",
+  "name": "山口 琉聖",
+  "kana": "ヤマグチ リュウセイ",
+  "en": "Yamaguchi Ryusei",
+  "gym": "平田道場",
+  "dob": "2007.10.17"
+ },
+ {
+  "id": "1590",
+  "name": "ホァン・シュアイルー",
+  "kana": "",
+  "en": "Huang Shuailu",
+  "gym": "WHITE SHARK FIGHT CLUB/CFP",
+  "dob": "1999.8.21"
+ },
+ {
+  "id": "1656",
+  "name": "アルビオン・モリーナ",
+  "kana": "",
+  "en": "Albijon Morina",
+  "gym": "Gladiators Gym",
+  "dob": "2006.6.25"
+ },
+ {
+  "id": "663",
+  "name": "近藤 拳成",
+  "kana": "コンドウ ケンセイ",
+  "en": "Kondo Kensei",
+  "gym": "TEAM3K",
+  "dob": "1999.5.11"
+ },
+ {
+  "id": "1206",
+  "name": "天野 颯大",
+  "kana": "アマノ ソウタ",
+  "en": "Amano Sota",
+  "gym": "キング・ムエ",
+  "dob": "2003.8.17"
+ },
+ {
+  "id": "726",
+  "name": "ゴンナパー・ウィラサクレック",
+  "kana": "",
+  "en": "Kongnapa",
+  "gym": "ウィラサクレック・フェアテックスジム",
+  "dob": "1992.12.12"
+ },
+ {
+  "id": "1713",
+  "name": "田邉 謙心",
+  "kana": "タナベ ケンシン",
+  "en": "Tanabe Kenshin",
+  "gym": "WIZARDキックボクシングジム",
+  "dob": "2008.6.6"
+ },
+ {
+  "id": "1343",
+  "name": "ジャバル・アスケロフ",
+  "kana": "",
+  "en": "Dzhabar Askerov",
+  "gym": "Team Askerov",
+  "dob": "1986.1.24"
+ },
+ {
+  "id": "1586",
+  "name": "石田 廉",
+  "kana": "イシダ レン",
+  "en": "Ishida Ren",
+  "gym": "top UN",
+  "dob": "2000.12.25"
+ },
+ {
+  "id": "1093",
+  "name": "啓斗",
+  "kana": "ケイト",
+  "en": "Keito",
+  "gym": "team ALL-WIN",
+  "dob": "1998.11.20"
+ },
+ {
+  "id": "1139",
+  "name": "Kiho",
+  "kana": "キホ",
+  "en": "Kiho",
+  "gym": "KNOCK OUT GYM調布",
+  "dob": "2002.11.1"
+ },
+ {
+  "id": "1640",
+  "name": "ジョアン・ヴィクター",
+  "kana": "",
+  "en": "Joao Victor",
+  "gym": "TEIXEIRA TEAM",
+  "dob": "2002.11.7"
+ },
+ {
+  "id": "1355",
+  "name": "ウォン・ガヨン",
+  "kana": "",
+  "en": "Won Ka-Yeon",
+  "gym": "嶺南ムビジム",
+  "dob": "2006.7.14"
+ },
+ {
+  "id": "1705",
+  "name": "聖来",
+  "kana": "セラ",
+  "en": "Sera",
+  "gym": "ドージョー☆シャカリキ",
+  "dob": "2009.1.30"
+ },
+ {
+  "id": "1181",
+  "name": "安川 侑己",
+  "kana": "ヤスカワ ユウキ",
+  "en": "Yasukawa Yuki",
+  "gym": "納屋橋キック",
+  "dob": "1995.10.21"
+ },
+ {
+  "id": "1494",
+  "name": "ムアメル・ユーゴヴィッチ",
+  "kana": "",
+  "en": "Muamer Jugovic",
+  "gym": null,
+  "dob": "1990.9.26"
+ },
+ {
+  "id": "1617",
+  "name": "琥伯",
+  "kana": "コハク",
+  "en": "Kohaku",
+  "gym": "VAINQUEUR GYM",
+  "dob": "2008.12.6"
+ },
+ {
+  "id": "1247",
+  "name": "堀井 海飛",
+  "kana": "ホリイ カイト",
+  "en": "Horii Kaito",
+  "gym": "空手道柔拳",
+  "dob": "2000.1.12"
+ },
+ {
+  "id": "1752",
+  "name": "プレストン・テ・モニ",
+  "kana": "",
+  "en": "Preston Te Moni",
+  "gym": "ETK Gym",
+  "dob": "2003.3.4"
+ },
+ {
+  "id": "1302",
+  "name": "有馬 大翔",
+  "kana": "アリマ ダイト",
+  "en": "Arima Daito",
+  "gym": "SHINE SPORTS CLUB",
+  "dob": "2001.1.26"
+ },
+ {
+  "id": "1616",
+  "name": "ララ・フェルナンデス",
+  "kana": "",
+  "en": "Lara Fernandez",
+  "gym": "Lone Wolf Fight Team",
+  "dob": "1996.7.10"
+ },
+ {
+  "id": "1246",
+  "name": "遼/Ryo",
+  "kana": "リョウ",
+  "en": "Ryo",
+  "gym": "JANJIRA GYM",
+  "dob": "1998.4.14"
+ },
+ {
+  "id": "766",
+  "name": "優",
+  "kana": "ユウ",
+  "en": "Yu",
+  "gym": "NEXT LEVEL渋谷",
+  "dob": "1985.4.29"
+ },
+ {
+  "id": "1753",
+  "name": "アブロール・ハキモフ",
+  "kana": "",
+  "en": "Abror Hakimov",
+  "gym": "Osh Asia Sports Club",
+  "dob": "1997.9.20"
+ },
+ {
+  "id": "1303",
+  "name": "竜義",
+  "kana": "リュウギ",
+  "en": "Ryugi",
+  "gym": "VAINQUEUR GYM",
+  "dob": "2001.9.14"
+ },
+ {
+  "id": "1180",
+  "name": "松谷 綺",
+  "kana": "マツタニ キラ",
+  "en": "Matsutani Kira",
+  "gym": "ALONZA ABLAZE",
+  "dob": "2003.6.1"
+ },
+ {
+  "id": "1495",
+  "name": "ミロス・ツヴェチカニン",
+  "kana": "",
+  "en": "Milos Cvjeticanin",
+  "gym": null,
+  "dob": "0.0.0"
+ },
+ {
+  "id": "224",
+  "name": "“狂拳”竹内 裕二",
+  "kana": "キョウケン タケウチ ユウジ",
+  "en": "“Kyoken”Takeuchi Yuji",
+  "gym": "GORI GYM",
+  "dob": "1983.8.13"
+ },
+ {
+  "id": "1354",
+  "name": "イ・ドギョン",
+  "kana": "",
+  "en": "Lee Do-Kyeong",
+  "gym": "チームサイコピットブルス",
+  "dob": "1992.9.21"
+ },
+ {
+  "id": "1704",
+  "name": "服部 華鈴",
+  "kana": "ハットリ カリン",
+  "en": "Hattori Karin",
+  "gym": "キング・ムエ",
+  "dob": "2006.6.17"
+ },
+ {
+  "id": "1587",
+  "name": "竹見 浩史郎",
+  "kana": "タケミ コウシロウ",
+  "en": "Takemi Koshiro",
+  "gym": "JAPAN TOP TEAM",
+  "dob": "2000.5.27"
+ },
+ {
+  "id": "1138",
+  "name": "伊藤 渚",
+  "kana": "イトウ ナギサ",
+  "en": "Ito Nagisa",
+  "gym": "K-1ジム川口ブルードラゴン",
+  "dob": "2000.9.23"
+ },
+ {
+  "id": "1657",
+  "name": "ソフィア・ツォラキドゥ",
+  "kana": "",
+  "en": "Sofia Tsolakidou",
+  "gym": "KRITIKOS CAMP",
+  "dob": "2006.8.8"
+ },
+ {
+  "id": "662",
+  "name": "篠原 悠人",
+  "kana": "シノハラ ユウト",
+  "en": "Shinohara Yuto",
+  "gym": "DURGA",
+  "dob": "1998.5.15"
+ },
+ {
+  "id": "1207",
+  "name": "下村 泰平",
+  "kana": "シモムラ タイヘイ",
+  "en": "Shimomura Taihei",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2002.6.18"
+ },
+ {
+  "id": "1712",
+  "name": "KOKORO BRAVELY",
+  "kana": "ココロ ブレイブリー",
+  "en": "KOKORO BRAVELY",
+  "gym": "BRAVELY GYM",
+  "dob": "2007.11.16"
+ },
+ {
+  "id": "1591",
+  "name": "イゴール・ベクレフ",
+  "kana": "",
+  "en": "Egor Bikrev",
+  "gym": "Kuzbass Muay Thai",
+  "dob": "2002.10.12"
+ },
+ {
+  "id": "1600",
+  "name": "大輝",
+  "kana": "ダイキ",
+  "en": "Daiki",
+  "gym": "DK9",
+  "dob": "2002.7.16"
+ },
+ {
+  "id": "1315",
+  "name": "原田 闘鬼",
+  "kana": "ハラダ トキ",
+  "en": "Harada Toki",
+  "gym": "心将塾",
+  "dob": "2006.2.10"
+ },
+ {
+  "id": "1745",
+  "name": "ファビアン・ロリート",
+  "kana": "",
+  "en": "Fabian Lorito",
+  "gym": "Team Stefanovski",
+  "dob": "2000.5.6"
+ },
+ {
+  "id": "1196",
+  "name": "板橋 武留",
+  "kana": "イタバシ タケル",
+  "en": "Itabashi Takeru",
+  "gym": "KIWAMI GYM",
+  "dob": "2001.10.22"
+ },
+ {
+  "id": "1694",
+  "name": "ニキータ・コズロフ",
+  "kana": "",
+  "en": "Nikita Kozlov",
+  "gym": "Archangel Michael",
+  "dob": "1992.11.29"
+ },
+ {
+  "id": "1801",
+  "name": "ニキータ・コンドラトフ",
+  "kana": "",
+  "en": "Nikita Kondratov",
+  "gym": "Archangel Michael/RCC Martial Arts Academy",
+  "dob": "2000.8.29"
+ },
+ {
+  "id": "1552",
+  "name": "山田 享樹",
+  "kana": "ヤマダ コウキ",
+  "en": "Yamada Koki",
+  "gym": "Team Aj",
+  "dob": "1997.2.21"
+ },
+ {
+  "id": "1102",
+  "name": "児玉 兼慎",
+  "kana": "コダマ ケンシン",
+  "en": "Kodama Kenshin",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2001.12.25"
+ },
+ {
+  "id": "1417",
+  "name": "ルシール",
+  "kana": "",
+  "en": "Lucille",
+  "gym": "Taylormade Muay Thai",
+  "dob": "1999.3.19"
+ },
+ {
+  "id": "971",
+  "name": "不可思",
+  "kana": "フカシ",
+  "en": "Fukashi",
+  "gym": "KNOCK OUTクロスポイント吉祥寺",
+  "dob": "1991.6.17"
+ },
+ {
+  "id": "1293",
+  "name": "銀次",
+  "kana": "ギンジ",
+  "en": "Ginji",
+  "gym": "team Authentic",
+  "dob": "1995.7.20"
+ },
+ {
+  "id": "1769",
+  "name": "ハキム・タト",
+  "kana": "",
+  "en": "Hakim Tato",
+  "gym": "Team MMA",
+  "dob": "2001.10.13"
+ },
+ {
+  "id": "1339",
+  "name": "北原 有起",
+  "kana": "キタハラ ユウキ",
+  "en": "Kitahara Yuki",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "2003.3.12"
+ },
+ {
+  "id": "1786",
+  "name": "マティアス・ガルシア",
+  "kana": "",
+  "en": "Matias Garcia",
+  "gym": "Corrales Kick Center",
+  "dob": "2001.2.23"
+ },
+ {
+  "id": "1790",
+  "name": "稲村 健心",
+  "kana": "イナムラ ケンシン",
+  "en": "Inamura Kenshin",
+  "gym": "T-KIX GYM",
+  "dob": "2004.11.25"
+ },
+ {
+  "id": "875",
+  "name": "植村 真弥",
+  "kana": "ウエムラ シンヤ",
+  "en": "Uemura Shinya",
+  "gym": "WSRフェアテックス幕張",
+  "dob": "1988.7.27"
+ },
+ {
+  "id": "1513",
+  "name": "アブネル・フェレイラ",
+  "kana": "",
+  "en": "Abner Ferreira",
+  "gym": null,
+  "dob": "0.0.0"
+ },
+ {
+  "id": "176",
+  "name": "小澤 海斗",
+  "kana": "オザワ カイト",
+  "en": "Ozawa Kaito",
+  "gym": "Team KK",
+  "dob": "1993.4.27"
+ },
+ {
+  "id": "199",
+  "name": "林 健太",
+  "kana": "ハヤシ ケンタ",
+  "en": "Hayashi Kenta",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1994.8.17"
+ },
+ {
+  "id": "1456",
+  "name": "矢島 直弥",
+  "kana": "ヤジマ ナオヤ",
+  "en": "Yajima Naoya",
+  "gym": "TSKjapan",
+  "dob": "1990.8.18"
+ },
+ {
+  "id": "1728",
+  "name": "智史",
+  "kana": "サトシ",
+  "en": "Satoshi",
+  "gym": "漢塾",
+  "dob": "1998.10.24"
+ },
+ {
+  "id": "1682",
+  "name": "クレイトン・ヌニェス",
+  "kana": "",
+  "en": "Cleyton Nunes",
+  "gym": "AFAM",
+  "dob": "1987.12.22"
+ },
+ {
+  "id": "1397",
+  "name": "瑠唯",
+  "kana": "ルイ",
+  "en": "Rui",
+  "gym": "リーブルロア",
+  "dob": "2005.3.1"
+ },
+ {
+  "id": "1114",
+  "name": "“KONG” 光生",
+  "kana": "“コング” コウセイ",
+  "en": "“Kong” Kosei",
+  "gym": "K-1ジム蒲田チームアスラ",
+  "dob": "1997.10.13"
+ },
+ {
+  "id": "1051",
+  "name": "立基",
+  "kana": "リキ",
+  "en": "Riki",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1996.12.26"
+ },
+ {
+  "id": "1401",
+  "name": "パク・ヒョンウ",
+  "kana": "",
+  "en": "Park Hyungwoo",
+  "gym": "Gimje X-gym",
+  "dob": "2003.12.23"
+ },
+ {
+  "id": "1476",
+  "name": "ダニロ・トシッチ",
+  "kana": "",
+  "en": "Danilo Tosic",
+  "gym": "Ares Gym",
+  "dob": "1993.5.15"
+ },
+ {
+  "id": "1533",
+  "name": "木村 萌那",
+  "kana": "キムラ モナ",
+  "en": "Kimura Mona",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "2001.4.12"
+ },
+ {
+  "id": "1163",
+  "name": "昇也",
+  "kana": "ショウヤ",
+  "en": "Shoya",
+  "gym": "士魂村上塾",
+  "dob": "2000.4.5"
+ },
+ {
+  "id": "1421",
+  "name": "宇佐美 秀 メイソン",
+  "kana": "ウサミ ヒデ メイソン",
+  "en": "Usami Hide Meison",
+  "gym": "Battle-Box",
+  "dob": "2001.5.20"
+ },
+ {
+  "id": "1564",
+  "name": "ダニラ・クワチ",
+  "kana": "",
+  "en": "Danila Kvach",
+  "gym": "Gridin Gym",
+  "dob": "2001.8.8"
+ },
+ {
+  "id": "59",
+  "name": "小鉄",
+  "kana": "コテツ",
+  "en": "Kotetsu",
+  "gym": "K-1ジム蒲田チームアスラ",
+  "dob": "1983.6.10"
+ },
+ {
+  "id": "1708",
+  "name": "山口 丈瑠",
+  "kana": "ヤマグチ タケル",
+  "en": "Yamaguchi Takeru",
+  "gym": "パラエストラ森ノ宮",
+  "dob": "2001.8.30"
+ },
+ {
+  "id": "697",
+  "name": "横山 巧",
+  "kana": "ヨコヤマ タクミ",
+  "en": "Yokoyama Takumi",
+  "gym": "リーブルロア",
+  "dob": "1998.5.20"
+ },
+ {
+  "id": "1437",
+  "name": "石川 慶",
+  "kana": "イシカワ ケイ",
+  "en": "Ishikawa Kei",
+  "gym": "team NOVA",
+  "dob": "2001.1.23"
+ },
+ {
+  "id": "1067",
+  "name": "古宮 晴",
+  "kana": "フルミヤ ハル",
+  "en": "Furumiya Haru",
+  "gym": "team VASILEUS",
+  "dob": "2003.6.9"
+ },
+ {
+  "id": "1088",
+  "name": "井上 修一",
+  "kana": "イノウエ シュウイチ",
+  "en": "Inoue Shuichi",
+  "gym": "K-1ジム川口TEAM SIRIUS",
+  "dob": "1994.10.17"
+ },
+ {
+  "id": "1572",
+  "name": "森川 絆",
+  "kana": "モリカワ キズナ",
+  "en": "Morikawa Kizuna",
+  "gym": "POWER OF DREAM",
+  "dob": "2006.4.25"
+ },
+ {
+  "id": "1030",
+  "name": "峯 大樹",
+  "kana": "ミネ ダイキ",
+  "en": "Mine Daiki",
+  "gym": "若獅子会館",
+  "dob": "2001.7.17"
+ },
+ {
+  "id": "1460",
+  "name": "クォン・ジャンウォン",
+  "kana": "",
+  "en": "Kwon Jangwon",
+  "gym": "Cheonghak Muaythai Gym",
+  "dob": "1998.1.26"
+ },
+ {
+  "id": "1525",
+  "name": "新井 真惺",
+  "kana": "アライ マサト",
+  "en": "Arai Masato",
+  "gym": "team M m",
+  "dob": "2007.6.10"
+ },
+ {
+  "id": "793",
+  "name": "愛鷹 亮",
+  "kana": "アイタカ リョウ",
+  "en": "Aitaka Ryo",
+  "gym": "力道場静岡",
+  "dob": "1989.12.31"
+ },
+ {
+  "id": "1749",
+  "name": "ザック・パンクハースト",
+  "kana": "",
+  "en": "Zack Pankhurst",
+  "gym": "Taylormade Muay Thai",
+  "dob": "2002.4.21"
+ },
+ {
+  "id": "1319",
+  "name": "北山 善",
+  "kana": "キタヤマ ゼン",
+  "en": "Kitayama Zen",
+  "gym": "岡山ジム",
+  "dob": "2005.7.10"
+ },
+ {
+  "id": "1732",
+  "name": "アルベルト・エナケ",
+  "kana": "",
+  "en": "Albert Enache",
+  "gym": "SCORPIONS IASI",
+  "dob": "2007.8.6"
+ },
+ {
+  "id": "1362",
+  "name": "吉村 匠",
+  "kana": "ヨシムラ タクミ",
+  "en": "Yoshimura Takumi",
+  "gym": "TAD",
+  "dob": "2004.11.19"
+ },
+ {
+  "id": "1677",
+  "name": "マルコ・ブラック・ダイヤモンド",
+  "kana": "",
+  "en": "Marco Black Diamond",
+  "gym": "LOUTUS MMA",
+  "dob": "1997.7.31"
+ },
+ {
+  "id": "1509",
+  "name": "メン・ガオフォン",
+  "kana": "",
+  "en": "Meng Gaofeng",
+  "gym": "天津阿福ファイトクラブ/CFP",
+  "dob": "1996.12.9"
+ },
+ {
+  "id": "1765",
+  "name": "ミッチェル・ラーマス",
+  "kana": "",
+  "en": "Mitchell Lammers",
+  "gym": "Bien Fitness/Bien Fighters",
+  "dob": "1997.6.15"
+ },
+ {
+  "id": "1270",
+  "name": "マリーヌ・ビゲイ",
+  "kana": "マリーヌ・ビゲイ",
+  "en": "Marine Bigey",
+  "gym": "Team Fight Center One",
+  "dob": "1994.9.23"
+ },
+ {
+  "id": "879",
+  "name": "玖村 修平",
+  "kana": "クムラ シュウヘイ",
+  "en": "Kumura Shuhei",
+  "gym": "シューティングスター",
+  "dob": "1996.9.4"
+ },
+ {
+  "id": "1773",
+  "name": "アブラーム・ハツィゲオルギウ",
+  "kana": "",
+  "en": "Avraam Chatzigeorgiou",
+  "gym": "AIAS CHOLARGOU",
+  "dob": "2000.3.24"
+ },
+ {
+  "id": "1266",
+  "name": "明世流",
+  "kana": "アクセル",
+  "en": "Akuseru",
+  "gym": "GRANDIR GYM×a",
+  "dob": "2003.12.8"
+ },
+ {
+  "id": "1374",
+  "name": "菊地 海斗",
+  "kana": "キクチ カイト",
+  "en": "Kikuchi Kaito",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "2006.8.1"
+ },
+ {
+  "id": "1724",
+  "name": "空龍",
+  "kana": "アロン",
+  "en": "Aron",
+  "gym": "ホライズンキックボクシングジム",
+  "dob": "2001.3.2"
+ },
+ {
+  "id": "1231",
+  "name": "サガエ・ルーカス",
+  "kana": "サガエ・ルーカス",
+  "en": "Sagae Lucas",
+  "gym": "Brazilian Thai",
+  "dob": "2004.3.11"
+ },
+ {
+  "id": "1661",
+  "name": "アルフォセヌー・カマラ",
+  "kana": "",
+  "en": "Alfousseynou Kamara",
+  "gym": "Emergence Le Havre",
+  "dob": "1999.11.21"
+ },
+ {
+  "id": "1543",
+  "name": "祖根 亮麻",
+  "kana": "ソネ リョウマ",
+  "en": "Sone Ryoma",
+  "gym": "大和ジム",
+  "dob": "1997.5.8"
+ },
+ {
+  "id": "1685",
+  "name": "ヘラクレス・ワンコンオーム.WKO",
+  "kana": "",
+  "en": "Hercules",
+  "gym": "WankhongOhm.WKO",
+  "dob": "2002.12.19"
+ },
+ {
+  "id": "1390",
+  "name": "関口 功誠",
+  "kana": "セキグチ コウセイ",
+  "en": "Sekiguchi Kosei",
+  "gym": "ALONZA ABLAZE",
+  "dob": "2003.10.6"
+ },
+ {
+  "id": "1451",
+  "name": "ゾーラ・アカピャン",
+  "kana": "",
+  "en": "Zhora Akopyan",
+  "gym": "Gridin Gym",
+  "dob": "1997.11.6"
+ },
+ {
+  "id": "1328",
+  "name": "白須 康仁",
+  "kana": "シラス ヤスヒト",
+  "en": "Shirasu Yasuhito",
+  "gym": "PROTAGONIST",
+  "dob": "1980.4.24"
+ },
+ {
+  "id": "1282",
+  "name": "哲志",
+  "kana": "テツシ",
+  "en": "Tetsushi",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1997.3.18"
+ },
+ {
+  "id": "1778",
+  "name": "アルコラック・カバジェロ",
+  "kana": "",
+  "en": "Alcorac Caballero",
+  "gym": "Fighter 360",
+  "dob": "1990.10.30"
+ },
+ {
+  "id": "1797",
+  "name": "ヴァレリー・ビジャエフ",
+  "kana": "",
+  "en": "Valeriy Bizyaev",
+  "gym": "URAL KALI FIGHTER TEAM",
+  "dob": "1998.6.3"
+ },
+ {
+  "id": "1502",
+  "name": "バダウィ・アリ",
+  "kana": "",
+  "en": "Badawi Ali",
+  "gym": null,
+  "dob": "1999.12.22"
+ },
+ {
+  "id": "188",
+  "name": "桝本 翔也",
+  "kana": "マスモト ショウヤ",
+  "en": "Masumoto Shoya",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1992.5.13"
+ },
+ {
+  "id": "1447",
+  "name": "ルカ・チェケッティ",
+  "kana": "",
+  "en": "Luca Cecchetti",
+  "gym": "Kick and Punch Milano",
+  "dob": "1990.11.24"
+ },
+ {
+  "id": "921",
+  "name": "竜樹",
+  "kana": "タツキ",
+  "en": "Tatsuki",
+  "gym": "WSRフェアテックス三ノ輪",
+  "dob": "1999.12.14"
+ },
+ {
+  "id": "1294",
+  "name": "山本 陸",
+  "kana": "ヤマモト リク",
+  "en": "Yamamoto Riku",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1997.11.7"
+ },
+ {
+  "id": "1781",
+  "name": "畑中 滉平",
+  "kana": "ハタナカ コウヘイ",
+  "en": "Hatanaka Kohei",
+  "gym": "Team Hatton",
+  "dob": "2001.2.14"
+ },
+ {
+  "id": "1555",
+  "name": "瀧",
+  "kana": "タキ",
+  "en": "Taki",
+  "gym": "魁塾",
+  "dob": "2004.5.13"
+ },
+ {
+  "id": "1410",
+  "name": "アンジェロス・マルティノス",
+  "kana": "",
+  "en": "Angelos Martinos",
+  "gym": "FFK-POLITIS TEAM",
+  "dob": "2001.9.17"
+ },
+ {
+  "id": "1040",
+  "name": "鬼山 桃太朗",
+  "kana": "キヤマ モモタロウ",
+  "en": "Kiyama Momotaro",
+  "gym": "team VASILEUS",
+  "dob": "1999.5.7"
+ },
+ {
+  "id": "1693",
+  "name": "ババカール",
+  "kana": "",
+  "en": "Babacar",
+  "gym": "Senegal Warriors MMA",
+  "dob": "1997.9.12"
+ },
+ {
+  "id": "1739",
+  "name": "ロレンツォ・ディ・ヴァラ",
+  "kana": "",
+  "en": "Lorenzo Di Vara",
+  "gym": "The King Fight Club/Team Di Vara",
+  "dob": "1996.5.2"
+ },
+ {
+  "id": "1484",
+  "name": "遥心",
+  "kana": "ハルト",
+  "en": "Haruto",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2004.3.20"
+ },
+ {
+  "id": "1742",
+  "name": "クリストス・ミハルツォス",
+  "kana": "",
+  "en": "Christos Michaloutsos",
+  "gym": "BULLS FIGHT ACADEMY",
+  "dob": "2006.1.5"
+ },
+ {
+  "id": "1596",
+  "name": "松谷 梛",
+  "kana": "マツタニ キナ",
+  "en": "Matsutani Kina",
+  "gym": "キャピタルレイズ fighting GlaNz池袋",
+  "dob": "2007.6.13"
+ },
+ {
+  "id": "44",
+  "name": "山崎 陽一",
+  "kana": "ヤマザキ ヨウイチ",
+  "en": "Yamazaki Yoichi",
+  "gym": "MOUNT CAPE Fighting Sports Club",
+  "dob": "1983.11.8"
+ },
+ {
+  "id": "1083",
+  "name": "齋藤 紘也",
+  "kana": "サイトウ コウヤ",
+  "en": "Saito Koya",
+  "gym": "K-1ジム川口ブルードラゴン",
+  "dob": "2000.5.18"
+ },
+ {
+  "id": "1650",
+  "name": "西本 竜也",
+  "kana": "ニシモト リュウヤ",
+  "en": "Nishimoto Ryuya",
+  "gym": "ISN GYM/CLIMB",
+  "dob": "1998.10.18"
+ },
+ {
+  "id": "1715",
+  "name": "丸山 晃毅",
+  "kana": "マルヤマ コウキ",
+  "en": "Maruyama Koki",
+  "gym": "VICTORY GYM",
+  "dob": "1995.10.17"
+ },
+ {
+  "id": "1580",
+  "name": "パク・チュンイル",
+  "kana": "",
+  "en": "Park Chungil",
+  "gym": "TEAM CHUNG-IL",
+  "dob": "1992.5.3"
+ },
+ {
+  "id": "1095",
+  "name": "マハムード・サッタリ",
+  "kana": "",
+  "en": "Mahmoud Sattari",
+  "gym": "TEAM大和魂",
+  "dob": "1991.2.22"
+ },
+ {
+  "id": "1353",
+  "name": "末松 晄",
+  "kana": "スエマツ アキ",
+  "en": "Suematsu Aki",
+  "gym": "K.I.K team BLADE",
+  "dob": "2005.11.12"
+ },
+ {
+  "id": "736",
+  "name": "晃貴",
+  "kana": "コウキ",
+  "en": "Koki",
+  "gym": "team VASILEUS",
+  "dob": "1998.3.27"
+ },
+ {
+  "id": "1703",
+  "name": "藤平 琉矢",
+  "kana": "フジヒラ リュウヤ",
+  "en": "Fujihira Ryuya",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2001.7.17"
+ },
+ {
+  "id": "1187",
+  "name": "KAI",
+  "kana": "カイ",
+  "en": "KAI",
+  "gym": "ARROWS GYM",
+  "dob": "1983.4.19"
+ },
+ {
+  "id": "1492",
+  "name": "バリント・ラドヴァー",
+  "kana": "",
+  "en": "Balint Ladover",
+  "gym": null,
+  "dob": "0.0.0"
+ },
+ {
+  "id": "1168",
+  "name": "大村 修輝",
+  "kana": "オオムラ ナオキ",
+  "en": "Omura Naoki",
+  "gym": "POWER OF DREAM",
+  "dob": "2002.9.19"
+ },
+ {
+  "id": "1538",
+  "name": "ジェロム・レ・バンナ",
+  "kana": "",
+  "en": "Jerome Le Banner",
+  "gym": "Le Banner X tream Team",
+  "dob": "1972.12.26"
+ },
+ {
+  "id": "1611",
+  "name": "紀州のマルちゃん",
+  "kana": "キシュウノマルチャン",
+  "en": "Kishu No Maruchan",
+  "gym": "武勇会",
+  "dob": "1998.4.15"
+ },
+ {
+  "id": "1754",
+  "name": "アンドレイ・アヴデーエフ",
+  "kana": "",
+  "en": "Andrey Avdeev",
+  "gym": "Fight Club Alexander Nevsky/FightRepublic",
+  "dob": "2003.12.9"
+ },
+ {
+  "id": "1689",
+  "name": "ベロニカ・ロドリゲス",
+  "kana": "",
+  "en": "Veronica Rodriguez",
+  "gym": "Thai Rooster Team",
+  "dob": "2001.9.11"
+ },
+ {
+  "id": "1373",
+  "name": "オカハン バラ",
+  "kana": "",
+  "en": "OCathain Barra",
+  "gym": "リーブルロア",
+  "dob": "1989.8.24"
+ },
+ {
+  "id": "716",
+  "name": "金子 晃大",
+  "kana": "カネコ アキヒロ",
+  "en": "Kaneko Akihiro",
+  "gym": "K-1ジム自由ヶ丘/FROG GYM",
+  "dob": "1997.1.29"
+ },
+ {
+  "id": "1723",
+  "name": "榊原 統羽",
+  "kana": "サカキバラ トワ",
+  "en": "Sakakibara Towa",
+  "gym": "TAD",
+  "dob": "2007.2.13"
+ },
+ {
+  "id": "1236",
+  "name": "臣龍",
+  "kana": "シンリュウ",
+  "en": "Shinryu",
+  "gym": "KIZUNA田川本部道場",
+  "dob": "2000.4.29"
+ },
+ {
+  "id": "203",
+  "name": "松岡 翔大",
+  "kana": "マツオカ ショウダイ",
+  "en": "Matsuoka Shodai",
+  "gym": "KING CONNECTION",
+  "dob": "1998.4.1"
+ },
+ {
+  "id": "1666",
+  "name": "小森 玲哉",
+  "kana": "コモリ レイヤ",
+  "en": "Komori Reiya",
+  "gym": "ONE'S GOAL",
+  "dob": "1996.9.2"
+ },
+ {
+  "id": "829",
+  "name": "真優",
+  "kana": "マヒロ",
+  "en": "Mahiro",
+  "gym": "月心会チーム侍",
+  "dob": "2000.5.16"
+ },
+ {
+  "id": "1774",
+  "name": "パブロス・ミハシ",
+  "kana": "",
+  "en": "Pavlos Mihasi",
+  "gym": "West Warriors",
+  "dob": "2004.7.27"
+ },
+ {
+  "id": "741",
+  "name": "イブラヒム・エル・ボウニ",
+  "kana": "",
+  "en": "Ibrahim El Bouni",
+  "gym": "Gym Haarlem",
+  "dob": "1992.12.9"
+ },
+ {
+  "id": "311",
+  "name": "東本 央貴",
+  "kana": "ヒガシモト ヒサキ",
+  "en": "Higashimoto Hisaki",
+  "gym": "白仙会",
+  "dob": "1992.4.11"
+ },
+ {
+  "id": "1631",
+  "name": "ガブリエル・デ・リマ",
+  "kana": "",
+  "en": "Gabriel De Lima",
+  "gym": "Santa Fé Team",
+  "dob": "1997.12.16"
+ },
+ {
+  "id": "1261",
+  "name": "奥脇 奈々",
+  "kana": "オクワキ ナナ",
+  "en": "Okuwaki Nana",
+  "gym": "エイワスポーツジム",
+  "dob": "1997.10.10"
+ },
+ {
+  "id": "1518",
+  "name": "ウェズレイ・コタス",
+  "kana": "",
+  "en": "Wesley Cottas",
+  "gym": null,
+  "dob": "0.0.0"
+ },
+ {
+  "id": "1332",
+  "name": "橋本 雷汰",
+  "kana": "ハシモト ライタ",
+  "en": "Hashimoto Raita",
+  "gym": "ALONZA ABLAZE",
+  "dob": "2005.7.5"
+ },
+ {
+  "id": "1762",
+  "name": "MIO LaReyna",
+  "kana": "ミオ ラレイナ",
+  "en": "MIO LaReyna",
+  "gym": "TEAM REY DE REYES",
+  "dob": "2006.4.24"
+ },
+ {
+  "id": "1627",
+  "name": "ジョニス・コリセウ",
+  "kana": "",
+  "en": "Jones Coliseu",
+  "gym": "Coliseu Team/Uniao ABC/Fight Gym",
+  "dob": "1997.10.9"
+ },
+ {
+  "id": "1735",
+  "name": "ヴィタリー・マテイ",
+  "kana": "",
+  "en": "Vitalie Matei",
+  "gym": "THAI BOXING CLUB",
+  "dob": "1985.11.17"
+ },
+ {
+  "id": "1670",
+  "name": "MOMOKA",
+  "kana": "モモカ",
+  "en": "Momoka",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1997.11.17"
+ },
+ {
+  "id": "1220",
+  "name": "セルヒオ・ハノ",
+  "kana": "セルヒオ・ハノ",
+  "en": "Sergio Hano",
+  "gym": "Brazilian Thai",
+  "dob": "1994.8.5"
+ },
+ {
+  "id": "995",
+  "name": "稲垣 柊",
+  "kana": "イナガキ シュウ",
+  "en": "Inagaki Shu",
+  "gym": "K-1ジム大宮チームレオン",
+  "dob": "2000.1.29"
+ },
+ {
+  "id": "1559",
+  "name": "ティアン・ターザン",
+  "kana": "",
+  "en": "Thian Tarzan",
+  "gym": "Luc Verheije Fight Club",
+  "dob": "2001.4.26"
+ },
+ {
+  "id": "1467",
+  "name": "ソ・ヨンテク",
+  "kana": "",
+  "en": "Seo Youngtaek",
+  "gym": "AY-GYM",
+  "dob": "2001.5.4"
+ },
+ {
+  "id": "1488",
+  "name": "ブアカーオ・バンチャメーク",
+  "kana": "",
+  "en": "Buakaw",
+  "gym": "Banchamek Gym",
+  "dob": "1982.5.8"
+ },
+ {
+  "id": "1349",
+  "name": "大石 昌輝",
+  "kana": "オオイシ マサキ",
+  "en": "Oishi Masaki",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1994.11.30"
+ },
+ {
+  "id": "1719",
+  "name": "ジャン・ジンホイ",
+  "kana": "",
+  "en": "Zhang Jinhui",
+  "gym": "リュウ・シャンミンファイトクラブ/CFP",
+  "dob": "2005.12.20"
+ },
+ {
+  "id": "1430",
+  "name": "アリヤン・モハマディ",
+  "kana": "",
+  "en": "Aryan Mohammadi",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1997.7.21"
+ },
+ {
+  "id": "1060",
+  "name": "鵜澤 悠也",
+  "kana": "ウザワ ユウヤ",
+  "en": "Uzawa Yuya",
+  "gym": "RIKI GYM",
+  "dob": "1995.8.10"
+ },
+ {
+  "id": "1575",
+  "name": "吉川 仁清",
+  "kana": "ヨシカワ ジンセイ",
+  "en": "Yoshikawa Jinsei",
+  "gym": "WIZARDキックボクシングジム",
+  "dob": "2006.11.28"
+ },
+ {
+  "id": "1125",
+  "name": "松山 勇汰",
+  "kana": "マツヤマ ユウタ",
+  "en": "Matsuyama Yuta",
+  "gym": "ALONZA ABLAZE",
+  "dob": "2003.11.11"
+ },
+ {
+  "id": "48",
+  "name": "セルゲイ・アダムチャック",
+  "kana": "",
+  "en": "Serhiy Adamchuk",
+  "gym": "Mike's Gym",
+  "dob": "1990.2.7"
+ },
+ {
+  "id": "1426",
+  "name": "レミー・パラ",
+  "kana": "",
+  "en": "Remi Parra",
+  "gym": "CARCHARIAS",
+  "dob": "2001.2.24"
+ },
+ {
+  "id": "413",
+  "name": "訓 -NORI-",
+  "kana": "ノリ",
+  "en": "Nori",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1985.9.10"
+ },
+ {
+  "id": "940",
+  "name": "MOE",
+  "kana": "モエ",
+  "en": "MOE",
+  "gym": "若獅子会館",
+  "dob": "2002.8.13"
+ },
+ {
+  "id": "106",
+  "name": "伊澤 波人",
+  "kana": "イザワ ナミト",
+  "en": "Izawa Namito",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1992.7.15"
+ },
+ {
+  "id": "1099",
+  "name": "NOZOMI",
+  "kana": "ノゾミ",
+  "en": "Nozomi",
+  "gym": "TAD",
+  "dob": "2004.9.20"
+ },
+ {
+  "id": "782",
+  "name": "ワン・ジュングァン",
+  "kana": "ワン・ジュングァン",
+  "en": "Wang Junguang",
+  "gym": "天津阿福ファイトクラブ/CFP",
+  "dob": "1994.12.25"
+ },
+ {
+  "id": "1308",
+  "name": "ジョーダン・スウィントン",
+  "kana": "ジョーダン・スウィントン",
+  "en": "Jordan Swinton",
+  "gym": "Look Borai",
+  "dob": "2001.7.10"
+ },
+ {
+  "id": "1758",
+  "name": "ロスティスラフ・ヴァルナフスキー",
+  "kana": "",
+  "en": "Rostislav Varnavsky",
+  "gym": "SC SHUMER",
+  "dob": "2004.12.5"
+ },
+ {
+  "id": "1021",
+  "name": "森川 侑凜",
+  "kana": "モリカワ ユウリ",
+  "en": "Morikawa Yuri",
+  "gym": "GRES 8Mile GYM",
+  "dob": "1997.9.20"
+ },
+ {
+  "id": "1534",
+  "name": "荻原 愛",
+  "kana": "オギワラ アイ",
+  "en": "Ogiwara Ai",
+  "gym": "ONESIDE KICKBOXING GYM",
+  "dob": "2000.8.1"
+ },
+ {
+  "id": "853",
+  "name": "近藤 魁成",
+  "kana": "コンドウ カイセイ",
+  "en": "Kondo Kaisei",
+  "gym": "TEAM3K",
+  "dob": "2001.7.2"
+ },
+ {
+  "id": "1309",
+  "name": "山口 翔大",
+  "kana": "ヤマグチ ショウタ",
+  "en": "Yamaguchi Shota",
+  "gym": "GENESIS/TEAM3K",
+  "dob": "1990.7.9"
+ },
+ {
+  "id": "1759",
+  "name": "エドゥアルド・ファティコフ",
+  "kana": "",
+  "en": "Eduard Fatykov",
+  "gym": "Archangel Michael",
+  "dob": "1997.5.23"
+ },
+ {
+  "id": "941",
+  "name": "勇治",
+  "kana": "ユウジ",
+  "en": "Yuji",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1989.5.2"
+ },
+ {
+  "id": "1562",
+  "name": "ダニール・エルモリンカ",
+  "kana": "",
+  "en": "Daniil Yermolenka",
+  "gym": "Gridin Gym",
+  "dob": "1999.12.26"
+ },
+ {
+  "id": "1061",
+  "name": "川越 亮彦",
+  "kana": "カワゴエ アキヒコ",
+  "en": "Kawagoe Akihiko",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1997.2.28"
+ },
+ {
+  "id": "1574",
+  "name": "瑠華",
+  "kana": "ルカ",
+  "en": "Ruka",
+  "gym": "team未来",
+  "dob": "2006.6.28"
+ },
+ {
+  "id": "111",
+  "name": "岩尾 力",
+  "kana": "イワオ チカラ",
+  "en": "Iwao Chikara",
+  "gym": "POWER OF DREAM",
+  "dob": "1997.12.24"
+ },
+ {
+  "id": "1348",
+  "name": "上野 空大",
+  "kana": "ウエノ クウト",
+  "en": "Ueno Kuto",
+  "gym": "kickboxing gym  SHINYUUKI＋",
+  "dob": "2004.3.5"
+ },
+ {
+  "id": "1718",
+  "name": "後藤 力",
+  "kana": "ゴトウ リキ",
+  "en": "Goto Riki",
+  "gym": "TEAM ONE",
+  "dob": "2002.6.20"
+ },
+ {
+  "id": "900",
+  "name": "シナ・カリミアン",
+  "kana": "",
+  "en": "Sina Karimian",
+  "gym": "SINA ARMY",
+  "dob": "1988.1.23"
+ },
+ {
+  "id": "1173",
+  "name": "宮崎 勇樹",
+  "kana": "ミヤザキ ユウキ",
+  "en": "Miyazaki Yuki",
+  "gym": "FLYSKY GYM/MY GYM",
+  "dob": "1994.1.15"
+ },
+ {
+  "id": "1523",
+  "name": "イオヌット・ポパ",
+  "kana": "",
+  "en": "Ionut Popa",
+  "gym": "Team Super Pro Alin Balasa Sibiu",
+  "dob": "1999.5.1"
+ },
+ {
+  "id": "280",
+  "name": "佐々木 大蔵",
+  "kana": "ササキ ダイゾウ",
+  "en": "Sasaki Daizo",
+  "gym": "DyR studio",
+  "dob": "1990.11.20"
+ },
+ {
+  "id": "1558",
+  "name": "大地",
+  "kana": "ダイチ",
+  "en": "Daichi",
+  "gym": "ZEBRA GYM",
+  "dob": "2007.4.30"
+ },
+ {
+  "id": "1734",
+  "name": "ステファン・ヴランチェアーヌ",
+  "kana": "",
+  "en": "Stefan Vranceanu",
+  "gym": "DORU TEAM BRAILA",
+  "dob": "2007.7.30"
+ },
+ {
+  "id": "1364",
+  "name": "今村 流星",
+  "kana": "イマムラ リュウセイ",
+  "en": "Imamura Ryusei",
+  "gym": "KINGS",
+  "dob": "2003.5.30"
+ },
+ {
+  "id": "351",
+  "name": "山際 和希",
+  "kana": "ヤマギワ カズキ",
+  "en": "Yamagiwa Kazuki",
+  "gym": "谷山ジム",
+  "dob": "1988.11.5"
+ },
+ {
+  "id": "1671",
+  "name": "倫太朗",
+  "kana": "リンタロウ",
+  "en": "Rintaro",
+  "gym": "VAINQUEUR GYM",
+  "dob": "1994.11.1"
+ },
+ {
+  "id": "1221",
+  "name": "坂本 優輝",
+  "kana": "サカモト ユウキ",
+  "en": "Sakamoto Yuuki",
+  "gym": "ARROWS GYM",
+  "dob": "2002.11.17"
+ },
+ {
+  "id": "869",
+  "name": "横山 朋哉",
+  "kana": "ヨコヤマ トモヤ",
+  "en": "Yokoyama Tomoya",
+  "gym": "リーブルロア",
+  "dob": "2000.3.20"
+ },
+ {
+  "id": "1333",
+  "name": "齊藤 龍之介",
+  "kana": "サイトウ リュウノスケ",
+  "en": "Saito Ryunosuke",
+  "gym": "ドージョー☆シャカリキ",
+  "dob": "2005.2.14"
+ },
+ {
+  "id": "1299",
+  "name": "アヤブ・セギリ",
+  "kana": "",
+  "en": "Ayoub Segiri",
+  "gym": "Kaizen Fight Club Burriana",
+  "dob": "1998.8.16"
+ },
+ {
+  "id": "1763",
+  "name": "やまちゃん",
+  "kana": "ヤマチャン",
+  "en": "Yamachan",
+  "gym": "K-1 GYM BLOWS",
+  "dob": "1985.8.4"
+ },
+ {
+  "id": "1519",
+  "name": "カン・ピナール",
+  "kana": "",
+  "en": "Can Pinar",
+  "gym": "Mike's Gym",
+  "dob": "1999.10.4"
+ },
+ {
+  "id": "1325",
+  "name": "ステファン・ラテスク",
+  "kana": "",
+  "en": "Stefan Latescu",
+  "gym": "SCORPIONS IASI",
+  "dob": "2001.12.25"
+ },
+ {
+  "id": "1630",
+  "name": "ジョナス・サルシチャ",
+  "kana": "",
+  "en": "Jonas Salsicha",
+  "gym": "TF Team/CT Allan Popeye",
+  "dob": "1994.5.25"
+ },
+ {
+  "id": "828",
+  "name": "壽美",
+  "kana": "コトミ",
+  "en": "Kotomi",
+  "gym": "NEXT LEVEL渋谷",
+  "dob": "1996.7.26"
+ },
+ {
+  "id": "1688",
+  "name": "寛心",
+  "kana": "ヒロト",
+  "en": "Hiroto",
+  "gym": "士魂村上塾",
+  "dob": "2003.2.15"
+ },
+ {
+  "id": "1372",
+  "name": "吉野 友規",
+  "kana": "ヨシノ トモキ",
+  "en": "Yoshino Tomoki",
+  "gym": "K.Y.T",
+  "dob": "1986.5.30"
+ },
+ {
+  "id": "1722",
+  "name": "グンター・カルンダ",
+  "kana": "",
+  "en": "Gunther Kalunda",
+  "gym": "ReBORN経堂",
+  "dob": "1992.7.7"
+ },
+ {
+  "id": "1237",
+  "name": "龍",
+  "kana": "リュウ",
+  "en": "Ryu",
+  "gym": "WORLD TREE GYM",
+  "dob": "1998.10.11"
+ },
+ {
+  "id": "1755",
+  "name": "パベル・グリシャノヴィッチ",
+  "kana": "",
+  "en": "Pavel Grishanovich",
+  "gym": "Muay Thai Academy",
+  "dob": "1998.8.19"
+ },
+ {
+  "id": "1493",
+  "name": "ミロスラフ・ヴーヨヴィッチ",
+  "kana": "",
+  "en": "Miroslav Vujovic",
+  "gym": null,
+  "dob": "1990.8.11"
+ },
+ {
+  "id": "1539",
+  "name": "チェ・ウンジ",
+  "kana": "",
+  "en": "Choi Eun Ji",
+  "gym": "大邱FEARLESS GYM",
+  "dob": "1994.5.12"
+ },
+ {
+  "id": "1217",
+  "name": "犬童 凛",
+  "kana": "イヌドウ リン",
+  "en": "Inudo Rin",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "2003.11.6"
+ },
+ {
+  "id": "388",
+  "name": "小澤 聡子",
+  "kana": "オザワ サトコ",
+  "en": "Ozawa Satoko",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1984.3.4"
+ },
+ {
+  "id": "1352",
+  "name": "戦熊",
+  "kana": "タクマ",
+  "en": "Takuma",
+  "gym": "team ALL-WIN",
+  "dob": "1999.12.22"
+ },
+ {
+  "id": "1702",
+  "name": "猪瀬 尚希",
+  "kana": "イノセ ナオキ",
+  "en": "Inose Naoki",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2005.11.22"
+ },
+ {
+  "id": "1581",
+  "name": "モハメド・ブタザ",
+  "kana": "",
+  "en": "Mohammed Boutasaa",
+  "gym": "Southpaw Gym",
+  "dob": "1999.8.4"
+ },
+ {
+  "id": "1714",
+  "name": "獅音",
+  "kana": "ライアン",
+  "en": "Raian",
+  "gym": "M-BLOW",
+  "dob": "2007.4.23"
+ },
+ {
+  "id": "1597",
+  "name": "町分 元気",
+  "kana": "マチブン ゲンキ",
+  "en": "Machibun Genki",
+  "gym": "TAD",
+  "dob": "1991.11.17"
+ },
+ {
+  "id": "1578",
+  "name": "坂上 りま",
+  "kana": "サカガミ リマ",
+  "en": "Sakagami Rima",
+  "gym": "岡澤道場サイクロンジム大船",
+  "dob": "1997.9.29"
+ },
+ {
+  "id": "799",
+  "name": "友尊",
+  "kana": "ユタカ",
+  "en": "Yutaka",
+  "gym": "TEAM K/BLUE DOG GYM",
+  "dob": "1989.9.8"
+ },
+ {
+  "id": "1313",
+  "name": "天河",
+  "kana": "テンガ",
+  "en": "Tenga",
+  "gym": "KIWAMI GYM",
+  "dob": "2001.6.21"
+ },
+ {
+  "id": "1743",
+  "name": "アキレアス・カラピペリス",
+  "kana": "",
+  "en": "Achilleas Karapiperis",
+  "gym": "KRITIKOS CAMP",
+  "dob": "2000.1.4"
+ },
+ {
+  "id": "1485",
+  "name": "上野 奏貴",
+  "kana": "ウエノ カナタ",
+  "en": "Ueno Kanata",
+  "gym": "kickboxing gym  SHINYUUKI＋",
+  "dob": "2006.9.20"
+ },
+ {
+  "id": "1692",
+  "name": "バッソ・ピレス",
+  "kana": "",
+  "en": "Basso Pires",
+  "gym": "K.O. TEAM",
+  "dob": "1993.10.1"
+ },
+ {
+  "id": "1738",
+  "name": "マック・パパリイ",
+  "kana": "",
+  "en": "Mac Papalii",
+  "gym": "Battle-Box",
+  "dob": "1999.3.12"
+ },
+ {
+  "id": "218",
+  "name": "大月 晴明",
+  "kana": "オオツキ ハルアキ",
+  "en": "Otsuki Haruaki",
+  "gym": "NEXT LEVEL渋谷",
+  "dob": "1973.12.30"
+ },
+ {
+  "id": "1554",
+  "name": "バレンティン・マヴロディン",
+  "kana": "",
+  "en": "Valentin Mavrodin",
+  "gym": "DORU TEAM BRAILA",
+  "dob": "2004.2.29"
+ },
+ {
+  "id": "1104",
+  "name": "水上 陽生",
+  "kana": "ミズカミ ハルキ",
+  "en": "Mizukami Haruki",
+  "gym": "POWER OF DREAM",
+  "dob": "1999.6.13"
+ },
+ {
+  "id": "998",
+  "name": "西元 也史",
+  "kana": "ニシモト ナルフミ",
+  "en": "Nishimoto Narufumi",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1997.12.13"
+ },
+ {
+  "id": "832",
+  "name": "山脇 魁斗",
+  "kana": "ヤマワキ カイト",
+  "en": "Yamawaki Kaito",
+  "gym": "FORWARD GYM",
+  "dob": "1998.12.23"
+ },
+ {
+  "id": "1295",
+  "name": "AKIRA Jr.",
+  "kana": "アキラ ジュニア",
+  "en": "AKIRA Jr.",
+  "gym": "Team Aj",
+  "dob": "1990.10.24"
+ },
+ {
+  "id": "1780",
+  "name": "ファビオ・ヴェイガ",
+  "kana": "",
+  "en": "Fabio Veiga",
+  "gym": "K.O. TEAM",
+  "dob": "1996.7.29"
+ },
+ {
+  "id": "1503",
+  "name": "リース・ブルーデネル",
+  "kana": "",
+  "en": "Rhys Brudenell",
+  "gym": "Prizefighter",
+  "dob": "1993.8.11"
+ },
+ {
+  "id": "1016",
+  "name": "山田 真子",
+  "kana": "ヤマダ マコ",
+  "en": "Yamada Mako",
+  "gym": "KINGS",
+  "dob": "1994.5.26"
+ },
+ {
+  "id": "1446",
+  "name": "パスカル・シュロス",
+  "kana": "",
+  "en": "Pascal Schroth",
+  "gym": "Martial Arts Academy",
+  "dob": "1993.9.15"
+ },
+ {
+  "id": "1283",
+  "name": "安尾 瑠輝",
+  "kana": "ヤスオ リュウキ",
+  "en": "Yasuo Ryuki",
+  "gym": "K-1ジム心斎橋チームレパード",
+  "dob": "2004.10.23"
+ },
+ {
+  "id": "1779",
+  "name": "アラン・レヴェック",
+  "kana": "",
+  "en": "Alan Leveque",
+  "gym": "Mahmoudi Gym",
+  "dob": "1996.2.15"
+ },
+ {
+  "id": "1796",
+  "name": "マヌエル・メネンデス",
+  "kana": "",
+  "en": "Manuel Menendez",
+  "gym": "TAD",
+  "dob": "2003.9.5"
+ },
+ {
+  "id": "1515",
+  "name": "アンデルソン・ブラドック",
+  "kana": "",
+  "en": "Anderson Braddock",
+  "gym": null,
+  "dob": "1986.8.29"
+ },
+ {
+  "id": "936",
+  "name": "櫻井 梨華子",
+  "kana": "サクライ リカコ",
+  "en": "Sakurai Rikako",
+  "gym": "優弥道場",
+  "dob": "1992.2.4"
+ },
+ {
+  "id": "1450",
+  "name": "タラス・ナチュック",
+  "kana": "",
+  "en": "Taras Hnatchuk",
+  "gym": "LOTTATORI MILANO",
+  "dob": "1999.5.11"
+ },
+ {
+  "id": "1684",
+  "name": "萌衣",
+  "kana": "メイ",
+  "en": "Mei",
+  "gym": "team NOVA",
+  "dob": "2002.6.1"
+ },
+ {
+  "id": "1391",
+  "name": "ティントーン・SEIKENKAI",
+  "kana": "ティントーン・セイケンカイ",
+  "en": "Tingthong",
+  "gym": "SEIKENKAI",
+  "dob": "1988.9.25"
+ },
+ {
+  "id": "824",
+  "name": "海斗",
+  "kana": "カイト",
+  "en": "Kaito",
+  "gym": "LEGEND GYM",
+  "dob": "1995.5.25"
+ },
+ {
+  "id": "1112",
+  "name": "赤田 功輝",
+  "kana": "アカダ コウキ",
+  "en": "Akada Koki",
+  "gym": "RAIGHT",
+  "dob": "1998.12.23"
+ },
+ {
+  "id": "1057",
+  "name": "谷川 聖哉",
+  "kana": "タニガワ セイヤ",
+  "en": "Tanigawa Seiya",
+  "gym": "Yogibo DATSURIKI GYM",
+  "dob": "1996.10.23"
+ },
+ {
+  "id": "1407",
+  "name": "ケリム・ジェマイ",
+  "kana": "",
+  "en": "Kerim Jemai",
+  "gym": "ZAM-ZAM Ulm",
+  "dob": "1993.5.27"
+ },
+ {
+  "id": "961",
+  "name": "中島 千博",
+  "kana": "ナカジマ チヒロ",
+  "en": "Nakajima Chihiro",
+  "gym": "POWER OF DREAM",
+  "dob": "1994.11.24"
+ },
+ {
+  "id": "1756",
+  "name": "ルスラン・ナギエフ",
+  "kana": "",
+  "en": "Ruslan Nagiyev",
+  "gym": "Thai Foreign Legion",
+  "dob": "1999.2.21"
+ },
+ {
+  "id": "1613",
+  "name": "HAYATO",
+  "kana": "ハヤト",
+  "en": "Hayato",
+  "gym": "CRAZY WOLF",
+  "dob": "2002.2.15"
+ },
+ {
+  "id": "1490",
+  "name": "上田 咲也",
+  "kana": "ウエダ サクヤ",
+  "en": "Ueda Sakuya",
+  "gym": "HIGHSPEED GYM",
+  "dob": "2004.4.16"
+ },
+ {
+  "id": "1351",
+  "name": "カン・ユンソン",
+  "kana": "",
+  "en": "Kang Yun-Seong",
+  "gym": "木浦スタージム",
+  "dob": "1999.5.16"
+ },
+ {
+  "id": "1701",
+  "name": "サガエ・マテウス",
+  "kana": "",
+  "en": "Sagae Mateus",
+  "gym": "Brazilian Thai",
+  "dob": "2006.6.28"
+ },
+ {
+  "id": "221",
+  "name": "加藤 港",
+  "kana": "カトウ ゴウ",
+  "en": "Kato Go",
+  "gym": "WSRフェアテックス三ノ輪",
+  "dob": "1988.5.19"
+ },
+ {
+  "id": "1644",
+  "name": "ヴィトール・フォルミガン",
+  "kana": "",
+  "en": "Vitor Formigao",
+  "gym": "Killer Bees",
+  "dob": "1994.9.30"
+ },
+ {
+  "id": "1582",
+  "name": "マフィア・ペットモンコンディー",
+  "kana": "",
+  "en": "Mafia",
+  "gym": "Petchnongki Gym",
+  "dob": "2009.7.25"
+ },
+ {
+  "id": "1717",
+  "name": "矢吹 空也",
+  "kana": "ヤブキ クウヤ",
+  "en": "Yabuki Kuya",
+  "gym": "ザワジム",
+  "dob": "1998.2.12"
+ },
+ {
+  "id": "46",
+  "name": "ジョーダン・ピケオー",
+  "kana": "",
+  "en": "Jordann Pikeur",
+  "gym": "Mike's Gym",
+  "dob": "1990.9.1"
+ },
+ {
+  "id": "1594",
+  "name": "野中 大翔",
+  "kana": "ノナカ ダイト",
+  "en": "Nonaka Daito",
+  "gym": "K.I.K team BLADE",
+  "dob": "2005.10.19"
+ },
+ {
+  "id": "1310",
+  "name": "イゴール・シウバ",
+  "kana": "",
+  "en": "Igor Silva",
+  "gym": "Brazilian Thai",
+  "dob": "1991.9.5"
+ },
+ {
+  "id": "1740",
+  "name": "ニコラオス・リヴァノス",
+  "kana": "",
+  "en": "Nikolaos Livanos",
+  "gym": "TSOTRAS KICKBOXING CLUB",
+  "dob": "2004.2.3"
+ },
+ {
+  "id": "1486",
+  "name": "肉弾子",
+  "kana": "ニクダンゴ",
+  "en": "Nikudango",
+  "gym": "米子ジム",
+  "dob": "1985.10.25"
+ },
+ {
+  "id": "1384",
+  "name": "マッケンナ・ウェイド",
+  "kana": "",
+  "en": "McKenna Wade",
+  "gym": "Millennium Martial Arts",
+  "dob": "2002.7.30"
+ },
+ {
+  "id": "1412",
+  "name": "マリア・ネラ",
+  "kana": "",
+  "en": "Maria Nella",
+  "gym": "EFL academy Athens",
+  "dob": "2000.9.19"
+ },
+ {
+  "id": "1042",
+  "name": "石田 龍大",
+  "kana": "イシダ リョウタ",
+  "en": "Ishida Ryota",
+  "gym": "POWER OF DREAM",
+  "dob": "2002.11.25"
+ },
+ {
+  "id": "1804",
+  "name": "齊藤 律",
+  "kana": "サイトウ リツ",
+  "en": "Saito Ristu",
+  "gym": "Y's glow",
+  "dob": "1996.7.18"
+ },
+ {
+  "id": "831",
+  "name": "川﨑 聖亮朗",
+  "kana": "カワサキ シンイチロウ",
+  "en": "Kawasaki Shinichiro",
+  "gym": "HIGHSPEED GYM",
+  "dob": "1991.12.19"
+ },
+ {
+  "id": "1557",
+  "name": "岩上 行統",
+  "kana": "イワガミ ユキト",
+  "en": "Iwagami Yukito",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2001.12.18"
+ },
+ {
+  "id": "1107",
+  "name": "ヴィトー・トファネリ",
+  "kana": "",
+  "en": "Vitor Toffanelli",
+  "gym": "Brazilian Thai / 闘英館",
+  "dob": "1985.12.27"
+ },
+ {
+  "id": "1783",
+  "name": "和美",
+  "kana": "カズミ",
+  "en": "Kazumi",
+  "gym": "ヒデズキック福岡",
+  "dob": "1992.12.27"
+ },
+ {
+  "id": "1296",
+  "name": "長野 翔",
+  "kana": "ナガノ カケル",
+  "en": "Nagano Kakeru",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2004.9.22"
+ },
+ {
+  "id": "759",
+  "name": "西京 佑馬",
+  "kana": "サイキョウ ユウマ",
+  "en": "Saikyo Yuma",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "2000.9.21"
+ },
+ {
+  "id": "889",
+  "name": "高梨knuckle美穂",
+  "kana": "タカナシ ナックル ミホ",
+  "en": "Knuckle",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1993.5.26"
+ },
+ {
+  "id": "1015",
+  "name": "倉田 永輝",
+  "kana": "クラタ エイキ",
+  "en": "Kurata Eiki",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "2001.6.8"
+ },
+ {
+  "id": "1445",
+  "name": "ヴァシリ・セメノフ",
+  "kana": "",
+  "en": "Vasilii Semenov",
+  "gym": "Archangel Michael",
+  "dob": "1993.10.16"
+ },
+ {
+  "id": "1150",
+  "name": "鈴木 万李弥",
+  "kana": "スズキ マリヤ",
+  "en": "Suzuki Mariya",
+  "gym": "KNOCK OUTクロスポイント吉祥寺",
+  "dob": "1994.10.5"
+ },
+ {
+  "id": "1500",
+  "name": "パブロス・コクリャリオス",
+  "kana": "",
+  "en": "Pavlos Kochliarios",
+  "gym": "Politis Team",
+  "dob": "1986.8.28"
+ },
+ {
+  "id": "1795",
+  "name": "イ・ヒョンソク",
+  "kana": "",
+  "en": "Lee Hyun Seok",
+  "gym": "TEAM ILDO",
+  "dob": "2006.6.15"
+ },
+ {
+  "id": "1280",
+  "name": "TOJO",
+  "kana": "トウジョウ",
+  "en": "Tojo",
+  "gym": "K-1 GYM BLOWS",
+  "dob": "1990.1.20"
+ },
+ {
+  "id": "1003",
+  "name": "パヤーフォン・バンチャメーク",
+  "kana": "",
+  "en": "Phayahong",
+  "gym": "Banchamek Gym",
+  "dob": "2002.9.30"
+ },
+ {
+  "id": "1516",
+  "name": "ハイメ・モライス",
+  "kana": "",
+  "en": "Haime Morais",
+  "gym": null,
+  "dob": "0.0.0"
+ },
+ {
+  "id": "348",
+  "name": "松本 篤人",
+  "kana": "マツモト アツト",
+  "en": "Matsumoto Atsuto",
+  "gym": "バンゲリングベイ・スピリット",
+  "dob": "1984.6.4"
+ },
+ {
+  "id": "1687",
+  "name": "水谷 昊代",
+  "kana": "ミズタニ コウダイ",
+  "en": "Mizutani Kodai",
+  "gym": "TEAM TMT",
+  "dob": "2008.7.23"
+ },
+ {
+  "id": "1054",
+  "name": "加藤 りこ",
+  "kana": "カトウ リコ",
+  "en": "Kato Riko",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1995.5.17"
+ },
+ {
+  "id": "1404",
+  "name": "リュウ・ツァー",
+  "kana": "",
+  "en": "Liu Ce",
+  "gym": "唐山文旅驍騎ファイトクラブ/CFP",
+  "dob": "1996.9.4"
+ },
+ {
+  "id": "431",
+  "name": "武田 雄陽",
+  "kana": "タケダ ユウヒ",
+  "en": "Takeda Yuhi",
+  "gym": null,
+  "dob": "0.0.0"
+ },
+ {
+  "id": "1111",
+  "name": "紫苑",
+  "kana": "シオン",
+  "en": "Shion",
+  "gym": "KIZUNA田川本部道場",
+  "dob": "2002.7.25"
+ },
+ {
+  "id": "1166",
+  "name": "TOODY NAOMI",
+  "kana": "トゥーディー ナオミ",
+  "en": "TOODY NAOMI",
+  "gym": "TEAM3K",
+  "dob": "1988.7.24"
+ },
+ {
+  "id": "1473",
+  "name": "アリン・ネキタ",
+  "kana": "",
+  "en": "Alin Nechita",
+  "gym": "TORNADO FIGHT GYM",
+  "dob": "2003.7.23"
+ },
+ {
+  "id": "104",
+  "name": "朝久 泰央",
+  "kana": "アサヒサ タイオウ",
+  "en": "Asahisa Taio",
+  "gym": "朝久道場",
+  "dob": "1998.1.16"
+ },
+ {
+  "id": "1561",
+  "name": "フェン・ルイ",
+  "kana": "",
+  "en": "Feng Rui",
+  "gym": "星武創新ファイトクラブ/CFP",
+  "dob": "1995.8.23"
+ },
+ {
+  "id": "942",
+  "name": "山浦 力也",
+  "kana": "ヤマウラ リキヤ",
+  "en": "Yamaura Rikiya",
+  "gym": "北斗会館",
+  "dob": "2000.5.28"
+ },
+ {
+  "id": "1074",
+  "name": "嶋 拓実",
+  "kana": "シマ タクミ",
+  "en": "Shima Takumi",
+  "gym": "K-1ジム横浜チームオルカ",
+  "dob": "1994.8.2"
+ },
+ {
+  "id": "368",
+  "name": "神保 克哉",
+  "kana": "ジンボ カツヤ",
+  "en": "Jinbo Katsuya",
+  "gym": "サクラバファミリア/K-1ジム蒲田",
+  "dob": "1996.5.18"
+ },
+ {
+  "id": "1577",
+  "name": "浜名 颯斗",
+  "kana": "ハマナ ハヤト",
+  "en": "Hamana Hayato",
+  "gym": "K-1ジム大宮チームレオン",
+  "dob": "2004.10.24"
+ },
+ {
+  "id": "1432",
+  "name": "町田 光",
+  "kana": "マチダ ヒカル",
+  "en": "Machida Hikaru",
+  "gym": "飯伏プロレス研究所",
+  "dob": "1987.7.23"
+ },
+ {
+  "id": "1598",
+  "name": "竹添 翔太",
+  "kana": "タケゾエ ショウタ",
+  "en": "Takezoe Shota",
+  "gym": "インスパイヤードモーション",
+  "dob": "2001.8.9"
+ },
+ {
+  "id": "1465",
+  "name": "ヴィクトル・アキモフ",
+  "kana": "",
+  "en": "Viktor Akimov",
+  "gym": "Brazilian Thai",
+  "dob": "1991.9.22"
+ },
+ {
+  "id": "1609",
+  "name": "浜崎 瞬太",
+  "kana": "ハマザキ シュンタ",
+  "en": "Hamazaki Shunta",
+  "gym": "武道格闘技道場 ∞ø N",
+  "dob": "2005.4.14"
+ },
+ {
+  "id": "66",
+  "name": "木村“フィリップ”ミノル",
+  "kana": "キムラ“フィリップ”ミノル",
+  "en": "Kimura “Philip” Minoru",
+  "gym": "Battle-Box",
+  "dob": "1993.9.9"
+ },
+ {
+  "id": "1388",
+  "name": "璃久",
+  "kana": "リク",
+  "en": "Riku",
+  "gym": "シカGYM",
+  "dob": "1999.2.1"
+ },
+ {
+  "id": "1672",
+  "name": "北川原 稜磨",
+  "kana": "キタガワラ リョウマ",
+  "en": "Kitagawara Ryoma",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "2003.4.28"
+ },
+ {
+  "id": "1222",
+  "name": "内田 竜斗",
+  "kana": "ウチダ リュウト",
+  "en": "Uchida Ryuto",
+  "gym": "チーム・タイガーホーク",
+  "dob": "2000.3.15"
+ },
+ {
+  "id": "1737",
+  "name": "福地 勇人",
+  "kana": "フクチ ユウト",
+  "en": "Fukuchi Yuto",
+  "gym": "白蓮会館",
+  "dob": "1993.10.7"
+ },
+ {
+  "id": "1367",
+  "name": "アーロン・クラーク",
+  "kana": "",
+  "en": "Aaron Clarke",
+  "gym": "SOMA FIGHT CLUB",
+  "dob": "1999.5.7"
+ },
+ {
+  "id": "1449",
+  "name": "ダリル・フェルドンク",
+  "kana": "",
+  "en": "Darryl Verdonk",
+  "gym": "Fight Team Ringer",
+  "dob": "1996.3.28"
+ },
+ {
+  "id": "1019",
+  "name": "梨緒弥",
+  "kana": "リオヤ",
+  "en": "Rioya",
+  "gym": "若獅子会館 MATSUBARA",
+  "dob": "1999.5.6"
+ },
+ {
+  "id": "1625",
+  "name": "へリアジル・エステファニ",
+  "kana": "",
+  "en": "Heliazir Estefani",
+  "gym": "Ponto 1 Fight",
+  "dob": "1998.10.28"
+ },
+ {
+  "id": "1330",
+  "name": "麻央",
+  "kana": "マオ",
+  "en": "Mao",
+  "gym": "K-1ジム心斎橋チームレパード",
+  "dob": "1997.7.23"
+ },
+ {
+  "id": "1760",
+  "name": "アンドレイ・エリン",
+  "kana": "",
+  "en": "Andrey Elin",
+  "gym": "SPK MASHINA",
+  "dob": "1996.4.19"
+ },
+ {
+  "id": "1633",
+  "name": "ジェニファー・マイア",
+  "kana": "",
+  "en": "Jennifer Maia",
+  "gym": "Chute Boxe Monstro",
+  "dob": "1988.10.6"
+ },
+ {
+  "id": "1799",
+  "name": "ヴァレリー・イワノフ",
+  "kana": "",
+  "en": "Valeriy Ivanov",
+  "gym": "Vityas St. Petersburg/RCC GYM",
+  "dob": "2000.8.29"
+ },
+ {
+  "id": "1408",
+  "name": "クラウディオ・イストラテ",
+  "kana": "",
+  "en": "Claudio Istrate",
+  "gym": "Accademia NKT Team Saitta",
+  "dob": "1995.8.20"
+ },
+ {
+  "id": "1664",
+  "name": "ブレイク・トループ",
+  "kana": "",
+  "en": "Blake Troop",
+  "gym": "EYR Division Blackhouse MMA",
+  "dob": "1987.10.22"
+ },
+ {
+  "id": "1371",
+  "name": "ムスタファ・ハイダ",
+  "kana": "",
+  "en": "Mustapha Haida",
+  "gym": "Fight Club Firenze",
+  "dob": "1988.10.12"
+ },
+ {
+  "id": "1721",
+  "name": "ク・テウォン",
+  "kana": "",
+  "en": "Ku Tae Won",
+  "gym": "仁川YAK GYM",
+  "dob": "2001.1.6"
+ },
+ {
+  "id": "1370",
+  "name": "リー・ホイ",
+  "kana": "リー・ホイ",
+  "en": "Li Hui",
+  "gym": "陕西大秦騫秋ファイトクラブ/CFP",
+  "dob": "1995.5.12"
+ },
+ {
+  "id": "1720",
+  "name": "マルコ・ダニエル",
+  "kana": "",
+  "en": "Marco Daniel",
+  "gym": "Brazilian Thai",
+  "dob": "2000.2.24"
+ },
+ {
+  "id": "1409",
+  "name": "上田 幹雄",
+  "kana": "ウエダ ミキオ",
+  "en": "Ueda Mikio",
+  "gym": "BRAVE",
+  "dob": "1995.5.1"
+ },
+ {
+  "id": "1632",
+  "name": "アリエル・ビジャルバ",
+  "kana": "",
+  "en": "Ariel Villalba",
+  "gym": "Brazilian TKO",
+  "dob": "2006.1.1"
+ },
+ {
+  "id": "257",
+  "name": "三輪 裕樹",
+  "kana": "ミワ ユウキ",
+  "en": "Miwa Yuki",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1992.9.19"
+ },
+ {
+  "id": "1798",
+  "name": "ヤン・ペトロヴィッチ",
+  "kana": "",
+  "en": "Yan Petrovich",
+  "gym": "Sports Club BOETS",
+  "dob": "1993.4.5"
+ },
+ {
+  "id": "1262",
+  "name": "黒川 瑛斗",
+  "kana": "クロカワ エイト",
+  "en": "Kurokawa Eito",
+  "gym": "team VASILEUS",
+  "dob": "2003.11.28"
+ },
+ {
+  "id": "1777",
+  "name": "ヒラマゴメド・アリエフ",
+  "kana": "",
+  "en": "Khiramagomed Aliyev",
+  "gym": "R-1 Martial Arts Academy",
+  "dob": "2002.2.18"
+ },
+ {
+  "id": "1274",
+  "name": "鈴木 健太郎",
+  "kana": "スズキ ケンタロウ",
+  "en": "Suzuki Kentaro",
+  "gym": "E.S.G",
+  "dob": "1990.8.18"
+ },
+ {
+  "id": "1624",
+  "name": "ジュニオール・ルイス",
+  "kana": "",
+  "en": "Junior Luiz",
+  "gym": "Rizzo RVT",
+  "dob": "1991.9.4"
+ },
+ {
+  "id": "1331",
+  "name": "大鹿 統毅",
+  "kana": "オオシカ トウキ",
+  "en": "Oshika Toki",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2005.3.12"
+ },
+ {
+  "id": "754",
+  "name": "アントニオ・オルデン",
+  "kana": "",
+  "en": "Antonio Orden",
+  "gym": "El Origen Thaimartin/Orden Team",
+  "dob": "1991.10.14"
+ },
+ {
+  "id": "884",
+  "name": "“TANK” 和将",
+  "kana": "“タンク”  カズマサ",
+  "en": "“TANK” Kazumasa",
+  "gym": "K-1ジム蒲田チームアスラ",
+  "dob": "1990.2.4"
+ },
+ {
+  "id": "168",
+  "name": "朝久 裕貴",
+  "kana": "アサヒサ ヒロタカ",
+  "en": "Asahisa Hirotaka",
+  "gym": "朝久道場",
+  "dob": "1996.6.21"
+ },
+ {
+  "id": "1389",
+  "name": "上垣内 一成",
+  "kana": "ウエガイト イッセイ",
+  "en": "Uegaito Issei",
+  "gym": "月心会ラスカルジム",
+  "dob": "1996.7.30"
+ },
+ {
+  "id": "1223",
+  "name": "寺島 想",
+  "kana": "テラシマ ココロ",
+  "en": "Terashima Kokoro",
+  "gym": "AX GYM",
+  "dob": "1999.7.25"
+ },
+ {
+  "id": "1736",
+  "name": "ティアッカ・フェイ",
+  "kana": "",
+  "en": "Thiacka Faye",
+  "gym": "Senegal Warriors MMA",
+  "dob": "1987.11.15"
+ },
+ {
+  "id": "1366",
+  "name": "ラマダン・オンダッシュ",
+  "kana": "",
+  "en": "Ramadan Ondash",
+  "gym": "TEAM SHARKS",
+  "dob": "2006.10.26"
+ },
+ {
+  "id": "88",
+  "name": "佐野 天馬",
+  "kana": "サノ テンマ",
+  "en": "Sano Tenma",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1997.7.25"
+ },
+ {
+  "id": "996",
+  "name": "松本 日向",
+  "kana": "マツモト ヒナタ",
+  "en": "Matsumoto Hinata",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1998.11.13"
+ },
+ {
+  "id": "1608",
+  "name": "辰巳 璃央",
+  "kana": "タツミ リオ",
+  "en": "Tatsumi Rio",
+  "gym": "Team Free Style",
+  "dob": "2010.1.5"
+ },
+ {
+  "id": "797",
+  "name": "小倉 尚也",
+  "kana": "オグラ タカヤ",
+  "en": "Ogura Takaya",
+  "gym": "KNOCK OUTクロスポイント渋谷",
+  "dob": "1994.5.26"
+ },
+ {
+  "id": "1521",
+  "name": "KO-TA BRAVELY",
+  "kana": "コウタ ブレイブリー",
+  "en": "KO-TA BRAVELY",
+  "gym": "BRAVELY GYM",
+  "dob": "1995.4.4"
+ },
+ {
+  "id": "1034",
+  "name": "“狂拳”迅",
+  "kana": "キョウケン ジン",
+  "en": "“Kyoken” Jin",
+  "gym": "WIZARDキックボクシングジム",
+  "dob": "2003.12.18"
+ },
+ {
+  "id": "1464",
+  "name": "玲志",
+  "kana": "レイシ",
+  "en": "Reishi",
+  "gym": "拳心会",
+  "dob": "2004.2.16"
+ },
+ {
+  "id": "810",
+  "name": "豊嶋 里美",
+  "kana": "トヨシマ サトミ",
+  "en": "Toyoshima Satomi",
+  "gym": "TEAM OJ",
+  "dob": "1993.12.14"
+ },
+ {
+  "id": "1576",
+  "name": "大久保 世璃",
+  "kana": "オオクボ セリ",
+  "en": "Okubo Seri",
+  "gym": "K-1ジム・ウルフ TEAM ASTER",
+  "dob": "2007.8.23"
+ },
+ {
+  "id": "1433",
+  "name": "龍翔",
+  "kana": "リュウショウ",
+  "en": "Ryusho",
+  "gym": "EX ARES",
+  "dob": "2006.4.4"
+ },
+ {
+  "id": "955",
+  "name": "堀井 翼",
+  "kana": "ホリイ ツバサ",
+  "en": "Horii Tsubasa",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1994.11.19"
+ },
+ {
+  "id": "1560",
+  "name": "マッティア・ファラオー二",
+  "kana": "",
+  "en": "Mattia Faraoni",
+  "gym": "RAINI CLAN",
+  "dob": "1991.11.13"
+ },
+ {
+  "id": "943",
+  "name": "斗麗",
+  "kana": "トウマ",
+  "en": "Toma",
+  "gym": "WIZARDキックボクシングジム",
+  "dob": "2002.10.27"
+ },
+ {
+  "id": "1425",
+  "name": "石川 優斗",
+  "kana": "イシカワ マサト",
+  "en": "Ishikawa Masato",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "2002.1.3"
+ },
+ {
+  "id": "410",
+  "name": "内田 晶",
+  "kana": "ウチダ ショウ",
+  "en": "Uchida Sho",
+  "gym": "チーム・タイガーホーク",
+  "dob": "1997.10.21"
+ },
+ {
+  "id": "851",
+  "name": "久保 一馬",
+  "kana": "クボ カズマ",
+  "en": "Kubo Kazuma",
+  "gym": "FIGHT CLUB 428",
+  "dob": "1990.10.31"
+ },
+ {
+  "id": "1188",
+  "name": "アラン・クドー",
+  "kana": "",
+  "en": "Alan Kudo",
+  "gym": "Brazilian Thai",
+  "dob": "1989.11.24"
+ },
+ {
+  "id": "1472",
+  "name": "ニダル・ブチリ",
+  "kana": "",
+  "en": "Nidal Bchiri",
+  "gym": "Hemmers Gym",
+  "dob": "1991.10.3"
+ },
+ {
+  "id": "1022",
+  "name": "美伶",
+  "kana": "ミレイ",
+  "en": "Mirei",
+  "gym": "WARRIOR OSAKA",
+  "dob": "2000.4.28"
+ },
+ {
+  "id": "1405",
+  "name": "ミハル・トゥリンスキー",
+  "kana": "",
+  "en": "Michal Turynski",
+  "gym": "FIGHTER WROCLAW",
+  "dob": "1986.5.31"
+ },
+ {
+  "id": "1540",
+  "name": "近藤 壮真",
+  "kana": "コンドウ ソウマ",
+  "en": "Kondo Soma",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2004.1.10"
+ },
+ {
+  "id": "826",
+  "name": "ロエル・マナート",
+  "kana": "",
+  "en": "Roel Mannaart",
+  "gym": "Mejiro Gym Amsterdam",
+  "dob": "1994.2.10"
+ },
+ {
+  "id": "1393",
+  "name": "悠斗",
+  "kana": "ユウト",
+  "en": "Yuto",
+  "gym": "HUNGRY GYM",
+  "dob": "1993.2.24"
+ },
+ {
+  "id": "1669",
+  "name": "川森 悠人",
+  "kana": "カワモリ ユウト",
+  "en": "Kawamori Yuto",
+  "gym": "K-1 GYM BLOWS",
+  "dob": "2007.4.24"
+ },
+ {
+  "id": "1239",
+  "name": "安 晟太",
+  "kana": "ヤス ジョウタ",
+  "en": "Yasu Jota",
+  "gym": "サクシードジム team EXCEED",
+  "dob": "2000.12.17"
+ },
+ {
+  "id": "1686",
+  "name": "アラッサン・カマラ",
+  "kana": "",
+  "en": "Alassane Kamara",
+  "gym": "Emergence Le Havre",
+  "dob": "1999.11.21"
+ },
+ {
+  "id": "1452",
+  "name": "ウマール・セマタ",
+  "kana": "",
+  "en": "Umar Semata",
+  "gym": "Tiger Muay Thai",
+  "dob": "1987.5.20"
+ },
+ {
+  "id": "1002",
+  "name": "池田 幸司",
+  "kana": "イケダ コウジ",
+  "en": "Ikeda Koji",
+  "gym": "ReBORN経堂",
+  "dob": "1997.6.30"
+ },
+ {
+  "id": "934",
+  "name": "永坂 吏羅",
+  "kana": "ナガサカ リラ",
+  "en": "Nagasaka Lyra",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1998.12.8"
+ },
+ {
+  "id": "1147",
+  "name": "ジュリオ・セザール・モリ",
+  "kana": "",
+  "en": "Julio Cesar Mori",
+  "gym": "Brazilian Thai / team Mori",
+  "dob": "1983.10.5"
+ },
+ {
+  "id": "1794",
+  "name": "ヤン・ホンチョル",
+  "kana": "",
+  "en": "Yang Hong Cheol",
+  "gym": "Dream Gym",
+  "dob": "2002.5.5"
+ },
+ {
+  "id": "1281",
+  "name": "木村 太地",
+  "kana": "キムラ ダイチ",
+  "en": "Kimura Daichi",
+  "gym": "BANG BANG GYM",
+  "dob": "1997.9.1"
+ },
+ {
+  "id": "922",
+  "name": "光佑",
+  "kana": "コウスケ",
+  "en": "Kosuke",
+  "gym": "WSRフェアテックス三ノ輪",
+  "dob": "1994.10.17"
+ },
+ {
+  "id": "1444",
+  "name": "ストーヤン・コプリヴレンスキー",
+  "kana": "",
+  "en": "Stoyan Koprivlenski",
+  "gym": "Mike's Gym",
+  "dob": "1994.6.21"
+ },
+ {
+  "id": "1151",
+  "name": "池内 紀子",
+  "kana": "イケウチ ノリコ",
+  "en": "Ikeuchi Noriko",
+  "gym": "POWER OF DREAM",
+  "dob": "1999.3.27"
+ },
+ {
+  "id": "1628",
+  "name": "アンドレ・マルティンス",
+  "kana": "",
+  "en": "Andre Martins",
+  "gym": "Canguboxe",
+  "dob": "1995.8.10"
+ },
+ {
+  "id": "1782",
+  "name": "ライザ・シルバ",
+  "kana": "",
+  "en": "Laysa Silva",
+  "gym": "Equipe Quinthai",
+  "dob": "2000.5.30"
+ },
+ {
+  "id": "1297",
+  "name": "中島 龍之介",
+  "kana": "ナカシマ リュウノスケ",
+  "en": "Nakashima Ryunosuke",
+  "gym": "K-1 GYM BLOWS",
+  "dob": "2005.9.4"
+ },
+ {
+  "id": "1413",
+  "name": "心直",
+  "kana": "シンタ",
+  "en": "Shinta",
+  "gym": "REON Fighting Sports GYM",
+  "dob": "2001.5.26"
+ },
+ {
+  "id": "975",
+  "name": "髙橋 直輝",
+  "kana": "タカハシナオキ",
+  "en": "Takahashi Naoki",
+  "gym": "若獅子会館",
+  "dob": "1997.12.6"
+ },
+ {
+  "id": "1556",
+  "name": "来希",
+  "kana": "ライキ",
+  "en": "Raiki",
+  "gym": "TEAM ONE",
+  "dob": "2002.12.28"
+ },
+ {
+  "id": "1385",
+  "name": "ディミトラ・アガサゲリドゥ",
+  "kana": "",
+  "en": "Dimitra",
+  "gym": "Fight Club Galatsi",
+  "dob": "1997.5.22"
+ },
+ {
+  "id": "1690",
+  "name": "那稀",
+  "kana": "ナギ",
+  "en": "Nagi",
+  "gym": "拳心会",
+  "dob": "2001.9.10"
+ },
+ {
+  "id": "1487",
+  "name": "カベロ・モンテイロ",
+  "kana": "",
+  "en": "Cabelo Monteiro",
+  "gym": "CFHOUSE",
+  "dob": "1999.8.16"
+ },
+ {
+  "id": "1192",
+  "name": "佐生 光一",
+  "kana": "サショウ コウイチ",
+  "en": "Sasho Koichi",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1998.6.25"
+ },
+ {
+  "id": "1468",
+  "name": "鈴木 太尊",
+  "kana": "スズキ タイソン",
+  "en": "Suzuki Tyson",
+  "gym": "クボジム",
+  "dob": "2002.4.4"
+ },
+ {
+  "id": "1038",
+  "name": "髙口 賢史郎",
+  "kana": "コウグチ ケンシロウ",
+  "en": "Koguchi Kenshiro",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1993.7.16"
+ },
+ {
+  "id": "1311",
+  "name": "早田 吏喜",
+  "kana": "ソウダ リキ",
+  "en": "Soda Riki",
+  "gym": "TEAM3K",
+  "dob": "2006.9.23"
+ },
+ {
+  "id": "774",
+  "name": "瑠久",
+  "kana": "ルーク",
+  "en": "Ruku",
+  "gym": "RAUSU GYM",
+  "dob": "1999.4.25"
+ },
+ {
+  "id": "1741",
+  "name": "パンテリス・サンプロヴァラキス",
+  "kana": "",
+  "en": "Pantelis Samprovalakis",
+  "gym": "DIAMOND CAMP",
+  "dob": "2000.12.15"
+ },
+ {
+  "id": "261",
+  "name": "レオナ・ペタス",
+  "kana": "レオナ・ペタス",
+  "en": "Leona Pettas",
+  "gym": "THE SPIRIT GYM TEAM TOP ZEROS/LARA TOKYO",
+  "dob": "1992.4.29"
+ },
+ {
+  "id": "1080",
+  "name": "小島 卓也",
+  "kana": "コジマ タクヤ",
+  "en": "Kojima Takuya",
+  "gym": "優弥道場",
+  "dob": "1991.7.21"
+ },
+ {
+  "id": "1595",
+  "name": "田中 康友",
+  "kana": "タナカ コウスケ",
+  "en": "Tanaka Kosuke",
+  "gym": "ウォーワンチャイプロモーション",
+  "dob": "2007.7.2"
+ },
+ {
+  "id": "1716",
+  "name": "森本 直哉",
+  "kana": "モリモト ナオヤ",
+  "en": "Morimoto Naoya",
+  "gym": "琉飛会",
+  "dob": "1991.7.23"
+ },
+ {
+  "id": "1346",
+  "name": "ヴュー・ペッコウーソン",
+  "kana": "",
+  "en": "View",
+  "gym": "Petchkoson Gym",
+  "dob": "1999.10.19"
+ },
+ {
+  "id": "1653",
+  "name": "渡部 蕾",
+  "kana": "ワタナベ ライナ",
+  "en": "Watanabe Raina",
+  "gym": "KNOCK OUTクロスポイント大泉",
+  "dob": "2007.8.11"
+ },
+ {
+  "id": "1429",
+  "name": "アントニア・プリフティ",
+  "kana": "",
+  "en": "Antonia Prifti",
+  "gym": "Fight Club Galatsi/Theofanous Elite Team",
+  "dob": "2001.8.10"
+ },
+ {
+  "id": "1583",
+  "name": "中野 大輝",
+  "kana": "ナカノ ヒロキ",
+  "en": "Nakano Hiroki",
+  "gym": "TAD",
+  "dob": "1998.12.27"
+ },
+ {
+  "id": "1079",
+  "name": "ブハリ亜輝留",
+  "kana": "ブハリ アキール",
+  "en": "Bukhari Aqil",
+  "gym": "WSRフェアテックス幕張",
+  "dob": "1992.7.11"
+ },
+ {
+  "id": "1350",
+  "name": "長谷川 翔平",
+  "kana": "ハセガワ ショウヘイ",
+  "en": "Hasegawa Shohei",
+  "gym": "team ALL-WIN",
+  "dob": "1998.8.17"
+ },
+ {
+  "id": "735",
+  "name": "里見 柚己",
+  "kana": "サトミ ユズキ",
+  "en": "Satomi Yuzuki",
+  "gym": "team NOVA",
+  "dob": "1997.12.3"
+ },
+ {
+  "id": "1215",
+  "name": "兼田 将暉",
+  "kana": "カネダ ショウキ",
+  "en": "Kaneda Shoki",
+  "gym": "RKS顕修塾",
+  "dob": "1999.6.25"
+ },
+ {
+  "id": "1645",
+  "name": "アンドレ・デデ",
+  "kana": "",
+  "en": "Andre Dede",
+  "gym": "CM System",
+  "dob": "1991.10.7"
+ },
+ {
+  "id": "1491",
+  "name": "トーマス・ハロン",
+  "kana": "",
+  "en": "Tomas Hron",
+  "gym": null,
+  "dob": "1981.7.25"
+ },
+ {
+  "id": "1757",
+  "name": "ウラジーミル・トゥラエフ",
+  "kana": "",
+  "en": "Vladimir Tulaev",
+  "gym": "Makeev Team",
+  "dob": "1999.11.14"
+ },
+ {
+  "id": "1612",
+  "name": "レダ・ゼイディ",
+  "kana": "",
+  "en": "Reda Zaidi",
+  "gym": "ARJ Trainingen",
+  "dob": "1992.3.28"
+ },
+ {
+  "id": "1242",
+  "name": "健介",
+  "kana": "ケンスケ",
+  "en": "Kensuke",
+  "gym": "Jay's Box",
+  "dob": "2001.5.31"
+ },
+ {
+  "id": "1530",
+  "name": "ガブリエル・デ・ラモス",
+  "kana": "",
+  "en": "Gabrielle De Ramos",
+  "gym": "Muay U",
+  "dob": "2000.6.7"
+ },
+ {
+  "id": "856",
+  "name": "璃明武",
+  "kana": "リアム",
+  "en": "Riamu",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2000.10.7"
+ },
+ {
+  "id": "1475",
+  "name": "イヴァン・バルテク",
+  "kana": "",
+  "en": "Ivan Bartek",
+  "gym": "Cerberos Gym",
+  "dob": "1989.4.21"
+ },
+ {
+  "id": "1249",
+  "name": "竹内 将生",
+  "kana": "タケウチ マサキ",
+  "en": "Takeuchi Masaki",
+  "gym": "エイワスポーツジム",
+  "dob": "1995.5.1"
+ },
+ {
+  "id": "1619",
+  "name": "チェン・ヨンホイ",
+  "kana": "",
+  "en": "Chen Yonghui",
+  "gym": "Chinese Fighting Promotion",
+  "dob": "2002.5.3"
+ },
+ {
+  "id": "1137",
+  "name": "三宅 祐弥",
+  "kana": "ミヤケ ユウヤ",
+  "en": "Miyake Yuya",
+  "gym": "Hacker GYM",
+  "dob": "1996.2.13"
+ },
+ {
+  "id": "552",
+  "name": "ダニロ・ザノリニ",
+  "kana": "",
+  "en": "Danilo Zanolini",
+  "gym": "Brazilian Thai",
+  "dob": "1980.7.29"
+ },
+ {
+  "id": "1588",
+  "name": "許 裕雅",
+  "kana": "キョ ユウガ",
+  "en": "Kyo Yuga",
+  "gym": "POWER OF DREAM",
+  "dob": "2006.6.22"
+ },
+ {
+  "id": "1072",
+  "name": "弘輝",
+  "kana": "ヒロキ",
+  "en": "Hiroki",
+  "gym": "WORLD TREE GYM",
+  "dob": "1996.12.14"
+ },
+ {
+  "id": "1571",
+  "name": "小野寺 隼",
+  "kana": "オノデラ ハヤト",
+  "en": "Onodera Hayato",
+  "gym": "K-1ジム大宮チームレオン",
+  "dob": "2006.1.30"
+ },
+ {
+  "id": "114",
+  "name": "江川 優生",
+  "kana": "エガワ ユウキ",
+  "en": "Egawa Yuuki",
+  "gym": "POWER OF DREAM",
+  "dob": "1998.2.6"
+ },
+ {
+  "id": "1121",
+  "name": "アビラル・ヒマラヤン・チーター",
+  "kana": "",
+  "en": "Abiral",
+  "gym": "志村道場",
+  "dob": "1999.9.19"
+ },
+ {
+  "id": "1434",
+  "name": "歩夢",
+  "kana": "アユム",
+  "en": "Ayumu",
+  "gym": "BLAITE",
+  "dob": "1999.8.1"
+ },
+ {
+  "id": "1208",
+  "name": "松本 和樹",
+  "kana": "マツモト カズキ",
+  "en": "Matsumoto Kazuki",
+  "gym": "K-1ジム川口ブルードラゴン",
+  "dob": "1996.12.17"
+ },
+ {
+  "id": "1658",
+  "name": "サリムカーン・イブラギモフ",
+  "kana": "",
+  "en": "Salimkhan Ibragimov",
+  "gym": "Archangel Michael",
+  "dob": "1996.11.19"
+ },
+ {
+  "id": "840",
+  "name": "RUI",
+  "kana": "ルイ",
+  "en": "RUI",
+  "gym": "ヒデズキック福岡",
+  "dob": "1991.7.24"
+ },
+ {
+  "id": "1526",
+  "name": "湯桶 勇成",
+  "kana": "ユオケ ユウセイ",
+  "en": "Yuoke Yusei",
+  "gym": "K-1 GYM BLOWS",
+  "dob": "2007.8.17"
+ },
+ {
+  "id": "1199",
+  "name": "小林 孝彦",
+  "kana": "コバヤシ タカヒコ",
+  "en": "Kobayashi Takahiko",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1996.5.21"
+ },
+ {
+  "id": "1463",
+  "name": "稟翔",
+  "kana": "リトル",
+  "en": "Ritoru",
+  "gym": "SHINE SPORTS CLUB",
+  "dob": "2007.2.13"
+ },
+ {
+  "id": "905",
+  "name": "山浦 迅也",
+  "kana": "ヤマウラ ジンヤ",
+  "en": "Yamaura Jinya",
+  "gym": "北斗会館",
+  "dob": "1998.2.10"
+ },
+ {
+  "id": "1418",
+  "name": "オウヤン・フェン",
+  "kana": "",
+  "en": "Ouyan Feng",
+  "gym": "天津阿福ファイトクラブ/CFP",
+  "dob": "1997.10.10"
+ },
+ {
+  "id": "991",
+  "name": "目黒 翔大",
+  "kana": "メグロ ショウタ",
+  "en": "Meguro Shota",
+  "gym": "優弥道場",
+  "dob": "1999.12.22"
+ },
+ {
+  "id": "60",
+  "name": "K-Jee",
+  "kana": "ケイジ",
+  "en": "K-Jee",
+  "gym": "SHINE SPORTS CLUB",
+  "dob": "1990.11.5"
+ },
+ {
+  "id": "1224",
+  "name": "大久保 琉唯",
+  "kana": "オオクボ ルイ",
+  "en": "Okubo Rui",
+  "gym": "K-1ジム・ウルフ TEAM ASTER",
+  "dob": "2004.9.12"
+ },
+ {
+  "id": "1731",
+  "name": "ユルドゥルム・オグズ",
+  "kana": "",
+  "en": "Yildirim Oguz",
+  "gym": "BURHAN CELIK SPORTS CLUB",
+  "dob": "1996.6.15"
+ },
+ {
+  "id": "1789",
+  "name": "草野 浩二郎",
+  "kana": "クサノ コウジロウ",
+  "en": "Kusano Kojiro",
+  "gym": "K-1ジム・ウルフ TEAM ASTER",
+  "dob": "2008.12.5"
+ },
+ {
+  "id": "1273",
+  "name": "遠藤 健太郎",
+  "kana": "エンドウ ケンタロウ",
+  "en": "Endo Kentaro",
+  "gym": "KICK-DIET吉野町",
+  "dob": "1988.11.21"
+ },
+ {
+  "id": "1766",
+  "name": "マノエル・ドス・サントス",
+  "kana": "",
+  "en": "Manoel Dos Santos",
+  "gym": "Team LGT",
+  "dob": "1990.6.27"
+ },
+ {
+  "id": "1459",
+  "name": "カスペル・ムシンスキ",
+  "kana": "",
+  "en": "Kacper Muszynski",
+  "gym": "Armia Polkowice",
+  "dob": "1997.10.11"
+ },
+ {
+  "id": "1770",
+  "name": "ジェイジェイ・モーリス",
+  "kana": "",
+  "en": "Jayjay Morris",
+  "gym": "Gym One/Team Morris",
+  "dob": "1999.12.22"
+ },
+ {
+  "id": "76",
+  "name": "山本 真弘",
+  "kana": "ヤマモト マサヒロ",
+  "en": "Yamamoto Masahiro",
+  "gym": "N.F.T.T.",
+  "dob": "1983.5.14"
+ },
+ {
+  "id": "207",
+  "name": "山本 直樹",
+  "kana": "ヤマモト ナオキ",
+  "en": "Yamamoto Naoki",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1990.5.23"
+ },
+ {
+  "id": "1398",
+  "name": "茶圓 吏久",
+  "kana": "チャエン リク",
+  "en": "Chaen Riku",
+  "gym": "K-1ジム蒲田チームアスラ",
+  "dob": "1997.7.19"
+ },
+ {
+  "id": "1662",
+  "name": "ヌルティレク・ザリンベコフ",
+  "kana": "",
+  "en": "Nurtilek Zhalynbekov",
+  "gym": "Al Munar Team",
+  "dob": "1997.10.12"
+ },
+ {
+  "id": "1727",
+  "name": "キム・ウスン",
+  "kana": "",
+  "en": "Kim Woo Seung",
+  "gym": "仁川MOOVI GYM",
+  "dob": "2000.5.10"
+ },
+ {
+  "id": "1750",
+  "name": "ジェイコブ・ミクラ",
+  "kana": "",
+  "en": "Jacob Mikula",
+  "gym": "Free Style MMA",
+  "dob": "1999.11.6"
+ },
+ {
+  "id": "1300",
+  "name": "ナックロップ・フェアテックス",
+  "kana": "",
+  "en": "Nakrob Fairtex",
+  "gym": "Fairtex Gym",
+  "dob": "1998.10.10"
+ },
+ {
+  "id": "1615",
+  "name": "ブライアン・ラング",
+  "kana": "",
+  "en": "Bryan Lang",
+  "gym": "CRISTAL BOXING CLUB",
+  "dob": "1994.7.22"
+ },
+ {
+  "id": "1496",
+  "name": "アレクサンドル・アマリティ",
+  "kana": "",
+  "en": "Alexandru Amaritei",
+  "gym": "SCORPIONS SCOBINTI",
+  "dob": "2002.7.8"
+ },
+ {
+  "id": "1183",
+  "name": "田中 秀汰",
+  "kana": "タナカ シュウタ",
+  "en": "Tanaka Shuta",
+  "gym": "PITBULL",
+  "dob": "1995.8.14"
+ },
+ {
+  "id": "1479",
+  "name": "雨宮 空",
+  "kana": "アメミヤ ソラ",
+  "en": "Amemiya Sora",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2001.7.10"
+ },
+ {
+  "id": "1357",
+  "name": "松本 海翔",
+  "kana": "マツモト ハルト",
+  "en": "Matsumoto Haruto",
+  "gym": "TAD",
+  "dob": "2006.6.21"
+ },
+ {
+  "id": "1707",
+  "name": "KING剛",
+  "kana": "キング タケシ",
+  "en": "KING Takeshi",
+  "gym": "ROYAL KINGS",
+  "dob": "1986.7.23"
+ },
+ {
+  "id": "1212",
+  "name": "小川 蓮武",
+  "kana": "オガワ レン",
+  "en": "Ogawa Ren",
+  "gym": "WSRフェアテックス西川口",
+  "dob": "2002.11.14"
+ },
+ {
+  "id": "1091",
+  "name": "しの",
+  "kana": "シノ",
+  "en": "Shino",
+  "gym": "KSG",
+  "dob": "2001.9.13"
+ },
+ {
+  "id": "724",
+  "name": "安保 璃紅",
+  "kana": "アンポ リク",
+  "en": "Anpo Riku",
+  "gym": "team ALL-WIN",
+  "dob": "1997.9.9"
+ },
+ {
+  "id": "1711",
+  "name": "田中 陸登",
+  "kana": "タナカ リクト",
+  "en": "Tanaka Rikuto",
+  "gym": "拳狼会",
+  "dob": "2002.8.6"
+ },
+ {
+  "id": "1341",
+  "name": "フンダ・アルカイエス",
+  "kana": "",
+  "en": "Funda Alkayis",
+  "gym": "Alkayis Gym",
+  "dob": "1987.11.7"
+ },
+ {
+  "id": "1654",
+  "name": "メイソン・ストロッドマン",
+  "kana": "",
+  "en": "Mason Strodtman",
+  "gym": "WARMAN MUAY THAI",
+  "dob": "2002.4.23"
+ },
+ {
+  "id": "661",
+  "name": "椿原 龍矢",
+  "kana": "ツバキハラ タツヤ",
+  "en": "Tsubakihara Tatsuya",
+  "gym": "月心会チーム侍",
+  "dob": "1999.5.7"
+ },
+ {
+  "id": "1204",
+  "name": "石郷 慶人",
+  "kana": "イシゴウ ケイト",
+  "en": "Ishigo Keito",
+  "gym": "SHINE SPORTS CLUB",
+  "dob": "2004.7.22"
+ },
+ {
+  "id": "231",
+  "name": "鈴木 翔也",
+  "kana": "スズキ ショウヤ",
+  "en": "Suzuki Shoya",
+  "gym": "OGUNI-GYM",
+  "dob": "1987.7.22"
+ },
+ {
+  "id": "1087",
+  "name": "川島 康佑",
+  "kana": "カワシマ コウスケ",
+  "en": "Kawashima Kosuke",
+  "gym": "HALEO TOP TEAM",
+  "dob": "1996.12.10"
+ },
+ {
+  "id": "1592",
+  "name": "柿﨑 瑠",
+  "kana": "カキザキ ルイ",
+  "en": "Kakizaki Rui",
+  "gym": "KNOCK OUTクロスポイント大泉",
+  "dob": "2005.12.7"
+ },
+ {
+  "id": "1746",
+  "name": "ミツダマン",
+  "kana": "",
+  "en": "Mitsudaman",
+  "gym": "ナックルズGYM",
+  "dob": "1999.8.2"
+ },
+ {
+  "id": "636",
+  "name": "藤村 大輔",
+  "kana": "フジムラ ダイスケ",
+  "en": "Fujimura Daisuke",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1989.5.30"
+ },
+ {
+  "id": "1603",
+  "name": "杉若 怜",
+  "kana": "スギワカ レイ",
+  "en": "Sugiwaka Rei",
+  "gym": "WIZARDキックボクシングジム",
+  "dob": "2005.4.21"
+ },
+ {
+  "id": "1480",
+  "name": "海凪",
+  "kana": "ミナギ",
+  "en": "Minagi",
+  "gym": "RAUSU GYM",
+  "dob": "2006.9.22"
+ },
+ {
+  "id": "1228",
+  "name": "田中 聡",
+  "kana": "タナカ サトシ",
+  "en": "Tanaka Satoshi",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2000.4.28"
+ },
+ {
+  "id": "1382",
+  "name": "青木 繭",
+  "kana": "アオキ マユ",
+  "en": "Aoki Mayu",
+  "gym": "WORLD TREE GYM",
+  "dob": "1990.8.15"
+ },
+ {
+  "id": "1678",
+  "name": "ヤン・プロブレマ",
+  "kana": "",
+  "en": "Yan Problema",
+  "gym": "Lutadores do Gueto",
+  "dob": "2004.12.19"
+ },
+ {
+  "id": "1697",
+  "name": "ルーカス・アハテルバーグ",
+  "kana": "",
+  "en": "Lukas Achterberg",
+  "gym": "Team CSK/Sparta Aachen",
+  "dob": "1996.5.27"
+ },
+ {
+  "id": "1414",
+  "name": "東 虎之介",
+  "kana": "ヒガシ トラノスケ",
+  "en": "Higashi Toranosuke",
+  "gym": "ALONZA ABLAZE",
+  "dob": "2006.5.18"
+ },
+ {
+  "id": "1551",
+  "name": "小川 泰寛",
+  "kana": "オガワ ヤスヒロ",
+  "en": "Ogawa Yasuhiro",
+  "gym": "K-1ジム福岡チームbeginning",
+  "dob": "1982.10.27"
+ },
+ {
+  "id": "837",
+  "name": "佐野 純平",
+  "kana": "サノ ジュンペイ",
+  "en": "Sano Junpei",
+  "gym": "K-1ジム横浜チームオルカ",
+  "dob": "1996.2.3"
+ },
+ {
+  "id": "1802",
+  "name": "セク・バングラ",
+  "kana": "",
+  "en": "Seku Bangura",
+  "gym": "Gridin Gym",
+  "dob": "1993.6.26"
+ },
+ {
+  "id": "1785",
+  "name": "マテウス・マチャド",
+  "kana": "",
+  "en": "Mateus Machado",
+  "gym": "CF HOUSE",
+  "dob": "1999.12.31"
+ },
+ {
+  "id": "1290",
+  "name": "石田 協",
+  "kana": "イシダ カノウ",
+  "en": "Ishida Kano",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "2001.10.2"
+ },
+ {
+  "id": "1443",
+  "name": "デング・シルバ",
+  "kana": "",
+  "en": "Dengue Silva",
+  "gym": "Squadron Thai Brasil",
+  "dob": "1993.11.6"
+ },
+ {
+  "id": "925",
+  "name": "龍華",
+  "kana": "リュウカ",
+  "en": "Ryuka",
+  "gym": "ザウルスプロモーション",
+  "dob": "2002.5.30"
+ },
+ {
+  "id": "1506",
+  "name": "上遠野 寧吾",
+  "kana": "カトウノ ネイゴ",
+  "en": "Katono Neigo",
+  "gym": "POWER OF DREAM",
+  "dob": "2006.9.22"
+ },
+ {
+  "id": "1793",
+  "name": "キム・ヒョンジュン",
+  "kana": "",
+  "en": "Kim Hyun Jun",
+  "gym": "釜山TAEHAN MUAY THAI GYM",
+  "dob": "2001.4.13"
+ },
+ {
+  "id": "1269",
+  "name": "ジャシンタ・オースティン",
+  "kana": "ジャシンタ・オースティン",
+  "en": "Jacinta Austin",
+  "gym": "Carioti MMA",
+  "dob": "1994.10.20"
+ },
+ {
+  "id": "1639",
+  "name": "デニス・ジュニア",
+  "kana": "",
+  "en": "Denis Jr.",
+  "gym": "COLISEU FIGHT CLUB",
+  "dob": "1998.5.5"
+ },
+ {
+  "id": "899",
+  "name": "新美 貴士",
+  "kana": "ニイミ タカヒト",
+  "en": "Niimi Takahito",
+  "gym": "名古屋JKファクトリー",
+  "dob": "1993.9.26"
+ },
+ {
+  "id": "1455",
+  "name": "中島 玲",
+  "kana": "ナカジマ レイ",
+  "en": "Nakajima Rei",
+  "gym": "KNOCK OUT クロスポイント渋谷/ハイブリッドアカデミー",
+  "dob": "1998.6.27"
+ },
+ {
+  "id": "1005",
+  "name": "水津 空良",
+  "kana": "スイヅ ソラ",
+  "en": "Suizu Sora",
+  "gym": "team NOVA",
+  "dob": "1999.8.30"
+ },
+ {
+  "id": "1510",
+  "name": "ペッダム・ペッティンディーアカデミー",
+  "kana": "",
+  "en": "Petchdam",
+  "gym": "Petchyindee Academy",
+  "dob": "1998.5.25"
+ },
+ {
+  "id": "1140",
+  "name": "佑典",
+  "kana": "ユウスケ",
+  "en": "Yusuke",
+  "gym": "BILLION.WIN.GYM",
+  "dob": "1992.4.21"
+ },
+ {
+  "id": "876",
+  "name": "蓮實 光",
+  "kana": "ハスミ ヒカル",
+  "en": "Hasumi Hikaru",
+  "gym": "Re CAST GYM",
+  "dob": "1986.10.14"
+ },
+ {
+  "id": "1394",
+  "name": "太田 黎",
+  "kana": "オオタ レイ",
+  "en": "Ota Rei",
+  "gym": "真闘会",
+  "dob": "2002.7.24"
+ },
+ {
+  "id": "1681",
+  "name": "アレッサンドロ・アバター",
+  "kana": "",
+  "en": "Alessandro Avatar",
+  "gym": "R8 Centro de Lutas",
+  "dob": "1986.10.28"
+ },
+ {
+  "id": "1547",
+  "name": "小河 快士",
+  "kana": "オガワ カイト",
+  "en": "Ogawa Kaito",
+  "gym": "TEAM TMT",
+  "dob": "2006.12.27"
+ },
+ {
+  "id": "1403",
+  "name": "アリエル・マチャド",
+  "kana": "",
+  "en": "Ariel Machado",
+  "gym": "Hemmers Gym/Madison Team",
+  "dob": "1987.5.15"
+ },
+ {
+  "id": "820",
+  "name": "瓦田 脩二",
+  "kana": "カワラダ シュウジ",
+  "en": "Kawarada Shuji",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1994.4.18"
+ },
+ {
+  "id": "1546",
+  "name": "光弥",
+  "kana": "コウヤ",
+  "en": "Koya",
+  "gym": "POWER OF DREAM",
+  "dob": "2002.11.19"
+ },
+ {
+  "id": "898",
+  "name": "斎藤 祐斗",
+  "kana": "サイトウ ユウト",
+  "en": "Saito Yuto",
+  "gym": "JK TRIBE",
+  "dob": "1992.5.6"
+ },
+ {
+  "id": "1511",
+  "name": "トーマス・アギーレ",
+  "kana": "",
+  "en": "Tomas Aguirre",
+  "gym": "Dojo Serpiente",
+  "dob": "1998.11.24"
+ },
+ {
+  "id": "1792",
+  "name": "マリン・二コル",
+  "kana": "",
+  "en": "Marine Nicol",
+  "gym": "No Limit Squad",
+  "dob": "1997.7.31"
+ },
+ {
+  "id": "1268",
+  "name": "エリヴァン・バルト",
+  "kana": "",
+  "en": "Erivan Barut",
+  "gym": "Dersim Kickboks",
+  "dob": "2000.6.26"
+ },
+ {
+  "id": "1638",
+  "name": "グスタボ・ボリーノ",
+  "kana": "",
+  "en": "Gustavo Bolino",
+  "gym": "TEIXEIRA TEAM",
+  "dob": "2001.7.19"
+ },
+ {
+  "id": "318",
+  "name": "大和 哲也",
+  "kana": "ヤマト テツヤ",
+  "en": "Yamato Tetsuya",
+  "gym": "大和ジム",
+  "dob": "1987.12.10"
+ },
+ {
+  "id": "861",
+  "name": "黒田 勇斗",
+  "kana": "クロダ ユウト",
+  "en": "Kuroda Yuto",
+  "gym": "FORWARD GYM",
+  "dob": "1998.9.18"
+ },
+ {
+  "id": "1157",
+  "name": "RAN",
+  "kana": "ラン",
+  "en": "RAN",
+  "gym": "MONKEY☆MAGIC KICKBOXING STUDIO",
+  "dob": "2002.12.7"
+ },
+ {
+  "id": "1507",
+  "name": "武蔵",
+  "kana": "ムサシ",
+  "en": "Musashi",
+  "gym": "デビルジム",
+  "dob": "1999.8.13"
+ },
+ {
+  "id": "1784",
+  "name": "フェルナンド・アマヤ",
+  "kana": "",
+  "en": "Fernando Amaya",
+  "gym": "Dojo Serpiente",
+  "dob": "1999.7.28"
+ },
+ {
+  "id": "1291",
+  "name": "“DARUMA” 健太",
+  "kana": "“ダルマ” ケンタ",
+  "en": "“DARUMA” Kenta",
+  "gym": "K-1ジム蒲田チームアスラ",
+  "dob": "1997.8.25"
+ },
+ {
+  "id": "6",
+  "name": "ゲーオ・ウィラサクレック",
+  "kana": "ゲーオ・ウィラサクレック",
+  "en": "Kaew",
+  "gym": "ウィラサクレック・フェアテックスジム",
+  "dob": "1984.9.5"
+ },
+ {
+  "id": "973",
+  "name": "提髪 和希",
+  "kana": "サゲガミ カズキ",
+  "en": "Sagegami Kazuki",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1998.9.25"
+ },
+ {
+  "id": "1415",
+  "name": "大輝",
+  "kana": "ダイキ",
+  "en": "Daiki",
+  "gym": "ハリケーンジム/チーム男鹿キック",
+  "dob": "1999.7.26"
+ },
+ {
+  "id": "1100",
+  "name": "ケイト・ウィラサクレック",
+  "kana": "",
+  "en": "Keito Weerasakreck",
+  "gym": "WSRフェアテックス三ノ輪",
+  "dob": "2003.11.16"
+ },
+ {
+  "id": "1803",
+  "name": "ローン・パンハ",
+  "kana": "",
+  "en": "Lorn Panha",
+  "gym": "Thun Sophea Kun Khmer Gym",
+  "dob": "1999.6.4"
+ },
+ {
+  "id": "1229",
+  "name": "坂本 英則",
+  "kana": "サカモト ヒデノリ",
+  "en": "Sakamoto Hidenori",
+  "gym": "修実館",
+  "dob": "1993.8.20"
+ },
+ {
+  "id": "1696",
+  "name": "アスラン・コシエフ",
+  "kana": "",
+  "en": "Aslan Koshiyev",
+  "gym": "Fight Club TITAN",
+  "dob": "2005.9.17"
+ },
+ {
+  "id": "1481",
+  "name": "チョン・ユジョン",
+  "kana": "",
+  "en": "Jung Yujung",
+  "gym": "BAEBANG KANGSUNG GYM",
+  "dob": "2005.7.25"
+ },
+ {
+  "id": "908",
+  "name": "塚本 拓真",
+  "kana": "ツカモト タクマ",
+  "en": "Tsukamoto Takuma",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1998.1.7"
+ },
+ {
+  "id": "1194",
+  "name": "保井 広輝",
+  "kana": "ヤスイ ヒロキ",
+  "en": "Yasui Hiroki",
+  "gym": "LoT gym",
+  "dob": "2002.11.13"
+ },
+ {
+  "id": "1747",
+  "name": "GRAVY未宇",
+  "kana": "グレイビー ミウ",
+  "en": "Gravy Miu",
+  "gym": "Typhoon Club",
+  "dob": "2001.12.18"
+ },
+ {
+  "id": "1252",
+  "name": "坂本 寿希",
+  "kana": "サカモト ジュキ",
+  "en": "Sakamoto Juki",
+  "gym": "リーブルロア",
+  "dob": "1998.3.28"
+ },
+ {
+  "id": "1602",
+  "name": "井上 大和",
+  "kana": "イノウエ ヤマト",
+  "en": "Inoue Yamato",
+  "gym": "NJKF TOKEN GYM",
+  "dob": "2006.4.24"
+ },
+ {
+  "id": "1593",
+  "name": "アリ・ラーマリ",
+  "kana": "",
+  "en": "Ali Laamari",
+  "gym": "Team Jesus Cabello",
+  "dob": "2005.12.2"
+ },
+ {
+  "id": "1710",
+  "name": "増田 拓英",
+  "kana": "マスダ ヒロヒデ",
+  "en": "Masuda Hirohide",
+  "gym": "BK GYM",
+  "dob": "2002.9.14"
+ },
+ {
+  "id": "1655",
+  "name": "ジョナサン・アイウル",
+  "kana": "",
+  "en": "Jonathan Aiulu",
+  "gym": "Allstyles Gym",
+  "dob": "1994.8.2"
+ },
+ {
+  "id": "1585",
+  "name": "河野 直次郎",
+  "kana": "カワノ ナオジロウ",
+  "en": "Kawano Naojiro",
+  "gym": "CLIMB GYM",
+  "dob": "1995.4.25"
+ },
+ {
+  "id": "1356",
+  "name": "ファン・ソンリム",
+  "kana": "",
+  "en": "Hwang Songrim",
+  "gym": "ANA GYM",
+  "dob": "1999.12.27"
+ },
+ {
+  "id": "1706",
+  "name": "SHIORIN♡",
+  "kana": "シオリン",
+  "en": "SHIORIN♡",
+  "gym": "大和ジム",
+  "dob": "1996.10.18"
+ },
+ {
+  "id": "733",
+  "name": "鈴木 勇人",
+  "kana": "スズキ ハヤト",
+  "en": "Suzuki Hayato",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1990.1.22"
+ },
+ {
+  "id": "1213",
+  "name": "井上 海山",
+  "kana": "イノウエ カイザン",
+  "en": "Inoue Kaizan",
+  "gym": "POWER OF DREAM",
+  "dob": "2000.5.1"
+ },
+ {
+  "id": "1497",
+  "name": "永澤サムエル聖光",
+  "kana": "ナガサワ サムエル キヨミツ",
+  "en": "Nagasawa Samuel Kiyomitsu",
+  "gym": "B Make",
+  "dob": "1989.11.10"
+ },
+ {
+  "id": "1182",
+  "name": "中澤 誠弥",
+  "kana": "ナカザワ セイヤ",
+  "en": "Nakazawa Seiya",
+  "gym": "PITBULL",
+  "dob": "1997.12.3"
+ },
+ {
+  "id": "1751",
+  "name": "コナー・ロック",
+  "kana": "",
+  "en": "Conor Rock",
+  "gym": "South Island Lee Gar",
+  "dob": "1999.1.21"
+ },
+ {
+  "id": "1663",
+  "name": "倉田 大珠",
+  "kana": "クラタ タイジュ",
+  "en": "Kurata Taiju",
+  "gym": "朝久道場 KING TEAM KURATA",
+  "dob": "2009.9.9"
+ },
+ {
+  "id": "1376",
+  "name": "加藤 和也",
+  "kana": "カトウ カズヤ",
+  "en": "Kato Kazuya",
+  "gym": "ドージョー☆シャカリキ",
+  "dob": "1994.9.5"
+ },
+ {
+  "id": "1726",
+  "name": "芝 宏二郎",
+  "kana": "シバ コウジロウ",
+  "en": "Shiba Kojiro",
+  "gym": "Striker GYM",
+  "dob": "2005.8.25"
+ },
+ {
+  "id": "986",
+  "name": "松本 涼雅",
+  "kana": "マツモト リョウガ",
+  "en": "Matsumoto Ryoga",
+  "gym": "月心会チーム侍",
+  "dob": "2000.11.6"
+ },
+ {
+  "id": "1634",
+  "name": "マリリン・コンティン",
+  "kana": "",
+  "en": "Marilyn Contin",
+  "gym": "Bears Team",
+  "dob": "1996.8.5"
+ },
+ {
+  "id": "1771",
+  "name": "ジョーイ・クライエンブルフ",
+  "kana": "",
+  "en": "Joey Klijenburg",
+  "gym": "Ser’s Gym",
+  "dob": "2000.2.28"
+ },
+ {
+  "id": "1008",
+  "name": "ジャオスアヤイ・ソー.デッチャパン",
+  "kana": "ジャオスアヤイ・ソー.デッチャパン",
+  "en": "Jaosueayai",
+  "gym": "Sor.Dechaphan Gym",
+  "dob": "2001.9.8"
+ },
+ {
+  "id": "1788",
+  "name": "アーロン・アルバレス",
+  "kana": "",
+  "en": "Aaron Alvarez",
+  "gym": "Team Marcelo Salas",
+  "dob": "2007.8.5"
+ },
+ {
+  "id": "1622",
+  "name": "藤井 杏朱",
+  "kana": "フジイ アンズ",
+  "en": "Fujii Anzu",
+  "gym": "Ωmega KICKBOXING GYM",
+  "dob": "2005.10.4"
+ },
+ {
+  "id": "1337",
+  "name": "橋本 楓汰",
+  "kana": "ハシモト フウタ",
+  "en": "Hashimoto Futa",
+  "gym": "POWER OF DREAM",
+  "dob": "2005.7.5"
+ },
+ {
+  "id": "1767",
+  "name": "フランチェスコ・カルボッティ",
+  "kana": "",
+  "en": "Francesco Carbotti",
+  "gym": "Authentic Gym/ST FIGHT MANAGEMENT",
+  "dob": "2004.8.20"
+ },
+ {
+  "id": "1675",
+  "name": "イヴァン・ガラズ",
+  "kana": "",
+  "en": "Ivan Galaz",
+  "gym": "Brutal Striker",
+  "dob": "1985.5.12"
+ },
+ {
+  "id": "1730",
+  "name": "アンドレイ・ヴァルガ",
+  "kana": "",
+  "en": "Andrei Varga",
+  "gym": "GRAND MMA SATU-MARE",
+  "dob": "2005.1.6"
+ },
+ {
+  "id": "1360",
+  "name": "直也",
+  "kana": "ナオヤ",
+  "en": "Naoya",
+  "gym": "米子ジム",
+  "dob": "1995.7.29"
+ },
+ {
+  "id": "1419",
+  "name": "ラン・シャンテン",
+  "kana": "",
+  "en": "Lan Shanteng",
+  "gym": "深圳盛力人和ファイトアカデミー/CFP",
+  "dob": "2003.12.31"
+ },
+ {
+  "id": "990",
+  "name": "岡嶋 形徒",
+  "kana": "オカジマ ケイト",
+  "en": "Okajima Keito",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1999.2.5"
+ },
+ {
+  "id": "841",
+  "name": "村越 優汰",
+  "kana": "ムラコシ ユウタ",
+  "en": "Murakoshi Yuta",
+  "gym": "湘南格闘クラブ/M‘S GYM",
+  "dob": "1994.9.10"
+ },
+ {
+  "id": "1527",
+  "name": "滝上 正太",
+  "kana": "タキガミ ショウタ",
+  "en": "Takigami Shota",
+  "gym": "聖空会館",
+  "dob": "1996.1.11"
+ },
+ {
+  "id": "1032",
+  "name": "豊田 優輝",
+  "kana": "トヨダ ユウキ",
+  "en": "Toyoda Yuki",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "dob": "1999.7.29"
+ },
+ {
+  "id": "1198",
+  "name": "上野hippo宣子",
+  "kana": "ウエノ ヒッポー ノリコ",
+  "en": "Ueno hippo Noriko",
+  "gym": "ナックルズGYM",
+  "dob": "1982.8.3"
+ },
+ {
+  "id": "1209",
+  "name": "SAHO",
+  "kana": "サホ",
+  "en": "SAHO",
+  "gym": "闘神塾",
+  "dob": "1999.10.15"
+ },
+ {
+  "id": "1120",
+  "name": "愛瑠斗",
+  "kana": "エルト",
+  "en": "Eruto",
+  "gym": "RAUSU GYM",
+  "dob": "2002.2.2"
+ },
+ {
+  "id": "1065",
+  "name": "稲垣 澪",
+  "kana": "イナガキ レイ",
+  "en": "Inagaki Rei",
+  "gym": null,
+  "dob": "1998.5.15"
+ },
+ {
+  "id": "1136",
+  "name": "紗依茄",
+  "kana": "ライカ",
+  "en": "Raika",
+  "gym": "月心会チーム侍",
+  "dob": "2004.9.30"
+ },
+ {
+  "id": "1589",
+  "name": "水本 悠我",
+  "kana": "ミズモト ユウガ",
+  "en": "Mizumoto Yuga",
+  "gym": "優志塾平安道場",
+  "dob": "2007.4.24"
+ },
+ {
+  "id": "1423",
+  "name": "魁志",
+  "kana": "カイシ",
+  "en": "Kaishi",
+  "gym": "Vigor Kickboxing Gym",
+  "dob": "1998.7.12"
+ },
+ {
+  "id": "338",
+  "name": "斉藤 雄太",
+  "kana": "サイトウ ユウタ",
+  "en": "Saito Yuta",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1986.7.16"
+ },
+ {
+  "id": "1248",
+  "name": "星 龍之介",
+  "kana": "ホシ リュウノスケ",
+  "en": "Hoshi Ryunosuke",
+  "gym": "POWER OF DREAM",
+  "dob": "1998.11.3"
+ },
+ {
+  "id": "1618",
+  "name": "一志",
+  "kana": "イッシ",
+  "en": "Isshi",
+  "gym": "拳心会",
+  "dob": "2002.1.8"
+ },
+ {
+  "id": "1531",
+  "name": "大平 龍",
+  "kana": "オオヒラ リュウ",
+  "en": "Ohira Ryu",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2004.11.17"
+ },
+ {
+  "id": "1161",
+  "name": "翁長 正吾",
+  "kana": "オナガ ショウゴ",
+  "en": "Onaga Shogo",
+  "gym": "WSRフェアテックス西川口",
+  "dob": "1992.9.19"
+ },
+ {
+  "id": "9",
+  "name": "NOMAN",
+  "kana": "ノーマン",
+  "en": "Noman",
+  "gym": null,
+  "dob": "1984.9.11"
+ },
+ {
+  "id": "10",
+  "name": "牧平 圭太",
+  "kana": "マキヒラ ケイタ",
+  "en": "Makihira Keita",
+  "gym": "HALEO TOP TEAM",
+  "dob": "1988.12.14"
+ },
+ {
+  "id": "14",
+  "name": "泰斗",
+  "kana": "タイト",
+  "en": "Taito",
+  "gym": "LEOPARD GYM",
+  "dob": "1987.12.19"
+ },
+ {
+  "id": "16",
+  "name": "左右田 泰臣",
+  "kana": "ソウダ ヤスオミ",
+  "en": "Soda Yasuomi",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1988.6.8"
+ },
+ {
+  "id": "18",
+  "name": "イリアス・ブライド",
+  "kana": "イリアス・ブライド",
+  "en": "Ilias Bulaid",
+  "gym": null,
+  "dob": "1995.5.1"
+ },
+ {
+  "id": "20",
+  "name": "ラズ・セルキシアン",
+  "kana": "ラズ・セルキシアン",
+  "en": "Raz Sarkishjan",
+  "gym": null,
+  "dob": "1992.4.14"
+ },
+ {
+  "id": "22",
+  "name": "平本 蓮",
+  "kana": "ヒラモト レン",
+  "en": "Hiramoto Ren",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1998.6.27"
+ },
+ {
+  "id": "25",
+  "name": "闘士",
+  "kana": "トウシ",
+  "en": "Toshi",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1983.8.22"
+ },
+ {
+  "id": "27",
+  "name": "キム・フンジェ",
+  "kana": "キム・フンジェ",
+  "en": "Kim Hun Jae",
+  "gym": null,
+  "dob": "1990.9.4"
+ },
+ {
+  "id": "28",
+  "name": "ハビエル・エルナンデス",
+  "kana": "ハビエル・エルナンデス",
+  "en": "Javier Hernandez",
+  "gym": null,
+  "dob": "1989.11.2"
+ },
+ {
+  "id": "31",
+  "name": "グァニー・バラッジ",
+  "kana": "グァニー・バラッジ",
+  "en": "Gagny Baradji",
+  "gym": null,
+  "dob": "1986.7.2"
+ },
+ {
+  "id": "32",
+  "name": "デニス・ピューリック",
+  "kana": "デニス・ピューリック",
+  "en": "Denis Puric",
+  "gym": null,
+  "dob": "1985.4.6"
+ },
+ {
+  "id": "36",
+  "name": "アレクサンダー・プリリップ",
+  "kana": "アレクサンダー・プリリップ",
+  "en": "Alexandre Prilip",
+  "gym": null,
+  "dob": "1982.9.28"
+ },
+ {
+  "id": "37",
+  "name": "ダニエル・ウィリアムス",
+  "kana": "ダニエル・ウィリアムス",
+  "en": "Danial Williams",
+  "gym": null,
+  "dob": "1993.6.13"
+ },
+ {
+  "id": "38",
+  "name": "ルイ・ボテーリョ",
+  "kana": "ルイ・ボテーリョ",
+  "en": "Rui Botelho",
+  "gym": null,
+  "dob": "1994.11.25"
+ },
+ {
+  "id": "39",
+  "name": "ソフィアン・エラージ",
+  "kana": "ソフィアン・エラージ",
+  "en": "Soufian El Haji",
+  "gym": null,
+  "dob": "1995.9.1"
+ },
+ {
+  "id": "45",
+  "name": "マラット・グレゴリアン",
+  "kana": "マラット・グレゴリアン",
+  "en": "Marat Grigorian",
+  "gym": null,
+  "dob": "1991.5.29"
+ },
+ {
+  "id": "50",
+  "name": "ジャオ・フーカイ",
+  "kana": "ジャオ・フーカイ",
+  "en": "Jiao Fukai",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "51",
+  "name": "ケリス・べラ",
+  "kana": "ケリス・べラ",
+  "en": "Kerrith Bhella",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "54",
+  "name": "秋元 和也",
+  "kana": "アキモト カズヤ",
+  "en": "Akimoto Kazuya",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1990.7.5"
+ },
+ {
+  "id": "55",
+  "name": "西京 春馬",
+  "kana": "サイキョウ ハルマ",
+  "en": "Saikyo Haruma",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1998.3.19"
+ },
+ {
+  "id": "56",
+  "name": "武居 由樹",
+  "kana": "タケイ ヨシキ",
+  "en": "Takei Yoshiki",
+  "gym": "POWER OF DREAM",
+  "dob": "1996.7.12"
+ },
+ {
+  "id": "57",
+  "name": "kazyosi",
+  "kana": "カズヨシ",
+  "en": "kazuyoshi",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1992.3.30"
+ },
+ {
+  "id": "61",
+  "name": "飯塚 祐己",
+  "kana": "イイズカ ユウキ",
+  "en": "Izuka Yuki",
+  "gym": "KFG URAWA",
+  "dob": "1990.6.8"
+ },
+ {
+  "id": "68",
+  "name": "マサロ・グランダー",
+  "kana": "マサロ・グランダー",
+  "en": "Massaro Glunder",
+  "gym": "Mike's Gym",
+  "dob": "1994.8.15"
+ },
+ {
+  "id": "69",
+  "name": "眞暢",
+  "kana": "マサノブ",
+  "en": "Masanobu",
+  "gym": null,
+  "dob": "1989.3.3"
+ },
+ {
+  "id": "71",
+  "name": "勇磨",
+  "kana": "ユウマ",
+  "en": "Yuma",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1993.12.9"
+ },
+ {
+  "id": "75",
+  "name": "カリム・ベノーイ",
+  "kana": "カリム・ベノーイ",
+  "en": "Karim Bennoui",
+  "gym": null,
+  "dob": "1988.1.26"
+ },
+ {
+  "id": "77",
+  "name": "戸邊 隆馬",
+  "kana": "トベ リュウマ",
+  "en": "Tobe Ryuma",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1990.5.10"
+ },
+ {
+  "id": "78",
+  "name": "堀尾 竜司",
+  "kana": "ホリオ リュウジ",
+  "en": "Horio Ryuji",
+  "gym": "TRY HARD GYM",
+  "dob": "1991.10.4"
+ },
+ {
+  "id": "79",
+  "name": "ショウ・ロン",
+  "kana": "ショウ・ロン",
+  "en": "Shou Rong",
+  "gym": null,
+  "dob": "1992.12.6"
+ },
+ {
+  "id": "80",
+  "name": "サニー・ダルベック",
+  "kana": "サニー・ダルベック",
+  "en": "Sanny Dahlbeck",
+  "gym": null,
+  "dob": "1991.5.12"
+ },
+ {
+  "id": "82",
+  "name": "伊藤 健人",
+  "kana": "イトウ ケント",
+  "en": "Ito Kento",
+  "gym": "K-1ジム蒲田チームアスラ",
+  "dob": "1993.3.19"
+ },
+ {
+  "id": "83",
+  "name": "鈴木 優也",
+  "kana": "スズキ ユウヤ",
+  "en": "Suzuki Yuya",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1988.1.17"
+ },
+ {
+  "id": "84",
+  "name": "マイケル・“トマホーク”・トンプソン",
+  "kana": "マイケル・“トマホーク”・トンプソン",
+  "en": "Thompson",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "86",
+  "name": "杉本 仁",
+  "kana": "スギモト ヒトシ",
+  "en": "Sugimoto Hitoshi",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1990.10.20"
+ },
+ {
+  "id": "87",
+  "name": "藤井 章太",
+  "kana": "フジイ ショウタ",
+  "en": "Fujii Shota",
+  "gym": null,
+  "dob": "1983.12.20"
+ },
+ {
+  "id": "89",
+  "name": "学武",
+  "kana": "マナブ",
+  "en": "Manabu",
+  "gym": null,
+  "dob": "1979.1.16"
+ },
+ {
+  "id": "91",
+  "name": "和氣 光春",
+  "kana": "ワキ ミツハル",
+  "en": "Waki Mitsuharu",
+  "gym": "TANG TANG FIGHT CLUB",
+  "dob": "1997.1.5"
+ },
+ {
+  "id": "92",
+  "name": "KAZUHIRO",
+  "kana": "カズヒロ",
+  "en": "Kazuhiro",
+  "gym": null,
+  "dob": "1994.3.12"
+ },
+ {
+  "id": "95",
+  "name": "遠藤 信玄",
+  "kana": "エンドウ シンゲン",
+  "en": "Endo Shingen",
+  "gym": "MASTERPIECE KICKBOXING",
+  "dob": "1985.12.10"
+ },
+ {
+  "id": "96",
+  "name": "野口 陽平",
+  "kana": "ノグチ ヨウヘイ",
+  "en": "Noguchi Yohei",
+  "gym": null,
+  "dob": "1989.11.14"
+ },
+ {
+  "id": "98",
+  "name": "ディラン・サルバドール",
+  "kana": "ディラン・サルバドール",
+  "en": "Dylan Salvador",
+  "gym": null,
+  "dob": "1993.5.20"
+ },
+ {
+  "id": "99",
+  "name": "ハキム・ハメッシュ",
+  "kana": "ハキム・ハメッシュ",
+  "en": "Hakim Hamech",
+  "gym": null,
+  "dob": "1993.3.22"
+ },
+ {
+  "id": "100",
+  "name": "コンスタンティン・トリシン",
+  "kana": "コンスタンティン・トリシン",
+  "en": "Konstantin Trishin",
+  "gym": null,
+  "dob": "1986.9.14"
+ },
+ {
+  "id": "101",
+  "name": "アンディ・ハウソン",
+  "kana": "アンディ・ハウソン",
+  "en": "Andy Howson",
+  "gym": null,
+  "dob": "1979.5.29"
+ },
+ {
+  "id": "102",
+  "name": "アンドリュー“KEN”ブリュースター",
+  "kana": "アンドリュー“KEN”ブリュースター",
+  "en": "Andrew Ken Brewster",
+  "gym": null,
+  "dob": "1989.9.11"
+ },
+ {
+  "id": "103",
+  "name": "粟納 貴之",
+  "kana": "アワノ タカユキ",
+  "en": "Awano Takayuki",
+  "gym": null,
+  "dob": "1984.12.12"
+ },
+ {
+  "id": "105",
+  "name": "磯部 心",
+  "kana": "イソベ シン",
+  "en": "Isobe Shin",
+  "gym": null,
+  "dob": "1991.3.14"
+ },
+ {
+  "id": "107",
+  "name": "石田 圭祐",
+  "kana": "イシダ ケイスケ",
+  "en": "Ishida Keisuke",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1995.6.24"
+ },
+ {
+  "id": "108",
+  "name": "池野 翔",
+  "kana": "イケノ ショウ",
+  "en": "Ikeno Sho",
+  "gym": null,
+  "dob": "1993.3.19"
+ },
+ {
+  "id": "109",
+  "name": "伊奈 良太",
+  "kana": "イナ リョウタ",
+  "en": "Ina Ryota",
+  "gym": null,
+  "dob": "1987.11.22"
+ },
+ {
+  "id": "110",
+  "name": "伊藤 佑一郎",
+  "kana": "イトウ ユウイチロウ",
+  "en": "Ito Yuichiro",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1987.11.28"
+ },
+ {
+  "id": "112",
+  "name": "稲妻 ショーヘイ",
+  "kana": "イナズマ ショウヘイ",
+  "en": "Inazuma Shohei",
+  "gym": null,
+  "dob": "1985.5.20"
+ },
+ {
+  "id": "113",
+  "name": "ウエンツ☆修一",
+  "kana": "ウエンツシュウイチ",
+  "en": "Wentz Shuichi",
+  "gym": "スクランブル渋谷",
+  "dob": "1982.8.2"
+ },
+ {
+  "id": "115",
+  "name": "大髙 瑞基",
+  "kana": "オオタカ ミズキ",
+  "en": "Otaka Mizuki",
+  "gym": null,
+  "dob": "1995.8.28"
+ },
+ {
+  "id": "116",
+  "name": "大川 一貴",
+  "kana": "オオカワ カズキ",
+  "en": "Okawa Kazuki",
+  "gym": null,
+  "dob": "1987.6.28"
+ },
+ {
+  "id": "117",
+  "name": "鎌田 裕史",
+  "kana": "カマタ ヒロフミ",
+  "en": "Kamata Hirofumi",
+  "gym": null,
+  "dob": "1987.7.1"
+ },
+ {
+  "id": "118",
+  "name": "KAZUNORI",
+  "kana": "カズノリ",
+  "en": "Kazunori",
+  "gym": "Team Nomads",
+  "dob": "1986.5.20"
+ },
+ {
+  "id": "119",
+  "name": "勝大",
+  "kana": "カツヒロ",
+  "en": "Katsuhiro",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1995.2.27"
+ },
+ {
+  "id": "121",
+  "name": "亀本 勇翔",
+  "kana": "カメモト ユウショウ",
+  "en": "Kamemoto Yusho",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1994.12.12"
+ },
+ {
+  "id": "122",
+  "name": "木村 健太郎",
+  "kana": "キムラ ケンタロウ",
+  "en": "Kimura Kentaro",
+  "gym": null,
+  "dob": "1985.5.22"
+ },
+ {
+  "id": "124",
+  "name": "日下部 太市郎",
+  "kana": "クサカベ タイチロウ",
+  "en": "Kusakabe Taichiro",
+  "gym": null,
+  "dob": "1984.4.12"
+ },
+ {
+  "id": "127",
+  "name": "作田 良典",
+  "kana": "サクタ ヨシノリ",
+  "en": "Sakuta Yoshinori",
+  "gym": null,
+  "dob": "1985.3.9"
+ },
+ {
+  "id": "128",
+  "name": "榊 克樹",
+  "kana": "ササキ カツキ",
+  "en": "Sakaki Katsuki",
+  "gym": null,
+  "dob": "1986.7.8"
+ },
+ {
+  "id": "129",
+  "name": "SATOI",
+  "kana": "サトイ",
+  "en": "Satoi",
+  "gym": null,
+  "dob": "1986.10.27"
+ },
+ {
+  "id": "130",
+  "name": "沙斗流",
+  "kana": "サトル",
+  "en": "Satoru",
+  "gym": null,
+  "dob": "1983.9.21"
+ },
+ {
+  "id": "131",
+  "name": "指首 祐太",
+  "kana": "サシクビ ユウタ",
+  "en": "Sashikubi Yuta",
+  "gym": null,
+  "dob": "1987.10.9"
+ },
+ {
+  "id": "132",
+  "name": "Shi-mo",
+  "kana": "シーモ",
+  "en": "Shi-mo",
+  "gym": null,
+  "dob": "1986.12.18"
+ },
+ {
+  "id": "134",
+  "name": "獅子丸",
+  "kana": "シシマル",
+  "en": "Shishimaru",
+  "gym": null,
+  "dob": "1984.8.2"
+ },
+ {
+  "id": "135",
+  "name": "須田 孝禎",
+  "kana": "スダ タカヨシ",
+  "en": "Suda Takayoshi",
+  "gym": null,
+  "dob": "1985.10.11"
+ },
+ {
+  "id": "136",
+  "name": "鈴木 拓哉",
+  "kana": "スズキ タクヤ",
+  "en": "Suzuki Takuya",
+  "gym": null,
+  "dob": "1997.6.27"
+ },
+ {
+  "id": "137",
+  "name": "登坂 匠",
+  "kana": "トサカ タクミ",
+  "en": "Tosaka Takumi",
+  "gym": "HALEO TOP TEAM",
+  "dob": "1989.7.7"
+ },
+ {
+  "id": "138",
+  "name": "田中 一輝",
+  "kana": "タナカ カズキ",
+  "en": "Tanaka Kazuki",
+  "gym": "月心会チーム侍",
+  "dob": "1990.5.19"
+ },
+ {
+  "id": "139",
+  "name": "貴章",
+  "kana": "タカアキ",
+  "en": "Takaaki",
+  "gym": null,
+  "dob": "1989.12.21"
+ },
+ {
+  "id": "140",
+  "name": "チェ・ジンスン",
+  "kana": "チェ・ジンスン",
+  "en": "Choi Jin Sun",
+  "gym": null,
+  "dob": "1980.8.30"
+ },
+ {
+  "id": "141",
+  "name": "たすく",
+  "kana": "タスク",
+  "en": "Tasuku",
+  "gym": null,
+  "dob": "1992.7.14"
+ },
+ {
+  "id": "142",
+  "name": "千吉良 恭平",
+  "kana": "チギラ キョウヘイ",
+  "en": "Chigira Kyohei",
+  "gym": "リーブルロア",
+  "dob": "1993.7.14"
+ },
+ {
+  "id": "143",
+  "name": "九十田 慎吾",
+  "kana": "ツクダ シンゴ",
+  "en": "Tsukuda Shingo",
+  "gym": null,
+  "dob": "1981.1.23"
+ },
+ {
+  "id": "144",
+  "name": "飛翔",
+  "kana": "ツバサ",
+  "en": "Tsubasa",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1994.6.8"
+ },
+ {
+  "id": "146",
+  "name": "中川 幸樹",
+  "kana": "ナカガワ ヨシキ",
+  "en": "Nakagawa Yoshiki",
+  "gym": null,
+  "dob": "1992.9.24"
+ },
+ {
+  "id": "147",
+  "name": "濱田 修成",
+  "kana": "ハマダ シュウセイ",
+  "en": "Hamada Syusei",
+  "gym": null,
+  "dob": "1992.5.26"
+ },
+ {
+  "id": "148",
+  "name": "日畑 達也",
+  "kana": "ヒバタ タツヤ",
+  "en": "Hibata Tatsuya",
+  "gym": null,
+  "dob": "1984.7.18"
+ },
+ {
+  "id": "149",
+  "name": "平野 翼",
+  "kana": "ヒラノ ツバサ",
+  "en": "Hirano Tsubasa",
+  "gym": null,
+  "dob": "1985.11.30"
+ },
+ {
+  "id": "151",
+  "name": "将大",
+  "kana": "マサヒロ",
+  "en": "Masahiro",
+  "gym": null,
+  "dob": "1992.4.8"
+ },
+ {
+  "id": "152",
+  "name": "益田 亮",
+  "kana": "マスダ リョウ",
+  "en": "Masuda Ryo",
+  "gym": null,
+  "dob": "1986.1.19"
+ },
+ {
+  "id": "153",
+  "name": "丸岡 拓也",
+  "kana": "マルオカ タクヤ",
+  "en": "Maruoka Takuya",
+  "gym": "リーブルロア",
+  "dob": "1988.7.3"
+ },
+ {
+  "id": "154",
+  "name": "萬田 千晴",
+  "kana": "マンダ チハル",
+  "en": "Manda Chiharu",
+  "gym": null,
+  "dob": "1984.12.21"
+ },
+ {
+  "id": "155",
+  "name": "マイク・アラモス",
+  "kana": "マイク・アラモス",
+  "en": "Mike Alamos",
+  "gym": null,
+  "dob": "1994.3.31"
+ },
+ {
+  "id": "156",
+  "name": "松下 裕太",
+  "kana": "マツシタ ユウタ",
+  "en": "Matsushita Yuta",
+  "gym": null,
+  "dob": "1991.5.30"
+ },
+ {
+  "id": "158",
+  "name": "南野 卓幸",
+  "kana": "ミナミノ タカユキ",
+  "en": "Minamino Takayuki",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1996.6.22"
+ },
+ {
+  "id": "159",
+  "name": "MITSUTAKA",
+  "kana": "ミツタカ",
+  "en": "Mitsutaka",
+  "gym": null,
+  "dob": "1991.9.7"
+ },
+ {
+  "id": "160",
+  "name": "ヤン・チョルミン",
+  "kana": "ヤン・チョルミン",
+  "en": "Yang Chul Min",
+  "gym": null,
+  "dob": "1984.8.17"
+ },
+ {
+  "id": "161",
+  "name": "結城 将人",
+  "kana": "ユウキ マサト",
+  "en": "Yuki Masato",
+  "gym": null,
+  "dob": "1987.5.2"
+ },
+ {
+  "id": "162",
+  "name": "祐☆トーン・エー",
+  "kana": "ユウトーンエー",
+  "en": "Yu Thong A",
+  "gym": "真樹ジムAICHI",
+  "dob": "1987.5.31"
+ },
+ {
+  "id": "163",
+  "name": "Yo-hei",
+  "kana": "ヨーヘイ",
+  "en": "Yo-hei",
+  "gym": null,
+  "dob": "1990.11.27"
+ },
+ {
+  "id": "164",
+  "name": "良輝",
+  "kana": "ヨシキ",
+  "en": "Yoshiki",
+  "gym": "TEAM TOP ZEROS",
+  "dob": "1994.7.3"
+ },
+ {
+  "id": "165",
+  "name": "隆聖",
+  "kana": "リュウセイ",
+  "en": "Ryusei",
+  "gym": "ドージョー☆シャカリキ",
+  "dob": "1995.9.20"
+ },
+ {
+  "id": "166",
+  "name": "リース・クルーク",
+  "kana": "リース・クルーク",
+  "en": "Reece Crooke",
+  "gym": null,
+  "dob": "1978.7.28"
+ },
+ {
+  "id": "167",
+  "name": "リョウタ",
+  "kana": "リョウタ",
+  "en": "Ryota",
+  "gym": null,
+  "dob": "1995.2.2"
+ },
+ {
+  "id": "169",
+  "name": "荒木 虎之介",
+  "kana": "アラキ トラノスケ",
+  "en": "Araki Toranosuke",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1985.2.21"
+ },
+ {
+  "id": "170",
+  "name": "石橋 真幸",
+  "kana": "イシバシ マサユキ",
+  "en": "Ishibashi Masayuki",
+  "gym": "名古屋JKファクトリー",
+  "dob": "1989.7.20"
+ },
+ {
+  "id": "172",
+  "name": "上杉 隼琉",
+  "kana": "ウエスギ ハヤト",
+  "en": "Uesugi Hayato",
+  "gym": null,
+  "dob": "1982.8.3"
+ },
+ {
+  "id": "174",
+  "name": "大滝 裕太",
+  "kana": "オオタキ ユウタ",
+  "en": "Otaki Yuta",
+  "gym": null,
+  "dob": "1989.11.2"
+ },
+ {
+  "id": "175",
+  "name": "大野 聖",
+  "kana": "オオノセイ",
+  "en": "Ono Sei",
+  "gym": null,
+  "dob": "1983.7.3"
+ },
+ {
+  "id": "179",
+  "name": "亀岡 悠太",
+  "kana": "カメオカ ユウタ",
+  "en": "Kameoka Yuta",
+  "gym": null,
+  "dob": "1989.9.23"
+ },
+ {
+  "id": "180",
+  "name": "和夢",
+  "kana": "カズム",
+  "en": "Kazumu",
+  "gym": null,
+  "dob": "1996.6.29"
+ },
+ {
+  "id": "181",
+  "name": "倉崎 昌史",
+  "kana": "クラサキ マサフミ",
+  "en": "Kurasaki Masafumi",
+  "gym": "GETOVER",
+  "dob": "1988.1.14"
+ },
+ {
+  "id": "183",
+  "name": "後藤 勝也",
+  "kana": "ゴトウ カツヤ",
+  "en": "Goto Katsuya",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1987.10.20"
+ },
+ {
+  "id": "185",
+  "name": "東風 シンジロウ",
+  "kana": "コチ シンジロウ",
+  "en": "Kochi Shinjiro",
+  "gym": null,
+  "dob": "9984.11.27"
+ },
+ {
+  "id": "186",
+  "name": "佐藤 江平",
+  "kana": "サトウ コウヘイ",
+  "en": "Sato Kohei",
+  "gym": null,
+  "dob": "1983.9.23"
+ },
+ {
+  "id": "187",
+  "name": "翔太",
+  "kana": "ショウタ",
+  "en": "Shota",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1993.3.11"
+ },
+ {
+  "id": "189",
+  "name": "鈴木 雄三",
+  "kana": "スズキ ユウゾウ",
+  "en": "Suzuki Yuzo",
+  "gym": null,
+  "dob": "1984.4.10"
+ },
+ {
+  "id": "190",
+  "name": "鈴木 雅博",
+  "kana": "スズキ マサヒロ",
+  "en": "Suzuki Masahiro",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1987.8.26"
+ },
+ {
+  "id": "192",
+  "name": "タイチャーン",
+  "kana": "タイチャーン",
+  "en": "Thaicharn",
+  "gym": null,
+  "dob": "1981.4.29"
+ },
+ {
+  "id": "193",
+  "name": "谷口 健",
+  "kana": "タニグチ ケン",
+  "en": "Taniguchi Ken",
+  "gym": null,
+  "dob": "1995.7.6"
+ },
+ {
+  "id": "194",
+  "name": "TARO",
+  "kana": "タロウ",
+  "en": "Taro",
+  "gym": "月心会チーム侍",
+  "dob": "1988.2.11"
+ },
+ {
+  "id": "195",
+  "name": "中嶋 剛志",
+  "kana": "ナカシマ ツヨシ",
+  "en": "Nakashima Tsuyoshi",
+  "gym": null,
+  "dob": "1983.5.5"
+ },
+ {
+  "id": "196",
+  "name": "林 京平",
+  "kana": "ハヤシ キョウヘイ",
+  "en": "Hayashi Kyohei",
+  "gym": "湘南格闘クラブ",
+  "dob": "1994.10.29"
+ },
+ {
+  "id": "197",
+  "name": "塙 隆雄",
+  "kana": "ハナワ タカオ",
+  "en": "Hanawa Takao",
+  "gym": null,
+  "dob": "1988.1.16"
+ },
+ {
+  "id": "198",
+  "name": "Bro.RYO",
+  "kana": "",
+  "en": "Bro.Ryo",
+  "gym": "バンゲリングベイ・スピリット",
+  "dob": "1988.7.19"
+ },
+ {
+  "id": "201",
+  "name": "MAN☆48",
+  "kana": "マン48",
+  "en": "MAN 48",
+  "gym": "大和ジム",
+  "dob": "1986.9.28"
+ },
+ {
+  "id": "202",
+  "name": "MAN☆五郎",
+  "kana": "マンゴロウ",
+  "en": "Man Goro",
+  "gym": "大和ジム",
+  "dob": "1986.3.3"
+ },
+ {
+  "id": "205",
+  "name": "山川 昌志",
+  "kana": "ヤマカワ マサシ",
+  "en": "Yamakawa Masashi",
+  "gym": null,
+  "dob": "1985.8.15"
+ },
+ {
+  "id": "206",
+  "name": "流鏑馬 丈",
+  "kana": "ヤブサメジョー",
+  "en": "Yabusame Joe",
+  "gym": null,
+  "dob": "1979.5.1"
+ },
+ {
+  "id": "208",
+  "name": "耀織",
+  "kana": "ヨシキ",
+  "en": "Yoshiki",
+  "gym": null,
+  "dob": "1994.7.5"
+ },
+ {
+  "id": "209",
+  "name": "乱暴",
+  "kana": "ランボウ",
+  "en": "Ranbo",
+  "gym": null,
+  "dob": "1989.7.14"
+ },
+ {
+  "id": "210",
+  "name": "竜・センチャイジム",
+  "kana": "リュウヤセンチャイジム",
+  "en": "Ryuya Saenchaigym",
+  "gym": null,
+  "dob": "1994.5.17"
+ },
+ {
+  "id": "212",
+  "name": "明戸 仁志",
+  "kana": "アケト ヒトシ",
+  "en": "Aketo Hitoshi",
+  "gym": "ALONZA ABLAZE",
+  "dob": "1986.2.28"
+ },
+ {
+  "id": "214",
+  "name": "磯部 由和",
+  "kana": "イソベ ヨシカズ",
+  "en": "Isobe Yoshikazu",
+  "gym": null,
+  "dob": "1979.3.20"
+ },
+ {
+  "id": "215",
+  "name": "五十嵐 充",
+  "kana": "イガラシ ミツル",
+  "en": "Igarashi Mitsuru",
+  "gym": null,
+  "dob": "1985.6.14"
+ },
+ {
+  "id": "219",
+  "name": "落合 淳",
+  "kana": "オチアイ ジュン",
+  "en": "Ochiai Jun",
+  "gym": null,
+  "dob": "1984.4.15"
+ },
+ {
+  "id": "220",
+  "name": "大畑 貴志",
+  "kana": "オオハタ タカシ",
+  "en": "Ohata Takashi",
+  "gym": null,
+  "dob": "1974.1.19"
+ },
+ {
+  "id": "223",
+  "name": "築",
+  "kana": "キズク",
+  "en": "Kizuku",
+  "gym": null,
+  "dob": "1993.4.4"
+ },
+ {
+  "id": "225",
+  "name": "グザヴィエ・バスター",
+  "kana": "グザヴィエ・バスター",
+  "en": "Xavier Bastard",
+  "gym": null,
+  "dob": "1984.8.25"
+ },
+ {
+  "id": "226",
+  "name": "剣闘士“俊”",
+  "kana": "ケントウシシュン",
+  "en": "Kentoshi Syun",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1986.8.29"
+ },
+ {
+  "id": "227",
+  "name": "小林 聖人",
+  "kana": "コバヤシ マサト",
+  "en": "Kobayashi Masato",
+  "gym": null,
+  "dob": "1983.9.1"
+ },
+ {
+  "id": "228",
+  "name": "翔・センチャイジム",
+  "kana": "ショウタセンチャイジム",
+  "en": "Shota Saenchaigym",
+  "gym": null,
+  "dob": "1982.10.24"
+ },
+ {
+  "id": "230",
+  "name": "ジー・ウェンハオ",
+  "kana": "ジー・ウェンハオ",
+  "en": "Ji Wenhao",
+  "gym": null,
+  "dob": "1993.12.2"
+ },
+ {
+  "id": "232",
+  "name": "セドリック・ペイノー",
+  "kana": "セドリック・ペイノー",
+  "en": "Cedrick Peynaud",
+  "gym": null,
+  "dob": "1986.4.28"
+ },
+ {
+  "id": "233",
+  "name": "誠哉",
+  "kana": "セイヤ",
+  "en": "Seiya",
+  "gym": null,
+  "dob": "1988.5.2"
+ },
+ {
+  "id": "234",
+  "name": "セイ・マルセロ",
+  "kana": "セイ・マルセロ",
+  "en": "Sei Marcelo",
+  "gym": "志村道場",
+  "dob": "1978.7.3"
+ },
+ {
+  "id": "236",
+  "name": "”DYNAMITE”髙橋 佑太",
+  "kana": "ダイナマイト タカハシ ユウタ",
+  "en": "Dynamite Takahashi Yuta",
+  "gym": "Y'ZD GYM",
+  "dob": "1985.12.14"
+ },
+ {
+  "id": "237",
+  "name": "TAISUKE",
+  "kana": "タイスケ",
+  "en": "Taisuke",
+  "gym": null,
+  "dob": "1981.10.21"
+ },
+ {
+  "id": "238",
+  "name": "土屋 忍",
+  "kana": "ツチヤ シノブ",
+  "en": "Tsuchiya Shinobu",
+  "gym": "Y’ZD GYM",
+  "dob": "1986.12.11"
+ },
+ {
+  "id": "240",
+  "name": "津乗 大貴",
+  "kana": "ツノリ ダイキ",
+  "en": "Tsunori Daiki",
+  "gym": null,
+  "dob": "1995.6.15"
+ },
+ {
+  "id": "242",
+  "name": "中野 祐基",
+  "kana": "ナカノ ユウキ",
+  "en": "Nakano Yuki",
+  "gym": null,
+  "dob": "1976.8.25"
+ },
+ {
+  "id": "243",
+  "name": "中村 圭佑",
+  "kana": "ナカムラ ケイスケ",
+  "en": "Nakamura Keisuke",
+  "gym": "K-1 GYM横浜infinity",
+  "dob": "1986.4.24"
+ },
+ {
+  "id": "244",
+  "name": "中里 康広",
+  "kana": "ナカザト ヤスヒロ",
+  "en": "Nakazato Yasuhiro",
+  "gym": null,
+  "dob": "1979.12.14"
+ },
+ {
+  "id": "245",
+  "name": "西川 翔貴",
+  "kana": "ニシカワ ショウキ",
+  "en": "Nishikawa Shoki",
+  "gym": "岡山ジム",
+  "dob": "1996.7.14"
+ },
+ {
+  "id": "246",
+  "name": "野辺 広大",
+  "kana": "ノベ コウダイ",
+  "en": "Nobe Kodai",
+  "gym": null,
+  "dob": "1995.6.30"
+ },
+ {
+  "id": "247",
+  "name": "林 将多",
+  "kana": "ハヤシ ショウタ",
+  "en": "Hayashi Shota",
+  "gym": "FLYSKY GYM",
+  "dob": "1991.2.14"
+ },
+ {
+  "id": "248",
+  "name": "葉山 翔平",
+  "kana": "ハヤマ ショウヘイ",
+  "en": "Hayama Syohei",
+  "gym": null,
+  "dob": "1987.7.2"
+ },
+ {
+  "id": "250",
+  "name": "ヒシャム・ムジタヒド",
+  "kana": "ヒシャム・ムジタヒド",
+  "en": "Hicham Moujtahid",
+  "gym": null,
+  "dob": "1991.5.30"
+ },
+ {
+  "id": "251",
+  "name": "ヘルマン・タブエンカ",
+  "kana": "ヘルマン・タブエンカ",
+  "en": "German Tabuenca",
+  "gym": null,
+  "dob": "1988.12.16"
+ },
+ {
+  "id": "252",
+  "name": "ボン太",
+  "kana": "ボンタ",
+  "en": "Bonta",
+  "gym": null,
+  "dob": "1991.11.29"
+ },
+ {
+  "id": "253",
+  "name": "松野 祐貴",
+  "kana": "マツノ ユウキ",
+  "en": "Matsuno Yuki",
+  "gym": null,
+  "dob": "1985.12.2"
+ },
+ {
+  "id": "254",
+  "name": "宮地 謙太朗",
+  "kana": "ミヤチ ケンタロウ",
+  "en": "Miyachi Kentaro",
+  "gym": null,
+  "dob": "1987.2.20"
+ },
+ {
+  "id": "255",
+  "name": "宮川 博孝",
+  "kana": "ミヤカワ ヒロタカ",
+  "en": "Miyakawa Hirotaka",
+  "gym": null,
+  "dob": "1979.6.17"
+ },
+ {
+  "id": "256",
+  "name": "水嶋 貴大",
+  "kana": "ミズシマ タカヒロ",
+  "en": "Mizushima Takahiro",
+  "gym": null,
+  "dob": "1988.5.14"
+ },
+ {
+  "id": "258",
+  "name": "森重 真",
+  "kana": "モリシゲ マコト",
+  "en": "Morishige Makoto",
+  "gym": "KFG URAWA",
+  "dob": "1981.6.23"
+ },
+ {
+  "id": "259",
+  "name": "RYO",
+  "kana": "リョウ",
+  "en": "Ryo",
+  "gym": null,
+  "dob": "1990.8.1"
+ },
+ {
+  "id": "262",
+  "name": "レッガラー鉄",
+  "kana": "レッガラーテツ",
+  "en": "Reggara Tetsu",
+  "gym": null,
+  "dob": "1986.5.25"
+ },
+ {
+  "id": "263",
+  "name": "渡辺 武",
+  "kana": "ワタナベ タケシ",
+  "en": "Watanabe Takeshi",
+  "gym": null,
+  "dob": "1985.5.19"
+ },
+ {
+  "id": "266",
+  "name": "イェトキン・オズクル",
+  "kana": "イェトキン・オズクル",
+  "en": "Yetkin Ozkul",
+  "gym": null,
+  "dob": "1986.7.6"
+ },
+ {
+  "id": "269",
+  "name": "岩下 隆樹",
+  "kana": "イワシタ リュウキ",
+  "en": "Iwashita Ryuki",
+  "gym": null,
+  "dob": "1994.7.6"
+ },
+ {
+  "id": "270",
+  "name": "石川 祐樹",
+  "kana": "イシカワ ユウキ",
+  "en": "Ishikawa Yuki",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1990.1.21"
+ },
+ {
+  "id": "271",
+  "name": "宇都宮 城",
+  "kana": "ウツノミヤ ジョー",
+  "en": "Utsunomiya Joe",
+  "gym": null,
+  "dob": "1978.2.9"
+ },
+ {
+  "id": "273",
+  "name": "緒方 惇",
+  "kana": "オガタ アツシ",
+  "en": "Ogata Atsushi",
+  "gym": null,
+  "dob": "1984.12.11"
+ },
+ {
+  "id": "275",
+  "name": "一真",
+  "kana": "カズマ",
+  "en": "Kazuma",
+  "gym": "ポゴナ・クラブジム",
+  "dob": "1987.2.5"
+ },
+ {
+  "id": "276",
+  "name": "木曽 徹",
+  "kana": "キソ トオル",
+  "en": "Kiso Toru",
+  "gym": null,
+  "dob": "1989.8.24"
+ },
+ {
+  "id": "278",
+  "name": "栗原 圭佑",
+  "kana": "クリハラ ケイスケ",
+  "en": "Kurihara Keisuke",
+  "gym": null,
+  "dob": "1989.2.15"
+ },
+ {
+  "id": "279",
+  "name": "光太郎",
+  "kana": "コウタロウ",
+  "en": "Kotaro",
+  "gym": null,
+  "dob": "1995.12.11"
+ },
+ {
+  "id": "281",
+  "name": "白井 正太",
+  "kana": "シライ ショウタ",
+  "en": "Shirai Shota",
+  "gym": null,
+  "dob": "1989.1.7"
+ },
+ {
+  "id": "282",
+  "name": "シャルル・フランソワ",
+  "kana": "シャルル・フランソワ",
+  "en": "Charles Francois",
+  "gym": null,
+  "dob": "1986.10.4"
+ },
+ {
+  "id": "283",
+  "name": "篠崎 澄人",
+  "kana": "シノザキ スミト",
+  "en": "Shinozaki Sumito",
+  "gym": null,
+  "dob": "1981.1.5"
+ },
+ {
+  "id": "284",
+  "name": "ジョアン・カナベラル",
+  "kana": "ジョアン・カナベラル",
+  "en": "Joan Canaveral",
+  "gym": null,
+  "dob": "1987.8.7"
+ },
+ {
+  "id": "285",
+  "name": "杦岡 誉崇",
+  "kana": "スギオカ ヤスタカ",
+  "en": "Sugioka Yasutaka",
+  "gym": null,
+  "dob": "1982.3.13"
+ },
+ {
+  "id": "286",
+  "name": "スコーピオン謙太",
+  "kana": "スコーピオンケンタ",
+  "en": "Scorpion Kenta",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "287",
+  "name": "デンジャー内山",
+  "kana": "デンジャーウチヤマ",
+  "en": "Danger Uchiyama",
+  "gym": null,
+  "dob": "1989.3.1"
+ },
+ {
+  "id": "289",
+  "name": "武彦",
+  "kana": "タケヒコ",
+  "en": "Takehiko",
+  "gym": "月心会チーム侍",
+  "dob": "1982.1.16"
+ },
+ {
+  "id": "292",
+  "name": "高橋 誠治",
+  "kana": "タカハシ セイジ",
+  "en": "Takahashi Seiji",
+  "gym": null,
+  "dob": "1982.7.30"
+ },
+ {
+  "id": "293",
+  "name": "谷山 俊樹",
+  "kana": "タニヤマ トシキ",
+  "en": "Taniyama Toshiki",
+  "gym": "谷山ジム",
+  "dob": "1988.11.27"
+ },
+ {
+  "id": "294",
+  "name": "種市 彩人",
+  "kana": "タネイチ アヤト",
+  "en": "Taneichi Ayato",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1986.9.30"
+ },
+ {
+  "id": "295",
+  "name": "TAKANARI",
+  "kana": "タカナリ",
+  "en": "Takanari",
+  "gym": null,
+  "dob": "1987.2.25"
+ },
+ {
+  "id": "296",
+  "name": "高橋 一熹",
+  "kana": "タカハシ カズキ",
+  "en": "Takahashi Kazuki",
+  "gym": null,
+  "dob": "1991.10.19"
+ },
+ {
+  "id": "297",
+  "name": "夢・センチャイジム",
+  "kana": "タイムセンチャイジム",
+  "en": "Time Saenchaigym",
+  "gym": null,
+  "dob": "1989.10.17"
+ },
+ {
+  "id": "298",
+  "name": "塚越 仁志",
+  "kana": "ツカコシ ヒトシ",
+  "en": "Tsukakoshi Hitoshi",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1983.12.14"
+ },
+ {
+  "id": "299",
+  "name": "寺崎 直樹",
+  "kana": "テラサキ ナオキ",
+  "en": "Terasaki Naoki",
+  "gym": null,
+  "dob": "1979.9.20"
+ },
+ {
+  "id": "300",
+  "name": "ディン・ニン",
+  "kana": "ディン・ニン",
+  "en": "Ding Ning",
+  "gym": null,
+  "dob": "1989.11.14"
+ },
+ {
+  "id": "301",
+  "name": "富平 禎仁",
+  "kana": "トミヒラ ヨシヒト",
+  "en": "Tomihira Yoshihito",
+  "gym": null,
+  "dob": "1979.11.16"
+ },
+ {
+  "id": "302",
+  "name": "トーマス・アダマンドポウロス",
+  "kana": "トーマス・アダマンドポウロス",
+  "en": "Thomas Adamandopoulos",
+  "gym": null,
+  "dob": "1986.9.22"
+ },
+ {
+  "id": "303",
+  "name": "仲峯 シルビオ",
+  "kana": "ナカミネ シルビオ",
+  "en": "Nakamine Silvio",
+  "gym": null,
+  "dob": "1989.9.2"
+ },
+ {
+  "id": "304",
+  "name": "NAOTO",
+  "kana": "ナオト",
+  "en": "Naoto",
+  "gym": null,
+  "dob": "1985.11.21"
+ },
+ {
+  "id": "307",
+  "name": "原 一仁",
+  "kana": "ハラ カズヒト",
+  "en": "Hara Kazuhito",
+  "gym": null,
+  "dob": "1988.7.24"
+ },
+ {
+  "id": "308",
+  "name": "服部 浩典",
+  "kana": "ハットリ ヒロノリ",
+  "en": "Hattori Hironori",
+  "gym": null,
+  "dob": "1980.7.7"
+ },
+ {
+  "id": "309",
+  "name": "早坂 太郎",
+  "kana": "ハヤサカ タロウ",
+  "en": "Hayasaka Taro",
+  "gym": "名古屋JKファクトリー",
+  "dob": "1994.4.24"
+ },
+ {
+  "id": "310",
+  "name": "原田 ヨシキ",
+  "kana": "ハラダ ヨシキ",
+  "en": "Harada Yoshiki",
+  "gym": null,
+  "dob": "1984.9.29"
+ },
+ {
+  "id": "312",
+  "name": "前田 修",
+  "kana": "マエダ オサム",
+  "en": "Maeda Osamu",
+  "gym": null,
+  "dob": "1977.8.2"
+ },
+ {
+  "id": "313",
+  "name": "将 -masa-",
+  "kana": "マサ",
+  "en": "Masa",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1985.1.16"
+ },
+ {
+  "id": "315",
+  "name": "本村 康博",
+  "kana": "モトムラ ヤスヒロ",
+  "en": "Motomura Yasuhiro",
+  "gym": null,
+  "dob": "1983.9.14"
+ },
+ {
+  "id": "316",
+  "name": "本村 謙太",
+  "kana": "モトムラ ケンタ",
+  "en": "Motomura Kenta",
+  "gym": null,
+  "dob": "1991.5.13"
+ },
+ {
+  "id": "317",
+  "name": "モハメド・ブールフ",
+  "kana": "モハメド・ブールフ",
+  "en": "Mohamed Boulef",
+  "gym": null,
+  "dob": "1992.2.28"
+ },
+ {
+  "id": "320",
+  "name": "安田 慶二郎",
+  "kana": "ヤスダ ケイジロウ",
+  "en": "Yasuda Keijiro",
+  "gym": null,
+  "dob": "1979.1.27"
+ },
+ {
+  "id": "323",
+  "name": "ユウキ・旬",
+  "kana": "ユウキシュン",
+  "en": "Yuki Shun",
+  "gym": null,
+  "dob": "1989.11.10"
+ },
+ {
+  "id": "324",
+  "name": "慶大",
+  "kana": "ヨシヒロ",
+  "en": "Yoshihiro",
+  "gym": null,
+  "dob": "1987.5.22"
+ },
+ {
+  "id": "325",
+  "name": "龍啓",
+  "kana": "リュウケイ",
+  "en": "Ryukei",
+  "gym": null,
+  "dob": "1985.5.11"
+ },
+ {
+  "id": "326",
+  "name": "渡部 翔太",
+  "kana": "ワタベ ショウタ",
+  "en": "Watabe Shota",
+  "gym": null,
+  "dob": "1987.1.3"
+ },
+ {
+  "id": "327",
+  "name": "斎藤 武彦",
+  "kana": "サイトウ タケヒコ",
+  "en": "Saito Takehiko",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1981.10.7"
+ },
+ {
+  "id": "328",
+  "name": "中澤 純",
+  "kana": "ナカザワ ジュン",
+  "en": "Nakazawa Jun",
+  "gym": null,
+  "dob": "1989.9.28"
+ },
+ {
+  "id": "329",
+  "name": "原 哲夫",
+  "kana": "ハラ テツオ",
+  "en": "Hara Tetsuo",
+  "gym": null,
+  "dob": "1986.3.24"
+ },
+ {
+  "id": "330",
+  "name": "細越 貴己",
+  "kana": "ホソゴエ タカキ",
+  "en": "Hosogoe Takaki",
+  "gym": null,
+  "dob": "1989.10.4"
+ },
+ {
+  "id": "336",
+  "name": "菊崎 義史",
+  "kana": "キクザキ ヨシフミ",
+  "en": "Kikuzaki Yoshifumi",
+  "gym": "TANG TANG FIGHT CLUB",
+  "dob": "1987.1.26"
+ },
+ {
+  "id": "339",
+  "name": "近藤 大成",
+  "kana": "コンドウ タイセイ",
+  "en": "Kondo Taisei",
+  "gym": null,
+  "dob": "1992.11.23"
+ },
+ {
+  "id": "340",
+  "name": "虎宇輝",
+  "kana": "コウキ",
+  "en": "Koki",
+  "gym": "Y’ZD GYM",
+  "dob": "1989.3.28"
+ },
+ {
+  "id": "341",
+  "name": "堤 大輔",
+  "kana": "ツツミ ダイスケ",
+  "en": "Tsutsumi Daisuke",
+  "gym": null,
+  "dob": "1982.10.7"
+ },
+ {
+  "id": "342",
+  "name": "テヨン",
+  "kana": "テヨン",
+  "en": "Tae-Yeon",
+  "gym": null,
+  "dob": "1993.10.18"
+ },
+ {
+  "id": "343",
+  "name": "冨樫 健一郎",
+  "kana": "トガシ ケンイチロウ",
+  "en": "Togashi Kenichiro",
+  "gym": null,
+  "dob": "1980.12.5"
+ },
+ {
+  "id": "345",
+  "name": "西内 貴洋",
+  "kana": "ニシウチ タカウミ",
+  "en": "Nishiuchi Takaumi",
+  "gym": null,
+  "dob": "1986.1.31"
+ },
+ {
+  "id": "349",
+  "name": "村田 康行",
+  "kana": "ムラタ ヤスユキ",
+  "en": "Murata Yasuyuki",
+  "gym": null,
+  "dob": "1972.10.7"
+ },
+ {
+  "id": "352",
+  "name": "靖仁",
+  "kana": "ヤスヒト",
+  "en": "Yasuhito",
+  "gym": null,
+  "dob": "1990.10.16"
+ },
+ {
+  "id": "353",
+  "name": "YUUKI",
+  "kana": "ユウキ",
+  "en": "Yuki",
+  "gym": null,
+  "dob": "1991.10.30"
+ },
+ {
+  "id": "354",
+  "name": "阿佐美ザウルス",
+  "kana": "アサミ ザウルス",
+  "en": "Asami Zaurus",
+  "gym": "TANG TANG FIGHT CLUB",
+  "dob": "1985.9.13"
+ },
+ {
+  "id": "356",
+  "name": "オンダー・ウーラル",
+  "kana": "オンダー・ウーラル",
+  "en": "Onder Ural",
+  "gym": null,
+  "dob": "1984.11.26"
+ },
+ {
+  "id": "358",
+  "name": "記村 一成",
+  "kana": "キムラ カズナリ",
+  "en": "Kimura Kazunari",
+  "gym": null,
+  "dob": "1989.8.11"
+ },
+ {
+  "id": "359",
+  "name": "KEN",
+  "kana": "ケン",
+  "en": "Ken",
+  "gym": "OGUNI-GYM",
+  "dob": "1978.7.5"
+ },
+ {
+  "id": "360",
+  "name": "剛王",
+  "kana": "ゴウオウ",
+  "en": "Go-Oh",
+  "gym": null,
+  "dob": "1980.6.15"
+ },
+ {
+  "id": "361",
+  "name": "小泉 竜",
+  "kana": "コイズミ リュウ",
+  "en": "Koizumi Ryu",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1990.10.3"
+ },
+ {
+  "id": "363",
+  "name": "佐藤 篤史",
+  "kana": "サトウ アツシ",
+  "en": "Sato Atsushi",
+  "gym": null,
+  "dob": "1990.1.11"
+ },
+ {
+  "id": "364",
+  "name": "ジャングルコーキ",
+  "kana": "ジャングルコーキ",
+  "en": "Junglekoki",
+  "gym": null,
+  "dob": "1991.11.6"
+ },
+ {
+  "id": "365",
+  "name": "神護",
+  "kana": "シンゴ",
+  "en": "Shingo",
+  "gym": null,
+  "dob": "1985.2.1"
+ },
+ {
+  "id": "366",
+  "name": "シュー・イェン",
+  "kana": "シュー・イェン",
+  "en": "Xu Yan",
+  "gym": null,
+  "dob": "1987.11.22"
+ },
+ {
+  "id": "369",
+  "name": "竹野 蓮",
+  "kana": "タケノ レン",
+  "en": "Takeno Ren",
+  "gym": null,
+  "dob": "1993.4.12"
+ },
+ {
+  "id": "370",
+  "name": "田村 陽典",
+  "kana": "タムラ ヨウスケ",
+  "en": "Tamura Yosuke",
+  "gym": "PURGE TOKYO",
+  "dob": "1985.7.19"
+ },
+ {
+  "id": "371",
+  "name": "TOMOYUKI",
+  "kana": "トモユキ",
+  "en": "Tomoyuki",
+  "gym": null,
+  "dob": "1982.6.28"
+ },
+ {
+  "id": "372",
+  "name": "中村総帥",
+  "kana": "ナカムラソウスイ",
+  "en": "Nakamura Sousui",
+  "gym": null,
+  "dob": "1975.7.24"
+ },
+ {
+  "id": "373",
+  "name": "藤元 洋次",
+  "kana": "フジモト ヒロシ",
+  "en": "Fujimoto Hiroshi",
+  "gym": null,
+  "dob": "1982.1.11"
+ },
+ {
+  "id": "374",
+  "name": "フレッド・マトス",
+  "kana": "フレッド・マトス",
+  "en": "Fred Matos",
+  "gym": null,
+  "dob": "1982.10.30"
+ },
+ {
+  "id": "377",
+  "name": "松村☆D☆HIRO克",
+  "kana": "マツムラ ディー ヒロカツ",
+  "en": "Matsumura D Hirokatsu",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1984.7.29"
+ },
+ {
+  "id": "378",
+  "name": "三島 流平",
+  "kana": "ミシマ リュウヘイ",
+  "en": "Mishima Ryuhei",
+  "gym": null,
+  "dob": "1983.1.10"
+ },
+ {
+  "id": "382",
+  "name": "山本“バッファ”弘樹",
+  "kana": "ヤマモト バッファ ヒロキ",
+  "en": "Yamamoto “Baafa” Hiroki",
+  "gym": "大和ジム",
+  "dob": "1988.1.23"
+ },
+ {
+  "id": "383",
+  "name": "ラドウィック・ミレー",
+  "kana": "ラドウィック・ミレー",
+  "en": "Ludovic Millet",
+  "gym": null,
+  "dob": "1985.9.1"
+ },
+ {
+  "id": "384",
+  "name": "渡辺 雅和",
+  "kana": "ワタナベ マサカズ",
+  "en": "Watanabe Masakazu",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "386",
+  "name": "大川 かおる",
+  "kana": "オオカワ カオル",
+  "en": "Okawa Kaoru",
+  "gym": null,
+  "dob": "1978.6.23"
+ },
+ {
+  "id": "387",
+  "name": "大石 綾乃",
+  "kana": "オオイシ アヤノ",
+  "en": "Oishi Ayano",
+  "gym": null,
+  "dob": "1987.4.10"
+ },
+ {
+  "id": "390",
+  "name": "キラッ☆Chihiro",
+  "kana": "キラチヒロ",
+  "en": "Kira Chihiro",
+  "gym": null,
+  "dob": "1993.12.6"
+ },
+ {
+  "id": "393",
+  "name": "坂本 柚佳里",
+  "kana": "サカモト ユカリ",
+  "en": "Sakamoto Yukari",
+  "gym": null,
+  "dob": "1991.1.5"
+ },
+ {
+  "id": "394",
+  "name": "サンチェス弥生",
+  "kana": "サンチェスヤヨイ",
+  "en": "Sanchez Yayoi",
+  "gym": null,
+  "dob": "1983.3.5"
+ },
+ {
+  "id": "395",
+  "name": "ジャン・ウェイリー",
+  "kana": "ジャン・ウェイリー",
+  "en": "Zhang Weili",
+  "gym": null,
+  "dob": "1989.8.13"
+ },
+ {
+  "id": "396",
+  "name": "谷山 佳菜子",
+  "kana": "タニヤマ カナコ",
+  "en": "Taniyama Kanako",
+  "gym": null,
+  "dob": "1986.12.17"
+ },
+ {
+  "id": "397",
+  "name": "チェン・ウェイティン",
+  "kana": "チェン・ウェイティン",
+  "en": "Chen Wei-ting",
+  "gym": null,
+  "dob": "1994.6.10"
+ },
+ {
+  "id": "399",
+  "name": "林 美久",
+  "kana": "ハヤシ ミク",
+  "en": "Hayashi Miku",
+  "gym": "バンゲリングベイ・スピリット",
+  "dob": "1984.2.29"
+ },
+ {
+  "id": "400",
+  "name": "楓花",
+  "kana": "フウカ",
+  "en": "Fuka",
+  "gym": "ドージョー☆シャカリキ",
+  "dob": "1995.3.30"
+ },
+ {
+  "id": "402",
+  "name": "真奈",
+  "kana": "マナ",
+  "en": "Mana",
+  "gym": null,
+  "dob": "1998.1.18"
+ },
+ {
+  "id": "403",
+  "name": "水野 志保",
+  "kana": "ミズノ シホ",
+  "en": "Mizuno Shiho",
+  "gym": "名古屋JKファクトリー",
+  "dob": "1975.2.20"
+ },
+ {
+  "id": "404",
+  "name": "三堀“SMILE”美弥子",
+  "kana": "ミツホリ スマイル ミヤコ",
+  "en": "Mitsuhori “SMILE” Miyako",
+  "gym": "Y’ZD GYM",
+  "dob": "1979.1.20"
+ },
+ {
+  "id": "405",
+  "name": "森田 和美",
+  "kana": "モリタ カズミ",
+  "en": "Morita Kazumi",
+  "gym": "勇心館",
+  "dob": "1985.11.1"
+ },
+ {
+  "id": "406",
+  "name": "443",
+  "kana": "ヨシミ",
+  "en": "Yoshimi",
+  "gym": "NEXT LEVEL渋谷",
+  "dob": "1987.9.5"
+ },
+ {
+  "id": "407",
+  "name": "増子 航平",
+  "kana": "マスコ コウヘイ",
+  "en": "Masuko Kohei",
+  "gym": null,
+  "dob": "1992.1.8"
+ },
+ {
+  "id": "408",
+  "name": "目黒ヨックタイジム",
+  "kana": "メグロヨックタイジム",
+  "en": "Meguro Yokthaigym",
+  "gym": null,
+  "dob": "1988.6.22"
+ },
+ {
+  "id": "409",
+  "name": "倉持 心一夢",
+  "kana": "クラモチ シマ",
+  "en": "Kuramochi Shima",
+  "gym": null,
+  "dob": "1998.9.28"
+ },
+ {
+  "id": "411",
+  "name": "TOMOKI",
+  "kana": "トモキ",
+  "en": "Tomoki",
+  "gym": null,
+  "dob": "1976.3.1"
+ },
+ {
+  "id": "412",
+  "name": "佐藤ヨックタイジム",
+  "kana": "サトウヨックタイジム",
+  "en": "Sato Yokthaigym",
+  "gym": null,
+  "dob": "1979.3.28"
+ },
+ {
+  "id": "414",
+  "name": "菊地ヨックタイジム",
+  "kana": "キクチヨックタイジム",
+  "en": "Kikuchi Yokthaigym",
+  "gym": null,
+  "dob": "1977.7.21"
+ },
+ {
+  "id": "415",
+  "name": "長谷川 豊",
+  "kana": "ハセガワ ユタカ",
+  "en": "Hasegawa Yutaka",
+  "gym": "KFG URAWA",
+  "dob": "1985.4.19"
+ },
+ {
+  "id": "416",
+  "name": "ズズ",
+  "kana": "ズズ",
+  "en": "Zuzu",
+  "gym": null,
+  "dob": "1978.8.16"
+ },
+ {
+  "id": "418",
+  "name": "ヤン・グィシャン",
+  "kana": "ヤン・グィシャン",
+  "en": "Yang Gui Shan",
+  "gym": null,
+  "dob": "1991.8.12"
+ },
+ {
+  "id": "419",
+  "name": "ヴェダット・ウルック",
+  "kana": "ヴェダット・ウルック",
+  "en": "Vedat Uruc",
+  "gym": null,
+  "dob": "1992.9.11"
+ },
+ {
+  "id": "420",
+  "name": "ヤニス・エル・アジャウィー",
+  "kana": "ヤニス・エル・アジャウィー",
+  "en": "Yannis El Hajaoui",
+  "gym": null,
+  "dob": "1988.5.30"
+ },
+ {
+  "id": "421",
+  "name": "パク・ヒョンソン",
+  "kana": "パク・ヒョンソン",
+  "en": "Park Hyun Sung",
+  "gym": null,
+  "dob": "1995.11.4"
+ },
+ {
+  "id": "423",
+  "name": "モハメド・ギャラウィー",
+  "kana": "モハメド・ギャラウィー",
+  "en": "Mohamed Galaoui",
+  "gym": null,
+  "dob": "1988.8.12"
+ },
+ {
+  "id": "425",
+  "name": "ハ・ウンピョ",
+  "kana": "ハ・ウンピョ",
+  "en": "Ha Woon Pyo",
+  "gym": null,
+  "dob": "1983.4.13"
+ },
+ {
+  "id": "427",
+  "name": "エドアルド・トッチ",
+  "kana": "エドアルド・トッチ",
+  "en": "Edoardo Tocci",
+  "gym": null,
+  "dob": "1985.6.21"
+ },
+ {
+  "id": "428",
+  "name": "ルーク・ターナー",
+  "kana": "ルーク・ターナー",
+  "en": "Luke Turner",
+  "gym": null,
+  "dob": "1988.12.14"
+ },
+ {
+  "id": "429",
+  "name": "原谷 彩香",
+  "kana": "ハラタニ アヤカ",
+  "en": "Haratani Ayaka",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "430",
+  "name": "大野 起和",
+  "kana": "オオノ ユキカ",
+  "en": "Ono Yukika",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "432",
+  "name": "梅田 凌",
+  "kana": "ウメダ リョウ",
+  "en": "Umeda Ryo",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "433",
+  "name": "伊藤 友哉",
+  "kana": "イトウ ユウヤ",
+  "en": "Ito Yuya",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "434",
+  "name": "吉村 凌仁郎",
+  "kana": "ヨシムラ リョウジロウ",
+  "en": "Yoshimura Ryojiro",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "436",
+  "name": "白神 喜弘",
+  "kana": "シラガ ヨシヒロ",
+  "en": "Shiraga Yoshihiro",
+  "gym": null,
+  "dob": "1982.10.28"
+ },
+ {
+  "id": "437",
+  "name": "イ・ソルビン",
+  "kana": "イ・ソルビン",
+  "en": "Lee Solbin",
+  "gym": null,
+  "dob": "1995.10.30"
+ },
+ {
+  "id": "440",
+  "name": "アントニオ・カンパーニャ",
+  "kana": "アントニオ・カンパーニャ",
+  "en": "Antonio Campagna",
+  "gym": null,
+  "dob": "1986.8.5"
+ },
+ {
+  "id": "443",
+  "name": "YOSUKE",
+  "kana": "ヨウスケ",
+  "en": "Yosuke",
+  "gym": null,
+  "dob": "1977.7.10"
+ },
+ {
+  "id": "444",
+  "name": "ミカエル・ペイノー",
+  "kana": "ミカエル・ペイノー",
+  "en": "Michael Peynaud",
+  "gym": null,
+  "dob": "1986.4.28"
+ },
+ {
+  "id": "448",
+  "name": "増田 勝海",
+  "kana": "マスダ カツウミ",
+  "en": "Masuda Katsuumi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "449",
+  "name": "Riki-ya",
+  "kana": "リキヤ",
+  "en": "Riki-ya",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "451",
+  "name": "関根 進",
+  "kana": "セキネ ススム",
+  "en": "Sekine Susumu",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "453",
+  "name": "古田 恭人",
+  "kana": "フルタ ヤスヒト",
+  "en": "Furuta Yasuhito",
+  "gym": null,
+  "dob": "1989.5.2"
+ },
+ {
+  "id": "454",
+  "name": "菊崎U-TAN義史",
+  "kana": "キクザキウータン",
+  "en": "kikuzakiu-tan",
+  "gym": "TANG TANG FIGHT CLUB",
+  "dob": null
+ },
+ {
+  "id": "455",
+  "name": "遠藤 大翼",
+  "kana": "エンドウ ダイスケ",
+  "en": "Endo Daisuke",
+  "gym": null,
+  "dob": "1982.11.13"
+ },
+ {
+  "id": "456",
+  "name": "YUMBO",
+  "kana": "ユンボ",
+  "en": "YUMBO",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "457",
+  "name": "今井 良次",
+  "kana": "イマイ リョウジ",
+  "en": "Imai Ryoji",
+  "gym": "ポゴナ・クラブジム",
+  "dob": "1979.7.2"
+ },
+ {
+  "id": "458",
+  "name": "藤阪 弘樹",
+  "kana": "フジサカ ヒロキ",
+  "en": "Fujisaka Hiroki",
+  "gym": null,
+  "dob": "1981.10.30"
+ },
+ {
+  "id": "459",
+  "name": "畠山 隼人",
+  "kana": "ハタケヤマ ハヤト",
+  "en": "Hatakeyama Hayato",
+  "gym": "E.S.G",
+  "dob": "1988.9.26"
+ },
+ {
+  "id": "463",
+  "name": "軍司 翔香",
+  "kana": "グンジ ショウカ",
+  "en": "Gunji Syoka",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "464",
+  "name": "小雪",
+  "kana": "コユキ",
+  "en": "Koyuki",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "466",
+  "name": "鬥嘩裟",
+  "kana": "ツカサ",
+  "en": "Tsukasa",
+  "gym": null,
+  "dob": "1992.9.18"
+ },
+ {
+  "id": "467",
+  "name": "松井 裕馬",
+  "kana": "マツイ ユウマ",
+  "en": "Matsui Yuma",
+  "gym": null,
+  "dob": "1990.12.12"
+ },
+ {
+  "id": "469",
+  "name": "羽田 大輔",
+  "kana": "ハダ ダイスケ",
+  "en": "Hada Daisuke",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "470",
+  "name": "秀虎",
+  "kana": "ヒデトラ",
+  "en": "Hidetora",
+  "gym": null,
+  "dob": "1979.7.18"
+ },
+ {
+  "id": "471",
+  "name": "星川 大輝",
+  "kana": "ホシカワ ダイキ",
+  "en": "Hoshikawa Daiki",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "474",
+  "name": "岩切 康浩",
+  "kana": "イワキリ ヤスヒロ",
+  "en": "Iwakiri Yasuhiro",
+  "gym": "エイワスポーツジム",
+  "dob": null
+ },
+ {
+  "id": "475",
+  "name": "小澤 量哉",
+  "kana": "オザワ リキヤ",
+  "en": "Ozawa Rikiya",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "478",
+  "name": "関 太一",
+  "kana": "セキ タイチ",
+  "en": "Seki Taichi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "479",
+  "name": "白濱 卓哉",
+  "kana": "シラハマ タクヤ",
+  "en": "Shirahama Takuya",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "480",
+  "name": "チェン・ミンミン",
+  "kana": "チェン・ミンミン",
+  "en": "Chen Mingming",
+  "gym": null,
+  "dob": "1989.5.2"
+ },
+ {
+  "id": "481",
+  "name": "リュウ・ウェイ",
+  "kana": "リュウ・ウェイ",
+  "en": "Liu Wei",
+  "gym": "深圳争途格闘クラブ/CFP",
+  "dob": "1991.7.3"
+ },
+ {
+  "id": "483",
+  "name": "シビサイ 頌真",
+  "kana": "シビサイ ショウマ",
+  "en": "Shibisai Shoma",
+  "gym": null,
+  "dob": "1991.3.11"
+ },
+ {
+  "id": "484",
+  "name": "福田 雄平",
+  "kana": "フクダ ユウヘイ",
+  "en": "Fukuda Yuhei",
+  "gym": null,
+  "dob": "1985.4.4"
+ },
+ {
+  "id": "488",
+  "name": "上杉 隼土",
+  "kana": "ウエスギ ハヤト",
+  "en": "Uesugi Hayato",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "489",
+  "name": "山口 正道",
+  "kana": "ヤマグチ マサミチ",
+  "en": "Yamaguchi Masamichi",
+  "gym": null,
+  "dob": "1984.12.23"
+ },
+ {
+  "id": "490",
+  "name": "翔栄",
+  "kana": "ショウエイ",
+  "en": "Shoei",
+  "gym": null,
+  "dob": "1994.5.22"
+ },
+ {
+  "id": "494",
+  "name": "AKIRA",
+  "kana": "アキラ",
+  "en": "Akira",
+  "gym": null,
+  "dob": "1979.1.29"
+ },
+ {
+  "id": "497",
+  "name": "YOSHI",
+  "kana": "ヨシ",
+  "en": "YOSHI",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "500",
+  "name": "水原 弘暁",
+  "kana": "ミズハラ ヒロアキ",
+  "en": "Mizuhara Hiroaki",
+  "gym": null,
+  "dob": "1985.2.23"
+ },
+ {
+  "id": "503",
+  "name": "郷野 聡寛",
+  "kana": "ゴウノ アキヒロ",
+  "en": "Gono Akihiro",
+  "gym": null,
+  "dob": "1974.10.7"
+ },
+ {
+  "id": "504",
+  "name": "藤原 啓三",
+  "kana": "フジワラ ケイゾウ",
+  "en": "Fujiwara Keizo",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "505",
+  "name": "能登 崇",
+  "kana": "ノト タカシ",
+  "en": "Noto Takashi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "506",
+  "name": "宮崎 直人",
+  "kana": "ミヤザキ ナオト",
+  "en": "Miyazaki Naoto",
+  "gym": null,
+  "dob": "1983.9.19"
+ },
+ {
+  "id": "508",
+  "name": "一貴",
+  "kana": "カズキ",
+  "en": "Kazuki",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "509",
+  "name": "TAIRA",
+  "kana": "タイラ",
+  "en": "TAIRA",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "510",
+  "name": "武士",
+  "kana": "タカシ",
+  "en": "Takashi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "511",
+  "name": "若杉 成次",
+  "kana": "ワカスギ",
+  "en": "Wakasugi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "513",
+  "name": "山田 英登",
+  "kana": "ヤマダ ヒデト",
+  "en": "Yamada Hideto",
+  "gym": null,
+  "dob": "1985.7.13"
+ },
+ {
+  "id": "516",
+  "name": "小西 拓槙",
+  "kana": "コニシ タクマ",
+  "en": "Konishi Takuma",
+  "gym": "クロスポイント吉祥寺",
+  "dob": "1987.7.21"
+ },
+ {
+  "id": "519",
+  "name": "森川 修平",
+  "kana": "モリカワ シュウヘイ",
+  "en": "Morikawa Shuhei",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "522",
+  "name": "松重 孝幸",
+  "kana": "マツシゲ",
+  "en": "Matsushige",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "523",
+  "name": "松永ちゃいるど義弘",
+  "kana": "マツナガチャイルドヨシヒロ",
+  "en": "Matsunaga Child Yoshihiro",
+  "gym": null,
+  "dob": "1985.8.16"
+ },
+ {
+  "id": "524",
+  "name": "内村 洋次郎",
+  "kana": "ウチムラ ヨウジロウ",
+  "en": "Uchimura Yojiro",
+  "gym": null,
+  "dob": "1985.1.8"
+ },
+ {
+  "id": "527",
+  "name": "真",
+  "kana": "マコト",
+  "en": "Makoto",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "532",
+  "name": "瞬太",
+  "kana": "シュンタ",
+  "en": "Shunta",
+  "gym": null,
+  "dob": "1992.4.8"
+ },
+ {
+  "id": "533",
+  "name": "高橋 功",
+  "kana": "タカハシ",
+  "en": "Takahashi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "536",
+  "name": "地主 正孝",
+  "kana": "ジヌシ",
+  "en": "Jinushi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "537",
+  "name": "洪太星",
+  "kana": "コウタイセイ",
+  "en": "Kotaisei",
+  "gym": null,
+  "dob": "1980.10.18"
+ },
+ {
+  "id": "538",
+  "name": "長井 憲治",
+  "kana": "ナガイ",
+  "en": "Nagai",
+  "gym": null,
+  "dob": "1973.7.31"
+ },
+ {
+  "id": "541",
+  "name": "川畑 勇人",
+  "kana": "カワバタ ユウト",
+  "en": "Kawabata Yuto",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "542",
+  "name": "スネーク益荒男",
+  "kana": "スネークマサオ",
+  "en": "Snake Masao",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "544",
+  "name": "MIKOTO",
+  "kana": "ミコト",
+  "en": "MIKOTO",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "545",
+  "name": "宮越 宗一郎",
+  "kana": "ミヤコシ ソウイチロウ",
+  "en": "Miyakoshi Soichiro",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "550",
+  "name": "JUN Da 雷音",
+  "kana": "ジュンダライオン",
+  "en": "Jun Da Raion",
+  "gym": "E.S.G",
+  "dob": "1976.8.3"
+ },
+ {
+  "id": "553",
+  "name": "杉山 明隆",
+  "kana": "スギヤマ アキタカ",
+  "en": "Sugiyama Akitaka",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "555",
+  "name": "倉持 厳",
+  "kana": "クラモチ",
+  "en": "Kuramochi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "556",
+  "name": "小松 隆也",
+  "kana": "コマツ",
+  "en": "Komatsu",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "557",
+  "name": "長谷川 康也",
+  "kana": "ハセガワ",
+  "en": "Hasegawa",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "560",
+  "name": "鈴木 ヒロ",
+  "kana": "スズキ ヒロ",
+  "en": "Suzuki Hiro",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "562",
+  "name": "後藤 友宏",
+  "kana": "ゴトウ トモヒロ",
+  "en": "Goto Tomohiro",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "564",
+  "name": "光センチャイジム",
+  "kana": "ヒカリセンチャイジム",
+  "en": "Hikari Saenchaigym",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "565",
+  "name": "田村 勇気",
+  "kana": "タムラ ユウキ",
+  "en": "Tamura Yuki",
+  "gym": "ドージョー☆シャカリキ",
+  "dob": null
+ },
+ {
+  "id": "567",
+  "name": "小川 貴広",
+  "kana": "オガワ タカヒロ",
+  "en": "Ogawa Takahiro",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "569",
+  "name": "坪井 悠介",
+  "kana": "ツボイ ユウスケ",
+  "en": "Tsuboi Yusuke",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "570",
+  "name": "洋センチャイジム",
+  "kana": "ヒロシセンチャイジム",
+  "en": "Hiroshi Saenchaigym",
+  "gym": null,
+  "dob": "1974.11.20"
+ },
+ {
+  "id": "571",
+  "name": "宮田 隼児",
+  "kana": "ミヤタ",
+  "en": "Miyata",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "573",
+  "name": "那須 儀治",
+  "kana": "ナス",
+  "en": "Nasu",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "574",
+  "name": "水谷 秀樹",
+  "kana": "ミズタニ ヒデキ",
+  "en": "Mizutani Hideki",
+  "gym": "スクランブル渋谷",
+  "dob": "1974.8.16"
+ },
+ {
+  "id": "576",
+  "name": "藤ノ木 岳",
+  "kana": "フジノキ",
+  "en": "Fujinoki",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "577",
+  "name": "平尾 大智",
+  "kana": "ヒラオ",
+  "en": "Hirao",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "578",
+  "name": "遼",
+  "kana": "リョウ",
+  "en": "Ryo",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "579",
+  "name": "石井 振一朗",
+  "kana": "イシイ シンイチロウ",
+  "en": "Ishii Shinichiro",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "582",
+  "name": "伊藤 将彦",
+  "kana": "イトウ マサヒコ",
+  "en": "Ito Masahiko",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "583",
+  "name": "濱崎 一輝",
+  "kana": "ハマサキ カズキ",
+  "en": "Hamasaki Kazuki",
+  "gym": null,
+  "dob": "1977.3.15"
+ },
+ {
+  "id": "585",
+  "name": "宝樹 まもる",
+  "kana": "ホウジュ マモル",
+  "en": "Hoju Mamoru",
+  "gym": "勇心館",
+  "dob": null
+ },
+ {
+  "id": "589",
+  "name": "黒川 拓哉",
+  "kana": "クロカワ タクヤ",
+  "en": "Kurokawa Takuya",
+  "gym": "WEED GYM",
+  "dob": null
+ },
+ {
+  "id": "590",
+  "name": "小西 陵太",
+  "kana": "コニシ リョウタ",
+  "en": "Konishi Ryota",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "591",
+  "name": "小笠原 克樹",
+  "kana": "オガサワラ",
+  "en": "Ogasawara",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "592",
+  "name": "鷹史",
+  "kana": "タカシ",
+  "en": "Takashi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "593",
+  "name": "岩切 博史",
+  "kana": "イワキリ ヒロシ",
+  "en": "Iwakiri Hiroshi",
+  "gym": "月心会チーム侍",
+  "dob": null
+ },
+ {
+  "id": "594",
+  "name": "森井 洋介",
+  "kana": "モリイ ヨウスケ",
+  "en": "Morii Yosuke",
+  "gym": null,
+  "dob": "1988.7.30"
+ },
+ {
+  "id": "595",
+  "name": "清宮 拓",
+  "kana": "セイミヤ タク",
+  "en": "Seimiya Taku",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "596",
+  "name": "畑尾 龍宏",
+  "kana": "ハタオ",
+  "en": "Hatao",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "597",
+  "name": "永野 裕典",
+  "kana": "ナガノ ユウスケ",
+  "en": "Nagano Yusuke",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "598",
+  "name": "中須賀 芳徳",
+  "kana": "ナカスカ ヨシノリ",
+  "en": "Nakasuka Yoshinori",
+  "gym": "OGUNI-GYM",
+  "dob": null
+ },
+ {
+  "id": "599",
+  "name": "二戸 伸也",
+  "kana": "ニト シンヤ",
+  "en": "Nito Shinya",
+  "gym": "クロスポイント吉祥寺",
+  "dob": null
+ },
+ {
+  "id": "600",
+  "name": "梅原 タカユキ",
+  "kana": "ウメハラ タカユキ",
+  "en": "Umehara Takayuki",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "603",
+  "name": "宮下 トモヤ",
+  "kana": "ミヤシタ トモヤ",
+  "en": "Miyashita Tomoya",
+  "gym": "POWER OF DREAM",
+  "dob": "1981.7.20"
+ },
+ {
+  "id": "607",
+  "name": "丹藤 義則",
+  "kana": "ニトウ ヨシノリ",
+  "en": "Nito Yoshinori",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "608",
+  "name": "清水 武",
+  "kana": "シミズ タケシ",
+  "en": "Shimizu Takeshi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "609",
+  "name": "威幸",
+  "kana": "タケユキ",
+  "en": "Takeyuki",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "611",
+  "name": "横田 一則",
+  "kana": "ヨコタ カズノリ",
+  "en": "Yokota Kazunori",
+  "gym": "月心会チーム侍",
+  "dob": "1978.4.3"
+ },
+ {
+  "id": "612",
+  "name": "早野 勇輝",
+  "kana": "ハヤノ ユウキ",
+  "en": "Hayano Yuki",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "614",
+  "name": "河西 和浩",
+  "kana": "カワニシ カズヒロ",
+  "en": "Kawanishi Kazuhiro",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "616",
+  "name": "岩下 文耶",
+  "kana": "イワシタ フミヤ",
+  "en": "Iwashita Fumiya",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "617",
+  "name": "正巳",
+  "kana": "マサミ",
+  "en": "Masami",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "618",
+  "name": "喜入 衆",
+  "kana": "キイレ トモ",
+  "en": "Kiire Tomo",
+  "gym": null,
+  "dob": "1979.5.24"
+ },
+ {
+  "id": "620",
+  "name": "影日“ポパイ”和徳",
+  "kana": "カゲビ ポパイ カズノリ",
+  "en": "Kagebi \"POPEYE\" Kazunori",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "623",
+  "name": "倉田 光敏",
+  "kana": "クラタ ミツトシ",
+  "en": "Kurata Mitsutoshi",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "624",
+  "name": "小山 佑介",
+  "kana": "コヤマ ユウスケ",
+  "en": "Koyama Yusuke",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "625",
+  "name": "九島 亮",
+  "kana": "クシマ マコト",
+  "en": "Kushima Makoto",
+  "gym": null,
+  "dob": "1984.2.14"
+ },
+ {
+  "id": "630",
+  "name": "宮田 裕司",
+  "kana": "ミヤタ ユウジ",
+  "en": "Miyata Yuji",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "635",
+  "name": "青木 朋哉",
+  "kana": "アオキ トモヤ",
+  "en": "Aoki Tomoya",
+  "gym": null,
+  "dob": "1990.3.2"
+ },
+ {
+  "id": "639",
+  "name": "加藤 洋介",
+  "kana": "カトウ ヨウスケ",
+  "en": "Kato Yosuke",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1978.12.5"
+ },
+ {
+  "id": "640",
+  "name": "MITSURU",
+  "kana": "ミツル",
+  "en": "Mitsuru",
+  "gym": null,
+  "dob": "1988.2.12"
+ },
+ {
+  "id": "641",
+  "name": "並木 義弘",
+  "kana": "ナミキ ヨシヒロ",
+  "en": "Namiki Yoshihiro",
+  "gym": "TEAM OJ",
+  "dob": "1988.7.23"
+ },
+ {
+  "id": "644",
+  "name": "上羽 優希",
+  "kana": "ウエバ ユウキ",
+  "en": "Ueba Yuki",
+  "gym": null,
+  "dob": "1984.9.27"
+ },
+ {
+  "id": "645",
+  "name": "吉沼 大樹",
+  "kana": "ヨシヌマ ダイキ",
+  "en": "Yoshinuma Daiki",
+  "gym": "TANG TANG FIGHT CLUB",
+  "dob": "1992.7.6"
+ },
+ {
+  "id": "646",
+  "name": "ジュアン・シューソン",
+  "kana": "ジュアン・シューソン",
+  "en": "Zhuang Shuson",
+  "gym": null,
+  "dob": "1987.12.12"
+ },
+ {
+  "id": "647",
+  "name": "前田 洋平",
+  "kana": "マエダ ヨウヘイ",
+  "en": "Maeda Yohei",
+  "gym": null,
+  "dob": "1988.5.16"
+ },
+ {
+  "id": "648",
+  "name": "高田 彰二",
+  "kana": "タカダ ショウジ",
+  "en": "Takada Shoji",
+  "gym": null,
+  "dob": "1979.1.24"
+ },
+ {
+  "id": "649",
+  "name": "田中 将士",
+  "kana": "タナカ マサシ",
+  "en": "Tanaka Masashi",
+  "gym": null,
+  "dob": "1985.1.22"
+ },
+ {
+  "id": "650",
+  "name": "斐也",
+  "kana": "ヨシナリ",
+  "en": "Yoshinari",
+  "gym": null,
+  "dob": "1987.5.24"
+ },
+ {
+  "id": "651",
+  "name": "浅利 一徹",
+  "kana": "アサリ イッテツ",
+  "en": "Asari Ittetsu",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1979.11.12"
+ },
+ {
+  "id": "652",
+  "name": "HASE・FLYSKYGYM",
+  "kana": "HaseFlyskyGym",
+  "en": "HaseFlyskyGym",
+  "gym": "FLYSKY GYM",
+  "dob": "1985.5.23"
+ },
+ {
+  "id": "653",
+  "name": "チャールズ・ボンジョバーニ",
+  "kana": "チャールズ・ボンジョバーニ",
+  "en": "Charles Bongiovanni",
+  "gym": null,
+  "dob": "1986.10.30"
+ },
+ {
+  "id": "654",
+  "name": "ティエン・シン",
+  "kana": "ティエン・シン",
+  "en": "Tian Xin",
+  "gym": null,
+  "dob": "1988.5.22"
+ },
+ {
+  "id": "655",
+  "name": "木村 秀和",
+  "kana": "キムラ ヒデカズ",
+  "en": "Kimura Hidekazu",
+  "gym": "HALEO TOP TEAM",
+  "dob": "1981.10.29"
+ },
+ {
+  "id": "658",
+  "name": "ドミトリー・グラフォフ",
+  "kana": "ドミトリー・グラフォフ",
+  "en": "Dmitrii Grafov",
+  "gym": null,
+  "dob": "1991.1.11"
+ },
+ {
+  "id": "659",
+  "name": "松下 大紀",
+  "kana": "マツシタ ダイキ",
+  "en": "Matsushita Daiki",
+  "gym": "BELIEVE MAN",
+  "dob": "1996.2.13"
+ },
+ {
+  "id": "660",
+  "name": "平山 迅",
+  "kana": "ヒラヤマ ジン",
+  "en": "Hirayama Jin",
+  "gym": "TEAM ONE",
+  "dob": "1990.3.12"
+ },
+ {
+  "id": "664",
+  "name": "秦 文也",
+  "kana": "ハタ フミヤ",
+  "en": "Hata Fumiya",
+  "gym": null,
+  "dob": "1987.10.20"
+ },
+ {
+  "id": "665",
+  "name": "サイボーグ・ワラス",
+  "kana": "サイボーグ・ワラス",
+  "en": "Cyborg Wallace",
+  "gym": null,
+  "dob": "1984.2.25"
+ },
+ {
+  "id": "666",
+  "name": "キル・ビー",
+  "kana": "キル・ビー",
+  "en": "KILL BEE",
+  "gym": null,
+  "dob": "1995.3.25"
+ },
+ {
+  "id": "667",
+  "name": "ジョン・へジン",
+  "kana": "ジョン・へジン",
+  "en": "Jeong Hye Jin",
+  "gym": null,
+  "dob": "1994.6.13"
+ },
+ {
+  "id": "668",
+  "name": "ヨハネス・ウルフ",
+  "kana": "ヨハネス・ウルフ",
+  "en": "Johannes Wolf",
+  "gym": null,
+  "dob": "1988.11.24"
+ },
+ {
+  "id": "669",
+  "name": "川口 拓真",
+  "kana": "カワグチ タクマ",
+  "en": "Kawaguchi Takuma",
+  "gym": "k-1ジム総本部チームペガサス",
+  "dob": "1994.5.1"
+ },
+ {
+  "id": "670",
+  "name": "リーサル大場",
+  "kana": "リーサルオオバ",
+  "en": "Lethal Oba",
+  "gym": null,
+  "dob": "1993.4.9"
+ },
+ {
+  "id": "671",
+  "name": "金子 桂",
+  "kana": "カネコ ケイ",
+  "en": "Kaneko Kei",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1982.5.18"
+ },
+ {
+  "id": "672",
+  "name": "高下 由暉",
+  "kana": "コウゲ ユウキ",
+  "en": "Koge Yuki",
+  "gym": "team Ares",
+  "dob": "1995.12.14"
+ },
+ {
+  "id": "673",
+  "name": "斎藤 史奈",
+  "kana": "サイトウ フミナ",
+  "en": "Saito Fumina",
+  "gym": "月心会チーム侍",
+  "dob": "2000.1.15"
+ },
+ {
+  "id": "674",
+  "name": "笠見 玲慈",
+  "kana": "カサミ レイジ",
+  "en": "Kasami Reiji",
+  "gym": "TEAM OJ",
+  "dob": "1998.9.23"
+ },
+ {
+  "id": "677",
+  "name": "優谷",
+  "kana": "ユウヤ",
+  "en": "Yuya",
+  "gym": "WSRフェアテックス西川口",
+  "dob": "1999.8.17"
+ },
+ {
+  "id": "680",
+  "name": "エリアス・マムーディ",
+  "kana": "エリアス・マムーディ",
+  "en": "Elias Mahmoudi",
+  "gym": null,
+  "dob": "1998.1.14"
+ },
+ {
+  "id": "681",
+  "name": "長嶋 卓哉",
+  "kana": "ナガシマ タクヤ",
+  "en": "Nagashima Takuya",
+  "gym": "菅原道場",
+  "dob": "1994.1.7"
+ },
+ {
+  "id": "682",
+  "name": "石塚 宏人",
+  "kana": "イシツカ ヒロト",
+  "en": "Ishitsuka Hiroto",
+  "gym": "ドージョー☆シャカリキ",
+  "dob": "1998.11.21"
+ },
+ {
+  "id": "683",
+  "name": "谷嶋 颯斗",
+  "kana": "タニシマ ハヤト",
+  "en": "Tanishima Hayato",
+  "gym": null,
+  "dob": "1999.6.8"
+ },
+ {
+  "id": "684",
+  "name": "俵家 翔太",
+  "kana": "タワラヤ ショウタ",
+  "en": "Tawaraya Shota",
+  "gym": null,
+  "dob": "1993.6.26"
+ },
+ {
+  "id": "685",
+  "name": "川中 清史",
+  "kana": "カワナカ キヨシ",
+  "en": "Kawanaka Kiyoshi",
+  "gym": null,
+  "dob": "1988.7.5"
+ },
+ {
+  "id": "688",
+  "name": "木村 茂樹",
+  "kana": "キムラ シゲキ",
+  "en": "Kimura Shigeki",
+  "gym": null,
+  "dob": "1988.9.2"
+ },
+ {
+  "id": "689",
+  "name": "ヨーセンチャイ・ソー.ソーピット",
+  "kana": "ヨーセンチャイ・ソー.ソーピット",
+  "en": "Yoadsenchai Sor.Sopit",
+  "gym": "ソー.ソーピットジム",
+  "dob": "1992.11.20"
+ },
+ {
+  "id": "692",
+  "name": "パウロ・テバウ",
+  "kana": "パウロ・テバウ",
+  "en": "Paulo Tebar",
+  "gym": null,
+  "dob": "1990.9.21"
+ },
+ {
+  "id": "694",
+  "name": "郷州 征宜",
+  "kana": "ゴウシュウ マサノブ",
+  "en": "Goshu Masanobu",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1986.4.10"
+ },
+ {
+  "id": "698",
+  "name": "秋元 僚平",
+  "kana": "アキモト リョウヘイ",
+  "en": "Akimoto Ryohei",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1994.7.2"
+ },
+ {
+  "id": "699",
+  "name": "小久保 裕気",
+  "kana": "コクボ ヒロキ",
+  "en": "Kokubo Hiroki",
+  "gym": "AX GYM",
+  "dob": "1997.6.30"
+ },
+ {
+  "id": "700",
+  "name": "クリス・マセーリ",
+  "kana": "クリス・マセーリ",
+  "en": "Chris Mauceri",
+  "gym": null,
+  "dob": "1990.10.16"
+ },
+ {
+  "id": "701",
+  "name": "スタニスラブ・レニタ",
+  "kana": "スタニスラブ・レニタ",
+  "en": "Stanislav Renita",
+  "gym": null,
+  "dob": "1992.9.26"
+ },
+ {
+  "id": "702",
+  "name": "工藤 勇樹",
+  "kana": "クドウ ユウキ",
+  "en": "Kudo Yuki",
+  "gym": "エスジム",
+  "dob": "1984.3.13"
+ },
+ {
+  "id": "703",
+  "name": "和島 大海",
+  "kana": "ワジマ ヒロミ",
+  "en": "Wajima Hiromi",
+  "gym": "SHIKA GYM",
+  "dob": "1995.2.23"
+ },
+ {
+  "id": "704",
+  "name": "松井 ゆかり",
+  "kana": "マツイ ユカリ",
+  "en": "Matsui Yukari",
+  "gym": null,
+  "dob": "1984.4.2"
+ },
+ {
+  "id": "705",
+  "name": "ユン・チー",
+  "kana": "ユン・チー",
+  "en": "Yun Qi",
+  "gym": null,
+  "dob": "1995.12.7"
+ },
+ {
+  "id": "706",
+  "name": "ジョッキーレック・GTジム",
+  "kana": "ジョッキーレック・GTジム",
+  "en": "Jockeyleck GT Gym",
+  "gym": null,
+  "dob": "1983.4.9"
+ },
+ {
+  "id": "707",
+  "name": "KOICHI",
+  "kana": "コウイチ",
+  "en": "Koichi",
+  "gym": "バンゲリングベイ・スピリット",
+  "dob": "1980.10.26"
+ },
+ {
+  "id": "710",
+  "name": "蔵人",
+  "kana": "クロウド",
+  "en": "Kuroudo",
+  "gym": "名古屋JKファクトリー",
+  "dob": "1997.2.7"
+ },
+ {
+  "id": "711",
+  "name": "加藤 駿",
+  "kana": "カトウ シュン",
+  "en": "Kato Shun",
+  "gym": null,
+  "dob": "1987.1.19"
+ },
+ {
+  "id": "712",
+  "name": "ワン・ポンフェイ",
+  "kana": "ワン・ポンフェイ",
+  "en": "Wang Pengfei",
+  "gym": "遼寧創新ジム/CFP",
+  "dob": "1993.4.5"
+ },
+ {
+  "id": "713",
+  "name": "山下 和希",
+  "kana": "ヤマシタ カズキ",
+  "en": "Yamashita Kazuki",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1994.1.7"
+ },
+ {
+  "id": "714",
+  "name": "清水 大輝",
+  "kana": "シミズ ダイキ",
+  "en": "Shimizu Daiki",
+  "gym": null,
+  "dob": "1995.1.10"
+ },
+ {
+  "id": "717",
+  "name": "ジョシュ・トナー",
+  "kana": "ジョシュ・トナー",
+  "en": "Josh Tonna",
+  "gym": null,
+  "dob": "1988.6.19"
+ },
+ {
+  "id": "718",
+  "name": "ジェイミー・ウィーラン",
+  "kana": "ジェイミー・ウィーラン",
+  "en": "Jamie Whelan",
+  "gym": null,
+  "dob": "1994.5.19"
+ },
+ {
+  "id": "719",
+  "name": "畑 孟",
+  "kana": "ハタ ハジメ",
+  "en": "Hata Hajime",
+  "gym": null,
+  "dob": "1996.1.31"
+ },
+ {
+  "id": "720",
+  "name": "宝☆友佳里",
+  "kana": "ユカリ",
+  "en": "Yukari",
+  "gym": null,
+  "dob": "1990.12.1"
+ },
+ {
+  "id": "721",
+  "name": "覇家斗",
+  "kana": "ハヤト",
+  "en": "Hayato",
+  "gym": "K-1ジム・ウルフ TEAM ASTER",
+  "dob": "1990.7.28"
+ },
+ {
+  "id": "722",
+  "name": "大岩 翔大",
+  "kana": "オオイワ ショウタ",
+  "en": "Oiwa Shota",
+  "gym": "湘南格闘クラブ",
+  "dob": "1994.8.5"
+ },
+ {
+  "id": "723",
+  "name": "ラッセル拳斗",
+  "kana": "ラッセルケント",
+  "en": "Russel Kento",
+  "gym": null,
+  "dob": "1993.11.25"
+ },
+ {
+  "id": "725",
+  "name": "ファワド・セディッキ",
+  "kana": "ファワド・セディッキ",
+  "en": "Fawad Seddiqi",
+  "gym": null,
+  "dob": "1996.1.9"
+ },
+ {
+  "id": "727",
+  "name": "ソン・スター",
+  "kana": "ソン・スター",
+  "en": "Son Star",
+  "gym": null,
+  "dob": "1991.1.7"
+ },
+ {
+  "id": "729",
+  "name": "桑田 裕太",
+  "kana": "クワタ ユウタ",
+  "en": "Kuwata Yuta",
+  "gym": null,
+  "dob": "1995.2.17"
+ },
+ {
+  "id": "731",
+  "name": "テキサス・アユミ",
+  "kana": "テキサス・アユミ",
+  "en": "Texas Ayumi",
+  "gym": null,
+  "dob": "1984.12.15"
+ },
+ {
+  "id": "732",
+  "name": "メロニー・ヘウヘス",
+  "kana": "メロニー・ヘウヘス",
+  "en": "Mellony Geugjes",
+  "gym": "Mike's Gym",
+  "dob": "1992.7.26"
+ },
+ {
+  "id": "734",
+  "name": "郡司 光",
+  "kana": "グンジ ヒカル",
+  "en": "Gunji Hikaru",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1999.5.13"
+ },
+ {
+  "id": "737",
+  "name": "桜井 悠成",
+  "kana": "サクライ ユウセイ",
+  "en": "Sakurai Yusei",
+  "gym": "POWER OF DREAM",
+  "dob": "1997.8.31"
+ },
+ {
+  "id": "738",
+  "name": "ウェイ・ルイ",
+  "kana": "ウェイ・ルイ",
+  "en": "Wei Rui",
+  "gym": null,
+  "dob": "1991.5.25"
+ },
+ {
+  "id": "739",
+  "name": "クリスチャン・スペトゥク",
+  "kana": "クリスチャン・スペトゥク",
+  "en": "Cristian Spetcu",
+  "gym": null,
+  "dob": "1989.10.6"
+ },
+ {
+  "id": "742",
+  "name": "ブリース・デルバール",
+  "kana": "ブリース・デルバール",
+  "en": "Brice Delval",
+  "gym": null,
+  "dob": "1999.7.15"
+ },
+ {
+  "id": "743",
+  "name": "ユネス・スマイリ",
+  "kana": "ユネス・スマイリ",
+  "en": "Younes Smaili",
+  "gym": null,
+  "dob": "1998.6.20"
+ },
+ {
+  "id": "745",
+  "name": "田畑 凌",
+  "kana": "タバタ リョウ",
+  "en": "Tabata Ryo",
+  "gym": "池袋BLUE DOG GYM",
+  "dob": "1996.7.24"
+ },
+ {
+  "id": "747",
+  "name": "メラニン・ケニー",
+  "kana": "メラニン・ケニー",
+  "en": "Melanin Kenny",
+  "gym": "バンゲリングベイ・スピリット",
+  "dob": "1982.12.29"
+ },
+ {
+  "id": "748",
+  "name": "鍋島 好一朗",
+  "kana": "ナベシマ コウイチロウ",
+  "en": "Nabeshima Koichiro",
+  "gym": null,
+  "dob": "1985.5.7"
+ },
+ {
+  "id": "749",
+  "name": "安達 元貴",
+  "kana": "アダチ ゲンキ",
+  "en": "Adachi Genki",
+  "gym": "RBアカデミー",
+  "dob": "1995.3.26"
+ },
+ {
+  "id": "750",
+  "name": "佐藤 啓樹",
+  "kana": "サトウ ヒロキ",
+  "en": "Sato Hiroki",
+  "gym": "K-1ジム目黒TEAM TIGER",
+  "dob": "1993.7.18"
+ },
+ {
+  "id": "752",
+  "name": "FUMIYA",
+  "kana": "フミヤ",
+  "en": "Fumiya",
+  "gym": "E x F",
+  "dob": "1994.5.9"
+ },
+ {
+  "id": "753",
+  "name": "篠原 広耀",
+  "kana": "シノハラ ヒロアキ",
+  "en": "Shinohara Hiroaki",
+  "gym": "優弥道場",
+  "dob": "1994.5.19"
+ },
+ {
+  "id": "755",
+  "name": "リャン・ボーユー",
+  "kana": "リャン・ボーユー",
+  "en": "Leung Pakyu",
+  "gym": null,
+  "dob": "1994.5.5"
+ },
+ {
+  "id": "756",
+  "name": "ビクトー・サラビア",
+  "kana": "ビクトー・サラビア",
+  "en": "Victor Saravia",
+  "gym": null,
+  "dob": "1993.7.28"
+ },
+ {
+  "id": "757",
+  "name": "菅藤 慶汰",
+  "kana": "カントウ ケイタ",
+  "en": "Kanto Keita",
+  "gym": null,
+  "dob": "1992.11.7"
+ },
+ {
+  "id": "760",
+  "name": "ソン・ダーチェン",
+  "kana": "ソン・ダーチェン",
+  "en": "Suen Tak Chuen",
+  "gym": null,
+  "dob": "1995.9.17"
+ },
+ {
+  "id": "761",
+  "name": "ジョーダン・ワトソン",
+  "kana": "ジョーダン・ワトソン",
+  "en": "Jordan Watson",
+  "gym": null,
+  "dob": "1987.12.4"
+ },
+ {
+  "id": "762",
+  "name": "チンギス・アラゾフ",
+  "kana": "チンギス・アラゾフ",
+  "en": "Chingiz Allazov",
+  "gym": null,
+  "dob": "1993.6.10"
+ },
+ {
+  "id": "763",
+  "name": "グレイス・スパイサー",
+  "kana": "グレイス・スパイサー",
+  "en": "Grace Spicer",
+  "gym": null,
+  "dob": "1992.9.19"
+ },
+ {
+  "id": "765",
+  "name": "OD・KEN",
+  "kana": "オーディーケン",
+  "en": "OD・KEN",
+  "gym": "ReBORN経堂",
+  "dob": "1991.6.17"
+ },
+ {
+  "id": "767",
+  "name": "森坂 陸",
+  "kana": "モリサカ リク",
+  "en": "Morisaka Riku",
+  "gym": "エスジム",
+  "dob": "1998.4.15"
+ },
+ {
+  "id": "769",
+  "name": "林 勇汰",
+  "kana": "ハヤシ ユウタ",
+  "en": "Hayashi Yuta",
+  "gym": "FLYSKY GYM",
+  "dob": "1998.7.23"
+ },
+ {
+  "id": "770",
+  "name": "翔太郎",
+  "kana": "ショウタロウ",
+  "en": "Shotaro",
+  "gym": null,
+  "dob": "1997.6.25"
+ },
+ {
+  "id": "771",
+  "name": "中澤 良介",
+  "kana": "ナカザワ リョウスケ",
+  "en": "Nakazawa Ryosuke",
+  "gym": "TRY HARD GYM",
+  "dob": "2001.3.23"
+ },
+ {
+  "id": "772",
+  "name": "泰輝",
+  "kana": "タイキ",
+  "en": "Taiki",
+  "gym": null,
+  "dob": "2001.2.11"
+ },
+ {
+  "id": "775",
+  "name": "竹内 悠希",
+  "kana": "タケウチ ユウキ",
+  "en": "Takeuchi Yuki",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1993.2.5"
+ },
+ {
+  "id": "776",
+  "name": "ブバイサ・パスハエフ",
+  "kana": "ブバイサ・パスハエフ",
+  "en": "Buvaisar Paskhaev",
+  "gym": null,
+  "dob": "1991.5.23"
+ },
+ {
+  "id": "777",
+  "name": "ウマル・パスハエフ",
+  "kana": "ウマル・パスハエフ",
+  "en": "Umar Paskhaev",
+  "gym": null,
+  "dob": "1988.8.31"
+ },
+ {
+  "id": "778",
+  "name": "コン・ロン",
+  "kana": "コン・ロン",
+  "en": "Kong Long",
+  "gym": null,
+  "dob": "1993.11.27"
+ },
+ {
+  "id": "779",
+  "name": "チュー・ジェンリャン",
+  "kana": "チュー・ジェンリャン",
+  "en": "Qiu Jianliang",
+  "gym": null,
+  "dob": "1990.2.20"
+ },
+ {
+  "id": "780",
+  "name": "ティエ・インホァ",
+  "kana": "ティエ・インホァ",
+  "en": "Tie Yinghua",
+  "gym": null,
+  "dob": "1993.1.9"
+ },
+ {
+  "id": "781",
+  "name": "ドン・ザーチー",
+  "kana": "ドン・ザーチー",
+  "en": "Deng Zeqi",
+  "gym": null,
+  "dob": "1991.10.15"
+ },
+ {
+  "id": "783",
+  "name": "ディエゴ・フレイタス",
+  "kana": "ディエゴ・フレイタス",
+  "en": "Diego Freitas",
+  "gym": null,
+  "dob": "1993.2.13"
+ },
+ {
+  "id": "785",
+  "name": "恭士郎",
+  "kana": "キョウシロウ",
+  "en": "Kyoshiro",
+  "gym": "士魂村上塾",
+  "dob": "1987.8.26"
+ },
+ {
+  "id": "786",
+  "name": "白岡 伸仁",
+  "kana": "シラオカ ノブヒト",
+  "en": "Shiraoka Nobuhito",
+  "gym": null,
+  "dob": "1989.12.9"
+ },
+ {
+  "id": "787",
+  "name": "橋本 亮汰",
+  "kana": "ハシモト リョウタ",
+  "en": "Hashimoto Ryota",
+  "gym": "NEXT LEVEL渋谷",
+  "dob": "1990.5.7"
+ },
+ {
+  "id": "788",
+  "name": "中野 滉太",
+  "kana": "ナカノ コウタ",
+  "en": "Nakano Kota",
+  "gym": "POWER OF DREAM",
+  "dob": "1999.1.27"
+ },
+ {
+  "id": "789",
+  "name": "櫻井 光",
+  "kana": "サクライ ヒカル",
+  "en": "Sakurai Hikaru",
+  "gym": "K-1 GYM横浜infinity",
+  "dob": "1987.4.16"
+ },
+ {
+  "id": "790",
+  "name": "ルーク・ウィーラン",
+  "kana": "ルーク・ウィーラン",
+  "en": "Luke Whelan",
+  "gym": null,
+  "dob": "1991.6.20"
+ },
+ {
+  "id": "794",
+  "name": "古谷野 一樹",
+  "kana": "コヤノ カズキ",
+  "en": "Koyano Kazuki",
+  "gym": "クロスポイント古河",
+  "dob": "1992.10.6"
+ },
+ {
+  "id": "796",
+  "name": "渡邊 俊樹",
+  "kana": "ワタナベ トシキ",
+  "en": "Watanabe Toshiki",
+  "gym": "優弥道場",
+  "dob": "1992.10.30"
+ },
+ {
+  "id": "798",
+  "name": "中條 弘之",
+  "kana": "チュウジョウ ヒロユキ",
+  "en": "Chujyo Hiroyuki",
+  "gym": "谷山ジム小田原",
+  "dob": "1989.6.8"
+ },
+ {
+  "id": "800",
+  "name": "エミリー・マシュー",
+  "kana": "エミリー・マシュー",
+  "en": "Emilie Machut",
+  "gym": "Team Lamouret",
+  "dob": "1997.1.13"
+ },
+ {
+  "id": "801",
+  "name": "秀亮",
+  "kana": "ヒデアキ",
+  "en": "Hideaki",
+  "gym": "Martial Arts Fighter team侍",
+  "dob": "1992.2.15"
+ },
+ {
+  "id": "802",
+  "name": "山田 泰士",
+  "kana": "ヤマダ タイシ",
+  "en": "Yamada Taishi",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1995.11.1"
+ },
+ {
+  "id": "803",
+  "name": "メルシック・バダザリアン",
+  "kana": "メルシック・バダザリアン",
+  "en": "Melsik Baghdasaryan",
+  "gym": "Muay Thai America Gym",
+  "dob": "1992.1.28"
+ },
+ {
+  "id": "804",
+  "name": "ハン・ウェンバオ",
+  "kana": "ハン・ウェンバオ",
+  "en": "Han Wenbao",
+  "gym": "中国刑天舞威クラブ/CFP",
+  "dob": "1997.5.10"
+ },
+ {
+  "id": "806",
+  "name": "足利 正和",
+  "kana": "アシカガ マサカズ",
+  "en": "Ashikaga Masakazu",
+  "gym": null,
+  "dob": "1993.10.20"
+ },
+ {
+  "id": "807",
+  "name": "ジェン・ジュンフェン",
+  "kana": "ジェン・ジュンフェン",
+  "en": "Zheng Junfeng",
+  "gym": "重慶鋒豹クラブ/CFP",
+  "dob": "1992.4.19"
+ },
+ {
+  "id": "808",
+  "name": "ヤニック・レーヌ",
+  "kana": "ヤニック・レーヌ",
+  "en": "Yannick Reine",
+  "gym": "Académie des Boxes de Villejuif",
+  "dob": "1987.6.12"
+ },
+ {
+  "id": "809",
+  "name": "COMACHI",
+  "kana": "COMACHI",
+  "en": "Comachi",
+  "gym": "MSJキックボクシングジム",
+  "dob": "1997.9.11"
+ },
+ {
+  "id": "811",
+  "name": "セルヒオ・サンチェス",
+  "kana": "",
+  "en": "Sergio Sanchez",
+  "gym": "Elite JT taldea",
+  "dob": "1986.8.18"
+ },
+ {
+  "id": "812",
+  "name": "スタウロス・エグザコスティディス",
+  "kana": "",
+  "en": "Stauros Exakoustidis",
+  "gym": "Nasos/Mejiro Gym",
+  "dob": "1987.7.3"
+ },
+ {
+  "id": "813",
+  "name": "田中STRIKE雄基",
+  "kana": "タナカストライクユウキ",
+  "en": "Tanaka Strike Yuki",
+  "gym": "BFA-SEED",
+  "dob": "1982.2.25"
+ },
+ {
+  "id": "815",
+  "name": "敦YAMATO",
+  "kana": "アツシヤマト",
+  "en": "Atsushi Yamato",
+  "gym": "大和ジム",
+  "dob": "1997.6.19"
+ },
+ {
+  "id": "816",
+  "name": "パコム・アッシ",
+  "kana": "パコム・アッシ",
+  "en": "Pacome Assi",
+  "gym": "Fantastik Armada Gym",
+  "dob": "1981.2.25"
+ },
+ {
+  "id": "818",
+  "name": "スーパーアンジ",
+  "kana": "スーパーアンジ",
+  "en": "Super Anji",
+  "gym": "KUNISNIPE旭",
+  "dob": "1999.10.28"
+ },
+ {
+  "id": "821",
+  "name": "鈴木“シャオリン”孝司",
+  "kana": "スズキ“シャオリン”コウジ",
+  "en": "Xiaoling",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1991.8.24"
+ },
+ {
+  "id": "822",
+  "name": "利川 和希",
+  "kana": "トシカワ カズキ",
+  "en": "Toshikawa Kazuki",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1996.9.2"
+ },
+ {
+  "id": "823",
+  "name": "エルソン・パトリック",
+  "kana": "エルソン・パトリック",
+  "en": "Elson Patrick",
+  "gym": null,
+  "dob": "1993.4.27"
+ },
+ {
+  "id": "825",
+  "name": "アントニオ・プラチバット",
+  "kana": "アントニオ・プラチバット",
+  "en": "Antonio Plazibat",
+  "gym": "Ameno Gym",
+  "dob": "1993.12.12"
+ },
+ {
+  "id": "830",
+  "name": "河野 一平",
+  "kana": "カワノ イッペイ",
+  "en": "Kawano Ippei",
+  "gym": "若獅子会館",
+  "dob": "1993.4.9"
+ },
+ {
+  "id": "833",
+  "name": "嶋田 将幸",
+  "kana": "シマダ マサユキ",
+  "en": "Shimada Masayuki",
+  "gym": "Stay Gold",
+  "dob": "1994.8.9"
+ },
+ {
+  "id": "834",
+  "name": "前田 勇人",
+  "kana": "マエダ ユウト",
+  "en": "Maeda Yuto",
+  "gym": "K-1ジム福岡チームbeginning",
+  "dob": "1991.6.9"
+ },
+ {
+  "id": "835",
+  "name": "原 翔大",
+  "kana": "ハラ ショウタ",
+  "en": "Hara Shota",
+  "gym": "極真拳武會さいたま中央",
+  "dob": "1990.10.2"
+ },
+ {
+  "id": "836",
+  "name": "大木 渉人",
+  "kana": "オオキ タカヒト",
+  "en": "Oki Takahito",
+  "gym": "クロスポイント大泉",
+  "dob": "1988.7.15"
+ },
+ {
+  "id": "838",
+  "name": "加藤 虎於奈",
+  "kana": "カトウ コオナ",
+  "en": "Kato Kona",
+  "gym": "TEAM TOP ZEROS/LARA TOKYO",
+  "dob": "1996.3.21"
+ },
+ {
+  "id": "839",
+  "name": "中村 広輝",
+  "kana": "ナカムラ ヒロキ",
+  "en": "Nakamura Hiroki",
+  "gym": "赤雲會",
+  "dob": "1985.9.20"
+ },
+ {
+  "id": "844",
+  "name": "林 完",
+  "kana": "ハヤシ タモツ",
+  "en": "Hayashi Tamotsu",
+  "gym": "FIGHT LAB JAPAN TOP TEAM",
+  "dob": "1986.1.31"
+ },
+ {
+  "id": "845",
+  "name": "C-ZUKA",
+  "kana": "シズカ",
+  "en": "Shizuka",
+  "gym": "T-GYM",
+  "dob": "1989.9.25"
+ },
+ {
+  "id": "847",
+  "name": "ポリナ・ペトゥホーヴァ",
+  "kana": "ポリナ・ペトゥホーヴァ",
+  "en": "Polina Petukhova",
+  "gym": "Kickboxing Association of Chuvash Republic",
+  "dob": "1999.7.2"
+ },
+ {
+  "id": "848",
+  "name": "松村 英明",
+  "kana": "マツムラ ヒデアキ",
+  "en": "Matsumura Hideaki",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1992.10.7"
+ },
+ {
+  "id": "849",
+  "name": "中嶋 志津麻",
+  "kana": "ナカシマ シヅマ",
+  "en": "Nakashima Shizuma",
+  "gym": null,
+  "dob": null
+ },
+ {
+  "id": "850",
+  "name": "谷中 蒼空",
+  "kana": "ヤナカ ソラ",
+  "en": "Yanaka Sora",
+  "gym": "ドージョー☆シャカリキ",
+  "dob": "1999.5.7"
+ },
+ {
+  "id": "852",
+  "name": "イッサム・チャディッド",
+  "kana": "イッサム・チャディッド",
+  "en": "Issam Chadid",
+  "gym": "RG Fighters/Mejiro Gym",
+  "dob": "1995.2.7"
+ },
+ {
+  "id": "854",
+  "name": "スアレック・ルークカムイ",
+  "kana": "スアレック・ルークカムイ",
+  "en": "Suarek Rukkukamui",
+  "gym": null,
+  "dob": "1986.3.16"
+ },
+ {
+  "id": "855",
+  "name": "ティムール・ナドロフ",
+  "kana": "ティムール・ナドロフ",
+  "en": "Timur Nadrov",
+  "gym": "Club Vympel",
+  "dob": "1995.1.3"
+ },
+ {
+  "id": "858",
+  "name": "デニス・ウォーシック",
+  "kana": "デニス・ウォーシック",
+  "en": "Dennis Wosik",
+  "gym": "Amrani Palace",
+  "dob": "1993.11.23"
+ },
+ {
+  "id": "859",
+  "name": "ホルヘ・バレラ",
+  "kana": "ホルヘ・バレラ",
+  "en": "Jorge Varela",
+  "gym": "Team Jesus Cabello",
+  "dob": "1994.7.7"
+ },
+ {
+  "id": "860",
+  "name": "シルビュー・ヴィテズ",
+  "kana": "シルビュー・ヴィテズ",
+  "en": "Silviu Vitez",
+  "gym": "Voodoo Gym Madrid",
+  "dob": "1995.2.7"
+ },
+ {
+  "id": "862",
+  "name": "キム・タウンセンド",
+  "kana": "キム・タウンセンド",
+  "en": "Kim Townsend",
+  "gym": "Double Dose Australia",
+  "dob": "1988.8.25"
+ },
+ {
+  "id": "864",
+  "name": "ブラックドラゴン",
+  "kana": "ブラックドラゴン",
+  "en": "Black Dragon",
+  "gym": "Blackdragon/Tiger Muay Thai",
+  "dob": "1987.5.26"
+ },
+ {
+  "id": "865",
+  "name": "加藤 久輝",
+  "kana": "カトウ ヒサキ",
+  "en": "Kato Hisaki",
+  "gym": "West A / ALIVE",
+  "dob": "1982.9.17"
+ },
+ {
+  "id": "868",
+  "name": "ヴィンセント・フォシアーニ",
+  "kana": "ヴィンセント・フォシアーニ",
+  "en": "Vincent Foschiani",
+  "gym": "Bang Rajan Muay Thai",
+  "dob": "1988.12.30"
+ },
+ {
+  "id": "870",
+  "name": "ワン・ジュンユー",
+  "kana": "ワン・ジュンユー",
+  "en": "Wang Junyu",
+  "gym": "星武創新ジム/CFP",
+  "dob": "1988.12.8"
+ },
+ {
+  "id": "871",
+  "name": "ジャオ・チョンヤン",
+  "kana": "ジャオ・チョンヤン",
+  "en": "Zhao Chongyang",
+  "gym": "一龍奥宇ジム/CFP",
+  "dob": "1997.6.17"
+ },
+ {
+  "id": "872",
+  "name": "モン・グォドン",
+  "kana": "モン・グォドン",
+  "en": "Meng Guodong",
+  "gym": "陝西問心ジム/CFP",
+  "dob": "1994.1.10"
+ },
+ {
+  "id": "873",
+  "name": "ワン・ジーウェイ",
+  "kana": "ワン・ジーウェイ",
+  "en": "Wang Zhiwei",
+  "gym": "遼寧創新ジム/CFP",
+  "dob": "1995.7.6"
+ },
+ {
+  "id": "874",
+  "name": "シュエ・シェンジェン",
+  "kana": "シュエ・シェンジェン",
+  "en": "Xue Shenzheng",
+  "gym": "一龍奥宇ジム/CFP",
+  "dob": "1997.11.26"
+ },
+ {
+  "id": "877",
+  "name": "久保田 悠悟",
+  "kana": "クボタ ユウゴ",
+  "en": "Kubota Yugo",
+  "gym": "A-BLAZE×KICKGYM",
+  "dob": "1980.12.8"
+ },
+ {
+  "id": "880",
+  "name": "ジン・イン",
+  "kana": "",
+  "en": "Jin Ying",
+  "gym": "鄭州順遠ジム/CFP",
+  "dob": "1997.8.14"
+ },
+ {
+  "id": "881",
+  "name": "高木 健太",
+  "kana": "タカギ ケンタ",
+  "en": "Takagi Kenta",
+  "gym": "リバーサルジム川口REDIPS",
+  "dob": "1986.5.11"
+ },
+ {
+  "id": "882",
+  "name": "フー・ガオフォン",
+  "kana": "フー・ガオフォン",
+  "en": "Fu Gaofen",
+  "gym": "明輝ジム/CFP",
+  "dob": "1989.11.16"
+ },
+ {
+  "id": "883",
+  "name": "ジョージ",
+  "kana": "ジョージ",
+  "en": "Joji",
+  "gym": null,
+  "dob": "1986.3.4"
+ },
+ {
+  "id": "885",
+  "name": "リー・スースー",
+  "kana": "リー・スースー",
+  "en": "Li Sisi",
+  "gym": "江蘇太倉亭賓体育ジム/CFP",
+  "dob": "1997.1.25"
+ },
+ {
+  "id": "886",
+  "name": "ツイ・ジェンホイ",
+  "kana": "ツイ・ジェンホイ",
+  "en": "Cui Jianhui",
+  "gym": "福建闘士搏撃クラブ/CFP",
+  "dob": "1996.9.20"
+ },
+ {
+  "id": "887",
+  "name": "竹腰 一麻",
+  "kana": "タケコシ カズマ",
+  "en": "Takekoshi Kazuma",
+  "gym": "Club TOSHI",
+  "dob": "1990.7.30"
+ },
+ {
+  "id": "888",
+  "name": "チャン・リー",
+  "kana": "チャン・リー",
+  "en": "Chan Lee",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1991.11.23"
+ },
+ {
+  "id": "890",
+  "name": "聖",
+  "kana": "サトル",
+  "en": "Satoru",
+  "gym": null,
+  "dob": "1989.4.22"
+ },
+ {
+  "id": "891",
+  "name": "ISSEI",
+  "kana": "イッセイ",
+  "en": "Issei",
+  "gym": "マッハキックボクシングジムプラス",
+  "dob": "1993.9.14"
+ },
+ {
+  "id": "893",
+  "name": "アクラム・ハミディ",
+  "kana": "",
+  "en": "Akram Hamidi",
+  "gym": "Team Valente",
+  "dob": "1999.1.4"
+ },
+ {
+  "id": "894",
+  "name": "俊雄",
+  "kana": "トシオ",
+  "en": "Toshio",
+  "gym": "PAL-GYM",
+  "dob": "1989.10.24"
+ },
+ {
+  "id": "895",
+  "name": "安東 雅喬",
+  "kana": "アンドウ マサタカ",
+  "en": "Ando Masataka",
+  "gym": "湘南格闘クラブ",
+  "dob": "1987.10.23"
+ },
+ {
+  "id": "896",
+  "name": "リュウ・シーベイ",
+  "kana": "リュウ・シーベイ",
+  "en": "Liu Shibei",
+  "gym": "重慶市虎賁搏撃クラブ/CFP",
+  "dob": "2000.5.9"
+ },
+ {
+  "id": "897",
+  "name": "ヤン・ハオドン",
+  "kana": "ヤン・ハオドン",
+  "en": "Yang Haodong",
+  "gym": "福建闘⼠搏撃クラブ/CFP",
+  "dob": "1996.12.26"
+ },
+ {
+  "id": "901",
+  "name": "ブライアン・ミクグラス",
+  "kana": "ブライアン・ミクグラス",
+  "en": "Brian Mcgrath",
+  "gym": "上州松井ジム",
+  "dob": "1985.7.5"
+ },
+ {
+  "id": "902",
+  "name": "アンドレ・グロース",
+  "kana": "アンドレ・グロース",
+  "en": "Aundre Groce",
+  "gym": "Firewalker Gym",
+  "dob": "1988.6.25"
+ },
+ {
+  "id": "904",
+  "name": "山口 将",
+  "kana": "ヤマグチ ショウ",
+  "en": "Yamaguchi Sho",
+  "gym": "STRIKEs GYM/3POUND",
+  "dob": "1995.2.18"
+ },
+ {
+  "id": "907",
+  "name": "ダニエル・ピュータス",
+  "kana": "ダニエル・ピュータス",
+  "en": "Daniel Puertas",
+  "gym": "Ultimatum Fight School",
+  "dob": "1992.12.1"
+ },
+ {
+  "id": "909",
+  "name": "鮫島 博人",
+  "kana": "サメシマ ヒロト",
+  "en": "Sameshima Hiroto",
+  "gym": "WSRフェアテックス荒川",
+  "dob": "1998.5.21"
+ },
+ {
+  "id": "910",
+  "name": "晃弘",
+  "kana": "アキヒロ",
+  "en": "Akihiro",
+  "gym": "K-1 GYM横浜infinity",
+  "dob": "2000.4.4"
+ },
+ {
+  "id": "911",
+  "name": "ブバッカ・エル・バクーリ",
+  "kana": "",
+  "en": "Boubaker El Bakouri",
+  "gym": "Siam Gym",
+  "dob": "1994.4.12"
+ },
+ {
+  "id": "912",
+  "name": "サム・ヒル",
+  "kana": "サム・ヒル",
+  "en": "Sam Hill",
+  "gym": "City Kickboxing NZ",
+  "dob": "1991.7.22"
+ },
+ {
+  "id": "914",
+  "name": "渡部 瞬弥",
+  "kana": "ワタナベ シュンヤ",
+  "en": "Watanabe Shunya",
+  "gym": "エスジム",
+  "dob": "1994.11.14"
+ },
+ {
+  "id": "915",
+  "name": "萩原 秀斗",
+  "kana": "ハギワラ シュウト",
+  "en": "Hagiwara Shuto",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1994.12.12"
+ },
+ {
+  "id": "916",
+  "name": "ワン・ジンロン",
+  "kana": "ワン・ジンロン",
+  "en": "Wang Chinglong",
+  "gym": "IRON Boxing Gym",
+  "dob": "2000.5.14"
+ },
+ {
+  "id": "917",
+  "name": "アレックス・リーバス",
+  "kana": "アレックス・リーバス",
+  "en": "Alex Rivas",
+  "gym": "Team Jesus Cabello",
+  "dob": "2001.2.12"
+ },
+ {
+  "id": "918",
+  "name": "ジョナサン・トゥフ",
+  "kana": "",
+  "en": "Jonathan Tuhu",
+  "gym": "Phuket Top Team Gym",
+  "dob": "1992.12.24"
+ },
+ {
+  "id": "919",
+  "name": "ヨセフィン・ノットソン",
+  "kana": "ヨセフィン・ノットソン",
+  "en": "Josefine Knutsson",
+  "gym": "Allstars training center",
+  "dob": "1996.1.16"
+ },
+ {
+  "id": "923",
+  "name": "幹・ウィラサクレック",
+  "kana": "モトキ・ウィラサクレック",
+  "en": "Motoki Weerasakreck",
+  "gym": "WSRフェアテックス札幌",
+  "dob": "1999.2.6"
+ },
+ {
+  "id": "924",
+  "name": "SATORU成合",
+  "kana": "サトル ナリアイ",
+  "en": "Satoru Nariai",
+  "gym": "RAOU JAPAN",
+  "dob": "1989.1.19"
+ },
+ {
+  "id": "926",
+  "name": "吉田 英司",
+  "kana": "ヨシダ エイジ",
+  "en": "Yoshida Eiji",
+  "gym": "クロスポイント吉祥寺",
+  "dob": "1991.9.19"
+ },
+ {
+  "id": "927",
+  "name": "ニコラス・ギャフィー",
+  "kana": "ニコラス・ギャフィー",
+  "en": "Nicolas Gaffie",
+  "gym": "Marbella fight school",
+  "dob": "1996.3.21"
+ },
+ {
+  "id": "928",
+  "name": "インディゴ・ボイド",
+  "kana": "インディゴ・ボイド",
+  "en": "Indigo Boyd",
+  "gym": "Beast Fight Club",
+  "dob": "1993.9.18"
+ },
+ {
+  "id": "929",
+  "name": "ヨーブアデーン・フェアテックス",
+  "kana": "ヨーブアデーン・フェアテックス",
+  "en": "Yodbuadaeng Fairtex",
+  "gym": "フェアテックス",
+  "dob": "1995.8.11"
+ },
+ {
+  "id": "930",
+  "name": "ショーン・クランシー",
+  "kana": "ショーン・クランシー",
+  "en": "Sean Clancy",
+  "gym": "Siam Warriors",
+  "dob": "1988.12.30"
+ },
+ {
+  "id": "932",
+  "name": "冨沢 貴人",
+  "kana": "トミサワ タカヒト",
+  "en": "Tomisawa Takahito",
+  "gym": "Team KROSS×OVER/OOTA DOJO",
+  "dob": "1987.12.19"
+ },
+ {
+  "id": "935",
+  "name": "皓太",
+  "kana": "コータ",
+  "en": "Kota",
+  "gym": "K-1ジム川口TEAM SIRIUS",
+  "dob": "2001.1.9"
+ },
+ {
+  "id": "937",
+  "name": "栗秋 祥梧",
+  "kana": "クリアキ ショウゴ",
+  "en": "Kuriaki Shogo",
+  "gym": "クロスポイント吉祥寺",
+  "dob": "1995.4.23"
+ },
+ {
+  "id": "939",
+  "name": "アリ・ザリンファー",
+  "kana": "アリ・ザリンファー",
+  "en": "Ali Zarinfar",
+  "gym": "WSRフェアテックス・イラン",
+  "dob": "1992.4.3"
+ },
+ {
+  "id": "944",
+  "name": "勝輝",
+  "kana": "マサキ",
+  "en": "Masaki",
+  "gym": "K-1ジム・ウルフ TEAM ASTER",
+  "dob": "1999.8.8"
+ },
+ {
+  "id": "945",
+  "name": "菅原 美優",
+  "kana": "スガワラ ミユウ",
+  "en": "Sugawara Miyuu",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1999.11.22"
+ },
+ {
+  "id": "946",
+  "name": "聖也",
+  "kana": "セイヤ",
+  "en": "Seiya",
+  "gym": "WSRフェアテックス西川口",
+  "dob": "1989.3.7"
+ },
+ {
+  "id": "947",
+  "name": "川上 浩平",
+  "kana": "カワカミ コウヘイ",
+  "en": "Kawakami Kohei",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1992.7.13"
+ },
+ {
+  "id": "950",
+  "name": "ヨーキッサダー・ユッタチョンブリー",
+  "kana": "ヨーキッサダー・ユッタチョンブリー",
+  "en": "Yodkitsada Yuthachonburi",
+  "gym": "ユッタチョンブリージム",
+  "dob": "1991.7.4"
+ },
+ {
+  "id": "951",
+  "name": "クリス・ブラッドフォード",
+  "kana": "クリス・ブラッドフォード",
+  "en": "Chris Bradford",
+  "gym": "TopTier Muay Thai/Team Greco",
+  "dob": "1977.3.8"
+ },
+ {
+  "id": "952",
+  "name": "松花 征也",
+  "kana": "マツハナ マサヤ",
+  "en": "Matsuhana Masaya",
+  "gym": "リバーサルジム横浜グランドスラム",
+  "dob": "1993.10.13"
+ },
+ {
+  "id": "953",
+  "name": "ヤン・サイコ",
+  "kana": "ヤン・サイコ",
+  "en": "Jan Szajko",
+  "gym": "Kickboxtempel",
+  "dob": "1995.12.2"
+ },
+ {
+  "id": "954",
+  "name": "多久田 和馬",
+  "kana": "タクダ カズマ",
+  "en": "Takuda Kazuma",
+  "gym": "K-1 GYM横浜infinity",
+  "dob": "2002.10.21"
+ },
+ {
+  "id": "956",
+  "name": "延谷 美智子",
+  "kana": "ノブタニ ミチコ",
+  "en": "Nobutani Michiko",
+  "gym": "K-1ジム川口TEAM SIRIUS",
+  "dob": "1989.10.24"
+ },
+ {
+  "id": "957",
+  "name": "サンドロ・マーティン",
+  "kana": "サンドロ・マーティン",
+  "en": "Sandro Martin",
+  "gym": "THAIDRAGON CÁDIZ",
+  "dob": "1995.11.20"
+ },
+ {
+  "id": "958",
+  "name": "小島 大輝",
+  "kana": "コジマ ダイキ",
+  "en": "Kojima Daiki",
+  "gym": "一信会館総本部",
+  "dob": "1993.8.9"
+ },
+ {
+  "id": "960",
+  "name": "大泉 翔",
+  "kana": "オオイズミ ショウ",
+  "en": "Oizumi Sho",
+  "gym": null,
+  "dob": "1991.4.4"
+ },
+ {
+  "id": "962",
+  "name": "山本 真一郎",
+  "kana": "ヤマモト シンイチロウ",
+  "en": "Yamamoto Shinichiro",
+  "gym": "teamYAMATO",
+  "dob": "1998.6.9"
+ },
+ {
+  "id": "963",
+  "name": "鈴輝 勇太",
+  "kana": "スズキ ユウタ",
+  "en": "Suzuki Yuta",
+  "gym": "team ALL-WIN",
+  "dob": "1997.6.1"
+ },
+ {
+  "id": "964",
+  "name": "ペッパンガン・モー.ラタナバンディット",
+  "kana": "ペッパンガン・モー.ラタナバンディット",
+  "en": "Phetphangan Mor.Rattanabandit",
+  "gym": "T-DED99",
+  "dob": "1998.8.26"
+ },
+ {
+  "id": "966",
+  "name": "サデック・ハシミ",
+  "kana": "サデック・ハシミ",
+  "en": "Sadegh Hashemi",
+  "gym": "J-mat academy",
+  "dob": "1991.11.3"
+ },
+ {
+  "id": "967",
+  "name": "フォー・シャオロン",
+  "kana": "フォー・シャオロン",
+  "en": "Huo Xiaolong",
+  "gym": "中国刑天舞威クラブ/CFP",
+  "dob": "1995.5.24"
+ },
+ {
+  "id": "968",
+  "name": "知良",
+  "kana": "カズヨシ",
+  "en": "Kazuyoshi",
+  "gym": "RBアカデミー",
+  "dob": "1993.12.17"
+ },
+ {
+  "id": "969",
+  "name": "内田 道隆",
+  "kana": "ウチダ ミチタカ",
+  "en": "Uchida Michitaka",
+  "gym": "K-1 GYM横浜infinity",
+  "dob": "1996.1.20"
+ },
+ {
+  "id": "970",
+  "name": "EITO",
+  "kana": "エイト",
+  "en": "Eito",
+  "gym": null,
+  "dob": "1995.11.13"
+ },
+ {
+  "id": "974",
+  "name": "クルーズ・ブリッグス",
+  "kana": "クルーズ・ブリッグス",
+  "en": "Cruz Briggs",
+  "gym": "8limbs bondi",
+  "dob": "1996.9.19"
+ },
+ {
+  "id": "976",
+  "name": "ドン・ウェンフェイ",
+  "kana": "ドン・ウェンフェイ",
+  "en": "Dong Wenfei",
+  "gym": "項城浩爽武校/CFP",
+  "dob": "1991.2.15"
+ },
+ {
+  "id": "977",
+  "name": "ジャン・チュンユー",
+  "kana": "ジャン・チュンユー",
+  "en": "Zhang Chunyu",
+  "gym": "盛利人合ファイトクラブ/CFP",
+  "dob": "1993.7.13"
+ },
+ {
+  "id": "978",
+  "name": "藤田 義文",
+  "kana": "フジタ ヨシフミ",
+  "en": "Fujita Yoshifumi",
+  "gym": "優弥道場",
+  "dob": "1986.12.23"
+ },
+ {
+  "id": "979",
+  "name": "志村 力輝",
+  "kana": "シムラ リキ",
+  "en": "Shimura Riki",
+  "gym": "兼清流総本部",
+  "dob": "1998.6.30"
+ },
+ {
+  "id": "980",
+  "name": "カルロ・ドンヤシュフィリ",
+  "kana": "カルロ・ドンヤシュフィリ",
+  "en": "Karlo Doinjashvili",
+  "gym": "Mejiro GYM/Gladiator Sport Management",
+  "dob": "1989.6.29"
+ },
+ {
+  "id": "982",
+  "name": "デニス・デミルカプ",
+  "kana": "デニス・デミルカプ",
+  "en": "Deniz Demirkapu",
+  "gym": "Elite Training Center/Team Elite",
+  "dob": "2000.6.23"
+ },
+ {
+  "id": "985",
+  "name": "ジュー・シュアイ",
+  "kana": "ジュー・シュアイ",
+  "en": "Zhu Shuai",
+  "gym": "遼寧創新ジム/CFP",
+  "dob": "1995.8.10"
+ },
+ {
+  "id": "987",
+  "name": "清水 卓馬",
+  "kana": "シミズ タクマ",
+  "en": "Shimizu Takuma",
+  "gym": "K-1ジム川口TEAM SIRIUS",
+  "dob": "1996.11.14"
+ },
+ {
+  "id": "988",
+  "name": "寧仁太・アリ",
+  "kana": "アニンタ アリ",
+  "en": "Ayinta Ali",
+  "gym": null,
+  "dob": "1999.3.29"
+ },
+ {
+  "id": "992",
+  "name": "北村 夏輝",
+  "kana": "キタムラ ナツキ",
+  "en": "Kitamura Natsuki",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "1999.6.10"
+ },
+ {
+  "id": "993",
+  "name": "此尾 昂希",
+  "kana": "コノオ コウキ",
+  "en": "Konoo Koki",
+  "gym": null,
+  "dob": "1994.9.18"
+ },
+ {
+  "id": "994",
+  "name": "榊原 達也",
+  "kana": "サカキバラ タツヤ",
+  "en": "Sakakibara Tatsuya",
+  "gym": "WSRフェアテックス西川口",
+  "dob": "1997.3.12"
+ },
+ {
+  "id": "997",
+  "name": "サミ・ラミリ",
+  "kana": "サミ・ラミリ",
+  "en": "Sami Lamiri",
+  "gym": "Mejiro Gym Amsterdam",
+  "dob": "1995.9.16"
+ },
+ {
+  "id": "999",
+  "name": "鈴木 力也",
+  "kana": "スズキ リキヤ",
+  "en": "Suzuki Rikiya",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2001.2.4"
+ },
+ {
+  "id": "1000",
+  "name": "アントニオ・ゴメス",
+  "kana": "アントニオ・ゴメス",
+  "en": "Antnio Gomez",
+  "gym": "MTK Marbella",
+  "dob": "1989.6.29"
+ },
+ {
+  "id": "1001",
+  "name": "周藤 亮太",
+  "kana": "ストウ リョウタ",
+  "en": "Suto Ryota",
+  "gym": "Fighting Kairos",
+  "dob": "1993.4.24"
+ },
+ {
+  "id": "1004",
+  "name": "八木 正樹",
+  "kana": "ヤギ マサキ",
+  "en": "Yagi Masaki",
+  "gym": "WSRフェアテックス三ノ輪",
+  "dob": "1991.7.30"
+ },
+ {
+  "id": "1006",
+  "name": "KOUMA",
+  "kana": "コウマ",
+  "en": "Kouma",
+  "gym": "WSRフェアテックス荒川",
+  "dob": "1984.12.17"
+ },
+ {
+  "id": "1007",
+  "name": "アーサー・メイヤー",
+  "kana": "アーサー・メイヤー",
+  "en": "Arthur Meyer",
+  "gym": "Singpatong Phuket",
+  "dob": "1990.12.22"
+ },
+ {
+  "id": "1009",
+  "name": "ブランドン・スぺイン",
+  "kana": "ブランドン・スぺイン",
+  "en": "Brandon Spain",
+  "gym": "Spain’s Muay Thai Gym",
+  "dob": "1999.9.7"
+ },
+ {
+  "id": "1010",
+  "name": "南雲 大輝",
+  "kana": "ナグモ ダイキ",
+  "en": "Nagumo Daiki",
+  "gym": "スタースポーツクラブ",
+  "dob": "1994.3.28"
+ },
+ {
+  "id": "1012",
+  "name": "マーク・バード・ジェームス",
+  "kana": "マーク・バード・ジェームス",
+  "en": "Mark Bird James",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1990.4.6"
+ },
+ {
+  "id": "1013",
+  "name": "サイド・アマダ",
+  "kana": "サイド・アマダ",
+  "en": "Said Ahamada",
+  "gym": "Team Mhiyaoui",
+  "dob": "1990.1.5"
+ },
+ {
+  "id": "1014",
+  "name": "高橋 享祐",
+  "kana": "タカハシ キョウスケ",
+  "en": "Takahashi Kyosuke",
+  "gym": "戦-IKUSA-GYM",
+  "dob": "1995.4.14"
+ },
+ {
+  "id": "1017",
+  "name": "吉岡 ビギン",
+  "kana": "ヨシオカ ビギン",
+  "en": "Yoshioka Begin",
+  "gym": "team ALL-WIN / 9+ nine plus lab.",
+  "dob": "2000.6.12"
+ },
+ {
+  "id": "1018",
+  "name": "山脇 飛翼",
+  "kana": "ヤマワキ ツバサ",
+  "en": "Yamawaki Tsubasa",
+  "gym": "FORWARD GYM",
+  "dob": "2001.10.31"
+ },
+ {
+  "id": "1020",
+  "name": "吉川 諒",
+  "kana": "キッカワ リョウ",
+  "en": "Kikkawa Ryo",
+  "gym": "VAINQUEUR GYM",
+  "dob": "1998.1.27"
+ },
+ {
+  "id": "1023",
+  "name": "クリスティーナ・モラレス",
+  "kana": "クリスティーナ・モラレス",
+  "en": "Cristina Morales",
+  "gym": "Team Jesus Cabello",
+  "dob": "1993.7.27"
+ },
+ {
+  "id": "1024",
+  "name": "ハッサン・トイ",
+  "kana": "",
+  "en": "Hasan Toy",
+  "gym": "Team Toy",
+  "dob": "1994.4.18"
+ },
+ {
+  "id": "1025",
+  "name": "スリヤンレック・オーボートー.ガムピー",
+  "kana": "スリヤンレック・オーボートー.ガムピー",
+  "en": "Suriyanlek OBT.Kamphee",
+  "gym": "オーボートー.ガムピージム",
+  "dob": "1996.8.23"
+ },
+ {
+  "id": "1026",
+  "name": "ジョーダン・バルディノッチ",
+  "kana": "ジョーダン・バルディノッチ",
+  "en": "Jordan Valdinocci",
+  "gym": "fight house pesaro / team fight power",
+  "dob": "1992.8.10"
+ },
+ {
+  "id": "1028",
+  "name": "クォン・ギソプ",
+  "kana": "クォン・ギソプ",
+  "en": "Kwon Gi Seop",
+  "gym": "IB GYM",
+  "dob": "2000.11.28"
+ },
+ {
+  "id": "1029",
+  "name": "川原 誠也",
+  "kana": "カワハラ セイヤ",
+  "en": "Kawahara Seiya",
+  "gym": "パンクラスイズム横浜",
+  "dob": "1988.1.18"
+ },
+ {
+  "id": "1033",
+  "name": "祐嘉",
+  "kana": "ユウガ",
+  "en": "Yuga",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1996.11.11"
+ },
+ {
+  "id": "1035",
+  "name": "ヤン・ジェグン",
+  "kana": "ヤン・ジェグン",
+  "en": "Yang Jae Geun",
+  "gym": "GMTジム",
+  "dob": "1997.4.8"
+ },
+ {
+  "id": "1036",
+  "name": "マーセル・アデイエミ",
+  "kana": "マーセル・アデイエミ",
+  "en": "Marcel Adeyemi",
+  "gym": "Team Tieu",
+  "dob": "1996.5.29"
+ },
+ {
+  "id": "1037",
+  "name": "キム・ホソン",
+  "kana": "キム・ホソン",
+  "en": "Kim Ho Sung",
+  "gym": "Seongnam Seolbong/KTK",
+  "dob": "1997.6.20"
+ },
+ {
+  "id": "1039",
+  "name": "鈴木 一晴",
+  "kana": "スズキ イッセイ",
+  "en": "Suzuki Issei",
+  "gym": "キックボクシングアカデミーROOTS",
+  "dob": "1999.12.2"
+ },
+ {
+  "id": "1041",
+  "name": "中平 卓見",
+  "kana": "ナカヒラ タクミ",
+  "en": "Nakahira Takumi",
+  "gym": "北眞舘",
+  "dob": "1979.6.13"
+ },
+ {
+  "id": "1044",
+  "name": "大空",
+  "kana": "ツバサ",
+  "en": "Tsubasa",
+  "gym": "KINGCRAFT",
+  "dob": "2000.12.15"
+ },
+ {
+  "id": "1045",
+  "name": "アダム・ブアフフ",
+  "kana": "",
+  "en": "Adam Bouarourou",
+  "gym": "Club Royal Rabat",
+  "dob": "1990.11.6"
+ },
+ {
+  "id": "1046",
+  "name": "エダー・ロープス",
+  "kana": "エダー・ロープス",
+  "en": "Eder Lopes",
+  "gym": "Jazzy Fight Club K.O Team",
+  "dob": "1997.4.20"
+ },
+ {
+  "id": "1047",
+  "name": "ミラン・ペイルス",
+  "kana": "ミラン・ペイルス",
+  "en": "Milan Pales",
+  "gym": "Diamond gym Zilina",
+  "dob": "1992.3.1"
+ },
+ {
+  "id": "1048",
+  "name": "ニコラス・ラーセン",
+  "kana": "ニコラス・ラーセン",
+  "en": "Niclas Larsen",
+  "gym": "Team Larsen",
+  "dob": "1989.9.15"
+ },
+ {
+  "id": "1050",
+  "name": "グロリア・ペリトーレ",
+  "kana": "グロリア・ペリトーレ",
+  "en": "Gloria Peritore",
+  "gym": "Raini Clan",
+  "dob": "1988.11.29"
+ },
+ {
+  "id": "1052",
+  "name": "谷田 美穂",
+  "kana": "ヤタ ミホ",
+  "en": "Yata Miho",
+  "gym": "K-1ジム大宮チームレオン",
+  "dob": "1986.2.5"
+ },
+ {
+  "id": "1058",
+  "name": "キム・フォーク",
+  "kana": "キム・フォーク",
+  "en": "Kim Falk",
+  "gym": "Drakstadens Kampsport",
+  "dob": "1992.3.4"
+ },
+ {
+  "id": "1059",
+  "name": "ダビド・メヒア",
+  "kana": "ダビド・メヒア",
+  "en": "David Mejia",
+  "gym": "Gimnasio Formas",
+  "dob": "1995.10.10"
+ },
+ {
+  "id": "1062",
+  "name": "永井 卓海",
+  "kana": "ナガイ タクミ",
+  "en": "Nagai Takumi",
+  "gym": "team ALL-WIN",
+  "dob": "1998.3.22"
+ },
+ {
+  "id": "1064",
+  "name": "大関 敬真",
+  "kana": "オオゼキ ケイマ",
+  "en": "Ozeki Keima",
+  "gym": "POWER OF DREAM",
+  "dob": "1998.6.14"
+ },
+ {
+  "id": "1068",
+  "name": "玉川 らいと",
+  "kana": "タマガワ ライト",
+  "en": "Tamagawa Raito",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2002.9.11"
+ },
+ {
+  "id": "1069",
+  "name": "西林 翔平",
+  "kana": "ニシバヤシ ショウヘイ",
+  "en": "Nishibayashi Shohei",
+  "gym": "K-1ジム福岡チームbeginning",
+  "dob": "1995.7.3"
+ },
+ {
+  "id": "1070",
+  "name": "ペッダム・ペットギャットペット",
+  "kana": "",
+  "en": "Petchdam Petchkiatpetch",
+  "gym": "ペットギャットペットジム",
+  "dob": "1995.8.16"
+ },
+ {
+  "id": "1071",
+  "name": "アワターン・トー.モースィー",
+  "kana": "アワターン・トー.モースィー",
+  "en": "Avatar Tor.Mosri",
+  "gym": "トー.モースィージム",
+  "dob": "1993.9.27"
+ },
+ {
+  "id": "1073",
+  "name": "三井 大揮",
+  "kana": "ミツイ ヒロキ",
+  "en": "Mitsui Hiroki",
+  "gym": "WIZARDキックボクシングジム",
+  "dob": "1991.1.24"
+ },
+ {
+  "id": "1075",
+  "name": "桑名 大輔",
+  "kana": "クワナ ダイスケ",
+  "en": "Kuwana Daisuke",
+  "gym": "FKC",
+  "dob": "1981.10.3"
+ },
+ {
+  "id": "1076",
+  "name": "高橋 龍太郎",
+  "kana": "タカハシ リュウタロウ",
+  "en": "Takahashi Ryutaro",
+  "gym": "マッハ道場",
+  "dob": "1992.11.30"
+ },
+ {
+  "id": "1077",
+  "name": "真美",
+  "kana": "マサミ",
+  "en": "Masami",
+  "gym": "Team ImmortaL",
+  "dob": "1990.2.19"
+ },
+ {
+  "id": "1081",
+  "name": "大石 和希",
+  "kana": "オオイシ カズキ",
+  "en": "Oishi Kazuki",
+  "gym": "K-1ジム三軒茶屋シルバーウルフ",
+  "dob": "2000.1.25"
+ },
+ {
+  "id": "1082",
+  "name": "新井 優騎",
+  "kana": "アライ ユウキ",
+  "en": "Arai Yuki",
+  "gym": "Y’ZD GYM",
+  "dob": "1999.7.20"
+ },
+ {
+  "id": "1084",
+  "name": "ラーシーシン・ウィラサクレック",
+  "kana": "ラーシーシン・ウィラサクレック",
+  "en": "Raseasing Weerasakreck",
+  "gym": "ウィラサクレック・フェアテックスジム",
+  "dob": "1997.9.10"
+ },
+ {
+  "id": "1085",
+  "name": "MIKE JOE",
+  "kana": "マイク・ジョー",
+  "en": "MIKE JOE",
+  "gym": "BATTLE FIELD/TEAM J.S.A",
+  "dob": "1987.6.3"
+ },
+ {
+  "id": "1086",
+  "name": "神田 賢吾",
+  "kana": "カンダ ケンゴ",
+  "en": "Kanda Kengo",
+  "gym": null,
+  "dob": "1997.6.7"
+ },
+ {
+  "id": "1089",
+  "name": "羽鳥 仁",
+  "kana": "ハトリ ジン",
+  "en": "Hatori Jin",
+  "gym": "TEAM BIRD",
+  "dob": "1999.10.12"
+ },
+ {
+  "id": "1090",
+  "name": "田勢 ジャイル",
+  "kana": "タセ ジャイル",
+  "en": "Tase Jairu",
+  "gym": null,
+  "dob": "2000.6.24"
+ },
+ {
+  "id": "1094",
+  "name": "井上 咲也",
+  "kana": "イノウエ サキヤ",
+  "en": "Inoue Sakiya",
+  "gym": "K-1ジム大宮チームレオン",
+  "dob": "1999.1.8"
+ },
+ {
+  "id": "1096",
+  "name": "壬生狼 一輝",
+  "kana": "ミブロ カズキ",
+  "en": "Miburo Kazuki",
+  "gym": "力道場静岡",
+  "dob": "2001.9.28"
+ },
+ {
+  "id": "1097",
+  "name": "森木 一吉",
+  "kana": "モリキ カズヨシ",
+  "en": "Kazuyoshi",
+  "gym": "K-Fit-Lab",
+  "dob": "1993.4.27"
+ },
+ {
+  "id": "1098",
+  "name": "AIKO",
+  "kana": "アイコ",
+  "en": "AIKO",
+  "gym": "AX GYM",
+  "dob": "1987.2.10"
+ },
+ {
+  "id": "1101",
+  "name": "JASMINE",
+  "kana": "ジャスミン",
+  "en": "Jasmine",
+  "gym": "ポゴナ・クラブジム",
+  "dob": "1990.6.17"
+ },
+ {
+  "id": "1105",
+  "name": "梅村 直希",
+  "kana": "ウメムラ ナオキ",
+  "en": "Umemura Naoki",
+  "gym": "湘南格闘クラブ",
+  "dob": "1997.7.31"
+ },
+ {
+  "id": "1109",
+  "name": "絢太",
+  "kana": "ケンタ",
+  "en": "Kenta",
+  "gym": "CUC",
+  "dob": "1995.11.14"
+ },
+ {
+  "id": "1110",
+  "name": "志樹",
+  "kana": "モトキ",
+  "en": "Motoki",
+  "gym": "シルスジム",
+  "dob": "1990.9.21"
+ },
+ {
+  "id": "1113",
+  "name": "貞松 宏隆",
+  "kana": "サダマツ ヒロタカ",
+  "en": "Sadamatsu Hirotaka",
+  "gym": "Mataharigym",
+  "dob": "1999.6.23"
+ },
+ {
+  "id": "1116",
+  "name": "麗斗",
+  "kana": "レイト",
+  "en": "Reito",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "2002.8.7"
+ },
+ {
+  "id": "1117",
+  "name": "松本 陸",
+  "kana": "マツモト リク",
+  "en": "Matsumoto Riku",
+  "gym": "TAD",
+  "dob": "2003.4.29"
+ },
+ {
+  "id": "1118",
+  "name": "山口 真宙",
+  "kana": "ヤマグチ マヒロ",
+  "en": "Yamaguchi Mahiro",
+  "gym": "月心会チーム侍",
+  "dob": "2001.3.4"
+ },
+ {
+  "id": "1122",
+  "name": "藤岡 裕平",
+  "kana": "フジオカ ユウヘイ",
+  "en": "Fujioka Yuhei",
+  "gym": "九州ジム・VLOS",
+  "dob": "1986.11.22"
+ },
+ {
+  "id": "1124",
+  "name": "メイサム・エシギ",
+  "kana": "メイサム・エシギ",
+  "en": "Meisam Eshghi",
+  "gym": "士魂村上塾",
+  "dob": "1983.2.27"
+ },
+ {
+  "id": "1126",
+  "name": "芳美",
+  "kana": "ヨシミ",
+  "en": "Yoshimi",
+  "gym": "OGUNI-GYM",
+  "dob": "1981.11.23"
+ },
+ {
+  "id": "1127",
+  "name": "梅田 将成",
+  "kana": "ウメタ マサシゲ",
+  "en": "Umeta Masashige",
+  "gym": "KFG URAWA",
+  "dob": "1993.9.14"
+ },
+ {
+  "id": "1129",
+  "name": "ペッシーニン・ソー.プアントーン",
+  "kana": "ペッシーニン・ソー.プアントーン",
+  "en": "Petchseenil Sor.Puangthong",
+  "gym": "Sor.Puangthong Gym",
+  "dob": "2003.5.27"
+ },
+ {
+  "id": "1130",
+  "name": "ヨードクンポン・ウィラサクレック",
+  "kana": "",
+  "en": "Yodkhunpon",
+  "gym": "ウィラサクレック・フェアテックスジム",
+  "dob": "1994.11.27"
+ },
+ {
+  "id": "1131",
+  "name": "ガムライペット・パーンイーシップホック",
+  "kana": "ガムライペット・パーンイーシップホック",
+  "en": "Kamlaiphet Pran26",
+  "gym": "Pran26 Gym",
+  "dob": "1991.4.10"
+ },
+ {
+  "id": "1134",
+  "name": "REONA",
+  "kana": "レオナ",
+  "en": "Reona",
+  "gym": "RIOT GYM",
+  "dob": "2000.8.30"
+ },
+ {
+  "id": "1135",
+  "name": "実方 宏介",
+  "kana": "ジツカタ コウスケ",
+  "en": "Jitsukata Kosuke",
+  "gym": "真樹ジムAICHI",
+  "dob": "1997.7.18"
+ },
+ {
+  "id": "1141",
+  "name": "入江 亮太",
+  "kana": "イリエ リョウタ",
+  "en": "Irie Ryota",
+  "gym": "K-1ジム福岡チームbeginning",
+  "dob": "2002.6.13"
+ },
+ {
+  "id": "1142",
+  "name": "大野 祐志郎",
+  "kana": "オオノ ユウジロウ",
+  "en": "Ono Yujiro",
+  "gym": "ALL-WIN team 華王州",
+  "dob": "1986.3.21"
+ },
+ {
+  "id": "1145",
+  "name": "プライチュンポン・ソー.シーソムポン",
+  "kana": "プライチュンポン・ソー.シーソムポン",
+  "en": "Phlaychumphon Sor. Srisomphong",
+  "gym": "GTジム",
+  "dob": "1990.11.27"
+ },
+ {
+  "id": "1146",
+  "name": "MARI",
+  "kana": "マリ",
+  "en": "MARI",
+  "gym": "ナックルズGYM",
+  "dob": "1995.4.10"
+ },
+ {
+  "id": "1148",
+  "name": "44・ユウ・ウォーワンチャイ",
+  "kana": "シーシップシー・ユウ・ウォーワンチャイ",
+  "en": "44 Yu Wor.Wanchai",
+  "gym": "REVIVAL-GYM/team夢之力",
+  "dob": "1999.9.3"
+ },
+ {
+  "id": "1149",
+  "name": "篠塚 辰樹",
+  "kana": "シノツカ タツキ",
+  "en": "Shinotsuka Tatsuki",
+  "gym": "MASTER BRIDGE SOUND",
+  "dob": "1998.5.7"
+ },
+ {
+  "id": "1152",
+  "name": "ARINA",
+  "kana": "アリナ",
+  "en": "ARINA",
+  "gym": "闘神塾",
+  "dob": "2004.9.28"
+ },
+ {
+  "id": "1153",
+  "name": "ファエゼ・ウィラサクレック",
+  "kana": "ファエゼ・ウィラサクレック",
+  "en": "Faezeh Weerasakrec",
+  "gym": "WSRフェアテックス・イラン",
+  "dob": "1985.7.13"
+ },
+ {
+  "id": "1154",
+  "name": "マキ・ドゥワンソンポン",
+  "kana": "マキ・ドゥワンソンポン",
+  "en": "Maki Dwansonpong",
+  "gym": null,
+  "dob": "1995.7.31"
+ },
+ {
+  "id": "1156",
+  "name": "小巻 海斗",
+  "kana": "コマキ カイト",
+  "en": "Komaki Kaito",
+  "gym": "真樹ジムAICHI",
+  "dob": "1997.9.6"
+ },
+ {
+  "id": "1158",
+  "name": "ダウサコン・モータッサナイ",
+  "kana": "ダウサコン・モータッサナイ",
+  "en": "Dawsakhon Motassanai",
+  "gym": "ウィラサクレック・フェアテックスジム",
+  "dob": "1990.7.8"
+ },
+ {
+  "id": "1159",
+  "name": "落合 正司",
+  "kana": "オチアイ マサシ",
+  "en": "Ochiai Masashi",
+  "gym": "K-1ジム大宮チームレオン",
+  "dob": "1985.5.14"
+ },
+ {
+  "id": "1160",
+  "name": "貴哉",
+  "kana": "タカヤ",
+  "en": "Takaya",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "2000.1.21"
+ },
+ {
+  "id": "1162",
+  "name": "幸輝",
+  "kana": "コウキ",
+  "en": "Koki",
+  "gym": "インタージム",
+  "dob": "1992.6.14"
+ },
+ {
+  "id": "1164",
+  "name": "輝久",
+  "kana": "テルク",
+  "en": "Teruku",
+  "gym": "月心会チーム侍",
+  "dob": "2001.10.8"
+ },
+ {
+  "id": "1167",
+  "name": "神原 瑠翔",
+  "kana": "カンバラ ルカ",
+  "en": "Kanbara Ruka",
+  "gym": "K-1ジム川口TEAM SIRIUS",
+  "dob": "2001.1.22"
+ },
+ {
+  "id": "1169",
+  "name": "山西 練",
+  "kana": "ヤマニシ レン",
+  "en": "Yamanishi Ren",
+  "gym": "POWER OF DREAM",
+  "dob": "1998.3.20"
+ },
+ {
+  "id": "1170",
+  "name": "宮川 太陽",
+  "kana": "ミヤカワ タイヨウ",
+  "en": "Miyakawa Taiyo",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "2000.11.9"
+ },
+ {
+  "id": "1171",
+  "name": "ラット・エイワスポーツジム",
+  "kana": "ラット・エイワスポーツジム",
+  "en": "Rat Eiwasportsgym",
+  "gym": "エイワスポーツジム",
+  "dob": "1983.5.28"
+ },
+ {
+  "id": "1177",
+  "name": "森田 奈男樹",
+  "kana": "モリタ ナオキ",
+  "en": "Morita Naoki",
+  "gym": "エイワスポーツジム",
+  "dob": "1993.1.7"
+ },
+ {
+  "id": "1179",
+  "name": "松谷 桐",
+  "kana": "マツタニ キリ",
+  "en": "Matsutani Kiri",
+  "gym": "ALONZA ABLAZE",
+  "dob": "2001.8.30"
+ },
+ {
+  "id": "1184",
+  "name": "原田 優介",
+  "kana": "ハラダ ユウスケ",
+  "en": "Harada Yusuke",
+  "gym": "K-1ジム川口チームレオン",
+  "dob": "1995.2.27"
+ },
+ {
+  "id": "1185",
+  "name": "新太",
+  "kana": "アラタ",
+  "en": "Arata",
+  "gym": "TEAM ONE",
+  "dob": "1994.12.31"
+ },
+ {
+  "id": "1186",
+  "name": "西槇 隼汰",
+  "kana": "ニシマキ ハヤタ",
+  "en": "Nishimaki Hayata",
+  "gym": "POWER OF DREAM",
+  "dob": "1996.4.23"
+ },
+ {
+  "id": "1189",
+  "name": "冨澤 大智",
+  "kana": "トミザワ ダイチ",
+  "en": "Tomizawa Daichi",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1997.10.3"
+ },
+ {
+  "id": "1190",
+  "name": "石井 慧",
+  "kana": "イシイ サトシ",
+  "en": "Ishii Satoshi",
+  "gym": "チーム・クロコップ",
+  "dob": "1986.12.19"
+ },
+ {
+  "id": "1195",
+  "name": "ARISA",
+  "kana": "アリサ",
+  "en": "Arisa",
+  "gym": "SUBMIT MMA",
+  "dob": "1998.3.16"
+ },
+ {
+  "id": "1197",
+  "name": "宗一郎",
+  "kana": "ソウイチロウ",
+  "en": "Soichiro",
+  "gym": null,
+  "dob": "1999.5.15"
+ },
+ {
+  "id": "1200",
+  "name": "大久 和輝",
+  "kana": "ダイク カズキ",
+  "en": "Daiku Kazuki",
+  "gym": "K-1ジム五反田チームキングス",
+  "dob": "1990.11.22"
+ },
+ {
+  "id": "1201",
+  "name": "増井 侑輝",
+  "kana": "マスイ ユウキ",
+  "en": "Masui Yuki",
+  "gym": "真樹ジムAICHI",
+  "dob": "1993.11.11"
+ },
+ {
+  "id": "1203",
+  "name": "ダルビッシュ黒木",
+  "kana": "ダルビッシュ クロギ",
+  "en": "Darvish Kurogi",
+  "gym": "DAR",
+  "dob": "1986.2.23"
+ },
+ {
+  "id": "1205",
+  "name": "乃亜",
+  "kana": "ノア",
+  "en": "Noa",
+  "gym": "昇龍會",
+  "dob": "2003.12.24"
+ },
+ {
+  "id": "1210",
+  "name": "綾香",
+  "kana": "アヤカ",
+  "en": "Ayaka",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "1999.4.6"
+ },
+ {
+  "id": "1211",
+  "name": "佐野 勇海",
+  "kana": "サノ イサミ",
+  "en": "Sano Isami",
+  "gym": "拳之会",
+  "dob": "2000.2.24"
+ },
+ {
+  "id": "1216",
+  "name": "マキ・チャーチャイ",
+  "kana": "",
+  "en": "Maki Chachai",
+  "gym": "真樹ジムAICHI",
+  "dob": "1990.3.14"
+ },
+ {
+  "id": "1219",
+  "name": "Yuka☆",
+  "kana": "ユカ",
+  "en": "Yuka☆",
+  "gym": "SHINE沖縄",
+  "dob": "1984.7.3"
+ },
+ {
+  "id": "1225",
+  "name": "吉崎 生",
+  "kana": "ヨシザキ ナル",
+  "en": "Yoshizaki Naru",
+  "gym": "K-1ジム大宮チームレオン",
+  "dob": "2002.2.26"
+ },
+ {
+  "id": "1227",
+  "name": "瑞貴",
+  "kana": "ミズキ",
+  "en": "Mizuki",
+  "gym": "TEAM3K",
+  "dob": "1996.11.20"
+ },
+ {
+  "id": "1232",
+  "name": "重野 喬",
+  "kana": "シゲノ タカシ",
+  "en": "Shigeno Takashi",
+  "gym": "WSRフェアテックス湖北",
+  "dob": "1983.5.26"
+ },
+ {
+  "id": "1233",
+  "name": "大田 一航",
+  "kana": "オオタ イッコウ",
+  "en": "Ota Ikko",
+  "gym": "新興ムエタイジム",
+  "dob": "2001.7.30"
+ },
+ {
+  "id": "1234",
+  "name": "YASSY",
+  "kana": "ヤッシー",
+  "en": "Yassy",
+  "gym": "K-1 GYM BLOWS",
+  "dob": "1993.4.5"
+ },
+ {
+  "id": "1235",
+  "name": "虎",
+  "kana": "タイガ",
+  "en": "Taiga",
+  "gym": "CMG",
+  "dob": "2003.9.27"
+ },
+ {
+  "id": "1238",
+  "name": "佑悟",
+  "kana": "ユウゴ",
+  "en": "Yugo",
+  "gym": "Lion Gym",
+  "dob": "1996.8.19"
+ },
+ {
+  "id": "1240",
+  "name": "薮崎 陸",
+  "kana": "ヤブサキ リク",
+  "en": "Yabusaki Riku",
+  "gym": "勇心館",
+  "dob": "2003.2.23"
+ },
+ {
+  "id": "1241",
+  "name": "哲平",
+  "kana": "テッペイ",
+  "en": "Teppei",
+  "gym": "VAINQUEUR GYM",
+  "dob": "1998.3.17"
+ },
+ {
+  "id": "1243",
+  "name": "冨永 康公",
+  "kana": "トミナガ ヤスタカ",
+  "en": "Tominaga Yasutaka",
+  "gym": "KINGS",
+  "dob": "1990.2.8"
+ },
+ {
+  "id": "1245",
+  "name": "岡本 和芳",
+  "kana": "オカモト カズヨシ",
+  "en": "Okamoto Kazuyoshi",
+  "gym": "Y'ZD GYM",
+  "dob": "1990.1.15"
+ },
+ {
+  "id": "1265",
+  "name": "浩志",
+  "kana": "ヒロシ",
+  "en": "Hiroshi",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "dob": "2003.8.2"
+ },
+ {
+  "id": "1285",
+  "name": "山下 力也",
+  "kana": "ヤマシタ リキヤ",
+  "en": "Yamashita Rikiya",
+  "gym": "道真会館",
+  "dob": "1994.1.7"
+ },
+ {
+  "id": "1298",
+  "name": "林 眞平",
+  "kana": "ハヤシ シンペイ",
+  "en": "Hayashi Shinpei",
+  "gym": "SOLARE KICKBOXING GYM",
+  "dob": "1992.1.4"
+ },
+ {
+  "id": "1301",
+  "name": "ベイリー・サグデン",
+  "kana": "",
+  "en": "Bailey Sugden",
+  "gym": "Suggys Gym",
+  "dob": "1997.11.10"
+ },
+ {
+  "id": "1304",
+  "name": "コンペット・フェアテックス",
+  "kana": "",
+  "en": "Komphet",
+  "gym": "Fairtex Gym",
+  "dob": "2000.4.7"
+ },
+ {
+  "id": "1305",
+  "name": "メレティス・カコウバヴァス",
+  "kana": "",
+  "en": "Meletis Kakoubavas",
+  "gym": "KRITIKOS CAMP",
+  "dob": "1989.3.27"
+ },
+ {
+  "id": "1306",
+  "name": "天馬",
+  "kana": "テンマ",
+  "en": "Tenma",
+  "gym": "WSRフェアテックス西川口",
+  "dob": "2003.3.15"
+ },
+ {
+  "id": "1307",
+  "name": "ジョムトーン・ストライカージム",
+  "kana": "",
+  "en": "Jomthong",
+  "gym": "Striker GYM",
+  "dob": "1989.7.28"
+ },
+ {
+  "id": "1312",
+  "name": "松葉 斗哉",
+  "kana": "マツバ トウヤ",
+  "en": "Matsuba Toya",
+  "gym": "昇龍會",
+  "dob": "2004.12.7"
+ },
+ {
+  "id": "1316",
+  "name": "神谷 勇輝",
+  "kana": "カミヤ ユウキ",
+  "en": "Kamiya Yuki",
+  "gym": null,
+  "dob": "2000.6.12"
+ },
+ {
+  "id": "1317",
+  "name": "アンビ・エンスエ・アボモ",
+  "kana": "",
+  "en": "Ambi Nsue Avomo",
+  "gym": "Pure Impact",
+  "dob": "1994.7.7"
+ },
+ {
+  "id": "1318",
+  "name": "オスカル・ボルケス",
+  "kana": "オスカル・ボルケス",
+  "en": "Oscar Bohorquez",
+  "gym": "Team Promebox",
+  "dob": "1993.11.28"
+ },
+ {
+  "id": "1320",
+  "name": "ヨーシラー・チョー.ハーパヤック",
+  "kana": "",
+  "en": "Yossila",
+  "gym": "Chor.Hapayak GYM",
+  "dob": "2001.4.1"
+ },
+ {
+  "id": "1321",
+  "name": "ペットサムイ・シムラ",
+  "kana": "",
+  "en": "Phetsamui",
+  "gym": "志村道場",
+  "dob": "1991.1.7"
+ },
+ {
+  "id": "1323",
+  "name": "キリルアン・チョー.ハーパヤック",
+  "kana": "",
+  "en": "Kiriluang",
+  "gym": "Chor.Hapayak GYM",
+  "dob": "2001.2.8"
+ },
+ {
+  "id": "1324",
+  "name": "イスマイル・アル・カディ",
+  "kana": "イスマイル・アル・カディ",
+  "en": "Ismail Al Kadhi",
+  "gym": "ALEXY MUAY THAI CYPRUS",
+  "dob": "2001.11.5"
+ },
+ {
+  "id": "1327",
+  "name": "オロール・ドス・サントス",
+  "kana": "オロール・ドス・サントス",
+  "en": "Aurore Dos Santos",
+  "gym": "KERN'S GYM",
+  "dob": "1991.6.9"
+ },
+ {
+  "id": "1329",
+  "name": "SOUL",
+  "kana": "ソウル",
+  "en": "SOUL",
+  "gym": null,
+  "dob": "1998.4.28"
+ },
+ {
+  "id": "1336",
+  "name": "宮本 拳聖",
+  "kana": "ミヤモト ケンセイ",
+  "en": "Miyamoto Kensei",
+  "gym": "K-1ジム総本部チームペガサス",
+  "dob": "1998.12.18"
+ },
+ {
+  "id": "1340",
+  "name": "宮原 司",
+  "kana": "ミヤハラ ツカサ",
+  "en": "Miyahara Tsukasa",
+  "gym": "K-1ジム心斎橋チームレパード",
+  "dob": "1999.12.6"
+ },
+ {
+  "id": "1342",
+  "name": "パコーン・PK・センチャイ",
+  "kana": "",
+  "en": "Pakorn",
+  "gym": "PK Saenchai Muay Thai Gym",
+  "dob": "1990.8.14"
+ },
+ {
+  "id": "1345",
+  "name": "ヴィニシウス・ディオニツィオ",
+  "kana": "",
+  "en": "Vinicius",
+  "gym": "Brazilian Thai",
+  "dob": "1992.4.3"
+ },
+ {
+  "id": "1358",
+  "name": "瀧山 悠斗",
+  "kana": "タキヤマ ユウト",
+  "en": "Takiyama Yuto",
+  "gym": null,
+  "dob": "2005.11.17"
+ },
+ {
+  "id": "1365",
+  "name": "ペットモンコン・スーンキラーフォイトム",
+  "kana": "",
+  "en": "Petchmongkol",
+  "gym": "Soonkilahuaytom Gym",
+  "dob": "2000.11.30"
+ },
+ {
+  "id": "1368",
+  "name": "エムレ・カラジャ",
+  "kana": "",
+  "en": "Emre Karaca",
+  "gym": "Emre Karaca Fight Club",
+  "dob": "1991.3.18"
+ },
+ {
+  "id": "1369",
+  "name": "ハン・ギョンミン",
+  "kana": "",
+  "en": "Han Kyungmin",
+  "gym": "RAON GYM",
+  "dob": "2005.2.2"
+ },
+ {
+  "id": "1375",
+  "name": "ジン・シジュン",
+  "kana": "",
+  "en": "Jin Sijun",
+  "gym": "チームサイコピットブルス",
+  "dob": "1991.1.31"
+ },
+ {
+  "id": "1383",
+  "name": "アマンシオ・パラスキフ",
+  "kana": "",
+  "en": "Amansio Paraschiv",
+  "gym": "Amansio Fight Club",
+  "dob": "1992.6.25"
+ },
+ {
+  "id": "1392",
+  "name": "エークモンコン・ガイヤーンハーダオ",
+  "kana": "",
+  "en": "Aikmongkol",
+  "gym": null,
+  "dob": "1993.1.17"
+ },
+ {
+  "id": "1395",
+  "name": "山根 武夫",
+  "kana": "ヤマネ タケオ",
+  "en": "Yamane Takeo",
+  "gym": null,
+  "dob": "1991.6.14"
+ },
+ {
+  "id": "1399",
+  "name": "坂本 侑生",
+  "kana": "サカモト ユウキ",
+  "en": "Sakamoto Yuki",
+  "gym": null,
+  "dob": "2000.12.12"
+ },
+ {
+  "id": "1402",
+  "name": "チャン・ドクジュン",
+  "kana": "",
+  "en": "Jang DeokJun",
+  "gym": "チームサイコピットブルス",
+  "dob": "1995.4.7"
+ },
+ {
+  "id": "1406",
+  "name": "ヴァレンティン・ボルディアヌ",
+  "kana": "",
+  "en": "Valentin Bordianu",
+  "gym": "Catalin Morosanu Academy",
+  "dob": "1987.12.12"
+ },
+ {
+  "id": "1422",
+  "name": "リー・リーシャン",
+  "kana": "",
+  "en": "Li Lishan",
+  "gym": "深圳盛力人和ファイトアカデミー/CFP",
+  "dob": "1998.1.22"
+ },
+ {
+  "id": "1427",
+  "name": "豊樹",
+  "kana": "トヨキ",
+  "en": "Toyoki",
+  "gym": "NARIAGARI",
+  "dob": "1992.12.21"
+ },
+ {
+  "id": "1428",
+  "name": "元太郎",
+  "kana": "ゲンタロウ",
+  "en": "Gentaro",
+  "gym": "IDEAL GYM",
+  "dob": "1999.3.30"
+ },
+ {
+  "id": "1431",
+  "name": "小浦 翼",
+  "kana": "コウラ ツバサ",
+  "en": "Koura Tsubasa",
+  "gym": "K-1 GYM横浜infinity",
+  "dob": "1994.10.10"
+ },
+ {
+  "id": "1435",
+  "name": "林 佑哉",
+  "kana": "ハヤシ ユウヤ",
+  "en": "Hayashi Yuya",
+  "gym": "K-1ジム大宮チームレオン",
+  "dob": "2000.4.10"
+ },
+ {
+  "id": "1453",
+  "name": "ダビッド・キリア",
+  "kana": "",
+  "en": "Davit Kiria",
+  "gym": "Team Kiria",
+  "dob": "1988.2.9"
+ },
+ {
+  "id": "1454",
+  "name": "タナンチャイ・シッソンピーノン",
+  "kana": "",
+  "en": "Thananchai Sitsongpeenong",
+  "gym": "Sitsongpeenong Muay Thai Camp",
+  "dob": "2001.2.23"
+ },
+ {
+  "id": "1458",
+  "name": "加藤 一虎",
+  "kana": "カトウ カズトラ",
+  "en": "Kato Kazutora",
+  "gym": "POWER OF DREAM",
+  "dob": "2006.1.11"
+ },
+ {
+  "id": "1461",
+  "name": "安藤 優介",
+  "kana": "アンドウ ユウスケ",
+  "en": "Ando Yusuke",
+  "gym": "猛者連 team OGRE",
+  "dob": "1990.12.10"
+ },
+ {
+  "id": "1462",
+  "name": "ロマーノ・バクボード",
+  "kana": "",
+  "en": "Romano Bakboord",
+  "gym": "ARJ Trainingen",
+  "dob": "1997.6.30"
+ },
+ {
+  "id": "1466",
+  "name": "ペトロス・カベリーニョ",
+  "kana": "",
+  "en": "Petros Cabelinho",
+  "gym": "TEIXEIRA TEAM",
+  "dob": "1998.2.25"
+ },
+ {
+  "id": "1470",
+  "name": "カディル・イルディリム",
+  "kana": "",
+  "en": "Kadir Yildirim",
+  "gym": "D&K Sport Centar",
+  "dob": "1987.3.9"
+ },
+ {
+  "id": "1471",
+  "name": "アドナン・レズヴィッチ",
+  "kana": "",
+  "en": "Adnan Redzovic",
+  "gym": "Gladiator Gym Sarajevo",
+  "dob": "1977.3.27"
+ },
+ {
+  "id": "1474",
+  "name": "イゴール・ミヒャレヴィッチ",
+  "kana": "",
+  "en": "Igor Mihaljevic",
+  "gym": "Old Lion Gym",
+  "dob": "1979.8.8"
+ },
+ {
+  "id": "1478",
+  "name": "aimi-",
+  "kana": "アイミ",
+  "en": "aimi-",
+  "gym": "DANGER GYM",
+  "dob": "1978.4.9"
+ },
+ {
+  "id": "1482",
+  "name": "カン・メンホン",
+  "kana": "",
+  "en": "Kan Meng Hong",
+  "gym": "Kun Khmer International Fight Gym",
+  "dob": "2002.6.12"
+ },
+ {
+  "id": "1483",
+  "name": "ジャオ・ジェンドン",
+  "kana": "",
+  "en": "Zhao Zhendong",
+  "gym": "深圳盛力人和ファイトアカデミー/CFP",
+  "dob": "2005.2.19"
+ },
+ {
+  "id": "1489",
+  "name": "ゆいら",
+  "kana": "ユイラ",
+  "en": "Yuira",
+  "gym": "健心塾",
+  "dob": "2004.11.8"
+ },
+ {
+  "id": "1499",
+  "name": "サムエレ・プグリエーゼ",
+  "kana": "",
+  "en": "Samuele Pugliese",
+  "gym": "Team Pugliese",
+  "dob": "2002.6.22"
+ },
+ {
+  "id": "1501",
+  "name": "フローリン・イヴァノアイエ",
+  "kana": "",
+  "en": "Florin Ivanoaie",
+  "gym": "M Box Timisoara",
+  "dob": "1997.3.24"
+ },
+ {
+  "id": "1504",
+  "name": "アガティーノ・ラ・ローザ",
+  "kana": "",
+  "en": "Agatino La Rosa",
+  "gym": "Team Cutispoto",
+  "dob": "1995.3.30"
+ },
+ {
+  "id": "1505",
+  "name": "マルセル・ホルヴァート",
+  "kana": "",
+  "en": "Marcell Horvath",
+  "gym": "Team Rozman",
+  "dob": "2002.3.16"
+ },
+ {
+  "id": "1514",
+  "name": "ジェファーソン・サルビアーノ",
+  "kana": "",
+  "en": "Jefferson Salviano",
+  "gym": "Equipe Castellano",
+  "dob": "1995.6.7"
+ },
+ {
+  "id": "1517",
+  "name": "ジョニー・クレバー",
+  "kana": "",
+  "en": "Jhonny Klever",
+  "gym": null,
+  "dob": "1994.11.3"
+ },
+ {
+  "id": "1522",
+  "name": "レニー・ブラジ",
+  "kana": "",
+  "en": "Lenny Blasi",
+  "gym": "Team Calzolari",
+  "dob": "2004.6.29"
+ },
+ {
+  "id": "1524",
+  "name": "キム・ジュンファ",
+  "kana": "",
+  "en": "Kim Joon Hwa",
+  "gym": "安養サムサン",
+  "dob": "1990.1.11"
+ },
+ {
+  "id": "1535",
+  "name": "足立 麻衣子",
+  "kana": "アダチ マイコ",
+  "en": "Adachi Maiko",
+  "gym": "ONESIDE KICKBOXING GYM",
+  "dob": "1996.4.4"
+ },
+ {
+  "id": "1536",
+  "name": "稜賀",
+  "kana": "リョウガ",
+  "en": "Ryoga",
+  "gym": "二刃会",
+  "dob": "2001.2.23"
+ },
+ {
+  "id": "1542",
+  "name": "外山 侑樹",
+  "kana": "トヤマ ユウキ",
+  "en": "Toyama Yuki",
+  "gym": "大和ジム",
+  "dob": "2005.4.8"
+ },
+ {
+  "id": "1550",
+  "name": "開 夢斗",
+  "kana": "ヒラキ ユメト",
+  "en": "Hiraki Yumeto",
+  "gym": "魁塾中川道場",
+  "dob": "2007.3.15"
+ },
+ {
+  "id": "1563",
+  "name": "コスタス・アスラニディス",
+  "kana": "",
+  "en": "Kostas Aslanidis",
+  "gym": "VENUM GYM",
+  "dob": "2006.3.15"
+ },
+ {
+  "id": "1573",
+  "name": "ベセラ・ロガスカ",
+  "kana": "",
+  "en": "Vesela Rogaska",
+  "gym": "DIAMOND CAMP",
+  "dob": "2000.6.23"
+ },
+ {
+  "id": "1579",
+  "name": "マノリス・カリスティス",
+  "kana": "",
+  "en": "Manolis Kallistis",
+  "gym": "NAS CAMP- SOR DECHAPANT",
+  "dob": "1993.6.29"
+ },
+ {
+  "id": "1599",
+  "name": "マシュー・ダールマン",
+  "kana": "",
+  "en": "Matthew Daalman",
+  "gym": "Hemmers Gym",
+  "dob": "1998.6.17"
+ },
+ {
+  "id": "1604",
+  "name": "木塚 勝樹",
+  "kana": "キヅカ カズキ",
+  "en": "Kizuka Kazuki",
+  "gym": "M-BLOW",
+  "dob": "2000.6.15"
+ },
+ {
+  "id": "1605",
+  "name": "スリマン・ベテルビエフ",
+  "kana": "",
+  "en": "Suliman Beterbiev",
+  "gym": "Kickboxing Club Akhmat",
+  "dob": "2000.6.24"
+ },
+ {
+  "id": "1614",
+  "name": "アンゲロス・カポニス",
+  "kana": "",
+  "en": "Angelos Kaponis",
+  "gym": "DIAMOND CAMP",
+  "dob": "2006.3.31"
+ },
+ {
+  "id": "1620",
+  "name": "リオ・リチャードソン",
+  "kana": "",
+  "en": "Rio Richardson",
+  "gym": "BARI GYM",
+  "dob": "1997.3.11"
+ },
+ {
+  "id": "1626",
+  "name": "マルシオ・デ・ジェズス",
+  "kana": "",
+  "en": "Marcio De Jesus",
+  "gym": "Team Alvaro de Aguiar",
+  "dob": "1993.3.17"
+ },
+ {
+  "id": "1629",
+  "name": "メトラジェタ・トリノ",
+  "kana": "",
+  "en": "Metralleta Torino",
+  "gym": "Picante Fight Club",
+  "dob": "1994.3.15"
+ },
+ {
+  "id": "1635",
+  "name": "イグナシオ・エル・フィーノ",
+  "kana": "",
+  "en": "Ignacio El Fino",
+  "gym": "Picante Fight Club",
+  "dob": "2000.1.27"
+ },
+ {
+  "id": "1636",
+  "name": "ジョーダン・クラニオ",
+  "kana": "",
+  "en": "Jordan Kranio",
+  "gym": "TEIXEIRA TEAM",
+  "dob": "1994.1.2"
+ },
+ {
+  "id": "1641",
+  "name": "カルロス ‛モヒカーノ’",
+  "kana": "",
+  "en": "Carlos ‛El Mohicano’",
+  "gym": "La Guarida Kickboxing",
+  "dob": "1994.11.6"
+ },
+ {
+  "id": "1642",
+  "name": "マテウス・ピノキオ",
+  "kana": "",
+  "en": "Matheus Pinokio",
+  "gym": "Altamiro Fight Club",
+  "dob": "2005.6.30"
+ },
+ {
+  "id": "1643",
+  "name": "ルチアーノ・デ・パウラ",
+  "kana": "",
+  "en": "Luciano De Paula",
+  "gym": "Killer Bees",
+  "dob": "2005.1.5"
+ },
+ {
+  "id": "1646",
+  "name": "レティシア・オーチェル",
+  "kana": "",
+  "en": "Leticia Orchel",
+  "gym": "World Strong Fight Team",
+  "dob": "1999.2.23"
+ },
+ {
+  "id": "1647",
+  "name": "ダニ・アントネッリ",
+  "kana": "",
+  "en": "Dani Antonelli",
+  "gym": "CM System",
+  "dob": "1998.3.13"
+ },
+ {
+  "id": "1648",
+  "name": "ウェダーソン・マカブロ",
+  "kana": "",
+  "en": "Uederson Macabro",
+  "gym": "Altamiro Fight Club",
+  "dob": "1994.1.30"
+ },
+ {
+  "id": "1651",
+  "name": "木下 勝利",
+  "kana": "キノシタ ショウリ",
+  "en": "Kinoshita Shori",
+  "gym": "BEST GYM",
+  "dob": "1996.11.15"
+ },
+ {
+  "id": "1652",
+  "name": "マイコン・ソウザ",
+  "kana": "",
+  "en": "Maycon Souza",
+  "gym": "Continua la Batalha",
+  "dob": "1996.12.27"
+ },
+ {
+  "id": "1659",
+  "name": "デニス・タプ",
+  "kana": "",
+  "en": "Denis Tapu",
+  "gym": "MSGYM FIGHT CLUB",
+  "dob": "1999.7.3"
+ },
+ {
+  "id": "1665",
+  "name": "山本 竜輝",
+  "kana": "ヤマモト リュウキ",
+  "en": "Yamamoto Ryuki",
+  "gym": "MAX DRAGON GYM",
+  "dob": "2000.4.12"
+ },
+ {
+  "id": "1667",
+  "name": "長野 将大",
+  "kana": "ナガノ ショウタ",
+  "en": "Shota Nagano",
+  "gym": "リバーサルジム武蔵小杉 所プラス",
+  "dob": "1996.2.22"
+ },
+ {
+  "id": "1673",
+  "name": "マテウス・ノゲイラ",
+  "kana": "",
+  "en": "Matheus Nogueira",
+  "gym": "TEIXEIRA TEAM",
+  "dob": "1998.3.27"
+ },
+ {
+  "id": "1674",
+  "name": "ホシアス・ヌニェス",
+  "kana": "",
+  "en": "Josias Nunez",
+  "gym": "Team Marcelo Salas",
+  "dob": "1999.2.18"
+ },
+ {
+  "id": "1679",
+  "name": "ジョアン・ペドロ・シマオ",
+  "kana": "",
+  "en": "Joao Pedro Simao",
+  "gym": "Impacto Team",
+  "dob": "1997.3.4"
+ },
+ {
+  "id": "1680",
+  "name": "ヒアゴ・ソウザ",
+  "kana": "",
+  "en": "Hiago Souza",
+  "gym": "Center Muay Thai Kickboxing",
+  "dob": "1993.1.25"
+ },
+ {
+  "id": "1761",
+  "name": "タフマシブ・ケリモフ",
+  "kana": "",
+  "en": "Takhmasib Kerimov",
+  "gym": "Dzaniev Team",
+  "dob": "1994.7.1"
+ },
+ {
+  "id": "1806",
+  "name": "トゥン・メンホン",
+  "kana": "",
+  "en": "Thun Menghong",
+  "gym": "Thun Sophea Kun Khmer Gym",
+  "dob": "2002.2.12"
+ }
+]

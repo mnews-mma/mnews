@@ -1,0 +1,3831 @@
+[
+ {
+  "name": "久井 大夢",
+  "en": "HISAI Taimu",
+  "gym": "TEAM TAIMU",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/hisai_taimu"
+ },
+ {
+  "name": "モー・アブドゥラマン",
+  "en": "MO Abdurahman",
+  "gym": "イギリス／NGMA／Parity Martial arts",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/mo_abdurahman_606"
+ },
+ {
+  "name": "スラサック・クルーダームジム",
+  "en": "SURASAK Krudarmgym",
+  "gym": "タイ/クルーダームジム",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/surasak_krudarmgym_496"
+ },
+ {
+  "name": "“狂拳”迅",
+  "en": "“KYOKEN” Jin",
+  "gym": "WIZARDキックボクシングジム",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/kyoken_jin_446"
+ },
+ {
+  "name": "小林 愛理奈",
+  "en": "KOBAYASHI Arina",
+  "gym": "FELLOW GYM",
+  "wclass": "ライトフライ級",
+  "url": "https://knockoutkb.com/fighters/kobayashi_arina_545"
+ },
+ {
+  "name": "サネーガーム・サックチャムニ",
+  "en": "SANENGARM SakChamni",
+  "gym": "タイ",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/sanengarm_sakchamni_492"
+ },
+ {
+  "name": "中島 玲",
+  "en": "NAKAJIMA Rei",
+  "gym": "KNOCK OUT クロスポイント渋谷/ハイブリッドアカデミー",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/nakajima_rei"
+ },
+ {
+  "name": "櫻井 博",
+  "en": "SAKURAI　Hiroshi",
+  "gym": "多田ジム",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/sakuraihiroshi_597"
+ },
+ {
+  "name": "玖村 修平",
+  "en": "KUMURA Shuhei",
+  "gym": "シューティングスター",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/kumura_shuhei_135"
+ },
+ {
+  "name": "内藤 凌太",
+  "en": "NAITO Ryota",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/naito_ryota_160"
+ },
+ {
+  "name": "一輝",
+  "en": "KAZUKI",
+  "gym": "若獅子会館",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/kazuki_594"
+ },
+ {
+  "name": "小島 慎太",
+  "en": "KOJIMA Shinta",
+  "gym": "KINGS",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/kojima_sinta_526"
+ },
+ {
+  "name": "タップロン・ハーデスワークアウト",
+  "en": "TAPURUWAN Hadesworkout",
+  "gym": "ハーデスワークアウトジム",
+  "wclass": "-65.5kg",
+  "url": "https://knockoutkb.com/fighters/tapuruwan_hadesworkout_234"
+ },
+ {
+  "name": "タネ♡ヨシキ",
+  "en": "TANE Yoshiki",
+  "gym": "直心会",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/tane_yoshiki_102"
+ },
+ {
+  "name": "タン・フォン",
+  "en": "TANG Feng",
+  "gym": "中国/長沙鋭景ファイティングクラブ/CFP",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/tang_feng_463"
+ },
+ {
+  "name": "ダン・マイ・トゥエイ",
+  "en": "DAMG Mite Thway",
+  "gym": "ミャンマー",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/damg_mite_thway_549"
+ },
+ {
+  "name": "チャーパヤック・サクサトゥーン",
+  "en": "CHARTPAYAK Saksatun",
+  "gym": "タイ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/chartpayak_saksatun_178"
+ },
+ {
+  "name": "チャッキー",
+  "en": "CHUCKY",
+  "gym": "台湾/Power Punch",
+  "wclass": "-49kg",
+  "url": "https://knockoutkb.com/fighters/chucky_132"
+ },
+ {
+  "name": "チャド・コリンズ",
+  "en": "CHADD Collins",
+  "gym": "オーストラリア",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/chadd_collins_629"
+ },
+ {
+  "name": "チュームーシーフー",
+  "en": "QUMUXIFU",
+  "gym": "中国/郭強ファイトクラブ/CFP",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/qumuxifu"
+ },
+ {
+  "name": "チョークディー・PKセンチャイジム",
+  "en": "CHOKDEE PK.Saenchaimuaythaigym",
+  "gym": "タイ",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/chokdee_pk_saenchaimuaythaigym"
+ },
+ {
+  "name": "チョット・サレイヴァントン",
+  "en": "CHHUT Sereyvanthong",
+  "gym": "カンボジア",
+  "wclass": "スーパーフェザー",
+  "url": "https://knockoutkb.com/fighters/chhut_sereyvanthong"
+ },
+ {
+  "name": "チョムラウン・クンクメール",
+  "en": "CHOMROEUN KUNKHMER",
+  "gym": "カンボジア",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/chomroeun_kunkhmer_317"
+ },
+ {
+  "name": "デーングリアングライ・シンマーウィン",
+  "en": "DENKRIENGKRAI SinghaMawynn",
+  "gym": "タイ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/denkriengkrai_singhamawynn"
+ },
+ {
+  "name": "テヘランカトウ",
+  "en": "TEHRAN Kato",
+  "gym": "和術慧⾈會 HEARTS",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/teheran_kato_407"
+ },
+ {
+  "name": "デンサヤーム・ウィラサクレック",
+  "en": "DANSIAM Weerasakreck",
+  "gym": "ウィラサクレック・フェアテックスジム",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/dansiam_weerasakreck"
+ },
+ {
+  "name": "トゥー・チャン・ボティ",
+  "en": "TOUCH Chan Votey",
+  "gym": "カンボジア",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/touch_chan_votey_468"
+ },
+ {
+  "name": "ドスティン・オルティス",
+  "en": "DOSTIN Ortiz",
+  "gym": "スペイン/Sleon Gym",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/dostin_ortiz_320"
+ },
+ {
+  "name": "ドンキング・ヨータラックムエタイ",
+  "en": "DONKING Yotharak muaythai",
+  "gym": "タイ",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/donking_yotharak_muaythai_413"
+ },
+ {
+  "name": "トンミーチャイ・FELLOW GYM",
+  "en": "TONGMEECHAI FELLOW GYM",
+  "gym": "FELLOW GYM",
+  "wclass": "-61.0kg",
+  "url": "https://knockoutkb.com/fighters/tongmeechai_fellow_gym_114"
+ },
+ {
+  "name": "ナカムランチャイ・ケンタ",
+  "en": "NAKAMURANCHAI Kenta",
+  "gym": "team AKATSUKI",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/nakamuranchai_kenta_191"
+ },
+ {
+  "name": "ニカ・パパヴァ",
+  "en": "NIKA Papava",
+  "gym": "ジョージア",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/nika_papava_574"
+ },
+ {
+  "name": "パク・ユイ",
+  "en": "PARK Yui",
+  "gym": "韓国/JUNSA GYM",
+  "wclass": "ライトフライ級",
+  "url": "https://knockoutkb.com/fighters/park_yui_617"
+ },
+ {
+  "name": "バズーカ巧樹",
+  "en": "BAZOOKA Koki",
+  "gym": "菅原道場/BRAID",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/bazooka_koki"
+ },
+ {
+  "name": "バットマン・オー.アッチャリヤー",
+  "en": "BATMAN O.Atchariya",
+  "gym": "タイ",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/batman_o_atchariya_121"
+ },
+ {
+  "name": "パトリック・ケンソン",
+  "en": "Patrick KENGSONG",
+  "gym": "カメルーン",
+  "wclass": "クルーザー級",
+  "url": "https://knockoutkb.com/fighters/patrick_kengsong_113"
+ },
+ {
+  "name": "パナット・クンクメール",
+  "en": "PHANIT Kun Khmer",
+  "gym": "カンボジア",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/phanit_kun_khmer_470"
+ },
+ {
+  "name": "ハルキカイ",
+  "en": "HARUKI Kai",
+  "gym": "FAMILIA/CANDY GYM",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/haruki_kai_540"
+ },
+ {
+  "name": "パンサック・ウォーワンナッタウイ",
+  "en": "PANSAK Wor.wantavee",
+  "gym": "タイ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/pansak_wor_wantavee_287"
+ },
+ {
+  "name": "ぱんちゃん璃奈",
+  "en": "PANCHAN Rina",
+  "gym": "フリー",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/panchan_rina"
+ },
+ {
+  "name": "ピッチ・ソムパッツ",
+  "en": "PICH Sambath",
+  "gym": "カンボジア",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/pich_sambath"
+ },
+ {
+  "name": "プードゥアン・コマンドジム",
+  "en": "PHUDUAN Commando Gym",
+  "gym": "タイ/サックチャムニジム",
+  "wclass": "ライトフライ級",
+  "url": "https://knockoutkb.com/fighters/phuduan_commando_gym_546"
+ },
+ {
+  "name": "ファーワンマイ・センチャイジム",
+  "en": "FAHWANMAI Saenchai-Gym",
+  "gym": "センチャイムエタイジム",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/fahwanmai_saenchaigym_391"
+ },
+ {
+  "name": "ファク・スアレス",
+  "en": "Facu SUAREZ",
+  "gym": "アルゼンチン",
+  "wclass": "-59.0kg",
+  "url": "https://knockoutkb.com/fighters/facu_suarez_116"
+ },
+ {
+  "name": "ふくやーまん",
+  "en": "FUKUYAHMAN",
+  "gym": "FIGHTER'S FLOW",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/fukuyahman_416"
+ },
+ {
+  "name": "ブライアン・ガビオ",
+  "en": "BRAIAN Gavio",
+  "gym": "アルゼンチン",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/braian_gavio_318"
+ },
+ {
+  "name": "プンルアン・バーンランバー",
+  "en": "PUNGLUANG Banramba",
+  "gym": "タイ",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/pungluang_banramba_412"
+ },
+ {
+  "name": "ペッカデイ・クンクメール",
+  "en": "PHEAKDEY Kunkhmer",
+  "gym": "カンボジア",
+  "wclass": "-66.0kg",
+  "url": "https://knockoutkb.com/fighters/pheakdey_kunkhmer_86"
+ },
+ {
+  "name": "ペットシラー・FURUMURA-GYM",
+  "en": "PHETSILA Furumura-Gym",
+  "gym": "FURUMURA-GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/phetsila_furumuragym_276"
+ },
+ {
+  "name": "ペットセーンセーブ・ソーヂョー.トーンプラーヂン",
+  "en": "PHETSAENSAEB Sor Jor. Tongprachin",
+  "gym": "タイ",
+  "wclass": "-58.5kg",
+  "url": "https://knockoutkb.com/fighters/phetsaensaeb_sor_jor__tongprachin_172"
+ },
+ {
+  "name": "ペットルンルアン・ソーチャールワン",
+  "en": "PETCHRUNG Rueng sor.jaruwun",
+  "gym": "タイ/ソーチャールワンジム",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/petchrung_rueng_sor_jaruwun_382"
+ },
+ {
+  "name": "ペップンソン・フォームドジム",
+  "en": "PHETBUNSONG Formed GYM",
+  "gym": "フォームドジム",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/phetbunsong_formed_gym_202"
+ },
+ {
+  "name": "ペドロ・グランホ",
+  "en": "PEDRO Granjo",
+  "gym": "スペイン/ワールド極真会館",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/pedro_granjo_453"
+ },
+ {
+  "name": "ホクト",
+  "en": "HOKUTO",
+  "gym": "FAMILIA/CANDY GYM",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/hokuto_539"
+ },
+ {
+  "name": "マルコス・リオス",
+  "en": "Marcos “Wasabi” RIOS",
+  "gym": "アルゼンチン",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/marcos_wasabi_rios_109"
+ },
+ {
+  "name": "ミサイル雄",
+  "en": "MISSILE Yu",
+  "gym": "ONE’S GOAL",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/missile_yu_354"
+ },
+ {
+  "name": "ミル・ブン・ティエン",
+  "en": "MEAS Bunthen",
+  "gym": "カンボジア",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/meas_bunthen_467"
+ },
+ {
+  "name": "ムン・メイキア",
+  "en": "MEUN Mekkhea",
+  "gym": "カンボジア",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/meun_mekkhea_390"
+ },
+ {
+  "name": "メディ・ジライフィ",
+  "en": "Mehdi JRAIFI",
+  "gym": "スペイン/TEAM CALBET",
+  "wclass": "-58.0kg",
+  "url": "https://knockoutkb.com/fighters/mehdi_jraifi_218"
+ },
+ {
+  "name": "モンダム・ウィラサクレック",
+  "en": "MONDAM Weerasakreck",
+  "gym": "タイ",
+  "wclass": "-63.0kg",
+  "url": "https://knockoutkb.com/fighters/mondam_weerasakreck_177"
+ },
+ {
+  "name": "やまちゃん",
+  "en": "YAMACHAN",
+  "gym": "K-1 GYM BLOWS",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/yamachan_450"
+ },
+ {
+  "name": "ユット・ZERO",
+  "en": "YUTTO Zero",
+  "gym": "ZERO",
+  "wclass": "-54.0kg",
+  "url": "https://knockoutkb.com/fighters/yutto_zero_246"
+ },
+ {
+  "name": "ユリアン・ポズドニアコフ",
+  "en": "YULIAN Pozdniakov",
+  "gym": "ウクライナ",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/yulian_pozdniakov_353"
+ },
+ {
+  "name": "ラジーナ",
+  "en": "RAJINA",
+  "gym": "エラワン・ムエタイジム",
+  "wclass": "ライトフライ級",
+  "url": "https://knockoutkb.com/fighters/rajina_342"
+ },
+ {
+  "name": "ラスメィ・クンクメール",
+  "en": "RASMEY Kun Khmer",
+  "gym": "カンボジア",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/rasmey_kun_khmer_469"
+ },
+ {
+  "name": "リー・シューハオ",
+  "en": "LI, Syue-hao",
+  "gym": "台湾/iFighting MMA 台灣",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/li_syue_hao_607"
+ },
+ {
+  "name": "リード・ミラー",
+  "en": "REID Miller",
+  "gym": "ニュージーランド",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/reid_miller_329"
+ },
+ {
+  "name": "リカルド・ブラボ",
+  "en": "RICARDO Bravo",
+  "gym": "伊原道場アルゼンチン支部",
+  "wclass": "-73.0kg",
+  "url": "https://knockoutkb.com/fighters/ricardo_bravo_257"
+ },
+ {
+  "name": "リュウ・ユエアル",
+  "en": "LIY Yueer",
+  "gym": "陕西大秦騫秋ファイトクラブ/CFP",
+  "wclass": "女子バンタム級",
+  "url": "https://knockoutkb.com/fighters/liy_yueer_572"
+ },
+ {
+  "name": "ルークナーム・コーコムキョウ",
+  "en": "LOOKNAM Kor.Khomkleaw",
+  "gym": "タイ",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/looknam_kor_khomkleaw_299"
+ },
+ {
+  "name": "ルアンペー・コマンドジム",
+  "en": "RUANPHAE Commando Gym",
+  "gym": "タイ",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/ruanphae_commando_gym_593"
+ },
+ {
+  "name": "ルイ",
+  "en": "LOUIE",
+  "gym": "クラミツムエタイジム",
+  "wclass": "女子スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/louie_552"
+ },
+ {
+  "name": "ルシア・アプデルガリム",
+  "en": "LUCIA Apdelgallim",
+  "gym": "アルゼンチン",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/lucia_apdelgallim"
+ },
+ {
+  "name": "ルンペット・センチャイジム",
+  "en": "RUNGPETCH Saenchai gym",
+  "gym": "センチャイムエタイジム",
+  "wclass": "-61.0kg",
+  "url": "https://knockoutkb.com/fighters/rungpetch_saenchai_gym_126"
+ },
+ {
+  "name": "レオナ・ペタス",
+  "en": "LEONA Pettas",
+  "gym": "THE SPIRIT GYM TEAM TOP ZEROS/LARA TOKYO",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/leona_pettas_584"
+ },
+ {
+  "name": "レンタ・ウォーワンチャイ",
+  "en": "RENTA WOR.WANCHAI",
+  "gym": "ウォーワンチャイプロモーション",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/renta_wor_wanchai"
+ },
+ {
+  "name": "ロムイーサン・TIGER REON",
+  "en": "LOM IEESAN TIGER REON",
+  "gym": "REON Fighting Sports Gym",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/lom_ieesan_tiger_reon_303"
+ },
+ {
+  "name": "ロンナチャイ・トー.ラミントラー",
+  "en": "RONNACHAI Tor.Ramintra",
+  "gym": "タイ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ronnachai_tor_ramintra_171"
+ },
+ {
+  "name": "ワン・チンロン",
+  "en": "Wang Ching Long",
+  "gym": "台湾/TKBA",
+  "wclass": "-49.5kg",
+  "url": "https://knockoutkb.com/fighters/wang_ching_long_164"
+ },
+ {
+  "name": "丈太",
+  "en": "JOTA",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/jota_588"
+ },
+ {
+  "name": "三上ヘンリー大智",
+  "en": "MIKAMI HENRY Daichi",
+  "gym": "格闘ドリーマーズ",
+  "wclass": "クルーザー級",
+  "url": "https://knockoutkb.com/fighters/mikami_henry_daichi_112"
+ },
+ {
+  "name": "三浦 健人",
+  "en": "MIURA Kento",
+  "gym": "パラエストラ広島",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/miura_kento_400"
+ },
+ {
+  "name": "三浦 柊哉",
+  "en": "MIURA Shuya",
+  "gym": "チーム・タイガーホーク",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/miura_shuya_360"
+ },
+ {
+  "name": "上汰",
+  "en": "UETA",
+  "gym": "SHINE沖縄",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ueta_524"
+ },
+ {
+  "name": "上野 仁弘",
+  "en": "UENO Masahiro",
+  "gym": "KNOCK OUT クロスポイント渋谷",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ueno_masahiro_248"
+ },
+ {
+  "name": "下地 奏人",
+  "en": "SHIMOJI Kanato",
+  "gym": "フリー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/shimoji_kanato"
+ },
+ {
+  "name": "下田 蓮",
+  "en": "SHIMODA Ren",
+  "gym": "Battle-Box",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/shimoda_ren_605"
+ },
+ {
+  "name": "不可思",
+  "en": "FUKASHI",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/fukashi_127"
+ },
+ {
+  "name": "世愛",
+  "en": "SEA",
+  "gym": "TEAM KAZE",
+  "wclass": "アトム 級",
+  "url": "https://knockoutkb.com/fighters/sea_488"
+ },
+ {
+  "name": "中島 凛太郎",
+  "en": "NAKAJIMA Rintaro",
+  "gym": "NEXT LEVEL渋谷",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/nakajima_rintaro_249"
+ },
+ {
+  "name": "中島 唯翔",
+  "en": "NAKASHIMA Yuito",
+  "gym": "MSKC",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/nakajima_yuito_534"
+ },
+ {
+  "name": "中島 弘貴",
+  "en": "NAKAJIMA Hiroki",
+  "gym": "NEXT LEVEL渋谷",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/nakajima_hiroki_104"
+ },
+ {
+  "name": "中島 隆徳",
+  "en": "NAKASHIMA Takanori",
+  "gym": "GET OVER 2005年4月",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/nakashima_takanori_97"
+ },
+ {
+  "name": "中嶋 翔吾",
+  "en": "NAKAJIMA Shogo",
+  "gym": "HOSOKAWAジム",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/nakajima_shogo_427"
+ },
+ {
+  "name": "中村 優作",
+  "en": "NAKAMURA Yusaku",
+  "gym": "TEAM FAUST",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/nakamura_yusaku"
+ },
+ {
+  "name": "中村 悠磨",
+  "en": "NAKAMURA Yuma",
+  "gym": "和術慧舟會 HEARTS",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/nakamura_yuma_384"
+ },
+ {
+  "name": "中田 真佐希",
+  "en": "NAKATA Masaki",
+  "gym": "格闘技 福永道場",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/nakata_masaki_284"
+ },
+ {
+  "name": "丹羽 圭介",
+  "en": "NIWA Keisuke",
+  "gym": "TEAMニワールド",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/niwa_keisuke_331"
+ },
+ {
+  "name": "久貝 飛雄馬",
+  "en": "KUGAI Hyuma",
+  "gym": "キックボクシングDROP",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/kugai_hyuma_529"
+ },
+ {
+  "name": "乙津 陸",
+  "en": "OTSU Riku",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/otsu_riku_124"
+ },
+ {
+  "name": "乱牙",
+  "en": "RANGA",
+  "gym": "フリー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/ranga_441"
+ },
+ {
+  "name": "五味 隆典",
+  "en": "GOMI Takanori",
+  "gym": "東林間ラスカルジム",
+  "wclass": "ミドル級",
+  "url": "https://knockoutkb.com/fighters/gomi_takanori"
+ },
+ {
+  "name": "井ノ本 煌貴",
+  "en": "INOMOTO Koki",
+  "gym": "LAILAPS東京北星ジム",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/inomoto_koki_74"
+ },
+ {
+  "name": "井上 竜太",
+  "en": "INOUE Ryuta",
+  "gym": "Hardworker",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/inoue_ryuta_252"
+ },
+ {
+  "name": "井上 舜矢",
+  "en": "INOUE Shunya",
+  "gym": "フリー",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/inoue_shunya_455"
+ },
+ {
+  "name": "井原 浩之",
+  "en": "IHARA Hiroyuki",
+  "gym": "ハーデスワークアウトジム",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/ihara_hiroyuki_585"
+ },
+ {
+  "name": "井原 駿平",
+  "en": "IHARA Shunpei",
+  "gym": "ワイルドシーサーコザ",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/ihara_shunpei_520"
+ },
+ {
+  "name": "井樋 大介",
+  "en": "IBI Daisuke",
+  "gym": "KNOCK OUT クロスポイント金沢",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/ibi_daisuke"
+ },
+ {
+  "name": "今村 りんたろう",
+  "en": "IMAMURA Rintaro",
+  "gym": "FIGHTER'S FLOW",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/imamura_rintaro_436"
+ },
+ {
+  "name": "今村 流星",
+  "en": "IMAMURA Ryusei",
+  "gym": "KINGS",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/imamura_ryusei_433"
+ },
+ {
+  "name": "仲川 広汰",
+  "en": "NAKAGAWA Kota",
+  "gym": "Ten Clover Gym",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/nakagawa_kota_182"
+ },
+ {
+  "name": "住田 真生",
+  "en": "SUMIDA Mao",
+  "gym": "マッハ道場",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/sumida_mao_370"
+ },
+ {
+  "name": "佐々木 昊生",
+  "en": "SASAKI Kosei",
+  "gym": "B.F.A-SEED",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/sasaki_kosei_457"
+ },
+ {
+  "name": "佐藤 優樹",
+  "en": "SATO Yuki",
+  "gym": "Katana Gym",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/sato_yuki_302"
+ },
+ {
+  "name": "佐藤 拓也",
+  "en": "SATO Takuya",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/sato_takuya_189"
+ },
+ {
+  "name": "保井 広輝",
+  "en": "YASUI Hiroki",
+  "gym": "LoT gym",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/yasui_hiroki_610"
+ },
+ {
+  "name": "倉本 一真",
+  "en": "KURAMOTO Kazuma",
+  "gym": "リバーサルジム新宿MeWe/MAJESTIC",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/kuramoto_kazuma_321"
+ },
+ {
+  "name": "偉武KICK",
+  "en": "IBU Kick",
+  "gym": "ナックルズGYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ibu_kick_608"
+ },
+ {
+  "name": "健太",
+  "en": "KENTA",
+  "gym": "NJKF・E.S.G",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/kenta_107"
+ },
+ {
+  "name": "優心",
+  "en": "YUSHIN",
+  "gym": "NJKF京都野口GYM",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/yushin_161"
+ },
+ {
+  "name": "優波",
+  "en": "YUNA",
+  "gym": "TFG EVOLVE",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/yuna_558"
+ },
+ {
+  "name": "優翔",
+  "en": "YUTO",
+  "gym": "team NOVA",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/yuto"
+ },
+ {
+  "name": "元山 祐希",
+  "en": "MOTOYAMA Yuki",
+  "gym": "武勇会",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/motoyama_yuki"
+ },
+ {
+  "name": "兼田 将暉",
+  "en": "KANEDA Shoki",
+  "gym": "RKS顕修塾",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/kaneda_shoki_274"
+ },
+ {
+  "name": "内田 晶",
+  "en": "UCHIDA Sho",
+  "gym": "チーム・タイガーホーク",
+  "wclass": "-56.0kg",
+  "url": "https://knockoutkb.com/fighters/uchida_sho_89"
+ },
+ {
+  "name": "内田 貴大",
+  "en": "UCHIDA Takahiro",
+  "gym": "MSJ KICK BOXING GYM",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/uchida_takahiro_279"
+ },
+ {
+  "name": "利共",
+  "en": "RITOMO",
+  "gym": "TOP RUN GYM",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/ritomo_78"
+ },
+ {
+  "name": "利根川 仁",
+  "en": "TONEGAWA Jin",
+  "gym": "Realiser STUDIO",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/tonegawa_jin_81"
+ },
+ {
+  "name": "前川 夏樹",
+  "en": "MAEKAWA Natsuki",
+  "gym": "クレイン目白",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/maekawa_natsuki_559"
+ },
+ {
+  "name": "前田 壮吉",
+  "en": "MAEDA Sokichi",
+  "gym": "リバーサルジム横浜グランドスラム",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/maeda_sokichi_434"
+ },
+ {
+  "name": "前田 大尊",
+  "en": "MAEDA Taison",
+  "gym": "マイウェイジム",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/maeda_taison_319"
+ },
+ {
+  "name": "前田 翔太",
+  "en": "MAEDA Shota",
+  "gym": "TRIMGYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/maeda_shota_110"
+ },
+ {
+  "name": "Apollo中山",
+  "en": "Apollo Nakayama",
+  "gym": "GOD SIDE GYM",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/apollo_nakayama_192"
+ },
+ {
+  "name": "Battle-Box / コーチ：木村“フィリップ”ミノル",
+  "en": "Battle-Box",
+  "gym": "Battle-Box",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/battlebox_542"
+ },
+ {
+  "name": "BEN”侍”Y’ZD",
+  "en": "BEN\"samurai\"Y'ED",
+  "gym": "Y`ZD GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/bensamuraiyed_288"
+ },
+ {
+  "name": "BONNIE",
+  "en": "BONNIE",
+  "gym": "MSJ KICK BOXING GYM",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/bonny_199"
+ },
+ {
+  "name": "CAZ JANJIRA",
+  "en": "CAZ JANJIRA",
+  "gym": "Team JANJIRA",
+  "wclass": "－71.5k",
+  "url": "https://knockoutkb.com/fighters/caz_janjira_88"
+ },
+ {
+  "name": "erika♡",
+  "en": "erika♡",
+  "gym": "SHINE沖縄",
+  "wclass": "47.0kg",
+  "url": "https://knockoutkb.com/fighters/erika_266"
+ },
+ {
+  "name": "ERIKO",
+  "en": "ERIKO",
+  "gym": "ファイティングラボ高田馬場",
+  "wclass": "ライトフライ級",
+  "url": "https://knockoutkb.com/fighters/eriko_255"
+ },
+ {
+  "name": "HARU",
+  "en": "HARU",
+  "gym": "MSJ KICK BOXING GYM",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/haru_201"
+ },
+ {
+  "name": "KAI",
+  "en": "KAI",
+  "gym": "フリー",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/kai_80"
+ },
+ {
+  "name": "KANA",
+  "en": "KANA",
+  "gym": "Bombo Freely",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/kana_484"
+ },
+ {
+  "name": "Kiho",
+  "en": "Kiho",
+  "gym": "KNOCK OUT GYM 調布",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/kiho_79"
+ },
+ {
+  "name": "KING剛",
+  "en": "KING Takeshi",
+  "gym": "ロイヤルキングス",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/king_takeshi_452"
+ },
+ {
+  "name": "剛大",
+  "en": "GOTA",
+  "gym": "Y’s glow",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/gota_152"
+ },
+ {
+  "name": "剣夜",
+  "en": "KENYA",
+  "gym": "SHINE沖縄",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/kenya_512"
+ },
+ {
+  "name": "力也",
+  "en": "RIKIYA",
+  "gym": "WSRフェアテックス湖北",
+  "wclass": "スーパーフェザー",
+  "url": "https://knockoutkb.com/fighters/rikiya"
+ },
+ {
+  "name": "力斗",
+  "en": "RIKITO",
+  "gym": "TEAM PREPARED",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/rikito_75"
+ },
+ {
+  "name": "加古 大晴",
+  "en": "KAKO Taisei",
+  "gym": "team Bonds",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/kako_taisei_394"
+ },
+ {
+  "name": "加藤 大智",
+  "en": "KATO Daichi",
+  "gym": "React Gym Shonan",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/suda_tomoki_532"
+ },
+ {
+  "name": "勇志",
+  "en": "YUSHI",
+  "gym": "テツジム関西",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/yushi_627"
+ },
+ {
+  "name": "勇成",
+  "en": "YUSEI",
+  "gym": "フォームドジム",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/yusei_410"
+ },
+ {
+  "name": "北島 颯人",
+  "en": "KITAJIMA Hayato",
+  "gym": "和術慧舟會AKZA",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/kitajima_hayato_312"
+ },
+ {
+  "name": "千羽 裕樹",
+  "en": "CHIBA Yuki",
+  "gym": "KNOCK OUT クロスポイント渋谷",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/chiba_yuki_166"
+ },
+ {
+  "name": "原田 ゆうな",
+  "en": "HARADA Yuna",
+  "gym": "SHINE沖縄",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/harada_yuna_536"
+ },
+ {
+  "name": "古木 誠也",
+  "en": "FURUKI Seiya",
+  "gym": "REX GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/furuki_seiya"
+ },
+ {
+  "name": "古村 光",
+  "en": "FURUMURA Hikaru",
+  "gym": "FURUMURA-GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/furumura_hikaru_68"
+ },
+ {
+  "name": "古村 匡平",
+  "en": "FURUMURA Kyohei",
+  "gym": "FURUMURA-GYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/furumura_kyohei_71"
+ },
+ {
+  "name": "吉宗、",
+  "en": "YOSHIMUNE、",
+  "gym": "心成塾/岡澤道場",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/yoshimune_589"
+ },
+ {
+  "name": "吉田 凜汰朗",
+  "en": "YOSHIDA Rintaro",
+  "gym": "VERTEX",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/yoshida_rintaro_591"
+ },
+ {
+  "name": "吉田 圭佑",
+  "en": "YOSHIDA Keisuke",
+  "gym": "WSRフェアテックス幕張",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/yoshida_keisuke_95"
+ },
+ {
+  "name": "吉野 友規",
+  "en": "YOSHINO Tomoki",
+  "gym": "STURGIS新宿",
+  "wclass": "スーパーミドル級",
+  "url": "https://knockoutkb.com/fighters/yoshino_tomoki_231"
+ },
+ {
+  "name": "向井 貫太",
+  "en": "MUKAI Kanta",
+  "gym": "WSRフェアテックス三ノ輪",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/mukai_kanta_203"
+ },
+ {
+  "name": "向坂 準之輔",
+  "en": "SAKISAKA Junnosuke",
+  "gym": "OOTA DOJO",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/sakisaka_junnosuke_570"
+ },
+ {
+  "name": "和美",
+  "en": "KAZUMI",
+  "gym": "ヒデズキック福岡",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/kazumi_442"
+ },
+ {
+  "name": "和術慧舟會 HEARTS / コーチ：大沢ケンジ",
+  "en": "HEARTS MMA",
+  "gym": "和術慧舟會 HEARTS",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/hearts_mma_543"
+ },
+ {
+  "name": "啓斗",
+  "en": "KEITO",
+  "gym": "team ALL-WIN",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/keito_609"
+ },
+ {
+  "name": "喜多村 美紀",
+  "en": "KITAMURA Miki",
+  "gym": "テツジム",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/kitamura_miki_225"
+ },
+ {
+  "name": "國元 楓磨",
+  "en": "KUNIMOTO Fuma",
+  "gym": "大阪政拳会",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/kunimoto_fuma_444"
+ },
+ {
+  "name": "國本 真義",
+  "en": "KUNIMOTO Masayoshi",
+  "gym": "MEIBUKAI",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/kunimoto_masayoshi_294"
+ },
+ {
+  "name": "坂本 梨香",
+  "en": "SAKAMOTO Rika",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "wclass": "-48.0kg",
+  "url": "https://knockoutkb.com/fighters/sakamoto_rika_313"
+ },
+ {
+  "name": "坂本 瑠華",
+  "en": "AKAMOTO Ruka",
+  "gym": "フリー",
+  "wclass": "-52.0kg",
+  "url": "https://knockoutkb.com/fighters/akamoto_ruka_157"
+ },
+ {
+  "name": "坂根 卓弥",
+  "en": "SAKANE Takuya",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/sakane_takuya_93"
+ },
+ {
+  "name": "坂田 実優",
+  "en": "SAKATA Miyuu",
+  "gym": "FELLOW GYM",
+  "wclass": "女子アトム級",
+  "url": "https://knockoutkb.com/fighters/sakata_miyuu_616"
+ },
+ {
+  "name": "城地 樹人",
+  "en": "JOCHI Mikito",
+  "gym": "FIGHTER'S FLOW",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/jochi_mikito_583"
+ },
+ {
+  "name": "堀田 優月",
+  "en": "HORITA Yuzuki",
+  "gym": "闘神塾",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/horita_yuzuki_310"
+ },
+ {
+  "name": "塚本 勝彦",
+  "en": "TSUKAMOTO Katsuhiko",
+  "gym": "TORNADO",
+  "wclass": "61.5kg",
+  "url": "https://knockoutkb.com/fighters/tsukamoto_katsuhiko_118"
+ },
+ {
+  "name": "壱・センチャイジム",
+  "en": "ISSEI Saenchai-Gym",
+  "gym": "センチャイムエタイジム",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/issei_saenchaigym"
+ },
+ {
+  "name": "夏目 竜雅",
+  "en": "NATSUME Ryuga",
+  "gym": "TRY HARD GYM",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/natsume_ryuga_508"
+ },
+ {
+  "name": "大岩 竜世",
+  "en": "OIWA Ryuse",
+  "gym": "KANALOA-GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/oiwa_ryuse_187"
+ },
+ {
+  "name": "大沢 文也",
+  "en": "OSAWA Fumiya",
+  "gym": "ザウルスプロモーション",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/osawa_fumiya_322"
+ },
+ {
+  "name": "大渕 翼",
+  "en": "OFUCHI Tsubasa",
+  "gym": "React Gym Shonan",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ofuchi_tsubasa_451"
+ },
+ {
+  "name": "大田 拓真",
+  "en": "OTA Takuma",
+  "gym": "新興ムエタイジム",
+  "wclass": "-57kg",
+  "url": "https://knockoutkb.com/fighters/ota_takuma_224"
+ },
+ {
+  "name": "大芽",
+  "en": "OGA",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/oga_565"
+ },
+ {
+  "name": "大谷 翔司",
+  "en": "OTANI Shoji",
+  "gym": "KNOCK OUT クロスポイント渋谷",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/otani_shoji"
+ },
+ {
+  "name": "大野 貴志",
+  "en": "ONO Takashi",
+  "gym": "士道館新座ジム",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/ono_takashi_176"
+ },
+ {
+  "name": "大雅",
+  "en": "TAIGA",
+  "gym": "TRY HARD GYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/taiga_493"
+ },
+ {
+  "name": "大﨑 草志",
+  "en": "OSAKI Soshi",
+  "gym": "STRUGGLE",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/osaki_soshi_190"
+ },
+ {
+  "name": "宇佐美 秀 メイソン",
+  "en": "Usami Hide MEISON",
+  "gym": "Battle-Box",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/usami_hide_meison_134"
+ },
+ {
+  "name": "宇山 京介",
+  "en": "UYAMA Kyosuke",
+  "gym": "KNOCK OUT クロスポイント渋谷",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/uyama_kyosuke_345"
+ },
+ {
+  "name": "守谷 佑介",
+  "en": "MORIYA Yusuke",
+  "gym": "フリー",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/moriya_yusuke_403"
+ },
+ {
+  "name": "安田 学登",
+  "en": "YASUDA Manato",
+  "gym": "クボジム",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/yasuda_manato_420"
+ },
+ {
+  "name": "安谷屋 智弘",
+  "en": "ADANIYA Tomohiro",
+  "gym": "氷ヲ刻メ／池田道場",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/adaniya_tomohiro_537"
+ },
+ {
+  "name": "安達 優心",
+  "en": "ADACHI Yushin",
+  "gym": "BRAVE FIGHT CLUB",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/adachi_yushin_431"
+ },
+ {
+  "name": "安達 浩平",
+  "en": "ADACHI Kohei",
+  "gym": "team AKATSUKI",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/adachi_kohei_247"
+ },
+ {
+  "name": "宗雅",
+  "en": "MUNEMASA",
+  "gym": "フリー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/munemasa_531"
+ },
+ {
+  "name": "実穂",
+  "en": "Miho",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/miho_356"
+ },
+ {
+  "name": "宮原 穣",
+  "en": "MIYAHARA Jo",
+  "gym": "MIYAHARA DOJO",
+  "wclass": "スーパーミドル級",
+  "url": "https://knockoutkb.com/fighters/miyahara_jo_480"
+ },
+ {
+  "name": "宮本 雅大",
+  "en": "MIYAMOTO Masahiro",
+  "gym": "ハーデスワークアウトジム",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/miyamoto_masahiro_300"
+ },
+ {
+  "name": "宮越 慶二郎",
+  "en": "MIYAKOSHI Keijiro",
+  "gym": "拳粋会宮越道場",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/miyakoshi_keijiro_262"
+ },
+ {
+  "name": "家下 歩",
+  "en": "IESHITA Ayumu",
+  "gym": "菅原道場",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/ieshita_ayumu_96"
+ },
+ {
+  "name": "富田 エレデネ",
+  "en": "TOMITA Erdene",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/tomita_erdene_301"
+ },
+ {
+  "name": "寺島 輝",
+  "en": "TERASHIMA Hikaru",
+  "gym": "TANG TANG FIGHT CLUB",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/terashima_hikaru_550"
+ },
+ {
+  "name": "小倉 えりか",
+  "en": "OGURA Erika",
+  "gym": "MWS",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/ogura_erika_293"
+ },
+ {
+  "name": "小倉 尚也",
+  "en": "OGURA Takaya",
+  "gym": "スクランブル渋谷",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/ogura_takaya_141"
+ },
+ {
+  "name": "小川 悠太",
+  "en": "OGAWA Yuta",
+  "gym": "誠真会館所沢道場",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/ogawa_yuta"
+ },
+ {
+  "name": "小林 丈晃",
+  "en": "Takeaki Kobayashi",
+  "gym": "練誠塾",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/takeaki_kobayashi_94"
+ },
+ {
+  "name": "小林 司",
+  "en": "KOBAYASHI Tsukasa",
+  "gym": "Sports 24",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/kobayashi_tsukasa_371"
+ },
+ {
+  "name": "小森 玲哉",
+  "en": "KOMORI Reiya",
+  "gym": "ONE`S GOAL",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/komori_reiya"
+ },
+ {
+  "name": "小田 尋久",
+  "en": "ODA Jinku",
+  "gym": "キックボクシングジム3K",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/oda_jinku_105"
+ },
+ {
+  "name": "小磯 哲史",
+  "en": "KOISO Tetsushi",
+  "gym": "TESSAI GYM",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/koiso_tetsushi_227"
+ },
+ {
+  "name": "小笠原 瑛作",
+  "en": "OGASAWARA Eisaku",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ogasawara_eisaku"
+ },
+ {
+  "name": "小笠原 裕典",
+  "en": "OGASAWARA Yukinori",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ogasawara_yukinori_204"
+ },
+ {
+  "name": "小野寺 龍亮",
+  "en": "ONODERA Ryusuke",
+  "gym": "無限塾 札幌白石支部",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/onodera_ryusuke_511"
+ },
+ {
+  "name": "山口 悠真",
+  "en": "YAMAGUCHI Yuma",
+  "gym": "ジムファイターズ",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/yamaguchi_yuma"
+ },
+ {
+  "name": "山岡 由忠",
+  "en": "YAMAOKA Yoshitada",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/yamaoka_yoshitada_226"
+ },
+ {
+  "name": "山崎 尚英",
+  "en": "Shoei Yamazaki",
+  "gym": "スタートゲートジム",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/shoei_yamazaki_214"
+ },
+ {
+  "name": "山崎 希恵",
+  "en": "YAMAZAKI Kie",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/yamazaki_kie_487"
+ },
+ {
+  "name": "山崎 滉太",
+  "en": "YAMAZAKI Kota",
+  "gym": "誠真会館所沢道場",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/yamazaki_kota"
+ },
+ {
+  "name": "山川 敏弘",
+  "en": "YAMAKAWA Toshihiro",
+  "gym": "京都野口ジム",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/yamakawa_toshihiro_562"
+ },
+ {
+  "name": "山本 太一",
+  "en": "Taichi Yamamoto",
+  "gym": "ケーアクティブ",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/taichi_yamamoto"
+ },
+ {
+  "name": "山本 響己",
+  "en": "YAMAMOTO Hibiki",
+  "gym": "K&K BOXING CLUB",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/yamamoto_hibiki_206"
+ },
+ {
+  "name": "山本“魂武羅”知美",
+  "en": "YAMAMOTO “Cobra” Tomomi",
+  "gym": "FAITH",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/yamamoto_cobra_tomomi_486"
+ },
+ {
+  "name": "山浦 迅也",
+  "en": "YAMAURA Jinya",
+  "gym": "北斗会館",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/yamaura_jinya_150"
+ },
+ {
+  "name": "山田 彪太朗",
+  "en": "YAMADA Kotaro",
+  "gym": "シーザージム",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/yamada_kotaro"
+ },
+ {
+  "name": "山田 真子",
+  "en": "YAMADA Mako",
+  "gym": "DŌJŌ JAPAN",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/yamada_mako_327"
+ },
+ {
+  "name": "山田 青空",
+  "en": "YAMADA Sora",
+  "gym": "GOD SIDE GYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/yamada_sora_156"
+ },
+ {
+  "name": "山野邉 嵐",
+  "en": "YAMANOBE Arashi",
+  "gym": "TRIBE TOKYO MMA",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/yamanobe_arashi_365"
+ },
+ {
+  "name": "岡田 彬宏",
+  "en": "OKADA Akihiro",
+  "gym": "クボジムーリレイズ東京ー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/okada_akihiro_347"
+ },
+ {
+  "name": "岡田 悠希",
+  "en": "OKADA Yuki",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/okada_yuki_438"
+ },
+ {
+  "name": "岩城 広武",
+  "en": "WAKI Kota",
+  "gym": "小樽MMA academy Desafio",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/waki_kota_100"
+ },
+ {
+  "name": "峯山 竜哉",
+  "en": "MINEYAMA Tatsuya",
+  "gym": "WSRフェアテックス西川口",
+  "wclass": "-68.5kg",
+  "url": "https://knockoutkb.com/fighters/mineyama_tatsuya_209"
+ },
+ {
+  "name": "川上 叶",
+  "en": "KAWAKAMI Kyo",
+  "gym": "龍生塾",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/kawakami_kyo_91"
+ },
+ {
+  "name": "川内 参星",
+  "en": "KAWAUCHI Mihoshi",
+  "gym": "JACK GYM",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/kawauchi_mihoshi_599"
+ },
+ {
+  "name": "川口 遵汰",
+  "en": "KAWAGUCHI Jutta",
+  "gym": "HOSOKAWAジム",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/kawaguchi_jutta_460"
+ },
+ {
+  "name": "川島 えりさ",
+  "en": "KAWASHIMA Erisa",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "45.0kg",
+  "url": "https://knockoutkb.com/fighters/kawashima_erisa_269"
+ },
+ {
+  "name": "川村 英樹",
+  "en": "KAWAMURA Hideki",
+  "gym": "リバーサルジム久喜WINGS",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/kawamura_hideki_358"
+ },
+ {
+  "name": "川端 駿太",
+  "en": "KAWABATA Shunta",
+  "gym": "SHINE沖縄",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/kawabata_shunta_349"
+ },
+ {
+  "name": "川野 龍輝",
+  "en": "KAWANO Ryuki",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/kawano_ryuki"
+ },
+ {
+  "name": "工藤 卓也",
+  "en": "KUDO Takuya",
+  "gym": "SHINE沖縄",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/kudo_takuya_147"
+ },
+ {
+  "name": "工藤“red”玲央",
+  "en": "KUDO “red” Reo",
+  "gym": "TEAM TEPPEN",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/kudo_red_reo_84"
+ },
+ {
+  "name": "市尾 宗太郎",
+  "en": "ICHIO Sotaro",
+  "gym": "和術慧舟會 HEARTS",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/ichio_sotaro_582"
+ },
+ {
+  "name": "希羅",
+  "en": "KIRA",
+  "gym": "MSJ KICK BOXING GYM",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/kira_73"
+ },
+ {
+  "name": "平出 雄大",
+  "en": "HIRAIDE Yudai",
+  "gym": "hangout",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/hiraide_yudai_408"
+ },
+ {
+  "name": "平原 陸",
+  "en": "HIRAHARA Riku",
+  "gym": "TRY HARD GYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/hirahara_riku_551"
+ },
+ {
+  "name": "平塚 洋二郎",
+  "en": "HIRATSUKA Yojiro",
+  "gym": "チーム・タイガーホーク/大道塾仙南支部",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/hiratsuka_yojiro_228"
+ },
+ {
+  "name": "平安 幸太郎",
+  "en": "HIRAYASU Kotaro",
+  "gym": "優志塾平安道場",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/hirayasu_kotaro_428"
+ },
+ {
+  "name": "平岡 琴",
+  "en": "HIRAOKA Koto",
+  "gym": "フリー",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/hiraoka_koto_567"
+ },
+ {
+  "name": "平川 蓮斗",
+  "en": "HIRAKAWA Rento",
+  "gym": "和術慧舟會 HEARTS",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/hirakawa_rento_363"
+ },
+ {
+  "name": "平石 公介",
+  "en": "HIRAISI Kosuke",
+  "gym": "和術慧⾈會 HEARTS",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/hiraisi_kosuke_325"
+ },
+ {
+  "name": "平野 凌我",
+  "en": "HIRANO Ryoga",
+  "gym": "MTS",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/hirano_ryoga_518"
+ },
+ {
+  "name": "幸希",
+  "en": "KOKI",
+  "gym": "KNOCK OUT クロスポイント拝島",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/koki_66"
+ },
+ {
+  "name": "庄司 啓馬",
+  "en": "SHOJI Keima",
+  "gym": "TEAM TEPPEN",
+  "wclass": "スーパーライト",
+  "url": "https://knockoutkb.com/fighters/shoji_keima"
+ },
+ {
+  "name": "康弘",
+  "en": "YASUHIRO",
+  "gym": "ゴリラジム",
+  "wclass": "-63.0kg",
+  "url": "https://knockoutkb.com/fighters/yasuhiro_258"
+ },
+ {
+  "name": "弘・センチャイジム",
+  "en": "KOTA Saenchai-Gym",
+  "gym": "センチャイムエタイジム",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/kota_saenchaigym_499"
+ },
+ {
+  "name": "弘樹",
+  "en": "HIROKI",
+  "gym": "Y'ZD南堀江GYM",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/hiroki_522"
+ },
+ {
+  "name": "彪羽",
+  "en": "HYO",
+  "gym": "チーム小樽コンバット",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/hyo_483"
+ },
+ {
+  "name": "心直",
+  "en": "SHINTA",
+  "gym": "REON Fighting sports GYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/shinta_142"
+ },
+ {
+  "name": "恵音",
+  "en": "AYANE",
+  "gym": "NEXT LEVEL渋谷",
+  "wclass": "ライトフライ級",
+  "url": "https://knockoutkb.com/fighters/ayane_489"
+ },
+ {
+  "name": "悠YAMATO",
+  "en": "YU Yamato",
+  "gym": "大和ジム",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/yu_yamato_215"
+ },
+ {
+  "name": "悠斗",
+  "en": "YUTO",
+  "gym": "東京町田金子ジム",
+  "wclass": "53kg",
+  "url": "https://knockoutkb.com/fighters/yuto_268"
+ },
+ {
+  "name": "愁斗",
+  "en": "SYUTO",
+  "gym": "Bombo Freely",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/syuto"
+ },
+ {
+  "name": "愛斗",
+  "en": "MANATO",
+  "gym": "真樹ジム糸満",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/manato_344"
+ },
+ {
+  "name": "愛来",
+  "en": "AIRA",
+  "gym": "一神會舘",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/aira_419"
+ },
+ {
+  "name": "KING弥百希",
+  "en": "KING Yaoki",
+  "gym": "ロイヤルキングス",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/king_yaoki_601"
+ },
+ {
+  "name": "KJ ヒロシ",
+  "en": "KJ Hiroshi",
+  "gym": "Y'ZD GYM沖縄",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/kj_hiroshi_516"
+ },
+ {
+  "name": "KNOCK OUT クロスポイント / コーチ：渡慶次幸平",
+  "en": "KNOCK OUT CROSS POINT",
+  "gym": "KNOCK OUT クロスポイント",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/knock_out_cross_point_541"
+ },
+ {
+  "name": "KO-KI BRAVELY",
+  "en": "KO-KI BRAVELY",
+  "gym": "BRAVELY GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/koki_bravely_374"
+ },
+ {
+  "name": "MAKURI",
+  "en": "MAKURI",
+  "gym": "VLOS",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/makuri_465"
+ },
+ {
+  "name": "MANGKORN YOK BRAVELY",
+  "en": "MANGKORN YOK BRAVELY",
+  "gym": "BRAVELY GYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/mangkorn_yok_bravely_72"
+ },
+ {
+  "name": "MASA BRAVELY",
+  "en": "MASA BRAVELY",
+  "gym": "BRAVELY GYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/masa_bravely_154"
+ },
+ {
+  "name": "MASATO BRAVELY",
+  "en": "MASATO BRAVELY",
+  "gym": "BRAVELY GYM",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/masato_bravely"
+ },
+ {
+  "name": "MIKU",
+  "en": "MIKU",
+  "gym": "K CRONY",
+  "wclass": "-52.0kg",
+  "url": "https://knockoutkb.com/fighters/miku_144"
+ },
+ {
+  "name": "MIREY",
+  "en": "MIREY",
+  "gym": "HIDE GYM",
+  "wclass": "46.5kg",
+  "url": "https://knockoutkb.com/fighters/mirey_271"
+ },
+ {
+  "name": "MIYU",
+  "en": "MIYU",
+  "gym": "DFC Team LEOS",
+  "wclass": "-46.0kg",
+  "url": "https://knockoutkb.com/fighters/miyu_315"
+ },
+ {
+  "name": "MOMO",
+  "en": "MOMO",
+  "gym": "エスジム",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/momo_355"
+ },
+ {
+  "name": "慧",
+  "en": "KEI",
+  "gym": "真樹ジムオキナワ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/kei_517"
+ },
+ {
+  "name": "慶伍",
+  "en": "KEIGO",
+  "gym": "FIGHT B _GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/keigo_456"
+ },
+ {
+  "name": "成尾 拓輝",
+  "en": "NARUO Hiroki",
+  "gym": "究道会館",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/naruo_hiroki_478"
+ },
+ {
+  "name": "我如古 優貴",
+  "en": "GANEKO Yuki",
+  "gym": "タイガーキック沖縄",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/ganeko_yuki_251"
+ },
+ {
+  "name": "戦闘員1号",
+  "en": "SENTOIN 1st",
+  "gym": "EXARES",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/sentoin_1st_482"
+ },
+ {
+  "name": "折戸 アトム",
+  "en": "ORITO Atom",
+  "gym": "PHOENIX",
+  "wclass": "61.5kg",
+  "url": "https://knockoutkb.com/fighters/orito_atom_117"
+ },
+ {
+  "name": "斎藤 千種",
+  "en": "SAITO Chigusa",
+  "gym": "白山道場",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/saito_chigusa_253"
+ },
+ {
+  "name": "新井 昂弥",
+  "en": "ARAI Takaya",
+  "gym": "Ten Clover Gym",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/arai_takaya_179"
+ },
+ {
+  "name": "新田 宗一朗",
+  "en": "ARATA Soichiro",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/arata_soichiro"
+ },
+ {
+  "name": "早川 悠太",
+  "en": "HAYAKAWA yuta",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/hayakawa_yuta_506"
+ },
+ {
+  "name": "旭野 穂",
+  "en": "ASAHINO Minoru",
+  "gym": "キャピタルレイズ fightingGlaNz池袋",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/asahino_minoru_119"
+ },
+ {
+  "name": "明夢",
+  "en": "Akimu",
+  "gym": "新興ムエタイジム",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/akimu_219"
+ },
+ {
+  "name": "星 拓海",
+  "en": "HOSHI Takumi",
+  "gym": "IDEAL GYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/hoshi_takumi_476"
+ },
+ {
+  "name": "星野 航大",
+  "en": "HOSHINO Kodai",
+  "gym": "TORNADO",
+  "wclass": "バンダム級",
+  "url": "https://knockoutkb.com/fighters/hoshino_kodai"
+ },
+ {
+  "name": "晃貴",
+  "en": "KOKI",
+  "gym": "team VASILEUS",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/koki_504"
+ },
+ {
+  "name": "智己",
+  "en": "TOMOMI",
+  "gym": "LARA TOKYO/スピリットジム仙台",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/tomomi_188"
+ },
+ {
+  "name": "暖",
+  "en": "HARU",
+  "gym": "GODBLESSGYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/haru_395"
+ },
+ {
+  "name": "曽根 修平",
+  "en": "SONE Shuhei",
+  "gym": "チャクリキ武湧会",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/sone_shuhei_233"
+ },
+ {
+  "name": "最希んぐ",
+  "en": "SAIKING",
+  "gym": "GODBLESSGYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/saiking_445"
+ },
+ {
+  "name": "有川 直毅",
+  "en": "ARIKAWA Naoki",
+  "gym": "フリー",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/arikawa_naoki_432"
+ },
+ {
+  "name": "木下 カラテ",
+  "en": "KINOSHITA Karate",
+  "gym": "和術慧⾈會 HEARTS",
+  "wclass": "-67.0kg",
+  "url": "https://knockoutkb.com/fighters/kinoshita_karate_387"
+ },
+ {
+  "name": "木村 亮彦",
+  "en": "KIMURA Akihiro",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/kimura_akihiro_98"
+ },
+ {
+  "name": "木村 涼仁",
+  "en": "KIMURA Ryoto",
+  "gym": "Bellus Gym",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/kimura_ryoto_367"
+ },
+ {
+  "name": "木村“フィリップ”ミノル",
+  "en": "Kimura Philip MINORU",
+  "gym": "Battle-Box",
+  "wclass": "72.0kg",
+  "url": "https://knockoutkb.com/fighters/kimura_philip_minoru_170"
+ },
+ {
+  "name": "杉原 新也",
+  "en": "SUGIHARA Shinya",
+  "gym": "ワイルドシーサー前橋",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/sugihara_shinya"
+ },
+ {
+  "name": "村松 一樹",
+  "en": "MURAMATSU Kazuki",
+  "gym": "WSR九州",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/muramatsu_kazuki_197"
+ },
+ {
+  "name": "松倉 信太郎",
+  "en": "MATSUKURA Shintaro",
+  "gym": "TRY HARD GYM",
+  "wclass": "-76.0kg",
+  "url": "https://knockoutkb.com/fighters/matsukura_shintaro_242"
+ },
+ {
+  "name": "松山 翔",
+  "en": "MATSUYAMA Sho",
+  "gym": "菅原道場",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/matsuyama_sho_158"
+ },
+ {
+  "name": "松岡 力",
+  "en": "MATSUOKA Riki",
+  "gym": "K-1ジム五反田チームキングス",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/matsuoka_riki_568"
+ },
+ {
+  "name": "松嶋 こよみ",
+  "en": "MATSUSHIMA Koyomi",
+  "gym": "IDEA ASAKUSA",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/matsushima_koyomi_418"
+ },
+ {
+  "name": "松本 大輝",
+  "en": "MATSUMOTO Daiki",
+  "gym": "パラエストラ八王子",
+  "wclass": "-65.0kg",
+  "url": "https://knockoutkb.com/fighters/matsumoto_daiki_173"
+ },
+ {
+  "name": "松本 将輝",
+  "en": "MATSUMOTO Masaki",
+  "gym": "リバーサルジム立川アルファ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/matsumoto_masaki_439"
+ },
+ {
+  "name": "松本 隼斗",
+  "en": "MATSUMOTO Hayato",
+  "gym": "リバーサルジム立川アルファ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/matsumoto_hayato_435"
+ },
+ {
+  "name": "松本 飛雅",
+  "en": "MATSUMOTO Hyuga",
+  "gym": "パラエストラ広島",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/matsumoto_hyuga_377"
+ },
+ {
+  "name": "松田 大将",
+  "en": "MATSUDA Taisho",
+  "gym": "WARRIOR OSAKA",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/matsuda_taisho_598"
+ },
+ {
+  "name": "松田 茄樹",
+  "en": "MATSUDA Nagi",
+  "gym": "progress gym",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/matsuda_nagi_425"
+ },
+ {
+  "name": "松藤 麻衣",
+  "en": "MATSUFUJI Mai",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "-52.0kg",
+  "url": "https://knockoutkb.com/fighters/matsufuji_mai_143"
+ },
+ {
+  "name": "林さん",
+  "en": "HAYASHISAN",
+  "gym": "GRABS kickboxing studio",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/hayashisan_306"
+ },
+ {
+  "name": "柚子貴",
+  "en": "YUZUKI",
+  "gym": "NJKF京都野口GYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/yuzuki_101"
+ },
+ {
+  "name": "柳澤 翔太",
+  "en": "YANAGISAWA Shota",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/yanagisawa_shota_145"
+ },
+ {
+  "name": "柴崎”ワンパンマン”亮",
+  "en": "SHIBASAKI “One Punch Man” Ryo",
+  "gym": "team AKATSUKI",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/shibasaki_one_punch_man_ryo_272"
+ },
+ {
+  "name": "柴田 真吾",
+  "en": "SHIBATA Shingo",
+  "gym": "フリー",
+  "wclass": "－66.0kg",
+  "url": "https://knockoutkb.com/fighters/shibata_shingo_85"
+ },
+ {
+  "name": "柿﨑 瑠",
+  "en": "KAKIZAKI Rui",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/kakizaki_rui"
+ },
+ {
+  "name": "栗野 耕作",
+  "en": "KURINO Kosaku",
+  "gym": "HAYATO GYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/kurino_kosaku_477"
+ },
+ {
+  "name": "根本 恵伍",
+  "en": "NEMOTO Keigo",
+  "gym": "ONE`S GOAL",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/nemoto_keigo_309"
+ },
+ {
+  "name": "梅尾 メイ",
+  "en": "UMEO Mei",
+  "gym": "B9 GYM",
+  "wclass": "50.8kg",
+  "url": "https://knockoutkb.com/fighters/umeo_mei_265"
+ },
+ {
+  "name": "梅沢 遼太郎",
+  "en": "UMEZWA Ryotaro",
+  "gym": "白山道場",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/umezwa_ryotaro_99"
+ },
+ {
+  "name": "梅津 ガブリエル",
+  "en": "UMEZU Gabriel",
+  "gym": "K-PLACE",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/umezu_gabriel_464"
+ },
+ {
+  "name": "梅野 源治",
+  "en": "UMENO Genji",
+  "gym": "PHOENIX",
+  "wclass": "-61.5kg",
+  "url": "https://knockoutkb.com/fighters/umeno_genji_213"
+ },
+ {
+  "name": "森岡 悠樹",
+  "en": "MORIOKA Yuki",
+  "gym": "北流会君津ジム",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/morioka_yuki_111"
+ },
+ {
+  "name": "森川 侑凜",
+  "en": "MORIKAWA Yuri",
+  "gym": "J-KRANG",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/morikawa_yuri_359"
+ },
+ {
+  "name": "森本 直哉",
+  "en": "MORIMOTO Naoya",
+  "gym": "フリー",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/morimoto_naoya_372"
+ },
+ {
+  "name": "横山  晏輝",
+  "en": "YOKOYAMA Haruki",
+  "gym": "リーブルロア",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/yokoyama_haruki_592"
+ },
+ {
+  "name": "横山 凉",
+  "en": "YOKOYAMA Ryo",
+  "gym": "WSRフェアテックス茨城",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/yokoyama_ryo_566"
+ },
+ {
+  "name": "横山 太一朗",
+  "en": "YOKOYAMA Taichiro",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/yokoyama_taichiro"
+ },
+ {
+  "name": "横野 洋",
+  "en": "YOKONO Hiro",
+  "gym": "キックボクシングジム3K",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/yokono_hiro_230"
+ },
+ {
+  "name": "橋本 天汰",
+  "en": "HASHIMOTO Tenta",
+  "gym": "ISHITSUNA MMA",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/hashimoto_tenta_361"
+ },
+ {
+  "name": "橋本 奏太朗",
+  "en": "HASHIMOTO Sotaro",
+  "gym": "和術慧舟會 HEARTS",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/hashimoto_sotaro_368"
+ },
+ {
+  "name": "武内 晴信",
+  "en": "TAKEUCHI Harunobu",
+  "gym": "TEAM PREPARED",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/takeuchi_harunobu_348"
+ },
+ {
+  "name": "武来安",
+  "en": "BRIAN",
+  "gym": "アメリカ/上州松井ジム",
+  "wclass": "-76.0kg",
+  "url": "https://knockoutkb.com/fighters/brian_241"
+ },
+ {
+  "name": "武蔵",
+  "en": "MUSASHI",
+  "gym": "WIVERN",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/musashi_155"
+ },
+ {
+  "name": "歩希",
+  "en": "IBUKI",
+  "gym": "team VASILEUS",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ibuki_498"
+ },
+ {
+  "name": "比嘉 龍一",
+  "en": "HIGA Ryuichi",
+  "gym": "TEAM PREPARED",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/higa_ryuichi_350"
+ },
+ {
+  "name": "水津 空良",
+  "en": "SUIZU Sora",
+  "gym": "優弥道場",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/suizu_sora_139"
+ },
+ {
+  "name": "永山 琉斗",
+  "en": "NAGAYAMA Ryuto",
+  "gym": "永山道場TEAMHRT",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/nagayama_ryuto_604"
+ },
+ {
+  "name": "江森 優惺",
+  "en": "EMORI Yusei",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/emori_yusei_376"
+ },
+ {
+  "name": "池田 航太",
+  "en": "IKEDA Kota",
+  "gym": "拳粋会宮越道場",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/ikeda_kota_146"
+ },
+ {
+  "name": "河坂 修斗",
+  "en": "KOSAKA Shuto",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/kosaka_shuto_623"
+ },
+ {
+  "name": "河崎 鎧輝",
+  "en": "KAWASAKI Kaiki",
+  "gym": "真樹ジムオキナワ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/kawasaki_kaiki_83"
+ },
+ {
+  "name": "河野 直次郎",
+  "en": "KAWANO Naojiro",
+  "gym": "CLIMB GYM",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/kawano_naojiro_454"
+ },
+ {
+  "name": "津崎 善郎",
+  "en": "TSUZAKI Yoshiro",
+  "gym": "LAILAPS東京北星ジム",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/tsuzaki_yoshiro_108"
+ },
+ {
+  "name": "津田 宗弥",
+  "en": "TSUDA Kazuya",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/tsuda_kazuya_138"
+ },
+ {
+  "name": "津田 翔",
+  "en": "TSUDA Kakeru",
+  "gym": "フリー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/tsuda_kakeru_379"
+ },
+ {
+  "name": "浅井 春香",
+  "en": "ASAI Haruka",
+  "gym": "フリー",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/asai_haruka_278"
+ },
+ {
+  "name": "浅川 大立",
+  "en": "ASAKAWA Hirotatu",
+  "gym": "MWS",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/asakawa_hirotatu_393"
+ },
+ {
+  "name": "海人",
+  "en": "KAITO",
+  "gym": "SHOOT BOXING／TEAM FOD",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/kaito_281"
+ },
+ {
+  "name": "清水 龍一",
+  "en": "SHIMIZU Ryuichi",
+  "gym": "React Gym Shonan",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/shimizu_ryuichi_579"
+ },
+ {
+  "name": "渋江 健司",
+  "en": "SHIBUE Kenji",
+  "gym": "Y’ZD GYM",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/shibue_kenji_578"
+ },
+ {
+  "name": "渋谷 昂治",
+  "en": "SHIBUYA Koji",
+  "gym": "東京町田金子ジム",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/shibuya_koji_250"
+ },
+ {
+  "name": "渚",
+  "en": "NAGISA",
+  "gym": "K-1ジム五反田チームキングス",
+  "wclass": "-56.25kg",
+  "url": "https://knockoutkb.com/fighters/nagisa_149"
+ },
+ {
+  "name": "渡口 耀",
+  "en": "TOGUCHI Yoh",
+  "gym": "Y'ZD GYM沖縄",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/togochi_yoh_519"
+ },
+ {
+  "name": "渡慶次 幸平",
+  "en": "TOKESHI Kohei",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/tokeshi_kohei_167"
+ },
+ {
+  "name": "渡辺 翔也",
+  "en": "WATANABE Shoya",
+  "gym": "D-BLAZE",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/watanabe_shoya_421"
+ },
+ {
+  "name": "渡部 太基",
+  "en": "WATABE Daiki",
+  "gym": "TEPPEN GYM",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/watabe_daiki"
+ },
+ {
+  "name": "渡部 惺",
+  "en": "WATANABE Seina",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/watanabe_seina_383"
+ },
+ {
+  "name": "渡部 蕾",
+  "en": "WATANABE Raina",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/watanabe_raina_200"
+ },
+ {
+  "name": "滝澤 直樹",
+  "en": "TAKIZAWA Naoki",
+  "gym": "Club TOSHI/GLION GYM",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/takizawa_naoki_380"
+ },
+ {
+  "name": "漁鬼",
+  "en": "RYOKI",
+  "gym": "SHINE沖縄",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/ryoki"
+ },
+ {
+  "name": "濱田 巧",
+  "en": "HAMADA Takumi",
+  "gym": "team AKATSUKI",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/hamada_takumi_244"
+ },
+ {
+  "name": "片島 聡志",
+  "en": "KATASHIMA Satoshi",
+  "gym": "Kick Life",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/katashima_satoshi_122"
+ },
+ {
+  "name": "珠璃",
+  "en": "SHURI",
+  "gym": "闘神塾",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/shuri_448"
+ },
+ {
+  "name": "瑠夏",
+  "en": "RUKA",
+  "gym": "フリー",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/ruka_462"
+ },
+ {
+  "name": "田中 頌大",
+  "en": "TANAKA Shodai",
+  "gym": "ONE`S GOAL",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/tanaka_shodai"
+ },
+ {
+  "name": "町田 光",
+  "en": "MACHIDA Hikaru",
+  "gym": "飯伏プロレス研究所",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/machida_hikaru_399"
+ },
+ {
+  "name": "白幡 裕星",
+  "en": "SHIRAHATA Yusei",
+  "gym": "Battle-Box",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/shirahata_yusei_211"
+ },
+ {
+  "name": "白雪 ゆき",
+  "en": "SHIRAYUKI Yuki",
+  "gym": "クボジムーリレイズ東京ー",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/shirayuki_yuki_586"
+ },
+ {
+  "name": "百田 海愛",
+  "en": "MOMODA Siia",
+  "gym": "誠友塾",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/momoda_siia_77"
+ },
+ {
+  "name": "皆川 裕哉",
+  "en": "MINAGAWA Yuya",
+  "gym": "KICK BOX",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/minagawa_yuya_491"
+ },
+ {
+  "name": "真琴",
+  "en": "MAKOTO",
+  "gym": "STRING FIGHT LAB",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/makoto_587"
+ },
+ {
+  "name": "真秀鷹虎センチャイジム",
+  "en": "MAHO Takatora Saenchai-GYM",
+  "gym": "センチャイムエタイジム",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/maho_takatora_saenchaigym_449"
+ },
+ {
+  "name": "矢野 来輝",
+  "en": "YANO Raiki",
+  "gym": "赤雲會",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/yano_raiki_556"
+ },
+ {
+  "name": "知花 優太",
+  "en": "CHIBANA Yuta",
+  "gym": "タイガーキック沖縄",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/chibana_yuta_521"
+ },
+ {
+  "name": "石原 海星",
+  "en": "ISHIHARA Kaisei",
+  "gym": "クロスポイント・パラエストラ拝島",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/ishihara_kaisei_603"
+ },
+ {
+  "name": "石川 直樹",
+  "en": "ISHIKAWA Naoki",
+  "gym": "KICKFUL GYM",
+  "wclass": "-54.5kg",
+  "url": "https://knockoutkb.com/fighters/ishikawa_naoki_229"
+ },
+ {
+  "name": "石渡 寛崇",
+  "en": "ISHIWATA Hirotaka",
+  "gym": "Fired Up Gym",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/ishiwata_hirotaka_475"
+ },
+ {
+  "name": "石田 協",
+  "en": "ISHIDA Kano",
+  "gym": "K-1 GYM SAGAMI-ONO KREST",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/ishida_kanou_401"
+ },
+ {
+  "name": "祐輝",
+  "en": "YOSHIKI",
+  "gym": "OU-BU GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/yoshiki_82"
+ },
+ {
+  "name": "祖根 亮麻",
+  "en": "SONE Ryoma",
+  "gym": "大和ジム",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/sone_ryouma_528"
+ },
+ {
+  "name": "祖根 寿麻",
+  "en": "SONE Kazuma",
+  "gym": "ZOOMER",
+  "wclass": "-63.0kg",
+  "url": "https://knockoutkb.com/fighters/sone_kazuma_388"
+ },
+ {
+  "name": "神保 克哉",
+  "en": "JINBO Katsuya",
+  "gym": "サクラバファミリア/K-1ジム蒲田",
+  "wclass": "スーパーミドル級",
+  "url": "https://knockoutkb.com/fighters/jinbo_katsuya_569"
+ },
+ {
+  "name": "神保 雄大",
+  "en": "JINBO Yuta",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/jinbo_yuta_137"
+ },
+ {
+  "name": "祟斗",
+  "en": "TAKATO",
+  "gym": "HAKUBI GYM team箔火",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/takayo_602"
+ },
+ {
+  "name": "祥子JSK",
+  "en": "SHOKO JSK",
+  "gym": "治政館",
+  "wclass": "47.0kg",
+  "url": "https://knockoutkb.com/fighters/shoko_jsk_267"
+ },
+ {
+  "name": "福 僚太",
+  "en": "FUKU Ryota",
+  "gym": "健成會",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/fuku_ryota_555"
+ },
+ {
+  "name": "福井 達郎",
+  "en": "FUKUI Tatsuro",
+  "gym": "BRAVE FIGHT CLUB",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/fukui_tatsuro_538"
+ },
+ {
+  "name": "福永 輝",
+  "en": "FUKUNAGA Hikaru",
+  "gym": "フリー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/fukunaga_hikaru_515"
+ },
+ {
+  "name": "福田 拓海",
+  "en": "FUKUDA Takumi",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/fukuda_takumi"
+ },
+ {
+  "name": "福田 海斗",
+  "en": "FUKUDA Kaito",
+  "gym": "キング・ムエ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/fukuda_kaito_564"
+ },
+ {
+  "name": "福田 貴也",
+  "en": "FUKUDA Takaya",
+  "gym": "ハーデスワークアウト",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/fukuda_takaya_437"
+ },
+ {
+  "name": "福里 優生",
+  "en": "FUKUSATO Yusei",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/fukusato_yusei_362"
+ },
+ {
+  "name": "NANA",
+  "en": "NANA",
+  "gym": "エスジム",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/nana"
+ },
+ {
+  "name": "Nao",
+  "en": "Nao",
+  "gym": "AXGYM",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/nao_373"
+ },
+ {
+  "name": "No-Ri-",
+  "en": "No-Ri-",
+  "gym": "ワイルドシーサーコザ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/nori_270"
+ },
+ {
+  "name": "PRANDAM BRAVELY",
+  "en": "PRANDAM BRAVELY",
+  "gym": "BRAVELY GYM",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/prandam_bravely_69"
+ },
+ {
+  "name": "REITO BRAVELY",
+  "en": "REITO BRAVELY",
+  "gym": "BRAVELY GYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/reito_bravely_163"
+ },
+ {
+  "name": "Ren TIGER REON",
+  "en": "Ren TIGER REON",
+  "gym": "REON Fighting Sports GYM",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/ren_tiger_reon_563"
+ },
+ {
+  "name": "RHINO",
+  "en": "RHINO",
+  "gym": "真樹ジム糸満",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/kurahasi_rino_535"
+ },
+ {
+  "name": "RUI JANJIRA",
+  "en": "RUI JANJIRA",
+  "gym": "JANJIRA GYM",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/ruijanjira_447"
+ },
+ {
+  "name": "RYUJU",
+  "en": "RYUJU",
+  "gym": "ワイルドシーサー前橋元総社",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/ryuju_136"
+ },
+ {
+  "name": "SHIORIN♡",
+  "en": "SHIORIN♡",
+  "gym": "GRATINESS",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/shiorin_485"
+ },
+ {
+  "name": "TAaaaCHAN",
+  "en": "TAaaaCHAN",
+  "gym": "PCK連闘会",
+  "wclass": "-64.0kg",
+  "url": "https://knockoutkb.com/fighters/taaaachan_185"
+ },
+ {
+  "name": "TaCa",
+  "en": "TaCa",
+  "gym": "キャピタルレイズ FG池袋",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/taca_159"
+ },
+ {
+  "name": "秋田 巴琉",
+  "en": "AKITA Haru",
+  "gym": "キング・ムエ",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/akita_haru_472"
+ },
+ {
+  "name": "秋田 芭菜",
+  "en": "AKITA Hana",
+  "gym": "キング・ムエ",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/akita_hana_343"
+ },
+ {
+  "name": "空龍",
+  "en": "KURYU",
+  "gym": "空修会館",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/kuryu_245"
+ },
+ {
+  "name": "竜矢",
+  "en": "RYUYA",
+  "gym": "伊原道場稲城支部",
+  "wclass": "-87.0kg",
+  "url": "https://knockoutkb.com/fighters/ryuya_238"
+ },
+ {
+  "name": "竜雅",
+  "en": "RYUGA",
+  "gym": "健成會",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/ryuga_596"
+ },
+ {
+  "name": "竹内 賢一",
+  "en": "TAKEUCHI Kenichi",
+  "gym": "TenCloverGym世田谷",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/takeuchi_kenichi_260"
+ },
+ {
+  "name": "竹田 哲紳",
+  "en": "TAKEDA Tesshin",
+  "gym": "クレイン",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/takeda_tesshin_151"
+ },
+ {
+  "name": "篠崎 竜之介",
+  "en": "SHINOZAKI Ryunosuke",
+  "gym": "ONE`S GOAL",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/shinozaki_ryunosuke_423"
+ },
+ {
+  "name": "米川 たすく",
+  "en": "YONEKAWA Tasuku",
+  "gym": "米川道場",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/yonekawa_tasuku_618"
+ },
+ {
+  "name": "紀州のマルちゃん",
+  "en": "KISHU No Maruchan",
+  "gym": "武勇会",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/kishu_no_maruchan_282"
+ },
+ {
+  "name": "繁那",
+  "en": "BANNA",
+  "gym": "R.S-GYM",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/banna_443"
+ },
+ {
+  "name": "美伶",
+  "en": "MIREI",
+  "gym": "WARRIOR OSAKA",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/mirei_296"
+ },
+ {
+  "name": "義斗",
+  "en": "YOSHITO",
+  "gym": "fplus team quest",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/yoshito_490"
+ },
+ {
+  "name": "羽村 りょうたろう",
+  "en": "HAMURA Ryotaro",
+  "gym": "CANDY GYM",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/hamura_ryotaro_404"
+ },
+ {
+  "name": "翔磨",
+  "en": "SHOMA",
+  "gym": "TEAM-ANOTHER",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/shoma_615"
+ },
+ {
+  "name": "老沼 隆斗",
+  "en": "OINUMA Ryuto",
+  "gym": "STRUGGLE",
+  "wclass": "-50.8kg",
+  "url": "https://knockoutkb.com/fighters/oinuma_ryuto_184"
+ },
+ {
+  "name": "般若HASHIMOTO",
+  "en": "HANNYA HASHIMOTO",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/hannya_hashimoto"
+ },
+ {
+  "name": "良太郎",
+  "en": "RYOTARO",
+  "gym": "池袋BLUE DOG GYM/team AKATSUKI",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/ryotaro_106"
+ },
+ {
+  "name": "茂木 豪汰",
+  "en": "MOGI Gota",
+  "gym": "上州松井ジム",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/mogi_gota_330"
+ },
+ {
+  "name": "草MAX",
+  "en": "KUSA Max",
+  "gym": "グラバカ赤羽",
+  "wclass": "ミドル",
+  "url": "https://knockoutkb.com/fighters/kusa_max_577"
+ },
+ {
+  "name": "荒井 幸太郎",
+  "en": "ARAI Kotaro",
+  "gym": "SUCCEED GYM",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/arai_kotaro_397"
+ },
+ {
+  "name": "菊地 美乃里",
+  "en": "KIKUCHI Minori",
+  "gym": "GONG-GYM坂戸",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/kikuchi_minori_326"
+ },
+ {
+  "name": "蒔・センチャイジム",
+  "en": "MACTO Saenchai-GYM",
+  "gym": "センチャイムエタイジム",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/macto_saenchaigym"
+ },
+ {
+  "name": "藁谷 兼介",
+  "en": "WARAGAI Kensuke",
+  "gym": "クロスポイント・パラエストラ拝島",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/waragai_kensuke_573"
+ },
+ {
+  "name": "藤原 将裕",
+  "en": "FUJIHARA Masahiro",
+  "gym": "MWS",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/fujihara_masahiro_346"
+ },
+ {
+  "name": "藤橋チャンミン",
+  "en": "FUJIHASHI Chanmin",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/fujihashi_chanmin_65"
+ },
+ {
+  "name": "蛇鬼 将矢",
+  "en": "JAKI Masaya",
+  "gym": "team阿修羅道/TOPGUNGYM",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/jaki_masaya_304"
+ },
+ {
+  "name": "西川 康平",
+  "en": "NISHIKAWA Kohei",
+  "gym": "8ball fitness",
+  "wclass": "ウェルター",
+  "url": "https://knockoutkb.com/fighters/nishikawa_kohei_70"
+ },
+ {
+  "name": "西村 介佑",
+  "en": "NISHIMURA Keisuke",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "-73.0kg",
+  "url": "https://knockoutkb.com/fighters/nishimura_keisuke_256"
+ },
+ {
+  "name": "西村 虎次郎",
+  "en": "NISHIMURA Kojiro",
+  "gym": "誰ツヨDOJOy",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/nishimura_kojiro_369"
+ },
+ {
+  "name": "角田 泰盛",
+  "en": "KAKUDA Taisei",
+  "gym": "CRAZY WOLF",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/kakuda_taisei_183"
+ },
+ {
+  "name": "角谷 祐介",
+  "en": "KAKUTANI Yusuke",
+  "gym": "NEXT LEVEL渋谷",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/kakutani_yusuke_273"
+ },
+ {
+  "name": "谷津 晴之",
+  "en": "TANITSU Haruyuki",
+  "gym": "新興ムエタイジム",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/tanitsu_haruyuki_590"
+ },
+ {
+  "name": "豊田 優輝",
+  "en": "TOYODA Yuki",
+  "gym": "BELLWOOD FIGHT TEAM",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/toyoda_yuki_140"
+ },
+ {
+  "name": "軍司 泰斗",
+  "en": "GUNJI Taito",
+  "gym": "TEAM SUERTE",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/gunji_taito_381"
+ },
+ {
+  "name": "辰樹",
+  "en": "TATSUKI",
+  "gym": "Y'ZD GYM沖縄",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/tatsuki_352"
+ },
+ {
+  "name": "辰次郎",
+  "en": "SHINJIRO",
+  "gym": "Sports 24",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/shinjiro_295"
+ },
+ {
+  "name": "辻井 和奏",
+  "en": "TSUJII Wakana",
+  "gym": "BRING IT ONパラエストラAKK",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/tsujii_wakana_501"
+ },
+ {
+  "name": "辻岡 怜恩",
+  "en": "TSUJIOKA Ren",
+  "gym": "直心会",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/tsujioka_ren_613"
+ },
+ {
+  "name": "辻村 秀綱",
+  "en": "TSUJIMURA Shuko",
+  "gym": "フリー",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/tsujimura_shuko_620"
+ },
+ {
+  "name": "透士",
+  "en": "TOji",
+  "gym": "TRASH",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/toji_561"
+ },
+ {
+  "name": "遊羅",
+  "en": "YURA",
+  "gym": "MWS",
+  "wclass": "-57.0kg",
+  "url": "https://knockoutkb.com/fighters/yura_305"
+ },
+ {
+  "name": "酒井 柚樹",
+  "en": "SAKAI Yuzuki",
+  "gym": "TEAM TEPPEN",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/sakai_yuzuki_129"
+ },
+ {
+  "name": "重森 陽太",
+  "en": "SHIGEMORI Yota",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/shigemori_yota"
+ },
+ {
+  "name": "鈴木 万李弥",
+  "en": "SUZUKI Mariya",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/suzuki_mariya_87"
+ },
+ {
+  "name": "鈴木 千裕",
+  "en": "SUZUKI Chihiro",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/suzuki_chihiro"
+ },
+ {
+  "name": "鈴木 悠斗",
+  "en": "SUZUKI Yuto",
+  "gym": "パラエストラ八王子",
+  "wclass": "スーパーミドル級",
+  "url": "https://knockoutkb.com/fighters/suzuki_yuto_626"
+ },
+ {
+  "name": "鈴木 萌",
+  "en": "SUZUKI Moe",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/suzuki_moe_198"
+ },
+ {
+  "name": "鈴木 貫太",
+  "en": "SUZUKI Kanta",
+  "gym": "ONE`S GOAL",
+  "wclass": "スーパーバンダム",
+  "url": "https://knockoutkb.com/fighters/suzuki_kanta"
+ },
+ {
+  "name": "銀次",
+  "en": "GINJI",
+  "gym": "VAINQUEUR GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ginji_243"
+ },
+ {
+  "name": "長谷川 柊哉",
+  "en": "HASEGAWA Shuya",
+  "gym": "和術慧舟會 HEARTS",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/hasegawa_shuya_474"
+ },
+ {
+  "name": "阿部 晴翔",
+  "en": "ABE Haruka",
+  "gym": "チーム・タイガーホーク",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/abe_haruka_165"
+ },
+ {
+  "name": "隼大",
+  "en": "HAYATO",
+  "gym": "Y'ZD GYM",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/hayato_385"
+ },
+ {
+  "name": "隼斗",
+  "en": "HAYATO",
+  "gym": "西田キックボクシングジム",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/hayato_220"
+ },
+ {
+  "name": "雅治",
+  "en": "MASAJI",
+  "gym": "レンジャージム",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/masaji"
+ },
+ {
+  "name": "響波",
+  "en": "KYOHA",
+  "gym": "Y’s glow",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/kyoha_168"
+ },
+ {
+  "name": "須田 知希",
+  "en": "SUDA Tomoki",
+  "gym": "Katana Gym",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/suda_tomoki_308"
+ },
+ {
+  "name": "風羽",
+  "en": "FUU",
+  "gym": "ファントム道場",
+  "wclass": "アトム級",
+  "url": "https://knockoutkb.com/fighters/fuu_510"
+ },
+ {
+  "name": "飯塚 剛志",
+  "en": "IIZUKA Tsuyoshi",
+  "gym": "GONG-GYM坂戸",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/iizuka_tsuyoshi_264"
+ },
+ {
+  "name": "馬上 一樹",
+  "en": "MOUE Kazuki",
+  "gym": "REX GYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/moue_kazuki_92"
+ },
+ {
+  "name": "駒形 賢太",
+  "en": "KOMAGATA Kenta",
+  "gym": "レンジャージム",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/komagata_kenta_240"
+ },
+ {
+  "name": "高塩 竜司",
+  "en": "TAKASHIO Ryuji",
+  "gym": "KIBAマーシャルアーツクラブ",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/takashio_ryuji_351"
+ },
+ {
+  "name": "高木 晟至",
+  "en": "TAKAGI Seiji",
+  "gym": "TEAM REI",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/takagi_seiji_364"
+ },
+ {
+  "name": "高梨 玲次郎",
+  "en": "TAKANASHI Reijiro",
+  "gym": "和術慧舟會 HEARTS",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/takanashi_reijiro_571"
+ },
+ {
+  "name": "高橋 幸光",
+  "en": "TAKAHASHI Yukimitsu",
+  "gym": "飯伏プロレス研究所",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/takahashi_yukimitsu_297"
+ },
+ {
+  "name": "高橋 秀駿",
+  "en": "TAKAHASHI Shuto",
+  "gym": "リバーサルジム立川ALPHA",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/takahashi_shuto_402"
+ },
+ {
+  "name": "髙山 敦",
+  "en": "TAKAYAMA Atsushi",
+  "gym": "Striking Gym Ares",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/takayama_atsushi_458"
+ },
+ {
+  "name": "髙木 逞",
+  "en": "TAKAGI Takuma",
+  "gym": "和術慧舟會 HEARTS",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/takagi_takuma_581"
+ },
+ {
+  "name": "髙橋 亨汰",
+  "en": "TAKAHASHI Kota",
+  "gym": "髙橋道場",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/takahashi_kota"
+ },
+ {
+  "name": "鮫島 大翔",
+  "en": "SAMESHIMA Hiroto",
+  "gym": "WSRフェアテックス荒川",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/sameshima_hiroto_153"
+ },
+ {
+  "name": "鳥居 大珠",
+  "en": "TORII Taiju",
+  "gym": "ワイルドシーサー前橋",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/torii_taiju_459"
+ },
+ {
+  "name": "鷹大",
+  "en": "TAKAHIRO",
+  "gym": "WSRフェアテックス西川口",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/takahiro_120"
+ },
+ {
+  "name": "麻太郎",
+  "en": "ASATARO",
+  "gym": "フリー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/asataro_509"
+ },
+ {
+  "name": "齊藤 冬翔",
+  "en": "SAITO Towa",
+  "gym": "EXFIGHT",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/saito_towa_366"
+ },
+ {
+  "name": "龍ノ息吹",
+  "en": "RYUNO Ibuki",
+  "gym": "フリー",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ryuno_ibuki_440"
+ },
+ {
+  "name": "龍希",
+  "en": "RYUKI",
+  "gym": "SUCCEED GYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/ryuki_426"
+ },
+ {
+  "name": "龍翔",
+  "en": "RYUGA",
+  "gym": "TRASH",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/ryuga_560"
+ },
+ {
+  "name": "龍聖",
+  "en": "RYUSEI",
+  "gym": "BRAID/TEAM SUERTE",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/ryusei"
+ },
+ {
+  "name": "TAKERU",
+  "en": "TAKERU",
+  "gym": "GET OVER",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/takeru_205"
+ },
+ {
+  "name": "TAKUYA",
+  "en": "TAKUYA",
+  "gym": "K CRONY",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/takuya_316"
+ },
+ {
+  "name": "THE BLACKBELT JAPAN / コーチ：鶴屋浩",
+  "en": "THE BLACKBELT JAPAN",
+  "gym": "THE BLACKBELT JAPAN",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/the_blackbelt_japan_544"
+ },
+ {
+  "name": "To Be Announced",
+  "en": "選手決定次第お知らせいたします。",
+  "gym": "TBA",
+  "wclass": "TBA",
+  "url": "https://knockoutkb.com/fighters/_533"
+ },
+ {
+  "name": "UNLIMITED最強ジムはどこだ！ジム対抗3vs3トーナメント準決勝 第1試合 の勝利チーム",
+  "en": "TBA",
+  "gym": "--",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/tba_553"
+ },
+ {
+  "name": "UNLIMITED最強ジムはどこだ！ジム対抗3vs3トーナメント準決勝 第2試合 の勝利チーム",
+  "en": "TBA",
+  "gym": "---",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/tba_554"
+ },
+ {
+  "name": "vic.YOSHI",
+  "en": "vic.YOSHI",
+  "gym": "OGUNI-GYM",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/vic_yoshi_210"
+ },
+ {
+  "name": "YOSHIHIRO",
+  "en": "YOSHIHIRO",
+  "gym": "teamYU-TO",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/yoshihiro_422"
+ },
+ {
+  "name": "yu-ki",
+  "en": "yu-ki",
+  "gym": "隆真GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/yuki_174"
+ },
+ {
+  "name": "YUYA",
+  "en": "YUYA",
+  "gym": "KNOCK OUT クロスポイント吉祥寺",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/yuya_130"
+ },
+ {
+  "name": "YUZUKI BRAVELY",
+  "en": "YUZUKI BRAVELY",
+  "gym": "BRAVELY GYM",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/yuzuki_bravely_67"
+ },
+ {
+  "name": "アイリン・ゴンザレス",
+  "en": "AYELEN Gonzalez",
+  "gym": "アルゼンチン",
+  "wclass": "ミニマム級",
+  "url": "https://knockoutkb.com/fighters/ayelen_gonzalez"
+ },
+ {
+  "name": "アックス斧田",
+  "en": "AX Onoda",
+  "gym": "KIBAマーシャルアーツクラブ",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/ax_onoda"
+ },
+ {
+  "name": "アフマド・チクムーサ",
+  "en": "Ahmad Chickmousa",
+  "gym": "ドイツ",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/ahmad_chickmousa_628"
+ },
+ {
+  "name": "アム・ザ・ロケット",
+  "en": "AMP The Rocket",
+  "gym": "タイ/Elite Fight Club",
+  "wclass": "ライトフライ級",
+  "url": "https://knockoutkb.com/fighters/amp_the_rocket_414"
+ },
+ {
+  "name": "アレン・クラーク",
+  "en": "ALEN Kalac",
+  "gym": "ドイツ",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/alen_kalac_513"
+ },
+ {
+  "name": "イティポン・シットポージョーウォー",
+  "en": "AITTHIPHON Por Jorwor",
+  "gym": "タイ/ノーナクシンムエタイジム",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/aitthiphon_por_jorwor_415"
+ },
+ {
+  "name": "ヴィニシウス",
+  "en": "VINICIUS",
+  "gym": "クボジム/BRAVE GYM",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/vinicius_481"
+ },
+ {
+  "name": "ウィン・シットチェニイム",
+  "en": "WIN Sitchenim",
+  "gym": "タイ",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/win_sitchenim_128"
+ },
+ {
+  "name": "エイ・マムリンプートング",
+  "en": "EH Amerinphouthong",
+  "gym": "カンボジア",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/eh_amerinphouthong"
+ },
+ {
+  "name": "エイル ルーククロンタン",
+  "en": "EIRU Lukklongtan",
+  "gym": "HIDE GYM",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/eiru_lukklongtan_375"
+ },
+ {
+  "name": "エミール・アラゾフ",
+  "en": "EMIL Allazov",
+  "gym": "ベラルーシ",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/emil_allazov"
+ },
+ {
+  "name": "エミリー・チャン",
+  "en": "EMILY chong",
+  "gym": "香港/Warrior Hong Kong",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/emily_chong_507"
+ },
+ {
+  "name": "オルベン・キンジ",
+  "en": "ORUBEN Kinji",
+  "gym": "K-PLACE",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/oruben_kinji_461"
+ },
+ {
+  "name": "カミ シロ",
+  "en": "KAMI SHIRO",
+  "gym": "PHOENIX",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/kami_shiro_194"
+ },
+ {
+  "name": "カルロス・モタ",
+  "en": "CARLOS Mota",
+  "gym": "ブラジル",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/carlos_mota_323"
+ },
+ {
+  "name": "カン・ジュヒョン",
+  "en": "KANG Juhyung",
+  "gym": "Kangsung gym",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/kang_juhyung_76"
+ },
+ {
+  "name": "キム・ウスン",
+  "en": "KIM WOO SEUNG",
+  "gym": "韓国/仁川MOOVI GYM",
+  "wclass": "-63kg",
+  "url": "https://knockoutkb.com/fighters/kim_woo_seung_103"
+ },
+ {
+  "name": "ギンペット・バーンランバー",
+  "en": "KINGPHET Baanramba",
+  "gym": "タイ/バーンランバージム",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/kingphet_baanramba_497"
+ },
+ {
+  "name": "グ・テウォン",
+  "en": "KU Taewon",
+  "gym": "韓国/YAK GYM",
+  "wclass": "フェザー級",
+  "url": "https://knockoutkb.com/fighters/ku_taewon_186"
+ },
+ {
+  "name": "クラマック・チャンラッチ",
+  "en": "KORAMAK Chanrach",
+  "gym": "カンボジア",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/koramak_chanrach_624"
+ },
+ {
+  "name": "クルンタイ・ティーデッド99",
+  "en": "KRUNGTHAI T-Ded99",
+  "gym": "タイ",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/krungthai_tded99_514"
+ },
+ {
+  "name": "クンタップ・チャロンチャイ",
+  "en": "KUNTAP Charoenchai",
+  "gym": "タイ/TEAM KUNTAP",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/kuntap_charoenchai_123"
+ },
+ {
+  "name": "ゲーオガンワーン・ソー.アムヌワイデッー",
+  "en": "KAEWGANWAN Sor.Amnuwaides",
+  "gym": "タイ",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/kaewganwan_sor_amnuwaides_411"
+ },
+ {
+  "name": "ケイスリィ・ヴァンス",
+  "en": "Kaithly VANCE",
+  "gym": "オーストラリア",
+  "wclass": "-48.0kg",
+  "url": "https://knockoutkb.com/fighters/kaithly_vance_115"
+ },
+ {
+  "name": "コ・ユナ",
+  "en": "KO Yuna",
+  "gym": "韓国/バディキックジム",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/ko_yuna_595"
+ },
+ {
+  "name": "コーンリーチ",
+  "en": "KHONREACH",
+  "gym": "カンボジア",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/khonreach_217"
+ },
+ {
+  "name": "コウシ・ノーナクシン",
+  "en": "KOSHI Nor.naksin",
+  "gym": "ウォーワンチャイプロモーション",
+  "wclass": "フライ級",
+  "url": "https://knockoutkb.com/fighters/koshi_nor_naksin_495"
+ },
+ {
+  "name": "ゴンナパー・ウィラサクレック",
+  "en": "KONGNAPA Weerasakreck",
+  "gym": "タイ/ウィラサクレック・フェアテックスジム",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/kongnapa_weerasakreck_328"
+ },
+ {
+  "name": "サッシス",
+  "en": "SAKSITH",
+  "gym": "カンボジア",
+  "wclass": "-72.0kg",
+  "url": "https://knockoutkb.com/fighters/saksith_223"
+ },
+ {
+  "name": "ザリーナ・イスラモバ",
+  "en": "ZARINA Islamova",
+  "gym": "ロシア",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/zarina_islamova_389"
+ },
+ {
+  "name": "サン・ラデット",
+  "en": "SEN Radet",
+  "gym": "カンボジア",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/sen_radet_466"
+ },
+ {
+  "name": "サンチャイ・TEPPEN GYM",
+  "en": "SANCHAI Teppen-gym",
+  "gym": "TEPPEN GYM",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/sanchai_teppengym_125"
+ },
+ {
+  "name": "サンティアゴ・ペルシバル",
+  "en": "SANTIAGO",
+  "gym": "アルゼンチン",
+  "wclass": "スーパーバンタム級",
+  "url": "https://knockoutkb.com/fighters/santiago"
+ },
+ {
+  "name": "ジェイク”Outlaw”ウィルキンス",
+  "en": "JAKE\"outlaw\"wilkins",
+  "gym": "フリー",
+  "wclass": "-67.5kg",
+  "url": "https://knockoutkb.com/fighters/jakeoutlawwilkins_378"
+ },
+ {
+  "name": "シッティチャイ・シッソンピーノン",
+  "en": "SITTHICHAI Sitsongpeenong",
+  "gym": "タイ",
+  "wclass": "スーパーウェルター級",
+  "url": "https://knockoutkb.com/fighters/sitthichai_sitsongpeenong_494"
+ },
+ {
+  "name": "ジャマル・ワヒィム",
+  "en": "JAMAL Wahim",
+  "gym": "フランス",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/jamal_wahim_133"
+ },
+ {
+  "name": "ジャン・チャオ",
+  "en": "ZHANG Chao",
+  "gym": "中国/中山拓武ジム/CFP",
+  "wclass": "ウェルター級",
+  "url": "https://knockoutkb.com/fighters/zhang_chao_417"
+ },
+ {
+  "name": "スーパー・ヤイ・チャン",
+  "en": "SUPER Yay Chan",
+  "gym": "ミャンマー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/super_yay_chan_547"
+ },
+ {
+  "name": "スアマニー・ゲーオサムリット",
+  "en": "SUEAMANEE Kaewsamrit",
+  "gym": "タイ",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/sueamanee_kaewsamrit_424"
+ },
+ {
+  "name": "スパイク・カーライル",
+  "en": "SPIKE Carlyle",
+  "gym": "Naughty House",
+  "wclass": "スーパーミドル級",
+  "url": "https://knockoutkb.com/fighters/spike_carlyle_479"
+ },
+ {
+  "name": "セーンサックグン・オー.カムイン",
+  "en": "Saensakgun Oh.Kamint",
+  "gym": "タイ",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/saensakgun_oh_kamint_471"
+ },
+ {
+  "name": "セーンダオレック・スターライトジム",
+  "en": "SAENG Dawlek star light-gym",
+  "gym": "タイ/スターライトジム",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/saeng_dawlek_star_light"
+ },
+ {
+  "name": "セントリー・クンクメール",
+  "en": "SENTRY Kunkhmer",
+  "gym": "カンボジア",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/sentry_kunkhmer_502"
+ },
+ {
+  "name": "ソー・バー・ヘイン",
+  "en": "SAW Ba Hein",
+  "gym": "ミャンマー",
+  "wclass": "ライト級",
+  "url": "https://knockoutkb.com/fighters/saw_ba_hein_548"
+ },
+ {
+  "name": "そら・BAAN RAMBAA",
+  "en": "SORA・BAAN RAMBAA",
+  "gym": "K-1 GYM RING TAIKOH",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/sorabaan_rambaa_396"
+ },
+ {
+  "name": "ソンピチャイ・センチャイジム",
+  "en": "SONPHICHAI Saenchai-Gym",
+  "gym": "センチャイムエタイジム",
+  "wclass": "スーパーフェザー級",
+  "url": "https://knockoutkb.com/fighters/sonphichai_saenchaigym_357"
+ },
+ {
+  "name": "ゾンビネーター今吉",
+  "en": "ZOMBINATER Imayoshi",
+  "gym": "GOD SIDE GYM",
+  "wclass": "スーパーフライ級",
+  "url": "https://knockoutkb.com/fighters/zombinater_imayoshi_237"
+ },
+ {
+  "name": "タイソンRINA",
+  "en": "TYSON Rina",
+  "gym": "TEAM TEPPEN",
+  "wclass": "バンタム級",
+  "url": "https://knockoutkb.com/fighters/tyson_rina_500"
+ },
+ {
+  "name": "タクミ",
+  "en": "TAKUMI",
+  "gym": "富士見group",
+  "wclass": "スーパーライト級",
+  "url": "https://knockoutkb.com/fighters/takumi_405"
+ },
+ {
+  "name": "羽黒 慈夢",
+  "en": "HAGURO Jimu",
+  "gym": "KNOCK OUT クロスポイント大泉",
+  "wclass": null,
+  "url": "https://knockoutkb.com/fighters/haguro_jimu"
+ }
+]

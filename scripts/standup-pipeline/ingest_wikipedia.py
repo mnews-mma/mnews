@@ -249,6 +249,10 @@ def parse_fight_rows(wikitext):
         # 元号注記(全角/半角括弧)を任意で許容する。
         dm = re.search(r"(\d{4})年(?:[（(][^）)]*[）)])?(\d{1,2})月(\d{1,2})日", date_raw)
         date = f"{dm.group(1)}-{int(dm.group(2)):02d}-{int(dm.group(3)):02d}" if dm else None
+        # 2026-08-21追加: 暦上存在しない日付(実例: 2025年はうるう年でないのに
+        # 「2025年2月29日」)の救済。_bouts.py参照。datePublished(JSON-LD)は
+        # Wikipedia記事wikitextには無いため、事実上「wikitext全体からの再検索」のみ効く。
+        date = _bouts.resolve_invalid_calendar_date(date, wikitext)
         rows.append(dict(mark=mark, opponent=opponent, method=method, event=event_clean, date=date))
     return rows
 

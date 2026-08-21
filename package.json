@@ -48,6 +48,7 @@
     "check:kick-one-manifest-coverage": "tsx scripts/check-kick-one-manifest-coverage.ts",
     "check:kick-unknown-result-fallback": "tsx scripts/check-kick-unknown-result-fallback-gate.ts",
     "check:kick-kanji-variant-resolution": "tsx scripts/check-kick-kanji-variant-resolution-gate.ts",
+    "check:kick-fighters-frozen": "tsx scripts/check-kick-fighters-frozen-gate.ts",
     "test:kick-name-normalize": "tsx scripts/test-kick-name-normalize.ts",
     "test:kick-gym-suffix-split": "tsx scripts/test-kick-gym-suffix-split.ts",
     "test:kick-nickname-dedupe": "tsx scripts/test-kick-nickname-dedupe.ts",

@@ -1,0 +1,1912 @@
+[
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/taiga/",
+   "https://knockoutkb.com/fighters/taiga_493"
+  ],
+  "existing_name": "大雅",
+  "k1_url": "https://www.k-1.co.jp/fighter/3",
+  "k1_id": "3",
+  "grounds": [
+   "所属ジム一致('TRY HARD GYM' / 'TRY HARD GYM')"
+  ],
+  "dob": "1996.8.14"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/卜部功也"
+  ],
+  "existing_name": "卜部功也",
+  "k1_url": "https://www.k-1.co.jp/fighter/5",
+  "k1_id": "5",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1990.6.8)"
+  ],
+  "dob": "1990.6.8"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/卜部弘嵩"
+  ],
+  "existing_name": "卜部弘嵩",
+  "k1_url": "https://www.k-1.co.jp/fighter/7",
+  "k1_id": "7",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1989.5.13)"
+  ],
+  "dob": "1989.5.13"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/山崎秀晃"
+  ],
+  "existing_name": "山崎秀晃",
+  "k1_url": "https://www.k-1.co.jp/fighter/8",
+  "k1_id": "8",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1987.2.5)"
+  ],
+  "dob": "1987.2.5"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/nakajima_hiroki_104",
+   "https://ja.wikipedia.org/wiki/中島弘貴"
+  ],
+  "existing_name": "中島 弘貴",
+  "k1_url": "https://www.k-1.co.jp/fighter/11",
+  "k1_id": "11",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1988.7.5)"
+  ],
+  "dob": "1988.7.5"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/久保優太"
+  ],
+  "existing_name": "久保優太",
+  "k1_url": "https://www.k-1.co.jp/fighter/13",
+  "k1_id": "13",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1987.10.19)"
+  ],
+  "dob": "1987.10.19"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/HIROYA"
+  ],
+  "existing_name": "HIROYA",
+  "k1_url": "https://www.k-1.co.jp/fighter/15",
+  "k1_id": "15",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1992.1.6)"
+  ],
+  "dob": "1992.1.6"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/山本優弥"
+  ],
+  "existing_name": "山本優弥",
+  "k1_url": "https://www.k-1.co.jp/fighter/24",
+  "k1_id": "24",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1984.7.15)"
+  ],
+  "dob": "1984.7.15"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/瀧谷渉太"
+  ],
+  "existing_name": "瀧谷渉太",
+  "k1_url": "https://www.k-1.co.jp/fighter/33",
+  "k1_id": "33",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1989.4.15)"
+  ],
+  "dob": "1989.4.15"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/野杁正明"
+  ],
+  "existing_name": "野杁正明",
+  "k1_url": "https://www.k-1.co.jp/fighter/41",
+  "k1_id": "41",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1993.5.11)"
+  ],
+  "dob": "1993.5.11"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/出貝泰佑"
+  ],
+  "existing_name": "出貝泰佑",
+  "k1_url": "https://www.k-1.co.jp/fighter/62",
+  "k1_id": "62",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1982.5.14)"
+  ],
+  "dob": "1982.5.14"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/武尊"
+  ],
+  "existing_name": "武尊",
+  "k1_url": "https://www.k-1.co.jp/fighter/64",
+  "k1_id": "64",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1991.7.29)"
+  ],
+  "dob": "1991.7.29"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/terado_nobuchika/",
+   "https://ja.wikipedia.org/wiki/寺戸伸近"
+  ],
+  "existing_name": "寺戸伸近",
+  "k1_url": "https://www.k-1.co.jp/fighter/65",
+  "k1_id": "65",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.9.9)"
+  ],
+  "dob": "1980.9.9"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/高萩勉"
+  ],
+  "existing_name": "高萩ツトム",
+  "k1_url": "https://www.k-1.co.jp/fighter/93",
+  "k1_id": "93",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1982.12.20)"
+  ],
+  "dob": "1982.12.20"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/kazuhito/"
+  ],
+  "existing_name": "一仁",
+  "k1_url": "https://www.k-1.co.jp/fighter/120",
+  "k1_id": "120",
+  "grounds": [
+   "所属ジム一致('真樹ジムAICHI' / '真樹ジムAICHI')"
+  ],
+  "dob": "1990.3.12"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/gunji_taito_381",
+   "https://ja.wikipedia.org/wiki/軍司泰斗"
+  ],
+  "existing_name": "軍司 泰斗",
+  "k1_url": "https://www.k-1.co.jp/fighter/125",
+  "k1_id": "125",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1999.1.17)"
+  ],
+  "dob": "1999.1.17"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/闘魔"
+  ],
+  "existing_name": "闘魔",
+  "k1_url": "https://www.k-1.co.jp/fighter/145",
+  "k1_id": "145",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1987.11.3)"
+  ],
+  "dob": "1987.11.3"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/宮元啓介"
+  ],
+  "existing_name": "宮元啓介",
+  "k1_url": "https://www.k-1.co.jp/fighter/157",
+  "k1_id": "157",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1992.12.16)"
+  ],
+  "dob": "1992.12.16"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/石川直生"
+  ],
+  "existing_name": "石川直生",
+  "k1_url": "https://www.k-1.co.jp/fighter/171",
+  "k1_id": "171",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1979.4.18)"
+  ],
+  "dob": "1979.4.18"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/皇治"
+  ],
+  "existing_name": "皇治",
+  "k1_url": "https://www.k-1.co.jp/fighter/184",
+  "k1_id": "184",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1989.5.6)"
+  ],
+  "dob": "1989.5.6"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/八神剣太"
+  ],
+  "existing_name": "八神剣太",
+  "k1_url": "https://www.k-1.co.jp/fighter/204",
+  "k1_id": "204",
+  "grounds": [
+   "生年月日一致(1986.4.12)"
+  ],
+  "dob": "1986.4.12"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/青津潤平"
+  ],
+  "existing_name": "青津潤平",
+  "k1_url": "https://www.k-1.co.jp/fighter/211",
+  "k1_id": "211",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1984.4.23)"
+  ],
+  "dob": "1984.4.23"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/板橋寛"
+  ],
+  "existing_name": "板橋寛",
+  "k1_url": "https://www.k-1.co.jp/fighter/213",
+  "k1_id": "213",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1982.9.1)"
+  ],
+  "dob": "1982.9.1"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/osawa_fumiya_322"
+  ],
+  "existing_name": "大沢 文也",
+  "k1_url": "https://www.k-1.co.jp/fighter/216",
+  "k1_id": "216",
+  "grounds": [
+   "所属ジム一致('ザウルスプロモーション' / 'ザウルスプロモーション')"
+  ],
+  "dob": "1991.9.11"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/kitai_tomohiro/"
+  ],
+  "existing_name": "北井智大",
+  "k1_url": "https://www.k-1.co.jp/fighter/222",
+  "k1_id": "222",
+  "grounds": [
+   "所属ジム一致('チームドラゴン' / 'チームドラゴン')"
+  ],
+  "dob": "1991.9.1"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/島野浩太朗"
+  ],
+  "existing_name": "島野浩太朗",
+  "k1_url": "https://www.k-1.co.jp/fighter/229",
+  "k1_id": "229",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり"
+  ],
+  "dob": "1992.6.8"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/辻出優翔"
+  ],
+  "existing_name": "辻出優翔",
+  "k1_url": "https://www.k-1.co.jp/fighter/239",
+  "k1_id": "239",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1993.3.27)"
+  ],
+  "dob": "1993.3.27"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/安保瑠輝也"
+  ],
+  "existing_name": "安保瑠輝也",
+  "k1_url": "https://www.k-1.co.jp/fighter/260",
+  "k1_id": "260",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1995.10.29)"
+  ],
+  "dob": "1995.10.29"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/尾崎圭司"
+  ],
+  "existing_name": "尾崎圭司",
+  "k1_url": "https://www.k-1.co.jp/fighter/272",
+  "k1_id": "272",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.4.24)"
+  ],
+  "dob": "1980.4.24"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/梶原龍児"
+  ],
+  "existing_name": "梶原龍児",
+  "k1_url": "https://www.k-1.co.jp/fighter/274",
+  "k1_id": "274",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1976.12.9)"
+  ],
+  "dob": "1976.12.9"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/西山誠人"
+  ],
+  "existing_name": "西山誠人",
+  "k1_url": "https://www.k-1.co.jp/fighter/306",
+  "k1_id": "306",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1977.1.25)"
+  ],
+  "dob": "1977.1.25"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/大和侑也"
+  ],
+  "existing_name": "大和侑也",
+  "k1_url": "https://www.k-1.co.jp/fighter/319",
+  "k1_id": "319",
+  "grounds": [
+   "生年月日一致(1990.11.20)"
+  ],
+  "dob": "1990.11.20"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/kenta_107",
+   "https://ja.wikipedia.org/wiki/健太"
+  ],
+  "existing_name": "健太",
+  "k1_url": "https://www.k-1.co.jp/fighter/337",
+  "k1_id": "337",
+  "grounds": [
+   "所属ジム一致('E.S.G' / 'NJKF・E.S.G')"
+  ],
+  "dob": "1987.6.26"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/名城裕司"
+  ],
+  "existing_name": "名城裕司",
+  "k1_url": "https://www.k-1.co.jp/fighter/344",
+  "k1_id": "344",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1983.9.13)"
+  ],
+  "dob": "1983.9.13"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/内山政人"
+  ],
+  "existing_name": "内山政人",
+  "k1_url": "https://www.k-1.co.jp/fighter/355",
+  "k1_id": "355",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり"
+  ],
+  "dob": "1985.6.22"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/城戸康裕"
+  ],
+  "existing_name": "城戸康裕",
+  "k1_url": "https://www.k-1.co.jp/fighter/357",
+  "k1_id": "357",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1982.12.25)"
+  ],
+  "dob": "1982.12.25"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/佐藤嘉洋"
+  ],
+  "existing_name": "佐藤嘉洋",
+  "k1_url": "https://www.k-1.co.jp/fighter/362",
+  "k1_id": "362",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1981.1.25)"
+  ],
+  "dob": "1981.1.25"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/ファディ・メルザ"
+  ],
+  "existing_name": "ファディ・メルザ",
+  "k1_url": "https://www.k-1.co.jp/fighter/375",
+  "k1_id": "375",
+  "grounds": [
+   "生年月日一致(1978.3.8)"
+  ],
+  "dob": "1978.3.8"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/藤田智也"
+  ],
+  "existing_name": "藤田智也",
+  "k1_url": "https://www.k-1.co.jp/fighter/376",
+  "k1_id": "376",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1982.12.19)"
+  ],
+  "dob": "1982.12.19"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/守屋拓郎"
+  ],
+  "existing_name": "守屋拓郎",
+  "k1_url": "https://www.k-1.co.jp/fighter/379",
+  "k1_id": "379",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1983.11.18)"
+  ],
+  "dob": "1983.11.18"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/山内佑太郎"
+  ],
+  "existing_name": "山内佑太郎",
+  "k1_url": "https://www.k-1.co.jp/fighter/381",
+  "k1_id": "381",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1978.1.25)"
+  ],
+  "dob": "1978.1.25"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/グレイシャア亜紀"
+  ],
+  "existing_name": "グレイシャア亜紀",
+  "k1_url": "https://www.k-1.co.jp/fighter/391",
+  "k1_id": "391",
+  "grounds": [
+   "生年月日一致(1978.12.8)"
+  ],
+  "dob": "1978.12.8"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/松下えみ"
+  ],
+  "existing_name": "松下えみ",
+  "k1_url": "https://www.k-1.co.jp/fighter/401",
+  "k1_id": "401",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1981.4.27)"
+  ],
+  "dob": "1981.4.27"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/寒川直喜"
+  ],
+  "existing_name": "寒川直喜",
+  "k1_url": "https://www.k-1.co.jp/fighter/424",
+  "k1_id": "424",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.7.12)"
+  ],
+  "dob": "1980.7.12"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/hirono_yu/",
+   "https://ja.wikipedia.org/wiki/廣野祐"
+  ],
+  "existing_name": "廣野 祐",
+  "k1_url": "https://www.k-1.co.jp/fighter/445",
+  "k1_id": "445",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1984.11.6)"
+  ],
+  "dob": "1984.11.6"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/才賀紀左衛門"
+  ],
+  "existing_name": "才賀紀左衛門",
+  "k1_url": "https://www.k-1.co.jp/fighter/447",
+  "k1_id": "447",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり"
+  ],
+  "dob": "1989.2.13"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/TURBΦ_(キックボクサー)"
+  ],
+  "existing_name": "TURBΦ",
+  "k1_url": "https://www.k-1.co.jp/fighter/486",
+  "k1_id": "486",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.12.5)"
+  ],
+  "dob": "1980.12.5"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/桜朋凛"
+  ],
+  "existing_name": "桜朋梨恵",
+  "k1_url": "https://www.k-1.co.jp/fighter/491",
+  "k1_id": "491",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.9.26)"
+  ],
+  "dob": "1980.9.26"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/山本佑機"
+  ],
+  "existing_name": "山本佑機",
+  "k1_url": "https://www.k-1.co.jp/fighter/498",
+  "k1_id": "498",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1984.12.14)"
+  ],
+  "dob": "1984.12.14"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/久保賢司"
+  ],
+  "existing_name": "久保賢司",
+  "k1_url": "https://www.k-1.co.jp/fighter/499",
+  "k1_id": "499",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1989.4.4)"
+  ],
+  "dob": "1989.4.4"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/日下部竜也"
+  ],
+  "existing_name": "日下部竜也",
+  "k1_url": "https://www.k-1.co.jp/fighter/501",
+  "k1_id": "501",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1992.7.18)"
+  ],
+  "dob": "1992.7.18"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/櫻井未奈"
+  ],
+  "existing_name": "MINA",
+  "k1_url": "https://www.k-1.co.jp/fighter/514",
+  "k1_id": "514",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1989.6.9)"
+  ],
+  "dob": "1989.6.9"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/石黒竜也"
+  ],
+  "existing_name": "石黒竜也",
+  "k1_url": "https://www.k-1.co.jp/fighter/529",
+  "k1_id": "529",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1982.9.20)"
+  ],
+  "dob": "1982.9.20"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/大石駿介"
+  ],
+  "existing_name": "大石駿介",
+  "k1_url": "https://www.k-1.co.jp/fighter/530",
+  "k1_id": "530",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1989.7.25)"
+  ],
+  "dob": "1989.7.25"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/白虎_(キックボクサー)"
+  ],
+  "existing_name": "白虎",
+  "k1_url": "https://www.k-1.co.jp/fighter/540",
+  "k1_id": "540",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.2.4)"
+  ],
+  "dob": "1980.2.4"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/鶴谷剛"
+  ],
+  "existing_name": "鶴谷剛",
+  "k1_url": "https://www.k-1.co.jp/fighter/547",
+  "k1_id": "547",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1978.5.1)"
+  ],
+  "dob": "1978.5.1"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/黒田アキヒロ"
+  ],
+  "existing_name": "黒田アキヒロ",
+  "k1_url": "https://www.k-1.co.jp/fighter/551",
+  "k1_id": "551",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1978.4.28)"
+  ],
+  "dob": "1978.4.28"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/大前力也"
+  ],
+  "existing_name": "大前力也",
+  "k1_url": "https://www.k-1.co.jp/fighter/554",
+  "k1_id": "554",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1984.9.10)"
+  ],
+  "dob": "1984.9.10"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/ソルデティグレ・ヨースケ"
+  ],
+  "existing_name": "ソルデティグレ・ヨースケ",
+  "k1_url": "https://www.k-1.co.jp/fighter/558",
+  "k1_id": "558",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1981.7.28)"
+  ],
+  "dob": "1981.7.28"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/嶋田翔太"
+  ],
+  "existing_name": "嶋田翔太",
+  "k1_url": "https://www.k-1.co.jp/fighter/563",
+  "k1_id": "563",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1991.11.17)"
+  ],
+  "dob": "1991.11.17"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/大渡博之"
+  ],
+  "existing_name": "大渡博之",
+  "k1_url": "https://www.k-1.co.jp/fighter/584",
+  "k1_id": "584",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1976.12.21)"
+  ],
+  "dob": "1976.12.21"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/asahara_syohei/",
+   "https://ja.wikipedia.org/wiki/麻原将平"
+  ],
+  "existing_name": "麻原将平",
+  "k1_url": "https://www.k-1.co.jp/fighter/586",
+  "k1_id": "586",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1984.9.3)"
+  ],
+  "dob": "1984.9.3"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/山本元気"
+  ],
+  "existing_name": "山本元気",
+  "k1_url": "https://www.k-1.co.jp/fighter/587",
+  "k1_id": "587",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1977.8.2)"
+  ],
+  "dob": "1977.8.2"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/前田尚紀_(格闘家)"
+  ],
+  "existing_name": "前田尚紀",
+  "k1_url": "https://www.k-1.co.jp/fighter/588",
+  "k1_id": "588",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1979.7.5)"
+  ],
+  "dob": "1979.7.5"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/蜜山剛三"
+  ],
+  "existing_name": "蜜山剛三",
+  "k1_url": "https://www.k-1.co.jp/fighter/601",
+  "k1_id": "601",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり"
+  ]
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/桜井洋平"
+  ],
+  "existing_name": "桜井洋平",
+  "k1_url": "https://www.k-1.co.jp/fighter/604",
+  "k1_id": "604",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1977.3.14)"
+  ],
+  "dob": "1977.3.14"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/ファイヤー原田"
+  ],
+  "existing_name": "ファイヤー原田",
+  "k1_url": "https://www.k-1.co.jp/fighter/605",
+  "k1_id": "605",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1974.8.14)"
+  ],
+  "dob": "1974.8.14"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/吉本光志"
+  ],
+  "existing_name": "吉本光志",
+  "k1_url": "https://www.k-1.co.jp/fighter/606",
+  "k1_id": "606",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.2.6)"
+  ],
+  "dob": "1980.2.6"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/大高一郎"
+  ],
+  "existing_name": "大高一郎",
+  "k1_url": "https://www.k-1.co.jp/fighter/610",
+  "k1_id": "610",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1977.4.14)"
+  ],
+  "dob": "1977.4.14"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/渡辺理想"
+  ],
+  "existing_name": "渡辺理想",
+  "k1_url": "https://www.k-1.co.jp/fighter/615",
+  "k1_id": "615",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1983.12.28)"
+  ],
+  "dob": "1983.12.28"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/国崇"
+  ],
+  "existing_name": "国崇",
+  "k1_url": "https://www.k-1.co.jp/fighter/622",
+  "k1_id": "622",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.5.30)"
+  ],
+  "dob": "1980.5.30"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/TATSUJI"
+  ],
+  "existing_name": "TATSUJI",
+  "k1_url": "https://www.k-1.co.jp/fighter/627",
+  "k1_id": "627",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1981.7.23)"
+  ],
+  "dob": "1981.7.23"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/小宮由紀博"
+  ],
+  "existing_name": "小宮由紀博",
+  "k1_url": "https://www.k-1.co.jp/fighter/628",
+  "k1_id": "628",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.4.21)"
+  ],
+  "dob": "1980.4.21"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/hiraoka_koto/",
+   "https://knockoutkb.com/fighters/hiraoka_koto_567",
+   "https://ja.wikipedia.org/wiki/平岡琴"
+  ],
+  "existing_name": "平岡 琴",
+  "k1_url": "https://www.k-1.co.jp/fighter/637",
+  "k1_id": "637",
+  "grounds": [
+   "所属ジム一致('TRY HARD GYM' / 'TRY HARD GYM')"
+  ],
+  "dob": "1990.6.20"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/トモコSP"
+  ],
+  "existing_name": "トモコSP",
+  "k1_url": "https://www.k-1.co.jp/fighter/642",
+  "k1_id": "642",
+  "grounds": [
+   "生年月日一致(1976.2.16)"
+  ],
+  "dob": "1976.2.16"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/Little_Tiger"
+  ],
+  "existing_name": "Little Tiger",
+  "k1_url": "https://www.k-1.co.jp/fighter/675",
+  "k1_id": "675",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1983.6.14)"
+  ],
+  "dob": "1983.6.14"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/上原誠"
+  ],
+  "existing_name": "上原誠",
+  "k1_url": "https://www.k-1.co.jp/fighter/678",
+  "k1_id": "678",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1984.11.14)"
+  ],
+  "dob": "1984.11.14"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/inaishi_tatsuya/"
+  ],
+  "existing_name": "稲石竜弥",
+  "k1_url": "https://www.k-1.co.jp/fighter/686",
+  "k1_id": "686",
+  "grounds": [
+   "所属ジム一致('TEAM OJ' / 'Team OJ')"
+  ],
+  "dob": "1988.10.25"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/bazooka_koki"
+  ],
+  "existing_name": "バズーカ巧樹",
+  "k1_url": "https://www.k-1.co.jp/fighter/687",
+  "k1_id": "687",
+  "grounds": [
+   "所属ジム一致('菅原道場/BRAID' / '菅原道場/BRAID')"
+  ],
+  "dob": "1996.11.16"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/牧野智昭"
+  ],
+  "existing_name": "牧野智昭",
+  "k1_url": "https://www.k-1.co.jp/fighter/691",
+  "k1_id": "691",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1976.10.4)"
+  ],
+  "dob": "1976.10.4"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/momi/",
+   "https://ja.wikipedia.org/wiki/紅絹_(キックボクサー)"
+  ],
+  "existing_name": "紅絹",
+  "k1_url": "https://www.k-1.co.jp/fighter/693",
+  "k1_id": "693",
+  "grounds": [
+   "所属ジム一致('NEXT LEVEL渋谷' / 'NEXT LEVEL渋谷')"
+  ],
+  "dob": "1984.2.26"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/takahiro_120"
+  ],
+  "existing_name": "鷹大",
+  "k1_url": "https://www.k-1.co.jp/fighter/695",
+  "k1_id": "695",
+  "grounds": [
+   "所属ジム一致('WSRフェアテックス西川口' / 'WSRフェアテックス西川口')"
+  ],
+  "dob": "1992.4.22"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/小宮山工介"
+  ],
+  "existing_name": "小宮山工介",
+  "k1_url": "https://www.k-1.co.jp/fighter/696",
+  "k1_id": "696",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1986.12.16)"
+  ],
+  "dob": "1986.12.16"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/芦澤竜誠"
+  ],
+  "existing_name": "芦澤竜誠",
+  "k1_url": "https://www.k-1.co.jp/fighter/708",
+  "k1_id": "708",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1995.5.1)"
+  ],
+  "dob": "1995.5.1"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/モハン・ドラゴン"
+  ],
+  "existing_name": "モハン・ドラゴン",
+  "k1_url": "https://www.k-1.co.jp/fighter/715",
+  "k1_id": "715",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり"
+  ],
+  "dob": "1977.3.8"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/mineyama_tatsuya_209"
+  ],
+  "existing_name": "峯山 竜哉",
+  "k1_url": "https://www.k-1.co.jp/fighter/730",
+  "k1_id": "730",
+  "grounds": [
+   "所属ジム一致('WSRフェアテックス西川口' / 'WSRフェアテックス西川口')"
+  ],
+  "dob": "1995.9.8"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/日菜太"
+  ],
+  "existing_name": "日菜太",
+  "k1_url": "https://www.k-1.co.jp/fighter/740",
+  "k1_id": "740",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1986.8.26)"
+  ],
+  "dob": "1986.8.26"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/水町浩"
+  ],
+  "existing_name": "水町浩",
+  "k1_url": "https://www.k-1.co.jp/fighter/744",
+  "k1_id": "744",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.2.16)"
+  ],
+  "dob": "1980.2.16"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/石田勝希"
+  ],
+  "existing_name": "石田勝希",
+  "k1_url": "https://www.k-1.co.jp/fighter/746",
+  "k1_id": "746",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1992.10.30)"
+  ],
+  "dob": "1992.10.30"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/ryuto-2/"
+  ],
+  "existing_name": "龍斗",
+  "k1_url": "https://www.k-1.co.jp/fighter/758",
+  "k1_id": "758",
+  "grounds": [
+   "所属ジム一致('RAUSU GYM' / 'RAUSU GYM')"
+  ],
+  "dob": "1997.7.7"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/隼也ウィラサクレック"
+  ],
+  "existing_name": "隼也ウィラサクレック",
+  "k1_url": "https://www.k-1.co.jp/fighter/764",
+  "k1_id": "764",
+  "grounds": [
+   "生年月日一致(1997.9.12)"
+  ],
+  "dob": "1997.9.12"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/reito_bravely_163"
+  ],
+  "existing_name": "REITO BRAVELY",
+  "k1_url": "https://www.k-1.co.jp/fighter/768",
+  "k1_id": "768",
+  "grounds": [
+   "所属ジム一致('BRAVELY GYM' / 'BRAVELY GYM')"
+  ],
+  "dob": "2000.6.29"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/sone_kazuma_388"
+  ],
+  "existing_name": "祖根 寿麻",
+  "k1_url": "https://www.k-1.co.jp/fighter/791",
+  "k1_id": "791",
+  "grounds": [
+   "所属ジム一致('ZOOMER' / 'ZOOMER')"
+  ],
+  "dob": "1988.2.11"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/岩下雅大"
+  ],
+  "existing_name": "岩下雅大",
+  "k1_url": "https://www.k-1.co.jp/fighter/792",
+  "k1_id": "792",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1984.7.25)"
+  ],
+  "dob": "1984.7.25"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/古田太一"
+  ],
+  "existing_name": "古田太一",
+  "k1_url": "https://www.k-1.co.jp/fighter/817",
+  "k1_id": "817",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1980.5.1)"
+  ],
+  "dob": "1980.5.1"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/黒田斗真"
+  ],
+  "existing_name": "黒田斗真",
+  "k1_url": "https://www.k-1.co.jp/fighter/827",
+  "k1_id": "827",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(2000.12.31)"
+  ],
+  "dob": "2000.12.31"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/matsuoka_riki_568"
+  ],
+  "existing_name": "松岡 力",
+  "k1_url": "https://www.k-1.co.jp/fighter/842",
+  "k1_id": "842",
+  "grounds": [
+   "所属ジム一致('K-1ジム五反田チームキングス' / 'K-1ジム五反田チームキングス')"
+  ],
+  "dob": "1993.11.16"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/mukai_kanta_203"
+  ],
+  "existing_name": "向井 貫太",
+  "k1_url": "https://www.k-1.co.jp/fighter/866",
+  "k1_id": "866",
+  "grounds": [
+   "所属ジム一致('WSRフェアテックス三ノ輪' / 'WSRフェアテックス三ノ輪')"
+  ],
+  "dob": "1996.8.25"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/tetsu/"
+  ],
+  "existing_name": "TETSU",
+  "k1_url": "https://www.k-1.co.jp/fighter/906",
+  "k1_id": "906",
+  "grounds": [
+   "所属ジム一致('月心会チーム侍' / '月心会チーム侍')"
+  ],
+  "dob": "2000.8.22"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/長崎秀哉"
+  ],
+  "existing_name": "長崎秀哉",
+  "k1_url": "https://www.k-1.co.jp/fighter/920",
+  "k1_id": "920",
+  "grounds": [
+   "生年月日一致(1979.8.23)"
+  ],
+  "dob": "1979.8.23"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/hannya_hashimoto"
+  ],
+  "existing_name": "般若HASHIMOTO",
+  "k1_url": "https://www.k-1.co.jp/fighter/933",
+  "k1_id": "933",
+  "grounds": [
+   "所属ジム一致('クロスポイント吉祥寺' / 'KNOCK OUT クロスポイント吉祥寺')"
+  ],
+  "dob": "1994.3.16"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/hiratsuka_yojiro_228"
+  ],
+  "existing_name": "平塚 洋二郎",
+  "k1_url": "https://www.k-1.co.jp/fighter/938",
+  "k1_id": "938",
+  "grounds": [
+   "所属ジム一致('チーム・タイガーホーク/大道塾仙南支部' / 'チーム・タイガーホーク/大道塾仙南支部')"
+  ],
+  "dob": "1982.1.8"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/佐々木洵樹"
+  ],
+  "existing_name": "佐々木洵樹",
+  "k1_url": "https://www.k-1.co.jp/fighter/949",
+  "k1_id": "949",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1991.6.14)"
+  ],
+  "dob": "1991.6.14"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/terashima_hikaru_550"
+  ],
+  "existing_name": "寺島 輝",
+  "k1_url": "https://www.k-1.co.jp/fighter/959",
+  "k1_id": "959",
+  "grounds": [
+   "所属ジム一致('TANG TANG FIGHT CLUB' / 'TANG TANG FIGHT CLUB')"
+  ],
+  "dob": "1997.4.30"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/noda_aoi/",
+   "https://ja.wikipedia.org/wiki/野田蒼"
+  ],
+  "existing_name": "野田蒼",
+  "k1_url": "https://www.k-1.co.jp/fighter/984",
+  "k1_id": "984",
+  "grounds": [
+   "所属ジム一致('月心会チーム侍' / '月心会チーム侍')"
+  ],
+  "dob": "2003.2.4"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/dansiam_weerasakreck"
+  ],
+  "existing_name": "デンサヤーム・ウィラサクレック",
+  "k1_url": "https://www.k-1.co.jp/fighter/1056",
+  "k1_id": "1056",
+  "grounds": [
+   "所属ジム一致('ウィラサクレック・フェアテックスジム' / 'ウィラサクレック・フェアテックスジム')"
+  ],
+  "dob": "2002.6.9"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/terada-takumi/"
+  ],
+  "existing_name": "寺田 匠",
+  "k1_url": "https://www.k-1.co.jp/fighter/1063",
+  "k1_id": "1063",
+  "grounds": [
+   "所属ジム一致('team VASILEUS' / 'team VASILEUS')"
+  ],
+  "dob": "2000.12.26"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/nana"
+  ],
+  "existing_name": "NANA",
+  "k1_url": "https://www.k-1.co.jp/fighter/1078",
+  "k1_id": "1078",
+  "grounds": [
+   "所属ジム一致('エスジム' / 'エスジム')"
+  ],
+  "dob": "1990.6.10"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/藤本京太郎"
+  ],
+  "existing_name": "京太郎",
+  "k1_url": "https://www.k-1.co.jp/fighter/1128",
+  "k1_id": "1128",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1986.6.23)"
+  ],
+  "dob": "1986.6.23"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/kunieda_yuta/"
+  ],
+  "existing_name": "國枝悠太",
+  "k1_url": "https://www.k-1.co.jp/fighter/1133",
+  "k1_id": "1133",
+  "grounds": [
+   "所属ジム一致('Never mind / 9+ nine plus lab.' / 'Never mind/9+nine plus lab')"
+  ],
+  "dob": "1992.10.23"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/雄大_(キックボクサー)"
+  ],
+  "existing_name": "雄大",
+  "k1_url": "https://www.k-1.co.jp/fighter/1143",
+  "k1_id": "1143",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり"
+  ],
+  "dob": "1998.8.4"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/momotaro/"
+  ],
+  "existing_name": "MOMOTARO",
+  "k1_url": "https://www.k-1.co.jp/fighter/1165",
+  "k1_id": "1165",
+  "grounds": [
+   "所属ジム一致('OGUNI-GYM' / 'OGUNI-GYM')"
+  ],
+  "dob": "1990.6.25"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/ota_takuma_224"
+  ],
+  "existing_name": "大田 拓真",
+  "k1_url": "https://www.k-1.co.jp/fighter/1250",
+  "k1_id": "1250",
+  "grounds": [
+   "所属ジム一致('新興ムエタイジム' / '新興ムエタイジム')"
+  ],
+  "dob": "1999.6.21"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/nasukawa_tenshin/",
+   "https://ja.wikipedia.org/wiki/那須川天心"
+  ],
+  "existing_name": "那須川天心",
+  "k1_url": "https://www.k-1.co.jp/fighter/1251",
+  "k1_id": "1251",
+  "grounds": [
+   "所属ジム一致('TARGET/Cygames' / 'TARGET/Cygames')"
+  ],
+  "dob": "1998.8.18"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/shiro/",
+   "https://ja.wikipedia.org/wiki/志朗"
+  ],
+  "existing_name": "志朗",
+  "k1_url": "https://www.k-1.co.jp/fighter/1254",
+  "k1_id": "1254",
+  "grounds": [
+   "所属ジム一致('Be WELLキックボクシングジム' / 'BeWELLキックボクシングジム')"
+  ],
+  "dob": "1993.6.23"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/kazane/"
+  ],
+  "existing_name": "風音",
+  "k1_url": "https://www.k-1.co.jp/fighter/1255",
+  "k1_id": "1255",
+  "grounds": [
+   "所属ジム一致('TEAM TEPPEN' / 'TEAM TEPPEN')"
+  ],
+  "dob": "1998.10.27"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/beynoah/",
+   "https://ja.wikipedia.org/wiki/“ブラックパンサー”ベイノア"
+  ],
+  "existing_name": "“ブラックパンサー”ベイノア",
+  "k1_url": "https://www.k-1.co.jp/fighter/1256",
+  "k1_id": "1256",
+  "grounds": [
+   "所属ジム一致('極真会館' / '極真会館')"
+  ],
+  "dob": "1995.8.20"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/nakamura_kan/"
+  ],
+  "existing_name": "中村 寛",
+  "k1_url": "https://www.k-1.co.jp/fighter/1257",
+  "k1_id": "1257",
+  "grounds": [
+   "所属ジム一致('BK GYM' / 'BK GYM')"
+  ],
+  "dob": "1996.10.31"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/shiratori_taiju/"
+  ],
+  "existing_name": "白鳥大珠",
+  "k1_url": "https://www.k-1.co.jp/fighter/1258",
+  "k1_id": "1258",
+  "grounds": [
+   "所属ジム一致('TEAM TEPPEN' / 'TEAM TEPPEN')"
+  ],
+  "dob": "1996.2.2"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/haraguchi_kento/"
+  ],
+  "existing_name": "原口健飛",
+  "k1_url": "https://www.k-1.co.jp/fighter/1259",
+  "k1_id": "1259",
+  "grounds": [
+   "所属ジム一致('FASCINATE FIGHT TEAM' / 'FASCINATE FIGHT TEAM')"
+  ],
+  "dob": "1998.4.9"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/ya-man/",
+   "https://ja.wikipedia.org/wiki/YA-MAN"
+  ],
+  "existing_name": "YA-MAN",
+  "k1_url": "https://www.k-1.co.jp/fighter/1260",
+  "k1_id": "1260",
+  "grounds": [
+   "所属ジム一致('TARGET SHIBUYA' / 'TARGET SHIBUYA')"
+  ],
+  "dob": "1996.5.31"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/yura-2/"
+  ],
+  "existing_name": "夢空",
+  "k1_url": "https://www.k-1.co.jp/fighter/1272",
+  "k1_id": "1272",
+  "grounds": [
+   "所属ジム一致('Croire' / 'Croire')"
+  ],
+  "dob": "2005.5.18"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/kasahara_yuki/",
+   "https://shootboxing.org/fighter/kasahara_yuuki/"
+  ],
+  "existing_name": "笠原友希",
+  "k1_url": "https://www.k-1.co.jp/fighter/1277",
+  "k1_id": "1277",
+  "grounds": [
+   "所属ジム一致('シーザージム' / 'シーザージム')"
+  ],
+  "dob": "2001.6.3"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/ebata_mutsuki/",
+   "https://ja.wikipedia.org/wiki/江幡睦"
+  ],
+  "existing_name": "江幡 睦",
+  "k1_url": "https://www.k-1.co.jp/fighter/1278",
+  "k1_id": "1278",
+  "grounds": [
+   "所属ジム一致('伊原道場' / '伊原道場')"
+  ],
+  "dob": "1991.1.10"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/yamada_kosei/",
+   "https://ja.wikipedia.org/wiki/山田洸誓"
+  ],
+  "existing_name": "山田洸誓",
+  "k1_url": "https://www.k-1.co.jp/fighter/1284",
+  "k1_id": "1284",
+  "grounds": [
+   "所属ジム一致('正道会館KCIEL' / '正道会館KCIEL')"
+  ],
+  "dob": "1992.11.4"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/nasukawa_ryujin/"
+  ],
+  "existing_name": "那須川龍心",
+  "k1_url": "https://www.k-1.co.jp/fighter/1286",
+  "k1_id": "1286",
+  "grounds": [
+   "所属ジム一致('TEAM TEPPEN' / 'TEAM TEPPEN')"
+  ],
+  "dob": "2006.5.16"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/shinjiro_295"
+  ],
+  "existing_name": "辰次郎",
+  "k1_url": "https://www.k-1.co.jp/fighter/1287",
+  "k1_id": "1287",
+  "grounds": [
+   "所属ジム一致('Sports 24' / 'Sports 24')"
+  ],
+  "dob": "2000.6.3"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/sanekata_takumi/"
+  ],
+  "existing_name": "實方拓海",
+  "k1_url": "https://www.k-1.co.jp/fighter/1344",
+  "k1_id": "1344",
+  "grounds": [
+   "所属ジム一致('TSK japan' / 'TSK japan')"
+  ],
+  "dob": "1995.11.23"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/yasumoto_haruto/"
+  ],
+  "existing_name": "安本晴翔",
+  "k1_url": "https://www.k-1.co.jp/fighter/1347",
+  "k1_id": "1347",
+  "grounds": [
+   "所属ジム一致('橋本道場' / '橋本道場')"
+  ],
+  "dob": "2000.5.27"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/otani_shoji"
+  ],
+  "existing_name": "大谷 翔司",
+  "k1_url": "https://www.k-1.co.jp/fighter/1377",
+  "k1_id": "1377",
+  "grounds": [
+   "所属ジム一致('KNOCK OUTクロスポイント渋谷' / 'KNOCK OUT クロスポイント渋谷')"
+  ],
+  "dob": "1991.1.12"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/arata_soichiro"
+  ],
+  "existing_name": "新田 宗一朗",
+  "k1_url": "https://www.k-1.co.jp/fighter/1386",
+  "k1_id": "1386",
+  "grounds": [
+   "所属ジム一致('KNOCK OUTクロスポイント吉祥寺' / 'KNOCK OUT クロスポイント吉祥寺')"
+  ],
+  "dob": "1996.4.2"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/hisai_taimu"
+  ],
+  "existing_name": "久井 大夢",
+  "k1_url": "https://www.k-1.co.jp/fighter/1387",
+  "k1_id": "1387",
+  "grounds": [
+   "所属ジム一致('TEAM TAIMU' / 'TEAM TAIMU')"
+  ],
+  "dob": "2005.9.23"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/kawakami_kyo/",
+   "https://knockoutkb.com/fighters/kawakami_kyo_91",
+   "https://shootboxing.org/fighter/kawakami_kyo/"
+  ],
+  "existing_name": "川上 叶",
+  "k1_url": "https://www.k-1.co.jp/fighter/1424",
+  "k1_id": "1424",
+  "grounds": [
+   "所属ジム一致('龍生塾' / '龍生塾')"
+  ],
+  "dob": "1999.12.3"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/miyazaki_koyuki/",
+   "https://ja.wikipedia.org/wiki/宮﨑小雪"
+  ],
+  "existing_name": "宮﨑小雪",
+  "k1_url": "https://www.k-1.co.jp/fighter/1438",
+  "k1_id": "1438",
+  "grounds": [
+   "所属ジム一致('TRY HARD GYM' / 'TRY HARD GYM')"
+  ],
+  "dob": "2003.2.5"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/monguchi_keisuke/"
+  ],
+  "existing_name": "門口佳佑",
+  "k1_url": "https://www.k-1.co.jp/fighter/1439",
+  "k1_id": "1439",
+  "grounds": [
+   "所属ジム一致('EX ARES' / 'EX ARES')"
+  ],
+  "dob": "1995.5.25"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/hitachi_hyuma/"
+  ],
+  "existing_name": "常陸飛雄馬",
+  "k1_url": "https://www.k-1.co.jp/fighter/1440",
+  "k1_id": "1440",
+  "grounds": [
+   "所属ジム一致('TARGET SHIBUYA' / 'TARGET SHIBUYA')"
+  ],
+  "dob": "1998.2.16"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/toita_daiki/",
+   "https://ja.wikipedia.org/wiki/戸井田大輝"
+  ],
+  "existing_name": "戸井田大輝",
+  "k1_url": "https://www.k-1.co.jp/fighter/1441",
+  "k1_id": "1441",
+  "grounds": [
+   "所属ジム一致('TOP LEAD GYM' / 'TOP LEAD GYM')"
+  ],
+  "dob": "1995.6.10"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/haraguchi_andrei/"
+  ],
+  "existing_name": "原口アンドレイ",
+  "k1_url": "https://www.k-1.co.jp/fighter/1442",
+  "k1_id": "1442",
+  "grounds": [
+   "所属ジム一致('TEAM TEPPEN' / 'TEAM TEPPEN')"
+  ],
+  "dob": "1995.12.25"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/panchan_rina",
+   "https://ja.wikipedia.org/wiki/ぱんちゃん璃奈"
+  ],
+  "existing_name": "ぱんちゃん璃奈",
+  "k1_url": "https://www.k-1.co.jp/fighter/1448",
+  "k1_id": "1448",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1994.3.17)"
+  ],
+  "dob": "1994.3.17"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/iwaking/"
+  ],
+  "existing_name": "岩KING",
+  "k1_url": "https://www.k-1.co.jp/fighter/1528",
+  "k1_id": "1528",
+  "grounds": [
+   "所属ジム一致('心将塾' / '心将塾')"
+  ],
+  "dob": "1997.2.16"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/tatsuma/"
+  ],
+  "existing_name": "健真",
+  "k1_url": "https://www.k-1.co.jp/fighter/1529",
+  "k1_id": "1529",
+  "grounds": [
+   "所属ジム一致('BLACK☆Jr' / 'BLACK☆Jr')"
+  ],
+  "dob": "2003.11.22"
+ },
+ {
+  "existing_sources": [
+   "https://ja.wikipedia.org/wiki/エロール・ジマーマン"
+  ],
+  "existing_name": "エロール・ジマーマン",
+  "k1_url": "https://www.k-1.co.jp/fighter/1537",
+  "k1_id": "1537",
+  "grounds": [
+   "Wikipedia本文にK-1/Krush参戦歴の記述あり",
+   "生年月日一致(1986.4.20)"
+  ],
+  "dob": "1986.4.20"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/masashi_yamato/"
+  ],
+  "existing_name": "匡志YAMATO",
+  "k1_url": "https://www.k-1.co.jp/fighter/1541",
+  "k1_id": "1541",
+  "grounds": [
+   "所属ジム一致('大和ジム' / '大和ジム')"
+  ],
+  "dob": "1993.1.29"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/hotaru/"
+  ],
+  "existing_name": "Hotaru",
+  "k1_url": "https://www.k-1.co.jp/fighter/1544",
+  "k1_id": "1544",
+  "grounds": [
+   "所属ジム一致('Continue' / 'Continue')"
+  ],
+  "dob": "1991.6.2"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/nakashima_takanori_97"
+  ],
+  "existing_name": "中島 隆徳",
+  "k1_url": "https://www.k-1.co.jp/fighter/1548",
+  "k1_id": "1548",
+  "grounds": [
+   "所属ジム一致('GETOVER' / 'GET OVER 2005年4月')"
+  ],
+  "dob": "2005.4.8"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/sea/",
+   "https://knockoutkb.com/fighters/sea_488"
+  ],
+  "existing_name": "世愛",
+  "k1_url": "https://www.k-1.co.jp/fighter/1623",
+  "k1_id": "1623",
+  "grounds": [
+   "所属ジム一致('TEAM KAZE' / 'TEAM KAZE')"
+  ],
+  "dob": "2008.2.21"
+ },
+ {
+  "existing_sources": [
+   "https://knockoutkb.com/fighters/matsukura_shintaro_242"
+  ],
+  "existing_name": "松倉 信太郎",
+  "k1_url": "https://www.k-1.co.jp/fighter/21",
+  "k1_id": "21",
+  "grounds": [
+   "Wikipedia記事の外部リンク/出典にK-1選手ページURL(k-1.co.jp/…/fighter/21)が明記(記事:'松倉信太郎'、引用文脈:'tps://www.k-1.co.jp/k-1wgp/fighter/21/ K-1')"
+  ],
+  "dob": "1991.11.12"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/yamaguchi_hiroto/"
+  ],
+  "existing_name": "山口裕人",
+  "k1_url": "https://www.k-1.co.jp/fighter/321",
+  "k1_id": "321",
+  "grounds": [
+   "Wikipedia記事の外部リンク/出典にK-1選手ページURL(k-1.co.jp/…/fighter/321)が明記(記事:'山口裕人'、引用文脈:'tps://www.k-1.co.jp/krush/fighter/321/ K-1')"
+  ],
+  "dob": "1992.5.20"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/kumura-masashi/"
+  ],
+  "existing_name": "玖村将史",
+  "k1_url": "https://www.k-1.co.jp/fighter/843",
+  "k1_id": "843",
+  "grounds": [
+   "Wikipedia記事の外部リンク/出典にK-1選手ページURL(k-1.co.jp/…/fighter/843)が明記(記事:'玖村将史'、引用文脈:'tps://www.k-1.co.jp/krush/fighter/843 玖村 将')"
+  ],
+  "dob": "1999.1.8"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/yoza_yuki/"
+  ],
+  "existing_name": "与座優貴",
+  "k1_url": "https://www.k-1.co.jp/fighter/1202",
+  "k1_id": "1202",
+  "grounds": [
+   "Wikipedia記事の外部リンク/出典にK-1選手ページURL(k-1.co.jp/…/fighter/1202)が明記(記事:'与座優貴'、引用文脈:'tps://www.k-1.co.jp/fighter/1202 K-1 ')"
+  ],
+  "dob": "1997.12.20"
+ },
+ {
+  "existing_sources": [
+   "https://rise-rc.com/fighter/suzuki_masahiko/"
+  ],
+  "existing_name": "鈴木真彦",
+  "k1_url": "https://www.k-1.co.jp/fighter/1253",
+  "k1_id": "1253",
+  "grounds": [
+   "Wikipedia記事の外部リンク/出典にK-1選手ページURL(k-1.co.jp/…/fighter/1253)が明記(記事:'鈴木真彦'、引用文脈:'tps://www.k-1.co.jp/fighter/1253 K-1 ')"
+  ],
+  "dob": "1997.2.21"
+ }
+]

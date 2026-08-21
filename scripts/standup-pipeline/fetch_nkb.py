@@ -12,6 +12,7 @@
 """
 import glob
 import json
+import os
 import re
 import sys
 import time
@@ -23,6 +24,12 @@ NEW_API_BASE = "https://nkb-r.com/main/wp-json/wp/v2/posts"
 NEW_OUT_DIR = "raw/nkb_index"
 OLD_OUT_DIR = "raw/nkb_old_events"
 OLD_REFERENCE_DIR = "raw/nkb_old_events"  # 既知URL復元用(旧世代のraw/、上書き前に読む)
+# 2026-08-21追加: GitHub Actionsの新規runnerはraw/が空(サブディレクトリも無い)ため、
+# 書き込み前に作る(ローカルの使い回しraw/では暗黙に存在していた)。OLD_OUT_DIRは
+# 週次自動更新ジョブでは対象外(NKB旧サイトは凍結、OLD_REFERENCE_DIRが空なので
+# known_eids=[]になりOLD_OUT_DIRへの書き込み自体が発生しない)だが、念のため作る。
+os.makedirs(NEW_OUT_DIR, exist_ok=True)
+os.makedirs(OLD_OUT_DIR, exist_ok=True)
 
 
 def fetch_new_site():

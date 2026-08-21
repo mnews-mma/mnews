@@ -1,0 +1,1248 @@
+{
+ "generated_note": "2026-08-21生成。scripts/standup-pipeline/cache/(2026-08-18時点スナップショット)からgenerate_roster.pyを再実行して生成したfighters.jsonと、コミット済みdata/kick/fighters.jsonの全差分。/kick週次自動更新ジョブがfighters.jsonを凍結対象にした根拠。RAW_CACHE.md参照。以降このジョブは名簿を再生成しないため、この監査は2026-08-21時点の記録として固定される(次回名簿を実際に更新する作業で作り直すまで)。",
+ "summary": {
+  "old_total": 3305,
+  "new_total": 3315,
+  "exact_match": 3218,
+  "only_in_old": 6,
+  "only_in_new": 11,
+  "record_count_mismatch": 5,
+  "field_diffs": 64,
+  "field_diff_breakdown": {
+   "aliases": 10,
+   "birthdate": 0,
+   "gym": 1,
+   "kana": 50,
+   "kana_source": 50,
+   "orgs": 5,
+   "sources": 13
+  },
+  "kana_lost_to_none": 50
+ },
+ "only_in_old_names": [
+  "北野ヒナタ",
+  "斉藤遼太",
+  "益田拓摩",
+  "石川龍之介",
+  "花形満",
+  "飯田陸斗"
+ ],
+ "only_in_new_names": [
+  "To Be Announced",
+  "アマラ忍",
+  "クンタップ・ウィラサクレック",
+  "ゲーオ・フェアテックス",
+  "ジョムトーン・チュワタナ",
+  "スアレック・ルークカムイ",
+  "デニス・ウォシク",
+  "ブアカーオ・ポー.プラムック",
+  "ヨーブアデーン・フェアテックス",
+  "上杉 隼土",
+  "花形満(キックボクサー)"
+ ],
+ "record_count_mismatch": [
+  {
+   "name": "勇志",
+   "old_record_count": 1,
+   "new_record_count": 2,
+   "old_sources": [
+    [
+     "https://rise-rc.com/fighter/yushi/",
+     "https://knockoutkb.com/fighters/yushi_627"
+    ]
+   ],
+   "new_sources": [
+    [
+     "https://rise-rc.com/fighter/yushi/"
+    ],
+    [
+     "https://knockoutkb.com/fighters/yushi_627"
+    ]
+   ]
+  },
+  {
+   "name": "海人",
+   "old_record_count": 1,
+   "new_record_count": 2,
+   "old_sources": [
+    [
+     "https://rise-rc.com/fighter/kaito/",
+     "https://shootboxing.org/fighter/kaito/",
+     "https://knockoutkb.com/fighters/kaito_281"
+    ]
+   ],
+   "new_sources": [
+    [
+     "https://rise-rc.com/fighter/kaito/",
+     "https://shootboxing.org/fighter/kaito/"
+    ],
+    [
+     "https://knockoutkb.com/fighters/kaito_281"
+    ]
+   ]
+  },
+  {
+   "name": "瑠夏",
+   "old_record_count": 1,
+   "new_record_count": 2,
+   "old_sources": [
+    [
+     "https://rise-rc.com/fighter/ruka/",
+     "https://knockoutkb.com/fighters/ruka_462"
+    ]
+   ],
+   "new_sources": [
+    [
+     "https://rise-rc.com/fighter/ruka/"
+    ],
+    [
+     "https://knockoutkb.com/fighters/ruka_462"
+    ]
+   ]
+  },
+  {
+   "name": "銀次",
+   "old_record_count": 1,
+   "new_record_count": 2,
+   "old_sources": [
+    [
+     "https://www.k-1.co.jp/fighter/1293",
+     "https://knockoutkb.com/fighters/ginji_243"
+    ]
+   ],
+   "new_sources": [
+    [
+     "https://www.k-1.co.jp/fighter/1293"
+    ],
+    [
+     "https://knockoutkb.com/fighters/ginji_243"
+    ]
+   ]
+  },
+  {
+   "name": "麻太郎",
+   "old_record_count": 1,
+   "new_record_count": 2,
+   "old_sources": [
+    [
+     "https://rise-rc.com/fighter/asataro/",
+     "https://knockoutkb.com/fighters/asataro_509"
+    ]
+   ],
+   "new_sources": [
+    [
+     "https://rise-rc.com/fighter/asataro/"
+    ],
+    [
+     "https://knockoutkb.com/fighters/asataro_509"
+    ]
+   ]
+  }
+ ],
+ "field_diffs": [
+  {
+   "name": "SAIGO",
+   "diffs": {
+    "kana": {
+     "old": "サイゴウ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/SAIGO"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "YURA",
+   "diffs": {
+    "kana": {
+     "old": "ユーラ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/YURA"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "ウザ強ヨシヤ",
+   "diffs": {
+    "kana": {
+     "old": "ウザツヨ ヨシヤ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/ウザ強ヨシヤ"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "クンタップ・チャロンチャイ",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "クンタップ・ウィラサクレック"
+     ],
+     "new": []
+    },
+    "sources": {
+     "old": [
+      "https://ja.wikipedia.org/wiki/クンタップ・ウィラサクレック",
+      "https://knockoutkb.com/fighters/kuntap_charoenchai_123"
+     ],
+     "new": [
+      "https://knockoutkb.com/fighters/kuntap_charoenchai_123"
+     ]
+    }
+   }
+  },
+  {
+   "name": "ゲーオ・ウィラサクレック",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "ゲーオ・フェアテックス"
+     ],
+     "new": []
+    },
+    "sources": {
+     "old": [
+      "https://ja.wikipedia.org/wiki/ゲーオ・フェアテックス",
+      "https://www.k-1.co.jp/fighter/6"
+     ],
+     "new": [
+      "https://www.k-1.co.jp/fighter/6"
+     ]
+    }
+   }
+  },
+  {
+   "name": "ジョムトーン・ストライカージム",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "ジョムトーン・チュワタナ"
+     ],
+     "new": []
+    },
+    "sources": {
+     "old": [
+      "https://ja.wikipedia.org/wiki/ジョムトーン・チュワタナ",
+      "https://www.k-1.co.jp/fighter/1307"
+     ],
+     "new": [
+      "https://www.k-1.co.jp/fighter/1307"
+     ]
+    }
+   }
+  },
+  {
+   "name": "スアレック・TEPPEN GYM",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "スアレック・ルークカムイ"
+     ],
+     "new": []
+    },
+    "orgs": {
+     "old": [
+      "RISE",
+      "K-1"
+     ],
+     "new": [
+      "RISE"
+     ]
+    },
+    "sources": {
+     "old": [
+      "https://rise-rc.com/fighter/suarek-teppen-gym/",
+      "https://www.k-1.co.jp/fighter/854"
+     ],
+     "new": [
+      "https://rise-rc.com/fighter/suarek-teppen-gym/"
+     ]
+    }
+   }
+  },
+  {
+   "name": "デニス・ウォーシック",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "デニス・ウォシク"
+     ],
+     "new": []
+    },
+    "orgs": {
+     "old": [
+      "K-1",
+      "RISE"
+     ],
+     "new": [
+      "K-1"
+     ]
+    },
+    "sources": {
+     "old": [
+      "https://rise-rc.com/fighter/denis-wosik/",
+      "https://www.k-1.co.jp/fighter/858"
+     ],
+     "new": [
+      "https://www.k-1.co.jp/fighter/858"
+     ]
+    }
+   }
+  },
+  {
+   "name": "ブアカーオ・バンチャメーク",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "ブアカーオ・ポー.プラムック"
+     ],
+     "new": []
+    },
+    "sources": {
+     "old": [
+      "https://ja.wikipedia.org/wiki/ブアカーオ・ポー.プラムック",
+      "https://www.k-1.co.jp/fighter/1488"
+     ],
+     "new": [
+      "https://www.k-1.co.jp/fighter/1488"
+     ]
+    }
+   }
+  },
+  {
+   "name": "ミツダマン",
+   "diffs": {
+    "orgs": {
+     "old": [
+      "Krush",
+      "Krush-EX",
+      "RISE"
+     ],
+     "new": [
+      "Krush",
+      "Krush-EX"
+     ]
+    },
+    "sources": {
+     "old": [
+      "https://rise-rc.com/fighter/mitsudaman/",
+      "https://www.k-1.co.jp/fighter/1746"
+     ],
+     "new": [
+      "https://www.k-1.co.jp/fighter/1746"
+     ]
+    }
+   }
+  },
+  {
+   "name": "ヨーブアデーン・3RDPlace",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "ヨーブアデーン・フェアテックス"
+     ],
+     "new": []
+    },
+    "orgs": {
+     "old": [
+      "RISE",
+      "K-1"
+     ],
+     "new": [
+      "RISE"
+     ]
+    },
+    "sources": {
+     "old": [
+      "https://rise-rc.com/fighter/yodbuadang-3rdplace/",
+      "https://www.k-1.co.jp/fighter/929"
+     ],
+     "new": [
+      "https://rise-rc.com/fighter/yodbuadang-3rdplace/"
+     ]
+    }
+   }
+  },
+  {
+   "name": "三上ヘンリー大智",
+   "diffs": {
+    "kana": {
+     "old": "みかみ ヘンリー だいち",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/三上ヘンリー大智"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "上杉 隼琉",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "上杉 隼土"
+     ],
+     "new": []
+    },
+    "sources": {
+     "old": [
+      "https://www.k-1.co.jp/fighter/172",
+      "https://www.k-1.co.jp/fighter/488"
+     ],
+     "new": [
+      "https://www.k-1.co.jp/fighter/172"
+     ]
+    }
+   }
+  },
+  {
+   "name": "与座優貴",
+   "diffs": {
+    "kana": {
+     "old": "よざ ゆうき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/与座優貴"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "中島 隆徳",
+   "diffs": {
+    "gym": {
+     "old": "GETOVER",
+     "new": "GET OVER 2005年4月"
+    }
+   }
+  },
+  {
+   "name": "中平 卓見",
+   "diffs": {
+    "sources": {
+     "old": [
+      "https://krossover.jp/?p=662",
+      "https://www.k-1.co.jp/fighter/1041"
+     ],
+     "new": [
+      "https://www.k-1.co.jp/fighter/1041"
+     ]
+    }
+   }
+  },
+  {
+   "name": "京谷祐希",
+   "diffs": {
+    "kana": {
+     "old": "きょうたに ゆうき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/京谷祐希"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "佐々木昊生",
+   "diffs": {
+    "sources": {
+     "old": [
+      "https://knockoutkb.com/fighters/sasaki_kosei_457",
+      "https://rise-rc.com/fighter/sasaki-kosei/",
+      "https://rise-rc.com/fighter/sasaki_kose/"
+     ],
+     "new": [
+      "https://knockoutkb.com/fighters/sasaki_kosei_457",
+      "https://rise-rc.com/fighter/sasaki_kose/"
+     ]
+    }
+   }
+  },
+  {
+   "name": "勝次",
+   "diffs": {
+    "kana": {
+     "old": "かつじ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/勝次"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "原口健飛",
+   "diffs": {
+    "kana": {
+     "old": "はらぐち けんと",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/原口健飛"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "吉田実代",
+   "diffs": {
+    "kana": {
+     "old": "よしだ みよ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/吉田実代"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "國枝悠太",
+   "diffs": {
+    "kana": {
+     "old": "くにえだ ゆうた",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/國枝悠太"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "坂本優起",
+   "diffs": {
+    "kana": {
+     "old": "さかもと ゆうき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/坂本優起"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "塩川琉斗",
+   "diffs": {
+    "kana": {
+     "old": "しおかわ りゅうと",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/塩川琉斗"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "壱・センチャイジム",
+   "diffs": {
+    "kana": {
+     "old": "イッセイ・センチャイジム",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/壱・センチャイジム"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "大鹿 統毅",
+   "diffs": {
+    "orgs": {
+     "old": [
+      "K-1 WORLD GP",
+      "Krush",
+      "Krush-EX",
+      "RISE"
+     ],
+     "new": [
+      "K-1 WORLD GP",
+      "Krush",
+      "Krush-EX"
+     ]
+    },
+    "sources": {
+     "old": [
+      "https://rise-rc.com/fighter/oshika-toki/",
+      "https://www.k-1.co.jp/fighter/1331"
+     ],
+     "new": [
+      "https://www.k-1.co.jp/fighter/1331"
+     ]
+    }
+   }
+  },
+  {
+   "name": "大﨑一貴",
+   "diffs": {
+    "kana": {
+     "old": "おおさき かずき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/大﨑一貴"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "大﨑孔稀",
+   "diffs": {
+    "kana": {
+     "old": "おおさき こうき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/大﨑孔稀"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "安本晴翔",
+   "diffs": {
+    "kana": {
+     "old": "やすもと はると",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/安本晴翔"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "宮原華音",
+   "diffs": {
+    "kana": {
+     "old": "みやはら かのん",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/宮原華音"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "寺山日葵",
+   "diffs": {
+    "kana": {
+     "old": "てらやま ひなた",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/寺山日葵"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "小比類巻太信",
+   "diffs": {
+    "aliases": {
+     "old": [
+      "小比類巻貴之"
+     ],
+     "new": []
+    }
+   }
+  },
+  {
+   "name": "山口裕人",
+   "diffs": {
+    "kana": {
+     "old": "やまぐち ひろと",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/山口裕人"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "島田知佳",
+   "diffs": {
+    "kana": {
+     "old": "しまだ はるか",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/島田知佳"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "工藤“red”玲央",
+   "diffs": {
+    "kana": {
+     "old": "くどう れっど れお",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/工藤“red”玲央"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "常陸飛雄馬",
+   "diffs": {
+    "kana": {
+     "old": "ひたち ひゅうま",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/常陸飛雄馬"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "弘・センチャイジム",
+   "diffs": {
+    "kana": {
+     "old": "コウタ・センチャイジム",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/弘・センチャイジム"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "忍アマラ―",
+   "diffs": {
+    "kana": {
+     "old": "アマラ シノブ",
+     "new": null
+    },
+    "aliases": {
+     "old": [
+      "アマラ忍"
+     ],
+     "new": []
+    },
+    "sources": {
+     "old": [
+      "https://ja.wikipedia.org/wiki/アマラ忍",
+      "https://shootboxing.org/fighter/shinobu_amara/"
+     ],
+     "new": [
+      "https://shootboxing.org/fighter/shinobu_amara/"
+     ]
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/アマラ忍"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "朝倉未来",
+   "diffs": {
+    "kana": {
+     "old": "あさくら みくる",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/朝倉未来"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "木村“ケルベロス”颯太",
+   "diffs": {
+    "kana": {
+     "old": "きむら ケルベロス そうた",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/木村“ケルベロス”颯太"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "未奈",
+   "diffs": {
+    "kana": {
+     "old": "さくらい みな",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/未奈"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "松本天志",
+   "diffs": {
+    "kana": {
+     "old": "まつもと てんし",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/松本天志"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "森田崇文",
+   "diffs": {
+    "kana": {
+     "old": "もりた たかふみ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/森田崇文"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "植山征紀",
+   "diffs": {
+    "kana": {
+     "old": "うえやま せいき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/植山征紀"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "澤谷大樹",
+   "diffs": {
+    "kana": {
+     "old": "さわたに たいき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/澤谷大樹"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "玖村将史",
+   "diffs": {
+    "kana": {
+     "old": "くむら まさし",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/玖村将史"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "琉樺",
+   "diffs": {
+    "kana": {
+     "old": "るか",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/琉樺"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "白川陸斗",
+   "diffs": {
+    "kana": {
+     "old": "しらかわ りくと",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/白川陸斗"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "白鳥大珠",
+   "diffs": {
+    "kana": {
+     "old": "しらとり たいじゅ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/白鳥大珠"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "直樹",
+   "diffs": {
+    "kana": {
+     "old": "なおき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/直樹"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "笠原友希",
+   "diffs": {
+    "kana": {
+     "old": "かさはら ゆうき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/笠原友希"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "笠原弘希",
+   "diffs": {
+    "kana": {
+     "old": "かさはら ひろき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/笠原弘希"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "笠原直希",
+   "diffs": {
+    "kana": {
+     "old": "かさはら なおき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/笠原直希"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "蒔・センチャイジム",
+   "diffs": {
+    "kana": {
+     "old": "マクト センチャイジム",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/蒔・センチャイジム"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "西岡蓮太",
+   "diffs": {
+    "kana": {
+     "old": "にしおか れんた",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/西岡蓮太"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "西谷大成",
+   "diffs": {
+    "kana": {
+     "old": "にしたに たいせい",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/西谷大成"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "那須川龍心",
+   "diffs": {
+    "kana": {
+     "old": "なすかわ りゅうじん",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/那須川龍心"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "鈴木宙樹",
+   "diffs": {
+    "kana": {
+     "old": "すずき ひろき",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/鈴木宙樹"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "鈴木真彦",
+   "diffs": {
+    "kana": {
+     "old": "すずき まさひこ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/鈴木真彦"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "門口佳佑",
+   "diffs": {
+    "kana": {
+     "old": "もんぐち けいすけ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/門口佳佑"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "鞠谷貴大",
+   "diffs": {
+    "kana": {
+     "old": "きくたに たかひろ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/鞠谷貴大"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "風音",
+   "diffs": {
+    "kana": {
+     "old": "かざね",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/風音_(キックボクサー)"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "髙山 敦",
+   "diffs": {
+    "kana": {
+     "old": "タカヤマ アツシ",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "from_romaji",
+      "url": "https://knockoutkb.com/fighters/takayama_atsushi_458"
+     },
+     "new": null
+    }
+   }
+  },
+  {
+   "name": "麻火佑太郎",
+   "diffs": {
+    "kana": {
+     "old": "あさひ ゆうたろう",
+     "new": null
+    },
+    "kana_source": {
+     "old": {
+      "type": "published",
+      "url": "https://ja.wikipedia.org/wiki/麻火佑太郎"
+     },
+     "new": null
+    }
+   }
+  }
+ ]
+}

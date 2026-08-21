@@ -14,6 +14,7 @@
    実行方法: cd scripts/standup-pipeline && python3 fetch_deepkick.py
 """
 import json
+import os
 import sys
 import time
 
@@ -21,7 +22,12 @@ sys.path.insert(0, ".")
 from fetch_common import fetch
 
 OUT_DIR = "raw/deepkick_events"
-INDEX_PATH = "raw/deepkick_index/index.json"
+# 2026-08-21追加: GitHub Actionsの新規runnerはraw/が空(サブディレクトリも無い)ため、
+# 書き込み前に作る(ローカルの使い回しraw/では暗黙に存在していた)。
+os.makedirs(OUT_DIR, exist_ok=True)
+# cache/(コミット済み、raw/の外)から読む。生成する手段が無い既知一覧のため
+# (2026-08-21、build.pyのCACHE_DIRコメント参照)。
+INDEX_PATH = "cache/deepkick_index/index.json"
 
 
 def main():
