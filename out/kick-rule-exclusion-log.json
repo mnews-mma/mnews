@@ -297,6 +297,116 @@
   "promotion": "KROSS×OVER"
  },
  {
+  "slug": "satake-masaaki",
+  "date": "1992-11-13",
+  "opponent": "ヘルマン・レンティング",
+  "methodRaw": "不戦敗（右胸骨骨折）",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。ja.wikipedia「リングス」記事によりRINGSは投げ技・タックル・関節技・寝技を認める総合格闘技ルール(顔面パンチとグラウンド打撃のみ禁止)と確認。ja.wikipedia佐竹雅昭戦績表でもRINGS参戦は「総合格闘技」区分に分類されキックボクシング区分と明確に区別されている。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA-BATTLE TOURNAMENT '92 2nd Round",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1992-10-29",
+  "opponent": "長井満也",
+  "methodRaw": "1R 1:24 KO",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。prowrestlingdata.com記録およびja.wikipedia佐竹雅昭戦績表の戦績区分(総合格闘技)で確認。RINGSルールは投げ・関節技・寝技を許容する総合格闘技ルール。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA-BATTLE TOURNAMENT '92 1st round",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1992-08-21",
+  "opponent": "ロブ・カーマン",
+  "methodRaw": "3分5R終了 時間切れ",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。prowrestlingdata.com「リングス1992年」一覧で同日程・同会場(横浜アリーナ)の正式RINGS興行と確認。RINGSルール(投げ・関節技・寝技許容の総合格闘技ルール)下の一戦で、ja.wikipedia佐竹雅昭戦績表でも総合格闘技区分。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA BATTLE SPECIAL 礎～ISHIZUE",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1992-07-16",
+  "opponent": "ピーター・ウラ",
+  "methodRaw": "4R 1:02 KO",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。RINGS Mega Battleシリーズの正式興行(ja.wikipedia「リングス」記事の1992年大会一覧に記載)。RINGSルールは総合格闘技ルールと確認済み、ja.wikipedia佐竹雅昭戦績表も総合格闘技区分。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA BATTLE 6th. 颯～HAYATE",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1992-06-25",
+  "opponent": "ウィリー・ピータース",
+  "methodRaw": "3分5R+延長R終了 時間切れ",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。RINGS Mega Battleシリーズ正式興行で、対戦相手ウィリー・ピータースもRINGS常連の総合格闘家。RINGSルール(投げ・関節技・寝技許容)下の一戦、ja.wikipedia佐竹雅昭戦績表も総合格闘技区分。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA BATTLE 5th. 獅子吼～SHI SHI KU",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1992-05-16",
+  "opponent": "バート・コップスJr",
+  "methodRaw": "2R 2:09 KO",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。prowrestlingdata.comにRINGS旗揚げ1周年記念大会として記載される正式RINGS興行。RINGSルール(総合格闘技ルール)下の一戦で、ja.wikipedia佐竹雅昭戦績表も総合格闘技区分。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA BATTLE 4th. 光臨～KOHRIN リングス旗揚げ1周年記念大会",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1992-04-03",
+  "opponent": "ヘルマン・レンティング",
+  "methodRaw": "7:29 KO",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。RINGS Mega Battleシリーズ正式興行(ja.wikipedia「リングス」1992年大会一覧に記載)。RINGSルールは総合格闘技ルールと確認済み、ja.wikipedia佐竹雅昭戦績表でも総合格闘技区分。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA BATTLE 3rd. 雷～IKAZUCHI",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1992-03-05",
+  "opponent": "フレッド・オーストロン",
+  "methodRaw": "6:22 KO",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。RINGS Mega Battleシリーズ正式興行。RINGSルール(投げ・タックル・関節技・寝技を許容する総合格闘技ルール)下の一戦、ja.wikipedia佐竹雅昭戦績表でも総合格闘技区分。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA-BATTLE 2nd. 息・吹～IBUKI",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1992-01-25",
+  "opponent": "ジェラルド・ゴルドー",
+  "methodRaw": "2R 2:13 反則",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。RINGS Mega Battleシリーズ正式興行(ja.wikipedia「リングス」1992年大会一覧に記載)。RINGSルールは投げ・タックル・関節技・寝技を許容する総合格闘技ルール(顔面パンチのみ反則)で、本試合の決着「反則」も顔面パンチによるものと一致。ja.wikipedia佐竹雅昭戦績表でも総合格闘技区分。",
+  "name": "佐竹雅昭",
+  "event": "リングス MEGA-BATTLE 1st. 回天～KAITEN",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
+  "slug": "satake-masaaki",
+  "date": "1991-12-07",
+  "opponent": "ハンス・ナイマン",
+  "methodRaw": "2分5R終了 引き分け",
+  "category": "mma",
+  "reason": "他競技混入トラック最終PR(V-1、2026-08)。Wikipedia層の大会名ベース掃討でRINGSキーワードにより抽出。Sportiva記事(sportiva.shueisha.co.jp)で「前田日明が主宰する総合格闘技『RINGS』への本格参戦」と明記される佐竹のRINGSデビュー戦。同記事は佐竹がRINGS参戦のため寝技・サンボ等グラップリングを練習したとも証言。ja.wikipedia戦績表でも「総合格闘技」区分に分類。",
+  "name": "佐竹雅昭",
+  "event": "リングス ASTRAL STEP FINAL BLAZE UP 炎上",
+  "promotion": "Wikipedia(その他団体)"
+ },
+ {
   "slug": "satou-kenichi",
   "date": "2001-06-15",
   "opponent": "阿部裕幸",

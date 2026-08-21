@@ -1,0 +1,2593 @@
+# wikipediaApprovedEventNames.tsv
+#
+# 目的: 立ち技名鑑DBの「Wikipedia(その他団体)」戦績のうち、他競技(MMA)混入監査
+#       (V-1、PR #611、判定日2026-08-21)で大会名ベースのキーワードスクリーニングを
+#       通過し、追加調査不要と判断した大会名の一覧。
+#
+# 対象母集団: #603時点のWikipedia(その他団体)残差4,197行から、#603で無作為抽出・
+#       個別判定済みの100行を除いた4,079行(2,699ユニーク大会名)。
+# 本ファイルの位置づけ: 上記2,699大会名のうち、下記キーワードのいずれにも該当せず
+#       「疑わしい」に分類されなかった2,564大会名(3,912行)= 承認済み。
+#       疑わしいと判定された135大会名(167行)は data/kick/wikipediaSuspectEventVerdicts.tsv
+#       に一次資料判定結果(MMA/NOT_MMA/INCONCLUSIVE)とともに別途保存されている。
+#
+# スクリーニングに使ったキーワード(正規表現、大小文字区別なし):
+#   RINGS, パンクラス, PANCRASE, 修斗, SHOOTO, DEEP, VTJ, ZST, 戦極, HERO'S, DREAM,
+#   PRIDE, UFC, Bellator, 大道塾, バーリトゥード, 格闘技オリンピック, スマックガール,
+#   JEWELS, VALKYRIE, PXC, CAGE FORCE, IGF, NEO-BLOOD, 無差別級, 総合格闘技, MMA,
+#   グラップリング, submission, サブミッション, アブダビ, パンクラチオン,
+#   シュートボクシング, ZERO1, クレイジーボックス, Z-1, リアルバウトジャパン, リングス,
+#   バウトジャパン, ヒクソン, グレイシー, パンクラティ, vale tudo, U-FILE, 力の激突,
+#   格闘技, 異種格闘技戦, 総合
+#
+# 注意: 「承認済み」は上記キーワードに一致しなかったという消極的な確認であり、
+#       全行を一次資料で個別検証したわけではない(#603のサンプル調査による実測混入率
+#       1.0%[95%CI 0.18%-5.45%]を根拠に、この層は大会名ベースの掃討で打ち切る方針を
+#       ユーザーが承認済み、PR #611)。将来、本一覧に無いキーワードでの混入が疑われる
+#       場合は、このファイルとキーワードリストを起点に再調査すること。
+#
+event	row_count
+	75
+Beast of the East	39
+不明	36
+Fight Club Arbat	34
+REBELS	14
+武林風	14
+KING OF KINGS TOUITSU in KOBE	13
+Steko's Fight Night	13
+Kings of the Ring	11
+オランダ	11
+Fighting European Tour	10
+WBKF Europe Tournament (+93kg) @ Club Arbat	10
+Tough is Not Enough	9
+WBKF Tournament (+93kg) @ Club Arbat	9
+Amsterdam Fight Club	8
+Champions of Champions 2	8
+Dynamite!! 〜勇気のチカラ2008〜	8
+Gentlemen Fight Night	8
+IKUSA GP -U60 SUPERSTAR☆Z TOURNAMENT -FINAL STAGE-	8
+Janus Fight Night 2007	8
+タイ	8
+一撃 2.22 ICHIGEKI	8
+後楽園ホール	8
+掣圏道 SWAアルティメットボクシング	8
+16th World Kickboxing Championships	7
+Balans Fight Night	7
+Janus Fight Night 2006	7
+K-2 GRAND PRIX '93	7
+MA日本キックボクシング連盟	7
+マーシャルアーツ日本キックボクシング連盟	7
+ムエローク Japan 2009 〜最大最強のムエタイ祭り〜	7
+全日本キック	7
+武林風 2014	7
+2 Hot 2 Handle	6
+4th Busan TAFISA World Games	6
+Arbat	6
+BORDERKICKBOXING	6
+Dynamite!! 〜勇気のチカラ2009〜	6
+Gentleman Fight Night IV	6
+IFMA World Championship	6
+Iron Challenge	6
+Local Kombat 31	6
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 2009 Yod Nak Suu vol.2	6
+Night of Thunderman 3	6
+RDF Dodge Trophy	6
+REBELS.10	6
+REBELS.6	6
+REBELS.8 & IT’S SHOWTIME JAPAN countdown-1	6
+REBELS.9	6
+"Tournament ""Cup of Gold Bars"" (over 91 kg)"	6
+2H2H	5
+Fights at the Border IV	5
+Fujiwara Festival 〜藤原祭り2010〜	5
+Heaven or Hell 5	5
+K-2 France Grand Prix 1995	5
+K.O CLIMAX 2019	5
+KT Kickboxing Tournament	5
+Kushima's Fight 7 拳神伝 〜プロキックボクシングトーナメント〜	5
+Local Kombat 28	5
+Local Kombat 30	5
+M-1 RAJA BOXING SINGHA BEER ムエタイチャレンジ「NAI KANOMTOM vol.2」	5
+Masters Fight Night	5
+Mugendo World Grand Prix	5
+Survivor 〜Round.2〜	5
+WKN Simply the best	5
+Wolf Revolution 〜Second Wave〜	5
+オーストラリア	5
+スイス	5
+マーシャルアーツ日本キックボクシング連盟「MILLENNIUM CHAMPION CARNIVAL」	5
+ルンピニスタジアム	5
+一撃 8.10 ICHIGEKI	5
+大阪府立第2体育館	5
+16th WORLDKICKBOXING CHAMPIONSHIPS	4
+A-1 World Combat Cup	4
+BARS - Cup of Arbat Final (+94 KG)	4
+BLADE 1-BLADE FIGHTING CHAMPIONSHIP-BLADE FC JAPAN -61kg	4
+EUROPEAN KICKBOXING CHAMPIONSHIPS	4
+European Championships 2004	4
+Hero Legends	4
+IFMA Muay Thai World Championships 2004	4
+IFMA World Muay Thai Championships	4
+IKUSA GP -U60 SUPERSTAR☆Z TOURNAMENT -Opening Stage-	4
+J-NET	4
+Judgement Day II Super 8	4
+K.O CLIMAX 2019 SUMMER KICK FEVER	4
+KO World Series	4
+Kickboxing Tournament Prague 1997	4
+La Finale du Grand Tournoi	4
+La Nuit des Champions	4
+La nuit des super fights	4
+Light Heavyweight Super 8	4
+Local Kombat 19	4
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 2009 Yod Nak Suu vol.4	4
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「Legend of elbows 2008 〜JAO SUU〜」	4
+"MARS 11 ""2nd ANNIVERSARY"""	4
+Muay Thai World Championships 2007	4
+Muay Thai: World Title Fight	4
+NOC BOJOVNIKOV 4	4
+Noc Bojovnikov 5	4
+REBELS 3	4
+REBELS.11	4
+REBELS.23	4
+REBELS.54	4
+REBELS.58	4
+REBELS.7	4
+RISING SUN	4
+RWS JAPAN	4
+Ring of Honor	4
+SLAMM - Netherland vs Thailand III	4
+SLAMM - Netherland vs Thailand IV	4
+SuperKombat: Fight Club	4
+Survivor Round.1	4
+Toyota Marathon	4
+WFCA	4
+WLF ワールド・チャンピオンシップ 2015	4
+War of the Worlds	4
+XPLOSION SUPER FIGHT 12	4
+XPLOSION SUPER FIGHT 19	4
+エバレット (ワシントン州)	4
+スッグ・フェアテックス	4
+タイ・オムノーイスタジアム	4
+フランス	4
+一撃 1.11 ICHIGEKI	4
+名古屋市公会堂	4
+和書	4
+武林風550	4
+英雄伝説	4
+英雄伝説 2015 （HERO LEGENDS）	4
+-	3
+2H2H - Simply The Best	3
+A-1 World Combat Cup Tournament	3
+African Bomba-Yaa	3
+Akhmat Fight Show	3
+Angels of Fire II	3
+Arbat - WBKF Europe Tournament	3
+BARS - Cup of Arbat Quarterfinals	3
+BARS - Cup of Arbat Semifinals	3
+BARS - Cup of Arbat Semifinals (+94 KG)	3
+BUNGELING BAY 縁 〜enishi〜	3
+BUSHIDO Europe - ROTTERDAM RUMBLE	3
+Battle of Arnhem III	3
+Cro Cop Final Fight	3
+D4D Toyota Cup	3
+Dynamite! SUMMER NIGHT FEVER in 国立	3
+European Kickboxing Championships	3
+FUTURE FIGHTER IKUSA 3 〜特攻〜 BROKEN ARROW	3
+FUTURE FIGHTER IKUSA 4 〜宴〜 FIREWORKS	3
+Fight At The Border 1	3
+Fight Night Saint-Tropez II	3
+Fight Night Veghel	3
+GIRLS STANDING FIGHT - Girls SHOCK IV	3
+Gala Gym Alkmaar	3
+Gentleman Fight Night	3
+Girls SHOCK V	3
+IFMA European Amateur Muaythai championships	3
+INOKI BOM-BA-YE 2002	3
+ISKA Championship Kickboxing	3
+IT’S SHOWTIME JAPAN countdown-2	3
+Janus Fight Night	3
+Janus Fight Night 2005	3
+K-2 PLUS TOURNAMENT	3
+K-3 オランダ	3
+KAKUMEI KICKBOXING	3
+KING OF OCEANIA Round1	3
+KOK World GP 2010 in Moscow	3
+KOMA GP	3
+Kickboxing Superstar XIX	3
+King of the Ring in Cottbus	3
+Kings Birthday 2010	3
+Knees of Fury 10 WMC World Heavyweight GP	3
+Kunlun Fight	3
+Kunlun Fight 62	3
+Kunlun Fight 74	3
+Last Man Standing 2, semi final	3
+Local Kombat 16	3
+Local Kombat 21	3
+Local Kombat 24	3
+Local Kombat 27	3
+Local Kombat 29	3
+Local Kombat 32	3
+Local Kombat 33	3
+Lokal Kombat 18	3
+Lord of Ring	3
+M-1	3
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ2009 Yod Nak Suu vol.3	3
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「Legend of elbows 2008 〜CRASH〜」	3
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「Legend of elbows 2008 〜MIND〜」	3
+M-1 RAJA BOXING SINGHA BEER ムエタイチャレンジ「NAI KANOMTOM vol.3」	3
+M-1「120th ANNIVERSARY OF JAPAN-THAILAND」	3
+M-1ムエタイチャレンジ RAORAK MUAY FINAL	3
+MAキック	3
+MUAYTHAI SUPER CHAMP	3
+Max Muay Thai	3
+Mix Fight Gala　11	3
+Muay Thai Warriors	3
+MuayThaiOpen 48	3
+NAGOYAKICK 〜BoogieFight07 Black Sunday〜	3
+NIGHT OF THE STARS	3
+NO KICK NO LIFE	3
+Nacht der 8 in Berlin Treptow	3
+Night of Revenge	3
+Nuit Des Champions	3
+Nuit des Champions	3
+Planet Battle	3
+REBELS.13	3
+REBELS.15	3
+REBELS.3	3
+REBELS.37	3
+REBELS.38	3
+REBELS.46	3
+REBELS.57	3
+REBELS.61	3
+REBELS.62	3
+REBELS.65	3
+RWS	3
+Rajadumnern Stadium	3
+Return of the King 2	3
+Ring Sensation	3
+S-1 European Elimination	3
+S1世界選手権	3
+SSSR Championship	3
+SuperKombat World Grand Prix I 2012	3
+THE BEST OF THE BEST	3
+The Challenger 中国	3
+The Khan 2	3
+Time For Action presents Team SuperPro 10 Year Anniversary	3
+Time for Action	3
+Toyota Cup 2010 Tournament	3
+Toyota Vigo Marathon Tournament	3
+Ufa	3
+VIP Fight Night 2009	3
+W.O.K.A. Super Welterweight World Title Fight	3
+W5 Grand Prix Heavyweight tournament	3
+WLF 2018 武林風 世界拳王争覇戦 in 温県	3
+WMC-IFMA World Muay Thai Championships	3
+WOLF REVOLUTION	3
+WOLF REVOLUTION 〜First Wave〜	3
+Wolf Revolution 〜Third Wave〜	3
+XPLOSION SUPER FIGHT 16	3
+XPLOSION SUPER FIGHT 17	3
+ZIHAD cup STIR KING 2011	3
+ギニア Muaythai Tournament	3
+スッグ・フェアテック	3
+スッグ・ペットインディー	3
+タイ・バンコク国立競技場	3
+タイ国国王誕生記念大会	3
+タイ国王生誕記念大会	3
+マーシャルアーツ日本キックボクシング連盟「ADVANCE.1」	3
+マーシャルアーツ日本キックボクシング連盟「EXPLOSION-3 〜挑戦者決定戦最終章〜」	3
+マーシャルアーツ日本キックボクシング連盟「FINAL EXPLOSION 〜全階級タイトルマッチ〜」	3
+マーシャルアーツ日本キックボクシング連盟「SPIRIT」	3
+マーシャルアーツ日本キックボクシング連盟「SUPREME-1 〜最高のキック〜」	3
+マーシャルアーツ日本キックボクシング連盟「士道館新春正月興行 BREAKDOWN-1」	3
+マーシャルアーツ日本キックボクシング連盟「東金ジム炎の7番勝負」	3
+ラスベガス	3
+ランシット・インターナショナル・スタジアム	3
+一撃 5.30 ICHIGEKI	3
+東京後楽園ホール	3
+武林風 2015	3
+燃えろドラゴン! その壱	3
+英雄伝説 2012アジア65㎏級チャンピオントーナメント	3
+2011藤原祭～冬の陣～	2
+A1 World Combat Cup	2
+ACCEL18 聖夜祭り	2
+ANDY'S GLOVE	2
+ANGELS OF FIRE IV	2
+All Star Fight 3	2
+Angels of Fire III	2
+Angels of Fire V	2
+BARS	2
+BARS - Cup of Arbat	2
+BARS - Cup of Arbat Final	2
+BARS - Cup of Arbat Finals	2
+BARS - Cup of Gold Panther	2
+BKFC Thailand 5	2
+BLADE.2 -BLADE FIGTHING CHAMPIONSHIP	2
+BLADE.2 -BLADE FIGTHING CHAMPIONSHIP- BLADE FC JAPAN CUP -55kg	2
+BOM19 – The Battle Of Muay Thai 19	2
+BRAVE 2003	2
+BRIDGE	2
+BURST	2
+Bad Boys Day part 1	2
+Battle of Arnhem I	2
+Beast of the East 2010 Poland	2
+BreakingDown13	2
+BreakingDown14	2
+BreakingDown15	2
+BreakingDown16	2
+BreakingDown5	2
+BreakingDown6	2
+BreakingDown7	2
+BreakingDown8	2
+BreakingDown9	2
+CIS(WBKF) Title (+93kg) @ Club Arbat	2
+CROSSPOINT presents X-TRA!	2
+Campionato Mondiale Thai Boxe	2
+Champions of Champions II	2
+Combat Banchamek	2
+Domination 5	2
+Dynamite!! 〜勇気のチカラ2010〜	2
+East Side 4	2
+Enfusion Kickboxing Final Tour	2
+European Championships	2
+European Muay Thai Championship	2
+Europsko prvenstvo	2
+Evolution 16	2
+FUTURE FIGHTER IKUSA 5 〜乱〜 MONKEYMAGIC	2
+FUTURE FIGHTER IKUSA 6 〜宙(SORA)〜GANGSTAR☆Z＠Velfarre	2
+Fair Fight XVI	2
+Fight Code	2
+Fight Code: Dragon Series Round 2	2
+Fight Code: Rhinos Series, Quarter Finals	2
+Fight Festival 12	2
+Fight Night Mannheim	2
+Fight Night Saint Tropez	2
+Fight Time	2
+Fighters' Night	2
+Fights at The Border III	2
+Fights at the Border III	2
+Freefight en kickbox gala	2
+Fujiwara Festival 〜藤原祭り2009〜	2
+Full Contact Gala	2
+Future Battle	2
+GIRLS STANDING FIGHT - Girls SHOCK III	2
+Gala in Brediushal	2
+Gala in Zilvermeeuwen	2
+Gentleman Fight III	2
+Gentleman Fight Night III	2
+Gentleman Fight Night V	2
+Gentleman Fightnight IV	2
+Gentleman Promotions Fightnight	2
+Gentlemen Promotion	2
+German King Cup	2
+Global FC 3	2
+Gym Alkmmaar Fight Gala	2
+HEAT22	2
+IKUSA「-初陣- Kick vs. Techno」	2
+IKUSA「Young Gunners 2」	2
+INOKI BOM-BA-YE 2003 馬鹿になれ夢を持て	2
+ISKAフルコンタクト世界ライトヘビー級タイトルマッチ	2
+International Profi Tournament	2
+Italian Extreme IV tournament	2
+JAPAN KICKBOXING INNOVATION	2
+JAPAN KICKBOXING INNOVATION 認定 第7回岡山ジム主催興行	2
+JNI Promotions	2
+Janus FIGHT NIGHT	2
+"Janus Fight Night ""The Legend"""	2
+Judgement Day	2
+"K-2 GRAND PRIX '93 風林火山 ""山の章"""	2
+K-ENERGY	2
+KAKUMEI	2
+KB4 Fightnight	2
+KICK the ROOTS 〜BUSTA〜	2
+KICK the ROOTS 〜宇都宮キックボクシング〜	2
+KICKBOXING MONDIALE 3 LA GRANDE SFIDA	2
+KING OF OCEANIA Round2	2
+KING OF OCEANIA Round3（XPLOSION SUPER FIGHT 12）	2
+KO POWER Tournament	2
+KUNLUN FIGHT 49×REBELS.45	2
+Kickboxing Champions League	2
+Kickboxing Prestige Fight	2
+Kieler Fight Night	2
+Killerdome II	2
+Killerdome IV	2
+Kings Cup	2
+Kings of Combat	2
+Kings of Kombat 4	2
+Kings of the Ring - World GP 85 KG	2
+KlasH European Elimination	2
+Krash CBF Show No Mercy	2
+Kunlun Fight 14 THE WORLD MAX RETURN 2015	2
+Kunlun Fight 18	2
+Kunlun Fight 22	2
+Kunlun Fight 35	2
+Kunlun Fight 36	2
+Kunlun Fight 39	2
+Kunlun Fight 45	2
+LEGEND 4	2
+LOADS OF THE RING	2
+Laonda Fight Night	2
+Legend 2: Invasion	2
+Local Kombat 11	2
+Local Kombat 14	2
+Local Kombat 18	2
+Local Kombat 20	2
+Local Kombat 22	2
+Local Kombat 26	2
+Local Kombat 9	2
+Lokal Kombat 25	2
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 2009 Yod Nak Suu vol.3	2
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 2009「Yod Nak Suu vol.2」	2
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ Legend of Elbows 2008 〜YOD MUAY〜	2
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 〜獲武-腕 物語 2007〜	2
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ2009 Yod Nak Suu vol.2	2
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「Legend of Elbows 2008 〜CRASH〜」	2
+M-1 FAIRTEX SINGHA BEERムエタイチャレンジ「Legend of Elbows 2006 July 9」	2
+M-1 FAIRTEX フレッシュマンズ in 大森	2
+M-1 FAIRTEX ムエタイチャレンジ 2009「Yod Nak Suu vol.1」	2
+M-1 FAIRTEX ムエタイチャレンジ2009 Yod Nak Suu vol.1	2
+M-1 RAJA BOXING SINGHA BEER ムエタイチャレンジ NAI KANOMTOM vol.3	2
+M-1 ムエタイチャレンジ	2
+M-1ムエタイチャレンジ Sutt Yod Muaythai vol.4 Part2	2
+M-FIGHT Suk WEERASAKRECK VII	2
+M-FIGHT～蹴拳15～Part.2	2
+M1 ムエタイ・グランド・チャンピオンシップ	2
+"MARS 09 ""BLOWN AWAY"""	2
+MARS WORLD FIGHTING GP in 幕張	2
+MAT vol.1	2
+MAX MUAYTHAI WORLD CHAMPION 2013 JAPAN	2
+MAX Muay Thai	2
+MAX Muay Thai 7	2
+MA日本キック	2
+MA日本キックボクシング連盟「士道館新春正月興行 BREAKDOWN-1」	2
+MSA Muaythai Premier League	2
+MUAY THAI CHALLENGE M-1	2
+MUAYTHAI GALA INTERNATIONAL	2
+Master Sken's Fight Night	2
+Matter of Honor	2
+Muay Thai Gala	2
+Muay Thai World Championshios	2
+Muay Thai World Championships	2
+Muay Thai World Championsips	2
+Muay Thai in Macau	2
+Muay Xtreme	2
+Muay Yoko 第19回大会	2
+MuayThaiOpen 30	2
+MuayThaiOpen 34	2
+MuayThaiOpen 50	2
+MuayThaiOpen 51	2
+MuayThaiOpen31	2
+MuayThaiOpen36	2
+Muaythai Champions League	2
+Muaythai Premier League: Round 1	2
+NAGOYA KICK 〜CENTRAL RHYTHM〜	2
+NAGOYAKICK 〜DrumRoll Please!!〜	2
+NO RESPECT 4	2
+Namlatili mi Srbe	2
+Next Generation Warriors	2
+"Night Club ""Reaktor"""	2
+Night of Thunderman 2	2
+Nuit Des Champions 2017	2
+Obračun u Ringu 8	2
+Omnoi Stadium	2
+Petrosyan Mania	2
+PetrosyanMania: Gold Edition	2
+Phoenix Fighting Championship	2
+Planet Battle Queen Elizabeth Stadium	2
+Planet Battle: Where Champions Collide	2
+Profighters Gala in Almere	2
+REBELS-EX	2
+REBELS.14	2
+REBELS.2	2
+REBELS.25 a.k.a. INNOVATION’s day	2
+REBELS.26 ～the duel～	2
+REBELS.31	2
+REBELS.33	2
+REBELS.41	2
+REBELS.44	2
+REBELS.50	2
+REBELS.52	2
+REBELS.55	2
+REBELS.56	2
+REBELS.60	2
+REBELS.67	2
+RESISTANCE-20	2
+RIKIX「NO KICK,NO LIFE 2014」	2
+Rayong-Dreamfights Grand Prix	2
+Rising Sun 5	2
+Rumble of the Kings 2011	2
+S-1 Tournament Final	2
+SHOOT!!ザ・超合金 〜バトル・クィーン・グランプリ」	2
+SLAMM - Netherland vs Thailand II	2
+SLAMM - Netherland vs. Thailand IV	2
+SLAMM5	2
+SUK WEERASAKRECK IX	2
+Starmuay V	2
+Super Muay Thai	2
+SuperKombat World Grand Prix II 2012	2
+SuperKombat: the pilot show	2
+Survivor 〜Round.3 立川隆史・引退記念興行〜	2
+Survivor 〜Round.5〜	2
+THE NIGHT OF THE SHOCK	2
+THE SMOKER'S HALLOWEEN	2
+TITANS NEOS VII	2
+TK2 Kickboxing	2
+TRIAL LEAGUE.1	2
+TRIAL LEAGUE.2	2
+TRIAL LEAGUE.7	2
+TRIBELATE vol.45	2
+TRIBELATE vol.8 〜バンゲリングベイ3周年記念イベント〜	2
+TRIBELATE〜新宿フェイス	2
+Tarik Solak's Show	2
+Thai Boxe Mania	2
+Thai/Kickboxing Nijmegen	2
+Thaiboxing Carabeen Tournament	2
+Thaiboxing Gala	2
+The Battle of Arnhem IV	2
+The Battle of Arnhem V	2
+The Battle of the Year	2
+The Challenger	2
+The Contender Asia Finale	2
+The KHAN	2
+The Kakidamishi 1	2
+Tough Is Not Enough	2
+Tournoi Poids Lourds WKN	2
+Ultimate Nokaut 1	2
+Ultimate Nokaut 2	2
+Uprising 12	2
+Victory	2
+Victory or Hell	2
+Victory or Hell 8	2
+W5 Grand Prix K.O	2
+WBC Muaythai Chamipionship	2
+WBCムエタイ・ジャパン第2回大会 「The Path to the World Champion」	2
+WBKF Eurasia Championship	2
+WFCA Gala Zutphen	2
+WFL: Manhoef vs. Bonjasky	2
+WILD KICKBOXING 〜縁〜	2
+WLF武林風中日対抗戦	2
+WMF Muay Thai World Championship	2
+WORLD CHAMPIONSHIOP MUAYTHAI	2
+WORLD MUAYTHAI FEDERATION CHAMPIONSHIP	2
+WORLD TITLE FIGHT OF MUAY THAI	2
+WPKL Gala in Hogendorphal	2
+Wanchai＋PK MuayThai Super Fight	2
+World Martial Arts Challenge	2
+XPLOSION 3 - KINGS OF CHAMPIONS	2
+XPLOSION SUPER FIGHT 14	2
+Xplosion 18 Super Fights	2
+Yokkao 15	2
+Yokkao Extreme 2013	2
+ZONE 4	2
+ZONE×REAL 第二章 第1部 ZONE 2	2
+Zhara Fight Show	2
+オランダ（大会名不明）	2
+カナダサリー州	2
+"キック・ユニオン ""ディファ有明大会"""	2
+サムロンスタジアム	2
+スッグ・ワンブンヤー	2
+タイ・パタヤ	2
+チャクリキ	2
+マーシャルアーツ日本キックボクシング連盟 2009士道館新春興行BREAK THROUGH-9 〜添野道場40周年記念大会〜	2
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-10 〜突破口〜」	2
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-3 〜突破口〜」	2
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-4 〜突破口 KICKGUTS 2008〜 梶原一騎22回忌追悼記念・第11回梶原一騎杯」	2
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-5 〜打破〜 新東金ジム30周年記念 戦場の狼IV」	2
+マーシャルアーツ日本キックボクシング連盟「BREAK-2 〜WMAF世界フェザー級タイトルマッチ＆ウェルター級王座決定戦〜」	2
+マーシャルアーツ日本キックボクシング連盟「BREAK-8 〜士道館新春興行〜」	2
+マーシャルアーツ日本キックボクシング連盟「BREAKDOWN-8 〜打破〜 MA.KICK祭り CHAMPION CARNIVAL」	2
+マーシャルアーツ日本キックボクシング連盟「BREAKDOWN（打破）5 〜新東金ジム29周年記念 戦場の狼3」	2
+マーシャルアーツ日本キックボクシング連盟「DETERMINATION (決心) 7th 〜梶原一騎19回忌追悼記念 第8回梶原一騎杯 キックガッツ2005〜」	2
+マーシャルアーツ日本キックボクシング連盟「KING COMBAT-2002 - KICK BOXING 60kg TOURNAMENT 日本最強決定戦」	2
+マーシャルアーツ日本キックボクシング連盟「SET FIRE II 〜キックに火をつけろ!〜」	2
+マーシャルアーツ日本キックボクシング連盟「SHIMOKITA GROUND ZERO PT2」	2
+マーシャルアーツ日本キックボクシング連盟「SHIMOKITA GROUND ZERO」	2
+マーシャルアーツ日本キックボクシング連盟「SUPREME-2 〜最高のキック〜」	2
+マーシャルアーツ日本キックボクシング連盟「SUPREME-4 梶原一騎18回忌追悼記念 第7回梶原一騎杯 キックガッツ2004」	2
+マーシャルアーツ日本キックボクシング連盟「SUPREME-6」	2
+マーシャルアーツ日本キックボクシング連盟「SUPREME-7 CHAMPION CARNIVAL 〜7階級タイトルマッチ〜」	2
+マーシャルアーツ日本キックボクシング連盟「SURPRISING 3rd」	2
+マーシャルアーツ日本キックボクシング連盟「SURPRISING 6 〜東金ジム28周年記念 戦場の狼2〜」	2
+マーシャルアーツ日本キックボクシング連盟「SURPRISING 8 〜MA日本キック連盟祭・オールタイトルマッチ〜」	2
+マーシャルアーツ日本キックボクシング連盟「マッハ士道館・戦国シリーズ仁義なき戦いパート3」	2
+マーシャルアーツ日本キックボクシング連盟「マーシャルアーツスピリット」	2
+マーシャルアーツ日本キックボクシング連盟「最強を求めて」	2
+マーシャルアーツ日本キックボクシング連盟「梶原一騎17回忌追悼記念・第6回梶原一騎杯・キックガッツ2003」	2
+マーシャルアーツ日本キックボクシング連盟「谷山ジム25周年記念興行 ビッグ・バン〜統一への道」	2
+ムエローク2011 -3rd-	2
+一撃 8.20 ICHIGEKI	2
+不明（イタリア）	2
+不明（オランダ）	2
+元気ですか!! 大晦日!! 2011	2
+巌流島バーチャルファイト	2
+新日本キック	2
+"新日本プロレス""YOKOHAMA DEAD OUT"""	2
+日本キックボクシング連盟「2001 激動シリーズ」	2
+武林風 & WCKムエタイ: 中国 vs アメリカ	2
+武林風 2013	2
+武林風 2014 インターナショナル・チャンピオン	2
+武林風547	2
+激突II	2
+激突III	2
+琉球 Kamikaze Spirits	2
+第6回岡山ジム主催興業	2
+"聖戦 〜SANCTUARY III〜 風林火山 ""風の章"""	2
+聖戦 〜SANCTUARY I〜	2
+英雄伝説 2016	2
+藤原祭	2
+蹴拳24	2
+蹴拳VI	2
+野良犬祭	2
+鉄拳9	2
+風吹ジム特設リング	2
+龍PROMOTION「I.K.M.F. 韓国・日本4VS4マッチ」	2
+"""Kings Of The Ring"" Italy Thai Boxing Tournament, Final"	1
+"""Kings Of The Ring"" Italy Thai Boxing Tournament, Quarter Finals"	1
+"""Kings Of The Ring"" Italy Thai Boxing Tournament, Semi Finals"	1
+"""Les Maîtres du Ring"""	1
+"""New Talents"""	1
+10th Ukrainian Muay Thai championships	1
+11th Ukrainian Muay Thai championships	1
+1st Stage of Ukrainian Muaythai Cup 2008	1
+2 Hot 2 Handle - The Road To Tokyo	1
+2 Hot 2 Handle XVII	1
+2004年5月15日以前の試合	1
+2011藤原祭〜冬の陣〜	1
+2011藤原祭り～冬の陣～	1
+2011藤原祭り～夏の陣～	1
+2012 武林風 第7回中日対抗戦	1
+2012“湯都論剣”世界格闘王者争覇戦	1
+2024年3月20日	1
+2H2H - Simply the Best IV	1
+3rd Steko Fight Night	1
+4. Merseburger Fight Night	1
+54kg契約 Girls SHOCK V	1
+54kg契約 イタリア	1
+54kg契約 タイ ローイエット	1
+67Kg世界最強決定トーナメント　フランス　ベルーシー体育館	1
+8th Ukrainian Muaythai Cup	1
+8ème Nuit des Sports de Combat	1
+8ème Nuit des Sports de Combatbr	1
+A Night To Remember	1
+A Night to Remember	1
+A-1 Tournament @	1
+A-1 Tournament Istanbur	1
+A-1 World Champions League	1
+A-1 World Cup Combat Lyon	1
+A1 Lyon	1
+A1 WORLD COMBAT CUB	1
+A1 WORLD COMBAT League	1
+ACB KB 3: Grand Prix Final	1
+ACB KB 8: Only The Braves	1
+ACB-KB 16	1
+ACCEL 20	1
+ACCEL Vol.39	1
+ACCEL vol.13 WEST EVOLUTION 世界4大格闘王神戸決戦	1
+ACCEL vol.14 夏の陣	1
+ACCEL vol.24	1
+ACCEL vol.26	1
+ACCEL vol.27	1
+ACCEL vol.28	1
+ACCEL vol.32	1
+ACCEL vol.37	1
+ACCEL vol.38	1
+ACCEL 格闘武道会2 KARATE REVENGE	1
+ACCEL 格闘武道会4 聖夜決戦	1
+ACCELvol.25	1
+ACCELvol.26	1
+ACCELvol.27	1
+ACCELvol.37トリプルメインイベント第3試合　アクセルGルール初代バンタム級王座決定戦　3分3R	1
+ACCELvol.38	1
+AJKN.1～始動～	1
+ALL BOX WORLD	1
+ALL BOX WORLD 9th	1
+ALTIMATE WARRIORS	1
+APF - Azerbaijan vs. Europe	1
+Afternoon Rumble	1
+Ahoy Simply The Best VI	1
+Al-Fid Thaibox Gala	1
+Alkmaar	1
+All Star Fight	1
+All Star Fight 2	1
+All Star Fight 4	1
+All Star Fight 5	1
+All Star Fight 6	1
+All Star Fight 7	1
+All Star Fight 8	1
+Amsterdam Fight Club2009年4月11日	1
+Amsterdam Fightclub	1
+Amsterdam Fightclub presents	1
+Arbat Fight Club, WBKF, Moscow	1
+"Athletic Club ""Minoas"""	1
+"BARS ""Arbat"""	1
+BARS - BARS	1
+BARS: Kirsanov vs. Matkin	1
+BATTLE FRONT 1	1
+BATTLE OF CHAMPIONS	1
+BBTVスタジアム	1
+BEST OF FIGHT	1
+BEST OF KICK BOXING Super Fight 3	1
+BLADE 1	1
+BLADE 1 - BLADE FIGHTING CHAMPIONSHIP- BLADE FC JAPAN -61kg	1
+BLADE.2	1
+BOM -THE BATTLE OF MUAY THAI SEASON 2-WMC	1
+BOM 2-6～THE Battle Of Muaythai SEASON II vol.6	1
+BOM 41	1
+BOM 45	1
+BOM 50	1
+BOM I～The Battle of Muaythai～	1
+BOM OUROBOROS	1
+BOM WAVE 04	1
+BOM WAVE 06	1
+BOM WAVE 3	1
+BOM WAVE03	1
+BOM WAVE05	1
+BOM18	1
+BOM19	1
+BOM2-6	1
+BOM2-6 - The Battle Of Muay Thai SeasonⅡ vol.6 -	1
+BOMプロモーション『BOM OUROBOROS 2025』BOM OFGミドル級（-72.57kg）王座決定戦　3分3R	1
+BRAVE 2003 (日進会館）	1
+BRAVE CORE II	1
+BRAVE CORE III	1
+BREATHNESS MUAY THAI 4	1
+BRUTE FORCE 33 COLLISION	1
+BUNGELING BAY SPIRIT 縁 〜enishi〜	1
+Baas Sports	1
+Bad Boys Day	1
+Balans Fight Night Gala	1
+Balans Kickboxing Gala	1
+Bangkok	1
+Bangkok, IFMA, Amateur Muaythai World Championships, アマチュアムエタイ	1
+Battle To Be King, Fairtex Thepprasit Stadium	1
+Battle Under the Tower	1
+Battle for the Belts	1
+Battle in Zaandam II	1
+Battle of Arnhem 4	1
+Battle of Arnhem 6	1
+Battle of Arnhem II	1
+Battle of Champions, Moscow	1
+Battle of Sweden	1
+Battle of the Anzacs	1
+Battle on Bali FC	1
+Beast of The East	1
+Beast of the East【WFCAタイボクシング世界ジュニアミドル級タイトルマッチ	1
+Beatdown	1
+Beatmasters Show	1
+Belarus vs USA, Minsk, Belarus	1
+Belorechensk Fight Night 2	1
+Best of Siam	1
+Best of Siam 2	1
+Best of Siam 6	1
+Best of The Best	1
+"Big8 Grand Prix ""European Selection"""	1
+"Bishkek, kyrgyzstan, Stadium ""Spartacus"""	1
+Black List 010 meets Wolf Revolution	1
+Blade 1	1
+Blade FC 2	1
+Blood, Sweat & Tears	1
+Bologna Fight Night	1
+Born To Fight	1
+"Boxing Club ""Reaktor"""	1
+"Boxing Club ""Reaktor"":Belarus VS Russia"	1
+Brave CF 97	1
+BreakingDown10	1
+BreakingDown11	1
+BreakingDown12	1
+BreakingDown13.5	1
+BreakingDown16.5	1
+BreakingDown17	1
+BreakingDown19	1
+BreakingDown19.5	1
+BreakingDown20	1
+BreakingDown5.5	1
+BreakingDown6.5	1
+BreakingDown9.5	1
+Breidushal	1
+Bruce Lee 70th Birthday Celebrations	1
+Brute Force 11	1
+Bulldog Media Fight Night 2	1
+"Bushido Europe ""Rotterdam Rumble"""	1
+Bushido Europe: Rotterdam Rumble	1
+C.L.K Mucho Machismo	1
+CHAKURIKI 19	1
+CHALLENGER 8	1
+CHAMPIONS CARNIVAL 2014	1
+CHAMPIONS CARNIVAL 2015	1
+CHAMPIONS CARNIVAL 2018-Ⅱ（INNOVATION）	1
+CHAMPIONS CARNIVAL 2020（第1部）	1
+CHAOS MADMAX II「WORLD CHAOS MADMAX 〜公開血闘7番勝負〜」	1
+CRASH AT THE CROWN	1
+CRAZY KING Vol.3	1
+CUB☆KICK'S-8	1
+Cage Carnage	1
+Campions League	1
+Capital Punishment	1
+Capital Punishment 4	1
+Capital Punishment 5	1
+Carcharias Fighting Championship	1
+Carcharias Team Boxing Gala	1
+Chachoengsao Promotion	1
+Champions Gym Gala in Hanenhof	1
+Champions League	1
+Champions in Action	1
+Chang MuayThai Kiatpetch Super Fight	1
+Chaweng Stadium	1
+Chewang Stadium	1
+Chiang Rai WBC Muaythai Championship	1
+China Fight Night	1
+Chinese police VS Thai police kickboxing Championship	1
+Collizion Bosnia	1
+Cologne Fight Night 2010	1
+Colosseum Tournament 27	1
+Combat Renaissance	1
+Combat at The Capitale III - The Combat vs. IKUSA -	1
+Combat at The Capitale III -The Combat vs. IKUSA-	1
+Credissimo Golden Fight	1
+Cup of Arbat トーナメント1回戦	1
+Cup of Arbat トーナメント準決勝	1
+Cup of Arbatトーナメント決勝戦	1
+Czech Grand Prix Thaiboxing II	1
+DEMOLITION 2DAYS ～day 2nd Kick Boxing～ – HIGH SPEED –	1
+DEMOLITION FIGHT IV	1
+DEMOLITION FIGHT V	1
+DESTINY-VII	1
+DIVINER presents  TWOFC Vol.0	1
+DUEL 22	1
+DUEL 24	1
+DUEL 9	1
+David Sain	1
+Day of Destruction 10	1
+Day of Destruction 11	1
+Day of No Mercy	1
+Day of the Parther	1
+Demolition Fight GP	1
+Demolition IV	1
+Demolition V	1
+Destiny 5	1
+Detonation 9	1
+Diamonds of the Future	1
+Double Shock Power	1
+Dragon Fight	1
+Duel 3	1
+Dutch Muay Thai Championships	1
+E.M.A.CHAMPIONSHIP	1
+EFC蛮火豹７	1
+EM-LEGEND 10	1
+EM-LEGEND 9	1
+EVOLUTION 18	1
+Eggesiner Fight Cup	1
+El Desafio	1
+Emmen Spoiler	1
+Empire League Team II	1
+Enfusion	1
+Enfusion 5th Anniversary	1
+Enfusion 63	1
+Enfusion Live 22	1
+Enfusion Live 27	1
+Enfusion Live 34	1
+Enfusion Live 47	1
+Enfusion Live: Barcelona	1
+Enher the Plaza Muay Thai Gala	1
+Eruption 10	1
+European Amateur Muay Thai Championships	1
+European MTA Muaythai title	1
+European Muaythai Championships 2008	1
+European Thai Boxing Championship	1
+Evolution 11	1
+Evolution 13: Carnival of Carnage	1
+Evolution 14: The Contenders	1
+Evolution 15 The Contender Qualifier	1
+Evolution 15: The Contender Qualifier	1
+Evolution 18	1
+Evolution 22	1
+Explosion Fight Night Volume 01	1
+FF/Muay Thai Gala in Oostzaan	1
+FFE Gala in Zonnehuis	1
+FFUBADA French Cup	1
+FIGHT CLUB 1	1
+FIGHT CLUB.2	1
+FIGHT COLLECTION in 沖縄 K-SPIRIT13	1
+FIGHT OF THE HEAVY TANKS	1
+FIGHTING EVOLUTION III	1
+FIGHTING　EVOLUTION　ⅩⅢ	1
+FORCE ３	1
+FUTURE FIGHTER IKUSA 3 -特攻- BROKEN ARROW	1
+FUTURE FIGHTER IKUSA 6 〜宙(SORA)〜 GANGSTAR☆Z @ Velfarre	1
+FUTURE FIGHTER IKUSA 6 〜宙（SORA）〜 GANGSTAR☆Z	1
+Face to Face	1
+Fairtex Thepprasit Boxing Stadium	1
+"Fight Club ""The Octopus"""	1
+Fight Club Berlin	1
+Fight Code Rhinos Series, 1st Round	1
+Fight Code: Rhinos Series, Final 16	1
+Fight Code: Rhinos Series, Final 16 (Part 3)	1
+Fight Code: Rhinos Series, Finals	1
+Fight Code: Rhinos Series, Semi Finals	1
+Fight Extream 4	1
+Fight Festival 16	1
+Fight Festival 17	1
+Fight Festival 9	1
+Fight For Victory V	1
+Fight Gala in Beverwijk	1
+Fight Gala in Curacao	1
+Fight Gala in Darmstadt	1
+Fight League	1
+Fight Legend Geneva	1
+Fight Night	1
+Fight Night Dubai	1
+Fight Night Leverkusen	1
+Fight Night Saint-Tropez III	1
+Fight Night in Veghel	1
+Fight Night in Winterthur	1
+Fight Nights: Battle of Moscow 15	1
+Fight Sport Industries	1
+Fight Time: WDC World Championship	1
+Fight Zone I	1
+Fight Zone II	1
+Fight Zone III	1
+Fight at The Border	1
+Fighterzone Kickboxing World Series MAX	1
+Fighting Evolution VIII　COUNTER THE ASIAD ATTAC	1
+Fighting Party	1
+Fighting Rookies	1
+Fights at The Border 4	1
+Fights at the Border II	1
+Fights at the Border V	1
+Final Fight - Retour aux sources	1
+Final Fight 2	1
+Finnfight 9	1
+First of the Year	1
+Fist of legend-International tournament fight	1
+Fists of Fury	1
+Fists of Fury 4	1
+Floripa Fight 3	1
+Freefight & Kickbix Gala	1
+Freefight en Kickbox Gala	1
+Fujiwara Festival 〜藤原祭り2007〜	1
+Fujiwara Festival 〜藤原祭り2011〜	1
+Full Contact Gala : France vs The World	1
+Full-Contact gala in La Locomotive Discothèque	1
+Fury in Macau	1
+Future Fighter IKSA その弐 秋の陣「雷襲」	1
+G-GATE	1
+GANZBERG KUN KHMER	1
+GENOME 21	1
+GGH Gala	1
+GIRLS STANDING FIGHT 1st.BOUT - Girls SHOCK!	1
+GO-1	1
+GOAT	1
+GODDESS OF VICTORY III	1
+GODDESS OF VICTORY IV	1
+GOLD RUSH 6	1
+Gala Internacional de Kickboxing de Alenquer	1
+Gala International Multi-boxes à Coubertin	1
+Gala Top Team	1
+Gala de Levallois-Perret	1
+Gala in Alkmaar	1
+Gala in Almere	1
+Gala in Barneveld	1
+Gala in Beverwijk	1
+Gala in Breidushal	1
+Gala in Geneve	1
+Gala in Goes,Zeeland	1
+Gala in Kampen	1
+Gala in Maldegem	1
+Gala in Margriethal	1
+Gala in Roosendaal	1
+Gala in Schremerhorn	1
+Gala in Vlaardingen	1
+Gala in Zilwermeeuwen	1
+Gala of the Champs	1
+Gentleman Fight Night 3	1
+Gentleman Gala Tilburg	1
+Gentleman's Promotion Gala in Tilburg	1
+Gentlemen Fight Night 3	1
+Gentlemens Promotion	1
+Get In The Ring	1
+Global FC 4	1
+Golden Belt Tournament in Cacak	1
+Golden Fight League	1
+Golden Panther Cup Finals (81kg) @ Club Arbat	1
+Gotti Promotions	1
+Gracie Fighting ChampionshipsTeam Gracie vs. Team Hammer House	1
+Great Kickboxing Spectacle in Athens	1
+Great kickboxing spectacle	1
+Greece and Serbia Fight the World	1
+Guinée Muay Thai	1
+HEAT10	1
+HEAT11	1
+HEAT12	1
+HEAT13	1
+HEAT14	1
+HEAT17	1
+HEAT20回記念大会	1
+HEAT20～HEAT20回記念大会～	1
+HEAT24	1
+HEAT25	1
+HEAT36	1
+HEAT8	1
+HIGHSPEED 2016 ～higher self～	1
+HIGHSPEED DX	1
+HIGHSPEED EX	1
+HIT IT	1
+Hatyai Stadium	1
+Heaven or Hell	1
+Heaven or Hell 4	1
+Heavyweight Factory II	1
+Hero Legend 2017	1
+Holland vs Thailand VI	1
+Holland vs Thailand: The Revenge	1
+Hot Night in Amsterdam	1
+IAMTF, Bangkok	1
+IFC 3	1
+IFMA World Muay thai Championships, semi final	1
+IFMA キングスカップ	1
+IKBO World Title	1
+IKF NIGHT OF CHAMPIONS	1
+IKF USA vs Belarus	1
+IKFプロムエタイスーパーヘビー級タイトルマッチ	1
+"IKUSA ""YOUNG GUNNERS2 by FUTURE FIGTHER IKUSA"""	1
+IKUSA GP ＜-U60 SUPERSTAR☆Z＞ TOURNAMENT 〜FINAL STAGE	1
+IKUSA YGZ04 -BIRD-BASE-	1
+IKUSA YGZ04 〜BIRD-BASE〜	1
+IKUSA YOUNG GUNNERES 3 〜RETURNS〜	1
+IKUSA YOUNG GUNNERES 3 〜RETURNS〜 @ ODAIBA	1
+IKUSA 「YOUNG GUNNERS by FUTURE FIGTHER IKUSA」	1
+IKUSA「FUTURE FIGHTER IKUSA 4 〜宴〜 FIREWORKS」	1
+IKUSA「IKUSA GP -U60 SUPERSTAR☆Z TOURNAMENT -Opening Stage-」	1
+IMPACT Roosendaal	1
+IMPERIAL 〜帝国〜	1
+INFINITE CHALLENGE Ⅷ	1
+INFINITIE CHALLENGE Ⅳ	1
+INFINTY	1
+INNO	1
+INNOVATION	1
+INNOVATION Innovation champion carnival	1
+INOKI BOM-BA-YE × 巌流島 in 両国	1
+ISKA	1
+ISKA Full Contact World Title (+93kg)	1
+ISKA Heavie weight Title	1
+ISKA Kickboxing World Championship	1
+ISKA タイトルマッチ（ハワイ州ホノルル）	1
+ISKAインターコンチネンタルスーパーヘビー級王座戦	1
+ISKAキックボクシング	1
+ISKAヨーロッパ・ムエイタイ王者決定戦	1
+IT'S SHOW TIME	1
+IT’S SHOWTIME 54	1
+Ichigeki Bulgaria 06	1
+Immortality	1
+In Syng Production「World Championship Muaythai」	1
+Inspire-S-(名古屋ダイアモンドホール)	1
+Inspire-S-vol.2(名古屋市公会堂)	1
+Internatinoal Profi Tournament	1
+International Championship Titles	1
+International Fighting Championship	1
+Into the Fire 2/2	1
+Iron Challenge 2015	1
+It's Pay Back Time	1
+Itai-Te Promotions	1
+Its Fight Time	1
+JANUS FIGHT NIGHT	1
+JANUS FIGHT NIGHT 2005 Thai Boxe Mondiale Tournament	1
+JAPAN CUP KICKBOXING Vol.3	1
+JAPAN CUP KICKBOXING Vol.4	1
+JAPAN KICKBOXING INNOVATION CHAMPIONS CARNIVAL2015	1
+JAPAN KICKBOXING INNOVATION Champions Carnival 2017 II	1
+JAPAN KICKBOXING INNOVATION 認定 第8回 岡山ジム主催興行	1
+JAPAN KICKBOXING INNOVATION「CHAMPIONS CARNIVAL2015」	1
+JAPAN KICKBOXING INNOVATION「Innovation champion carnival 」	1
+JAPAN KICKBOXING INNOVATION「戦闘甲斐士12」	1
+JAPAN KICKBOXING INNOVATION「戦闘甲斐士13」	1
+JAPAN KICKBOXING INNOVATION「戦闘甲斐士14」	1
+JAPAN KICKBOXING INNOVATION「戦闘甲斐士15」	1
+JAPAN KICKBOXING INNOVATION「戦闘甲斐士16」	1
+JAPAN KICKBOXING INNOVATION「雷舞」	1
+JAPAN MARTIAL ARTS EXPO PROLOGUE	1
+JAPANESE ATTACK! 〜Night of the SAMURAI〜	1
+JAPANKICKBOXINGINNOVATIONChampionsCarnival 2017 III	1
+JapOut Presents QUEST	1
+Japan Kickboxing Innovation Champions Carnival 2020	1
+Japan Kickboxing Innovation Join Forces 12	1
+Japan Kickboxing Innovation Join Forces 13	1
+Japan Kickboxing Innovation Join Forces 14	1
+Japan Kickboxing Innovation 認定 第5回岡山ジム主催興行	1
+Japan Kickboxing Innovation認定第3回岡山ジム主催興行	1
+Join Forces-14	1
+Judgement Day Super 8	1
+Jungle Fight 7	1
+K-2 GRAND PRIX '93 準々決勝	1
+K-2 GRAND PRIX '93 準決勝	1
+K-2 Plus Tournament 1994 準々決勝	1
+K-ENERGY Okayama	1
+"K-LEAGUE オープニングファイト ""見参"" KENZAN"	1
+K-U「童夢III」	1
+K-U「童夢IV」	1
+"K.O. Events ""Tough Is Not Enough"	1
+K.O. Night in the Margriethal	1
+K.O.C. III	1
+"K.O.M.A. ""King of Martial Arts"" GP"	1
+K.O.T.R.-EUROPEAN	1
+KAKIDAMISHI 2	1
+KAKUMEI NAGOYA 3 ～ 届け！愛と勇気とローキック ～	1
+KAKUMEIKICKBOXING	1
+KAKUMEIプロジェクトKAKUMEI KICK BOXING 第2弾	1
+KARATE WORLD CUP '94	1
+KB in Russia, Moscow	1
+KB4	1
+KHAOS 4	1
+KHAOS.6	1
+KICK ADDICT‼	1
+KICK Association	1
+KICK the ROOTS 〜宇都宮キックボクシング2〜	1
+KICKBOXING ZONE	1
+KICKBOXING ZONE 3 沖縄大会	1
+KICKBOXING ZONE 5 沖縄大会	1
+KING EXCEED「KING2」	1
+KING OF SOUL vol.2	1
+KING OF SOUL vol.4	1
+KING OF STRIKERS ROUND22	1
+KING OF STRIKERS Round 6	1
+KING of CHALLENGER	1
+KINGS OF THE RING	1
+KINGS OF THE RINGKINGS	1
+KNUCKLE'S 16	1
+KO World Series 2008 Auckland	1
+KOK Fight Night - Spartan's Night V	1
+KOK World GP 2010 in Dnipropetrovsk, Semi-Finals	1
+KOK World GP 2014 in Chișinău	1
+KOK World GP 2014 in Gdansk	1
+KOK World Grand Prix 2013	1
+KOMA(King Of Martial Arts) MS 'The Fame'	1
+KOMBAT FESTIVAL 2004	1
+KUNLUN FIGHT 49 × REBELS.45	1
+KYOKUGEN 2015	1
+KYOKUGEN 2016	1
+Kai Yang Har Dao Tournament, 1st Round	1
+Kalverdijkje Leeuwarden 2011	1
+Kanchanaburi Stadium	1
+Kick Imperator 4	1
+Kick-Thaiboxing Gala in Amsterdam	1
+Kickboxing Cup 2007	1
+Kickboxing Gala	1
+Kickboxing Gala in Mons	1
+Kickboxing Superstar XIX Edition	1
+Kickboxing World Cup Szeged	1
+Kickboxing of the world	1
+Kicker vs Boxer	1
+Killerdome III	1
+Killerdome V	1
+King of Colloseum	1
+King of Colosseum	1
+King of Kings	1
+King of Kings: World Grand Prix 2016	1
+King of Strikers 6	1
+King of The Muaythai	1
+Kings Birthday Event	1
+Kings Cup 1st	1
+Kings of Combat 3	1
+Kings of Muaythai: Belarus vs Europe	1
+Kings of Oceania 2004	1
+Kings of Oceania April 2007	1
+Kings of the Ring - Prestige Fgihts	1
+Klaar Om Te Bossen 3	1
+KlasH Champions Battlefield IV	1
+KlasH IV	1
+Knees of Fury 11	1
+Knees of Fury 12	1
+Knees of Fury IV	1
+Knees of Fury IX	1
+Knees of Fury VI	1
+Knees of Fury VII	1
+Knees of Fury VIII	1
+Knuckle’s15@熊本グランメッセ	1
+Kombat League	1
+Kunlun Fight 100	1
+Kunlun Fight 13	1
+Kunlun Fight 15	1
+Kunlun Fight 23	1
+Kunlun Fight 25	1
+Kunlun Fight 26	1
+Kunlun Fight 28	1
+Kunlun Fight 32	1
+Kunlun Fight 4	1
+Kunlun Fight 43	1
+Kunlun Fight 45 - World MAX 2016 Group M Tournament Final	1
+Kunlun Fight 45 - World MAX 2016 Group M Tournament Semi Finals	1
+Kunlun Fight 46	1
+Kunlun Fight 48	1
+Kunlun Fight 49 / Rebels 45	1
+Kunlun Fight 50 – World MAX 2016 Final 16	1
+Kunlun Fight 53	1
+Kunlun Fight 53 - Muay Thai 70kg Championship	1
+Kunlun Fight 53 - World MAX 2016 Final 8	1
+Kunlun Fight 56	1
+Kunlun Fight 56 - World MAX 2016, Final	1
+Kunlun Fight 56 - World MAX 2016, Semi Finals	1
+Kunlun Fight 60	1
+Kunlun Fight 60 Group G Tournament Final	1
+Kunlun Fight 60 Group G Tournament Semi-Finals	1
+Kunlun Fight 64 Group O Tournament Final	1
+Kunlun Fight 64 Group O Tournament Semi-Finals	1
+Kunlun Fight 66	1
+Kunlun Fight 68	1
+Kunlun Fight 7 World MAX 2014	1
+Kunlun Fight 70	1
+Kunlun Fight 71	1
+Kunlun Fight 74 World -61.5kg Tournament, Quarter Finals	1
+Kunlun Fight 74 World -61.5kg Tournament, Semi Finals	1
+Kushima's Fight 12	1
+Kushima's Fight 9	1
+Kリーグ オープニング・ファイト“見参”	1
+LA NUIT DES CHAMPIONS	1
+LA NUIT DES CHAMPIONS III	1
+LAST MAN STANDING	1
+LEGEND 3: Pour Homme	1
+LEGEND CUP vol.21	1
+LEGEND第4章	1
+LES CHOCS DU MUAY-THAI	1
+LICENSE‘2’THRILL	1
+LUGANO GRAND PRIX 3（スイス）	1
+La 20ème Nuit des Champion	1
+La BangKok Italiana	1
+La Familia Fight Night X	1
+La Nuit de la Boxe 2009	1
+La Nuit des Challenges 5	1
+La Nuit des Challenges 8	1
+La Nuit des Champions 31	1
+La Nuit du Kick-Boxing 2010	1
+La Onda Fight Night	1
+La Onda Fight Night: Blood In Blood Out	1
+Le Banner Series Acte 1	1
+Le Choc des Best Fighters 1	1
+Le Choc des Champions	1
+Le Grand Tournoi	1
+Legend 1	1
+Legend Fighting Show	1
+Legend Fighting Show 2	1
+Les Star du Ring	1
+License 2 Thrill	1
+Lion Fight 21	1
+Load Of Ring	1
+Loasana Promotions	1
+"Local Kombat 10 ""Arde Braila"""	1
+Local Kombat 12	1
+"Local Kombat 12 ""Fara mila"""	1
+Local Kombat 13	1
+"Local Kombat 14 ""Lupta capitala"""	1
+"Local Kombat 16 ""Liga Campionilor"""	1
+Local Kombat 23	1
+"Local Kombat 24 ""Bătaie în Giuleşti"""	1
+Local Kombat 25	1
+"Local Kombat 28 ""Invazia greilor"""	1
+Local Kombat 4	1
+Local Kombat 5	1
+Local Kombat 6	1
+Local Kombat 7	1
+"Local Kombat 8 ""Duelul giganţilor"""	1
+Lokal Kombat 26	1
+"Lokal Kombat 27 ""Porţile de fier"""	1
+Lokal Kombat 29	1
+Lumpimee 45th Anniversary	1
+Lumpimee Featherweight title	1
+Länderkampf - Deutschland vs. Nordirland	1
+Légendes et Guerriers	1
+M-1 FAIRTEX SINGHA BEER フレッシュマンズ in 大森 II STAGE	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 2009「Yod Nak Suu vol.3」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 2009「Yod Nak Suu vol.4」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ Legend of Elbows 2006 July 9	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ Legend of Elbows 2008 〜CRASH〜	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ Legend of Elbows 2008 〜JAI SUU〜	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ Legend of Elbows 2008 〜JAO SUU〜	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ Legend of Elbows 2008 〜MIND〜	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ NAI KANOMTOM vol.1	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 〜BATTLES OF FATE 2007〜	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 〜タイ国王即位60周年記念杯2006〜	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジLegend of Elbows 2008 〜JAI SUU〜	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジLegend of Elbows 2008 〜YOD MUAY〜	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「BATTLES OF FATE 2007」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「Legend of Elbows 2006 July 9」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「Legend of Elbows 2008 〜MIND〜」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「Legend of Elbows 2008 〜YOD MUAY〜」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「Legend of elbows 2008 〜YOD MUAY〜」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「NAI KANOMTOM vol.1」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「NAI KANOMTOM vol.4」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ「タイ国王即位60周年記念杯2006」	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ『NAI KANOMTOM vol.1』	1
+M-1 FAIRTEX SINGHA BEERムエタイチャレンジ NAI KANOMTOM vol.1	1
+M-1 FAIRTEX SINGHA BEERムエタイチャレンジ NAI KANOMTOM vol.4	1
+M-1 FAIRTEX SINGHA BEERムエタイチャレンジ NAI KANOMTOMvol.4	1
+M-1 FAIRTEX SINGHA BEERムエタイチャレンジ 〜BATTLES OF FATE 2007〜	1
+M-1 FAIRTEX SINGHA BEERムエタイチャレンジ「BATTLES OF FATE 2007」	1
+M-1 FAIRTEX SINGHA BEERムエタイチャレンジ「獲武-腕 物語 2007」	1
+M-1 FAIRTEX フレッシュマンズ in 大森 STAGE IV	1
+M-1 FAIRTEX ムエタイチャレンジ 2009 Yod Nak Suu vol.1	1
+M-1 FAIRTEX ムエタイチャレンジ ROAD OF THE FIGHT 2007	1
+M-1 FAIRTEX ムエタイチャレンジ2009「Yod Nak Suu vol.1」	1
+M-1 FAIRTEX ムエタイチャレンジ2009『Yod Nak Suu vol.1』	1
+M-1 FAIRTEX ムエタイチャレンジ「RAORAK MUAY vol,1」	1
+M-1 FAIRTEX ムエタイチャレンジ「RAORAK　MUAY vol.3」	1
+M-1 FAIRTEX ムエタイチャレンジ「がんばろうニッポン！RAORAK MUAY vol,2」	1
+M-1 FAIRTEX ムエタイチャレンジ『がんばろうニッポン！RAORAK MUAY vol,2』	1
+M-1 Fairtex Muay Thai Challenge	1
+M-1 MC「2010 M-1フレッシュマンズ Vol.3」	1
+M-1 RAJA BOXING SINGHA BEERムエタイチャレンジ NAI KANOMTOM vol.2	1
+M-1 RAJA BOXING SINGHA BEERムエタイチャレンジ NAI KANOMTOM vol.3	1
+M-1 フレッシュマンズ in 大森	1
+M-1 ムエタイチャレンジ Sutt Yod Muaythai vol.1	1
+M-1 日タイ修好120周年記念イベント 120th ANNIVERSARY OF JAPAN-THAILAND 〜MUAY THAI HEARTY SMILES〜	1
+M-1MC「M-1ムエタイチャレンジ Sutt Yod Muaythai vol.1」 Part1	1
+M-1 FAIRTEX SINGHA BEER ムエタイチャレンジ 2009	1
+M-1「120th ANNIVERSARY OF JAPAN-THAILAND 〜MUAY THAI HEARTY SMILES〜」	1
+M-1フレッシュマンズ4	1
+M-1ムエタイチャレンジ Sutt Yod Muaythai Vol.2	1
+M-1ムエタイチャレンジ Sutt Yod Muaythai Vol.2 Part2	1
+M-1ムエタイチャレンジ Sutt Yod Muaythai vol.1 Part1	1
+M-1ムエタイチャレンジ Sutt Yod Muaythai vol.3	1
+M-1ムエタイチャレンジ Sutt Yod Muaythai vol.3 Part2	1
+M-1ムエタイチャレンジ 「Sutt Yod Muaythai vol.1」Part2	1
+M-1ムエタイチャレンジ「Sutt Yod Muaythai vol.1」Part2	1
+M-FIGHT SUK WEERASAKRECK II	1
+M-FIGHT SUK WEERASAKRECK III	1
+M-FIGHT SUK WEERASAKRECK IV	1
+M-FIGHT SUK WEERASAKRECK IV Part.1	1
+M-FIGHT SUK WEERASAKRECK Ⅱ Part.1	1
+M-FIGHT The Battle Of Muaythai IV	1
+M-FIGHT The Battle of Muaythai II	1
+M-FIGHT The Battle of Muaythai III	1
+M-FIGHT ムエローク2013 -2nd-	1
+M-FIGHT 蹴拳Ｘ Part.1	1
+M-FIGHT SUK WEERASAKRECK I Part.2	1
+M-FIGHT SUK WEERASAKRECK II Part.2	1
+M-FIGHT SUK WEERASAKRECK III Part.2	1
+M-FIGHT SUK WEERASAKRECK IV Part.1	1
+M-FIGHT The Battle of Muaythai II	1
+M-FIGHT～蹴拳13	1
+M-FIGHT～蹴拳13～Part2	1
+M-fight - Suk WEERASAKRECK II	1
+MAGNUM 64	1
+MARS 06 -Rapid Fire-	1
+"MARS 10 ""ALL-OUT WAR"""	1
+MARS WORLD FIGHTING GP 1st in Korea	1
+MARS WORLD FIGHTING GP in SEOUL	1
+MARS WORLD FIGHTING GRAND PRIX 1st in SEOUL	1
+MARS　World Fighting GP	1
+MAS Fight Kun Khmer	1
+MAX FC	1
+MAX MUAY THAI	1
+MAX MUAYTHAI	1
+MAX MUAYTHAI THE FINAL CHAPTER	1
+MAX Muay Thai 1	1
+MAX Muay Thai 4	1
+MAX Muay Thai 5: The Final Chapter	1
+MAX Muay Thai 6	1
+MAキック RKSゴールドラッシュ 2	1
+MAキック「BREAK-33 ～新春士道館興行～」	1
+MAキック「士道館新春興行 世界、日本4大タイトルマッチ」	1
+MAキック「士道館新春興行MA日本4大タイトルマッチ～添野道場45周年記念大会～」	1
+MAキックボクシングキックボクシング・チャンピオンウォーズ・オールスター戦	1
+MAキックボクシング連盟広島大会	1
+MA公認OSAKA	1
+MA四国大会	1
+MA日本キック BREAK THROUGH-14	1
+MA日本キック BREAK THROUGH-3	1
+MA日本キック BREAK-24	1
+MA日本キック BREAK-4	1
+MA日本キック BREAK-7	1
+MA日本キック BREAK-9	1
+MA日本キック BREAK－12	1
+MA日本キック FIGHTERS GATE-5	1
+MA日本キック FIGHTERS GATE-6	1
+MA日本キック KICK GUTS 2012 第15回梶原一騎杯	1
+MA日本キック 『CAP THE CLIMAX』 KAKUMEI KICKBOXING	1
+MA日本キック 真樹ジムAICHI10周年記念興行 J-1 time	1
+MA日本キック「BREAK-25 ～CANNONBALL～」	1
+MA日本キック「BREAK-30 ～UNIFICATION～ WBCムエタイ日本4大タイトルマッチ」	1
+MA日本キック「Explosion-1」	1
+MA日本キック「KICK GUTS 2012 第15回梶原一騎杯～真樹日佐夫追悼記念興行～」	1
+MA日本キック「TORNADO WARNING 〜トルネード襲来!!〜」	1
+MA日本キック「〜暴虎馮河 其の壱〜」	1
+MA日本キックキックボクシング連盟 EXCITING MUAY THAI	1
+MA日本キックキックボクシング連盟　山木ジム6周年記念興行	1
+MA日本キックボクシング	1
+MA日本キックボクシング連盟 「'92激突ジム対抗戦 扇橋スポーツクラブ１周年記念興行」	1
+MA日本キックボクシング連盟 「港山木ジム10周年記念興行」	1
+MA日本キックボクシング連盟 「港山木ジム7周年記念興行」	1
+MA日本キックボクシング連盟 「第2回 梶原一騎杯'99 キック ガッツ」	1
+MA日本キックボクシング連盟 大阪大会	1
+MA日本キックボクシング連盟 村上祭	1
+MA日本キックボクシング連盟「2009士道館新春興行 BREAK THROUGH-9 〜突破口〜 添野道場40周年記念大会」	1
+MA日本キックボクシング連盟「BREAK THROUGH-11 〜突破口〜」	1
+MA日本キックボクシング連盟「BREAK THROUGH-12 〜突破口〜 KICK GUTS 2009 〜梶原一騎23回忌追悼記念・第12回梶原一騎杯」	1
+MA日本キックボクシング連盟「BREAK THROUGH-13 〜突破口〜」	1
+MA日本キックボクシング連盟「BREAK THROUGH-14 〜突破口〜」	1
+MA日本キックボクシング連盟「BREAK THROUGH-2 〜突破口〜」	1
+MA日本キックボクシング連盟「BREAK THROUGH-4 〜突破口〜 KICK GUTS 2008 〜梶原一騎22回忌追悼記念・第11回梶原一騎杯」	1
+MA日本キックボクシング連盟「BREAK-4 KICK GUTS 2010 梶原一騎24回忌追悼記念・第13回梶原一騎杯」	1
+MA日本キックボクシング連盟「BREAK-6」	1
+MA日本キックボクシング連盟「BREAKDOWN-3 〜打破〜」	1
+MA日本キックボクシング連盟「BREAKDOWN-5 〜打破〜 新東金ジム29周年記念 戦場の狼3」	1
+MA日本キックボクシング連盟「BREAKDOWN-7 〜打破〜」	1
+MA日本キックボクシング連盟「BREAKDOWN-8 〜打破〜 MA.KICK祭り CHAMPION CARNIVAL」	1
+MA日本キックボクシング連盟「BREAK－32」	1
+MA日本キックボクシング連盟「CHAMPION CARNIVAL」	1
+MA日本キックボクシング連盟「DETERMINATION（決心） 1st」	1
+MA日本キックボクシング連盟「DETERMINATION（決心） 6th 〜新人王トーナメント2005〜」	1
+MA日本キックボクシング連盟「DETERMINATION（決心）2nd 〜激突☆王者VS王者〜」	1
+MA日本キックボクシング連盟「DETERMINATION（決心）9th 〜CHAMPION CARNIVAL MA日本6階級タイトルマッチ〜」	1
+MA日本キックボクシング連盟「KICK GUTS 2007 梶原一騎21回忌追悼記念・第10回梶原一騎杯」	1
+MA日本キックボクシング連盟「KING COMBAT-2002 -KICK BOXING 60kg TOURNAMENT 日本最強決定戦」	1
+MA日本キックボクシング連盟「SUPREME-6 〜挑戦者決定戦・猛暑御見舞〜」	1
+MA日本キックボクシング連盟「SURPRISING 6th 新東金ジム28周年記念 〜戦場の狼2〜」	1
+MA日本キックボクシング連盟「SURPRISING-2nd」	1
+MA日本キックボクシング連盟「THE SUPREME of KICKBOXING '97」	1
+MA日本キックボクシング連盟「キック・ガッツ梶原一騎杯」	1
+MA日本キックボクシング連盟「チャンピオン・カーニバル パート2」	1
+MA日本キックボクシング連盟「ワールド・チャンピオン・カーニバル パート3」	1
+MA日本キックボクシング連盟「戦闘甲斐士10」	1
+MA日本キックボクシング連盟「戦闘甲斐士9」	1
+MA日本キックボクシング連盟「最強へのバトル」	1
+MA日本キックボクシング連盟「東金ジム27周年記念大会 DETERMINATION（決心）5th 〜戦場の狼〜」	1
+MA日本キックボクシング連盟「鉄拳 TEKKEN in Kimitsu」	1
+MBK Fight Night	1
+MGL-1 70Kg級トーナメント1回戦	1
+MGL-1 70kg級トーナメント決勝	1
+MGL-1 70kg級トーナメント準決勝	1
+MKF ULTIMATE VICTOR 2011	1
+MM Thaibox Gala	1
+MSN Fight Gala	1
+MT/MF Fight Gala	1
+MTBNオランダ・ムエタイ王者決定戦	1
+MTGP Impact in Paris	1
+MUAY THAY MAYHEM-11 in NY	1
+MUAY2010 1st 〜ムエロークプレステージ〜	1
+MUAY2010 2nd 〜ムエロークプレステージ	1
+MUAYTHAI HIGHSPEED	1
+MULTIBOX	1
+Magic Duo part 3	1
+Marokko VS Turkije	1
+Marrara International Stadium	1
+"Martial Arts Festival ""For Russia"""	1
+Mattrid Kun Khmer Grand Fight	1
+Max Fight 37	1
+Max Fight 46	1
+Max Fight 50	1
+Max Muay Thai 3	1
+Men of Honor	1
+Mix Fight Championship	1
+Mix Fight Championship 24	1
+Mix Fight Gala	1
+Mix Fight Gala 10	1
+Mix Fight Gala XI	1
+Monte Carlo Fighting Masters 2014	1
+Monte-Carlo Fighting Masters	1
+Muay Thai & Mix Fight Gala	1
+Muay Thai Champions League VII	1
+Muay Thai Champions League XIII	1
+Muay Thai Champions League XIV	1
+Muay Thai Championships	1
+Muay Thai Event in Padova	1
+Muay Thai Express I	1
+Muay Thai Gala in Amsterdam	1
+Muay Thai Gala in Dordrecht	1
+Muay Thai Gala in Hilversum	1
+Muay Thai Gala in Hougwoud	1
+Muay Thai Legends	1
+Muay Thai Mania II	1
+Muay Thai Mania III	1
+Muay Thai Mania V	1
+Muay Thai Open.42ムエタイオープン	1
+Muay Thai Open28※MuayThaiOpenフライ級初代王者決定戦	1
+Muay Thai Premier League: Round 3	1
+Muay Thai Warriors: Dabble in Chiang Mai	1
+Muay Thai Wave from YOKOHAMA 8	1
+Muay Thai in America	1
+MuayThai Super Fight vol.10	1
+MuayThaiOpen 43	1
+MuayThaiOpen 49	1
+MuayThaiOpen 52	1
+MuayThaiOpen.43	1
+MuayThaiOpen27※WMC世界スーパーフライ級王座決定戦	1
+MuayThaiOpen30※MuayThaiOpenスーパーフライ級王座決定戦	1
+MuayThaiOpen38	1
+MuayThaiOpen40	1
+MuayThaiOpen46	1
+MuayThaiOpen 29	1
+MuayThaiOpen 34	1
+MuayThaiOpen 41	1
+MuayThaiOpen 42	1
+MuayThaiOpen 43	1
+MuayThaiOpen 44※引退試合	1
+Muaythai Champions League.T	1
+Muaythai Factory	1
+Muaythai France vs Italy	1
+Muaythai Gala	1
+Muaythai Gala in Divonne	1
+Muaythai Gala in Paris	1
+Muaythai Gala in Zonnehuis	1
+Muaythai Gala – TV 11	1
+Muaythai Mondiale A Trieste	1
+Muaythai Open 49	1
+Muaythai Open 51	1
+Muaythai Premier League: Round 2	1
+Muaythai on Channel 5	1
+MuaythaiOpen40	1
+MuaythaiOpen41	1
+MuaythaiOpen42	1
+MuaythaiOpen43	1
+MuaythaiOpen44	1
+MuaythaiOpen45	1
+MuaythaiOpen47	1
+Muaythaitv Trophy et Ultimate Thai 5	1
+"N&J promotion presents ""Men at War"""	1
+NAGOYA KICK 〜BoogieFight4〜	1
+NAGOYA KICK〜CENTRAL RHYTHM〜	1
+NAGOYA KICK〜KICK Hopping！〜	1
+NAGOYA KICK～BoogieFight08 Sandcastle～	1
+NAGOYA KICK～BoogieFight09 VACANCY～	1
+NAGOYA KICK～GOOD BYE!! ASUNAL HALL～	1
+NAGOYAKICK 〜BoogieFight09 VACANCY〜	1
+NAGOYAKICK 〜夏FES.09 FREEDOM〜	1
+NAGOYAKICK〜2008FINAL 名古屋ｖｓムエタイ最終決戦 DrumRoll Please!!〜	1
+NAGOYAKICK〜BoogieFight07 Black Sunday〜	1
+NAGOYAKICK～BoogieFight07 Black Sunday～	1
+NARIAGARI Vol.1	1
+NARIAGARI vol.4	1
+NEO GENERATION	1
+NETWORK 2016 フェザー級新人王トーナメント 一回戦 サバイバルマッチ1	1
+NICE MIDDLE 17	1
+NIGHT OF FIGHTS	1
+NO CONTEST	1
+"NO KICK NO LIFE ""FIGHT&MUSH"" ROUND'2"	1
+"NO KICK NO LIFE ""THE FINAL"""	1
+NO KICK NO LIFE 2014	1
+NO KICK NO LIFE 2015	1
+NO KICK NO LIFE 2016	1
+NO KICK NO LIFE 2023 act.1	1
+NO KICK NO LIFE 〜THE FINAL〜	1
+NO KICK, NO LIFE 2016	1
+NO KICK, NO LIFE 2014	1
+NO RESPECT 3	1
+NOC BOJOVNIKOV	1
+NOC BOJOVNIKOV（スロバキア）	1
+NORTH LEGEND in Zepp Sapporo KICK BOXING FIGHTING 2007	1
+NUIT DES CHAMPIONS 20	1
+NUIT DES SPORTS DE COMBAT	1
+NZ - AUS - HOL	1
+Nariagari vol.2	1
+Natural Powers	1
+Nemesis XI	1
+New Generation Warriors	1
+New Zealand vs England	1
+Next Generation Warriors 3	1
+Night of Dynamite	1
+Night of Fighters	1
+Night of Fighters 4	1
+Night of the Explosion	1
+Night of the Titans	1
+Nikko T. Press Productions: Battle of the Best	1
+No Limits Tonight	1
+No Respect 2	1
+No Respect 3	1
+No Respect 4	1
+Noc Bojovníkov	1
+Noc Válečníků 7	1
+Noc pobjede	1
+Noc skorpiona 6	1
+Noche de Campeones	1
+Noord Gestoord	1
+Nuit Des Championship 2016	1
+Nuit Des Gladiateurs 10	1
+Nuit des Titans	1
+Nürnberg	1
+OGUNIl興行	1
+OKTAGON～Fight Code～	1
+OSAKA INSPIRE	1
+Oktagon 2011 in Milan	1
+Oktagon 2015	1
+Oktagon 2015: 20 Years Edition	1
+Oktagon 2016: Turin	1
+PALASPORT ARCELLA	1
+PANCRASE302	1
+PKP Oriental Rules Kickboxing Tournament	1
+PLANET BATTLE	1
+POWER GATE カイザーグランプリ	1
+POWER広島	1
+PROUD WARRIOR PRODUCTION	1
+Palokmuaythai ITV, Siam Omnoi Stadium	1
+Pay Back Time 2, Powerplay Promotions	1
+Payback Time	1
+"Payback Time: ""The Decider"""	1
+Petchviset & Wanmitchai Promotions	1
+Petchyindee Road Show	1
+Petrosyanmania: Gold Edition	1
+Phetch Buncha Samui Stadium	1
+Philip Lam Promotions	1
+Phuket Promotion	1
+Planet Battle V	1
+Post Tenebra Cup 2005	1
+Pound for Pound vol.5	1
+Prestige Fight Series 3	1
+Pro Fight 28	1
+Professional Title Gala	1
+Profighters Gala in ALmere	1
+Profiliga Muay Thai VIII	1
+Qabala Fight Series #1	1
+Quanwei WMC Muaythai International Title 2015	1
+Queens Fight Night	1
+RCC Fair Fight 18	1
+RCC Fair Fight 26	1
+REAL　DEAL　BATTLE　STAGE	1
+REBEL	1
+REBELS 2	1
+REBELS 44	1
+REBELS 47	1
+REBELS 61	1
+REBELS 67	1
+REBELS 69	1
+REBELS MUAYTHAI-1	1
+REBELS,45	1
+REBELS-EX 〜HINATA's wave〜	1
+REBELS.12	1
+REBELS.16	1
+REBELS.17	1
+REBELS.18	1
+REBELS.21	1
+REBELS.26	1
+REBELS.28	1
+REBELS.29 with Dropout	1
+REBELS.34×WPMF JAPAN	1
+REBELS.39	1
+REBELS.40	1
+REBELS.43	1
+REBELS.47	1
+REBELS.49	1
+REBELS.5	1
+REBELS.53	1
+REBELS.59	1
+REBELS.64	1
+REBELS.69	1
+REBELS×IT’S SHOWTIME ～REBELS.8 & IT’S SHOWTIME JAPAN countdown-1～	1
+REBELS『REBELS.59』	1
+REBELS『REBELS.62』	1
+REBELS『REBELS.64』	1
+REBELS『REBELS.66』	1
+REBELSプロモーション「REBELS-EX」	1
+REBELSプロモーション「REBELS.64」	1
+RESISTANCE-11	1
+RESISTANCE-12	1
+RESISTANCE-13	1
+RESISTANCE-14	1
+RETURN OF KING 2	1
+REVELS	1
+RF 2000-Lithuania vs Belarus	1
+RFA 29	1
+RIKIX「NO KICK NO LIFE 2016」	1
+RIKIX「NO KICK NO LIFE～THE FINAL～」	1
+RIKIX「NO KICK,NO LIFE 2015」	1
+RISING ROOKIES	1
+RISING SUN（オランダ）	1
+RKS GOLD RUSH 5	1
+RKSゴールドラッシュ	1
+RKS競拳 暴走台風伝説 vol.1	1
+RLibogen Fight Night VII	1
+RUMBLE AT THE RIDGE VII	1
+RWS JAPAN 2024	1
+Rebels.60	1
+Rebels68	1
+Removing Land Mines Charity　Event	1
+Return of the King 1	1
+RiSE_championship	1
+Ring Rage Part 5	1
+Ring Sensation Championship: Uprising 12	1
+Ring Stars	1
+Ring of Fire 11: Bring it On	1
+RingRage part 5	1
+Rising Sun-7	1
+Rissing Sun 2.0	1
+Road 2 Victory Sokudo	1
+Road To Rebellion IV	1
+Rostock Fight Night	1
+Rostocker Fight Night	1
+Royal Cup Muay Thai	1
+Rumble 10	1
+Rumble Of The Kings	1
+Rumble in the Hague	1
+RyskCombat 10	1
+S-1	1
+S-1 Championship	1
+S-1 Muay Thai Middle Europe tournament	1
+S-1 Slovenia	1
+S-1女子バンタム級8人トーナメント	1
+S-8 Thaiboxing	1
+S-BATTLE 2018 桜の陣	1
+S-CUP Thunder and lightning	1
+S-cup BOMBER	1
+SAMURAI Fighting 〜あばれ祭り・2〜	1
+SAMURAIあばれ祭 VOL.8	1
+SB「∞ーS～infinity-s～Vol.6」	1
+SB世界スーパーミドル級タイトルマッチ	1
+SENSHI 22	1
+SFK～7th anniversary～ ×REBELS -SPIRIT FIRE KOBE-	1
+SHINING CASTLE	1
+SHOCK OF EUROPE	1
+SHOOT THE RISIN雷神Vol.2 IRONFIST	1
+SLAM GALA	1
+"SLAMM ""Nederland vs Thailand IV"""	1
+"SLAMM ""Nederland vs Thailand V"""	1
+"SLAMM ""Nederland vs Thailand VI"""	1
+"SLAMM ""Nederland vs Thailand"""	1
+SLAMM - Netherland vs Thailand I	1
+SLAMM Nederland vs Thailand V	1
+SLAMM Nederland vs Thailand VI	1
+SLAMM Netherland vs Thailand III	1
+SLAMM Netherland vs Thailand IV	1
+SLAMM!! Netherlands vs Thailand	1
+SLAMM!!: New Generation	1
+SLAMM: Nederland vs Thailand VI	1
+SM	1
+SM Thaiboxing 2008 Finals	1
+SM Thaiboxing 2008 quarter finals	1
+SM Thaiboxing Gala	1
+SMOKER's	1
+SOUL IN THE RING CLIMAX	1
+SOUL IN THE RING Ⅸ	1
+SPIRIT	1
+SPORTS EXPO	1
+SRS藤原紀香番組卒業特番 スペシャルワンマッチ	1
+STRIKE NEXUS 02	1
+STRIKE NEXUS 07	1
+STRIKER1	1
+STRIKER5	1
+SUEK FAIRTEX WBC MUAYTHAI	1
+SUK Fairtex	1
+SUK Petpanomurung	1
+SUK Phumpanmuang×TRIBELATE vol.41	1
+"SUK WAN KINGTHONG ""Go to Raja"""	1
+"SUK WAN KINGTHONG ""Go to the Raja""SUK WAN KINGTHONG"	1
+SUK WAN KINGTHONG Go for the top	1
+SUK WAN KINGTHONG Go to Raja	1
+SUK WAN KINGTHONG Rookies	1
+SUK WAN KINGTHONG confrontation	1
+SUK WEERASAKRECK III Part.2	1
+SUK WEERASAKRECK IV　Part.2	1
+SUK WEERASAKRECK V Part.2	1
+SUK WEERASAKRECK VI	1
+SUK WEERASAKRECK VIII	1
+SUK WEERASAKRECK X	1
+SUK WEERASAKRECK XII	1
+SUK WEERASAKRECK Ⅱ Part.1	1
+SUPER KICK S-1	1
+SUPER PRESTIGE FIGHT	1
+SUPERKOMBAT VIP Edition	1
+SUPERKOMBAT World Grand Prix 2011 Final	1
+SUPERKOMBAT World Grand Prix 2012 Final	1
+SUPERKOMBAT World Grand Prix 2012 Final Elimination	1
+SUPERKOMBAT World Grand Prix IV 2011	1
+SUPERKOMBAT World Grand Prix IV 2016	1
+SWORD FIGHT 2006	1
+Sammi Kebchi Promotion	1
+Sandee & Siam Warriors Muay Thai Super Fights	1
+Serata Muaythai Gala	1
+Showdome IV	1
+Siam Warriors	1
+Sityodtong International Stadium	1
+Sokol Maric Fight Night	1
+Sons of Africa	1
+South Australia vs Thailand	1
+Splendid Grand Prix	1
+SportAccord World Combat Games, Finals -75 kg	1
+SportAccord World Combat Games, Quarter Finals -75 kg	1
+SportAccord World Combat Games, Semi Finals -75 kg)	1
+Sportmani Events VIII	1
+Standing Alone	1
+Star Muay Fight Night 4	1
+Star Muaythai V	1
+Stomp GP	1
+StrikeforceISKAフリースタイル世界スーパーヘビー級選手権試合	1
+Suk WEERASAKRECK VII	1
+Suk Wan Muaythai Naikhanomtom	1
+Suk Wanchai MuayThai Super Fight vol.5	1
+SukWanKingThong	1
+Sukosan Fight Night	1
+Sunday Championship Night	1
+Super Gp 3	1
+Super Showdown 4	1
+SuperKombat World Grand Prix 2012 Final	1
+SuperKombat World Grand Prix 2012 Final Elimination（スーパーファイト）	1
+SuperKombat World Grand Prix I	1
+SuperKombat World Grand Prix II	1
+SuperKombat World Grand Prix II 2011	1
+SuperKombat World Grand Prix III 2012	1
+SuperKombat World Grand Prix III, Semi Finals	1
+SuperKombat: Fight Club, Quarter Finals	1
+SuperKombat: Fight Club, semi Finals	1
+Superfighter 2	1
+Superfights I	1
+Survivor 〜Round.4〜	1
+Survivor 〜Round.6〜	1
+Survivor 〜Round.7〜	1
+Survivor　Rounde.1	1
+Survivor～Round.7～	1
+Sutt Yod Muaythai vol.2	1
+Sutt Yod Muaythai vol.3	1
+Sutt Yod Muaythai vol.4	1
+Swiss Lasvegas 2	1
+T Fight All Star	1
+TAEKWONDO GAME 2003 〜GRAND PRIX〜	1
+TAKE OVER Vol.2	1
+TENKAICHI 71	1
+TENKAICHI 73 -ALL STARS-	1
+TENKAICHI FIGHT	1
+TENKAICHI Fight	1
+TENKAICHI G	1
+TENKAICHI G 16	1
+TENKAICHI G17	1
+TENKAICHI fight	1
+TENKAICHI　G19	1
+THAI BOXE MANIA	1
+THE FORCE IV	1
+THE NIGHT OF GRADIATORS 〜KING OF THE RING〜（クロアチア）	1
+THE NIGHT OF THE TRUTH	1
+THE RETURN OF THE BOYS	1
+TITANS NEOS 12	1
+TITANS NEOS 12（防衛2）	1
+TITANS NEOS 19	1
+TITANS NEOS 37	1
+TITANS NEOS III	1
+TITANS NEOS IV	1
+TK2 Tournament	1
+TK2 WORLD MAX 2007	1
+TK2 WORLD MAX 2008	1
+TK2 WORLD MAX 2009	1
+TK2 World MAX 4ever Edition	1
+TNT 5th	1
+TOP BRIGHTS	1
+TOSHIMAX	1
+TOUGH IS NOT ENOUGH	1
+TRIAL LEAGUE.3	1
+TRIBELATE Vol.53	1
+TRIBELATE voI.50	1
+TRIBELATE voI.51	1
+TRIBELATE vol.1	1
+TRIBELATE vol.11	1
+TRIBELATE vol.13	1
+TRIBELATE vol.13 〜Hybrid Club Fight〜	1
+TRIBELATE vol.14	1
+TRIBELATE vol.16	1
+TRIBELATE vol.18	1
+TRIBELATE vol.24	1
+TRIBELATE vol.36～Title Match Festival～	1
+TRIBELATE vol.44	1
+TRIBELATE vol.46	1
+TRIBELATE vol.48×WINDY SPORTS	1
+TRIBELATE vol.49	1
+TRIBELATE vol.5	1
+TRIBELATE vol.6 -Hybrid Club Fight-	1
+TRIBELATEvol.42×SUK Phumpanmuang	1
+TV3 Omnoi Siamboxing Stadium	1
+TatNeft Arena World Cup 2010, Final	1
+TatNeft Arena World Cup 2010, Semi Finals	1
+Tatneft Cup 2009 Final in Russia	1
+Tatneft Cup 2011 1st selection 1/8 final	1
+Tech-KREP Fighting Championship – Soldiers of the Empire	1
+Test of Talent Reloaded III Mortsel	1
+Test of Talents -Battle at The Coast-	1
+Test of Talents Gala	1
+Thai Boxe Abano GP 2008	1
+Thai Boxe Mania 2015	1
+Thai Boxe Mania 2017	1
+Thai Consul General's Cup	1
+Thai Kick Box Gala Hanau August Scharttner Halle	1
+Thai-Kickboxing Gala	1
+Thai/Kickboxing Zaandam	1
+Thaiboksgala	1
+Thaiboxing & Freefight event in Alkmaar	1
+Thaiboxing - Thrill of the Year!	1
+Thaiboxing Gala in Mestre	1
+Thaiboxing from Rabat	1
+Thaiboxing in Trieste	1
+Thailand Versus Challenger Series 2011	1
+Thailand vs Europa	1
+Thailand vs West Australia	1
+The Battle Of Muaythai XV	1
+The Battle VIII	1
+The Battle in Best	1
+The Battle of Arhnem	1
+The Battle of Arnhem 6	1
+The Battle of Arnhem Part2	1
+The Battle of Muaythai IX	1
+The Battle of Muaythai VI	1
+The Battle of Muaythai VII×ムエローク	1
+The Champions Club Germany 2008	1
+The Chosen Ones	1
+The Contender Asia Episode 11	1
+The Contender Asia Episode 13	1
+The Contender Asia Episode 14	1
+The Contender Asia Episode 3	1
+The Contender Asia Episode 4	1
+The Contender Asia Episode 9	1
+The EM-Legend 24	1
+The Fight of the Champions	1
+The Honor of Soldier tournament	1
+The KHAN 2008 Series 1	1
+The KHAN 3	1
+The Night of Immortality	1
+The Night of Legend	1
+The Night of Stars	1
+The Night of Superfight	1
+The Night of Superfights II	1
+The Night of Superfights III	1
+The Night of The Sensation	1
+The Return Of The Condentars	1
+The Return Of The King	1
+The Spirit of Bulgaria	1
+Thriller from Paris I	1
+Time Fight	1
+Time Fight 3	1
+Titan Fight Samurai vs Khmer	1
+Titans	1
+Topking World Series	1
+Topking World Series - 70 kg Tournament, Final 16	1
+Topking World Series 2	1
+Topking World Series 3 – 70kgトーナメント準々決勝	1
+Topking World Series 4 – 70kgトーナメント準決勝	1
+Total K, Romania	1
+Total Kombat 3	1
+Tough is not enough	1
+Trophée Bad Panther	1
+"True4U Muaymanwansuk	Buriram"	1
+Tulp Muay Thai Gala	1
+UBCTVマッチ	1
+UKC FRANCE MAX	1
+UKF アメリア・オクラホマ州タルサ	1
+UNRIVALED-1	1
+UNRIVALED-2	1
+USA vs. Belarus	1
+UWFインターナショナル '96挑戦～HIGH TENSION～	1
+Ufa Fight Night	1
+Uiltslagen Roosendaal Gala	1
+Ukraine vs Belarus	1
+Ukraine vs Kyrgyz @ Club Arbat	1
+Ukrainian Muaythai championships 2009	1
+Ultimate Kickboxing	1
+Ultimate pro Fight	1
+Ultimate pro Fight 2	1
+Ural FC 2	1
+Urban Boxing United	1
+UrbanFighter	1
+Urheilutalo	1
+VICTORY OR HELL	1
+Veni, Vidi, Vici II	1
+Verslag gala Time for Action	1
+Veselic meets Dejpitak	1
+Victory - ACB KB9: Showdown in Paris	1
+Victory Or Hell 7	1
+Victory or Hell Part 1	1
+Vienna WM-Fight	1
+Viking Fight Rumble in the West	1
+W-FACE	1
+W5	1
+"W5 #42: ""European League"""	1
+W5 GRAND PRIX MOSCOW	1
+W5 Grand Prix 2009	1
+W5 Grand Prix 2009 Ryaza	1
+W5 Grand Prix KITEK XXXIX	1
+WARRIORS CUP OF AMERICA	1
+WARRIORS CUP OF AMERICA II	1
+WARRIORS CUP OF AMERICA III	1
+WBC	1
+WBC Battle of the belts	1
+WBC Muay Thai Championships	1
+WBCムエタイ	1
+WBKF - Russia vs Czech	1
+WBKF Eurasia Title (+93kg) @ Club Arbat	1
+WBKF Eurasian Title (+93kg) @ Club Arbat	1
+WBKF Europe Championship	1
+WBKF Europe Title (+93kg) @ Club Arbat	1
+WBKF European Muay Thai title (-81kg)	1
+WBKF European Muay Thai title (-93kg)	1
+WBKF European Muay Thai title (93kg)	1
+"WBKF European title @ Club ""Arbat"""	1
+WCK Full Rules Muaythai Championship Event	1
+WCKプロダクション主催「キングス・バースデー・セレブレーション」	1
+WEBBWOODS presents IKUSA YGZ04 〜BIRD-BASE〜	1
+WFC 6, Sofia, Bulgaria	1
+WFC6	1
+WFCA Baltic Grand Prix	1
+WFCA Benelux title	1
+WFCA Gala	1
+WFCA Gala Roosendaal	1
+WFCA Gala The Eye of the Tiger	1
+WFCA Gala in Nijmegen	1
+WFCA Thai-Kickbox Gala in Nijmegen	1
+WFCA World Title	1
+WFL	1
+WGP Kickboxing #29	1
+WGP Kickboxing #38	1
+WGP Kickboxing #47	1
+WGP Kickboxing #57	1
+WGP Kickboxing #67	1
+WGP Kickboxing #70	1
+WINDY Super Fight 2015	1
+WKA	1
+WKA - Russia vs Europe	1
+WKA World Championships	1
+WKBC Full Contact Kickboxing	1
+WKBF World title (76kg) Semi-finals	1
+WKN	1
+WKN EUROPEAN Title THAI BOXING, Daugavpils, Latvia	1
+WKN Iran: World Cup 2017	1
+WKN Kickboxing in Prague	1
+WKPL Gala	1
+WKunlun Fight 65 - World MAX 2017 Final 16	1
+WLF 2019	1
+WLF 2023 Year-End Kung Fu Festival	1
+WLF 537	1
+WLF Mejiro	1
+WLF World 70 kg 8 Man Tournament, Quarter Finals	1
+WLF2018武林風世界拳王争覇戦in天津	1
+WLF武林風	1
+WLF武林風.554	1
+WLF武林風2020世界カンフー盛典in珠海	1
+WLF武林風541in唐山	1
+WLF武林風545	1
+WLF武林風in唐山	1
+WLF武林風世界カンフー盛典	1
+WMC Explosion III	1
+WMC Lightheavy weight World Title	1
+WMC Muay Thai World Title	1
+WMC World Heavyweight Title	1
+WMC World Title	1
+WMC World Title in Hong Kong	1
+WMCインターコンチネンタルバンタム級タイトルマッチ	1
+WMC世界スーパーヘビー級王座防衛	1
+WMF European Muay Thai title	1
+WMF Finals in Bangkok	1
+WMTA WORLD CHAMPION	1
+WOLF REVOLUTION meets LUZ	1
+WORLD OYAZI BATTLE -SAMURAI RETURN!-	1
+WORLD ROAD	1
+WPKC公認3分3R イタリア パドゥヴァ	1
+WPKC認定キックボクシング大会	1
+WPKL European Title Muay Thai Champions League XIV	1
+WPKL Gala in Amsterdam	1
+WPKL Gala in Schuttersveld	1
+WPKL Muay Thai Champions League VIII	1
+WPKL Muay Thai Champions League XI	1
+WPKL Muay Thai Champions League XII	1
+WPKL Muay Thai Champions League XIII	1
+WPKL gala in Hogendorpha	1
+WPMF JAPAN SUK WEERASAKRECK VIII	1
+WPMF JAPAN × REBELS SUK WEERASAKRECK FAIRTEX	1
+WPMF JAPAN × REBELS.35	1
+WPMF JAPAN×REBELS SUK WEERASAKRECK FAIRTEX	1
+WPMF JAPAN×REBELS.35	1
+WPMF JAPAN×REBELSSUK WEERASAKRECK FAIRTEX	1
+WSFC 8 - West Siberian Fighting Championship 8, ムエタイルール	1
+WSR SUK WEERASAKRECK IX	1
+Warriors Fight Night	1
+Warriors Night 1	1
+West Point Fight II	1
+Westpoint Fight Night	1
+Wolf Revolution -resurrection-	1
+Wolf Revolution Second Wave	1
+Wolf Revolution 〜First Wave〜	1
+Wolf Revolution 〜resurrection〜	1
+World Amateur Muay Thai Championship	1
+World Champion Muay Thai Extravaganza	1
+World Championship Muaythai	1
+World Class Fights,Commerce Casino	1
+World Cup TNA Fights	1
+World Domination	1
+World Domination II, Rydges Lakeside Hotel	1
+World Fight Kun Khmer Series	1
+World Fighting League	1
+World Fighting League 3	1
+World GBC Tour 9	1
+World Kings Of Muay-Thai Contend for Hegemony - LETS FIGHT II	1
+Wushu vs Muaythai	1
+Wカプセル Vol.1	1
+X PLOSION Boonchu S-cup	1
+X-DUEL Ⅷ	1
+X-PLOSION 5	1
+X-PLOSION Boonchu S-cup	1
+X-PLOSION ON JUPITER	1
+XENIA X-Fighter	1
+XPLOSION 1	1
+XPLOSION 10 - WMC World Title Match	1
+XPLOSION 10 - WMC World title Match	1
+XPLOSION 9	1
+XPLOSION Boonchu S-cup	1
+XPLOSION HONG KONG 2005	1
+XPLOSION Macau	1
+XPLOSION SUPER FIGHT 11 - HONG KONG	1
+XPLOSION SUPER FIGHT 14 - Sydney	1
+XPLOSION SUPER FIGHT 15 - Macao	1
+XPLOSION SUPER FIGHT 18	1
+XPLOSION SUPER FIGHT GoldCoast	1
+XPLOSION SUPER FIGHT SYDNEY	1
+XPLOSION マカオ	1
+Xena Sport Victory Or Hell 7	1
+Xena Sport Victory Or Hell 8	1
+Xena Sports Victory or Hell 3	1
+Xplosion 17	1
+Xplosion Super Fight Vol. 5	1
+YOKKAO 17	1
+YOKKAO 45 & 46	1
+YOKKAO EXTREME 2012	1
+Yangames Fight Night	1
+Yiannis Evgenikos presents: It’s Showtime Athens	1
+Yokkao 22	1
+Yokkao 26	1
+Yokkao 36	1
+Yokkao 5	1
+Yokkao 7	1
+Yokkao Extreme	1
+Yokkao Extreme 2012	1
+Z RACING PARTS presents RESISTANCE-14	1
+Z-1世界トーナメント大会マレーシア CARAVAN TOMOI DUNIA 1回戦	1
+Z-1世界トーナメント大会マレーシア CARAVAN TOMOI DUNIA 決勝戦	1
+Z-Ⅵ Carnival 冠鷲シリーズvol.4	1
+ZAIMAX MUAYTHAI 2026	1
+ZONE 4 『原点回帰』	1
+ZONE extra	1
+kunlun Fight 67	1
+kunlun Fight 69	1
+nuit des boxeurs thai Brest le	1
+samuraiTV presents 日泰5対5対抗戦	1
+"thaiboxgala Roosendaal Lijsdreem ""Judgement Day"""	1
+“初来日”	1
+「2011藤原祭り～夏の陣～」其の弐	1
+「BLADE 2」	1
+「BLADE1」	1
+「CHAKURIKI 1」	1
+「KICK THE ROOTS PRESENTS 我龍真吾引退記念興行 〜生きざま way of life〜」	1
+「M-1ムエタイチャレンジ Sutt Yod Muaythai vol.1」Part2	1
+「Muay Thai Wave from YOKOHAMA 11」	1
+「NO KICK NO LIFE 2015」	1
+「REBELS.18」	1
+「REBELS.9」	1
+「RISE105」	1
+「SBワールドレボリューション宣言」 世界ホーク級王座決定戦	1
+「Suk Daawrung Muay Thai 4」	1
+「TIME to CHANGE the KICK by J-SPIRIT 2nd」	1
+「’88ファーストマッチ・SB協会北米支部設立記念試合」	1
+「〜熊本復興祈念イベント〜火の国格闘伝説 LEGEND7」	1
+「仙台青葉ジム創設40周年記念興行」	1
+「伝統への挑戦」	1
+「力保健搏擊之夜(第11回)-風林火山 2」（香港）	1
+「力保健搏擊之夜(第15回)-風林火山 5」（香港）	1
+「力保健搏擊之夜(第18回)-風林火山 6」（香港）	1
+「搏击王者佛山争霸赛」	1
+「新・琉王 VS 天下一最強軍団」	1
+「日本骨髄バンクチャリティ CHAKURIKI 2」	1
+「日本骨髄バンクチャリティ CHAKURIKI 3」	1
+「武勇伝」in 石垣島	1
+「火の国格闘伝説 LEGEND 6」	1
+「～縁～ 八芳園 2015」	1
+『創世のタイガ』&『無法島』PRESENTS REBELS 〜New Year Festival〜	1
+かきだみし	1
+かきだみし5 -GENESIS U-60kg級トーナメント決勝戦-	1
+がんばろうニッポン！RAORAK MUAY vol,2	1
+どついたるねん7	1
+どついたるねん9	1
+どついたるねん福知山	1
+アクセル53	1
+アクセル大阪大会	1
+アジア太平洋キックボクシング連盟「THE SUPER KICKBOXING」	1
+アトランタ	1
+アマムエタイ選手権	1
+アメリカ・オクラホマ	1
+アメリカ・ボクシング興行（ムエタイルール）	1
+アメリカ・ラスベガス	1
+アユタヤ特設会場	1
+イギリス	1
+イノベーションRESISTANCE-10	1
+イノベーションRESISTANCE-11	1
+イノベーションRESISTANCE-17	1
+イノベーションRESISTANCE-18	1
+イングランド	1
+インターナショナル女子ムエタイスーパーフライ級タイトルマッチ	1
+インペリアル・タイボクシング・トーナメント	1
+ウィラサクレック・フェアテックス（WSR） - SUK WEERASAKRECK IX	1
+オランダ vs ムエタイ5対5全面対抗戦 アムステルダム	1
+オランダ・ドルトレヒト	1
+カオラックスタジアム（タイ）	1
+カラテワールドカップ '94	1
+カラテ祭り	1
+カンボジア	1
+カンボジア・バベット「Titan Fight, Samurai vs Khmer」	1
+キックボクシング30周年記念興行	1
+キックボクシングフェス GOAT 2	1
+キックボクシングフェス.2 GOAT	1
+キックボクシングフェスティバル 松山大会Vol.3	1
+キック・ユニオン「ディファ有明大会」	1
+キリカン県ファヒン郡 特設リング	1
+クイーンズカップ2014	1
+グローバルFC	1
+コロシアム2000	1
+サミー・ケプシー・ル・ショック・デ・モンド	1
+サムライプロジェクト「サムライ」	1
+サムローンスタジアム	1
+サラブリースタジアム	1
+サラブリー県 特設リング	1
+シドニー	1
+シュートダブルクロス 3rd.(大阪府立第2体育館)	1
+シンブリ特設会場	1
+ジャパン・キックボクシング・イノベーション 「戦闘甲斐士 18」	1
+ジャパン・ムエタイ・センター「RIDE ON TIME」	1
+スウェーデン	1
+スックワンキントーン 2025 THE FIRST	1
+スックワンキントーン decisive battle	1
+スック・ダウルンチューチャルン	1
+スック・ダウルン・チューチャルーン	1
+スッグ マハーガムムエタイローク S-1 ワールドチャンピオンシップ	1
+スッグヨードムエローク クラティーンデーン	1
+スッグ・D4Dコモーンレン+ペットインディー	1
+スッグ・ギャットペット	1
+スッグ・ジャルムアン	1
+スッグ・ダウルン・チューチャルン・UBC	1
+スッグ・ペットインディー＋ワンウェラポン	1
+スッグ・ペットパノムルン	1
+スッグ・ペットピア	1
+スッグ・ポープラムック	1
+スッグ・ポープラムック（40万バーツ賭け試合）	1
+タイ バンコク	1
+タイBBTVスタジアム	1
+タイ・アユタヤ	1
+タイ・カイアディソンスタジアム	1
+タイ・シンブリー県チャイナート・ワットソンサワン	1
+タイ・バンコク アジアンティーク	1
+タイ・バンコクBBTVスタジアム	1
+タイ・パタヤ・テープラシットスタジアム	1
+タイ・ランシットスタジアム	1
+タイ国 王宮前広場	1
+タイ国王生誕記念試合 王宮前広場	1
+タイ女子ムエタイ大会	1
+タイ王国王妃誕生記念興行 Queen's Cup 2010	1
+タイ王妃生誕記念 クイーンズカップ2013	1
+タイ王妃生誕記念イベント	1
+タイ王妃生誕記念女子ムエタイ大会	1
+タイ王妃誕生日記念試合クイーンズカップ	1
+タコマ (ワシントン州)	1
+タトネフチ・アリーナ・ワールドカップ2010 1回戦	1
+タトネフチ・アリーナ・ワールドカップ2010 2回戦	1
+タトネフチ・アリーナ・ワールドカップ2010 決勝戦	1
+タトネフチ・アリーナ・ワールドカップ2010 準決勝	1
+ターゲットオフィス「SPARKS-STAGE.1」	1
+チャクリキ ゴールドラッシュ in RKS	1
+チャクリキ ファイティング ガラ 4	1
+チャクリキ ファイティング ガラ 5	1
+チャクリキ ファイティング ガラ４	1
+チャンネル7・BBTVマッチ	1
+チャンネル9・TVマッチ	1
+チャンピオンズ・リーグ	1
+チョンブリ地区タイトルマッチ	1
+ディファ有明	1
+トライアルリーグ10	1
+トライアルリーグ9	1
+トルコ	1
+ドイツ	1
+ドラゴンジム「BREATHLESS MUAY THAI 7」	1
+ドラゴンジム「大震災復興チャリティーイベント戦場5」	1
+ドラゴンボクシングスタジアム80kg契約	1
+ニューキャパンキックボクシング連盟「FIGHTING EVOLUTION XII〜進化する戦い12th〜THE“FIVE-STAR”FIGHT」	1
+ニュージャパンキック 2014	1
+ハワイ	1
+バトルイベントREALDEAL	1
+バトルフロント1	1
+バトル・オブ・アーネム（オランダ）	1
+バンコーブア寺院特設リング	1
+バンタム級 イタリア ジェノヴァ	1
+パウンドフォーパウンド vol.1	1
+パタヤ	1
+パラリド・スタジアム（イタリア）	1
+フェニックススピリッツ	1
+フランス パリ	1
+フランス・ゲレ「BEST OF FIGHT」	1
+フランス・パリ	1
+ブリザードジム興行	1
+ブルガリアキック	1
+プーケット・パトンスタジアム	1
+プーミポン国王就任50周年記念興行	1
+ホーストカップ	1
+ホーストカップ ～Departure～	1
+ホームシン寺特設リング	1
+ポートランド (オレゴン州)	1
+マーシャルアーツ日本キックボクシング連盟BREAK THROUGH-7 〜CHAMPION CARNIVAL〜 MA日本キック連盟4階級タイトルマッチ	1
+マーシャルアーツ日本キックボクシング連盟KING COMBAT-2002 - KICK BOXING 60kg TOURNAMENT 日本最強決定戦	1
+マーシャルアーツ日本キックボクシング連盟RKSゴールドラッシュ2	1
+マーシャルアーツ日本キックボクシング連盟SURPRISING 6 〜東金ジム28周年記念 戦場の狼2〜	1
+マーシャルアーツ日本キックボクシング連盟「2009士道館新春興行 BREAK THROUGH-9 〜添野道場40周年記念大会〜」	1
+マーシャルアーツ日本キックボクシング連盟「ADVANCE-1」	1
+マーシャルアーツ日本キックボクシング連盟「ADVANCE.1 花澤ジム32周年記念大会」	1
+マーシャルアーツ日本キックボクシング連盟「ADVANCE.1 花澤ジム33周年記念大会」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK DOWN 3 〜打破〜」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH 5 〜打破〜 新東金ジム30周年記念 戦場の狼IV」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH 5 〜打破〜新東金ジム30周年記念 戦場の狼IV」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH 6」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-1 〜突破口〜 MA.KICK 2008 士道館新春正月興行」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-11 〜突破口〜」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-13 〜突破口〜」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-14 〜突破口〜」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-3 〜突破口」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-7 〜CHAMPION CARNIVAL〜 MA日本キック連盟4階級タイトルマッチ」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK THROUGH-8 〜突破口〜」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK-24 ～SAGITTARIUS～　山本佑機引退記念興行」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK-3 〜日泰国際戦＆MA日本ランキング戦〜」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK-6」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK-8 〜士道館新春正月興行 FIGHT FOR PEACE 2〜」	1
+マーシャルアーツ日本キックボクシング連盟「BREAKDOWN（打破）5 〜 新東金ジム29周年記念 戦場の狼3」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK－20 ～RAISE～」	1
+マーシャルアーツ日本キックボクシング連盟「BREAK－32 ～SEIZE～」	1
+マーシャルアーツ日本キックボクシング連盟「COMBAT 2000」	1
+マーシャルアーツ日本キックボクシング連盟「COMBAT-2000 王道 II」	1
+マーシャルアーツ日本キックボクシング連盟「COMBAT-2000 王道II」	1
+マーシャルアーツ日本キックボクシング連盟「COMBAT-2000 王道」	1
+マーシャルアーツ日本キックボクシング連盟「COMBAT-2000」ミレニアム・スペシャル	1
+マーシャルアーツ日本キックボクシング連盟「DETERMINATION≪決心≫2nd 〜激突☆王者VS王者〜」	1
+マーシャルアーツ日本キックボクシング連盟「DETERMINATION≪決心≫5 〜戦場の虎〜」	1
+マーシャルアーツ日本キックボクシング連盟「DETERMINATION（決心）7th 〜梶原一騎19回忌追悼記念 第8回梶原一騎杯 キックガッツ2005〜」	1
+マーシャルアーツ日本キックボクシング連盟「EXPLOSION-1」	1
+マーシャルアーツ日本キックボクシング連盟「EXPLOSION-1」（サムライルール）	1
+マーシャルアーツ日本キックボクシング連盟「EXPLOSION-2」	1
+マーシャルアーツ日本キックボクシング連盟「EXPLOSION」	1
+マーシャルアーツ日本キックボクシング連盟「FIGHT FOR PEACE III 5大タイトルマッチ BREAK-22 ～士道館新春正月興行～」	1
+マーシャルアーツ日本キックボクシング連盟「GRADIATORS II」	1
+マーシャルアーツ日本キックボクシング連盟「GROUND ZERO PT4」	1
+マーシャルアーツ日本キックボクシング連盟「GROUND ZERO the SECOND」	1
+マーシャルアーツ日本キックボクシング連盟「KICK GUTS 2007 〜 梶原一騎21回忌追悼記念・第10回梶原一騎杯」	1
+マーシャルアーツ日本キックボクシング連盟「KICK GUTS 2012 第15回梶原一騎杯～真樹日佐夫追悼記念興行～」	1
+マーシャルアーツ日本キックボクシング連盟「ODYSSEY-1 伊藤隆・引退記念試合」	1
+マーシャルアーツ日本キックボクシング連盟「ODYSSEY-4」	1
+マーシャルアーツ日本キックボクシング連盟「SHIMOKITA GROUND ZERO PT3」	1
+マーシャルアーツ日本キックボクシング連盟「SUPREME-6 〜挑戦者決定戦・猛暑御見舞〜」	1
+マーシャルアーツ日本キックボクシング連盟「SUPRISING-2nd」	1
+マーシャルアーツ日本キックボクシング連盟「SURPRISING 4th 〜梶原一騎20回忌追悼記念 第9回梶原一騎杯 キックガッツ2006〜」	1
+マーシャルアーツ日本キックボクシング連盟「SURPRISING 7th」	1
+マーシャルアーツ日本キックボクシング連盟「SURPRISING-3rd」	1
+マーシャルアーツ日本キックボクシング連盟「TORNADO WARNING トルネード襲来!!」	1
+マーシャルアーツ日本キックボクシング連盟「TORNADO WARNING〜トルネード襲来!!〜」	1
+マーシャルアーツ日本キックボクシング連盟「『闘い続ける男たち』パート2」	1
+マーシャルアーツ日本キックボクシング連盟「サムライ2000」	1
+マーシャルアーツ日本キックボクシング連盟「マッハ士道館ドリームマッチ」	1
+マーシャルアーツ日本キックボクシング連盟「マーシャルアーツキック賞金争奪トーナメント士道館新春正月興行」	1
+マーシャルアーツ日本キックボクシング連盟「士道館新春正月興行 〜SURPRISING-1〜」	1
+マーシャルアーツ日本キックボクシング連盟「戦国シリーズ仁義なき闘いパート3 Millennium Battle 2000」	1
+マーシャルアーツ日本キックボクシング連盟「新春正月興行」	1
+マーシャルアーツ日本キックボクシング連盟「新春特別興行～戦い続ける男たち」	1
+マーシャルアーツ日本キックボクシング連盟「最強を求めて！世界制覇」	1
+マーシャルアーツ日本キックボクシング連盟「東金ジム26th anniversary SUPREME-3 〜戦場の虎〜」	1
+マーシャルアーツ日本キックボクシング連盟「東金ジム27周年記念大会 DETERMINATION (決心) 5th 〜戦場の狼〜」	1
+マーシャルアーツ日本キックボクシング連盟「添野道場30周年記念大会 仁義なき闘いパート2」	1
+マーシャルアーツ日本キックボクシング連盟「第2回 梶原一騎杯 '99 キックガッツ」	1
+マーシャルアーツ日本キックボクシング連盟「第3回梶原一騎杯キックガッツ2000 COMBAT-2000」	1
+マーシャルアーツ日本キックボクシング連盟「第二回梶原一騎杯 '99 キックガッツ」	1
+マーシャルアーツ日本キックボクシング連盟キック・ガッツ 梶原一騎杯	1
+マーシャルアーツ日本キックボクシング連盟東金ジム27周年記念大会 DETERMINATION（決心）5th 〜戦場の狼〜	1
+マーシャルアーツ日本キックボクシング連盟第2回 梶原一騎杯 '99 キック ガッツ	1
+ムエタイ　日ータイ交流戦〜伝承〜INHERIT	1
+ムエタイオープン	1
+ムエタイスタジアム	1
+ムエローク 2022 八王子	1
+ムエローク 2025 HACHIOJI	1
+ムエローク2011 -1st-	1
+ムエローク2011 -2nd-	1
+ムエローク2012 -2nd-	1
+ムエローク2012 -3rd-	1
+ムエローク2013 -1st-	1
+ムエローク2014 -1st-	1
+ムエローク2014 -1st- 東京・新宿FACE	1
+ムエローク2014 -2nd-	1
+ムエローク2014 2nd	1
+ムエローク2017 2nd	1
+ムエローク2017 3rd	1
+ムエローク2019 HACHIOJI	1
+ムエローク2021	1
+ムエローク2024	1
+メキシコ	1
+ユーロピアン・オープン･ムエタイ・チャンピオンシップス	1
+ランシットスタジアム	1
+ランシット・インターナショナルスタジアム	1
+ランシット・スタジアム認定インターナショナルバンタム級王座決定戦	1
+ラーマ9世生誕記念祭	1
+リアルディール「BATTLE EVENT REALDEAL 14」	1
+リアルディール「BATTLE EVENT REALDEAL VI」	1
+リトアニア	1
+リトアニア・ブシドー協会「GRADIATORS」	1
+レキオバトル名護 vol.3	1
+ワイルドウエスト	1
+ワイルドウエスト2	1
+ワイルドウエスト3	1
+ワイルドシーサー「TENKAICHI 71」	1
+ワイルドシーサー「TENKAICHI 73 -ALL STARS-」	1
+ワールド・チャンピオン・カーニバル	1
+ワールド・チャンピオン・ムエタイ・エクストラバギャンザ	1
+一撃	1
+一撃 3.19 ICHIGEKI	1
+一撃 3.19 ICHIGEKI（パリ）	1
+不明（タイ）	1
+不明（バンコク）	1
+世界の果てまでイッテQ 極真空手vs少林寺拳	1
+世界ホーク級タイトルマッチ	1
+世界ムエタイ連盟日本大会	1
+中国・「EM-LEGEND」	1
+中国・「FAITH FIGHT CHAMPIONSHIP」	1
+中国散打国際交流試合	1
+中日拳王永州大决战	1
+今世紀最大の激突！	1
+仙台スポーツセンター	1
+代々木第2体育館	1
+"全日本キック ""S.W.S. 〜Super Weiter Struggle〜"""	1
+全日本キック「LEGEND-VII」	1
+全日本キック「YOUNG GUN」	1
+全日本キックボクシング EVOLUTION STEP 3	1
+全日本キックボクシング　'89新春特別興行世紀の激突第1弾	1
+全日本キックボクシング　EVOLUTION STEP 3	1
+全日本キックボクシング　REAL BOUT	1
+全日本キックボクシング　世紀の激突・Part3	1
+全日本キックボクシング「GO AHEAD!」	1
+全日本キックボクシング「HOT SHOT」	1
+全日本キックボクシング「LEGEND-X」	1
+全日本キックボクシング協会	1
+全日本キック＆MA日本キック合同興行「KICK CHAMPION'S NIGHT」	1
+八王子格闘祭り 〜ムエタイの壁〜	1
+力保健搏擊之夜 Libogen Fight Night (PART-15) -風林火山5 9.18 港日大戦-Wanchai Southorn Stadium, Hong Kong	1
+千葉キックRESISTANCE 2023	1
+四国決戦Vol.6	1
+国内カード	1
+国王生誕記念ムエタイ世界大会	1
+堺市産業振興センター 85kg契約	1
+大和ジム40周年＆名古屋JKF20周年記念興行 THE ORIGIN OF KICK BOXING 〜キックの源流 大和魂集結!〜」	1
+大和ジム50周年記念大会 ～大和祭り～	1
+大和ジム創立40周年&名古屋JKファクトリー創立20周年記念興行「THE ORIGIN OF KICK BOXING 〜キックの源流 大和魂集結!〜」	1
+大和ジム創立40周年、名古屋JKファクトリー創立20周年記念興行	1
+天下一・武道会 ＺＥＲＯ	1
+天下一・武道会ZERO	1
+天下一武道会 〜日米対決〜	1
+天空「響き 〜女の夢 全て託して舞い上がれ〜」	1
+天空キックボクシング協会「キックボクシング『天空』 〜四季〜」	1
+天空キックボクシング協会「キックボクシング『天空』〜四季〜」	1
+天空キックボクシング協会「キックボクシング『天空』〜希望〜」	1
+天空キックボクシング協会「キックボクシング『天空』〜星雲〜」	1
+天空キックボクシング協会「キックボクシング『天空』〜東西南北〜」	1
+天空・大和撫子の闘い 女子キックボクシング第2回大会	1
+女子キックボクシング「天空」 New Beginning 〜女の夢 全て託して舞い上がれ〜	1
+宇都宮蹴拳伝 Vol.2 〜宇都宮四天王凱旋!〜	1
+宇都宮蹴拳伝 vol.3	1
+富士急ハイランド特設リング	1
+尼崎体育館	1
+山木ジム21周年記念興行「山木祭り」	1
+"山木ジムOB会 ""山木ジム21周年記念興業 山木祭り"""	1
+岡山ジム「JAPAN KICKBOXING INNOVATION 認定 第7回岡山ジム主催興行」	1
+引退試合	1
+戦場 20	1
+掣圏道東京大会	1
+新宿フェイス SKKBライトヘビー級王座決定戦	1
+新日本キック NEW FETAL MOVEMENT～新たなる胎動～WINNERS2013	1
+新日本キック WINNERS 2015 3rd	1
+新日本キックBRAVE HEARTS 20	1
+新日本キックボクシング「MAGNUM15」	1
+新日本キックボクシング連盟「FIGHTING EVOLUTION I 〜進化する戦い〜」	1
+新日本プロレス YOKOHAMA DEAD OUT	1
+新日本プロレス　INOKI 闘魂 LIVE Part2	1
+新日本プロレス「YOKOHAMA DEAD OUT」	1
+新日本プロレス『’89格闘衛星☆闘強導夢』	1
+新木場ファーストリング SKKBスーパーミドル級王座決定戦	1
+日タイ修好120周年記念認可事業 ムエタイ日-タイ交流戦 〜伝承〜 INHERIT / 第9回NPO法人Kリーグインターナショナルネットワークス国際大会	1
+"日本キックボクシング連盟 ""2006 逆襲シリーズ"""	1
+日本キックボクシング連盟 「2014生粋シリーズVOL.3	1
+日本キックボクシング連盟 「2014生粋シリーズVOL.5	1
+日本キックボクシング連盟「2002 破壊シリーズ」	1
+日本キックボクシング連盟「2003 首領底シリーズ ファイナル」	1
+暴虎馮河2024	1
+柏龍「慈善國際泰拳賽」（香港）	1
+株式会社BOMプロモーション「BOM 36」WPMFインターナショナル・ミドル級王者決定戦（72.50kg）	1
+株式会社BOMプロモーション「BOM OUROBOROS 2022」WPMFインターナショナル ミドル級（72.57kg）王者決定戦　3分5R	1
+株式会社BOMプロモーション「BOM ～ The Battle Of MuayThai 〜BOM WAVE04 – Get Over The COVID-19 –」BOMミドル級王座決定トーナメント 1回戦	1
+株式会社BOMプロモーション「BOM ～ The Battle Of MuayThai 〜BOM WAVE05- Get Over The COVID-19 –」BOMミドル級（72.50kg）王座決定戦	1
+株式会社BOMプロモーション「BOM ～ The Battle Of MuayThai 〜BOM WAVE06 – Get Over The COVID-19 –」BOMミドル級	1
+株式会社BOMプロモーション「BOM ～ The Battle Of MuayThai 〜BOM WAVE07」BOMミドル級（72.57kg）王座決定戦	1
+株式会社BOMプロモーション『BOM WAVE08 ー Get Over The COVID-19 ー』日タイ対抗戦　ミドル級（72.57kg）	1
+株式会社RIKIX『NO KICK NO LIFE 』	1
+横浜文化体育館	1
+横浜登竜門V	1
+武士道ヨーロッパ	1
+武林風 & Thailand Queen’s Cup 2014	1
+武林風 & クンルン・ファイト 2 & MAXムエタイ 6	1
+武林風 2014 - Day of Destruction 8	1
+武林風 2014 – オランダ vs 中国	1
+武林風 2015 – ニュージーランド vs 中国	1
+武林風 2016	1
+武林風 2021:Global Kung Fu Festival	1
+武林風 516	1
+武林風 523	1
+武林風 527	1
+武林風 529	1
+武林風 534	1
+武林風 536	1
+武林風 World Championship 2017	1
+武林風 〜世界拳王争覇賽 in 洛陽II〜	1
+武林風 ワールド・チャンピオンシップ 2016	1
+武林風 中国対世界選抜	1
+武林風 第3回中日対抗戦	1
+武林風2017年世界選手権西安	1
+武林風2018：-60kg世界選手権トーナメント	1
+武林風2018：WLF-67kgワールドカップ2018-2019	1
+武林風2019WLFワールドカップ2018-2019決勝	1
+武林風549	1
+武林風・世界拳王争覇戦	1
+武林風大会	1
+武頼漢 -BURAIKAN-	1
+海外	1
+渋谷クラブサミット99「Future shock fair -ON POINT-」	1
+激突祭り2013	1
+火の国格闘伝説　LEGEND2	1
+燃えろドラゴン！その壱	1
+琉球 Kamikaze Sprits	1
+琉球鉄拳王IV	1
+生ゴン1000回記念 サムライ祭り＆SAEKI祭り2	1
+真樹ジムAICHI10周年記念興行 J-1 time 〜signal of start〜	1
+神風塾 火の国格闘伝説 LEGEND 2	1
+神風塾「LEGEND 3」	1
+神風塾「火の国格闘伝説 LEGEND3」	1
+神風塾「火の国格闘伝説 LEGEND」	1
+競拳 20	1
+競拳 WAKANO Owner Birthday  Anniversary 2021	1
+競拳Jr1回戦戦	1
+競拳Jr2	1
+競拳Jr6	1
+競拳Jr7	1
+競拳Jrタイトルマッチ	1
+競拳Jr決勝戦	1
+競拳jr.1	1
+第1回S-cupトーナメント 1回戦	1
+第2回S-cupトーナメント 1回戦	1
+第2回S-cupトーナメント 決勝	1
+第2回S-cupトーナメント 準決勝	1
+第3回 M-1 ムエタイチャレンジ	1
+第5回岡山ジム主催興業	1
+米国ムエタイ連盟「ワールド・チャンピオン・ムエタイ・エクストラバギャンザ」	1
+絆 XIV	1
+英雄伝説2014世界搏撃王争覇戦	1
+英雄伝説　新春武術チャリティナイト	1
+英雄伝説アジアチャンピオンリーグ総決戦 in 敦煌	1
+藤原敏男スポーツジム後援会「Fujiwara Festival 〜藤原祭り2009〜」	1
+被災地復興チャリティー NIPPON FIGHT	1
+蹴拳	1
+蹴拳 24	1
+蹴拳 27   ※蹴拳 ムエタイライト級次期挑戦者決定トーナメント準決勝	1
+蹴拳 31	1
+蹴拳 31 ※蹴拳 ムエタイライト級挑戦者決定戦	1
+蹴拳18	1
+蹴拳22	1
+蹴拳23 Joe Tsuchiya Festival	1
+蹴拳25	1
+蹴拳27	1
+蹴拳30	1
+蹴拳4	1
+蹴拳CONNECT	1
+蹴拳 34	1
+蹴拳Ⅴ	1
+蹴拳プロモーション「蹴拳Ⅶ」	1
+迎撃覇者	1
+野良犬祭3	1
+野良犬祭4	1
+鐵拳(MAキック)	1
+鐵拳-15	1
+闘真会館 BATTLE FRONT 1	1
+露橋スポーツセンター	1
+静岡KICKvol.8	1
+静岡kick	1
+韓国	1
+韓国・釜山	1
+龍生塾 THE FORCE	1
+龍生塾「THE FORCE 2」	1
+龍生塾「THE FORCE」	1
+龍生塾「The Forth IV」	1
+龍生塾「どついたるねん8」	1
+龍生塾「どついたるねん9」	1
+龍行天下	1
+（ラスベガス）	1
+Ｋ－ダイナミズムバーニングバウトvol１	1
