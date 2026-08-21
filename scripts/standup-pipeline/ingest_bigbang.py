@@ -206,6 +206,7 @@ def build():
         path = f'raw/bigbang_fighters/{h}.html'
         stats['pages'] += 1
         all_bouts += parse_fighter_page(path, info['url'], stats)
+    _bouts.apply_manual_bout_corrections(all_bouts, 'bouts_bigbang.json')
     return all_bouts, stats
 
 

@@ -40,6 +40,9 @@
   {
    "sourceFile": "bouts_rise.json",
    "boutId": "rise:changsuek-petchyindee-academy:0",
+   "fighterSlug": "changsuek-petchyindee-academy",
+   "date": "2026-06-06",
+   "opponentName": "麻火佑太郎",
    "correctedField": "result",
    "originalValue": "win",
    "correctedValue": "loss",
@@ -49,6 +52,9 @@
   {
    "sourceFile": "bouts_bigbang.json",
    "boutId": "bigbang:野村太一|K’Bスポーツジム|https://rise-rc.com/fighter/nomura_taichi/:1",
+   "fighterSlug": "野村太一|K’Bスポーツジム|https://rise-rc.com/fighter/nomura_taichi/",
+   "date": "2025-06-29",
+   "opponentName": "森本 現暉",
    "correctedField": "date",
    "originalValue": null,
    "correctedValue": "2025-06-29",
@@ -58,6 +64,9 @@
   {
    "sourceFile": "bouts_rise.json",
    "boutId": "rise:masashi:2",
+   "fighterSlug": "masashi",
+   "date": "2025-05-31",
+   "opponentName": "窪山 昴",
    "correctedField": "opponent_resolved",
    "originalValue": false,
    "correctedValue": true,
@@ -67,6 +76,9 @@
   {
    "sourceFile": "bouts_rise.json",
    "boutId": "rise:masashi:2",
+   "fighterSlug": "masashi",
+   "date": "2025-05-31",
+   "opponentName": "窪山 昴",
    "correctedField": "opponent_ref",
    "originalValue": null,
    "correctedValue": "窪山 昂",
@@ -76,6 +88,9 @@
   {
    "sourceFile": "bouts_rise.json",
    "boutId": "rise:masashi:2",
+   "fighterSlug": "masashi",
+   "date": "2025-05-31",
+   "opponentName": "窪山 昴",
    "correctedField": "opponent_ref_gym",
    "originalValue": null,
    "correctedValue": "リアルディール",
@@ -85,6 +100,9 @@
   {
    "sourceFile": "bouts_sb.json",
    "boutId": "sb:arima_reiji:15",
+   "fighterSlug": "arima_reiji",
+   "date": "2021-07-04",
+   "opponentName": "櫻井 心",
    "correctedField": "opponent_resolved",
    "originalValue": false,
    "correctedValue": true,
@@ -94,6 +112,9 @@
   {
    "sourceFile": "bouts_sb.json",
    "boutId": "sb:arima_reiji:15",
+   "fighterSlug": "arima_reiji",
+   "date": "2021-07-04",
+   "opponentName": "櫻井 心",
    "correctedField": "opponent_ref",
    "originalValue": null,
    "correctedValue": "櫻井 芯",
@@ -103,6 +124,9 @@
   {
    "sourceFile": "bouts_sb.json",
    "boutId": "sb:arima_reiji:15",
+   "fighterSlug": "arima_reiji",
+   "date": "2021-07-04",
+   "opponentName": "櫻井 心",
    "correctedField": "opponent_ref_gym",
    "originalValue": null,
    "correctedValue": "team FIST",
@@ -112,6 +136,9 @@
   {
    "sourceFile": "bouts_sb.json",
    "boutId": "sb:hasegawa_daisuke:5",
+   "fighterSlug": "hasegawa_daisuke",
+   "date": "2023-09-24",
+   "opponentName": "新井 昴弥",
    "correctedField": "opponent_resolved",
    "originalValue": false,
    "correctedValue": true,
@@ -121,6 +148,9 @@
   {
    "sourceFile": "bouts_sb.json",
    "boutId": "sb:hasegawa_daisuke:5",
+   "fighterSlug": "hasegawa_daisuke",
+   "date": "2023-09-24",
+   "opponentName": "新井 昴弥",
    "correctedField": "opponent_ref",
    "originalValue": null,
    "correctedValue": "新井 昂弥",
@@ -130,6 +160,9 @@
   {
    "sourceFile": "bouts_sb.json",
    "boutId": "sb:hasegawa_daisuke:5",
+   "fighterSlug": "hasegawa_daisuke",
+   "date": "2023-09-24",
+   "opponentName": "新井 昴弥",
    "correctedField": "opponent_ref_gym",
    "originalValue": null,
    "correctedValue": "Ten Clover Gym",

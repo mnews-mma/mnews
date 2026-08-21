@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """SHOOT BOXING 公式の選手ページから bout を抽出する。SCHEMA.md に準拠。"""
-import re,glob,html,json,unicodedata,collections,calendar
+import re,glob,html,json,unicodedata,collections,calendar,os
 
 U=lambda s: re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',s))).strip()
 
@@ -73,6 +73,62 @@ def infer_sibling_dates(bouts):
                 INFERRED_DATE_LOG.append({'bout_id':r['bout_id'],'event':ev,'date':the_date})
                 filled+=1
     return filled
+# ---- 手動修正の再適用(2026-08-21) ----
+# data/kick/manualOverrides.jsonのcorrectedBoutResultsは、check-kick-manual-edit-drift.tsに
+# よる「巻き戻り検知」の登録簿として先に作られたが、実際の値の適用は各bouts_*.jsonへの
+# 直接の手編集に頼っており、build.py(ingest_*.py)を素の状態から再実行すると再生成された
+# 値で上書きされ消えてしまう欠陥があった(週次自動更新ジョブの実走検証で発覚)。
+# レジストリを検知専用から適用のソースにも兼用し、二重管理を避ける: ここでレジストリを
+# 読み、(fighterSlug, date, 正規化した相手名)の自然キー(promote_to_data_kick.pyの
+# bout_key()・check-kick-manual-edit-drift.tsのnormalizeNameForKey()と同じロジック、
+# 3ファイルで定義がズレないよう揃えて更新すること)で対象行を見つけ、correctedField/
+# correctedValueを適用する。
+_MANUAL_OVERRIDES_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'kick', 'manualOverrides.json')
+
+
+def _normalize_name_for_key(s):
+    if not s:
+        return ''
+    s = unicodedata.normalize('NFKC', s)
+    for c in '“”"\'‘’｀「」『』【】〈〉《》〔〕・･':
+        s = s.replace(c, '')
+    s = re.sub(r'\s+', '', s)
+    return s.lower()
+
+
+def apply_manual_bout_corrections(bouts, source_file):
+    """source_file(例: 'bouts_rise.json')宛のcorrectedBoutResultsを、この実行のboutsに
+    再適用する。登録が無ければ何もしない(存在しないパスでも静かにスキップ、ローカルで
+    data/kick/を持たない実行形態を壊さないため)。"""
+    if not os.path.exists(_MANUAL_OVERRIDES_PATH):
+        return 0
+    registry = json.load(open(_MANUAL_OVERRIDES_PATH, encoding='utf-8'))
+    entries = [e for e in registry.get('correctedBoutResults', []) if e.get('sourceFile') == source_file]
+    if not entries:
+        return 0
+    by_full_key = collections.defaultdict(list)
+    # date自体を直す登録(correctedField=='date')は、この関数が呼ばれる時点(補正適用前)の
+    # 行はまだ登録済みのdate値を持っていない(元の壊れた値のまま)ため、date込みの完全キーでは
+    # 一致しない。その場合だけ(fighter_slug, 正規化相手名)のみで照合する。
+    by_partial_key = collections.defaultdict(list)
+    for b in bouts:
+        opp = _normalize_name_for_key(b.get('opponent_name'))
+        by_full_key[(b.get('fighter_slug'), b.get('date'), opp)].append(b)
+        by_partial_key[(b.get('fighter_slug'), opp)].append(b)
+    applied = 0
+    for e in entries:
+        opp = _normalize_name_for_key(e.get('opponentName'))
+        if e['correctedField'] == 'date':
+            targets = by_partial_key.get((e.get('fighterSlug'), opp), [])
+        else:
+            targets = by_full_key.get((e.get('fighterSlug'), e.get('date'), opp), [])
+        for b in targets:
+            b[e['correctedField']] = e['correctedValue']
+            applied += 1
+    return applied
+
+
 MARK2RESULT={'mark-win':'win','mark-ko':'win','mark-lose':'loss',
              'mark-hikiwake':'draw','mark-nocon':'no_contest'}
 
@@ -264,6 +320,7 @@ def build(fighters_path='fighters.json',src='raw/sb_bouts/*.html',
         if b['date'] and b['opponent_site_slug']:
             a,c=sorted([b['fighter_slug'],b['opponent_site_slug']])
             b['pair_key']=f"{b['date']}|{a}|{c}"
+    apply_manual_bout_corrections(bouts, f'bouts_{promo}.json')
     return bouts
 
 

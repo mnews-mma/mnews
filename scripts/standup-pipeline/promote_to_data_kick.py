@@ -17,11 +17,25 @@ NKB旧サイト分の凍結(2026-08-21): ingest_nkb.pyは新サイト(ライブ�
 (新サイトはnkb-r.com/main/経由)なため、前回コミット済みのdata/kick/bouts_nkb.json
 から旧サイト行だけを毎回引き継いで合成する。
 
-同一性の判定について: bouts.py/ingest_*.pyが払い出すbout_idは「そのソース内での
-出現順インデックス」を含む形式(例: k1:{fid}:{i})で、同一ボートでも取得元ページの
-記載順が変わればbout_idがずれる可能性がある。そのため本スクリプトの追加/削除/変化
-判定にはbout_idを使わず、(fighter_slug, opponent_raw, date, event, source_url)の
-組を自然キーとして使う。
+同一性の判定について(2026-08-21、2度目の見直し): 当初は(fighter_slug, opponent_raw,
+date, event, source_url)の5要素を自然キーにしていたが、実走テストで
+event・source_urlの両方が不安定だと判明した。DEEP☆KICKで同一の実bout
+(同一選手・同一相手・同一日・同一結果)が2つの異なる記事URL(件名も「DEEP☆KICK
+ZERO 05」/「DEEP☆KICK ZERO」と表記ゆれ)に重複投稿されているケースを実測し、
+5要素キーだとこれを「削除+追加」の別bout扱いしてしまっていた(1件深掘り、
+DEEP☆KICK ZERO 05・Hotaru vs ボーちゃん)。bout_id自体も「そのソース内での
+出現順インデックス」を含む形式(例: k1:{fid}:{i})で、ページの記載順が変われば
+ずれる。いずれも表示に影響しない不安定な要素のため、識別には使わない。
+
+(fighter_slug, date, 正規化した相手名)の3要素に絞った(2026-08-21)。全35,359件の
+既存bout(data/kick/配下)で衝突を実測したところ、真に別の試合が衝突した例は
+frozen対象(Wikipedia、週次ジョブの対象外)で1件のみ(藤原あらし、2002-09-06に
+同じ相手と2試合、通算成績のダブルブッキングの可能性があるが未確認)、他は全て
+「date未取得同士の衝突(9件、そもそも要素が無く区別しようがない)」または
+「同一bout の重複投稿(40件、この3要素キーへの変更でむしろ正しく1件に統合される
+ようになった、良い副作用)」だった。相手名の正規化は
+check-kick-manual-edit-drift.tsのnormalizeNameForKey()と同じロジックを使う
+(TS側と定義がズレると検知の意味が無くなるため、両ファイルを揃えて更新すること)。
 
 出力: 昇格した各ファイルについて、旧データとの差分サマリー(追加行数・削除行数・
 既存行の変化の有無)をJSONとして標準出力に書く(呼び出し元のワークフローがPR本文の
@@ -29,7 +43,9 @@ NKB旧サイト分の凍結(2026-08-21): ingest_nkb.pyは新サイト(ライブ�
 """
 import json
 import os
+import re
 import sys
+import unicodedata
 
 PIPE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(PIPE_DIR, "..", ".."))
@@ -52,13 +68,23 @@ NKB_OLD_SITE_PREFIX = "http://www.nkb-r.com/"
 REGRESSION_RATIO_THRESHOLD = 0.5  # 前回からこの割合以上減ったら異常とみなす(50%)
 
 
+def normalize_name_for_key(s):
+    # check-kick-manual-edit-drift.ts の normalizeNameForKey() と同じロジック
+    # (TS側と定義がズレると検知の意味が無くなるため、両ファイルを揃えて更新すること)。
+    if not s:
+        return ""
+    s = unicodedata.normalize("NFKC", s)
+    for c in "“”\"'‘’｀「」『』【】〈〉《》〔〕・･":
+        s = s.replace(c, "")
+    s = re.sub(r"\s+", "", s)
+    return s.lower()
+
+
 def bout_key(b):
     return (
         b.get("fighter_slug"),
-        b.get("opponent_raw"),
         b.get("date"),
-        b.get("event"),
-        b.get("source_url"),
+        normalize_name_for_key(b.get("opponent_name")),
     )
 
 

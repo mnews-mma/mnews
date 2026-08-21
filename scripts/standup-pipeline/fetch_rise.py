@@ -12,6 +12,7 @@ import time
 
 sys.path.insert(0, ".")
 from fetch_common import fetch
+from fighters_source_ids import extract_ids_from_fighters
 
 SITEMAP_URL = "https://rise-rc.com/fighter-sitemap.xml"
 OUT_DIR = "raw/rise_bouts"
@@ -29,19 +30,22 @@ def main():
     all_urls = re.findall(r"<loc><!\[CDATA\[(https://rise-rc\.com/fighter/[^\]]+)\]\]></loc>", xml)
     print(f"sitemapから発見した選手ページ: {len(all_urls)}件")
 
-    # 2026-08-21追加: 週次自動更新ジョブでは、sitemapから新規発見した(=cache/rise_parsed.json
-    # に無い)選手のbout HTMLは取得しない。cache/rise_parsed.json(名簿)は生成手段が無く
-    # 更新できないため(build.pyのCACHE_DIRコメント参照)、名簿に無い選手の戦績だけ取得すると
+    # 2026-08-21追加: 週次自動更新ジョブでは、sitemapから新規発見した(=fighters.jsonに
+    # 無い)選手のbout HTMLは取得しない。名簿に無い選手の戦績だけ取得すると
     # build-kick-data.tsのunmatchedBoutsゲート(選手識別子がfighters.jsonのどれとも
-    # 一致しない行をゼロ件ゲートで検知)に毎週必ず抵触し、ジョブが永久にブロックされる
-    # (ローカル実測で確認: 新規デビュー選手6名の混入で24行が引っかかった)。「名簿の
-    # 自動拡張はしない」というこのジョブのスコープ外事項と整合させるため、既知の名簿に
-    # 載っている選手のみを対象にする(新規デビュー選手の戦績反映は次回の名簿更新まで持ち越し)。
-    known_urls = {r["url"] for r in json.load(open("cache/rise_parsed.json"))}
+    # 一致しない行をゼロ件ゲートで検知)に毎週必ず抵触し、ジョブが永久にブロックされる。
+    # 「名簿の自動拡張はしない」というこのジョブのスコープ外事項と整合させるため、
+    # 既知の名簿に載っている選手のみを対象にする。
+    #
+    # 2026-08-21変更(2度目): 「既知の名簿」の参照元をcache/rise_parsed.json(2026-08-18
+    # 時点の凍結スナップショット)からfighters.json(コミット済み、継続的に更新されて
+    # きた"より新しい"名簿)に変更した。cache/側には無いがfighters.json側には既に
+    # 存在する選手6名(飯田陸斗・石川龍之介等、実測確認)が不要にスキップされていたため。
+    known_urls = extract_ids_from_fighters(r"^(https://rise-rc\.com/fighter/[^/]+/)$")
     urls = [u for u in all_urls if u in known_urls]
     skipped = len(all_urls) - len(urls)
     if skipped:
-        print(f"名簿(cache/rise_parsed.json)に無い新規選手 {skipped}件はスキップ(名簿自動拡張は対象外)")
+        print(f"名簿(fighters.json)に無い新規選手 {skipped}件はスキップ(名簿自動拡張は対象外)")
 
     failed = []
     n_ok = 0

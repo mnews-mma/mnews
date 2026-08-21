@@ -13,6 +13,7 @@ import time
 
 sys.path.insert(0, ".")
 from fetch_common import fetch
+from fighters_source_ids import extract_ids_from_fighters
 
 SITEMAP_URL = "https://shootboxing.org/fighter-sitemap.xml"
 OUT_DIR = "raw/sb_bouts"
@@ -30,15 +31,19 @@ def main():
     all_urls = re.findall(r"<loc><!\[CDATA\[(https://shootboxing\.org/fighter/[^\]]+)\]\]></loc>", xml)
     print(f"sitemapから発見した選手ページ: {len(all_urls)}件")
 
-    # 2026-08-21追加: fetch_rise.pyと同じ理由(コメント参照)で、cache/sb_parsed.json
-    # (名簿、生成手段が無く更新できない)に無い新規選手は取得対象から外す。名簿に無い
-    # 選手の戦績だけ取得すると、build-kick-data.tsのunmatchedBoutsゲートに毎週抵触し
-    # ジョブが永久にブロックされる(「名簿の自動拡張はしない」というスコープ外事項との整合)。
-    known_urls = {r["url"] for r in json.load(open("cache/sb_parsed.json"))}
+    # 2026-08-21追加: fetch_rise.pyと同じ理由(コメント参照)で、名簿に無い新規選手は
+    # 取得対象から外す。名簿に無い選手の戦績だけ取得すると、build-kick-data.tsの
+    # unmatchedBoutsゲートに毎週抵触しジョブが永久にブロックされる(「名簿の自動拡張は
+    # しない」というスコープ外事項との整合)。
+    #
+    # 2026-08-21変更(2度目): 「既知の名簿」の参照元をcache/sb_parsed.json(2026-08-18
+    # 時点の凍結スナップショット)からfighters.json(コミット済み、継続的に更新されて
+    # きた"より新しい"名簿)に変更した(fetch_rise.pyと同じ理由)。
+    known_urls = extract_ids_from_fighters(r"^(https://shootboxing\.org/fighter/[^/]+/)$")
     urls = [u for u in all_urls if u in known_urls]
     skipped = len(all_urls) - len(urls)
     if skipped:
-        print(f"名簿(cache/sb_parsed.json)に無い新規選手 {skipped}件はスキップ(名簿自動拡張は対象外)")
+        print(f"名簿(fighters.json)に無い新規選手 {skipped}件はスキップ(名簿自動拡張は対象外)")
 
     failed = []
     n_ok = 0

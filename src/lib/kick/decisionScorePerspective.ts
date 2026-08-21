@@ -72,8 +72,15 @@ const WITHIN_PAIR_CONNECTOR_RE = /^\s*[-－‐ー−:：/]\s*$/;
 // こちらは構造を機械的に安全に分解する必要があるため意図的に区別している)。
 const NUMBER_TOKEN_SRC = String.raw`\d{1,3}(?:\.\d{1,2})?`;
 const NUMBER_TOKEN_RE = new RegExp(`^(?:${NUMBER_TOKEN_SRC})$`);
+// 2026-08-21追加: 「30:27×3」のように、3者の審判が同一スコアを付けた場合に「×3」で
+// まとめて表記する出典(実データで確認)。「×N」の数字は審判別スコアの一部ではなく
+// 繰り返し回数を示す注記であり、ペアとして並べ替える対象ではない。数字トークンとして
+// 拾ってしまうと総数が奇数になり「安全に解釈できない」扱いになってしまうため、
+// このトークナイザでは「×N」をまとめて1個の非数字(text)トークンとして扱う
+// (TAIL_TOKEN_REの先頭に置き、通常の数字トークン判定より優先させる)。
+const REPEAT_MARKER_SRC = String.raw`[×xX]\d{1,2}`;
 // tail全体を「数字トークン」と「非数字トークン」に分解するトークナイザ。
-const TAIL_TOKEN_RE = new RegExp(`(${NUMBER_TOKEN_SRC})|([^\\d]+)`, "g");
+const TAIL_TOKEN_RE = new RegExp(`(${REPEAT_MARKER_SRC})|(${NUMBER_TOKEN_SRC})|([^\\d]+)`, "g");
 
 interface Tok {
   type: "num" | "text";
@@ -86,8 +93,9 @@ function tokenize(s: string): Tok[] {
   TAIL_TOKEN_RE.lastIndex = 0;
   let m: RegExpExecArray | null;
   while ((m = TAIL_TOKEN_RE.exec(s))) {
-    if (m[1] !== undefined) out.push({ type: "num", value: m[1], index: m.index });
-    else out.push({ type: "text", value: m[2], index: m.index });
+    if (m[1] !== undefined) out.push({ type: "text", value: m[1], index: m.index }); // ×N(繰り返し注記)
+    else if (m[2] !== undefined) out.push({ type: "num", value: m[2], index: m.index });
+    else out.push({ type: "text", value: m[3], index: m.index });
   }
   return out;
 }

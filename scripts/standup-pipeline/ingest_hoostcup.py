@@ -140,11 +140,21 @@ def parse_vs_style(block):
     mark2 = raw2[0] if raw2[:1] in '△×○●◯' else None
     n1 = raw1[1:].strip() if mark1 else raw1
     n2 = raw2[1:].strip() if mark2 else raw2
+    # 2026-08-21回帰修正: hoostcup.comが試合動画リンク段落(<p class="ali2">…試合動画は
+    # こちらをCLICK…</p>)をVS表記と決着文の間に追加するテンプレート変更を行った
+    # (実測: 2026-07-26 CENTRAL KICK Vol.1)。従来は「t12の直後の最初の<p class="...">」を
+    # 決着文とみなしていたため、この動画リンク段落を誤って拾い0件になっていた。
+    # これは新しいテンプレートへの対応ではなく、既存テンプレート(【勝者:…】/【ドロー】
+    # 形式)の決着文を含む段落が現れるまで読み飛ばす形の回帰修正。
     tail = block[m.end():]
-    dm = re.search(r'<p class="[a-z]+\d*">(.*?)</p>', tail, re.S)
-    if not dm:
+    decision_raw = None
+    for pm in re.finditer(r'<p class="[a-z]+\d*">(.*?)</p>', tail, re.S):
+        cand = U(pm.group(1))
+        if re.match(r'【(勝者|ドロー|引き分け)', cand) or DECISION_KW.search(cand):
+            decision_raw = cand
+            break
+    if decision_raw is None:
         return None
-    decision_raw = U(dm.group(1))
     wm = re.match(r'【勝者[:：]\s*([^】]*)】\s*(.*)$', decision_raw, re.S)
     if wm:
         winner_raw, decision = wm.group(1).strip(), wm.group(2).strip()
