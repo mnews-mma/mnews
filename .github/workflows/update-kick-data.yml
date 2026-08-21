@@ -53,19 +53,19 @@ name: Update kick data (14ソース週次)
 # (scripts/standup-pipeline/render_promote_skip_summary.py参照)。
 
 on:
-  # cronは意図的に無効化した状態でマージする(2026-08-21)。実走テスト・破壊テストが
-  # 両方通ってからのみ、別コミットで以下のscheduleブロックを有効化すること。
-  # 理由: 検証前に週次実行が勝手に走り出す状態を作らないため。
-  #
-  # schedule:
-  #   # 毎週木曜 JST 4:00 (UTC水曜19:00)。既存の日次バッチ(23:00 update-org-records・
-  #   # 2:30 update-fighter-records・0:17 update-org-rankings・6:00
-  #   # check-org-schedule-diff、いずれもJST)、既存の週次バッチ
-  #   # (org-ranking-candidates-weekly-report.yml、月曜9:00 JST)のいずれとも
-  #   # 時刻が重ならない枠として選んだ。このジョブは自身の作業ブランチにのみ
-  #   # push しmainを直接触らないため、他バッチとのpush競合リスクは無く、
-  #   # update-org-records.ymlのような「実行中run照会」待機ステップは不要。
-  #   - cron: "0 19 * * 3"
+  # cron有効化(2026-08-22): 実走テスト(4回連続、うち1回はONE Championship編入後の
+  # 検証)・破壊テスト(bout数急減時に前回値を維持することを実測確認済み)がいずれも
+  # 通ったため有効化する。それまでは意図的に無効化していた(検証前に週次実行が
+  # 勝手に走り出す状態を作らないため)。
+  schedule:
+    # 毎週木曜 JST 4:00 (UTC水曜19:00)。既存の日次バッチ(23:00 update-org-records・
+    # 2:30 update-fighter-records・0:17 update-org-rankings・6:00
+    # check-org-schedule-diff、いずれもJST)、既存の週次バッチ
+    # (org-ranking-candidates-weekly-report.yml、月曜9:00 JST)のいずれとも
+    # 時刻が重ならない枠として選んだ。このジョブは自身の作業ブランチにのみ
+    # push しmainを直接触らないため、他バッチとのpush競合リスクは無く、
+    # update-org-records.ymlのような「実行中run照会」待機ステップは不要。
+    - cron: "0 19 * * 3"
   workflow_dispatch:
     inputs:
       dry_run:
