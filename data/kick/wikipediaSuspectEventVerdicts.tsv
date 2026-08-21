@@ -1,3 +1,16 @@
+# wikipediaSuspectEventVerdicts.tsv
+#
+# 目的: 他競技(MMA)混入監査(V-1、PR #611、判定日2026-08-21)で、大会名が
+#       wikipediaApprovedEventNames.tsvの生成に使ったキーワードに一致し「疑わしい」と
+#       分類された135大会名・167行について、一次資料(選手Wikipedia記事・大会公式サイト・
+#       Tapology/Sherdog/BOUTREVIEW/ゴング格闘技等)で1行ずつ個別判定した結果。
+#
+# verdict列: MMA(10件、除去済み。data/kick/manualRuleExclusions.jsonのsatake-masaaki
+#            10エントリに対応) / NOT_MMA(156件、立ち技と確認、DBに残置) /
+#            INCONCLUSIVE(1件、iotani-takashi[飯谷崇] vs 相良正幸、
+#            「新☆四角いジャングル 〜ミスター格闘技降臨!!〜」2009-09-13、一次資料で
+#            ルールを確定できず現状維持)
+#
 slug	date	event	opponent	verdict	evidence_note
 gono-akihiro	2012-07-21	DEEP TOKYO IMPACT 2012　SBルール	KID HMC SAGE	NOT_MMA	Wikipedia戦績表で本試合は「SBルール」(シュートボクシングルール=キックボクシングルール)と明記。DEEP興行内だがS-cup予選としてシュートボクシングルールで実施。
 gono-akihiro	2005-03-06	パンクラス PANCRASE 2005 SPIRAL TOUR	桜木裕司	NOT_MMA	Wikipedia戦績表・pancrase.co.jp公式結果ページともに本試合は「全日本キックボクシング連盟公式試合」と明記。パンクラス興行の一戦だが試合自体はキックボクシングルール。
