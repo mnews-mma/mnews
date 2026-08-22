@@ -175,7 +175,11 @@ export const KICK_PROMOTIONS = [
 ];
 
 /** 名簿の取得元(6ソース)。KICK_PROMOTIONSの一部(K-1/RISE/SB/KNOCK OUT) + Wikipedia男女2一覧。
- *  戦績のみのソース(RIZIN/ONE等)は名簿には掲載していないため、ここには含まれない。 */
+ *  戦績のみのソース(RIZIN/ONE等)は名簿には掲載していないため、ここには含まれない。
+ *  この配列は手動管理で、build-kick-data.ts側に対応する生成値が無い(名簿は既存の統合済み
+ *  fighters.csvから作られており、どの6ソース由来かの内訳をビルドスクリプトが保持していない)。
+ *  そのため KICK_PROMOTIONS.length と違って生成値参照に置き換えられず、名簿の取得元構成が
+ *  実際に変わった場合はこの配列を手で更新しないと表示(.length)が実態とズレる。 */
 export const KICK_ROSTER_SOURCES = [
   "ja.wikipedia「男子キックボクサー一覧」",
   "ja.wikipedia「女子キックボクサー一覧」",

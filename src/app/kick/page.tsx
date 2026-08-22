@@ -7,7 +7,7 @@ export function generateMetadata() {
   const { stats } = getKickIndex();
   return pageMetadata({
     title: "立ち技名鑑｜キックボクシング選手データベース - Mニュース",
-    description: `対象${KICK_PROMOTIONS.length}団体（K-1・RISE・SHOOT BOXING・KNOCK OUT・RIZIN・ONE Championship等）の公式サイトとWikipedia全団体から収集したキックボクシング選手${stats.fighters.toLocaleString(
+    description: `対象${stats.promotions.length}団体（K-1・RISE・SHOOT BOXING・KNOCK OUT・RIZIN・ONE Championship等）の公式サイトとWikipedia全団体から収集したキックボクシング選手${stats.fighters.toLocaleString(
       "ja-JP",
     )}人・戦績${stats.boutRows.toLocaleString("ja-JP")}件のデータベース。全レコードに取得元URLを併記。`,
     path: "/kick",
@@ -55,7 +55,7 @@ export default function KickTopPage() {
       <p className="kick-lead">
         名簿は次の6ソースから作成しました。名簿{nf(stats.fighters)}人のうち、公式サイトまたはWikipediaのいずれかから
         戦績を1件以上収集できた選手は{nf(stats.fightersWithBouts)}人です。
-        戦績は下記{KICK_PROMOTIONS.length}団体の公式サイトに加え、Wikipediaの個別選手記事からは団体を問わず収集して収録しています。
+        戦績は下記{stats.promotions.length}団体の公式サイトに加え、Wikipediaの個別選手記事からは団体を問わず収集して収録しています。
       </p>
       <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
         件数の内訳：各団体の公式サイトおよびWikipediaから取得した {nf(stats.boutRowsRaw)} 件のうち、複数団体に重複掲載されていた{" "}
@@ -78,10 +78,10 @@ export default function KickTopPage() {
         ))}
       </ul>
 
-      <h2 className="kick-section-title">戦績の取得元（対象{KICK_PROMOTIONS.length}団体の公式サイト＋Wikipedia全団体）</h2>
+      <h2 className="kick-section-title">戦績の取得元（対象{stats.promotions.length}団体の公式サイト＋Wikipedia全団体）</h2>
       <p className="kick-lead" style={{ fontSize: 12.5, color: "#555" }}>
-        下記{KICK_PROMOTIONS.length}団体それぞれについて、公式サイトの選手ページから戦績を収集しています。
-        Wikipediaの個別選手記事は、これら{KICK_PROMOTIONS.length}団体に限らず、キックボクシング・ムエタイの戦績であれば団体を問わず収集対象にしています
+        下記{stats.promotions.length}団体それぞれについて、公式サイトの選手ページから戦績を収集しています。
+        Wikipediaの個別選手記事は、これら{stats.promotions.length}団体に限らず、キックボクシング・ムエタイの戦績であれば団体を問わず収集対象にしています
         （GLORY・ルンピニー・ラジャダムナン・WAKO SuperLeague・J-NETWORK・全日本キックボクシング連盟など、公式サイト側の対象外団体を含む）。
         なお収集対象は「男子/女子キックボクサー一覧」ページから辿れる選手だけに限定していません。一覧ページからは辿れなくても
         個別記事が実在する選手は記事の実在を個別に確認したうえで収集対象に加えており、この方式で一覧ページ経由では見つからなかった
@@ -136,7 +136,7 @@ export default function KickTopPage() {
         <li>勝率・KO率などの算出指標</li>
         <li>選手のランキング</li>
         <li>
-          J-NETWORK・GLORY・ルンピニー等の非対象{KICK_PROMOTIONS.length}団体は、当該団体の公式サイトを直接の取得元とはしていません（Wikipediaに掲載がある分のみ収録）
+          J-NETWORK・GLORY・ルンピニー等の非対象{stats.promotions.length}団体は、当該団体の公式サイトを直接の取得元とはしていません（Wikipediaに掲載がある分のみ収録）
         </li>
         <li>MA日本（公式に勝敗記録が存在しないため）</li>
         <li>各団体の2000年代以前の戦績の一部（公式サイト・Wikipediaいずれにも掲載がないため）</li>
