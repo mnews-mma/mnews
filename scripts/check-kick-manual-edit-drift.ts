@@ -55,7 +55,14 @@ interface RenameEntry {
 }
 interface CorrectedBoutResultEntry {
   sourceFile: string;
+  // boutIdは「そのソース内での出現順インデックス」を含む形式(例: k1:{fid}:{i})で、
+  // 取得順が変わるとずれるため2026-08-21以降は照合に使わない(記録として残すのみ)。
+  // 代わりにfighterSlug/date/opponentName(3要素、promote_to_data_kick.pyのbout_key()と
+  // 同じ自然キー)で照合する。
   boutId: string;
+  fighterSlug: string;
+  date: string | null;
+  opponentName: string;
   correctedField: string;
   originalValue: string;
   correctedValue: string;
@@ -65,6 +72,18 @@ interface CorrectedBoutResultEntry {
 
 const fighters: Fighter[] = JSON.parse(fs.readFileSync(path.join(SRC, "fighters.json"), "utf8"));
 const identity = (f: Fighter) => `${f.name}|${f.gym ?? ""}|${f.sources[0] ?? ""}`;
+
+// 2026-08-21追加: promote_to_data_kick.py の normalize_name_for_key() と同じロジック
+// (Python側と定義がズレると検知の意味が無くなるため、両ファイルを揃えて更新すること)。
+function normalizeNameForKey(s: string | null | undefined): string {
+  if (!s) return "";
+  let t = s.normalize("NFKC");
+  for (const c of "“”\"'‘’｀「」『』【】〈〉《》〔〕・･") {
+    t = t.split(c).join("");
+  }
+  t = t.replace(/\s+/g, "");
+  return t.toLowerCase();
+}
 const knownIdentities = new Set(fighters.map(identity));
 const knownNames = new Set(fighters.map((f) => f.name));
 
@@ -148,9 +167,16 @@ fs.writeFileSync(DIAG_BASELINE_PATH, JSON.stringify({ count: unmatchedButNameKno
 
 // ---------- 検査3: correctedBoutResults(bouts_*.json全般のフィールド単位の手動修正)の巻き戻り検知(ゼロ件ゲート) ----------
 // renamedFighterWikipediaIdentity(検査1)は選手identity専用・bouts_wikipedia.json専用だが、
-// こちらは「特定の1試合(boutId)の特定の1フィールドが、公式サイト自体の誤り等を理由に
-// 手動で上書きされている」ケースを対象にした汎用版。sourceFileはエントリごとに指定する
+// こちらは「特定の1試合の特定の1フィールドが、公式サイト自体の誤り等を理由に手動で
+// 上書きされている」ケースを対象にした汎用版。sourceFileはエントリごとに指定する
 // (T-1のraw/キャッシュ退避検証で見つかったRISE 1件〈PR#588〉が最初の登録例)。
+//
+// 照合キー(2026-08-21変更): 従来はbout_idで照合していたが、bout_idは「そのソース内
+// での出現順インデックス」を含む形式で取得順が変わるとずれる。加えて実測で
+// event・source_urlも不安定(同一bout が複数記事URLに重複投稿される等)と判明した。
+// (fighterSlug, date, normalizeNameForKey(opponentName))の3要素キーに変更する
+// (promote_to_data_kick.pyのbout_key()と同じ、全35,359件の既存bout突合で衝突が
+// 実質無いことを確認済み)。
 const correctedBoutResults = registry.correctedBoutResults ?? [];
 const boutResultReverted: string[] = [];
 const boutFileCache = new Map<string, Record<string, unknown>[]>();
@@ -163,17 +189,24 @@ for (const entry of correctedBoutResults) {
     );
   }
   const bouts = boutFileCache.get(entry.sourceFile)!;
-  const bout = bouts.find((b) => b.bout_id === entry.boutId);
+  const targetOpponent = normalizeNameForKey(entry.opponentName);
+  const bout = bouts.find(
+    (b) =>
+      b.fighter_slug === entry.fighterSlug &&
+      b.date === entry.date &&
+      normalizeNameForKey(b.opponent_name as string | null) === targetOpponent,
+  );
+  const label = `fighterSlug="${entry.fighterSlug}" date=${entry.date} opponentName="${entry.opponentName}"`;
   if (!bout) {
     boutResultReverted.push(
-      `${entry.sourceFile}: bout_id="${entry.boutId}" が見つかりません(行ごと消失した可能性。${entry.fixedInCommit}参照)`,
+      `${entry.sourceFile}: ${label} が見つかりません(行ごと消失した可能性。${entry.fixedInCommit}参照)`,
     );
     continue;
   }
   const current = bout[entry.correctedField];
   if (current !== entry.correctedValue) {
     boutResultReverted.push(
-      `${entry.sourceFile}: bout_id="${entry.boutId}" の${entry.correctedField}が` +
+      `${entry.sourceFile}: ${label} の${entry.correctedField}が` +
         `"${entry.correctedValue}"(登録済みの修正値)ではなく"${String(current)}"になっています` +
         `(巻き戻り。${entry.fixedInCommit}参照)`,
     );

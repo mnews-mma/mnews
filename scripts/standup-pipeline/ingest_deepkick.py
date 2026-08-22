@@ -196,10 +196,22 @@ def extract_event_name(lines, title):
     # 句点(。)を含まないのに対し、地の文中の引用は文になっているため句点を含む。
     # 全118件のうち句点を含む『』一致は上記1件のみ(2026-08-19実測)で、この判定を
     # 加えても既存の正しい大会名抽出には一切影響しない。
+    # 2026-08-21追加(週次自動更新の実走で発見): 『』一致が句点を含まなくても、
+    # タイトル由来の大会名(下記title_derived)の**短縮形の接頭辞**でしかない場合が
+    # ある(実例: eid=41033316、本文中の非公式な言及『DEEP☆KICK ZERO』が、正しい
+    # 大会名「DEEP☆KICK ZERO 05」の末尾の号数を欠いた短縮形になっていた)。全118件を
+    # 機械突合した結果、この「quoteがtitle_derivedの真の接頭辞」パターンは3件のみで
+    # (他15件はquote/title間で号数自体が食い違う別種の問題、個別確認が必要なため
+    # 対象外)、この3件に限りtitle_derived側を採用する方が確実に正しい。
+    title_derived_for_prefix_check = re.sub(r'\s*(試合)?結果速報\s*$|\s*(試合)?結果\s*$', '', title)
+    title_derived_for_prefix_check = re.sub(r'^\d{1,2}\.\d{1,2}\s+\S+\s+', '', title_derived_for_prefix_check).strip()
     for l in lines[:8]:
         m = re.search(r'『(.+?)』', l)
         if m and '。' not in m.group(1):
-            return m.group(1)
+            quote = m.group(1)
+            if title_derived_for_prefix_check.startswith(quote) and title_derived_for_prefix_check != quote:
+                return title_derived_for_prefix_check
+            return quote
     # U-4(2026-08): 「○○結果速報」(速報記事)というタイトル末尾パターンにも対応。
     # 既存の「○○結果」「○○試合結果」は変更せず、追加のalternativeとして扱う。
     t = re.sub(r'\s*(試合)?結果速報\s*$|\s*(試合)?結果\s*$', '', title)
@@ -388,8 +400,51 @@ def build():
                         source_url=url,
                     ))
                     per_event_bouts[eid] += 1
+
+    bouts, dup_dropped = _dedupe_cross_article_duplicates(bouts)
     return bouts, dict(block_total=block_total, block_fail=block_fail, self_unresolved=self_unresolved,
-                        events=len(ids), per_event_bouts=per_event_bouts)
+                        events=len(ids), per_event_bouts=per_event_bouts, dup_dropped=dup_dropped)
+
+
+def _dedupe_cross_article_duplicates(bouts):
+    """2026-08-21追加: DEEP☆KICK公式サイト自体が、同一大会の結果を日付の異なる複数記事
+    (例: DEEP☆KICK ZERO 1が id=32156986(2022-01-30) と id=32216607(2022-03-13) の
+    2記事に重複投稿されている)として公開しているケースがある。上流の重複投稿そのものは
+    直せないが、放置すると『どちらの記事をたまたま先に処理したか』でdateが変わり、
+    週次実行のたびに実体の無い削除+追加がPR差分に出続けてしまう。
+    採用ルール: 同一event名・同一対戦カード(選手2名の組み合わせ、順不同)の行が複数の
+    記事(source_urlのpost ID)にまたがって存在する場合、post IDが最小の記事を正とし、
+    それ以外の記事由来の行を削除する。post IDはDEEP☆KICK側の投稿順(実測: 若い方が先に
+    投稿された記事)であり、後発の重複投稿より先行記事を優先するのが妥当という判断。
+    どちらが日付として正しいかは上流記事だけでは判定できないため、決定性(毎回同じ結果に
+    なること)を優先し、恣意的な補正はしない。"""
+    def article_id(url):
+        m = re.search(r'/posts/(\d+)', url or '')
+        return int(m.group(1)) if m else None
+
+    groups = collections.defaultdict(set)
+    for b in bouts:
+        aid = article_id(b['source_url'])
+        if aid is None:
+            continue
+        pair = frozenset({nk(b['fighter_name']), nk(b['opponent_name'] or '')})
+        groups[(b['event'], pair)].add(aid)
+
+    winning_aid = {key: min(aids) for key, aids in groups.items() if len(aids) > 1}
+    if not winning_aid:
+        return bouts, 0
+
+    kept = []
+    dropped = 0
+    for b in bouts:
+        aid = article_id(b['source_url'])
+        pair = frozenset({nk(b['fighter_name']), nk(b['opponent_name'] or '')})
+        key = (b['event'], pair)
+        if key in winning_aid and aid != winning_aid[key]:
+            dropped += 1
+            continue
+        kept.append(b)
+    return kept, dropped
 
 
 if __name__ == '__main__':
@@ -400,6 +455,7 @@ if __name__ == '__main__':
     print('bout blocks parsed      :', stats['block_total'])
     print('  block fail(name欠落)  :', stats['block_fail'])
     print('bout rows written       :', len(bouts))
+    print('  同一カード重複記事の除去:', stats['dup_dropped'], '行(post ID最小の記事を採用)')
     print('  avg bouts/event       :', round(len(bouts) / stats['events'], 2))
     print('self-side unresolved(側単位、行を作らず破棄):', stats['self_unresolved'])
     r = sum(1 for x in bouts if x['opponent_resolved'])

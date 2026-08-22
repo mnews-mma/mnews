@@ -256,23 +256,6 @@
   ]
  },
  {
-  "name": "岩崎 悠斗",
-  "count": 7,
-  "promotions": [
-   "k1",
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/kaito/",
-   "https://www.k-1.co.jp/fighter/260",
-   "https://www.k-1.co.jp/fighter/273",
-   "https://www.k-1.co.jp/fighter/280",
-   "https://www.k-1.co.jp/fighter/311",
-   "https://www.k-1.co.jp/fighter/726"
-  ]
- },
- {
   "name": "河北 光生",
   "count": 7,
   "promotions": [
@@ -1084,24 +1067,6 @@
   ]
  },
  {
-  "name": "実方拓海",
-  "count": 4,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "TSK Japan",
-   "TSKJapan",
-   "TSKjapan"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/ito_sumiya/",
-   "https://rise-rc.com/fighter/mori_kazuma/",
-   "https://rise-rc.com/fighter/tapruwan-hadesworkout/",
-   "https://rise-rc.com/fighter/yamada_kosei/"
-  ]
- },
- {
   "name": "尹戸 雅教",
   "count": 4,
   "promotions": [
@@ -1420,24 +1385,6 @@
    "https://rise-rc.com/fighter/higashi_shuhei/",
    "https://rise-rc.com/fighter/strong_kobayashi/",
    "https://rise-rc.com/fighter/takagi_kosuke/"
-  ]
- },
- {
-  "name": "高木覚清",
-  "count": 4,
-  "promotions": [
-   "rise",
-   "sb"
-  ],
-  "affiliations": [
-   "RIKIX",
-   "岡山ジム"
-  ],
-  "source_urls": [
-   "https://shootboxing.org/fighter/ryotaro/",
-   "https://rise-rc.com/fighter/morimoto_ichiyo/",
-   "https://rise-rc.com/fighter/morita_takafumi/",
-   "https://rise-rc.com/fighter/ryotaro/"
   ]
  },
  {
@@ -2258,18 +2205,6 @@
   ]
  },
  {
-  "name": "小比類巻 貴之",
-  "count": 3,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/andy_sower/",
-   "https://shootboxing.org/fighter/shinobu_amara/"
-  ]
- },
- {
   "name": "小野田琉己",
   "count": 3,
   "promotions": [
@@ -2711,16 +2646,18 @@
   ]
  },
  {
-  "name": "齋藤 祐斗",
-  "count": 3,
+  "name": "ARUTO",
+  "count": 2,
   "promotions": [
-   "k1"
+   "rise"
   ],
-  "affiliations": [],
+  "affiliations": [
+   "GRAB",
+   "グラブキックスタジオ"
+  ],
   "source_urls": [
-   "https://www.k-1.co.jp/fighter/806",
-   "https://www.k-1.co.jp/fighter/869",
-   "https://www.k-1.co.jp/fighter/904"
+   "https://rise-rc.com/fighter/iida-rikuto/",
+   "https://rise-rc.com/fighter/uchiyama-tomoki/"
   ]
  },
  {
@@ -4764,6 +4701,20 @@
   ]
  },
  {
+  "name": "堀 大助",
+  "count": 2,
+  "promotions": [
+   "rise"
+  ],
+  "affiliations": [
+   "FightBase都立大"
+  ],
+  "source_urls": [
+   "https://rise-rc.com/fighter/hori_yutaro/",
+   "https://rise-rc.com/fighter/ishikawa-ryunosuke/"
+  ]
+ },
+ {
   "name": "堺 龍平",
   "count": 2,
   "promotions": [
@@ -4958,6 +4909,21 @@
   "source_urls": [
    "https://shootboxing.org/fighter/genki/",
    "https://shootboxing.org/fighter/nitamizu_toshiyuki/"
+  ]
+ },
+ {
+  "name": "小柳俊和",
+  "count": 2,
+  "promotions": [
+   "rise"
+  ],
+  "affiliations": [
+   "BANG BANG GYM",
+   "BANGBANG GYM"
+  ],
+  "source_urls": [
+   "https://rise-rc.com/fighter/g-rex/",
+   "https://rise-rc.com/fighter/ishikawa-ryunosuke/"
   ]
  },
  {
@@ -5258,21 +5224,6 @@
   ]
  },
  {
-  "name": "斉藤遼太",
-  "count": 2,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "L-REX",
-   "拳獅会"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/kyosuke/",
-   "https://rise-rc.com/fighter/ya-man/"
-  ]
- },
- {
   "name": "斗哉",
   "count": 2,
   "promotions": [
@@ -5311,21 +5262,6 @@
   "source_urls": [
    "https://www.k-1.co.jp/fighter/379",
    "https://www.k-1.co.jp/fighter/508"
-  ]
- },
- {
-  "name": "有馬伶弍",
-  "count": 2,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "team Vertigo",
-   "龍生塾"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/kazama_daiki/",
-   "https://rise-rc.com/fighter/tanaka_yuki/"
   ]
  },
  {
@@ -6433,19 +6369,6 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/hideki/"
-  ]
- },
- {
-  "name": "ARUTO",
-  "count": 1,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "グラブキックスタジオ"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/uchiyama-tomoki/"
   ]
  },
  {
@@ -9408,17 +9331,6 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/nishitani_taisei/"
-  ]
- },
- {
-  "name": "TBA",
-  "count": 1,
-  "promotions": [
-   "k1"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://www.k-1.co.jp/fighter/869"
   ]
  },
  {
@@ -12459,17 +12371,6 @@
   ]
  },
  {
-  "name": "ジュ―・シュアイ",
-  "count": 1,
-  "promotions": [
-   "k1"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://www.k-1.co.jp/fighter/5"
-  ]
- },
- {
   "name": "ジュライ・ウォーワンチャイ",
   "count": 1,
   "promotions": [
@@ -13631,6 +13532,19 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/ogawa_sho/"
+  ]
+ },
+ {
+  "name": "トンプーン",
+  "count": 1,
+  "promotions": [
+   "rise"
+  ],
+  "affiliations": [
+   "タイ"
+  ],
+  "source_urls": [
+   "https://rise-rc.com/fighter/nasukawa_ryujin/"
   ]
  },
  {
@@ -18116,19 +18030,6 @@
   ]
  },
  {
-  "name": "吉田 凛汰朗",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [
-   "VERTEX"
-  ],
-  "source_urls": [
-   "https://shootboxing.org/fighter/kanta_motoyama/"
-  ]
- },
- {
   "name": "吉田 敢",
   "count": 1,
   "promotions": [
@@ -18161,19 +18062,6 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/hosono_takahiro/"
-  ]
- },
- {
-  "name": "吉田凛汰朗",
-  "count": 1,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "VERTEX"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/cho-kyeong-jae/"
   ]
  },
  {
@@ -18366,17 +18254,6 @@
   ]
  },
  {
-  "name": "国本真義",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/ezawa_yuri/"
-  ]
- },
- {
   "name": "土屋 邦登",
   "count": 1,
   "promotions": [
@@ -18496,19 +18373,6 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/sato_guriko/"
-  ]
- },
- {
-  "name": "堀 大助",
-  "count": 1,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "FightBase都立大"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/hori_yutaro/"
   ]
  },
  {
@@ -18760,17 +18624,6 @@
   ]
  },
  {
-  "name": "大崎 一貴",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/kawakami_kyo/"
-  ]
- },
- {
   "name": "大川 洋明",
   "count": 1,
   "promotions": [
@@ -18964,17 +18817,6 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/aito/"
-  ]
- },
- {
-  "name": "大高 瑞基",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/ookuwa_hiroaki/"
   ]
  },
  {
@@ -19396,30 +19238,6 @@
   ]
  },
  {
-  "name": "小崎 貴誠",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/kasahara_hiroki/"
-  ]
- },
- {
-  "name": "小崎貴誠",
-  "count": 1,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "GREED GYM"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/tanoue_kenta/"
-  ]
- },
- {
   "name": "小嶋Nor.Naksin",
   "count": 1,
   "promotions": [
@@ -19530,19 +19348,6 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/blackshisa_sotaro/"
-  ]
- },
- {
-  "name": "小柳俊和",
-  "count": 1,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "BANGBANG GYM"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/g-rex/"
   ]
  },
  {
@@ -20633,17 +20438,6 @@
   ]
  },
  {
-  "name": "忍アマラー",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/okuyama_takahiro/"
-  ]
- },
- {
   "name": "志 朗（BeWELLキックボクシングジム",
   "count": 1,
   "promotions": [
@@ -20918,17 +20712,6 @@
   ]
  },
  {
-  "name": "斉藤 遼太",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/possiblek/"
-  ]
- },
- {
   "name": "斎藤 裕",
   "count": 1,
   "promotions": [
@@ -20952,19 +20735,6 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/uchiyama-tomoki/"
-  ]
- },
- {
-  "name": "新井 昴弥",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [
-   "TenCloverGym"
-  ],
-  "source_urls": [
-   "https://shootboxing.org/fighter/hasegawa_daisuke/"
   ]
  },
  {
@@ -21178,19 +20948,6 @@
   ],
   "source_urls": [
    "https://shootboxing.org/fighter/katayama_kai/"
-  ]
- },
- {
-  "name": "有馬 伶弍",
-  "count": 1,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "龍生塾"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/morimoto_genki/"
   ]
  },
  {
@@ -21542,6 +21299,19 @@
   "affiliations": [],
   "source_urls": [
    "https://shootboxing.org/fighter/yurika/"
+  ]
+ },
+ {
+  "name": "杉浦海斗",
+  "count": 1,
+  "promotions": [
+   "rise"
+  ],
+  "affiliations": [
+   "Eee TEAM"
+  ],
+  "source_urls": [
+   "https://rise-rc.com/fighter/sasaki-kosei/"
   ]
  },
  {
@@ -22243,17 +22013,6 @@
   ]
  },
  {
-  "name": "森川 侑凛",
-  "count": 1,
-  "promotions": [
-   "k1"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://www.k-1.co.jp/fighter/810"
-  ]
- },
- {
   "name": "森川勇哉",
   "count": 1,
   "promotions": [
@@ -22486,19 +22245,6 @@
   ],
   "source_urls": [
    "https://shootboxing.org/fighter/gin_grapplingshootboxersgym/"
-  ]
- },
- {
-  "name": "櫻井 心",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [
-   "Team FIST"
-  ],
-  "source_urls": [
-   "https://shootboxing.org/fighter/arima_reiji/"
   ]
  },
  {
@@ -22866,6 +22612,19 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/matsuoka_hiroki/"
+  ]
+ },
+ {
+  "name": "泰生",
+  "count": 1,
+  "promotions": [
+   "rise"
+  ],
+  "affiliations": [
+   "誠輪ジム"
+  ],
+  "source_urls": [
+   "https://rise-rc.com/fighter/sasaki-kosei/"
   ]
  },
  {
@@ -24348,19 +24107,6 @@
   ]
  },
  {
-  "name": "窪山 昴",
-  "count": 1,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "リアルディール"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/masashi/"
-  ]
- },
- {
   "name": "竜宣",
   "count": 1,
   "promotions": [
@@ -24704,6 +24450,19 @@
   ],
   "source_urls": [
    "https://rise-rc.com/fighter/tatsuto/"
+  ]
+ },
+ {
+  "name": "聖希",
+  "count": 1,
+  "promotions": [
+   "rise"
+  ],
+  "affiliations": [
+   "チームFHR"
+  ],
+  "source_urls": [
+   "https://rise-rc.com/fighter/iida-rikuto/"
   ]
  },
  {
@@ -26596,19 +26355,6 @@
   ]
  },
  {
-  "name": "飯田陸斗",
-  "count": 1,
-  "promotions": [
-   "rise"
-  ],
-  "affiliations": [
-   "team YU-TO"
-  ],
-  "source_urls": [
-   "https://rise-rc.com/fighter/aizawa_jo/"
-  ]
- },
- {
   "name": "馬場 仁",
   "count": 1,
   "promotions": [
@@ -26685,17 +26431,6 @@
   ]
  },
  {
-  "name": "高口 賢史郎",
-  "count": 1,
-  "promotions": [
-   "k1"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://www.k-1.co.jp/fighter/979"
-  ]
- },
- {
   "name": "高山 洋貴",
   "count": 1,
   "promotions": [
@@ -26706,17 +26441,6 @@
   ],
   "source_urls": [
    "https://shootboxing.org/fighter/hinuma_asahi/"
-  ]
- },
- {
-  "name": "高木 覚清",
-  "count": 1,
-  "promotions": [
-   "sb"
-  ],
-  "affiliations": [],
-  "source_urls": [
-   "https://shootboxing.org/fighter/sakamoto_yuki/"
   ]
  },
  {

@@ -1,0 +1,13 @@
+{
+  "_comment": "週次自動更新ジョブ(update-kick-data.yml)で毎回発生しうる、既知の構造的制約による欠落の記録。2026-08-21、削除行の全件A/B/C/D分類調査(promote_to_data_kick.py実行結果、data/kick/配下のbouts_*.jsonとの差分)で発見。個別のbout単位で直すのではなく、対応するfetch_*.py側に追加スコープ(JS実行環境の導入)が必要なため、恒久ゲートは追加せず、この一覧で存在を記録するに留める。ここに載っている件数は『今回1回の実行で確認できた最小値』であり、毎回同じ件数になる保証はない(fetch対象の記事構成が変わるたびに増減しうる)。なお同日の調査で当初ここに記載していたbigbang1件は、根本原因が構造的制約ではなくcheck-kick-manual-edit-drift.tsの照合バグ(手動修正レジストリが再生成のたびに適用されず巻き戻っていた)と判明したため、bouts.py側にapply_manual_bout_corrections()を追加して修正済み(このファイルから削除)。",
+  "residuals": [
+    {
+      "source": "snka",
+      "observedCount": 7,
+      "observedDate": "2026-08-21",
+      "target": "SNKA(新日本キックボクシング協会)、ameblo.jp/skb-blog/ 掲載の2011-10-02付MAGNUM27結果記事(entry-11012871814.html)、7試合分",
+      "reason": "fetch_snka.pyのコード内コメントに既に明記されているとおり、記事一覧の取得元(theme-10031916288.html、「Fight」テーマページ)はameblo側のSPAでページネーションがJavaScript実行に依存しており、静的HTTP取得では初回ロード分の記事一覧しか辿れない。2011年のような古い記事は、その時点でこの初回ロード分に含まれるかどうかがameblo側の表示順・キャッシュ状態に左右され、実行のたびに発見できたりできなかったりする(今回は非発見)。ingest_hoostcup.pyの回帰(同日発見・修正済み)とは異なり、パーサ自体のバグではなくfetch段階の到達可能性の問題。",
+      "requiredAdditionalScope": "ameblo.jpの記事一覧をJavaScript実行環境(ヘッドレスブラウザ等)経由で取得するか、ameblo側の非公開API/RSS等の代替経路を調査する必要がある。現状のrequestsベースの静的取得では原理的に解決できない。"
+    }
+  ]
+}

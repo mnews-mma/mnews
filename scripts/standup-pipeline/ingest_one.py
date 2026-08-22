@@ -1,7 +1,25 @@
 # -*- coding: utf-8 -*-
-import re,html,unicodedata,collections,datetime
+import json,re,html,unicodedata,collections,datetime
 
 U = lambda s: re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s))).strip()
+
+# build-kick-data.tsのstripQuotedNickname()と同じ引用符ペア。ONE公式の<h1>には
+# 「安保"Demolition Man"瑠輝也」のようにニックネームが引用符付きで入ることがあり、
+# 既存bouts_one.json(手動パッチ分)はいずれもニックネーム無しの表記のため、表記を揃える
+# (元はfetch_one_manifest_pages.pyにあったロジック、2026-08-22にbuild()新設に伴い移設)。
+QUOTE_PAIRS = [("“", "”"), ('"', '"'), ("'", "'"), ("‘", "’")]
+
+
+def strip_quoted_nickname(s):
+    for open_q, close_q in QUOTE_PAIRS:
+        oi = s.find(open_q)
+        if oi == -1:
+            continue
+        ci = s.find(close_q, oi + len(open_q))
+        if ci == -1:
+            continue
+        return s[:oi] + s[ci + len(close_q):]
+    return s
 
 def parse_page(path, fighter_name_hint=None):
     h = open(path, encoding='utf-8', errors='replace').read()
@@ -84,3 +102,45 @@ def parse_html(h, slug, fighter_name_hint=None):
             pair_key=None, source_url=f'https://www.onefc.com/jp/athletes/{slug}/',
         ))
     return out
+
+
+def build():
+    """2026-08-22追加: 週次自動更新ジョブ(build.py)のFORMERLY_STANDALONE_ORGSと同じ
+       呼び出し規約((bouts, stats)を返す)に合わせたドライバ。fetch_one.pyが取得した
+       raw/one_manifest/*.htmlを、one_official_manifest.json(固定116人、このジョブは
+       一切拡張しない)の登録順に読んで解析する。
+
+       existingのbouts_one.json全112人分のfighter_slugは実測でmanifest全116人の
+       identityの部分集合であり(2026-08-22確認、manifest外の手動パッチ行は無い)、
+       他12ソースと同じ「raw/から毎回フルに作り直す」方式で安全に扱える。
+
+       manifest登録済みだがraw/にファイルが無い(=fetch_one.pyがそのslugの取得に
+       失敗した)場合は、そのbout行はこの回だけ0件になる。個別選手単位の取得失敗を
+       検知する仕組みはcheck-kick-one-manifest-coverage.tsの検査A(zeroOfficialCount、
+       ratchet)が既に持っているため、ここでは無理に前回値を引き継がず、失敗を
+       正直に反映する(全体急減はpromote_to_data_kick.pyの回帰ガード、個別選手の
+       消失はcheck-kick-one-manifest-coverage.tsが別々に検知する)。"""
+    manifest = json.load(open('one_official_manifest.json', encoding='utf-8'))
+    bouts = []
+    n_fetched = 0
+    n_missing = 0
+    for m in manifest:
+        slug = m['one_slug']
+        path = f'raw/one_manifest/{slug}.html'
+        try:
+            with open(path, encoding='utf-8') as f:
+                h = f.read()
+        except FileNotFoundError:
+            n_missing += 1
+            continue
+        n_fetched += 1
+        for b in parse_html(h, slug):
+            # ingest_one.pyのparse_html()はfighter_slugにURLのslug(例: "hiromi-wajima")を
+            # 入れるが、build-kick-data.tsのmatchBy:"identity"はfighter_slugに
+            # `${name}|${gym}|${sources[0]}` 形式の識別子を要求する(既存bouts_one.jsonの
+            # 全行がこの形式で登録されているのと同じ規約)。
+            b['fighter_slug'] = m['fighter_identity']
+            b['fighter_name'] = strip_quoted_nickname(b['fighter_name'])
+            bouts.append(b)
+    stats = dict(manifest_count=len(manifest), fetched=n_fetched, missing=n_missing)
+    return bouts, stats

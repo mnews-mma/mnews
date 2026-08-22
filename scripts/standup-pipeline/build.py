@@ -50,10 +50,24 @@ PROMOS=[('sb','SHOOT BOXING','raw/sb_bouts/*.html','https://shootboxing.org/figh
 _all={}
 for _tag,_label,_src,_tpl,_host,_parser in PROMOS:
     _b=_bouts.build('fighters.json',_src,_tag,_tpl,_host,_parser)
-    if not _b:
-        print(f'\n===== bouts_{_tag}.json ===== SKIPPED (no raw pages under {_src})'); continue
+    # 2026-08-22修正: 従来は_bが空の場合(raw/配下にページが1件も無い=名簿発見元
+    # ページ自体の取得に失敗した等)、bouts_{tag}.jsonへの書き込み自体をスキップして
+    # いた。GHAの新規runnerでは前回コミット済みの内容がそのままcheckoutされているため、
+    # 「書かない」ことは「前回コミット値をそのまま黙って使う」ことと同義になり、
+    # promote_to_data_kick.pyのbout数急減ガード(fresh_countとprev_countの比較)が
+    # fresh_count(=前回値そのもの)とprev_count(=同じ前回値)を比較することになって
+    # 常に一致してしまい、取得失敗を一切検知できなかった(2026-08-21の実走6回目、
+    # RISE公式のsitemap取得がタイムアウトし0件になったにもかかわらず、この回避経路で
+    # 前回コミット値がそのまま「変化なし」として素通りした実例で発覚)。EXTRA_ORGS・
+    # FORMERLY_STANDALONE_ORGSは元から無条件でjson.dumpしており、この種の全滅は
+    # 正しく空配列として書き出されbout数急減ガードで捕捉できていた。PROMOSループだけが
+    # この経路を持っていたため、他ループと同じく常に書き込む形に統一する。
     json.dump(_b,open(f'bouts_{_tag}.json','w'),ensure_ascii=False,indent=1)
     _all[_tag]=_b
+    if not _b:
+        print(f'\n===== bouts_{_tag}.json ({_label}) ===== 0件(raw/配下にページが1件も無い。'
+              f'取得失敗の疑い。bout数急減ガードで捕捉される想定)')
+        continue
     _r=sum(1 for x in _b if x['opponent_resolved'])
     _u=[x for x in _b if not x['opponent_resolved']]
     print(f'\n===== bouts_{_tag}.json ({_label}) =====')
@@ -154,10 +168,16 @@ for _tag,_label,_mod in EXTRA_ORGS:
 # DEEP☆KICK/HoostCup/NJKF/NKB/RIZIN(本件)と3回同種の取りこぼしが発生したため、
 # 「build.pyを一発実行すれば全15団体が再生成される」ことを構造的に保証するべく本ループへ統合する。
 # unresolved_opponents.json の集計対象(_all)には含めない(EXTRA_ORGSと同じ理由・既存の集計を変えない)。
-import ingest_deepkick, ingest_hoostcup, ingest_njkf, ingest_nkb
+import ingest_deepkick, ingest_hoostcup, ingest_njkf, ingest_nkb, ingest_one
 
+# ONE Championshipは2026-08-22に週次自動更新ジョブへ編入した(RIZIN・Wikipediaとは違い
+# 凍結しない)。ただし名簿(one_official_manifest.json、116人固定)自体は
+# build_one_manifest.py(?country=jpタグの非網羅性の影響を受ける)を呼ばず一切拡張しない。
+# ここで再生成するのは、その固定名簿メンバーのプロフィールページの中身(戦績)だけ
+# (fetch_one.py/ingest_one.build()参照)。「名簿の自動拡張はしない」という他ソース共通の
+# 既存方針をONEにもそのまま適用しただけで、ONE固有の特別扱いではない。
 FORMERLY_STANDALONE_ORGS=[('deepkick','DEEP☆KICK',ingest_deepkick),('hoostcup','HoostCup',ingest_hoostcup),
-            ('njkf','NJKF',ingest_njkf),('nkb','NKB',ingest_nkb)]
+            ('njkf','NJKF',ingest_njkf),('nkb','NKB',ingest_nkb),('one','ONE Championship',ingest_one)]
 if SKIP_FROZEN_SOURCES:
     # RIZINは週次自動更新ジョブの対象13ソースに含まれない(凍結、上記CACHE_DIRの
     # コメント参照)。`import ingest_rizin`自体がモジュールレベルで

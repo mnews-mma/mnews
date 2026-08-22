@@ -348,7 +348,7 @@
   "source_url": "https://nkb-r.com/main/2025/12/14/20251213/"
  },
  {
-  "bout_id": "nkb:勇志|テツジム関西|https://knockoutkb.com/fighters/yushi_627:0",
+  "bout_id": "nkb:勇志|真門ジム|https://rise-rc.com/fighter/yushi/:0",
   "date": "2025-10-20",
   "event": "爆発シリーズvol.5",
   "venue": null,
@@ -543,6 +543,35 @@
   "method_raw": "判定0-2",
   "round": null,
   "is_extension": false,
+  "ruleset": null,
+  "note": null,
+  "is_debut": false,
+  "title_type": null,
+  "pair_key": null,
+  "source_url": "https://nkb-r.com/main/2025/08/10/20250803/"
+ },
+ {
+  "bout_id": "nkb:銀次|team Authentic|https://www.k-1.co.jp/fighter/1293:0",
+  "date": "2025-08-10",
+  "event": "爆発シリーズvol.4",
+  "venue": "大阪176BOX（イナロクボックス）",
+  "fighter_slug": "銀次|team Authentic|https://www.k-1.co.jp/fighter/1293",
+  "fighter_name": "銀次",
+  "opponent_raw": "小西 谷琉（ROYALKINGS）",
+  "opponent_name": "小西 谷琉",
+  "opponent_affiliation": "ROYALKINGS",
+  "opponent_site_slug": null,
+  "opponent_ref": null,
+  "opponent_ref_gym": null,
+  "opponent_resolved": false,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
+  "result": "loss",
+  "result_mark": "×",
+  "method": "decision",
+  "method_raw": "判定0-1ドロー 延長 判定3-0 10-9・10-9・10-9",
+  "round": null,
+  "is_extension": true,
   "ruleset": null,
   "note": null,
   "is_debut": false,
@@ -1073,7 +1102,7 @@
   "source_url": "https://nkb-r.com/main/2025/02/23/20250222/"
  },
  {
-  "bout_id": "nkb:勇志|テツジム関西|https://knockoutkb.com/fighters/yushi_627:1",
+  "bout_id": "nkb:勇志|真門ジム|https://rise-rc.com/fighter/yushi/:1",
   "date": "2024-12-15",
   "event": "冠鷲シリーズFINAL",
   "venue": null,
@@ -1189,7 +1218,7 @@
   "source_url": "https://nkb-r.com/main/2024/12/15/20241214/"
  },
  {
-  "bout_id": "nkb:勇志|テツジム関西|https://knockoutkb.com/fighters/yushi_627:2",
+  "bout_id": "nkb:勇志|真門ジム|https://rise-rc.com/fighter/yushi/:2",
   "date": "2024-10-20",
   "event": "冠鷲シリーズvol.6",
   "venue": null,
@@ -1295,6 +1324,35 @@
   "result_mark": null,
   "method": "other",
   "method_raw": "エキシビションマッのため勝敗なし",
+  "round": null,
+  "is_extension": false,
+  "ruleset": null,
+  "note": null,
+  "is_debut": false,
+  "title_type": null,
+  "pair_key": null,
+  "source_url": "https://nkb-r.com/main/2024/08/12/20240810/"
+ },
+ {
+  "bout_id": "nkb:斉藤遼太|L-REX|https://krossover.jp/?p=635:0",
+  "date": "2024-08-12",
+  "event": "拳心館主催興行 冠鷲シリーズvol.5",
+  "venue": null,
+  "fighter_slug": "斉藤遼太|L-REX|https://krossover.jp/?p=635",
+  "fighter_name": "斉藤遼太",
+  "opponent_raw": "村上 祐馬（不死鳥道場）",
+  "opponent_name": "村上 祐馬",
+  "opponent_affiliation": "不死鳥道場",
+  "opponent_site_slug": null,
+  "opponent_ref": null,
+  "opponent_ref_gym": null,
+  "opponent_resolved": false,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
+  "result": "loss",
+  "result_mark": "×",
+  "method": "decision",
+  "method_raw": "判定3-0",
   "round": null,
   "is_extension": false,
   "ruleset": null,
@@ -1682,7 +1740,7 @@
   "source_url": "https://nkb-r.com/main/2024/02/18/20240217/"
  },
  {
-  "bout_id": "nkb:勇志|テツジム関西|https://knockoutkb.com/fighters/yushi_627:3",
+  "bout_id": "nkb:勇志|真門ジム|https://rise-rc.com/fighter/yushi/:3",
   "date": "2023-12-17",
   "event": "野獣シリーズFINAL",
   "venue": null,
@@ -2001,7 +2059,7 @@
   "source_url": "https://nkb-r.com/main/2023/08/07/20230806/"
  },
  {
-  "bout_id": "nkb:中島 隆徳|GET OVER 2005年4月|https://knockoutkb.com/fighters/nakashima_takanori_97:0",
+  "bout_id": "nkb:中島 隆徳|GETOVER|https://knockoutkb.com/fighters/nakashima_takanori_97:0",
   "date": "2023-08-07",
   "event": "NKジム／テツジム2部主催興行",
   "venue": "大阪 176box（イナロクボックス）",
@@ -2523,7 +2581,7 @@
   "source_url": "https://nkb-r.com/main/2023/04/16/20230415-2/"
  },
  {
-  "bout_id": "nkb:中島 隆徳|GET OVER 2005年4月|https://knockoutkb.com/fighters/nakashima_takanori_97:1",
+  "bout_id": "nkb:中島 隆徳|GETOVER|https://knockoutkb.com/fighters/nakashima_takanori_97:1",
   "date": "2023-04-16",
   "event": "野獣シリーズvol.2",
   "venue": null,
@@ -2697,7 +2755,7 @@
   "source_url": "https://nkb-r.com/main/2022/12/25/20221224/"
  },
  {
-  "bout_id": "nkb:勇志|テツジム関西|https://knockoutkb.com/fighters/yushi_627:4",
+  "bout_id": "nkb:勇志|真門ジム|https://rise-rc.com/fighter/yushi/:4",
   "date": "2022-12-25",
   "event": "喝釆シリーズFINAL",
   "venue": null,
@@ -3074,7 +3132,7 @@
   "source_url": "https://nkb-r.com/main/2022/08/06/20220806/"
  },
  {
-  "bout_id": "nkb:勇志|テツジム関西|https://knockoutkb.com/fighters/yushi_627:5",
+  "bout_id": "nkb:勇志|真門ジム|https://rise-rc.com/fighter/yushi/:5",
   "date": "2022-07-31",
   "event": "Z-Ⅳ Carnival YOUNG FIGHT 喝采シリーズvol.4",
   "venue": "大阪 176box（イナロクボックス）",
@@ -3567,7 +3625,7 @@
   "source_url": "https://nkb-r.com/main/2022/02/20/20220219/"
  },
  {
-  "bout_id": "nkb:中島 隆徳|GET OVER 2005年4月|https://knockoutkb.com/fighters/nakashima_takanori_97:2",
+  "bout_id": "nkb:中島 隆徳|GETOVER|https://knockoutkb.com/fighters/nakashima_takanori_97:2",
   "date": "2022-02-20",
   "event": "喝采シリーズvol.1",
   "venue": null,
@@ -4051,6 +4109,35 @@
   "method": "ko",
   "method_raw": "1R KO",
   "round": 1,
+  "is_extension": false,
+  "ruleset": null,
+  "note": null,
+  "is_debut": false,
+  "title_type": null,
+  "pair_key": null,
+  "source_url": "https://nkb-r.com/main/2021/08/28/20210828/"
+ },
+ {
+  "bout_id": "nkb:斉藤遼太|L-REX|https://krossover.jp/?p=635:1",
+  "date": "2021-08-28",
+  "event": "拳心館主催興行 必勝シリーズvol.5",
+  "venue": null,
+  "fighter_slug": "斉藤遼太|L-REX|https://krossover.jp/?p=635",
+  "fighter_name": "斉藤遼太",
+  "opponent_raw": "ベンツ飯田（TEAM Aimhigh）",
+  "opponent_name": "ベンツ飯田",
+  "opponent_affiliation": "TEAM Aimhigh",
+  "opponent_site_slug": null,
+  "opponent_ref": null,
+  "opponent_ref_gym": null,
+  "opponent_resolved": false,
+  "opponent_ambiguous": false,
+  "opponent_candidates": null,
+  "result": "win",
+  "result_mark": "○",
+  "method": "decision",
+  "method_raw": "判定2-0 30-28・30-29・29-29",
+  "round": null,
   "is_extension": false,
   "ruleset": null,
   "note": null,
@@ -4930,7 +5017,7 @@
   "source_url": "https://nkb-r.com/main/2020/03/03/20200426/"
  },
  {
-  "bout_id": "nkb:勇志|真門ジム|https://rise-rc.com/fighter/yushi/:0",
+  "bout_id": "nkb:勇志|真門ジム|https://rise-rc.com/fighter/yushi/:6",
   "date": "2020-03-03",
   "event": "交戦シリーズvlo.3",
   "venue": null,

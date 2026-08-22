@@ -22,6 +22,7 @@ import time
 
 sys.path.insert(0, ".")
 from fetch_common import fetch
+from fighters_source_ids import extract_ids_from_fighters
 
 OUT_DIR = "raw/ko_bouts"
 # 2026-08-21追加: GitHub Actionsの新規runnerはraw/が空(サブディレクトリも無い)ため、
@@ -42,24 +43,21 @@ MAX_PAGES = 20  # 実測上限は2ページ(archive時点)だが将来の増加�
 
 def main():
     t0 = time.time()
-    # 2026-08-21変更: 従来はglob.glob(f"{OUT_DIR}/*.html")で「既存raw/のファイル名」
-    # から既知slugを復元していたが、週次自動更新ジョブはraw/が毎回空の状態から始まる
-    # (.gitignore対象、CI runnerに前回状態が残らない)ため、この方式では0件になり
-    # 何も取得できなくなる。cache/ko_parsed.json(コミット済み、名簿キャッシュ)のurlから
-    # slugを復元する(既存raw/が残っている場合の実行結果は変わらない)。
-    #
-    # ページネーション(2026-08-21、ローカル実測で発見): cache/ko_parsed.jsonのurlは
-    # 1ページ目のみで、単純にそこだけ取得すると2ページ目以降の戦績が丸ごと欠落し、
-    # bouts_knockout.jsonが1,305件→1,236件(-70件)まで減少する回帰を確認した。しかも
-    # 「?page=2」は2ページ目が実在しない選手にも200 OKで(別内容の)HTMLを返すため、
-    # 既知の`__pN`ファイル一覧を事前チェックする方式は使えない。全選手について、
-    # ページを1から順に取得し、直前ページと試合ログ(<li class="fight-log...">)の内容が
-    # 完全一致した時点(=サイト側がページ範囲外を検知して同じ内容を繰り返す挙動、実測確認)
-    # で打ち切る方式に変更した。安全上限MAX_PAGESも設ける。
-    known_slugs = sorted(
-        r["url"].rstrip("/").split("/")[-1] for r in json.load(open("cache/ko_parsed.json"))
-    )
-    print(f"既知slug(cache/ko_parsed.jsonの名簿由来): {len(known_slugs)}件(新規発見は今回未実施)")
+    # 2026-08-21変更(2度目): cache/ko_parsed.json(2026-08-18時点の凍結スナップショット、
+    # 現役名簿のみ)ベースの既知slug復元だと、退所選手(ko_delisted_merges.json由来、
+    # kuriaki_shogo・hinata_222・kazuki_398の3名を実測確認)がcache/側に載っておらず
+    # 恒久的に取得漏れになっていた。fighters.json(コミット済み、継続的に更新されてきた
+    # "より新しい"名簿。退所選手の統合結果も既にsourcesに反映済み)1本を正として、
+    # sourcesにKNOCK OUTのURLを持つ全選手からslugを抽出する方式に統一する。
+    known_slugs = sorted(extract_ids_from_fighters(r"^https://knockoutkb\.com/fighters/([a-z0-9_\-]+)/?$"))
+    print(f"既知slug(fighters.jsonのKNOCK OUT sources由来): {len(known_slugs)}件(新規発見は今回未実施)")
+
+    # ページネーション(2026-08-21、ローカル実測で発見): 単純に1ページ目だけ取得すると
+    # 2ページ目以降の戦績が丸ごと欠落する。しかも「?page=2」は2ページ目が実在しない
+    # 選手にも200 OKで(別内容の)HTMLを返すため、既知の`__pN`ファイル一覧を事前
+    # チェックする方式は使えない。全選手について、ページを1から順に取得し、直前
+    # ページと試合ログ(<li class="fight-log...">)の内容が完全一致した時点(=サイト側が
+    # ページ範囲外を検知して同じ内容を繰り返す挙動、実測確認)で打ち切る。
 
     failed = []
     n_ok = 0
