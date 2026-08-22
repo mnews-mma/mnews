@@ -3100,48 +3100,52 @@
     "age": 34
   },
   "hiroya": {
-    "wins": 12,
-    "losses": 15,
+    "wins": 11,
+    "losses": 16,
     "draws": 1,
     "ko": 4,
     "sub": 3,
-    "decision": 5,
+    "decision": 4,
     "history": [
       {
         "date": "2026-07-18",
-        "opponent": "山本KID徳郁",
-        "result": "win",
+        "opponent": "山本アーセン",
+        "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN LANDMARK 15",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "フライ級（57.0kg）"
       },
       {
         "date": "2025-12-31",
-        "opponent": "デメトリアス・ジョンソン",
+        "opponent": "神龍誠",
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "RIZIN 師走の超強者祭り",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "57.0kg契約"
       },
       {
         "date": "2025-07-27",
-        "opponent": "アレッシャンドリ・パントージャ",
+        "opponent": "元谷友貴",
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "超RIZIN.4 真夏の喧嘩祭り 【RIZINフライ級ワールドグランプリ1回戦】",
-        "round": "R3"
+        "round": "R3",
+        "weightClass": "57.0kg契約"
       },
       {
         "date": "2025-05-04",
-        "opponent": "平良達郎",
+        "opponent": "篠塚辰樹",
         "result": "win",
         "method": "1R 2:11 TKO（グラウンドでの肘打ち連打）",
         "event": "RIZIN男祭り",
-        "round": "R1"
+        "round": "R1",
+        "weightClass": "57.0kg契約"
       },
       {
         "date": "2024-11-17",
-        "opponent": "ジョシュア・ヴァン",
+        "opponent": "柴田\"MONKEY\"有哉",
         "result": "win",
         "method": "5分3R終了 判定3-0",
         "event": "RIZIN LANDMARK 10",
@@ -3149,7 +3153,7 @@
       },
       {
         "date": "2024-07-28",
-        "opponent": "鶴屋怜",
+        "opponent": "所英男",
         "result": "loss",
         "method": "1R 3:20 TKO（右ストレート→グラウンドエルボー）",
         "event": "超RIZIN.3",
@@ -3157,7 +3161,7 @@
       },
       {
         "date": "2023-12-31",
-        "opponent": "アドリアーノ・モラエス",
+        "opponent": "新井丈",
         "result": "win",
         "method": "2R 2:53 TKO（右ハイキック→スタンドパンチ連打）",
         "event": "RIZIN.45",
@@ -3165,7 +3169,7 @@
       },
       {
         "date": "2023-10-01",
-        "opponent": "フランシス・ガヌー",
+        "opponent": "中村優作",
         "result": "loss",
         "method": "5分3R終了 判定1-2",
         "event": "RIZIN LANDMARK 6",
@@ -3181,7 +3185,7 @@
       },
       {
         "date": "2023-05-07",
-        "opponent": "アレックス・ペレイラ",
+        "opponent": "安谷屋智弘",
         "result": "loss",
         "method": "5分3R終了 判定0-3",
         "event": "DEEP 113 IMPACT",
@@ -3189,7 +3193,7 @@
       },
       {
         "date": "2022-10-30",
-        "opponent": "ジョン・ジョーンズ",
+        "opponent": "新垣健司",
         "result": "win",
         "method": "1R 1:27 ギロチンチョーク",
         "event": "DEEP OKINAWA IMPACT 2022",
